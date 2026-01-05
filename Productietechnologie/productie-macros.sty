@@ -42,7 +42,7 @@
   }%
   % Append the formula to the chapter's list
   \csxappto{ChapterFormulas@#1}{%
-    \noexpand\item[\noexpand\textbf{#2}] \noexpand$\displaystyle \unexpanded{#3}$ --- \unexpanded{#4} {\noexpand(\noexpand\hyperref[frm:#5]{p.~\noexpand\pageref{frm:#5}})}\noexpand\par
+    \noexpand\item[\noexpand\textbf{\unexpanded{#2}}] \noexpand$\displaystyle \unexpanded{#3}$ --- \unexpanded{#4} {\noexpand(\noexpand\hyperref[frm:#5]{p.~\noexpand\pageref{frm:#5}})}\noexpand\par
   }%
 }
 
@@ -68,7 +68,7 @@
   \end{tcolorbox}%
   % Write to aux file so it's available at next compile's start
   % We use \thechapter to capture the current chapter number
-  \protected@write\@auxout{}{\string\addformulariumentry{\thechapter}{#1}{#2}{#3}{\theFormulariumEntryCounter}}%
+  \protected@write\@auxout{}{\string\addformulariumentry{\thechapter}{\unexpanded{#1}}{\unexpanded{#2}}{\unexpanded{#3}}{\theFormulariumEntryCounter}}%
 }
 
 % Make chapters keep number and title on the same line and avoid forcing a new page

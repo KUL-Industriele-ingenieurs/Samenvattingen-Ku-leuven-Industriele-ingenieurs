@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.12.16)  5 JAN 2026 18:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.12.16)  5 JAN 2026 22:28
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**./new_document_template.tex
-(new_document_template.tex
+**./Wisselstroom-formulariumMetUitleg-RubenRyckaert.tex
+(Wisselstroom-formulariumMetUitleg-RubenRyckaert.tex
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-11-06>
 (C:\Program Files\MiKTeX\tex/latex/base\article.cls
@@ -872,7 +872,11 @@ File: pgflibrarypatterns.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 File: tikzlibraryshapes.geometric.code.tex 2025-08-29 v3.1.11a (3.1.11a)
  (C:\Program Files\MiKTeX\tex/generic/pgf/libraries/shapes\pgflibraryshapes.geometric.code.tex
 File: pgflibraryshapes.geometric.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-))
+)) (C:\Program Files\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibraryangles.code.tex
+File: tikzlibraryangles.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+) (C:\Program Files\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibraryquotes.code.tex
+File: tikzlibraryquotes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
 \c@FormulariumEntryCounter=\count384
 \c@stelling=\count385
 \c@definitie=\count386
@@ -908,41 +912,64 @@ Package: translations 2022/02/05 v1.12 internationalization of LaTeX2e packages 
 \l__siunitx_unit_tmp_int=\count398
 \l__siunitx_unit_position_int=\count399
 \l__siunitx_unit_total_int=\count400
+) (C:\Users\ruben\AppData\Roaming\MiKTeX\tex/latex/pdfpages\pdfpages.sty
+Package: pdfpages 2025/07/23 v0.6g Insert pages of external PDF documents (AM)
+ (C:\Program Files\MiKTeX\tex/latex/base\ifthen.sty
+Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
+) (C:\Users\ruben\AppData\Roaming\MiKTeX\tex/latex/eso-pic\eso-pic.sty
+Package: eso-pic 2023/05/03 v3.0c eso-pic (RN)
+\ESO@tempdima=\dimen357
+\ESO@tempdimb=\dimen358
 )
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 12.
+\AM@pagewidth=\dimen359
+\AM@pageheight=\dimen360
+\AM@fboxrule=\dimen361
+ (C:\Users\ruben\AppData\Roaming\MiKTeX\tex/latex/pdfpages\pppdftex.def
+File: pppdftex.def 2025/07/23 v0.6g Pdfpages driver for pdfTeX (AM)
+)
+\pdfpages@includegraphics@status=\count401
+\AM@pagebox=\box139
+\AM@global@opts=\toks63
+\AM@pagecnt=\count402
+\AM@toc@title=\toks64
+\AM@lof@heading=\toks65
+\c@AM@survey=\count403
+\AM@templatesizebox=\box140
+)
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 18.
  (C:\Program Files\MiKTeX\tex/latex/lm\t1lmr.fd
 File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-) (new_document_template.aux
+) (Wisselstroom-formulariumMetUitleg-RubenRyckaert.aux
 Package babel Info: 'dutch' activates 'dutch' shorthands.
 (babel)             Reported on input line 8.
 )
-\openout1 = `new_document_template.aux'.
+\openout1 = `Wisselstroom-formulariumMetUitleg-RubenRyckaert.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Info: Redefining \microtypecontext on input line 12.
-Package microtype Info: Applying patch `item' on input line 12.
-Package microtype Info: Applying patch `toc' on input line 12.
-Package microtype Info: Applying patch `eqnum' on input line 12.
-Package microtype Info: Applying patch `footnote' on input line 12.
-Package microtype Info: Applying patch `verbatim' on input line 12.
-LaTeX Info: Redefining \microtypesetup on input line 12.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Info: Redefining \microtypecontext on input line 18.
+Package microtype Info: Applying patch `item' on input line 18.
+Package microtype Info: Applying patch `toc' on input line 18.
+Package microtype Info: Applying patch `eqnum' on input line 18.
+Package microtype Info: Applying patch `footnote' on input line 18.
+Package microtype Info: Applying patch `verbatim' on input line 18.
+LaTeX Info: Redefining \microtypesetup on input line 18.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -957,17 +984,17 @@ Package microtype Info: No adjustment of character kerning.
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (RS)
 ) (C:\Program Files\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count401
-\scratchdimen=\dimen357
-\scratchbox=\box139
-\nofMPsegments=\count402
-\nofMParguments=\count403
-\everyMPshowfont=\toks63
-\MPscratchCnt=\count404
-\MPscratchDim=\dimen358
-\MPnumerator=\count405
-\makeMPintoPDFobject=\count406
-\everyMPtoPDFconversion=\toks64
+\scratchcounter=\count404
+\scratchdimen=\dimen362
+\scratchbox=\box141
+\nofMPsegments=\count405
+\nofMParguments=\count406
+\everyMPshowfont=\toks66
+\MPscratchCnt=\count407
+\MPscratchDim=\dimen363
+\MPnumerator=\count408
+\makeMPintoPDFobject=\count409
+\everyMPtoPDFconversion=\toks67
 ) (C:\Program Files\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -979,10 +1006,10 @@ Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring OFF on input line 12.
- (new_document_template.out) (new_document_template.out)
+Package hyperref Info: Link coloring OFF on input line 18.
+ (Wisselstroom-formulariumMetUitleg-RubenRyckaert.out) (Wisselstroom-formulariumMetUitleg-RubenRyckaert.out)
 \@outlinefile=\write4
-\openout4 = `new_document_template.out'.
+\openout4 = `Wisselstroom-formulariumMetUitleg-RubenRyckaert.out'.
 
 
 *geometry* driver: auto-detecting
@@ -1019,75 +1046,204 @@ Package hyperref Info: Link coloring OFF on input line 12.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\c@lstlisting=\count407
+\c@lstlisting=\count410
 
-Package chemgreek Info: Activating mapping `default' on line 12.
+Package chemgreek Info: Activating mapping `default' on line 18.
 
 Package pgfplots notification 'compat/show suggested version=true': document has been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
 
 (C:\Users\ruben\AppData\Roaming\MiKTeX\tex/latex/translations/dicts\translations-basic-dictionary-dutch.trsl
 File: translations-basic-dictionary-dutch.trsl (dutch translation file `translations-basic-dictionary')
 )
-Package translations Info: loading dictionary `translations-basic-dictionary' for `dutch'. on input line 12.
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 15.
+Package translations Info: loading dictionary `translations-basic-dictionary' for `dutch'. on input line 18.
+ (C:\Users\ruben\AppData\Roaming\MiKTeX\tex/latex/pdflscape\pdflscape.sty
+Package: pdflscape 2022-10-27 v0.13 Display of landscape pages in PDF
+ (C:\Users\ruben\AppData\Roaming\MiKTeX\tex/latex/pdflscape\pdflscape-nometadata.sty
+Package: pdflscape-nometadata 2022-10-28 v0.13 Display of landscape pages in PDF (HO)
+ (C:\Program Files\MiKTeX\tex/latex/graphics\lscape.sty
+Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
+)
+Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
+))
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 21.
  (C:\Program Files\MiKTeX\tex/latex/lm\ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 15.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 21.
  (C:\Program Files\MiKTeX\tex/latex/lm\omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 15.
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 21.
  (C:\Program Files\MiKTeX\tex/latex/lm\omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 15.
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 21.
  (C:\Program Files\MiKTeX\tex/latex/lm\omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 15.
+(Font)              <12> on input line 21.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 15.
+(Font)              <8> on input line 21.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 15.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 15.
+(Font)              <6> on input line 21.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 21.
  (C:\Program Files\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (C:\Users\ruben\AppData\Roaming\MiKTeX\tex/latex/microtype\mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 15.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 21.
  (C:\Program Files\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (C:\Users\ruben\AppData\Roaming\MiKTeX\tex/latex/microtype\mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-) (new_document_template.toc)
+) (Wisselstroom-formulariumMetUitleg-RubenRyckaert.toc
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10.95> on input line 4.
+)
 \tf@toc=\write5
-\openout5 = `new_document_template.toc'.
+\openout5 = `Wisselstroom-formulariumMetUitleg-RubenRyckaert.toc'.
 
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 22.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 22.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 22.
  [1
 
-{C:/Users/ruben/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}] (new_document_template.aux)
+{C:/Users/ruben/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}]
+Package babel Info: 'dutch' activates 'dutch' shorthands.
+(babel)             Reported on input line 22.
+ [2]
+Overfull \hbox (18.97845pt too wide) in paragraph at lines 22--22
+[]$[] \OT1/lmr/m/n/10.95 (-20) = [] \OMS/lmsy/m/n/10.95 ^^A [] \OML/lmm/m/it/10.95 ;  [] \OT1/lmr/m/n/10.95 (-20) =
+ []
+
+[3] [4] [5] [6]
+<vermogen.png, id=190, 594.72188pt x 220.57407pt>
+File: vermogen.png Graphic file (type png)
+<use vermogen.png>
+Package pdftex.def Info: vermogen.png  used on input line 145.
+(pdftex.def)             Requested size: 364.19667pt x 135.07501pt.
+ [7]
+<stroomachtervoltage.png, id=197, 629.35126pt x 152.06813pt>
+File: stroomachtervoltage.png Graphic file (type png)
+<use stroomachtervoltage.png>
+Package pdftex.def Info: stroomachtervoltage.png  used on input line 167.
+(pdftex.def)             Requested size: 364.19667pt x 88.00002pt.
+ [8 <./vermogen.png>]
+<Vermogendriehoek.png, id=204, 423.08063pt x 181.42781pt>
+File: Vermogendriehoek.png Graphic file (type png)
+<use Vermogendriehoek.png>
+Package pdftex.def Info: Vermogendriehoek.png  used on input line 185.
+(pdftex.def)             Requested size: 273.14923pt x 117.1377pt.
+ [9 <./stroomachtervoltage.png> <./Vermogendriehoek.png>] [10]
+<resonatie.png, id=216, 462.97969pt x 277.035pt>
+File: resonatie.png Graphic file (type png)
+<use resonatie.png>
+Package pdftex.def Info: resonatie.png  used on input line 272.
+(pdftex.def)             Requested size: 227.62206pt x 136.20486pt.
+ [11 <./resonatie.png>]
+<3-fase.png, id=223, 713.66624pt x 243.15843pt>
+File: 3-fase.png Graphic file (type png)
+<use 3-fase.png>
+Package pdftex.def Info: 3-fase.png  used on input line 314.
+(pdftex.def)             Requested size: 364.19667pt x 124.08707pt.
+<circuit3-fase.png, id=224, 578.91281pt x 239.39438pt>
+File: circuit3-fase.png Graphic file (type png)
+<use circuit3-fase.png>
+Package pdftex.def Info: circuit3-fase.png  used on input line 321.
+(pdftex.def)             Requested size: 204.85846pt x 84.71346pt.
+<fasors3fase.png, id=225, 277.035pt x 208.52907pt>
+File: fasors3fase.png Graphic file (type png)
+<use fasors3fase.png>
+Package pdftex.def Info: fasors3fase.png  used on input line 322.
+(pdftex.def)             Requested size: 204.85846pt x 154.2009pt.
+ [12 <./3-fase.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 328--331
+
+ []
+
+<ster.png, id=233, 593.96906pt x 231.86626pt>
+File: ster.png Graphic file (type png)
+<use ster.png>
+Package pdftex.def Info: ster.png  used on input line 339.
+(pdftex.def)             Requested size: 455.24411pt x 177.72028pt.
+[13 <./circuit3-fase.png> <./fasors3fase.png> <./ster.png>]
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 381.
+ (C:\Program Files\MiKTeX\tex/latex/lm\ts1lmr.fd
+File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+<fasors.png, id=244, 268.75406pt x 267.24844pt>
+File: fasors.png Graphic file (type png)
+<use fasors.png>
+Package pdftex.def Info: fasors.png  used on input line 385.
+(pdftex.def)             Requested size: 102.42923pt x 101.85313pt.
+ [14{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc} <./fasors.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 408--410
+
+ []
+
+<driehoek 3fasesyteem.png, id=251, 574.39594pt x 238.64156pt>
+File: driehoek 3fasesyteem.png Graphic file (type png)
+<use driehoek 3fasesyteem.png>
+Package pdftex.def Info: driehoek 3fasesyteem.png  used on input line 424.
+(pdftex.def)             Requested size: 455.24411pt x 189.14378pt.
+[15 <./driehoek 3fasesyteem.png>]
+<fasorsindriehoek.png, id=257, 256.70906pt x 222.8325pt>
+File: fasorsindriehoek.png Graphic file (type png)
+<use fasorsindriehoek.png>
+Package pdftex.def Info: fasorsindriehoek.png  used on input line 453.
+(pdftex.def)             Requested size: 182.09486pt x 158.06596pt.
+<image4.png, id=258, 158.09062pt x 139.27031pt>
+File: image4.png Graphic file (type png)
+<use image4.png>
+Package pdftex.def Info: image4.png  used on input line 454.
+(pdftex.def)             Requested size: 182.09486pt x 160.42735pt.
+ [16 <./fasorsindriehoek.png> <./image4.png>]
+<totaalvermogen.png, id=266, 487.8225pt x 178.41656pt>
+File: totaalvermogen.png Graphic file (type png)
+<use totaalvermogen.png>
+Package pdftex.def Info: totaalvermogen.png  used on input line 479.
+(pdftex.def)             Requested size: 364.19667pt x 133.20226pt.
+<2-wattmethode.png, id=267, 263.48438pt x 164.86594pt>
+File: 2-wattmethode.png Graphic file (type png)
+<use 2-wattmethode.png>
+Package pdftex.def Info: 2-wattmethode.png  used on input line 497.
+(pdftex.def)             Requested size: 273.14923pt x 170.92067pt.
+ [17 <./totaalvermogen.png>]
+<image5.png, id=273, 206.27063pt x 180.675pt>
+File: image5.png Graphic file (type png)
+<use image5.png>
+Package pdftex.def Info: image5.png  used on input line 514.
+(pdftex.def)             Requested size: 204.85846pt x 179.43945pt.
+<image6.png, id=274, 177.66376pt x 143.03438pt>
+File: image6.png Graphic file (type png)
+<use image6.png>
+Package pdftex.def Info: image6.png  used on input line 515.
+(pdftex.def)             Requested size: 204.85846pt x 164.93347pt.
+ [18 <./2-wattmethode.png> <./image5.png> <./image6.png>] [19] (Wisselstroom-formulariumMetUitleg-RubenRyckaert.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-11-06>
  ***********
-Package rerunfilecheck Info: File `new_document_template.out' has not changed.
-(rerunfilecheck)             Checksum: 9C30C3C141B3BFD7B26FC963ADE30DCB;101.
+Package rerunfilecheck Info: File `Wisselstroom-formulariumMetUitleg-RubenRyckaert.out' has not changed.
+(rerunfilecheck)             Checksum: 159F3283E9D2FF21D7BD3735273C3ACD;2463.
  ) 
 Here is how much of TeX's memory you used:
- 46229 strings out of 467871
- 1074458 string characters out of 5428442
- 1595230 words of memory out of 5000000
- 74404 multiletter control sequences out of 15000+600000
- 669352 words of font info for 92 fonts, out of 8000000 for 9000
+ 47833 strings out of 467871
+ 1104803 string characters out of 5428442
+ 1638640 words of memory out of 5000000
+ 75768 multiletter control sequences out of 15000+600000
+ 723659 words of font info for 190 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 113i,8n,122p,1212b,1061s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmri10.pfb>
-Output written on new_document_template.pdf (1 page, 139403 bytes).
+ 113i,13n,122p,1238b,1187s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb>
+Output written on Wisselstroom-formulariumMetUitleg-RubenRyckaert.pdf (19 pages, 889630 bytes).
 PDF statistics:
- 51 PDF objects out of 1000 (max. 8388607)
- 3 named destinations out of 1000 (max. 500000)
- 22549 words of extra memory for PDF output out of 24883 (max. 10000000)
+ 394 PDF objects out of 1000 (max. 8388607)
+ 48 named destinations out of 1000 (max. 500000)
+ 55501 words of extra memory for PDF output out of 61914 (max. 10000000)
 
