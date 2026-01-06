@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.12.16)  5 JAN 2026 22:28
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.12.16)  6 JAN 2026 12:32
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1122,41 +1122,41 @@ Overfull \hbox (18.97845pt too wide) in paragraph at lines 22--22
  []
 
 [3] [4] [5] [6]
-<vermogen.png, id=190, 594.72188pt x 220.57407pt>
+<vermogen.png, id=192, 594.72188pt x 220.57407pt>
 File: vermogen.png Graphic file (type png)
 <use vermogen.png>
 Package pdftex.def Info: vermogen.png  used on input line 145.
 (pdftex.def)             Requested size: 364.19667pt x 135.07501pt.
  [7]
-<stroomachtervoltage.png, id=197, 629.35126pt x 152.06813pt>
+<stroomachtervoltage.png, id=199, 629.35126pt x 152.06813pt>
 File: stroomachtervoltage.png Graphic file (type png)
 <use stroomachtervoltage.png>
 Package pdftex.def Info: stroomachtervoltage.png  used on input line 167.
 (pdftex.def)             Requested size: 364.19667pt x 88.00002pt.
  [8 <./vermogen.png>]
-<Vermogendriehoek.png, id=204, 423.08063pt x 181.42781pt>
+<Vermogendriehoek.png, id=206, 423.08063pt x 181.42781pt>
 File: Vermogendriehoek.png Graphic file (type png)
 <use Vermogendriehoek.png>
 Package pdftex.def Info: Vermogendriehoek.png  used on input line 185.
 (pdftex.def)             Requested size: 273.14923pt x 117.1377pt.
  [9 <./stroomachtervoltage.png> <./Vermogendriehoek.png>] [10]
-<resonatie.png, id=216, 462.97969pt x 277.035pt>
+<resonatie.png, id=218, 462.97969pt x 277.035pt>
 File: resonatie.png Graphic file (type png)
 <use resonatie.png>
 Package pdftex.def Info: resonatie.png  used on input line 272.
 (pdftex.def)             Requested size: 227.62206pt x 136.20486pt.
  [11 <./resonatie.png>]
-<3-fase.png, id=223, 713.66624pt x 243.15843pt>
+<3-fase.png, id=225, 713.66624pt x 243.15843pt>
 File: 3-fase.png Graphic file (type png)
 <use 3-fase.png>
 Package pdftex.def Info: 3-fase.png  used on input line 314.
 (pdftex.def)             Requested size: 364.19667pt x 124.08707pt.
-<circuit3-fase.png, id=224, 578.91281pt x 239.39438pt>
+<circuit3-fase.png, id=226, 578.91281pt x 239.39438pt>
 File: circuit3-fase.png Graphic file (type png)
 <use circuit3-fase.png>
 Package pdftex.def Info: circuit3-fase.png  used on input line 321.
 (pdftex.def)             Requested size: 204.85846pt x 84.71346pt.
-<fasors3fase.png, id=225, 277.035pt x 208.52907pt>
+<fasors3fase.png, id=227, 277.035pt x 208.52907pt>
 File: fasors3fase.png Graphic file (type png)
 <use fasors3fase.png>
 Package pdftex.def Info: fasors3fase.png  used on input line 322.
@@ -1166,7 +1166,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 328--331
 
  []
 
-<ster.png, id=233, 593.96906pt x 231.86626pt>
+<ster.png, id=235, 593.96906pt x 231.86626pt>
 File: ster.png Graphic file (type png)
 <use ster.png>
 Package pdftex.def Info: ster.png  used on input line 339.
@@ -1176,7 +1176,7 @@ LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 38
  (C:\Program Files\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-<fasors.png, id=244, 268.75406pt x 267.24844pt>
+<fasors.png, id=246, 268.75406pt x 267.24844pt>
 File: fasors.png Graphic file (type png)
 <use fasors.png>
 Package pdftex.def Info: fasors.png  used on input line 385.
@@ -1186,64 +1186,70 @@ Underfull \hbox (badness 10000) in paragraph at lines 408--410
 
  []
 
-<driehoek 3fasesyteem.png, id=251, 574.39594pt x 238.64156pt>
+<driehoek 3fasesyteem.png, id=253, 574.39594pt x 238.64156pt>
 File: driehoek 3fasesyteem.png Graphic file (type png)
 <use driehoek 3fasesyteem.png>
 Package pdftex.def Info: driehoek 3fasesyteem.png  used on input line 424.
 (pdftex.def)             Requested size: 455.24411pt x 189.14378pt.
 [15 <./driehoek 3fasesyteem.png>]
-<fasorsindriehoek.png, id=257, 256.70906pt x 222.8325pt>
+<fasorsindriehoek.png, id=259, 256.70906pt x 222.8325pt>
 File: fasorsindriehoek.png Graphic file (type png)
 <use fasorsindriehoek.png>
 Package pdftex.def Info: fasorsindriehoek.png  used on input line 453.
 (pdftex.def)             Requested size: 182.09486pt x 158.06596pt.
-<image4.png, id=258, 158.09062pt x 139.27031pt>
+<image4.png, id=260, 158.09062pt x 139.27031pt>
 File: image4.png Graphic file (type png)
 <use image4.png>
 Package pdftex.def Info: image4.png  used on input line 454.
 (pdftex.def)             Requested size: 182.09486pt x 160.42735pt.
  [16 <./fasorsindriehoek.png> <./image4.png>]
-<totaalvermogen.png, id=266, 487.8225pt x 178.41656pt>
+<totaalvermogen.png, id=268, 487.8225pt x 178.41656pt>
 File: totaalvermogen.png Graphic file (type png)
 <use totaalvermogen.png>
 Package pdftex.def Info: totaalvermogen.png  used on input line 479.
 (pdftex.def)             Requested size: 364.19667pt x 133.20226pt.
-<2-wattmethode.png, id=267, 263.48438pt x 164.86594pt>
+<2-wattmethode.png, id=269, 263.48438pt x 164.86594pt>
 File: 2-wattmethode.png Graphic file (type png)
 <use 2-wattmethode.png>
 Package pdftex.def Info: 2-wattmethode.png  used on input line 497.
 (pdftex.def)             Requested size: 273.14923pt x 170.92067pt.
  [17 <./totaalvermogen.png>]
-<image5.png, id=273, 206.27063pt x 180.675pt>
+<image5.png, id=275, 206.27063pt x 180.675pt>
 File: image5.png Graphic file (type png)
 <use image5.png>
 Package pdftex.def Info: image5.png  used on input line 514.
 (pdftex.def)             Requested size: 204.85846pt x 179.43945pt.
-<image6.png, id=274, 177.66376pt x 143.03438pt>
+<image6.png, id=276, 177.66376pt x 143.03438pt>
 File: image6.png Graphic file (type png)
 <use image6.png>
 Package pdftex.def Info: image6.png  used on input line 515.
 (pdftex.def)             Requested size: 204.85846pt x 164.93347pt.
- [18 <./2-wattmethode.png> <./image5.png> <./image6.png>] [19] (Wisselstroom-formulariumMetUitleg-RubenRyckaert.aux)
+ [18 <./2-wattmethode.png> <./image5.png> <./image6.png>]
+<vboefening 3fase.png, id=284, 534.49687pt x 191.21437pt>
+File: vboefening 3fase.png Graphic file (type png)
+<use vboefening 3fase.png>
+Package pdftex.def Info: vboefening 3fase.png  used on input line 552.
+(pdftex.def)             Requested size: 364.19667pt x 130.2954pt.
+ [19] [20 <./vboefening 3fase.png>] (Wisselstroom-formulariumMetUitleg-RubenRyckaert.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-11-06>
  ***********
 Package rerunfilecheck Info: File `Wisselstroom-formulariumMetUitleg-RubenRyckaert.out' has not changed.
-(rerunfilecheck)             Checksum: 159F3283E9D2FF21D7BD3735273C3ACD;2463.
+(rerunfilecheck)             Checksum: CE026749CB882F6122C50C09DEADFD5E;2324.
  ) 
 Here is how much of TeX's memory you used:
- 47833 strings out of 467871
- 1104803 string characters out of 5428442
- 1638640 words of memory out of 5000000
- 75768 multiletter control sequences out of 15000+600000
- 723659 words of font info for 190 fonts, out of 8000000 for 9000
+ 47854 strings out of 467871
+ 1105168 string characters out of 5428442
+ 1638141 words of memory out of 5000000
+ 75779 multiletter control sequences out of 15000+600000
+ 724038 words of font info for 194 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  113i,13n,122p,1238b,1187s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on Wisselstroom-formulariumMetUitleg-RubenRyckaert.pdf (19 pages, 889630 bytes).
+Output written on Wisselstroom-formulariumMetUitleg-RubenRyckaert.pdf (20 pages, 1002860 bytes).
 PDF statistics:
- 394 PDF objects out of 1000 (max. 8388607)
- 48 named destinations out of 1000 (max. 500000)
- 55501 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 404 PDF objects out of 1000 (max. 8388607)
+ 50 named destinations out of 1000 (max. 500000)
+ 55506 words of extra memory for PDF output out of 61914 (max. 10000000)
 
