@@ -9,6 +9,7 @@
 \usepackage{pdfpages}
 \usepackage{float}
 \usepackage{placeins}
+\usepackage[american]{circuitikz}
 
 % Add angles library for TikZ angle pictures
 \usetikzlibrary{angles}
@@ -1052,6 +1053,167 @@ $$\boxed{|\mathbf{S}_{\text{totaal}}| = \sqrt{7399^2 + 883.8^2} = \sqrt{54745201
 
 
 \end{oefenblok}
+
+
+\begin{figure}[ht]
+    \centering
+      \includegraphics[width=0.8\textwidth]{.png}
+      \caption{Onevenwichtige Delta-belasting met twee-wattmetermethode.}
+      \label{fig:.png}
+\end{figure}
+
+\begin{oefenblok}[title=Oefening: Onevenwichtige Delta-belasting met twee-wattmetermethode]
+
+\textbf{Gegeven:}
+\begin{itemize}
+    \item Gebalanceerde driefasenspanning: lijnspanning $V_L = 208\text{ V}$
+    \item Referentie: $\mathbf{V}_{AB} = 208 \angle 0^\circ \text{ V}$
+    \item $\mathbf{V}_{BC} = 208 \angle -120^\circ \text{ V}$, $\mathbf{V}_{CA} = 208 \angle 120^\circ \text{ V}$
+    \item Weerstandsbelasting (delta-geschakeld):
+    \begin{itemize}
+        \item $R_{AB} = 30\,\Omega$
+        \item $R_{BC} = 60\,\Omega$
+        \item $R_{CA} = 90\,\Omega$
+    \end{itemize}
+\end{itemize}
+
+\noindent\textbf{1) Bepaal de lijnstromen}
+
+Bereken eerst de fase-stromen (stromen door de weerstanden) met Ohm's Wet ($I = V/R$):
+
+$$\mathbf{I}_{AB} = \frac{\mathbf{V}_{AB}}{R_{AB}} = \frac{208 \angle 0^\circ}{30} = \mathbf{6.933 \angle 0^\circ \text{ A}}$$
+
+$$\mathbf{I}_{BC} = \frac{\mathbf{V}_{BC}}{R_{BC}} = \frac{208 \angle -120^\circ}{60} = \mathbf{3.467 \angle -120^\circ \text{ A}}$$
+
+$$\mathbf{I}_{CA} = \frac{\mathbf{V}_{CA}}{R_{CA}} = \frac{208 \angle 120^\circ}{90} = \mathbf{2.311 \angle 120^\circ \text{ A}}$$
+
+Pas vervolgens de stroomwet van Kirchhoff toe aan elk knooppunt:
+
+\textit{Lijnstroom $\mathbf{I}_A$ (Knooppunt A):}
+$$\mathbf{I}_A = \mathbf{I}_{AB} - \mathbf{I}_{CA} = (6.933) - (2.311 \angle 120^\circ)$$
+
+$$= 6.933 - (-1.156 + j2.001) = 8.089 - j2.001 = \boxed{\mathbf{8.33 \angle -13.9^\circ \text{ A}}}$$
+
+\textit{Lijnstroom $\mathbf{I}_B$ (Knooppunt B):}
+$$\mathbf{I}_B = \mathbf{I}_{BC} - \mathbf{I}_{AB} = (3.467 \angle -120^\circ) - 6.933$$
+
+$$= (-1.734 - j3.002) - 6.933 = -8.667 - j3.002 = \boxed{\mathbf{9.17 \angle -160.9^\circ \text{ A}}}$$
+
+\textit{Lijnstroom $\mathbf{I}_C$ (Knooppunt C):}
+$$\mathbf{I}_C = \mathbf{I}_{CA} - \mathbf{I}_{BC} = (2.311 \angle 120^\circ) - (3.467 \angle -120^\circ)$$
+
+$$= (-1.156 + j2.001) - (-1.734 - j3.002) = 0.578 + j5.003 = \boxed{\mathbf{5.04 \angle 83.4^\circ \text{ A}}}$$
+
+\noindent\textbf{2) Bepaal het totale actief vermogen}
+
+Omdat de belastingen zuivere weerstanden zijn, gebruiken we $P = V^2 / R$ en tellen op:
+
+$$P_{AB} = \frac{|\mathbf{V}_{AB}|^2}{R_{AB}} = \frac{208^2}{30} = \mathbf{1442.1\text{ W}}$$
+
+$$P_{BC} = \frac{|\mathbf{V}_{BC}|^2}{R_{BC}} = \frac{208^2}{60} = \mathbf{721.1\text{ W}}$$
+
+$$P_{CA} = \frac{|\mathbf{V}_{CA}|^2}{R_{CA}} = \frac{208^2}{90} = \mathbf{480.7\text{ W}}$$
+
+$$\boxed{P_{\text{totaal}} = 1442.1 + 721.1 + 480.7 = \mathbf{2643.9\text{ W}} \text{ (of } 2.64\text{ kW})}$$
+
+\noindent\textbf{3) Hoe sluit je de twee-wattmetermethode aan?}
+
+Voor het meten van totaal vermogen in een driedraadsysteem gebruiken we twee wattmeters. We kiezen lijn B als referentielijn.
+
+\textit{Wattmeter 1 ($W_1$):}
+\begin{itemize}
+    \item Stroomspoel: in serie met lijn A
+    \item Spanningsspoel: tussen lijn A en lijn B (dus spanning $\mathbf{V}_{AB}$)
+\end{itemize}
+
+\textit{Wattmeter 2 ($W_2$):}
+\begin{itemize}
+    \item Stroomspoel: in serie met lijn C
+    \item Spanningsspoel: tussen lijn C en lijn B (dus spanning $\mathbf{V}_{CB}$, niet $\mathbf{V}_{BC}$)
+\end{itemize}
+
+\noindent\textbf{4) Wat lees je af op $P_1$ en $P_2$?}
+
+We gebruiken de formule $P = |\mathbf{V}| |\mathbf{I}| \cos(\phi)$ waarbij $\phi$ het hoeksverschil is tussen spanning en stroom.
+
+\textit{Lezing op $P_1$:}
+
+Spanning: $\mathbf{V}_{AB} = 208 \angle 0^\circ$, Stroom: $\mathbf{I}_A = 8.33 \angle -13.9^\circ$
+
+Hoeksverschil: $\phi_1 = 0^\circ - (-13.9^\circ) = 13.9^\circ$
+
+$$P_1 = 208 \times 8.33 \times \cos(13.9^\circ) = 1732.6 \times 0.9707 = \boxed{\mathbf{1681.9\text{ W}}}$$
+
+\textit{Lezing op $P_2$:}
+
+Spanning: $\mathbf{V}_{CB} = -\mathbf{V}_{BC} = -208 \angle -120^\circ = 208 \angle 60^\circ$
+
+Stroom: $\mathbf{I}_C = 5.04 \angle 83.4^\circ$
+
+Hoeksverschil: $\phi_2 = 60^\circ - 83.4^\circ = -23.4^\circ$
+
+$$P_2 = 208 \times 5.04 \times \cos(-23.4^\circ) = 1048.3 \times 0.9177 = \boxed{\mathbf{962.1\text{ W}}}$$
+
+\noindent\textbf{5) Totaal actief vermogen van de twee-wattmetermethode}
+
+We sommeren de twee aflezingen:
+
+$$P_{\text{totaal}} = P_1 + P_2 = 1681.9 + 962.1 = \boxed{\mathbf{2644\text{ W}}}$$
+
+Dit klopt uitstekend met het resultaat uit vraag 2 (2643.9 W). Het kleine verschil ontstaat door afrondingsfouten.
+
+\end{oefenblok}
+
+\begin{figure}[H]
+    \centering
+    \begin{circuitikz}[scale=1]
+        % Defined coordinates for Lines A, B, C
+        \coordinate (A) at (0, 4);
+        \coordinate (B) at (0, 2);
+        \coordinate (C) at (0, 0);
+
+        % Load Coordinates (Delta)
+        \coordinate (LoadA) at (6, 4);
+        \coordinate (LoadB) at (6, 2);
+        \coordinate (LoadC) at (6, 0);
+
+        % Wattmeter 1 (Line A)
+        \draw (A) node[left] {Line A} 
+            to[short, i=$I_A$] (1, 4) 
+            to[rmeter, t=W, l=$W_1$] (3, 4) -- (LoadA);
+        
+        % Wattmeter 1 Voltage Coil connection (A to B)
+        \draw (2.5, 4) to[short, *-] (2.5, 3) to[R, l=$V_{coil}$] (2.5, 2.5) to[short, -*] (2.5, 2);
+
+        % Line B (Common Reference)
+        \draw (B) node[left] {Line B} 
+            to[short, i=$I_B$] (LoadB);
+
+        % Wattmeter 2 (Line C)
+        \draw (C) node[left] {Line C} 
+            to[short, i=$I_C$] (1, 0) 
+            to[rmeter, t=W, l=$W_2$] (3, 0) -- (LoadC);
+
+        % Wattmeter 2 Voltage Coil connection (C to B)
+        \draw (2.5, 0) to[short, *-] (2.5, 1) to[R, l=$V_{coil}$] (2.5, 1.5) to[short, -*] (2.5, 2);
+
+        % Delta Load
+        \draw (LoadA) to[R, l=$30\Omega$] (LoadB);
+        \draw (LoadB) to[R, l=$60\Omega$] (LoadC);
+        \draw (LoadC) to[R, l=$90\Omega$] (LoadA);
+        
+        % Labels
+        \node at (LoadA) [above right] {A};
+        \node at (LoadB) [right] {B};
+        \node at (LoadC) [below right] {C};
+
+    \end{circuitikz}
+    \includegraphics[width=0.3\textwidth]{image7.png}
+    \caption{Twee-wattmetermethode aansluitschema voor onevenwichtige delta-belasting.}
+    \label{fig:wattmeter-delta-circuit}
+\end{figure}
+
+B-line is common reference.
 
 
 \section{Conclusie}
