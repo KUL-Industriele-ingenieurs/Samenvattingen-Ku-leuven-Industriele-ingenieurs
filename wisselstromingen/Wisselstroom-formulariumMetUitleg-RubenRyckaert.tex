@@ -517,9 +517,10 @@ $V_{32}$ ijlt achter op $V_{3}$ met 30 graden
       \label{fig:image5.png}
 \end{figure}
 
-\frm{Totale vermogen in 2-wattmethode}{P_{totaal} = \sqrt{3} V_L \cdot I_L \cos{\theta}
-}{Met $P_{totaal}$ het totale actieve vermogen in Watt, $V_L$ de lijnspanning in Volt,
-$I_L$ de lijnstroom in Ampère en $\theta$ de gemiddelde fasehoek tussen spanning en stroom van de belastingen in radialen.}
+\frm{Totale vermogen in 2-wattmethode}{P_{totaal} = 3V_f \cdot I_f \cos{\theta}  =\sqrt{3} V_L \cdot I_L \cos{\theta}
+}{Met $P_{totaal}$ het totale actieve vermogen in Watt, $V_L$ de lijnspanning in Volt, 
+$I_f$ de fasestroom in Ampère, $V_f$ de fasespanning in Volt, 
+$I_L$ de lijnstroom in Ampère en $\theta$ de hoek tussen de spanning en stroom}
 
 Het reactief vermogen kan je ook berekenen met de 2-wattmethode.
 \[Q_{totaal} = P1 - P2\]
@@ -527,27 +528,50 @@ Het reactief vermogen kan je ook berekenen met de 2-wattmethode.
 \[Q_{totaal} = V_L \cdot I_L [\cos(30^\circ + \phi_1) - \cos(-30^\circ + \phi_3)]\] 
 \[Q_{totaal} = \sqrt{3} V_L \cdot I_L \sin{\theta}\]
 
-\frm{reactief vermogen in 2-wattmethode}{Q_{totaal} = \sqrt{3}(P_2 - P_1)
-}{Met $Q_{totaal}$ het totale reactieve vermogen in Volt-Ampère reactief (VAR), $P_1$ het vermogen gemeten door wattmeter 1 in Watt en $P_2$ het vermogen gemeten door wattmeter 2 in Watt.}
+\frm{reactief vermogen in 2-wattmethode}{Q_{totaal} = \sqrt{3}(P_2 - P_1 = \sqrt{3} V_L \cdot I_L \sin{\theta})
+}{Met $Q_{totaal}$ het totale reactieve vermogen in Volt-Ampère reactief 
+(VAR), $P_1$ het vermogen gemeten door wattmeter 1 in Watt en $P_2$ het vermogen gemeten door wattmeter 2 in Watt.}
 
 
 \frm{fasehoek}{\theta = tan^{-1}\left(\frac{Q_{totaal}}{P_{totaal}}\right)= tan^{-1}\left(\frac{\sqrt{3}(P_2 - P_1)}{P_1 + P_2}\right)
 }
-{Met $\theta$ de gemiddelde fasehoek tussen spanning en stroom van de belastingen in radialen, 
+{Met $\theta$ de gemiddelde fasehoek tussen spanning en stroom van de belastingen, 
 $Q_{totaal}$ het totale reactieve vermogen in Volt-Ampère reactief (VAR) en $P_{totaal}$ het totale actieve vermogen in Watt.}
 
+Het schijnbaar vermogen wordt berekend als volgt:
+
+$S_{totaal} = P_{totaal} + j Q_{totaal}$
+
+\frm{schijnbaar vermogen in 2-wattmethode}{S = 3 V_f \cdot I_f = 3\frac{V_L^2}{Z} = 3 I_L^2 Z}
+{Met $S$ het schijnbaar vermogen in Volt-Ampère (VA), $V_L$ de lijnspanning in Volt, 
+$I_f$ de fasestroom in Ampère, $I_L$ de lijnstroom in Ampère en $Z$ de impedantie van de belasting in $\Omega$ .}
+
+
+\begin{figure}[ht]
+  \centering
+    \includegraphics[width=0.8\textwidth]{vboefening 3fase.png}
+    \caption{Ster configuratie met gelijk belastingen.}
+      \label{fig:vboefening 3fase.png}
+    \end{figure}
+    \FloatBarrier
+
+    \[V_l = 208 V\]
+    \[V_f = \frac{V_l}{\sqrt{3}} = \frac{208 V}{\sqrt{3}} = 120.1 V\]
+    \[I_f = \frac{V_f}{Z_L} = \frac{120.1 V}{30<45^\circ \Omega }\]
+    rekenmachine in r<theta modus
+    \[I_f = 4.0 < -45^\circ A\]
+    \[P = 3 V_f I_f \cos \phi = 3 \cdot 120.1 V \cdot 4.0 A \cdot \cos 45^\circ = 1021.6 W\]
+    \[Q = 3 V_f I_f \sin \phi = 3 \cdot 120.1 V \cdot 4.0 A \cdot \sin 45^\circ = 1021.6 VAR\]
+    \[S = P + jQ = 1021.6 W + j 1021.6 VAR = 1445.6 VA\]
 
 
 
+\section{Conclusie}
+Dit document bevat meeste relevante formules maar
+je moet oefeningen maken om ze goed te begrijpen.
 
-
-
-
-
-
-
-\section{Hoofdstuk 5: Elektrische veiligheid}
-
+Veel succes met de examens!
+- Ruben Ryckaert
 
 
 

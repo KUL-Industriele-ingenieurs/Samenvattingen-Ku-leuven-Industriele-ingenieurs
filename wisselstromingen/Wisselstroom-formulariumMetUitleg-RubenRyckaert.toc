@@ -12,4 +12,4 @@
 \contentsline {subsection}{\numberline {5.2}Driehoekconfiguratie}{15}{subsection.5.2}%
 \contentsline {subsection}{\numberline {5.3}3-fase vermogen}{16}{subsection.5.3}%
 \contentsline {subsection}{\numberline {5.4}2-wattmethode}{17}{subsection.5.4}%
-\contentsline {section}{\numberline {6}Hoofdstuk 5: Elektrische veiligheid}{19}{section.6}%
+\contentsline {section}{\numberline {6}Conclusie}{20}{section.6}%
