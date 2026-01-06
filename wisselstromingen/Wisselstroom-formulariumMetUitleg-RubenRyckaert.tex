@@ -383,7 +383,7 @@ met $$MN = V_{f1}\cdot \cos(30^\circ)$$
 \[V_{L1} = 2 V_{f1} \cdot \cos(30^\circ) = \sqrt{3} V_{f1}\]
 \newline
 De 30 graden komt door het verschil tussen fasespanning $V_{f1}<90^\circ$ en $V_{f2}<-30^\circ$. 
-met $V_{f1}$-$V_{f2}$ =>120°. $V_L$ is dus 120° gedraait.
+met $V_{f1}$-$V_{f2}$ =>$120^\circ$. $V_L$ is dus $120^\circ$ gedraait.
 \end{minipage}
 \begin{minipage}{0.45\textwidth}
 \centering
@@ -542,10 +542,10 @@ $$\vec{Z}_{\text{totaal}} = \vec{Z}_{\text{lijn}} + \vec{Z}_Y = (1 + j2) + (4 + 
 
 \begin{align*}
     |\vec{Z}| &= \sqrt{5^2 + 6^2} = \sqrt{61} \approx 7.81 \text{ } \Omega \\
-    \theta &= \tan^{-1}\left(\frac{6}{5}\right) \approx 50.19°
+    \theta &= \tan^{-1}\left(\frac{6}{5}\right) \approx 50.19^\circ
 \end{align*}
 
-$$\vec{Z}_{\text{totaal}} \approx 7.81\angle{50.19°} \text{ } \Omega$$
+$$\vec{Z}_{\text{totaal}} \approx 7.81\angle{50.19^\circ} \text{ } \Omega$$
 
 \textbf{Stap 3: Bereken lijnstroom $\vec{I}_a$}
 
@@ -645,9 +645,9 @@ $$\vec{Z}_{totaal} = \vec{Z}_l + \vec{Z}_p = 2 + (5.723 - j0.215) = 7.723 - j0.2
 
 Magnitude: $\sqrt{7.723^2 + 0.215^2} \approx 7.726$
 
-Hoek: $\tan^{-1}\left(\frac{-0.215}{7.723}\right) \approx -1.59°$
+Hoek: $\tan^{-1}\left(\frac{-0.215}{7.723}\right) \approx -1.59^\circ$
 
-$$\vec{Z}_{totaal} = 7.726\angle{-1.59°} \text{ } \Omega$$
+$$\vec{Z}_{totaal} = 7.726\angle{-1.59^\circ} \text{ } \Omega$$
 
 \textbf{Bereken $\vec{I}_a$ met wet van Ohm:}
 
@@ -669,7 +669,7 @@ $$\vec{I}_c = 32.88\angle{(-28.41\circ + 120\circ)} = 32.88\angle{91.59\circ} \t
 \begin{enumerate}
     \item Zet $\Delta$-belasting om naar Y-belasting (deel door 3)
     \item Combineer parallelle belastingen (product over som)
-    \item Zet bronlijnspanning om naar fasespanning (deel door $\sqrt{3}$, verschuif $-30°$)
+    \item Zet bronlijnspanning om naar fasespanning (deel door $\sqrt{3}$, verschuif $-30^\circ$)
     \item Tel lijnimpedantie op
     \item Gebruik wet van Ohm
 \end{enumerate}
@@ -863,8 +863,8 @@ Gegeven: $8 \text{ kW}$ bij $pf_3 = 0.7071 = \frac{1}{\sqrt{2}}$ (voorijlend)
 Actief vermogen:
 $$P_3 = 8 \text{ kW}$$
 
-De arbeidsfactor $0.7071$ komt overeen met $45°$, dus $\tan(45°) = 1$:
-$$Q_3 = P_3 \times \tan(45°) = 8 \times 1 = 8 \text{ kVAR}$$
+De arbeidsfactor $0.7071$ komt overeen met $45^\circ$, dus $\tan(45^\circ) = 1$:
+$$Q_3 = P_3 \times \tan(45^\circ) = 8 \times 1 = 8 \text{ kVAR}$$
 
 \textbf{Let op}: Omdat de arbeidsfactor voorijlend is, is het reactieve vermogen negatief.
 
@@ -911,6 +911,147 @@ Omdat het reactieve vermogen ($Q_2$) positief is, is de arbeidsfactor naijlend.
 
 
 \section{Examenoefeningen}
+
+\subsection{Phasors en impedanties}
+
+\subsection{Vermogen berekeningen}
+
+
+\subsection{AC circuit analyse}
+
+
+\subsection{3-fase systemen}
+
+\subsection{3-fase vermogen}
+
+
+\begin{figure}[ht]
+    \centering
+      \includegraphics[width=0.4\textwidth]{examen1.png}
+      \caption{}
+      \label{fig:examen1.png}
+\end{figure}
+
+\textbf{Opgave: Ongebalanceerde Delta-belasting met twee-wattmetermethode}
+
+Een ongebalanceerde Delta-verbonden belasting wordt gevoed door een evenwichtige bron met positieve fasevolgorde.
+
+\textbf{Gegeven:}
+\begin{itemize}
+    \item Bronspanning: $\mathbf{V}_{ab} = 208\angle{0^\circ} \text{ V}$ (positieve fasevolgorde $abc$)
+    \item Belastingsimpedanties:
+    \begin{itemize}
+        \item $\mathbf{Z}_{AB} = 20 \, \Omega$
+        \item $\mathbf{Z}_{BC} = 10 - j10 \, \Omega$
+        \item $\mathbf{Z}_{CA} = 12 + j5 \, \Omega$
+    \end{itemize}
+\end{itemize}
+
+\textbf{Gevraagd:}
+\begin{enumerate}
+    \item (a) Bepaal de aflezingen van beide wattmeters in de twee-wattmetermethode
+    \item (b) Bereken het totale schijnbare vermogen dat door de belasting wordt opgenomen
+\end{enumerate}
+
+\begin{oefenblok}
+
+\textbf{Oefening: Ongebalanceerde Delta-belasting analyse}
+
+\textbf{Gegeven bronspanningen} (positieve fasevolgorde):
+\begin{align*}
+\mathbf{V}_{ab} &= 208\angle{0^\circ} \text{ V} \\
+\mathbf{V}_{bc} &= 208\angle{-120^\circ} \text{ V} \\
+\mathbf{V}_{ca} &= 208\angle{120^\circ} \text{ V}
+\end{align*}
+
+\textbf{Stap 1: Bereken de fasestromen in de Delta-belasting}
+
+Met behulp van de wet van Ohm berekenen we de stromen in elk been van de Delta ($\mathbf{I} = \mathbf{V}/\mathbf{Z}$).
+
+\textbf{Stroom AB:}
+$$\mathbf{I}_{AB} = \frac{\mathbf{V}_{ab}}{\mathbf{Z}_{AB}} = \frac{208\angle{0^\circ}}{20} = 10.4\angle{0^\circ} \text{ A}$$
+
+\textbf{Stroom BC:}
+Eerst zetten we $\mathbf{Z}_{BC} = 10 - j10$ om naar poolcoördinaten:
+$$|\mathbf{Z}_{BC}| = \sqrt{10^2 + 10^2} = 14.14 \text{ } \Omega, \quad \theta = \tan^{-1}(-1) = -45^\circ$$
+$$\mathbf{Z}_{BC} = 14.14\angle{-45^\circ} \text{ } \Omega$$
+
+$$\mathbf{I}_{BC} = \frac{\mathbf{V}_{bc}}{\mathbf{Z}_{BC}} = \frac{208\angle{-120^\circ}}{14.14\angle{-45^\circ}} = 14.71\angle{-75^\circ} \text{ A}$$
+
+Gewoon in je rekenmachine zetten in r<theta modus.
+
+In rechthoekige vorm: $3.81 - j14.21 \text{ A}$
+
+\textbf{Stroom CA:}
+Eerst zetten we $\mathbf{Z}_{CA} = 12 + j5$ om naar poolcoördinaten:
+$$|\mathbf{Z}_{CA}| = \sqrt{12^2 + 5^2} = 13 \text{ } \Omega, \quad \theta = \tan^{-1}(5/12) = 22.62^\circ$$
+$$\mathbf{Z}_{CA} = 13\angle{22.62^\circ} \text{ } \Omega$$
+
+$$\mathbf{I}_{CA} = \frac{\mathbf{V}_{ca}}{\mathbf{Z}_{CA}} = \frac{208\angle{120^\circ}}{13\angle{22.62^\circ}} = 16\angle{97.38^\circ} \text{ A}$$
+
+In rechthoekige vorm: $-2.06 + j15.87 \text{ A}$
+
+\textbf{Stap 2: Bereken de lijnstromen met Kirchhoff}
+
+Met de knooppuntswet (KCL):
+
+\textbf{Lijnstroom $\mathbf{I}_a$:}
+$$\mathbf{I}_a = \mathbf{I}_{AB} - \mathbf{I}_{CA} = 10.4 - (-2.06 + j15.87) = 12.46 - j15.87 \text{ A}$$
+
+In poolcoördinaten:
+$$\mathbf{I}_a = 20.17\angle{-51.87^\circ} \text{ A}$$
+
+\textbf{Lijnstroom $\mathbf{I}_c$:}
+$$\mathbf{I}_c = \mathbf{I}_{CA} - \mathbf{I}_{BC} = (-2.06 + j15.87) - (3.81 - j14.21) = -5.87 + j30.08 \text{ A}$$
+
+In poolcoördinaten (2e kwadrant):
+$$\mathbf{I}_c = 30.65\angle{101.04^\circ} \text{ A}$$
+
+\textbf{Stap 3: Bepaal de wattmeteraflezing}
+
+\textbf{Wattmeter 1 ($W_1$):} Meet stroom $\mathbf{I}_a$ en spanning $\mathbf{V}_{ab}$
+$$P_1 = |\mathbf{V}_{ab}| \cdot |\mathbf{I}_a| \cdot \cos(0^\circ - (-51.87^\circ)) = 208 \times 20.17 \times \cos(51.87^\circ)$$
+$$\boxed{P_1 = 208 \times 20.17 \times 0.6175 = \mathbf{2590.6 \text{ W}}}$$
+
+\textbf{Wattmeter 2 ($W_2$):} Meet stroom $\mathbf{I}_c$ en spanning $\mathbf{V}_{cb}$
+
+Opmerking: $\mathbf{V}_{cb} = -\mathbf{V}_{bc} = 208\angle{60^\circ}$
+
+$$P_2 = |\mathbf{V}_{cb}| \cdot |\mathbf{I}_c| \cdot \cos(60^\circ - 101.04^\circ) = 208 \times 30.65 \times \cos(-41.04^\circ)$$
+$$\boxed{P_2 = 208 \times 30.65 \times 0.7543 = \mathbf{4808.6 \text{ W}}}$$
+
+\textbf{Onderdeel (a): Wattmeteraflezing}
+\begin{itemize}
+    \item $W_1 = 2590.6 \text{ W}$ (of ongeveer 2.59 kW)
+    \item $W_2 = 4808.6 \text{ W}$ (of ongeveer 4.81 kW)
+    \item Totaal actief vermogen: $P_{\text{totaal}} = W_1 + W_2 = 7399.2 \text{ W}$
+\end{itemize}
+
+\textbf{Stap 4: Bereken het totale schijnbare vermogen}
+
+We berekenen het complex vermogen van elke belasting afzonderlijk:
+
+\textbf{Belasting AB:}
+$$\boxed{\mathbf{S}_{AB} = |\mathbf{I}_{AB}|^2 \times \mathbf{Z}_{AB} = 10.4^2 \times 20 = 2163.2 \text{ VA}}$$
+
+\textbf{Belasting BC:}
+$$\mathbf{S}_{BC} = |\mathbf{I}_{BC}|^2 \times \mathbf{Z}_{BC} = 14.71^2 \times (10 - j10) = 216.38 \times (10 - j10)$$
+$$\boxed{\mathbf{S}_{BC} = 2163.8 - j2163.8 \text{ VA}}$$
+
+\textbf{Belasting CA:}
+$$\mathbf{S}_{CA} = |\mathbf{I}_{CA}|^2 \times \mathbf{Z}_{CA} = 16^2 \times (12 + j5) = 256 \times (12 + j5)$$
+$$\boxed{\mathbf{S}_{CA} = 3072 + j1280 \text{ VA}}$$
+\textbf{Totaal complex vermogen:}
+$$\mathbf{S}_{\text{totaal}} = (2163.2 + 2163.8 + 3072) + j(0 - 2163.8 + 1280)$$
+$$\mathbf{S}_{\text{totaal}} = 7399 - j883.8 \text{ VA}$$
+
+Controle: Het reëel deel (7399 W) komt overeen met $W_1 + W_2 = 7399.2$ W 
+
+\textbf{Totaal schijnbaar vermogen:}
+$$\boxed{|\mathbf{S}_{\text{totaal}}| = \sqrt{7399^2 + 883.8^2} = \sqrt{54745201 + 781102} = \mathbf{7451 \text{ VA}}}$$
+
+
+\end{oefenblok}
 
 
 \section{Conclusie}
