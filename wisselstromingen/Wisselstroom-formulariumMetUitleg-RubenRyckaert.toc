@@ -1,15 +1,17 @@
 \babel@toc {dutch}{}\relax 
-\contentsline {section}{\numberline {1}Inleiding}{4}{section.1}%
-\contentsline {section}{\numberline {2}Hoofdstuk 1: Basis wisselstroom theorie}{4}{section.2}%
-\contentsline {subsection}{\numberline {2.1}fasors}{5}{subsection.2.1}%
-\contentsline {section}{\numberline {3}Hoofdstuk 2: Wisselstroom ketens}{6}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Vermogen in wisselstroomkringen}{7}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Resonantie}{10}{subsection.3.2}%
-\contentsline {section}{\numberline {4}Hoofdstuk 3: Elektrische netwerken}{10}{section.4}%
-\contentsline {section}{\numberline {5}Hoofdstuk 4: Driefasige wisselstromen}{11}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Sterconfiguratie}{12}{subsection.5.1}%
-\contentsline {subsubsection}{\numberline {5.1.1}Relatie tussen stromen en spanningen}{13}{subsubsection.5.1.1}%
-\contentsline {subsection}{\numberline {5.2}Driehoekconfiguratie}{14}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}3-fase vermogen}{15}{subsection.5.3}%
-\contentsline {subsection}{\numberline {5.4}2-wattmethode}{16}{subsection.5.4}%
-\contentsline {section}{\numberline {6}Conclusie}{19}{section.6}%
+\contentsline {section}{\numberline {1}Inleiding}{5}{section.1}%
+\contentsline {section}{\numberline {2}Hoofdstuk 1: Basis wisselstroom theorie}{5}{section.2}%
+\contentsline {subsection}{\numberline {2.1}fasors}{6}{subsection.2.1}%
+\contentsline {section}{\numberline {3}Hoofdstuk 2: Wisselstroom ketens}{7}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Vermogen in wisselstroomkringen}{8}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Resonantie}{11}{subsection.3.2}%
+\contentsline {section}{\numberline {4}Hoofdstuk 3: Elektrische netwerken}{11}{section.4}%
+\contentsline {section}{\numberline {5}Hoofdstuk 4: Driefasige wisselstromen}{12}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Sterconfiguratie}{13}{subsection.5.1}%
+\contentsline {subsubsection}{\numberline {5.1.1}Relatie tussen stromen en spanningen}{14}{subsubsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.2}Driehoekconfiguratie}{15}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}omzetting ster- naar driehoekconfiguratie}{16}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}3-fase vermogen}{21}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}2-wattmethode}{22}{subsection.5.5}%
+\contentsline {section}{\numberline {6}Examenoefeningen}{26}{section.6}%
+\contentsline {section}{\numberline {7}Conclusie}{26}{section.7}%

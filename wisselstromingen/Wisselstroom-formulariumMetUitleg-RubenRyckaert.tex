@@ -463,6 +463,224 @@ $\vec{V_L}$ de lijnspanning in Volt en $\vec{V_f}$ de fasespanning in Volt.}
     \label{fig:fasorsindriehoek.png}
 \end{figure}
 
+\subsection{omzetting ster- naar driehoekconfiguratie}
+
+Je kunt een sterconfiguratie omzetten naar een driehoekconfiguratie en omgekeerd.
+Dit mag alleen als je evenwichtige belastingen hebt.
+
+\frm{Delta naar Ster en omgekeerd}{Z_Y = \frac{Z_\Delta}{3} \quad , \quad Z_\Delta = 3 Z_Y}{Met $\vec{Z}_Y$ de impedantie van de equivalente 
+Y-verbonden belasting in Ohm en $\vec{Z}_\Delta$ de impedantie van de $\Delta$-verbonden belasting in Ohm.}
+
+
+Als de belastingen niet evenwichtig zijn, moet je de volgende formules gebruiken:
+
+
+\begin{figure}[ht]
+   \centering
+    \includegraphics[width=0.8\textwidth]{omzettingster en driehoek.png}
+    \caption{Omzetting ster- naar driehoekconfiguratie en omgekeerd.}
+      \label{fig:omzettingster en driehoek.png}
+    \end{figure}
+
+\frm{Omzetting ster- naar driehoekconfiguratie}
+{Z_a = \frac{Z_{1} Z_{2}}{Z_{1} + Z_{2} + Z_{3}} \quad , \quad
+ Z_b = \frac{Z_{1} Z_{2}}{Z_{1} + Z_{2} + Z_{3}} \quad , \quad
+ Z_c = \frac{Z_{2} Z_{3}}{Z_{1} + Z_{2} + Z_{3}}}
+
+ \frm {Omzetting driehoek- naar sterconfiguratie}
+{Z_{1} = \frac{Z_{a} Z_{b} + Z_{b} Z_{c} + Z_{c} Z_{a}}{Z_{c}} \quad , \quad
+ Z_{2} = \frac{Z_{a} Z_{b} + Z_{b} Z_{c} + Z_{c} Z_{a}}{Z_{a}} \quad , \quad
+ Z_{3} = \frac{Z_{a} Z_{b} + Z_{b} Z_{c} + Z_{c} Z_{a}}{Z_{b}}}
+
+
+
+Hieronder een voorbeeld oefening uitgewerkt.
+    \begin{figure}[ht]
+        \centering
+          \includegraphics[width=0.8\textwidth]{vboefening.png}
+        \caption{}
+        \label{fig:vboefening.png}
+    \end{figure}
+    \FloatBarrier
+\begin{oefenblok}
+
+
+\textbf{Uitgewerkt voorbeeld: 3-fase systeem met transmissielijn en Delta-belasting}
+
+We hebben een evenwichtig 3-fase systeem met de volgende kenmerken:
+
+\begin{description}
+    \item[Bron]: Evenwichtige Y-verbonden bron met positieve fasevolgorde (abc)
+    \begin{align*}
+        \vec{V}_{an} &= 100\angle{0\circ} \text{ V} \\
+        \vec{V}_{bn} &= 100\angle{-120\circ} \text{ V} \\
+        \vec{V}_{cn} &= 100\angle{120\circ} \text{ V}
+    \end{align*}
+    \item[Lijnimpedantie]: $\vec{Z}_{\text{lijn}} = 1 + j2 \text{ } \Omega$ per fase
+    \item[Belasting]: Evenwichtige $\Delta$-verbonden belasting met $\vec{Z}_{\Delta} = 12 + j12 \text{ } \Omega$ per fase
+\end{description}
+
+\textbf{Stap 1: Delta-belasting omzetten naar equivalente Ster-belasting}
+
+Voor een evenwichtige belasting is de impedantie van de equivalente Y-verbonden belasting ($\vec{Z}_Y$) 
+één derde van de $\Delta$-verbonden belasting impedantie ($\vec{Z}_\Delta$):
+
+$$\vec{Z}_Y = \frac{\vec{Z}_\Delta}{3} = \frac{12 + j12}{3} = 4 + j4 \text{ } \Omega$$
+
+\textbf{Stap 2: Eenfase equivalent circuit analyseren (fase 'a')}
+
+Nu kunnen we het eenfase equivalent circuit voor fase 'a' analyseren. Dit bestaat uit de bronspanning $\vec{V}_{an}$ 
+in serie met de lijnimpedantie $\vec{Z}_{\text{lijn}}$ en de equivalente belastingsimpedantie $\vec{Z}_Y$.
+
+\textbf{Bereken de totale impedantie per fase:}
+
+Omdat $\vec{Z}_{\text{lijn}}$ en $\vec{Z}_Y$ in serie staan:
+
+$$\vec{Z}_{\text{totaal}} = \vec{Z}_{\text{lijn}} + \vec{Z}_Y = (1 + j2) + (4 + j4) = 5 + j6 \text{ } \Omega$$
+
+\textbf{Omzetten naar poolcoördinaten:}
+
+\begin{align*}
+    |\vec{Z}| &= \sqrt{5^2 + 6^2} = \sqrt{61} \approx 7.81 \text{ } \Omega \\
+    \theta &= \tan^{-1}\left(\frac{6}{5}\right) \approx 50.19°
+\end{align*}
+
+$$\vec{Z}_{\text{totaal}} \approx 7.81\angle{50.19°} \text{ } \Omega$$
+
+\textbf{Stap 3: Bereken lijnstroom $\vec{I}_a$}
+
+Met behulp van de wet van Ohm voor het eenfase equivalent circuit:
+
+$$\vec{I}_a = \frac{\vec{V}_{an}}{\vec{Z}_{\text{totaal}}} = \frac{100\angle{0\circ}}{7.81\angle{50.19\circ}} = 12.80\angle{-50.19\circ} \text{ A}$$
+
+\textbf{Stap 4: Bepaal $\vec{I}_b$ en $\vec{I}_c$}
+
+Omdat het systeem evenwichtig is met positieve fasevolgorde (abc), hebben de lijnstromen dezelfde magnitude 
+(12.80 A) maar zijn ze faseverschoven met $-120\circ$ en $+120\circ$ ten opzichte van $\vec{I}_a$:
+
+$$\vec{I}_b = 12.80\angle{-50.19\circ - 120\circ} = 12.80\angle{-170.19\circ} \text{ A}$$
+
+$$\vec{I}_c = 12.80\angle{-50.19\circ + 120\circ} = 12.80\angle{69.81\circ} \text{ A}$$
+\textbf{Eindantwoord}
+
+De drie lijnstromen zijn:
+
+\begin{align*}
+    \vec{I}_a &= 12.80\angle{-50.19\circ} \text{ A} \\
+    \vec{I}_b &= 12.80\angle{-170.19\circ} \text{ A} \\
+    \vec{I}_c &= 12.80\angle{69.81\circ} \text{ A}
+\end{align*}
+\end{oefenblok}
+
+\begin{figure}[ht]
+    \centering
+      \includegraphics[width=0.8\textwidth]{vboef.png}
+      \caption{}
+      \label{fig:vboef.png}
+\end{figure}
+
+
+\begin{oefenblok}
+
+\begin{description}
+    \item[Bron]: Delta-verbonden bron met $\vec{V}_{ab} = 440\angle{0\circ}$ V. Dit is positieve fasevolgorde (abc).
+    \item[Lijnimpedantie]: $\vec{Z}_l = 2 \text{ } \Omega$
+    \item[Belastingen]:
+    \begin{itemize}
+        \item Belasting 1 (Ster): $\vec{Z}_Y = 4 + j6 \text{ } \Omega$
+        \item Belasting 2 (Delta): $\vec{Z}_\Delta = 12 - j15 \text{ } \Omega$
+    \end{itemize}
+\end{description}
+
+\textbf{Strategie}: We zetten het hele circuit om naar een eenfase equivalent. Daarvoor moeten we de Delta-bron omzetten naar een Ster-bron en de Delta-belasting naar een Ster-belasting.
+
+\textbf{Stap 1: Delta-belasting omzetten naar equivalente Ster-belasting}
+
+We gebruiken de "Deel door 3" regel om de Delta-belasting ($\vec{Z}_\Delta$) om te zetten naar een equivalente Ster-belasting ($\vec{Z}_{\Delta \to Y}$):
+
+$$\vec{Z}_{\Delta \to Y} = \frac{\vec{Z}_\Delta}{3} = \frac{12 - j15}{3} = 4 - j5 \text{ } \Omega$$
+
+Nu hebben we aan de belastingskant effectief twee Ster-impedanties in parallel:
+\begin{itemize}
+    \item Originele $\vec{Z}_Y = 4 + j6 \text{ } \Omega$
+    \item Omgezette $\vec{Z}_{\Delta \to Y} = 4 - j5 \text{ } \Omega$
+\end{itemize}
+
+\textbf{Stap 2: Bereken de equivalente belastingsimpedantie ($\vec{Z}_p$)}
+
+Omdat deze twee equivalente Ster-belastingen in parallel staan, gebruiken we de product-over-som formule:
+
+$$\vec{Z}_p = \frac{\vec{Z}_Y \cdot \vec{Z}_{\Delta \to Y}}{\vec{Z}_Y + \vec{Z}_{\Delta \to Y}}$$
+
+\textbf{Teller (Product):}
+$$(4+j6)(4-j5) = 16 - j20 + j24 + 30 = 46 + j4$$
+
+\textbf{Noemer (Som):}
+$$(4+j6) + (4-j5) = 8 + j1$$
+
+\textbf{Deling:}
+$$\vec{Z}_p = \frac{46 + j4}{8 + j1}$$
+
+Vermenigvuldig boven en onder met de geconjugeerde ($8 - j1$):
+
+$$\vec{Z}_p = \frac{(46 + j4)(8 - j1)}{(8 + j1)(8 - j1)} = \frac{368 - j46 + j32 + 4}{65} = \frac{372 - j14}{65}$$
+
+$$\vec{Z}_p \approx 5.723 - j0.215 \text{ } \Omega$$
+
+\textbf{Stap 3: Zet de bron om naar Ster}
+
+Het probleem geeft de lijnspanning $\vec{V}_{ab} = 440\angle{0\circ}$ V. Voor het eenfase equivalent hebben we de fase-naar-nul spanning $\vec{V}_{an}$.
+
+Bij positieve fasevolgorde is de fasespanningsgrootte gedeeld door $\sqrt{3}$, en de hoek verschoven met $-30\circ$:
+
+$$\vec{V}_{an} = \frac{440}{\sqrt{3}}\angle{(0\circ - 30\circ)} \approx 254.03\angle{-30\circ} \text{ V}$$
+\textbf{Stap 4: Bereken totale impedantie en lijnstroom $\vec{I}_a$}
+
+Nu hebben we een simpele lus met bronspanning $\vec{V}_{an}$, lijnimpedantie $\vec{Z}_l$ en equivalente belastingsimpedantie $\vec{Z}_p$.
+
+\textbf{Totale impedantie:}
+$$\vec{Z}_{totaal} = \vec{Z}_l + \vec{Z}_p = 2 + (5.723 - j0.215) = 7.723 - j0.215 \text{ } \Omega$$
+
+\textbf{Omzetten naar poolcoördinaten:}
+
+Magnitude: $\sqrt{7.723^2 + 0.215^2} \approx 7.726$
+
+Hoek: $\tan^{-1}\left(\frac{-0.215}{7.723}\right) \approx -1.59°$
+
+$$\vec{Z}_{totaal} = 7.726\angle{-1.59°} \text{ } \Omega$$
+
+\textbf{Bereken $\vec{I}_a$ met wet van Ohm:}
+
+$$\vec{I}_a = \frac{\vec{V}_{an}}{\vec{Z}_{totaal}} = \frac{254.03\angle{-30\circ}}{7.726\angle{-1.59\circ}}$$
+
+$$\vec{I}_a = 32.88\angle{(-30\circ - (-1.59\circ))} = 32.88\angle{-28.41\circ} \text{ A}$$
+
+\textbf{Stap 5: Bepaal $\vec{I}_b$ en $\vec{I}_c$}
+
+Pas de $120\circ$ faseverschuiving toe voor een evenwichtig positief systeem:
+$$\vec{I}_a = 32.88\angle{-28.41\circ} \text{ A}$$
+
+$$\vec{I}_b = 32.88\angle{(-28.41\circ - 120\circ)} = 32.88\angle{-148.41\circ} \text{ A}$$
+
+$$\vec{I}_c = 32.88\angle{(-28.41\circ + 120\circ)} = 32.88\angle{91.59\circ} \text{ A}$$
+
+\textbf{Stap 5: Bepaal $\vec{I}_b$ en $\vec{I}_c$}
+
+\begin{enumerate}
+    \item Zet $\Delta$-belasting om naar Y-belasting (deel door 3)
+    \item Combineer parallelle belastingen (product over som)
+    \item Zet bronlijnspanning om naar fasespanning (deel door $\sqrt{3}$, verschuif $-30°$)
+    \item Tel lijnimpedantie op
+    \item Gebruik wet van Ohm
+\end{enumerate}
+
+\end{oefenblok}
+
+
+
+
+
+
 \subsection{3-fase vermogen}
 
 In een 3-fase systeem is het totale vermogen de som van de vermogens in elke fase.
@@ -561,6 +779,8 @@ $I_f$ de fasestroom in Ampère, $I_L$ de lijnstroom in Ampère en $Z$ de impedan
       \label{fig:vboefening 3fase.png}
     \end{figure}
     \FloatBarrier
+    \begin{oefenblok}
+    \textbf{Uitgewerkt voorbeeld: 3-fase sterconfiguratie met gelijk belastingen}
 
     \[V_l = 208 V\]
     \[V_f = \frac{V_l}{\sqrt{3}} = \frac{208 V}{\sqrt{3}} = 120.1 V\]
@@ -570,26 +790,156 @@ $I_f$ de fasestroom in Ampère, $I_L$ de lijnstroom in Ampère en $Z$ de impedan
     \[P = 3 V_f I_f \cos \phi = 3 \cdot 120.1 V \cdot 4.0 A \cdot \cos 45^\circ = 1021.6 W\]
     \[Q = 3 V_f I_f \sin \phi = 3 \cdot 120.1 V \cdot 4.0 A \cdot \sin 45^\circ = 1021.6 VAR\]
     \[S = P + jQ = 1021.6 W + j 1021.6 VAR = 1445.6 VA\]
+    \end{oefenblok}
 
+\textbf{Opgave 12.80}
+
+Een evenwichtige driefasige bron voorziet drie belastingen van vermogen. De volgende gegevens zijn bekend:
+\begin{itemize}
+    \item Belasting 1: $6 \text{ kVA}$ bij $0.83$ pf naijlend
+    \item Belasting 2: onbekend
+    \item Belasting 3: $8 \text{ kW}$ bij $0.7071$ pf voorijlend
+    \item Lijnstroom: $84.6 \text{ A (rms)}$
+    \item Lijnspanning aan de belastingen: $208 \text{ V (rms)}$
+    \item Gecombineerde belasting arbeidsfactor: $0.8$ naijlend
+\end{itemize}
+
+\textbf{Gevraagd:} Bepaal de onbekende belasting (Belasting 2).
+
+\begin{oefenblok}
+
+\textbf{Oefening: Bepaling van onbekende belasting met behulp van Complex Vermogen}
+
+We gebruiken het principe van behoud van complex vermogen. In een systeem met meerdere belastingen geldt:
+
+$$\mathbf{S}_{\text{totaal}} = \mathbf{S}_1 + \mathbf{S}_2 + \mathbf{S}_3$$
+
+We kunnen dit herschikken om de onbekende belasting te vinden:
+
+$$\mathbf{S}_2 = \mathbf{S}_{\text{totaal}} - \mathbf{S}_1 - \mathbf{S}_3$$
+
+\textbf{Gegeven data}:
+\begin{itemize}
+    \item Lijnspanning: $V_L = 208 \text{ V}$
+    \item Lijnstroom: $I_L = 84.6 \text{ A}$
+    \item Totale arbeidsfactor: $pf = 0.8$ (naijlend)
+    \item Belasting 1: $S_1 = 6 \text{ kVA}$ bij $pf_1 = 0.83$ (naijlend)
+    \item Belasting 3: $P_3 = 8 \text{ kW}$ bij $pf_3 = 0.7071$ (voorijlend)
+    \item Belasting 2: ONBEKEND
+\end{itemize}
+
+\textbf{Stap 1: Bereken totaal complex vermogen ($\mathbf{S}_{\text{totaal}}$)}
+
+Schijnbaar vermogen:
+$$S_{\text{totaal}} = \sqrt{3} V_L I_L = \sqrt{3} \times 208 \times 84.6 \approx 30.48 \text{ kVA}$$
+
+Actief vermogen (met $pf = 0.8$):
+$$P_{\text{totaal}} = S_{\text{totaal}} \times pf = 30.48 \times 0.8 = 24.38 \text{ kW}$$
+
+Reactief vermogen (met $\sin(\theta) = 0.6$, omdat $0.8^2 + 0.6^2 = 1$):
+$$Q_{\text{totaal}} = S_{\text{totaal}} \times \sin(\theta) = 30.48 \times 0.6 = 18.29 \text{ kVAR}$$
+
+$$\mathbf{S}_{\text{totaal}} = 24.38 + j18.29 \text{ kVA}$$
+
+\textbf{Stap 2: Bereken complex vermogen van belasting 1 ($\mathbf{S}_1$)}
+
+Gegeven: $6 \text{ kVA}$ bij $pf_1 = 0.83$ (naijlend)
+
+Actief vermogen:
+$$P_1 = 6 \times 0.83 = 4.98 \text{ kW}$$
+
+Voor reactief vermogen vinden we $\sin(\theta_1)$:
+$$\theta_1 = \cos^{-1}(0.83) \Rightarrow \sin(\theta_1) \approx 0.5578$$
+$$Q_1 = 6 \times 0.5578 = 3.35 \text{ kVAR}$$
+
+(Positief omdat het naijlend is)
+
+$$\mathbf{S}_1 = 4.98 + j3.35 \text{ kVA}$$
+
+\textbf{Stap 3: Bereken complex vermogen van belasting 3 ($\mathbf{S}_3$)}
+
+Gegeven: $8 \text{ kW}$ bij $pf_3 = 0.7071 = \frac{1}{\sqrt{2}}$ (voorijlend)
+
+Actief vermogen:
+$$P_3 = 8 \text{ kW}$$
+
+De arbeidsfactor $0.7071$ komt overeen met $45°$, dus $\tan(45°) = 1$:
+$$Q_3 = P_3 \times \tan(45°) = 8 \times 1 = 8 \text{ kVAR}$$
+
+\textbf{Let op}: Omdat de arbeidsfactor voorijlend is, is het reactieve vermogen negatief.
+
+$$\mathbf{S}_3 = 8.0 - j8.0 \text{ kVA}$$
+
+\textbf{Stap 4: Los op voor onbekende belasting 2 ($\mathbf{S}_2$)}
+
+Trek de bekende belastingen af van het totale vermogen:
+
+$$\mathbf{S}_2 = (P_{\text{totaal}} + jQ_{\text{totaal}}) - (P_1 + jQ_1) - (P_3 - jQ_3)$$
+
+Reëel deel ($P_2$):
+$$P_2 = 24.38 - 4.98 - 8.0 = 11.4 \text{ kW}$$
+
+Imaginair deel ($Q_2$):
+$$Q_2 = 18.29 - 3.35 - (-8.0) = 18.29 - 3.35 + 8.0 = 22.94 \text{ kVAR}$$
+
+$$\mathbf{S}_2 = 11.4 + j22.94 \text{ kVA}$$
+
+\textbf{Stap 5: Bepaal schijnbaar vermogen en arbeidsfactor}
+
+Schijnbaar vermogen ($S_2$):
+$$S_2 = \sqrt{P_2^2 + Q_2^2} = \sqrt{11.4^2 + 22.94^2} \approx 25.6 \text{ kVA}$$
+
+Arbeidsfactor ($pf_2$):
+$$pf_2 = \frac{P_2}{S_2} = \frac{11.4}{25.6} \approx 0.445$$
+
+Omdat het reactieve vermogen ($Q_2$) positief is, is de arbeidsfactor naijlend.
+
+\textbf{Eindantwoord}
+
+\textbf{Onbekende belasting 2:}
+\begin{itemize}
+    \item Actief vermogen: $P_2 = 11.4 \text{ kW}$
+    \item Reactief vermogen: $Q_2 = 22.94 \text{ kVAR}$
+    \item Schijnbaar vermogen: $S_2 = 25.6 \text{ kVA}$
+    \item Arbeidsfactor: $0.445$ (naijlend)
+\end{itemize}
+
+\end{oefenblok}
+
+
+
+
+
+\section{Examenoefeningen}
 
 
 \section{Conclusie}
 Dit document bevat meeste relevante formules maar
 je moet oefeningen maken om ze goed te begrijpen.
 
+\newpage
+\thispagestyle{empty}
+\vspace*{\fill}
+
 \begin{center}
-
 	\itshape\Huge
-
 	Veel succes met de examens!
-
 	\par\vspace{1cm}
-
 	\normalfont\Large
-
 	--- Ruben Ryckaert
-
 \end{center}
+
+\vspace{3cm}
+
+\begin{quote}
+	\centering
+	\itshape\Large
+	``This ball of flesh and electricity is worrying about electricity''
+	\par\vspace{0.5cm}
+	\textup{--- Ruben}
+\end{quote}
+
+\vspace*{\fill}
 
 
 
