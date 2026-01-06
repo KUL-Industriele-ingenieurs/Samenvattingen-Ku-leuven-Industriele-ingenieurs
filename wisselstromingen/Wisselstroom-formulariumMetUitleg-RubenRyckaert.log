@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.12.16)  6 JAN 2026 13:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.12.16)  6 JAN 2026 17:58
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -476,7 +476,20 @@ Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 \tcb@temp=\box75
 \tcb@temp=\box76
 \tcb@temp=\box77
-) (C:\Users\ruben\AppData\Roaming\MiKTeX\tex/latex/caption\caption.sty
+ (C:\Program Files\MiKTeX\tex/latex/tcolorbox\tcbbreakable.code.tex
+Library (tcolorbox): 'tcbbreakable.code.tex' version '6.8.0'
+(C:\Users\ruben\AppData\Roaming\MiKTeX\tex/latex/pdfcol\pdfcol.sty
+Package: pdfcol 2022-09-21 v1.7 Handle new color stacks for pdfTeX (HO)
+ (C:\Users\ruben\AppData\Roaming\MiKTeX\tex/generic/infwarerr\infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+) (C:\Program Files\MiKTeX\tex/generic/iftex\iftex.sty
+Package: iftex 2024/12/12 v1.0g TeX engine tests
+))
+Package pdfcol Info: New color stack `tcb@breakable' = 1 on input line 23.
+\tcb@testbox=\box78
+\tcb@totalupperbox=\box79
+\tcb@totallowerbox=\box80
+)) (C:\Users\ruben\AppData\Roaming\MiKTeX\tex/latex/caption\caption.sty
 Package: caption 2023/08/05 v3.6o Customizing captions (AR)
  (C:\Users\ruben\AppData\Roaming\MiKTeX\tex/latex/caption\caption3.sty
 Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
@@ -522,22 +535,17 @@ Package: enumitem 2025/02/06 v3.11 Customized lists
 \labelindent=\skip60
 \enit@outerparindent=\dimen297
 \enit@toks=\toks49
-\enit@inbox=\box78
+\enit@inbox=\box81
 \enit@count@id=\count335
 \enitdp@description=\count336
 ) (C:\Program Files\MiKTeX\tex/latex/hyperref\hyperref.sty
 Package: hyperref 2025-07-12 v7.01o Hypertext links for LaTeX
- (C:\Program Files\MiKTeX\tex/generic/iftex\iftex.sty
-Package: iftex 2024/12/12 v1.0g TeX engine tests
-) (C:\Users\ruben\AppData\Roaming\MiKTeX\tex/generic/kvdefinekeys\kvdefinekeys.sty
+ (C:\Users\ruben\AppData\Roaming\MiKTeX\tex/generic/kvdefinekeys\kvdefinekeys.sty
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
 ) (C:\Users\ruben\AppData\Roaming\MiKTeX\tex/generic/pdfescape\pdfescape.sty
 Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
  (C:\Program Files\MiKTeX\tex/generic/pdftexcmds\pdftexcmds.sty
 Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
- (C:\Users\ruben\AppData\Roaming\MiKTeX\tex/generic/infwarerr\infwarerr.sty
-Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
-)
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
@@ -652,7 +660,7 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 \Gm@dimlist=\toks51
  (C:\Users\ruben\AppData\Roaming\MiKTeX\tex/latex/geometry\geometry.cfg)) (C:\Users\ruben\AppData\Roaming\MiKTeX\tex/latex/titlesec\titlesec.sty
 Package: titlesec 2025/01/04 v2.17 Sectioning titles
-\ttl@box=\box79
+\ttl@box=\box82
 \beforetitleunit=\skip76
 \aftertitleunit=\skip77
 \ttl@plus=\dimen310
@@ -665,12 +673,12 @@ Package: titlesec 2025/01/04 v2.17 Sectioning titles
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count351
 \float@exts=\toks53
-\float@box=\box80
+\float@box=\box83
 \@float@everytoks=\toks54
-\@floatcapt=\box81
+\@floatcapt=\box84
 ) (C:\Program Files\MiKTeX\tex/latex/listings\listings.sty
 \lst@mode=\count352
-\lst@gtempboxa=\box82
+\lst@gtempboxa=\box85
 \lst@token=\toks55
 \lst@length=\count353
 \lst@currlwidth=\dimen315
@@ -687,7 +695,7 @@ File: lstpatch.sty 2025/11/14 1.11b (Carsten Heinz)
 File: lstmisc.sty 2025/11/14 1.11b (Carsten Heinz)
 \c@lstnumber=\count358
 \lst@skipnumbers=\count359
-\lst@framebox=\box83
+\lst@framebox=\box86
 ) (C:\Program Files\MiKTeX\tex/latex/listings\listings.cfg
 File: listings.cfg 2025/11/14 1.11b listings configuration
 ))
@@ -702,7 +710,7 @@ Package: listings 2025/11/14 1.11b (Carsten Heinz)
 (C:\Program Files\MiKTeX\tex/latex/tools\multicol.sty
 Package: multicol 2025/10/21 v2.0b multicolumn formatting (FMi)
 \c@tracingmulticols=\count360
-\mult@box=\box84
+\mult@box=\box87
 \multicol@leftmargin=\dimen319
 \c@unbalance=\count361
 \c@collectmore=\count362
@@ -715,17 +723,14 @@ Package: multicol 2025/10/21 v2.0b multicolumn formatting (FMi)
 \postmulticols=\dimen323
 \multicolsep=\skip78
 \multicolbaselineskip=\skip79
-\partial@page=\box85
-\last@line=\box86
-\mc@boxedresult=\box87
+\partial@page=\box88
+\last@line=\box89
+\mc@boxedresult=\box90
 \maxbalancingoverflow=\dimen324
-\mult@rightbox=\box88
-\mult@grightbox=\box89
-\mult@firstbox=\box90
-\mult@gfirstbox=\box91
-\@tempa=\box92
-\@tempa=\box93
-\@tempa=\box94
+\mult@rightbox=\box91
+\mult@grightbox=\box92
+\mult@firstbox=\box93
+\mult@gfirstbox=\box94
 \@tempa=\box95
 \@tempa=\box96
 \@tempa=\box97
@@ -759,14 +764,17 @@ Package: multicol 2025/10/21 v2.0b multicolumn formatting (FMi)
 \@tempa=\box125
 \@tempa=\box126
 \@tempa=\box127
+\@tempa=\box128
+\@tempa=\box129
+\@tempa=\box130
 \c@minrows=\count366
 \c@columnbadness=\count367
 \c@finalcolumnbadness=\count368
 \last@try=\dimen325
 \multicolovershoot=\dimen326
 \multicolundershoot=\dimen327
-\mult@nat@firstbox=\box128
-\colbreak@box=\box129
+\mult@nat@firstbox=\box131
+\colbreak@box=\box132
 \mc@col@check@num=\count369
 \g__mc_curr_col_int=\count370
 ) (C:\Users\ruben\AppData\Roaming\MiKTeX\tex/latex/mhchem\mhchem.sty
@@ -846,7 +854,7 @@ Package pgfplots: loading complementary utilities for your pgf version...
 \pgfdecorationsegmentamplitude=\dimen340
 \pgfdecorationsegmentlength=\dimen341
 )
-\tikz@lib@dec@box=\box130
+\tikz@lib@dec@box=\box133
 ) (C:\Program Files\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarydecorations.pathmorphing.code.tex (C:\Program Files\MiKTeX\tex/generic/pgf/libraries/decorations\pgflibrarydecorations.pathmorphing.code.tex)) (C:\Program Files\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarydecorations.pathreplacing.code.tex (C:\Program Files\MiKTeX\tex/generic/pgf/libraries/decorations\pgflibrarydecorations.pathreplacing.code.tex)) (C:\Program Files\MiKTeX\tex/generic/pgfplots/libs\tikzlibrarypgfplots.contourlua.code.tex)
 \pgfplots@numplots=\count385
 \pgfplots@xmin@reg=\dimen342
@@ -894,20 +902,20 @@ Package: siunitx 2025-07-09 v3.4.14 A comprehensive (SI) units package
 \l__siunitx_number_group_size_int=\count397
 \l__siunitx_number_group_minimum_int=\count398
 \l__siunitx_angle_tmp_dim=\dimen352
-\l__siunitx_angle_marker_box=\box131
-\l__siunitx_angle_unit_box=\box132
+\l__siunitx_angle_marker_box=\box134
+\l__siunitx_angle_unit_box=\box135
 \l__siunitx_compound_count_int=\count399
  (C:\Users\ruben\AppData\Roaming\MiKTeX\tex/latex/translations\translations.sty
 Package: translations 2022/02/05 v1.12 internationalization of LaTeX2e packages (CN)
 )
-\l__siunitx_table_tmp_box=\box133
+\l__siunitx_table_tmp_box=\box136
 \l__siunitx_table_tmp_dim=\dimen353
 \l__siunitx_table_column_width_dim=\dimen354
-\l__siunitx_table_integer_box=\box134
-\l__siunitx_table_decimal_box=\box135
-\l__siunitx_table_uncert_box=\box136
-\l__siunitx_table_before_box=\box137
-\l__siunitx_table_after_box=\box138
+\l__siunitx_table_integer_box=\box137
+\l__siunitx_table_decimal_box=\box138
+\l__siunitx_table_uncert_box=\box139
+\l__siunitx_table_before_box=\box140
+\l__siunitx_table_after_box=\box141
 \l__siunitx_table_before_dim=\dimen355
 \l__siunitx_table_carry_dim=\dimen356
 \l__siunitx_unit_tmp_int=\count400
@@ -929,13 +937,13 @@ Package: eso-pic 2023/05/03 v3.0c eso-pic (RN)
 File: pppdftex.def 2025/07/23 v0.6g Pdfpages driver for pdfTeX (AM)
 )
 \pdfpages@includegraphics@status=\count403
-\AM@pagebox=\box139
+\AM@pagebox=\box142
 \AM@global@opts=\toks63
 \AM@pagecnt=\count404
 \AM@toc@title=\toks64
 \AM@lof@heading=\toks65
 \c@AM@survey=\count405
-\AM@templatesizebox=\box140
+\AM@templatesizebox=\box143
 ) (C:\Program Files\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibraryangles.code.tex
 File: tikzlibraryangles.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 )
@@ -989,7 +997,7 @@ File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count406
 \scratchdimen=\dimen362
-\scratchbox=\box141
+\scratchbox=\box144
 \nofMPsegments=\count407
 \nofMParguments=\count408
 \everyMPshowfont=\toks66
@@ -1118,145 +1126,229 @@ Overfull \hbox (24.45346pt too wide) in paragraph at lines 25--25
 []$[] \OT1/lmr/m/n/10.95 (-20) = [] \OMS/lmsy/m/n/10.95 ^^A [] \OML/lmm/m/it/10.95 ;  [] \OT1/lmr/m/n/10.95 (-20) =
  []
 
-[3]
+
+Overfull \hbox (48.67978pt too wide) in paragraph at lines 25--25
+[]$\OML/lmm/m/it/10.95 Z[] \OT1/lmr/m/n/10.95 (-20) = [] \OML/lmm/m/it/10.95 ;  Z[] \OT1/lmr/m/n/10.95 (-20) = [] \OML/lmm/m/it/10.95 ;  Z[] \OT1/lmr/m/n/10.95 (-20) =
+ []
+
+
+Overfull \hbox (119.62671pt too wide) in paragraph at lines 25--25
+[]$\OML/lmm/m/it/10.95 Z[] \OT1/lmr/m/n/10.95 (-20) = [] \OML/lmm/m/it/10.95 ;  Z[] \OT1/lmr/m/n/10.95 (-20) = [] \OML/lmm/m/it/10.95 ;  Z[] \OT1/lmr/m/n/10.95 (-20) =
+ []
+
+[3] [4]
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <9> on input line 40.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 40.
- [4] [5]
-<vermogen.png, id=189, 594.72188pt x 220.57407pt>
+ [5] [6]
+<vermogen.png, id=210, 594.72188pt x 220.57407pt>
 File: vermogen.png Graphic file (type png)
 <use vermogen.png>
 Package pdftex.def Info: vermogen.png  used on input line 148.
 (pdftex.def)             Requested size: 364.19667pt x 135.07501pt.
- [6]
-<stroomachtervoltage.png, id=195, 629.35126pt x 152.06813pt>
+ [7]
+<stroomachtervoltage.png, id=217, 629.35126pt x 152.06813pt>
 File: stroomachtervoltage.png Graphic file (type png)
 <use stroomachtervoltage.png>
 Package pdftex.def Info: stroomachtervoltage.png  used on input line 170.
 (pdftex.def)             Requested size: 364.19667pt x 88.00002pt.
- [7 <./vermogen.png>]
-<Vermogendriehoek.png, id=203, 423.08063pt x 181.42781pt>
+ [8 <./vermogen.png>]
+<Vermogendriehoek.png, id=224, 423.08063pt x 181.42781pt>
 File: Vermogendriehoek.png Graphic file (type png)
 <use Vermogendriehoek.png>
 Package pdftex.def Info: Vermogendriehoek.png  used on input line 188.
 (pdftex.def)             Requested size: 273.14923pt x 117.1377pt.
- [8 <./stroomachtervoltage.png> <./Vermogendriehoek.png>]
+ [9 <./stroomachtervoltage.png> <./Vermogendriehoek.png>]
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <10> on input line 242.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <7> on input line 242.
- [9]
-<resonatie.png, id=216, 462.97969pt x 277.035pt>
+ [10]
+<resonatie.png, id=237, 462.97969pt x 277.035pt>
 File: resonatie.png Graphic file (type png)
 <use resonatie.png>
 Package pdftex.def Info: resonatie.png  used on input line 275.
 (pdftex.def)             Requested size: 227.62206pt x 136.20486pt.
- [10 <./resonatie.png>]
-<3-fase.png, id=224, 713.66624pt x 243.15843pt>
+ [11 <./resonatie.png>]
+<3-fase.png, id=245, 713.66624pt x 243.15843pt>
 File: 3-fase.png Graphic file (type png)
 <use 3-fase.png>
 Package pdftex.def Info: 3-fase.png  used on input line 317.
 (pdftex.def)             Requested size: 364.19667pt x 124.08707pt.
-<circuit3-fase.png, id=225, 578.91281pt x 239.39438pt>
+<circuit3-fase.png, id=246, 578.91281pt x 239.39438pt>
 File: circuit3-fase.png Graphic file (type png)
 <use circuit3-fase.png>
 Package pdftex.def Info: circuit3-fase.png  used on input line 324.
 (pdftex.def)             Requested size: 204.85846pt x 84.71346pt.
-<fasors3fase.png, id=226, 277.035pt x 208.52907pt>
+<fasors3fase.png, id=247, 277.035pt x 208.52907pt>
 File: fasors3fase.png Graphic file (type png)
 <use fasors3fase.png>
 Package pdftex.def Info: fasors3fase.png  used on input line 325.
 (pdftex.def)             Requested size: 204.85846pt x 154.2009pt.
- [11 <./3-fase.png>]
+ [12 <./3-fase.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 331--334
 
  []
 
-<ster.png, id=233, 593.96906pt x 231.86626pt>
+<ster.png, id=254, 593.96906pt x 231.86626pt>
 File: ster.png Graphic file (type png)
 <use ster.png>
 Package pdftex.def Info: ster.png  used on input line 342.
 (pdftex.def)             Requested size: 455.24411pt x 177.72028pt.
-[12 <./circuit3-fase.png> <./fasors3fase.png> <./ster.png>]
+[13 <./circuit3-fase.png> <./fasors3fase.png> <./ster.png>]
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 386.
  (C:\Program Files\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-<fasors.png, id=243, 268.75406pt x 267.24844pt>
+<fasors.png, id=265, 268.75406pt x 267.24844pt>
 File: fasors.png Graphic file (type png)
 <use fasors.png>
 Package pdftex.def Info: fasors.png  used on input line 390.
 (pdftex.def)             Requested size: 102.42923pt x 101.85313pt.
- [13{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc} <./fasors.png>]
+ [14{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc} <./fasors.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 413--415
 
  []
 
-<driehoek 3fasesyteem.png, id=252, 574.39594pt x 238.64156pt>
+<driehoek 3fasesyteem.png, id=273, 574.39594pt x 238.64156pt>
 File: driehoek 3fasesyteem.png Graphic file (type png)
 <use driehoek 3fasesyteem.png>
 Package pdftex.def Info: driehoek 3fasesyteem.png  used on input line 431.
 (pdftex.def)             Requested size: 455.24411pt x 189.14378pt.
-[14 <./driehoek 3fasesyteem.png>]
-<fasorsindriehoek.png, id=258, 256.70906pt x 222.8325pt>
+[15 <./driehoek 3fasesyteem.png>]
+<fasorsindriehoek.png, id=279, 256.70906pt x 222.8325pt>
 File: fasorsindriehoek.png Graphic file (type png)
 <use fasorsindriehoek.png>
 Package pdftex.def Info: fasorsindriehoek.png  used on input line 460.
 (pdftex.def)             Requested size: 182.09486pt x 158.06596pt.
-<image4.png, id=259, 158.09062pt x 139.27031pt>
+<image4.png, id=280, 158.09062pt x 139.27031pt>
 File: image4.png Graphic file (type png)
 <use image4.png>
 Package pdftex.def Info: image4.png  used on input line 461.
 (pdftex.def)             Requested size: 182.09486pt x 160.42735pt.
- [15 <./fasorsindriehoek.png> <./image4.png>]
-<totaalvermogen.png, id=267, 487.8225pt x 178.41656pt>
+<omzettingster en driehoek.png, id=281, 1148.79187pt x 521.69907pt>
+File: omzettingster en driehoek.png Graphic file (type png)
+<use omzettingster en driehoek.png>
+Package pdftex.def Info: omzettingster en driehoek.png  used on input line 480.
+(pdftex.def)             Requested size: 364.19667pt x 165.38686pt.
+ [16 <./fasorsindriehoek.png> <./image4.png>]
+<vboefening.png, id=289, 995.21812pt x 491.58656pt>
+File: vboefening.png Graphic file (type png)
+<use vboefening.png>
+Package pdftex.def Info: vboefening.png  used on input line 500.
+(pdftex.def)             Requested size: 364.19667pt x 179.89641pt.
+
+
+LaTeX Warning: Command \textdegree invalid in math mode on input line 546.
+
+
+LaTeX Warning: Command \textdegree invalid in math mode on input line 546.
+
+
+LaTeX Warning: Command \textdegree invalid in math mode on input line 546.
+
+
+LaTeX Warning: Command \textdegree invalid in math mode on input line 546.
+
+
+LaTeX Warning: Command \textdegree invalid in math mode on input line 548.
+
+
+LaTeX Warning: Command \textdegree invalid in math mode on input line 548.
+
+[17 <./omzettingster en driehoek.png> <./vboefening.png>] [18]
+<vboef.png, id=302, 961.34157pt x 489.32813pt>
+File: vboef.png Graphic file (type png)
+<use vboef.png>
+Package pdftex.def Info: vboef.png  used on input line 577.
+(pdftex.def)             Requested size: 364.19667pt x 185.37915pt.
+
+
+LaTeX Warning: Command \textdegree invalid in math mode on input line 648.
+
+
+LaTeX Warning: Command \textdegree invalid in math mode on input line 648.
+
+
+LaTeX Warning: Command \textdegree invalid in math mode on input line 650.
+
+
+LaTeX Warning: Command \textdegree invalid in math mode on input line 650.
+
+
+LaTeX Warning: Command \textdegree invalid in math mode on input line 672.
+
+
+LaTeX Warning: Command \textdegree invalid in math mode on input line 672.
+
+[19 <./vboef.png>] [20]
+<totaalvermogen.png, id=314, 487.8225pt x 178.41656pt>
 File: totaalvermogen.png Graphic file (type png)
 <use totaalvermogen.png>
-Package pdftex.def Info: totaalvermogen.png  used on input line 486.
+Package pdftex.def Info: totaalvermogen.png  used on input line 704.
 (pdftex.def)             Requested size: 364.19667pt x 133.20226pt.
-<2-wattmethode.png, id=268, 263.48438pt x 164.86594pt>
+ [21 <./totaalvermogen.png>]
+<2-wattmethode.png, id=325, 263.48438pt x 164.86594pt>
 File: 2-wattmethode.png Graphic file (type png)
 <use 2-wattmethode.png>
-Package pdftex.def Info: 2-wattmethode.png  used on input line 504.
+Package pdftex.def Info: 2-wattmethode.png  used on input line 722.
 (pdftex.def)             Requested size: 273.14923pt x 170.92067pt.
- [16 <./totaalvermogen.png>]
-<image5.png, id=274, 206.27063pt x 180.675pt>
+<image5.png, id=326, 206.27063pt x 180.675pt>
 File: image5.png Graphic file (type png)
 <use image5.png>
-Package pdftex.def Info: image5.png  used on input line 521.
+Package pdftex.def Info: image5.png  used on input line 739.
 (pdftex.def)             Requested size: 204.85846pt x 179.43945pt.
-<image6.png, id=275, 177.66376pt x 143.03438pt>
+<image6.png, id=327, 177.66376pt x 143.03438pt>
 File: image6.png Graphic file (type png)
 <use image6.png>
-Package pdftex.def Info: image6.png  used on input line 522.
+Package pdftex.def Info: image6.png  used on input line 740.
 (pdftex.def)             Requested size: 204.85846pt x 164.93347pt.
- [17 <./2-wattmethode.png> <./image5.png> <./image6.png>]
-<vboefening 3fase.png, id=283, 534.49687pt x 191.21437pt>
+ [22 <./2-wattmethode.png>]
+<vboefening 3fase.png, id=333, 534.49687pt x 191.21437pt>
 File: vboefening 3fase.png Graphic file (type png)
 <use vboefening 3fase.png>
-Package pdftex.def Info: vboefening 3fase.png  used on input line 559.
+Package pdftex.def Info: vboefening 3fase.png  used on input line 777.
 (pdftex.def)             Requested size: 364.19667pt x 130.2954pt.
- [18 <./vboefening 3fase.png>] [19] (Wisselstroom-formulariumMetUitleg-RubenRyckaert.aux)
+ [23 <./image5.png> <./image6.png>]
+
+LaTeX Warning: Command \textdegree invalid in math mode on input line 866.
+
+
+LaTeX Warning: Command \textdegree invalid in math mode on input line 866.
+
+
+LaTeX Warning: Command \textdegree invalid in math mode on input line 866.
+
+
+LaTeX Warning: Command \textdegree invalid in math mode on input line 866.
+
+
+LaTeX Warning: Command \textdegree invalid in math mode on input line 867.
+
+
+LaTeX Warning: Command \textdegree invalid in math mode on input line 867.
+
+[24 <./vboefening 3fase.png>] [25] [26] [27] (Wisselstroom-formulariumMetUitleg-RubenRyckaert.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-11-06>
  ***********
 Package rerunfilecheck Info: File `Wisselstroom-formulariumMetUitleg-RubenRyckaert.out' has not changed.
-(rerunfilecheck)             Checksum: CE026749CB882F6122C50C09DEADFD5E;2324.
+(rerunfilecheck)             Checksum: BE40ACAD434A8A2A57EFDDFB01D4A3E6;2720.
  ) 
 Here is how much of TeX's memory you used:
- 48156 strings out of 467871
- 1108911 string characters out of 5428442
- 1643623 words of memory out of 5000000
- 76056 multiletter control sequences out of 15000+600000
- 743381 words of font info for 211 fonts, out of 8000000 for 9000
+ 48579 strings out of 467871
+ 1119081 string characters out of 5428442
+ 1653828 words of memory out of 5000000
+ 76428 multiletter control sequences out of 15000+600000
+ 754776 words of font info for 226 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 113i,13n,122p,1238b,1182s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 113i,13n,122p,1238b,1392s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx6.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi6.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmri9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on Wisselstroom-formulariumMetUitleg-RubenRyckaert.pdf (19 pages, 1080885 bytes).
+Output written on Wisselstroom-formulariumMetUitleg-RubenRyckaert.pdf (27 pages, 1447770 bytes).
 PDF statistics:
- 420 PDF objects out of 1000 (max. 8388607)
- 49 named destinations out of 1000 (max. 500000)
- 65746 words of extra memory for PDF output out of 74296 (max. 10000000)
+ 492 PDF objects out of 1000 (max. 8388607)
+ 67 named destinations out of 1000 (max. 500000)
+ 71921 words of extra memory for PDF output out of 74296 (max. 10000000)
 

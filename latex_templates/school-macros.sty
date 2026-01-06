@@ -18,7 +18,7 @@
 \RequirePackage{etoolbox}
 \RequirePackage{xstring}
 \RequirePackage{tabularx} 
-\RequirePackage{tcolorbox}
+\RequirePackage[breakable]{tcolorbox}
 \RequirePackage{caption}
 \RequirePackage{subcaption}
 \RequirePackage{booktabs}
@@ -104,8 +104,9 @@
   \par\vspace{0.5\baselineskip}
 }
 
-% Concept definition box - for key terminology
+% Concept definition box - for key terminology, breakable across pages
 \newtcolorbox{conceptbox}[1][]{%
+  breakable,
   colback=gray!5,
   colframe=blue!40!black,
   boxrule=0.2pt, % Very thin frame
@@ -114,14 +115,17 @@
   boxsep=4pt,
   fonttitle=\bfseries,
   coltitle=white, % Changed from blue!40!black to white for visibility
+  before skip=10pt,
+  after skip=10pt,
   #1
 }
 
 % Inline highlight for key terms
 \newcommand{\keyterm}[1]{\textbf{\color{blue!70!black}#1}}
 
-% Warning box for important warnings
+% Warning box for important warnings, breakable across pages
 \newtcolorbox{warningbox}[1][]{%
+  breakable,
   colback=red!5,
   colframe=red!60!black,
   boxrule=0.5pt,
@@ -130,11 +134,14 @@
   boxsep=4pt,
   fonttitle=\bfseries,
   coltitle=white, % Ensure visibility
+  before skip=10pt,
+  after skip=10pt,
   #1
 }
 
-% Exercise box - similar to conceptbox style
+% Exercise box - similar to conceptbox style, breakable across pages
 \newtcolorbox{oefenblok}[1][]{%
+  breakable,
   colback=green!3,
   colframe=green!40!black,
   boxrule=0.2pt, % Very thin frame
@@ -143,6 +150,8 @@
   boxsep=4pt,
   fonttitle=\bfseries,
   coltitle=white,
+  before skip=10pt,
+  after skip=10pt,
   #1
 }
 
@@ -164,13 +173,16 @@
 \newcommand{\frm}[3]{%
   \stepcounter{FormulariumEntryCounter}%
   \begin{tcolorbox}[
+    breakable,
     colback=\frmBoxBack,
     colframe=\frmBoxFrame,
     boxrule=\frmBoxRule,
     leftrule=3pt,
     arc=\frmBoxArc,
     boxsep=\frmBoxSep,
-    left=6pt, right=6pt, top=4pt, bottom=4pt
+    left=6pt, right=6pt, top=4pt, bottom=4pt,
+    before skip=10pt,
+    after skip=10pt
   ]
     \textbf{#1:}\par
     \vspace{2pt}
