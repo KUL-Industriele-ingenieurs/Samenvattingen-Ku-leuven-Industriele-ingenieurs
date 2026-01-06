@@ -1,141 +1,245 @@
 % macro_usage_guide.tex
-% Beknopte handleiding voor school-macros
+% Complete overzicht van alle school-macros features
 
 \documentclass[a4paper,11pt]{article}
 \usepackage{school-macros}
-\usepackage{siunitx}
-\sisetup{per-mode=symbol}
 
-\title{School Macros: Snelgids}
-\author{}
+\title{School Macros — Volledige Gids}
+\author{Macro Voorbeelden}
 \date{\today}
 
 \begin{document}
 
 \maketitle
 \tableofcontents
-\section{Essentiële Boxen}
+\newpage
 
-Vier simpele boxen voor je documenten:
+\section{Box Macros}
 
+\subsection{Examenbox (Compact Stijl)}
 \begin{examenbox}
-Gebruik deze voor examenvragen en belangrijke tips.
+Dit is een examentip in compacte vorm. Gebruik dit voor korte, praktische tips voor examens.
+Let op: deze heeft geen titel parameter nodig.
 \end{examenbox}
 
+\subsection{Conceptbox}
+\begin{conceptbox}[title=Belangrijke Definitie]
+\textbf{Snijsnelheid} ($v_c$): de omtrekssnelheid van het gereedschap ten opzichte van het werkstuk, gemeten in m/min.
+
+Conceptbox heeft een grijze achtergrond met blauwe accent links.
+\end{conceptbox}
+
+\begin{conceptbox}
+Je kan ook een aangepaste titel gebruiken door [title=...] mee te geven.
+\end{conceptbox}
+
+\subsection{Warningbox}
 \begin{warningbox}
-Voor kritische aandachtspunten en waarschuwingen.
+Zonder titel parameter (geen titel-balk bovenaan).
 \end{warningbox}
 
-\begin{theorieblok}
-Voor theoretische uitleg en definities.
-\end{theorieblok}
+\begin{warningbox}[title=CUSTOM WAARSCHUWING]
+Je kan ook een aangepaste titel gebruiken door [title=...] mee te geven.
+\end{warningbox}
 
+\subsection{Oefenblok}
 \begin{oefenblok}
-Voor oefeningen en voorbeelden.
+Eenvoudige oefening zonder titel (geen titel-balk bovenaan).
+
+Bereken de snijsnelheid als het toerental $n = 1200$ rpm en de diameter $d = 50$ mm.
+
+\textbf{Oplossing:}
+\[ v_c = \pi d n = \pi \times 0.05 \times 1200 = 188.5 \text{ m/min} \]
 \end{oefenblok}
 
-\section{Formules}
+\begin{oefenblok}[title=Custom Oefening Titel]
+Je kan ook een aangepaste titel gebruiken, net zoals bij conceptbox.
+\end{oefenblok}
 
-Gebruik \verb|\frm| voor belangrijke formules. Deze komen automatisch in het formularium:
+\section{Formule Macros}
 
-\frm{Kinetische Energie}
-    {E_k = \frac{1}{2}mv^2}
-    {Waarbij $m$ de massa [kg] en $v$ de snelheid [m/s] is.}
+\subsection{Formula box (\textbackslash frm)}
+De \verb|\frm| macro creëert automatisch een formularium entry:
 
-\section{Symbolen}
+\frm{Snijsnelheid}{v_c = \pi d n}{waarbij $d$ de diameter in meter en $n$ het toerental in omw/min}
 
-Bij eerste gebruik toont \verb|\sym| een uitleg. Daarna alleen het symbool:
+\frm{Vermogen}{P = F_c \cdot v_c}{$F_c$ is de snijkracht in N, $v_c$ in m/s}
 
-\sym{f}{Frequentie}{Hz}
+\frm{Kinetische Energie}{E_k = \frac{1}{2}mv^2}{waarbij $m$ de massa [kg] en $v$ de snelheid [m/s]}
 
-Later in de tekst: $f = 50$ Hz (gewoon het symbool gebruiken).
+\subsection{Boxed vergelijking}
+Voor belangrijke vergelijkingen in de tekst:
+\[ \eqbox{E = mc^2} \]
 
-\section{Figuren}
+Of gewoon:
+\[ \boxed{F = ma} \]
 
-\verb|\fig[breedte]{pad}{onderschrift}{label}|
+\section{Text Emphasis}
 
-Voorbeeld: \verb|\fig[0.6\linewidth]{image.png}{Een grafiek}{fig:grafiek}|
-
-\section{Nuttige Wiskunde}
-
-\subsection{Afgeleiden}
 \begin{itemize}
-    \item \verb|\dd{y}{x}| voor $\displaystyle\dd{y}{x}$
-    \item \verb|\pd{f}{x}| voor $\displaystyle\pd{f}{x}$
-    \item \verb|\dx, \dy, \dt| voor integralen: $\int f(x) \, \dx$
+\item \verb|\concept{...}|: \concept{Dit is een belangrijk concept} (blauw, vet)
+\item \verb|\belangrijk{...}|: \belangrijk{Dit is een belangrijke waarschuwing} (rood, vet)
+\item \verb|\keyterm{...}|: \keyterm{Sleutelbegrip} (blauw accent)
 \end{itemize}
 
-\subsection{Vectoren}
+\section{Math Shortcuts}
+
+\subsection{Differentialen}
 \begin{itemize}
-    \item \verb|\vec{v}| geeft $\vec{v}$
-    \item \verb|\uvec{n}| geeft $\uvec{n}$ (eenheidsvector)
+\item \verb|\diff|: $\diff x$ (differentiaal operator)
+\item \verb|\dx, \dy, \dt, \dv|: $\dx, \dy, \dt, \dv$ (voor integralen)
+\item \verb|\dd{y}{x}|: $\dd{y}{x}$ (gewone afgeleide)
+\item \verb|\ddn{y}{x}{2}|: $\ddn{y}{x}{2}$ (2e afgeleide)
+\item \verb|\pd{f}{x}|: $\pd{f}{x}$ (partiële afgeleide)
+\item \verb|\pdn{f}{x}{2}|: $\pdn{f}{x}{2}$ (2e partiële afgeleide)
 \end{itemize}
 
-\subsection{Haakjes}
+Voorbeeld integraal:
+\[ \int_0^1 x^2 \, \dx = \left[\frac{x^3}{3}\right]_0^1 = \frac{1}{3} \]
+
+\subsection{Vectoren en Matrices}
 \begin{itemize}
-    \item \verb|\abs{x}| voor $\abs{x}$
-    \item \verb|\norm{v}| voor $\norm{v}$
-    \item \verb|\paren{...}|, \verb|\bracket{...}|, \verb|\curlybrace{...}|
+\item \verb|\vec{v}|: $\vec{v}$ (vector, vetgedrukt)
+\item \verb|\uvec{x}|: $\uvec{x}$ (eenheidsvector met hoedje)
+\item \verb|\mat{A}|: $\mat{A}$ (matrix)
+\end{itemize}
+
+Voorbeeld:
+\[ \vec{F} = m\vec{a} \quad \text{en} \quad \uvec{n} = \frac{\vec{v}}{\norm{\vec{v}}} \]
+
+\subsection{Verzamelingen}
+\begin{itemize}
+\item \verb|\RR|: $\RR$ (reële getallen)
+\item \verb|\NN|: $\NN$ (natuurlijke getallen)
+\item \verb|\ZZ|: $\ZZ$ (gehele getallen)
+\item \verb|\QQ|: $\QQ$ (rationale getallen)
+\item \verb|\CC|: $\CC$ (complexe getallen)
+\end{itemize}
+
+\subsection{Haakjes en Normen (Auto-scaling)}
+\begin{itemize}
+\item \verb|\abs{x}|: $\abs{x}$ (absolute waarde)
+\item \verb|\norm{v}|: $\norm{v}$ (norm)
+\item \verb|\paren{...}|: $\paren{\frac{a}{b}}$ (ronde haakjes)
+\item \verb|\bracket{...}|: $\bracket{\frac{a}{b}}$ (vierkante haakjes)
+\item \verb|\curlybrace{...}|: $\curlybrace{\frac{a}{b}}$ (accolades)
+\item \verb|\avg{...}|: $\avg{x}$ (gemiddelde)
 \end{itemize}
 
 \subsection{Snelle Breuken}
-\verb|\half|, \verb|\third|, \verb|\quarter| geeft $\half$, $\third$, $\quarter$
-
-\section{Eenheden}
-
-Met siunitx package:
 \begin{itemize}
-    \item \verb|\SI{100}{\km}| → \SI{100}{\km}
-    \item \verb|\SI{25}{\degC}| → \SI{25}{\degC}
-    \item \verb|\SI{9.81}{\ms}| → \SI{9.81}{\ms}
+\item \verb|\half|: $\half$
+\item \verb|\third|: $\third$  
+\item \verb|\quarter|: $\quarter$
+\item \verb|\ifrac{1}{3}|: \ifrac{1}{3} (inline text fraction: 1/3)
 \end{itemize}
 
-Shortcuts: \verb|\km, \kmh, \ms, \degC, \kW, \MW, \kPa, \MPa|
+\section{Figuren}
 
-\section{Nadruk}
+\subsection{Standaard figuur (\textbackslash fig)}
+Syntax: \verb|\fig[breedte]{pad}{onderschrift}{label}|
+
+Voorbeeld (uncomment om te gebruiken):
+\begin{verbatim}
+\fig[0.6\linewidth]{image.png}{Een voorbeeld figuur}{fig:example}
+\end{verbatim}
+
+\subsection{Auto figuur (\textbackslash autofig)}
+Genereert automatisch een label gebaseerd op de bestandsnaam:
+\begin{verbatim}
+\autofig[0.5\linewidth]{path/to/image.png}{Caption text}
+\end{verbatim}
+
+\subsection{Simpel image (\textbackslash img)}
+Nog eenvoudiger - alleen pad en caption:
+\begin{verbatim}
+\img{path/to/image.png}{Caption}
+\end{verbatim}
+
+\section{Symbolen}
+
+\subsection{Symbol registratie (\textbackslash sym)}
+Bij eerste gebruik toont \verb|\sym| een box met uitleg:
+
+\sym{v_c}{Snijsnelheid}{m/min}
+\sym{F_c}{Snijkracht}{N}
+\sym{P}{Vermogen}{W}
+\sym{omega}{Hoeksnelheid}{rad/s}
+
+Later in de tekst gebruik je gewoon het symbool: $v_c = 100$ m/min, $F_c = 500$ N.
+
+Tweede gebruik toont alleen het symbool: \sym{v_c}{Snijsnelheid}{m/min}
+
+\section{Cross-References (Nederlands)}
 
 \begin{itemize}
-    \item \verb|\concept{...}| voor \concept{nieuwe begrippen}
-    \item \verb|\belangrijk{...}| voor \belangrijk{belangrijke zaken}
+\item \verb|\eqnref{eq:label}|: \eqnref{eq:example} (verwijzing naar vergelijking)
+\item \verb|\Eqnref{eq:label}|: \Eqnref{eq:example} (aan begin van zin)
+\item \verb|\figref{fig:label}|: verwijzing naar figuur
+\item \verb|\Figref{fig:label}|: Figuur aan begin van zin
+\item \verb|\tabref{tab:label}|: verwijzing naar tabel
+\item \verb|\Tabref{tab:label}|: Tabel aan begin van zin
+\item \verb|\secref{sec:label}|: verwijzing naar sectie
+\item \verb|\Secref{sec:label}|: Sectie aan begin van zin
 \end{itemize}
 
-\section{Lijsten}
+Voorbeeld vergelijking met label:
+\begin{equation}\label{eq:example}
+E = mc^2
+\end{equation}
 
-\subsection{Opsomming (itemize)}
-\begin{itemize}
-    \item Eerste punt
-    \item Tweede punt
-    \item Geneste lijsten:
-    \begin{itemize}
-        \item Sub-punt A
-        \item Sub-punt B
-    \end{itemize}
-\end{itemize}
+\section{Utility Macros}
 
-\subsection{Genummerd (enumerate)}
+\subsection{TODO markers}
+\TODO{Voeg hier meer voorbeelden toe}
+
+\FIXME{Controleer deze berekening}
+
+\NOTE{Belangrijk om te onthouden voor het examen}
+
+\subsection{Degree symbool}
+Gebruik \verb|\degree| voor graden: $45\degree$, $90\degree$
+
+\section{Lists met enumitem}
+
+\subsection{Genummerde lijst}
 \begin{enumerate}
-    \item Eerste stap
-    \item Tweede stap
-    \item Derde stap
+\item Eerste punt
+\item Tweede punt
+    \begin{enumerate}
+    \item Sub-punt A
+    \item Sub-punt B
+    \end{enumerate}
+\item Derde punt
 \end{enumerate}
 
-\subsection{Beschrijving (description)}
+\subsection{Bullet lijst}
+\begin{itemize}
+\item Eerste item
+\item Tweede item
+    \begin{itemize}
+    \item Sub-item 1
+    \item Sub-item 2
+    \end{itemize}
+\item Derde item
+\end{itemize}
+
+\subsection{Beschrijvingslijst}
 \begin{description}
-    \item[Snelheid] Afgelegde afstand per tijdseenheid
-    \item[Versnelling] Verandering van snelheid per tijdseenheid
+\item[Snelheid] Afgelegde afstand per tijdseenheid
+\item[Versnelling] Verandering van snelheid per tijdseenheid
+\item[Kracht] Het product van massa en versnelling
 \end{description}
 
 \section{Tabellen}
 
-Gebruik \texttt{booktabs} voor professionele tabellen:
-
+\subsection{Basis tabel met booktabs}
 \begin{table}[H]
 \centering
 \caption{Materiaaleigenschappen}
 \begin{tabular}{lcc}
 \toprule
-\textbf{Materiaal} & \textbf{Dichtheid} & \textbf{E-modulus} \\
- & [\si{\kg\per\cubic\meter}] & [\si{\giga\pascal}] \\
+\textbf{Materiaal} & \textbf{Dichtheid [kg/m³]} & \textbf{E-modulus [GPa]} \\
 \midrule
 Staal & 7850 & 210 \\
 Aluminium & 2700 & 70 \\
@@ -144,7 +248,22 @@ Beton & 2400 & 30 \\
 \end{tabular}
 \end{table}
 
-\section{Grafieken}
+\subsection{Tabel met lange tekst (tabularx)}
+\begin{table}[H]
+\centering
+\caption{Begrippen en definities}
+\begin{tabularx}{\linewidth}{l X}
+\toprule
+\textbf{Begrip} & \textbf{Definitie} \\
+\midrule
+Spanning & De kracht per oppervlakte-eenheid die op een materiaal wordt uitgeoefend \\
+\addlinespace
+Rek & De relatieve verlenging of verkorting van een materiaal onder belasting \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Grafieken met TikZ/PGFPlots}
 
 \subsection{Functie Plot}
 \begin{center}
@@ -182,7 +301,7 @@ Beton & 2400 & 30 \\
 \end{tikzpicture}
 \end{center}
 
-\subsection{Eenvoudig Diagram}
+\subsection{Eenvoudig TikZ Diagram}
 \begin{center}
 \begin{tikzpicture}
 % Rechthoek
@@ -199,91 +318,68 @@ Beton & 2400 & 30 \\
 
 \section{Geavanceerde Layout}
 
-\subsection{Tekst naast Figuur}
-Wil je een afbeelding naast tekst plaatsen? Gebruik twee `minipage` omgevingen naast elkaar.
-
+\subsection{Tekst naast Figuur (minipage)}
 \begin{figure}[H]
     \centering
-    \begin{minipage}{0.6\textwidth}
-        \textbf{Uitleg bij de figuur:}\\
-        Soms is een figuur te smal om de hele breedte te vullen, of wil je direct uitleg ernaast geven.
+    \begin{minipage}{0.55\textwidth}
+        \textbf{Uitleg bij de figuur:}
         
-        Door de pagina op te splitsen in twee blokken (minipages) kun je tekst en beeld naast elkaar zetten.
-        Let op dat de breedtes samen niet meer dan \texttt{1.0\\textwidth} zijn (hier 0.6 en 0.35).
+        Door minipage te gebruiken kun je tekst en een afbeelding naast elkaar plaatsen.
+        
+        Let op dat de breedtes samen niet meer dan 1.0\textbackslash textwidth zijn.
     \end{minipage}%
     \hfill
-    \begin{minipage}{0.35\textwidth}
+    \begin{minipage}{0.4\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{image1.png}
-        \caption{Kleine figuur}
+        \fbox{Plaats hier je afbeelding}
     \end{minipage}
 \end{figure}
 
-\subsection{Tabellen met veel tekst}
-Gebruik \texttt{tabularx} als je een tabel wilt die de hele paginabreedte vult en waarbij de tekst automatisch naar de volgende regel gaat. Gebruik \texttt{X} voor de kolom die zich moet aanpassen.
+\subsection{Multiple kolommen}
+\begin{multicols}{2}
+Dit is tekst in twee kolommen. Gebruik \texttt{multicols} voor automatische kolommen.
 
-\begin{table}[H]
-    \centering
-    \caption{Voorbeeld met lange tekst}
-    \begin{tabularx}{\linewidth}{l X l}
-        \toprule
-        \textbf{Begrip} & \textbf{Lange Omschrijving} & \textbf{Categorie} \\
-        \midrule
-        Marketing & Het proces waarmee bedrijven waarde creëren voor klanten en sterke klantrelaties opbouwen om in ruil daarvoor waarde van klanten te verkrijgen. & Business \\
-        \addlinespace
-        Inflatie & Een algemene stijging van het prijspeil van goederen en diensten in een economie over een bepaalde periode. & Economie \\
-        \bottomrule
-    \end{tabularx}
-\end{table}
+De tekst vloeit automatisch van de ene kolom naar de andere.
 
-\subsection{Layout Tips}
-\begin{itemize}
-    \item \textbf{Witruimte:} LaTeX regelt witruimte meestal goed. Gebruik \verb|\vspace{1cm}| alleen als het echt moet.
-    \item \textbf{Nieuwe pagina:}
-    \begin{itemize}
-        \item \verb|\newpage|: Start direct een nieuwe pagina.
-        \item \verb|\clearpage|: Start een nieuwe pagina én plaatst alle nog "zwevende" figuren/tabellen direct. Dit voorkomt dat figuren opschuiven naar het einde van het hoofdstuk.
-    \end{itemize}
-    \item \textbf{Zwevende elementen:} Gebruik \texttt{[H]} (van het \texttt{float} package) als je een figuur of tabel \textit{precies hier} wilt dwingen, maar wees er zuinig mee. LaTeX plaatst ze vaak beter zelf bovenaan \texttt{[t]} of onderaan \texttt{[b]}.
-\end{itemize}
+Je kan dit gebruiken voor compacte opsommingen of vergelijkingen.
 
-\section{Workflow}
+\columnbreak
 
-\subsection{Typisch Document}
+Tweede kolom begint hier. Je kan \verb|\columnbreak| gebruiken om handmatig naar de volgende kolom te gaan.
+\end{multicols}
+
+\section{Workflow Tips}
+
+\subsection{Belangrijk}
+\begin{enumerate}
+\item Compileer \textbf{tweemaal} voor formularium en symbolenlijst
+\item Gebruik \verb|\frm| voor alle belangrijke formules
+\item Gebruik \verb|\sym| bij eerste vermelding van symbolen
+\item Gebruik \verb|school-macros| package voor consistentie
+\end{enumerate}
+
+\subsection{Typisch Document Structuur}
 \begin{verbatim}
-\documentclass[a4paper,11pt]{report}
+\documentclass[a4paper,11pt]{article}
 \usepackage{school-macros}
-\usepackage{siunitx}
+
+\title{Titel}
+\author{Naam}
+\date{\today}
 
 \begin{document}
+\maketitle
+\tableofcontents
+\newpage
 
-\chapter{Hoofdstuk}
-
-\frm{Label}{formule}{uitleg}
-\sym{x}{Naam}{Eenheid}
-
-\begin{examenbox}
-Belangrijke tip...
-\end{examenbox}
-
-\begin{oefenblok}
-Oefening...
-\end{oefenblok}
+\section{Hoofdstuk}
+% Inhoud...
 
 \appendix
 \printsymbols
 \printformularium
-
 \end{document}
 \end{verbatim}
-
-\subsection{Belangrijk}
-\begin{enumerate}
-    \item Compileer \textbf{tweemaal} voor formularium en symbolenlijst
-    \item Gebruik \verb|\frm| voor alle belangrijke formules
-    \item Gebruik \verb|\sym| bij eerste vermelding van symbolen
-    \item Eenheden altijd via \verb|\SI{waarde}{eenheid}|
-\end{enumerate}
 
 \appendix
 \section*{Symbolenlijst}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.12.16)  29 DEC 2025 17:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.12.16)  6 JAN 2026 13:15
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1377,40 +1377,45 @@ Underfull \hbox (badness 10000) in paragraph at lines 1980--1984
  []
 
 [53 <./image50.png>]
-Overfull \hbox (536.34938pt too wide) in paragraph at lines 2006--2010
-[] 
+Underfull \hbox (badness 10000) in paragraph at lines 2006--2009
+
  []
 
 [54 <./image51.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 2012--2017
+Underfull \hbox (badness 10000) in paragraph at lines 2014--2019
 
  []
 
 <image52.png, id=810, 512.66531pt x 301.125pt>
 File: image52.png Graphic file (type png)
 <use image52.png>
-Package pdftex.def Info: image52.png  used on input line 2024.
+Package pdftex.def Info: image52.png  used on input line 2029.
 (pdftex.def)             Requested size: 386.95897pt x 227.29054pt.
-<image53.png, id=811, 277.035pt x 146.79843pt>
+[55 <./image52.png>]
+<image53.png, id=818, 277.035pt x 146.79843pt>
 File: image53.png Graphic file (type png)
 <use image53.png>
-Package pdftex.def Info: image53.png  used on input line 2045.
+Package pdftex.def Info: image53.png  used on input line 2050.
 (pdftex.def)             Requested size: 290.22107pt x 153.78673pt.
-[55 <./image52.png>]
 <image54.png, id=819, 536.75531pt x 274.02374pt>
 File: image54.png Graphic file (type png)
 <use image54.png>
-Package pdftex.def Info: image54.png  used on input line 2054.
+Package pdftex.def Info: image54.png  used on input line 2059.
 (pdftex.def)             Requested size: 290.22107pt x 148.16295pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 2059--2062
+Underfull \hbox (badness 10000) in paragraph at lines 2064--2067
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2068--2071
 
  []
 
 <image55.png, id=820, 319.1925pt x 137.01187pt>
 File: image55.png Graphic file (type png)
 <use image55.png>
-Package pdftex.def Info: image55.png  used on input line 2075.
+Package pdftex.def Info: image55.png  used on input line 2084.
 (pdftex.def)             Requested size: 386.95897pt x 166.10056pt.
 [56 <./image53.png> <./image54.png>]
 Hoofdstuk 9.
@@ -1418,338 +1423,339 @@ Hoofdstuk 9.
 <image60.png, id=835, 402.75468pt x 300.3722pt>
 File: image60.png Graphic file (type png)
 <use image60.png>
-Package pdftex.def Info: image60.png  used on input line 2111.
+Package pdftex.def Info: image60.png  used on input line 2120.
 (pdftex.def)             Requested size: 241.84843pt x 180.36678pt.
  [58 <./image60.png>]
 <image61.png, id=844, 444.91219pt x 346.29375pt>
 File: image61.png Graphic file (type png)
 <use image61.png>
-Package pdftex.def Info: image61.png  used on input line 2213.
+Package pdftex.def Info: image61.png  used on input line 2222.
 (pdftex.def)             Requested size: 217.66211pt x 169.41592pt.
 <image62.png, id=845, 299.61937pt x 225.84375pt>
 File: image62.png Graphic file (type png)
 <use image62.png>
-Package pdftex.def Info: image62.png  used on input line 2214.
+Package pdftex.def Info: image62.png  used on input line 2223.
 (pdftex.def)             Requested size: 217.66211pt x 164.07195pt.
- [59 <./image61.png> <./image62.png>]
-<image63.png, id=854, 682.80093pt x 306.39468pt>
+ [59]
+<image63.png, id=850, 682.80093pt x 306.39468pt>
 File: image63.png Graphic file (type png)
 <use image63.png>
-Package pdftex.def Info: image63.png  used on input line 2293.
+Package pdftex.def Info: image63.png  used on input line 2302.
 (pdftex.def)             Requested size: 290.22107pt x 130.23238pt.
- [60 <./image63.png>]
-<image64.png, id=865, 489.32813pt x 295.1025pt>
+ [60 <./image61.png> <./image62.png>]
+<image64.png, id=863, 489.32813pt x 295.1025pt>
 File: image64.png Graphic file (type png)
 <use image64.png>
-Package pdftex.def Info: image64.png  used on input line 2315.
+Package pdftex.def Info: image64.png  used on input line 2324.
 (pdftex.def)             Requested size: 241.84843pt x 145.85329pt.
-<image65.png, id=866, 1039.63406pt x 216.81pt>
+ [61 <./image63.png> <./image64.png>]
+<image65.png, id=873, 1039.63406pt x 216.81pt>
 File: image65.png Graphic file (type png)
 <use image65.png>
-Package pdftex.def Info: image65.png  used on input line 2335.
+Package pdftex.def Info: image65.png  used on input line 2344.
 (pdftex.def)             Requested size: 386.95897pt x 80.69814pt.
 
 
 Package microtype Warning: I cannot find a spacing list for font
 (microtype)                `TS1/lmr/m/it/10' (context: `nonfrench'). Switching off
-(microtype)                spacing for this font on input line 2341.
+(microtype)                spacing for this font on input line 2350.
 
 
 Package microtype Warning: I cannot find a spacing list for font
 (microtype)                `TS1/lmr/m/it/7' (context: `nonfrench'). Switching off
-(microtype)                spacing for this font on input line 2341.
+(microtype)                spacing for this font on input line 2350.
 
-[61 <./image64.png> <./image65.png>]
-<image66.png, id=875, 1042.64531pt x 552.56438pt>
+<image66.png, id=874, 1042.64531pt x 552.56438pt>
 File: image66.png Graphic file (type png)
 <use image66.png>
-Package pdftex.def Info: image66.png  used on input line 2346.
+Package pdftex.def Info: image66.png  used on input line 2355.
 (pdftex.def)             Requested size: 386.95897pt x 205.06953pt.
-<image67.png, id=876, 636.87938pt x 282.30469pt>
+[62 <./image65.png> <./image66.png>]
+<image67.png, id=884, 636.87938pt x 282.30469pt>
 File: image67.png Graphic file (type png)
 <use image67.png>
-Package pdftex.def Info: image67.png  used on input line 2367.
+Package pdftex.def Info: image67.png  used on input line 2376.
 (pdftex.def)             Requested size: 386.95897pt x 171.525pt.
-<image68.png, id=877, 353.06906pt x 185.94469pt>
+<image68.png, id=885, 353.06906pt x 185.94469pt>
 File: image68.png Graphic file (type png)
 <use image68.png>
-Package pdftex.def Info: image68.png  used on input line 2375.
+Package pdftex.def Info: image68.png  used on input line 2384.
 (pdftex.def)             Requested size: 145.11053pt x 76.42223pt.
-<image69.png, id=878, 307.1475pt x 252.19218pt>
+<image69.png, id=886, 307.1475pt x 252.19218pt>
 File: image69.png Graphic file (type png)
 <use image69.png>
-Package pdftex.def Info: image69.png  used on input line 2376.
+Package pdftex.def Info: image69.png  used on input line 2385.
 (pdftex.def)             Requested size: 145.11053pt x 119.14604pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 2389--2398
-
- []
-
-[62 <./image66.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 2399--2401
+Underfull \hbox (badness 10000) in paragraph at lines 2398--2407
 
  []
 
 [63 <./image67.png> <./image68.png> <./image69.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 2408--2410
+
+ []
+
 <image70.png, id=896, 288.3272pt x 307.90031pt>
 File: image70.png Graphic file (type png)
 <use image70.png>
-Package pdftex.def Info: image70.png  used on input line 2424.
+Package pdftex.def Info: image70.png  used on input line 2433.
 (pdftex.def)             Requested size: 145.11053pt x 154.96457pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 2429--2446
+Underfull \hbox (badness 10000) in paragraph at lines 2438--2455
 
  []
 
-[64 <./image70.png>]
-<image71.png, id=903, 185.94469pt x 388.45125pt>
+[64]
+<image71.png, id=901, 185.94469pt x 388.45125pt>
 File: image71.png Graphic file (type png)
 <use image71.png>
-Package pdftex.def Info: image71.png  used on input line 2449.
+Package pdftex.def Info: image71.png  used on input line 2458.
 (pdftex.def)             Requested size: 145.11053pt x 303.15671pt.
-<.png, id=904, 463.7325pt x 331.99031pt>
+ [65 <./image70.png> <./image71.png>]
+<.png, id=910, 463.7325pt x 331.99031pt>
 File: .png Graphic file (type png)
 <use .png>
-Package pdftex.def Info: .png  used on input line 2470.
+Package pdftex.def Info: .png  used on input line 2479.
 (pdftex.def)             Requested size: 217.66211pt x 155.82776pt.
-<image72.png, id=905, 414.79968pt x 105.39375pt>
+<image72.png, id=911, 414.79968pt x 105.39375pt>
 File: image72.png Graphic file (type png)
 <use image72.png>
-Package pdftex.def Info: image72.png  used on input line 2471.
+Package pdftex.def Info: image72.png  used on input line 2480.
 (pdftex.def)             Requested size: 217.66211pt x 55.30359pt.
- [65 <./image71.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 2490--2495
 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2553--2558
+Underfull \hbox (badness 10000) in paragraph at lines 2499--2504
 
  []
 
 [66 <./.png> <./image72.png>]
-<image75.png, id=919, 210.7875pt x 198.7425pt>
+Underfull \hbox (badness 10000) in paragraph at lines 2562--2567
+
+ []
+
+[67]
+<image75.png, id=925, 210.7875pt x 198.7425pt>
 File: image75.png Graphic file (type png)
 <use image75.png>
-Package pdftex.def Info: image75.png  used on input line 2585.
+Package pdftex.def Info: image75.png  used on input line 2594.
 (pdftex.def)             Requested size: 145.11053pt x 136.82011pt.
- [67]
-Underfull \hbox (badness 10000) in paragraph at lines 2590--2592
+
+Underfull \hbox (badness 10000) in paragraph at lines 2599--2601
 
  []
 
 <image73.png, id=926, 252.945pt x 403.5075pt>
 File: image73.png Graphic file (type png)
 <use image73.png>
-Package pdftex.def Info: image73.png  used on input line 2606.
+Package pdftex.def Info: image73.png  used on input line 2615.
 (pdftex.def)             Requested size: 145.11053pt x 231.49165pt.
-[68 <./image75.png> <./image73.png>]
-<image74.png, id=935, 369.63094pt x 380.92313pt>
+[68 <./image75.png>]
+<image74.png, id=933, 369.63094pt x 380.92313pt>
 File: image74.png Graphic file (type png)
 <use image74.png>
-Package pdftex.def Info: image74.png  used on input line 2621.
+Package pdftex.def Info: image74.png  used on input line 2630.
 (pdftex.def)             Requested size: 193.47578pt x 199.38895pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 2651--2657
+ [69 <./image73.png> <./image74.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 2660--2666
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2683--2683
+Underfull \hbox (badness 10000) in paragraph at lines 2692--2692
 []|\T1/lmr/m/n/12 (+10) Laserstraalbewerking
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2683--2683
+Underfull \hbox (badness 10000) in paragraph at lines 2692--2692
 []|\T1/lmr/m/n/12 (+10) Elektronenstraalbewerking
  []
 
-[69 <./image74.png>]
-<image76.png, id=944, 246.9225pt x 217.5628pt>
+[70]
+<image76.png, id=949, 246.9225pt x 217.5628pt>
 File: image76.png Graphic file (type png)
 <use image76.png>
-Package pdftex.def Info: image76.png  used on input line 2715.
+Package pdftex.def Info: image76.png  used on input line 2725.
 (pdftex.def)             Requested size: 241.84843pt x 213.09058pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 2725--2727
+Underfull \hbox (badness 10000) in paragraph at lines 2735--2737
 
  []
 
-[70]
-<image77.png, id=950, 340.27126pt x 146.04562pt>
+[71 <./image76.png>]
+<image77.png, id=956, 340.27126pt x 146.04562pt>
 File: image77.png Graphic file (type png)
 <use image77.png>
-Package pdftex.def Info: image77.png  used on input line 2770.
+Package pdftex.def Info: image77.png  used on input line 2780.
 (pdftex.def)             Requested size: 338.58632pt x 145.3299pt.
- [71 <./image76.png>]
-<Type_lasers.png, id=957, 494.59781pt x 232.61906pt>
+ [72]
+<Type_lasers.png, id=962, 494.59781pt x 232.61906pt>
 File: Type_lasers.png Graphic file (type png)
 <use Type_lasers.png>
-Package pdftex.def Info: Type_lasers.png  used on input line 2809.
+Package pdftex.def Info: Type_lasers.png  used on input line 2819.
 (pdftex.def)             Requested size: 386.95897pt x 181.9923pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 2814--2820
+Underfull \hbox (badness 10000) in paragraph at lines 2824--2830
 
  []
 
-<Reflecteren in functie van de golflengte.png, id=958, 349.305pt x 228.855pt>
+<Reflecteren in functie van de golflengte.png, id=963, 349.305pt x 228.855pt>
 File: Reflecteren in functie van de golflengte.png Graphic file (type png)
 <use Reflecteren in functie van de golflengte.png>
-Package pdftex.def Info: Reflecteren in functie van de golflengte.png  used on input line 2823.
+Package pdftex.def Info: Reflecteren in functie van de golflengte.png  used on input line 2833.
 (pdftex.def)             Requested size: 193.47578pt x 126.7611pt.
-[72 <./image77.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 2829--2832
+[73 <./image77.png> <./Type_lasers.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 2839--2842
 
  []
 
-<Absorptie van polycarbonaat.png, id=966, 444.91219pt x 294.34969pt>
+<Absorptie van polycarbonaat.png, id=973, 444.91219pt x 294.34969pt>
 File: Absorptie van polycarbonaat.png Graphic file (type png)
 <use Absorptie van polycarbonaat.png>
-Package pdftex.def Info: Absorptie van polycarbonaat.png  used on input line 2837.
+Package pdftex.def Info: Absorptie van polycarbonaat.png  used on input line 2847.
 (pdftex.def)             Requested size: 193.47578pt x 128.00064pt.
-[73 <./Type_lasers.png> <./Reflecteren in functie van de golflengte.png> <./Absorptie van polycarbonaat.png>]
-<Kwaliteit laserstraal.png, id=977, 423.08063pt x 220.57407pt>
+<Kwaliteit laserstraal.png, id=974, 423.08063pt x 220.57407pt>
 File: Kwaliteit laserstraal.png Graphic file (type png)
 <use Kwaliteit laserstraal.png>
-Package pdftex.def Info: Kwaliteit laserstraal.png  used on input line 2855.
+Package pdftex.def Info: Kwaliteit laserstraal.png  used on input line 2865.
 (pdftex.def)             Requested size: 241.84843pt x 126.08864pt.
- [74 <./Kwaliteit laserstraal.png>]
-<Laserfocussen.png, id=985, 313.17pt x 346.29375pt>
+[74 <./Reflecteren in functie van de golflengte.png> <./Absorptie van polycarbonaat.png>]
+<Laserfocussen.png, id=982, 313.17pt x 346.29375pt>
 File: Laserfocussen.png Graphic file (type png)
 <use Laserfocussen.png>
-Package pdftex.def Info: Laserfocussen.png  used on input line 2907.
+Package pdftex.def Info: Laserfocussen.png  used on input line 2917.
 (pdftex.def)             Requested size: 241.84843pt x 267.4396pt.
- [75 <./Laserfocussen.png>]
-<NC-lasers.png, id=992, 752.0597pt x 302.63063pt>
+ [75 <./Kwaliteit laserstraal.png>]
+<NC-lasers.png, id=990, 752.0597pt x 302.63063pt>
 File: NC-lasers.png Graphic file (type png)
 <use NC-lasers.png>
-Package pdftex.def Info: NC-lasers.png  used on input line 2932.
+Package pdftex.def Info: NC-lasers.png  used on input line 2942.
 (pdftex.def)             Requested size: 386.95897pt x 155.71567pt.
-<Kleinefiguurdoorlasersnijden.png, id=993, 165.61874pt x 157.33781pt>
+ [76 <./Laserfocussen.png>]
+<Kleinefiguurdoorlasersnijden.png, id=997, 165.61874pt x 157.33781pt>
 File: Kleinefiguurdoorlasersnijden.png Graphic file (type png)
 <use Kleinefiguurdoorlasersnijden.png>
-Package pdftex.def Info: Kleinefiguurdoorlasersnijden.png  used on input line 2951.
+Package pdftex.def Info: Kleinefiguurdoorlasersnijden.png  used on input line 2961.
 (pdftex.def)             Requested size: 193.47578pt x 183.81079pt.
- [76 <./NC-lasers.png>] [77 <./Kleinefiguurdoorlasersnijden.png>]
+ [77 <./NC-lasers.png> <./Kleinefiguurdoorlasersnijden.png>]
 Hoofdstuk 10.
 
-Underfull \hbox (badness 10000) in paragraph at lines 2986--2990
+Underfull \hbox (badness 10000) in paragraph at lines 2996--3000
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2991--2995
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2995--3001
+Underfull \hbox (badness 10000) in paragraph at lines 3001--3005
 
  []
 
 [78]
+Underfull \hbox (badness 10000) in paragraph at lines 3005--3011
+
+ []
+
 <Kracht-wegdiagram van Ponsen.png, id=1010, 375.65344pt x 357.58594pt>
 File: Kracht-wegdiagram van Ponsen.png Graphic file (type png)
 <use Kracht-wegdiagram van Ponsen.png>
-Package pdftex.def Info: Kracht-wegdiagram van Ponsen.png  used on input line 3007.
+Package pdftex.def Info: Kracht-wegdiagram van Ponsen.png  used on input line 3017.
 (pdftex.def)             Requested size: 217.66211pt x 207.19809pt.
 <Het Ponsprocess.png, id=1011, 367.3725pt x 278.54062pt>
 File: Het Ponsprocess.png Graphic file (type png)
 <use Het Ponsprocess.png>
-Package pdftex.def Info: Het Ponsprocess.png  used on input line 3008.
+Package pdftex.def Info: Het Ponsprocess.png  used on input line 3018.
 (pdftex.def)             Requested size: 217.66211pt x 165.03456pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 3013--3017
+Underfull \hbox (badness 10000) in paragraph at lines 3023--3027
 
  []
 
-<image80.png, id=1012, 339.51843pt x 211.54031pt>
+[79 <./Kracht-wegdiagram van Ponsen.png> <./Het Ponsprocess.png>]
+<image80.png, id=1023, 339.51843pt x 211.54031pt>
 File: image80.png Graphic file (type png)
 <use image80.png>
-Package pdftex.def Info: image80.png  used on input line 3028.
+Package pdftex.def Info: image80.png  used on input line 3038.
 (pdftex.def)             Requested size: 217.66211pt x 135.6145pt.
-[79 <./Kracht-wegdiagram van Ponsen.png> <./Het Ponsprocess.png>]
 <snijspleetbelang.png, id=1024, 292.84406pt x 164.86594pt>
 File: snijspleetbelang.png Graphic file (type png)
 <use snijspleetbelang.png>
-Package pdftex.def Info: snijspleetbelang.png  used on input line 3048.
+Package pdftex.def Info: snijspleetbelang.png  used on input line 3058.
 (pdftex.def)             Requested size: 386.95897pt x 217.87273pt.
  [80 <./image80.png> <./snijspleetbelang.png>]
 <Schuifspanningen bij Ponsen.png, id=1033, 193.47281pt x 243.15843pt>
 File: Schuifspanningen bij Ponsen.png Graphic file (type png)
 <use Schuifspanningen bij Ponsen.png>
-Package pdftex.def Info: Schuifspanningen bij Ponsen.png  used on input line 3074.
+Package pdftex.def Info: Schuifspanningen bij Ponsen.png  used on input line 3084.
 (pdftex.def)             Requested size: 217.66211pt x 273.56369pt.
  [81 <./Schuifspanningen bij Ponsen.png>]
 <Fijnsnijden.png, id=1039, 291.33844pt x 253.69781pt>
 File: Fijnsnijden.png Graphic file (type png)
 <use Fijnsnijden.png>
-Package pdftex.def Info: Fijnsnijden.png  used on input line 3116.
+Package pdftex.def Info: Fijnsnijden.png  used on input line 3126.
 (pdftex.def)             Requested size: 386.95897pt x 336.9919pt.
- [82 <./Fijnsnijden.png>]
-<Ruw oppervlakte Knappelen.png, id=1046, 332.74312pt x 300.3722pt>
+ [82]
+<Ruw oppervlakte Knappelen.png, id=1044, 332.74312pt x 300.3722pt>
 File: Ruw oppervlakte Knappelen.png Graphic file (type png)
 <use Ruw oppervlakte Knappelen.png>
-Package pdftex.def Info: Ruw oppervlakte Knappelen.png  used on input line 3154.
+Package pdftex.def Info: Ruw oppervlakte Knappelen.png  used on input line 3164.
 (pdftex.def)             Requested size: 193.47578pt x 174.65598pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 3159--3161
+ [83 <./Fijnsnijden.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 3169--3171
 
  []
 
-[83 <./Ruw oppervlakte Knappelen.png>] [84]
+[84 <./Ruw oppervlakte Knappelen.png>] [85]
 Hoofdstuk 11.
-[85]
-<Tabel van soorten legeringen die gegoten worden.png, id=1064, 934.24031pt x 241.65282pt>
+[86]
+<Tabel van soorten legeringen die gegoten worden.png, id=1068, 934.24031pt x 241.65282pt>
 File: Tabel van soorten legeringen die gegoten worden.png Graphic file (type png)
 <use Tabel van soorten legeringen die gegoten worden.png>
-Package pdftex.def Info: Tabel van soorten legeringen die gegoten worden.png  used on input line 3280.
+Package pdftex.def Info: Tabel van soorten legeringen die gegoten worden.png  used on input line 3290.
 (pdftex.def)             Requested size: 386.95897pt x 100.0923pt.
- [86 <./Tabel van soorten legeringen die gegoten worden.png>]
-<Zandgieten.png, id=1071, 477.28313pt x 446.41782pt>
+ [87 <./Tabel van soorten legeringen die gegoten worden.png>]
+<Zandgieten.png, id=1078, 477.28313pt x 446.41782pt>
 File: Zandgieten.png Graphic file (type png)
 <use Zandgieten.png>
-Package pdftex.def Info: Zandgieten.png  used on input line 3333.
+Package pdftex.def Info: Zandgieten.png  used on input line 3343.
 (pdftex.def)             Requested size: 217.66211pt x 203.58362pt.
- [87] [88 <./Zandgieten.png>] [89]
-<Kernen_gieten.png, id=1093, 662.475pt x 288.3272pt>
+ [88 <./Zandgieten.png>] [89]
+<Kernen_gieten.png, id=1089, 662.475pt x 288.3272pt>
 File: Kernen_gieten.png Graphic file (type png)
 <use Kernen_gieten.png>
-Package pdftex.def Info: Kernen_gieten.png  used on input line 3463.
+Package pdftex.def Info: Kernen_gieten.png  used on input line 3473.
 (pdftex.def)             Requested size: 483.69687pt x 210.51668pt.
-<Autozandvormen.png, id=1094, 554.82281pt x 201.00093pt>
+ [90]
+<Autozandvormen.png, id=1098, 554.82281pt x 201.00093pt>
 File: Autozandvormen.png Graphic file (type png)
 <use Autozandvormen.png>
-Package pdftex.def Info: Autozandvormen.png  used on input line 3479.
+Package pdftex.def Info: Autozandvormen.png  used on input line 3489.
 (pdftex.def)             Requested size: 290.22107pt x 105.14061pt.
- [90 <./Kernen_gieten.png> <./Autozandvormen.png>]
-<verlorenwasgieten.png, id=1103, 192.72pt x 352.31625pt>
+ [91 <./Kernen_gieten.png> <./Autozandvormen.png>]
+<verlorenwasgieten.png, id=1108, 192.72pt x 352.31625pt>
 File: verlorenwasgieten.png Graphic file (type png)
 <use verlorenwasgieten.png>
-Package pdftex.def Info: verlorenwasgieten.png  used on input line 3524.
+Package pdftex.def Info: verlorenwasgieten.png  used on input line 3534.
 (pdftex.def)             Requested size: 193.47578pt x 353.69699pt.
- [91] [92 <./verlorenwasgieten.png>]
-<Kostenverschillendetechniekengieten.png, id=1115, 603.0028pt x 369.63094pt>
+ [92] [93 <./verlorenwasgieten.png>]
+<Kostenverschillendetechniekengieten.png, id=1119, 603.0028pt x 369.63094pt>
 File: Kostenverschillendetechniekengieten.png Graphic file (type png)
 <use Kostenverschillendetechniekengieten.png>
-Package pdftex.def Info: Kostenverschillendetechniekengieten.png  used on input line 3625.
+Package pdftex.def Info: Kostenverschillendetechniekengieten.png  used on input line 3635.
 (pdftex.def)             Requested size: 483.69687pt x 296.49475pt.
- [93]
+ [94]
 Hoofdstuk 12.
-[94 <./Kostenverschillendetechniekengieten.png>]
-<kenmerkeneneisenmachines.png, id=1127, 972.63374pt x 360.59718pt>
+[95 <./Kostenverschillendetechniekengieten.png>]
+<kenmerkeneneisenmachines.png, id=1131, 972.63374pt x 360.59718pt>
 File: kenmerkeneneisenmachines.png Graphic file (type png)
 <use kenmerkeneneisenmachines.png>
-Package pdftex.def Info: kenmerkeneneisenmachines.png  used on input line 3663.
+Package pdftex.def Info: kenmerkeneneisenmachines.png  used on input line 3673.
 (pdftex.def)             Requested size: 386.95897pt x 143.4605pt.
- [95 <./kenmerkeneneisenmachines.png>]
-<image85.png, id=1134, 301.125pt x 308.65312pt>
+ [96 <./kenmerkeneneisenmachines.png>]
+<image85.png, id=1138, 301.125pt x 308.65312pt>
 File: image85.png Graphic file (type png)
 <use image85.png>
-Package pdftex.def Info: image85.png  used on input line 3695.
+Package pdftex.def Info: image85.png  used on input line 3705.
 (pdftex.def)             Requested size: 217.66211pt x 223.11078pt.
- [96 <./image85.png>]
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 3725.
+ [97 <./image85.png>]
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 3735.
  (C:\Program Files\MiKTeX\tex/latex/lm\t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
@@ -1757,7 +1763,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Trying to load font information for T1+lmss on input line 3758.
+LaTeX Font Info:    Trying to load font information for T1+lmss on input line 3768.
  (C:\Program Files\MiKTeX\tex/latex/lm\t1lmss.fd
 File: t1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
@@ -1765,109 +1771,109 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmss' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-<WorkflowCADCAM.png, id=1141, 173.89969pt x 295.1025pt>
+<WorkflowCADCAM.png, id=1146, 173.89969pt x 295.1025pt>
 File: WorkflowCADCAM.png Graphic file (type png)
 <use WorkflowCADCAM.png>
-Package pdftex.def Info: WorkflowCADCAM.png  used on input line 3799.
+Package pdftex.def Info: WorkflowCADCAM.png  used on input line 3809.
 (pdftex.def)             Requested size: 145.11053pt x 246.25885pt.
- [97] [98]
+ [98] [99]
 Hoofdstuk 13.
-[99 <./WorkflowCADCAM.png>] [100]
-<positioneren.png, id=1170, 270.25969pt x 459.96844pt>
+[100 <./WorkflowCADCAM.png>] [101]
+<positioneren.png, id=1174, 270.25969pt x 459.96844pt>
 File: positioneren.png Graphic file (type png)
 <use positioneren.png>
-Package pdftex.def Info: positioneren.png  used on input line 3881.
+Package pdftex.def Info: positioneren.png  used on input line 3891.
 (pdftex.def)             Requested size: 217.66211pt x 370.45981pt.
- [101]
-<image82.png, id=1175, 231.11343pt x 430.60875pt>
+ [102]
+<image82.png, id=1179, 231.11343pt x 430.60875pt>
 File: image82.png Graphic file (type png)
 <use image82.png>
-Package pdftex.def Info: image82.png  used on input line 3894.
+Package pdftex.def Info: image82.png  used on input line 3904.
 (pdftex.def)             Requested size: 145.11053pt x 270.37163pt.
-<voorkomenbuiging.png, id=1176, 354.57469pt x 264.23718pt>
+<voorkomenbuiging.png, id=1180, 354.57469pt x 264.23718pt>
 File: voorkomenbuiging.png Graphic file (type png)
 <use voorkomenbuiging.png>
-Package pdftex.def Info: voorkomenbuiging.png  used on input line 3901.
+Package pdftex.def Info: voorkomenbuiging.png  used on input line 3911.
 (pdftex.def)             Requested size: 145.11053pt x 108.14037pt.
- [102 <./positioneren.png>]
-<universeeltegenspecifiek.png, id=1183, 563.85657pt x 292.84406pt>
+ [103 <./positioneren.png>]
+<universeeltegenspecifiek.png, id=1188, 563.85657pt x 292.84406pt>
 File: universeeltegenspecifiek.png Graphic file (type png)
 <use universeeltegenspecifiek.png>
-Package pdftex.def Info: universeeltegenspecifiek.png  used on input line 3912.
+Package pdftex.def Info: universeeltegenspecifiek.png  used on input line 3922.
 (pdftex.def)             Requested size: 145.11053pt x 75.36461pt.
-<tolerantie.png, id=1184, 277.78781pt x 505.89pt>
+<tolerantie.png, id=1189, 277.78781pt x 505.89pt>
 File: tolerantie.png Graphic file (type png)
 <use tolerantie.png>
-Package pdftex.def Info: tolerantie.png  used on input line 3919.
+Package pdftex.def Info: tolerantie.png  used on input line 3929.
 (pdftex.def)             Requested size: 217.66211pt x 396.3989pt.
-<Ruwheid.png, id=1185, 350.81062pt x 392.21532pt>
+<Ruwheid.png, id=1190, 350.81062pt x 392.21532pt>
 File: Ruwheid.png Graphic file (type png)
 <use Ruwheid.png>
-Package pdftex.def Info: Ruwheid.png  used on input line 3920.
+Package pdftex.def Info: Ruwheid.png  used on input line 3930.
 (pdftex.def)             Requested size: 217.66211pt x 243.3565pt.
- [103 <./image82.png> <./voorkomenbuiging.png>] [104 <./universeeltegenspecifiek.png> <./tolerantie.png> <./Ruwheid.png>]
-<image83.png, id=1204, 875.52094pt x 410.2828pt>
+ [104 <./image82.png> <./voorkomenbuiging.png>] [105 <./universeeltegenspecifiek.png> <./tolerantie.png> <./Ruwheid.png>]
+<image83.png, id=1208, 875.52094pt x 410.2828pt>
 File: image83.png Graphic file (type png)
 <use image83.png>
-Package pdftex.def Info: image83.png  used on input line 3939.
+Package pdftex.def Info: image83.png  used on input line 3949.
 (pdftex.def)             Requested size: 483.69687pt x 226.67043pt.
- [105 <./image83.png>]
-<image84.png, id=1212, 593.96906pt x 310.15875pt>
+ [106 <./image83.png>]
+<image84.png, id=1216, 593.96906pt x 310.15875pt>
 File: image84.png Graphic file (type png)
 <use image84.png>
-Package pdftex.def Info: image84.png  used on input line 3964.
+Package pdftex.def Info: image84.png  used on input line 3974.
 (pdftex.def)             Requested size: 241.84843pt x 126.29036pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 3965.
+(caption)                particular \caption on input line 3975.
 See the caption package documentation for explanation.
 
-[106 <./image84.png>]
+[107 <./image84.png>]
 Hoofdstuk 14.
-[107]
-<gemaaktEnVastgelegdeKosten.png, id=1224, 458.46281pt x 310.15875pt>
+[108]
+<gemaaktEnVastgelegdeKosten.png, id=1228, 458.46281pt x 310.15875pt>
 File: gemaaktEnVastgelegdeKosten.png Graphic file (type png)
 <use gemaaktEnVastgelegdeKosten.png>
-Package pdftex.def Info: gemaaktEnVastgelegdeKosten.png  used on input line 4050.
+Package pdftex.def Info: gemaaktEnVastgelegdeKosten.png  used on input line 4060.
 (pdftex.def)             Requested size: 217.66211pt x 147.2512pt.
-<imperfectiefrezen.png, id=1225, 229.60782pt x 126.4725pt>
+<imperfectiefrezen.png, id=1229, 229.60782pt x 126.4725pt>
 File: imperfectiefrezen.png Graphic file (type png)
 <use imperfectiefrezen.png>
-Package pdftex.def Info: imperfectiefrezen.png  used on input line 4057.
+Package pdftex.def Info: imperfectiefrezen.png  used on input line 4067.
 (pdftex.def)             Requested size: 193.47578pt x 106.5758pt.
-<designenvoortoeslagen.png, id=1226, 430.60875pt x 152.06813pt>
+<designenvoortoeslagen.png, id=1230, 430.60875pt x 152.06813pt>
 File: designenvoortoeslagen.png Graphic file (type png)
 <use designenvoortoeslagen.png>
-Package pdftex.def Info: designenvoortoeslagen.png  used on input line 4062.
+Package pdftex.def Info: designenvoortoeslagen.png  used on input line 4072.
 (pdftex.def)             Requested size: 290.22107pt x 102.49304pt.
- [108 <./gemaaktEnVastgelegdeKosten.png>] [109 <./imperfectiefrezen.png> <./designenvoortoeslagen.png>]
-<regelsDFM.png, id=1243, 150.5625pt x 238.64156pt>
+ [109 <./gemaaktEnVastgelegdeKosten.png>] [110 <./imperfectiefrezen.png> <./designenvoortoeslagen.png>]
+<regelsDFM.png, id=1247, 150.5625pt x 238.64156pt>
 File: regelsDFM.png Graphic file (type png)
 <use regelsDFM.png>
-Package pdftex.def Info: regelsDFM.png  used on input line 4108.
+Package pdftex.def Info: regelsDFM.png  used on input line 4118.
 (pdftex.def)             Requested size: 145.11053pt x 230.02182pt.
- [110 <./regelsDFM.png>]
+ [111 <./regelsDFM.png>]
 Hoofdstuk 15.
 Hoofdstuk 16.
-[111] [112] (ProductieTechnologie-Samenvatting-RubenRyckaert.aux)
+[112] [113] (ProductieTechnologie-Samenvatting-RubenRyckaert.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-11-06>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 41155 strings out of 467871
- 850916 string characters out of 5428442
- 1240487 words of memory out of 5000000
- 68751 multiletter control sequences out of 15000+600000
+ 41154 strings out of 467871
+ 850892 string characters out of 5428442
+ 1241505 words of memory out of 5000000
+ 68749 multiletter control sequences out of 15000+600000
  770527 words of font info for 253 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,13n,104p,1046b,1392s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbxi10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi6.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmri7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmss10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmsy6.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmsy7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmtt12.pfb>
-Output written on ProductieTechnologie-Samenvatting-RubenRyckaert.pdf (112 pages, 11466442 bytes).
+Output written on ProductieTechnologie-Samenvatting-RubenRyckaert.pdf (113 pages, 11467541 bytes).
 PDF statistics:
- 1896 PDF objects out of 2073 (max. 8388607)
- 419 named destinations out of 1000 (max. 500000)
+ 1900 PDF objects out of 2073 (max. 8388607)
+ 420 named destinations out of 1000 (max. 500000)
  86168 words of extra memory for PDF output out of 89155 (max. 10000000)
 

@@ -65,7 +65,7 @@
 \contentsline {subsection}{\numberline {7.4.2}Draadvonken en slijpen}{50}{subsection.127}%
 \contentsline {subsection}{\numberline {7.4.3}ECM (Electro Chemical Machining) en slijpen}{51}{subsection.128}%
 \contentsline {subsection}{\numberline {7.4.4}Combinatie van ECM en frezen}{51}{subsection.129}%
-\contentsline {chapter}{\numberline {8}Verspanen:Slijpen}{52}{chapter.130}%
+\contentsline {chapter}{\numberline {8}Verspanen: Slijpen}{52}{chapter.130}%
 \contentsline {subsection}{\numberline {8.0.1}Frezen met onbepaalde snijkanten}{52}{subsection.131}%
 \contentsline {subsection}{\numberline {8.0.2}Eigenschappen van slijpen}{52}{subsection.133}%
 \contentsline {subsection}{\numberline {8.0.3}Parameters slijpsteen}{53}{subsection.142}%
@@ -77,48 +77,48 @@
 \contentsline {section}{\numberline {8.1}temperaturen bij slijpen}{55}{section.146}%
 \contentsline {section}{\numberline {8.2}Slijptechnieken}{56}{section.148}%
 \contentsline {section}{\numberline {8.3}De slijpmachine}{56}{section.150}%
-\contentsline {subsection}{\numberline {8.3.1}Centerloos slijpen}{56}{subsection.151}%
+\contentsline {subsection}{\numberline {8.3.1}Centerloos slijpen}{57}{subsection.151}%
 \contentsline {subsection}{\numberline {8.3.2}Profielslijpen}{57}{subsection.153}%
-\contentsline {chapter}{\numberline {9}Fysische, Chemische afnemende bewerkingen}{57}{chapter.154}%
-\contentsline {section}{\numberline {9.1}Vonkerosie}{57}{section.155}%
-\contentsline {subsection}{\numberline {9.1.1}Componenten van een EDM-systeem}{58}{subsection.158}%
+\contentsline {chapter}{\numberline {9}Fysische, Chemische afnemende bewerkingen}{58}{chapter.154}%
+\contentsline {section}{\numberline {9.1}Vonkerosie}{58}{section.155}%
+\contentsline {subsection}{\numberline {9.1.1}Componenten van een EDM-systeem}{59}{subsection.158}%
 \contentsline {section}{\numberline {9.2}Performance van EDM}{60}{section.166}%
 \contentsline {section}{\numberline {9.3}Spleetregeling}{61}{section.168}%
-\contentsline {subsection}{\numberline {9.3.1}Electodemateriaal}{61}{subsection.169}%
+\contentsline {subsection}{\numberline {9.3.1}Electodemateriaal}{62}{subsection.169}%
 \contentsline {section}{\numberline {9.4}Effecten van pulsduur en stroomsterkte}{62}{section.171}%
 \contentsline {subsection}{\numberline {9.4.1}Toepassingen}{62}{subsection.173}%
-\contentsline {subsection}{\numberline {9.4.2}Types}{62}{subsection.174}%
-\contentsline {subsubsection}{Zinkvonkerosie}{62}{figure.caption.175}%
+\contentsline {subsection}{\numberline {9.4.2}Types}{63}{subsection.174}%
+\contentsline {subsubsection}{Zinkvonkerosie}{63}{figure.caption.175}%
 \contentsline {subsubsection}{Draadvonkerosie}{63}{figure.caption.176}%
-\contentsline {subsubsection}{Vonkerosie Milling}{63}{figure.caption.176}%
-\contentsline {subsubsection}{WEDG}{63}{figure.caption.176}%
+\contentsline {subsubsection}{Vonkerosie Milling}{64}{figure.caption.176}%
+\contentsline {subsubsection}{WEDG}{64}{figure.caption.176}%
 \contentsline {subsubsection}{Die sinking EDM}{64}{figure.caption.176}%
 \contentsline {subsubsection}{Milling EDM}{64}{figure.caption.176}%
 \contentsline {subsubsection}{Planteair Vonken}{64}{figure.caption.176}%
 \contentsline {subsubsection}{Contour Vonken}{64}{figure.caption.176}%
-\contentsline {section}{\numberline {9.5}Elektrochemische bewerkingen}{65}{section.179}%
-\contentsline {subsection}{\numberline {9.5.1}Eigenschappen van elektrochemisch bewerken}{66}{subsection.181}%
+\contentsline {section}{\numberline {9.5}Elektrochemische bewerkingen}{66}{section.179}%
+\contentsline {subsection}{\numberline {9.5.1}Eigenschappen van elektrochemisch bewerken}{67}{subsection.181}%
 \contentsline {subsection}{\numberline {9.5.2}Afnamen bij ECM}{67}{subsection.183}%
-\contentsline {subsection}{\numberline {9.5.3}Toepassingen van ECM}{67}{subsection.184}%
-\contentsline {section}{\numberline {9.6}Ultrasoon bewerken (Ultrasonic Machining)}{68}{section.187}%
-\contentsline {section}{\numberline {9.7}Straalbewerkingen}{69}{section.190}%
-\contentsline {subsection}{\numberline {9.7.1}Shotpeening}{69}{subsection.192}%
-\contentsline {subsection}{\numberline {9.7.2}abrasief stralen}{70}{subsection.193}%
-\contentsline {subsection}{\numberline {9.7.3}Waterstraalsnijden}{70}{subsection.194}%
-\contentsline {subsection}{\numberline {9.7.4}Laserstraalbewerking (LBM)}{71}{subsection.196}%
-\contentsline {subsubsection}{Hoe werk een laser?}{71}{subsection.196}%
+\contentsline {subsection}{\numberline {9.5.3}Toepassingen van ECM}{68}{subsection.184}%
+\contentsline {section}{\numberline {9.6}Ultrasoon bewerken (Ultrasonic Machining)}{69}{section.187}%
+\contentsline {section}{\numberline {9.7}Straalbewerkingen}{70}{section.190}%
+\contentsline {subsection}{\numberline {9.7.1}Shotpeening}{70}{subsection.192}%
+\contentsline {subsection}{\numberline {9.7.2}abrasief stralen}{71}{subsection.193}%
+\contentsline {subsection}{\numberline {9.7.3}Waterstraalsnijden}{71}{subsection.194}%
+\contentsline {subsection}{\numberline {9.7.4}Laserstraalbewerking (LBM)}{72}{subsection.196}%
+\contentsline {subsubsection}{Hoe werk een laser?}{72}{subsection.196}%
 \contentsline {subsubsection}{kwaliteit van de laserstraal}{74}{figure.caption.201}%
-\contentsline {subsubsection}{Toepassingen}{75}{figure.caption.204}%
-\contentsline {subsubsection}{machine gestuurde Lasers, NC lasers}{76}{figure.caption.204}%
-\contentsline {subsubsection}{Toepassingen}{76}{figure.caption.205}%
-\contentsline {subsubsection}{Nadelen}{77}{figure.caption.206}%
+\contentsline {subsubsection}{Toepassingen}{76}{figure.caption.204}%
+\contentsline {subsubsection}{machine gestuurde Lasers, NC lasers}{77}{figure.caption.204}%
+\contentsline {subsubsection}{Toepassingen}{77}{figure.caption.205}%
+\contentsline {subsubsection}{Nadelen}{78}{figure.caption.206}%
 \contentsline {chapter}{\numberline {10}Scheiden}{78}{chapter.207}%
-\contentsline {section}{\numberline {10.1}Ponsen en knippen}{78}{section.208}%
-\contentsline {subsection}{\numberline {10.1.1}Algemeen Knippen en Ponsen}{78}{subsection.209}%
-\contentsline {subsection}{\numberline {10.1.2}Knippen}{79}{subsection.215}%
+\contentsline {section}{\numberline {10.1}Ponsen en knippen}{79}{section.208}%
+\contentsline {subsection}{\numberline {10.1.1}Algemeen Knippen en Ponsen}{79}{subsection.209}%
+\contentsline {subsection}{\numberline {10.1.2}Knippen}{80}{subsection.215}%
 \contentsline {subsection}{\numberline {10.1.3}Ponsen}{81}{subsection.217}%
 \contentsline {subsection}{\numberline {10.1.4}Fijnstancen}{82}{subsection.219}%
-\contentsline {subsection}{\numberline {10.1.5}Volgsnijstempel}{83}{subsection.221}%
+\contentsline {subsection}{\numberline {10.1.5}Volgsnijstempel}{82}{subsection.221}%
 \contentsline {subsection}{\numberline {10.1.6}Revolvermachine}{83}{subsection.222}%
 \contentsline {subsection}{\numberline {10.1.7}Knabbelen}{83}{subsection.223}%
 \contentsline {section}{\numberline {10.2}Mechanisch Scheiden, verspannen}{84}{section.225}%
@@ -126,41 +126,41 @@
 \contentsline {chapter}{\numberline {11}Oervormen (Gieten van metalen)}{86}{chapter.228}%
 \contentsline {section}{\numberline {11.1}Inleiding}{86}{section.229}%
 \contentsline {subsection}{\numberline {11.1.1}Maken van een vormholte}{87}{subsection.234}%
-\contentsline {section}{\numberline {11.2}Gieten in zand}{87}{section.235}%
-\contentsline {subsection}{\numberline {11.2.1}slink, krimp en lossing}{89}{subsection.237}%
+\contentsline {section}{\numberline {11.2}Gieten in zand}{88}{section.235}%
+\contentsline {subsection}{\numberline {11.2.1}slink, krimp en lossing}{90}{subsection.237}%
 \contentsline {subsection}{\numberline {11.2.2}Hoe complexe modellen uit het zand halen?}{90}{subsection.242}%
 \contentsline {subsection}{\numberline {11.2.3}Kernen}{90}{subsection.243}%
-\contentsline {subsection}{\numberline {11.2.4}Automatisch maken van zandvormen}{90}{subsection.245}%
-\contentsline {subsection}{\numberline {11.2.5}Afwerken van zandgietstukken}{91}{subsection.247}%
-\contentsline {section}{\numberline {11.3}Verloren-modelmethode}{91}{section.248}%
-\contentsline {subsection}{\numberline {11.3.1}Verloren wasmodel}{91}{subsection.249}%
-\contentsline {subsection}{\numberline {11.3.2}Verloren schuimmodel}{91}{subsection.251}%
+\contentsline {subsection}{\numberline {11.2.4}Automatisch maken van zandvormen}{91}{subsection.245}%
+\contentsline {subsection}{\numberline {11.2.5}Afwerken van zandgietstukken}{92}{subsection.247}%
+\contentsline {section}{\numberline {11.3}Verloren-modelmethode}{92}{section.248}%
+\contentsline {subsection}{\numberline {11.3.1}Verloren wasmodel}{92}{subsection.249}%
+\contentsline {subsection}{\numberline {11.3.2}Verloren schuimmodel}{92}{subsection.251}%
 \contentsline {section}{\numberline {11.4}Gieten in permanente vormen}{92}{section.253}%
-\contentsline {subsection}{\numberline {11.4.1}Verschillende soorten spuitgieten}{93}{subsection.254}%
+\contentsline {subsection}{\numberline {11.4.1}Verschillende soorten spuitgieten}{94}{subsection.254}%
 \contentsline {section}{\numberline {11.5}Keuze van gietmethode}{94}{section.255}%
-\contentsline {chapter}{\numberline {12}Productie machines en automatisering}{95}{chapter.257}%
-\contentsline {section}{\numberline {12.1}Inleiding}{95}{section.258}%
-\contentsline {section}{\numberline {12.2}Waarom automatiseren?}{96}{section.260}%
-\contentsline {subsection}{\numberline {12.2.1}Starre automatiseringen}{96}{subsection.261}%
-\contentsline {subsection}{\numberline {12.2.2}NC-gestuurde machines}{96}{subsection.263}%
-\contentsline {subsection}{\numberline {12.2.3}Toepassingsgebied van productiesystemen (K-grafiek)}{97}{subsection.264}%
-\contentsline {subsection}{\numberline {12.2.4}CAM}{97}{subsection.266}%
-\contentsline {chapter}{\numberline {13}Productie werkvoorbereiding}{99}{chapter.268}%
-\contentsline {section}{\numberline {13.1}Inleiding}{99}{section.269}%
-\contentsline {section}{\numberline {13.2}Het bewerkingsplan. De macrowerkmethode}{100}{section.276}%
-\contentsline {subsection}{\numberline {13.2.1}Positionering}{101}{subsection.277}%
-\contentsline {subsection}{\numberline {13.2.2}Klemmen}{101}{subsection.279}%
-\contentsline {subsection}{\numberline {13.2.3}Ondersteuning}{102}{subsection.281}%
-\contentsline {subsection}{\numberline {13.2.4}Universeel en product specifiek opspansysteem}{103}{subsection.283}%
-\contentsline {subsection}{\numberline {13.2.5}Nauwkeurigheid en ruwheid}{104}{subsection.285}%
-\contentsline {section}{\numberline {13.3}Microvoorbereiden en bewerkingsstappen}{104}{section.287}%
-\contentsline {subsection}{\numberline {13.3.1}Computerondersteunde werkvoorbereiding (CAPP)}{105}{subsection.289}%
-\contentsline {subsection}{\numberline {13.3.2}Flowchart: Het Werkvoorbereidingsproces}{106}{subsection.291}%
-\contentsline {chapter}{\numberline {14}Productiegericht ontwerpen}{108}{chapter.293}%
-\contentsline {section}{\numberline {14.1}Inleiding}{108}{section.294}%
-\contentsline {section}{\numberline {14.2}Designen voor verspaanbewerkingen}{108}{section.296}%
-\contentsline {section}{\numberline {14.3}Designen voor toeslagen}{108}{section.298}%
-\contentsline {section}{\numberline {14.4}Designen voor matrijzen}{109}{section.300}%
-\contentsline {section}{\numberline {14.5}Algemene regels bij Design for Manufacturing (DFM)}{109}{section.301}%
-\contentsline {chapter}{\numberline {15}Examentips}{111}{chapter.304}%
-\contentsline {chapter}{\numberline {16}Slotwoord}{111}{chapter.305}%
+\contentsline {chapter}{\numberline {12}Productie machines en automatisering}{96}{chapter.257}%
+\contentsline {section}{\numberline {12.1}Inleiding}{96}{section.258}%
+\contentsline {section}{\numberline {12.2}Waarom automatiseren?}{97}{section.260}%
+\contentsline {subsection}{\numberline {12.2.1}Starre automatiseringen}{97}{subsection.261}%
+\contentsline {subsection}{\numberline {12.2.2}NC-gestuurde machines}{97}{subsection.263}%
+\contentsline {subsection}{\numberline {12.2.3}Toepassingsgebied van productiesystemen (K-grafiek)}{98}{subsection.264}%
+\contentsline {subsection}{\numberline {12.2.4}CAM}{98}{subsection.266}%
+\contentsline {chapter}{\numberline {13}Productie werkvoorbereiding}{100}{chapter.268}%
+\contentsline {section}{\numberline {13.1}Inleiding}{100}{section.269}%
+\contentsline {section}{\numberline {13.2}Het bewerkingsplan. De macrowerkmethode}{101}{section.276}%
+\contentsline {subsection}{\numberline {13.2.1}Positionering}{102}{subsection.277}%
+\contentsline {subsection}{\numberline {13.2.2}Klemmen}{102}{subsection.279}%
+\contentsline {subsection}{\numberline {13.2.3}Ondersteuning}{103}{subsection.281}%
+\contentsline {subsection}{\numberline {13.2.4}Universeel en product specifiek opspansysteem}{104}{subsection.283}%
+\contentsline {subsection}{\numberline {13.2.5}Nauwkeurigheid en ruwheid}{105}{subsection.285}%
+\contentsline {section}{\numberline {13.3}Microvoorbereiden en bewerkingsstappen}{105}{section.287}%
+\contentsline {subsection}{\numberline {13.3.1}Computerondersteunde werkvoorbereiding (CAPP)}{106}{subsection.289}%
+\contentsline {subsection}{\numberline {13.3.2}Flowchart: Het Werkvoorbereidingsproces}{107}{subsection.291}%
+\contentsline {chapter}{\numberline {14}Productiegericht ontwerpen}{109}{chapter.293}%
+\contentsline {section}{\numberline {14.1}Inleiding}{109}{section.294}%
+\contentsline {section}{\numberline {14.2}Designen voor verspaanbewerkingen}{109}{section.296}%
+\contentsline {section}{\numberline {14.3}Designen voor toeslagen}{109}{section.298}%
+\contentsline {section}{\numberline {14.4}Designen voor matrijzen}{110}{section.300}%
+\contentsline {section}{\numberline {14.5}Algemene regels bij Design for Manufacturing (DFM)}{110}{section.301}%
+\contentsline {chapter}{\numberline {15}Examentips}{112}{chapter.304}%
+\contentsline {chapter}{\numberline {16}Slotwoord}{112}{chapter.305}%

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.12.16)  5 JAN 2026 18:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.12.16)  6 JAN 2026 13:36
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -250,6 +250,11 @@ Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
+) (C:\Users\ruben\AppData\Roaming\MiKTeX\tex/latex/xstring\xstring.sty (C:\Users\ruben\AppData\Roaming\MiKTeX\tex/generic/xstring\xstring.tex
+\xs_counta=\count300
+\xs_countb=\count301
+)
+Package: xstring 2023/08/22 v1.86 String manipulations (CT)
 ) (C:\Program Files\MiKTeX\tex/latex/tools\tabularx.sty
 Package: tabularx 2023/12/11 v2.12a `tabularx' package (DPC)
  (C:\Program Files\MiKTeX\tex/latex/tools\array.sty
@@ -267,7 +272,7 @@ Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
 \TX@old@col=\dimen166
 \TX@target=\dimen167
 \TX@delta=\dimen168
-\TX@cols=\count300
+\TX@cols=\count302
 \TX@ftn=\toks34
 ) (C:\Program Files\MiKTeX\tex/latex/tcolorbox\tcolorbox.sty
 Package: tcolorbox 2025/09/09 version 6.8.0 text color boxes
@@ -301,14 +306,14 @@ Package: pgfsys 2025-08-29 v3.1.11a (3.1.11a)
 \pgf@yd=\dimen180
 \w@pgf@writea=\write3
 \r@pgf@reada=\read3
-\c@pgf@counta=\count301
-\c@pgf@countb=\count302
-\c@pgf@countc=\count303
-\c@pgf@countd=\count304
+\c@pgf@counta=\count303
+\c@pgf@countb=\count304
+\c@pgf@countc=\count305
+\c@pgf@countd=\count306
 \t@pgf@toka=\toks39
 \t@pgf@tokb=\toks40
 \t@pgf@tokc=\toks41
-\pgf@sys@id@count=\count305
+\pgf@sys@id@count=\count307
  (C:\Program Files\MiKTeX\tex/generic/pgf/systemlayer\pgf.cfg
 File: pgf.cfg 2025-08-29 v3.1.11a (3.1.11a)
 )
@@ -319,21 +324,21 @@ File: pgfsys-pdftex.def 2025-08-29 v3.1.11a (3.1.11a)
 File: pgfsys-common-pdf.def 2025-08-29 v3.1.11a (3.1.11a)
 ))) (C:\Program Files\MiKTeX\tex/generic/pgf/systemlayer\pgfsyssoftpath.code.tex
 File: pgfsyssoftpath.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgfsyssoftpath@smallbuffer@items=\count306
-\pgfsyssoftpath@bigbuffer@items=\count307
+\pgfsyssoftpath@smallbuffer@items=\count308
+\pgfsyssoftpath@bigbuffer@items=\count309
 ) (C:\Program Files\MiKTeX\tex/generic/pgf/systemlayer\pgfsysprotocol.code.tex
 File: pgfsysprotocol.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 )) (C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcore.code.tex
 Package: pgfcore 2025-08-29 v3.1.11a (3.1.11a)
  (C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmath.code.tex (C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathutil.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathparser.code.tex
 \pgfmath@dimen=\dimen181
-\pgfmath@count=\count308
+\pgfmath@count=\count310
 \pgfmath@box=\box59
 \pgfmath@toks=\toks42
 \pgfmath@stack@operand=\toks43
 \pgfmath@stack@operation=\toks44
 ) (C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.basic.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.trigonometric.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.random.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.comparison.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.base.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.round.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.misc.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.integerarithmetics.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathcalc.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count309
+\c@pgfmathroundto@lastzeros=\count311
 )) (C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfint.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepoints.code.tex
 File: pgfcorepoints.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgf@picminx=\dimen182
@@ -363,7 +368,7 @@ File: pgfcorescopes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgfpic=\box60
 \pgf@hbox=\box61
 \pgf@layerbox@main=\box62
-\pgf@picture@serial@count=\count310
+\pgf@picture@serial@count=\count312
 ) (C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcoregraphicstate.code.tex
 File: pgfcoregraphicstate.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgflinewidth=\dimen256
@@ -384,8 +389,8 @@ File: pgfcorearrows.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 ) (C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgf@max=\dimen261
-\pgf@sys@shading@range@num=\count311
-\pgf@shadingcount=\count312
+\pgf@sys@shading@range@num=\count313
+\pgf@shadingcount=\count314
 ) (C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreimage.code.tex
 File: pgfcoreimage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 ) (C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreexternal.code.tex
@@ -420,7 +425,7 @@ Package: pgffor 2025-08-29 v3.1.11a (3.1.11a)
 Package: tikz 2025-08-29 v3.1.11a (3.1.11a)
  (C:\Program Files\MiKTeX\tex/generic/pgf/libraries\pgflibraryplothandlers.code.tex
 File: pgflibraryplothandlers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgf@plot@mark@count=\count313
+\pgf@plot@mark@count=\count315
 \pgfplotmarksize=\dimen266
 )
 \tikz@lastx=\dimen267
@@ -435,17 +440,17 @@ File: pgflibraryplothandlers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \tikz@figbox@bg=\box66
 \tikz@tempbox=\box67
 \tikz@tempbox@bg=\box68
-\tikztreelevel=\count314
-\tikznumberofchildren=\count315
-\tikznumberofcurrentchild=\count316
-\tikz@fig@count=\count317
+\tikztreelevel=\count316
+\tikznumberofchildren=\count317
+\tikznumberofcurrentchild=\count318
+\tikz@fig@count=\count319
  (C:\Program Files\MiKTeX\tex/generic/pgf/modules\pgfmodulematrix.code.tex
 File: pgfmodulematrix.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgfmatrixcurrentrow=\count318
-\pgfmatrixcurrentcolumn=\count319
-\pgf@matrix@numberofcolumns=\count320
+\pgfmatrixcurrentrow=\count320
+\pgfmatrixcurrentcolumn=\count321
+\pgf@matrix@numberofcolumns=\count322
 )
-\tikz@expandcount=\count321
+\tikz@expandcount=\count323
  (C:\Program Files\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 ))) (C:\Program Files\MiKTeX\tex/latex/tools\verbatim.sty
@@ -462,9 +467,9 @@ Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 \tcb@upperbox=\box70
 \tcb@lowerbox=\box71
 \tcb@phantombox=\box72
-\c@tcbbreakpart=\count322
-\c@tcblayer=\count323
-\c@tcolorbox@number=\count324
+\c@tcbbreakpart=\count324
+\c@tcblayer=\count325
+\c@tcolorbox@number=\count326
 \l__tcobox_tmpa_box=\box73
 \l__tcobox_tmpa_dim=\dimen275
 \tcb@temp=\box74
@@ -485,14 +490,14 @@ Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
 \caption@hangindent=\dimen283
 Package caption Info: Standard document class detected.
 )
-\c@caption@flags=\count325
-\c@continuedfloat=\count326
+\c@caption@flags=\count327
+\c@continuedfloat=\count328
 ) (C:\Users\ruben\AppData\Roaming\MiKTeX\tex/latex/caption\subcaption.sty
 Package: subcaption 2023/07/28 v1.6b Sub-captions (AR)
 Package caption Info: New subtype `subfigure' on input line 238.
-\c@subfigure=\count327
+\c@subfigure=\count329
 Package caption Info: New subtype `subtable' on input line 238.
-\c@subtable=\count328
+\c@subtable=\count330
 ) (C:\Users\ruben\AppData\Roaming\MiKTeX\tex/latex/booktabs\booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \heavyrulewidth=\dimen284
@@ -505,12 +510,12 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \cmidrulesep=\dimen291
 \cmidrulekern=\dimen292
 \defaultaddspace=\dimen293
-\@cmidla=\count329
-\@cmidlb=\count330
+\@cmidla=\count331
+\@cmidlb=\count332
 \@aboverulesep=\dimen294
 \@belowrulesep=\dimen295
-\@thisruleclass=\count331
-\@lastruleclass=\count332
+\@thisruleclass=\count333
+\@lastruleclass=\count334
 \@thisrulewidth=\dimen296
 ) (C:\Users\ruben\AppData\Roaming\MiKTeX\tex/latex/enumitem\enumitem.sty
 Package: enumitem 2025/02/06 v3.11 Customized lists
@@ -518,8 +523,8 @@ Package: enumitem 2025/02/06 v3.11 Customized lists
 \enit@outerparindent=\dimen297
 \enit@toks=\toks49
 \enit@inbox=\box78
-\enit@count@id=\count333
-\enitdp@description=\count334
+\enit@count@id=\count335
+\enitdp@description=\count336
 ) (C:\Program Files\MiKTeX\tex/latex/hyperref\hyperref.sty
 Package: hyperref 2025-07-12 v7.01o Hypertext links for LaTeX
  (C:\Program Files\MiKTeX\tex/generic/iftex\iftex.sty
@@ -545,13 +550,13 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ) (C:\Users\ruben\AppData\Roaming\MiKTeX\tex/generic/gettitlestring\gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count335
+\c@section@level=\count337
 ) (C:\Users\ruben\AppData\Roaming\MiKTeX\tex/generic/stringenc\stringenc.sty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
 )
 \@linkdim=\dimen298
-\Hy@linkcounter=\count336
-\Hy@pagecounter=\count337
+\Hy@linkcounter=\count338
+\Hy@pagecounter=\count339
  (C:\Program Files\MiKTeX\tex/latex/hyperref\pd1enc.def
 File: pd1enc.def 2025-07-12 v7.01o Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
@@ -559,7 +564,7 @@ Now handling font encoding PD1 ...
 ) (C:\Users\ruben\AppData\Roaming\MiKTeX\tex/generic/intcalc\intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count338
+\Hy@SavedSpaceFactor=\count340
  (C:\Program Files\MiKTeX\tex/latex/hyperref\puenc.def
 File: puenc.def 2025-07-12 v7.01o Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
@@ -572,7 +577,7 @@ Package hyperref Info: Plain pages OFF on input line 4210.
 Package hyperref Info: Backreferencing OFF on input line 4215.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4462.
-\c@Hy@tempcnt=\count339
+\c@Hy@tempcnt=\count341
  (C:\Program Files\MiKTeX\tex/latex/url\url.sty
 \Urlmuskip=\muskip18
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
@@ -584,7 +589,7 @@ Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
  (C:\Users\ruben\AppData\Roaming\MiKTeX\tex/generic/bigintcalc\bigintcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
 ))
-\Fld@menulength=\count340
+\Fld@menulength=\count342
 \Field@Width=\dimen300
 \Fld@charsize=\dimen301
 Package hyperref Info: Hyper figures OFF on input line 6078.
@@ -594,15 +599,15 @@ Package hyperref Info: backreferencing OFF on input line 6093.
 Package hyperref Info: Link coloring OFF on input line 6098.
 Package hyperref Info: Link coloring with OCG OFF on input line 6103.
 Package hyperref Info: PDF/A mode OFF on input line 6108.
-\Hy@abspage=\count341
-\c@Item=\count342
-\c@Hfootnote=\count343
+\Hy@abspage=\count343
+\c@Item=\count344
+\c@Hfootnote=\count345
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
  (C:\Program Files\MiKTeX\tex/latex/hyperref\hpdftex.def
 File: hpdftex.def 2025-07-12 v7.01o Hyperref driver for pdfTeX
-\Fld@listcount=\count344
-\c@bookmark@seq@number=\count345
+\Fld@listcount=\count346
+\c@bookmark@seq@number=\count347
  (C:\Users\ruben\AppData\Roaming\MiKTeX\tex/latex/rerunfilecheck\rerunfilecheck.sty
 Package: rerunfilecheck 2025-06-21 v1.11 Rerun checks for auxiliary files (HO)
  (C:\Users\ruben\AppData\Roaming\MiKTeX\tex/generic/uniquecounter\uniquecounter.sty
@@ -633,9 +638,9 @@ Package: geometry 2020/01/02 v5.9 Page Geometry
  (C:\Program Files\MiKTeX\tex/generic/iftex\ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 )
-\Gm@cnth=\count346
-\Gm@cntv=\count347
-\c@Gm@tempcnt=\count348
+\Gm@cnth=\count348
+\Gm@cntv=\count349
+\c@Gm@tempcnt=\count350
 \Gm@bindingoffset=\dimen302
 \Gm@wd@mp=\dimen303
 \Gm@odd@mp=\dimen304
@@ -658,30 +663,30 @@ Package: titlesec 2025/01/04 v2.17 Sectioning titles
 \titlewidthfirst=\dimen314
 ) (C:\Users\ruben\AppData\Roaming\MiKTeX\tex/latex/float\float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count349
+\c@float@type=\count351
 \float@exts=\toks53
 \float@box=\box80
 \@float@everytoks=\toks54
 \@floatcapt=\box81
 ) (C:\Program Files\MiKTeX\tex/latex/listings\listings.sty
-\lst@mode=\count350
+\lst@mode=\count352
 \lst@gtempboxa=\box82
 \lst@token=\toks55
-\lst@length=\count351
+\lst@length=\count353
 \lst@currlwidth=\dimen315
-\lst@column=\count352
-\lst@pos=\count353
+\lst@column=\count354
+\lst@pos=\count355
 \lst@lostspace=\dimen316
 \lst@width=\dimen317
-\lst@newlines=\count354
-\lst@lineno=\count355
+\lst@newlines=\count356
+\lst@lineno=\count357
 \lst@maxwidth=\dimen318
  (C:\Program Files\MiKTeX\tex/latex/listings\lstpatch.sty
 File: lstpatch.sty 2025/11/14 1.11b (Carsten Heinz)
 ) (C:\Program Files\MiKTeX\tex/latex/listings\lstmisc.sty
 File: lstmisc.sty 2025/11/14 1.11b (Carsten Heinz)
-\c@lstnumber=\count356
-\lst@skipnumbers=\count357
+\c@lstnumber=\count358
+\lst@skipnumbers=\count359
 \lst@framebox=\box83
 ) (C:\Program Files\MiKTeX\tex/latex/listings\listings.cfg
 File: listings.cfg 2025/11/14 1.11b listings configuration
@@ -696,14 +701,14 @@ Package: listings 2025/11/14 1.11b (Carsten Heinz)
     so I'm assuming it got fixed.
 (C:\Program Files\MiKTeX\tex/latex/tools\multicol.sty
 Package: multicol 2025/10/21 v2.0b multicolumn formatting (FMi)
-\c@tracingmulticols=\count358
+\c@tracingmulticols=\count360
 \mult@box=\box84
 \multicol@leftmargin=\dimen319
-\c@unbalance=\count359
-\c@collectmore=\count360
-\doublecol@number=\count361
-\multicoltolerance=\count362
-\multicolpretolerance=\count363
+\c@unbalance=\count361
+\c@collectmore=\count362
+\doublecol@number=\count363
+\multicoltolerance=\count364
+\multicolpretolerance=\count365
 \full@width=\dimen320
 \page@free=\dimen321
 \premulticols=\dimen322
@@ -754,45 +759,45 @@ Package: multicol 2025/10/21 v2.0b multicolumn formatting (FMi)
 \@tempa=\box125
 \@tempa=\box126
 \@tempa=\box127
-\c@minrows=\count364
-\c@columnbadness=\count365
-\c@finalcolumnbadness=\count366
+\c@minrows=\count366
+\c@columnbadness=\count367
+\c@finalcolumnbadness=\count368
 \last@try=\dimen325
 \multicolovershoot=\dimen326
 \multicolundershoot=\dimen327
 \mult@nat@firstbox=\box128
 \colbreak@box=\box129
-\mc@col@check@num=\count367
-\g__mc_curr_col_int=\count368
+\mc@col@check@num=\count369
+\g__mc_curr_col_int=\count370
 ) (C:\Users\ruben\AppData\Roaming\MiKTeX\tex/latex/mhchem\mhchem.sty
 Package: mhchem 2024/01/29 v4.10 for typesetting chemical formulae
  (C:\Program Files\MiKTeX\tex/latex/l3kernel\expl3.sty
 Package: expl3 2025-11-06 L3 programming layer (loader) 
  (C:\Program Files\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
 File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count369
+\l__color_backend_stack_int=\count371
 )) (C:\Program Files\MiKTeX\tex/latex/l3packages/l3keys2e\l3keys2e.sty
 Package: l3keys2e 2025-10-09 LaTeX2e option processing using LaTeX3 keys
 ) (C:\Program Files\MiKTeX\tex/latex/tools\calc.sty
 Package: calc 2025/03/01 v4.3b Infix arithmetic (KKT,FJ)
-\calc@Acount=\count370
-\calc@Bcount=\count371
+\calc@Acount=\count372
+\calc@Bcount=\count373
 \calc@Adimen=\dimen328
 \calc@Bdimen=\dimen329
 \calc@Askip=\skip80
 \calc@Bskip=\skip81
 LaTeX Info: Redefining \setlength on input line 86.
 LaTeX Info: Redefining \addtolength on input line 87.
-\calc@Ccount=\count372
+\calc@Ccount=\count374
 \calc@Cskip=\skip82
 ) (C:\Users\ruben\AppData\Roaming\MiKTeX\tex/latex/chemgreek\chemgreek.sty (C:\Program Files\MiKTeX\tex/latex/l3packages/xparse\xparse.sty
 Package: xparse 2025-10-09 L3 Experimental document command parser
 )
 Package: chemgreek 2020/01/16 v1.1a interface for upright Greek letters for use in chemistry (CN)
-\l__chemgreek_tmpa_int=\count373
-\g__chemgreek_tmpa_int=\count374
+\l__chemgreek_tmpa_int=\count375
+\g__chemgreek_tmpa_int=\count376
 )
-\l__mhchem_ce_distanceFromLastComma_int=\count375
+\l__mhchem_ce_distanceFromLastComma_int=\count377
 \__mhchem_arrow_extPgfLength_skip=\skip83
 \mhchem@minispace@tmp=\skip84
 \mhchem@minibackspace@tmp=\skip85
@@ -803,7 +808,7 @@ Package: chemgreek 2020/01/16 v1.1a interface for upright Greek letters for use 
 \mhchem@smallbondwidth=\skip90
 \mhchem@bondtmp@minussidebearingleft=\skip91
 \mhchem@bondtmp@minussidebearingright=\skip92
-\l__mhchem_option_version_int=\count376
+\l__mhchem_option_version_int=\count378
 \mhchem@option@minusmathsidebearingleft=\dimen330
 \mhchem@option@minusmathsidebearingright=\dimen331
 \mhchem@option@minustextsidebearingleft=\dimen332
@@ -817,33 +822,33 @@ Package: pgfplots 2021/05/15 v1.18.1 Data Visualization (1.18.1)
 \t@pgfplots@tokb=\toks57
 \t@pgfplots@tokc=\toks58
 \pgfplots@tmpa=\dimen334
-\c@pgfplots@coordindex=\count377
-\c@pgfplots@scanlineindex=\count378
+\c@pgfplots@coordindex=\count379
+\c@pgfplots@scanlineindex=\count380
  (C:\Program Files\MiKTeX\tex/generic/pgfplots/sys\pgfplotssysgeneric.code.tex)) (C:\Program Files\MiKTeX\tex/generic/pgfplots/libs\pgfplotslibrary.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgfplots/oldpgfcompatib\pgfplotsoldpgfsupp_loader.code.tex (C:\Program Files\MiKTeX\tex/generic/pgf/libraries\pgflibraryfpu.code.tex)
 Package pgfplots: loading complementary utilities for your pgf version...
 \t@pgf@toka=\toks59
 \t@pgf@tokb=\toks60
 \t@pgf@tokc=\toks61
 (C:\Program Files\MiKTeX\tex/generic/pgfplots/oldpgfcompatib\pgfplotsoldpgfsupp_pgfutil-common-lists.tex)) (C:\Program Files\MiKTeX\tex/generic/pgfplots/util\pgfplotsutil.code.tex (C:\Program Files\MiKTeX\tex/generic/pgfplots/liststructure\pgfplotsliststructure.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgfplots/liststructure\pgfplotsliststructureext.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgfplots/liststructure\pgfplotsarray.code.tex
-\c@pgfplotsarray@tmp=\count379
+\c@pgfplotsarray@tmp=\count381
 ) (C:\Program Files\MiKTeX\tex/generic/pgfplots/liststructure\pgfplotsmatrix.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgfplots/numtable\pgfplotstableshared.code.tex
-\c@pgfplotstable@counta=\count380
+\c@pgfplotstable@counta=\count382
 \t@pgfplotstable@a=\toks62
 ) (C:\Program Files\MiKTeX\tex/generic/pgfplots/liststructure\pgfplotsdeque.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgfplots/util\pgfplotsbinary.code.tex (C:\Program Files\MiKTeX\tex/generic/pgfplots/util\pgfplotsbinary.data.code.tex)) (C:\Program Files\MiKTeX\tex/generic/pgfplots/util\pgfplotsutil.verb.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgfplots/libs\pgflibrarypgfplots.surfshading.code.tex
-\c@pgfplotslibrarysurf@no=\count381
+\c@pgfplotslibrarysurf@no=\count383
  (C:\Program Files\MiKTeX\tex/generic/pgfplots/sys\pgflibrarypgfplots.surfshading.pgfsys-pdftex.def))) (C:\Program Files\MiKTeX\tex/generic/pgfplots/util\pgfplotscolormap.code.tex (C:\Program Files\MiKTeX\tex/generic/pgfplots/util\pgfplotscolor.code.tex)) (C:\Program Files\MiKTeX\tex/generic/pgfplots\pgfplotsstackedplots.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgfplots\pgfplotsplothandlers.code.tex (C:\Program Files\MiKTeX\tex/generic/pgfplots\pgfplotsmeshplothandler.code.tex (C:\Program Files\MiKTeX\tex/generic/pgfplots\pgfplotsmeshplotimage.code.tex))) (C:\Program Files\MiKTeX\tex/generic/pgfplots\pgfplots.scaling.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgfplots\pgfplotscoordprocessing.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgfplots\pgfplots.errorbars.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgfplots\pgfplots.markers.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgfplots\pgfplotsticks.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgfplots\pgfplots.paths.code.tex) (C:\Program Files\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarydecorations.code.tex (C:\Program Files\MiKTeX\tex/generic/pgf/modules\pgfmoduledecorations.code.tex
 \pgfdecoratedcompleteddistance=\dimen335
 \pgfdecoratedremainingdistance=\dimen336
 \pgfdecoratedinputsegmentcompleteddistance=\dimen337
 \pgfdecoratedinputsegmentremainingdistance=\dimen338
 \pgf@decorate@distancetomove=\dimen339
-\pgf@decorate@repeatstate=\count382
+\pgf@decorate@repeatstate=\count384
 \pgfdecorationsegmentamplitude=\dimen340
 \pgfdecorationsegmentlength=\dimen341
 )
 \tikz@lib@dec@box=\box130
 ) (C:\Program Files\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarydecorations.pathmorphing.code.tex (C:\Program Files\MiKTeX\tex/generic/pgf/libraries/decorations\pgflibrarydecorations.pathmorphing.code.tex)) (C:\Program Files\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarydecorations.pathreplacing.code.tex (C:\Program Files\MiKTeX\tex/generic/pgf/libraries/decorations\pgflibrarydecorations.pathreplacing.code.tex)) (C:\Program Files\MiKTeX\tex/generic/pgfplots/libs\tikzlibrarypgfplots.contourlua.code.tex)
-\pgfplots@numplots=\count383
+\pgfplots@numplots=\count385
 \pgfplots@xmin@reg=\dimen342
 \pgfplots@xmax@reg=\dimen343
 \pgfplots@ymin@reg=\dimen344
@@ -873,25 +878,25 @@ File: tikzlibraryshapes.geometric.code.tex 2025-08-29 v3.1.11a (3.1.11a)
  (C:\Program Files\MiKTeX\tex/generic/pgf/libraries/shapes\pgflibraryshapes.geometric.code.tex
 File: pgflibraryshapes.geometric.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 ))
-\c@FormulariumEntryCounter=\count384
-\c@stelling=\count385
-\c@definitie=\count386
+\c@FormulariumEntryCounter=\count386
+\c@stelling=\count387
+\c@definitie=\count388
 ) (C:\Users\ruben\AppData\Roaming\MiKTeX\tex/latex/siunitx\siunitx.sty
 Package: siunitx 2025-07-09 v3.4.14 A comprehensive (SI) units package
-\l__siunitx_number_uncert_offset_int=\count387
-\l__siunitx_number_exponent_fixed_int=\count388
-\l__siunitx_number_min_decimal_int=\count389
-\l__siunitx_number_min_integer_int=\count390
-\l__siunitx_number_round_precision_int=\count391
-\l__siunitx_number_lower_threshold_int=\count392
-\l__siunitx_number_upper_threshold_int=\count393
-\l__siunitx_number_group_first_int=\count394
-\l__siunitx_number_group_size_int=\count395
-\l__siunitx_number_group_minimum_int=\count396
+\l__siunitx_number_uncert_offset_int=\count389
+\l__siunitx_number_exponent_fixed_int=\count390
+\l__siunitx_number_min_decimal_int=\count391
+\l__siunitx_number_min_integer_int=\count392
+\l__siunitx_number_round_precision_int=\count393
+\l__siunitx_number_lower_threshold_int=\count394
+\l__siunitx_number_upper_threshold_int=\count395
+\l__siunitx_number_group_first_int=\count396
+\l__siunitx_number_group_size_int=\count397
+\l__siunitx_number_group_minimum_int=\count398
 \l__siunitx_angle_tmp_dim=\dimen352
 \l__siunitx_angle_marker_box=\box131
 \l__siunitx_angle_unit_box=\box132
-\l__siunitx_compound_count_int=\count397
+\l__siunitx_compound_count_int=\count399
  (C:\Users\ruben\AppData\Roaming\MiKTeX\tex/latex/translations\translations.sty
 Package: translations 2022/02/05 v1.12 internationalization of LaTeX2e packages (CN)
 )
@@ -905,9 +910,9 @@ Package: translations 2022/02/05 v1.12 internationalization of LaTeX2e packages 
 \l__siunitx_table_after_box=\box138
 \l__siunitx_table_before_dim=\dimen355
 \l__siunitx_table_carry_dim=\dimen356
-\l__siunitx_unit_tmp_int=\count398
-\l__siunitx_unit_position_int=\count399
-\l__siunitx_unit_total_int=\count400
+\l__siunitx_unit_tmp_int=\count400
+\l__siunitx_unit_position_int=\count401
+\l__siunitx_unit_total_int=\count402
 ) (C:\Users\ruben\AppData\Roaming\MiKTeX\tex/latex/pdfpages\pdfpages.sty
 Package: pdfpages 2025/07/23 v0.6g Insert pages of external PDF documents (AM)
  (C:\Program Files\MiKTeX\tex/latex/base\ifthen.sty
@@ -923,13 +928,13 @@ Package: eso-pic 2023/05/03 v3.0c eso-pic (RN)
  (C:\Users\ruben\AppData\Roaming\MiKTeX\tex/latex/pdfpages\pppdftex.def
 File: pppdftex.def 2025/07/23 v0.6g Pdfpages driver for pdfTeX (AM)
 )
-\pdfpages@includegraphics@status=\count401
+\pdfpages@includegraphics@status=\count403
 \AM@pagebox=\box139
 \AM@global@opts=\toks63
-\AM@pagecnt=\count402
+\AM@pagecnt=\count404
 \AM@toc@title=\toks64
 \AM@lof@heading=\toks65
-\c@AM@survey=\count403
+\c@AM@survey=\count405
 \AM@templatesizebox=\box140
 )
 LaTeX Font Info:    Trying to load font information for T1+lmr on input line 15.
@@ -938,10 +943,6 @@ File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) (Ingenieur&economie-Samenvatting-RubenRyckaert.aux
 Package babel Info: 'dutch' activates 'dutch' shorthands.
 (babel)             Reported on input line 8.
-
-
-LaTeX Warning: Label `fig:breakeven' multiply defined.
-
 )
 \openout1 = `Ingenieur&economie-Samenvatting-RubenRyckaert.aux'.
 
@@ -984,16 +985,16 @@ Package microtype Info: No adjustment of character kerning.
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (RS)
 ) (C:\Program Files\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count404
+\scratchcounter=\count406
 \scratchdimen=\dimen362
 \scratchbox=\box141
-\nofMPsegments=\count405
-\nofMParguments=\count406
+\nofMPsegments=\count407
+\nofMParguments=\count408
 \everyMPshowfont=\toks66
-\MPscratchCnt=\count407
+\MPscratchCnt=\count409
 \MPscratchDim=\dimen363
-\MPnumerator=\count408
-\makeMPintoPDFobject=\count409
+\MPnumerator=\count410
+\makeMPintoPDFobject=\count411
 \everyMPtoPDFconversion=\toks67
 ) (C:\Program Files\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -1046,7 +1047,7 @@ Package hyperref Info: Link coloring OFF on input line 15.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\c@lstlisting=\count410
+\c@lstlisting=\count412
 
 Package chemgreek Info: Activating mapping `default' on line 15.
 
@@ -1173,12 +1174,12 @@ File: ondernemingscyclus.png Graphic file (type png)
 Package pdftex.def Info: ondernemingscyclus.png  used on input line 45.
 (pdftex.def)             Requested size: 318.66948pt x 182.50098pt.
  [6{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}] [7 <./ondernemingscyclus.png>] [8]
-<Clusters.png, id=491, 441.90094pt x 283.0575pt>
+<Clusters.png, id=492, 441.90094pt x 283.0575pt>
 File: Clusters.png Graphic file (type png)
 <use Clusters.png>
 Package pdftex.def Info: Clusters.png  used on input line 169.
 (pdftex.def)             Requested size: 227.62206pt x 145.8043pt.
-<overlappendePLC's.png, id=493, 699.36281pt x 322.20375pt>
+<overlappendePLC's.png, id=494, 699.36281pt x 322.20375pt>
 File: overlappendePLC's.png Graphic file (type png)
 <use overlappendePLC's.png>
 Package pdftex.def Info: overlappendePLC's.png  used on input line 195.
@@ -1193,7 +1194,7 @@ Overfull \hbox (2.43332pt too wide) in paragraph at lines 183--199
 []$[]$  $[]$ 
  []
 
-[9 <./Clusters.png> <./overlappendePLC's.png>]
+
 Underfull \hbox (badness 1264) in paragraph at lines 214--215
 []\T1/lmr/m/n/10.95 (+20) Een tij-de-lijke pe-ri-ode van
  []
@@ -1203,12 +1204,13 @@ Underfull \hbox (badness 2205) in paragraph at lines 214--215
 \T1/lmr/m/n/10.95 (+20) on-ge-woon hoge ver-koop ge-dre-ven
  []
 
-<internefactoren.png, id=503, 617.30624pt x 348.55219pt>
+[9 <./Clusters.png> <./overlappendePLC's.png>]
+<internefactoren.png, id=504, 617.30624pt x 348.55219pt>
 File: internefactoren.png Graphic file (type png)
 <use internefactoren.png>
 Package pdftex.def Info: internefactoren.png  used on input line 252.
 (pdftex.def)             Requested size: 318.66948pt x 179.93451pt.
-[10 <./internefactoren.png>]
+ [10 <./internefactoren.png>]
 Underfull \hbox (badness 1024) in paragraph at lines 285--286
 []\T1/lmr/bx/n/10.95 (+20) Acceptabel: \T1/lmr/m/n/10.95 (+20) De zone hier-tus-sen
  []
@@ -1238,32 +1240,25 @@ File: inflatie.png Graphic file (type png)
 Package pdftex.def Info: inflatie.png  used on input line 905.
 (pdftex.def)             Requested size: 318.66948pt x 132.04579pt.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 916.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 916.
+(Font)              <9> on input line 916.
  [20 <./inflatie.png>]
-<Kasstroom.png, id=603, 467.49657pt x 224.33812pt>
+<Kasstroom.png, id=604, 467.49657pt x 224.33812pt>
 File: Kasstroom.png Graphic file (type png)
 <use Kasstroom.png>
 Package pdftex.def Info: Kasstroom.png  used on input line 949.
 (pdftex.def)             Requested size: 318.66948pt x 152.92786pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 955--959
+Underfull \hbox (badness 10000) in paragraph at lines 958--962
+
+ []
+
+[21 <./Kasstroom.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 964--974
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 960--970
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 971--976
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 977--980
+Underfull \hbox (badness 10000) in paragraph at lines 975--980
 
  []
 
@@ -1272,318 +1267,291 @@ Underfull \hbox (badness 10000) in paragraph at lines 981--984
 
  []
 
-[21 <./Kasstroom.png>]
-<AfschrijfLimiet.png, id=610, 872.50969pt x 395.97937pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 985--988
+
+ []
+
+[22]
+<AfschrijfLimiet.png, id=615, 872.50969pt x 395.97937pt>
 File: AfschrijfLimiet.png Graphic file (type png)
 <use AfschrijfLimiet.png>
-Package pdftex.def Info: AfschrijfLimiet.png  used on input line 1031.
+Package pdftex.def Info: AfschrijfLimiet.png  used on input line 1035.
 (pdftex.def)             Requested size: 364.19667pt x 165.28304pt.
- [22]
-Underfull \hbox (badness 10000) in paragraph at lines 1068--1071
+ [23 <./AfschrijfLimiet.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1069--1072
 
  []
 
-<image1.png, id=615, 426.09187pt x 219.82124pt>
+<image1.png, id=622, 426.09187pt x 219.82124pt>
 File: image1.png Graphic file (type png)
 <use image1.png>
-Package pdftex.def Info: image1.png  used on input line 1074.
+Package pdftex.def Info: image1.png  used on input line 1075.
 (pdftex.def)             Requested size: 318.66948pt x 164.41269pt.
-[23 <./AfschrijfLimiet.png>]
-<image2.png, id=622, 366.61969pt x 172.39406pt>
+<image2.png, id=623, 366.61969pt x 172.39406pt>
 File: image2.png Graphic file (type png)
 <use image2.png>
-Package pdftex.def Info: image2.png  used on input line 1087.
+Package pdftex.def Info: image2.png  used on input line 1088.
 (pdftex.def)             Requested size: 318.66948pt x 149.85535pt.
- [24 <./image1.png> <./image2.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1117--1120
+[24 <./image1.png> <./image2.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1118--1121
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1121--1125
+Underfull \hbox (badness 10000) in paragraph at lines 1122--1126
 
  []
 
 
-Overfull \hbox (6.87686pt too wide) detected at line 1142
+Overfull \hbox (6.87686pt too wide) detected at line 1143
 \OT1/lmr/m/n/10.95 500 = \OML/lmm/m/it/10.95 A [] \OT1/lmr/m/n/10.95 = \OML/lmm/m/it/10.95 A [] \OT1/lmr/m/n/10.95 = \OML/lmm/m/it/10.95 A [] \OT1/lmr/m/n/10.95 = \OML/lmm/m/it/10.95 A \OMS/lmsy/m/n/10.95 ^^B \OT1/lmr/m/n/10.95 6\OML/lmm/m/it/10.95 :\OT1/lmr/m/n/10.95 1446\OML/lmm/m/it/10.95 A \OT1/lmr/m/n/10.95 = [] \OMS/lmsy/m/n/10.95 ^^Y \OT1/lmr/m/n/10.95 81\OML/lmm/m/it/10.95 :\OT1/lmr/m/n/10.95 34 []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1144--1147
+Underfull \hbox (badness 10000) in paragraph at lines 1145--1148
 
  []
 
 
-Overfull \hbox (25.62679pt too wide) in paragraph at lines 1152--1167
+Overfull \hbox (25.62679pt too wide) in paragraph at lines 1153--1168
  [][] 
  []
 
 [25]
-Underfull \hbox (badness 10000) in paragraph at lines 1172--1174
+Underfull \hbox (badness 10000) in paragraph at lines 1173--1175
 
  []
 
 <Paypackperiode.png, id=636, 348.55219pt x 289.08pt>
 File: Paypackperiode.png Graphic file (type png)
 <use Paypackperiode.png>
-Package pdftex.def Info: Paypackperiode.png  used on input line 1192.
+Package pdftex.def Info: Paypackperiode.png  used on input line 1193.
 (pdftex.def)             Requested size: 182.09486pt x 151.0238pt.
 [26 <./Paypackperiode.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1219--1221
+Underfull \hbox (badness 10000) in paragraph at lines 1220--1222
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1229--1232
+Underfull \hbox (badness 10000) in paragraph at lines 1230--1233
 
  []
 
 <rateofreturn.png, id=644, 356.83313pt x 238.64156pt>
 File: rateofreturn.png Graphic file (type png)
 <use rateofreturn.png>
-Package pdftex.def Info: rateofreturn.png  used on input line 1246.
+Package pdftex.def Info: rateofreturn.png  used on input line 1247.
 (pdftex.def)             Requested size: 227.62206pt x 152.22755pt.
 [27] [28 <./rateofreturn.png>] [29]
-Underfull \hbox (badness 10000) in paragraph at lines 1363--1368
+Underfull \hbox (badness 10000) in paragraph at lines 1364--1369
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1402--1405
+Underfull \hbox (badness 10000) in paragraph at lines 1405--1408
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1406--1412
+Underfull \hbox (badness 10000) in paragraph at lines 1409--1415
 
  []
 
-<vastekosten.png, id=660, 499.11469pt x 362.85562pt>
+<vastekosten.png, id=659, 499.11469pt x 362.85562pt>
 File: vastekosten.png Graphic file (type png)
 <use vastekosten.png>
-Package pdftex.def Info: vastekosten.png  used on input line 1418.
+Package pdftex.def Info: vastekosten.png  used on input line 1421.
 (pdftex.def)             Requested size: 204.85846pt x 148.93233pt.
-<image3.png, id=661, 730.98094pt x 402.75468pt>
+<image3.png, id=660, 730.98094pt x 402.75468pt>
 File: image3.png Graphic file (type png)
 <use image3.png>
-Package pdftex.def Info: image3.png  used on input line 1419.
+Package pdftex.def Info: image3.png  used on input line 1422.
 (pdftex.def)             Requested size: 204.85846pt x 112.86887pt.
-[30] [31 <./vastekosten.png> <./image3.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1517--1519
+[30]
+Underfull \hbox (badness 10000) in paragraph at lines 1464--1469
 
  []
 
 
-LaTeX Warning: Command \texteuro invalid in math mode on input line 1522.
+Underfull \hbox (badness 10000) in paragraph at lines 1470--1475
 
+ []
 
-LaTeX Warning: Command \texteuro invalid in math mode on input line 1522.
-
-
-LaTeX Warning: Command \texteuro invalid in math mode on input line 1522.
-
-
-LaTeX Warning: Command \texteuro invalid in math mode on input line 1522.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1522--1524
+[31 <./vastekosten.png> <./image3.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1527--1529
 
  []
 
 
-LaTeX Warning: Command \texteuro invalid in math mode on input line 1543.
-
-
-LaTeX Warning: Command \texteuro invalid in math mode on input line 1543.
-
-
-LaTeX Warning: Command \texteuro invalid in math mode on input line 1543.
-
-
-LaTeX Warning: Command \texteuro invalid in math mode on input line 1543.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1543--1545
+Underfull \hbox (badness 10000) in paragraph at lines 1532--1534
 
  []
 
 
-LaTeX Warning: Command \texteuro invalid in math mode on input line 1564.
+Underfull \hbox (badness 10000) in paragraph at lines 1553--1555
+
+ []
 
 
-LaTeX Warning: Command \texteuro invalid in math mode on input line 1564.
-
-
-LaTeX Warning: Command \texteuro invalid in math mode on input line 1564.
-
-
-LaTeX Warning: Command \texteuro invalid in math mode on input line 1564.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1583--1588
+Underfull \hbox (badness 10000) in paragraph at lines 1593--1598
 
  []
 
 [32]
-Underfull \hbox (badness 10000) in paragraph at lines 1599--1607
+Underfull \hbox (badness 10000) in paragraph at lines 1609--1617
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1608--1612
+Underfull \hbox (badness 10000) in paragraph at lines 1618--1622
 
  []
 
 <VerschillendeMethodes.png, id=683, 725.71124pt x 389.20406pt>
 File: VerschillendeMethodes.png Graphic file (type png)
 <use VerschillendeMethodes.png>
-Package pdftex.def Info: VerschillendeMethodes.png  used on input line 1621.
+Package pdftex.def Info: VerschillendeMethodes.png  used on input line 1631.
 (pdftex.def)             Requested size: 364.19667pt x 195.32608pt.
-<dekkingkosten.png, id=684, 747.54282pt x 307.1475pt>
+[33]
+<dekkingkosten.png, id=689, 747.54282pt x 307.1475pt>
 File: dekkingkosten.png Graphic file (type png)
 <use dekkingkosten.png>
-Package pdftex.def Info: dekkingkosten.png  used on input line 1637.
+Package pdftex.def Info: dekkingkosten.png  used on input line 1647.
 (pdftex.def)             Requested size: 364.19667pt x 149.64124pt.
-[33 <./VerschillendeMethodes.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1672--1673
+ [34 <./VerschillendeMethodes.png> <./dekkingkosten.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1682--1683
 []\T1/lmr/m/n/10.95 (+20) Het aan-tal
  []
 
 
-Underfull \hbox (badness 1484) in paragraph at lines 1674--1675
+Underfull \hbox (badness 1484) in paragraph at lines 1684--1685
 []\T1/lmr/m/n/10.95 (+20) De om-zet
  []
 
-[34 <./dekkingkosten.png>]
 <breakevenrealistisch.png, id=700, 720.44156pt x 427.5975pt>
 File: breakevenrealistisch.png Graphic file (type png)
 <use breakevenrealistisch.png>
-Package pdftex.def Info: breakevenrealistisch.png  used on input line 1721.
+Package pdftex.def Info: breakevenrealistisch.png  used on input line 1731.
 (pdftex.def)             Requested size: 318.66948pt x 189.13521pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 1737--1745
+[35]
+Underfull \hbox (badness 10000) in paragraph at lines 1747--1755
 
  []
 
-[35 <./breakevenrealistisch.png>]
+[36 <./breakevenrealistisch.png>]
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 1790.
+(hyperref)                than one, level fixed on input line 1800.
 
-[36]
 <balans1.png, id=712, 431.36156pt x 241.65282pt>
 File: balans1.png Graphic file (type png)
 <use balans1.png>
-Package pdftex.def Info: balans1.png  used on input line 1823.
+Package pdftex.def Info: balans1.png  used on input line 1836.
 (pdftex.def)             Requested size: 364.19667pt x 204.03418pt.
 <balans2.png, id=713, 583.42969pt x 236.38312pt>
 File: balans2.png Graphic file (type png)
 <use balans2.png>
-Package pdftex.def Info: balans2.png  used on input line 1824.
+Package pdftex.def Info: balans2.png  used on input line 1837.
 (pdftex.def)             Requested size: 364.19667pt x 147.56235pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 1830--1834
+[37]
+Underfull \hbox (badness 10000) in paragraph at lines 1843--1847
 
  []
 
-<JaarrekeningPoximus.png, id=714, 642.90187pt x 348.55219pt>
+<JaarrekeningPoximus.png, id=719, 642.90187pt x 348.55219pt>
 File: JaarrekeningPoximus.png Graphic file (type png)
 <use JaarrekeningPoximus.png>
-Package pdftex.def Info: JaarrekeningPoximus.png  used on input line 1841.
+Package pdftex.def Info: JaarrekeningPoximus.png  used on input line 1854.
 (pdftex.def)             Requested size: 455.24411pt x 246.8196pt.
-[37 <./balans1.png> <./balans2.png>] [38 <./JaarrekeningPoximus.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1881--1887
+[38 <./balans1.png> <./balans2.png>] [39 <./JaarrekeningPoximus.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1894--1900
 
  []
 
-<verschillengaap met IFRS.png, id=729, 465.99094pt x 206.27063pt>
+<verschillengaap met IFRS.png, id=733, 465.99094pt x 206.27063pt>
 File: verschillengaap met IFRS.png Graphic file (type png)
 <use verschillengaap met IFRS.png>
-Package pdftex.def Info: verschillengaap met IFRS.png  used on input line 1901.
+Package pdftex.def Info: verschillengaap met IFRS.png  used on input line 1914.
 (pdftex.def)             Requested size: 364.19667pt x 161.21776pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1922--1927
+Underfull \hbox (badness 10000) in paragraph at lines 1935--1940
 
  []
 
-[39 <./verschillengaap met IFRS.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1941--1943
+[40 <./verschillengaap met IFRS.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1954--1956
 
  []
 
-<activapassiveanalyse.png, id=736, 472.76625pt x 138.5175pt>
+<activapassiveanalyse.png, id=740, 472.76625pt x 138.5175pt>
 File: activapassiveanalyse.png Graphic file (type png)
 <use activapassiveanalyse.png>
-Package pdftex.def Info: activapassiveanalyse.png  used on input line 1992.
+Package pdftex.def Info: activapassiveanalyse.png  used on input line 2005.
 (pdftex.def)             Requested size: 204.85846pt x 60.02213pt.
-<omzetanaluse.png, id=737, 293.59688pt x 198.7425pt>
+<omzetanaluse.png, id=741, 293.59688pt x 198.7425pt>
 File: omzetanaluse.png Graphic file (type png)
 <use omzetanaluse.png>
-Package pdftex.def Info: omzetanaluse.png  used on input line 1993.
+Package pdftex.def Info: omzetanaluse.png  used on input line 2006.
 (pdftex.def)             Requested size: 204.85846pt x 138.673pt.
-[40]
-<hor+vert.png, id=743, 594.72188pt x 294.34969pt>
+[41]
+<hor+vert.png, id=747, 594.72188pt x 294.34969pt>
 File: hor+vert.png Graphic file (type png)
 <use hor+vert.png>
-Package pdftex.def Info: hor+vert.png  used on input line 2002.
+Package pdftex.def Info: hor+vert.png  used on input line 2015.
 (pdftex.def)             Requested size: 455.24411pt x 225.316pt.
- [41 <./activapassiveanalyse.png> <./omzetanaluse.png> <./hor+vert.png>]
-<NettoWerkKapitaal.png, id=753, 591.71063pt x 284.56313pt>
+ [42 <./activapassiveanalyse.png> <./omzetanaluse.png> <./hor+vert.png>]
+<NettoWerkKapitaal.png, id=757, 591.71063pt x 284.56313pt>
 File: NettoWerkKapitaal.png Graphic file (type png)
 <use NettoWerkKapitaal.png>
-Package pdftex.def Info: NettoWerkKapitaal.png  used on input line 2052.
+Package pdftex.def Info: NettoWerkKapitaal.png  used on input line 2065.
 (pdftex.def)             Requested size: 364.19667pt x 175.15074pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 2060--2066
+Underfull \hbox (badness 10000) in paragraph at lines 2073--2079
 
  []
 
-[42 <./NettoWerkKapitaal.png>]
-<werkkapitaalcyclus.png, id=760, 480.29437pt x 323.70938pt>
+[43 <./NettoWerkKapitaal.png>]
+<werkkapitaalcyclus.png, id=765, 480.29437pt x 323.70938pt>
 File: werkkapitaalcyclus.png Graphic file (type png)
 <use werkkapitaalcyclus.png>
-Package pdftex.def Info: werkkapitaalcyclus.png  used on input line 2084.
+Package pdftex.def Info: werkkapitaalcyclus.png  used on input line 2097.
 (pdftex.def)             Requested size: 273.14923pt x 184.10135pt.
- [43 <./werkkapitaalcyclus.png>] [44] [45]
-Underfull \hbox (badness 10000) in paragraph at lines 2233--2236
+ [44 <./werkkapitaalcyclus.png>] [45] [46]
+Underfull \hbox (badness 10000) in paragraph at lines 2246--2249
 
  []
 
-<fitometer.png, id=775, 519.44063pt x 244.66406pt>
+<fitometer.png, id=779, 519.44063pt x 244.66406pt>
 File: fitometer.png Graphic file (type png)
 <use fitometer.png>
-Package pdftex.def Info: fitometer.png  used on input line 2241.
+Package pdftex.def Info: fitometer.png  used on input line 2254.
 (pdftex.def)             Requested size: 364.19667pt x 171.53992pt.
-[46 <./fitometer.png>]
-Overfull \hbox (17.41554pt too wide) in paragraph at lines 2258--2259
+[47 <./fitometer.png>]
+Overfull \hbox (17.41554pt too wide) in paragraph at lines 2271--2272
 []\T1/lmr/m/n/10.95 (-20) Overzicht van in-kom-sten en uit-ga-ven over een pe-ri-ode (vi-deo van winst/verlies) 
  []
 
-[47] [48] [49] (Ingenieur&economie-Samenvatting-RubenRyckaert.aux)
+[48] [49] [50] (Ingenieur&economie-Samenvatting-RubenRyckaert.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-11-06>
  ***********
-
-
-LaTeX Warning: There were multiply-defined labels.
-
 Package rerunfilecheck Info: File `Ingenieur&economie-Samenvatting-RubenRyckaert.out' has not changed.
-(rerunfilecheck)             Checksum: CCF33C69622439130B378DEB7275ABA8;11387.
+(rerunfilecheck)             Checksum: 18BFC9888C9933918922B93C3C2AC4B1;11337.
  ) 
 Here is how much of TeX's memory you used:
- 48373 strings out of 467871
- 1112621 string characters out of 5428442
- 1644393 words of memory out of 5000000
- 76008 multiletter control sequences out of 15000+600000
- 764123 words of font info for 284 fonts, out of 8000000 for 9000
+ 48680 strings out of 467871
+ 1117064 string characters out of 5428442
+ 1650329 words of memory out of 5000000
+ 76283 multiletter control sequences out of 15000+600000
+ 770624 words of font info for 293 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 113i,17n,122p,1236b,1328s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbxi10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi6.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmri8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmri9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmsy8.pfb>
-Output written on Ingenieur&economie-Samenvatting-RubenRyckaert.pdf (49 pages, 1988218 bytes).
+ 113i,17n,122p,1236b,1311s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbxi10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi6.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmri8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmri9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmsy8.pfb>
+Output written on Ingenieur&economie-Samenvatting-RubenRyckaert.pdf (50 pages, 2006044 bytes).
 PDF statistics:
- 953 PDF objects out of 1000 (max. 8388607)
- 186 named destinations out of 1000 (max. 500000)
- 80571 words of extra memory for PDF output out of 89155 (max. 10000000)
+ 961 PDF objects out of 1000 (max. 8388607)
+ 187 named destinations out of 1000 (max. 500000)
+ 82619 words of extra memory for PDF output out of 89155 (max. 10000000)
 

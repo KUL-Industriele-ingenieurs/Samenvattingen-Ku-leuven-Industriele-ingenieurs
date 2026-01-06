@@ -162,7 +162,7 @@ Kort overzicht van de map `Productietechnologie`:
 Located in `latex_templates/`, this repository now features a streamlined workflow:
 
 - **`school-macros.sty`**: A high-readability, minimalist package. It includes:
-  - Custom boxes: `conceptbox`, `warningbox`, `examenbox`, `procesbox`, `oefenblok`, `theorieblok`.
+  - Custom boxes: `conceptbox`, `warningbox`, `examenbox`, `oefenblok`.
   - Formula management: `\frm{Title}{Formula}{Note}` (automatically builds a formularium).
   - Symbol management: `\sym{Symbol}{Description}{Unit}` (automatically builds a symbol list).
   - Modern typography: Pre-configured with `microtype`, `lmodern`, and `parskip`.
