@@ -16,6 +16,7 @@
 \RequirePackage{graphicx}
 \RequirePackage{xcolor}
 \RequirePackage{etoolbox}
+\RequirePackage{xstring}
 \RequirePackage{tabularx} 
 \RequirePackage{tcolorbox}
 \RequirePackage{caption}
@@ -44,6 +45,13 @@
 \definecolor{schoolRed}{RGB}{180,40,40}
 \definecolor{schoolOrange}{RGB}{230,126,34}
 \definecolor{schoolGray}{RGB}{100,100,100}
+
+% Formula box colors (redefinable by user)
+\newcommand{\frmBoxBack}{blue!5}
+\newcommand{\frmBoxFrame}{blue!40}
+\newcommand{\frmBoxRule}{0.5pt}
+\newcommand{\frmBoxArc}{3pt}
+\newcommand{\frmBoxSep}{4pt}
 
 % ==================== PAGE LAYOUT ====================
 \geometry{left=2.5cm,right=2.5cm,top=3cm,bottom=3cm} 
@@ -88,10 +96,55 @@
     }
 }
 
-\newtcolorbox{examenbox}[1][]{schoolstyle, colback=schoolOrange!8, colframe=schoolOrange!80, coltitle=white, title={Examen}, #1}
-\newtcolorbox{warningbox}[1][]{schoolstyle, colback=schoolRed!5, colframe=schoolRed!60, coltitle=white, title={Belangrijk}, #1}
-\newtcolorbox{theorieblok}[1][]{schoolstyle, colback=schoolBlue!5, colframe=schoolBlue!60, coltitle=white, title={Theorie}, #1}
-\newtcolorbox{oefenblok}[1][]{schoolstyle, colback=gray!5, colframe=gray!50, coltitle=black, title={Oefening}, #1}
+% Exam tip - compact version
+\newenvironment{examenbox}[1][]{%
+  \par\vspace{0.5\baselineskip}
+  \noindent\keyterm{EXAMENTIP:} \itshape
+}{%
+  \par\vspace{0.5\baselineskip}
+}
+
+% Concept definition box - for key terminology
+\newtcolorbox{conceptbox}[1][]{%
+  colback=gray!5,
+  colframe=blue!40!black,
+  boxrule=0.2pt, % Very thin frame
+  leftrule=3pt,  % Colored accent on the left
+  arc=1pt,
+  boxsep=4pt,
+  fonttitle=\bfseries,
+  coltitle=white, % Changed from blue!40!black to white for visibility
+  #1
+}
+
+% Inline highlight for key terms
+\newcommand{\keyterm}[1]{\textbf{\color{blue!70!black}#1}}
+
+% Warning box for important warnings
+\newtcolorbox{warningbox}[1][]{%
+  colback=red!5,
+  colframe=red!60!black,
+  boxrule=0.5pt,
+  leftrule=3pt,
+  arc=2pt,
+  boxsep=4pt,
+  fonttitle=\bfseries,
+  coltitle=white, % Ensure visibility
+  #1
+}
+
+% Exercise box - similar to conceptbox style
+\newtcolorbox{oefenblok}[1][]{%
+  colback=green!3,
+  colframe=green!40!black,
+  boxrule=0.2pt, % Very thin frame
+  leftrule=3pt,  % Colored accent on the left
+  arc=1pt,
+  boxsep=4pt,
+  fonttitle=\bfseries,
+  coltitle=white,
+  #1
+}
 
 % ==================== FORMULAS ====================
 \newcommand{\FormulariumChapters}{}
@@ -110,16 +163,25 @@
 
 \newcommand{\frm}[3]{%
   \stepcounter{FormulariumEntryCounter}%
-  \begin{tcolorbox}[schoolstyle, colback=schoolBlue!2, colframe=schoolBlue!30, title={#1}, coltitle=schoolBlue!80!black]
+  \begin{tcolorbox}[
+    colback=\frmBoxBack,
+    colframe=\frmBoxFrame,
+    boxrule=\frmBoxRule,
+    leftrule=3pt,
+    arc=\frmBoxArc,
+    boxsep=\frmBoxSep,
+    left=6pt, right=6pt, top=4pt, bottom=4pt
+  ]
+    \textbf{#1:}\par
     \vspace{2pt}
     {\centering\large $\displaystyle #2$\par}
     \vspace{4pt}
-    {\small\itshape #3}\label{frm:\theFormulariumEntryCounter}%
+    {\footnotesize\itshape #3}\label{frm:\theFormulariumEntryCounter}%
   \end{tcolorbox}%
   \@ifundefined{chapter}{%
-    \protected@write\@auxout{}{\string\addformulariumentry{0}{#1}{\unexpanded{#2}}{\unexpanded{#3}}{\theFormulariumEntryCounter}}%
+    \protected@write\@auxout{}{\string\addformulariumentry{0}{\unexpanded{#1}}{\unexpanded{#2}}{\unexpanded{#3}}{\theFormulariumEntryCounter}}%
   }{%
-    \protected@write\@auxout{}{\string\addformulariumentry{\thechapter}{#1}{\unexpanded{#2}}{\unexpanded{#3}}{\theFormulariumEntryCounter}}%
+    \protected@write\@auxout{}{\string\addformulariumentry{\thechapter}{\unexpanded{#1}}{\unexpanded{#2}}{\unexpanded{#3}}{\theFormulariumEntryCounter}}%
   }%
 }
 \makeatother
@@ -235,6 +297,9 @@
 \newcommand{\ZZ}{\mathbb{Z}}  % Integers
 \newcommand{\QQ}{\mathbb{Q}}  % Rationals
 \newcommand{\CC}{\mathbb{C}}  % Complex numbers
+
+% Boxed equation (important formulas)
+\newcommand{\eqbox}[1]{\boxed{#1}}
 
 % Brackets that scale automatically
 \newcommand{\abs}[1]{\left|#1\right|}  % Absolute value

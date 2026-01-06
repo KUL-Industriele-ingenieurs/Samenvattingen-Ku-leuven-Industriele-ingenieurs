@@ -1,63 +1,133 @@
 # School-Macros Quick Reference
 
-## 📦 Essential Boxes (4 only!)
-- `\begin{examenbox}` → Exam tips and important questions
-- `\begin{warningbox}` → Critical warnings
-- `\begin{theorieblok}` → Theory and definitions  
-- `\begin{oefenblok}` → Exercises and examples
+## 📦 Box Macros
 
-## 📊 Core Features
-- `\frm{Label}{math}{notes}` → Adds formula to formularium
-- `\sym{symbol}{name}{unit}` → Symbol with explanation (first use only)
-- `\fig[width]{path}{caption}{label}` → Standard figure
+### Exam Tips
+```latex
+\begin{examenbox}
+Korte examentip zonder titel parameter
+\end{examenbox}
+```
 
-## 📐 Math Shortcuts
+### Concept Definitions
+```latex
+\begin{conceptbox}[title=Definitie]
+Uitleg van een belangrijk concept.
+Grijze achtergrond met blauwe accent links.
+\end{conceptbox}
+```
+
+### Warnings
+```latex
+\begin{warningbox}
+Zonder titel parameter (geen titel-balk)
+\end{warningbox}
+
+\begin{warningbox}[title=Custom]
+Met aangepaste titel
+\end{warningbox}
+```
+
+### Exercises
+```latex
+\begin{oefenblok}
+Zonder titel parameter (geen titel-balk)
+\end{oefenblok}
+
+\begin{oefenblok}[title=Custom Oefening]
+Met aangepaste titel (net als conceptbox)
+\end{oefenblok}
+```
+
+## 📐 Formulas
+
+### Formula Box (auto-formularium)
+```latex
+\frm{Label}{math}{notes}
+```
+Voegt automatisch toe aan formularium.
+
+### Boxed Equation
+```latex
+\[ \boxed{E = mc^2} \]
+\[ \eqbox{F = ma} \]
+```
+
+## 🔢 Math Shortcuts
 
 ### Derivatives
 - `\dd{y}{x}` → dy/dx
+- `\ddn{y}{x}{2}` → d²y/dx²
 - `\pd{f}{x}` → ∂f/∂x  
-- `\dx, \dy, \dt` → Differential elements
+- `\pdn{f}{x}{2}` → ∂²f/∂x²
+- `\dx, \dy, \dt, \dv` → Differential elements
 
-### Vectors & Brackets
-- `\vec{v}` → **v** (bold)
+### Vectors & Matrices
+- `\vec{v}` → **v** (bold vector)
 - `\uvec{n}` → **n̂** (unit vector)
+- `\mat{A}` → **A** (matrix)
+
+### Brackets (auto-scaling)
 - `\abs{x}` → |x|
 - `\norm{v}` → ‖v‖
-- `\paren{...}`, `\bracket{...}`, `\curlybrace{...}`
+- `\paren{...}` → (...)
+- `\bracket{...}` → [...]
+- `\curlybrace{...}` → {...}
+- `\avg{x}` → ⟨x⟩
 
 ### Quick Fractions
 - `\half, \third, \quarter` → ½, ⅓, ¼
+- `\ifrac{1}{3}` → 1/3 (inline text)
 
 ### Number Sets
 - `\RR, \NN, \ZZ, \QQ, \CC` → ℝ, ℕ, ℤ, ℚ, ℂ
 
-## 🔢 Units (siunitx shortcuts)
-- `\km, \kmh, \ms` → km, km/h, m/s
-- `\degC` → °C
-- `\kW, \MW` → kW, MW
-- `\kPa, \MPa` → kPa, MPa
+## 🎨 Text Emphasis
+- `\concept{text}` → Blue bold (new concepts)
+- `\belangrijk{text}` → Red bold (important items)
+- `\keyterm{text}` → Blue accent (key terms)
 
-Usage: `\SI{100}{\km}` → 100 km
+## 📊 Figures
+```latex
+\fig[width]{path}{caption}{label}
+\autofig[width]{path}{caption}  % auto-label
+\img{path}{caption}             % simplest
+```
 
-## ✏️ Emphasis
-- `\concept{text}` → Blue bold for new concepts
-- `\belangrijk{text}` → Red bold for important items
+## 🔤 Symbols
+```latex
+\sym{v_c}{Snijsnelheid}{m/min}
+```
+First use: shows full explanation box  
+Later: just the symbol
+
+## 🔗 Cross-References (Dutch)
+- `\eqnref{eq:label}` / `\Eqnref{eq:label}` → vergelijking (1)
+- `\figref{fig:label}` / `\Figref{fig:label}` → figuur 1
+- `\tabref{tab:label}` / `\Tabref{tab:label}` → tabel 1
+- `\secref{sec:label}` / `\Secref{sec:label}` → sectie 1.2
+
+## 🛠️ Utility
+- `\TODO{text}` → Red TODO marker
+- `\FIXME{text}` → Red FIXME marker
+- `\NOTE{text}` → Orange NOTE marker
+- `\degree` → ° (degree symbol)
 
 ## 📋 Lists
 
-### Bullet List (itemize)
+### Bullet List
 ```latex
 \begin{itemize}
-    \item First item
-    \item Second item
+    \item First
+    \item Second
 \end{itemize}
 ```
 
-### Numbered List (enumerate)
+### Numbered List
 ```latex
 \begin{enumerate}
-    \item First step
-    \item Second step
+    \item First
+    \item Second
 \end{enumerate}
 ```
 
@@ -71,33 +141,84 @@ Usage: `\SI{100}{\km}` → 100 km
 
 ## 📊 Tables
 
+### Standard Table
 ```latex
 \begin{table}[H]
 \centering
-\caption{Table title}
+\caption{Title}
 \begin{tabular}{lcc}
 \toprule
-\textbf{Column 1} & \textbf{Column 2} & \textbf{Column 3} \\
+\textbf{Col1} & \textbf{Col2} & \textbf{Col3} \\
 \midrule
-Data 1 & Data 2 & Data 3 \\
-More   & Data   & Here \\
+Data & Data & Data \\
 \bottomrule
 \end{tabular}
 \end{table}
 ```
 
-## 📈 Graphs (TikZ/pgfplots)
+### Full-width with Text Wrap
+```latex
+\begin{tabularx}{\linewidth}{l X}
+\toprule
+\textbf{Term} & \textbf{Long text wraps automatically} \\
+\midrule
+... & ... \\
+\bottomrule
+\end{tabularx}
+```
+
+## 📈 Graphs (TikZ/PGFPlots)
 
 ### Function Plot
 ```latex
 \begin{tikzpicture}
-\begin{axis}[
-    xlabel={$x$},
-    ylabel={$f(x)$},
-    grid=major
-]
+\begin{axis}[xlabel={$x$}, ylabel={$f(x)$}, grid=major]
 \addplot[blue, thick, domain=0:4] {x^2};
 \addlegendentry{$f(x) = x^2$}
+\end{axis}
+\end{tikzpicture}
+```
+
+### Data Plot
+```latex
+\begin{axis}[...]
+\addplot[mark=*] coordinates {
+    (0,0) (1,2) (2,4) (3,6)
+};
+\end{axis}
+```
+
+## 📄 Document Template
+
+```latex
+\documentclass[a4paper,11pt]{article}
+\usepackage{school-macros}
+
+\title{Document Title}
+\author{Your Name}
+\date{\today}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Introduction}
+% Content here
+
+\appendix
+\printsymbols
+\printformularium
+\end{document}
+```
+
+## ⚡ Workflow Tips
+
+1. **Compile twice** for formularium & symbol list
+2. Use `\frm` for all important formulas
+3. Use `\sym` at first mention of symbols
+4. Check `macro_usage_guide.tex` for complete examples
+5. Use `new_document_template.tex` as starting point
 \end{axis}
 \end{tikzpicture}
 ```

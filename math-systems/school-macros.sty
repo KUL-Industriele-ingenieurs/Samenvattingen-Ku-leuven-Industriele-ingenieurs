@@ -88,9 +88,18 @@
     }
 }
 
-\newtcolorbox{examenbox}[1][]{schoolstyle, colback=schoolOrange!8, colframe=schoolOrange!80, coltitle=white, title={Examen}, #1}
-\newtcolorbox{warningbox}[1][]{schoolstyle, colback=schoolRed!5, colframe=schoolRed!60, coltitle=white, title={Belangrijk}, #1}
-\newtcolorbox{theorieblok}[1][]{schoolstyle, colback=schoolBlue!5, colframe=schoolBlue!60, coltitle=white, title={Theorie}, #1}
+% Exam tip - compact version
+\newenvironment{examenbox}[1][]{%
+  \par\vspace{0.5\baselineskip}
+  \noindent\keyterm{EXAMENTIP:} \itshape
+}{%
+  \par\vspace{0.5\baselineskip}
+}
+
+% Inline highlight for key terms
+\newcommand{\keyterm}[1]{\textbf{\color{blue!70!black}#1}}
+
+\newtcolorbox{warningbox}[1][title={Belangrijk}]{schoolstyle, colback=schoolRed!5, colframe=schoolRed!60, coltitle=white, #1}
 \newtcolorbox{oefenblok}[1][]{schoolstyle, colback=gray!5, colframe=gray!50, coltitle=black, title={Oefening}, #1}
 
 % ==================== FORMULAS ====================
