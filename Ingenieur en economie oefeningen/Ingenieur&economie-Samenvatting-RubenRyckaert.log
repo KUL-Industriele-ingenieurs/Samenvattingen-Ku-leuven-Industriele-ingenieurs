@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.12.16)  7 JAN 2026 17:35
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.12.16)  7 JAN 2026 20:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1207,13 +1207,18 @@ Overfull \hbox (2.43332pt too wide) in paragraph at lines 191--208
 []$[]$  $[]$ 
  []
 
+<tabelplc.png, id=490, 682.04813pt x 386.19281pt>
+File: tabelplc.png Graphic file (type png)
+<use tabelplc.png>
+Package pdftex.def Info: tabelplc.png  used on input line 219.
+(pdftex.def)             Requested size: 455.24411pt x 257.77551pt.
 
-Underfull \hbox (badness 1264) in paragraph at lines 223--224
+Underfull \hbox (badness 1264) in paragraph at lines 231--232
 []\T1/lmr/m/n/10.95 (+20) Een tij-de-lijke pe-ri-ode van
  []
 
 
-Underfull \hbox (badness 2205) in paragraph at lines 223--224
+Underfull \hbox (badness 2205) in paragraph at lines 231--232
 \T1/lmr/m/n/10.95 (+20) on-ge-woon hoge ver-koop ge-dre-ven
  []
 
@@ -1221,332 +1226,332 @@ Underfull \hbox (badness 2205) in paragraph at lines 223--224
 <internefactoren.png, id=504, 617.30624pt x 348.55219pt>
 File: internefactoren.png Graphic file (type png)
 <use internefactoren.png>
-Package pdftex.def Info: internefactoren.png  used on input line 261.
+Package pdftex.def Info: internefactoren.png  used on input line 269.
 (pdftex.def)             Requested size: 318.66948pt x 179.93451pt.
- [10 <./internefactoren.png>]
-Underfull \hbox (badness 1024) in paragraph at lines 294--295
+ [10 <./tabelplc.png>]
+Underfull \hbox (badness 1024) in paragraph at lines 302--303
 []\T1/lmr/bx/n/10.95 (+20) Acceptabel: \T1/lmr/m/n/10.95 (+20) De zone hier-tus-sen
  []
 
-<externe factoren.png, id=513, 622.57594pt x 349.305pt>
+<externe factoren.png, id=511, 622.57594pt x 349.305pt>
 File: externe factoren.png Graphic file (type png)
 <use externe factoren.png>
-Package pdftex.def Info: externe factoren.png  used on input line 343.
+Package pdftex.def Info: externe factoren.png  used on input line 351.
 (pdftex.def)             Requested size: 318.66948pt x 178.79344pt.
-[11 <./externe factoren.png>]
+[11 <./internefactoren.png>]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 405.
-
-Underfull \hbox (badness 10000) in paragraph at lines 452--457
+(Font)              <5> on input line 413.
+ [12 <./externe factoren.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 460--465
 
  []
 
-[12] [13] [14] [15] [16] [17] [18]
-<inflatie.png, id=589, 597.73312pt x 247.67531pt>
+[13] [14] [15] [16] [17] [18] [19]
+<inflatie.png, id=596, 597.73312pt x 247.67531pt>
 File: inflatie.png Graphic file (type png)
 <use inflatie.png>
-Package pdftex.def Info: inflatie.png  used on input line 866.
+Package pdftex.def Info: inflatie.png  used on input line 874.
 (pdftex.def)             Requested size: 318.66948pt x 132.04579pt.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 877.
- [19 <./inflatie.png>]
-<Kasstroom.png, id=599, 467.49657pt x 224.33812pt>
+(Font)              <9> on input line 885.
+ [20 <./inflatie.png>]
+<Kasstroom.png, id=605, 467.49657pt x 224.33812pt>
 File: Kasstroom.png Graphic file (type png)
 <use Kasstroom.png>
-Package pdftex.def Info: Kasstroom.png  used on input line 910.
+Package pdftex.def Info: Kasstroom.png  used on input line 918.
 (pdftex.def)             Requested size: 318.66948pt x 152.92786pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 919--923
-
- []
-
-[20 <./Kasstroom.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 925--935
+Underfull \hbox (badness 10000) in paragraph at lines 927--931
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 936--941
+Underfull \hbox (badness 10000) in paragraph at lines 933--943
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 942--945
+Underfull \hbox (badness 10000) in paragraph at lines 944--949
+
+ []
+
+[21 <./Kasstroom.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 950--953
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 946--949
+Underfull \hbox (badness 10000) in paragraph at lines 954--957
 
  []
 
-[21]
-<AfschrijfLimiet.png, id=610, 872.50969pt x 395.97937pt>
+<AfschrijfLimiet.png, id=612, 872.50969pt x 395.97937pt>
 File: AfschrijfLimiet.png Graphic file (type png)
 <use AfschrijfLimiet.png>
-Package pdftex.def Info: AfschrijfLimiet.png  used on input line 996.
+Package pdftex.def Info: AfschrijfLimiet.png  used on input line 1004.
 (pdftex.def)             Requested size: 364.19667pt x 165.28304pt.
- [22 <./AfschrijfLimiet.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1030--1033
+[22]
+Underfull \hbox (badness 10000) in paragraph at lines 1038--1041
 
  []
 
 <image1.png, id=617, 426.09187pt x 219.82124pt>
 File: image1.png Graphic file (type png)
 <use image1.png>
-Package pdftex.def Info: image1.png  used on input line 1036.
+Package pdftex.def Info: image1.png  used on input line 1044.
 (pdftex.def)             Requested size: 318.66948pt x 164.41269pt.
-<image2.png, id=618, 366.61969pt x 172.39406pt>
+[23 <./AfschrijfLimiet.png>]
+<image2.png, id=624, 366.61969pt x 172.39406pt>
 File: image2.png Graphic file (type png)
 <use image2.png>
-Package pdftex.def Info: image2.png  used on input line 1049.
+Package pdftex.def Info: image2.png  used on input line 1057.
 (pdftex.def)             Requested size: 318.66948pt x 149.85535pt.
-[23 <./image1.png> <./image2.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1079--1082
+ [24 <./image1.png> <./image2.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1087--1090
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1083--1087
+Underfull \hbox (badness 10000) in paragraph at lines 1091--1095
 
  []
 
 
-Overfull \hbox (6.87686pt too wide) detected at line 1104
+Overfull \hbox (6.87686pt too wide) detected at line 1112
 \OT1/lmr/m/n/10.95 500 = \OML/lmm/m/it/10.95 A [] \OT1/lmr/m/n/10.95 = \OML/lmm/m/it/10.95 A [] \OT1/lmr/m/n/10.95 = \OML/lmm/m/it/10.95 A [] \OT1/lmr/m/n/10.95 = \OML/lmm/m/it/10.95 A \OMS/lmsy/m/n/10.95 ^^B \OT1/lmr/m/n/10.95 6\OML/lmm/m/it/10.95 :\OT1/lmr/m/n/10.95 1446\OML/lmm/m/it/10.95 A \OT1/lmr/m/n/10.95 = [] \OMS/lmsy/m/n/10.95 ^^Y \OT1/lmr/m/n/10.95 81\OML/lmm/m/it/10.95 :\OT1/lmr/m/n/10.95 34 []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1106--1109
+Underfull \hbox (badness 10000) in paragraph at lines 1114--1117
 
  []
 
 
-Overfull \hbox (25.62679pt too wide) in paragraph at lines 1114--1129
+Overfull \hbox (25.62679pt too wide) in paragraph at lines 1122--1137
  [][] 
  []
 
-[24]
-Underfull \hbox (badness 10000) in paragraph at lines 1134--1136
+[25]
+Underfull \hbox (badness 10000) in paragraph at lines 1142--1144
 
  []
 
-<Paypackperiode.png, id=630, 348.55219pt x 289.08pt>
+<Paypackperiode.png, id=637, 348.55219pt x 289.08pt>
 File: Paypackperiode.png Graphic file (type png)
 <use Paypackperiode.png>
-Package pdftex.def Info: Paypackperiode.png  used on input line 1154.
+Package pdftex.def Info: Paypackperiode.png  used on input line 1162.
 (pdftex.def)             Requested size: 182.09486pt x 151.0238pt.
-[25 <./Paypackperiode.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1181--1183
+[26 <./Paypackperiode.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1189--1191
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1191--1194
+Underfull \hbox (badness 10000) in paragraph at lines 1199--1202
 
  []
 
-<rateofreturn.png, id=639, 356.83313pt x 238.64156pt>
+<rateofreturn.png, id=645, 356.83313pt x 238.64156pt>
 File: rateofreturn.png Graphic file (type png)
 <use rateofreturn.png>
-Package pdftex.def Info: rateofreturn.png  used on input line 1208.
+Package pdftex.def Info: rateofreturn.png  used on input line 1216.
 (pdftex.def)             Requested size: 227.62206pt x 152.22755pt.
-[26] [27 <./rateofreturn.png>] [28]
-Underfull \hbox (badness 10000) in paragraph at lines 1325--1330
+[27] [28 <./rateofreturn.png>] [29]
+Underfull \hbox (badness 10000) in paragraph at lines 1333--1338
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1366--1369
+Underfull \hbox (badness 10000) in paragraph at lines 1374--1377
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1370--1376
+Underfull \hbox (badness 10000) in paragraph at lines 1378--1384
 
  []
 
-<vastekosten.png, id=654, 499.11469pt x 362.85562pt>
+<vastekosten.png, id=660, 499.11469pt x 362.85562pt>
 File: vastekosten.png Graphic file (type png)
 <use vastekosten.png>
-Package pdftex.def Info: vastekosten.png  used on input line 1382.
+Package pdftex.def Info: vastekosten.png  used on input line 1391.
 (pdftex.def)             Requested size: 204.85846pt x 148.93233pt.
-<image3.png, id=655, 730.98094pt x 402.75468pt>
+<image3.png, id=661, 730.98094pt x 402.75468pt>
 File: image3.png Graphic file (type png)
 <use image3.png>
-Package pdftex.def Info: image3.png  used on input line 1383.
+Package pdftex.def Info: image3.png  used on input line 1392.
 (pdftex.def)             Requested size: 204.85846pt x 112.86887pt.
-[29]
-Underfull \hbox (badness 10000) in paragraph at lines 1425--1430
+[30]
+Underfull \hbox (badness 10000) in paragraph at lines 1434--1439
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1431--1436
+Underfull \hbox (badness 10000) in paragraph at lines 1440--1445
 
  []
 
-[30 <./vastekosten.png> <./image3.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1488--1490
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1493--1495
+[31 <./vastekosten.png> <./image3.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1497--1499
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1514--1516
+Underfull \hbox (badness 10000) in paragraph at lines 1502--1504
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1554--1559
-
- []
-
-[31]
-Underfull \hbox (badness 10000) in paragraph at lines 1570--1578
+Underfull \hbox (badness 10000) in paragraph at lines 1523--1525
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1579--1583
+Underfull \hbox (badness 10000) in paragraph at lines 1563--1568
 
  []
 
-<VerschillendeMethodes.png, id=678, 725.71124pt x 389.20406pt>
+[32]
+Underfull \hbox (badness 10000) in paragraph at lines 1579--1587
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1588--1592
+
+ []
+
+<VerschillendeMethodes.png, id=684, 725.71124pt x 389.20406pt>
 File: VerschillendeMethodes.png Graphic file (type png)
 <use VerschillendeMethodes.png>
-Package pdftex.def Info: VerschillendeMethodes.png  used on input line 1592.
+Package pdftex.def Info: VerschillendeMethodes.png  used on input line 1601.
 (pdftex.def)             Requested size: 364.19667pt x 195.32608pt.
-[32]
-<dekkingkosten.png, id=684, 747.54282pt x 307.1475pt>
+[33]
+<dekkingkosten.png, id=690, 747.54282pt x 307.1475pt>
 File: dekkingkosten.png Graphic file (type png)
 <use dekkingkosten.png>
-Package pdftex.def Info: dekkingkosten.png  used on input line 1608.
+Package pdftex.def Info: dekkingkosten.png  used on input line 1617.
 (pdftex.def)             Requested size: 364.19667pt x 149.64124pt.
- [33 <./VerschillendeMethodes.png> <./dekkingkosten.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1643--1644
+ [34 <./VerschillendeMethodes.png> <./dekkingkosten.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1652--1653
 []\T1/lmr/m/n/10.95 (+20) Het aan-tal
  []
 
 
-Underfull \hbox (badness 1484) in paragraph at lines 1645--1646
+Underfull \hbox (badness 1484) in paragraph at lines 1654--1655
 []\T1/lmr/m/n/10.95 (+20) De om-zet
  []
 
-<breakevenrealistisch.png, id=695, 720.44156pt x 427.5975pt>
+<breakevenrealistisch.png, id=701, 720.44156pt x 427.5975pt>
 File: breakevenrealistisch.png Graphic file (type png)
 <use breakevenrealistisch.png>
-Package pdftex.def Info: breakevenrealistisch.png  used on input line 1692.
+Package pdftex.def Info: breakevenrealistisch.png  used on input line 1701.
 (pdftex.def)             Requested size: 318.66948pt x 189.13521pt.
-[34]
-Underfull \hbox (badness 10000) in paragraph at lines 1708--1716
+[35]
+Underfull \hbox (badness 10000) in paragraph at lines 1717--1725
 
  []
 
-[35 <./breakevenrealistisch.png>]
+[36 <./breakevenrealistisch.png>]
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 1763.
+(hyperref)                than one, level fixed on input line 1772.
 
-<balans1.png, id=708, 431.36156pt x 241.65282pt>
+<balans1.png, id=714, 431.36156pt x 241.65282pt>
 File: balans1.png Graphic file (type png)
 <use balans1.png>
-Package pdftex.def Info: balans1.png  used on input line 1796.
+Package pdftex.def Info: balans1.png  used on input line 1805.
 (pdftex.def)             Requested size: 364.19667pt x 204.03418pt.
-<balans2.png, id=709, 583.42969pt x 236.38312pt>
+<balans2.png, id=715, 583.42969pt x 236.38312pt>
 File: balans2.png Graphic file (type png)
 <use balans2.png>
-Package pdftex.def Info: balans2.png  used on input line 1797.
+Package pdftex.def Info: balans2.png  used on input line 1806.
 (pdftex.def)             Requested size: 364.19667pt x 147.56235pt.
-[36]
-Underfull \hbox (badness 10000) in paragraph at lines 1803--1807
+[37]
+Underfull \hbox (badness 10000) in paragraph at lines 1812--1816
 
  []
 
-<JaarrekeningPoximus.png, id=714, 642.90187pt x 348.55219pt>
+<JaarrekeningPoximus.png, id=721, 642.90187pt x 348.55219pt>
 File: JaarrekeningPoximus.png Graphic file (type png)
 <use JaarrekeningPoximus.png>
-Package pdftex.def Info: JaarrekeningPoximus.png  used on input line 1814.
+Package pdftex.def Info: JaarrekeningPoximus.png  used on input line 1823.
 (pdftex.def)             Requested size: 455.24411pt x 246.8196pt.
-[37 <./balans1.png> <./balans2.png>] [38 <./JaarrekeningPoximus.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1854--1860
+[38 <./balans1.png> <./balans2.png>] [39 <./JaarrekeningPoximus.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1863--1869
 
  []
 
-<verschillengaap met IFRS.png, id=729, 465.99094pt x 206.27063pt>
+<verschillengaap met IFRS.png, id=735, 465.99094pt x 206.27063pt>
 File: verschillengaap met IFRS.png Graphic file (type png)
 <use verschillengaap met IFRS.png>
-Package pdftex.def Info: verschillengaap met IFRS.png  used on input line 1874.
+Package pdftex.def Info: verschillengaap met IFRS.png  used on input line 1883.
 (pdftex.def)             Requested size: 364.19667pt x 161.21776pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1895--1900
+Underfull \hbox (badness 10000) in paragraph at lines 1904--1909
 
  []
 
-[39 <./verschillengaap met IFRS.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1914--1916
+[40 <./verschillengaap met IFRS.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1923--1925
 
  []
 
-<activapassiveanalyse.png, id=736, 472.76625pt x 138.5175pt>
+<activapassiveanalyse.png, id=742, 472.76625pt x 138.5175pt>
 File: activapassiveanalyse.png Graphic file (type png)
 <use activapassiveanalyse.png>
-Package pdftex.def Info: activapassiveanalyse.png  used on input line 1965.
+Package pdftex.def Info: activapassiveanalyse.png  used on input line 1974.
 (pdftex.def)             Requested size: 204.85846pt x 60.02213pt.
-<omzetanaluse.png, id=737, 293.59688pt x 198.7425pt>
+<omzetanaluse.png, id=743, 293.59688pt x 198.7425pt>
 File: omzetanaluse.png Graphic file (type png)
 <use omzetanaluse.png>
-Package pdftex.def Info: omzetanaluse.png  used on input line 1966.
+Package pdftex.def Info: omzetanaluse.png  used on input line 1975.
 (pdftex.def)             Requested size: 204.85846pt x 138.673pt.
-[40]
-<hor+vert.png, id=743, 594.72188pt x 294.34969pt>
+[41]
+<hor+vert.png, id=749, 594.72188pt x 294.34969pt>
 File: hor+vert.png Graphic file (type png)
 <use hor+vert.png>
-Package pdftex.def Info: hor+vert.png  used on input line 1975.
+Package pdftex.def Info: hor+vert.png  used on input line 1984.
 (pdftex.def)             Requested size: 455.24411pt x 225.316pt.
- [41 <./activapassiveanalyse.png> <./omzetanaluse.png> <./hor+vert.png>]
-<NettoWerkKapitaal.png, id=753, 591.71063pt x 284.56313pt>
+ [42 <./activapassiveanalyse.png> <./omzetanaluse.png> <./hor+vert.png>]
+<NettoWerkKapitaal.png, id=759, 591.71063pt x 284.56313pt>
 File: NettoWerkKapitaal.png Graphic file (type png)
 <use NettoWerkKapitaal.png>
-Package pdftex.def Info: NettoWerkKapitaal.png  used on input line 2025.
+Package pdftex.def Info: NettoWerkKapitaal.png  used on input line 2034.
 (pdftex.def)             Requested size: 364.19667pt x 175.15074pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 2033--2039
+Underfull \hbox (badness 10000) in paragraph at lines 2042--2048
 
  []
 
-[42 <./NettoWerkKapitaal.png>]
-<werkkapitaalcyclus.png, id=760, 480.29437pt x 323.70938pt>
+[43 <./NettoWerkKapitaal.png>]
+<werkkapitaalcyclus.png, id=767, 480.29437pt x 323.70938pt>
 File: werkkapitaalcyclus.png Graphic file (type png)
 <use werkkapitaalcyclus.png>
-Package pdftex.def Info: werkkapitaalcyclus.png  used on input line 2057.
+Package pdftex.def Info: werkkapitaalcyclus.png  used on input line 2066.
 (pdftex.def)             Requested size: 273.14923pt x 184.10135pt.
- [43 <./werkkapitaalcyclus.png>] [44] [45]
-Underfull \hbox (badness 10000) in paragraph at lines 2206--2209
+ [44 <./werkkapitaalcyclus.png>] [45] [46]
+Underfull \hbox (badness 10000) in paragraph at lines 2215--2218
 
  []
 
-<fitometer.png, id=775, 519.44063pt x 244.66406pt>
+<fitometer.png, id=781, 519.44063pt x 244.66406pt>
 File: fitometer.png Graphic file (type png)
 <use fitometer.png>
-Package pdftex.def Info: fitometer.png  used on input line 2214.
+Package pdftex.def Info: fitometer.png  used on input line 2223.
 (pdftex.def)             Requested size: 364.19667pt x 171.53992pt.
-[46 <./fitometer.png>]
-Overfull \hbox (17.41554pt too wide) in paragraph at lines 2231--2232
+[47 <./fitometer.png>]
+Overfull \hbox (17.41554pt too wide) in paragraph at lines 2240--2241
 []\T1/lmr/m/n/10.95 (-20) Overzicht van in-kom-sten en uit-ga-ven over een pe-ri-ode (vi-deo van winst/verlies) 
  []
 
-[47] [48] [49]
-<image4.png, id=795, 647.41875pt x 363.60844pt>
+[48] [49] [50]
+<image4.png, id=801, 647.41875pt x 363.60844pt>
 File: image4.png Graphic file (type png)
 <use image4.png>
-Package pdftex.def Info: image4.png  used on input line 2356.
+Package pdftex.def Info: image4.png  used on input line 2365.
 (pdftex.def)             Requested size: 455.24411pt x 255.67819pt.
- [50 <./image4.png>] (Ingenieur&economie-Samenvatting-RubenRyckaert.aux)
+ [51 <./image4.png>] (Ingenieur&economie-Samenvatting-RubenRyckaert.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-11-06>
@@ -1555,17 +1560,17 @@ Package rerunfilecheck Info: File `Ingenieur&economie-Samenvatting-RubenRyckaert
 (rerunfilecheck)             Checksum: 3C514F2A9DD445278C81C2C003D5BB9B;11176.
  ) 
 Here is how much of TeX's memory you used:
- 49011 strings out of 467871
- 1125684 string characters out of 5428442
- 1653329 words of memory out of 5000000
- 76594 multiletter control sequences out of 15000+600000
+ 49020 strings out of 467871
+ 1125849 string characters out of 5428442
+ 1654399 words of memory out of 5000000
+ 76601 multiletter control sequences out of 15000+600000
  771688 words of font info for 298 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 113i,17n,122p,1236b,1501s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 113i,17n,122p,1236b,1500s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbx9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmbxi10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi6.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmmi9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmr9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmri8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmri9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmsy8.pfb>
-Output written on Ingenieur&economie-Samenvatting-RubenRyckaert.pdf (50 pages, 2416843 bytes).
+Output written on Ingenieur&economie-Samenvatting-RubenRyckaert.pdf (51 pages, 2478208 bytes).
 PDF statistics:
- 966 PDF objects out of 1000 (max. 8388607)
- 191 named destinations out of 1000 (max. 500000)
- 84664 words of extra memory for PDF output out of 89155 (max. 10000000)
+ 973 PDF objects out of 1000 (max. 8388607)
+ 193 named destinations out of 1000 (max. 500000)
+ 84669 words of extra memory for PDF output out of 89155 (max. 10000000)
 
