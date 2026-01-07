@@ -43,31 +43,27 @@ Een markt wordt gedefineerd met de 4 P's met nog 2 extra P's die er bij komen.
 
 \begin{figure}[ht]
       \centering
-      \includegraphics[width=0.7\textwidth]{ondernemingscyclus.png}
-      \caption{}
-      \label{fig:ondernemingscyclus.png}
-\end{figure}
 
-\subsection{Marketingcyclus}
+    	extbf{Nog één pivot nodig (om naar het echte optimum te gaan):}
+    In de Z-rij staat bij $s_3$ nog een negatieve coëfficiënt ($-1$), dus $s_3$ wordt de \textbf{enterende variabele}.
 
-De marketingcyclus beschrijft de continue interactie tussen de maatschappij en de markt. Dit proces kan als volgt worden samengevat:
+    	extbf{Pivot-keuze:}
+    \begin{itemize}
+        \item Enterend: $s_3$ (want $-1$ in Z-rij)
+        \item Ratio-test in kolom $s_3$ (alleen positieve coëfficiënten tellen mee):
+        \begin{align*}
+        	ext{R3: } \frac{20}{1} &= 20 \\
+        	ext{R4: } \frac{40}{1} &= 40
+        \end{align*}
+        \item Verlatend: $s_2$ (R3)
+    \end{itemize}
 
-\begin{enumerate}
-    \item \concept{Behoeften, Wensen en Vraag}: Het vertrekpunt is de \textbf{maatschappij},
-     die bestaat uit mensen met fundamentele behoeften (fysiek, sociaal, individueel). 
-     Wanneer deze behoeften gevormd worden door cultuur en persoonlijkheid, spreken we van \textbf{wensen}. 
-     Als deze wensen gesteund worden door koopkracht, ontstaat er een concrete \textbf{vraag}.
-    \item \concept{Producten}: Om aan deze vraag te voldoen, bieden bedrijven \textbf{producten} aan. 
-    Dit begrip is breed en omvat fysieke goederen, diensten, ervaringen, personen, plaatsen, organisaties en ideeën.
-    \item \concept{Waarde en Tevredenheid}: De consument maakt een keuze op basis van de verwachte waarde. 
-    De \textbf{tevredenheid} achteraf hangt af van de waargenomen prestaties ten opzichte van de verwachtingen. Kwaliteit speelt hierin een sleutelrol.
-    \item \concept{Ruil, Transactie en Relaties}: Een \textbf{ruil} is de kern van marketing: het verkrijgen 
-    van een gewenst object door iets terug te geven (meestal geld). Een \textbf{transactie} is een ruil met meetbare waarden. Succesvolle transacties bouwen langdurige \textbf{relaties} op met klanten.
-    \item \concept{Markt}: De verzameling van alle werkelijke en potentiële kopers van een product vormt de
-     \textbf{markt}. Deze markt beïnvloedt op zijn beurt weer de maatschappij, waardoor de cyclus rond is.
-\end{enumerate}
-
-\begin{figure}[ht]
+    	extbf{Rij-operaties (simpel):}
+    \begin{align*}
+    	ext{R1} &= \text{R1} + \text{R3} \\
+    	ext{R2} &= \text{R2} + 2\text{R3} \\
+    	ext{R4} &= \text{R4} - \text{R3}
+    \end{align*}
     \centering
     \begin{tikzpicture}[
         node distance=2cm,
@@ -241,171 +237,157 @@ Je krijgt dan een positieve winslijn.
 
             % Stijl (Blue, wavy, long term)
             \draw[schoolBlue, very thick, smooth] plot coordinates {(0,1.5) (1.5,2) (3,1.5) (4.5,2) (6,1.5)};
-            \node[schoolBlue, font=\footnotesize, right] at (6,1.5) {Stijl};
+            \begin{oefenblok}
+                	\textbf{Oefening 2: Investeringsanalyse (De Astrazenetech Case)}
 
-            % Mode (Orange, bell curve)
-            \draw[schoolOrange, very thick] (0.5,0.5) .. controls (2.5,0.5) and (2.5,3.5) .. (3.5,3.5) .. controls (4.5,3.5) and (4.5,0.5) .. (6,0.5);
-            \node[schoolOrange, font=\footnotesize] at (3.5, 3.8) {Mode};
+            \subsubsection*{De Situatie}
+            Bij een vervangingsprobleem kijken we naar de \textbf{inkrementele kasstromen}: wat verandert er ten opzichte van de huidige situatie?
 
-            % Rage (Red, spike)
-            \draw[schoolRed, very thick] (0.5,0) -- (1,0) -- (1.5, 4) -- (2,0) -- (6,0);
-            \node[schoolRed, font=\footnotesize] at (1.5, 4.3) {Rage};
-        \end{tikzpicture}
-        \caption{Visueel verloop van PLC varianten}
-        \label{fig:plc_types}
-    \end{minipage}
-\end{figure}
-
-
-\subsection{Prijszetting}
-De juiste prijs bepalen is een evenwichtsoefening. De prijs ligt ergens tussen 
-de productiekosten (de ondergrens) en de waarde die de klant eraan hecht (de bovengrens).
-
-\subsubsection{Interne factoren}
-De prijszetting wordt beïnvloed door vier belangrijke interne factoren:
-
-\begin{figure}[ht]
-      \centering
-        \includegraphics[width=0.7\textwidth]{internefactoren.png}
-      \caption{Interne factoren die de prijszetting beïnvloeden}
-      \label{fig:internefactoren.png}
-\end{figure}
-
-\begin{description}
-    \item[Marketingdoelstellingen] Voordat de prijs wordt bepaald, moet het bedrijf zijn strategie kiezen:
-    \begin{itemize}
-        \item \textbf{Overleven:} Bij overcapaciteit of hevige concurrentie; lage prijzen om de productie draaiende te houden.
-        \item \textbf{Winstmaximalisatie:} Prijzen zo kiezen dat de huidige winst maximaal is (korte termijn focus).
-        \item \textbf{Marktaandeel leiderschap:} Zo laag mogelijke prijzen om snel een groot marktaandeel te veroveren.
-        \item \textbf{Kwaliteitsleiderschap:} Hoge prijzen om R\&D en hoge kwaliteit te dekken.
-    \end{itemize}
-
-    \item[Marketingmix strategie] De prijs is slechts één van de marketinginstrumenten.
-    De prijs moet gecoördineerd zijn met het \textbf{product}ontwerp, de \textbf{distributie} 
-    en de \textbf{promotie} om een consistent en effectief marketingprogramma te vormen.
-
-    \item[Kosten] De kosten bepalen de \textbf{bodemprijs} (vloer). Het bedrijf moet een prijs vragen die de vaste en variabele kosten dekt en een eerlijk rendement oplevert.
-    \begin{itemize}
-        \item \textbf{Vaste kosten:} Kosten die niet variëren met productie (huur, rente, salarissen).
-        \item \textbf{Variabele kosten:} Kosten die direct variëren met het productieniveau.
-        \item \textbf{Totale kosten:} $ \rightarrow TCK = VK + VARK $
-    \end{itemize}
-
-    \begin{figure}[ht]
-        \centering
-        \begin{minipage}{0.45\textwidth}
-            \textbf{De Prijsvork: Klantperceptie}\\
-            De prijsvork wordt bepaald door de perceptie van de klant. Er is een range van aanvaardbare prijzen:
+            \subsubsection*{De Gegevens}
+            	\textbf{Oude machine (nog 10 jaar):}
             \begin{itemize}
-                \item \textbf{Te laag:} De klant vertrouwt de kwaliteit niet.
-                \item \textbf{Te hoog:} De klant vindt het product het geld niet waard.
-                \item \textbf{Acceptabel:} De zone hiertussen waar de aankoopwaarschijnlijkheid het grootst is.
+                \item Geen afschrijvingen meer
+                \item Loonkosten: €250.000/jaar (stijgt 5\% per jaar)
+                \item Reparatie: €125.000/jaar (stijgt 3\% per jaar)
+                \item Onderhoud: €125.000/jaar (stijgt 4\% per jaar)
             \end{itemize}
-        \end{minipage}%
-        \hfill
-        \begin{minipage}{0.55\textwidth}
-            \centering
-            \begin{tikzpicture}[scale=0.85, >=stealth]
-                % Axis
-                \draw[->, thick] (0,0) -- (8,0) node[right] {Prijs (€)};
-                
-                % Zones
-                % Te Goedkoop
-                \fill[schoolRed!30] (0,0.2) rectangle (2.5,1.2);
-                \node[font=\scriptsize, align=center] at (1.25, 0.7) {Te\\Goedkoop};
-                
-                % Acceptabel
-                \fill[schoolBlue!30] (2.5,0.2) rectangle (5.5,1.2);
-                \node[font=\footnotesize, align=center, font=\bfseries] at (4, 0.7) {Aanvaardbare\\Prijsrange};
-                
-                % Te Duur
-                \fill[schoolRed!30] (5.5,0.2) rectangle (8,1.2);
-                \node[font=\scriptsize, align=center] at (6.75, 0.7) {Te\\Duur};
-                
-                % Inputs markers (boven de balken)
-                \draw[thick, schoolBlue] (2.5,1.2) -- (2.5,1.8) node[above, font=\tiny, align=center] {Min. grens\\(Kwaliteit)};
-                \draw[thick, schoolBlue] (5.5,1.2) -- (5.5,1.8) node[above, font=\tiny, align=center] {Max. grens\\(Budget)};
-                
-                % Customers (dots representing input) onder de as
-                \foreach \x in {2.7, 3, 3.5, 4, 4.5, 5, 5.3}
-                    \fill[schoolGray] (\x, -0.3) circle (1.5pt);
-                \node[right, font=\tiny, schoolGray] at (5.5, -0.3) {Klant input};
 
-            \end{tikzpicture}
-        \end{minipage}
-    \end{figure}
+            	\textbf{Nieuwe machine (10 jaar, lineair naar 0):}
+            \begin{itemize}
+                \item Investering: €1.500.000
+                \item Extra werkkapitaal: €10.000 (uitgave op $t=0$, terug op het einde)
+                \item Loonkosten: €30.000/jaar (stijgt 5\% per jaar)
+                \item Onderhoud: €50.000/jaar (stijgt 4\% per jaar)
+                \item Reparatie: €35.000/jaar (stijgt 3\% per jaar)
+            \end{itemize}
 
-    \item[Verantwoordelijkheid binnen de organisatie]
-     Wat voor soort bedrijf ben je. Non-profit of winstgericht?
-     Wat is belangrijke voor mangement en aandeelhouders?
-     Daarbij is er ook een maatschappelijke verantwoordelijkheid.
-\end{description}
+            	\textbf{Financieel:}
+            \begin{itemize}
+                \item Belastingtarief: 39\%
+                \item Discontovoet: 12\%
+            \end{itemize}
 
-\subsubsection{Externe factoren}
-Externe factoren 
-zijn factoren die niet door het bedrijf zelf kunnen worden beïnvloed,
- maar die wel een grote impact hebben op de prijszetting.
+            \subsubsection*{Jouw Taak}
+            \begin{enumerate}
+                \item Wat is de initiële uitgave op tijdstip 0?
+                \item Wat is de jaarlijkse besparing (of verlies) in operationele kosten in jaar 1?
+            \end{enumerate}
 
-\begin{figure}[ht]
-      \centering
-        \includegraphics[width=0.7\textwidth]{externe factoren.png}
-      \caption{Externe factoren die de prijszetting beïnvloeden}
-      \label{fig:externfactoren.png}
-\end{figure}
-\FloatBarrier
+            \vspace{0.3cm}
+            	\textit{(Scroll naar beneden voor de oplossing)}
 
-\begin{description}
-    \item[De Markt en Concurrentie] 
-    In welke markt opereer je? De vrijheid om je prijs te zetten (pricing power) hangt sterk af van de concurrentievorm. In een zeer competitieve markt bepaalt de markt de prijs, terwijl je in een monopolie zelf de prijs kunt zetten.
+            	\textbf{UITGEWERKTE OPLOSSING}
 
-    \begin{figure}[ht]
-        \centering
-        \begin{tikzpicture}[scale=0.85, >=stealth]
-            % Main Arrow
-            \draw[->, ultra thick, schoolGray] (0,0) -- (13,0) node[right, align=left, font=\footnotesize] {\textbf{Pricing Power}\\\textit{(Invloed op prijs)}};
-            
-            % Nodes (Boxes)
-            % 1. Volledige Mededinging
-            \node[fill=schoolBlue!10, draw=schoolBlue, rounded corners, minimum width=2.8cm, minimum height=1cm, align=center, font=\footnotesize] (vol) at (1.5, 1.5) {\textbf{Volledige}\\\textbf{Mededinging}};
-            \draw[-, thick, schoolBlue] (1.5, 0.1) -- (1.5, 1);
-            \node[below, font=\scriptsize, align=center, text width=2.5cm] at (1.5, -0.2) {Veel aanbieders\\Homogeen product\\\textit{Vb: Graan, Melk}};
+            	\textbf{1) Initiële uitgave op tijdstip 0}
+            \begin{itemize}
+                \item Investering nieuwe machine: €1.500.000
+                \item Werkkapitaal: €10.000
+                \item Verkoop oude machine: €0 (niet gegeven)
+            \end{itemize}
 
-            % 2. Monopolistische Concurrentie
-            \node[fill=schoolBlue!20, draw=schoolBlue, rounded corners, minimum width=2.8cm, minimum height=1cm, align=center, font=\footnotesize] (moncon) at (4.7, 1.5) {\textbf{Monopolistische}\\\textbf{Concurrentie}};
-            \draw[-, thick, schoolBlue] (4.7, 0.1) -- (4.7, 1);
-            \node[below, font=\scriptsize, align=center, text width=2.5cm] at (4.7, -0.2) {Veel aanbieders\\Gedifferentieerd\\\textit{Vb: Kleding, Horeca}};
+            	\textbf{Totale uitgave (t=0):} 1.500.000 + 10.000 = \textbf{€1.510.000}
 
-            % 3. Oligopolie
-            \node[fill=schoolOrange!20, draw=schoolOrange, rounded corners, minimum width=2.8cm, minimum height=1cm, align=center, font=\footnotesize] (oli) at (7.9, 1.5) {\textbf{Oligopolie}};
-            \draw[-, thick, schoolOrange] (7.9, 0.1) -- (7.9, 1);
-            \node[below, font=\scriptsize, align=center, text width=2.5cm] at (7.9, -0.2) {Weinig aanbieders\\Hoge drempels\\\textit{Vb: Telecom, Banken}};
+            	\textbf{2) Jaarlijkse besparing in operationele kosten in jaar 1 (vóór belasting)}
 
-            % 4. Monopolie
-            \node[fill=schoolRed!20, draw=schoolRed, rounded corners, minimum width=2.8cm, minimum height=1cm, align=center, font=\footnotesize] (mon) at (11.1, 1.5) {\textbf{Monopolie}};
-            \draw[-, thick, schoolRed] (11.1, 0.1) -- (11.1, 1);
-            \node[below, font=\scriptsize, align=center, text width=2.5cm] at (11.1, -0.2) {Eén aanbieder\\Uniek product\\\textit{Vb: Waterbedrijf}};
-            
-        \end{tikzpicture}
-        \caption{Het spectrum van marktconcurrentie: van prijsnemer naar prijszetter}
-        \label{fig:market_spectrum}
-    \end{figure}
-    \FloatBarrier % requires \usepackage{placeins} in the preamble
+            	\textbf{A. Kosten oude machine (jaar 1, met stijgingen)}
+            \begin{itemize}
+                \item Loon: 250.000 \(\times\) 1{,}05 = €262.500
+                \item Reparatie: 125.000 \(\times\) 1{,}03 = €128.750
+                \item Onderhoud: 125.000 \(\times\) 1{,}04 = €130.000
+            \end{itemize}
+            	\textbf{Totaal oud (jaar 1):} \textbf{€521.250}
 
-    \item[Consumentenperceptie van waarde]
-    Uiteindelijk bepaalt de consument of de prijs gerechtvaardigd is.
-     Een belangrijk concept hierbij is de \textbf{prijselasticiteit}: hoe sterk reageert de vraag op een prijsverandering?
-     met $\%\Delta Q$ de verandering in hoeveelheid vraag en $\%\Delta P$ de verandering in prijs.
+            	\textbf{B. Kosten nieuwe machine (jaar 1, met stijgingen)}
+            \begin{itemize}
+                \item Loon: 30.000 \(\times\) 1{,}05 = €31.500
+                \item Onderhoud: 50.000 \(\times\) 1{,}04 = €52.000
+                \item Reparatie: 35.000 \(\times\) 1{,}03 = €36.050
+            \end{itemize}
+            	\textbf{Totaal nieuw (jaar 1):} \textbf{€119.550}
 
-    \begin{figure}[ht]
-        \centering
-        \begin{minipage}{0.45\textwidth}
-            \centering
-            \begin{tikzpicture}[scale=0.7, >=stealth]
-                \draw[->, thick] (0,0) -- (4,0) node[right] {Q};
-                \draw[->, thick] (0,0) -- (0,4) node[above] {P};
-                \draw[thick, schoolBlue] (1,3.5) -- (2.5,0.5) node[midway, right] {D};
-                \node[align=center, font=\bfseries\small] at (2,4) {Inelastisch};
-                
+            	\textbf{C. Besparing (jaar 1, vóór belasting)}
+            	\textbf{Besparing} = 521.250 -- 119.550 = \textbf{€401.700}
+
+            	\textit{Let op voor een volledige NCW/NPV: op deze besparing betaal je belasting (39\%), maar je krijgt ook een belastingvoordeel via afschrijving (tax shield). Nieuwe afschrijving = 1.500.000/10 = 150.000 per jaar.}
+
+            \end{oefenblok}
+
+            \begin{oefenblok}
+                	\textbf{Oefening 3: Kostprijscalculatie (Scooters -- ABC)}
+
+            \subsubsection*{De Situatie}
+            Bij Activity Based Costing (ABC) wijzen we indirecte kosten toe op basis van cost drivers (activiteiten).
+
+            \subsubsection*{Gegeven indirecte kosten}
+            \begin{center}
+            \begin{tabular}{|l|r|}
+            \hline
+            	extbf{Kostenpost} & \textbf{Totale kosten} \\
+            \hline
+            Instelkosten & €10.000 \\
+            \hline
+            Werkkosten (machine + loon) & €20.000 \\
+            \hline
+            Kwaliteitscontrole & €5.000 \\
+            \hline
+            	extbf{Totaal} & \textbf{€35.000} \\
+            \hline
+            \end{tabular}
+            \end{center}
+
+            \subsubsection*{Activiteiten per model}
+            \begin{center}
+            \begin{tabular}{|l|r|r|}
+            \hline
+            	extbf{Activiteit} & \textbf{Model A} & \textbf{Model B} \\
+            \hline
+            Instellen (aantal) & 3 & 5 \\
+            \hline
+            Werkuren (uren) & 150 & 100 \\
+            \hline
+            Kwaliteitscontroles (aantal) & 30 & 20 \\
+            \hline
+            \end{tabular}
+            \end{center}
+
+            \subsubsection*{Jouw Taak}
+            \begin{enumerate}
+                \item Bepaal de cost-driver prijs per activiteit
+                \item Hoeveel kosten krijgt Model A toegewezen?
+            \end{enumerate}
+
+            \vspace{0.3cm}
+            	\textit{(Scroll naar beneden voor de oplossing)}
+
+            	\textbf{UITGEWERKTE OPLOSSING}
+
+            	\textbf{1) Tarief per cost driver}
+            \begin{center}
+            \begin{tabular}{|l|r|r|r|r|}
+            \hline
+            	\textbf{Kostenpost} & \textbf{Totale kost} & \textbf{A} & \textbf{B} & \textbf{Tarief} \\
+            \hline
+            Instelkosten & €10.000 & 3 & 5 & €10.000 / 8 = \textbf{€1.250} \\
+            \hline
+            Werkkosten & €20.000 & 150 & 100 & €20.000 / 250 = \textbf{€80/uur} \\
+            \hline
+            Kwaliteit & €5.000 & 30 & 20 & €5.000 / 50 = \textbf{€100} \\
+            \hline
+            \end{tabular}
+            \end{center}
+
+            	\textbf{2) Toegewezen kosten aan Model A}
+            \begin{itemize}
+                \item Instellen: 3 \(\times\) €1.250 = €3.750
+                \item Werk: 150 \(\times\) €80 = €12.000
+                \item Kwaliteit: 30 \(\times\) €100 = €3.000
+            \end{itemize}
+
+            	\textbf{Totale toegewezen kosten Model A:} 3.750 + 12.000 + 3.000 = \textbf{€18.750}
+
+            	\textit{Controle: Model B krijgt €35.000 -- €18.750 = €16.250. Samen klopt dit met €35.000.}
+
+            \end{oefenblok}
                 % Change
                 \draw[dashed] (0,3) -- (1.2,3) -- (1.2,0);
                 \draw[dashed] (0,1.5) -- (2,1.5) -- (2,0);
@@ -438,7 +420,7 @@ zijn factoren die niet door het bedrijf zelf kunnen worden beïnvloed,
     \end{figure}
     \FloatBarrier
 
-
+\begin{description}
         \item [Economische omstandigheden:] Inflatie, recessie, koopkracht.
         \item [Sociale en culturele factoren:] Trends, normen, waarden.
         \item [Wet- en regelgeving:] Prijscontroles, belastingen, handelsbeperkingen.
@@ -2326,6 +2308,551 @@ financiële gezondheid van een bedrijf.
 \end{description}
 
 
+\section{Examenvragen}
+
+\begin{oefenblok}
+    \textbf{Oefening: Lineair Programmeren — De Ambachtelijke Werkplaats}
+
+\subsubsection*{De Situatie}
+Een werkplaats maakt twee houten figuren: \textbf{Ridders} ($x_1$) en \textbf{Locomotiefjes} ($x_2$). 
+De eigenaar wil zijn wekelijkse winst maximaliseren.
+
+\textbf{Gegevens:}
+
+\textbf{Financieel (per stuk):}
+
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Product} & \textbf{Verkoopprijs} & \textbf{Totale Kosten} \\
+\hline
+Ridder & €27 & €10 (materiaal) + €14 (arbeid/overhead) = €24 \\
+\hline
+Locomotief & €21 & €9 (materiaal) + €10 (arbeid/overhead) = €19 \\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{Productietijd (per stuk):}
+
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Product} & \textbf{Afwerking (uur)} & \textbf{Houtbewerking (uur)} \\
+\hline
+Ridder & 2 & 1 \\
+\hline
+Locomotief & 1 & 1 \\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{Capaciteit (per week):}
+\begin{itemize}
+    \item Afwerkingsatelier: Maximaal \textbf{100 uur}
+    \item Houtbewerking: Maximaal \textbf{80 uur}
+\end{itemize}
+
+\textbf{Marktvraag:}
+\begin{itemize}
+    \item Er kunnen maximaal \textbf{40 ridders} per week verkocht worden
+    \item Locomotieven zijn \textbf{onbegrensd}
+\end{itemize}
+
+\subsubsection*{Jouw Taak}
+
+\begin{enumerate}
+    \item Bepaal de \textbf{winstmarge per product} (dit is je doelfunctie coëfficiënt)
+    \item Schrijf het \textbf{wiskundig model} op (Doelfunctie + Beperkingen)
+\end{enumerate}
+
+\vspace{0.3cm}
+\textit{(Denk na en scroll naar beneden voor de uitgewerkte oplossing)}
+
+
+
+\textbf{UITGEWERKTE OPLOSSING}
+
+\textbf{Stap 1: Winstmarges Berekenen}
+
+\textbf{Voor Ridders ($x_1$):}
+
+Winstmarge = €27 - (€10 + €14) = €27 - €24 = \textbf{€3 per ridder}
+
+\textbf{Voor Locomotieven ($x_2$):}
+
+Winstmarge = €21 - (€9 + €10) = €21 - €19 = \textbf{€2 per locomotief}
+
+\textbf{Stap 2: Wiskundig Model}
+
+\textbf{Beslissingsvariabelen:}
+\begin{align*}
+x_1 &= \text{aantal ridders per week} \\
+x_2 &= \text{aantal locomotieven per week}
+\end{align*}
+
+\textbf{Doelfunctie (Winst maximaliseren):}
+\[
+\text{Max } Z = 3x_1 + 2x_2
+\]
+
+\textbf{Beperkingen:}
+\begin{align}
+2x_1 + x_2 &\leq 100 \quad \text{(Afwerkingscapaciteit)} \\
+x_1 + x_2 &\leq 80 \quad \text{(Houtbewerkingscapaciteit)} \\
+x_1 &\leq 40 \quad \text{(Marktvraag Ridders)} \\
+x_1, x_2 &\geq 0 \quad \text{(Niet-negativiteit)}
+\end{align}
+
+\textbf{Stap 3: Standaardvorm voor Simplex}
+
+We voegen slackvariabelen toe:
+\begin{align*}
+2x_1 + x_2 + s_1 &= 100 \\
+x_1 + x_2 + s_2 &= 80 \\
+x_1 + s_3 &= 40 \\
+Z - 3x_1 - 2x_2 &= 0
+\end{align*}
+
+waar $s_1, s_2, s_3 \geq 0$ slackvariabelen zijn.
+
+\textbf{Stap 4: Simplex-Tabel}
+
+\textbf{Initiële Simplex-Tabel (Iteratie 0):}
+
+\vspace{0.3cm}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+\textbf{Basis} & \textbf{Z} & \textbf{$x_1$} & \textbf{$x_2$} & \textbf{$s_1$} & \textbf{$s_2$} & \textbf{$s_3$} & \textbf{RHS} \\
+\hline
+Z & 1 & -3 & -2 & 0 & 0 & 0 & 0 \\
+\hline
+$s_1$ & 0 & 2 & 1 & 1 & 0 & 0 & 100 \\
+\hline
+$s_2$ & 0 & 1 & 1 & 0 & 1 & 0 & 80 \\
+\hline
+$s_3$ & 0 & 1 & 0 & 0 & 0 & 1 & 40 \\
+\hline
+\end{tabular}
+\end{center}
+\FloatBarrier
+
+\textbf{Analyse:}
+\begin{itemize}
+    \item \textbf{Enterende variabele:} $x_1$ (meeste negatieve coëfficiënt in Z-rij: -3)
+    \item \textbf{Verhouding-test (Minimum Ratio Test):}
+    \begin{align*}
+    \text{Rij } s_1 \text{ (R2)}: \quad \frac{100}{2} &= 50 \\
+    \text{Rij } s_2 \text{ (R3)}: \quad \frac{80}{1} &= 80 \\
+    \text{Rij } s_3 \text{ (R4)}: \quad \frac{40}{1} &= 40 \quad \leftarrow \text{\textbf{minimum}}
+    \end{align*}
+    \item \textbf{Verlatende variabele:} $s_3$ (rij met kleinste ratio)
+    \item \textbf{Pivot-element:} 1 (in rij R4, kolom $x_1$)
+\end{itemize}
+
+\textbf{Rij-operaties:}
+\begin{align*}
+\text{R1} &= \text{R1} + 3 \text{R4} \\
+\text{R2} &= \text{R2} - 2 \text{R4} \\
+\text{R3} &= \text{R3} - \text{R4}
+\end{align*}
+
+\vspace{0.3cm}
+
+\textbf{Simplex-Tabel Iteratie 1:}
+
+\vspace{0.3cm}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+\textbf{Basis} & \textbf{Z} & \textbf{$x_1$} & \textbf{$x_2$} & \textbf{$s_1$} & \textbf{$s_2$} & \textbf{$s_3$} & \textbf{RHS} \\
+\hline
+Z & 1 & 0 & -2 & 0 & 0 & 3 & 120 \\
+\hline
+$s_1$ & 0 & 0 & 1 & 1 & 0 & -2 & 20 \\
+\hline
+$s_2$ & 0 & 0 & 1 & 0 & 1 & -1 & 40 \\
+\hline
+$x_1$ & 0 & 1 & 0 & 0 & 0 & 1 & 40 \\
+\hline
+\end{tabular}
+\end{center}
+\FloatBarrier
+
+\textbf{Analyse:}
+\begin{itemize}
+    \item \textbf{Enterende variabele:} $x_2$ (meeste negatieve coëfficiënt in Z-rij: -2)
+    \item \textbf{Verhouding-test:}
+    \begin{align*}
+    \text{Rij } s_1 \text{ (R2)}: \quad \frac{20}{1} &= 20 \quad \leftarrow \text{\textbf{minimum}} \\
+    \text{Rij } s_2 \text{ (R3)}: \quad \frac{40}{1} &= 40
+    \end{align*}
+    \item \textbf{Verlatende variabele:} $s_1$
+    \item \textbf{Pivot-element:} 1 (in rij R2, kolom $x_2$)
+\end{itemize}
+
+\textbf{Rij-operaties (Uitgewerkt):}
+
+Voor R1 (Z-rij): R1 = R1 + 2R2
+\begin{itemize}
+    \item RHS: $120 + 2(20) = 160$
+    \item Coëff. van $s_1$: $0 + 2(1) = 2$
+    \item Coëff. van $x_2$: $-2 + 2(1) = 0$
+\end{itemize}
+
+Voor R3: R3 = R3 - R2
+\begin{itemize}
+    \item RHS: $40 - 20 = 20$
+    \item Coëff. van $s_1$: $0 - 1 = -1$
+    \item Coëff. van $x_2$: $1 - 1 = 0$
+\end{itemize}
+
+	extbf{Nog één pivot nodig (om naar het echte optimum te gaan):}
+In de Z-rij staat bij $s_3$ nog een negatieve coëfficiënt ($-1$), dus $s_3$ wordt de \textbf{enterende variabele}.
+
+	extbf{Pivot-keuze:}
+\begin{itemize}
+    \item Enterend: $s_3$ (want $-1$ in Z-rij)
+    \item Ratio-test in kolom $s_3$ (alleen positieve coëfficiënten tellen mee):
+    \begin{align*}
+    	\text{R3: } \frac{20}{1} &= 20 \\
+    	\text{R4: } \frac{40}{1} &= 40
+    \end{align*}
+    \item Verlatend: $s_{2}$ (R3)
+\end{itemize}
+
+	\textbf{Rij-operaties (simpel):}
+\begin{align*}
+	\text{R1} &= \text{R1} + \text{R3} \\
+	\text{R2} &= \text{R2} + 2\text{R3} \\
+	\text{R4} &= \text{R4} - \text{R3}
+\end{align*}
+
+\vspace{0.3cm}
+
+\textbf{Simplex-Tabel Iteratie 2 (OPTIMAAL):}
+
+\vspace{0.3cm}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+\textbf{Basis} & \textbf{Z} & \textbf{$x_1$} & \textbf{$x_2$} & \textbf{$s_1$} & \textbf{$s_2$} & \textbf{$s_3$} & \textbf{RHS} \\
+\hline
+Z & 1 & 0 & 0 & 1 & 1 & 0 & 180 \\
+\hline
+$x_2$ & 0 & 0 & 1 & -1 & 2 & 0 & 60 \\
+\hline
+$s_3$ & 0 & 0 & 0 & -1 & 1 & 1 & 20 \\
+\hline
+$x_1$ & 0 & 1 & 0 & 1 & -1 & 0 & 20 \\
+\hline
+\end{tabular}
+\end{center}
+\FloatBarrier
+
+\textbf{Optimaliteitscriterium:}
+\begin{itemize}
+    \item Alle coëfficiënten in de Z-rij zijn \textbf{niet-negatief}
+    \item \textbf{Het optimum is bereikt!}
+\end{itemize}
+
+\subsubsection*{Stap 5: Oplesen van Slack Variables}
+
+Bij het optimale punt (uit de finaal tabel):
+\begin{align*}
+x_1 &= 20 \text{ ridders} \\
+x_2 &= 60 \text{ locomotieven} \\
+s_1 &= 0 \text{ uur (afwerking volledig bezet)} \\
+s_2 &= 0 \text{ uur (houtbewerking volledig bezet)} \\
+s_3 &= 20 \text{ ridders (nog 20 meer kunnen gemaakt worden)} \\
+Z &= 180 \text{ euro (maximale winst)}
+\end{align*}
+
+\subsubsection*{FINAAL ANTWOORD}
+
+\begin{center}
+\fbox{
+\begin{minipage}{0.9\textwidth}
+\textbf{Optimale Productie:}
+\begin{itemize}
+    \item Produceer \textbf{20 ridders} per week
+    \item Produceer \textbf{60 locomotieven} per week
+    \item \textbf{Maximale wekelijkse winst: €180}
+\end{itemize}
+
+\vspace{0.2cm}
+
+\textbf{Capaciteitsgebruik:}
+\begin{itemize}
+    \item Afwerking: 100\% bezet (2(20) + 60 = 100 uur)
+    \item Houtbewerking: 100\% bezet (20 + 60 = 80 uur)
+    \item Marktvraag ridders: Slechts 20 van de 40 mogelijk verkocht
+\end{itemize}
+
+\vspace{0.2cm}
+
+\textbf{Interpretatie:}
+Hoewel ridders een hogere winstmarge hebben (€3 vs €2), zijn locomotieven efficiënter in termen van arbeidsuren per euro winst. De twee botlenecks zijn afwerking en houtbewerking, beide volledig bezet.
+\end{minipage}
+}
+\end{center}
+
+\end{oefenblok}
+
+\newpage
+
+\begin{oefenblok}
+    \subsubsection*{Oefening 2: Investeringsanalyse — De Astrazenetech Case}
+
+\subsubsection*{De Situatie}
+Een farmaceutisch bedrijf twijfelt: moeten ze hun oude verpakkingsmachine houden of vervangen door een nieuwe computergestuurde machine?
+
+\subsubsection*{De Gegevens}
+
+\textbf{Oude Machine:}
+\begin{itemize}
+    \item Nog 10 jaar bruikbaar
+    \item Geen afschrijvingen meer
+    \item Huidige loonkosten inpakkers: €250.000/jaar (stijgt 5\% per jaar)
+    \item Reparatiekosten: €125.000/jaar (stijgt 3\% per jaar)
+    \item Onderhoudskosten: €125.000/jaar (stijgt 4\% per jaar)
+\end{itemize}
+
+\textbf{Nieuwe Machine:}
+\begin{itemize}
+    \item Investering: €1.500.000
+    \item Levensduur: 10 jaar (lineair afschrijven naar 0)
+    \item Extra werkkapitaal nodig: €10.000 (krijg je terug aan het einde)
+    \item Nieuwe loonkosten: €30.000/jaar (stijgt 5\% per jaar)
+    \item Nieuw onderhoud: €50.000/jaar (stijgt 4\% per jaar)
+    \item Nieuwe reparatie: €35.000/jaar (stijgt 3\% per jaar)
+\end{itemize}
+
+\textbf{Financieel:}
+\begin{itemize}
+    \item Belastingtarief: 39\%
+    \item Discontovoet (eisen rendement): 12\%
+\end{itemize}
+
+\subsubsection*{Jouw Taak}
+Dit is een typisch \textbf{vervangingsprobleem}: 
+werk met het \textbf{verschil in kasstroom (cashflow)} tussen \textit{nieuw} en \textit{oud}.
+\begin{enumerate}
+    \item Wat is de initiële uitgave op tijdstip 0?
+    \item Wat is de jaarlijkse besparing (of verlies) in \textbf{operationele kosten} in jaar 1?
+\end{enumerate}
+
+\vspace{0.3cm}
+\textit{(Denk na en scroll naar beneden voor de uitgewerkte oplossing)}
+
+
+
+    
+\subsection*{UITGEWERKTE OPLOSSING — Oefening 2}
+
+Bij een vervangingsprobleem kijken we naar de \textbf{inkrementele kasstromen}: wat verandert er ten opzichte van de huidige situatie?
+
+\subsubsection*{Stap 1: Initiële uitgave op tijdstip t=0}
+
+Dit is het geld dat nu de deur uit moet om het project te starten.
+
+\begin{center}
+\begin{tabular}{|l|r|}
+\hline
+\textbf{Component (t=0)} & \textbf{Kasstroom} \\
+\hline
+Investering nieuwe machine & -€1.500.000 \\
+\hline
+Extra werkkapitaal & -€10.000 \\
+\hline
+Verkoop oude machine & €0 \\
+\hline
+\textbf{Totale initiële uitgave} & \textbf{-€1.510.000} \\
+\hline
+\end{tabular}
+\end{center}
+
+\textit{Opmerking: Het werkkapitaal is een uitgave op t=0, ook al krijg je het aan het einde van de 10 jaar terug. Er is geen verkoopwaarde van de oude machine gegeven, dus die wordt als €0 verondersteld.}
+
+\subsubsection*{Stap 2: Jaarlijkse besparing in operationele kosten (Jaar 1)}
+
+Hier vergelijken we de kosten van de \textbf{Oude Machine} (als we die zouden houden) met de \textbf{Nieuwe Machine}.
+
+\textbf{Let op:} De kosten stijgen per jaar, dus we moeten de inflatiepercentages toepassen voor Jaar 1!
+
+\paragraph{A. Kosten Oude Machine (in Jaar 1):}
+\begin{align*}
+\text{Loon:} \quad & 250.000 \times 1{,}05 = €262.500 \\
+\text{Reparatie:} \quad & 125.000 \times 1{,}03 = 128.750 \\
+\text{Onderhoud:} \quad & 125.000 \times 1{,}04 = 130.000 \\
+\hline
+\text{Totaal Oud:} \quad & \textbf{€521.250}
+\end{align*}
+
+\paragraph{B. Kosten Nieuwe Machine (in Jaar 1):}
+\begin{align*}
+\text{Loon:} \quad & 30.000 \times 1{,}05 = €31.500 \\
+\text{Onderhoud:} \quad & 50.000 \times 1{,}04 = €52.000 \\
+\text{Reparatie:} \quad & 35.000 \times 1{,}03 = €36.050 \\
+\hline
+\text{Totaal Nieuw:} \quad & \textbf{€119.550}
+\end{align*}
+
+\paragraph{C. De Besparing (Vóór belasting):}
+
+Besparing = Kosten$_{\text{Oud}}$ - Kosten$_{\text{Nieuw}}$
+
+\[
+\text{Besparing} = 521.250 - 119.550 = \textbf{€401.700}
+\]
+
+\begin{center}
+\fbox{
+\begin{minipage}{0.9\textwidth}
+\textbf{Antwoorden:}
+\begin{enumerate}
+    \item \textbf{Initiële uitgave (t=0): €1.510.000}
+    \item \textbf{Operationele besparing (jaar 1): €401.700}
+\end{enumerate}
+
+\vspace{0.2cm}
+
+\textbf{Extra info voor volledige NCW berekening:}
+\begin{itemize}
+    \item Over deze besparing moet nog 39\% belasting betaald worden
+    \item Afschrijving nieuwe machine = €1.500.000/10 = €150.000/jaar
+    \item Dit geeft een belastingvoordeel ("Tax Shield") van 39\% × €150.000 = €58.500/jaar
+\end{itemize}
+\end{minipage}
+}
+\end{center}
+
+
+\end{oefenblok}
+
+\begin{oefenblok}
+    \subsubsection*{Oefening 3: Kostprijscalculatie — Scooters (ABC)}
+
+\subsubsection*{De Situatie}
+Een bedrijf maakt twee scooters: \textbf{Model A} en \textbf{Model B}. De totale indirecte kosten zijn:
+\begin{itemize}
+    \item Instelkosten: €10.000
+    \item Werkkosten (machine + loon): €20.000
+    \item Kwaliteitscontrole: €5.000
+    \item \textbf{Totaal: €35.000}
+\end{itemize}
+
+\subsubsection*{Activiteiten per model}
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Activiteit} & \textbf{Model A} & \textbf{Model B} \\
+\hline
+Instellen (aantal keer) & 3 & 5 \\
+\hline
+Werkuren (uren) & 150 & 100 \\
+\hline
+Kwaliteitscontroles (aantal) & 30 & 20 \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsubsection*{Jouw Taak}
+Bereken de toegewezen kosten per model via \textbf{Activity Based Costing (ABC)}.
+\begin{enumerate}
+    \item Bepaal de "cost driver" prijs per activiteit (bv. prijs per instelling)
+    \item Hoeveel kosten krijgt Model A toegewezen?
+\end{enumerate}
+
+\vspace{0.3cm}
+\textit{(Denk na en scroll naar beneden voor de uitgewerkte oplossing)}
+
+
+\subsection*{UITGEWERKTE OPLOSSING — Oefening 3}
+
+Bij \textbf{Activity Based Costing (ABC)} smeren we de 
+indirecte kosten niet uit met een simpele verdeelsleutel (zoals aantal uren), maar kijken we naar wat de kosten veroorzaakt: de \textbf{cost drivers}.
+
+\subsubsection*{Stap 1: Bepaal de cost-driver prijzen}
+
+Eerst berekenen we het totaal aantal activiteiten (drivers) voor beide modellen samen, en delen we de kostenpot daardoor.
+
+\begin{center}
+\begin{tabular}{|l|r|r|r|r|}
+\hline
+\textbf{Kostenpost} & \textbf{Totale Kost} & \textbf{Model A} & \textbf{Model B} & \textbf{Prijs per driver} \\
+\hline
+Instelkosten & €10.000 & 3 & 5 & €10.000 / 8 = \textbf{€1.250} \\
+\hline
+Werkkosten & €20.000 & 150 uur & 100 uur & €20.000 / 250 = \textbf{€80/uur} \\
+\hline
+Kwaliteitscontrole & €5.000 & 30 & 20 & €5.000 / 50 = \textbf{€100} \\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{Berekeningen:}
+\begin{itemize}
+    \item Totaal aantal instellingen: 3 + 5 = 8 → Prijs = €10.000 / 8 = €1.250 per instelling
+    \item Totaal aantal werkuren: 150 + 100 = 250 → Prijs = €20.000 / 250 = €80 per uur
+    \item Totaal aantal controles: 30 + 20 = 50 → Prijs = €5.000 / 50 = €100 per controle
+\end{itemize}
+
+\subsubsection*{Stap 2: Toegewezen kosten aan Model A}
+
+Nu vermenigvuldigen we de activiteiten van Model A met de berekende tarieven:
+
+\begin{center}
+\begin{tabular}{|l|r|r|r|}
+\hline
+\textbf{Activiteit} & \textbf{Volume Model A} & \textbf{Prijs/driver} & \textbf{Toegewezen kost} \\
+\hline
+Instellen & 3 & €1.250 & €3.750 \\
+\hline
+Werkuren & 150 & €80/uur & €12.000 \\
+\hline
+Kwaliteitscontrole & 30 & €100 & €3.000 \\
+\hline
+\multicolumn{3}{|r|}{\textbf{Totaal Model A:}} & \textbf{€18.750} \\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{Berekening:}
+\begin{align*}
+\text{Instellen:} \quad & 3 \times €1.250 = €3.750 \\
+\text{Werkuren:} \quad & 150 \times €80 = €12.000 \\
+\text{Kwaliteit:} \quad & 30 \times €100 = €3.000 \\
+\hline
+\text{Totaal:} \quad & \textbf{€18.750}
+\end{align*}
+
+\begin{center}
+\fbox{
+\begin{minipage}{0.9\textwidth}
+\textbf{Antwoorden:}
+\begin{enumerate}
+    \item \textbf{Cost-driver prijzen:}
+    \begin{itemize}
+        \item Instelling: €1.250 per keer
+        \item Werkuur: €80 per uur
+        \item Kwaliteitscontrole: €100 per controle
+    \end{itemize}
+    \item \textbf{Toegewezen kosten Model A: €18.750}
+\end{enumerate}
+
+\vspace{0.2cm}
+
+\textbf{Controle:} Model B krijgt €35.000 - €18.750 = €16.250 toegewezen. Samen is dat €35.000 $\checkmark$
+\end{minipage}
+}
+\end{center}
+
+\end{oefenblok}
 
 \section{Examentips}
 
@@ -2360,15 +2887,12 @@ Het komt goed. Blijf er gewoon voor gaan.
 
 	--- Ruben Ryckaert
 
-    \begin{figure}[ht]
-          \centering
-            \includegraphics[width=1\textwidth]{image4.png}
-          \caption{}
-          \label{fig:image4.png}
-    \end{figure}
+\end{center}
+\vfil
 
+\begin{center}
+	\includegraphics[width=1\textwidth]{image4.png}
 \end{center}
 
-
-
+\clearpage
 \end{document}
