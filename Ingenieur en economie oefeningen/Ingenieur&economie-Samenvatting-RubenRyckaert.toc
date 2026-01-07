@@ -3,65 +3,65 @@
 \contentsline {subsection}{\numberline {1.1}Introductie}{6}{subsection.1.1}%
 \contentsline {section}{\numberline {2}Module 1: Marketing}{6}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Marketing}{6}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Marketingcyclus}{6}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Marktmanagement}{8}{subsection.2.3}%
-\contentsline {subsection}{\numberline {2.4}Segmentatie}{9}{subsection.2.4}%
-\contentsline {subsection}{\numberline {2.5}Product Life Cycle}{9}{subsection.2.5}%
-\contentsline {subsection}{\numberline {2.6}Prijszetting}{10}{subsection.2.6}%
-\contentsline {subsubsection}{\numberline {2.6.1}Interne factoren}{10}{subsubsection.2.6.1}%
-\contentsline {subsubsection}{\numberline {2.6.2}Externe factoren}{11}{subsubsection.2.6.2}%
-\contentsline {subsection}{\numberline {2.7}Prijszettingsmethodes}{13}{subsection.2.7}%
-\contentsline {subsubsection}{\numberline {2.7.1}Nieuwe producten}{13}{subsubsection.2.7.1}%
-\contentsline {subsubsection}{\numberline {2.7.2}Assortiment producten}{13}{subsubsection.2.7.2}%
-\contentsline {subsubsection}{\numberline {2.7.3}Prijsaanpasstrategieën}{14}{subsubsection.2.7.3}%
-\contentsline {section}{\numberline {3}Module 2: Lineair Programmeren}{14}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Simplex Methode}{14}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Simplex Methode: Voorbeeld}{15}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Sensitiviteitsanalyse}{16}{subsection.3.3}%
-\contentsline {subsubsection}{\numberline {3.3.1}A. Wat als de winst per product verandert?}{17}{subsubsection.3.3.1}%
-\contentsline {subsubsection}{\numberline {3.3.2}B. Wat als je meer of minder materiaal hebt?}{17}{subsubsection.3.3.2}%
-\contentsline {subsubsection}{\numberline {3.3.3}C. Hoeveel waard is één extra eenheid?}{17}{subsubsection.3.3.3}%
-\contentsline {section}{\numberline {4}Module 3: Investering}{20}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Inflatie}{20}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Basisgegevens investeringsevaluatie}{21}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}Afschrijvingen}{21}{subsection.4.3}%
-\contentsline {subsection}{\numberline {4.4}Wat mag je nu afschrijven?}{22}{subsection.4.4}%
-\contentsline {subsection}{\numberline {4.5}Samengestelde interest, actualisatie, en annuïteiten}{23}{subsection.4.5}%
-\contentsline {subsection}{\numberline {4.6}Actualisatie en annuïteiten}{23}{subsection.4.6}%
-\contentsline {subsection}{\numberline {4.7}Investeringsevaluatie methodes}{26}{subsection.4.7}%
-\contentsline {subsubsection}{\numberline {4.7.1}Payback-methode}{26}{subsubsection.4.7.1}%
-\contentsline {subsubsection}{\numberline {4.7.2}Discounted cashflow}{26}{subsubsection.4.7.2}%
-\contentsline {section}{\numberline {5}Module 4: Kostprijs calculatie}{30}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Kostprijs elementen}{30}{subsection.5.1}%
-\contentsline {subsubsection}{\numberline {5.1.1}Fifo en Lifo}{31}{subsubsection.5.1.1}%
-\contentsline {subsubsection}{\numberline {5.1.2}Primitieve Toeslag methodes}{31}{subsubsection.5.1.2}%
-\contentsline {subsubsection}{\numberline {5.1.3}Verfijnde toeslagmethode}{33}{subsubsection.5.1.3}%
-\contentsline {subsubsection}{\numberline {5.1.4}Kostenplaatsmethode}{33}{subsubsection.5.1.4}%
-\contentsline {subsection}{\numberline {5.2}Kostprijsberekening methodes}{33}{subsection.5.2}%
-\contentsline {subsubsection}{\numberline {5.2.1}Break-Even Analyse}{35}{subsubsection.5.2.1}%
-\contentsline {subsection}{\numberline {5.3}Activity Based Costing (ABC)}{36}{subsection.5.3}%
-\contentsline {subsection}{\numberline {5.4}Target based costing}{36}{subsection.5.4}%
-\contentsline {section}{\numberline {6}Module 5: Analyse van een jaarrekening}{36}{section.6}%
-\contentsline {subsubsection}{\numberline {6.0.1}Activa (Wat bezit het bedrijf?)}{37}{subsubsection.6.0.1}%
-\contentsline {subsubsection}{\numberline {6.0.2}Passiva (Waar komt het geld vandaan?)}{37}{subsubsection.6.0.2}%
-\contentsline {subsection}{\numberline {6.1}De balans}{39}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Resultatenrekening}{39}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}Analyse van de jaarrekening}{40}{subsection.6.3}%
-\contentsline {subsection}{\numberline {6.4}Horizontale analyse}{41}{subsection.6.4}%
-\contentsline {subsection}{\numberline {6.5}Verticale analyse}{41}{subsection.6.5}%
-\contentsline {subsection}{\numberline {6.6}Ratio-analyse}{42}{subsection.6.6}%
-\contentsline {subsection}{\numberline {6.7}Conclusie}{48}{subsection.6.7}%
-\contentsline {subsection}{\numberline {6.8}Termenlijst Module 5}{48}{subsection.6.8}%
-\contentsline {subsubsection}{\numberline {6.8.1}Basisdocumenten}{48}{subsubsection.6.8.1}%
-\contentsline {subsubsection}{\numberline {6.8.2}Activa (Bezittingen)}{48}{subsubsection.6.8.2}%
-\contentsline {subsubsection}{\numberline {6.8.3}Passiva (Financiering)}{48}{subsubsection.6.8.3}%
-\contentsline {subsubsection}{\numberline {6.8.4}Resultatenrekening}{48}{subsubsection.6.8.4}%
-\contentsline {subsubsection}{\numberline {6.8.5}Standaarden \& Verslagen}{48}{subsubsection.6.8.5}%
-\contentsline {subsubsection}{\numberline {6.8.6}Analysetypes}{49}{subsubsection.6.8.6}%
-\contentsline {subsubsection}{\numberline {6.8.7}Liquiditeit}{49}{subsubsection.6.8.7}%
-\contentsline {subsubsection}{\numberline {6.8.8}Solvabiliteit}{49}{subsubsection.6.8.8}%
-\contentsline {subsubsection}{\numberline {6.8.9}Efficiëntie (Rotatie)}{49}{subsubsection.6.8.9}%
-\contentsline {subsubsection}{\numberline {6.8.10}Rentabiliteit}{49}{subsubsection.6.8.10}%
-\contentsline {subsubsection}{\numberline {6.8.11}Overige belangrijke termen}{49}{subsubsection.6.8.11}%
-\contentsline {section}{\numberline {7}Examentips}{50}{section.7}%
-\contentsline {section}{\numberline {8}Succes}{51}{section.8}%
+\contentsline {subsection}{\numberline {2.2}Marktmanagement}{8}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Segmentatie}{9}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Product Life Cycle}{9}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Prijszettingsmethodes}{12}{subsection.2.5}%
+\contentsline {subsubsection}{\numberline {2.5.1}Nieuwe producten}{12}{subsubsection.2.5.1}%
+\contentsline {subsubsection}{\numberline {2.5.2}Assortiment producten}{12}{subsubsection.2.5.2}%
+\contentsline {subsubsection}{\numberline {2.5.3}Prijsaanpasstrategieën}{12}{subsubsection.2.5.3}%
+\contentsline {section}{\numberline {3}Module 2: Lineair Programmeren}{13}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Simplex Methode}{13}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Simplex Methode: Voorbeeld}{14}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Sensitiviteitsanalyse}{15}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}A. Wat als de winst per product verandert?}{15}{subsubsection.3.3.1}%
+\contentsline {subsubsection}{\numberline {3.3.2}B. Wat als je meer of minder materiaal hebt?}{16}{subsubsection.3.3.2}%
+\contentsline {subsubsection}{\numberline {3.3.3}C. Hoeveel waard is één extra eenheid?}{16}{subsubsection.3.3.3}%
+\contentsline {section}{\numberline {4}Module 3: Investering}{18}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Inflatie}{18}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Basisgegevens investeringsevaluatie}{19}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Afschrijvingen}{20}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Wat mag je nu afschrijven?}{21}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Samengestelde interest, actualisatie, en annuïteiten}{21}{subsection.4.5}%
+\contentsline {subsection}{\numberline {4.6}Actualisatie en annuïteiten}{22}{subsection.4.6}%
+\contentsline {subsection}{\numberline {4.7}Investeringsevaluatie methodes}{24}{subsection.4.7}%
+\contentsline {subsubsection}{\numberline {4.7.1}Payback-methode}{25}{subsubsection.4.7.1}%
+\contentsline {subsubsection}{\numberline {4.7.2}Discounted cashflow}{25}{subsubsection.4.7.2}%
+\contentsline {section}{\numberline {5}Module 4: Kostprijs calculatie}{28}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Kostprijs elementen}{28}{subsection.5.1}%
+\contentsline {subsubsection}{\numberline {5.1.1}Fifo en Lifo}{29}{subsubsection.5.1.1}%
+\contentsline {subsubsection}{\numberline {5.1.2}Primitieve Toeslag methodes}{30}{subsubsection.5.1.2}%
+\contentsline {subsubsection}{\numberline {5.1.3}Verfijnde toeslagmethode}{31}{subsubsection.5.1.3}%
+\contentsline {subsubsection}{\numberline {5.1.4}Kostenplaatsmethode}{31}{subsubsection.5.1.4}%
+\contentsline {subsection}{\numberline {5.2}Kostprijsberekening methodes}{31}{subsection.5.2}%
+\contentsline {subsubsection}{\numberline {5.2.1}Break-Even Analyse}{33}{subsubsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.3}Activity Based Costing (ABC)}{34}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Target based costing}{34}{subsection.5.4}%
+\contentsline {section}{\numberline {6}Module 5: Analyse van een jaarrekening}{34}{section.6}%
+\contentsline {subsubsection}{\numberline {6.0.1}Activa (Wat bezit het bedrijf?)}{35}{subsubsection.6.0.1}%
+\contentsline {subsubsection}{\numberline {6.0.2}Passiva (Waar komt het geld vandaan?)}{35}{subsubsection.6.0.2}%
+\contentsline {subsection}{\numberline {6.1}De balans}{37}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Resultatenrekening}{37}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Analyse van de jaarrekening}{38}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Horizontale analyse}{39}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}Verticale analyse}{39}{subsection.6.5}%
+\contentsline {subsection}{\numberline {6.6}Ratio-analyse}{40}{subsection.6.6}%
+\contentsline {subsection}{\numberline {6.7}Conclusie}{46}{subsection.6.7}%
+\contentsline {subsection}{\numberline {6.8}Termenlijst Module 5}{46}{subsection.6.8}%
+\contentsline {subsubsection}{\numberline {6.8.1}Basisdocumenten}{46}{subsubsection.6.8.1}%
+\contentsline {subsubsection}{\numberline {6.8.2}Activa (Bezittingen)}{46}{subsubsection.6.8.2}%
+\contentsline {subsubsection}{\numberline {6.8.3}Passiva (Financiering)}{46}{subsubsection.6.8.3}%
+\contentsline {subsubsection}{\numberline {6.8.4}Resultatenrekening}{46}{subsubsection.6.8.4}%
+\contentsline {subsubsection}{\numberline {6.8.5}Standaarden \& Verslagen}{46}{subsubsection.6.8.5}%
+\contentsline {subsubsection}{\numberline {6.8.6}Analysetypes}{47}{subsubsection.6.8.6}%
+\contentsline {subsubsection}{\numberline {6.8.7}Liquiditeit}{47}{subsubsection.6.8.7}%
+\contentsline {subsubsection}{\numberline {6.8.8}Solvabiliteit}{47}{subsubsection.6.8.8}%
+\contentsline {subsubsection}{\numberline {6.8.9}Efficiëntie (Rotatie)}{47}{subsubsection.6.8.9}%
+\contentsline {subsubsection}{\numberline {6.8.10}Rentabiliteit}{47}{subsubsection.6.8.10}%
+\contentsline {subsubsection}{\numberline {6.8.11}Overige belangrijke termen}{47}{subsubsection.6.8.11}%
+\contentsline {section}{\numberline {7}Examenvragen}{48}{section.7}%
+\contentsline {paragraph}{A. Kosten Oude Machine (in Jaar 1):}{53}{Item.37}%
+\contentsline {paragraph}{B. Kosten Nieuwe Machine (in Jaar 1):}{53}{Item.37}%
+\contentsline {paragraph}{C. De Besparing (Vóór belasting):}{53}{Item.37}%
+\contentsline {section}{\numberline {8}Examentips}{55}{section.8}%
+\contentsline {section}{\numberline {9}Succes}{56}{section.9}%
