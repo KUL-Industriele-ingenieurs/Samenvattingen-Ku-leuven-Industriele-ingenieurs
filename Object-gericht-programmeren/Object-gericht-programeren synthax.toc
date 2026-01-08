@@ -1,4 +1,0 @@
-\babel@toc {dutch}{}\relax 
-\contentsline {section}{\numberline {1}Belangrijke synthax}{1}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Scanner}{1}{subsection.1.1}%
-\contentsline {subsection}{\numberline {1.2}Import statements}{1}{subsection.1.2}%
