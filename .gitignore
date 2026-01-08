@@ -1,4 +1,43 @@
-.vscode
-.venv
+# Editor and IDE
+.vscode/
+*.swp
+*.swo
+*~
+
+# Python
+.venv/
 __pycache__/
 *.pyc
+*.pyo
+
+# LaTeX auxiliary files
+*.aux
+*.log
+*.out
+*.toc
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+*.synctex(busy)
+*.lof
+*.lot
+*.nav
+*.snm
+*.vrb
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+*.idx
+*.ilg
+*.ind
+
+# LaTeX backup files
+*.bak
+*.bak[0-9]
+*.bak[0-9][0-9]
+*.sav
+
+# Build output (uncomment if you don't want to commit PDFs)
+# *.pdf
+

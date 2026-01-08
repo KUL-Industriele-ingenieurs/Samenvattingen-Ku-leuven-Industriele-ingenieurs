@@ -5,6 +5,8 @@
 \usepackage{siunitx}
 \usepackage{pdfpages}
 \usepackage{placeins}
+\usepackage[table]{xcolor}  % Voor kleuren in tabellen
+\usepackage{colortbl}       % Voor \rowcolor en \columncolor
 
 \title{Ingenieur en Economie — Samenvatting \& Oefeningen}
 \author{Ruben Ryckaert}
@@ -3300,6 +3302,582 @@ De optimale strategie is:
 \end{minipage}
 }
 \end{center}
+
+\end{oefenblok}
+
+\begin{oefenblok}
+    \textbf{Oefening 6: Productie Optimalisatie bij een Bedrijf}
+    
+\textbf{Gegeven:} Een bedrijf produceert drie producten met respectievelijke winst €3, €7 en €5. Elk product heeft 1 kg grondstoffen nodig. In totaal kunnen 50 kg grondstoffen worden aangekocht. Elk product heeft ook verwerkingstijd nodig op dezelfde machine: 2 uur, 3 uur en 1 uur voor respectievelijk product 1, 2 en 3. Deze machine is slechts 100 uur beschikbaar.
+
+\subsection*{vraag 1 - Formuleer het lineair programmeringsmodel}
+
+\textbf{Standaard notatie:}
+\begin{align*}
+\text{Max } Z &= 3X_1 + 7X_2 + 5X_3 \\
+\text{S.t. } X_1 + X_2 + X_3 &\leq 50 \\
+2X_1 + 3X_2 + X_3 &\leq 100 \\
+X_1 &\geq 0
+\end{align*}
+
+\textbf{Simplex notatie (met spelvariabelen):}
+\begin{align*}
+Z - 3X_1 - 7X_2 - 5X_3 &= 0 \\
+X_1 + X_2 + X_3 + S_1 &= 50 \\
+2X_1 + 3X_2 + X_3 + S_2 &= 100
+\end{align*}
+
+\textbf{Initieel Simplex tableau:}
+
+\begin{center}
+\begin{tabular}{c|ccccc|c|c}
+\hline
+Basis & $X_1$ & $X_2$ & $X_3$ & $S_1$ & $S_2$ & RHS & CRT \\
+\hline
+$Z$ & $-3$ & $-7$ & $-5$ & 0 & 0 & 0 & \\
+$S_1$ & 1 & 1 & 1 & 1 & 0 & 50 & 50 \\
+$S_2$ & 2 & 3 & 1 & 0 & 1 & 100 & 33.33 \\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{Wat betekent "basis"?}
+
+De kolom "Basis" toont welke variabelen momenteel een waarde hebben. In het begin zijn dit de spelvariabelen $S_1$ en $S_2$:
+\begin{itemize}
+    \item $S_1 = 50$ betekent: 50 kg grondstoffen blijven ongebruikt
+    \item $S_2 = 100$ betekent: 100 uur machinetijd blijft ongebruikt
+    \item $X_1 = X_2 = X_3 = 0$ betekent: we produceren nog niets
+\end{itemize}
+
+Dit geeft een winst van €0. We gaan dit verbeteren door productvariabelen "in de basis" te brengen.
+
+\vspace{0.3cm}
+
+\textbf{Stap 1:} Kies pivot kolom: $X_2$ (meest negatieve waarde: $-7$)
+
+\textit{Uitleg:} De kolom met de meest negatieve waarde in de Z-rij wordt gekozen, omdat dit de variabele is die de winst het meest kan verhogen.
+
+\textbf{Stap 2:} Bereken CRT (Column Ratio Test): $\min\left(\frac{50}{1}, \frac{100}{3}\right) = \min(50, 33.33) = 33.33$
+
+\textit{Uitleg CRT:} De CRT bepaalt welke rij uit de basis gaat. We delen de RHS (rechterkolom) door het corresponderende positieve element in de pivot kolom:
+\begin{itemize}
+    \item Voor $S_1$: $\frac{50}{1} = 50$ (betekent: $S_1$ wordt 0 als we 50 eenheden $X_2$ produceren)
+    \item Voor $S_2$: $\frac{100}{3} = 33.33$ (betekent: $S_2$ wordt 0 als we 33.33 eenheden $X_2$ produceren)
+\end{itemize}
+We kiezen het minimum omdat dit de eerste beperking is die we tegenkomen (eerste resource die opraakt).
+
+\textbf{Stap 3:} Pivot element: $a_{32} = 3$ (rij $S_2$, kolom $X_2$)
+
+\textbf{Wat gebeurt er nu? - De "basis-wissel"}:
+
+\begin{center}
+\begin{tabular}{c|ccccc|c}
+\hline
+Basis & $X_1$ & $X_2$ & $X_3$ & $S_1$ & $S_2$ & RHS \\
+\hline
+$Z$ & $-3$ & \cellcolor{red!20}$-7$ & $-5$ & 0 & 0 & 0 \\
+$S_1$ & 1 & \cellcolor{red!20}1 & 1 & 1 & 0 & 50 \\
+\rowcolor{red!20}
+$S_2$ & 2 & \textbf{3} & 1 & 0 & 1 & 100 \\
+\hline
+\end{tabular}
+\end{center}
+
+\textit{CRT (Column Ratio Test):} Voor $S_1$: $\frac{50}{1} = 50$; Voor $S_2$: $\frac{100}{3} = 33.33$ (kleinste waarde)
+
+\begin{warningbox}[title=Interpretatie van Pivot-operatie]
+\textbf{IN de basis:} $X_2$ (gaan we produceren)
+
+\textbf{UIT de basis:} $S_2$ (gaat naar 0)
+
+\textbf{Wat betekent dit fysisch?}
+\begin{itemize}
+    \item We gaan product 2 produceren (met winst €7 per stuk)
+    \item We gebruiken daarbij alle beschikbare machinetijd op
+    \item $S_2$ wordt 0: geen ongebruikte machinetijd meer
+    \item De rij waar $S_2$ stond, wordt vervangen door de rij voor $X_2$
+\end{itemize}
+
+\textbf{De pivot-rij (rood gemarkeerd):} Dit is de rij die van eigenaar verandert. Was eerst de $S_2$-rij, wordt nu de $X_2$-rij.
+
+\textbf{De pivot-kolom (rood gemarkeerd):} Dit is de variabele die de basis binnenkomt ($X_2$).
+
+\textbf{Het pivot-element (vet):} Het getal 3 op het kruispunt. We maken dit 1 door de hele rij te delen door 3.
+\end{warningbox}
+
+\textbf{Rijoperaties:}
+\begin{itemize}
+    \item $R_2' = R_2 / 3$ (maak pivot element 1)
+    \item $R_1' = R_1 + 7R_2'$ (elimineer $X_2$ in Z-rij)
+    \item $R_3' = R_3 - R_2'$ (elimineer $X_2$ in $S_1$-rij)
+\end{itemize}
+
+\textbf{Tableau na iteratie 1:}
+
+\begin{center}
+\begin{tabular}{c|ccccc|c|c}
+\hline
+Basis & $X_1$ & $X_2$ & $X_3$ & $S_1$ & $S_2$ & RHS & CRT \\
+\hline
+$Z$ & $\frac{5}{3}$ & 0 & $-\frac{8}{3}$ & 0 & $\frac{7}{3}$ & $\frac{700}{3}$ & \\
+$S_1$ & $\frac{1}{3}$ & 0 & $\frac{2}{3}$ & 1 & $-\frac{1}{3}$ & $\frac{50}{3}$ & 25 \\
+$X_2$ & $\frac{2}{3}$ & 1 & $\frac{1}{3}$ & 0 & $\frac{1}{3}$ & $\frac{100}{3}$ & 100 \\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{Stap 4:} Nieuwe pivot kolom: $X_3$ (negatieve waarde: $-\frac{8}{3}$)
+
+\textit{Uitleg:} Er staat nog een negatieve waarde in de Z-rij, dus we zijn nog niet optimaal. We herhalen het proces.
+
+\textbf{Stap 5:} Bereken CRT: $\min\left(\frac{50/3}{2/3}, \frac{100/3}{1/3}\right) = \min(25, 100) = 25$
+
+\textit{Uitleg:} De CRT toont dat $S_1$ uit de basis gaat als eerste, omdat de beperking "grondstoffen" als eerste opraakt.
+
+\textbf{Stap 6:} Pivot element: $a_{23} = \frac{2}{3}$ (rij $S_1$)
+
+\textbf{Tweede basis-wissel (met rode markering):}
+
+\begin{center}
+\begin{tabular}{c|ccccc|c}
+\hline
+Basis & $X_1$ & $X_2$ & $X_3$ & $S_1$ & $S_2$ & RHS \\
+\hline
+$Z$ & $\frac{5}{3}$ & 0 & \cellcolor{red!20}$-\frac{8}{3}$ & 0 & $\frac{7}{3}$ & $\frac{700}{3}$ \\
+\rowcolor{red!20}
+$S_1$ & $\frac{1}{3}$ & 0 & \textbf{$\frac{2}{3}$} & 1 & $-\frac{1}{3}$ & $\frac{50}{3}$ \\
+$X_2$ & $\frac{2}{3}$ & 1 & \cellcolor{red!20}$\frac{1}{3}$ & 0 & $\frac{1}{3}$ & $\frac{100}{3}$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\textit{CRT:} Voor $S_1$: $\frac{50/3}{2/3} = 25$ (kleinste); Voor $X_2$: $\frac{100/3}{1/3} = 100$
+
+\textbf{Wat gebeurt er?}
+\begin{itemize}
+    \item \textbf{IN:} $X_3$ komt in de basis (gaan product 3 produceren)
+    \item \textbf{UIT:} $S_1$ gaat uit de basis (wordt 0)
+    \item \textbf{Betekenis:} We gaan nu ook product 3 maken en gebruiken daarbij alle grondstoffen op
+    \item De $S_1$-rij wordt de nieuwe $X_3$-rij
+\end{itemize}
+
+\textbf{Rijoperaties:}
+\begin{itemize}
+    \item $R_3' = R_3 \times \frac{3}{2}$ (maak pivot element 1)
+    \item $R_1' = R_1 + \frac{8}{3}R_3'$ (elimineer $X_3$ in Z-rij)
+    \item $R_2' = R_2 - \frac{1}{3}R_3'$ (elimineer $X_3$ in $X_2$-rij)
+\end{itemize}
+
+\textbf{Optimaal Tableau:}
+
+\begin{center}
+\begin{tabular}{c|ccccc|c}
+\hline
+Basis & $X_1$ & $X_2$ & $X_3$ & $S_1$ & $S_2$ & RHS \\
+\hline
+$Z$ & 3 & 0 & 0 & 4 & 1 & 300 \\
+$X_3$ & $\frac{1}{2}$ & 0 & 1 & $\frac{3}{2}$ & $-\frac{1}{2}$ & 25 \\
+$X_2$ & $\frac{1}{2}$ & 1 & 0 & $-\frac{1}{2}$ & $\frac{1}{2}$ & 25 \\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{Het aflezen van de oplossing:}
+
+\textit{Regel 1: Alleen basis-variabelen hebben een waarde $> 0$}
+
+De kolom "Basis" toont welke variabelen een waarde hebben:
+\begin{itemize}
+    \item $X_3$ zit in de basis $\Rightarrow$ $X_3 = 25$ (aflezen uit RHS-kolom)
+    \item $X_2$ zit in de basis $\Rightarrow$ $X_2 = 25$ (aflezen uit RHS-kolom)
+    \item $X_1$ zit \textbf{niet} in de basis $\Rightarrow$ $X_1 = 0$
+    \item $S_1$ zit niet in de basis $\Rightarrow$ $S_1 = 0$ (alle grondstoffen gebruikt)
+    \item $S_2$ zit niet in de basis $\Rightarrow$ $S_2 = 0$ (alle machinetijd gebruikt)
+\end{itemize}
+
+\textit{Regel 2: Waarom negeren we de $X_1$-kolom?}
+
+In het tableau staat inderdaad $\frac{1}{2}$ bij $X_1$ in beide rijen. Deze coëfficiënten vertellen ons \textbf{niet} dat we $X_1$ moeten produceren! Ze vertellen ons:
+
+\begin{warningbox}[title=Interpretatie van niet-basis variabelen]
+\textbf{Als} we zouden beslissen om 1 eenheid $X_1$ te produceren, \textbf{dan} zouden:
+\begin{itemize}
+    \item $X_3$ dalen met $\frac{1}{2}$ eenheid (van 25 naar 24.5)
+    \item $X_2$ dalen met $\frac{1}{2}$ eenheid (van 25 naar 24.5)
+\end{itemize}
+\end{warningbox}
+
+Maar omdat we de optimale oplossing zoeken en $X_1$ niet in de basis zit, \textbf{kiezen} we ervoor om $X_1 = 0$ te stellen.
+
+\textit{Regel 3: De Z-rij vertelt of dit optimaal is}
+
+De coëfficiënt van $X_1$ in de Z-rij is $+3$ (positief). Dit betekent: als we $X_1$ in de basis zouden brengen, zou de winstfunctie \textbf{dalen} met 3 per eenheid. Daarom is het beter om $X_1 = 0$ te houden.
+
+\vspace{0.3cm}
+
+\textbf{Optimale oplossing:} Produceer 25 eenheden product 2 en 25 eenheden product 3, en 0 eenheden product 1.
+
+\textbf{Maximale winst:} $Z = 0 \times 3 + 25 \times 7 + 25 \times 5 = 300$ euro
+
+\textit{Opmerking:} Alle coëfficiënten in de Z-rij zijn niet-negatief $\Rightarrow$ OPTIMAAL!
+
+\subsection*{Vraag 2: Sensitiviteitsanalyse voor Prijs Product 2}
+
+\textbf{Wat is sensitiviteitsanalyse?}
+
+Sensitiviteitsanalyse onderzoekt hoe gevoelig de optimale oplossing is voor veranderingen in parameters (zoals prijzen of beschikbare resources). We willen weten: binnen welk interval kan de prijs van product 2 ($C_2$) variëren zonder dat de huidige basis (= welke variabelen in productie zijn) verandert?
+
+\textbf{Methode:} Omdat $X_2$ in de basis zit, moeten we controleren of het nog steeds optimaal is om $X_2$ te blijven produceren als de prijs verandert. Dit doen we door te testen of elke niet-basis variabele ($X_1$, $S_1$, $S_2$) de basis zou kunnen binnenkomen.
+
+\vspace{0.3cm}
+
+\begin{warningbox}[title=Stappenplan Sensitiviteitsanalyse voor Basis-variabele]
+\textbf{STAP 1:} Identificeer het optimale tableau\par
+\textbf{STAP 2:} Voor elke niet-basis variabele (kolom):\par
+\quad a) Lees de coëfficiënten in die kolom af\par
+\quad b) Bereken de "opportunity cost" = wat kost het om deze variabele in de basis te brengen?\par
+\quad c) Stel een ongelijkheid op die garandeert dat deze variabele NIET aantrekkelijk wordt\par
+\textbf{STAP 3:} Bepaal het interval waar ALLE voorwaarden gelden (doorsnede)
+\end{warningbox}
+
+\vspace{0.4cm}
+
+\textbf{Test 1: Controleer $X_1$ als potentiële invaller}
+
+\textit{Waar halen we de cijfers vandaan?} Kijk naar kolom $X_1$ in het optimale tableau:
+
+\begin{center}
+\begin{tabular}{c|ccccc|c}
+\hline
+Basis & $X_1$ & $X_2$ & $X_3$ & $S_1$ & $S_2$ & RHS \\
+\hline
+$Z$ & \cellcolor{yellow!30}3 & 0 & 0 & 4 & 1 & 300 \\
+$X_3$ & \cellcolor{yellow!30}$\frac{1}{2}$ & 0 & 1 & $\frac{3}{2}$ & $-\frac{1}{2}$ & 25 \\
+$X_2$ & \cellcolor{yellow!30}$\frac{1}{2}$ & 1 & 0 & $-\frac{1}{2}$ & $\frac{1}{2}$ & 25 \\
+\hline
+\end{tabular}
+\end{center}
+
+\textit{Interpretatie van de geel gemarkeerde $X_1$-kolom:}
+\begin{itemize}
+    \item De \textbf{3} in de Z-rij = huidige prijs van $X_1$ (uit oorspronkelijke doelfunctie)
+    \item De \textbf{$\frac{1}{2}$} bij $X_3$ = als we 1 eenheid $X_1$ maken, moeten we $\frac{1}{2}$ eenheid $X_3$ opgeven
+    \item De \textbf{$\frac{1}{2}$} bij $X_2$ = als we 1 eenheid $X_1$ maken, moeten we $\frac{1}{2}$ eenheid $X_2$ opgeven
+\end{itemize}
+
+\textbf{Berekening opportunity cost:}
+
+\textit{Huidige basis:} $X_2$ en $X_3$ zijn in productie. We testen of $X_1$ deze basis kan binnenkomen.
+$C_2$ = nieuwe prijs van $X_2$ (We gaan voorwaarden opstellen in functie van $C_2$)
+
+\begin{center}
+\begin{tabular}{l|c|l}
+\hline
+\textbf{Actie} & \textbf{Waarde} & \textbf{Effect op winst} \\
+\hline
+Breng 1 eenheid $X_1$ in basis & $C_1 = 3$ & $+3$ \\
+Haal $\frac{1}{2}$ eenheid $X_3$ uit basis & prijs $X_3 = 5$ & $-\frac{1}{2} \times 5 = -2.5$ \\
+Haal $\frac{1}{2}$ eenheid $X_2$ uit basis & prijs $X_2 = C_2$ & $-\frac{1}{2} \times C_2$ \\
+\hline
+\multicolumn{2}{l|}{\textbf{Netto effect:}} & $3 - 2.5 - \frac{C_2}{2} = 0.5 - \frac{C_2}{2}$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\textit{Opmerking:} We halen gedeeltelijk uit de huidige productiebasis ($X_2$ en $X_3$) om plaats te maken voor $X_1$.
+
+\textbf{Voorwaarde voor optimaliteit:} Het netto effect moet $\leq 0$ blijven (anders wordt $X_1$ aantrekkelijk):
+
+\begin{align*}
+3 - \frac{5}{2} - \frac{C_2}{2} &\leq 0 \\
+\frac{6}{2} - \frac{5}{2} - \frac{C_2}{2} &\leq 0 \\
+\frac{1}{2} - \frac{C_2}{2} &\leq 0 \\
+\frac{1}{2} &\leq \frac{C_2}{2} \\
+1 &\leq C_2
+\end{align*}
+
+$$\boxed{C_2 \geq 1} \quad \text{(Voorwaarde 1)}$$
+
+\textbf{Test 2: Controleer $S_1$ als potentiële invaller}
+
+$S_1$ is een spelvariabele die aangeeft hoeveel grondstoffen ongebruikt blijven. In basis brengen van $S_1$ betekent dat we minder produceren en grondstoffen overlaten.
+
+\textit{Waar halen we de cijfers vandaan?} Kijk naar kolom $S_1$ in het optimale tableau:
+
+\begin{center}
+\begin{tabular}{c|ccccc|c}
+\hline
+Basis & $X_1$ & $X_2$ & $X_3$ & $S_1$ & $S_2$ & RHS \\
+\hline
+$Z$ & 3 & 0 & 0 & \cellcolor{yellow!30}4 & 1 & 300 \\
+$X_3$ & $\frac{1}{2}$ & 0 & 1 & \cellcolor{yellow!30}$\frac{3}{2}$ & $-\frac{1}{2}$ & 25 \\
+$X_2$ & $\frac{1}{2}$ & 1 & 0 & \cellcolor{yellow!30}$-\frac{1}{2}$ & $\frac{1}{2}$ & 25 \\
+\hline
+\end{tabular}
+\end{center}
+
+\textit{Interpretatie van de geel gemarkeerde $S_1$-kolom:}
+\begin{itemize}
+    \item De \textbf{4} in de Z-rij = shadow price van $S_1$ (hoeveel winst kost 1 eenheid ongebruikte grondstof)
+    \item De \textbf{$\frac{3}{2}$} bij $X_3$ = als we 1 eenheid $S_1$ in basis brengen, moeten we $\frac{3}{2}$ eenheid $X_3$ opgeven
+    \item De \textbf{$-\frac{1}{2}$} bij $X_2$ = als we 1 eenheid $S_1$ in basis brengen, neemt $X_2$ toe met $\frac{1}{2}$ eenheid
+\end{itemize}
+
+\textbf{Berekening opportunity cost:}
+
+\begin{center}
+\begin{tabular}{l|c|l}
+\hline
+\textbf{Actie} & \textbf{Waarde} & \textbf{Effect op winst} \\
+\hline
+Breng 1 eenheid $S_1$ in basis & (slack) & $+0$ (geen waarde voor ongebruikte grondstof) \\
+Haal $\frac{3}{2}$ eenheid $X_3$ uit basis & prijs $X_3 = 5$ & $-\frac{3}{2} \times 5 = -7.5$ \\
+Haal $-\frac{1}{2}$ eenheid $X_2$ uit basis & prijs $X_2 = C_2$ & $-(-\frac{1}{2}) \times C_2 = +\frac{C_2}{2}$ \\
+\hline
+\multicolumn{2}{l|}{\textbf{Netto effect:}} & $0 - 7.5 + \frac{C_2}{2} = -7.5 + \frac{C_2}{2}$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\textit{Uitleg negatief teken:} De coëfficiënt $-\frac{1}{2}$ betekent dat $X_2$ juist \textbf{toeneemt} als we $S_1$ in de basis brengen. Dit geeft een \textbf{positief} effect op de winst!
+
+\textbf{Voorwaarde:}
+\begin{align*}
+0 - \frac{3}{2} \times 5 + \frac{1}{2} \times C_2 &\leq 0 \\
+-\frac{15}{2} + \frac{C_2}{2} &\leq 0 \\
+\frac{C_2}{2} &\leq \frac{15}{2} \\
+C_2 &\leq 15
+\end{align*}
+
+$$\boxed{C_2 \leq 15} \quad \text{(Voorwaarde 2)}$$
+
+\textbf{Test 3: Controleer $S_2$ als potentiële invaller}
+
+$S_2$ representeert ongebruikte machinetijd. Vergelijkbare analyse:
+
+\textit{Waar halen we de cijfers vandaan?} Kijk naar kolom $S_2$ in het optimale tableau:
+
+\begin{center}
+\begin{tabular}{c|ccccc|c}
+\hline
+Basis & $X_1$ & $X_2$ & $X_3$ & $S_1$ & $S_2$ & RHS \\
+\hline
+$Z$ & 3 & 0 & 0 & 4 & \cellcolor{yellow!30}1 & 300 \\
+$X_3$ & $\frac{1}{2}$ & 0 & 1 & $\frac{3}{2}$ & \cellcolor{yellow!30}$-\frac{1}{2}$ & 25 \\
+$X_2$ & $\frac{1}{2}$ & 1 & 0 & $-\frac{1}{2}$ & \cellcolor{yellow!30}$\frac{1}{2}$ & 25 \\
+\hline
+\end{tabular}
+\end{center}
+
+\textit{Interpretatie van de geel gemarkeerde $S_2$-kolom:}
+\begin{itemize}
+    \item De \textbf{1} in de Z-rij = shadow price van $S_2$ (hoeveel winst kost 1 eenheid ongebruikte machinetijd)
+    \item De \textbf{$-\frac{1}{2}$} bij $X_3$ = als we 1 eenheid $S_2$ in basis brengen, neemt $X_3$ toe met $\frac{1}{2}$ eenheid
+    \item De \textbf{$\frac{1}{2}$} bij $X_2$ = als we 1 eenheid $S_2$ in basis brengen, moeten we $\frac{1}{2}$ eenheid $X_2$ opgeven
+\end{itemize}
+
+\textbf{Berekening opportunity cost:}
+
+\begin{center}
+\begin{tabular}{l|c|l}
+\hline
+\textbf{Actie} & \textbf{Waarde} & \textbf{Effect op winst} \\
+\hline
+Breng 1 eenheid $S_2$ in basis & (slack) & $+0$ \\
+Haal $-\frac{1}{2}$ eenheid $X_3$ uit basis & prijs $X_3 = 5$ & $-(-\frac{1}{2}) \times 5 = +2.5$ \\
+Haal $\frac{1}{2}$ eenheid $X_2$ uit basis & prijs $X_2 = C_2$ & $-\frac{1}{2} \times C_2$ \\
+\hline
+\multicolumn{2}{l|}{\textbf{Netto effect:}} & $0 + 2.5 - \frac{C_2}{2}$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{Voorwaarde:}
+\begin{align*}
+0 + \frac{1}{2} \times 5 - \frac{1}{2} \times C_2 &\leq 0 \\
+\frac{5}{2} - \frac{C_2}{2} &\leq 0 \\
+\frac{5}{2} &\leq \frac{C_2}{2} \\
+5 &\leq C_2
+\end{align*}
+
+$$\boxed{C_2 \geq 5} \quad \text{(Voorwaarde 3)}$$
+
+\textbf{Samenvatting van alle drie testen:}
+
+\begin{center}
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Kolom getest} & \textbf{Netto effect} & \textbf{Ongelijkheid} & \textbf{Resultaat} \\
+\hline
+$X_1$ & $3 - 2.5 - \frac{C_2}{2}$ & $0.5 - \frac{C_2}{2} \leq 0$ & $C_2 \geq 1$ \\
+\hline
+$S_1$ & $0 - 7.5 + \frac{C_2}{2}$ & $-7.5 + \frac{C_2}{2} \leq 0$ & $C_2 \leq 15$ \\
+\hline
+$S_2$ & $0 + 2.5 - \frac{C_2}{2}$ & $2.5 - \frac{C_2}{2} \leq 0$ & $C_2 \geq 5$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{0.3cm}
+
+\textbf{Conclusie:} De doorsnede van alle voorwaarden geeft:
+\begin{itemize}
+    \item Van $X_1$: $C_2 \geq 1$
+    \item Van $S_1$: $C_2 \leq 15$
+    \item Van $S_2$: $C_2 \geq 5$ \quad $\leftarrow$ \textbf{meest restrictieve ondergrens!}
+\end{itemize}
+
+$$\boxed{5 \leq C_2 \leq 15}$$
+
+\textit{Let op:} De ondergrens van 5 komt uit test $S_2$ (niet uit test $X_1$), omdat 5 > 1. De bovengrens van 15 komt uit test $S_1$.
+
+\textbf{Interpretatie:} Zolang de prijs van product 2 tussen €5 en €15 blijft, is het optimaal om precies 25 eenheden product 2 en 25 eenheden product 3 te produceren. De productiemix verandert niet, maar de totale winst wel.
+
+\vspace{0.3cm}
+
+\textbf{Toepassing: Als $C_2 = 13$}
+
+Controleren: $5 \leq 13 \leq 15$ $\checkmark$ $\Rightarrow$ Huidige basis blijft optimaal!
+
+\textbf{Nieuwe winst:} $Z = 25 \times 13 + 25 \times 5 = 325 + 125 = 450$ euro
+
+\textit{Belangrijke opmerking:} De basis (welke producten we maken) blijft hetzelfde, maar de winstwaarde verandert wel door de hogere prijs van product 2.
+
+\subsection*{Vraag 3: Sensitiviteitsanalyse voor Prijs Product 1}
+
+$X_1$ zit \textbf{niet} in de basis, dus we hoeven alleen $X_1$ zelf te controleren.
+
+\textbf{Test voor $X_1$:}
+
+Als we $1 X_1$ in de basis brengen met prijs $C_1$:
+\begin{itemize}
+    \item Kost: $+C_1$
+    \item Uit basis: $\frac{1}{2} X_3$ $\rightarrow$ $-\frac{1}{2} \times 5$
+    \item Uit basis: $\frac{1}{2} X_2$ $\rightarrow$ $-\frac{1}{2} \times 7$
+\end{itemize}
+
+Netto effect: $C_1 - \frac{5}{2} - \frac{7}{2} \leq 0$
+
+$\Rightarrow C_1 \leq 6$
+
+\textbf{Conclusie:} Voor $C_1 \leq 6$ blijft de huidige basis optimaal.
+
+\textbf{Als $C_1 = 7$:} De huidige basis houdt niet stand!
+
+Netto effect: $7 - 6 = 1 \Rightarrow$ Coëfficiënt in tableau wordt $-1$ (negatief in Z-rij)
+
+\textbf{Nieuwe iteratie nodig:}
+
+\begin{center}
+\begin{tabular}{c|ccccc|c|c}
+\hline
+Basis & $X_1$ & $X_2$ & $X_3$ & $S_1$ & $S_2$ & RHS & CRT \\
+\hline
+$Z$ & $-1$ & 0 & 0 & 4 & 1 & 300 & \\
+$X_3$ & $\frac{1}{2}$ & 0 & 1 & $\frac{3}{2}$ & $-\frac{1}{2}$ & 25 & 50 \\
+$X_2$ & $\frac{1}{2}$ & 1 & 0 & $-\frac{1}{2}$ & $\frac{1}{2}$ & 25 & 50 \\
+\hline
+\end{tabular}
+\end{center}
+
+Pivot kolom: $X_1$, beide CRT gelijk, kies willekeurig $X_2$-rij.
+
+\textbf{Rijoperaties:}
+\begin{itemize}
+    \item $R_2' = R_2 \times 2$ (maak pivot 1)
+    \item $R_1' = R_1 + R_2'$
+    \item $R_3' = R_3 - \frac{1}{2}R_2'$
+\end{itemize}
+
+\textbf{Nieuw optimaal tableau:}
+
+\begin{center}
+\begin{tabular}{c|ccccc|c}
+\hline
+Basis & $X_1$ & $X_2$ & $X_3$ & $S_1$ & $S_2$ & RHS \\
+\hline
+$Z$ & 0 & 2 & 0 & 3 & 2 & 350 \\
+$X_3$ & 0 & $-1$ & 1 & 2 & $-1$ & 0 \\
+$X_1$ & 1 & 2 & 0 & $-1$ & 1 & 50 \\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{Nieuwe optimale oplossing:} Produceer 50 eenheden product 1.
+
+\textbf{Nieuwe winst:} $Z = 50 \times 7 = 350$ euro
+
+\subsection*{Vraag 4: Introductie van Product 4}
+
+\textbf{Kenmerken product 4:}
+\begin{itemize}
+    \item Winst: €17
+    \item Verbruik: 3 kg grondstoffen
+    \item Machinetime: 4 uur
+\end{itemize}
+
+\textbf{Test of product 4 winstgevend is:}
+
+Als we $1 X_4$ in de basis brengen:
+\begin{itemize}
+    \item Kost: $+17$
+    \item Grondstoffen: $3 S_1$ uit basis $\rightarrow$ $-3 \times 4 = -12$
+    \item Machinetijd: $4 S_2$ uit basis $\rightarrow$ $-4 \times 1 = -4$
+\end{itemize}
+
+Netto effect: $17 - 12 - 4 = 1 > 0$ $\Rightarrow$ \textbf{JA, product 4 moet worden geproduceerd!}
+
+\textbf{Kolom voor $X_4$ berekenen:}
+
+Voor rij $X_3$: $3S_1 + (-1/2)S_2 = 3 \times \frac{3}{2} + (-\frac{1}{2}) \times (-\frac{1}{2}) = \frac{9}{2} + \frac{1}{4} = \frac{5}{2}$
+
+Voor rij $X_2$: $3S_1 + 4S_2 = 3 \times (-\frac{1}{2}) + 4 \times \frac{1}{2} = -\frac{3}{2} + 2 = \frac{1}{2}$
+
+\textbf{Nieuw tableau met $X_4$:}
+
+\begin{center}
+\begin{tabular}{c|cccccc|c|c}
+\hline
+Basis & $X_1$ & $X_2$ & $X_3$ & $X_4$ & $S_1$ & $S_2$ & RHS & CRT \\
+\hline
+$Z$ & 3 & 0 & 0 & $-1$ & 4 & 1 & 300 & \\
+$X_3$ & $\frac{1}{2}$ & 0 & 1 & $\frac{5}{2}$ & $\frac{3}{2}$ & $-\frac{1}{2}$ & 25 & 10 \\
+$X_2$ & $\frac{1}{2}$ & 1 & 0 & $\frac{1}{2}$ & $-\frac{1}{2}$ & $\frac{1}{2}$ & 25 & 50 \\
+\hline
+\end{tabular}
+\end{center}
+
+Pivot kolom: $X_4$, CRT: $\min\left(\frac{25}{5/2}, \frac{25}{1/2}\right) = 10$
+
+Pivot element: $\frac{5}{2}$ in rij $X_3$
+
+\textbf{Rijoperaties:}
+\begin{itemize}
+    \item $R_3' = R_3 \times \frac{2}{5}$ (maak pivot 1)
+    \item $R_1' = R_1 + R_3'$
+    \item $R_2' = R_2 - \frac{1}{2}R_3'$
+\end{itemize}
+
+\textbf{Finaal optimaal tableau:}
+
+\begin{center}
+\begin{tabular}{c|cccccc|c}
+\hline
+Basis & $X_1$ & $X_2$ & $X_3$ & $X_4$ & $S_1$ & $S_2$ & RHS \\
+\hline
+$Z$ & 3 & 0 & $\frac{2}{5}$ & 0 & $\frac{23}{5}$ & $\frac{4}{5}$ & 310 \\
+$X_4$ & $\frac{1}{5}$ & 0 & $\frac{2}{5}$ & 1 & $\frac{3}{5}$ & $-\frac{1}{5}$ & 10 \\
+$X_2$ & $\frac{2}{5}$ & 1 & $-\frac{1}{5}$ & 0 & $-\frac{4}{5}$ & $\frac{3}{5}$ & 20 \\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{Nieuwe optimale oplossing:} Produceer 10 eenheden product 4 en 20 eenheden product 2.
+
+\textbf{Nieuwe maximale winst:} $Z = 10 \times 17 + 20 \times 7 = 310$ euro
+
+\textbf{Conclusie:} Door product 4 te introduceren stijgt de winst van €300 naar €310 (+€10).
 
 \end{oefenblok}
 
