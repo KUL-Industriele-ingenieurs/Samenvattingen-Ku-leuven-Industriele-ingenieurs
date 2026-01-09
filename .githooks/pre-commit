@@ -1,0 +1,10 @@
+#!/bin/sh
+# Pre-commit hook wrapper for Windows
+# Calls PowerShell script to manage PDFs
+
+# Get the directory of this script
+HOOK_DIR="$(cd "$(dirname "$0")" && pwd)"
+
+# Run PowerShell script
+powershell.exe -ExecutionPolicy Bypass -File "$HOOK_DIR/pre-commit.ps1"
+exit $?
