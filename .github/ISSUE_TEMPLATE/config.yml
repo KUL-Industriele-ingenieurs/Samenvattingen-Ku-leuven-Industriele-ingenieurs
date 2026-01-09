@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 💬 GitHub Discussions
+    url: https://github.com/Eggmansmile/School-latex-documents/discussions
+    about: Voor algemene vragen, discussies, en ideeën
+  - name: 📚 README
+    url: https://github.com/Eggmansmile/School-latex-documents/blob/main/README.md
+    about: Lees eerst de README voor setup instructies
+  - name: 🤝 Contributing Guide
+    url: https://github.com/Eggmansmile/School-latex-documents/blob/main/CONTRIBUTING.md
+    about: Lees de contributing guide voor bijdrage richtlijnen

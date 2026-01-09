@@ -38,9 +38,10 @@ __pycache__/
 *.bak[0-9][0-9]
 *.sav
 
-# Documentation files (agent guides)
-AGENTS.md
-gemini.md
+# OS-specific files
+.DS_Store
+Thumbs.db
+*.tmp
 
 # Build output (uncomment if you don't want to commit PDFs)
 # *.pdf
