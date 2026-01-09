@@ -43,4 +43,4 @@ AGENTS.md
 gemini.md
 
 # Build output (uncomment if you don't want to commit PDFs)
-# *.pdf
+*.pdf
