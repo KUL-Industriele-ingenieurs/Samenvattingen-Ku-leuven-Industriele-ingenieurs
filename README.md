@@ -1,181 +1,335 @@
-# Wiskunde voor Systemen — Oefeningen & Oplossingen
+# Kwaliteitssamenvattingen voor Industrieel Ingenieurschap
 
-## Beschrijving
+Een gezamenlijk project voor het maken van professionele, gedetailleerde samenvattingen en oefeningen voor KU Leuven engineering vakken.
 
-Dit is een **samenstelling van universiteits-oefeningen in LaTeX** voor het vak **"Wiskunde voor Systemen"** & **Warmte en stromingen** aan **KU Leuven**, onderdeel van het **Industrieel Ingenieurschap (EM 2)** programma.
+📚 **Vakken:** Wiskunde voor Systemen, Warmte en Stromingen, Productietechnologie, en meer  
+🗣️ **Taal:** Nederlands  
+📐 **Format:** LaTeX met professionele opmaak
 
-Het document bevat systematisch uitgewerkte oefeningen en gedetailleerde stap-voor-stap oplossingen voor alle behandelde onderwerpen.
+## 🚀 Hoe te Beginnen
 
----
+### Systeem Setup (eenmalig)
 
-## Inhoud Wiskunde
+1. **LaTeX installeren** (kies één):
 
-### Formularium
-Een naslagwerk met standaardformules voor:
-- Laplacetransformatie
-- Fouriertransformatie
-- Fourierreeksen
+   **Option A: TeX Live (aanbevolen)**
+   - Windows: Download [TeX Live](https://tug.org/texlive/) of via Chocolatey:
+     ```powershell
+     choco install texlive-full
+     ```
+   - Controleer: `pdflatex --version`
 
-### 8 Hoofdstukken Oefeningen
+   **Option B: MikTeX (lighter weight)**
+   - Download [MikTeX installer](https://miktex.org/download)
+   - Of via Chocolatey:
+     ```powershell
+     choco install miktex
+     ```
+   - During setup, enable "Install missing packages on-the-fly"
 
-1. **Signalen en Systemen - Eerste Kennismaking**
-2. **Basissignalen en Bewerkingen**
-3. **Laplacetransformatie**
-4. **Fouriertransformatie**
-5. **Fourierreeksen**
-6. **LTC-Systemen**
-7. **Eigenwaarden en Eigenvectoren**
-8. **Examengerichte Oefeningen**
+2. **VS Code extensions installeren** (via Extension Marketplace of Command Palette):
 
-**Totaal:** 44+ oefeningen met volledige uitwerkingen
+   ```
+   Ctrl+Shift+P → "Extensions: Install Extension" → zoek:
+   ```
 
-### Oplossingen
-Bij elke oefening hoort een gedetailleerde oplossing met:
-- Stap-voor-stap berekeningen
-- Verwijzingen naar het formularium
-- Grafische voorstellingen (TikZ-diagrammen)
-- Verificatie van resultaten
+   - **LaTeX Workshop** (`James-Yu.latex-workshop`) — Live preview + builds (ESSENTIEEL)
+   - **LaTeX Utilities** (`tecosaur.latex-utilities`) — Extra features (formatting, selection)
+   - **LaTeX language support** — Syntax highlighting & snippets
+   - **Git Graph** — Git visualisatie (optioneel)
 
----
+   Of installeren via CLI:
+   ```powershell
+   code --install-extension James-Yu.latex-workshop
+   code --install-extension tecosaur.latex-utilities
+   code --install-extension latex-support.latex
+   ```
 
-## Document
-
-- **Bestand:** `MATHSYS_oefeningen.tex`
-- **Format:** LaTeX (pdflatex)
-- **Output:** `MATHSYS_oefeningen.pdf`
-- **Taal:** Nederlands
-- **Omvang:** 87 pagina's
-
----
-
-## Inhoud Warmte en Stormingen
-### Formularium
-
-### 2 Hoofdstukken Theorie, 1 hoofdstuk Oefeningen
-
-### Oplossingen
-Bij elke oefening hoort een gedetailleerde oplossing met:
-- Stap-voor-stap berekeningen
-- Verwijzingen naar het formularium
-- Grafische voorstellingen (TikZ-diagrammen)
-- Verificatie van resultaten
-
-## document
-- **Bestand:** `Thermische_en_Fluidumwetenschappen.tex`
-- **Format:** LaTeX (pdflatex)
-- **Output:** `Thermische_en_Fluidumwetenschappen.pdf`
-
-- **Taal:** Nederlands
-
-**Benodigde pakketten:** tikz, amsmath, amssymb, geometry, enumitem, hyperref
-
----
----
-
-## Toekomstige Uitbreidingen
-
-Geplande toevoegingen voor komende versies:
-- **Wisselstromingen (AC-circuits)** — Impedantie, faserespons, resonantie
+3. **Repository clonen:**
+   ```bash
+   git clone <repository-url>
+   cd School-latex-documents
+   ```
 
 ---
 
-**Datum:** December 2025  
-**Status:** Compleet ✓
+## 📝 VS Code LaTeX Workflow
+
+### Documenten Builden
+
+Alle build-taken zijn vooraf geconfigureerd. Open de Command Palette (`Ctrl+Shift+P`) en typ:
+
+- **`Build LaTeX (Active File)`** — Bouwt huidige bestand (snelste, voor testen)
+- **`Build LaTeX (latexmk - active file)`** — Bouwt met latexmk (automatische multi-pass, aanbevolen)
+- **`Build main PDFs (latexmk)`** — Bouwt MATHSYS volledig
+- **`Build Warmte PDF (latexmk)`** — Bouwt Warmte & Stromingen volledig
+
+### Workflow voor Aanpassingen
+
+1. Open je `.tex` bestand in VS Code
+2. Sla op (`Ctrl+S`) - LaTeX Workshop auto-build detecteert deze
+3. Bekijk PDF preview in sidebar (of Ctrl+Alt+V)
+4. Voor zware wijzigingen: gebruik **Build LaTeX (latexmk - active file)** om zeker te zijn
+
+### Tips voor Efficient Werken
+
+- **Snelle refs checken:** Ctrl+Shift+P → "LaTeX: Synctex" (jump tussen PDF en code)
+- **Formularium updaten:** Run build 2× na formule-wijzigingen (formularium vereist 2 passes)
+- **Fouten zien:** LaTeX Workshop toont errors in Problems panel (Ctrl+Shift+M)
+
+### 🔄 Git & GitHub: Eenvoudige Manier (Beginners)
+
+**Heb je geen ervaring met git?** Geen probleem! Gebruik **GitHub Desktop** — visueel en simpel.
+
+#### Stap 1: GitHub Desktop Downloaden & Installeren
+
+1. Download [GitHub Desktop](https://desktop.github.com/)
+2. Installeer en log in met je GitHub account
+3. Klaar!
+
+#### Stap 2: Repository Clonen (Kopie naar je Computer)
+
+1. Open GitHub Desktop
+2. Click: **File** → **Clone Repository**
+3. Zoek naar `School-latex-documents`
+4. Click **Clone** en kies waar je het wilt opslaan
+5. Wacht tot het klaar is ✓
+
+#### Stap 3: Wijzigingen Maken
+
+1. Open je `.tex` bestand in VS Code en maak wijzigingen
+2. Sla op (`Ctrl+S`)
+3. Kijk in GitHub Desktop → je ziet alle wijzigingen onder "Changes" tab
+
+#### Stap 4: Commit (Opslaan met Beschrijving)
+
+1. In GitHub Desktop, linksonder zie je een tekstvak
+2. Type een duidelijke beschrijving:
+   ```
+   Add: Oefening 3.5 met uitwerking
+   ```
+   of
+   ```
+   Fix: Typo in hoofdstuk 2
+   ```
+3. Click blauwe knop: **Commit to [jouw-branch-naam]**
+
+#### Stap 5: Push (Uploaden naar GitHub)
+
+1. Click knop: **Publish branch** (eerste keer) of **Push origin** (volgende keren)
+2. Klaar! Je wijzigingen zijn nu op GitHub 🎉
+
+#### Stap 6: Pull Request Maken (om je werk in te dienen)
+
+1. GitHub Desktop toont: "Create Pull Request"
+2. Click die knop
+3. GitHub opent automatisch in je browser
+4. Click groen knop: **Create Pull Request**
+5. Beschrijf wat je hebt gedaan
+6. Klik **Create Pull Request** — done!
+
+---
+
+### 🔧 Git Command Line (voor ervaren gebruikers)
+
+Als je liever terminal gebruikt:
+
+```powershell
+# Clone (eenmalig)
+git clone <repository-url>
+cd School-latex-documents
+
+# Voor elke wijziging:
+git pull origin main                    # Zorg dat je up-to-date bent
+# ... maak je wijzigingen ...
+git add <bestand>
+git commit -m "Add: beschrijving"
+git push origin <branch-naam>
+```
+
+---
+
+## 🔧 LaTeX Project Structuur
+
+### Hoofddocumenten
+
+| Vak | Bestand | Map |
+|-----|---------|-----|
+| Wiskunde voor Systemen | `MATHSYS-Oefeningen-RubenRyckaert.tex` | `math-systems/` |
+| Warmte & Stromingen | `Warmte en stromingen Samenvatting Ruben Ryckaert.tex` | `Warmte en stromingen/` |
+| Productietechnologie | `ProductieTechnologie-Samenvatting-RubenRyckaert.tex` | `Productietechnologie/` |
+
+### Macro's & Templates
+
+- **`school-macros.sty`** — Gedeelde macro's (oefenblokken, theorieboxen, formules)
+- **`latex_templates/`** — Voorbeelden en templates voor nieuw content
+  - `template_examples.tex` — Uitgewerkte voorbeelden van siunitx, tcolorbox, pgfplots, etc.
+  - `new_document_template.tex` — Start hier voor nieuwe samenvattingen
+
+### Afbeeldingen & Assets
+
+Plaats afbeeldingen in de `assets/` map van je vak:
+```
+Warmte en stromingen/
+├── assets/
+│   ├── slides/      ← Screenshots van slides
+│   └── wikipedia/   ← Screenshots van wikimedia
+```
+
+---
+
+## 💻 Bijdragen: Git Workflow
+
+### 1. Feature Branch Aanmaken
+
+```bash
+# Update lokale main
+git checkout main
+git pull origin main
+
+# Maak een feature branch (beschrijvende naam)
+git checkout -b add/thermodynamica-formules
+# of: git checkout -b fix/typo-hoofdstuk3
+```
+
+### 2. Wijzigingen Maken
+
+- Bewerk `.tex` bestanden
+- Test je build lokaal (Ctrl+Shift+P → Build task)
+- Voeg afbeeldingen toe in `assets/`
+- Let op: **quoteert paden met spaties** in shell commands
+
+### 3. Wijzigingen Committen
+
+```bash
+# Controleer wat je hebt gewijzigd
+git status
+git diff MATHSYS-Oefeningen-RubenRyckaert.tex  # voorbeeld
+
+# Stage je wijzigingen
+git add math-systems/MATHSYS-Oefeningen-RubenRyckaert.tex
+git add math-systems/assets/diagram.png
+
+# Commit met duidelijk bericht
+git commit -m "Add: Laplacetransformatie oefeningen 3.1-3.5 met grafieken"
+```
+
+**Commit message best practices:**
+- Start met: `Add:` / `Fix:` / `Improve:` / `Docs:`
+- Wees specifiek: "Oefening 3.1-3.5" niet zomaar "update"
+- Nederlands is prima, maar consistent houden
+
+### 4. Push en Pull Request
+
+```bash
+# Push je branch naar GitHub
+git push origin add/thermodynamica-formules
+
+# Open een Pull Request op GitHub
+# - Beschrijf wat je hebt toegevoegd/gewijzigd
+# - Voeg screenshots toe van de PDF output (optioneel)
+```
+
+### 5. Code Review & Merge
+
+- Reviewer checkt inhoud en opmaak
+- Pas feedback aan via nieuwe commits
+- Eenmaal goedgekeurd: merge naar main
+
+---
+
+## ✨ Contribution Guidelines
+
+### Inhoud
+
+✅ **Aanmoedigd:**
+- Oefeningen toevoegen met stap-voor-stap oplossingen
+- Formules registreren in het formularium
+- Afbeeldingen & diagrammen
+- Typo's en duidelijkheids-fixes
+- Ondersteunende voorbeelden
+
+❌ **Vermijd:**
+- Andere talen (Nederlands = standaard)
+- Breaking changes in document structure
+- Packages toevoegen zonder vooraf overleg (versie-conflicts)
+
+### Macros Gebruiken
+
+Gebruik de gedeelde macro's voor consistentie:
+
+```latex
+% Formule registreren (toont op pagina + in formularium)
+\frm{Bernoulli}{P + \frac{1}{2}\rho v^2 + \rho gh = \text{const}}{Bernoulli's vergelijking}
+
+% Oefening-blok
+\begin{oefenblok}[Oefening 3.4]
+Bereken de drukval in de buis...
+\end{oefenblok}
+
+% Afbeelding
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.8\linewidth]{assets/slides/manometer.png}
+  \caption{Manometer — bron: slides}
+  \label{fig:manometer}
+\end{figure}
+```
+
+Zie `latex_templates/macro_usage_guide.tex` voor alle beschikbare macro's.
+
+### Build Checklist
+
+Voor je een PR indient, controleer je:
+
+- [ ] Lokaal gebuild: `Build LaTeX (latexmk - active file)` ✓
+- [ ] PDF ziet er correct uit
+- [ ] Geen untracked files (`.aux`, `.pdf` enzovoort) in git
+- [ ] Commit messages zijn duidelijk
+
+---
+
+## 📦 Benodigde Packages
+
+```bash
+# TeX Live: basisinstallatie
+tlmgr install latexmk siunitx tcolorbox pgfplots booktabs subcaption enumitem
+
+# Voor Minted (code highlighting met Pygments)
+tlmgr install minted
+# + zorg dat Python/Pygments geïnstalleerd is
+```
+
+Check `AGENTS.md` voor meer details over troubleshooting en advanced setup.
+
+---
+
+## ❓ Veelgestelde Vragen
+
+**Q: Ik zie "No hyphenation patterns" warning**  
+A: Run `tlmgr install hyphen-dutch` en rebuild formats
+
+**Q: Formularium werkt niet**  
+A: Run build 2× na formule-wijzigingen (formularium vereist 2 passes)
+
+**Q: Git push faalt met "branch diverged"**  
+A: `git pull origin main` eerst, los conflicts op, commit, dan push
+
+**Q: Hoe vind ik beschikbare macro's?**  
+A: Open `latex_templates/macro_usage_guide.tex` en bouw het
 
 ---
 
 ## LaTeX voorbeelden & template 📐
-In de map `latex_templates/` vind je een kant-en-klare template met korte, praktische voorbeelden die je direct kunt hergebruiken:
 
-- **Bestand:** `latex_templates/template_examples.tex`
-- **Inbegrepen voorbeelden:**
-  - Eenheden met `siunitx` (gebruik `\SI{120}{\milli\metre\per\minute}`)
-  - Slimme verwijzingen met `cleveref` (gebruik `\cref{fig:label}`)
-  - Professionele tabellen met `booktabs`
-  - Subfiguren met `subcaption`
-  - In-line theorieboxen met `tcolorbox`
-  - Aangepaste opsommingen met `enumitem`
+In de map `latex_templates/` vind je praktische voorbeelden:
 
-Snelle build-commando's (aanbevolen):
+- **`template_examples.tex`** — Voorbeelden van siunitx, tcolorbox, pgfplots, etc.
+- **`new_document_template.tex`** — Template voor nieuwe samenvattingen
+- **`macro_usage_guide.tex`** — Volledige gids van beschikbare macro's
 
-- `latexmk -pdf latex_templates/template_examples.tex`  (handig: verzorgt meerdere runs automatisch)
-- of: `pdflatex -interaction=nonstopmode -file-line-error latex_templates/template_examples.tex` (run 2× als je referenties wilt updaten)
-
-Aanbevolen TeX-packages (kan met `tlmgr` worden geïnstalleerd):
-
-```
-tlmgr install siunitx cleveref tcolorbox booktabs subcaption enumitem microtype latexmk latexindent chktex
-```
-
-Opmerking: het hoofddocument laadt sommige van deze pakketten op een beveiligde manier (guarded) zodat het nog steeds compileert als een pakket ontbreekt — maar het is aanbevolen om de hierboven genoemde pakketten te installeren voor volledige functionaliteit.
-
-Extra voorbeelden die ik heb toegevoegd aan `latex_templates/template_examples.tex`:
-
-- **PGFPlots**: eenvoudige plots en `groupplots` voor meerdere subplots.
-- **tcolorbox**: theorema-/definitieboxen (andere stijlen mogelijk met tcolorbox-libraries).
-- **listings** (codeblokken) en optioneel **minted** (snelle highlight; vereist `--shell-escape` en Pygments).
-- **glossaries**: definities en acroniemen (werkt beter als je `makeglossaries` of `makeindex` hebt).
-- **biblatex**: voorbeeldbibliografie (vergt `biber` of `bibtex` afhankelijk van setup).
-- **multicol**: eenvoudige cheat-sheet lay-outs.
-
-Extra installatie/compile tips:
-
-- Voor `minted` gebruik: compileer met `pdflatex -shell-escape` of `latexmk -pdf -pdflatex="pdflatex -shell-escape -interaction=nonstopmode -file-line-error"` en zorg dat Python/Pygments geïnstalleerd is.
-- Voor `biblatex`/`biber`: gebruik `biber` in de build (or use `latexmk -pdf` which runs biber automatically if configured).
-- Voor `glossaries`: run `makeglossaries <jobname>` after the first LaTeX run, or use `latexmk`.
-
-Aanbevolen extra installatie-commando's:
-
-```
-tlmgr install pgfplots listings biblatex biber glossaries multicol
-```
-
-Als je wilt, kan ik:
-- Deze snippets verder uitbreiden (bijv. een kant-en-klare minted-voorbeeldsectie met instructies), of
-- Een VS Code task toevoegen die `latexmk` uitvoert met `-shell-escape` voor projecten die `minted` gebruiken.
-
+Build met: `latexmk -pdf latex_templates/template_examples.tex`
 
 ---
 
-## Productietechnologie
-
-Kort overzicht van de map `Productietechnologie`:
-
-- **Bestand:** `Productietechnologie/ProductieTechnologie-Samenvatting-RubenRyckaert.tex`
-- **Inhoud:** samenvattingen, voorbeelden, en een `formularium`-sectie; afbeeldingen in `Productietechnologie/assets/`.
-- **Macros:** `productie-macros.sty` bevat helpers zoals `\frm{...}`, `\fig[...]`, en `\autofig[...]` om formules en afbeeldingen consistent te registreren en in te voegen.
-- **Benodigde pakketten (aanbevolen):** `tikz`, `tcolorbox`, `siunitx`, `pgfplots`, `booktabs`, `subcaption`, `listings`, `biblatex` (optioneel), `glossaries` (optioneel).
-- **Build:** gebruik `latexmk -pdf` binnen de map of de bestaande VS Code tasks; voor `minted` gebruik `-shell-escape`, en voor bibliografieën gebruik `biber` (of laat `latexmk` dat afhandelen).
-- **Tip:** voer `tlmgr install pgfplots tcolorbox siunitx listings biblatex glossaries` uit om volledige voorbeeldondersteuning te krijgen.
-
----
-
-## Notes & Troubleshooting
-- If you see the warning "No hyphenation patterns were preloaded for the language 'Dutch'", install the Dutch hyphenation package and rebuild the TeX formats. For TeX Live / TinyTeX you can try:
-
-  - `tlmgr install hyphen-dutch` (or `hyphen-nl`) and then `fmtutil-sys --all` to rebuild formats.
-
-- The `formularium` feature writes an external file `<jobname>.fmr` at the end of each run and reads it when you place `\begin{formularium} ... \end{formularium}`. Run `pdflatex` twice after adding/removing formulas so the entries appear in place.
-
-## Unified Workflow & Templates (New)
-
-Located in `latex_templates/`, this repository now features a streamlined workflow:
-
-- **`school-macros.sty`**: A high-readability, minimalist package. It includes:
-  - Custom boxes: `conceptbox`, `warningbox`, `examenbox`, `oefenblok`.
-  - Formula management: `\frm{Title}{Formula}{Note}` (automatically builds a formularium).
-  - Symbol management: `\sym{Symbol}{Description}{Unit}` (automatically builds a symbol list).
-  - Modern typography: Pre-configured with `microtype`, `lmodern`, and `parskip`.
-- **`new_document_template.tex`**: A clean template to start new school summaries.
-- **`macro_usage_guide.tex`**: A comprehensive guide and live demo of all available macros.
-
-### Optimized Build Process
-To ensure all cross-references, symbol lists, and the formularium are generated correctly with a single command:
-
-1. Open PowerShell in the project directory.
-2. Run the provided build script:
-   ```powershell
-   powershell -ExecutionPolicy Bypass -File latex_templates/build.ps1 -File your_file.tex
-   ```
-   *Note: This script uses `latexmk` for a reliable multi-pass build and automatic cleanup.*
-
+**Voor meer technical details:** zie [AGENTS.md](AGENTS.md)
