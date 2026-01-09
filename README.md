@@ -10,20 +10,18 @@ Een gezamenlijk project voor het maken van professionele, gedetailleerde samenva
 
 ### Systeem Setup (eenmalig)
 
-1. **LaTeX installeren** (kies één):
+1. **LaTeX installeren**:
 
-   **Option A: TeX Live (aanbevolen)**
-   - Windows: Download [TeX Live](https://tug.org/texlive/) of via Chocolatey:
-     ```powershell
-     choco install texlive-full
-     ```
-   - Controleer: `pdflatex --version`
 
    **Option B: MikTeX (lighter weight)**
    - Download [MikTeX installer](https://miktex.org/download)
    - Of via Chocolatey:
      ```powershell
      choco install miktex
+     ```
+      - Of via winget
+          ```powershell
+     winget install miktex
      ```
    - During setup, enable "Install missing packages on-the-fly"
 
