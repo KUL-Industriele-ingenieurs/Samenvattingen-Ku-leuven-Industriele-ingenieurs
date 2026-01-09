@@ -1,0 +1,613 @@
+% school-macros.sty
+% Unified macros for KU Leuven engineering course documents
+% Version 2.0 - Optimized following LaTeX best practices
+%
+% Features: Formula collection (\frm), Symbol registration (\sym), 
+%           Themed boxes, siunitx integration, Dutch localization
+%
+% Usage: \usepackage{school-macros}
+% Note: Compile twice for formularium and symbol list
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{school-macros}[2026/01/09 v2.0 KU Leuven School Macros]
+
+% ============================================================================
+%                              PACKAGE LOADING
+% ============================================================================
+% Packages are grouped by function and loaded in optimal order.
+% hyperref and cleveref are loaded last as required.
+
+% --- Encoding & Language ---
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+\RequirePackage[dutch]{babel}
+
+% --- Fonts & Typography ---
+\RequirePackage{lmodern}
+\RequirePackage{microtype}  % Improved text appearance
+\RequirePackage{parskip}    % Paragraph spacing instead of indent
+
+% --- Math (mathtools extends amsmath) ---
+\RequirePackage{mathtools}
+\RequirePackage{amssymb}
+\RequirePackage{amsthm}
+
+% --- Units & Numbers (siunitx for consistent formatting) ---
+\RequirePackage{siunitx}
+\sisetup{
+    locale = DE,                    % European number format (comma decimal)
+    per-mode = symbol,              % Use / for per
+    separate-uncertainty = true,    % Show uncertainty separately
+    output-decimal-marker = {,},    % Dutch decimal comma
+    group-separator = {\,},         % Thin space for thousands
+}
+
+% --- Tables ---
+\RequirePackage{array}
+\RequirePackage{tabularx}
+\RequirePackage{booktabs}
+
+% --- Graphics & Floats ---
+\RequirePackage{graphicx}
+\RequirePackage{float}
+\RequirePackage{caption}
+\RequirePackage{subcaption}
+\RequirePackage{placeins}
+
+% --- Colors ---
+\RequirePackage{xcolor}
+
+% --- Boxes (tcolorbox with libraries) ---
+\RequirePackage[breakable, skins]{tcolorbox}
+
+% --- Lists ---
+\RequirePackage{enumitem}
+
+% --- Code Listings ---
+\RequirePackage{listings}
+
+% --- Layout ---
+\RequirePackage{geometry}
+\RequirePackage{fancyhdr}
+\RequirePackage{titlesec}
+\RequirePackage{multicol}
+
+% --- Utilities ---
+\RequirePackage{etoolbox}
+\RequirePackage{xstring}
+\RequirePackage{ifthen}
+
+% --- Chemistry ---
+\RequirePackage[version=4]{mhchem}
+
+% --- Euro Symbol Support ---
+\RequirePackage{textcomp}
+\RequirePackage{newunicodechar}
+
+% --- Graphics & Plots ---
+\RequirePackage{tikz}
+\RequirePackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{arrows.meta, positioning, calc, patterns, shapes.geometric}
+
+% --- Bibliography (BibLaTeX for Zotero integration) ---
+% NOTE: Users should add \addbibresource{references.bib} in their document preamble
+% and \printbibliography at the end. Export from Zotero as BibLaTeX.
+\RequirePackage[
+    backend=biber,
+    style=numeric,
+    sorting=none,
+    maxbibnames=3,
+    minbibnames=1,
+    maxcitenames=2,
+    mincitenames=1,
+    doi=false,
+    isbn=false,
+    url=true,
+    eprint=false,
+]{biblatex}
+
+% --- Hyperlinks (load near last, after biblatex) ---
+\RequirePackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,        % TOC and internal links in black
+    urlcolor=schoolBlue,
+    citecolor=schoolBlue,
+}
+
+% --- Smart References (load after hyperref) ---
+\RequirePackage[dutch, nameinlink]{cleveref}
+% Dutch cleveref names
+\crefname{equation}{vergelijking}{vergelijkingen}
+\Crefname{equation}{Vergelijking}{Vergelijkingen}
+\crefname{figure}{figuur}{figuren}
+\Crefname{figure}{Figuur}{Figuren}
+\crefname{table}{tabel}{tabellen}
+\Crefname{table}{Tabel}{Tabellen}
+\crefname{section}{sectie}{secties}
+\Crefname{section}{Sectie}{Secties}
+\crefname{chapter}{hoofdstuk}{hoofdstukken}
+\Crefname{chapter}{Hoofdstuk}{Hoofdstukken}
+
+% ============================================================================
+%                              EURO SYMBOL FIX
+% ============================================================================
+\newcommand*{\EuroSymbol}{\ifmmode\text{\texteuro}\else\texteuro\fi}
+\newunicodechar{€}{\EuroSymbol}
+
+% ============================================================================
+%                                 COLORS
+% ============================================================================
+% KU Leuven inspired color palette
+\definecolor{schoolBlue}{RGB}{41,98,155}      % Primary blue
+\definecolor{schoolRed}{RGB}{180,40,40}       % Warning/important
+\definecolor{schoolOrange}{RGB}{230,126,34}   % Notes/highlights
+\definecolor{schoolGray}{RGB}{100,100,100}    % Neutral
+\definecolor{schoolGreen}{RGB}{39,174,96}     % Success/exercises
+
+% Formula box colors (user-redefinable)
+\newcommand*{\frmBoxBack}{blue!5}
+\newcommand*{\frmBoxFrame}{blue!40}
+\newcommand*{\frmBoxRule}{0.5pt}
+\newcommand*{\frmBoxArc}{3pt}
+\newcommand*{\frmBoxSep}{4pt}
+
+% ============================================================================
+%                              PAGE LAYOUT
+% ============================================================================
+\geometry{left=2.5cm, right=2.5cm, top=3cm, bottom=3cm}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\nouppercase{\leftmark}}
+\fancyhead[R]{\small\thepage}
+\renewcommand{\headrulewidth}{0.2pt}
+
+% Section styling with underlines
+\titleformat{\chapter}[hang]{\normalfont\huge\bfseries\color{black}}{\thechapter}{1em}{}[\titlerule]
+\titlespacing*{\chapter}{0pt}{0pt}{20pt}
+\titleformat{\section}[hang]{\normalfont\Large\bfseries\color{black}}{\thesection}{1em}{}[\titlerule]
+\titlespacing*{\section}{0pt}{15pt}{10pt}
+\titleformat{\subsection}[hang]{\normalfont\large\bfseries\color{black}}{\thesubsection}{1em}{}
+\titlespacing*{\subsection}{0pt}{10pt}{5pt}
+
+% Remove forced page breaks for chapters (useful for summaries)
+\makeatletter
+\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
+\makeatother
+
+% ============================================================================
+%                            TEXT EMPHASIS
+% ============================================================================
+% Semantic macros for consistent styling
+\newcommand*{\concept}[1]{\textcolor{schoolBlue}{\textbf{#1}}}     % New concepts
+\newcommand*{\belangrijk}[1]{\textcolor{schoolRed}{\textbf{#1}}}   % Important items
+\newcommand*{\keyterm}[1]{\textbf{\color{blue!70!black}#1}}        % Key terms inline
+
+% ============================================================================
+%                           TCOLORBOX STYLES
+% ============================================================================
+% Clean, minimal box styles - white background with colored left border only
+% Less intrusive while maintaining visual distinction
+
+\tcbset{
+    % Base style for all school boxes - minimal with left accent bar only
+    schoolbase/.style={
+        blanker,
+        breakable,
+        left=12pt,
+        right=8pt,
+        top=8pt,
+        bottom=8pt,
+        borderline west={3pt}{0pt}{schoolBlue},
+        before skip=10pt,
+        after skip=10pt,
+        fonttitle=\bfseries\color{schoolBlue},
+        before upper={\parindent0pt},
+    },
+    % Concept/definition box (blue accent)
+    conceptstyle/.style={
+        schoolbase,
+        borderline west={3pt}{0pt}{schoolBlue},
+        fonttitle=\bfseries\color{schoolBlue},
+    },
+    % Warning box (red accent)
+    warningstyle/.style={
+        schoolbase,
+        borderline west={3pt}{0pt}{schoolRed},
+        fonttitle=\bfseries\color{schoolRed},
+    },
+    % Exercise box (green accent)
+    exercisestyle/.style={
+        schoolbase,
+        borderline west={3pt}{0pt}{schoolGreen},
+        fonttitle=\bfseries\color{schoolGreen},
+    },
+    % Theory box (purple accent)
+    theorystyle/.style={
+        schoolbase,
+        borderline west={3pt}{0pt}{violet!70!black},
+        fonttitle=\bfseries\color{violet!70!black},
+    },
+    % Example box (orange accent)
+    examplestyle/.style={
+        schoolbase,
+        borderline west={3pt}{0pt}{schoolOrange},
+        fonttitle=\bfseries\color{schoolOrange},
+    },
+    % Symbol introduction box
+    symbolstyle/.style={
+        blanker,
+        left=8pt,
+        right=8pt,
+        top=4pt,
+        bottom=4pt,
+        borderline west={2pt}{0pt}{schoolGray!60},
+        before skip=6pt,
+        after skip=6pt,
+    },
+    % BACKWARD COMPATIBILITY: old style name alias
+    schoolstyle/.style={schoolbase},
+}
+
+% ============================================================================
+%                               BOX ENVIRONMENTS
+% ============================================================================
+
+% Exam tip - compact inline style
+\newenvironment{examenbox}[1][]{%
+    \par\vspace{0.5\baselineskip}%
+    \noindent\keyterm{EXAMENTIP:} \itshape
+}{%
+    \par\vspace{0.5\baselineskip}%
+}
+
+% Concept definition box
+\newtcolorbox{conceptbox}[1][]{conceptstyle, #1}
+
+% Warning box
+\newtcolorbox{warningbox}[1][]{warningstyle, #1}
+
+% Exercise box (oefenblok)
+\newtcolorbox{oefenblok}[1][]{exercisestyle, #1}
+
+% Theory box (theorieblok) - NEW
+\newtcolorbox{theorieblok}[1][]{theorystyle, #1}
+
+% Example box (voorbeeld) - NEW  
+\newtcolorbox{voorbeeld}[1][]{examplestyle, #1}
+
+% ============================================================================
+%                           FORMULA SYSTEM (\frm)
+% ============================================================================
+% Automatically collects formulas for formularium appendix
+% Usage: \frm{Label}{math}{description}
+% Requires two compilations
+%
+% Formulas are grouped by SECTION (not chapter) for better organization
+% in article-class documents.
+
+\newcommand*{\FormulariumSections}{}
+\newcounter{FormulariumEntryCounter}
+\newcounter{FormulariumSectionCounter}
+
+\makeatletter
+% Track current section for formula grouping
+\newcommand*{\@currentFormulariumSection}{0}
+
+% Hook into section to track section numbers
+\let\@oldsection\section
+\renewcommand{\section}{\@ifstar{\@ssection}{\@nsection}}
+\newcommand{\@nsection}[1]{%
+    \stepcounter{FormulariumSectionCounter}%
+    \xdef\@currentFormulariumSection{\theFormulariumSectionCounter}%
+    \@oldsection{#1}%
+}
+\newcommand{\@ssection}[1]{\@oldsection*{#1}}
+
+\newcommand{\addformulariumentry}[5]{%
+    % #1=section, #2=label, #3=math, #4=description, #5=counter
+    \ifinlist{#1}{\FormulariumSections}{}{%
+        \listgadd{\FormulariumSections}{#1}%
+        \global\csdef{SectionFormulas@#1}{}%
+        \global\csdef{SectionTitle@#1}{}%
+    }%
+    \csxappto{SectionFormulas@#1}{%
+        % Formula card entry with clear visual separation
+        \noexpand\formulariumcard{#2}{\unexpanded{#3}}{\unexpanded{#4}}{#5}%
+    }%
+}
+
+% Individual formula card in formularium - visually distinct
+\newcommand{\formulariumcard}[4]{%
+    % #1=label, #2=math, #3=description, #4=ref counter
+    \begin{tcolorbox}[
+        enhanced,
+        colback=gray!3,
+        colframe=schoolBlue!40,
+        boxrule=0.3pt,
+        leftrule=2pt,
+        arc=2pt,
+        left=6pt, right=6pt, top=4pt, bottom=4pt,
+        before skip=4pt,
+        after skip=4pt,
+        fontupper=\small,
+    ]
+        \textbf{#1} \hfill {\scriptsize\textcolor{schoolGray}{\hyperref[frm:#4]{p.~\pageref{frm:#4}}}}\\[2pt]
+        {\centering $\displaystyle #2$\par}
+        \vspace{2pt}
+        {\footnotesize\textcolor{schoolGray}{#3}}
+    \end{tcolorbox}%
+}
+
+\newcommand{\frm}[3]{%
+    \stepcounter{FormulariumEntryCounter}%
+    \begin{tcolorbox}[
+        breakable,
+        colback=\frmBoxBack,
+        colframe=\frmBoxFrame,
+        boxrule=\frmBoxRule,
+        leftrule=3pt,
+        arc=\frmBoxArc,
+        boxsep=\frmBoxSep,
+        left=6pt, right=6pt, top=4pt, bottom=4pt,
+        before skip=10pt,
+        after skip=10pt
+    ]
+        \textbf{#1:}\par
+        \vspace{2pt}
+        {\centering\large $\displaystyle #2$\par}
+        \vspace{4pt}
+        {\footnotesize\itshape #3}\label{frm:\theFormulariumEntryCounter}%
+    \end{tcolorbox}%
+    % Store with current section number
+    \protected@write\@auxout{}{\string\addformulariumentry{\@currentFormulariumSection}{\unexpanded{#1}}{\unexpanded{#2}}{\unexpanded{#3}}{\theFormulariumEntryCounter}}%
+}
+
+\newcommand*{\printSectionFormulas}[1]{%
+    % Print formulas for section #1 with visual header
+    \ifnum#1>0
+        \par\vspace{6pt}
+        \noindent\textcolor{schoolBlue}{\rule{0.3\linewidth}{1pt}}%
+        \hspace{0.5em}{\small\bfseries\textcolor{schoolBlue}{Sectie #1}}\hspace{0.5em}%
+        \textcolor{schoolBlue}{\rule{0.3\linewidth}{1pt}}%
+        \par\vspace{4pt}
+    \fi
+    \csuse{SectionFormulas@#1}%
+}
+
+\newcommand*{\printformularium}{%
+    \par
+    \@ifundefined{chapter}{\section*{Formularium}}{\chapter*{Formularium}}%
+    \ifdefempty{\FormulariumSections}{%
+        \noindent\textit{Nog geen formules geregistreerd. Compileer tweemaal.}%
+    }{%
+        \forlistloop{\printSectionFormulas}{\FormulariumSections}%
+    }%
+    \par
+}
+
+% Alternative: print formularium in two columns (for simple/short formulas)
+\newcommand*{\printformulariumtwocol}{%
+    \par
+    \@ifundefined{chapter}{\section*{Formularium}}{\chapter*{Formularium}}%
+    \ifdefempty{\FormulariumSections}{%
+        \noindent\textit{Nog geen formules geregistreerd. Compileer tweemaal.}%
+    }{%
+        \begin{multicols}{2}
+        \forlistloop{\printSectionFormulas}{\FormulariumSections}%
+        \end{multicols}
+    }%
+    \par
+}
+\makeatother
+
+% ============================================================================
+%                           SYMBOL SYSTEM (\sym)
+% ============================================================================
+% Registers symbols at first use, generates symbol list
+% Usage: \sym{symbol}{description}{unit}
+
+\newcommand*{\SymbolList}{}
+
+\makeatletter
+\newcommand{\symentry}[3]{\g@addto@macro\SymbolList{$#1$ & #2 & \si{#3}\\}}
+\newcommand{\symwrite}[3]{\protected@write\@auxout{}{\string\symentry{#1}{#2}{#3}}}
+
+\newcommand{\sym}[3]{%
+    \expandafter\ifx\csname sym@seen@#1\endcsname\relax
+        \expandafter\gdef\csname sym@seen@#1\endcsname{}%
+        \begin{tcolorbox}[symbolstyle]
+            \textbf{\ensuremath{#1}} --- #2 \hfill {\footnotesize\textcolor{schoolGray}{\si{#3}}}
+        \end{tcolorbox}%
+        \symwrite{#1}{#2}{#3}%
+    \else
+        \textbf{\ensuremath{#1}}%
+    \fi
+}
+
+\newcommand*{\printsymbols}{%
+    \par
+    \@ifundefined{chapter}{\section*{Symbolenlijst}}{\chapter*{Symbolenlijst}}%
+    \begin{tabularx}{\textwidth}{l X l}
+        \toprule
+        \textbf{Symbool} & \textbf{Beschrijving} & \textbf{Eenheid} \\
+        \midrule
+        \SymbolList
+        \bottomrule
+    \end{tabularx}\par
+}
+\makeatother
+
+% ============================================================================
+%                              FIGURES
+% ============================================================================
+% Quick figure insertion macros
+
+% Full control: \fig[width]{path}{caption}{label}
+\newcommand*{\fig}[4][0.8\linewidth]{%
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=#1]{#2}
+        \caption{#3}\label{#4}
+    \end{figure}%
+}
+
+% Auto-label: \autofig[width]{path}{caption}
+\newcommand*{\autofig}[3][0.8\linewidth]{%
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=#1]{#2}
+        \caption{#3}%
+    \end{figure}%
+}
+
+% Simplest: \img{path}{caption}
+\newcommand*{\img}[2]{\autofig{#1}{#2}}
+
+% ============================================================================
+%                           MATH SHORTCUTS
+% ============================================================================
+
+% --- Differentials ---
+\newcommand*{\diff}{\mathrm{d}}
+\newcommand*{\dx}{\diff x}
+\newcommand*{\dy}{\diff y}
+\newcommand*{\dt}{\diff t}
+\newcommand*{\dV}{\diff V}
+
+% --- Derivatives ---
+\newcommand*{\dd}[2]{\frac{\diff #1}{\diff #2}}
+\newcommand*{\ddn}[3]{\frac{\diff^{#3} #1}{\diff #2^{#3}}}
+\newcommand*{\pd}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand*{\pdn}[3]{\frac{\partial^{#3} #1}{\partial #2^{#3}}}
+
+% --- Vectors & Matrices ---
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand*{\uvec}[1]{\hat{\mathbf{#1}}}
+\newcommand*{\mat}[1]{\mathbf{#1}}
+
+% --- Number Sets ---
+\newcommand*{\RR}{\mathbb{R}}
+\newcommand*{\NN}{\mathbb{N}}
+\newcommand*{\ZZ}{\mathbb{Z}}
+\newcommand*{\QQ}{\mathbb{Q}}
+\newcommand*{\CC}{\mathbb{C}}
+
+% --- Brackets (auto-scaling) ---
+\newcommand*{\abs}[1]{\left|#1\right|}
+\newcommand*{\norm}[1]{\left\|#1\right\|}
+\newcommand*{\paren}[1]{\left(#1\right)}
+\newcommand*{\bracket}[1]{\left[#1\right]}
+\newcommand*{\curlybrace}[1]{\left\{#1\right\}}
+\newcommand*{\avg}[1]{\left\langle#1\right\rangle}
+
+% --- Quick Fractions ---
+\newcommand*{\half}{\frac{1}{2}}
+\newcommand*{\third}{\frac{1}{3}}
+\newcommand*{\quarter}{\frac{1}{4}}
+
+% --- Boxed Equations ---
+\newcommand*{\eqbox}[1]{\boxed{#1}}
+
+% ============================================================================
+%                          CROSS-REFERENCES
+% ============================================================================
+% Legacy macros (kept for backward compatibility)
+% Prefer using \cref{} from cleveref package instead
+
+\newcommand*{\eqnref}[1]{vergelijking~\eqref{#1}}
+\newcommand*{\Eqnref}[1]{Vergelijking~\eqref{#1}}
+\newcommand*{\figref}[1]{figuur~\ref{#1}}
+\newcommand*{\Figref}[1]{Figuur~\ref{#1}}
+\newcommand*{\tabref}[1]{tabel~\ref{#1}}
+\newcommand*{\Tabref}[1]{Tabel~\ref{#1}}
+\newcommand*{\secref}[1]{sectie~\ref{#1}}
+\newcommand*{\Secref}[1]{Sectie~\ref{#1}}
+
+% ============================================================================
+%                           CODE LISTINGS
+% ============================================================================
+\lstset{
+    basicstyle=\ttfamily\footnotesize,
+    breaklines=true,
+    breakatwhitespace=false,
+    numbers=left,
+    numberstyle=\tiny\color{schoolGray},
+    numbersep=5pt,
+    frame=single,
+    frameround=tttt,
+    rulecolor=\color{schoolGray!40},
+    backgroundcolor=\color{gray!5},
+    commentstyle=\color{schoolGreen!70},
+    keywordstyle=\color{schoolBlue},
+    stringstyle=\color{schoolRed},
+    showstringspaces=false,
+    tabsize=4,
+    captionpos=b
+}
+
+% ============================================================================
+%                        THEOREM ENVIRONMENTS
+% ============================================================================
+\theoremstyle{definition}
+\newtheorem{stelling}{Stelling}
+\newtheorem{definitie}{Definitie}
+
+\theoremstyle{remark}
+\newtheorem*{opmerking}{Opmerking}
+
+% ============================================================================
+%                          UTILITY MACROS
+% ============================================================================
+
+% Equation with description box
+\newcommand*{\eqnbox}[2]{%
+    \begin{center}
+        \fbox{\parbox{0.9\textwidth}{%
+            \centering
+            $\displaystyle #1$\\[2pt]
+            {\footnotesize\itshape #2}%
+        }}
+    \end{center}
+}
+
+% Inline fraction
+\newcommand*{\ifrac}[2]{#1/#2}
+
+% Degree symbol (use \ang{} from siunitx for angles)
+\newcommand*{\degree}{^\circ}
+
+% ============================================================================
+%                         WORKFLOW HELPERS
+% ============================================================================
+\newcommand*{\TODO}[1]{\textcolor{red}{\textbf{[TODO: #1]}}}
+\newcommand*{\FIXME}[1]{\textcolor{red}{\textbf{[FIXME: #1]}}}
+\newcommand*{\NOTE}[1]{\textcolor{schoolOrange}{\textbf{[NOTE: #1]}}}
+\newcommand*{\citeme}{\textcolor{red}{[CITATIE NODIG]}}
+
+% ============================================================================
+%                      KU LEUVEN TITLE PAGE HELPER
+% ============================================================================
+% Optional KU Leuven styled title page
+\newcommand*{\kuleuventitle}[4]{%
+    % #1 = title, #2 = subtitle/course, #3 = author, #4 = date
+    \begin{titlepage}
+        \centering
+        \vspace*{2cm}
+        {\Huge\bfseries #1\par}
+        \vspace{0.5cm}
+        {\Large #2\par}
+        \vspace{2cm}
+        {\large #3\par}
+        \vspace{1cm}
+        {\large #4\par}
+        \vfill
+        {\large KU Leuven\par}
+        {\small Faculteit Industriële Ingenieurswetenschappen\par}
+    \end{titlepage}
+}
+
+\endinput
+

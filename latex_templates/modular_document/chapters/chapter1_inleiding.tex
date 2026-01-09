@@ -1,0 +1,51 @@
+% chapter1_inleiding.tex
+% Eerste hoofdstuk - Inleiding
+% Dit bestand wordt geladen via \include{chapters/chapter1_inleiding}
+
+\chapter{Inleiding}
+\label{ch:inleiding}
+
+Dit is een voorbeeld van een modulair LaTeX document. Door je document op te splitsen
+in meerdere bestanden wordt het makkelijker om te navigeren en te onderhouden.
+
+\section{Waarom modulair werken?}
+
+\begin{conceptbox}[title=Voordelen van modulaire documenten]
+\begin{itemize}
+    \item \textbf{Overzichtelijkheid}: Elk hoofdstuk in een apart bestand
+    \item \textbf{Snellere compilatie}: Met \verb|\includeonly{}| alleen gewijzigde hoofdstukken compileren
+    \item \textbf{Samenwerking}: Meerdere auteurs kunnen aan verschillende hoofdstukken werken
+    \item \textbf{Herbruikbaarheid}: Hoofdstukken kunnen in andere documenten worden hergebruikt
+\end{itemize}
+\end{conceptbox}
+
+\section{Structuur van dit project}
+
+De mappenstructuur voor dit voorbeeld:
+\begin{verbatim}
+modular_document/
+|-- main.tex              % Hoofdbestand
+|-- school-macros.sty     % Gedeelde macro's (of symlink)
+|-- chapters/
+    |-- chapter1_inleiding.tex
+    |-- chapter2_theorie.tex
+    |-- chapter3_voorbeelden.tex
+\end{verbatim}
+
+\section{Hoe te compileren}
+
+\begin{oefenblok}[title=Compilatie instructies]
+\begin{enumerate}
+    \item Open \texttt{main.tex} in VS Code
+    \item Gebruik de LaTeX Workshop extensie of run:
+    \begin{verbatim}
+    latexmk -pdf main.tex
+    \end{verbatim}
+    \item Compileer \textbf{tweemaal} voor correcte referenties en formularium
+\end{enumerate}
+\end{oefenblok}
+
+\begin{examenbox}
+Bij grote documenten zoals een thesis is modulair werken essentieel. 
+Begin er vroeg mee om later problemen te vermijden.
+\end{examenbox}
