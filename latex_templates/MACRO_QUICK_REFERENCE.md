@@ -1,147 +1,205 @@
-# School-Macros Quick Reference
+# School-Macros Quick Reference v2.0
 
-## 📦 Box Macros
+> KU Leuven — Faculteit Industriële Ingenieurswetenschappen
 
-### Exam Tips
+## 🚀 Quick Start
+
 ```latex
-\begin{examenbox}
-Korte examentip zonder titel parameter
-\end{examenbox}
+\documentclass[a4paper,11pt]{article}
+\usepackage{school-macros}
+
+\begin{document}
+\kuleuventitle{Titel}{Vak}{Naam}{Datum}
+
+\section{Inhoud}
+% Je tekst hier...
+
+\appendix
+\printsymbols
+\printformularium
+\end{document}
 ```
 
-### Concept Definitions
+**⚠️ Compileer altijd tweemaal voor formularium en symbolenlijst!**
+
+---
+
+## 📄 Article vs Report
+
+| Feature | `article` | `report` |
+|---------|-----------|----------|
+| Top level | `\section{}` | `\chapter{}` |
+| Numbering | 1, 2, 3... | 1.1, 1.2, 2.1... |
+| Page breaks | None | Chapter starts new page |
+| Best for | 5-30 pages | 30+ pages |
+
+**Note:** Formularium groups by **section** in both classes.
+
+---
+
+## 📦 Box Environments
+
+| Environment | Color | Use For |
+|------------|-------|---------|
+| `conceptbox` | Blue | Definities, kernbegrippen |
+| `theorieblok` | Purple | Theoretische uitleg |
+| `oefenblok` | Green | Oefeningen met oplossingen |
+| `voorbeeld` | Orange | Praktijkvoorbeelden |
+| `warningbox` | Red | Waarschuwingen |
+| `examenbox` | Inline | Korte examentips |
+
+### Syntax
 ```latex
-\begin{conceptbox}[title=Definitie]
-Uitleg van een belangrijk concept.
-Grijze achtergrond met blauwe accent links.
+\begin{conceptbox}[title=Optionele Titel]
+Inhoud van de box...
 \end{conceptbox}
 ```
 
-### Warnings
+### Exam Box (compact)
 ```latex
-\begin{warningbox}
-Zonder titel parameter (geen titel-balk)
-\end{warningbox}
-
-\begin{warningbox}[title=Custom]
-Met aangepaste titel
-\end{warningbox}
+\begin{examenbox}
+Korte tip zonder titel
+\end{examenbox}
 ```
 
-### Exercises
-```latex
-\begin{oefenblok}
-Zonder titel parameter (geen titel-balk)
-\end{oefenblok}
+---
 
-\begin{oefenblok}[title=Custom Oefening]
-Met aangepaste titel (net als conceptbox)
-\end{oefenblok}
+## 📐 Formula System (`\frm`)
+
+Auto-collects formulas for appendix formularium. Grouped by **section** (not chapter).
+
+```latex
+\frm{Label}{math}{description}
 ```
 
-## 📐 Formulas
-
-### Formula Box (auto-formularium)
+### Example
 ```latex
-\frm{Label}{math}{notes}
+\frm{Kinetische Energie}{E_k = \frac{1}{2}mv^2}
+    {waarbij $m$ de massa [\si{kg}] en $v$ de snelheid [\si{m/s}]}
 ```
-Voegt automatisch toe aan formularium.
 
-### Boxed Equation
+### Print Formularium
 ```latex
-\[ \boxed{E = mc^2} \]
-\[ \eqbox{F = ma} \]
+\printformularium      % Two-column layout (default)
+\printformulariumsingle  % Single-column (complex formulas)
 ```
+
+---
+
+## 🔤 Symbol System (`\sym`)
+
+Shows explanation on first use, just symbol afterwards.
+
+```latex
+\sym{symbol}{description}{unit}
+```
+
+### Example
+```latex
+\sym{v_c}{Snijsnelheid}{m/min}  % First use: full box
+\sym{v_c}{Snijsnelheid}{m/min}  % Later: just bold v_c
+```
+
+---
+
+## 📏 Units with siunitx (REQUIRED!)
+
+### Numbers with Units
+| Code | Result |
+|------|--------|
+| `\SI{50}{km/h}` | 50 km/h |
+| `\SI{9.81}{m/s^2}` | 9,81 m/s² |
+| `\SI{20}{\degreeCelsius}` | 20 °C |
+| `\SI{1.5}{kN}` | 1,5 kN |
+| `\SI{3e8}{m/s}` | 3×10⁸ m/s |
+
+### Numbers Only
+| Code | Result |
+|------|--------|
+| `\num{1234567}` | 1 234 567 |
+| `\num{3.14159}` | 3,14159 |
+| `\ang{45}` | 45° |
+
+### Unit Only (in equations)
+```latex
+$v = 100\,\si{m/s}$
+```
+
+---
 
 ## 🔢 Math Shortcuts
 
 ### Derivatives
-- `\dd{y}{x}` → dy/dx
-- `\ddn{y}{x}{2}` → d²y/dx²
-- `\pd{f}{x}` → ∂f/∂x  
-- `\pdn{f}{x}{2}` → ∂²f/∂x²
-- `\dx, \dy, \dt, \dv` → Differential elements
+| Macro | Output |
+|-------|--------|
+| `\dd{y}{x}` | dy/dx |
+| `\ddn{y}{x}{2}` | d²y/dx² |
+| `\pd{f}{x}` | ∂f/∂x |
+| `\pdn{f}{x}{2}` | ∂²f/∂x² |
+
+### Differentials
+`\dx`, `\dy`, `\dt`, `\dV` → for integrals
 
 ### Vectors & Matrices
-- `\vec{v}` → **v** (bold vector)
-- `\uvec{n}` → **n̂** (unit vector)
-- `\mat{A}` → **A** (matrix)
-
-### Brackets (auto-scaling)
-- `\abs{x}` → |x|
-- `\norm{v}` → ‖v‖
-- `\paren{...}` → (...)
-- `\bracket{...}` → [...]
-- `\curlybrace{...}` → {...}
-- `\avg{x}` → ⟨x⟩
-
-### Quick Fractions
-- `\half, \third, \quarter` → ½, ⅓, ¼
-- `\ifrac{1}{3}` → 1/3 (inline text)
+| Macro | Output |
+|-------|--------|
+| `\vec{v}` | **v** (bold) |
+| `\uvec{n}` | **n̂** (unit) |
+| `\mat{A}` | **A** (matrix) |
 
 ### Number Sets
-- `\RR, \NN, \ZZ, \QQ, \CC` → ℝ, ℕ, ℤ, ℚ, ℂ
+`\RR`, `\NN`, `\ZZ`, `\QQ`, `\CC` → ℝ, ℕ, ℤ, ℚ, ℂ
+
+### Auto-scaling Brackets
+| Macro | Output |
+|-------|--------|
+| `\abs{x}` | \|x\| |
+| `\norm{v}` | ‖v‖ |
+| `\paren{...}` | (...) |
+| `\bracket{...}` | [...] |
+| `\avg{x}` | ⟨x⟩ |
+
+### Quick Fractions
+`\half`, `\third`, `\quarter` → ½, ⅓, ¼
+
+---
+
+## 🔗 Cross-References (cleveref)
+
+### Modern Method (Recommended)
+```latex
+\cref{fig:label}     % → figuur 1
+\Cref{fig:label}     % → Figuur 1 (start of sentence)
+\cref{eq:a,eq:b}     % → vergelijkingen (1) en (2)
+```
+
+### Legacy (backward compatible)
+`\figref{}`, `\tabref{}`, `\eqnref{}`, `\secref{}`
+
+---
 
 ## 🎨 Text Emphasis
-- `\concept{text}` → Blue bold (new concepts)
-- `\belangrijk{text}` → Red bold (important items)
-- `\keyterm{text}` → Blue accent (key terms)
+
+| Macro | Output | Use For |
+|-------|--------|---------|
+| `\concept{text}` | Blue bold | New concepts |
+| `\belangrijk{text}` | Red bold | Important items |
+| `\keyterm{text}` | Blue accent | Key terms |
+
+---
 
 ## 📊 Figures
+
 ```latex
-\fig[width]{path}{caption}{label}
-\autofig[width]{path}{caption}  % auto-label
-\img{path}{caption}             % simplest
+\fig[width]{path}{caption}{label}     % Full control
+\autofig[width]{path}{caption}        % Auto label
+\img{path}{caption}                   % Simplest
 ```
 
-## 🔤 Symbols
-```latex
-\sym{v_c}{Snijsnelheid}{m/min}
-```
-First use: shows full explanation box  
-Later: just the symbol
+---
 
-## 🔗 Cross-References (Dutch)
-- `\eqnref{eq:label}` / `\Eqnref{eq:label}` → vergelijking (1)
-- `\figref{fig:label}` / `\Figref{fig:label}` → figuur 1
-- `\tabref{tab:label}` / `\Tabref{tab:label}` → tabel 1
-- `\secref{sec:label}` / `\Secref{sec:label}` → sectie 1.2
+## 📋 Tables
 
-## 🛠️ Utility
-- `\TODO{text}` → Red TODO marker
-- `\FIXME{text}` → Red FIXME marker
-- `\NOTE{text}` → Orange NOTE marker
-- `\degree` → ° (degree symbol)
-
-## 📋 Lists
-
-### Bullet List
-```latex
-\begin{itemize}
-    \item First
-    \item Second
-\end{itemize}
-```
-
-### Numbered List
-```latex
-\begin{enumerate}
-    \item First
-    \item Second
-\end{enumerate}
-```
-
-### Description List
-```latex
-\begin{description}
-    \item[Term] Definition
-    \item[Another] Description
-\end{description}
-```
-
-## 📊 Tables
-
-### Standard Table
 ```latex
 \begin{table}[H]
 \centering
@@ -150,136 +208,153 @@ Later: just the symbol
 \toprule
 \textbf{Col1} & \textbf{Col2} & \textbf{Col3} \\
 \midrule
-Data & Data & Data \\
+Data & \num{123} & \SI{45}{kg} \\
 \bottomrule
 \end{tabular}
 \end{table}
 ```
 
-### Full-width with Text Wrap
-```latex
-\begin{tabularx}{\linewidth}{l X}
-\toprule
-\textbf{Term} & \textbf{Long text wraps automatically} \\
-\midrule
-... & ... \\
-\bottomrule
-\end{tabularx}
-```
+---
 
-## 📈 Graphs (TikZ/PGFPlots)
+## 📈 Plots (PGFPlots)
 
-### Function Plot
-```latex
-\begin{tikzpicture}
-\begin{axis}[xlabel={$x$}, ylabel={$f(x)$}, grid=major]
-\addplot[blue, thick, domain=0:4] {x^2};
-\addlegendentry{$f(x) = x^2$}
-\end{axis}
-\end{tikzpicture}
-```
-
-### Data Plot
-```latex
-\begin{axis}[...]
-\addplot[mark=*] coordinates {
-    (0,0) (1,2) (2,4) (3,6)
-};
-\end{axis}
-```
-
-## 📄 Document Template
-
-```latex
-\documentclass[a4paper,11pt]{article}
-\usepackage{school-macros}
-
-\title{Document Title}
-\author{Your Name}
-\date{\today}
-
-\begin{document}
-\maketitle
-\tableofcontents
-\newpage
-
-\section{Introduction}
-% Content here
-
-\appendix
-\printsymbols
-\printformularium
-\end{document}
-```
-
-## ⚡ Workflow Tips
-
-1. **Compile twice** for formularium & symbol list
-2. Use `\frm` for all important formulas
-3. Use `\sym` at first mention of symbols
-4. Check `macro_usage_guide.tex` for complete examples
-5. Use `new_document_template.tex` as starting point
-\end{axis}
-\end{tikzpicture}
-```
-
-### Data Plot
 ```latex
 \begin{tikzpicture}
 \begin{axis}[
-    xlabel={Time [s]},
-    ylabel={Speed [m/s]}
+    xlabel={$x$}, ylabel={$f(x)$},
+    grid=major
 ]
-\addplot[mark=*, blue] coordinates {
-    (0,0) (1,2) (2,4) (3,6)
-};
+\addplot[blue, thick, domain=0:4] {x^2};
 \end{axis}
 \end{tikzpicture}
 ```
 
-### Simple Diagram
-```latex
-\begin{tikzpicture}
-\draw[thick] (0,0) rectangle (2,1);
-\draw[thick, fill=blue!20] (3,0.5) circle (0.5);
-\draw[->, thick] (2,0.5) -- (2.5,0.5);
-\end{tikzpicture}
+---
+
+## 📁 Modular Documents
+
+For large projects, split into multiple files:
+
+```
+project/
+├── main.tex
+└── chapters/
+    ├── chapter1.tex
+    └── chapter2.tex
 ```
 
-## 🎯 Typical Workflow
-
+### main.tex
 ```latex
 \documentclass[a4paper,11pt]{report}
 \usepackage{school-macros}
-\usepackage{siunitx}
 
 \begin{document}
-
-\chapter{Chapter Title}
-
-\frm{Energy}{E = mc^2}{Energy-mass equivalence}
-\sym{v}{Velocity}{m/s}
-
-\begin{examenbox}
-Important exam tip...
-\end{examenbox}
-
-\begin{oefenblok}
-Exercise content...
-\end{oefenblok}
+\include{chapters/chapter1}
+\include{chapters/chapter2}
 
 \appendix
 \printsymbols
 \printformularium
-
 \end{document}
 ```
 
-## ⚡ Remember
-1. **Compile twice** for formularium and symbol list
-2. Use `\frm` for all important formulas
-3. Use `\sym` on first mention of symbols
-4. Always use `\SI{value}{unit}` for units
+See `latex_templates/modular_document/` for complete example.
 
 ---
-**That's it! Simple, clean, effective.**
+
+## 📚 Zotero / BibLaTeX Integration
+
+school-macros includes BibLaTeX for Zotero integration.
+
+### Setup
+1. Install **Better BibTeX** in Zotero
+2. Export collection as **Better BibLaTeX** to `references.bib`
+3. Enable "Keep updated" for auto-sync
+
+### In Document
+```latex
+\documentclass{article}
+\usepackage{school-macros}
+\addbibresource{references.bib}
+
+\begin{document}
+According to \cite{einstein1905}...
+\printbibliography
+\end{document}
+```
+
+### Citation Commands
+| Code | Result |
+|------|--------|
+| `\cite{key}` | [1] |
+| `\parencite{key}` | (Einstein, 1905) |
+| `\textcite{key}` | Einstein (1905) |
+| `\footcite{key}` | Footnote |
+
+### Compile Order
+```bash
+pdflatex doc.tex && biber doc && pdflatex doc.tex && pdflatex doc.tex
+# Or just: latexmk -pdf doc.tex
+```
+
+---
+
+## 🛠️ Utility Macros
+
+```latex
+\TODO{text}     % Red TODO marker
+\FIXME{text}    % Red FIXME marker  
+\NOTE{text}     % Orange NOTE marker
+\citeme         % Citation needed marker
+```
+
+---
+
+## 🎓 KU Leuven Title Page
+
+```latex
+\kuleuventitle
+    {Document Titel}
+    {Vaknaam --- Vakcode}
+    {Jouw Naam}
+    {Academiejaar 2025-2026}
+```
+
+---
+
+## ❌ Common Mistakes
+
+| Wrong | Correct |
+|-------|---------|
+| `$$ E = mc^2 $$` | `\[ E = mc^2 \]` |
+| `50 m/s` | `\SI{50}{m/s}` |
+| `\bf text` | `\textbf{text}` |
+| `$sin(x)$` | `$\sin(x)$` |
+| `figuur 1` | `\cref{fig:label}` |
+| `eqnarray` | `align` |
+
+---
+
+## ⚡ Workflow Tips
+
+1. **Start with template**: Copy `new_document_template.tex`
+2. **Define symbols early**: Use `\sym{}` at first mention
+3. **Register formulas**: Use `\frm{}` for important equations
+4. **Compile twice**: For formularium and references
+5. **Use VS Code**: LaTeX Workshop extension auto-compiles on save
+
+---
+
+## 📚 Files in This Package
+
+| File | Description |
+|------|-------------|
+| `school-macros.sty` | Main package (root = canonical) |
+| `new_document_template.tex` | Clean starting point |
+| `macro_usage_guide.tex` | Full tutorial (compile to see examples) |
+| `modular_document/` | Multi-file document example |
+
+---
+
+**Version 2.0** — January 2026  
+Compatible with pdfLaTeX, includes siunitx, cleveref, mathtools

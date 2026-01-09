@@ -1,0 +1,65 @@
+% main.tex
+% Modular Document Example - Demonstrates \include for large projects
+% KU Leuven - Faculteit Industriële Ingenieurswetenschappen
+%
+% This template shows how to split a large document into multiple files.
+% Use this structure for thesis, large summaries, or multi-chapter documents.
+
+\documentclass[a4paper,11pt]{report}
+\usepackage{school-macros}
+
+% ============================================================================
+%                           DOCUMENT METADATA
+% ============================================================================
+\title{Modulair Document Voorbeeld}
+\author{Jouw Naam}
+\date{Academiejaar 2025-2026}
+
+% Optional: Define course info for headers
+\newcommand{\coursename}{Voorbeeldvak}
+\newcommand{\coursecode}{E00ABC}
+
+% ============================================================================
+%                              DOCUMENT
+% ============================================================================
+\begin{document}
+
+% --- Title Page (KU Leuven style) ---
+\kuleuventitle
+    {Modulair Document Voorbeeld}
+    {\coursecode\ --- \coursename}
+    {Jouw Naam}
+    {Academiejaar 2025-2026}
+
+% --- Front Matter ---
+\tableofcontents
+\newpage
+
+% ============================================================================
+%                           CHAPTER INCLUDES
+% ============================================================================
+% Use \include{} for chapters - each starts on a new page
+% Use \input{} for smaller sections that shouldn't force page breaks
+%
+% Benefits of \include:
+% - LaTeX can skip unchanged chapters (faster compilation)
+% - Each chapter can be compiled separately for testing
+% - Better organization for large projects
+%
+% Tip: Use \includeonly{chapter1,chapter2} in preamble to compile 
+%      only specific chapters while keeping all cross-references
+
+\include{chapters/chapter1_inleiding}
+\include{chapters/chapter2_theorie}
+\include{chapters/chapter3_voorbeelden}
+
+% ============================================================================
+%                              APPENDICES
+% ============================================================================
+\appendix
+
+% Symbol list and formularium are auto-generated
+\printsymbols
+\printformularium
+
+\end{document}

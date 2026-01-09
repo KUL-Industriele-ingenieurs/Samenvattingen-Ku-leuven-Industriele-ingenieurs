@@ -1,0 +1,68 @@
+% chapter2_theorie.tex
+% Tweede hoofdstuk - Theoretische achtergrond
+% Demonstreert formules, symbolen en siunitx
+
+\chapter{Theoretische Achtergrond}
+\label{ch:theorie}
+
+Dit hoofdstuk demonstreert het gebruik van formules, symbolen en eenheden.
+
+\section{Symbolen en Eenheden}
+
+Bij de eerste vermelding van een symbool gebruiken we \verb|\sym{}|:
+
+\sym{v}{Snelheid}{m/s}
+
+Later in de tekst verschijnt alleen het symbool: de \sym{v}{Snelheid}{m/s} van het object.
+
+\subsection{Eenheden met siunitx}
+
+\begin{theorieblok}[title=Correcte eenheden met siunitx]
+Gebruik \textbf{altijd} \verb|\SI{}{}| voor getallen met eenheden:
+\begin{itemize}
+    \item Snelheid: \verb|\SI{50}{km/h}| → \SI{50}{km/h}
+    \item Temperatuur: \verb|\SI{20}{\degreeCelsius}| → \SI{20}{\degreeCelsius}
+    \item Kracht: \verb|\SI{1.5}{kN}| → \SI{1.5}{kN}
+    \item Druk: \verb|\SI{101.325}{kPa}| → \SI{101.325}{kPa}
+\end{itemize}
+
+Voor getallen zonder eenheid: \verb|\num{1234567}| → \num{1234567}
+
+Voor hoeken: \verb|\ang{45}| → \ang{45}
+\end{theorieblok}
+
+\section{Formules}
+
+Elke belangrijke formule wordt geregistreerd met \verb|\frm{}{}{}|:
+
+\frm{Kinetische energie}{E_k = \frac{1}{2}mv^2}{waarbij $m$ de massa [\si{kg}] en $v$ de snelheid [\si{m/s}]}
+
+\frm{Potentiële energie}{E_p = mgh}{met $g = \SI{9.81}{m/s^2}$ en $h$ de hoogte [\si{m}]}
+
+\section{Wiskunde shortcuts}
+
+\subsection{Afgeleiden}
+
+De afgeleide notatie is vereenvoudigd:
+\begin{align}
+    \dd{y}{x} &= \lim_{\Delta x \to 0} \frac{\Delta y}{\Delta x} \\
+    \pd{f}{x} &= \text{partiële afgeleide} \\
+    \ddn{y}{x}{2} &= \text{tweede afgeleide}
+\end{align}
+
+\subsection{Vectoren en verzamelingen}
+
+\begin{itemize}
+    \item Vector: $\vec{F} = m\vec{a}$
+    \item Eenheidsvector: $\uvec{n}$
+    \item Reële getallen: $x \in \RR$
+    \item Complexe getallen: $z \in \CC$
+\end{itemize}
+
+\section{Cross-references met cleveref}
+
+Gebruik \verb|\cref{}| voor automatische Nederlandse referenties:
+\begin{itemize}
+    \item \verb|\cref{ch:inleiding}| → \cref{ch:inleiding}
+    \item \verb|\Cref{ch:theorie}| → \Cref{ch:theorie} (aan begin van zin)
+\end{itemize}
