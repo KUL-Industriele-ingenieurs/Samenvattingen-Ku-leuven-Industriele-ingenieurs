@@ -1,271 +1,441 @@
 % macro_usage_guide.tex
-% Complete overzicht van alle school-macros features
+% =============================================================================
+%                    LATEX TUTORIAL VOOR SAMENVATTINGEN
+%                    KU Leuven - School Macros Handleiding
+% =============================================================================
+% Dit document is zowel een tutorial als een referentie voor alle features
+% van het school-macros pakket. Het is bedoeld als leermiddel voor studenten
+% die LaTeX willen gebruiken voor hun cursussamenvattingen.
+%
+% Auteur: School-Macros Project
+% Versie: 2.0 (Januari 2026)
+% =============================================================================
 
 \documentclass[a4paper,11pt]{article}
 \usepackage{school-macros}
+\addbibresource{references.bib}
 
-\title{School Macros — Volledige Gids}
-\author{Macro Voorbeelden}
-\date{\today}
+% Custom title with KU Leuven branding
+\title{%
+    \vspace{-1cm}
+    {\Large KU Leuven --- Faculteit Industriële Ingenieurswetenschappen}\\[0.5cm]
+    {\Huge\bfseries LaTeX Tutorial}\\[0.3cm]
+    {\Large School Macros Handleiding v2.0}
+}
+\author{Voor studenten en docenten}
+\date{Academiejaar 2025-2026}
 
 \begin{document}
 
 \maketitle
+
+\begin{abstract}
+Deze handleiding is een praktische tutorial voor het gebruik van LaTeX bij het maken van
+cursussamenvattingen. LaTeX, oorspronkelijk ontwikkeld door \textcite{lamport1994} bovenop 
+\TeX{} van \textcite{knuth1984}, is de standaard voor wetenschappelijke documenten.
+Het behandelt zowel de basis van LaTeX als de geavanceerde features
+van het \texttt{school-macros} pakket. Voor een snelle introductie, zie ook \cite{overleaf2024}.
+\end{abstract}
+
 \tableofcontents
 \newpage
 
-\section{Box Macros}
+% =============================================================================
+\section{Snel aan de slag}
+% =============================================================================
 
-\subsection{Examenbox (Compact Stijl)}
+\subsection{Je eerste document}
+
+Een minimaal LaTeX document met school-macros ziet er als volgt uit:
+
+\begin{verbatim}
+\documentclass[a4paper,11pt]{article}
+\usepackage{school-macros}
+
+\title{Mijn Samenvatting}
+\author{Jouw Naam}
+\date{\today}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Inleiding}
+Hier begint je inhoud...
+
+\appendix
+\printsymbols
+\printformularium
+\end{document}
+\end{verbatim}
+
+\begin{warningbox}[title=Belangrijk: Compileer tweemaal!]
+Voor correcte werking van het formularium en de symbolenlijst moet je het document 
+\textbf{tweemaal compileren}. Bij de eerste compilatie worden de gegevens verzameld,
+bij de tweede worden ze weergegeven.
+\end{warningbox}
+
+\subsection{Document klassen: article vs report}
+
+\begin{conceptbox}[title=Welke documentclass kiezen?]
+\begin{description}[leftmargin=2.5cm]
+    \item[\texttt{article}] Voor korte documenten, samenvattingen \textbf{zonder} hoofdstukken
+    \item[\texttt{report}] Voor langere documenten \textbf{met} hoofdstukken (\verb|\chapter{}|)
+    \item[\texttt{book}] Voor thesis of boeken (dubbelzijdig, met delen)
+\end{description}
+\end{conceptbox}
+
+\begin{theorieblok}[title=Structuurverschillen article vs report]
+\textbf{article class:}
+\begin{itemize}[leftmargin=1.5cm]
+    \item Hoogste niveau: \verb|\section{}| (in TOC als hoofdniveau)
+    \item Geen \verb|\chapter{}| beschikbaar
+    \item Secties zijn doorlopend genummerd: 1, 2, 3, ...
+    \item Ideaal voor samenvattingen van 5--30 pagina's
+\end{itemize}
+
+\textbf{report class:}
+\begin{itemize}[leftmargin=1.5cm]
+    \item Hoogste niveau: \verb|\chapter{}| (in TOC als hoofdniveau)
+    \item Secties genummerd per chapter: 1.1, 1.2, 2.1, ...
+    \item Chapters starten op nieuwe pagina
+    \item Ideaal voor uitgebreide documenten 30+ pagina's
+\end{itemize}
+
+\textbf{Tip:} Het \texttt{school-macros} pakket werkt met beide. Het formularium 
+groepeert formules per \textbf{sectie}, ongeacht de documentclass.
+\end{theorieblok}
+
+% =============================================================================
+\section{Eenheden en Getallen met siunitx}
+\label{sec:siunitx}
+% =============================================================================
+
+Het \texttt{siunitx} pakket is \emph{verplicht} voor wetenschappelijke documenten.
+Het zorgt voor consistente opmaak van getallen en eenheden.
+
+\subsection{Basis gebruik}
+
+\begin{theorieblok}[title=De \textbackslash SI commando]
+\begin{tabular}{ll}
+\toprule
+\textbf{Code} & \textbf{Resultaat} \\
+\midrule
+\verb|\SI{50}{km/h}| & \SI{50}{km/h} \\
+\verb|\SI{9.81}{m/s^2}| & \SI{9.81}{m/s^2} \\
+\verb|\SI{20}{\degreeCelsius}| & \SI{20}{\degreeCelsius} \\
+\verb|\SI{1.5}{kN}| & \SI{1.5}{kN} \\
+\verb|\SI{101.325}{kPa}| & \SI{101.325}{kPa} \\
+\verb|\SI{3e8}{m/s}| & \SI{3e8}{m/s} \\
+\bottomrule
+\end{tabular}
+\end{theorieblok}
+
+\subsection{Getallen zonder eenheden}
+
+\begin{tabular}{ll}
+\toprule
+\textbf{Code} & \textbf{Resultaat} \\
+\midrule
+\verb|\num{1234567}| & \num{1234567} \\
+\verb|\num{3.14159}| & \num{3.14159} \\
+\verb|\num{1.23e-4}| & \num{1.23e-4} \\
+\verb|\ang{45}| & \ang{45} \\
+\verb|\ang{45;30;0}| & \ang{45;30;0} \\
+\bottomrule
+\end{tabular}
+
+\subsection{Eenheden in wiskundige context}
+
+In formules gebruik je \verb|\si{}| voor alleen de eenheid:
+\[ v = \SI{100}{m/s} \quad \text{of} \quad v = 100\,\si{m/s} \]
+
 \begin{examenbox}
-Dit is een examentip in compacte vorm. Gebruik dit voor korte, praktische tips voor examens.
-Let op: deze heeft geen titel parameter nodig.
+Gebruik \textbf{nooit} handmatig getypte eenheden zoals \verb|m/s| of \verb|kg|.
+Gebruik altijd siunitx voor consistente spatiëring en opmaak.
 \end{examenbox}
 
-\subsection{Conceptbox}
-\begin{conceptbox}[title=Belangrijke Definitie]
-\textbf{Snijsnelheid} ($v_c$): de omtrekssnelheid van het gereedschap ten opzichte van het werkstuk, gemeten in m/min.
+% =============================================================================
+\section{Box Omgevingen}
+\label{sec:boxes}
+% =============================================================================
 
-Conceptbox heeft een grijze achtergrond met blauwe accent links.
+Het school-macros pakket biedt verschillende gekleurde boxen voor verschillende doeleinden.
+Alle boxen zijn \emph{breakable} --- ze kunnen over meerdere pagina's lopen.
+
+\subsection{Conceptbox (Definities)}
+
+\begin{conceptbox}[title=Snijsnelheid]
+De \concept{snijsnelheid} ($v_c$) is de omtrekssnelheid van het gereedschap ten opzichte
+van het werkstuk, uitgedrukt in \si{m/min}.
 \end{conceptbox}
 
-\begin{conceptbox}
-Je kan ook een aangepaste titel gebruiken door [title=...] mee te geven.
+Code:
+\begin{verbatim}
+\begin{conceptbox}[title=Snijsnelheid]
+De \concept{snijsnelheid} ($v_c$) is de omtrekssnelheid...
 \end{conceptbox}
+\end{verbatim}
 
-\subsection{Warningbox}
-\begin{warningbox}
-Zonder titel parameter (geen titel-balk bovenaan).
-\end{warningbox}
+\subsection{Theorieblok (Theorie)}
 
-\begin{warningbox}[title=CUSTOM WAARSCHUWING]
-Je kan ook een aangepaste titel gebruiken door [title=...] mee te geven.
-\end{warningbox}
+\begin{theorieblok}[title=Energiebehoud]
+In een gesloten systeem zonder externe krachten blijft de totale mechanische energie behouden:
+\[ E_{totaal} = E_k + E_p = \text{constant} \]
+\end{theorieblok}
 
-\subsection{Oefenblok}
-\begin{oefenblok}
-Eenvoudige oefening zonder titel (geen titel-balk bovenaan).
+Code:
+\begin{verbatim}
+\begin{theorieblok}[title=Energiebehoud]
+In een gesloten systeem...
+\end{theorieblok}
+\end{verbatim}
 
-Bereken de snijsnelheid als het toerental $n = 1200$ rpm en de diameter $d = 50$ mm.
+\subsection{Oefenblok (Oefeningen)}
+
+\begin{oefenblok}[title=Oefening 1.1]
+\textbf{Gegeven:} $m = \SI{5}{kg}$, $v = \SI{10}{m/s}$
+
+\textbf{Gevraagd:} Bereken de kinetische energie.
 
 \textbf{Oplossing:}
-\[ v_c = \pi d n = \pi \times 0.05 \times 1200 = 188.5 \text{ m/min} \]
+\[ E_k = \frac{1}{2}mv^2 = \frac{1}{2} \times \SI{5}{kg} \times (\SI{10}{m/s})^2 = \SI{250}{J} \]
 \end{oefenblok}
 
-\begin{oefenblok}[title=Custom Oefening Titel]
-Je kan ook een aangepaste titel gebruiken, net zoals bij conceptbox.
-\end{oefenblok}
+\subsection{Voorbeeld (Praktijkvoorbeelden)}
 
-\section{Formule Macros}
+\begin{voorbeeld}[title=Praktisch voorbeeld: Fietser]
+Een fietser met massa \SI{80}{kg} rijdt met \SI{25}{km/h}. 
+De kinetische energie is:
+\[ v = \SI{25}{km/h} = \SI{6.94}{m/s} \]
+\[ E_k = \half \times 80 \times 6.94^2 = \SI{1930}{J} \approx \SI{1.9}{kJ} \]
+\end{voorbeeld}
 
-\subsection{Formula box (\textbackslash frm)}
-De \verb|\frm| macro creëert automatisch een formularium entry:
+\subsection{Warningbox (Waarschuwingen)}
 
-\frm{Snijsnelheid}{v_c = \pi d n}{waarbij $d$ de diameter in meter en $n$ het toerental in omw/min}
+\begin{warningbox}[title=Veelgemaakte fout]
+\belangrijk{Let op:} Vergeet niet om eenheden te converteren naar SI voordat je berekeningen maakt!
+\end{warningbox}
 
-\frm{Vermogen}{P = F_c \cdot v_c}{$F_c$ is de snijkracht in N, $v_c$ in m/s}
+\subsection{Examenbox (Compacte tips)}
 
-\frm{Kinetische Energie}{E_k = \frac{1}{2}mv^2}{waarbij $m$ de massa [kg] en $v$ de snelheid [m/s]}
+\begin{examenbox}
+Bij numerieke vragen: controleer altijd of je antwoord in de juiste orde van grootte ligt.
+\end{examenbox}
 
-\subsection{Boxed vergelijking}
-Voor belangrijke vergelijkingen in de tekst:
-\[ \eqbox{E = mc^2} \]
+% =============================================================================
+\section{Formules met \textbackslash frm}
+\label{sec:formulas}
+% =============================================================================
 
-Of gewoon:
-\[ \boxed{F = ma} \]
-
-\section{Text Emphasis}
-
-\begin{itemize}
-\item \verb|\concept{...}|: \concept{Dit is een belangrijk concept} (blauw, vet)
-\item \verb|\belangrijk{...}|: \belangrijk{Dit is een belangrijke waarschuwing} (rood, vet)
-\item \verb|\keyterm{...}|: \keyterm{Sleutelbegrip} (blauw accent)
-\end{itemize}
-
-\section{Math Shortcuts}
-
-\subsection{Differentialen}
-\begin{itemize}
-\item \verb|\diff|: $\diff x$ (differentiaal operator)
-\item \verb|\dx, \dy, \dt, \dv|: $\dx, \dy, \dt, \dv$ (voor integralen)
-\item \verb|\dd{y}{x}|: $\dd{y}{x}$ (gewone afgeleide)
-\item \verb|\ddn{y}{x}{2}|: $\ddn{y}{x}{2}$ (2e afgeleide)
-\item \verb|\pd{f}{x}|: $\pd{f}{x}$ (partiële afgeleide)
-\item \verb|\pdn{f}{x}{2}|: $\pdn{f}{x}{2}$ (2e partiële afgeleide)
-\end{itemize}
-
-Voorbeeld integraal:
-\[ \int_0^1 x^2 \, \dx = \left[\frac{x^3}{3}\right]_0^1 = \frac{1}{3} \]
-
-\subsection{Vectoren en Matrices}
-\begin{itemize}
-\item \verb|\vec{v}|: $\vec{v}$ (vector, vetgedrukt)
-\item \verb|\uvec{x}|: $\uvec{x}$ (eenheidsvector met hoedje)
-\item \verb|\mat{A}|: $\mat{A}$ (matrix)
-\end{itemize}
-
-Voorbeeld:
-\[ \vec{F} = m\vec{a} \quad \text{en} \quad \uvec{n} = \frac{\vec{v}}{\norm{\vec{v}}} \]
-
-\subsection{Verzamelingen}
-\begin{itemize}
-\item \verb|\RR|: $\RR$ (reële getallen)
-\item \verb|\NN|: $\NN$ (natuurlijke getallen)
-\item \verb|\ZZ|: $\ZZ$ (gehele getallen)
-\item \verb|\QQ|: $\QQ$ (rationale getallen)
-\item \verb|\CC|: $\CC$ (complexe getallen)
-\end{itemize}
-
-\subsection{Haakjes en Normen (Auto-scaling)}
-\begin{itemize}
-\item \verb|\abs{x}|: $\abs{x}$ (absolute waarde)
-\item \verb|\norm{v}|: $\norm{v}$ (norm)
-\item \verb|\paren{...}|: $\paren{\frac{a}{b}}$ (ronde haakjes)
-\item \verb|\bracket{...}|: $\bracket{\frac{a}{b}}$ (vierkante haakjes)
-\item \verb|\curlybrace{...}|: $\curlybrace{\frac{a}{b}}$ (accolades)
-\item \verb|\avg{...}|: $\avg{x}$ (gemiddelde)
-\end{itemize}
-
-\subsection{Snelle Breuken}
-\begin{itemize}
-\item \verb|\half|: $\half$
-\item \verb|\third|: $\third$  
-\item \verb|\quarter|: $\quarter$
-\item \verb|\ifrac{1}{3}|: \ifrac{1}{3} (inline text fraction: 1/3)
-\end{itemize}
-
-\section{Figuren}
-
-\subsection{Standaard figuur (\textbackslash fig)}
-Syntax: \verb|\fig[breedte]{pad}{onderschrift}{label}|
-
-Voorbeeld (uncomment om te gebruiken):
-\begin{verbatim}
-\fig[0.6\linewidth]{image.png}{Een voorbeeld figuur}{fig:example}
-\end{verbatim}
-
-\subsection{Auto figuur (\textbackslash autofig)}
-Genereert automatisch een label gebaseerd op de bestandsnaam:
-\begin{verbatim}
-\autofig[0.5\linewidth]{path/to/image.png}{Caption text}
-\end{verbatim}
-
-\subsection{Simpel image (\textbackslash img)}
-Nog eenvoudiger - alleen pad en caption:
-\begin{verbatim}
-\img{path/to/image.png}{Caption}
-\end{verbatim}
-
-\section{Symbolen}
-
-\subsection{Symbol registratie (\textbackslash sym)}
-Bij eerste gebruik toont \verb|\sym| een box met uitleg:
-
-\sym{v_c}{Snijsnelheid}{m/min}
-\sym{F_c}{Snijkracht}{N}
-\sym{P}{Vermogen}{W}
-\sym{omega}{Hoeksnelheid}{rad/s}
-
-Later in de tekst gebruik je gewoon het symbool: $v_c = 100$ m/min, $F_c = 500$ N.
-
-Tweede gebruik toont alleen het symbool: \sym{v_c}{Snijsnelheid}{m/min}
-
-\section{Cross-References (Nederlands)}
-
-\begin{itemize}
-\item \verb|\eqnref{eq:label}|: \eqnref{eq:example} (verwijzing naar vergelijking)
-\item \verb|\Eqnref{eq:label}|: \Eqnref{eq:example} (aan begin van zin)
-\item \verb|\figref{fig:label}|: verwijzing naar figuur
-\item \verb|\Figref{fig:label}|: Figuur aan begin van zin
-\item \verb|\tabref{tab:label}|: verwijzing naar tabel
-\item \verb|\Tabref{tab:label}|: Tabel aan begin van zin
-\item \verb|\secref{sec:label}|: verwijzing naar sectie
-\item \verb|\Secref{sec:label}|: Sectie aan begin van zin
-\end{itemize}
-
-Voorbeeld vergelijking met label:
-\begin{equation}\label{eq:example}
-E = mc^2
-\end{equation}
-
-\section{Utility Macros}
-
-\subsection{TODO markers}
-\TODO{Voeg hier meer voorbeelden toe}
-
-\FIXME{Controleer deze berekening}
-
-\NOTE{Belangrijk om te onthouden voor het examen}
-
-\subsection{Degree symbool}
-Gebruik \verb|\degree| voor graden: $45\degree$, $90\degree$
-
-\section{Lists met enumitem}
-
-\subsection{Genummerde lijst}
+De \verb|\frm{}{}{}| macro is de kern van het school-macros systeem. Het:
 \begin{enumerate}
-\item Eerste punt
-\item Tweede punt
-    \begin{enumerate}
-    \item Sub-punt A
-    \item Sub-punt B
-    \end{enumerate}
-\item Derde punt
+    \item Toont de formule in een mooie box
+    \item Registreert de formule automatisch voor het formularium
+    \item Maakt een label aan voor cross-referenties
 \end{enumerate}
 
-\subsection{Bullet lijst}
-\begin{itemize}
-\item Eerste item
-\item Tweede item
-    \begin{itemize}
-    \item Sub-item 1
-    \item Sub-item 2
-    \end{itemize}
-\item Derde item
-\end{itemize}
+\subsection{Basis gebruik}
 
-\subsection{Beschrijvingslijst}
-\begin{description}
-\item[Snelheid] Afgelegde afstand per tijdseenheid
-\item[Versnelling] Verandering van snelheid per tijdseenheid
-\item[Kracht] Het product van massa en versnelling
-\end{description}
+\frm{Kinetische Energie}{E_k = \frac{1}{2}mv^2}{waarbij $m$ de massa [\si{kg}] en $v$ de snelheid [\si{m/s}]}
 
+Code:
+\begin{verbatim}
+\frm{Kinetische Energie}{E_k = \frac{1}{2}mv^2}
+    {waarbij $m$ de massa [\si{kg}] en $v$ de snelheid [\si{m/s}]}
+\end{verbatim}
+
+\subsection{Meer voorbeelden}
+
+\frm{Potentiële Energie}{E_p = mgh}{met $g = \SI{9.81}{m/s^2}$ de valversnelling en $h$ de hoogte [\si{m}]}
+
+\frm{Arbeid}{W = \vec{F} \cdot \vec{s} = Fs\cos\theta}{met $\theta$ de hoek tussen kracht en verplaatsing}
+
+\frm{Vermogen}{P = \frac{W}{t} = \vec{F} \cdot \vec{v}}{eenheid: Watt [\si{W}]}
+
+% =============================================================================
+\section{Symbolen met \textbackslash sym}
+\label{sec:symbols}
+% =============================================================================
+
+De \verb|\sym{}{}{}| macro introduceert symbolen met hun betekenis en eenheid.
+Bij eerste gebruik wordt een volledige uitleg getoond; daarna alleen het symbool.
+
+\subsection{Eerste vermelding}
+
+\sym{F}{Kracht}{N}
+
+\sym{v}{Snelheid}{m/s}
+
+\sym{P}{Vermogen}{W}
+
+\subsection{Herhaald gebruik}
+
+Na de eerste vermelding toont \verb|\sym{F}{...}{...}| alleen: \sym{F}{Kracht}{N}
+
+Dit voorkomt herhaling en houdt je document overzichtelijk.
+
+\subsection{Code voorbeeld}
+
+\begin{verbatim}
+\sym{F}{Kracht}{N}           % Eerste keer: toont volledige box
+\sym{F}{Kracht}{N}           % Daarna: alleen F in bold
+\end{verbatim}
+
+% =============================================================================
+\section{Wiskunde Shortcuts}
+\label{sec:math}
+% =============================================================================
+
+\subsection{Afgeleiden}
+
+\begin{tabular}{lll}
+\toprule
+\textbf{Macro} & \textbf{Code} & \textbf{Resultaat} \\
+\midrule
+Gewone afgeleide & \verb|\dd{y}{x}| & $\dd{y}{x}$ \\
+n-de afgeleide & \verb|\ddn{y}{x}{2}| & $\ddn{y}{x}{2}$ \\
+Partiële afgeleide & \verb|\pd{f}{x}| & $\pd{f}{x}$ \\
+n-de partiële & \verb|\pdn{f}{x}{2}| & $\pdn{f}{x}{2}$ \\
+\bottomrule
+\end{tabular}
+
+\subsection{Differentialen}
+
+Voor integralen: \verb|\dx|, \verb|\dy|, \verb|\dt|, \verb|\dV|
+\[ \int_0^1 x^2 \, \dx = \left[\frac{x^3}{3}\right]_0^1 = \frac{1}{3} \]
+
+\subsection{Vectoren}
+
+\begin{tabular}{lll}
+\toprule
+\textbf{Macro} & \textbf{Code} & \textbf{Resultaat} \\
+\midrule
+Vector (bold) & \verb|\vec{F}| & $\vec{F}$ \\
+Eenheidsvector & \verb|\uvec{n}| & $\uvec{n}$ \\
+Matrix & \verb|\mat{A}| & $\mat{A}$ \\
+\bottomrule
+\end{tabular}
+
+\subsection{Verzamelingen}
+
+$\RR$ (reëel), $\NN$ (natuurlijk), $\ZZ$ (geheel), $\QQ$ (rationaal), $\CC$ (complex)
+
+\subsection{Haakjes (auto-scaling)}
+
+\begin{tabular}{lll}
+\toprule
+\textbf{Macro} & \textbf{Code} & \textbf{Resultaat} \\
+\midrule
+Absolute waarde & \verb|\abs{\frac{a}{b}}| & $\abs{\frac{a}{b}}$ \\
+Norm & \verb|\norm{\vec{v}}| & $\norm{\vec{v}}$ \\
+Ronde haakjes & \verb|\paren{\frac{a}{b}}| & $\paren{\frac{a}{b}}$ \\
+Vierkante haakjes & \verb|\bracket{\frac{a}{b}}| & $\bracket{\frac{a}{b}}$ \\
+Accolades & \verb|\curlybrace{x}| & $\curlybrace{x}$ \\
+Gemiddelde & \verb|\avg{x}| & $\avg{x}$ \\
+\bottomrule
+\end{tabular}
+
+\subsection{Snelle breuken}
+
+\verb|\half|, \verb|\third|, \verb|\quarter| → $\half$, $\third$, $\quarter$
+
+% =============================================================================
+\section{Cross-References}
+\label{sec:crossref}
+% =============================================================================
+
+\subsection{Moderne methode: cleveref}
+
+Het \texttt{cleveref} pakket genereert automatisch Nederlandse referenties:
+
+\begin{tabular}{ll}
+\toprule
+\textbf{Code} & \textbf{Resultaat} \\
+\midrule
+\verb|\cref{sec:siunitx}| & \cref{sec:siunitx} \\
+\verb|\Cref{sec:boxes}| & \Cref{sec:boxes} \\
+\verb|\cref{sec:math,sec:symbols}| & \cref{sec:math,sec:symbols} \\
+\bottomrule
+\end{tabular}
+
+\begin{examenbox}
+Gebruik \verb|\Cref{}| (met hoofdletter) aan het begin van een zin.
+\end{examenbox}
+
+\subsection{Legacy methode}
+
+Voor backward compatibility zijn de oude macro's nog beschikbaar:
+\verb|\figref{}|, \verb|\tabref{}|, \verb|\eqnref{}|, \verb|\secref{}|
+
+% =============================================================================
+\section{Figuren}
+\label{sec:figures}
+% =============================================================================
+
+\subsection{Snelle figuur met \textbackslash fig}
+
+\begin{verbatim}
+\fig[0.6\linewidth]{pad/naar/afbeelding.png}{Onderschrift}{fig:label}
+\end{verbatim}
+
+\subsection{Figuur zonder label}
+
+\begin{verbatim}
+\autofig[0.5\linewidth]{afbeelding.png}{Onderschrift}
+\end{verbatim}
+
+\subsection{Simpelste vorm}
+
+\begin{verbatim}
+\img{afbeelding.png}{Onderschrift}
+\end{verbatim}
+
+% =============================================================================
 \section{Tabellen}
+\label{sec:tables}
+% =============================================================================
 
-\subsection{Basis tabel met booktabs}
+\subsection{Standaard tabel met booktabs}
+
 \begin{table}[H]
 \centering
 \caption{Materiaaleigenschappen}
+\label{tab:materiaal}
 \begin{tabular}{lcc}
 \toprule
-\textbf{Materiaal} & \textbf{Dichtheid [kg/m³]} & \textbf{E-modulus [GPa]} \\
+\textbf{Materiaal} & \textbf{Dichtheid [\si{kg/m^3}]} & \textbf{E-modulus [\si{GPa}]} \\
 \midrule
-Staal & 7850 & 210 \\
-Aluminium & 2700 & 70 \\
-Beton & 2400 & 30 \\
+Staal & \num{7850} & \num{210} \\
+Aluminium & \num{2700} & \num{70} \\
+Koper & \num{8960} & \num{120} \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\subsection{Tabel met lange tekst (tabularx)}
+\subsection{Brede tabel met tabularx}
+
 \begin{table}[H]
 \centering
-\caption{Begrippen en definities}
+\caption{Procesbeschrijvingen}
 \begin{tabularx}{\linewidth}{l X}
 \toprule
-\textbf{Begrip} & \textbf{Definitie} \\
+\textbf{Proces} & \textbf{Beschrijving} \\
 \midrule
-Spanning & De kracht per oppervlakte-eenheid die op een materiaal wordt uitgeoefend \\
-\addlinespace
-Rek & De relatieve verlenging of verkorting van een materiaal onder belasting \\
+Draaien & Het werkstuk roteert terwijl het gereedschap materiaal verwijdert \\
+Frezen & Het gereedschap roteert en beweegt over het werkstuk \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-\section{Grafieken met TikZ/PGFPlots}
+% =============================================================================
+\section{Grafieken met PGFPlots}
+\label{sec:plots}
+% =============================================================================
 
-\subsection{Functie Plot}
+\subsection{Functie plot}
+
 \begin{center}
 \begin{tikzpicture}
 \begin{axis}[
@@ -276,7 +446,7 @@ Rek & De relatieve verlenging of verkorting van een materiaal onder belasting \\
     grid=major,
     legend pos=north west
 ]
-\addplot[blue, thick, domain=0:4] {x^2};
+\addplot[blue, thick, domain=0:4, samples=50] {x^2};
 \addlegendentry{$f(x) = x^2$}
 \addplot[red, thick, domain=0:4] {2*x};
 \addlegendentry{$g(x) = 2x$}
@@ -284,96 +454,73 @@ Rek & De relatieve verlenging of verkorting van een materiaal onder belasting \\
 \end{tikzpicture}
 \end{center}
 
-\subsection{Data Plot}
+\subsection{Data plot}
+
 \begin{center}
 \begin{tikzpicture}
 \begin{axis}[
     width=0.7\linewidth,
     height=5cm,
-    xlabel={Tijd [s]},
-    ylabel={Snelheid [m/s]},
+    xlabel={Tijd [\si{s}]},
+    ylabel={Snelheid [\si{m/s}]},
     grid=major
 ]
-\addplot[mark=*, blue] coordinates {
-    (0,0) (1,2) (2,4) (3,6) (4,8)
+\addplot[mark=*, blue, thick] coordinates {
+    (0,0) (1,9.81) (2,19.62) (3,29.43) (4,39.24)
 };
+\addlegendentry{$v = gt$}
 \end{axis}
 \end{tikzpicture}
 \end{center}
 
-\subsection{Eenvoudig TikZ Diagram}
-\begin{center}
-\begin{tikzpicture}
-% Rechthoek
-\draw[thick] (0,0) rectangle (3,2);
-% Cirkel
-\draw[thick, fill=blue!20] (5,1) circle (1);
-% Pijl
-\draw[->, thick] (3.5,1) -- (4,1);
-% Tekst
-\node at (1.5,1) {Box};
-\node at (5,1) {Cirkel};
-\end{tikzpicture}
-\end{center}
+% =============================================================================
+\section{Veelgemaakte Fouten}
+\label{sec:mistakes}
+% =============================================================================
 
-\section{Geavanceerde Layout}
+\begin{warningbox}[title=Vermijd deze fouten!]
+\begin{tabular}{p{0.45\linewidth} p{0.45\linewidth}}
+\toprule
+\textbf{Fout} X & \textbf{Correct} $\checkmark$ \\
+\midrule
+\verb|$$ E = mc^2 $$| & \verb|\[ E = mc^2 \]| \\
+\verb|50 m/s| & \verb|\SI{50}{m/s}| \\
+\verb|\bf tekst| & \verb|\textbf{tekst}| \\
+\verb|$sin(x)$| & \verb|$\sin(x)$| \\
+\verb|figuur 1| & \verb|\cref{fig:label}| \\
+\verb|eqnarray| & \verb|align| \\
+\bottomrule
+\end{tabular}
+\end{warningbox}
 
-\subsection{Tekst naast Figuur (minipage)}
-\begin{figure}[H]
-    \centering
-    \begin{minipage}{0.55\textwidth}
-        \textbf{Uitleg bij de figuur:}
-        
-        Door minipage te gebruiken kun je tekst en een afbeelding naast elkaar plaatsen.
-        
-        Let op dat de breedtes samen niet meer dan 1.0\textbackslash textwidth zijn.
-    \end{minipage}%
-    \hfill
-    \begin{minipage}{0.4\textwidth}
-        \centering
-        \fbox{Plaats hier je afbeelding}
-    \end{minipage}
-\end{figure}
+% =============================================================================
+\section{Modulaire Documenten}
+\label{sec:modular}
+% =============================================================================
 
-\subsection{Multiple kolommen}
-\begin{multicols}{2}
-Dit is tekst in twee kolommen. Gebruik \texttt{multicols} voor automatische kolommen.
+Voor grote documenten (thesis, uitgebreide samenvatting) kun je splitsen in meerdere bestanden.
 
-De tekst vloeit automatisch van de ene kolom naar de andere.
+\subsection{Structuur}
 
-Je kan dit gebruiken voor compacte opsommingen of vergelijkingen.
-
-\columnbreak
-
-Tweede kolom begint hier. Je kan \verb|\columnbreak| gebruiken om handmatig naar de volgende kolom te gaan.
-\end{multicols}
-
-\section{Workflow Tips}
-
-\subsection{Belangrijk}
-\begin{enumerate}
-\item Compileer \textbf{tweemaal} voor formularium en symbolenlijst
-\item Gebruik \verb|\frm| voor alle belangrijke formules
-\item Gebruik \verb|\sym| bij eerste vermelding van symbolen
-\item Gebruik \verb|school-macros| package voor consistentie
-\end{enumerate}
-
-\subsection{Typisch Document Structuur}
 \begin{verbatim}
-\documentclass[a4paper,11pt]{article}
+project/
++-- main.tex              % Hoofdbestand
++-- chapters/
+    +-- chapter1.tex
+    +-- chapter2.tex
+    +-- chapter3.tex
+\end{verbatim}
+
+\subsection{Hoofdbestand (main.tex)}
+
+\begin{verbatim}
+\documentclass[a4paper,11pt]{report}
 \usepackage{school-macros}
 
-\title{Titel}
-\author{Naam}
-\date{\today}
-
 \begin{document}
-\maketitle
-\tableofcontents
-\newpage
-
-\section{Hoofdstuk}
-% Inhoud...
+\include{chapters/chapter1}
+\include{chapters/chapter2}
+\include{chapters/chapter3}
 
 \appendix
 \printsymbols
@@ -381,11 +528,166 @@ Tweede kolom begint hier. Je kan \verb|\columnbreak| gebruiken om handmatig naar
 \end{document}
 \end{verbatim}
 
+\begin{theorieblok}[title=\textbackslash include vs \textbackslash input]
+\begin{description}
+    \item[\texttt{\textbackslash include}] Start nieuw hoofdstuk op nieuwe pagina, 
+        kan selectief compileren met \verb|\includeonly{}|
+    \item[\texttt{\textbackslash input}] Voegt bestand in op huidige locatie, 
+        geen paginabreak, altijd gecompileerd
+\end{description}
+\end{theorieblok}
+
+Zie de map \texttt{latex\_templates/modular\_document/} voor een volledig voorbeeld.
+
+% =============================================================================
+\section{Zotero en Bronvermelding}
+\label{sec:zotero}
+% =============================================================================
+
+Het \texttt{school-macros} pakket heeft ingebouwde ondersteuning voor \textbf{BibLaTeX}, 
+wat naadloos integreert met Zotero voor referentiebeheer.
+
+\subsection{Zotero Setup}
+
+\begin{oefenblok}[title=Stap-voor-stap Zotero integratie]
+\begin{enumerate}
+    \item \textbf{Installeer Better BibTeX}: 
+        \begin{itemize}
+            \item Download van \url{https://retorque.re/zotero-better-bibtex/}
+            \item Zotero $\rightarrow$ Tools $\rightarrow$ Add-ons $\rightarrow$ Install
+        \end{itemize}
+    \item \textbf{Exporteer je bibliotheek}:
+        \begin{itemize}
+            \item Rechtermuisklik op collectie $\rightarrow$ Export Collection
+            \item Format: \textbf{Better BibLaTeX}
+            \item Vink ``Keep updated'' aan voor auto-sync
+            \item Sla op als \texttt{references.bib} in je project map
+        \end{itemize}
+    \item \textbf{Voeg toe aan je document}:
+\begin{verbatim}
+\documentclass{article}
+\usepackage{school-macros}
+\addbibresource{references.bib}
+
+\begin{document}
+...
+\printbibliography
+\end{document}
+\end{verbatim}
+\end{enumerate}
+\end{oefenblok}
+
+\subsection{Citeren in tekst}
+
+\begin{theorieblok}[title=Citatie commando's]
+\begin{tabular}{ll}
+\toprule
+\textbf{Code} & \textbf{Resultaat} \\
+\midrule
+\verb|\cite{einstein1905}| & [1] \\
+\verb|\parencite{einstein1905}| & (Einstein, 1905) \\
+\verb|\textcite{einstein1905}| & Einstein (1905) \\
+\verb|\footcite{einstein1905}| & Voetnoot met citatie \\
+\verb|\cite[p.~42]{einstein1905}| & [1, p.~42] \\
+\bottomrule
+\end{tabular}
+\end{theorieblok}
+
+\begin{warningbox}[title=Compilatievolgorde met bibliografie]
+Bij gebruik van BibLaTeX moet je compileren met:
+\begin{verbatim}
+pdflatex document.tex
+biber document
+pdflatex document.tex
+pdflatex document.tex
+\end{verbatim}
+Of gebruik \texttt{latexmk -pdf} die dit automatisch afhandelt.
+\end{warningbox}
+
+\subsection{Citation keys in Zotero}
+
+Better BibTeX genereert automatisch citation keys zoals \texttt{einstein1905} of 
+\texttt{vanderwaals1873}. Je kunt het format aanpassen in:
+
+Zotero $\rightarrow$ Preferences $\rightarrow$ Better BibTeX $\rightarrow$ Citation keys
+
+Aanbevolen format: \verb|[auth:lower][year]| geeft \texttt{einstein1905}.
+
+% =============================================================================
+\section{Workflow Tips}
+\label{sec:workflow}
+% =============================================================================
+
+\begin{oefenblok}[title=Aanbevolen werkwijze]
+\begin{enumerate}
+    \item \textbf{Start met template}: Kopieer \texttt{new\_document\_template.tex}
+    \item \textbf{Definieer symbolen vroeg}: Gebruik \verb|\sym{}| bij eerste vermelding
+    \item \textbf{Registreer alle formules}: Gebruik \verb|\frm{}| voor belangrijke vergelijkingen
+    \item \textbf{Compileer regelmatig}: Vang fouten vroeg op
+    \item \textbf{Compileer tweemaal}: Voor formularium en referenties
+    \item \textbf{Gebruik version control}: Git voor backup en samenwerking
+\end{enumerate}
+\end{oefenblok}
+
+\subsection{VS Code tips}
+
+\begin{itemize}
+    \item Installeer \textbf{LaTeX Workshop} extensie
+    \item Gebruik \textbf{Ctrl+S} om automatisch te compileren
+    \item \textbf{Ctrl+Click} op \verb|\ref{}| om naar label te springen
+    \item Gebruik \textbf{Ctrl+Shift+V} voor afbeelding plakken (met LaTeX Utilities)
+\end{itemize}
+
+% =============================================================================
+\section{Text Emphasis}
+% =============================================================================
+
+\begin{tabular}{lll}
+\toprule
+\textbf{Macro} & \textbf{Code} & \textbf{Resultaat} \\
+\midrule
+Concept & \verb|\concept{begrip}| & \concept{begrip} \\
+Belangrijk & \verb|\belangrijk{let op}| & \belangrijk{let op} \\
+Keyterm & \verb|\keyterm{term}| & \keyterm{term} \\
+\bottomrule
+\end{tabular}
+
+% =============================================================================
+\section{Utility Macro's}
+% =============================================================================
+
+\subsection{Workflow markers}
+
+\TODO{Dit moet nog worden aangevuld}
+
+\FIXME{Controleer deze berekening}
+
+\NOTE{Belangrijk voor het examen}
+
+\subsection{KU Leuven Titelpagina}
+
+Voor een mooie titelpagina met KU Leuven branding:
+\begin{verbatim}
+\kuleuventitle
+    {Titel van het Document}
+    {Vaknaam --- Vakcode}
+    {Jouw Naam}
+    {Academiejaar 2025-2026}
+\end{verbatim}
+
+% =============================================================================
+%                              APPENDICES
+% =============================================================================
+\newpage
 \appendix
+
 \section*{Symbolenlijst}
 \printsymbols
 
 \section*{Formularium}
 \printformularium
+
+\section*{Bibliografie}
+\printbibliography[heading=none]
 
 \end{document}

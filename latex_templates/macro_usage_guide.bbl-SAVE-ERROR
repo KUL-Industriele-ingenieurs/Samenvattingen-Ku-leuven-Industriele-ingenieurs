@@ -1,0 +1,112 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global/global}
+    \entry{lamport1994}{manual}{}{}
+      \name{author}{1}{}{%
+        {{hash=5d77435450d10a850a5b58577b9a456b}{%
+           family={Lamport},
+           familyi={L\bibinitperiod},
+           given={Leslie},
+           giveni={L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Addison-Wesley}%
+      }
+      \strng{namehash}{5d77435450d10a850a5b58577b9a456b}
+      \strng{fullhash}{5d77435450d10a850a5b58577b9a456b}
+      \strng{fullhashraw}{5d77435450d10a850a5b58577b9a456b}
+      \strng{bibnamehash}{5d77435450d10a850a5b58577b9a456b}
+      \strng{authorbibnamehash}{5d77435450d10a850a5b58577b9a456b}
+      \strng{authornamehash}{5d77435450d10a850a5b58577b9a456b}
+      \strng{authorfullhash}{5d77435450d10a850a5b58577b9a456b}
+      \strng{authorfullhashraw}{5d77435450d10a850a5b58577b9a456b}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{2}
+      \field{title}{LaTeX: A Document Preparation System}
+      \field{year}{1994}
+    \endentry
+    \entry{knuth1984}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=ec08e6f01da5f3814f28a70c89c64656}{%
+           family={Knuth},
+           familyi={K\bibinitperiod},
+           given={Donald\bibnamedelima E.},
+           giveni={D\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Reading, MA}%
+      }
+      \list{publisher}{1}{%
+        {Addison-Wesley}%
+      }
+      \strng{namehash}{ec08e6f01da5f3814f28a70c89c64656}
+      \strng{fullhash}{ec08e6f01da5f3814f28a70c89c64656}
+      \strng{fullhashraw}{ec08e6f01da5f3814f28a70c89c64656}
+      \strng{bibnamehash}{ec08e6f01da5f3814f28a70c89c64656}
+      \strng{authorbibnamehash}{ec08e6f01da5f3814f28a70c89c64656}
+      \strng{authornamehash}{ec08e6f01da5f3814f28a70c89c64656}
+      \strng{authorfullhash}{ec08e6f01da5f3814f28a70c89c64656}
+      \strng{authorfullhashraw}{ec08e6f01da5f3814f28a70c89c64656}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{The TeXbook}
+      \field{year}{1984}
+    \endentry
+    \entry{overleaf2024}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=80d685e90fa23d7996a66e45aa2d24ad}{%
+           family={{Overleaf}},
+           familyi={O\bibinitperiod}}}%
+      }
+      \strng{namehash}{80d685e90fa23d7996a66e45aa2d24ad}
+      \strng{fullhash}{80d685e90fa23d7996a66e45aa2d24ad}
+      \strng{fullhashraw}{80d685e90fa23d7996a66e45aa2d24ad}
+      \strng{bibnamehash}{80d685e90fa23d7996a66e45aa2d24ad}
+      \strng{authorbibnamehash}{80d685e90fa23d7996a66e45aa2d24ad}
+      \strng{authornamehash}{80d685e90fa23d7996a66e45aa2d24ad}
+      \strng{authorfullhash}{80d685e90fa23d7996a66e45aa2d24ad}
+      \strng{authorfullhashraw}{80d685e90fa23d7996a66e45aa2d24ad}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Learn LaTeX in 30 minutes}
+      \field{urlday}{9}
+      \field{urlmonth}{1}
+      \field{urlyear}{2026}
+      \field{year}{2024}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes
+      \endverb
+      \verb{url}
+      \verb https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
