@@ -192,57 +192,49 @@
 % Less intrusive while maintaining visual distinction
 
 \tcbset{
-    % Base style for all school boxes - unified title and left bar
+    % Base style for all school boxes - minimal with left accent bar only
     schoolbase/.style={
-        enhanced,
+        blanker,
         breakable,
-        colback=white,
-        colbacktitle=schoolBlue,
-        colframe=schoolBlue,
-        coltitle=white,
-        boxrule=0pt,
-        leftrule=3pt,
-        arc=0pt,
-        left=10pt,
+        left=12pt,
         right=8pt,
-        top=6pt,
-        bottom=6pt,
-        toptitle=4pt,
-        bottomtitle=4pt,
-        lefttitle=10pt,
+        top=8pt,
+        bottom=8pt,
+        borderline west={3pt}{0pt}{schoolBlue},
         before skip=10pt,
         after skip=10pt,
-        fonttitle=\bfseries,
+        fonttitle=\bfseries\color{schoolBlue},
+        before upper={\parindent0pt},
     },
     % Concept/definition box (blue accent)
     conceptstyle/.style={
         schoolbase,
-        colbacktitle=schoolBlue,
-        colframe=schoolBlue,
+        borderline west={3pt}{0pt}{schoolBlue},
+        fonttitle=\bfseries\color{schoolBlue},
     },
     % Warning box (red accent)
     warningstyle/.style={
         schoolbase,
-        colbacktitle=schoolRed,
-        colframe=schoolRed,
+        borderline west={3pt}{0pt}{schoolRed},
+        fonttitle=\bfseries\color{schoolRed},
     },
     % Exercise box (green accent)
     exercisestyle/.style={
         schoolbase,
-        colbacktitle=schoolGreen,
-        colframe=schoolGreen,
+        borderline west={3pt}{0pt}{schoolGreen},
+        fonttitle=\bfseries\color{schoolGreen},
     },
     % Theory box (purple accent)
     theorystyle/.style={
         schoolbase,
-        colbacktitle=violet!70!black,
-        colframe=violet!70!black,
+        borderline west={3pt}{0pt}{violet!70!black},
+        fonttitle=\bfseries\color{violet!70!black},
     },
     % Example box (orange accent)
     examplestyle/.style={
         schoolbase,
-        colbacktitle=schoolOrange,
-        colframe=schoolOrange,
+        borderline west={3pt}{0pt}{schoolOrange},
+        fonttitle=\bfseries\color{schoolOrange},
     },
     % Symbol introduction box
     symbolstyle/.style={
@@ -301,34 +293,29 @@
 \newcounter{FormulariumSectionCounter}
 
 \makeatletter
-% Track current section number and title for formula grouping
+% Track current section for formula grouping
 \newcommand*{\@currentFormulariumSection}{0}
-\newcommand*{\@currentSectionTitle}{}
 
-% Hook into section to track section numbers AND titles
+% Hook into section to track section numbers
 \let\@oldsection\section
 \renewcommand{\section}{\@ifstar{\@ssection}{\@nsection}}
 \newcommand{\@nsection}[1]{%
     \stepcounter{FormulariumSectionCounter}%
     \xdef\@currentFormulariumSection{\theFormulariumSectionCounter}%
-    \protected@edef\@currentSectionTitle{#1}%
     \@oldsection{#1}%
 }
-\newcommand{\@ssection}[1]{%
-    \protected@edef\@currentSectionTitle{#1}%
-    \@oldsection*{#1}%
-}
+\newcommand{\@ssection}[1]{\@oldsection*{#1}}
 
-\newcommand{\addformulariumentry}[6]{%
-    % #1=section, #2=section title, #3=label, #4=math, #5=description, #6=counter
+\newcommand{\addformulariumentry}[5]{%
+    % #1=section, #2=label, #3=math, #4=description, #5=counter
     \ifinlist{#1}{\FormulariumSections}{}{%
         \listgadd{\FormulariumSections}{#1}%
         \global\csdef{SectionFormulas@#1}{}%
-        \global\csdef{SectionTitle@#1}{#2}%
+        \global\csdef{SectionTitle@#1}{}%
     }%
     \csxappto{SectionFormulas@#1}{%
         % Formula card entry with clear visual separation
-        \noexpand\formulariumcard{#3}{\unexpanded{#4}}{\unexpanded{#5}}{#6}%
+        \noexpand\formulariumcard{#2}{\unexpanded{#3}}{\unexpanded{#4}}{#5}%
     }%
 }
 
@@ -374,16 +361,16 @@
         \vspace{4pt}
         {\footnotesize\itshape #3}\label{frm:\theFormulariumEntryCounter}%
     \end{tcolorbox}%
-    % Store with current section number and section title
-    \protected@write\@auxout{}{\string\addformulariumentry{\@currentFormulariumSection}{\unexpanded{\@currentSectionTitle}}{\unexpanded{#1}}{\unexpanded{#2}}{\unexpanded{#3}}{\theFormulariumEntryCounter}}%
+    % Store with current section number
+    \protected@write\@auxout{}{\string\addformulariumentry{\@currentFormulariumSection}{\unexpanded{#1}}{\unexpanded{#2}}{\unexpanded{#3}}{\theFormulariumEntryCounter}}%
 }
 
 \newcommand*{\printSectionFormulas}[1]{%
-    % Print formulas for section #1 with visual header showing section title
+    % Print formulas for section #1 with visual header
     \ifnum#1>0
         \par\vspace{6pt}
         \noindent\textcolor{schoolBlue}{\rule{0.3\linewidth}{1pt}}%
-        \hspace{0.5em}{\small\bfseries\textcolor{schoolBlue}{\csuse{SectionTitle@#1}}}\hspace{0.5em}%
+        \hspace{0.5em}{\small\bfseries\textcolor{schoolBlue}{Sectie #1}}\hspace{0.5em}%
         \textcolor{schoolBlue}{\rule{0.3\linewidth}{1pt}}%
         \par\vspace{4pt}
     \fi

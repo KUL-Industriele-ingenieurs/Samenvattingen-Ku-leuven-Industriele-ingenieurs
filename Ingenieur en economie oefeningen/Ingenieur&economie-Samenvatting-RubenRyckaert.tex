@@ -27,7 +27,6 @@
 \maketitle
 \tableofcontents
 \includepdf[pages=1-2]{Formularium Ingenieur en Economie.pdf}
-\section{formularium}
 \printformularium
 
 \subsection{Introductie}
@@ -1213,12 +1212,13 @@ mag je allemaal afschrijven.
  \subsection{Samengestelde interest, actualisatie, en annuïteiten}
 
 \noindent\textbf{Compound interest:}\\
-\begin{minipage}[t]{0.58\textwidth}
+\begin{minipage}[t]{0.45\textwidth}
 \vspace{0pt}
-Interest die wordt verdiend op zowel het oorspronkelijke bedrag als op de eerder verdiende interest. Je krijgt dus een "rente op rente" effect. Dit leidt tot exponentiële groei van investeringen over tijd.
+Interest die wordt verdiend op zowel het oorspronkelijke bedrag als op de eerder verdiende interest. 
+Je krijgt dus een "rente op rente" effect. Dit leidt tot exponentiële groei van investeringen over tijd.
 \end{minipage}%
 \hfill
-\begin{minipage}[t]{0.37\textwidth}
+\begin{minipage}[t]{0.5\textwidth}
 \vspace{0pt}
 \centering
 \begin{tikzpicture}
@@ -1232,46 +1232,65 @@ Interest die wordt verdiend op zowel het oorspronkelijke bedrag als op de eerder
     ylabel style={font=\small},
     xlabel style={font=\small},
     tick label style={font=\tiny},
-    legend pos=north west,
+    legend pos=south east,
     legend style={font=\tiny}
 ]
-\addplot[blue, thick, domain=0:10, samples=50] {100*(1.05)^x};
-\addlegendentry{Compound (5\%)}
-\addplot[red, dashed, domain=0:10] {100 + 5*x};
-\addlegendentry{Simpel (5\%)}
+\addplot[blue, thick, domain=0:10, samples=50] {100*(1.15)^x};
+\addlegendentry{Compound (15\%)}
+\addplot[red, dashed, domain=0:10] {100 + 15*x};
+\addlegendentry{Simpel (15\%)}
 \end{axis}
 \end{tikzpicture}
 \end{minipage}
 
 \vspace{0.5em}
 \noindent\textbf{Opportunity cost:}\\
-\begin{minipage}[t]{0.58\textwidth}
+\begin{minipage}[t]{0.45\textwidth}
 \vspace{0pt}
-De potentiële opbrengst die je misloopt door te kiezen voor een bepaalde investering in plaats van de beste alternatieve investering. Deze is te berekenen met de formule van inflatie, maar dan met een positief rentepercentage.
+De potentiële opbrengst die je misloopt door te kiezen voor een bepaalde investering in plaats van de beste alternatieve investering. 
+Deze is te berekenen met de formule van inflatie, maar dan met een positief rentepercentage.
 \end{minipage}%
 \hfill
-\begin{minipage}[t]{0.37\textwidth}
+\begin{minipage}[t]{0.5\textwidth}
 \vspace{0pt}
 \centering
 \begin{tikzpicture}
-\begin{axis}[
-    width=\textwidth,
-    height=4cm,
-    xlabel={Tijd},
-    ylabel={Waarde},
-    ymin=0,
+  \begin{axis}[
+    xlabel=Jaren,
+    ylabel=Waarde,
+    xmin=0, xmax=10,
+    ymin=0, ymax=200,
+    xtick={0, 2, 4, 6, 8, 10},
+    ytick={0, 50, 100, 150, 200},
+    grid=major,
+    legend style={
+      at={(0.5,-0.35)},
+      anchor=north,
+      legend columns=1,
+      draw=none,
+      font=\small,
+      align=left
+    },
+    width=\textwidth, height=5cm,
     ylabel style={font=\small},
     xlabel style={font=\small},
-    tick label style={font=\tiny},
-    xtick={1,2},
-    xticklabels={Investering A, Investering B},
-    ybar,
-    bar width=20pt,
-    nodes near coords,
-    every node near coord/.append style={font=\small}
-]
-\addplot[fill=green!60] coordinates {(1,120) (2,150)};
-\end{axis}
+    tick label style={font=\small}
+  ]
+
+    % Investering A (hoog startbedrag, lage groei)
+    \addplot[blue, thick, domain=0:10, samples=20] {110 + 1.5*x};
+    \addlegendentry{Inv. A: hoog start,\\ lage groei};
+
+    % Investering B (laag startbedrag, hoge groei)
+    \addplot[red, dashed, thick, domain=0:10, samples=20] {100 + 6*x};
+    \addlegendentry{Inv. B: laag start,\\ hoge groei};
+
+    % Opportunity Cost Annotation at Year 8 (outside graph)
+    \draw[dashed, gray] (axis cs:8,0) -- (axis cs:8,148);
+    \draw[<->, thick, black] (axis cs:8,112) -- (axis cs:8,148) 
+      node[midway, left=8pt, font=\small, align=left] {Opportunity\\ cost};
+
+  \end{axis}
 \end{tikzpicture}
 \end{minipage}
 
@@ -2996,8 +3015,7 @@ financiële gezondheid van een bedrijf.
 \section{Examenvragen}
 
 
-\begin{oefenblok}
-    \textbf{Oefening: Lineair Programmeren — De Ambachtelijke Werkplaats}
+\begin{oefenblok}[title=Lineair Programmeren — De Ambachtelijke Werkplaats]
 
 \subsubsection*{De Situatie}
 Een werkplaats maakt twee houten figuren: \textbf{Ridders} ($x_1$) en \textbf{Locomotiefjes} ($x_2$). 
@@ -3196,10 +3214,10 @@ Voor R3: R3 = R3 - R2
     \item Coëff. van $x_2$: $1 - 1 = 0$
 \end{itemize}
 
-	extbf{Nog één pivot nodig (om naar het echte optimum te gaan):}
+	\textbf{Nog één pivot nodig (om naar het echte optimum te gaan):}
 In de Z-rij staat bij $s_3$ nog een negatieve coëfficiënt ($-1$), dus $s_3$ wordt de \textbf{enterende variabele}.
 
-	extbf{Pivot-keuze:}
+	\textbf{Pivot-keuze:}
 \begin{itemize}
     \item Enterend: $s_3$ (want $-1$ in Z-rij)
     \item Ratio-test in kolom $s_3$ (alleen positieve coëfficiënten tellen mee):
@@ -3291,8 +3309,7 @@ Hoewel ridders een hogere winstmarge hebben (€3 vs €2), zijn locomotieven ef
 
 \newpage
 
-\begin{oefenblok}
-    \subsubsection*{Investeringsanalyse — De Astrazenetech Case}
+\begin{oefenblok}[title=Investeringsanalyse — De Astrazenetech Case]
 
 \subsubsection*{De Situatie}
 Een farmaceutisch bedrijf twijfelt: moeten ze hun oude verpakkingsmachine houden of vervangen door een nieuwe computergestuurde machine?
@@ -3676,8 +3693,7 @@ Het project levert meer op dan het geëiste rendement van 8\%. Concreet: voor el
 \end{oefenblok}
 
 
-\begin{oefenblok}
-    \subsubsection*{Oefening 5: Lineair Programmeren — Rylon Parfums}
+\begin{oefenblok}[title=Lineair Programmeren — Rylon Parfums]
 
 \subsubsection*{De Situatie}
 Rylon produceert twee basisparfums: \textbf{Regular Brute} en \textbf{Regular Chanelle}. Ze kunnen deze direct verkopen, OF verder verwerken tot \textbf{Luxury} varianten.
@@ -4025,8 +4041,7 @@ De optimale strategie is:
 
 \end{oefenblok}
 
-\begin{oefenblok}
-    \textbf{Oefening 6: Productie Optimalisatie bij een Bedrijf}
+\begin{oefenblok}[title=Productie Optimalisatie bij een Bedrijf]
     
 \textbf{Gegeven:} Een bedrijf produceert drie producten met respectievelijke winst €3, €7 en €5. Elk product heeft 1 kg grondstoffen nodig. In totaal kunnen 50 kg grondstoffen worden aangekocht. Elk product heeft ook verwerkingstijd nodig op dezelfde machine: 2 uur, 3 uur en 1 uur voor respectievelijk product 1, 2 en 3. Deze machine is slechts 100 uur beschikbaar.
 

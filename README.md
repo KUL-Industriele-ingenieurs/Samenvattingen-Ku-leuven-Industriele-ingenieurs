@@ -166,12 +166,10 @@ git push origin <branch-naam>
 
 ### Afbeeldingen & Assets
 
-Plaats afbeeldingen in de `assets/` map van je vak:
+Plaats afbeeldingen in de  map van je vak:
 ```
 Warmte en stromingen/
-├── assets/
-│   ├── slides/      ← Screenshots van slides
-│   └── wikipedia/   ← Screenshots van wikimedia
+├── afbeelingen
 ```
 
 ---
