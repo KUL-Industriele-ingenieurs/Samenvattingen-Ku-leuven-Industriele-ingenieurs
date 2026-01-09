@@ -42,5 +42,6 @@ __pycache__/
 AGENTS.md
 gemini.md
 
-# Build output (uncomment if you don't want to commit PDFs)
-*.pdf
+# Build output - PDFs are checked by pre-commit hook
+# The hook prevents committing PDFs that match .tex filenames
+# Reference PDFs (without matching .tex) can be committed
