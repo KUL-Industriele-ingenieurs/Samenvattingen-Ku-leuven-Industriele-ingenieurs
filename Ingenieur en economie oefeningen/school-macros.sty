@@ -32,7 +32,9 @@
 \RequirePackage{multicol}   
 \RequirePackage[version=4]{mhchem}
 \RequirePackage{placeins}
-\RequirePackage{eurosym}  % For proper Euro symbol support
+\RequirePackage{textcomp}  % For proper Euro symbol support
+\RequirePackage{ifthen}    % For conditional logic (math mode detection)
+\RequirePackage{newunicodechar} % For mapping Unicode characters
 
 
 % --- Graphics & Plots ---
@@ -40,6 +42,17 @@
 \RequirePackage{pgfplots}
 \pgfplotsset{compat=1.18}
 \usetikzlibrary{arrows.meta, positioning, calc, patterns, shapes.geometric}
+
+% ==================== EURO SYMBOL FIX ====================
+% Redefine € (UTF-8 byte sequence: E2 82 AC) to work in both text and math mode
+% Create a macro that handles the Euro symbol properly
+\newcommand{\EuroSymbol}{\ifmmode\text{\texteuro}\else\texteuro\fi}
+
+% Map the Euro character (Unicode U+20AC) to our macro
+\let\EuroOld\texteuro
+\renewcommand{\texteuro}{\EuroOld}
+\usepackage{newunicodechar}
+\newunicodechar{€}{\EuroSymbol}
 
 % ==================== COLORS ====================
 \definecolor{schoolBlue}{RGB}{41,98,155}
