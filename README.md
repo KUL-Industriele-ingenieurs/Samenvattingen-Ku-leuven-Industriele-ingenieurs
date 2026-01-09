@@ -19,8 +19,8 @@ Een gezamenlijk project voor het maken van professionele, gedetailleerde samenva
      ```powershell
      choco install miktex
      ```
-      - Of via winget
-          ```powershell
+    - Of via winget
+   ```powershell
      winget install miktex
      ```
    - During setup, enable "Install missing packages on-the-fly"
