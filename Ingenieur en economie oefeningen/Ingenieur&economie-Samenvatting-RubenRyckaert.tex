@@ -1,12 +1,22 @@
 \documentclass[a4paper,11pt]{article}
 \usepackage{school-macros}
-\usepackage[utf8]{inputenc}
-\usepackage[dutch]{babel}
 \usepackage{siunitx}
 \usepackage{pdfpages}
 \usepackage{placeins}
 \usepackage[table]{xcolor}  % Voor kleuren in tabellen
 \usepackage{colortbl}       % Voor \rowcolor en \columncolor
+
+% Make float placement more permissive
+\makeatletter
+\def\fps@figure{htbp}
+\def\fps@table{htbp}
+\setcounter{totalnumber}{10}
+\setcounter{topnumber}{10}
+\setcounter{bottomnumber}{10}
+\renewcommand{\topfraction}{.99}
+\renewcommand{\bottomfraction}{.99}
+\renewcommand{\textfraction}{.01}
+\makeatother
 
 \title{Ingenieur en Economie — Samenvatting \& Oefeningen}
 \author{Ruben Ryckaert}
@@ -29,40 +39,109 @@ theorie en oefeningen per module.
 \section{Module  1: Marketing}
 \subsection{Marketing}
 
-Een markt wordt gedefineerd met de 4 P's met nog 2 extra P's die er bij komen.
+Een markt wordt gedefineerd met de 4 P's met nog 2 extra P's die de maatschappij tonen
 \begin{itemize}
     \item Product: Wat wordt er verkocht?
     \item Prijs: Welke prijs wordt er gevraagd?
     \item Plaats: Waar wordt het product verkocht?
     \item Promotie: Hoe wordt het product gepromoot?
-    \item People: Wie zijn de klanten?
-    \item Positioning: Hoe wordt het product gepositioneerd in de markt?
+    \item Maatschappij (People, Positionering): Wie zijn de klanten en hoe wordt het product gepositioneerd in de markt?
 \end{itemize}
 
-De marketingcyclus beschrijft de continue interactie tussen de maatschappij en de markt. Dit proces kan als volgt worden samengevat:
+De marketingcyclus toont hoe de maatschappij een markt creëren en hoe de markt terug invloed heeft op de maatschappij.
 
 \begin{enumerate}
     \item \concept{Behoeften, Wensen en Vraag}: Het vertrekpunt is de \textbf{maatschappij},
      die bestaat uit mensen met fundamentele behoeften (fysiek, sociaal, individueel). 
      Wanneer deze behoeften gevormd worden door cultuur en persoonlijkheid, spreken we van \textbf{wensen}. 
-     Als deze wensen gesteund worden door koopkracht, ontstaat er een concrete \textbf{vraag}.
+     Als deze wensen gesteund worden door \textbf{koopkracht}, ontstaat er een concrete \textbf{vraag}.
     \item \concept{Producten}: Om aan deze vraag te voldoen, bieden bedrijven \textbf{producten} aan. 
     Dit begrip is breed en omvat fysieke goederen, diensten, ervaringen, personen, plaatsen, organisaties en ideeën.
-    \item \concept{Waarde en Tevredenheid}: De consument maakt een keuze op basis van de verwachte waarde. 
-    De \textbf{tevredenheid} achteraf hangt af van de waargenomen prestaties ten opzichte van de verwachtingen. Kwaliteit speelt hierin een sleutelrol.
+    \item \concept{Waarde, Tevredenheid en Kwaliteit}: 
+    Als de producten de wens vervullen zijn de behoeftes bevredigd.
+    Dit creert een \textbf{waarde} voor de klant, wat leidt tot \textbf{tevredenheid}.
+    De tevredenheid kun je peilen met een tevredensheidanalyse.
+    \item \concept{kwaliteit}:
+    De kwaliteit is de mate waarin een product voldoet aan de verwachtingen van de klant.
+
     \item \concept{Ruil, Transactie en Relaties}: Een \textbf{ruil} is de kern van marketing: het verkrijgen 
-    van een gewenst object door iets terug te geven (meestal geld). Een \textbf{transactie} is een ruil met meetbare waarden. Succesvolle transacties bouwen langdurige \textbf{relaties} op met klanten.
+    van een gewenst object door iets terug te geven (meestal geld). 
+    Een \textbf{transactie} is een ruil met meetbare waarden. Succesvolle transacties bouwen langdurige \textbf{relaties} op met klanten.
     \item \concept{Markt}: De verzameling van alle werkelijke en potentiële kopers van een product vormt de
      \textbf{markt}. Deze markt beïnvloedt op zijn beurt weer de maatschappij, waardoor de cyclus rond is.
 \end{enumerate}
 
+\begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}[
+        node distance=2cm,
+        every node/.style={
+            draw=schoolBlue, 
+            thick,
+            rounded corners, 
+            align=center, 
+            font=\small\bfseries,
+            fill=schoolBlue!5,
+            minimum height=0.8cm,
+            inner sep=6pt
+        },
+        arrow/.style={->, >=latex, thick, schoolBlue}
+    ]
+        % Nodes arranged in a circle
+        \node (maatschappij) at (0, 4) {Maatschappij};
+        \node (behoeften) at (3.5, 3) {Behoeften};
+        \node (wensen) at (4.5, 0.5) {Wensen};
+        \node (vraag) at (3.5, -2) {Vraag};
+        \node (product) at (0, -3) {Product};
+        \node (ruil) at (-3.5, -2) {Ruil \&\\Transactie};
+        \node (relatie) at (-4.5, 0.5) {Relaties};
+        \node (markt) at (-3.5, 3) {Markt};
+
+        % Arrows
+        \draw[arrow] (maatschappij) -- (behoeften);
+        \draw[arrow] (behoeften) -- (wensen);
+        \draw[arrow] (wensen) -- (vraag);
+        \draw[arrow] (vraag) -- (product);
+        \draw[arrow] (product) -- (ruil);
+        \draw[arrow] (ruil) -- (relatie);
+        \draw[arrow] (relatie) -- (markt);
+        \draw[arrow] (markt) -- (maatschappij);
+        
+        % Central text
+        \node[draw=none, fill=none] at (0,0.5) {\textcolor{schoolGray}{\textit{Marketingcyclus}}};
+    \end{tikzpicture}
+    \caption{Schematische weergave van de marketingcyclus}
+    \label{fig:marketingcyclus}
+    \end{figure}
+    \FloatBarrier % requires \usepackage{placeins} in the preamble
 
 \begin{examenbox}
     Deze cyclus kan exact gevraagd worden op het examen. Ken de stappen goed!
 \end{examenbox}
 
 \subsection{Marktmanagement}
-Er zijn vijf alternatieve concepten die organisaties gebruiken om hun marketingstrategie vorm te geven. Hieronder staan ze uitgewerkt met vaste criteria.
+Hoe ga je nu je product op de markt brengen?
+Marketingmanagement is het proces van het plannen, organiseren, implementeren en controleren van marketingactiviteiten en -strategieën
+om organisatiedoelen te bereiken en klantbehoeften te bevredigen. Concreet komt het neer op het strategisch sturen van de vraag naar producten of diensten 
+(door middel van marketingactiviteiten de behoefte van de klant beïnvloeden) met als doel winstgevende klantrelaties op te bouwen en te behouden.
+\newline
+
+Je moet kijken naar de de vraag (hoeveel mensen willen het product kopen)
+en het aanbod (hoeveel producten zijn er beschikbaar).
+\newline
+
+Je wilt relaties opbouwen met de klanten (nieuwe klanten) en bestaande klanten behouden.
+Zodat je de maximale waarde uit elke klant haalt (Customer Lifetime Value).
+\newline
+
+Flexibel blijven in veranderingen in de markt.
+
+
+\subsubsection{Marktmanagement concepten}
+
+Er zijn 5 verschillende concepten die je moet kennen!
+
+
 
 \begin{tcolorbox}[schoolstyle, title=1. Productieconcept, colframe=schoolBlue!80!black, colback=white]
     \textbf{Uitgangspunt:} Consumenten geven de voorkeur aan producten die beschikbaar en goedkoop zijn. \\
@@ -204,8 +283,11 @@ Je krijgt dan een positieve winslijn.
 
 
 \subsection{Prijszetting}
-De juiste prijs bepalen is een evenwichtsoefening. De prijs ligt ergens tussen 
-de productiekosten (de ondergrens) en de waarde die de klant eraan hecht (de bovengrens).
+
+Hoe ga je de prijs van je product bepalen?
+Je hebt interne en externe factoren die de prijszetting beïnvloeden.
+Interne factoren zijn factoren binnen het bedrijf zelf \textit{(bijv. kosten, marketingdoelstellingen, marketingmix strategie, organisatieverantwoordelijkheid)},
+    terwijl externe factoren buiten het bedrijf liggen \textit{(bijv. concurrentie, markttrends, economische omstandigheden, omgeving)}.
 
 \subsubsection{Interne factoren}
 De prijszetting wordt beïnvloed door vier belangrijke interne factoren:
@@ -216,9 +298,10 @@ De prijszetting wordt beïnvloed door vier belangrijke interne factoren:
       \caption{Interne factoren die de prijszetting beïnvloeden}
       \label{fig:internefactoren.png}
 \end{figure}
+\FloatBarrier
 
 \begin{description}
-    \item[Marketingdoelstellingen] Voordat de prijs wordt bepaald, moet het bedrijf zijn strategie kiezen:
+    \item\concept{Marketingdoelstellingen} Voordat de prijs wordt bepaald, moet het bedrijf zijn strategie kiezen:
     \begin{itemize}
         \item \textbf{Overleven:} Bij overcapaciteit of hevige concurrentie; lage prijzen om de productie draaiende te houden.
         \item \textbf{Winstmaximalisatie:} Prijzen zo kiezen dat de huidige winst maximaal is (korte termijn focus).
@@ -226,17 +309,28 @@ De prijszetting wordt beïnvloed door vier belangrijke interne factoren:
         \item \textbf{Kwaliteitsleiderschap:} Hoge prijzen om R\&D en hoge kwaliteit te dekken.
     \end{itemize}
 
-    \item[Marketingmix strategie] De prijs is slechts één van de marketinginstrumenten.
-    De prijs moet gecoördineerd zijn met het \textbf{product}ontwerp, de \textbf{distributie} 
-    en de \textbf{promotie} om een consistent en effectief marketingprogramma te vormen.
+    \item\concept{Marketingmix strategie} De prijs moet overeenkomsten met de andere P's van de marketingmix:
+    \begin{itemize}
+        \item \textbf{Plaats:} \textit{bijv. Exclusieve distributie vereist vaak hogere prijzen.}
+        \item \textbf{Promotie:} \textit{bijv. Intensieve promotiecampagnes kunnen hogere prijzen rechtvaardigen.}
+        \item \textbf{Product:} \textit{bijv. Premium producten kunnen hogere prijzen vragen dan basisproducten.}
+    \end{itemize}
 
-    \item[Kosten] De kosten bepalen de \textbf{bodemprijs} (vloer). Het bedrijf moet een prijs vragen die de vaste en variabele kosten dekt en een eerlijk rendement oplevert.
+    \item\concept{Kosten} De kosten bepalen de \textbf{bodemprijs} (vloer). 
+    Het bedrijf moet een prijs vragen die de vaste en variabele kosten dekt en een eerlijk rendement oplevert.
     \begin{itemize}
         \item \textbf{Vaste kosten:} Kosten die niet variëren met productie (huur, rente, salarissen).
         \item \textbf{Variabele kosten:} Kosten die direct variëren met het productieniveau.
         \item \textbf{Totale kosten:} $ \rightarrow TCK = VK + VARK $
     \end{itemize}
 
+
+    \item\concept{Verantwoordelijkheid binnen de organisatie}
+    Wie bepaalt de prijs binnen het bedrijf? 
+    \textit{Management, verkoopteam, marketingafdeling, financieel team.}
+\end{description}
+
+Om de prijs te meten kun je een prijsvork gebruiken.
     \begin{figure}[ht]
         \centering
         \begin{minipage}{0.45\textwidth}
@@ -280,12 +374,7 @@ De prijszetting wordt beïnvloed door vier belangrijke interne factoren:
             \end{tikzpicture}
         \end{minipage}
     \end{figure}
-
-    \item[Verantwoordelijkheid binnen de organisatie]
-     Wat voor soort bedrijf ben je. Non-profit of winstgericht?
-     Wat is belangrijke voor mangement en aandeelhouders?
-     Daarbij is er ook een maatschappelijke verantwoordelijkheid.
-\end{description}
+    \FloatBarrier
 
 \subsubsection{Externe factoren}
 Externe factoren 
@@ -301,7 +390,7 @@ zijn factoren die niet door het bedrijf zelf kunnen worden beïnvloed,
 \FloatBarrier
 
 \begin{description}
-    \item[De Markt en Concurrentie] 
+    \item\concept{De Markt en Concurrentie} 
     In welke markt opereer je? De vrijheid om je prijs te zetten (pricing power) hangt sterk af van de concurrentievorm. In een zeer competitieve markt bepaalt de markt de prijs, terwijl je in een monopolie zelf de prijs kunt zetten.
 
     \begin{figure}[ht]
@@ -337,7 +426,7 @@ zijn factoren die niet door het bedrijf zelf kunnen worden beïnvloed,
     \end{figure}
     \FloatBarrier % requires \usepackage{placeins} in the preamble
 
-    \item[Consumentenperceptie van waarde]
+    \item\concept{Consumentenperceptie van waarde}
     Uiteindelijk bepaalt de consument of de prijs gerechtvaardigd is.
      Een belangrijk concept hierbij is de \textbf{prijselasticiteit}: hoe sterk reageert de vraag op een prijsverandering?
      met $\%\Delta Q$ de verandering in hoeveelheid vraag en $\%\Delta P$ de verandering in prijs.
@@ -382,8 +471,12 @@ zijn factoren die niet door het bedrijf zelf kunnen worden beïnvloed,
         \label{fig:elasticity}
     \end{figure}
     \FloatBarrier
-\end{description}   
 
+    \item\concept{Competitie binnne je markt}
+    Wat zijn de prijzen van je concurrenten en hun offering?
+
+    \item\concept{Omgevingsfactoren}
+    Verschillende externe omgevingsfactoren kunnen de prijszetting beïnvloeden:
 
 \begin{description}
         \item [Economische omstandigheden:] Inflatie, recessie, koopkracht.
@@ -391,11 +484,38 @@ zijn factoren die niet door het bedrijf zelf kunnen worden beïnvloed,
         \item [Wet- en regelgeving:] Prijscontroles, belastingen, handelsbeperkingen.
         \item [Herverkopers en distributiekanalen:] zoals groothandels en winkels vb bol.com of amazon.
 \end{description}
+\end{description}
 
 \begin{examenbox}
 Leg niet teveel druk om deze exacte factoren te onthouden. 
 Begrijp wel hoe interne en externe factoren de prijszetting beïnvloeden.
 \end{examenbox}
+
+\subsubsection{Alles tesamen}
+Als al deze factoren zijn overwogen, kan het bedrijf een prijsstrategie ontwikkelen die
+past bij zijn marketingdoelstellingen en de marktomstandigheden.
+\newline 
+
+Een bedrijf neemt dan een stratege aan afhankelijk van de prijs en kwaliteit van het product:
+
+
+\begin{minipage}
+    {0.4\textwidth}
+    \begin{itemize}
+        \item \textbf{Hoge prijs, hoge kwaliteit:} Premium stratege
+        \item \textbf{Hoge prijs, lage kwaliteit:} Overgeprijsd
+        \item \textbf{Lage prijs, hoge kwaliteit:} Good value stratege
+        \item \textbf{Lage prijs, lage kwaliteit:} Economie stratege
+    \end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}
+{0.5\textwidth}
+\hfill
+\centering
+\includegraphics[width=0.8\textwidth]{image5.png}
+\end{minipage}
+    
     
 
 \subsection{Prijszettingsmethodes}
@@ -806,7 +926,7 @@ Dit kan gaan om geld of productiviteit zoals het kopen van machines of opleiding
 \belangrijk{Cashflow of Kasstroom} is het geld dat binnenkomt en uitgaat over een bepaalde periode.
 
 Maar waarom zou je investering nu doen in plaats van later?
-Je moet investeren omdat inflatie de waarde van geld vermindert over tijd.
+Je moet investeren omdat \textbf{inflatie} de waarde van geld vermindert over tijd.
 \subsection{Inflatie}
 Inflatie is de stijging van het algemene prijsniveau over tijd.
 De koopkracht van je geld neemt dus af. Dit leidt tot een lagere
@@ -888,9 +1008,11 @@ Je telt dan weer de afschrijving erbij omdat dit geen echte uitgave is.
 Je hebt dan een netto cashflow van 5000 euro. 
 \newline
 
-Hoe dit eruit ziet. Je koopt een fiets uit je portomanee. 
+Hoe dit eruit ziet. Je koopt een fiets uit je portomanee. Je hebt vorige periode gedaan
+maar dit was een investering voor de lange termijn. Een investering kun
+je afschrijven over meerdere periodes. 
 Je gaat dan bij een afschrijving per periode een \% aan de kant leggen in een andere pot maar dat 
-geld is niet weg.
+geld is niet weg. Je hebt de fiets al betaald uit je portomanee.
 Dit is een afschrijving. Hiermee omzijl je de belastingen.
 \newline
 
@@ -903,28 +1025,145 @@ Zij bepalen dus hoe lang en op welke manier je mag afschrijven.
 \newline
 
 Je hebt verschillende manieren van afschrijven:
-\begin{description}
-    \item [Lineaire afschrijving:] Elk jaar hetzelfde bedrag zoals het voorbeeld hierboven.
-    \begin{itemize}
-        \item \textbf{Voordelen:} Wordt aanvaard door de fiscus en is eenvoudig te berekenen.
-        \item \textbf{Nadelen:} Je schrijft altijd een vast bedrag af, ongeacht het gebruik of de waarde van het actief.
-    \end{itemize}
-    \item [Degressieve afschrijving:] Meer afschrijven in het begin en minder later.
-    \begin{itemize}
-        \item \textbf{Voordelen:} Je gaat meer afschrijven in het begin waardoor je minder belasting betaald.
-        \item \textbf{Nadelen:} Soms niet aanvaard door de fiscus.
-    \end{itemize}
-    \item [Vertraagde afschrijving:] Minder afschrijven in het begin en meer later.
-    \begin{itemize}
-        \item \textbf{Voordelen:} De fiscus gaat dit altijd aanvaarden.
-        \item \textbf{Nadelen:} Het is fiscaal niet interestand omdat je in het begin meer belasting betaald.
-    \end{itemize}
-    \item [Reele waarde afschrijving:] Hoe gaat afschrijven afhankelijk van het gebruik \textls{Hoeveel heb je een vrachtwagen gebruikt?}
-    \begin{itemize}
-        \item \textbf{Voordelen:} Je schrijft af afhankelijk van het gebruik.
-        \item \textbf{Nadelen:} Moeilijk te berekenen maar klopt met de realiteit.
-    \end{itemize}
-\end{description}
+
+\noindent\textbf{Lineaire afschrijving:} Elk jaar hetzelfde bedrag zoals het voorbeeld hierboven.\\
+\begin{minipage}[t]{0.58\textwidth}
+\vspace{0pt}
+\begin{itemize}
+    \item \textbf{Voordelen:} Wordt aanvaard door de fiscus en is eenvoudig te berekenen.
+    \item \textbf{Nadelen:} Je schrijft altijd een vast bedrag af, ongeacht het gebruik of de waarde van het actief.
+\end{itemize}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.4\textwidth}
+\vspace{0pt}
+\centering
+\begin{tikzpicture}[scale=0.6]
+\begin{axis}[
+    ybar,
+    width=\textwidth,
+    height=3cm,
+    ylabel={Afschrijving},
+    xlabel={Periode},
+    xtick=data,
+    ymin=0,
+    ymax=25,
+    bar width=6pt,
+    nodes near coords,
+    every node near coord/.append style={font=\tiny},
+    ylabel style={font=\small},
+    xlabel style={font=\small},
+    tick label style={font=\tiny}
+]
+\addplot[fill=blue!60] coordinates {(1,20) (2,20) (3,20) (4,20) (5,20)};
+\end{axis}
+\end{tikzpicture}
+\end{minipage}
+
+\vspace{0.5em}
+\noindent\textbf{Degressieve afschrijving:} Meer afschrijven in het begin en minder later.\\
+\begin{minipage}[t]{0.58\textwidth}
+\vspace{0pt}
+\begin{itemize}
+    \item \textbf{Voordelen:} Je gaat meer afschrijven in het begin waardoor je minder belasting betaald.
+    \item \textbf{Nadelen:} Soms niet aanvaard door de fiscus.
+\end{itemize}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.4\textwidth}
+\vspace{0pt}
+\centering
+\begin{tikzpicture}[scale=0.6]
+\begin{axis}[
+    ybar,
+    width=\textwidth,
+    height=3cm,
+    ylabel={Afschrijving},
+    xlabel={Periode},
+    xtick=data,
+    ymin=0,
+    ymax=45,
+    bar width=6pt,
+    nodes near coords,
+    every node near coord/.append style={font=\tiny},
+    ylabel style={font=\small},
+    xlabel style={font=\small},
+    tick label style={font=\tiny}
+]
+\addplot[fill=red!60] coordinates {(1,40) (2,30) (3,20) (4,13) (5,7)};
+\end{axis}
+\end{tikzpicture}
+\end{minipage}
+
+\vspace{0.5em}
+\noindent\textbf{Vertraagde afschrijving:} Minder afschrijven in het begin en meer later.\\
+\begin{minipage}[t]{0.58\textwidth}
+\vspace{0pt}
+\begin{itemize}
+    \item \textbf{Voordelen:} De fiscus gaat dit altijd aanvaarden.
+    \item \textbf{Nadelen:} Het is fiscaal niet interestand omdat je in het begin meer belasting betaald.
+\end{itemize}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.4\textwidth}
+\vspace{0pt}
+\centering
+\begin{tikzpicture}[scale=0.6]
+\begin{axis}[
+    ybar,
+    width=\textwidth,
+    height=3cm,
+    ylabel={Afschrijving},
+    xlabel={Periode},
+    xtick=data,
+    ymin=0,
+    ymax=45,
+    bar width=6pt,
+    nodes near coords,
+    every node near coord/.append style={font=\tiny},
+    ylabel style={font=\small},
+    xlabel style={font=\small},
+    tick label style={font=\tiny}
+]
+\addplot[fill=green!60] coordinates {(1,7) (2,13) (3,20) (4,30) (5,40)};
+\end{axis}
+\end{tikzpicture}
+\end{minipage}
+
+\vspace{0.5em}
+\noindent\textbf{Reele waarde afschrijving:} Hoe gaat afschrijven afhankelijk van het gebruik \textls{Hoeveel heb je een vrachtwagen gebruikt?}\\
+\begin{minipage}[t]{0.58\textwidth}
+\vspace{0pt}
+\begin{itemize}
+    \item \textbf{Voordelen:} Je schrijft af afhankelijk van het gebruik.
+    \item \textbf{Nadelen:} Moeilijk te berekenen maar klopt met de realiteit.
+\end{itemize}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.4\textwidth}
+\vspace{0pt}
+\centering
+\begin{tikzpicture}[scale=0.6]
+\begin{axis}[
+    ybar,
+    width=\textwidth,
+    height=3cm,
+    ylabel={Afschrijving},
+    xlabel={Periode},
+    xtick=data,
+    ymin=0,
+    ymax=45,
+    bar width=6pt,
+    nodes near coords,
+    every node near coord/.append style={font=\tiny},
+    ylabel style={font=\small},
+    xlabel style={font=\small},
+    tick label style={font=\tiny}
+]
+\addplot[fill=orange!60] coordinates {(1,15) (2,30) (3,25) (4,18) (5,10)};
+\end{axis}
+\end{tikzpicture}
+\end{minipage}
 
 In het begin meer afschrijven is fiscaal voordeliger omdat je dan minder belasting betaald
 maar de fiscus laat dit niet altijd toe.
@@ -948,8 +1187,8 @@ mag je allemaal afschrijven.
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=0.8\textwidth]{AfschrijfLimiet.png}
-  \caption{Wat mag je afschrijven volgens de fiscus}
+  \includegraphics[width=1\textwidth]{AfschrijfLimiet.png}
+  \caption{Wat mag je afschrijven}
   \label{fig:AfschrijfLimiet.png}
 \end{figure}
 \FloatBarrier
@@ -957,25 +1196,113 @@ mag je allemaal afschrijven.
 
  \subsection{Samengestelde interest, actualisatie, en annuïteiten}
 
+\noindent\textbf{Compound interest:}\\
+\begin{minipage}[t]{0.58\textwidth}
+\vspace{0pt}
+Interest die wordt verdiend op zowel het oorspronkelijke bedrag als op de eerder verdiende interest. Je krijgt dus een "rente op rente" effect. Dit leidt tot exponentiële groei van investeringen over tijd.
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.37\textwidth}
+\vspace{0pt}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    width=\textwidth,
+    height=4cm,
+    xlabel={Jaren},
+    ylabel={Waarde},
+    grid=major,
+    ymin=0,
+    ylabel style={font=\small},
+    xlabel style={font=\small},
+    tick label style={font=\tiny},
+    legend pos=north west,
+    legend style={font=\tiny}
+]
+\addplot[blue, thick, domain=0:10, samples=50] {100*(1.05)^x};
+\addlegendentry{Compound (5\%)}
+\addplot[red, dashed, domain=0:10] {100 + 5*x};
+\addlegendentry{Simpel (5\%)}
+\end{axis}
+\end{tikzpicture}
+\end{minipage}
 
- \begin{description}
-    \item[Compound interest] Interest die wordt verdiend op zowel het oorspronkelijke 
-    bedrag als op de eerder verdiende interest. Je krijgt dus een "rente op rente" effect.
-    Dit leidt tot exponentiële groei van investeringen over tijd.
-    \item[Opportunity cost] De potentiële opbrengst die je misloopt door te
-     kiezen voor een bepaalde investering in plaats van de beste alternatieve investering.
-     Deze is te berekenen met de formule van inflatie, maar dan met een positief rentepercentage.
- \end{description}
+\vspace{0.5em}
+\noindent\textbf{Opportunity cost:}\\
+\begin{minipage}[t]{0.58\textwidth}
+\vspace{0pt}
+De potentiële opbrengst die je misloopt door te kiezen voor een bepaalde investering in plaats van de beste alternatieve investering. Deze is te berekenen met de formule van inflatie, maar dan met een positief rentepercentage.
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.37\textwidth}
+\vspace{0pt}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    width=\textwidth,
+    height=4cm,
+    xlabel={Tijd},
+    ylabel={Waarde},
+    ymin=0,
+    ylabel style={font=\small},
+    xlabel style={font=\small},
+    tick label style={font=\tiny},
+    xtick={1,2},
+    xticklabels={Investering A, Investering B},
+    ybar,
+    bar width=20pt,
+    nodes near coords,
+    every node near coord/.append style={font=\small}
+]
+\addplot[fill=green!60] coordinates {(1,120) (2,150)};
+\end{axis}
+\end{tikzpicture}
+\end{minipage}
+
+\begin{oefenblok}
+Stel dat je vandaag €2.000 investeert in een spaarrekening met een samengestelde jaarlijkse rente van 4\%. Hoeveel geld heb je na 6 jaar?
+
+\textbf{Oplossing:}
+\begin{itemize}
+    \item \textbf{Gegeven:} $P = €2.000$, $i = 0,04$ (4\%), $n = 6$ jaar.
+    \item \textbf{Berekening:}
+    \[ F = 2000 \times (1 + 0,04)^6 \]
+    \[ F = 2000 \times (1,04)^6 \approx 2000 \times 1,265319 \]
+    \item \textbf{Resultaat:} $F = \mathbf{€2.530,64}$
+\end{itemize}
+\end{oefenblok}
+
+\begin{oefenblok}
+Je hebt de keuze tussen twee investeringen:
+\begin{itemize}
+    \item Investering A: Een obligatie die na 3 jaar €1.500 oplevert.
+    \item Investering B: Een spaarrekening met een samengestelde jaarlijkse rente van 5\%.
+    \item Je hebt €1.200 beschikbaar om te investeren.
+\end{itemize}
+
+\textbf{Vraag:} Wat is de opportunity cost van het kiezen voor Investering A in plaats van Investering B?
+
+\textbf{Oplossing:}
+\begin{itemize}
+    \item \textbf{Berekening van Investering B:}
+    \[ F_B = 1200 \times (1 + 0,05)^3 \]
+    \[ F_B = 1200 \times (1,05)^3 \approx 1200 \times 1,157625 \]
+    \[ F_B \approx €1.389,15 \]
+    \item \textbf{Opportunity Cost:}
+    \[ \text{Opportunity Cost} = F_B - F_A = 1389,15 - 1500 = -€110,85 \]
+\end{itemize}
+\end{oefenblok}
 
  \subsection{Actualisatie en annuïteiten}
 
  Hoe kunnen we nu weten wat de waarde is van toekomstige cashflows in het heden?
  Of als we iets afbetalen in termijnen, wat is dan de waarde van die betalingen nu?
+ Dus je brengt toekomstige cashflows (A) terug naar hun huidige waarde (P).
+ Dit proces noemen we \textbf{actualisatie}.
 
  Laten we eerst een simpel voorbeeld bekijken.
- \frm{Formule toekomstige waarde}{
-    P = F / (1 + i)^n
- }
+ \frm{Formule toekomstige waarde}
+ {P = F / (1 + i)^n}
     {met $P$ de huidige waarde, $F$ de toekomstige waarde, i de rentevoet, en $n$ de hoeveelheid periodes.}
     
     Stel ik wil over 5 jaar 1000 euro ontvangen. De rentevoet is 5\%.
@@ -997,8 +1324,10 @@ mag je allemaal afschrijven.
     Wat als we nu een reeks van bedragen hebben?
 
 
+    \subsubsection{Actualisatie}
  \belangrijk{Actualisatie} is het proces van het omzetten van toekomstige cashflows naar hun huidige waarde.
-    Je hebt dus meerdere bedragen die je in de toekomst ontvangt of betaalt.
+ Door inflatie wordt dit geld minder waard in de toekomst. Je wilt dus weten
+ als ik in de toekomst geld krijg, hoeveel is dat nu waard?
     \begin{figure}[ht]
           \centering
             \includegraphics[width=0.7\textwidth]{image2.png}
@@ -1010,7 +1339,8 @@ mag je allemaal afschrijven.
     De formule voor actualisatie is:
 
     \frm{Formule actualisatie}{
-        P = \frac{A_1}{(1 + i)^1} + \frac{A_2}{(1 + i)^2} + \cdots + \frac{A_n}{(1 + i)^n} = \sum_{k=1}^{n} \frac{A_n}{(1 + i)^k}
+        P = \frac{A_1}{(1 + i)^1} + \frac{A_2}{(1 + i)^2} + \cdots + \frac{A_n}{(1 + i)^n} = 
+        \sum_{k=1}^{n} \frac{A_n}{(1 + i)^k}
     }
     {met $P$ de huidige waarde, $A_n$ de cashflow in periode $n$, $i$ de rentevoet, en $n$ de hoeveelheid periodes.}
 
@@ -1031,10 +1361,13 @@ mag je allemaal afschrijven.
     \end{aligned}
     \]
 
+    Dus met deze toekomstige cashflows heb je nu een waarde van ongeveer 4041.91 euro.
+    \newline
+
     Dit zijn alleen cashflows die je ontvangt. Wat als je een lening hebt die je moet afbetalen in termijnen?
     Dit noemen we een annuïteit.
     \newline
-
+    \subsubsection{Annuïteiten}
     \belangrijk{Annuïteit} is een reeks gelijke betalingen die op regelmatige tijdstippen worden gedaan. 
     Als je een lening aangaat bij de bank, dan betaal je meestal in maandelijkse termijnen.
     Je terugbetaling A is dan constant. Hoe bereken je die A?
@@ -1335,8 +1668,8 @@ stapgewijs omhoog gaan. Variable kosten zijn een stijgende lijn.
 
 \begin{figure}[ht]
       \centering
-        \includegraphics[width=0.45\textwidth]{vastekosten.png}
-        \includegraphics[width=0.45\textwidth]{image3.png}
+        \includegraphics[width=0.35\textwidth]{vastekosten.png}
+        \includegraphics[width=0.55\textwidth]{image3.png}
         \caption{Vaste en Variable kosten grafiek}
         \label{fig:vastevariablekosten}
 \end{figure}
@@ -1539,9 +1872,30 @@ Of elektriciteit met het verbruik van de machines.
 
 
 \subsection{Kostprijsberekening methodes}
-Je hebt meerdere methodes om de kostprijs te berekenen.
+We hebben nu gezien hoe je kosten over producten kunt verdelen.
+Maar hoe geraken we nu tot een kostprijsberekening?
+Er zijn verschillende methodes om dit te doen.
+\newline 
 
+\textit{Ze geven methodes maar daarna gaan ze andere namen geven voor
+dezelfde methodes. Idk maar hier zijn ze:}
+\begin{description}
+    \item \concept{Klassieke kostprijsberekening}: Je kijkt naar
+    alle kosten die gemaakt zijn en deelt die door de geproduceerde eenheden.
+    De winst die je dan maakt is de \belangrijk{handelswinst}
+    \item \concept{Industriële kostprijsberekening}
+    Alle kosten door de grondstoffen, arbeid, en productie.
+    De winst die je dan maakt is de \belangrijk{exploitatiewinst}
 
+    \textit{Exploitatiewinst omdat je puur kijkt naar de productie maar je hebt nog geen verkoopkosten en 
+    algemene kosten meegerekend.}
+    \item \concept{Evenredige kostprijsberekening}:
+    Wat zijn de gebruikte grondstoffen, lonen. Prodcutie 
+    en verkoopskosten haal je eruit. 
+    De winst die je dan maakt is de \belangrijk{marge}
+    \textit{Je hebt dus niet direct winst maar gewoon hoeveel er overblijft deze kosten.}
+    
+\end{description}
 
 \begin{figure}[ht]
       \centering
@@ -1551,43 +1905,226 @@ Je hebt meerdere methodes om de kostprijs te berekenen.
 \end{figure}
 \FloatBarrier
 
+
+Elk van deze kostprijzen hangen af van wat er in het verleden
+gebeurd is \belangrijk{(historische kostprijsberekening)}.
+Wanneer je gaat kijken naar standaardprijzen 
+van de grondstoffen dat je gebruikt (wat is het prijs van 1kg staal)
+dan heb je \belangrijk{standaard kostprijsberekening}
+
+
 \begin{description}
-    \item[Klassieke kostprijsberekening:] Dit is de methode die we 
-    tot nu toe gebruikt hebben. Je verdeelt alle kosten over de producten.
-    \item[Historische kostprijsberekening:] Hierbij kijk je naar de kosten die je gemaakt hebt.
-    Je kijkt dus naar de verleden tijd. Je kijkt naar de kosten van vorig jaar.
-    Gevaar is dat je kosten veranderd zijn. Je moet soms verkopen 
-    met verlies zodat je nog een deel van de kosten dekt. 
-    De winst die je maakt noem je \belangrijk{Commerciële winst}.
-    \begin{figure}[ht]
-          \centering
-            \includegraphics[width=0.8\textwidth]{dekkingkosten.png}
-          \caption{Dekking van kosten bij historische kostprijsberekening}
-          \label{fig:dekkingkosten.png}
-    \end{figure}
-    \item[Industriële kostprijsberekening:] Hierbij kijk je naar de pizza industrie.
-    De kosten worden verdeeld op basis van de productieprocessen.
-    De pizza heeft een deeg proces, een beleg proces, een bak proces etc.
-    Je gaat per proces de kosten toewijzen. Elk process verrijkt de pizza.
-    Dit noemt \belangrijk{Exploitatiewinst}.
-    \item[Evenredige kostprijsberekening:] Dit is gewoon de grondstoffen en lonen. 
-    Het verschil met de verkoopprijs is de \belangrijk{Marge}.
-\end{description}
+    \item\concept{Historische kostprijsberekening:} Hierbij bereken je de kostprijs op basis van de 
+    werkelijke kosten die gemaakt zijn in het verleden.
+    Deze kunnen verschillen van de geplande kosten.
+    \newline
+
+    Deze kostprijs berekeningen hangt af van het verleden
+    en is dus niet altijd representatief voor de toekomst.
+    Dingen zoals lonen, grondstoffen prijzen etc kunnen veranderen.
+    Efficiëntie kun je hier ook niet mee meten want als je in het verleden
+    inefficiënt was, dan is dat gewoon in de kostprijs verwerkt.
+    \newline
+    Historsiche kostprijzen tellen gewoon alle kosten op die gemaakt zijn.
+    Je hebt dus geen inzicht in vaste en variable kosten.
+
+    \begin{oefenblok}[title=Oefening: Wijnhandelaar - Toeslagen en Productmix]
+        \textbf{Situatie:}
+        
+        Een wijnhandelaar verkoopt twee soorten wijn in flessen van 1 liter:
+        
+        \textbf{Gegeven:}
+        \begin{itemize}
+            \item \textbf{Wijn A:} 50 liter à €80/liter = €4.000 inkoop
+            \item \textbf{Wijn B:} 50 liter à €120/liter = €6.000 inkoop
+            \item \textbf{Directe kosten} (flessen + arbeid): €10 per fles
+            \item \textbf{Vaste kosten} (huur): €4.000
+            \item \textbf{Verkoopprijs A:} €135 per fles
+            \item \textbf{Verkoopprijs B:} €175 per fles
+        \end{itemize}
+        
+        \textbf{Gevraagd:} Bereken de kostprijs met verschillende toeslagmethoden en analyseer de productmix.
+        
+        \textbf{Oplossing - Stap 1: Basisberekeningen}
+        
+        \begin{tabular}{lcc}
+        \hline
+        & \textbf{Wijn A} & \textbf{Wijn B} \\
+        \hline
+        Aantal flessen & 50 & 50 \\
+        Inkoop per fles & €80 & €120 \\
+        Directe kosten per fles & €10 & €10 \\
+        \textbf{Variabele kosten per fles} & \textbf{€90} & \textbf{€130} \\
+        \hline
+        \end{tabular}
+        
+        Totale vaste kosten (huur): €4.000 moeten worden toegerekend.
+        
+        \textbf{Stap 2: Methode 1 - Gelijkmatige verdeling}
+        
+        Vaste kosten per fles: €4.000 ÷ 100 flessen = €40/fles
+        
+        \begin{tabular}{lcc}
+        \hline
+        & \textbf{Wijn A} & \textbf{Wijn B} \\
+        \hline
+        Variabele kosten & €90 & €130 \\
+        Vaste kosten (toeslag) & €40 & €40 \\
+        \textbf{Kostprijs per fles} & \textbf{€130} & \textbf{€170} \\
+        Verkoopprijs & €135 & €175 \\
+        \textbf{Winst per fles} & \textbf{€5} & \textbf{€5} \\
+        \hline
+        \end{tabular}
+        
+        \textbf{Stap 3: Methode 2 - Toeslag op variabele kosten}
+        
+        Totale variabele kosten: (50 × €90) + (50 × €130) = €11.000
+        
+        Toeslagpercentage: €4.000 ÷ €11.000 = 36,36\%
+        
+        \begin{tabular}{lcc}
+        \hline
+        & \textbf{Wijn A} & \textbf{Wijn B} \\
+        \hline
+        Variabele kosten & €90 & €130 \\
+        Vaste kosten (36,36\%) & €32,73 & €47,27 \\
+        \textbf{Kostprijs per fles} & \textbf{€122,73} & \textbf{€177,27} \\
+        Verkoopprijs & €135 & €175 \\
+        \textbf{Winst per fles} & \textbf{€12,27} & \textbf{-€2,27} \\
+        \hline
+        \end{tabular}
+        
+        \textbf{Analyse:} Bij deze methode lijkt Wijn B verlieslatend!
+        
+        \textbf{Stap 4: Wat als we Wijn B schrappen?}
+        
+        Als we Wijn B schrappen en alleen Wijn A verkopen:
+        
+        \begin{tabular}{lc}
+        \hline
+        & \textbf{Alleen Wijn A} \\
+        \hline
+        Omzet (50 × €135) & €6.750 \\
+        Variabele kosten (50 × €90) & €4.500 \\
+        \textbf{Dekkingsbijdrage} & \textbf{€2.250} \\
+        Vaste kosten & €4.000 \\
+        \textbf{Resultaat} & \textbf{-€1.750} \\
+        \hline
+        \end{tabular}
+        
+        \textbf{Met beide producten:}
+        
+        \begin{tabular}{lc}
+        \hline
+        & \textbf{Beide wijnen} \\
+        \hline
+        Omzet A (50 × €135) & €6.750 \\
+        Omzet B (50 × €175) & €8.750 \\
+        \textbf{Totale omzet} & \textbf{€15.500} \\
+        Variabele kosten A & €4.500 \\
+        Variabele kosten B & €6.500 \\
+        \textbf{Totale variabele kosten} & \textbf{€11.000} \\
+        \textbf{Dekkingsbijdrage} & \textbf{€4.500} \\
+        Vaste kosten & €4.000 \\
+        \textbf{Resultaat} & \textbf{+€500} \\
+        \hline
+        \end{tabular}
+        
+        \textbf{Conclusie:}
+        \begin{itemize}
+            \item Wijn B draagt €45 per fles bij aan de vaste kosten (€175 - €130)
+            \item Zonder Wijn B maak je €1.750 verlies in plaats van €500 winst
+            \item Het schrappen van een "verlieslatend" product is gevaarlijk als het nog een positieve dekkingsbijdrage heeft
+            \item De toeslagmethode beïnvloedt sterk welk product "winstgevend" lijkt
+        \end{itemize}
+    \end{oefenblok}
+
+
+    Door al deze problemen wordt gekeken naar een andere methode:
+    \item\concept{(Industriële)Standaard kostprijsberekening:} Je kijkt naar 
+    alle elementen die in de kostprijs zitten
+    en bekijken wat de standaard kosten zijn.
+    Je gaat dus kijken naar de standaard prijzen van grondstoffen,
+    standaard lonen, standaard machine gebruik etc.
+    \newline
+
+    \begin{oefenblok}[title=Oefening: Industriële Standaard Kostprijsberekening]
+        \textbf{Voorbeeld: De Smederij - Industriële Standaardkostprijs}
+        
+        Bij de industriële standaardkostprijs wordt de kostprijs vooraf berekend op basis van technische standaarden, 
+        in plaats van achteraf op basis van werkelijke uitgaven. De kostprijs werkt met kostenplaatsen en standaarden, 
+        en blijft geldig zolang de standaarden niet wijzigen.
+        
+        \textbf{Gegeven:}
+        
+        Een smederij produceert een metalen component met de volgende technische gegevens:
+        \begin{itemize}
+            \item Aantal uren smeden: 3,5 uur
+            \item Gewicht voor thermische behandeling: 12 kg
+            \item Standaardprijs smeden: €45 per uur
+            \item Standaardprijs thermische behandeling: €8 per kg
+        \end{itemize}
+        
+        \textbf{Gevraagd:} Bereken de industriële standaardkostprijs voor dit product.
+        
+        \textbf{Oplossing:}
+        
+        De industriële standaardkostprijs wordt berekend als:
+        \begin{align*}
+        \text{Standaardkostprijs} &= (\text{Uren smeden} \times \text{Std. prijs/uur}) \\
+        &\quad + (\text{Kg behandeling} \times \text{Std. prijs/kg})
+        \end{align*}
+        
+        Invullen van de gegevens:
+        \begin{align*}
+        \text{Standaardkostprijs} &= (3,5 \text{ uur} \times €45/\text{uur}) + (12 \text{ kg} \times €8/\text{kg}) \\
+        &= €157,50 + €96,00 \\
+        &= \mathbf{€253,50}
+        \end{align*}
+        
+        \textbf{Interpretatie:}
+        
+        De vooraf bepaalde kostprijs voor dit product is €253,50. Deze standaardkostprijs geldt als norm. 
+        Achteraf worden de werkelijke kosten vergeleken met deze standaard. Als de werkelijke kosten:
+        \begin{itemize}
+            \item \textbf{Lager} zijn dan €253,50: positieve afwijking (efficiëntie)
+            \item \textbf{Hoger} zijn dan €253,50: negatieve afwijking (inefficiëntie)
+        \end{itemize}
+        
+        \textbf{Voorbeeld afwijkingsanalyse:}
+        
+        Stel dat de werkelijke kosten achteraf:
+        \begin{itemize}
+            \item Werkelijke uren smeden: 4 uur à €45/uur = €180
+            \item Werkelijke kg behandeling: 12 kg à €9/kg = €108
+            \item Totale werkelijke kosten: €288
+        \end{itemize}
+        
+        Afwijking: €288 - €253,50 = \textbf{€34,50 negatieve afwijking}
+        
+        Deze afwijking kan worden opgesplitst:
+        \begin{itemize}
+            \item Tijdsafwijking smeden: (4 - 3,5) × €45 = €22,50 (inefficiënt)
+            \item Prijsafwijking behandeling: 12 × (€9 - €8) = €12,00 (hogere prijs)
+        \end{itemize}
+    \end{oefenblok}
+
+
+    \item\concept{Evenredige kostprijsberekening:} 
+    De industriele kostprijsberekening is ook niet perfect.
+    Je hebt bijvoorbeeld geen idee van hoeveel producten 
+    je moet verkopen om winst te maken.
+    De evenredige kosten biedt antwoord op de vragen:
+    Hoeveel kan ik afzetten (verkopen) voordat ik winst maak?
+    Hoe rendabel is mijn product?
+    \newline
+    Je gaat dus kijken naar de vaste en variable kosten
+    en een \belangrijk{break-even analyse} doen.
 
 
 
-\begin{examenbox}
-    Zorg dat je alle methodes kent en wat ze inhouden. 
-    Daarbij ook de voordelen en nadelen en de hoe de winst noemt.
-    kijk naar de figuur \ref{fig:VerschillendeMethodes.png}
-    \begin{itemize}
-        \item Exploitatiewinst
-        \item Commerciele winst
-        \item Marge
-    \end{itemize}
-\end{examenbox}
-
-\subsubsection{Break-Even Analyse}
+\textbf{Break-Even Analyse}
+\newline
 De break-even analyse bepaalt het punt waarop een bedrijf geen winst of verlies maakt. Dit is het moment waarop de \textbf{Totale Opbrengst (TO)} gelijk is aan de \textbf{Totale Kosten (TK)}.
 
 \begin{figure}[ht]
@@ -1652,11 +2189,160 @@ en de kostprijs.
 \FloatBarrier
 
 Je gaat dan het verschil met de marginale kost en de marginale opbrengst bekijken en dan de winst maximaliseren.
+\end{description}
 
+\begin{examenbox}
+    Zorg dat je alle methodes kent en wat ze inhouden. 
+    Daarbij ook de voordelen en nadelen en de hoe de winst noemt.
+    kijk naar de figuur \ref{fig:VerschillendeMethodes.png}
+    \begin{itemize}
+        \item Exploitatiewinst
+        \item Commerciele winst
+        \item Marge
+    \end{itemize}
+\end{examenbox}
 
 \begin{examenbox}
     Zorg dat je deze grafieken goed kunt uitleggen
 \end{examenbox}
+
+\subsection{afwijkingsanalyse}
+Je wilt zien of je bereken nu wel klopt met de werkelijke kostprijs.
+Na je periode ga je deze berekening doen.
+
+
+
+\frm{Afwijkingsanalyse}{W = afwijking = K' - K = (p' - p) * q' + (q' - q) * p'}
+{
+Met W = afwijking in euro's
+K' = werkelijke kostprijs
+K = geplande kostprijs
+p' = werkelijke prijs
+p = geplande prijs
+q' = werkelijke hoeveelheid q = geplande hoeveelheid
+}
+
+
+\begin{oefenblok}[title=Afwijkingsanalyse - Begroting vs Realisatie]
+    \textbf{Situatie:}
+    
+    Een productiebedrijf wil de verschillen tussen begroting en werkelijkheid analyseren.
+    
+    \textbf{1. Standaarden (Begroting):} Productie van 140.000 stuks
+    
+    \begin{tabular}{lcc}
+    \hline
+    \textbf{Element} & \textbf{Standaard per stuk} & \textbf{Standaardprijs} \\
+    \hline
+    Grondstof & 0,3 kg & €50/kg \\
+    Arbeid & 0,1 uur & €200/uur \\
+    Vaste kosten & €5/stuk & €700.000 totaal \\
+    \hline
+    \end{tabular}
+    
+    \textbf{2. Werkelijkheid (Realisatie):} Productie van 150.000 stuks
+    
+    \begin{tabular}{lcc}
+    \hline
+    \textbf{Element} & \textbf{Werkelijk verbruik} & \textbf{Werkelijke kosten} \\
+    \hline
+    Grondstof & 43.000 kg & €2.080.000 \\
+    Arbeid & 16.000 uur & €3.360.000 \\
+    Vaste kosten & - & €700.000 \\
+    \hline
+    \end{tabular}
+    
+    \textbf{3. Afwijkingsanalyse:}
+    
+    \textbf{A. Grondstoffen}
+    
+    Werkelijke prijs: $P' = \frac{€2.080.000}{43.000\text{ kg}} = €48,37/\text{kg}$
+    
+    Standaard hoeveelheid voor 150.000 stuks: $Q = 150.000 \times 0,3 = 45.000$ kg
+    
+    \begin{align*}
+    \text{Prijsafwijking} &= (P' - P) \times Q' \\
+    &= (€48,37 - €50) \times 43.000 \\
+    &= \mathbf{-€70.000} \quad \text{\textcolor{green!70!black}{(Voordelig)}}
+    \end{align*}
+    
+    \textit{Interpretatie:} Grondstoffen goedkoper ingekocht dan gepland.
+    
+    \begin{align*}
+    \text{Efficiëntieafwijking} &= (Q' - Q) \times P \\
+    &= (43.000 - 45.000) \times €50 \\
+    &= \mathbf{-€100.000} \quad \text{\textcolor{green!70!black}{(Voordelig)}}
+    \end{align*}
+    
+    \textit{Interpretatie:} Minder materiaal verbruikt (43.000 kg) dan de standaard (45.000 kg).
+    
+    \textbf{Totale afwijking grondstoffen:} -€70.000 + (-€100.000) = \textbf{-€170.000 (Voordelig)}
+    
+    \textbf{B. Arbeid}
+    
+    Werkelijk uurloon: $P' = \frac{€3.360.000}{16.000\text{ uur}} = €210/\text{uur}$
+    
+    Standaard uren voor 150.000 stuks: $Q = 150.000 \times 0,1 = 15.000$ uur
+    
+    \begin{align*}
+    \text{Prijsafwijking} &= (P' - P) \times Q' \\
+    &= (€210 - €200) \times 16.000 \\
+    &= \mathbf{+€160.000} \quad \text{\textcolor{red}{(Nadelig)}}
+    \end{align*}
+    
+    \textit{Interpretatie:} Personeel was duurder per uur dan begroot.
+    
+    \begin{align*}
+    \text{Efficiëntieafwijking} &= (Q' - Q) \times P \\
+    &= (16.000 - 15.000) \times €200 \\
+    &= \mathbf{+€200.000} \quad \text{\textcolor{red}{(Nadelig)}}
+    \end{align*}
+    
+    \textit{Interpretatie:} Personeel werkte trager dan standaard (16.000 uur i.p.v. 15.000 uur).
+    
+    \textbf{Totale afwijking arbeid:} +€160.000 + €200.000 = \textbf{+€360.000 (Nadelig)}
+    
+    \textbf{C. Vaste Kosten (Capaciteit)}
+    
+    Standaard vaste kosten per stuk: $\frac{€700.000}{140.000} = €5/\text{stuk}$
+    
+    \begin{align*}
+    \text{Bezettingsafwijking} &= (\text{Geplande productie} - \text{Werkelijke productie}) \times \text{Std. tarief} \\
+    &= (140.000 - 150.000) \times €5 \\
+    &= \mathbf{-€50.000} \quad \text{\textcolor{green!70!black}{(Voordelig)}}
+    \end{align*}
+    
+    \textit{Interpretatie:} Meer geproduceerd (150k vs 140k), dus vaste kosten gespreid over meer eenheden.
+    
+    \textbf{Totaaloverzicht:}
+    
+    \begin{tabular}{lrr}
+    \hline
+    \textbf{Kostensoort} & \textbf{Afwijking} & \textbf{Effect} \\
+    \hline
+    Grondstoffen - Prijs & -€70.000 & Voordelig \\
+    Grondstoffen - Efficiëntie & -€100.000 & Voordelig \\
+    Arbeid - Prijs & +€160.000 & Nadelig \\
+    Arbeid - Efficiëntie & +€200.000 & Nadelig \\
+    Vaste kosten - Bezetting & -€50.000 & Voordelig \\
+    \hline
+    \textbf{Totale afwijking} & \textbf{+€140.000} & \textbf{Nadelig} \\
+    \hline
+    \end{tabular}
+    
+    \textbf{Conclusie:}
+    \begin{itemize}
+        \item De arbeidskosten vielen veel hoger uit (+€360.000) door hogere lonen én inefficiënt werken
+        \item Dit werd deels gecompenseerd door:
+        \begin{itemize}
+            \item Goedkopere inkoop grondstoffen (-€70.000)
+            \item Zuiniger materiaalgebruik (-€100.000)
+            \item Hogere productievolume (-€50.000)
+        \end{itemize}
+        \item Netto resultaat: €140.000 meer kosten dan begroot
+        \item Actie nodig: Arbeidsefficiëntie verbeteren en loonkosten onderzoeken
+    \end{itemize}
+\end{oefenblok}
 
 
 
@@ -1680,6 +2366,14 @@ Bij target based costing ga je eerst kijken wat de marktprijs is.
 Je kijkt dus wat de klant wil betalen voor een product.
 Daarna ga je je product maken binnen die kostprijs.
 Dit is dus een omgekeerde manier van denken.
+
+\begin{figure}[ht]
+      \centering
+        \includegraphics[width=0.6\textwidth]{image6.png}
+        \caption{}
+        \label{fig:image6.png}
+\end{figure}
+\FloatBarrier
 
 
 
@@ -2173,6 +2867,15 @@ Hoe productief is elke werknemer. Hoe hoger hoe productieve de werknemers zijn.
        \label{fig:fitometer.png}
 \end{figure}
 \FloatBarrier
+
+Als de liquiditeitsratio (Eigen vermogen / Vreemd vermogen) en de winstgevendheid (hoeveel winst je maakt)
+hoog zijn, is het bedrijf fit.
+
+Als je verlies maakt maar je hebt veel geld, is het bedrijf structuureel ziek.
+Je gaat vanaf een punt al je liquide middelen opmaken.
+Als je weinig geld hebt maar wel winst maakt, is het bedrijf tijdelijk ziek.
+Je hebt dan tijdelijk een cash probleem maar je maakt wel winst.
+Als je weinig geld hebt en verlies maakt, is het bedrijf acuut ziek en naderend failliet.
 
 
 \subsection{Conclusie}
@@ -3509,11 +4212,14 @@ In het tableau staat inderdaad $\frac{1}{2}$ bij $X_1$ in beide rijen. Deze coë
 \end{itemize}
 \end{warningbox}
 
-Maar omdat we de optimale oplossing zoeken en $X_1$ niet in de basis zit, \textbf{kiezen} we ervoor om $X_1 = 0$ te stellen.
+Maar omdat we de optimale oplossing zoeken en $X_1$ niet in de basis zit, \textbf{kiezen} 
+we ervoor om $X_1 = 0$ te stellen.
 
 \textit{Regel 3: De Z-rij vertelt of dit optimaal is}
 
-De coëfficiënt van $X_1$ in de Z-rij is $+3$ (positief). Dit betekent: als we $X_1$ in de basis zouden brengen, zou de winstfunctie \textbf{dalen} met 3 per eenheid. Daarom is het beter om $X_1 = 0$ te houden.
+De coëfficiënt van $X_1$ in de Z-rij is $+3$ (positief). 
+Dit betekent: als we $X_1$ in de basis zouden brengen, zou de winstfunctie \textbf{dalen}
+ met 3 per eenheid. Daarom is het beter om $X_1 = 0$ te houden.
 
 \vspace{0.3cm}
 
@@ -3922,5 +4628,4 @@ Het komt goed. Blijf er gewoon voor gaan.
 	\includegraphics[width=1\textwidth]{image4.png}
 \end{center}
 
-\clearpage
 \end{document}
