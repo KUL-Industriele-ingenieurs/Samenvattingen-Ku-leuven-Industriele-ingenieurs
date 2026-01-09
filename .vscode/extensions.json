@@ -1,5 +1,7 @@
 {
     "recommendations": [
-        "tecosaur.latex-utilities"
+        "tecosaur.latex-utilities",
+        "Gruntfuggly.todo-tree",
+        "GitHub.vscode-pull-request-github"
     ]
 }
