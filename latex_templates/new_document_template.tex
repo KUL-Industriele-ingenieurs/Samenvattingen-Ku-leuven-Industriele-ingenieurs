@@ -1,25 +1,93 @@
 % new_document_template.tex
-% Clean starting point for school documents
+% =============================================================================
+%                    TEMPLATE VOOR CURSUSSAMENVATTING
+%                    KU Leuven - School Macros v2.0
+% =============================================================================
+% Dit is een starttemplate voor nieuwe documenten.
+% Kopieer dit bestand en pas het aan voor je eigen cursus.
+%
+% Tip: Compileer TWEEMAAL voor correcte formularium en symbolenlijst!
+% =============================================================================
 
 \documentclass[a4paper,11pt]{article}
 \usepackage{school-macros}
 
-\title{Titel van het Document}
-\author{Jouw Naam}
-\date{\today}
+% =============================================================================
+%                           DOCUMENT INFO
+% =============================================================================
+% Pas deze gegevens aan voor je cursus:
+\newcommand{\vaknaam}{Naam van het Vak}
+\newcommand{\vakcode}{XXXYYY}
+\newcommand{\auteur}{Jouw Naam}
+\newcommand{\academiejaar}{2025-2026}
 
+\title{\vaknaam{} --- Samenvatting}
+\author{\auteur}
+\date{Academiejaar \academiejaar}
+
+% =============================================================================
+%                              DOCUMENT
+% =============================================================================
 \begin{document}
 
+% --- Titelpagina (kies één van beide opties) ---
+
+% Optie 1: Eenvoudige titel
 \maketitle
+
+% Optie 2: KU Leuven stijl (uncomment onderstaande, comment \maketitle)
+% \kuleuventitle{\vaknaam{} --- Samenvatting}{\vakcode}{\auteur}{Academiejaar \academiejaar}
+
 \tableofcontents
 \newpage
 
+% =============================================================================
+%                              INHOUD
+% =============================================================================
+
 \section{Inleiding}
 
-% Begin hier met je inhoud
+% Begin hier met je inhoud. Enkele tips:
+% - Gebruik \concept{} voor nieuwe begrippen
+% - Gebruik \frm{}{}{} voor belangrijke formules  
+% - Gebruik \sym{}{}{} bij eerste vermelding van symbolen
+% - Gebruik \SI{}{} voor getallen met eenheden
 
+\begin{conceptbox}[title=Voorbeeld Definitie]
+Dit is een voorbeeld van een conceptbox. Gebruik deze voor belangrijke definities.
+\end{conceptbox}
 
+\section{Theorie}
+
+\begin{theorieblok}[title=Voorbeeld Theorie]
+Gebruik de theorieblok voor theoretische uitleg en achtergrond.
+\end{theorieblok}
+
+% Voorbeeld formule (wordt automatisch toegevoegd aan formularium)
+\frm{Voorbeeld Formule}{E = mc^2}{waarbij $m$ de massa [\si{kg}] en $c$ de lichtsnelheid [\si{m/s}]}
+
+\section{Oefeningen}
+
+\begin{oefenblok}[title=Oefening 1]
+\textbf{Gegeven:} $m = \SI{2}{kg}$, $v = \SI{10}{m/s}$
+
+\textbf{Gevraagd:} Bereken de kinetische energie.
+
+\textbf{Oplossing:}
+\[ E_k = \frac{1}{2}mv^2 = \frac{1}{2} \times \SI{2}{kg} \times (\SI{10}{m/s})^2 = \SI{100}{J} \]
+\end{oefenblok}
+
+\begin{examenbox}
+Dit is een compacte examentip. Ideaal voor korte, praktische tips.
+\end{examenbox}
+
+% =============================================================================
+%                              APPENDICES  
+% =============================================================================
+\newpage
 \appendix
+
+% Automatisch gegenereerde lijsten (compileer tweemaal!)
 \printsymbols
 \printformularium
 
