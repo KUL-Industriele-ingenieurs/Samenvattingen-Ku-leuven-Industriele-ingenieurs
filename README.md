@@ -49,6 +49,12 @@ Een gezamenlijk project voor het maken van professionele, gedetailleerde samenva
    cd School-latex-documents
    ```
 
+4. **Git hooks instellen (BELANGRIJK!):**
+   ```powershell
+   .\setup-hooks.ps1
+   ```
+   Dit zorgt ervoor dat gegenereerde PDFs niet worden gecommit.
+
 ---
 
 ## 📝 VS Code LaTeX Workflow
