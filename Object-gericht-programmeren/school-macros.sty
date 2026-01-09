@@ -192,49 +192,57 @@
 % Less intrusive while maintaining visual distinction
 
 \tcbset{
-    % Base style for all school boxes - minimal with left accent bar only
+    % Base style for all school boxes - unified title and left bar
     schoolbase/.style={
-        blanker,
+        enhanced,
         breakable,
-        left=12pt,
+        colback=white,
+        colbacktitle=schoolBlue,
+        colframe=schoolBlue,
+        coltitle=white,
+        boxrule=0pt,
+        leftrule=3pt,
+        arc=0pt,
+        left=10pt,
         right=8pt,
-        top=8pt,
-        bottom=8pt,
-        borderline west={3pt}{0pt}{schoolBlue},
+        top=6pt,
+        bottom=6pt,
+        toptitle=4pt,
+        bottomtitle=4pt,
+        lefttitle=10pt,
         before skip=10pt,
         after skip=10pt,
-        fonttitle=\bfseries\color{schoolBlue},
-        before upper={\parindent0pt},
+        fonttitle=\bfseries,
     },
     % Concept/definition box (blue accent)
     conceptstyle/.style={
         schoolbase,
-        borderline west={3pt}{0pt}{schoolBlue},
-        fonttitle=\bfseries\color{schoolBlue},
+        colbacktitle=schoolBlue,
+        colframe=schoolBlue,
     },
     % Warning box (red accent)
     warningstyle/.style={
         schoolbase,
-        borderline west={3pt}{0pt}{schoolRed},
-        fonttitle=\bfseries\color{schoolRed},
+        colbacktitle=schoolRed,
+        colframe=schoolRed,
     },
     % Exercise box (green accent)
     exercisestyle/.style={
         schoolbase,
-        borderline west={3pt}{0pt}{schoolGreen},
-        fonttitle=\bfseries\color{schoolGreen},
+        colbacktitle=schoolGreen,
+        colframe=schoolGreen,
     },
     % Theory box (purple accent)
     theorystyle/.style={
         schoolbase,
-        borderline west={3pt}{0pt}{violet!70!black},
-        fonttitle=\bfseries\color{violet!70!black},
+        colbacktitle=violet!70!black,
+        colframe=violet!70!black,
     },
     % Example box (orange accent)
     examplestyle/.style={
         schoolbase,
-        borderline west={3pt}{0pt}{schoolOrange},
-        fonttitle=\bfseries\color{schoolOrange},
+        colbacktitle=schoolOrange,
+        colframe=schoolOrange,
     },
     % Symbol introduction box
     symbolstyle/.style={
