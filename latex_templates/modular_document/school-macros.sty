@@ -145,6 +145,8 @@
 \definecolor{schoolOrange}{RGB}{230,126,34}   % Notes/highlights
 \definecolor{schoolGray}{RGB}{100,100,100}    % Neutral
 \definecolor{schoolGreen}{RGB}{39,174,96}     % Success/exercises
+\definecolor{schoolTeal}{RGB}{0,150,136}      % Formulas (teal)
+\definecolor{schoolTeal}{RGB}{0,150,136}      % Formulas (teal)
 
 % Formula box colors (user-redefinable)
 \newcommand*{\frmBoxBack}{blue!5}
@@ -241,11 +243,11 @@
         blanker,
         left=8pt,
         right=8pt,
-        top=4pt,
-        bottom=4pt,
+        top=3pt,
+        bottom=3pt,
         borderline west={2pt}{0pt}{schoolGray!60},
-        before skip=6pt,
-        after skip=6pt,
+        before skip=2pt,
+        after skip=2pt,
     },
     % BACKWARD COMPATIBILITY: old style name alias
     schoolstyle/.style={schoolbase},
@@ -293,84 +295,81 @@
 \newcounter{FormulariumSectionCounter}
 
 \makeatletter
-% Track current section for formula grouping
+% Track current section number and title for formula grouping
 \newcommand*{\@currentFormulariumSection}{0}
+\newcommand*{\@currentSectionTitle}{}
 
-% Hook into section to track section numbers
+% Hook into section to track section numbers AND titles
 \let\@oldsection\section
 \renewcommand{\section}{\@ifstar{\@ssection}{\@nsection}}
 \newcommand{\@nsection}[1]{%
     \stepcounter{FormulariumSectionCounter}%
     \xdef\@currentFormulariumSection{\theFormulariumSectionCounter}%
+    \protected@edef\@currentSectionTitle{#1}%
     \@oldsection{#1}%
 }
-\newcommand{\@ssection}[1]{\@oldsection*{#1}}
+\newcommand{\@ssection}[1]{%
+    \protected@edef\@currentSectionTitle{#1}%
+    \@oldsection*{#1}%
+}
 
-\newcommand{\addformulariumentry}[5]{%
-    % #1=section, #2=label, #3=math, #4=description, #5=counter
+\newcommand{\addformulariumentry}[6]{%
+    % #1=section, #2=section title, #3=label, #4=math, #5=description, #6=counter
     \ifinlist{#1}{\FormulariumSections}{}{%
         \listgadd{\FormulariumSections}{#1}%
         \global\csdef{SectionFormulas@#1}{}%
-        \global\csdef{SectionTitle@#1}{}%
+        \global\csdef{SectionTitle@#1}{#2}%
     }%
     \csxappto{SectionFormulas@#1}{%
         % Formula card entry with clear visual separation
-        \noexpand\formulariumcard{#2}{\unexpanded{#3}}{\unexpanded{#4}}{#5}%
+        \noexpand\formulariumcard{#3}{\unexpanded{#4}}{\unexpanded{#5}}{#6}%
     }%
 }
 
-% Individual formula card in formularium - visually distinct
+% Individual formula card in formularium - simple text layout without box
 \newcommand{\formulariumcard}[4]{%
     % #1=label, #2=math, #3=description, #4=ref counter
-    \begin{tcolorbox}[
-        enhanced,
-        colback=gray!3,
-        colframe=schoolBlue!40,
-        boxrule=0.3pt,
-        leftrule=2pt,
-        arc=2pt,
-        left=6pt, right=6pt, top=4pt, bottom=4pt,
-        before skip=4pt,
-        after skip=4pt,
-        fontupper=\small,
-    ]
-        \textbf{#1} \hfill {\scriptsize\textcolor{schoolGray}{\hyperref[frm:#4]{p.~\pageref{frm:#4}}}}\\[2pt]
-        {\centering $\displaystyle #2$\par}
-        \vspace{2pt}
-        {\footnotesize\textcolor{schoolGray}{#3}}
-    \end{tcolorbox}%
+    \par\vspace{6pt}%
+    \noindent\textbf{#1} \hfill {\scriptsize\textcolor{schoolGray}{\hyperref[frm:#4]{p.~\pageref{frm:#4}}}}\\[4pt]%
+    {\centering\large $\displaystyle #2$\par}%
+    \vspace{2pt}%
+    {\noindent\footnotesize\itshape #3}%
+    \par\vspace{6pt}%
 }
 
 \newcommand{\frm}[3]{%
     \stepcounter{FormulariumEntryCounter}%
     \begin{tcolorbox}[
+        enhanced,
         breakable,
-        colback=\frmBoxBack,
-        colframe=\frmBoxFrame,
-        boxrule=\frmBoxRule,
-        leftrule=3pt,
-        arc=\frmBoxArc,
-        boxsep=\frmBoxSep,
-        left=6pt, right=6pt, top=4pt, bottom=4pt,
-        before skip=10pt,
-        after skip=10pt
+        colback=white,
+        colframe=schoolTeal,
+        boxrule=2pt,
+        arc=3pt,
+        outer arc=3pt,
+        left=10pt,
+        right=10pt,
+        top=8pt,
+        bottom=8pt,
+        before skip=12pt,
+        after skip=4pt,
     ]
-        \textbf{#1:}\par
-        \vspace{2pt}
+        {\color{schoolTeal}\bfseries #1}\par
+        \vspace{4pt}
         {\centering\large $\displaystyle #2$\par}
         \vspace{4pt}
-        {\footnotesize\itshape #3}\label{frm:\theFormulariumEntryCounter}%
+        {\small #3}\label{frm:\theFormulariumEntryCounter}%
     \end{tcolorbox}%
-    % Store with current section number
-    \protected@write\@auxout{}{\string\addformulariumentry{\@currentFormulariumSection}{\unexpanded{#1}}{\unexpanded{#2}}{\unexpanded{#3}}{\theFormulariumEntryCounter}}%
+    % Store with current section number and section title
+    \protected@write\@auxout{}{\string\addformulariumentry{\@currentFormulariumSection}{\unexpanded{\@currentSectionTitle}}{\unexpanded{#1}}{\unexpanded{#2}}{\unexpanded{#3}}{\theFormulariumEntryCounter}}%
 }
 
 \newcommand*{\printSectionFormulas}[1]{%
-    % Print formulas for section #1 with visual header
+    % Print formulas for section #1 with visual header showing section title
     \ifnum#1>0
         \par\vspace{6pt}
         \noindent\textcolor{schoolBlue}{\rule{0.3\linewidth}{1pt}}%
-        \hspace{0.5em}{\small\bfseries\textcolor{schoolBlue}{Sectie #1}}\hspace{0.5em}%
+        \hspace{0.5em}{\small\bfseries\textcolor{schoolBlue}{\csuse{SectionTitle@#1}}}\hspace{0.5em}%
         \textcolor{schoolBlue}{\rule{0.3\linewidth}{1pt}}%
         \par\vspace{4pt}
     \fi
@@ -412,27 +411,30 @@
 \newcommand*{\SymbolList}{}
 
 \makeatletter
-\newcommand{\symentry}[3]{\g@addto@macro\SymbolList{$#1$ & #2 & \si{#3}\\}}
-\newcommand{\symwrite}[3]{\protected@write\@auxout{}{\string\symentry{#1}{#2}{#3}}}
+\newcommand{\symentry}[4]{\g@addto@macro\SymbolList{$#1$ & #2 & \si{#3} & \hyperlink{sym:#1}{#4}\\}}
+\newcommand{\symwrite}[4]{\protected@write\@auxout{}{\string\symentry{#1}{#2}{#3}{#4}}}
 
+% \sym always shows description inline on repeat use (for frm context)
+% Duplicate detection is based ONLY on the symbol (not description/unit)
 \newcommand{\sym}[3]{%
-    \expandafter\ifx\csname sym@seen@#1\endcsname\relax
-        \expandafter\gdef\csname sym@seen@#1\endcsname{}%
+    \expandafter\ifx\csname sym@\string#1\endcsname\relax
+        \expandafter\gdef\csname sym@\string#1\endcsname{1}%
+        \hypertarget{sym:#1}{}%
         \begin{tcolorbox}[symbolstyle]
             \textbf{\ensuremath{#1}} --- #2 \hfill {\footnotesize\textcolor{schoolGray}{\si{#3}}}
         \end{tcolorbox}%
-        \symwrite{#1}{#2}{#3}%
+        \symwrite{#1}{#2}{#3}{\thepage}%
     \else
-        \textbf{\ensuremath{#1}}%
+        {\small\textbf{\ensuremath{#1}} --- #2 [\si{#3}]}%
     \fi
 }
 
 \newcommand*{\printsymbols}{%
     \par
     \@ifundefined{chapter}{\section*{Symbolenlijst}}{\chapter*{Symbolenlijst}}%
-    \begin{tabularx}{\textwidth}{l X l}
+    \begin{tabularx}{\textwidth}{l X l r}
         \toprule
-        \textbf{Symbool} & \textbf{Beschrijving} & \textbf{Eenheid} \\
+        \textbf{Symbool} & \textbf{Beschrijving} & \textbf{Eenheid} & \textbf{Pagina} \\
         \midrule
         \SymbolList
         \bottomrule

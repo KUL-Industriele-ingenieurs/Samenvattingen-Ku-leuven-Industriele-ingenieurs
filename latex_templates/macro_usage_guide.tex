@@ -22,8 +22,11 @@
     {\Huge\bfseries LaTeX Tutorial}\\[0.3cm]
     {\Large School Macros Handleiding v2.0}
 }
-\author{Voor studenten en docenten}
-\date{Academiejaar 2025-2026}
+\author{Voor studenten}
+\date{\today}
+% =============================================================================
+
+
 
 \begin{document}
 
@@ -35,6 +38,13 @@ cursussamenvattingen. LaTeX, oorspronkelijk ontwikkeld door \textcite{lamport199
 \TeX{} van \textcite{knuth1984}, is de standaard voor wetenschappelijke documenten.
 Het behandelt zowel de basis van LaTeX als de geavanceerde features
 van het \texttt{school-macros} pakket. Voor een snelle introductie, zie ook \cite{overleaf2024}.
+\newline
+
+Deze samenvattingen zijn beschikbaar op GitHub waar je kunt bijdragen aan verbeteringen:
+ \url{https://github.com/Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs}
+
+Je bent helemaal vrij en ik raad je zelf aan om info toe te voegen aan de documenten als je de uitleg niet goed vindt.
+Je leert je vak en je raakt dan ook bekend met LaTeX wat handig is voor later.
 \end{abstract}
 
 \tableofcontents
@@ -238,21 +248,21 @@ De \verb|\frm{}{}{}| macro is de kern van het school-macros systeem. Het:
 
 \subsection{Basis gebruik}
 
-\frm{Kinetische Energie}{E_k = \frac{1}{2}mv^2}{waarbij $m$ de massa [\si{kg}] en $v$ de snelheid [\si{m/s}]}
+\frm{Kinetische Energie}{E_k = \frac{1}{2}mv^2}{met \sym{m}{massa}{\si{kg}}  \sym{v}{snelheid}{\si{m/s}}}
 
 Code:
 \begin{verbatim}
 \frm{Kinetische Energie}{E_k = \frac{1}{2}mv^2}
-    {waarbij $m$ de massa [\si{kg}] en $v$ de snelheid [\si{m/s}]}
+    {met \sym{m}{massa}{\si{kg}}  \sym{v}{snelheid}{\si{m/s}}}
 \end{verbatim}
 
 \subsection{Meer voorbeelden}
 
-\frm{Potentiële Energie}{E_p = mgh}{met $g = \SI{9.81}{m/s^2}$ de valversnelling en $h$ de hoogte [\si{m}]}
+\frm{Potentiële Energie}{E_p = mgh}{met \sym{g}{valversnelling}{\si{m/s^2}}  \sym{h}{hoogte}{\si{m}}}
 
-\frm{Arbeid}{W = \vec{F} \cdot \vec{s} = Fs\cos\theta}{met $\theta$ de hoek tussen kracht en verplaatsing}
+\frm{Arbeid}{W = \vec{F} \cdot \vec{s} = Fs\cos\theta}{met \sym{F}{kracht}{\si{N}}  \sym{s}{verplaatsing}{\si{m}}  \sym{\theta}{hoek}{\si{rad}}}
 
-\frm{Vermogen}{P = \frac{W}{t} = \vec{F} \cdot \vec{v}}{eenheid: Watt [\si{W}]}
+\frm{Vermogen}{P = \frac{W}{t} = \vec{F} \cdot \vec{v}}{met \sym{W}{arbeid}{\si{J}}  \sym{t}{tijd}{\si{s}}  \sym{v}{snelheid}{\si{m/s}}}
 
 % =============================================================================
 \section{Symbolen met \textbackslash sym}
