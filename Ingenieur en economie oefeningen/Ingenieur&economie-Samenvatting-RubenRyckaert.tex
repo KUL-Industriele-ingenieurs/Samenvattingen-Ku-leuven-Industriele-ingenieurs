@@ -25,6 +25,10 @@
 \begin{document}
 \microtypecontext{spacing=nonfrench}
 \maketitle
+\noindent Deze samenvattingen zijn beschikbaar op GitHub waar je kunt bijdragen aan verbeteringen: \url{https://github.com/Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs}
+
+Je hebt helemaal vrij en ik raad je zelf aan om info toe te voegen aan de documenten als je de uitleg niet goed vindt.
+Je leert je vak en je raakt dan ook bekend met LaTeX wat handig is voor later.
 \tableofcontents
 \includepdf[pages=1-2]{Formularium Ingenieur en Economie.pdf}
 \printformularium
@@ -2391,9 +2395,80 @@ ABC ga je per product de kosten toewijzen.
 Dit is veel realistischer. Het is wel moeilijker te implementeren.
 \newline 
 
-Bekijk de slides of het boek voor een voorbeeld van ABC.
 
+\begin{oefenblok}[title=Oefening uit examen: Activity Based Costing (ABC)]
+    \textbf{Situatie:}
 
+    Het maken van product A en B kost 3.500 euro in totaal
+    
+    Deze kosten zijn onderverdeeld in drie activiteiten:
+    \begin{itemize}
+        \item Machine-uren: €2.000
+        \item Inspecties: €1.000
+        \item Verpakkingen: €500
+    \end{itemize}
+
+    Het producten verbruiken de activiteiten als volgt:
+
+    \begin{tabular}{lcc}
+    \hline
+    \textbf{Activiteit} & \textbf{Product A} & \textbf{Product B} \\
+    \hline
+    Machine-uren & 100 uur & 50 uur \\
+    Inspecties & 10 keer & 30 keer \\
+    Verpakkingen & 200 stuks & 100 stuks \\
+    \hline
+    \end{tabular}
+
+    \vspace{4mm}
+    \textbf{Oplossing:}
+
+    Stap 1: Bepaal de cost-driver tarieven
+    \begin{itemize}
+        \item Machine-uren: totaal = $100 + 50 = 150$ uur. Tarief = $\frac{2000}{150} = €13{,}333\ldots$ (afronden op twee decimalen: €13,33/uur).
+        \item Inspecties: totaal = $10 + 30 = 40$ keer. Tarief = $\frac{1000}{40} = \mathbf{€25{,}00}$ per inspectie.
+        \item Verpakkingen: totaal = $200 + 100 = 300$ stuks. Tarief = $\frac{500}{300} = €1{,}666\ldots$ (afronden: €1,67/stuk).
+    \end{itemize}
+
+    Stap 2: Toewijzen van kosten per product (afrondingen zo dat totalen optellen)
+
+    \begin{tabular}{lrr}
+    \hline
+    \textbf{Activiteit} & \textbf{Product A}\\
+    \hline
+    Machine-uren (tarief €13,333...) & 100 uur $\times$ €13,33 = & €1.333,33 \\
+    Inspecties (tarief €25,00) & 10 $\times$ €25,00 = & €250,00 \\
+    Verpakkingen (tarief €1,666...) & 200 $\times$ €1,67 = & €333,33 \\
+    \hline
+    \textbf{Totaal Product A} & & \textbf{€1.916,66} \\
+    \hline
+    \textbf{Activiteit} & \textbf{Product B}\\
+    \hline
+    Machine-uren (tarief €13,333...) & 50 uur $\times$ €13,33 = & €666,67 \\
+    Inspecties (tarief €25,00) & 30 $\times$ €25,00 = & €750,00 \\
+    Verpakkingen (tarief €1,666...) & 100 $\times$ €1,67 = & €166,67 \\
+    \hline
+    \textbf{Totaal Product B} & & \textbf{€1.583,34} \\
+    \hline
+    \multicolumn{2}{r}{\textbf{Controle (som):}} & \textbf{€3.500,00} \\
+    \hline
+    \end{tabular}
+
+    \vspace{2mm}
+    \textbf{Conclusie:} Via ABC krijgen we de volgende toewijzing van de €3.500 aan indirecte kosten:
+    \begin{itemize}
+        \item Product A: €1.916,66
+        \item Product B: €1.583,34
+    \end{itemize}
+
+\end{oefenblok}
+
+Bekijk de slides of het boek voor een voorbeeld extra voorbeelden van ABC.
+
+\begin{examenbox}
+    Op het examen moet je zoiezo oftwel een tradionele kostprijsberekening
+    en/of een ABC kostprijsberekening kunnen maken. 
+\end{examenbox}
 \subsection{Target based costing}
 
 Bij traditionele kostprijsberekening maak je je product en kijk je daarna wat de kost is.
@@ -2421,7 +2496,7 @@ Een paar belangrijke termen om te kennen:
      Dit is een foto van de activa en passiva.
     \item Resultatenrekening: Een overzicht van de inkomsten en uitgaven over een bepaalde periode.
     Dit is een video van de winst en verlies.
-    \item Toelichting: wordt later besproken.
+    \item Toelichting: Uitleg en details bij de balans en resultatenrekening.
     \item Sociale balans: Een overzicht van de sociale aspecten van een bedrijf, 
     zoals arbeidsomstandigheden en personeelsbeleid.
     \item Niet-financiële informatie: Informatie die niet direct in geld kan worden uitgedrukt,

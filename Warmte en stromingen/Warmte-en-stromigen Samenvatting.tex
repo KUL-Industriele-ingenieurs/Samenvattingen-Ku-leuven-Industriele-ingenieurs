@@ -1,0 +1,70 @@
+% main.tex
+% Modular Document Example - Demonstrates \include for large projects
+% KU Leuven - Faculteit Industriële Ingenieurswetenschappen
+%
+% This template shows how to split a large document into multiple files.
+% Use this structure for thesis, large summaries, or multi-chapter documents.
+
+\documentclass[a4paper,11pt]{report}
+\usepackage{school-macros}
+
+% ============================================================================
+%                           DOCUMENT METADATA
+% ============================================================================
+\title{Warmte en Stromingen Samenvatting}
+\author{Jouw Naam}
+\date{Academiejaar 2025-2026}
+
+% Optional: Define course info for headers
+\newcommand{\coursename}{Warmte en Stromingen}
+\newcommand{\coursecode}{IE-12345}
+
+% ============================================================================
+%                              DOCUMENT
+% ============================================================================
+\begin{document}
+
+% --- Title Page (KU Leuven style) ---
+\kuleuventitle
+    {Warmte en Stromingen Samenvatting}
+    {\coursecode\ --- \coursename}
+    {Jouw Naam}
+    {Academiejaar 2025-2026}
+
+\noindent Deze samenvattingen zijn beschikbaar op GitHub waar je kunt bijdragen aan verbeteringen: 
+\url{https://github.com/Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs}
+
+Je hebt helemaal vrij en ik raad je zelf aan om info toe te voegen aan de documenten als je de uitleg niet goed vindt.
+Je leert je vak en je raakt dan ook bekend met LaTeX wat handig is voor later.
+
+% --- Front Matter ---
+\tableofcontents
+\newpage
+
+% ============================================================================
+%                           CHAPTER INCLUDES
+% ============================================================================
+% Use \include{} for chapters - each starts on a new page
+% Use \input{} for smaller sections that shouldn't force page breaks
+%
+% Benefits of \include:
+% - LaTeX can skip unchanged chapters (faster compilation)
+% - Each chapter can be compiled separately for testing
+% - Better organization for large projects
+%
+% Tip: Use \includeonly{chapter1,chapter2} in preamble to compile 
+%      only specific chapters while keeping all cross-references
+
+\include{chapters/chapter1_inleiding}
+
+
+% ============================================================================
+%                              APPENDICES
+% ============================================================================
+\appendix
+
+% Symbol list and formularium are auto-generated
+\printsymbols
+\printformularium
+
+\end{document}
