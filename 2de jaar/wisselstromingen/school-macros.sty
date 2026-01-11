@@ -24,10 +24,28 @@
 
 % --- Fonts & Typography ---
 \RequirePackage{lmodern}
-\RequirePackage{microtype}  % Improved text appearance
+\RequirePackage[
+    activate={true,nocompatibility},
+    final,
+    tracking=true,
+    kerning=true,
+    spacing=true,
+    factor=1100,
+    stretch=10,
+    shrink=10
+]{microtype}  % Improved text appearance
 \RequirePackage{parskip}    % Paragraph spacing instead of indent
 \RequirePackage{setspace}   % For line spacing
 \setstretch{1.15}           % Slightly larger for better readability
+
+% --- Quality & Engine Optimization ---
+\ifdefined\pdfminorversion
+    \pdfminorversion=7      % Use modern PDF 1.7 standard
+\fi
+\ifdefined\pdfsuppresswarningpagegroup
+    \pdfsuppresswarningpagegroup=1 % Suppress annoying PDF page group warnings
+\fi
+\microtypesetup{protrusion=true, expansion=true} % Explicitly enable high-quality features
 
 % --- Math (mathtools extends amsmath) ---
 \RequirePackage{mathtools}
