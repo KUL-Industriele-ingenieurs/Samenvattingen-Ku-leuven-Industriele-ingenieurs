@@ -2,157 +2,12 @@
 % Simple layout template with helpers for chapters, a formularium, and an easy figure helper.
 
 \documentclass[a4paper,12pt,twoside]{report}
-\usepackage[utf8]{inputenc}
-\usepackage[dutch]{babel}
-\usepackage[T1]{fontenc}
-\usepackage{textcomp} % provide TS1 encoding symbols (silences microtype spacing warning)
-% Use default (Computer Modern) but ensure scalable fonts via Latin Modern, keep microtype
-\usepackage{lmodern}
-\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,stretch=10,shrink=10]{microtype}
-% Ensure microtype uses the correct spacing model with nonfrenchspacing
-\microtypecontext{spacing=nonfrench}
-% Slightly increase line spacing for readability
-\usepackage{setspace}
-\setstretch{1.15} % slightly larger for better readability on A4
-% Make TeX less strict about individual line breaks to reduce underfull boxes
-\sloppy
-\usepackage{amsmath,amssymb}
-\usepackage{graphicx}
-\usepackage{tikz}
-% TikZ libraries used by figures (calc for coordinate arithmetic, arrows.meta for arrow tips, positioning for nodes)
-\usetikzlibrary{calc,arrows.meta,positioning,patterns,angles,quotes,babel,decorations.pathmorphing,shapes.geometric,shapes.misc,fit}
-\usepackage{fancyhdr}
-\usepackage{tcolorbox}
-\usepackage{float}
-% Page geometry: reduce margins and make them consistent
-\usepackage[left=2.0cm,right=2.0cm,top=2.5cm,bottom=2.5cm]{geometry}
-% Configure hyperref to avoid duplicate destination names (see hyperref option `hypertexnames`)
-\usepackage[hidelinks,hypertexnames=false]{hyperref}
-% Use `bookmark` to make outline writing more robust and avoid "file has changed" rerun warnings
-\usepackage{bookmark}
-\usepackage{caption}
-\captionsetup{skip=3pt,aboveskip=3pt,belowskip=3pt} % reduce caption separation
-\usepackage{enumitem}% Shared project macros (\frm, formularium, \fig)
-\usepackage[version=4]{mhchem}
-\usepackage{./productie-macros}
+\usepackage{school-macros}
 
-% --- Practical packages & macros to improve writing and consistency ---
-% Units & numbers (guarded: compiles even if siunitx is not installed)
-\IfFileExists{siunitx.sty}{%
-  \usepackage{siunitx}%
-  \sisetup{per-mode=symbol,detect-all=true}%
-}{%
-  \PackageWarning{productie-macros}{Package `siunitx' not found; install it to enable \string\SI and unit formatting (tlmgr install siunitx)}%
-}
-% Better tables
-\usepackage{booktabs}
-\usepackage{tabularx}
-% Set column separation for better readability
-\setlength{\tabcolsep}{15pt}
-\renewcommand{\arraystretch}{1.3} % More vertical space
-% Sub-figures
-\usepackage{subcaption}
-% Smart cross-references (load after hyperref) — guarded so missing package doesn't break build
-\IfFileExists{cleveref.sty}{%
-  \usepackage[capitalise]{cleveref}%
-  % Localised names (Dutch)
-  \crefname{figure}{figuur}{figuren}
-  \Crefname{figure}{Figuur}{Figuur}
-  \crefname{table}{tabel}{tabellen}
-  \Crefname{table}{Tabel}{Tabel}
-}{%
-  \PackageWarning{productie-macros}{Package `cleveref' not found; use standard \ref for cross-references}%
-}
 
-% Handy short macros for frequently used symbols
-\newcommand{\Fc}{\ensuremath{F_c}}
-\newcommand{\vc}{\ensuremath{v_c}}
-\newcommand{\Pc}{\ensuremath{P_c}}
 
-% Small helper for quick theory/exercise inline boxes (uses tcolorbox loaded earlier)
-\newtcbox{\theoriebox}{on line,boxrule=0.4pt,arc=2pt,boxsep=3pt,top=2pt,bottom=2pt,colback=gray!6,colframe=gray!40}
 
-% Quick usage notes:
-% - Use \SI{120}{\milli\metre\per\minute} for units (siunitx)
-% - Use \cref{fig:label} for cross-references (cleveref)
-% - Use \toprule/\midrule/\bottomrule for nicer tables (booktabs)
 
-% Hyphenation & tolerance adjustments to reduce underfull boxes
-% Increase tolerance slightly and give TeX more emergency stretch so fewer
-% underfull \hbox warnings occur in compact technical text
-\tolerance=1000
-\hyphenpenalty=300
-\exhyphenpenalty=300
-\emergencystretch=2em
-% If you see a Babel warning about Dutch hyphenation patterns, install them
-% and rebuild your format (tlmgr or system package manager) to enable real
-% Dutch hyphenation and reduce badness further
-\AtBeginDocument{\PackageWarning{productie-macros}{If you see ``No hyphenation patterns were preloaded for the language "Dutch"'' please install Dutch hyphenation patterns and rebuild your TeX format (e.g., using tlmgr).}}
-
-% Allow ragged bottom so LaTeX doesn't stretch pages to fill vertical space
-\raggedbottom
-% For customizing chapter styles and safely patching \chapter
-\usepackage{etoolbox}
-\usepackage{titlesec}
-% Prevent figures from floating past chapter boundaries and ensure floats don't appear before they are defined
-\usepackage{placeins}
-\usepackage{flafter}
-% Insert a FloatBarrier before every \chapter to keep floats in their chapter
-\preto\chapter{\FloatBarrier}
-
-% Make chapters keep number and title on the same line and avoid forcing a new page
-\makeatletter
-\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
-\makeatother
-% Slightly smaller chapter titles (keep them prominent but less tall)
-\titleformat{\chapter}[hang]{\normalfont\LARGE\bfseries}{\thechapter}{1em}{}[\titlerule]
-\titlespacing*{\chapter}{0pt}{12pt}{6pt} % more breathing room before/after chapter titles
-% Ensure section and subsection align to same left margin and use sensible spacing
-% Slightly reduce section/subsection size so titles are less dominant
-\titleformat{\section}[hang]{\normalfont\large\bfseries\raggedright}{\thesection}{1em}{}[\titlerule]
-\titlespacing*{\section}{0pt}{10pt}{6pt} % increase space before/after section titles
-\titleformat{\subsection}[hang]{\normalfont\normalsize\bfseries\raggedright}{\thesubsection}{1em}{}
-\titlespacing*{\subsection}{0pt}{8pt}{4pt} % increase space for subsections
-
-% Paragraph spacing and list defaults for consistent left alignment
-\setlength{\parindent}{0pt} % if you prefer paragraph indent restore this to 1em
-\setlength{\parskip}{0.6ex plus 0.15ex} % increase parskip slightly for better readability
-% Compact list indentation (smaller distance from page margin)
-% Increase vertical spacing and indent lists slightly for readability
-% Tweak: larger topsep/partopsep for space before/after list; small itemsep between items; larger left margins
-\setlist[itemize,1]{leftmargin=2em,itemsep=0.5ex,parsep=0.3ex,partopsep=0.5ex,topsep=0.8ex}
-\setlist[itemize,2]{leftmargin=2.5em,itemsep=0.35ex,parsep=0.2ex,partopsep=0.4ex,topsep=0.6ex}
-\setlist[enumerate,1]{leftmargin=2em,itemsep=0.5ex,parsep=0.3ex,partopsep=0.5ex,topsep=0.8ex}
-\setlist[enumerate,2]{leftmargin=2.5em,itemsep=0.35ex,parsep=0.2ex,partopsep=0.4ex,topsep=0.6ex}
-% ------------------ Header / Footer ------------------
-% Avoid fancyhdr warning about small headheight
-\setlength{\headheight}{14pt}
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[LE,RO]{\small\bfseries\thepage}
-\fancyhead[LO,RE]{\small\nouppercase{\leftmark}}
-\renewcommand{\headrulewidth}{0.3pt}
-% Reduce vertical spacing around floats to avoid large gaps
-\setlength{\floatsep}{6pt plus 1pt minus 1pt}     % between floats
-\setlength{\textfloatsep}{8pt plus 1pt minus 1pt} % between floats and text
-\setlength{\intextsep}{6pt plus 1pt minus 1pt}    % for in-text floats (top/bottom of figure)
-
-% ------------------ Formularium helpers ------------------
-% Provided by `productie-macros.sty` (\frm, formularium, \fig helpers).  
-% You can override box colors using \setfrmcolors{<back>}{<frame>} after loading the package.
-
-% ------------------ Figure helper ------------------
-% Provided by `productie-macros.sty` via the \fig helper.
-% Provide a small, non-invasive fallback for \autofig (used in some places).
-% This uses \providecommand so it will only define \autofig when it isn't
-% already defined by `productie-macros.sty`.
-\providecommand{\autofig}[3][]{%
-  \begin{figure}[ht]
-    \centering
-    \includegraphics[#1]{#2}
-    \caption{#3}
-  \end{figure}
-}
 
 
 % @issue: #29 Zorg dat productietechnologie school-macros gebruikt in plaats van productie-macros.sty
@@ -167,18 +22,9 @@
 
 Je bent helemaal vrij en ik raad je zelf aan om info toe te voegen aan de documenten als je de uitleg niet goed vindt.
 Je leert je vak en je raakt dan ook bekend met LaTeX wat handig is voor later.
-\microtypesetup{protrusion=false}
-% Also disable protrusion for LoF and LoT so those lists use consistent spacing
-\pretocmd{\listoffigures}{\microtypesetup{protrusion=false}}{}{}
-\apptocmd{\listoffigures}{\microtypesetup{protrusion=true}}{}{}
-\pretocmd{\listoftables}{\microtypesetup{protrusion=false}}{}{}
-\apptocmd{\listoftables}{\microtypesetup{protrusion=true}}{}{}
 \tableofcontents
-\microtypesetup{protrusion=true}
 
-\begin{formularium}
-	% Formularium entries can be added here if needed
-\end{formularium}
+\printformularium
 
 
 \chapter{Inleiding}
@@ -190,6 +36,7 @@ Deze samenvatting geeft een overzicht van de belangrijkste begrippen en techniek
 
 
 \textbf{Hieronder verschillende productietechnieken,}
+
 \begin{itemize}
 	\item Gieten
 	      \begin{itemize}
@@ -995,9 +842,9 @@ dezelfde toerental kunt behouden.
 
 Boren is een verspaningstechniek die wordt gebruikt om ronde gaten in materialen te maken.
 
-\begin{procesbox}[title=Volgorde voor precisiegaten]
+\begin{conceptbox}[title=Volgorde voor precisiegaten]
     Boren (ruw gat) $\to$ Kotteren (centreren/vergroten) $\to$ Ruimen (finisseren op maat).
-\end{procesbox}
+\end{conceptbox}
 
 Belangrijke booroperaties zijn:
 \begin{enumerate}
@@ -2037,7 +1884,7 @@ Met al deze dingen kunnne een slijpsteen karateriseren.
 	\label{fig:karateriseren van slijpsteen.png}
 \end{figure}
 
-\section{temperaturen bij slijpen}
+\section{Temperaturen bij slijpen}
 
 $70{\%}$ van de energie die je inbrengt bij het slijpen gaat verloren als warmte.
 dit kan leiden tot thermische beschadiging van het werkstuk.
@@ -2353,8 +2200,11 @@ Vroeger werd dat handmatig gedaan maar nu gebeurt dat automatisch met computers.
 \end{figure}
 
 Je wilt een materiaal die Erosievast is zodat je elektrode minder snel slijt. Gegeven met deze formule:
-\frm{Erosievastheid van elektrode (schematische benadering)}{E = \lambda \cdot \rho \cdot c \cdot T_m}{waarbij $E$ de erosievastheid is [\si{J^2 \cdot s^{-1} \cdot m^{-4} \cdot K}], \(\lambda\) de warmtegeleidingscoëfficiënt [\si{W/(m.K)}], \(\rho\) de massadichtheid [\si{kg/m^3}], \(c\) de soortelijke warmte [\si{J/(kg.K)}] en \(T_m\) de smelttemperatuur [\si{K}].}
+\frm{Erosievastheid van elektrode (schematische benadering)}
+{E = \lambda \cdot \rho \cdot c \cdot T_m}
+{waarbij $E$ de erosievastheid is [\si{J^2 \cdot s^{-1} \cdot m^{-4} \cdot K}], \(\lambda\) de warmtegeleidingscoëfficiënt [\si{W/(m.K)}], \(\rho\) de massadichtheid [\si{kg/m^3}], \(c\) de soortelijke warmte [\si{J/(kg.K)}] en \(T_m\) de smelttemperatuur [\si{K}].}
 
+\vspace{1cm}
 \section{Effecten van pulsduur en stroomsterkte}
 \begin{figure}[ht]
 	\centering
@@ -3499,8 +3349,7 @@ zandvormen maken wordt zo geautomatiseerd.
 
 Je zand kan kleigebonden, chemisch gebonden of schaalvormend zijn.
 
-\begin{conceptbox}
-	\textbf{Soorten zandbinding}
+\begin{conceptbox}[title=Soorten zandbinding]
 	\begin{itemize}
 		\item \textbf{Kleigebonden zand}: Traditioneel zandmengsel met klei en water. Goedkoop en eenvoudig, maar minder sterk en duurzaam.
 		\item \textbf{Chemisch gebonden zand}: Zand gemengd met chemische bindmiddelen die uitharden bij kamertemperatuur of door verhitting. Biedt betere sterkte en precisie.
@@ -4126,9 +3975,7 @@ Bij gieten of spuitgieten moet men rekening houden met de lossing (vrijloophoeke
 	\label{fig:DFMregels.png}
 \end{figure}
 
-\begin{conceptbox}
-	\textbf{Design for Manufacturing (DFM) VS Manufacturing for Design (MFD)}:
-	\newline
+\begin{conceptbox}[title=Design for Manufacturing (DFM) VS Manufacturing for Design (MFD)]
 	In dit hoofdstuk hebben we allemaal beperkingen gelegd op het ontwerp ter bevordering van de productie. Dit is DFM.
 	\newline
 	MFD is het omgekeerde. Hier ga je kijken naar de productieprocessen en hoe je deze kunt aanpassen om beter aan de ontwerpvereisten te voldoen. 

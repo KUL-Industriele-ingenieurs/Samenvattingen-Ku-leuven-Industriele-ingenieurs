@@ -213,6 +213,19 @@ In een gesloten systeem...
 \[ E_k = \frac{1}{2}mv^2 = \frac{1}{2} \times \SI{5}{kg} \times (\SI{10}{m/s})^2 = \SI{250}{J} \]
 \end{oefenblok}
 
+\subsection{Nieuwe Oefening Box (Rood/Geel)}
+
+\begin{oefening}[title=Oefening 1.2: Rood-Gele stijl]
+Deze box heeft een rode rand en gele achtergrond, specifiek voor Math Systems oefeningen.
+\end{oefening}
+
+Code:
+\begin{verbatim}
+\begin{oefening}[title=Oefening 1.2]
+Deze box heeft een rode rand en gele achtergrond...
+\end{oefening}
+\end{verbatim}
+
 \subsection{Voorbeeld (Praktijkvoorbeelden)}
 
 \begin{voorbeeld}[title=Praktisch voorbeeld: Fietser]
@@ -233,6 +246,41 @@ De kinetische energie is:
 \begin{examenbox}
 Bij numerieke vragen: controleer altijd of je antwoord in de juiste orde van grootte ligt.
 \end{examenbox}
+
+% =============================================================================
+\section{Grafieken en Plots}
+\label{sec:plots}
+% =============================================================================
+
+\subsection{3D Plots}
+Met \verb|\plotthreeD| kun je eenvoudige 3D-oppervlakken plotten.
+
+\plotthreeD[xlabel=x, ylabel=y]{domain=-2:2}{x^2 - y^2}
+
+Code:
+\begin{verbatim}
+\plotthreeD[xlabel=x, ylabel=y]{domain=-2:2}{x^2 - y^2}
+\end{verbatim}
+
+\subsection{Data uit CSV}
+Met \verb|\plotdata| kun je data uit een CSV-bestand visualiseren.
+
+\plotdata[
+    xlabel=Tijd (\si{s}),
+    ylabel=Spanning (\si{V}),
+    title=Spanningsverloop
+]{x=Time, y=Voltage}{example_data.csv}
+
+Code:
+\begin{verbatim}
+\plotdata[
+    xlabel=Tijd (\si{s}),
+    ylabel=Spanning (\si{V}),
+    title=Spanningsverloop
+]{x=Time, y=Voltage}{example_data.csv}
+\end{verbatim}
+
+Zorg dat \texttt{example\_data.csv} in dezelfde map staat als je .tex bestand.
 
 % =============================================================================
 \section{Formules met \textbackslash frm}
@@ -484,6 +532,82 @@ Frezen & Het gereedschap roteert en beweegt over het werkstuk \\
 \end{center}
 
 % =============================================================================
+\section{Specialistische Diagrammen}
+\label{sec:special}
+% =============================================================================
+
+\subsection{3D Grafieken}
+
+Met de macro \verb|\plotthreeD| kun je snel 3D oppervlakken plotten.
+De syntax is: \verb|\plotthreeD[as opties]{plot opties}{functie}|.
+
+\plotthreeD[
+    xlabel=$x$, ylabel=$y$, zlabel=$z$,
+    title={Saddle Surface}
+]{domain=-2:2}{x^2 - y^2}
+
+\begin{verbatim}
+\plotthreeD[
+    xlabel=$x$, ylabel=$y$, zlabel=$z$,
+    title={Saddle Surface}
+]{domain=-2:2}{x^2 - y^2}
+\end{verbatim}
+
+\subsection{Data uit CSV}
+
+Voor laboverslagen kun je direct data plotten met \verb|\plotdata|.
+\verb|\plotdata[as opties]{tabel opties}{bestandsnaam}|.
+
+\begin{verbatim}
+% Stel je hebt 'data.csv' met kolommen 'time' en 'voltage'
+\plotdata[
+    xlabel={Tijd [\si{s}]}, 
+    ylabel={Spanning [\si{V}]}
+]{x=time, y=voltage}{data.csv}
+\end{verbatim}
+
+\subsection{Chemie (chemfig)}
+
+Voor reactievergelijkingen en moleculen gebruiken we \texttt{chemfig}.
+
+\begin{center}
+    \chemfig{H-C(-[2]H)(-[6]H)-C(=[1]O)-[7]H}
+\end{center}
+
+\begin{verbatim}
+\chemfig{H-C(-[2]H)(-[6]H)-C(=[1]O)-[7]H}
+\end{verbatim}
+
+Reactieschema:
+\begin{center}
+    \schemestart
+        \chemfig{HCl} \+ \chemfig{NaOH}
+        \arrow
+        \chemfig{NaCl} \+ \chemfig{H_2O}
+    \schemestop
+\end{center}
+
+\subsection{Elektrische Circuits (circuitikz)}
+
+Voor schakelingen gebruiken we \texttt{circuitikz}.
+
+\begin{center}
+    \begin{circuitikz}[american]
+        \draw (0,0) to[V, v=$U_{in}$] (0,3)
+                    to[R, l=$R_1$] (3,3)
+                    to[C, l=$C_1$] (3,0) -- (0,0);
+    \end{circuitikz}
+\end{center}
+
+\begin{verbatim}
+\begin{circuitikz}[american]
+    \draw (0,0) to[V, v=$U_{in}$] (0,3)
+                to[R, l=$R_1$] (3,3)
+                to[C, l=$C_1$] (3,0) -- (0,0);
+\end{circuitikz}
+\end{verbatim}
+
+% =============================================================================
 \section{Veelgemaakte Fouten}
 \label{sec:mistakes}
 % =============================================================================
@@ -622,7 +746,7 @@ Better BibTeX genereert automatisch citation keys zoals \texttt{einstein1905} of
 Zotero $\rightarrow$ Preferences $\rightarrow$ Better BibTeX $\rightarrow$ Citation keys
 
 Aanbevolen format: \verb|[auth:lower][year]| geeft \texttt{einstein1905}.
-
+\autocite{}
 % =============================================================================
 \section{Workflow Tips}
 \label{sec:workflow}
@@ -691,10 +815,9 @@ Voor een mooie titelpagina met KU Leuven branding:
 \newpage
 \appendix
 
-\section*{Symbolenlijst}
+
 \printsymbols
 
-\section*{Formularium}
 \printformularium
 
 \section*{Bibliografie}
