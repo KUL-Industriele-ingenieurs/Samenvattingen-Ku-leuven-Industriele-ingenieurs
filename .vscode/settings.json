@@ -45,8 +45,7 @@
   ],
 
   // LaTeX Utilities: paste-image configuration
-  "latex-utilities.formattedPaste.image.template": "\\begin{figure}[ht]\\n  \\centering\\n  \\includegraphics[width=0.8\\textwidth]{${imageFilePath}}\\n  \\caption{${imageCaption}}\\n  \\label{fig:${imageFileName}}\\n\\end{figure}",
-  "latex-utilities.formattedPaste.image.path": "Productietechnologie/assets",
+  "latex-utilities.formattedPaste.image.template": "begin{figure}[ht]\n  \\centering\n  \\includegraphics[width=0.8\\textwidth]{${imageFilePath}}\n  \\caption{${imageCaption}}\n  \\label{fig:${imageFileName}}\n\\end{figure}",
   "latex-utilities.formattedPaste.enabled": true,
   "latex-workshop.latex.recipes": [
     {
@@ -94,82 +93,40 @@
     "*.fdb_latexmk",
     "*.dpth",
     "*.md5",
-    "*.auxlock"
+    "*.auxlock",
+    "*.log",
+    "*.synctex.gz"
   ],
 
-  // GitHub Issues integration
-  "githubIssues.queries": [
+  "files.exclude": {
+    "**/*.log": true,
+    "**/*.synctex.gz": true
+  },
+
+  // GitHub Pull Requests & Issues extension settings
+  "githubPullRequests.queries": [
     {
       "label": "My Issues",
-      "query": "is:open is:issue assignee:@me repo:${owner}/${repository}"
-    },
-    {
-      "label": "Created Issues",
-      "query": "is:open is:issue author:@me repo:${owner}/${repository}"
+      "query": "is:open is:issue assignee:@me repo:Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs"
     },
     {
       "label": "All Open Issues",
-      "query": "is:open is:issue repo:${owner}/${repository}"
+      "query": "is:open is:issue repo:Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs"
     },
     {
-      "label": "@issue markers (from-code)",
-      "query": "is:open is:issue label:from-code repo:${owner}/${repository}"
+      "label": "@issue markers",
+      "query": "is:open is:issue label:from-code repo:Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs"
+    },
+    {
+      "label": "Closed Issues",
+      "query": "is:closed is:issue repo:Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs"
     }
   ],
-  "githubIssues.createIssueTriggers": [
-    "@issue",
-    "TODO",
-    "FIXME"
+  "githubPullRequests.createOnPublishBranch": "never",
+  "githubPullRequests.defaultMergeMethod": "squash",
+  "githubPullRequests.remotes": [
+    "origin"
   ],
-  "githubIssues.useBranchForIssues": true,
-  "githubIssues.issueBranchTitle": "issue${issueNumber}",
-  "githubIssues.issueCompletionFormatScm": "#${issueNumber}",
-  "githubIssues.workingIssueFormatScm": "#${issueNumber}",
 
-  // Todo Tree configuration for @issue markers
-  "todo-tree.general.tags": [
-    "@issue",
-    "TODO",
-    "FIXME",
-    "NOTE",
-    "BUG"
-  ],
-  "todo-tree.regex.regex": "((//|#|<!--|;|/\\*|^|%|^[ \\t]*(-|\\*))\\s*($TAGS)|^\\s*- \\[ \\])",
-  "todo-tree.regex.regexCaseSensitive": false,
-  "todo-tree.highlights.defaultHighlight": {
-    "icon": "issue-opened",
-    "type": "text",
-    "foreground": "#ffffff",
-    "background": "#ffab70",
-    "opacity": 50,
-    "iconColour": "#ffab70"
-  },
-  "todo-tree.highlights.customHighlight": {
-    "@issue": {
-      "icon": "checklist",
-      "iconColour": "#FFD700",
-      "foreground": "#FFD700",
-      "background": "#4A4A4A",
-      "type": "text-and-comment"
-    },
-    "TODO": {
-      "icon": "check",
-      "iconColour": "#00ff00"
-    },
-    "FIXME": {
-      "icon": "alert",
-      "iconColour": "#ff0000"
-    },
-    "BUG": {
-      "icon": "bug",
-      "iconColour": "#ff0000"
-    }
-  },
-  "todo-tree.general.showActivityBarBadge": true,
-  "todo-tree.general.statusBar": "tags",
-  "todo-tree.filtering.includeGlobs": [
-    "**/*.tex",
-    "**/*.md",
-    "**/*.py"
-  ]
+ 
 }
