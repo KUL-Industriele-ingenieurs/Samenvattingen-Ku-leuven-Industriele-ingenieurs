@@ -174,6 +174,42 @@
 \newcommand*{\frmBoxSep}{4pt}
 
 % ============================================================================
+%                           PLOT STYLING
+% ============================================================================
+% Modern, clean style with school colors
+\pgfplotsset{
+    % Define a clean, modern cycle list using school colors
+    cycle list={
+        {schoolBlue, thick, mark=*},
+        {schoolRed, thick, mark=square*},
+        {schoolGreen, thick, mark=triangle*},
+        {schoolOrange, thick, mark=diamond*},
+        {schoolTeal, thick, mark=pentagon*},
+        {violet, thick, mark=x}
+    },
+    % Default style for all plots
+    every axis/.style={
+        % Clean layout
+        axis background/.style={fill=white},
+        axis line style={-latex, thick, schoolGray},
+        tick style={schoolGray, major tick length=4pt},
+        grid=major,
+        grid style={dashed, gray!20},
+        label style={font=\small\bfseries},
+        tick label style={font=\footnotesize},
+        % Legend placement (Bottom Right, Below Axis)
+        legend style={
+            at={(1.0,-0.25)},
+            anchor=north east,
+            legend columns=-1,
+            draw=none,
+            fill=none,
+            /tikz/every even column/.append style={column sep=0.5cm}
+        },
+    }
+}
+
+% ============================================================================
 %                              PAGE LAYOUT
 % ============================================================================
 % Standardized compact margins for summaries
