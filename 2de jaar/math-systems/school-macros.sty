@@ -232,10 +232,13 @@
 
 % Slightly smaller chapter titles (keep them prominent but less tall)
 \titleformat{\chapter}[hang]{\normalfont\LARGE\bfseries}{\thechapter}{1em}{}[\titlerule]
+\titleformat{name=\chapter,numberless}[hang]{\normalfont\LARGE\bfseries}{}{0pt}{}[\titlerule]
 \titlespacing*{\chapter}{0pt}{12pt}{6pt} % more breathing room before/after chapter titles
 
 % Ensure section and subsection align to same left margin and use sensible spacing
 \titleformat{\section}[hang]{\normalfont\large\bfseries\raggedright}{\thesection}{1em}{}[\titlerule]
+\titleformat{name=\section,numberless}[hang]{\normalfont\large\bfseries\raggedright}{}{0pt}{}[\titlerule]
+\titleformat{name=\subsection,numberless}[hang]{\normalfont\normalsize\bfseries\raggedright}{}{0pt}{}[\titlerule]
 \titlespacing*{\section}{0pt}{10pt}{6pt}
 
 \titleformat{\subsection}[hang]{\normalfont\normalsize\bfseries\raggedright}{\thesubsection}{1em}{}
@@ -419,7 +422,7 @@
     % #1=section, #2=section title, #3=label, #4=math, #5=description, #6=counter
     \ifinlist{#1}{\FormulariumSections}{}{%
         \listgadd{\FormulariumSections}{#1}%
-        \global\csdef{SectionFormulas@#1}{}%
+        \global\csdef{SectionFormulas@#1}{}% 
         \global\csdef{SectionTitle@#1}{#2}%
     }%
     \csxappto{SectionFormulas@#1}{%
@@ -484,30 +487,15 @@
 
 % Helper to avoid titlesec star bug in article class
 \newcommand{\school@sectionstar}[1]{%
+    \ifdefined\FloatBarrier\FloatBarrier\fi
     \@ifundefined{chapter}{%
-        % Article: Emulate \section*
-        \par\vspace{10pt}%
-        \noindent{\normalfont\large\bfseries\raggedright #1}\par%
-        \vspace{4pt}%
-        \titlerule%
-        \vspace{6pt}%
-        \addcontentsline{toc}{section}{#1}%
-        \markboth{#1}{#1}%
+        \subsection*{#1}%
+        \addcontentsline{toc}{subsection}{\protect\numberline{}#1}%
     }{%
-        % Report: Emulate \chapter*
-        \ifdefined\FloatBarrier\FloatBarrier\fi
-        \clearpage
-        \thispagestyle{plain}%
-        \vspace*{10pt}%
-        \noindent{\normalfont\LARGE\bfseries #1}\par%
-        \vspace{8pt}%
-        \titlerule%
-        \vspace{12pt}%
-        \addcontentsline{toc}{chapter}{#1}%
-        \markboth{#1}{#1}%
+        \section*{#1}%
+        \addcontentsline{toc}{section}{\protect\numberline{}#1}%
     }%
 }
-
 \newcommand*{\printformularium}{%
     \par
     \school@sectionstar{Formularium}%

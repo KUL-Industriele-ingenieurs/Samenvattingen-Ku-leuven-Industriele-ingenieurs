@@ -1,4 +1,4 @@
-# School-Macros Quick Reference v2.0
+# School-Macros Quick Reference v2.1
 
 > KU Leuven — Faculteit Industriële Ingenieurswetenschappen
 
