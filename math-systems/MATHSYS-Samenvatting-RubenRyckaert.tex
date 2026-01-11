@@ -11,13 +11,13 @@
 % ============================================================================
 %                           DOCUMENT METADATA
 % ============================================================================
-\title{Warmte en Stromingen Samenvatting}
-\author{Jouw Naam}
+\title{Modulair Document Voorbeeld}
+\author{Ruben Ryckaert}
 \date{Academiejaar 2025-2026}
 
 % Optional: Define course info for headers
-\newcommand{\coursename}{Warmte en Stromingen}
-\newcommand{\coursecode}{}
+\newcommand{\coursename}{Voorbeeldvak}
+\newcommand{\coursecode}{E00ABC}
 
 % ============================================================================
 %                              DOCUMENT
@@ -26,21 +26,22 @@
 
 % --- Title Page (KU Leuven style) ---
 \kuleuventitle
-    {Warmte en Stromingen Samenvatting}
+    {Modulair Document Voorbeeld}
     {\coursecode\ --- \coursename}
     {Jouw Naam}
     {Academiejaar 2025-2026}
 
-\begin{abstract}
-Deze samenvattingen zijn beschikbaar op GitHub waar je kunt bijdragen aan verbeteringen: \url{https://github.com/Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs}
+\noindent Deze samenvattingen zijn beschikbaar op GitHub waar je kunt bijdragen aan verbeteringen: \url{https://github.com/Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs}
 
 Je bent helemaal vrij en ik raad je zelf aan om info toe te voegen aan de documenten als je de uitleg niet goed vindt.
 Je leert je vak en je raakt dan ook bekend met LaTeX wat handig is voor later.
-\end{abstract}
 
 % --- Front Matter ---
 \tableofcontents
 \newpage
+% Symbol list and formularium are auto-generated
+\printsymbols
+\printformularium
 
 % ============================================================================
 %                           CHAPTER INCLUDES
@@ -56,16 +57,15 @@ Je leert je vak en je raakt dan ook bekend met LaTeX wat handig is voor later.
 % Tip: Use \includeonly{chapter1,chapter2} in preamble to compile 
 %      only specific chapters while keeping all cross-references
 
-\include{chapters/chapter1_inleiding}
-
+% @issue: #31 switch to new chapter file names
+\include{chapters/Inleiding}
+\include{chapters/Herhaling afgeleiden en integralen}
+\include{chapters/Laplacetransformatie}
 
 % ============================================================================
 %                              APPENDICES
 % ============================================================================
 \appendix
 
-% Symbol list and formularium are auto-generated
-\printsymbols
-\printformularium
 
 \end{document}
