@@ -93,8 +93,15 @@
     "*.fdb_latexmk",
     "*.dpth",
     "*.md5",
-    "*.auxlock"
+    "*.auxlock",
+    "*.log",
+    "*.synctex.gz"
   ],
+
+  "files.exclude": {
+    "**/*.log": true,
+    "**/*.synctex.gz": true
+  },
 
   // GitHub Pull Requests & Issues extension settings
   "githubPullRequests.queries": [
