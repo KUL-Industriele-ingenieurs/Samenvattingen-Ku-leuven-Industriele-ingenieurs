@@ -74,6 +74,13 @@ Ben je klaar?
 
 ---
 
+## ✅ Voltooide documenten
+- **Productietechnologie** — Voltooid
+- **Ingenieur en economie** — Voltooid
+- **Wisselstroom** — Voltooid
+
+**Overige documenten:** Documenten moeten hermaakt worden.
+
 ## 🚩 Issues & Feedback
 
 Heb je een suggestie of zie je een fout, maar wil je het niet direct zelf oplossen?
@@ -92,3 +99,19 @@ Met de "GitHub Pull Requests and Issues" extensie:
 
 ### 3. Issues bekijken
 Je kunt openstaande taken zien in de **Source Control** tab van VS Code onder de sectie **GITHUB**.
+
+---
+
+## 🗺️ Roadmap (korte termijn)
+- **Data acquisitie** — verzamelen van oefenopgaven, slides en referentiemateriaal.
+- **Objectgeoriënteerd programmeren (OOP)** — refactor scripts en voorbeelden naar OOP waar relevant.
+- **Documenten herwerken** — herbouw van verouderde documenten (MATHSYS, Warmte, etc.).
+- **CI & automatisering** — verbeterde GitHub Actions voor consistente builds en PDF-artifacts.
+- **Tests & validatie** — automatische checks voor LaTeX-bouw en linting.
+- **Contributing / Voorbeelden** — templates en guidelines voor bijdragers.
+
+> Tip: Prioriteit is eerst data acquisitie en het herwerken van verouderde documenten; OOP-refactor en CI volgen.
+
+## 📜 Licentie
+Dit project is vrijgegeven onder de **MIT License** — zie het `LICENSE` bestand voor details.
+
