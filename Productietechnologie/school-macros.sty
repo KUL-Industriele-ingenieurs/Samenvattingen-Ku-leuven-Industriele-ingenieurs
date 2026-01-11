@@ -1,6 +1,6 @@
 % school-macros.sty
 % Unified macros for KU Leuven engineering course documents
-% Version 2.0 - Optimized following LaTeX best practices
+% Version 2.1 - Optimized following LaTeX best practices
 %
 % Features: Formula collection (\frm), Symbol registration (\sym), 
 %           Themed boxes, siunitx integration, Dutch localization
@@ -9,7 +9,7 @@
 % Note: Compile twice for formularium and symbol list
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{school-macros}[2026/01/09 v2.0 KU Leuven School Macros]
+\ProvidesPackage{school-macros}[2026/01/09 v2.1 KU Leuven School Macros]
 
 % ============================================================================
 %                              PACKAGE LOADING
@@ -26,6 +26,8 @@
 \RequirePackage{lmodern}
 \RequirePackage{microtype}  % Improved text appearance
 \RequirePackage{parskip}    % Paragraph spacing instead of indent
+\RequirePackage{setspace}   % For line spacing
+\setstretch{1.15}           % Slightly larger for better readability
 
 % --- Math (mathtools extends amsmath) ---
 \RequirePackage{mathtools}
@@ -40,6 +42,7 @@
     separate-uncertainty = true,    % Show uncertainty separately
     output-decimal-marker = {,},    % Dutch decimal comma
     group-separator = {\,},         % Thin space for thousands
+    detect-all=true,                % Adapt to surrounding font
 }
 
 % --- Tables ---
@@ -53,6 +56,7 @@
 \RequirePackage{caption}
 \RequirePackage{subcaption}
 \RequirePackage{placeins}
+\RequirePackage{flafter}    % Ensure floats don't appear before definition
 
 % --- Colors ---
 \RequirePackage{xcolor}
@@ -79,6 +83,10 @@
 
 % --- Chemistry ---
 \RequirePackage[version=4]{mhchem}
+\RequirePackage{chemfig}
+
+% --- Circuits ---
+\RequirePackage[european]{circuitikz}
 
 % --- Euro Symbol Support ---
 \RequirePackage{textcomp}
@@ -87,8 +95,12 @@
 % --- Graphics & Plots ---
 \RequirePackage{tikz}
 \RequirePackage{pgfplots}
+\RequirePackage{pgfplotstable}
 \pgfplotsset{compat=1.18}
-\usetikzlibrary{arrows.meta, positioning, calc, patterns, shapes.geometric}
+\usetikzlibrary{
+    arrows.meta, positioning, calc, patterns, shapes.geometric,
+    angles, quotes, babel, decorations.pathmorphing, shapes.misc, fit
+}
 
 % --- Bibliography (BibLaTeX for Zotero integration) ---
 % NOTE: Users should add \addbibresource{references.bib} in their document preamble
@@ -114,17 +126,20 @@
     linkcolor=black,        % TOC and internal links in black
     urlcolor=schoolBlue,
     citecolor=schoolBlue,
+    hidelinks,              % Clean look
+    hypertexnames=false,    % Avoid duplicate destination names
 }
+\RequirePackage{bookmark}   % Improved bookmarks management
 
 % --- Smart References (load after hyperref) ---
-\RequirePackage[dutch, nameinlink]{cleveref}
+\RequirePackage[dutch, nameinlink, capitalise]{cleveref}
 % Dutch cleveref names
 \crefname{equation}{vergelijking}{vergelijkingen}
 \Crefname{equation}{Vergelijking}{Vergelijkingen}
 \crefname{figure}{figuur}{figuren}
-\Crefname{figure}{Figuur}{Figuren}
+\Crefname{figure}{Figuur}{Figuur}
 \crefname{table}{tabel}{tabellen}
-\Crefname{table}{Tabel}{Tabellen}
+\Crefname{table}{Tabel}{Tabel}
 \crefname{section}{sectie}{secties}
 \Crefname{section}{Sectie}{Secties}
 \crefname{chapter}{hoofdstuk}{hoofdstukken}
@@ -146,7 +161,10 @@
 \definecolor{schoolGray}{RGB}{100,100,100}    % Neutral
 \definecolor{schoolGreen}{RGB}{39,174,96}     % Success/exercises
 \definecolor{schoolTeal}{RGB}{0,150,136}      % Formulas (teal)
-\definecolor{schoolTeal}{RGB}{0,150,136}      % Formulas (teal)
+
+% Special colors for 'oefening' box (red outline, yellow fill)
+\definecolor{exerciseFrame}{RGB}{204,0,0}
+\definecolor{exerciseBack}{RGB}{255,250,230}
 
 % Formula box colors (user-redefinable)
 \newcommand*{\frmBoxBack}{blue!5}
@@ -156,28 +174,98 @@
 \newcommand*{\frmBoxSep}{4pt}
 
 % ============================================================================
+%                           PLOT STYLING
+% ============================================================================
+% Modern, clean style with school colors
+\pgfplotsset{
+    % Define a clean, modern cycle list using school colors
+    cycle list={
+        {schoolBlue, thick, mark=*},
+        {schoolRed, thick, mark=square*},
+        {schoolGreen, thick, mark=triangle*},
+        {schoolOrange, thick, mark=diamond*},
+        {schoolTeal, thick, mark=pentagon*},
+        {violet, thick, mark=x}
+    },
+    % Default style for all plots
+    every axis/.style={
+        % Clean layout
+        axis background/.style={fill=white},
+        axis line style={-latex, thick, schoolGray},
+        tick style={schoolGray, major tick length=4pt},
+        grid=major,
+        grid style={dashed, gray!20},
+        label style={font=\small\bfseries},
+        tick label style={font=\footnotesize},
+        % Legend placement (Bottom Right, Below Axis)
+        legend style={
+            at={(1.0,-0.25)},
+            anchor=north east,
+            legend columns=-1,
+            draw=none,
+            fill=none,
+            /tikz/every even column/.append style={column sep=0.5cm}
+        },
+    }
+}
+
+% ============================================================================
 %                              PAGE LAYOUT
 % ============================================================================
-\geometry{left=2.5cm, right=2.5cm, top=3cm, bottom=3cm}
+% Standardized compact margins for summaries
+\geometry{left=2.0cm, right=2.0cm, top=2.5cm, bottom=2.5cm}
 
+% --- Header & Footer ---
+\setlength{\headheight}{14pt}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\small\nouppercase{\leftmark}}
-\fancyhead[R]{\small\thepage}
-\renewcommand{\headrulewidth}{0.2pt}
+% Two-sided compatible headers
+\fancyhead[LE,RO]{\small\bfseries\thepage}
+\fancyhead[LO,RE]{\small\nouppercase{\leftmark}}
+\renewcommand{\headrulewidth}{0.3pt}
 
-% Section styling with underlines
-\titleformat{\chapter}[hang]{\normalfont\huge\bfseries\color{black}}{\thechapter}{1em}{}[\titlerule]
-\titlespacing*{\chapter}{0pt}{0pt}{20pt}
-\titleformat{\section}[hang]{\normalfont\Large\bfseries\color{black}}{\thesection}{1em}{}[\titlerule]
-\titlespacing*{\section}{0pt}{15pt}{10pt}
-\titleformat{\subsection}[hang]{\normalfont\large\bfseries\color{black}}{\thesubsection}{1em}{}
-\titlespacing*{\subsection}{0pt}{10pt}{5pt}
-
-% Remove forced page breaks for chapters (useful for summaries)
+% --- Section Styling ---
+% Make chapters keep number and title on the same line and avoid forcing a new page
 \makeatletter
 \patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
 \makeatother
+
+% Slightly smaller chapter titles (keep them prominent but less tall)
+\titleformat{\chapter}[hang]{\normalfont\LARGE\bfseries}{\thechapter}{1em}{}[\titlerule]
+\titlespacing*{\chapter}{0pt}{12pt}{6pt} % more breathing room before/after chapter titles
+
+% Ensure section and subsection align to same left margin and use sensible spacing
+\titleformat{\section}[hang]{\normalfont\large\bfseries\raggedright}{\thesection}{1em}{}[\titlerule]
+\titlespacing*{\section}{0pt}{10pt}{6pt}
+
+\titleformat{\subsection}[hang]{\normalfont\normalsize\bfseries\raggedright}{\thesubsection}{1em}{}
+\titlespacing*{\subsection}{0pt}{8pt}{4pt}
+
+% --- Float Control ---
+% Insert a FloatBarrier before every \chapter to keep floats in their chapter
+\preto\chapter{\FloatBarrier}
+
+% Reduce vertical spacing around floats to avoid large gaps
+\setlength{\floatsep}{6pt plus 1pt minus 1pt}     % between floats
+\setlength{\textfloatsep}{8pt plus 1pt minus 1pt} % between floats and text
+\setlength{\intextsep}{6pt plus 1pt minus 1pt}    % for in-text floats (top/bottom of figure)
+
+% --- Caption Styling ---
+\captionsetup{skip=3pt,aboveskip=3pt,belowskip=3pt}
+
+% --- List Styling ---
+% Compact list indentation (smaller distance from page margin)
+\setlist[itemize,1]{leftmargin=2em,itemsep=0.5ex,parsep=0.3ex,partopsep=0.5ex,topsep=0.8ex}
+\setlist[itemize,2]{leftmargin=2.5em,itemsep=0.35ex,parsep=0.2ex,partopsep=0.4ex,topsep=0.6ex}
+\setlist[enumerate,1]{leftmargin=2em,itemsep=0.5ex,parsep=0.3ex,partopsep=0.5ex,topsep=0.8ex}
+\setlist[enumerate,2]{leftmargin=2.5em,itemsep=0.35ex,parsep=0.2ex,partopsep=0.4ex,topsep=0.6ex}
+
+% --- Microtype Fixes ---
+% Also disable protrusion for LoF and LoT so those lists use consistent spacing
+\pretocmd{\listoffigures}{\microtypesetup{protrusion=false}}{}{}
+\apptocmd{\listoffigures}{\microtypesetup{protrusion=true}}{}{}
+\pretocmd{\listoftables}{\microtypesetup{protrusion=false}}{}{}
+\apptocmd{\listoftables}{\microtypesetup{protrusion=true}}{}{}
 
 % ============================================================================
 %                            TEXT EMPHASIS
@@ -280,6 +368,31 @@
 % Example box (voorbeeld) - NEW  
 \newtcolorbox{voorbeeld}[1][]{examplestyle, #1}
 
+% New Exercise Box (Red outline, yellow background)
+\newtcolorbox{oefening}[1][]{
+    colback=exerciseBack,
+    colframe=exerciseFrame,
+    fonttitle=\bfseries\large,
+    title=#1,
+    sharp corners,
+    boxrule=1pt,
+    left=6pt,
+    right=6pt,
+    top=6pt,
+    bottom=6pt
+}
+
+% Process box (procesbox) - Added for Productietechnologie compatibility
+\newtcolorbox{procesbox}[1][]{
+    schoolbase,
+    borderline west={3pt}{0pt}{schoolBlue!80!black},
+    fonttitle=\bfseries\color{schoolBlue!80!black},
+    title=#1
+}
+
+% Inline theory box (theoriebox) - Added for Productietechnologie compatibility
+\newtcbox{\theoriebox}{on line,boxrule=0.4pt,arc=2pt,boxsep=3pt,top=2pt,bottom=2pt,colback=gray!6,colframe=gray!40}
+
 % ============================================================================
 %                           FORMULA SYSTEM (\frm)
 % ============================================================================
@@ -299,19 +412,8 @@
 \newcommand*{\@currentFormulariumSection}{0}
 \newcommand*{\@currentSectionTitle}{}
 
-% Hook into section to track section numbers AND titles
-\let\@oldsection\section
-\renewcommand{\section}{\@ifstar{\@ssection}{\@nsection}}
-\newcommand{\@nsection}[1]{%
-    \stepcounter{FormulariumSectionCounter}%
-    \xdef\@currentFormulariumSection{\theFormulariumSectionCounter}%
-    \protected@edef\@currentSectionTitle{#1}%
-    \@oldsection{#1}%
-}
-\newcommand{\@ssection}[1]{%
-    \protected@edef\@currentSectionTitle{#1}%
-    \@oldsection*{#1}%
-}
+% Hook into section removed to prevent conflicts with titlesec
+% \frm now uses \thesection and \@currentlabelname
 
 \newcommand{\addformulariumentry}[6]{%
     % #1=section, #2=section title, #3=label, #4=math, #5=description, #6=counter
@@ -341,7 +443,7 @@
     \stepcounter{FormulariumEntryCounter}%
     \begin{tcolorbox}[
         enhanced,
-        breakable,
+        unbreakable,
         colback=white,
         colframe=schoolTeal,
         boxrule=2pt,
@@ -361,24 +463,54 @@
         {\small #3}\label{frm:\theFormulariumEntryCounter}%
     \end{tcolorbox}%
     % Store with current section number and section title
-    \protected@write\@auxout{}{\string\addformulariumentry{\@currentFormulariumSection}{\unexpanded{\@currentSectionTitle}}{\unexpanded{#1}}{\unexpanded{#2}}{\unexpanded{#3}}{\theFormulariumEntryCounter}}%
+    % Use \thesection (group ID) and \@currentlabelname (title) from nameref
+    \protected@write\@auxout{}{\string\addformulariumentry{\thesection}{\@currentlabelname}{\unexpanded{#1}}{\unexpanded{#2}}{\unexpanded{#3}}{\theFormulariumEntryCounter}}%
+    \par\vspace{4pt}%
 }
 
 \newcommand*{\printSectionFormulas}[1]{%
     % Print formulas for section #1 with visual header showing section title
-    \ifnum#1>0
+    \ifthenelse{\equal{#1}{0}}{}{%
+        \par\vspace{10pt}
+        \noindent\makebox[\linewidth]{%
+            \textcolor{schoolBlue}{\leaders\hrule height 1pt\hfill}\hspace{1em}%
+            {\small\bfseries\textcolor{schoolBlue}{\csuse{SectionTitle@#1}}}\hspace{1em}%
+            \textcolor{schoolBlue}{\leaders\hrule height 1pt\hfill}%
+        }
         \par\vspace{6pt}
-        \noindent\textcolor{schoolBlue}{\rule{0.3\linewidth}{1pt}}%
-        \hspace{0.5em}{\small\bfseries\textcolor{schoolBlue}{\csuse{SectionTitle@#1}}}\hspace{0.5em}%
-        \textcolor{schoolBlue}{\rule{0.3\linewidth}{1pt}}%
-        \par\vspace{4pt}
-    \fi
+    }%
     \csuse{SectionFormulas@#1}%
+}
+
+% Helper to avoid titlesec star bug in article class
+\newcommand{\school@sectionstar}[1]{%
+    \@ifundefined{chapter}{%
+        % Article: Emulate \section*
+        \par\vspace{10pt}%
+        \noindent{\normalfont\large\bfseries\raggedright #1}\par%
+        \vspace{4pt}%
+        \titlerule%
+        \vspace{6pt}%
+        \addcontentsline{toc}{section}{#1}%
+        \markboth{#1}{#1}%
+    }{%
+        % Report: Emulate \chapter*
+        \ifdefined\FloatBarrier\FloatBarrier\fi
+        \clearpage
+        \thispagestyle{plain}%
+        \vspace*{10pt}%
+        \noindent{\normalfont\LARGE\bfseries #1}\par%
+        \vspace{8pt}%
+        \titlerule%
+        \vspace{12pt}%
+        \addcontentsline{toc}{chapter}{#1}%
+        \markboth{#1}{#1}%
+    }%
 }
 
 \newcommand*{\printformularium}{%
     \par
-    \@ifundefined{chapter}{\section*{Formularium}}{\chapter*{Formularium}}%
+    \school@sectionstar{Formularium}%
     \ifdefempty{\FormulariumSections}{%
         \noindent\textit{Nog geen formules geregistreerd. Compileer tweemaal.}%
     }{%
@@ -390,7 +522,7 @@
 % Alternative: print formularium in two columns (for simple/short formulas)
 \newcommand*{\printformulariumtwocol}{%
     \par
-    \@ifundefined{chapter}{\section*{Formularium}}{\chapter*{Formularium}}%
+    \school@sectionstar{Formularium}%
     \ifdefempty{\FormulariumSections}{%
         \noindent\textit{Nog geen formules geregistreerd. Compileer tweemaal.}%
     }{%
@@ -431,7 +563,7 @@
 
 \newcommand*{\printsymbols}{%
     \par
-    \@ifundefined{chapter}{\section*{Symbolenlijst}}{\chapter*{Symbolenlijst}}%
+    \school@sectionstar{Symbolenlijst}%
     \begin{tabularx}{\textwidth}{l X l r}
         \toprule
         \textbf{Symbool} & \textbf{Beschrijving} & \textbf{Eenheid} & \textbf{Pagina} \\
@@ -611,5 +743,46 @@
     \end{titlepage}
 }
 
+% ============================================================================
+%                          PLOTTING HELPERS
+% ============================================================================
+
+% 3D Surface Plot
+% Usage: \plotthreeD[axis options]{plot options}{function}
+% Example: \plotthreeD[xlabel=x, ylabel=y]{domain=-2:2}{x^2 - y^2}
+\newcommand{\plotthreeD}[3][]{%
+    \begin{center}
+    \begin{tikzpicture}
+    \begin{axis}[
+        width=0.8\linewidth,
+        grid=major,
+        view={60}{30},
+        colormap/viridis,
+        #1
+    ]
+    \addplot3[surf, shader=faceted, samples=25, #2] {#3};
+    \end{axis}
+    \end{tikzpicture}
+    \end{center}
+}
+
+% Data Plot from CSV
+% Usage: \plotdata[axis options]{plot options}{filename.csv}
+% Example: \plotdata[xlabel=Time, ylabel=Volt]{x=time, y=voltage}{data.csv}
+\newcommand{\plotdata}[3][]{%
+    \begin{center}
+    \begin{tikzpicture}
+    \begin{axis}[
+        width=0.8\linewidth,
+        grid=major,
+        #1
+    ]
+    \addplot table[col sep=comma, #2] {#3};
+    \end{axis}
+    \end{tikzpicture}
+    \end{center}
+}
+
+% End of package
 \endinput
 

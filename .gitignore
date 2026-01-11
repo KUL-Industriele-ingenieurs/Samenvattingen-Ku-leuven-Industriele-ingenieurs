@@ -40,6 +40,7 @@ __pycache__/
 # Documentation files (agent guides)
 AGENTS.md
 gemini.md
+*.gemini-clipboard
 
 # Build output - PDFs are checked by pre-commit hook
 # The hook prevents committing PDFs that match .tex filenames
