@@ -44,6 +44,7 @@
 | `conceptbox` | Blue | Definities, kernbegrippen |
 | `theorieblok` | Purple | Theoretische uitleg |
 | `oefenblok` | Green | Oefeningen met oplossingen |
+| `oefening` | Red/Yellow | Oefeningen (Math Systems stijl) |
 | `voorbeeld` | Orange | Praktijkvoorbeelden |
 | `warningbox` | Red | Waarschuwingen |
 | `examenbox` | Inline | Korte examentips |
