@@ -12,24 +12,43 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container:
+      image: miktex/miktex:latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install TeX Live (minimal set)
+      - name: Initialize MiKTeX
         run: |
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends \
-            texlive-latex-recommended texlive-latex-extra texlive-xetex \
-            texlive-fonts-recommended texlive-fonts-extra texlive-pictures \
-            texlive-science texlive-bibtex-extra biber texlive-lang-european \
-            texlive-plain-generic texlive-luatex \
-            latexmk poppler-utils
+          miktexsetup finish
+          initexmf --set-config-value=[MPM]AutoInstall=1
+          mpm --update-db
+          # Initialize font cache if needed
+          # (Official MiKTeX image usually has this, but for robustness:)
+          initexmf --update-fndb
+          initexmf --mkmaps
+
+      - name: Clean any stale artifacts from checkout
+        run: |
+          # Remove any auxiliary files that might have been accidentally committed
+          find . -type f \( \
+            -name "*.aux" -o \
+            -name "*.bbl" -o \
+            -name "*.bcf" -o \
+            -name "*.blg" -o \
+            -name "*.fls" -o \
+            -name "*.log" -o \
+            -name "*.out" -o \
+            -name "*.toc" -o \
+            -name "*.fdb_latexmk" -o \
+            -name "*.synctex.gz" \
+          \) -delete
+          echo "Cleaned stale auxiliary files"
 
       - name: Find and Build LaTeX documents
         run: |
-          # Vind alle hoofddocumenten (exclusief subfiles en templates)
+          # Find all main documents (excluding subfiles and templates)
           find . -type f -name "*.tex" \
             ! -path "*/.git/*" \
             ! -path "*/assets/*" \
@@ -40,38 +59,101 @@ jobs:
           
           echo "## Build Results 📊" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "| Document | Status |" >> $GITHUB_STEP_SUMMARY
-          echo "|----------|--------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Document | Status | Details |" >> $GITHUB_STEP_SUMMARY
+          echo "|----------|--------|---------|" >> $GITHUB_STEP_SUMMARY
           
-          # Build elk gevonden document
+          BUILD_FAILED=0
+          mkdir -p build_logs
+          
+          # Build each found document
           while IFS= read -r texfile; do
             dir=$(dirname "$texfile")
             file=$(basename "$texfile")
             name=$(basename "$texfile" .tex)
             
+            echo "========================================="
             echo "Building: $texfile"
+            echo "========================================="
             
             cd "$dir"
-            if latexmk -pdf -interaction=nonstopmode -file-line-error "$file" 2>&1 | tee build.log; then
-              echo "| $name | ✅ Success |" >> $GITHUB_STEP_SUMMARY
-              echo "✅ Success: $texfile"
+            
+            # Clean auxiliary files before building to ensure fresh state
+            latexmk -C "$file" 2>/dev/null || true
+            
+            # Build with detailed error logging
+            if latexmk -pdf \
+                -interaction=nonstopmode \
+                -file-line-error \
+                -halt-on-error \
+                "$file" 2>&1 | tee "build_${name}.log"; then
+              
+              # Verify PDF was actually created
+              if [ -f "${name}.pdf" ]; then
+                echo "| \`$name\` | ✅ Success | PDF generated |" >> $GITHUB_STEP_SUMMARY
+                echo "✅ Success: $texfile"
+              else
+                echo "| \`$name\` | ⚠️ Warning | Completed but no PDF |" >> $GITHUB_STEP_SUMMARY
+                echo "⚠️ Warning: $texfile completed but PDF not found"
+                BUILD_FAILED=1
+              fi
             else
-              echo "| $name | ❌ Failed |" >> $GITHUB_STEP_SUMMARY
-              echo "❌ Failed: $texfile"
-              # Toon laatste regels van de log voor debugging
-              tail -20 build.log || true
+              EXIT_CODE=$?
+              echo "| \`$name\` | ❌ Failed | Exit code: $EXIT_CODE |" >> $GITHUB_STEP_SUMMARY
+              echo "❌ Failed: $texfile (exit code: $EXIT_CODE)"
+              
+              # Extract and display key error information for the Actions UI
+              echo "::group::Error details for $name"
+              echo "Last 30 lines of build log:"
+              tail -30 "build_${name}.log" || true
+              
+              if [ -f "${name}.log" ]; then
+                echo ""
+                echo "LaTeX errors found in .log file:"
+                grep -A 3 "^!" "${name}.log" || echo "No '!' markers found in .log"
+              fi
+              echo "::endgroup::"
+              
+              BUILD_FAILED=1
             fi
+            
+            # Move log to central dir for artifact collection
+            cp "build_${name}.log" "../../build_logs/" 2>/dev/null || cp "build_${name}.log" "../build_logs/" || true
+            
             cd - > /dev/null
           done < main_docs.txt
+          
+          # Fail the job if any build failed
+          if [ $BUILD_FAILED -ne 0 ]; then
+            echo "::error::One or more LaTeX documents failed to build"
+            exit 1
+          fi
 
-      - name: Upload built PDFs
+      - name: Collect build artifacts
+        if: always()
+        run: |
+          mkdir -p artifacts/pdfs artifacts/logs
+          # Collect all PDFs
+          find . -type f -name "*.pdf" \
+            ! -path "*/.git/*" \
+            ! -path "*/assets/*" \
+            -exec cp {} artifacts/pdfs/ \; || true
+          # Collect logs
+          cp build_logs/*.log artifacts/logs/ 2>/dev/null || true
+
+      - name: Upload PDFs
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: built-pdfs
+          name: pdfs
           retention-days: 90
           if-no-files-found: warn
-          path: |
-            **/*.pdf
-            !**/assets/**
-            !**/.git/**
+          path: artifacts/pdfs/*.pdf
+
+      - name: Upload build logs
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-logs
+          retention-days: 30
+          if-no-files-found: ignore
+          path: artifacts/logs/*.log
