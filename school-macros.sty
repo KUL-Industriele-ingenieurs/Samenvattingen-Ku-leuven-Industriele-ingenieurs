@@ -465,6 +465,7 @@
     % Store with current section number and section title
     % Use \thesection (group ID) and \@currentlabelname (title) from nameref
     \protected@write\@auxout{}{\string\addformulariumentry{\thesection}{\@currentlabelname}{\unexpanded{#1}}{\unexpanded{#2}}{\unexpanded{#3}}{\theFormulariumEntryCounter}}%
+    \par\vspace{4pt}%
 }
 
 \newcommand*{\printSectionFormulas}[1]{%
