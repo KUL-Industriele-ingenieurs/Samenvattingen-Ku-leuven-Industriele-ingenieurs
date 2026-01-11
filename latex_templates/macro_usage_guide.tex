@@ -31,7 +31,7 @@
 \begin{document}
 
 \maketitle
-
+% @issue: #32 Stel een citeren workflow op met Zotero en Better BibTeX
 \begin{abstract}
 Deze handleiding is een praktische tutorial voor het gebruik van LaTeX bij het maken van
 cursussamenvattingen. LaTeX, oorspronkelijk ontwikkeld door \textcite{lamport1994} bovenop 
@@ -263,24 +263,44 @@ Code:
 \end{verbatim}
 
 \subsection{Data uit CSV}
-Met \verb|\plotdata| kun je data uit een CSV-bestand visualiseren.
+Met \verb|\plotdata| kun je data uit een CSV-bestand visualiseren. De styling (kleuren, markers, legende) wordt automatisch toegepast volgens de school-stijl.
 
-\plotdata[
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
     xlabel=Tijd (\si{s}),
-    ylabel=Spanning (\si{V}),
-    title=Spanningsverloop
-]{x=Time, y=Voltage}{example_data.csv}
+    ylabel=Waarde,
+    title=Meetgegevens van de sensor,
+    width=0.9\linewidth,
+    height=7cm,
+]
+    \addplot table [x=Time, y=Voltage, col sep=comma] {example_data.csv};
+    \addlegendentry{Spanning (\si{V})}
+    
+    \addplot table [x=Time, y=Current, col sep=comma] {example_data.csv};
+    \addlegendentry{Stroom (\si{A})}
+\end{axis}
+\end{tikzpicture}
+\end{center}
 
-Code:
+Zorg dat \texttt{example_data.csv} in dezelfde map staat als je .tex bestand.
+
+Voorbeeld code voor meerdere series:
 \begin{verbatim}
-\plotdata[
+\begin{tikzpicture}
+\begin{axis}[
     xlabel=Tijd (\si{s}),
-    ylabel=Spanning (\si{V}),
-    title=Spanningsverloop
-]{x=Time, y=Voltage}{example_data.csv}
+    ylabel=Waarde,
+    title=Metingen
+]
+    \addplot table [x=Time, y=Voltage, col sep=comma] {data.csv};
+    \addlegendentry{Spanning}
+    
+    \addplot table [x=Time, y=Current, col sep=comma] {data.csv};
+    \addlegendentry{Stroom}
+\end{axis}
+\end{tikzpicture}
 \end{verbatim}
-
-Zorg dat \texttt{example\_data.csv} in dezelfde map staat als je .tex bestand.
 
 % =============================================================================
 \section{Formules met \textbackslash frm}
