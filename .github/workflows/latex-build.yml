@@ -81,7 +81,10 @@ jobs:
             latexmk -C "$file" 2>/dev/null || true
             
             # Build with detailed error logging
+            # latexmk automatically runs pdflatex/biber as many times as needed (usually 2-3 times)
+            # to resolve Table of Contents, cross-references, and the custom \frm system.
             if latexmk -pdf \
+                -shell-escape \
                 -interaction=nonstopmode \
                 -file-line-error \
                 -halt-on-error \
