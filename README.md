@@ -38,7 +38,7 @@ LaTeX heeft een compiler nodig om je code om te zetten naar een PDF.
 Open VS Code, ga naar het Extensions tabblad (blokjes-icoon links) en zoek naar:
 - **LaTeX Workshop:** De allerbelangrijkste. Hiermee kun je bouwen en previewen.
 - **GitHub Pull Requests and Issues:** Om samen te werken zonder de editor te verlaten.
-- **LTeX – LanguageTool:** Voor spellingscontrole en grammatica.
+- **LaTeX – LanguageTool:** Voor spellingscontrole en grammatica.
 
 ### 4. Clone dit Repository
 Open de terminal in VS Code (`Ctrl + \``) of een andere terminal:
