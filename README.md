@@ -74,7 +74,7 @@ Als je liever niet met commando's werkt, kun je ook [GitHub Desktop](https://des
 
 
 
-(beter voor samenwerken) ### 🌐 Remote Repositories in VS Code
+### 🌐 Remote Repositories in VS Code (beter voor samenwerken) 
 Wil je alles rechtstreeks in VS Code doen zonder naar GitHub te gaan?  
 Lees [Remote-Repos.md](Remote-Repos.md) - hier leer je de GitHub Extension gebruiken!
 ---
