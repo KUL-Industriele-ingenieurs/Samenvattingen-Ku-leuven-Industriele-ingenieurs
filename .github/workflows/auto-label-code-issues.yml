@@ -1,0 +1,49 @@
+name: Auto Label Code Issues
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  auto-label-and-assign:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Label and Assign
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issueBody = context.payload.issue.body || "";
+            // Check if the issue looks like it came from code (simple heuristic: contains file path or code snippet indicators)
+            // Or simply apply to all issues if that's the desired workflow for this repo
+            
+            // For now, we apply to all issues, or we could check for specific markers if the VS Code extension adds them consistently.
+            // The VS Code extension usually adds a snippet.
+            
+            // Add label
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              labels: ['from-code']
+            });
+
+            // Assign creator
+            await github.rest.issues.addAssignees({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              assignees: [context.payload.issue.user.login]
+            });
+
+            // Post comment
+            const commentBody = `Thanks for reporting this issue! 🚀\n\n            To start working on this:\n            1. Go to the **Source Control** tab in VS Code.\n            2. Expand the **GITHUB** section.\n            3. Find this issue and click the arrow icon (➥) to **Start working on issue**.\n\n            This will automatically create a branch \`issue-${context.issue.number}\` for you to work in.`;
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: commentBody
+            });
+
