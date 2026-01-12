@@ -106,20 +106,20 @@
   // GitHub Pull Requests & Issues extension settings
   "githubPullRequests.queries": [
     {
-      "label": "My Issues",
-      "query": "is:open is:issue assignee:@me repo:Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs"
+      "label": "Waiting For My Review",
+      "query": "is:open is:pr review-requested:${user} repo:Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs"
     },
     {
-      "label": "All Open Issues",
-      "query": "is:open is:issue repo:Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs"
+      "label": "Assigned To Me",
+      "query": "is:open is:pr assignee:${user} repo:Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs"
     },
     {
-      "label": "@issue markers",
-      "query": "is:open is:issue label:from-code repo:Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs"
+      "label": "Created By Me",
+      "query": "is:open is:pr author:${user} repo:Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs"
     },
     {
-      "label": "Closed Issues",
-      "query": "is:closed is:issue repo:Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs"
+      "label": "All Open Pull Requests",
+      "query": "is:open is:pr repo:Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs"
     }
   ],
   "githubPullRequests.createOnPublishBranch": "never",
@@ -128,5 +128,36 @@
     "origin"
   ],
 
- 
+  "githubIssues.queries": [
+    {
+      "label": "📍 Code Location Markers",
+      "query": "is:open is:issue label:from-code repo:Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs"
+    },
+    {
+      "label": "Assigned Issues",
+      "query": "is:open is:issue assignee:${user} repo:Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs"
+    },
+    {
+      "label": "My Issues",
+      "query": "is:open is:issue assignee:${user} repo:${owner}/${repository}",
+      "groupBy": [
+        "milestone"
+      ]
+    },
+    {
+      "label": "Created Issues",
+      "query": "author:${user} state:open repo:${owner}/${repository} sort:created-desc"
+    },
+    {
+      "label": "Recent Issues",
+      "query": "state:open repo:${owner}/${repository} sort:updated-desc"
+    }
+  ],
+
+  "githubIssues.createIssueTriggers": [
+    "@issue", "@todo", "@bug", "@feature", "@refactor", "TODO", "FIXME"
+  ],
+  "githubIssues.useBranchForIssues": true,
+  "githubIssues.issueBranchTitle": "issue-${issueNumber}",
+
 }

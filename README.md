@@ -9,21 +9,6 @@ Zie LaTeX niet als een tekstverwerker zoals Word, maar als een manier om documen
 - **Het resultaat:** LaTeX zorgt automatisch voor de opmaak, inhoudstafels en prachtige wiskundige formules. Het resultaat is altijd een strakke, professionele PDF.
 - **Waarom?:** Geen frustraties meer met verspringende afbeeldingen of kapotte nummering in Word.
 
-5. **GitHub Issues integratie (OPTIONEEL, maar aanbevolen):**
-   
-   Voor het bijhouden van TODOs en issues in je code:
-   
-   - Installeer extensie: **GitHub Pull Requests and Issues** (`GitHub.vscode-pull-request-github`)
-   - Authenticeer: `Ctrl+Shift+P` → "GitHub: Sign in"
-   
-   **Gebruik:**
-   - Voeg `% @issue:` comments toe in je .tex files voor TODOs
-   - Klik op de lightbulb 💡 of `Ctrl+.` om een GitHub issue te maken
-   - Wanneer je klaar bent, **verwijder de `@issue` comment** of verander naar `% Done:`
-   - Sluit het bijbehorende GitHub issue met een commit: "Fixes #123"
-   
-   📖 Meer info: zie [Hoe-voeg-je-issues-toe.md](Hoe-voeg-je-issues-toe.md)
-
 ---
 
 ## 🛠️ Installatie & Setup
@@ -31,113 +16,110 @@ Zie LaTeX niet als een tekstverwerker zoals Word, maar als een manier om documen
 Om aan deze documenten te werken heb je een paar tools nodig. Volg deze stappen:
 
 ### 1. Installeer Visual Studio Code (VS Code) en Git
-- **Git:** Versiebeheer tool om wijzigingen bij te houden.
-Dit is de editor waarin je typt.
-- Download: [code.visualstudio.com](https://code.visualstudio.com/)
-- Download Git: [git-scm.com/downloads](https://git-scm.com/downloads)
-of via de cmd line:
-```
+Dit is de editor waarin je typt en het systeem om versies bij te houden.
+- **VS Code:** Download via [code.visualstudio.com](https://code.visualstudio.com/)
+- **Git:** Download via [git-scm.com/downloads](https://git-scm.com/downloads)
+
+Of installeer via de terminal (Windows):
+```powershell
+winget install --id Microsoft.VisualStudioCode
 winget install --id Git.Git -e --source winget
 ```
 
+*(Optioneel) GitHub Desktop: Als je liever een grafische interface voor Git gebruikt, download dan [GitHub Desktop](https://desktop.github.com/).*
 
 ### 2. Installeer een LaTeX Distributie
-Latex gaat je pdf maken maar je moet een distributie installeren die de benodigde programma's en pakketten bevat.
-- **Windows:** Installeer [MiKTeX](https://miktex.org/download) (kies "Basic Installer").
-of gebruik de cmd line
-```
-winget install MiKTeX.MiKTeX
-```
-Zorg ervoor dat het automatisch updaten van pakketten aan staat.
-- **Linux:** Installeer TeX Live via je pakketbeheerder, bv. voor Ubuntu:
-```
-sudo apt-get install texlive-full
-```
-- **Mac:** Installeer [MiKTeX](https://miktex.org/download).
+LaTeX heeft een compiler nodig om je code om te zetten naar een PDF.
+- **Windows:** Installeer [MiKTeX](https://miktex.org/download) (Kies de "Basic Installer").
+- **Mac:** Installeer [MacTeX](https://www.tug.org/mactex/).
+- **Linux:** `sudo apt-get install texlive-full`
+
+*Tip voor Windows gebruikers: Zorg dat je instelt dat MiKTeX pakketten automatisch mag installeren ("Always install missing packages on-the-fly").*
 
 ### 3. Installeer VS Code Extensies
-Open VS Code, ga naar het Extensions tabblad (vierkantjes links) en installeer:
-- **LaTeX Workshop:** Dit zorgt ervoor dat je op "Play" kunt drukken om je PDF te zien.
-- **GitHub Pull Requests and Issues:** Om samen te werken en issues te beheren.
+Open VS Code, ga naar het Extensions tabblad (blokjes-icoon links) en zoek naar:
+- **LaTeX Workshop:** De allerbelangrijkste. Hiermee kun je bouwen en previewen.
+- **GitHub Pull Requests and Issues:** Om samen te werken zonder de editor te verlaten.
+- **LTeX – LanguageTool:** Voor spellingscontrole en grammatica.
 
 ### 4. Clone dit Repository
-Open een terminal (cmd, PowerShell, of VS Code terminal) en voer uit:
+Open de terminal in VS Code (`Ctrl + \``) of een andere terminal:
+```bash
+git clone https://github.com/Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs.git
 ```
-git clone https://github.com/Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs/tree/Alpha-unreviewed
-```
-(Zorg dat je het zet in een map waar je makkelijk bij kunt, bv. `Documents/LaTeX-Projects`)
-### 5. Open de map in VS Code
-In VS Code, klik op **File → Open Folder...** en selecteer de map die je zojuist hebt gekloond.
+*Opmerking: Zorg dat je in de map staat waar je het project wilt opslaan (bv. `Documents`).*
 
+### 5. Open de map in VS Code
+In VS Code: **File → Open Folder...** en selecteer de map `Samenvattingen-Ku-leuven-Industriele-ingenieurs`.
 
 ---
 
 ## 🔄 Workflow: Hoe werk je mee?
 
-We werken met een veilig systeem zodat we nooit per ongeluk de hoofdversie breken.
+We werken met een veilig systeem zodat we nooit per ongeluk de hoofdversie breken. Volg deze stappen als je iets wilt aanpassen.
 
-### Stap 1: Bewerken
-Open het project in VS Code en maak je aanpassingen in de `.tex` bestanden.
+### Stap 1: Zorg dat je up-to-date bent
+Voordat je begint, haal je de laatste versie op.
+```bash
+git checkout alpha
+git pull origin alpha
+```
 
-### Stap 2: Branching (Bij grote wijzigingen)
-Ga je een nieuw hoofdstuk schrijven of veel veranderen? Maak dan een eigen "branch" (een veilige kopie).
-1. Klik linksonder in VS Code op de tak-naam (meestal `main` of `alpha`).
-2. Kies **"Create new branch..."**.
-3. Geef het een naam, bv. `nieuwe-oefeningen-wiskunde`.
+### Stap 2: Maak een nieuwe "Branch"
+Werk nooit direct in `alpha` of `main`. Maak een eigen takje aan.
+- Klik linksonder in VS Code op de tak-naam (bv. `alpha`).
+- Kies **Create new branch...**
+- Geef een duidelijke naam, bv. `fix-typo-productie` of `hoofdstuk-3-wiskunde`.
 
-### Stap 3: Pull Request naar 'Alpha'
-Ben je klaar?
-1. Commit en Push je wijzigingen naar GitHub.
-2. Ga naar GitHub en maak een **Pull Request (PR)** aan.
-(met een extensie zoals "GitHub Pull Requests and Issues" kan dit ook vanuit VS Code)
-3. **Belangrijk:** Zet de bestemming (base) op **`alpha`**.
-   - *De `alpha` branch is onze testversie waar we alles verzamelen.*
+### Stap 3: Bewerken & Bouwen
+1. Open het `.tex` bestand dat je wilt aanpassen.
+2. Gebruik de juiste commando's!
+   - Zie **[MACRO_QUICK_REFERENCE.md](MACRO_QUICK_REFERENCE.md)** voor alle beschikbare blokken (`\conceptbox`, `\frm`, etc.).
+3. **Bouwen (PDF Maken):**
+   - Druk op de "Play" knop ▶️ rechtsboven (bij LaTeX Workshop).
+   - Of gebruik de sneltoets (standaard vaak `Ctrl+Alt+B`).
+   - Bekijk de PDF in het rechter tabblad.
 
-### Stap 4: Review & Release
-1. Een admin kijkt je wijzigingen na.
-2. Als alles goed is, wordt jouw werk geaccepteerd in `alpha`.
-3. Periodiek verplaatst de admin alles van `alpha` naar **`main`** voor een officiële release.
+### Stap 4: Commit & Push
+Klaar met je werk? Sla het op in de geschiedenis.
+1. Ga naar het **Source Control** tabblad in VS Code (vertakking-icoon).
+2. Typ een bericht in het tekstvak, bv. "Hoofdstuk 3 samenvatting toegevoegd".
+3. Klik op **Commit**.
+4. Klik op **Publish Branch** (of **Sync Changes**).
+
+### Stap 5: Maak een Pull Request (PR)
+Dit is het moment dat je vraagt om jouw wijzigingen toe te voegen aan het project.
+1. Ga naar de GitHub pagina van dit project.
+2. Je ziet vaak een gele balk: "Compare & pull request". Klik daarop.
+3. **Belangrijk:** Zorg dat `base: alpha` is geselecteerd (niet `main`!).
+4. Beschrijf kort wat je hebt gedaan en klik op **Create pull request**.
+
+Een beheerder zal je werk nakijken en goedkeuren!
 
 ---
 
-## ✅ Voltooide documenten
-- **Productietechnologie** — Voltooid
-- **Ingenieur en economie** — Voltooid
-- **Wisselstroom** — Voltooid
+## ✅ Nuttige Documenten & Links
 
-**Overige documenten:** Documenten moeten hermaakt worden.
+- **[MACRO_QUICK_REFERENCE.md](MACRO_QUICK_REFERENCE.md)** — Een spiekbriefje voor alle commando's (formules, kaders, figuren).
+- **[Hoe-voeg-je-issues-toe.md](Hoe-voeg-je-issues-toe.md)** — Uitleg over hoe je TODO's en fouten rapporteert in de code.
+- **[Debugging-van-building.md](Debugging-van-building.md)** — Hulp als je PDF niet wil compileren.
+
+---
 
 ## 🚩 Issues & Feedback
 
-Heb je een suggestie of zie je een fout, maar wil je het niet direct zelf oplossen?
-
-### 1. Gebruik `@issue` markers
-Typ in een `.tex` bestand simpelweg een opmerking die begint met `% @issue`:
-```latex
-% @issue: Voorbeeld toevoegen voor de tweede wet van Newton
-% Hier moet nog een rekenvoorbeeld komen met m=5kg.
-```
-
-### 2. VS Code Integratie
-Met de "GitHub Pull Requests and Issues" extensie:
-- Klik op het lampje (💡) bij de tekst of druk op `Ctrl+.`.
-- Kies **"Create issue from comment"**.
-
-### 3. Issues bekijken
-Je kunt openstaande taken zien in de **Source Control** tab van VS Code onder de sectie **GITHUB**.
+Zie je een foutje?
+- **Klein:** Verbeter het zelf via bovenstaande workflow!
+- **Groot/Onzeker:** Maak een Issue aan.
+  - In de code: Typ `% @issue: Jouw opmerking`
+  - Via GitHub: Ga naar het tabblad "Issues" en klik "New Issue".
 
 ---
 
-## 🗺️ Roadmap (korte termijn)
-- **Data acquisitie** — verzamelen van oefenopgaven, slides en referentiemateriaal.
-- **Objectgeoriënteerd programmeren (OOP)** — refactor scripts en voorbeelden naar OOP waar relevant.
-- **Documenten herwerken** — herbouw van verouderde documenten (MATHSYS, Warmte, etc.).
-- **CI & automatisering** — verbeterde GitHub Actions voor consistente builds en PDF-artifacts.
-- **Tests & validatie** — automatische checks voor LaTeX-bouw en linting.
-- **Contributing / Voorbeelden** — templates en guidelines voor bijdragers.
-
-> Tip: Prioriteit is eerst data acquisitie en het herwerken van verouderde documenten; OOP-refactor en CI volgen.
+## 🗺️ Roadmap
+- **Data acquisitie** — Verzamelen van oefenopgaven en samenvattingen.
+- **Herwerking** — Oude documenten updaten naar de nieuwe stijl (`school-macros.sty`).
+- **Automatisering** — Automatische PDF builds via GitHub Actions.
 
 ## 📜 Licentie
 Dit project is vrijgegeven onder de **MIT License** — zie het `LICENSE` bestand voor details.
-
