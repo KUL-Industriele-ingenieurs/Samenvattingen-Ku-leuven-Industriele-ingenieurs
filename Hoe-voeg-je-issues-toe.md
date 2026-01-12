@@ -99,6 +99,20 @@ Add to `.vscode/settings.json`:
 3. Select "Create issue from comment"
 4. VS Code creates the GitHub issue with the description
 
+**Automatic permalinks and labels**
+
+We have a GitHub Actions workflow that will automatically add a clickable GitHub code permalink and the `from-code` label to issues that originate from `@issue`/`@todo` markers.
+
+- The workflow runs when an issue is **opened**, **edited**, or **reopened**.
+- It parses the issue body for the marker and the `In file <path>` line (or searches `.tex` files in the repo) to determine the file and line number.
+- If it finds a match, it will post a comment like:
+
+  `🔗 Code permalink: https://github.com/<owner>/<repo>/blob/<branch>/path/to/file.tex#L42`
+
+- If it cannot locate the file or marker, the workflow will leave an explanatory comment reminding you to commit the file and ensure the marker exists.
+
+**Tip:** If the initial issue body does not include a file path or the permalink is missing, edit the issue (for example paste the `% @issue:` line or the file path), and the workflow will update the issue with the permalink automatically.
+
 ### View and Work on Issues
 
 1. Open **Source Control** view (`Ctrl+Shift+G`)
