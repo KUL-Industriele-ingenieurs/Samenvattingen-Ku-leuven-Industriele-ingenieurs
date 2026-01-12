@@ -37,6 +37,7 @@
 \RequirePackage{parskip}    % Paragraph spacing instead of indent
 \RequirePackage{setspace}   % For line spacing
 \setstretch{1.15}           % Slightly larger for better readability
+\microtypecontext{spacing=nonfrench}
 
 % --- Quality & Engine Optimization ---
 \ifdefined\pdfminorversion
@@ -136,6 +137,7 @@
     url=true,
     eprint=false,
 ]{biblatex}
+\RequirePackage{csquotes}
 
 % --- Hyperlinks (load near last, after biblatex) ---
 \RequirePackage{hyperref}
@@ -243,10 +245,8 @@
 \renewcommand{\headrulewidth}{0.3pt}
 
 % --- Section Styling ---
-% Make chapters keep number and title on the same line and avoid forcing a new page
-\makeatletter
-\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
-\makeatother
+% Make chapters behave like sections (no new page)
+\titleclass{\chapter}{straight}
 
 % Slightly smaller chapter titles (keep them prominent but less tall)
 \titleformat{\chapter}[hang]{\normalfont\LARGE\bfseries}{\thechapter}{1em}{}[\titlerule]
