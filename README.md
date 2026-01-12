@@ -44,7 +44,11 @@ sudo apt-get install texlive-full
 ### 3. Installeer VS Code Extensies
 Open VS Code, ga naar het Extensions tabblad (vierkantjes links) en installeer:
 - **LaTeX Workshop:** Dit zorgt ervoor dat je op "Play" kunt drukken om je PDF te zien.
+- **Latex Utilities:** Geeft extra opties zoals auto image pastingen met Latex workshop.
 - **GitHub Pull Requests and Issues:** Om samen te werken en issues te beheren.
+- **Latex:** geeft je synthax voor latex zodat je dingen kunt autocompleten.
+- **Zotero Latex:** Laat je zotero citaties toevoegen (moet nog geïmplementeerd worden)
+
 
 ### 4. Clone dit Repository
 Open een terminal (cmd, PowerShell, of VS Code terminal) en voer uit:
