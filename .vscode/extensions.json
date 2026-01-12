@@ -4,6 +4,7 @@
         "GitHub.vscode-pull-request-github",
         "bnavetta.zoterolatex",
         "james-yu.latex-workshop",
-        "mathematic.vscode-latex"
+        "mathematic.vscode-latex",
+        "ms-vsliveshare.vsliveshare",
     ]
 }

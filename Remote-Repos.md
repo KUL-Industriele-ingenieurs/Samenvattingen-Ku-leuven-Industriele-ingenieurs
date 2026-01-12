@@ -62,7 +62,7 @@ Dit gebruik je voor:
 - Branches beheren
 - Pushen en pullen
 
-### 🚀 GitHub Issues (Megafoon-icoontje)
+### 🚀 GitHub (Github icoontje)
 Dit gebruik je voor:
 - Issues bekijken en aanmaken
 - Pull Requests reviewen
@@ -95,8 +95,9 @@ De (2) betekent: 2 bestanden zijn gewijzigd.
 
 ### Hoe commit je?
 1. Type een bericht in het message box
-2. Klik de **groene vinkje** of druk `Ctrl+Enter`
-3. Klaar!
+2. Voeg je veranderingen toe door te stagen (klik op het plusje naast elk bestand of bij CHANGES)
+3. Klik op het groene vinkje **[✓ Commit]**
+4. synchroniseer met GitHub (syncen = push + pull)
 
 ---
 
