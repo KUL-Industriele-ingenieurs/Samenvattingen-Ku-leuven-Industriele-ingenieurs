@@ -9,20 +9,6 @@ Zie LaTeX niet als een tekstverwerker zoals Word, maar als een manier om documen
 - **Het resultaat:** LaTeX zorgt automatisch voor de opmaak, inhoudstafels en prachtige wiskundige formules. Het resultaat is altijd een strakke, professionele PDF.
 - **Waarom?:** Geen frustraties meer met verspringende afbeeldingen of kapotte nummering in Word.
 
-5. **GitHub Issues integratie (OPTIONEEL, maar aanbevolen):**
-   
-   Voor het bijhouden van TODOs en issues in je code:
-   
-   - Installeer extensie: **GitHub Pull Requests and Issues** (`GitHub.vscode-pull-request-github`)
-   - Authenticeer: `Ctrl+Shift+P` → "GitHub: Sign in"
-   
-   **Gebruik:**
-   - Voeg `% @issue:` comments toe in je .tex files voor TODOs
-   - Klik op de lightbulb 💡 of `Ctrl+.` om een GitHub issue te maken
-   - Wanneer je klaar bent, **verwijder de `@issue` comment** of verander naar `% Done:`
-   - Sluit het bijbehorende GitHub issue met een commit: "Fixes #123"
-   
-   📖 Meer info: zie [Hoe-voeg-je-issues-toe.md](Hoe-voeg-je-issues-toe.md)
 
 ---
 
@@ -97,7 +83,20 @@ Ben je klaar?
 1. Een admin kijkt je wijzigingen na.
 2. Als alles goed is, wordt jouw werk geaccepteerd in `alpha`.
 3. Periodiek verplaatst de admin alles van `alpha` naar **`main`** voor een officiële release.
-
+5. **GitHub Issues integratie (OPTIONEEL, maar aanbevolen):**
+   
+   Voor het bijhouden van TODOs en issues in je code:
+   
+   - Installeer extensie: **GitHub Pull Requests and Issues** (`GitHub.vscode-pull-request-github`)
+   - Authenticeer: `Ctrl+Shift+P` → "GitHub: Sign in"
+   
+   **Gebruik:**
+   - Voeg `% @issue:` comments toe in je .tex files voor TODOs
+   - Klik op de lightbulb 💡 of `Ctrl+.` om een GitHub issue te maken
+   - Wanneer je klaar bent, **verwijder de `@issue` comment** of verander naar `% Done:`
+   - Sluit het bijbehorende GitHub issue met een commit: "Fixes #123"
+   
+   📖 Meer info: zie [Hoe-voeg-je-issues-toe.md](Hoe-voeg-je-issues-toe.md)
 ---
 
 ## ✅ Voltooide documenten
