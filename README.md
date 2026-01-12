@@ -26,7 +26,7 @@ Voor window via de cmd line:
 winget install --id Git.Git -e --source winget
 ```
 
-###(optioneel installer github destop)
+### (optioneel installer github destop)
 ```
 https://desktop.github.com/download/
 ```
