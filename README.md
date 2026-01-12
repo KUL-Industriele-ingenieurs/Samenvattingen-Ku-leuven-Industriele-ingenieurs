@@ -21,9 +21,14 @@ Om aan deze documenten te werken heb je een paar tools nodig. Volg deze stappen:
 Dit is de editor waarin je typt.
 - Download: [code.visualstudio.com](https://code.visualstudio.com/)
 - Download Git: [git-scm.com/downloads](https://git-scm.com/downloads)
-of via de cmd line:
+Voor window via de cmd line:
 ```
 winget install --id Git.Git -e --source winget
+```
+
+###(optioneel installer github destop)
+```
+https://desktop.github.com/download/
 ```
 
 
