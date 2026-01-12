@@ -124,6 +124,10 @@ How to trigger or test the workflows
 - Open a pull request touching the relevant files — `Process issues for code permalinks` runs on PR activity and may add missing permalinks.
 - Wait for the daily scheduled run (runs once per day) or manually run the workflow from the Actions tab (use `workflow_dispatch` and pass an `issue_body` payload for quick testing).
 
+Logs & artifacts
+- When the scheduled/PR workflow runs it writes a per-run markdown summary into `permalink-logs/permalink-log-<timestamp>.md` and uploads it as a workflow artifact named **permalink-log**.
+- The workflow also posts a summary comment in or creates a persistent repository issue titled **permalink-log** containing a short table of updated issues.
+
 Notes:
 - To enable automatic repository event handling (issues/pull_request) for everyone, merge the workflow files into the repository default branch (MAIN). Workflows on feature branches do not receive external webhook-events for security reasons.
 - The workflows only add permalinks and **do not** modify issue text; they add a comment and a `from-code` label to help discoverability.
