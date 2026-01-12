@@ -178,6 +178,50 @@ Laten we testen of alles werkt:
 
 ---
 
+## ✍️ Werken met LaTeX in VS Code
+
+Hier zijn de belangrijkste shortcuts om snel te werken:
+
+### 🖼️ Afbeeldingen toevoegen (Snel!)
+Vergeet het handmatig opslaan en importeren van afbeeldingen.
+1. **Kopieer** een afbeelding (Ctrl+C of screenshot)
+2. Ga naar je LaTeX bestand
+3. Druk **`Ctrl + Alt + V`**
+4. VS Code slaat de afbeelding automatisch op in de juiste map én voegt de code toe!
+
+### 🔎 Navigeren (SyncTeX)
+- **Van Code naar PDF:** `Ctrl + Alt + J` (Jump to PDF)
+- **Van PDF naar Code:** **Dubbelklik** ergens in de PDF, en VS Code springt naar de juiste regel in je tekst.
+- **PDF bekijken:** Klik op het icoontje rechtsboven "View LaTeX PDF" of druk `Ctrl + Alt + V` (als je geen image op je klembord hebt).
+
+### ⚡ Snelle commando's
+- **Bouwen (Build):** `Ctrl + Alt + B`
+- **Error?** Open het "LaTeX Workshop" paneel links (TEX icoon) om de log te zien.
+
+---
+
+## ✍️ Werken met LaTeX in VS Code
+
+Hier zijn de belangrijkste shortcuts om snel te werken:
+
+### 🖼️ Afbeeldingen toevoegen (Snel!)
+Vergeet het handmatig opslaan en importeren van afbeeldingen.
+1. **Kopieer** een afbeelding (Ctrl+C of screenshot)
+2. Ga naar je LaTeX bestand
+3. Druk **`Ctrl + Alt + V`**
+4. VS Code slaat de afbeelding automatisch op in de juiste map én voegt de code toe!
+
+### 🔎 Navigeren (SyncTeX)
+- **Van Code naar PDF:** `Ctrl + Alt + J` (Jump to PDF)
+- **Van PDF naar Code:** **Dubbelklik** ergens in de PDF, en VS Code springt naar de juiste regel in je tekst.
+- **PDF bekijken:** Klik op het icoontje rechtsboven "View LaTeX PDF" of druk **`Ctrl + Alt + Shift + P`**.
+
+### ⚡ Snelle commando's
+- **Bouwen (Build):** `Ctrl + Alt + B` (of gewoon opslaan `Ctrl + S`)
+- **Error?** Open het "LaTeX Workshop" paneel links (TEX icoon) om de log te zien.
+
+---
+
 ## 🔄 Workflow: Hoe werk je samen aan dit project?
 
 We werken met **branches** (takken). Denk eraan als verschillende versies van het project waar je veilig kunt experimenteren zonder het origineel te breken.
