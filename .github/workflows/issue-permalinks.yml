@@ -3,6 +3,14 @@ name: Add code permalinks to issues
 on:
   issues:
     types: [opened, edited, reopened]
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: 'Issue number (optional)'
+        required: false
+      issue_body:
+        description: 'Issue body to process (optional)'
+        required: false
 
 permissions:
   issues: write
@@ -22,10 +30,17 @@ jobs:
             const fs = require('fs');
             const path = require('path');
 
-            const issue = context.payload.issue;
+            // Support real issue events or manual runs via workflow_dispatch
+            let issue = context.payload.issue;
             if (!issue) {
-              core.info('No issue payload available');
-              return;
+              const inputs = (context.payload && context.payload.inputs) ? context.payload.inputs : {};
+              if (inputs && inputs.issue_body) {
+                issue = { number: inputs.issue_number ? Number(inputs.issue_number) : 0, body: inputs.issue_body };
+                core.info('No issue payload; using manual workflow_dispatch inputs');
+              } else {
+                core.info('No issue payload available and no manual inputs; nothing to do');
+                return;
+              }
             }
 
             const body = issue.body || '';
@@ -36,7 +51,7 @@ jobs:
             if (codeFenceMatch) {
               const codeBlock = codeFenceMatch[1];
               const codeLines = codeBlock.split(/\r?\n/);
-              markerLine = codeLines.find(l => l.trim().startsWith('% @issue') || l.trim().startsWith('% @todo') || /@issue:/.test(l) || /@todo:/.test(l));
+              markerLine = codeLines.find(l => /(@issue:|@todo:|TODO|FIXME)/i.test(l.trim()));
             }
 
             // Try to find the "In file <path>" line and extract a .tex path if present
@@ -74,7 +89,7 @@ jobs:
                     const lines = content.split(/\r?\n/);
                     for (let i = 0; i < lines.length; i++) {
                       const L = lines[i];
-                      if (L.includes(cleaned) || (L.includes('@issue') || L.includes('@todo')) && (cleaned.length < 10 || L.includes(cleaned.split(/\s+/)[0]))) {
+                      if (L.includes(cleaned) || /(@issue|@todo|TODO|FIXME)/i.test(L) && (cleaned.length < 10 || L.includes(cleaned.split(/\s+/)[0]))) {
                         return { file: p, line: i + 1 };
                       }
                     }
@@ -98,19 +113,19 @@ jobs:
                 if (markerLine) {
                   // clean marker for searching
                   const cleaned = markerLine.replace(/^\s*%?\s*/, '').trim();
-                  // try exact match or contains
+                  // try exact match or contains (supports TODO/FIXME as well)
                   for (let i = 0; i < lines.length; i++) {
-                    if (lines[i].includes(cleaned) || lines[i].trim() === markerLine.trim() || (lines[i].includes('@issue') && lines[i].includes(cleaned.replace(/.*@issue[:\s]*/, '')))) {
+                    if (lines[i].includes(cleaned) || lines[i].trim() === markerLine.trim() || /(@issue|@todo|TODO|FIXME)/i.test(lines[i])) {
                       lineNumber = i + 1;
                       break;
                     }
                   }
                 }
 
-                // fallback: first occurrence of @issue or @todo
+                // fallback: first occurrence of a known marker
                 if (!lineNumber) {
                   for (let i = 0; i < lines.length; i++) {
-                    if (lines[i].includes('@issue') || lines[i].includes('@todo')) {
+                    if (/(@issue|@todo|TODO|FIXME)/i.test(lines[i])) {
                       lineNumber = i + 1;
                       break;
                     }

@@ -99,19 +99,36 @@ Add to `.vscode/settings.json`:
 3. Select "Create issue from comment"
 4. VS Code creates the GitHub issue with the description
 
+Note: The system recognises other common markers too — `TODO` and `FIXME` (case-insensitive) — so adding `% TODO:` or `% FIXME:` will also be picked up by the automated workflows and the lightbulb action where supported.
+
 **Automatic permalinks and labels**
 
-We have a GitHub Actions workflow that will automatically add a clickable GitHub code permalink and the `from-code` label to issues that originate from `@issue`/`@todo` markers.
+We have two GitHub Actions workflows that keep code permalinks in issues up-to-date and add a `from-code` label when a marker is found:
 
-- The workflow runs when an issue is **opened**, **edited**, or **reopened**.
-- It parses the issue body for the marker and the `In file <path>` line (or searches `.tex` files in the repo) to determine the file and line number.
-- If it finds a match, it will post a comment like:
+- `Add code permalinks to issues` – runs when an issue is **opened**, **edited**, or **reopened**. It reads the issue body for a code block with a marker (e.g. `% @issue:`) and an `In file <path>` line, resolves the file and line number, and posts a comment containing a clickable GitHub blob permalink (file + line) and the `from-code` label.
+
+- `Process issues for code permalinks` – runs daily (cron) and on **pull request** events. It scans all open issues and adds permalinks where they are missing, so you don't need to rely solely on creating/editing the issue to trigger it.
+
+How the workflows locate file and line:
+- If the issue body includes an `In file <path>` line, the workflow will try to resolve that path in the repo and find the marker line number.
+- If no explicit path is present, the workflow searches `.tex` files for the marker text (supports `@issue`, `@todo`, `TODO`, and `FIXME`, case-insensitive) and uses the first matching line it finds.
+
+If a match is found the workflow posts a comment like:
 
   `🔗 Code permalink: https://github.com/<owner>/<repo>/blob/<branch>/path/to/file.tex#L42`
 
-- If it cannot locate the file or marker, the workflow will leave an explanatory comment reminding you to commit the file and ensure the marker exists.
+If it cannot locate the file or a marker line the workflow leaves a helpful comment instructing the author to commit the file and/or include the file path or the marker line in the issue body.
 
-**Tip:** If the initial issue body does not include a file path or the permalink is missing, edit the issue (for example paste the `% @issue:` line or the file path), and the workflow will update the issue with the permalink automatically.
+How to trigger or test the workflows
+- Edit the issue body (add the `% @issue:` line or `In file <path>`), then save — the issue-based workflow will run on edit.
+- Open a pull request touching the relevant files — `Process issues for code permalinks` runs on PR activity and may add missing permalinks.
+- Wait for the daily scheduled run (runs once per day) or manually run the workflow from the Actions tab (use `workflow_dispatch` and pass an `issue_body` payload for quick testing).
+
+Notes:
+- To enable automatic repository event handling (issues/pull_request) for everyone, merge the workflow files into the repository default branch (MAIN). Workflows on feature branches do not receive external webhook-events for security reasons.
+- The workflows only add permalinks and **do not** modify issue text; they add a comment and a `from-code` label to help discoverability.
+
+**Tip:** If the initial issue body does not include enough context, editing the issue to add the marker or the file path will let the workflows find and add the permalink automatically.
 
 ### View and Work on Issues
 
