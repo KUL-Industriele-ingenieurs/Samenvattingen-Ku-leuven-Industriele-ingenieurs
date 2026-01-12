@@ -130,12 +130,12 @@
 
   "githubIssues.queries": [
     {
-      "label": "Assigned Issues",
-      "query": "is:open is:issue assignee:${user} repo:Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs"
+      "label": "📍 Code Location Markers",
+      "query": "is:open is:issue label:from-code repo:Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs"
     },
     {
-      "label": "@issue markers",
-      "query": "is:open is:issue label:from-code repo:Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs"
+      "label": "Assigned Issues",
+      "query": "is:open is:issue assignee:${user} repo:Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs"
     },
     {
       "label": "My Issues",
@@ -155,10 +155,9 @@
   ],
 
   "githubIssues.createIssueTriggers": [
-    "@issue",
-    "@todo",
-    "TODO",
-    "FIXME"
+    " @issue", " @todo", " @bug", " @feature", " @refactor", "TODO", "FIXME"
   ],
+  "githubIssues.useBranchForIssues": true,
+  "githubIssues.issueBranchTitle": "issue-${issueNumber}",
 
 }
