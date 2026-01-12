@@ -72,7 +72,14 @@ Git is het systeem waarmee we samenwerken en wijzigingen bijhouden.
 #### Optioneel: GitHub Desktop
 Als je liever niet met commando's werkt, kun je ook [GitHub Desktop](https://desktop.github.com/) installeren. Dit geeft een visuele interface voor Git. Deze guide gebruikt wel de command line, omdat dat universeler is.
 
+
+
+(beter voor samenwerken) ### 🌐 Remote Repositories in VS Code
+Wil je alles rechtstreeks in VS Code doen zonder naar GitHub te gaan?  
+Lees [Remote-Repos.md](Remote-Repos.md) - hier leer je de GitHub Extension gebruiken!
 ---
+
+
 
 ## 📝 Stap 2: Installeer een LaTeX Distributie
 
