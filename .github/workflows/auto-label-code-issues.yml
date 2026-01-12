@@ -2,7 +2,8 @@ name: Auto Label Code Issues
 
 on:
   issues:
-    types: [opened]
+    types: [opened, reopened]
+  workflow_dispatch:
 
 jobs:
   auto-label-and-assign:
@@ -15,7 +16,10 @@ jobs:
         with:
           script: |
             const issue = context.payload.issue;
-            if (!issue) return;
+            if (!issue) {
+              console.log("No issue payload found. If this is a manual run, this is expected behavior as there is no issue context.");
+              return;
+            }
 
             const issueNumber = issue.number;
             const owner = context.repo.owner;
