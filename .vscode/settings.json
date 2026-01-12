@@ -98,10 +98,7 @@
     "*.synctex.gz"
   ],
 
-  "files.exclude": {
-    "**/*.log": true,
-    "**/*.synctex.gz": true
-  },
+
 
   // GitHub Pull Requests & Issues extension settings
   "githubPullRequests.queries": [
@@ -123,7 +120,7 @@
     }
   ],
   "githubPullRequests.createOnPublishBranch": "never",
-  "githubPullRequests.defaultMergeMethod": "squash",
+  "githubPullRequests.defaultMergeMethod": "merge",
   "githubPullRequests.remotes": [
     "origin"
   ],
@@ -157,9 +154,26 @@
   "githubIssues.createIssueTriggers": [
     "@issue", "@todo", "@bug", "@feature", "@refactor", "TODO", "FIXME"
   ],
-  "githubIssues.useBranchForIssues": false,
+  "githubIssues.useBranchForIssues": "off",
   "githubIssues.issueBranchTitle": "issue-${issueNumber}",
 
-
+  // LTeX: Grammar and Spell Checker configuration
+  "ltex.language": "nl-BE",
+  "ltex.enabled": true,
+  "ltex.checkFrequency": "save",
   
+  // LaTeX Workshop: Better multi-file support
+  "latex-workshop.latex.build.forceRecipeUsage": false,
+  "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
+
+  // Hide asset clutter in specific folders but keep them visible to LaTeX
+  "files.exclude": {
+    "**/*.log": true,
+    "**/*.aux": true,
+    "**/*.fdb_latexmk": true,
+    "**/*.fls": true,
+    // Optional: Uncomment to hide image assets if they clutter the view
+    // "**/assets/*.png": true,
+    // "**/assets/*.jpg": true
+  }
 }
