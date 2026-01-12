@@ -35,13 +35,6 @@ jobs:
               labels: ['from-code']
             });
 
-            await github.rest.issues.addAssignees({
-              owner,
-              repo,
-              issue_number: issueNumber,
-              assignees: [creator]
-            });
-
             const commentBody = [
               `Thanks for reporting this issue! 🚀`,
               '',
