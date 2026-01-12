@@ -157,7 +157,9 @@
   "githubIssues.createIssueTriggers": [
     "@issue", "@todo", "@bug", "@feature", "@refactor", "TODO", "FIXME"
   ],
-  "githubIssues.useBranchForIssues": true,
+  "githubIssues.useBranchForIssues": false,
   "githubIssues.issueBranchTitle": "issue-${issueNumber}",
 
+
+  
 }
