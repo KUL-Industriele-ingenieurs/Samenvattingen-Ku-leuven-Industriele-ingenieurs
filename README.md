@@ -30,11 +30,9 @@ winget install --id Git.Git -e --source winget
 
 ### 2. Installeer een LaTeX Distributie
 LaTeX heeft een compiler nodig om je code om te zetten naar een PDF.
-- **Windows:** Installeer [MiKTeX](https://miktex.org/download) (Kies de "Basic Installer").
-- **Mac:** Installeer [MacTeX](https://www.tug.org/mactex/).
-- **Linux:** `sudo apt-get install texlive-full`
+- **Windows, Mac, linux:** Installeer [MiKTeX](https://miktex.org/download) (Kies de "Basic Installer").
 
-*Tip voor Windows gebruikers: Zorg dat je instelt dat MiKTeX pakketten automatisch mag installeren ("Always install missing packages on-the-fly").*
+*Tip: Zorg dat je instelt dat MiKTeX pakketten automatisch mag installeren ("Always install missing packages on-the-fly").*
 
 ### 3. Installeer VS Code Extensies
 Open VS Code, ga naar het Extensions tabblad (blokjes-icoon links) en zoek naar:
