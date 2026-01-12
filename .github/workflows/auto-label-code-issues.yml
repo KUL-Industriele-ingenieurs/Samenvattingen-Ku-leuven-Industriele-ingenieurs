@@ -3,6 +3,8 @@ name: Auto Label Code Issues
 on:
   issues:
     types: [opened, reopened]
+  pull_request:
+    branches: [main, MAIN, master]
   workflow_dispatch:
 
 jobs:
