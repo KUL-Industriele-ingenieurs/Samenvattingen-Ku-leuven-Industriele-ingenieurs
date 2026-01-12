@@ -85,26 +85,14 @@ Lees [Remote-Repos.md](Remote-Repos.md) - hier leer je de GitHub Extension gebru
 
 LaTeX heeft een "compiler" nodig om je `.tex` bestanden om te zetten naar een PDF. Kies het programma voor jouw besturingssysteem:
 
-### Windows: MiKTeX
+### Windows/Apple/linux: MiKTeX
 1. Download [MiKTeX](https://miktex.org/download) (kies "Basic Installer")
 2. Installeer het programma
 3. **Belangrijk:** Bij de installatie, kies "**Always install missing packages on-the-fly**"
    - Dit zorgt dat extra pakketten automatisch worden geïnstalleerd
    - Anders moet je elk pakket handmatig goedkeuren 😅
 
-### Mac: MacTeX
-1. Download [MacTeX](https://www.tug.org/mactex/)
-2. Installeer het programma (let op: dit is een groot bestand, ~4GB)
 
-### Linux: TeX Live
-Open een terminal en voer uit:
-```bash
-sudo apt-get install texlive-full
-```
-
-**Let op:** Deze installaties kunnen even duren (10-30 minuten), vooral op Mac.
-
----
 
 ## 🔌 Stap 3: Installeer VS Code Extensies
 
@@ -124,8 +112,8 @@ Extensies geven VS Code superkrachten voor LaTeX.
 - 👤 Auteur: GitHub
 - 📌 Handig voor samenwerken
 
-### ✅ LTeX – LanguageTool (Optioneel maar handig)
-- 🔍 Zoek: `LTeX`
+### ✅ LaTeX – LanguageTool (Optioneel maar handig)
+- 🔍 Zoek: `LaTeX`
 - 👤 Auteur: Julian Valentin
 - 📝 Spellingscontrole en grammatica voor Nederlands
 
@@ -133,8 +121,8 @@ Extensies geven VS Code superkrachten voor LaTeX.
 - Na installatie van LaTeX Workshop verschijnt er een **TEX** icoontje in de linker sidebar
 
 ---
-
-## 📂 Stap 4: Clone dit Repository
+*(niet doen als je remote repo gaat gebruiken)*
+## 📂 Stap 4: Clone dit Repository 
 
 Nu gaan we de bestanden van dit project naar jouw computer downloaden.
 
