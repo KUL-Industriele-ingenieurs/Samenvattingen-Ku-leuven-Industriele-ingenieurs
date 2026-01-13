@@ -13,31 +13,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container:
-      image: miktex/miktex:latest
+      image: texlive/texlive:latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Initialize MiKTeX
-        run: |
-          miktexsetup finish
-          # Enable auto-install with verbose logging
-          initexmf --admin --set-config-value=[MPM]AutoInstall=1
-          initexmf --admin --set-config-value=[MPM]AutoInstallDirectory=/opt/miktex/texmfs/install
-          mpm --admin --update-db
-          
-          # Verify auto-install is working
-          echo "MiKTeX AutoInstall Status:"
-          initexmf --admin --show-config-value=[MPM]AutoInstall
-          
-          initexmf --admin --update-fndb
-          initexmf --admin --mkmaps
-
       - name: Clean any stale artifacts from checkout
         run: |
           # Remove any auxiliary files that might have been accidentally committed
-          find . -type f \( \
+          find . -type f ( \
             -name "*.aux" -o \
             -name "*.bbl" -o \
             -name "*.bcf" -o \
@@ -48,7 +33,7 @@ jobs:
             -name "*.toc" -o \
             -name "*.fdb_latexmk" -o \
             -name "*.synctex.gz" \
-          \) -delete
+          ) -delete
           echo "Cleaned stale auxiliary files"
 
       - name: Find and Build LaTeX documents
