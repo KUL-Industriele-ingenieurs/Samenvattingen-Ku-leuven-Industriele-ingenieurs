@@ -202,6 +202,9 @@
         before skip=12pt,
         after skip=12pt
     },
+    % Backwards compatible alias: older docs used `schoolstyle`
+    % Map `schoolstyle` to `schoolbox` with default color `schoolBlue`.
+    schoolstyle/.style={schoolbox=schoolBlue},
     % Legacy style alias (to prevent breakages if used directly)
     schoolbase/.style={
         blanker, breakable, left=12pt, borderline west={3pt}{0pt}{schoolBlue}
