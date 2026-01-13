@@ -13,47 +13,25 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container:
-      image: miktex/miktex:latest
+      image: texlive/texlive:latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Initialize MiKTeX
-        run: |
-          miktexsetup finish
-          # Enable auto-install with verbose logging
-          initexmf --admin --set-config-value=[MPM]AutoInstall=1
-          initexmf --admin --set-config-value=[MPM]AutoInstallDirectory=/opt/miktex/texmfs/install
-          mpm --admin --update-db
-          
-          # Verify auto-install is working
-          echo "MiKTeX AutoInstall Status:"
-          initexmf --admin --show-config-value=[MPM]AutoInstall
-          
-          initexmf --admin --update-fndb
-          initexmf --admin --mkmaps
-
       - name: Clean any stale artifacts from checkout
+        shell: bash
         run: |
           # Remove any auxiliary files that might have been accidentally committed
-          find . -type f \( \
-            -name "*.aux" -o \
-            -name "*.bbl" -o \
-            -name "*.bcf" -o \
-            -name "*.blg" -o \
-            -name "*.fls" -o \
-            -name "*.log" -o \
-            -name "*.out" -o \
-            -name "*.toc" -o \
-            -name "*.fdb_latexmk" -o \
-            -name "*.synctex.gz" \
-          \) -delete
+          # Using single line find to avoid shell syntax issues with multiline splitting
+          find . -type f \( -name "*.aux" -o -name "*.bbl" -o -name "*.bcf" -o -name "*.blg" -o -name "*.fls" -o -name "*.log" -o -name "*.out" -o -name "*.toc" -o -name "*.fdb_latexmk" -o -name "*.synctex.gz" \) -delete
           echo "Cleaned stale auxiliary files"
 
       - name: Find and Build LaTeX documents
+        shell: bash
         run: |
           # Find all main documents (excluding subfiles and templates)
+          # We look for files containing \documentclass
           find . -type f -name "*.tex" \
             ! -path "*/.git/*" \
             ! -path "*/assets/*" \
@@ -83,13 +61,18 @@ jobs:
             
             cd "$dir"
             
-            # Clean auxiliary files before building to ensure fresh state
-            latexmk -C "$file" 2>/dev/null || true
+            # Clean auxiliary files specifically using latexmk before building
+            # latexmk might fail if it can't find files, so we suppress errors
+            latexmk -C "$file" || true
             
-            # Build with detailed error logging
-            # latexmk automatically runs pdflatex/biber as many times as needed (usually 2-3 times)
-            # to resolve Table of Contents, cross-references, and the custom \frm system.
+            # Build using ONLY latexmk
+            # -pdf: Generate PDF (uses pdflatex by default under the hood, but managed by latexmk)
+            # -g: Force complete processing (ignore dependencies)
+            # -shell-escape: Allow external commands (needed for minted/plots)
+            # -interaction=nonstopmode: Don't halt on errors
+            # -file-line-error: Better error format for logs
             if latexmk -pdf \
+                -g \
                 -shell-escape \
                 -interaction=nonstopmode \
                 -file-line-error \
