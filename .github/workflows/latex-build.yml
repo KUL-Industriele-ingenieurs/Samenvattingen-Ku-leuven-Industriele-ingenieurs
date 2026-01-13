@@ -20,23 +20,15 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Clean any stale artifacts from checkout
+        shell: bash
         run: |
           # Remove any auxiliary files that might have been accidentally committed
-          find . -type f ( \
-            -name "*.aux" -o \
-            -name "*.bbl" -o \
-            -name "*.bcf" -o \
-            -name "*.blg" -o \
-            -name "*.fls" -o \
-            -name "*.log" -o \
-            -name "*.out" -o \
-            -name "*.toc" -o \
-            -name "*.fdb_latexmk" -o \
-            -name "*.synctex.gz" \
-          ) -delete
+          # Using single line find to avoid shell syntax issues with multiline splitting
+          find . -type f \( -name "*.aux" -o -name "*.bbl" -o -name "*.bcf" -o -name "*.blg" -o -name "*.fls" -o -name "*.log" -o -name "*.out" -o -name "*.toc" -o -name "*.fdb_latexmk" -o -name "*.synctex.gz" \) -delete
           echo "Cleaned stale auxiliary files"
 
       - name: Find and Build LaTeX documents
+        shell: bash
         run: |
           # Find all main documents (excluding subfiles and templates)
           # We look for files containing \documentclass
@@ -70,7 +62,8 @@ jobs:
             cd "$dir"
             
             # Clean auxiliary files specifically using latexmk before building
-            latexmk -C "$file" 2>/dev/null || true
+            # latexmk might fail if it can't find files, so we suppress errors
+            latexmk -C "$file" || true
             
             # Build using ONLY latexmk
             # -pdf: Generate PDF (uses pdflatex by default under the hood, but managed by latexmk)
