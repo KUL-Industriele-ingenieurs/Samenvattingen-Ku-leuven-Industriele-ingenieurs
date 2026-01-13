@@ -298,7 +298,8 @@
         grid=major,
         legend style={at={(0.98,0.98)}, anchor=north east, draw=none, fill=white, fill opacity=0.8},
         cycle list/Set1-5, % ColorBrewer
-        every axis plot/.append style={thick, mark=*},
+        no markers,
+        every axis plot/.append style={thick},
         axis lines=box, % Boxed axes for engineering
         label style={font=\bfseries\sffamily},
         tick label style={font=\sffamily},
@@ -444,9 +445,11 @@
         \end{tcolorbox}%
         \symwrite{#1}{#2}{#3}{\thepage}%
     \else
-        {\small\textbf{\ensuremath{#1}} --- #2 [\si{#3}]}% 
+        \ensuremath{#1}% Show only the symbol after first use
     \fi
 }
+\newcommand{\symS}[3]{\sym{#1}{#2}{#3}}
+\newcommand{\symW}[3]{\sym{#1}{#2}{#3}}
 
 \newcommand*{\printsymbols}{% 
     \par
