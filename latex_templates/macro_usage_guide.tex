@@ -80,7 +80,7 @@ Hier begint je inhoud...
 \end{document}
 \end{verbatim}
 
-\begin{warningbox}[title=Belangrijk: Compileer tweemaal!]
+\begin{warningbox}[Belangrijk: Compileer tweemaal!]
 Voor correcte werking van het formularium en de symbolenlijst moet je het document 
 \textbf{tweemaal compileren}. Bij de eerste compilatie worden de gegevens verzameld,
 bij de tweede worden ze weergegeven.
@@ -88,7 +88,7 @@ bij de tweede worden ze weergegeven.
 
 \subsection{Document klassen: article vs report}
 
-\begin{conceptbox}[title=Welke documentclass kiezen?]
+\begin{conceptbox}[Welke documentclass kiezen?]
 \begin{description}[leftmargin=2.5cm]
     \item[\texttt{article}] Voor korte documenten, samenvattingen \textbf{zonder} hoofdstukken
     \item[\texttt{report}] Voor langere documenten \textbf{met} hoofdstukken (\verb|\chapter{}|)
@@ -96,7 +96,7 @@ bij de tweede worden ze weergegeven.
 \end{description}
 \end{conceptbox}
 
-\begin{theorieblok}[title=Structuurverschillen article vs report]
+\begin{theorieblok}[Structuurverschillen article vs report]
 \textbf{article class:}
 \begin{itemize}[leftmargin=1.5cm]
     \item Hoogste niveau: \verb|\section{}| (in TOC als hoofdniveau)
@@ -127,7 +127,7 @@ Het zorgt voor consistente opmaak van getallen en eenheden.
 
 \subsection{Basis gebruik}
 
-\begin{theorieblok}[title=De \textbackslash SI commando]
+\begin{theorieblok}[De \textbackslash SI commando]
 \begin{tabular}{ll}
 \toprule
 \textbf{Code} & \textbf{Resultaat} \\
@@ -176,35 +176,35 @@ Alle boxen zijn \emph{breakable} --- ze kunnen over meerdere pagina's lopen.
 
 \subsection{Conceptbox (Definities)}
 
-\begin{conceptbox}[title=Snijsnelheid]
+\begin{conceptbox}[Snijsnelheid]
 De \concept{snijsnelheid} ($v_c$) is de omtrekssnelheid van het gereedschap ten opzichte
 van het werkstuk, uitgedrukt in \si{m/min}.
 \end{conceptbox}
 
 Code:
 \begin{verbatim}
-\begin{conceptbox}[title=Snijsnelheid]
+\begin{conceptbox}[Snijsnelheid]
 De \concept{snijsnelheid} ($v_c$) is de omtrekssnelheid...
 \end{conceptbox}
 \end{verbatim}
 
 \subsection{Theorieblok (Theorie)}
 
-\begin{theorieblok}[title=Energiebehoud]
+\begin{theorieblok}[Energiebehoud]
 In een gesloten systeem zonder externe krachten blijft de totale mechanische energie behouden:
 \[ E_{totaal} = E_k + E_p = \text{constant} \]
 \end{theorieblok}
 
 Code:
 \begin{verbatim}
-\begin{theorieblok}[title=Energiebehoud]
+\begin{theorieblok}[Energiebehoud]
 In een gesloten systeem...
 \end{theorieblok}
 \end{verbatim}
 
 \subsection{Oefenblok (Oefeningen)}
 
-\begin{oefenblok}[title=Oefening 1.1]
+\begin{oefenblok}[Oefening 1.1]
 \textbf{Gegeven:} $m = \SI{5}{kg}$, $v = \SI{10}{m/s}$
 
 \textbf{Gevraagd:} Bereken de kinetische energie.
@@ -213,22 +213,22 @@ In een gesloten systeem...
 \[ E_k = \frac{1}{2}mv^2 = \frac{1}{2} \times \SI{5}{kg} \times (\SI{10}{m/s})^2 = \SI{250}{J} \]
 \end{oefenblok}
 
-\subsection{Nieuwe Oefening Box (Rood/Geel)}
+\subsection{alt manier voor oefenblok}
 
-\begin{oefening}[title=Oefening 1.2: Rood-Gele stijl]
+\begin{oefening}[Oefening 1.2: Rood-Gele stijl]
 Deze box heeft een rode rand en gele achtergrond, specifiek voor Math Systems oefeningen.
 \end{oefening}
 
 Code:
 \begin{verbatim}
-\begin{oefening}[title=Oefening 1.2]
+\begin{oefening}[Oefening 1.2: Rood-Gele stijl]
 Deze box heeft een rode rand en gele achtergrond...
 \end{oefening}
 \end{verbatim}
 
 \subsection{Voorbeeld (Praktijkvoorbeelden)}
 
-\begin{voorbeeld}[title=Praktisch voorbeeld: Fietser]
+\begin{voorbeeld}[Praktisch voorbeeld: Fietser]
 Een fietser met massa \SI{80}{kg} rijdt met \SI{25}{km/h}. 
 De kinetische energie is:
 \[ v = \SI{25}{km/h} = \SI{6.94}{m/s} \]
@@ -237,7 +237,7 @@ De kinetische energie is:
 
 \subsection{Warningbox (Waarschuwingen)}
 
-\begin{warningbox}[title=Veelgemaakte fout]
+\begin{warningbox}[Veelgemaakte fout]
 \belangrijk{Let op:} Vergeet niet om eenheden te converteren naar SI voordat je berekeningen maakt!
 \end{warningbox}
 
@@ -508,6 +508,49 @@ Frezen & Het gereedschap roteert en beweegt over het werkstuk \\
 \end{table}
 
 % =============================================================================
+\section{Code Listings}
+\label{sec:code}
+% =============================================================================
+
+Voor het weergeven van code zijn er twee belangrijke opties: \texttt{listings} (standaard in school-macros) en \texttt{minted} (mooier, maar vereist Python).
+
+\subsection{Standaard: listings}
+
+De \texttt{listings} omgeving werkt altijd en is ingebouwd in het \texttt{school-macros} pakket.
+
+\begin{lstlisting}[language=Python, caption=Python voorbeeld met listings]
+def bereken_invloed(kracht, arm):
+    """Bereken het moment."""
+    return kracht * arm
+
+# Hoofdprogramma
+F = 100 # Newton
+d = 0.5 # Meter
+M = bereken_invloed(F, d)
+print(f"Moment: {M} Nm")
+\end{lstlisting}
+
+\subsection{Geavanceerd: minted}
+
+Voor professionele syntax highlighting (zoals in VS Code) gebruik je \texttt{minted}.
+\newline
+\textbf{Vereisten:}
+\begin{itemize}
+    \item Voeg \verb|\usepackage{minted}| toe aan je preamble.
+    \item Compileer met \texttt{-shell-escape} (standaard in de \texttt{latexmk} build taak).
+    \item Python en Pygments moeten geïnstalleerd zijn.
+\end{itemize}
+
+\begin{verbatim}
+\begin{minted}{python}
+import numpy as np
+
+def stap_respons(t):
+    return 1 - np.exp(-t)
+\end{minted}
+\end{verbatim}
+
+% =============================================================================
 \section{Grafieken met PGFPlots}
 \label{sec:plots}
 % =============================================================================
@@ -635,12 +678,91 @@ Voor schakelingen gebruiken we \texttt{circuitikz}.
 \end{circuitikz}
 \end{verbatim}
 
+\subsection{Blokdiagrammen (Control Systems)}
+
+Voor regelsystemen gebruiken we \texttt{TikZ} met \texttt{blocks} styles.
+
+\begin{center}
+\begin{tikzpicture}[auto, node distance=1.5cm, >=Latex]
+    % Styles definition
+    \tikzstyle{block} = [draw, rectangle, minimum height=2em, minimum width=3em]
+    \tikzstyle{sum} = [draw, circle, node distance=1cm]
+    \tikzstyle{input} = [coordinate]
+    \tikzstyle{output} = [coordinate]
+    \tikzstyle{pinstyle} = [pin edge={to-,thin,black}]
+
+    % Nodes
+    \node [input, name=input] {};
+    \node [sum, right of=input] (sum) {};
+    \node [block, right of=sum] (controller) {$K_p$};
+    \node [block, right of=controller, node distance=2.5cm] (system) {$\frac{1}{s+1}$};
+    \node [output, right of=system] (output) {};
+    \node [coordinate, below of=controller] (tmp) {};
+
+    % Connections
+    \draw [->] (input) -- node {$R(s)$} (sum);
+    \draw [->] (sum) -- node {$E$} (controller);
+    \draw [->] (controller) -- node {$U$} (system);
+    \draw [->] (system) -- node [name=y] {$Y(s)$}(output);
+    \draw [->] (y) |- (tmp) -| node[pos=0.99] {$-$} (sum);
+\end{tikzpicture}
+\end{center}
+
+\subsection{Bode Plot (Frequentierespons)}
+
+Frequentieresponsen kunnen direct geplot worden met \texttt{pgfplots}.
+
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    width=0.8\linewidth, height=6cm,
+    xmode=log,
+    xlabel={Frequentie [\si{rad/s}]},
+    ylabel={Amplitude [\si{dB}]},
+    grid=both,
+    ymin=-40, ymax=10,
+    domain=0.1:100
+]
+\addplot[thick, blue] {20*log10(1/sqrt(1+x^2))};
+\addlegendentry{$H(s) = \frac{1}{s+1}$}
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\subsection{Mohr's Cirkel (Sterkteleer)}
+
+Voor mechanica en materiaalkunde.
+
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    width=6cm, height=6cm,
+    xlabel={$\sigma$ [MPa]},
+    ylabel={$\tau$ [MPa]},
+    axis lines=middle,
+    axis equal,
+    grid=both,
+    xmin=-20, xmax=120,
+    ymin=-70, ymax=70
+]
+    % Voorbeeld: sigma_x=100, sigma_y=20, tau_xy=30
+    % Center = (100+20)/2 = 60
+    % Radius = sqrt((40)^2 + 30^2) = 50
+    \draw[thick, schoolBlue] (axis cs:60,0) circle [radius=50];
+    \addplot[only marks, mark=*] coordinates {(100,-30) (20,30)};
+    \node[right] at (axis cs:100,-30) {X};
+    \node[left] at (axis cs:20,30) {Y};
+    \draw[dashed] (axis cs:100,-30) -- (axis cs:20,30);
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
 % =============================================================================
 \section{Veelgemaakte Fouten}
 \label{sec:mistakes}
 % =============================================================================
 
-\begin{warningbox}[title=Vermijd deze fouten!]
+\begin{warningbox}[Vermijd deze fouten!]
 \begin{tabular}{p{0.45\linewidth} p{0.45\linewidth}}
 \toprule
 \textbf{Fout} X & \textbf{Correct} $\checkmark$ \\
@@ -690,7 +812,7 @@ project/
 \end{document}
 \end{verbatim}
 
-\begin{theorieblok}[title=\textbackslash include vs \textbackslash input]
+\begin{theorieblok}[\textbackslash include vs \textbackslash input]
 \begin{description}
     \item[\texttt{\textbackslash include}] Start nieuw hoofdstuk op nieuwe pagina, 
         kan selectief compileren met \verb|\includeonly{}|
@@ -711,7 +833,7 @@ wat naadloos integreert met Zotero voor referentiebeheer.
 
 \subsection{Zotero Setup}
 
-\begin{oefenblok}[title=Stap-voor-stap Zotero integratie]
+\begin{oefenblok}[Stap-voor-stap Zotero integratie]
 \begin{enumerate}
     \item \textbf{Installeer Better BibTeX}: 
         \begin{itemize}
@@ -741,7 +863,7 @@ wat naadloos integreert met Zotero voor referentiebeheer.
 
 \subsection{Citeren in tekst}
 
-\begin{theorieblok}[title=Citatie commando's]
+\begin{theorieblok}[Citatie commando's]
 \begin{tabular}{ll}
 \toprule
 \textbf{Code} & \textbf{Resultaat} \\
@@ -755,7 +877,7 @@ wat naadloos integreert met Zotero voor referentiebeheer.
 \end{tabular}
 \end{theorieblok}
 
-\begin{warningbox}[title=Compilatievolgorde met bibliografie]
+\begin{warningbox}[Compilatievolgorde met bibliografie]
 Bij gebruik van BibLaTeX moet je compileren met:
 \begin{verbatim}
 pdflatex document.tex
@@ -780,7 +902,7 @@ Aanbevolen format: \verb|[auth:lower][year]| geeft \texttt{einstein1905}.
 \label{sec:workflow}
 % =============================================================================
 
-\begin{oefenblok}[title=Aanbevolen werkwijze]
+\begin{oefenblok}[Aanbevolen werkwijze]
 \begin{enumerate}
     \item \textbf{Start met template}: Kopieer \texttt{new\_document\_template.tex}
     \item \textbf{Definieer symbolen vroeg}: Gebruik \verb|\sym{}| bij eerste vermelding

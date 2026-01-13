@@ -49,16 +49,16 @@
   "latex-utilities.formattedPaste.enabled": true,
   "latex-workshop.latex.recipes": [
     {
+      "name": "latexmk (fastest)",
+      "tools": [
+        "latexmk"
+      ]
+    },
+    {
       "name": "pdflatex × 2 (fast)",
       "tools": [
         "pdflatex",
         "pdflatex"
-      ]
-    },
-    {
-      "name": "latexmk (pdflatex)",
-      "tools": [
-        "latexmk"
       ]
     },
     {
@@ -103,6 +103,10 @@
   // GitHub Pull Requests & Issues extension settings
   "githubPullRequests.queries": [
     {
+      "label": "Local Pull Request Branches",
+      "query": "default"
+    },
+    {
       "label": "Waiting For My Review",
       "query": "is:open is:pr review-requested:${user} repo:Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs"
     },
@@ -117,6 +121,10 @@
     {
       "label": "All Open Pull Requests",
       "query": "is:open is:pr repo:Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs"
+    },
+    {
+      "label": "All Open",
+      "query": "default"
     }
   ],
   "githubPullRequests.createOnPublishBranch": "never",
@@ -165,6 +173,35 @@
   // LaTeX Workshop: Better multi-file support
   "latex-workshop.latex.build.forceRecipeUsage": false,
   "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
+
+  // LaTeX Workshop: Custom IntelliSense for school-macros.sty
+  "latex-workshop.intellisense.environment.user": {
+    "theorie": {},
+    "theorieblok": {},
+    "schoolconcept": {},
+    "conceptbox": {},
+    "waarschuwing": {},
+    "warningbox": {},
+    "voorbeeld": {},
+    "oefenblok": {},
+    "oefening": {},
+    "codeblock": {},
+    "examenbox": {}
+  },
+  "latex-workshop.intellisense.command.user": {
+    "concept{}": "{}",
+    "belangrijk{}": "{}",
+    "keyterm{}": "{}",
+    "frm{}{}{}": "{}{}{}",
+    "sym{}{}{}": "{}{}{}",
+    "fig[]{}{}{}": "[]{}{}{}",
+    "autofig[]{}{}": "[]{}{}",
+    "img{}{}": "{}{}",
+    "mat{}": "{}",
+    "TODO{}": "{}",
+    "FIXME{}": "{}",
+    "NOTE{}": "{}"
+  },
 
   // Hide asset clutter in specific folders but keep them visible to LaTeX
   "files.exclude": {
