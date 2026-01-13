@@ -131,9 +131,12 @@
         {
             "label": "Check @issue markers",
             "type": "shell",
-            "command": "python",
+            "command": "powershell",
             "args": [
-                "${workspaceFolder}/scripts/check_issues.py"
+                "-NoProfile",
+                "-NonInteractive",
+                "-Command",
+                "Get-ChildItem -Recurse -Filter *.tex -ErrorAction SilentlyContinue | Select-String -Pattern '@issue|@todo|TODO|FIXME' | ForEach-Object { Write-Output ($_.Path + ':' + $_.LineNumber + ':1: warning: ' + ($_.Line.Trim())) }"
             ],
             "presentation": {
                 "reveal": "never",
