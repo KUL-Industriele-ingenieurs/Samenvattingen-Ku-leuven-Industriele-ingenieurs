@@ -15,6 +15,7 @@
 \usepackage{school-macros}
 \addbibresource{references.bib}
 
+
 % Custom title with KU Leuven branding
 \title{% 
     \vspace{-1cm}
@@ -24,6 +25,10 @@
 }
 \author{Voor studenten}
 \date{\today}
+% =============================================================================
+% @issue: #60 Uitleg over macro's voor LaTeX beginners
+% description: Zorg ervoor dat deze handleiding duidelijker is voor
+% beginners in LaTeX, met meer voorbeelden en stapsgewijze instructies.
 % =============================================================================
 
 \begin{document}
@@ -104,6 +109,76 @@ bij de tweede worden ze weergegeven.
 \end{itemize}
 \end{theorie}
 
+\section{Algemene latex tips}
+\subsection{Latex tekstopmaak}
+
+Latex heeft wat standaard dingen om je tekst te stijlen.
+
+\begin{codeblock}[title=Basis Tekstopmaak]{tex}
+\textbf{Vetgedrukt} \\
+\textit{Cursief} \\
+\underline{Onderstreept} \\
+\emph{Nadruk} \\
+\texttt{Monospace / Typewriter} \\
+\textsc{Kleine Hoofdletters} \\
+\textcolor{red}{Gekleurde Tekst} \\
+\chapter{} \\
+\section{} \\
+\subsection{} \\
+\subsubsection{} \\
+\paragraph{}
+
+\end{codeblock}
+
+Gelukkig moet je deze dingen niet allemaal onthouden want daar zijn de vscode-extensies voor!
+Zorg dat je al de extensies die door de werkruimte zijn aangeraden hebt geïnstalleerd.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.5\textwidth]{extensies.png}
+  \caption{}
+  \label{fig:extensies.png}
+ \end{figure}
+
+ Je kunt ook makkelijk de toolbar rechtboven de editor gebruiken om snel stijlen toe te passen.
+ \begin{figure}[ht]
+   \centering
+   \includegraphics[width=0.45\textwidth]{toolbar.png}
+   \includegraphics[width=0.45\textwidth]{toolbar2.png}
+   \caption{Toolbar in VSCode voor LaTeX opmaak}
+   \label{fig:toolbar.png}
+  \end{figure}
+  \FloatBarrier
+
+  Je kunt makkelijk switchen tussen latex en pdf door op de "View LaTeX PDF" knop te klikken.
+  Dubbelklik op de pdf om terug te gaan naar de latex code.
+
+  Gebruik de commando \textbf{ctrl + alt + j} om van latex naar pdf te gaan
+
+  \subsection{Image pasting}
+
+Met de \texttt{Latex Utilities} extensie kun je makkelijk afbeeldingen plakken vanuit je klembord.
+Selecteer waar je de afbeelding wilt plakken en gebruik de sneltoets \textbf{ctrl + alt + v}.
+Je krijgt dan automatisch een figuur omgeving met de afbeelding erin geplakt.
+\textit{Zorg dat je het een deftige naam geeft!}
+\subsection{Live Share}
+
+Met de Live Share extensie van VSCode kun je makkelijk samenwerken aan latex documenten in real-time.
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.5\textwidth]{liveshare.png}
+  \caption{}
+  \label{fig:liveshare.png}
+ \end{figure}
+ \FloatBarrier
+
+ Je krijgt dan een link die je kunt delen met anderen zodat ze 
+ kunnen meeschrijven aan je document. 
+ Je hebt dan ook een opmerkignen chat maar weet dat deze
+ weggaan als je de sessie afsluit.
+
+
+
 % =============================================================================
 \section{Eenheden en Getallen met siunitx}
 \label{sec:siunitx}
@@ -155,16 +230,16 @@ Alle boxen zijn \emph{breakable} --- ze kunnen over meerdere pagina's lopen.
 
 \subsection{Concept (Definities)}
 
-\begin{schoolconcept}[title=Snijsnelheid]
+\begin{concept}[title=Snijsnelheid]
 De \concept{snijsnelheid} ($v_c$) is de omtrekssnelheid van het gereedschap ten opzichte
 van het werkstuk, uitgedrukt in \si{m/min}.
-\end{schoolconcept}
+\end{concept}
 
 Code:
 \begin{verbatim}
-\begin{schoolconcept}[title=Snijsnelheid]
+\begin{concept}[title=Snijsnelheid]
 De \concept{snijsnelheid} ($v_c$) is de omtrekssnelheid...
-\end{schoolconcept}
+\end{concept}
 \end{verbatim}
 
 \subsection{Theorie (Stellingen)}
@@ -222,6 +297,26 @@ Deze stijl zorgt voor een uniforme, professionele uitstraling van grafieken door
 \end{itemize}
 
 \subsection{Functie plot}
+
+\begin{verbatim}
+    \begin{center}
+\begin{tikzpicture}
+\begin{axis}
+[
+    schoolEngineeringPlot,
+    width=0.8\linewidth, height=6cm,
+    xlabel={$x$},
+    ylabel={$f(x)$},
+    legend pos=north west
+]
+\addplot[blue, thick, domain=0:4, samples=50] {x^2};
+\addlegendentry{$f(x) = x^2$}
+\addplot[red, thick, domain=0:4] {2*x};
+\addlegendentry{$g(x) = 2x$}
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\end{verbatim}
 
 \begin{center}
 \begin{tikzpicture}
@@ -496,7 +591,9 @@ Het \texttt{school-macros} pakket integreert naadloos met Zotero en Better BibTe
         \item Format: \textbf{Better BibLaTeX}
         \item \faCheckSquare\ \textbf{Keep updated} (Essentieel!)
         \item Sla op als \texttt{references.bib} in je LaTeX map.
+        \item voeg het toe in het begin van het document met \verb|\addbibresource{references.bib}|
     \end{itemize}
+\textit{Dit moet niet exact references.bib heten, maar zorg dat de bestandsnaam overeenkomt met wat je in LaTeX gebruikt.}
 \end{enumerate}
 \end{oefenblok}
 
