@@ -5,12 +5,6 @@
 \usepackage{school-macros}
 
 
-
-
-
-
-
-% @issue: #29 Zorg dat productietechnologie school-macros gebruikt in plaats van productie-macros.sty
 % ------------------ Document metadata ------------------
 \title{Productietechnologie — Samenvatting}
 \author{Ruben Ryckaert}
@@ -717,12 +711,12 @@ Er zijn verschillende parameters die spaanvorming beïnvloeden
 
 \frm{Spaanslankheid bij Draaien}{\dfrac{b}{h} = \dfrac{a}{f \cdot \sin \kappa_r}}{waarbij $b$ de snedebreedte [\si{mm}], $h$ de snededikte [\si{mm}], $a$ de snedediepte [\si{mm}], $f$ de voeding [\si{mm/omw}] en $\kappa_r$ de instelhoek [$^\circ$].}
 
-\theoriebox{\textbf{$h = f \cdot \sin\kappa_r$}}
+\textbf{$h = f \cdot \sin\kappa_r$}
 
 De snededikte $h$ bij draaien wordt bepaald door de voeding $f$ en de instelhoek $\kappa_r$. Een grotere voeding of een kleinere instelhoek resulteert
 in een dikkere spaan, wat de spaanvorming beïnvloedt.
 
-\theoriebox{\textbf{$b = \dfrac{a}{\sin\kappa_r}$}}
+\textbf{$b = \dfrac{a}{\sin\kappa_r}$}
 \newline
 {De snedebreedte $b$ bij draaien wordt bepaald door de snedediepte $a$
 	en de instelhoek $\kappa_r$. Een grotere snedediepte of een grotere instelhoek resulteert in
@@ -983,7 +977,7 @@ De Torsie kant berekent worden en hieruit de maximale voeding bepaald worden.
 \end{figure}
 Met het traagheidsmoment berekent als volgt (zie statica):
 \newline
-\theoriebox{\textbf{Polair traagheidsmoment voor een cirkelvormige doorsnede:} $I_p = \frac{\pi d^4}{32}$}
+\textbf{Polair traagheidsmoment voor een cirkelvormige doorsnede:} $I_p = \frac{\pi d^4}{32}$
 
 De combinatie van deze formules:
 
@@ -1360,6 +1354,7 @@ Je kunt meer info vinden bij Algemeen verspanen~\ref{chap:Algemeen verspanen}.
 	\includegraphics[width=0.6\textwidth]{image45.png}
 	\caption{Geometrie van een mantelfrees}
 \end{figure}
+\FloatBarrier
 
 
 \section{krachtwerking bij frezen}
@@ -1390,23 +1385,23 @@ De snededikte is niet constant omdat je frees ronddraait. Voor berekeningen word
 \textbf{BELANGRIJK VOOR EXAMEN}\\
 Je krachten op je frees zijn dus niet constant; zorg dat je dit weet voor het examen. Daarom nemen we het gemiddelde snededikte $h_{gem}$ zodat we toch een berekening hebben voor de kracht.
 
-\theoriebox{\textbf{Gemiddelde snededikte bij Frezen:} $h_{gem} = f_z \cdot \sqrt{\dfrac{a}{d}}$\\\small}
+\textbf{Gemiddelde snededikte bij Frezen:} $h_{gem} = f_z \cdot \sqrt{\dfrac{a}{d}}$\\\small
 \newline
 waarbij $f_z$ de voeding per tand is, $a$ de snedediepte en $d$ de diameter van de frees.
 
-\theoriebox{\textbf{Voeding per tand bij Frezen:} $f_z = \dfrac{f}{z_i}$\\\small}
+\textbf{Voeding per tand bij Frezen:} $f_z = \dfrac{f}{z_i}$\\\small
 \newline
 waarbij $f$ de voeding is en $z_i$ het aantal tanden van de frees.
 
-\theoriebox{\textbf{Snijsnelheid bij Frezen:} $v_c = \pi \cdot d \cdot n$\\\small}
+\textbf{Snijsnelheid bij Frezen:} $v_c = \pi \cdot d \cdot n$\\\small
 \newline
 waarbij $d$ de diameter van de frees is en $n$ het toerental.
 
-\theoriebox{\textbf{Ingrijpingshoek bij Frezen:} $\displaystyle \phi = \arccos\!\left(1 - \dfrac{2a}{d}\right) \;\Rightarrow\; \cos\phi = 1 - \dfrac{2a}{d}$.\\\small}
+\textbf{Ingrijpingshoek bij Frezen:} $\displaystyle \phi = \arccos\!\left(1 - \dfrac{2a}{d}\right) \;\Rightarrow\; \cos\phi = 1 - \dfrac{2a}{d}$.\\\small
 \newline
 waarbij $a$ de snedediepte is en $d$ de diameter van de frees.
 
-\theoriebox{\textbf{Tanden per ingrijping}{$z_i = \frac{Q}{360}\cdot z$}}
+\textbf{Tanden per ingrijping}{$z_i = \frac{Q}{360}\cdot z$}
 \newline
 waarbij $z_i$ het aantal tanden per ingrijping is,
 $Q$ de ingrijpingshoek in graden en $z$ het totaal aantal tanden van de frees.
@@ -1617,7 +1612,7 @@ Dit is anders bij het slijpen omdat die ook een licht oneven oppervlakte kan ach
 	\caption{(a) Voorbehandeld, ruw oppervlak met scherpe toppen; (b) resultaat na honen waarbij de bovenste delen van de toppen zijn verwijderd.}
 	\label{fig:hoonprocess_schematic}
 \end{figure}
-
+\vspace{0.35cm}
 \subsection{Korte-slag Honen}
 Het enige verschil met lange-slag honen is de kinematica van het systeem.
 Je werkstuk is opgespannen tussen twee tegenpunten die roteren.
@@ -2204,23 +2199,27 @@ Je wilt een materiaal die Erosievast is zodat je elektrode minder snel slijt. Ge
 {E = \lambda \cdot \rho \cdot c \cdot T_m}
 {waarbij $E$ de erosievastheid is [\si{J^2 \cdot s^{-1} \cdot m^{-4} \cdot K}], \(\lambda\) de warmtegeleidingscoëfficiënt [\si{W/(m.K)}], \(\rho\) de massadichtheid [\si{kg/m^3}], \(c\) de soortelijke warmte [\si{J/(kg.K)}] en \(T_m\) de smelttemperatuur [\si{K}].}
 
-\vspace{1cm}
+\vspace{0.5cm}
 \section{Effecten van pulsduur en stroomsterkte}
+
+\vspace{0.5cm}
+
+
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=0.8\textwidth]{image66.png}
 	\caption{Effecten van pulsduur en stroomsterkte bij EDM}
 	\label{fig:Effecten_pulsduur_stroomsterkte.png}
 \end{figure}
+\FloatBarrier
 
 Dikkere lijnen zijn grotere elektrodeslijtage. Bij kortere pulsen heb je grotere slijtage.
 Dit komt omdat je de elektronen nog in het diëlektricum zitten terwijl de vonk gebeurt. Er zijn dus meer negatieve
 ionen die op de elektrode botsen en materiaal wegnemen.
 
-
 \subsection{Toepassingen}
 \begin{itemize}
-	\item   Vonkerosie laat bewerken van harde materialen toe.
+	\item Vonkerosie laat bewerken van harde materialen toe.
 	\item Je kunt complexe vormen maken die met andere processen moeilijk te maken zijn. Je kunt profielen maken
 	      met hoge nauwkeurigheid die dan caviteiten maken.
 	\item Slanke gereedschappen en dunne wanden zijn mogelijk omdat er geen mechanische krachten optreden tijdens het bewerken.
@@ -2233,6 +2232,7 @@ ionen die op de elektrode botsen en materiaal wegnemen.
 	\caption{Verschillende types vonkerosie}
 	\label{fig:verschillende_types_vonkerosie.png}
 \end{figure}
+\FloatBarrier
 \subsubsection{Zinkvonkerosie}
 
 \begin{figure}[ht]
@@ -2242,6 +2242,7 @@ ionen die op de elektrode botsen en materiaal wegnemen.
 	\caption{Zinkvonkenrosie proces}
 	\label{fig:Zinkvonkenrosie.png}
 \end{figure}
+\FloatBarrier
 
 Zinkvonken gebeurt een geleidend profiel die in het werstuk verzonken wordt.
 Je moet de spanen uit het diëlektricum spoelen zodat het diëlektricum niet begint te geleiden.
@@ -2279,7 +2280,7 @@ Je gaat je elektrode laten ronddraaien en zo grotere caviteiten maken als de ele
 Via NC sturing kan je heel kleine dingen maken zoals matrijzen voor kleine tandwielen.
 Enorm veel microbewerkignen kunnen zo gemaakt worden.
 
-\textbf{Belangrijk}
+\belangrijk{Belangrijk}
 \newline
 Vonkerosie zet geen enkele kracht op het werkstuk.
 De materialen waar je mee moet werken moeten wel elektrisch geleidend zijn. Lager dan <100$\Omega$cm.
@@ -2319,7 +2320,8 @@ Je oppervlakte bij het proberen om het nauwkeuriger te maken werd alleen maar sl
 \section{Elektrochemische bewerkingen}
 
 \begin{conceptbox}[title=ECM (Electro Chemical Machining)]
-    ECM is gebaseerd op gecontroleerde elektrolyse (anodische oplossing). In tegenstelling tot EDM is ECM een \keyterm{chemisch} proces zonder warmteontwikkeling of gereedschapsslijtage. Het werkstuk fungeert als anode en lost op in een geleidend elektrolyt.
+    ECM is gebaseerd op gecontroleerde elektrolyse (anodische oplossing). 
+	In tegenstelling tot EDM is ECM een \keyterm{chemisch} proces zonder warmteontwikkeling of gereedschapsslijtage. Het werkstuk fungeert als anode en lost op in een geleidend elektrolyt.
 \end{conceptbox}
 
 Je neemt een werkstuk en een elektrode. Je gaat dat dompelenen in een elektrolytische vloeistof.
@@ -3099,7 +3101,7 @@ snelste, goedkoopste, meest precieze enz.
 Je ziet dat enorm veel technieken die we al gezien hebben terugkomen bij dit hoofdstuk. 
 Niet echt super handig maar het is een goede herhaling.
 
-\begin{warningbox}[title=EXAMEN CHECKLIST: SCHEIDEN]
+\begin{warningbox}[EXAMEN CHECKLIST: SCHEIDEN]
     \begin{itemize}
         \item \textbf{Ponsen \& Knippen}: Begrijp het proces (elastisch $\to$ plastisch $\to$ breuk) en de invloed van de snijspleet.
         \item \textbf{Schuifkracht}: Ken de formule $F = \tau \cdot L \cdot s_0$ en weet hoe de snijhoek de kracht vermindert.
@@ -3111,7 +3113,7 @@ Niet echt super handig maar het is een goede herhaling.
 
 \chapter{Oervormen (Gieten van metalen)}
 
-\begin{conceptbox}[title=Slink vs. Krimp]
+\begin{conceptbox}[Slink vs. Krimp]
     \begin{itemize}
         \item \textbf{Slink}: Volumevermindering tijdens de faseovergang van vloeibaar naar vast. Dit wordt gecompenseerd door \keyterm{opkomers} (voedingsreservoirs).
         \item \textbf{Krimp}: Volumevermindering tijdens de verdere afkoeling van het gestolde metaal naar kamertemperatuur. Dit wordt gecompenseerd door de \keyterm{krimptoeslag} op het model.
@@ -3120,7 +3122,7 @@ Niet echt super handig maar het is een goede herhaling.
 
 \section{Inleiding}
 
-\begin{conceptbox}[title=Directionele stolling]
+\begin{conceptbox}[Directionele stolling]
     Om slinkholtes te voorkomen, moet het gietstuk zo ontworpen zijn dat de stolling begint bij de dunste delen en eindigt bij de opkomer. De opkomer moet als laatste stollen om het krimpend metaal in het gietstuk aan te vullen.
 \end{conceptbox}
 
@@ -3155,8 +3157,7 @@ De stappen om een gietstuk te maken zijn:
 	\item Uitnemen van het stuk
 \end{enumerate}
 
-\begin{conceptbox}
-	\textbf{Volumevermindering bij stollen}
+\begin{conceptbox}[Volumevermindering bij stollen]
 	Volumevermindering door stollen noemt men \textbf{Slink}. Een slink is een microscopisch gaatje in het gietstuk dat ontstaat tijdens het stollen en wordt gecompenseerd door opkomers.
 	Dit zijn extra stukken materiaal die je toevoegt aan je gietstuk.
 
@@ -3497,7 +3498,7 @@ Je moet dus je keuze maken afhankelijk van de toepassing en de prijs.
 Als je wilt gieten ga je ook je ontwerp moeten aanpassen aan het gieten.
 Hou je rekening met volumekrimp, lossing, opkomers, kernen, slink, vormkasten enz.
 
-\begin{warningbox}[title=EXAMEN CHECKLIST: OERVORMEN]
+\begin{warningbox}[EXAMEN CHECKLIST: OERVORMEN]
     \begin{itemize}
         \item \textbf{Stollen}: Begrijp het verschil tussen \textbf{Slink} (stollen) en \textbf{Krimp} (afkoelen).
         \item \textbf{Opkomers}: Leg uit waarom opkomers nodig zijn (reservoirs tegen slink) en ken directionele stolling.
@@ -3509,7 +3510,7 @@ Hou je rekening met volumekrimp, lossing, opkomers, kernen, slink, vormkasten en
 
 \chapter{Productie machines en automatisering}
 
-\begin{conceptbox}[title=Productietijd]
+\begin{conceptbox}[Productietijd]
     De totale productietijd per stuk wordt bepaald door:
     \[ T_{totaal} = T_{hoofd} + T_{neven} \]
     \begin{itemize}
@@ -3547,7 +3548,7 @@ Automatiseren kan bij grote productieaantallen de productiviteit verhogen.
 
 De productietijd = Hoofdtijd + neventijd
 
-\begin{conceptbox}
+\begin{conceptbox}[Productietijd]
 	\textbf{Hoofdtijd}: Dit is de tijd waarin het werkstuk daadwerkelijk wordt bewerkt.
 	\newline
 	\textbf{Neventijd}: Dit is de tijd waarin het werkstuk niet wordt bewerkt.
@@ -3996,9 +3997,7 @@ Bij gieten of spuitgieten moet men rekening houden met de lossing (vrijloophoeke
 \chapter{Examentips}
 
 Als je een vraag krijgt, wees dan duidelijk in je antwoord.
-
 Schrijf niet enorm grote paragrafen. Een tekening met een korte uitleg is vaak beter.
-
 Bekijk de laatste video op toledo waar hij over een voorbeeldexamen gaat.
 
 
