@@ -37,14 +37,15 @@
     tracking=true,
     kerning=true,
     spacing=true,
-    factor=1100,
-    stretch=10,
+    factor=1100,        % Good: increases protrusion slightly
+    stretch=10,         % Good: conservative expansion
     shrink=10
 ]{microtype}
 \RequirePackage{parskip}
 \RequirePackage{setspace}
 \setstretch{1.15}
 \microtypecontext{spacing=nonfrench}
+\SetTracking{encoding={*}, shape=sc}{40}  % Better small caps spacing
 
 % --- Quality & Engine Optimization ---
 \ifdefined\pdfminorversion
