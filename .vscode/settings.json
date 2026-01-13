@@ -49,8 +49,9 @@
   "latex-utilities.formattedPaste.enabled": true,
   "latex-workshop.latex.recipes": [
     {
-      "name": "latexmk (fastest)",
+      "name": "latexmk × 2 (fastest)",
       "tools": [
+        "latexmk",
         "latexmk"
       ]
     },
