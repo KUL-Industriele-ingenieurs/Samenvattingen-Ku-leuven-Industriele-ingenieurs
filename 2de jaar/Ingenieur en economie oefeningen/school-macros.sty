@@ -1,29 +1,36 @@
 % school-macros.sty
 % Unified macros for KU Leuven engineering course documents
-% Version 2.1 - Optimized following LaTeX best practices
-%
-% Features: Formula collection (\frm), Symbol registration (\sym), 
-%           Themed boxes, siunitx integration, Dutch localization
-%
+% Version 3.0 - "School Macros v3.0" - Cognitive Ergonomie & Engineering Focus
+% 
+% Features: 
+% - Typography: Bitstream Charter (Serif) + Fira Sans (Header) + Fira Mono (Code)
+% - Visuals: "Attached Title" boxes with icons and shadow
+% - Data: tabularray + siunitx integration, Engineering Plots
+% - Workflow: Speed macros (\mat), IDE-like code blocks
+% 
 % Usage: \usepackage{school-macros}
 % Note: Compile twice for formularium and symbol list
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{school-macros}[2026/01/09 v2.1 KU Leuven School Macros]
+\ProvidesPackage{school-macros}[2026/01/12 v3.0 KU Leuven School Macros - Engineering Edition]
 
-% ============================================================================
+% ============================================================================ 
 %                              PACKAGE LOADING
-% ============================================================================
-% Packages are grouped by function and loaded in optimal order.
-% hyperref and cleveref are loaded last as required.
+% ============================================================================ 
 
 % --- Encoding & Language ---
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
 \RequirePackage[dutch]{babel}
 
-% --- Fonts & Typography ---
-\RequirePackage{lmodern}
+% --- Typography (v3.0 Standard) ---
+% Bitstream Charter for body text (mathdesign handles math font matching)
+\RequirePackage[bitstream-charter]{mathdesign}
+% Fira Sans for headers and sans-serif elements
+\RequirePackage[scaled=0.92]{FiraSans}
+% Fira Mono for code
+\RequirePackage[scaled=0.85]{FiraMono}
+
 \RequirePackage[
     activate={true,nocompatibility},
     final,
@@ -33,37 +40,42 @@
     factor=1100,
     stretch=10,
     shrink=10
-]{microtype}  % Improved text appearance
-\RequirePackage{parskip}    % Paragraph spacing instead of indent
-\RequirePackage{setspace}   % For line spacing
-\setstretch{1.15}           % Slightly larger for better readability
+]{microtype}
+\RequirePackage{parskip}
+\RequirePackage{setspace}
+\setstretch{1.15}
+\microtypecontext{spacing=nonfrench}
 
 % --- Quality & Engine Optimization ---
 \ifdefined\pdfminorversion
-    \pdfminorversion=7      % Use modern PDF 1.7 standard
+    \pdfminorversion=7
 \fi
 \ifdefined\pdfsuppresswarningpagegroup
-    \pdfsuppresswarningpagegroup=1 % Suppress annoying PDF page group warnings
+    \pdfsuppresswarningpagegroup=1
 \fi
-\microtypesetup{protrusion=true, expansion=true} % Explicitly enable high-quality features
+\microtypesetup{protrusion=true, expansion=true}
 
-% --- Math (mathtools extends amsmath) ---
-\RequirePackage{mathtools}
-\RequirePackage{amssymb}
+% --- Math ---
+\RequirePackage{mathtools} % Extends amsmath (loaded by mathdesign)
+% amssymb is often loaded by mathdesign, check conflicts if needed
 \RequirePackage{amsthm}
 
-% --- Units & Numbers (siunitx for consistent formatting) ---
+% --- Units & Numbers ---
 \RequirePackage{siunitx}
 \sisetup{
-    locale = DE,                    % European number format (comma decimal)
-    per-mode = symbol,              % Use / for per
-    separate-uncertainty = true,    % Show uncertainty separately
-    output-decimal-marker = {,},    % Dutch decimal comma
-    group-separator = {\,},         % Thin space for thousands
-    detect-all=true,                % Adapt to surrounding font
+    locale = DE,
+    per-mode = symbol,
+    separate-uncertainty = true,
+    output-decimal-marker = {,},
+    group-separator = {\,},
+    detect-all=true,
+    inter-unit-product = {\ensuremath{{\cdot}}},
 }
 
-% --- Tables ---
+% --- Tables (v3.0: Tabularray) ---
+\RequirePackage{tabularray}
+\UseTblrLibrary{booktabs, siunitx}
+% Legacy support
 \RequirePackage{array}
 \RequirePackage{tabularx}
 \RequirePackage{booktabs}
@@ -74,13 +86,21 @@
 \RequirePackage{caption}
 \RequirePackage{subcaption}
 \RequirePackage{placeins}
-\RequirePackage{flafter}    % Ensure floats don't appear before definition
+\RequirePackage{flafter}
 
-% --- Colors ---
+% --- Colors (v3.0 Palette) ---
 \RequirePackage{xcolor}
+\definecolor{schoolBlue}{RGB}{41, 98, 155}
+\definecolor{schoolRed}{RGB}{180, 40, 40}
+\definecolor{schoolGreen}{RGB}{39, 174, 96}
+\definecolor{schoolOrange}{RGB}{230, 126, 34}
+\definecolor{schoolTeal}{RGB}{0, 150, 136}
+\definecolor{schoolGray}{RGB}{100, 100, 100}
+\definecolor{codeBackground}{RGB}{40, 44, 52} % VS Code Dark
 
-% --- Boxes (tcolorbox with libraries) ---
-\RequirePackage[breakable, skins]{tcolorbox}
+% --- Boxes & Icons (v3.0 Architecture) ---
+\RequirePackage[breakable, skins, theorems, listings]{tcolorbox}
+\RequirePackage{fontawesome5}
 
 % --- Lists ---
 \RequirePackage{enumitem}
@@ -109,20 +129,22 @@
 % --- Euro Symbol Support ---
 \RequirePackage{textcomp}
 \RequirePackage{newunicodechar}
+\newcommand*{\EuroSymbol}{\ifmmode\text{\texteuro}\else\texteuro\fi}
+\newunicodechar{€}{\EuroSymbol}
 
-% --- Graphics & Plots ---
+% --- Graphics & Plots (v3.0 Engineering Style) ---
 \RequirePackage{tikz}
 \RequirePackage{pgfplots}
 \RequirePackage{pgfplotstable}
+\usepgfplotslibrary{colorbrewer}
 \pgfplotsset{compat=1.18}
 \usetikzlibrary{
     arrows.meta, positioning, calc, patterns, shapes.geometric,
-    angles, quotes, babel, decorations.pathmorphing, shapes.misc, fit
+    angles, quotes, babel, decorations.pathmorphing, shapes.misc, fit,
+    shadows.blur % For shadows
 }
 
-% --- Bibliography (BibLaTeX for Zotero integration) ---
-% NOTE: Users should add \addbibresource{references.bib} in their document preamble
-% and \printbibliography at the end. Export from Zotero as BibLaTeX.
+% --- Bibliography ---
 \RequirePackage[
     backend=biber,
     style=numeric,
@@ -136,21 +158,21 @@
     url=true,
     eprint=false,
 ]{biblatex}
+\RequirePackage{csquotes}
 
-% --- Hyperlinks (load near last, after biblatex) ---
+% --- Hyperlinks & References ---
 \RequirePackage{hyperref}
 \hypersetup{
     colorlinks=true,
-    linkcolor=black,        % TOC and internal links in black
+    linkcolor=black,
     urlcolor=schoolBlue,
     citecolor=schoolBlue,
-    hidelinks,              % Clean look
-    hypertexnames=false,    % Avoid duplicate destination names
+    hidelinks,
+    hypertexnames=false,
 }
-\RequirePackage{bookmark}   % Improved bookmarks management
-
-% --- Smart References (load after hyperref) ---
+\RequirePackage{bookmark}
 \RequirePackage[dutch, nameinlink, capitalise]{cleveref}
+
 % Dutch cleveref names
 \crefname{equation}{vergelijking}{vergelijkingen}
 \Crefname{equation}{Vergelijking}{Vergelijkingen}
@@ -163,266 +185,142 @@
 \crefname{chapter}{hoofdstuk}{hoofdstukken}
 \Crefname{chapter}{Hoofdstuk}{Hoofdstukken}
 
-% ============================================================================
-%                              EURO SYMBOL FIX
-% ============================================================================
-\newcommand*{\EuroSymbol}{\ifmmode\text{\texteuro}\else\texteuro\fi}
-\newunicodechar{€}{\EuroSymbol}
+% ============================================================================ 
+%                           TCOLORBOX ARCHITECTURE (v3.0)
+% ============================================================================ 
 
-% ============================================================================
-%                                 COLORS
-% ============================================================================
-% KU Leuven inspired color palette
-\definecolor{schoolBlue}{RGB}{41,98,155}      % Primary blue
-\definecolor{schoolRed}{RGB}{180,40,40}       % Warning/important
-\definecolor{schoolOrange}{RGB}{230,126,34}   % Notes/highlights
-\definecolor{schoolGray}{RGB}{100,100,100}    % Neutral
-\definecolor{schoolGreen}{RGB}{39,174,96}     % Success/exercises
-\definecolor{schoolTeal}{RGB}{0,150,136}      % Formulas (teal)
-
-% Special colors for 'oefening' box (red outline, yellow fill)
-\definecolor{exerciseFrame}{RGB}{204,0,0}
-\definecolor{exerciseBack}{RGB}{255,250,230}
-
-% Formula box colors (user-redefinable)
-\newcommand*{\frmBoxBack}{blue!5}
-\newcommand*{\frmBoxFrame}{blue!40}
-\newcommand*{\frmBoxRule}{0.5pt}
-\newcommand*{\frmBoxArc}{3pt}
-\newcommand*{\frmBoxSep}{4pt}
-
-% ============================================================================
-%                           PLOT STYLING
-% ============================================================================
-% Modern, clean style with school colors
-\pgfplotsset{
-    % Define a clean, modern cycle list using school colors
-    cycle list={
-        {schoolBlue, thick, mark=*},
-        {schoolRed, thick, mark=square*},
-        {schoolGreen, thick, mark=triangle*},
-        {schoolOrange, thick, mark=diamond*},
-        {schoolTeal, thick, mark=pentagon*},
-        {violet, thick, mark=x}
+% Base style for "Attached Title" boxes
+\tcbset{
+    schoolbox/.style={ 
+        enhanced, breakable,
+        arc=3pt, boxrule=0.5pt,
+        attach boxed title to top left={xshift=5mm, yshift*=-\tcboxedtitleheight/2},
+        boxed title style={sharp corners, rounded corners=northeast, drop fuzzy shadow, colback=#1},
+        colframe=#1, colback=white,
+        drop fuzzy shadow,
+        fonttitle=\bfseries\sffamily,
+        before skip=12pt,
+        after skip=12pt
     },
-    % Default style for all plots
-    every axis/.style={
-        % Clean layout
-        axis background/.style={fill=white},
-        axis line style={-latex, thick, schoolGray},
-        tick style={schoolGray, major tick length=4pt},
-        grid=major,
-        grid style={dashed, gray!20},
-        label style={font=\small\bfseries},
-        tick label style={font=\footnotesize},
-        % Legend placement (Bottom Right, Below Axis)
-        legend style={
-            at={(1.0,-0.25)},
-            anchor=north east,
-            legend columns=-1,
-            draw=none,
-            fill=none,
-            /tikz/every even column/.append style={column sep=0.5cm}
-        },
+    % Backwards compatible alias: older docs used `schoolstyle`
+    % Map `schoolstyle` to `schoolbox` with default color `schoolBlue`.
+    schoolstyle/.style={schoolbox=schoolBlue},
+    % Legacy style alias (to prevent breakages if used directly)
+    schoolbase/.style={
+        blanker, breakable, left=12pt, borderline west={3pt}{0pt}{schoolBlue}
     }
 }
 
-% ============================================================================
-%                              PAGE LAYOUT
-% ============================================================================
-% Standardized compact margins for summaries
-\geometry{left=2.0cm, right=2.0cm, top=2.5cm, bottom=2.5cm}
+% --- Semantic Environments ---
 
-% --- Header & Footer ---
-\setlength{\headheight}{14pt}
-\pagestyle{fancy}
-\fancyhf{}
-% Two-sided compatible headers
-\fancyhead[LE,RO]{\small\bfseries\thepage}
-\fancyhead[LO,RE]{\small\nouppercase{\leftmark}}
-\renewcommand{\headrulewidth}{0.3pt}
+% Theorie (Blue, Book Icon)
+\newtcolorbox[auto counter, number within=section]{theorie}[2][]{
+    schoolbox=schoolBlue,
+    title={\faBook\ \textbf{Stelling~\thetcbcounter:} #2},
+    #1
+}
+% Legacy Alias
+\newenvironment{theorieblok}[1][]{{}\begin{theorie}{#1}}{\end{theorie}}
 
-% --- Section Styling ---
-% Make chapters keep number and title on the same line and avoid forcing a new page
-\makeatletter
-\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
-\makeatother
+% Concept (Teal, Lightbulb Icon) - v3 style
+\newtcolorbox{schoolconcept}[1][]{% 
+    schoolbox=schoolTeal,
+    title={\faLightbulb\ \textbf{Concept}},
+    colback=schoolTeal!5!white,
+    #1
+}
+% Legacy Alias
+\newenvironment{conceptbox}[1][]{{}\begin{schoolconcept}}{\end{schoolconcept}}
 
-% Slightly smaller chapter titles (keep them prominent but less tall)
-\titleformat{\chapter}[hang]{\normalfont\LARGE\bfseries}{\thechapter}{1em}{}[\titlerule]
-\titleformat{name=\chapter,numberless}[hang]{\normalfont\LARGE\bfseries}{}{0pt}{}[\titlerule]
-\titlespacing*{\chapter}{0pt}{12pt}{6pt} % more breathing room before/after chapter titles
+% Waarschuwing (Red, Warning Icon)
+\newtcolorbox{waarschuwing}[1][]{% 
+    schoolbox=schoolRed,
+    title={\faExclamationTriangle\ \textbf{Let Op!}},
+    colback=schoolRed!5!white,
+    #1
+}
+% Legacy Alias
+\newenvironment{warningbox}[1][]{{}\begin{waarschuwing}}{\end{waarschuwing}}
 
-% Ensure section and subsection align to same left margin and use sensible spacing
-\titleformat{\section}[hang]{\normalfont\large\bfseries\raggedright}{\thesection}{1em}{}[\titlerule]
-\titleformat{name=\section,numberless}[hang]{\normalfont\large\bfseries\raggedright}{}{0pt}{}[\titlerule]
-\titleformat{name=\subsection,numberless}[hang]{\normalfont\normalsize\bfseries\raggedright}{}{0pt}{}[\titlerule]
-\titlespacing*{\section}{0pt}{10pt}{6pt}
-
-\titleformat{\subsection}[hang]{\normalfont\normalsize\bfseries\raggedright}{\thesubsection}{1em}{}
-\titlespacing*{\subsection}{0pt}{8pt}{4pt}
-
-% --- Float Control ---
-% Insert a FloatBarrier before every \chapter to keep floats in their chapter
-\preto\chapter{\FloatBarrier}
-
-% Reduce vertical spacing around floats to avoid large gaps
-\setlength{\floatsep}{6pt plus 1pt minus 1pt}     % between floats
-\setlength{\textfloatsep}{8pt plus 1pt minus 1pt} % between floats and text
-\setlength{\intextsep}{6pt plus 1pt minus 1pt}    % for in-text floats (top/bottom of figure)
-
-% --- Caption Styling ---
-\captionsetup{skip=3pt,aboveskip=3pt,belowskip=3pt}
-
-% --- List Styling ---
-% Compact list indentation (smaller distance from page margin)
-\setlist[itemize,1]{leftmargin=2em,itemsep=0.5ex,parsep=0.3ex,partopsep=0.5ex,topsep=0.8ex}
-\setlist[itemize,2]{leftmargin=2.5em,itemsep=0.35ex,parsep=0.2ex,partopsep=0.4ex,topsep=0.6ex}
-\setlist[enumerate,1]{leftmargin=2em,itemsep=0.5ex,parsep=0.3ex,partopsep=0.5ex,topsep=0.8ex}
-\setlist[enumerate,2]{leftmargin=2.5em,itemsep=0.35ex,parsep=0.2ex,partopsep=0.4ex,topsep=0.6ex}
-
-% --- Microtype Fixes ---
-% Also disable protrusion for LoF and LoT so those lists use consistent spacing
-\pretocmd{\listoffigures}{\microtypesetup{protrusion=false}}{}{}
-\apptocmd{\listoffigures}{\microtypesetup{protrusion=true}}{}{}
-\pretocmd{\listoftables}{\microtypesetup{protrusion=false}}{}{}
-\apptocmd{\listoftables}{\microtypesetup{protrusion=true}}{}{}
-
-% ============================================================================
-%                            TEXT EMPHASIS
-% ============================================================================
-% Semantic macros for consistent styling
-\newcommand*{\concept}[1]{\textcolor{schoolBlue}{\textbf{#1}}}     % New concepts
-\newcommand*{\belangrijk}[1]{\textcolor{schoolRed}{\textbf{#1}}}   % Important items
-\newcommand*{\keyterm}[1]{\textbf{\color{blue!70!black}#1}}        % Key terms inline
-
-% ============================================================================
-%                           TCOLORBOX STYLES
-% ============================================================================
-% Clean, minimal box styles - white background with colored left border only
-% Less intrusive while maintaining visual distinction
-
-\tcbset{
-    % Base style for all school boxes - minimal with left accent bar only
-    schoolbase/.style={
-        blanker,
-        breakable,
-        left=12pt,
-        right=8pt,
-        top=8pt,
-        bottom=8pt,
-        borderline west={3pt}{0pt}{schoolBlue},
-        before skip=10pt,
-        after skip=10pt,
-        fonttitle=\bfseries\color{schoolBlue},
-        before upper={\parindent0pt},
-    },
-    % Concept/definition box (blue accent)
-    conceptstyle/.style={
-        schoolbase,
-        borderline west={3pt}{0pt}{schoolBlue},
-        fonttitle=\bfseries\color{schoolBlue},
-    },
-    % Warning box (red accent)
-    warningstyle/.style={
-        schoolbase,
-        borderline west={3pt}{0pt}{schoolRed},
-        fonttitle=\bfseries\color{schoolRed},
-    },
-    % Exercise box (green accent)
-    exercisestyle/.style={
-        schoolbase,
-        borderline west={3pt}{0pt}{schoolGreen},
-        fonttitle=\bfseries\color{schoolGreen},
-    },
-    % Theory box (purple accent)
-    theorystyle/.style={
-        schoolbase,
-        borderline west={3pt}{0pt}{violet!70!black},
-        fonttitle=\bfseries\color{violet!70!black},
-    },
-    % Example box (orange accent)
-    examplestyle/.style={
-        schoolbase,
-        borderline west={3pt}{0pt}{schoolOrange},
-        fonttitle=\bfseries\color{schoolOrange},
-    },
-    % Symbol introduction box
-    symbolstyle/.style={
-        blanker,
-        left=8pt,
-        right=8pt,
-        top=3pt,
-        bottom=3pt,
-        borderline west={2pt}{0pt}{schoolGray!60},
-        before skip=2pt,
-        after skip=2pt,
-    },
-    % BACKWARD COMPATIBILITY: old style name alias
-    schoolstyle/.style={schoolbase},
+% Voorbeeld (Green, Pen Icon)
+\newtcolorbox{voorbeeld}[1][]{% 
+    schoolbox=schoolGreen,
+    title={\faPenNib\ \textbf{Voorbeeld} \ifstrempty{#1}{}{: #1}},
+}
+% Legacy Oefenblok maps to Voorbeeld style but with "Oefening" title if not specified
+\newtcolorbox{oefenblok}[1][Oefening]{% 
+    schoolbox=schoolGreen,
+    title={\faPenNib\ \textbf{#1}},
+}
+\newtcolorbox{oefening}[1][Oefening]{% 
+    schoolbox=schoolGreen,
+    title={\faPenNib\ \textbf{#1}},
 }
 
-% ============================================================================
-%                               BOX ENVIRONMENTS
-% ============================================================================
+% Code Block (VS Code Style)
+\newtcblisting{codeblock}[2][]{% 
+    enhanced, colback=codeBackground, colframe=codeBackground,
+    listing only,
+    listing options={
+        language=#2,
+        basicstyle=\ttfamily\footnotesize\color{white},
+        keywordstyle=\color{magenta},
+        stringstyle=\color{green!70!black},
+        commentstyle=\color{gray!80}\itshape,
+        numbers=left, numberstyle=\tiny\color{gray},
+        breaklines=true,
+        tabsize=4
+    },
+    title={\textcolor{gray}{\faTerminal}\ \texttt{#2}},
+    coltitle=white,
+    fonttitle=\sffamily\bfseries\small,
+    overlay={\draw[fill=red!70] ([xshift=4mm]frame.north west) circle (2pt);
+             \draw[fill=yellow!70] ([xshift=8mm]frame.north west) circle (2pt);
+             \draw[fill=green!70] ([xshift=12mm]frame.north west) circle (2pt);},
+    #1
+}
 
-% Exam tip - compact inline style
-\newenvironment{examenbox}[1][]{%
+% Exam tip (Inline)
+\newenvironment{examenbox}[1][]{% 
     \par\vspace{0.5\baselineskip}%
-    \noindent\keyterm{EXAMENTIP:} \itshape
-}{%
+    \noindent\keyterm{\faExclamationCircle\ EXAMENTIP:} \itshape
+}{% 
     \par\vspace{0.5\baselineskip}%
 }
 
-% Concept definition box
-\newtcolorbox{conceptbox}[1][]{conceptstyle, #1}
-
-% Warning box
-\newtcolorbox{warningbox}[1][]{warningstyle, #1}
-
-% Exercise box (oefenblok)
-\newtcolorbox{oefenblok}[1][]{exercisestyle, #1}
-
-% Theory box (theorieblok) - NEW
-\newtcolorbox{theorieblok}[1][]{theorystyle, #1}
-
-% Example box (voorbeeld) - NEW  
-\newtcolorbox{voorbeeld}[1][]{examplestyle, #1}
-
-% New Exercise Box (Red outline, yellow background)
-\newtcolorbox{oefening}[1][]{
-    colback=exerciseBack,
-    colframe=exerciseFrame,
-    fonttitle=\bfseries\large,
-    title=#1,
-    sharp corners,
-    boxrule=1pt,
-    left=6pt,
-    right=6pt,
-    top=6pt,
-    bottom=6pt
+% ============================================================================ 
+%                           ENGINEERING PLOTS (v3.0)
+% ============================================================================ 
+\pgfplotsset{
+    schoolEngineeringPlot/.style={
+        axis line style={gray, thick},
+        major grid style={dashed, gray!30},
+        grid=major,
+        legend style={at={(0.98,0.98)}, anchor=north east, draw=none, fill=white, fill opacity=0.8},
+        cycle list/Set1-5, % ColorBrewer
+        no markers,
+        every axis plot/.append style={thick},
+        axis lines=box, % Boxed axes for engineering
+        label style={font=\bfseries\sffamily},
+        tick label style={font=\sffamily},
+    }
 }
 
-% Process box (procesbox) - Added for Productietechnologie compatibility
-\newtcolorbox{procesbox}[1][]{
-    schoolbase,
-    borderline west={3pt}{0pt}{schoolBlue!80!black},
-    fonttitle=\bfseries\color{schoolBlue!80!black},
-    title=#1
+% ============================================================================ 
+%                           ENGINEERING TABLES (v3.0)
+% ============================================================================ 
+% Style for tabularray
+\NewTblrEnviron{engtable}
+\SetTblrInner[engtable]{
+    row{odd} = {bg=gray!10},
+    row{1} = {bg=schoolBlue, fg=white, font=\bfseries\sffamily},
+    hline{1,Z} = {1pt},
 }
 
-% Inline theory box (theoriebox) - Added for Productietechnologie compatibility
-\newtcbox{\theoriebox}{on line,boxrule=0.4pt,arc=2pt,boxsep=3pt,top=2pt,bottom=2pt,colback=gray!6,colframe=gray!40}
-
-% ============================================================================
+% ============================================================================ 
 %                           FORMULA SYSTEM (\frm)
-% ============================================================================
-% Automatically collects formulas for formularium appendix
-% Usage: \frm{Label}{math}{description}
-% Requires two compilations
-%
-% Formulas are grouped by SECTION (not chapter) for better organization
-% in article-class documents.
+% ============================================================================ 
+% Updated to use 'schoolbox' style for consistency
 
 \newcommand*{\FormulariumSections}{}
 \newcounter{FormulariumEntryCounter}
@@ -433,25 +331,20 @@
 \newcommand*{\@currentFormulariumSection}{0}
 \newcommand*{\@currentSectionTitle}{}
 
-% Hook into section removed to prevent conflicts with titlesec
-% \frm now uses \thesection and \@currentlabelname
-
-\newcommand{\addformulariumentry}[6]{%
+\newcommand{\addformulariumentry}[6]{% 
     % #1=section, #2=section title, #3=label, #4=math, #5=description, #6=counter
-    \ifinlist{#1}{\FormulariumSections}{}{%
+    \ifinlist{#1}{\FormulariumSections}{}{% 
         \listgadd{\FormulariumSections}{#1}%
         \global\csdef{SectionFormulas@#1}{}% 
         \global\csdef{SectionTitle@#1}{#2}%
     }%
-    \csxappto{SectionFormulas@#1}{%
-        % Formula card entry with clear visual separation
+    \csxappto{SectionFormulas@#1}{% 
         \noexpand\formulariumcard{#3}{\unexpanded{#4}}{\unexpanded{#5}}{#6}%
     }%
 }
 
-% Individual formula card in formularium - simple text layout without box
-\newcommand{\formulariumcard}[4]{%
-    % #1=label, #2=math, #3=description, #4=ref counter
+% Card in Appendix
+\newcommand{\formulariumcard}[4]{% 
     \par\vspace{6pt}%
     \noindent\textbf{#1} \hfill {\scriptsize\textcolor{schoolGray}{\hyperref[frm:#4]{p.~\pageref{frm:#4}}}}\\[4pt]%
     {\centering\large $\displaystyle #2$\par}%
@@ -460,91 +353,74 @@
     \par\vspace{6pt}%
 }
 
-\newcommand{\frm}[3]{%
+% Main \frm macro using new tcolorbox style
+\newcommand{\frm}[3]{% 
     \stepcounter{FormulariumEntryCounter}%
+    % We use a specific style for formulas inline
     \begin{tcolorbox}[
-        enhanced,
-        unbreakable,
-        colback=white,
-        colframe=schoolTeal,
-        boxrule=2pt,
-        arc=3pt,
-        outer arc=3pt,
-        left=10pt,
-        right=10pt,
-        top=8pt,
-        bottom=8pt,
-        before skip=12pt,
-        after skip=4pt,
+        schoolbox=schoolOrange,
+        title={\faCalculator\ \textbf{#1}},
+        fonttitle=\bfseries\sffamily,
     ]
-        {\color{schoolTeal}\bfseries #1}\par
-        \vspace{4pt}
-        {\centering\large $\displaystyle #2$\par}
-        \vspace{4pt}
+        {\centering\large $\displaystyle #2$\par}%
+        \vspace{4pt}%
         {\small #3}\label{frm:\theFormulariumEntryCounter}%
     \end{tcolorbox}%
-    % Store with current section number and section title
-    % Use \thesection (group ID) and \@currentlabelname (title) from nameref
     \protected@write\@auxout{}{\string\addformulariumentry{\thesection}{\@currentlabelname}{\unexpanded{#1}}{\unexpanded{#2}}{\unexpanded{#3}}{\theFormulariumEntryCounter}}%
     \par\vspace{4pt}%
 }
 
-\newcommand*{\printSectionFormulas}[1]{%
-    % Print formulas for section #1 with visual header showing section title
-    \ifthenelse{\equal{#1}{0}}{}{%
+\newcommand*{\printSectionFormulas}[1]{% 
+    \ifthenelse{\equal{#1}{0}}{}{% 
         \par\vspace{10pt}
-        \noindent\makebox[\linewidth]{%
+        \noindent\makebox[\linewidth]{% 
             \textcolor{schoolBlue}{\leaders\hrule height 1pt\hfill}\hspace{1em}%
-            {\small\bfseries\textcolor{schoolBlue}{\csuse{SectionTitle@#1}}}\hspace{1em}%
+            {\small\bfseries\sffamily\textcolor{schoolBlue}{\csuse{SectionTitle@#1}}}\hspace{1em}%
             \textcolor{schoolBlue}{\leaders\hrule height 1pt\hfill}%
-        }
-        \par\vspace{6pt}
+        }%
+        \par\vspace{6pt}%
     }%
     \csuse{SectionFormulas@#1}%
 }
 
-% Helper to avoid titlesec star bug in article class
-\newcommand{\school@sectionstar}[1]{%
+\newcommand{\school@sectionstar}[1]{% 
     \ifdefined\FloatBarrier\FloatBarrier\fi
-    \@ifundefined{chapter}{%
+    \@ifundefined{chapter}{% 
         \subsection*{#1}%
         \addcontentsline{toc}{subsection}{\protect\numberline{}#1}%
-    }{%
+    }{% 
         \section*{#1}%
         \addcontentsline{toc}{section}{\protect\numberline{}#1}%
-    }%
+    }% 
 }
-\newcommand*{\printformularium}{%
+\newcommand*{\printformularium}{% 
     \par
     \school@sectionstar{Formularium}%
-    \ifdefempty{\FormulariumSections}{%
+    \ifdefempty{\FormulariumSections}{% 
         \noindent\textit{Nog geen formules geregistreerd. Compileer tweemaal.}%
-    }{%
+    }{% 
         \forlistloop{\printSectionFormulas}{\FormulariumSections}%
     }%
     \par
 }
 
-% Alternative: print formularium in two columns (for simple/short formulas)
-\newcommand*{\printformulariumtwocol}{%
+\newcommand*{\printformulariumtwocol}{% 
     \par
     \school@sectionstar{Formularium}%
-    \ifdefempty{\FormulariumSections}{%
+    \ifdefempty{\FormulariumSections}{% 
         \noindent\textit{Nog geen formules geregistreerd. Compileer tweemaal.}%
-    }{%
+    }{% 
         \begin{multicols}{2}
         \forlistloop{\printSectionFormulas}{\FormulariumSections}%
-        \end{multicols}
+        \end{multicols}%
     }%
     \par
 }
 \makeatother
 
-% ============================================================================
+% ============================================================================ 
 %                           SYMBOL SYSTEM (\sym)
-% ============================================================================
-% Registers symbols at first use, generates symbol list
-% Usage: \sym{symbol}{description}{unit}
+% ============================================================================ 
 
 \newcommand*{\SymbolList}{}
 
@@ -552,22 +428,30 @@
 \newcommand{\symentry}[4]{\g@addto@macro\SymbolList{$#1$ & #2 & \si{#3} & \hyperlink{sym:#1}{#4}\\}}
 \newcommand{\symwrite}[4]{\protected@write\@auxout{}{\string\symentry{#1}{#2}{#3}{#4}}}
 
-% \sym always shows description inline on repeat use (for frm context)
-% Duplicate detection is based ONLY on the symbol (not description/unit)
-\newcommand{\sym}[3]{%
+\newcommand{\sym}[3]{% 
     \expandafter\ifx\csname sym@\string#1\endcsname\relax
         \expandafter\gdef\csname sym@\string#1\endcsname{1}%
-        \hypertarget{sym:#1}{}%
-        \begin{tcolorbox}[symbolstyle]
+        \hypertarget{sym:#1}{}% 
+        % Inline definition box
+        \begin{tcolorbox}[
+            enhanced, breakable,
+            colback=white, colframe=schoolGray,
+            left=6pt, right=6pt, top=4pt, bottom=4pt,
+            borderline west={3pt}{0pt}{schoolGray},
+            frame hidden,
+            before skip=4pt, after skip=4pt
+        ]
             \textbf{\ensuremath{#1}} --- #2 \hfill {\footnotesize\textcolor{schoolGray}{\si{#3}}}
         \end{tcolorbox}%
         \symwrite{#1}{#2}{#3}{\thepage}%
     \else
-        {\small\textbf{\ensuremath{#1}} --- #2 [\si{#3}]}%
+        \ensuremath{#1}% Show only the symbol after first use
     \fi
 }
+\newcommand{\symS}[3]{\sym{#1}{#2}{#3}}
+\newcommand{\symW}[3]{\sym{#1}{#2}{#3}}
 
-\newcommand*{\printsymbols}{%
+\newcommand*{\printsymbols}{% 
     \par
     \school@sectionstar{Symbolenlijst}%
     \begin{tabularx}{\textwidth}{l X l r}
@@ -580,62 +464,93 @@
 }
 \makeatother
 
-% ============================================================================
-%                              FIGURES
-% ============================================================================
-% Quick figure insertion macros
+% ============================================================================ 
+%                           PAGE LAYOUT
+% ============================================================================ 
+\geometry{left=2.0cm, right=2.0cm, top=2.5cm, bottom=2.5cm}
 
-% Full control: \fig[width]{path}{caption}{label}
-\newcommand*{\fig}[4][0.8\linewidth]{%
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=#1]{#2}
-        \caption{#3}\label{#4}
-    \end{figure}%
+% Header & Footer
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\small\bfseries\sffamily\thepage}
+\fancyhead[LO,RE]{\small\sffamily\nouppercase{\leftmark}}
+\renewcommand{\headrulewidth}{0.3pt}
+
+% Section Styling
+\ifcsdef{chapter}{ 
+    \titleclass{\chapter}{straight}
+    \titleformat{\chapter}[hang]{\normalfont\LARGE\bfseries\sffamily}{\thechapter}{1em}{}[\titlerule]
+    \titleformat{name=\chapter,numberless}[hang]{\normalfont\LARGE\bfseries\sffamily}{}{0pt}{}[\titlerule]
+    \titlespacing*{\chapter}{0pt}{12pt}{6pt}
+    \preto\chapter{\FloatBarrier}
+}{}
+
+\titleformat{\section}[hang]{\normalfont\large\bfseries\sffamily\raggedright}{\thesection}{1em}{}[\titlerule]
+\titleformat{name=\section,numberless}[hang]{\normalfont\large\bfseries\sffamily\raggedright}{}{0pt}{}[\titlerule]
+\titleformat{name=\subsection,numberless}[hang]{\normalfont\normalsize\bfseries\sffamily\raggedright}{}{0pt}{}[\titlerule]
+\titlespacing*{\section}{0pt}{10pt}{6pt}
+
+\titleformat{\subsection}[hang]{\normalfont\normalsize\bfseries\sffamily\raggedright}{\thesubsection}{1em}{}
+\titlespacing*{\subsection}{0pt}{8pt}{4pt}
+
+% Float Control
+\setlength{\floatsep}{6pt plus 1pt minus 1pt}
+\setlength{\textfloatsep}{8pt plus 1pt minus 1pt}
+\setlength{\intextsep}{6pt plus 1pt minus 1pt}
+
+% Caption Styling
+\captionsetup{skip=3pt,aboveskip=3pt,belowskip=3pt,font={small,sf},labelfont=bf}
+
+% List Styling
+\setlist[itemize,1]{leftmargin=2em,itemsep=0.5ex,parsep=0.3ex,partopsep=0.5ex,topsep=0.8ex}
+\setlist[enumerate,1]{leftmargin=2em,itemsep=0.5ex,parsep=0.3ex,partopsep=0.5ex,topsep=0.8ex}
+
+\pretocmd{\listoffigures}{\microtypesetup{protrusion=false}}{}{}
+\apptocmd{\listoffigures}{\microtypesetup{protrusion=true}}{}{}
+\pretocmd{\listoftables}{\microtypesetup{protrusion=false}}{}{}
+\apptocmd{\listoftables}{\microtypesetup{protrusion=true}}{}{}
+
+% ============================================================================ 
+%                           SPEED MACROS
+% ============================================================================ 
+
+% Matrix shortcut: \mat{1,2;3,4}
+\ExplSyntaxOn
+\NewDocumentCommand{\mat}{m}{
+    \begin{pmatrix}
+    \seq_set_split:Nnn \l_tmpa_seq { ; } { #1 }
+    \seq_map_inline:Nn \l_tmpa_seq { 
+        \clist_set:Nn \l_tmpb_clist { ##1 }
+        \clist_use:Nn \l_tmpb_clist { & }
+        \\
+    }
+    \end{pmatrix}
 }
+\ExplSyntaxOff
 
-% Auto-label: \autofig[width]{path}{caption}
-\newcommand*{\autofig}[3][0.8\linewidth]{%
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=#1]{#2}
-        \caption{#3}%
-    \end{figure}%
-}
-
-% Simplest: \img{path}{caption}
-\newcommand*{\img}[2]{\autofig{#1}{#2}}
-
-% ============================================================================
-%                           MATH SHORTCUTS
-% ============================================================================
-
-% --- Differentials ---
+% Math Shortcuts
 \newcommand*{\diff}{\mathrm{d}}
 \newcommand*{\dx}{\diff x}
 \newcommand*{\dy}{\diff y}
 \newcommand*{\dt}{\diff t}
 \newcommand*{\dV}{\diff V}
 
-% --- Derivatives ---
 \newcommand*{\dd}[2]{\frac{\diff #1}{\diff #2}}
 \newcommand*{\ddn}[3]{\frac{\diff^{#3} #1}{\diff #2^{#3}}}
 \newcommand*{\pd}[2]{\frac{\partial #1}{\partial #2}}
 \newcommand*{\pdn}[3]{\frac{\partial^{#3} #1}{\partial #2^{#3}}}
 
-% --- Vectors & Matrices ---
 \renewcommand{\vec}[1]{\mathbf{#1}}
 \newcommand*{\uvec}[1]{\hat{\mathbf{#1}}}
-\newcommand*{\mat}[1]{\mathbf{#1}}
+% \mat already defined by Expl3 above
 
-% --- Number Sets ---
 \newcommand*{\RR}{\mathbb{R}}
 \newcommand*{\NN}{\mathbb{N}}
 \newcommand*{\ZZ}{\mathbb{Z}}
 \newcommand*{\QQ}{\mathbb{Q}}
 \newcommand*{\CC}{\mathbb{C}}
 
-% --- Brackets (auto-scaling) ---
 \newcommand*{\abs}[1]{\left|#1\right|}
 \newcommand*{\norm}[1]{\left\|#1\right\|}
 \newcommand*{\paren}[1]{\left(#1\right)}
@@ -643,120 +558,61 @@
 \newcommand*{\curlybrace}[1]{\left\{#1\right\}}
 \newcommand*{\avg}[1]{\left\langle#1\right\rangle}
 
-% --- Quick Fractions ---
 \newcommand*{\half}{\frac{1}{2}}
 \newcommand*{\third}{\frac{1}{3}}
 \newcommand*{\quarter}{\frac{1}{4}}
 
-% --- Boxed Equations ---
-\newcommand*{\eqbox}[1]{\boxed{#1}}
-
-% ============================================================================
-%                          CROSS-REFERENCES
-% ============================================================================
-% Legacy macros (kept for backward compatibility)
-% Prefer using \cref{} from cleveref package instead
-
-\newcommand*{\eqnref}[1]{vergelijking~\eqref{#1}}
-\newcommand*{\Eqnref}[1]{Vergelijking~\eqref{#1}}
-\newcommand*{\figref}[1]{figuur~\ref{#1}}
-\newcommand*{\Figref}[1]{Figuur~\ref{#1}}
-\newcommand*{\tabref}[1]{tabel~\ref{#1}}
-\newcommand*{\Tabref}[1]{Tabel~\ref{#1}}
-\newcommand*{\secref}[1]{sectie~\ref{#1}}
-\newcommand*{\Secref}[1]{Sectie~\ref{#1}}
-
-% ============================================================================
-%                           CODE LISTINGS
-% ============================================================================
-\lstset{
-    basicstyle=\ttfamily\footnotesize,
-    breaklines=true,
-    breakatwhitespace=false,
-    numbers=left,
-    numberstyle=\tiny\color{schoolGray},
-    numbersep=5pt,
-    frame=single,
-    frameround=tttt,
-    rulecolor=\color{schoolGray!40},
-    backgroundcolor=\color{gray!5},
-    commentstyle=\color{schoolGreen!70},
-    keywordstyle=\color{schoolBlue},
-    stringstyle=\color{schoolRed},
-    showstringspaces=false,
-    tabsize=4,
-    captionpos=b
+% ============================================================================ 
+%                           FIGURES
+% ============================================================================ 
+\newcommand*{\fig}[4][0.8\linewidth]{% 
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=#1]{#2}
+        \caption{#3}\label{#4}
+    \end{figure}%
 }
 
-% ============================================================================
-%                        THEOREM ENVIRONMENTS
-% ============================================================================
-\theoremstyle{definition}
-\newtheorem{stelling}{Stelling}
-\newtheorem{definitie}{Definitie}
-
-\theoremstyle{remark}
-\newtheorem*{opmerking}{Opmerking}
-
-% ============================================================================
-%                          UTILITY MACROS
-% ============================================================================
-
-% Equation with description box
-\newcommand*{\eqnbox}[2]{%
-    \begin{center}
-        \fbox{\parbox{0.9\textwidth}{%
-            \centering
-            $\displaystyle #1$\\[2pt]
-            {\footnotesize\itshape #2}%
-        }}
-    \end{center}
+\newcommand*{\autofig}[3][0.8\linewidth]{% 
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=#1]{#2}
+        \caption{#3}%
+    \end{figure}%
 }
+\newcommand*{\img}[2]{\autofig{#1}{#2}}
 
-% Inline fraction
-\newcommand*{\ifrac}[2]{#1/#2}
+% ============================================================================ 
+%                           UTILITY & HELPERS
+% ============================================================================ 
+\newcommand*{\concept}[1]{\textcolor{schoolBlue}{\textbf{#1}}}
+\newcommand*{\belangrijk}[1]{\textcolor{schoolRed}{\textbf{#1}}}
+\newcommand*{\keyterm}[1]{\textbf{\color{schoolBlue!80!black}#1}}
 
-% Degree symbol (use \ang{} from siunitx for angles)
-\newcommand*{\degree}{^\circ}
-
-% ============================================================================
-%                         WORKFLOW HELPERS
-% ============================================================================
 \newcommand*{\TODO}[1]{\textcolor{red}{\textbf{[TODO: #1]}}}
 \newcommand*{\FIXME}[1]{\textcolor{red}{\textbf{[FIXME: #1]}}}
 \newcommand*{\NOTE}[1]{\textcolor{schoolOrange}{\textbf{[NOTE: #1]}}}
 \newcommand*{\citeme}{\textcolor{red}{[CITATIE NODIG]}}
 
-% ============================================================================
-%                      KU LEUVEN TITLE PAGE HELPER
-% ============================================================================
-% Optional KU Leuven styled title page
-\newcommand*{\kuleuventitle}[4]{%
-    % #1 = title, #2 = subtitle/course, #3 = author, #4 = date
+\newcommand*{\kuleuventitle}[4]{% 
     \begin{titlepage}
         \centering
-        \vspace*{2cm}
-        {\Huge\bfseries #1\par}
-        \vspace{0.5cm}
-        {\Large #2\par}
-        \vspace{2cm}
-        {\large #3\par}
-        \vspace{1cm}
-        {\large #4\par}
+        \vspace*{2cm}%
+        {\Huge\bfseries\sffamily #1\par}
+        \vspace{0.5cm}%
+        {\Large\sffamily #2\par}
+        \vspace{2cm}%
+        {\large\sffamily #3\par}
+        \vspace{1cm}%
+        {\large\sffamily #4\par}
         \vfill
-        {\large KU Leuven\par}
-        {\small Faculteit Industriële Ingenieurswetenschappen\par}
+        {\large\sffamily KU Leuven\par}
+        {\small\sffamily Faculteit Industriële Ingenieurswetenschappen\par}
     \end{titlepage}
 }
 
-% ============================================================================
-%                          PLOTTING HELPERS
-% ============================================================================
-
 % 3D Surface Plot
-% Usage: \plotthreeD[axis options]{plot options}{function}
-% Example: \plotthreeD[xlabel=x, ylabel=y]{domain=-2:2}{x^2 - y^2}
-\newcommand{\plotthreeD}[3][]{%
+\newcommand{\plotthreeD}[3][]{% 
     \begin{center}
     \begin{tikzpicture}
     \begin{axis}[
@@ -764,6 +620,7 @@
         grid=major,
         view={60}{30},
         colormap/viridis,
+        schoolEngineeringPlot, % Apply new style
         #1
     ]
     \addplot3[surf, shader=faceted, samples=25, #2] {#3};
@@ -773,14 +630,13 @@
 }
 
 % Data Plot from CSV
-% Usage: \plotdata[axis options]{plot options}{filename.csv}
-% Example: \plotdata[xlabel=Time, ylabel=Volt]{x=time, y=voltage}{data.csv}
-\newcommand{\plotdata}[3][]{%
+\newcommand{\plotdata}[3][]{% 
     \begin{center}
     \begin{tikzpicture}
     \begin{axis}[
         width=0.8\linewidth,
         grid=major,
+        schoolEngineeringPlot, % Apply new style
         #1
     ]
     \addplot table[col sep=comma, #2] {#3};
@@ -789,6 +645,4 @@
     \end{center}
 }
 
-% End of package
 \endinput
-

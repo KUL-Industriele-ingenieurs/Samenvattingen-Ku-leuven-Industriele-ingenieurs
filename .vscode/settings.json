@@ -1,5 +1,6 @@
 {
   "latex-workshop.linting.enabled": true,
+  "latex-workshop.linting.chktex.enabled": false,
   "latex-workshop.linting.ignore": [
     "**/*.aux",
     "**/*.toc",
@@ -11,17 +12,6 @@
     "**/Thumbs.db"
   ],
   "latex-workshop.latex.tools": [
-    {
-      "name": "pdflatex",
-      "command": "pdflatex",
-      "args": [
-        "-interaction=nonstopmode",
-        "-file-line-error",
-        "-synctex=1",
-        "%DOCFILE%"
-      ],
-      "env": {}
-    },
     {
       "name": "latexmk",
       "command": "latexmk",
@@ -43,28 +33,20 @@
       "env": {}
     }
   ],
-
-  // LaTeX Utilities: paste-image configuration
-  "latex-utilities.formattedPaste.image.template": "begin{figure}[ht]\n  \\centering\n  \\includegraphics[width=0.8\\textwidth]{${imageFilePath}}\n  \\caption{${imageCaption}}\n  \\label{fig:${imageFileName}}\n\\end{figure}",
+  "latex-utilities.formattedPaste.image.template": "begin{figure}[ht]\n  \\centering\n  \\includegraphics[width=0.8\\textwidth]{${imageFilePath}}\n  \\caption{${imageCaption}}\n  \\label{fig:${imageFileName}}\n \\end{figure}",
   "latex-utilities.formattedPaste.enabled": true,
   "latex-workshop.latex.recipes": [
     {
-      "name": "pdflatex × 2 (fast)",
+      "name": "latexmk × 2 (fastest)",
       "tools": [
-        "pdflatex",
-        "pdflatex"
-      ]
-    },
-    {
-      "name": "latexmk (pdflatex)",
-      "tools": [
+        "latexmk",
         "latexmk"
       ]
     },
     {
-      "name": "pdflatex",
+      "name": "latexmk",
       "tools": [
-        "pdflatex"
+        "latexmk"
       ]
     }
   ],
@@ -97,11 +79,11 @@
     "*.log",
     "*.synctex.gz"
   ],
-
-
-
-  // GitHub Pull Requests & Issues extension settings
   "githubPullRequests.queries": [
+    {
+      "label": "Local Pull Request Branches",
+      "query": "default"
+    },
     {
       "label": "Waiting For My Review",
       "query": "is:open is:pr review-requested:${user} repo:Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs"
@@ -117,6 +99,10 @@
     {
       "label": "All Open Pull Requests",
       "query": "is:open is:pr repo:Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs"
+    },
+    {
+      "label": "All Open",
+      "query": "default"
     }
   ],
   "githubPullRequests.createOnPublishBranch": "never",
@@ -124,56 +110,73 @@
   "githubPullRequests.remotes": [
     "origin"
   ],
-
   "githubIssues.queries": [
     {
-      "label": "📍 Code Location Markers",
-      "query": "is:open is:issue label:from-code repo:Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs"
-    },
-    {
-      "label": "Assigned Issues",
-      "query": "is:open is:issue assignee:${user} repo:Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs"
-    },
-    {
       "label": "My Issues",
-      "query": "is:open is:issue assignee:${user} repo:${owner}/${repository}",
-      "groupBy": [
-        "milestone"
-      ]
+      "query": "is:open is:issue assignee:@me repo:${owner}/${repository}"
     },
     {
       "label": "Created Issues",
-      "query": "author:${user} state:open repo:${owner}/${repository} sort:created-desc"
+      "query": "is:open is:issue author:@me repo:${owner}/${repository}"
     },
     {
-      "label": "Recent Issues",
-      "query": "state:open repo:${owner}/${repository} sort:updated-desc"
+      "label": "All Open Issues",
+      "query": "is:open is:issue repo:${owner}/${repository}"
+    },
+    {
+      "label": "@issue markers",
+      "query": "is:open is:issue label:from-code repo:${owner}/${repository}"
     }
   ],
-
   "githubIssues.createIssueTriggers": [
-    "@issue", "@todo", "@bug", "@feature", "@refactor", "TODO", "FIXME"
+    "@issue",
+    "@todo",
+    "@bug",
+    "@feature",
+    "@refactor",
+    "TODO",
+    "FIXME"
   ],
-  "githubIssues.useBranchForIssues": "off",
-  "githubIssues.issueBranchTitle": "issue-${issueNumber}",
-
-  // LTeX: Grammar and Spell Checker configuration
+  "githubIssues.useBranchForIssues": true,
+  "githubIssues.issueBranchTitle": "issue${issueNumber}",
+  "githubIssues.issueCompletionFormatScm": "#${issueNumber}",
+  "githubIssues.workingIssueFormatScm": "#${issueNumber}",
   "ltex.language": "nl-BE",
   "ltex.enabled": true,
   "ltex.checkFrequency": "save",
-  
-  // LaTeX Workshop: Better multi-file support
   "latex-workshop.latex.build.forceRecipeUsage": false,
   "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
-
-  // Hide asset clutter in specific folders but keep them visible to LaTeX
+  "latex-workshop.intellisense.environment.user": {
+    "theorie": {},
+    "theorieblok": {},
+    "schoolconcept": {},
+    "conceptbox": {},
+    "waarschuwing": {},
+    "warningbox": {},
+    "voorbeeld": {},
+    "oefenblok": {},
+    "oefening": {},
+    "codeblock": {},
+    "examenbox": {}
+  },
+  "latex-workshop.intellisense.command.user": {
+    "concept{}": "{}",
+    "belangrijk{}": "{}",
+    "keyterm{}": "{}",
+    "frm{}{}{}": "{}{}{}",
+    "sym{}{}{}": "{}{}{}",
+    "fig[]{}{}{}": "[]{}{}{}",
+    "autofig[]{}{}": "[]{}{}",
+    "img{}{}": "{}{}",
+    "mat{}": "{}",
+    "TODO{}": "{}",
+    "FIXME{}": "{}",
+    "NOTE{}": "{}"
+  },
   "files.exclude": {
     "**/*.log": true,
     "**/*.aux": true,
     "**/*.fdb_latexmk": true,
-    "**/*.fls": true,
-    // Optional: Uncomment to hide image assets if they clutter the view
-    // "**/assets/*.png": true,
-    // "**/assets/*.jpg": true
+    "**/*.fls": true
   }
 }
