@@ -12,17 +12,6 @@
   ],
   "latex-workshop.latex.tools": [
     {
-      "name": "pdflatex",
-      "command": "pdflatex",
-      "args": [
-        "-interaction=nonstopmode",
-        "-file-line-error",
-        "-synctex=1",
-        "%DOCFILE%"
-      ],
-      "env": {}
-    },
-    {
       "name": "latexmk",
       "command": "latexmk",
       "args": [
@@ -56,16 +45,9 @@
       ]
     },
     {
-      "name": "pdflatex × 2 (fast)",
+      "name": "latexmk",
       "tools": [
-        "pdflatex",
-        "pdflatex"
-      ]
-    },
-    {
-      "name": "pdflatex",
-      "tools": [
-        "pdflatex"
+        "latexmk"
       ]
     }
   ],
