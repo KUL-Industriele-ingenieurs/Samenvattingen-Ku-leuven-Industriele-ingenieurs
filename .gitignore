@@ -30,6 +30,10 @@ __pycache__/
 *.idx
 *.ilg
 *.ind
+*.bbl
+*.bcf 
+*.run.xml
+*.synctex(busy)
 
 # LaTeX backup files
 *.bak

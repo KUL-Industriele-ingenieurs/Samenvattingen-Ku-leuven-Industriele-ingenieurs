@@ -110,6 +110,8 @@
 \definecolor{slate}{RGB}{52, 73, 94}
 \definecolor{lightgray}{RGB}{236, 240, 241}
 
+\definecolor{schoolPurple}{RGB}{155, 89, 182}
+
 % --- Boxes & Icons (v3.0 Architecture) ---
 \RequirePackage[breakable, skins, theorems, listings]{tcolorbox}
 \RequirePackage{fontawesome5}
@@ -176,10 +178,10 @@
 \RequirePackage{hyperref}
 \hypersetup{
     colorlinks=true,
-    linkcolor=black,
+    linkcolor=schoolBlue,
     urlcolor=schoolBlue,
     citecolor=schoolBlue,
-    hidelinks,
+    % hidelinks, % Removed to allow colored links
     hypertexnames=false,
 }
 \RequirePackage{bookmark}
@@ -224,26 +226,40 @@
     % v4.0: Modern Shadow Style
     schoolshadow/.style={
         drop fuzzy shadow={opacity=0.15, shadow xshift=0.5mm, shadow yshift=-0.5mm}
+    },
+    % --- Conditional Title Logic ---
+    % #1: User Input Title
+    % #2: Icon
+    % #3: Label Prefix (e.g., "Concept:" including space if needed)
+    schoolTitle/.code n args={3}{%
+        \ifstrempty{#1}{}{%
+            \tcbset{title={#2 \textbf{#3} #1}}%
+        }%
+    },
+    % Variant for when the User Input IS the full title (no prefix like "Concept:")
+    schoolTitleSimple/.code n args={2}{%
+        \ifstrempty{#1}{}{%
+            \tcbset{title={#2 \textbf{#1}}}%
+        }%
     }
 }
 
-% --- Generic Theorem Box (v4.0) ---
-\newtcolorbox{theorembox}[2][]{
-    schoolbox=deepblue,
-    title={\faBook\ \textbf{#2}},
-    % schoolshadow, % Removed by user request (v4.0.1)
-    colbacktitle=deepblue,
-    fonttitle=\bfseries\sffamily,
-    #1
-}
 
 % --- Semantic Environments ---
 
+% --- Generic Theorem Box (v4.0) ---
+% Usage: \begin{theorembox}[Title]
+\newtcolorbox{theorembox}[1][]{
+    schoolbox=deepblue,
+    colbacktitle=deepblue,
+    fonttitle=\bfseries\sffamily,
+    schoolTitleSimple={#1}{\faBook},
+}
 % Theorie (Blue, Book Icon)
-\newtcolorbox[auto counter, number within=section]{theorie}[2][]{
+% Usage: \begin{theorie}[Title]
+\newtcolorbox{theorie}[1][]{
     schoolbox=schoolBlue,
-    title={\faBook\ \textbf{Stelling~\thetcbcounter:} #2},
-    #1
+    schoolTitleSimple={#1}{\faBook},
 }
 % Legacy Alias
 \newenvironment{theorieblok}[1][]{{}\begin{theorie}{#1}}{\end{theorie}}
@@ -251,12 +267,11 @@
 % Concept (Teal, Lightbulb Icon) - v3 style
 \newtcolorbox{schoolconcept}[1][]{% 
     schoolbox=schoolTeal,
-    title={\faLightbulb\ \textbf{Concept}},
     colback=schoolTeal!5!white,
-    #1
+    schoolTitle={#1}{\faLightbulb}{Concept:},
 }
 % Legacy Alias
-\newenvironment{conceptbox}[1][]{{}\begin{schoolconcept}}{\end{schoolconcept}}
+\newenvironment{conceptbox}[1][]{{}\begin{schoolconcept}[#1]}{\end{schoolconcept}}
 
 % Waarschuwing (Red, Warning Icon)
 \newtcolorbox{waarschuwing}[1][]{% 
@@ -271,8 +286,9 @@
 % Voorbeeld (Green, Pen Icon)
 \newtcolorbox{voorbeeld}[1][]{% 
     schoolbox=schoolGreen,
-    title={\faPenNib\ \textbf{Voorbeeld} \ifstrempty{#1}{}{: #1}},
+    schoolTitle={#1}{\faPenNib}{Voorbeeld:},
 }
+% Legacy Oefenblok maps to Voorbeeld style but with "Oefening" title if not specified
 % Legacy Oefenblok maps to Voorbeeld style but with "Oefening" title if not specified
 \newtcolorbox{oefenblok}[1][Oefening]{% 
     schoolbox=schoolGreen,

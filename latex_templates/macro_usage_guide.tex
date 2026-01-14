@@ -95,7 +95,7 @@ bij de tweede worden ze weergegeven.
 \end{description}
 \end{schoolconcept}
 
-\begin{theorie}{Structuurverschillen}
+\begin{theorie}[Structuurverschillen]
 \textbf{article class:}
 \begin{itemize}[leftmargin=1.5cm]
     \item Hoogste niveau: \verb|\section{}| (in TOC als hoofdniveau)
@@ -310,7 +310,7 @@ Het zorgt voor consistente opmaak van getallen en eenheden.
 
 \subsection{Basis gebruik}
 
-\begin{theorie}{Het \textbackslash SI commando}
+\begin{theorie}[Het \textbackslash SI commando]
 \begin{tabular}{ll}
 \toprule
 \textbf{Code} & \textbf{Resultaat} \\
@@ -351,27 +351,55 @@ Alle boxen zijn \emph{breakable} --- ze kunnen over meerdere pagina's lopen.
 
 \subsection{Concept (Definities)}
 
-\begin{concept}[title=Snijsnelheid]
+\begin{conceptbox}[Snijsnelheid]
 De \concept{snijsnelheid} ($v_c$) is de omtrekssnelheid van het gereedschap ten opzichte
 van het werkstuk, uitgedrukt in \si{m/min}.
-\end{concept}
+\end{conceptbox}
 
 Code:
 \begin{verbatim}
-\begin{concept}[title=Snijsnelheid]
+\begin{conceptbox}[Snijsnelheid]
 De \concept{snijsnelheid} ($v_c$) is de omtrekssnelheid...
-\end{concept}
+\end{conceptbox}
+\end{verbatim}
+
+Je kunt ze ook geen titel geven en dan is het icoon boven de box er niet.
+
+\begin{conceptbox}
+De \concept{snijsnelheid} ($v_c$) is de omtrekssnelheid...
+\end{conceptbox}
+
+Code:
+\begin{verbatim}
+\begin{conceptbox}
+De \concept{snijsnelheid} ($v_c$) is de omtrekssnelheid...
+\end{conceptbox}
 \end{verbatim}
 
 \subsection{Theorie (Stellingen)}
 
-\begin{theorie}{Energiebehoud}
+\subsection{Theorie (Stellingen)}
+
+\begin{theorie}[Energiebehoud]
 In een gesloten systeem zonder externe krachten blijft de totale mechanische energie behouden:
 \[ E_{totaal} = E_k + E_p = \text{constant} \]
 \end{theorie}
 
 \begin{verbatim}
-\begin{theorie}{Energiebehoud}
+\begin{theorie}[Energiebehoud]
+In een gesloten systeem...
+\end{theorie}
+\end{verbatim}
+
+of weer zonder titel:
+
+\begin{theorie}
+In een gesloten systeem...
+\end{theorie}
+
+Code:
+\begin{verbatim}
+\begin{theorie}
 In een gesloten systeem...
 \end{theorie}
 \end{verbatim}
@@ -402,13 +430,6 @@ De kinetische energie is:
 \belangrijk{Let op:} Vergeet niet om eenheden te converteren naar SI voordat je berekeningen maakt!
 \end{waarschuwing}
 
-\subsection{Generieke Theorem Box (v4.0)}
-Wil je een box met een icoon maar zonder specifieke "Theorie" of "Voorbeeld" semantiek?
-Gebruik \texttt{theorembox}.
-
-\begin{theorembox}{Stelling van Pythagoras}
-\[ a^2 + b^2 = c^2 \]
-\end{theorembox}
 
 % =============================================================================
 \section{Grafieken en Plots}
