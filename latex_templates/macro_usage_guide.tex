@@ -252,6 +252,55 @@ Met de Live Share extensie van VSCode kun je makkelijk samenwerken aan latex doc
 
 
 % =============================================================================
+\section{Samenwerken en Issues (GitHub)}
+\label{sec:github}
+% =============================================================================
+
+Samenwerken aan deze samenvattingen gebeurt via GitHub. We gebruiken de VS Code extensie \textbf{GitHub Pull Requests and Issues} om dit makkelijk te maken.
+
+\subsection{Issues Aanmaken}
+
+Als je een fout vindt of iets wilt toevoegen, kun je direct vanuit je code een "Issue" aanmaken op GitHub.
+
+\begin{oefenblok}[Stap-voor-stap: Issue maken]
+\begin{enumerate}
+    \item Typ in je LaTeX bestand een commentaar met \texttt{\% @issue:} of \texttt{\% TODO:}.
+    \begin{codeblock}[title=Voorbeeld]{tex}
+% @issue: Voeg meer uitleg toe over entropie hier
+% TODO: Controleer deze formule nog eens
+    \end{codeblock}
+    \item Klik op het lampje \faLightbulb\ dat verschijnt (of druk \texttt{Ctrl+.}).
+    \item Kies \textbf{"Create issue from comment"}.
+    \item VS Code maakt nu automatisch een taak aan op GitHub die anderen kunnen zien.
+\end{enumerate}
+\end{oefenblok}
+
+\subsection{Aan een Issue Werken}
+
+Wil je een taak oppakken? Dat kan ook direct in VS Code.
+
+\begin{enumerate}
+    \item Ga naar de \textbf{Source Control} tab (links, met het vertakking-icoon).
+    \item Kijk onderaan bij \textbf{GitHub / Issues}.
+    \item Rechtsklik op een issue en kies \textbf{"Start Working on Issue"}.
+    \item VS Code maakt automatisch een nieuwe \textit{branch} aan zodat je veilig kunt werken zonder de hoofdversie te breken.
+\end{enumerate}
+
+\subsection{Klaar? Pull Request!}
+
+Als je klaar bent met je wijzigingen:
+
+\begin{enumerate}
+    \item Commit je wijzigingen ("Commit \& Push").
+    \item Er verschijnt een knop \textbf{"Create Pull Request"}.
+    \item In de beschrijving van je PR kun je het issue automatisch sluiten door te typen:
+    \begin{verbatim}
+    Fixes #123
+    \end{verbatim}
+    (waarbij 123 het nummer van je issue is).
+\end{enumerate}
+
+% =============================================================================
 \section{Eenheden en Getallen met siunitx}
 \label{sec:siunitx}
 % =============================================================================
