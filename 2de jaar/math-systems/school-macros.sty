@@ -12,7 +12,7 @@
 % Note: Compile twice for formularium and symbol list
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{school-macros}[2026/01/12 v3.0 KU Leuven School Macros - Engineering Edition]
+\ProvidesPackage{school-macros}[2026/01/14 v4.0 KU Leuven School Macros - Modernized]
 
 % ============================================================================ 
 %                              PACKAGE LOADING
@@ -39,7 +39,8 @@
     spacing=true,
     factor=1100,        % Good: increases protrusion slightly
     stretch=10,         % Good: conservative expansion
-    shrink=10
+    shrink=10,
+    letterspace=50      % v4.0: Better small caps spacing
 ]{microtype}
 \RequirePackage{parskip}
 \RequirePackage{setspace}
@@ -88,6 +89,7 @@
 \RequirePackage{subcaption}
 \RequirePackage{placeins}
 \RequirePackage{flafter}
+\RequirePackage{wrapfig} % v4.0: Text wrapping around figures
 
 % --- Colors (v3.0 Palette) ---
 \RequirePackage{xcolor}
@@ -98,6 +100,17 @@
 \definecolor{schoolTeal}{RGB}{0, 150, 136}
 \definecolor{schoolGray}{RGB}{100, 100, 100}
 \definecolor{codeBackground}{RGB}{40, 44, 52} % VS Code Dark
+
+% --- Modern Color Palette (v4.0) ---
+\definecolor{brandblue}{RGB}{52, 152, 219}
+\definecolor{deepblue}{RGB}{41, 128, 185}
+\definecolor{schoolGreen}{RGB}{39, 174, 96} % Consistent with schoolGreen
+\definecolor{amber}{RGB}{243, 156, 18}
+\definecolor{coral}{RGB}{230, 126, 34}
+\definecolor{slate}{RGB}{52, 73, 94}
+\definecolor{lightgray}{RGB}{236, 240, 241}
+
+\definecolor{schoolPurple}{RGB}{155, 89, 182}
 
 % --- Boxes & Icons (v3.0 Architecture) ---
 \RequirePackage[breakable, skins, theorems, listings]{tcolorbox}
@@ -165,10 +178,10 @@
 \RequirePackage{hyperref}
 \hypersetup{
     colorlinks=true,
-    linkcolor=black,
+    linkcolor=schoolBlue,
     urlcolor=schoolBlue,
     citecolor=schoolBlue,
-    hidelinks,
+    % hidelinks, % Removed to allow colored links
     hypertexnames=false,
 }
 \RequirePackage{bookmark}
@@ -194,7 +207,7 @@
 \tcbset{
     schoolbox/.style={ 
         enhanced, breakable,
-        arc=3pt, boxrule=0.5pt,
+        arc=2pt, boxrule=0.5pt, % v4.0: Sharper corners
         attach boxed title to top left={xshift=5mm, yshift*=-\tcboxedtitleheight/2},
         boxed title style={sharp corners, rounded corners=northeast, drop fuzzy shadow, colback=#1},
         colframe=#1, colback=white,
@@ -209,16 +222,44 @@
     % Legacy style alias (to prevent breakages if used directly)
     schoolbase/.style={
         blanker, breakable, left=12pt, borderline west={3pt}{0pt}{schoolBlue}
+    },
+    % v4.0: Modern Shadow Style
+    schoolshadow/.style={
+        drop fuzzy shadow={opacity=0.15, shadow xshift=0.5mm, shadow yshift=-0.5mm}
+    },
+    % --- Conditional Title Logic ---
+    % #1: User Input Title
+    % #2: Icon
+    % #3: Label Prefix (e.g., "Concept:" including space if needed)
+    schoolTitle/.code n args={3}{%
+        \ifstrempty{#1}{}{%
+            \tcbset{title={#2 \textbf{#3} #1}}%
+        }%
+    },
+    % Variant for when the User Input IS the full title (no prefix like "Concept:")
+    schoolTitleSimple/.code n args={2}{%
+        \ifstrempty{#1}{}{%
+            \tcbset{title={#2 \textbf{#1}}}%
+        }%
     }
 }
 
+
 % --- Semantic Environments ---
 
+% --- Generic Theorem Box (v4.0) ---
+% Usage: \begin{theorembox}[Title]
+\newtcolorbox{theorembox}[1][]{
+    schoolbox=deepblue,
+    colbacktitle=deepblue,
+    fonttitle=\bfseries\sffamily,
+    schoolTitleSimple={#1}{\faBook},
+}
 % Theorie (Blue, Book Icon)
-\newtcolorbox[auto counter, number within=section]{theorie}[2][]{
+% Usage: \begin{theorie}[Title]
+\newtcolorbox{theorie}[1][]{
     schoolbox=schoolBlue,
-    title={\faBook\ \textbf{Stelling~\thetcbcounter:} #2},
-    #1
+    schoolTitleSimple={#1}{\faBook},
 }
 % Legacy Alias
 \newenvironment{theorieblok}[1][]{{}\begin{theorie}{#1}}{\end{theorie}}
@@ -226,12 +267,11 @@
 % Concept (Teal, Lightbulb Icon) - v3 style
 \newtcolorbox{schoolconcept}[1][]{% 
     schoolbox=schoolTeal,
-    title={\faLightbulb\ \textbf{Concept}},
     colback=schoolTeal!5!white,
-    #1
+    schoolTitle={#1}{\faLightbulb}{Concept:},
 }
 % Legacy Alias
-\newenvironment{conceptbox}[1][]{{}\begin{schoolconcept}}{\end{schoolconcept}}
+\newenvironment{conceptbox}[1][]{{}\begin{schoolconcept}[#1]}{\end{schoolconcept}}
 
 % Waarschuwing (Red, Warning Icon)
 \newtcolorbox{waarschuwing}[1][]{% 
@@ -246,8 +286,9 @@
 % Voorbeeld (Green, Pen Icon)
 \newtcolorbox{voorbeeld}[1][]{% 
     schoolbox=schoolGreen,
-    title={\faPenNib\ \textbf{Voorbeeld} \ifstrempty{#1}{}{: #1}},
+    schoolTitle={#1}{\faPenNib}{Voorbeeld:},
 }
+% Legacy Oefenblok maps to Voorbeeld style but with "Oefening" title if not specified
 % Legacy Oefenblok maps to Voorbeeld style but with "Oefening" title if not specified
 \newtcolorbox{oefenblok}[1][Oefening]{% 
     schoolbox=schoolGreen,
@@ -470,6 +511,22 @@
 % ============================================================================ 
 \geometry{left=2.0cm, right=2.0cm, top=2.5cm, bottom=2.5cm}
 
+% --- Compact Mode (v4.0) ---
+\newif\ifcompactmode
+\newcommand{\enablecompactmode}{
+    \geometry{left=1cm, right=1cm, top=1.5cm, bottom=1.5cm}
+    \setlist{noitemsep, topsep=0pt, parsep=0pt, partopsep=0pt}
+    \setlength{\parskip}{0.3em}
+    \titlespacing*{\section}{0pt}{0.5em}{0.2em}
+    \titlespacing*{\subsection}{0pt}{0.3em}{0.1em}
+    % Simplify header for space
+    \fancyhf{}
+    \fancyfoot[C]{\small\sffamily\thepage}
+    \renewcommand{\headrulewidth}{0pt}
+    \compactmodetrue
+    \pagestyle{fancy}
+}
+
 % Header & Footer
 \setlength{\headheight}{14pt}
 \pagestyle{fancy}
@@ -542,15 +599,44 @@
 \newcommand*{\pd}[2]{\frac{\partial #1}{\partial #2}}
 \newcommand*{\pdn}[3]{\frac{\partial^{#3} #1}{\partial #2^{#3}}}
 
+% Physics package compatibility (derivatives with optional order)
+\NewDocumentCommand{\dv}{ o m m }{
+    \IfNoValueTF{#1}
+        {\frac{\diff #2}{\diff #3}}
+        {\frac{\diff^{#1} #2}{\diff #3^{#1}}}
+}
+\NewDocumentCommand{\pdv}{ o m m }{
+    \IfNoValueTF{#1}
+        {\frac{\partial #2}{\partial #3}}
+        {\frac{\partial^{#1} #2}{\partial #3^{#1}}}
+}
+
 \renewcommand{\vec}[1]{\mathbf{#1}}
 \newcommand*{\uvec}[1]{\hat{\mathbf{#1}}}
 % \mat already defined by Expl3 above
 
 \newcommand*{\RR}{\mathbb{R}}
-\newcommand*{\NN}{\mathbb{N}}
 \newcommand*{\ZZ}{\mathbb{Z}}
-\newcommand*{\QQ}{\mathbb{Q}}
+\providecommand*{\QQ}{\mathbb{Q}}
+\renewcommand*{\QQ}{\mathbb{Q}}
 \newcommand*{\CC}{\mathbb{C}}
+
+% v4.0 Short Set Notation
+\newcommand*{\N}{\mathbb{N}}
+\newcommand*{\Z}{\mathbb{Z}}
+\newcommand*{\Q}{\mathbb{Q}}
+\newcommand*{\R}{\mathbb{R}}
+\newcommand*{\C}{\mathbb{C}}
+\newcommand*{\F}{\mathbb{F}}
+
+% v4.0 Operators
+\DeclareMathOperator*{\minimize}{minimize}
+\DeclareMathOperator*{\maximize}{maximize}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\trace}{tr}
+
+% v4.0 Delimiters
+\DeclarePairedDelimiter{\inner}{\langle}{\rangle}
 
 \newcommand*{\abs}[1]{\left|#1\right|}
 \newcommand*{\norm}[1]{\left\|#1\right\|}
@@ -583,9 +669,23 @@
 }
 \newcommand*{\img}[2]{\autofig{#1}{#2}}
 
+% Wrapped Figure (Image next to text)
+% Usage: \wrapimg[width]{path}{caption}
+\newcommand*{\wrapimg}[3][0.4\linewidth]{%
+    \begin{wrapfigure}{r}{#1}
+        \centering
+        \includegraphics[width=\linewidth]{#2}
+        \caption{#3}
+    \end{wrapfigure}%
+}
+
 % ============================================================================ 
 %                           UTILITY & HELPERS
 % ============================================================================ 
+% v4.0 Column Shortcuts
+\def\begintwocol{\begin{multicols}{2}}
+\def\endtwocol{\end{multicols}}
+ 
 \newcommand*{\concept}[1]{\textcolor{schoolBlue}{\textbf{#1}}}
 \newcommand*{\belangrijk}[1]{\textcolor{schoolRed}{\textbf{#1}}}
 \newcommand*{\keyterm}[1]{\textbf{\color{schoolBlue!80!black}#1}}

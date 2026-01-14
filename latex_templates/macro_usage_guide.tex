@@ -8,7 +8,7 @@
 % die LaTeX willen gebruiken voor hun cursussamenvattingen.
 % 
 % Auteur: School-Macros Project
-% Versie: 3.6 (Geupdate Januari 2026)
+% Versie: 4.0 (Modernized Update 2026)
 % =============================================================================
 
 \documentclass[a4paper,11pt]{article}
@@ -21,7 +21,7 @@
     \vspace{-1cm}
     {\Large KU Leuven --- Faculteit Industriële Ingenieurswetenschappen}\\[0.5cm]
     {\Huge\bfseries LaTeX Tutorial}\\[0.3cm]
-    {\Large School Macros Handleiding v3.6}
+    {\Large School Macros Handleiding v4.0}
 }
 \author{Voor studenten}
 \date{\today}
@@ -41,8 +41,10 @@ cursussamenvattingen. LaTeX is de standaard voor wetenschappelijke documenten.
 Het behandelt zowel de basis van LaTeX als de geavanceerde features
 van het \texttt{school-macros} pakket (versie 3.0+).
 
-Deze samenvattingen zijn beschikbaar op GitHub waar je kunt bijdragen aan verbeteringen:
-\url{https://github.com/Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs}
+Deze samenvattingen zijn beschikbaar op GitHub waar je kunt bijdragen aan verbeteringen: \url{https://github.com/Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs}
+
+Je bent helemaal vrij en ik raad je zelf aan om info toe te voegen aan de documenten als je de uitleg niet goed vindt.
+Je leert je vak en je raakt dan ook bekend met LaTeX wat handig is voor later.
 \end{abstract}
 
 \tableofcontents
@@ -93,7 +95,7 @@ bij de tweede worden ze weergegeven.
 \end{description}
 \end{schoolconcept}
 
-\begin{theorie}{Structuurverschillen}
+\begin{theorie}[Structuurverschillen]
 \textbf{article class:}
 \begin{itemize}[leftmargin=1.5cm]
     \item Hoogste niveau: \verb|\section{}| (in TOC als hoofdniveau)
@@ -108,6 +110,20 @@ bij de tweede worden ze weergegeven.
     \item Ideaal voor uitgebreide documenten 30+ pagina's
 \end{itemize}
 \end{theorie}
+
+\subsection{Nieuw in v4.0: Compact Mode}
+Voor cheatsheets en samenvattingen die op één pagina moeten passen, gebruik je \texttt{Compact Mode}.
+Dit vermindert marges naar 1cm, verwijdert witruimte in lijsten en verkleint headers.
+
+\begin{codeblock}[title=Compact Mode Activeren]{tex}
+\documentclass[a4paper,11pt]{article}
+\usepackage{school-macros}
+
+\enablecompactmode  % Zet dit in je preamble
+
+\begin{document}
+...
+\end{codeblock}
 
 \section{Algemene latex tips}
 \subsection{Latex tekstopmaak}
@@ -126,8 +142,64 @@ Latex heeft wat standaard dingen om je tekst te stijlen.
 \section{} \\
 \subsection{} \\
 \subsubsection{} \\
+\subsection{} \\
+\subsubsection{} \\
 \paragraph{}
+\end{codeblock}
 
+\subsection{Lijstjes maken}
+Lijstjes zijn super handig voor samenvattingen!
+
+\begin{codeblock}[title=Opsommingen]{tex}
+% Ongeordende lijst (bolletjes)
+\begin{itemize}
+    \item Eerste punt
+    \item Tweede punt
+\end{itemize}
+
+% Geordende lijst (nummers)
+\begin{enumerate}
+    \item Stap 1
+    \item Stap 2
+\end{enumerate}
+\end{codeblock}
+
+\subsection{Nieuwe regel of nieuwe alinea?}
+In Word druk je gewoon op enter. In LaTeX werkt het anders:
+
+\begin{itemize}
+    \item \textbf{Nieuwe alinea:} Laat \textbf{één witregel} open in je code. Dit is de standaard manier!
+    \item \textbf{Harde enter:} Gebruik \texttt{\textbackslash\textbackslash} aan het einde van een regel. Doe dit spaarzaam!
+    \item \textbf{Newline:} Gebruik \verb|\newline| om een nieuwe regel te maken met een extra tab eronder om een alina 
+    te maken. Zoals dit 
+    \newline 
+
+    ta da hier is nu een nieuwe regel
+    \item \textbf{Nieuwe pagina:} Gebruik \texttt{\textbackslash newpage}.
+\end{itemize}
+
+\subsection{Speciale Tekens}
+Sommige tekens hebben een speciale betekenis in LaTeX (zoals \% en \$). Wil je ze toch typen? Zet er een backslash \texttt{\textbackslash} voor.
+
+\begin{tabular}{ll}
+\toprule
+\textbf{Teken} & \textbf{Code} \\
+\midrule
+\% (Commentaar) & \texttt{\textbackslash\%} \\
+\$ (Wiskunde) & \texttt{\textbackslash\$} \\
+\& (En-teken) & \texttt{\textbackslash\&} \\
+\_ (Laag streepje) & \texttt{\textbackslash\_} \\
+\# (Hashtag) & \texttt{\textbackslash\#} \\
+\bottomrule
+\end{tabular}
+
+\subsection{Commentaar toevoegen}
+Alles wat je achter een \texttt{\%} typt, wordt genegeerd door LaTeX. Handig voor notities aan jezelf!
+
+\begin{codeblock}[title=Commentaar]{tex}
+Dit is tekst die in de PDF komt.
+% Dit is een notitie voor mezelf, dit zie je niet in de PDF.
+Hier gaat de tekst verder.
 \end{codeblock}
 
 Gelukkig moet je deze dingen niet allemaal onthouden want daar zijn de vscode-extensies voor!
@@ -180,6 +252,55 @@ Met de Live Share extensie van VSCode kun je makkelijk samenwerken aan latex doc
 
 
 % =============================================================================
+\section{Samenwerken en Issues (GitHub)}
+\label{sec:github}
+% =============================================================================
+
+Samenwerken aan deze samenvattingen gebeurt via GitHub. We gebruiken de VS Code extensie \textbf{GitHub Pull Requests and Issues} om dit makkelijk te maken.
+
+\subsection{Issues Aanmaken}
+
+Als je een fout vindt of iets wilt toevoegen, kun je direct vanuit je code een "Issue" aanmaken op GitHub.
+
+\begin{oefenblok}[Stap-voor-stap: Issue maken]
+\begin{enumerate}
+    \item Typ in je LaTeX bestand een commentaar met \texttt{\% @issue:} of \texttt{\% TODO:}.
+    \begin{codeblock}[title=Voorbeeld]{tex}
+% @issue: Voeg meer uitleg toe over entropie hier
+% TODO: Controleer deze formule nog eens
+    \end{codeblock}
+    \item Klik op het lampje \faLightbulb\ dat verschijnt (of druk \texttt{Ctrl+.}).
+    \item Kies \textbf{"Create issue from comment"}.
+    \item VS Code maakt nu automatisch een taak aan op GitHub die anderen kunnen zien.
+\end{enumerate}
+\end{oefenblok}
+
+\subsection{Aan een Issue Werken}
+
+Wil je een taak oppakken? Dat kan ook direct in VS Code.
+
+\begin{enumerate}
+    \item Ga naar de \textbf{Source Control} tab (links, met het vertakking-icoon).
+    \item Kijk onderaan bij \textbf{GitHub / Issues}.
+    \item Rechtsklik op een issue en kies \textbf{"Start Working on Issue"}.
+    \item VS Code maakt automatisch een nieuwe \textit{branch} aan zodat je veilig kunt werken zonder de hoofdversie te breken.
+\end{enumerate}
+
+\subsection{Klaar? Pull Request!}
+
+Als je klaar bent met je wijzigingen:
+
+\begin{enumerate}
+    \item Commit je wijzigingen ("Commit \& Push").
+    \item Er verschijnt een knop \textbf{"Create Pull Request"}.
+    \item In de beschrijving van je PR kun je het issue automatisch sluiten door te typen:
+    \begin{verbatim}
+    Fixes #123
+    \end{verbatim}
+    (waarbij 123 het nummer van je issue is).
+\end{enumerate}
+
+% =============================================================================
 \section{Eenheden en Getallen met siunitx}
 \label{sec:siunitx}
 % =============================================================================
@@ -189,7 +310,7 @@ Het zorgt voor consistente opmaak van getallen en eenheden.
 
 \subsection{Basis gebruik}
 
-\begin{theorie}{Het \textbackslash SI commando}
+\begin{theorie}[Het \textbackslash SI commando]
 \begin{tabular}{ll}
 \toprule
 \textbf{Code} & \textbf{Resultaat} \\
@@ -230,27 +351,55 @@ Alle boxen zijn \emph{breakable} --- ze kunnen over meerdere pagina's lopen.
 
 \subsection{Concept (Definities)}
 
-\begin{concept}[title=Snijsnelheid]
+\begin{conceptbox}[Snijsnelheid]
 De \concept{snijsnelheid} ($v_c$) is de omtrekssnelheid van het gereedschap ten opzichte
 van het werkstuk, uitgedrukt in \si{m/min}.
-\end{concept}
+\end{conceptbox}
 
 Code:
 \begin{verbatim}
-\begin{concept}[title=Snijsnelheid]
+\begin{conceptbox}[Snijsnelheid]
 De \concept{snijsnelheid} ($v_c$) is de omtrekssnelheid...
-\end{concept}
+\end{conceptbox}
+\end{verbatim}
+
+Je kunt ze ook geen titel geven en dan is het icoon boven de box er niet.
+
+\begin{conceptbox}
+De \concept{snijsnelheid} ($v_c$) is de omtrekssnelheid...
+\end{conceptbox}
+
+Code:
+\begin{verbatim}
+\begin{conceptbox}
+De \concept{snijsnelheid} ($v_c$) is de omtrekssnelheid...
+\end{conceptbox}
 \end{verbatim}
 
 \subsection{Theorie (Stellingen)}
 
-\begin{theorie}{Energiebehoud}
+\subsection{Theorie (Stellingen)}
+
+\begin{theorie}[Energiebehoud]
 In een gesloten systeem zonder externe krachten blijft de totale mechanische energie behouden:
 \[ E_{totaal} = E_k + E_p = \text{constant} \]
 \end{theorie}
 
 \begin{verbatim}
-\begin{theorie}{Energiebehoud}
+\begin{theorie}[Energiebehoud]
+In een gesloten systeem...
+\end{theorie}
+\end{verbatim}
+
+of weer zonder titel:
+
+\begin{theorie}
+In een gesloten systeem...
+\end{theorie}
+
+Code:
+\begin{verbatim}
+\begin{theorie}
 In een gesloten systeem...
 \end{theorie}
 \end{verbatim}
@@ -280,6 +429,7 @@ De kinetische energie is:
 \begin{waarschuwing}[title=Veelgemaakte fout]
 \belangrijk{Let op:} Vergeet niet om eenheden te converteren naar SI voordat je berekeningen maakt!
 \end{waarschuwing}
+
 
 % =============================================================================
 \section{Grafieken en Plots}
@@ -409,11 +559,15 @@ Na de eerste vermelding toont \verb|\sym{F}{...}{...}| alleen: \sym{F}{Kracht}{N
 Dit voorkomt herhaling en houdt je document overzichtelijk.
 
 % =============================================================================
-\section{Wiskunde Shortcuts}
+\section{Math Shortcuts (v4.0 Updates)}
 \label{sec:math}
 % =============================================================================
 
-\subsection{Afgeleiden}
+\subsection{Verzamelingen (Nieuw)}
+Nu ook beschikbaar als korte letters: \\
+$\N$ (\verb|\N|), $\Z$ (\verb|\Z|), $\Q$ (\verb|\Q|), $\R$ (\verb|\R|), $\C$ (\verb|\C|), $\F$ (\verb|\F|).
+
+\subsection{Afgeleiden (Physics Style)}
 
 \begin{tabular}{lll}
 \toprule
@@ -421,8 +575,9 @@ Dit voorkomt herhaling en houdt je document overzichtelijk.
 \midrule
 Gewone afgeleide & \verb|\dd{y}{x}| & $\dd{y}{x}$ \\
 n-de afgeleide & \verb|\ddn{y}{x}{2}| & $\ddn{y}{x}{2}$ \\
-Partiële afgeleide & \verb|\pd{f}{x}| & $\pd{f}{x}$ \\
-n-de partiële & \verb|\pdn{f}{x}{2}| & $\pdn{f}{x}{2}$ \\
+n-de afgeleide & \verb|\ddn{y}{x}{2}| & $\ddn{y}{x}{2}$ \\
+Partiële afgeleide & \verb|\pdv{f}{x}| & $\pdv{f}{x}$ \\
+n-de partiële & \verb|\pdv[2]{f}{x}| & $\pdv[2]{f}{x}$ \\
 \bottomrule
 \end{tabular}
 
@@ -488,6 +643,27 @@ Gebruik \verb|\Cref{}| (met hoofdletter) aan het begin van een zin.
 \begin{verbatim}
 \autofig[0.5\linewidth]{afbeelding.png}{Onderschrift}
 \end{verbatim}
+
+\subsection{Tekstomloop (Wrap Figures)}
+Wil je tekst naast een afbeelding? Gebruik \verb|\wrapimg|.
+Dit is handig om ruimte te besparen.
+
+\begin{verbatim}
+\wrapimg[0.4\linewidth]{afbeelding.png}{Onderschrift}
+Hier komt je tekst die naast de afbeelding loopt. 
+Zorg dat je genoeg tekst hebt om het effect te zien!
+\end{verbatim}
+
+\wrapimg{example-image}{Test Image}
+Here is some text that should wrap around the image. We need enough text to visualize the wrapping effect properly. The text flows around the image which is placed on the side.
+
+alleen gebruik \verb|\wrapimg| wanneer je genoeg tekst hebt om het effect te zien.
+Gebruik minipage met een figuur als je niet genoeg tekst hebt.
+Anders gaat de tekst overlappen met andere delen van het document zoals headers
+en andere tekst die niks te maken heeft met de figuur.
+
+gebruik \verb|\vspace{}| om ruimte te geven tussen de figuur onderstaande tekst.
+\vspace{1cm}
 
 % =============================================================================
 \section{Tabellen (Nieuwe Standaard)}
@@ -615,6 +791,17 @@ Het \texttt{school-macros} pakket integreert naadloos met Zotero en Better BibTe
 \subsection{Workflow markers}
 
 \TODO{Dit moet nog worden aangevuld} \quad \FIXME{Fout} \quad \NOTE{Notitie}
+
+\subsection{Kolommen (v4.0)}
+Gebruik \verb|\begintwocol| en \verb|\endtwocol| voor snelle tweekoloms layout (handig voor compacte samenvattingen).
+
+\begin{verbatim}
+\begintwocol
+Links
+\columnbreak
+Rechts
+\endtwocol
+\end{verbatim}
 
 \subsection{KU Leuven Titelpagina}
 
