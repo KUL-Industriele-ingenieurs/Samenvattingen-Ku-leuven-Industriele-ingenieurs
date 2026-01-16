@@ -1,0 +1,27 @@
+    package packageNaam; // optioneel
+
+    import package1.Klasse1; // optioneel
+    import package2.*; // optioneel
+
+    public class KlasseNaam { // klasse definitie
+
+        // attributen
+        private int attribuut1;
+        private String attribuut2;
+
+        // constructor
+        public KlasseNaam(int attribuut1, String attribuut2) {
+            this.attribuut1 = attribuut1;
+            this.attribuut2 = attribuut2;
+        }
+
+        // methoden
+        public void methode1() {
+            // methode implementatie
+        }
+
+        public int methode2(String parameter) {
+            // methode implementatie
+            return 0;
+        }
+    }
