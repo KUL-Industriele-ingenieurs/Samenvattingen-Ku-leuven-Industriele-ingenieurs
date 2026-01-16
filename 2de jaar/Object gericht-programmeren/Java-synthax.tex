@@ -1,0 +1,88 @@
+% =============================================================================
+%                    TEMPLATE VOOR CURSUSSAMENVATTING
+%                    KU Leuven - School Macros v4.0
+% =============================================================================
+% Dit is een starttemplate voor nieuwe documenten.
+% Kopieer dit bestand en pas het aan voor je eigen cursus.
+%
+% Tip: Compileer TWEEMAAL voor correcte formularium en symbolenlijst!
+% =============================================================================
+
+\documentclass[a4paper,11pt]{article}
+\usepackage{school-macros}
+\enablecompactmode
+
+% v4.0 Optioneel: Compact Mode voor cheatsheets
+% \enablecompactmode
+
+% =============================================================================
+%                           DOCUMENT INFO
+% =============================================================================
+% Pas deze gegevens aan voor je cursus:
+\newcommand{\vaknaam}{Object gericht-programmeren}
+\newcommand{\auteur}{Ruben Ryckaert}
+
+\title{\vaknaam{} --- Synthax Java}
+\author{\auteur}
+
+\date{\today}
+
+
+% =============================================================================
+%                              DOCUMENT
+% =============================================================================
+\begin{document}
+\maketitle
+
+ 
+\begin{abstract}
+Deze samenvattingen zijn beschikbaar op GitHub waar je kunt bijdragen aan verbeteringen: \url{https://github.com/Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs}
+
+Je bent helemaal vrij en ik raad je zelf aan om info toe te voegen aan de documenten als je de uitleg niet goed vindt.
+Je leert je vak en je raakt dan ook bekend met LaTeX wat handig is voor later.
+\end{abstract}
+
+
+\section{import statements}
+Om klassen van andere packages te gebruiken, moeten deze eerst geïmporteerd worden met een import statement.\\
+
+\begin{codeblock}[Import utils]{java}
+    import java.util.*; // importeert alle klassen van de package java.util
+    import java.util.ArrayList; // importeert enkel de ArrayList klasse
+\end{codeblock}
+
+\section{typische Java klasse structuur}
+Een typische Java klasse heeft de volgende structuur:
+\begin{codeblock}[Hoe java doc starten?]{java}
+    package packageNaam; // optioneel
+
+    import package1.Klasse1; // optioneel
+    import package2.*; // optioneel
+
+    public class KlasseNaam { // klasse definitie
+
+        // attributen
+        private int attribuut1;
+        private String attribuut2;
+
+        // constructor
+        public KlasseNaam(int attribuut1, String attribuut2) {
+            this.attribuut1 = attribuut1;
+            this.attribuut2 = attribuut2;
+        }
+
+        // methoden
+        public void methode1() {
+            // methode implementatie
+        }
+
+        public int methode2(String parameter) {
+            // methode implementatie
+            return 0;
+        }
+    }
+\end{codeblock}
+
+
+
+\end{document}
