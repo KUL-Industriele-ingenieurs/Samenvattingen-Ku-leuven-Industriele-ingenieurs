@@ -1,6 +1,6 @@
 % school-macros.sty
 % Unified macros for KU Leuven engineering course documents
-% Version 4.2 - "School Macros v4.2" - Robust & Compact
+% Version 4.1 - "School Macros v4.1" - Refined & Robust
 % 
 % Features: 
 % - Typography: Bitstream Charter (Serif) + Fira Sans (Header) + Fira Mono (Code)
@@ -12,9 +12,9 @@
 % Note: Compile twice for formularium and symbol list
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{school-macros}[2026/01/16 v4.2 KU Leuven School Macros - Robust & Compact]
+\ProvidesPackage{school-macros}[2026/01/16 v4.1 KU Leuven School Macros - Refined]
 
-\newcommand{\schoolMacrosVersion}{v4.2}
+\newcommand{\schoolMacrosVersion}{v4.1}
 
 % ============================================================================ 
 %                              PACKAGE LOADING
@@ -23,6 +23,7 @@
 % --- Core Logic (Load First) ---
 \RequirePackage{etoolbox}
 \RequirePackage{xstring}
+% ifthen replaced by etoolbox
 
 % --- Encoding & Language ---
 \@ifpackageloaded{inputenc}{}{\RequirePackage[utf8]{inputenc}}
@@ -211,7 +212,7 @@
     schoolbox/.style={ 
         enhanced, breakable,
         arc=2pt, boxrule=0.5pt,
-        attach boxed title to top left={xshift=5mm, yshift*=-\tcboxedtitleheight/2},
+        attach boxed title to top left={xshift=5mm, yshift*=-	cboxedtitleheight/2},
         boxed title style={sharp corners, rounded corners=northeast, drop fuzzy shadow, colback=#1},
         colframe=#1, colback=white,
         drop fuzzy shadow,
@@ -251,16 +252,14 @@
     schoolbox=schoolBlue,
     schoolTitleSimple={#1}{\faBook},
 }
-% Fixed: Broken \begin environment
-\newenvironment{theorieblok}[1][]{\begin{theorie}[#1]}{\end{theorie}}
+\newenvironment{theorieblok}[1][]{{}egin{theorie}{#1}}{\end{theorie}}
 
 \newtcolorbox{schoolconcept}[1][]{% 
     schoolbox=schoolTeal,
     colback=schoolTeal!5!white,
     schoolTitle={#1}{\faLightbulb}{Concept:},
 }
-% Fixed: Broken \begin environment
-\newenvironment{conceptbox}[1][]{\begin{schoolconcept}[#1]}{\end{schoolconcept}}
+\newenvironment{conceptbox}[1][]{{}egin{schoolconcept}[#1]}{\end{schoolconcept}}
 
 \newtcolorbox{waarschuwing}[1][]{% 
     schoolbox=schoolRed,
@@ -268,8 +267,7 @@
     colback=schoolRed!5!white,
     #1
 }
-% Fixed: Broken \begin environment
-\newenvironment{warningbox}[1][]{\begin{waarschuwing}}{\end{waarschuwing}}
+\newenvironment{warningbox}[1][]{{}egin{waarschuwing}}{\end{waarschuwing}}
 
 \newtcolorbox{voorbeeld}[1][]{% 
     schoolbox=schoolGreen,
@@ -364,14 +362,13 @@
     }%
 }
 
-% Improved: Reduced vertical spacing and left alignment for speed scanning
 \NewDocumentCommand{\formulariumcard}{ m m m m }{% 
-    \par\vspace{4pt}%
-    \noindent\textbf{#1} \hfill {\scriptsize\textcolor{schoolGray}{\hyperref[frm:#4]{p.\pageref{frm:#4}}}}\par\vspace{2pt}%
-    {\noindent\large $\displaystyle #2$\par}%
+    \par\vspace{6pt}%
+    \noindent\textbf{#1} \hfill {\scriptsize\textcolor{schoolGray}{\hyperref[frm:#4]{p.\\pageref{frm:#4}}}}\[4pt]%
+    {\centering\large $\displaystyle #2$\\par}%
     \vspace{2pt}%
     {\noindent\footnotesize\itshape #3}%
-    \par\vspace{4pt}%
+    \par\vspace{6pt}%
 }
 
 \NewDocumentCommand{\frm}{ m m m }{% 
@@ -381,8 +378,8 @@
         title={\faCalculator\ \textbf{#1}},
         fonttitle=\bfseries\sffamily,
     ]
-        {\centering\large $\displaystyle #2$\par}%
-        \vspace{2pt}%
+        {\centering\large $\displaystyle #2$\\par}%
+        \vspace{4pt}%
         {\small #3}\label{frm:\theFormulariumEntryCounter}%
     \end{tcolorbox}%
     \protected@write\@auxout{}{\string\addformulariumentry{\thesection}{\@currentlabelname}{\unexpanded{#1}}{\unexpanded{#2}}{\unexpanded{#3}}{\theFormulariumEntryCounter}}%
@@ -390,12 +387,12 @@
 }
 
 \newcommand*{\printSectionFormulas}[1]{% 
-    \ifstrequal{#1}{0}{}{% 
+    \ifstrequal{#1}{0}{}{%
         \par\vspace{10pt}
         \noindent\makebox[\linewidth]{% 
-            \textcolor{schoolBlue}{\leaders\hrule height 0.6pt\hfill}\hspace{1em}%
+            \textcolor{schoolBlue}{\leaders\hrule height 1pt\hfill}\hspace{1em}%
             {\small\bfseries\sffamily\textcolor{schoolBlue}{\csuse{SectionTitle@#1}}}\hspace{1em}%
-            \textcolor{schoolBlue}{\leaders\hrule height 0.6pt\hfill}%
+            \textcolor{schoolBlue}{\leaders\hrule height 1pt\hfill}%
         }%
         \par\vspace{6pt}%
     }% 
@@ -405,11 +402,11 @@
 \NewDocumentCommand{\school@sectionstar}{ m }{% 
     \ifdefined\FloatBarrier\FloatBarrier\fi
     \@ifundefined{chapter}{% 
-        \subsection*{#1}% 
-        \addcontentsline{toc}{subsection}{\protect\numberline{}#1}% 
+        \subsection*{#1}%
+        \addcontentsline{toc}{subsection}{\protect\numberline{}#1}%
     }{% 
-        \section*{#1}% 
-        \addcontentsline{toc}{section}{\protect\numberline{}#1}% 
+        \section*{#1}%
+        \addcontentsline{toc}{section}{\protect\numberline{}#1}%
     }% 
 }
 
@@ -473,7 +470,7 @@
 \NewDocumentCommand{\printsymbols}{}{% 
     \par
     \school@sectionstar{Symbolenlijst}%
-    \begin{tabularx}{\textwidth}{>{\bfseries}l X l r}
+    \begin{tabularx}{\textwidth}{l X l r}
         \toprule
         \textbf{Symbool} & \textbf{Beschrijving} & \textbf{Eenheid} & \textbf{Pagina} \\
         \midrule
@@ -493,12 +490,10 @@
     \geometry{left=1cm, right=1cm, top=1.5cm, bottom=1.5cm}
     \setlist{noitemsep, topsep=0pt, parsep=0pt, partopsep=0pt}
     \setlength{\parskip}{0.3em}
-    \setlength{\parindent}{0pt}
     \titlespacing*{\section}{0pt}{0.5em}{0.2em}
     \titlespacing*{\subsection}{0pt}{0.3em}{0.1em}
     \fancyhf{}
     \fancyfoot[C]{\small\sffamily\thepage}
-    \fancyhead{}
     \renewcommand{\headrulewidth}{0pt}
     \compactmodetrue
     \pagestyle{fancy}
@@ -537,9 +532,9 @@
 % Caption Styling
 \captionsetup{skip=3pt,aboveskip=3pt,belowskip=3pt,font={small,sf},labelfont=bf}
 
-% List Styling (Tightened for summaries)
-\setlist[itemize,1]{leftmargin=2em,itemsep=0.3ex,parsep=0.3ex,partopsep=0.5ex,topsep=0.5ex}
-\setlist[enumerate,1]{leftmargin=2em,itemsep=0.3ex,parsep=0.3ex,partopsep=0.5ex,topsep=0.5ex}
+% List Styling
+\setlist[itemize,1]{leftmargin=2em,itemsep=0.5ex,parsep=0.3ex,partopsep=0.5ex,topsep=0.8ex}
+\setlist[enumerate,1]{leftmargin=2em,itemsep=0.5ex,parsep=0.3ex,partopsep=0.5ex,topsep=0.8ex}
 
 \pretocmd{\listoffigures}{\microtypesetup{protrusion=false}}{}{}
 \apptocmd{\listoffigures}{\microtypesetup{protrusion=true}}{}{}
@@ -587,13 +582,13 @@
         {\frac{\partial^{#1} #2}{\partial #3^{#1}}}
 }
 
-% Improved: Safer vector definition using boldsymbol
-\renewcommand{\vec}[1]{\boldsymbol{#1}}
+\renewcommand{\vec}[1]{\mathbf{#1}}
 \newcommand*{\uvec}[1]{\hat{\mathbf{#1}}}
 
 \newcommand*{\RR}{\mathbb{R}}
 \newcommand*{\ZZ}{\mathbb{Z}}
 \providecommand*{\QQ}{\mathbb{Q}}
+\renewcommand*{\QQ}{\mathbb{Q}}
 \newcommand*{\CC}{\mathbb{C}}
 
 \newcommand*{\N}{\mathbb{N}}
@@ -615,7 +610,7 @@
 \newcommand*{\paren}[1]{\left(#1\right)}
 \newcommand*{\bracket}[1]{\left[#1\right]}
 \newcommand*{\curlybrace}[1]{\left\{#1\right\}}
-\newcommand*{\avg}[1]{\left\langle#1\right\>}
+\newcommand*{\avg}[1]{\left\langle#1\right\rangle}
 
 \newcommand*{\half}{\frac{1}{2}}
 \newcommand*{\third}{\frac{1}{3}}
@@ -625,9 +620,8 @@
 %                           FIGURES
 % ============================================================================ 
 
-% Improved: Use [htbp] instead of [H] for better flow
 \NewDocumentCommand{\fig}{ O{0.8\linewidth} m m m }{% 
-    \begin{figure}[htbp]
+    \begin{figure}[H]
         \centering
         \includegraphics[width=#1]{#2}
         \caption{#3}\label{#4}
@@ -635,7 +629,7 @@
 }
 
 \NewDocumentCommand{\autofig}{ O{0.8\linewidth} m m }{% 
-    \begin{figure}[htbp]
+    \begin{figure}[H]
         \centering
         \includegraphics[width=#1]{#2}
         \caption{#3}%
@@ -687,7 +681,7 @@
 \NewDocumentCommand{\plotthreeD}{ O{} m m }{% 
     {\centering
     \begin{tikzpicture}
-    \begin{axis}[ 
+    \begin{axis}[
         width=0.8\linewidth,
         grid=major,
         view={60}{30},
@@ -704,7 +698,7 @@
 \NewDocumentCommand{\plotdata}{ O{} m m }{% 
     {\centering
     \begin{tikzpicture}
-    \begin{axis}[ 
+    \begin{axis}[
         width=0.8\linewidth,
         grid=major,
         schoolEngineeringPlot,
