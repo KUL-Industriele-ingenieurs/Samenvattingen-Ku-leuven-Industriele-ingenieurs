@@ -6,6 +6,10 @@ Deze repository is een **gezamenlijk project** waar studenten professionele same
 
 ---
 
+## Alle Auteurs (voeg je naam toe)
+- **Ruben Ryckaert** 
+
+
 ## 👋 Nieuw hier? Start hier!
 
 **Nog nooit met Git of LaTeX gewerkt? Geen probleem!** Deze guide neemt je stap voor stap mee. Volg gewoon de instructies hieronder en je bent zo aan de slag.
