@@ -414,28 +414,34 @@ De code om van de Scanner krijg je op het examen maar niet hoe je die gebruikt.
         return a + b;
     }
 
-    public scanfile(filename) {
-        Scanner sc = new Scanner(new File(filename)); // maak een Scanner object om van een bestand te lezen
-
-        while (sc.hasNextLine()) { // zolang er nog een volgende lijn is
-            String lijn = sc.nextLine(); // lees de volgende lijn
-            System.out.println(lijn); // print de lijn naar de console
-        }
-
-        niet elke lijn zal een string zijn, soms moet je een int of float lezen
-        int nummer = sc.nextInt(); // lees een geheel getal
-        float decimaal = sc.nextFloat(); // lees een decimaal getal
-        
-        //methodes kan je dan met deze waarden aanroepen
-        while (sc.hasNextInt()) {
-        int a = sc.nextInt(); // lees het volgende gehele getal
-        int b = sc.nextInt(); // lees het volgende gehele getal
-        int resultaat = sumOfTwoNumbers(a, b); // roep de methode aan met het gelezen nummer
-        System.out.println("Resultaat: " + resultaat);
+public void readFromFile(String filename) {
+  try {
+    Scanner sc = new Scanner(new File(filename));
+    while(sc.hasNext()) {
+        String line = sc.nextLine();
+        System.out.println(line);
     }
-
-        sc.close(); // sluit de scanner
+    of met integers:
+    while(sc.hasNextInt()) {
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        int resultaat = sumOfTwoNumbers(a, b);
+        System.out.println(resultaat);
     }
+    sc.close();
+  }
+  catch (FileNotFoundException fnfe) {
+    System.out.println("file not found");
+  }
+}
+
+//belangrijke methodes van Scanner:
+hasNext(): controleert of er nog meer tokens zijn
+next(): leest het volgende token als een String
+nextInt(): leest het volgende token als een int
+nextLine(): leest de volgende volledige regel als een String
+nextFloat(): leest het volgende token als een float
+nextDouble(): leest het volgende token als een double
 \end{codeblock}
 
 \section{UML diagrammen}
