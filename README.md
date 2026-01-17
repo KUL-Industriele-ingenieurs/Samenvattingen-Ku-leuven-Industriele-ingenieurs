@@ -113,7 +113,7 @@ Extensies geven VS Code superkrachten voor LaTeX.
 - 📌 Handig voor samenwerken
 
 ### ✅ LaTeX – LanguageTool (Optioneel maar handig)
-- 🔍 Zoek: `LaTeX`
+- 🔍 Zoek: `LTeX – LanguageTool grammar/spell checking`
 - 👤 Auteur: Julian Valentin
 - 📝 Spellingscontrole en grammatica voor Nederlands
 
