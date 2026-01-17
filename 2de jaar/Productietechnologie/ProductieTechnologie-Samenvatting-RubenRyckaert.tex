@@ -103,15 +103,59 @@ al deze factoren zijn belangrijk bij het kiezen van een productietechniek.
 \section{Tolerantie}
 
 \begin{conceptbox}[Tolerantie]
-    Tolerantie is de toelaatbare afwijking op een nominale maat. Geen enkel onderdeel kan exact op de gewenste maat worden gemaakt; toleranties geven de grenzen aan waarbinnen het product functioneel blijft.
+    Tolerantie is de toelaatbare afwijking op een nominale maat. 
+	Geen enkel onderdeel kan exact op de gewenste maat worden gemaakt; toleranties geven de grenzen aan waarbinnen het 
+	product functioneel blijft.
 \end{conceptbox}
 
-Toleranties worden geclassificeerd via diagrammen:
+Afhankelijk van de toleraties heb je verschillende soorten passing:
 \begin{itemize}
-	\item inwendige (gaten)
-	\item uitwendige (assen)
-	\item passing (combinatie)
+	\item \textbf{Losse passing}: Grote tolerantie, veel speling.
+	\item \textbf{Perspassing}: Zeer kleine of negatieve tolerantie, klemming.
 \end{itemize}
+
+Je hebt hier \belangrijk{Maattoleranties} en \belangrijk{Vormtoleranties}.
+\begin{itemize}
+	\item \textbf{Maattoleranties}: Afwijkingen in afmetingen (lengte, diameter, \ldots).
+	\item \textbf{Vormtoleranties}: Afwijkingen in geometrische vormen (rechtheid, vlakheid, rondheid, \ldots).
+\end{itemize}
+
+Algemeen bij nominale maten:
+Je defineert je nominale maat (de gewenste maat) en dan heb je een boven- en ondergrens.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.8\textwidth]{nominalematen.png}
+  \caption{Nominale maten met boven- en ondergrens.}
+  \label{fig:nominalematen.png}
+ \end{figure}
+
+ De toleratie maat bereken je met de buiten en binnenmaat:
+
+ \frm{Tolerantie}{T = Buitenkant - Binnenkant}{waarbij $T$ de tolerantie is [\si{mm}], $Buitenkant$ de maximale maat [\si{mm}] en $Binnenkant$ de minimale maat [\si{mm}].}
+
+ Afhankelijk van de toleratie heb je toleratieklassen (IT-klasse).
+
+
+\begin{conceptbox}[IT-klasse]
+	\textbf{De IT-klasse (International Tolerance grade)} geeft de nauwkeurigheid van een maat aan. Hoe lager het IT-nummer, hoe strakker de tolerantie.
+	\newline 
+\end{conceptbox}
+
+De plaats van de tolarantie hangt af van de letter die je gebruikt.
+Grote letter is voor inwendige maten en kleine letter voor uitwendige maten.
+
+\begin{voorbeeld}[H7]
+	H7 zie je in de figuur hieronder. H is een grote letter dus het is een inwendige maat.
+	Je ziet dat het in EI (bovenste) zit en niet in ES (onderste).
+	De toleratie ligt dus boven de nominale maat 
+\end{voorbeeld}
+
+\begin{voorbeeld}[js]
+	js zie je in de figuur hieronder. js is een kleine letter dus het is een uitwendige maat.
+	Het heeft een negatieve binnengrens (es) en geen bovengrens (ei).
+	De tolerantie ligt onder de nominale maat.
+\end{voorbeeld}
 
 \begin{figure}[ht]
 	\centering
@@ -122,6 +166,20 @@ Toleranties worden geclassificeerd via diagrammen:
 	\label{fig:tolerantie_diagrammen}
 \end{figure}
 
+De tolerantie bepaald wat voor soort passing je hebt.
+\belangrijk{positieve speling} je hebt nog ruimte tussen de onderdelen.
+\belangrijk{negatieve speling} je hebt een klemming tussen de onderdelen.
+\belangrijk{positieve en negatieve speling} je toleratie zit tussen negatief en positief.
+
+Verschillende productietechnieken hebben verschillende haalbare toleranties.
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.8\textwidth]{image86.png}
+  \caption{Haalbare toleranties voor verschillende productietechnieken.}
+  \label{fig:haalbaretoleranties.png}
+ \end{figure}
+
+\subsection{Kosten vs. Tolerantie}
 Je moet kiezen welke tolerantie nodig is voor een product.
 Precieze toleranties zijn duurder om te produceren.
 
@@ -131,6 +189,7 @@ Precieze toleranties zijn duurder om te produceren.
 	\caption{Kosten in functie van de tolerantiegraad.}
 	\label{fig:kosten_vs_tolerantie}
 \end{figure}
+
 
 \section{Oppervlaktekwaliteit}
 
@@ -151,6 +210,14 @@ Precieze toleranties zijn duurder om te produceren.
 	\caption{Voorbeelden van verschillende oppervlaktekwaliteiten.}
 	\label{fig:oppervlaktekwaliteiten}
 \end{figure}
+
+\begin{theorieblok}[Oppervlakteparameters]
+	\begin{itemize}
+		\item \textbf{Gemiddelde ruwheid ($R_a$)}: De gemiddelde absolute afwijking van het oppervlak ten opzichte van de middellijn over een bepaalde lengte.
+		\item \textbf{Gemiddelde top-dal hoogte ($R_z$)}: Het gemiddelde van de vijf grootste top-dal hoogten binnen een meetlengte.
+		\item \textbf{Maximale ruwheid ($R_{max}$)($R_t$)}: De grootste top-dal hoogte binnen een meetlengte.
+	\end{itemize}
+\end{theorieblok}
 
 Verschillende productietechnieken hebben verschillende haalbare oppervlaktekwaliteiten.
 
