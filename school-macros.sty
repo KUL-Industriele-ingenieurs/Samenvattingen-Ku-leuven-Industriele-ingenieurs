@@ -16,7 +16,16 @@
 
 % --- Silence harmless warnings ---
 \RequirePackage{silence}
-\WarningFilter{latex}{Font shape} % Suppresses "Font shape ... has incorrect series value" from mathdesign
+\WarningFilter{latex}{Font shape} % Standard LaTeX warnings
+\WarningFilter{latexfont}{Font shape} % Font-specific warnings
+\WarningFilter{latexfont}{Font shape OT1/phv/mc/n}
+\WarningFilter{latexfont}{Font shape OT1/phv/mc/sc}
+\WarningFilter{latexfont}{Font shape OT1/phv/mc/sl}
+\WarningFilter{latexfont}{Font shape OT1/phv/mc/it}
+\WarningFilter{latexfont}{Font shape T1/phv/mc/n}
+\WarningFilter{latexfont}{Font shape T1/phv/mc/sc}
+\WarningFilter{latexfont}{Font shape T1/phv/mc/sl}
+\WarningFilter{latexfont}{Font shape T1/phv/mc/it}
 
 \newcommand{\schoolMacrosVersion}{v4.2}
 
@@ -201,6 +210,10 @@
         hypertexnames=false,
     }
 }
+% Patch Table of Contents to be black instead of blue
+\pretocmd{\tableofcontents}{\hypersetup{linkcolor=black}}{}{}
+\apptocmd{\tableofcontents}{\hypersetup{linkcolor=schoolBlue}}{}{}
+
 \@ifpackageloaded{bookmark}{}{\RequirePackage{bookmark}}
 \@ifpackageloaded{cleveref}{}{\RequirePackage[dutch, nameinlink, capitalise]{cleveref}}
 
@@ -277,9 +290,8 @@
 
 \newtcolorbox{waarschuwing}[1][]{% 
     schoolbox=schoolRed,
-    title={\faExclamationTriangle\ \textbf{Let Op!}},
+    title={\faExclamationTriangle\ \textbf{Let Op!}\ifstrempty{#1}{}{ #1}},
     colback=schoolRed!5!white,
-    #1
 }
 % Fixed: Broken \begin environment
 \newenvironment{warningbox}[1][]{\begin{waarschuwing}}{\end{waarschuwing}}
@@ -512,12 +524,22 @@
 
 \newif\ifcompactmode
 \newcommand{\enablecompactmode}{
-    \geometry{left=1cm, right=1cm, top=1.5cm, bottom=1.5cm}
+    \geometry{left=2.0cm, right=2.0cm, top=2.5cm, bottom=2.5cm}
     \setlist{noitemsep, topsep=0pt, parsep=0pt, partopsep=0pt}
     \setlength{\parskip}{0.3em}
     \setlength{\parindent}{0pt}
     \titlespacing*{\section}{0pt}{0.5em}{0.2em}
     \titlespacing*{\subsection}{0pt}{0.3em}{0.1em}
+    
+    % Compact Math Spacing
+    \setlength{\abovedisplayskip}{4pt plus 2pt minus 2pt}
+    \setlength{\belowdisplayskip}{4pt plus 2pt minus 2pt}
+    \setlength{\abovedisplayshortskip}{0pt plus 2pt}
+    \setlength{\belowdisplayshortskip}{2pt plus 2pt minus 1pt}
+
+    % Compact Box Spacing
+    \tcbset{before skip=6pt, after skip=6pt}
+
     \fancyhf{}
     \fancyfoot[C]{\small\sffamily\thepage}
     \fancyhead{}
