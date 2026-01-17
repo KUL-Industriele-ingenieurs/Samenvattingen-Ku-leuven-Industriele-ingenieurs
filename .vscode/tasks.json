@@ -144,7 +144,7 @@
                 "runOn": "folderOpen"
             },
             "presentation": {
-                "reveal": "never",
+                "reveal": "always",
                 "panel": "shared"
             },
             "problemMatcher": {

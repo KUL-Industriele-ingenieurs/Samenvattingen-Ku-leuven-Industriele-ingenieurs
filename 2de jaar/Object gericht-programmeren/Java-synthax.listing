@@ -1,0 +1,96 @@
+    // Bestaande klasse
+    public class Dier {
+
+    private String naam;
+    private int leeftijd;
+    private String locatie;
+
+    public Dier(String naam, int leeftijd, String locatie) {
+        this.naam = naam;
+        this.leeftijd = leeftijd;
+        this.locatie = locatie;
+        }
+
+        public void getInfo() {
+            System.out.println("Naam: " + naam + ", Leeftijd: " + leeftijd + ", Locatie: " + locatie);
+        }
+    }
+
+    // Nieuwe klasse die Dier uitbreidt
+    public class Hond extends Dier {
+
+        private String ras;
+
+        public Hond(String naam, int leeftijd, String locatie, String ras) {
+            super(naam, leeftijd, locatie); // roept de constructor van de superklasse Dier aan
+            this.ras = ras;
+        }
+        // je moet methodes niet opnieuw schrijven want een hond is ook een dier
+        public void maakGeluid() {
+            System.out.println("Hond blaft");
+        }
+
+        //alleen hond kan deze methode gebruiken
+        public void speelFetch() {
+            System.out.println("Hond speelt fetch");
+        }
+    }
+
+    // Gebruik van de klassen
+    public class Main {
+        ArrayList<Dier> dieren = new ArrayList<Dier>();
+        dieren.add(new Dier("Leeuw", 5, "Afrika"));
+        dieren.add(new Hond("Buddy", 3, "Thuis", "Labrador"));
+        //je kunt een hond ook toevoegen omdat een hond een dier is
+
+        for (Dier dier : dieren) {
+            dier.getInfo(); // werkt voor zowel Dier als Hond
+            //dier.maakGeluid(); // Fout: Dier heeft deze methode niet
+            if (dier instanceof Hond) {
+                ((Hond) dier).maakGeluid(); // Correct: cast naar Hond om de methode aan te roepen
+            }
+        }
+    }
+
+
+\section{Hashmaps}
+
+% TODO: #62 dit kwam op het examen maar geen idee wat het is? Iemand uitleggen?
+
+\section{Scanner}
+
+De code om van de Scanner krijg je op het examen maar niet hoe je die gebruikt.
+\begin{codeblock}[scanner]{java}
+    import java.util.Scanner; //importeer de Scanner klasse
+
+    public class MijnKlasse {
+
+    public MijnKlasse() {
+    }
+
+    public int sumOfTwoNumbers(int a, int b) {
+        return a + b;
+    }
+
+    public scanfile(filename) {
+        Scanner sc = new Scanner(new File(filename)); // maak een Scanner object om van een bestand te lezen
+
+        while (sc.hasNextLine()) { // zolang er nog een volgende lijn is
+            String lijn = sc.nextLine(); // lees de volgende lijn
+            System.out.println(lijn); // print de lijn naar de console
+        }
+
+        niet elke lijn zal een string zijn, soms moet je een int of float lezen
+        int nummer = sc.nextInt(); // lees een geheel getal
+        float decimaal = sc.nextFloat(); // lees een decimaal getal
+
+        //methodes kan je dan met deze waarden aanroepen
+        while (sc.hasNextInt()) {
+        int a = sc.nextInt(); // lees het volgende gehele getal
+        int b = sc.nextInt(); // lees het volgende gehele getal
+        int resultaat = sumOfTwoNumbers(a, b); // roep de methode aan met het gelezen nummer
+        System.out.println("Resultaat: " + resultaat);
+    }
+
+        sc.close(); // sluit de scanner
+    }
