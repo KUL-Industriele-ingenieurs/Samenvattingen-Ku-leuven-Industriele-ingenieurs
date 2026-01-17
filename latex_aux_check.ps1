@@ -37,9 +37,9 @@
   .\latex_aux_check.ps1 -Path . -Recurse -Delete -Force
 
 #>
-[CmdletBinding(SupportsShouldProcess=$true, ConfirmImpact='Medium')]
+[CmdletBinding(SupportsShouldProcess = $true, ConfirmImpact = 'Medium')]
 param(
-  [Parameter(Position=0)]
+  [Parameter(Position = 0)]
   [string]$Path = (Get-Location).Path,
 
   [Parameter()]
@@ -53,9 +53,9 @@ param(
 
   [Parameter()]
   [string[]]$Patterns = @(
-    '*.aux','*.log','*.out','*.toc','*.fdb_latexmk','*.fls','*.synctex.gz','*.synctex(busy)',
-    '*.lof','*.lot','*.nav','*.snm','*.vrb','*.bbl','*.blg','*.bcf','*.run.xml','*.idx','*.ilg','*.ind',
-    '*.bak','*.bak[0-9]','*.bak*','*.sav','*.auxlock'
+    '*.aux', '*.log', '*.out', '*.toc', '*.fdb_latexmk', '*.fls', '*.synctex.gz', '*.synctex(busy)',
+    '*.lof', '*.lot', '*.nav', '*.snm', '*.vrb', '*.bbl', '*.blg', '*.bcf', '*.run.xml', '*.idx', '*.ilg', '*.ind',
+    '*.bak', '*.bak[0-9]', '*.bak*', '*.sav', '*.auxlock'
   )
 
 )
@@ -63,7 +63,8 @@ param(
 # Default handling for switch parameters: do not assign default back to the switch variable (avoids PSAvoidDefaultValueSwitchParameter)
 if (-not $PSBoundParameters.ContainsKey('Recurse')) {
   $ShouldRecurse = $true
-} else {
+}
+else {
   $ShouldRecurse = [bool]$Recurse
 }
 
@@ -74,11 +75,13 @@ function Get-Matches {
     try {
       if ($Recurse) {
         $items = Get-ChildItem -Path $Root -Filter $p -File -Recurse -ErrorAction SilentlyContinue
-      } else {
+      }
+      else {
         $items = Get-ChildItem -Path $Root -Filter $p -File -ErrorAction SilentlyContinue
       }
       if ($items) { $matchList += $items }
-    } catch {
+    }
+    catch {
       Write-Verbose ("Pattern search failed for {0}: {1}" -f $p, $_.Exception.Message)
     }
   }
@@ -102,7 +105,7 @@ Write-Host ("Found {0} files in {1} directories:`n" -f $found.Count, $grouped.Co
 
 foreach ($g in $grouped) {
   Write-Host ("[{0} files]  {1}" -f $g.Count, $g.Name)
-  $g.Group | Select-Object @{Name='Name';Expression={$_.Name}}, @{Name='SizeKB';Expression={[math]::Round($_.Length/1KB,2)}}, @{Name='Modified';Expression={$_.LastWriteTime}} | Format-Table -AutoSize
+  $g.Group | Select-Object @{Name = 'Name'; Expression = { $_.Name } }, @{Name = 'SizeKB'; Expression = { [math]::Round($_.Length / 1KB, 2) } }, @{Name = 'Modified'; Expression = { $_.LastWriteTime } } | Format-Table -AutoSize
   Write-Host ""
 }
 
@@ -129,7 +132,8 @@ if ($Delete) {
       try {
         Remove-Item -LiteralPath $target -Force -ErrorAction SilentlyContinue
         Write-Host "Deleted: $target" -ForegroundColor Green
-      } catch {
+      }
+      catch {
         Write-Warning "Failed to delete $target : $_"
       }
     }
