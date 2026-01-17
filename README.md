@@ -13,6 +13,10 @@ Deze repository is een **gezamenlijk project** waar studenten professionele same
 Heb je vragen of loop je vast? Stuur gerust een berichtje naar **@eggmansmile** op Discord. Wil je graag vaker meewerken en collaborator worden? Laat het me weten! We kunnen altijd extra hulp gebruiken.
 Join de industria discord waar je me zoiezo vindt. https://discord.gg/gsDzr5qhPe. Als je collabirator wilt worden (Je bekijkt af en toe eens veranderingen en kijkt of pull requests goed zijn) stuur me dan ook iets.
 
+Deze documenten gaan je niet de garantie geven voor een goed examenresultaat. Ze zijn bedoeld als hulpmiddel bij je studie. Gebruik ze verstandig en combineer ze met andere studiematerialen.
+- Studforum Cloud — examenvragen en samenvattingen (inloggen vereist): [Open Studforum Cloud](https://cloud.studforum.net/apps/files/?dir=/&fileid=857448)  
+- Studforum Wiki — aanvullende samenvattingen en bronnen en info over de vakken: [Open Studforum Wiki](https://wiki.studforum.net/start)
+
 ---
 
 ## 🤔 Wat is LaTeX eigenlijk?
