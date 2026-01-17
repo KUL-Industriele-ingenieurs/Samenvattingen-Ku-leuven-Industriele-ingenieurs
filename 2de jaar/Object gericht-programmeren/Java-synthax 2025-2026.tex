@@ -67,29 +67,34 @@ moeten deze eerst geïmporteerd worden met een import statement.\\
 \subsection{Typische Java klasse structuur \& waarden}
 Een typische Java klasse heeft de volgende structuur:
 \begin{codeblock}[Hoe java doc starten?]{java}
-    package packageNaam; // optioneel
+    import java.io.*; //zoals File, FileReader, BufferedReader, etc
 
-    import package1.Klasse1; // optioneel
-    import package2.*; // optioneel
+    import java.util.*; //zoals ArrayList, Scanner, Random, etc
+    
 
-    public class KlasseNaam { // klasse definitie
-
+    public class KlasseNaam  // klasse definitie
+    {
         // opstellen van variabelen (attributen)
         private int attribuut1;
         private String attribuut2;
+        private float attribuut3; // niet alle attributen moeten in de constructor zitten
+        public int attribuut4; // kan ook public zijn 
 
         // constructor (Je creeert een instance van een klasse met een constructor)
-        public KlasseNaam(int attribuut1, String attribuut2) {
+        public KlasseNaam(int attribuut1, String attribuut2) 
+        {
             this.attribuut1 = attribuut1;
             this.attribuut2 = attribuut2;
         }
 
         // methoden
-        public void methode1() {
+        public void methode1() 
+        {
             // methode implementatie
         }
 
-        public int methode2(String parameter) {
+        public int methode2(String parameter) 
+        {
             // methode implementatie
             return 0;
         }
@@ -112,9 +117,13 @@ Een typische Java klasse heeft de volgende structuur:
         double [] #array van double
 
         //belangrijke na elke lijn ;
-
     }
 \end{codeblock}
+
+\textbf{Public} betekent dat andere klassen deze variabele of methode
+ kunnen gebruiken.
+\textbf{Private} betekent dat alleen deze klasse deze variabele of methode 
+kan gebruiken.
 
 \subsection{Methoden}
 
@@ -130,7 +139,7 @@ kun je functionaliteit toevoegen aan je klasse.
 
     }
 
-    een methode met return type 'void' geeft niets terug:
+    //een methode met return type 'void' geeft niets terug:
     public void methodePrint(String tekst) 
     {  
         System.out.println(tekst); // print de tekst naar de console
@@ -144,9 +153,11 @@ kun je functionaliteit toevoegen aan je klasse.
 \begin{codeblock}[if statement]{java}
     if (voorwaarde) {
         // code die uitgevoerd wordt als de voorwaarde waar is
-    } else if (andereVoorwaarde) {
+    } else if (andereVoorwaarde) 
+    {
         // code die uitgevoerd wordt als de andere voorwaarde waar is
-    } else {
+    } else 
+    {
         // code die uitgevoerd wordt als geen van de voorwaarden waar is
     }
 
@@ -168,7 +179,8 @@ kun je functionaliteit toevoegen aan je klasse.
 
 \subsection{For loops}
 \begin{codeblock}[for loop]{java}
-    for (init; voorwaarde; increment) {
+    for (init; voorwaarde; increment) 
+    {
         // code die herhaald wordt
     }
 
@@ -218,7 +230,8 @@ een array van strings zijn gewoon meerdere teksten in 1 variabele.
     int middelsteIndex = cijfers.length / 2; // middelste index van de array
     int 
     // itereren over een array
-    for (int i = 0; i < cijfers.length; i++) {
+    for (int i = 0; i < cijfers.length; i++) 
+    {
         System.out.println(cijfers[i]);
     }
 
@@ -274,7 +287,8 @@ een opstelling van een ArrayList:
     private ArrayList<String> namen;
 
     in constructor:
-        public MijnKlasse() {
+        public MijnKlasse() 
+        {
             namen = new ArrayList<String>();
         }
 
@@ -294,7 +308,8 @@ een opstelling van een ArrayList:
     int grootte = namen.size(); // aantal elementen in de ArrayList
 
     // itereren over een ArrayList
-    for (String naam : namen) {
+    for (String naam : namen) 
+    {
         System.out.println(naam);
         //output: Alice Charlie
     }
@@ -306,7 +321,8 @@ een opstelling van een ArrayList:
     private ArrayList<Persoon> personen;
 
     in constructor:
-        public MijnKlasse() {
+        public MijnKlasse() 
+        {
             personen = new ArrayList<Persoon>();
         }
 
@@ -341,7 +357,8 @@ In Java kun je een nieuwe klasse maken die de eigenschappen en methoden van een 
 
 \begin{codeblock}[class extends]{java}
     // Bestaande klasse
-    public class Dier {
+    public class Dier 
+    {
 
     private String naam;
     private int leeftijd;
@@ -359,7 +376,8 @@ In Java kun je een nieuwe klasse maken die de eigenschappen en methoden van een 
     }
 
     // Nieuwe klasse die Dier uitbreidt
-    public class Hond extends Dier {
+    public class Hond extends Dier 
+    {
 
         private String ras;
 
@@ -379,7 +397,8 @@ In Java kun je een nieuwe klasse maken die de eigenschappen en methoden van een 
     }
 
     // Gebruik van de klassen
-    public class Main {
+    public class Main 
+    {
         ArrayList<Dier> dieren = new ArrayList<Dier>();
         dieren.add(new Dier("Leeuw", 5, "Afrika"));
         dieren.add(new Hond("Buddy", 3, "Thuis", "Labrador"));
@@ -405,7 +424,8 @@ De code om van de Scanner krijg je op het examen maar niet hoe je die gebruikt.
 \begin{codeblock}[scanner]{java}
     import java.util.Scanner; //importeer de Scanner klasse
 
-    public class MijnKlasse {
+    public class MijnKlasse 
+    {
     
     public MijnKlasse() {
     }
@@ -414,32 +434,78 @@ De code om van de Scanner krijg je op het examen maar niet hoe je die gebruikt.
         return a + b;
     }
 
-    public scanfile(filename) {
-        Scanner sc = new Scanner(new File(filename)); // maak een Scanner object om van een bestand te lezen
+public void readFromFile(String filename) {
+  try {
+    Scanner sc = new Scanner(new File(filename));
+    while(sc.hasNext()) 
+    {
+        String line = sc.nextLine();
+        System.out.println(line);
+    }
+    of met integers:
+    while(sc.hasNextInt())
+    {
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        int resultaat = sumOfTwoNumbers(a, b);
+        System.out.println(resultaat);
+    }
+    sc.close();
+  }
+  catch (FileNotFoundException fnfe) 
+  {
+    System.out.println("file not found");
+    }
+    }
+}
 
-        while (sc.hasNextLine()) { // zolang er nog een volgende lijn is
-            String lijn = sc.nextLine(); // lees de volgende lijn
-            System.out.println(lijn); // print de lijn naar de console
-        }
+//belangrijke methodes van Scanner:
+hasNext(): controleert of er nog meer tokens zijn
+next(): leest het volgende token als een String
+nextInt(): leest het volgende token als een int
+nextLine(): leest de volgende volledige regel als een String
+nextFloat(): leest het volgende token als een float
+nextDouble(): leest het volgende token als een double
+\end{codeblock}
 
-        niet elke lijn zal een string zijn, soms moet je een int of float lezen
-        int nummer = sc.nextInt(); // lees een geheel getal
-        float decimaal = sc.nextFloat(); // lees een decimaal getal
-        
-        //methodes kan je dan met deze waarden aanroepen
-        while (sc.hasNextInt()) {
-        int a = sc.nextInt(); // lees het volgende gehele getal
-        int b = sc.nextInt(); // lees het volgende gehele getal
-        int resultaat = sumOfTwoNumbers(a, b); // roep de methode aan met het gelezen nummer
-        System.out.println("Resultaat: " + resultaat);
+\section{Random}
+
+om willekeurige getallen te genereren in Java, kun je de \texttt{Random} klasse uit de \texttt{java.util} package gebruiken.
+
+\begin{codeblock}[random]{java}
+    import java.util.Random; //importeer de Random klasse
+
+    public class MijnKlasse 
+    {
+    
+    public MijnKlasse() {
     }
 
-        sc.close(); // sluit de scanner
+    public void generateRandomNumbers() {
+        Random rand = new Random(); // maak een Random object
+
+        // genereer een willekeurig geheel getal tussen 0 (inclusief) en 100 (exclusief)
+        int randomInt = rand.nextInt(100);
+        System.out.println("Willekeurig geheel getal: " + randomInt);
+
+        // genereer een willekeurig decimaal getal tussen 0.0 (inclusief) en 1.0 (exclusief)
+        float randomFloat = rand.nextFloat();
+        System.out.println("Willekeurig decimaal getal: " + randomFloat);
+
+        // genereer een willekeurig geheel getal binnen een specifiek bereik, bijvoorbeeld tussen 50 en 150
+        int min = 50;
+        int max = 150;
+        int randomInRange = rand.nextInt(max - min) + min;
+        System.out.println("Willekeurig geheel getal tussen " + min + " en " + max + ": " + randomInRange);
     }
+}
 \end{codeblock}
 
 \section{UML diagrammen}
 % TODO: #63 UML diagrammen uitleggen 
 
+\section{Hashmaps} 
+
+% TODO: #62 dit kwam op het examen maar geen idee wat het is? Iemand uitleggen?
 
 \end{document}

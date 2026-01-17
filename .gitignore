@@ -34,6 +34,7 @@ __pycache__/
 *.bcf 
 *.run.xml
 *.synctex(busy)
+*.listing
 
 # LaTeX backup files
 *.bak
