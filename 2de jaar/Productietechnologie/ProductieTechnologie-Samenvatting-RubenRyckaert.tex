@@ -241,7 +241,7 @@ die geschikt zijn voor verschillende materialen en bewerkingen.
 	\item slijpschijf
 \end{itemize}
 
-\section{beitelbewerkingen}
+\section{Beitelbewerkingen}
 
 Bij beitelbewerkingen wordt materiaal verwijderd door een scherpe
 beitel over het werkstuk te bewegen.
@@ -883,12 +883,13 @@ De vrijloophoek is dus kleiner dan de vrijslijphoek. De voeding gaat ook afhanke
 Net zoals bij draaien zijn er verschillende krachten die op het werkstuk
 en de boor werken tijdens het boren. Deze worden met de theorie van Kienzle berekend. \ref{frm:10}
 
-\begin{figure}[ht]
+\newpage
+\begin{wrapfigure}{r}{0.3\linewidth}
 	\centering
-	\includegraphics[width=0.45\linewidth]{image43.png}
+	\includegraphics[width=\linewidth]{image43.png}
 	\caption{Krachten op een boor}
 	\label{fig:boren_krachten}
-\end{figure}
+\end{wrapfigure}
 
 Boren hebben een grote voedingskracht en een relatief klein snijmoment.
 De axiale voeding is groot omdat de boor in het materiaal moet doordringen,
@@ -1215,7 +1216,8 @@ Hier zijn nog relevante type boren en hun toepassingen:
 	\end{tikzpicture}
 	\caption{Schematische weergave van een boorproces: een spiraalboor dringt het materiaal binnen, vormt een gat en voert spanen af.}
 \end{figure}
-\paragraph{Type boren}
+
+\textbf{Typen boren:}
 \begin{itemize}
 	\item \textbf{Verzinkingsboor}: Wordt gebruikt om een conische uitsparing te maken aan het begin van een gat, zodat schroefkoppen gelijk met het
 	      oppervlak kunnen liggen.
@@ -1501,6 +1503,7 @@ De frees gaat roteren en de bank gaat bewegen in de x,y en z-richting.
 	\includegraphics[width=0.8\textwidth]{image49.png}
 	\caption{Weergave van een freesmachine}
 \end{figure}
+\vspace{2cm}
 
 \begin{warningbox}[EXAMEN CHECKLIST: FREZEN]
     \begin{itemize}
@@ -2531,28 +2534,23 @@ Je kunt ook een profiel maken van het gereedschap en dan dat profiel in het werk
 Straalbewerkingen zijn processen waarbij een geconcentreerde straal van energie of materiaal wordt gebruikt om materiaal van een werkstuk te verwijderen of te bewerken.
 
 
-\begin{table}[ht]
-	\centering
-	\caption{Overzicht van verschillende straalbewerkingen.}
-	\label{tab:straalbewerkingen}
-	\begin{tabularx}{\textwidth}{|l|X|X|}
-		\hline
-		\textbf{Energiedrager} & \textbf{Bewerkingen}               & \textbf{Toepassingen}                                      \\
-		\hline
-		Vloeistof (Water)      & Waterstraalsnijden (WJM)           & Snijden van zachte materialen (plastic, textiel, voedsel). \\
-		\hline
-		Vloeistof + Abrasief   & Abrasief waterstraalsnijden (AWJM) & Snijden van harde materialen (metaal, glas, steen).        \\
-		\hline
-		Licht (Fotonen)        & Laserstraalbewerking (LBM)         & Snijden, lassen en boren van bijna alle materialen.        \\
-		\hline
-		Elektronen             & Elektronenstraalbewerking (EBM)    & Zeer nauwkeurig boren en snijden (in vacuüm).              \\
-		\hline
-		Ionen                  & Ionenstraalbewerking (IBM)         & Etsen op nanoschaal en oppervlaktebewerking.               \\
-		\hline
-		Gas / Plasma           & Plasmastralen (PAM)                & Ruw snijden van dikke metaalplaten.                        \\
-		\hline
-	\end{tabularx}
-\end{table}
+\begin{engtable}[
+	caption = {Overzicht van verschillende straalbewerkingen.},
+	label = {tab:straalbewerkingen},
+]{
+	colspec = {l X X},
+	width = \textwidth,
+	cells = {font=\small},
+	row{1} = {font=\bfseries},
+}
+	Energiedrager & Bewerkingen & Toepassingen \\
+	{Vloeistof (Water)} & Waterstraalsnijden (WJM) & Snijden van zachte materialen (plastic, textiel, voedsel). \\
+	{Vloeistof + Abrasief} & Abrasief waterstraalsnijden (AWJM) & Snijden van harde materialen (metaal, glas, steen). \\
+	{Licht (Fotonen)} & Laserstraalbewerking (LBM) & Snijden, lassen en boren van bijna alle materialen. \\
+	Elektronen & Elektronenstraalbewerking (EBM) & Zeer nauwkeurig boren en snijden (in vacuüm). \\
+	Ionen & Ionenstraalbewerking (IBM) & Etsen op nanoschaal en oppervlaktebewerking. \\
+	Gas / Plasma & Plasmastralen (PAM) & Ruw snijden van dikke metaalplaten. \\
+\end{engtable}
 
 \subsection{Shotpeening}
 Korrels worden met hoge snelheid op het oppervlak van een werkstuk geschoten.
@@ -2985,7 +2983,7 @@ e snijspleet is klein maar is ook constant.
 \newline
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.8\textwidth]{Fijnsnijden.png}
+    \includegraphics[width=0.6\textwidth]{Fijnsnijden.png}
     \caption{}
     \label{fig:Fijnsnijden.png}
 \end{figure}
@@ -3060,44 +3058,29 @@ Je hebt opnieuw verschillende technieken:
   Plasma creert een vlam van geïoniseerd gas die extreem heet is.
 \end{itemize}
 
-\begin{table}[ht]
-    \centering
-    \caption{Vergelijking van scheidingsprocessen}
-    \label{tab:scheidingsprocessen}
-    \scriptsize
-    \setlength{\tabcolsep}{3pt}
-    \begin{tabularx}{\textwidth}{@{} l >{\raggedright\arraybackslash}X l >{\raggedright\arraybackslash}X c c @{}}
-        \toprule
-        \textbf{Processen} & \textbf{Toepassing} & \textbf{Snelheid} & \textbf{Voor- en nadelen} & \textbf{Nauwk.} & \textbf{WBZ} \\
-         & & & & \textbf{(mm)} & \textbf{(mm)} \\
-        \midrule
-        Knippen & Plaat 0,2--10mm & lengte/knip & + grote lengten \newline -- bramen & $>0,1$ & -- \\
-        \addlinespace
-        Ponsen & Plaat 0,2--10mm & $\le$ 30 sl/s & + massa \newline -- bramen & $>0,1$ & -- \\
-        \addlinespace
-        Knabbelen & Plaat 0,2--10mm & $\le$ 0,1 m/s & + massa/kl. prod. \newline + contouren \newline -- bramen/ruw & 0,1 & -- \\
-        \addlinespace
-        Uitsnijden & Plaat 0,2--3mm & $\le$ 30 sl/s & + massa \newline + kleine prod. & 0,05 & -- \\
-        \addlinespace
-        Zagen & Plaat/buis/staf $>1$mm & $\le$ 0,05 m/s & + enk. st./massa \newline -- bramen & $>0,3$ & -- \\
-        \addlinespace
-        Doorslijpen & Harde mat. (tot 90mm) & ? & + enk. st./massa \newline -- bramen & 0,05 & $<0,1$ \\
-        \addlinespace
-        Omtrekfrezen & Platen (tot 12mm) & ? & + glad contour \newline -- enk. stuks & 0,05 & -- \\
-        \addlinespace
-        Waterstraal- & Plaat/buis/staf $>1$mm & $\le$ 0,08 m/s & + flexibel/geen WBZ \newline + enk. st./series \newline -- lawaai & 0,1 & -- \\
-        snijden & & & & & \\
-        \addlinespace
-        Brandsnijden & Staal $>500$mm, buis & $\le$ 0,05 m/s & + flexibel \newline + enk. st./series \newline -- lawaai/WBZ & $>0,5$ & $>2$ \\
-        \addlinespace
-        Plasmasnijden & Geleidende mat. $>10$mm & $\le$ 0,2 m/s & + flexibel \newline + enk. st./series \newline -- WBZ & 0,5 & $>1$ \\
-        \addlinespace
-        Lasersnijden & Plaat/buis/prof. $\le$ 5mm & $\le$ 0,2 m/s & + flexibel/kwaliteit \newline + enk. st./series \newline + kleine WBZ & 0,2 & $>0,1$ \\
-        \addlinespace
-        Draadvonken & Harde geleidende mat. & $\le$ 0,7 mm$^2$/s & + flexibel \newline + enk. st./series \newline + kwaliteit & 0,05 & $<0,1$ \\
-        \bottomrule
-    \end{tabularx}
-\end{table}
+\begin{engtable}[
+    caption = {Vergelijking van scheidingsprocessen},
+    label = {tab:scheidingsprocessen},
+]{
+    colspec = {l X[l] l X[l] c c},
+    width = \textwidth,
+    cells = {font=\small},
+    row{1} = {font=\bfseries},
+}
+    Processen & Toepassing & Snelheid & {Voor- en nadelen} & {Nauwk.\\(mm)} & {WBZ\\(mm)} \\
+    Knippen & Plaat 0,2--10mm & lengte/knip & {+ grote lengten \\ -- bramen} & $>0,1$ & -- \\
+    Ponsen & Plaat 0,2--10mm & $\le$ 30 sl/s & {+ massa \\ -- bramen} & $>0,1$ & -- \\
+    Knabbelen & Plaat 0,2--10mm & $\le$ 0,1 m/s & {+ massa/kl. prod. \\ + contouren \\ -- bramen/ruw} & 0,1 & -- \\
+    Uitsnijden & Plaat 0,2--3mm & $\le$ 30 sl/s & {+ massa \\ + kleine prod.} & 0,05 & -- \\
+    Zagen & Plaat/buis/staf $>1$mm & $\le$ 0,05 m/s & {+ enk. st./massa \\ -- bramen} & $>0,3$ & -- \\
+    Doorslijpen & Harde mat. (tot 90mm) & ? & {+ enk. st./massa \\ -- bramen} & 0,05 & $<0,1$ \\
+    Omtrekfrezen & Platen (tot 12mm) & ? & {+ glad contour \\ -- enk. stuks} & 0,05 & -- \\
+    {Waterstraal-\\snijden} & Plaat/buis/staf $>1$mm & $\le$ 0,08 m/s & {+ flexibel/geen WBZ \\ + enk. st./series \\ -- lawaai} & 0,1 & -- \\
+    Brandsnijden & Staal $>500$mm, buis & $\le$ 0,05 m/s & {+ flexibel \\ + enk. st./series \\ -- lawaai/WBZ} & $>0,5$ & $>2$ \\
+    Plasmasnijden & Geleidende mat. $>10$mm & $\le$ 0,2 m/s & {+ flexibel \\ + enk. st./series \\ -- WBZ} & 0,5 & $>1$ \\
+    Lasersnijden & Plaat/buis/prof. $\le$ 5mm & $\le$ 0,2 m/s & {+ flexibel/kwaliteit \\ + enk. st./series \\ + kleine WBZ} & 0,2 & $>0,1$ \\
+    Draadvonken & Harde geleidende mat. & $\le$ 0,7 mm$^2$/s & {+ flexibel \\ + enk. st./series \\ + kwaliteit} & 0,05 & $<0,1$ \\
+\end{engtable}
 
 Deze tabel is enorm belangrijk want hij kan vragen. Welke van deze technieken zijn het 
 snelste, goedkoopste, meest precieze enz.
@@ -3149,7 +3132,7 @@ Je hebt dus een grote keuze aan materialen.
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=0.8\textwidth]{Tabel van soorten legeringen die gegoten worden.png}
+	\includegraphics[width=1\textwidth]{Tabel van soorten legeringen die gegoten worden.png}
 	\caption{Tabel van soorten legeringen die gegoten worden.}
 	\label{fig:Tabel van soorten legeringen die gegoten worden.png}
 \end{figure}
@@ -3236,9 +3219,7 @@ Het model moet iets groter zijn dan het uiteindelijke product om krimp te compen
 Nadat het model in het zand is gestampt, wordt er een aansnede gemaakt in de bovenkant van de zandvorm zodat het model verwijderd kan worden. 
 Na het gieten en afkoelen wordt het zand verwijderd en worden de gietloop en opkomer afgebroken.
 
-\begin{conceptbox}
-	\textbf{Gietloop en opkomer}
-
+\begin{conceptbox}[Gietloop en opkomer]
 	De \textbf{gietloop} is het kanaal waardoor het gesmolten metaal in de vormholte stroomt.
 	Het ontwerp van de gietloop is cruciaal om een gelijkmatige vulling van de vorm te garanderen en om turbulentie te minimaliseren, wat kan leiden tot defecten in het gietstuk.
 
@@ -3247,8 +3228,8 @@ Na het gieten en afkoelen wordt het zand verwijderd en worden de gietloop en opk
 	De opkomer helpt ook de operator te laten zien of het gietstuk volledig is gevuld.
 \end{conceptbox}
 
-\subsection{slink, krimp en lossing}
-\begin{conceptbox}
+\subsection{Problemen bij gieten}
+\begin{conceptbox}[Slink, krimp en lossing]
 	\begin{enumerate}
 		\item \textbf{Slink}: Volumevermindering door stollen. Gecompenseerd door opkomers.
 		\item \textbf{Krimp}: Volumevermindering door afkoelen. Gecompenseerd door krimptoeslag.
@@ -3347,7 +3328,7 @@ zandvormen maken wordt zo geautomatiseerd.
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=0.6\textwidth]{Autozandvormen.png}
+	\includegraphics[width=0.8\textwidth]{Autozandvormen.png}
 	\caption{Automatisch maken van zandvormen: gebruik van geautomatiseerde systemen om zandvormen te produceren voor metaalgieten}
 	\label{fig:Autozandvormen.png}
 \end{figure}
@@ -3382,6 +3363,7 @@ Schaalvormen geven een beter oppervlakte (rond de 3-6 micrometer).
 
 \section{Verloren-modelmethode}
 \subsection{Verloren wasmodel}
+
 Je kunt modellen maken uit was.
 Dit product ga je dompelen in een keramische slurrie. 
 De afgekoelde slurrie vormt een harde schaal rond het wasmodel.
@@ -3389,12 +3371,14 @@ Eenmaal dat die deklaag de gewenste dikte heeft kun je de was eruit smelten.
 Je hebt nu een holle keramische vorm.
 Je kunt nu metaal gieten in deze keramische vorm en dan de keramische vorm breken om je product eruit te halen.
 
-\begin{figure}[ht]
+
+\begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.4\textwidth]{verlorenwasgieten.png}
 	\caption{Verloren wasmodel proces: maken van keramische vormen door dompelen van wasmodellen voor metaalgieten}
 	\label{fig:Verlorenwasmodel.png}
 \end{figure}
+
 
 In tegenstelling tot zandgieten is de oppervlaktekwaliteit en nauwkeurigheid veel beter.
 Dit komt omdat de keramische schaal veel fijner is dan zand.
@@ -3412,7 +3396,7 @@ Net zoals bij verloren wasmodel is de oppervlaktekwaliteit en nauwkeurigheid vee
 Je kunt ook complexere vormen maken omdat je geen vormkasten nodig hebt.
 Je kunt wel niet grotere stukken maken.
 
-\begin{table}[ht]
+\begin{table}[htbp]
 	\centering
 	\caption{Vergelijking van verschillende gietprocessen}
 	\label{tab:gietprocessen}
@@ -3530,7 +3514,7 @@ hoe werken de machines die deze processen uitvoeren?
 Productiemachines worden een aantal voorwaarden opgesteld afhankelijk van het proces. 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=0.8\textwidth]{kenmerkeneneisenmachines.png}
+	\includegraphics[width=1\textwidth]{kenmerkeneneisenmachines.png}
 	\caption{De kenmerken en eisen van productiemachines: overzicht van de belangrijkste eigenschappen en vereisten voor machines die worden gebruikt in productieprocessen}
 	\label{fig:kenmerkeneneisenmachines.png}
 \end{figure}
@@ -3550,7 +3534,7 @@ Je hebt dan manuele en automatische machines.
 \section{Waarom automatiseren?}
 Automatiseren kan bij grote productieaantallen de productiviteit verhogen.
 
-De productietijd = Hoofdtijd + neventijd
+\textbf{De productietijd = Hoofdtijd + neventijd}
 
 \begin{conceptbox}[Productietijd]
 	\textbf{Hoofdtijd}: Dit is de tijd waarin het werkstuk daadwerkelijk wordt bewerkt.
@@ -3560,7 +3544,8 @@ De productietijd = Hoofdtijd + neventijd
 \end{conceptbox}
 
 \subsection{Starre automatiseringen}
-\begin{figure}[ht]
+\vspace{0.2cm}
+\begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.45\textwidth]{image85.png}
 	\caption{Starre automatisering: gebruik van vaste, niet-aanpasbare systemen voor productieprocessen}
@@ -3580,12 +3565,9 @@ de meeste zijn overgenomen door NC-gestuurde machines.
 Deze werken met G-code. Alle NC-gestuurde machines werken met G-code.
 Van 3D-printers tot CNC-freesmachines. Meeste G-code is gelijkaardig en
 geeft controle over de feedrate, spindelsnelheid, koelvloeistof, bewegingen, enz.
-
 Het probleem is dat G-code niet een overzicht geeft van de bewerkingen die je uitvoert.
-
 NC machines hebben vaak een interface waarbij je visueel bewerkingen kunt maken.
 \textit{Denk aan de Visual quick code van de labo's.}
-
 Bij NC-machines kun je met G-code tools switches maken, werkstukken verwisselen,
 multispindle bewerkingen uitvoeren, enz.
 
@@ -3611,7 +3593,8 @@ M30          ; Einde programma
 
 
 \subsection{Toepassingsgebied van productiesystemen (K-grafiek)}
-De keuze voor een productiesysteem wordt bepaald door de balans tussen de \textbf{seriegrootte} en de \textbf{moeilijkheidsgraad} (of het afkeurrisico) van het product. In de onderstaande grafiek (vaak ook de K-grafiek genoemd in deze context) zien we hoe verschillende technologieën zich tot elkaar verhouden.
+De keuze voor een productiesysteem wordt bepaald door de balans tussen de \textbf{seriegrootte} en de \textbf{moeilijkheidsgraad} (of het afkeurrisico) van het product. 
+In de onderstaande grafiek (vaak ook de K-grafiek genoemd in deze context) zien we hoe verschillende technologieën zich tot elkaar verhouden.
 
 \begin{itemize}
 	\item \textbf{Handbediende machines}: Ideaal voor kleine series met een lage moeilijkheidsgraad.
@@ -3619,9 +3602,10 @@ De keuze voor een productiesysteem wordt bepaald door de balans tussen de \textb
 	\item \textbf{NC-machines}: Deze vullen het middengebied in en zijn door hun flexibiliteit uiterst geschikt voor complexe producten.
 \end{itemize}
 
-De evolutie in de technologie (weergegeven door de verschuiving van de gestreepte naar de doorgetrokken lijnen) laat zien dat NC-machines een steeds groter gebied bestrijken. Ze worden rendabeler bij zowel kleinere series (door kortere insteltijden) als grotere series (door hogere productiviteit), en kunnen steeds complexere taken aan.
+De evolutie in de technologie (weergegeven door de verschuiving van de gestreepte naar de doorgetrokken lijnen) laat zien dat NC-machines een steeds groter gebied bestrijken. 
+Ze worden rendabeler bij zowel kleinere series (door kortere insteltijden) als grotere series (door hogere productiviteit), en kunnen steeds complexere taken aan.
 
-\begin{figure}[ht]
+\begin{figure}[htbp]
 	\centering
 	\begin{tikzpicture}[>=Stealth, font=\sffamily\small, scale=1.1]
 		% Assen tekenen
@@ -3656,24 +3640,33 @@ De evolutie in de technologie (weergegeven door de verschuiving van de gestreept
 	\end{tikzpicture}
 	\caption{K-grafiek: Toepassingsgebied van diverse productiesystemen in functie van seriegrootte en moeilijkheidsgraad. De verschuiving van de grenzen toont de groeiende inzetbaarheid van NC-technologie.}\label{fig:k_grafiek_user}
 \end{figure}
+\FloatBarrier
 
 \subsection{CAM}
-CAD (Computer Aided Design) is het ontwerpen van modellen op de computer.
-CAM (Computer Aided Manufacturing) is het omzetten van deze modellen naar bewerkingsprogramma's.
+
+\begin{wrapfigure}[13]{r}{0.3\textwidth}
+
+    \centering
+
+    \includegraphics[width=\linewidth]{WorkflowCADCAM.png}
+
+    \caption{Workflow van CAD naar CAM: proces van het ontwerpen van modellen in CAD-software en het genereren van bewerkingsprogramma's in CAM-software voor productie}
+
+    \label{fig:WorkflowCADCAM.png}
+
+\end{wrapfigure}
+
+\textbf{CAD} (Computer Aided Design) is het ontwerpen van modellen op de computer.
+
+\textbf{CAM} (Computer Aided Manufacturing) is het omzetten van deze modellen naar bewerkingsprogramma's.
+
 Vandaag de dag werken deze dingen hand in hand met de computer.
 Je ontwerpt een model in CAD and dan kun je dit model importeren in CAM-software.
 In deze CAM-software kun je dan bewerkingen definiëren zoals frezen, boren, zagen, enz.
 De CAM-software genereert dan CL-data, dit is coördinaatcode (geen G-code), daarna wordt er voor de specifieke machine G-code gegenereerd.
-\begin{figure}[ht]
-	\centering
-	\includegraphics[width=0.3\textwidth]{WorkflowCADCAM.png}
-	\caption{Workflow van CAD naar CAM: proces van het ontwerpen van modellen in CAD-software en het genereren van bewerkingsprogramma's in CAM-software voor productie}
-	\label{fig:WorkflowCADCAM.png}
-\end{figure}
-\FloatBarrier
-
 In de moderne industrie wordt dit allemaal toegepast.
-Je maakt je CAD, je importeert in CAM, je genereert G-code en je stuurt dit naar de machine via een netwerk. NC-machines op het netwerk zetten kan ook helpen voor monitoring en onderhoud. Je kunt stappen via de computer volgen.
+Je maakt je CAD, je importeert in CAM, je genereert G-code en je stuurt dit naar de machine via een netwerk. 
+NC-machines op het netwerk zetten kan ook helpen voor monitoring en onderhoud. Je kunt stappen via de computer volgen.
 
 \begin{warningbox}[EXAMEN CHECKLIST: MACHINES \& AUTOMATISERING]
     \begin{itemize}
@@ -3721,7 +3714,8 @@ Je bewerkingsplan hangt af van heel wat factoren:
 	\item \textbf{Levertijd}: Hoe snel moet het product klaar zijn. Sommige processen zijn sneller dan andere.
 \end{itemize}
 
-Je moet duidelijk weten wat mogelijk is en wat de beperkingen zijn. De kosten van deze processen moeten ook in rekening worden gebracht. Bij het opstellen van een bewerkingsplan is er vaak niet één enkel correct antwoord; verschillende keuzes kunnen verdedigbaar zijn, zolang ze goed gemotiveerd worden op basis van factoren zoals de vereiste accuraatheid, de kostprijs, de productiesnelheid en de serie-grootte.
+Je moet duidelijk weten wat mogelijk is en wat de beperkingen zijn. De kosten van deze processen moeten ook in rekening worden gebracht. Bij het opstellen van een bewerkingsplan is er vaak niet één enkel correct antwoord; verschillende keuzes kunnen verdedigbaar zijn, 
+zolang ze goed gemotiveerd worden op basis van factoren zoals de vereiste accuraatheid, de kostprijs, de productiesnelheid en de serie-grootte.
 
 \begin{examenbox}
 	Motiveer je keuzes voor een specifiek proces altijd aan de hand van technische en economische criteria.
@@ -3738,7 +3732,17 @@ Je moet duidelijk weten wat mogelijk is en wat de beperkingen zijn. De kosten va
     \end{itemize}
 \end{conceptbox}
 
-Bij het positioneren wordt het werkstuk nauwkeurig in de machine geplaatst ten opzichte van een gekozen nulpunt of referentievlak. Het doel is om het werkstuk eenduidig vast te leggen in de ruimte, zodat de machine exact weet waar de bewerkingen moeten plaatsvinden. Hiervoor moet men vaak eerst een referentievlak bepalen door het werkstuk op te meten.
+Bij het positioneren wordt het werkstuk nauwkeurig in de machine geplaatst ten opzichte van een gekozen nulpunt of referentievlak. Het doel is om het werkstuk eenduidig vast te leggen in de ruimte, 
+zodat de machine exact weet waar de bewerkingen moeten plaatsvinden. Hiervoor moet men vaak eerst een referentievlak bepalen door het werkstuk op te meten.
+
+\begin{figure}[htbp]
+	\centering 
+	\includegraphics[width=0.2\textwidth]{positioneren.png}
+	\caption{Positioneren van het werkstuk volgens het 3-2-1 principe: bepalen van de juiste oriëntatie en referentiepunten.}
+	\label{fig:positionerenwerkstuk}
+\end{figure}
+\FloatBarrier
+
 
 Een fundamenteel principe hierbij is de \textbf{3-2-1 methode}, die wordt gebruikt om de vrijheidsgraden van het werkstuk te minimaliseren en het eenduidig te positioneren:
 \begin{itemize}
@@ -3748,38 +3752,65 @@ Een fundamenteel principe hierbij is de \textbf{3-2-1 methode}, die wordt gebrui
 \end{itemize}
 Op deze manier ligt de positie van het werkstuk volledig vast zonder dat het systeem overbepaald is.
 
-\autofig[0.45\textwidth]{positioneren.png}{Positioneren van het werkstuk volgens het 3-2-1 principe: bepalen van de juiste oriëntatie en referentiepunten.}
-
 \subsection{Klemmen}
+
 Nadat het werkstuk correct is gepositioneerd, moet het stevig worden vastgezet (opgespannen). Het doel van klemmen is om alle resterende vrijheidsgraden weg te nemen en te garanderen dat het werkstuk niet verschuift of trilt onder invloed van de proceskrachten (zoals de snijkrachten van de frees of beitel). De klemming gebeurt meestal door middel van wrijvingskrachten of directe mechanische klemkracht.
 
+
+
 Er zijn verschillende methoden en hulpmiddelen beschikbaar voor het opspannen:
+
 \begin{itemize}
+
 	\item \textbf{Bankschroef}: De meest gebruikte methode voor prismatische werkstukken.
+
 	\item \textbf{T-bouten en klemplaten}: Hiermee kan het werkstuk direct op de machinetafel worden gemonteerd.
+
 	\item \textbf{Magneetklemmen}: Vooral geschikt voor vlakke, ferromagnetische materialen (vaak bij slijpen).
+
 	\item \textbf{Vacuümklemmen}: Ideaal voor het opspannen van dunne platen of niet-magnetische materialen.
+
 \end{itemize}
+
+
 
 \autofig[0.3\textwidth]{image82.png}{Klemmen van het werkstuk: diverse methoden om het werkstuk stabiel te fixeren tijdens de bewerking.}
 
+
+
 \subsection{Ondersteuning}
+
 Naast positionering en klemmen is ondersteuning cruciaal, zeker bij complexe of minder stijve werkstukken. Ondersteuning dient niet enkel om het eigen gewicht van het stuk te dragen, maar vooral om vervorming door de grote snijkrachten tegen te gaan. 
+
+
 
 Zonder de juiste ondersteuning kan het werkstuk gaan doorbuigen of kunnen er trillingen (\textit{chatter}) ontstaan. Dit leidt tot een slecht oppervlaktekwaliteit en afwijkingen in de maatvoering. In de figuur hieronder is te zien hoe ondersteuning helpt om deze buiging te voorkomen.
 
-\autofig[0.3\textwidth]{voorkomenbuiging.png}{Ondersteuning van het werkstuk: het gebruik van steunpunten om doorbuiging en trillingen tijdens de bewerking te minimaliseren.}
+
+
+\autofig[0.4\textwidth]{voorkomenbuiging.png}{Ondersteuning van het werkstuk: het gebruik van steunpunten om doorbuiging en trillingen tijdens de bewerking te minimaliseren.}
+
+
 
 \subsection{Universeel en product specifiek opspansysteem}
+
 Een belangrijke keuze in het bewerkingsplan is het type opspansysteem.
+
 Afhankelijk van de seriegrootte en de diversiteit van de producten, kies je tussen een universeel of een productspecifiek systeem.
 
+
+
 \begin{itemize}
+
 	\item \textbf{Productspecifiek opspansysteem}: Bij grote series is het rendabel om een opspanning op maat te maken (een mal). Het ontwerpen en maken kost tijd en geld, maar het wisselen van werkstukken gaat daarna zeer snel en nauwkeurig.
+
 	\item \textbf{Universeel opspansysteem}: Bij kleine series of enkelstuks is flexibiliteit belangrijker. Universele systemen (zoals modulaire opspantafels) werken als een bouwdoos met gatenpatronen, klemmen en steunen. Hiermee kun je snel schakelen tussen verschillende producten zonder hoge investeringskosten per product.
+
 \end{itemize}
 
-\autofig[0.3\textwidth]{universeeltegenspecifiek.png}{Universeel klemmen versus productspecifiek klemmen: flexibele modulaire systemen versus op maat gemaakte mallen.}
+
+
+\autofig[0.6\textwidth]{universeeltegenspecifiek.png}{Universeel klemmen versus productspecifiek klemmen: flexibele modulaire systemen versus op maat gemaakte mallen.}
 
 \subsection{Nauwkeurigheid en ruwheid}
 Het bewerkingsplan wordt sterk bepaald door de vereiste toleranties en oppervlaktekwaliteit. Niet elk proces kan elke nauwkeurigheid halen.
@@ -3794,12 +3825,10 @@ Het bewerkingsplan wordt sterk bepaald door de vereiste toleranties en oppervlak
 \section{Microvoorbereiden en bewerkingsstappen}
 Bij de microwerkmethode kijk je naar de specifieke stappen binnen één bewerking. Hierbij maak je onderscheid tussen ruwen en finiseren.
 
-\begin{conceptbox}
+\begin{conceptbox}[Ruwe bewerkingen (Roughing) en afwerk bewerkingen (Finishing)]
 	\textbf{Ruwe bewerking (Roughing):} Het doel is om zo snel mogelijk materiaal te verwijderen (hoge \textit{Material Removal Rate}). 
 	Hierbij gebruik je grote snededieptes en voedingen. De oppervlaktekwaliteit en maattolerantie zijn hier nog van minder belang.
-\end{conceptbox}
-
-\begin{conceptbox}
+	\newline
 	\textbf{Finiseren (Finishing):} Na het ruwen volgt de nabewerking om de definitieve maatvoering en oppervlaktekwaliteit te bereiken. 
 	Hier werk je met kleinere afnames en fijnere voedingen.
 \end{conceptbox}
