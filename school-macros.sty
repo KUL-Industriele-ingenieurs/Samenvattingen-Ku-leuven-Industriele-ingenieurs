@@ -290,11 +290,11 @@
 
 \newtcolorbox{waarschuwing}[1][]{% 
     schoolbox=schoolRed,
-    title={\faExclamationTriangle\ \textbf{Let Op!}\ifstrempty{#1}{}{ #1}},
+    schoolTitle={#1}{\faExclamationTriangle}{Let Op!},
     colback=schoolRed!5!white,
 }
 % Fixed: Broken \begin environment
-\newenvironment{warningbox}[1][]{\begin{waarschuwing}}{\end{waarschuwing}}
+\newenvironment{warningbox}[1][]{\begin{waarschuwing}[#1]}{\end{waarschuwing}}
 
 \newtcolorbox{voorbeeld}[1][]{% 
     schoolbox=schoolGreen,
@@ -398,11 +398,11 @@
     }%
 }
 
-% Improved: Reduced vertical spacing and left alignment for speed scanning
+% Improved: Reduced vertical spacing. Centered formulas for readability.
 \NewDocumentCommand{\formulariumcard}{ m m m m }{% 
     \par\vspace{4pt}%
     \noindent\textbf{#1} \hfill {\scriptsize\textcolor{schoolGray}{\hyperref[frm:#4]{p.\pageref{frm:#4}}}}\par\vspace{2pt}%
-    {\noindent\large $\displaystyle #2$\par}%
+    {\centering\large $\displaystyle #2$\par}%
     \vspace{2pt}%
     {\noindent\footnotesize\itshape #3}%
     \par\vspace{4pt}%
