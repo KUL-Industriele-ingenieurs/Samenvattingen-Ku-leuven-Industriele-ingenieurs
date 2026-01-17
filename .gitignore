@@ -34,6 +34,7 @@ __pycache__/
 *.bcf 
 *.run.xml
 *.synctex(busy)
+*.listing
 
 # LaTeX backup files
 *.bak
@@ -45,6 +46,7 @@ __pycache__/
 AGENTS.md
 gemini.md
 *.gemini-clipboard
+copilot-instructions.md
 
 # Build output - PDFs are checked by pre-commit hook
 # The hook prevents committing PDFs that match .tex filenames
