@@ -106,7 +106,16 @@
 \definecolor{schoolOrange}{RGB}{230, 126, 34}
 \definecolor{schoolTeal}{RGB}{0, 150, 136}
 \definecolor{schoolGray}{RGB}{100, 100, 100}
-\definecolor{codeBackground}{RGB}{40, 44, 52}
+
+% --- VS Code Dark Theme Palette ---
+\definecolor{codeBackground}{RGB}{30, 30, 30}
+\definecolor{vscodeBlue}{RGB}{86, 156, 214}
+\definecolor{vscodeGreen}{RGB}{106, 153, 85}
+\definecolor{vscodeOrange}{RGB}{206, 145, 120}
+\definecolor{vscodePurple}{RGB}{197, 134, 192}
+\definecolor{vscodeYellow}{RGB}{220, 220, 170}
+\definecolor{vscodeGray}{RGB}{133, 133, 133}
+\definecolor{vscodeWhite}{RGB}{212, 212, 212}
 
 % --- Modern Color Palette ---
 \definecolor{brandblue}{RGB}{52, 152, 219}
@@ -285,25 +294,34 @@
 }
 
 \newtcblisting{codeblock}[2][]{% 
-    enhanced, colback=codeBackground, colframe=codeBackground,
+    enhanced, breakable, 
+    colback=codeBackground, colframe=codeBackground,
+    colupper=vscodeWhite,
     listing only,
     listing options={
         language=#2,
-        basicstyle=\ttfamily\footnotesize\color{white},
-        keywordstyle=\color{magenta},
-        stringstyle=\color{green!70!black},
-        commentstyle=\color{gray!80}\itshape,
-        numbers=left, numberstyle=\tiny\color{gray},
+        basicstyle=\ttfamily\footnotesize,
+        keywordstyle=\color{vscodeBlue}\bfseries,
+        stringstyle=\color{vscodeOrange},
+        commentstyle=\color{vscodeGreen}\itshape,
+        numbers=left, numberstyle=\tiny\color{vscodeGray},
         breaklines=true,
-        tabsize=4
+        tabsize=4,
+        showstringspaces=false
     },
-    title={\textcolor{gray}{\faTerminal}\ \texttt{#2}},
-    coltitle=white,
+    title={\hspace{1.2cm}\textcolor{vscodeGray}{\faCode}\ \ifstrempty{#1}{\texttt{#2}}{\textbf{#1}}},
+    coltitle=vscodeWhite,
     fonttitle=\sffamily\bfseries\small,
-    overlay={\draw[fill=red!70] ([xshift=4mm]frame.north west) circle (2pt);
-             \draw[fill=yellow!70] ([xshift=8mm]frame.north west) circle (2pt);
-             \draw[fill=green!70] ([xshift=12mm]frame.north west) circle (2pt);},
-    #1
+    overlay unbroken={
+        \draw[fill=red!70] ([xshift=4mm, yshift=-2mm]frame.north west) circle (2.5pt);
+        \draw[fill=yellow!70] ([xshift=9mm, yshift=-2mm]frame.north west) circle (2.5pt);
+        \draw[fill=green!70] ([xshift=14mm, yshift=-2mm]frame.north west) circle (2.5pt);
+    },
+    overlay first={
+        \draw[fill=red!70] ([xshift=4mm, yshift=-2mm]frame.north west) circle (2.5pt);
+        \draw[fill=yellow!70] ([xshift=9mm, yshift=-2mm]frame.north west) circle (2.5pt);
+        \draw[fill=green!70] ([xshift=14mm, yshift=-2mm]frame.north west) circle (2.5pt);
+    },
 }
 
 \newenvironment{examenbox}[1][]{% 

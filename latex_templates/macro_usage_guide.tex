@@ -58,7 +58,7 @@ Je leert je vak en je raakt dan ook bekend met LaTeX wat handig is voor later.
 
 Een minimaal LaTeX document met school-macros ziet er als volgt uit:
 
-\begin{codeblock}[title=Minimaal Voorbeeld]{tex}
+\begin{codeblock}[Minimaal Voorbeeld]{tex}
 \documentclass[a4paper,11pt]{article}
 \usepackage{school-macros}
 
@@ -80,7 +80,7 @@ Hier begint je inhoud...
 \end{document}
 \end{codeblock}
 
-\begin{waarschuwing}[title=Belangrijk: Compileer tweemaal!]
+\begin{waarschuwing}[Belangrijk: Compileer tweemaal!]
 Voor correcte werking van het formularium en de symbolenlijst moet je het document 
 \textbf{tweemaal compileren}. Bij de eerste compilatie worden de gegevens verzameld,
 bij de tweede worden ze weergegeven.
@@ -88,7 +88,7 @@ bij de tweede worden ze weergegeven.
 
 \subsection{Document klassen: article vs report}
 
-\begin{schoolconcept}[title=Welke documentclass kiezen?]
+\begin{schoolconcept}[Welke documentclass kiezen?]
 \begin{description}[leftmargin=2.5cm]
     \item[\texttt{article}] Voor korte documenten, samenvattingen \textbf{zonder} hoofdstukken
     \item[\texttt{report}] Voor langere documenten \textbf{met} hoofdstukken (\verb|\chapter{}|)
@@ -115,7 +115,7 @@ bij de tweede worden ze weergegeven.
 Voor cheatsheets en samenvattingen die op één pagina moeten passen, gebruik je \texttt{Compact Mode}.
 Dit vermindert marges naar 1cm, verwijdert witruimte in lijsten en verkleint headers.
 
-\begin{codeblock}[title=Compact Mode Activeren]{tex}
+\begin{codeblock}[Compact Mode Activeren]{tex}
 \documentclass[a4paper,11pt]{article}
 \usepackage{school-macros}
 
@@ -130,7 +130,7 @@ Dit vermindert marges naar 1cm, verwijdert witruimte in lijsten en verkleint hea
 
 Latex heeft wat standaard dingen om je tekst te stijlen.
 
-\begin{codeblock}[title=Basis Tekstopmaak]{tex}
+\begin{codeblock}[Basis Tekstopmaak]{tex}
 \textbf{Vetgedrukt} \\
 \textit{Cursief} \\
 \underline{Onderstreept} \\
@@ -150,7 +150,7 @@ Latex heeft wat standaard dingen om je tekst te stijlen.
 \subsection{Lijstjes maken}
 Lijstjes zijn super handig voor samenvattingen!
 
-\begin{codeblock}[title=Opsommingen]{tex}
+\begin{codeblock}[Opsommingen]{tex}
 % Ongeordende lijst (bolletjes)
 \begin{itemize}
     \item Eerste punt
@@ -196,7 +196,7 @@ Sommige tekens hebben een speciale betekenis in LaTeX (zoals \% en \$). Wil je z
 \subsection{Commentaar toevoegen}
 Alles wat je achter een \texttt{\%} typt, wordt genegeerd door LaTeX. Handig voor notities aan jezelf!
 
-\begin{codeblock}[title=Commentaar]{tex}
+\begin{codeblock}[Commentaar]{tex}
 Dit is tekst die in de PDF komt.
 % Dit is een notitie voor mezelf, dit zie je niet in de PDF.
 Hier gaat de tekst verder.
@@ -265,7 +265,7 @@ Als je een fout vindt of iets wilt toevoegen, kun je direct vanuit je code een "
 \begin{oefenblok}[Stap-voor-stap: Issue maken]
 \begin{enumerate}
     \item Typ in je LaTeX bestand een commentaar met \texttt{\% @issue:} of \texttt{\% TODO:}.
-    \begin{codeblock}[title=Voorbeeld]{tex}
+    \begin{codeblock}[Voorbeeld]{tex}
 % @issue: Voeg meer uitleg toe over entropie hier
 % TODO: Controleer deze formule nog eens
     \end{codeblock}
@@ -346,8 +346,9 @@ Gebruik altijd siunitx voor consistente spatiëring en opmaak.
 \label{sec:boxes}
 % =============================================================================
 
-Het school-macros pakket biedt verschillende gekleurde boxen voor verschillende doeleinden.
-Alle boxen zijn \emph{breakable} --- ze kunnen over meerdere pagina's lopen.
+Ik heb macros gemaakt voor latex (hiermee kun je de opmaak van je document bepalen) 
+en daarbij heb ik tcolorbox gebruikt om belangrijke dingen 
+te markeren zoals definities, theorema's, oefeningen, voorbeelden en waarschuwingen.
 
 \subsection{Concept (Definities)}
 
