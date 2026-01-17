@@ -32,11 +32,6 @@ Als je alleen Word kent, is LaTeX misschien even wennen - maar het is perfect vo
 
 **Het resultaat:** Een strakke, professionele PDF die er altijd goed uitziet.
 
-## 🚀 Nieuw in v4.0 (2026 Update)
-- **Compact Mode**: Maak samenvattingen van 1 pagina met `\enablecompactmode`.
-- **Nieuwe Wiskunde**: Snelle shortcuts zoals `\R` voor $\mathbb{R}$ en physics-style afgeleiden (`\pdv`).
-- **Modern Design**: Vernieuwde layout en schaduw-effecten voor makkelijker lezen.
-
 ---
 
 ## 🛠️ Setup: Wat heb je nodig?
