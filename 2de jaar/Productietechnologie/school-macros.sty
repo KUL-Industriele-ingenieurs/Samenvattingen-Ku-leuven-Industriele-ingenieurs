@@ -167,7 +167,7 @@
 \@ifpackageloaded{newunicodechar}{}{\RequirePackage{newunicodechar}}
 % Ensure amsmath/mathtools is loaded before using \text
 \NewDocumentCommand{\EuroSymbol}{}{\ifmmode\text{\texteuro}\else\texteuro\fi}
-% \newunicodechar{€}{\EuroSymbol} % Disabled to prevent redefinition warnings
+\newunicodechar{€}{\EuroSymbol} % Enabled to fix € in math mode
 
 % --- Graphics & Plots ---
 \@ifpackageloaded{tikz}{}{\RequirePackage{tikz}}
