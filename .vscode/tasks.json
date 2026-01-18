@@ -135,11 +135,16 @@
             "args": [
                 "-NoProfile",
                 "-NonInteractive",
-                "-Command",
-                "Get-ChildItem -Recurse -Filter *.tex -ErrorAction SilentlyContinue | Select-String -Pattern '@issue|@todo|TODO|FIXME' | ForEach-Object { Write-Output ($_.Path + ':' + $_.LineNumber + ':1: warning: ' + ($_.Line.Trim())) }"
+                "-ExecutionPolicy",
+                "Bypass",
+                "-File",
+                "${workspaceFolder}\\.vscode\\scripts\\check_issues.ps1"
             ],
+            "runOptions": {
+                "runOn": "folderOpen"
+            },
             "presentation": {
-                "reveal": "never",
+                "reveal": "always",
                 "panel": "shared"
             },
             "problemMatcher": {
