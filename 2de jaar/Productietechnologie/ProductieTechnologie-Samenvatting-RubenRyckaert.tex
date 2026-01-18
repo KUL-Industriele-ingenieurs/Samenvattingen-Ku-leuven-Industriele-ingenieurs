@@ -533,7 +533,7 @@ beitelbewerkingen hebben allemaal effecten op het materiaal. Wie zien er een paa
 
 	      \begin{figure}[htbp]
 		      \centering
-		      \includegraphics[width=0.8\textwidth]{image18.png}
+		      \includegraphics[width=1\textwidth]{image18.png}
 		      \caption{Energieverdeling bij verspanen: de warmte wordt verdeeld over de spaan, de beitel en het werkstuk.}
 	      \end{figure}
 		  \FloatBarrier
@@ -612,7 +612,7 @@ Je moet dus een compromis zoeken afhankelijk van de toepassing.
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=0.4\textwidth]{image24.png}
+	\includegraphics[width=0.5\textwidth]{image24.png}
 	\caption{Toepassingsgebieden van verschillende snijmaterialen in functie van snelheid en taaiheid.}
     \label{fig:snijmaterialen_overzicht}
 \end{figure}
@@ -755,6 +755,7 @@ CNC-draaien is een geautomatiseerd proces waarbij computergestuurde machines pre
 	\includegraphics[width=0.45\textwidth]{image30.png}
 	\caption{Draaiproces}
 \end{figure}
+\FloatBarrier
 
 \textbf{Hellingshoek}
 Een hellingshoek is de extra hoek die gecreerd wordt door het
@@ -764,7 +765,7 @@ wordt kleiner hierdoor. Je moet dus hiervoor compenseren door een grotere vrijlo
 De hellingshoek hangt af van de voeding $f$ en dus bij grotere voedingen moet je grotere 
 vrijloophoeken gebruiken.
 
-\begin{figure}[htbp]
+\begin{figure}[ht]
   \centering
   \includegraphics[width=0.4\textwidth]{hellingshoek.png}
   \caption{Het effect van ronddraaien op de vrijloophoek}
@@ -778,7 +779,6 @@ vrijloophoeken gebruiken.
 	Het houdt rekening met de specifieke snijkracht van het materiaal en de spaanvorm (voeding en snedediepte).
 \end{conceptbox}
 
-\newpage
 Zoals vermeld in het algemeen Verspannen heb je drie krachten op je werkstuk
 
 \begin{wrapfigure}[20]{r}{0.5\textwidth}
@@ -1027,6 +1027,7 @@ De snelheid van de motoren wordt gecontrolleerd door een tandwielkast.
 	\includegraphics[width=0.8\textwidth]{image40.png}
 	\caption{Tandwielkast voor draaimachine}
 \end{figure}
+\FloatBarrier
 
 Motoren gaan vooral werken rond de stijle curve. Dit is interresant omdat je met verschillende lasten
 dezelfde toerental kunt behouden.
@@ -1074,27 +1075,55 @@ Negatieve spaanhoeken geeft enorm veel krachten en is moeilijker te bewerken omd
 
 Op een boor heb je belangrijke geometrie die andere functies hebben:
 \begin{itemize}
-	\item \textbf{Hoofdsnijvlak}: het primaire snijvlak dat het materiaal losmaakt; draagt de meeste snijkracht en beïnvloedt oppervlaktekwaliteit en snijvermogen.
-	\item \textbf{Hulpsnijvlak}: een secundair snijvlak nabij de punt dat afwerking en stabiliteit verbetert; draagt bij aan de lokale lastverdeling.
-	\item \textbf{Spaanvlak}: het vlak waarlangs de spaan stroomt; bepaalt spaanvorming, spaanafvoer en warmteontwikkeling (kolkslijtage kan optreden).
-	\item \textbf{Vrijloopvlak}: het vlak dat niet in contact mag komen met het bewerkte oppervlak; met voldoende vrijloophoek voorkomt het wrijving en slijtage en behoudt maatnauwkeurigheid.
+	\item \textbf{Hoofdsnijvlak}: het primaire snijvlak dat het materiaal losmaakt. 
+	Draagt de meeste snijkracht en beïnvloedt oppervlaktekwaliteit en snijvermogen.
+	\item \textbf{Hulpsnijvlak}: een secundair snijvlak nabij de punt dat afwerking en 
+	stabiliteit verbetert; draagt bij aan de lokale lastverdeling.
+	\item \textbf{Spaanvlak}: het vlak waarlangs de spaan stroomt. 
+	Bepaalt spaanvorming, spaanafvoer en warmteontwikkeling (kolkslijtage kan optreden).
+	\item \textbf{Vrijloopvlak}: het vlak dat niet in contact mag komen met het bewerkte oppervlak; met voldoende 
+	vrijloophoek voorkomt het wrijving en slijtage en behoudt maatnauwkeurigheid.
 \end{itemize}
 
-De boor beweegt naar beneden en maakt een spiraal. De vrijloophoek maakt een spiraal naar beneden. Hoe sneller je beweegt hoe schuiner dat je spiraal ligt.
-De vrijloophoek is dus kleiner dan de vrijslijphoek. De voeding gaat ook afhankelijk zijn van deze hoek.
+De boor beweegt naar beneden en maakt een spiraal. De \textbf{vrijloophoek} maakt een spiraal naar beneden. 
+Hoe sneller je beweegt hoe schuiner dat je spiraal ligt.
+De \textbf{vrijloophoek} is dus kleiner dan de \textbf{vrijslijphoek}. 
+De voeding gaat ook afhankelijk zijn van deze hoek.
+De spoedhoek is de schuine hoek $\sigma$ die door je werkstuk gemaakt wordt tijdens het draaien.
+Deze vergroot bij grotere voedingen omdat je snedediepte $b$ groter wordt.
 
+\begin{wrapfigure}[15]{r}{0.53\textwidth}
+	\centering
+	\includegraphics[width=\linewidth]{borenhoeken.png}
+	\caption{Alle belangrijke hoeken bij boren}
+	\label{fig:borenhoeken.png}
+\end{wrapfigure}
+\FloatBarrier
 
+\textbf{De Vrijloophoek = vrijslijphoek - spoedhoek.}
+
+Nog een keer alle belangrijke hoeken met hun functie en symbool:
+\begin{itemize}
+	\item \textbf{Spaanhoek} ($\gamma$): Bepaalt de snijweerstand en spaanvorming.
+	\item \textbf{Afschuifhoek} ($\phi$): Beïnvloedt de kracht die nodig is om materiaal te verwijderen.
+	\item \textbf{Vrijslijphoek} ($\alpha'$): De hoek tussen het horizontale vlak en de boor.
+	\item \textbf{Vrijloophoek} ($\alpha$): De vrije hoek tussen boor en werkstuk.
+	\item \textbf{Spoedhoek} ($\sigma$): De schuine hoek gecreert door het boren. 
+	\item \textbf{Wighoek} ($\beta$): De hoek tussen het hoofdsnijvlak en hulpsnijvlak.
+\end{itemize}
 
 \section{Optredende krachten}
-Net zoals bij draaien zijn er verschillende krachten die op het werkstuk
-en de boor werken tijdens het boren. Deze worden met de theorie van Kienzle berekend. \ref{frm:10}
 
-\begin{wrapfigure}{r}{0.4\linewidth}
+\begin{wrapfigure}[18]{r}{0.4\linewidth}
 	\centering
 	\includegraphics[width=\linewidth]{image43.png}
 	\caption{Krachten op een boor}
 	\label{fig:boren_krachten}
 \end{wrapfigure}
+
+Net zoals bij draaien zijn er verschillende krachten die op het werkstuk
+en de boor werken tijdens het boren. Deze worden met de theorie van Kienzle berekend. \ref{frm:10}
+
 
 Boren hebben een grote voedingskracht en een relatief klein snijmoment.
 De axiale voeding is groot omdat de boor in het materiaal moet doordringen,
@@ -1537,7 +1566,7 @@ Het proces omvat het bewegen van de frees langs het oppervlak van het werkstuk o
 
 \textbf{- hoofdbeweging}
 \newline
-Je gereedschap de \textbf{frees} gaat roteren en het werkstuk kan ook roteren.
+Je gereedschap de \textbf{frees} gaat roteren.
 \newline
 \textbf{- voedingsbeweging}
 \newline
@@ -1545,8 +1574,9 @@ Het gereedschap of het werkstuk gaat bewegen om materiaal te verwijderen.
 \newline
 
 \subsection{Soorten frezen}
-Als je gaat frezen via met de as-richting van de frees in de lengteas van de frees, noem je dit \textbf{mantelfrezen}.
-\newline
+Als je gaat frezen via met de as-richting van de frees in de lengteas van de frees, 
+noem je dit \textbf{mantelfrezen}.
+
 Als je met de punt van de frees gaat frezen noem je dit \textbf{kopfrezen}.
 
 \subsection{Geometrie van de frees}
@@ -1557,7 +1587,7 @@ Net zoals bij draaien en boren zijn er verschillende vlakken op de frees die ver
 	\item \textbf{Vrijloophoek}
 	\item \textbf{Snijkant}
 	\item \textbf{Snijvlak}
-	\item \textbf{wighoek}
+	\item \textbf{Wighoek}
 \end{itemize}
 
 Deze hebben dezelfde eigenschappen als bij boren en draaien.
@@ -1571,7 +1601,7 @@ Je kunt meer info vinden bij Algemeen verspanen~\ref{chap:Algemeen verspanen}.
 \FloatBarrier
 
 
-\section{krachtwerking bij frezen}
+\section{Krachtwerking bij frezen}
 
 Net zoals bij draaien en boren zijn er verschillende krachten die op het werkstuk
 en de frees werken tijdens het frezen.
@@ -1596,13 +1626,13 @@ Ze worden met de theorie van Kienzle berekend.
 De snededikte is niet constant omdat je frees ronddraait. Voor berekeningen wordt de gemiddelde snededikte gebruikt.
 \newline
 
-\textbf{BELANGRIJK VOOR EXAMEN}\\
+\belangrijk{BELANGRIJK VOOR EXAMEN}\\
 Je krachten op je frees zijn dus niet constant.
 zorg dat je dit weet voor het examen. 
 Daarom nemen we het gemiddelde snededikte $h_{gem}$ 
 zodat we toch een berekening hebben voor de kracht.
 
-\textbf{Gemiddelde snededikte bij Frezen:} $h_{gem} = f_z \cdot \sqrt{\dfrac{a}{d}}$\\\small
+\textbf{Gemiddelde snededikte bij Frezen:} $h_{gem} = f_z \cdot \sqrt{\dfrac{a}{d}}$\\
 waarbij $f_z$ de voeding per tand is, $a$ de snedediepte en $d$ de diameter van de frees.
 
 \textbf{Voeding per tand bij Frezen:} $f_z = \dfrac{f}{z_i}$
@@ -1861,7 +1891,7 @@ Je drukt het werkstuk samen en pompt dan de gelei in het werkstuk om het oppervl
 
 \section{Geadvaseerde verspaningstechnieken en hybride technieken}
 
-\subsection{hoge snelheid verspanen}
+\subsection{Hoge snelheid verspanen}
 Bij hoge snelheid verspanen ga je enorm hoge snijsnelheden gebruiken in vergelijking met
 conventionaleel verspanen.
 \newline
@@ -1875,7 +1905,6 @@ conventionaleel verspanen.
 Deze spindles gaan tot 20,000 tot 30,000 RPM afhankelijk van het materiaal dat
 je verspaand.
 
-\subsection*{Extra}
 Herinner je bij algemeen verspanen~\ref{chap:Algemeen verspanen} dat bij heel hoge
 snijsnelheden je een \textbf{Softening effect} had die het makkelijker maakte om te verspanen.
 Je werkmateriaal wordt warmer en daarom ductieler.
@@ -1885,7 +1914,7 @@ Alle warmte die ook gegenerateerd wordt gaan ook in
 de spanen en gaan dus niet in het werkstuk defunderen en het oppervlakte aantasten.
 \textit{Je moet dit effect al kennen in de figuur \ref{verschillende_invloeden_voeding_snedediepte}.}
 
-\textbf{Toepassignen}
+\textbf{Toepassingen:}
 \newline
 Je wilt enorm snel verspanningen doen.
 Je moet dus je voeding $f$ en snijsnelheid $v_c$ enorm hoog zetten.
@@ -1902,10 +1931,11 @@ De tools zijn van hardmetaal gemaakt die ductiel genoeg zijn om de krachten te w
 
 Hardverspanen is het verspanen van harde materialen zoals gehard staal, keramiek en andere harde legeringen.
 De ontwikkeling van hoge snelheidsfrezen en veel stevigere machines maakte dit mogelijk.
-\newline
-Je moet een negatieve spaanhoek gebruiken die meer kracht vraagt omdat de
-afschuifhoek kleiner wordt. Als compensatie gebruik je kleine snededieptes om de krachten te beperken.
-\newline
+
+Je moet een negatieve spaanhoek $\gamma$ gebruiken die meer kracht vraagt omdat de
+afschuifhoek $\phi$ kleiner wordt.
+ Als compensatie gebruik je kleine snededieptes om de krachten te beperken.
+
 Nieuwe harde beitels en stevige machines die de hevige drukken aankan zorgt ervoor dat
 hardverspanen niet eeuwig duurt.
 
@@ -1914,25 +1944,26 @@ hybride processen is een ruim domein waarbij je verschillende technieken toepast
 werkstukken te verspanen.
 Je gaat dus twee technieken toepassen om bijvoorbeeld dingen makkelijker te verspanen
 of om betere oppervlaktekwaliteit te krijgen.
-\newline
-Dit zijn vooral experimentele technieken die nog in ontwikkeling zijn.
 
+Dit zijn vooral experimentele technieken die nog in ontwikkeling zijn.
+	
 \subsection {Laserondersteuning bij verspanen}
 Je warmt het materiaal op met een laser. Het oppervlakte wordt warmer
 en dus makkelijker om te verspanen.
-\newline
+
 Het is energie efficient omdat het warmere materiaal minder kracht kost om te verspanen.
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=0.8\textwidth]{image59.png}
+	\includegraphics[width=1\textwidth]{image59.png}
 	\caption{Laserondersteuning bij verspanen}
 	\label{fig:laserondersteuning-bij-verspanen.png}
 \end{figure}
+\FloatBarrier
 
 Het bepaal materiaal dat je moet gebruiken moet licht absorberen. Je wilt geen of zo weinig mogelijk reflectie of transmissie.
-\newline
-frm{Wat er gebeurt met licht die schijnt op een materiaal}{1 = $A+R+T$}{waarbij $A$ = absorptie, $R$ = reflectie en $T$ = transmissie}
+
+\frm{Wat er gebeurt met licht die schijnt op een materiaal}{\[1 = A+R+T\]}{waarbij $A$ = absorptie, $R$ = reflectie en $T$ = transmissie}
 
 \subsection{Draadvonken en slijpen}
 \textit{(je ziet meer over draadvonken in een ander hoofdstuk)}
@@ -1971,18 +2002,18 @@ Slijpen is een verspaningstechniek waarbij een roterend schijfvormig gereedschap
 de slijpschijf, wordt gebruikt om materiaal van een werkstuk te verwijderen.
 Verspannen gebeurt door een slijpsteen die kleine deeltjes materiaal \textbf{Snijkorrels} van het werkstuk afneemt.
 Dit oppervlakte is onbepaald en dus is de geometrie niet gekent.
-\newline
+
 De snijkorrels kunnen oftewel vrij liggen of gebonden zijn in een matrix.
-\newline
+
 \textbf{Vrije snijkorrels:} losse korrels die losjes op het werkstuk inwerken of in suspensie of pasta. Voorbeelden:
 \begin{itemize}
 	\item \textbf{Leppen}: korrels in een pasta om zeer nauwkeurige oppervlakken te verkrijgen.
 	\item \textbf{Stralen}: korrels in een straal om vuil of roest te verwijderen.
 \end{itemize}
 Je kunt dus korrels door het werkstuk sturen om het oppervlaktekwaliteit te verbeteren.
-\newline
+
 Korrel kunnen ook gebonden zijn in een matrix.
-\newline
+
 \textbf{Gebonden snijkorrels:} korrels die vastzitten in een matrixmateriaal. Voorbeelden:
 \begin{itemize}
 	\item \textbf{Slijpschijven}: korrels gebonden in een harde matrix voor het slijpen van metalen.
