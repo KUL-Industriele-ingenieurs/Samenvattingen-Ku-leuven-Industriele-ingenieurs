@@ -1,5 +1,0 @@
-import numpy as np
-
-def bereken_rms(signaal):
-    """Bereken Root Mean Square."""
-    return np.sqrt(np.mean(signaal**2))
