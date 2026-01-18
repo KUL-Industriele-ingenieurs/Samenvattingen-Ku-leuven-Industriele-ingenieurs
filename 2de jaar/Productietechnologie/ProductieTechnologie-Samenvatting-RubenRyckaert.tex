@@ -819,7 +819,7 @@ De snijkrachtcoëfficiënt $k_c$ is sterk afhankelijk van het materiaal van het 
 
 \frm{b: snedebreedte bij draaien}{b = \frac{a}{\sin \kappa_r}}{met $b$ de snedebreedte [\si{mm}], $a$ de snedediepte [\si{mm}] en $\kappa_r$ de instelhoek [$^\circ$].}
 
-\frm{h: snededikte bij draaien}{h = f \cdot \sin \kappa_r}{met $h$ de snededikte [\si{mm}], $f$ de voeding [\si{mm/omw}] en $\kappa_r$ de instelhoek [$^\circ$].}
+\frm{h: snededikte bij draaien}{h = f \cdot \sin X}{met $h$ de snededikte [\si{mm}], $f$ de voeding [\si{mm/omw}] en $X$ de instelhoek [$^\circ$].}
 
 De optimale snijsnelheid bij draaien is afhankelijk van $k_c$
 \frm{Optimale snijsnelheid bij draaien}{v_{c,\mathrm{opt}} = v_c(k_c)\cdot f^{-u}}{waarbij $v_{c,\mathrm{opt}}$ de optimale snijsnelheid is [\si{m/min}], $f$ de voeding [\si{mm/omw}] en $u$ een exponent [-].}
@@ -871,10 +871,16 @@ bepaald worden.
 
 
 \begin{enumerate}
-	\item \textbf{Softening effect (verzachting)}: Bij hogere voeding ontstaat meer warmte in het snijgebied. Die warmte maakt het oppervlak lokaal zachter, waardoor voor dezelfde snijsnelheid de snijkracht en voedingskracht doorgaans afnemen.
-	\item \textbf{Build‑up edge (BUE)}: Bij lage snijsnelheden en bepaalde voedingen kan materiaal aan de snijkant aanhechten (BUE). Dit veroorzaakt tijdelijke pieken in de krachten en kan de oppervlaktekwaliteit verslechteren; bij hogere voeding of snelheid neemt dit effect vaak af.
-	\item \textbf{Snijkanthoek $\kappa_r$}: Het veranderen van de hoek van het snijvlak verschuift de richting en verdeling van de krachten; sommige componenten (bijv. $F_c$) kunnen toenemen terwijl andere (bijv. $F_f$ of $F_p$) afnemen, waardoor de krachten anders verdeeld zijn.
-	\item \textbf{Snedediepte $a_p$}: Een grotere snedediepte vergroot het verwijderde volume per omwenteling en verhoogt daardoor alle resulterende krachtcomponenten (snijkracht, voedingskracht, terugdrukkracht).
+	\item \textbf{Softening effect (verzachting)}: Bij hogere voeding ontstaat meer warmte in het snijgebied. 
+	Die warmte maakt het oppervlak lokaal zachter, waardoor voor dezelfde snijsnelheid de snijkracht en voedingskracht doorgaans afnemen.
+	\item \textbf{Build‑up edge (BUE)}: Bij lage snijsnelheden en bepaalde voedingen kan materiaal aan 
+	de snijkant aanhechten (BUE). Dit veroorzaakt tijdelijke pieken in de krachten en kan de oppervlaktekwaliteit verslechteren.
+	Bij hogere voeding of snelheid neemt dit effect vaak af.
+	\item \textbf{Snijkanthoek $X$}: Het veranderen van de hoek van het snijvlak verschuift de richting en verdeling van de krachten. 
+	Sommige componenten (bijv. $F_c$) kunnen toenemen terwijl andere (bijv. $F_f$ of $F_p$) afnemen, waardoor
+	 de krachten anders verdeeld zijn.
+	\item \textbf{Snedediepte $a_p$}: Een grotere snedediepte vergroot het verwijderde volume per 
+	omwenteling en verhoogt daardoor alle resulterende krachtcomponenten (snijkracht, voedingskracht, terugdrukkracht).
 \end{enumerate}
 
 \begin{figure}[H]
@@ -882,6 +888,11 @@ bepaald worden.
 	\includegraphics[width=1\textwidth]{image33.png}
 	\caption{}
 \end{figure}
+
+De krachten ($F_c$, $F_f$, $F_p$) zijn logarithmisch met 
+de voeding door die factor $(1-e)$ in de Kienzle vergelijking \ref{fig:image31}.
+$e$ vergroot bij grotere voedingen 
+en dus neemt de kracht minder snel toe.
 
 
 \begin{examenbox}
@@ -940,7 +951,8 @@ breken in kleinere stukken.
 \end{conceptbox}
 
 De oppervakteruwheid wordt gecreerd door de beitel. De beitel is niet perfect scherp en is dus licht bol, dit is de neusradius $r_\varepsilon$.
-Deze bol zal kleine inkepingen maken 1in het oppervlakte. De ruwheid wordt dus bepaald door de neusradius en de voeding.
+Deze bol zal kleine inkepingen maken in het oppervlakte. 
+De ruwheid wordt dus bepaald door de neusradius en de voeding.
 
 \begin{figure}[ht]
 	\centering
@@ -955,16 +967,13 @@ De oppervlakte ruwheid wordt bepaalde door de voeding en de neusradius.
 \end{itemize}
 
 \textbf{Kinematische ruwheid of drawsruwhheidbij draaien:}
-\newline
 Kinematsche ruwheid is puur door de geometrie van het systeem.
-\newline
+
 \textbf{De processruwheid}
-\newline
 De processruwheid is de ruwheid die ontstaat door trillingen en andere onvolkomenheden in het systeem.
 Het is de ruwheid door de opbouwsnijkant (Build -up edge BUE) en andere factoren.
-\newline
+
 \textbf{Totale ruwheid}
-\newline
 De totale ruwheid wordt bepaald door de kinematische ruwheid en de processruwheid
 
 
@@ -972,26 +981,38 @@ De totale ruwheid wordt bepaald door de kinematische ruwheid en de processruwhei
 \frm{totale ruwheid bij Draaien}{R_t = \dfrac{f^2}{8 \cdot r_\epsilon}}{waarbij $f$ de voeding is en $r_\varepsilon$ de neusradius van de beitel.}
 
 \medskip
-\noindent\textbf{Afleiding (oppervlakteruwheid).} Stel dat de neus van de beitel lokaal een cirkelboog met straal $r_\epsilon$ vormt en dat de voeding per
-omwenteling $f$ de koorde van die boog is. De booghoogte (sagitta) is
+\noindent\textbf{Uitleg berekening neusradius.}
+Denk aan de neusradius als een cirkelboog; de voeding per omwenteling \(f\) is de koorde van die boog. De maximale hoogte van het profiel (piek‑tot‑dal) noemen we \(s\). Voor kleine voedingen geldt praktisch:
+
+- Exact (cirkelgeometrie): \(s=r_\varepsilon-\sqrt{r_\varepsilon^{2}-(f/2)^{2}}\).
+- Handige benadering (veel gebruikt in de praktijk, eenvoudig te rekenen):
+	\[
+		R_t \approx s \approx \dfrac{f^{2}}{8\,r_\varepsilon},
+		\qquad
+		R_a \approx \dfrac{R_t}{4} \approx \dfrac{f^{2}}{32\,r_\varepsilon}.
+	\]
+
+Kort: ruwheid groeit met het kwadraat van de voeding en neemt af met de neusradius.
+
+\smallskip
+\noindent\textbf{Regel van duim \& voorbeeld.}
+Geldigheid: de benadering is goed zodra \(f\) duidelijk kleiner is dan \(r_\varepsilon\) (praktisch: \(f \lesssim r_\varepsilon/4\)).  
+Voor \(f=0{.}2\ \si{mm}\) en \(r_\varepsilon=0{.}4\ \si{mm}\):
 \[
-	s \;=\; r_\epsilon - \sqrt{r_\epsilon^2 - \left(\tfrac{f}{2}\right)^2}
-	\;\approx\; \dfrac{f^2}{8\,r_\epsilon},
+	R_t\approx 12{.}5\ \mu\text{m},\qquad R_a\approx 3{.}1\ \mu\text{m}.
 \]
-waarbij in de laatste stap de binomiale benadering wordt gebruikt (geldt voor $f\ll r_\epsilon$). Dit geeft de peak‑to‑valley ruwheid
-\(R_t \approx s = \dfrac{f^2}{8\,r_\epsilon}\). Voor een periodieke boogvorm is de gemiddelde ruwheid ongeveer $R_a\approx R_t/4$, dus
-\(R_a \approx \dfrac{f^2}{32\,r_\epsilon}\).
 
-\noindent\textit{Eenheden en geldigheid:} als $f$ en $r_\epsilon$ in mm zijn, dan zijn $R_t$ en $R_a$ ook in mm. De benaderingen zijn geldig wanneer $f\ll r_\epsilon$.
-
+\smallskip
+\noindent\textbf{Praktische opmerking.}
+Dit is een ideale, geometrische ondergrens. In de praktijk verhogen trillingen, BUE en slijtage de gemeten waarden — gebruik de formules voor schattingen en parametervergelijkingen, niet als absolute garanties.
 
 \section{De Draaioperatie}
 
 Draaien wordt met \textbf{verschillende beitels} gedaan die verschillende bewerkingen kunnen uitvoeren.
 De punten van de beitels noemen we \textbf{inserts}.
-\newline
 
-\begin{figure}[ht]
+
+\begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.8\textwidth]{image39.png}
 	\caption{}
@@ -999,32 +1020,23 @@ De punten van de beitels noemen we \textbf{inserts}.
 
 De componenten worden in een draaimachine gestoken die deze beitels kan bewegen langs verschillende assen en het werkstuk
 kan laten roteren.
-Ze kunnen bewegen door AC (asynchrone) motoren of servomotoren die de bewegingen zeer precies kunnen uitvoeren.
+Ze kunnen bewegen door AC (asynchrone) motoren of servomotoren die
+ de bewegingen zeer precies kunnen uitvoeren.
 De snelheid van de motoren wordt gecontrolleerd door een tandwielkast.
 
-\begin{figure}[ht]
+\begin{figure}[htbp]
 	\centering
-	\includegraphics[width=0.5\textwidth]{image40.png}
+	\includegraphics[width=0.8\textwidth]{image40.png}
 	\caption{Tandwielkast voor draaimachine}
 \end{figure}
 
 Motoren gaan vooral werken rond de stijle curve. Dit is interresant omdat je met verschillende lasten
 dezelfde toerental kunt behouden.
-\newline
 
 
 \chapter{Verspanen: Boren, Fabricage en ronde gaten}
 \section{Inleiding Boren}
 
-\begin{conceptbox}[Nauwkeurigheidsklassen bij gaten]
-    Afhankelijk van de vereiste precisie worden verschillende technieken toegepast:
-    \begin{itemize}
-        \item \textbf{Boren}: Ruwe gaten (IT12 tot IT10).
-        \item \textbf{Kotteren}: Vergroten en nauwkeuriger maken (IT9 tot IT8).
-        \item \textbf{Ruimen}: Hoge precisie en oppervlaktekwaliteit (IT7).
-        \item \textbf{Honen}: Allerhoogste precisie in cilinders (IT7 tot IT3).
-    \end{itemize}
-\end{conceptbox}
 
 Boren is een verspaningstechniek die wordt gebruikt om ronde gaten in materialen te maken.
 
@@ -1033,6 +1045,7 @@ Boren is een verspaningstechniek die wordt gebruikt om ronde gaten in materialen
 \end{conceptbox}
 
 Belangrijke booroperaties zijn:
+
 \begin{enumerate}
 	\item \textbf{Boren}: Het primaire proces waarbij een boor wordt gebruikt om een rond gat te maken in het materiaal.
 	\item \textbf{Kotteren}: Een nabewerkingsproces waarbij een kotter wordt gebruikt om de diameter van een bestaand
@@ -1102,6 +1115,7 @@ Net zoals bij draaien worden de krachten, vermogens en momenten berekent met het
 \frm{Verspanningsmoment}{M_c = C_m \cdot d^{x_M} \cdot f^{y_M}}{waarbij $M_c$ het verspanningsmoment is [\si{N.mm}], $C_m$ de momentcoëfficiënt [-], $d$ de diameter [\si{mm}], $f$ de voeding [\si{mm/omw}] en $x_M, y_M$ de momentexponenten [-].}
 \frm{Vermogen bij boren}{P_c = M_c\,\omega = M_c \cdot 2\pi n}{waarbij $P_c$ het vermogen is [\si{W}], $M_c$ het verspaningsmoment [\si{N.m}] en $\omega$ de hoeksnelheid [\si{rad/s}].}
 
+\vspace{0.5cm}
 \section{Keuze van voeding}
 
 Het belangrijkse van de keuze van de voeding is de sterkte van de boor.
@@ -1182,10 +1196,9 @@ De combinatie van deze formules:
 
 Samen met het verspanningsmoment:
 
-\medskip
 \noindent\textbf{Afleiding van de maximale voeding $f_{\max}$ (twee methodes)}
 
-\paragraph{1) Via het schuifspanningscriterium}
+\textbf{2) Via het schuifspanningscriterium:}
 De maximale schuifspanning in de buitenvezel van een ronde doorsnede is
 \[
 	\tau_{\max}=\dfrac{16\,M_c}{\pi\,d^3}.
@@ -1199,13 +1212,13 @@ Met \(M_c = C_m\,d^{x_M}\,f^{y_M}\) volgt
 	f_{\max} = \left(\dfrac{\tau_{\mathrm{allow}}\,\pi}{16\,C_m}\right)^{1/y_M} d^{(3-x_M)/y_M}.
 \]
 
-\paragraph{2) Via een momentlimiet}
+\textbf{2) Via het momentlimiet:}
 Als \(M_c\le M_d=C_b\,d^{x_w}\) dan volgt
 \[
 	f_{\max} = \left(\dfrac{C_b}{C_m}\right)^{1/y_M} d^{(x_w-x_M)/y_M}.
 \]
 
-\paragraph{Speciale geval -- lineair}\hfill\\
+\textbf{Speciale geval -- lineair}
 Wanneer \(y_M=1\) en \(x_w-x_M=1\) volgt
 \[
 	f_{\max} = \dfrac{C_b}{C_m}\; d,
@@ -1217,6 +1230,8 @@ wat overeenkomt met de eenvoudige vorm \(f_{\max}=C\cdot d\).
 
 \frm{Maximale voeding bij boren}{f_{max} = C \cdot d}{waarbij $C$ een constante is [-], $d$ de diameter [\si{mm}] en $f_{max}$ de maximale voeding [\si{mm/omw}].}
 
+
+\vspace{2cm}
 
 \frm{Kracht $F_f$ is de kracht recht naar boven bij een boormachine}{F_f = C_f \cdot d^{X_f} \cdot f^{y_f}}{waarbij $F_f$ de voedingskracht is [\si{N}], $C_f$ de voedingskrachtcoëfficiënt [\si{N/mm^2}], $d$ de diameter [\si{mm}], $f$ de voeding [\si{mm/omw}] en $X_f, y_f$ de voedingskrachtsexponenten [-].}
 
@@ -1350,7 +1365,8 @@ Hier zijn nog relevante type boren en hun toepassingen:
 		      \item \textbf{Split‑point / conische punt boren:} verbetert centrering en vermindert wander bij start.
 	      \end{itemize}
 \end{itemize}
-\begin{figure}[ht]
+
+\begin{figure}[htbp]
 	\centering
 	\begin{tikzpicture}[scale=1.2, >=stealth]
 		% Werkstuk (doorsnede)
@@ -1413,7 +1429,7 @@ Hier zijn nog relevante type boren en hun toepassingen:
 	\item \textbf{Steekboor}: Wordt gebruikt voor het boren van algemene gaten.
 \end{itemize}
 
-\begin{figure}[ht]
+\begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.8\textwidth]{image44.png}
 	\caption{Verschillende soorten boren}
