@@ -31,6 +31,9 @@ __pycache__/
 *.ilg
 *.ind
 *.bbl
+*.SAVE-ERROR
+# explicitly ignore .bbl files that end with -SAVE-ERROR (some tools append this)
+*.bbl-SAVE-ERROR
 *.bcf 
 *.run.xml
 *.synctex(busy)
@@ -46,6 +49,7 @@ __pycache__/
 AGENTS.md
 gemini.md
 *.gemini-clipboard
+copilot-instructions.md
 
 # Build output - PDFs are checked by pre-commit hook
 # The hook prevents committing PDFs that match .tex filenames
