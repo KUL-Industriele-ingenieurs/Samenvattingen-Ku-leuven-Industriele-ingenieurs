@@ -886,7 +886,8 @@ bepaald worden.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1\textwidth]{image33.png}
-	\caption{}
+	\caption{Verschillende invloeden van voeding en snedediepte op de krachten bij draaien}
+	\label{verschillende_invloeden_voeding_snedediepte}
 \end{figure}
 
 De krachten ($F_c$, $F_f$, $F_p$) zijn logarithmisch met 
@@ -1002,9 +1003,6 @@ Voor \(f=0{.}2\ \si{mm}\) en \(r_\varepsilon=0{.}4\ \si{mm}\):
 	R_t\approx 12{.}5\ \mu\text{m},\qquad R_a\approx 3{.}1\ \mu\text{m}.
 \]
 
-\smallskip
-\noindent\textbf{Praktische opmerking.}
-Dit is een ideale, geometrische ondergrens. In de praktijk verhogen trillingen, BUE en slijtage de gemeten waarden — gebruik de formules voor schattingen en parametervergelijkingen, niet als absolute garanties.
 
 \section{De Draaioperatie}
 
@@ -1066,7 +1064,14 @@ Belangrijke booroperaties zijn:
 \end{figure}
 \FloatBarrier
 
+In de bovenste figuur zie je dat de spaanhoek $\gamma$ varieert 
+langs de snijkant van de boor. Hoe groter de spaanhoek hoe meer kracht
+je moet zetten omdat je afschuifhoek kleiner wordt en je afschuifvlak $A$ groter wordt.
+\textit{Hou die twee uit elkaar, afschuifhoek is de hoek tussen 
+hetwerkstuk en het afschuifvalk, de afschuifvlak is het oppervlakte waar er plastische vervorming is.} 
+
 Negatieve spaanhoeken geeft enorm veel krachten en is moeilijker te bewerken omdat de afschuifhoek kleiner is.
+
 Op een boor heb je belangrijke geometrie die andere functies hebben:
 \begin{itemize}
 	\item \textbf{Hoofdsnijvlak}: het primaire snijvlak dat het materiaal losmaakt; draagt de meeste snijkracht en beïnvloedt oppervlaktekwaliteit en snijvermogen.
@@ -1084,8 +1089,7 @@ De vrijloophoek is dus kleiner dan de vrijslijphoek. De voeding gaat ook afhanke
 Net zoals bij draaien zijn er verschillende krachten die op het werkstuk
 en de boor werken tijdens het boren. Deze worden met de theorie van Kienzle berekend. \ref{frm:10}
 
-\newpage
-\begin{wrapfigure}{r}{0.3\linewidth}
+\begin{wrapfigure}{r}{0.4\linewidth}
 	\centering
 	\includegraphics[width=\linewidth]{image43.png}
 	\caption{Krachten op een boor}
@@ -1103,19 +1107,20 @@ wat leidt tot slechte oppervlaktekwaliteit en onnauwkeurige gaten.
 	\item Onevenwicht → scheef boren, variërende diameter en slechte afwerking.
 \end{itemize}
 
-\subsection{gevolgen van onevenwichtige krachten}
-Als de krachten niet in evenwicht zijn, gaan de gaten van je boorn groter zijn en niet
-gelijk over heel het gat.
+\subsection{Gevolgen van onevenwichtige krachten}
+Als de krachten niet evenwichtig zijn gaaat je gatdiameter van 
+afwijken. 8,5mm gat kan afwijken tot 0,2mm. 
 
 
-Net zoals bij draaien worden de krachten, vermogens en momenten berekent met het theorema van Kienzle~\ref{frm:10}.
+\section{Krachten bij Boren}
+Net zoals bij draaien worden de krachten,
+ vermogens en momenten berekent met het theorema van Kienzle~\ref{frm:10}.
 
 \textbf{Belangrijke krachten, vermogens en momenten bij boren:}
 \frm{Voedingskracht}{F_f = k_f \cdot a \cdot f^{(1-e)}}{waarbij $F_f$ de voedingskracht is [\si{N}], $k_f$ de voedingskrachtcoëfficiënt [\si{N/mm^2}], $a$ de snedediepte [\si{mm}], $f$ de voeding [\si{mm/omw}] en $e$ de voedingskrachtsexponent [-].}
 \frm{Verspanningsmoment}{M_c = C_m \cdot d^{x_M} \cdot f^{y_M}}{waarbij $M_c$ het verspanningsmoment is [\si{N.mm}], $C_m$ de momentcoëfficiënt [-], $d$ de diameter [\si{mm}], $f$ de voeding [\si{mm/omw}] en $x_M, y_M$ de momentexponenten [-].}
 \frm{Vermogen bij boren}{P_c = M_c\,\omega = M_c \cdot 2\pi n}{waarbij $P_c$ het vermogen is [\si{W}], $M_c$ het verspaningsmoment [\si{N.m}] en $\omega$ de hoeksnelheid [\si{rad/s}].}
 
-\vspace{0.5cm}
 \section{Keuze van voeding}
 
 Het belangrijkse van de keuze van de voeding is de sterkte van de boor.
@@ -1190,13 +1195,14 @@ De combinatie van deze formules:
 
 \frm{Maximale schuifspanning bij Draaien}{M_d = C_b \cdot d^{x_w}}{waarbij $M_d$ de maximaal toelaatbare schuifspanning is [\si{N.mm}], $C_b$ de schuifspanningcoëfficiënt [\si{N/mm^2}], $d$ de diameter [\si{mm}] en $x_w$ de schuifspanningsexponent [-].}
 
+\vspace{0.5cm}
 
 \frm{Maximale verspanningsmoment}{M_c = a\cdot M_b}{waarbij $M_c$ het verspaningsmoment is [\si{N.mm}], $a$ een factor [-] en $M_b$ het maximale verspanningsmoment [\si{N.mm}].}
 
 
 Samen met het verspanningsmoment:
 
-\noindent\textbf{Afleiding van de maximale voeding $f_{\max}$ (twee methodes)}
+\textbf{Afleiding van de maximale voeding $f_{\max}$ (twee methodes)}
 
 \textbf{2) Via het schuifspanningscriterium:}
 De maximale schuifspanning in de buitenvezel van een ronde doorsnede is
@@ -1224,9 +1230,6 @@ Wanneer \(y_M=1\) en \(x_w-x_M=1\) volgt
 	f_{\max} = \dfrac{C_b}{C_m}\; d,
 \]
 wat overeenkomt met de eenvoudige vorm \(f_{\max}=C\cdot d\).
-
-
-
 
 \frm{Maximale voeding bij boren}{f_{max} = C \cdot d}{waarbij $C$ een constante is [-], $d$ de diameter [\si{mm}] en $f_{max}$ de maximale voeding [\si{mm/omw}].}
 
@@ -1513,6 +1516,7 @@ Het zorgt ervoor dat je heel precies gaten kunt maken met een goede oppervlaktek
 	\end{tikzpicture}
 	\caption{Schematische weergave van ruimen: een ruimer verwijdert een dunne laag materiaal uit een voorgeboord gat voor hoge precisie en gladheid.}
 \end{figure}
+\FloatBarrier
 
 
 \begin{warningbox}[EXAMEN CHECKLIST: BOREN]
@@ -1573,49 +1577,47 @@ Net zoals bij draaien en boren zijn er verschillende krachten die op het werkstu
 en de frees werken tijdens het frezen.
 Ze worden met de theorie van Kienzle berekend.
 
-\begin{figure}[H]
+\begin{wrapfigure}[20]{r}{0.55\textwidth}
 	\centering
-	\includegraphics[width=0.60\textwidth,trim=20 8 14 10,clip]{image46.png}
+	\includegraphics[width=\linewidth]{image46.png}
 	\caption{Krachten op een frees}
 	\label{fig:frees_krachten}
-\end{figure}
+\end{wrapfigure}
 \FloatBarrier
 
-{\small
-	De krachten op de frees zijn voornamelijk de snijkracht $F_c$ en de voedingskracht $F_f$; de terugdrukkracht $F_p$ is meestal kleiner en minder kritisch. Een goed begrip van deze krachten is essentieel voor het optimaliseren van snijparameters en het waarborgen van gereedschapslevensduur.
-}
+	De krachten op de frees zijn voornamelijk de snijkracht $F_c$ en de voedingskracht $F_f$; de terugdrukkracht $F_p$ is meestal kleiner en minder kritisch. 
+	Een goed begrip van deze krachten is essentieel voor het optimaliseren van snijparameters en het waarborgen van gereedschapslevensduur.
 \begin{itemize}
-	\item Snijkracht $F_c$: hoofdkracht die het snijproces aandrijft.
-	\item Voedingskracht $F_f$: kracht die de voeding van de frees aandrijft.
-	\item Terugdrukkracht $F_p$: kracht loodrecht op $F_c$ en $F_f$, meestal kleiner.
+	\item \textbf{Snijkracht $F_c$:} hoofdkracht die het snijproces aandrijft.
+	\item \textbf{Voedingskracht $F_f$:} kracht die de voeding van de frees aandrijft.
+	\item \textbf{Terugdrukkracht $F_p$}: kracht loodrecht op $F_c$ en $F_f$, meestal kleiner.
 \end{itemize}
 
 De snededikte is niet constant omdat je frees ronddraait. Voor berekeningen wordt de gemiddelde snededikte gebruikt.
 \newline
+
 \textbf{BELANGRIJK VOOR EXAMEN}\\
-Je krachten op je frees zijn dus niet constant; zorg dat je dit weet voor het examen. Daarom nemen we het gemiddelde snededikte $h_{gem}$ zodat we toch een berekening hebben voor de kracht.
+Je krachten op je frees zijn dus niet constant.
+zorg dat je dit weet voor het examen. 
+Daarom nemen we het gemiddelde snededikte $h_{gem}$ 
+zodat we toch een berekening hebben voor de kracht.
 
 \textbf{Gemiddelde snededikte bij Frezen:} $h_{gem} = f_z \cdot \sqrt{\dfrac{a}{d}}$\\\small
-\newline
 waarbij $f_z$ de voeding per tand is, $a$ de snedediepte en $d$ de diameter van de frees.
 
-\textbf{Voeding per tand bij Frezen:} $f_z = \dfrac{f}{z_i}$\\\small
-\newline
+\textbf{Voeding per tand bij Frezen:} $f_z = \dfrac{f}{z_i}$
 waarbij $f$ de voeding is en $z_i$ het aantal tanden van de frees.
 
-\textbf{Snijsnelheid bij Frezen:} $v_c = \pi \cdot d \cdot n$\\\small
-\newline
+\textbf{Snijsnelheid bij Frezen:} $v_c = \pi \cdot d \cdot n$
 waarbij $d$ de diameter van de frees is en $n$ het toerental.
 
-\textbf{Ingrijpingshoek bij Frezen:} $\displaystyle \phi = \arccos\!\left(1 - \dfrac{2a}{d}\right) \;\Rightarrow\; \cos\phi = 1 - \dfrac{2a}{d}$.\\\small
-\newline
+\textbf{Ingrijpingshoek bij Frezen:} $\displaystyle \phi = \arccos\!\left(1 - \dfrac{2a}{d}\right) \;\Rightarrow\; \cos\phi = 1 - \dfrac{2a}{d}$.
 waarbij $a$ de snedediepte is en $d$ de diameter van de frees.
 
 \textbf{Tanden per ingrijping}{$z_i = \frac{Q}{360}\cdot z$}
-\newline
 waarbij $z_i$ het aantal tanden per ingrijping is,
 $Q$ de ingrijpingshoek in graden en $z$ het totaal aantal tanden van de frees.
-\newline
+
 
 \frm{Snijkracht bij Frezen}{F_c = k_c \cdot b \cdot h_{gem}^{(1-e)} \cdot z_i}{waarbij $F_c$ de snijkracht is [\si{N}], $k_c$ de snijkrachtcoëfficiënt [\si{N/mm^2}], $b$ de snedebreedte [\si{mm}], $h_{gem}$ de gemiddelde snededikte [\si{mm}], $z_i$ het aantal tanden in de snede [-] en $e$ de snijkrachtexponent [-].}
 
@@ -1641,7 +1643,7 @@ Er zijn twee richtingen van frezen:
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=0.8\textwidth]{image48.png}
+	\includegraphics[width=1\textwidth]{image48.png}
 	\caption{Tegenlopend en meelopend frezen en de krachten die ze creëren}
 	\label{fig:meelopend_tegenlopend}
 \end{figure}
@@ -1718,7 +1720,7 @@ De frees gaat roteren en de bank gaat bewegen in de x,y en z-richting.
     \end{itemize}
 \end{warningbox}
 
-\chapter{Verspanen:Hybridetechnieken}
+\chapter{Verspanen: Hybridetechnieken}
 
 \section{Honen}
 
@@ -1737,6 +1739,7 @@ werkstuk langzaam wordt verplaatst om het slijpproces voort te zetten.
 Honen helpt met het oppervalktekwaliteit tot en met (IT3)
 
 \subsection{Lange-slag Honen}
+\vspace{0.5cm}
 
 \begin{figure}[ht]
 	\centering
@@ -1875,9 +1878,13 @@ je verspaand.
 \subsection*{Extra}
 Herinner je bij algemeen verspanen~\ref{chap:Algemeen verspanen} dat bij heel hoge
 snijsnelheden je een \textbf{Softening effect} had die het makkelijker maakte om te verspanen.
-Bij hoge snelheid verspanen zie je dit effect ook terugkomen. Alle warmte die ook gegenerateerd wordt gaan ook in
+Je werkmateriaal wordt warmer en daarom ductieler.
+
+Bij hoge snelheid verspanen zie je dit effect ook terugkomen. 
+Alle warmte die ook gegenerateerd wordt gaan ook in
 de spanen en gaan dus niet in het werkstuk defunderen en het oppervlakte aantasten.
-\newline
+\textit{Je moet dit effect al kennen in de figuur \ref{verschillende_invloeden_voeding_snedediepte}.}
+
 \textbf{Toepassignen}
 \newline
 Je wilt enorm snel verspanningen doen.
@@ -2428,7 +2435,7 @@ Dikkere lijnen zijn grotere elektrodeslijtage. Bij kortere pulsen heb je grotere
 Dit komt omdat je de elektronen nog in het diëlektricum zitten terwijl de vonk gebeurt. Er zijn dus meer negatieve
 ionen die op de elektrode botsen en materiaal wegnemen.
 
-\subsection{Toepassingen}
+\section{Toepassingen}
 \begin{itemize}
 	\item Vonkerosie laat bewerken van harde materialen toe.
 	\item Je kunt complexe vormen maken die met andere processen moeilijk te maken zijn. Je kunt profielen maken
@@ -2444,7 +2451,7 @@ ionen die op de elektrode botsen en materiaal wegnemen.
 	\label{fig:verschillende_types_vonkerosie.png}
 \end{figure}
 \FloatBarrier
-\subsubsection{Zinkvonkerosie}
+\subsection{Zinkvonkerosie}
 
 \begin{figure}[ht]
 	\centering
@@ -2462,7 +2469,7 @@ Je kunt dus het inverse profiel maken van de elektrode in het werkstuk.
 Je kunt ook enorm kleine delen maken rond de 6 micrometer. Zolang dat de elektrode ook die grote heeft kan je dat maken.
 
 
-\subsubsection{Draadvonkerosie}
+\subsection{Draadvonkerosie}
 Je moet eerst via een gat maken in het werkstuk via zinkvonken of een ander process. Je kunt dan je draad door dat gat steken.
 Je kunt dan op het oppervlakte zagen met die draad.
 \newline
@@ -2472,22 +2479,24 @@ Wat je kunt doen is de polariteit omdraaien
 zodat je alleen met elektronen erodeerd en niet met ionen.
 Zo beschadig je de draad minder.
 \newline
-\subsubsection{Vonkerosie Milling}
+\subsection{Vonkerosie Milling}
 Je hebt een ronde elektrode die ronddraait en zo materiaal weghaalt.
 \newline
 
-\subsubsection{WEDG}
-\textbf{Wire Electro Discharge Grinding} is een proces waarbij een draad als elektrode wordt gebruikt om zeer nauwkeurige en fijne bewerkingen uit te voeren op harde materialen.
+\subsection{WEDG}
+\textbf{Wire Electro Discharge Grinding} 
+is een proces waarbij een draad als elektrode wordt gebruikt om zeer nauwkeurige en fijne bewerkingen 
+uit te voeren op harde materialen.
 
-\subsubsection{Die sinking EDM}
+\subsection{Die sinking EDM}
 Je hebt een elektrode die de vorm heeft van wat je wilt maken.
 \newline
 Je laat die elektrode naar beneden zakken en zo maak je een caviteit in het werkstuk.
-\subsubsection{Milling EDM}
+\subsection{Milling EDM}
 Je hebt een ronde elektrode die ronddraait en zo materiaal weghaalt.
-\subsubsection{Planteair Vonken}
+\subsection{Planteair Vonken}
 Je gaat je elektrode laten ronddraaien en zo grotere caviteiten maken als de elektrode zelf is.
-\subsubsection{Contour Vonken}
+\subsection{Contour Vonken}
 Via NC sturing kan je heel kleine dingen maken zoals matrijzen voor kleine tandwielen.
 Enorm veel microbewerkignen kunnen zo gemaakt worden.
 
@@ -2498,7 +2507,7 @@ De materialen waar je mee moet werken moeten wel elektrisch geleidend zijn. Lage
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=0.3\textwidth]{image70.png}
+	\includegraphics[width=0.4\textwidth]{image70.png}
 	\caption{}
 	\label{fig:image70.png}
 \end{figure}
@@ -2512,14 +2521,14 @@ Tijdens het \textbf{sinteren} wordt dit mengsel van poeders
 onder hoge temperatuur en druk samengeperst tot een solide massa.
 Door dit proces ontstaat een intern netwerk van geleidende paden,
 waardoor de elektrische weerstand voldoende daalt (typisch < $100\,\Omega\text{cm}$) om het vonkproces mogelijk te maken.
-\newline
+
 Wat kan gebeuren als je dit gaat vonkfrezen is dat je scheuren gaat krijgen in het oppervlakte van het
 keramiek. Keramieken zijn bros en dus die hitte kan ervoor zorgen dat er scheuren ontstaan.
 Als er nog eens op gevonkt wordt kunnen er stukken afbreken. We noemen dit \textbf{Spoling}.
-\newline
+
 In de industrie zagen ze dat als ze probeerde keramieken accurater te maken met EDM dat ze enorm veel spoiling hadden.
 Je oppervlakte bij het proberen om het nauwkeuriger te maken werd alleen maar slechter.
-\newline
+
 
 \begin{figure}[ht]
 	\centering
@@ -2660,7 +2669,7 @@ met je \textbf{Etsvloeistof} ga je de delen die dan geen masker hebben worden we
 Je gaat iets meer wegnemen dan wat je wilt langs de binnenkant. Dit noemt \textbf{ondersnijding}.
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=0.3\textwidth]{image75.png}
+	\includegraphics[width=0.4\textwidth]{image75.png}
 	\caption{Wegeroderen van materiaal zonder stroom met etsvloeistof}
 	\label{fig:eroderen_etsvloeistof.png}
 \end{figure}
@@ -2781,7 +2790,7 @@ water wordt bij \textbf{4000 bar} door een kleine opening gepompt.
 Deze kracht is om materiaal te snijden.
 Je kunt hier dikke stukken materiaal mee wegsnijden.
 \newline
-Je hebt geen beinvloede zone, geen hitte dus geen TAZ.
+Je hebt geen beinvloede zone, geen hitte dus geen TAZ (Thermisch Aangetaste Zone).
 Het is ook bruikbaar op andere industrieën zoals voedselindustrie.
 
 \begin{figure}[ht]
@@ -2794,8 +2803,8 @@ Het is ook bruikbaar op andere industrieën zoals voedselindustrie.
 Een extra mogelijk is het gebruik van ijsbollejes om opervlakte te reinigen inplaats van zand.
 Het ijs smelt gewoon weg en je moet geen zand opruimen.
 
-\subsection{Laserstraalbewerking (LBM)}
-\subsubsection{Hoe werk een laser?}
+\section{Laserstraalbewerking (LBM)}
+\subsection{Hoe werk een laser?}
 Een Laser is een geconcentreerde lichtbron die op één specifieke golflengte licht uitzendt met hoge intensiteit en coherentie.
 \newline
 \frm{Laser}{\textbf{L}ight \textbf{A}mplification by \textbf{S}timulated \textbf{E}mission of \textbf{R}adiation}{is een apparaat dat licht versterkt door gestimuleerde emissie van straling.}
@@ -2885,24 +2894,22 @@ Hieronder zijn alle relevante type lasers voor het bewerken van materialen:
 	\label{fig:Type_lasers.png}
 \end{figure}
 
-\textbf{absorbtie van laserlicht}
-\newline
+\subsection{absorptie van laserlicht}
+
+\begin{wrapfigure}[12]{r}{0.52\textwidth}
+	\centering
+	\includegraphics[width=\linewidth]{Reflecteren in functie van de golflengte.png}
+	\caption{}
+	\label{fig:Reflecteren in functie van de golflengte.png}
+\end{wrapfigure}
+\FloatBarrier
+
 Je wilt zoveel mogelijk van de laserenergie laten absorberen door het werkstuk.
 $R+T+A=1$ met R = reflectie, T = transmissie en A = absorptie.
 Je wilt dus een hoge A hebben.
-\newline
-
-\begin{figure}[ht]
-	\centering
-	\includegraphics[width=0.4\textwidth]{Reflecteren in functie van de golflengte.png}
-	\caption{}
-	\label{fig:Reflecteren in functie van de golflengte.png}
-\end{figure}
-\FloatBarrier
 
 In de figuur zie je dat bij staal dat 90 $\%$ van de CO2 laser wordt gereflecteerd. Niet zoals een YAG laser die maar 50 $\%$ reflecteert.
 Hoe ze dit vroeger oploste was de CO2 laser met enorm grote vermogens gebruiken zodat er toch genoeg energie werd geabsorbeerd.
-\newline
 
 Deze verschillen in absorptie komt door de kristalstructuur/moleculaire structuur van het materiaal.
 
@@ -2985,7 +2992,7 @@ Kleine verschillen in hoogte kan dus een groot verschil maken in de grootte van 
 
 De $w_0$ kun je meten met warmtecamera's die de warmte van de laser opneemt. Hieruit kan je dan de BBP berekenen.
 
-\subsubsection{Toepassingen}
+\subsection{Toepassingen}
 \begin{itemize}
 	\item \textbf{Snijden}: Het materiaal wordt lokaal gesmolten of verdampt door de hoge energiedichtheid, vaak ondersteund door een snijgas om de smelt te verwijderen.
 	\item \textbf{Lassen}: Het verbinden van twee delen door ze op het contactvlak te smelten, wat resulteert in een smalle, diepe lasnaad met minimale thermische vervorming.
@@ -3000,7 +3007,7 @@ De $w_0$ kun je meten met warmtecamera's die de warmte van de laser opneemt. Hie
 
 Afhankelijk van de toepassing met je de BBP en het vermogen aanpassen.
 
-\subsubsection{machine gestuurde Lasers, NC lasers}
+\subsection{machine gestuurde Lasers, NC lasers}
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=0.8\textwidth]{NC-lasers.png}
