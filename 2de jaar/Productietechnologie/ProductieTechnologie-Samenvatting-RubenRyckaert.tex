@@ -194,7 +194,8 @@ Precieze toleranties zijn duurder om te produceren.
 \section{Oppervlaktekwaliteit}
 
 \begin{conceptbox}[Ruwheid]
-    De oppervlaktekwaliteit wordt bepaald door de geometrische afwijkingen op microschaal (ruwheid). De belangrijkste parameters zijn $R_a$ (gemiddelde afwijking) en $R_z$ (gemiddelde top-dal hoogte).
+    De oppervlaktekwaliteit wordt bepaald door de geometrische afwijkingen op microschaal (ruwheid).
+	 De belangrijkste parameters zijn $R_a$ (gemiddelde afwijking) en $R_z$ (gemiddelde top-dal hoogte).
 \end{conceptbox}
 
 \begin{itemize}
@@ -276,7 +277,8 @@ Elastische vervorming wordt beschreven door de wet van Hooke:
 \label{chap:Algemeen verspanen}
 \textbf{Dit hoofdstuk is de basis van verspanen en is relevant voor alle verspaningstechnieken.}
 
-Verspannen is het verwijderen van materiaal van een werkstuk. Dit kan door boren, frezen, draaien of slijpen, \ldots Je begint met een ruw werkstuk en verwijdert materiaal totdat je de gewenste vorm en afmetingen hebt.
+Verspannen is het verwijderen van materiaal van een werkstuk. Dit kan door boren, frezen, draaien of slijpen, 
+\ldots Je begint met een ruw werkstuk en verwijdert materiaal totdat je de gewenste vorm en afmetingen hebt.
 
 
 
@@ -293,7 +295,7 @@ Verspannen is het verwijderen van materiaal van een werkstuk. Dit kan door boren
 	\item Materiaalverlies
 	\item Hogere kosten bij grote aantallen
 	\item Langere productietijd
-	\item energieintensies
+	\item Energie-intensief
 	\item Vervuilend (spanen, koelvloeistof)
 \end{itemize}
 
@@ -312,24 +314,44 @@ die geschikt zijn voor verschillende materialen en bewerkingen.
 
 Bij beitelbewerkingen wordt materiaal verwijderd door een scherpe
 beitel over het werkstuk te bewegen.
+Je hebt daarbij deze parameters:
+\begin{itemize}
+	\item Spaanhoek $\gamma$
+	\item Vrijloophoek $\alpha$
+	\item Wighoek $\beta$
+	\item Snedediepte $a$
+	\item Voeding $f$
+	\item Snijsnelheid $v_c$
+	\item Snedebreedte $b$ (hoe breed de beitel is)
+	\item Snededikte $h$ (hoeveel materiaal er per keer wordt verwijderd)
+	\item wrijvingscoëfficiënt $\mu$
+\end{itemize}
+
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.6\textwidth]{image10.png}
+	\includegraphics[width=0.7\textwidth]{image10.png}
 	\caption{Verwijdering van materiaal door een beitel $\to$ creëert spanen}
 	\label{fig:image10}
 \end{figure}
 
-Bij het verspanen met een beitel ontstaan er spanen.
+Bij het verspanen met een beitel ontstaan er \textbf{spanen}.
 Spanen zijn kleine stukjes materiaal die worden verwijderd
 van het werkstuk.
-De grootte van de spanen wordt bepaald door de snedediepte, de voeding, de spaanhoek en de wrijvingscoëfficiënt.\ldots Zometeen meer in detail hierover
+De grootte van de spanen wordt bepaald \textbf{door de snedediepte, de voeding, 
+de spaanhoek en de wrijvingscoëfficiënt.\ldots} Zometeen meer in detail hierover
 
 Spanen is een plastische vervorming van de spanen
 maar het oppervlak van het werkstuk ondergaat ook een elastische vervorming.
-Dit kan leiden tot oppervlaktefouten zoals ruwheid, hardheid, \ldots
+Deze vervomingen scheuren dan delen van het werkstuk af waardoor je fouten krijgt op het oppervlak.
 
+Je hebt verschillende soorten spannen:
+\begin{description}
+	\item[Continue:] Bij ductiele materialen en scherpe beitels. Goede oppervlaktekwaliteit.
+	\item[lamellen:] Bij hogere snededieptes of hardere materialen. Spaan breekt in dunne lagen.
+	\item[brokkelspannen:] Bij brosse materialen. Spaan breekt in kleine brokstukken.
+\end{description}
 
-
+\subsection{Primaire afschuifvlak (shear zone)}
 
 \begin{figure}[ht]
 	\centering
@@ -343,7 +365,7 @@ Dit kan leiden tot oppervlaktefouten zoals ruwheid, hardheid, \ldots
 De afschuifhoek bepaalt de richting waarin de spaan wordt afgesneden.
 Een grotere afschuifhoek leidt tot een betere spaanvorming en minder kracht
 
-\frm{afschuifvlak (shear zone) A}{A = \frac{b*h}{\sin(\phi)}}{waarbij $A$ het afschuifvlak is [\si{mm^2}], $b$ de snedebreedte [\si{mm}], $h$ de snededikte [\si{mm}] en $\phi$ de afschuifhoek [$^\circ$].}
+\frm{Afschuifvlak (shear zone) A}{A = \frac{b*h}{\sin(\phi)}}{waarbij $A$ het afschuifvlak is [\si{mm^2}], $b$ de snedebreedte [\si{mm}], $h$ de snededikte [\si{mm}] en $\phi$ de afschuifhoek [$^\circ$].}
 \vspace{1cm}
 \begin{figure}[ht]
 	\centering
@@ -352,15 +374,18 @@ Een grotere afschuifhoek leidt tot een betere spaanvorming en minder kracht
 	\label{fig:image20}
 \end{figure}
 
-\frm{afschuifkracht}{F = A*\tau}{waarbij $F$ de afschuifkracht is [\si{N}], $A$ het afschuifvlak [\si{mm^2}] en $\tau$ de schuifspanning [\si{N/mm^2}].}
+\frm{Afschuifkracht}{F = A*\tau}{waarbij $F$ de afschuifkracht is [\si{N}], $A$ het afschuifvlak [\si{mm^2}] en $\tau$ de schuifspanning [\si{N/mm^2}].}
 
-Grotere spaanhoek $\to$ kleiner afschuifvlak $\to$ minder kracht nodig om spaan te vormen.
+Grotere spaanhoek $\gamma$ $\to$ kleiner afschuifvlak $A$ $\to$ minder kracht $F$ nodig om spaan te vormen.
 
 
 \subsection{Secundaire afschuifvlak (shear zone)}
-Spanen gaan verwijderd worden en daarbij treedt wrijving op tussen spaan en beitel; dit is het secundaire afschuifvlak. Als je negatieve spaanhoeken $\gamma$ meet, dan is er veel meer wrijving tussen de spaan en de beitel.
+Spanen gaan verwijderd worden en daarbij treedt wrijving op tussen spaan en beitel. Dit is het secundaire afschuifvlak
+ (vlak tussen spaan (groen) en beitel (rood)). 
+Als je \textbf{negatieve spaanhoeken $\gamma$ meet}, dan is er veel meer wrijving tussen de spaan en de beitel (Je contact tussen spaan en beitel is groter).
 
-De belangrijkste snijhoeken bij verspanen zijn de spaanhoek $\gamma$, de wighoek $\beta$, en de vrijloophoek $\alpha$. Deze bepalen samen de benodigde kracht, de gereedschapsslijtage en de uiteindelijke oppervlaktekwaliteit.
+De belangrijkste snijhoeken bij verspanen zijn \textbf{de spaanhoek $\gamma$, de wighoek $\beta$, en de vrijloophoek $\alpha$.} 
+Deze bepalen samen de benodigde kracht, de gereedschapsslijtage en de uiteindelijke oppervlaktekwaliteit.
 
 \begin{itemize}
 	\item \keyterm{Spaanhoek $\gamma$} $\to$ Een grotere hoek betekent dat er minder kracht nodig is voor de spaanvorming. Typische waarden liggen tussen -10° en 30°.
@@ -383,7 +408,8 @@ De belangrijkste snijhoeken bij verspanen zijn de spaanhoek $\gamma$, de wighoek
 \end{itemize}
 
 \begin{examenbox}
-    Ken de drie belangrijkste hoeken ($\gamma, \beta, \alpha$) en hun effect op de snijkracht en warmteontwikkeling. Onthoud de typische bereiken: $\gamma \in [-10^\circ, 30^\circ]$ en $\alpha \in [6^\circ, 10^\circ]$.
+    Ken de drie belangrijkste hoeken ($\gamma, \beta, \alpha$) en hun effect op de snijkracht en warmteontwikkeling. 
+	Onthoud de typische bereiken: $\gamma \in [-10^\circ, 30^\circ]$ en $\alpha \in [6^\circ, 10^\circ]$.
 \end{examenbox}
 
 Deze verschillende hoeken hebben effect op elkaar. Dit is dus een optimalisatieprobleem. Je moet afwegen wat de beste hoeken zijn voor jouw materiaal en bewerking.
@@ -396,11 +422,10 @@ Negatieve spaanhoeken worden gebruikt voor zeer harde materialen.
 
 \subsubsection{Extra info}
 Deze bewerkingen zijn allemaal met ductiele materialen.
-Brosse materialen gaan snel afbrokkelen en hebben dus niet veel elastische vervorming. Je kunt druk uitoefenen op brosse materialen tijdens bewerking; het materiaal gaat zich dan meer ductiel gedragen.
-Hoe oefen je druk uit op materialen? Door een grote spaanhoek te gebruiken,
-die veel spanning creëert.
-
-
+Brosse materialen gaan snel afbrokkelen en hebben dus niet veel elastische vervorming. 
+Je moet dus druk uitoefenen op brosse materialen tijdens bewerking. Het materiaal gaat zich daardoor dan meer ductiel gedragen.
+Hoe oefen je druk uit op materialen? Door een grote spaanhoek te gebruiken maar die creeërt dan weer veel wrijving.
+Je moet dus een compromis zoeken tussen spaanhoek en wrijving.
 
 \begin{figure}[ht]
 	\centering
@@ -412,7 +437,6 @@ die veel spanning creëert.
 
 
 \section{Beweging, snelheden en voedingen, temperaturen, slijtage}
-
 Er zijn verschillende factoren die de kracht op je werkstuk bepalen
 \begin{itemize}
 	\item Snijsnelheid (v)
@@ -462,21 +486,29 @@ Tijdens het bewerken van materialen met een beitel komen er drie belangrijke kra
 	      Afhankelijk van de snijsnelheid $v_c$ en de voeding $f$. is er een andere verdeling van de energie.
 	      \begin{figure}[ht]
 		      \centering
-		      \includegraphics[width=0.4\textwidth]{image21.png}
+		      \includegraphics[width=0.5\textwidth]{image21.png}
 		      \caption{Voeding of snijsnelheid in functie van energieverdeling}
 	      \end{figure}
 \end{itemize}
 
 \section{Factoren bij beitelbewerking}
+Meeste dingen die we nu bekeken hebben zijn bij ideale omstandigheden.
+beitelbewerkingen hebben allemaal effecten op het materiaal. Wie zien er een paar
+\begin{examenbox}
+	Hij gaat deze zoiezo kunnen vragen. \textit{Wat zijn de effecten van beitelbewerkingen op het werkstuk en hoe kan je deze verbeteren of voorkomen?}
+\end{examenbox}
 \begin{itemize}
 	\item \textbf{Opbouwlaag (build-up edge/BUE)}:
-	      Een dunne, hard geworden laag metaal die zich bij lage snijsnelheden ($v_c < 20\,\si{m/min}$) aan de punt van de beitel opbouwt. Deze opbouwrand kan plotseling loslaten en stukken van het werkstukoppervlak meetrekken, wat leidt tot een ruw en "stappig" oppervlak.
+	      Een dunne, hard geworden laag metaal die zich bij lage snijsnelheden ($v_c < 20\,\si{m/min}$) aan de punt van de beitel opbouwt.
+		  Deze zijn scherper dan de bijtel en snijden dan meer af van het werkstuk tot ze plotseling loslaten
+		  en stukken van het werkstukoppervlak meetrekken, wat leidt tot een ruw en \textit{stappig} oppervlak.
 
 	      \begin{examenbox}
-              Onthoud de 3 belangrijkste manieren om BUE te voorkomen: verhoog de snijsnelheid ($v_c$), gebruik effectieve koeling/smering, en zorg voor een scherpe beitel met de juiste coating.
+              Onthoud de 3 belangrijkste manieren om BUE te voorkomen: verhoog de snijsnelheid ($v_c$), 
+			  gebruik effectieve koeling/smering, en zorg voor een scherpe beitel met de juiste coating.
           \end{examenbox}
 
-	      \paragraph{Verbeteren / voorkomen:}
+	      \textbf{Verbeteren / Hoe voorkomen?:}
 	      \begin{itemize}
 		      \item Verhoog de snijsnelheid: bij hogere snelheden wordt het materiaal vloeibaarder en hecht het minder snel.
 		      \item Gebruik koeling of smering: vermindert adhesie tussen spaan en gereedschap.
@@ -484,10 +516,13 @@ Tijdens het bewerken van materialen met een beitel komen er drie belangrijke kra
 		      \item Controleer en vervang gereedschap regelmatig.
 	      \end{itemize}
 
-	\item \textbf{Warmte}:
-	      Verspaningsprocessen genereren extreme hitte (tot wel 800-900°C). Zonder afvoer kan dit leiden tot thermische beschadiging zoals veranderingen in hardheid, ongewenste trekspanningen in het oppervlak en versnelde gereedschapsslijtage.
+		  \item \textbf{Warmte}:
+	      Verspaningsprocessen genereren extreme hitte (tot wel 800-900°C). 
+		  Zonder afvoer kan dit leiden tot thermische beschadiging zoals veranderingen in hardheid,
+		   ongewenste trekspanningen in het oppervlak en versnelde gereedschapsslijtage.
 
-          Warmte wordt op drie locaties gecreëerd: het primaire afschuifvlak, het secundaire afschuifvlak (spaan-gereedschap contact) en het vrijloopvlak (gereedschap-werkstuk contact).
+          Warmte wordt op drie locaties gecreëerd: het primaire afschuifvlak, het secundaire afschuifvlak (spaan-gereedschap contact) en 
+		  het vrijloopvlak (gereedschap-werkstuk contact).
 
 	      Er zijn verschillende manieren om de warmte te beheersen:
 	      \begin{itemize}
@@ -496,11 +531,12 @@ Tijdens het bewerken van materialen met een beitel komen er drie belangrijke kra
 		      \item Spaanafvoer optimaliseren om te voorkomen dat de spaan de warmte teruggeeft aan het werkstuk.
 	      \end{itemize}
 
-	      \begin{figure}[ht]
+	      \begin{figure}[htbp]
 		      \centering
-		      \includegraphics[width=0.7\textwidth]{image18.png}
+		      \includegraphics[width=0.8\textwidth]{image18.png}
 		      \caption{Energieverdeling bij verspanen: de warmte wordt verdeeld over de spaan, de beitel en het werkstuk.}
 	      \end{figure}
+		  \FloatBarrier
 
 	\item \textbf{Spaanvorming}
 
@@ -525,43 +561,75 @@ Tijdens het bewerken van materialen met een beitel komen er drie belangrijke kra
 		      \item Breuk: Afbreken van een stuk
 		      \item Werkstukslijtage: Vlijloopvlak slijtage verhoogd met verbruik van de beitel.
 		      \item Neusslijtage: slijtage aan de punt van de beitel door hoge krachten en temperaturen.
-	      \end{itemize}
+		\end{itemize}
 
-	      \autofig[0.5\textwidth]{image23.png}{}
+		\begin{figure}[htbp]
+			\centering
+			\includegraphics[width=0.40\textwidth]{image23.png}
+			\caption{Voorbeelden van slijtagevormen}
+			\label{fig:slijtage_voorbeelden}
+		\end{figure}
+		\FloatBarrier
 
-	      Je kunt slijtage verminderen door:
+	      \textbf{Je kunt slijtage verminderen door:}
 	      \begin{itemize}
 		      \item Gebruik van coatings op gereedschap (bv. TiN, AlTiN) om wrijving en hitte te verminderen.
 		      \item Optimaliseren van snijsnelheid, voeding en snedediepte om overmatige hitte en krachten te vermijden.
 		      \item Toepassen van koeling en smering om hitte af te voeren en wrijving te verminderen.
 		      \item Tool met lood PB gebruiken
-		            % use the \autofig helper to paste images safely; it auto-generates a sanitized label
-		            \autofig[0.7\textwidth]{image22.png}{}
-		            lood geeft minder slijtage omdat het smerende eigenschappen heeft -> minder wrijving.
+					\begin{figure}[htbp]
+						\centering
+						\includegraphics[width=0.7\textwidth]{image22.png}
+						\caption{Minder slijtage met loodgecoat gereedschap}
+						\label{fig:image22}
+					\end{figure}
+					\FloatBarrier
+		            Lood geeft minder slijtage omdat het smerende eigenschappen heeft $\to$ minder wrijving.
 	      \end{itemize}
 \end{itemize}
 
 
 \section{Snijmaterialen}
-Gereedschappen moeten een combinatie bieden van drie eigenschappen: ze moeten \textbf{hard} zijn (ook bij hoge temperaturen), \textbf{ductiel/taai} (om breuk bij stootbelasting te voorkomen) en \textbf{slijtvast}.
+Gereedschappen moeten een combinatie bieden van drie eigenschappen: 
+ze moeten \textbf{hard} zijn (ook bij hoge temperaturen), \textbf{ductiel/taai} 
+(om breuk bij stootbelasting te voorkomen) en \textbf{slijtvast}.
+
+Dit is een ideaal materiaal maar eigenschappen zijn vaak tegenstrijdig.
+Hardheid en taaiheid zijn vaak tegengesteld: hoe harder een materiaal, hoe brosser het is.
+Je moet dus een compromis zoeken afhankelijk van de toepassing.
 
 \begin{enumerate}
 	\item \textbf{Snelstaal (HSS)} ($v_c \approx 10\text{--}30\,\si{m/min}$): Gehard staal met legeringselementen zoals wolfram of chroom. Goedkoop en taai, maar beperkt tot lage snelheden.
 	\item \textbf{Hardmetaal (WC + Co)}: Bestaat uit wolframcarbide korrels in een kobaltmatrix. Behoudt zijn hardheid tot hogere temperaturen dan HSS.
 	\item \textbf{Gecoate hardmetaal} ($v_c \approx 60\text{--}600\,\si{m/min}$): Dunnegelaagse coatings (TiN, Al$_2$O$_3$) verbeteren de standtijd aanzienlijk.
-	\item \textbf{Keramiek \& Diamant}: Extreem hard en hittebestendig, maar zeer bros. Diamant is ongeschikt voor staal vanwege de chemische affiniteit met ijzer bij hoge temperaturen.
+	\item \textbf{Keramiek \& Diamant}: Extreem hard en hittebestendig, maar zeer bros. Diamant is ongeschikt voor staal omdat de koolstof inslijpt in het staal bij hoge temperaturen.
 \end{enumerate}
 
 \begin{examenbox}
     Ken de relatieve volgorde van snijmaterialen qua snijsnelheid en hardheid: HSS $\to$ Hardmetaal $\to$ Gecoate hardmetaal $\to$ Keramiek $\to$ Diamant.
 \end{examenbox}
 
-\begin{figure}[ht]
+
+\begin{figure}[htbp]
 	\centering
-	\includegraphics[width=0.6\textwidth]{image25.png}
+	\includegraphics[width=0.4\textwidth]{image24.png}
 	\caption{Toepassingsgebieden van verschillende snijmaterialen in functie van snelheid en taaiheid.}
     \label{fig:snijmaterialen_overzicht}
 \end{figure}
+
+
+\begin{wrapfigure}[12]{r}{0.5\textwidth}
+	\centering
+	\includegraphics[width=\linewidth]{image25.png}
+	\caption{Ontwikkeling van snijmaterialen door de tijd heen.}
+	\label{fig:snijmaterialen_ontwikkeling}
+\end{wrapfigure}
+
+Deze materialen zijn door de jaren heen ontworpen zoals in de figuur hieronder.
+
+Je ziet dat machining time enorm daalt door de jaren 
+omdat je met betere snijmaterialen kan werken aan hogere snelheden
+en met minder slijtage.
 
 \subsection{ISO-classificatie van snijmaterialen}
 Snijmaterialen worden volgens ISO-normen in groepen ingedeeld op basis van het werkstukmateriaal:
@@ -578,11 +646,21 @@ Snijmaterialen worden volgens ISO-normen in groepen ingedeeld op basis van het w
     Je moet op het examen de ISO-letters (P, M, K, N) kunnen koppelen aan het juiste werkstukmateriaal.
 \end{examenbox}
 
-\begin{figure}[ht]
+\begin{figure}[htbp]
 	\centering
-	\includegraphics[width=1\textwidth]{image26.png}
+	\includegraphics[width=0.8\textwidth]{image26.png}
 	\caption{Overzicht van de ISO-classificatie van snijmaterialen.}
 \end{figure}
+
+\begin{voorbeeld}
+	In de figuur krijg je HC-K15. Snijmateriaal - materiaalgroep - grade
+	\begin{itemize}
+		\item H = Hardmetaal
+		\item C = Coating
+		\item K = Voor gietijzer
+		\item 15 = Grade (hoger is harder)
+	\end{itemize}
+\end{voorbeeld}
 
 \section{Optimale snijsnelheid}
 
@@ -600,19 +678,54 @@ zodat je zo lang mogelijk met een insert kan werken
 Bij grotere snijsnelheden is er meer slijtage.
 
 \textbf{Je kunt de levensduur van een gereedschap voorspellen met de formule van Taylor:}
-\frm{formule van Taylor}{v_c\, T^n = C}{waarbij $C$ een constante is [-], $n$ een materiaalconstante [-], $T$ de gereedschaplevensduur [\si{min}] en $v_c$ de snijsnelheid [\si{m/min}].}
+\frm{formule van Taylor}{v_c\, T^n = C}{waarbij $C$ een materiaalconstante is [-], $n$ een materiaalconstante [-], 
+$T$ de gereedschaplevensduur [\si{min}] en $v_c$ de snijsnelheid [\si{m/min}].}
+
 
 Deze formule toont aan dat een kleine verhoging van de snijsnelheid leidt tot een zeer grote afname van de gereedschapslevensduur.
 
 \begin{examenbox}
-    Onthoud dat de exponent $n$ afhangt van het snijmateriaal: $n \approx 0.1\text{--}0.2$ voor HSS en $n \approx 0.2\text{--}0.4$ voor hardmetaal. Een kleinere waarde voor $n$ betekent dat de levensduur gevoeliger is voor veranderingen in snijsnelheid.
+    Onthoud dat de exponent $n$ afhangt van het snijmateriaal: $n \approx 0.1\text{--}0.2$ voor HSS en $n \approx 0.2\text{--}0.4$ voor hardmetaal. 
+	Een kleinere waarde voor $n$ betekent dat de levensduur gevoeliger is voor veranderingen in snijsnelheid.
 \end{examenbox}
 
-Voorbeeld: Stel $n = 0.125$. Een verhoging van de snijsnelheid met 50\% ($v_2 = 1.5 v_1$) resulteert in een levensduur die circa 25 keer korter wordt.
+\begin{voorbeeld}
+	Je hebt deze waarden voor snijmateriaal staal Ck 45:
+	\begin{itemize}
+		\item $C = 300$
+		\item $n = 0.22$
+		\item Gewenste levensduur $T = 60\,\si{min}$
+	\end{itemize}
+	Bereken de optimale snijsnelheid $v_c$.
+	\textbf{Oplossing:}
+	\begin{align*}
+		v_c &= \frac{C}{T^n} \\
+		&= \frac{300}{60^{0.22}} \\
+		&\approx 300 / 3.03 \\
+		&\approx 99.01\,\si{m/min}
+	\end{align*}
+\end{voorbeeld}
 
-\begin{figure}[ht]
+\begin{voorbeeld}
+	n = 0.125
+	je verhoogt $v_c$ met 50\%,
+	hoeveeld daalt T?
+	\textbf{Oplossing:}
+	\begin{align*}
+		v_{c2} &= 1.5 \cdot v_{c1} \\
+		v_{c1} T_1^n &= v_{c2} T_2^n \\
+		v_{c1} T_1^n &= 1.5 \cdot v_{c1} T_2^n \\
+		T_1^n &= 1.5 \cdot T_2^n \\
+		\left(\frac{T_1}{T_2}\right)^n &= 1.5 \\
+		\frac{T_1}{T_2} &= 1.5^{\frac{1}{n}} = 1.5^{\frac{1}{0.125}} = 1.5^8 \approx 25.63 \\
+		T_2 &\approx \frac{T_1}{25.63}
+	\end{align*}
+	De levensduur daalt dus met een factor $\sim 25.6$ bij een verhoging van de snijsnelheid met 50\%.
+\end{voorbeeld}
+
+\begin{figure}[htbp]
 	\centering
-	\includegraphics[width=0.8\textwidth]{image28.png}
+	\includegraphics[width=1\textwidth]{image28.png}
 	\caption{Verband tussen snijsnelheid en levensduur volgens Taylor (log-log schaal).}
 \end{figure}
 
@@ -627,19 +740,16 @@ Je kunt hier verschillende bewerkingen mee uitvoeren:
 	\item \textbf{Vlakdraaien}: Het creëren van een vlak oppervlak aan het uiteinde van het werkstuk.
 	\item \textbf{Insteekdraaien}: Het snijden van een groef of het afkappen van een deel van het werkstuk.
 	\item \textbf{Schroefdraad Snijden}: Het creëren van schroefdraad op het oppervlak van het werkstuk.
+	\item \textbf{Afsteken:} Het werkstuk wordt in de lengte doorgesneden.
+	\item \textbf{Profiel Draaien:} Een specifiek profiel van het werkstuk maken die dan gedraaid kan worden.
 \end{enumerate}
 
-\textbf{Extra's:}
-
-\textbf{Kopsteken}: Het werkstuk wordt in de lengte doorgesneden.
-
-\textbf{Profiel draaien:} Een specifiek profiel van het werkstuk maken die dan gedraaid kan worden. Dit is specifiek en dus duur, maar als je veel van dit stuk moet maken kan dit het waard zijn.
-
-\textbf{In de industrie:} Vandaag de dag wordt er veel gebruikgemaakt van computergestuurde machines. CNC-draaien is een geautomatiseerd proces waarbij computergestuurde machines precies draaien volgens digitale ontwerpen. Veel conventionele machines en profieldraaien zijn vervangen door CNC-draaien.
+\textbf{In de industrie:} Vandaag de dag wordt er veel gebruikgemaakt van computergestuurde machines. 
+CNC-draaien is een geautomatiseerd proces waarbij computergestuurde machines precies draaien volgens digitale ontwerpen. Veel conventionele machines en profieldraaien zijn vervangen door CNC-draaien.
 
 \section{Het Draaiproces}
 
-\begin{figure}[ht]
+\begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.45\textwidth]{image29.png}
 	\includegraphics[width=0.45\textwidth]{image30.png}
@@ -651,42 +761,53 @@ Een hellingshoek is de extra hoek die gecreerd wordt door het
 dat je ronde dingen aan het verspanen bent. Je vrijloophoek $\alpha$
 wordt kleiner hierdoor. Je moet dus hiervoor compenseren door een grotere vrijloophoek te gebruiken.
 
+De hellingshoek hangt af van de voeding $f$ en dus bij grotere voedingen moet je grotere 
+vrijloophoeken gebruiken.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.4\textwidth]{hellingshoek.png}
+  \caption{Het effect van ronddraaien op de vrijloophoek}
+  \label{fig:hellingshoek.png}
+ \end{figure}
+
 \section{Krachten bij Draaien}
 
 \begin{conceptbox}[Kienzle-vergelijking]
-    De Kienzle-vergelijking wordt gebruikt om de hoofdsnijkracht $F_c$ te berekenen. Het houdt rekening met de specifieke snijkracht van het materiaal en de spaanvorm (voeding en snedediepte).
+    De Kienzle-vergelijking wordt gebruikt om de hoofdsnijkracht $F_c$ te berekenen. 
+	Het houdt rekening met de specifieke snijkracht van het materiaal en de spaanvorm (voeding en snedediepte).
 \end{conceptbox}
 
+\newpage
 Zoals vermeld in het algemeen Verspannen heb je drie krachten op je werkstuk
 
-\begin{figure}[H]
+\begin{wrapfigure}[20]{r}{0.5\textwidth}
 	\centering
-	\begin{minipage}{0.4\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{image31.png}
-		\caption{Krachten bij Draaien}
-		\label{fig:image31}
-	\end{minipage}\hfill
-	\begin{minipage}{0.4\textwidth}
-		\begin{enumerate}[leftmargin=*]
-			\item De Hoofdsnijkracht ($F_c$): Kracht in de richting van de snijsnelheid.
-			\item De Voedingskracht ($F_f$): Kracht tegengesteld aan de voedingsrichting.
-			\item De Terugdrukkracht ($F_p$): Kracht die de beitel uit het werkstuk duwt.
-		\end{enumerate}
+	\includegraphics[width=\linewidth]{image31.png}
+	\caption{Krachten bij draaien}
+	\label{fig:image31}
+\end{wrapfigure}
 
-		Afhankelijk van de voeding gaan die krachten anders verdeeld zijn.
-		De figuur toont een steekproef van metingen van de krachten bij verschillende voedingen.
-	\end{minipage}
-\end{figure}
-\FloatBarrier
+\noindent
+\begin{enumerate}[leftmargin=*]
+	\item De hoofdsnijkracht ($F_c$): kracht in de richting van de snijsnelheid.
+	\item De voedingskracht ($F_f$): kracht tegengesteld aan de voedingsrichting.
+	\item De terugdrukkracht ($F_p$): kracht die de beitel uit het werkstuk duwt.
+\end{enumerate}
 
-\vspace{0.5\baselineskip}
+Afhankelijk van de voeding worden de krachten anders verdeeld: 
+bij grotere voeding neemt doorgaans $F_f$ sterker toe en verandert de verhouding $F_f/F_c$, 
+wat invloed heeft op opspanning, gereedschapbelasting en oppervlaktekwaliteit. 
+De figuur toont een steekproef van meetwaarden voor verschillende voedingen.
+
 
 \begin{examenbox}
 	Zorg dat je de volgende formules kunt uitleggen. De kienzle vergelijkingen komen overal 
 	bij verspanen terug.
 \end{examenbox}
 
+
+\vspace{2cm}
 De hoofdsnijkracht wordt berekend met de formule van Kienzle:
 \frm{Kienzle vergelijking Hoofdsnijkracht}{F_c = k_c \cdot a\cdot f^{(1-e)}}{waarbij $F_c$ de hoofdsnijkracht is [\si{N}], $k_c$ de snijkrachtcoëfficiënt [\si{N/mm^2}], $a$ de snedediepte [\si{mm}], $f$ de voeding [\si{mm/omw}] en $e$ de snijkrachtexponent [-].}
 
