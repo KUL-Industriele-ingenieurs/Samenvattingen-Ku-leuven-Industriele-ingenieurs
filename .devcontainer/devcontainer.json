@@ -23,8 +23,7 @@
 				"ms-vsliveshare.vsliveshare",
 				"bnavetta.zoterolatex",
 				"dt.ghlink",
-				"esbenp.prettier-vscode",
-				"streetsidesoftware.code-spell-checker"
+				"esbenp.prettier-vscode"
 			],
 			"settings": {
                 "latex-workshop.latex.autoBuild.run": "onSave",

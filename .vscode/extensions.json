@@ -10,7 +10,6 @@
         "ezequielramos.latex-for-humans",
         "xilaitl.vscode-toolbar",
         "usernamehw.errorlens",
-        "esbenp.prettier-vscode",
-        "streetsidesoftware.code-spell-checker"
+        "esbenp.prettier-vscode"
     ]
 }
