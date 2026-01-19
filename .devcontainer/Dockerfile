@@ -1,14 +1,15 @@
-FROM mcr.microsoft.com/devcontainers/base:ubuntu-22.04
+FROM texlive/texlive:latest
 
-# Install TeX Live Full and other dependencies
-# texlive-full: Contains all packages (equivalent to MiKTeX full install)
-# latexmk: Automates the build process
-# chktex: Linter for LaTeX
-# perl: Required by LaTeX Workshop
-RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get -y install --no-install-recommends \
-    texlive-full \
-    latexmk \
-    chktex \
+# Install dependencies:
+# - perl: Required by latexmk (standard Linux Perl, equivalent to Strawberry Perl on Windows)
+# - git: For version control
+# - chktex: For LaTeX linting
+# - python3 & python-is-python3: Required for scripts/create_issues.py
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
     perl \
-    && apt-get clean -y && rm -rf /var/lib/apt/lists/*
+    git \
+    chktex \
+    python3 \
+    python-is-python3 \
+    && rm -rf /var/lib/apt/lists/*
