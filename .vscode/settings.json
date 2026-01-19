@@ -18,11 +18,25 @@
       "name": "latexmk",
       "command": "latexmk",
       "args": [
-        "-pdf",
+        "-shell-escape",
+        "-synctex=1",
         "-interaction=nonstopmode",
         "-file-line-error",
+        "-pdf",
+        "-outdir=%OUTDIR%",
+        "%DOC%"
+      ],
+      "env": {}
+    },
+    {
+      "name": "pdflatex",
+      "command": "pdflatex",
+      "args": [
+        "-shell-escape",
         "-synctex=1",
-        "%DOCFILE%"
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOC%"
       ],
       "env": {}
     },
