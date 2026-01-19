@@ -1,15 +1,16 @@
 FROM texlive/texlive:latest
 
 # Install dependencies:
-# - perl: Required by latexmk (standard Linux Perl, equivalent to Strawberry Perl on Windows)
+# - perl: Required by latexmk (standard Linux Perl)
 # - git: For version control
 # - chktex: For LaTeX linting
-# - python3 & python-is-python3: Required for scripts/create_issues.py
+# - curl, wget, ca-certificates: Required for Dev Container features (common-utils) to download tools
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     perl \
     git \
     chktex \
-    python3 \
-    python-is-python3 \
+    curl \
+    wget \
+    ca-certificates \
     && rm -rf /var/lib/apt/lists/*
