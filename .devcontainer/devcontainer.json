@@ -1,0 +1,24 @@
+{
+	"name": "LaTeX Project",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"James-Yu.latex-workshop",
+				"GitHub.vscode-pull-request-github",
+				"valentjn.vscode-ltex",
+				"tecosaur.latex-utilities",
+				"usernamehw.errorlens",
+				"ms-vsliveshare.vsliveshare",
+				"bnavetta.zoterolatex",
+				"dt.ghlink"
+			],
+			"settings": {
+                "latex-workshop.latex.autoBuild.run": "onSave",
+                "latex-workshop.view.pdf.viewer": "tab"
+            }
+		}
+	}
+}

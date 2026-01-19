@@ -40,6 +40,29 @@ Als je alleen Word kent, is LaTeX misschien even wennen - maar het is perfect vo
 
 **Het resultaat:** Een strakke, professionele PDF die er altijd goed uitziet.
 
+
+---
+
+## 🚀 Snel aan de slag met GitHub Codespaces (Geen installatie nodig!)
+
+Wil je niets installeren op je eigen computer? Of werk je op een andere laptop? Gebruik dan **GitHub Codespaces**. Dit is een volledige ontwikkelomgeving in je browser.
+
+**Hoe werkt het?**
+1. Klik bovenaan deze pagina op de groene knop **<> Code**.
+2. Ga naar het tabblad **Codespaces**.
+3. Klik op **Create codespace on alpha**.
+
+GitHub maakt nu een cloud-computer voor je klaar met VS Code, LaTeX en alle tools die je nodig hebt. Je kunt direct in je browser beginnen met typen en compileren!
+
+**⚠️ Belangrijk: Maak eerst je eigen branch!**
+Je start op de `alpha` branch, maar daar mag je niet direct op werken (je krijgt dan een error).
+1. Klik linksonder in de balk op **alpha**.
+2. Kies **Create new branch...** en geef een naam (bv. `fix-hoofdstuk-1`).
+3. Maak je aanpassingen en commit ze via de **Source Control** tab (links).
+4. Klik in diezelfde tab op **Publish Branch** en daarna op de knop **Create Pull Request** om je werk in te dienen.
+
+> **💡 Tip:** Commit je werk regelmatig (elke 15 min)! In een cloud-omgeving wil je zeker niet dat je werk verloren gaat door een slechte internetverbinding.
+
 ---
 
 ## 🛠️ Setup: Wat heb je nodig?
@@ -240,6 +263,8 @@ git pull origin alpha
 
 Werk nooit direct in `alpha` of `main`! Maak je eigen werkruimte:
 
+> **⚠️ Let op:** Als je probeert te committen naar `alpha` of `main`, krijg je een **ERROR** en wordt je commit geblokkeerd. Dit is beveiliging! Maak dan alsnog een branch aan zoals hieronder beschreven.
+
 **Optie A: Via VS Code (makkelijkst)**
 1. Klik **linksonder** op de branch naam (staat `alpha`)
 2. Klik op **Create new branch...**
@@ -290,8 +315,13 @@ Bouw de PDF om te zien hoe het eruitziet:
 
 ### Stap 5: Sla je wijzigingen op (Commit)
 
-Nu gaan we je werk "committen" - dit betekent: een snapshot maken van je wijzigingen. Doe dit
-regelmatig zodat je werk niet verloren gaat.
+Nu gaan we je werk "committen" - dit betekent: een snapshot maken van je wijzigingen.
+
+> **💡 GOUDEN TIP: Commit VAAK!**
+> Wacht niet tot je klaar bent met alles. Commit elke keer als je een stukje af hebt (bijvoorbeeld elke 10-15 minuten of na elke paragraaf).
+>
+> **Waarom?** Als je computer crasht of je maakt een fout, kun je altijd terug naar je laatste commit. Commit je maar 1x per dag? Dan ben je alles kwijt.
+
 Als je dan aan iets nieuws begint, commit je eerst wat je al gedaan hebt.
 
 **Vergeet niet om je toe te voegen aan auteurs in het begin van het document.**
