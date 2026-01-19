@@ -22,7 +22,9 @@
 				"usernamehw.errorlens",
 				"ms-vsliveshare.vsliveshare",
 				"bnavetta.zoterolatex",
-				"dt.ghlink"
+				"dt.ghlink",
+				"esbenp.prettier-vscode",
+				"streetsidesoftware.code-spell-checker"
 			],
 			"settings": {
                 "latex-workshop.latex.autoBuild.run": "onSave",
