@@ -1,23 +1,37 @@
 # School LaTeX Documents 🎓
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+![Language](https://img.shields.io/badge/Made%20with-LaTeX-47545E?logo=latex&logoColor=white)
+[![Discord](https://img.shields.io/badge/Discord-Join%20Server-5865F2?logo=discord&logoColor=white)](https://discord.gg/gsDzr5qhPe)
+![VS Code](https://img.shields.io/badge/Editor-VS%20Code-007ACC?logo=visualstudiocode&logoColor=white)
+![Git](https://img.shields.io/badge/Tool-Git-F05032?logo=git&logoColor=white)
+
 Welkom bij de samenvattingen voor Industriële Ingenieurswetenschappen aan de KU Leuven! 
 
-Dit is een **open-source project** door en voor studenten. Iedereen kan deze samenvattingen gebruiken en verbeteren. Samen zorgen we voor betere studiematerialen! 🙌
+Deze repository is een **gezamenlijk project** waar studenten professionele samenvattingen maken die iedereen kan gebruiken. Jouw bijdrage - groot of klein - helpt medestudenten enorm. Bedankt dat je hier bent! 🙌
 
 ---
 
-## 🤝 Wil je direct meewerken? (Collaborator worden)
+## Alle Auteurs (voeg je naam toe)
+- **Ruben Ryckaert** 
 
-Standaard moet je een "omweg" gebruiken (forken) om iets aan te passen. Wil je echter vaker helpen, branches direct in dit project aanmaken en Pull Requests reviewen?
 
-**Word Collaborator!** 🚀
-Stuur een berichtje naar **@eggmansmile** op Discord of join de **Industria Discord** (https://discord.gg/gsDzr5qhPe). We voegen je graag toe aan het team!
+## 👋 Nieuw hier? Start hier!
+
+**Nog nooit met Git of LaTeX gewerkt? Geen probleem!** Deze guide neemt je stap voor stap mee. Volg gewoon de instructies hieronder en je bent zo aan de slag.
+
+Heb je vragen of loop je vast? Stuur gerust een berichtje naar **@eggmansmile** op Discord. Wil je graag vaker meewerken en collaborator worden? Laat het me weten! We kunnen altijd extra hulp gebruiken.
+Join de industria discord waar je me zoiezo vindt. https://discord.gg/gsDzr5qhPe. Als je collabirator wilt worden (Je bekijkt af en toe eens veranderingen en kijkt of pull requests goed zijn) stuur me dan ook iets.
+
+Deze documenten gaan je niet de garantie geven voor een goed examenresultaat. Ze zijn bedoeld als hulpmiddel bij je studie. Gebruik ze verstandig en combineer ze met andere studiematerialen.
+- Studforum Cloud — examenvragen en samenvattingen (inloggen vereist): [Open Studforum Cloud](https://cloud.studforum.net/apps/files/?dir=/&fileid=857448)  
+- Studforum Wiki — aanvullende samenvattingen en bronnen en info over de vakken: [Open Studforum Wiki](https://wiki.studforum.net/start)
 
 ---
 
 ## 🛠️ Hoe draag ik bij? (Voor iedereen)
 
-Omdat je (nog) geen schrijfrechten hebt op deze repository, werk je via een **Fork**. Dit is jouw eigen kopie van het project waar je alles mee mag doen wat je wilt.
+Omdat je (standaard) geen schrijfrechten hebt op deze repository, werk je via een **Fork**. Dit is jouw eigen kopie van het project waar je veilig kunt experimenteren.
 
 **Het proces in het kort:**
 1.  **Fork** dit project.
@@ -39,23 +53,16 @@ Hierin ga je typen en je PDF's bekijken.
 ### 2. Git (Versiebeheer)
 Dit programma houdt alle wijzigingen bij en zorgt dat je kunt samenwerken.
 1.  Ga naar [git-scm.com/downloads](https://git-scm.com/downloads).
-2.  Download **"Click here to download"** voor Windows.
-3.  Installeer het (je mag bij alle schermen gewoon op **"Next"** klikken).
+2.  Download **"Click here to download"** voor Windows en installeer het (je mag bij alle schermen op **"Next"** klikken).
 
 ### 3. Strawberry Perl (Nodig voor de achtergrond)
-Onze tools hebben Perl nodig om alles correct te laten werken.
-1.  Ga naar [strawberryperl.com](https://strawberryperl.com/).
-2.  Download de "Recommended" versie (MSI installer) en installeer het.
+Onze tools hebben Perl nodig om alles correct te laten werken op de achtergrond.
+1.  Ga naar [strawberryperl.com](https://strawberryperl.com/) en installeer de "Recommended" versie.
 
 ### 4. MiKTeX (De LaTeX Motor)
 Dit is de motor die jouw code omzet naar een mooie PDF.
-1.  Ga naar [miktex.org/download](https://miktex.org/download).
-2.  Download de **Basic Installer** en start de installatie.
-3.  **⚠️ ZEER BELANGRIJK:**
-    Je krijgt een scherm "Settings" met "Preferred paper" en "Install missing packages on-the-fly".
-    *   Zet **"Install missing packages on-the-fly"** op **"Yes"**.
-    *   *Doe je dit niet? Dan krijg je honderden pop-ups tijdens het werken.*
-4.  Rond de installatie af.
+1.  Ga naar [miktex.org/download](https://miktex.org/download) en download de **Basic Installer**.
+2.  **⚠️ ZEER BELANGRIJK:** Zet tijdens de installatie **"Install missing packages on-the-fly"** op **"Yes"**. 
 
 ### 5. Herstart je computer 🔄
 Windows moet even weten dat al deze nieuwe programma's bestaan.
@@ -64,11 +71,7 @@ Windows moet even weten dat al deze nieuwe programma's bestaan.
 
 ## ☁️ Alternatief: GitHub Codespaces (Geen installatie)
 
-Wil je **niets installeren** of werk je op een andere computer? Gebruik dan de online versie.
-*   **Voordeel:** Je kunt direct beginnen in je browser.
-*   **Nadeel:** Je hebt altijd internet nodig en het is soms iets trager.
-
-**Hoe?**
+Wil je **niets installeren** of ben je op een andere computer? Gebruik dan de online versie in je browser.
 1.  Volg Stap 2 (Forken) hieronder.
 2.  Op de pagina van **JOUW fork**: Klik op de groene knop **<> Code**.
 3.  Ga naar tabblad **Codespaces** en klik op **Create codespace on alpha**.
@@ -78,47 +81,34 @@ Wil je **niets installeren** of werk je op een andere computer? Gebruik dan de o
 ## 📥 Stap 2: Het project opzetten
 
 ### 1. Maak een Fork (Op GitHub)
-1.  Ga naar de bovenkant van deze pagina.
-2.  Klik rechtsboven op de knop **Fork**.
-3.  Klik op **Create Fork**.
-*Nu heb je je eigen kopie van de samenvattingen op jouw profiel.*
+Klik rechtsboven op de knop **Fork** en dan op **Create Fork**. Nu heb je je eigen kopie van de samenvattingen op jouw profiel.
 
 ### 2. Clone JOUW Fork (Op je PC)
 *Sla dit over als je Codespaces gebruikt.*
-
 1.  Open **Visual Studio Code**.
 2.  Open een Terminal (`Ctrl + ``).
-3.  Typ het volgende commando:
-
-```bash
-# VERVANG 'JouwNaam' door jouw GitHub gebruikersnaam!
-git clone https://github.com/JouwNaam/Samenvattingen-Ku-leuven-Industriele-ingenieurs.git
-```
-
-4.  Ga via *File > Open Folder* naar de map die je net hebt binnengehaald.
+3.  Typ het volgende commando (vervang 'JouwNaam' door jouw GitHub gebruikersnaam!):
+    ```bash
+    git clone https://github.com/JouwNaam/Samenvattingen-Ku-leuven-Industriele-ingenieurs.git
+    ```
+4.  Ga via *File > Open Folder* naar de gedownloade map.
 
 ### 3. Link naar het originele project (Upstream)
-*Enkel nodig voor lokale installatie.* Dit zorgt dat je updates van ons kunt binnenhalen.
-Typ in de VS Code terminal:
+Typ in de VS Code terminal om updates te kunnen ontvangen:
 ```bash
 git remote add upstream https://github.com/Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs.git
 ```
 
 ### 4. Extensies
-VS Code vraagt rechtsonder: *"Do you want to install the recommended extensions?"* -> Klik **Install**.
-(Vooral **LaTeX Workshop** en **GitHub Pull Requests** zijn nodig).
+VS Code vraagt rechtsonder om aanbevolen extensies te installeren -> Klik **Install**. (Vooral **LaTeX Workshop** is nodig).
 
 ---
 
 ## 🔄 Stap 3: Je dagelijkse workflow
 
-Elke keer als je iets wilt aanpassen, volg je deze routine.
-
 ### 1. Zorg dat je up-to-date bent (Sync)
-Voordat je begint, moet je jouw fork synchroniseren met het origineel.
-
 *   **Via GitHub:** Ga naar jouw fork, klik **Sync Fork** > **Update branch**.
-*   **Daarna in VS Code:** Klik op het **Sync** icoontje (cirkelpijltjes) bij Source Control (links).
+*   **In VS Code:** Klik op het **Sync** icoontje (cirkelpijltjes) bij Source Control (links).
 
 ### 2. Maak een nieuwe Branch
 Werk nooit direct in `alpha`. Maak een tak voor jouw taak:
@@ -132,14 +122,10 @@ Open de `.tex` bestanden en pas aan.
 *   **Bouw PDF:** Klik op de groene ▶️ knop rechtsboven (`Ctrl+Alt+B`).
 *   **Bekijk PDF:** Klik op het PDF icoontje (`Ctrl+Alt+V`).
 
-> **💡 Tips:**
-> *   Afbeelding invoegen? Kopiëren -> `Ctrl + Alt + V`.
-> *   Meer info? Zie [MACRO_QUICK_REFERENCE.md](MACRO_QUICK_REFERENCE.md).
-
 ### 4. Opslaan & Uploaden
 1.  Ga naar **Source Control** (links).
 2.  Klik op **+** bij je bestanden, typ een bericht en klik op **Commit**.
-3.  Klik op **Publish Branch** (of Sync).
+3.  Klik op **Publish Branch** (of de Sync knop) om het naar GitHub te sturen.
 
 ### 5. Maak een Pull Request (PR)
 1.  Ga naar de **originele repository** (deze pagina).
@@ -149,10 +135,11 @@ Open de `.tex` bestanden en pas aan.
 
 ---
 
-## ❓ Hulp nodig?
+## 📚 Hulpbronnen & Hulp
 
-*   **[Debugging-van-building.md](Debugging-van-building.md)**: Hulp bij errors.
+*   **[MACRO_QUICK_REFERENCE.md](MACRO_QUICK_REFERENCE.md)**: Alle LaTeX commando's voor kaders en formules.
+*   **[Debugging-van-building.md](Debugging-van-building.md)**: Hulp bij PDF errors.
 *   **Issues tab:** Stel je vraag hier op GitHub.
-*   **Discord:** Stuur een berichtje naar **@eggmansmile**.
+*   **Discord:** Contacteer **@eggmansmile**.
 
-Bedankt voor je bijdrage! 🚀
+Bedankt voor je bijdrage! Samen maken we de beste samenvattingen. 🚀
