@@ -1,10 +1,20 @@
 # School LaTeX Documents 🎓
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+![Language](https://img.shields.io/badge/Made%20with-LaTeX-47545E?logo=latex&logoColor=white)
+[![Discord](https://img.shields.io/badge/Discord-Join%20Server-5865F2?logo=discord&logoColor=white)](https://discord.gg/gsDzr5qhPe)
+![VS Code](https://img.shields.io/badge/Editor-VS%20Code-007ACC?logo=visualstudiocode&logoColor=white)
+![Git](https://img.shields.io/badge/Tool-Git-F05032?logo=git&logoColor=white)
+
 Welkom bij de samenvattingen voor Industriële Ingenieurswetenschappen aan de KU Leuven! 
 
 Deze repository is een **gezamenlijk project** waar studenten professionele samenvattingen maken die iedereen kan gebruiken. Jouw bijdrage - groot of klein - helpt medestudenten enorm. Bedankt dat je hier bent! 🙌
 
 ---
+
+## Alle Auteurs (voeg je naam toe)
+- **Ruben Ryckaert** 
+
 
 ## 👋 Nieuw hier? Start hier!
 
@@ -77,7 +87,21 @@ Als je liever niet met commando's werkt, kun je ook [GitHub Desktop](https://des
 ### 🌐 Remote Repositories in VS Code (beter voor samenwerken) 
 Wil je alles rechtstreeks in VS Code doen zonder naar GitHub te gaan?  
 Lees [Remote-Repos.md](Remote-Repos.md) - hier leer je de GitHub Extension gebruiken!
+
 ---
+
+## 🚀 Snel aan de slag? Gebruik GitHub Codespaces! (Geen installatie nodig)
+
+Wil je niets installeren op je computer? Gebruik dan **Codespaces**. Dit is een volledige VS Code omgeving in je browser.
+
+1.  **Fork** dit project eerst.
+2.  Ga naar **JOUW fork** op GitHub.
+3.  Klik op de groene knop **<> Code**.
+4.  Ga naar het tabblad **Codespaces** en klik op **Create codespace on main**.
+5.  GitHub opent nu een online editor waarin alles (LaTeX, Git, extensies) al voor je klaarstaat!
+
+---
+
 
 
 
@@ -222,17 +246,28 @@ Vergeet het handmatig opslaan en importeren van afbeeldingen.
 
 ---
 
+## 🛠️ Hoe draag ik bij? (Voor iedereen)
+
+Omdat je (standaard) geen schrijfrechten hebt op deze repository, werk je via een **Fork**. Dit is jouw eigen kopie van het project waar je veilig kunt experimenteren.
+
+**Het proces in het kort:**
+1.  **Fork** dit project (kopieer naar jouw account).
+2.  **Installeer** de software (of gebruik Codespaces).
+3.  **Branch** & **Edit** in jouw eigen versie.
+4.  **Pull Request** naar ons originele project (`main` branch).
+
+---
+
 ## 🔄 Workflow: Hoe werk je samen aan dit project?
 
 We werken met **branches** (takken). Denk eraan als verschillende versies van het project waar je veilig kunt experimenteren zonder het origineel te breken.
 
 ### 🌳 Wat zijn branches?
 
-- **`main`** - De officiële, stabiele versie (raak deze NOOIT aan)
-- **`alpha`** - De ontwikkelversie waar nieuwe dingen samenkomen
-- **Jouw branch** - Jouw persoonlijke werkruimte
+- **`main`** - De officiële, stabiele versie (deze is beveiligd: je kunt hier niet direct naar pushen)
+- **Jouw branch** - Jouw persoonlijke werkruimte waar je veilig kunt werken
 
-**De regel:** Je werkt altijd in je eigen branch, en vraagt daarna om je wijzigingen toe te voegen.
+**De regel:** Je werkt altijd in je eigen branch op je fork, en vraagt daarna om je wijzigingen toe te voegen aan de `main` branch via een Pull Request.
 
 ---
 
@@ -243,22 +278,22 @@ We werken met **branches** (takken). Denk eraan als verschillende versies van he
 Voordat je begint, haal je de laatste wijzigingen op:
 
 ```bash
-git checkout alpha
-git pull origin alpha
+git checkout main
+git pull origin main
 ```
 
 **Wat doet dit?**
-- `git checkout alpha` - Switch naar de alpha branch
-- `git pull origin alpha` - Download de nieuwste wijzigingen
+- `git checkout main` - Switch naar de main branch
+- `git pull origin main` - Download de nieuwste wijzigingen
 
 ---
 
 ### Stap 2: Maak je eigen branch
 
-Werk nooit direct in `alpha` of `main`! Maak je eigen werkruimte:
+Werk nooit direct in `main`! Maak je eigen werkruimte:
 
 **Optie A: Via VS Code (makkelijkst)**
-1. Klik **linksonder** op de branch naam (staat `alpha`)
+1. Klik **linksonder** op de branch naam (staat `main`)
 2. Klik op **Create new branch...**
 3. Geef een duidelijke naam:
    - ✅ Goed: `typo-fix-productie`, `hoofdstuk-3-mechanica`, `formule-verbetering`
@@ -352,7 +387,7 @@ Nu vraag je of je wijzigingen mogen worden toegevoegd aan het project. Dit heet 
    - Klik op **Compare & pull request**
 
 3. **Vul de PR in:**
-   - **Belangrijk:** Zorg dat `base: alpha` is geselecteerd (NIET `main`!)
+   - **Belangrijk:** Zorg dat `base: main` is geselecteerd!
    - Beschrijf wat je hebt gedaan
    - Klik **Create pull request**
 
@@ -363,12 +398,34 @@ Nu vraag je of je wijzigingen mogen worden toegevoegd aan het project. Dit heet 
 
 ---
 
+## 🐛 Werken met Issues & TODO's
+
+Zie je iets dat nog moet gebeuren of heb je een fout gevonden? Gebruik **GitHub Issues** direct in VS Code!
+
+### 1. Een taak aanmaken via commentaar
+Schrijf in je `.tex` bestand een commentaar dat begint met `% @issue:`.
+```latex
+% @issue: Oefening 4 nog toevoegen
+% Ik heb de opgave al, maar de uitwerking moet nog gebeuren.
+```
+1. Klik op het **lampje 💡** dat verschijnt (of druk `Ctrl + .`).
+2. Kies **"Create issue from comment"**.
+*De taak staat nu op GitHub zodat anderen het ook kunnen zien!*
+
+### 2. Werken aan een Issue
+1. Ga naar **Source Control** (het vertakking-icoontje links).
+2. Onderaan zie je de sectie **GITHUB**.
+3. Rechtermuisklik op een issue en kies **"Start Working on Issue"**.
+*VS Code maakt automatisch een branch voor je aan!*
+
+---
+
 ## 🎯 Quick Reference: Belangrijke Git Commando's
 
 ```bash
 # Start altijd met:
-git checkout alpha
-git pull origin alpha
+git checkout main
+git pull origin main
 
 # Maak een nieuwe branch:
 git checkout -b mijn-nieuwe-branch

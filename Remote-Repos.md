@@ -104,14 +104,14 @@ De (2) betekent: 2 bestanden zijn gewijzigd.
 ## 🌳 Branches Beheren via GitHub Extension
 
 ### Branch Wisselen
-1. Klik op de **branch naam** (staat meestal `alpha` of `main`)
+1. Klik op de **branch naam** (staat meestal `main` of `main`)
 2. Kies een bestaande branch uit de lijst
 3. VS Code wisselt automatisch
 
 ### Nieuwe Branch Aanmaken
 1. Klik op de **branch naam**
 2. Kies **"Create new branch from..."**
-3. Selecteer waar je vanaf maakt (meestal `alpha`)
+3. Selecteer waar je vanaf maakt (meestal `main`)
 4. Geef je branch een naam
 5. Klaar! Je werkt nu in je eigen branch
 
@@ -182,7 +182,7 @@ Na je commits en push:
 3. Vul in:
    - Title
    - Description
-   - **Base branch: alpha** (BELANGRIJK!)
+   - **Base branch: main** (BELANGRIJK!)
 4. Klik **"Create"**
 
 Je PR is nu aangemaakt en wacht op review!
@@ -212,15 +212,15 @@ Let op het **belletje-icoontje** rechtsboven!
 - **Hoe fix je het?** 
   1. Maak een nieuwe branch aan
   2. Je wijzigingen gaan automatisch mee
-  3. Switch terug naar `alpha` en pull
+  3. Switch terug naar `main` en pull
 
 ### ❌ Fout 3: Vergeten te pullen voordat je bewerkt
 - **Waarom slecht?** Je mist wijzigingen van anderen
 - **Hoe voorkomen?** Altijd eerst pullen (Stap 1 van je workflow!)
 
 ### ❌ Fout 4: Verkeerde base branch bij PR
-- **Waarom slecht?** Je PR gaat naar `main` in plaats van `alpha`
-- **Hoe voorkomen?** Controleer altijd dat `base: alpha` is geselecteerd
+- **Waarom slecht?** Je PR gaat naar `main` in plaats van `main`
+- **Hoe voorkomen?** Controleer altijd dat `base: main` is geselecteerd
 
 ---
 
@@ -231,7 +231,7 @@ Dit is wat je meestal doet:
 ```
 1. Open VS Code
    ↓
-2. Source Control → Branch → Switch naar 'alpha'
+2. Source Control → Branch → Switch naar 'main'
    ↓
 3. Source Control → 3 puntjes → Pull
    (Haal nieuwste wijzigingen op)
