@@ -1,6 +1,8 @@
 {
   "latex-workshop.linting.enabled": true,
   "latex-workshop.linting.chktex.enabled": false,
+  "latex-workshop.linting.lacheck.enabled": false,
+  "latex.linter.enabled": false,
   "latex-workshop.linting.ignore": [
     "**/*.aux",
     "**/*.toc",
@@ -16,11 +18,25 @@
       "name": "latexmk",
       "command": "latexmk",
       "args": [
-        "-pdf",
+        "-shell-escape",
+        "-synctex=1",
         "-interaction=nonstopmode",
         "-file-line-error",
+        "-pdf",
+        "-outdir=%OUTDIR%",
+        "%DOC%"
+      ],
+      "env": {}
+    },
+    {
+      "name": "pdflatex",
+      "command": "pdflatex",
+      "args": [
+        "-shell-escape",
         "-synctex=1",
-        "%DOCFILE%"
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOC%"
       ],
       "env": {}
     },
@@ -33,16 +49,9 @@
       "env": {}
     }
   ],
-  "latex-utilities.formattedPaste.image.template": "begin{figure}[ht]\n  \\centering\n  \\includegraphics[width=0.8\\textwidth]{${imageFilePath}}\n  \\caption{${imageCaption}}\n  \\label{fig:${imageFileName}}\n \\end{figure}",
+  "latex-utilities.formattedPaste.image.template": "\\begin{figure}[htbp]\n  \\centering\n  \\includegraphics[width=0.8\\textwidth]{${imageFilePath}}\n  \\caption{${imageCaption}}\n  \\label{fig:${imageFileName}}\n \\end{figure}",
   "latex-utilities.formattedPaste.enabled": true,
   "latex-workshop.latex.recipes": [
-    {
-      "name": "latexmk × 2 (fastest)",
-      "tools": [
-        "latexmk",
-        "latexmk"
-      ]
-    },
     {
       "name": "latexmk",
       "tools": [
@@ -137,7 +146,7 @@
     "TODO",
     "FIXME"
   ],
-  "githubIssues.useBranchForIssues": true,
+  "githubIssues.useBranchForIssues": "on",
   "githubIssues.issueBranchTitle": "issue${issueNumber}",
   "githubIssues.issueCompletionFormatScm": "#${issueNumber}",
   "githubIssues.workingIssueFormatScm": "#${issueNumber}",
@@ -146,19 +155,6 @@
   "ltex.checkFrequency": "save",
   "latex-workshop.latex.build.forceRecipeUsage": false,
   "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
-  "latex-workshop.intellisense.environment.user": {
-    "theorie": {},
-    "theorieblok": {},
-    "schoolconcept": {},
-    "conceptbox": {},
-    "waarschuwing": {},
-    "warningbox": {},
-    "voorbeeld": {},
-    "oefenblok": {},
-    "oefening": {},
-    "codeblock": {},
-    "examenbox": {}
-  },
   "latex-workshop.intellisense.command.user": {
     "concept{}": "{}",
     "belangrijk{}": "{}",
@@ -171,12 +167,35 @@
     "mat{}": "{}",
     "TODO{}": "{}",
     "FIXME{}": "{}",
-    "NOTE{}": "{}"
+    "NOTE{}": "{}",
+        "theorie": "{}",
+    "theorieblok": "{}",
+    "schoolconcept": "{}",
+    "conceptbox": "{}",
+    "waarschuwing": "{}",
+    "warningbox": "{}",
+    "voorbeeld": "{}",
+    "oefenblok": "{}",
+    "oefening": "{}",
+    "codeblock": "{}",
+    "examenbox": "{}"
   },
   "files.exclude": {
     "**/*.log": true,
     "**/*.aux": true,
     "**/*.fdb_latexmk": true,
     "**/*.fls": true
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }
