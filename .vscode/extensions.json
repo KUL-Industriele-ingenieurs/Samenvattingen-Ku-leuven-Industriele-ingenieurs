@@ -9,6 +9,7 @@
         "dt.ghlink",
         "ezequielramos.latex-for-humans",
         "xilaitl.vscode-toolbar",
-        "usernamehw.errorlens"
+        "usernamehw.errorlens",
+        "esbenp.prettier-vscode"
     ]
 }

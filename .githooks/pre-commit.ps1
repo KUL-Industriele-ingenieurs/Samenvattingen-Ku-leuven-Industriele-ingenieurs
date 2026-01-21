@@ -1,7 +1,22 @@
-# Pre-commit hook to automatically manage PDFs:
-# 1. Unstage generated PDFs (those with matching .tex files)
-# 2. Keep reference PDFs (those without matching .tex files)
+# Pre-commit hook to automatically manage PDFs and enforce branch rules
+# 1. Block commits to protected branches (main, alpha)
+# 2. Unstage generated PDFs (those with matching .tex files)
+# 3. Keep reference PDFs (those without matching .tex files)
 
+# --- 1. Enforce Branch Rules ---
+$currentBranch = git rev-parse --abbrev-ref HEAD
+$protectedBranches = @('main', 'master', 'alpha')
+
+if ($protectedBranches -contains $currentBranch) {
+    Write-Host "🛑 ERROR: Direct commits to '$currentBranch' are not allowed!" -ForegroundColor Red
+    Write-Host "--------------------------------------------------------" -ForegroundColor Red
+    Write-Host "Please create your own branch to make changes:" -ForegroundColor Yellow
+    Write-Host "  git checkout -b my-feature-branch" -ForegroundColor White
+    Write-Host "--------------------------------------------------------" -ForegroundColor Red
+    exit 1
+}
+
+# --- 2. Manage PDFs ---
 Write-Host "Checking PDFs..." -ForegroundColor Cyan
 
 # Get all staged PDFs
