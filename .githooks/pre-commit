@@ -1,10 +1,46 @@
 #!/bin/sh
-# Pre-commit hook wrapper for Windows
-# Calls PowerShell script to manage PDFs
+# Pre-commit hook to automatically manage PDFs and enforce branch rules
+# Cross-platform (Windows Git Bash, Linux, macOS)
 
-# Get the directory of this script
-HOOK_DIR="$(cd "$(dirname "$0")" && pwd)"
+# --- 1. Enforce Branch Rules ---
+current_branch=$(git rev-parse --abbrev-ref HEAD)
+protected_branches="main master alpha"
 
-# Run PowerShell script
-powershell.exe -ExecutionPolicy Bypass -File "$HOOK_DIR/pre-commit.ps1"
-exit $?
+for branch in $protected_branches; do
+    if [ "$current_branch" = "$branch" ]; then
+        echo "🛑 ERROR: Direct commits to '$current_branch' are not allowed!"
+        echo "--------------------------------------------------------"
+        echo "Please create your own branch to make changes:"
+        echo "  git checkout -b my-feature-branch"
+        echo "--------------------------------------------------------"
+        exit 1
+    fi
+done
+
+# --- 2. Manage PDFs ---
+echo "Checking PDFs..."
+
+# Get all staged PDFs
+# git diff --cached --name-only returns file paths relative to root
+staged_pdfs=$(git diff --cached --name-only | grep '\.pdf$')
+
+if [ -n "$staged_pdfs" ]; then
+    # Set Internal Field Separator to newline to handle files one by one
+    IFS='
+'
+    for pdf_file in $staged_pdfs; do
+        tex_file="${pdf_file%.pdf}.tex"
+        
+        # Check if matching .tex file exists
+        if [ -f "$tex_file" ]; then
+            echo "Unstaging generated PDF: $pdf_file (matches .tex file)"
+            git reset HEAD "$pdf_file"
+        else
+            echo "Keeping reference PDF: $pdf_file"
+        fi
+    done
+    unset IFS
+fi
+
+echo "PDF check complete."
+exit 0
