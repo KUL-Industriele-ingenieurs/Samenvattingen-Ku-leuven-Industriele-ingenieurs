@@ -23,41 +23,27 @@ Deze repository is een **gezamenlijk project** waar studenten professionele same
 Heb je vragen of loop je vast? Stuur gerust een berichtje naar **@eggmansmile** op Discord. Wil je graag vaker meewerken en collaborator worden? Laat het me weten! We kunnen altijd extra hulp gebruiken.
 Join de industria discord waar je me zoiezo vindt. https://discord.gg/gsDzr5qhPe. Als je collabirator wilt worden (Je bekijkt af en toe eens veranderingen en kijkt of pull requests goed zijn) stuur me dan ook iets.
 
----
-
-## 🤔 Wat is LaTeX eigenlijk?
-
-Als je alleen Word kent, is LaTeX misschien even wennen - maar het is perfect voor technische documenten.
-
-**Het belangrijkste verschil:**
-- **Word:** Je "tekent" je document - je versleept dingen en kiest lettergroottes.
-- **LaTeX:** Je "programmeert" je document - je schrijft tekst en commando's zoals `\section{Hoofdstuk 1}`, en LaTeX zorgt voor de opmaak.
-
-**Waarom LaTeX gebruiken?**
-- ✅ Perfecte wiskundige formules: \(\int_{0}^{\infty} e^{-x} dx\)
-- ✅ Automatische nummering en inhoudsopgave
-- ✅ Professionele layout zonder gedoe
-- ✅ Geen verspringende afbeeldingen of kapotte opmaak
-- ✅ Ideaal voor technische vakken
-
-**Het resultaat:** Een strakke, professionele PDF die er altijd goed uitziet.
+Deze documenten gaan je niet de garantie geven voor een goed examenresultaat. Ze zijn bedoeld als hulpmiddel bij je studie. Gebruik ze verstandig en combineer ze met andere studiematerialen.
+- Studforum Cloud — examenvragen en samenvattingen (inloggen vereist): [Open Studforum Cloud](https://cloud.studforum.net/apps/files/?dir=/&fileid=857448)  
+- Studforum Wiki — aanvullende samenvattingen en bronnen en info over de vakken: [Open Studforum Wiki](https://wiki.studforum.net/start)
 
 ---
 
-## 🛠️ Setup: Wat heb je nodig?
+## 🛠️ Hoe draag ik bij? (Voor iedereen)
 
-Je moet een paar programma's installeren voordat je kunt beginnen. Dit lijkt misschien veel, maar je doet het maar één keer!
+Omdat je (standaard) geen schrijfrechten hebt op deze repository, werk je via een **Fork**. Dit is jouw eigen kopie van het project waar je veilig kunt experimenteren.
 
-### 📦 Overzicht: Wat installeren we?
-
-1. **Visual Studio Code** - De editor waarin je werkt
-2. **Git** - Om samen te werken en versies bij te houden
-3. **LaTeX distributie** - De "compiler" die je code omzet naar PDF
-4. **VS Code extensies** - Extra functies voor LaTeX
+**Het proces in het kort:**
+1.  **Fork** dit project.
+2.  **Installeer** de software (of gebruik Codespaces).
+3.  **Branch** & **Edit** in jouw eigen versie.
+4.  **Pull Request** naar ons originele project.
 
 ---
 
-## 📥 Stap 1: Installeer Visual Studio Code en Git
+## 🚀 Stap 1: Installatie (Aangeraden)
+
+Om optimaal te werken, raden we aan om alles lokaal op je eigen laptop te installeren. Volg deze stappen nauwkeurig, dan ben je in 10-15 minuten klaar.
 
 ### Visual Studio Code (VS Code)
 Dit is de editor waarin je gaat typen. Download en installeer:
@@ -87,21 +73,7 @@ Als je liever niet met commando's werkt, kun je ook [GitHub Desktop](https://des
 ### 🌐 Remote Repositories in VS Code (beter voor samenwerken) 
 Wil je alles rechtstreeks in VS Code doen zonder naar GitHub te gaan?  
 Lees [Remote-Repos.md](Remote-Repos.md) - hier leer je de GitHub Extension gebruiken!
-
 ---
-
-## 🚀 Snel aan de slag? Gebruik GitHub Codespaces! (Geen installatie nodig)
-
-Wil je niets installeren op je computer? Gebruik dan **Codespaces**. Dit is een volledige VS Code omgeving in je browser.
-
-1.  **Fork** dit project eerst.
-2.  Ga naar **JOUW fork** op GitHub.
-3.  Klik op de groene knop **<> Code**.
-4.  Ga naar het tabblad **Codespaces** en klik op **Create codespace on main**.
-5.  GitHub opent nu een online editor waarin alles (LaTeX, Git, extensies) al voor je klaarstaat!
-
----
-
 
 
 
@@ -176,47 +148,10 @@ Clonen betekent: een kopie maken van alle projectbestanden op jouw computer.
 
 ---
 
-## 📁 Stap 5: Open het Project in VS Code
+## 📥 Stap 2: Het project opzetten
 
-Nu de bestanden op je computer staan, kunnen we ze openen:
-
-1. In VS Code: ga naar **File → Open Folder...** (of `Ctrl+K Ctrl+O`)
-2. Navigeer naar de map waar je het project hebt gecloned
-3. Selecteer de map **Samenvattingen-Ku-leuven-Industriele-ingenieurs**
-4. Klik **Open**
-
-Je ziet nu alle projectbestanden in de linker sidebar! 🎉
-
----
-
-## 🚀 Je eerste PDF bouwen
-
-Laten we testen of alles werkt:
-
-1. Open een `.tex` bestand in de linker sidebar (bijvoorbeeld een samenvatting)
-2. Klik rechtsboven op de **groene play knop ▶️** (Build LaTeX project)
-3. Wacht even... de eerste keer duurt wat langer
-4. De PDF verschijnt rechts in beeld!
-
-**Lukt het niet?** Kijk in [Debugging-van-building.md](Debugging-van-building.md) voor hulp.
-
----
-
-## ✍️ Werken met LaTeX in VS Code
-
-Hier zijn de belangrijkste shortcuts om snel te werken:
-
-### 🖼️ Afbeeldingen toevoegen (Snel!)
-Vergeet het handmatig opslaan en importeren van afbeeldingen.
-1. **Kopieer** een afbeelding (Ctrl+C of screenshot)
-2. Ga naar je LaTeX bestand
-3. Druk **`Ctrl + Alt + V`**
-4. VS Code slaat de afbeelding automatisch op in de juiste map én voegt de code toe!
-
-### 🔎 Navigeren (SyncTeX)
-- **Van Code naar PDF:** `Ctrl + Alt + J` (Jump to PDF)
-- **Van PDF naar Code:** **Dubbelklik** ergens in de PDF, en VS Code springt naar de juiste regel in je tekst.
-- **PDF bekijken:** Klik op het icoontje rechtsboven "View LaTeX PDF" of druk `Ctrl + Alt + V` (als je geen image op je klembord hebt).
+### 1. Maak een Fork (Op GitHub)
+Klik rechtsboven op de knop **Fork** en dan op **Create Fork**. Nu heb je je eigen kopie van de samenvattingen op jouw profiel.
 
 ### ⚡ Snelle commando's
 - **Bouwen (Build):** `Ctrl + Alt + B`
@@ -246,28 +181,17 @@ Vergeet het handmatig opslaan en importeren van afbeeldingen.
 
 ---
 
-## 🛠️ Hoe draag ik bij? (Voor iedereen)
-
-Omdat je (standaard) geen schrijfrechten hebt op deze repository, werk je via een **Fork**. Dit is jouw eigen kopie van het project waar je veilig kunt experimenteren.
-
-**Het proces in het kort:**
-1.  **Fork** dit project (kopieer naar jouw account).
-2.  **Installeer** de software (of gebruik Codespaces).
-3.  **Branch** & **Edit** in jouw eigen versie.
-4.  **Pull Request** naar ons originele project (`main` branch).
-
----
-
 ## 🔄 Workflow: Hoe werk je samen aan dit project?
 
 We werken met **branches** (takken). Denk eraan als verschillende versies van het project waar je veilig kunt experimenteren zonder het origineel te breken.
 
 ### 🌳 Wat zijn branches?
 
-- **`main`** - De officiële, stabiele versie (deze is beveiligd: je kunt hier niet direct naar pushen)
-- **Jouw branch** - Jouw persoonlijke werkruimte waar je veilig kunt werken
+- **`main`** - De officiële, stabiele versie (raak deze NOOIT aan)
+- **`alpha`** - De ontwikkelversie waar nieuwe dingen samenkomen
+- **Jouw branch** - Jouw persoonlijke werkruimte
 
-**De regel:** Je werkt altijd in je eigen branch op je fork, en vraagt daarna om je wijzigingen toe te voegen aan de `main` branch via een Pull Request.
+**De regel:** Je werkt altijd in je eigen branch, en vraagt daarna om je wijzigingen toe te voegen.
 
 ---
 
@@ -278,22 +202,22 @@ We werken met **branches** (takken). Denk eraan als verschillende versies van he
 Voordat je begint, haal je de laatste wijzigingen op:
 
 ```bash
-git checkout main
-git pull origin main
+git checkout alpha
+git pull origin alpha
 ```
 
 **Wat doet dit?**
-- `git checkout main` - Switch naar de main branch
-- `git pull origin main` - Download de nieuwste wijzigingen
+- `git checkout alpha` - Switch naar de alpha branch
+- `git pull origin alpha` - Download de nieuwste wijzigingen
 
 ---
 
 ### Stap 2: Maak je eigen branch
 
-Werk nooit direct in `main`! Maak je eigen werkruimte:
+Werk nooit direct in `alpha` of `main`! Maak je eigen werkruimte:
 
 **Optie A: Via VS Code (makkelijkst)**
-1. Klik **linksonder** op de branch naam (staat `main`)
+1. Klik **linksonder** op de branch naam (staat `alpha`)
 2. Klik op **Create new branch...**
 3. Geef een duidelijke naam:
    - ✅ Goed: `typo-fix-productie`, `hoofdstuk-3-mechanica`, `formule-verbetering`
@@ -387,7 +311,7 @@ Nu vraag je of je wijzigingen mogen worden toegevoegd aan het project. Dit heet 
    - Klik op **Compare & pull request**
 
 3. **Vul de PR in:**
-   - **Belangrijk:** Zorg dat `base: main` is geselecteerd!
+   - **Belangrijk:** Zorg dat `base: alpha` is geselecteerd (NIET `main`!)
    - Beschrijf wat je hebt gedaan
    - Klik **Create pull request**
 
@@ -398,34 +322,12 @@ Nu vraag je of je wijzigingen mogen worden toegevoegd aan het project. Dit heet 
 
 ---
 
-## 🐛 Werken met Issues & TODO's
-
-Zie je iets dat nog moet gebeuren of heb je een fout gevonden? Gebruik **GitHub Issues** direct in VS Code!
-
-### 1. Een taak aanmaken via commentaar
-Schrijf in je `.tex` bestand een commentaar dat begint met `% @issue:`.
-```latex
-% @issue: Oefening 4 nog toevoegen
-% Ik heb de opgave al, maar de uitwerking moet nog gebeuren.
-```
-1. Klik op het **lampje 💡** dat verschijnt (of druk `Ctrl + .`).
-2. Kies **"Create issue from comment"**.
-*De taak staat nu op GitHub zodat anderen het ook kunnen zien!*
-
-### 2. Werken aan een Issue
-1. Ga naar **Source Control** (het vertakking-icoontje links).
-2. Onderaan zie je de sectie **GITHUB**.
-3. Rechtermuisklik op een issue en kies **"Start Working on Issue"**.
-*VS Code maakt automatisch een branch voor je aan!*
-
----
-
 ## 🎯 Quick Reference: Belangrijke Git Commando's
 
 ```bash
 # Start altijd met:
-git checkout main
-git pull origin main
+git checkout alpha
+git pull origin alpha
 
 # Maak een nieuwe branch:
 git checkout -b mijn-nieuwe-branch
@@ -491,22 +393,11 @@ Waar werken we aan?
 
 ---
 
-## 💪 Tips voor Succes
+## 📚 Hulpbronnen & Hulp
 
-- **Begin klein:** Fix eerst een typefoutje voordat je een heel hoofdstuk toevoegt
-- **Commit vaak:** Maak regelmatig commits, niet één grote aan het eind
-- **Test je PDF:** Bouw altijd je PDF voordat je pusht
-- **Duidelijke berichten:** Schrijf wat je hebt gedaan, niet "update" of "fix"
-- **Vraag om hulp:** Loop je vast? Stuur gerust een bericht!
+*   **[MACRO_QUICK_REFERENCE.md](MACRO_QUICK_REFERENCE.md)**: Alle LaTeX commando's voor kaders en formules.
+*   **[Debugging-van-building.md](Debugging-van-building.md)**: Hulp bij PDF errors.
+*   **Issues tab:** Stel je vraag hier op GitHub.
+*   **Discord:** Contacteer **@eggmansmile**.
 
----
-
-## 📜 Licentie
-
-Dit project is vrijgegeven onder de **MIT License** - zie het `LICENSE` bestand voor details. Dat betekent: iedereen mag deze samenvattingen gebruiken, aanpassen en delen! 🎓
-
----
-
-**Veel succes en bedankt voor je bijdrage! 🚀**
-
-*Heb je deze guide doorlopen en werkt alles? Laat het weten in een issue of op Discord - we horen graag feedback om deze guide te verbeteren!*
+Bedankt voor je bijdrage! Samen maken we de beste samenvattingen. 🚀

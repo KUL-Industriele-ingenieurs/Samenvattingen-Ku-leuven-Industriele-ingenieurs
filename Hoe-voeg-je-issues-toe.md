@@ -204,9 +204,6 @@ Or use these keywords in your commit:
 
 ## What About the Scripts?
 
-Keep the Python scripts for:
-- **Batch operations**: Create many issues at once
-- **Custom workflows**: If you need something the extension doesn't do
-- **Automation**: CI/CD or automated issue creation
+We used to have Python scripts for batch operations, but we have moved to a fully native workflow using the VS Code extension. This is easier to maintain and works directly in your editor without extra dependencies.
 
-But for daily work, use the native VS Code integration - it's much better!
+Use the native VS Code integration as described above - it's much better!

@@ -1,0 +1,509 @@
+% =============================================================================
+%                    TEMPLATE VOOR CURSUSSAMENVATTING
+%                    KU Leuven - School Macros v4.0
+% =============================================================================
+% Dit is een starttemplate voor nieuwe documenten.
+% Kopieer dit bestand en pas het aan voor je eigen cursus.
+%
+% Tip: Compileer TWEEMAAL voor correcte formularium en symbolenlijst!
+% =============================================================================
+
+\documentclass[a4paper,11pt]{article}
+\usepackage{school-macros}
+\enablecompactmode
+
+% v4.0 Optioneel: Compact Mode voor cheatsheets
+% \enablecompactmode
+
+% =============================================================================
+%                           DOCUMENT INFO
+% =============================================================================
+% Pas deze gegevens aan voor je cursus:
+\newcommand{\vaknaam}{Object gericht-programmeren}
+\newcommand{\auteur}{Ruben Ryckaert}
+
+\title{\vaknaam{} --- Synthax Java}
+\author{\auteur}
+
+\date{\today}
+
+
+% =============================================================================
+%                              DOCUMENT
+% =============================================================================
+\begin{document}
+\maketitle
+
+ 
+\begin{abstract}
+Deze samenvattingen zijn beschikbaar op GitHub waar je kunt bijdragen aan verbeteringen: \url{https://github.com/Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs}
+
+Je bent helemaal vrij en ik raad je zelf aan om info toe te voegen aan de documenten als je de uitleg niet goed vindt.
+Je leert je vak en je raakt dan ook bekend met LaTeX wat handig is voor later.
+\end{abstract}
+
+\vspace{1cm}
+
+
+Je mag voor het examen een \textbf{handgeschreven 
+4-pagina's (2 bladen voor en achter) A4-formularium meenemen} met daarop alles wat je nodig hebt.
+Dit document moet je tonen wat de belangrijkste dingen zijn die je moet weten voor het examen.
+Ik raad ja aan om dit document te lezen en de belangrijkste dingen over te schrijven op je formularium.
+Je hebt ook op studforum grote hoeveelheden oefenexamens staan die je zeker moet maken. 
+\url{https://cloud.studforum.net/apps/files/?dir=/GTS-Fase2/Semester%201/Courses%20After%202021/Nederlandse%20Groep/Objectgerichte%20Softwareontwikkeling&fileid=794166}
+\newline 
+
+W3schools heeft een goede Java tutorial: \url{https://www.w3schools.com/java/}
+Bekijk die zeker als je niet weet wat alles doet. Dit is een goed beginpunt.
+
+
+\section{Basis java}
+\subsection{Import statements}
+Om klassen van andere packages te gebruiken, 
+moeten deze eerst geïmporteerd worden met een import statement.\\
+
+\begin{codeblock}[Import utils]{java}
+    import java.util.*; // importeert alle klassen van de package java.util
+    import java.util.ArrayList; // importeert enkel de ArrayList klasse
+\end{codeblock}
+
+\subsection{Typische Java klasse structuur \& waarden}
+Een typische Java klasse heeft de volgende structuur:
+\begin{codeblock}[Hoe java doc starten?]{java}
+    import java.io.*; //zoals File, FileReader, BufferedReader, etc
+
+    import java.util.*; //zoals ArrayList, Scanner, Random, etc
+    
+
+    public class KlasseNaam  // klasse definitie
+    {
+        // opstellen van variabelen (attributen)
+        private int attribuut1;
+        private String attribuut2;
+        private float attribuut3; // niet alle attributen moeten in de constructor zitten
+        public int attribuut4; // kan ook public zijn 
+
+        // constructor (Je creeert een instance van een klasse met een constructor)
+        public KlasseNaam(int attribuut1, String attribuut2) 
+        {
+            this.attribuut1 = attribuut1;
+            this.attribuut2 = attribuut2;
+        }
+
+        // methoden
+        public void methode1() 
+        {
+            // methode implementatie
+        }
+
+        public int methode2(String parameter) 
+        {
+            // methode implementatie
+            return 0;
+        }
+
+        #alle soorten characters:
+        int #gehele getallen
+        int [] #single dim array
+        int [] [] #multi dim arrays
+
+        String #tekst
+        String [] #array van teksten
+
+        float #decimale getallen
+
+        boolean #true of false
+
+        char #enkel character
+
+        double #decimale getallen (anders dan float)
+        double [] #array van double
+
+        //belangrijke na elke lijn ;
+    }
+\end{codeblock}
+
+\textbf{Public} betekent dat andere klassen deze variabele of methode
+ kunnen gebruiken.
+\textbf{Private} betekent dat alleen deze klasse deze variabele of methode 
+kan gebruiken.
+
+\subsection{Methoden}
+
+een methode zit in je klasse. Hiermee
+kun je functionaliteit toevoegen aan je klasse.
+
+\begin{codeblock}[methode voorbeeld]{java}
+
+    public int #//*return type*// methodeOptelling(int parameter1, int parameter2) 
+    {  
+        int resultaat = parameter1 + parameter2;
+        return resultaat; // geeft het resultaat terug
+
+    }
+
+    //een methode met return type 'void' geeft niets terug:
+    public void methodePrint(String tekst) 
+    {  
+        System.out.println(tekst); // print de tekst naar de console
+    }
+
+    Je kunt alle characters returnen die je wilt.
+\end{codeblock}
+
+\section{If, for en while}
+\subsection{If statements}
+\begin{codeblock}[if statement]{java}
+    if (voorwaarde) {
+        // code die uitgevoerd wordt als de voorwaarde waar is
+    } else if (andereVoorwaarde) 
+    {
+        // code die uitgevoerd wordt als de andere voorwaarde waar is
+    } else 
+    {
+        // code die uitgevoerd wordt als geen van de voorwaarden waar is
+    }
+
+    if en else zijn een sort scan, dus eerst wordt if gedaan en als
+    dat niet waar is, gaat die naar else if en zo verder.
+    Moest je nu gewoon if statements gebruiken, dan worden ze allemaal
+    uitgevoerd.
+
+    Dit zijn belangrijke voorwaarden:
+    ==  // gelijk aan
+    !=  // niet gelijk aan
+    >   // groter dan
+    <   // kleiner dan
+    >=  // groter dan of gelijk aan
+    <=  // kleiner dan of gelijk aan
+    &&  // en
+    ||  // of
+\end{codeblock}
+
+\subsection{For loops}
+\begin{codeblock}[for loop]{java}
+    for (init; voorwaarde; increment) 
+    {
+        // code die herhaald wordt
+    }
+
+    // voorbeeld: print getallen van 0 tot 9
+    for (int i = 0; i < 10; i++) // i begint bij 0, zolang i kleiner is dan 10, verhoog i met 1
+    //vergeet de ; niet tussen de statements (init, voorwaarde, increment)
+    {
+        System.out.println(i); //output is 0 1 2 3 4 5 6 7 8 9
+    }
+\end{codeblock}
+
+\subsection{While loops}
+While loops zijn gelijkaardig aan for loops, maar ze zijn
+meer geschikt voor situaties waarin je niet weet hoeveel iteraties je nodig hebt.
+\begin{codeblock}[while loop]{java}
+    int i = 0; // initialisatie
+    while (i < voorwaarde) // zolang i kleiner is dan de voorwaarde
+     {
+        // code die herhaald wordt zolang de voorwaarde waar is
+        i++; // vergeet niet i aan te passen om een oneindige loop te vermijden
+        i--; // of i verlagen
+    }
+\end{codeblock}
+
+
+\subsection{Arrays}
+
+een array is wiskundig een vector.
+een array van strings zijn gewoon meerdere teksten in 1 variabele.
+\begin{codeblock}[array]{java}
+    // array van gehele getallen met 5 elementen
+    int[] getallen = new int[5];
+
+    // array van strings met 3 elementen
+    String[] namen = new String[3]; // een array zijn lengte is vast. pas op want dit is niet de index.
+
+    // array initialisatie met waarden
+    int[] cijfers = {90, 85, 78, 92, 88};
+
+    // toegang tot array elementen
+    int eersteGetal = getallen[0]; // eerste element (index 0) 
+    String eersteNaam = namen[0]; // eerste element (index 0)
+
+    //belangrijke array functies
+    int lengte = cijfers.length; // lengte van de array
+    int laatsteIndex = cijfers.length - 1; // laatste index van de array
+    int middelsteIndex = cijfers.length / 2; // middelste index van de array
+    int 
+    // itereren over een array
+    for (int i = 0; i < cijfers.length; i++) 
+    {
+        System.out.println(cijfers[i]);
+    }
+
+    je hebt nog een foreach loop. Deze moet je zeker kennen voor ArrayLists maar
+    is ook hier handig.
+
+    for (int cijfer : cijfers) //zorg dat je de : gebruikt in plaats van ;
+    // je zegt dus voor elk cijfer (die gebruik je in de loop) in cijfers (de array)
+    {
+        System.out.println(cijfer);
+    }
+\end{codeblock}
+
+
+\subsection{Multi dim arrays}
+
+\begin{codeblock}[multi dim array]{java}
+    // 2D array (matrix) van gehele getallen met 3 rijen en 4 kolommen
+    int[][] matrix = new int[3][4];
+
+    // initialisatie van een 2D array
+    int[][] tabel = {
+        {1, 2, 3, 4},
+        {5, 6, 7, 8},
+        {9, 10, 11, 12}
+    };
+
+    // toegang tot elementen in een 2D array
+    int element = tabel[1][2]; // element in de tweede rij en derde kolom (waarde is 7)
+
+    // itereren over een 2D array
+    for (int i: tabel) //voor elke rij in tabel
+    {
+        for (int j: matrix[i]) //voor elke kolom in die rij
+        {
+            System.out.println(matrix[i][j]);
+            //output: 1 2 3 4 5 6 7 8 9 10 11 12
+        }
+
+        // je gaat eerst over elke element in de rij en 
+        dan naar de volgende rij.
+    }
+\end{codeblock}
+
+\subsection{ArrayLists}
+een opstelling van een ArrayList:
+
+\begin{codeblock}[arraylist]{java}
+    import java.util.ArrayList; //importeer de ArrayList klasse
+
+    // maak een ArrayList van Strings
+
+    private ArrayList<String> namen;
+
+    in constructor:
+        public MijnKlasse() 
+        {
+            namen = new ArrayList<String>();
+        }
+
+    // voeg elementen toe aan de ArrayList
+    namen.add("Alice");
+    namen.add("Bob");
+    namen.add("Charlie");
+
+    // toegang tot elementen in de ArrayList
+    String eersteNaam = namen.get(0); // eerste element (index 0)
+
+    // verwijder een element uit de ArrayList
+    namen.remove(1); // verwijdert het element op index 1 ("Bob")
+    namen.remove("Bob"); // verwijdert het element "Bob" als het bestaat
+
+    // grootte van de ArrayList
+    int grootte = namen.size(); // aantal elementen in de ArrayList
+
+    // itereren over een ArrayList
+    for (String naam : namen) 
+    {
+        System.out.println(naam);
+        //output: Alice Charlie
+    }
+
+    //arraylists kunnen ook instancies bevatten van
+    andere klassen,
+    bijvoorbeeld een arraylist van personen:
+
+    private ArrayList<Persoon> personen;
+
+    in constructor:
+        public MijnKlasse() 
+        {
+            personen = new ArrayList<Persoon>();
+        }
+
+    // voeg een persoon toe aan de ArrayList
+    public void voegPersoonToe(String naam, int leeftijd) 
+    {
+    personen.add(new Persoon(naam, leeftijd)); //persoon(constructor)
+    }
+
+    Je kunt dan ook methoden van de Persoon klasse gebruiken:
+    //scan die personen boven een bepaalde leeftijd verwijderd 
+    uit de lijst en die teruggeeft
+    public ArrayList<Persoon> verwijderOuderePersonen(int leeftijdsGrens) 
+    {
+        ArrayList<Persoon> verwijderdePersonen = new ArrayList<Persoon>();
+
+        for (Persoon persoon : personen) 
+        {
+            //methode van Persoon klasse
+            if (persoon.getLeeftijd() > leeftijdsGrens) 
+            {
+                verwijderdePersonen.add(persoon);
+                personen.remove(persoon);
+            }
+        }
+    }
+\end{codeblock}
+
+
+\section{Class extends}
+In Java kun je een nieuwe klasse maken die de eigenschappen en methoden van een bestaande klasse overneemt door middel van het sleutelwoord \texttt{extends}. Dit wordt ook wel \textit{inheritance} genoemd.
+
+\begin{codeblock}[class extends]{java}
+    // Bestaande klasse
+    public class Dier 
+    {
+
+    private String naam;
+    private int leeftijd;
+    private String locatie;
+
+    public Dier(String naam, int leeftijd, String locatie) {
+        this.naam = naam;
+        this.leeftijd = leeftijd;
+        this.locatie = locatie;
+        }
+
+        public void getInfo() {
+            System.out.println("Naam: " + naam + ", Leeftijd: " + leeftijd + ", Locatie: " + locatie);
+        }
+    }
+
+    // Nieuwe klasse die Dier uitbreidt
+    public class Hond extends Dier 
+    {
+
+        private String ras;
+
+        public Hond(String naam, int leeftijd, String locatie, String ras) {
+            super(naam, leeftijd, locatie); // roept de constructor van de superklasse Dier aan
+            this.ras = ras;
+        }
+        // je moet methodes niet opnieuw schrijven want een hond is ook een dier
+        public void maakGeluid() {
+            System.out.println("Hond blaft");
+        }
+
+        //alleen hond kan deze methode gebruiken
+        public void speelFetch() {
+            System.out.println("Hond speelt fetch");
+        }
+    }
+
+    // Gebruik van de klassen
+    public class Main 
+    {
+        ArrayList<Dier> dieren = new ArrayList<Dier>();
+        dieren.add(new Dier("Leeuw", 5, "Afrika"));
+        dieren.add(new Hond("Buddy", 3, "Thuis", "Labrador"));
+        //je kunt een hond ook toevoegen omdat een hond een dier is
+
+        for (Dier dier : dieren) {
+            dier.getInfo(); // werkt voor zowel Dier als Hond
+            //dier.maakGeluid(); // Fout: Dier heeft deze methode niet
+            if (dier instanceof Hond) {
+                ((Hond) dier).maakGeluid(); // Correct: cast naar Hond om de methode aan te roepen
+            }
+        }
+    }
+\end{codeblock}
+\section{Scanner}
+
+De code om van de Scanner krijg je op het examen maar niet hoe je die gebruikt.
+\begin{codeblock}[scanner]{java}
+    import java.util.Scanner; //importeer de Scanner klasse
+
+    public class MijnKlasse 
+    {
+    
+    public MijnKlasse() {
+    }
+
+    public int sumOfTwoNumbers(int a, int b) {
+        return a + b;
+    }
+
+public void readFromFile(String filename) {
+  try {
+    Scanner sc = new Scanner(new File(filename));
+    while(sc.hasNext()) 
+    {
+        String line = sc.nextLine();
+        System.out.println(line);
+    }
+    of met integers:
+    while(sc.hasNextInt())
+    {
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        int resultaat = sumOfTwoNumbers(a, b);
+        System.out.println(resultaat);
+    }
+    sc.close();
+  }
+  catch (FileNotFoundException fnfe) 
+  {
+    System.out.println("file not found");
+    }
+    }
+}
+
+//belangrijke methodes van Scanner:
+hasNext(): controleert of er nog meer tokens zijn
+next(): leest het volgende token als een String
+nextInt(): leest het volgende token als een int
+nextLine(): leest de volgende volledige regel als een String
+nextFloat(): leest het volgende token als een float
+nextDouble(): leest het volgende token als een double
+\end{codeblock}
+
+\section{Random}
+
+om willekeurige getallen te genereren in Java, kun je de \texttt{Random} klasse uit de \texttt{java.util} package gebruiken.
+
+\begin{codeblock}[random]{java}
+    import java.util.Random; //importeer de Random klasse
+
+    public class MijnKlasse 
+    {
+    
+    public MijnKlasse() {
+    }
+
+    public void generateRandomNumbers() {
+        Random rand = new Random(); // maak een Random object
+
+        // genereer een willekeurig geheel getal tussen 0 (inclusief) en 100 (exclusief)
+        int randomInt = rand.nextInt(100);
+        System.out.println("Willekeurig geheel getal: " + randomInt);
+
+        // genereer een willekeurig decimaal getal tussen 0.0 (inclusief) en 1.0 (exclusief)
+        float randomFloat = rand.nextFloat();
+        System.out.println("Willekeurig decimaal getal: " + randomFloat);
+
+        // genereer een willekeurig geheel getal binnen een specifiek bereik, bijvoorbeeld tussen 50 en 150
+        int min = 50;
+        int max = 150;
+        int randomInRange = rand.nextInt(max - min) + min;
+        System.out.println("Willekeurig geheel getal tussen " + min + " en " + max + ": " + randomInRange);
+    }
+}
+\end{codeblock}
+
+\section{UML diagrammen}
+% TODO: #63 UML diagrammen uitleggen 
+
+\section{Hashmaps} 
+
+% TODO: #62 dit kwam op het examen maar geen idee wat het is? Iemand uitleggen?
+
+\end{document}
