@@ -45,106 +45,36 @@ Omdat je (standaard) geen schrijfrechten hebt op deze repository, werk je via ee
 
 Om optimaal te werken, raden we aan om alles lokaal op je eigen laptop te installeren. Volg deze stappen nauwkeurig, dan ben je in 10-15 minuten klaar.
 
-### Visual Studio Code (VS Code)
-Dit is de editor waarin je gaat typen. Download en installeer:
-- 🌐 Website: [code.visualstudio.com](https://code.visualstudio.com/)
-- Of via **Windows terminal** (PowerShell):
-  ```powershell
-  winget install --id Microsoft.VisualStudioCode
-  ```
+### 1. Visual Studio Code (De Editor)
+Hierin ga je typen en je PDF's bekijken.
+1.  Ga naar [code.visualstudio.com](https://code.visualstudio.com/).
+2.  Download de **Windows** versie en installeer het.
 
-### Git
-Git is het systeem waarmee we samenwerken en wijzigingen bijhouden.
-- 🌐 Website: [git-scm.com/downloads](https://git-scm.com/downloads)
-- Of via **Windows terminal** (PowerShell):
-  ```powershell
-  winget install --id Git.Git -e --source winget
-  ```
+### 2. Git (Versiebeheer)
+Dit programma houdt alle wijzigingen bij en zorgt dat je kunt samenwerken.
+1.  Ga naar [git-scm.com/downloads](https://git-scm.com/downloads).
+2.  Download **"Click here to download"** voor Windows en installeer het (je mag bij alle schermen op **"Next"** klikken).
 
-**Tijdens installatie van Git:**
-- Alle standaard opties zijn prima
-- Je hoeft niets speciaals te kiezen
+### 3. Strawberry Perl (Nodig voor de achtergrond)
+Onze tools hebben Perl nodig om alles correct te laten werken op de achtergrond.
+1.  Ga naar [strawberryperl.com](https://strawberryperl.com/) en installeer de "Recommended" versie.
 
-#### Optioneel: GitHub Desktop
-Als je liever niet met commando's werkt, kun je ook [GitHub Desktop](https://desktop.github.com/) installeren. Dit geeft een visuele interface voor Git. Deze guide gebruikt wel de command line, omdat dat universeler is.
+### 4. MiKTeX (De LaTeX Motor)
+Dit is de motor die jouw code omzet naar een mooie PDF.
+1.  Ga naar [miktex.org/download](https://miktex.org/download) en download de **Basic Installer**.
+2.  **⚠️ ZEER BELANGRIJK:** Zet tijdens de installatie **"Install missing packages on-the-fly"** op **"Yes"**. 
 
-
-
-### 🌐 Remote Repositories in VS Code (beter voor samenwerken) 
-Wil je alles rechtstreeks in VS Code doen zonder naar GitHub te gaan?  
-Lees [Remote-Repos.md](Remote-Repos.md) - hier leer je de GitHub Extension gebruiken!
----
-
-
-
-## 📝 Stap 2: Installeer een LaTeX Distributie
-
-LaTeX heeft een "compiler" nodig om je `.tex` bestanden om te zetten naar een PDF. Kies het programma voor jouw besturingssysteem:
-
-### Windows/Apple/linux: MiKTeX
-1. Download [MiKTeX](https://miktex.org/download) (kies "Basic Installer")
-2. Installeer het programma
-3. **Belangrijk:** Bij de installatie, kies "**Always install missing packages on-the-fly**"
-   - Dit zorgt dat extra pakketten automatisch worden geïnstalleerd
-   - Anders moet je elk pakket handmatig goedkeuren 😅
-
-
-
-## 🔌 Stap 3: Installeer VS Code Extensies
-
-Extensies geven VS Code superkrachten voor LaTeX.
-
-1. Open **Visual Studio Code**
-2. Klik op het **Extensions** icoontje links (het blokjes-icoon) of druk `Ctrl+Shift+X`
-3. Zoek en installeer deze extensies:
-
-### ✅ LaTeX Workshop (VERPLICHT)
-- 🔍 Zoek: `LaTeX Workshop`
-- 👤 Auteur: James Yu
-- ⭐ Dit is de belangrijkste! Hiermee kun je PDF's bouwen en bekijken.
-
-### ✅ GitHub Pull Requests and Issues (Aangeraden)
-- 🔍 Zoek: `GitHub Pull Requests and Issues`
-- 👤 Auteur: GitHub
-- 📌 Handig voor samenwerken
-
-### ✅ LaTeX – LanguageTool (Optioneel maar handig)
-- 🔍 Zoek: `LaTeX`
-- 👤 Auteur: Julian Valentin
-- 📝 Spellingscontrole en grammatica voor Nederlands
-
-**Test of het werkt:**
-- Na installatie van LaTeX Workshop verschijnt er een **TEX** icoontje in de linker sidebar
+### 5. Herstart je computer 🔄
+Windows moet even weten dat al deze nieuwe programma's bestaan.
 
 ---
-*(niet doen als je remote repo gaat gebruiken)*
-## 📂 Stap 4: Clone dit Repository 
 
-Nu gaan we de bestanden van dit project naar jouw computer downloaden.
+## ☁️ Alternatief: GitHub Codespaces (Geen installatie)
 
-### Wat is "clonen"?
-Clonen betekent: een kopie maken van alle projectbestanden op jouw computer.
-
-### Hoe doe je dat?
-
-1. **Open Visual Studio Code**
-
-2. **Open de Terminal:**
-   - Ga naar: `Terminal → New Terminal`
-   - Of druk: `Ctrl + ` ` (Ctrl + backtick)
-
-3. **Navigeer naar je gewenste map** (bijvoorbeeld Documents):
-   ```bash
-   cd Documents
-   ```
-   *Op Windows kun je ook `cd C:\Users\JouwNaam\Documents` gebruiken*
-
-4. **Clone het repository:**
-   ```bash
-   git clone https://github.com/Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs.git
-   ```
-
-5. **Wacht tot het klaar is** - je ziet "Cloning into..." en daarna "done"
+Wil je **niets installeren** of ben je op een andere computer? Gebruik dan de online versie in je browser.
+1.  Volg Stap 2 (Forken) hieronder.
+2.  Op de pagina van **JOUW fork**: Klik op de groene knop **<> Code**.
+3.  Ga naar tabblad **Codespaces** en klik op **Create codespace on main**.
 
 ---
 
@@ -153,245 +83,63 @@ Clonen betekent: een kopie maken van alle projectbestanden op jouw computer.
 ### 1. Maak een Fork (Op GitHub)
 Klik rechtsboven op de knop **Fork** en dan op **Create Fork**. Nu heb je je eigen kopie van de samenvattingen op jouw profiel.
 
-### ⚡ Snelle commando's
-- **Bouwen (Build):** `Ctrl + Alt + B`
-- **Error?** Open het "LaTeX Workshop" paneel links (TEX icoon) om de log te zien.
+### 2. Clone JOUW Fork (Op je PC)
+*Sla dit over als je Codespaces gebruikt.*
+1.  Open **Visual Studio Code**.
+2.  Open een Terminal (`Ctrl + ``).
+3.  Typ het volgende commando (vervang 'JouwNaam' door jouw GitHub gebruikersnaam!):
+    ```bash
+    git clone https://github.com/JouwNaam/Samenvattingen-Ku-leuven-Industriele-ingenieurs.git
+    ```
+4.  Ga via *File > Open Folder* naar de gedownloade map.
 
----
-
-## ✍️ Werken met LaTeX in VS Code
-
-Hier zijn de belangrijkste shortcuts om snel te werken:
-
-### 🖼️ Afbeeldingen toevoegen (Snel!)
-Vergeet het handmatig opslaan en importeren van afbeeldingen.
-1. **Kopieer** een afbeelding (Ctrl+C of screenshot)
-2. Ga naar je LaTeX bestand
-3. Druk **`Ctrl + Alt + V`**
-4. VS Code slaat de afbeelding automatisch op in de juiste map én voegt de code toe!
-
-### 🔎 Navigeren (SyncTeX)
-- **Van Code naar PDF:** `Ctrl + Alt + J` (Jump to PDF)
-- **Van PDF naar Code:** **Dubbelklik** ergens in de PDF, en VS Code springt naar de juiste regel in je tekst.
-- **PDF bekijken:** Klik op het icoontje rechtsboven "View LaTeX PDF" of druk **`Ctrl + Alt + Shift + P`**.
-
-### ⚡ Snelle commando's
-- **Bouwen (Build):** `Ctrl + Alt + B` (of gewoon opslaan `Ctrl + S`)
-- **Error?** Open het "LaTeX Workshop" paneel links (TEX icoon) om de log te zien.
-
----
-
-## 🔄 Workflow: Hoe werk je samen aan dit project?
-
-We werken met **branches** (takken). Denk eraan als verschillende versies van het project waar je veilig kunt experimenteren zonder het origineel te breken.
-
-### 🌳 Wat zijn branches?
-
-- **`main`** - De officiële, stabiele versie (raak deze NOOIT aan)
-- **`alpha`** - De ontwikkelversie waar nieuwe dingen samenkomen
-- **Jouw branch** - Jouw persoonlijke werkruimte
-
-**De regel:** Je werkt altijd in je eigen branch, en vraagt daarna om je wijzigingen toe te voegen.
-
----
-
-## 📝 Stap-voor-stap: Iets bijdragen
-
-### Stap 1: Begin met een up-to-date versie
-
-Voordat je begint, haal je de laatste wijzigingen op:
-
+### 3. Link naar het originele project (Upstream)
+Typ in de VS Code terminal om updates te kunnen ontvangen:
 ```bash
-git checkout alpha
-git pull origin alpha
+git remote add upstream https://github.com/Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs.git
 ```
 
-**Wat doet dit?**
-- `git checkout alpha` - Switch naar de alpha branch
-- `git pull origin alpha` - Download de nieuwste wijzigingen
+### 4. Extensies
+VS Code vraagt rechtsonder om aanbevolen extensies te installeren -> Klik **Install**. (Vooral **LaTeX Workshop** is nodig).
 
 ---
 
-### Stap 2: Maak je eigen branch
+## 🔄 Stap 3: Je dagelijkse workflow
 
-Werk nooit direct in `alpha` of `main`! Maak je eigen werkruimte:
+### 1. Zorg dat je up-to-date bent (Sync)
+*   **Via GitHub:** Ga naar jouw fork, klik **Sync Fork** > **Update branch**.
+*   **In VS Code:** Klik op het **Sync** icoontje (cirkelpijltjes) bij Source Control (links).
 
-**Optie A: Via VS Code (makkelijkst)**
-1. Klik **linksonder** op de branch naam (staat `alpha`)
-2. Klik op **Create new branch...**
-3. Geef een duidelijke naam:
-   - ✅ Goed: `typo-fix-productie`, `hoofdstuk-3-mechanica`, `formule-verbetering`
-   - ❌ Slecht: `test`, `branch1`, `nieuwe-dingen`
-
-**Optie B: Via Terminal**
+### 2. Maak een nieuwe Branch
+Werk nooit direct in `main`. Maak een tak voor jouw taak:
 ```bash
-git checkout -b jouw-branch-naam
+git checkout main
+git checkout -b vaknaam-hoofdstuk-x
 ```
 
-Je werkt nu in je eigen branch! 🎉
+### 3. Bewerken & Testen
+Open de `.tex` bestanden en pas aan.
+*   **Bouw PDF:** Klik op de groene ▶️ knop rechtsboven (`Ctrl+Alt+B`).
+*   **Bekijk PDF:** Klik op het PDF icoontje (`Ctrl+Alt+V`).
+
+### 4. Opslaan & Uploaden
+1.  Ga naar **Source Control** (links).
+2.  Klik op **+** bij je bestanden, typ een bericht en klik op **Commit**.
+3.  Klik op **Publish Branch** (of de Sync knop) om het naar GitHub te sturen.
+
+### 5. Maak een Pull Request (PR)
+1.  Ga naar de **originele repository** (deze pagina).
+2.  Klik op de gele balk **Compare & pull request**.
+4.  Klik op **Create Pull Request**.
 
 ---
 
-### Stap 3: Maak je wijzigingen
+## Hoe voeg je issues toe?
 
-1. **Open een `.tex` bestand** dat je wilt aanpassen
-2. **Maak je wijzigingen**
-   - Voeg tekst toe
-   - Verbeter formules
-   - Fix typefouten
-3. **Bekijk de macro's:** Lees [MACRO_QUICK_REFERENCE.md](MACRO_QUICK_REFERENCE.md) voor alle beschikbare commando's
-   - `\conceptbox{...}` voor definities
-   - `\frm{...}` voor formules
-   - `\examplebox{...}` voor voorbeelden
+Op github kun je issues toevoegen of verbeteringen voorstellen.
+Je kunt ook in de code issues toevoegen door % @TODO of @issue: ...
 
-**Tip:** Gebruik de commando's uit `school-macros.sty` - zo blijft alles consistent!
-
----
-
-### Stap 4: Test je wijzigingen
-
-Bouw de PDF om te zien hoe het eruitziet:
-
-1. Klik op de **groene play knop ▶️** rechtsboven
-2. Of druk `Ctrl+Alt+B`
-3. Bekijk de PDF rechts
-
-**Ziet het er goed uit?** Dan kun je door naar de volgende stap!
-
----
-
-### Stap 5: Sla je wijzigingen op (Commit)
-
-Nu gaan we je werk "committen" - dit betekent: een snapshot maken van je wijzigingen.
-
-**Via VS Code (aangeraden):**
-
-1. Klik op het **Source Control** icoontje links (vertakking-icoon)
-2. Je ziet alle gewijzigde bestanden
-3. Typ een **duidelijk bericht** in het tekstvak, bijvoorbeeld:
-   - ✅ "Hoofdstuk 3 mechanica toegevoegd"
-   - ✅ "Typefouten in productie samenvatting verbeterd"
-   - ✅ "Formule voor traagheidsmoment gecorrigeerd"
-   - ❌ "update"
-   - ❌ "changes"
-4. Klik op **✓ Commit**
-
-**Via Terminal:**
-```bash
-git add .
-git commit -m "Jouw duidelijke beschrijving"
-```
-
----
-
-### Stap 6: Upload je branch naar GitHub (Push)
-
-Nu uploaden we je branch naar GitHub:
-
-**Via VS Code:**
-- Klik op **Publish Branch** (als het de eerste keer is)
-- Of klik op **Sync Changes** (als je al eerder hebt gepushed)
-
-**Via Terminal:**
-```bash
-git push origin jouw-branch-naam
-```
-
----
-
-### Stap 7: Maak een Pull Request (PR)
-
-Nu vraag je of je wijzigingen mogen worden toegevoegd aan het project. Dit heet een "Pull Request" (PR).
-
-1. **Ga naar GitHub:**
-   - Open [github.com/Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs](https://github.com/Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs)
-
-2. **Je ziet een gele banner:**
-   - "Your recently pushed branches: jouw-branch-naam"
-   - Klik op **Compare & pull request**
-
-3. **Vul de PR in:**
-   - **Belangrijk:** Zorg dat `base: alpha` is geselecteerd (NIET `main`!)
-   - Beschrijf wat je hebt gedaan
-   - Klik **Create pull request**
-
-4. **Wacht op review:**
-   - Een beheerder kijkt je werk na
-   - Eventuele feedback wordt gegeven
-   - Bij goedkeuring wordt je werk toegevoegd! 🎉
-
----
-
-## 🎯 Quick Reference: Belangrijke Git Commando's
-
-```bash
-# Start altijd met:
-git checkout alpha
-git pull origin alpha
-
-# Maak een nieuwe branch:
-git checkout -b mijn-nieuwe-branch
-
-# Bekijk welke branch je gebruikt:
-git branch
-
-# Bekijk wat je hebt gewijzigd:
-git status
-
-# Commit wijzigingen:
-git add .
-git commit -m "Beschrijving van wijzigingen"
-
-# Upload naar GitHub:
-git push origin mijn-branch-naam
-```
-
----
-
-## 📚 Nuttige Documenten
-
-- **[MACRO_QUICK_REFERENCE.md](MACRO_QUICK_REFERENCE.md)** - Spiekbriefje voor alle LaTeX commando's (formules, kaders, figuren)
-- **[Hoe-voeg-je-issues-toe.md](Hoe-voeg-je-issues-toe.md)** - Hoe je TODO's en fouten rapporteert
-- **[Debugging-van-building.md](Debugging-van-building.md)** - Hulp als je PDF niet wil compileren
-
----
-
-## 🐛 Foutje gevonden?
-
-Super dat je meehelpt!
-
-**Klein probleem (typefout, kleine correctie):**
-- Fix het zelf via de workflow hierboven!
-
-**Groot probleem of twijfel:**
-1. **In de code:** Voeg een commentaar toe: `% @issue: Beschrijving van het probleem`
-2. **Via GitHub:** Ga naar het tabblad "Issues" en klik "New Issue"
-
-**Vragen of hulp nodig?**
-- Stuur een berichtje naar **@eggmansmile** op Discord
-
----
-
-## 🤝 Collaborator worden?
-
-Werk je regelmatig mee en wil je meer mogelijkheden? Stuur een berichtje naar **@eggmansmile** op Discord en we maken je graag collaborator! Dan kun je:
-- Direct branches beheren
-- Pull requests reviewen
-- Issues labelen en sluiten
-
----
-
-## 🗺️ Roadmap
-
-Waar werken we aan?
-
-- ✅ **Setup documentatie** - Duidelijke installatie-instructies voor beginners
-- 🔄 **Data acquisitie** - Verzamelen van oefenopgaven en samenvattingen
-- 🔄 **Herwerking** - Oude documenten updaten naar de nieuwe stijl (`school-macros.sty`)
-- 📋 **Automatisering** - Automatische PDF builds via GitHub Actions
-- 📋 **Online preview** - Samenvattingen online kunnen bekijken zonder te downloaden
-
----
+Bekijk **[Hoe-voeg-je-issues-toe.md](Hoe-voeg-je-issues-toe.md)** voor meer info.
 
 ## 📚 Hulpbronnen & Hulp
 
