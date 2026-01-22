@@ -1,5 +1,11 @@
 # School LaTeX Documents 🎓
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+![Language](https://img.shields.io/badge/Made%20with-LaTeX-47545E?logo=latex&logoColor=white)
+[![Discord](https://img.shields.io/badge/Discord-Join%20Server-5865F2?logo=discord&logoColor=white)](https://discord.gg/gsDzr5qhPe)
+![VS Code](https://img.shields.io/badge/Editor-VS%20Code-007ACC?logo=visualstudiocode&logoColor=white)
+![Git](https://img.shields.io/badge/Tool-Git-F05032?logo=git&logoColor=white)
+
 Welkom bij de samenvattingen voor Industriële Ingenieurswetenschappen aan de KU Leuven! 
 
 Deze repository is een **gezamenlijk project** waar studenten professionele samenvattingen maken die iedereen kan gebruiken. Jouw bijdrage - groot of klein - helpt medestudenten enorm. Bedankt dat je hier bent! 🙌
@@ -23,40 +29,21 @@ Deze documenten gaan je niet de garantie geven voor een goed examenresultaat. Ze
 
 ---
 
-## 🤔 Wat is LaTeX eigenlijk?
+## 🛠️ Hoe draag ik bij? (Voor iedereen)
 
-Als je alleen Word kent, is LaTeX misschien even wennen - maar het is perfect voor technische documenten.
+Omdat je (standaard) geen schrijfrechten hebt op deze repository, werk je via een **Fork**. Dit is jouw eigen kopie van het project waar je veilig kunt experimenteren.
 
-**Het belangrijkste verschil:**
-- **Word:** Je "tekent" je document - je versleept dingen en kiest lettergroottes.
-- **LaTeX:** Je "programmeert" je document - je schrijft tekst en commando's zoals `\section{Hoofdstuk 1}`, en LaTeX zorgt voor de opmaak.
-
-**Waarom LaTeX gebruiken?**
-- ✅ Perfecte wiskundige formules: \(\int_{0}^{\infty} e^{-x} dx\)
-- ✅ Automatische nummering en inhoudsopgave
-- ✅ Professionele layout zonder gedoe
-- ✅ Geen verspringende afbeeldingen of kapotte opmaak
-- ✅ Ideaal voor technische vakken
-
-**Het resultaat:** Een strakke, professionele PDF die er altijd goed uitziet.
+**Het proces in het kort:**
+1.  **Fork** dit project.
+2.  **Installeer** de software (of gebruik Codespaces).
+3.  **Branch** & **Edit** in jouw eigen versie.
+4.  **Pull Request** naar ons originele project.
 
 ---
 
-## 🛠️ Setup: Wat heb je nodig?
+## 🚀 Stap 1: Installatie (Aangeraden)
 
-Je moet een paar programma's installeren voordat je kunt beginnen. Dit lijkt misschien veel, maar je doet het maar één keer!
-
-### 📦 Overzicht: Wat installeren we?
-
-1. **Visual Studio Code** - De editor waarin je werkt
-2. **Git** - Om samen te werken en versies bij te houden
-3. **Strawberry Perl** Nodig voor latex te compileren
-4. **LaTeX distributie** - De "compiler" die je code omzet naar PDF
-5. **VS Code extensies** - Extra functies voor LaTeX
-
----
-
-## 📥 Stap 1: Installeer Visual Studio Code en Git
+Om optimaal te werken, raden we aan om alles lokaal op je eigen laptop te installeren. Volg deze stappen nauwkeurig, dan ben je in 10-15 minuten klaar.
 
 ### Visual Studio Code (VS Code)
 Dit is de editor waarin je gaat typen. Download en installeer:
@@ -78,32 +65,60 @@ Git is het systeem waarmee we samenwerken en wijzigingen bijhouden.
 - Alle standaard opties zijn prima
 - Je hoeft niets speciaals te kiezen
 
-### Optioneel: GitHub Desktop
+#### Optioneel: GitHub Desktop
 Als je liever niet met commando's werkt, kun je ook [GitHub Desktop](https://desktop.github.com/) installeren. Dit geeft een visuele interface voor Git. Deze guide gebruikt wel de command line, omdat dat universeler is.
 
 
 
-### 🌐 Remote repositories (optioneel)
-
+### 🌐 Remote Repositories in VS Code (beter voor samenwerken) 
 Wil je alles rechtstreeks in VS Code doen zonder naar GitHub te gaan?  
-Lees [Remote-Repos.md](Remote-Repos.md) — hier leer je de GitHub Extension gebruiken!
+Lees [Remote-Repos.md](Remote-Repos.md) - hier leer je de GitHub Extension gebruiken!
+---
+
+
 
 ## 📝 Stap 2: Installeer een LaTeX Distributie
 
 LaTeX heeft een "compiler" nodig om je `.tex` bestanden om te zetten naar een PDF. Kies het programma voor jouw besturingssysteem:
 
-### Windows/macOS/Linux: MiKTeX
-1. Download [MiKTeX](https://miktex.org/download) (kies "Basic Installer").
-2. Installeer het programma.
-3. **Belangrijk:** bij de installatie kies "**Always install missing packages on-the-fly**"  
-   - Dit zorgt dat extra pakketten automatisch worden geïnstalleerd.  
-   - Anders moet je elk pakket handmatig goedkeuren.
+### Windows/Apple/linux: MiKTeX
+1. Download [MiKTeX](https://miktex.org/download) (kies "Basic Installer")
+2. Installeer het programma
+3. **Belangrijk:** Bij de installatie, kies "**Always install missing packages on-the-fly**"
+   - Dit zorgt dat extra pakketten automatisch worden geïnstalleerd
+   - Anders moet je elk pakket handmatig goedkeuren 😅
 
-### Strawberry Perl
-LaTeX Workshop (de VS Code extensie) heeft Perl nodig om sommige taken uit te voeren.  
-1. Download [Strawberry Perl](http://strawberryperl.com/) (kies de nieuwste versie).
 
-## 📂 Stap 3: Clone dit repository (niet doen als je remote repo gebruikt)
+
+## 🔌 Stap 3: Installeer VS Code Extensies
+
+Extensies geven VS Code superkrachten voor LaTeX.
+
+1. Open **Visual Studio Code**
+2. Klik op het **Extensions** icoontje links (het blokjes-icoon) of druk `Ctrl+Shift+X`
+3. Zoek en installeer deze extensies:
+
+### ✅ LaTeX Workshop (VERPLICHT)
+- 🔍 Zoek: `LaTeX Workshop`
+- 👤 Auteur: James Yu
+- ⭐ Dit is de belangrijkste! Hiermee kun je PDF's bouwen en bekijken.
+
+### ✅ GitHub Pull Requests and Issues (Aangeraden)
+- 🔍 Zoek: `GitHub Pull Requests and Issues`
+- 👤 Auteur: GitHub
+- 📌 Handig voor samenwerken
+
+### ✅ LaTeX – LanguageTool (Optioneel maar handig)
+- 🔍 Zoek: `LaTeX`
+- 👤 Auteur: Julian Valentin
+- 📝 Spellingscontrole en grammatica voor Nederlands
+
+**Test of het werkt:**
+- Na installatie van LaTeX Workshop verschijnt er een **TEX** icoontje in de linker sidebar
+
+---
+*(niet doen als je remote repo gaat gebruiken)*
+## 📂 Stap 4: Clone dit Repository 
 
 Nu gaan we de bestanden van dit project naar jouw computer downloaden.
 
@@ -112,71 +127,37 @@ Clonen betekent: een kopie maken van alle projectbestanden op jouw computer.
 
 ### Hoe doe je dat?
 
-1. Open Visual Studio Code.
-2. Open de Terminal: Terminal → New Terminal, of druk Ctrl+` (Ctrl + backtick).
-3. Navigeer naar je gewenste map, bijvoorbeeld Documents:
-```bash
-cd Documents
-```
-*Op Windows kun je ook `cd C:\Users\JouwNaam\Documents` gebruiken.*
+1. **Open Visual Studio Code**
 
-4. Clone het repository:
-```bash
-git clone https://github.com/Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs.git
-```
+2. **Open de Terminal:**
+   - Ga naar: `Terminal → New Terminal`
+   - Of druk: `Ctrl + ` ` (Ctrl + backtick)
 
-5. Wacht tot het klaar is — je ziet "Cloning into..." en daarna "done".
+3. **Navigeer naar je gewenste map** (bijvoorbeeld Documents):
+   ```bash
+   cd Documents
+   ```
+   *Op Windows kun je ook `cd C:\Users\JouwNaam\Documents` gebruiken*
 
-## 📁 Stap 4: Open het project in VS Code
+4. **Clone het repository:**
+   ```bash
+   git clone https://github.com/Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs.git
+   ```
 
-Nu de bestanden op je computer staan, kunnen we ze openen:
+5. **Wacht tot het klaar is** - je ziet "Cloning into..." en daarna "done"
 
-1. In VS Code: ga naar File → Open Folder... (of druk `Ctrl+K Ctrl+O`).
-2. Navigeer naar de map waar je het project hebt gecloned.
-3. Selecteer de map **Samenvattingen-Ku-leuven-Industriele-ingenieurs**.
-4. Klik Open.
+---
 
-Je ziet nu alle projectbestanden in de linker sidebar!
+## 📥 Stap 2: Het project opzetten
 
-## 🔌 Stap 5: Installeer VS Code-extensies
+### 1. Maak een Fork (Op GitHub)
+Klik rechtsboven op de knop **Fork** en dan op **Create Fork**. Nu heb je je eigen kopie van de samenvattingen op jouw profiel.
 
-Extensies geven VS Code superkrachten voor LaTeX.
+### ⚡ Snelle commando's
+- **Bouwen (Build):** `Ctrl + Alt + B`
+- **Error?** Open het "LaTeX Workshop" paneel links (TEX icoon) om de log te zien.
 
-1. Open Visual Studio Code.
-2. Klik op het Extensions-icoon links (blokjes-icoon) of druk `Ctrl+Shift+X`.
-3. Zoek en installeer deze extensies:
-
-### ✅ LaTeX Workshop (VERPLICHT)
-- Zoek: `LaTeX Workshop`  
-- Auteur: James Yu  
-- Dit is de belangrijkste extensie — hiermee kun je PDF's bouwen en bekijken.
-
-### ✅ GitHub Pull Requests and Issues (aangeraden)
-- Zoek: `GitHub Pull Requests and Issues`  
-- Auteur: GitHub
-
-### ✅ LTeX – LanguageTool (optioneel maar handig)
-- Zoek: `LTeX – LanguageTool grammar/spell checking`  
-- Auteur: Julian Valentin  
-- Spellingscontrole en grammatica voor Nederlands.
-
-### Workspace-aanbevelingen
-De workspace bevat een lijst met aanbevolen extensies. Klik op het Extensions-icoon en kies **Install All** wanneer de pop-up verschijnt.
-
-**Test of het werkt:** na installatie van LaTeX Workshop verschijnt er een TEX-icoon in de linker sidebar.
-
-## 🚀 Je eerste PDF bouwen
-
-Laten we testen of alles werkt:
-
-1. Open een `.tex` bestand in de linker sidebar (bijvoorbeeld een samenvatting)
-2. Klik rechtsboven op de **groene play knop ▶️** (Build LaTeX project)
-3. Wacht even... de eerste keer duurt wat langer
-4. De PDF verschijnt rechts in beeld!
-
-**Lukt het niet?** Kijk in [Debugging-van-building.md](Debugging-van-building.md) voor hulp.
-
-
+---
 
 ## ✍️ Werken met LaTeX in VS Code
 
@@ -192,16 +173,11 @@ Vergeet het handmatig opslaan en importeren van afbeeldingen.
 ### 🔎 Navigeren (SyncTeX)
 - **Van Code naar PDF:** `Ctrl + Alt + J` (Jump to PDF)
 - **Van PDF naar Code:** **Dubbelklik** ergens in de PDF, en VS Code springt naar de juiste regel in je tekst.
-- **PDF bekijken:** Klik op het icoontje rechtsboven "View LaTeX PDF" of druk `Ctrl + Alt + V` (als je geen image op je klembord hebt).
+- **PDF bekijken:** Klik op het icoontje rechtsboven "View LaTeX PDF" of druk **`Ctrl + Alt + Shift + P`**.
 
 ### ⚡ Snelle commando's
-- **Bouwen (Build):** `Ctrl + Alt + B`
+- **Bouwen (Build):** `Ctrl + Alt + B` (of gewoon opslaan `Ctrl + S`)
 - **Error?** Open het "LaTeX Workshop" paneel links (TEX icoon) om de log te zien.
-
----
-
-
-
 
 ---
 
@@ -268,11 +244,7 @@ Je werkt nu in je eigen branch! 🎉
    - `\frm{...}` voor formules
    - `\examplebox{...}` voor voorbeelden
 
-De macro_usage_guide in de releases hebben een groot
-document met voorbeelden van alle macro's 
-en coole dingen die latex kan doen.
-Bekijk [macro_usage_guide.tex](macro_usage_guide.tex) voor de source
-code van dat document.
+**Tip:** Gebruik de commando's uit `school-macros.sty` - zo blijft alles consistent!
 
 ---
 
@@ -281,7 +253,7 @@ code van dat document.
 Bouw de PDF om te zien hoe het eruitziet:
 
 1. Klik op de **groene play knop ▶️** rechtsboven
-2. Of druk `Ctrl+Alt+B` en dan `Ctrl+Alt+V`
+2. Of druk `Ctrl+Alt+B`
 3. Bekijk de PDF rechts
 
 **Ziet het er goed uit?** Dan kun je door naar de volgende stap!
@@ -290,11 +262,7 @@ Bouw de PDF om te zien hoe het eruitziet:
 
 ### Stap 5: Sla je wijzigingen op (Commit)
 
-Nu gaan we je werk "committen" - dit betekent: een snapshot maken van je wijzigingen. Doe dit
-regelmatig zodat je werk niet verloren gaat.
-Als je dan aan iets nieuws begint, commit je eerst wat je al gedaan hebt.
-
-**Vergeet niet om je toe te voegen aan auteurs in het begin van het document.**
+Nu gaan we je werk "committen" - dit betekent: een snapshot maken van je wijzigingen.
 
 **Via VS Code (aangeraden):**
 
@@ -307,10 +275,6 @@ Als je dan aan iets nieuws begint, commit je eerst wat je al gedaan hebt.
    - ❌ "update"
    - ❌ "changes"
 4. Klik op **✓ Commit**
-
-PDf's en gegenereerde bestanden (zoals .aux, .log)
-worden normaal automatische ignored. PDf's worden
-niet mee gecommit buiten als ze bij de samenvattingen horen (vscode bekijk automatisch of er pdf's zijn met dezelfde naam als .tex bestanden).
 
 **Via Terminal:**
 ```bash
@@ -358,14 +322,6 @@ Nu vraag je of je wijzigingen mogen worden toegevoegd aan het project. Dit heet 
 
 ---
 
-### Stap 7 alternatief: PR via vscode
-1. Open de Source Control tab in VS Code
-2. Klik op de drie puntjes (...) rechtsboven
-3. Kies "Create Pull Request"
-4. geen een titel en beschrijving
-5. Klik op "Create"
----
-
 ## 🎯 Quick Reference: Belangrijke Git Commando's
 
 ```bash
@@ -409,8 +365,7 @@ Super dat je meehelpt!
 
 **Groot probleem of twijfel:**
 1. **In de code:** Voeg een commentaar toe: `% @issue: Beschrijving van het probleem`
-2. **click op het lamp icoon** links in de sidebar (Issues)
-3. Maak een nieuw issue aan met een duidelijke titel en beschrijving
+2. **Via GitHub:** Ga naar het tabblad "Issues" en klik "New Issue"
 
 **Vragen of hulp nodig?**
 - Stuur een berichtje naar **@eggmansmile** op Discord
@@ -426,13 +381,23 @@ Werk je regelmatig mee en wil je meer mogelijkheden? Stuur een berichtje naar **
 
 ---
 
+## 🗺️ Roadmap
 
-## 📜 Licentie
+Waar werken we aan?
 
-Dit project is vrijgegeven onder de **MIT License** - zie het `LICENSE` bestand voor details. Dat betekent: iedereen mag deze samenvattingen gebruiken, aanpassen en delen! 🎓
+- ✅ **Setup documentatie** - Duidelijke installatie-instructies voor beginners
+- 🔄 **Data acquisitie** - Verzamelen van oefenopgaven en samenvattingen
+- 🔄 **Herwerking** - Oude documenten updaten naar de nieuwe stijl (`school-macros.sty`)
+- 📋 **Automatisering** - Automatische PDF builds via GitHub Actions
+- 📋 **Online preview** - Samenvattingen online kunnen bekijken zonder te downloaden
 
 ---
 
-**Veel succes en bedankt voor je bijdrage! 🚀**
+## 📚 Hulpbronnen & Hulp
 
-*Heb je deze guide doorlopen en werkt alles? Laat het weten in een issue of op Discord - we horen graag feedback om deze guide te verbeteren!*
+*   **[MACRO_QUICK_REFERENCE.md](MACRO_QUICK_REFERENCE.md)**: Alle LaTeX commando's voor kaders en formules.
+*   **[Debugging-van-building.md](Debugging-van-building.md)**: Hulp bij PDF errors.
+*   **Issues tab:** Stel je vraag hier op GitHub.
+*   **Discord:** Contacteer **@eggmansmile**.
+
+Bedankt voor je bijdrage! Samen maken we de beste samenvattingen. 🚀

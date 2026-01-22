@@ -2681,13 +2681,21 @@ bij micro-ECM zijn waardes rond 0,02 mm mogelijk.
 \newline
 
 \subsection{Afnamen bij ECM}
-\frm{Afnamesnelheid bij ECM}{M_{\mathrm{ECM}} = \dfrac{I \cdot A}{F \cdot V}\cdot \eta}{waarbij $M_{\mathrm{ECM}}$ de afnamesnelheid is [\si{g/s}], $I$ de stroomsterkte [\si{A}], $A$ de atoommassa [\si{g/mol}], $V$ de valentie [-], $F$ de Faraday-constante (\(96485\,\mathrm{C/mol}\)) en $\eta$ de efficiëntie [-].}
-Voorbeeld bij Titaan:
-A = 48A, V = 3, I = 2000A en \(\eta = 0.9\)
-\[M_{ECM} = \dfrac{2000 \cdot 48}{96485 \cdot 3} \cdot 0.9 = 0.297 g/s\]
-Omrekenen naar cm$^3$/min:
-\[ \text{Dichtheid Titaan} = 4.51 g/cm^3 \]
-\[ M_{ECM} = \dfrac{0.297 g/s}{4.51 g/cm^3} \cdot 60 s/min = 3.95 cm^3/min \]
+\frm{Afnamesnelheid bij ECM MMR (material removal rate)}{MRR = \dfrac{I \cdot A}{F \cdot V}\cdot \eta}{waarbij $MRR$
+ de afnamesnelheid is [\si{g/s}],
+ $I$ de stroomsterkte [\si{A}], $A$ de atoommassa [\si{g/mol}], $V$ de valentie [-], $F$ de Faraday-constante 
+ (\(96485\,\mathrm{C/mol}\)) en $\eta$ de efficiëntie [-].}
+\begin{voorbeeld}[ECM — titaan]
+Voorbeeld bij titaan: \(A=48\ \si{g/mol}\), \(V=3\), \(I=2000\ \si{A}\) en \(\eta=0.9\).
+\[
+M_{\mathrm{ECM}}=\frac{I\cdot A}{F\cdot V}\cdot\eta
+=\frac{2000\cdot48}{96485\cdot3}\cdot0.9\approx0.297\ \si{g/s}.
+\]
+Omrekenen naar \(\si{cm^3/min}\) met \(\rho_{\mathrm{Ti}}=4.51\ \si{g/cm^3}\):
+\[
+\dot V=\frac{0.297\ \si{g/s}}{4.51\ \si{g/cm^3}}\cdot60\ \si{s/min}\approx3.95\ \si{cm^3/min}.
+\]
+\end{voorbeeld}
 
 
 \subsection{Toepassingen van ECM}
