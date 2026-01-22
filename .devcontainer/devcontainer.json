@@ -4,12 +4,13 @@
 		"dockerfile": "Dockerfile"
 	},
 	"features": {
-		"ghcr.io/devcontainers/features/common-utils:2": {
+		"ghcr.io/devcontainers/features/common-utils:4": {
 			"username": "vscode",
 			"upgradePackages": false,
 			"configureZshAsDefaultShell": true
 		}
 	},
+	"postStartCommand": "bash -lc \"bash .vscode/scripts/check_issues.sh\" || true",
 	"customizations": {
 		"vscode": {
 			"extensions": [

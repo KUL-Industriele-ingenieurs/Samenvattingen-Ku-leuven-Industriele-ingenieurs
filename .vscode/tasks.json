@@ -130,14 +130,20 @@
                 ]
             },
             "linux": {
-                "command": "${workspaceFolder}/.vscode/scripts/check_issues.sh"
+                "command": "bash",
+                "args": [
+                    "-lc",
+                    "${workspaceFolder}/.vscode/scripts/check_issues.sh"
+                ]
             },
             "osx": {
-                "command": "${workspaceFolder}/.vscode/scripts/check_issues.sh"
+                "command": "bash",
+                "args": [
+                    "-lc",
+                    "${workspaceFolder}/.vscode/scripts/check_issues.sh"
+                ]
             },
-            "runOptions": {
-                "runOn": "folderOpen"
-            },
+
             "presentation": {
                 "reveal": "always",
                 "panel": "shared"
