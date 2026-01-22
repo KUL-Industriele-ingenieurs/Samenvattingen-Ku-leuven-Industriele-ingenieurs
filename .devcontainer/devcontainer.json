@@ -4,12 +4,13 @@
 		"dockerfile": "Dockerfile"
 	},
 	"features": {
-		"ghcr.io/devcontainers/features/common-utils:4": {
+		"ghcr.io/devcontainers/features/common-utils:2": {
 			"username": "vscode",
 			"upgradePackages": false,
 			"configureZshAsDefaultShell": true
 		}
 	},
+	/* NOTE: Reverted to v2 because some environments (e.g., Codespaces) may not have permission to pull v4. To upgrade later, either ensure GHCR access or vendor the feature locally. */
 	"postStartCommand": "bash -lc \"bash .vscode/scripts/check_issues.sh\" || true",
 	"customizations": {
 		"vscode": {
