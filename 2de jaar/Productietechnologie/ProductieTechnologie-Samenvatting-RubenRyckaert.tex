@@ -107,13 +107,6 @@ al deze factoren zijn belangrijk bij het kiezen van een productietechniek.
 
 \section{Tolerantie}
 
-\begin{wrapfigure}[15]{r}{0.4\textwidth}
-	\centering
-	\includegraphics[width=\linewidth]{nominalematen.png}
-	\caption{Nominale maten met boven- en ondergrens.}
-	\label{fig:nominalematen.png}
-\end{wrapfigure}
-
 \begin{conceptbox}[Tolerantie]
     Tolerantie is de toelaatbare afwijking op een nominale maat. 
 	Geen enkel onderdeel kan exact op de gewenste maat worden gemaakt; toleranties geven de grenzen aan waarbinnen het 
@@ -137,10 +130,22 @@ Je defineert je nominale maat (de gewenste maat) en dan heb je een boven- en ond
 
  De toleratie maat bereken je met de buiten en binnenmaat:
 
- \frm{Tolerantie}{T = Buitenkant - Binnenkant}{waarbij $T$ de tolerantie is [\si{mm}], $Buitenkant$ de maximale maat [\si{mm}] en $Binnenkant$ de minimale maat [\si{mm}].}
+ \frm{Tolerantie}{T = Buitenkant - Binnenkant}{waarbij $T$ de tolerantie is [\si{mm}], 
+ $Buitenkant$ de maximale maat [\si{mm}] en $Binnenkant$ de minimale maat [\si{mm}].}
+
+
+
+ 
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.4\textwidth]{nominalematen.png}
+	\caption{Nominale maten met boven- en ondergrens.}
+	\label{fig:nominale_maten}
+\end{figure}
+\FloatBarrier
+
 
  Afhankelijk van de toleratie heb je toleratieklassen (IT-klasse).
-
 
 \begin{conceptbox}[IT-klasse]
 	\textbf{De IT-klasse (International Tolerance grade)} geeft de nauwkeurigheid van een maat aan. Hoe lager het IT-nummer, hoe strakker de tolerantie.
@@ -164,18 +169,24 @@ Grote letter is voor inwendige maten en kleine letter voor uitwendige maten.
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=0.32\textwidth]{image1.png}\hfill
-	\includegraphics[width=0.32\textwidth]{image2.png}\hfill
-	\includegraphics[width=0.32\textwidth]{image3.png}
+	\includegraphics[width=0.45\textwidth]{image1.png}\hfill
+	\includegraphics[width=0.45\textwidth]{image2.png}\hfill
 	\caption{Tolerantie diagrammen voor inwendige, uitwendige en passing.}
 	\label{fig:tolerantie_diagrammen}
 \end{figure}
 \FloatBarrier
 
+\begin{figure}
+	\centering
+	\includegraphics[width=1\textwidth]{image3.png}
+	\caption{Tabel IT-klassen}
+	\label{fig:itklassen_voorbeeld}
+\end{figure}
+
 De tolerantie bepaald wat voor soort passing je hebt.
-\belangrijk{positieve speling} je hebt nog ruimte tussen de onderdelen.
-\belangrijk{negatieve speling} je hebt een klemming tussen de onderdelen.
-\belangrijk{positieve en negatieve speling} je toleratie zit tussen negatief en positief.
+\belangrijk{Positieve speling} je hebt nog ruimte tussen de onderdelen.
+\belangrijk{Negatieve speling} je hebt een klemming tussen de onderdelen.
+\belangrijk{Positieve en negatieve speling} je toleratie zit tussen negatief en positief.
 
 Verschillende productietechnieken hebben verschillende haalbare toleranties.
 \begin{figure}[htbp]
@@ -184,6 +195,7 @@ Verschillende productietechnieken hebben verschillende haalbare toleranties.
   \caption{Haalbare toleranties voor verschillende productietechnieken.}
   \label{fig:haalbaretoleranties.png}
  \end{figure}
+ \FloatBarrier
 
 \subsection{Kosten vs. Tolerantie}
 Je moet kiezen welke tolerantie nodig is voor een product.
@@ -212,11 +224,12 @@ Precieze toleranties zijn duurder om te produceren.
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=0.4\textwidth]{image6.png}\hfill
-	\includegraphics[width=0.4\textwidth]{image7.png}
+	\includegraphics[width=0.45\textwidth]{image6.png}
+	\includegraphics[width=0.45\textwidth]{image7.png}
 	\caption{Voorbeelden van verschillende oppervlaktekwaliteiten.}
 	\label{fig:oppervlaktekwaliteiten}
 \end{figure}
+\FloatBarrier
 
 \begin{theorieblok}[Oppervlakteparameters]
 	\begin{itemize}
@@ -325,10 +338,10 @@ Je hebt daarbij deze parameters:
 	\item Spaanhoek $\gamma$
 	\item Vrijloophoek $\alpha$
 	\item Wighoek $\beta$
-	\item Snedediepte $a$
+	\item Snedediepte $a$ (hoeveel mm er verwijderd wordt in de diepte)
 	\item Voeding $f$
 	\item Snijsnelheid $v_c$
-	\item Snedebreedte $b$ (hoe breed de beitel is)
+	\item Snedebreedte $b$ (breedte van de beitel)
 	\item Snededikte $h$ (hoeveel materiaal er per keer wordt verwijderd)
 	\item wrijvingscoëfficiënt $\mu$
 \end{itemize}
@@ -340,31 +353,33 @@ Je hebt daarbij deze parameters:
 	\label{fig:image10}
 \end{figure}
 
+
+\begin{wrapfigure}[10]{r}{0.5\textwidth}
+	\centering
+	\includegraphics[width=\linewidth]{image11.png}
+	\caption{}
+	\label{fig:image11}
+\end{wrapfigure}
+
+
 Bij het verspanen met een beitel ontstaan er \textbf{spanen}.
 Spanen zijn kleine stukjes materiaal die worden verwijderd
 van het werkstuk.
-De grootte van de spanen wordt bepaald \textbf{door de snedediepte, de voeding, 
-de spaanhoek en de wrijvingscoëfficiënt.\ldots} Zometeen meer in detail hierover
+De grootte van de spanen wordt bepaald \textbf{door de snedediepte($a$), de voeding ($f$), 
+de spaanhoek ($\gamma$) en de wrijvingscoëfficiënt ($\mu$).\ldots} Zometeen meer in detail hierover
+
 
 Spanen is een plastische vervorming van de spanen
 maar het oppervlak van het werkstuk ondergaat ook een elastische vervorming.
 Deze vervomingen scheuren dan delen van het werkstuk af waardoor je fouten krijgt op het oppervlak.
 
 Je hebt verschillende soorten spannen:
-\begin{description}
-	\item[Continue:] Bij ductiele materialen en scherpe beitels. Goede oppervlaktekwaliteit.
-	\item[lamellen:] Bij hogere snededieptes of hardere materialen. Spaan breekt in dunne lagen.
-	\item[brokkelspannen:] Bij brosse materialen. Spaan breekt in kleine brokstukken.
-\end{description}
-
+\begin{itemize}
+	\item \textbf{Continue:} Bij ductiele materialen en scherpe beitels. Goede oppervlaktekwaliteit.
+	\item \textbf{Lamellen:} Bij hogere snededieptes of hardere materialen. Spaan breekt in dunne lagen.
+	\item \textbf{Brokkelspannen:} Bij brosse materialen. Spaan breekt in kleine brokstukken.
+\end{itemize}
 \subsection{Primaire afschuifvlak (shear zone)}
-
-\begin{figure}[ht]
-	\centering
-	\includegraphics[width=0.8\textwidth]{image11.png}
-	\caption{}
-	\label{fig:image11}
-\end{figure}
 
 \frm{Afschuifhoek}{\phi = 45^{\circ} + \dfrac{\gamma}{2} - \dfrac{\mu}{2}}{waarbij $\phi$ de afschuifhoek is [$^\circ$], $\gamma$ de spaanhoek [$^\circ$] en $\mu$ de wrijvingshoek [$^\circ$].}
 
@@ -427,19 +442,18 @@ omdat het materiaal anders te hard is om te snijden en je moet veel te veel krac
 Negatieve spaanhoeken worden gebruikt voor zeer harde materialen.
 
 \subsubsection{Extra info}
+\begin{wrapfigure}[9]{r}{0.45\textwidth}
+	\centering
+	\includegraphics[width=\linewidth]{image15.png}
+	\caption{Verschillende spaanhoeken voor verschillende materialen}
+	\label{fig:image15}
+\end{wrapfigure}
+
 Deze bewerkingen zijn allemaal met ductiele materialen.
 Brosse materialen gaan snel afbrokkelen en hebben dus niet veel elastische vervorming. 
 Je moet dus druk uitoefenen op brosse materialen tijdens bewerking. Het materiaal gaat zich daardoor dan meer ductiel gedragen.
 Hoe oefen je druk uit op materialen? Door een grote spaanhoek te gebruiken maar die creeërt dan weer veel wrijving.
 Je moet dus een compromis zoeken tussen spaanhoek en wrijving.
-
-\begin{figure}[ht]
-	\centering
-	\includegraphics[width=0.5\textwidth]{image15.png}
-	\caption{Verschillende spaanhoeken voor verschillende materialen}
-	\label{fig:image15}
-\end{figure}
-
 
 
 \section{Beweging, snelheden en voedingen, temperaturen, slijtage}
@@ -452,8 +466,8 @@ Er zijn verschillende factoren die de kracht op je werkstuk bepalen
 	\item Snededikte (h)
 \end{itemize}
 
-\frm{Snijsnelheid}{v = \pi \cdot d \cdot n}
-{waarbij $v$ de snijsnelheid is [\si{m/min}], $d$ de diameter [\si{mm}] en $n$ het toerental [\si{omw/min}].}
+\frm{Snijsnelheid}{v_c = \pi \cdot d \cdot n}
+{waarbij $v_c$ de snijsnelheid is [\si{m/min}], $d$ de diameter [\si{mm}] en $n$ het toerental [\si{omw/min}].}
 
 \begin{figure}[ht]
 	\centering
@@ -504,7 +518,7 @@ beitelbewerkingen hebben allemaal effecten op het materiaal. Wie zien er een paa
 \begin{examenbox}
 	Hij gaat deze zoiezo kunnen vragen. \textit{Wat zijn de effecten van beitelbewerkingen op het werkstuk en hoe kan je deze verbeteren of voorkomen?}
 \end{examenbox}
-\begin{itemize}
+\begin{enumerate}
 	\item \textbf{Opbouwlaag (build-up edge/BUE)}:
 	      Een dunne, hard geworden laag metaal die zich bij lage snijsnelheden ($v_c < 20\,\si{m/min}$) aan de punt van de beitel opbouwt.
 		  Deze zijn scherper dan de bijtel en snijden dan meer af van het werkstuk tot ze plotseling loslaten
@@ -593,7 +607,7 @@ beitelbewerkingen hebben allemaal effecten op het materiaal. Wie zien er een paa
 					\FloatBarrier
 		            Lood geeft minder slijtage omdat het smerende eigenschappen heeft $\to$ minder wrijving.
 	      \end{itemize}
-\end{itemize}
+\end{enumerate}
 
 
 \section{Snijmaterialen}
@@ -824,12 +838,18 @@ De snijkrachtcoëfficiënt $k_c$ is sterk afhankelijk van het materiaal van het 
     Je moet op het examen begrijpen hoe de snijkracht verandert bij een variërende voeding of snedediepte op basis van deze vergelijking. Begrijp ook de invloed van de exponent $e$ (die de kromming van de grafiek bepaalt).
 \end{examenbox}
 
-\frm{b: snedebreedte bij draaien}{b = \frac{a}{\sin \kappa_r}}{met $b$ de snedebreedte [\si{mm}], $a$ de snedediepte [\si{mm}] en $\kappa_r$ de instelhoek [$^\circ$].}
+\frm{b: snedebreedte bij draaien}
+{b = \frac{a}{\sin \kappa}}{met $b$ de snedebreedte [\si{mm}], $a$ de snedediepte [\si{mm}] en $\kappa$ de 
+instelhoek [$^\circ$].}
 
-\frm{h: snededikte bij draaien}{h = f \cdot \sin X}{met $h$ de snededikte [\si{mm}], $f$ de voeding [\si{mm/omw}] en $X$ de instelhoek [$^\circ$].}
+\frm{h: snededikte bij draaien}
+{h = f \cdot \sin \kappa}{met $h$ de snededikte [\si{mm}], $f$ de voeding [\si{mm/omw}] en $\kappa$ de 
+instelhoek [$^\circ$].}
 
 De optimale snijsnelheid bij draaien is afhankelijk van $k_c$
-\frm{Optimale snijsnelheid bij draaien}{v_{c,\mathrm{opt}} = v_c(k_c)\cdot f^{-u}}{waarbij $v_{c,\mathrm{opt}}$ de optimale snijsnelheid is [\si{m/min}], $f$ de voeding [\si{mm/omw}] en $u$ een exponent [-].}
+
+\frm{Optimale snijsnelheid bij draaien}{v_{c,\mathrm{opt}} = v_c(k_c)\cdot f^{-u}}
+{waarbij $v_{c,\mathrm{opt}}$ de optimale snijsnelheid is [\si{m/min}], $f$ de voeding [\si{mm/omw}] en $u$ een exponent [-].}
 
 
 \textbf{Aanvullende formules (zonder frm):}
@@ -883,7 +903,7 @@ bepaald worden.
 	\item \textbf{Build‑up edge (BUE)}: Bij lage snijsnelheden en bepaalde voedingen kan materiaal aan 
 	de snijkant aanhechten (BUE). Dit veroorzaakt tijdelijke pieken in de krachten en kan de oppervlaktekwaliteit verslechteren.
 	Bij hogere voeding of snelheid neemt dit effect vaak af.
-	\item \textbf{Snijkanthoek $X$}: Het veranderen van de hoek van het snijvlak verschuift de richting en verdeling van de krachten. 
+	\item \textbf{Snijkanthoek $\kappa$}: Het veranderen van de hoek van het snijvlak verschuift de richting en verdeling van de krachten. 
 	Sommige componenten (bijv. $F_c$) kunnen toenemen terwijl andere (bijv. $F_f$ of $F_p$) afnemen, waardoor
 	 de krachten anders verdeeld zijn.
 	\item \textbf{Snedediepte $a_p$}: Een grotere snedediepte vergroot het verwijderde volume per 
@@ -922,15 +942,15 @@ Er zijn verschillende parameters die spaanvorming beïnvloeden
 
 \frm{Spaanslankheid bij Draaien}{\dfrac{b}{h} = \dfrac{a}{f \cdot \sin \kappa_r}}{waarbij $b$ de snedebreedte [\si{mm}], $h$ de snededikte [\si{mm}], $a$ de snedediepte [\si{mm}], $f$ de voeding [\si{mm/omw}] en $\kappa_r$ de instelhoek [$^\circ$].}
 
-\textbf{$h = f \cdot \sin\kappa_r$}
+\[h = f \cdot \sin\kappa_r\]
 
 De snededikte $h$ bij draaien wordt bepaald door de voeding $f$ en de instelhoek $\kappa_r$. Een grotere voeding of een kleinere instelhoek resulteert
 in een dikkere spaan, wat de spaanvorming beïnvloedt.
 
-\textbf{$b = \dfrac{a}{\sin\kappa_r}$}
-\newline
+\[b = \dfrac{a}{\sin\kappa}\]
+
 {De snedebreedte $b$ bij draaien wordt bepaald door de snedediepte $a$
-	en de instelhoek $\kappa_r$. Een grotere snedediepte of een grotere instelhoek resulteert in
+	en de instelhoek $\kappa$. Een grotere snedediepte of een grotere instelhoek resulteert in
 	een bredere spaan, wat de spaanvorming beïnvloedt.}
 
 \begin{figure}[ht]
@@ -1020,8 +1040,9 @@ De punten van de beitels noemen we \textbf{inserts}.
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.8\textwidth]{image39.png}
-	\caption{}
+	\caption{Alle soorten Inserts voor verschillende draaioperaties}
 \end{figure}
+\FloatBarrier
 
 De componenten worden in een draaimachine gestoken die deze beitels kan bewegen langs verschillende assen en het werkstuk
 kan laten roteren.
@@ -1031,7 +1052,7 @@ De snelheid van de motoren wordt gecontrolleerd door een tandwielkast.
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=0.8\textwidth]{image40.png}
+	\includegraphics[width=1\textwidth]{image40.png}
 	\caption{Tandwielkast voor draaimachine}
 \end{figure}
 \FloatBarrier
@@ -1075,8 +1096,9 @@ Belangrijke booroperaties zijn:
 In de bovenste figuur zie je dat de spaanhoek $\gamma$ varieert 
 langs de snijkant van de boor. Hoe groter de spaanhoek hoe meer kracht
 je moet zetten omdat je afschuifhoek kleiner wordt en je afschuifvlak $A$ groter wordt.
+\newline
 \textit{Hou die twee uit elkaar, afschuifhoek is de hoek tussen 
-hetwerkstuk en het afschuifvalk, de afschuifvlak is het oppervlakte waar er plastische vervorming is.} 
+het werk stuk en het afschuifvalk, de afschuifvlak is het oppervlakte waar er plastische vervorming is.} 
 
 Negatieve spaanhoeken geeft enorm veel krachten en is moeilijker te bewerken omdat de afschuifhoek kleiner is.
 
@@ -1470,7 +1492,7 @@ Hier zijn nog relevante type boren en hun toepassingen:
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=0.8\textwidth]{image44.png}
+	\includegraphics[width=1\textwidth]{image44.png}
 	\caption{Verschillende soorten boren}
 \end{figure}
 
@@ -1651,7 +1673,7 @@ waarbij $d$ de diameter van de frees is en $n$ het toerental.
 \textbf{Ingrijpingshoek bij Frezen:} $\displaystyle \phi = \arccos\!\left(1 - \dfrac{2a}{d}\right) \;\Rightarrow\; \cos\phi = 1 - \dfrac{2a}{d}$.
 waarbij $a$ de snedediepte is en $d$ de diameter van de frees.
 
-\textbf{Tanden per ingrijping}{$z_i = \frac{Q}{360}\cdot z$}
+\textbf{Tanden per ingrijping:} $z_i = \frac{Q}{360}\cdot z$
 waarbij $z_i$ het aantal tanden per ingrijping is,
 $Q$ de ingrijpingshoek in graden en $z$ het totaal aantal tanden van de frees.
 
@@ -1685,45 +1707,46 @@ Er zijn twee richtingen van frezen:
 	\label{fig:meelopend_tegenlopend}
 \end{figure}
 
-\begin{table}[ht]
-	\centering
-	\caption{Vergelijking: Tegenlopend vs Meelopend frezen}
-	\label{tab:meelopend_vs_tegenlopend}
-	\begin{tabularx}{\textwidth}{|l|X|X|}
-		\hline
-		\textbf{Kenmerk}      & \textbf{Tegenlopend}                               & \textbf{Meelopend}                                    \\
-		\hline
-		\textbf{Aandrijving}  & $F_h$ drukt werkstuk weg van frees.                & $F_h$ trekt werkstuk naar frees toe.                  \\
-		\hline
-		\textbf{Speling}      & Geen compensatie nodig; veiliger bij backlash.     & Spelingcompensatie onmisbaar.                         \\
-		\hline
-		\textbf{Spaanvorming} & Dun $\rightarrow$ dik (chip groeit tijdens snede). & Dik $\rightarrow$ dun (chip neemt af richting einde). \\
-		\hline
-		\textbf{Snijkracht}   & Stijgt geleidelijk tijdens ingreep.                & Stijgt sneller; hogere piekbelasting.                 \\
-		\hline
-		\textbf{Snijgedrag}   & Eerst wrijving, later snijden (meer smearing).     & Meteen snijden (scherpere insnijding).                \\
-		\hline
-		\textbf{Oppervlakte}  & Meestal matig.                                     & Meestal beter (glad).                                 \\
-		\hline
-		\textbf{Stabiliteit}  & Neiging tot klapperen / chatter.                   & Werkstuk wordt 'in klem' getrokken.                   \\
-		\hline
-		\textbf{Precisie}     & Minder voorspelbaar.                               & Kan preciezer zijn.                                   \\
-		\hline
-	\end{tabularx}
-\end{table}
+$v_f$ is de richting van de het werstuk dat beweegt.
+
+\begin{engtable}[
+	caption = {Vergelijking: Tegenlopend vs Meelopend frezen},
+	label = {tab:meelopend_vs_tegenlopend},
+]{
+	colspec = {l X X},
+	width = \textwidth,
+	cells = {font=\small},
+	row{1} = {font=\bfseries},
+}
+	Kenmerk & Tegenlopend & Meelopend \\
+	Aandrijving & $F_h$ drukt werkstuk weg van frees. & $F_h$ trekt werkstuk naar frees toe. \\
+	Speling & Geen compensatie nodig, veiliger bij backlash. & Spelingcompensatie onmisbaar. \\
+	Spaanvorming & Dun $\rightarrow$ dik (chip groeit tijdens snede). & Dik $\rightarrow$ dun (chip neemt af richting einde). \\
+	Snijkracht & Stijgt geleidelijk tijdens ingreep. & Stijgt sneller; hogere piekbelasting. \\
+	Snijgedrag & Eerst wrijving, later snijden (meer smearing). & Meteen snijden (scherpere insnijding). \\
+	Oppervlakte & Meestal matig. & Meestal beter (glad). \\
+	Stabiliteit & Neiging tot klapperen / chatter. & Werkstuk wordt 'in klem' getrokken. \\
+	Precisie & Minder voorspelbaar. & Kan preciezer zijn. \\
+\end{engtable}
 \FloatBarrier
 
 \subsection{Wanneer kiezen: meelopend vs tegenlopend}
 \textbf{Praktische richtlijnen:}
 \begin{itemize}
-	\item \textbf{Meelopend (climb milling)} -- kies dit bij een stijve machine en goede opspanning, vooral voor afwerking. De chipdikte neemt af tijdens de ingreep (dik $\rightarrow$ dun), er is minder wrijving bij de instap en doorgaans een betere oppervlaktekwaliteit en langere gereedschapslevensduur; vereist minimale backlash in de aandrijving.
-	\item \textbf{Tegenlopend (conventional milling)} -- kies dit bij oudere of minder stijve machines, bij ruwe bewerkingen of wanneer er speling is. De chipdikte neemt toe tijdens de ingreep (dun $\rightarrow$ dik); bij de instap is er meer wrijving en kans op BUE, maar de methode is vaak veiliger voor onstabiele opstellingen of dunwandige onderdelen.
+	\item \textbf{Meelopend (climb milling)} -- kies dit bij een stijve machine en goede opspanning, 
+	vooral voor afwerking. De chipdikte neemt af tijdens de ingreep (dik $\rightarrow$ dun), er is minder wrijving bij de instap en doorgaans
+	 een betere oppervlaktekwaliteit en langere gereedschapslevensduur; vereist minimale backlash in de aandrijving.
+	\item \textbf{Tegenlopend (conventional milling)} -- kies dit bij oudere of minder stijve machines, 
+	bij ruwe bewerkingen of wanneer er speling is. De chipdikte neemt toe tijdens de ingreep (dun $\rightarrow$ dik),
+	 bij de instap is er meer wrijving en kans op BUE, maar de methode is vaak veiliger voor onstabiele opstellingen of dunwandige onderdelen.
 \end{itemize}
 
 \paragraph{Effecten op oppervlakte en snedediepte}
 \begin{itemize}
-	\item \textbf{Oppervlaktekwaliteit:} Meelopend geeft doorgaans een gladdere afwerking; tegenlopend geeft meer wrijving bij instap en vaak een ruwere afwerking.
-	\item \textbf{Snedediepte/productiviteit:} In een stijve opstelling maakt meelopend vaak hogere snededieptes en hogere voedingen mogelijk zonder kwaliteitsverlies; tegenlopend wordt vaak gebruikt voor grove, hoge‑volume snedes of wanneer de machine/opstelling de voorkeur geeft aan een voorzichtige instap.
+	\item \textbf{Oppervlaktekwaliteit:} Meelopend geeft doorgaans een gladdere afwerking. 
+	Tegenlopend geeft meer wrijving bij instap en vaak een ruwere afwerking.
+	\item \textbf{Snedediepte/productiviteit:} In een stijve opstelling maakt meelopend vaak hogere snededieptes en hogere voedingen mogelijk zonder kwaliteitsverlies. 
+	Tegenlopend wordt vaak gebruikt voor grove, hoge‑volume snedes of wanneer de machine/opstelling de voorkeur geeft aan een voorzichtige instap.
 \end{itemize}
 
 \section{Soorten frezen}
@@ -1791,10 +1814,9 @@ Dit zorgt voor een betere oppervlaktekwaliteit en nauwkeurigheid van de cilinder
 
 Bij het honen ga je de toppen van de oppervalkteruwheid verwijderen.
 Dit is anders bij het slijpen omdat die ook een licht oneven oppervlakte kan achterlaten.
-\newline
 
 % --- Illustratie: ruw oppervlak en resultaat na honen (scherpe toppen, geclipt) ---
-\begin{figure}[ht]
+\begin{figure}[htbp]
 	\centering
 	\makebox[\textwidth][c]{%
 		\begin{tikzpicture}[x=0.85cm, y=2.2cm, >=Stealth, every node/.style={font=\small}]
@@ -1860,24 +1882,27 @@ Dit is anders bij het slijpen omdat die ook een licht oneven oppervlakte kan ach
 		\end{tikzpicture}
 	}
 
-	\caption{(a) Voorbehandeld, ruw oppervlak met scherpe toppen; (b) resultaat na honen waarbij de bovenste delen van de toppen zijn verwijderd.}
+	\caption{(a) Voorbehandeld, ruw oppervlak met scherpe toppen; (b) resultaat na honen waarbij de 
+	bovenste delen van de toppen zijn verwijderd.}
 	\label{fig:hoonprocess_schematic}
 \end{figure}
-\vspace{0.35cm}
+
 \subsection{Korte-slag Honen}
+\vspace{0.25cm}
 Het enige verschil met lange-slag honen is de kinematica van het systeem.
 Je werkstuk is opgespannen tussen twee tegenpunten die roteren.
 Deze tegenpunten worden daan aangedreven met de hoonsteen op het oppervlakte.
 Je gaat hier de hoonsteen op een cilindrisch oppervlakte toepassen zoals bij het nabewerkgen van zuigerstangen.
 Je gaat sinusoïdale bewegingen maken met een korte slag.
 De oppervlakte kwaliteit is enorm fijn.
-\newline
-\begin{figure}[ht]
+
+\begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.8\textwidth]{image57.png}
 	\caption{Kortslag honen van een werkstuk}
 	\label{fig:kortslag-honen.png}
 \end{figure}
+\FloatBarrier
 
 \section{Leppen}
 Bij het leppen heb je enorm fijne korrels die in een paste, olie of gelei zitten.
@@ -1968,9 +1993,12 @@ Het is energie efficient omdat het warmere materiaal minder kracht kost om te ve
 \end{figure}
 \FloatBarrier
 
-Het bepaal materiaal dat je moet gebruiken moet licht absorberen. Je wilt geen of zo weinig mogelijk reflectie of transmissie.
+Het bepaal materiaal dat je moet gebruiken moet licht absorberen. 
+Je wilt geen of zo weinig mogelijk reflectie of transmissie.
 
-\frm{Wat er gebeurt met licht die schijnt op een materiaal}{1 = A + R + T}{waarbij $A$ = absorptie, $R$ = reflectie en $T$ = transmissie}
+\frm{Wat er gebeurt met licht die schijnt op een materiaal}
+{1 = A + R + T}{waarbij $A$ = absorptie, $R$ = reflectie en $T$ = transmissie}
+\vspace{0.5cm}
 
 \subsection{Draadvonken en slijpen}
 \textit{(je ziet meer over draadvonken in een ander hoofdstuk)}
@@ -2056,7 +2084,7 @@ zo klein en hard zijn kun je zelfs heel harde materialen slijpen.
 	\item \textbf{Snedediepte $a$}: Zeer kleine snededieptes, typisch in de orde van micrometers.
 	\item \textbf{Slijtage van de slijpkorrel}: Slijpkorrels worden bot en vallen er dan af.
 	      Je moet de slijpschijf dus regelmatig vernieuwen of terug op maat brengen. Je neemt dan een stuk van het oppervlakte af.
-	      Dit noemt(dressing).
+	      Dit noemt \textbf{dressing}.
 	\item \textbf{Oppervlaktekwaliteit}: Slijpen kan zeer fijne oppervlakteafwerkingen bereiken, vaak in de orde van enkele micrometers $R_a$.
 	\item \textbf{Nauwkeurigheid}: Slijpen gaat op machine die enorm stevig zijn en dus niet veel bewegen tijdens het slijpen.
 	      Hierdoor kun je zeer nauwkeurige afmetingen bereiken.
@@ -2100,9 +2128,9 @@ Korrelgrootte wordt aangegeven door mazen per $\text{mm}^2$.
 
 De hardheid is de sterkte van de korrels.
 De slijpverhouding 
-\[G = \frac{\text{volume verspaand materiaal}}{\text{volume slijpschijf per tijdseenheid}}\].
+\[G = \frac{\text{volume verspaand materiaal}}{\text{volume slijpschijf per tijdseenheid}}\]
 Een grote $G$ kan je veel materiaal afnemen tegenover hoeveel slijpschijf je verliest.
-een kleine $G$ betekent dat je veel slijpschijf verliest tegenover hoeveel materiaal je afneemt.
+Een kleine $G$ betekent dat je veel slijpschijf verliest tegenover hoeveel materiaal je afneemt.
 Je kunt geen hard materiaal slijpen met een zachte slijpsteen omdat de korrels dan te snel bot worden.
 \subsubsection{Bindmiddel}
 Het bindmiddel houdt de korrels bij elkaar.
@@ -2219,7 +2247,7 @@ Je kunt geen normaal water gebruiken omdat er mineralen in zitten die wel geleid
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=0.5\textwidth]{image60.png}
+	\includegraphics[width=0.65\textwidth]{image60.png}
 	\caption{Vonkerosie proces}
 	\label{fig:vonkerosie_proces.png}
 \end{figure}
@@ -2274,6 +2302,7 @@ Je kunt geen normaal water gebruiken omdat er mineralen in zitten die wel geleid
 	\caption{Principe van vonkerosie: warmtegeneratie door elektrische ontlading zorgt voor materiaalafname (ruw oppervlak).}
 	\label{fig:vonkerosie_principe}
 \end{figure}
+\FloatBarrier
 
 \subsection{Componenten van een EDM-systeem}
 Bij een vonkerosie-opstelling (zoals in \cref{fig:vonkerosie_proces.png}) zijn de volgende componenten cruciaal:
@@ -2429,6 +2458,8 @@ Dit is een zone die thermisch veranderd is door de hitte van de vonk.
 	\caption{TAZ, thermisch aangetaste zone bij EDM}
 	\label{fig:taz_edm.png}
 \end{figure}
+\FloatBarrier
+
 -> deze zone warmt op en stolt dan terug. Het oppervlakte krijgt hierdoor microscheuren.
 Dit is enorm slecht voor het oppervlakte. Deze moeten weggewerkt worden door te slijpen of frezen. Zie hybrideprocessen.
 
@@ -2482,8 +2513,8 @@ ionen die op de elektrode botsen en materiaal wegnemen.
 \end{itemize}
 
 \subsection{Types}
-\vspace{1cm}
-\begin{figure}[ht]
+
+\begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.8\textwidth]{image67.png}
 	\caption{Verschillende types vonkerosie}
@@ -2491,9 +2522,8 @@ ionen die op de elektrode botsen en materiaal wegnemen.
 \end{figure}
 \FloatBarrier
 \subsection{Zinkvonkerosie}
-\vspace{1cm}
 
-\begin{figure}[ht]
+\begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.3\textwidth]{image68.png}
 	\includegraphics[width=0.3\textwidth]{image69.png}
