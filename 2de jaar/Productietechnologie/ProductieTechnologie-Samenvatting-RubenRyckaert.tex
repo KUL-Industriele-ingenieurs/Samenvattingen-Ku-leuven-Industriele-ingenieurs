@@ -2583,7 +2583,7 @@ De materialen waar je mee moet werken moeten wel elektrisch geleidend zijn. Lage
 
 \subsection{Vonken van keramieken}
 
-\begin{wrapfigure}[23]{r}{0.35\textwidth}
+\begin{wrapfigure}[16]{r}{0.35\textwidth}
 	\centering
 	\includegraphics[width=\linewidth]{image71.png}
 	\caption{Ruw oppervlak met scheuren door spoiling bij keramieken}
@@ -2755,7 +2755,8 @@ Je gaat iets meer wegnemen dan wat je wilt langs de binnenkant. Dit noemt \textb
 \end{figure}
 
 De etstijd gaat bepalen hoeveel materiaal je wegneemt en de grote van de ondersnijding.
-\newline
+
+
 
 \textbf{Fotoetsen} is een gelijkaardig proces. Dit wordt vooral toegepast op
 hele kleine delen. Je maskeert ook de oppervlakte met een laklaag.
@@ -2764,31 +2765,36 @@ UV-licht zal door de transparante laag gaan en de lak verwijderen.
 Je kunt deze patronen dan etsen met een etsvloeistof.
 Deze patronen kunnen enorm klein zijn, rond de micrometer.
 Dit wordt toepast in micro-elektronica.
-\newline
+
 Net zoals bij normaal etsen krijg je ook ondersnijding waar je rekening mee moet houden.
 
-
-\begin{figure}[ht]
+\begin{figure}
 	\centering
-	\includegraphics[width=0.3\textwidth]{image73.png}
+	\includegraphics[width=0.26\textwidth]{image73.png}
 	\caption{Fotoetsen van een complex onderdeel met ECM}
 	\label{fig:foto_etsen_ecm.png}
 \end{figure}
+\FloatBarrier
+
 
 
 \section{Ultrasoon bewerken (Ultrasonic Machining)}
+
+\begin{wrapfigure}[12]{r}{0.4\textwidth}
+	\centering
+	\includegraphics[width=\linewidth]{image74.png}
+	\caption{Principe van ultrasoon bewerken}
+	\label{fig:principe_ultrasoon_bewerken.png}
+\end{wrapfigure}
+
+
 Ultrasoon bewerken is een bewerkingsproces waarbij hoge-frequentie trillingen worden gebruikt om materiaal van een werkstuk te verwijderen.
 Het proces maakt gebruik van een sonotrode die ultrasone trillingen (typisch tussen 20 kHz en 40 kHz) met een heel kleine amplitude genereert.
 De trillingen creeëren kleine scheurtjes op het materiaaloppervlak en dan wordt dat materiaal uitgebroken.
 Deze techniek werkt goed voor harde en bros materialen zoals keramiek, glas, en harde metalen omdat die niet
 goed tegen scheurtjes kunnen. Je hammert dus als het ware op het materiaal met die ultrasone trillingen.
 
-\begin{figure}[ht]
-	\centering
-	\includegraphics[width=0.4\textwidth]{image74.png}
-	\caption{Principe van ultrasoon bewerken}
-	\label{fig:principe_ultrasoon_bewerken.png}
-\end{figure}
+
 
 Ductiele materialen zoals metalen zijn ook bewerkbaar:
 Door de enorm grote trillingen krijg je een \textbf{vermoeiingsproces} in het materiaal waardoor je ook materiaal kunt wegnemen.
@@ -2816,12 +2822,8 @@ Door de enorm grote trillingen krijg je een \textbf{vermoeiingsproces} in het ma
 \FloatBarrier
 
 Het gegreedschap is gemaakt van harde materialen zodat het niet snel slijt.
-\newline
 Het wordt vooral toegepast op harde materialen die moeilijk te bewerken zijn met conventionele methoden.
-\newline
 Je kunt ook een profiel maken van het gereedschap en dan dat profiel in het werkstuk maken.
-\newline
-
 
 \section{Straalbewerkingen}
 Straalbewerkingen zijn processen waarbij een geconcentreerde straal van energie of materiaal wordt gebruikt om materiaal van een werkstuk te verwijderen of te bewerken.
@@ -2849,13 +2851,13 @@ Straalbewerkingen zijn processen waarbij een geconcentreerde straal van energie 
 Korrels worden met hoge snelheid op het oppervlak van een werkstuk geschoten.
 Dit veroorzaakt plastische vervorming aan het oppervlak, wat leidt tot een verhoogde vermoeiingssterkte
 door de inwendige spanningen die worden geïnduceerd.
-\subsection{abrasief stralen}
+\subsection{Abrasief stralen}
 Je gebruikt een straal van abrasieve deeltjes (zoals zand)
 die met hoge snelheid op het oppervlak van een werkstuk worden gespoten.
 Dit wordt vaak gebruikt voor het \textbf{reinigen, ontroesten of matten} van oppervlakken.
 Het process werkt door de wet van bernoulli. (zie stromingen)
+
 \textbf{Wet van Bernoulli}
-\newline
 	In een stromend fluïdum is de som van de drukenergie, kinetische energie en potentiële energie per eenheid volume constant langs een stroomlijn:
 	\[
 		P + \frac{1}{2} \rho v^2 + \rho gh = \text{constant}
@@ -2886,19 +2888,19 @@ Het ijs smelt gewoon weg en je moet geen zand opruimen.
 \section{Laserstraalbewerking (LBM)}
 \subsection{Hoe werk een laser?}
 Een Laser is een geconcentreerde lichtbron die op één specifieke golflengte licht uitzendt met hoge intensiteit en coherentie.
-\newline
+
 \frm{Laser}{\textbf{L}ight \textbf{A}mplification by \textbf{S}timulated \textbf{E}mission of \textbf{R}adiation}{is een apparaat dat licht versterkt door gestimuleerde emissie van straling.}
-Voor een laser te maken wordt materiaal hun atomen naar een hogere energietoestand gebracht door energie toe te voeren (pompproces).
+Voor een laser te maken wordt materiaal hun atomen naar een hogere energietoestand gebracht door energie toe te voeren \concept{pompproces}.
 Wanneer deze atomen terugvallen naar hun lagere energietoestand, zenden ze fotonen uit.
-Dit process noemt \textbf{spontane emissie}.
-\newline
+Dit process noemt \concept{spontane emissie}.
+
 Als deze fotonen andere aangeslagen atomen treffen,
 kunnen ze deze atomen stimuleren om ook fotonen uit te zenden
 die identiek zijn aan de oorspronkelijke fotonen (zelfde frequentie, fase en richting).
-Dit process noemt \textbf{gestimuleerde emissie}.
-\newline
+Dit process noemt \concept{gestimuleerde emissie}.
+
 Het resultaat is een coherente en monochromatische lichtstraal met hoge intensiteit.
-\newline
+
 \textbf{Workflow: Hoe een laser wordt gecreëerd}
 \begin{figure}[ht]
 	\centering
@@ -2960,12 +2962,12 @@ Classificatie van lasers:
 Lasers kunnen getransporteerd worden via lucht, glasvezel of spiegels.
 Glasvezels kunnen ook lasers exiteren in de kabel.
 Wanneer men spreekt over een fibrelaser betekent dat gewoon het medium die de laser doorbrengt.
-\newline
+
 \textbf{De golflengte $\lambda$} gaat je laser bepalen.
 Kleinere golflengtes zijn preciezer maar zijn ook duurder te maken.
 Vele lasertechnologie zijn recente ontwikkelingen (het jaar 2000).
 Een yag laser is recent en door de korte golflengte kan je preciezer werken.
-\newline
+
 Hieronder zijn alle relevante type lasers voor het bewerken van materialen:
 \begin{figure}[ht]
 	\centering
@@ -3004,7 +3006,7 @@ Bij kunststoffen is zoals polycarbonaat zie je dat bij een CO2 laser bijna alles
 Bij deze toepassing wil je dus liever een CO2 laser gebruiken.
 
 \subsubsection{Kwaliteit van de laserstraal}
-De BBP (Beam Parameter Product) is een maat voor de kwaliteit van een laserstraal.
+\textbf{De BBP (Beam Parameter Product)} is een maat voor de kwaliteit van een laserstraal.
 \frm{BBP = Beam Parameter Product}{BBP = \omega_0 \cdot \dfrac{\theta}{2}}{waarbij $BBP$ het Beam Parameter Product is [\si{mm \cdot mrad}], \(\omega_0\) de straal van de bundeltaille (focuspunt) [\si{mm}] en $\theta$ de volledige divergentiehoek [\si{mrad}].}
 Hoe kleiner $\theta$ is, hoe beter de kwaliteit van de laserstraal.
 
@@ -3020,7 +3022,7 @@ Deze afstand moet precies zijn of je krijgt een groter focuspunt en dus minder i
 
 \textbf{Het intensiteitsprofiel van een laserstraal}
 Een perfecte laser zou een perfecte cilinder zijn.
-In de praktijk is dat niet zo. De laserintensiteit gaat een gaussiaans profiel hebben. -> Je intensiteitprofliel ziet er als volgt uit:
+In de praktijk is dat niet zo. De laserintensiteit gaat een gaussiaans profiel hebben. $\to$ Je intensiteitprofliel ziet er als volgt uit:
 
 
 \frm{De intensiteit van een laserstraal}{I = \dfrac{I_0}{e^{2}}}
@@ -3059,12 +3061,12 @@ voor een guassiaans profiel is het BBP:
 met $\lambda$ de golflengte van de laser.
 
 Een kleinere golflengte $\lambda$ geeft dus een betere bundelkwaliteit van de laserstraal.
-
 Om de bundel te focussen gebruik je een lens met een focuslengte \(f\).
 De straal wordt dan gefocusseerd tot een straal met een straal \(w_0\) gegeven door:
 \[w_0 = \frac{4 \lambda f}{\pi D}\]
 Kleine verschillen in hoogte kan dus een groot verschil maken in de grootte van het focuspunt.
-\begin{figure}[ht]
+
+\begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.5\textwidth]{Laserfocussen.png}
 	\caption{Laserfocussen met verschillende focusafstanden \(f\).}
@@ -3090,16 +3092,17 @@ De $w_0$ kun je meten met warmtecamera's die de warmte van de laser opneemt. Hie
 Afhankelijk van de toepassing met je de BBP en het vermogen aanpassen.
 
 \subsection{machine gestuurde Lasers, NC lasers}
-\begin{figure}[ht]
+lasers vandaag de dag worden NC-gestuurd waardoor je verschillende factoren van de laser kunt aanpassen.
+De computer kan zelf de laser focussen, de snelheid dynamisch aanpassen afhankelijk van de snede die je maakt.
+en de power van de laser aanpassen.
+\begin{figure}[htbp]
 	\centering
 	\includegraphics[width=1\textwidth]{NC-lasers.png}
 	\caption{NC laser snijmachine}
 	\label{fig:NC-lasers.png}
-
 \end{figure}
 
 \textbf{Belangrijke parameters bij laser snijden}
-\newline
 \textbf{Lasersmeltsnijden}: Snijgas (stikstof, argon) wordt tijdens het lasersnijden zodat de bewerking sneller afkloelt en dat er geen oxidatie optreedt en kans op brand verminderd.
 De laser in een interte atmosfeer brengen zoals argon of stikstof kan ervoor zorgen dat je geen enkele oxidatie hebt.
 
@@ -3109,14 +3112,15 @@ In beide gevallen is het belangrijk om het verwijderde materiaal (smelt) weg te 
 
 \subsubsection{Toepassingen}
 Lasersnijden is snel en nauwkeurig en kan enorm kleine dingen maken.
-\begin{figure}[ht]
+\begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.4\textwidth]{Kleinefiguurdoorlasersnijden.png}
 	\caption{Toepassingen van lasersnijden in verschillende industrieën}
 	\label{fig:Laser_toepassingen.png}
 \end{figure}
 \FloatBarrier
-grote platen kun je ook snijden met lasers.
+
+Lasersnijden kan groot en klein gedaan worden. Groote platen staal worden bijvoorbeeld gesneden voor de auto-industrie.
 
 \subsubsection{Nadelen}
 \begin{itemize}
@@ -3130,7 +3134,7 @@ grote platen kun je ook snijden met lasers.
     \begin{itemize}
         \item \textbf{EDM vs. ECM}: Ken het fundamentele verschil (thermisch vs. chemisch) en de vloeistof (diëlektricum vs. elektrolyt).
         \item \textbf{EDM Fases}: Begrijp de cyclus: ontbranding $\to$ ontlading (plasma) $\to$ implosie (swarf afvoer).
-        \item \textbf{EDM Slijtage}: Begrijp waarom de elektrode wel slijt bij EDM (ionenbombardement) maar niet bij ECM.
+        \item \textbf{EDM Slijtage}: Begrijp waarom de elektrode wel slijt bij EDM (ionenbombardement) maar niet bij ECM (kathode neemt anode (werkstuk) materiaal op).
         \item \textbf{ECM Afname}: Leg uit waarom de afnamesnelheid afhangt van de stroom ($I$) en de atoommassa, niet van de hardheid van het materiaal.
         \item \textbf{Laser}: Begrijp de energiebalans ($A+R+T=1$) en waarom golflengte cruciaal is voor materiaalkeuze.
         \item \textbf{Ultrasoon}: Weet dat dit ideaal is voor brosse materialen (keramiek) door microscheur-initiatie.
@@ -3198,7 +3202,12 @@ De vorm en kwaliteit van de snede hangt af van de breette van de snijpleet.
 Knippen is een spaanloze bewerking.
 Je hebt inplaats van een spaanhoek een snijhoek $\gamma$ en een vrijloophoek $\alpha$.
 Een voorbeeld van een knipmachine is een guillotineschaar.
-\frm{Schuifkracht bij knippen}{\ensuremath{F = 0.5 \cdot \dfrac{s^2}{\tan\varepsilon} \cdot \tau}}{waarbij \(F\) de afschuifkracht is [\si{N}], \(s\) de plaatdikte [\si{mm}], \(\varepsilon\) de snijhoek [$^\circ$] en \(\tau\) de schuifspanning van het materiaal [\si{N/mm^2}].}
+
+\textit{Zelfde type hoeken als bij frezen.}
+
+\frm{Schuifkracht bij knippen}
+{\ensuremath{F = 0.5 \cdot \dfrac{s^2}{\tan\varepsilon} \cdot \tau}}
+{waarbij \(F\) de afschuifkracht is [\si{N}], \(s\) de plaatdikte [\si{mm}], \(\varepsilon\) de snijhoek [$^\circ$] en \(\tau\) de schuifspanning van het materiaal [\si{N/mm^2}].}
 
 De \textbf{snijspeelt} is de afstand tussen het mes en het tegenmes.
 Als deze niet goed is ingesteld krijg je slechte sneden.
@@ -3258,10 +3267,6 @@ met \(X_f\) de snijfactor en \(R_m\) de treksterkte van het materiaal.
 
 \subsection{Fijnstancen}
 
-\begin{conceptbox}[Fijnstansen]
-    Fijnstansen is een precisie-ponsproces waarbij de snijspleet extreem klein is ($<1\%$ van de plaatdikte) en het materiaal volledig wordt vastgeklemd. Dit resulteert in een volledig glad snijvlak over de hele dikte, zonder de typische breukzone van normaal ponsen.
-\end{conceptbox}
-
 Fijnstancen is snijden en ponsen met een heel kleine
 snijspleet. rond de 1-0.01mm.
 Bij normaal ponsen en knippen heb je ruimte 
@@ -3281,7 +3286,7 @@ e snijspleet is klein maar is ook constant.
 \end{figure}
 \FloatBarrier
 
-Het is duurder om te zien maar je oppervlaktekwaliteit van 
+Het is duurder maar de oppervlaktekwaliteit van 
 je afbreukzone is veel beter. Beter dan lasersnijden en normaalponsen.
 
 \subsection{Volgsnijstempel}
@@ -3295,7 +3300,7 @@ En dan het sleutelgat. De plaat kan blijven bewegen zodat je snel velle producte
 Je verdeeld verschillende operaties over verschillende stempels.
 Deze stempels zijn niet alleen voor door te ponsen maar kunnen ook 
 het product een bepaald oppervlakte geven.
-\newline
+
 Deze techniek wordt gebruikt wanneer je grote aantallen van een product moet maken.
 De stempels (gemaakt uit hard staal met wolframcarbide) zijn duur maar je kunt er wel enorm snel mee werken.
 
@@ -3341,6 +3346,7 @@ Je hebt verschillende technieken:
 \section{Fysische scheiding}
 Bij fysische scheiding ga je materiaal wegnemen door fysische processen.
 Je hebt opnieuw verschillende technieken:
+
 \begin{itemize}
   \item \textbf{Brandnsijden}: Metaal snijden door verbranding met behulp van een zuurstofstraal.
   Het materiaal wordt verhit tot boven de ontbrandingstemperatuur en vervolgens wordt zuurstof toegevoegd om het metaal te oxideren en weg te blazen.
@@ -3398,15 +3404,18 @@ Niet echt super handig maar het is een goede herhaling.
 
 \begin{conceptbox}[Slink vs. Krimp]
     \begin{itemize}
-        \item \textbf{Slink}: Volumevermindering tijdens de faseovergang van vloeibaar naar vast. Dit wordt gecompenseerd door \keyterm{opkomers} (voedingsreservoirs).
-        \item \textbf{Krimp}: Volumevermindering tijdens de verdere afkoeling van het gestolde metaal naar kamertemperatuur. Dit wordt gecompenseerd door de \keyterm{krimptoeslag} op het model.
+        \item \textbf{Slink}: Volumevermindering tijdens de faseovergang van vloeibaar naar vast. Dit wordt gecompenseerd door
+		 \keyterm{opkomers} (voedingsreservoirs).
+        \item \textbf{Krimp}: Volumevermindering tijdens de verdere afkoeling van het gestolde metaal naar kamertemperatuur.
+		 Dit wordt gecompenseerd door de \keyterm{krimptoeslag} op het model.
     \end{itemize}
 \end{conceptbox}
 
 \section{Inleiding}
 
 \begin{conceptbox}[Directionele stolling]
-    Om slinkholtes te voorkomen, moet het gietstuk zo ontworpen zijn dat de stolling begint bij de dunste delen en eindigt bij de opkomer. De opkomer moet als laatste stollen om het krimpend metaal in het gietstuk aan te vullen.
+    Om slinkholtes te voorkomen, moet het gietstuk zo ontworpen zijn dat de stolling begint bij de dunste delen en eindigt bij de opkomer.
+	 De opkomer moet als laatste stollen om het krimpend metaal in het gietstuk aan te vullen.
 \end{conceptbox}
 
 Bij oervormen ga je een vormloos materiaal (vloeistof, pasta, poeder) in een profiel gieten 
@@ -3441,8 +3450,9 @@ De stappen om een gietstuk te maken zijn:
 \end{enumerate}
 
 \begin{conceptbox}[Volumevermindering bij stollen]
-	Volumevermindering door stollen noemt men \belangrijk{Slink}. Een slink is een microscopisch gaatje in het gietstuk dat ontstaat tijdens het stollen en wordt gecompenseerd door opkomers.
-	Dit zijn extra stukken materiaal die je toevoegt aan je gietstuk.
+	Volumevermindering door stollen noemt men \belangrijk{Slink}. Een slink is een microscopisch gaatje in het gietstuk dat ontstaat tijdens het stollen 
+	en wordt gecompenseerd door opkomers. Opkomers zijn openingen in de gietvorm, Je giet meer 
+	metaal in de opkomer zodat het krimpend metaal in het gietstuk aangevuld wordt. Dit compenseert de volumevermindering tijdens het stollen.\\
 
 	De volumevermindering door het afkoelen noemt men \belangrijk{Krimp}. $\to$ gecompenseerd door krimptoeslag.
 	Dit is een extra maat die je aan je gietstuk toevoegt zodat het na afkoeling de juiste maat heeft.
@@ -3521,7 +3531,8 @@ Na het gieten en afkoelen wordt het zand verwijderd en worden de gietloop en opk
 
 \begin{conceptbox}[Gietloop en opkomer]
 	De \textbf{gietloop} is het kanaal waardoor het gesmolten metaal in de vormholte stroomt.
-	Het ontwerp van de gietloop is cruciaal om een gelijkmatige vulling van de vorm te garanderen en om turbulentie te minimaliseren, wat kan leiden tot defecten in het gietstuk.
+	Het ontwerp van de gietloop is cruciaal om een gelijkmatige vulling van de vorm te garanderen en om turbulentie te minimaliseren, 
+	wat kan leiden tot defecten in het gietstuk.\\
 
 	De \textbf{opkomer} is een extra reservoir dat is verbonden met de vormholte en dient als een bron van extra metaal tijdens het stollingsproces.
 	Dit helpt om volumevermindering door \textbf{slink} te compenseren en voorkomt het ontstaan van holtes of insluitingen in het uiteindelijke gietstuk.
@@ -3616,6 +3627,7 @@ Dit zijn stukken zand die je in de vormholte plaatst voordat je gaat gieten zoda
 	\caption{Kernen bij gieten}
 	\label{fig:Kernen_gieten.png}
 \end{figure}
+\FloatBarrier
 
 Je neemt de buitenkant van het product eerst en je plaatst dan je kern in het gietstuk.
 Dit is wel wat werk want je moet bij elke keer dat je giet dit herhalen. Vandaag de dag
@@ -3820,7 +3832,7 @@ Productiemachines worden een aantal voorwaarden opgesteld afhankelijk van het pr
 \end{figure}
 \FloatBarrier
 
-Welke energie heb je nodig en in welk soort energie wordt die het liefst opgezet. Kinetische, warmte, enz.
+Welke energie heb je nodig en in welk soort energie wordt die het liefst omgezet. Kinetische, warmte, enz.
 Hoe moet de machine ook bewegen?
 Een draaimachine moet roteren, een freesmachine moet lineair bewegen langs het oppervlakte en op en neer gaan.
 De snelheid van de machines wordt door al deze eisen en kenmerken bepaald.
@@ -3848,7 +3860,7 @@ Automatiseren kan bij grote productieaantallen de productiviteit verhogen.
 \vspace{0.2cm}
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=0.45\textwidth]{image85.png}
+	\includegraphics[width=0.55\textwidth]{image85.png}
 	\caption{Starre automatisering: gebruik van vaste, niet-aanpasbare systemen voor productieprocessen}
 	\label{fig:Starreautomatisering.png}
 \end{figure}
@@ -3865,7 +3877,7 @@ Vandaag de dag wordt starre automatisering niet meer gebruikt want
 de meeste zijn overgenomen door NC-gestuurde machines.
 Deze werken met G-code. Alle NC-gestuurde machines werken met G-code.
 Van 3D-printers tot CNC-freesmachines. Meeste G-code is gelijkaardig en
-geeft controle over de feedrate, spindelsnelheid, koelvloeistof, bewegingen, enz.
+geeft controle over de feedrate, tool, spindelsnelheid, koelvloeistof, bewegingen, enz.
 Het probleem is dat G-code niet een overzicht geeft van de bewerkingen die je uitvoert.
 NC machines hebben vaak een interface waarbij je visueel bewerkingen kunt maken.
 \textit{Denk aan de Visual quick code van de labo's.}
@@ -3966,7 +3978,7 @@ Je ontwerpt een model in CAD and dan kun je dit model importeren in CAM-software
 In deze CAM-software kun je dan bewerkingen definiëren zoals frezen, boren, zagen, enz.
 De CAM-software genereert dan CL-data, dit is coördinaatcode (geen G-code), daarna wordt er voor de specifieke machine G-code gegenereerd.
 In de moderne industrie wordt dit allemaal toegepast.
-Je maakt je CAD, je importeert in CAM, je genereert G-code en je stuurt dit naar de machine via een netwerk. 
+Je maakt je CAD, je importeert in CAM, je genereert CL-code en je stuurt dit naar de machine via een netwerk. 
 NC-machines op het netwerk zetten kan ook helpen voor monitoring en onderhoud. Je kunt stappen via de computer volgen.
 
 \vspace{1cm}
@@ -4076,28 +4088,23 @@ Er zijn verschillende methoden en hulpmiddelen beschikbaar voor het opspannen:
 
 
 
-\autofig[0.3\textwidth]{image82.png}{Klemmen van het werkstuk: diverse methoden om het werkstuk stabiel te fixeren tijdens de bewerking.}
-
-
+\autofig[0.3\textwidth]{image82.png}
+{Klemmen van het werkstuk: diverse methoden om het werkstuk stabiel te fixeren tijdens de bewerking.}
 
 \subsection{Ondersteuning}
 
-Naast positionering en klemmen is ondersteuning cruciaal, zeker bij complexe of minder stijve werkstukken. Ondersteuning dient niet enkel om het eigen gewicht van het stuk te dragen, maar vooral om vervorming door de grote snijkrachten tegen te gaan. 
-
-
+Naast positionering en klemmen is ondersteuning cruciaal, zeker bij complexe of minder stijve werkstukken. 
+Ondersteuning dient niet enkel om het eigen gewicht van het stuk te dragen, 
+maar vooral om vervorming door de grote snijkrachten tegen te gaan. 
 
 Zonder de juiste ondersteuning kan het werkstuk gaan doorbuigen of kunnen er trillingen (\textit{chatter}) ontstaan. Dit leidt tot een slecht oppervlaktekwaliteit en afwijkingen in de maatvoering. In de figuur hieronder is te zien hoe ondersteuning helpt om deze buiging te voorkomen.
 
-
-
 \autofig[0.4\textwidth]{voorkomenbuiging.png}{Ondersteuning van het werkstuk: het gebruik van steunpunten om doorbuiging en trillingen tijdens de bewerking te minimaliseren.}
-
 
 
 \subsection{Universeel en product specifiek opspansysteem}
 
 Een belangrijke keuze in het bewerkingsplan is het type opspansysteem.
-
 Afhankelijk van de seriegrootte en de diversiteit van de producten, kies je tussen een universeel of een productspecifiek systeem.
 
 
@@ -4123,6 +4130,7 @@ Het bewerkingsplan wordt sterk bepaald door de vereiste toleranties en oppervlak
 	\includegraphics[width=0.45\textwidth]{Ruwheid.png}
 	\caption{Toleranties en ruwheid van verschillende bewerkingsprocessen: overzicht van haalbare maattoleranties en oppervlaktekwaliteiten.}
 \end{figure}
+\FloatBarrier
 
 \section{Microvoorbereiden en bewerkingsstappen}
 Bij de microwerkmethode kijk je naar de specifieke stappen binnen één bewerking. Hierbij maak je onderscheid tussen ruwen en finiseren.
@@ -4162,7 +4170,7 @@ Computer Aided Process Planning (CAPP) automatiseert het maken van werkvoorberei
 \end{examenbox}
 
 	\begin{center}
-		\includegraphics[width=0.5\textwidth]{image84.png}
+		\includegraphics[width=0.65\textwidth]{image84.png}
 		\captionof{figure}{Producten die verschillen in complexiteit.}
 		\label{fig:lossestukken}
 	\end{center}
@@ -4248,22 +4256,30 @@ Bij een integraal ontwerp kijkt men niet enkel naar de productie, maar ook naar:
 	\item \textbf{Design for Recycling/Maintenance}: Rekening houden met de volledige levenscyclus, inclusief onderhoud en demontage voor recyclage (Demanufacturing).
 \end{itemize}
 
-\autofig[0.45\textwidth]{gemaaktEnVastgelegdeKosten.png}{Gerealiseerde versus vastgelegde kosten: Hoewel de ontwerpfase zelf relatief weinig kost, wordt hier het grootste deel van de uiteindelijke productiekosten vastgelegd.}
+\autofig[0.55\textwidth]
+{gemaaktEnVastgelegdeKosten.png}{Gerealiseerde versus vastgelegde kosten: Hoewel de ontwerpfase zelf relatief weinig kost, wordt hier het grootste deel van de uiteindelijke productiekosten vastgelegd.}
 
 De ontwerper heeft dus een enorme impact op de uiteindelijke kostprijs door rekening te houden met de functie, maakbaarheid, onderhoudbaarheid en duurzaamheid van het product.
 
 \section{Designen voor verspaanbewerkingen}
-In de maakwereld is perfectie onmogelijk. Een ontwerper moet begrijpen dat gereedschappen hun beperkingen hebben. Zo is het onmogelijk om een perfecte binnenhoek te frezen met een scherpe rand; de radius van de frees bepaalt altijd de kleinst mogelijke afronding in de hoek.
+In de maakwereld is perfectie onmogelijk. 
+Een ontwerper moet begrijpen dat gereedschappen hun beperkingen hebben. 
+Zo is het onmogelijk om een perfecte binnenhoek te frezen met een scherpe rand. 
+De radius van de frees bepaalt altijd de kleinst mogelijke afronding in de hoek.
 
 \autofig[0.4\textwidth]{imperfectiefrezen.png}{Beperkingen bij frezen: De radius van het gereedschap maakt het onmogelijk om perfect scherpe binnenhoeken te creëren.}
 
 \section{Designen voor toeslagen}
-Wanneer een product een nabewerking vereist (zoals slijpen na het harden), moet de ontwerper zorgen dat de betreffende oppervlakken goed toegankelijk zijn voor de bewerkingstools. Ook moet er voldoende 'toegift' (extra materiaal) voorzien worden, rekening houdend met de toleranties van de voorgaande bewerkingen.
+Wanneer een product een nabewerking vereist (zoals slijpen na het harden), 
+moet de ontwerper zorgen dat de betreffende oppervlakken goed toegankelijk zijn voor de bewerkingstools.
+Ook moet er voldoende 'toegift' (extra materiaal) voorzien worden, rekening houdend met de toleranties van de voorgaande bewerkingen.
 
-\autofig[0.6\textwidth]{designenvoortoeslagen.png}{Designen voor toeslagen: Het voorzien van voldoende bewerkingstoegift en toegankelijkheid voor gereedschappen.}
+\autofig[0.6\textwidth]{designenvoortoeslagen.png}{Designen voor toeslagen: Het voorzien van voldoende bewerkingstoegift en
+ toegankelijkheid voor gereedschappen.}
 
 \section{Designen voor matrijzen}
-Bij gieten of spuitgieten moet men rekening houden met de lossing (vrijloophoeken), een gelijkmatige wanddikte om slink te voorkomen, en het vermijden van ondersnijdingen die de matrijs complex en duur maken.
+Bij gieten of spuitgieten moet men rekening houden met de lossing (vrijloophoeken), 
+een gelijkmatige wanddikte om slink te voorkomen, en het vermijden van ondersnijdingen die de matrijs complex en duur maken.
 
 \section{Algemene regels bij Design for Manufacturing (DFM)}
 \begin{itemize}
@@ -4313,7 +4329,7 @@ Bij gieten of spuitgieten moet men rekening houden met de lossing (vrijloophoeke
 
 \begin{conceptbox}[Design for Manufacturing (DFM) VS Manufacturing for Design (MFD)]
 	In dit hoofdstuk hebben we allemaal beperkingen gelegd op het ontwerp ter bevordering van de productie. Dit is DFM.
-	\newline
+
 	MFD is het omgekeerde. Hier ga je kijken naar de productieprocessen en hoe je deze kunt aanpassen om beter aan de ontwerpvereisten te voldoen. 
 	MFD is duurder maar kan wel technologieën voortduwen en nieuwe productietechnologie mogelijk maken.
 	3D printen is ontstaan uit de vraag om makkelijker specifieke eenmalige producten te maken.
@@ -4338,6 +4354,10 @@ Bekijk de laatste video op toledo waar hij over een voorbeeldexamen gaat.
 \chapter{Examenoefeningen}
 
 % TODO: #69 Examenoefeningen toevoegen
+
+\TODO{
+	Examenoefeningen toevoegen
+}
 
 \chapter{Slotwoord}
 
