@@ -6,15 +6,15 @@
 ![VS Code](https://img.shields.io/badge/Editor-VS%20Code-007ACC?logo=visualstudiocode&logoColor=white)
 ![Git](https://img.shields.io/badge/Tool-Git-F05032?logo=git&logoColor=white)
 
-Welkom bij de samenvattingen voor Industriële Ingenieurswetenschappen aan de KU Leuven! 
+Welkom bij de samenvattingen voor Industriële Ingenieurswetenschappen aan de KU Leuven!
 
 Deze repository is een **gezamenlijk project** waar studenten professionele samenvattingen maken die iedereen kan gebruiken. Jouw bijdrage - groot of klein - helpt medestudenten enorm. Bedankt dat je hier bent! 🙌
 
 ---
 
 ## Alle Auteurs (voeg je naam toe)
-- **Ruben Ryckaert** 
 
+- **Ruben Ryckaert**
 
 ## 👋 Nieuw hier? Start hier!
 
@@ -24,128 +24,283 @@ Heb je vragen of loop je vast? Stuur gerust een berichtje naar **@eggmansmile** 
 Join de industria discord waar je me zoiezo vindt. https://discord.gg/gsDzr5qhPe. Als je collabirator wilt worden (Je bekijkt af en toe eens veranderingen en kijkt of pull requests goed zijn) stuur me dan ook iets.
 
 Deze documenten gaan je niet de garantie geven voor een goed examenresultaat. Ze zijn bedoeld als hulpmiddel bij je studie. Gebruik ze verstandig en combineer ze met andere studiematerialen.
-- Studforum Cloud — examenvragen en samenvattingen (inloggen vereist): [Open Studforum Cloud](https://cloud.studforum.net/apps/files/?dir=/&fileid=857448)  
+
+- Studforum Cloud — examenvragen en samenvattingen (inloggen vereist): [Open Studforum Cloud](https://cloud.studforum.net/apps/files/?dir=/&fileid=857448)
 - Studforum Wiki — aanvullende samenvattingen en bronnen en info over de vakken: [Open Studforum Wiki](https://wiki.studforum.net/start)
 
 ---
 
-## 🛠️ Hoe draag ik bij? (Voor iedereen)
+## 📋 Inhoudsopgave
 
-Omdat je (standaard) geen schrijfrechten hebt op deze repository, werk je via een **Fork**. Dit is jouw eigen kopie van het project waar je veilig kunt experimenteren.
-
-**Het proces in het kort:**
-1.  **Fork** dit project.
-2.  **Installeer** de software (of gebruik Codespaces).
-3.  **Branch** & **Edit** in jouw eigen versie.
-4.  **Pull Request** naar ons originele project.
-
----
-
-## 🚀 Stap 1: Installatie (Aangeraden)
-
-Om optimaal te werken, raden we aan om alles lokaal op je eigen laptop te installeren. Volg deze stappen nauwkeurig, dan ben je in 10-15 minuten klaar.
-
-### 1. Visual Studio Code (De Editor)
-Hierin ga je typen en je PDF's bekijken.
-1.  Ga naar [code.visualstudio.com](https://code.visualstudio.com/).
-2.  Download de **Windows** versie en installeer het.
-
-### 2. Git (Versiebeheer)
-Dit programma houdt alle wijzigingen bij en zorgt dat je kunt samenwerken.
-1.  Ga naar [git-scm.com/downloads](https://git-scm.com/downloads).
-2.  Download **"Click here to download"** voor Windows en installeer het (je mag bij alle schermen op **"Next"** klikken).
-
-### 3. Strawberry Perl (Nodig voor de achtergrond)
-Onze tools hebben Perl nodig om alles correct te laten werken op de achtergrond.
-1.  Ga naar [strawberryperl.com](https://strawberryperl.com/) en installeer de "Recommended" versie.
-
-### 4. MiKTeX (De LaTeX Motor)
-Dit is de motor die jouw code omzet naar een mooie PDF.
-1.  Ga naar [miktex.org/download](https://miktex.org/download) en download de **Basic Installer**.
-2.  **⚠️ ZEER BELANGRIJK:** Zet tijdens de installatie **"Install missing packages on-the-fly"** op **"Yes"**. 
-
-### 5. Herstart je computer 🔄
-Windows moet even weten dat al deze nieuwe programma's bestaan.
+1. [Installatie (lokaal)](#-stap-1-installatie-lokaal)
+2. [Codespaces (geen installatie)](#-alternatief-github-codespaces)
+3. [Project opzetten](#-stap-2-project-opzetten)
+4. [Dagelijkse workflow](#-stap-3-dagelijkse-workflow)
+5. [Issues & Feedback](#-issues--feedback)
+6. [Debugging](#-debugging)
+7. [VS Code Tasks](#-vs-code-tasks)
+8. [Hulpbronnen](#-hulpbronnen)
 
 ---
 
-## ☁️ Alternatief: GitHub Codespaces (Geen installatie)
+## 🛠️ Stap 1: Installatie (lokaal)
 
-Wil je **niets installeren** of ben je op een andere computer? Gebruik dan de online versie in je browser.
-1.  Volg Stap 2 (Forken) hieronder.
-2.  Op de pagina van **JOUW fork**: Klik op de groene knop **<> Code**.
-3.  Ga naar tabblad **Codespaces** en klik op **Create codespace on main**.
+> **Ongeveer 10-15 minuten** – volg deze stappen voor een volledig werkende setup.
+
+### 1.1 Benodigde software
+
+| #   | Software            | Download                                                | Opmerking             |
+| --- | ------------------- | ------------------------------------------------------- | --------------------- |
+| 1   | **VS Code**         | [code.visualstudio.com](https://code.visualstudio.com/) | Kies Windows versie   |
+| 2   | **Git**             | [git-scm.com/downloads](https://git-scm.com/downloads)  | Klik overal op "Next" |
+| 3   | **Strawberry Perl** | [strawberryperl.com](https://strawberryperl.com/)       | "Recommended" versie  |
+| 4   | **MiKTeX**          | [miktex.org/download](https://miktex.org/download)      | Basic Installer       |
+
+> ⚠️ **BELANGRIJK bij MiKTeX:** Zet **"Install missing packages on-the-fly"** op **"Yes"**!
+
+### 1.2 Herstart nodig 🔄
+
+Na installatie: **herstart je computer** zodat Windows de programma's herkent.
+
+### 1.3 Git hooks (automatisch)
+
+> ✅ **Geen actie nodig!** Git hooks worden automatisch geconfigureerd wanneer je de folder opent in VS Code. Dit zorgt dat gegenereerde PDFs niet per ongeluk worden gecommit.
 
 ---
 
-## 📥 Stap 2: Het project opzetten
+## ☁️ Alternatief: GitHub Codespaces
 
-### 1. Maak een Fork (Op GitHub)
-Klik rechtsboven op de knop **Fork** en dan op **Create Fork**. Nu heb je je eigen kopie van de samenvattingen op jouw profiel.
+**Geen installatie nodig!** Werk direct in je browser.
 
-### 2. Clone JOUW Fork (Op je PC)
-*Sla dit over als je Codespaces gebruikt.*
-1.  Open **Visual Studio Code**.
-2.  Open een Terminal (`Ctrl + ``).
-3.  Typ het volgende commando (vervang 'JouwNaam' door jouw GitHub gebruikersnaam!):
-    ```bash
-    git clone https://github.com/JouwNaam/Samenvattingen-Ku-leuven-Industriele-ingenieurs.git
-    ```
-4.  Ga via *File > Open Folder* naar de gedownloade map.
+1. Maak eerst een **Fork** (zie Stap 2.1)
+2. Ga naar jouw fork op GitHub
+3. Klik op groene knop **<> Code** → tabblad **Codespaces**
+4. Klik **Create codespace on main**
 
-### 3. Link naar het originele project (Upstream)
-Typ in de VS Code terminal om updates te kunnen ontvangen:
+Je krijgt een volledige VS Code omgeving in je browser.
+
+---
+
+## 📥 Stap 2: Project opzetten
+
+### 2.1 Maak een Fork
+
+1. Ga naar de [originele repository](https://github.com/Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs)
+2. Klik rechtsboven op **Fork** → **Create Fork**
+
+### 2.2 Clone naar je PC
+
+_Sla over bij Codespaces_
+
+```bash
+# In VS Code terminal (Ctrl + `)
+git clone https://github.com/JOUW-GEBRUIKERSNAAM/Samenvattingen-Ku-leuven-Industriele-ingenieurs.git
+```
+
+Open daarna de map via _File > Open Folder_.
+
+### 2.3 Link naar origineel (upstream)
+
 ```bash
 git remote add upstream https://github.com/Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs.git
 ```
 
-### 4. Extensies
-VS Code vraagt rechtsonder om aanbevolen extensies te installeren -> Klik **Install**. (Vooral **LaTeX Workshop** is nodig).
+### 2.4 Extensies installeren
+
+VS Code vraagt automatisch om aanbevolen extensies → Klik **Install**.
+
+**Belangrijkste extensies:**
+
+- **LaTeX Workshop** – PDF bouwen en bekijken
+- **GitHub Pull Requests and Issues** – Issues en PRs beheren
 
 ---
 
-## 🔄 Stap 3: Je dagelijkse workflow
+## 🔄 Stap 3: Dagelijkse workflow
 
-### 1. Zorg dat je up-to-date bent (Sync)
-*   **Via GitHub:** Ga naar jouw fork, klik **Sync Fork** > **Update branch**.
-*   **In VS Code:** Klik op het **Sync** icoontje (cirkelpijltjes) bij Source Control (links).
-
-### 2. Maak een nieuwe Branch
-Werk nooit direct in `main`. Maak een tak voor jouw taak:
-```bash
-git checkout main
-git checkout -b vaknaam-hoofdstuk-x
+```
+┌─────────────────────────────────────────────────────────┐
+│  1. Sync/Pull     →  Klik ↻ Sync in Source Control      │
+│  2. Nieuwe branch →  Klik branch naam → Create branch   │
+│  3. Bewerken      →  Pas .tex bestanden aan             │
+│  4. Build PDF     →  Ctrl+Alt+B                         │
+│  5. Commit        →  Source Control → + → Commit        │
+│  6. Push          →  Sync knop of Publish Branch        │
+│  7. Pull Request  →  GitHub paneel → Create PR          │
+└─────────────────────────────────────────────────────────┘
 ```
 
-### 3. Bewerken & Testen
-Open de `.tex` bestanden en pas aan.
-*   **Bouw PDF:** Klik op de groene ▶️ knop rechtsboven (`Ctrl+Alt+B`).
-*   **Bekijk PDF:** Klik op het PDF icoontje (`Ctrl+Alt+V`).
+### Sync/Update
 
-### 4. Opslaan & Uploaden
-1.  Ga naar **Source Control** (links).
-2.  Klik op **+** bij je bestanden, typ een bericht en klik op **Commit**.
-3.  Klik op **Publish Branch** (of de Sync knop) om het naar GitHub te sturen.
+- **GitHub:** Jouw fork → **Sync Fork** → **Update branch**
+- **VS Code:** Klik op **↻ Sync** icoontje bij Source Control
 
-### 5. Maak een Pull Request (PR)
-1.  Ga naar de **originele repository** (deze pagina).
-2.  Klik op de gele balk **Compare & pull request**.
-4.  Klik op **Create Pull Request**.
+### Branch maken
+
+1. Klik op de **branch naam** linksonder (bijv. `main`)
+2. Kies **Create new branch...**
+3. Typ een naam zoals `vaknaam-hoofdstuk-x`
+4. Klaar! Je werkt nu in je eigen branch
+
+> ⚠️ Werk **nooit** direct in `main`!
+
+### PDF bouwen & bekijken
+
+- **Bouwen:** `Ctrl+Alt+B` of groene ▶️ knop
+- **Bekijken:** `Ctrl+Alt+V` of PDF icoontje
+
+Zie **[Debugging-van-building.md](Debugging-van-building.md)** bij problemen.
+
+### Pull Request maken
+
+Na je commit en push, maak je een Pull Request (PR) om je wijzigingen voor te stellen:
+
+1. Ga naar GitHub (je fork of originele repo)
+2. Klik op **Compare & pull request** (gele balk)
+3. **⚠️ BELANGRIJK:** Controleer de instellingen bovenaan:
+
+```
+base repository: Eggmansmile/Samenvattingen...  ← MOET dit zijn!
+base: main
+
+head repository: JouwNaam/Samenvattingen...     ← Jouw fork
+compare: jouw-branch-naam
+```
+
+4. Schrijf een korte beschrijving van je wijzigingen
+5. Klik **Create Pull Request**
+
+> ⚠️ Als `base repository` op je **eigen** fork staat, gaat de PR naar jezelf in plaats van naar het originele project!
 
 ---
 
-## Hoe voeg je issues toe?
+## 🐛 Issues & Feedback
 
-Op github kun je issues toevoegen of verbeteringen voorstellen.
-Je kunt ook in de code issues toevoegen door % @TODO of @issue: ...
+### Issues maken via GitHub
 
-Bekijk **[Hoe-voeg-je-issues-toe.md](Hoe-voeg-je-issues-toe.md)** voor meer info.
+1. Ga naar **Issues** tab
+2. Klik **New Issue**
+3. Beschrijf het probleem of voorstel
 
-## 📚 Hulpbronnen & Hulp
+### Issues maken via code
 
-*   **[MACRO_QUICK_REFERENCE.md](MACRO_QUICK_REFERENCE.md)**: Alle LaTeX commando's voor kaders en formules.
-*   **[Debugging-van-building.md](Debugging-van-building.md)**: Hulp bij PDF errors.
-*   **Issues tab:** Stel je vraag hier op GitHub.
-*   **Discord:** Contacteer **@eggmansmile**.
+Voeg een comment toe in je `.tex` bestand:
+
+```latex
+% @issue: Hier mist uitleg over formule X
+% TODO: Afbeelding toevoegen
+% FIXME: Fout in berekening
+```
+
+De 💡 lightbulb verschijnt → klik om direct een GitHub issue aan te maken.
+
+Meer details: **[Hoe-voeg-je-issues-toe.md](Hoe-voeg-je-issues-toe.md)**
+
+---
+
+## 🔧 Debugging
+
+### Build faalt?
+
+1. **Output bekijken:** View → Output → "LaTeX Workshop"
+2. **Clean build:** Command Palette (`Ctrl+Shift+P`) → `LaTeX Workshop: Clean up auxiliary files`
+3. **Opnieuw bouwen**
+
+### Veelvoorkomende problemen
+
+| Probleem           | Oplossing                                                   |
+| ------------------ | ----------------------------------------------------------- |
+| Package mist       | MiKTeX installeert automatisch (als "on-the-fly" aan staat) |
+| pdflatex not found | Herstart PC of check PATH                                   |
+| Merge conflicts    | Kies "Accept Current" of "Accept Incoming" in VS Code       |
+
+Uitgebreide hulp: **[Debugging-van-building.md](Debugging-van-building.md)**
+
+---
+
+## ⚡ VS Code Tasks
+
+Handige taken beschikbaar via `Ctrl+Shift+P` → **Tasks: Run Task**:
+
+| Task                     | Beschrijving                                        |
+| ------------------------ | --------------------------------------------------- |
+| Clean LaTeX aux files    | Verwijdert alle .aux, .log, .toc, etc. bestanden    |
+| Update school-macros.sty | Kopieert macros naar alle mappen met .tex bestanden |
+
+> 💡 **Tip:** Git hooks worden automatisch ingesteld bij folder open.
+
+---
+
+## 🌐 Git & GitHub in VS Code
+
+De **GitHub Pull Requests and Issues** extensie laat je alles beheren zonder de website:
+
+### Issues bekijken en oppakken
+
+1. Open de **GitHub** sidebar (links, GitHub logo)
+2. Onder **Issues** zie je alle open taken
+3. Rechtsklik op een issue → **Start Working on Issue**
+    - VS Code maakt automatisch een branch aan
+    - De branch naam bevat het issue nummer
+
+### Aan een issue werken
+
+```
+┌─────────────────────────────────────────────────────────┐
+│  1. Start Working on Issue  →  Branch wordt aangemaakt  │
+│  2. Maak je wijzigingen     →  Bewerk .tex bestanden    │
+│  3. Commit & Push           →  Source Control → Sync    │
+│  4. Create Pull Request     →  Knop verschijnt vanzelf  │
+└─────────────────────────────────────────────────────────┘
+```
+
+### Pull Requests reviewen
+
+Onder **Pull Requests** in de sidebar zie je:
+
+- **Waiting For My Review** – PRs die op jouw review wachten
+- **Assigned To Me** – PRs aan jou toegewezen
+- **Created By Me** – Jouw eigen PRs
+
+Klik op een PR om de wijzigingen direct in VS Code te bekijken en te reviewen.
+
+### Quick Reference
+
+| Actie           | Hoe                                   |
+| --------------- | ------------------------------------- |
+| Branch wisselen | Klik op branch naam linksonder        |
+| Nieuwe branch   | Branch naam → Create new branch       |
+| Commit          | Source Control → + → Type bericht → ✓ |
+| Push/Pull       | 3 puntjes → Push/Pull/Sync            |
+| Pull Request    | GitHub paneel → Create Pull Request   |
+| Issues bekijken | GitHub paneel in sidebar              |
+
+### Sneltoetsen
+
+```
+Ctrl+Shift+G    Source Control openen
+Ctrl+Shift+P    Command Palette (alle commands)
+Ctrl+`          Terminal openen
+```
+
+Uitgebreide handleiding: **[Remote-Repos.md](Remote-Repos.md)**
+
+---
+
+## 📚 Hulpbronnen
+
+| Document                                                   | Beschrijving                             |
+| ---------------------------------------------------------- | ---------------------------------------- |
+| **[MACRO_QUICK_REFERENCE.md](MACRO_QUICK_REFERENCE.md)**   | LaTeX commando's voor kaders en formules |
+| **[Debugging-van-building.md](Debugging-van-building.md)** | Hulp bij PDF build errors                |
+| **[Hoe-voeg-je-issues-toe.md](Hoe-voeg-je-issues-toe.md)** | Issues aanmaken via code                 |
+| **[Remote-Repos.md](Remote-Repos.md)**                     | Git & GitHub in VS Code                  |
+
+### Contact
+
+- **Discord:** [Industria server](https://discord.gg/gsDzr5qhPe) – contacteer **@eggmansmile**
+- **Issues tab:** Stel je vraag op GitHub
+
+---
 
 Bedankt voor je bijdrage! Samen maken we de beste samenvattingen. 🚀

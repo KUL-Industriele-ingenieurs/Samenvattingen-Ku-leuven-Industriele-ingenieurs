@@ -1,33 +1,50 @@
 {
-	"name": "LaTeX Project",
-	"build": {
-		"dockerfile": "Dockerfile"
-	},
-	"features": {
-		"ghcr.io/devcontainers/features/common-utils:2": {
-			"username": "vscode",
-			"upgradePackages": false,
-			"configureZshAsDefaultShell": true
-		}
-	},
-	/* NOTE: Reverted to v2 because some environments (e.g., Codespaces) may not have permission to pull v4. To upgrade later, either ensure GHCR access or vendor the feature locally. */
-	"postStartCommand": "bash -lc \"bash .vscode/scripts/check_issues.sh\" || true",
-	"customizations": {
-		"vscode": {
-			"extensions": [
-				"James-Yu.latex-workshop",
-				"GitHub.vscode-pull-request-github",
-				"tecosaur.latex-utilities",
-				"usernamehw.errorlens",
-				"ms-vsliveshare.vsliveshare",
-				"bnavetta.zoterolatex",
-				"dt.ghlink",
-				"esbenp.prettier-vscode"
-			],
-			"settings": {
+    "name": "LaTeX Project",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "features": {
+        "ghcr.io/devcontainers/features/common-utils:2": {
+            "username": "vscode",
+            "upgradePackages": false,
+            "configureZshAsDefaultShell": true
+        }
+    },
+
+    // Git hooks setup - runs once after container creation
+    "postCreateCommand": "git config core.hooksPath .githooks",
+
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "James-Yu.latex-workshop",
+                "GitHub.vscode-pull-request-github",
+                "tecosaur.latex-utilities",
+                "usernamehw.errorlens",
+                "ms-vsliveshare.vsliveshare",
+                "bnavetta.zoterolatex",
+                "dt.ghlink",
+                "esbenp.prettier-vscode"
+            ],
+            "settings": {
+                // LaTeX Workshop settings (consistent with .vscode/settings.json)
                 "latex-workshop.latex.autoBuild.run": "onSave",
-                "latex-workshop.view.pdf.viewer": "tab"
+                "latex-workshop.view.pdf.viewer": "tab",
+                "latex-workshop.message.error.show": true,
+                "latex-workshop.message.warning.show": true,
+
+                // GitHub Issues settings
+                "githubIssues.createIssueTriggers": [
+                    "@issue",
+                    "@todo",
+                    "TODO",
+                    "FIXME"
+                ],
+                "githubIssues.useBranchForIssues": "on",
+
+                // Auto-run tasks on folder open
+                "task.allowAutomaticTasks": "on"
             }
-		}
-	}
+        }
+    }
 }
