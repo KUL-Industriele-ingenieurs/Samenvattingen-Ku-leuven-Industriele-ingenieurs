@@ -148,3 +148,61 @@ jobs:
           retention-days: 30
           if-no-files-found: ignore
           path: artifacts/logs/*.log
+
+  prerelease:
+    name: Create Prerelease
+    needs: build
+    runs-on: ubuntu-latest
+    # Only create prereleases on pushes to main (not PRs or tags)
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    permissions:
+      contents: write
+
+    steps:
+      - name: Download PDF artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: pdfs
+          path: pdfs
+
+      - name: Get current date and commit info
+        id: info
+        run: |
+          echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+          echo "datetime=$(date +'%Y-%m-%d %H:%M UTC')" >> $GITHUB_OUTPUT
+          echo "short_sha=${GITHUB_SHA::7}" >> $GITHUB_OUTPUT
+
+      - name: List downloaded PDFs
+        run: |
+          echo "📄 PDFs to include in prerelease:"
+          ls -la pdfs/ || echo "No PDFs found"
+
+      - name: Delete existing prerelease
+        uses: dev-drprasad/delete-tag-and-release@v1.1
+        with:
+          tag_name: latest
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          delete_release: true
+        continue-on-error: true
+
+      - name: Create prerelease
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest
+          name: "📚 Latest Build (${{ steps.info.outputs.date }})"
+          prerelease: true
+          body: |
+            ## 🔄 Automatic Prerelease
+            
+            **Build Date:** ${{ steps.info.outputs.datetime }}
+            **Commit:** [`${{ steps.info.outputs.short_sha }}`](https://github.com/${{ github.repository }}/commit/${{ github.sha }})
+            
+            This is an automatically generated prerelease containing the latest compiled PDF documents.
+            
+            > ⚠️ **Note:** This prerelease is automatically updated with every commit to the main branch.
+            > For stable versions, see the [official releases](https://github.com/${{ github.repository }}/releases?q=NOT+prerelease).
+            
+            ### 📥 Downloads
+            All PDF summaries are attached below.
+          files: pdfs/*.pdf
+          fail_on_unmatched_files: false
