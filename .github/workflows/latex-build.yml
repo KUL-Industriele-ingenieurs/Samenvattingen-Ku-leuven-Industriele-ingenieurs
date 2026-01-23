@@ -229,14 +229,14 @@ jobs:
       contents: write
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
       - name: Download PDF artifacts
         uses: actions/download-artifact@v4
         with:
           name: pdfs
-          path: .
-
-      - name: Checkout code
-        uses: actions/checkout@v4
+          path: artifacts/pdfs
 
       - name: Get current date and commit info
         id: info
