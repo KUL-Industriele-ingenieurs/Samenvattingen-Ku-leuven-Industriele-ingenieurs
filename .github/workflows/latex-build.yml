@@ -27,9 +27,22 @@ jobs:
           find . -type f \( -name "*.aux" -o -name "*.bbl" -o -name "*.bcf" -o -name "*.blg" -o -name "*.fls" -o -name "*.log" -o -name "*.out" -o -name "*.toc" -o -name "*.fdb_latexmk" -o -name "*.synctex.gz" \) -delete
           echo "Cleaned stale auxiliary files"
 
+      - name: Restore PDF cache
+        uses: actions/cache@v4
+        id: pdf-cache
+        with:
+          path: .pdf-cache
+          key: pdf-cache-${{ hashFiles('school-macros.sty') }}-${{ hashFiles('**/*.tex') }}
+          restore-keys: |
+            pdf-cache-${{ hashFiles('school-macros.sty') }}-
+            pdf-cache-
+
       - name: Find and Build LaTeX documents
         shell: bash
         run: |
+          # Create cache directory if it doesn't exist
+          mkdir -p .pdf-cache
+          
           # Find all main documents (excluding subfiles and templates)
           # We look for files containing \documentclass
           find . -type f -name "*.tex" \
@@ -48,14 +61,42 @@ jobs:
           
           BUILD_FAILED=0
           PDFS_GENERATED=0
+          CACHE_HITS=0
           BUILD_LOG_DIR="${GITHUB_WORKSPACE}/build_logs"
           mkdir -p "$BUILD_LOG_DIR"
+          
+          # Compute hash of root school-macros.sty for cache invalidation
+          MACROS_HASH=""
+          if [ -f "school-macros.sty" ]; then
+            MACROS_HASH=$(sha256sum "school-macros.sty" | cut -d' ' -f1)
+          fi
           
           # Build each found document
           while IFS= read -r texfile; do
             dir=$(dirname "$texfile")
             file=$(basename "$texfile")
             name=$(basename "$texfile" .tex)
+            
+            # Compute hash of the tex file + macros for cache key
+            TEX_HASH=$(sha256sum "$texfile" | cut -d' ' -f1)
+            CACHE_KEY="${TEX_HASH}-${MACROS_HASH}"
+            CACHE_FILE=".pdf-cache/${name}-${CACHE_KEY}.pdf"
+            
+            # Check if we have a cached PDF
+            if [ -f "$CACHE_FILE" ]; then
+              echo "========================================="
+              echo "Using cached PDF for: $texfile"
+              echo "========================================="
+              
+              # Copy cached PDF to the document's directory
+              cp "$CACHE_FILE" "${dir}/${name}.pdf"
+              
+              echo "| \`$name\` | ⚡ Cached | No changes detected |" >> $GITHUB_STEP_SUMMARY
+              echo "⚡ Cache hit: $texfile"
+              PDFS_GENERATED=$((PDFS_GENERATED + 1))
+              CACHE_HITS=$((CACHE_HITS + 1))
+              continue
+            fi
             
             echo "========================================="
             echo "Building: $texfile"
@@ -77,9 +118,12 @@ jobs:
               
               # Verify PDF was actually created
               if [ -f "${name}.pdf" ]; then
-                echo "| \`$name\` | ✅ Success | PDF generated |" >> $GITHUB_STEP_SUMMARY
+                echo "| \`$name\` | ✅ Built | PDF generated |" >> $GITHUB_STEP_SUMMARY
                 echo "✅ Success: $texfile"
                 PDFS_GENERATED=$((PDFS_GENERATED + 1))
+                
+                # Store in cache for future builds
+                cp "${name}.pdf" "${GITHUB_WORKSPACE}/${CACHE_FILE}"
               else
                 echo "| \`$name\` | ⚠️ Warning | Completed but no PDF |" >> $GITHUB_STEP_SUMMARY
                 echo "⚠️ Warning: $texfile completed but PDF not found"
@@ -110,6 +154,10 @@ jobs:
             
             cd - > /dev/null
           done < main_docs.txt
+          
+          # Summary
+          echo ""
+          echo "📊 Build Summary: $PDFS_GENERATED PDFs ($CACHE_HITS from cache, $((PDFS_GENERATED - CACHE_HITS)) rebuilt)"
           
           # Logic: Fail only if NO PDFs were generated (and we found documents)
           # If we generated at least one PDF, we consider it a partial success
