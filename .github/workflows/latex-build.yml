@@ -244,29 +244,31 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Create release if it doesn't exist, otherwise edit it
-          # We use --notes-file to handle multiline body safely
+          # 1. Update the 'latest' tag to point to this commit
+          # We need to configure git identity for the tag
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           
-          # Prepare release body
-          cat <<EOF > release_body.md
-          ## 🔄 Automatic Prerelease
+          echo "Updating 'latest' tag to $(git rev-parse --short HEAD)..."
+          git tag -f latest
+          git push -f origin latest
           
-          **Build Date:** ${{ steps.info.outputs.datetime }}
-          **Commit:** [`${{ steps.info.outputs.short_sha }}`](https://github.com/${{ github.repository }}/commit/${{ github.sha }})
+          # 2. Prepare Release Body using printf to avoid heredoc indentation issues
+          printf "## 🔄 Automatic Prerelease\n\n" > release_body.md
+          printf "**Build Date:** ${{ steps.info.outputs.datetime }}\n" >> release_body.md
+          printf "**Commit:** [\`${{ steps.info.outputs.short_sha }}\`](https://github.com/${{ github.repository }}/commit/${{ github.sha }})\n\n" >> release_body.md
+          printf "This is an automatically generated prerelease containing the latest compiled PDF documents.\n\n" >> release_body.md
+          printf "> ⚠️ **Note:** This prerelease is automatically updated with every commit to the main branch.\n" >> release_body.md
+          printf "> For stable versions, see the [official releases](https://github.com/${{ github.repository }}/releases?q=NOT+prerelease).\n\n" >> release_body.md
+          printf "### 📥 Downloads\nAll PDF summaries are attached below.\n" >> release_body.md
           
-          This is an automatically generated prerelease containing the latest compiled PDF documents.
+          # 3. Create or Edit the Release
+          # If the release exists, we edit it to update body/target.
+          # If not, we create it.
+          # We use the 'latest' tag which we just pushed.
           
-          > ⚠️ **Note:** This prerelease is automatically updated with every commit to the main branch.
-          > For stable versions, see the [official releases](https://github.com/${{ github.repository }}/releases?q=NOT+prerelease).
-          
-          ### 📥 Downloads
-          All PDF summaries are attached below.
-          EOF
-          
-          # Create or update the release metadata
-          # We check if release exists first
           if gh release view latest >/dev/null 2>&1; then
-             echo "Updating existing release..."
+             echo "Updating existing release metadata..."
              gh release edit latest \
                --title "📚 Latest Build (${{ steps.info.outputs.date }})" \
                --prerelease \
@@ -281,19 +283,16 @@ jobs:
                --notes-file release_body.md
           fi
           
-          # Upload assets with --clobber to overwrite proper existing files
-          # We check for both pdfs in artifacts/pdfs and logs
+          # 4. Upload Assets
           echo "Uploading assets..."
-          
-          # Upload PDFs (glob expansion happens in shell)
+          # Check for PDFs
           if ls artifacts/pdfs/*.pdf 1> /dev/null 2>&1; then
             gh release upload latest artifacts/pdfs/*.pdf --clobber
           else
-            echo "::warning::No PDFs found in artifacts/pdfs to upload"
+            echo "::warning::No PDFs found to upload."
           fi
           
-          # Upload Logs if exist
+          # Check for Logs
           if ls artifacts/logs/*.log 1> /dev/null 2>&1; then
              gh release upload latest artifacts/logs/*.log --clobber
           fi
-          fail_on_unmatched_files: false
