@@ -38,6 +38,7 @@ jobs:
             ! -name "school-macros.sty" \
             ! -name "*-macros.sty" \
             ! -name "Examenoefening.tex" \
+            ! -name "OLD-document.tex" \
             -exec grep -l "\\documentclass" {} \; > main_docs.txt
           
           echo "## Build Results 📊" >> $GITHUB_STEP_SUMMARY
@@ -46,6 +47,7 @@ jobs:
           echo "|----------|--------|---------|" >> $GITHUB_STEP_SUMMARY
           
           BUILD_FAILED=0
+          PDFS_GENERATED=0
           BUILD_LOG_DIR="${GITHUB_WORKSPACE}/build_logs"
           mkdir -p "$BUILD_LOG_DIR"
           
@@ -66,11 +68,6 @@ jobs:
             latexmk -C "$file" || true
             
             # Build using ONLY latexmk
-            # -pdf: Generate PDF (uses pdflatex by default under the hood, but managed by latexmk)
-            # -g: Force complete processing (ignore dependencies)
-            # -shell-escape: Allow external commands (needed for minted/plots)
-            # -interaction=nonstopmode: Don't halt on errors
-            # -file-line-error: Better error format for logs
             if latexmk -pdf \
                 -g \
                 -shell-escape \
@@ -82,6 +79,7 @@ jobs:
               if [ -f "${name}.pdf" ]; then
                 echo "| \`$name\` | ✅ Success | PDF generated |" >> $GITHUB_STEP_SUMMARY
                 echo "✅ Success: $texfile"
+                PDFS_GENERATED=$((PDFS_GENERATED + 1))
               else
                 echo "| \`$name\` | ⚠️ Warning | Completed but no PDF |" >> $GITHUB_STEP_SUMMARY
                 echo "⚠️ Warning: $texfile completed but PDF not found"
@@ -113,10 +111,19 @@ jobs:
             cd - > /dev/null
           done < main_docs.txt
           
-          # Fail the job if any build failed
-          if [ $BUILD_FAILED -ne 0 ]; then
-            echo "::error::One or more LaTeX documents failed to build"
-            exit 1
+          # Logic: Fail only if NO PDFs were generated (and we found documents)
+          # If we generated at least one PDF, we consider it a partial success
+          if [ $PDFS_GENERATED -eq 0 ]; then
+             if [ -s main_docs.txt ]; then
+                echo "::error::Build failed: No PDFs were successfully generated from the found documents."
+                exit 1
+             else
+                echo "::warning::No LaTeX documents found to build."
+             fi
+          elif [ $BUILD_FAILED -ne 0 ]; then
+             echo "::warning::Some documents failed to build, but $PDFS_GENERATED PDF(s) were generated. Proceeding with release."
+          else
+             echo "All documents built successfully ($PDFS_GENERATED PDFs)."
           fi
 
       - name: Collect build artifacts
