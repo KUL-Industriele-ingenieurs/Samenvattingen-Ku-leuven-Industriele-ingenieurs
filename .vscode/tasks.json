@@ -2,120 +2,6 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Build LaTeX (latexmk - active file)",
-            "type": "shell",
-            "command": "latexmk",
-            "args": [
-                "-pdf",
-                "-shell-escape",
-                "-interaction=nonstopmode",
-                "-file-line-error",
-                "${file}"
-            ],
-            "options": {
-                "cwd": "${fileDirname}"
-            },
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "presentation": {
-                "reveal": "always",
-                "panel": "shared"
-            },
-            "problemMatcher": []
-        },
-        {
-            "label": "Build LaTeX (pdflatex single pass)",
-            "type": "shell",
-            "command": "pdflatex",
-            "args": [
-                "-interaction=nonstopmode",
-                "-file-line-error",
-                "${fileBasename}"
-            ],
-            "options": {
-                "cwd": "${fileDirname}"
-            },
-            "group": {
-                "kind": "build",
-                "isDefault": false
-            },
-            "problemMatcher": []
-        },
-        {
-            "label": "Build main PDFs (latexmk)",
-            "type": "shell",
-            "command": "latexmk",
-            "args": [
-                "-pdf",
-                "-interaction=nonstopmode",
-                "-file-line-error",
-                "math-systems/MATHSYS-Oefeningen-RubenRyckaert.tex"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": false
-            },
-            "problemMatcher": []
-        },
-        {
-            "label": "Build Warmte PDF (latexmk)",
-            "type": "shell",
-            "command": "latexmk",
-            "args": [
-                "-pdf",
-                "-interaction=nonstopmode",
-                "-file-line-error",
-                "Warmte en stromigen/Warmte en stromingen Samenvatting Ruben Ryckaert.tex"
-            ],
-            "group": "build",
-            "problemMatcher": []
-        },
-        {
-            "label": "Build LaTeX (latexmk - template)",
-            "type": "shell",
-            "command": "latexmk",
-            "args": [
-                "-pdf",
-                "-interaction=nonstopmode",
-                "-file-line-error",
-                "latex_templates/template_examples.tex"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": false
-            },
-            "presentation": {
-                "reveal": "always",
-                "panel": "shared"
-            },
-            "problemMatcher": []
-        },
-        {
-            "label": "Build LaTeX (latexmk - active file)",
-            "type": "shell",
-            "command": "latexmk",
-            "args": [
-                "-pdf",
-                "-interaction=nonstopmode",
-                "-file-line-error",
-                "${file}"
-            ],
-            "options": {
-                "cwd": "${fileDirname}"
-            },
-            "group": {
-                "kind": "build",
-                "isDefault": false
-            },
-            "presentation": {
-                "reveal": "always",
-                "panel": "shared"
-            },
-            "problemMatcher": []
-        },
-        {
             "label": "Check @issue markers",
             "type": "shell",
             "windows": {
@@ -123,24 +9,22 @@
                 "args": [
                     "-NoProfile",
                     "-NonInteractive",
-                    "-ExecutionPolicy",
-                    "Bypass",
-                    "-File",
-                    "${workspaceFolder}\\.vscode\\scripts\\check_issues.ps1"
+                    "-Command",
+                    "Get-ChildItem -Recurse -Filter '*.tex' -ErrorAction SilentlyContinue | Select-String -Pattern '@issue|@todo|TODO|FIXME' | ForEach-Object { Write-Output ($_.Path + ':' + $_.LineNumber + ':1: warning: ' + ($_.Line.Trim())) }"
                 ]
             },
             "linux": {
                 "command": "bash",
                 "args": [
-                    "-lc",
-                    "${workspaceFolder}/.vscode/scripts/check_issues.sh"
+                    "-c",
+                    "grep -rn --include='*.tex' -E '@issue|@todo|TODO|FIXME' . 2>/dev/null | while IFS=: read -r file line content; do echo \"$file:$line:1: warning: $content\"; done"
                 ]
             },
             "osx": {
                 "command": "bash",
                 "args": [
-                    "-lc",
-                    "${workspaceFolder}/.vscode/scripts/check_issues.sh"
+                    "-c",
+                    "grep -rn --include='*.tex' -E '@issue|@todo|TODO|FIXME' . 2>/dev/null | while IFS=: read -r file line content; do echo \"$file:$line:1: warning: $content\"; done"
                 ]
             },
             "runOptions": {
