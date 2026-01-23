@@ -179,10 +179,14 @@ jobs:
         run: |
           mkdir -p artifacts/pdfs artifacts/logs
           # Collect all PDFs
-          find . -type f -name "*.pdf" \
-            ! -path "*/.git/*" \
-            ! -path "*/assets/*" \
-            -exec cp {} artifacts/pdfs/ \; || true
+          # Collect only PDFs that have a matching .tex file in the same directory
+          while IFS= read -r texfile; do
+            dir=$(dirname "$texfile")
+            name=$(basename "$texfile" .tex)
+            if [ -f "${dir}/${name}.pdf" ]; then
+              cp "${dir}/${name}.pdf" artifacts/pdfs/
+            fi
+          done < main_docs.txt
           # Collect logs
           cp build_logs/*.log artifacts/logs/ 2>/dev/null || true
 
@@ -232,25 +236,34 @@ jobs:
           echo "📄 PDFs to include in prerelease:"
           ls -la pdfs/ || echo "No PDFs found"
 
-      - name: Delete existing prerelease
-        id: delete_release
-        uses: dev-drprasad/delete-tag-and-release@v1.1
-        with:
-          tag_name: latest
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          delete_release: true
-        continue-on-error: true
+      - name: Clear existing assets from latest release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Get the release ID for 'latest' tag
+          RELEASE_ID=$(gh release view latest --json databaseId -q .databaseId 2>/dev/null || echo "")
+          
+          if [ -n "$RELEASE_ID" ]; then
+            echo "Found existing 'latest' release. Cleaning up assets..."
+            # List assets and delete them one by one
+            gh release view latest --json assets -q '.assets[].name' | while read -r asset_name; do
+              if [ -n "$asset_name" ]; then
+                echo "Deleting asset: $asset_name"
+                gh release delete-asset latest "$asset_name" --yes || echo "Failed to delete $asset_name, continuing..."
+              fi
+            done
+          else
+            echo "No existing 'latest' release found. detailed creation will happen in next step."
+          fi
 
-      - name: Wait for GitHub API to process deletion
-        if: steps.delete_release.outcome == 'success'
-        run: sleep 10
-
-      - name: Create prerelease
+      - name: Create or Update Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: latest
           name: "📚 Latest Build (${{ steps.info.outputs.date }})"
           prerelease: true
+          draft: false
+          make_latest: true
           body: |
             ## 🔄 Automatic Prerelease
             
