@@ -185,12 +185,17 @@ jobs:
           ls -la pdfs/ || echo "No PDFs found"
 
       - name: Delete existing prerelease
+        id: delete_release
         uses: dev-drprasad/delete-tag-and-release@v1.1
         with:
           tag_name: latest
           github_token: ${{ secrets.GITHUB_TOKEN }}
           delete_release: true
         continue-on-error: true
+
+      - name: Wait for GitHub API to process deletion
+        if: steps.delete_release.outcome == 'success'
+        run: sleep 10
 
       - name: Create prerelease
         uses: softprops/action-gh-release@v2
