@@ -224,12 +224,16 @@ jobs:
           name: pdfs
           path: pdfs
 
+      - name: Checkout code
+        uses: actions/checkout@v4
+
       - name: Get current date and commit info
         id: info
+        shell: bash
         run: |
           echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
           echo "datetime=$(date +'%Y-%m-%d %H:%M UTC')" >> $GITHUB_OUTPUT
-          echo "short_sha=${GITHUB_SHA::7}" >> $GITHUB_OUTPUT
+          echo "short_sha=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
 
       - name: List downloaded PDFs
         run: |
