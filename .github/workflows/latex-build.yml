@@ -236,51 +236,60 @@ jobs:
           echo "📄 PDFs to include in prerelease:"
           ls -la pdfs/ || echo "No PDFs found"
 
-      - name: Clear existing assets from latest release
+      - name: Create or Update Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Get the release ID for 'latest' tag
-          RELEASE_ID=$(gh release view latest --json databaseId -q .databaseId 2>/dev/null || echo "")
+          # Create release if it doesn't exist, otherwise edit it
+          # We use --notes-file to handle multiline body safely
           
-          if [ -n "$RELEASE_ID" ]; then
-            echo "Found existing 'latest' release. Cleaning up assets..."
-            # List assets and delete them one by one
-            gh release view latest --json assets -q '.assets[].name' | while read -r asset_name; do
-              if [ -n "$asset_name" ]; then
-                echo "Deleting asset: $asset_name"
-                if ! gh release delete-asset latest "$asset_name" --yes; then
-                  echo "::error::Failed to delete $asset_name, exiting to prevent conflict."
-                  exit 1
-                fi
-                # Add a small delay to ensure API consistency
-                sleep 2
-              fi
-            done
+          # Prepare release body
+          cat <<EOF > release_body.md
+          ## 🔄 Automatic Prerelease
+          
+          **Build Date:** ${{ steps.info.outputs.datetime }}
+          **Commit:** [`${{ steps.info.outputs.short_sha }}`](https://github.com/${{ github.repository }}/commit/${{ github.sha }})
+          
+          This is an automatically generated prerelease containing the latest compiled PDF documents.
+          
+          > ⚠️ **Note:** This prerelease is automatically updated with every commit to the main branch.
+          > For stable versions, see the [official releases](https://github.com/${{ github.repository }}/releases?q=NOT+prerelease).
+          
+          ### 📥 Downloads
+          All PDF summaries are attached below.
+          EOF
+          
+          # Create or update the release metadata
+          # We check if release exists first
+          if gh release view latest >/dev/null 2>&1; then
+             echo "Updating existing release..."
+             gh release edit latest \
+               --title "📚 Latest Build (${{ steps.info.outputs.date }})" \
+               --prerelease \
+               --draft=false \
+               --notes-file release_body.md
           else
-            echo "No existing 'latest' release found. detailed creation will happen in next step."
+             echo "Creating new release..."
+             gh release create latest \
+               --title "📚 Latest Build (${{ steps.info.outputs.date }})" \
+               --prerelease \
+               --draft=false \
+               --notes-file release_body.md
           fi
-
-      - name: Create or Update Release
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: latest
-          name: "📚 Latest Build (${{ steps.info.outputs.date }})"
-          prerelease: true
-          draft: false
-          make_latest: true
-          body: |
-            ## 🔄 Automatic Prerelease
-            
-            **Build Date:** ${{ steps.info.outputs.datetime }}
-            **Commit:** [`${{ steps.info.outputs.short_sha }}`](https://github.com/${{ github.repository }}/commit/${{ github.sha }})
-            
-            This is an automatically generated prerelease containing the latest compiled PDF documents.
-            
-            > ⚠️ **Note:** This prerelease is automatically updated with every commit to the main branch.
-            > For stable versions, see the [official releases](https://github.com/${{ github.repository }}/releases?q=NOT+prerelease).
-            
-            ### 📥 Downloads
-            All PDF summaries are attached below.
-          files: pdfs/*.pdf
+          
+          # Upload assets with --clobber to overwrite proper existing files
+          # We check for both pdfs in artifacts/pdfs and logs
+          echo "Uploading assets..."
+          
+          # Upload PDFs (glob expansion happens in shell)
+          if ls artifacts/pdfs/*.pdf 1> /dev/null 2>&1; then
+            gh release upload latest artifacts/pdfs/*.pdf --clobber
+          else
+            echo "::warning::No PDFs found in artifacts/pdfs to upload"
+          fi
+          
+          # Upload Logs if exist
+          if ls artifacts/logs/*.log 1> /dev/null 2>&1; then
+             gh release upload latest artifacts/logs/*.log --clobber
+          fi
           fail_on_unmatched_files: false
