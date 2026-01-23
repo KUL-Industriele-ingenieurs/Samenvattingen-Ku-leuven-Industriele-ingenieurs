@@ -44,15 +44,15 @@ jobs:
           mkdir -p .pdf-cache
           
           # Find all main documents (excluding subfiles and templates)
-          # We look for files containing \documentclass
-          find . -type f -name "*.tex" \
-            ! -path "*/.git/*" \
-            ! -path "*/assets/*" \
-            ! -name "school-macros.sty" \
-            ! -name "*-macros.sty" \
-            ! -name "Examenoefening.tex" \
-            ! -name "OLD-document.tex" \
-            -exec grep -l "\\documentclass" {} \; > main_docs.txt
+          # Use -prune to efficiently skip hidden/system directories
+          find . \( -name ".git" -o -name ".github" -o -name ".pdf-cache" -o -name ".vscode" -o -name "assets" \) -prune -o \
+                 -type f -name "*.tex" \
+                 ! -name "school-macros.sty" \
+                 ! -name "*-macros.sty" \
+                 -exec grep -l "\\documentclass" {} \; > main_docs.txt
+          
+          echo "📝 Found documents (main_docs.txt):"
+          cat main_docs.txt
           
           echo "## Build Results 📊" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
@@ -183,10 +183,21 @@ jobs:
           while IFS= read -r texfile; do
             dir=$(dirname "$texfile")
             name=$(basename "$texfile" .tex)
+            # Skip files that look like cache artifacts (containing 64-char hash)
+            if [[ "$name" =~ [0-9a-f]{64} ]]; then
+              echo "Skipping hashed file: $name"
+              continue
+            fi
+            
             if [ -f "${dir}/${name}.pdf" ]; then
               cp "${dir}/${name}.pdf" artifacts/pdfs/
+              echo "Collected: ${dir}/${name}.pdf"
             fi
           done < main_docs.txt
+          
+          echo "📂 Collected Artifacts (artifacts/pdfs):"
+          ls -la artifacts/pdfs/
+          
           # Collect logs
           cp build_logs/*.log artifacts/logs/ 2>/dev/null || true
 
@@ -222,7 +233,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: pdfs
-          path: pdfs
+          path: .
 
       - name: Checkout code
         uses: actions/checkout@v4
@@ -238,7 +249,7 @@ jobs:
       - name: List downloaded PDFs
         run: |
           echo "📄 PDFs to include in prerelease:"
-          ls -la pdfs/ || echo "No PDFs found"
+          ls -la artifacts/pdfs/ || echo "No PDFs found"
 
       - name: Create or Update Release
         env:
