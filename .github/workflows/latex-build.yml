@@ -249,7 +249,12 @@ jobs:
             gh release view latest --json assets -q '.assets[].name' | while read -r asset_name; do
               if [ -n "$asset_name" ]; then
                 echo "Deleting asset: $asset_name"
-                gh release delete-asset latest "$asset_name" --yes || echo "Failed to delete $asset_name, continuing..."
+                if ! gh release delete-asset latest "$asset_name" --yes; then
+                  echo "::error::Failed to delete $asset_name, exiting to prevent conflict."
+                  exit 1
+                fi
+                # Add a small delay to ensure API consistency
+                sleep 2
               fi
             done
           else
