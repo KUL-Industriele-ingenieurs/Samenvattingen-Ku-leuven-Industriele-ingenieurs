@@ -5,13 +5,8 @@
             "label": "Check @issue markers",
             "type": "shell",
             "windows": {
-                "command": "powershell",
-                "args": [
-                    "-NoProfile",
-                    "-NonInteractive",
-                    "-Command",
-                    "Get-ChildItem -Recurse -Filter \"*.tex\" -ErrorAction SilentlyContinue | Select-String -Pattern \"@issue|@todo|TODO|FIXME\" | ForEach-Object { Write-Output ($_.Path + \":\" + $_.LineNumber + \":1: warning: \" + ($_.Line.Trim())) }"
-                ]
+                "command": "Get-ChildItem -Recurse -Filter \"*.tex\" -ErrorAction SilentlyContinue | Select-String -Pattern '\u0040issue','\u0040todo','TODO','FIXME' | ForEach-Object { Write-Output ('{0}:{1}:1: warning: {2}' -f $_.Path, $_.LineNumber, ($_.Line.Trim())) }",
+                "args": []
             },
             "linux": {
                 "command": "bash",
@@ -31,8 +26,9 @@
                 "runOn": "folderOpen"
             },
             "presentation": {
-                "reveal": "silent",
-                "panel": "shared"
+                "reveal": "never",
+                "panel": "shared",
+                "focus": false
             },
             "problemMatcher": {
                 "owner": "latex-issues",
@@ -53,8 +49,9 @@
             "command": "git",
             "args": ["config", "core.hooksPath", ".githooks"],
             "presentation": {
-                "reveal": "silent",
-                "panel": "shared"
+                "reveal": "never",
+                "panel": "shared",
+                "focus": false
             },
             "runOptions": {
                 "runOn": "folderOpen"
@@ -209,8 +206,9 @@
                 ]
             },
             "presentation": {
-                "reveal": "always",
-                "panel": "shared"
+                "reveal": "never",
+                "panel": "shared",
+                "focus": false
             },
             "problemMatcher": []
         },
@@ -240,8 +238,9 @@
                 ]
             },
             "presentation": {
-                "reveal": "always",
-                "panel": "shared"
+                "reveal": "never",
+                "panel": "shared",
+                "focus": false
             },
             "problemMatcher": []
         }

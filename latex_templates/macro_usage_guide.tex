@@ -26,11 +26,7 @@
 }
 \author{Ruben Ryckaert}
 \date{\today}
-% =============================================================================
-% @issue: #60 Uitleg over macro's voor LaTeX beginners
-% description: Zorg ervoor dat deze handleiding duidelijker is voor
-% beginners in LaTeX, met meer voorbeelden en stapsgewijze instructies.
-% =============================================================================
+
 
 \begin{document}
 
@@ -172,11 +168,12 @@ In Word druk je gewoon op enter. In LaTeX werkt het anders:
 \begin{itemize}
     \item \textbf{Nieuwe alinea:} Laat \textbf{één witregel} open in je code. Dit is de standaard manier!
     \item \textbf{Harde enter:} Gebruik \texttt{\textbackslash\textbackslash} aan het einde van een regel. Doe dit spaarzaam!
-    \item \textbf{Newline:} Gebruik \verb|\newline| om een nieuwe regel te maken met een extra tab eronder om een alina 
-    te maken. Zoals dit 
-    \newline 
+    \item \textbf{Newline:} Gebruik \verb|\\| om een nieuwe regel te maken met een extra tab eronder om een alina 
+    te maken. Zoals dit\\
 
     ta da hier is nu een nieuwe regel
+
+    Je kunt ook gewoon een lege regel laten voor een nieuwe alinea maar in sommige box omgevingen werkt dat niet.
     \item \textbf{Nieuwe pagina:} Gebruik \texttt{\textbackslash newpage}.
 \end{itemize}
 
@@ -500,7 +497,7 @@ De syntax is: \verb|\plotthreeD[as opties]{plot opties}{functie}|.
 \subsection{Data uit CSV}
 Met \verb|\plotdata| kun je data uit een CSV-bestand visualiseren.
 
-\begin{codeblock}[title=Data plotten]{tex}
+\begin{codeblock}[Data plotten]{tex}
 \plotdata[
     xlabel={Tijd [\si{s}]},
     ylabel={Spanning [\si{V}]}
@@ -714,37 +711,67 @@ Gebruik \verb|\Cref{}| (met hoofdletter) aan het begin van een zin.
 \label{sec:figures}
 % =============================================================================
 
-\subsection{Snelle figuur met \textbackslash fig}
+\subsection{Standaard Figuur}
+Gebruik de standaard \texttt{figure} omgeving. Dit geeft je de meeste controle.
 
-\begin{verbatim}
-\fig[0.6\linewidth]{pad/naar/afbeelding.png}{Onderschrift}{fig:label}
-\end{verbatim}
+\begin{codeblock}[Standaard Figuur]{tex}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\linewidth]{afbeelding.png}
+    \caption{Onderschrift}
+    \label{fig:label}
+\end{figure}
+\end{codeblock}
 
-\subsection{Figuur zonder label}
+\begin{waarschuwing}[Waar komt mijn figuur? (htbp)]
+LaTeX bepaalt automatisch de beste plek. Met \texttt{[htbp]} geef je jouw voorkeuren aan:
+\begin{itemize}
+    \item \texttt{h} (here): Hier, op de plek van de code (als er ruimte is).
+    \item \texttt{t} (top): Bovenaan de pagina.
+    \item \texttt{b} (bottom): Onderaan de pagina.
+    \item \texttt{p} (page): Op een aparte pagina (als de figuur groot is).
+\end{itemize}
+\textbf{Advies:} Gebruik altijd \texttt{[htbp]}. Dit geeft LaTeX de meeste vrijheid om de bladspiegel mooi te houden.
+\end{waarschuwing}
 
-\begin{verbatim}
-\autofig[0.5\linewidth]{afbeelding.png}{Onderschrift}
-\end{verbatim}
+\subsection{Harde grens: \textbackslash FloatBarrier}
+Soms drijven figuren te ver weg, bijvoorbeeld naar de volgende sectie waar ze niet horen.
+Met het commando \texttt{\textbackslash FloatBarrier} (van het \texttt{placeins} pakket) dwing je LaTeX om alle nog niet geplaatste figuren \textbf{nu} te plaatsen voordat de tekst verder gaat.
+
+\begin{codeblock}[FloatBarrier Gebruik]{tex}
+... tekst met figuren ...
+
+\FloatBarrier % Alle figuren worden HIER geplaatst
+
+\section{Nieuwe Sectie}
+\end{codeblock}
+
+\textit{Tip: In \texttt{school-macros} wordt dit automatisch gedaan voor elk nieuw hoofdstuk (\texttt{\textbackslash chapter}), maar binnen secties moet je het soms zelf doen.}
 
 \subsection{Tekstomloop (Wrap Figures)}
-Wil je tekst naast een afbeelding? Gebruik \verb|\wrapimg|.
-Dit is handig om ruimte te besparen.
+Wil je tekst naast een afbeelding? Gebruik \texttt{wrapfigure} uit het \texttt{wrapfig} pakket.
+Dit is handig om ruimte te besparen, maar gebruik het alleen als je voldoende tekst hebt om langs de afbeelding te lopen.
 
-\begin{verbatim}
-\wrapimg[0.4\linewidth]{afbeelding.png}{Onderschrift}
-Hier komt je tekst die naast de afbeelding loopt. 
-Zorg dat je genoeg tekst hebt om het effect te zien!
-\end{verbatim}
+\begin{codeblock}[Wrap Figure]{tex}
+% [12] = Aantal regels (optioneel, voor manuele hoogte)
+% {r}  = Rechts {l} = Links
+% {0.4\linewidth} = Breedte
+\begin{wrapfigure}[12]{r}{0.4\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{afbeelding.png}
+    \caption{Onderschrift}
+\end{wrapfigure}
+Hier komt je tekst die naast de afbeelding loopt...
+\end{codeblock}
 
-\wrapimg{example-image}{Test Image}
-Here is some text that should wrap around the image. We need enough text to visualize the wrapping effect properly. The text flows around the image which is placed on the side.
-
-alleen gebruik \verb|\wrapimg| wanneer je genoeg tekst hebt om het effect te zien.
-Gebruik minipage met een figuur als je niet genoeg tekst hebt.
-Anders gaat de tekst overlappen met andere delen van het document zoals headers
-en andere tekst die niks te maken heeft met de figuur.
-
-gebruik \verb|\vspace{}| om ruimte te geven tussen de figuur onderstaande tekst.
+\begin{waarschuwing}[Wrapfigure Tips]
+\begin{itemize}
+    \item \textbf{[lines]}: Het eerste optionele argument (bijv. \texttt{[12]}) dwingt LaTeX om ruimte te reserveren voor exact zoveel regels tekst. Gebruik dit als LaTeX de hoogte verkeerd inschat.
+    \item Gebruik \texttt{wraplines} optie van wrapfig niet tenzij nodig.
+    \item Als tekst overlapt, gebruik \verb|\vspace{}| na de figuur of gebruik een \texttt{minipage}.
+    \item Wrapfigures werken het best in normale tekst, vermijd ze vlak voor sectiekoppen of lijsten.
+\end{itemize}
+\end{waarschuwing}
 \vspace{1cm}
 
 % =============================================================================
@@ -780,7 +807,7 @@ De `engtable` omgeving is een wrapper die automatisch zorgt voor:
 
 Gebruik de \texttt{codeblock} omgeving. Dit ziet eruit als VS Code.
 
-\begin{codeblock}[title=Python Script]{python}
+\begin{codeblock}[Python Script]{python}
 import numpy as np
 
 def bereken_rms(signaal):
