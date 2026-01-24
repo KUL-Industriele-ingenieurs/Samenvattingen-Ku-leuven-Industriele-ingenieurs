@@ -1,16 +1,16 @@
 \chapter{Herhaling afgeleiden, integralen en differentiaalvergelijkingen}
 \label{ch:herhaling_afgeleiden_en_integralen}
 
-\section{Afgeleiden en integralen}
 
-\subsection{Beknopte theorie}
-
-\subsubsection{Afgeleiden}
+\section{Afgeleiden}
 
 \begin{conceptbox}[Differentiatie]
-Differentiatie is het proces waarbij men de afgeleide van een gegeven functie $f(x)$ berekent t.o.v. de onafhankelijke variabele $x$. In de context van signalen en systemen is de onafhankelijke variabele doorgaans de tijd $t$, genoteerd als $f(t)$.
+Differentiatie is het proces waarbij men de afgeleide van een gegeven functie $f(x)$ berekent t.o.v. 
+de onafhankelijke variabele $x$. 
+In de context van signalen en systemen is de onafhankelijke variabele doorgaans de tijd $t$, genoteerd als $f(t)$.
 
-De afgeleide $\dd{f(t)}{t}$ of $f'(t)$ is de snelheid waarmee de functie verandert op tijdstip $t$. Meetkundig is dit de \textbf{helling van de raaklijn}.
+De afgeleide $\dd{f(t)}{t}$ of $f'(t)$ is de snelheid waarmee de functie verandert op tijdstip $t$. Meetkundig is 
+dit de \textbf{helling van de raaklijn}.
 \end{conceptbox}
 
 Hieronder zie je visueel dat de rechtse functie de snelheid voorstelt waarmee de linkse functie verandert.
@@ -87,10 +87,36 @@ Bereken de afgeleide van $f(t) = e^{-4t} \cos 3t$.
 \end{itemize}
 
 \textbf{Resultaat:}
-\[ f'(t) = -4e^{-4t} \cos 3t - 3e^{-4t} \sin 3t = -e^{-4t}(4\cos 3t + 3\sin 3t) \]
+\[ \boxed{f'(t) = -4e^{-4t} \cos 3t - 3e^{-4t} \sin 3t = -e^{-4t}(4\cos 3t + 3\sin 3t)} \]
 \end{voorbeeld}
 
-\subsubsection{Integratie}
+\begin{voorbeeld}[Quotiëntregel]
+Bereken de afgeleide van $f(t) = \frac{\sin t}{t^2}$.
+
+Met $u(t) = \sin t$ en $v(t) = t^2$:
+\[ \left(\frac{u}{v}\right)' = \frac{u'v - uv'}{v^2} \]
+\begin{itemize}
+    \item $u'(t) = \cos t$
+    \item $v'(t) = 2t$
+\end{itemize}
+Invullen:
+\[ \boxed{f'(t) = \frac{(\cos t)(t^2) - (\sin t)(2t)}{(t^2)^2} = \frac{t^2 \cos t - 2t \sin t}{t^4} = \frac{t \cos t - 2 \sin t}{t^3}} \]
+\end{voorbeeld}
+
+\begin{voorbeeld}[Dubbele Kettingregel]
+Bereken de afgeleide van $f(t) = \sin^3(4t) = (\sin(4t))^3$.
+
+Dit is een kettingregel in een kettingregel: $h(g(k(t)))$ met $x^3$, $\sin x$ en $4t$.
+\begin{enumerate}
+    \item Buitenste macht afleiden: $3(\sin(4t))^2 \cdot (\sin(4t))'$
+    \item Sinus afleiden: $3\sin^2(4t) \cdot (\cos(4t)) \cdot (4t)'$
+    \item Binnenste lineaire functie afleiden: $3\sin^2(4t) \cos(4t) \cdot 4$
+\end{enumerate}
+\textbf{Resultaat:}
+\[ \boxed{f'(t) = 12 \sin^2(4t) \cos(4t)} \]
+\end{voorbeeld}
+
+\section{Integratie}
 
 \begin{conceptbox}[Primitieve functie \& Onbepaalde integraal]
 Als $F'(t) = f(t)$, dan noemen we $F(t)$ een \concept{primitieve functie} van $f(t)$.
@@ -103,18 +129,43 @@ De \concept{onbepaalde integraal} is de verzameling van alle primitieve functies
 \[ \int [a f_1(t) + b f_2(t)] \dt = a \int f_1(t) \dt + b \int f_2(t) \dt \]
 
 \textbf{Integratie door substitutie:}
-Als $f(t) = g'(t) h(g(t))$, stel dan $u = g(t)$, dan is $\diff u = g'(t) \dt$:
-\[ \int f(t) \dt = \int h(u) \diff u \]
+Als $f(t) = g'(t) h(g(t))$, stel dan $u = g(t)$, dan is $du = g'(t) \dt$:
+\[ \int f(t) \dt = \int h(u) du \]
 \end{theorie}
 
 \begin{voorbeeld}[Substitutie voorbeeld]
 Bereken $\displaystyle \int \frac{e^{1/t^2}}{t^3} \dt$.
 
 Herschrijf de integrand: $\displaystyle \frac{1}{t^3} e^{t^{-2}}$.
-Stel $u = t^{-2}$, dan is $\diff u = -2t^{-3} \dt \implies -\frac{1}{2} \diff u = t^{-3} \dt$.
+Stel $u = t^{-2}$, dan is $du = -2t^{-3} \dt \implies -\frac{1}{2} du = t^{-3} \dt$.
 
 Substitutie:
-\[ \int e^u \cdot \left(-\frac{1}{2}\right) \diff u = -\frac{1}{2} e^u + c = -\frac{1}{2} e^{1/t^2} + c \]
+\[ \boxed{\int e^u \cdot \left(-\frac{1}{2}\right) du = -\frac{1}{2} e^u + c = -\frac{1}{2} e^{1/t^2} + c} \]
+\end{voorbeeld}
+
+\begin{voorbeeld}[Partiële Integratie]
+Bereken $\displaystyle \int t e^t \dt$.
+
+We gebruiken de formule: $\displaystyle \int u dv = u\cdot v - \int v du$.
+\begin{itemize}
+    \item Stel $u = t \implies du = \dt$
+    \item Stel $dv = e^t \dt \implies v = e^t$
+\end{itemize}
+Invullen:
+\[ \boxed{\int t e^t \dt = t e^t - \int e^t \dt = t e^t - e^t + c = e^t(t-1) + c} \]
+\end{voorbeeld}
+
+\begin{voorbeeld}[Partieelbreuksplitsing]
+Bereken $\displaystyle \int \frac{1}{t^2 - 1} \dt$.
+
+We splitsen de breuk: $\frac{1}{t^2-1} = \frac{1}{(t-1)(t+1)} = \frac{A}{t-1} + \frac{B}{t+1}$.
+\begin{itemize}
+    \item Teller gelijkstellen: $1 = A(t+1) + B(t-1)$
+    \item Kies $t=1 \implies 1 = 2A \implies A = 1/2$
+    \item Kies $t=-1 \implies 1 = -2B \implies B = -1/2$
+\end{itemize}
+De integraal wordt:
+\[ \boxed{\int \left( \frac{1/2}{t-1} - \frac{1/2}{t+1} \right) \dt = \frac{1}{2} \ln|t-1| - \frac{1}{2} \ln|t+1| + c = \frac{1}{2} \ln\left|\frac{t-1}{t+1}\right| + c} \]
 \end{voorbeeld}
 
 \begin{conceptbox}[Bepaalde integraal (Oppervlakte)]
@@ -206,7 +257,29 @@ De afgeleide van de cosinus is de min-sinus.
 
 \textbf{Stap 5: Combineer alles}
 \[ f'(t) = \cos(\cos(2t - 5)) \cdot [-\sin(2t - 5)] \cdot 2 \]
-\[ f'(t) = -2 \sin(2t - 5) \cos(\cos(2t - 5)) \]
+\[ \boxed{f'(t) = -2 \sin(2t - 5) \cos(\cos(2t - 5))} \]
+\end{oefenblok}
+
+\begin{oefenblok}[Oefening: Afgeleide]
+\textbf{Opgave:} Bereken de afgeleide van $f(t) = \sqrt{1+\cos^2 t}$.
+
+\textbf{Stap 1: Analyse}
+Dit is een samengestelde functie: $g(h(k(t)))$ met:
+\begin{itemize}
+    \item Buitenste: $\sqrt{u} = u^{1/2}$
+    \item Middelste: $1+v^2$ (waar $v=\cos t$)
+    \item Binnenste: $\cos t$
+\end{itemize}
+
+\textbf{Stap 2: Differentieer wortel}
+\[ f'(t) = \frac{1}{2\sqrt{1+\cos^2 t}} \cdot (1+\cos^2 t)' \]
+
+\textbf{Stap 3: Differentieer inhoud ($1+\cos^2 t$)}
+De afgeleide van 1 is 0. De afgeleide van $\cos^2 t$ is (kettingregel!):
+\[ (\cos^2 t)' = 2\cos t \cdot (\cos t)' = 2\cos t \cdot (-\sin t) = -2\sin t \cos t \]
+
+\textbf{Stap 4: Combineer}
+\[ \boxed{f'(t) = \frac{1}{2\sqrt{1+\cos^2 t}} \cdot (-2\sin t \cos t) = \frac{-\sin t \cos t}{\sqrt{1+\cos^2 t}}} \]
 \end{oefenblok}
 
 \begin{oefenblok}[Oefening: Oneigenlijke integraal]
@@ -224,7 +297,24 @@ Stel $u = -t/2$, dan $\diff u = -1/2 \dt \implies \dt = -2 \diff u$.
 \[ \left[ -2e^{-t/2} \right]_0^R = (-2e^{-R/2}) - (-2e^0) = -2e^{-R/2} + 2 \]
 
 \textbf{Stap 4: Bereken de limiet}
-\[ \lim_{R \to +\infty} (-2e^{-R/2} + 2) = -2(0) + 2 = 2 \]
+\[ \boxed{\lim_{R \to +\infty} (-2e^{-R/2} + 2) = -2(0) + 2 = 2} \]
+\end{oefenblok}
+
+\begin{oefenblok}[Oefening: Oneigenlijke Integraal (Substitutie)]
+\textbf{Opgave:} Bereken $\displaystyle \int_{-\infty}^{+\infty} \frac{2t}{(t^2+1)^2} \dt$.
+
+\textbf{Stap 1: Primitieve zoeken}
+Substitutie $u = t^2+1 \implies \diff u = 2t \dt$.
+\[ \int \frac{1}{u^2} \diff u = \int u^{-2} \diff u = -u^{-1} = -\frac{1}{t^2+1} \]
+
+\textbf{Stap 2: Bereken grenzen (Limieten)}
+\[ \int_{-\infty}^{+\infty} \dots = \lim_{R \to +\infty} \left[ -\frac{1}{t^2+1} \right]_{-R}^{R} \]
+\[ = \lim_{R \to +\infty} \left( \left(-\frac{1}{R^2+1}\right) - \left(-\frac{1}{(-R)^2+1}\right) \right) \]
+
+\textbf{Stap 3: Conclusie}
+Beide termen gaan naar 0 als $R \to \infty$.
+\[ \boxed{0 - 0 = 0} \]
+(Dit is logisch want de integrand is een oneven functie over een symmetrisch interval).
 \end{oefenblok}
 
 \subsection{Oefeningen}
@@ -264,7 +354,6 @@ Stel $u = -t/2$, dan $\diff u = -1/2 \dt \implies \dt = -2 \diff u$.
     \end{enumerate}
 \end{enumerate}
 
-\newpage
 \section{Differentiaalvergelijkingen}
 
 \subsection{Beknopte theorie}
@@ -349,10 +438,46 @@ A + 21B = 0 \implies A = -21B \\
 \end{cases}
 \]
 Dus $A = -\frac{42}{221}$.
-\[ y_p(t) = \frac{-42}{221} \cos 3t + \frac{2}{221} \sin 3t \]
+\[ \boxed{y_p(t) = \frac{-42}{221} \cos 3t + \frac{2}{221} \sin 3t} \]
 
 \textbf{Stap 3: Algemene oplossing}
-\[ y(t) = C_1 e^{-2t} + C_2 e^{-5t} - \frac{42}{221} \cos 3t + \frac{2}{221} \sin 3t \]
+\[ \boxed{y(t) = C_1 e^{-2t} + C_2 e^{-5t} - \frac{42}{221} \cos 3t + \frac{2}{221} \sin 3t} \]
+\end{oefenblok}
+
+\begin{oefenblok}[Oefening: Resonantie]
+\textbf{Opgave:} Los op: $y'' + 16y = 8\sin 4t$, met $y(0)=4, y'(0)=0$.
+
+\textbf{Stap 1: Homogene oplossing}
+$\lambda^2 + 16 = 0 \implies \lambda = \pm 4j$.
+\[ y_h(t) = C_1 \cos 4t + C_2 \sin 4t \]
+
+\textbf{Stap 2: Particuliere oplossing (Resonantie!)}
+Rechterlid is $8\sin 4t$ ($\omega=4$). Dit komt al voor in $y_h(t)$.
+Dus voorstel vermenigvuldigen met $t$:
+\[ y_p(t) = t(A \cos 4t + B \sin 4t) = At \cos 4t + Bt \sin 4t \]
+
+Afgeleiden bepalen (productregel!):
+$y_p' = A \cos 4t - 4At \sin 4t + B \sin 4t + 4Bt \cos 4t$
+$y_p'' = -4A \sin 4t - 4A \sin 4t - 16At \cos 4t + 4B \cos 4t + 4B \cos 4t - 16Bt \sin 4t$
+$y_p'' = -8A \sin 4t - 16At \cos 4t + 8B \cos 4t - 16Bt \sin 4t$
+
+Invullen in DV ($y'' + 16y$):
+De termen met $t$ vallen weg tegen $16y_p$ (check dit!).
+Overblijvende termen:
+\[ -8A \sin 4t + 8B \cos 4t = 8 \sin 4t \]
+Coëfficiënten vergelijken:
+$-8A = 8 \implies A = -1$
+$8B = 0 \implies B = 0$
+Dus: $y_p(t) = -t \cos 4t$
+
+\textbf{Stap 3: Algemene oplossing en Beginvoorwaarden}
+$y(t) = C_1 \cos 4t + C_2 \sin 4t - t \cos 4t$
+$y(0) = C_1 - 0 = 4 \implies C_1 = 4$
+$y'(t) = -4C_1 \sin 4t + 4C_2 \cos 4t - (\cos 4t - 4t \sin 4t)$
+$y'(0) = 4C_2 - 1 = 0 \implies C_2 = 1/4$
+
+\textbf{Eindoplossing:}
+\[ \boxed{y(t) = 4 \cos 4t + \frac{1}{4} \sin 4t - t \cos 4t} \]
 \end{oefenblok}
 
 \subsection{Oefeningen}
