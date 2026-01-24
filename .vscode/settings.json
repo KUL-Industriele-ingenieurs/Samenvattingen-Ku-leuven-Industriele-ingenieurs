@@ -1,187 +1,197 @@
 {
-  "latex-workshop.linting.enabled": true,
-  "latex-workshop.linting.chktex.enabled": false,
-  "latex-workshop.linting.lacheck.enabled": false,
-  "latex.linter.enabled": false,
-  "latex-workshop.linting.ignore": [
-    "**/*.aux",
-    "**/*.toc",
-    "**/*.out",
-    "**/*.fls",
-    "**/*.fdb_latexmk",
-    "**/*.synctex.gz",
-    "**/*.log",
-    "**/Thumbs.db",
-    "**/AppData/Roaming/MiKTeX/**",
-    "**/MiKTeX/**",
-    "**/*mdsffont.def"
-  ],
-  "latex-workshop.latex.tools": [
-    {
-      "name": "latexmk",
-      "command": "latexmk",
-      "args": [
-        "-shell-escape",
-        "-synctex=1",
-        "-interaction=nonstopmode",
-        "-file-line-error",
-        "-pdf",
-        "-outdir=%OUTDIR%",
-        "%DOC%"
-      ],
-      "env": {}
-    },
-    {
-      "name": "pdflatex",
-      "command": "pdflatex",
-      "args": [
-        "-shell-escape",
-        "-synctex=1",
-        "-interaction=nonstopmode",
-        "-file-line-error",
-        "%DOC%"
-      ],
-      "env": {}
-    },
-    {
-      "name": "bibtex",
-      "command": "bibtex",
-      "args": [
-        "%DOCFILE%"
-      ],
-      "env": {}
-    }
-  ],
-  "latex-utilities.formattedPaste.image.template": "\\begin{figure}[htbp]\n  \\centering\n  \\includegraphics[width=0.8\\textwidth]{${imageFilePath}}\n  \\caption{${imageCaption}}\n  \\label{fig:${imageFileName}}\n \\end{figure}",
-  "latex-utilities.formattedPaste.enabled": true,
-  "latex-workshop.latex.recipes": [
-    {
-      "name": "latexmk",
-      "tools": [
-        "latexmk"
-      ]
-    }
-  ],
-  "latex-workshop.latex.autoBuild.run": "onSave",
-  "latex-workshop.view.pdf.viewer": "tab",
-  "latex-workshop.message.error.show": true,
-  "latex-workshop.message.warning.show": true,
-  "latex-workshop.latex.clean.fileTypes": [
-    "*.aux",
-    "*.bbl",
-    "*.blg",
-    "*.idx",
-    "*.ind",
-    "*.lof",
-    "*.lot",
-    "*.out",
-    "*.toc",
-    "*.acn",
-    "*.acr",
-    "*.alg",
-    "*.glg",
-    "*.glo",
-    "*.gls",
-    "*.ist",
-    "*.fls",
-    "*.fdb_latexmk",
-    "*.dpth",
-    "*.md5",
-    "*.auxlock",
-    "*.log",
-    "*.synctex.gz"
-  ],
-  "githubPullRequests.queries": [
-    {
-      "label": "Local Pull Request Branches",
-      "query": "default"
-    },
-    {
-      "label": "Waiting For My Review",
-      "query": "is:open is:pr review-requested:${user} repo:Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs"
-    },
-    {
-      "label": "Assigned To Me",
-      "query": "is:open is:pr assignee:${user} repo:Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs"
-    },
-    {
-      "label": "Created By Me",
-      "query": "is:open is:pr author:${user} repo:Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs"
-    },
-    {
-      "label": "All Open Pull Requests",
-      "query": "is:open is:pr repo:Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs"
-    },
-    {
-      "label": "All Open",
-      "query": "default"
-    }
-  ],
-  "githubPullRequests.createOnPublishBranch": "never",
-  "githubPullRequests.defaultMergeMethod": "merge",
-  "githubPullRequests.remotes": [
-    "origin"
-  ],
-  "githubIssues.queries": [
-    {
-      "label": "My Issues",
-      "query": "is:open is:issue assignee:@me repo:${owner}/${repository}"
-    },
-    {
-      "label": "Created Issues",
-      "query": "is:open is:issue author:@me repo:${owner}/${repository}"
-    },
-    {
-      "label": "All Open Issues",
-      "query": "is:open is:issue repo:${owner}/${repository}"
-    },
-    {
-      "label": "@issue markers",
-      "query": "is:open is:issue label:from-code repo:${owner}/${repository}"
-    }
-  ],
-  "githubIssues.createIssueTriggers": [
-    "@issue",
-    "@todo",
-    "@bug",
-    "@feature",
-    "@refactor",
-    "TODO",
-    "FIXME"
-  ],
-  "githubIssues.useBranchForIssues": "on",
-  "githubIssues.issueBranchTitle": "issue${issueNumber}",
-  "githubIssues.issueCompletionFormatScm": "#${issueNumber}",
-  "githubIssues.workingIssueFormatScm": "#${issueNumber}",
-  "ltex.language": "nl-BE",
-  "ltex.enabled": true,
-  "ltex.checkFrequency": "save",
-  "latex-workshop.latex.build.forceRecipeUsage": false,
-  "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
-  "latex-workshop.intellisense.command.user": {
-    "concept{}": "{}",
-    "belangrijk{}": "{}",
-    "keyterm{}": "{}",
-    "frm{}{}{}": "{}{}{}",
-    "sym{}{}{}": "{}{}{}",
-    "fig[]{}{}{}": "[]{}{}{}",
-    "autofig[]{}{}": "[]{}{}",
-    "img{}{}": "{}{}",
-    "mat{}": "{}",
-    "TODO{}": "{}",
-    "FIXME{}": "{}",
-    "NOTE{}": "{}",
-        "theorie": "{}",
-        "theorieblok": "theorieblok{}",
-        "schoolconcept": "schoolconcept{}",
-        "conceptbox": "conceptbox{}",
-        "waarschuwing": "waarschuwing{}",
-        "warningbox": "warningbox{}",
-        "voorbeeld": "voorbeeld{}",
-        "oefenblok": "oefenblok{}",
-        "oefening": "oefening{}",
-        "codeblock": "codeblock{}",
-        "examenbox": "examenbox{}"
+    "latex-workshop.linting.enabled": true,
+    "latex-workshop.linting.chktex.enabled": false,
+    "latex-workshop.linting.lacheck.enabled": false,
+    "latex.linter.enabled": false,
+    "latex-workshop.linting.ignore": [
+        "**/*.aux",
+        "**/*.toc",
+        "**/*.out",
+        "**/*.fls",
+        "**/*.fdb_latexmk",
+        "**/*.synctex.gz",
+        "**/*.log",
+        "**/Thumbs.db",
+        "**/AppData/Roaming/MiKTeX/**",
+        "**/MiKTeX/**",
+        "**/*mdsffont.def"
+    ],
+    "latex-workshop.latex.tools": [
+        {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+                "-shell-escape",
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-pdf",
+                "-outdir=%OUTDIR%",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "pdflatex",
+            "command": "pdflatex",
+            "args": [
+                "-shell-escape",
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "bibtex",
+            "command": "bibtex",
+            "args": ["%DOCFILE%"],
+            "env": {}
+        }
+    ],
+    "latex-utilities.formattedPaste.image.template": "\\begin{figure}[htbp]\n  \\centering\n  \\includegraphics[width=0.8\\textwidth]{${imageFilePath}}\n  \\caption{${imageCaption}}\n  \\label{fig:${imageFileName}}\n \\end{figure}",
+    "latex-utilities.formattedPaste.enabled": true,
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "latexmk",
+            "tools": ["latexmk"]
+        }
+    ],
+    "latex-workshop.latex.autoBuild.run": "onSave",
+    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.message.error.show": true,
+    "latex-workshop.message.warning.show": true,
+    "latex-workshop.latex.clean.fileTypes": [
+        "*.aux",
+        "*.bbl",
+        "*.blg",
+        "*.idx",
+        "*.ind",
+        "*.lof",
+        "*.lot",
+        "*.out",
+        "*.toc",
+        "*.acn",
+        "*.acr",
+        "*.alg",
+        "*.glg",
+        "*.glo",
+        "*.gls",
+        "*.ist",
+        "*.fls",
+        "*.fdb_latexmk",
+        "*.dpth",
+        "*.md5",
+        "*.auxlock",
+        "*.log",
+        "*.synctex.gz"
+    ],
+    "githubPullRequests.queries": [
+        {
+            "label": "Local Pull Request Branches",
+            "query": "default"
+        },
+        {
+            "label": "Waiting For My Review",
+            "query": "is:open is:pr review-requested:${user} repo:Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs"
+        },
+        {
+            "label": "Assigned To Me",
+            "query": "is:open is:pr assignee:${user} repo:Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs"
+        },
+        {
+            "label": "Created By Me",
+            "query": "is:open is:pr author:${user} repo:Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs"
+        },
+        {
+            "label": "All Open Pull Requests",
+            "query": "is:open is:pr repo:Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs"
+        },
+        {
+            "label": "All Open",
+            "query": "default"
+        }
+    ],
+    "githubPullRequests.createOnPublishBranch": "never",
+    "githubPullRequests.defaultMergeMethod": "merge",
+    "githubPullRequests.remotes": ["origin"],
+    "githubIssues.queries": [
+        {
+            "label": "My Issues",
+            "query": "is:open is:issue assignee:@me repo:${owner}/${repository}"
+        },
+        {
+            "label": "Created Issues",
+            "query": "is:open is:issue author:@me repo:${owner}/${repository}"
+        },
+        {
+            "label": "All Open Issues",
+            "query": "is:open is:issue repo:${owner}/${repository}"
+        },
+        {
+            "label": "@issue markers",
+            "query": "is:open is:issue label:from-code repo:${owner}/${repository}"
+        }
+    ],
+    "githubIssues.createIssueTriggers": [
+        "@issue",
+        "@todo",
+        "@bug",
+        "@feature",
+        "@refactor",
+        "TODO",
+        "FIXME"
+    ],
+    "githubIssues.useBranchForIssues": "on",
+    "githubIssues.issueBranchTitle": "issue${issueNumber}",
+    "githubIssues.issueCompletionFormatScm": "#${issueNumber}",
+    "githubIssues.workingIssueFormatScm": "#${issueNumber}",
+    "ltex.language": "nl-BE",
+    "ltex.enabled": true,
+    "ltex.checkFrequency": "save",
+    "latex-workshop.latex.build.forceRecipeUsage": false,
+    "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
+    "latex-workshop.intellisense.command.user": {
+        "concept": "concept{${1:term}}",
+        "belangrijk": "belangrijk{${1:text}}",
+        "keyterm": "keyterm{${1:term}}",
+        "frm": "frm{${1:title}}{${2:formula}}{${3:description}}",
+        "sym": "sym{${1:symbol}}{${2:description}}{${3:unit}}",
+        "mat": "mat{${1:matrix_content}}",
+        "TODO": "TODO{${1:message}}",
+        "FIXME": "FIXME{${1:message}}",
+        "NOTE": "NOTE{${1:message}}",
+        "citeme": "citeme",
+        "kuleuventitle": "kuleuventitle{${1:Title}}{${2:Course}}{${3:Name}}{${4:Year}}",
+        "dd": "dd{${1:y}}{${2:x}}",
+        "ddn": "ddn{${1:y}}{${2:x}}{${3:n}}",
+        "pd": "pd{${1:y}}{${2:x}}",
+        "pdn": "pdn{${1:y}}{${2:x}}{${3:n}}",
+        "dv": "dv[${1:n}]{${2:y}}{${3:x}}",
+        "pdv": "pdv[${1:n}]{${2:y}}{${3:x}}",
+        "uvec": "uvec{${1:vector}}",
+        "abs": "abs{${1:value}}",
+        "norm": "norm{${1:vector}}",
+        "paren": "paren{${1:content}}",
+        "bracket": "bracket{${1:content}}",
+        "curlybrace": "curlybrace{${1:content}}",
+        "avg": "avg{${1:value}}",
+        "plotthreeD": "plotthreeD[${1:options}]{${2:options}}{${3:function}}",
+        "plotdata": "plotdata[${1:options}]{${2:col_mapping}}{${3:filename.csv}}",
+        "begintwocol": "begintwocol",
+        "endtwocol": "endtwocol",
+        "theorie": "theorie",
+        "theorieblok": "theorieblok",
+        "schoolconcept": "schoolconcept",
+        "conceptbox": "conceptbox",
+        "waarschuwing": "waarschuwing",
+        "warningbox": "warningbox",
+        "voorbeeld": "voorbeeld",
+        "oefenblok": "oefenblok",
+        "oefening": "oefening",
+        "codeblock": "codeblock",
+        "examenbox": "examenbox"
     },
     "files.exclude": {
         "**/*.log": true,
