@@ -166,12 +166,12 @@
 \@ifpackageloaded{tikz}{}{\RequirePackage{tikz}}
 \@ifpackageloaded{pgfplots}{}{\RequirePackage{pgfplots}}
 \@ifpackageloaded{pgfplotstable}{}{\RequirePackage{pgfplotstable}}
-\usepgfplotslibrary{colorbrewer}
+\usepgfplotslibrary{colorbrewer, fillbetween}
 \pgfplotsset{compat=1.18}
 \usetikzlibrary{
     arrows.meta, positioning, calc, patterns, shapes.geometric,
     angles, quotes, babel, decorations.pathmorphing, shapes.misc, fit,
-    shadows.blur
+    shadows.blur, intersections
 }
 
 % --- Bibliography ---

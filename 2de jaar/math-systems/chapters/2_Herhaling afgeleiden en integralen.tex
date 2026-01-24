@@ -1,2 +1,370 @@
-\chapter{Herhaling afgeleiden en integralen}
+\chapter{Herhaling afgeleiden, integralen en differentiaalvergelijkingen}
 \label{ch:herhaling_afgeleiden_en_integralen}
+
+\section{Afgeleiden en integralen}
+
+\subsection{Beknopte theorie}
+
+\subsubsection{Afgeleiden}
+
+\begin{conceptbox}[Differentiatie]
+Differentiatie is het proces waarbij men de afgeleide van een gegeven functie $f(x)$ berekent t.o.v. de onafhankelijke variabele $x$. In de context van signalen en systemen is de onafhankelijke variabele doorgaans de tijd $t$, genoteerd als $f(t)$.
+
+De afgeleide $\dd{f(t)}{t}$ of $f'(t)$ is de snelheid waarmee de functie verandert op tijdstip $t$. Meetkundig is dit de \textbf{helling van de raaklijn}.
+\end{conceptbox}
+
+Hieronder zie je visueel dat de rechtse functie de snelheid voorstelt waarmee de linkse functie verandert.
+
+\begin{center}
+\begin{minipage}{0.45\textwidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    schoolEngineeringPlot,
+    title={Functie $f(t)$},
+    xlabel={$t$}, ylabel={$f(t)$},
+    width=\linewidth, height=5cm,
+    domain=-2.5:2.5, samples=100,
+    axis lines=middle,
+    xtick={0}, ytick={0}
+]
+\addplot[blue, thick] {x^3/3 - x};
+\node[anchor=north east] at (axis description cs:0.9,0.9) {$f$};
+\end{axis}
+\end{tikzpicture}
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\textwidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    schoolEngineeringPlot,
+    title={Afgeleide $f'(t)$ (snelheid)},
+    xlabel={$t$}, ylabel={$f'(t)$},
+    width=\linewidth, height=5cm,
+    domain=-2.5:2.5, samples=100,
+    axis lines=middle,
+    xtick={0}, ytick={0}
+]
+\addplot[green!60!black, thick] {x^2 - 1};
+\node[anchor=north east] at (axis description cs:0.9,0.9) {$f'$};
+\end{axis}
+\end{tikzpicture}
+\end{minipage}
+\end{center}
+
+\begin{theorie}[Rekenregels Afgeleiden]
+\textbf{Vier fundamentele afgeleiden:}
+\begin{enumerate}
+    \item Machtsfunctie: $(t^n)' = n t^{n-1}$
+    \item Sinusfunctie: $(\sin t)' = \cos t$
+    \item Cosinusfunctie: $(\cos t)' = -\sin t$
+    \item Exponentiële functie: $(e^t)' = e^t$
+\end{enumerate}
+
+\textbf{Zes differentiatie-eigenschappen:}
+Als $f, g$ afleidbaar zijn:
+\begin{enumerate}
+    \item Constante: $c' = 0$
+    \item Som: $(f + g)'(t) = f'(t) + g'(t)$
+    \item Product: $(f g)'(t) = f'(t)g(t) + f(t)g'(t)$
+    \item Quotiënt ($g(t) \neq 0$): $\displaystyle \left(\frac{f}{g}\right)'(t) = \frac{f'(t)g(t) - f(t)g'(t)}{g^2(t)}$
+    \item \textbf{Kettingregel} (samengestelde functie): $(f \circ g)'(t) = f'(g(t)) \cdot g'(t)$
+    \item Inverse functie: $(f^{-1})'(t) = \frac{1}{f'(f^{-1}(t))}$
+\end{enumerate}
+\end{theorie}
+
+\begin{voorbeeld}[Afgeleide berekenen]
+Bereken de afgeleide van $f(t) = e^{-4t} \cos 3t$.
+
+\textbf{Stap 1: Productregel}
+\[ f'(t) = (e^{-4t})' \cos 3t + e^{-4t} (\cos 3t)' \]
+
+\textbf{Stap 2: Kettingregel}
+\begin{itemize}
+    \item $(e^{-4t})' = e^{-4t} \cdot (-4t)' = -4e^{-4t}$
+    \item $(\cos 3t)' = -\sin 3t \cdot (3t)' = -3\sin 3t$
+\end{itemize}
+
+\textbf{Resultaat:}
+\[ f'(t) = -4e^{-4t} \cos 3t - 3e^{-4t} \sin 3t = -e^{-4t}(4\cos 3t + 3\sin 3t) \]
+\end{voorbeeld}
+
+\subsubsection{Integratie}
+
+\begin{conceptbox}[Primitieve functie \& Onbepaalde integraal]
+Als $F'(t) = f(t)$, dan noemen we $F(t)$ een \concept{primitieve functie} van $f(t)$.
+De \concept{onbepaalde integraal} is de verzameling van alle primitieve functies:
+\[ \int f(t) \dt = F(t) + c, \quad \forall c \in \R \]
+\end{conceptbox}
+
+\begin{theorie}[Rekenregels Integralen]
+\textbf{Lineariteit:}
+\[ \int [a f_1(t) + b f_2(t)] \dt = a \int f_1(t) \dt + b \int f_2(t) \dt \]
+
+\textbf{Integratie door substitutie:}
+Als $f(t) = g'(t) h(g(t))$, stel dan $u = g(t)$, dan is $\diff u = g'(t) \dt$:
+\[ \int f(t) \dt = \int h(u) \diff u \]
+\end{theorie}
+
+\begin{voorbeeld}[Substitutie voorbeeld]
+Bereken $\displaystyle \int \frac{e^{1/t^2}}{t^3} \dt$.
+
+Herschrijf de integrand: $\displaystyle \frac{1}{t^3} e^{t^{-2}}$.
+Stel $u = t^{-2}$, dan is $\diff u = -2t^{-3} \dt \implies -\frac{1}{2} \diff u = t^{-3} \dt$.
+
+Substitutie:
+\[ \int e^u \cdot \left(-\frac{1}{2}\right) \diff u = -\frac{1}{2} e^u + c = -\frac{1}{2} e^{1/t^2} + c \]
+\end{voorbeeld}
+
+\begin{conceptbox}[Bepaalde integraal (Oppervlakte)]
+De bepaalde integraal $\int_{t_1}^{t_2} f(t) \dt$ komt overeen met de oppervlakte 
+onder de curve $f(t)$ tussen $t_1$ en $t_2$.
+\end{conceptbox}
+
+\begin{center}
+\begin{minipage}{0.45\textwidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    schoolEngineeringPlot,
+    xlabel={$t$}, ylabel={$f(t)$},
+    width=\linewidth, height=5cm,
+    domain=0:3, samples=100,
+    axis lines=middle, xtick={1, 2}, xticklabels={$t_1$, $t_2$}, ytick=\empty
+]
+\addplot[name path=f, blue, thick] {0.5*x^2 + 0.5};
+\path[name path=axis] (axis cs:0,0) -- (axis cs:3,0);
+\addplot [
+    thick,
+    color=blue,
+    fill=schoolyellow, 
+    fill opacity=0.5
+]
+fill between[
+    of=f and axis,
+    soft clip={domain=1:2},
+];
+\node at (axis cs:1.5,0.8) {$\int \ge 0$};
+\end{axis}
+\end{tikzpicture}
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\textwidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    schoolEngineeringPlot,
+    xlabel={$t$}, ylabel={$f(t)$},
+    width=\linewidth, height=5cm,
+    domain=0:3, samples=100,
+    axis lines=middle, xtick={1, 2}, xticklabels={$t_1$, $t_2$}, ytick=\empty
+]
+\addplot[name path=g, blue, thick] {-0.5*x^2 - 0.5};
+\path[name path=axis] (axis cs:0,0) -- (axis cs:3,0);
+\addplot [
+    thick,
+    color=blue,
+    fill=schoolyellow, 
+    fill opacity=0.5
+]
+fill between[
+    of=g and axis,
+    soft clip={domain=1:2},
+];
+\node at (axis cs:1.5,-0.8) {$\int \le 0$};
+\end{axis}
+\end{tikzpicture}
+\end{minipage}
+\end{center}
+
+\subsection{Stap-voor-stap Oefeningen}
+
+Hieronder worden enkele basisconcepten stapsgewijs uitgelegd aan de hand van oefeningen.
+
+\begin{oefenblok}[Oefening: Kettingregel]
+\textbf{Opgave:} Bereken de afgeleide van $f(t) = \sin(\cos(2t - 5))$.
+
+\textbf{Stap 1: Analyseer de structuur}
+Dit is een samengestelde functie van de vorm $f(g(h(t)))$.
+\begin{itemize}
+    \item Buitenste functie: $\sin(\dots)$
+    \item Middelste functie: $\cos(\dots)$
+    \item Binnenste functie: $2t - 5$
+\end{itemize}
+
+\textbf{Stap 2: Pas de kettingregel toe (van buiten naar binnen)}
+De afgeleide van de sinus is de cosinus. Laat de inhoud ongemoeid, maar vermenigvuldig met de afgeleide van de inhoud.
+\[ f'(t) = \cos(\cos(2t - 5)) \cdot [\cos(2t - 5)]' \]
+
+\textbf{Stap 3: Differentieer de volgende laag}
+De afgeleide van de cosinus is de min-sinus.
+\[ [\cos(2t - 5)]' = -\sin(2t - 5) \cdot (2t - 5)' \]
+
+\textbf{Stap 4: Differentieer de binnenste functie}
+\[ (2t - 5)' = 2 \]
+
+\textbf{Stap 5: Combineer alles}
+\[ f'(t) = \cos(\cos(2t - 5)) \cdot [-\sin(2t - 5)] \cdot 2 \]
+\[ f'(t) = -2 \sin(2t - 5) \cos(\cos(2t - 5)) \]
+\end{oefenblok}
+
+\begin{oefenblok}[Oefening: Oneigenlijke integraal]
+\textbf{Opgave:} Bereken $\displaystyle \int_0^{+\infty} e^{-t/2} \dt$.
+
+\textbf{Stap 1: Definitie oneigenlijke integraal}
+Vervang de bovengrens $+\infty$ door een variabele $R$ en neem de limiet.
+\[ \lim_{R \to +\infty} \int_0^R e^{-t/2} \dt \]
+
+\textbf{Stap 2: Primitieve zoeken (Substitutie)}
+Stel $u = -t/2$, dan $\diff u = -1/2 \dt \implies \dt = -2 \diff u$.
+\[ \int e^u (-2) \diff u = -2e^u = -2e^{-t/2} \]
+
+\textbf{Stap 3: Vul de grenzen in}
+\[ \left[ -2e^{-t/2} \right]_0^R = (-2e^{-R/2}) - (-2e^0) = -2e^{-R/2} + 2 \]
+
+\textbf{Stap 4: Bereken de limiet}
+\[ \lim_{R \to +\infty} (-2e^{-R/2} + 2) = -2(0) + 2 = 2 \]
+\end{oefenblok}
+
+\subsection{Oefeningen}
+\begin{enumerate}
+    \item Bereken de afgeleide $f'(t)$:
+    \begin{enumerate}
+        \item $f(t) = \tan t$
+        \item $f(t) = t^2 \cos t$
+        \item $f(t) = \sin t \tan t$
+        \item $f(t) = t^3 \sin t \cos t$
+        \item $f(t) = \tan(5 - \sin 2t)$
+        \item $f(t) = (1-2t)^{-3}$
+        \item $f(t) = \sin(\cos(2t-5))$
+        \item $f(t) = \sqrt{1+\cos^2 t}$
+    \end{enumerate}
+
+    \item Bereken de onbepaalde integraal $\int f(t) \dt$:
+    \begin{enumerate}
+        \item $f(t) = (t^3+t)^5(3t^2+1)$
+        \item $f(t) = \sqrt{2t+1}$
+        \item $f(t) = t^2 \cos t^3$
+        \item $f(t) = \frac{(1+\sqrt{t})^{1/3}}{\sqrt{t}}$
+        \item $f(t) = (1-\cos \frac{t}{2})^2 \sin \frac{t}{2}$
+        \item $f(t) = \frac{1}{t^2} \sin \frac{1}{t} \cos \frac{1}{t}$
+    \end{enumerate}
+
+    \item Bereken de bepaalde integralen:
+    \begin{enumerate}
+        \item $\int_{-1}^1 3t^2 \sqrt{t^3+1} \dt$
+        \item $\int_{\pi/4}^{\pi/2} \cot t \csc^2 t \dt$
+        \item $\int_0^{\pi/2} \frac{2\sin t \cos t}{(1+\sin^2 t)^3} \dt$
+        \item $\int_0^{+\infty} e^{-t/2} \dt$
+        \item $\int_{-\infty}^{+\infty} \frac{1}{1+t^2} \dt$
+        \item $\int_{-\infty}^{+\infty} \frac{2t}{(t^2+1)^2} \dt$
+        \item $\int_{-\infty}^{+\infty} 2te^{-t^2} \dt$
+        \item $\int_{-\infty}^0 e^{-|t|} \dt$
+    \end{enumerate}
+\end{enumerate}
+
+\newpage
+\section{Differentiaalvergelijkingen}
+
+\subsection{Beknopte theorie}
+
+Lineaire differentiaalvergelijkingen (LDV) met constante coëfficiënten 
+beschrijven veel fysische systemen. We focussen op tweede-orde systemen:
+\[ y''(t) + a_1 y'(t) + a_0 y(t) = x(t) \]
+De algemene oplossing is de som van de homogene en de particuliere oplossing:
+\[ y(t) = y_h(t) + y_p(t) \]
+
+\begin{conceptbox}[Intuïtie: Waarom deze som?]
+Dit is het principe van \textbf{superpositie}. Je kan het vergelijken met een trillend systeem (bv. een massa aan een veer):
+\begin{itemize}
+    \item \textbf{Homogene oplossing $y_h(t)$:} Hoe het systeem uit zichzelf beweegt (natuurlijke respons, bv. uitdempen na een duw). Het rechterlid is 0 (geen externe kracht).
+    \item \textbf{Particuliere oplossing $y_p(t)$:} Hoe het systeem reageert op de externe kracht $x(t)$ (geforceerde respons).
+\end{itemize}
+De totale beweging is simpelweg de som van die twee effecten.
+\end{conceptbox}
+
+\subsubsection{Homogene oplossing $y_h(t)$}
+Los de karakteristieke vergelijking op: $\lambda^2 + a_1\lambda + a_0 = 0$.
+
+\begin{theorie}[Gevallen voor $y_h(t)$]
+Afhankelijk van de discriminant $D = a_1^2 - 4a_0$:
+\begin{enumerate}
+    \item \textbf{Twee reële wortels} ($\lambda_1 \neq \lambda_2$):
+    \[ y_h(t) = C_1 e^{\lambda_1 t} + C_2 e^{\lambda_2 t} \]
+    
+    \item \textbf{Eén reële wortel} ($\lambda_1 = \lambda_2 = \lambda$):
+    \[ y_h(t) = C_1 e^{\lambda t} + C_2 t e^{\lambda t} \]
+    
+    \item \textbf{Complexe wortels} ($\lambda_{1,2} = \alpha \pm j\beta$):
+    \[ y_h(t) = e^{\alpha t} (C_1 \cos \beta t + C_2 \sin \beta t) \]
+\end{enumerate}
+\end{theorie}
+
+\subsubsection{Particuliere oplossing $y_p(t)$}
+We gebruiken de methode van \concept{onbepaalde coëfficiënten}. De vorm van $y_p(t)$ wordt gekozen op basis van het rechterlid $x(t)$.
+
+\begin{center}
+\begin{engtable}{colspec={l l}}
+    Rechterlid $x(t)$ & Voorstel $y_p(t)$ \\
+    $C$ (constante) & $A$ \\
+    $Ct^n$ (veelterm) & $A_n t^n + \dots + A_1 t + A_0$ \\
+    $Ce^{kt}$ & $A e^{kt}$ \\
+    $C \cos(\omega t)$ of $C \sin(\omega t)$ & $A \cos(\omega t) + B \sin(\omega t)$ \\
+\end{engtable}
+\end{center}
+\begin{waarschuwing}[Resonantie]
+Als een term in je voorstel voor $y_p(t)$ al voorkomt in de homogene oplossing $y_h(t)$, vermenigvuldig je voorstel dan met $t$ (of $t^2$ indien nodig).
+\end{waarschuwing}
+
+\subsection{Stap-voor-stap Oefeningen}
+
+\begin{oefenblok}[Oefening: LDV oplossen]
+\textbf{Opgave:} Los op: $y'' + 7y' + 10y = 4\sin 3t$
+
+\textbf{Stap 1: Homogene oplossing}
+Karakteristieke vgl: $\lambda^2 + 7\lambda + 10 = 0$.
+Discriminant $D = 49 - 40 = 9$. Wortels: $\lambda_{1,2} = \frac{-7 \pm 3}{2} \Rightarrow -2, -5$.
+\[ y_h(t) = C_1 e^{-2t} + C_2 e^{-5t} \]
+
+\textbf{Stap 2: Particuliere oplossing}
+Rechterlid is goniometrisch ($\sin 3t$). $\omega=3$ komt niet voor in $\lambda$, dus geen resonantie.
+Voorstel: $y_p(t) = A \cos 3t + B \sin 3t$.
+Afgeleiden:
+\begin{align*}
+y_p' &= -3A \sin 3t + 3B \cos 3t \\
+y_p'' &= -9A \cos 3t - 9B \sin 3t
+\end{align*}
+Invullen in DV:
+\[ (-9A \cos 3t - 9B \sin 3t) + 7(-3A \sin 3t + 3B \cos 3t) + 10(A \cos 3t + B \sin 3t) = 4 \sin 3t \]
+Groeperen van sinus en cosinus:
+\[ \cos 3t (-9A + 21B + 10A) + \sin 3t (-9B - 21A + 10B) = 4 \sin 3t \]
+\[ \cos 3t (A + 21B) + \sin 3t (B - 21A) = 4 \sin 3t \]
+
+Stelsel oplossen:
+\[
+\begin{cases}
+A + 21B = 0 \implies A = -21B \\
+-21A + B = 4 \implies -21(-21B) + B = 4 \implies 442B = 4 \implies B = \frac{2}{221}
+\end{cases}
+\]
+Dus $A = -\frac{42}{221}$.
+\[ y_p(t) = \frac{-42}{221} \cos 3t + \frac{2}{221} \sin 3t \]
+
+\textbf{Stap 3: Algemene oplossing}
+\[ y(t) = C_1 e^{-2t} + C_2 e^{-5t} - \frac{42}{221} \cos 3t + \frac{2}{221} \sin 3t \]
+\end{oefenblok}
+
+\subsection{Oefeningen}
+Los de volgende differentiaalvergelijkingen op:
+\begin{enumerate}
+    \item $y'' + 6y' + 5y = 0$, $y(0)=4, y'(0)=0$
+    \item $y'' + 6y' + 25y = 0$, $y(0)=4, y'(0)=0$
+    \item $y'' + 6y' + 9y = 0$, $y(0)=2, y'(0)=0$
+    \item $y' + 3y = 4e^{-t}$, $y(0)=1$
+    \item $y'' + 16y = 8\sin 2t$, $y(0)=4, y'(0)=0$
+    \item $y'' + 16y = 8\sin 4t$, $y(0)=4, y'(0)=0$ (Let op: resonantie!)
+    \item $y'' + 6y' + 25y = 689\sin(20t)$, $y(0)=2, y'(0)=1$
+    \item $y'' + 6y' + 9y = 30\sin(3t)$, $y(0)=1, y'(0)=0$
+    \item $y''' + 6y' = t$, nul-beginvoorwaarden.
+\end{enumerate}
