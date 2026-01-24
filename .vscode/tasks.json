@@ -26,8 +26,9 @@
                 "runOn": "folderOpen"
             },
             "presentation": {
-                "reveal": "silent",
-                "panel": "shared"
+                "reveal": "never",
+                "panel": "shared",
+                "focus": false
             },
             "problemMatcher": {
                 "owner": "latex-issues",
@@ -48,8 +49,9 @@
             "command": "git",
             "args": ["config", "core.hooksPath", ".githooks"],
             "presentation": {
-                "reveal": "silent",
-                "panel": "shared"
+                "reveal": "never",
+                "panel": "shared",
+                "focus": false
             },
             "runOptions": {
                 "runOn": "folderOpen"
@@ -204,8 +206,9 @@
                 ]
             },
             "presentation": {
-                "reveal": "always",
-                "panel": "shared"
+                "reveal": "never",
+                "panel": "shared",
+                "focus": false
             },
             "problemMatcher": []
         },
@@ -235,8 +238,9 @@
                 ]
             },
             "presentation": {
-                "reveal": "always",
-                "panel": "shared"
+                "reveal": "never",
+                "panel": "shared",
+                "focus": false
             },
             "problemMatcher": []
         }
