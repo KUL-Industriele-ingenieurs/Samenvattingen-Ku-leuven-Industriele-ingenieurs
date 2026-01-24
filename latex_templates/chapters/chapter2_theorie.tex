@@ -17,7 +17,7 @@ Later in de tekst verschijnt alleen het symbool: de \sym{v}{Snelheid}{m/s} van h
 
 \subsection{Eenheden met siunitx}
 
-\begin{theorieblok}[title=Correcte eenheden met siunitx]
+\begin{theorieblok}[Correcte eenheden met siunitx]
 Gebruik \textbf{altijd} \verb|\SI{}{}| voor getallen met eenheden:
 \begin{itemize}
     \item Snelheid: \verb|\SI{50}{km/h}| → \SI{50}{km/h}
@@ -43,12 +43,24 @@ Elke belangrijke formule wordt geregistreerd met \verb|\frm{}{}{}|:
 
 \subsection{Afgeleiden}
 
-De afgeleide notatie is vereenvoudigd:
-\begin{align}
-    \dd{y}{x} &= \lim_{\Delta x \to 0} \frac{\Delta y}{\Delta x} \\
-    \pd{f}{x} &= \text{partiële afgeleide} \\
-    \ddn{y}{x}{2} &= \text{tweede afgeleide}
-\end{align}
+De afgeleide notatie is vereenvoudigd.
+
+Voor een enkele formule gebruik je \verb|\[ ... \]|:
+\[ \dv{f}{x} = \lim_{\Delta x \to 0} \frac{\Delta f}{\Delta x} \]
+
+Voor meerdere formules die je mooi onder elkaar wilt uitlijnen (op de $=$) kun je \verb|\[ ... \]| gebruiken met meerdere displays:
+\[ \dd{y}{x} = \text{gewone afgeleide} \]
+\[ \pd{f}{x} = \text{partiële afgeleide} \]
+\[ \ddn{y}{x}{2} = \text{tweede afgeleide} \]
+
+of met \verb|\begin{aligned} ... \end{aligned}| je creert een soort boxomgeving voor wiskundige uitlijning:
+\[
+\begin{aligned}
+  \dd{y}{x} &= \text{gewone afgeleide} \\
+  \pd{f}{x}  &= \text{partiële afgeleide}
+\end{aligned}
+\]
+
 
 \subsection{Vectoren en verzamelingen}
 
