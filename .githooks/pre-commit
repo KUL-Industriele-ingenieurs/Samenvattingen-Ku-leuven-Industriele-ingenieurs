@@ -22,24 +22,47 @@ echo "Checking PDFs..."
 
 # Get all staged PDFs
 # git diff --cached --name-only returns file paths relative to root
-staged_pdfs=$(git diff --cached --name-only | grep '\.pdf$')
+staged_pdfs=$(git diff --cached --name-only | grep '\.pdf$' || true)
 
 if [ -n "$staged_pdfs" ]; then
     # Set Internal Field Separator to newline to handle files one by one
-    IFS='
-'
+    IFS='\n'
+    blocked_pdfs=""
+
     for pdf_file in $staged_pdfs; do
         tex_file="${pdf_file%.pdf}.tex"
-        
-        # Check if matching .tex file exists
+
+        # 1) If the PDF is generated from a tracked .tex, automatically unstage it
         if [ -f "$tex_file" ]; then
             echo "Unstaging generated PDF: $pdf_file (matches .tex file)"
             git reset HEAD "$pdf_file"
-        else
-            echo "Keeping reference PDF: $pdf_file"
+            continue
         fi
+
+        # 2) If a whitelist file exists and the PDF is listed there, allow it
+        if [ -f ".pdf-whitelist" ]; then
+            if grep -Fxq "$pdf_file" .pdf-whitelist; then
+                echo "Whitelisted PDF allowed: $pdf_file"
+                continue
+            fi
+        fi
+
+        # Otherwise, block the PDF
+        blocked_pdfs="$blocked_pdfs\n$pdf_file"
     done
     unset IFS
+
+    if [ -n "$blocked_pdfs" ]; then
+        echo "\n🛑 ERROR: Committing PDF files is blocked by policy. The following PDFs are staged:" >&2
+        echo "$blocked_pdfs" >&2
+        echo "\nIf these are generated files, remove them from the index with:" >&2
+        echo "  git reset HEAD <path/to.pdf>" >&2
+        echo "\nIf you intentionally want to commit a reference PDF, add its path to '.pdf-whitelist' (one path per line), then stage and commit that change first. Example:" >&2
+        echo "  echo \"<path/to.pdf>\" >> .pdf-whitelist" >&2
+        echo "  git add .pdf-whitelist && git commit -m \"chore: whitelist reference PDF: <path/to.pdf>\"" >&2
+        echo "\nYou can bypass this hook with '--no-verify' if absolutely necessary, but prefer whitelisting so the repo policy is explicit." >&2
+        exit 1
+    fi
 fi
 
 echo "PDF check complete."
