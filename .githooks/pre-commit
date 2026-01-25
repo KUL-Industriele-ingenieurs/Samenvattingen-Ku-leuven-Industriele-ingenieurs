@@ -37,32 +37,27 @@ if [ -n "$staged_pdfs" ]; then
         if [ -f "$tex_file" ] || git ls-files --error-unmatch "$tex_file" >/dev/null 2>&1; then
             echo "Unstaging generated PDF: $pdf_file (matches $tex_file)"
             git reset HEAD -- "$pdf_file"
+            auto_unstaged="$auto_unstaged\n$pdf_file (generated)"
             continue
         fi
 
         # 2) If a whitelist file exists and the PDF is listed there, allow it
-        if [ -f ".pdf-whitelist" ]; then
-            if grep -Fxq "$pdf_file" .pdf-whitelist; then
-                echo "Whitelisted PDF allowed: $pdf_file"
-                continue
-            fi
+        if [ -f ".pdf-whitelist" ] && grep -Fxq "$pdf_file" .pdf-whitelist; then
+            echo "Whitelisted PDF allowed: $pdf_file"
+            continue
         fi
 
-        # Otherwise, block the PDF
-        blocked_pdfs="$blocked_pdfs\n$pdf_file"
+        # Otherwise, automatically unstage the PDF (block from commit) without aborting
+        echo "Unstaging blocked PDF (not whitelisted): $pdf_file"
+        git reset HEAD -- "$pdf_file"
+        auto_unstaged="$auto_unstaged\n$pdf_file"
     done
     unset IFS
 
-    if [ -n "$blocked_pdfs" ]; then
-        echo "\n🛑 ERROR: Committing PDF files is blocked by policy. The following PDFs are staged:" >&2
-        echo "$blocked_pdfs" >&2
-        echo "\nIf these are generated files, remove them from the index with:" >&2
-        echo "  git reset HEAD <path/to.pdf>" >&2
-        echo "\nIf you intentionally want to commit a reference PDF, add its path to '.pdf-whitelist' (one path per line), then stage and commit that change first. Example:" >&2
-        echo "  echo \"<path/to.pdf>\" >> .pdf-whitelist" >&2
-        echo "  git add .pdf-whitelist && git commit -m \"chore: whitelist reference PDF: <path/to.pdf>\"" >&2
-        echo "\nYou can bypass this hook with '--no-verify' if absolutely necessary, but prefer whitelisting so the repo policy is explicit." >&2
-        exit 1
+    if [ -n "$auto_unstaged" ]; then
+        echo "\nNote: The following PDFs were left as unstaged and won't be part of this commit:" >&2
+        echo "$auto_unstaged" >&2
+        echo "\nTo add a reference PDF permanently, add it to '.pdf-whitelist' and commit that file first." >&2
     fi
 fi
 
