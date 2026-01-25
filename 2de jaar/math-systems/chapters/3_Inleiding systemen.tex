@@ -3,8 +3,11 @@
 
 \section{Wat is een systeem?}
 
+\begin{conceptbox}[Een systeem]
+    
 Een systeem beschrijft een \belangrijk{Causaal systeem} waarbij een \belangrijk{Input} een \belangrijk{Output} veroorzaakt.
-Je hebt een exitatie (input) die een respons (output) veroorzaakt.
+Je hebt \textbf{een exitatie (input)} die een \textbf{respons (output)} veroorzaakt.
+\end{conceptbox}
 
 \begin{figure}[htbp]
     \centering
@@ -19,6 +22,16 @@ Je hebt een exitatie (input) die een respons (output) veroorzaakt.
     \caption{Schematische voorstelling van een systeem}
     \label{fig:systeem_diagram}
 \end{figure}
+
+Een auto is een voorbeeld van een systeem.
+Je geeft gas (input) en de auto versnelt (output). 
+Een eenvoudige, eerste-orde differentiaalvergelijking met massa $m$ en weerstandsfactor $b$ is:
+
+\begin{equation}
+    m\frac{dv(t)}{dt} = k_u\,u(t) - b\,v(t)
+\end{equation}
+waarbij $v(t)$ de snelheid is, $u(t)$ het ingangssignaal (gaspedaal), 
+$k_u$ een omzettingsconstante en $b$ de weerstandsfactor. 
 
 \section{Filters}
 
@@ -65,9 +78,8 @@ De integraal over de dirac delta functie is altijd 1.
     \delta(t)
     \begin{cases}
         \delta(t) = 0 & t \neq 0 \\
-        \delta(t) = \infty & t = 0
+        \int_{-\infty}^{\infty} \delta(t) dt = 1
      \end{cases}
-    \quad \text{en} \quad \int_{-\infty}^{\infty} \delta(t) dt = 1
 \end{equation}
 
 \begin{figure}[htbp]
@@ -91,6 +103,14 @@ De integraal over de dirac delta functie is altijd 1.
 
 
 \section{Convolutie}
+Een convolutie is het schuiven van een functie over een andere functie.
+
+\begin{equation}
+    (f * g)(t) = \int_{-\infty}^{\infty} f(\tau) g(t-\tau) d\tau
+\end{equation}
+
+
+
 
 \section{Eerste orde systeem}
 
