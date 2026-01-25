@@ -12,7 +12,7 @@
 % =============================================================================
 
 \documentclass[a4paper,11pt]{article}
-\usepackage{school-macros}
+\usepackage{../school-macros}
 \addbibresource{references.bib}
 \addbibresource{Mijn Bibiotheek.bib}
 
@@ -48,9 +48,8 @@ Je leert je vak en je raakt dan ook bekend met LaTeX wat handig is voor later.
 \tableofcontents
 \newpage
 
-% =============================================================================
+
 \section{Snel aan de slag}
-% =============================================================================
 
 \subsection{Je eerste document}
 
@@ -147,6 +146,33 @@ Latex heeft wat standaard dingen om je tekst te stijlen.
 \subsubsection{} \\
 \paragraph{}
 \end{codeblock}
+
+\subsection{Tekstgrootte}
+Je kan de grootte van de tekst aanpassen met de volgende commando's. Deze werken relatief ten opzichte van de standaard grootte (meestal 11pt of 12pt).
+
+\begin{tabular}{ll}
+\toprule
+\textbf{Commando} & \textbf{Voorbeeld} \\
+\midrule
+\verb|\tiny| & {\tiny Heel klein} \\
+\verb|\scriptsize| & {\scriptsize Script grootte} \\
+\verb|\footnotesize| & {\footnotesize Voetnoot grootte} \\
+\verb|\small| & {\small Klein} \\
+\verb|\normalsize| & {\normalsize Normaal} \\
+\verb|\large| & {\large Groot} \\
+\verb|\Large| & {\Large Groter} \\
+\verb|\LARGE| & {\LARGE Nog groter} \\
+\verb|\huge| & {\huge Enorm} \\
+\verb|\Huge| & {\Huge Gigantisch} \\
+\bottomrule
+\end{tabular}
+
+\begin{codeblock}[Voorbeeld]{tex}
+{\tiny Dit is heel klein}
+{\Large Dit is groot}
+\end{codeblock}
+
+Let op: De scope van deze commando's wordt beperkt door accolades \texttt{\{\}}.
 
 \subsection{Lijstjes maken}
 Lijstjes zijn super handig voor samenvattingen!
