@@ -20,9 +20,9 @@ done
 # --- 2. Manage PDFs ---
 echo "Checking PDFs..."
 
-# Get all staged PDFs
+# Get all staged PDFs (case-insensitive extension)
 # git diff --cached --name-only returns file paths relative to root
-staged_pdfs=$(git diff --cached --name-only | grep '\.pdf$' || true)
+staged_pdfs=$(git diff --cached --name-only | grep -i '\.pdf$' || true)
 
 if [ -n "$staged_pdfs" ]; then
     # Set Internal Field Separator to newline to handle files one by one
@@ -30,12 +30,13 @@ if [ -n "$staged_pdfs" ]; then
     blocked_pdfs=""
 
     for pdf_file in $staged_pdfs; do
-        tex_file="${pdf_file%.pdf}.tex"
+        # Normalize .pdf/.PDF to .tex
+        tex_file=$(echo "$pdf_file" | sed -E 's/\.[Pp][Dd][Ff]$/.tex/')
 
-        # 1) If the PDF is generated from a tracked .tex, automatically unstage it
-        if [ -f "$tex_file" ]; then
-            echo "Unstaging generated PDF: $pdf_file (matches .tex file)"
-            git reset HEAD "$pdf_file"
+        # 1) If the corresponding .tex exists in the work tree OR is tracked, automatically unstage the PDF
+        if [ -f "$tex_file" ] || git ls-files --error-unmatch "$tex_file" >/dev/null 2>&1; then
+            echo "Unstaging generated PDF: $pdf_file (matches $tex_file)"
+            git reset HEAD -- "$pdf_file"
             continue
         fi
 
