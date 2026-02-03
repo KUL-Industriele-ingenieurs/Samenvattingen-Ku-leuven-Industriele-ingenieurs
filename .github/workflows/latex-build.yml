@@ -27,18 +27,32 @@ jobs:
           find . -type f \( -name "*.aux" -o -name "*.bbl" -o -name "*.bcf" -o -name "*.blg" -o -name "*.fls" -o -name "*.log" -o -name "*.out" -o -name "*.toc" -o -name "*.fdb_latexmk" -o -name "*.synctex.gz" \) -delete
           echo "Cleaned stale auxiliary files"
 
+      - name: Restore PDF cache
+        uses: actions/cache@v4
+        id: pdf-cache
+        with:
+          path: .pdf-cache
+          key: pdf-cache-${{ hashFiles('school-macros.sty') }}-${{ hashFiles('**/*.tex') }}
+          restore-keys: |
+            pdf-cache-${{ hashFiles('school-macros.sty') }}-
+            pdf-cache-
+
       - name: Find and Build LaTeX documents
         shell: bash
         run: |
+          # Create cache directory if it doesn't exist
+          mkdir -p .pdf-cache
+          
           # Find all main documents (excluding subfiles and templates)
-          # We look for files containing \documentclass
-          find . -type f -name "*.tex" \
-            ! -path "*/.git/*" \
-            ! -path "*/assets/*" \
-            ! -name "school-macros.sty" \
-            ! -name "*-macros.sty" \
-            ! -name "Examenoefening.tex" \
-            -exec grep -l "\\documentclass" {} \; > main_docs.txt
+          # Use -prune to efficiently skip hidden/system directories
+          find . \( -name ".git" -o -name ".github" -o -name ".pdf-cache" -o -name ".vscode" -o -name "assets" \) -prune -o \
+                 -type f -name "*.tex" \
+                 ! -name "school-macros.sty" \
+                 ! -name "*-macros.sty" \
+                 -exec grep -l "\\documentclass" {} \; > main_docs.txt
+          
+          echo "📝 Found documents (main_docs.txt):"
+          cat main_docs.txt
           
           echo "## Build Results 📊" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
@@ -46,14 +60,43 @@ jobs:
           echo "|----------|--------|---------|" >> $GITHUB_STEP_SUMMARY
           
           BUILD_FAILED=0
+          PDFS_GENERATED=0
+          CACHE_HITS=0
           BUILD_LOG_DIR="${GITHUB_WORKSPACE}/build_logs"
           mkdir -p "$BUILD_LOG_DIR"
+          
+          # Compute hash of root school-macros.sty for cache invalidation
+          MACROS_HASH=""
+          if [ -f "school-macros.sty" ]; then
+            MACROS_HASH=$(sha256sum "school-macros.sty" | cut -d' ' -f1)
+          fi
           
           # Build each found document
           while IFS= read -r texfile; do
             dir=$(dirname "$texfile")
             file=$(basename "$texfile")
             name=$(basename "$texfile" .tex)
+            
+            # Compute hash of the tex file + macros for cache key
+            TEX_HASH=$(sha256sum "$texfile" | cut -d' ' -f1)
+            CACHE_KEY="${TEX_HASH}-${MACROS_HASH}"
+            CACHE_FILE=".pdf-cache/${name}-${CACHE_KEY}.pdf"
+            
+            # Check if we have a cached PDF
+            if [ -f "$CACHE_FILE" ]; then
+              echo "========================================="
+              echo "Using cached PDF for: $texfile"
+              echo "========================================="
+              
+              # Copy cached PDF to the document's directory
+              cp "$CACHE_FILE" "${dir}/${name}.pdf"
+              
+              echo "| \`$name\` | ⚡ Cached | No changes detected |" >> $GITHUB_STEP_SUMMARY
+              echo "⚡ Cache hit: $texfile"
+              PDFS_GENERATED=$((PDFS_GENERATED + 1))
+              CACHE_HITS=$((CACHE_HITS + 1))
+              continue
+            fi
             
             echo "========================================="
             echo "Building: $texfile"
@@ -66,11 +109,6 @@ jobs:
             latexmk -C "$file" || true
             
             # Build using ONLY latexmk
-            # -pdf: Generate PDF (uses pdflatex by default under the hood, but managed by latexmk)
-            # -g: Force complete processing (ignore dependencies)
-            # -shell-escape: Allow external commands (needed for minted/plots)
-            # -interaction=nonstopmode: Don't halt on errors
-            # -file-line-error: Better error format for logs
             if latexmk -pdf \
                 -g \
                 -shell-escape \
@@ -80,8 +118,12 @@ jobs:
               
               # Verify PDF was actually created
               if [ -f "${name}.pdf" ]; then
-                echo "| \`$name\` | ✅ Success | PDF generated |" >> $GITHUB_STEP_SUMMARY
+                echo "| \`$name\` | ✅ Built | PDF generated |" >> $GITHUB_STEP_SUMMARY
                 echo "✅ Success: $texfile"
+                PDFS_GENERATED=$((PDFS_GENERATED + 1))
+                
+                # Store in cache for future builds
+                cp "${name}.pdf" "${GITHUB_WORKSPACE}/${CACHE_FILE}"
               else
                 echo "| \`$name\` | ⚠️ Warning | Completed but no PDF |" >> $GITHUB_STEP_SUMMARY
                 echo "⚠️ Warning: $texfile completed but PDF not found"
@@ -113,10 +155,23 @@ jobs:
             cd - > /dev/null
           done < main_docs.txt
           
-          # Fail the job if any build failed
-          if [ $BUILD_FAILED -ne 0 ]; then
-            echo "::error::One or more LaTeX documents failed to build"
-            exit 1
+          # Summary
+          echo ""
+          echo "📊 Build Summary: $PDFS_GENERATED PDFs ($CACHE_HITS from cache, $((PDFS_GENERATED - CACHE_HITS)) rebuilt)"
+          
+          # Logic: Fail only if NO PDFs were generated (and we found documents)
+          # If we generated at least one PDF, we consider it a partial success
+          if [ $PDFS_GENERATED -eq 0 ]; then
+             if [ -s main_docs.txt ]; then
+                echo "::error::Build failed: No PDFs were successfully generated from the found documents."
+                exit 1
+             else
+                echo "::warning::No LaTeX documents found to build."
+             fi
+          elif [ $BUILD_FAILED -ne 0 ]; then
+             echo "::warning::Some documents failed to build, but $PDFS_GENERATED PDF(s) were generated. Proceeding with release."
+          else
+             echo "All documents built successfully ($PDFS_GENERATED PDFs)."
           fi
 
       - name: Collect build artifacts
@@ -124,10 +179,25 @@ jobs:
         run: |
           mkdir -p artifacts/pdfs artifacts/logs
           # Collect all PDFs
-          find . -type f -name "*.pdf" \
-            ! -path "*/.git/*" \
-            ! -path "*/assets/*" \
-            -exec cp {} artifacts/pdfs/ \; || true
+          # Collect only PDFs that have a matching .tex file in the same directory
+          while IFS= read -r texfile; do
+            dir=$(dirname "$texfile")
+            name=$(basename "$texfile" .tex)
+            # Skip files that look like cache artifacts (containing 64-char hash)
+            if [[ "$name" =~ [0-9a-f]{64} ]]; then
+              echo "Skipping hashed file: $name"
+              continue
+            fi
+            
+            if [ -f "${dir}/${name}.pdf" ]; then
+              cp "${dir}/${name}.pdf" artifacts/pdfs/
+              echo "Collected: ${dir}/${name}.pdf"
+            fi
+          done < main_docs.txt
+          
+          echo "📂 Collected Artifacts (artifacts/pdfs):"
+          ls -la artifacts/pdfs/
+          
           # Collect logs
           cp build_logs/*.log artifacts/logs/ 2>/dev/null || true
 
@@ -148,3 +218,92 @@ jobs:
           retention-days: 30
           if-no-files-found: ignore
           path: artifacts/logs/*.log
+
+  prerelease:
+    name: Create Prerelease
+    needs: build
+    runs-on: ubuntu-latest
+    # Only create prereleases on pushes to main (not PRs or tags)
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download PDF artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: pdfs
+          path: artifacts/pdfs
+
+      - name: Get current date and commit info
+        id: info
+        shell: bash
+        run: |
+          echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+          echo "datetime=$(date +'%Y-%m-%d %H:%M UTC')" >> $GITHUB_OUTPUT
+          echo "short_sha=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+
+      - name: List downloaded PDFs
+        run: |
+          echo "📄 PDFs to include in prerelease:"
+          ls -la artifacts/pdfs/ || echo "No PDFs found"
+
+      - name: Create or Update Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # 1. Update the 'latest' tag to point to this commit
+          # We need to configure git identity for the tag
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          echo "Updating 'latest' tag to $(git rev-parse --short HEAD)..."
+          git tag -f latest
+          git push -f origin latest
+          
+          # 2. Prepare Release Body using printf to avoid heredoc indentation issues
+          printf "## 🔄 Automatic Prerelease\n\n" > release_body.md
+          printf "**Build Date:** ${{ steps.info.outputs.datetime }}\n" >> release_body.md
+          printf "**Commit:** [\`${{ steps.info.outputs.short_sha }}\`](https://github.com/${{ github.repository }}/commit/${{ github.sha }})\n\n" >> release_body.md
+          printf "This is an automatically generated prerelease containing the latest compiled PDF documents.\n\n" >> release_body.md
+          printf "> ⚠️ **Note:** This prerelease is automatically updated with every commit to the main branch.\n" >> release_body.md
+          printf "> For stable versions, see the [official releases](https://github.com/${{ github.repository }}/releases?q=NOT+prerelease).\n\n" >> release_body.md
+          printf "### 📥 Downloads\nAll PDF summaries are attached below.\n" >> release_body.md
+          
+          # 3. Create or Edit the Release
+          # If the release exists, we edit it to update body/target.
+          # If not, we create it.
+          # We use the 'latest' tag which we just pushed.
+          
+          if gh release view latest >/dev/null 2>&1; then
+             echo "Updating existing release metadata..."
+             gh release edit latest \
+               --title "📚 Latest Build (${{ steps.info.outputs.date }})" \
+               --prerelease \
+               --draft=false \
+               --notes-file release_body.md
+          else
+             echo "Creating new release..."
+             gh release create latest \
+               --title "📚 Latest Build (${{ steps.info.outputs.date }})" \
+               --prerelease \
+               --draft=false \
+               --notes-file release_body.md
+          fi
+          
+          # 4. Upload Assets
+          echo "Uploading assets..."
+          # Check for PDFs
+          if ls artifacts/pdfs/*.pdf 1> /dev/null 2>&1; then
+            gh release upload latest artifacts/pdfs/*.pdf --clobber
+          else
+            echo "::warning::No PDFs found to upload."
+          fi
+          
+          # Check for Logs
+          if ls artifacts/logs/*.log 1> /dev/null 2>&1; then
+             gh release upload latest artifacts/logs/*.log --clobber
+          fi

@@ -2,153 +2,33 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Build LaTeX (latexmk - active file)",
-            "type": "shell",
-            "command": "latexmk",
-            "args": [
-                "-pdf",
-                "-shell-escape",
-                "-interaction=nonstopmode",
-                "-file-line-error",
-                "${file}"
-            ],
-            "options": {
-                "cwd": "${fileDirname}"
-            },
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "presentation": {
-                "reveal": "always",
-                "panel": "shared"
-            },
-            "problemMatcher": []
-        },
-        {
-            "label": "Build LaTeX (pdflatex single pass)",
-            "type": "shell",
-            "command": "pdflatex",
-            "args": [
-                "-interaction=nonstopmode",
-                "-file-line-error",
-                "${fileBasename}"
-            ],
-            "options": {
-                "cwd": "${fileDirname}"
-            },
-            "group": {
-                "kind": "build",
-                "isDefault": false
-            },
-            "problemMatcher": []
-        },
-        {
-            "label": "Build main PDFs (latexmk)",
-            "type": "shell",
-            "command": "latexmk",
-            "args": [
-                "-pdf",
-                "-interaction=nonstopmode",
-                "-file-line-error",
-                "math-systems/MATHSYS-Oefeningen-RubenRyckaert.tex"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": false
-            },
-            "problemMatcher": []
-        },
-        {
-            "label": "Build Warmte PDF (latexmk)",
-            "type": "shell",
-            "command": "latexmk",
-            "args": [
-                "-pdf",
-                "-interaction=nonstopmode",
-                "-file-line-error",
-                "Warmte en stromigen/Warmte en stromingen Samenvatting Ruben Ryckaert.tex"
-            ],
-            "group": "build",
-            "problemMatcher": []
-        },
-        {
-            "label": "Build LaTeX (latexmk - template)",
-            "type": "shell",
-            "command": "latexmk",
-            "args": [
-                "-pdf",
-                "-interaction=nonstopmode",
-                "-file-line-error",
-                "latex_templates/template_examples.tex"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": false
-            },
-            "presentation": {
-                "reveal": "always",
-                "panel": "shared"
-            },
-            "problemMatcher": []
-        },
-        {
-            "label": "Build LaTeX (latexmk - active file)",
-            "type": "shell",
-            "command": "latexmk",
-            "args": [
-                "-pdf",
-                "-interaction=nonstopmode",
-                "-file-line-error",
-                "${file}"
-            ],
-            "options": {
-                "cwd": "${fileDirname}"
-            },
-            "group": {
-                "kind": "build",
-                "isDefault": false
-            },
-            "presentation": {
-                "reveal": "always",
-                "panel": "shared"
-            },
-            "problemMatcher": []
-        },
-        {
             "label": "Check @issue markers",
             "type": "shell",
             "windows": {
-                "command": "powershell",
-                "args": [
-                    "-NoProfile",
-                    "-NonInteractive",
-                    "-ExecutionPolicy",
-                    "Bypass",
-                    "-File",
-                    "${workspaceFolder}\\.vscode\\scripts\\check_issues.ps1"
-                ]
+                "command": "Get-ChildItem -Recurse -Filter \"*.tex\" -ErrorAction SilentlyContinue | Select-String -Pattern '\u0040issue','\u0040todo','TODO','FIXME' | ForEach-Object { Write-Output ('{0}:{1}:1: warning: {2}' -f $_.Path, $_.LineNumber, ($_.Line.Trim())) }",
+                "args": []
             },
             "linux": {
                 "command": "bash",
                 "args": [
-                    "-lc",
-                    "${workspaceFolder}/.vscode/scripts/check_issues.sh"
+                    "-c",
+                    "grep -rn --include='*.tex' -E '@issue|@todo|TODO|FIXME' . 2>/dev/null | while IFS=: read -r file line content; do echo \"$file:$line:1: warning: $content\"; done"
                 ]
             },
             "osx": {
                 "command": "bash",
                 "args": [
-                    "-lc",
-                    "${workspaceFolder}/.vscode/scripts/check_issues.sh"
+                    "-c",
+                    "grep -rn --include='*.tex' -E '@issue|@todo|TODO|FIXME' . 2>/dev/null | while IFS=: read -r file line content; do echo \"$file:$line:1: warning: $content\"; done"
                 ]
             },
             "runOptions": {
                 "runOn": "folderOpen"
             },
             "presentation": {
-                "reveal": "silent",
-                "panel": "shared"
+                "reveal": "never",
+                "panel": "shared",
+                "focus": false
             },
             "problemMatcher": {
                 "owner": "latex-issues",
@@ -169,8 +49,9 @@
             "command": "git",
             "args": ["config", "core.hooksPath", ".githooks"],
             "presentation": {
-                "reveal": "silent",
-                "panel": "shared"
+                "reveal": "never",
+                "panel": "shared",
+                "focus": false
             },
             "runOptions": {
                 "runOn": "folderOpen"
@@ -185,7 +66,7 @@
                 "args": [
                     "-NoProfile",
                     "-Command",
-                    "Get-ChildItem -Recurse -Include *.aux,*.log,*.out,*.toc,*.fdb_latexmk,*.fls,*.synctex.gz,*.synctex(busy),*.lof,*.lot,*.nav,*.snm,*.vrb,*.bbl,*.blg,*.bcf,*.run.xml,*.idx,*.ilg,*.ind | Remove-Item -Force; Write-Host 'LaTeX auxiliary files cleaned!' -ForegroundColor Green"
+                    "Get-ChildItem -Recurse -Include *.aux,*.log,*.out,*.toc,*.fdb_latexmk,*.fls,*.synctex.gz,*.synctex(busy),*.lof,*.lot,*.nav,*.snm,*.vrb,*.bbl,*.blg,*.bcf,*.run.xml,*.idx,*.ilg,*.ind | Remove-Item -Force; Write-Host \"LaTeX auxiliary files cleaned!\" -ForegroundColor Green"
                 ]
             },
             "linux": {
@@ -325,8 +206,9 @@
                 ]
             },
             "presentation": {
-                "reveal": "always",
-                "panel": "shared"
+                "reveal": "never",
+                "panel": "shared",
+                "focus": false
             },
             "problemMatcher": []
         },
@@ -338,7 +220,7 @@
                 "args": [
                     "-NoProfile",
                     "-Command",
-                    "Get-ChildItem -Directory -Recurse -Depth 2 | Where-Object { Get-ChildItem $_.FullName -Filter '*.tex' -ErrorAction SilentlyContinue } | ForEach-Object { Copy-Item 'school-macros.sty' $_.FullName -Force; Write-Host \"Copied to: $($_.FullName)\" }; Write-Host 'Update complete!' -ForegroundColor Green"
+                    "Get-ChildItem -Directory -Recurse -Depth 2 | Where-Object { Get-ChildItem $_.FullName -Filter \"*.tex\" -ErrorAction SilentlyContinue } | ForEach-Object { Copy-Item \"school-macros.sty\" $_.FullName -Force; Write-Host \"Copied to: $($_.FullName)\" }; Write-Host \"Update complete!\" -ForegroundColor Green"
                 ]
             },
             "linux": {
@@ -356,8 +238,9 @@
                 ]
             },
             "presentation": {
-                "reveal": "always",
-                "panel": "shared"
+                "reveal": "never",
+                "panel": "shared",
+                "focus": false
             },
             "problemMatcher": []
         }
