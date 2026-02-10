@@ -1,4 +1,4 @@
-name: Build LaTeX
+name: Build LaTeX & Typst
 
 on:
   push:
@@ -27,12 +27,24 @@ jobs:
           find . -type f \( -name "*.aux" -o -name "*.bbl" -o -name "*.bcf" -o -name "*.blg" -o -name "*.fls" -o -name "*.log" -o -name "*.out" -o -name "*.toc" -o -name "*.fdb_latexmk" -o -name "*.synctex.gz" \) -delete
           echo "Cleaned stale auxiliary files"
 
+      - name: Install Typst (latest)
+        shell: bash
+        run: |
+          TYPST_VERSION=$(curl -fsSL https://api.github.com/repos/typst/typst/releases/latest | grep -Po '"tag_name": "v\K[^"]*')
+          echo "Installing Typst v${TYPST_VERSION} (latest)..."
+          curl -fsSL "https://github.com/typst/typst/releases/download/v${TYPST_VERSION}/typst-x86_64-unknown-linux-musl.tar.xz" -o typst.tar.xz
+          tar -xf typst.tar.xz
+          mv typst-x86_64-unknown-linux-musl/typst /usr/local/bin/typst
+          rm -rf typst.tar.xz typst-x86_64-unknown-linux-musl
+          typst --version
+          echo "✅ Typst v${TYPST_VERSION} installed successfully"
+
       - name: Restore PDF cache
         uses: actions/cache@v4
         id: pdf-cache
         with:
           path: .pdf-cache
-          key: pdf-cache-${{ hashFiles('school-macros.sty') }}-${{ hashFiles('**/*.tex') }}
+          key: pdf-cache-${{ hashFiles('school-macros.sty') }}-${{ hashFiles('**/*.tex') }}-${{ hashFiles('**/*.typ') }}
           restore-keys: |
             pdf-cache-${{ hashFiles('school-macros.sty') }}-
             pdf-cache-
@@ -174,26 +186,102 @@ jobs:
              echo "All documents built successfully ($PDFS_GENERATED PDFs)."
           fi
 
+      - name: Find and Build Typst documents
+        shell: bash
+        run: |
+          echo "## Typst Build Results 📊" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Document | Status | Details |" >> $GITHUB_STEP_SUMMARY
+          echo "|----------|--------|---------|" >> $GITHUB_STEP_SUMMARY
+
+          TYPST_BUILT=0
+          TYPST_FAILED=0
+
+          # Find all main Typst documents (those that import school-template)
+          # We look for .typ files that contain a #show: project.with or #import
+          find . \( -name ".git" -o -name ".github" -o -name ".pdf-cache" \) -prune -o \
+               -type f -name "*.typ" \
+               ! -name "school-template.typ" \
+               -exec grep -l "#import\|#show: project" {} \; > typst_docs.txt 2>/dev/null || true
+
+          if [ ! -s typst_docs.txt ]; then
+            echo "No Typst main documents found."
+            echo "| - | ℹ️ | No Typst documents found |" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "📝 Found Typst documents:"
+            cat typst_docs.txt
+
+            while IFS= read -r typfile; do
+              dir=$(dirname "$typfile")
+              file=$(basename "$typfile")
+              name=$(basename "$typfile" .typ)
+
+              echo "========================================="
+              echo "Building Typst: $typfile"
+              echo "========================================="
+
+              cd "$dir"
+
+              if typst compile "$file" 2>&1; then
+                if [ -f "${name}.pdf" ]; then
+                  echo "| \`$name\` (Typst) | ✅ Built | PDF generated |" >> $GITHUB_STEP_SUMMARY
+                  echo "✅ Success: $typfile"
+                  TYPST_BUILT=$((TYPST_BUILT + 1))
+                else
+                  echo "| \`$name\` (Typst) | ⚠️ Warning | Completed but no PDF |" >> $GITHUB_STEP_SUMMARY
+                  echo "⚠️ Warning: $typfile completed but PDF not found"
+                  TYPST_FAILED=1
+                fi
+              else
+                echo "| \`$name\` (Typst) | ❌ Failed | Build error |" >> $GITHUB_STEP_SUMMARY
+                echo "❌ Failed: $typfile"
+                TYPST_FAILED=1
+              fi
+
+              cd - > /dev/null
+            done < typst_docs.txt
+          fi
+
+          echo ""
+          echo "📊 Typst Build Summary: $TYPST_BUILT PDFs built"
+
+          # Add Typst count to total for artifact collection
+          PDFS_GENERATED=${PDFS_GENERATED:-0}
+          PDFS_GENERATED=$((PDFS_GENERATED + TYPST_BUILT))
+
       - name: Collect build artifacts
         if: always()
         run: |
           mkdir -p artifacts/pdfs artifacts/logs
-          # Collect all PDFs
-          # Collect only PDFs that have a matching .tex file in the same directory
-          while IFS= read -r texfile; do
-            dir=$(dirname "$texfile")
-            name=$(basename "$texfile" .tex)
-            # Skip files that look like cache artifacts (containing 64-char hash)
-            if [[ "$name" =~ [0-9a-f]{64} ]]; then
-              echo "Skipping hashed file: $name"
-              continue
-            fi
-            
-            if [ -f "${dir}/${name}.pdf" ]; then
-              cp "${dir}/${name}.pdf" artifacts/pdfs/
-              echo "Collected: ${dir}/${name}.pdf"
-            fi
-          done < main_docs.txt
+          # Collect LaTeX PDFs
+          if [ -f main_docs.txt ]; then
+            while IFS= read -r texfile; do
+              dir=$(dirname "$texfile")
+              name=$(basename "$texfile" .tex)
+              # Skip files that look like cache artifacts (containing 64-char hash)
+              if [[ "$name" =~ [0-9a-f]{64} ]]; then
+                echo "Skipping hashed file: $name"
+                continue
+              fi
+              
+              if [ -f "${dir}/${name}.pdf" ]; then
+                cp "${dir}/${name}.pdf" artifacts/pdfs/
+                echo "Collected LaTeX: ${dir}/${name}.pdf"
+              fi
+            done < main_docs.txt
+          fi
+          
+          # Collect Typst PDFs
+          if [ -f typst_docs.txt ]; then
+            while IFS= read -r typfile; do
+              dir=$(dirname "$typfile")
+              name=$(basename "$typfile" .typ)
+              if [ -f "${dir}/${name}.pdf" ]; then
+                cp "${dir}/${name}.pdf" artifacts/pdfs/
+                echo "Collected Typst: ${dir}/${name}.pdf"
+              fi
+            done < typst_docs.txt
+          fi
           
           echo "📂 Collected Artifacts (artifacts/pdfs):"
           ls -la artifacts/pdfs/
