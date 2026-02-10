@@ -1,7 +1,50 @@
 \chapter{Introductie}
 \label{chap:introductie}
 
-\begin{wrapfigure}{r}{0.5\textwidth}[10]
+PLC is een heel basis introductie tot computers. 
+Hoe connecteren machines met elkaar? Inputs en outputs, IO. 
+Deze worden allemaal aangehaald in deze introductie.
+
+\section{PLC introductie}
+
+\begin{concept}[PLC (Programmable Logic Controller)]
+Dit is gespecialiseerde computer die geen scherm, toetsenbord of muis heeft, maar wel een aantal ingangen en uitgangen.
+Deze worden gebruikt in industriële omgevingen om machines en processen te automatiseren.
+\end{concept}
+
+ \begin{wrapfigure}[10]{r}{0.35\textwidth}
+   \centering
+   \includegraphics[width=0.45\textwidth]{PLC2.png}
+   \caption{}
+   \label{fig:PLC2.png}
+  \end{wrapfigure}
+
+Een PLC is een vernieuwing van een relay. Een relay is een elektrisch component 
+dat een circuit kan openen of sluiten op basis van een elektrische input.
+
+Een PLC heeft een \textbf{CPU} en input en output \textbf{I/O}.
+IO is niet persee deel van de PLC maar kan ook andere modules zijn.
+
+IO heb je ook op je eigen computer, HDMI, USB, \dots
+Je hebt dan \textbf{Digital I/O} en \textbf{Analog I/O}.
+Digital I/O is een binaire input of output, bijvoorbeeld een schakelaar die aan of uit is.
+Analog I/O is een continue waarde, bijvoorbeeld een temperatuur sensor die een waarde tussen 0 en 100 graden geeft.
+
+Een PLC kan bijvoorbeeld de airco harder zetten in een kamer als die kamer te warm is.
+Dit kan van op afstand gebeuren, bijvoorbeeld via een netwerk, een app, sensor, \dots
+
+Een PLC heeft ook een \textbf{programmeerbare} logica, wat betekent dat je 
+een programma kunt schrijven dat bepaalt hoe de PLC reageert op verschillende inputs
+en hoe het de outputs aanstuurt.
+
+Je connecteerd aan een PLC met bijvoorbeeld een laptop via een seriële kabel, USB, of netwerkverbinding.
+Je schrijft een programma op je laptop en uploadt dat naar de PLC, waarna de PLC het
+programma uitvoert en de machines aanstuurt op basis van de logica die je hebt geprogrammeerd.
+
+\section{Programmable Logic Controllers in de industrie}
+
+
+\begin{wrapfigure}[8]{r}{0.5\textwidth}
   \centering
   \includegraphics[width=0.6\textwidth]{image1.png}
   \caption{}
@@ -13,7 +56,7 @@ Je hebt een doodgewone knop die je kan indrukken.
 Jij als \textbf{operator} geef controle inputs aan de knop, 
 bijvoorbeeld door hem in te drukken.
 
-\textbf{De logic controller (PLC) }ontvangt deze input en 
+\textbf{De logic controller (PLC)} ontvangt deze input en 
 verwerkt deze volgens een vooraf gedefinieerd programma.
 
 De knop krijgt info door sensors die bijvoorbeeld info geven of 
