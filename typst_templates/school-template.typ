@@ -2,6 +2,11 @@
 // Typst template for KU Leuven Industrial Engineering Summaries
 // Mirrors the styling of school-macros.sty v4.2
 
+// --- External Packages (from Typst Universe) ---
+#import "@preview/unify:0.7.1": num, qty, numrange, qtyrange  // siunitx equivalent
+#import "@preview/physica:0.9.5": *   // Physics math: derivatives, brakets, etc.
+#import "@preview/cetz:0.4.2"         // TikZ-like drawing
+#import "@preview/cetz-plot:0.1.3": *  // Plotting (pgfplots equivalent)
 #let schoolBlue = rgb(41, 98, 155)
 #let schoolRed = rgb(180, 40, 40)
 #let schoolGreen = rgb(39, 174, 96)
@@ -63,7 +68,7 @@
   )
 
   // Typography
-  set text(font: "Bitstream Charter", lang: "nl", size: 11pt)
+  set text(font: "New Computer Modern", lang: "nl", size: 11pt)
   set par(leading: 0.65em, justify: true) // Approx 1.15 line spacing
   set heading(numbering: "1.1")
   
