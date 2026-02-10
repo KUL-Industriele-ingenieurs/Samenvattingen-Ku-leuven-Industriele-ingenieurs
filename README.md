@@ -101,7 +101,7 @@ Open daarna de map via _File > Open Folder_.
 ### 2.3 Link naar origineel (upstream)
 
 ```bash
-git remote add upstream https://github.com/Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs.git
+git remote add upstream https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs.git
 ```
 
 ### 2.4 Extensies installeren
