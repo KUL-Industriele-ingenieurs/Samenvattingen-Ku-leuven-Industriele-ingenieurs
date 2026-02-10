@@ -28,8 +28,11 @@ while IFS= read -r -d '' pdf_file; do
     case "$pdf_file" in
         *.[Pp][Dd][Ff])
             tex_file="${pdf_file%.*}.tex"
-            if [ -f "$tex_file" ]; then
-                echo "Unstaging generated PDF: $pdf_file (matches .tex file)"
+            typ_file="${pdf_file%.*}.typ"
+            if [ -f "$tex_file" ] || [ -f "$typ_file" ]; then
+                matching_ext=".tex"
+                [ -f "$typ_file" ] && matching_ext=".typ"
+                echo "Unstaging generated PDF: $pdf_file (matches $matching_ext file)"
                 git reset HEAD -- "$pdf_file"
                 echo "🛑 ERROR: Generated PDF was staged and has been unstaged. Please review the unstaged PDF and commit again without it."
                 exit 1

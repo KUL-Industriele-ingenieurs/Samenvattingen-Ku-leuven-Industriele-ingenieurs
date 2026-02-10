@@ -80,11 +80,27 @@ Je krijgt een volledige VS Code omgeving in je browser.
 
 ---
 
+## ✨ Nieuw: Typst (Het moderne alternatief)
+
+Naast LaTeX ondersteunen we nu ook **Typst**! 
+Typst is sneller, makkelijker te leren en je hebt **geen zware installatie** nodig.
+
+### Hoe begin je met Typst?
+
+1.  Installeer de **[Tinymist](https://marketplace.visualstudio.com/items?itemName=myriad-dreamin.tinymist)** extensie in VS Code.
+2.  Ga naar de map `typst_templates`.
+3.  Open `main.typ` en begin met typen!
+4.  Druk op het "Preview" knopje rechtsboven (oogje) om direct het resultaat te zien.
+
+> **Waarom Typst?** De code is veel leesbaarder en je ziet je wijzigingen direct (live preview). Probeer het eens!
+
+---
+
 ## 📥 Stap 2: Project opzetten
 
 ### 2.1 Maak een Fork
 
-1. Ga naar de [originele repository](https://github.com/Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs)
+1. Ga naar de [originele repository](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs)
 2. Klik rechtsboven op **Fork** → **Create Fork**
 
 ### 2.2 Clone naar je PC

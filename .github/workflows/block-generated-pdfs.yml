@@ -34,7 +34,8 @@ jobs:
             case "$file" in
               *.[Pp][Dd][Ff])
                 tex_file="${file%.*}.tex"
-                if [ -f "$tex_file" ]; then
+                typ_file="${file%.*}.typ"
+                if [ -f "$tex_file" ] || [ -f "$typ_file" ]; then
                   BAD+=("$file")
                 fi
                 ;;
