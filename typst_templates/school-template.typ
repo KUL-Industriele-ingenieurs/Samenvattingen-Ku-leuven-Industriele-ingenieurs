@@ -10,6 +10,14 @@
 #let schoolGray = rgb(100, 100, 100)
 #let deepblue = rgb(41, 128, 185)
 
+// --- Modern Color Palette ---
+#let schoolPurple = rgb(155, 89, 182)
+#let brandblue = rgb(52, 152, 219)
+#let amber = rgb(243, 156, 18)
+#let coral = rgb(230, 126, 34)
+#let slate = rgb(52, 73, 94)
+#let lightgray = rgb(236, 240, 241)
+
 // --- VS Code Dark Theme Palette ---
 #let codeBackground = rgb(30, 30, 30)
 #let vscodeBlue = rgb(86, 156, 214)
@@ -36,11 +44,11 @@
     paper: "a4",
     margin: (left: 2cm, right: 2cm, top: 2.5cm, bottom: 2.5cm),
     numbering: "1",
-    header: locate(loc => {
-      let page_num = counter(page).at(loc).first()
+    header: context {
+      let page_num = counter(page).get().first()
       if page_num > 1 {
         set text(size: 9pt, font: "Fira Sans")
-        let headers = query(selector(heading.where(level: 1)).before(loc), loc)
+        let headers = query(selector(heading.where(level: 1)).before(here()))
         let last_header = if headers.len() > 0 { headers.last().body } else { [] }
         
         grid(
@@ -51,18 +59,30 @@
         v(-0.5em)
         line(length: 100%, stroke: 0.3pt)
       }
-    }),
+    },
   )
 
   // Typography
   set text(font: "Bitstream Charter", lang: "nl", size: 11pt)
   set par(leading: 0.65em, justify: true) // Approx 1.15 line spacing
+  set heading(numbering: "1.1")
+  
+  // Link styling: URLs in schoolBlue, internal refs in black with underline
+  show link: it => text(fill: schoolBlue)[#underline(it)]
+  show ref: it => underline(it)
+  
+  // Caption styling: small Fira Sans, bold label
+  show figure.caption: set text(size: 0.9em, font: "Fira Sans")
+  
+  // List styling: match LaTeX tightened spacing
+  set list(indent: 2em, body-indent: 0.5em, spacing: 0.6em)
+  set enum(indent: 2em, body-indent: 0.5em, spacing: 0.6em)
   
   show heading: set text(font: "Fira Sans", weight: "bold")
   
   show heading.where(level: 1): it => [
     #v(12pt)
-    #text(size: 1.5em)[#it.body]
+    #text(size: 1.5em)[#if it.numbering != none { counter(heading).display(it.numbering) + h(0.5em) }#it.body]
     #v(4pt)
     #line(length: 100%, stroke: 0.5pt)
     #v(6pt)
@@ -70,7 +90,7 @@
   
   show heading.where(level: 2): it => [
     #v(10pt)
-    #it.body
+    #if it.numbering != none { counter(heading).display(it.numbering) + h(0.5em) }#it.body
     #v(4pt)
   ]
 
@@ -108,51 +128,69 @@
   ]
   v(2em)
 
-  // Outline
-  outline(indent: auto)
+  // Table of Contents (styled)
+  {
+    set outline.entry(fill: repeat(text(fill: luma(180))[.#h(2pt)]))
+    show outline.entry: it => {
+      set text(font: "Fira Sans", size: 0.95em)
+      it
+    }
+    outline(indent: auto)
+  }
   pagebreak()
 
   // Content
   body
 }
-
 // --- Custom Boxes (Mirrors tcolorbox schoolbox) ---
 
-#let schoolbox(title, color, icon, body) = {
+#let schoolbox(title, color, icon, body, bg: white) = {
   v(12pt)
+  // Title strip
   block(
     width: 100%,
-    breakable: true,
-    stack(
-      // Attached Title (Approximate)
-      move(dx: 10pt, dy: 8pt,
+    spacing: 0pt,
+    above: 0pt,
+    below: 0pt,
+    {
+      // Title tab - offset to the right
+      move(dx: 8pt,
         block(
           fill: color,
-          inset: (x: 8pt, y: 4pt),
-          radius: (top-left: 2pt, top-right: 2pt, bottom-right: 2pt, bottom-left: 0pt),
+          inset: (x: 10pt, y: 5pt),
+          radius: (top-left: 4pt, top-right: 4pt),
+          below: 0pt,
           text(fill: white, weight: "bold", font: "Fira Sans", size: 10pt)[#icon #title]
         )
-      ),
-      // Box Body
-      block(
-        width: 100%,
-        fill: white,
-        stroke: 0.5pt + color,
-        radius: 2pt,
-        inset: (top: 14pt, rest: 12pt),
-        body
       )
-    )
+    }
+  )
+  // Body
+  block(
+    width: 100%,
+    fill: bg,
+    stroke: (
+      left: 0.5pt + color,
+      right: 0.5pt + color,
+      bottom: 0.5pt + color,
+      top: 0.5pt + color,
+    ),
+    radius: (bottom-left: 2pt, bottom-right: 2pt, top-right: 2pt),
+    inset: 12pt,
+    above: 0pt,
+    breakable: true,
+    body
   )
   v(12pt)
 }
 
 #let theorie(title: "Theorie", body) = schoolbox(title, schoolBlue, "📘", body)
 #let voorbeeld(title: "Voorbeeld", body) = schoolbox(title, schoolGreen, "✏️", body)
-#let waarschuwing(title: "Let Op!", body) = schoolbox(title, schoolRed, "⚠️", body)
-#let concept(title: "Concept", body) = schoolbox(title, schoolTeal, "💡", body)
+#let waarschuwing(title: "Let Op!", body) = schoolbox(title, schoolRed, "⚠️", body, bg: schoolRed.lighten(95%))
+#let concept(title: "Concept", body) = schoolbox(title, schoolTeal, "💡", body, bg: schoolTeal.lighten(95%))
 #let form(title: "Formule", body) = schoolbox(title, schoolOrange, "∑", body)
 #let theorem(title: "Theorem", body) = schoolbox(title, deepblue, "📖", body)
+#let oefening(title: "Oefening", body) = schoolbox(title, schoolGreen, "✏️", body)
 
 // --- Code Block (VS Code Style) ---
 
@@ -165,13 +203,15 @@
     fill: codeBackground,
     stroke: 0.5pt + codeBackground,
     [
-      // Title bar with circles
-      block(
+      // Title bar with traffic light circles
+      #block(
         width: 100%,
         inset: (x: 10pt, y: 6pt),
         fill: codeBackground,
+        below: 0pt,
         grid(
           columns: (40pt, 1fr),
+          align: horizon,
           stack(dir: ltr, spacing: 4pt,
             circle(radius: 2.5pt, fill: rgb(255, 95, 86)),
             circle(radius: 2.5pt, fill: rgb(255, 189, 46)),
@@ -182,13 +222,15 @@
           ])
         )
       )
-      // Code
-      block(
+      // Code body
+      #block(
         width: 100%,
         inset: 10pt,
-        text(fill: vscodeWhite, font: "Fira Mono", size: 9pt)[
-          #body
-        ]
+        above: 0pt,
+        {
+          set text(fill: vscodeWhite, font: "Fira Mono", size: 9pt)
+          body
+        }
       )
     ]
   )
@@ -212,7 +254,189 @@
 // --- Units ---
 #let unit(content) = text(font: "Fira Sans", size: 0.9em)[#content]
 
+// ============================================================================
+//                           FORMULA SYSTEM (frm)
+// ============================================================================
+
+// State to collect formularium entries
+#let _formularium_entries = state("formularium-entries", ())
+#let _formularium_counter = counter("formularium-counter")
+
+// frm: Display a formula box (orange) and register it for the formularium
+// Usage: #frm("Wet van Ohm", $U = I dot R$, [Beschrijving...])
+#let frm(title, formula, description) = {
+  _formularium_counter.step()
+  context {
+    let idx = _formularium_counter.get().first()
+    _formularium_entries.update(entries => {
+      entries.push((title: title, formula: formula, description: description, idx: idx))
+      entries
+    })
+  }
+  schoolbox(title, schoolOrange, "∑", [
+    #set align(center)
+    #text(size: 1.2em)[$#formula$]
+    #v(2pt)
+    #set align(left)
+    #text(size: 0.9em)[#description]
+  ])
+}
+
+// Section divider for formularium (blue line with centered title)
+#let _formularium_divider(title) = {
+  v(10pt)
+  block(width: 100%, {
+    grid(
+      columns: (1fr, auto, 1fr),
+      column-gutter: 1em,
+      align(horizon, line(length: 100%, stroke: 0.6pt + schoolBlue)),
+      text(size: 0.9em, weight: "bold", font: "Fira Sans", fill: schoolBlue)[#title],
+      align(horizon, line(length: 100%, stroke: 0.6pt + schoolBlue)),
+    )
+  })
+  v(6pt)
+}
+
+// Formularium card (used in the printed formularium)
+#let _formularium_card(entry) = {
+  v(4pt)
+  block(width: 100%, [
+    *#entry.title*
+    #v(2pt)
+    #set align(center)
+    #text(size: 1.1em)[$#entry.formula$]
+    #set align(left)
+    #v(2pt)
+    #text(size: 0.85em, style: "italic")[#entry.description]
+  ])
+  v(4pt)
+}
+
+// Print formularium (single column)
+#let printformularium() = {
+  heading(numbering: none)[Formularium]
+  context {
+    let entries = _formularium_entries.final()
+    if entries.len() == 0 {
+      emph[Nog geen formules geregistreerd.]
+    } else {
+      for entry in entries {
+        _formularium_card(entry)
+      }
+    }
+  }
+}
+
+// Print formularium (two columns)
+#let printformulariumtwocol() = {
+  heading(numbering: none)[Formularium]
+  context {
+    let entries = _formularium_entries.final()
+    if entries.len() == 0 {
+      emph[Nog geen formules geregistreerd.]
+    } else {
+      columns(2, {
+        for entry in entries {
+          _formularium_card(entry)
+        }
+      })
+    }
+  }
+}
+
+// ============================================================================
+//                           SYMBOL SYSTEM (sym)
+// ============================================================================
+
+// State to collect symbol entries and track which symbols have been defined
+#let _symbol_entries = state("symbol-entries", ())
+#let _symbol_defined = state("symbol-defined", ())
+
+// sym: Define a symbol on first use (shows inline box), subsequent uses just render the symbol
+// Usage: #sym($alpha$, "Hoekversnelling", "rad/s²")
+#let sym(symbol, description, unit) = {
+  let sym_key = repr(symbol)
+  context {
+    let defined = _symbol_defined.get()
+    if sym_key not in defined {
+      // First use: show definition box and register
+      let current_page = here().page()
+      _symbol_defined.update(d => { d.push(sym_key); d })
+      _symbol_entries.update(entries => {
+        entries.push((symbol: symbol, description: description, unit: unit, page: current_page))
+        entries
+      })
+      block(
+        width: 100%,
+        fill: white,
+        stroke: none,
+        inset: (x: 6pt, y: 4pt),
+        [
+          #block(
+            width: 100%,
+            stroke: (left: 3pt + schoolGray),
+            inset: (left: 8pt, rest: 4pt),
+            [
+              *$#symbol$* --- #description #h(1fr) #text(size: 0.85em, fill: schoolGray)[#unit]
+            ]
+          )
+        ]
+      )
+    } else {
+      // Subsequent use: just show the symbol
+      $#symbol$
+    }
+  }
+}
+
+// Print symbol list as a table
+#let printsymbols() = {
+  heading(numbering: none)[Symbolenlijst]
+  context {
+    let entries = _symbol_entries.final()
+    if entries.len() == 0 {
+      emph[Nog geen symbolen geregistreerd.]
+    } else {
+      table(
+        columns: (auto, 1fr, auto, auto),
+        align: (center, left, left, right),
+        stroke: none,
+        inset: 6pt,
+        table.hline(stroke: 1pt),
+        table.header(
+          text(weight: "bold", font: "Fira Sans")[Symbool],
+          text(weight: "bold", font: "Fira Sans")[Beschrijving],
+          text(weight: "bold", font: "Fira Sans")[Eenheid],
+          text(weight: "bold", font: "Fira Sans")[Pagina],
+        ),
+        table.hline(stroke: 0.5pt),
+        ..for entry in entries {
+          (
+            $#entry.symbol$,
+            entry.description,
+            entry.unit,
+            str(entry.page),
+          )
+        },
+        table.hline(stroke: 1pt),
+      )
+    }
+  }
+}
+
 // --- Styling Helpers ---
 #let important(content) = text(fill: schoolRed, weight: "bold")[#content]
+#let belangrijk = important  // Dutch alias matching LaTeX \belangrijk
 #let term(content) = text(fill: schoolBlue, weight: "bold")[#content]
 #let keyterm(content) = text(fill: schoolBlue.darken(20%), weight: "bold")[#content]
+
+// --- Exam & Annotation Helpers ---
+#let examenbox(body) = block(
+  inset: (x: 0pt, y: 0.5em),
+  [#text(fill: schoolRed, weight: "bold")[⚠ EXAMENTIP:] #emph(body)]
+)
+
+#let TODO(msg) = text(fill: red, weight: "bold")[\[TODO: #msg\]]
+#let FIXME(msg) = text(fill: red, weight: "bold")[\[FIXME: #msg\]]
+#let NOTE(msg) = text(fill: schoolOrange, weight: "bold")[\[NOTE: #msg\]]
+#let citeme = text(fill: red)[\[CITATIE NODIG\]]
