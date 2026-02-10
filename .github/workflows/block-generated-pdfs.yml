@@ -1,0 +1,53 @@
+name: Block generated PDFs
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  block-generated-pdfs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check for generated PDFs
+        run: |
+          set -euo pipefail
+
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            BASE_REF="${{ github.event.pull_request.base.ref }}"
+            git fetch origin "$BASE_REF" --depth=1
+            CHANGED=$(git diff --name-only origin/$BASE_REF...HEAD)
+          else
+            BEFORE="${{ github.event.before }}"
+            AFTER="${{ github.event.after }}"
+            CHANGED=$(git diff --name-only "$BEFORE" "$AFTER")
+          fi
+
+          echo "Changed files:\n$CHANGED"
+
+          # Find changed PDFs (case-insensitive)
+          BAD=()
+          while IFS= read -r file; do
+            case "$file" in
+              *.[Pp][Dd][Ff])
+                tex_file="${file%.*}.tex"
+                if [ -f "$tex_file" ]; then
+                  BAD+=("$file")
+                fi
+                ;;
+            esac
+          done <<< "$CHANGED"
+
+          if [ ${#BAD[@]} -gt 0 ]; then
+            echo "\n🛑 ERROR: The following generated PDFs were changed and match existing .tex files:" >&2
+            for f in "${BAD[@]}"; do
+              echo "  - $f" >&2
+            done
+            echo "\nPlease remove generated PDFs from your change (git restore --staged <file> or git reset HEAD <file>) and push again." >&2
+            exit 1
+          fi
+
+          echo "No disallowed generated PDFs found."
