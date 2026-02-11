@@ -27,15 +27,22 @@ jobs:
           find . -type f \( -name "*.aux" -o -name "*.bbl" -o -name "*.bcf" -o -name "*.blg" -o -name "*.fls" -o -name "*.log" -o -name "*.out" -o -name "*.toc" -o -name "*.fdb_latexmk" -o -name "*.synctex.gz" \) -delete
           echo "Cleaned stale auxiliary files"
 
+      - name: Install xz-utils
+        run: apt-get update && apt-get install -y xz-utils
+
+
+
       - name: Restore PDF cache
         uses: actions/cache@v4
         id: pdf-cache
         with:
           path: .pdf-cache
-          key: pdf-cache-${{ hashFiles('school-macros.sty') }}-${{ hashFiles('**/*.tex') }}
+          key: pdf-cache-${{ hashFiles('school-macros.sty') }}-${{ hashFiles('**/*.tex') }}-${{ hashFiles('**/*.typ') }}
           restore-keys: |
             pdf-cache-${{ hashFiles('school-macros.sty') }}-
             pdf-cache-
+      # Typst installation removed from the LaTeX build job.
+      # Typst is built in a separate `typst` job using snap on ubuntu-latest.
 
       - name: Find and Build LaTeX documents
         shell: bash
@@ -174,26 +181,32 @@ jobs:
              echo "All documents built successfully ($PDFS_GENERATED PDFs)."
           fi
 
+      # Typst build is handled in a separate job (`typst`); removed from the LaTeX `build` job to avoid duplicate runs and log noise
+
       - name: Collect build artifacts
         if: always()
         run: |
           mkdir -p artifacts/pdfs artifacts/logs
-          # Collect all PDFs
-          # Collect only PDFs that have a matching .tex file in the same directory
-          while IFS= read -r texfile; do
-            dir=$(dirname "$texfile")
-            name=$(basename "$texfile" .tex)
-            # Skip files that look like cache artifacts (containing 64-char hash)
-            if [[ "$name" =~ [0-9a-f]{64} ]]; then
-              echo "Skipping hashed file: $name"
-              continue
-            fi
-            
-            if [ -f "${dir}/${name}.pdf" ]; then
-              cp "${dir}/${name}.pdf" artifacts/pdfs/
-              echo "Collected: ${dir}/${name}.pdf"
-            fi
-          done < main_docs.txt
+          # Collect LaTeX PDFs
+          if [ -f main_docs.txt ]; then
+            while IFS= read -r texfile; do
+              dir=$(dirname "$texfile")
+              name=$(basename "$texfile" .tex)
+              # Skip files that look like cache artifacts (containing 64-char hash)
+              if [[ "$name" =~ [0-9a-f]{64} ]]; then
+                echo "Skipping hashed file: $name"
+                continue
+              fi
+              
+              if [ -f "${dir}/${name}.pdf" ]; then
+                cp "${dir}/${name}.pdf" artifacts/pdfs/
+                echo "Collected LaTeX: ${dir}/${name}.pdf"
+              fi
+            done < main_docs.txt
+          fi
+          
+          # Typst PDFs are produced and uploaded by the separate `typst` job (artifact: `pdfs-typst`).
+          # They are downloaded into `artifacts/pdfs` by the `prerelease` job when creating the release.
           
           echo "📂 Collected Artifacts (artifacts/pdfs):"
           ls -la artifacts/pdfs/
@@ -201,11 +214,11 @@ jobs:
           # Collect logs
           cp build_logs/*.log artifacts/logs/ 2>/dev/null || true
 
-      - name: Upload PDFs
+      - name: Upload LaTeX PDFs
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: pdfs
+          name: pdfs-latex
           retention-days: 90
           if-no-files-found: warn
           path: artifacts/pdfs/*.pdf
@@ -219,9 +232,138 @@ jobs:
           if-no-files-found: ignore
           path: artifacts/logs/*.log
 
+  typst:
+    name: Build Typst
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install snapd and Typst
+        run: |
+          set -euo pipefail
+          sudo apt-get update -y
+          sudo apt-get install -y snapd
+          # Ensure snap core is present (no-op if already installed)
+          sudo snap install core || true
+          # Install typst
+          sudo snap install typst || sudo snap install typst --classic
+          typst --version
+
+      - name: Find and Build Typst documents
+        shell: bash
+        run: |
+          echo "## Typst Build Results 📊" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Document | Status | Details |" >> $GITHUB_STEP_SUMMARY
+          echo "|----------|--------|---------|" >> $GITHUB_STEP_SUMMARY
+
+          mkdir -p artifacts/pdfs
+
+          TYPST_BUILT=0
+          TYPST_FAILED=0
+
+          find . \( -name ".git" -o -name ".github" -o -name ".pdf-cache" \) -prune -o \
+               -type f -name "*.typ" \
+               ! -name "school-template.typ" \
+               -exec grep -l "#import\|#show: project" {} \; > typst_docs.txt 2>/dev/null || true
+
+          if [ ! -s typst_docs.txt ]; then
+            echo "No Typst main documents found."
+            echo "| - | ℹ️ | No Typst documents found |" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "📝 Found Typst documents:"
+            cat typst_docs.txt
+
+            while IFS= read -r typfile; do
+              dir=$(dirname "$typfile")
+              file=$(basename "$typfile")
+              name=$(basename "$typfile" .typ)
+
+              echo "========================================="
+              echo "Building Typst: $typfile"
+              echo "========================================="
+
+              cd "$dir"
+
+              if typst compile --font-path "$GITHUB_WORKSPACE/typst_templates/fonts/" "$file" 2>&1; then
+                if [ -f "${name}.pdf" ]; then
+                  echo "| \`$name\` (Typst) | ✅ Built | PDF generated |" >> $GITHUB_STEP_SUMMARY
+                  echo "✅ Success: $typfile"
+                  cp "${name}.pdf" "$GITHUB_WORKSPACE/artifacts/pdfs/" || true
+                  TYPST_BUILT=$((TYPST_BUILT + 1))
+                else
+                  echo "| \`$name\` (Typst) | ⚠️ Warning | Completed but no PDF |" >> $GITHUB_STEP_SUMMARY
+                  echo "⚠️ Warning: $typfile completed but PDF not found"
+                  TYPST_FAILED=1
+                fi
+              else
+                echo "| \`$name\` (Typst) | ❌ Failed | Build error |" >> $GITHUB_STEP_SUMMARY
+                echo "❌ Failed: $typfile"
+                TYPST_FAILED=1
+              fi
+
+              cd - > /dev/null
+            done < typst_docs.txt
+          fi
+
+          echo ""
+          echo "📊 Typst Build Summary: $TYPST_BUILT PDFs built"
+
+      - name: Upload Typst PDFs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pdfs-typst
+          path: artifacts/pdfs/*.pdf
+          retention-days: 90
+          if-no-files-found: warn
+
+  collect:
+    name: Collect PDFs
+    needs: [build, typst]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Create artifact dirs
+        run: mkdir -p artifacts/pdfs artifacts/logs
+
+      - name: Download LaTeX PDFs
+        uses: actions/download-artifact@v4
+        with:
+          name: pdfs-latex
+          path: artifacts/pdfs
+
+      - name: Download Typst PDFs
+        uses: actions/download-artifact@v4
+        with:
+          name: pdfs-typst
+          path: artifacts/pdfs
+
+      - name: List collected PDFs
+        run: |
+          echo "Collected PDFs:"
+          ls -la artifacts/pdfs || true
+
+      - name: Re-upload combined PDFs
+        uses: actions/upload-artifact@v4
+        with:
+          name: pdfs
+          path: artifacts/pdfs/*.pdf
+          retention-days: 90
+          if-no-files-found: warn
+
   prerelease:
     name: Create Prerelease
-    needs: build
+    needs: collect
     runs-on: ubuntu-latest
     # Only create prereleases on pushes to main (not PRs or tags)
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
@@ -237,6 +379,7 @@ jobs:
         with:
           name: pdfs
           path: artifacts/pdfs
+
 
       - name: Get current date and commit info
         id: info

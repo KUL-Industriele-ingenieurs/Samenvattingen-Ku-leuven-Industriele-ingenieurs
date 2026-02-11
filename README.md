@@ -2,6 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 ![Language](https://img.shields.io/badge/Made%20with-LaTeX-47545E?logo=latex&logoColor=white)
+![Language](https://img.shields.io/badge/Made%20with-Typst-239DAD?logo=typst&logoColor=white)
 [![Discord](https://img.shields.io/badge/Discord-Join%20Server-5865F2?logo=discord&logoColor=white)](https://discord.gg/gsDzr5qhPe)
 ![VS Code](https://img.shields.io/badge/Editor-VS%20Code-007ACC?logo=visualstudiocode&logoColor=white)
 ![Git](https://img.shields.io/badge/Tool-Git-F05032?logo=git&logoColor=white)
@@ -50,6 +51,32 @@ Stuur een berichtje naar een van de **organisatie-eigenaren** op GitHub of ping 
 
 ---
 
+## ✨ Nieuw: Typst (Het moderne alternatief)
+
+Naast LaTeX ondersteunen we nu ook **Typst**! 
+Typst is sneller, makkelijker te leren en je hebt **geen zware installatie** nodig.
+
+### Hoe begin je met Typst?
+
+1.  Installeer de **[Tinymist](https://marketplace.visualstudio.com/items?itemName=myriad-dreamin.tinymist)** extensie in VS Code.
+2.  Ga naar de map `typst_templates`.
+3.  Open `main.typ` en begin met typen!
+4.  Druk op het "Preview" knopje rechtsboven (oogje) om direct het resultaat te zien.
+
+> **Waarom Typst?** De code is veel leesbaarder en je ziet je wijzigingen direct (live preview). Probeer het eens!
+
+---
+
+## 📥 Stap 2: Project opzetten
+
+### 2.1 Maak een Fork
+
+1. Ga naar de [originele repository](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs)
+2. Klik rechtsboven op **Fork** → **Create Fork**
+
+### 2.2 Clone naar je PC
+
+_Sla over bij Codespaces_
 ## 🛠️ Stap 1: Installatie
 
 Volg deze stappen om alles klaar te zetten op je computer.
@@ -69,13 +96,34 @@ Volg deze stappen om alles klaar te zetten op je computer.
 
 ---
 
+<<<<<<<<< Temporary merge branch 1
 ## 📥 Stap 2: Het project opzetten (zonder typen!)
+=========
+## ✨ Nieuw: Typst (Het moderne alternatief)
+
+Naast LaTeX ondersteunen we nu ook **Typst**! 
+Typst is sneller, makkelijker te leren en je hebt **geen zware installatie** nodig.
+
+### Hoe begin je met Typst?
+
+1.  Installeer de **[Tinymist](https://marketplace.visualstudio.com/items?itemName=myriad-dreamin.tinymist)** extensie in VS Code.
+2.  Ga naar de map `typst_templates`.
+3.  Open `main.typ` en begin met typen!
+4.  Druk op het "Preview" knopje rechtsboven (oogje) om direct het resultaat te zien.
+
+> **Waarom Typst?** De code is veel leesbaarder en je ziet je wijzigingen direct (live preview). Probeer het eens!
+
+---
+
+## 📥 Stap 2: Project opzetten
+>>>>>>>>> Temporary merge branch 2
 
 ### 2.1 Maak een Fork (Je eigen kopie)
 1. Ga naar de [originele pagina op GitHub](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs).
 2. Klik rechtsboven op de knop **Fork**.
 3. Klik op **Create Fork**. Nu heb je een eigen kopie op jouw GitHub-account.
 
+<<<<<<<<< Temporary merge branch 1
 ### 2.2 Openen in VS Code (Clonen)
 1. Open **VS Code**.
 2. Klik linksboven op het icoontje met de drie streepjes (Menu) -> **File** -> **New Window** (als er al iets open staat).
@@ -84,6 +132,10 @@ Volg deze stappen om alles klaar te zetten op je computer.
 5. Zoek in de lijst naar `Samenvattingen-Ku-leuven-Industriele-ingenieurs` (jouw fork) en klik erop.
 6. Kies een map op je computer waar je het project wilt opslaan.
 7. Klik op **Open** als VS Code vraagt of je de gekloonde repository wilt openen.
+=========
+1. Ga naar de [originele repository](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs)
+2. Klik rechtsboven op **Fork** → **Create Fork**
+>>>>>>>>> Temporary merge branch 2
 
 ### 2.3 Extensies
 VS Code zal rechtsonder vragen om "Recommended Extensions" te installeren. Klik op **Install**. Dit zorgt ervoor dat LaTeX goed werkt en je makkelijk kunt samenwerken.
