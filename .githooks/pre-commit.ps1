@@ -29,8 +29,11 @@ if ($stagedRaw) {
         if ([string]::IsNullOrWhiteSpace($pdfFile)) { continue }
 
         $texFile = [System.IO.Path]::ChangeExtension($pdfFile, '.tex')
-        if (Test-Path $texFile) {
-            Write-Host "Unstaging generated PDF: $pdfFile (matches .tex file)" -ForegroundColor Yellow
+        $typFile = [System.IO.Path]::ChangeExtension($pdfFile, '.typ')
+        
+        if ((Test-Path $texFile) -or (Test-Path $typFile)) {
+            $matchingFile = if (Test-Path $texFile) { ".tex" } else { ".typ" }
+            Write-Host "Unstaging generated PDF: $pdfFile (matches $matchingFile file)" -ForegroundColor Yellow
             git reset HEAD -- $pdfFile 2>&1 | Out-Null
             $unstagedAny = $true
         } else {
