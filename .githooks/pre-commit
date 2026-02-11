@@ -20,28 +20,27 @@ done
 # --- 2. Manage PDFs ---
 echo "Checking PDFs..."
 
-# Stream NUL-separated names directly to preserve null bytes and read safely
-unstaged_any=0
+# Get all staged PDFs
+# git diff --cached --name-only returns file paths relative to root
+staged_pdfs=$(git diff --cached --name-only | grep '\.pdf$')
 
-while IFS= read -r -d '' pdf_file; do
-    # case-insensitive match for .pdf extension
-    case "$pdf_file" in
-        *.[Pp][Dd][Ff])
-            tex_file="${pdf_file%.*}.tex"
-            typ_file="${pdf_file%.*}.typ"
-            if [ -f "$tex_file" ] || [ -f "$typ_file" ]; then
-                matching_ext=".tex"
-                [ -f "$typ_file" ] && matching_ext=".typ"
-                echo "Unstaging generated PDF: $pdf_file (matches $matching_ext file)"
-                git reset HEAD -- "$pdf_file"
-                echo "🛑 ERROR: Generated PDF was staged and has been unstaged. Please review the unstaged PDF and commit again without it."
-                exit 1
-            else
-                echo "Keeping reference PDF: $pdf_file"
-            fi
-            ;;
-    esac
-done < <(git diff --cached --name-only -z)
+if [ -n "$staged_pdfs" ]; then
+    # Set Internal Field Separator to newline to handle files one by one
+    IFS='
+'
+    for pdf_file in $staged_pdfs; do
+        tex_file="${pdf_file%.pdf}.tex"
+        
+        # Check if matching .tex file exists
+        if [ -f "$tex_file" ]; then
+            echo "Unstaging generated PDF: $pdf_file (matches .tex file)"
+            git reset HEAD "$pdf_file"
+        else
+            echo "Keeping reference PDF: $pdf_file"
+        fi
+    done
+    unset IFS
+fi
 
 echo "PDF check complete."
 exit 0

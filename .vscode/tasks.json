@@ -227,7 +227,7 @@
                 "command": "bash",
                 "args": [
                     "-c",
-                    "find . -maxdepth 3 -type d -exec sh -c 'ls \"$1\"/*.tex >/dev/null 2>&1 && cp school-macros.sty \"$1/\" && echo \"Copied to: $1\"' _ {} \\; ; echo 'Update complete!'"
+                    "find . -maxdepth 3 -type f -name '*.tex' -printf '%h\\n' | sort -u | while IFS= read -r dir; do cp -v school-macros.sty \"$dir/\" || echo \"Failed to copy to: $dir\"; done; echo 'Update complete!'"
                 ]
             },
             "osx": {

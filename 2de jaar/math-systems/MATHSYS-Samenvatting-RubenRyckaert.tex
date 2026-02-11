@@ -11,13 +11,12 @@
 % ============================================================================
 %                           DOCUMENT METADATA
 % ============================================================================
-\title{Modulair Document Voorbeeld}
+\title{Wiskundige voor systemen}
 \author{Ruben Ryckaert}
 \date{Academiejaar 2025-2026}
 
 % Optional: Define course info for headers
-\newcommand{\coursename}{Voorbeeldvak}
-\newcommand{\coursecode}{E00ABC}
+\newcommand{\coursename}{Wiskundige voor systemen}
 
 % ============================================================================
 %                              DOCUMENT
@@ -26,22 +25,23 @@
 
 % --- Title Page (KU Leuven style) ---
 \kuleuventitle
-    {Modulair Document Voorbeeld}
-    {\coursecode\ --- \coursename}
-    {Jouw Naam}
+    {Wiskundige voor systemen}
+    {\coursename}
+    {Ruben Ryckaert}
     {Academiejaar 2025-2026}
 
-\noindent Deze samenvattingen zijn beschikbaar op GitHub waar je kunt bijdragen aan verbeteringen: \url{https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs}
+Deze samenvattingen zijn beschikbaar op GitHub waar je 
+kunt bijdragen aan verbeteringen: \url{https://github.com/Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs}
 
 Je bent helemaal vrij en ik raad je zelf aan om info toe te voegen aan de documenten als je de uitleg niet goed vindt.
 Je leert je vak en je raakt dan ook bekend met LaTeX wat handig is voor later.
 
+Dit document is ook gemaakt om meer en betere info te geven dan de slides en de oefenzittingen die
+ik verwarrend vond. 
+
 % --- Front Matter ---
 \tableofcontents
 \newpage
-% Symbol list and formularium are auto-generated
-\printsymbols
-\printformularium
 
 % ============================================================================
 %                           CHAPTER INCLUDES
@@ -58,19 +58,19 @@ Je leert je vak en je raakt dan ook bekend met LaTeX wat handig is voor later.
 %      only specific chapters while keeping all cross-references
 
 % @issue: #31 switch to new chapter file names
+\includepdf[pages=1-3]{MATHSYS_formularium.pdf}
 \input{chapters/1_Inleiding}
-\input{chapters/2_Herhaling afgeleiden en integralen}
-\input{chapters/3_Laplacetransformatie}
-\input{chapters/4_Fouriertransformatie}
-\input{chapters/5_Fourierreeks}
-\input{chapters/6_LTC-systems}
-\input{chapters/7_Eigenwaarden-eigenvectoren}
+\input{chapters/2_Herhaling afgeleiden, integralen en diff verglijkingen}
+\input{chapters/3_Inleiding systemen}
+\input{chapters/4_Laplacetransformatie}
+\input{chapters/5_Fouriertransformatie}
+\input{chapters/6_Fourierreeks}
+\input{chapters/7_LTC-systems}
+\input{chapters/8_Eigenwaarden-eigenvectoren}
+\input{chapters/9_Extra uitgewerkte oefeningen}
 \input{chapters/Examenoefeningen}
+\input{chapters/Bewijzen}
 
-% ============================================================================
-%                              APPENDICES
-% ============================================================================
-\appendix
 
 
 \end{document}

@@ -266,7 +266,7 @@ jobs:
           TYPST_BUILT=0
           TYPST_FAILED=0
 
-          find . \( -name ".git" -o -name ".github" -o -name ".pdf-cache" \) -prune -o \
+          find . \( -name ".git" -o -name ".github" -o -name ".pdf-cache" -o -name "chapters" \) -prune -o \
                -type f -name "*.typ" \
                ! -name "school-template.typ" \
                -exec grep -l "#import\|#show: project" {} \; > typst_docs.txt 2>/dev/null || true
@@ -289,7 +289,7 @@ jobs:
 
               cd "$dir"
 
-              if typst compile --font-path "$GITHUB_WORKSPACE/fonts/" "$file" 2>&1; then
+              if typst compile --root "$GITHUB_WORKSPACE" --font-path "$GITHUB_WORKSPACE/fonts/" "$file" 2>&1; then
                 if [ -f "${name}.pdf" ]; then
                   echo "| \`$name\` (Typst) | ✅ Built | PDF generated |" >> $GITHUB_STEP_SUMMARY
                   echo "✅ Success: $typfile"
@@ -325,6 +325,7 @@ jobs:
   collect:
     name: Collect PDFs
     needs: [build, typst]
+    if: always() && (needs.build.result == 'success' || needs.typst.result == 'success')
     runs-on: ubuntu-latest
 
     steps:
@@ -333,25 +334,17 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Create artifact dirs
-        run: mkdir -p artifacts/pdfs artifacts/logs
-
-      - name: Download LaTeX PDFs
+      - name: Download all PDF artifacts
         uses: actions/download-artifact@v4
         with:
-          name: pdfs-latex
+          pattern: pdfs-*
           path: artifacts/pdfs
-
-      - name: Download Typst PDFs
-        uses: actions/download-artifact@v4
-        with:
-          name: pdfs-typst
-          path: artifacts/pdfs
+          merge-multiple: true
 
       - name: List collected PDFs
         run: |
           echo "Collected PDFs:"
-          ls -la artifacts/pdfs || true
+          ls -la artifacts/pdfs || echo "No PDFs collected"
 
       - name: Re-upload combined PDFs
         uses: actions/upload-artifact@v4
@@ -363,10 +356,10 @@ jobs:
 
   prerelease:
     name: Create Prerelease
-    needs: collect
+    needs: [build, typst, collect]
+    # Only create prereleases on pushes to main, and only if collect succeeded
+    if: always() && needs.collect.result == 'success' && github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    # Only create prereleases on pushes to main (not PRs or tags)
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     permissions:
       contents: write
 
