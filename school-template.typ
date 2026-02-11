@@ -69,18 +69,16 @@
     },
   )
 
-  // Typography: New Computer Modern (body) + Fira Sans 0.92 (headers) + Fira Mono 0.85 (code)
-  // Fira Sans & Fira Mono loaded from project fonts/ directory
-  set text(font: ("Fira Sans"), lang: "nl", size: 11pt)
-  set par(leading: 0.65em, justify: true) // Approx 1.15 line spacing
+  // Typography: Charter (body) + Fira Sans (headers) + Fira Code 0.85 (code)
+  // Charter, Fira Sans & Fira Code loaded from project fonts/ directory
+  set text(font: ("Charter", "serif"), lang: "nl", size: 11pt)
+  set par(leading: 0.63em, first-line-indent: 0pt, spacing: 1.2em, justify: true)
   set heading(numbering: "1.1")
 
-  show raw: set text(font: "Fira Code")
-  show math.equation: set text(font: "Fira Math")
+  show raw: set text(font: ("Fira Code", "Fira Mono", "monospace"), size: 0.85em)
+  // Math uses Typst's default New Computer Modern Math (serif, matching Charter body text)
 
-  // Math Font Configuration
-  // If Fira Math is installed, it will be used. Otherwise falls back to default.
-  // We also force specific symbols to match Fira Sans style as requested.
+  // Override emptyset to use sans-serif glyph for visual consistency
   show sym.emptyset: set text(font: "Fira Sans")
   
   // Link styling: URLs in schoolBlue, internal refs in black with underline
@@ -94,26 +92,26 @@
   set list(indent: 2em, body-indent: 0.5em, spacing: 0.6em)
   set enum(indent: 2em, body-indent: 0.5em, spacing: 0.6em)
   
-  show heading: set text(font: ("Fira Sans"), weight: "bold", size: 1em * 0.92)
+  show heading: set text(font: ("Fira Sans"), weight: "bold")
   
   show heading.where(level: 1): it => [
-    #v(12pt)
-    #text(size: 1.2em)[#if it.numbering != none { counter(heading).display(it.numbering) + h(0.5em) }#it.body]
-    #v(4pt)
+    #v(8pt)
+    #text(size: 13.2pt)[#if it.numbering != none { counter(heading).display(it.numbering) + h(0.5em) }#it.body]
+    #v(-6pt)
     #line(length: 100%, stroke: 0.5pt)
-    #v(6pt)
+    #v(3pt)
   ]
   
   show heading.where(level: 2): it => [
-    #v(8pt)
-    #text(size: 1.0em)[#if it.numbering != none { counter(heading).display(it.numbering) + h(0.5em) }#it.body]
-    #v(4pt)
+    #v(6pt)
+    #text(size: 11pt)[#if it.numbering != none { counter(heading).display(it.numbering) + h(0.5em) }#it.body]
+    #v(2pt)
   ]
 
   show heading.where(level: 3): it => [
-    #v(6pt)
-    #text(size: 0.95em)[#if it.numbering != none { counter(heading).display(it.numbering) + h(0.5em) }#it.body]
-    #v(3pt)
+    #v(4pt)
+    #text(size: 10.1pt)[#if it.numbering != none { counter(heading).display(it.numbering) + h(0.5em) }#it.body]
+    #v(2pt)
   ]
 
   // Title Page
@@ -150,13 +148,16 @@
   ]
   v(2em)
 
-  // Table of Contents (styled)
+  // Table of Contents (styled to match LaTeX)
   {
-    set outline.entry(fill: repeat(text(fill: luma(180))[.#h(2pt)]))
-    show outline.entry: it => {
-      set text(font: ("Fira Sans"), size: 0.95em)
-      it
+    set text(font: ("Charter", "serif"))
+    set outline.entry(fill: repeat[.#h(4pt)])
+    show outline.entry.where(level: 1): it => {
+      v(8pt)
+      strong(it)
     }
+    show outline.entry.where(level: 2): set pad(left: 1.5em)
+    show outline.entry.where(level: 3): set pad(left: 3em)
     outline(indent: auto)
   }
   pagebreak()
@@ -290,8 +291,10 @@
   _formularium_counter.step()
   context {
     let idx = _formularium_counter.get().first()
+    let pg = here().page()
+    [#metadata(none)#label("frm-" + str(idx))]
     _formularium_entries.update(entries => {
-      entries.push((title: title, formula: formula, description: description, idx: idx))
+      entries.push((title: title, formula: formula, description: description, idx: idx, page: pg))
       entries
     })
   }
@@ -319,17 +322,19 @@
   v(6pt)
 }
 
-// Formularium card (used in the printed formularium)
+// Formularium card (used in the printed formularium) — matches LaTeX \formulariumcard
 #let _formularium_card(entry) = {
   v(4pt)
   block(width: 100%, [
-    *#entry.title*
+    #grid(
+      columns: (1fr, auto),
+      [*#entry.title*],
+      link(label("frm-" + str(entry.idx)), text(size: 0.75em, fill: schoolBlue)[p.#entry.page]),
+    )
     #v(2pt)
-    #set align(center)
-    #text(size: 1.1em)[$#entry.formula$]
-    #set align(left)
+    #align(center, text(size: 1.1em)[$#entry.formula$])
     #v(2pt)
-    #text(size: 0.85em, style: "italic")[#entry.description]
+    #text(size: 0.8em, style: "italic")[#entry.description]
   ])
   v(4pt)
 }
