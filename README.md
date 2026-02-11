@@ -51,6 +51,32 @@ Stuur een berichtje naar een van de **organisatie-eigenaren** op GitHub of ping 
 
 ---
 
+## ✨ Nieuw: Typst (Het moderne alternatief)
+
+Naast LaTeX ondersteunen we nu ook **Typst**! 
+Typst is sneller, makkelijker te leren en je hebt **geen zware installatie** nodig.
+
+### Hoe begin je met Typst?
+
+1.  Installeer de **[Tinymist](https://marketplace.visualstudio.com/items?itemName=myriad-dreamin.tinymist)** extensie in VS Code.
+2.  Ga naar de map `typst_templates`.
+3.  Open `main.typ` en begin met typen!
+4.  Druk op het "Preview" knopje rechtsboven (oogje) om direct het resultaat te zien.
+
+> **Waarom Typst?** De code is veel leesbaarder en je ziet je wijzigingen direct (live preview). Probeer het eens!
+
+---
+
+## 📥 Stap 2: Project opzetten
+
+### 2.1 Maak een Fork
+
+1. Ga naar de [originele repository](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs)
+2. Klik rechtsboven op **Fork** → **Create Fork**
+
+### 2.2 Clone naar je PC
+
+_Sla over bij Codespaces_
 ## 🛠️ Stap 1: Installatie
 
 Volg deze stappen om alles klaar te zetten op je computer.
@@ -70,109 +96,49 @@ Volg deze stappen om alles klaar te zetten op je computer.
 
 ---
 
-## ☁️ Alternatief: GitHub Codespaces
+<<<<<<<<< Temporary merge branch 1
+## 📥 Stap 2: Het project opzetten (zonder typen!)
+=========
+## ✨ Nieuw: Typst (Het moderne alternatief)
 
-**Geen installatie nodig!** Werk direct in je browser.
+Naast LaTeX ondersteunen we nu ook **Typst**! 
+Typst is sneller, makkelijker te leren en je hebt **geen zware installatie** nodig.
 
-1. Maak eerst een **Fork** (zie Stap 2.1)
-2. Ga naar jouw fork op GitHub
-3. Klik op groene knop **<> Code** → tabblad **Codespaces**
-4. Klik **Create codespace on main**
+### Hoe begin je met Typst?
 
-Je krijgt een volledige VS Code omgeving in je browser.
+1.  Installeer de **[Tinymist](https://marketplace.visualstudio.com/items?itemName=myriad-dreamin.tinymist)** extensie in VS Code.
+2.  Ga naar de map `typst_templates`.
+3.  Open `main.typ` en begin met typen!
+4.  Druk op het "Preview" knopje rechtsboven (oogje) om direct het resultaat te zien.
+
+> **Waarom Typst?** De code is veel leesbaarder en je ziet je wijzigingen direct (live preview). Probeer het eens!
 
 ---
 
 ## 📥 Stap 2: Project opzetten
+>>>>>>>>> Temporary merge branch 2
 
-### 2.1 Maak een Fork
+### 2.1 Maak een Fork (Je eigen kopie)
+1. Ga naar de [originele pagina op GitHub](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs).
+2. Klik rechtsboven op de knop **Fork**.
+3. Klik op **Create Fork**. Nu heb je een eigen kopie op jouw GitHub-account.
 
-1. Ga naar de [originele repository](https://github.com/Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs)
+<<<<<<<<< Temporary merge branch 1
+### 2.2 Openen in VS Code (Clonen)
+1. Open **VS Code**.
+2. Klik linksboven op het icoontje met de drie streepjes (Menu) -> **File** -> **New Window** (als er al iets open staat).
+3. Klik op de knop **Clone Repository** op het startscherm (of via het 'Source Control' icoontje links, dat lijkt op een vertakking).
+4. Kies **Clone from GitHub**. Log in als daar om gevraagd wordt.
+5. Zoek in de lijst naar `Samenvattingen-Ku-leuven-Industriele-ingenieurs` (jouw fork) en klik erop.
+6. Kies een map op je computer waar je het project wilt opslaan.
+7. Klik op **Open** als VS Code vraagt of je de gekloonde repository wilt openen.
+=========
+1. Ga naar de [originele repository](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs)
 2. Klik rechtsboven op **Fork** → **Create Fork**
+>>>>>>>>> Temporary merge branch 2
 
-### 2.2 Clone naar je PC
-
-_Sla over bij Codespaces_
-
-```bash
-# In VS Code terminal (Ctrl + `)
-git clone https://github.com/JOUW-GEBRUIKERSNAAM/Samenvattingen-Ku-leuven-Industriele-ingenieurs.git
-```
-
-Open daarna de map via _File > Open Folder_.
-
-### 2.3 Link naar origineel (upstream)
-
-```bash
-git remote add upstream https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs.git
-```
-
-### 2.4 Extensies installeren
-
-VS Code vraagt automatisch om aanbevolen extensies → Klik **Install**.
-
-**Belangrijkste extensies:**
-
-- **LaTeX Workshop** – PDF bouwen en bekijken
-- **GitHub Pull Requests and Issues** – Issues en PRs beheren
-
----
-
-## 🔄 Stap 3: Dagelijkse workflow
-
-```
-┌─────────────────────────────────────────────────────────┐
-│  1. Sync/Pull     →  Klik ↻ Sync in Source Control      │
-│  2. Nieuwe branch →  Klik branch naam → Create branch   │
-│  3. Bewerken      →  Pas .tex bestanden aan             │
-│  4. Build PDF     →  Ctrl+Alt+B                         │
-│  5. Commit        →  Source Control → + → Commit        │
-│  6. Push          →  Sync knop of Publish Branch        │
-│  7. Pull Request  →  GitHub paneel → Create PR          │
-└─────────────────────────────────────────────────────────┘
-```
-
-### Sync/Update
-
-- **GitHub:** Jouw fork → **Sync Fork** → **Update branch**
-- **VS Code:** Klik op **↻ Sync** icoontje bij Source Control
-
-### Branch maken
-
-1. Klik op de **branch naam** linksonder (bijv. `main`)
-2. Kies **Create new branch...**
-3. Typ een naam zoals `vaknaam-hoofdstuk-x`
-4. Klaar! Je werkt nu in je eigen branch
-
-> ⚠️ Werk **nooit** direct in `main`!
-
-### PDF bouwen & bekijken
-
-- **Bouwen:** `Ctrl+Alt+B` of groene ▶️ knop
-- **Bekijken:** `Ctrl+Alt+V` of PDF icoontje
-
-Zie **[Debugging-van-building.md](Debugging-van-building.md)** bij problemen.
-
-### Pull Request maken
-
-Na je commit en push, maak je een Pull Request (PR) om je wijzigingen voor te stellen:
-
-1. Ga naar GitHub (je fork of originele repo)
-2. Klik op **Compare & pull request** (gele balk)
-3. **⚠️ BELANGRIJK:** Controleer de instellingen bovenaan:
-
-```
-base repository: Eggmansmile/Samenvattingen...  ← MOET dit zijn!
-base: main
-
-head repository: JouwNaam/Samenvattingen...     ← Jouw fork
-compare: jouw-branch-naam
-```
-
-4. Schrijf een korte beschrijving van je wijzigingen
-5. Klik **Create Pull Request**
-
-> ⚠️ Als `base repository` op je **eigen** fork staat, gaat de PR naar jezelf in plaats van naar het originele project!
+### 2.3 Extensies
+VS Code zal rechtsonder vragen om "Recommended Extensions" te installeren. Klik op **Install**. Dit zorgt ervoor dat LaTeX goed werkt en je makkelijk kunt samenwerken.
 
 ---
 
