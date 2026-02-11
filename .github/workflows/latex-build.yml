@@ -1,4 +1,4 @@
-name: Build LaTeX & Typst
+name: Build LaTeX
 
 on:
   push:
@@ -181,68 +181,7 @@ jobs:
              echo "All documents built successfully ($PDFS_GENERATED PDFs)."
           fi
 
-      - name: Find and Build Typst documents
-        shell: bash
-        run: |
-          echo "## Typst Build Results 📊" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "| Document | Status | Details |" >> $GITHUB_STEP_SUMMARY
-          echo "|----------|--------|---------|" >> $GITHUB_STEP_SUMMARY
-
-          TYPST_BUILT=0
-          TYPST_FAILED=0
-
-          # Find all main Typst documents (those that import school-template)
-          # We look for .typ files that contain a #show: project.with or #import
-          find . \( -name ".git" -o -name ".github" -o -name ".pdf-cache" \) -prune -o \
-               -type f -name "*.typ" \
-               ! -name "school-template.typ" \
-               -exec grep -l "#import\|#show: project" {} \; > typst_docs.txt 2>/dev/null || true
-
-          if [ ! -s typst_docs.txt ]; then
-            echo "No Typst main documents found."
-            echo "| - | ℹ️ | No Typst documents found |" >> $GITHUB_STEP_SUMMARY
-          else
-            echo "📝 Found Typst documents:"
-            cat typst_docs.txt
-
-            while IFS= read -r typfile; do
-              dir=$(dirname "$typfile")
-              file=$(basename "$typfile")
-              name=$(basename "$typfile" .typ)
-
-              echo "========================================="
-              echo "Building Typst: $typfile"
-              echo "========================================="
-
-              cd "$dir"
-
-              if typst compile --font-path "$GITHUB_WORKSPACE/typst_templates/fonts/" "$file" 2>&1; then
-                if [ -f "${name}.pdf" ]; then
-                  echo "| \`$name\` (Typst) | ✅ Built | PDF generated |" >> $GITHUB_STEP_SUMMARY
-                  echo "✅ Success: $typfile"
-                  TYPST_BUILT=$((TYPST_BUILT + 1))
-                else
-                  echo "| \`$name\` (Typst) | ⚠️ Warning | Completed but no PDF |" >> $GITHUB_STEP_SUMMARY
-                  echo "⚠️ Warning: $typfile completed but PDF not found"
-                  TYPST_FAILED=1
-                fi
-              else
-                echo "| \`$name\` (Typst) | ❌ Failed | Build error |" >> $GITHUB_STEP_SUMMARY
-                echo "❌ Failed: $typfile"
-                TYPST_FAILED=1
-              fi
-
-              cd - > /dev/null
-            done < typst_docs.txt
-          fi
-
-          echo ""
-          echo "📊 Typst Build Summary: $TYPST_BUILT PDFs built"
-
-          # Add Typst count to total for artifact collection
-          PDFS_GENERATED=${PDFS_GENERATED:-0}
-          PDFS_GENERATED=$((PDFS_GENERATED + TYPST_BUILT))
+      # Typst build is handled in a separate job (`typst`); removed from the LaTeX `build` job to avoid duplicate runs and log noise
 
       - name: Collect build artifacts
         if: always()
@@ -266,17 +205,8 @@ jobs:
             done < main_docs.txt
           fi
           
-          # Collect Typst PDFs
-          if [ -f typst_docs.txt ]; then
-            while IFS= read -r typfile; do
-              dir=$(dirname "$typfile")
-              name=$(basename "$typfile" .typ)
-              if [ -f "${dir}/${name}.pdf" ]; then
-                cp "${dir}/${name}.pdf" artifacts/pdfs/
-                echo "Collected Typst: ${dir}/${name}.pdf"
-              fi
-            done < typst_docs.txt
-          fi
+          # Typst PDFs are produced and uploaded by the separate `typst` job (artifact: `pdfs-typst`).
+          # They are downloaded into `artifacts/pdfs` by the `prerelease` job when creating the release.
           
           echo "📂 Collected Artifacts (artifacts/pdfs):"
           ls -la artifacts/pdfs/
@@ -387,7 +317,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: pdfs-typst
+          name: pdfs
           path: artifacts/pdfs/*.pdf
           retention-days: 90
           if-no-files-found: warn
@@ -411,11 +341,6 @@ jobs:
           name: pdfs
           path: artifacts/pdfs
 
-      - name: Download Typst PDF artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: pdfs-typst
-          path: artifacts/pdfs
 
       - name: Get current date and commit info
         id: info
