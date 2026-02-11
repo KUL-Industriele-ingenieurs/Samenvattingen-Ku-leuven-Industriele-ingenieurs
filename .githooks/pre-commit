@@ -20,26 +20,35 @@ done
 # --- 2. Manage PDFs ---
 echo "Checking PDFs..."
 
-# Get all staged PDFs
-# git diff --cached --name-only returns file paths relative to root
-staged_pdfs=$(git diff --cached --name-only | grep '\.pdf$')
+# Use NUL-separated list to robustly handle all filenames, including spaces
+staged_list=$(git diff --cached --name-only -z)
 
-if [ -n "$staged_pdfs" ]; then
-    # Set Internal Field Separator to newline to handle files one by one
-    IFS='
-'
-    for pdf_file in $staged_pdfs; do
-        tex_file="${pdf_file%.pdf}.tex"
-        
-        # Check if matching .tex file exists
-        if [ -f "$tex_file" ]; then
-            echo "Unstaging generated PDF: $pdf_file (matches .tex file)"
-            git reset HEAD "$pdf_file"
-        else
-            echo "Keeping reference PDF: $pdf_file"
-        fi
-    done
-    unset IFS
+if [ -n "$staged_list" ]; then
+    unstaged_any=0
+
+    # Read NUL-delimited names safely
+    while IFS= read -r -d '' pdf_file; do
+        # case-insensitive match for .pdf extension
+        case "$pdf_file" in
+            *.[Pp][Dd][Ff])
+                tex_file="${pdf_file%.*}.tex"
+                if [ -f "$tex_file" ]; then
+                    echo "Unstaging generated PDF: $pdf_file (matches .tex file)"
+                    git reset HEAD -- "$pdf_file"
+                    unstaged_any=1
+                else
+                    echo "Keeping reference PDF: $pdf_file"
+                fi
+                ;;
+        esac
+    done <<EOF
+$staged_list
+EOF
+
+    if [ "$unstaged_any" -eq 1 ]; then
+        echo "🛑 ERROR: Generated PDFs were staged and have been unstaged. Please review the unstaged PDFs and commit again without them."
+        exit 1
+    fi
 fi
 
 echo "PDF check complete."

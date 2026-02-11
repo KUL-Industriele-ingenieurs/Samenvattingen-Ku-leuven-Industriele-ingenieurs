@@ -1,0 +1,95 @@
+\chapter{Introductie}
+\label{chap:introductie}
+
+PLC is een heel basis introductie tot computers. 
+Hoe connecteren machines met elkaar? Inputs en outputs, IO. 
+Deze worden allemaal aangehaald in deze introductie.
+
+\section{PLC introductie}
+
+\begin{concept}[PLC (Programmable Logic Controller)]
+Dit is gespecialiseerde computer die geen scherm, toetsenbord of muis heeft, maar wel een aantal ingangen en uitgangen.
+Deze worden gebruikt in industriële omgevingen om machines en processen te automatiseren.
+\end{concept}
+
+ \begin{wrapfigure}[10]{r}{0.35\textwidth}
+   \centering
+   \includegraphics[width=0.45\textwidth]{PLC2.png}
+   \caption{}
+   \label{fig:PLC2.png}
+  \end{wrapfigure}
+
+
+Een PLC heeft een \textbf{CPU} en input en output \textbf{I/O}.
+IO is niet persee deel van de PLC maar kan ook andere modules zijn.
+IO heb je ook op je eigen computer, HDMI, USB, \dots
+
+Je hebt dan \textbf{Digital I/O} en \textbf{Analog I/O}.
+Digital I/O is een binaire input of output, bijvoorbeeld een schakelaar die aan of uit is.
+Analog I/O is een continue waarde, bijvoorbeeld een temperatuur sensor die een waarde tussen 0 en 100 graden geeft.
+
+Een PLC kan bijvoorbeeld de airco harder zetten in een kamer als die kamer te warm is.
+Dit kan van op afstand gebeuren, bijvoorbeeld via een netwerk, een app, sensor, \dots
+
+Je krijgt inputs van sensoren of knoppen. Deze worden via logic verwerkt en geven een output. 
+
+Een PLC is \textbf{programmeerbaar}, wat betekent dat je 
+een programma kunt schrijven dat bepaalt hoe de PLC reageert op verschillende inputs
+en hoe het de outputs aanstuurt.
+
+Je connecteerd aan een PLC met bijvoorbeeld een laptop via een seriële kabel, USB, of netwerkverbinding.
+Je schrijft een programma op je laptop en uploadt dat naar de PLC, waarna de PLC het
+programma uitvoert en de machines aanstuurt op basis van de logica die je hebt geprogrammeerd.
+
+\begin{wrapfigure}[8]{r}{0.5\textwidth}
+  \centering
+  \includegraphics[width=0.6\textwidth]{image1.png}
+  \caption{}
+  \label{fig:image1.png}
+ \end{wrapfigure}
+
+We leggen deze figuur uit met een eenvoudig voorbeeld.
+Je hebt een doodgewone knop die je kan indrukken.
+Jij als \textbf{operator} geef controle inputs aan de knop, 
+bijvoorbeeld door hem in te drukken.
+
+\textbf{De logic controller (PLC)} ontvangt deze input en 
+verwerkt deze volgens een vooraf gedefinieerd programma.
+
+De knop krijgt info door sensors die bijvoorbeeld info geven of 
+de knop al dan niet is ingedrukt van de machine
+
+Als de knop is ingedrukt gaat door er een \textbf{logic actions} gebeuren waarbij de \textbf{machine} een actie uitvoert,
+bijvoorbeeld een motor starten of een lamp laten branden.
+en de \textbf{operator} krijgt feedback van de \textbf{machine}, bijvoorbeeld door een lamp die gaat branden of een geluidssignaal.
+
+\section{Switches en buttons}
+
+Een main switch wordt aangegeven met \textbf{Q}
+Knoppen en switches die acties uitvoeren worden aangegeven met \textbf{S}
+Deze worden meestal in een tube geplaatst zodat ze niet per ongeluk kunnen worden ingedrukt.
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.8\textwidth]{sort of buttons and switched.png}
+  \caption{}
+  \label{fig:sort of buttons and switched.png}
+ \end{figure}
+
+ Je hebt meerdere soorten switched. 
+ \begin{description}
+    \item[Push button]: een knop die je indrukt en loslaat, zoals een deurbel.
+    \item[Detent switch]: een schakelaar die in een bepaalde positie blijft staan, 
+    zoals een lichtschakelaar.
+    \item[rotater switch]: een schakelaar die je draait.
+    \item[Pilot lamp]: Informatie die de operator terug krijgt \textit{bv.Staat de machine aan?} 
+ \end{description}
+
+ Hoe de schakeling is getekent bepaald zijn functie.
+
+ \begin{figure}[htbp]
+   \centering
+   \includegraphics[width=0.4\textwidth]{Voorbeeld circuit.png}
+   \caption{}
+   \label{fig:Voorbeeld circuit.png}
+  \end{figure}
+
