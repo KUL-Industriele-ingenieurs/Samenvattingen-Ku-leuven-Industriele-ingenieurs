@@ -27,6 +27,9 @@ jobs:
           find . -type f \( -name "*.aux" -o -name "*.bbl" -o -name "*.bcf" -o -name "*.blg" -o -name "*.fls" -o -name "*.log" -o -name "*.out" -o -name "*.toc" -o -name "*.fdb_latexmk" -o -name "*.synctex.gz" \) -delete
           echo "Cleaned stale auxiliary files"
 
+      - name: Install xz-utils
+        run: sudo apt-get update && sudo apt-get install -y xz-utils
+
       - name: Install Typst (latest)
         shell: bash
         run: |
