@@ -1056,30 +1056,217 @@ Resultaat:
 
 == Andere handige pakketten
 
-Deze pakketten zijn *niet* standaard inbegrepen, maar kun je zelf toevoegen:
+Deze pakketten zijn *niet* standaard inbegrepen, maar kun je zelf toevoegen.
+Installeren doe je door ze te importeren --- Typst downloadt ze automatisch:
+
+#codeblock(lang: "typst", title: "Extra pakket toevoegen")[
+```
+// Bovenaan je document:
+#import "@preview/fletcher:0.5.8": diagram, node, edge
+#import "@preview/algo:0.3.6": algo, i, d, comment, code
+#import "@preview/glossarium:0.5.10": make-glossary, register-glossary, print-glossary, gls, glspl
+#import "@preview/codly:1.3.0": *
+#import "@preview/tablem:0.2.0": *
+```
+]
 
 #table(
   columns: (1fr, 1fr, 2fr),
   align: (left, left, left),
   table.header([*Pakket*], [*LaTeX equivalent*], [*Beschrijving*]),
-  [`fletcher`],     [tikz-cd],       [Commutatieve diagrammen met pijlen],
+  [`fletcher`],     [tikz-cd],       [Diagrammen met pijlen en nodes],
+  [`algo`],         [algorithmicx],  [Algoritmes en pseudocode],
+  [`glossarium`],   [glossaries],    [Woordenlijst / afkortingenlijst],
+  [`codly`],        [minted/listings], [Mooie code blokken met lijnnummers],
+  [`tablem`],       [---],           [Markdown-achtige tabellen],
   [`chemformula`],  [mhchem],        [Chemische formules en reacties],
   [`alchemist`],    [chemfig],       [Structuurformules tekenen],
-  [`algo`],         [algorithmicx],  [Algoritmes en pseudocode],
-  [`glossarium`],   [glossaries],    [Woordenlijst/glossarium],
-  [`cetz-plot`],    [pgfplots],      [Grafieken en charts],
-  [`tablem`],       [---],           [Markdown-achtige tabellen],
 )
 
-Installeren doe je door ze te importeren (Typst downloadt ze automatisch):
+=== Fletcher --- Diagrammen met pijlen
 
-#codeblock(lang: "typst", title: "Extra pakket toevoegen")[
+Fletcher maakt het eenvoudig om flowcharts, toestandsdiagrammen en commutatieve diagrammen te tekenen.
+
+#import "@preview/fletcher:0.5.8" as fletcher: diagram, node, edge
+
+#codeblock(lang: "typst", title: "Fletcher Flowchart")[
 ```
-// Bovenaan je document:
-#import "@preview/fletcher:0.5.7": *
-#import "@preview/chemformula:0.2.0": *
-#import "@preview/algo:0.3.4": algo, i, d, comment
+#import "@preview/fletcher:0.5.8" as fletcher: diagram, node, edge
+
+#diagram(
+  node-stroke: 0.8pt,
+  node-corner-radius: 3pt,
+  spacing: (12mm, 10mm),
+
+  node((0,0), [Start], fill: schoolGreen.lighten(80%)),
+  edge("-|>"),
+  node((1,0), [Invoer lezen], fill: schoolBlue.lighten(80%)),
+  edge("-|>"),
+  node((2,0), [Verwerken], fill: schoolBlue.lighten(80%)),
+  edge("-|>"),
+  node((3,0), [Uitvoer], fill: schoolOrange.lighten(80%)),
+  edge("-|>"),
+  node((4,0), [Stop], fill: schoolRed.lighten(80%)),
+
+  // Feedback lus:
+  edge((3,0), (2,0), [Fout?], "-|>", bend: -50deg),
+)
 ```
+]
+
+Resultaat:
+
+#diagram(
+  node-stroke: 0.8pt,
+  node-corner-radius: 3pt,
+  spacing: (12mm, 10mm),
+
+  node((0,0), [Start], fill: schoolGreen.lighten(80%)),
+  edge("-|>"),
+  node((1,0), [Invoer lezen], fill: schoolBlue.lighten(80%)),
+  edge("-|>"),
+  node((2,0), [Verwerken], fill: schoolBlue.lighten(80%)),
+  edge("-|>"),
+  node((3,0), [Uitvoer], fill: schoolOrange.lighten(80%)),
+  edge("-|>"),
+  node((4,0), [Stop], fill: schoolRed.lighten(80%)),
+
+  edge((3,0), (2,0), [Fout?], "-|>", bend: -50deg),
+)
+
+#v(12pt)
+
+Een wiskundig commutatief diagram:
+
+#codeblock(lang: "typst", title: "Commutatief Diagram")[
+```
+#diagram(cell-size: 15mm, $
+  A edge(f, ->) & B \
+  C edge("u", g, ->) edge("ur", h, "-->")
+$)
+```
+]
+
+Resultaat:
+
+#diagram(cell-size: 15mm, $
+  A edge(f, ->) & B \
+  C edge("u", g, ->) edge("ur", h, "-->")
+$)
+
+=== Algo --- Pseudocode en Algoritmes
+
+De `algo` package maakt prachtige pseudocode blokken: #import "@preview/algo:0.3.6": algo as algo-fn, i, d, comment
+
+#codeblock(lang: "typst", title: "Pseudocode Algoritme")[
+```
+#import "@preview/algo:0.3.6": algo, i, d, comment
+
+#algo(
+  title: "BubbleSort",
+  parameters: ("A", "n"),
+)[
+  for $j <- 0$ to $n - 2$:#i
+    for $k <- 0$ to $n - j - 2$:#i
+      if $A[k] > A[k+1]$:#i
+        swap $A[k]$ and $A[k+1]$#d
+      #d
+    #d
+  return $A$
+]
+```
+]
+
+Resultaat:
+
+#algo-fn(
+  title: "BubbleSort",
+  parameters: ("A", "n"),
+)[
+  for $j <- 0$ to $n - 2$:#i
+    for $k <- 0$ to $n - j - 2$:#i
+      if $A[k] > A[k+1]$:#i
+        swap $A[k]$ and $A[k+1]$#d
+      #d
+    #d
+  return $A$
+]
+
+#v(8pt)
+
+#algo-fn(
+  title: "BinarySearch",
+  parameters: ("A", "n", "target"),
+)[
+  $l <- 0$, $r <- n - 1$\
+  while $l <= r$:#i
+    $m <- floor((l + r) / 2)$\
+    if $A[m] = "target"$:#i
+      return $m$ #comment[Gevonden!]#d
+    if $A[m] < "target"$:#i
+      $l <- m + 1$#d
+    else:#i
+      $r <- m - 1$#d#d
+  return $-1$ #comment[Niet gevonden]
+]
+
+=== Glossarium --- Woordenlijst
+
+Met `glossarium` maak je een woordenlijst met afkortingen en definities:
+
+#codeblock(lang: "typst", title: "Glossarium")[
+```
+#import "@preview/glossarium:0.5.10": make-glossary, register-glossary, print-glossary, gls, glspl
+
+#show: make-glossary
+
+#let entries = (
+  (key: "fem", short: "FEM", long: "Finite Element Method",
+   description: "Numerieke methode voor het oplossen van PDEs."),
+  (key: "cfd", short: "CFD", long: "Computational Fluid Dynamics",
+   description: "Numerieke simulatie van vloeistofstroming."),
+  (key: "plc", short: "PLC", long: "Programmable Logic Controller",
+   description: "Industriële computer voor automatisering."),
+)
+#register-glossary(entries)
+
+// In je tekst:
+De @fem methode wordt vaak gebruikt in combinatie met @cfd.
+Bij een eerste vermelding wordt de volledige naam getoond.
+
+// Aan het einde van je document:
+#print-glossary(entries)
+```
+]
+
+=== Tablem --- Markdown-achtige tabellen
+
+Snelle tabellen met Markdown-syntax:
+
+#import "@preview/tablem:0.2.0": tablem
+
+#codeblock(lang: "typst", title: "Tablem")[
+```
+#import "@preview/tablem:0.2.0": tablem
+
+#tablem[
+  | *Materiaal* | *$E$ (GPa)* | *$rho$ (kg/m³)* |
+  |-------------|-------------|-----------------|
+  | Staal       | 210         | 7850            |
+  | Aluminium   | 70          | 2700            |
+  | Titanium    | 116         | 4500            |
+]
+```
+]
+
+Resultaat:
+
+#tablem[
+  | *Materiaal* | *$E$ (GPa)* | *$rho$ (kg/m³)* |
+  |-------------|-------------|-----------------|
+  | Staal       | 210         | 7850            |
+  | Aluminium   | 70          | 2700            |
+  | Titanium    | 116         | 4500            |
 ]
 
 // =============================================================================
