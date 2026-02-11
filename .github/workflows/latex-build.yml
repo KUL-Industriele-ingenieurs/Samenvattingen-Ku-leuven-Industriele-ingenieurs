@@ -289,7 +289,7 @@ jobs:
 
               cd "$dir"
 
-              if typst compile --font-path "$GITHUB_WORKSPACE/typst_templates/fonts/" "$file" 2>&1; then
+              if typst compile --font-path "$GITHUB_WORKSPACE/fonts/" "$file" 2>&1; then
                 if [ -f "${name}.pdf" ]; then
                   echo "| \`$name\` (Typst) | ✅ Built | PDF generated |" >> $GITHUB_STEP_SUMMARY
                   echo "✅ Success: $typfile"
