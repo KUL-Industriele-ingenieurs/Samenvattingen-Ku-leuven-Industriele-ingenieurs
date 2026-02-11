@@ -41,19 +41,8 @@ jobs:
           restore-keys: |
             pdf-cache-${{ hashFiles('school-macros.sty') }}-
             pdf-cache-
-      - name: Install Typst (apt)
-        shell: bash
-        run: |
-          set -euo pipefail
-
-          if command -v typst >/dev/null 2>&1; then
-            echo "typst already installed: $(typst --version || true)"
-          else
-            echo "Installing typst via apt..."
-            DEBIAN_FRONTEND=noninteractive apt-get update -y
-            DEBIAN_FRONTEND=noninteractive apt-get install -y typst
-            typst --version
-          fi
+      # Typst installation removed from the LaTeX build job.
+      # Typst is built in a separate `typst` job using snap on ubuntu-latest.
 
       - name: Find and Build LaTeX documents
         shell: bash
