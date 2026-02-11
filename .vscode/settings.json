@@ -1,5 +1,6 @@
 {
     "latex-workshop.linting.enabled": true,
+    "tinymist.fontPaths": ["fonts"],
     "latex-workshop.linting.chktex.enabled": false,
     "latex-workshop.linting.lacheck.enabled": false,
     "latex.linter.enabled": false,
