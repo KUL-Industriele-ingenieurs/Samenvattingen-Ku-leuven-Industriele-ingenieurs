@@ -1,0 +1,121 @@
+\chapter{Inleiding systemen}
+\label{ch:Inleiding systemen}
+
+\section{Wat is een systeem?}
+
+\begin{conceptbox}[Een systeem]
+    
+Een systeem beschrijft een \belangrijk{Causaal systeem} waarbij een \belangrijk{Input} een \belangrijk{Output} veroorzaakt.
+Je hebt \textbf{een exitatie (input)} die een \textbf{respons (output)} veroorzaakt.
+\end{conceptbox}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[>=latex, node distance=2cm]
+        \node (input) {Excitatie};
+        \node[draw=schoolBlue, thick, fill=schoolBlue!5, minimum width=3cm, minimum height=1.5cm, rounded corners, right=of input] (system) {\textbf{Systeem}};
+        \node[right=of system] (output) {Respons};
+        
+        \draw[->, thick, schoolBlue] (input) -- (system) node[midway, above] {Input};
+        \draw[->, thick, schoolBlue] (system) -- (output) node[midway, above] {Output};
+    \end{tikzpicture}
+    \caption{Schematische voorstelling van een systeem}
+    \label{fig:systeem_diagram}
+\end{figure}
+
+Een auto is een voorbeeld van een systeem.
+Je geeft gas (input) en de auto versnelt (output). 
+Een eenvoudige, eerste-orde differentiaalvergelijking met massa $m$ en weerstandsfactor $b$ is:
+
+\begin{equation}
+    m\frac{dv(t)}{dt} = k_u\,u(t) - b\,v(t)
+\end{equation}
+waarbij $v(t)$ de snelheid is, $u(t)$ het ingangssignaal (gaspedaal), 
+$k_u$ een omzettingsconstante en $b$ de weerstandsfactor. 
+
+\section{Filters}
+
+\section{Stapfunctie(Heavyside functie)}
+
+De stapfunctie is een blok op een bepaald tijdstip $t_0$ die van 0 naar 1 gaat.
+\begin{equation}
+    u(t-t_0) = \begin{cases}
+    0 & t < t_0 \\
+    1 & t \geq t_0
+    \end{cases}
+\end{equation}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}
+        % Axes
+        \draw[->] (-1,0) -- (4,0) node[right] {$t$};
+        \draw[->] (0,-1) -- (0,2) node[above] {$u(t-t_0)$};
+        
+        % Ticks
+        \draw (2,0.1) -- (2,-0.1) node[below] {$t_0$};
+        \draw (0.1,1) -- (-0.1,1) node[left] {1};
+        
+        % Function
+        \draw[schoolBlue, very thick] (-1,0) -- (2,0);
+        \draw[schoolBlue, very thick] (2,1) -- (4,1);
+        \draw[dashed] (2,0) -- (2,1);
+        
+        % Points
+        \filldraw[fill=white, draw=schoolBlue, thick] (2,0) circle (2pt);
+        \filldraw[schoolBlue] (2,1) circle (2pt);
+    \end{tikzpicture}
+    \caption{Stapfunctie $u(t-t_0)$}
+    \label{fig:heaviside}
+\end{figure}
+\FloatBarrier
+
+
+\section{Dirac delta functie}
+De dirac delta functie is een blok maar oneindig smal is.
+De integraal over de dirac delta functie is altijd 1.
+\begin{equation}
+    \delta(t)
+    \begin{cases}
+        \delta(t) = 0 & t \neq 0 \\
+        \int_{-\infty}^{\infty} \delta(t) dt = 1
+     \end{cases}
+\end{equation}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}
+        % Axes
+        \draw[->] (-1,0) -- (4,0) node[right] {$t$};
+        \draw[->] (0,-0.5) -- (0,2) node[above] {$\delta(t)$};
+        
+        % Ticks
+        \draw (0,0.1) -- (0,-0.1) node[below] {$0$};
+        
+        % Function
+        \draw[schoolBlue, very thick, -latex] (0,0) -- (0,1.5);
+    \end{tikzpicture}
+    \caption{Dirac delta functie $\delta(t)$}
+    \label{fig:dirac}
+\end{figure}
+\FloatBarrier
+
+
+
+\section{Convolutie}
+Een convolutie is het schuiven van een functie over een andere functie.
+
+\begin{equation}
+    (f * g)(t) = \int_{-\infty}^{\infty} f(\tau) g(t-\tau) d\tau
+\end{equation}
+
+
+
+
+\section{Eerste orde systeem}
+
+\section{Tweede orde systeem}
+
+
+
+
