@@ -1,4 +1,4 @@
-#import "school-template.typ": *
+#import "../school-template.typ": *
 
 #show: project.with(
   title: "Typst Samenvatting Voorbeeld",
@@ -74,8 +74,7 @@ Je kunt code blokken toevoegen die eruit zien als VS Code:
 
 // Subsequent use of sym just renders inline: the force is #sym($F$, "Kracht", "N").
 
-= Formularium
+
 #printformularium()
 
-= Symbolenlijst
 #printsymbols()

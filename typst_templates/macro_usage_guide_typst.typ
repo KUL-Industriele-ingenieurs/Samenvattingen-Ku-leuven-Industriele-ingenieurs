@@ -11,7 +11,7 @@
 // Versie: 1.0 (Typst Edition 2026)
 // =============================================================================
 
-#import "school-template.typ": *
+#import "../school-template.typ": *
 
 #show: project.with(
   title: "Typst Tutorial",
