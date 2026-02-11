@@ -20,45 +20,26 @@ done
 # --- 2. Manage PDFs ---
 echo "Checking PDFs..."
 
-# Get all staged PDFs (case-insensitive extension)
+# Get all staged PDFs
 # git diff --cached --name-only returns file paths relative to root
-staged_pdfs=$(git diff --cached --name-only | grep -i '\.pdf$' || true)
+staged_pdfs=$(git diff --cached --name-only | grep '\.pdf$')
 
 if [ -n "$staged_pdfs" ]; then
     # Set Internal Field Separator to newline to handle files one by one
-    IFS='\n'
-    blocked_pdfs=""
-
+    IFS='
+'
     for pdf_file in $staged_pdfs; do
-        # Normalize .pdf/.PDF to .tex
-        tex_file=$(echo "$pdf_file" | sed -E 's/\.[Pp][Dd][Ff]$/.tex/')
-
-        # 1) If the corresponding .tex exists in the work tree OR is tracked, automatically unstage the PDF
-        if [ -f "$tex_file" ] || git ls-files --error-unmatch "$tex_file" >/dev/null 2>&1; then
-            echo "Unstaging generated PDF: $pdf_file (matches $tex_file)"
-            git reset HEAD -- "$pdf_file"
-            auto_unstaged="$auto_unstaged\n$pdf_file (generated)"
-            continue
+        tex_file="${pdf_file%.pdf}.tex"
+        
+        # Check if matching .tex file exists
+        if [ -f "$tex_file" ]; then
+            echo "Unstaging generated PDF: $pdf_file (matches .tex file)"
+            git reset HEAD "$pdf_file"
+        else
+            echo "Keeping reference PDF: $pdf_file"
         fi
-
-        # 2) If a whitelist file exists and the PDF is listed there, allow it
-        if [ -f ".pdf-whitelist" ] && grep -Fxq "$pdf_file" .pdf-whitelist; then
-            echo "Whitelisted PDF allowed: $pdf_file"
-            continue
-        fi
-
-        # Otherwise, automatically unstage the PDF (block from commit) without aborting
-        echo "Unstaging blocked PDF (not whitelisted): $pdf_file"
-        git reset HEAD -- "$pdf_file"
-        auto_unstaged="$auto_unstaged\n$pdf_file"
     done
     unset IFS
-
-    if [ -n "$auto_unstaged" ]; then
-        echo "\nNote: The following PDFs were left as unstaged and won't be part of this commit:" >&2
-        echo "$auto_unstaged" >&2
-        echo "\nTo add a reference PDF permanently, add it to '.pdf-whitelist' and commit that file first." >&2
-    fi
 fi
 
 echo "PDF check complete."
