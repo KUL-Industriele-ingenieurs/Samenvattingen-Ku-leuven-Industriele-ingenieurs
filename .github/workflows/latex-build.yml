@@ -266,7 +266,7 @@ jobs:
           TYPST_BUILT=0
           TYPST_FAILED=0
 
-          find . \( -name ".git" -o -name ".github" -o -name ".pdf-cache" \) -prune -o \
+          find . \( -name ".git" -o -name ".github" -o -name ".pdf-cache" -o -name "chapters" \) -prune -o \
                -type f -name "*.typ" \
                ! -name "school-template.typ" \
                -exec grep -l "#import\|#show: project" {} \; > typst_docs.txt 2>/dev/null || true
@@ -289,7 +289,7 @@ jobs:
 
               cd "$dir"
 
-              if typst compile --font-path "$GITHUB_WORKSPACE/fonts/" "$file" 2>&1; then
+              if typst compile --root "$GITHUB_WORKSPACE" --font-path "$GITHUB_WORKSPACE/fonts/" "$file" 2>&1; then
                 if [ -f "${name}.pdf" ]; then
                   echo "| \`$name\` (Typst) | ✅ Built | PDF generated |" >> $GITHUB_STEP_SUMMARY
                   echo "✅ Success: $typfile"
