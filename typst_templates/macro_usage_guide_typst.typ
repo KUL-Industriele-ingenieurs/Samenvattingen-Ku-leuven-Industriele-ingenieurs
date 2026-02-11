@@ -365,6 +365,29 @@ Code:
   met $F$ = kracht ($"N"$), $s$ = verplaatsing ($"m"$), $theta$ = hoek ($"rad"$)
 ])
 
+== Text wrap rond figuren
+Gebruik `#wrap-content` uit de `wrap-it` package voor tekst die rond een figuur loopt.
+
+#let fig = image("default-ui-image-placeholder-wireframes-260nw-1037719192.webp", width: 4cm)
+#let boxed = box(fig, inset: (right: 0.5em, bottom: 0.5em))
+
+#wrap-content(boxed)[
+  #lorem(80)
+]
+
+Code:
+#codeblock(lang : "typst", title: "Text wrap rond figuren")[
+```
+#let fig = image("default-ui-image-placeholder-wireframes-260nw-1037719192.webp", width: 4cm)
+#let boxed = box(fig, inset: (right: 0.5em, bottom: 0.5em))
+
+#wrap-content(boxed)[
+  #lorem(40)
+]   
+```
+]
+
+
 == Formularium afdrukken
 
 Aan het einde van je document kun je alle geregistreerde formules afdrukken:

@@ -7,7 +7,7 @@
 #import "@preview/physica:0.9.5": *   // Physics math: derivatives, brakets, etc.
 #import "@preview/cetz:0.4.2"         // TikZ-like drawing
 #import "@preview/cetz-plot:0.1.3": *  // Plotting (pgfplots equivalent)
-
+#import "@preview/wrap-it:0.1.1": wrap-content, wrap-top-bottom
 
 #let schoolBlue = rgb(41, 98, 155)
 #let schoolRed = rgb(180, 40, 40)
