@@ -30,17 +30,7 @@ jobs:
       - name: Install xz-utils
         run: apt-get update && apt-get install -y xz-utils
 
-      - name: Install Typst (latest)
-        shell: bash
-        run: |
-          TYPST_VERSION=$(curl -fsSL https://api.github.com/repos/typst/typst/releases/latest | grep -Po '"tag_name": "v\K[^"]*')
-          echo "Installing Typst v${TYPST_VERSION} (latest)..."
-          curl -fsSL "https://github.com/typst/typst/releases/download/v${TYPST_VERSION}/typst-x86_64-unknown-linux-musl.tar.xz" -o typst.tar.xz
-          tar -xf typst.tar.xz
-          mv typst-x86_64-unknown-linux-musl/typst /usr/local/bin/typst
-          rm -rf typst.tar.xz typst-x86_64-unknown-linux-musl
-          typst --version
-          echo "✅ Typst v${TYPST_VERSION} installed successfully"
+
 
       - name: Restore PDF cache
         uses: actions/cache@v4
@@ -51,6 +41,19 @@ jobs:
           restore-keys: |
             pdf-cache-${{ hashFiles('school-macros.sty') }}-
             pdf-cache-
+      - name: Install Typst (apt)
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if command -v typst >/dev/null 2>&1; then
+            echo "typst already installed: $(typst --version || true)"
+          else
+            echo "Installing typst via apt..."
+            DEBIAN_FRONTEND=noninteractive apt-get update -y
+            DEBIAN_FRONTEND=noninteractive apt-get install -y typst
+            typst --version
+          fi
 
       - name: Find and Build LaTeX documents
         shell: bash
