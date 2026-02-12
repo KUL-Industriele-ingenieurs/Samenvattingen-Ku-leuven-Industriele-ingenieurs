@@ -54,7 +54,7 @@ Je maakt systemen in de tijd met differentiële vergelijkingen. Je analyseert sy
   Je ontwerpt systemen met regeltechniek. Je implementeert systemen met code.
 ]
 
-#let fig-dcgain = image("dc-gain-polen-nullen.png", width: 6cm)
+#let fig-dcgain = image("dc-gain-polen-nullen.png", width: 9cm)
 #let boxed-dcgain = box(fig-dcgain, inset: (right: 0.5em, bottom: 0.5em))
 
 #wrap-content(boxed-dcgain)[
@@ -95,7 +95,9 @@ Je maakt systemen in de tijd met differentiële vergelijkingen. Je analyseert sy
   *Stap 4 — Transferfunctie afleiden:*
 
   Deel teller en noemer door $m$ om de standaardvorm te bekomen:
-  $ H(s) = frac(V(s), F(s)) = frac(1, m s + beta) = frac(1 slash m, s + beta slash m) $
+  Net zoals bij MATHSYS.
+  $ H(s) = Y(s)/X(s) $
+  $ arrow.r.double H(s) = frac(V(s), F(s)) = frac(1, m s + beta) = frac(1 slash m, s + beta slash m) $
 
   We herkennen de standaardvorm van een eerste orde systeem $H(s) = frac(K_(d c), tau s + 1)$ met:
   $ K_(d c) = frac(1, beta) quad quad tau = frac(m, beta) $
@@ -159,14 +161,13 @@ Je maakt systemen in de tijd met differentiële vergelijkingen. Je analyseert sy
 ]
 
 #oefening(title: "Voorbeeldoefening eerste orde")[
-  #let fig-oef1 = image("oefening-eerste-orde.png", width: 5cm)
-  #let boxed-oef1 = box(fig-oef1, inset: (right: 0.5em, bottom: 0.5em))
-
-  #wrap-content(boxed-oef1)[
+  #figure(
+    image("oefening-eerste-orde.png", width: 12cm),
+    caption: [Voorbeeldoefening eerste orde systeem],
+  ) <fig:oefening-eerste-orde>
     *Gegeven:* $6 z'(t) + 2 z(t) = 4 u(t) + 3$, evenwicht bij $z = 3$ en $t = 0$. De ingang $u(t)$ wordt plots met 1 verhoogd.
 
     *Gevraagd:* Vind de transferfunctie van de variatie en de respons.
-  ]
 
   *Stap 1 — Evenwichtspunt bepalen:*
 
@@ -319,7 +320,7 @@ met:
 $ omega_n = sqrt(k / m) quad quad zeta omega_n = frac(c, m) quad quad zeta = frac(c, 2 sqrt(k m)) $
 
 #oefening(title: "Oefening tweede orde systeem")[
-  #let fig-oef2 = image("oefening-tweede-orde.png", width: 5cm)
+  #let fig-oef2 = image("oefening-tweede-orde.png", width: 7cm)
   #let boxed-oef2 = box(fig-oef2, inset: (right: 0.5em, bottom: 0.5em))
 
   #wrap-content(boxed-oef2)[
