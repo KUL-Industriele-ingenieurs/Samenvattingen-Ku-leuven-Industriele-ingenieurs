@@ -27,11 +27,15 @@
 //
 // Tip: To temporarily exclude a chapter, comment out its #include line.
 
-// Symbol list and formularium are auto-generated
+// ============================================================================
+//                           CHAPTER INCLUDES
+// ============================================================================
+
+#include "Inleiding.typ"
+
+// ============================================================================
+//                              APPENDICES
+// ============================================================================
+
 #printsymbols()
 #printformularium()
-
-#include "chapter1_inleiding.typ"
-#include "chapter2_theorie.typ"
-#include "chapter3_voorbeelden.typ"
-#include "Inleiding.typ"
