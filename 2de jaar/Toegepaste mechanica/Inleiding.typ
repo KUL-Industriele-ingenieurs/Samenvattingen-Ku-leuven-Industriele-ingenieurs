@@ -1,38 +1,30 @@
-// chapter1_inleiding.typ
-// Eerste hoofdstuk - Inleiding
-// Dit bestand wordt geladen via #include "chapters/chapter1_inleiding.typ"
-
 #import "../../school-template.typ": *
 
 = Leerstof info
 
-Dit vak heeft twee delen:
+== Info vak
 
-- *Statica*: Statische en evenwicht van systemen of systemen met constant snelheid.
-- *Dynamica*: Dynamica van systemen met versnelling of variabele snelheid. We willen weten wat is de positie $x$, snelheid $v$ en versnelling $a$ van een systeem op een bepaald moment.
+#let fig-blended = image("blended-learning.png", width: 5cm)
+#let boxed-blended = box(fig-blended, inset: (right: 0.5em, bottom: 0.5em))
 
-#belangrijk[Deze cursur bouwt verder op Dynamica en energie en Statica.
-]
+#wrap-content(boxed-blended)[
+  Dit vak heeft twee delen:
 
-Dit is een blended cursus dus je moet lessen voorbereiden 
+  - *Statica*: Statische en evenwicht van systemen of systemen met constante snelheid.
+  - *Dynamica*: Dynamica van systemen met versnelling of variabele snelheid. We willen weten wat de positie $x$, snelheid $v$ en versnelling $a$ van een systeem op een bepaald moment zijn.
 
-#let fig = image("Blended learning.png",width: 6cm)
-#let boxed = box(fig, inset: (right: 0.5em, bottom: 0.5em))
+  #belangrijk[Deze cursus bouwt verder op Dynamica en Energie en Statica.]
 
-#wrap-content(boxed)[
-Dit is een blended cursus dus je moet lessen voorbereiden. 
-
-Je bekijkt de lessen je hebt dan groepsmomenten en daarna heb je oefenzittingen om de leerstof te oefenen.
+  Dit is een blended cursus: je bekijkt de lessen vooraf, dan heb je groepsmomenten en daarna oefenzittingen om de leerstof te oefenen.
 ]
 
 == Indeling Cursus
 
-#align(center, image("Indelding cursus.png", width: 10cm))
+#figure(
+  image("indeling-cursus.png", width: 8cm),
+  caption: [Indeling van de cursus],
+) <fig:indeling-cursus>
 
 == Exameninfo
-Het examen bevat geen theorie maar puur #belangrijk[ 100% Toepassing van de theorie, *oefenen dus!*]
 
-
-
-
-
+Het examen bevat geen theorie maar puur #belangrijk[100% toepassing van de theorie, *oefenen dus!*]

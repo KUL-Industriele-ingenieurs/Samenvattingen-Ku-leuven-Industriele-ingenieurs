@@ -8,9 +8,9 @@
 #import "../../school-template.typ": *
 
 #show: project.with(
-  title: "Modulair Document Voorbeeld",
-  course: "Voorbeeldvak",
-  authors: ("Jouw Naam", "Andere Auteur"),
+  title: "Toegepaste Mechanica en Dynamica Samenvatting",
+  course: "Toegepaste Mechanica en Dynamica",
+  authors: ("Ruben Ryckaert",),
   academic_year: "2025-2026",
 )
 
@@ -27,11 +27,9 @@
 //
 // Tip: To temporarily exclude a chapter, comment out its #include line.
 
-// Symbol list and formularium are auto-generated
-#printsymbols()
-#printformularium()
-
 #include "inleiding.typ"
 #include "Vlakke kinematica van een star lichaam.typ"
 
-
+// Appendices
+#printsymbols()
+#printformularium()
