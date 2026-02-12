@@ -8,9 +8,9 @@
 #import "../../school-template.typ": *
 
 #show: project.with(
-  title: "Modulair Document Voorbeeld",
-  course: "Voorbeeldvak",
-  authors: ("Jouw Naam", "Andere Auteur"),
+  title: "Systeem en Regeltechniek Samenvatting",
+  course: "Systeem en Regeltechniek",
+  authors: ("Ruben Ryckaert", "Andere Auteur"),
   academic_year: "2025-2026",
 )
 
@@ -31,7 +31,7 @@
 #printsymbols()
 #printformularium()
 
-#include "chapters/chapter1_inleiding.typ"
-#include "chapters/chapter2_theorie.typ"
-#include "chapters/chapter3_voorbeelden.typ"
+#include "chapter1_inleiding.typ"
+#include "chapter2_theorie.typ"
+#include "chapter3_voorbeelden.typ"
 #include "Inleiding.typ"
