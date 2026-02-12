@@ -103,12 +103,12 @@ Algemene vlakke beweging is een combinatie van translatie en rotatie. De positie
 ]
 
 #figure(
-  image("contactpunt-versnellingen.png", width: 50%),
+  image("contactpunt-versnellingen.png", width: 30%),
   caption: [Snelheden en versnellingen bij contactpunten van tandwielen],
 ) <fig:contactpunt-versnellingen>
 
 #oefening(title: "Rotatie om vast punt")[
-  #let fig-oef-l = image("oefening-rotatie-l-vorm.png", width: 5cm)
+  #let fig-oef-l = image("oefening-rotatie-l-vorm.png", width: 8cm)
   #let boxed-oef-l = box(fig-oef-l, inset: (right: 0.5em, bottom: 0.5em))
 
   #wrap-content(boxed-oef-l)[
