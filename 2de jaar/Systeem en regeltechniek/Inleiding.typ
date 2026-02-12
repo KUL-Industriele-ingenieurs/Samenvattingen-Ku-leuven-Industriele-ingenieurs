@@ -65,7 +65,7 @@ Je maakt systemen in de tijd met differentiële vergelijkingen. Je analyseert sy
   De $K$ is niet de DC-versterking.
 ]
 
-
+= Systemen
 
 == Eerste orde systemen
 
