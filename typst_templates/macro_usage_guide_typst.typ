@@ -27,23 +27,23 @@
 Een minimaal Typst document met school-template ziet er als volgt uit:
 
 #codeblock(lang: "typst", title: "Minimaal Voorbeeld")[
-```
-#import "school-template.typ": *
+  ```
+  #import "school-template.typ": *
 
-#show: project.with(
-  title: "Mijn Samenvatting",
-  course: "Vaknaam",
-  authors: ("Jouw Naam",),
-  academic_year: "2025-2026",
-)
+  #show: project.with(
+    title: "Mijn Samenvatting",
+    course: "Vaknaam",
+    authors: ("Jouw Naam",),
+    academic_year: "2025-2026",
+  )
 
-= Inleiding
-Hier begint je inhoud...
+  = Inleiding
+  Hier begint je inhoud...
 
-// Appendix
-#printsymbols()
-#printformularium()
-```
+  // Appendix
+  #printsymbols()
+  #printformularium()
+  ```
 ]
 
 #waarschuwing(title: "Typst vs LaTeX")[
@@ -89,19 +89,19 @@ Deze geeft je:
 Typst heeft een eenvoudige syntax voor tekstopmaak:
 
 #codeblock(lang: "typst", title: "Basis Tekstopmaak")[
-```
-*Vetgedrukt*
-_Cursief_
-#underline[Onderstreept]
-#emph[Nadruk]
-`monospace`
-#text(fill: red)[Gekleurde tekst]
-#smallcaps[Kleine Hoofdletters]
+  ```
+  *Vetgedrukt*
+  _Cursief_
+  #underline[Onderstreept]
+  #emph[Nadruk]
+  `monospace`
+  #text(fill: red)[Gekleurde tekst]
+  #smallcaps[Kleine Hoofdletters]
 
-= Heading 1
-== Heading 2
-=== Heading 3
-```
+  = Heading 1
+  == Heading 2
+  === Heading 3
+  ```
 ]
 
 Resultaat:
@@ -135,17 +135,17 @@ Je kan de grootte van de tekst aanpassen met `#text(size: ...)`:
 Lijstjes zijn super handig voor samenvattingen!
 
 #codeblock(lang: "typst", title: "Opsommingen")[
-```
-// Ongeordende lijst (bolletjes)
-- Eerste punt
-- Tweede punt
-  - Genest punt
+  ```
+  // Ongeordende lijst (bolletjes)
+  - Eerste punt
+  - Tweede punt
+    - Genest punt
 
-// Geordende lijst (nummers)
-+ Stap 1
-+ Stap 2
-  + Sub-stap
-```
+  // Geordende lijst (nummers)
+  + Stap 1
+  + Stap 2
+    + Sub-stap
+  ```
 ]
 
 Resultaat:
@@ -165,14 +165,14 @@ Resultaat:
 - *Nieuwe pagina:* Gebruik `#pagebreak()`.
 
 #codeblock(lang: "typst", title: "Regels en Alinea's")[
-```
-Dit is de eerste alinea.
+  ```
+  Dit is de eerste alinea.
 
-Dit is een nieuwe alinea (witregel ertussen).
+  Dit is een nieuwe alinea (witregel ertussen).
 
-Dit is regel 1 \
-Dit is regel 2 (harde enter met backslash)
-```
+  Dit is regel 1 \
+  Dit is regel 2 (harde enter met backslash)
+  ```
 ]
 
 == Commentaar
@@ -180,11 +180,11 @@ Dit is regel 2 (harde enter met backslash)
 Alles wat je achter `//` typt, wordt genegeerd door Typst:
 
 #codeblock(lang: "typst", title: "Commentaar")[
-```
-Dit is tekst die in de PDF komt.
-// Dit is een notitie, dit zie je niet in de PDF.
-Hier gaat de tekst verder.
-```
+  ```
+  Dit is tekst die in de PDF komt.
+  // Dit is een notitie, dit zie je niet in de PDF.
+  Hier gaat de tekst verder.
+  ```
 ]
 
 = Samenwerken en Issues (GitHub)
@@ -226,12 +226,12 @@ Hiermee kun je getallen, eenheden en bereiken correct formatteren.
   columns: (1fr, 1fr),
   align: (left, left),
   table.header([*Code*], [*Resultaat*]),
-  [`$qty("50", "km/h")$`],         [$qty("50", "km/h")$],
-  [`$qty("9.81", "m/s^2")$`],      [$qty("9.81", "m/s^2")$],
-  [`$qty("1.5", "kN")$`],          [$qty("1.5", "kN")$],
-  [`$qty("3e8", "m/s")$`],         [$qty("3e8", "m/s")$],
-  [`$num("1234567")$`],            [$num("1234567")$],
-  [`$num("3.14159")$`],            [$num("3.14159")$],
+  [`$qty("50", "km/h")$`], [$qty("50", "km/h")$],
+  [`$qty("9.81", "m/s^2")$`], [$qty("9.81", "m/s^2")$],
+  [`$qty("1.5", "kN")$`], [$qty("1.5", "kN")$],
+  [`$qty("3e8", "m/s")$`], [$qty("3e8", "m/s")$],
+  [`$num("1234567")$`], [$num("1234567")$],
+  [`$num("3.14159")$`], [$num("3.14159")$],
   [`$num("-1.32865+-0.50273e-6")$`], [$num("-1.32865+-0.50273e-6")$],
 )
 
@@ -242,10 +242,10 @@ $qtyrange("20", "30", "m/s")$
 
 Code:
 #codeblock(lang: "typst", title: "Bereiken")[
-```
-$numrange("1", "10")$
-$qtyrange("20", "30", "m/s")$
-```
+  ```
+  $numrange("1", "10")$
+  $qtyrange("20", "30", "m/s")$
+  ```
 ]
 
 #examenbox[Gebruik *altijd* `qty()` of `num()` voor getallen en eenheden om consistente spatiëring en opmaak te krijgen.]
@@ -263,11 +263,11 @@ De template heeft macros om belangrijke dingen te markeren zoals definities, the
 
 Code:
 #codeblock(lang: "typst", title: "Concept Box")[
-```
-#concept(title: "Snijsnelheid")[
-  De *snijsnelheid* ($v_c$) is de omtrekssnelheid...
-]
-```
+  ```
+  #concept(title: "Snijsnelheid")[
+    De *snijsnelheid* ($v_c$) is de omtrekssnelheid...
+  ]
+  ```
 ]
 
 == Theorie (Stellingen)
@@ -279,12 +279,12 @@ Code:
 
 Code:
 #codeblock(lang: "typst", title: "Theorie Box")[
-```
-#theorie(title: "Energiebehoud")[
-  In een gesloten systeem...
-  $ E_"totaal" = E_k + E_p = "constant" $
-]
-```
+  ```
+  #theorie(title: "Energiebehoud")[
+    In een gesloten systeem...
+    $ E_"totaal" = E_k + E_p = "constant" $
+  ]
+  ```
 ]
 
 == Oefening (Oefeningen)
@@ -325,13 +325,13 @@ Code:
   columns: (1fr, 1fr, 1fr),
   align: (left, left, left),
   table.header([*Type*], [*Functie*], [*Kleur*]),
-  [Theorie],    [`#theorie(title: "...")[...]`],     [Blauw],
-  [Concept],    [`#concept(title: "...")[...]`],      [Teal],
-  [Voorbeeld],  [`#voorbeeld(title: "...")[...]`],    [Groen],
-  [Oefening],   [`#oefening(title: "...")[...]`],     [Groen],
-  [Waarschuwing],[`#waarschuwing(title: "...")[...]`], [Rood],
-  [Formule],    [`#form(title: "...")[...]`],          [Oranje],
-  [Theorem],    [`#theorem(title: "...")[...]`],       [Diepblauw],
+  [Theorie], [`#theorie(title: "...")[...]`], [Blauw],
+  [Concept], [`#concept(title: "...")[...]`], [Teal],
+  [Voorbeeld], [`#voorbeeld(title: "...")[...]`], [Groen],
+  [Oefening], [`#oefening(title: "...")[...]`], [Groen],
+  [Waarschuwing], [`#waarschuwing(title: "...")[...]`], [Rood],
+  [Formule], [`#form(title: "...")[...]`], [Oranje],
+  [Theorem], [`#theorem(title: "...")[...]`], [Diepblauw],
 )
 
 = Formules met \#frm
@@ -348,11 +348,11 @@ De `#frm()` functie is de kern van het formularium-systeem. Het:
 
 Code:
 #codeblock(lang: "typst", title: "Formularium Entry")[
-```
-#frm("Kinetische Energie", $E_k = frac(1, 2) m v^2$, [
-  met $m$ = massa ($"kg"$) en $v$ = snelheid ($"m/s"$)
-])
-```
+  ```
+  #frm("Kinetische Energie", $E_k = frac(1, 2) m v^2$, [
+    met $m$ = massa ($"kg"$) en $v$ = snelheid ($"m/s"$)
+  ])
+  ```
 ]
 
 == Meer voorbeelden
@@ -365,27 +365,71 @@ Code:
   met $F$ = kracht ($"N"$), $s$ = verplaatsing ($"m"$), $theta$ = hoek ($"rad"$)
 ])
 
+#frm(
+  "Meerdere Formules",
+  [
+    $ F = m a $
+    $ E = m c^2 $
+  ],
+  [
+    Voorbeeld van meerdere formules in één blok.
+  ],
+)
+
+
 == Text wrap rond figuren
-Gebruik `#wrap-content` uit de `wrap-it` package voor tekst die rond een figuur loopt.
+Gebruik `#wrap-figure` om tekst rond een afbeelding te laten lopen.
 
-#let fig = image("default-ui-image-placeholder-wireframes-260nw-1037719192.webp", width: 4cm)
-#let boxed = box(fig, inset: (right: 0.5em, bottom: 0.5em))
-
-#wrap-content(boxed)[
+// Voorbeeld van wrap-figure gebruik:
+#wrap-figure(
+  image("default-ui-image-placeholder-wireframes-260nw-1037719192.webp", width: 100%),
+  caption: [Een wireframe placeholder.],
+  label: <fig:wireframe>,
+  width: 5cm,
+  align: right,
+)[
   #lorem(80)
 ]
 
 Code:
-#codeblock(lang : "typst", title: "Text wrap rond figuren")[
-```
-#let fig = image("default-ui-image-placeholder-wireframes-260nw-1037719192.webp", width: 4cm)
-#let boxed = box(fig, inset: (right: 0.5em, bottom: 0.5em))
-
-#wrap-content(boxed)[
-  #lorem(40)
-]   
-```
+#codeblock(lang: "typst", title: "Text wrap rond figuren")[
+  ```
+  #wrap-figure(
+    image("afbeelding.png", width: 100%),
+    caption: [Onderschrift],
+    label: <fig:label>,
+    width: 5cm,
+    align: right
+  )[
+    Hier komt de tekst die rond de afbeelding moet lopen.
+    #lorem(40)
+  ]
+  ```
 ]
+
+#wrap-figure(
+  image("test.png", width: 80%),
+  caption: [test],
+  label: <fig:test>,
+  width: 5cm,
+  align: right,
+)[
+  #lorem(40)
+]
+
+= Afbeeldingen Toevoegen (Nieuwe Workflow)
+
+We gebruiken de *Paste Image* extensie voor een snellere workflow.
+
++ *Kopieer* een afbeelding (of screenshot).
++ *Plak* in VS Code (`Ctrl+Alt+V` of Command Palette `Paste Image`).
++ Je krijgt een popup om de *bestandsnaam* te kiezen.
++ De extensie slaat de afbeelding op in de *huidige map* en voegt automatisch de `figure` code toe!
+
+== Snippets
+
+Typ `fig` en druk op `Tab` om snel een standaard figuur in te voegen.
+Typ `wrapfig` en druk op `Tab` om een `#wrap-figure` blok in te voegen.
 
 
 == Formularium afdrukken
@@ -393,13 +437,13 @@ Code:
 Aan het einde van je document kun je alle geregistreerde formules afdrukken:
 
 #codeblock(lang: "typst", title: "Formularium Printen")[
-```
-// Eén kolom:
-#printformularium()
+  ```
+  // Eén kolom:
+  #printformularium()
 
-// Twee kolommen (compact):
-#printformulariumtwocol()
-```
+  // Twee kolommen (compact):
+  #printformulariumtwocol()
+  ```
 ]
 
 = Symbolen met \#sym
@@ -420,22 +464,22 @@ Dit voorkomt herhaling en houdt je document overzichtelijk.
 
 Code:
 #codeblock(lang: "typst", title: "Symbolen")[
-```
-// Eerste gebruik (toont definitie):
-#sym($F$, "Kracht", "N")
+  ```
+  // Eerste gebruik (toont definitie):
+  #sym($F$, "Kracht", "N")
 
-// Herhaald gebruik (toont alleen F):
-#sym($F$, "Kracht", "N")
-```
+  // Herhaald gebruik (toont alleen F):
+  #sym($F$, "Kracht", "N")
+  ```
 ]
 
 == Symbolenlijst afdrukken
 
 #codeblock(lang: "typst", title: "Symbolen Printen")[
-```
-// Aan het einde van je document:
-#printsymbols()
-```
+  ```
+  // Aan het einde van je document:
+  #printsymbols()
+  ```
 ]
 
 = Wiskunde in Typst
@@ -445,19 +489,19 @@ Typst heeft een krachtige ingebouwde wiskundemodus. De syntax is wat anders dan 
 == Basis wiskunde
 
 #codeblock(lang: "typst", title: "Wiskunde Basis")[
-```
-// Inline wiskunde:
-De formule $E = m c^2$ is beroemd.
+  ```
+  // Inline wiskunde:
+  De formule $E = m c^2$ is beroemd.
 
-// Display wiskunde (gecentreerd):
-$ E = m c^2 $
+  // Display wiskunde (gecentreerd):
+  $ E = m c^2 $
 
-// Breuken:
-$ frac(a, b) $
+  // Breuken:
+  $ frac(a, b) $
 
-// Wortels:
-$ sqrt(x) $    en    $ root(3, x) $
-```
+  // Wortels:
+  $ sqrt(x) $    en    $ root(3, x) $
+  ```
 ]
 
 Resultaat:
@@ -485,30 +529,30 @@ Dit geeft je LaTeX-achtige commando's voor afgeleiden:
   columns: (1fr, 1fr),
   align: (left, left),
   table.header([*Code*], [*Resultaat*]),
-  [`$dv(y,x)$`],          [$dv(y,x)$],
-  [`$dv(y,x,2)$`],        [$dv(y,x,2)$],
-  [`$pdv(f,x)$`],          [$pdv(f,x)$],
-  [`$pdv(f,x,2)$`],        [$pdv(f,x,2)$],
-  [`$grad f$`],            [$grad f$],
-  [`$div va(F)$`],         [$div va(F)$],
-  [`$curl va(F)$`],        [$curl va(F)$],
-  [`$laplacian f$`],       [$laplacian f$],
-  [`$braket(psi, phi)$`],  [$braket(psi, phi)$],
+  [`$dv(y,x)$`], [$dv(y, x)$],
+  [`$dv(y,x,2)$`], [$dv(y, x, 2)$],
+  [`$pdv(f,x)$`], [$pdv(f, x)$],
+  [`$pdv(f,x,2)$`], [$pdv(f, x, 2)$],
+  [`$grad f$`], [$grad f$],
+  [`$div va(F)$`], [$div va(F)$],
+  [`$curl va(F)$`], [$curl va(F)$],
+  [`$laplacian f$`], [$laplacian f$],
+  [`$braket(psi, phi)$`], [$braket(psi, phi)$],
 )
 
 == Matrices en Vectoren
 
 #codeblock(lang: "typst", title: "Matrices")[
-```
-// Matrix:
-$ mat(1, 2; 3, 4) $
+  ```
+  // Matrix:
+  $ mat(1, 2; 3, 4) $
 
-// Vector:
-$ vec(x, y, z) $
+  // Vector:
+  $ vec(x, y, z) $
 
-// Pijl-vector:
-$ arrow(F) $
-```
+  // Pijl-vector:
+  $ arrow(F) $
+  ```
 ]
 
 Resultaat:
@@ -522,14 +566,14 @@ $ mat(1, 2; 3, 4) quad quad vec(x, y, z) quad quad arrow(F) $
   columns: (1fr, 1fr, 1fr, 1fr),
   align: (left, left, left, left),
   table.header([*Code*], [*Res*], [*Code*], [*Res*]),
-  [`$alpha$`],   [$alpha$],   [`$beta$`],    [$beta$],
-  [`$gamma$`],   [$gamma$],   [`$delta$`],    [$delta$],
-  [`$epsilon$`], [$epsilon$], [`$theta$`],    [$theta$],
-  [`$lambda$`],  [$lambda$],  [`$mu$`],       [$mu$],
-  [`$pi$`],      [$pi$],      [`$rho$`],      [$rho$],
-  [`$sigma$`],   [$sigma$],   [`$tau$`],      [$tau$],
-  [`$phi$`],     [$phi$],     [`$omega$`],    [$omega$],
-  [`$Delta$`],   [$Delta$],   [`$Omega$`],    [$Omega$],
+  [`$alpha$`], [$alpha$], [`$beta$`], [$beta$],
+  [`$gamma$`], [$gamma$], [`$delta$`], [$delta$],
+  [`$epsilon$`], [$epsilon$], [`$theta$`], [$theta$],
+  [`$lambda$`], [$lambda$], [`$mu$`], [$mu$],
+  [`$pi$`], [$pi$], [`$rho$`], [$rho$],
+  [`$sigma$`], [$sigma$], [`$tau$`], [$tau$],
+  [`$phi$`], [$phi$], [`$omega$`], [$omega$],
+  [`$Delta$`], [$Delta$], [`$Omega$`], [$Omega$],
 )
 
 === Pijlen
@@ -538,14 +582,14 @@ $ mat(1, 2; 3, 4) quad quad vec(x, y, z) quad quad arrow(F) $
   columns: (1fr, 1fr, 1fr),
   align: (left, left, left),
   table.header([*Naam*], [*Code*], [*Symbool*]),
-  [Rechts],      [`$arrow.r$`],         [$arrow.r$],
-  [Links],       [`$arrow.l$`],         [$arrow.l$],
-  [Links & Rechts], [`$arrow.l.r$`],    [$arrow.l.r$],
-  [Impliceert],  [`$=>$` of `$implies$`], [$=>$],
-  [Equivalent],  [`$<==>$` of `$iff$`],   [$<==>$],
-  [Mapsto],      [`$|->$`],              [$|->$],
-  [Omhoog],      [`$arrow.t$`],         [$arrow.t$],
-  [Omlaag],      [`$arrow.b$`],         [$arrow.b$],
+  [Rechts], [`$arrow.r$`], [$arrow.r$],
+  [Links], [`$arrow.l$`], [$arrow.l$],
+  [Links & Rechts], [`$arrow.l.r$`], [$arrow.l.r$],
+  [Impliceert], [`$=>$` of `$implies$`], [$=>$],
+  [Equivalent], [`$<==>$` of `$iff$`], [$<==>$],
+  [Mapsto], [`$|->$`], [$|->$],
+  [Omhoog], [`$arrow.t$`], [$arrow.t$],
+  [Omlaag], [`$arrow.b$`], [$arrow.b$],
 )
 
 === Operatoren en Relaties
@@ -556,14 +600,14 @@ $ mat(1, 2; 3, 4) quad quad vec(x, y, z) quad quad arrow(F) $
   table.header([*Beschrijving*], [*Code*], [*Symbool*]),
   [Vermenigvuldigen], [`$times$` of `$dot$`], [$times$ of $dot$],
   [Kleiner/Groter gelijk], [`$<=$` / `$>=$`], [$<=$ / $>=$],
-  [Ongeveer],     [`$approx$`],       [$approx$],
-  [Niet gelijk],  [`$!=$` of `$eq.not$`],  [$!=$],
-  [Evenredig],    [`$prop$`],        [$prop$],
-  [Oneindig],     [`$infinity$`],    [$infinity$],
-  [Nabla],        [`$nabla$`],       [$nabla$],
-  [Partieel],     [`$partial$`],     [$partial$],
-  [Som],          [`$sum$`],         [$sum$],
-  [Integraal],    [`$integral$`],    [$integral$],
+  [Ongeveer], [`$approx$`], [$approx$],
+  [Niet gelijk], [`$!=$` of `$eq.not$`], [$!=$],
+  [Evenredig], [`$prop$`], [$prop$],
+  [Oneindig], [`$infinity$`], [$infinity$],
+  [Nabla], [`$nabla$`], [$nabla$],
+  [Partieel], [`$partial$`], [$partial$],
+  [Som], [`$sum$`], [$sum$],
+  [Integraal], [`$integral$`], [$integral$],
 )
 
 === Logica en Verzamelingen
@@ -572,13 +616,13 @@ $ mat(1, 2; 3, 4) quad quad vec(x, y, z) quad quad arrow(F) $
   columns: (1fr, 1fr, 1fr),
   align: (left, left, left),
   table.header([*Beschrijving*], [*Code*], [*Symbool*]),
-  [Voor alle],      [`$forall$`],     [$forall$],
-  [Er bestaat],     [`$exists$`],     [$exists$],
-  [Element van],    [`$in$`],         [$in$],
-  [Niet element],   [`$in.not$`],     [$in.not$],
-  [Deelverzameling],[`$subset$`],     [$subset$],
-  [Vereniging],     [`$union$`],      [$union$],
-  [Doorsnede],      [`$sect$`],       [$sect$],
+  [Voor alle], [`$forall$`], [$forall$],
+  [Er bestaat], [`$exists$`], [$exists$],
+  [Element van], [`$in$`], [$in$],
+  [Niet element], [`$in.not$`], [$in.not$],
+  [Deelverzameling], [`$subset$`], [$subset$],
+  [Vereniging], [`$union$`], [$union$],
+  [Doorsnede], [`$sect$`], [$sect$],
   [Ledige verzameling], [`$emptyset$`], [$emptyset$],
 )
 
@@ -589,19 +633,19 @@ $ mat(1, 2; 3, 4) quad quad vec(x, y, z) quad quad arrow(F) $
 In Typst gebruik je `<label>` en `@label` voor cross-referenties:
 
 #codeblock(lang: "typst", title: "Cross-References")[
-```
-= Mijn Sectie <sec:intro>
+  ```
+  = Mijn Sectie <sec:intro>
 
-Later kun je verwijzen naar @sec:intro.
+  Later kun je verwijzen naar @sec:intro.
 
-// Figuren:
-#figure(
-  image("afbeelding.png", width: 80%),
-  caption: [Onderschrift],
-) <fig:mijn-figuur>
+  // Figuren:
+  #figure(
+    image("afbeelding.png", width: 80%),
+    caption: [Onderschrift],
+  ) <fig:mijn-figuur>
 
-Zie @fig:mijn-figuur.
-```
+  Zie @fig:mijn-figuur.
+  ```
 ]
 
 #waarschuwing(title: "Labels in Typst")[
@@ -614,12 +658,12 @@ Zie @fig:mijn-figuur.
 == Standaard Figuur
 
 #codeblock(lang: "typst", title: "Figuur")[
-```
-#figure(
-  image("afbeelding.png", width: 80%),
-  caption: [Beschrijving van de afbeelding],
-) <fig:label>
-```
+  ```
+  #figure(
+    image("afbeelding.png", width: 80%),
+    caption: [Beschrijving van de afbeelding],
+  ) <fig:label>
+  ```
 ]
 
 == Figuur naast tekst
@@ -627,17 +671,17 @@ Zie @fig:mijn-figuur.
 In Typst gebruik je `grid` voor layouts met tekst naast een figuur:
 
 #codeblock(lang: "typst", title: "Figuur naast tekst")[
-```
-#grid(
-  columns: (1fr, 1fr),
-  column-gutter: 1em,
-  [Hier komt je tekst die naast de afbeelding staat.],
-  figure(
-    image("afbeelding.png", width: 100%),
-    caption: [Onderschrift],
-  ),
-)
-```
+  ```
+  #grid(
+    columns: (1fr, 1fr),
+    column-gutter: 1em,
+    [Hier komt je tekst die naast de afbeelding staat.],
+    figure(
+      image("afbeelding.png", width: 100%),
+      caption: [Onderschrift],
+    ),
+  )
+  ```
 ]
 
 = Tabellen
@@ -645,18 +689,18 @@ In Typst gebruik je `grid` voor layouts met tekst naast een figuur:
 Typst heeft ingebouwde tabellen die eenvoudiger zijn dan LaTeX:
 
 #codeblock(lang: "typst", title: "Tabel")[
-```
-#table(
-  columns: (1fr, 1fr, 1fr),
-  align: (left, center, center),
-  table.header(
-    [*Materiaal*], [*Dichtheid*], [*E-modulus*],
-  ),
-  [Staal],     [7850 kg/m³], [210 GPa],
-  [Aluminium], [2700 kg/m³], [70 GPa],
-  [Koper],     [8960 kg/m³], [120 GPa],
-)
-```
+  ```
+  #table(
+    columns: (1fr, 1fr, 1fr),
+    align: (left, center, center),
+    table.header(
+      [*Materiaal*], [*Dichtheid*], [*E-modulus*],
+    ),
+    [Staal],     [7850 kg/m³], [210 GPa],
+    [Aluminium], [2700 kg/m³], [70 GPa],
+    [Koper],     [8960 kg/m³], [120 GPa],
+  )
+  ```
 ]
 
 Resultaat:
@@ -664,12 +708,10 @@ Resultaat:
 #table(
   columns: (1fr, 1fr, 1fr),
   align: (left, center, center),
-  table.header(
-    [*Materiaal*], [*Dichtheid*], [*E-modulus*],
-  ),
-  [Staal],     [$7850 "kg/m³"$], [$210 "GPa"$],
+  table.header([*Materiaal*], [*Dichtheid*], [*E-modulus*]),
+  [Staal], [$7850 "kg/m³"$], [$210 "GPa"$],
   [Aluminium], [$2700 "kg/m³"$], [$70 "GPa"$],
-  [Koper],     [$8960 "kg/m³"$], [$120 "GPa"$],
+  [Koper], [$8960 "kg/m³"$], [$120 "GPa"$],
 )
 
 = Grafieken en Plots (cetz-plot)
@@ -679,210 +721,240 @@ Hiermee kun je functiegrafieken, scatterplots, staafdiagrammen en meer maken.
 
 == Functieplot
 
-#cetz.canvas({
-  import cetz.draw: *
-  plot.plot(
-    size: (10, 6),
-    x-label: $x$, y-label: $f(x)$,
-    x-tick-step: 1,
-    y-tick-step: 1,
-    {
-      plot.add(domain: (-3, 3), samples: 100, label: $f(x) = x^2$, x => calc.pow(x, 2))
-      plot.add(domain: (-3, 3), samples: 100, label: $g(x) = 2x$, style: (stroke: red + 1.5pt), x => 2*x)
-    },
-  )
-})
+#align(center)[
+  #cetz.canvas({
+    import cetz.draw: *
+    plot.plot(
+      size: (10, 6),
+      x-label: $x$,
+      y-label: $f(x)$,
+      x-tick-step: 1,
+      y-tick-step: 1,
+      {
+        plot.add(domain: (-3, 3), samples: 100, label: $f(x) = x^2$, x => calc.pow(x, 2))
+        plot.add(domain: (-3, 3), samples: 100, label: $g(x) = 2x$, style: (stroke: red + 1.5pt), x => 2 * x)
+      },
+    )
+  })
+]
 
 Code:
 #codeblock(lang: "typst", title: "Functieplot")[
-```
-#cetz.canvas({
-  import cetz.draw: *
-  plot.plot(
-    size: (10, 6),
-    x-label: $x$, y-label: $f(x)$,
-    x-tick-step: 1, y-tick-step: 1,
-    {
-      plot.add(
-        domain: (-3, 3), samples: 100,
-        label: $f(x) = x^2$,
-        x => calc.pow(x, 2),
-      )
-      plot.add(
-        domain: (-3, 3), samples: 100,
-        label: $g(x) = 2x$,
-        style: (stroke: red + 1.5pt),
-        x => 2*x,
-      )
-    },
-  )
-})
-```
+  ```
+  #cetz.canvas({
+    import cetz.draw: *
+    plot.plot(
+      size: (10, 6),
+      x-label: $x$, y-label: $f(x)$,
+      x-tick-step: 1, y-tick-step: 1,
+      {
+        plot.add(
+          domain: (-3, 3), samples: 100,
+          label: $f(x) = x^2$,
+          x => calc.pow(x, 2),
+        )
+        plot.add(
+          domain: (-3, 3), samples: 100,
+          label: $g(x) = 2x$,
+          style: (stroke: red + 1.5pt),
+          x => 2*x,
+        )
+      },
+    )
+  })
+  ```
 ]
 
 == Trigonometrische functies
 
-#cetz.canvas({
-  import cetz.draw: *
-  plot.plot(
-    size: (10, 5),
-    x-label: $x$, y-label: $y$,
-    x-tick-step: calc.pi / 2,
-    y-tick-step: 0.5,
-    y-min: -1.5, y-max: 1.5,
-    {
-      plot.add(domain: (0, 2 * calc.pi), samples: 100, label: $sin(x)$, style: (stroke: blue + 1.5pt), x => calc.sin(x))
-      plot.add(domain: (0, 2 * calc.pi), samples: 100, label: $cos(x)$, style: (stroke: red + 1.5pt), x => calc.cos(x))
-    },
-  )
-})
+#align(center)[
+  #cetz.canvas({
+    import cetz.draw: *
+    plot.plot(
+      size: (10, 5),
+      x-label: $x$,
+      y-label: $y$,
+      x-tick-step: calc.pi / 2,
+      y-tick-step: 0.5,
+      y-min: -1.5,
+      y-max: 1.5,
+      {
+        plot.add(domain: (0, 2 * calc.pi), samples: 100, label: $sin(x)$, style: (stroke: blue + 1.5pt), x => calc.sin(
+          x,
+        ))
+        plot.add(domain: (0, 2 * calc.pi), samples: 100, label: $cos(x)$, style: (stroke: red + 1.5pt), x => calc.cos(
+          x,
+        ))
+      },
+    )
+  })
+]
 
 == Scatterplot (data plotten)
 
 Je kunt ook discrete datapunten plotten:
 
-#cetz.canvas({
-  import cetz.draw: *
-  plot.plot(
-    size: (10, 6),
-    x-label: [Tijd (s)],
-    y-label: [Spanning (V)],
-    x-tick-step: 1,
-    y-tick-step: 1,
-    {
-      plot.add(
-        label: [Meetdata],
-        style: (stroke: schoolBlue + 1.5pt),
-        mark: "o",
-        mark-size: 0.15,
-        (
-          (0, 0.5), (1, 1.2), (2, 2.8), (3, 3.1), (4, 4.5),
-          (5, 5.0), (6, 5.8), (7, 6.2), (8, 7.1), (9, 7.8),
-        ),
-      )
-      plot.add(
-        domain: (0, 9), samples: 50,
-        label: [Lineaire fit],
-        style: (stroke: (paint: red, thickness: 1pt, dash: "dashed")),
-        x => 0.83 * x + 0.3,
-      )
-    },
-  )
-})
+#align(center)[
+  #cetz.canvas({
+    import cetz.draw: *
+    plot.plot(
+      size: (10, 6),
+      x-label: [Tijd (s)],
+      y-label: [Spanning (V)],
+      x-tick-step: 1,
+      y-tick-step: 1,
+      {
+        plot.add(
+          label: [Meetdata],
+          style: (stroke: schoolBlue + 1.5pt),
+          mark: "o",
+          mark-size: 0.15,
+          (
+            (0, 0.5),
+            (1, 1.2),
+            (2, 2.8),
+            (3, 3.1),
+            (4, 4.5),
+            (5, 5.0),
+            (6, 5.8),
+            (7, 6.2),
+            (8, 7.1),
+            (9, 7.8),
+          ),
+        )
+        plot.add(
+          domain: (0, 9),
+          samples: 50,
+          label: [Lineaire fit],
+          style: (stroke: (paint: red, thickness: 1pt, dash: "dashed")),
+          x => 0.83 * x + 0.3,
+        )
+      },
+    )
+  })
+]
 
 Code:
 #codeblock(lang: "typst", title: "Scatterplot")[
-```
-#cetz.canvas({
-  import cetz.draw: *
-  plot.plot(
-    size: (10, 6),
-    x-label: [Tijd (s)], y-label: [Spanning (V)],
-    {
-      // Discrete datapunten:
-      plot.add(mark: "o", mark-size: 0.15, (
-        (0, 0.5), (1, 1.2), (2, 2.8), ...
-      ))
-      // Curve door data:
-      plot.add(
-        domain: (0, 9), samples: 50,
-        style: (stroke: stroke(paint: red, thickness: 1pt, dash: "dashed")),
-        x => 0.83 * x + 0.3,
+  ```
+  #align(center)[
+    #cetz.canvas({
+      import cetz.draw: *
+      plot.plot(
+        size: (10, 6),
+        x-label: [Tijd (s)], y-label: [Spanning (V)],
+        {
+          // Discrete datapunten:
+          plot.add(mark: "o", mark-size: 0.15, (
+            (0, 0.5), (1, 1.2), (2, 2.8), ...
+          ))
+          // Curve door data:
+          plot.add(
+            domain: (0, 9), samples: 50,
+            style: (stroke: stroke(paint: red, thickness: 1pt, dash: "dashed")),
+            x => 0.83 * x + 0.3,
+          )
+        },
       )
-    },
-  )
-})
-```
+    })
+  ]
+  ```
 ]
 
 == Staafdiagram (Bar chart)
 
-#cetz.canvas({
-  import cetz.draw: *
-  chart.barchart(
-    size: (10, 5),
-    label-key: 0,
-    value-key: 1,
-    (
-      ("Staal", 210),
-      ("Aluminium", 70),
-      ("Koper", 120),
-      ("Titanium", 116),
-      ("Beton", 30),
-    ),
-  )
-})
+#align(center)[
+  #cetz.canvas({
+    import cetz.draw: *
+    chart.barchart(
+      size: (10, 5),
+      label-key: 0,
+      value-key: 1,
+      (
+        ("Staal", 210),
+        ("Aluminium", 70),
+        ("Koper", 120),
+        ("Titanium", 116),
+        ("Beton", 30),
+      ),
+    )
+  })
+]
 
 Code:
 #codeblock(lang: "typst", title: "Staafdiagram")[
-```
-#cetz.canvas({
-  import cetz.draw: *
-  chart.barchart(
-    size: (10, 5),
-    label-key: 0, value-key: 1,
-    (
-      ("Staal", 210),
-      ("Aluminium", 70),
-      ("Koper", 120),
-    ),
-  )
-})
-```
+  ```
+  #align(center)[
+    #cetz.canvas({
+      import cetz.draw: *
+      chart.barchart(
+        size: (10, 5),
+        label-key: 0, value-key: 1,
+        (
+          ("Staal", 210),
+          ("Aluminium", 70),
+          ("Koper", 120),
+        ),
+      )
+    })
+  ]
+  ```
 ]
 
 == CeTZ Tekeningen (TikZ equivalent)
 
 Naast plots kun je met CeTZ ook vrije tekeningen maken:
 
-#cetz.canvas({
-  import cetz.draw: *
-  // Coordinaatstelsel
-  set-style(stroke: (paint: gray, thickness: 0.5pt))
-  line((-0.5, 0), (6, 0), mark: (end: ">"), name: "x-axis")
-  line((0, -0.5), (0, 5), mark: (end: ">"), name: "y-axis")
-  content((6, -0.4), $x$)
-  content((-0.4, 5), $y$)
+#align(center)[
+  #cetz.canvas({
+    import cetz.draw: *
+    // Coordinaatstelsel
+    set-style(stroke: (paint: gray, thickness: 0.5pt))
+    line((-0.5, 0), (6, 0), mark: (end: ">"), name: "x-axis")
+    line((0, -0.5), (0, 5), mark: (end: ">"), name: "y-axis")
+    content((6, -0.4), $x$)
+    content((-0.4, 5), $y$)
 
-  // Functie tekenen
-  set-style(stroke: (paint: schoolBlue, thickness: 1.5pt))
-  bezier((0.5, 0.5), (5, 4), (2, 4.5), (4, 0.5))
-  
-  // Annotaties
-  set-style(stroke: (paint: schoolRed, dash: "dashed", thickness: 1pt))
-  line((2.5, 0), (2.5, 3.2))
-  content((2.5, -0.4), $x_0$)
-  content((3, 3.5), text(fill: schoolRed, size: 9pt)[$f(x_0)$])
-  
-  // Punt markeren
-  circle((2.5, 3.2), radius: 0.08, fill: schoolRed, stroke: none)
-})
+    // Functie tekenen
+    set-style(stroke: (paint: schoolBlue, thickness: 1.5pt))
+    bezier((0.5, 0.5), (5, 4), (2, 4.5), (4, 0.5))
+
+    // Annotaties
+    set-style(stroke: (paint: schoolRed, dash: "dashed", thickness: 1pt))
+    line((2.5, 0), (2.5, 3.2))
+    content((2.5, -0.4), $x_0$)
+    content((3, 3.5), text(fill: schoolRed, size: 9pt)[$f(x_0)$])
+
+    // Punt markeren
+    circle((2.5, 3.2), radius: 0.08, fill: schoolRed, stroke: none)
+  })
+]
 
 = Code Listings
 
 Gebruik de `#codeblock()` functie voor VS Code-achtige code blokken:
 
 #codeblock(lang: "python", title: "Python Script")[
-```python
-import numpy as np
+  ```python
+  import numpy as np
 
-def bereken_rms(signaal):
-    """Bereken Root Mean Square."""
-    return np.sqrt(np.mean(signaal**2))
-```
+  def bereken_rms(signaal):
+      """Bereken Root Mean Square."""
+      return np.sqrt(np.mean(signaal**2))
+  ```
 ]
 
 Code:
 #codeblock(lang: "typst", title: "Codeblock Syntax")[
-```
-#codeblock(lang: "python", title: "Python Script")[
+  ```
+  #codeblock(lang: "python", title: "Python Script")[
   ```python
   import numpy as np
   def bereken_rms(signaal):
-      return np.sqrt(np.mean(signaal**2))
+  return np.sqrt(np.mean(signaal**2))
   ```
-]
-```
+  ]
+  ```
 ]
 
 = Veelgemaakte Fouten
@@ -893,10 +965,10 @@ Code:
     align: (left, left),
     table.header([*Fout* ✗], [*Correct* ✓]),
     [`$ E = mc^2 $` (geen spatie)], [`$ E = m c^2 $`],
-    [`50 m/s` (platte tekst)],      [`$50 "m/s"$`],
-    [Vergeten `*` voor vet],        [`*vetgedrukt*`],
-    [`\n` voor nieuwe regel],       [`\` voor nieuwe regel],
-    [Label vóór element],           [Label *na* element: `<label>`],
+    [`50 m/s` (platte tekst)], [`$50 "m/s"$`],
+    [Vergeten `*` voor vet], [`*vetgedrukt*`],
+    [`\n` voor nieuwe regel], [`\` voor nieuwe regel],
+    [Label vóór element], [Label *na* element: `<label>`],
   )
 ]
 
@@ -913,12 +985,12 @@ De template bevat handige markers voor je workflow:
 
 Code:
 #codeblock(lang: "typst", title: "Workflow Markers")[
-```
-#TODO("Dit moet nog worden aangevuld")
-#FIXME("Hier zit een fout")
-#NOTE("Onthoud dit")
-#citeme
-```
+  ```
+  #TODO("Dit moet nog worden aangevuld")
+  #FIXME("Hier zit een fout")
+  #NOTE("Onthoud dit")
+  #citeme
+  ```
 ]
 
 == Examentip
@@ -940,15 +1012,15 @@ Code: `#keyterm[belangrijk concept]`
 Gebruik Typst's ingebouwde `columns()` voor meerdere kolommen:
 
 #codeblock(lang: "typst", title: "Kolommen")[
-```
-#columns(2)[
-  Links kolom tekst hier...
+  ```
+  #columns(2)[
+    Links kolom tekst hier...
 
-  #colbreak()
+    #colbreak()
 
-  Rechts kolom tekst hier...
-]
-```
+    Rechts kolom tekst hier...
+  ]
+  ```
 ]
 
 = LaTeX vs Typst Vergelijking
@@ -959,21 +1031,21 @@ Een snelle referentie voor wie van LaTeX overstapt:
   columns: (1fr, 1fr, 1fr),
   align: (left, left, left),
   table.header([*Feature*], [*LaTeX*], [*Typst*]),
-  [Vet],            [`\textbf{tekst}`],         [`*tekst*`],
-  [Cursief],         [`\textit{tekst}`],         [`_tekst_`],
-  [Heading],         [`\section{Titel}`],        [`= Titel`],
-  [Sub-heading],     [`\subsection{Titel}`],     [`== Titel`],
-  [Wiskundemodus],   [`$E = mc^2$`],             [`$E = m c^2$`],
-  [Display math],    [`\[ E = mc^2 \]`],         [`$ E = m c^2 $`],
-  [Breuk],           [`\frac{a}{b}`],            [`frac(a, b)`],
-  [Label],           [`\label{sec:intro}`],      [`<sec:intro>`],
-  [Referentie],      [`\ref{sec:intro}`],        [`@sec:intro`],
-  [Lijst (bullets)], [`\begin{itemize}...`],     [`- item`],
-  [Lijst (nummers)], [`\begin{enumerate}...`],   [`+ item`],
-  [Afbeelding],      [`\includegraphics{...}`],  [`image("...")`],
-  [Tabel],           [`\begin{tabular}...`],     [`#table(...)`],
-  [Commentaar],      [`% commentaar`],           [`// commentaar`],
-  [Nieuwe pagina],   [`\newpage`],               [`#pagebreak()`],
+  [Vet], [`\textbf{tekst}`], [`*tekst*`],
+  [Cursief], [`\textit{tekst}`], [`_tekst_`],
+  [Heading], [`\section{Titel}`], [`= Titel`],
+  [Sub-heading], [`\subsection{Titel}`], [`== Titel`],
+  [Wiskundemodus], [`$E = mc^2$`], [`$E = m c^2$`],
+  [Display math], [`\[ E = mc^2 \]`], [`$ E = m c^2 $`],
+  [Breuk], [`\frac{a}{b}`], [`frac(a, b)`],
+  [Label], [`\label{sec:intro}`], [`<sec:intro>`],
+  [Referentie], [`\ref{sec:intro}`], [`@sec:intro`],
+  [Lijst (bullets)], [`\begin{itemize}...`], [`- item`],
+  [Lijst (nummers)], [`\begin{enumerate}...`], [`+ item`],
+  [Afbeelding], [`\includegraphics{...}`], [`image("...")`],
+  [Tabel], [`\begin{tabular}...`], [`#table(...)`],
+  [Commentaar], [`% commentaar`], [`// commentaar`],
+  [Nieuwe pagina], [`\newpage`], [`#pagebreak()`],
 )
 
 = Inbegrepen Pakketten (Typst Universe)
@@ -985,19 +1057,19 @@ De school-template importeert automatisch enkele essentiële pakketten van #link
 Voor correcte opmaak van getallen, eenheden en bereiken:
 
 #codeblock(lang: "typst", title: "unify")[
-```
-$qty("9.81", "m/s^2")$     // getal + eenheid
-$num("1234567")$            // getal met scheidingstekens
-$numrange("1", "10")$       // getallenbereik
-$qtyrange("20", "30", "N")$ // bereik met eenheid
-```
+  ```
+  $qty("9.81", "m/s^2")$     // getal + eenheid
+  $num("1234567")$            // getal met scheidingstekens
+  $numrange("1", "10")$       // getallenbereik
+  $qtyrange("20", "30", "N")$ // bereik met eenheid
+  ```
 ]
 
 #theorie(title: "Beschikbare functies")[
   #table(
     columns: (1fr, 2fr),
     table.header([*Functie*], [*Beschrijving*]),
-    [`num("...")`],        [Getal met scheidingstekens en onzekerheden],
+    [`num("...")`], [Getal met scheidingstekens en onzekerheden],
     [`qty("...", "...")`], [Getal met eenheid],
     [`numrange("...", "...")`], [Getallenbereik (bv. 1 tot 10)],
     [`qtyrange("...", "...", "...")`], [Bereik met eenheid],
@@ -1009,34 +1081,34 @@ $qtyrange("20", "30", "N")$ // bereik met eenheid
 Voor wiskundige notatie in de fysica en engineering:
 
 #codeblock(lang: "typst", title: "physica")[
-```
-$dv(y, x)$          // gewone afgeleide dy/dx
-$dv(y, x, 2)$       // tweede afgeleide
-$pdv(f, x)$          // partiële afgeleide
-$grad f$            // gradiënt
-$div va(F)$         // divergentie
-$curl va(F)$        // rotatie
-$laplacian f$       // Laplaciaan
-$braket(psi, phi)$  // Dirac braket
-$va(F)$             // vector (bold+arrow)
-```
+  ```
+  $dv(y, x)$          // gewone afgeleide dy/dx
+  $dv(y, x, 2)$       // tweede afgeleide
+  $pdv(f, x)$          // partiële afgeleide
+  $grad f$            // gradiënt
+  $div va(F)$         // divergentie
+  $curl va(F)$        // rotatie
+  $laplacian f$       // Laplaciaan
+  $braket(psi, phi)$  // Dirac braket
+  $va(F)$             // vector (bold+arrow)
+  ```
 ]
 
 #concept(title: "Belangrijkste physica functies")[
   #table(
     columns: (1fr, 2fr),
     table.header([*Functie*], [*Beschrijving*]),
-    [`dv(y, x)`],       [Afgeleide $dv(y,x)$],
-    [`pdv(f, x)`],      [Partiële afgeleide $pdv(f,x)$],
-    [`grad`],           [Gradiënt $grad$],
-    [`div`],            [Divergentie],
-    [`curl`],           [Rotatie],
-    [`laplacian`],      [Laplaciaan $laplacian$],
-    [`va(F)`],          [Vector met pijl $va(F)$],
-    [`vu(n)`],          [Eenheidsvector $vu(n)$],
-    [`braket(a, b)`],   [Dirac braket $braket(a, b)$],
-    [`ketbra(a, b)`],   [Ket-bra $ketbra(a, b)$],
-    [`expval(A)`],      [Verwachtingswaarde $expval(A)$],
+    [`dv(y, x)`], [Afgeleide $dv(y, x)$],
+    [`pdv(f, x)`], [Partiële afgeleide $pdv(f, x)$],
+    [`grad`], [Gradiënt $grad$],
+    [`div`], [Divergentie],
+    [`curl`], [Rotatie],
+    [`laplacian`], [Laplaciaan $laplacian$],
+    [`va(F)`], [Vector met pijl $va(F)$],
+    [`vu(n)`], [Eenheidsvector $vu(n)$],
+    [`braket(a, b)`], [Dirac braket $braket(a, b)$],
+    [`ketbra(a, b)`], [Ket-bra $ketbra(a, b)$],
+    [`expval(A)`], [Verwachtingswaarde $expval(A)$],
   )
 ]
 
@@ -1045,35 +1117,35 @@ $va(F)$             // vector (bold+arrow)
 Voor tekeningen en diagrammen, vergelijkbaar met TikZ in LaTeX:
 
 #codeblock(lang: "typst", title: "CeTZ Basis")[
-```
-#import "@preview/cetz:0.4.2"
-#cetz.canvas({
-  import cetz.draw: *
-  // Lijn
-  line((0, 0), (2, 2), stroke: blue)
-  // Cirkel
-  circle((1, 1), radius: 0.5, fill: red.lighten(80%))
-  // Tekst
-  content((1, -0.5), [Label])
-})
-```
+  ```
+  #import "@preview/cetz:0.4.2"
+  #cetz.canvas({
+    import cetz.draw: *
+    // Lijn
+    line((0, 0), (2, 2), stroke: blue)
+    // Cirkel
+    circle((1, 1), radius: 0.5, fill: red.lighten(80%))
+    // Tekst
+    content((1, -0.5), [Label])
+  })
+  ```
 ]
 
 Resultaat:
-
-#cetz.canvas({
-  import cetz.draw: *
-  line((0, 0), (2, 2), stroke: blue + 1.5pt)
-  circle((1, 1), radius: 0.5, fill: schoolBlue.lighten(80%), stroke: schoolBlue)
-  content((1, -0.5), text(size: 9pt)[Label])
-  rect((3, 0), (5, 2), fill: schoolGreen.lighten(85%), stroke: schoolGreen)
-  content((4, 1), text(size: 9pt)[Box])
-  line((2.2, 1), (2.8, 1), stroke: schoolRed + 1.5pt, mark: (end: ">"))
-})
-
+#align(center)[
+  #cetz.canvas({
+    import cetz.draw: *
+    line((0, 0), (2, 2), stroke: blue + 1.5pt)
+    circle((1, 1), radius: 0.5, fill: schoolBlue.lighten(80%), stroke: schoolBlue)
+    content((1, -0.5), text(size: 9pt)[Label])
+    rect((3, 0), (5, 2), fill: schoolGreen.lighten(85%), stroke: schoolGreen)
+    content((4, 1), text(size: 9pt)[Box])
+    line((2.2, 1), (2.8, 1), stroke: schoolRed + 1.5pt, mark: (end: ">"))
+  })
+]
 #waarschuwing(title: "CeTZ is anders dan TikZ")[
-  CeTZ is geïnspireerd door TikZ maar heeft een *andere syntax*. 
-  Je kunt geen TikZ-code direct kopiëren. 
+  CeTZ is geïnspireerd door TikZ maar heeft een *andere syntax*.
+  Je kunt geen TikZ-code direct kopiëren.
   Raadpleeg de #link("https://cetz-package.github.io/docs")[CeTZ documentatie] voor details.
 ]
 
@@ -1083,121 +1155,125 @@ Deze pakketten zijn *niet* standaard inbegrepen, maar kun je zelf toevoegen.
 Installeren doe je door ze te importeren --- Typst downloadt ze automatisch:
 
 #codeblock(lang: "typst", title: "Extra pakket toevoegen")[
-```
-// Bovenaan je document:
-#import "@preview/fletcher:0.5.8": diagram, node, edge
-#import "@preview/algo:0.3.6": algo, i, d, comment, code
-#import "@preview/glossarium:0.5.10": make-glossary, register-glossary, print-glossary, gls, glspl
-#import "@preview/codly:1.3.0": *
-#import "@preview/tablem:0.2.0": *
-```
+  ```
+  // Bovenaan je document:
+  #import "@preview/fletcher:0.5.8": diagram, node, edge
+  #import "@preview/algo:0.3.6": algo, i, d, comment, code
+  #import "@preview/glossarium:0.5.10": make-glossary, register-glossary, print-glossary, gls, glspl
+  #import "@preview/codly:1.3.0": *
+  #import "@preview/tablem:0.2.0": *
+  ```
 ]
 
 #table(
   columns: (1fr, 1fr, 2fr),
   align: (left, left, left),
   table.header([*Pakket*], [*LaTeX equivalent*], [*Beschrijving*]),
-  [`fletcher`],     [tikz-cd],       [Diagrammen met pijlen en nodes],
-  [`algo`],         [algorithmicx],  [Algoritmes en pseudocode],
-  [`glossarium`],   [glossaries],    [Woordenlijst / afkortingenlijst],
-  [`codly`],        [minted/listings], [Mooie code blokken met lijnnummers],
-  [`tablem`],       [---],           [Markdown-achtige tabellen],
-  [`chemformula`],  [mhchem],        [Chemische formules en reacties],
-  [`alchemist`],    [chemfig],       [Structuurformules tekenen],
+  [`fletcher`], [tikz-cd], [Diagrammen met pijlen en nodes],
+  [`algo`], [algorithmicx], [Algoritmes en pseudocode],
+  [`glossarium`], [glossaries], [Woordenlijst / afkortingenlijst],
+  [`codly`], [minted/listings], [Mooie code blokken met lijnnummers],
+  [`tablem`], [---], [Markdown-achtige tabellen],
+  [`chemformula`], [mhchem], [Chemische formules en reacties],
+  [`alchemist`], [chemfig], [Structuurformules tekenen],
 )
 
 === Fletcher --- Diagrammen met pijlen
 
 Fletcher maakt het eenvoudig om flowcharts, toestandsdiagrammen en commutatieve diagrammen te tekenen.
 
-#import "@preview/fletcher:0.5.8" as fletcher: diagram, node, edge
+#import "@preview/fletcher:0.5.8" as fletcher: diagram, edge, node
 
 #codeblock(lang: "typst", title: "Fletcher Flowchart")[
-```
-#import "@preview/fletcher:0.5.8" as fletcher: diagram, node, edge
+  ```
+  #import "@preview/fletcher:0.5.8" as fletcher: diagram, node, edge
 
-#diagram(
-  node-stroke: 0.8pt,
-  node-corner-radius: 3pt,
-  spacing: (12mm, 10mm),
+  #diagram(
+    node-stroke: 0.8pt,
+    node-corner-radius: 3pt,
+    spacing: (12mm, 10mm),
 
-  node((0,0), [Start], fill: schoolGreen.lighten(80%)),
-  edge("-|>"),
-  node((1,0), [Invoer lezen], fill: schoolBlue.lighten(80%)),
-  edge("-|>"),
-  node((2,0), [Verwerken], fill: schoolBlue.lighten(80%)),
-  edge("-|>"),
-  node((3,0), [Uitvoer], fill: schoolOrange.lighten(80%)),
-  edge("-|>"),
-  node((4,0), [Stop], fill: schoolRed.lighten(80%)),
+    node((0,0), [Start], fill: schoolGreen.lighten(80%)),
+    edge("-|>"),
+    node((1,0), [Invoer lezen], fill: schoolBlue.lighten(80%)),
+    edge("-|>"),
+    node((2,0), [Verwerken], fill: schoolBlue.lighten(80%)),
+    edge("-|>"),
+    node((3,0), [Uitvoer], fill: schoolOrange.lighten(80%)),
+    edge("-|>"),
+    node((4,0), [Stop], fill: schoolRed.lighten(80%)),
 
-  // Feedback lus:
-  edge((3,0), (2,0), [Fout?], "-|>", bend: -50deg),
-)
-```
+    // Feedback lus:
+    edge((3,0), (2,0), [Fout?], "-|>", bend: -50deg),
+  )
+  ```
 ]
 
 Resultaat:
+#align(center)[
+  #diagram(
+    node-stroke: 0.8pt,
+    node-corner-radius: 3pt,
+    spacing: (12mm, 10mm),
 
-#diagram(
-  node-stroke: 0.8pt,
-  node-corner-radius: 3pt,
-  spacing: (12mm, 10mm),
+    node((0, 0), [Start], fill: schoolGreen.lighten(80%)),
+    edge("-|>"),
+    node((1, 0), [Invoer lezen], fill: schoolBlue.lighten(80%)),
+    edge("-|>"),
+    node((2, 0), [Verwerken], fill: schoolBlue.lighten(80%)),
+    edge("-|>"),
+    node((3, 0), [Uitvoer], fill: schoolOrange.lighten(80%)),
+    edge("-|>"),
+    node((4, 0), [Stop], fill: schoolRed.lighten(80%)),
 
-  node((0,0), [Start], fill: schoolGreen.lighten(80%)),
-  edge("-|>"),
-  node((1,0), [Invoer lezen], fill: schoolBlue.lighten(80%)),
-  edge("-|>"),
-  node((2,0), [Verwerken], fill: schoolBlue.lighten(80%)),
-  edge("-|>"),
-  node((3,0), [Uitvoer], fill: schoolOrange.lighten(80%)),
-  edge("-|>"),
-  node((4,0), [Stop], fill: schoolRed.lighten(80%)),
-
-  edge((3,0), (2,0), [Fout?], "-|>", bend: -50deg),
-)
-
+    edge((3, 0), (2, 0), [Fout?], "-|>", bend: -50deg),
+  )
+]
 #v(12pt)
 
 Een wiskundig commutatief diagram:
 
 #codeblock(lang: "typst", title: "Commutatief Diagram")[
-```
-#diagram(cell-size: 15mm, $
-  A edge(f, ->) & B \
-  C edge("u", g, ->) edge("ur", h, "-->")
-$)
-```
+  ```
+  #diagram(cell-size: 15mm, $
+    A edge(f, ->) & B \
+    C edge("u", g, ->) edge("ur", h, "-->")
+  $)
+  ```
 ]
 
 Resultaat:
-
-#diagram(cell-size: 15mm, $
-  A edge(f, ->) & B \
-  C edge("u", g, ->) edge("ur", h, "-->")
-$)
+#align(center)[
+  #diagram(
+    cell-size: 15mm,
+    $
+                                A edge(f, ->) & B \
+      C edge("u", g, ->) edge("ur", h, "-->")
+    $,
+  )
+]
 
 === Algo --- Pseudocode en Algoritmes
 
-De `algo` package maakt prachtige pseudocode blokken: #import "@preview/algo:0.3.6": algo as algo-fn, i, d, comment
+De `algo` package maakt prachtige pseudocode blokken: #import "@preview/algo:0.3.6": algo as algo-fn, comment, d, i
 
 #codeblock(lang: "typst", title: "Pseudocode Algoritme")[
-```
-#import "@preview/algo:0.3.6": algo, i, d, comment
+  ```
+  #import "@preview/algo:0.3.6": algo, i, d, comment
 
-#algo(
-  title: "BubbleSort",
-  parameters: ("A", "n"),
-)[
-  for $j <- 0$ to $n - 2$:#i
-    for $k <- 0$ to $n - j - 2$:#i
-      if $A[k] > A[k+1]$:#i
-        swap $A[k]$ and $A[k+1]$#d
+  #algo(
+    title: "BubbleSort",
+    parameters: ("A", "n"),
+  )[
+    for $j <- 0$ to $n - 2$:#i
+      for $k <- 0$ to $n - j - 2$:#i
+        if $A[k] > A[k+1]$:#i
+          swap $A[k]$ and $A[k+1]$#d
+        #d
       #d
-    #d
-  return $A$
-]
-```
+    return $A$
+  ]
+  ```
 ]
 
 Resultaat:
@@ -1207,11 +1283,11 @@ Resultaat:
   parameters: ("A", "n"),
 )[
   for $j <- 0$ to $n - 2$:#i
-    for $k <- 0$ to $n - j - 2$:#i
-      if $A[k] > A[k+1]$:#i
-        swap $A[k]$ and $A[k+1]$#d
-      #d
-    #d
+  for $k <- 0$ to $n - j - 2$:#i
+  if $A[k] > A[k+1]$:#i
+  swap $A[k]$ and $A[k+1]$#d
+  #d
+  #d
   return $A$
 ]
 
@@ -1223,13 +1299,13 @@ Resultaat:
 )[
   $l <- 0$, $r <- n - 1$\
   while $l <= r$:#i
-    $m <- floor((l + r) / 2)$\
-    if $A[m] = "target"$:#i
-      return $m$ #comment[Gevonden!]#d
-    if $A[m] < "target"$:#i
-      $l <- m + 1$#d
-    else:#i
-      $r <- m - 1$#d#d
+  $m <- floor((l + r) / 2)$\
+  if $A[m] = "target"$:#i
+  return $m$ #comment[Gevonden!]#d
+  if $A[m] < "target"$:#i
+  $l <- m + 1$#d
+  else:#i
+  $r <- m - 1$#d#d
   return $-1$ #comment[Niet gevonden]
 ]
 
@@ -1238,28 +1314,28 @@ Resultaat:
 Met `glossarium` maak je een woordenlijst met afkortingen en definities:
 
 #codeblock(lang: "typst", title: "Glossarium")[
-```
-#import "@preview/glossarium:0.5.10": make-glossary, register-glossary, print-glossary, gls, glspl
+  ```
+  #import "@preview/glossarium:0.5.10": make-glossary, register-glossary, print-glossary, gls, glspl
 
-#show: make-glossary
+  #show: make-glossary
 
-#let entries = (
-  (key: "fem", short: "FEM", long: "Finite Element Method",
-   description: "Numerieke methode voor het oplossen van PDEs."),
-  (key: "cfd", short: "CFD", long: "Computational Fluid Dynamics",
-   description: "Numerieke simulatie van vloeistofstroming."),
-  (key: "plc", short: "PLC", long: "Programmable Logic Controller",
-   description: "Industriële computer voor automatisering."),
-)
-#register-glossary(entries)
+  #let entries = (
+    (key: "fem", short: "FEM", long: "Finite Element Method",
+     description: "Numerieke methode voor het oplossen van PDEs."),
+    (key: "cfd", short: "CFD", long: "Computational Fluid Dynamics",
+     description: "Numerieke simulatie van vloeistofstroming."),
+    (key: "plc", short: "PLC", long: "Programmable Logic Controller",
+     description: "Industriële computer voor automatisering."),
+  )
+  #register-glossary(entries)
 
-// In je tekst:
-De @fem methode wordt vaak gebruikt in combinatie met @cfd.
-Bij een eerste vermelding wordt de volledige naam getoond.
+  // In je tekst:
+  De @fem methode wordt vaak gebruikt in combinatie met @cfd.
+  Bij een eerste vermelding wordt de volledige naam getoond.
 
-// Aan het einde van je document:
-#print-glossary(entries)
-```
+  // Aan het einde van je document:
+  #print-glossary(entries)
+  ```
 ]
 
 === Tablem --- Markdown-achtige tabellen
@@ -1269,27 +1345,28 @@ Snelle tabellen met Markdown-syntax:
 #import "@preview/tablem:0.2.0": tablem
 
 #codeblock(lang: "typst", title: "Tablem")[
-```
-#import "@preview/tablem:0.2.0": tablem
+  ```
+  #import "@preview/tablem:0.2.0": tablem
 
-#tablem[
-  | *Materiaal* | *$E$ (GPa)* | *$rho$ (kg/m³)* |
-  |-------------|-------------|-----------------|
-  | Staal       | 210         | 7850            |
-  | Aluminium   | 70          | 2700            |
-  | Titanium    | 116         | 4500            |
-]
-```
+  #tablem[
+    | *Materiaal* | *$E$ (GPa)* | *$rho$ (kg/m³)* |
+    |-------------|-------------|-----------------|
+    | Staal       | 210         | 7850            |
+    | Aluminium   | 70          | 2700            |
+    | Titanium    | 116         | 4500            |
+  ]
+  ```
 ]
 
 Resultaat:
-
-#tablem[
-  | *Materiaal* | *$E$ (GPa)* | *$rho$ (kg/m³)* |
-  |-------------|-------------|-----------------|
-  | Staal       | 210         | 7850            |
-  | Aluminium   | 70          | 2700            |
-  | Titanium    | 116         | 4500            |
+#align(center)[
+  #tablem[
+    | *Materiaal* | *$E$ (GPa)* | *$rho$ (kg/m³)* |
+    |-------------|-------------|-----------------|
+    | Staal       | 210         | 7850            |
+    | Aluminium   | 70          | 2700            |
+    | Titanium    | 116         | 4500            |
+  ]
 ]
 
 // =============================================================================

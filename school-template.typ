@@ -3,12 +3,54 @@
 // Mirrors the styling of school-macros.sty v4.2
 
 // --- External Packages (from Typst Universe) ---
-#import "@preview/unify:0.7.1": num, qty, numrange, qtyrange  // siunitx equivalent
+#import "@preview/unify:0.7.1": num, numrange, qty, qtyrange  // siunitx equivalent
 #import "@preview/physica:0.9.5": *   // Physics math: derivatives, brakets, etc.
 #import "@preview/cetz:0.4.2"         // TikZ-like drawing
 #import "@preview/cetz-plot:0.1.3": *  // Plotting (pgfplots equivalent)
 #import "@preview/wrap-it:0.1.1": wrap-content, wrap-top-bottom
 
+// Shadow standard figure to support label argument for consistency with wrap-figure
+#let std-figure = figure
+#let figure(body, label: none, ..args) = {
+  let fig = std-figure(body, ..args)
+  if label != none {
+    [#fig #label]
+  } else {
+    fig
+  }
+}
+
+// Helper: wrap-figure
+// Helper: wrap-figure
+// Usage: #wrap-figure(image("..."), caption: [...], label: <...>, width: 50%)[ Body text... ]
+#let wrap-figure(
+  content,
+  caption: none,
+  label: none,
+  width: 5cm,
+  align: right,
+  body,
+) = {
+  let fig = figure(content, caption: caption)
+  // Attach label if provided
+  let fig-with-label = if label != none {
+    [#fig #label]
+  } else {
+    fig
+  }
+
+  let boxed = box(fig-with-label, width: width, inset: (
+    left: if align == right { 1em } else { 0pt },
+    right: if align == left { 1em } else { 0pt },
+    bottom: 0.5em,
+  ))
+
+  wrap-content(
+    boxed,
+    body,
+    align: align,
+  )
+}
 #let schoolBlue = rgb(41, 98, 155)
 #let schoolRed = rgb(180, 40, 40)
 #let schoolGreen = rgb(39, 174, 96)
@@ -45,7 +87,7 @@
 ) = {
   // Metadata
   set document(author: authors, title: title)
-  
+
   // Page setup
   set page(
     paper: "a4",
@@ -57,11 +99,10 @@
         set text(size: 9pt * 0.92, font: ("Fira Sans", "Arial"))
         let headers = query(selector(heading.where(level: 1)).before(here()))
         let last_header = if headers.len() > 0 { headers.last().body } else { [] }
-        
+
         grid(
           columns: (1fr, 1fr),
-          align(left, last_header),
-          align(right, text(weight: "bold")[#page_num])
+          align(left, last_header), align(right, text(weight: "bold")[#page_num]),
         )
         v(-0.5em)
         line(length: 100%, stroke: 0.3pt)
@@ -71,29 +112,29 @@
 
   // Typography: Charter (body) + Fira Sans (headers) + Fira Code 0.85 (code)
   // Charter, Fira Sans & Fira Code loaded from project fonts/ directory
-  set text(font: ("Charter", "serif"), lang: "nl", size: 11pt)
+  set text(font: "Charter", lang: "nl", size: 11pt)
   set par(leading: 0.63em, first-line-indent: 0pt, spacing: 1.2em, justify: true)
   set heading(numbering: "1.1")
 
-  show raw: set text(font: ("Fira Code", "Fira Mono", "monospace"), size: 0.85em)
+  show raw: set text(font: ("Fira Code", "Fira Mono"), size: 0.85em)
   // Math uses Typst's default New Computer Modern Math (serif, matching Charter body text)
 
   // Override emptyset to use sans-serif glyph for visual consistency
   show sym.emptyset: set text(font: "Fira Sans")
-  
+
   // Link styling: URLs in schoolBlue, internal refs in black with underline
   show link: it => text(fill: schoolBlue)[#underline(it)]
   show ref: it => underline(it)
-  
+
   // Caption styling: small Fira Sans, bold label
-  show figure.caption: set text(size: 0.9em * 0.92, font: ("Fira Sans"), weight: "bold")
-  
+  show std-figure.caption: set text(size: 0.9em * 0.92, font: "Fira Sans", weight: "bold")
+
   // List styling: match LaTeX tightened spacing
   set list(indent: 2em, body-indent: 0.5em, spacing: 0.6em)
   set enum(indent: 2em, body-indent: 0.5em, spacing: 0.6em)
-  
-  show heading: set text(font: ("Fira Sans"), weight: "bold")
-  
+
+  show heading: set text(font: "Fira Sans", weight: "bold")
+
   show heading.where(level: 1): it => [
     #v(8pt)
     #text(size: 13.2pt)[#if it.numbering != none { counter(heading).display(it.numbering) + h(0.5em) }#it.body]
@@ -101,7 +142,7 @@
     #line(length: 100%, stroke: 0.5pt)
     #v(3pt)
   ]
-  
+
   show heading.where(level: 2): it => [
     #v(6pt)
     #text(size: 11pt)[#if it.numbering != none { counter(heading).display(it.numbering) + h(0.5em) }#it.body]
@@ -117,9 +158,9 @@
   // Title Page
   align(center + horizon)[
     #v(-5cm)
-    #text(size: 2.5em, weight: "bold", font: ("Fira Sans"), fill: black)[#title]
+    #text(size: 2.5em, weight: "bold", font: "Fira Sans", fill: black)[#title]
     #v(0.5cm)
-    #text(size: 1.5em, font: ("Fira Sans"))[#course]
+    #text(size: 1.5em, font: "Fira Sans")[#course]
     #v(2cm)
     #text(size: 1.2em)[#authors.join(", ")]
     #v(1cm)
@@ -127,8 +168,8 @@
     #v(4em)
     #image("Ku Leuven logo.png", width: 50%)
     #v(2cm)
-    #text(size: 1.1em, font: ("Fira Sans"))[KU Leuven] \
-    #text(size: 0.9em, font: ("Fira Sans"))[Faculteit Industriële Ingenieurswetenschappen]
+    #text(size: 1.1em, font: "Fira Sans")[KU Leuven] \
+    #text(size: 0.9em, font: "Fira Sans")[Faculteit Industriële Ingenieurswetenschappen]
   ]
   pagebreak()
 
@@ -143,7 +184,7 @@
         #set align(left)
         *Disclaimer:* Deze samenvattingen zijn beschikbaar op GitHub. \
         Draag gerust bij: #link("https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs")[GitHub Repository]
-      ]
+      ],
     )
   ]
   v(2em)
@@ -177,16 +218,14 @@
     below: 0pt,
     {
       // Title tab - offset to the right
-      move(dx: 8pt,
-        block(
-          fill: color,
-          inset: (x: 10pt, y: 5pt),
-          radius: (top-left: 4pt, top-right: 4pt),
-          below: 0pt,
-          text(fill: white, weight: "bold", font: ("Fira Sans"), size: 10pt)[#icon #title]
-        )
-      )
-    }
+      move(dx: 8pt, block(
+        fill: color,
+        inset: (x: 10pt, y: 5pt),
+        radius: (top-left: 4pt, top-right: 4pt),
+        below: 0pt,
+        text(fill: white, weight: "bold", font: "Fira Sans", size: 10pt)[#icon #title],
+      ))
+    },
   )
   // Body
   block(
@@ -202,7 +241,7 @@
     inset: 12pt,
     above: 0pt,
     breakable: true,
-    body
+    body,
   )
   v(12pt)
 }
@@ -235,15 +274,17 @@
         grid(
           columns: (40pt, 1fr),
           align: horizon,
-          stack(dir: ltr, spacing: 4pt,
+          stack(
+            dir: ltr,
+            spacing: 4pt,
             circle(radius: 2.5pt, fill: rgb(255, 95, 86)),
             circle(radius: 2.5pt, fill: rgb(255, 189, 46)),
             circle(radius: 2.5pt, fill: rgb(39, 201, 63)),
           ),
-          align(center, text(fill: vscodeGray, font: ("Fira Sans"), size: 8pt, weight: "bold")[
+          align(center, text(fill: vscodeGray, font: "Fira Sans", size: 8pt, weight: "bold")[
             #if title != none { title } else { lang }
-          ])
-        )
+          ]),
+        ),
       )
       // Code body
       #block(
@@ -251,11 +292,15 @@
         inset: 10pt,
         above: 0pt,
         {
-          set text(fill: vscodeWhite, font: ("Fira Code", "FiraCode Nerd Font", "FiraCode Nerd Font Mono", "Fira Mono", "Consolas"), size: 9pt * 0.85)
+          set text(
+            fill: vscodeWhite,
+            font: ("Fira Code", "FiraCode Nerd Font", "FiraCode Nerd Font Mono", "Fira Mono", "Consolas"),
+            size: 9pt * 0.85,
+          )
           body
-        }
+        },
       )
-    ]
+    ],
   )
   v(12pt)
 }
@@ -275,7 +320,7 @@
 #let NN = $bb(N)$
 
 // --- Units ---
-#let unit(content) = text(font: ("Fira Sans"), size: 0.9em)[#content]
+#let unit(content) = text(font: "Fira Sans", size: 0.9em)[#content]
 
 // ============================================================================
 //                           FORMULA SYSTEM (frm)
@@ -300,7 +345,7 @@
   }
   schoolbox(title, schoolOrange, "∑", [
     #set align(center)
-    #text(size: 1.2em)[$#formula$]
+    #text(size: 1.2em)[#formula]
     #v(2pt)
     #set align(left)
     #text(size: 0.9em)[#description]
@@ -315,7 +360,7 @@
       columns: (1fr, auto, 1fr),
       column-gutter: 1em,
       align(horizon, line(length: 100%, stroke: 0.6pt + schoolBlue)),
-      text(size: 0.9em, weight: "bold", font: ("Fira Sans"), fill: schoolBlue)[#title],
+      text(size: 0.9em, weight: "bold", font: "Fira Sans", fill: schoolBlue)[#title],
       align(horizon, line(length: 100%, stroke: 0.6pt + schoolBlue)),
     )
   })
@@ -328,11 +373,10 @@
   block(width: 100%, [
     #grid(
       columns: (1fr, auto),
-      [*#entry.title*],
-      link(label("frm-" + str(entry.idx)), text(size: 0.75em, fill: schoolBlue)[p.#entry.page]),
+      [*#entry.title*], link(label("frm-" + str(entry.idx)), text(size: 0.75em, fill: schoolBlue)[p.#entry.page]),
     )
     #v(2pt)
-    #align(center, text(size: 1.1em)[$#entry.formula$])
+    #align(center, text(size: 1.1em)[#entry.formula])
     #v(2pt)
     #text(size: 0.8em, style: "italic")[#entry.description]
   ])
@@ -388,7 +432,10 @@
     if sym_key not in defined {
       // First use: show definition box and register
       let current_page = here().page()
-      _symbol_defined.update(d => { d.push(sym_key); d })
+      _symbol_defined.update(d => {
+        d.push(sym_key)
+        d
+      })
       _symbol_entries.update(entries => {
         entries.push((symbol: symbol, description: description, unit: unit, page: current_page))
         entries
@@ -404,10 +451,10 @@
             stroke: (left: 3pt + schoolGray),
             inset: (left: 8pt, rest: 4pt),
             [
-              *$#symbol$* --- #description #h(1fr) #text(size: 0.85em, fill: schoolGray, font: ("Fira Sans"))[#unit]
-            ]
+              *$#symbol$* --- #description #h(1fr) #text(size: 0.85em, fill: schoolGray, font: "Fira Sans")[#unit]
+            ],
           )
-        ]
+        ],
       )
     } else {
       // Subsequent use: just show the symbol
@@ -431,10 +478,10 @@
         inset: 6pt,
         table.hline(stroke: 1pt),
         table.header(
-          text(weight: "bold", font: ("Fira Sans"))[Symbool],
-          text(weight: "bold", font: ("Fira Sans"))[Beschrijving],
-          text(weight: "bold", font: ("Fira Sans"))[Eenheid],
-          text(weight: "bold", font: ("Fira Sans"))[Pagina],
+          text(weight: "bold", font: "Fira Sans")[Symbool],
+          text(weight: "bold", font: "Fira Sans")[Beschrijving],
+          text(weight: "bold", font: "Fira Sans")[Eenheid],
+          text(weight: "bold", font: "Fira Sans")[Pagina],
         ),
         table.hline(stroke: 0.5pt),
         ..for entry in entries {
@@ -460,10 +507,10 @@
 // --- Exam & Annotation Helpers ---
 #let examenbox(body) = block(
   inset: (x: 0pt, y: 0.5em),
-  [#text(fill: schoolRed, weight: "bold", font: ("Fira Sans"))[⚠ EXAMENTIP:] #emph(body)]
+  [#text(fill: schoolRed, weight: "bold", font: "Fira Sans")[⚠ EXAMENTIP:] #emph(body)],
 )
 
-#let TODO(msg) = text(fill: red, weight: "bold", font: ("Fira Sans"))[\[TODO: #msg\]]
-#let FIXME(msg) = text(fill: red, weight: "bold", font: ("Fira Sans"))[\[FIXME: #msg\]]
-#let NOTE(msg) = text(fill: schoolOrange, weight: "bold", font: ("Fira Sans"))[\[NOTE: #msg\]]
-#let citeme = text(fill: red, font: ("Fira Sans"))[\[CITATIE NODIG\]]
+#let TODO(msg) = text(fill: red, weight: "bold", font: "Fira Sans")[\[TODO: #msg\]]
+#let FIXME(msg) = text(fill: red, weight: "bold", font: "Fira Sans")[\[FIXME: #msg\]]
+#let NOTE(msg) = text(fill: schoolOrange, weight: "bold", font: "Fira Sans")[\[NOTE: #msg\]]
+#let citeme = text(fill: red, font: "Fira Sans")[\[CITATIE NODIG\]]
