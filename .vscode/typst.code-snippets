@@ -1,0 +1,27 @@
+{
+    "Figure": {
+        "prefix": "fig",
+        "body": [
+            "#figure(",
+            "  image(\"${1:image.png}\", width: ${2:80%}),",
+            "  caption: [${3:Caption}],",
+            "  label: <fig:${4:label}>,",
+            ")"
+        ],
+        "description": "Insert a figure with caption and label"
+    },
+    "Wrap Figure": {
+        "prefix": "wrapfig",
+        "body": [
+            "#wrap-figure(",
+            "  image(\"${1:image.png}\", width: 100%),",
+            "  caption: [${2:Caption}],",
+            "  label: <fig:${3:label}>,",
+            "  width: ${4:5cm},",
+            ")[",
+            "  ${5:Content...}",
+            "]"
+        ],
+        "description": "Insert a wrapped figure"
+    }
+}

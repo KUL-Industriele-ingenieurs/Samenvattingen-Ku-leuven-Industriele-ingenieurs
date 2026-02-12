@@ -1,60 +1,65 @@
 [
-  {
-    "key": "ctrl+alt+v",
-    "command": "latex-utilities.formattedPaste.image",
-    "when": "editorTextFocus && (editorLangId == 'latex' || editorLangId == 'tex')"
-  },
-  {
-    "key": "ctrl+alt+v",
-    "command": "latex-utilities.pasteImage",
-    "when": "editorTextFocus && (editorLangId == 'latex' || editorLangId == 'tex')"
-  },
-  {
-    "key": "ctrl+alt+v",
-    "command": "latexUtilities.pasteImage",
-    "when": "editorTextFocus && (editorLangId == 'latex' || editorLangId == 'tex')"
-  },
-  {
-    "key": "ctrl+alt+v",
-    "command": "latexUtilities.formattedPaste.image",
-    "when": "editorTextFocus && (editorLangId == 'latex' || editorLangId == 'tex')"
-  },
-  {
-    "key": "ctrl+alt+shift+v",
-    "command": "latex-utilities.formattedPaste.image",
-    "when": "editorTextFocus && (editorLangId == 'latex' || editorLangId == 'tex')"
-  },
-  {
-    "key": "ctrl+alt+shift+v",
-    "command": "latex-utilities.pasteImage",
-    "when": "editorTextFocus && (editorLangId == 'latex' || editorLangId == 'tex')"
-  },
-  {
-    "key": "ctrl+alt+shift+v",
-    "command": "latexUtilities.pasteImage",
-    "when": "editorTextFocus && (editorLangId == 'latex' || editorLangId == 'tex')"
-  },
-  {
-    "key": "ctrl+alt+shift+v",
-    "command": "latexUtilities.formattedPaste.image",
-    "when": "editorTextFocus && (editorLangId == 'latex' || editorLangId == 'tex')"
-  },
-  {
-    "key": "ctrl+alt+p",
-    "command": "-latex-workshop.view"
-  },
-  {
-    "key": "ctrl+alt+p",
-    "command": "-latex-workshop.view-pdf"
-  },
-  {
-    "key": "ctrl+alt+shift+p",
-    "command": "latex-workshop.view",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "ctrl+alt+shift+p",
-    "command": "latex-workshop.view-pdf",
-    "when": "editorTextFocus"
-  }
+    {
+        "key": "ctrl+alt+v",
+        "command": "latex-utilities.formattedPaste.image",
+        "when": "editorTextFocus && (editorLangId == 'latex' || editorLangId == 'tex')"
+    },
+    {
+        "key": "ctrl+alt+v",
+        "command": "latex-utilities.pasteImage",
+        "when": "editorTextFocus && (editorLangId == 'latex' || editorLangId == 'tex')"
+    },
+    {
+        "key": "ctrl+alt+v",
+        "command": "latexUtilities.pasteImage",
+        "when": "editorTextFocus && (editorLangId == 'latex' || editorLangId == 'tex')"
+    },
+    {
+        "key": "ctrl+alt+v",
+        "command": "latexUtilities.formattedPaste.image",
+        "when": "editorTextFocus && (editorLangId == 'latex' || editorLangId == 'tex')"
+    },
+    {
+        "key": "ctrl+alt+shift+v",
+        "command": "latex-utilities.formattedPaste.image",
+        "when": "editorTextFocus && (editorLangId == 'latex' || editorLangId == 'tex')"
+    },
+    {
+        "key": "ctrl+alt+shift+v",
+        "command": "latex-utilities.pasteImage",
+        "when": "editorTextFocus && (editorLangId == 'latex' || editorLangId == 'tex')"
+    },
+    {
+        "key": "ctrl+alt+shift+v",
+        "command": "latexUtilities.pasteImage",
+        "when": "editorTextFocus && (editorLangId == 'latex' || editorLangId == 'tex')"
+    },
+    {
+        "key": "ctrl+alt+shift+v",
+        "command": "latexUtilities.formattedPaste.image",
+        "when": "editorTextFocus && (editorLangId == 'latex' || editorLangId == 'tex')"
+    },
+    {
+        "key": "ctrl+alt+p",
+        "command": "-latex-workshop.view"
+    },
+    {
+        "key": "ctrl+alt+p",
+        "command": "-latex-workshop.view-pdf"
+    },
+    {
+        "key": "ctrl+alt+shift+p",
+        "command": "latex-workshop.view",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+alt+shift+p",
+        "command": "latex-workshop.view-pdf",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+shift+i",
+        "command": "extension.pasteImage",
+        "when": "editorTextFocus && editorLangId == 'typst'"
+    }
 ]
