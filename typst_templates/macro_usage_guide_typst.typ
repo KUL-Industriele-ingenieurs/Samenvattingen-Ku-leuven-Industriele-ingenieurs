@@ -1370,6 +1370,42 @@ Resultaat:
 ]
 
 // =============================================================================
+//                           AFBEELDINGEN NAAST ELKAAR
+// =============================================================================
+= Afbeeldingen naast elkaar
+
+Gebruik `grid()` of `figure(grid(...))` om afbeeldingen naast elkaar te zetten.
+
+#figure(
+  grid(
+    columns: (1fr, 1fr),
+    gutter: 1em,
+    image("default-ui-image-placeholder-wireframes-260nw-1037719192.webp", width: 7cm),
+    image("default-ui-image-placeholder-wireframes-260nw-1037719192.webp", width: 7cm),
+  ),
+  caption: [Twee afbeeldingen naast elkaar.],
+  label: <fig:side-by-side>,
+)
+
+Code:
+#codeblock(lang: "typst", title: "Side-by-side")[
+  ```
+  #figure(
+    grid(
+      columns: (1fr, 1fr),
+      gutter: 1em,
+      image("left.png", width: 100%),
+      text: [Hier kun je ook tekst zetten bijvoorbeeld.],
+      // of nog een afbeelding:
+      // image("right.png", width: 100%),
+    ),
+    caption: [Twee afbeeldingen naast elkaar.],
+    label: <fig:side-by-side>
+  )
+  ```
+]
+
+// =============================================================================
 //                              APPENDICES
 // =============================================================================
 #pagebreak()
