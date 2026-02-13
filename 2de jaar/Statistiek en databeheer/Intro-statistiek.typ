@@ -80,10 +80,10 @@ te *visualiseren*.
         data,
         value-key: 1,
         label-key: 0,
-        radius: 2,
+        radius: 1.5,
         slice-style: colors,
         inner-radius: 0.5,
-        outset: 2,
+        outset: 1.5,
         stroke: none,
         inner-label: (content: (value, label) => text(white, str(value)), radius: 110%),
       )
@@ -114,7 +114,7 @@ te *visualiseren*.
     cetz.canvas({
       import cetz.draw: *
       plot.plot(
-        size: (6, 3),
+        size: (5, 3),
         x-label: "Score",
         y-label: "Frequentie",
         {
