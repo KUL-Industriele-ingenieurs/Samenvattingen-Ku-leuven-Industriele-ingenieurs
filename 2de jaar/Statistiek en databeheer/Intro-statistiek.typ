@@ -25,7 +25,7 @@ Je hebt op toledo ook meerkeuzevragen om te oefenen.
 
 Op het examen krijg je een formularium _zie begin_ en alle code van de labo's. Je moet vooral leren de code begrijpen en kunnen toepassen. Je moet ook de theorie kennen en kunnen toepassen. De oefeningen die je in de les maakt zijn een goede voorbereiding op het examen.
 
-= intro statistiek <ch:intro-statistiek>
+= Intro Statistiek <ch:intro-statistiek>
 
 Statistiek is een wiskundige discipline die zich bezighoudt met het analyseren en interpreteren van gegevens. Statistiek is een belangrijke tool voor het maken van beslissingen in vele velden, zoals wetenschap, economie, zorg en techniek.
 
@@ -52,13 +52,13 @@ Je hebt verschillende soorten statistiek:
   - *Betrouwbaarheidsmeting*: Hoe betrouwbaar is een meting?
 ]
 
-== collecting data <sec:collecting-data>
+== Collecting data <sec:collecting-data>
 
 Je gaat een experiemnt opstellingen met een randomized controlled trail.
 
 Zoals testen wat het effect is van asprin op hartaanvallen of herseninfractie. Je hebt een groep mensen die een asprin drinken en een groep mensen die geen asprin drinken, de *Controle groep*. Je gaat dan de hartaanvallen of herseninfractie tellen en de gemiddelde tellen.
 
-== observational study <sec:observational-study>
+== Observational study <sec:observational-study>
 
 Je gaat gewoon random rectuteren uit de populatie en je gaat die observeren op een bepaalde variabele. Zoals in een studie waar jongeren werden geobserveerd of ze een hartaandoening hadden.
 
@@ -70,104 +70,15 @@ Dit is een aselecte steekproef.
 Dingen zoals pycharts en histrogrammen kunnen ons helpen om data
 te *visualiseren*.
 
-#figure(
-  grid(
-    columns: (1fr, 1fr),
-    gutter: 1em,
-    [
-      #cetz.canvas({
-        import cetz.draw: *
-        // Pie Chart (Manual drawing as simple sectors)
-        circle((0, 0), radius: 2, fill: schoolBlue.lighten(80%), stroke: none)
-        // Sector 1
-        arc((0, 0), radius: 2, start: 0deg, stop: 120deg, mode: "PIE", fill: schoolBlue)
-        content((0.8, 0.8), [33%], text: white)
-        // Sector 2
-        arc((0, 0), radius: 2, start: 120deg, stop: 200deg, mode: "PIE", fill: schoolRed)
-        content((-1, 0.5), [22%], text: white)
-        // Sector 3
-        arc((0, 0), radius: 2, start: 200deg, stop: 360deg, mode: "PIE", fill: schoolGreen)
-        content((0, -1), [45%], text: white)
-      })
-      #align(center, [Pie Chart])
-    ],
-    [
-      #cetz.canvas({
-        import cetz.draw: *
-        // plot is available from global import
-        plot.plot(size: (5, 4), x-tick-step: none, y-tick-step: 10, {
-          plot.add-bar(((0, 10), (1, 30), (2, 25), (3, 40), (4, 15)), style: (fill: schoolOrange))
-        })
-      })
-      #align(center, [Histogram])
-    ],
-    // Row 2
-    [
-      #cetz.canvas({
-        import cetz.draw: *
-        // plot is available from global import
-        plot.plot(size: (5, 4), axis-style: "school-book", {
-          plot.add(
-            ((0, 2), (1, 10), (2, 5), (3, 15), (4, 12), (5, 20)),
-            style: (stroke: none, mark: (fill: schoolBlue, size: 3pt)),
-            label: "Data Points",
-          )
-        })
-      })
-      #align(center, [Scatter Plot])
-    ],
-    [
-      #cetz.canvas({
-        import cetz.draw: *
-        plot.plot(size: (5, 4), axis-style: "school-book", {
-          plot.add(
-            ((0, 5), (1, 8), (2, 16), (3, 12), (4, 25), (5, 22)),
-            style: (stroke: schoolRed + 2pt),
-            label: "Trend",
-          )
-        })
-      })
-      #align(center, [Line Chart])
-    ],
-    // Row 2
-    [
-      #cetz.canvas({
-        import cetz.draw: *
-        plot.plot(size: (5, 4), axis-style: "school-book", {
-          plot.add(
-            ((0, 2), (1, 10), (2, 5), (3, 15), (4, 12), (5, 20)),
-            style: (stroke: none, mark: (fill: schoolBlue, size: 3pt)),
-            label: "Data Points",
-          )
-        })
-      })
-      #align(center, [Scatter Plot])
-    ],
-    [
-      #cetz.canvas({
-        import cetz.draw: *
-        plot.plot(size: (5, 4), axis-style: "school-book", {
-          plot.add(
-            ((0, 5), (1, 8), (2, 16), (3, 12), (4, 25), (5, 22)),
-            style: (stroke: schoolRed + 2pt),
-            label: "Trend",
-          )
-        })
-      })
-      #align(center, [Line Chart])
-    ],
-  ),
-  caption: [Verschillende manieren om data te visualiseren],
-)
 
 #figure(
-  image("variatie.png", width: 80%),
+  image("variatie.png", width: 5cm),
   caption: [variatie],
   label: <fig:variatie>,
 )
 
 #figure(
-  image("central tendency.png", width: 80%),
+  image("central tendency.png", width: 5cm),
   caption: [central tendency],
 )
 
@@ -233,7 +144,7 @@ Afhankelijk van de uitschieters gaat er meer verschil zijn tussen de mediaan en 
 Als je data even gespreid is zijn er bepaalde relaties tussen de variatie en de standaardafwijking.
 
 #figure(
-  image("gespreid-data.png", width: 80%),
+  image("gespreid-data.png", width: 6cm),
   caption: [gespreid-data],
   label: <fig:gespreid-data>,
 )
@@ -251,12 +162,12 @@ Je hebt in de 90% van de klas een betere score.
 je bent dan in het $90^(s t e)$ percentile van de klas.
 
 #figure(
-  image("90%.png", width: 80%),
+  image("90%.png", width: 6cm),
   caption: [90%],
   label: <fig:90>,
 )
 
-#frm("Z-score", $ z = (x - mu) / sigma \\ z = (x - overline(x)) / s $, [
+#frm("Z-score", $ z = (x - mu) / sigma | z = (x - overline(x)) / s $, [
   met $x$ de waarde, $mu$ de gemiddelde en $s$ de standaardafwijking
 ])
 
@@ -280,7 +191,7 @@ Bij een boxplot ga je de mediaan en de kwartielwaarden bepalen.
 De kwartielwaarden zijn de 25%, 50% en 75% van de data.
 Als er data buiten de kwartielwaarden valt is dat een *uitschieter*.
 
-#frm("Boxplot uitschieter detectie", $Q_1 - 1.5(Q_3-Q_1) \\ Q_3 + 1.5(Q_3-Q_1)$, [
+#frm("Boxplot uitschieter detectie", $Q_1 - 1.5(Q_3-Q_1) | Q_3 + 1.5(Q_3-Q_1)$, [
   met $Q_1$ de 25% en $Q_3$ de 75%
 ])
 
