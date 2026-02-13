@@ -8,8 +8,8 @@
 #import "../../school-template.typ": *
 
 #show: project.with(
-  title: "Databeheer Samenvatting",
-  course: "Databeheer",
+  title: "Statistiek Samenvatting",
+  course: "Statistiek",
   authors: ("Ruben Ryckaert",),
   academic_year: "2025-2026",
 )
@@ -30,5 +30,9 @@
 // Symbol list and formularium are auto-generated
 
 
-#muchpdf(read("SQL-cheat-sheet.pdf", encoding: none), width: 17cm, alt: "SQL Cheat Sheet")
-#include "Introductie-data.typ"
+#muchpdf(
+  read("StatisticsFormulaChart.pdf", encoding: none),
+  width: 20cm,
+  alt: "Statistics Formula Chart",
+)
+#include "Intro-statistiek.typ"

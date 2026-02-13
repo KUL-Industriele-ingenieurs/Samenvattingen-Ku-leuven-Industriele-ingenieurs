@@ -8,6 +8,7 @@
 #import "@preview/cetz:0.4.2"         // TikZ-like drawing
 #import "@preview/cetz-plot:0.1.3": *  // Plotting (pgfplots equivalent)
 #import "@preview/wrap-it:0.1.1": wrap-content, wrap-top-bottom
+#import "@preview/muchpdf:0.1.2": muchpdf
 
 // Shadow standard figure to support label argument for consistency with wrap-figure
 #let std-figure = figure

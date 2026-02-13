@@ -108,6 +108,7 @@ Er is een boek via limo als je daar meer info wilt halen.
 
 == Examen
 In het examen moet je een databank moeten kunnen opstellen dus #belangrijk("Code kunnen schrijven"), je krijgt meerkeuzevragen en je moet ook een datavisualisatie kunnen maken.
+Je krijgt een cheat-sheet op het examen _Zie begin document_
 
 
 
