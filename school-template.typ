@@ -6,9 +6,12 @@
 #import "@preview/unify:0.7.1": num, numrange, qty, qtyrange  // siunitx equivalent
 #import "@preview/physica:0.9.5": *   // Physics math: derivatives, brakets, etc.
 #import "@preview/cetz:0.4.2"         // TikZ-like drawing
-#import "@preview/cetz-plot:0.1.3": *  // Plotting (pgfplots equivalent)
+#import "@preview/cetz-plot:0.1.3": chart, plot // Plotting (pgfplots equivalent)
 #import "@preview/wrap-it:0.1.1": wrap-content, wrap-top-bottom
 #import "@preview/muchpdf:0.1.2": muchpdf
+#import "@preview/equate:0.3.2"
+#import "@preview/cetz-venn:0.1.4"
+#import "@preview/oasis-align:0.3.3": *
 
 // Shadow standard figure to support label argument for consistency with wrap-figure
 #let std-figure = figure

@@ -901,6 +901,24 @@ Code:
   ```
 ]
 
+= Extra Grafieken (Pie & Histogram)
+
+Met `cetz-plot` kun je verschillende grafieken maken, waaronder pie charts.
+
+#TODO("Add pie chart")
+// @TODO
+
+== Histogram (Bar Chart)
+
+#align(center)[
+  #cetz.canvas({
+    import cetz.draw: *
+    plot.plot(size: (10, 6), x-label: "Categorie", y-label: "Waarde", {
+      plot.add-bar(((1, 5), (2, 10), (3, 7)), bar-width: 0.8)
+    })
+  })
+]
+
 == CeTZ Tekeningen (TikZ equivalent)
 
 Naast plots kun je met CeTZ ook vrije tekeningen maken:

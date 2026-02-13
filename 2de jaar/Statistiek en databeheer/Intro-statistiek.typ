@@ -33,13 +33,12 @@ Je hebt verschillende soorten statistiek:
 
 #concept(title: "Soorten statistiek")[
   - *Beschrijvende statistiek*: Statistiek die zich bezighoudt met het beschrijven van gegevens
-  #figure(
+  #wrap-figure(
     image("beschrijvende statistiek.png", width: 5cm),
     caption: [beschrijvende statistiek],
-  )
-  - *Verklarende statistiek*: Data halen uit de populatie zoals _bv. Wat is de gemiddelde reactietijd tijdens het rijden_
-
-  Dit beschrijft dan een populatie maar in een onderzoek is *Onzekerheid* door
+  )[
+    - *Verklarende statistiek*: Data halen uit de populatie zoals _bv. Wat is de gemiddelde reactietijd tijdens het rijden_. Dit beschrijft dan een populatie maar in een onderzoek is er *onzekerheid*.
+  ]
 
 ]
 
@@ -71,15 +70,66 @@ Dingen zoals pycharts en histrogrammen kunnen ons helpen om data
 te *visualiseren*.
 
 
-#figure(
-  image("variatie.png", width: 5cm),
-  caption: [variatie],
-  label: <fig:variatie>,
+#oasis-align(
+  figure(
+    cetz.canvas({
+      import cetz.draw: *
+      plot.plot(
+        size: (5, 3),
+        x-label: "Score",
+        y-label: "Frequentie",
+        {
+          plot.add-bar(
+            ((10, 2), (12, 5), (14, 8), (16, 12), (18, 5), (20, 3)),
+            bar-width: 1.5,
+            style: (stroke: none, fill: schoolBlue),
+          )
+        },
+      )
+    }),
+    caption: "Resultaten van de Toets",
+  ),
+
+  figure(
+    cetz.canvas({
+      import cetz.draw: *
+      plot.plot(
+        size: (5, 3),
+        x-label: $z$,
+        y-label: $f(z)$,
+        x-tick-step: 1,
+        y-min: 0,
+        {
+          plot.add(
+            domain: (-3, 3),
+            samples: 100,
+            label: "Normale Verdeling",
+            style: (stroke: 2pt + schoolRed),
+            x => 1 / calc.sqrt(2 * calc.pi) * calc.exp(-0.5 * x * x),
+          )
+        },
+      )
+    }),
+    caption: "Standaard Normale Verdeling",
+  ),
 )
 
-#figure(
-  image("central tendency.png", width: 5cm),
-  caption: [central tendency],
+
+*Variatie*: De spreiding van de data. Hoe ver zijn de data van elkaar?
+
+*Central tendency*: De tendentie van de data. Hoe ver zijn de data van elkaar?
+#grid(
+  columns: (1fr, 1fr),
+  gutter: 1em,
+  figure(
+    image("variatie.png", width: 100%),
+    caption: [variatie],
+    label: <fig:variatie>,
+  ),
+  figure(
+    image("central tendency.png", width: 100%),
+    caption: [central tendency],
+  ),
 )
 
 #frm("Steekproef gemiddelde", $overline(x) = (sum_(i=1)^n x_i) / n$, [
@@ -172,7 +222,6 @@ je bent dan in het $90^(s t e)$ percentile van de klas.
 ])
 
 De z-score geeft aan hoe ver een waarde afwijkt van de gemiddelde in termen van standaardafwijkingen. 1 z-score is 1 standaardafwijking.
-
 Net zoals bij de standaardafwijking zie je afhankelijk van de Z-score verschillende percentages van de data.
 
 $ z = 1 arrow.r.double 68% $
@@ -201,8 +250,8 @@ Als er data buiten de kwartielwaarden valt is dat een *uitschieter*.
     caption: [z-score-oefening],
     label: <fig:z-score-oefening>,
   )
-  *Gegeven*: $overline(x) = €64.000$, $s = €2.000$, $x = €57.000$
-  *Vraag*: Bereken de z-score is dit salaris discriminerend?.
+  *Gegeven*: $overline(x) = €64.000$, $s = €2.000$, $x = €57.000$\
+  *Vraag*: Bereken de z-score is dit salaris discriminerend?.\
   *Antwoord*:
   $z = (57.000 - 64.000) / 2.000 = -3.5$
   $z = -3.5 arrow.r.double 99.7%$
