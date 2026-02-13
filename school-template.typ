@@ -34,7 +34,7 @@
   content,
   caption: none,
   label: none,
-  width: 5cm,
+  width: auto,
   align: right,
   body,
 ) = {
@@ -46,17 +46,22 @@
     fig
   }
 
-  let boxed = box(fig-with-label, width: width, inset: (
-    left: if align == right { 1em } else { 0pt },
-    right: if align == left { 1em } else { 0pt },
-    bottom: 0.5em,
-  ))
+  context {
+    let size = measure(fig-with-label)
+    let applied-width = if width == auto { size.width } else { width }
 
-  wrap-content(
-    boxed,
-    body,
-    align: align,
-  )
+    let boxed = box(fig-with-label, width: applied-width, inset: (
+      left: if align == right { 1em } else { 0pt },
+      right: if align == left { 1em } else { 0pt },
+      bottom: 0.5em,
+    ))
+
+    wrap-content(
+      boxed,
+      body,
+      align: align,
+    )
+  }
 }
 #let schoolBlue = rgb(41, 98, 155)
 #let schoolRed = rgb(180, 40, 40)
@@ -121,7 +126,7 @@
   // Charter, Fira Sans & Fira Code loaded from project fonts/ directory
   set text(font: "Charter", lang: "nl", size: 11pt)
   set par(leading: 0.63em, first-line-indent: 0pt, spacing: 1.2em, justify: true)
-  set heading(numbering: "1.1")
+  set heading(numbering: "1.1.")
 
   show raw: set text(font: ("Fira Code", "Fira Mono"), size: 0.85em)
   // Math uses Typst's default New Computer Modern Math (serif, matching Charter body text)
@@ -220,6 +225,7 @@
   // Title strip
   block(
     width: 100%,
+    sticky: true,
     spacing: 0pt,
     above: 0pt,
     below: 0pt,
@@ -352,7 +358,7 @@
   }
   schoolbox(title, schoolOrange, "∑", [
     #set align(center)
-    #text(size: 1.2em)[#formula]
+    #text(size: 1.3em)[#formula]
     #v(2pt)
     #set align(left)
     #text(size: 0.9em)[#description]
@@ -379,8 +385,11 @@
   v(4pt)
   block(width: 100%, [
     #grid(
-      columns: (1fr, auto),
-      [*#entry.title*], link(label("frm-" + str(entry.idx)), text(size: 0.75em, fill: schoolBlue)[p.#entry.page]),
+      columns: (auto, 1fr, auto),
+      gutter: 0.5em,
+      [*#entry.title*],
+      align(horizon, repeat[.#h(4pt)]),
+      link(label("frm-" + str(entry.idx)), text(size: 0.75em, fill: schoolBlue)[p.#entry.page]),
     )
     #v(2pt)
     #align(center, text(size: 1.1em)[#entry.formula])
