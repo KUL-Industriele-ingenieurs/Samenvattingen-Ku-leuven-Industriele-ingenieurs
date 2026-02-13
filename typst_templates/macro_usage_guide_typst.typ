@@ -250,6 +250,68 @@ Code:
 
 #examenbox[Gebruik *altijd* `qty()` of `num()` voor getallen en eenheden om consistente spatiëring en opmaak te krijgen.]
 
+
+= Document Structuur & Layout
+
+== Pagina-instellingen
+Je kan de pagina-afmetingen en marges aanpassen met `#set page(...)`.
+Meestal staat dit bovenaan je document.
+
+#codeblock(lang: "typst", title: "Pagina Setup")[
+  ```
+  #set page(
+    paper: "a4",
+    margin: (x: 2cm, y: 2cm),
+    numbering: "1 / 1",
+  )
+  ```
+]
+
+== Kolommen
+Je kan tekst in kolommen zetten met de `columns()` functie of `#show: columns`.
+
+#codeblock(lang: "typst", title: "Kolommen")[
+  ```
+  // Voor het hele document:
+  #show: rest => columns(2, rest)
+
+  // Of voor een specifiek blok:
+  #columns(2)[
+    Dit is tekst in de eerste kolom.
+    #colbreak()
+    Dit staat in de tweede kolom.
+  ]
+  ```
+]
+
+== Inhoudsopgave (Outline)
+Een inhoudsopgave wordt automatisch gegenereerd op basis van je headings (`=`, `==`, ...).
+
+#codeblock(lang: "typst", title: "TOC")[
+  ```
+  #outline(
+    title: "Inhoud",
+    indent: auto,
+    depth: 3
+  )
+  #pagebreak()
+  ```
+]
+
+== Bibliografie & Referenties
+Typst heeft ingebouwde bibliografie-ondersteuning.
+Upload een `.bib` bestand en link het.
+
+#codeblock(lang: "typst", title: "Bibliografie")[
+  ```
+  // Linken naar het bib bestand
+  #bibliography("bronnen.bib", style: "apa")
+
+  // Citeren in de tekst
+  Zoals vermeld in @netwok2020 ...
+  ```
+]
+
 = Box Omgevingen
 
 De template heeft macros om belangrijke dingen te markeren zoals definities, theorema's, oefeningen, voorbeelden en waarschuwingen. Elke box heeft een gekleurd titel-tabblad bovenaan.
@@ -557,6 +619,37 @@ Dit geeft je LaTeX-achtige commando's voor afgeleiden:
 
 Resultaat:
 $ mat(1, 2; 3, 4) quad quad vec(x, y, z) quad quad arrow(F) $
+
+== Stelsels en Uitlijning
+
+Gebruik `cases` voor stelsels en `&` voor uitlijning.
+
+#codeblock(lang: "typst", title: "Stelsels & Uitlijning")[
+  ```
+  // Gevalonderscheid (Cases):
+  $ f(x) = cases(
+    x "als" x > 0,
+    -x "als" x <= 0
+  ) $
+
+  // Uitlijnen op het is-gelijk-teken:
+  $ a &= b + c \
+      &= d + e $
+  ```
+]
+
+Resultaat:
+$
+  f(x) = cases(
+    x "als" x > 0,
+    -x "als" x <= 0
+  )
+$
+$
+  a & = b + c \
+    & = d + e
+$
+
 
 == Veelgebruikte symbolen
 
@@ -1420,6 +1513,367 @@ Code:
     caption: [Twee afbeeldingen naast elkaar.],
     label: <fig:side-by-side>
   )
+  ```
+]
+
+
+
+// =============================================================================
+//                       CUSTOMISATIE
+// =============================================================================
+= Customisatie (Set & Show Rules)
+
+Met `set` pas je eigenschappen aan, met `show` verander je hoe iets eruit ziet.
+
+== Set Rules
+Gebruik `set` voor standaardwaarden (font, grootte, kleur).
+
+#codeblock(lang: "typst", title: "Set Rules")[
+  ```
+  #set text(font: "Arial", size: 12pt)
+  #set par(justify: true)
+  #set list(marker: [--])
+  ```
+]
+
+== Show Rules
+Gebruik `show` om elementen volledig te herdefiniëren.
+
+#codeblock(lang: "typst", title: "Show Rules")[
+  ```
+  // Verander alle "Typst" woorden in vetgedrukt blauw
+  #show "Typst": name => text(blue, weight: "bold")[#name]
+
+  // Kader rond alle afbeeldingen
+  #show image: it => box(stroke: 2pt + red, it)
+
+  // Pas headings aan
+  #show heading.where(level: 1): it => [
+    #set text(fill: schoolBlue)
+    #block(it)
+    #line(length: 100%, stroke: 1pt + schoolBlue)
+  ]
+  ```
+]
+
+// =============================================================================
+//                       SCRIPTING & AUTOMATISATIE
+// =============================================================================
+= Scripting & Automatisatie
+
+Typst is een volwaardige programmeertaal.
+
+== Variabelen en Functies
+#codeblock(lang: "typst", title: "Vars & Funcs")[
+  ```
+  #let naam = "Typst"
+  #let optellen(a, b) = a + b
+
+  Hallo #naam!
+  1 + 2 = #optellen(1, 2)
+  ```
+]
+
+== Conditionals (If/Else)
+#codeblock(lang: "typst", title: "If/Else")[
+  ```
+  #let score = 15
+  Resultaat: #if score >= 10 [Geslaagd] else [Niet geslaagd]
+  ```
+]
+
+== Lussen (Loops)
+Je kan itereren over arrays of getallen.
+
+#codeblock(lang: "typst", title: "Loops")[
+  ```
+  #let kleuren = (red, orange, yellow, green, blue)
+
+  #for kleur in kleuren [
+    #text(fill: kleur)[■]
+  ]
+
+  // Native vormen (geen Cetz nodig):
+  #for i in range(5) [
+    #circle(radius: 2pt + i*1pt, fill: black.lighten(i*20%))
+  ]
+  ```
+]
+
+// =============================================================================
+//                           ADVANCED CETZ EXAMPLES
+// =============================================================================
+= Geavanceerde CeTZ Voorbeelden
+
+Hier zijn enkele geavanceerde voorbeelden van wat mogelijk is met CeTZ.
+
+== Taylor Reeks (Fill Between)
+#align(center)[
+  #cetz.canvas({
+    import cetz.draw: *
+
+    let f1(x) = calc.sin(x)
+    let fn = (
+      ($ x - x^3"/"3! $, x => x - calc.pow(x, 3) / 6),
+      ($ x - x^3"/"3! - x^5"/"5! $, x => x - calc.pow(x, 3) / 6 + calc.pow(x, 5) / 120),
+      (
+        $ x - x^3"/"3! - x^5"/"5! - x^7"/"7! $,
+        x => x - calc.pow(x, 3) / 6 + calc.pow(x, 5) / 120 - calc.pow(x, 7) / 5040,
+      ),
+    )
+
+    // Set-up a thin axis style
+    set-style(
+      axes: (stroke: .5pt, tick: (stroke: .5pt)),
+      legend: (stroke: none, orientation: ttb, item: (spacing: .3), scale: 80%),
+    )
+
+    plot.plot(
+      size: (8, 6),
+      x-tick-step: calc.pi / 2,
+      x-format: plot.formats.multiple-of,
+      y-tick-step: 2,
+      y-min: -2.5,
+      y-max: 2.5,
+      legend: "inner-north",
+      {
+        let domain = (-1.1 * calc.pi, +1.1 * calc.pi)
+
+        for (title, f) in fn {
+          plot.add-fill-between(f, f1, domain: domain, style: (stroke: none), label: title)
+        }
+        plot.add(f1, domain: domain, label: $ sin x $, style: (stroke: black))
+      },
+    )
+  })
+]
+
+Code:
+#codeblock(lang: "typst", title: "Taylor Reeks")[
+  ```
+  #cetz.canvas({
+    import cetz.draw: *
+    let f1(x) = calc.sin(x)
+    let fn = (
+      ($ x - x^3"/"3! $, x => x - calc.pow(x, 3)/6),
+      // ...
+    )
+
+    set-style(axes: (stroke: .5pt, tick: (stroke: .5pt)),
+              legend: (stroke: none, orientation: ttb, item: (spacing: .3), scale: 80%))
+
+    plot.plot(size: (8, 6),
+      x-tick-step: calc.pi/2,
+      y-tick-step: 2, y-min: -2.5, y-max: 2.5,
+      legend: "inner-north",
+      {
+        let domain = (-1.1 * calc.pi, +1.1 * calc.pi)
+
+        for ((title, f)) in fn {
+          plot.add-fill-between(f, f1, domain: domain,
+            style: (stroke: none), label: title)
+        }
+        plot.add(f1, domain: domain, label: $ sin x  $,
+          style: (stroke: black))
+      })
+  })
+  ```
+]
+
+
+== 3D Orthogonale Projectie
+// Example by @samuelireson
+
+#align(center)[
+  #cetz.canvas(length: 2cm, {
+    import cetz.draw: *
+    let phi = (1 + calc.sqrt(5)) / 2
+
+    ortho({
+      hide({
+        line((-phi, -1, 0), (-phi, 1, 0), (phi, 1, 0), (phi, -1, 0), close: true, name: "xy")
+        line((-1, 0, -phi), (1, 0, -phi), (1, 0, phi), (-1, 0, phi), close: true, name: "xz")
+        line((0, -phi, -1), (0, -phi, 1), (0, phi, 1), (0, phi, -1), close: true, name: "yz")
+      })
+
+      intersections("a", "yz", "xy")
+      intersections("b", "xz", "yz")
+      intersections("c", "xy", "xz")
+
+      set-style(stroke: (thickness: 0.5pt, cap: "round", join: "round"))
+      line((0, 0, 0), "c.1", (phi, 1, 0), (phi, -1, 0), "c.3")
+      line("c.0", (-phi, 1, 0), "a.2")
+      line((0, 0, 0), "b.1", (1, 0, phi), (-1, 0, phi), "b.3")
+      line("b.0", (1, 0, -phi), "c.2")
+      line((0, 0, 0), "a.1", (0, phi, 1), (0, phi, -1), "a.3")
+      line("a.0", (0, -phi, 1), "b.2")
+
+      anchor("A", (0, phi, 1))
+      content("A", [$A$], anchor: "north", padding: .1)
+      anchor("B", (-1, 0, phi))
+      content("B", [$B$], anchor: "south", padding: .1)
+      anchor("C", (1, 0, phi))
+      content("C", [$C$], anchor: "south", padding: .1)
+      line("A", "B", stroke: (dash: "dashed"))
+      line("A", "C", stroke: (dash: "dashed"))
+    })
+  })
+]
+
+Code:
+#codeblock(lang: "typst", title: "3D Ortho")[
+  ```
+  #cetz.canvas(length: 2cm, {
+    import cetz.draw: *
+    let phi = (1 + calc.sqrt(5)) / 2
+
+    ortho({
+      // Definieer vlakken (verborgen)
+      hide({
+        line((-phi, -1, 0), (-phi, 1, 0), (phi, 1, 0), (phi, -1, 0), close: true, name: "xy")
+        // ...
+      })
+
+      // Bereken intersecties
+      intersections("a", "yz", "xy")
+      // ...
+
+      // Teken lijnen
+      set-style(stroke: (thickness: 0.5pt, cap: "round", join: "round"))
+      line((0, 0, 0), "c.1", (phi, 1, 0), (phi, -1, 0), "c.3")
+      // ...
+    })
+  })
+  ```
+]
+
+== Pie Chart (Landen)
+#align(center)[
+  #cetz.canvas({
+    let colors = gradient.linear(red, blue, green, yellow)
+    let data = (
+      ([Belgium], 24),
+      ([Germany], 31),
+      ([Greece], 18),
+      ([Spain], 21),
+      ([France], 23),
+      ([Hungary], 18),
+      ([Netherlands], 27),
+      ([Romania], 17),
+      ([Finland], 26),
+      ([Turkey], 13),
+    )
+
+    chart.piechart(
+      data,
+      value-key: 1,
+      label-key: none,
+      radius: 3,
+      stroke: none,
+      slice-style: colors,
+      inner-radius: 1,
+      outset: 3,
+      inner-label: (content: (value, label) => [#text(white, str(value))], radius: 110%),
+      outer-label: (content: "%", radius: 110%),
+    )
+  })
+]
+
+Code:
+#codeblock(lang: "typst", title: "Pie Chart")[
+  ```
+  #cetz.canvas({
+    let colors = gradient.linear(red, blue, green, yellow)
+    let data = (
+      ([Belgium],     24),
+      ([Germany],     31),
+      ([Greece],      18),
+      // ...
+    )
+
+    chart.piechart(
+      data,
+      value-key: 1,
+      label-key: none,
+      radius: 4,
+      stroke: none,
+      slice-style: colors,
+      inner-radius: 1,
+      outset: 3,
+      inner-label: (content: (value, label) => [#text(white, str(value))], radius: 110%),
+      outer-label: (content: "%", radius: 110%)
+    )
+  })
+  ```
+]
+
+== Pyramid Chart (Financieel)
+#align(center)[
+  #cetz.canvas({
+    let colors = gradient.linear(red, yellow)
+    let data = (
+      ([Cash], 768),
+      ([Funds], 1312),
+      ([Stocks], 3812),
+      ([Bonds], 7167),
+    )
+    let total = data.map(i => i.last()).sum()
+
+    chart.pyramid(
+      data,
+      value-key: 1,
+      label-key: 0,
+      mode: "AREA-HEIGHT",
+      stroke: none,
+      level-style: colors,
+      inner-label: (
+        content: (value, label) => align(center, stack(
+          label + "\n",
+          str(calc.round(value / total * 10000) / 100) + "%",
+          spacing: 2pt,
+          dir: ttb,
+        )),
+      ),
+      side-label: (
+        content: (value, label) => "€" + str(value),
+      ),
+      gap: 10%,
+    )
+  })
+]
+
+Code:
+#codeblock(lang: "typst", title: "Pyramid Chart")[
+  ```
+  #cetz.canvas({
+    let colors = gradient.linear(red, yellow)
+    let data = (
+      ([Cash],     768),
+      ([Funds],    1312),
+      ([Stocks],   3812),
+      ([Bonds],    7167),
+    )
+    let total = data.map(i => i.last()).sum()
+
+    chart.pyramid(
+      data,
+      value-key: 1,
+      label-key: 0,
+      mode: "AREA-HEIGHT",
+      stroke: none,
+      level-style: colors,
+      inner-label: (
+        content: (value, label) => align(center, stack(
+          label + "\n",
+          str(calc.round(value / total * 10000) / 100) + "%",
+          spacing: 2pt,
+          dir: ttb
+        ))
+      ),
+      // ...
+      gap: 10%
+    )
+  })
   ```
 ]
 
