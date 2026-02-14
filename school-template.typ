@@ -147,21 +147,23 @@
 
   show heading: set text(font: "Fira Sans", weight: "bold")
 
-  show heading.where(level: 1): it => [
+  show heading.where(level: 1): it => block(below: 0.8em, breakable: false)[
     #v(8pt)
     #text(size: 13.2pt)[#if it.numbering != none { counter(heading).display(it.numbering) + h(0.5em) }#it.body]
-    #v(-6pt)
+    #v(-12pt)
     #line(length: 100%, stroke: 0.5pt)
     #v(3pt)
   ]
 
-  show heading.where(level: 2): it => [
+  show heading.where(level: 2): it => block(below: 0.8em, breakable: false)[
     #v(6pt)
     #text(size: 11pt)[#if it.numbering != none { counter(heading).display(it.numbering) + h(0.5em) }#it.body]
+    #v(-12pt)
+    #line(length: 100%, stroke: 0.5pt)
     #v(2pt)
   ]
 
-  show heading.where(level: 3): it => [
+  show heading.where(level: 3): it => block(below: 0.8em, breakable: false)[
     #v(4pt)
     #text(size: 10.1pt)[#if it.numbering != none { counter(heading).display(it.numbering) + h(0.5em) }#it.body]
     #v(2pt)
@@ -387,9 +389,7 @@
     #grid(
       columns: (auto, 1fr, auto),
       gutter: 0.5em,
-      [*#entry.title*],
-      align(horizon, repeat[.#h(4pt)]),
-      link(label("frm-" + str(entry.idx)), text(size: 0.75em, fill: schoolBlue)[p.#entry.page]),
+      [*#entry.title*], none, link(label("frm-" + str(entry.idx)), text(size: 0.75em, fill: schoolBlue)[p.#entry.page]),
     )
     #v(2pt)
     #align(center, text(size: 1.1em)[#entry.formula])

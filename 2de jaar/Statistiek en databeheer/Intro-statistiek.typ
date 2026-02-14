@@ -15,7 +15,7 @@ Dit vak is *flipped classroom* wat betekent dat je de theorie thuis bestudeert e
 )
 
 
-Je kunt oefeningen maken en je hebt nog info in #link("https://jupyterhub.set.kuleuven.be/sdm-t2asd2/user/q1665834/git-pull?repo=https%3A%2F%2Fgitlab.kuleuven.be%2Fu0124139%2Fsdm&urlpath=lab%2Ftree%2Fsdm%2Fwelcome.ipynb&branch=main&targetPath=sdm")[Jupyterlab].
+Je kunt oefeningen maken en je hebt nog info in #link("ADD HERE")[Jupyterlab].
 
 
 Je hebt op toledo ook meerkeuzevragen om te oefenen.
@@ -46,7 +46,7 @@ Je hebt verschillende soorten statistiek:
   - *Populatie*: De volledige groep waar je je experiment op doet
   - *Veriable*: Een waarde die je kunt meten
   - *Steekproef*: Een subset van de populatie waar je je experiment op doet.
-  - *Statische interferentie*: Welke omgevingsfactoren hebben een invloed op de variabele? Is onze steekproef aangetast door alleen mensen van een bepaalde populatie te gaan gebruiken? _bv.Veel medicatie werkt niet goed op mensen met een zwarte huidskleur omdat die minder in steekproeven zitten._
+  - *Statische interferentie*: Welke omgevingsfactoren hebben een invloed op de variabele? Is onze steekproef aangetast door alleen mensen van een bepaalde populatie te gaan gebruiken? _bv. Veel medicatie werkt niet goed op mensen met een zwarte huidskleur omdat die minder in steekproeven zitten._
   - *Betrouwbaarheidsmeting*: Hoe betrouwbaar is een meting?
 ]
 
@@ -91,7 +91,7 @@ te *visualiseren*.
     cetz.canvas({
       import cetz.draw: *
       plot.plot(
-        size: (6, 3),
+        size: (5, 3),
         x-label: "Klasse",
         y-label: "Freq",
         y-min: 0,
@@ -129,7 +129,7 @@ te *visualiseren*.
     cetz.canvas({
       import cetz.draw: *
       plot.plot(
-        size: (6, 3),
+        size: (5, 3),
         x-label: $z$,
         y-label: $f(z)$,
         x-tick-step: 1,
@@ -237,7 +237,6 @@ te *visualiseren*.
 
 == Standaard afwijking
 
-Als je data even gespreid is zijn er bepaalde relaties tussen de variatie en de standaardafwijking.
 
 #wrap-figure(
   align: right,
@@ -245,6 +244,8 @@ Als je data even gespreid is zijn er bepaalde relaties tussen de variatie en de 
   caption: [gespreid-data],
   label: <fig:gespreid-data>,
 )[
+
+  Als je data even gespreid is zijn er bepaalde relaties tussen de variatie en de standaardafwijking.
 
   $ overline(x)-s, overline(x)+s $ bevat ongeveer 68% van de data.
   $ overline(x)-2s, overline(x)+2s $ bevat ongeveer 95% van de data.
@@ -282,11 +283,12 @@ $ z = 3 arrow.r.double 99.7% $
 == Uitschieter detectie
 
 #wrap-figure(
-  image("boxplot.png", width: 8cm),
+  image("boxplot.png", width: 10cm),
   caption: [boxplot],
   label: <fig:boxplot>,
 )[
-  Bij een boxplot ga je de mediaan en de kwartielwaarden bepalen.
+  Bij een boxplot ga je de mediaan en de
+  kwartielwaarden bepalen.
   De kwartielwaarden zijn de 25%, 50% en 75% van de data.
   Als er data buiten de kwartielwaarden valt is dat een *uitschieter*.
 ]
@@ -311,6 +313,7 @@ $ z = 3 arrow.r.double 99.7% $
   $ z = (57.000 - 64.000) / 2.000 = -3.5 $
   $ z = -3.5 arrow.r.double 99.7% $\
   Ja, dit salaris is discriminerend.
+  Je zou nu een studie kunnen doen en kijken naar andere salarissen van vrouwen en mannen en zien of er merkbare verschillen zijn in rekening houdend met de salaris van de functie
 ]
 
 

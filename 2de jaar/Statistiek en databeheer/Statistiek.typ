@@ -35,4 +35,5 @@
   width: 20cm,
   alt: "Statistics Formula Chart",
 )
+#printformularium()
 #include "Intro-statistiek.typ"
