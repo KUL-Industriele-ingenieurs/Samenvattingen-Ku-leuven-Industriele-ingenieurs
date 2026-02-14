@@ -6,7 +6,7 @@ kunt maken en gebruiken.
 
 
 #figure(
-  image("Visuele DB.png", width: 5cm),
+  image("Visuele DB.png", width: 8cm),
   caption: [Visuele DB],
 )
 
@@ -61,7 +61,7 @@ Databanken werken met code genaamt *SQL*
 
 
 #wrap-figure(
-  image("nosqldatabank.png", width: 5cm),
+  image("nosqldatabank.png", width: 6cm),
   caption: [nosqldatabank],
   label: <fig:nosqldatabank>,
 )[
