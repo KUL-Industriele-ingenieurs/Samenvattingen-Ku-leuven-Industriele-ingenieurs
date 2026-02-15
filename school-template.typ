@@ -4,10 +4,17 @@
 
 // --- External Packages (from Typst Universe) ---
 #import "@preview/unify:0.7.1": num, numrange, qty, qtyrange  // siunitx equivalent
-#import "@preview/physica:0.9.5": *   // Physics math: derivatives, brakets, etc.
-#import "@preview/cetz:0.4.2"         // TikZ-like drawing
-#import "@preview/cetz-plot:0.1.3": *  // Plotting (pgfplots equivalent)
+#import "@preview/physica:0.9.5": *     // Physics math: derivatives, brakets, etc.
+#import "@preview/cetz:0.4.2"
+#let cetz = cetz
+#import "@preview/cetz-plot:0.1.3": chart, plot  // Plotting (pgfplots equivalent)
+#let chart = chart
+#let plot = plot
 #import "@preview/wrap-it:0.1.1": wrap-content, wrap-top-bottom
+#import "@preview/muchpdf:0.1.2": muchpdf
+#import "@preview/equate:0.3.2"
+#import "@preview/cetz-venn:0.1.4"
+#import "@preview/oasis-align:0.3.3": *
 
 // Shadow standard figure to support label argument for consistency with wrap-figure
 #let std-figure = figure
@@ -27,7 +34,7 @@
   content,
   caption: none,
   label: none,
-  width: 5cm,
+  width: auto,
   align: right,
   body,
 ) = {
@@ -39,17 +46,22 @@
     fig
   }
 
-  let boxed = box(fig-with-label, width: width, inset: (
-    left: if align == right { 1em } else { 0pt },
-    right: if align == left { 1em } else { 0pt },
-    bottom: 0.5em,
-  ))
+  context {
+    let size = measure(fig-with-label)
+    let applied-width = if width == auto { size.width } else { width }
 
-  wrap-content(
-    boxed,
-    body,
-    align: align,
-  )
+    let boxed = box(fig-with-label, width: applied-width, inset: (
+      left: if align == right { 1em } else { 0pt },
+      right: if align == left { 1em } else { 0pt },
+      bottom: 0.5em,
+    ))
+
+    wrap-content(
+      boxed,
+      body,
+      align: align,
+    )
+  }
 }
 #let schoolBlue = rgb(41, 98, 155)
 #let schoolRed = rgb(180, 40, 40)
@@ -114,7 +126,7 @@
   // Charter, Fira Sans & Fira Code loaded from project fonts/ directory
   set text(font: "Charter", lang: "nl", size: 11pt)
   set par(leading: 0.63em, first-line-indent: 0pt, spacing: 1.2em, justify: true)
-  set heading(numbering: "1.1")
+  set heading(numbering: "1.1.")
 
   show raw: set text(font: ("Fira Code", "Fira Mono"), size: 0.85em)
   // Math uses Typst's default New Computer Modern Math (serif, matching Charter body text)
@@ -135,21 +147,23 @@
 
   show heading: set text(font: "Fira Sans", weight: "bold")
 
-  show heading.where(level: 1): it => [
+  show heading.where(level: 1): it => block(below: 0.8em, breakable: false)[
     #v(8pt)
     #text(size: 13.2pt)[#if it.numbering != none { counter(heading).display(it.numbering) + h(0.5em) }#it.body]
-    #v(-6pt)
+    #v(-12pt)
     #line(length: 100%, stroke: 0.5pt)
     #v(3pt)
   ]
 
-  show heading.where(level: 2): it => [
+  show heading.where(level: 2): it => block(below: 0.8em, breakable: false)[
     #v(6pt)
     #text(size: 11pt)[#if it.numbering != none { counter(heading).display(it.numbering) + h(0.5em) }#it.body]
+    #v(-12pt)
+    #line(length: 100%, stroke: 0.5pt)
     #v(2pt)
   ]
 
-  show heading.where(level: 3): it => [
+  show heading.where(level: 3): it => block(below: 0.8em, breakable: false)[
     #v(4pt)
     #text(size: 10.1pt)[#if it.numbering != none { counter(heading).display(it.numbering) + h(0.5em) }#it.body]
     #v(2pt)
@@ -213,6 +227,7 @@
   // Title strip
   block(
     width: 100%,
+    sticky: true,
     spacing: 0pt,
     above: 0pt,
     below: 0pt,
@@ -345,7 +360,7 @@
   }
   schoolbox(title, schoolOrange, "∑", [
     #set align(center)
-    #text(size: 1.2em)[#formula]
+    #text(size: 1.3em)[#formula]
     #v(2pt)
     #set align(left)
     #text(size: 0.9em)[#description]
@@ -372,8 +387,9 @@
   v(4pt)
   block(width: 100%, [
     #grid(
-      columns: (1fr, auto),
-      [*#entry.title*], link(label("frm-" + str(entry.idx)), text(size: 0.75em, fill: schoolBlue)[p.#entry.page]),
+      columns: (auto, 1fr, auto),
+      gutter: 0.5em,
+      [*#entry.title*], none, link(label("frm-" + str(entry.idx)), text(size: 0.75em, fill: schoolBlue)[p.#entry.page]),
     )
     #v(2pt)
     #align(center, text(size: 1.1em)[#entry.formula])
