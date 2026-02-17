@@ -15,6 +15,12 @@
 #import "@preview/equate:0.3.2"
 #import "@preview/cetz-venn:0.1.4"
 #import "@preview/oasis-align:0.3.3": *
+#import "@preview/zap:0.5.0"
+#let zap = zap
+#import "@preview/mannot:0.3.1"
+#let markrect = mannot.markrect
+#let mark = mannot.mark
+#let markul = mannot.markul
 
 // Shadow standard figure to support label argument for consistency with wrap-figure
 #let std-figure = figure
