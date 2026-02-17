@@ -8,7 +8,7 @@
 #import "../../school-template.typ": *
 
 #show: project.with(
-  title: "Ontwerp van een industriële sturing",
+  title: "Distributie van elektrische energie",
   course: "Ontwerp van een industriële sturing",
   authors: ("Ruben Ryckaert", "Andere Auteur"),
   academic_year: "2025-2026",
