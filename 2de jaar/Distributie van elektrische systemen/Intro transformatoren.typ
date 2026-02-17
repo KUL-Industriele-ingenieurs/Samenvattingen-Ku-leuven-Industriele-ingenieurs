@@ -167,7 +167,7 @@ de dot $dot$ betekent dat de stroom naar je toe komt en $X$ betekent dat de stro
     $ B = (mu_0 I) / (2 pi r) $
 ]
 
-==== Magnetisch materiaal
+=== Magnetisch materiaal
 
 *In vacuum is:*
 $ arrow(B_0) = arrow(B_0) $
