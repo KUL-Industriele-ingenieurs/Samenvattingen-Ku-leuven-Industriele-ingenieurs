@@ -24,6 +24,8 @@
 #let markhl = mannot.markhl
 #let annot = mannot.annot
 #let annot-cetz = mannot.annot-cetz
+#import "@preview/fletcher:0.5.8"
+#let fletcher = fletcher
 
 // Shadow standard figure to support label argument for consistency with wrap-figure
 #let std-figure = figure
@@ -369,7 +371,7 @@
   }
   schoolbox(title, schoolOrange, "∑", [
     #set align(center)
-    #text(size: 1.3em)[#formula]
+    #text(size: 1.1em)[#formula]
     #v(2pt)
     #set align(left)
     #text(size: 0.9em)[#description]
