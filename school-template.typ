@@ -21,6 +21,9 @@
 #let markrect = mannot.markrect
 #let mark = mannot.mark
 #let markul = mannot.markul
+#let markhl = mannot.markhl
+#let annot = mannot.annot
+#let annot-cetz = mannot.annot-cetz
 
 // Shadow standard figure to support label argument for consistency with wrap-figure
 #let std-figure = figure
