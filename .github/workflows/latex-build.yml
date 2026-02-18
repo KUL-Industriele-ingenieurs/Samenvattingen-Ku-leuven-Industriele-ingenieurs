@@ -1,445 +1,442 @@
 name: Build LaTeX
 
 on:
-  push:
-    branches: [ main, master, MAIN ]
-    tags:
-      - 'v*'
-  pull_request:
-    branches: [ main, master, MAIN ]
-  workflow_dispatch:
+    push:
+        branches: [main, master, MAIN]
+        tags:
+            - "v*"
+    pull_request:
+        branches: [main, master, MAIN]
+    workflow_dispatch:
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    container:
-      image: texlive/texlive:latest
+    build:
+        runs-on: ubuntu-latest
+        container:
+            image: texlive/texlive:latest
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
 
-      - name: Clean any stale artifacts from checkout
-        shell: bash
-        run: |
-          # Remove any auxiliary files that might have been accidentally committed
-          # Using single line find to avoid shell syntax issues with multiline splitting
-          find . -type f \( -name "*.aux" -o -name "*.bbl" -o -name "*.bcf" -o -name "*.blg" -o -name "*.fls" -o -name "*.log" -o -name "*.out" -o -name "*.toc" -o -name "*.fdb_latexmk" -o -name "*.synctex.gz" \) -delete
-          echo "Cleaned stale auxiliary files"
+            - name: Clean any stale artifacts from checkout
+              shell: bash
+              run: |
+                  # Remove any auxiliary files that might have been accidentally committed
+                  # Using single line find to avoid shell syntax issues with multiline splitting
+                  find . -type f \( -name "*.aux" -o -name "*.bbl" -o -name "*.bcf" -o -name "*.blg" -o -name "*.fls" -o -name "*.log" -o -name "*.out" -o -name "*.toc" -o -name "*.fdb_latexmk" -o -name "*.synctex.gz" \) -delete
+                  echo "Cleaned stale auxiliary files"
 
-      - name: Install xz-utils
-        run: apt-get update && apt-get install -y xz-utils
+            - name: Install xz-utils
+              run: apt-get update && apt-get install -y xz-utils
 
+            - name: Restore PDF cache
+              uses: actions/cache@v4
+              id: pdf-cache
+              with:
+                  path: .pdf-cache
+                  key: pdf-cache-${{ hashFiles('school-macros.sty') }}-${{ hashFiles('**/*.tex') }}-${{ hashFiles('**/*.typ') }}
+                  restore-keys: |
+                      pdf-cache-${{ hashFiles('school-macros.sty') }}-
+                      pdf-cache-
+            # Typst installation removed from the LaTeX build job.
+            # Typst is built in a separate `typst` job using snap on ubuntu-latest.
 
+            - name: Find and Build LaTeX documents
+              shell: bash
+              run: |
+                  # Create cache directory if it doesn't exist
+                  mkdir -p .pdf-cache
 
-      - name: Restore PDF cache
-        uses: actions/cache@v4
-        id: pdf-cache
-        with:
-          path: .pdf-cache
-          key: pdf-cache-${{ hashFiles('school-macros.sty') }}-${{ hashFiles('**/*.tex') }}-${{ hashFiles('**/*.typ') }}
-          restore-keys: |
-            pdf-cache-${{ hashFiles('school-macros.sty') }}-
-            pdf-cache-
-      # Typst installation removed from the LaTeX build job.
-      # Typst is built in a separate `typst` job using snap on ubuntu-latest.
+                  # Find all main documents (excluding subfiles and templates)
+                  # Use -prune to efficiently skip hidden/system directories
+                  find . \( -name ".git" -o -name ".github" -o -name ".pdf-cache" -o -name ".vscode" -o -name "assets" \) -prune -o \
+                         -type f -name "*.tex" \
+                         ! -name "school-macros.sty" \
+                         ! -name "*-macros.sty" \
+                         -exec grep -l "\\documentclass" {} \; > main_docs.txt
 
-      - name: Find and Build LaTeX documents
-        shell: bash
-        run: |
-          # Create cache directory if it doesn't exist
-          mkdir -p .pdf-cache
-          
-          # Find all main documents (excluding subfiles and templates)
-          # Use -prune to efficiently skip hidden/system directories
-          find . \( -name ".git" -o -name ".github" -o -name ".pdf-cache" -o -name ".vscode" -o -name "assets" \) -prune -o \
-                 -type f -name "*.tex" \
-                 ! -name "school-macros.sty" \
-                 ! -name "*-macros.sty" \
-                 -exec grep -l "\\documentclass" {} \; > main_docs.txt
-          
-          echo "📝 Found documents (main_docs.txt):"
-          cat main_docs.txt
-          
-          echo "## Build Results 📊" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "| Document | Status | Details |" >> $GITHUB_STEP_SUMMARY
-          echo "|----------|--------|---------|" >> $GITHUB_STEP_SUMMARY
-          
-          BUILD_FAILED=0
-          PDFS_GENERATED=0
-          CACHE_HITS=0
-          BUILD_LOG_DIR="${GITHUB_WORKSPACE}/build_logs"
-          mkdir -p "$BUILD_LOG_DIR"
-          
-          # Compute hash of root school-macros.sty for cache invalidation
-          MACROS_HASH=""
-          if [ -f "school-macros.sty" ]; then
-            MACROS_HASH=$(sha256sum "school-macros.sty" | cut -d' ' -f1)
-          fi
-          
-          # Build each found document
-          while IFS= read -r texfile; do
-            dir=$(dirname "$texfile")
-            file=$(basename "$texfile")
-            name=$(basename "$texfile" .tex)
-            
-            # Compute hash of the tex file + macros for cache key
-            TEX_HASH=$(sha256sum "$texfile" | cut -d' ' -f1)
-            CACHE_KEY="${TEX_HASH}-${MACROS_HASH}"
-            CACHE_FILE=".pdf-cache/${name}-${CACHE_KEY}.pdf"
-            
-            # Check if we have a cached PDF
-            if [ -f "$CACHE_FILE" ]; then
-              echo "========================================="
-              echo "Using cached PDF for: $texfile"
-              echo "========================================="
-              
-              # Copy cached PDF to the document's directory
-              cp "$CACHE_FILE" "${dir}/${name}.pdf"
-              
-              echo "| \`$name\` | ⚡ Cached | No changes detected |" >> $GITHUB_STEP_SUMMARY
-              echo "⚡ Cache hit: $texfile"
-              PDFS_GENERATED=$((PDFS_GENERATED + 1))
-              CACHE_HITS=$((CACHE_HITS + 1))
-              continue
-            fi
-            
-            echo "========================================="
-            echo "Building: $texfile"
-            echo "========================================="
-            
-            cd "$dir"
-            
-            # Clean auxiliary files specifically using latexmk before building
-            # latexmk might fail if it can't find files, so we suppress errors
-            latexmk -C "$file" || true
-            
-            # Build using ONLY latexmk
-            if latexmk -pdf \
-                -g \
-                -shell-escape \
-                -interaction=nonstopmode \
-                -file-line-error \
-                "$file" 2>&1 | tee "build_${name}.log"; then
-              
-              # Verify PDF was actually created
-              if [ -f "${name}.pdf" ]; then
-                echo "| \`$name\` | ✅ Built | PDF generated |" >> $GITHUB_STEP_SUMMARY
-                echo "✅ Success: $texfile"
-                PDFS_GENERATED=$((PDFS_GENERATED + 1))
-                
-                # Store in cache for future builds
-                cp "${name}.pdf" "${GITHUB_WORKSPACE}/${CACHE_FILE}"
-              else
-                echo "| \`$name\` | ⚠️ Warning | Completed but no PDF |" >> $GITHUB_STEP_SUMMARY
-                echo "⚠️ Warning: $texfile completed but PDF not found"
-                BUILD_FAILED=1
-              fi
-            else
-              EXIT_CODE=$?
-              echo "| \`$name\` | ❌ Failed | Exit code: $EXIT_CODE |" >> $GITHUB_STEP_SUMMARY
-              echo "❌ Failed: $texfile (exit code: $EXIT_CODE)"
-              
-              # Extract and display key error information for the Actions UI
-              echo "::group::Error details for $name"
-              echo "Last 30 lines of build log:"
-              tail -30 "build_${name}.log" || true
-              
-              if [ -f "${name}.log" ]; then
-                echo ""
-                echo "LaTeX errors found in .log file:"
-                grep -A 3 "^!" "${name}.log" || echo "No '!' markers found in .log"
-              fi
-              echo "::endgroup::"
-              
-              BUILD_FAILED=1
-            fi
-            
-            # Move log to central dir for artifact collection
-            cp "build_${name}.log" "$BUILD_LOG_DIR/" 2>/dev/null || true
-            
-            cd - > /dev/null
-          done < main_docs.txt
-          
-          # Summary
-          echo ""
-          echo "📊 Build Summary: $PDFS_GENERATED PDFs ($CACHE_HITS from cache, $((PDFS_GENERATED - CACHE_HITS)) rebuilt)"
-          
-          # Logic: Fail only if NO PDFs were generated (and we found documents)
-          # If we generated at least one PDF, we consider it a partial success
-          if [ $PDFS_GENERATED -eq 0 ]; then
-             if [ -s main_docs.txt ]; then
-                echo "::error::Build failed: No PDFs were successfully generated from the found documents."
-                exit 1
-             else
-                echo "::warning::No LaTeX documents found to build."
-             fi
-          elif [ $BUILD_FAILED -ne 0 ]; then
-             echo "::warning::Some documents failed to build, but $PDFS_GENERATED PDF(s) were generated. Proceeding with release."
-          else
-             echo "All documents built successfully ($PDFS_GENERATED PDFs)."
-          fi
+                  echo "📝 Found documents (main_docs.txt):"
+                  cat main_docs.txt
 
-      # Typst build is handled in a separate job (`typst`); removed from the LaTeX `build` job to avoid duplicate runs and log noise
+                  echo "## Build Results 📊" >> $GITHUB_STEP_SUMMARY
+                  echo "" >> $GITHUB_STEP_SUMMARY
+                  echo "| Document | Status | Details |" >> $GITHUB_STEP_SUMMARY
+                  echo "|----------|--------|---------|" >> $GITHUB_STEP_SUMMARY
 
-      - name: Collect build artifacts
-        if: always()
-        run: |
-          mkdir -p artifacts/pdfs artifacts/logs
-          # Collect LaTeX PDFs
-          if [ -f main_docs.txt ]; then
-            while IFS= read -r texfile; do
-              dir=$(dirname "$texfile")
-              name=$(basename "$texfile" .tex)
-              # Skip files that look like cache artifacts (containing 64-char hash)
-              if [[ "$name" =~ [0-9a-f]{64} ]]; then
-                echo "Skipping hashed file: $name"
-                continue
-              fi
-              
-              if [ -f "${dir}/${name}.pdf" ]; then
-                cp "${dir}/${name}.pdf" artifacts/pdfs/
-                echo "Collected LaTeX: ${dir}/${name}.pdf"
-              fi
-            done < main_docs.txt
-          fi
-          
-          # Typst PDFs are produced and uploaded by the separate `typst` job (artifact: `pdfs-typst`).
-          # They are downloaded into `artifacts/pdfs` by the `prerelease` job when creating the release.
-          
-          echo "📂 Collected Artifacts (artifacts/pdfs):"
-          ls -la artifacts/pdfs/
-          
-          # Collect logs
-          cp build_logs/*.log artifacts/logs/ 2>/dev/null || true
+                  BUILD_FAILED=0
+                  PDFS_GENERATED=0
+                  CACHE_HITS=0
+                  BUILD_LOG_DIR="${GITHUB_WORKSPACE}/build_logs"
+                  mkdir -p "$BUILD_LOG_DIR"
 
-      - name: Upload LaTeX PDFs
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: pdfs-latex
-          retention-days: 90
-          if-no-files-found: warn
-          path: artifacts/pdfs/*.pdf
+                  # Compute hash of root school-macros.sty for cache invalidation
+                  MACROS_HASH=""
+                  if [ -f "school-macros.sty" ]; then
+                    MACROS_HASH=$(sha256sum "school-macros.sty" | cut -d' ' -f1)
+                  fi
 
-      - name: Upload build logs
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-logs
-          retention-days: 30
-          if-no-files-found: ignore
-          path: artifacts/logs/*.log
+                  # Build each found document
+                  while IFS= read -r texfile; do
+                    dir=$(dirname "$texfile")
+                    file=$(basename "$texfile")
+                    name=$(basename "$texfile" .tex)
+                    
+                    # Compute hash of the tex file + macros for cache key
+                    TEX_HASH=$(sha256sum "$texfile" | cut -d' ' -f1)
+                    CACHE_KEY="${TEX_HASH}-${MACROS_HASH}"
+                    CACHE_FILE=".pdf-cache/${name}-${CACHE_KEY}.pdf"
+                    
+                    # Check if we have a cached PDF
+                    if [ -f "$CACHE_FILE" ]; then
+                      echo "========================================="
+                      echo "Using cached PDF for: $texfile"
+                      echo "========================================="
+                      
+                      # Copy cached PDF to the document's directory
+                      cp "$CACHE_FILE" "${dir}/${name}.pdf"
+                      
+                      echo "| \`$name\` | ⚡ Cached | No changes detected |" >> $GITHUB_STEP_SUMMARY
+                      echo "⚡ Cache hit: $texfile"
+                      PDFS_GENERATED=$((PDFS_GENERATED + 1))
+                      CACHE_HITS=$((CACHE_HITS + 1))
+                      continue
+                    fi
+                    
+                    echo "========================================="
+                    echo "Building: $texfile"
+                    echo "========================================="
+                    
+                    cd "$dir"
+                    
+                    # Clean auxiliary files specifically using latexmk before building
+                    # latexmk might fail if it can't find files, so we suppress errors
+                    latexmk -C "$file" || true
+                    
+                    # Build using ONLY latexmk
+                    if latexmk -pdf \
+                        -g \
+                        -shell-escape \
+                        -interaction=nonstopmode \
+                        -file-line-error \
+                        "$file" 2>&1 | tee "build_${name}.log"; then
+                      
+                      # Verify PDF was actually created
+                      if [ -f "${name}.pdf" ]; then
+                        echo "| \`$name\` | ✅ Built | PDF generated |" >> $GITHUB_STEP_SUMMARY
+                        echo "✅ Success: $texfile"
+                        PDFS_GENERATED=$((PDFS_GENERATED + 1))
+                        
+                        # Store in cache for future builds
+                        cp "${name}.pdf" "${GITHUB_WORKSPACE}/${CACHE_FILE}"
+                      else
+                        echo "| \`$name\` | ⚠️ Warning | Completed but no PDF |" >> $GITHUB_STEP_SUMMARY
+                        echo "⚠️ Warning: $texfile completed but PDF not found"
+                        BUILD_FAILED=1
+                      fi
+                    else
+                      EXIT_CODE=$?
+                      echo "| \`$name\` | ❌ Failed | Exit code: $EXIT_CODE |" >> $GITHUB_STEP_SUMMARY
+                      echo "❌ Failed: $texfile (exit code: $EXIT_CODE)"
+                      
+                      # Extract and display key error information for the Actions UI
+                      echo "::group::Error details for $name"
+                      echo "Last 30 lines of build log:"
+                      tail -30 "build_${name}.log" || true
+                      
+                      if [ -f "${name}.log" ]; then
+                        echo ""
+                        echo "LaTeX errors found in .log file:"
+                        grep -A 3 "^!" "${name}.log" || echo "No '!' markers found in .log"
+                      fi
+                      echo "::endgroup::"
+                      
+                      BUILD_FAILED=1
+                    fi
+                    
+                    # Move log to central dir for artifact collection
+                    cp "build_${name}.log" "$BUILD_LOG_DIR/" 2>/dev/null || true
+                    
+                    cd - > /dev/null
+                  done < main_docs.txt
 
-  typst:
-    name: Build Typst
-    runs-on: ubuntu-latest
+                  # Summary
+                  echo ""
+                  echo "📊 Build Summary: $PDFS_GENERATED PDFs ($CACHE_HITS from cache, $((PDFS_GENERATED - CACHE_HITS)) rebuilt)"
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+                  # Logic: Fail only if NO PDFs were generated (and we found documents)
+                  # If we generated at least one PDF, we consider it a partial success
+                  if [ $PDFS_GENERATED -eq 0 ]; then
+                     if [ -s main_docs.txt ]; then
+                        echo "::error::Build failed: No PDFs were successfully generated from the found documents."
+                        exit 1
+                     else
+                        echo "::warning::No LaTeX documents found to build."
+                     fi
+                  elif [ $BUILD_FAILED -ne 0 ]; then
+                     echo "::warning::Some documents failed to build, but $PDFS_GENERATED PDF(s) were generated. Proceeding with release."
+                  else
+                     echo "All documents built successfully ($PDFS_GENERATED PDFs)."
+                  fi
 
-      - name: Install snapd and Typst
-        run: |
-          set -euo pipefail
-          sudo apt-get update -y
-          sudo apt-get install -y snapd
-          # Ensure snap core is present (no-op if already installed)
-          sudo snap install core || true
-          # Install typst
-          sudo snap install typst || sudo snap install typst --classic
-          typst --version
+            # Typst build is handled in a separate job (`typst`); removed from the LaTeX `build` job to avoid duplicate runs and log noise
 
-      - name: Find and Build Typst documents
-        shell: bash
-        run: |
-          echo "## Typst Build Results 📊" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "| Document | Status | Details |" >> $GITHUB_STEP_SUMMARY
-          echo "|----------|--------|---------|" >> $GITHUB_STEP_SUMMARY
+            - name: Collect build artifacts
+              if: always()
+              run: |
+                  mkdir -p artifacts/pdfs artifacts/logs
+                  # Collect LaTeX PDFs
+                  if [ -f main_docs.txt ]; then
+                    while IFS= read -r texfile; do
+                      dir=$(dirname "$texfile")
+                      name=$(basename "$texfile" .tex)
+                      # Skip files that look like cache artifacts (containing 64-char hash)
+                      if [[ "$name" =~ [0-9a-f]{64} ]]; then
+                        echo "Skipping hashed file: $name"
+                        continue
+                      fi
+                      
+                      if [ -f "${dir}/${name}.pdf" ]; then
+                        cp "${dir}/${name}.pdf" artifacts/pdfs/
+                        echo "Collected LaTeX: ${dir}/${name}.pdf"
+                      fi
+                    done < main_docs.txt
+                  fi
 
-          mkdir -p artifacts/pdfs
+                  # Typst PDFs are produced and uploaded by the separate `typst` job (artifact: `pdfs-typst`).
+                  # They are downloaded into `artifacts/pdfs` by the `prerelease` job when creating the release.
 
-          TYPST_BUILT=0
-          TYPST_FAILED=0
+                  echo "📂 Collected Artifacts (artifacts/pdfs):"
+                  ls -la artifacts/pdfs/
 
-          find . \( -name ".git" -o -name ".github" -o -name ".pdf-cache" -o -name "chapters" \) -prune -o \
-               -type f -name "*.typ" \
-               ! -name "school-template.typ" \
-               -exec grep -l "#import\|#show: project" {} \; > typst_docs.txt 2>/dev/null || true
+                  # Collect logs
+                  cp build_logs/*.log artifacts/logs/ 2>/dev/null || true
 
-          if [ ! -s typst_docs.txt ]; then
-            echo "No Typst main documents found."
-            echo "| - | ℹ️ | No Typst documents found |" >> $GITHUB_STEP_SUMMARY
-          else
-            echo "📝 Found Typst documents:"
-            cat typst_docs.txt
+            - name: Upload LaTeX PDFs
+              if: always()
+              uses: actions/upload-artifact@v4
+              with:
+                  name: pdfs-latex
+                  retention-days: 90
+                  if-no-files-found: warn
+                  path: artifacts/pdfs/*.pdf
 
-            while IFS= read -r typfile; do
-              dir=$(dirname "$typfile")
-              file=$(basename "$typfile")
-              name=$(basename "$typfile" .typ)
+            - name: Upload build logs
+              if: failure()
+              uses: actions/upload-artifact@v4
+              with:
+                  name: build-logs
+                  retention-days: 30
+                  if-no-files-found: ignore
+                  path: artifacts/logs/*.log
 
-              echo "========================================="
-              echo "Building Typst: $typfile"
-              echo "========================================="
+    typst:
+        name: Build Typst
+        runs-on: ubuntu-latest
 
-              cd "$dir"
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
 
-              if typst compile --root "$GITHUB_WORKSPACE" --font-path "$GITHUB_WORKSPACE/fonts/" "$file" 2>&1; then
-                if [ -f "${name}.pdf" ]; then
-                  echo "| \`$name\` (Typst) | ✅ Built | PDF generated |" >> $GITHUB_STEP_SUMMARY
-                  echo "✅ Success: $typfile"
-                  cp "${name}.pdf" "$GITHUB_WORKSPACE/artifacts/pdfs/" || true
-                  TYPST_BUILT=$((TYPST_BUILT + 1))
-                else
-                  echo "| \`$name\` (Typst) | ⚠️ Warning | Completed but no PDF |" >> $GITHUB_STEP_SUMMARY
-                  echo "⚠️ Warning: $typfile completed but PDF not found"
-                  TYPST_FAILED=1
-                fi
-              else
-                echo "| \`$name\` (Typst) | ❌ Failed | Build error |" >> $GITHUB_STEP_SUMMARY
-                echo "❌ Failed: $typfile"
-                TYPST_FAILED=1
-              fi
+            - name: Install snapd and Typst
+              run: |
+                  set -euo pipefail
+                  sudo apt-get update -y
+                  sudo apt-get install -y snapd
+                  # Ensure snap core is present (no-op if already installed)
+                  sudo snap install core || true
+                  # Install typst
+                  sudo snap install typst || sudo snap install typst --classic
+                  typst --version
 
-              cd - > /dev/null
-            done < typst_docs.txt
-          fi
+            - name: Find and Build Typst documents
+              shell: bash
+              run: |
+                  echo "## Typst Build Results 📊" >> $GITHUB_STEP_SUMMARY
+                  echo "" >> $GITHUB_STEP_SUMMARY
+                  echo "| Document | Status | Details |" >> $GITHUB_STEP_SUMMARY
+                  echo "|----------|--------|---------|" >> $GITHUB_STEP_SUMMARY
 
-          echo ""
-          echo "📊 Typst Build Summary: $TYPST_BUILT PDFs built"
+                  mkdir -p artifacts/pdfs
 
-      - name: Upload Typst PDFs
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: pdfs-typst
-          path: artifacts/pdfs/*.pdf
-          retention-days: 90
-          if-no-files-found: warn
+                  TYPST_BUILT=0
+                  TYPST_FAILED=0
 
-  collect:
-    name: Collect PDFs
-    needs: [build, typst]
-    if: always() && (needs.build.result == 'success' || needs.typst.result == 'success')
-    runs-on: ubuntu-latest
+                  find . \( -name ".git" -o -name ".github" -o -name ".pdf-cache" -o -name "chapters" \) -prune -o \
+                       -type f -name "*.typ" \
+                       ! -name "school-template.typ" \
+                       -exec grep -l "#show: project" {} \; > typst_docs.txt 2>/dev/null || true
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+                  if [ ! -s typst_docs.txt ]; then
+                    echo "No Typst main documents found."
+                    echo "| - | ℹ️ | No Typst documents found |" >> $GITHUB_STEP_SUMMARY
+                  else
+                    echo "📝 Found Typst documents:"
+                    cat typst_docs.txt
 
-      - name: Download all PDF artifacts
-        uses: actions/download-artifact@v4
-        with:
-          pattern: pdfs-*
-          path: artifacts/pdfs
-          merge-multiple: true
+                    while IFS= read -r typfile; do
+                      dir=$(dirname "$typfile")
+                      file=$(basename "$typfile")
+                      name=$(basename "$typfile" .typ)
 
-      - name: List collected PDFs
-        run: |
-          echo "Collected PDFs:"
-          ls -la artifacts/pdfs || echo "No PDFs collected"
+                      echo "========================================="
+                      echo "Building Typst: $typfile"
+                      echo "========================================="
 
-      - name: Re-upload combined PDFs
-        uses: actions/upload-artifact@v4
-        with:
-          name: pdfs
-          path: artifacts/pdfs/*.pdf
-          retention-days: 90
-          if-no-files-found: warn
+                      cd "$dir"
 
-  prerelease:
-    name: Create Prerelease
-    needs: [build, typst, collect]
-    # Only create prereleases on pushes to main, and only if collect succeeded
-    if: always() && needs.collect.result == 'success' && github.event_name == 'push' && github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
+                      if typst compile --root "$GITHUB_WORKSPACE" --font-path "$GITHUB_WORKSPACE/fonts/" "$file" 2>&1; then
+                        if [ -f "${name}.pdf" ]; then
+                          echo "| \`$name\` (Typst) | ✅ Built | PDF generated |" >> $GITHUB_STEP_SUMMARY
+                          echo "✅ Success: $typfile"
+                          cp "${name}.pdf" "$GITHUB_WORKSPACE/artifacts/pdfs/" || true
+                          TYPST_BUILT=$((TYPST_BUILT + 1))
+                        else
+                          echo "| \`$name\` (Typst) | ⚠️ Warning | Completed but no PDF |" >> $GITHUB_STEP_SUMMARY
+                          echo "⚠️ Warning: $typfile completed but PDF not found"
+                          TYPST_FAILED=1
+                        fi
+                      else
+                        echo "| \`$name\` (Typst) | ❌ Failed | Build error |" >> $GITHUB_STEP_SUMMARY
+                        echo "❌ Failed: $typfile"
+                        TYPST_FAILED=1
+                      fi
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+                      cd - > /dev/null
+                    done < typst_docs.txt
+                  fi
 
-      - name: Download PDF artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: pdfs
-          path: artifacts/pdfs
+                  echo ""
+                  echo "📊 Typst Build Summary: $TYPST_BUILT PDFs built"
 
+            - name: Upload Typst PDFs
+              if: always()
+              uses: actions/upload-artifact@v4
+              with:
+                  name: pdfs-typst
+                  path: artifacts/pdfs/*.pdf
+                  retention-days: 90
+                  if-no-files-found: warn
 
-      - name: Get current date and commit info
-        id: info
-        shell: bash
-        run: |
-          echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
-          echo "datetime=$(date +'%Y-%m-%d %H:%M UTC')" >> $GITHUB_OUTPUT
-          echo "short_sha=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+    collect:
+        name: Collect PDFs
+        needs: [build, typst]
+        if: always() && (needs.build.result == 'success' || needs.typst.result == 'success')
+        runs-on: ubuntu-latest
 
-      - name: List downloaded PDFs
-        run: |
-          echo "📄 PDFs to include in prerelease:"
-          ls -la artifacts/pdfs/ || echo "No PDFs found"
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
 
-      - name: Create or Update Release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          # 1. Update the 'latest' tag to point to this commit
-          # We need to configure git identity for the tag
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          
-          echo "Updating 'latest' tag to $(git rev-parse --short HEAD)..."
-          git tag -f latest
-          git push -f origin latest
-          
-          # 2. Prepare Release Body using printf to avoid heredoc indentation issues
-          printf "## 🔄 Automatic Prerelease\n\n" > release_body.md
-          printf "**Build Date:** ${{ steps.info.outputs.datetime }}\n" >> release_body.md
-          printf "**Commit:** [\`${{ steps.info.outputs.short_sha }}\`](https://github.com/${{ github.repository }}/commit/${{ github.sha }})\n\n" >> release_body.md
-          printf "This is an automatically generated prerelease containing the latest compiled PDF documents.\n\n" >> release_body.md
-          printf "> ⚠️ **Note:** This prerelease is automatically updated with every commit to the main branch.\n" >> release_body.md
-          printf "> For stable versions, see the [official releases](https://github.com/${{ github.repository }}/releases?q=NOT+prerelease).\n\n" >> release_body.md
-          printf "### 📥 Downloads\nAll PDF summaries are attached below.\n" >> release_body.md
-          
-          # 3. Create or Edit the Release
-          # If the release exists, we edit it to update body/target.
-          # If not, we create it.
-          # We use the 'latest' tag which we just pushed.
-          
-          if gh release view latest >/dev/null 2>&1; then
-             echo "Updating existing release metadata..."
-             gh release edit latest \
-               --title "📚 Latest Build (${{ steps.info.outputs.date }})" \
-               --prerelease \
-               --draft=false \
-               --notes-file release_body.md
-          else
-             echo "Creating new release..."
-             gh release create latest \
-               --title "📚 Latest Build (${{ steps.info.outputs.date }})" \
-               --prerelease \
-               --draft=false \
-               --notes-file release_body.md
-          fi
-          
-          # 4. Upload Assets
-          echo "Uploading assets..."
-          # Check for PDFs
-          if ls artifacts/pdfs/*.pdf 1> /dev/null 2>&1; then
-            gh release upload latest artifacts/pdfs/*.pdf --clobber
-          else
-            echo "::warning::No PDFs found to upload."
-          fi
-          
-          # Check for Logs
-          if ls artifacts/logs/*.log 1> /dev/null 2>&1; then
-             gh release upload latest artifacts/logs/*.log --clobber
-          fi
+            - name: Download all PDF artifacts
+              uses: actions/download-artifact@v4
+              with:
+                  pattern: pdfs-*
+                  path: artifacts/pdfs
+                  merge-multiple: true
+
+            - name: List collected PDFs
+              run: |
+                  echo "Collected PDFs:"
+                  ls -la artifacts/pdfs || echo "No PDFs collected"
+
+            - name: Re-upload combined PDFs
+              uses: actions/upload-artifact@v4
+              with:
+                  name: pdfs
+                  path: artifacts/pdfs/*.pdf
+                  retention-days: 90
+                  if-no-files-found: warn
+
+    prerelease:
+        name: Create Prerelease
+        needs: [build, typst, collect]
+        # Only create prereleases on pushes to main, and only if collect succeeded
+        if: always() && needs.collect.result == 'success' && github.event_name == 'push' && github.ref == 'refs/heads/main'
+        runs-on: ubuntu-latest
+        permissions:
+            contents: write
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Download PDF artifacts
+              uses: actions/download-artifact@v4
+              with:
+                  name: pdfs
+                  path: artifacts/pdfs
+
+            - name: Get current date and commit info
+              id: info
+              shell: bash
+              run: |
+                  echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+                  echo "datetime=$(date +'%Y-%m-%d %H:%M UTC')" >> $GITHUB_OUTPUT
+                  echo "short_sha=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+
+            - name: List downloaded PDFs
+              run: |
+                  echo "📄 PDFs to include in prerelease:"
+                  ls -la artifacts/pdfs/ || echo "No PDFs found"
+
+            - name: Create or Update Release
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              run: |
+                  # 1. Update the 'latest' tag to point to this commit
+                  # We need to configure git identity for the tag
+                  git config user.name "github-actions[bot]"
+                  git config user.email "github-actions[bot]@users.noreply.github.com"
+
+                  echo "Updating 'latest' tag to $(git rev-parse --short HEAD)..."
+                  git tag -f latest
+                  git push -f origin latest
+
+                  # 2. Prepare Release Body using printf to avoid heredoc indentation issues
+                  printf "## 🔄 Automatic Prerelease\n\n" > release_body.md
+                  printf "**Build Date:** ${{ steps.info.outputs.datetime }}\n" >> release_body.md
+                  printf "**Commit:** [\`${{ steps.info.outputs.short_sha }}\`](https://github.com/${{ github.repository }}/commit/${{ github.sha }})\n\n" >> release_body.md
+                  printf "This is an automatically generated prerelease containing the latest compiled PDF documents.\n\n" >> release_body.md
+                  printf "> ⚠️ **Note:** This prerelease is automatically updated with every commit to the main branch.\n" >> release_body.md
+                  printf "> For stable versions, see the [official releases](https://github.com/${{ github.repository }}/releases?q=NOT+prerelease).\n\n" >> release_body.md
+                  printf "### 📥 Downloads\nAll PDF summaries are attached below.\n" >> release_body.md
+
+                  # 3. Create or Edit the Release
+                  # If the release exists, we edit it to update body/target.
+                  # If not, we create it.
+                  # We use the 'latest' tag which we just pushed.
+
+                  if gh release view latest >/dev/null 2>&1; then
+                     echo "Updating existing release metadata..."
+                     gh release edit latest \
+                       --title "📚 Latest Build (${{ steps.info.outputs.date }})" \
+                       --prerelease \
+                       --draft=false \
+                       --notes-file release_body.md
+                  else
+                     echo "Creating new release..."
+                     gh release create latest \
+                       --title "📚 Latest Build (${{ steps.info.outputs.date }})" \
+                       --prerelease \
+                       --draft=false \
+                       --notes-file release_body.md
+                  fi
+
+                  # 4. Upload Assets
+                  echo "Uploading assets..."
+                  # Check for PDFs
+                  if ls artifacts/pdfs/*.pdf 1> /dev/null 2>&1; then
+                    gh release upload latest artifacts/pdfs/*.pdf --clobber
+                  else
+                    echo "::warning::No PDFs found to upload."
+                  fi
+
+                  # Check for Logs
+                  if ls artifacts/logs/*.log 1> /dev/null 2>&1; then
+                     gh release upload latest artifacts/logs/*.log --clobber
+                  fi
