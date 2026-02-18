@@ -171,6 +171,10 @@ te *visualiseren*.
   met $x_i$ de waarden van de steekproef en $n$ de steekproefgrootte
 ])
 
+#frm("Populatie gemiddelde", $mu = (sum_(i=1)^N x_i) / N$, [
+  met $x_i$ de waarden van de steekproef en $N$ de steekproefgrootte
+])
+
 
 #concept(title: "Belangrijke notatie")[
 
@@ -210,7 +214,7 @@ te *visualiseren*.
 #concept(title: "Spreiding")[
   #figure(
     image("spreiding.png", width: 10cm),
-    caption: [spreiding],
+    caption: [Spreiding],
     label: <fig:spreiding>,
   )
 
@@ -221,7 +225,8 @@ te *visualiseren*.
 
 #frm(
   "Variatie",
-  $s^2 = (sum_(i=1)^n (x_i - (sum_(i=1)^n x_i) / n)^2) / n \\ sigma^2 = (sum_(i=1)^n (x_i - (sum_(i=1)^n x_i) / n)^2) / n$,
+  [$ s^2 = (sum_(i=1)^n (x_i - (sum_(i=1)^n x_i) / n)^2) / n $
+    $ sigma^2 = (sum_(i=1)^n (x_i - (sum_(i=1)^n mu) / n)^2) / n $],
   [
     met $x_i$ de waarden van de steekproef, $overline(x)$ de steekproef gemiddelde, $mu$ de populatie gemiddelde, $sigma^2$ de populatie variatie, $s^2$ de steekproef variatie en $n$ de steekproefgrootte
   ],
@@ -254,8 +259,7 @@ te *visualiseren*.
 ]
 
 == Hoe ver wijkt een waarde af van de overage waarnemingen?
-
-* %rankings*
+=== Percent rankings
 
 #wrap-figure(
   image("90%.png", width: 6cm),
@@ -269,9 +273,14 @@ te *visualiseren*.
 
 ]
 
-#frm("Z-score", $ z = (x - mu) / sigma | z = (x - overline(x)) / s $, [
-  met $x$ de waarde, $mu$ de gemiddelde, $sigma$ de populatie standaardafwijking, $overline(x)$ de steekproef gemiddelde, $s$ de steekproef standaardafwijking
-])
+#frm(
+  "Z-score",
+  [$ z = (x - mu) / sigma $
+    $ z = (x - overline(x)) / s $],
+  [
+    met $x$ de waarde, $mu$ de gemiddelde, $sigma$ de populatie standaardafwijking, $overline(x)$ de steekproef gemiddelde, $s$ de steekproef standaardafwijking
+  ],
+)
 
 De z-score geeft aan hoe ver een waarde afwijkt van de gemiddelde in termen van standaardafwijkingen. 1 z-score is 1 standaardafwijking.
 Net zoals bij de standaardafwijking zie je afhankelijk van de Z-score verschillende percentages van de data.
@@ -295,7 +304,8 @@ $ z = 3 arrow.r.double 99.7% $
 
 #frm(
   "Boxplot uitschieter detectie",
-  $U i t s c h i e t e r < Q_1 - 1.5(Q_3-Q_1) | U i t s c h i e t e r > Q_3 + 1.5(Q_3-Q_1)$,
+  [$ U i t s c h i e t e r < Q_1 - 1.5(Q_3-Q_1) $
+    $U i t s c h i e t e r > Q_3 + 1.5(Q_3-Q_1)$],
   [
     met $Q_1$ de 25% en $Q_3$ de 75%
   ],
