@@ -15,7 +15,7 @@ Dit vak is *flipped classroom* wat betekent dat je de theorie thuis bestudeert e
 )
 
 
-Je kunt oefeningen maken en je hebt nog info in #link("ADD HERE")[Jupyterlab].
+Je kunt oefeningen maken en je hebt nog info in #link("https://jupyterhub.set.kuleuven.be/sdm-t2asd2/user/q1665834/git-pull?repo=https%3A%2F%2Fgitlab.kuleuven.be%2Fu0124139%2Fsdm&urlpath=lab%2Ftree%2Fsdm%2Fwelcome.ipynb&branch=main&targetPath=sdm")[Jupyterlab].
 
 
 Je hebt op toledo ook meerkeuzevragen om te oefenen.
