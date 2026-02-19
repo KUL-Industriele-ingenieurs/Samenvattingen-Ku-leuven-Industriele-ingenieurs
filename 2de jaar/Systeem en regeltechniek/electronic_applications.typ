@@ -205,14 +205,12 @@ We zoeken naar *de transferfunctie* $H(s)$ dat betekent dat er dus geen enkele b
       content((-0.6, 4), [0])
       content((-0.8, 2.6), [-3])
 
-      // 0 dB flat region
+      // Asymptotic Bode: flat then -20 dB/dec (continuous line)
       line((0, 4), (4, 4), stroke: (paint: blue, thickness: 1.5pt))
+      line((4, 4), (9, 1.6), stroke: (paint: blue, thickness: 1.5pt))
 
-      // -3 dB point
+      // Actual -3 dB point
       circle((4, 2.6), radius: 0.1, fill: red, stroke: red)
-
-      // Roll-off -20 dB/decade
-      line((4, 2.6), (9, 0.2), stroke: (paint: blue, thickness: 1.5pt))
 
       // Cut-off frequency marker
       line((4, 0), (4, 2.6), stroke: (paint: gray, thickness: 0.5pt, dash: "dashed"))
@@ -290,14 +288,12 @@ We zoeken naar *de transferfunctie* $H(s)$ dat betekent dat er dus geen enkele b
       content((-0.6, 4), [0])
       content((-0.8, 2.6), [-3])
 
-      // +20 dB/decade rise region
-      line((1, 0.2), (6, 2.6), stroke: (paint: blue, thickness: 1.5pt))
-
-      // -3 dB point
-      circle((6, 2.6), radius: 0.1, fill: red, stroke: red)
-
-      // 0 dB flat region (high frequencies pass)
+      // Asymptotic Bode: +20 dB/dec then flat (continuous line)
+      line((1, 0.4), (6, 4), stroke: (paint: blue, thickness: 1.5pt))
       line((6, 4), (w, 4), stroke: (paint: blue, thickness: 1.5pt))
+
+      // Actual -3 dB point
+      circle((6, 2.6), radius: 0.1, fill: red, stroke: red)
 
       // Cut-off frequency marker
       line((6, 0), (6, 2.6), stroke: (paint: gray, thickness: 0.5pt, dash: "dashed"))
@@ -329,4 +325,181 @@ Deze hebben geen inductors nodig en zijn meestal makkelijker om te designen dan 
   caption: [Actieve filters],
   label: <fig:actieve-filters>,
 )
+
+*Voltage follower* ($H(s) = 1$): De uitgang volgt exact de ingang. De op-amp buffert het signaal — geen versterking, maar wel een hoge ingangsimpedantie en lage uitgangsimpedantie. Nuttig om belasting te voorkomen.
+
+*Inverting amplifier* ($H(s) = -R_b / R_a$): De ingang gaat via $R_a$ naar de $-$ ingang. Feedback via $R_b$. De op-amp dwingt $V_- = V_+ = 0$ (virtuele ground):
+$ I = V_("in") / R_a = -V_("out") / R_b arrow.r.double H(s) = -R_b / R_a $
+
+*Non-inverting amplifier* ($H(s) = 1 + R_a / R_b$): De ingang zit op de $+$ ingang. De op-amp dwingt $V_- = V_+$. Via de spanningsdeler $R_a, R_b$ op de $-$ ingang:
+$ V_- = V_("out") dot R_b / (R_a + R_b) = V_("in") arrow.r.double H(s) = 1 + R_a / R_b $
+
+Hoe op-amps zich gaan gedragen is dat ze er alles aan gaan doen om het voltage verschil tussen de $+$ en $-$ ingang 0 te maken. Dus we gaan de $+$ ingang op een bepaalde voltage zetten en dan gaan we de $-$ ingang proberen op diezelfde voltage te krijgen. _zie eerste jaar electronica_
+
+#figure(
+  image("active-filters2.png", width: 12cm),
+  caption: [Summing amplifiers (MISO systemen)],
+  label: <fig:actieve-filters2>,
+)
+
+*Inverterende summing amplifier* (links): Meerdere ingangen ($v_1, v_2$) worden opgeteld via aparte weerstanden ($R_1, R_2$) naar de $-$ ingang. Elke ingang levert een stroom $I_k = V_k / R_k$. De totale stroom vloeit door $R$:
+$ V_("out") = -( R/R_1 V_1 + R/R_2 V_2) $
+Als $R_1 = R_2 = R$: simpele optelling $V_("out") = -(V_1 + V_2)$.
+
+*Niet-inverterende summing amplifier* (rechts): Combinatie van $+$ en $-$ ingangen, zodat:
+$ V_("out") = a V_1 + b V_2 - c V_3 $
+waarbij de coëfficiënten afhangen van de weerstandsverhoudingen. Dit is een *MISO-systeem* (Multiple Input, Single Output).
+
+#figure(
+  image("actieve filters 3.png", width: 12cm),
+  caption: [Integrator en differentiator],
+  label: <fig:actieve-filters-3>,
+)
+
+*Integrator (inverterend)*: Vervang $R_b$ door een condensator $C$. De impedantie van de feedback wordt $Z_C = 1/(s C)$:
+$ H(s) = -Z_C / R = -1 / (s R C) $
+Dit is een *integrator* — laagdoorlaat met oneinige DC-versterking. In het tijdsdomein: $v_("out")(t) = -1/(R C) integral v_("in")(t) d t$.
+
+*Differentiator (inverterend)*: Vervang $R_a$ door een condensator $C$. De impedantie van de ingang wordt $Z_C = 1/(s C)$:
+$ H(s) = -(s R C) $
+Dit is een *differentiator* — hoogdoorlaat. In het tijdsdomein: $v_("out")(t) = -R C (d v_("in")(t))/(d t)$.
+
+
+
+#oefening(title: "Hoogfilter + laag filter = Bandpass")[
+  #figure(
+    image("hoog+laagfilter = bandpass.png", width: 10cm),
+    caption: [hoog+laagfilter = bandpass],
+    label: <fig:hoog-laagfilter-bandpass>,
+  )
+
+  Dit circuit bestaat uit twee *niet-inverterende op-amp schakelingen* in cascade. We splitsen het op en lossen elk deel apart op via KCL bij de $+$ en $-$ terminal.
+
+  == Deel 1: Hoogdoorlaat filter (bovenste circuit)
+
+  $C_B$ in serie en $R_B$ naar ground vormen een HP-filter aan de $+$ ingang. $R_1$ en $R_f$ bepalen de versterking.
+
+  *KCL bij $V_+$* — stromen die $V_+$ verlaten:
+  $ underbrace((V_+ - V_i) dot s C_B, "door" C_B) + underbrace(V_+ / R_B, "door" R_B) = 0 $
+
+  $ V_+ (s C_B + 1/R_B) = V_i dot s C_B $
+
+  $ arrow.r.double V_+ = V_i dot (s R_B C_B) / (s R_B C_B + 1) $
+
+  *KCL bij $V_-$* — stromen die $V_-$ verlaten:
+  $ underbrace(V_- / R_1, "door" R_1) + underbrace((V_- - V_1) / R_f, "door" R_f) = 0 $
+
+  $ V_- (1/R_1 + 1/R_f) = V_1 / R_f $
+
+  $ arrow.r.double V_- = V_1 dot R_1 / (R_1 + R_f) $
+
+  *Virtuele short* $V_+ = V_-$:
+  $ V_i dot (s R_B C_B) / (s R_B C_B + 1) = V_1 dot R_1 / (R_1 + R_f) $
+
+  $ arrow.r.double H_1(s) = V_1 / V_i = (1 + R_f / R_1) dot (s R_B C_B) / (s R_B C_B + 1) $
+
+  Dit is een *hoogdoorlaat* met versterking $(1 + R_f / R_1)$ en cut-off $omega_(c 1) = 1 / (R_B C_B)$.
+
+  == Deel 2: Laagdoorlaat filter (onderste circuit)
+
+  $R_A$ in serie en $C_A$ naar ground vormen een LP-filter aan de $+$ ingang. $R_1$ en $R_f$ bepalen de versterking.
+
+  *KCL bij $V_+$* — stromen die $V_+$ verlaten:
+  $ underbrace((V_+ - V_1) / R_A, "door" R_A) + underbrace(V_+ dot s C_A, "door" C_A) = 0 $
+
+  $ V_+ (1/R_A + s C_A) = V_1 / R_A $
+
+  $ arrow.r.double V_+ = V_1 / (s R_A C_A + 1) $
+
+  *KCL bij $V_-$* — stromen die $V_-$ verlaten:
+  $ underbrace(V_- / R_1, "door" R_1) + underbrace((V_- - V_o) / R_f, "door" R_f) = 0 $
+
+  $ arrow.r.double V_- = V_o dot R_1 / (R_1 + R_f) $
+
+  *Virtuele short* $V_+ = V_-$:
+  $ V_1 / (s R_A C_A + 1) = V_o dot R_1 / (R_1 + R_f) $
+
+  $ arrow.r.double H_2(s) = V_o / V_1 = (1 + R_f / R_1) dot 1 / (s R_A C_A + 1) $
+
+  Dit is een *laagdoorlaat* met versterking $(1 + R_f / R_1)$ en cut-off $omega_(c 2) = 1 / (R_A C_A)$.
+
+  == Totale transferfunctie
+
+  Beide in serie $arrow.r$ vermenigvuldigen:
+  $ H(s) = H_1(s) dot H_2(s) = (1 + R_f / R_1)^2 dot (s R_B C_B) / ((s R_B C_B + 1)(s R_A C_A + 1)) $
+
+  *Frequentierespons* — vervang $s = j omega$:
+
+  $
+    |H(j omega)| = (1 + R_f / R_1)^2 dot (omega R_B C_B) / (sqrt(1 + (omega R_B C_B)^2) dot sqrt(1 + (omega R_A C_A)^2))
+  $
+
+  - $lim_(omega -> 0) |H| = 0$ — lage frequenties geblokkeerd (HP)
+  - $omega_(c 1) < omega < omega_(c 2)$: $|H| approx (1 + R_f / R_1)^2$ — doorlaatband
+  - $lim_(omega -> infinity) |H| = 0$ — hoge frequenties geblokkeerd (LP)
+
+  *Bode magnitude plot*
+
+  #figure(
+    cetz.canvas({
+      import cetz.draw: *
+
+      let w = 12
+      let h = 5
+
+      // Axes
+      line((0, 0), (w, 0), stroke: 0.8pt, mark: (end: ">", fill: black))
+      line((0, -0.5), (0, h), stroke: 0.8pt, mark: (end: ">", fill: black))
+
+      content((w + 0.3, -0.2), $omega$)
+      content((-0.6, h - 0.2), [dB])
+
+      // Horizontal grid
+      for y in (1, 2, 3, 4) {
+        line((0, y), (w, y), stroke: (paint: luma(200), thickness: 0.3pt))
+      }
+
+      // dB labels
+      content((-1.8, 3.5), [$(1+R_f\/R_1)^2$])
+      content((-0.8, 2.1), [-3])
+
+      // Asymptotic Bode: continuous lines
+      line((0.5, 0.2), (3, 3.5), stroke: (paint: blue, thickness: 1.5pt))
+      line((3, 3.5), (8, 3.5), stroke: (paint: blue, thickness: 1.5pt))
+      line((8, 3.5), (11, 0.2), stroke: (paint: blue, thickness: 1.5pt))
+
+      // -3 dB points
+      circle((3, 2.1), radius: 0.1, fill: red, stroke: red)
+      circle((8, 2.1), radius: 0.1, fill: red, stroke: red)
+
+      // Cut-off markers
+      line((3, 0), (3, 3.5), stroke: (paint: gray, thickness: 0.5pt, dash: "dashed"))
+      content((3, -0.5), text(fill: blue, size: 8pt)[$omega_(c 1)$])
+
+      line((8, 0), (8, 3.5), stroke: (paint: gray, thickness: 0.5pt, dash: "dashed"))
+      content((8, -0.5), text(fill: blue, size: 8pt)[$omega_(c 2)$])
+
+      // Slope labels
+      content((1.2, 2.5), text(fill: red, size: 8pt)[+20 dB/dec])
+      content((10, 2.5), text(fill: red, size: 8pt)[-20 dB/dec])
+
+      // -3 dB dashed lines
+      line((0, 2.1), (3, 2.1), stroke: (paint: gray, thickness: 0.5pt, dash: "dashed"))
+      line((8, 2.1), (w, 2.1), stroke: (paint: gray, thickness: 0.5pt, dash: "dashed"))
+
+      // Bandwidth arrow
+      line(
+        (3, -1),
+        (8, -1),
+        stroke: (paint: green.darken(20%), thickness: 1pt),
+        mark: (start: ">", end: ">", fill: green.darken(20%)),
+      )
+      content((5.5, -1.5), text(fill: green.darken(20%), size: 8pt)[Bandbreedte])
+    }),
+    caption: [Bode magnitude plot van de bandpass filter],
+  )
+]
+
+
+
 
