@@ -187,6 +187,118 @@ Alles wat je achter `//` typt, wordt genegeerd door Typst:
   ```
 ]
 
+= Tekst Markeren & Annoteren (mannot)
+
+De template bevat het *mannot* pakket voor handgeschreven-stijl markeringen en annotaties.
+
+== Markeren
+
+Gebruik de volgende functies om tekst te markeren:
+- `#mark`: Verandert de tekstkleur.
+- `#markhl`: Markeerstift (highlight) effect.
+- `#markrect`: Tekent een rechthoek (kader).
+- `#markul`: Onderlijnt de tekst.
+
+#codeblock(lang: "typst", title: "Markeren")[
+  ```
+  $
+    mark(x, color: #red)
+    + markhl(f(x))
+    + markrect(e^x)
+    + markul(x + 1)
+  $
+  ```
+]
+
+Je kunt kleuren en stijlen aanpassen:
+
+#codeblock(lang: "typst", title: "Stijlen Aanpassen")[
+  ```
+  $
+    mark(x, color: #green)
+    + markhl(f(x), color: #purple, stroke: 1pt)
+    + markrect(e^x, color: #red, fill: #blue, outset: 0.2em)
+  $
+  ```
+]
+
+== Annotaties
+
+Om tekst te annoteren, moet je het eerst markeren met een unieke `tag`. Daarna gebruik je `#annot` om de notitie te plaatsen.
+
+#codeblock(lang: "typst", title: "Annotaties")[
+  ```
+  $
+    markhl(x, tag: #<1>)
+    + markrect(y, tag: #<2>)
+
+    #annot(<1>)[Dit is x]
+    #annot(<2>, pos: top)[Dit is y]
+  $
+  ```
+]
+
+== Positionering
+
+Gebruik `pos`, `dx` en `dy` om de annotatie te positioneren:
+- `pos`: Positie relatief aan de markering (bv. `top`, `bottom`, `left`, `right`).
+- `dx`, `dy`: Verschuiving in x- en y-richting.
+
+#codeblock(lang: "typst", title: "Positionering")[
+  ```
+  $
+    mark(z, tag: #<z>)
+    #annot(<z>, pos: top + right, dy: -1em)[Annotatie]
+  $
+  ```
+]
+
+== Pijlen (Leader Lines)
+
+Als de annotatie ver van de tekst staat, wordt automatisch een pijl getekend.
+- `leader-connect: "elbow"` maakt een gehoekte pijl.
+- `leader-stroke`: Stijl van de lijn (bv. `1pt + red`).
+- `leader-tip` / `leader-toe`: Pijlpunten (via `tiptoe` package).
+
+#codeblock(lang: "typst", title: "Pijlen")[
+  ```
+  $
+    markrect(t, tag: #<t>)
+    #annot(<t>, pos: bottom, dy: 2em, leader-connect: "elbow")[Tijd]
+  $
+  ```
+]
+
+== Meerdere Elementen
+
+Je kunt één annotatie naar meerdere elementen laten wijzen door een array van tags mee te geven.
+
+#codeblock(lang: "typst", title: "Meerdere Elementen")[
+  ```
+  $
+    mark(a, tag: #<a>) + mark(b, tag: #<b>)
+    #annot((<a>, <b>), pos: top, dy: -1.5em)[Variabelen]
+  $
+  ```
+]
+
+== Geavanceerd: CeTZ Annotaties
+
+Voor complexe tekeningen kun je `#annot-cetz` gebruiken om direct op de gemarkeerde elementen te tekenen met CeTZ.
+
+#codeblock(lang: "typst", title: "CeTZ Annotatie")[
+  ```
+  $
+    mark(x, tag: #<x>)
+    #annot-cetz((<x>), cetz, {
+      import cetz.draw: *
+      line("x.north", (0, 2), name: "l")
+      content("l.end", [Punt])
+    })
+  $
+  ```
+]
+
 = Samenwerken en Issues (GitHub)
 
 Samenwerken aan deze samenvattingen gebeurt via GitHub. We gebruiken de VS Code extensie *GitHub Pull Requests and Issues* om dit makkelijk te maken.
