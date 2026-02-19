@@ -185,42 +185,39 @@ We zoeken naar *de transferfunctie* $H(s)$ dat betekent dat er dus geen enkele b
     cetz.canvas({
       import cetz.draw: *
 
-      let w = 10
-      let h = 5
-
-      // Axes
-      line((0, 0), (w, 0), stroke: 0.8pt, mark: (end: ">", fill: black))
-      line((0, -0.5), (0, h), stroke: 0.8pt, mark: (end: ">", fill: black))
-
-      // Axis labels
-      content((w + 0.3, -0.2), $omega$)
-      content((-0.6, h - 0.2), [dB])
-
-      // Horizontal grid
-      for y in (1, 2, 3, 4) {
-        line((0, y), (w, y), stroke: (paint: luma(200), thickness: 0.3pt))
-      }
-
-      // dB labels
-      content((-0.6, 4), [0])
-      content((-0.8, 2.6), [-3])
-
-      // Asymptotic Bode: flat then -20 dB/dec (continuous line)
-      line((0, 4), (4, 4), stroke: (paint: blue, thickness: 1.5pt))
-      line((4, 4), (9, 1.6), stroke: (paint: blue, thickness: 1.5pt))
-
-      // Actual -3 dB point
-      circle((4, 2.6), radius: 0.1, fill: red, stroke: red)
-
-      // Cut-off frequency marker
-      line((4, 0), (4, 2.6), stroke: (paint: gray, thickness: 0.5pt, dash: "dashed"))
-      content((4, -0.5), text(fill: blue)[$1 slash (R C)$])
-
-      // -20 dB/decade label
-      content((7, 2), text(fill: red, size: 9pt)[-20 dB/decade])
-
-      // Dashed line at -3 dB
-      line((0, 2.6), (4, 2.6), stroke: (paint: gray, thickness: 0.5pt, dash: "dashed"))
+      plot.plot(
+        size: (10, 6),
+        x-label: $log(omega)$,
+        y-label: [dB],
+        x-tick-step: 1,
+        y-tick-step: 5,
+        y-min: -25,
+        y-max: 5,
+        x-min: -1,
+        x-max: 3,
+        {
+          // Asymptotisch bode-diagram: 0 dB vlak, dan -20 dB/dec
+          plot.add(
+            style: (stroke: blue + 1.5pt),
+            label: [Asymptotisch],
+            ((-.5, 0), (1, 0), (3, -40)),
+          )
+          // Werkelijke curve |H(jω)|
+          plot.add(
+            domain: (-1, 3),
+            samples: 200,
+            style: (stroke: (paint: red, thickness: 1pt, dash: "dashed")),
+            label: [Exact],
+            x => -10 * calc.log(1 + calc.pow(calc.pow(10, x), 2), base: 10),
+          )
+          // -3 dB referentielijn
+          plot.add-hline(-3, style: (stroke: (paint: gray, thickness: 0.5pt, dash: "dashed")))
+          // Cut-off frequentie markering
+          plot.add-vline(1, style: (stroke: (paint: gray, thickness: 0.5pt, dash: "dashed")))
+        },
+      )
+      content((7.2, 2.8), text(fill: blue, size: 8pt)[$omega_c = 1 slash (R C)$])
+      content((8.5, 4.5), text(fill: red, size: 8pt)[$-20 "dB/dec"$])
     }),
     caption: [Bode magnitude plot van een eerste orde RC low-pass filter],
   )
@@ -268,42 +265,39 @@ We zoeken naar *de transferfunctie* $H(s)$ dat betekent dat er dus geen enkele b
     cetz.canvas({
       import cetz.draw: *
 
-      let w = 10
-      let h = 5
-
-      // Axes
-      line((0, 0), (w, 0), stroke: 0.8pt, mark: (end: ">", fill: black))
-      line((0, -0.5), (0, h), stroke: 0.8pt, mark: (end: ">", fill: black))
-
-      // Axis labels
-      content((w + 0.3, -0.2), $omega$)
-      content((-0.6, h - 0.2), [dB])
-
-      // Horizontal grid
-      for y in (1, 2, 3, 4) {
-        line((0, y), (w, y), stroke: (paint: luma(200), thickness: 0.3pt))
-      }
-
-      // dB labels
-      content((-0.6, 4), [0])
-      content((-0.8, 2.6), [-3])
-
-      // Asymptotic Bode: +20 dB/dec then flat (continuous line)
-      line((1, 0.4), (6, 4), stroke: (paint: blue, thickness: 1.5pt))
-      line((6, 4), (w, 4), stroke: (paint: blue, thickness: 1.5pt))
-
-      // Actual -3 dB point
-      circle((6, 2.6), radius: 0.1, fill: red, stroke: red)
-
-      // Cut-off frequency marker
-      line((6, 0), (6, 2.6), stroke: (paint: gray, thickness: 0.5pt, dash: "dashed"))
-      content((6, -0.5), text(fill: blue)[$1 slash (R C)$])
-
-      // +20 dB/decade label
-      content((3, 2.2), text(fill: red, size: 9pt)[+20 dB/decade])
-
-      // Dashed line at -3 dB
-      line((0, 2.6), (6, 2.6), stroke: (paint: gray, thickness: 0.5pt, dash: "dashed"))
+      plot.plot(
+        size: (10, 6),
+        x-label: $log(omega)$,
+        y-label: [dB],
+        x-tick-step: 1,
+        y-tick-step: 5,
+        y-min: -25,
+        y-max: 5,
+        x-min: -1,
+        x-max: 3,
+        {
+          // Asymptotisch bode-diagram: +20 dB/dec dan 0 dB vlak
+          plot.add(
+            style: (stroke: blue + 1.5pt),
+            label: [Asymptotisch],
+            ((-1, -40), (1, 0), (3, 0)),
+          )
+          // Werkelijke curve |H(jω)|
+          plot.add(
+            domain: (-1, 3),
+            samples: 200,
+            style: (stroke: (paint: red, thickness: 1pt, dash: "dashed")),
+            label: [Exact],
+            x => -10 * calc.log(1 + calc.pow(calc.pow(10, -x), 2), base: 10),
+          )
+          // -3 dB referentielijn
+          plot.add-hline(-3, style: (stroke: (paint: gray, thickness: 0.5pt, dash: "dashed")))
+          // Cut-off frequentie markering
+          plot.add-vline(1, style: (stroke: (paint: gray, thickness: 0.5pt, dash: "dashed")))
+        },
+      )
+      content((7.2, 2.8), text(fill: blue, size: 8pt)[$omega_c = 1 slash (R C)$])
+      content((3.5, 4.5), text(fill: red, size: 8pt)[$+20 "dB/dec"$])
     }),
     caption: [Bode magnitude plot van een eerste orde RC high-pass filter],
   )
@@ -375,7 +369,10 @@ Dit is een *differentiator* — hoogdoorlaat. In het tijdsdomein: $v_("out")(t) 
 
   Dit circuit bestaat uit twee *niet-inverterende op-amp schakelingen* in cascade. We splitsen het op en lossen elk deel apart op via KCL bij de $+$ en $-$ terminal.
 
-  == Deel 1: Hoogdoorlaat filter (bovenste circuit)
+  #text(size: 1.2em)[*Deel 1: Hoogdoorlaat filter (bovenste circuit)*]
+
+  #line(length: 100%)
+
 
   $C_B$ in serie en $R_B$ naar ground vormen een HP-filter aan de $+$ ingang. $R_1$ en $R_f$ bepalen de versterking.
 
@@ -400,7 +397,9 @@ Dit is een *differentiator* — hoogdoorlaat. In het tijdsdomein: $v_("out")(t) 
 
   Dit is een *hoogdoorlaat* met versterking $(1 + R_f / R_1)$ en cut-off $omega_(c 1) = 1 / (R_B C_B)$.
 
-  == Deel 2: Laagdoorlaat filter (onderste circuit)
+  #text(size: 1.2em)[*Deel 2: Laagdoorlaat filter (onderste circuit)*]
+
+  #line(length: 100%)
 
   $R_A$ in serie en $C_A$ naar ground vormen een LP-filter aan de $+$ ingang. $R_1$ en $R_f$ bepalen de versterking.
 
@@ -423,7 +422,8 @@ Dit is een *differentiator* — hoogdoorlaat. In het tijdsdomein: $v_("out")(t) 
 
   Dit is een *laagdoorlaat* met versterking $(1 + R_f / R_1)$ en cut-off $omega_(c 2) = 1 / (R_A C_A)$.
 
-  == Totale transferfunctie
+  #text(size: 1.2em)[*Totale transferfunctie*]
+  #line(length: 100%)
 
   Beide in serie $arrow.r$ vermenigvuldigen:
   $ H(s) = H_1(s) dot H_2(s) = (1 + R_f / R_1)^2 dot (s R_B C_B) / ((s R_B C_B + 1)(s R_A C_A + 1)) $
@@ -444,57 +444,48 @@ Dit is een *differentiator* — hoogdoorlaat. In het tijdsdomein: $v_("out")(t) 
     cetz.canvas({
       import cetz.draw: *
 
-      let w = 12
-      let h = 5
-
-      // Axes
-      line((0, 0), (w, 0), stroke: 0.8pt, mark: (end: ">", fill: black))
-      line((0, -0.5), (0, h), stroke: 0.8pt, mark: (end: ">", fill: black))
-
-      content((w + 0.3, -0.2), $omega$)
-      content((-0.6, h - 0.2), [dB])
-
-      // Horizontal grid
-      for y in (1, 2, 3, 4) {
-        line((0, y), (w, y), stroke: (paint: luma(200), thickness: 0.3pt))
-      }
-
-      // dB labels
-      content((-1.8, 3.5), [$(1+R_f\/R_1)^2$])
-      content((-0.8, 2.1), [-3])
-
-      // Asymptotic Bode: continuous lines
-      line((0.5, 0.2), (3, 3.5), stroke: (paint: blue, thickness: 1.5pt))
-      line((3, 3.5), (8, 3.5), stroke: (paint: blue, thickness: 1.5pt))
-      line((8, 3.5), (11, 0.2), stroke: (paint: blue, thickness: 1.5pt))
-
-      // -3 dB points
-      circle((3, 2.1), radius: 0.1, fill: red, stroke: red)
-      circle((8, 2.1), radius: 0.1, fill: red, stroke: red)
-
-      // Cut-off markers
-      line((3, 0), (3, 3.5), stroke: (paint: gray, thickness: 0.5pt, dash: "dashed"))
-      content((3, -0.5), text(fill: blue, size: 8pt)[$omega_(c 1)$])
-
-      line((8, 0), (8, 3.5), stroke: (paint: gray, thickness: 0.5pt, dash: "dashed"))
-      content((8, -0.5), text(fill: blue, size: 8pt)[$omega_(c 2)$])
-
-      // Slope labels
-      content((1.2, 2.5), text(fill: red, size: 8pt)[+20 dB/dec])
-      content((10, 2.5), text(fill: red, size: 8pt)[-20 dB/dec])
-
-      // -3 dB dashed lines
-      line((0, 2.1), (3, 2.1), stroke: (paint: gray, thickness: 0.5pt, dash: "dashed"))
-      line((8, 2.1), (w, 2.1), stroke: (paint: gray, thickness: 0.5pt, dash: "dashed"))
-
-      // Bandwidth arrow
-      line(
-        (3, -1),
-        (8, -1),
-        stroke: (paint: green.darken(20%), thickness: 1pt),
-        mark: (start: ">", end: ">", fill: green.darken(20%)),
+      plot.plot(
+        size: (12, 6),
+        x-label: $log(omega)$,
+        y-label: [dB],
+        x-tick-step: 1,
+        y-tick-step: 5,
+        y-min: -25,
+        y-max: 5,
+        x-min: -1,
+        x-max: 5,
+        {
+          // Asymptotisch bode-diagram bandpass
+          plot.add(
+            style: (stroke: blue + 1.5pt),
+            label: [Asymptotisch],
+            ((-1, -40), (1, 0), (3, 0), (5, -40)),
+          )
+          // Werkelijke curve |H(jω)| bandpass (HP × LP)
+          plot.add(
+            domain: (-1, 5),
+            samples: 300,
+            style: (stroke: (paint: red, thickness: 1pt, dash: "dashed")),
+            label: [Exact],
+            x => {
+              let w_ratio_hp = calc.pow(10, x - 1) // ω / ω_c1
+              let w_ratio_lp = calc.pow(10, x - 3) // ω / ω_c2
+              let hp = -10 * calc.log(1 + 1 / calc.pow(w_ratio_hp, 2), base: 10)
+              let lp = -10 * calc.log(1 + calc.pow(w_ratio_lp, 2), base: 10)
+              hp + lp
+            },
+          )
+          // -3 dB referentielijn
+          plot.add-hline(-3, style: (stroke: (paint: gray, thickness: 0.5pt, dash: "dashed")))
+          // Cut-off frequenties
+          plot.add-vline(1, style: (stroke: (paint: gray, thickness: 0.5pt, dash: "dashed")))
+          plot.add-vline(3, style: (stroke: (paint: gray, thickness: 0.5pt, dash: "dashed")))
+        },
       )
-      content((5.5, -1.5), text(fill: green.darken(20%), size: 8pt)[Bandbreedte])
+      content((5.8, 2.5), text(fill: blue, size: 8pt)[$omega_(c 1)$])
+      content((10, 2.5), text(fill: blue, size: 8pt)[$omega_(c 2)$])
+      content((3.5, 4.5), text(fill: red, size: 8pt)[$+20 "dB/dec"$])
+      content((11, 4.5), text(fill: red, size: 8pt)[$-20 "dB/dec"$])
     }),
     caption: [Bode magnitude plot van de bandpass filter],
   )
