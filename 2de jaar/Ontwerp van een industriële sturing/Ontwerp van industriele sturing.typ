@@ -28,8 +28,5 @@
 // Tip: To temporarily exclude a chapter, comment out its #include line.
 
 // Symbol list and formularium are auto-generated
-#printsymbols()
-#printformularium()
-
 #include "Info.typ"
 #include "Les1.typ"
