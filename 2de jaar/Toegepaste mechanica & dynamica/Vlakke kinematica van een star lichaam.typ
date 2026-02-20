@@ -59,14 +59,15 @@ Wordt met hoeken en hoeksnelheden beschreven. De hoek $theta$ beschrijft de ori�
 ])
 
 #oefening(title: "Stilstaand touw aan wiel")[
-  #let fig-oef-wiel = image("oefening-touw-wiel.png", width: 6cm)
-  #let boxed-oef-wiel = box(fig-oef-wiel, inset: (right: 0.5em, bottom: 0.5em))
+  #figure(
+    image("oefening-touw-wiel.png", width: 8cm),
+    caption: "Stilstaand touw aan wiel",
+  )
 
-  #wrap-content(boxed-oef-wiel)[
-    *Gegeven:* $R = 0.2 "m"$, $a = 4t " m/s"^2$, $omega_0 = 0$
+  *Gegeven:* $R = 0.2 "m"$, $a = 4t " m/s"^2$, $omega_0 = 0$
 
-    *Gevraagd:* $omega(t)$ en $theta(t)$
-  ]
+  *Gevraagd:* $omega(t)$ en $theta(t)$
+
 
   *Stap 1 — Tangentiële versnelling bepalen:*
 
@@ -103,12 +104,12 @@ Algemene vlakke beweging is een combinatie van translatie en rotatie. De positie
 ]
 
 #figure(
-  image("contactpunt-versnellingen.png", width: 30%),
+  image("contactpunt-versnellingen.png", width: 40%),
   caption: [Snelheden en versnellingen bij contactpunten van tandwielen],
 ) <fig:contactpunt-versnellingen>
 
 #oefening(title: "Rotatie om vast punt")[
-  #let fig-oef-l = image("oefening-rotatie-l-vorm.png", width: 8cm)
+  #let fig-oef-l = image("oefening-rotatie-l-vorm.png", width: 8.3cm)
   #let boxed-oef-l = box(fig-oef-l, inset: (right: 0.5em, bottom: 0.5em))
 
   #wrap-content(boxed-oef-l)[
