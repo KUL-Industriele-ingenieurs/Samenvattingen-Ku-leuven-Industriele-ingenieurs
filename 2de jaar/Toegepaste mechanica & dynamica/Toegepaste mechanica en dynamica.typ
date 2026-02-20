@@ -1,9 +1,4 @@
-// main.typ
-// Modular Document Example - Demonstrates #include for large projects
-// KU Leuven - Faculteit Industriële Ingenieurswetenschappen
-//
-// This template shows how to split a large document into multiple files.
-// Use this structure for thesis, large summaries, or multi-chapter documents.
+
 
 #import "../../school-template.typ": *
 
@@ -27,9 +22,11 @@
 //
 // Tip: To temporarily exclude a chapter, comment out its #include line.
 
+
+#printformularium()
+
+
 #include "inleiding.typ"
 #include "Vlakke kinematica van een star lichaam.typ"
 
-// Appendices
-#printsymbols()
-#printformularium()
+

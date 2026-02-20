@@ -4,7 +4,7 @@
 
 == Info vak
 
-#let fig-blended = image("blended-learning.png", width: 5cm)
+#let fig-blended = image("blended-learning.png", width: 8cm)
 #let boxed-blended = box(fig-blended, inset: (right: 0.5em, bottom: 0.5em))
 
 #wrap-content(boxed-blended)[
@@ -16,6 +16,8 @@
   #belangrijk[Deze cursus bouwt verder op Dynamica en Energie en Statica.]
 
   Dit is een blended cursus: je bekijkt de lessen vooraf, dan heb je groepsmomenten en daarna oefenzittingen om de leerstof te oefenen.
+
+  De lessen zijn vooral oefeningen die gemaakt worden dus enorm handig voor de *oefenzittingen*. Als je de les niet deftig voorbereid ga je er wel niet veel van snappen.
 ]
 
 == Indeling Cursus
