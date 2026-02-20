@@ -178,7 +178,7 @@ Voor elk aspect wordt een letter geven _Bv. EN 81346_
 ]
 
 Een paar belangrijke letters:
-- $K$: Relais, een elektromagnetische schakelaar die een circuit opent of sluit.
+- $K$: Relays, een elektromagnetische schakelaar die een circuit opent of sluit.
 - $S$: Schakelaar, knoppen en schakelaars die acties uitvoeren.
 - $P$: Meetinstrument, weergave-apparaat of testapparaat (bijv. Lamp).
 - $Q$: Stroomonderbreker of hoofdschakelaar.
@@ -197,23 +197,132 @@ Uiteindelijk gaan we leren een elektrische circuit zelf op te stellen.
   - *Sequentie*: Een snelle standaard oplossingsmethode voor het programmeren van sequentiële besturingssystemen (met behulp van een PLC). De methode zorgt ervoor dat het gedrag voorspelbaar en goed gedefinieerd is. Bv. Sequential function chart (SFC).
 ]
 
+== PLC introductie
+
+PLC is een heel basis introductie tot computers.
+Hoe connecteren machines met elkaar? Inputs en outputs, IO.
+Deze worden allemaal aangehaald in deze introductie.
+
+#concept(title: "PLC (Programmable Logic Controller)")[
+  Dit is gespecialiseerde computer die geen scherm, toetsenbord of muis heeft, maar wel een aantal ingangen en uitgangen.
+  Deze worden gebruikt in industriële omgevingen om machines en processen te automatiseren.
+]
+
+#wrap-figure(
+  image("PLC2.png", width: 5cm),
+  caption: [PLC],
+  label: <fig:PLC2>,
+)[
+  Een PLC heeft een *CPU* en input en output *I/O*.
+  IO is niet persee deel van de PLC maar kan ook andere modules zijn.
+  IO heb je ook op je eigen computer, HDMI, USB, ...
+
+  Je hebt dan *Digital I/O* en *Analog I/O*.
+  Digital I/O is een binaire input of output, bijvoorbeeld een schakelaar die aan of uit is.
+  Analog I/O is een continue waarde, bijvoorbeeld een temperatuur sensor die een waarde tussen 0 en 100 graden geeft.
+
+  Een PLC kan bijvoorbeeld de airco harder zetten in een kamer als die kamer te warm is.
+  Dit kan van op afstand gebeuren, bijvoorbeeld via een netwerk, een app, sensor, ...
+
+  Je krijgt inputs van sensoren of knoppen. Deze worden via logic verwerkt en geven een output.
+]
+
+Een PLC is *programmeerbaar*, wat betekent dat je
+een programma kunt schrijven dat bepaalt hoe de PLC reageert op verschillende inputs
+en hoe het de outputs aanstuurt.
+
+Je connecteert aan een PLC met bijvoorbeeld een laptop via een seriële kabel, USB, of netwerkverbinding.
+Je schrijft een programma op je laptop en uploadt dat naar de PLC, waarna de PLC het
+programma uitvoert en de machines aanstuurt op basis van de logica die je hebt geprogrammeerd.
+
+#wrap-figure(
+  image("image1.png", width: 6cm),
+  caption: [Controle systeem voorbeeld],
+  label: <fig:image1>,
+)[
+  We leggen deze figuur uit met een eenvoudig voorbeeld.
+  Je hebt een doodgewone knop die je kan indrukken.
+  Jij als *operator* geef controle inputs aan de knop,
+  bijvoorbeeld door hem in te drukken.
+
+  *De logic controller (PLC)* ontvangt deze input en
+  verwerkt deze volgens een vooraf gedefinieerd programma.
+
+  De knop krijgt info door sensors die bijvoorbeeld info geven of
+  de knop al dan niet is ingedrukt van de machine.
+
+  Als de knop is ingedrukt gaat er een *logic action* gebeuren waarbij de *machine* een actie uitvoert,
+  bijvoorbeeld een motor starten of een lamp laten branden.
+  De *operator* krijgt feedback van de *machine*, bijvoorbeeld door een lamp die gaat branden of een geluidssignaal.
+]
+
+== Relays
+
+Een relay is het meest fundamentele element in logic control.
+
+Relays: Een elektromagnetische schakelaar die een circuit opent of sluit.
+Een relay wordt aangestuurd door knoppen, switches en sensors. Hiermee bouw je de basis van elk sturingssysteem.
+
+// TODO: uitleg over hoe relays werken.
+
 == Knoppen en switches
 
-/ Relays: Een elektromagnetische schakelaar die een circuit opent of sluit.
-== Relays
+De inputs die een relay aansturen zijn knoppen en switches.
+
+Een main switch wordt aangegeven met *Q*.
+Knoppen en switches die acties uitvoeren worden aangegeven met *S*.
+Deze worden meestal in een tube geplaatst zodat ze niet per ongeluk kunnen worden ingedrukt.
+
+#figure(
+  image("sort of buttons and switched.png", width: 10cm),
+  caption: [Soorten knoppen en switches],
+  label: <fig:sortofbuttons>,
+)
+
+Je hebt meerdere soorten switches:
+
+/ Push button: een knop die je indrukt en loslaat, zoals een deurbel.
+/ Detent switch: een schakelaar die in een bepaalde positie blijft staan, zoals een lichtschakelaar.
+/ Rotary switch: een schakelaar die je draait.
+/ Pilot lamp: Informatie die de operator terug krijgt _bv. Staat de machine aan?_
+
+Hoe de schakeling is getekend bepaalt zijn functie.
+
+#figure(
+  image("Voorbeeld circuit.png", width: 5cm),
+  caption: [Voorbeeld circuit],
+  label: <fig:voorbeeldcircuit>,
+)
 
 == Signal time Diagram
 
 == Timer
-* On delay timer:
-* Off delay timer
+- On delay timer
+- Off delay timer
 
 
 #examenbox("Strikvraag:")
 
+== Relay VS PLC — Waarom kiezen we voor PLC's?
+
+Relay-systemen werken, maar worden snel complex en moeilijk te onderhouden. Een PLC vervangt klassieke relay-logica door software.
+
+#figure(
+  image("relayvsPLC.png", width: 15cm),
+  caption: [Relay VS PLC],
+  label: <fig:relayvsPLC>,
+)
+
+#keyterm("In de labo's leer je werken met een PLC en een LAD implementatie.")
+
+Een relay is een fysiek systeem maar met een PLC met een LAD implementatie _zie figuur @fig:relayvsPLC _is dit
+een vervanging van klassieke relays.
+
+//todo: Uitleg geven over hoe je best ladder circuits maakt met SSE
+
 = Logic control met PLC
 
-== PLC naam veriable
+== PLC naam variabele
 
 
 In een bedrijf wordt vaak een standaard gebruikt voor het benoemen van programmablokken en variabelen. Deze zijn vaak verschillend, maar gebaseerd op een aantal principes die internationaal gebruikelijk zijn. We leggen hier een standaard vast gebaseerd op `plcopen_coding_guidelines_version_1.0.pdf`.
@@ -229,45 +338,19 @@ In een bedrijf wordt vaak een standaard gebruikt voor het benoemen van programma
 
 
 #concept(title: "Scan cycle")[
-  #figure(
-    image("scancycle.png", width: 5cm),
+  #wrap-figure(
+    image("scancycle.png", width: 2cm),
     caption: [scancycle],
     label: <fig:scancycle>,
-  )
+  )[Een PLC gaat de inputs lezen PII, gaat het process uitvoeren OB1 en dan de outputs schrijven PIQ.
 
-  Een PLC gaat de inputs lezen PII, gaat het process uitvoeren OB1 en dan de outputs schrijven PIQ.
+    Zo een scan duurt 1-30ms.
+  ]
 
-  Zo een scan duurt 1 tot 30ms.
 
   // TODO vergroot uitleg
 
 ]
-
-
-
-#examenbox("Kennen het een Scan cycle werkt voor het examen")
-
-== Relay VS PLC
-
-#figure(
-  image("relayvsPLC.png", width: 10cm),
-  caption: [relayvsPLC],
-  label: <fig:relayvsPLC>,
-)
-
-Een relay is een fysiek systeem maar met een PLC met een LAD implementatie _zie figuur @fig:relayvsPLC _is dit een vervanging van klassieke relays.
-
-
-
-//todo: Uitleg geven over hoe je best ladder circuits maakt met SSE
-
-
-
-
-
-
-
-
 
 
 

@@ -194,10 +194,10 @@ De template bevat het *mannot* pakket voor handgeschreven-stijl markeringen en a
 == Markeren
 
 Gebruik de volgende functies om tekst te markeren:
-- `#mark`: Verandert de tekstkleur.
-- `#markhl`: Markeerstift (highlight) effect.
-- `#markrect`: Tekent een rechthoek (kader).
-- `#markul`: Onderlijnt de tekst.
+- `#mark`: $mark("Verandert de tekstkleur")$.
+- `#markhl`: $markhl("Markeerstift (highlight) effect")$.
+- `#markrect`: $markrect("Tekent een rechthoek (kader)")$.
+- `#markul`: $markul("Onderlijnt de tekst")$.
 
 #codeblock(lang: "typst", title: "Markeren")[
   ```
