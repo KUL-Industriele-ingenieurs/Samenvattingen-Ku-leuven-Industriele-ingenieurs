@@ -2,6 +2,10 @@
 
 = Relatieve beweging: snelheid
 
+Een relatieve snelheid is de snelheid die een bewegende observator ziet tegenover een andere bewegend deeltje.
+
+
+
 #belangrijk(
   "Vergeet niet voor deze formule, een starre lichaam is een vlak waar deeltjes op bewegen. Als je de bewegingen kunt projecteren op een vlak gebruik je best deze formule",
 )
