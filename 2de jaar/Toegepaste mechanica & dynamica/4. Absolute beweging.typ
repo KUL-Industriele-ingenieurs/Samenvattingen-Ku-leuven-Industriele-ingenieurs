@@ -18,6 +18,8 @@ Met $v$ de snelheid en $a$ de versnelling
 
 == Manieren om OR te vinden
 
+// nog afmaken
+
 
 
 
@@ -25,4 +27,7 @@ Met $v$ de snelheid en $a$ de versnelling
 #TODO("Add oefening 2")
 #TODO("Add oefening 3")
 #TODO("Add oefening 4")
+
+#examenbox("Het volgende is een examenvraag")
+#TODO("Examenvraag toevoegen")
 
