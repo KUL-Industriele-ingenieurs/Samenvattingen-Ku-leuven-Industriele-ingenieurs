@@ -160,6 +160,20 @@ jobs:
                     cd - > /dev/null
                   done < main_docs.txt
 
+                  # Prune stale cache entries (PDFs for documents that no longer exist)
+                  echo "🧹 Pruning stale cache entries..."
+                  for cached in .pdf-cache/*.pdf; do
+                    [ -f "$cached" ] || continue
+                    # Extract document name by stripping the hash suffix
+                    cached_name=$(basename "$cached" | sed 's/-[0-9a-f]*-[0-9a-f]*.pdf$//')
+                    # Check if any current document matches this cached name
+                    if ! grep -q "/${cached_name}.tex" main_docs.txt 2>/dev/null && \
+                       ! grep -q "^./${cached_name}.tex" main_docs.txt 2>/dev/null; then
+                      echo "  Removing stale cache: $cached"
+                      rm -f "$cached"
+                    fi
+                  done
+
                   # Summary
                   echo ""
                   echo "📊 Build Summary: $PDFS_GENERATED PDFs ($CACHE_HITS from cache, $((PDFS_GENERATED - CACHE_HITS)) rebuilt)"
@@ -427,7 +441,15 @@ jobs:
                        --notes-file release_body.md
                   fi
 
-                  # 4. Upload Assets
+                  # 4. Delete old assets so stale PDFs don't linger
+                  echo "🧹 Cleaning old release assets..."
+                  gh release view latest --json assets -q '.assets[].name' 2>/dev/null | while IFS= read -r asset; do
+                    [ -z "$asset" ] && continue
+                    echo "  Removing old asset: $asset"
+                    gh release delete-asset latest "$asset" --yes 2>/dev/null || true
+                  done
+
+                  # 5. Upload fresh assets
                   echo "Uploading assets..."
                   # Check for PDFs
                   if ls artifacts/pdfs/*.pdf 1> /dev/null 2>&1; then
