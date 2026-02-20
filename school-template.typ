@@ -199,19 +199,17 @@
   pagebreak()
 
   // Disclaimer / Intro
-  align(center)[
-    #block(
-      fill: luma(250),
-      inset: 12pt,
-      radius: 4pt,
-      stroke: (left: 3pt + schoolBlue),
-      [
-        #set align(left)
-        *Disclaimer:* Deze samenvattingen zijn beschikbaar op GitHub. \
-        Draag gerust bij: #link("https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs")[GitHub Repository]
-      ],
-    )
-  ]
+  block(
+    width: 100%,
+    fill: luma(250),
+    inset: 12pt,
+    radius: 4pt,
+    stroke: (left: 3pt + schoolBlue),
+    [
+      *Disclaimer:* Deze samenvattingen zijn beschikbaar op GitHub. Ze zijn gemaakt in LaTeX en Typst. Bijdragen helpt je git, Latex en typst te leren die je zoiezo gaat nodig hebben voor groepsprojecten en je master. Je kunt bijdragen aan de documenten zodat we gezamenlijk betere samenvattingen kunnen maken.\
+      Draag gerust bij: #link("https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs")[GitHub Repository] \
+    ],
+  )
   v(2em)
 
   // Table of Contents (styled to match LaTeX)
