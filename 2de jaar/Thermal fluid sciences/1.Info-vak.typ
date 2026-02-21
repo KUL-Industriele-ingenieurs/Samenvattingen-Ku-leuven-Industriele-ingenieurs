@@ -17,6 +17,12 @@ En er zijn daarbij *oefenzittingen* met de assistenten.
 == Examen
 Je krijgt een formularium bekijk toledo. Je moet formules niet vanbuiten zitten kennen maar vooral kunnen verstaan.
 
+== Mijn Vader tips
+
+Hoe je dit vak leert is niet de slides enorm gedetailleerd te bestuderen. Zorg dat je in de lessen de concepten snapt en dan in de *oefenzittingen* de techniek leert om de oefeningen op te lossen. De oefenzittingen zijn het allerbelangrijkste voor dit vak.
+
+
+
 
 #examenbox[Ga naar je oefenzittingen die zijn het belangrijste]
 
