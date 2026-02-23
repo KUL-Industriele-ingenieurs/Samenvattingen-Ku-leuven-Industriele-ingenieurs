@@ -10,7 +10,7 @@ Een relatieve snelheid is de snelheid die een bewegende observator ziet tegenove
   label: <fig:relative-velocity>,
 )[
 
-  *Positie*
+  == Positie
 
   #frm(
     "positie van punt b ten opzichte van punt a",
@@ -26,7 +26,7 @@ Een relatieve snelheid is de snelheid die een bewegende observator ziet tegenove
 Maar hoe berekenen we nu de relatieve snelheid?
 
 
-*Snelheid*
+== Snelheid
 
 #wrap-figure(
   image("relatieve-verplaatsing2.png", width: 8cm),
@@ -76,6 +76,17 @@ Maar hoe berekenen we nu de relatieve snelheid?
     ],
   )
 
+  #theorie(title: "Cross product regels")[
+    $ i times i = 0 $
+    $ i times j = k $
+    $ i times k = -j $
+    $ j times i = -k $
+    $ j times j = 0 $
+    $ j times k = i $
+    $ k times i = j $
+    $ k times j = -i $
+    $ k times k = 0 $
+  ]
 ]
 
 
