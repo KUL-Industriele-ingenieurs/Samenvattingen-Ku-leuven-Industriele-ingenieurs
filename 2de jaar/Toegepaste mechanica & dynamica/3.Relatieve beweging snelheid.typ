@@ -73,6 +73,8 @@ Maar hoe berekenen we nu de relatieve snelheid?
     ],
     [
       Met $arrow(v)_frac(b, a, style: "horizontal")$ is de relatieve snelheid van punt b ten opzichte van punt a
+
+      *Zorg dat je w en r niet omdraait. Cross-product is niet commutatief.*
     ],
   )
 
