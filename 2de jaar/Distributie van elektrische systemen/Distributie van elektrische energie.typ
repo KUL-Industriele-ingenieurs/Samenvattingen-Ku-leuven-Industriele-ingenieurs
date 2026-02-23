@@ -31,5 +31,14 @@
 #printsymbols()
 #printformularium()
 
-#include "Introductie.typ"
-#include "Intro transformatoren.typ"
+// Transformatoen
+
+#include "1.Introductie.typ"
+#include "2.Intro transformatoren.typ"
+
+// Netten
+
+#include "1.Introductie.typ"
+#include "2.Het elektrische net.typ"
+
+// Oefeningen
