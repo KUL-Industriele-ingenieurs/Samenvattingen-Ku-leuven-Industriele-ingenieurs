@@ -1,5 +1,7 @@
 #import "../../school-template.typ": *
 
+= Het elektrische net
+
 We hebben het over *Hoge spanningen* in dit vak en in de industrie.
 *Middenspanningen:* Dit bestaat niet volgens de wet maar wel in het dagdagelijksgebruik
 
@@ -24,7 +26,7 @@ We hebben het over *Hoge spanningen* in dit vak en in de industrie.
   *Oplossing:*
 
   *1. Bereken de stroom $I$*
-  $ P = sqrt(3) dot U dot I dot cos phi arrow.r.double I = P / (sqrt(3) dot U dot cos phi) $
+  $ P = sqrt(3) dot V dot I dot cos phi arrow.r.double I = P / (sqrt(3) dot V dot cos phi) $
 
   Bij 150 kV:
   $ I_"150kV" = (300 dot 10^6) / (sqrt(3) dot 150 dot 10^3 dot 1) approx 1.15 "kA" $
@@ -41,14 +43,14 @@ We hebben het over *Hoge spanningen* in dit vak en in de industrie.
   Bij 33 kV:
   $ P_"loss, 33kV" = 3 dot 1.09 dot (5.25 dot 10^3)^2 approx 90 "MW" $
 
-  *3. Bereken de spanningsval $Delta U$ (per fase)*
-  $ Delta U = I dot R_c $
+  *3. Bereken de spanningsval $Delta V$ (per fase)*
+  $ Delta V = I dot R_c $
 
   Bij 150 kV:
-  $ Delta U_"150kV" = 1.15 dot 10^3 dot 1.09 approx 1.26 "kV" $
+  $ Delta V_"150kV" = 1.15 dot 10^3 dot 1.09 approx 1.26 "kV" $
 
   Bij 33 kV:
-  $ Delta U_"33kV" = 5.25 dot 10^3 dot 1.09 approx 5.74 "kV" $
+  $ Delta V_"33kV" = 5.25 dot 10^3 dot 1.09 approx 5.74 "kV" $
 
   #align(center)[
     #table(
@@ -60,7 +62,7 @@ We hebben het over *Hoge spanningen* in dit vak en in de industrie.
       table.hline(),
       [$I_l$ [kA]], [1.15], [5.25],
       [$P_"loss"$ [MW]], [4.4], [90],
-      [$Delta U$ [kV]], [1.26], [5.74],
+      [$Delta V$ [kV]], [1.26], [5.74],
       [], box(fill: yellow, inset: 5pt)[*1.4%*], box(fill: yellow, inset: 5pt)[*30%*],
     )
   ]
@@ -130,7 +132,7 @@ Als laatste heb je nog Regalatoren die de markt in de gaten houden dat leveranci
   *Medium voltage verdeling* Bij een ring net zie je dat je backups creert. Als er een ding uit gaat is je kring niet gebroken en heb je een backup.
 + *Mesh net:* *hoge voltage verdeling _transmitie en interconnectie_*
 #figure(
-  image("mesh net.png", width: 3cm),
+  image("mesh net.png", width: 5cm),
   caption: [mesh net],
   label: <fig:mesh-net>,
 )
@@ -141,7 +143,7 @@ Mesh net is het omgekeerde van een radiaal net. Het is een netwerk van verbonden
 #theorie(title: "Korte herhaling wisselstroom")[
 
   #wrap-figure(
-    image("wattmetermethodes.png", width: 5cm),
+    image("wattmetermethodes.png", width: 8cm),
     caption: [Wattmetermethodes],
     label: <fig:wattmetermethodes>,
   )[
@@ -173,6 +175,22 @@ Mesh net is het omgekeerde van een radiaal net. Het is een netwerk van verbonden
   $
 
   $ S^2 = P^2 + Q^2 $
+
+  * 1-wattmethode met nulpuntsverbinding (1WMM+N)*
+  Toepasbaar bij symmetrische belastingen met beschikbare neutraalgeleider ($N$).
+  $ P_("tot") = 3 dot P_m = 3 dot V_f dot I_f dot cos(phi) $
+
+  * 1-wattmethode zonder nulpuntsverbinding (1WMMØN)*
+  Toepasbaar bij symmetrische belastingen zonder $N$. De wattmeter meet het actieve ($P_m$) of reactieve ($Q_m$) aandeel via een fase-verschoven verbinding (bijv. $I$ in $L_1$ en $V$ tussen $L_2$ en $L_3$).
+  $ P_("tot") = sqrt(3) dot Q_m \ Q_("tot") = sqrt(3) dot P_m $
+
+  * 3-wattmetermethode (3WMM)*
+  Universele methode (ook voor asymmetrische belastingen). Vereist een (artificieel) nulpunt.
+  $ P_("tot") = P_1 + P_2 + P_3 $
+
+  * 2-wattmetermethode (Schakeling van Aron)*
+  Toepasbaar bij 3-dradensystemen (geen $N$ nodig). Werkt voor zowel symmetrische als asymmetrische belastingen.
+  $ P_("tot") = P_1 + P_2 \ Q_("tot") = sqrt(3) dot (P_2 - P_1) $
 ]
 
 #figure(
@@ -203,6 +221,11 @@ Mesh net is het omgekeerde van een radiaal net. Het is een netwerk van verbonden
     content("Vab.end", [$underline(V)_"ab" (+30deg)$], anchor: "south-west")
   }),
 )
+
+#oefening(title: "2-watt methode")[
+
+]
+
 
 
 
