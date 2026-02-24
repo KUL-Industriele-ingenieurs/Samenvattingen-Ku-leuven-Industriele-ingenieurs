@@ -117,3 +117,6 @@ We hebben een ideale transformator, dus $R_c = 0 (mu -> infinity)$ dus $arrow.r.
   caption: [loaded transformer],
   label: <fig:loaded-transformer>,
 )
+
+== Phasors (herhaling)
+
