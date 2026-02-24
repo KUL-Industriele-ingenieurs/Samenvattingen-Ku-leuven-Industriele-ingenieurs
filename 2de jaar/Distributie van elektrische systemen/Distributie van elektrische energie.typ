@@ -31,5 +31,16 @@
 #printsymbols()
 #printformularium()
 
-#include "Introductie.typ"
-#include "Intro transformatoren.typ"
+// Transformatoren
+#chapter_page("Transformatoren", label: <ch:transformatoren>)
+
+#include "1.Introductie.typ"
+#include "1.Intro transformatoren.typ"
+
+// Netten
+#chapter_page("Netten", label: <ch:netten>)
+
+#include "1.Introductie.typ"
+#include "2.Het elektrische net.typ"
+
+// Oefeningen
