@@ -179,16 +179,23 @@ B = Je gooit een number <= 3
   )[
 
     *Gegeven:*
-    $P(C) = 0.05$
-    $P(R) = 0.10$
-    $P(C^C) = 0.03$
-    $P()$
+    A: roker
+    B: Kanker
+    Alle sample points gegeven:
+    - $P(A inter B) =0.05$
+    - $P(A^c inter B) = 0.03$
+    - $P(A inter B^c) = 0.0.20$
+    - $P(A^c inter B^c) = 0.72$
 
     *Gevraagd:*
-    - $P(C|R)$
+    - $P(B|A)$ Wat is de kans dat iemand roker is gegeven dat hij kanker heeft?
+    - $P(B|A^c)$ Wat is de kans dat iemand roker is gegeven dat hij geen kanker heeft?
 
     *Oplossing:*
-    $P(C|R) = P(C inter R) / P(R) = 0.02 / 0.10 = markhl(0.2)$
+    $P(B|A) = P(A inter B) / P(A) = 0.05 / 0.10 = markhl(0.2)$
+    $P(B|A^c) = P(A^c inter B) / P(A^c) = 0.03 / (0.03 + 0.72) = markhl(0.04)$
+
+    Je ziet dus dat met deze data dat roken de kans op kanker vergroot met 5X.
   ]
 ]
 
