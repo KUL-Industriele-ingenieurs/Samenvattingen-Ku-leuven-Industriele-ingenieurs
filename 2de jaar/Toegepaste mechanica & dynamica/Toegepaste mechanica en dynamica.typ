@@ -29,5 +29,7 @@
 #include "1.Inleiding.typ"
 #include "2.Vlakke kinematica van een star lichaam.typ"
 #include "3.Relatieve beweging snelheid.typ"
+#include "4. Absolute beweging.typ"
+
 
 
