@@ -200,4 +200,21 @@ B = Je gooit een number <= 3
 ]
 
 
+== Multiplicatie regel
+
+#frm(
+  "Multiplicatie regel",
+
+  [
+    $P(A|B) = P(A inter B) / P(B)$
+  ],
+  [
+
+    Met P de kans, A en B zijn events. $inter$ is de intersectie van A en B.
+  ],
+)
+
+
+
+
 
