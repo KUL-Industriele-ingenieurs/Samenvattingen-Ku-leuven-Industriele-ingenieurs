@@ -539,3 +539,20 @@
 #let FIXME(msg) = text(fill: red, weight: "bold", font: "Fira Sans")[\[FIXME: #msg\]]
 #let NOTE(msg) = text(fill: schoolOrange, weight: "bold", font: "Fira Sans")[\[NOTE: #msg\]]
 #let citeme = text(fill: red, font: "Fira Sans")[\[CITATIE NODIG\]]
+
+// --- Chapter Page Styling ---
+#let chapter_page(title, label: none) = {
+  pagebreak(weak: true)
+  set page(header: none) // Hide header on chapter pages
+  align(center + horizon)[
+    #block(width: 100%, inset: 2em)[
+      #set text(font: "Fira Sans", weight: "bold", size: 2.5em)
+      #v(-2em)
+      #heading(level: 1, outlined: true)[#title]
+      #if label != none { label }
+      #v(0.5em)
+      #line(length: 70%, stroke: 2pt + schoolBlue)
+    ]
+  ]
+  pagebreak(weak: true)
+}
