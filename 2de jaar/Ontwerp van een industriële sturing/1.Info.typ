@@ -50,6 +50,10 @@ Deze dingen leer je deels in de labo's
 
 Je krijgt op *Week 7* een taak en op *Week 10* moet je al een oplossing delen.
 
+== Examen
+
+Op het examen krijg je makkelijke (weggevers) vragen, medium en moeilijke vragen.
+
 
 
 

@@ -28,5 +28,6 @@
 // Tip: To temporarily exclude a chapter, comment out its #include line.
 
 // Symbol list and formularium are auto-generated
-#include "Info.typ"
-#include "Les1.typ"
+#include "1.Info.typ"
+#include "2.Intro-Industriele sturing.typ"
+#include "3.Intro-tot-pneumatics.typ"
