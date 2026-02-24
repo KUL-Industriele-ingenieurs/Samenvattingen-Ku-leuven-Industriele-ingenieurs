@@ -5,6 +5,7 @@
 == Wat is pneumatiek?
 
 Voor het labo moet je meer weten over pneumatiek.
+Zorg dat je alles dit nog deftig doorneemt voor je aan de labo's begint.
 
 == Contents
 
