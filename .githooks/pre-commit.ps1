@@ -19,25 +19,31 @@ if ($protectedBranches -contains $currentBranch) {
 # --- 2. Manage PDFs ---
 Write-Host "Checking PDFs..." -ForegroundColor Cyan
 
-# Get all staged PDFs
-$stagedPdfs = git diff --cached --name-only | Where-Object { $_ -match '\.pdf$' }
+# Use NUL-separated names to handle filenames safely
+$stagedRaw = git diff --cached --name-only -z
+if ($stagedRaw) {
+    $stagedPdfs = ($stagedRaw -split "`0") | Where-Object { $_ -match '\.pdf$' }
+    $unstagedAny = $false
 
-foreach ($pdfFile in $stagedPdfs) {
-    $texFile = $pdfFile -replace '\.pdf$', '.tex'
-    
-    # Check if matching .tex file exists
-    $texExists = Test-Path $texFile
-    if (-not $texExists) {
-        # Check if it's tracked in git
-        $gitCheck = git ls-files --error-unmatch $texFile 2>&1
-        $texExists = $LASTEXITCODE -eq 0
+    foreach ($pdfFile in $stagedPdfs) {
+        if ([string]::IsNullOrWhiteSpace($pdfFile)) { continue }
+
+        $texFile = [System.IO.Path]::ChangeExtension($pdfFile, '.tex')
+        $typFile = [System.IO.Path]::ChangeExtension($pdfFile, '.typ')
+        
+        if ((Test-Path $texFile) -or (Test-Path $typFile)) {
+            $matchingFile = if (Test-Path $texFile) { ".tex" } else { ".typ" }
+            Write-Host "Unstaging generated PDF: $pdfFile (matches $matchingFile file)" -ForegroundColor Yellow
+            git reset HEAD -- $pdfFile 2>&1 | Out-Null
+            $unstagedAny = $true
+        } else {
+            Write-Host "Keeping reference PDF: $pdfFile" -ForegroundColor Green
+        }
     }
-    
-    if ($texExists) {
-        Write-Host "Unstaging generated PDF: $pdfFile (matches .tex file)" -ForegroundColor Yellow
-        git reset HEAD $pdfFile 2>&1 | Out-Null
-    } else {
-        Write-Host "Keeping reference PDF: $pdfFile" -ForegroundColor Green
+
+    if ($unstagedAny) {
+        Write-Host "🛑 ERROR: Generated PDFs were staged and have been unstaged. Please review the unstaged PDFs and commit again without them." -ForegroundColor Red
+        exit 1
     }
 }
 

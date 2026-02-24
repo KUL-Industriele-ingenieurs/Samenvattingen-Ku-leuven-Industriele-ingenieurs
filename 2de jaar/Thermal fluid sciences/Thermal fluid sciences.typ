@@ -1,0 +1,38 @@
+// main.typ
+// Modular Document Example - Demonstrates #include for large projects
+// KU Leuven - Faculteit Industriële Ingenieurswetenschappen
+//
+// This template shows how to split a large document into multiple files.
+// Use this structure for thesis, large summaries, or multi-chapter documents.
+
+#import "../../school-template.typ": *
+
+#show: project.with(
+  title: "Thermal-Fluid Sciences Samenvatting",
+  course: "Thermal-Fluid Sciences",
+  authors: ("Ruben Ryckaert",),
+  academic_year: "2025-2026",
+)
+
+// ============================================================================
+//                           CHAPTER INCLUDES
+// ============================================================================
+// Use #include for chapters - Typst compiles incrementally so all chapters
+// are always compiled, but splitting keeps your project organized.
+//
+// Benefits of #include:
+// - Each chapter in a separate file for clarity
+// - Multiple authors can work on different chapters
+// - Chapters can be reused in other documents
+//
+// Tip: To temporarily exclude a chapter, comment out its #include line.
+
+// Symbol list and formularium are auto-generated
+
+Deze samenvatting is gemaakt uit pure frustratie door de manier van lesgeven. Ik hoop dat met deze samenvatting je de wiskunde en formules achter de concepten snapt. Opnieuw draag gerust bij aan de samenvattingen op github.
+
+#printsymbols()
+#printformularium()
+
+#include "1.Info-vak.typ"
+#include "2.Steady state conductie.typ"

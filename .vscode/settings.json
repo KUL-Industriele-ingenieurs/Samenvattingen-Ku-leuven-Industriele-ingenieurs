@@ -1,5 +1,6 @@
 {
     "latex-workshop.linting.enabled": true,
+    "tinymist.fontPaths": ["fonts"],
     "latex-workshop.linting.chktex.enabled": false,
     "latex-workshop.linting.lacheck.enabled": false,
     "latex.linter.enabled": false,
@@ -210,5 +211,13 @@
     },
     "[yaml]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
-    }
+    },
+    // --- Paste Image Configuration ---
+    "pasteImage.showFilePathConfirmInputBox": true,
+    "pasteImage.path": "${currentFileDir}",
+    "pasteImage.basePath": "${currentFileDir}",
+    "pasteImage.forceUnixStyleSeparator": true,
+    "pasteImage.prefix": "",
+    "pasteImage.insertPattern": "#figure(\n  image(\"${imageFileName}\", width: 5cm),\n  caption: [${imageFileNameWithoutExt}],\n  label: <fig:${imageFileNameWithoutExt}>,\n)",
+    "pasteImage.filePathConfirmInputBoxMode": "onlyName"
 }

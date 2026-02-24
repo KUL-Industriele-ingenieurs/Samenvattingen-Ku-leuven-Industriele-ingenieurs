@@ -29,6 +29,11 @@
 % --- Core Logic (Load First) ---
 \RequirePackage{etoolbox}
 \RequirePackage{xstring}
+\usepackage{siunitx}
+\usepackage{pdfpages}
+\usepackage{placeins}
+\usepackage[table]{xcolor}  % Voor kleuren in tabellen
+\usepackage{colortbl}     % Voor kleuren in tabellen
 
 % --- Encoding & Language ---
 \@ifpackageloaded{inputenc}{}{\RequirePackage[utf8]{inputenc}}
@@ -166,12 +171,12 @@
 \@ifpackageloaded{tikz}{}{\RequirePackage{tikz}}
 \@ifpackageloaded{pgfplots}{}{\RequirePackage{pgfplots}}
 \@ifpackageloaded{pgfplotstable}{}{\RequirePackage{pgfplotstable}}
-\usepgfplotslibrary{colorbrewer}
+\usepgfplotslibrary{colorbrewer, fillbetween}
 \pgfplotsset{compat=1.18}
 \usetikzlibrary{
     arrows.meta, positioning, calc, patterns, shapes.geometric,
     angles, quotes, babel, decorations.pathmorphing, shapes.misc, fit,
-    shadows.blur
+    shadows.blur, intersections
 }
 
 % --- Bibliography ---
@@ -562,9 +567,9 @@
 % Section Styling
 \ifcsdef{chapter}{ 
     \titleclass{\chapter}{straight}
-    \titleformat{\chapter}[hang]{\normalfont\LARGE\bfseries\sffamily}{\thechapter}{1em}{}[\titlerule]
-    \titleformat{name=\chapter,numberless}[hang]{\normalfont\LARGE\bfseries\sffamily}{}{0pt}{}[\titlerule]
-    \titlespacing*{\chapter}{0pt}{12pt}{6pt}
+    \titleformat{\chapter}[hang]{\normalfont\large\bfseries\sffamily}{\thechapter}{1em}{}[\titlerule]
+    \titleformat{name=\chapter,numberless}[hang]{\normalfont\large\bfseries\sffamily}{}{0pt}{}[\titlerule]
+    \titlespacing*{\chapter}{0pt}{10pt}{6pt}
     \preto{\chapter}{\FloatBarrier}
 }{}
 
