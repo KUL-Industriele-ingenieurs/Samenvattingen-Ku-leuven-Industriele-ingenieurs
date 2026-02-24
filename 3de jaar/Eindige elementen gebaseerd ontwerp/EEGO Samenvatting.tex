@@ -1,1 +1,155 @@
-#absolute balzak
+\documentclass[a4paper,12pt,twoside]{report}
+% Pakketten
+\usepackage[dutch]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{../../school-macros}
+\begin{document}
+% Titelinformatie
+\kuleuventitle
+{LaTeX Samenvatting}
+{Eindig Elementen Gebaseerd Ontwerp}
+{Louic Cooreman}
+{Academiejaar 2025-2026}
+\tableofcontents
+\newpage
+
+\chapter{Introductie tot numerieke simulaties}
+\subsection{Numerieke analyse in ontwerp}
+\begin{conceptbox}[Belangrijke definitie]
+Per definitie is een numierieke simulatie fout. Dit is door aannames die gemaakt worden, want de computer zelf kan niet denken. Je gaat gewoon zelf moeten aantonen dat het resultaat niet zo fout is.
+\end{conceptbox}
+\begin{itemize}
+    \item \textbf{Validatie}: het proces van het aantonen dat een model geschikt is voor zijn doel. Je gaat dus moeten aantonen dat je model geschikt is voor het doel waarvoor je het gebruikt, fouten hier in zijn fouten door de mens.
+    \item \textbf{Verificatie}: het proces van het aantonen dat een model correct is geïmplementeerd. Je gaat dus moeten aantonen dat je model correct is geïmplementeerd en dus of je computer geen fout heeft gemaakt.
+\end{itemize}
+\subsection{Waarom numerieke simulaties in plaats van fysieke testen?}
+Ontwerpeisen worden steeds strenger en complexer , het ontwerpen moet sneller gebeuren , door moderne productietechnieken (zoals 3D-printers) vereisen we nieuwe manieren van ontwerpen. Dus numerieke voorspellingstechnieken zijn in het algemeen gewoon sneller en goedkoper dan het bouwen van testmodellen. Het laat ook toe om met gevoeligheid te spelen door bvb 1 parameter aan te passen.
+\newline
+\subsection{Hoe wordt numeriek moddeleren toegepast in de fases van de ontwerpcyclus?}
+\begin{itemize}
+    \item \textbf{Ontwerpfase}: Eerst worden de belastingen op het product gedefinieerd, met simpele vuistregels wordt voorspeld hoe een onderdeel zich gaat gedragen en we passen op basis van de eerste simulatieresultaten het model aan. (\textbf{Design modification})
+    \item \textbf{Prototype fase}: Een virtueel prototype wordt gebruikt voor tests voor het fysiek gedrag te bepalen van bepaalde parameters of subsystemen.
+    \item \textbf{Productie fase}: Inzicht krijgen in nauwkeurigheid van productieproces (bvb toleranties) en schatten wat de eigenschappen van het eindproduct zullen zijn (bvb stijfheid of levensduur)
+\end{itemize}
+\newpage
+\subsection{Numerieke analyse (de technische werking)}
+\begin{itemize}
+    \item \textbf{Pre-processing = Understanding}: Het versimpelen van het model, bvb weglaten van gaten die belangrijk zijn voor de sterkte. Het genereren van de mesh, opdelen in kleine elementen dus , hoe fijner hoe nauwkeuriger (dit is eindige elementenmethode) en de randvoorwaarden opstellen (bvb waar zit de belasting, waar zit de ondersteuning)
+    \item \textbf{Processing = Theory}: De software vertaalt jouw model naar een gigantisch systeem van wiskundige vergelijkingen: Partial Differential Equations (PDE).
+    \item \textbf{Post-processing = Analyzing}: Het interpreteren van de resultaten, verificatie en validatie doen , komt het overeen met werkelijkheid? Uitleggen waarom oplossing wel of niet correct is.
+\end{itemize}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth]{patat_mesh.png}
+	\caption{Mesh voorbeeld patat}
+\end{figure}
+\subsection{Numerieke Analyse: Van Mesh naar Matrix}
+
+In de \textbf{pre-processing} fase wordt een continu fysiek probleem gediscretiseerd naar een numeriek model.
+
+\subsection*{1. De Mesh}
+Het object wordt opgedeeld in een eindig aantal subdomeinen:
+\begin{itemize}
+    \item \textbf{Element:} De individuele deelgebieden waarin het object wordt opgesplitst.
+    \item \textbf{Knoop (Node):} De specifieke punten (hoekpunten) waar elementen samenkomen en waar de variabelen worden berekend.
+    \item \textbf{Mesh:} Het totaalnetwerk van elementen en knopen dat de geometrie definieert.
+    \item \textbf{Randvoorwaarden:} Externe invloeden zoals belastingen (krachten), inklemmingen en elastische ondersteuningen (veren).
+\end{itemize}
+
+\subsection{Numerieke Discretisatie}
+Het vertalen van een continu natuurkundig probleem naar een berekenbaar computermodel volgt een strikt proces.
+
+\subsection*{Het Continu Probleem}
+In principe moet je oneindig punten analyseren, dus met partiële differentiaalvergelijkingen (PDE's) werken. De basis van deze PDE's is de natuurkunde, zoals behoudswetten (behoud van massa, energie, momentum) en andere fundamentele principes.
+\begin{itemize}
+    \item \textbf{Governing Physics:} De basis wordt gevormd door behoudswetten en fundamentele natuurkunde.
+    \item \textbf{Veldvariabele ($q$):} De onbekende die het probleem beschrijft (bijv. verplaatsing, temperatuur, druk of snelheid).
+    \item \textbf{PDE:} Het toepassen van wetten op een infinitesimaal controle-volume leidt tot een \textit{Partial Differential Equation} (PDE):
+    \begin{equation}
+        \mathcal{L}q = F
+    \end{equation}
+    waarbij $\mathcal{L}$ de differentiaaloperator is en $F$ de externe belasting.
+\end{itemize}
+
+\subsection*{Discretisatie van het Domein}
+Om de PDE op te lossen, wordt het rekendomein opgedeeld:
+\begin{itemize}
+    \item \textbf{Elements:} Het medium wordt verdeeld in een eindig aantal sub-regio's.
+    \item \textbf{Nodes (Knopen):} Discrete punten waarvoor een benaderende oplossing $\tilde{q}$ wordt bepaald.
+    \item \textbf{Methodieken:} Tijds- en ruimte-afgeleiden worden vervangen door algebra\"ische vergelijkingen via methoden zoals Eindige Elementen (FEM) of Eindige Volumes.
+\end{itemize}
+
+\subsection*{Matrix Algebra en Processing}
+De computer zet het gediscretiseerde probleem om naar een lineair stelsel:
+\begin{equation}
+    [K]\{\tilde{q}\} = \tilde{F}
+\end{equation}
+
+\begin{itemize}
+    \item \textbf{$[K]$:} De stijfheidsmatrix die de materiaal- en geometrie-eigenschappen bevat.
+    \item \textbf{$\{\tilde{q}\}$:} De vector met onbekende knoopvariabelen.
+    \item \textbf{$\{F\}$:} De krachtvector of belasting.
+\end{itemize}
+\newpage
+\begin{theorie}[Belangrijk om te weten]
+\subsection*{Computationele Complexiteit}
+De \textit{processing} fase vereist het inverteren van de matrix om de oplossing te vinden:
+\begin{equation}
+    \{\tilde{q}\} = [K]^{-1} \tilde{F}
+\end{equation}
+
+\textbf{Belangrijke bepalingen uit de notities:}
+\begin{itemize}
+    \item \textbf{CPU-tijd:} De rekentijd schaalt met de derde macht van de matrixgrootte: $\text{CPU-time} \sim (\text{size } [K])^3$.
+    \item \textbf{Schaalbaarheid:} Het verdubbelen van de knopen (nauwkeurigheid) resulteert in een wachttijd die factor 8 ($2^3$) groter is.
+    \item \textbf{Post-processing:} Na de berekening worden de resultaten geanalyseerd in de post-processor.
+\end{itemize}
+\end{theorie}
+\subsection{Numerieke errors}
+In de numerieke analyse zijn er verschillende soorten fouten die kunnen optreden:
+\begin{itemize}
+    \item \textbf{Modelleer:} Fouten die ontstaan door vereenvoudigingen of aannames in het model. Omdat het fysisch model niet overeenkomt met het wiskundig model, fout door de mens.
+    \item \textbf{Discretisatiefout:} Fouten die ontstaan door de discretisatie van het continu probleem (bijv. te grove mesh).
+    \begin{figure}[H]
+	\centering
+	\includegraphics[width=0.3\textwidth]{discretisatie_error.png}
+	\caption{Oplossingsdiscretisatie fout}
+    \end{figure}
+    In deze figuur zien we dat de computer punten verbind met rechte lijnen, terwijl de echte oplossing een kromme is. De fout is dus het verschil tussen de echte oplossing en de benaderde oplossing.
+    Discretisatiefouten komen eigelijk door de mesh want je kan deze niet oneindig verfijnen.
+    \begin{equation}
+    \mathcal{L}q = F \quad \text{vs.} \quad [K]\{\tilde{q}\} = \tilde{F}
+    \end{equation}
+    waarbij $\mathcal{L} \not= K$, $q \not= \tilde{q}$, en $F \not= \tilde{F}$.
+    Deze fout neemt natuurlijk af als je meer knopen toevoegt (mesh verfijnen) , kost natuurlijk meer tijd.
+    \item \textbf{Numerieke fouten:} Nemen toe met aantal knopen, door afrondingsfouten en truncatiefouten in de berekeningen. Vaak verwaarloosbaar.
+    \item \textbf{(Software fouten):} Als software crashed , niet vaak
+\end{itemize}
+\subsection{Rapportering van Simulaties}
+Een goed rapport maakt een identieke simulatie door derden mogelijk:
+\begin{itemize}
+    \item \textbf{Pre-processing:} Documentatie van geometrische vereenvoudigingen, grid design (mesh) en randvoorwaarden met expliciete motivatie.
+    \item \textbf{Solve:} Vermelding van solvertype en gebruikte computationele resources (CPU/geheugen).
+    \item \textbf{Post-processing:} Gebruik van relevante plots met duidelijke eenheden en schaalverdeling.
+    \item \textbf{Validatie \& Verificatie:} Controle of de resultaten consistent zijn en leiden tot concrete \textbf{ontwerpaanpassingen}.
+\end{itemize}
+\subsection{Bepalen of eindige elementenmethode geschikt is}
+De volgende figuur beschrijft het beslissingproces en de iteratieve cyclus van een eindige elementenmethode (FEM) ontwerpaanpak:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{flowchart.png}
+    \caption{Beslissingsproces voor het gebruik van FEM}
+\end{figure}
+\begin{conceptbox}[\textbf{Kenmerk van een goede simulatie}]
+    \begin{equation}
+    t_{preprocessing}, t_{postprocessing} \gg t_{solve}
+    \end{equation}
+\end{conceptbox}
+\end{document}
