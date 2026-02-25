@@ -147,8 +147,10 @@ We gaan de formule van radiate ontbinden. Dit is uiteindelijk herhaling van warm
   "Radiatie",
   [
     $ dot(Q) = epsilon sigma A (T_s^4 - T_oo^4) $
+    We gaan deze term ontbinden in $Delta T$ en $h_r$.
     $ Delta T = T_s - T_oo $
-    $ T_s^4 - T_oo^4 = (T_s^2 + T_oo^2)(T_s^2 - T_oo^2) = (T_s^2 + T_oo^2)(T_s - T_oo)(T_s + T_oo) $
+    $ T_s^4 - T_oo^4 = (T_s^2 + T_oo^2)(T_s^2 - T_oo^2) = (T_s^2 + T_oo^2)markhl((T_s - T_oo))(T_s + T_oo) $
+    De rest van de termen gaan $h_r$ bepalen.
     $ dot(Q) = epsilon sigma A (T_s^2 + T_oo^2)(T_s + T_oo) Delta T $
     $ h_r = epsilon sigma (T_s^2 + T_oo^2) (T_s + T_oo) $
   ],
