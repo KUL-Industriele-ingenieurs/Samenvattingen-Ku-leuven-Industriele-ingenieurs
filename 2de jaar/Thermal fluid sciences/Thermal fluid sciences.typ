@@ -36,3 +36,4 @@ Deze samenvatting is gemaakt uit pure frustratie door de manier van lesgeven. Ik
 
 #include "1.Info-vak.typ"
 #include "2.Steady state conductie.typ"
+#include "3.Convectie.typ"
