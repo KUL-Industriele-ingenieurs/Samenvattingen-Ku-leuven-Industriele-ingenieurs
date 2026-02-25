@@ -203,14 +203,14 @@ Ons H-veld is dus alleen afhankelijk van de aangelegde stroom dus $mu_0$ en $mu_
 
 #theorie(title: "Vocabulaire")[
   #figure(
-    image("termen.png", width: 10cm),
+    image("termen.png", width: 12cm),
     caption: [termen],
     label: <fig:termen>,
   )
 ]
 
 
-=== Magnetische circuits
+== Magnetische circuits
 
 #wrap-figure(
   image("magnetische kring.png", width: 5cm),
@@ -269,7 +269,7 @@ Dit is analoog aan de wet van Ohm voor elektrische circuits ($U = I R$), waarbij
 
 
 #figure(
-  image("hopkinsonsVSohm.png", width: 5cm),
+  image("hopkinsonsVSohm.png", width: 10cm),
   caption: [hopkinsonsVSohm],
   label: <fig:hopkinsonsVSohm>,
 )
@@ -320,7 +320,7 @@ $ F = phi dot R_c = N_1 I_1 + N_2 I_2 + ... + N_n I_n = $
 
 
 #figure(
-  image("magnetisch circuit met meerdere windingen.png", width: 5cm),
+  image("magnetisch circuit met meerdere windingen.png", width: 10cm),
   caption: [magnetisch circuit met meerdere windingen],
   label: <fig:magnetisch-circuit-met-meerdere-windingen>,
 )
@@ -356,7 +356,7 @@ $ F = phi dot R_c = N_1 I_1 + N_2 I_2 + ... + N_n I_n = $
   - $lambda_12$: Gekoppelde flux in winding 1 door $i_2$ (Wederkerige inductie).
   - $lambda_21$, $lambda_22$: Analoog voor winding 2.
 
-  *Opmerking:* Gekoppelde flux is relevant voor geïnduceerde spanning door een tijdsveranderende flux (zie Faraday-Lenz).
+  *Opmerking:* Gekoppelde flux is relevant voor geïnduceerde spanning door een tijdsveranderende flux _(zie Faraday-Lenz)_.
 ]
 
 
@@ -368,24 +368,94 @@ $ lambda_1 = N_1 (phi_1 + phi_2) = lambda_11 + lambda_12 $
 
 $ = N_1 (N_1 i_1 R_1 + N_2 i_2 R_2) = N_1^2 i_1 R_1 + N_1 N_2 i_2 R_2 $
 
-$frac(N_1^2, R_c) i_1 + frac(N_1 N_2, R_c) i_2$
+$
+  markhl(frac(N_1^2, R_c), tag: #<L1>) i_1 + markhl(frac(N_1 N_2, R_c), tag: #<M12>) i_2
+  #annot(<L1>, pos: left)[Zelfinductantie $L_1$]
+  #annot(<M12>, pos: top)[Mutuele inductantie $M_12$]
+$
 
 Dit zijn de *Zelfinductantie* en de *mutuele inductantie* termen
 
-$lambda_1 = L_1 i_1 + M_12 i_2$
+$ lambda_1 = L_1 i_1 + M_12 i_2 $
 
 
 == Geïnduceerde spanningen
 
+Bij geïnduceerde spanning ga je een varient magnetische flux  hebben die in de winding dan een spanning gaat induceren. Die gaan dus een elektrische veld opstellen
+
+$ "Magnetische flux" => "elektrische veld" $
+
+
+$ E M F [V] = integral.cont arrow(E) dot d arrow(l) = - frac(d phi, d t) $
+
+
+#wrap-figure(
+  image("induced emf in magnetic circuit.png", width: 5cm),
+  caption: [induced emf in magnetic circuit],
+  label: <fig:induced-emf-in-magnetic-circuit>,
+)[
+
+  $ v = "EMF" = N frac(d phi, d t) $
+  $ = frac(d lambda, d t) = frac(d(l i), d t) = L dot frac(d i, d t) $
+]
+
+Je kunt dan door windingen langs een kant een spanning induceren in de andere kant. Dit is het principe van *de transformator*.
+
+$ v_1 = N_1 frac(d phi, d t) = L_1 frac(d i_1, d t) + M_12 frac(d i_2, d t) $
+
+$ v_2 = N_2 frac(d phi, d t) = L_2 frac(d i_2, d t) + M_21 frac(d i_1, d t) $
+
+$arrow.b.double$
+
+$ frac(v_1, v_2) = frac(N_1, N_2) $
+
+#frm("Spanningsverhouding", $ frac(v_1, v_2) = frac(N_1, N_2) $, [
+  $v_1$ [V]: spanning op de primaire wikkeling \\
+  $v_2$ [V]: spanning op de secundaire wikkeling \\
+  $N_1$ [-]: aantal windingen op de primaire wikkeling \\
+  $N_2$ [-]: aantal windingen op de secundaire wikkeling
+])
+
+Dan krijg je een fractie van de spanningen. Je verhoging of verlaging van spanning is dus afhankelijk van de verhouding van de windingen.
 
 
 
+#voorbeeld(title: "Simpel voorbeeld")[
+  *Gegeven:* $N_1 = 1000$ windingen, $N_2 = 100$
+
+  *Gevraagd:* fractie van de spanningen
+
+  *Oplossing:*
+  $ frac(v_1, v_2) = frac(N_1, N_2) = frac(1000, 100) = markhl(10, tag: #<fractie>) $
+  #annot(<fractie>, pos: right)[fractie van de spanningen]
+]
 
 
+#theorie(title: "Terminologie In het Nederlands")[
+  #columns(2)[
+    - *MMK*, $cal(F) = N i$
+      - Magnetomotorische kracht
+      - $[A dot "windingen"]$
+    - $cal(R)$
+      - Reluctantie
+      - $[A dot "windingen" / "Wb"]$
+    - $lambda = N phi$
+      - Gekoppelde flux
+      - Spoelflux
+      - $["Wb", "Vs"]$
 
+    #colbreak()
 
+    - *EMK*, $e$
+      - Elektromotorische Kracht
+      - $[V]$, volt
+    - $L = N phi \/ i$
+      - (Zelf)Inductantie
+      - $[H]$, henry
+    - $M_12 = N_1 phi \/ i_2$
+      - Mutuele Inductantie
+      - $[H]$, Henry
+  ]
 
-
-
-
-
+  - $N$ *windingen* in 1 wikkeling of spoel
+]

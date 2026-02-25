@@ -35,7 +35,8 @@
 #chapter_page("Transformatoren", label: <ch:transformatoren>)
 
 #include "1.Introductie.typ"
-#include "1.Intro transformatoren.typ"
+#include "2.Intro transformatoren.typ"
+#include "3.De ideale transformator.typ"
 
 // Netten
 #chapter_page("Netten", label: <ch:netten>)

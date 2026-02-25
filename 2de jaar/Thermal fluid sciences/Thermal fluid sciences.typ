@@ -35,3 +35,4 @@
 
 #include "1.Info-vak.typ"
 #include "2.Steady state conductie.typ"
+#include "3.Convectie.typ"
