@@ -135,28 +135,28 @@
 
   // Typography: Charter (body) + Fira Sans (headers) + Fira Code 0.85 (code)
   // Charter, Fira Sans & Fira Code loaded from project fonts/ directory
-  set text(font: "Charter", lang: "nl", size: 11pt)
+  set text(font: ("Charter", "Libertinus Serif", "Georgia"), lang: "nl", size: 11pt)
   set par(leading: 0.63em, first-line-indent: 0pt, spacing: 1.2em, justify: true)
   set heading(numbering: "1.1.")
 
-  show raw: set text(font: ("Fira Code", "Fira Mono"), size: 0.85em)
+  show raw: set text(font: ("Fira Code", "Consolas", "Courier New"), size: 0.85em)
   // Math uses Typst's default New Computer Modern Math (serif, matching Charter body text)
 
   // Override emptyset to use sans-serif glyph for visual consistency
-  show sym.emptyset: set text(font: "Fira Sans")
+  show sym.emptyset: set text(font: ("Fira Sans", "Calibri", "Arial"))
 
   // Link styling: URLs in schoolBlue, internal refs in black with underline
   show link: it => text(fill: schoolBlue)[#underline(it)]
   show ref: it => underline(it)
 
   // Caption styling: small Fira Sans, bold label
-  show std-figure.caption: set text(size: 0.9em * 0.92, font: "Fira Sans", weight: "bold")
+  show std-figure.caption: set text(size: 0.9em * 0.92, font: ("Fira Sans", "Calibri", "Arial"), weight: "bold")
 
   // List styling: match LaTeX tightened spacing
   set list(indent: 2em, body-indent: 0.5em, spacing: 0.6em)
   set enum(indent: 2em, body-indent: 0.5em, spacing: 0.6em)
 
-  show heading: set text(font: "Fira Sans", weight: "bold")
+  show heading: set text(font: ("Fira Sans", "Calibri", "Arial"), weight: "bold")
 
   show heading.where(level: 1): it => block(below: 0.8em, breakable: false)[
     #v(8pt)
@@ -214,7 +214,7 @@
 
   // Table of Contents (styled to match LaTeX)
   {
-    set text(font: ("Charter", "serif"))
+    set text(font: ("Charter", "Libertinus Serif"))
     set outline.entry(fill: repeat[.#h(4pt)])
     show outline.entry.where(level: 1): it => {
       v(8pt)

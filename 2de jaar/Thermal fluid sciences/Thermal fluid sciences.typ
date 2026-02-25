@@ -29,7 +29,6 @@
 
 // Symbol list and formularium are auto-generated
 
-Deze samenvatting is gemaakt uit pure frustratie door de manier van lesgeven. Ik hoop dat met deze samenvatting je de wiskunde en formules achter de concepten snapt. Opnieuw draag gerust bij aan de samenvattingen op github.
 
 #printsymbols()
 #printformularium()
