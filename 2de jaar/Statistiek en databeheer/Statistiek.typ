@@ -36,4 +36,5 @@
   alt: "Statistics Formula Chart",
 )
 #printformularium()
-#include "Intro-statistiek.typ"
+#include "1.Intro-statistiek.typ"
+#include "2.Probabiliteit.typ"
