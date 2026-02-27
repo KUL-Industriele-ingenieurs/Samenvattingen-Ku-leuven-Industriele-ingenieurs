@@ -1,6 +1,8 @@
 {
     "latex-workshop.linting.enabled": true,
-    "tinymist.fontPaths": ["fonts"],
+    "tinymist.fontPaths": ["./fonts", "${workspaceFolder}/fonts", "fonts"],
+    "typst-lsp.fontPaths": ["./fonts", "${workspaceFolder}/fonts", "fonts"],
+    "typst.fontPaths": ["./fonts", "${workspaceFolder}/fonts", "fonts"],
     "latex-workshop.linting.chktex.enabled": false,
     "latex-workshop.linting.lacheck.enabled": false,
     "latex.linter.enabled": false,
