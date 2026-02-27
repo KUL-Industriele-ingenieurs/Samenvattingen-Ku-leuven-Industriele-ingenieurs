@@ -6,6 +6,11 @@ Stel je wilt een categorie toevoegen aan een nieuw boek. Wat voeg je toe? Scienc
 
 Er moet een beter manier zijn om dit op te lossen.
 
+-> labels gebruiken in plaats van free text fields
+
+
+Als je de leeftijd van een persoon wilt weten sla dan nooit de leeftijd op in de databank. Sla de geboortedatum op en bereken de leeftijd. Dit komt omdat de leeftijd van een persoon veranderd.
+
 
 #codeblock(title: "Create final DB from .SQL file", lang: "sql")[
 
