@@ -173,7 +173,7 @@ B = Je gooit een number <= 3
 #oefening(title: "Cancer en roken")[
 
   #wrap-figure(
-    image("cancer-roker.png", width: 5cm),
+    image("cancer-roker.png", width: 7cm),
     caption: [cancer-roker],
     label: <fig:cancer-roker>,
   )[
@@ -199,5 +199,165 @@ B = Je gooit een number <= 3
   ]
 ]
 
+== Multiplicatie regel & Bayes regel
 
+=== Multiplicatie regel
+
+#frm(
+  "multiplicatie regel",
+  [
+    $ P(A|B) = frac(P(A inter B), P(B)) $
+
+    $ P(A inter B) = P(A|B) * P(B) = P(B|A) * P(A) $
+  ],
+  [
+    Met P(A) en P(B) zijn de onconditionele probabiliteiten.
+    En P(A|B) en P(B|A) zijn de conditionele probabiliteiten.
+  ],
+)
+
+#voorbeeld(title: "Engineer study")[
+
+
+  Een ingenieur bekijkt 2 machines random.
+  3 van de 10 machines zijn defect.
+  *Wat is de kans dat beide machines defect zijn?*
+
+  In de lijst hebben we 7 machines die niet defect zijn en 3 machines die defect zijn.
+
+  Alle sample points staan in de figuur met N: geen defect, K: defect.
+  #figure(
+    image("samplepointingenieuroefening.png", width: 10cm),
+    caption: [samplepointingenieuroefening],
+    label: <fig:samplepointingenieuroefening>,
+  )
+
+  We krijgen 90 sample points die even waarschijnlijk zijn.
+
+  We zien dat er 6 sample points zijn waar beide machines defect zijn.
+
+  P(A) de eerste machine is defect.
+
+  P(B) de tweede machine is defect.
+
+  $ P(A inter B) = 6/90 = markhl(1/15) $
+
+  We kunnen nu een boomdiagram maken #keyterm[In statistiek maak je altijd best boomdiagrammen als je met meerdere events werkt]
+
+  #figure(
+    image("boomdiagram.png", width: 10cm),
+    caption: [boomdiagram],
+    label: <fig:boomdiagram>,
+  )
+
+  Hou in rekening dat bij de tweede keuze dat je minder machines hebt om uit te kiezen dus een andere kans.
+
+  $P(A) = frac(3, 10)$\
+  $P(B|A) = frac(2, 9)$ De kans dat B gebeurt als A gebeurt is.
+
+  Wat is nu de kans dat A & B gebeuren (multiplicatie regel)
+  $markhl(P(A inter B) = P(B|A) dot P(A))$
+
+]
+
+
+#concept(title: "Onafhankelijke en afhankelijke gebeurtenissen")[
+  *Onafhankelijke gebeurtenissen*\
+  Twee gebeurtenissen A en B zijn onafhankelijk als de realisatie van de ene gebeurtenis geen invloed heeft op de probabiliteit van de andere gebeurtenis.
+  $P(A|B) = P(A)$ De kans dat A gebeurt als B gebeurt is moet gelijk zijn aan de kans van A
+  $P(B|A) = P(B)$ De kans dat B gebeurt als A gebeurt is moet gelijk zijn aan de kans van B
+
+  De twee gebeurtenissen hebben geen enkele invloed op elkaar in term van gebeurtenissen.
+  In de oefening heeft de status van de eerste machine geen invloed op de status van de tweede machine.
+
+  *Afhankelijke gebeurtenissen*\
+  Twee gebeurtenissen A en B zijn afhankelijk als de realisatie van de ene gebeurtenis wel invloed heeft op de probabiliteit van de andere gebeurtenis.
+
+  #markhl($P(A|B) != P(A)$) De kans dat A gebeurt als B gebeurt is moet ongelijk zijn aan de kans van A
+
+  #markhl($P(B|A) != P(B)$) De kans dat B gebeurt als A gebeurt is moet ongelijk zijn aan de kans van B
+
+  De twee gebeurtenissen hebben wel invloed op elkaar in term van gebeurtenissen.
+  In de oefening heeft de status van de eerste machine wel invloed op de status van de tweede machine.
+]
+
+=== Bayes regel
+
+#oefening(title: "Detectie systeem")[
+
+  #wrap-figure(
+    image("detection system.png", width: 7cm),
+    caption: [detection system],
+    label: <fig:detection-system>,
+  )[
+
+    Een onbemand monitoringsysteem maakt gebruik van hoogwaardige videoapparatuur en microprocessors om indringers te detecteren. Een prototypesysteem is ontwikkeld en wordt buiten gebruikt bij een munitiefabriek. Het systeem is ontworpen om indringers te detecteren met een probabiliteit van 0,90. De ontwerpers verwachten echter dat deze probabiliteit varieert met het weer. Het systeem registreert automatisch de weersomstandigheden telkens wanneer een indringer wordt gedetecteerd. Op basis van een reeks gecontroleerde tests waarbij een indringer werd losgelaten bij de fabriek onder verschillende weersomstandigheden, is de volgende informatie beschikbaar: Gegeven dat de indringer daadwerkelijk door het systeem werd gedetecteerd, was het weer 75% van de tijd helder, 20% bewolkt en 5% regenachtig. Wanneer het systeem de indringer niet detecteerde, was 60% van de dagen helder, 30% bewolkt en 10% regenachtig. Gebruik deze informatie om de probabiliteit te vinden van het detecteren van een indringer, gegeven regenachtig weer. (Stel dat er een indringer is losgelaten bij de fabriek.)
+
+    *Gegeven:*
+    - $P(D) = 0.90$, $P(D^c) = 0.10$
+    - $P("Rain"|D) = 0.05$
+    - $P("Rain"|D^c) = 0.10$
+
+    *Gevraagd:* $P(D|"Rain")$
+
+    *Oplossing:*
+    $ P(D inter "Rain") = P(D|"Rain") dot P("Rain") = P("Rain"|D) dot P(D) $
+
+    De kans dat het regent zijn alle kansen op regen met detectie en zonder detectie maal de kans dat de detectie gebeurt.
+
+    _dit is wel logisch want de kans dat iets singulier gebeurt en je hebt alleen de kans van de detecitie dan #markhl("moet je de kans van regen en detectie + de kans op regen en geen detectie doen")_
+
+    $ P("Rain") = P("Rain"|D) dot P(D) + P("Rain"|D^c) dot P(D^c) $
+
+
+    $ P("Rain") = 0.05 dot 0.90 + 0.10 dot 0.10 = 0.045 + 0.010 = 0.055 $
+
+
+    De kans dat er een detectie gebeurt als het regent is de kans dat er een detectie gebeurt en dat het regent maal de kans op detectie gedeelt door de kans dat het regent.
+
+
+
+
+
+    $
+      P(D|"Rain") = frac(P("Rain"|D) dot P(D), P("Rain")) = frac(0.05 dot 0.90, 0.055) = frac(0.045, 0.055) = frac(45, 55) = markhl(9/11) approx markhl(0.818)
+    $
+
+    #figure(
+      image("boomdiagram-detectiesysteem2.png", width: 15cm),
+      caption: [boomdiagram-detectiesysteem2],
+      label: <fig:boomdiagram-detectiesysteem2>,
+    )
+
+
+  ]
+]
+
+De Bayes regelt zegt dat de kans op een event A als B is gebeurt gelijk is aan de kans op A en B gedeelt door de kans op B.
+
+Met daarbij de kans dat A en B gebeuren is gelijk aan de kans dat A gebeurt maal de kans dat B gebeurt als A gebeurt.
+
+#frm(
+  "Bayes regel",
+  [
+    $ P(A|B) = frac(P(A inter B), P(B)) $
+
+    $ P(A inter B) = P(A|B) dot P(B) = P(B|A) dot P(A) $
+  ],
+  [
+    $P(A inter B)$ de kans dat A en B gebeuren.
+    $P(A|B)$ de kans dat A gebeurt als B gebeurt.
+    $P(B|A)$ de kans dat B gebeurt als A gebeurt.
+  ],
+)
+
+
+== Overzicht Week 2
+
+
+#figure(
+  image("overview.png", width: 16cm),
+  caption: [overview],
+  label: <fig:overview>,
+)
 

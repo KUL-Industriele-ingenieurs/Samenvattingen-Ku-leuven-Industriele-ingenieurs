@@ -31,4 +31,7 @@
 
 
 #muchpdf(read("SQL-cheat-sheet.pdf", encoding: none), width: 17cm, alt: "SQL Cheat Sheet")
-#include "Introductie-data.typ"
+#include "1.Introductie-data.typ"
+#include "2.Het data-model.typ"
+#include "3.SQL.typ"
+
