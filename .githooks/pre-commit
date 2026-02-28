@@ -23,8 +23,9 @@ echo "Checking PDFs..."
 # Use a temporary file to store NUL-delimited names
 # This avoids storing NUL bytes in bash variables and prevents git index locking
 # issues that happen when piping git diff directly into a git reset.
+# We use --diff-filter=d to ignore deleted files, allowing users to commit deletions of PDFs.
 tmp_file=$(mktemp)
-git diff --cached --name-only -z > "$tmp_file"
+git diff --cached --name-only --diff-filter=d -z > "$tmp_file"
 
 unstaged_any=0
 

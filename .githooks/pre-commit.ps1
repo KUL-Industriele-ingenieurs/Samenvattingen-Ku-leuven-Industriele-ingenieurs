@@ -20,7 +20,8 @@ if ($protectedBranches -contains $currentBranch) {
 Write-Host "Checking PDFs..." -ForegroundColor Cyan
 
 # Use NUL-separated names to handle filenames safely
-$stagedRaw = git diff --cached --name-only -z
+# We use --diff-filter=d to ignore deleted files, allowing users to commit deletions of PDFs.
+$stagedRaw = git diff --cached --name-only --diff-filter=d -z
 if ($stagedRaw) {
     $stagedPdfs = ($stagedRaw -split "`0") | Where-Object { $_ -match '\.pdf$' }
     $unstagedAny = $false
