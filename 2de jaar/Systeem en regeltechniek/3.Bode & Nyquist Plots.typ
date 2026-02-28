@@ -385,7 +385,7 @@ $ arrow.b.double $
 
 Een *Bode* en *Nyquist* plot geven ons meer inzicht in de transferfunctie geëvalueerd in $j omega$ of $H(j omega)$
 
-Bode plot toont de amplitude en fase van het complex deel. We werken hiervoor in een #markhl[20 $log_10$ schaal].
+Bode plot toont de amplitude en fase van het complex deel. We werken hiervoor in een $markhl("20" log_10 "schaal")$
 
 In de bode plot is de amplitude volledig #keyterm[Reël] en de fase is de hoek van het complex getal.
 
