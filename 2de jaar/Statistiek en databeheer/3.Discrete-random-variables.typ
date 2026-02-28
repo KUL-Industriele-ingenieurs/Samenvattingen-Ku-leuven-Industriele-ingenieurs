@@ -68,11 +68,18 @@ Je ziet dat de kans op 7 het grootst is. Dit komt omdat er meer combinaties zijn
 Wat is nu het gemiddelde van die kansverdeling? Wat is de spreiding? Hoe gaan we hier nu meer werken? Dit is al deels gezien in _intro tot statistiek_. De ideeën worden dus niet herhaal. Maar de formules zijn anders omdat we niet met normaal verdelingen werken.
 
 
-$mu = E(X) = sum(x p (x) = sum_i=1^n n c_1 (p x_i))$
+- #term[Gemiddelde]: \
+  $ mu = E(X) = sum x p (x) = sum_i=1^n n c_1 (p x_i) $ \
+  Je sommeert over alle mogelijke waarden van $x$ maal de kans dat $x$ _p(x)_ deze waarde heeft.
 
-$ sigma^2 = E[(x-mu)^2] = sum(x-mu)^2 p(x) = sum_i=1^n (x_i - mu)^2 p(x_i) = n p (1-p) $
+- #term[Variatie]: \
+  $ sigma^2 = E[(x-mu)^2] = sum(x-mu)^2 p(x) = sum_i=1^n (x_i-mu)^2 p(x_i) = n p (1-p) $ \
+  Je bekijkt alle verschillen tussen $x$ en $mu$ en vermenigvuldigt dit met de kans dat $x$ _p(x)_ deze waarde heeft.
 
-$ sigma = sqrt(sigma^2) = sqrt(n p (1-p)) $
+- #term[Standaardafwijking]: \
+  $ sigma = sqrt(sigma^2) = sqrt(n p (1-p)) $ \
+  Je neemt de wortel van de variatie om de standaardafwijking te vinden.
+
 
 
 Afhankelijk van de verdeling zijn er verschillende regels. De meest bekende zijn de #keyterm("Chebyshev's rule") en de #keyterm("empirische regel").
@@ -269,6 +276,270 @@ Dit speelt in op de distributie van de binominale verdeling:
   $ n! = n(n-1)(n-2)...(1) $
   $ 0! = 1 $
 ]
+
+== Gemiddelde, spreiding en verdeling van binomiale verdeling
+
+#theorie(title: "pmf (probability mass function) en cdf  (cumulative distribution function)")[
+
+  #wrap-figure(
+    image("binomiale-verdeling.png", width: 7cm),
+    caption: [binomiale verdeling],
+    label: <fig:binomiale-verdeling>,
+  )[
+
+    *pmf* zijn de bars. Ze zijn puur de kans van die specifiek random variable.
+
+    *cdf* is de integratie van de pmf. Alle vorige kansen worden opgeteld. Als alle vorige kansen opgeteld zijn is de cdf 1.
+  ]
+]
+
+Herhaling van vorige sectie:
+
+- #term[Gemiddelde]: \
+  $ mu = E(X) = sum x p (x) = sum_i=1^n n c_1 (p x_i) $ \
+  Je sommeert over alle mogelijke waarden van $x$ maal de kans dat $x$ _p(x)_ deze waarde heeft.
+
+- #term[Variatie]: \
+  $ sigma^2 = E[(x-mu)^2] $ =$ sum(x-mu)^2 p(x) = sum_i=1^n (x_i-mu)^2 p(x_i) = n p (1-p) $ \
+  Je bekijkt alle verschillen tussen $x$ en $mu$ en vermenigvuldigt dit met de kans dat $x$ _p(x)_ deze waarde heeft.
+
+- #term[Standaardafwijking]: \
+  $ sigma = sqrt(sigma^2) = sqrt(n p (1-p)) $ \
+  Je neemt de wortel van de variatie om de standaardafwijking te vinden.
+
+
+#voorbeeld(title: "4.13 enquête van 20 stemmen")[
+
+  *Probleem:*\
+  Er wordt een enquête gemaakt met 20 stemmen. stel dat 60% van alle mensen stemmen op een canidaat. Hoeveel van de 20 stemmen gaan op die canidaat gestemt hebben en wat is de binomiale verdeling?
+
+  *Gegeven:*\
+  $n = 20$ _aantal stemmen_\
+  $p = 0.6$ _kans dat een stem op die canidaat gaat_\
+  $mu = E(x) = n dot p = 20 * 0.6 = 12$
+
+  $sigma^2 = E[(x-mu)^2] = sum(x-mu)^2 p(x) = sum_i=1^n (x_i-mu)^2 p(x_i) = n p (1-p) = 20 * 0.6 * 0.4 = 4.8$
+  $sigma = sqrt(sigma^2) = sqrt(n p (1-p)) = sqrt(20 * 0.6 * 0.4) = sqrt(4.8) = 2.19$
+
+  *Binomial distribution with n = 20 and p = 0.6:*
+  #align(center)[
+    #cetz.canvas({
+      import cetz.draw: *
+      plot.plot(
+        size: (9, 5.5),
+        x-label: $n$,
+        y-label: [probability or cumulative],
+        x-tick-step: 5,
+        y-tick-step: 0.2,
+        x-min: -1,
+        x-max: 21,
+        y-min: 0,
+        y-max: 1.05,
+        {
+          plot.add-bar(
+            (
+              (0, 0.0000),
+              (1, 0.0000),
+              (2, 0.0000),
+              (3, 0.0000),
+              (4, 0.0003),
+              (5, 0.0013),
+              (6, 0.0049),
+              (7, 0.0146),
+              (8, 0.0355),
+              (9, 0.0710),
+              (10, 0.1171),
+              (11, 0.1597),
+              (12, 0.1797),
+              (13, 0.1659),
+              (14, 0.1244),
+              (15, 0.0746),
+              (16, 0.0350),
+              (17, 0.0123),
+              (18, 0.0031),
+              (19, 0.0005),
+              (20, 0.0000),
+            ),
+            style: (stroke: none, fill: schoolBlue),
+          )
+          plot.add(
+            (
+              (0, 0.0000),
+              (1, 0.0000),
+              (2, 0.0000),
+              (3, 0.0000),
+              (4, 0.0003),
+              (5, 0.0016),
+              (6, 0.0065),
+              (7, 0.0210),
+              (8, 0.0565),
+              (9, 0.1275),
+              (10, 0.2447),
+              (11, 0.4044),
+              (12, 0.5841),
+              (13, 0.7500),
+              (14, 0.8744),
+              (15, 0.9490),
+              (16, 0.9840),
+              (17, 0.9964),
+              (18, 0.9995),
+              (19, 1.0000),
+              (20, 1.0000),
+            ),
+            label: "cdf",
+            style: (stroke: (paint: schoolBlue, dash: "dashed", thickness: 1.5pt)),
+            mark: "o",
+            mark-style: (fill: schoolBlue, stroke: schoolBlue),
+            mark-size: 0.15,
+          )
+        },
+      )
+    })
+  ]
+
+  Wat is nu de kans dat minder dan 10 mensen stemmen op die canidaat?
+
+  Bekijk de cumulatieve verdeling:
+  $ P(X < 10) approx 0.2447 $
+
+]
+
+== Poisson verdeling
+Een Poisson verdeling gebruikt ook random variablen maar is anders dan de binomiale verdeling.
+
+Een paar voorbeelden:
+- Accidenten per maand op een druk kruispunt
+- De hoeveelheid zieken bomen in een bos per viekante kilomter
+
+
+een paar dingen die de Poisson verdeling categoriseren:
++ Experiment is een *Optellend* nummer van events
++ Events zijn onafhankelijk
++ De hoeveelheid events is onafhankelijk van de tijds of plaatseenheid (in een bos met zieken bomen moet je aannemen dat het constant is overal)
++ De gemiddelde wordt voorgesteld met $lambda$
+
+#frm(
+  "Poisson verdeling",
+  [
+    $p(x) = frac(lambda^x e^(-lambda), x!) (x = 0, 1, 2, ...) mu = lambda, sigma^2 = lambda$
+
+    Het gemiddelde van de Poisson verdeling is:
+    $mu = sum_(x=0)^infinity x p(x) arrow.r lambda$
+
+    De variatie van de Poisson verdeling is:
+    $sigma^2 = sum_(x=0)^infinity (x-mu)^2 p(x) arrow.r lambda$
+  ],
+  [
+    $p(x)$ is de kans dat $x$ events gebeuren.
+  ],
+)
+
+#examenbox("Je moet deze niet kunnen afleiden gewoon ter illustratie")
+
+#voorbeeld(title: "4.14 Walvissen spotten")[
+  *Gegeven*\
+  je kunt de populatie van walvissen benaderen door ze te spotten.
+
+  x = hoeveel spottingen er gedaan zijn.
+  Neem aan dat x ongeveer een poisson verdeling heeft met $lambda = 2.6$
+
+  _Het gemiddelde en de variatie zijn gelijk_\
+  $mu = lambda = 2.6$
+  $sigma^2 = lambda = 2.6$
+  $sigma = sqrt(lambda) = sqrt(2.6) = 1.6$
+
+
+
+  *Vraag*\
+
+
+
+  *Poisson distribution with $lambda = 2.6$:*
+  #align(center)[
+    #cetz.canvas({
+      import cetz.draw: *
+      plot.plot(
+        name: "ppt",
+        size: (9, 5.5),
+        x-label: [random variables],
+        y-label: [probability or cumulative],
+        x-tick-step: 2,
+        y-tick-step: 0.2,
+        x-min: -0.5,
+        x-max: 10.5,
+        y-min: 0,
+        y-max: 1.05,
+        {
+          plot.add-bar(
+            (
+              (0, 0.0743),
+              (1, 0.1931),
+              (2, 0.2510),
+              (3, 0.2176),
+              (4, 0.1414),
+              (5, 0.0735),
+              (6, 0.0319),
+              (7, 0.0118),
+              (8, 0.0038),
+              (9, 0.0011),
+              (10, 0.0003),
+            ),
+            bar-width: 0.8,
+            style: (stroke: none, fill: schoolBlue),
+          )
+          plot.add(
+            (
+              (0, 0.0743),
+              (1, 0.2674),
+              (2, 0.5184),
+              (3, 0.7360),
+              (4, 0.8774),
+              (5, 0.9510),
+              (6, 0.9828),
+              (7, 0.9947),
+              (8, 0.9985),
+              (9, 0.9996),
+              (10, 0.9999),
+            ),
+            style: (stroke: (paint: schoolBlue, dash: "dashed", thickness: 1.5pt)),
+            mark: "o",
+            mark-style: (fill: schoolBlue, stroke: schoolBlue),
+            mark-size: 0.15,
+            label: "cdf",
+          )
+        },
+      )
+    })
+  ]
+]
+
+== Snelle herhaling
+
+#examenbox[
+  Onderstaande tabel krijg je op het examen. Dit vormt een samenvatting van alles wat we tot nu toe gezien hebben rond discrete willekeurige variabelen.
+]
+
+#align(center)[
+  #table(
+    columns: (auto, auto, auto, auto),
+    align: (left, left, center, center),
+    stroke: none,
+    inset: 10pt,
+    table.hline(stroke: 1pt),
+    table.header([*Random Variable*], [*Probability Distribution*], [*Mean*], [*Variance*]),
+    table.hline(stroke: 0.5pt),
+    [_General Discrete:_],
+    [Table, formula, or graph for $p(x)$],
+    [$sum_("all " x) x dot p(x)$],
+    [$sum_("all " x) (x - mu)^2 dot p(x)$],
+    [_Binomial:_], [$p(x) = binom(n, x) p^x q^(n-x)$], [$n p$], [$n p q$],
+    [_Poisson:_], [$p(x) = (lambda^x e^(-lambda)) / x!$], [$lambda$], [$lambda$],
+    table.hline(stroke: 1pt),
+  )
+]
+
+
+
 
 
 
