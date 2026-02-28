@@ -43,8 +43,8 @@ Je kunt code blokken toevoegen die eruit zien als VS Code:
 
 #codeblock(lang: "python", title: "berekening.py")[
   def hallo_wereld():
-      print("Hallo Ingenieurs!")
-      
+  print("Hallo Ingenieurs!")
+
   x = 5 + 10
   print(f"Resultaat: {x}")
 ]
