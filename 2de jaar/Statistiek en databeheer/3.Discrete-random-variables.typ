@@ -55,7 +55,7 @@ Een kansverdeling is hoe de kansen verdeeld worden afhankelijk van meerdere even
 De kansverdeling van twee dobbelstenen kopen ziet er als volgt uit:
 
 #figure(
-  image("kansverdeling-2dobbelstenen.png", width: 6cm),
+  image("kansverdeling-2dobbelstenen.png", width: 8cm),
   caption: [kansverdeling-2dobbelstenen],
   label: <fig:kansverdeling-2dobbelstenen>,
 )
@@ -125,32 +125,31 @@ Dit toont dat afhankelijk van hoe ver je gaat van je gemiddelde, de kans dat je 
       [$p(x)$], [0.002], [0.029], [0.132], [0.309], [0.360], [0.168],
     )
   ]
-
-  *$mu = E(x)$?*
-
-  $ mu = E(x) = sum x p(x) $
-  $
-    mu & = 0(0.002) + 1(0.029) + 2(0.132) \
-       & + 3(0.309) + 4(0.360) + 5(0.168) \
-       & = 3.50
-  $
-
-  #figure(
-    image("histrogram-huidskankeroefening.png", width: 6cm),
+  #wrap-figure(
+    image("histrogram-huidskankeroefening.png", width: 5cm),
     caption: [histrogram-huidskankeroefening],
     label: <fig:histrogram-huidskankeroefening>,
-  )
+  )[
 
-  *$sigma$?*
+    * Wat is het gemiddelde $mu = E(x)$?*
 
-  $
-    sigma^2 & = E[(x - mu)^2] = sum (x - mu)^2 p(x) \
-            & = (0-3.5)^2(0.002) + (1-3.5)^2(0.029) + (2-3.5)^2(0.132) \
-            & + (3-3.5)^2(0.309) + (4-3.5)^2(0.360) + (5-3.5)^2(0.168) \
-            & = 1.05
-  $
+    $ mu = E(x) = sum x p(x) $
+    $
+      mu & = 0(0.002) + 1(0.029) + 2(0.132) \
+         & + 3(0.309) + 4(0.360) + 5(0.168) \
+         & = 3.50
+    $
 
-  $ sigma = sqrt(1.05) approx 1.02 $
+    *Wat is de standaardafwijking $sigma$?*
+
+    $
+      sigma^2 = E[(x - mu)^2] = sum (x - mu)^2 p(x) \
+      + (3-3.5)^2(0.309) + (4-3.5)^2(0.360) + \ (5-3.5)^2(0.168) \
+      = 1.05
+    $
+
+    $ sigma = sqrt(1.05) approx 1.02 $
+  ]
 
   *Gebruik Chebyshev's rule of empirical rule*
 
@@ -159,7 +158,7 @@ Dit toont dat afhankelijk van hoe ver je gaat van je gemiddelde, de kans dat je 
   - Minstens 75% (Chebyshev)
   - Ongeveer 95% (Empirical rule)
 
-  _In de video gebruiken ze de chebyshev's regel maar je kunt ook zeggen dat het een gelijke verdeling is en dus de empirische regel gebruiken._
+  _In de video gebruiken ze de chebyshev's regel maar je kunt ook zeggen dat het een gelijke verdeling is en dus kun je de empirische regel gebruiken._
 
   $ p(2) + p(3) + p(4) + p(5) = 0.96 $
 
@@ -319,6 +318,7 @@ Herhaling van vorige sectie:
   $mu = E(x) = n dot p = 20 * 0.6 = 12$
 
   $sigma^2 = E[(x-mu)^2] = sum(x-mu)^2 p(x) = sum_i=1^n (x_i-mu)^2 p(x_i) = n p (1-p) = 20 * 0.6 * 0.4 = 4.8$
+
   $sigma = sqrt(sigma^2) = sqrt(n p (1-p)) = sqrt(20 * 0.6 * 0.4) = sqrt(4.8) = 2.19$
 
   *Binomial distribution with n = 20 and p = 0.6:*
@@ -421,7 +421,7 @@ een paar dingen die de Poisson verdeling categoriseren:
 #frm(
   "Poisson verdeling",
   [
-    $p(x) = frac(lambda^x e^(-lambda), x!) (x = 0, 1, 2, ...) mu = lambda, sigma^2 = lambda$
+    $p(x) = frac(lambda^x e^(-lambda), x!) | (x = 0, 1, 2, ...) | mu = lambda | sigma^2 = lambda$
 
     Het gemiddelde van de Poisson verdeling is:
     $mu = sum_(x=0)^infinity x p(x) arrow.r lambda$
@@ -433,6 +433,8 @@ een paar dingen die de Poisson verdeling categoriseren:
     $p(x)$ is de kans dat $x$ events gebeuren.
   ],
 )
+
+Het gemiddelde en de variatie zijn gelijk.
 
 #examenbox("Je moet deze niet kunnen afleiden gewoon ter illustratie")
 
