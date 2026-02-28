@@ -34,16 +34,20 @@ if ($stagedRaw) {
         
         if ((Test-Path $texFile) -or (Test-Path $typFile)) {
             $matchingFile = if (Test-Path $texFile) { ".tex" } else { ".typ" }
-            Write-Host "Unstaging generated PDF: $pdfFile (matches $matchingFile file)" -ForegroundColor Yellow
+            Write-Host "❌ BLOCKED: Unstaging generated PDF '$pdfFile'. It appears to be generated from a matching '$matchingFile'." -ForegroundColor Yellow
             git reset HEAD -- $pdfFile 2>&1 | Out-Null
             $unstagedAny = $true
-        } else {
-            Write-Host "Keeping reference PDF: $pdfFile" -ForegroundColor Green
+        }
+        else {
+            Write-Host "✅ ALLOWED: Keeping reference PDF '$pdfFile' (no matching .tex or .typ source file found)." -ForegroundColor Green
         }
     }
 
     if ($unstagedAny) {
-        Write-Host "🛑 ERROR: Generated PDFs were staged and have been unstaged. Please review the unstaged PDFs and commit again without them." -ForegroundColor Red
+        Write-Host ""
+        Write-Host "🛑 ERROR: One or more generated PDFs were staged for commit!" -ForegroundColor Red
+        Write-Host "        These files have been automatically UNSTAGED to protect the repository." -ForegroundColor Red
+        Write-Host "        Please review your staged changes and run 'git commit' again." -ForegroundColor Red
         exit 1
     }
 }

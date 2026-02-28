@@ -37,15 +37,15 @@ while IFS= read -r -d '' pdf_file || [ -n "$pdf_file" ]; do
             tex_file="${pdf_file%.*}.tex"
             typ_file="${pdf_file%.*}.typ"
             if [ -f "$tex_file" ]; then
-                echo "Unstaging generated PDF: $pdf_file (matches .tex file)"
+                echo "❌ BLOCKED: Unstaging generated PDF '$pdf_file'. It appears to be generated from a matching '$tex_file'."
                 git reset HEAD -q -- "$pdf_file"
                 unstaged_any=1
             elif [ -f "$typ_file" ]; then
-                echo "Unstaging generated PDF: $pdf_file (matches .typ file)"
+                echo "❌ BLOCKED: Unstaging generated PDF '$pdf_file'. It appears to be generated from a matching '$typ_file'."
                 git reset HEAD -q -- "$pdf_file"
                 unstaged_any=1
             else
-                echo "Keeping reference PDF: $pdf_file"
+                echo "✅ ALLOWED: Keeping reference PDF '$pdf_file' (no matching .tex or .typ source file found)."
             fi
             ;;
     esac
@@ -54,7 +54,10 @@ done < "$tmp_file"
 rm -f "$tmp_file"
 
 if [ "$unstaged_any" -eq 1 ]; then
-    echo "🛑 ERROR: Generated PDFs were staged and have been unstaged. Please review the unstaged PDFs and commit again without them."
+    echo ""
+    echo "🛑 ERROR: One or more generated PDFs were staged for commit!"
+    echo "        These files have been automatically UNSTAGED to protect the repository."
+    echo "        Please review your staged changes and run 'git commit' again."
     exit 1
 fi
 
