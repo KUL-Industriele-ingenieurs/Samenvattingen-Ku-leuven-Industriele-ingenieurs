@@ -26,11 +26,13 @@ Dit hoofdstuk bevat enkele voorbeelden van berekeningen en code.
 == Code
 
 #codeblock(lang: "python", title: "berekening.py")[
+  ```python
   def kinetische_energie(m, v):
-      return 0.5 * m * v**2
+    return 0.5 * m * v**2
 
   E = kinetische_energie(2, 10)
   print(f"Energie: {E} J")
+  ```
 ]
 
 #examenbox[Vergeet niet de eenheden te vermelden bij elke berekening!]
