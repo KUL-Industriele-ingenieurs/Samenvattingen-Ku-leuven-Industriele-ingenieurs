@@ -1,5 +1,8 @@
 #import "../../school-template.typ": *
 
+= Hoofdstuk 2: Probabiliteit <ch:probabiliteit>
+
+
 #concept(title: "Experiment")[
   Een experiment is een process die één uitkomst heeft die niet verwacht kan worden.
 
@@ -69,21 +72,23 @@ _ Een munt heeft S = {kop, munt} als sample space._
   caption: [union and intersection],
   label: <fig:union-and-intersection>,
 )[Een #keyterm("union") is een combinatie van twee of meer events.
-  $A union B$
+  $underbrace(A union B, "de combinatie van A en B")$
 
 
   Hieronder een figuur van een union en een intersection.
   weeggegeven in een *venn diagram*.
 
   Een #keyterm("intersection") is de overlap van twee of meer events.
-  $A inter B$
+  $underbrace(A inter B, "de overlap van A en B")$
 
 ]
+
+
 
 == Complement
 
 Het complement zijn alle sample points die niet in de event zitten.
-$ A^c = S - A $
+$ underbrace(A^c, "complement A") = S - A $
 
 We weten dan met de vorige regel dat:
 $ P(A) + P(A^c) = 1 $
@@ -133,12 +138,6 @@ $P(A union B) = P(A) + P(B) - P(A inter B) = P(A) + P(B) - 0 = P(A) + P(B)$
   $$P(A) = 2/4 + 1/4 - 0 = markhl(3/4)$$
 
 ]
-
-#figure(
-  image("samenvatting kansrekenen.png", width: 10cm),
-  caption: [samenvatting kansrekenen],
-  label: <fig:samenvatting-kansrekenen>,
-)
 
 == Conditionele probabiliteit
 Dit is een belangrijk deel van de kansrekening. Het gaat over de probabiliteit van een gebeurtenis gegeven dat een andere gebeurtenis al heeft plaatsgevonden.
@@ -260,6 +259,11 @@ B = Je gooit een number <= 3
 
 ]
 
+#examenbox[Een van de belangrijkste dingen van dit deel om het goed te snappen is om altijd een boomdiagram te maken als je met meerdere events werkt]
+
+_Vreemd dat hij is de les niet meer op inging_
+
+Boomdiagrammen geven je een veel beter beeld op hoe event A en event B in relatie staan tot elkaar.
 
 #concept(title: "Onafhankelijke en afhankelijke gebeurtenissen")[
   *Onafhankelijke gebeurtenissen*\
@@ -291,21 +295,23 @@ B = Je gooit een number <= 3
     label: <fig:detection-system>,
   )[
 
-    Een onbemand monitoringsysteem maakt gebruik van hoogwaardige videoapparatuur en microprocessors om indringers te detecteren. Een prototypesysteem is ontwikkeld en wordt buiten gebruikt bij een munitiefabriek. Het systeem is ontworpen om indringers te detecteren met een probabiliteit van 0,90. De ontwerpers verwachten echter dat deze probabiliteit varieert met het weer. Het systeem registreert automatisch de weersomstandigheden telkens wanneer een indringer wordt gedetecteerd. Op basis van een reeks gecontroleerde tests waarbij een indringer werd losgelaten bij de fabriek onder verschillende weersomstandigheden, is de volgende informatie beschikbaar: Gegeven dat de indringer daadwerkelijk door het systeem werd gedetecteerd, was het weer 75% van de tijd helder, 20% bewolkt en 5% regenachtig. Wanneer het systeem de indringer niet detecteerde, was 60% van de dagen helder, 30% bewolkt en 10% regenachtig. Gebruik deze informatie om de probabiliteit te vinden van het detecteren van een indringer, gegeven regenachtig weer. (Stel dat er een indringer is losgelaten bij de fabriek.)
+    Een monitoringsysteem detecteert indringers met $P(D) = 0,90$. Bij detectie is het in 5% van de gevallen regenachtig, bij geen detectie in 10%. Bereken de kans op detectie bij regenachtig weer.
 
     *Gegeven:*
     - $P(D) = 0.90$, $P(D^c) = 0.10$
     - $P("Rain"|D) = 0.05$
     - $P("Rain"|D^c) = 0.10$
 
-    *Gevraagd:* $P(D|"Rain")$
+    *Gevraagd:* $P(D|"Rain")$ de kans dat het systeem een indringer detecteert gegeven dat het regent.
 
-    *Oplossing:*
-    $ P(D inter "Rain") = P(D|"Rain") dot P("Rain") = P("Rain"|D) dot P(D) $
+    *Oplossing:* (regel van Bayes toepassen)
+
 
     De kans dat het regent zijn alle kansen op regen met detectie en zonder detectie maal de kans dat de detectie gebeurt.
 
-    _dit is wel logisch want de kans dat iets singulier gebeurt en je hebt alleen de kans van de detecitie dan #markhl("moet je de kans van regen en detectie + de kans op regen en geen detectie doen")_
+    Dit is wel logisch want de kans dat iets singulier gebeurt en je hebt alleen de kans van regen met detectie en de kans op regen zonder detectie dan #underline("moet je de kans van regen met detectie + de kans op regen zonder detectie doen")
+
+    $ arrow.b.double $
 
     $ P("Rain") = P("Rain"|D) dot P(D) + P("Rain"|D^c) dot P(D^c) $
 
@@ -313,15 +319,21 @@ B = Je gooit een number <= 3
     $ P("Rain") = 0.05 dot 0.90 + 0.10 dot 0.10 = 0.045 + 0.010 = 0.055 $
 
 
-    De kans dat er een detectie gebeurt als het regent is de kans dat er een detectie gebeurt en dat het regent maal de kans op detectie gedeelt door de kans dat het regent.
+    De kans dat er een detectie gebeurt als het aan het regenen is, is de kans dat het regent als er een detectie is maal de kans dat er een detectie is gedeelt door de kans dat het regent. _Regel van Bayes_
 
+    $ arrow.b.double $
 
-
+    $ P(D inter "Rain") = P(D|"Rain") dot P("Rain") = P("Rain"|D) dot P(D) $
 
 
     $
       P(D|"Rain") = frac(P("Rain"|D) dot P(D), P("Rain")) = frac(0.05 dot 0.90, 0.055) = frac(0.045, 0.055) = frac(45, 55) = markhl(9/11) approx markhl(0.818)
     $
+
+    *Combinatie van de twee formules (volledige regel van Bayes)*
+    $ P(D|"Rain") = frac(P("Rain"|D) dot P(D), P("Rain"|D) dot P(D) + P("Rain"|D^c) dot P(D^c)) $
+
+    Niet verward geraken met de formules. Teken altijd eerst een boomdiagram!
 
     #figure(
       image("boomdiagram-detectiesysteem2.png", width: 15cm),
@@ -338,7 +350,7 @@ De Bayes regelt zegt dat de kans op een event A als B is gebeurt gelijk is aan d
 Met daarbij de kans dat A en B gebeuren is gelijk aan de kans dat A gebeurt maal de kans dat B gebeurt als A gebeurt.
 
 #frm(
-  "Bayes regel",
+  "Regel van Bayes",
   [
     $ P(A|B) = frac(P(A inter B), P(B)) $
 
