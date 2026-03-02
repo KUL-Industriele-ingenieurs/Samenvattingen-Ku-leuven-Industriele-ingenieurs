@@ -121,7 +121,7 @@ $L_c$ is de karakteristieke lengte. Deze is afhankelijk van de geometrie. Bij ee
 
 Het getal van Nusselt vertegenwoordigt de toename van warmteoverdracht door een vloeistoflaag als gevolg van convectie ten opzichte van geleiding (conductie) over diezelfde laag.
 
-#markhl[Hoe groter het getal van Nusselt, hoe effectiever de convectie. Een Nusselt-getal van $Nu = 1$ voor een vloeistoflaag betekent dat de warmteoverdracht uitsluitend door conductie plaatsvindt.]
+Hoe groter het getal van Nusselt, hoe effectiever de convectie. Een Nusselt-getal van $ Nu = 1 $  voor een vloeistoflaag betekent dat de warmteoverdracht uitsluitend door conductie plaatsvindt.
 
 #figure(
   image("nusselnumber heattransfer.png", width: 6cm),
@@ -190,7 +190,7 @@ Het getal van Nusselt vertegenwoordigt de toename van warmteoverdracht door een 
 
 
 
-#markhl[Bij enorm hoge snelheden gaat lucht ook compressable worden maar we gaan niet in de regio dus we gaan aanmemen dat lucht incompressable is]
+#underline[Enorm hoge snelheden gaat lucht ook compressable worden maar we gaan niet in de regio dus we gaan aanmemen dat lucht incompressable is]
 
 === Laminar vs Turbulent flow <sec:laminar-turbulent-flow>
 
