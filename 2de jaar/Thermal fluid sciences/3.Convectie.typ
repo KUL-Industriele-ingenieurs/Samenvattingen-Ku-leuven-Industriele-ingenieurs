@@ -278,7 +278,7 @@ Viscociteit is ook een groter factor. Grotere viscositeit $mu$ b$arrow.r$ groter
 
   #keyterm[De Wall shear stress] is de shear stress op de oppervlak van de vloeistof.
 
-  $tau_w = mu frac(d u, d y) |_{y=0} [N/m^2]$
+  $ tau_w = mu frac(d u, d y) |_{y=0} [N/m^2] $
 
   Deze formule is geldig voor #keyterm[Newtoniaanse vloeistoffen].
 ]
