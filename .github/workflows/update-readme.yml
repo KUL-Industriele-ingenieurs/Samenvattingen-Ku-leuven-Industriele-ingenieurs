@@ -42,7 +42,9 @@ jobs:
               echo "$COURSES" | while read -r COURSE_DIR; do
                 if [ -n "$COURSE_DIR" ]; then
                   COURSE_NAME=$(basename "$COURSE_DIR")
-                  echo "- $COURSE_NAME" >> "$TEMP_FILE"
+                  COURSE_PATH="$YEAR_NAME/$COURSE_NAME"
+                  COURSE_URL="${COURSE_PATH// /%20}"
+                  echo "- [$COURSE_NAME]($COURSE_URL)" >> "$TEMP_FILE"
                 fi
               done
             fi
