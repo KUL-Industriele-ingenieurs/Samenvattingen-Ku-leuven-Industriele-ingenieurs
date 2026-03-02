@@ -61,7 +61,7 @@ Heb je vragen of wil je gewoon even hallo zeggen? Dit zijn de mensen die dit pro
 - **Ruben Ryckaert** (@eggmansmile) - Project initiator
 
 **Zelf iets toegevoegd?** Zet je eigen naam hieronder in je volgende Pull Request! Wees trots op je werk. 😎
-
+- **Louic Cooreman** (@louiccooreman) - Contributor (voor 3de-jaars vakken)
 - ... (jouw naam hier?)
 
 ---
