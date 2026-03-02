@@ -1,209 +1,64 @@
-# GitHub Issues Integration in VS Code - Implementation Guide
+# Issues toevoegen via de VS Code Extensie
 
-Based on the official VS Code GitHub Issues integration, here's what you need to set up:
+We maken veel gebruik van GitHub issues om taken of theorie-fouten en TODO's bij te houden. Je hoeft daarvoor niet telkens naar de website te gaan. Dit kan je gewoon rechtstreeks instellen vanuit je tekstverwerker, via de officiële VS Code GitHub Issues integratie.
 
-## What You Get
+## Wat krijg je hierdoor?
 
-### 1. **Issue Hovers** - See issue details on hover
-- Hover over `#1234` to see issue title, status, assignee
-- Works with full URLs, issue numbers, and `owner/repo#1234` format
-- Also shows user info when hovering over `@username`
+### 1. Issue pop-ups
 
-### 2. **Issue Completions** - Auto-complete issues
-- Type `#` and get suggestions for issues
-- Works in:
-  - Commit messages (configurable format)
-  - Markdown files (as links)
-  - Source code (as `#1234`)
+- Als iemand `#1234` typt, kun je eroverheen zweven met je muis om direct de fout of taak te bekijken, net als wie dit moet oplossen.
+- Dit werkt ook met accounts zoals `@ruben`.
 
-### 3. **Create Issues from Code**
-- **From TODO comments**: Create issue directly from `// @issue:` comments
-- **From selection**: Select code → Create issue with permalink back to code
-- **From clipboard**: Copy terminal error → Create issue
+### 2. Issues auto-aanvullen
 
-### 4. **Work on Issues** - Complete workflow
-- View issues in sidebar
-- Start work on issue (creates branch automatically)
-- Make commits
-- Create PR
+- Zodra je ergens `#` intypt, krijg je een lijst van alle huidige openstaande taken of problemen voorgesteld.
+- Handig in commits, markdown links, of zelfs gewoon in code.
 
-## Setup Steps
+### 3. Issues aanmaken direct vanuit de code
 
-### 1. Install Extension
+- **Via je TODO's**: Zie je ergens `// @issue:` of een `% TODO:`, dan kan je daar rechtstreeks op klikken om een taak in GitHub te pushen.
+- **Selecteren**: Markeer stukken tekst, en maak er een probleem of taak van inclusief een klikbare link terug naar die precieze bestandslijn.
+- **Plakken**: Foutmelding vanuit je terminal? Kopieer het en maak direct je issue aan.
+
+### 4. Overzicht
+
+- Al je taken of de issues die aan jou zijn toegewezen staan mooi overzichtelijk in de VS code zijbalk. De plugin kan er zelfs meteen een nieuwe branch van aftakken om er aan te beginnen werken!
+
+## Hoe stel je dit in?
+
+### 1. Download de Extensie
+
 ```
-Extension ID: GitHub.vscode-pull-request-github
-Name: GitHub Pull Requests and Issues
+Zoek in VS Code naar: GitHub Pull Requests and Issues
+(Extension ID: GitHub.vscode-pull-request-github)
 ```
 
-### 2. Configure Settings
+### 2. Meld je aan
 
-Add to `.vscode/settings.json`:
+1. Open je snelle commando lijst (`Ctrl+Shift+P`)
+2. Typ "GitHub: Sign in"
+3. Laat GitHub weten wie je bent.
 
-```json
-{
-  // Define which issues to show/complete
-  "githubIssues.queries": [
-    {
-      "label": "My Issues",
-      "query": "is:open is:issue assignee:@me repo:${owner}/${repository}"
-    },
-    {
-      "label": "Created Issues",
-      "query": "is:open is:issue author:@me repo:${owner}/${repository}"
-    },
-    {
-      "label": "All Open Issues",
-      "query": "is:open is:issue repo:${owner}/${repository}"
-    },
-    {
-      "label": "@issue markers",
-      "query": "is:open is:issue label:from-code repo:${owner}/${repository}"
-    }
-  ],
+## Hoe gebruik je dit?
 
-  // Trigger for creating issues from comments
-  "githubIssues.createIssueTriggers": [
-    "@issue",
-    "TODO",
-    "FIXME"
-  ],
+### Maak direct een issue vanuit een opmerking in de code
 
-  // Branch settings when working on issues
-  "githubIssues.useBranchForIssues": true,
-  "githubIssues.issueBranchTitle": "issue${issueNumber}",
-  
-  // How to format issue completions in SCM commit box
-  "githubIssues.issueCompletionFormatScm": "#${issueNumber}",
-  
-  // Working issue format
-  "githubIssues.workingIssueFormatScm": "#${issueNumber}"
-}
-```
+1. Ga naar je .tex of .typ document en typ:
 
-### 3. Authenticate
-1. Open Command Palette (`Ctrl+Shift+P`)
-2. Type "GitHub: Sign in"
-3. Authenticate with GitHub
-
-## How to Use
-
-### Create Issue from `@issue` Comment
-
-1. In your .tex file, write:
 ```latex
-% @issue: Need to add more examples for thermodynamics
-% This section needs practical examples with calculations
+% @issue: Meer formules over thermodynamica toevoegen
+% Dit stukje moet nog berekeningen krijgen
 ```
 
-2. Click the lightbulb 💡 that appears, or press `Ctrl+.`
-3. Select "Create issue from comment"
-4. VS Code creates the GitHub issue with the description
-
-Note: The system recognises other common markers too — `TODO` and `FIXME` (case-insensitive) — so adding `% TODO:` or `% FIXME:` will also be picked up by the automated workflows and the lightbulb action where supported.
-
-**Automatic permalinks and labels**
-
-We have two GitHub Actions workflows that keep code permalinks in issues up-to-date and add a `from-code` label when a marker is found:
-
-- `Add code permalinks to issues` – runs when an issue is **opened**, **edited**, or **reopened**. It reads the issue body for a code block with a marker (e.g. `% @issue:`) and an `In file <path>` line, resolves the file and line number, and posts a comment containing a clickable GitHub blob permalink (file + line) and the `from-code` label.
-
-- `Process issues for code permalinks` – runs daily (cron) and on **pull request** events. It scans all open issues and adds permalinks where they are missing, so you don't need to rely solely on creating/editing the issue to trigger it.
-
-How the workflows locate file and line:
-- If the issue body includes an `In file <path>` line, the workflow will try to resolve that path in the repo and find the marker line number.
-- If no explicit path is present, the workflow searches `.tex` files for the marker text (supports `@issue`, `@todo`, `TODO`, and `FIXME`, case-insensitive) and uses the first matching line it finds.
-
-If a match is found the workflow posts a comment like:
-
-  `🔗 Code permalink: https://github.com/<owner>/<repo>/blob/<branch>/path/to/file.tex#L42`
-
-If it cannot locate the file or a marker line the workflow leaves a helpful comment instructing the author to commit the file and/or include the file path or the marker line in the issue body.
-
-How to trigger or test the workflows
-- Edit the issue body (add the `% @issue:` line or `In file <path>`), then save — the issue-based workflow will run on edit.
-- Open a pull request touching the relevant files — `Process issues for code permalinks` runs on PR activity and may add missing permalinks.
-- Wait for the daily scheduled run (runs once per day) or manually run the workflow from the Actions tab (use `workflow_dispatch` and pass an `issue_body` payload for quick testing).
-
-Logs & artifacts
-- When the scheduled/PR workflow runs it writes a per-run markdown summary into `permalink-logs/permalink-log-<timestamp>.md` and uploads it as a workflow artifact named **permalink-log**.
-- The workflow also posts a summary comment in or creates a persistent repository issue titled **permalink-log** containing a short table of updated issues.
-
-Notes:
-- To enable automatic repository event handling (issues/pull_request) for everyone, merge the workflow files into the repository default branch (MAIN). Workflows on feature branches do not receive external webhook-events for security reasons.
-- The workflows only add permalinks and **do not** modify issue text; they add a comment and a `from-code` label to help discoverability.
-
-**Tip:** If the initial issue body does not include enough context, editing the issue to add the marker or the file path will let the workflows find and add the permalink automatically.
-
-### View and Work on Issues
-
-1. Open **Source Control** view (`Ctrl+Shift+G`)
-2. Look for **GITHUB** section at the bottom
-3. See your configured issue queries
-4. Right-click an issue → "Start Working on Issue"
-   - Creates a branch automatically
-   - You can commit and create PR later
-
-### Use Issue Completions
-
-- In commit message: Type `#` → select issue
-- In Markdown: Type `#` → creates link `[#123](url)`
-- In code: Type `#123` or `Microsoft/vscode#123`
-
-### Create Issue from Selection
-
-1. Select code in editor
-2. Command Palette: "GitHub Issues: Create Issue from Selection"
-3. Issue is created with permalink back to that code
-
-### Copy GitHub Permalink
-
-1. Select code
-2. Command Palette: "GitHub Issues: Copy GitHub Permalink"
-3. Paste in issue/PR/chat
-
-## Your Current Workflow
-
-With this setup, your workflow becomes:
-
-1. **While coding**, add `% @issue:` comments for TODOs
-2. **Later**, use lightbulb to create GitHub issues
-3. **View issues** in Source Control → GitHub section
-4. **Pick an issue** to work on → auto-creates branch
-5. **Reference issues** in commits using `#` completions
-6. **Hover over** issue numbers to see details without leaving editor
-
-## When You Complete an Issue
-
-When you finish working on an issue, you have two options:
-
-### Option 1: Remove the @issue comment (Recommended)
-```latex
-% @issue: Add more examples for thermodynamics  ← DELETE THIS LINE
-% This section needs practical examples
-
-\section{Thermodynamics}
-% Your completed work here
+```typ
+// @issue: Meer formules over thermodynamica toevoegen
+// Dit stukje moet nog berekeningen krijgen
 ```
 
-### Option 2: Mark as done
-```latex
-% Done: Added examples for thermodynamics (see issue #123)
-```
+2. Je krijgt dan een klein 'lampje' te zien boven de tekst, of druk even op `Ctrl+.`
+3. Kies de optie "Create issue from comment".
+4. VS Code stuurt dit onmiddellijk op naar de repo repo op GitHub zonder dat jij de site hoeft te bezoeken.
 
-### Close the GitHub Issue
-In your commit message, reference the issue to auto-close it:
-```
-git commit -m "Add thermodynamics examples
+## Issue oplossen
 
-Fixes #123"
-```
-
-Or use these keywords in your commit:
-- `Fixes #123` or `Closes #123` - Auto-closes the issue
-- `Refs #123` - Just references, doesn't close
-
-## What About the Scripts?
-
-We used to have Python scripts for batch operations, but we have moved to a fully native workflow using the VS Code extension. This is easier to maintain and works directly in your editor without extra dependencies.
-
-Use the native VS Code integration as described above - it's much better!
+Je kunt op de pull-request extensie issues bekijken en dan oplossen. Als je op oplossen klikt dan ga je in een aparte branch en kun je daar de issue oplossen. Als je klaar bent dan kun je de branch mergen met de main branch.
