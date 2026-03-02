@@ -5,6 +5,7 @@
 \usepackage[margin=2.5cm]{geometry}
 \usepackage{amsmath}
 \usepackage{graphicx}
+\usepackage{float}
 \usepackage{booktabs}
 \usepackage{hyperref}
 \usepackage{enumitem}
@@ -129,6 +130,7 @@ In de numerieke analyse zijn er verschillende soorten fouten die kunnen optreden
     \end{equation}
     waarbij $\mathcal{L} \not= K$, $q \not= \tilde{q}$, en $F \not= \tilde{F}$.
     Deze fout neemt natuurlijk af als je meer knopen toevoegt (mesh verfijnen) , kost natuurlijk meer tijd.
+    \newpage
     \item \textbf{Numerieke fouten:} Nemen toe met aantal knopen, door afrondingsfouten en truncatiefouten in de berekeningen. Vaak verwaarloosbaar.
     \item \textbf{(Software fouten):} Als software crashed , niet vaak
 \end{itemize}
@@ -166,4 +168,123 @@ Waarom discretiseren? Zie de het linkse gedeelte van de onderstaande figuur, in 
 Elke knoop bevat een aantal vrijheidsgraden, onbekende variabelen die we willen berekenen. bvb $\tilde{u_x}$ en $\tilde{u_y}$ zijn de verplaatsingen in x- en y-richting, dit zijn dus 2 vrijheidsgraden per knoop (in toch een 2D membraam). In 3D heb je er dan 3 per knoop. Voor elke component van de knoop is er dan ook een krachtvector component, dus $\tilde{F_x}$ en $\tilde{F_y}$.
 \end{conceptbox}
 Het totaal aantal vergelijkingen (\textbf{ndof}) is gelijk aan het aantal knopen vermenigvuldigd met het aantal vrijheidsgraden per knoop.
+\newline
+Per definitie is die matrix $[K]$ dan ook een \textbf{vierkante matrix} van grootte $ndof \times ndof$. En dus eigelijk is de \textbf{CPU-tijd} die nodig is om deze matrix op te lossen, dus $[K]^{-1}$ te berekenen, afhankelijk van het aantal vrijheidsgraden, dus $ndof$.
+\begin{equation}
+\text{CPU-time} \sim (ndof)^3
+\end{equation}
+Je wilt dus zo weinig mogelijk knopen en vrijheidsgraden, maar belangrijk is dat de discretisatiefout ook zo klein mogelijk is, dus je wilt een goede balans tussen nauwkeurigheid en rekentijd.
+\newpage
+\subsection{Domein discretisatie}
+Dit concept is eigelijk al aan bod gehaald, dit is het proces van het opdelen van een continu domein in een eindig aantal elementen en knopen. De keuze van de elementvorm (bvb driehoek, vierkant, tetraëder) en de dichtheid van de mesh (hoe fijn of grof) heeft een grote invloed op de nauwkeurigheid van de simulatie en de rekentijd.
+\newline
+Eigenschappen hiervan zijn:
+\begin{itemize}
+    \item \textbf{Elementtype:}
+    \begin{itemize}
+        \item \textbf{1D}: lijnelementen (bvb. balken)
+        \newline
+        In de 1D structuur zijn er geen dwarsdoorsneden, de spanningen moeten dus gekent zijn. (in het echt heeft de balk natuurlijk wel een dwarsdoorsnede, maar in de 1D benadering negeer je deze)
+        \item \textbf{2D}: Membranen, platen, schalen
+        \newline
+        In de 2D structuur heb je geen dikte, dit is iets wat achteraf ingegeven wordt.
+        \item \textbf{3D}: Soliden
+        \newline
+        In de 3D structuur zijn er geen extra benodigheden, je hebt gewoon een volume dat berekenbaar is.
+    \end{itemize}
+    \begin{figure}[H]
+      \centering
+      \includegraphics[width=0.8\textwidth]{elementtypetabel.png}
+      \caption{Overzicht van elementtypen}
+      \label{Overzicht van elementtypen}
+    \end{figure}
+    \begin{figure}[H]
+      \centering
+      \includegraphics[width=0.4\textwidth]{meshrepresentatieelemententypes.png}
+      \caption{Meshes van verschillende elementtypen}
+      \label{Meshes van verschillende elementtypen}
+    \end{figure}
+\begin{warningbox}[Opgelet bij de bovenstaande figuren!]
+De figuren hierboven zijn representaties van de verschillende elementtypen, de proff vind deze representaties eigelijk onduidelijk, het gaat hier dan over de 1D en 2D representaties want deze lijken dikte te hebben op de figuren, wat niet klopt dus let hier mee op.
+\end{warningbox}
+    \begin{figure}[H]
+      \centering
+      \includegraphics[width=0.8\textwidth]{elementtypen_tabel_les.png}
+      \caption{Overzicht van elementtypen aan bord uit les}
+      \label{Overzicht aan bord uit les}
+    \end{figure}
+In bovenstaande figuur wordt de ROD alleen belast in de lengterichting, de BEAM wordt belast in de dwarsrichting en kan buiging ondergaan. Een combinatie van deze 2 is ook mogelijk, torsie kan hier ook voorkomen. Een echte BEAM heeft 6 vrijheidsgraden.
+2D is op te merken als $\tilde{u}_z$, $\tilde{\theta}_x$ en $\tilde{\theta}_y$ niet aanwezig zijn, dit is omdat er geen dikte is, dus er is geen buiging mogelijk. In 3D zijn er dan weer wel deze vrijheidsgraden aanwezig. 3D is de gemakkelijkste.
+    \item \textbf{Element vorm} (belangrijk om complexe geometrieën te kunnen modelleren):
+    \begin{itemize}
+        \item \textbf{2D}: triangulair (tria), quadrilateraal (quad)
+        \newline
+        Tria is handig voor complexe geomterieën, dit is ook wat de computer standaard toepast, quad is minder handig voor complexe geometrieën, maar is wel nauwkeuriger en sneller dan tria, deze moet je wel forceren met de computer.
+        \item \textbf{3D}: tetraëder (tet), hexaëder (hex)
+        \begin{figure}[H]
+          \centering
+          \includegraphics[width=0.6\textwidth]{element_vormen.png}
+          \caption{Overzicht van elementvormen}
+          \label{fig:element_vormen.png}
+        \end{figure}
+        \begin{warningbox}[Ook opgelet bij bovenstaande figuur!]
+            Wim zijn figuren sucken balls en hij geeft dit toe.Bij bovenstaande figuur is \textbf{rectangular} eigenlijk fout. Dit is juist als het een rechthoek of vierkant is sure, maar een quad kan ook een trapezium bvb zijn, dus dit is niet altijd juist. (het hoeft dus geen rechte hoeken te hebben)
+        \end{warningbox}
+    \end{itemize}
+    \item \textbf{Element order (p)} (aantal knopen over een rand):
+    \begin{itemize}
+        \item \textbf{Linear (p=1):} 2 knopen per rand
+        \newline
+        De oplossing wordt benaderd door rechte lijnen tussen de knopen, dit is dus een lineaire benadering.
+        \item \textbf{Quadratic (p=2):} 3 knopen per rand
+        \newline
+        De oplossing wordt benaderd door kromme lijnen tussen de knopen, dit is dus een kwadratische benadering. Dit is bekomen door tussen de 2 knopen van een rand (zoals bij lineair (=p=1)) een \textbf{MID-node} toe te voegen.
+    \end{itemize}
+    \begin{conceptbox}[Weet wel!]
+        In principe kan p=3 of hoger ook, maar dit is niet zo gebruikelijk, meestal is p=1 of p=2. Hoger is moeilijker te implementeren en de tijd om K te inverteren stijgt gigantisch.
+    \end{conceptbox}
+    \begin{figure}[htbp]
+      \centering
+      \includegraphics[width=0.6\textwidth]{element_vormen_p_is_2.png}
+      \caption{Overzicht van elementvormen met p=2}
+      \label{Overzicht van elementvormen met p=2}
+    \end{figure}
+    \item \textbf{Element grootte (h)} 
+    \newline
+    Elementen in een mesh hebben een hoogte h, dit is de afstand tussen 2 knopen. Hoe kleiner h, hoe fijner de mesh, hoe nauwkeuriger de oplossing, maar ook hoe langer de rekentijd. Je maakt best de mesh fijner \textbf{in gebieden waar je spanningsconcentraties verwacht}, de computer kan daar dan snelle veranderingen in spanningen of vervormingen beter volgen.
+    \begin{figure}[H]
+      \centering
+      \includegraphics[width=0.8\textwidth]{hoogtewordtkleinermesh.png}
+      \caption{Overzicht van mesh met kleinere elementgrootte}
+      \label{Mesh waar h kleiner wordt}
+    \end{figure}
+\end{itemize}
+\newpage
+Om discretisatiefouten te verminderen, kan je dus de elementgrootte (h) verkleinen (kan je blijven doen) of de elementorde (p) verhogen (kan je maar 1 keer doen). Beide methoden verbeteren de nauwkeurigheid, maar verhogen ook de rekentijd. Het is belangrijk om een goede balans te vinden tussen nauwkeurigheid en efficiëntie.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{discretisatiefout_verminderen.png}
+  \caption{Overzicht van h-refinement vs p-refinement}
+  \label{h-refinement vs p-refinement}
+\end{figure}
+\subsection{Discretisatie error (fout)}
+Door domein discretisatie ontstaat er dus een fout, deze fout zagen we eerder. De fout wordt verdeeld in 2 types:
+\begin{itemize}
+    \item \textbf{Geomteriefout:} De continue rand is niet exact hetzelfde omdat deze benaderd wordt door rechte lijnen van de mesh.
+    \begin{figure}[H]
+      \centering
+      \includegraphics[width=0.3\textwidth]{discretisatie_error_geomttrie.png}
+      \caption{Geometriefout door discretisatie}
+      \label{Geometriefout}
+    \end{figure}
+    \item \textbf{Oplossingsdiscretisatiefout:} Fout in de berekeningen , dus $q(x,y,z) \neq \hat{q}(x,y,z)$ (met $\hat{q}(x,y,z)$ is de oplossing binnen een element = $f(\tilde{\mathbf{q}})$, dit is van de 1ste orde voor lineaire elementen en van de 2de orde voor kwadratische elementen), dit is omdat de computer een benadering (interpolatie) maakt van de oplossing, deze benadering is dus niet exact.
+    \begin{figure}[H]
+      \centering
+      \includegraphics[width=0.5\textwidth]{oplossingsdiscretisatiefout.png}
+      \caption{Oplossingsdiscretisatiefout}
+      \label{fig:oplossingsdiscretisatiefout.png}
+    \end{figure}
+\end{itemize}
+\newpage
+\subsection{Vormfuncties}
 \end{document}
