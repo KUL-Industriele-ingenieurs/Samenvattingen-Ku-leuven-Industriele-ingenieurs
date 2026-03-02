@@ -152,4 +152,18 @@ De volgende figuur beschrijft het beslissingproces en de iteratieve cyclus van e
     t_{preprocessing}, t_{postprocessing} \gg t_{solve}
     \end{equation}
 \end{conceptbox}
+\newpage
+\chapter{Theoretische overwegingen, Elementen, knooppunten en vormfuncties}
+\subsection{Vrijheidsgraden (= Degrees of Freedom, DOF)}
+Waarom discretiseren? Zie de het linkse gedeelte van de onderstaande figuur, in het echt hebben we dus een continu domein, dit zijn oneindig veel punten, de computer kan dit nooit allemaal berekenen, daarom 'hakken' we het stuk op in kleine elementen verbonden met knopen.
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.5\textwidth]{continu_en_gediscretiseerd.png}
+  \caption{Continu vs Gediscretiseerd domein}
+  \label{Continu vs Gediscretiseerd domein}
+ \end{figure}
+\begin{conceptbox}[Wat zijn nu vrijheidsgraden? (DOF)]
+Elke knoop bevat een aantal vrijheidsgraden, onbekende variabelen die we willen berekenen. bvb $\tilde{u_x}$ en $\tilde{u_y}$ zijn de verplaatsingen in x- en y-richting, dit zijn dus 2 vrijheidsgraden per knoop (in toch een 2D membraam). In 3D heb je er dan 3 per knoop. Voor elke component van de knoop is er dan ook een krachtvector component, dus $\tilde{F_x}$ en $\tilde{F_y}$.
+\end{conceptbox}
+Het totaal aantal vergelijkingen (\textbf{ndof}) is gelijk aan het aantal knopen vermenigvuldigd met het aantal vrijheidsgraden per knoop.
 \end{document}
