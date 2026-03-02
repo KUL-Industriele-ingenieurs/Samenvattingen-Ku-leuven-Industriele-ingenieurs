@@ -38,3 +38,4 @@
 #printformularium()
 #include "1.Intro-statistiek.typ"
 #include "2.Probabiliteit.typ"
+#include "3.Discrete-random-variables.typ"

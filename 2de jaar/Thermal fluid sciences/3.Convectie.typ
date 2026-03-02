@@ -3,20 +3,21 @@
 
 = Convectie <ch:convectie>
 
-#figure(
-  image("convectieprincipe.png", width: 5cm),
+#wrap-figure(
+  image("convectieprincipe.png", width: 6cm),
   caption: [convectieprincipe],
   label: <fig:convectieprincipe>,
-)
+)[
 
-#keyterm[Convectie] is de warmteoverdracht tussen een vast lichaam en een bewegende vloeistof of gas.
-
-
-Warmteoverdracht door een fluïdum gebeurt via #keyterm[convectie] bij aanwezigheid van bulkstroming en via #keyterm[conductie] bij afwezigheid ervan.
+  #keyterm[Convectie] is de warmteoverdracht tussen een vast lichaam en een bewegende vloeistof of gas.
 
 
-Convectie zorgt voor veel snellere warmteoverdracht dan conductie in dit geval omdat
-je constant warm fluïdum aan het oppervlak brengt. Hierdoor is er een constante warmteoverdracht. De limiterende factor is hier conductie.
+  Warmteoverdracht door een fluïdum gebeurt via #keyterm[convectie] bij aanwezigheid van bulkstroming en via #keyterm[conductie] bij afwezigheid ervan.
+
+
+  Convectie zorgt voor veel snellere warmteoverdracht dan conductie in dit geval omdat
+  je constant warm fluïdum aan het oppervlak brengt. Hierdoor is er een constante warmteoverdracht. De limiterende factor is hier conductie.
+]
 
 #wrap-figure(
   image("convectiestroom.png", width: 5cm),
@@ -55,13 +56,14 @@ Convectie is dus complexer want die $h$ is niet zomaar te bepalen. We berusten o
 *No slip conditie:* De vloeistof aan het oppervlak heeft dezelfde snelheid als het oppervlak. Dus 0.
 
 #figure(
-  image("noslip.png", width: 5cm),
+  image("noslip.png", width: 7cm),
   caption: [noslip],
   label: <fig:noslip>,
 )
 
 
-*Boundary layer:* De temperatuur van de vloeistof aan het oppervlak is gelijk aan de temperatuur van het oppervlak.
+*Boundary layer:*\
+De temperatuur van de vloeistof aan het oppervlak is gelijk aan de temperatuur van het oppervlak.
 
 De boundary layer is enorm belangrijk want die zorgt voor de warmteoverdracht. Hoe dikker de boundary layer hoe minder efficient de warmteoverdracht.
 
@@ -69,7 +71,6 @@ Deze komen door de viscositeit $[mu]$. Dit is belangrijk om het snappen over hoe
 
 
 *h is niet constant*\
-
 _zie slides voor uitwerking maar niet belangrijk om te kennen_
 
 $ h = frac(1, A) integral_A h_(l o c a l) d A & h = frac(1, L) integral_0^L h_(x) d x $
@@ -120,10 +121,10 @@ $L_c$ is de karakteristieke lengte. Deze is afhankelijk van de geometrie. Bij ee
 
 Het getal van Nusselt vertegenwoordigt de toename van warmteoverdracht door een vloeistoflaag als gevolg van convectie ten opzichte van geleiding (conductie) over diezelfde laag.
 
-#markhl[Hoe groter het getal van Nusselt, hoe effectiever de convectie. Een Nusselt-getal van $Nu = 1$ voor een vloeistoflaag betekent dat de warmteoverdracht uitsluitend door conductie plaatsvindt.]
+Hoe groter het getal van Nusselt, hoe effectiever de convectie. Een Nusselt-getal van $ Nu = 1 $  voor een vloeistoflaag betekent dat de warmteoverdracht uitsluitend door conductie plaatsvindt.
 
 #figure(
-  image("nusselnumber heattransfer.png", width: 5cm),
+  image("nusselnumber heattransfer.png", width: 6cm),
   caption: [nusselnumber heattransfer],
   label: <fig:nusselnumber-heattransfer>,
 )
@@ -189,7 +190,7 @@ Het getal van Nusselt vertegenwoordigt de toename van warmteoverdracht door een 
 
 
 
-#markhl[Bij enorm hoge snelheden gaat lucht ook compressable worden maar we gaan niet in de regio dus we gaan aanmemen dat lucht incompressable is]
+#underline[Enorm hoge snelheden gaat lucht ook compressable worden maar we gaan niet in de regio dus we gaan aanmemen dat lucht incompressable is]
 
 === Laminar vs Turbulent flow <sec:laminar-turbulent-flow>
 
@@ -231,7 +232,7 @@ Je vloeistof wordt geforceerd om te stromen langs een oppervlak.
 #examenbox("In dit vak gaan we ons bezig houden met 1D en 2D stroming niet 3D")
 
 #figure(
-  image("2D flow.png", width: 5cm),
+  image("2D flow.png", width: 10cm),
   caption: [2D flow],
   label: <fig:2D-flow>,
 )
@@ -314,14 +315,14 @@ $ P r = frac("Moleculair diffusiteit van het momentum", "Moleculair diffusiteit 
 
 Het #keyterm[Prandtl-getal] beschrijft de verhouding tussen de relatieve dikte van de snelheids- ($delta$) en de thermische ($delta_t$) grenslaag:
 
-$ delta / delta_t attach(=, t: "ongeveer") P r^(1/3) $
+$ delta / delta_t approx P r^(1/3) $
 
-- *Gassen* ($P r attach(=, t: "ongeveer") 1$): Momentum en warmte diffunderen even snel. De thermische en snelheidsgrenslaag zijn ongeveer even dik ($delta approx delta_t$).
+- *Gassen* ($P r approx 1$): Momentum en warmte diffunderen even snel. De thermische en snelheidsgrenslaag zijn ongeveer even dik ($delta approx delta_t$).
 - *Vloeibare metalen* ($P r << 1$): Warmte diffundeert veel sneller dan momentum. De thermische grenslaag is veel dikker dan de snelheidsgrenslaag ($delta_t >> delta$).
 - *Oliën* ($P r >> 1$): Warmte diffundeert zeer traag vergeleken met momentum. De thermische grenslaag is veel dunner ten opzichte van de snelheidsgrenslaag ($delta_t << delta$).
 
 #figure(
-  image("Prandtl Number.png", width: 5cm),
+  image("Prandtl Number.png", width: 12cm),
   caption: [Prandtl Number],
   label: <fig:Prandtl-Number>,
 )
@@ -334,7 +335,7 @@ Als $P r < 1$: toont een lage hitte resistentie (hoge diffusiteit) en een dikke 
 
 Nog een dimensielooze number die de toont hoe turbilent een stroming is.
 
-$Re = frac("Inertial forces", "Viscositeit")$
+$ Re = frac("Inertial forces", "Viscositeit") $
 
 
 #frm(

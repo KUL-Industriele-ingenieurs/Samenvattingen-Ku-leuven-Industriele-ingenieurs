@@ -20,35 +20,45 @@ done
 # --- 2. Manage PDFs ---
 echo "Checking PDFs..."
 
-# Use NUL-separated list to robustly handle all filenames, including spaces
-staged_list=$(git diff --cached --name-only -z)
+# Use a temporary file to store NUL-delimited names
+# This avoids storing NUL bytes in bash variables and prevents git index locking
+# issues that happen when piping git diff directly into a git reset.
+# We use --diff-filter=d to ignore deleted files, allowing users to commit deletions of PDFs.
+tmp_file=$(mktemp)
+git diff --cached --name-only --diff-filter=d -z > "$tmp_file"
 
-if [ -n "$staged_list" ]; then
-    unstaged_any=0
+unstaged_any=0
 
-    # Read NUL-delimited names safely
-    while IFS= read -r -d '' pdf_file; do
-        # case-insensitive match for .pdf extension
-        case "$pdf_file" in
-            *.[Pp][Dd][Ff])
-                tex_file="${pdf_file%.*}.tex"
-                if [ -f "$tex_file" ]; then
-                    echo "Unstaging generated PDF: $pdf_file (matches .tex file)"
-                    git reset HEAD -- "$pdf_file"
-                    unstaged_any=1
-                else
-                    echo "Keeping reference PDF: $pdf_file"
-                fi
-                ;;
-        esac
-    done <<EOF
-$staged_list
-EOF
+while IFS= read -r -d '' pdf_file || [ -n "$pdf_file" ]; do
+    if [ -z "$pdf_file" ]; then continue; fi
+    # case-insensitive match for .pdf extension
+    case "$pdf_file" in
+        *.[Pp][Dd][Ff])
+            tex_file="${pdf_file%.*}.tex"
+            typ_file="${pdf_file%.*}.typ"
+            if [ -f "$tex_file" ]; then
+                echo "❌ BLOCKED: Unstaging generated PDF '$pdf_file'. It appears to be generated from a matching '$tex_file'."
+                git reset HEAD -q -- "$pdf_file"
+                unstaged_any=1
+            elif [ -f "$typ_file" ]; then
+                echo "❌ BLOCKED: Unstaging generated PDF '$pdf_file'. It appears to be generated from a matching '$typ_file'."
+                git reset HEAD -q -- "$pdf_file"
+                unstaged_any=1
+            else
+                echo "✅ ALLOWED: Keeping reference PDF '$pdf_file' (no matching .tex or .typ source file found)."
+            fi
+            ;;
+    esac
+done < "$tmp_file"
 
-    if [ "$unstaged_any" -eq 1 ]; then
-        echo "🛑 ERROR: Generated PDFs were staged and have been unstaged. Please review the unstaged PDFs and commit again without them."
-        exit 1
-    fi
+rm -f "$tmp_file"
+
+if [ "$unstaged_any" -eq 1 ]; then
+    echo ""
+    echo "🛑 ERROR: One or more generated PDFs were staged for commit!"
+    echo "        These files have been automatically UNSTAGED to protect the repository."
+    echo "        Please review your staged changes and run 'git commit' again."
+    exit 1
 fi
 
 echo "PDF check complete."

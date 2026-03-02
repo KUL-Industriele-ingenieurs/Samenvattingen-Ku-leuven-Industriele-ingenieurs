@@ -589,7 +589,33 @@ Dit is nog anders als efficientië. Want we kijken naar de effectiviteit van de 
   ],
 )
 
-Je hebt allemaal soorten vormen van fins die andere formules hebben maar ik hoop dat je het principe snapt.
+*Pas op:* Je gaat het verschil in oppervlakte nemen alleen het oppervlakte als je de vin *weglaat*. Je berekent dus de $A_(f i n)$ en neem dat die vin weg $arrow.r$ Welk opperlakte blijft nog over?
+
+In de figuur hier is het die $A_b = r^2*pi$.
+
+== Complexe vormen
+
+Voor complexe vormen van vinnen en structuren moet je niet de efficientie en effectiviteit berekenen volledig uitrekenen maar kun je de tabellen en grafieken gebruiken in het formularium. Deze krijg je ook op het examen.
+
+
+#figure(
+  image("formules complexe vin vormen.png", width: 10cm),
+  caption: [formules complexe vin vormen],
+  label: <fig:formules-complexe-vin-vormen>,
+)
+
+#figure(
+  image("efficientie-straight-vinnen.png", width: 10cm),
+  caption: [efficientie-straight-vinnen],
+  label: <fig:efficientie-straight-vinnen>,
+)
+
+
+#figure(
+  image("efficientie-cirkelvormige vinnen.png", width: 10cm),
+  caption: [efficientie-cirkelvormige vinnen],
+  label: <fig:efficientie-cirkelvormige-vinnen>,
+)
 
 
 
