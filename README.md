@@ -22,31 +22,37 @@ Deze repository zijn mijn notities en samenvattingen die ik gemaakt heb door het
 <summary><strong>1ste jaar</strong></summary>
 
 - Nog geen vakken toegevoegd
-  </details>
+</details>
 
 <details>
 <summary><strong>2de jaar</strong></summary>
 
-- Distributie van elektrische systemen
-- Ingenieur en economie oefeningen
-- math-systems
-- Object gericht-programmeren
-- Ontwerp van een industriële sturing
-- Productietechnologie
-- Statistiek en databeheer
-- Systeem en regeltechniek
-- Thermal fluid sciences
-- Toegepaste mechanica & dynamica
-- Warmte en stromingen
-- Wisselstroom
-  </details>
+- [Distributie van elektrische systemen](2de%20jaar/Distributie%20van%20elektrische%20systemen)
+- [Ingenieur en economie oefeningen](2de%20jaar/Ingenieur%20en%20economie%20oefeningen)
+- [math-systems](2de%20jaar/math-systems)
+- [Object gericht-programmeren](2de%20jaar/Object%20gericht-programmeren)
+- [Ontwerp van een industriële sturing](2de%20jaar/Ontwerp%20van%20een%20industriële%20sturing)
+- [Productietechnologie](2de%20jaar/Productietechnologie)
+- [Statistiek en databeheer](2de%20jaar/Statistiek%20en%20databeheer)
+- [Systeem en regeltechniek](2de%20jaar/Systeem%20en%20regeltechniek)
+- [Thermal fluid sciences](2de%20jaar/Thermal%20fluid%20sciences)
+- [Toegepaste mechanica & dynamica](2de%20jaar/Toegepaste%20mechanica%20&%20dynamica)
+- [Warmte en stromingen](2de%20jaar/Warmte%20en%20stromingen)
+- [Wisselstroom](2de%20jaar/Wisselstroom)
+</details>
 
 <details>
 <summary><strong>3de jaar</strong></summary>
 
-- Eindige elementen gebaseerd ontwerp
-- Information Management
-- Manufacturing Technologies 2
+- [Eindige elementen gebaseerd ontwerp](3de%20jaar/Eindige%20elementen%20gebaseerd%20ontwerp)
+- [Information Management](3de%20jaar/Information%20Management)
+- [Manufacturing Technologies 2](3de%20jaar/Manufacturing%20Technologies%202)
+</details>
+
+<details>
+<summary><strong>4de jaar master</strong></summary>
+
+- Nog geen vakken toegevoegd
 </details>
   <!-- VAKKENOVERZICHT_END -->
 
