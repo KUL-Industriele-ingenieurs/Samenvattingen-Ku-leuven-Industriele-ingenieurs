@@ -1,14 +1,14 @@
-# LaTeX Handleiding 📄
+# LaTeX Handleiding
 
-> Alles wat je nodig hebt om te beginnen met LaTeX voor dit project.
+Hier vind je alles wat je nodig hebt om met LaTeX aan de slag te gaan voor de samenvattingen.
 
 ---
 
-## 🛠️ Installatie
+## Installatie
 
 ### Benodigde software
 
-Open een terminal en voer de commando's uit voor jouw systeem:
+Open een terminal en installeer de nodige programma's voor jouw systeem:
 
 **Windows** (PowerShell):
 
@@ -16,12 +16,12 @@ Open een terminal en voer de commando's uit voor jouw systeem:
 winget install --id Microsoft.VisualStudioCode --id Git.Git --id MiKTeX.MiKTeX
 ```
 
-### Officiële websites (downloads & info):
+Officiële websites voor meer info of handmatige downloads:
 
-- 🌍 **VS Code:** [code.visualstudio.com](https://code.visualstudio.com/)
-- 🌍 **Git:** [git-scm.com](https://git-scm.com/)
-- 🌍 **Strawberry Perl:** [strawberryperl.com](https://strawberryperl.com/)
-- 🌍 **MiKTeX:** [miktex.org](https://miktex.org/)
+- **VS Code:** [code.visualstudio.com](https://code.visualstudio.com/)
+- **Git:** [git-scm.com](https://git-scm.com/)
+- **Strawberry Perl:** [strawberryperl.com](https://strawberryperl.com/)
+- **MiKTeX:** [miktex.org](https://miktex.org/)
 
 **macOS** (Terminal):
 
@@ -35,21 +35,21 @@ brew install --cask visual-studio-code mactex && brew install git perl
 sudo apt install code git perl texlive-full
 ```
 
-> ⚠️ **BELANGRIJK bij MiKTeX (Windows):** Kies tijdens de installatie bij **"Install missing packages on-the-fly"** voor **"Yes"**!
+> **Belangrijk bij MiKTeX op Windows:** Kies tijdens de installatie bij "Install missing packages on-the-fly" voor "Yes"! Anders moet je later steeds handmatig packages goedkeuren.
 >
-> 🔄 **Herstart je computer** nadat je alles hebt geïnstalleerd.
+> **Herstart je computer** als je alles geïnstalleerd hebt.
 
 ### VS Code extensies
 
-Na het openen van het project in VS Code zal er rechtsonder gevraagd worden om de aanbevolen extensies te installeren. Klik op **Install**. De belangrijkste:
+Als je het project in VS Code opent, zal het programma rechtsonder vragen om een paar aanbevolen extensies te installeren. Klik op **Install**. De belangrijkste zijn:
 
-- **LaTeX Workshop** — Bouwt je PDF en toont live preview
-- **LaTeX Utilities** — Afbeeldingen plakken, woordtelling
-- **GitHub Pull Requests** — Issues en PRs beheren
+- **LaTeX Workshop** — Deze bouwt je PDF en zorgt voor de live preview.
+- **LaTeX Utilities** — Handig om snel afbeeldingen te plakken en woorden te tellen.
+- **GitHub Pull Requests** — Om issues en PRs direct in VS Code te regelen.
 
 ---
 
-## 📝 Hoe werk je met LaTeX?
+## Hoe werk je met LaTeX?
 
 ### PDF bouwen en bekijken
 
@@ -59,97 +59,49 @@ Na het openen van het project in VS Code zal er rechtsonder gevraagd worden om d
 | View PDF       | `Ctrl + Alt + V` |
 | Sync naar code | `Ctrl + Alt + J` |
 
-> ⚠️ **Compileer altijd TWEEMAAL** voor correcte formularium en symbolenlijst!
+> **Let op:** Compileer altijd twee keer achter elkaar als je zeker wilt zijn dat je formularium en symbolenlijst up-to-date zijn.
 
 ---
 
-## 📂 Templates
+## Templates
 
-We hebben twee templates klaarstaan. Kopieer de juiste voor je document:
+We hebben al twee templates voor je klaargezet. Gebruik de juiste voor je vak:
 
 ### Kort document (artikel)
 
-📄 **[`latex_templates/Latex_template-kort-document.tex`](latex_templates/Latex_template-kort-document.tex)**
+**[`latex_templates/Latex_template-kort-document.tex`](latex_templates/Latex_template-kort-document.tex)**
 
-Gebruik voor: samenvattingen, oefenreeksen, korte documenten (5-30 pagina's).
+Ideaal voor gewone samenvattingen, korte documenten en oefeningen.
 
-```latex
-\documentclass[a4paper,11pt]{article}
-\usepackage{../school-macros}
-```
+Hier gebruik je de structuur: `\section` → `\subsection` → `\subsubsection`
 
-Structuur: `\section` → `\subsection` → `\subsubsection`
+### Lang document (rapport met losse hoofdstukken)
 
-### Lang document (rapport met hoofdstukken)
+**[`latex_templates/Latex_template-lang-document.tex`](latex_templates/Latex_template-lang-document.tex)**
 
-📄 **[`latex_templates/Latex_template-lang-document.tex`](latex_templates/Latex_template-lang-document.tex)**
-
-Gebruik voor: thesis, grote samenvattingen, meerdere hoofdstukken (30+ pagina's).
-
-```latex
-\documentclass[a4paper,11pt]{report}
-\usepackage{../school-macros}
-```
+Beter voor een thesis of samenvattingen van meer dan 30 pagina's, waarbij je bestanden wilt opsplitsen.
 
 Structuur: `\chapter` → `\section` → `\subsection`
 
-Elk hoofdstuk zit in een apart bestand in de `chapters/` map:
-
-```latex
-\include{chapters/chapter1_inleiding}
-\include{chapters/chapter2_theorie}
-```
+Ideaal is om elk hoofdstuk in een eigen bestand in de `chapters/` map te zetten, en ze in het hoofddocument op te roepen:
 
 ---
 
-## 🎨 School-Macros (onze stijl)
+## School-Macros
 
-Alle documenten gebruiken `school-macros.sty` — dit zorgt voor:
+Dit is voor latex de tempalate woorddoor je alle box-omgevingen hebt en de font en styling krijgt.
 
-- **Professionele stijl**: Fira Sans (koppen) + Bitstream Charter (tekst) + Fira Mono (code)
-- **Kleuren**: blauw, rood, groen, oranje thema
-- **Box-omgevingen**: theorie, concepten, waarschuwingen, oefeningen
-- **Formule-systeem**: automatisch formularium genereren
-- **Symbolen-systeem**: automatisch symbolenlijst genereren
-
-### Meest gebruikte commando's
-
-```latex
-% Boxes
-\begin{theorie}[Titel]...\end{theorie}
-\begin{conceptbox}[Titel]...\end{conceptbox}
-\begin{waarschuwing}[Titel]...\end{waarschuwing}
-\begin{oefenblok}[Oefening 1]...\end{oefenblok}
-\begin{voorbeeld}[Titel]...\end{voorbeeld}
-
-% Formules (worden automatisch verzameld in formularium)
-\frm{Wet van Ohm}{U = I \cdot R}{$U$ = spanning, $I$ = stroomsterkte, $R$ = weerstand}
-
-% Symbolen (eerste keer: uitleg — daarna: alleen symbool)
-\sym{F}{Kracht}{N}
-
-% Eenheden (altijd siunitx gebruiken!)
-\SI{9.81}{m/s^2}
-
-% Tekst-markers
-\concept{belangrijke term}
-\belangrijk{let op!}
-\TODO{dit moet nog aangevuld}
-```
-
-> 📚 Uitgebreide referentie: **[MACRO_QUICK_REFERENCE.md](MACRO_QUICK_REFERENCE.md)**
->
-> 📄 Volledige voorbeelden: **[`latex_templates/macro_usage_guide.tex`](latex_templates/macro_usage_guide.tex)**
+Je kunt de omgeving leren in de template [macro_usage_guide.tex](latex_templates/macro_usage_guide.tex)
 
 ---
 
-## 🎬 Video
+## Video's
 
-- 🎬 **[LaTeX voor Beginners](https://www.youtube.com/watch?v=UK8SMrS0G4Y)** – De basis van hoe je documenten schrijft.
+- **[LaTeX voor Beginners](https://www.youtube.com/watch?v=UK8SMrS0G4Y)** – De basis van documenten schrijven.
 
 ---
 
-## 🐛 Problemen?
+## Problemen?
 
-- **PDF bouwt niet?** Kijk in **[Debugging-van-building.md](Debugging-van-building.md)**.
-- **Hulp nodig?** Stuur een berichtje op de [Industria Discord](https://discord.gg/gsDzr5qhPe).
+- Als de PDF niet wil bouwen, bekijk dan even **[Debugging-van-building.md](Debugging-van-building.md)**.
+- Kom je er echt niet uit? Vraag het op de [Industria Discord](https://discord.gg/gsDzr5qhPe).

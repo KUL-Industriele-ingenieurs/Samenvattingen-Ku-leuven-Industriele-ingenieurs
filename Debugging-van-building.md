@@ -1,114 +1,36 @@
-# LaTeX Workshop Debugging Guide
+# Fouten oplossen (Debugging)
 
-## Issues Fixed
+Als je PDF niet wil bouwen, check dan even deze lijst met veelvoorkomende fouten.
 
-### 1. **Missing Packages Error**
-**Problem:** When you build, LaTeX Workshop fails because packages are missing.
+## Typst problemen
 
-**Solution:** The configuration has been updated to use **latexmk** as the primary build tool, which automatically:
-- Runs pdflatex multiple times if needed
-- Handles package dependencies better
-- Works more reliably with complex documents
+Typst geeft meestal wel duidelijk aan wat er fout is.
 
-### 2. **Configuration Changes Made**
+**Font niet gevonden**
+Krijg je een fout over fonts of ziet je document er ineens heel basis uit? Dan heb je de lettertypes waarschijnlijk nog niet geïnstalleerd. Typst zoekt naar `Fira Sans`, `Fira Mono` of `New Computer Modern`.
+Ga naar de map `typst_templates/fonts/`, selecteer ze allemaal, klik rechts en kies "Installeren voor alle gebruikers".
 
-Updated `.vscode/settings.json` to include:
+**Typfouten in commando's**
+Als Typst zegt `unknown variable: frm` of zoiets dergelijks, dan heb je gewoon een typfout gemaakt in een macro (bijvoorbeeld `#fram` in plaats van `#frm`). Check gewoon even de lijn die Typst aangeeft.
 
-- **latexmk recipe** (recommended): Uses `latexmk` which is more robust
-- **pdflatex × 2 recipe**: Runs pdflatex twice for cross-references
-- **Single pdflatex recipe**: Fallback option
+**Afbeelding laadt niet**
+Typst crasht als het pad naar een afbeelding niet klopt of de afbeelding er niet staat. Zorg dat je het pad altijd begint vanaf de plek waar je `.typ` bestand staat.
 
-## How to Build
+**Vreemde layout of kapotte wiskunde**
+Als je wiskunde formules er vreemd uitzien, onthoud dan dat Typst spaties nodig heeft. Je typt `$E = m c^2$` in plaats van `$E=mc^2$`. Je kan ook altijd in VS Code met je muis over een variabele hoveren (als je de Tinymist plugin hebt) om te zien wat er mis gaat.
 
-### Option 1: Using Command Palette (Recommended)
-1. Press `Ctrl+Shift+P`
-2. Type: `LaTeX Workshop: Build with recipe`
-3. Select **"latexmk (pdflatex)"**
+## LaTeX problemen
 
-### Option 2: Using Keyboard Shortcut
-- Press `Ctrl+Alt+B` to build with the default recipe
+LaTeX fouten zijn helaas wat minder duidelijk dan Typst.
 
-### Option 3: Using the LaTeX Workshop Sidebar
-1. Click the TeXify icon in the activity bar (left sidebar)
-2. Click the "Build LaTeX project" button
+**Missing Packages Error**
+Als LaTeX Workshop weigert te bouwen omdat er packages missen: ik heb in de repo al ingesteld dat hij `latexmk` gebruikt. Dit haalt ontbrekende packages meestal vanzelf binnen.
+Blijft hij toch crashen? Druk `Ctrl+Shift+P` en zoek naar `LaTeX Workshop: Clean up auxiliary files`. Vaak zit er gewoon een fout tijdelijk bestand klem. Bouw daarna opnieuw.
 
-## Troubleshooting
+**"pdflatex command not found" fout**
+Dit betekent dat je pc niet eens weet dat LaTeX geïnstalleerd is.
+Heb je de stappen in `LATEX.md` gevolgd om MiKTeX en Perl te installeren? Zo ja, vergeet niet achteraf je pc the herstarten. Vaak is een simpele reboot genoeg.
 
-### If Build Still Fails:
-
-1. **Check Output Log**
-   - Click: View → Output
-   - Select: "LaTeX Workshop" from dropdown
-   - Look for error messages
-
-2. **Clean Build Files**
-   - Command Palette: `LaTeX Workshop: Clean up auxiliary files`
-   - Then rebuild
-
-3. **Check Installed Packages**
-   - Open Terminal
-   - Run: `tlmgr list --only-installed | find "enumitem"`
-   - Verify packages are there
-
-4. **View Root File**
-   - Ensure your main file is: `Thermische_en_Fluidumwetenschappen.tex`
-   - LaTeX Workshop should auto-detect it, but you can set it manually:
-     - Command Palette: `LaTeX Workshop: Set root file`
-
-### If You Get "pdflatex: command not found"
-
-This means LaTeX is not in your system PATH:
-
-**Solution:**
-1. Find your TeX Live installation: `where pdflatex` (in PowerShell)
-2. Add to environment variables or use full path in settings
-
-## Build Process Explanation
-
-**latexmk** does this automatically:
-```
-1. Run pdflatex → generates .aux, .toc files
-2. Check if cross-references need updating
-3. Run pdflatex again if needed
-4. Generate final PDF
-```
-
-Without latexmk, you'd need to run pdflatex manually multiple times.
-
-## Installed Packages
-
-All required packages have been installed via `tlmgr`:
-- enumitem
-- pdfpages
-- pgf (includes tikz)
-- fancyhdr
-- microtype
-- soul
-- mdframed
-- needspace
-- zref
-- titlesec
-- caption
-- setspace
-- parskip
-- tcolorbox
-- pdflscape
-- wrapfig
-
-## Settings Explanation
-
-| Setting | Purpose |
-|---------|---------|
-| `autoBuild.run: "never"` | Don't build automatically; requires manual build |
-| `view.pdf.viewer: "tab"` | Show PDF in VS Code tab (not external viewer) |
-| `message.error.show: true` | Display error notifications |
-| `linting.enabled: true` | Check for LaTeX syntax issues |
-
-## Next Steps
-
-1. **Open your LaTeX file**
-2. **Use Ctrl+Alt+B to build**
-3. **Check the Output panel for errors**
-4. **If successful, PDF opens in a new tab**
-
-If you still encounter issues, check the "LaTeX Workshop" output channel for detailed error messages.
+**Blijft hij falen?**
+Kijk in de VS Code zijbalk (die TEX knop) of hij wel het juiste 'root' bestand gebruikt om te bouwen. Soms probeert hij een los hoofdstuk in je `chapters/` map te compileren in plaats van je hoofd document.
+Als het na dit alles echt niet lukt, gooi de error dan in de Discord, dan kijken we even mee.

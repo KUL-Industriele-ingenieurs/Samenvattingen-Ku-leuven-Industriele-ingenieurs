@@ -1,270 +1,50 @@
-# Typst Handleiding 📄
+# Typst
 
-> Alles wat je nodig hebt om te beginnen met Typst — het moderne alternatief voor LaTeX.
+Dit is alles wat je nodig hebt om met Typst te beginnen. Typst is eigenlijk gewoon een sneller alternatief voor LaTeX dat ik zelf vaak gebruik.
 
----
+## Waarom Typst in plaats van LaTeX?
 
-## ✨ Waarom Typst?
+- Je hebt direct een live preview in VS Code tijdens het typen. Je hoeft niet meer te wachten op het compileren.
+- Je hebt die enorme programma's zoals MiKTeX niet meer nodig op je pc.
+- De code is veel leesbaarder, zonder backslashes overal tussendoor.
+- Ik heb exact dezelfde theorie kaders en layout gemaakt voor Typst als in de LaTeX template. Het eindresultaat van de PDF ziet er dus gewoon hetzelfde uit.
 
-- ⚡ **Supersnel** — Live preview, geen wachttijden
-- 📖 **Leesbare code** — Veel simpeler dan LaTeX syntax
-- 🛠️ **Lichte installatie** — Geen MiKTeX of Perl nodig
-- 🎨 **Zelfde stijl** — Onze template gebruikt dezelfde kleuren en boxes als de LaTeX-versie
+## Installatie
 
----
+Open PowerShell of je Terminal en voer dit in:
 
-## 🛠️ Installatie
-
-### 1. Typst installeren
-
-Open een terminal en voer uit:
-
-**Windows** (PowerShell):
+**Windows**:
 
 ```powershell
 winget install --id Typst.Typst
 ```
 
-**macOS** (Terminal):
+**macOS**:
 
 ```bash
 brew install typst
 ```
 
-**Linux** (Ubuntu/Debian):
+## Een samenvatting maken
 
-```bash
-# Download van GitHub Releases: https://github.com/typst/typst/releases
-# Of via Cargo:
-cargo install typst-cli
-```
+Ik heb twee templates klaargezet die je gewoon kunt dupliceren om meteen in te vullen:
 
-**Arch Linux:**
+1. **Voor een korter document:** Kopieer `typst_templates/Typst_template-kort-document.typ`. Ideaal voor een simpele theorie samenvatting die maar 1 bestandje lang is.
+2. **Voor een groot doc:** Gebruik `typst_templates/Typst_template-lang-document.typ`. Handig als je theorie of examens per hoofdstuk over meerdere mapjes wil opsplitsen via een `#include` setup.
 
-```bash
-sudo pacman -S typst
-```
+## Box-omgevingen gebruiken
 
-### Officiële websites (downloads & info):
+Ik heb de theorie kaders er in Typst net zo in gezet als in de LaTeX versie:
 
-- 🌍 **Typst:** [typst.app](https://typst.app/)
-- 🌍 **VS Code:** [code.visualstudio.com](https://code.visualstudio.com/)
+Bekijk [macro_usage_guide_typst.typ](typst_templates/macro_usage_guide_typst.typ) voor alle dingen die je kunt gebruiken.
 
-### 2. VS Code extensie
+## Wat is er anders qua theorie syntax tegenover LaTeX?
 
-Installeer de **[Tinymist](https://marketplace.visualstudio.com/items?itemName=myriad-dreamin.tinymist)** extensie in VS Code. Dit geeft je:
+Hier nog een kort lijstje met dingen die echt veel sneller theorie werken in Typst:
 
-- Live preview (druk op het oogje 👁 rechtsboven)
-- Syntax highlighting
-- Autocompletion
+- Grote Titels krijgen een is-gelijk teken `=` in plaats van lelijke `\section{}` codes.
+- Je kan iets vet drukken door gewoon sterretjes te gebruiken `*tekst*` in plaats theorie van `\textbf`.
+- Item lijsten of opsommingen zijn gewoon min-tekens `- stelling een`. Geen theorie blok structuur met `beginitemize` theorie...
+- De Wiskunde blok is theorie dollartekens theorie om niet the breken met the tekst: `$x^2 = c$` theorie theorie ...
 
-- Autocompletion
-
-### 3. Fonts installeren
-
-De basis fonts (Fira Sans, Fira Mono, NewCM) zitten al in de map `typst_templates/fonts/`.
-
-#### 🅰️ Optionele Fonts (Aanbevolen)
-
-Voor de **beste ervaring** (en om Fira Math te gebruiken), download en installeer deze fonts:
-
-1.  **Fira Math**: [Download van GitHub](https://github.com/firamath/firamath/releases) (Kies `FiraMath-Regular.otf`)
-2.  **Fira Code**: [Download van GitHub](https://github.com/tonsky/FiraCode/releases) (Kies `Fira_Code_v6.2.zip` > `ttf` map)
-
-Installeer ze door te dubbelklikken op de bestanden en op "Installeren" te drukken.
-
-#### 🅱️ Basis Fonts (in deze map)
-
-Als je de optionele fonts niet wilt, installeer dan minstens deze uit `typst_templates/fonts/`:
-
-| Font                    | Bestanden       | Gebruik    |
-| ----------------------- | --------------- | ---------- |
-| **Fira Sans**           | FiraSans-\*.ttf | Koppen     |
-| **Fira Mono**           | FiraMono-\*.ttf | Code       |
-| **New Computer Modern** | NewCM10-\*.otf  | Broodtekst |
-
----
-
-## 📝 Hoe werk je met Typst?
-
-### Preview bekijken
-
-Open een `.typ` bestand en druk op het **Preview** knopje (oogje 👁) rechtsboven in VS Code. De preview update automatisch terwijl je typt!
-
-### Compileren via terminal (optioneel)
-
-```
-typst compile mijn-document.typ
-```
-
----
-
-## 📂 Templates
-
-We hebben twee templates klaarstaan:
-
-### Kort document
-
-📄 **[`typst_templates/Typst_template-kort-document.typ`](typst_templates/Typst_template-kort-document.typ)**
-
-Gebruik voor: samenvattingen, oefenreeksen, korte documenten.
-
-```typ
-#import "../school-template.typ": *
-
-#show: project.with(
-  title: "Naam van het Vak",
-  course: "Ingenieurswetenschappen",
-  authors: ("Jouw Naam",),
-  academic_year: "2025-2026",
-)
-
-= Eerste Hoofdstuk
-Hier begint je inhoud...
-
-== Subsectie
-Meer inhoud...
-```
-
-### Lang document (met aparte hoofdstukken)
-
-📄 **[`typst_templates/Typst_template-lang-document.typ`](typst_templates/Typst_template-lang-document.typ)**
-
-Gebruik voor: thesis, grote samenvattingen met meerdere hoofdstukken.
-
-```typ
-#import "../school-template.typ": *
-
-#show: project.with(
-  title: "Modulair Document",
-  course: "Voorbeeldvak",
-  authors: ("Jouw Naam",),
-  academic_year: "2025-2026",
-)
-
-#include "chapters/chapter1_inleiding.typ"
-#include "chapters/chapter2_theorie.typ"
-```
-
-Elk hoofdstuk in `chapters/` begint gewoon met een kop:
-
-```typ
-#import "../../school-template.typ": *
-
-= Inleiding
-Hier begint het hoofdstuk...
-```
-
----
-
-## 🎨 School-Template (onze stijl)
-
-De template `school-template.typ` biedt dezelfde functionaliteit als de LaTeX `school-macros.sty`:
-
-### Boxes
-
-```typ
-#theorie(title: "De Basis")[
-  Uitleg over het onderwerp...
-]
-
-#concept(title: "Definitie")[
-  Belangrijke definitie hier...
-]
-
-#waarschuwing[
-  Let op bij deze berekening!
-]
-
-#voorbeeld(title: "Voorbeeld 1")[
-  Uitgewerkt voorbeeld...
-]
-
-#oefening(title: "Oefening 1")[
-  Bereken de kracht...
-]
-
-#examenbox[Vergeet niet de eenheden!]
-```
-
-### Formules (automatisch formularium)
-
-```typ
-#frm("Wet van Ohm", $U = I dot R$, [
-  $U$ = spanning (V), $I$ = stroomsterkte (A), $R$ = weerstand (Ω)
-])
-
-// Aan het einde van je document:
-#printformularium()
-```
-
-### Symbolen (automatisch symbolenlijst)
-
-```typ
-#sym($F$, "Kracht", "N")      // Eerste keer: toont uitleg
-#sym($F$, "Kracht", "N")      // Daarna: alleen symbool
-
-// Aan het einde van je document:
-#printsymbols()
-```
-
-### Code blokken (VS Code stijl)
-
-```typ
-#codeblock(lang: "python", title: "berekening.py")[
-  def hallo():
-      print("Hallo Ingenieurs!")
-]
-```
-
-### Tekst-markers
-
-```typ
-#term[belangrijke term]        // Blauw + bold
-#belangrijk[let op!]           // Rood + bold
-#TODO("dit moet nog aangevuld")
-#NOTE("opmerking")
-```
-
----
-
-## 🔢 Typst vs LaTeX — Snelle vergelijking
-
-| Wat        | LaTeX                         | Typst                       |
-| ---------- | ----------------------------- | --------------------------- |
-| Kop        | `\section{Titel}`             | `= Titel`                   |
-| Subkop     | `\subsection{Titel}`          | `== Titel`                  |
-| Vet        | `\textbf{tekst}`              | `*tekst*`                   |
-| Cursief    | `\textit{tekst}`              | `_tekst_`                   |
-| Wiskunde   | `$E = mc^2$`                  | `$E = m c^2$`               |
-| Breuk      | `\frac{a}{b}`                 | `$a / b$` of `$frac(a, b)$` |
-| Lijst      | `\begin{itemize}...\end{...}` | `- item`                    |
-| Genummerd  | `\begin{enumerate}...`        | `+ item`                    |
-| Commentaar | `% commentaar`                | `// commentaar`             |
-| Afbeelding | `\includegraphics{}`          | `#image("bestand.png")`     |
-
----
-
-## 📦 Externe packages
-
-De template importeert deze packages automatisch:
-
-| Package                    | Wat het doet                    | LaTeX equivalent |
-| -------------------------- | ------------------------------- | ---------------- |
-| `@preview/unify:0.7.1`     | Eenheden: `#qty(9.81, "m/s^2")` | `siunitx`        |
-| `@preview/physica:0.9.5`   | Afgeleiden, brakets             | `physics`        |
-| `@preview/cetz:0.4.2`      | Tekeningen                      | `tikz`           |
-| `@preview/cetz-plot:0.1.3` | Plots                           | `pgfplots`       |
-
----
-
-## 🎬 Video
-
-- 🎬 **[Typst voor Beginners](https://www.youtube.com/watch?v=NTGkb4FCLhM)** – De basis van hoe je documenten schrijft.
-
----
-
-## 🐛 Problemen?
-
-- **Fonts niet gevonden?** Zorg dat je stap 3 van de installatie hebt gedaan (fonts installeren).
-- **Hulp nodig?** Stuur een berichtje op de [Industria Discord](https://discord.gg/gsDzr5qhPe).
+_Heel erg gelijkaardig aan Markdown_
