@@ -6,12 +6,57 @@
 [![Discord](https://img.shields.io/badge/Discord-Join%20Server-5865F2?logo=discord&logoColor=white)](https://discord.gg/gsDzr5qhPe)
 ![VS Code](https://img.shields.io/badge/Editor-VS%20Code-007ACC?logo=visualstudiocode&logoColor=white)
 ![Git](https://img.shields.io/badge/Tool-Git-F05032?logo=git&logoColor=white)
+![Repo Size](https://img.shields.io/github/repo-size/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs)
+![Last Commit](https://img.shields.io/github/last-commit/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs)
 
 Welkom bij de samenvattingen voor Industriële Ingenieurswetenschappen aan de KU Leuven.
 
 Deze repository zijn mijn notities en samenvattingen die ik gemaakt heb door het jaar heen. Ik heb ze open-source gemaakt zodat medestudenten ze kunnen gebruiken maar ook zelf kunnen verbeteren als ze willen.
 
 ---
+
+## 📚 Vakkenoverzicht
+
+<!-- VAKKENOVERZICHT_START -->
+<details>
+<summary><strong>1ste jaar</strong></summary>
+
+- Nog geen vakken toegevoegd
+  </details>
+
+<details>
+<summary><strong>2de jaar</strong></summary>
+
+- Distributie van elektrische systemen
+- Ingenieur en economie oefeningen
+- math-systems
+- Object gericht-programmeren
+- Ontwerp van een industriële sturing
+- Productietechnologie
+- Statistiek en databeheer
+- Systeem en regeltechniek
+- Thermal fluid sciences
+- Toegepaste mechanica & dynamica
+- Warmte en stromingen
+- Wisselstroom
+  </details>
+
+<details>
+<summary><strong>3de jaar</strong></summary>
+
+- Eindige elementen gebaseerd ontwerp
+- Information Management
+- Manufacturing Technologies 2
+</details>
+  <!-- VAKKENOVERZICHT_END -->
+
+---
+
+## Contributors
+
+<a href="https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs" />
+</a>
 
 ## Kies je tool: LaTeX of Typst
 
@@ -51,16 +96,6 @@ Het moderne alternatief. Sneller, simpeler, en makkelijker te leren.
 </table>
 
 Ik heb heel de vs-code omgeving al klaargezet voor jou zodat alle extensies en instellingen je helpen om direct aan de slag te kunnen.
-
----
-
-## Contributors
-
-<a href="https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs" />
-</a>
-
----
 
 ## Stap 1: Software installeren
 
@@ -134,9 +169,15 @@ Een kort overzicht van de belangrijkste Git-termen voor als je nog niet bekend b
 
 VS Code zal rechtsonder vragen om de "Recommended Extensions" te installeren. Klik op **Install**.
 
----
-
 ## Stap 3: Werken aan een samenvatting
+
+### Voorbeeld van een samenvatting
+
+Hier zie je het resultaat. Dit is hoe de theorie (met wiskunde formules en kaders) er uiteindelijk uit komt te zien in je PDF bestand:
+
+<p align="center">
+  <img src="voorbeeldpagina.png" alt="Voorbeeldpagina van een samenvatting" width="300"/>
+</p>
 
 ### 1. Maak een nieuwe Branch
 
@@ -152,8 +193,6 @@ Werk bij voorkeur niet direct in de 'main' branch, maar maak een nieuwe branch a
 - Breng je wijzigingen aan.
 - **LaTeX PDF maken:** `Ctrl + Alt + B`, bekijken: `Ctrl + Alt + V`
 - **Typst preview:** Klik op het oogje rechtsboven
-
----
 
 ## Stap 4: Je werk delen
 
@@ -176,13 +215,9 @@ Werk bij voorkeur niet direct in de 'main' branch, maar maak een nieuwe branch a
 4. Klik op **Create Pull Request**.
 5. Een van de beheerders zal je aanvraag nakijken en toevoegen.
 
----
-
 ## Vaker bijdragen?
 
 Je kunt write-acces krijgen zodat je geen fork meer hoeft te maken. Als je vaak meer wilt werken aan de samenvattingen stuur dan een bericht naar @eggmansmile op de server [Industria Discord](https://discord.gg/gsDzr5qhPe).
-
----
 
 ## Hulp nodig?
 
@@ -190,8 +225,6 @@ Je kunt write-acces krijgen zodat je geen fork meer hoeft te maken. Als je vaak 
 - **[TYPST.md](TYPST.md)** — Typst installatie en handleiding
 - **[Debugging-van-building.md](Debugging-van-building.md)** — PDF bouwfouten oplossen
 - **[Industria Discord](https://discord.gg/gsDzr5qhPe)** — Stel je vraag aan @eggmansmile
-
----
 
 ## Handige links en video's
 
