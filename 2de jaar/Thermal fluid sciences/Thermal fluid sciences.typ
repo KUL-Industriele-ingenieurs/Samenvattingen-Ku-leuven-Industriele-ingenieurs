@@ -29,10 +29,15 @@
 
 // Symbol list and formularium are auto-generated
 
-
+#muchpdf(
+  read("Formularium.pdf", encoding: none),
+  width: 100%,
+  alt: "Formularium",
+)
 #printsymbols()
 #printformularium()
 
 #include "1.Info-vak.typ"
 #include "2.Steady state conductie.typ"
 #include "3.Convectie.typ"
+#include "4.External en internal forced convection.typ"
