@@ -394,6 +394,7 @@ $ E M F [V] = integral.cont arrow(E) dot d arrow(l) = - frac(d phi, d t) $
   caption: [induced emf in magnetic circuit],
   label: <fig:induced-emf-in-magnetic-circuit>,
 )[
+  Je ziet dat de spanning evenredig is met de verandering van de flux. Dus als de flux constant is dan is de spanning 0.
 
   $ v = "EMF" = N frac(d phi, d t) $
   $ = frac(d lambda, d t) = frac(d(l i), d t) = L dot frac(d i, d t) $
