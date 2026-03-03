@@ -241,7 +241,7 @@ door flow seperatie is het moeilijk om analytisch de flow te berekenen.
 
 
 #figure(
-  image("heat transfer coefficient bol en cilinder.png", width: 6cm),
+  image("heat transfer coefficient bol en cilinder.png", width: 4cm),
   caption: [heat transfer coefficient bol en cilinder],
   label: <fig:heat-transfer-coefficient-bol-en-cilinder>,
 )
