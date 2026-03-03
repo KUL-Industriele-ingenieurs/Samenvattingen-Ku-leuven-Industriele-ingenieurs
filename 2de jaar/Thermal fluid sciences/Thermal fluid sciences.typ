@@ -29,11 +29,11 @@
 
 // Symbol list and formularium are auto-generated
 
-#muchpdf(
-  read("Formularium.pdf", encoding: none),
-  width: 100%,
-  alt: "Formularium",
-)
+#for i in range(1, 20) {
+  page(margin: -2cm)[
+    #image("Formularium.pdf", width: 105%, alt: "Formularium", page: i)
+  ]
+}
 #printsymbols()
 #printformularium()
 
