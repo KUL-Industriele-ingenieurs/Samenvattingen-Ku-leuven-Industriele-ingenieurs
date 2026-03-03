@@ -6,17 +6,20 @@
 In deze les wordt er gezien hoe elektrische systemen worden opgesteld in de industrie.
 
 #concept(title: "Voltage verschil")[
-  #grid
-  #figure(
-    image("voltageverschil.png", width: 6cm),
-    caption: [voltageverschil],
-    label: <fig:voltageverschil>,
-  )
+  #grid(
+    columns: 2,
+    align: center,
+    figure(
+      image("voltageverschil.png", width: 6cm),
+      caption: [voltageverschil],
+      label: <fig:voltageverschil>,
+    ),
 
-  #figure(
-    image("stopcontact.png", width: 6cm),
-    caption: [stopcontact],
-    label: <fig:stopcontact>,
+    figure(
+      image("stopcontact.png", width: 6cm),
+      caption: [stopcontact],
+      label: <fig:stopcontact>,
+    ),
   )
 
   Een stopcontact heeft 3 pinnen:
@@ -185,4 +188,132 @@ In de figuur is het blokje links de PNP transistor. Als hij gesloten is gaat er 
   caption: [3-draad NPN sensor],
   label: <fig:3-draad-NPN-sensor>,
 )
+
+
+// Todo: Voeg toe van slides.
+#TODO[Voeg toe van slides]
+
+== Wanneer moet een switch NO/NC (normaal open/normaal gesloten) zijn?
+
+- In de onveilige toestand zal het besturingssysteem het gevaar stoppen. Een draadbreuk geeft een 0 aan de ingang en moet overeenkomen met de onveilige toestand.
+- De veilige toestand zal bijgevolg 1 zijn: een actief signaal aan de ingang komt overeen met de veilige toestand.
+- Het gebruik van "geen signaal" als bevestiging van een veilige situatie is onbetrouwbaar.
+
+#examenbox("Examenvraag")
+#voorbeeld(title: "Tank hoog en laag niveau alarm")[
+
+  #wrap-figure(
+    image("tank.png", width: 5cm),
+    caption: [tank],
+    label: <fig:tank>,
+  )[
+
+    We hebben een tank met twee vlotterschakelaars (float switches) om problemen te vermijden:
+
+    - *Pomp vult reservoir (Hoog niveau alarm)*:
+      - Water stijgt boven maximum = *ONVEILIG*.
+      - Geactiveerde schakelaar = onveilige toestand = 0.
+      - Niet-geactiveerd = 1 $arrow.r$ Dus *NC* (Normaal Gesloten).
+
+    - *Pomp haalt water uit reservoir (Laag niveau alarm)*:
+      - Zolang er genoeg water is = *VEILIG*. Het water activeert de schakelaar.
+      - Geactiveerde schakelaar = veilige toestand = 1.
+      - Niet-geactiveerd = 0 $arrow.r$ Dus *NO* (Normaal Open).
+
+    *Conclusie*: Een ingenieur bestelt een NC hoog niveau alarm en een NO laag niveau vlotterschakelaar.
+
+  ]
+]
+
+
+== Sensoren
+
+*Discrete sensoren*\
+Deze zijn gebasseerd op #keyterm[Mechanische beweging]. Ze hebben vaak volt free contacten. Dit is meestal een switch van de input voltage.
+
+- *Limit switches*: robust switches, mechanically operated by a roll on a lever.
+They are used to reliably detect less accurate positions, e.g. at the end of a conveyor belt.
+- *Level switch*: a switch operated by a float on a lever or a chain.
+- *Flow switch*: a membrane moves because of a pressure difference over an orifice.
+- *Thermal switch*: thermal reset or thermal cutout (TCO) or Klixon
+- *Proximity switches*: Contactless detection.
+
+
+*Proximity switches*\
+#wrap-figure(
+  image("proximity-switch.png", width: 5cm),
+  caption: [proximity-switch],
+  label: <fig:proximity-switch>,
+)[
+  *Optische sensor*\
+  Werkt met een LED en photo diode
+
+  Dit kan werken oftwel via een LED met photodiode. Die gaan rood of infrarood light sturen en bij reflectie kan die dat opnemen. Goed voor korte afstanden. Of met fibre-optic proximity-switch.
+
+  #figure(
+    image("fibre-optical proximity switch.png", width: 10cm),
+    caption: [fibre-optical proximity switch],
+    label: <fig:fibre-optical-proximity-switch>,
+  )
+
+
+  *Ultrasone sensor*\
+  Werkt met geluidsgolven. Terugkerende geluidsgolven worden opgevangen door de sensor. _heel universeel_
+
+  *Inductieve sensor*\
+  Werkt met magnetische velden. Een *Wisselend* magnetisch veld wordt opgewerkt en metaal dat dichtbij komt via #keyterm[eddy current] warmt dat metaal op. Dit kan de sensor opnemen. _detecteert alleen metaal_
+
+  *Capacitieve sensor*\
+  Werkt met *Wisselend* elektrische velden. Een object gaat en elektrisch veld verstoren en de capaciteit gaat veranderen. Die verandering kan gedetecteerd worden.
+
+  Het nadeel is dat het veel gevoeliger is voor de omgevingsfactoren. Een inductieve schakelaar detecteerd alleen *geleidende* objecten wat soms wensbaar is.
+
+  _Smartphones werken met dit effect als je het scherm aanraakt._
+]
+
+
+#wrap-figure(
+  image("reed contact.png", width: 5cm),
+  caption: [reed contact],
+  label: <fig:reed-contact>,
+)[
+  *Reed contact*\ magnetische sensor, binnenin de sensor is de piston cilinder gemagnetizeerd. Als er een magneet dichtbij komt gaat de piston cilinder magnetisch worden en de contacten gaan sluiten. je ziet dat je een N-pool en S-pool hebt op dat reed contact.
+
+
+  *Hall sensor*\
+
+  Gaat ook zoals een reed-sensor een magnetisch veld detecteren. _Concucerend met de reed-switch_
+
+  Er is geen enkele beweging in de sensor en kan het dus veel snellere frequenties $f$ aan. Reed contact hebben mechanische delen en dus kan het snelle schakelen niet aan.
+
+  #figure(
+    image("hall-effect sensor.png", width: 10cm),
+    caption: [hall-effect sensor],
+    label: <fig:hall-effect-sensor>,
+  )
+  Bekijk de slides _pg 40-57_ voor meer info over elke sensor.
+
+
+  #examenbox[Je moet deze sensoren op het examen kunnen geven en weten wanneer ze gebruikt worden, hoe ze werken en verschillen tussen de sensoren.]
+
+]
+
+#figure(
+  image("symbolen switches.png", width: 12cm),
+  caption: [symbolen switches],
+  label: <fig:symbolen-switches>,
+)
+
+== Interfacing components
+
+#TODO[Voeg toe van slides]
+// todo:voeg toe van slides.
+
+
+
+
+
+
+
+
 
