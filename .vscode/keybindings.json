@@ -1,6 +1,5 @@
 [
-    {
-        "key": "ctrl+alt+v",
+    // --- Image Paste Keybindings ---
         "command": "latex-utilities.formattedPaste.image",
         "when": "editorTextFocus && (editorLangId == 'latex' || editorLangId == 'tex')"
     },
