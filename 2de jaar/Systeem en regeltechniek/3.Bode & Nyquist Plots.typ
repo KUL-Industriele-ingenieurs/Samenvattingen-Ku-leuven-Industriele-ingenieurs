@@ -177,7 +177,7 @@ $ -arctan(1) = -45 deg $  (want $tan(45) = 1$)
 en we komen terug een mooie figuur uit. Je ziet in het midden dat je een hoek van 45° krijgt zoals in de berekeningen.
 
 #figure(
-  image("all-pole phase bode plot.png", width: 5cm),
+  image("all-pole phase bode plot.png", width: 10cm),
   caption: [all-pole phase bode plot],
   label: <fig:all-pole-phase-bode-plot>,
 )
