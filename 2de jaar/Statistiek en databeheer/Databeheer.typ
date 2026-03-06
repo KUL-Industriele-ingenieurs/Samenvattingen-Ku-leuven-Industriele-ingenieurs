@@ -30,7 +30,11 @@
 // Symbol list and formularium are auto-generated
 
 
-#muchpdf(read("SQL-cheat-sheet.pdf", encoding: none), width: 17cm, alt: "SQL Cheat Sheet")
+#for i in range(1, 3) {
+  page(margin: 1cm)[
+    #image("SQL-cheat-sheet.pdf", width: 100%, alt: "SQL Cheat Sheet", page: i)
+  ]
+}
 #include "1.Introductie-data.typ"
 #include "2.Het data-model.typ"
 #include "3.SQL.typ"

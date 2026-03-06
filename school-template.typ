@@ -11,7 +11,6 @@
 #let chart = chart
 #let plot = plot
 #import "@preview/wrap-it:0.1.1": wrap-content, wrap-top-bottom
-#import "@preview/muchpdf:0.1.2": muchpdf
 #import "@preview/equate:0.3.2"
 #import "@preview/cetz-venn:0.1.4"
 #import "@preview/oasis-align:0.3.3": *
@@ -114,7 +113,7 @@
   // Page setup
   set page(
     paper: "a4",
-    margin: (left: 2cm, right: 2cm, top: 2.5cm, bottom: 2.5cm),
+    margin: (left: 1.5cm, right: 1.5cm, top: 2cm, bottom: 2cm),
     numbering: "1",
     header: context {
       let page_num = counter(page).get().first()
