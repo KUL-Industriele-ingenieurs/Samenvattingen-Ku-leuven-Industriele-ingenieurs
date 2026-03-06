@@ -8,44 +8,42 @@ We gaan een notatie definiëren voor discrete random variabelen en de kansverdel
 
 == Random variable <sec:random-variable>
 
-Dit zijn gewoon manieren over hoe we de uitkomsten van een experiment kunnen voorstellen. Je kunt oftewel discrete of continue random variabelen hebben. Gewoon de namen voor oftewel #keyterm[natuurlijke getallen] of #keyterm[reële getallen].
+Dit zijn concepten die beschrijven hoe we de uitkomsten van een experiment voorstellen en of we deze uitkomsten kunnen _tellen_ of _meten_.
 
 #concept(title: "Random variable")[
 
-  Dit is een variable dat een numerieke waarde toekent aan elk mogelijke uitkomst van een experiment.
+  Dit is een variabele die een numerieke waarde toekent aan elke mogelijke uitkomst van een experiment.
 
-  Een kop of munt heeft 4 mogelijke uitkomsten:
+  Bijvoorbeeld, een serie van twee keer munt opgooien heeft 4 mogelijke uitkomsten:
   - Kop - Kop
   - Kop - Munt
   - Munt - Kop
   - Munt - Munt
 
-  De random variable X kan dan de volgende waarden aannemen:
+  Als de random variabele $X$ "het aantal keer kop" voorstelt, kan deze de volgende waarden aannemen:
   $ X = 2, 1, 1, 0 $
 
-  Je hebt hier twee types:
+  Je hebt bij random variabelen twee grote types:
 
-  + *discrete random variable*
+  + *Discrete random variable* (#keyterm[Tellen])
 
-    Dit is een element van de verzameling van alle #keyterm[natuurlijke getallen].
+    Dit zijn variabelen met uitkomsten die we kunnen *tellen* en die uitsluitend vaste, losstaande waarden aannemen. Er zitten als het ware gaten of "sprongen" tussen de mogelijke waarden. Ze behoren vaak tot de verzameling van de #keyterm[natuurlijke getallen].
     $ X = x_1, x_2, x_3, x_4 dots x_n $
 
+    Voorbeelden, dit zijn vaak "volledige" getallen:
+    - 0, 1, 2, 3...
+    - Aantallen van iets
+    - Aantal worpen, goals, ...
 
-    Dit zijn volledige numbers zoals:
-    - 1,2,3...
-    - aantallen van iets
-    - Worpen, goals, ...
+  + *Continue random variable* (#keyterm[Meten])
 
-  + *continue random variable*
-
-    Dit is een element van de verzameling van alle #keyterm[reële getallen].
+    Dit zijn variabelen die we over het algemeen *meten* en die niet telbaar zijn. Ze kunnen namelijk eender welke numerieke waarde aannemen binnen een bepaald interval (inclusief alle decimalen). Dit is een element van de verzameling van alle #keyterm[reële getallen].
     $ X epsilon.alt RR $
 
-    Dit zijn getallen met een oneindig aantal decimalen zoals:
+    Voorbeelden, dit zijn getallen waar in theorie oneindig veel decimalen op kunnen zitten:
     - 1,23456789...
-    - lengtes
-    - gewichten
-    - ...
+    - Lengtes of afstanden
+    - Gewichten, tijd of temperaturen
 ]
 
 == Kansverdeling van discrete random variables <sec:kansverdeling>
