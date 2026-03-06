@@ -155,7 +155,7 @@ $ = $
   label: <fig:time-delay>,
 )
 
-alleen zijn deze niet lineair
+Alleen zijn deze niet lineair
 
 $ "Amplitude":|e^(-s dot t_d)| = 1 $
 
