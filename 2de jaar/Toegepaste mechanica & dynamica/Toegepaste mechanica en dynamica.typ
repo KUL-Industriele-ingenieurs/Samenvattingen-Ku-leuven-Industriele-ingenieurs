@@ -30,6 +30,7 @@
 #include "2.Vlakke kinematica van een star lichaam.typ"
 #include "3.Relatieve beweging snelheid.typ"
 #include "4. Absolute beweging.typ"
+#include "5.Cilindrische coördinaten.typ"
 
 
 
