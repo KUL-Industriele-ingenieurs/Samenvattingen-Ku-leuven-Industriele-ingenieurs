@@ -3,13 +3,9 @@
 
 = Continue willekeurige variabelen <ch:continuee-willekeurige-variabelen>
 
-In het vorige hoofdstuk hebben we de kansberekening van #keyterm[discrete willekeurige variabelen] bekeken (aan de hand van de binomiale en de Poisson-verdeling). Dit zijn variabelen met uitkomsten die we kunnen *tellen* en die uitsluitend vaste, losstaande waarden aannemen (zoals $x = 0, 1, 2...$).
-
-In dit hoofdstuk stappen we over op #keyterm[continue willekeurige variabelen]. Dit zijn variabelen die we over het algemeen *meten* (bijv. tijd, temperatuur, lengte) en die niet telbaar zijn. Ze kunnen namelijk eender welke numerieke waarde aannemen binnen een bepaald interval (inclusief alle decimalen). We gaan hier de #keyterm[normale verdeling], #keyterm[Standaard normaal verdeling] en de #keyterm[uniforme verdeling] bekijken.
-
 #concept(title: "Discreet vs. Continu")[
-  - *Discreet = "Telbaar" (Meestal gehele getallen)*: De waarden staan los van elkaar. Er zitten "gaten" of "sprongen" tussen de mogelijke uitkomsten (bv. aantal auto's, aantal keren kop). Omdat we dingen *tellen*, zijn dit in de meeste statistiek-voorbeelden gehele getallen ($0, 1, 2, 3...$). Ook getallenreeksen zoals schoenmaten (38, 38.5, 39, 39.5) zijn discreet, zolang je van de ene naar de volgende waarde "springt".
-  - *Continu = "Ononderbroken" (Reële getallen)*: De waarden lopen vloeiend door zonder onderbrekingen. Tussen élke twee waarden zit nog een oneindig aantal andere waarden. Omdat je het over het algemeen *meet* (bv. tijd, gewicht, lengte), word je in de theorie enkel beperkt door het aantal decimalen. Dit komt overeen met de verzameling van de reële getallen ($RR$).
+  - *Discreet = "Telbaar" (Meestal gehele getallen)*: In het vorige hoofdstuk hebben we de kansberekening van #keyterm[discrete willekeurige variabelen] bekeken (binomiale en Poisson-verdeling). Dit zijn variabelen met uitkomsten die we kunnen *tellen* en die uitsluitend vaste, losstaande waarden aannemen (zoals $x = 0, 1, 2...$). Er zitten "gaten" of "sprongen" tussen de mogelijke uitkomsten (bv. aantal auto's, aantal keren kop). Ook getallenreeksen zoals schoenmaten (38, 38.5, 39, 39.5) zijn discreet, zolang je van de ene naar de volgende waarde "springt".
+  - *Continu = "Ononderbroken" (Reële getallen)*: In dit hoofdstuk stappen we over op #keyterm[continue willekeurige variabelen]. Dit zijn variabelen die we over het algemeen *meten* (bijv. tijd, temperatuur, lengte) en die niet telbaar zijn. De waarden lopen vloeiend door zonder onderbrekingen. Tussen élke twee waarden zit nog een oneindig aantal andere waarden. Ze zijn irrationaal (Niet omzetbaar in een fractie _ $1/2$_) en kunnen eender welke numerieke waarde aannemen binnen een bepaald interval (inclusief alle decimalen). Dit komt overeen met de verzameling van de reële getallen ($RR$). We gaan hier de #keyterm[normale verdeling], #keyterm[Standaard normaal verdeling] en de #keyterm[uniforme verdeling] bekijken.
 ]
 
 #figure(
