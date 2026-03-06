@@ -30,11 +30,11 @@
 // Symbol list and formularium are auto-generated
 
 
-#muchpdf(
-  read("StatisticsFormulaChart.pdf", encoding: none),
-  width: 20cm,
-  alt: "Statistics Formula Chart",
-)
+#for i in range(1, 12) {
+  page(margin: 1cm)[
+    #image("StatisticsFormulaChart.pdf", width: 100%, alt: "Statistics Formula Chart", page: i)
+  ]
+}
 #printformularium()
 #include "1.Intro-statistiek.typ"
 #include "2.Probabiliteit.typ"
