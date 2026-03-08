@@ -37,11 +37,14 @@
 #include "1.Introductie.typ"
 #include "2.Intro transformatoren.typ"
 #include "3.De ideale transformator.typ"
+#include "4.Reële transformator.typ"
+
 
 // Netten
 #chapter_page("Netten", label: <ch:netten>)
 
 #include "1.Introductie.typ"
 #include "2.Het elektrische net.typ"
+#include "3.Bescherming lage voltage net.typ"
 
 // Oefeningen

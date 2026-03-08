@@ -9,30 +9,30 @@ In dit hoofdstuk bestuderen we alle effecten van transformatoren. We nemen geen 
   image("idealtransform.png", width: 5cm),
   caption: [idealtransform],
   label: <fig:idealtransform>,
-)[We leggen een *AC-spanning* aan op de primaire wikkeling. Hierdoor ontstaat er een *wisselende magnetische flux* in de kern. Deze wisselende magnetische flux induceert dan weer een *wisselende spanning* op de secundaire wikkeling. Dit is het principe van de *elektromagnetische inductie*.
+)[We leggen een *AC-spanning* aan op de primaire wikkeling. Hierdoor ontstaat er een *wisselende magnetische flux* in de kern. Deze wisselende magnetische flux induceert dan weer een *wisselende spanning* op de secundaire wikkeling.\ Dit is het principe van de *elektromagnetische inductie*.
 
-  $v_1 = V_1 dot cos(omega t)$
+  $ v_1 = V_1 dot cos(omega t) $
 
   Het resulterende magnetisch veld is:
 
-  $v_2 = frac(N_2, N_1) v_1 = frac(N_2, N_1) V_1 dot cos(omega t)$
-  $= V_2 dot cos(omega t)$$$
+  $ v_2 = frac(N_2, N_1) v_1 = frac(N_2, N_1) V_1 dot cos(omega t) $
+  $ = V_2 dot cos(omega t) $
 ]
 
 We gaan moeten integreren.
 
-$phi = 1/(N_1) integral.cont_0^t v_1 d t = V_1/(omega N_1) sin(omega t)$
+$ phi = 1/(N_1) integral.cont_0^t v_1 d t = V_1/(omega N_1) sin(omega t) $
 
-$= V_2/(omega N_2) sin(omega t) + phi_(D C)$
+$ = V_2/(omega N_2) sin(omega t) + phi_(D C) $
 
-$N phi = frac(V, omega) arrow.r.double phi = frac(V, omega N)$
+$ N phi = frac(V, omega) arrow.r.double phi = frac(V, omega N) $
 
 We zien dat $phi$ 90 graden achterloopt op $v_1$ en $v_2$.
 
 #figure(
   cetz.canvas({
     plot.plot(
-      size: (10, 4),
+      size: (6, 3),
       x-tick-step: 1.5708,
       y-tick-step: 1,
       x-min: -0.5,
@@ -76,9 +76,10 @@ We zien dat $phi$ 90 graden achterloopt op $v_1$ en $v_2$.
 == Loads
 
 === No load
+geen enkele weerstand gezet op de secundaire wikkeling dus de enige weerstand $R_c$ is de weerstand van de kern.
 
 #figure(
-  image("no load.png", width: 5cm),
+  image("no load.png", width: 6cm),
   caption: [no load],
   label: <fig:no-load>,
 )
@@ -87,7 +88,7 @@ Herinner je Hopkinson's wet:
 
 $N_1 i_1 - N_2 i_2 = H l = phi dot R_c$
 
-maar wezetten geen load na de transformator, dus $i_2 = 0$.
+maar we weten dat er geen load is op de secundaire winding, dus $i_2 = 0$.
 
 $ i_1 = phi dot R_c / N_1 $
 
@@ -97,26 +98,63 @@ We hebben een ideale transformator, dus $R_c = 0 (mu -> infinity)$ dus $arrow.r.
 
 
 #wrap-figure(
-  image("loaded-transformer.png", width: 5cm),
+  image("loaded-transformer.png", width: 6cm),
   caption: [loaded-transformer],
   label: <fig:loaded-transformer>,
 )[
   Er is nu wel een spanning over de secundaire wikkeling, dus er zal ook een stroom lopen.
 
-  $v_1 arrow.r.double phi$
+  $ v_1 arrow.r.double phi $
 
-  $v_2 = N_2/N_1 v_1$
+  $ v_2 = N_2/N_1 v_1 $
 
-  $i_2 = N_1/N_2 i_1$
+  $ i_2 = N_1/N_2 i_1 $
 
-  $v_2 arrow.r.double i_2$
+  $ v_2 arrow.r.double i_2 $
 ]
 
 #figure(
-  image("loaded transformer.png", width: 8cm),
+  image("loaded transformer.png", width: 5cm),
   caption: [loaded transformer],
   label: <fig:loaded-transformer>,
 )
 
 == Phasors (herhaling)
+
+Phasors helpen om wisselstromen weer te geven. We nemen aan bij phasoren dat de frequentie $f$ gelijk blijft over verschillende stromen en voltages. Als dit zo is dan kunnen we het begin van de stroom of voltage weergeven als een vector in het reël $RR$ en imaginair deel $ZZ$. _Zie wisselstroom_ waar het ook veel is toegepast.
+
+$ e^(j theta) = underbrace(cos(theta), "Reëel") + j underbrace(sin(theta), "Imaginair") $
+
+
+#align(center)[
+  #table(
+    columns: 3,
+
+    align: (center, center, center),
+    [Time domain], [x(t)], [$hat(X) cos(omega t + theta)$],
+    [Phase domain], [$hat(X)$], [$hat(X)e^(j theta)$],
+  )
+]
+
+
+
+
+
+
+
+//todo voeg voorbeeld toe phasor
+
+
+
+#voorbeeld(title: "Voltage en flux")[
+
+  $ v = N frac(d phi, d t) $
+
+  $ arrow.t.b.double $
+
+  $ underline(V) = j omega N phi arrow.r phi = frac(underline(V), j omega N) = -j frac(underline(V), omega N) $
+
+  //add phasor diagram
+
+]
 
