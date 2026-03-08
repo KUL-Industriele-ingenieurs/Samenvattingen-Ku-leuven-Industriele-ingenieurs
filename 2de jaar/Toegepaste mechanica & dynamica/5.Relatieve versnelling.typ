@@ -63,3 +63,6 @@ $ arrow.b.double $
 $ a_B = a_A + a_frac(B, A, style: "horizontal")t + a_frac(B, A, style: "horizontal")n $
 $ arrow.b.double $
 $ a_B = a_A + alpha crossproduct r_frac(B, A, style: "horizontal") - omega^2 r_frac(B, A, style: "horizontal") $
+
+== Oefeningen
+#TODO[oefeningen toevoegen]
