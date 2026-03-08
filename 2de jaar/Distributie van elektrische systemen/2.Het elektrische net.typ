@@ -72,7 +72,7 @@ We hebben het over *Hoge spanningen* in dit vak en in de industrie.
 
 
 #wrap-figure(
-  image("optimalisatie.png", width: 7cm),
+  image("optimalisatie.png", width: 6cm),
   caption: [optimalisatie],
   label: <fig:optimalisatie>,
 )[
@@ -176,19 +176,19 @@ Mesh net is het omgekeerde van een radiaal net. Het is een netwerk van verbonden
 
   $ S^2 = P^2 + Q^2 $
 
-  * 1-wattmethode met nulpuntsverbinding (1WMM+N)*
+  * 1-wattmethode met nulpuntsverbinding (1WMM+N)*\
   Toepasbaar bij symmetrische belastingen met beschikbare neutraalgeleider ($N$).
   $ P_("tot") = 3 dot P_m = 3 dot V_f dot I_f dot cos(phi) $
 
-  * 1-wattmethode zonder nulpuntsverbinding (1WMMØN)*
+  * 1-wattmethode zonder nulpuntsverbinding (1WMMØN)*\
   Toepasbaar bij symmetrische belastingen zonder $N$. De wattmeter meet het actieve ($P_m$) of reactieve ($Q_m$) aandeel via een fase-verschoven verbinding (bijv. $I$ in $L_1$ en $V$ tussen $L_2$ en $L_3$).
   $ P_("tot") = sqrt(3) dot Q_m \ Q_("tot") = sqrt(3) dot P_m $
 
-  * 3-wattmetermethode (3WMM)*
+  * 3-wattmetermethode (3WMM)*\
   Universele methode (ook voor asymmetrische belastingen). Vereist een (artificieel) nulpunt.
   $ P_("tot") = P_1 + P_2 + P_3 $
 
-  * 2-wattmetermethode (Schakeling van Aron)*
+  * 2-wattmetermethode*\
   Toepasbaar bij 3-dradensystemen (geen $N$ nodig). Werkt voor zowel symmetrische als asymmetrische belastingen.
   $ P_("tot") = P_1 + P_2 \ Q_("tot") = sqrt(3) dot (P_2 - P_1) $
 ]
@@ -221,11 +221,6 @@ Mesh net is het omgekeerde van een radiaal net. Het is een netwerk van verbonden
     content("Vab.end", [$underline(V)_"ab" (+30deg)$], anchor: "south-west")
   }),
 )
-
-#oefening(title: "2-watt methode")[
-
-]
-
 
 
 

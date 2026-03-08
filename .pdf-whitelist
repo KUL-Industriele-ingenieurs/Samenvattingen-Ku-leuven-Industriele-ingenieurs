@@ -1,7 +1,0 @@
-# Whitelist for reference PDFs
-# Add one path per line (paths relative to repo root).
-# Example:
-# 2de jaar/math-systems/reference-diagram.pdf
-# To whitelist a file and commit that whitelist:
-#   echo "2de jaar/math-systems/reference-diagram.pdf" >> .pdf-whitelist
-#   git add .pdf-whitelist && git commit -m "chore: whitelist reference PDF: 2de jaar/math-systems/reference-diagram.pdf"
