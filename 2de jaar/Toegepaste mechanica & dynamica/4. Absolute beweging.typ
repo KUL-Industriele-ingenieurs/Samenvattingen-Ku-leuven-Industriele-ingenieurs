@@ -86,7 +86,6 @@ Maar als zoeken eigenlijk het punt waarbij $v_A = 0$ zodat we minder moeten bere
 
 ]
 
-
 Je ziet dat $arrow(v_E)$ = $0$. Dit is ons OR. Dit punt gaat dus niet bewegen in onze omgeving. dit maakt onze formule hierboven veel makkelijker omdat een term wegvalt. Al de punten kunnen we aannemen dat ze een rotatie maken rond E.
 
 Dit is alleen ogenblikkelijk geldig omdat punt E hierna terug gaat bewegen. Punt A en B gaan bewegen en dus de kruising van vectoren gaat ook verplaatsen.
@@ -96,12 +95,16 @@ Dit is alleen ogenblikkelijk geldig omdat punt E hierna terug gaat bewegen. Punt
 Hoe vindt je nu de OR?
 
 #figure(
-  image("Alle methodes OR.png", width: 6cm),
+  image("Alle methodes OR.png", width: 10cm),
   caption: [Alle methodes OR],
   label: <fig:Alle-methodes-OR>,
 )
 
 Dit hangt af van oefening tot oefening maar alles hangt af van de vector van de snelheid en de rotatie. Onthoud dat rond een OR alle punten gaan roteren errond.
+
+Dus belangrijk als je een OR hebt dan valt de relatieve snelheid tegenover het andere punt af en is de formule simpel
+
+$ v_B = r_(frac(B, O R, style: "horizontal")) crossproduct omega $
 
 
 #TODO("Add oefening 1")\
