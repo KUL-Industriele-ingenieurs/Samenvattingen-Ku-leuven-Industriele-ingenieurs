@@ -2,12 +2,15 @@
 
 = Relatieve bewegingsanalyse met roterende assen
 
+tot nu toe hebben we dit allemaal gezien:
 
-
+- $ arrow(v_B) = arrow(v_A) + omega crossproduct arrow(r_frac(B, A, style: "horizontal")) $
+- $ arrow(a_B) = arrow(a)_A + arrow(a)_frac(B, A, style: "horizontal") $
+- $$
 #frm(
   "Relatieve bewegingsanalyse snelheidsvergelijking",
   [
-    #v(1em)
+    #v(2em)
     $
       arrow(v_B) = mark(arrow(v_A), tag: #<vA>, color: #orange)
       + mark(arrow(Omega) crossproduct arrow(r_(B/A)), tag: #<hoeksnelheid-v>, color: #purple)
@@ -16,7 +19,7 @@
       #annot(<hoeksnelheid-v>, pos: top, dy: -1em)[hoeksnelheid \\ v/h bewegende \\ assenstelsel]
       #annot(<relatief-v>, pos: bottom, dy: 1em)[relatieve beweging \\ in assenstelsel]
     $
-    #v(4em)
+    #v(1em)
   ],
   [
     met $arrow(v_B)$ de snelheid van punt B in het vaste assenstelsel,
@@ -30,7 +33,7 @@
 #frm(
   "Relatieve bewegingsanalyse versnellingvergelijking",
   [
-    #v(1em)
+    #v(2em)
     $
       arrow(a_B) = mark(arrow(a_A), tag: #<aA>, color: #orange)
       + mark(arrow(dot(Omega)) crossproduct arrow(r_(B/A)), tag: #<hoekversnelling>, color: #blue)
@@ -43,7 +46,7 @@
       #annot(<coriolis>, pos: top, dy: -0.5em)[interactie: \\ hoeksnelheid assenstelsel \\ + relatieve snelheid \\ in assenstelsel]
       #annot(<relatief>, pos: bottom, dy: 1em)[relatieve beweging \\ in assenstelsel]
     $
-    #v(5em)
+    #v(2em)
   ],
   [
     met $arrow(a_B)$ de versnelling van punt B in het vaste assenstelsel,
@@ -51,14 +54,14 @@
     $arrow(Omega)$ de hoeksnelheid van het roterende assenstelsel ten opzichte van het vaste assenstelsel,
     $arrow(r_(B/A))$ de positie van punt B ten opzichte van punt A in het roterende assenstelsel,
     $(arrow(v_(B/A)))_(x y z)$ de snelheid van punt B ten opzichte van punt A in het roterende assenstelsel, uitgedrukt in de basisvectoren van het roterende assenstelsel,
-    $(arrow(a_(B/A)))_(x y z)$ de versnelling van punt B ten opzichte van punt A in het roterende assenstelsel, uitgedrukt in de basisvectoren van het roterende assenstelsel
+    $arrow(a)_(frac(A, B, style: "horizontal"))_(x y z)$ de versnelling van punt B ten opzichte van punt A in het roterende assenstelsel, uitgedrukt in de basisvectoren van het roterende assenstelsel
   ],
 )
 
 
 #oefening(title: "Oefening 1: 16.18")[
   #figure(
-    image("Oefening 16.18.png", width: 8cm),
+    image("Oefening 16.18.png", width: 10cm),
     caption: [Oefening 16.18],
     label: <fig:Oefening-16.18>,
   )

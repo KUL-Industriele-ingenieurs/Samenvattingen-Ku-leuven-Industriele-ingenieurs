@@ -201,13 +201,5 @@
     "pasteImage.forceUnixStyleSeparator": true,
     "pasteImage.prefix": "",
     "pasteImage.insertPattern": "#figure(\n  image(\"${imageFileName}\", width: 5cm),\n  caption: [${imageFileNameWithoutExt}],\n  label: <fig:${imageFileNameWithoutExt}>,\n)",
-    "pasteImage.filePathConfirmInputBoxMode": "onlyName",
-    // --- Excalidraw Configuration ---
-    // Note: Excalidraw in VS Code is a webview wrapper. Tool defaults (pen, highlighter, stroke width)
-    // are managed within the Excalidraw web app UI, not through VS Code settings.
-    "excalidraw.image": {
-        "exportScale": 1,
-        "exportWithBackground": true,
-        "exportWithDarkMode": true
-    }
+    "pasteImage.filePathConfirmInputBoxMode": "onlyName"
 }
