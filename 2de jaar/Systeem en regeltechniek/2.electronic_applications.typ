@@ -6,6 +6,9 @@
 
   Je hebt meerdere soorten filters
   - *Low pass filter*: Laat alleen lage frequenties door $arrow.r.double$ 1 cut-off frequentie.
+  $ lim_(s->0) H(s) = 1 $
+  $ lim_(s-infinity) = 0 $
+
   - *High pass filter*: Laat alleen hoge frequenties door $arrow.r.double$ 1 cut-off frequentie.
   - *Band pass filter*: Laat alleen een bandbreedte aan frequenties door $arrow.r.double$ 2 cut-off frequenties.
   - *Band stop filter*: Laat alleen een bandbreedte aan frequenties tegen $arrow.r.double$ 2 cut-off frequenties.
