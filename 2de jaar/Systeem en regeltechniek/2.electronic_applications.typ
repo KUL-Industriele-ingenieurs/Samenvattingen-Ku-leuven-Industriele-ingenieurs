@@ -7,7 +7,7 @@
   Je hebt meerdere soorten filters
   - *Low pass filter*: Laat alleen lage frequenties door $arrow.r.double$ 1 cut-off frequentie.
   $ lim_(s->0) H(s) = 1 $
-  $ lim_(s-infinity) = 0 $
+  $ lim_(s->infinity) H(s) = 0 $
 
   - *High pass filter*: Laat alleen hoge frequenties door $arrow.r.double$ 1 cut-off frequentie.
   - *Band pass filter*: Laat alleen een bandbreedte aan frequenties door $arrow.r.double$ 2 cut-off frequenties.
@@ -49,8 +49,6 @@ Een spoel gaat een voltage opleggen afhankelijk van de verandering van de stroom
 $ V = i dot R $
 $ "Laplace" integral -> 1/s $
 $ "Laplace" d/(d t) -> s $
-
-
 
 
 #figure(
