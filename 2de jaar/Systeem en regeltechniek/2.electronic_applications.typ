@@ -142,7 +142,7 @@ We zoeken naar *de transferfunctie* $H(s)$ dat betekent dat er dus geen enkele b
 
   Dit is net hetzelfde als bij mechanische systemen
 
-  $ ~ H(s) = Y(s) / X(s) $
+  $ ~ H(s) = Y(s) / X(s) = frac("out", "in") $
 
   *Oplossing*:
 
@@ -167,12 +167,22 @@ We zoeken naar *de transferfunctie* $H(s)$ dat betekent dat er dus geen enkele b
 
   *Gegeven*: Een RC-circuit met weerstand $R$ in serie en condensator $C$ naar ground. De uitgangsspanning $v_o$ wordt gemeten over $C$.
   #figure(
-    image("low-pass filter.png", width: 5cm),
+    image("low-pass filter.png", width: 6cm),
     caption: [low-pass filter],
     label: <fig:low-pass-filter>,
   )
 
   *Transferfunctie*
+
+  We stellen eerst zonder laplace onze vergelijking op zodat het duidelijk is wat we aan het doen zijn:
+
+  KLC bij de knoop $v_o$:
+
+  $ v_o = 1/c integral i d t arrow.r.double i = c (d v_o)/(d t) $
+  $ (v_o - v_i) / R + c (d v_o)/(d t) = 0 $
+  $ arrow.b.double ("laplace") $
+  $ (V_o (s) - V_i (s))/ R + s C V_o (s) = 0 $
+  $ arrow.r.double H(s) = V_o(s) / V_i(s) = 1 / (s R C + 1) $
 
   Uit de spanningsdeler met $Z_1 = R$ en $Z_2 = 1/(s C)$:
 
@@ -240,6 +250,7 @@ We zoeken naar *de transferfunctie* $H(s)$ dat betekent dat er dus geen enkele b
     }),
     caption: [Bode magnitude plot van een eerste orde RC low-pass filter],
   )
+
 ]
 
 #oefening(title: "High pass filter")[
@@ -253,6 +264,9 @@ We zoeken naar *de transferfunctie* $H(s)$ dat betekent dat er dus geen enkele b
   )
 
   *Transferfunctie*
+
+
+  We stellen een spanningdeler op zodat we het fractie tussen de ingang en uitgang kunnen berekenen:
 
   Uit de spanningsdeler met $Z_1 = 1/(s C)$ en $Z_2 = R$:
 

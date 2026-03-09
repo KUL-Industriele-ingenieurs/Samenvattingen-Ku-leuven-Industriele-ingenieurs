@@ -39,13 +39,13 @@ Dit is het einddoel van dit vak.
 Er is dus constante feedback van de temperatuur waardoor het systeem geregeld kan worden.
 
 #figure(
-  image("systeemanalyse-overzicht.png", width: 6cm),
+  image("systeemanalyse-overzicht.png", width: 8cm),
   caption: [Overzicht systeemanalyse],
 ) <fig:systeemanalyse>
 
 Je maakt systemen in de tijd met differentiële vergelijkingen. Je analyseert systemen met Laplace transformaties.
 
-#let fig-laplace = image("laplace-transformatie.png", width: 5cm)
+#let fig-laplace = image("laplace-transformatie.png", width: 8cm)
 #let boxed-laplace = box(fig-laplace, inset: (right: 0.5em, bottom: 0.5em))
 
 #wrap-content(boxed-laplace)[
@@ -94,13 +94,16 @@ Je maakt systemen in de tijd met differentiële vergelijkingen. Je analyseert sy
 
   *Stap 4 — Transferfunctie afleiden:*
 
-  Deel teller en noemer door $m$ om de standaardvorm te bekomen:
-  Net zoals bij MATHSYS.
   $ H(s) = Y(s)/X(s) $
-  $ arrow.r.double H(s) = frac(V(s), F(s)) = frac(1, m s + beta) = frac(1 slash m, s + beta slash m) $
+  $ arrow.r.double H(s) = frac(V(s), F(s)) = frac(1, m s + beta) $
 
-  We herkennen de standaardvorm van een eerste orde systeem $ H(s) = frac(K_(d c), tau s + 1) $ met:
-  $ K_(d c) = frac(1, beta) quad quad tau = frac(m, beta) $
+  Om de standaardvorm $H(s)=frac(K_(d c), tau s + 1)$ te krijgen, delen we teller
+  en noemer door $beta$ (dit is de DC‑versterking van het systeem):
+
+  $ H(s) = frac(1 slash beta, (m slash beta) s + 1) $
+
+  We herkennen dan direct:
+  $ K_(d c) = frac(1, beta) quad quad tau = frac(m, beta) $.
 
   *Stap 5 — Systeemeigenschappen bepalen:*
 
@@ -324,7 +327,7 @@ Het teken van $(zeta^2 - 1)$ bepaalt het type polen:
 ) <fig:stapresponsie-tweede-orde>
 
 #figure(
-  image("pool-nulpunten-kaart.png", width: 60%),
+  image("pool-nulpunten-kaart.png", width: 65%),
   caption: [Pool-nulpunten kaart voor tweede orde systeem],
 ) <fig:pool-nulpunten-kaart>
 
@@ -335,7 +338,7 @@ met:
 $ omega_n = sqrt(k / m) quad quad zeta omega_n = frac(c, m) quad quad zeta = frac(c, 2 sqrt(k m)) $
 
 #oefening(title: "Oefening tweede orde systeem")[
-  #let fig-oef2 = image("oefening-tweede-orde.png", width: 10cm)
+  #let fig-oef2 = image("oefening-tweede-orde.png", width: 8cm)
   #let boxed-oef2 = box(fig-oef2, inset: (right: 0.5em, bottom: 0.5em))
 
   #wrap-content(boxed-oef2)[
