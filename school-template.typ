@@ -231,7 +231,7 @@
 // --- Custom Boxes (Mirrors tcolorbox schoolbox) ---
 
 #let schoolbox(title, color, icon, body, bg: white) = {
-  v(12pt)
+  v(8pt)
   // Title strip
   block(
     width: 100%,
@@ -261,12 +261,12 @@
       top: 0.5pt + color,
     ),
     radius: (bottom-left: 2pt, bottom-right: 2pt, top-right: 2pt),
-    inset: 12pt,
+    inset: 8pt,
     above: 0pt,
     breakable: true,
     body,
   )
-  v(12pt)
+  v(8pt)
 }
 
 #let theorie(title: "Theorie", body) = schoolbox(title, schoolBlue, "📘", body)
@@ -280,7 +280,7 @@
 // --- Code Block (VS Code Style) ---
 
 #let codeblock(lang: "txt", title: none, body) = {
-  v(12pt)
+  v(8pt)
   block(
     width: 100%,
     clip: true,
@@ -325,7 +325,7 @@
       )
     ],
   )
-  v(12pt)
+  v(8pt)
 }
 
 // --- Math Helpers ---

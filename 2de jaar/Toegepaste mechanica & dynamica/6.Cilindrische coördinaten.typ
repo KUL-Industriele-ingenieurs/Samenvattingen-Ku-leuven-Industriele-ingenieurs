@@ -1,30 +1,118 @@
 #import "../../school-template.typ": *
 
-= Cilindrische PoolCoördinaten <ch:cilindrische-poolcoördinaten>
+= Cilindrische Poolcoördinaten <ch:cilindrische-poolcoördinaten>
 
-PoolCoördinaten zijn al gezien geweest in dynamica en wiskundige modellen. Poolcoördinaten
-gaan inplaats van met $x,y, z$ die punten zijn in onze coördinaat systeem zijn gaan we een vector $arrow(r)$ definieren en dan met hoeken onze dimensies aanduiden
+Een vector kan uitgedrukt worden in verschillende soorten systemen. Vorige hoofdstukken hebben we het rechthoekige assenstelsel (x,y) gezien maar nu gaan we verder met poolcoördinaten (r,$theta$). _Poolcoördinaten zijn al gezien geweest in dynamica en wiskundige modellen._
 
-$ arrow(r) = r arrow(u_r) $
-met $u_r$ de eenheidsvector in de richting van r en $r$ de afstand tot de oorsprong.
+#wrap-figure(
+  image("poolcoördinaten.png", width: 7cm),
+  caption: [poolcoördinaten],
+  label: <fig:poolcoördinaten>,
+)[
 
-weet dat $(dot(x))$ de afgeleide van $x$ is
+  == Positie <sec:positie>
+  We hebben onze plaatsvector aangeduid met vector $arrow(r)$ met de richting van de vector aangeduid met een hoek $theta (r a d)$.
 
-$ arrow(v) = dot(r) arrow(u_r) + r dot(theta) arrow(u_theta) 0 $
-$ = v_1 dot u_1 + V_theta dot u_theta $
+  Er is voor $r$ een eenheidsvector $arrow(u_r)$ en ook voor de hoek $theta$ een eenheidsvector $arrow(u_theta)$ waarbij $arrow(u_theta)$ loodrecht op $arrow(u_r)$ is.
 
-$ arrow(a) = a_r dot u_r + a_theta dot u_theta $
-$ = (d dot(r) - r dot(theta)^2) arrow(u_r) + (r d dot(theta) + 2 dot(r) dot(theta)) arrow(u_theta) $
+  == Snelheid <sec:snelheid>
+  Net zoals vorige hoofdstukken is het gewoon afleiden van onze plaatsvector over de tijd $d/(d t)$
+  $
+    arrow(v) = underbrace(arrow(dot(r)), r dot arrow(u_r)) overbrace(=, "kettingregel")dot(r)arrow(u_r) + r dot arrow(dot(u_r))
+  $
 
-$a_1 = d dot(dot(r)) - r dot(theta)^2$
-$a_2 = r d dot(dot(theta)) + 2 dot(r) dot(theta)$
+  Afleiden van een vector is niet zo makkelijk dus we gaan een visuele analyse doen.
+]
+
+#wrap-figure(
+  image("cilindrische-afgeleiden.png", width: 7cm),
+  caption: [cilindrische-afgeleiden],
+  label: <fig:cilindrische-afgeleiden>,
+)[
+
+  We kunnen over intifisitimale veranderingen bekijken.
+
+  $ u_r' = u_r + Delta u_r $
+  $ u_theta' = u_theta + Delta u_theta $
+
+  Voor kleine verandereingen $Delta u_r$ en $Delta u_theta$ kunnen we zeggen:
+
+  $
+    Delta arrow(u_r) approx underbrace(||Delta arrow(u_r)||, 1) Delta theta arrow(u_theta) = Delta theta arrow(u_theta)
+  $
+
+  Laten we dit invullen in onze vorige formule en de definitie van afgeleiden nemen
+
+  $ u_r' = u_r + Delta u_r = u_r + Delta theta arrow(u_theta) $
+]
+$
+  u_r' = u_r lim_(Delta t -> 0) (Delta u_r)/(Delta t) = (lim_(Delta t -> 0) Delta theta arrow(u_theta))/(Delta t) u_theta
+$
+
+$ markhl(arrow(v) = underbrace(dot(r), v_r dot arrow(u_r)) + underbrace(r dot(theta), v_theta dot arrow(u_theta))) $
+
+met $v_r$ de snelheid en $v_theta$ de hoeksnelheid. Je hebt twee delen je #keyterm[transversaal deel] en je #keyterm[hoekverandering].
+
+$ v_r = dot(r) $
+$ v_theta = r dot(theta) $
+
+$ v = v_r dot arrow(u_r) + v_theta arrow(u_theta) $
+Omdat de vectoren loodrecht op elkaar staan kan je de snelheid simpel vinden door de pythagoras te gebruiken:
+
+$ v = sqrt(v_r^2 + v_theta^2) = sqrt(dot(r)^2 + (r dot(theta))^2) $
+
+Dan kom je een vector uit
 
 
-*Cilindrische coördinaten*\
-Hieribij gaan we met $r,z, theta$ werken dus we hebben nog twee afstandvectoren en een thetavector.
+== Versnelling <sec:versnelling>
+
+Opnieuw hetzelfde _We maken niet heel de afleiding opnieuw heel gelijkaardig aan afleiding snelheid_
+
+#wrap-figure(
+  image("cilindrisch versnelling.png", width: 5cm),
+  caption: [cilindrisch versnelling],
+  label: <fig:cilindrischversnelling>,
+)[
 
 
-*Soort problemen*\
+  $
+    arrow(a) = a_r arrow(u_r) + a_theta arrow(u_theta)
+  $
+  met $a_r$ en $a_theta$ de versnelling in de richting van $arrow(u_r)$ en $arrow(u_theta)$:
+
+  $
+    a_r = dot.double(r) + r dot.double(theta)
+  $
+  $
+    a_theta = r dot.double(theta) + 2 dot(r) dot(theta)
+  $
+
+  #examenbox[Je moet deze niet van buiten kennen je vindt ze op het formularium. Leer ze vooral gebruiken.]
+
+  Net zoals bij snelheid staat het transversaal deel $a_r$ en de hoekverandering $a_theta$ loodrecht op elkaar.
+
+  $ a = sqrt(a_r^2 + a_theta^2) = sqrt((dot.double(r))^2 + (r dot.double(theta))^2) $
+]
+
+== Cilindrisch assenstelsel (3D) <sec:cilindrisch-assenstelsel>
+#wrap-figure(
+  image("3D cilindrisch assenstelsel.png", width: 5cm),
+  caption: [3D cilindrisch assenstelsel],
+  label: <fig:3D-cilindrisch-assenstelsel>,
+)[
+
+  Dit waren nu analyses in een #keyterm[plat assenstelsel], als we nog een extra dimensie willen gebruiken kunnen we een #keyterm[cilindrisch assenstelsel] gebruiken. Deze bestaan uit de transversale (r, z) en de hoekverandering (theta).
+
+  Deze hebben net zoals het vlak assenstelsen een eenheidsvector $u$ en een grootte $r$ of $z$ en dan een hoek $theta$.
+
+  $ arrow(r_p) = r arrow(u_r) + z arrow(u_z) $
+
+  $ arrow(v) = dot(r) arrow(u_r) + r dot(theta) arrow(u_theta) + z dot(z) arrow(u_z) $
+  $
+    arrow(a) = dot.double(r-r dot(theta)^2) arrow(u_r) + (r dot.double(theta) + 2 dot(r) dot(theta)) arrow(u_theta) + dot.double(z) arrow(u_z)
+  $
+]
+== Soort problemen <sec:soort-problemen>
 
 + de coördinaten zijn expliseet gegeven in functie van tijd. $r = r(t), theta = theta(t)$
 We kunnen rechtstreeks de snelheden vinden door af te leiden.
