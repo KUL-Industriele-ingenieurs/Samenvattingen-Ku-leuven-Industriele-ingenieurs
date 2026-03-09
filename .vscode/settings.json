@@ -1,24 +1,8 @@
 {
-    "latex-workshop.linting.enabled": true,
     "tinymist.fontPaths": ["./fonts", "${workspaceFolder}/fonts", "fonts"],
-    "typst-lsp.fontPaths": ["./fonts", "${workspaceFolder}/fonts", "fonts"],
-    "typst.fontPaths": ["./fonts", "${workspaceFolder}/fonts", "fonts"],
     "latex-workshop.linting.chktex.enabled": false,
     "latex-workshop.linting.lacheck.enabled": false,
     "latex.linter.enabled": false,
-    "latex-workshop.linting.ignore": [
-        "**/*.aux",
-        "**/*.toc",
-        "**/*.out",
-        "**/*.fls",
-        "**/*.fdb_latexmk",
-        "**/*.synctex.gz",
-        "**/*.log",
-        "**/Thumbs.db",
-        "**/AppData/Roaming/MiKTeX/**",
-        "**/MiKTeX/**",
-        "**/*mdsffont.def"
-    ],
     "latex-workshop.latex.tools": [
         {
             "name": "latexmk",
@@ -54,7 +38,6 @@
         }
     ],
     "latex-utilities.formattedPaste.image.template": "\\begin{figure}[htbp]\n  \\centering\n  \\includegraphics[width=0.8\\textwidth]{${imageFilePath}}\n  \\caption{${imageCaption}}\n  \\label{fig:${imageFileName}}\n \\end{figure}",
-    "latex-utilities.formattedPaste.enabled": true,
     "latex-workshop.latex.recipes": [
         {
             "name": "latexmk",
@@ -150,9 +133,6 @@
     "githubIssues.issueBranchTitle": "issue${issueNumber}",
     "githubIssues.issueCompletionFormatScm": "#${issueNumber}",
     "githubIssues.workingIssueFormatScm": "#${issueNumber}",
-    "ltex.language": "nl-BE",
-    "ltex.enabled": true,
-    "ltex.checkFrequency": "save",
     "latex-workshop.latex.build.forceRecipeUsage": false,
     "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
     "latex-workshop.intellisense.command.user": {
@@ -221,13 +201,5 @@
     "pasteImage.forceUnixStyleSeparator": true,
     "pasteImage.prefix": "",
     "pasteImage.insertPattern": "#figure(\n  image(\"${imageFileName}\", width: 5cm),\n  caption: [${imageFileNameWithoutExt}],\n  label: <fig:${imageFileNameWithoutExt}>,\n)",
-    "pasteImage.filePathConfirmInputBoxMode": "onlyName",
-    // --- Excalidraw Configuration ---
-    // Note: Excalidraw in VS Code is a webview wrapper. Tool defaults (pen, highlighter, stroke width)
-    // are managed within the Excalidraw web app UI, not through VS Code settings.
-    "excalidraw.image": {
-        "exportScale": 1,
-        "exportWithBackground": true,
-        "exportWithDarkMode": true
-    }
+    "pasteImage.filePathConfirmInputBoxMode": "onlyName"
 }
