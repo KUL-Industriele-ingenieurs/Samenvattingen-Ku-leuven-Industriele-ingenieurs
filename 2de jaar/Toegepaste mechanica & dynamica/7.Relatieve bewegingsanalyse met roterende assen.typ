@@ -6,7 +6,7 @@ tot nu toe hebben we dit allemaal gezien:
 
 - $ arrow(v_B) = arrow(v_A) + omega crossproduct arrow(r_frac(B, A, style: "horizontal")) $
 - $ arrow(a_B) = arrow(a)_A + arrow(a)_frac(B, A, style: "horizontal") $
-- $$
+- $ arrow(a_B) $
 #frm(
   "Relatieve bewegingsanalyse snelheidsvergelijking",
   [
