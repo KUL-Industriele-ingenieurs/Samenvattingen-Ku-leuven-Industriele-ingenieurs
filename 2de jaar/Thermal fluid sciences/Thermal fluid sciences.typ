@@ -29,10 +29,15 @@
 
 // Symbol list and formularium are auto-generated
 
-
+#for i in range(1, 20) {
+  page(margin: -2cm)[
+    #image("Formularium.pdf", width: 105%, alt: "Formularium", page: i)
+  ]
+}
 #printsymbols()
 #printformularium()
 
 #include "1.Info-vak.typ"
 #include "2.Steady state conductie.typ"
 #include "3.Convectie.typ"
+#include "4.External en internal forced convection.typ"

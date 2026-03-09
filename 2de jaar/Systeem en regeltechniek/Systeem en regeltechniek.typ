@@ -28,7 +28,7 @@
 #include "1.Inleiding.typ"
 #include "2.electronic_applications.typ"
 #include "3.Bode & Nyquist Plots.typ"
-
+#include "4.Bode Plots.typ"
 // ============================================================================
 //                              APPENDICES
 // ============================================================================
