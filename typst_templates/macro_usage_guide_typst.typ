@@ -84,6 +84,15 @@ Deze geeft je:
 
 = Basis Typst Syntax
 
+#figure(
+  image("Cheat-sheet.png", width: 20cm),
+  caption: [Cheat-sheet],
+  label: <fig:Cheat-sheet>,
+)
+#align(center)[
+  Credit: #link("https://github.com/mewmew/typst-cheat-sheet"),
+]
+
 == Tekstopmaak
 
 Typst heeft een eenvoudige syntax voor tekstopmaak:
