@@ -6,6 +6,9 @@
 
   Je hebt meerdere soorten filters
   - *Low pass filter*: Laat alleen lage frequenties door $arrow.r.double$ 1 cut-off frequentie.
+  $ lim_(s->0) H(s) = 1 $
+  $ lim_(s->infinity) H(s) = 0 $
+
   - *High pass filter*: Laat alleen hoge frequenties door $arrow.r.double$ 1 cut-off frequentie.
   - *Band pass filter*: Laat alleen een bandbreedte aan frequenties door $arrow.r.double$ 2 cut-off frequenties.
   - *Band stop filter*: Laat alleen een bandbreedte aan frequenties tegen $arrow.r.double$ 2 cut-off frequenties.
@@ -30,6 +33,22 @@
 == Passieve VS actieve filters
 
 Passieve filters gaan geen gebruik gaan maken van *OP-amps* _Bv. Resistors, capaciteiten, spoelen_
+
+Elektronische circuits kunnen ook in een systeem worden opgezet waar je afhankelijk van de input je een bepaalde output gaat krijgen. Het idee is dus exact hetzelfde als systemen.
+
+$ v_(i n) = Delta v + v_(o u t) $
+$ arrow.b.double ("Laplace") $
+$ H(s) = frac(v_(o u t), v_(i n)) $
+
+De output is afhankelijk van de impedantie (R, C, L). Als we de Laplace transform nemen met de wet van ohm waarbij de de effecten van C en L in rekening brengen.
+
+Een capaciteit gaat afhankelijk van hoeveel lading dat er in de capaciteit zit een voltage opleggen dus
+
+Een spoel gaat een voltage opleggen afhankelijk van de verandering van de stroom.
+
+$ V = i dot R $
+$ "Laplace" integral -> 1/s $
+$ "Laplace" d/(d t) -> s $
 
 
 #figure(
@@ -58,7 +77,7 @@ Bij actieve ja je die wel gebruiken. _Bv. OP-amps, transistors_
 Als we electronische systemen vergelijken met mechanische systemen gaan veel dingen die we in *MATHSYS* overgaan naar electronische systemen.
 
 #figure(
-  image("mechanics en electronisch.png", width: 8cm),
+  image("mechanics en electronisch.png", width: 12cm),
   caption: [mechanics en electronisch],
   label: <fig:mechanics-en-electronisch>,
 )
@@ -123,7 +142,7 @@ We zoeken naar *de transferfunctie* $H(s)$ dat betekent dat er dus geen enkele b
 
   Dit is net hetzelfde als bij mechanische systemen
 
-  $ ~ H(s) = Y(s) / X(s) $
+  $ ~ H(s) = Y(s) / X(s) = frac("out", "in") $
 
   *Oplossing*:
 
@@ -148,12 +167,22 @@ We zoeken naar *de transferfunctie* $H(s)$ dat betekent dat er dus geen enkele b
 
   *Gegeven*: Een RC-circuit met weerstand $R$ in serie en condensator $C$ naar ground. De uitgangsspanning $v_o$ wordt gemeten over $C$.
   #figure(
-    image("low-pass filter.png", width: 5cm),
+    image("low-pass filter.png", width: 6cm),
     caption: [low-pass filter],
     label: <fig:low-pass-filter>,
   )
 
   *Transferfunctie*
+
+  We stellen eerst zonder laplace onze vergelijking op zodat het duidelijk is wat we aan het doen zijn:
+
+  KLC bij de knoop $v_o$:
+
+  $ v_o = 1/c integral i d t arrow.r.double i = c (d v_o)/(d t) $
+  $ (v_o - v_i) / R + c (d v_o)/(d t) = 0 $
+  $ arrow.b.double ("laplace") $
+  $ (V_o (s) - V_i (s))/ R + s C V_o (s) = 0 $
+  $ arrow.r.double H(s) = V_o(s) / V_i(s) = 1 / (s R C + 1) $
 
   Uit de spanningsdeler met $Z_1 = R$ en $Z_2 = 1/(s C)$:
 
@@ -221,6 +250,7 @@ We zoeken naar *de transferfunctie* $H(s)$ dat betekent dat er dus geen enkele b
     }),
     caption: [Bode magnitude plot van een eerste orde RC low-pass filter],
   )
+
 ]
 
 #oefening(title: "High pass filter")[
@@ -234,6 +264,9 @@ We zoeken naar *de transferfunctie* $H(s)$ dat betekent dat er dus geen enkele b
   )
 
   *Transferfunctie*
+
+
+  We stellen een spanningdeler op zodat we het fractie tussen de ingang en uitgang kunnen berekenen:
 
   Uit de spanningsdeler met $Z_1 = 1/(s C)$ en $Z_2 = R$:
 
@@ -331,7 +364,7 @@ $ V_- = V_("out") dot R_b / (R_a + R_b) = V_("in") arrow.r.double H(s) = 1 + R_a
 Hoe op-amps zich gaan gedragen is dat ze er alles aan gaan doen om het voltage verschil tussen de $+$ en $-$ ingang 0 te maken. Dus we gaan de $+$ ingang op een bepaalde voltage zetten en dan gaan we de $-$ ingang proberen op diezelfde voltage te krijgen. _zie eerste jaar electronica_
 
 #figure(
-  image("active-filters2.png", width: 12cm),
+  image("active-filters2.png", width: 14cm),
   caption: [Summing amplifiers (MISO systemen)],
   label: <fig:actieve-filters2>,
 )

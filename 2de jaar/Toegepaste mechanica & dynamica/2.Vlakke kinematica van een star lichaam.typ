@@ -98,7 +98,7 @@ Algemene vlakke beweging is een combinatie van translatie en rotatie. De positie
 #let boxed-contact = box(fig-contact, inset: (right: 0.5em, bottom: 0.5em))
 
 #wrap-content(boxed-contact)[
-  Bij contactpunten (bv. tandwielen) geldt: de snelheid aan het contactpunt is gelijk voor beide lichamen, want de tanden grijpen in elkaar.
+  Bij contactpunten (bv. tandwielen) geldt: de snelheid aan het contactpunt is gelijk voor beide lichamen, want de tanden grijpen in elkaar. $v_1 = v_2$ de hoekversnellingen zijn wel verschillende.
 
   Dus $v_"contact"$ en $a_t$ zijn gelijk. Maar $a_n$ is *niet* hetzelfde, want de straal kan verschillen ($a_n = omega^2 r$).
 ]

@@ -25,7 +25,6 @@ Een relatieve snelheid is de snelheid die een bewegende observator ziet tegenove
 
 Maar hoe berekenen we nu de relatieve snelheid?
 
-
 == Snelheid
 
 #wrap-figure(
