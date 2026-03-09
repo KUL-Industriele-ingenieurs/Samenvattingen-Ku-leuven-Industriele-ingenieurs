@@ -31,6 +31,20 @@
 
 Passieve filters gaan geen gebruik gaan maken van *OP-amps* _Bv. Resistors, capaciteiten, spoelen_
 
+Elektronische circuits kunnen ook in een systeem worden opgezet waar je afhankelijk van de input je een bepaalde output gaat krijgen. Het idee is dus exact hetzelfde als systemen.
+
+$ v_(i n) = Delta v + v_(o u t) $
+$ arrow.b.double ("Laplace") $
+$ H(s) = frac(v_(o u t), v_(i n)) $
+
+De output is afhankelijk van de impedantie (R, C, L). Als we de Laplace transform nemen met de wet van ohm waarbij de de effecten van C en L in rekening brengen.
+
+$ V = i dot R $
+$ "Laplace" integral -> 1/s $
+$ "Laplace" d/(d t) -> s $
+
+
+
 
 #figure(
   table(
@@ -58,7 +72,7 @@ Bij actieve ja je die wel gebruiken. _Bv. OP-amps, transistors_
 Als we electronische systemen vergelijken met mechanische systemen gaan veel dingen die we in *MATHSYS* overgaan naar electronische systemen.
 
 #figure(
-  image("mechanics en electronisch.png", width: 8cm),
+  image("mechanics en electronisch.png", width: 12cm),
   caption: [mechanics en electronisch],
   label: <fig:mechanics-en-electronisch>,
 )
@@ -331,7 +345,7 @@ $ V_- = V_("out") dot R_b / (R_a + R_b) = V_("in") arrow.r.double H(s) = 1 + R_a
 Hoe op-amps zich gaan gedragen is dat ze er alles aan gaan doen om het voltage verschil tussen de $+$ en $-$ ingang 0 te maken. Dus we gaan de $+$ ingang op een bepaalde voltage zetten en dan gaan we de $-$ ingang proberen op diezelfde voltage te krijgen. _zie eerste jaar electronica_
 
 #figure(
-  image("active-filters2.png", width: 12cm),
+  image("active-filters2.png", width: 14cm),
   caption: [Summing amplifiers (MISO systemen)],
   label: <fig:actieve-filters2>,
 )

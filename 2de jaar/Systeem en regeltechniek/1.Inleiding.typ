@@ -99,7 +99,7 @@ Je maakt systemen in de tijd met differentiële vergelijkingen. Je analyseert sy
   $ H(s) = Y(s)/X(s) $
   $ arrow.r.double H(s) = frac(V(s), F(s)) = frac(1, m s + beta) = frac(1 slash m, s + beta slash m) $
 
-  We herkennen de standaardvorm van een eerste orde systeem $H(s) = frac(K_(d c), tau s + 1)$ met:
+  We herkennen de standaardvorm van een eerste orde systeem $ H(s) = frac(K_(d c), tau s + 1) $ met:
   $ K_(d c) = frac(1, beta) quad quad tau = frac(m, beta) $
 
   *Stap 5 — Systeemeigenschappen bepalen:*
@@ -117,31 +117,36 @@ Je maakt systemen in de tijd met differentiële vergelijkingen. Je analyseert sy
     cetz.canvas({
       import cetz.draw: *
       plot.plot(
-        size: (8, 4),
+        size: (6, 3),
         x-label: $t$,
         y-label: $v(t) slash v_(infinity)$,
         x-tick-step: 1,
         y-tick-step: 0.2,
-        y-min: 0, y-max: 1.1,
-        x-min: 0, x-max: 6,
+        y-min: 0,
+        y-max: 1.1,
+        x-min: 0,
+        x-max: 6,
         {
           // tau = 1
           plot.add(
-            domain: (0, 6), samples: 200,
+            domain: (0, 6),
+            samples: 200,
             label: $tau = 1$,
             style: (stroke: blue + 1.5pt),
             x => 1 - calc.exp(-x / 1),
           )
           // tau = 2
           plot.add(
-            domain: (0, 6), samples: 200,
+            domain: (0, 6),
+            samples: 200,
             label: $tau = 2$,
             style: (stroke: red + 1.5pt),
             x => 1 - calc.exp(-x / 2),
           )
           // tau = 0.5
           plot.add(
-            domain: (0, 6), samples: 200,
+            domain: (0, 6),
+            samples: 200,
             label: $tau = 0.5$,
             style: (stroke: green + 1.5pt),
             x => 1 - calc.exp(-x / 0.5),
@@ -165,9 +170,9 @@ Je maakt systemen in de tijd met differentiële vergelijkingen. Je analyseert sy
     image("oefening-eerste-orde.png", width: 12cm),
     caption: [Voorbeeldoefening eerste orde systeem],
   ) <fig:oefening-eerste-orde>
-    *Gegeven:* $6 z'(t) + 2 z(t) = 4 u(t) + 3$, evenwicht bij $z = 3$ en $t = 0$. De ingang $u(t)$ wordt plots met 1 verhoogd.
+  *Gegeven:* $6 z'(t) + 2 z(t) = 4 u(t) + 3$, evenwicht bij $z = 3$ en $t = 0$. De ingang $u(t)$ wordt plots met 1 verhoogd.
 
-    *Gevraagd:* Vind de transferfunctie van de variatie en de respons.
+  *Gevraagd:* Vind de transferfunctie van de variatie en de respons.
 
   *Stap 1 — Evenwichtspunt bepalen:*
 
@@ -195,7 +200,7 @@ Je maakt systemen in de tijd met differentiële vergelijkingen. Je analyseert sy
 
 == Tweede orde systemen
 
-#let fig-mvd = image("massa-veer-demper.png", width: 4cm)
+#let fig-mvd = image("massa-veer-demper.png", width: 6cm)
 #let boxed-mvd = box(fig-mvd, inset: (right: 0.5em, bottom: 0.5em))
 
 #wrap-content(boxed-mvd)[
@@ -226,7 +231,9 @@ We nemen aan dat alles stabiel is (alle polen liggen in het linkse halfvlak).
 *Stap 5 — Standaardvorm identificeren:*
 
 Deel teller en noemer door $m$ en vergelijk met de standaardvorm:
-$ H(s) = frac(1 slash m, s^2 + c/m s + k/m) quad "vergelijk met" quad frac(K_(d c) dot omega_n^2, s^2 + 2 zeta omega_n s + omega_n^2) $
+$
+  H(s) = frac(1 slash m, s^2 + c/m s + k/m) quad "vergelijk met" quad frac(K_(d c) dot omega_n^2, s^2 + 2 zeta omega_n s + omega_n^2)
+$
 
 Hieruit lezen we de parameters af:
 $ omega_n = sqrt(k / m) quad quad 2 zeta omega_n = frac(c, m) quad arrow.r quad zeta = frac(c, 2 sqrt(k m)) $
@@ -235,7 +242,9 @@ $ omega_n = sqrt(k / m) quad quad 2 zeta omega_n = frac(c, m) quad arrow.r quad 
 
 De polen vinden we via de abc-formule op de noemer $s^2 + 2 zeta omega_n s + omega_n^2 = 0$:
 $ D = (2 zeta omega_n)^2 - 4 omega_n^2 = 4 omega_n^2 (zeta^2 - 1) $
-$ arrow.r.double p_(1,2) = frac(-2 zeta omega_n plus.minus sqrt(D), 2) = -zeta omega_n plus.minus omega_n sqrt(zeta^2 - 1) $
+$
+  arrow.r.double p_(1,2) = frac(-2 zeta omega_n plus.minus sqrt(D), 2) = -zeta omega_n plus.minus omega_n sqrt(zeta^2 - 1)
+$
 
 Het teken van $(zeta^2 - 1)$ bepaalt het type polen:
 
@@ -256,12 +265,15 @@ Het teken van $(zeta^2 - 1)$ bepaalt het type polen:
       y-label: $y(t)$,
       x-tick-step: 2,
       y-tick-step: 0.5,
-      y-min: 0, y-max: 2.0,
-      x-min: 0, x-max: 15,
+      y-min: 0,
+      y-max: 2.0,
+      x-min: 0,
+      x-max: 15,
       {
         // zeta = 0.2 (underdamped)
         plot.add(
-          domain: (0, 15), samples: 300,
+          domain: (0, 15),
+          samples: 300,
           label: $zeta = 0.2$,
           style: (stroke: blue + 1.5pt),
           x => {
@@ -272,7 +284,8 @@ Het teken van $(zeta^2 - 1)$ bepaalt het type polen:
         )
         // zeta = 0.5 (underdamped)
         plot.add(
-          domain: (0, 15), samples: 300,
+          domain: (0, 15),
+          samples: 300,
           label: $zeta = 0.5$,
           style: (stroke: green + 1.5pt),
           x => {
@@ -283,14 +296,16 @@ Het teken van $(zeta^2 - 1)$ bepaalt het type polen:
         )
         // zeta = 1.0 (critically damped)
         plot.add(
-          domain: (0, 15), samples: 300,
+          domain: (0, 15),
+          samples: 300,
           label: $zeta = 1.0$,
           style: (stroke: red + 1.5pt),
           x => 1 - (1 + x) * calc.exp(-x),
         )
         // zeta = 2.0 (overdamped)
         plot.add(
-          domain: (0, 15), samples: 300,
+          domain: (0, 15),
+          samples: 300,
           label: $zeta = 2.0$,
           style: (stroke: orange + 1.5pt),
           x => {
@@ -320,7 +335,7 @@ met:
 $ omega_n = sqrt(k / m) quad quad zeta omega_n = frac(c, m) quad quad zeta = frac(c, 2 sqrt(k m)) $
 
 #oefening(title: "Oefening tweede orde systeem")[
-  #let fig-oef2 = image("oefening-tweede-orde.png", width: 7cm)
+  #let fig-oef2 = image("oefening-tweede-orde.png", width: 10cm)
   #let boxed-oef2 = box(fig-oef2, inset: (right: 0.5em, bottom: 0.5em))
 
   #wrap-content(boxed-oef2)[

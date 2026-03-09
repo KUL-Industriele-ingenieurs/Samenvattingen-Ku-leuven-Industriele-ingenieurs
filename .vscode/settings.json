@@ -201,5 +201,11 @@
     "pasteImage.forceUnixStyleSeparator": true,
     "pasteImage.prefix": "",
     "pasteImage.insertPattern": "#figure(\n  image(\"${imageFileName}\", width: 5cm),\n  caption: [${imageFileNameWithoutExt}],\n  label: <fig:${imageFileNameWithoutExt}>,\n)",
-    "pasteImage.filePathConfirmInputBoxMode": "onlyName"
+    "pasteImage.filePathConfirmInputBoxMode": "onlyName",
+    "editor.inlineSuggest.enabled": true,
+    "editor.quickSuggestionsDelay": 10,
+    "github.copilot.enable": {
+        "*": false
+    },
+    "github.copilot.editor.enableAutoCompletions": false
 }
