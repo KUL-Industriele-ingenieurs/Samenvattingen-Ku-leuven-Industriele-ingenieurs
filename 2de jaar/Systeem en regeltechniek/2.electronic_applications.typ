@@ -39,6 +39,10 @@ $ H(s) = frac(v_(o u t), v_(i n)) $
 
 De output is afhankelijk van de impedantie (R, C, L). Als we de Laplace transform nemen met de wet van ohm waarbij de de effecten van C en L in rekening brengen.
 
+Een capaciteit gaat afhankelijk van hoeveel lading dat er in de capaciteit zit een voltage opleggen dus
+
+Een spoel gaat een voltage opleggen afhankelijk van de verandering van de stroom.
+
 $ V = i dot R $
 $ "Laplace" integral -> 1/s $
 $ "Laplace" d/(d t) -> s $
