@@ -4,11 +4,13 @@
 
 tot nu toe hebben we dit allemaal gezien:
 
-- $ arrow(v_B) = arrow(v_A) + omega crossproduct arrow(r_frac(B, A, style: "horizontal")) $
-- $ arrow(a_B) = arrow(a)_A + arrow(a)_frac(B, A, style: "horizontal")t + arrow(a)_frac(B, A, style: "horizontal")n $
-- $
-    arrow(a_B) = arrow(a)_A + arrow(alpha) crossproduct arrow(r)_frac(B, A, style: "horizontal") - omega^2arrow(r)_frac(B, A, style: "horizontal")
-  $
+$ arrow(v_B) = arrow(v_A) + omega crossproduct arrow(r_frac(B, A, style: "horizontal")) $
+
+$ arrow(a_B) = arrow(a)_A + arrow(a)_frac(B, A, style: "horizontal")t + arrow(a)_frac(B, A, style: "horizontal")n $
+
+$
+  arrow(a_B) = arrow(a)_A + arrow(alpha) crossproduct arrow(r)_frac(B, A, style: "horizontal") - omega^2arrow(r)_frac(B, A, style: "horizontal")
+$
 
 Dit waren allemaal voor vaste assenstelsels waarbij we een translerend coördinatenstelsel gebruiken.
 Hierbij hebben we relatieve bewegingen (snelheid $v$ en versnelling $a$) beschreven. Dit waren allemaal over punten
