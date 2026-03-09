@@ -5,8 +5,50 @@
 tot nu toe hebben we dit allemaal gezien:
 
 - $ arrow(v_B) = arrow(v_A) + omega crossproduct arrow(r_frac(B, A, style: "horizontal")) $
-- $ arrow(a_B) = arrow(a)_A + arrow(a)_frac(B, A, style: "horizontal") $
-- $ arrow(a_B) $
+- $ arrow(a_B) = arrow(a)_A + arrow(a)_frac(B, A, style: "horizontal")t + arrow(a)_frac(B, A, style: "horizontal")n $
+- $
+    arrow(a_B) = arrow(a)_A + arrow(alpha) crossproduct arrow(r)_frac(B, A, style: "horizontal") - omega^2arrow(r)_frac(B, A, style: "horizontal")
+  $
+
+Dit waren allemaal voor vaste assenstelsels waarbij we een translerend coördinatenstelsel gebruiken.
+Hierbij hebben we relatieve bewegingen (snelheid $v$ en versnelling $a$) beschreven. Dit waren allemaal over punten
+op hetzelfde #keyterm[Starre lichaam] _Een star lichaam is een lichaam waarvan de onderlinge afstand tussen elk paar punten constant blijft (het vervormt niet)._
+
+Uiteindelijk hebben we ook tussen verschillende starre lichamen gerekend door scharnieren die de starre lichamen verbonden.
+
+Nu starre lichamen kunnen ook op andere manieren verbonden worden. Glij effecten tussen starre lichamen bijvoorbeeld. We kunnen dit niet beschrijven met wat we nu hebben gezien
+
+
+== Relatieve bewegingsanalyse met roterende assenstelsels
+<sec:rotating-coordinate-systems>
+Om dit op te lossen gaan we een roterende assenstelsel gebruiken. Dit is een assenstelsel dat zowel ka #keyterm[Roteren] als #keyterm[Transleren].
+
+=== Snelheid
+#figure(
+  image("roterend assenstelse.png", width: 12cm),
+  caption: [roterend assenstelsel],
+  label: <fig:roterend-assenstelsel>,
+)
+
+$ arrow(r)_B = arrow(r)_A + arrow(r)_frac(B, A, style: "horizontal") $
+$ arrow.b.double (d/(d t)) $
+$r_B$ en $r_A$ zijn de positie van B en A ten opzichte van het vaste assenstelsel en dus geen probleem om af te leiden.
+$arrow(r)_frac(B, A, style: "horizontal")$ is de positie van B ten opzichte van A in het roterende assenstelsel. De eenheidsvectoren $i$ en $j$ tonen de richting en deze zijn niet constant dus we moeten deze ook gaan afleiden.
+
+$ arrow(v)_B = arrow(v)_A + d/(d t)(x_B arrow(i) + y_B arrow(j)) $
+$i$ en $j$ zijn eenheidsvectoren. Normaal als je dit afleid dan ga je krijg je nul omdat deze niet veranderen in richting bij een relatieve beweging tussen twee starre lichamen. Maar bij een rotatie wel dus je moet deze ook gaan afleiden.
+
+$ = arrow(v)_A + [d/(d t)(x_B arrow(i) + y_B arrow(j))] + x_B frac(d arrow(i), d t) + y_B frac(d arrow(j), d t) $
+
+als we dit uitwerken krijgen we:
+
+$
+  arrow(v)_B = arrow(v)_A + arrow(v)_frac(B, A, style: "horizontal")_(x y z) + arrow(Omega) crossproduct arrow(r)_frac(B, A, style: "horizontal")
+$
+
+met $Omega$ de hoeksnelheid van het roterend assenstelsel. en $dot(Omega) =$ de hoekversnelling van het roterend assenstelsel.
+
+
 #frm(
   "Relatieve bewegingsanalyse snelheidsvergelijking",
   [
@@ -29,6 +71,9 @@ tot nu toe hebben we dit allemaal gezien:
     $(arrow(v_(B/A)))_(x y z)$ de snelheid van punt B ten opzichte van punt A in het roterende assenstelsel, uitgedrukt in de basisvectoren van het roterende assenstelsel
   ],
 )
+
+=== Versnelling
+Nu willen we nog de versnelling van B beschrijven. We gaan terug onze term afleiden en dan komen we dit uit:
 
 #frm(
   "Relatieve bewegingsanalyse versnellingvergelijking",
