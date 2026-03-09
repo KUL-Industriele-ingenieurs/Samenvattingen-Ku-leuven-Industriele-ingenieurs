@@ -25,7 +25,7 @@ Om dit op te lossen gaan we een roterende assenstelsel gebruiken. Dit is een ass
 
 === Snelheid
 #figure(
-  image("roterend assenstelse.png", width: 12cm),
+  image("roterend assenstelse.png", width: 10cm),
   caption: [roterend assenstelsel],
   label: <fig:roterend-assenstelsel>,
 )
