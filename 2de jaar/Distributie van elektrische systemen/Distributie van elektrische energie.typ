@@ -43,7 +43,6 @@
 // Netten
 #chapter_page("Netten", label: <ch:netten>)
 
-#include "1.Introductie.typ"
 #include "2.Het elektrische net.typ"
 #include "3.Bescherming lage voltage net.typ"
 

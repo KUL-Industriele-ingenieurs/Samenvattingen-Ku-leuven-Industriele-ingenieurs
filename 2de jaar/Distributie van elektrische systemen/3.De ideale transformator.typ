@@ -13,21 +13,19 @@ In dit hoofdstuk bestuderen we alle effecten van transformatoren. We nemen geen 
 
   $ v_1 = V_1 dot cos(omega t) $
 
-  Het resulterende magnetisch veld is:
+  De resulterende geïnduceerde spanning is:
 
   $ v_2 = frac(N_2, N_1) v_1 = frac(N_2, N_1) V_1 dot cos(omega t) $
   $ = V_2 dot cos(omega t) $
 ]
 
-We gaan moeten integreren.
+Volgens de wet van Faraday ($v = N dif phi / dif t$) kunnen we de flux vinden door de spanning te integreren:
 
-$ phi = 1/(N_1) integral.cont_0^t v_1 d t = V_1/(omega N_1) sin(omega t) $
+#frm("Fluxberekening", $phi = 1/(N_1) integral v_1 d t$, [waarbij $phi$ de magnetische flux is [Wb], $v_1$ de primaire spanning [V] en $N_1$ het aantal windingen [-].])
 
-$ = V_2/(omega N_2) sin(omega t) + phi_(D C) $
+$ phi = V_1/(omega N_1) sin(omega t) = V_2/(omega N_2) sin(omega t) $
 
-$ N phi = frac(V, omega) arrow.r.double phi = frac(V, omega N) $
-
-We zien dat $phi$ 90 graden achterloopt op $v_1$ en $v_2$.
+#examenbox[Onthoud dit goed: De flux $phi$ loopt precies **90 graden achter** op de spanning $v$. Dit noemen we *lagging*.]
 
 #figure(
   cetz.canvas({
@@ -76,7 +74,7 @@ We zien dat $phi$ 90 graden achterloopt op $v_1$ en $v_2$.
 == Loads
 
 === No load
-geen enkele weerstand gezet op de secundaire wikkeling dus de enige weerstand $R_c$ is de weerstand van de kern.
+Er is geen belasting (open keten) aangesloten op de secundaire wikkeling. De enige "weerstand" die overblijft is de magnetische weerstand (reluctantie $R_c$) van de kern.
 
 #figure(
   image("no load.png", width: 6cm),
@@ -102,15 +100,15 @@ We hebben een ideale transformator, dus $R_c = 0 (mu -> infinity)$ dus $arrow.r.
   caption: [loaded-transformer],
   label: <fig:loaded-transformer>,
 )[
-  Er is nu wel een spanning over de secundaire wikkeling, dus er zal ook een stroom lopen.
-
-  $ v_1 arrow.r.double phi $
-
-  $ v_2 = N_2/N_1 v_1 $
+  Omdat er een belasting is, kan er nu een secundaire stroom $i_2$ lopen. 
+  
+  Doordat de kern ideaal is ($R_c = 0$), zegt de wet van Hopkinson dat $N_1 i_1 - N_2 i_2 = 0$. Hieruit volgt direct de stroomverhouding:
 
   $ i_2 = N_1/N_2 i_1 $
 
-  $ v_2 arrow.r.double i_2 $
+  Terwijl de spanning meeschaalt met de windingen, schaalt de stroom dus omgekeerd evenredig:
+
+  $ v_2 = N_2/N_1 v_1 $
 ]
 
 #figure(
@@ -119,9 +117,11 @@ We hebben een ideale transformator, dus $R_c = 0 (mu -> infinity)$ dus $arrow.r.
   label: <fig:loaded-transformer>,
 )
 
+Om het effect van deze belastingen op de transformator beter te begrijpen, moeten we de theorie rond wisselstroom herhalen.
+
 == Phasors (herhaling)
 
-Phasors helpen om wisselstromen weer te geven. We nemen aan bij phasoren dat de frequentie $f$ gelijk blijft over verschillende stromen en voltages. Als dit zo is dan kunnen we het begin van de stroom of voltage weergeven als een vector in het reël $RR$ en imaginair deel $ZZ$. _Zie wisselstroom_ waar het ook veel is toegepast.
+Phasors helpen om wisselstromen en wisselspanningen eenvoudig voor te stellen en te berekenen. We nemen aan bij phasoren dat de frequentie $f$ gelijk blijft over verschillende stromen en voltages. Als dit zo is dan kunnen we het begin van de stroom of voltage weergeven als een vector in het reël $RR$ en imaginair deel $ZZ$. _Zie wisselstroom_ waar het ook veel is toegepast.
 
 $ e^(j theta) = underbrace(cos(theta), "Reëel") + j underbrace(sin(theta), "Imaginair") $
 
@@ -137,24 +137,138 @@ $ e^(j theta) = underbrace(cos(theta), "Reëel") + j underbrace(sin(theta), "Ima
 ]
 
 
+#voorbeeld(title:"Voltage en flux")[
 
+  $v(t) = V cos(omega t)$\
+  $phi(t) = V/(omega N) sin(omega t)$
 
+  Als we dit plotten krijgen we dit:
 
+  #figure(
+  image("plot v phi.png", width: 5cm),
+  caption: [plot v phi],
+  label: <fig:plot-v-phi>,
+)
 
-
-//todo voeg voorbeeld toe phasor
-
-
-
-#voorbeeld(title: "Voltage en flux")[
-
-  $ v = N frac(d phi, d t) $
-
-  $ arrow.t.b.double $
-
-  $ underline(V) = j omega N phi arrow.r phi = frac(underline(V), j omega N) = -j frac(underline(V), omega N) $
-
-  //add phasor diagram
+Je ziet dat phi 90 graden achterloopt *Lagging* op v.
 
 ]
+
+== RLC circuits (herhaling) <sec:RLC-circuits>
+
+#keyterm[ELI ICE] zegt toont of voor een inductor of een capacitor de stroom voorloopt of achterloopt op de spanning. LI -> stroom loopt achter op spanning, iC -> stroom loopt voor op spanning.
+
+=== RL <sec:RL>
+#figure(
+  image("RL-circuit.png", width: 5cm),
+  caption: [RL-circuit],
+  label: <fig:RL-circuit>,
+)
+We gaan KVL toepassen op een RL circuit:
+
+$ v(t) = R i(t) + L (d i(t))/(d t) $
+
+met $ v(t) = V cos(omega t)$ en $i(t) = I cos(omega t + theta) $.
+
+De spanning over de spoel wordt geïnduceerd door de verandering van de stroom.
+Om dit met phasoren te berekenen, transformeren we de differentiaalvergelijking naar het complexe domein (rekening houdend met amplitudes en fasehoeken):
+
+
+$ V = R I + underbrace(j omega L, "imaginair") I $
+
+Onze L is imaginair omdat $frac(d cos(omega t + theta), d t) = -omega sin(omega t + theta)$ en de sinus loopt 90 graden achter de cosinus.
+$ V = I (R + j omega L) $
+$ Z = R + j omega L $
+$ I = V/Z $
+
+#figure(
+  image("Phasor RL.png", width: 5cm),
+  caption: [Phasor RL],
+  label: <fig:Phasor-RL>,
+)
+
+=== RC <sec:RC>
+Net hetzelfde als een RL circuit maar nu met een capacitor in plaats van een inductor.
+
+$ V = R I + underbrace(-j/(omega C), "imaginair") I $
+$ V = I (R - j/(omega C)) $
+$ Z = R - j/(omega C) $
+$ I = V/Z $
+
+=== RLC <sec:RLC>
+
+Combinatie van RL en RC circuit. 
+
+$ v(t) = R i(t) + L (d i(t))/(d t) + 1/C integral i(t) d t $
+$ V = R I + underbrace(j omega L, "imaginair") I + underbrace(-j/(omega C), "imaginair") I $
+$ V = I (R + j omega L - j/(omega C)) $
+$ Z = R + j omega L - j/(omega C) $
+$ I = V/Z $
+
+== Power <sec:power>
+Onze power heeft ook een imaginair deel $S$. Deze heeft dus ook een fasor.
+
+#wrap-figure(
+  image("phasorPower.png", width: 5cm),
+  caption: [phasorPower],
+  label: <fig:phasorPower>,
+)[
+$ S = (V I) e^(j theta) $
+$ S = underbrace(V I cos(theta), "P Reëel") + j underbrace(V I sin(theta), "jQ Imaginair") $
+
+$ P = v(t) i(t) $
+$ P = V I cos(theta) $
+
+$ Q = V I sin(theta) $
+]
+
+
+=== Toegepast op Ideal transformator <sec:ideal-transformator>
+
+We weten dat een transformator de spanning verhoogt of verlaagt afhankelijk van de verhouding van het aantal windingen. Hoe heeft dit impact op het vermogen?
+
+
+#figure(
+  image("Model-phasors.png", width: 5cm),
+  caption: [Model-phasors],
+  label: <fig:Model-phasors>,
+)
+$ frac(V_1,V_2) = frac(N_1, N_2) $
+
+$ frac(I_1, I_2) = frac(N_2, N_1) $
+
+We zien dat als de spanning verlaagt dat de stroom verhoogt en omgekeerd en de lagging of gaining van de stroom blijft hetzelfde -> Het vermogen blijft dus hetzelfde.
+
+== Impedantie transformatie <sec:impedantie-transformatie>
+
+#figure(
+  image("Impedantie transformator.png", width: 8cm),
+  caption: [Impedantie transformator],
+  label: <fig:Impedantie-transformator>,
+)
+
+We zoeken wat de impedantie '$Z'$ is. Dus de impedantie equivalent als de impedantie van de transformator en de load na de transformatie.
+
+We weten van #keyterm[Wet van Ohm] dat $Z = V/I$. We passen dit toe om onze formules van de transformator:
+
+$ Z' &= V_1/I_1 \
+   &= ((N_1/N_2) V_2) / ((N_2/N_1) I_2) \
+   &= (N_1/N_2)^2 V_2/I_2 \
+   Z &= V_2/I_2 \
+   &arrow.b.double \
+   Z' &= (N_1/N_2)^2 Z $
+
+Het omgekeerde geldt ook:
+$ Z = (N_2/N_1)^2 Z' $
+
+
+=== Samenvatting alle formules
+ 
+#figure(
+  image("Samenvatting ideale transformatoren.png", width: 12cm),
+  caption: [Samenvatting ideale transformatoren],
+  label: <fig:Samenvatting-ideale-transformatoren>,
+)
+
+
 
