@@ -181,4 +181,4 @@ Dit ontwerp biedt veiligheid: de operator kan via een veilige laagspanningsspoel
 // uitleg toevoegen
 
 
-
+// tweede deel van de les toevoegen
