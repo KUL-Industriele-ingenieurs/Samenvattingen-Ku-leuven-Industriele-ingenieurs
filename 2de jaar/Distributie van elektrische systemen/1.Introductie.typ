@@ -6,6 +6,10 @@
 
 = Infomatie vak <ch:inleiding>
 
+Dit vak is opgedeeld in 2 delen: *Transformatoren* en *Netten*.
+Bij transformatoren bestuderen we de werking van transformatoren, hun verliezen en hoe we deze kunnen modelleren. Bij netten bestuderen we de structuur van het elektrische net, de verschillende componenten en hoe we deze kunnen beschermen.
+
+
 
 == Examen
 - Gesloten boek

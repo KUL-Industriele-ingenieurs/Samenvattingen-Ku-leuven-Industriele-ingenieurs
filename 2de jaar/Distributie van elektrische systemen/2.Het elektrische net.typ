@@ -2,7 +2,7 @@
 
 = Het elektrische net
 
-In dit vak en in de industrie spreken we voornamelijk over *hoge spanningen* (transmissie) en *lage spanningen* (distributie).
+In dit deel van distributie van elektrische energie en in de industrie spreken we voornamelijk over *hoge spanningen* (transmissie) en *lage spanningen* (distributie).
 *Middenspanning* (bijv. 10kV - 30kV) is wettelijk gezien eigenlijk ook een hoogspanning, maar wordt in de praktijk gebruikt om de regionale verdeling aan te duiden.
 
 #figure(
