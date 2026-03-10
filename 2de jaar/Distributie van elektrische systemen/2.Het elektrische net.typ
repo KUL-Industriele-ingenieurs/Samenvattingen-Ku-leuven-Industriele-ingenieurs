@@ -2,8 +2,8 @@
 
 = Het elektrische net
 
-We hebben het over *Hoge spanningen* in dit vak en in de industrie.
-*Middenspanningen:* Dit bestaat niet volgens de wet maar wel in het dagdagelijksgebruik
+In dit vak en in de industrie spreken we voornamelijk over *hoge spanningen* (transmissie) en *lage spanningen* (distributie).
+*Middenspanning* (bijv. 10kV - 30kV) is wettelijk gezien eigenlijk ook een hoogspanning, maar wordt in de praktijk gebruikt om de regionale verdeling aan te duiden.
 
 #figure(
   image("het grid.png", width: 5cm),
@@ -11,10 +11,9 @@ We hebben het over *Hoge spanningen* in dit vak en in de industrie.
   label: <fig:het-grid>,
 )
 
-*Stappenplan*
+*Stappenplan van het elektriciteitsnet:*
 
-
-*Power generator* _windmolens, kerncentrales_ $arrow.r.double$ *Transformer step up* naar 150kV $arrow.r.double$ Power lines $arrow.r.double$ *Transformer step down* naar _bv 50-10kV_ $arrow.r.double$ Transformer step down 50kV $arrow.r$ 220V $arrow.r.double$ power verdeling
+*Productie* (bv. kerncentrale, windmolen) $arrow.r.double$ *Step-up transformator* (naar bv. 150kV of 380kV) $arrow.r.double$ *Hoogspanningslijnen* (Transmissie) $arrow.r.double$ *Step-down transformator* (naar middenspanning bv. 10kV) $arrow.r.double$ *Distributienet* $arrow.r.double$ *Step-down transformator* (naar 400V/230V) $arrow.r.double$ *Eindverbruiker*
 
 #voorbeeld(title: "Wind farm Thornton Bank")[
   *Generated:* 300 MW @ 33 kV \
@@ -76,67 +75,65 @@ We hebben het over *Hoge spanningen* in dit vak en in de industrie.
   caption: [optimalisatie],
   label: <fig:optimalisatie>,
 )[
-  Materiaal kosten zijn hoger bij lagere voltages maar insulatie is goedkoper en het omgekeerde bij hogere voltages. Je hebt dus een optimalisatieprobleem je moet zien welke voltage het best past bij je afstand.
+  Bij lagere spanningen zijn de materiaalkosten voor de kabels hoger (je hebt dikkere kabels nodig voor de grotere stroom), maar is de nodige isolatie goedkoper. Bij hogere spanningen is het omgekeerde waar (dunne kabels, dure isolatie). Dit vormt een optimalisatieprobleem: je moet de ideale spanning kiezen afhankelijk van het getransporteerde vermogen en de afstand.
 
-  In belgie is het typisch $380k V ... 70 k V$ en $36k V ... 1k V$ afhankelijk van de afstand.
+  In België gebruiken we typisch 380kV tot 70kV voor transmissie (lange afstand) en 36kV tot 1kV voor distributie (korte afstand).
 ]
 
-*Single phase of Three phase*
+*Single phase vs Three phase*
 
-Bij drie fase kun je 3X meer vermogen transporteren dan bij single phase. Je gebruikt 50% meer kabel dan single fase maar je hebt 3X meer vermogen.
+Met een driefasig systeem kun je drie keer zoveel vermogen transporteren als met een eenfasig systeem, terwijl je (bij 3 stroomvoerende draden in plaats van 2) slechts 50% meer koper/kabelmateriaal nodig hebt.
 
 == Transmissie net en distributie net
 
-#concept(title: "Transmissie net en distributie net")[
+#concept(title: "Transmissienet en distributienet")[
 
-  Het Transmitie net heeft een hoge spanning en is voor het transport van het vermogen.
-  In belgie dus een bedrijf genaamt _Elia_ die het elektrische net meten en voorspellen.
-  Het weer bijvoorbeeld heeft effect op het net en dat moet geweten worden.
+  Het *transmissienet* gebruikt hoge spanning voor het efficiënt transport van vermogen over grote afstanden.
+  In België wordt dit beheerd door *Elia*. Zij monitoren het net voortdurend en houden rekening met weersvoorspellingen om vraag en aanbod in balans te houden.
 
-  het distributie net is voor het verdelen van het vermogen naar de consumenten.
-  In belgie is dat _Fluvius_, _ORES_, _Sibelga_....
-  Die staan is voor de transformator en kabel naar jou.
-  Ze zorgen voor de connectie, meter, publiek toegang aan elektriciteit en belichting.
+  Het *distributienet* verdeelt het vermogen lokaal naar de consumenten.
+  In België gebeurt dit door partijen zoals *Fluvius* (Vlaanderen), *ORES* (Wallonië) en *Sibelga* (Brussel). Zij zijn verantwoordelijk voor de lokale cabines (transformatoren), de kabels tot aan de woningen, de meters en de openbare verlichting.
 ]
 
-Je hebt in de sector drie belangrijke delen
-+ *Producent*: Produceren de energie, dit zijn de kerncentrales, zonnepanelen, windmolens
-+ *Energie supplier*: Kopen de energie van de producenten en verkopen het aan de consumenten. Dit zijn de bedrijven die je contracten aanbieden. Ze zorgen ook voor distributie en als er dingen uitvallen in het distributie net dan zijn zij verantwoordelijk om het op te lossen.
-+ *Consument*: Wij die de energie verbruiken.
+Je hebt in de elektriciteitssector drie belangrijke rollen:
++ *Producent*: Wekt de energie op (b.v. kerncentrales, windmolens, zonneparken).
++ *Leverancier (Supplier)*: Koopt energie van de producenten op de groothandelsmarkt en verkoopt dit via contracten aan consumenten.
++ *Consument*: Wij, de eindgebruikers van de elektriciteit.
+
 #figure(
   image("elektriciteitssector.png", width: 5cm),
   caption: [elektriciteitssector],
   label: <fig:elektriciteitssector>,
 )
 
-Als laatste heb je nog Regalatoren die de markt in de gaten houden dat leveranciers niet te veel vragen voor de energie en dat de producenten genoeg produceren. In belgie is dat de _CREG_ en _Vreg_.
+Tot slot zijn er *regulatoren* die de energiemarkt in de gaten houden. Ze zien erop toe dat prijzen eerlijk blijven en de bevoorrading gegarandeerd is. In België zijn dit onder andere de *CREG* (federaal) en de *VREG* (Vlaanderen).
 
 
-== Het net structuur
+== De netwerkstructuur
 
-+ *Radiaal net:* *lage voltage verdeling*
++ *Radiaal net:* (Typisch voor laagspanningsdistributie)
   #figure(
     image("radiaal net.png", width: 3cm),
     caption: [radiaal net],
     label: <fig:radiaal-net>,
   )
   In een radiaal net vertrekken de leidingen vanuit één bron naar de verbruikers, als takken van een boom.
-  - *Voordeel:* Eenvoudig en goedkoop.
-  - *Nadeel:* Geen redundantie; een fout in de hoofdkabel schakelt alles erachter uit.
-+ *Ring net*
+  - *Voordeel:* Eenvoudig en goedkoop in aanleg.
+  - *Nadeel:* Geen redundantie. Een fout in de hoofdkabel schakelt alle achterliggende verbruikers uit.
++ *Ring net:* (Typisch voor middenspanningsdistributie)
   #figure(
     image("ring net.png", width: 3cm),
     caption: [ring net],
     label: <fig:ring-net>,
   )
-  *Medium voltage verdeling* Bij een ring net zie je dat je backups creert. Als er een ding uit gaat is je kring niet gebroken en heb je een backup.
-+ *Mesh net:* *hoge voltage verdeling _transmitie en interconnectie_*
+  Een ringnet is gesloten in een lus, waardoor redundantie ontstaat. Als er een kabel of transformator uitvalt, kan men de fout isoleren en de stroom via de andere kant van de ring naar de verbruikers sturen.
++ *Mesh net:* (Typisch voor hoogspanningstransmissie)
 #figure(
   image("mesh net.png", width: 5cm),
   caption: [mesh net],
   label: <fig:mesh-net>,
 )
-Mesh net is het omgekeerde van een radiaal net. Het is een netwerk van verbonden lijnen die elkaar kruisen en verbinden. Het is een zeer betrouwbaar netwerk omdat het veel redundantie heeft, wordt veel gebruikt tussen landen en lange afstanden met hoge spanningen.
+Een mesh (vermaasd) netwerk is een complex netwerk van verbonden lijnen die elkaar kruisen en verbinden. Het biedt de hoogste betrouwbaarheid en redundantie, wat essentieel is voor grote afstanden en het verbinden van verschillende landen en centrales.
 
 == Twee-wattmeter methode
 
