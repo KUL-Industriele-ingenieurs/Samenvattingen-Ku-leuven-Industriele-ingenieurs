@@ -564,4 +564,4 @@ Als $Delta T_e$ en $Delta T_i$ niet meer dan *40% van elkaar afwijken*, is de fo
 
 == Alles tesamen
 
-Entrance region: $ Nu = 3.66 + frac(0.065 (D slash L) R_e P r, 1+ 0.04 [(D slash L) R_e P r)]^(2slash3) $
+Entrance region: $ Nu = 3.66 + frac(0.065 (D slash L) R_e P r, 1 + 0.04 [(D slash L) R_e P r)]^(2 slash 3)) $
