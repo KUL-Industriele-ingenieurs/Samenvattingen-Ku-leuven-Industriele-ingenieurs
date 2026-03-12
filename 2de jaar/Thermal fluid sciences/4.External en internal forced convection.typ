@@ -192,7 +192,7 @@ Dit is niet praktisch om mee te rekenen gegeven de complexe afhankelijkheden. We
 #concept(title: "Unheated Starting Length")[
   Soms begint de verwarming of koeling van een plaat pas na een initiële onverwarmde sectie met lengte $xi$.
   De snelheidsgrenslaag (hydrodynamisch) begint direct op te bouwen vanaf $x=0$, maar de thermische grenslaag begint pas te groeien vanaf $x=xi$.
-   Dit betekent dat in de onverwarmde zone de vloeistof al aan het vertragen is, wat de warmteoverdracht in de verwarmde zone verbetert.
+  Dit betekent dat in de onverwarmde zone de vloeistof al aan het vertragen is, wat de warmteoverdracht in de verwarmde zone verbetert.
 ]
 
 === Uniform Heat flux <sec:uniform-heat-flux>
@@ -289,17 +289,19 @@ door flow seperatie is het moeilijk om analytisch de flow te berekenen.
 
 == Flow Across Banks of Tubes <sec:flow-across-banks-of-tubes>
 
-#concept(title: "Cross-flow over tube banks")[
-  Cross-flow over tube banks wordt veel aangetroffen in warmtewisselaars. In zulke apparaten stroomt één vloeistof door de buizen terwijl de ander loodrecht over de buizen stroomt.
 
-  De buizen beïnvloeden het stromingspatroon en de turbulentiegraad stroomafwaarts, wat de warmteoverdracht aanzienlijk verandert.
-]
 
 #wrap-figure(
-  image("Flow over tube banks.png", width: 6cm),
+  image("Flow over tube banks.png", width: 2.5cm),
   caption: [Flow over tube banks],
   label: <fig:Flow-over-tube-banks>,
 )[
+
+  #concept(title: "Cross-flow over tube banks")[
+    Cross-flow over tube banks wordt veel aangetroffen in warmtewisselaars. In zulke apparaten stroomt één vloeistof door de buizen terwijl de ander loodrecht over de buizen stroomt.
+
+    De buizen beïnvloeden het stromingspatroon en de turbulentiegraad stroomafwaarts, wat de warmteoverdracht aanzienlijk verandert.
+  ]
 
   *Meetgroottes tussen buiscentra:*
   - $S_T$: Transversale spoed (dwarskant)
@@ -345,7 +347,9 @@ $ R e_(D) = frac(rho V_(max) D, mu) = frac(V_(max) D, nu) $
 )
 
 *Logaritmische gemiddelde temperatuurverschil:*
-$ Delta T_m = frac((T_i - T_e) - (T_s - T_i), ln[(T_i - T_e)/(T_s - T_i)]) = frac(Delta T_e - Delta T_i, ln(Delta T_e / Delta T_i)) $
+$
+  Delta T_m = frac((T_i - T_e) - (T_s - T_i), ln[(T_i - T_e)/(T_s - T_i)]) = frac(Delta T_e - Delta T_i, ln(Delta T_e / Delta T_i))
+$
 
 met: $T_i$ = Inlaattemperatuur, $T_e$ = Uitlaattemperatuur, $T_s$ = Buiswandtemperatuur
 
@@ -396,16 +400,16 @@ External flow focussed zich op het meganisch deel of aerodynamichs drag. Interna
 #highlight[Dus nu gaan we kijken wat de effecten zijn van naar de effecten van pijpen en muren op de stroming en warmteoverdracht.]
 
 #wrap-figure(
-  image("noslip in pijp.png", width: 8cm),
+  image("noslip in pijp.png", width: 6cm),
   caption: [noslip conditie in pijp],
   label: <fig:noslip-in-pijp>,
 )[
 
-We weten van het vorige hoofdstuk dat no slip ervoor zorgt dat je een boundary layer krijgt die de snelheid van de stroming tegenhoudt langs de wanden. Je krijgt dan een parabool waarbij de maximale snelheid $V_(m a x)$ in het midden van de buis is en de snelheid nul is aan de wanden.
+  We weten van het vorige hoofdstuk dat no slip ervoor zorgt dat je een boundary layer krijgt die de snelheid van de stroming tegenhoudt langs de wanden. Je krijgt dan een parabool waarbij de maximale snelheid $V_(m a x)$ in het midden van de buis is en de snelheid nul is aan de wanden.
 
-Om dit te versimplificeren gaan we werken met de gemiddelde snelheid $V_(a v g)$ die constant is in een incompressable cross section $A$ van de buis.
+  Om dit te versimplificeren gaan we werken met de gemiddelde snelheid $V_(a v g)$ die constant is in een incompressable cross section $A$ van de buis.
 
-$V_A$ hangt af van de warmte en cooling door daar de densiteit van veranderd $phi$ maar we gaan deze effecten meestal weglaten en de stroming $V_A$ beoordelen over een constante warmte $T_(a v g)$
+  $V_A$ hangt af van de warmte en cooling door daar de densiteit van veranderd $phi$ maar we gaan deze effecten meestal weglaten en de stroming $V_A$ beoordelen over een constante warmte $T_(a v g)$
 
 ]
 
@@ -437,7 +441,7 @@ In de figuur zie je hoe de stroom regeert wanneer het de buis binnenkomt. Je kri
 === Temperatuur
 
 #figure(
-  image("Thermal boundry layr.png", width: 5cm),
+  image("Thermal boundry layr.png", width: 6cm),
   caption: [Thermal boundry layer developent in buis],
   label: <fig:Thermal-boundry-layr>,
 )
@@ -446,23 +450,23 @@ Net zoals bij snelheid heb je opnieuw je #keyterm[thermische grenslaag(thermal b
 
 === Nusselt nummer in de entrance region
 
-#theorie(title:"Nusselt number herhaling")[
+#theorie(title: "Nusselt number herhaling")[
 
-Het Nusselt getal (Nu) is een dimensieloos (eenheidsloos) getal dat binnen de thermodynamica wordt gebruikt om warmteoverdracht te analyseren. Het vergelijkt de warmteoverdracht via convectie met de warmteoverdracht via conductie (geleiding) binnen een fluïdum (vloeistof of gas)
+  Het Nusselt getal (Nu) is een dimensieloos (eenheidsloos) getal dat binnen de thermodynamica wordt gebruikt om warmteoverdracht te analyseren. Het vergelijkt de warmteoverdracht via convectie met de warmteoverdracht via conductie (geleiding) binnen een fluïdum (vloeistof of gas)
 
-Het geeft de versterking (enhancement) van de warmteoverdracht door een fluïdumlaag weer die ontstaat doordat het fluïdum beweegt (convectie),vergeleken met wanneer het fluïdum volledig stil zou staan (conductie)
-$ N_u = frac("convectie" +"Conductie", "Conductie")$
-$ N_u = 1 arrow.r.double "puur conductie"$
-$ N_u = frac(h dot L_c , k) $
+  Het geeft de versterking (enhancement) van de warmteoverdracht door een fluïdumlaag weer die ontstaat doordat het fluïdum beweegt (convectie),vergeleken met wanneer het fluïdum volledig stil zou staan (conductie)
+  $ N_u = frac("convectie" +"Conductie", "Conductie") $
+  $N_u = 1 arrow.r.double "puur conductie"$
+  $ N_u = frac(h dot L_c, k) $
 
-met $h$: Convectie coëfficiënt
-$L_c$: Karakteristieke lengte van de geometrie
-$k$: Thermische geleidbaarheid
+  met $h$: Convectie coëfficiënt
+  $L_c$: Karakteristieke lengte van de geometrie
+  $k$: Thermische geleidbaarheid
 
 ]
 
 #figure(
-  image("Nusselt number over lengte.png", width: 5cm),
+  image("Nusselt number over lengte.png", width: 6cm),
   caption: [Nusselt number over lengte],
   label: <fig:Nusselt-number-over-lengte>,
 )
@@ -474,7 +478,7 @@ De nusselt number is veel groter in de entrance region en valt dan af naar een c
 
 We maken eerst wat approximaties:
 - $ T_s ("omgeving") = "constant" $
-- $ dot(q) ("Heat flux") = "constant"$
+- $dot(q) ("Heat flux") = "constant"$
 
 #wrap-figure(
   image("General thermal analysis.png", width: 5cm),
@@ -482,18 +486,18 @@ We maken eerst wat approximaties:
   label: <fig:General-thermal-analysis>,
 )[
 
-Dit is een stroming probleem _Denk stromingen massa in = massa out_
+  Dit is een stroming probleem _Denk stromingen massa in = massa out_
 
-$ dot(Q) = dot(m) c_p (T_(e) - T_(i)) [W] $
+  $ dot(Q) = dot(m) c_p (T_(e) - T_(i)) [W] $
 
-met de heat flux:
-$ dot(q_s) = h_x (T_s - T_m) [W slash m^2]$
-met $ h_x $: de locale heat transfer coefficient.
+  met de heat flux:
+  $dot(q_s) = h_x (T_s - T_m) [W slash m^2]$
+  met $ h_x $: de locale heat transfer coefficient.
 ]
 
 *Constante heat flux $(dot(q))$*\
 $dot(q)$ is constant dus over heel het oppervlakte van de buis gaat de
-heat flux hetzelfde zijn. 
+heat flux hetzelfde zijn.
 
 
 
@@ -505,29 +509,31 @@ heat flux hetzelfde zijn.
 
 *Constante oppervlaktetemperatuur $T_s$*\
 
-Wanneer de oppervlaktetemperatuur constant is, 
+Wanneer de oppervlaktetemperatuur constant is,
 verandert de vloeistoftemperatuur wel naarmate deze door de buis stroomt.
 
 === Arithmetisch gemiddelde temperatuurverschil
 
-De eenvoudigste benadering is het gebruik van het arithmetisch gemiddelde 
+De eenvoudigste benadering is het gebruik van het arithmetisch gemiddelde
 temperatuurverschil:
 
-$ Delta T_("avg") = Delta T_("am") = frac(Delta T_i + Delta T_e, 2) = frac((T_s - T_i) + (T_s - T_e), 2) = T_s - frac(T_i + T_e, 2) $
+$
+  Delta T_("avg") = Delta T_("am") = frac(Delta T_i + Delta T_e, 2) = frac((T_s - T_i) + (T_s - T_e), 2) = T_s - frac(T_i + T_e, 2)
+$
 
 De #keyterm["bulk mean fluid temperature"] is: $T_b = (T_i + T_e) / 2$
 
 Door het arithmetisch gemiddelde temperatuurverschil te gebruiken,
-#underline[nemen we aan dat de vloeistoftemperatuur lineair langs de buis varieert], 
+#underline[nemen we aan dat de vloeistoftemperatuur lineair langs de buis varieert],
 wat in realiteit zelden het geval is, vooral wanneer $T_s$ = constant.
 
-Deze vereenvoudigde benadering geeft vaak aanvaardbare resultaten, 
-maar niet altijd. 
+Deze vereenvoudigde benadering geeft vaak aanvaardbare resultaten,
+maar niet altijd.
 Daarom hebben we een betere manier nodig om $Delta T_("avg")$ te bepalen.
 
 === Logaritmisch gemiddelde temperatuurverschil (LMTD)
 
-In werkelijkheid verandert de vloeistoftemperatuur *exponentieel* naarmate ze door de buis stroomt (niet lineair). 
+In werkelijkheid verandert de vloeistoftemperatuur *exponentieel* naarmate ze door de buis stroomt (niet lineair).
 Het LMTD is een *exacte* voorstelling van het gemiddelde temperatuurverschil tussen vloeistof en oppervlak.
 
 #frm(
@@ -535,8 +541,10 @@ Het LMTD is een *exacte* voorstelling van het gemiddelde temperatuurverschil tus
   [
     $ dot(Q) = h A_s Delta T_(l n) $
 
-    $ Delta T_(ln) = frac(Delta T_e - Delta T_i, ln(Delta T_e / Delta T_i))
-     = frac((T_s - T_e) - (T_s - T_i), ln[(T_s - T_e) / (T_s - T_i)]) $
+    $
+      Delta T_(ln) = frac(Delta T_e - Delta T_i, ln(Delta T_e / Delta T_i))
+      = frac((T_s - T_e) - (T_s - T_i), ln[(T_s - T_e) / (T_s - T_i)])
+    $
 
     $ T_e = T_s - (T_s - T_i) e^(- h A_s / (dot(m) c_p)) $
   ],
