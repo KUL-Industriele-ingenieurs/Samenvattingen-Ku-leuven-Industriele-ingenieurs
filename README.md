@@ -126,6 +126,13 @@ brew install --cask visual-studio-code && brew install git
 sudo apt install code git
 ```
 
+**Typst formatter** (aanbevolen voor Typst-gebruikers):
+
+```powershell
+winget install --id Enter-tainer.typstyle
+$env:PATH = [System.Environment]::GetEnvironmentVariable("PATH","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("PATH","User")
+```
+
 Daarna installeer je **LaTeX** of **Typst** (of beide). Volg de stappen in:
 
 - **[LATEX.md](LATEX.md)** — LaTeX installeren en gebruiken
