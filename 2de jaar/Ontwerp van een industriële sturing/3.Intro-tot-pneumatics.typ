@@ -58,7 +58,7 @@ We will discuss (the differences between) disc valves, spool valves and poppet v
 In de industrie kun je hoge druk van lucht vergelijken met een veer.
 Als je er minder druk op zet gaat het terug uitzetten en omgekeerd.
 
-$ F = k * Delta x $
+$ F = k dot Delta x $
 
 
 === Vacuüm
