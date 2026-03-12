@@ -15,6 +15,7 @@
         "solidtux.zotero-for-typst",
         "mushanshitiancai.vscode-paste-image",
         "mushan.vscode-paste-image",
-        "pomdtr.excalidraw-editor"
+        "pomdtr.excalidraw-editor",
+        "calebfiggers.typst-companion"
     ]
 }

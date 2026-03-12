@@ -18,8 +18,8 @@ Een ideale transformator _vorig hoofdstuk_ heeft een paar aannamens:
 
 In de realiteit is dit natuurlijk niet het geval en we moeten voor elk van deze effecten rekenening houden. In dit hoofdstuk gaan we stap voor stap elk van deze effecten modelleren.
 
-== finite permeabiliteit van het kernmateriaal <sec:finite-permeabiliteit-van-het-kernmateriaal>
-Gemanitiseerde stroom. In het vorig hoofdstuk hebben we *Reluctantie* geïntroduceerd als een maat voor de magnetische weerstand van de kern. 
+== Finite permeabiliteit van het kernmateriaal <sec:finite-permeabiliteit-van-het-kernmateriaal>
+Gemanitiseerde stroom. In het vorig hoofdstuk hebben we *Reluctantie* geïntroduceerd als een maat voor de magnetische weerstand van de kern.
 
 #figure(
   image("Relucantie.png", width: 5cm),
@@ -31,9 +31,11 @@ $ N_1 i_1 - N_2 i_2 = phi R_c $
 
 met $R_c$ de reluctantie van de kern, $phi$ de magnetische flux en $N_1$ en $N_2$ het aantal windingen van respectievelijk de primaire en secundaire wikkeling.
 
-$ arrow.r.double i_1 = underbrace( N_2/N_1 i_2),"ideale transformator" + underbrace((phi R_c) / N_1),"Stroom verlies" i_m $
+$
+  arrow.r.double i_1 = underbrace(N_2/N_1 i_2),"ideale transformator" + underbrace((phi R_c) / N_1),"Stroom verlies" i_m
+$
 
-$phi$ hebben we vorig hoofdstuk gezien en is de flux doorheen de kern. 
+$phi$ hebben we vorig hoofdstuk gezien en is de flux doorheen de kern.
 
 #figure(
   image("Fluxherhaling.png", width: 5cm),
@@ -72,16 +74,16 @@ We krijgen hierdoor een geüpdate model van onze transformator:
   caption: [BH-curve],
   label: <fig:BH-curve>,
 )[
-De BH curve gaat de distrotie en het verlies van hystereses modelleren. 
-We gaan dit doen inplaats van de formule $B = mu dot H$
-Dit is een perfect lineair model maar opnieuw het universum zet ons tegen.
-Uiteindelijk gaat onze kern verzadigd raken en kunnen we niet meer zeggen dat $B$ 
-evenredig is met $H$. Dit is een BH curve.
+  De BH curve gaat de distrotie en het verlies van hystereses modelleren.
+  We gaan dit doen inplaats van de formule $B = mu dot H$
+  Dit is een perfect lineair model maar opnieuw het universum zet ons tegen.
+  Uiteindelijk gaat onze kern verzadigd raken en kunnen we niet meer zeggen dat $B$
+  evenredig is met $H$. Dit is een BH curve.
 
-Dit komt omdat een magneet allemaal gemaakt is van kleine magnetische 
-atomen die dezelfde richting hebben en zo een magnetisch veld opwikkelen. 
-Maar uiteindelijk gaan alle richtingen gelijk staan en is er geen verschil als je er nog meer magnetische veld opzet. 
-Dit is het verzadigingspunt van de kern.
+  Dit komt omdat een magneet allemaal gemaakt is van kleine magnetische
+  atomen die dezelfde richting hebben en zo een magnetisch veld opwikkelen.
+  Maar uiteindelijk gaan alle richtingen gelijk staan en is er geen verschil als je er nog meer magnetische veld opzet.
+  Dit is het verzadigingspunt van de kern.
 ]
 
 ampere's wet:
@@ -90,7 +92,7 @@ $ H l_C = N i $
 $ H = (N I)/ l_C $
 
 en
-$ phi = B A_c $ 
+$ phi = B A_c $
 $ B = phi/A_c $
 
 Dit veranderd onze BH-curve naar dit:
@@ -103,11 +105,11 @@ Dit veranderd onze BH-curve naar dit:
 
 === Distortion
 
-In een echt elektriciteitsnet is de *spanning* nagenoeg sinusvormig. Omdat de spanning de afgeleide is van de flux (wet van Faraday), wordt de flux hierdoor gedwongen om ook sinusvormig te zijn.
+In een echt elektriciteitsnet is de *spanning* sinusvormig $v(t) = hat(V) cos(omega t)$. Omdat de spanning de afgeleide is van de flux (wet van Faraday), wordt de flux hierdoor gedwongen om ook sinusvormig te zijn.
 
-$ v_1(t) = \.hat(V) cos(omega t) arrow.r.double phi(t) = \.hat(Phi) sin(omega t) $
+$ v_1(t) = hat(V) cos(omega t) underbrace(arrow.r.double, d/(d t))phi(t) = \.hat(Phi) sin(omega t) $
 
-Echter, door de niet-lineaire BH-curve van het kernmateriaal is de relatie tussen flux ($phi$) en stroom ($i_m$) niet constant. Wanneer de kern in de buurt van *verzadiging* komt (het "kniepunt" van de BH-curve), daalt de permeabiliteit ($mu$) drastisch. 
+Echter, door de niet-lineaire BH-curve van het kernmateriaal is de relatie tussen flux ($phi$) en stroom ($i_m$) niet constant. Wanneer de kern in de buurt van *verzadiging* komt (het "kniepunt" van de BH-curve), daalt de permeabiliteit ($mu$) drastisch.
 
 *Gevolg:* om de flux sinusvormig te houden op de toppen, is er een onevenredig grote toename van de veldsterkte ($H$) en dus de magnetisatiestroom ($i_m$) nodig. Dit resulteert in een *gepiekte (niet-sinusvormige) stroom*.
 
@@ -118,7 +120,7 @@ Echter, door de niet-lineaire BH-curve van het kernmateriaal is de relatie tusse
 )
 
 ==== Harmonische analyse
-Omdat de stroom periodiek maar niet-sinusvormig is, kunnen we deze via *Fourier-analyse* wiskundig ontleden in verschillende sinusvormige componenten:
+Omdat de stroom periodiek maar niet-sinusvormig is, kunnen we deze via *Fourier-analyse* wiskundig ontleden in verschillende sinusvormige componenten _We gaan de vreemde sinusvormige curve opzetten in verschillende sinussen_:
 
 - *Fundamentele component ($f_1$):* Dit is de sinusvormige stroom op de basisnetfrequentie. Het vertegenwoordigt het grootste deel van de magnetisatiestroom en is wat we zouden zien als de kern perfect lineair zou zijn.
 - *Harmonische componenten ($f_3, f_5, ...$):* Dit zijn sinussen met een frequentie die een geheel veelvoud is van de fundamentele (bijv. 3 of 5 keer zo snel). Ze ontstaan puur door de niet-lineariteit van de kern en zijn de "correcties" die nodig zijn om de afwijking van een perfecte sinus te beschrijven.
@@ -129,12 +131,303 @@ Omdat de stroom periodiek maar niet-sinusvormig is, kunnen we deze via *Fourier-
 
 #figure(
   image("fundamentaal+harmonisch.png", width: 12cm),
-  caption: [Constructieve interferentie: De som van de fundamentele component (blauw) en de 3de harmonische (groen) vormt de typische gepiekte magnetisatiestroom (rood).],  label: <fig:fundamentaal-harmonisch>,
+  caption: [Constructieve interferentie: De som van de fundamentele component (blauw) en de 3de harmonische (groen) vormt de typische gepiekte magnetisatiestroom (rood).],
+  label: <fig:fundamentaal-harmonisch>,
 )
 
 Deze harmonischen zijn ongewenst in het net omdat ze kunnen leiden tot extra opwarming van transformatoren en interferentie met elektronica. In driefasige systemen worden deze vaak opgevangen door een *delta-verbinding* ($Delta$), waarin de 3de harmonischen kunnen rondstromen zonder het net te vervuilen.
 
 //Sessie 4 24min
+
+== BH-hysterese <sec:BH-hysterese>
+
+#wrap-figure(
+  image("Hysteresis.png", width: 5cm),
+  caption: [Hysteresis],
+  label: <fig:Hysteresis>,
+)[
+
+  Nu hebben we nog een fenomeen. Onze curve is niet alleen #keyterm[Non-lineair], maar ook #keyterm[Hysteretisch].
+
+  Dus onze ze BH-curve hangt ook af van wat er daarvoor gebeurde. Onze materiaal heeft een #keyterm[geheugen] van de magnetische veldsterkte.
+
+  Het oppervlakte in de hysterese-lus toont onze energieverliezen $P_(l o s s) ~ f$
+
+  Dus de snelheid van onze verandering van het magnetische veld (de frequentie) heeft een rechtstreekse invloed op onze verliezen. Hoe sneller we veranderen, hoe groter onze verliezen.
+
+  Verliezen => opwarming van de kern
+
+  Het velt dat gecreëert wordt als $H$ nul is dan noemt met #keyterm[remanentie] $B_r$
+
+  De veldsterkte die nodig is om de kern te ontmagnetiseren (om $B$ terug naar nul te brengen) noemen we #keyterm[coerciviteit] $H_c$.
+]
+
+== Hysteresis effect op verschillende materialen <sec:hysteresis-effect-op-verschillende-materialen>
+#wrap-figure(
+  image("Hard VS soft met hystereiss.png", width: 8cm),
+  caption: [Hard VS soft met hysteresis],
+  label: <fig:Hard-VS-soft-met-hystereiss>,
+)[
+
+  Afhankelijk van het materiaal ga je een sterker of zwakker hysterese-effect hebben. Zache metalen hebben een smalle hysterese-lus, wat betekent dat ze minder energie verliezen bij elke magnetisatiecyclus.
+
+  $=>$ ideaal voor transformatoren en elektromagneten die continu worden gebruikt, omdat ze efficiënter zijn en minder warmte genereren.
+]
+
+Afhankelijk van het type materiaal dat je gebruikt zijn er ook veranderingen.
+
++ *Carbon steel:* sterke staal carbon infused.
++ *Silicon steel:* staal met een beetje siliconen erin, wat de elektrische weerstand verhoogt en de verliezen vermindert.
+
+== Alles samen: Equivalent schema <sec:alles-samen-equivalent-schema>
+
+#wrap-figure(
+  image("Equivalent schema.png", width: 10cm),
+  caption: [Equivalent schema],
+  label: <fig:Equivalent-schema>,
+)[
+
+  Je ziet dat je vreemde pieks krijgt in de stroom $i_phi$.
+
+  Dit komt door:
+  - Hysterese
+  - Verzadiging van de kern
+
+
+  Dus deze pieks zijn een gevolg van de niet-ideale eigenschappen van de transformator, met name de niet-lineaire BH-curve en het hysterese-effect van het kernmateriaal.
+
+  Herinner je wanneer we actief power hebben
+
+  $ P = V dot I cos(phi_V - phi_I) $
+
+  Nu in de figuur zie je dat de stroom een faseverschuiving heeft ten opzichte van de spanning.
+  Een ideale transformator zou een faseverschuiving van 0 graden hebben waarbij $v(t)$ in sync (of in fase) is met $i(t)$ Dat noemt de #keyterm[Fundamentele component] van de stroom.
+
+]
+Je ziet het hier getekent in gestreept blauw.
+#figure(
+  image("fundamenteel component.png", width: 7cm),
+  caption: [fundamenteel component],
+  label: <fig:fundamenteel-component>,
+)
+
+== Exciting current en impedantie <sec:exciting-current-en-impedantie>
+
+#wrap-figure(
+  image("Transformator-reël circuit.png", width: 7cm),
+  caption: [Transformator-reël circuit],
+  label: <fig:Transformator-reël-circuit>,
+)[
+
+  Nu herinner je dat we om onze losses voor te stellen dat we in parallel met onze ideale transformator een weerstand $R_c$ en $L_m$ hebben gezet. Het probleem is dat zoals gezien in de vorige figuur dat $I_phi$ moeilijk is om te modelleren dus we gaan het opsplitsen in $I_m$ en $I_c$.
+
+  We gaan die vinden door:
+  - #markhl[meten van $P_(l o s s) => R_c$]
+  - #markhl[meten van de RMS _average_ van $I_phi$ => $L_m$]
+
+
+]
+
+*Phasor diagram van de exciting current $I_phi$*
+
+#figure(
+  image("Phasor excitising current.png", width: 5cm),
+  caption: [Phasor excitising current],
+  label: <fig:Phasor-excitising-current>,
+)
+Met:
+
+$I_c$ de component die de magnetisatie van de kern veroorzaakt $I_c = frac(V_1^2, R_c)$
+
+
+$I_m$ *magenetische current:* het component die de hysteresis en verwarming van de kern veroorzaakt, Dit toont de losses van de kern.
+
+== Eddy currents <sec:eddy-currents>
+
+Eddy currents hebben we al deels gezien in _elektriciteit_
+Het is de stroom die ontstaat wanneer een geleider in een veranderlijk magnetisch veld wordt geplaatst.
+
+#figure(
+  image("eddy-current.png", width: 5cm),
+  caption: [Eddy current],
+  label: <fig:eddy-current>,
+)
+
+$ P_("loss") = integral_v arrow(j) dot arrow(E) d v ~ E^2 ~ B^2 f^2 $
+
+Met $arrow(j) = sigma arrow(E)$
+
+=== Eddy current break <sec:eddy-current-break>
+
+
+
+#wrap-figure(
+  image("Eddy-current breaks.png", width: 5cm),
+  caption: [Eddy-current breaks],
+  label: <fig:Eddy-current-breaks>,
+)[
+
+  Hoe een elektrisch veld geïnduceerd wordt in een geleider. Een geleider wilt geen veranderingen in zijn status rond een magnetisch veld $arrow(B)$. Het is de verandering die een magnetisch veld gaan induceren in de #highlight[Omgekeerde richting] van het veranderend magnetisch veld $arrow(B)$.
+]
+
+
+
+Om dit magnetisch veld te induceren moet er een stroom $I$ gaan lopen in de geleider. Deze stroom noemen we de #highlight[Eddy current]. Door deze stroom krijgen we *Losses* $P_("loss") = I^2 R$
+
+
+
+De ijzerverliezen per massa-eenheid ($W/k g$) zijn afhankelijk van de magnetische fluxdichtheid $B$ en het type materiaal. In de onderstaande grafiek worden twee soorten staal vergeleken: *M-5 steel* en *23ZDKH90 steel*.
+
+#align(center)[
+  #cetz.canvas({
+    import cetz.draw: *
+    plot.plot(
+      size: (6, 4),
+      x-label: [$B$ (T)],
+      y-label: [Specific iron loss (W/kg)],
+      x-tick-step: 0.5,
+      y-tick-step: 0.2,
+      x-min: 0,
+      x-max: 2,
+      y-min: 0,
+      y-max: 2,
+      x-grid: true,
+      y-grid: true,
+      {
+        plot.add(
+          label: [M-5 steel],
+          style: (stroke: schoolBlue + 1.5pt),
+          mark: "o",
+          mark-size: 0.1,
+          (
+            (0, 0),
+            (0.2, 0.03),
+            (0.4, 0.08),
+            (0.6, 0.15),
+            (0.8, 0.25),
+            (1.0, 0.38),
+            (1.2, 0.55),
+            (1.4, 0.78),
+            (1.6, 1.05),
+            (1.8, 1.55),
+            (1.9, 1.92),
+          ),
+        )
+        plot.add(
+          label: [23ZDKH90 steel],
+          style: (stroke: schoolRed + 1.5pt),
+          mark: "s",
+          mark-size: 0.1,
+          (
+            (0, 0),
+            (0.2, 0.01),
+            (0.4, 0.05),
+            (0.6, 0.1),
+            (0.8, 0.18),
+            (1.0, 0.28),
+            (1.2, 0.42),
+            (1.4, 0.58),
+            (1.6, 0.78),
+            (1.8, 1.05),
+            (1.9, 1.35),
+          ),
+        )
+      },
+    )
+  })
+]
+
+= Windingen verliezen <sec:windingen-verliezen>
+
+
+Nu hebben we alle niet ideale delen van de transformator core gedaan. Nu gaan we over naar alle *Niet-ideale delen van de windingen*.
+
+== Leakage <sec:leakage>
+
+We nemen aan dat alle magenetische flux $phi$ binnen de kern blijft maar nu gaan we aanmenen dat niet alle magenetische flux $phi$ door de windingen gaat.
+
+Dan krijg je lekking van je windingen en dit veroorzaakt een extra verlies in de transformator.
+
+#figure(
+  image("Winding losses.png", width: 7cm),
+  caption: [Flux-verliezen],
+  label: <fig:Winding-losses>,
+)
+
+Dit noemen we #keyterm[Leakage flux] $phi_(sigma, 1)$.
+
+We gaan onze flux $phi$ opsplitsen in twee delen. Een #keyterm[Main flux] en een #keyterm[Lek flux]. Deze flux wordt niet doorgegeven aan de andere windingen.
+
+#figure(
+  image("Leakage flux.png", width: 15cm),
+  caption: [Leakage flux],
+  label: <fig:Leakage-flux>,
+)
+
+== Series resistensies
+
+
+#wrap-figure(
+  image("Series resisitentie.png", width: 7cm),
+  caption: [Series resisitentie],
+  label: <fig:Series-resisitentie>,
+)[Onze flux lekt maar onze conductor is ook niet perfect. Meestal is dit koper.
+
+  Het is simpel om dit te modelleren we voegen gewoon een extra resistor toe aan beide kanten van onze circuit $R_1$ en $R_2$.
+]
+
+Het is simpel om dit te modelleren we voegen gewoon een extra resistor toe aan beide kanten van onze circuit $R_1$ en $R_2$.
+
+== Totale series impedantie <sec:totale-series-impedantie>
+
+Als we ze allemaal samenvoegen krijgen we onze totale series impedantie.
+
+#figure(
+  image("Totale-series impedantie.png", width: 8cm),
+  caption: [Totale-series impedantie],
+  label: <fig:Totale-series-impedantie>,
+)
+
+Dus onze $V_1$ en $V_2$ worden dan:
+$ V_1 = R_1 dot I_1 + j omega L_1 + E_1 $
+$ V_2 = R_2 dot I_2 + j omega L_2 + E_2 $
+
+
+== Full reële transformator <sec:full-reële-transformator>
+We kunnen nu alles samensteken. Dus all onze verliezen van onze core en onze windingen.
+
+#figure(
+  image("full reële transformer.png", width: 12cm),
+  caption: [full reële transformer],
+  label: <fig:full-reële-transformer>,
+)
+
+Je krijg met alle phasors samen dan dit phasor diagram:
+
+#figure(
+  image("Phasor diagram total reël transformator.png", width: 5cm),
+  caption: [Phasor diagram total reël transformator],
+  label: <fig:Phasor-diagram-total-reël-transformator>,
+)
+
+== Equivalent schema
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
