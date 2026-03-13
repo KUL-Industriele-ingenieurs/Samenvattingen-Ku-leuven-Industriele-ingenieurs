@@ -6,10 +6,10 @@
 #import "@preview/unify:0.7.1": num, numrange, qty, qtyrange  // siunitx equivalent
 #import "@preview/physica:0.9.5": *     // Physics math: derivatives, brakets, etc.
 #import "@preview/cetz:0.4.2"
+#import "@preview/cetz-plot:0.1.3"
 #let cetz = cetz
-#import "@preview/cetz-plot:0.1.3": chart, plot  // Plotting (pgfplots equivalent)
-#let chart = chart
-#let plot = plot
+#let chart = cetz-plot.chart
+#let plot = cetz-plot.plot
 #import "@preview/wrap-it:0.1.1": wrap-content, wrap-top-bottom
 #import "@preview/equate:0.3.2"
 #import "@preview/cetz-venn:0.1.4"

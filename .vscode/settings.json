@@ -1,7 +1,6 @@
 {
     "tinymist.fontPaths": ["./fonts", "${workspaceFolder}/fonts", "fonts"],
     "tinymist.exportPdf": "never",
-    "tinymist.lint.when": "onSave",
     "tinymist.formatterMode": "typstyle",
     "[typst]": {
         "editor.formatOnSave": true,
@@ -217,5 +216,7 @@
         "markdown": false,
         "scminput": false
     },
-    "github.copilot.editor.enableAutoCompletions": false
+    "github.copilot.editor.enableAutoCompletions": false,
+    "typst-companion.extension.list.indentationSize": "adaptive",
+    "typst-companion.extension.orderedList.autoRenumber": true
 }
