@@ -61,7 +61,7 @@ $L_m$ is de hoofdinductantie van de transformator en is gelijk aan $frac(N_1^2, 
 
 We krijgen hierdoor een geüpdate model van onze transformator:
 #figure(
-  image("Hoofdinductantie.png", width: 10cm),
+  image("Hoofdinductantie.png", width: 6cm),
   caption: [Hoofdinductantie],
   label: <fig:Hoofdinductantie>,
 )
@@ -107,11 +107,11 @@ Dit veranderd onze BH-curve naar dit:
 
 In een echt elektriciteitsnet is de *spanning* sinusvormig $v(t) = hat(V) cos(omega t)$. Omdat de spanning de afgeleide is van de flux (wet van Faraday), wordt de flux hierdoor gedwongen om ook sinusvormig te zijn.
 
-$ v_1(t) = hat(V) cos(omega t) underbrace(arrow.r.double, d/(d t))phi(t) = \.hat(Phi) sin(omega t) $
+$ v_1(t) = hat(V) cos(omega t) underbrace(arrow.r.double, d/(d t)) phi(t) = hat(Phi) sin(omega t) $
 
 Echter, door de niet-lineaire BH-curve van het kernmateriaal is de relatie tussen flux ($phi$) en stroom ($i_m$) niet constant. Wanneer de kern in de buurt van *verzadiging* komt (het "kniepunt" van de BH-curve), daalt de permeabiliteit ($mu$) drastisch.
 
-*Gevolg:* om de flux sinusvormig te houden op de toppen, is er een onevenredig grote toename van de veldsterkte ($H$) en dus de magnetisatiestroom ($i_m$) nodig. Dit resulteert in een *gepiekte (niet-sinusvormige) stroom*.
+* => Gevolg:* om de flux sinusvormig te houden op de toppen, is er een onevenredig grote toename van de veldsterkte ($H$) en dus de magnetisatiestroom ($i_m$) nodig. Dit resulteert in een *gepiekte (niet-sinusvormige) stroom*.
 
 #figure(
   image("BH-non lineair.png", width: 12cm),
@@ -153,9 +153,9 @@ Deze harmonischen zijn ongewenst in het net omdat ze kunnen leiden tot extra opw
 
   Het oppervlakte in de hysterese-lus toont onze energieverliezen $P_(l o s s) ~ f$
 
-  Dus de snelheid van onze verandering van het magnetische veld (de frequentie) heeft een rechtstreekse invloed op onze verliezen. Hoe sneller we veranderen, hoe groter onze verliezen.
+  Dus de snelheid van onze verandering _frequentie_ $f$ heeft een rechtstreekse invloed op onze verliezen. Hoe sneller we veranderen, hoe groter onze verliezen.
 
-  Verliezen => opwarming van de kern
+  #highlight[Verliezen => opwarming van de kern]
 
   Het velt dat gecreëert wordt als $H$ nul is dan noemt met #keyterm[remanentie] $B_r$
 
@@ -274,10 +274,7 @@ Met $arrow(j) = sigma arrow(E)$
 
 Om dit magnetisch veld te induceren moet er een stroom $I$ gaan lopen in de geleider. Deze stroom noemen we de #highlight[Eddy current]. Door deze stroom krijgen we *Losses* $P_("loss") = I^2 R$
 
-
-
-De ijzerverliezen per massa-eenheid ($W/k g$) zijn afhankelijk van de magnetische fluxdichtheid $B$ en het type materiaal. In de onderstaande grafiek worden twee soorten staal vergeleken: *M-5 steel* en *23ZDKH90 steel*.
-
+Hieronder een voorbeeld door de losses afhankelijk van het magnetische veld $B$.
 #align(center)[
   #cetz.canvas({
     import cetz.draw: *
@@ -359,13 +356,12 @@ Dit noemen we #keyterm[Leakage flux] $phi_(sigma, 1)$.
 We gaan onze flux $phi$ opsplitsen in twee delen. Een #keyterm[Main flux] en een #keyterm[Lek flux]. Deze flux wordt niet doorgegeven aan de andere windingen.
 
 #figure(
-  image("Leakage flux.png", width: 15cm),
+  image("Leakage flux.png", width: 12cm),
   caption: [Leakage flux],
   label: <fig:Leakage-flux>,
 )
 
 == Series resistensies
-
 
 #wrap-figure(
   image("Series resisitentie.png", width: 7cm),
@@ -379,7 +375,6 @@ We gaan onze flux $phi$ opsplitsen in twee delen. Een #keyterm[Main flux] en een
 Het is simpel om dit te modelleren we voegen gewoon een extra resistor toe aan beide kanten van onze circuit $R_1$ en $R_2$.
 
 == Totale series impedantie <sec:totale-series-impedantie>
-
 Als we ze allemaal samenvoegen krijgen we onze totale series impedantie.
 
 #figure(
@@ -392,9 +387,22 @@ Dus onze $V_1$ en $V_2$ worden dan:
 $ V_1 = R_1 dot I_1 + j omega L_1 + E_1 $
 $ V_2 = R_2 dot I_2 + j omega L_2 + E_2 $
 
+Met E de spanning over de ideale transformator, met de ratio's tussen $E_1$ en $E_2$ gegeven door de winding verhouding $N_1$ en $N_2$.
+
+$ E_1 / E_2 = N_1 / N_2 $
 
 == Full reële transformator <sec:full-reële-transformator>
 We kunnen nu alles samensteken. Dus all onze verliezen van onze core en onze windingen.
+
+Dit is:
+
+- *Core-verliezen*
+  - Flux verliezen door hysteresis => $R_c$
+  - Flux verliezen door eddy current verliezen in de kern => $L_m$
+- *Winding verliezen*
+  - Verliezen door de weerstand van de wikkelingen (ohmse verliezen). => $R_1$ en $R_2$
+  - Verliezen door de coupling tussen de windingen (mutuale verliezen). => $L_1$ en $L_2$
+
 
 #figure(
   image("full reële transformer.png", width: 12cm),
@@ -405,27 +413,10 @@ We kunnen nu alles samensteken. Dus all onze verliezen van onze core en onze win
 Je krijg met alle phasors samen dan dit phasor diagram:
 
 #figure(
-  image("Phasor diagram total reël transformator.png", width: 5cm),
+  image("Phasor diagram total reël transformator.png", width: 8cm),
   caption: [Phasor diagram total reël transformator],
   label: <fig:Phasor-diagram-total-reël-transformator>,
 )
-
-== Equivalent schema
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
