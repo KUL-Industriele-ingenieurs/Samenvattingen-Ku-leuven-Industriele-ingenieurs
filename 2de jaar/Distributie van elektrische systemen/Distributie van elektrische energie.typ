@@ -38,6 +38,7 @@
 #include "2.Intro transformatoren.typ"
 #include "3.De ideale transformator.typ"
 #include "4.Reële transformator.typ"
+#include "5.Transformator in de praktijk.typ"
 
 
 // Netten
