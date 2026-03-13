@@ -9,17 +9,17 @@
 
 == Non-ideale transformatoren <sec:non-ideale-transformatoren>
 
-Een ideale transformator _vorig hoofdstuk_ heeft een paar aannamens:
+Een ideale transformator _vorig hoofdstuk_ heeft een paar aannames:
 - *Infinite permeabiliteit van het kernmateriaal:*   er is geen magnetische weerstand, dus er is geen magnetische flux die verloren gaat in de kern.
 - *Geen conductiviteit van de wikkelingen:* er is geen weerstand in de wikkelingen, dus er is geen warmteverlies.
 - *Oneindig wikkelingsverhouding:* er is geen lekflux, dus alle magnetische flux die door de primaire wikkeling gaat, gaat ook door de secundaire wikkeling.
 - *Coupling 100%:* er is geen lekflux, dus alle magnetische flux die door de primaire wikkeling gaat, gaat ook door de secundaire wikkeling.
 
 
-In de realiteit is dit natuurlijk niet het geval en we moeten voor elk van deze effecten rekenening houden. In dit hoofdstuk gaan we stap voor stap elk van deze effecten modelleren.
+In de realiteit is dit natuurlijk niet het geval en we moeten voor elk van deze effecten rekening houden. In dit hoofdstuk gaan we stap voor stap elk van deze effecten modelleren.
 
 == Finite permeabiliteit van het kernmateriaal <sec:finite-permeabiliteit-van-het-kernmateriaal>
-Gemanitiseerde stroom. In het vorig hoofdstuk hebben we *Reluctantie* geïntroduceerd als een maat voor de magnetische weerstand van de kern.
+Magnetisatiestroom. In het vorig hoofdstuk hebben we *Reluctantie* geïntroduceerd als een maat voor de magnetische weerstand van de kern.
 
 #figure(
   image("Relucantie.png", width: 5cm),
@@ -74,8 +74,8 @@ We krijgen hierdoor een geüpdate model van onze transformator:
   caption: [BH-curve],
   label: <fig:BH-curve>,
 )[
-  De BH curve gaat de distrotie en het verlies van hystereses modelleren.
-  We gaan dit doen inplaats van de formule $B = mu dot H$
+  De BH curve gaat de vervorming en het verlies van hystereses modelleren.
+  We gaan dit doen in plaats van de formule $B = mu dot H$
   Dit is een perfect lineair model maar opnieuw het universum zet ons tegen.
   Uiteindelijk gaat onze kern verzadigd raken en kunnen we niet meer zeggen dat $B$
   evenredig is met $H$. Dit is een BH curve.
@@ -95,7 +95,7 @@ en
 $ phi = B A_c $
 $ B = phi/A_c $
 
-Dit veranderd onze BH-curve naar dit:
+Dit verandert onze BH-curve naar dit:
 
 #figure(
   image("Flux-MMF.png", width: 5cm),
@@ -149,7 +149,7 @@ Deze harmonischen zijn ongewenst in het net omdat ze kunnen leiden tot extra opw
 
   Nu hebben we nog een fenomeen. Onze curve is niet alleen #keyterm[Non-lineair], maar ook #keyterm[Hysteretisch].
 
-  Dus onze ze BH-curve hangt ook af van wat er daarvoor gebeurde. Onze materiaal heeft een #keyterm[geheugen] van de magnetische veldsterkte.
+  Dus onze BH-curve hangt ook af van wat er daarvoor gebeurde. Ons materiaal heeft een #keyterm[geheugen] van de magnetische veldsterkte.
 
   Het oppervlakte in de hysterese-lus toont onze energieverliezen $P_(l o s s) ~ f$
 
@@ -157,7 +157,7 @@ Deze harmonischen zijn ongewenst in het net omdat ze kunnen leiden tot extra opw
 
   #highlight[Verliezen => opwarming van de kern]
 
-  Het velt dat gecreëert wordt als $H$ nul is dan noemt met #keyterm[remanentie] $B_r$
+  Het veld dat gecreëerd wordt als $H$ nul is dan noemt met #keyterm[remanentie] $B_r$
 
   De veldsterkte die nodig is om de kern te ontmagnetiseren (om $B$ terug naar nul te brengen) noemen we #keyterm[coerciviteit] $H_c$.
 ]
@@ -204,7 +204,7 @@ Afhankelijk van het type materiaal dat je gebruikt zijn er ook veranderingen.
   Een ideale transformator zou een faseverschuiving van 0 graden hebben waarbij $v(t)$ in sync (of in fase) is met $i(t)$ Dat noemt de #keyterm[Fundamentele component] van de stroom.
 
 ]
-Je ziet het hier getekent in gestreept blauw.
+Je ziet het hier getekend in gestreept blauw.
 #figure(
   image("fundamenteel component.png", width: 7cm),
   caption: [fundamenteel component],
@@ -237,10 +237,9 @@ Je ziet het hier getekent in gestreept blauw.
 )
 Met:
 
-$I_c$ de component die de magnetisatie van de kern veroorzaakt $I_c = frac(V_1^2, R_c)$
+$I_c$ *Core-verlies stroom:* de component die de hysteresis en eddy-current (wervelstroom) verliezen in de kern vertegenwoordigt. Deze staat in fase met de spanning $V_1$. $I_c = frac(V_1, R_c)$
 
-
-$I_m$ *magenetische current:* het component die de hysteresis en verwarming van de kern veroorzaakt, Dit toont de losses van de kern.
+$I_m$ *Magnetisatiestroom:* de component die nodig is om de magnetische flux in de kern op te wekken (door de finite permeabiliteit). Deze ijlt $90^circle$ na op de spanning $V_1$. $I_m = frac(V_1, omega L_m)$
 
 == Eddy currents <sec:eddy-currents>
 
@@ -341,7 +340,7 @@ Nu hebben we alle niet ideale delen van de transformator core gedaan. Nu gaan we
 
 == Leakage <sec:leakage>
 
-We nemen aan dat alle magenetische flux $phi$ binnen de kern blijft maar nu gaan we aanmenen dat niet alle magenetische flux $phi$ door de windingen gaat.
+We nemen aan dat alle magnetische flux $phi$ binnen de kern blijft maar nu gaan we aannemen dat niet alle magnetische flux $phi$ door de windingen gaat.
 
 Dan krijg je lekking van je windingen en dit veroorzaakt een extra verlies in de transformator.
 
@@ -361,12 +360,12 @@ We gaan onze flux $phi$ opsplitsen in twee delen. Een #keyterm[Main flux] en een
   label: <fig:Leakage-flux>,
 )
 
-== Series resistensies
+== Series resistenties
 
 #wrap-figure(
   image("Series resisitentie.png", width: 7cm),
-  caption: [Series resisitentie],
-  label: <fig:Series-resisitentie>,
+  caption: [Series resistentie],
+  label: <fig:Series-resistentie>,
 )[Onze flux lekt maar onze conductor is ook niet perfect. Meestal is dit koper.
 
   Het is simpel om dit te modelleren we voegen gewoon een extra resistor toe aan beide kanten van onze circuit $R_1$ en $R_2$.
@@ -396,12 +395,12 @@ We kunnen nu alles samensteken. Dus all onze verliezen van onze core en onze win
 
 Dit is:
 
-- *Core-verliezen*
-  - Flux verliezen door hysteresis => $R_c$
-  - Flux verliezen door eddy current verliezen in de kern => $L_m$
-- *Winding verliezen*
-  - Verliezen door de weerstand van de wikkelingen (ohmse verliezen). => $R_1$ en $R_2$
-  - Verliezen door de coupling tussen de windingen (mutuale verliezen). => $L_1$ en $L_2$
+- *Core-verliezen* (Parallel tak)
+  - Flux verliezen door hysteresis en eddy currents in de kern => $R_c$
+  - Magnetisatiestroom nodig voor de opbouw van de flux (finite permeabiliteit) => $L_m$
+- *Winding verliezen* (Serie tak)
+  - Ohmse verliezen door de weerstand van de wikkelingen => $R_1$ en $R_2$
+  - Lekverliezen door flux die niet beide wikkelingen koppelt (lek-inductanties) => $L_1$ en $L_2$
 
 
 #figure(
@@ -417,6 +416,243 @@ Je krijg met alle phasors samen dan dit phasor diagram:
   caption: [Phasor diagram total reël transformator],
   label: <fig:Phasor-diagram-total-reël-transformator>,
 )
+
+== Equivalent schema <sec:equivalent-schema>
+
+Nu hebben we een reël schema gemaakt die alle verliezen tonen van de transformator.
+
+Als laatste willen we nog graag ons symbool van de transformator wegdoen.
+
+=== Primary side <sec:primary-side>
+
+We weten van het deel *Ideale transformator* dat we de secundaire _Rechter kant_ kunnen linken aan de primaire _Linker kant_.
+
+We brengen eigenlijk de secundaire kant naar de primaire kant door de fouten van de weerstanden en inducties naar de primaire kant te transformeren.
+De fracties tussen $N_1$ en $N_2$ komen dan terug in het spel.
+
+
+#concept(title: "Linking van weerstanden, impedantie en voltage")[
+
+  $ R'_2 = (N_1/N_2)^2 R_2 $
+  $ L'_2 = (N_1/N_2)^2 L_2 $
+  $ V'_2 = (N_1/N_2) V_2 $
+
+  De ' zegt dat we de primaire kant linken met de secundaire kant.
+
+  #figure(
+    image("Getransformeerde schema met transformator.png", width: 10cm),
+  )
+  $ arrow.b.triple $
+
+  #figure(
+    image("gesimplificeerd circuit.png", width: 10cm),
+  )
+
+  #examenbox[Dit ga je veel toepassen in oefeningen, vergeet niet je weerstanden en inducties te transformeren!]
+
+  Exact hetzelfde kan gedaan worden voor de secundaire kant waarbij de weerstanden en inducties worden getransformeerd naar de secundaire kant.
+
+  De core verliezen van hysteresis $R_c$ en de BH-curve $L_m$ worden ook getransformeerd => $R''_c$ en $L''_m$
+
+  We tonen de getransformeerde impedanties met ''
+
+  $ R''_1 = (N_2/N_1)^2 R_1 $
+  $ L''_1 = (N_2/N_1)^2 L_1 $
+  $ R''_c = (N_2/N_1)^2 R_c $
+  $ L''_m = (N_2/N_1)^2 L_m $
+
+  #figure(
+    image("Secundaire kant.png", width: 10cm),
+  )
+
+  #figure(
+    image("gesimplificeerd circuit secundair.png", width: 10cm),
+  )
+]
+
+== Metingen <sec:metingen>
+
+Dit zijn metingen die we maken en testen die we doen op transformator circuits.
+
+=== Null-last test <sec:no-load-test>
+
+Bij deze test gaat de stroom naar de ideale transformator gelijk zijn aan nul
+
+$ I'_2 = 0 $
+Dat betekent geen spanningval over de impedantie van de secundaire kant en dus is
+
+$ E'_1 = V'_1 $
+
+Als we dan zeggen dat onze weerstand in parallel veel groter is dan de weerstanden in serie $L_1$ en $R_1$:
+
+$ Z_phi >> |R_1 + j X_1_sigma,1| $
+
+#markhl[Dan is de ideale voltage $E_1 approx V_1$]
+
+
+#figure(
+  image("No-Load test.png", width: 10cm),
+  caption: [No-Load test],
+  label: <fig:No-Load-test>,
+)
+
+nu Wat zijn dan onze waarden van $R_c$ en $L_m$?
+
+Dit is de *Null-last proef*
+
+#wrap-figure(
+  image("Nullast proef.png", width: 8cm),
+  caption: [Nullast proef],
+  label: <fig:Nullast-proef>,
+)[
+
+  We gaan deze meestal toepassen aan de lage voltage kant -> primaire kant.
+
+  We willen drie dingen:
+  - $V_1$ de voltage op de primaire kant
+  - $I_0$ _No load current_ de excitation current $I_phi + I_1$ maar $I_1 approx 0$ dus $I_0 approx I_phi$
+  - $P_0$ dan kunnen we de hoek $cos(phi_0) = P_0 / (V_1 dot I_0)$ berekenen
+
+  We meten de voltage, de stroom en de wat met een wattmeter.
+]
+
+#wrap-figure(
+  align(
+    center,
+    grid(
+      columns: 2,
+      figure(
+        image("Circuit no-lod.png", width: 4cm),
+        caption: [Circuit no-load],
+        label: <fig:Circuit-no-load>,
+      ),
+      figure(
+        image("Phasor no-load.png", width: 4cm),
+        caption: [Phasor no-load],
+        label: <fig:Phasor-no-load>,
+      ),
+    ),
+  ),
+)[
+
+
+
+  - Actief power $P_0 arrow.r.double R_c$
+    $ P_0 = V_1^2 / R_c $
+    $ R_c = V_1^2 / P_0 $
+
+
+  - RMS current $I_0 => arrow.r.double L_m$
+    $ I_m = sqrt(I_0^2 - I_c^2) $
+    $ omega L_m = V_1 / I_m $
+]
+
+== Short circuit test <sec:short-circuit-test>
+Deze test wordt gebruikt om de *serie-elementen* van het equivalent schema te bepalen ($R_(e q)$ en $X_(e q)$).
+
+*Methodiek:*
+- De *lage spanning (LV) zijde* wordt kortgesloten.
+- De metingen gebeuren aan de *hoge spanning (HV) zijde* (omdat de stroom daar lager en dus makkelijker te meten is).
+- Met een variac wordt de spanning $V_(s c)$ langzaam verhoogd totdat de *nominale stroom* ($I_(1,n o m)$) door de wikkelingen loopt.
+
+*Aannames:*
+1. *Core-verliezen zijn verwaarloosbaar:* Omdat $V_(s c)$ veel kleiner is dan de nominale spanning (vaak slechts 2% tot 10%), is de magnetische flux in de kern zeer laag. De core-verliezen ($P_c$) in $R_c$ zijn daardoor zo klein dat we ze negeren.
+2. *Parallelle tak wordt genegeerd:* $Z_phi$ is veel groter dan de serie-impedantie bij deze lage spanning.
+  $ => I_1 approx I'_2 $
+
+#figure(
+  image("Short-circuit test.png", width: 12cm),
+  caption: [Short-circuit test schema],
+  label: <fig:Short-circuit-test>,
+)
+
+#wrap-figure(
+  image("Process resultaat.png", width: 6cm),
+  caption: [Resultaat van de meting],
+  label: <fig:Process-resultaat>,
+)[
+  We meten drie waarden: $V_(s c)$, $I_(n o m)$ en $P_(s c)$.
+  - $P_(s c)$ staat gelijk aan de *Winding verliezen* (Ohmse verliezen) bij vollast.
+
+  *Berekeningen:*
+  $ R_(e q) = P_(s c) / I_(1,n o m)^2 $
+  $ Z_(e q) = V_(s c) / I_(1,n o m) $
+  $ X_(e q) = sqrt(Z_(e q)^2 - R_(e q)^2) $
+
+  Vaak wordt aangenomen dat de lekreactantie gelijk verdeeld is over de primaire en secundaire kant:
+  $ X_1 approx X'_2 approx X_(e q) / 2 $
+]
+
+Deze test is zo belangrijk en je ziet het vaak terug op datasheets van een transformator.
+
+$ u_(s c) "of" u_(k) "voor K kortsluiting" $
+$ => Z_(s c) = frac(v_(1,"nom"), i_(1,"nom")) dot u_(s c) $
+
+#voorbeeld(title: "Wat betekenen deze waarden in de praktijk?")[
+  De kortsluitproef helpt ons twee kritieke dingen te begrijpen:
+
+  1. *Interne Impedantie:* $V_{s c}$ (of $u_{s c}$) is de spanning die nodig is om de *nominale* stroom te laten lopen door de interne weerstand van de spoelen. Hoe lager deze waarde, hoe "beter" (efficiënter) de transformator, maar hoe hoger de foutstroom zal zijn.
+  2. *Foutstroom ($I_(s c)$):* Dit is de stroom die effectief gaat lopen als er een échte kortsluiting optreedt terwijl de transformator op volle netspanning staat.
+
+  *Gegeven*\
+  $u_(s c) = 5%$ (De transformator heeft 5% van zijn spanning nodig om zijn nominale stroom te bereiken bij kortsluiting).\
+  $V_(1,"nom") = 400 V$\
+  $I_(1,"nom") = 10 A$
+
+  *Gevraagd: Wat is de maximale stroom bij een fout?*\
+  $ I_(s c) = frac(I_(1,"nom"), u_(s c)) = frac(10 A, 0.05) = 200 A $
+
+  *Conclusie:*
+  - De *test* gebeurt bij een lage spanning ($V_(s c) = 20 V$) om veilig de nominale stroom ($10 A$) te meten.
+  - De *werkelijkheid* bij een fout is dat er $200 A$ (20x de nominale stroom!) gaat lopen omdat de bron $400 V$ blijft leveren. Je beveiliging (zekering) moet dus deze $200 A$ kunnen afschakelen.
+]
+
+
+#voorbeeld(title: "Berekening Kortsluitimpedantie")[
+  *Gegeven: Rating van een transformator*\
+  - $V_1 / V_2 = 10 "kV" / 400 V$
+  - $S = 100 "kVA"$
+  - $u_(s c) = 5%$
+
+  *Gevraagd 1: Schat de gecombineerde spanningsval over de serie-elementen ($R_1, X_(sigma,1), R'_2, X'_(sigma,2)$) bij nominale condities.*\
+  *Oplossing:*\
+  De nominale primaire stroom is:
+  $ I_(1,"nom") = S / V_1 = (100.000 "VA") / (10.000 V) = 10 A $
+  De spanningsval bij nominale stroom is $V_(s c)$:
+  $ V_(s c) = u_(s c) dot V_(1,"nom") = 0,05 dot 10.000 V = 500 V $
+  De totale serie-impedantie $Z$ is dan:
+  $ Z = V_(s c) / I_(1,"nom") = (500 V) / (10 A) = 50 Omega $
+
+  *Gevraagd 2: Wat is de primaire stroom bij een effectieve kortsluiting op de secundaire kant (bij nominale primaire spanning)?*\
+  *Oplossing:*\
+  $ I_(s c) = I_(1,"nom") / u_(s c) = (10 A) / 0,05 = 200 A $
+]
+
+== Samenvatting symbolen <sec:samenvatting-symbolen>
+
+#theorie(title: "Overzicht van de gebruikte symbolen")[
+  In oefeningen en datasheets worden vaak verschillende namen gebruikt voor dezelfde grootheden:
+
+  - *Stroom:*
+    - $I_phi, I_0$: Bekrachtigingsstroom / Nullaststroom (Exciting / No-load current)
+    - $I_m$: Magnetisatiestroom (Magnetizing current)
+    - $I_c, I_(F e)$: Ijzerverliesstroom (Core-loss / Iron-loss component)
+
+  - *Vermogen:*
+    - $P_c, P_(F e), P_0$: Ijzerverliezen / Nullastverliezen (Core / Iron / No-load losses)
+
+  - *Impedantie:*
+    - $R_(s,1), R_1$: (Primaire) serieweerstand (Series resistance)
+    - $X_(sigma,1), X_(s,1), X_1$: (Primaire) lekreactantie (Leakage reactance)
+    - $Z_(s c), Z_(e q)$: Kortsluitimpedantie (Short-circuit impedance)
+
+  - *Spanning:*
+    - $V_k, V_(s c)$: Kortsluitspanning in Volt $[V]$
+    - $u_k, u_(s c)$: Kortsluitspanning in procent $[%]$
+]
+
+
+
 
 
 
