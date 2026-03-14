@@ -40,3 +40,5 @@
 #include "2.Probabiliteit.typ"
 #include "3.Discrete-random-variables.typ"
 #include "4.Continuous-random-variables.typ"
+#include "5.Sampling-distributions.typ"
+#include "6.Confidence interval afhankelijk van een sample.typ"
