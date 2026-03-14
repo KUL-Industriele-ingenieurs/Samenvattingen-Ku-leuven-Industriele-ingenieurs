@@ -40,7 +40,7 @@ $P(X = X_i) = X_i$
   "Gemiddelde, variantie en standaardafwijking",
   [
 
-    $ mu = E(x) = integral_(-infinity)^(infinity) (x * f(x) d x) $
+    $ mu = E(x) = integral_(-infinity)^(infinity) (x dot f(x) d x) $
     $ sigma^2 = E((x-mu)^2) = integral_(-infinity)^(infinity) ((x-mu)^2 dot f(x) d x) $
 
   ],
