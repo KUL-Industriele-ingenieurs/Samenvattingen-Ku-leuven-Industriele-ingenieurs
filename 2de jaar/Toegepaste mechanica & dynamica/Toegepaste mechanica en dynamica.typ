@@ -33,6 +33,6 @@
 #include "5.Relatieve versnelling.typ"
 #include "6.Cilindrische coördinaten.typ"
 #include "7.Relatieve bewegingsanalyse met roterende assen.typ"
-
+#include "8.Traagheidsmoment.typ"
 
 
