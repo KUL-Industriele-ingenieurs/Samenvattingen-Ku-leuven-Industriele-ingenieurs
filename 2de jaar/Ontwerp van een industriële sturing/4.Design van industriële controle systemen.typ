@@ -239,13 +239,13 @@ They are used to reliably detect less accurate positions, e.g. at the end of a c
 - *Proximity switches*: Contactless detection.
 
 
-*Proximity switches*\
-#wrap-figure(
-  image("proximity-switch.png", width: 5cm),
-  caption: [proximity-switch],
-  label: <fig:proximity-switch>,
-)[
-  *Optische sensor*\
++ *Proximity switches*\
+  #figure(
+    image("proximity-switch.png", width: 5cm),
+    caption: [proximity-switch],
+    label: <fig:proximity-switch>,
+  )
++ *Optische sensor*\
   Werkt met een LED en photo diode
 
   Dit kan werken oftwel via een LED met photodiode. Die gaan rood of infrarood light sturen en bij reflectie kan die dat opnemen. Goed voor korte afstanden. Of met fibre-optic proximity-switch.
@@ -256,32 +256,30 @@ They are used to reliably detect less accurate positions, e.g. at the end of a c
     label: <fig:fibre-optical-proximity-switch>,
   )
 
-
-  *Ultrasone sensor*\
++ *Ultrasone sensor*\
   Werkt met geluidsgolven. Terugkerende geluidsgolven worden opgevangen door de sensor. _heel universeel_
 
-  *Inductieve sensor*\
++ *Inductieve sensor*\
   Werkt met magnetische velden. Een *Wisselend* magnetisch veld wordt opgewerkt en metaal dat dichtbij komt via #keyterm[eddy current] warmt dat metaal op. Dit kan de sensor opnemen. _detecteert alleen metaal_
 
-  *Capacitieve sensor*\
++ *Capacitieve sensor*\
   Werkt met *Wisselend* elektrische velden. Een object gaat en elektrisch veld verstoren en de capaciteit gaat veranderen. Die verandering kan gedetecteerd worden.
 
   Het nadeel is dat het veel gevoeliger is voor de omgevingsfactoren. Een inductieve schakelaar detecteerd alleen *geleidende* objecten wat soms wensbaar is.
 
   _Smartphones werken met dit effect als je het scherm aanraakt._
-]
 
 
-#wrap-figure(
-  image("reed contact.png", width: 5cm),
-  caption: [reed contact],
-  label: <fig:reed-contact>,
-)[
-  *Reed contact*\ magnetische sensor, binnenin de sensor is de piston cilinder gemagnetizeerd. Als er een magneet dichtbij komt gaat de piston cilinder magnetisch worden en de contacten gaan sluiten. je ziet dat je een N-pool en S-pool hebt op dat reed contact.
 
+  #figure(
+    image("reed contact.png", width: 5cm),
+    caption: [reed contact],
+    label: <fig:reed-contact>,
+  )
++ *Reed contact*\
+  Magnetische sensor, binnenin de sensor is de piston cilinder gemagnetizeerd. Als er een magneet dichtbij komt gaat de piston cilinder magnetisch worden en de contacten gaan sluiten. Je ziet dat je een N-pool en S-pool hebt op dat reed contact.
 
-  *Hall sensor*\
-
++ *Hall sensor*\
   Gaat ook zoals een reed-sensor een magnetisch veld detecteren. _Concucerend met de reed-switch_
 
   Er is geen enkele beweging in de sensor en kan het dus veel snellere frequenties $f$ aan. Reed contact hebben mechanische delen en dus kan het snelle schakelen niet aan.
@@ -296,7 +294,6 @@ They are used to reliably detect less accurate positions, e.g. at the end of a c
 
   #examenbox[Je moet deze sensoren op het examen kunnen geven en weten wanneer ze gebruikt worden, hoe ze werken en verschillen tussen de sensoren.]
 
-]
 
 #figure(
   image("symbolen switches.png", width: 12cm),

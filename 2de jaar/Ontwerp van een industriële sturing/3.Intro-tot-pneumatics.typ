@@ -159,7 +159,7 @@ Veel pneumatische cilinders zijn uitgerust met #keyterm("Einddemping") (end cush
 
 Kracht wordt gereguleerd door de druk.
 
-$ F = p * A $
+$ F = p dot A $
 
 *Snelheid control* is mogelijk door #keyterm("Throttling") met een flow control valve.
 Je gaat je uitlaat of inlaat controlleren zodat je controle hebt over de snelheid
@@ -171,19 +171,19 @@ Je gaat je uitlaat of inlaat controlleren zodat je controle hebt over de snelhei
 + *Single acting cylinder*: heeft één aansluiting en gebruikt een veer om terug te keren naar de beginpositie. _Zie vorige figuur_
 + *Double acting cylinder*: heeft twee aansluitingen en kan zowel vooruit als achteruit worden bewogen door luchtdruk. De ingang is geen pomp maar een compressor. Je ingang en uitgang verwisselen dus van plaats tijdens een *Stroke*.
   #figure(
-    image("double acting cilinder.png", width: 5cm),
+    image("double acting cilinder.png", width: 8cm),
     caption: [double acting cilinder],
     label: <fig:double-acting-cilinder>,
   )
 + *Guided cylinder*: heeft een geleiding om te voorkomen dat de zuiger zijdelings beweegt.
   #figure(
-    image("guided-cilinders.png", width: 5cm),
+    image("guided-cilinders.png", width: 8cm),
     caption: [guided-cilinders],
     label: <fig:guided-cilinders>,
   )
 + *Speciale cilinders*: Een double rod cylinder heeft twee zuigerstangen. Hierdoor kan je de zuiger in beide richtingen bewegen met dezelfde kracht. Een rotating cilinder kan de zuiger 360 graden draaien.
   #figure(
-    image("special-cilinders.png", width: 5cm),
+    image("special-cilinders.png", width: 8cm),
     caption: [special-cilinders],
     label: <fig:special-cilinders>,
   )
@@ -191,7 +191,7 @@ Je gaat je uitlaat of inlaat controlleren zodat je controle hebt over de snelhei
 #examenbox("Op het examen krijg je alle symbolen gegeven voor het examen. Je moet ze niet vanbuiten leren.")
 
 #figure(
-  image("symbolen-cilinders.png", width: 10cm),
+  image("symbolen-cilinders.png", width: 12cm),
   caption: [symbolen-cilinders],
   label: <fig:symbolen-cilinders>,
 )
@@ -207,11 +207,13 @@ Je gaat je uitlaat of inlaat controlleren zodat je controle hebt over de snelhei
 )
 
 
-$F_1 = p_(1r e l) * A_1 = p_(1r e l) dot frac(pi dot D^2, 4)$
+We gaan eerst alle krachten bepalen van de cilinder.
 
-$F_2 = p_(2r e l) * A_2 = p_(2r e l) dot frac(pi dot (D^2-d^2), 4)$
+$ F_1 = p_(1r e l) dot A_1 = p_(1r e l) dot frac(pi dot D^2, 4) $
 
-$F_3 = p_(3r e l) * A_(r o d) = p_(3r e l) dot frac(pi dot d^2, 4)$
+$ F_2 = p_(2r e l) dot A_2 = p_(2r e l) dot frac(pi dot (D^2-d^2), 4) $
+
+$ F_3 = p_(3r e l) dot A_(r o d) = p_(3r e l) dot frac(pi dot d^2, 4) $
 
 Gebruik relatieve druk zodat je $F_3$ niet moet berekenen.
 
@@ -276,7 +278,7 @@ Dit is de verkeerde manier voor speed control te doen
 
 
 #figure(
-  image("pompcircuit.png", width: 5cm),
+  image("pompcircuit.png", width: 4cm),
   caption: [pompcircuit],
   label: <fig:pompcircuit>,
 )
@@ -386,7 +388,7 @@ Voordelen (vooral voor monostabiele ventielen):
 
 
 #figure(
-  image("symbolen pneumatische valves.png", width: 5cm),
+  image("symbolen pneumatische valves.png", width: 4cm),
   caption: [symbolen pneumatische valves],
   label: <fig:symbolen-pneumatische-valves>,
 )

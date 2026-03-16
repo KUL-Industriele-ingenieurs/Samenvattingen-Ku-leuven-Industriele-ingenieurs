@@ -274,7 +274,7 @@ Knoppen en switches die acties uitvoeren worden aangegeven met *S*.
 Deze worden meestal in een tube geplaatst zodat ze niet per ongeluk kunnen worden ingedrukt.
 
 #figure(
-  image("sort of buttons and switched.png", width: 10cm),
+  image("sort of buttons and switched.png", width: 13cm),
   caption: [Soorten knoppen en switches],
   label: <fig:sortofbuttons>,
 )
@@ -308,7 +308,7 @@ Hoe de schakeling is getekend bepaalt zijn functie.
 Relay-systemen werken, maar worden snel complex en moeilijk te onderhouden. Een PLC vervangt klassieke relay-logica door software.
 
 #figure(
-  image("relayvsPLC.png", width: 15cm),
+  image("relayvsPLC.png", width: 16cm),
   caption: [Relay VS PLC],
   label: <fig:relayvsPLC>,
 )
