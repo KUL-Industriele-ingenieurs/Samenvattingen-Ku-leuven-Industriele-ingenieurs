@@ -31,3 +31,5 @@
 #include "1.Info.typ"
 #include "2.Intro-Industriele sturing.typ"
 #include "3.Intro-tot-pneumatics.typ"
+#include "4.Design van industriële controle systemen.typ"
+#include "5.Main circuits.typ"

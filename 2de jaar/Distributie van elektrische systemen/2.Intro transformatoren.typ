@@ -8,7 +8,7 @@
 
 *Interresante eigenschappen transformator*
 
-+ Je kunt Wisselstromen veranderen van voltage met magnetische inductie
++ Je kunt bij wisselstromen de spanning veranderen met behulp van magnetische inductie.
 + Er is geen verbinding tussen netwerken. Het wordt volledig via magnetische velden overgedragen
 
 #wrap-figure(
@@ -107,7 +107,7 @@ Dit stukje gaat over tijdinvariante dingen
   caption: [currentflow],
   label: <fig:currentflow>,
 )
-de dot $dot$ betekent dat de stroom naar je toe komt en $X$ betekent dat de stroom van je af gaat.
+Een punt ($dot$) betekent dat de stroom naar je toe stroomt (uit het blad), een kruis ($X$) betekent dat de stroom van je af stroomt (in het blad).
 
 
 
@@ -126,7 +126,7 @@ de dot $dot$ betekent dat de stroom naar je toe komt en $X$ betekent dat de stro
       style: "italic",
     )[Maxwell modified Ampère's law: $ integral.cont vec(B) dot dif vec(l) = mu_0 N I + mu_0 epsilon_0 N (dif Phi_E)/(dif t) $],
   ),
-  "In dit vak gaan we vooral guasse en ampere gebruiken",
+  "In dit vak zullen we vooral de wetten van Gauss en Ampère gebruiken",
 )
 
 #frm(
@@ -199,7 +199,7 @@ Laten we dit invoegen in de wet van ampere:
 
 $ integral.cont_("loop") vec(H) dot dif vec(s) = i_("encl") = N dot i $
 
-Ons H-veld is dus alleen afhankelijk van de aangelegde stroom dus $mu_0$ en $mu_r$ zijn niet relevant voor $H$
+De magnetische veldsterkte $H$ is dus onafhankelijk van het materiaal ($mu_r$) en wordt enkel bepaald door de aangelegde stroom en de geometrie (lus).
 
 #theorie(title: "Vocabulaire")[
   #figure(
@@ -381,7 +381,7 @@ $ lambda_1 = L_1 i_1 + M_12 i_2 $
 
 == Geïnduceerde spanningen
 
-Bij geïnduceerde spanning ga je een varient magnetische flux  hebben die in de winding dan een spanning gaat induceren. Die gaan dus een elektrische veld opstellen
+Een in de tijd variërende magnetische flux zal een spanning induceren in de windingen. Deze veranderende flux creëert dus een elektrisch veld.
 
 $ "Magnetische flux" => "elektrische veld" $
 
@@ -394,6 +394,7 @@ $ E M F [V] = integral.cont arrow(E) dot d arrow(l) = - frac(d phi, d t) $
   caption: [induced emf in magnetic circuit],
   label: <fig:induced-emf-in-magnetic-circuit>,
 )[
+  Je ziet dat de spanning evenredig is met de verandering van de flux. Dus als de flux constant is dan is de spanning 0.
 
   $ v = "EMF" = N frac(d phi, d t) $
   $ = frac(d lambda, d t) = frac(d(l i), d t) = L dot frac(d i, d t) $

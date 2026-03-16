@@ -142,7 +142,7 @@ Natuurlijk kunnen deze vereisten variëren afhankelijk van de betrokken industri
 + *Mechatronics*: Een vage term die meerdere dingen kan betekenen, PID, PLC, Cyber-Physical Systems, ...
 
 
-= Industrie 4.0
+== Industrie 4.0
 
 + Eerste industrie revolutie: Mechanisatie door water en stoomkracht.
 + Tweede industrie revolutie: Massaproductie door elektriciteit.
@@ -150,7 +150,7 @@ Natuurlijk kunnen deze vereisten variëren afhankelijk van de betrokken industri
 + Vierde industrie revolutie: Cyber-Physical Systems, IoT, AI, ...
 
 
-= RDS Reference Designation System, Hoe ga je componten benoemen?
+== RDS Reference Designation System, Hoe ga je componten benoemen?
 
 
 #figure(
@@ -320,9 +320,9 @@ een vervanging van klassieke relays.
 
 //todo: Uitleg geven over hoe je best ladder circuits maakt met SSE
 
-= Logic control met PLC
+== Logic control met PLC
 
-== PLC naam variabele
+=== PLC naam variabele
 
 
 In een bedrijf wordt vaak een standaard gebruikt voor het benoemen van programmablokken en variabelen. Deze zijn vaak verschillend, maar gebaseerd op een aantal principes die internationaal gebruikelijk zijn. We leggen hier een standaard vast gebaseerd op `plcopen_coding_guidelines_version_1.0.pdf`.

@@ -1,42 +1,12 @@
 [
     {
         "key": "ctrl+alt+v",
-        "command": "latex-utilities.formattedPaste.image",
-        "when": "editorTextFocus && (editorLangId == 'latex' || editorLangId == 'tex')"
-    },
-    {
-        "key": "ctrl+alt+v",
-        "command": "latex-utilities.pasteImage",
-        "when": "editorTextFocus && (editorLangId == 'latex' || editorLangId == 'tex')"
-    },
-    {
-        "key": "ctrl+alt+v",
-        "command": "latexUtilities.pasteImage",
-        "when": "editorTextFocus && (editorLangId == 'latex' || editorLangId == 'tex')"
-    },
-    {
-        "key": "ctrl+alt+v",
-        "command": "latexUtilities.formattedPaste.image",
-        "when": "editorTextFocus && (editorLangId == 'latex' || editorLangId == 'tex')"
-    },
-    {
-        "key": "ctrl+alt+shift+v",
-        "command": "latex-utilities.formattedPaste.image",
-        "when": "editorTextFocus && (editorLangId == 'latex' || editorLangId == 'tex')"
-    },
-    {
-        "key": "ctrl+alt+shift+v",
         "command": "latex-utilities.pasteImage",
         "when": "editorTextFocus && (editorLangId == 'latex' || editorLangId == 'tex')"
     },
     {
         "key": "ctrl+alt+shift+v",
-        "command": "latexUtilities.pasteImage",
-        "when": "editorTextFocus && (editorLangId == 'latex' || editorLangId == 'tex')"
-    },
-    {
-        "key": "ctrl+alt+shift+v",
-        "command": "latexUtilities.formattedPaste.image",
+        "command": "latex-utilities.formattedPaste.image",
         "when": "editorTextFocus && (editorLangId == 'latex' || editorLangId == 'tex')"
     },
     {
@@ -61,5 +31,15 @@
         "key": "ctrl+shift+i",
         "command": "extension.pasteImage",
         "when": "editorTextFocus && editorLangId == 'typst'"
+    },
+    {
+        "key": "tab",
+        "command": "editor.action.inlineSuggest.commit",
+        "when": "inlineSuggestionHasIndentationLessThanTabSize || inlineSuggestionVisible"
+    },
+    {
+        "key": "alt+\\",
+        "command": "editor.action.inlineSuggest.trigger",
+        "when": "editorTextFocus && !inlineSuggestionVisible"
     }
 ]

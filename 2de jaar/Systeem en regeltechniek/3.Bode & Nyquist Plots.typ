@@ -2,14 +2,11 @@
 
 = Bode & Nyquist Plots
 
-In dit vak gaan we vooral de bode plot bekijken in als laatste gaan we de Nyquist plot bekijken maar die is minder relevant
-Wat plots doen is onze algebraïsche expressies
+In dit vak gaan we vooral de bode plot bekijken in als laatste gaan we de Nyquist plot bekijken maar die is minder relevant. Wat plots doen is onze algebraïsche expressies graphisch te tonen.
 
 De bode en Nyquist plots tonen graphisch de frequentie respons $H(j omega)$ van een systeem van de transferfunctie $H(s)$
 
-
-
-$H(s) arrow.r H(j omega)$
+$ H(s) arrow.r H(j omega) $
 
 #examenbox[Je moet plots met de hand kunnen tekenen]
 
@@ -69,9 +66,9 @@ Bij de nyquist plot ga je niet kijken naar amplitudes maar je gaan in het comple
     label: <fig:oefening1les3>,
   )
 
-  $markrect(H(s) = frac(1, tau s))$
+  $ markrect(H(s) = frac(1, tau s)) $
 
-  $tau$ is gewoon een constant niet verward geraken.
+  $tau$ is gewoon de tijdsconstante niet verward geraken.
 
   *Bode plot*\
   $ arrow.r.double H(j omega) = frac(1, tau s) = frac(1, tau j omega) $
@@ -177,7 +174,7 @@ $ -arctan(1) = -45 deg $  (want $tan(45) = 1$)
 en we komen terug een mooie figuur uit. Je ziet in het midden dat je een hoek van 45° krijgt zoals in de berekeningen.
 
 #figure(
-  image("all-pole phase bode plot.png", width: 5cm),
+  image("all-pole phase bode plot.png", width: 10cm),
   caption: [all-pole phase bode plot],
   label: <fig:all-pole-phase-bode-plot>,
 )
@@ -400,36 +397,3 @@ We hebben dit gedaan voor deze systemen:
 - *Eerste orde* (Heeft 1 pole)
 - *Tweede orde* (Heeft 2 poles)
 - *Hogere orde* (Heeft meerdere polen)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

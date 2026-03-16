@@ -1,0 +1,86 @@
+name: Update README Course Overview
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '*jaar**/**'
+      - '.github/workflows/update-readme.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Generate Course Markdown
+        run: |
+          TEMP_FILE="new_courses.md"
+          > "$TEMP_FILE"
+          
+          # Loop directly over all directories containing 'jaar'
+          find . -maxdepth 1 -type d -name "*jaar*" | sort | while read YEAR_DIR; do
+            YEAR_NAME=$(basename "$YEAR_DIR")
+            echo "<details>" >> "$TEMP_FILE"
+            echo "<summary><strong>$YEAR_NAME</strong></summary>" >> "$TEMP_FILE"
+            echo "" >> "$TEMP_FILE"
+            
+            # Find subdirectories (courses) inside the year map, exclude test and simple hidden files
+            COURSES=$(find "$YEAR_DIR" -maxdepth 1 -mindepth 1 -type d ! -name ".*" ! -name "test" | sort -f)
+            
+            if [ -z "$COURSES" ]; then
+              echo "- Nog geen vakken toegevoegd" >> "$TEMP_FILE"
+            else
+              echo "$COURSES" | while read -r COURSE_DIR; do
+                if [ -n "$COURSE_DIR" ]; then
+                  COURSE_NAME=$(basename "$COURSE_DIR")
+                  COURSE_PATH="$YEAR_NAME/$COURSE_NAME"
+                  COURSE_URL="${COURSE_PATH// /%20}"
+                  echo "- [$COURSE_NAME]($COURSE_URL)" >> "$TEMP_FILE"
+                fi
+              done
+            fi
+            
+            echo "</details>" >> "$TEMP_FILE"
+            echo "" >> "$TEMP_FILE"
+          done
+          
+          # Remove trailing newlines explicitly
+          sed -i -e :a -e '/^\n*$/{$d;N;};/\n$/ba' "$TEMP_FILE"
+          
+          # Use an awk script to replace the content between markers in README.md
+          awk -v newcontent="$(cat "$TEMP_FILE")" '
+            /<!-- VAKKENOVERZICHT_START -->/ {
+              print
+              print newcontent
+              flag=1
+              next
+            }
+            /<!-- VAKKENOVERZICHT_END -->/ {
+              flag=0
+            }
+            !flag {print}
+          ' README.md > README_new.md
+          
+          mv README_new.md README.md
+          rm "$TEMP_FILE"
+
+      - name: Commit and push if changed
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add README.md
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "docs: auto-update course overview in README"
+            git push
+          fi

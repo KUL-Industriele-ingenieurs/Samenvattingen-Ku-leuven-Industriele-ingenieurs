@@ -6,12 +6,11 @@
 #import "@preview/unify:0.7.1": num, numrange, qty, qtyrange  // siunitx equivalent
 #import "@preview/physica:0.9.5": *     // Physics math: derivatives, brakets, etc.
 #import "@preview/cetz:0.4.2"
+#import "@preview/cetz-plot:0.1.3"
 #let cetz = cetz
-#import "@preview/cetz-plot:0.1.3": chart, plot  // Plotting (pgfplots equivalent)
-#let chart = chart
-#let plot = plot
+#let chart = cetz-plot.chart
+#let plot = cetz-plot.plot
 #import "@preview/wrap-it:0.1.1": wrap-content, wrap-top-bottom
-#import "@preview/muchpdf:0.1.2": muchpdf
 #import "@preview/equate:0.3.2"
 #import "@preview/cetz-venn:0.1.4"
 #import "@preview/oasis-align:0.3.3": *
@@ -114,7 +113,7 @@
   // Page setup
   set page(
     paper: "a4",
-    margin: (left: 2cm, right: 2cm, top: 2.5cm, bottom: 2.5cm),
+    margin: (left: 1.5cm, right: 1.5cm, top: 2cm, bottom: 2cm),
     numbering: "1",
     header: context {
       let page_num = counter(page).get().first()
@@ -232,7 +231,7 @@
 // --- Custom Boxes (Mirrors tcolorbox schoolbox) ---
 
 #let schoolbox(title, color, icon, body, bg: white) = {
-  v(12pt)
+  v(8pt)
   // Title strip
   block(
     width: 100%,
@@ -262,12 +261,12 @@
       top: 0.5pt + color,
     ),
     radius: (bottom-left: 2pt, bottom-right: 2pt, top-right: 2pt),
-    inset: 12pt,
+    inset: 8pt,
     above: 0pt,
     breakable: true,
     body,
   )
-  v(12pt)
+  v(8pt)
 }
 
 #let theorie(title: "Theorie", body) = schoolbox(title, schoolBlue, "📘", body)
@@ -281,7 +280,7 @@
 // --- Code Block (VS Code Style) ---
 
 #let codeblock(lang: "txt", title: none, body) = {
-  v(12pt)
+  v(8pt)
   block(
     width: 100%,
     clip: true,
@@ -326,7 +325,7 @@
       )
     ],
   )
-  v(12pt)
+  v(8pt)
 }
 
 // --- Math Helpers ---
