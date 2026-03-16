@@ -257,8 +257,203 @@ Hoe we het netwerk en de behuizingen aarden, bepaalt hoe we beveiligen. Je hebt 
 - *Beveiliging:* Een isolatiewachter detecteert de eerste fout en geeft een alarm, waarna men het kan fixen zonder downtime.
 
 
+== Beschermen tegen overstroom
+Een overstroom is wanneer er meer stroom door een kabel of apparaat gaat dan dat het aankan. Je hebt twee soorten:
+- *Overload current (overbelasting stroom):* Dit is voor kleine Als er teveel stroom door gaat dan
+gaat het apparaat of kabel oververhitten en dat kan leiden tot brand of schade aan het apparaat. Dit komt omdat de koolstof verbindingen in de kabels kunnen smelten en dat kan leiden tot een kortsluiting. 
+De doorslagvastheid van de kabel verlaagt dan ook door dat smelten, je isolatiemateriaal gaat dan snel achteruit. 
+- *Short circuit current (kortsluitingsstroom):* 
+Dit gebeurt wanneer er een directe verbinding ontstaat tussen fase en nul (of aarde). 
+Oorzaken: beschadiging aan kabels of apparaatfouten.
+Gevolg: enorme stroom veroorzaakt brand of apparaatschade.
+
+Hoe beschermen we tegen deze overstroom?
+We kunnen dit doen met:
+- *Fuses*
+- *Circuit breakers*
+
+#theorie(title:"terminologie")[
+
+  #figure(
+  image("circuit.png", width: 8cm),
+  caption: [circuit],
+  label: <fig:circuit>,
+)
+  $i_n$: nominale stroom van de beveiliging\
+  $i_z$: maximale stroom die de kabel aankan\
+  $i_b$: maximale stroom die het apparaat aankan\
+]
+
+Nu wat gebeurt er als je een enorm grote stroomverandering hebt. Een spoel legt een spanning op afhankelijk van de verandering van de stoom 
+$ V = L frac( d i, d t) $
+
+De stroom die door de spoel gecreëert worden is de $i_(c u)$. Je gaat eigenlijk een soort lassing krijgen door de grote stroom. Je schakelaar kan dan beschadigd worden. Je wilt dus een beveiliging die snel genoeg is om deze stroom te onderbreken voordat er schade ontstaat.
+
+Je mag dus niet constant je beveileging gebruiken want die creëren die grote stroomverandering en dat kan leiden tot schade.
+
+#figure(
+  cetz.canvas({
+    import cetz.draw: *
+
+    // Draw the main line with arrow
+    line((0, 0), (13, 0), stroke: 1pt, mark: (end: ">"))
+
+    // Draw tick marks and labels for each threshold
+    let positions = (
+      (0, $0$),
+      (2, $I_b$),
+      (3.5, $I_n$),
+      (5, $I_(n f)$),
+      (6.5, $I_f$),
+      (8.5, $I_z$),
+      (11, $I_(c u)$),
+    )
+
+    for (x, label) in positions {
+      line((x, -0.1), (x, 0.1), stroke: 0.5pt)
+      content((x, -0.35), label, anchor: "north")
+    }
+  }),
+  caption: [Stroomdrempels voor beveiliging en apparaatbeveiliging],
+  label: <fig:stroom-drempels>,
+)
+
+
+Je wilt dat: $I_b$ < $I_n$ < $I_z$ < $I_(c u)$
+
+$I_b$ is de veilig stroom van het apparaat, $I_n$ is de nominale stroom van de beveiliging, $I_z$ is de maximale stroom die de kabel aankan en $I_(c u)$ is de stroom die ontstaat door de spoel bij een grote verandering van stroom. Je wilt dat $I_n$ groter is dan $I_b$ anders gaat de beveiliging aan terwijl je veilig bent. $I_z$ is de maximale stroom die de kabel aankan en die moet groter zijn den $I_n$ omdat anders de kabel kan beschadigd worden voordat de beveiliging aan gaat.
+
+== Fuses (smeltzekering) <sec:fuses>
+
+#figure(
+  image("Fuses.png", width: 5cm),
+  caption: [Fuses],
+  label: <fig:Fuses>,
+)
+
+#figure(
+  image("Fuses karakteristieken.png", width: 12cm),
+  caption: [Fuses karakteristieken],
+  label: <fig:Fuses-karakteristieken>,
+)
+
+Defuse hier toont de karastiristiek afhankelijk van de stroom. 20A gaat lang duren maar 200A gaat heel snel. Je wilt dus een fuse die snel genoeg is om de stroom te onderbreken voordat er schade ontstaat maar niet te snel zodat het niet onnodig aan gaat.
+
+== Circuit breakers (automatische zekering) <sec:circuit-breakers>
+
+
+#figure(
+  image("Circuit breaker.png", width: 10cm),
+  caption: [Circuit breaker],
+  label: <fig:Circuit-breaker>,
+)
+
+We willen nu dat onze beveiliging niet niet breekt als er een probleem is.
+
+$ "Short circuit" -> "Magnetisch" $
+$ "Als het overload" -> "wordt warm" -> "bimetalen strip buigt" -> "schakelt uit."\ $
+
+Je kunt die dan terug primen door de veer van binnen terug op te spannen en het circuit terug te connecteren. Deze veer helpt met de disconnectietijd. We willen dat deze zo kort mogelijk is en een beetje meganische energie in de veer steken zorgt ervoor dat de automaat snel genoeg is om de stroom te onderbreken voordat er schade ontstaat. Deze kan het doen rond de 10ms-30ms. 
+
+Nu dit is alleen voor kortsluitingen. Voor overbelastingen gaat er een bimetalen strip zijn die warm wordt en daardoor buigt en het circuit onderbreekt. Deze heeft een langere tijd nodig om te reageren omdat het afhankelijk is van de warmteontwikkeling. Dit kan variëren van enkele seconden tot enkele minuten, afhankelijk van de mate van overbelasting.
+
+=== Mechanical circuit breakers karakteristieken <sec:mechanical-circuit-breakers-karakteristieken>
+
+#figure(
+  image("MCB-karakteristieken.png", width: 12cm),
+  caption: [MCB-karakteristieken],
+  label: <fig:MCB-karakteristieken>,
+)
+
+== Power circuit breakers <sec:power-circuit-breakers>
+
+Dit zijn grotere circuit breakers die gebruikt worden in de industrie of in grote gebouwen. We spreken van stromen van 250A.
+
+Het werkt gelijkaardig aan een circuit breaker waarbij je een schakelijk hebt zoals bij een MCB.
+
+
+=== Karakteristieken van een power circuit breaker <sec:karakteristieken-van-een-power-circuit-breaker>
+
+#wrap-figure(
+  image("Power-circuit breaker.png", width: 7cm),
+  caption: [Power-circuit breaker karakteristieken],
+  label: <fig:Power-circuit-breaker>,
+)[
+  De power circuit is gelijkaardig aan de MCB.
+
+  $ "Short circuit" -> "Magnetisch" $
+  $ "Overload" -> "Warmte" -> "Bimetaal" -> "Uit" $
+
+  Maar het verschil is dat we ook afhankelijk van de $I_m$, $I_(c u), I_r, I_(l i)$ kunnen we aanpassingen maken aan de tijd dat het gaat trippen en dus uitgaan. $I_m$ is de magnetische drempel, $I_(c u)$ is de breaking capaciteit, $I_r$ is de overload stroom en $I_(l i)$ is de onmiddelijke stroom. 
+
+  Dit geeft ons controle en laat ons selectief zijn. Stel je bent iets aan het leren in het labo en je creëert een short circuit. Dan kan een power circuit als wachtende staat als een andere circuit breaker in het systeem een kortsluiting detecteert en uitgaat. Dit is handig omdat je niet wilt dat het hele systeem uitvalt als er een probleem is in een deel van het systeem. Je wilt dat alleen het deel waar het probleem is uitvalt en de rest van het systeem blijft werken.
+]
+
+
+#figure(
+  image("Aanpasbaarheid Power-circuit-breaker.png", width: 5cm),
+  caption: [Aanpasbaarheid Power-circuit-breaker],
+  label: <fig:Aanpasbaarheid-Power-circuit-breaker>,
+)
+
+
+=== Extra switches <sec:extra-switches>
+
+#wrap-figure(
+  image("Schakelaars.png", width: 5cm),
+  caption: [Schakelaars],
+  label: <fig:Schakelaars>,
+)[
+- *Schakelaar*
+- *Scheider:* 
+- *Lastscheider*
+- *Vermogenschakelaar*
+- *Contactor*
+]
+
+
+== Bescherming tegen schokken
+
+We gaan nu niet alleen ons circuit beschermen maar ook voor schokken tegen mensen.
+
+We hebben twee soorten aanrakingen:
+- *Direct contact:* Hierbij ga je direct contact hebben met een #keyterm[Geleider]
+We kunnen isoleren, casing, obstakel, waarschuwingen, enzovoort gebruiken om dit te voorkomen.
+
+- *Indirect contact:* Hierbij ga je contact hebben met een #keyterm[Behuizing]. Behuizing is meestal niet gevaarlijk maar als er een fout gebeurt in het circuit kan de behuizing onder spanning komen te staan. Als een persoon dit aanraakt terwijl hij geconnecteerd is met de grond kan dit leiden tot een schok. 
+
+We kunnen de behuizing connecteren aan de grond via een aarding zodat als een persoon dit aanraakt dat er een lagere spanning is over de persoon. De kabel heeft namelijk wel nog een weerstand dus je mag niet kortsluiting aannemen met de grond. 
+
+*Zonder aarding* — de mens is het enige pad naar de grond:
+
+Bij een fout staat de behuizing onder spanning. De lekstroom ($I = 100 "mA"$) vloeit volledig door de mens naar de grond:
+
+$
+V_"mens" = I dot R_"mens" = 100 "mA" times 1 k Omega = 100 V quad arrow.r.double "gevaarlijk!"
+$
+
+*Met aarding* — de aardkabel biedt een parallelpad:
+
+De aardkabel ($R_1 = 10 Omega$) en de mens ($R_2 = 1 k Omega$) staan *parallel* tussen de behuizing en de grond. Omdat $R_1 < R_2$ vloeit bijna alle stroom door de kabel en niet door de mens.
+
+$
+R_"eq" = frac(R_1 dot R_2, R_1 + R_2) = frac(10 Omega times 1 k Omega, 10 Omega + 1 k Omega) approx 9.9 Omega
+$
+
+$
+V_"mens" = I dot R_"eq" = 100 "mA" times 9.9 Omega approx 1 V quad arrow.r.double "veilig!"
+$
+
+De spanning over de mens daalt van 100V naar ≈ 1V dankzij de aarding. Dit is nu een simpel voorbeeld maar aardig is niet altijd veilig. Soms is er nog genoeg spanning om een mensen te schaden.
+
+*Maar een aardig geeft ons meer tijd om te reageren:*
 
 
 
+
+
+
+
+== Aarding systemen
 
 
