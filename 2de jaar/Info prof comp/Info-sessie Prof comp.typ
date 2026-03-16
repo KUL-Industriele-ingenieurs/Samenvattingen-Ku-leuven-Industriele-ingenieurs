@@ -15,6 +15,11 @@ Dit zijn drie sessies waarbij we gaan leren over #keyterm[Connective communicati
 
 Je gaat een *1000* woord papier moeten schrijven over de #keyterm[Connective communication]
 
+#page(margin: -0.5cm)[
+  #image("Connective Communication_writing assignment_EM+26.pdf", width: 100%, alt: "Writing assignment", page: 1)
+]
+
+
 = Sessie 1
 
 Je hebt verschillende stappen in communicatie:
