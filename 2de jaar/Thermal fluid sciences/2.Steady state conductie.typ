@@ -108,8 +108,8 @@ Over heel dit deel is het *Steady state* en is de warmteoverdracht $dot(Q)$ is *
   }),
 )[
 
-  Convectie is warmteoverdracht door stroming. lucht beweegt door de warmte.
-  Dus er wordt koud luchht constant geleverd aan het oppervlak en dus koelt het af.
+  Convectie is warmteoverdracht door stroming. Lucht beweegt door de warmte.
+  Dus er wordt koude lucht constant geleverd aan het oppervlak en dus koelt het af.
 ]
 
 #frm(
@@ -153,6 +153,7 @@ We gaan de formule van radiate ontbinden. Dit is uiteindelijk herhaling van warm
     De rest van de termen gaan $h_r$ bepalen.
     $ dot(Q) = epsilon sigma A (T_s^2 + T_oo^2)(T_s + T_oo) Delta T $
     $ h_r = epsilon sigma (T_s^2 + T_oo^2) (T_s + T_oo) $
+    $ dot(Q) = h_r A Delta T $
   ],
   [$dot(Q)$ = warmteflux [W], $epsilon$ = emissiviteit [-], $sigma$ = Stefan-Boltzmann constante [$5.67 dot 10^(-8) W/(m^2 K^4)$], A = oppervlakte [$m^2$], $Delta T$ = temperatuurverschil [K], $T_s$ = oppervlaktemperatuur [K], $T_oo$ = omgevingstemperatuur [K], $h_r$ = warmteoverdrachtscoëfficiënt voor straling [$W/(m^2 K)$]],
 )
@@ -173,7 +174,7 @@ $ h_r = epsilon sigma (T_s^2 + T_oo^2) (T_s + T_oo) $
 
 == Alles te samen
 
-Al deze warmteoverdrachten kunnen ook tesamen voorkomen. Dit kan gemodelleerd worden als een elektrisch circuit (thermisch circuit), waarbij de warmteflux $dot(Q)$ analoog is aan de stroom $I$, het temperatuurverschil $Delta T$ aan de spanning $U$, en de thermische weerstand $R_(t h)$ aan de elektrische weerstand $R$.
+Al deze warmteoverdrachten kunnen ook tegelijkertijd voorkomen. Dit kan gemodelleerd worden als een elektrisch circuit (thermisch circuit), waarbij de warmteflux $dot(Q)$ analoog is aan de stroom $I$, het temperatuurverschil $Delta T$ aan de spanning $U$, en de thermische weerstand $R_(t h)$ aan de elektrische weerstand $R$.
 
 De totale weerstand is de som van de weerstanden in serie:
 $ R_(t o t) = R_"cond" + R_"conv" = L/(k A) + 1/(h A) $
@@ -194,7 +195,7 @@ met $r_(c o n d) = R_(c o n d) dot A$ met eenheden [$m^2 K/W$]
 Het is net zoals bij elektrische netwerken. Het is volledig *Analoog* aan elektrische netwerken.
 
 #figure(
-  image("vergelijking elektrisch en heat flow.png", width: 6cm),
+  image("vergelijking elektrisch en heat flow.png", width: 6.5cm),
   caption: [vergelijking elektrisch en heat flow],
   label: <fig:vergelijking-elektrisch-en-heat-flow>,
 )
@@ -276,7 +277,7 @@ $ dot(Q)_(i n) - dot(Q)_(o u t) = frac(d E, d t) = markhl(0) $
   inplaats van integreren over de lengte $x$ gaan we integreren over de straal $r$
   de oppervlakte $A$ is functie van $r$ dus $A = 2 pi r L$
 
-  $ integral_(r= r_1)^(r_2) frac(dot(Q), 2 pi r L) d r = integral_(T_1)^(T_2) -k d T $
+  $ integral_(r= r_1)^(r_2) frac(dot(Q), underbrace(2 pi r L, "A")) d r = integral_(T_1)^(T_2) -k d T $
 
 
   $ dot(Q) = 2 pi k L frac(T_1 - T_2, ln(r_2) - ln(r_1)) = 2 pi k L frac(T_1 - T_2, ln(r_2 / r_1)) $
@@ -372,7 +373,7 @@ $ dot(Q)_(i n) - dot(Q)_(o u t) = frac(d E, d t) = markhl(0) $
   label: <fig:kritische-insulatie>,
 )[
   #concept(title: "Kritische radius")[
-    Nu als je zo weinig mogelijk warmteverlies wilt, dan wil je de warmteoverdracht $dot(Q)$ zo laag mogelijk houden. Maar we zien dat als je in het begin meer isolatie toevoegd dat je warmteoverdracht eerst *toeneemt* en daarna *afneemt*. Dit komt omdat de warmteoverdracht door conductie afneemt als de dikte van de isolatie toeneemt, maar de warmteoverdracht door convectie toeneemt als de dikte van de isolatie toeneemt. Je contactoppervlakte $A$ neemt toe $arrow.r$ er is dus een critische radius $r_c$ waarbij de warmteoverdracht minimaal is.
+    Nu als je zo weinig mogelijk warmteverlies wilt, dan wil je de warmteoverdracht $dot(Q)$ zo laag mogelijk houden. Maar we zien dat als je in het begin meer isolatie toevoegd dat je warmteoverdracht eerst *toeneemt* en daarna *afneemt*. Dit komt omdat de warmteoverdracht door conductie afneemt als de dikte van de isolatie toeneemt, maar de warmteoverdracht door convectie toeneemt als de dikte van de isolatie toeneemt. Je contactoppervlakte $A$ neemt toe $arrow.r$ er is dus een critische radius $r_c$ waarbij de warmteoverdracht maximaal is.
   ]
 ]
 
@@ -398,15 +399,17 @@ $ r_(c r, s f e r i s c h) = frac(2 k, h) $
 = Warmteoverdracht door vinnen <ch:warmteoverdracht-vinnen>
 
 #wrap-figure(
-  image("fins.png", width: 3.5cm),
+  image("fins.png", width: 4cm),
   caption: [fins],
   label: <fig:fins>,
 )[
   Finnen zijn metal rods die we gebruiken om snel warmte af te geven aan de omgeving. Je ziet ze overal, in computers, auto's, en eigenlijk alles wat warmte moet afgeven aan de omgeving.
+
+  De vraag die we ons stellen is, is dit nu nuttig? We gaan een *diff vergelijking*
+  opstellen.
 ]
 
-De vraag die we ons stellen is, is dit nu nuttig? We gaan een *diff vergelijking*
-opstellen.
+
 
 == Diff vergelijking van vinnen <sec:diff-vergelijking>
 
@@ -444,7 +447,7 @@ opstellen.
 
       // Q_out
       line((3, 1), (4.5, 1), mark: (end: ">"), stroke: (paint: red, thickness: 1.5pt))
-      content((3.75, 1.4), text(red)[$dot(Q)_(c o n d, x + Delta x)$])
+      content((4.0, 1.4), text(red)[$dot(Q)_(c o n d, x + Delta x)$])
 
       // Q_conv
       line((1.5, 2), (1.5, 3.5), mark: (end: ">"), stroke: (paint: orange, thickness: 1.5pt))
