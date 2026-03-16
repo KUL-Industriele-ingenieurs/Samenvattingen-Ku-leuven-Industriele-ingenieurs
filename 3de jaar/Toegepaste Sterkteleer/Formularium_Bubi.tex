@@ -1,0 +1,379 @@
+\documentclass[a4paper,11pt]{article}
+
+% -------------------------------------------------
+% PACKAGES
+% -------------------------------------------------
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{tcolorbox}
+\geometry{margin=2.5cm}
+
+% Optioneel: kader voor belangrijke formules
+\newtcolorbox{formula}{
+    colback=white,
+    colframe=black,
+    boxrule=0.8pt,
+    arc=2pt
+}
+
+% -------------------------------------------------
+% DOCUMENT
+% -------------------------------------------------
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{STERKTELEER}}\\[0.3cm]
+    {\large Deel René Boonen aka. OKIDOKI-man}\\[0.5cm]
+    Formules die \textit{by heart} gekend moeten zijn \& some more $<$3
+\end{center}
+
+\vspace{.6cm}
+
+% =================================================
+\section{Buiging van balken: Methode van Navier}
+
+\subsection*{Wanneer te gebruiken}
+
+De methode van Navier wordt gebruikt om de hoekvervorming en de doorbuiging van een rechte balk te bepalen uitgaande van de momentenvergelijking. Ze is toepasbaar bij kleine vervormingen en voor balken met een \underline{symmetrische doorsnede}, waarbij het traagheidsproduct $EI$ gekend is (constant of variabel). De methode vertrekt van de relatie $\frac{d^2 y}{dx^2} = \frac{M(x)}{EI}$ en vereist dat de momentenlijn via statica kan worden opgesteld. Ze is geschikt voor zowel statisch bepaalde als hyperstatische balken, mits de randvoorwaarden correct worden toegepast.
+
+
+
+\subsection*{Formules}
+\vspace{.2cm}
+
+\noindent
+\begin{minipage}[t]{0.48\textwidth}
+\noindent Differentiaalvergelijking voor de hoekvervorming:
+
+\vspace{0.8em}
+
+\begin{equation}
+\frac{d\alpha}{dx} = \frac{M(x)}{EI}
+\end{equation}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\textwidth}
+\noindent Geïntegreerde vorm (hoekvervorming als functie van x):
+
+\vspace{0.8em}
+
+\begin{equation}
+\alpha(x) = \int \frac{M(x)}{EI} \, dx + \alpha_0
+\end{equation}
+\end{minipage}
+
+\vspace{1.2cm}
+
+\noindent
+\begin{minipage}[t]{0.47\textwidth}
+\noindent Differentiaalvergelijking voor de doorbuiging:
+
+\vspace{0.8em}
+
+\begin{equation}
+\frac{d^2 y}{dx^2} = \frac{M(x)}{EI}
+\end{equation}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.47\textwidth}
+\noindent Eerste integratie (hoekvervorming):
+
+\vspace{0.8em}
+
+\begin{equation}
+\frac{dy}{dx} = \int \frac{M(x)}{EI} \, dx + y_0
+\end{equation}
+\end{minipage}
+\vspace{.8cm}
+
+\subsection*{Stappenplan}
+
+\begin{enumerate}
+    \item Gebruik de tekenconventie uit de les en duid alle reactiekrachten en -momenten aan.
+    
+    \item Voer de statica uit en bepaal de onbekende reacties.
+    
+    \item opstellen van de momentvergelijking $M(x)$ .
+    
+    \item Integreer de vergelijking 
+    \[
+    \frac{d^2 y}{dx^2} = \frac{M(x)}{EI}
+    \]
+    \underline{tweemaal} om de hoekvervorming en doorbuiging te bepalen. Vergeet de integratieconstanten niet.
+    
+    \item Bepaal de integratieconstanten uit de randvoorwaarden en stel de uiteindelijke vergelijkingen voor $M(x)$, $\alpha(x)$ en $y(x)$ op.
+\end{enumerate}
+
+
+\newpage
+
+
+
+
+
+
+
+
+
+% =================================================
+\section{Elastische Energie}
+
+\subsection*{Wanneer te gebruiken}
+
+De methode van de elastische energie wordt gebruikt wanneer de vervorming of een onbekende belasting moet bepaald worden op basis van \underline{een energiebalans}. Dit is vooral aangewezen bij impactproblemen, wanneer energie gekend is maar kracht en vervorming niet, bij hyperstatische constructies, en bij situaties waar de methode van Navier moeilijk toepasbaar is (bijvoorbeeld bij gekromde balken of complexe belastingen). De methode is geldig zolang het materiaal zich elastisch gedraagt.
+
+\subsection*{Formules}
+\vspace{.2cm}
+\subsubsection*{Infenitesimale arbeid:}
+\vspace{.2cm}
+\noindent
+\begin{minipage}[t]{0.42\textwidth}
+\noindent Infinitesimale arbeid bij trek:
+
+\vspace{0.8em}
+
+\begin{equation}
+dW = \frac{\sigma^2}{2E} \, dV
+\end{equation}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+\noindent Infinitesimale arbeid bij afschuiving (met G = glijdingsmodulus):
+
+\vspace{0.8em}
+
+\begin{equation}
+dW = \frac{\tau^2}{2G} \, dV
+\end{equation}
+\end{minipage}
+
+\vspace{-.5cm}
+
+\subsubsection*{soorten arbeid:}
+\vspace{.2cm}
+
+\noindent
+\begin{minipage}[t]{0.42\textwidth}
+\noindent Elastische energie bij trek:
+
+\vspace{0.8em}
+
+\begin{equation}
+W = \frac{F^2 l}{2EA}
+\end{equation}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+\noindent Elastische energie bij afschuiving:
+
+\vspace{0.8em}
+
+\begin{equation}
+W = \frac{F^2 h}{2GA}
+\end{equation}
+\end{minipage}
+
+\vspace{.5cm}
+
+\noindent
+\begin{minipage}[t]{0.42\textwidth}
+\noindent Elastische energie bij torsie:
+
+\vspace{0.4cm}
+
+\begin{equation}
+W = \frac{M_w^2 l}{2G I_p}
+\end{equation}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+\noindent Elastische energie bij buiging:
+
+\vspace{0.4cm}
+
+\begin{equation}
+W = \int \frac{M(x)^2}{2EI}\, dx
+\end{equation}
+\end{minipage}
+
+\subsubsection*{Stelling van Castigliano:}
+
+De stelling van Castigliano stelt dat de afgeleide van de elastische energie $W$ naar een kracht de verplaatsing geeft in de richting en op de plaats van die kracht. Analoog geeft de afgeleide van $W$ naar een moment de overeenkomstige hoekverdraaiing. De methode is geldig zolang het materiaal zich elastisch gedraagt.
+
+\vspace{1.2em}
+
+\noindent
+\begin{minipage}[t]{0.42\textwidth}
+\noindent Verplaatsing:
+
+\vspace{0.8em}
+
+\begin{equation}
+y = \frac{\partial W}{\partial F}
+\end{equation}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+\noindent Hoekverdraaiing:
+
+\vspace{0.8em}
+
+\begin{equation}
+\alpha = \frac{\partial W}{\partial M}
+\end{equation}
+\end{minipage}
+
+
+
+
+
+
+\newpage
+\subsection*{Stappenplan}
+
+
+\begin{enumerate}
+    \item Statica: bepaal de reactiekrachten en -momenten met de evenwichtsvergelijkingen.
+    \item Moment in functie van positie: stel de momentenvergelijking $M(x)$ of $M(\theta)$ op.
+    \item Energie: stel de energiebalans [W] op met de toepasselijk formule, dit hangt af van de situatie (trek, afschuiving, torsie of buiging) \hspace{2.8cm} {\small (zie verder volgende bladzijde)}
+   
+    \item Zoek grootte onbekende: los de energiebalans op naar de gezochte kracht, moment, belasting of reactie.
+    
+    \item Doorbuiging op gevraagde punt bepalen met: 
+    \[
+    y = \frac{\partial W}{\partial F}.
+    \]
+\end{enumerate}
+
+
+
+
+
+
+\vspace{.8cm}
+
+\newpage
+\section{Stabiliteit van constructies}
+ 
+\subsection*{Wanneer te gebruiken}
+
+\noindent
+De stabiliteitsleer wordt gebruikt wanneer een constructie onder \underline{drukkracht} staat en het risico bestaat dat zij haar evenwicht verliest door een kleine verstoring. Dit is typisch bij slanke kolommen of staven waarbij het bezwijken niet door materiaalsterkte maar door \underline{knik} wordt bepaald.
+
+\vspace{.4cm}
+
+
+\noindent
+De methode is aangewezen wanneer men de \textbf{kritische kracht} wil bepalen waarbij een rechte evenwichtstoestand instabiel wordt. Ze vertrekt vanuit een energiebenadering (Lyapunov) of uit de differentiaalvergelijking van de doorbuiging. De klassieke Euler-formule is geldig voor slanke staven in het elastische gebied, bij kleine vervormingen en zolang het materiaal lineair elastisch blijft.
+
+
+
+\vspace{.5cm}
+
+\subsection*{Formules}
+\vspace{.2cm}
+
+\subsubsection*{Potentiële energie en stabiliteitsvoorwaarde:}
+\vspace{.2cm}
+
+\noindent
+\begin{minipage}[t]{0.42\textwidth}
+\noindent Totale potentiële energie (Lyapunov):
+
+\vspace{0.8em}
+
+\begin{equation}
+V = E_p - W
+\end{equation}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+\noindent Evenwichts- en stabiliteitsvoorwaarde:
+
+\vspace{0.8em}
+
+\begin{equation}
+\frac{\partial V}{\partial q} = 0
+\end{equation}
+
+\begin{equation}
+\frac{\partial^2 V}{\partial q^2}
+\begin{cases}
+>0 & \text{stabiel} \\
+=0 & \text{onverschillig} \\
+<0 & \text{instabiel}
+\end{cases}
+\end{equation}
+\end{minipage}
+
+\vspace{.6cm}
+
+\subsubsection*{Buigspanningsenergie:}
+\vspace{.2cm}
+
+\begin{equation}
+E_p = \int \frac{M(x)^2}{2EI}\, dl
+\end{equation}
+
+\vspace{.6cm}
+
+\subsubsection*{Euler-knikkracht:}
+\vspace{.2cm}
+
+\noindent
+\begin{minipage}[t]{0.42\textwidth}
+\noindent Algemene vorm:
+
+\vspace{0.8em}
+
+\begin{equation}
+F_k = \frac{\pi^2 EI}{(c\,l)^2}
+\end{equation}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+\noindent Klassiek geval (scharnier--scharnier):
+
+\vspace{0.8em}
+
+\begin{equation}
+F_k = \frac{\pi^2 EI}{l^2}
+\end{equation}
+\end{minipage}
+
+
+
+\newpage
+
+\subsection*{Stappenplan}
+
+\begin{enumerate}
+    \item Bepaal de potentiële energie $E_p$ van het systeem 
+    (bv.\ buigenergie $\int \frac{M^2}{2EI}\,dl$, veerenergie, trekenergie, ...).
+    
+    \item Bepaal de arbeid $W$ van de uitwendige krachten.
+
+    \item Indien nodig: bepaal tussenstappen (reacties, momenten $M(x)$, vervormingen, ...) 
+    met eerder geziene methodes zoals statica of Navier.
+    
+    
+    \item Stel de totale potentiële energie (Lyapunov) op:
+    \[
+    V = E_p - W.
+    \]
+    
+    \item Zoek het evenwicht uit:
+    \[
+    \frac{\partial V}{\partial q} = 0.
+    \]
+    
+    \item Onderzoek de stabiliteit via:
+    \[
+    \frac{\partial^2 V}{\partial q^2}.
+    \]
+    De kritische belasting volgt uit de voorwaarde dat deze tweede afgeleide nul wordt.
+\end{enumerate}
+
+\end{document}

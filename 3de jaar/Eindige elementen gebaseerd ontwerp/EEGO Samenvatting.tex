@@ -287,4 +287,106 @@ Door domein discretisatie ontstaat er dus een fout, deze fout zagen we eerder. D
 \end{itemize}
 \newpage
 \subsection{Vormfuncties}
+We willen dus eigelijk de continue oplossing $\hat{q}(x,y,z)$ benaderen omdat we alleen de waarden $\tilde{q}$ op de knopen kennen (want dit is wat de computer berekend). We gebruiken hiervoor \textbf{vormfuncties} (shape functions) ($N_i(x,y,z)$) die een interpolatie maken van de oplossing binnen een element op basis van de knoopwaarden. Vormfuncties zijn dus eigelijk zuivere interpolatiefuncties. Ze zijn dus een schatting van de continue oplossing tussen de knopen.
+\begin{warningbox}[Even ter verduidelijking nog]
+(als het nog niet duidelijk was, een hoedje op een symbool betekent dat het een benadering is, dus $\hat{q}$ is een benadering van $q$ met $q$ de werkelijke waarde in de natuur, zo een golfje (tilde) op een symbool betekent dat het een waarde is die op een knoop berekend is, dus $\tilde{q}$ is de waarde van $q$ op een knoop, dit is wat de computer berekent)
+\end{warningbox}
+Voor een vierkant element met 4 knopen wordt dit als volgt berekent:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{vierkantelemntvorm.png}
+  \caption{Vierkant element met vormfuncties}
+  \label{fig:vierkantelemntvorm.png}
+ \end{figure}
+Deze formule is eigenlijk een gewogen gemiddelde van de knoopwaarden, waarbij de vormfuncties $N_i$ de bijdrage van elke knoop bepalen op basis van de positie binnen het element. De vormfuncties zijn zo ontworpen dat ze gelijk zijn aan 1 bij hun eigen knoop en 0 bij alle andere knopen, wat zorgt voor een correcte interpolatie van de oplossing binnen het element.
+\newline
+Kenmerken zijn:
+\begin{itemize}
+    \item \textbf{Stuksgewijs (piecewise):} Elke vorm van element heeft zijn eigen set van vormfuncties, deze zijn gedefinieerd binnen dat specifieke element. $N_i = 1$ bij knoop i, en $N_i = 0$ bij alle andere knopen.
+    \item \textbf{Polynomen:} Meestal zijn het polynomale functies (zoals lineair of kwadratisch)
+    \item \textbf{De som is altijd 1:} Voor elk punt binnen het element geldt dat de som van alle vormfuncties gelijk is aan 1, dit zorgt voor een correcte interpolatie. $\sum_{i=1}^{n} N_i = 1$
+\end{itemize}
+\newpage
+\subsubsection{1D Vormfuncties}
+1D vormfuncties kunnen:
+\begin{itemize}
+    \item \textbf{Lineair (p=1)}zijn:
+    \begin{figure}[H]
+      \centering
+      \includegraphics[width=0.3\textwidth]{1D_lineair_VF.png}
+      \caption{Lineaire 1D (rod) vormfunctie}
+      \label{fig:1D_lineair_VF.png}
+     \end{figure}
+    \item \textbf{Quadratisch (p=2)} zijn:
+    \begin{figure}[H]
+      \centering
+      \includegraphics[width=0.3\textwidth]{1D_quadratisch_VF.png}
+      \caption{Quadratische 1D (rod) vormfunctie}
+      \label{fig:1D_quadratisch_VF.png}
+     \end{figure}
+    \item \textbf{Cubisch (p=3)} zijn:
+    \begin{figure}[H]
+      \centering
+      \includegraphics[width=0.3\textwidth]{1D_cubisch_VF.png}
+      \caption{Cubische 1D (rod) vormfunctie}
+      \label{fig:1D_cubisch_VF.png}
+     \end{figure}
+\end{itemize}
+Om een verplaatsing $\hat{u}(x)$ in een eindig element te bepalen gebruiken we de volgende polynoombenadering: 
+\begin{equation}
+\hat{u}(x) = a + bx + cx^2 + dx^3 + ex^4 + \ldots
+\end{equation}
+Neem als voorbeeld de p=1 lineaire rod met knoop A en knoop B, zeg dat knoop A zich op een afstand x = 0 bevindt en knoop B op een afstand x = L, als een verplaatsing $u_A$ op knoop A en een verplaatsing $u_B$ op knoop B bekend zijn, dan kunnen we de co\"effici\"enten a, b, c, d, e, ... bepalen door de volgende voorwaarden te stellen:
+\newline
+Sinds het in dit geval een lineaire benadering is, hebben we alleen de co\"effici\"enten a en b nodig, dus we stellen:
+\begin{equation}
+\hat{u}(0) = a = u_A  , \quad \hat{u}(L) = a + bL = u_B
+\end{equation}
+Hieruit kunnen we b bepalen als:
+\begin{equation}
+b = \frac{u_B - u_A}{L}
+\end{equation}
+En dus is de benaderde verplaatsing binnen het element:
+\begin{equation}
+\hat{u}(x) = u_A + \frac{u_B - u_A}{L} x
+\end{equation}
+In termen van de vormfuncties kunnen we dit ook schrijven als:
+\begin{equation}
+\hat{u}(x) = N_A(x) u_A + N_B(x) u_B = \left(1 - \frac{x}{L}\right) u_A + \frac{x}{L} u_B
+\end{equation}
+$N_A(x)$ en $N_B(x)$ zijn dus de vormfuncties.
+Op dezelfde manier kan dit gedaan worden voor quadratisch en cubisch maar dan met extra onbekenden.
+\newpage
+Dit is dan een plot van hoe de vormfuncties eruit zien (linkse plot is voor lineair, let wel op dat hier ipv A en B benamingen voor knopen, de benamingen 1 en 2 gebruikt zijn, het is gewoon belangrijk om te zien beneden dat in knoop 1 (A), $N_1$ = $N_A$ gelijk is aan 1, en in knoop 2 (B), $N_2$ = $N_B$ gelijk is aan 1, en dat de vormfuncties van de andere knoop gelijk zijn aan 0 in deze knopen):
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{vormfunctiesvisueel.png}
+  \caption{Vormfuncties voor lineaire, quadratische en cubische elementen}
+  \label{fig:vormfunctiesvisueel.png}
+ \end{figure}
+\subsubsection{De interpolatie}
+We noemen dit een interpolatie omdat we eigelijk een waarde zoeken binnen het element dat niet op een knoop ligt, maar we hebben wel de waarden op de knopen, dus we gebruiken deze knoopwaarden en de vormfuncties om een benadering te maken van de waarde binnen het element. De vormfuncties zorgen ervoor dat deze benadering correct is, omdat ze zo ontworpen zijn dat ze gelijk zijn aan 1 bij hun eigen knoop en 0 bij alle andere knopen. Voor de verplaatsing dus tussen knoop A en B, vinden we dit met $\hat{u}(x) = N_A(x) \tilde{u_A} + N_B(x) \tilde{u_B}$.
+Visueel ziet dit er als volgt uit:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.3\textwidth]{visueelinterpolatie.png}
+  \caption{Visuele representatie van interpolatie binnen een element}
+  \label{fig:visueelinterpolatie.png}
+ \end{figure}
+Met het rode gedeelte de verplaatsing $\hat{u}(x)$ , het groene gedeelte de vermenigvuldiging van de vormfunctie $N_A(x)$ met de knoopwaarde (verplaatsing in knoop A) $\tilde{u_A}$, en het paarse gedeelte de vermenigvuldiging van de vormfunctie $N_B(x)$ met de knoopwaarde (verplaatsing in knoop B) $\tilde{u_B}$. Het rode is dus ook de som van het groene en het paarse.
+\subsubsection{Afgeleide grootheden}
+Wat als we nu de \textbf{spanning (stress)} of \textbf{rek (strain)} willen weten binnen het element?
+\newline
+Uit de mechanica weten we dat de rek $\epsilon = \frac{du}{dx}$, dus we kunnen de rek binnen het element bepalen door de afgeleide van de verplaatsing te nemen.
+\newline
+\begin{warningbox}[Deze afgeleide heeft 1 probleem!]
+    Je verliest minstens 1 orde als je afleidt! Bvb. het afleiden van y = mx + q geeft y' = m, dus van een lineaire functie (p=1) naar een constante functie (p=0), dit is dus een verlies van 1 orde. Dus als je een lineaire benadering hebt voor de verplaatsing, dan zal de rek een constante benadering zijn binnen het element, dit is niet zo nauwkeurig, daarom gebruiken we vaak kwadratische elementen (p=2) zodat we een lineaire benadering hebben voor de rek, dit is dan weer beter.
+\end{warningbox}
+Omdat in dit geval de berekende rek (en dus ook de berekende spanning want $\sigma = E * \epsilon = E * \frac{du}{dx} = E * ((\frac{-1}{L})* \tilde{u_A} + \frac{1}{L} * \tilde{u_B})$) een constante waarde heeft, ziet de grafiek van de spanning binnen het element er als volgt uit:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\textwidth]{spanning_AB.png}
+  \caption{Constante spanning binnen een lineair element tussen knoop A en B}
+  \label{fig:spanning_AB.png}
+ \end{figure}
 \end{document}
