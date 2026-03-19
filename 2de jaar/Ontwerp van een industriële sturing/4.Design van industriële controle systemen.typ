@@ -179,19 +179,19 @@ Een base ziet het verschil oftewel tussen de grond of de input.
 
 === 3-draad sensor: PNP vs NPN
 
-Om het verschil tussen PNP en NPN te begrijpen, kijk je naar wat de sensor met de **zwarte signaaldraad** doet als hij geactiveerd wordt.
+Om het verschil tussen PNP en NPN te begrijpen, kijk je naar wat de sensor met de *zwarte signaaldraad* doet als hij geactiveerd wordt.
 
 ==== PNP (Sourcing) — De "Positieve" sensor
-*   *Ezelsbruggetje:* De **P** staat voor #emph(text(blue)[Positief]) en #emph(text(blue)[Power]).
-*   *Werking:* Denk aan de sensor als een **kraan**. Wanneer de sensor iets detecteert, zet hij de kraan open en "spuit" er +24V uit de zwarte draad.
-*   *Stroomzin:* De stroom vloeit **uit** de sensor naar de verbruiker (bijv. een PLC-ingang). De sensor is de *bron* (source).
-*   *Aansluiting:* De verbruiker (load) zit tussen de zwarte draad en de 0V (blauw).
+*Ezelsbruggetje:* De *P* staat voor #emph(text(blue)[Positief]) en #emph(text(blue)[Power]).
+*Werking:* Denk aan de sensor als een *kraan*. Wanneer de sensor iets detecteert, zet hij de kraan open en "spuit" er +24V uit de zwarte draad.
+*Stroomzin:* De stroom vloeit *uit* de sensor naar de verbruiker (bijv. een PLC-ingang). De sensor is de *bron* (source).
+*Aansluiting:* De verbruiker (load) zit tussen de zwarte draad en de 0V (blauw).
 
 ==== NPN (Sinking) — De "Negatieve" sensor
-*   *Ezelsbruggetje:* De **N** staat voor #emph(text(blue)[Negatief]) en #emph(text(blue)[Nul volt]).
-*   *Werking:* Denk aan de sensor als een **afvoer** of een putje. Wanneer de sensor iets detecteert, zet hij de afvoer open naar de 0V (massa).
-*   *Stroomzin:* De stroom vloeit **van** de verbruiker **naar** de sensor toe. De sensor "slikt" de stroom in. De sensor is de *gootsteen* (sink).
-*   *Aansluiting:* De verbruiker (load) moet al aan de +24V (bruin) hangen en wacht tot de zwarte draad hem verbindt met de 0V.
+*Ezelsbruggetje:* De *N* staat voor #emph(text(blue)[Negatief]) en #emph(text(blue)[Nul volt]).
+*Werking:* Denk aan de sensor als een *afvoer* of een putje. Wanneer de sensor iets detecteert, zet hij de afvoer open naar de 0V (massa).
+*Stroomzin:* De stroom vloeit *van* de verbruiker *naar* de sensor toe. De sensor "slikt" de stroom in. De sensor is de *gootsteen* (sink).
+*Aansluiting:* De verbruiker (load) moet al aan de +24V (bruin) hangen en wacht tot de zwarte draad hem verbindt met de 0V.
 
 #table(
   columns: (1fr, 1fr, 1fr),
@@ -237,24 +237,38 @@ Om het verschil tussen PNP en NPN te begrijpen, kijk je naar wat de sensor met d
 Een twee draad kan gebruikt worden voor zowel *Sourcing* als *Sinking*. Het heeft geen connectie met de referenties voltage.
 
 #figure(
-  image("Twee draad sensor.png", width: 12cm),
+  image("Twee draad sensor.png", width: 15cm),
   caption: [Twee draad sensor],
   label: <fig:Twee-draad-sensor>,
 )
 
 
-// Todo: Voeg toe van slides.
-#TODO[Voeg toe van slides]
+=== Sourching 3&4 draad sensor
 
-== Wanneer moet een switch NO/NC (normaal open/normaal gesloten) zijn?
+
+=== Sinking 3&4 draad sensor
+
+=== Wiring IEC positive/negative logic
+
+#figure(
+  image("Wiring IEC.png", width: 12cm),
+  caption: [Wiring IEC],
+  label: <fig:Wiring-IEC>,
+)
+
+
+== PNP is veiliger
+
+== Discrete sensoren
+
+=== Wanneer moet een switch NO/NC (normaal open/normaal gesloten) zijn?
 
 - In de onveilige toestand zal het besturingssysteem het gevaar stoppen. Een draadbreuk geeft een 0 aan de ingang en moet overeenkomen met de onveilige toestand.
 - De veilige toestand zal bijgevolg 1 zijn: een actief signaal aan de ingang komt overeen met de veilige toestand.
 - Het gebruik van "geen signaal" als bevestiging van een veilige situatie is onbetrouwbaar.
 
-#examenbox("Examenvraag")
 #voorbeeld(title: "Tank hoog en laag niveau alarm")[
-
+  #examenbox("Examenvraag")
   #wrap-figure(
     image("tank.png", width: 5cm),
     caption: [tank],
@@ -278,27 +292,32 @@ Een twee draad kan gebruikt worden voor zowel *Sourcing* als *Sinking*. Het heef
   ]
 ]
 
+=== Connecteren I/O (input/output) naar een PLC
 
-== Sensoren
+Nu weten we het volgende:
+- Een stop button moet N C gewired zijn (Normaal Gesloten).
+- Een start button moet N O gewired zijn (Normaal Open).
+- Het grootste defect is een gebroken draad en zou de machine stoppen.
+
+=== Sensoren
 
 *Discrete sensoren*\
 Deze zijn gebasseerd op #keyterm[Mechanische beweging]. Ze hebben vaak volt free contacten. Dit is meestal een switch van de input voltage.
 
-- *Limit switches*: robust switches, mechanically operated by a roll on a lever.
-They are used to reliably detect less accurate positions, e.g. at the end of a conveyor belt.
-- *Level switch*: a switch operated by a float on a lever or a chain.
-- *Flow switch*: a membrane moves because of a pressure difference over an orifice.
-- *Thermal switch*: thermal reset or thermal cutout (TCO) or Klixon
-- *Proximity switches*: Contactless detection.
+#examenbox[Je gaat al deze sensoren moeten kennen en hun werkingen moeten kunnen uitleggen.]
 
++ / Limit switches: robust switches, mechanically operated by a roll on a lever.They are used to reliably detect less accurate positions, e.g. at the end of a conveyor belt.
++ / Level switch: a switch operated by a float on a lever or a chain.
++ / Flow switch: a membrane moves because of a pressure difference over an orifice.
++ / Thermal switch: thermal reset or thermal cutout (TCO) or Klixon
++ / Proximity switches: Contactless detection.
 
-+ *Proximity switches*\
   #figure(
     image("proximity-switch.png", width: 5cm),
     caption: [proximity-switch],
     label: <fig:proximity-switch>,
   )
-+ *Optische sensor*\
++ / Optische sensor:
   Werkt met een LED en photo diode
 
   Dit kan werken oftwel via een LED met photodiode. Die gaan rood of infrarood light sturen en bij reflectie kan die dat opnemen. Goed voor korte afstanden. Of met fibre-optic proximity-switch.
@@ -309,13 +328,13 @@ They are used to reliably detect less accurate positions, e.g. at the end of a c
     label: <fig:fibre-optical-proximity-switch>,
   )
 
-+ *Ultrasone sensor*\
++ / Ultrasone sensor:
   Werkt met geluidsgolven. Terugkerende geluidsgolven worden opgevangen door de sensor. _heel universeel_
 
-+ *Inductieve sensor*\
++ / Inductieve sensor:
   Werkt met magnetische velden. Een *Wisselend* magnetisch veld wordt opgewerkt en metaal dat dichtbij komt via #keyterm[eddy current] warmt dat metaal op. Dit kan de sensor opnemen. _detecteert alleen metaal_
 
-+ *Capacitieve sensor*\
++ / Capacitieve sensor:
   Werkt met *Wisselend* elektrische velden. Een object gaat en elektrisch veld verstoren en de capaciteit gaat veranderen. Die verandering kan gedetecteerd worden.
 
   Het nadeel is dat het veel gevoeliger is voor de omgevingsfactoren. Een inductieve schakelaar detecteerd alleen *geleidende* objecten wat soms wensbaar is.
@@ -329,10 +348,10 @@ They are used to reliably detect less accurate positions, e.g. at the end of a c
     caption: [reed contact],
     label: <fig:reed-contact>,
   )
-+ *Reed contact*\
++ / Reed contact:
   Magnetische sensor, binnenin de sensor is de piston cilinder gemagnetizeerd. Als er een magneet dichtbij komt gaat de piston cilinder magnetisch worden en de contacten gaan sluiten. Je ziet dat je een N-pool en S-pool hebt op dat reed contact.
 
-+ *Hall sensor*\
++ / Hall sensor:
   Gaat ook zoals een reed-sensor een magnetisch veld detecteren. _Concucerend met de reed-switch_
 
   Er is geen enkele beweging in de sensor en kan het dus veel snellere frequenties $f$ aan. Reed contact hebben mechanische delen en dus kan het snelle schakelen niet aan.
@@ -355,6 +374,12 @@ They are used to reliably detect less accurate positions, e.g. at the end of a c
 )
 
 == Interfacing components
+
+Hoe zorgen we ervoor dat we deftig onze inputs en outputs kunenn connecteren. Dit is IO (Input/Output). Als we spreken over alle soorten IO en hoe we sensoren, controllers en PLC's connecteren spreken we van een IO interface.
+
+
+=== Soorten signalen
+
 
 #TODO[Voeg toe van slides]
 // todo:voeg toe van slides.
