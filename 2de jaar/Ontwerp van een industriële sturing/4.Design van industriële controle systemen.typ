@@ -31,7 +31,6 @@ In dit deel wordt gezien hoe we industriële systemen kunnen ontwerpen en hoe we
 
   _Dit is geen nulvolt. Spanningen flucturen en er bestaat geen nul in het universium maar we bekijken het wel zo_
 
-
   Een connectie kan alleen een signaal geven wanneer er een tweede connectie als voltagedrop is. Je PLC moet dus een referentie volt hebben zodat het outputs kan genereren.
 
   Inputs en outputs kunnen:
@@ -42,8 +41,6 @@ In dit deel wordt gezien hoe we industriële systemen kunnen ontwerpen en hoe we
   Een stopcontact zijn voltage is wisselspanning.
 ]
 
-
-
 == Een PLC connecteren
 
 #figure(
@@ -51,8 +48,6 @@ In dit deel wordt gezien hoe we industriële systemen kunnen ontwerpen en hoe we
   caption: [Een PLC connecteren],
   label: <fig:een-plc-connecteren>,
 )
-
-
 
 _In de slides is hij gewoon simpele schakeling aan het uitleggen.
 Als iets niet geconnecteerd $arrow.r$ dan gaat hij niet aan staan (crazy right)_
@@ -78,7 +73,6 @@ PLC's wordt met de tabel hieronder getoont wanneer een spanningsval groot genoeg
   caption: [PLC-logic],
   label: <fig:PLC-logic>,
 )
-
 
 == Compenten connecteren met andere voltages
 
@@ -363,9 +357,7 @@ Deze zijn gebasseerd op #keyterm[Mechanische beweging]. Ze hebben vaak volt free
   )
   Bekijk de slides _pg 40-57_ voor meer info over elke sensor.
 
-
   #examenbox[Je moet deze sensoren op het examen kunnen geven en weten wanneer ze gebruikt worden, hoe ze werken en verschillen tussen de sensoren.]
-
 
 #figure(
   image("symbolen switches.png", width: 12cm),
