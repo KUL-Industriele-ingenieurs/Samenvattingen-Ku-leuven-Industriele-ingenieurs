@@ -134,9 +134,7 @@ Een optocoupler is een *Switch*: in saturatie mode is de LED ON of OFF. De outpu
   label: <fig:optocoupler>,
 )
 
-Optocouplers kunnen ook #keyterm[Analoge] signalen doorsturen. In #keyterm[Lineaire mode] kan je een lineaire relatie $f(x) = x$ maken zodat de intensiteit van de output gelijk is aan de input. Je kunt dan analoge signalen doorgeven.
-
-Ze kunne hierdoor een transformator vervangen in meetcircuits, en kunnen ook DC doorsturen.
+Optocouplers kunnen ook #keyterm[Analoge] signalen doorsturen. In #keyterm[Lineaire mode] kan je een lineaire relatie $f(x) = x$ maken zodat de intensiteit van de output gelijk is aan de input. Je kunt dan analoge signalen doorgeven. Ze kunnen hierdoor een transformator vervangen in meetcircuits, en kunnen ook DC doorsturen.
 
 
 
