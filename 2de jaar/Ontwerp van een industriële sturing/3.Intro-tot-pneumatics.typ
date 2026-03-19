@@ -1,6 +1,6 @@
 #import "../../school-template.typ": *
 
-= Introductie tot pneumatiek <ch:intro-pneumatics>
+= Pneumatica <ch:intro-pneumatics>
 
 == Wat is pneumatiek?
 

@@ -3,55 +3,61 @@
 
 = Design van industriële controle systemen <ch:design-van-industriële-controle-systemen>
 
-In deze les wordt er gezien hoe elektrische systemen worden opgesteld in de industrie.
+In dit deel wordt gezien hoe we industriële systemen kunnen ontwerpen en hoe we ze gaan connecteren.
 
 #concept(title: "Voltage verschil")[
-  #grid(
-    columns: 2,
-    align: center,
-    figure(
-      image("voltageverschil.png", width: 6cm),
-      caption: [voltageverschil],
-      label: <fig:voltageverschil>,
-    ),
+  #align(center)[
+    #grid(
+      columns: 2,
+      align: center,
+      figure(
+        image("voltageverschil.png", width: 6cm),
+        caption: [voltageverschil],
+        label: <fig:voltageverschil>,
+      ),
 
-    figure(
-      image("stopcontact.png", width: 6cm),
-      caption: [stopcontact],
-      label: <fig:stopcontact>,
-    ),
-  )
+      figure(
+        image("stopcontact.png", width: 6cm),
+        caption: [stopcontact],
+        label: <fig:stopcontact>,
+      ),
+    )
+  ]
 
   Een stopcontact heeft 3 pinnen:
-  - *L*: de fase
-  - *N*: de nul
-  - *PE*: de aarding, deze is geconnecteerd via een kabel in het gebouw naar de grond zodat je een constante spanningsverschil hebt. We beschouwen dit als de absolute nul 0V.
+  - / L: de fase
+  - / N: de nul
+  - / PE: de aarding, deze is geconnecteerd via een kabel in het gebouw naar de grond zodat je een constante spanningsverschil hebt. We beschouwen dit als de absolute nul 0V.
 
   _Dit is geen nulvolt. Spanningen flucturen en er bestaat geen nul in het universium maar we bekijken het wel zo_
 
+
+  Een connectie kan alleen een signaal geven wanneer er een tweede connectie als voltagedrop is. Je PLC moet dus een referentie volt hebben zodat het outputs kan genereren.
+
   Inputs en outputs kunnen:
-  - Sourcing: de input levert de spanning
-  - Sinking: de input trekt de spanning
-  - universeel: de input kan beide
+  - / Sourcing: de input levert de spanning
+  - / Sinking: de input trekt de spanning
+  - / universeel: de input kan beide
 
   Een stopcontact zijn voltage is wisselspanning.
 ]
 
 
+
 == Een PLC connecteren
 
 #figure(
-  image("Een PLC connecteren.png", width: 8cm),
+  image("Een PLC connecteren.png", width: 12cm),
   caption: [Een PLC connecteren],
   label: <fig:een-plc-connecteren>,
 )
 
-Je gaat simpelweg je PLC connecteren met de grond zodat de PLC de 24V kan detecteren.
+
 
 _In de slides is hij gewoon simpele schakeling aan het uitleggen.
 Als iets niet geconnecteerd $arrow.r$ dan gaat hij niet aan staan (crazy right)_
 
-
+*Foute PLC schakeling*
 
 #figure(
   image("Foute PLC schakeling.png", width: 5cm),
@@ -74,32 +80,46 @@ PLC's wordt met de tabel hieronder getoont wanneer een spanningsval groot genoeg
 )
 
 
-== Andere voltages
+== Compenten connecteren met andere voltages
 
 *Interface relay*\
 In de industrie werken meeste elektrische componenten met 24V.
-
-Maar wat als je component 5V accepteerd _Vele sensoren werken alleen met 5V_ Dan moet je de spanning laten dalen zdoat je de sensor power kunt geven.
+Maar wat als je component 5V accepteerd? _Vele sensoren werken alleen met 5V_ Dan moet je de spanning laten dalen zodat je de sensor power kunt geven.
 
 Een #keyterm[Interface relay] wordt gebruikt om een signaal door te sturen naar componenten van een hogere power, andere voltage of wanneer er een *Galvanische scheiding* tussen de circuits nodig is.
 
+#figure(
+  image("interface relay.png", width: 5cm),
+  caption: [Interface relay],
+  label: <fig:interface-relay>,
+)
+
 Hieronder een figuur zodat je weet wanneer je welk component gebruikt afhankelijk van je omgeving.
+
 #figure(
   image("different-voltages-wanneer.png", width: 10cm),
-  caption: [different-voltages-wanneer],
+  caption: [Different voltages wanneer],
   label: <fig:different-voltages-wanneer>,
 )
 
 Je ziet dat afhanklijk van de stroom en frequentie je een andere component moet gebruiken.
 
-#figure(
-  image("interface relay.png", width: 5cm),
-  caption: [interface relay],
-  label: <fig:interface-relay>,
-)
 
 *Controller actuators*\
-Voor het schakelen van grote stromen en voltages wordt er gebruik gemaakt van een #keyterm[Controller actuator].
+Als we lage voltage gebruiken voor ons circuit kunnen we deze niet connecteren aan de output van de PLC.
+Hiervoor kunnen we een #keyterm[Controller actuator] gebruiken. Een contactor of SSR (solid state relay) kan gebruikt worden om ze te controlleren. _Zie tabel hierboven_
+
+*SSR (Solid State Relay) /optocoupler*
+Een SSR is een optocoupler maar dan voor grotere stromen en voltages. Hij heeft ook een *N.O (Normally Open)* configuratie.
+
+SSR' hebben geen mechanische bewegende delen alleen semiconductors en elektrische componenten. Je hebt dus veel betere switching (geen bouncing) een geen risk van grote voltage verschillen.
+
+#figure(
+  image("SSR.png", width: 7cm),
+  caption: [SSR],
+  label: <fig:SSR>,
+)
+
 
 #figure(
   image("controlling actuator.png", width: 5cm),
@@ -110,9 +130,9 @@ Voor het schakelen van grote stromen en voltages wordt er gebruik gemaakt van ee
 *Optocoupler*\
 Een #keyterm[Optocoupler] heeft een licht emitterende kant (IR-LED) en een licht ontvangende kant (fototransistor).
 
-Het licht dat die maakt activeert een fotosensor en dan laat die stroom $A$ door.
+Het licht dat die maakt activeert $->$ een fotosensor en dan laat die stroom $A$ door.
 
-Een optocoupler is een *Switch*: in saturatie mode is de LED ON of OFF. De output transitor is volledig ON of OFF. Meestal is een optocoupler *N.O (Normally Open)*. Die gaat meestal altijd aan zijn buiten als er een signaal is.
+Een optocoupler is een *Switch*: in saturatie mode is de LED ON of OFF. De output transator is volledig ON of OFF. Meestal is een optocoupler *N.O (Normally Open)*. Die gaat meestal altijd aan zijn buiten als er een signaal is.
 
 #figure(
   image("optocoupler.png", width: 5cm),
@@ -120,16 +140,10 @@ Een optocoupler is een *Switch*: in saturatie mode is de LED ON of OFF. De outpu
   label: <fig:optocoupler>,
 )
 
-*SSR (Solid State Relay) /optocoupler*
-Een SSR is een optocoupler maar dan voor grotere stromen en voltages. Hij heeft ook een *N.O (Normally Open)* configuratie.
+Optocouplers kunnen ook #keyterm[Analoge] signalen doorsturen. In #keyterm[Lineaire mode] kan je een lineaire relatie $f(x) = x$ maken zodat de intensiteit van de output gelijk is aan de input. Je kunt dan analoge signalen doorgeven.
 
-SSR' hebben geen mechanische bewegende delen alleen semiconductors en elektrische componenten. Je hebt dus veel betere switching (geen bouncing) een geen risk van grote voltage verschillen.
+Ze kunne hierdoor een transformator vervangen in meetcircuits, en kunnen ook DC doorsturen.
 
-#figure(
-  image("SSR.png", width: 5cm),
-  caption: [SSR],
-  label: <fig:SSR>,
-)
 
 
 == Sourcing en Sinking
@@ -144,7 +158,7 @@ SSR' hebben geen mechanische bewegende delen alleen semiconductors en elektrisch
 
 ]
 
-*transitor als switch*\
+=== Transitor als switch
 
 Dit is vooral herhaling van elektronica.
 
@@ -152,41 +166,80 @@ Je hebt een base (B) _kijkt of de transitor gesloten of open moet zijn_, collect
 
 Een base ziet het verschil oftewel tussen de grond of de input.
 
-+ PNP: base ziet het verschil tussen de grond. (afhankelijk van de weerstand en stroom door basetak)
-+ NPN: base ziet het verschil tussen de base en de input. (afhankelijk van de weerstand en stroom door basetak)
++ / PNP: base ziet het verschil tussen de grond. (afhankelijk van de weerstand en stroom door basetak)
++ / NPN: base ziet het verschil tussen de base en de input. (afhankelijk van de weerstand en stroom door basetak)
 
-
-#figure(
-  image("Transitorswitch.png", width: 5cm),
-  caption: [Transitorswitch],
-  label: <fig:Transitorswitch>,
+#align(
+  center,
+  grid(
+    columns: 2,
+    image("Transitorswitch.png", width: 8cm), image("NPN & PNP.png", width: 8cm),
+  ),
 )
 
-#figure(
-  image("NPN & PNP.png", width: 5cm),
-  caption: [NPN & PNP],
-  label: <fig:NPN-PNP>,
+=== 3-draad sensor: PNP vs NPN
+
+Om het verschil tussen PNP en NPN te begrijpen, kijk je naar wat de sensor met de **zwarte signaaldraad** doet als hij geactiveerd wordt.
+
+==== PNP (Sourcing) — De "Positieve" sensor
+*   *Ezelsbruggetje:* De **P** staat voor #emph(text(blue)[Positief]) en #emph(text(blue)[Power]).
+*   *Werking:* Denk aan de sensor als een **kraan**. Wanneer de sensor iets detecteert, zet hij de kraan open en "spuit" er +24V uit de zwarte draad.
+*   *Stroomzin:* De stroom vloeit **uit** de sensor naar de verbruiker (bijv. een PLC-ingang). De sensor is de *bron* (source).
+*   *Aansluiting:* De verbruiker (load) zit tussen de zwarte draad en de 0V (blauw).
+
+==== NPN (Sinking) — De "Negatieve" sensor
+*   *Ezelsbruggetje:* De **N** staat voor #emph(text(blue)[Negatief]) en #emph(text(blue)[Nul volt]).
+*   *Werking:* Denk aan de sensor als een **afvoer** of een putje. Wanneer de sensor iets detecteert, zet hij de afvoer open naar de 0V (massa).
+*   *Stroomzin:* De stroom vloeit **van** de verbruiker **naar** de sensor toe. De sensor "slikt" de stroom in. De sensor is de *gootsteen* (sink).
+*   *Aansluiting:* De verbruiker (load) moet al aan de +24V (bruin) hangen en wacht tot de zwarte draad hem verbindt met de 0V.
+
+#table(
+  columns: (1fr, 1fr, 1fr),
+  inset: 10pt,
+  align: horizon,
+  stroke: none,
+  fill: (x, y) => if y == 0 { gray.lighten(50%) },
+  [*Type*], [*Signaal op zwarte draad*], [*Rol van de sensor*],
+  [PNP], [+24 V (High)], [Levert stroom (Source)],
+  [NPN], [0 V (Low)], [Ontvangt stroom (Sink)],
 )
 
+#examenbox[
+  *Belangrijk voor het labo:*
+  Meestal gebruiken we in Europa *PNP* sensoren voor PLC's. Waarom? Omdat bij een draadbreuk of kortsluiting naar de massa (0V) een NPN sensor per ongeluk "geactiveerd" zou kunnen lijken, wat onveilig is. Bij PNP is 0V gewoon "geen signaal".
 
-*3 Draad PNP sensor*\
+  *Draadkleuren (IEC standaard):*
+  - #text(fill: rgb("#8B4513"))[Bruin]: +24 VDC (Voeding)
+  - #text(fill: blue)[Blauw]: 0 VDC (Massa/Referentie)
+  - #text(fill: black)[Zwart]: Signaal / Output
+]
 
-Een sourcing sensor:
-
-In de figuur is het blokje links de PNP transistor. Als hij gesloten is gaat er een 24V door de zwarte draad. Als
-#figure(
-  image("3-draad PNP sensor.png", width: 5cm),
-  caption: [3-draad PNP sensor],
-  label: <fig:3-draad-PNP-sensor>,
+#align(
+  center,
+  grid(
+    columns: 2,
+    gutter: 1cm,
+    figure(
+      image("3-draad PNP sensor.png", width: 7cm),
+      caption: [PNP: De kraan staat open (+24V)],
+      label: <fig:3-draad-PNP-sensor-nieuw>,
+    ),
+    figure(
+      image("3-draad NPN sensor.png", width: 7cm),
+      caption: [NPN: De afvoer staat open (0V)],
+      label: <fig:3-draad-NPN-sensor-nieuw>,
+    ),
+  ),
 )
 
+=== 2-draad sensor
 
+Een twee draad kan gebruikt worden voor zowel *Sourcing* als *Sinking*. Het heeft geen connectie met de referenties voltage.
 
-*3 Draad NPN sensor*\
 #figure(
-  image("3-draad NPN sensor.png", width: 5cm),
-  caption: [3-draad NPN sensor],
-  label: <fig:3-draad-NPN-sensor>,
+  image("Twee draad sensor.png", width: 12cm),
+  caption: [Twee draad sensor],
+  label: <fig:Twee-draad-sensor>,
 )
 
 
