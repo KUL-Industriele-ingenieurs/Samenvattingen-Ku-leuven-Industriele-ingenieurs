@@ -4,10 +4,10 @@
 
 Thermische Technologieën bestaat uit twee verschillende onderdelen:
 
-+ warmteoverdracht
-+ verbranding.
++ Warmteoverdracht
++ Verbranding.
 
-We besteden de eerste 8 weken aan warmteoverdracht en de resterende weken aan verbranding.
+We besteden de eerste 8 weken aan warmteoverdracht en de resterende 5 weken aan verbranding.
 
 Voor Warmteoverdracht beginnen we met stationaire geleiding van vinnen. Voor studenten die vorig semester Warmte en stroming/Thermal-Fluid Sciences hebben gevolgd, is dit een direct vervolg op de discussie over stationaire geleiding van het einde van het semester. Ik heb herhalingsdia's toegevoegd voor warmteoverdrachtsmechanismen en thermische weerstandsnetwerken.
 
@@ -25,7 +25,3 @@ Hoe je dit vak leert is niet de slides enorm gedetailleerd te bestuderen. Zorg d
 
 
 #examenbox[Ga naar je oefenzittingen die zijn het belangrijste]
-
-
-
-

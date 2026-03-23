@@ -23,10 +23,7 @@
   image("convectiestroom.png", width: 5cm),
   caption: [convectiestroom],
   label: <fig:convectiestroom>,
-)[Convectie zorgt voor veel snellere warmteoverdracht dan conductie in dit geval omdat
-  je constant warm fluïdum aan het oppervlak brengt. Hierdoor is er een constante warmteoverdracht. De limiterende factor is hier conductie.
-
-
+)[
   Conductie is niet enorm efficient omdat je gradierend warmte verliest aan de omgeving.
   Convectie gaat over de stroming van gas of een vloeistof en die stromingen zorgen voor veel meer interacite tussen de moneculen en dus snellere warmteoverdracht $[dot(Q)]$.]
 
@@ -42,18 +39,18 @@ Convectie is dus complexer want die $h$ is niet zomaar te bepalen. We berusten o
 
 #frm(
   "Netwon law of cooling",
-  [ "Heat flux" arrow.r.double dot(q) = h (T_s - T_inf)    (W/m^2);
+  [ $"Heat flux" arrow.r.double dot(q) = h (T_s - T_infinity) space (W/m^2)$;
 
-    $dot(Q) = h A (T_s - T_inf) (W)$
+    $dot(Q) = h A (T_s - T_infinity) (W)$
   ],
   [
-    Met $h$ de warmteoverdrachtscoëfficiënt. Deze is afhankelijk van de geometrie, de vloeistof en de stroming, $A$ de oppervlakte en $T_s$ en $T_inf$ de temperatuur van het oppervlak en de omgeving.
+    Met $h$ de warmteoverdrachtscoëfficiënt. Deze is afhankelijk van de geometrie, de vloeistof en de stroming, $A$ de oppervlakte en $T_s$ en $T_infinity$ de temperatuur van het oppervlak en de omgeving.
 
   ],
 )
 
 
-*No slip conditie:* De vloeistof aan het oppervlak heeft dezelfde snelheid als het oppervlak. Dus 0.
+*No slip conditie:* De vloeistof aan het oppervlak heeft dezelfde snelheid als het oppervlak en die is nul dus, $v_"fluid" = 0$.
 
 #figure(
   image("noslip.png", width: 7cm),
@@ -67,10 +64,10 @@ De temperatuur van de vloeistof aan het oppervlak is gelijk aan de temperatuur v
 
 De boundary layer is enorm belangrijk want die zorgt voor de warmteoverdracht. Hoe dikker de boundary layer hoe minder efficient de warmteoverdracht.
 
-Deze komen door de viscositeit $[mu]$. Dit is belangrijk om het snappen over hoe fluïda zich om objecten gedragen. fluïda met hoge viscositeit hebben een dikkere boundary layer. Ze gaan meer plakken en wrijving hebben aan het oppervlak en dus minder snel stromen of niet stromen _No-slip conditie_ en dus heb je minder #keyterm[convectie].
+Deze komen door de viscositeit $[mu]$. Dit is belangrijk om het snappen over hoe fluïda zich om objecten gedragen. Fluïda met hoge viscositeit hebben een dikkere boundary layer. Ze gaan meer plakken en wrijving hebben aan het oppervlak en dus minder snel stromen of niet stromen _No-slip conditie_ en dus heb je minder #keyterm[convectie].
 
 
-*h is niet constant*\
+*H is niet constant*\
 _zie slides voor uitwerking maar niet belangrijk om te kennen_
 
 $ h = frac(1, A) integral_A h_(l o c a l) d A & h = frac(1, L) integral_0^L h_(x) d x $
@@ -113,7 +110,7 @@ Pi is bijvoorbeeld een dimensieloos getal.
 
 De nussel number is een #keyterm[dimensieloze getal] die de warmteoverdracht door convectie beschrijft. Het is de verhouding tussen de warmteoverdracht door convectie en de warmteoverdracht door conductie.
 
-$ Nu = frac(h L_c, k) $
+$ Nu = frac("convectie", "conductie") = frac(h L_c, k) => "halen we h uit" $
 
 
 $L_c$ is de karakteristieke lengte. Deze is afhankelijk van de geometrie. Bij een cilinder is dit de diameter, bij een plaat de lengte, etc.
@@ -121,7 +118,7 @@ $L_c$ is de karakteristieke lengte. Deze is afhankelijk van de geometrie. Bij ee
 
 Het getal van Nusselt vertegenwoordigt de toename van warmteoverdracht door een vloeistoflaag als gevolg van convectie ten opzichte van geleiding (conductie) over diezelfde laag.
 
-Hoe groter het getal van Nusselt, hoe effectiever de convectie. Een Nusselt-getal van $ Nu = 1 $  voor een vloeistoflaag betekent dat de warmteoverdracht uitsluitend door conductie plaatsvindt.
+Hoe groter het getal van Nusselt $=>$hoe effectiever de convectie. Een Nusselt-getal van $Nu = 1$  betekent dat we puur conductie hebben.
 
 #figure(
   image("nusselnumber heattransfer.png", width: 6cm),
@@ -153,7 +150,7 @@ Hoe groter het getal van Nusselt, hoe effectiever de convectie. Een Nusselt-geta
   caption: [viscious VS inviscid],
   label: <fig:viscious-VS-inviscid>,
 )
-- *Viscous region:* De regio waar de viscositeit van de vloeistof significant is. Dit is meestal in de buurt van het oppervlak van het object.
+- *Viscous region:* De regio waar de viscositeit van de vloeistof significant is. $=>$ rekening houden met wrijvingsverliezen. Dit is meestal in de buurt van het oppervlak van het object.
 
 - *Inviscid region:* De regio waar de viscositeit van de vloeistof verwaarloosbaar is. Dit is meestal ver van het oppervlak van het object.
 
@@ -182,7 +179,7 @@ Hoe groter het getal van Nusselt, hoe effectiever de convectie. Een Nusselt-geta
 
   Met $c$ de geluidssnelheid (ongeveer 346 m/s in lucht op kamertemperatuur op zeeniveau).
 
-  *Incompressible flow:* De dichtheid van de vloeistof blijft vrijwel constant gedurende de stroming (bv. typische vloeistofstromen). Gassen kunnen ook als incompressibel worden beschouwd als hun dichtheidsverandering $< 5%$ is. Dit is het geval bij $M a < 0.3$ (ongeveer $V < 100$ m/s in lucht).
+  *Incompressible flow:* De dichtheid van de vloeistof blijft constant gedurende de stroming (bv. typische vloeistofstromen). Gassen kunnen ook als incompressibel worden beschouwd als hun dichtheidsverandering $< 5%$ is. Dit is het geval bij $M a < 0.3$ (ongeveer $V < 100$ m/s in lucht).
 
   *Compressible flow:* De dichtheid van de vloeistof verandert tijdens de stroming (bv. snelle gasstromen in raketten en ruimtevaartuigen). De stroming wordt vaak ingedeeld via het Mach-getal:
 
@@ -190,33 +187,33 @@ Hoe groter het getal van Nusselt, hoe effectiever de convectie. Een Nusselt-geta
 
 
 
-#underline[Enorm hoge snelheden gaat lucht ook compressable worden maar we gaan niet in de regio dus we gaan aanmemen dat lucht incompressable is]
+#highlight[Enorm hoge snelheden gaat lucht ook compressable worden maar we gaan niet in de regio dus we gaan aanmemen dat lucht incompressable is]
 
 === Laminar vs Turbulent flow <sec:laminar-turbulent-flow>
-
-*Laminar flow:* De vloeistof stroomt in parallelle lagen. Er is geen menging tussen de lagen.
-
-$ arrow.b.double $
-
-*Transition flow:* Een tussentransitie laag tussen laminar en turbulent.
-
-$ arrow.b.double $
-
-*Turbulent flow:* De vloeistof stroomt in willekeurige patronen. Er is menging tussen de lagen.
-
-#figure(
+#wrap-figure(
   image("soorten vloeistoffen.png", width: 5cm),
   caption: [soorten vloeistoffen],
   label: <fig:soorten-vloeistoffen>,
-)
+)[
 
+
+  *Laminar flow:* De vloeistof stroomt in parallelle lagen. Er is geen menging tussen de lagen.
+
+  $ arrow.b.double $
+
+  *Transition flow:* Een tussentransitie laag tussen laminar en turbulent.
+
+  $ arrow.b.double $
+
+  *Turbulent flow:* De vloeistof stroomt in willekeurige patronen. Er is menging tussen de lagen.
+]
 
 === Natural (Unforced) VS Forced (Driven) Convection <sec:natural-forced-convection>
 
-*Natural (Unforced) Convection:* Natuurlijke convectie komt door het buoyency effect waarbij lucht opstijgt door warmte en daalt door koelte.
+*Natural (Unforced) Convection:* Natuurlijke convectie komt door het buoyency effect waarbij lucht #keyterm[opstijgt] door warmte en #keyterm[daalt] door koelte.
 
 *Forced (Driven) Convection:* Een vloeistof waarbij een motor of andere mechanisme de vloeistof stroomt.
-Je vloeistof wordt geforceerd om te stromen langs een oppervlak.
+Je vloeistof wordt #keyterm[geforceerd] om te stromen langs een oppervlak.
 
 === Steady flow VS Unsteady flow <sec:steady-flow-unsteady-flow>
 
@@ -232,7 +229,7 @@ Je vloeistof wordt geforceerd om te stromen langs een oppervlak.
 #examenbox("In dit vak gaan we ons bezig houden met 1D en 2D stroming niet 3D")
 
 #figure(
-  image("2D flow.png", width: 10cm),
+  image("2D flow.png", width: 12cm),
   caption: [2D flow],
   label: <fig:2D-flow>,
 )
@@ -255,14 +252,16 @@ De velocity boundry layer is de laag waar de vloeistof een veel lagere snelheid 
 Afhankelijk van de type stroom (laminar of turbulent) kan de velocity boundry layer verschillen.
 
 #figure(
-  image("boundrylayer.png", width: 10cm),
+  image("boundrylayer.png", width: 12cm),
   caption: [boundrylayer],
   label: <fig:boundrylayer>,
 )
 
-lagere stromingen gaan een grotere velocity boundry layer (viscus region) hebben dan hoge stromingen omdat de vloeistoffen niet meegetrokken worden door de stroom. Als je buiten de velocity boundry layer zit noemt dit de inviscus region.
+lagere stromingen gaan een grotere velocity boundry layer (viscus region) hebben dan hoge stromingen omdat de vloeistoffen niet meegetrokken worden door de stroom. Als je buiten de #keyterm[velocity boundry layer] zit noemt dit de #keyterm[inviscus region].
 
-Viscociteit is ook een groter factor. Grotere viscositeit $mu$ b$arrow.r$ grotere velocity boundry layer.
+Viscociteit is ook een groter factor. Grotere viscositeit $mu$ $arrow.r$ grotere velocity boundry layer.
+
+=== Effect van temperatuur op viscositeit <sec:effect-temperature-viscositeit>
 
 #wrap-figure(
   image("viscocity temperature.png", width: 5cm),
@@ -298,6 +297,11 @@ Je kunt het bezien als een resistor. Een grotere boundry layer $arrow.r$ hogere 
   caption: [Thermal boundry layer],
   label: <fig:Thermal-boundry-layer>,
 )
+Dit krijgen we als er een andere temperatuur is langs het oppervlakte dan het vloeistof.
+
+$ T_s + 0.99 (T_infinity - T_s) $
+
+met $T_s$ de temperatuur van het oppervlakte en $T_infinity$ de temperatuur van het vloeistof.
 
 == Prandtl number <sec:prandtl-number>
 
@@ -357,15 +361,18 @@ als $2300 < Re < 4000$: transition flow
 
 == Snelle herhaling
 
-- *Re*: Reynolds number $ R e = (V_(a v g) dot D/nu) = rho V L / mu $
-- *Pr*: Prandtl number $ P r = nu / alpha = (rho c_p) / K $
-- *Nu*: Nusselt number $ Nu = h L / k $
+- *Re*: Reynolds number
+$ R e = (V_(a v g) dot D/nu) = rho V L / mu $
+- *Pr*: Prandtl number
+$ P r = nu / alpha = (rho c_p) / K $
+- *Nu*: Nusselt number
+$ Nu = h L / k $
 
 Je kunt de Reynolds en Prandtl number samenvoegen tot de Nusselt number.
 
 $ Nu = f(R e, P r) = frac(h(L_c), h) $
 
-In oefeningen ga je vaak oplossen met je gegevens naar *Re* en *Pr*-$arrow.r$ je kijkt dan in je formularium wat het Nusselt number is.
+In oefeningen ga je vaak oplossen met je gegevens naar *Re* en *Pr* $=>$ je kijkt dan in je formularium wat het Nusselt number is.
 
 
 
