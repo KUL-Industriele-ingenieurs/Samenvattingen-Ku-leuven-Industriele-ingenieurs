@@ -10,36 +10,36 @@ Een starre lichaam (een vlak) heeft drie bewegingsmogelijkheden:
 #align(center)[
   #cetz.canvas({
     import cetz.draw: *
-    
+
     // De vorm van het starre lichaam
-    let body = ((0,0), (3,0.5), (4,2.5), (2,4), (0.5,3.5), (-1,2))
+    let body = ((0, 0), (3, 0.5), (4, 2.5), (2, 4), (0.5, 3.5), (-1, 2))
     catmull(..body, close: true, fill: gray.lighten(80%), stroke: 1pt + gray)
-    
+
     // Massamiddelpunt G
-    circle((2,2), radius: 0.05, fill: black, name: "G")
-    content((2,2), $G$, anchor: "north-east", padding: .1)
-    
+    circle((2, 2), radius: 0.05, fill: black, name: "G")
+    content((2, 2), $G$, anchor: "north-east", padding: .1)
+
     // Punt P
-    circle((1,1), radius: 0.05, fill: black, name: "P")
-    content((1,1), $P$, anchor: "north-east", padding: .1)
-    
+    circle((1, 1), radius: 0.05, fill: black, name: "P")
+    content((1, 1), $P$, anchor: "north-east", padding: .1)
+
     // Positievector r_i
     line("P", "G", stroke: (dash: "dashed"), mark: (end: "stealth"), name: "r_i")
     content((1.5, 1.5), $arrow(r)_i$, anchor: "south-east")
-    
+
     // Versnelling a_P
     line("P", (0, 0.5), stroke: blue, mark: (end: "stealth"))
     content((0, 0.5), $arrow(a)_P$, anchor: "east")
-    
+
     // Krachten
     line((3.5, 3), (4.5, 3.5), stroke: red, mark: (end: "stealth"))
     content((4.5, 3.5), $arrow(F)_1$, anchor: "west")
-    
+
     line((0.2, 3.2), (-0.5, 4), stroke: red, mark: (end: "stealth"))
     content((-0.5, 4), $arrow(F)_2$, anchor: "south")
-    
+
     // Rotatie
-    arc((2,2), start: 45deg, stop: 135deg, radius: 1, mark: (end: "stealth"), name: "rot")
+    arc((2, 2), start: 45deg, stop: 135deg, radius: 1, mark: (end: "stealth"), name: "rot")
     content("rot.mid", $alpha, omega$, anchor: "south", padding: .2)
   })
 ]
@@ -90,43 +90,51 @@ Het principe van de bewegingsvergelijkingen berust op het feit dat de som van al
 #align(center)[
   #cetz.canvas({
     import cetz.draw: *
-    
-    let body_pts = ((0,0), (2,0.5), (2.5,2), (1,2.5), (-0.5,1.5))
-    
+
+    let body_pts = ((0, 0), (2, 0.5), (2.5, 2), (1, 2.5), (-0.5, 1.5))
+
     // Links: Uitwendige krachten
     group({
       translate((-2, 0))
       catmull(..body_pts, close: true, fill: gray.lighten(90%), stroke: 0.5pt + gray)
       circle((1, 1.25), radius: 0.05, fill: black, name: "G1")
       content("G1", $G$, anchor: "north", padding: 0.1)
-      
+
       line((2, 1.5), (3, 1.8), stroke: red, mark: (end: "stealth"))
       content((3, 1.8), $arrow(F)_1$, anchor: "west")
-      
+
       line((0, 2.2), (-0.5, 3), stroke: red, mark: (end: "stealth"))
       content((-0.5, 3), $arrow(F)_2$, anchor: "south")
-      
+
       content((1, -0.5), [ *Uitwendige Krachten* ])
     })
-    
+
     // Equivalent symbool
     content((1.5, 1.25), text(size: 20pt)[$approx$])
-    
+
     // Rechts: Kinetisch equivalent (Inertie)
     group({
       translate((4, 0))
       catmull(..body_pts, close: true, fill: blue.lighten(95%), stroke: 0.5pt + blue)
       circle((1, 1.25), radius: 0.05, fill: black, name: "G2")
       content("G2", $G$, anchor: "north", padding: 0.1)
-      
+
       // m*a_G
       line("G2", (2.5, 2), stroke: (paint: blue, thickness: 1.5pt), mark: (end: "stealth"), name: "ma")
       content("ma.end", $m arrow(a)_G$, anchor: "west")
-      
+
       // I*alpha
-      arc((1, 1.25), start: 45deg, stop: 315deg, radius: 0.6, stroke: (paint: blue, thickness: 1.5pt), mark: (end: "stealth"), name: "Ialpha")
+      arc(
+        (1, 1.25),
+        start: 45deg,
+        stop: 315deg,
+        radius: 0.6,
+        stroke: (paint: blue, thickness: 1.5pt),
+        mark: (end: "stealth"),
+        name: "Ialpha",
+      )
       content("Ialpha.mid", $I_G alpha$, anchor: "west", padding: 0.2)
-      
+
       content((1, -0.5), [ *Kinetisch Equivalent* ])
     })
   })
@@ -138,6 +146,27 @@ Elk systeem van krachten op een star lichaam kan wiskundig gereduceerd worden na
 2. De *rotatie* wordt enkel bepaald door de som van de momenten rond $G$ ($sum arrow(M)_G = I_G arrow(alpha)$).
 
 Zonder deze keuze van $G$ zouden de vergelijkingen "gekoppeld" zijn, wat betekent dat een translatie-versnelling een extra moment zou veroorzaken in de rotatievergelijking (zoals we zagen in de term $(sum m_i arrow(r)_i) crossproduct arrow(a)_P$ die enkel nul is als $P=G$).
+
+== Algemene Momentenvergelijking (Punt $P$)
+
+In veel oefeningen is het makkelijker om momenten te nemen rond een punt $P$ dat geen massamiddelpunt is (bijvoorbeeld een steunpunt of een rollend contact). Het principe blijft hetzelfde: de uitwendige momenten zijn gelijk aan de kinetische momenten:
+
+$ sum vec(M)_P = sum (cal(M)_k)_P $
+
+Waarbij $sum (cal(M)_k)_P$ de som is van de momenten van de kinetische vectoren ($m vec(a)_G$ en $I_G alpha$) ten opzichte van punt $P$. Voor een star lichaam in het vlak wordt dit:
+
+$ sum M_P = I_G alpha + vec(r)_(G\/P) times m vec(a)_G $
+
+In scalaire vorm (zoals vaak gebruikt in de kinetische schema's):
+$ sum M_P = I_G alpha + m (a_G)_x (y_G - y_P) + m (a_G)_y (x_G - x_P) $
+*(Let op de tekens van de momentarmen afhankelijk van de rotatierichting!)*
+
+#waarschuwing(title: "Kinetisch Schema")[
+  Bij het oplossen van complexe vraagstukken is het aan te raden om zowel een **Vrijlichaamsschema (VLS)** als een **Kinetisch Schema (KS)** te tekenen. 
+  - In het **VLS** teken je alle uitwendige krachten ($vec(F)$) en momenten ($M$).
+  - In het **KS** teken je de kinetische resultanten $m vec(a)_G$ en het traagheidsmoment $I_G alpha$.
+  De vergelijking $sum M_P = sum (cal(M)_k)_P$ stelt simpelweg dat het moment van alles in je VLS gelijk moet zijn aan het moment van alles in je KS.
+]
 
 #frm(
   "Rotatie",
