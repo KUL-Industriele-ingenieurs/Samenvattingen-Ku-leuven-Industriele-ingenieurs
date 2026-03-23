@@ -34,5 +34,6 @@
 #include "6.Cilindrische coördinaten.typ"
 #include "7.Relatieve bewegingsanalyse met roterende assen.typ"
 #include "8.Traagheidsmoment.typ"
+#include "9.Bewegingsvergelijking voor de vlakke beweging.typ"
 
 
