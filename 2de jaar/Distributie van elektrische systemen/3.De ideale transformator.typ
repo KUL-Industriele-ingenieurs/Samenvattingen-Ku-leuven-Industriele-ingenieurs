@@ -21,7 +21,11 @@ In dit hoofdstuk bestuderen we alle effecten van transformatoren. We nemen geen 
 
 Volgens de wet van Faraday ($v = N dif phi / dif t$) kunnen we de flux vinden door de spanning te integreren:
 
-#frm("Fluxberekening", $phi = 1/(N_1) integral v_1 d t$, [waarbij $phi$ de magnetische flux is [Wb], $v_1$ de primaire spanning [V] en $N_1$ het aantal windingen [-].])
+#frm(
+  "Fluxberekening",
+  $phi = 1/(N_1) integral v_1 d t$,
+  [waarbij $phi$ de magnetische flux is [Wb], $v_1$ de primaire spanning [V] en $N_1$ het aantal windingen [-].],
+)
 
 $ phi = V_1/(omega N_1) sin(omega t) = V_2/(omega N_2) sin(omega t) $
 
@@ -100,8 +104,8 @@ We hebben een ideale transformator, dus $R_c = 0 (mu -> infinity)$ dus $arrow.r.
   caption: [loaded-transformer],
   label: <fig:loaded-transformer>,
 )[
-  Omdat er een belasting is, kan er nu een secundaire stroom $i_2$ lopen. 
-  
+  Omdat er een belasting is, kan er nu een secundaire stroom $i_2$ lopen.
+
   Doordat de kern ideaal is ($R_c = 0$), zegt de wet van Hopkinson dat $N_1 i_1 - N_2 i_2 = 0$. Hieruit volgt direct de stroomverhouding:
 
   $ i_2 = N_1/N_2 i_1 $
@@ -137,7 +141,7 @@ $ e^(j theta) = underbrace(cos(theta), "Reëel") + j underbrace(sin(theta), "Ima
 ]
 
 
-#voorbeeld(title:"Voltage en flux")[
+#voorbeeld(title: "Voltage en flux")[
 
   $v(t) = V cos(omega t)$\
   $phi(t) = V/(omega N) sin(omega t)$
@@ -145,12 +149,12 @@ $ e^(j theta) = underbrace(cos(theta), "Reëel") + j underbrace(sin(theta), "Ima
   Als we dit plotten krijgen we dit:
 
   #figure(
-  image("plot v phi.png", width: 5cm),
-  caption: [plot v phi],
-  label: <fig:plot-v-phi>,
-)
+    image("plot v phi.png", width: 5cm),
+    caption: [plot v phi],
+    label: <fig:plot-v-phi>,
+  )
 
-Je ziet dat phi 90 graden achterloopt *Lagging* op v.
+  Je ziet dat phi 90 graden achterloopt *Lagging* op v.
 
 ]
 
@@ -168,7 +172,7 @@ We gaan KVL toepassen op een RL circuit:
 
 $ v(t) = R i(t) + L (d i(t))/(d t) $
 
-met $ v(t) = V cos(omega t)$ en $i(t) = I cos(omega t + theta) $.
+met $v(t) = V cos(omega t)$ en $i(t) = I cos(omega t + theta)$.
 
 De spanning over de spoel wordt geïnduceerd door de verandering van de stroom.
 Om dit met phasoren te berekenen, transformeren we de differentiaalvergelijking naar het complexe domein (rekening houdend met amplitudes en fasehoeken):
@@ -197,7 +201,7 @@ $ I = V/Z $
 
 === RLC <sec:RLC>
 
-Combinatie van RL en RC circuit. 
+Combinatie van RL en RC circuit.
 
 $ v(t) = R i(t) + L (d i(t))/(d t) + 1/C integral i(t) d t $
 $ V = R I + underbrace(j omega L, "imaginair") I + underbrace(-j/(omega C), "imaginair") I $
@@ -213,13 +217,13 @@ Onze power heeft ook een imaginair deel $S$. Deze heeft dus ook een fasor.
   caption: [phasorPower],
   label: <fig:phasorPower>,
 )[
-$ S = (V I) e^(j theta) $
-$ S = underbrace(V I cos(theta), "P Reëel") + j underbrace(V I sin(theta), "jQ Imaginair") $
+  $ S = (V I) e^(j theta) $
+  $ S = underbrace(V I cos(theta), "P Reëel") + j underbrace(V I sin(theta), "jQ Imaginair") $
 
-$ P = v(t) i(t) $
-$ P = V I cos(theta) $
+  $ P = v(t) i(t) $
+  $ P = V I cos(theta) $
 
-$ Q = V I sin(theta) $
+  $ Q = V I sin(theta) $
 ]
 
 
@@ -227,13 +231,12 @@ $ Q = V I sin(theta) $
 
 We weten dat een transformator de spanning verhoogt of verlaagt afhankelijk van de verhouding van het aantal windingen. Hoe heeft dit impact op het vermogen?
 
-
 #figure(
   image("Model-phasors.png", width: 5cm),
   caption: [Model-phasors],
   label: <fig:Model-phasors>,
 )
-$ frac(V_1,V_2) = frac(N_1, N_2) $
+$ frac(V_1, V_2) = frac(N_1, N_2) $
 
 $ frac(I_1, I_2) = frac(N_2, N_1) $
 
@@ -251,19 +254,21 @@ We zoeken wat de impedantie '$Z'$ is. Dus de impedantie equivalent als de impeda
 
 We weten van #keyterm[Wet van Ohm] dat $Z = V/I$. We passen dit toe om onze formules van de transformator:
 
-$ Z' &= V_1/I_1 \
-   &= ((N_1/N_2) V_2) / ((N_2/N_1) I_2) \
-   &= (N_1/N_2)^2 V_2/I_2 \
-   Z &= V_2/I_2 \
-   &arrow.b.double \
-   Z' &= (N_1/N_2)^2 Z $
+$
+  Z' & = V_1/I_1 \
+     & = ((N_1/N_2) V_2) / ((N_2/N_1) I_2) \
+     & = (N_1/N_2)^2 V_2/I_2 \
+   Z & = V_2/I_2 \
+     & arrow.b.double \
+  Z' & = (N_1/N_2)^2 Z
+$
 
 Het omgekeerde geldt ook:
 $ Z = (N_2/N_1)^2 Z' $
 
 
 === Samenvatting alle formules
- 
+
 #figure(
   image("Samenvatting ideale transformatoren.png", width: 12cm),
   caption: [Samenvatting ideale transformatoren],
