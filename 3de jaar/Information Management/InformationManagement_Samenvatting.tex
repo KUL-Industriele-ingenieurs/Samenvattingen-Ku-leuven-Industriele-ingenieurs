@@ -205,13 +205,197 @@ Type computers die door ingenieurs gebruikt kunnen worden zijn de volgende :
   \caption{Soorten Computers}
   \label{fig:typecomputers.png}
  \end{figure}
+\newpage
 \subsubsection{Embedded computers}
 Voorbeelden hiervan zijn dus : microcontrollers, motor controllers, automotive ECU's en Medische apparaten (want deze hebben lage latency).
 \newline
 In dit type computer kan je wel typisch niet multitasken ze hebben ook een gelimiteerd geheugen en opslag, ze hebben sterke constraints zoals 'real time'.
 \begin{conceptbox}[Wat bedoelen ze met 'Real Time']
-    Tijdens de les verduidelijkt de professor een veelvoorkomende misvatting hierover: 'real time' betekent niet simpelweg dat de computer heel erg snel is. Wat het wél betekent, is dat het systeem de absolute \textbf{garantie} kan geven dat een berekening of taak wordt afgerond \textbf{binnen een strikt gedefinieerd tijdvenster (time window)}. Het draait dus allemaal om voorspelbaarheid (determinisme).
+    Tijdens de les verduidelijkt de professor een veelvoorkomende misvatting hierover: 'real time' betekent niet simpelweg dat de computer heel erg snel is. Wat het wél betekent, is dat het systeem de absolute \textbf{garantie} kan geven dat een berekening of taak wordt afgerond \textbf{binnen een strikt gedefinieerd tijdvenster (time window)}. Het draait dus allemaal om voorspelbaarheid (determinisme). Dit wordt zometeen nog wat verduidelijkt.
 \end{conceptbox}
 \subsubsection{Industrial computers}
-
+Voorbeelden hiervan zijn : SCADA systemen, PLC's, DCS (Distributed Control Systems), ...
+\newline
+Typische karakteristieken zijn : Gemaakt voor multi-tasking, ze hebben interfaces voor industriële communicatieprotocollen, ze zijn \textbf{robuust en betrouwbaar}, ze hebben een lange levensduur en worden vaak gebruikt in kritieke toepassingen. Ze zijn eigelijk een balans van voorspelbaarheid en flexibiliteit.
+\newline
+Typisch gewoon 1 programma, tis vooral voor in automatisaties, nie voor in robots. Niet voor te surfen op het internet ofzo.
+\subsubsection{Consumer computers}
+Voorbeelden hiervan zijn : Laptops, desktops, smartphones, tablets, ...
+\newline
+Gemaakt vooral voor multitasking, en zijn er ook voor verschillende benodingen ('needs'), grote geheugen hierarchie, grote computationele kracht, en zijn ontworpen voor een breed scala aan toepassingen. Eigelijk geoptimaliseerd voor flexibiliteit en gebruiksgemak, niet voor voorspelbaarheid.
+\newpage
+\subsection{\texorpdfstring{Real-time systemen (\textcolor{red}{\textbf{Dit is een belangrijk concept zegt de proff!}})}{Real-time systemen (Dit is een belangrijk concept zegt de proff!)}}
+"Real-time execution" (realtime uitvoering) betekent dat een taak of berekening wordt voltooid binnen een strikt gedefinieerd tijdvenster, en \textbf{dat dit gegarandeerd is}. Het draait dus allemaal om \textbf{voorspelbaarheid (determinisme)}. Het heeft dus een strikte "time window" waarbinnen een taak moet worden voltooid, en het systeem moet kunnen garanderen dat deze taak binnen die tijd wordt afgerond, ongeacht de omstandigheden. Dit betekent dus niet dat een systeem 'snel' is, maar dat het betrouwbaar en voorspelbaar is in het leveren van resultaten binnen de vereiste tijdslimieten.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{realtime.png}
+  \caption{Real time execution (realtime uitvoering)}
+  \label{fig:realtime.png}
+ \end{figure}
+Concepten die aan bod komen zijn onder andere :
+\begin{itemize}
+    \item \textbf{Jitter:} Elke kleine afwijking of vertraging in deze strikte timing wordt "jitter" genoemd. De professor legt uit dat jitter fungeert als ruis; het kan controllers onstabiel maken waardoor het systeem faalt (of zoals hij het noemt: "blow up")
+    \item \textbf{Real-time constraints (of de drie niveaus van real-time systemen):} Er zijn verschillende niveaus van real-time systemen, afhankelijk van de strengheid van de timingvereisten:
+    \begin {itemize}
+        \item \textbf{Hard real-time:} Dit is de meest strikte vorm. Als de deadline hier wordt gemist, zijn de gevolgen catastrofaal. De professor geeft het voorbeeld van een medische robot: als een taak 1,0001 milliseconde duurt in plaats van exact 1 milliseconde, leidt dit tot fatale fouten ("somebody will die"). Op de foto daalt de waarde/bruikbaarheid na de deadline zelfs tot ver onder nul (negatief)
+        \item \textbf{Firm real-time:} Als de deadline wordt gemist, is de uitkomst of berekening direct compleet waardeloos (de waarde valt direct naar nul). Het is echter niet direct zo levensgevaarlijk als bij hard real-time
+        \item \textbf{Soft real-time:} Bij deze systemen is een vertraging vervelend, maar je kunt er wel mee leven. Na het verstrijken van de deadline neemt de bruikbaarheid van het resultaat geleidelijk af in plaats van direct. De professor vergelijkt dit met een pakketlevering (bijv. Amazon) die een dag langer duurt: de waarde daalt, maar er vallen geen slachtoffers
+    \end{itemize}
+\end{itemize}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{grafiekenrealtimeniveaus.png}
+  \caption{Visuele weergeving van de drie niveaus van real-time systemen: hard, firm en soft real-time}
+  \label{fig:grafiekenrealtimeniveaus.png}
+ \end{figure}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{nogeenvisueleweergaverealtimeniveaus.png}
+  \caption{Nog een visuele weergave van de drie niveaus van real-time systemen}
+  \label{fig:nogeenvisueleweergaverealtimeniveaus.png}
+ \end{figure}
+\subsection{Voorbeeld uit de praktijk: 'Industrial system (robotics) example'}
+De proff illustreert hier hoe een typische robotarchitectuur is opgebouwd uit drie lagen. De kernboodschap is dat elke laag totaal andere eisen stelt aan prestaties, flexibiliteit en betrouwbaarheid, waardoor je voor elke laag een ander type computer kiest.
+Hij bespreekt de drie lagen als volgt:
+\begin{itemize}
+    \item \textbf{Low level (Actuator control):} Niveau het dichts bij de fysieke hardware, hier lees je sensoren uit en stuur je actuatoren aan. Hiervoor worden embedded controllers of microcontrollers voor gebruikt. Je hebt hier geen flexibiliteit of enorme rekenkracht nodig, heeft absolute voorspelbaarheid nodig dus hard real-time.
+    \item \textbf{Middle level (Kinematics/Dynamics):} Hier bevinden zich de logica voor coördinatie, de veiligheidssystemen en de zwaardere wiskundige berekeningen zoals robotkinematica en -dynamica. Meestal gedraaid op PLC's of industriële computers. Iets flexibiler hier, real time berekening is belangrijk voor die dynamics maar als het iets later is, "vallen er geen doden".
+    \item \textbf{High level (Task/Path planning):}  Dit is de laag voor supervisie, padplanning, SCADA-systemen en de interface met de mens (bijvoorbeeld via een iPad, werkstation of dashboard om de machine te starten/stoppen of parameters aan te passen), gewone computers of consumer computers worden hier gebruikt. Timing boeit hier echt niet veel als je op start duwt, proff zegt dat je dit zelfs op een broodtooster zou kunnen starten, zolang je zorgt dat die andere 2 lagen wel correct werken.
+\end{itemize}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\textwidth]{voorbeeldpraktijk.png}
+  \caption{Levels van dit voorbeeld toegepast}
+  \label{fig:voorbeeldpraktijk.png}
+ \end{figure}
+\subsection{Wat veranderd er tussen computers?}
+De vijf belangrijkste variabelen die het verschil bepalen tussen de diverse soorten computers (zoals embedded, industriële en consumenten-pc's) zijn:
+\begin{itemize}
+    \item \textbf{Processing power (rekenkracht)}
+    \item \textbf{Memory size (grootte van het werkgeheugen)}
+    \item \textbf{Storage capacity (opslagcapaciteit)}
+    \item \textbf{Operating system complexity (complexiteit van het besturingssysteem)}
+    \item \textbf{Level of multitasking (mate van multitasking)}
+\end{itemize}
+Computers die dichter bij de menselijke interactie staan (zoals de interface-laag of consumentencomputers), bezitten over het algemeen veel meer rekenkracht, geheugen en opslagcapaciteit omdat ze meerdere programma's tegelijk moeten draaien, vereisen ze ook een veel complexer besturingssysteem met een hoge mate van multitasking.
+Daartegenover staan de computers op het laagste niveau (zoals embedded microcontrollers), die vaak maar één specifieke taak ("one job") uitvoeren en daardoor veel minder rekenkracht en absoluut geen ingewikkelde multitasking nodig hebben.
+\newpage
+\subsection{Task execution models (Taakuitvoeringsmodellen)}
+Computermodellen verschillen in de manier hoe ze taken uitvoeren, de keuze hiervan heeft effect op timing garantie (real-time), flexibiliteit en complexiteit van het systeem. De 2 dominante modellen zijn:
+\subsubsection{Single task execution (One main control loop)}
+Dit model is ontworpen om exact één taak of controlecyclus uit te voeren.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{singletaskexecution.png}
+  \caption{Controleloop van een single task execution model}
+  \label{fig:singletaskexecution.png}
+ \end{figure}
+Het volgt continu een vaste structuur, Read inputs → Computer → Write outputs, en herhaalt deze cyclus steeds opnieuw. Dit model is typisch voor embedded systemen waar voorspelbaarheid en real-time prestaties cruciaal zijn. Het heeft minimale overhead. Het is eenvoudig, maar het kan niet meerdere taken tegelijk uitvoeren. Van zodra je zo een systeem aanzet raak je de code in principe niet meer aan. Typisch in microcontrollers, PLC's, hard real-time systemen, ...
+\subsubsection{Scheduled multi-task execution (Multiple tasks share processor time)}
+Dit is het model dat we kennen van onze eigen laptops en smartphones, waarbij meerdere programma's tegelijk lijken te draaien.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{multitaskexecution.png}
+  \caption{Multi task execution model waarbij meerdere taken de processortijd delen}
+  \label{fig:multitaskexecution.png}
+ \end{figure}
+De professor benadrukt dat, op een enkele processorkern, alle taken weliswaar tegelijk \textbf{lijken} te draaien, maar dat de processor er op elk willekeurig moment altijd maar één uitvoert,
+een programma genaamd \textbf{de scheduler} verdeelt de taken in kleine stukjes en wisselt razendsnel (bijvoorbeeld elke 2 milliseconden) tussen de verschillende programma's
+. Omdat dit zo snel gaat, merkt de gebruiker hier niets van, tenzij je heel veel programma's tegelijk opent; dan wordt het systeem merkbaar trager. Zo een 'taak' of 'parallele tak' noemen we een \textbf{thread}, en het is belangrijk om te begrijpen dat deze threads niet echt parallel draaien op een enkele kern, maar dat de scheduler ze snel afwisselt om de illusie van gelijktijdigheid te creëren. Dit model is typisch voor consumentencomputers en soft real-time systemen, waar flexibiliteit en gebruiksgemak belangrijker zijn dan strikte timing garanties. Deze thread is NIET te vergissen met de threads van je processor, dit is een softwarematige constructie, terwijl de threads van je processor fysieke cores zijn. Allee de threads in je core is eigelijk ook een trucje van je cpu om meerdere taken tegelijk te kunnen uitvoeren, maar dat is een ander verhaal.
+\subsection{Operating system (Besturingssysteem)}
+In onze cursus definieren we een besturingssysteem vooral als een 'resource manager' (een beheerder van systeembronnen).
+\newline
+Specifiek beheert het de volgende 3 hoofdzaken:
+\begin{itemize}
+    \item \textbf{CPU-time:} Het regelt de uitvoering van taken en beslist hoeveel rekenkracht en processortijd een specifiek programma krijgt toegewezen.
+    \item \textbf{Memory:} Het beheert de toegang tot het werkgeheugen (RAM).
+    \item \textbf{Input and output devices:} Het beheert en controleert de toegang tot externe apparaten, zoals het aansluiten van een muis of camera
+\end{itemize}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{OS.png}
+  \caption{Process management}
+  \label{fig:OS.png}
+ \end{figure}
+Een OS vormt een abstractielaag tussen de applicaties en de fysieke hardware, dit betekent dat het de complexiteit van de hardware verbergt en een gestandaardiseerde interface biedt voor softwareontwikkeling. Het zorgt ervoor dat verschillende programma's efficiënt en veilig kunnen samenwerken op dezelfde machine, zonder dat ze elkaar in de weg zitten of toegang hebben tot elkaars data zonder toestemming.
+\begin{conceptbox}[Uitleg van proff hierover]
+ Tijdens de les voegt de professor hier nog aan toe dat het OS hiermee eigenlijk als een "tolk" fungeert
+. Zonder deze abstractielaag zou je als programmeur constant zelf direct met de hardware moeten communiceren, wat enorm complex en chaotisch ('a mess') zou zijn
+. Het besturingssysteem neemt dit beheer voor je uit handen (zoals het regelen van drivers) en orchestreert alles zodanig dat, als er één programma faalt, niet het hele systeem direct crasht
+\end{conceptbox}
+\subsubsection{Core Responsibilities of an OS (Kernverantwoordelijkheden van een besturingssysteem)}
+Hoe neemt nu de OS de rol van 'manager' op zich? De kernverantwoordelijkheden van een besturingssysteem omvatten:
+\begin{itemize}
+    \item \textbf{Hardwaretoegang:} Bepaalt hoe software toegang krijgt tot hardwarebronnen, zoals het regelen van drivers voor randapparatuur (zoals printers, camera's, USB-apparaten). 
+    \item \textbf{Geheugenbeheer:} Bepaalt wat er toegang krijgt tot het werkgeheugen.
+    \item \textbf{Task execution:} Omdat het OS beheert welk programma wanneer mag draaien, fungeert het als een dirigent die alles orkestreert.
+\end{itemize}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.3\textwidth]{OSS.png}
+  \caption{OS}
+  \label{fig:OSS.png}
+ \end{figure}
+Zonder deze controle zou multitasking onmogelijk zijn, en zou het systeem onstabiel worden als meerdere programma's tegelijk proberen te draaien. Het besturingssysteem zorgt ervoor dat elk programma de benodigde bronnen krijgt zonder dat ze elkaar in de weg zitten, en het beheert ook de communicatie tussen software en hardware, waardoor een stabiele en efficiënte werking van de computer mogelijk is.
+\begin{theorie}[Kernel]
+De kernel is het centrale onderdeel van een besturingssysteem dat direct communiceert met de hardware. Het is verantwoordelijk voor het beheren van systeembronnen, zoals CPU-tijd, geheugen en I/O-apparaten. De kernel fungeert als een brug tussen de applicatiesoftware en de fysieke hardware, en zorgt ervoor dat programma's efficiënt en veilig kunnen draaien zonder direct toegang te hebben tot de hardware.
+\end{theorie}
+\newpage
+Applicaties draaien tegenwoording niet meer op fysieke hardware, tussen de software en de hardware bevinden zich lagen, elke laag die je aan een systeem toevoegt creërt een bepaalde abstractie, dit maakt het makkelijker maar zorgt voor meer overhead (vertraging). De professor benadrukt dat hoe dichter je bij de fysieke hardware programmeert, hoe sneller je programma zal draaien (met een lage "latency" en weinig overhead)
+. Echter, door de abstractielaag van een besturingssysteem te gebruiken, krijg je daar essentiële voordelen voor terug: je systeem krijgt bescherming en isolatie, hardware kan veilig gedeeld worden, en je kunt meerdere programma's tegelijkertijd draaien.
+\newline
+Een OS laat toe om meerdere programma's te draaien, hardware te delen en is over het algemeen veiliger. Zonder een OS kan je maar 1 programma runnen en moet je direct je hardware besturen.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\textwidth]{tradeoff.png}
+  \caption{Onderscheiding user mode en kernel mode}
+  \label{fig:tradeoff.png}
+ \end{figure}
+Er is dus een bepaalde \textbf{trade-off} tussen snelheid en veiligheid/functionaliteit. Door in 'user mode' te programmeren, profiteer je van de beveiliging en het gemak van het besturingssysteem, maar je accepteert ook de extra overhead die dit met zich meebrengt. Aan de andere kant, door in 'kernel mode' te programmeren, kun je maximale prestaties behalen, maar dit vereist diepgaande kennis van de hardware en brengt aanzienlijke risico's met zich mee, zoals het potentieel om het hele systeem te destabiliseren als er een fout wordt gemaakt. Het is belangrijk om een goede balans te vinden.
+\newline
+Je kan niet zowel determinisme, flexibiliteit en hoge prestaties maximaliseren. Embedded systems focussen vooral op determinisme, consumer systems op flexibiliteit en performance, en industrial systems proberen een balans te vinden tussen deze drie aspecten.
+\subsection{Programmeertalen}
+\subsubsection{Native Compiled Execution (Native gecompileerde uitvoering)}
+Dit is moeilijk om te leren, je hebt je programma dat direct gecompileerd wordt naar \textbf{machinecode}, het is niet \textbf{'generic'} (je kan het niet zomaar op een andere machine draaien, het compileerd direct voor de processor die je gebruikt), daarom zijn er verschillende versies geoptimaliseerd voor specifieke processoren. Het is zeer snel, maar ingewikkeld, heeft de beste prestaties en deterministische timing.
+\newline
+Het is een beetje gevaarlijk, want je hebt directe toegang tot de hardware, als je een fout maakt kan je het hele systeem laten crashen. \textbf{Fragmentatie} van geheugen is ook een probleem, omdat je zelf moet beheren hoe geheugen wordt toegewezen en vrijgegeven, dit kan leiden tot problemen zoals geheugenlekken of fragmentatie.
+\newline
+Voorbeelden zijn: Assembly, C, C++, \dots
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\textwidth]{NCE.png}
+  \caption{Native Compiled Execution (Native gecompileerde uitvoering)}
+  \label{fig:NCE.png}
+ \end{figure}
+\subsubsection{Virtual Machine Execution (Virtuele machine uitvoering)}
+Om de problemen van hierboven te voorkomen werden virtuele machines ontwikkeld, zoals de Java Virtual Machine (JVM)
+\newline
+Hier vertaald de compiler de broncode niet direct naar machinecode maar naar \textbf{'bytecode'}, een soort van tussenlaag die niet direct door de hardware wordt uitgevoerd. Deze bytecode wordt vervolgens geïnterpreteerd of gecompileerd door een virtuele machine (zoals de JVM) die op de hostmachine draait. Dit maakt het mogelijk om dezelfde bytecode op verschillende platforms uit te voeren zonder dat je deze opnieuw hoeft te compileren, wat zorgt voor \textbf{platformonafhankelijkheid}. Het is iets langzamer dan native uitvoering vanwege de extra laag van interpretatie, maar het biedt veel meer flexibiliteit en veiligheid.Je hoeft een programma maar één keer te schrijven. Zolang er een VM geïnstalleerd is op het apparaat (of dat nu Windows, Mac, Linux of zelfs een broodrooster is), kan het programma draaien. Dit biedt een 'gigantische flexibiliteit'. De Virtual Machine regelt automatisch het geheugen voor je via een garbage collector. Hierdoor hoef je dit als programmeur niet meer handmatig te doen en voorkom je geheugenlekken (memory safety).
+\newline
+ Omdat de Virtual Machine er als extra abstractielaag tussen zit, gaat dit ten koste van overhead, executiesnelheid en voorspelbare timing (latency)
+. Je levert dus pure rekenprestaties in ruil voor veel meer programmeergemak en veiligheid.
+\newline
+Voorbeelden zijn: Java, C\#, \dots
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{VMC.png}
+  \caption{Virtual Machine Execution (Virtuele machine uitvoering)}
+  \label{fig:VMC.png}
+ \end{figure}
+\subsubsection{Interpreted or Scripted Execution (Geïnterpreteerde of gescripte uitvoering)}
+In plaats van de broncode vooraf te vertalen naar machinecode (zoals bij C) of naar een tussentaal (zoals bij een Virtual Machine), worden de instructies direct tijdens het draaien van het programma ('at runtime') stap voor stap door een interpreter vertaald en uitgevoerd.
+Deze talen bieden een zeer hoge mate van \textbf{abstractie}
+. Het maakt het programmeren aanzienlijk makkelijker en zorgt voor een hele \textbf{snelle ontwikkelingstijd (rapid development)}, omdat je de code simpelweg schrijft en direct kunt draaien zonder complexe tussenstappen.
+Bij zware rekentaken (compute-intensive tasks) kan dit model soms wel honderden keren trager zijn dan native gecompileerde talen. De professor geeft als voorbeeld dat een bepaalde berekening in Python 243 milliseconden duurt, terwijl C of Go (die "stupidly fast" zijn) er maar 6 milliseconden over doen.
+\begin{conceptbox}[Waarom gebruiken we deze trage talen dan?]
+    Ondanks de aanzienlijke prestatiekosten, worden geïnterpreteerde of gescripte talen zoals Python veel gebruikt vanwege hun enorme voordelen op het gebied van ontwikkelsnelheid, flexibiliteit en de uitgebreide bibliotheken die beschikbaar zijn. Ze zijn ideaal voor snelle prototyping, data-analyse, machine learning en vele andere toepassingen waar ontwikkeltijd en gemak belangrijker zijn dan maximale prestaties. Onze chips tegenwoordig zijn toch ook super sterk dus maakt dit niet veel uit.Bovendien is er een slimme oplossing voor zware taken (zoals Machine Learning en AI): de complexe wiskunde draait op de achtergrond in het razendsnelle C, en de programmeur gebruikt Python enkel als een makkelijke 'interface' om die C-code aan te sturen
+.
+\end{conceptbox}
+Voorbeelden zijn: Python, JavaScript, Ruby, PHP, \dots
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\textwidth]{ISC.png}
+  \caption{Interpreted or Scripted Execution (Geïnterpreteerde of gescripte uitvoering)}
+  \label{fig:ISC.png}
+ \end{figure}
 \end{document}
