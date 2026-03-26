@@ -71,7 +71,7 @@ Natuurlijk kunnen deze vereisten variëren afhankelijk van de betrokken industri
 == Basis diagram geautomatiseerd systeem.
 
 #figure(
-  image("basisdiagram.png", width: 5cm),
+  image("basisdiagram.png", width: 12cm),
   caption: [basisdiagram],
   label: <fig:basisdiagram>,
 )
@@ -96,11 +96,13 @@ Natuurlijk kunnen deze vereisten variëren afhankelijk van de betrokken industri
   - TemperatureController.
 ]
 
-#figure(
-  image("automatisering pyramide.png", width: 5cm),
+#wrap-figure(
+  image("automatisering pyramide.png", width: 6cm),
   caption: [automatisering pyramide],
   label: <fig:automatiseringpyramide>,
-)
+)[
+  PLC zijn de bijna de grond van heel het automatisering. Zij zijn de dingen die connecteren aan de sensor en de basic logic doen. Alles dat meerdere stappen moet volgen, langduration moet werken en makkelijk vervangbaar moet zijn, wordt meestal gedaan met een PLC.
+]
 
 == Een goed controle systeem kiezen
 
@@ -112,13 +114,13 @@ Natuurlijk kunnen deze vereisten variëren afhankelijk van de betrokken industri
     caption: [pneumatische controller],
     label: <fig:pneumatischecontroller>,
   )
-+ *Relays*
++ *Relays:* Heeft de simpleste logica nog simpler dan een PLC. Alleen bruikbaar voor simpele logica.
   #figure(
     image("relats.png", width: 5cm),
     caption: [relays],
     label: <fig:relays>,
   )
-+ *PLC:* Programmable Logic Controller.
++ *PLC:* Programmable Logic Controller. Geeft meer controle in productiesystemen. Je kunt het bezien als een simpele computer die je gaat programmeren gelijkaardig aan een arduino of microcontroller. Maar deze is toegepast in automatisering voor zijn betrouwbaarheid.
 + *Mechanische automatisering/CAM operated controls*: Enorm betrouwbaar, de beste oplossingen voor simpele producten _bv. bouten, moeren, ..._
   #figure(
     image("mechanicaltoolrelays.png", width: 5cm),
@@ -139,7 +141,7 @@ Natuurlijk kunnen deze vereisten variëren afhankelijk van de betrokken industri
     label: <fig:scada2>,
   )
 + *DCS*: Distributed Control System, Inplaats dat alles centraal wordt gestuurd zorgt DCS dat systemen niet afhankelijk zijn van 1 centrale controller. Dus als er iets misgaat met 1 controller valt de rest van het systeem niet stil. Dit wordt veel gebruikt in de chemische industrie.
-+ *Mechatronics*: Een vage term die meerdere dingen kan betekenen, PID, PLC, Cyber-Physical Systems, ...
++ *Mechatronics*: Een vage term die meerdere dingen kan betekenen, PID, PLC, Cyber-Physical Systems, ... Het gaat algemeen over dingen die door elektronica worden gecontrolleerd worden #keyterm[Mechatronics] genoemd.
 
 
 == Industrie 4.0
@@ -264,6 +266,7 @@ Relays: Een elektromagnetische schakelaar die een circuit opent of sluit.
 Een relay wordt aangestuurd door knoppen, switches en sensors. Hiermee bouw je de basis van elk sturingssysteem.
 
 // TODO: uitleg over hoe relays werken.
+#TODO("Uitleg over hoe relays werken")
 
 == Knoppen en switches
 
@@ -274,7 +277,7 @@ Knoppen en switches die acties uitvoeren worden aangegeven met *S*.
 Deze worden meestal in een tube geplaatst zodat ze niet per ongeluk kunnen worden ingedrukt.
 
 #figure(
-  image("sort of buttons and switched.png", width: 10cm),
+  image("sort of buttons and switched.png", width: 13cm),
   caption: [Soorten knoppen en switches],
   label: <fig:sortofbuttons>,
 )
@@ -296,29 +299,66 @@ Hoe de schakeling is getekend bepaalt zijn functie.
 
 == Signal time Diagram
 
-== Timer
-- On delay timer
-- Off delay timer
+#TODO("Uitleg over signal time diagrammen")
+
+Zoals gezien in elektronica kun je diagrammen maken om het gedrag van signalen over tijd te visualiseren.
+#figure(
+  image("Time-diagram.png", width: 15cm),
+  caption: [Time-diagram],
+  label: <fig:Time-diagram>,
+)
 
 
-#examenbox("Strikvraag:")
+
+== Timer en Timing Relays
+
+Je kunt twee soorten timers hebben:
+/ On delay timer (TON): De output gaat pas na een bepaalde tijd actief.
+/ Off delay timer (TOF): De output gaat pas na een bepaalde tijd inactief.
+
+Hiervoor bestaan #keyterm[Speciale relays: Timing relays].
+
+#wrap-figure(
+  image("Timing relays.png", width: 3cm),
+  caption: [Timing relays],
+  label: "fig:timingrelays",
+)[
+  Timing relays geven ons controle over een tijdsinterval of het signaal af gaat of aan gaat.
+
+  De timers gaan als volgt:
+  - / TON (Timer On Delay): *TON(timer) KT1* met de input *A1* en output *A2*. Het moment dat *A1* actief wordt, start de timer en na de ingestelde tijd gaat *A2* actief. Het is de timer met het kruis $X$.
+  - / TOF (Timer Off Delay): *TOF(timer) KT1* met de input *A1* en output *A2*. Het moment dat *A1* inactief wordt, start de timer en na de ingestelde tijd gaat *A2* inactief. Het symbool is de timer met een volledige ingevulde blok.
+
+  #examenbox[Deze symbolen kennen, je moet ze kunnen snappen op het examen]
+]
 
 == Relay VS PLC — Waarom kiezen we voor PLC's?
 
 Relay-systemen werken, maar worden snel complex en moeilijk te onderhouden. Een PLC vervangt klassieke relay-logica door software.
 
+Je gaat dan #keyterm[Ladder logic] toepassen zodat je sequentiële logica kunt programmeren. _zie meer in je labo_
+
 #figure(
-  image("relayvsPLC.png", width: 15cm),
+  image("relayvsPLC.png", width: 16cm),
   caption: [Relay VS PLC],
   label: <fig:relayvsPLC>,
 )
 
-#keyterm("In de labo's leer je werken met een PLC en een LAD implementatie.")
-
 Een relay is een fysiek systeem maar met een PLC met een LAD implementatie _zie figuur @fig:relayvsPLC _is dit
 een vervanging van klassieke relays.
 
-//todo: Uitleg geven over hoe je best ladder circuits maakt met SSE
+==== Ladder logic
+
+
+#wrap-figure(
+  image("Ladder logic.png", width: 3cm),
+  caption: [Ladder logic],
+  label: <fig:Ladder-logic>,
+)[
+  Ladder logic is de manier hoe je sequentiele operaties gaat programmeren. Hierbij ga je stap voor stap logica bouwen. Je gaat pas naar de volgende stap als je condities voor die stap *True* zijn.
+
+  Je bepaald eerst je begin condities (memory M0.0, sensoren, knoppen, etc.). _De labo's gaan hier meer op in. Herbekijk kort de slides voor voorbeelden en uitwerking en TIA portal._
+]
 
 == Logic control met PLC
 
@@ -337,20 +377,17 @@ In een bedrijf wordt vaak een standaard gebruikt voor het benoemen van programma
 + Voor de leesbaarheid zijn alle prefixes in kleine letters. Meestal is dit slechts één letter, en door `UpperCamelCasing` is het volgende karakter een hoofdletter, wat anders tot verwarring zou leiden.
 
 
-#concept(title: "Scan cycle")[
-  #wrap-figure(
-    image("scancycle.png", width: 2cm),
-    caption: [scancycle],
-    label: <fig:scancycle>,
-  )[Een PLC gaat de inputs lezen PII, gaat het process uitvoeren OB1 en dan de outputs schrijven PIQ.
+*Scan cycle*
+#wrap-figure(
+  image("scancycle.png", width: 2cm),
+  caption: [scancycle],
+  label: <fig:scancycle>,
+)[
+  Een PLC gaat de inputs lezen PII, gaat het process uitvoeren OB1 en dan de outputs schrijven PIQ.
 
-    Zo een scan duurt 1-30ms.
-  ]
-
-
-  // TODO vergroot uitleg
-
+  Zo een scan duurt 1-30ms.
 ]
+
 
 
 

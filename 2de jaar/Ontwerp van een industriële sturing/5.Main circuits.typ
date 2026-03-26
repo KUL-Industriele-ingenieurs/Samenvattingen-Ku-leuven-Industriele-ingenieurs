@@ -30,36 +30,36 @@ De bijgewerkte norm vereist dat frequentieomvormers zijn voorzien van een beveil
 
 Kortsluitbeveiliging speelt twee kritieke rollen in industriële installaties. Allereerst beschermt het de bedrading zelf: wanneer de prospectieve kortsluitstroom vele malen groter is dan de nominale stroom, kan de bedrading ernstig beschadigd raken en brand veroorzaken. Dit is waarom automaten en zekeringen worden beoordeeld op hun kortsluitingsbrekend vermogen (AIC) — het maximale vermogen dat zij veilig kunnen onderbreken zonder te falen.
 
-Echter, voor menselijke veiligheid is stroombeperking doorgaans niet effectief. Zelfs gering stroomcontact via het menselijk lichaam kan dodelijk zijn (bijvoorbeeld 30 mA·s). Aangezien industriële apparaten voor hun normale bedrijf relatief hoge stromen nodig hebben, kunnen we niet simpelweg alle stromen beperken. Hier ontstaat de kern van het beveiligingsvraagstuk: hoe beschermen we zowel de circuitinfrastructuur als de menselijke operator? 
+Echter, voor menselijke veiligheid is stroombeperking doorgaans niet effectief. Zelfs gering stroomcontact via het menselijk lichaam kan dodelijk zijn (bijvoorbeeld 30 mA·s). Aangezien industriële apparaten voor hun normale bedrijf relatief hoge stromen nodig hebben, kunnen we niet simpelweg alle stromen beperken. Hier ontstaat de kern van het beveiligingsvraagstuk: hoe beschermen we zowel de circuitinfrastructuur als de menselijke operator?
 
 
-+ Residual current devices (RCDs)
++ *Residual current devices (RCDs)*
 
   #figure(
-  image("RDC.png", width: 5cm),
-  caption: [RDC],
-  label: <fig:RDC>,
+    image("RDC.png", width: 5cm),
+    caption: [RDC],
+    label: <fig:RDC>,
   )
 
   Een RDC detecteert lekstroom. In de figuur raakt de mens het circuit aan en die gaat dan terug naar via de grond terug naar de box en niet via de draad. Dit kan dodelijk zijn. Een RDC detecteert dit verschil met de stroom die aankomt en de stroom die teruggaat. Als er een verschil is, onderbreekt de RDC de stroomtoevoer. Dit is ongeveer 30ma wat de grens is van wat een mens kort kan verdragen _zie distributie van elektrische energie_.
 
-+ Fuses
++ *Fuses*
 
   #wrap-figure(
-  image("Fuses.png", width: 5cm),
-  caption: [Fuses],
-  label: <fig:Fuses>,
+    image("Fuses.png", width: 5cm),
+    caption: [Fuses],
+    label: <fig:Fuses>,
   )[
-  een fuse is een direct protection. Het is de meest goedkope manier om het circuit te beschermen. Wanneer een fuse een kortsluiting detecteert, *smelt¨* het element binnenin en onderbreekt het de stroomtoevoer. Fuses zijn eenvoudig, betrouwbaar en snel. Het probleem is dat na dat het smelt dat je het circuit niet meer kan gebruiken tot je het vervangt. 
+    een fuse is een direct protection. Het is de meest goedkope manier om het circuit te beschermen. Wanneer een fuse een kortsluiting detecteert, *smelt¨* het element binnenin en onderbreekt het de stroomtoevoer. Fuses zijn eenvoudig, betrouwbaar en snel. Het probleem is dat na dat het smelt dat je het circuit niet meer kan gebruiken tot je het vervangt.
 
-  Het wordt dus niet overal toegepast omdat je dan veel fuses moet bijhouden om ze te vervangen.
-]
+    Het wordt dus niet overal toegepast omdat je dan veel fuses moet bijhouden om ze te vervangen.
+  ]
 
-+ ECB (electronic circuit breaker)
++ *ECB (electronic circuit breaker)*
 
   Een ECB (electronic circuit breaker) is een geavanceerde beveiligingsoplossing die elektronische componenten gebruikt om de stroomtoevoer te onderbreken bij detectie van een fout. In tegenstelling tot traditionele mechanische zekeringen, kunnen ECB's worden geprogrammeerd voor specifieke toepassingen en bieden ze vaak snellere reactietijden. Ze kunnen ook worden uitgerust met functies zoals zelfdiagnose en communicatie met andere systemen voor verbeterde veiligheid en efficiëntie.
 
-+ AFCI (arc fault circuit interrupter)
++ *AFCI (arc fault circuit interrupter)*
 
   Een AFCI (arc fault circuit interrupter) gaat een vlamboog overal in het circuit detecteren. Een vlamboog kan ontstaan door beschadigde bedrading, losse verbindingen of defecte apparaten, en kan leiden tot brandgevaar. AFCI's zijn ontworpen om deze gevaarlijke situaties te voorkomen door de stroomtoevoer te onderbreken wanneer een vlamboog wordt gedetecteerd.
 
@@ -104,7 +104,7 @@ Deze motorbeveiliging is essentieel omdat de opstartcondities van motoren anders
 
 internationale efficienty classen (IE classen)
 #figure(
-  image("IE-klassen.png", width: 5cm),
+  image("IE-klassen.png", width: 8cm),
   caption: [IE-klassen],
   label: <fig:IE-klassen>,
 )
@@ -120,7 +120,7 @@ Faculty of Engineering Technology
 == Contactors
 
 #figure(
-  image("contactor Nieuw vs oud.png", width: 5cm),
+  image("contactor Nieuw vs oud.png", width: 8cm),
   caption: [contactor Nieuw vs oud],
   label: <fig:contactor-Nieuw-vs-oud>,
 )
@@ -141,7 +141,7 @@ Een contactor heeft meerdere *hoofdcontacten* (1-6 in de figuur) die de sterke s
 
 *Hulpcontacten*\
 
-Naast de hoofdcontacten kan een contactor veel *hulpcontacten* hebben (typisch 11-24 in de figuur). Deze kunnen elke combinatie van NO en NC contacten zijn. 
+Naast de hoofdcontacten kan een contactor veel *hulpcontacten* hebben (typisch 11-24 in de figuur). Deze kunnen elke combinatie van NO en NC contacten zijn.
 
 *Belangrijk verschil:* Hulpcontacten kunnen NIET gebruikt worden voor het schakelen van hoofdstromen — zij zijn laagvermogencontacten. Hun doel is om in de controleschakeling informatie over de toestand van de contactor te geven. Bijvoorbeeld, een hulpcontact kan aan een PLC (Programmable Logic Controller) aangeven of de contactor ingeschakeld is, zodat andere logica hierop kan reageren.
 
@@ -152,7 +152,7 @@ Een cruciaal detail: de spanningswaarden van de spoel (A1-A2), de hoofdcontacten
 - De hoofdcontacten kunnen 400 VAC (driefasetoevoer) schakelen
 - De hulpcontacten kunnen 110 VDC schakelen
 
-Dit ontwerp biedt veiligheid: de operator kan via een veilige laagspanningsspoel een krachtige hoofdstroomkring bedienen zonder direct gevaar. 
+Dit ontwerp biedt veiligheid: de operator kan via een veilige laagspanningsspoel een krachtige hoofdstroomkring bedienen zonder direct gevaar.
 
 
 === Hoe werkt een contactor?
@@ -165,20 +165,24 @@ Dit ontwerp biedt veiligheid: de operator kan via een veilige laagspanningsspoel
 
 
 // todo korte uitleg toevoegen contactor werking
-
+#TODO[Contactor werking uitleggen]
 
 
 
 #examenbox[Wordt verwacht dat je kent op het examem! Zorg dat je een ingenieurs uitleg geeft. Leg uit dat je een kracht opzet!]
 
 
-== AC-contacts 
+== AC-contacts
 
 // uitleg toevoegen
+#TODO[AC-contacts uitleggen]
 
 
 == Start-stop async motors
 // uitleg toevoegen
+#TODO[Start-stop async motors uitleggen]
 
 
 // tweede deel van de les toevoegen
+#TODO[Tweede deel van de les toevoegen]
+

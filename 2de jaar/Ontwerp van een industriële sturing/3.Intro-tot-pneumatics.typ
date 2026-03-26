@@ -1,8 +1,10 @@
 #import "../../school-template.typ": *
 
-= Introductie tot pneumatiek <ch:intro-pneumatics>
+= Pneumatica <ch:intro-pneumatics>
 
 == Wat is pneumatiek?
+
+Pneumatica is het controlleren van #keyterm[Cilinders en pistons] met behulp van #keyterm[Lucht]. We gaan deze kunnen bedienen met behulp van #keyterm[Valves]. We gebruiken onze #keyterm[Relays] en #keyterm[PLC's] om deze te bedienen.
 
 Voor het labo moet je meer weten over pneumatiek.
 Zorg dat je alles dit nog deftig doorneemt voor je aan de labo's begint.
@@ -99,27 +101,26 @@ In de industrie wordt pneumatics veel gebruikt. Tandartsen, schroevendraaiers, s
   - Regeling gebeurt meestal door smoring op de persluchttoevoerlijn.
 ]
 
-Een vacuum netwerk
+/ Een vacuum netwerk: In sommige industriëne heb je constant toegang nodig tot perslucht of vacuum. _Denk aan elektronica workshops die dingen moet wegblazen etc_ Hiervoor worden netwerken gemaakt net zoals elektriciteit of water.
 
+Om dingen tight te houden zodat lucht niet lekt worden gasdichte connecties gebruikt. Deze worden ook toegepast op andere hoge druk systemen zoals water en zelf in de luchtvaart en ruimtevaart.
+#concept(title: "Gasdichte connecties")[
+  Hoe ga je nu dingen gasdicht houden?
+  Je wilt geen druk verliezen door lekken.
+  #figure(
+    image("gasdicht.png", width: 5cm),
+    caption: [gasdicht],
+    label: <fig:gasdicht>,
+  )
 
-=== Gas tight connecties
+  Dit werkt met O-rings. Dit zijn rubberen ringen die in een groef worden geplaatst.
 
-Hoe ga je nu dingen gasdicht houden?
-Je wilt geen druk verliezen door lekken.
-#figure(
-  image("gasdicht.png", width: 5cm),
-  caption: [gasdicht],
-  label: <fig:gasdicht>,
-)
-
-Dit werkt met O-rings. Dit zijn rubberen ringen die in een groef worden geplaatst.
-
-• Bijvoorbeeld G1/8, mogelijk met Teflon
-• Bijvoorbeeld M5 met platte dichting (figuur)
-• NPT, taps toelopende schroefdraad, …
-• Snelkoppelingen (plug-in koppelingen, figuur)
-• 4, 6, 8, 10 mm buitendiameter slang
-
+  • Bijvoorbeeld G1/8, mogelijk met Teflon
+  • Bijvoorbeeld M5 met platte dichting (figuur)
+  • NPT, taps toelopende schroefdraad, …
+  • Snelkoppelingen (plug-in koppelingen, figuur)
+  • 4, 6, 8, 10 mm buitendiameter slang
+]
 
 === Pneumatische cilinders
 
@@ -127,8 +128,7 @@ Dit werkt met O-rings. Dit zijn rubberen ringen die in een groef worden geplaats
   "Zorg dat je niet verward geraakt met pompen in industriele sturing en anderre soort pompen in de thermodynamica",
 )
 
-We zetten een hoge druk aan de linkerkant. Hierdoor wordt de zuiger naar rechts geduwd.
-Daarna wordt deze hoge druk losgelaten door de return flow. De druk is nu ineens weg en gaat de zuiger terug naar links.
+We zetten een hoge druk aan de linkerkant. Hierdoor wordt de zuiger naar rechts geduwd. Daarna wordt deze hoge druk losgelaten door de return flow. De druk is nu ineens weg en gaat de zuiger terug naar links.
 
 #belangrijk(
   "We werken met relatieve druk want als we de druk niet groter zetten als de atmosferische druk, dan gaat de zuiger niet naar rechts omdat er druk is aan de staafkant die de zuiger tegenhoudt",
@@ -149,17 +149,15 @@ De meeste cilinders zijn *dubbelwerkend* (double acting) en hebben dus twee aans
 Veel pneumatische cilinders zijn uitgerust met #keyterm("Einddemping") (end cushioning). Dit voorkomt dat de zuiger hard tegen de eindkappen slaat. De demping kan vaak handmatig worden ingesteld met een regelschroef op de cilinder zelf.
 
 
-
-
 #figure(
-  image("pneumatische-cilinders-design.png", width: 5cm),
+  image("pneumatische-cilinders-design.png", width: 12cm),
   caption: [pneumatische-cilinders-design],
   label: <fig:pneumatische-cilinders-design>,
 )
 
 Kracht wordt gereguleerd door de druk.
 
-$ F = p * A $
+$ F = p dot A $
 
 *Snelheid control* is mogelijk door #keyterm("Throttling") met een flow control valve.
 Je gaat je uitlaat of inlaat controlleren zodat je controle hebt over de snelheid
@@ -171,19 +169,19 @@ Je gaat je uitlaat of inlaat controlleren zodat je controle hebt over de snelhei
 + *Single acting cylinder*: heeft één aansluiting en gebruikt een veer om terug te keren naar de beginpositie. _Zie vorige figuur_
 + *Double acting cylinder*: heeft twee aansluitingen en kan zowel vooruit als achteruit worden bewogen door luchtdruk. De ingang is geen pomp maar een compressor. Je ingang en uitgang verwisselen dus van plaats tijdens een *Stroke*.
   #figure(
-    image("double acting cilinder.png", width: 5cm),
+    image("double acting cilinder.png", width: 8cm),
     caption: [double acting cilinder],
     label: <fig:double-acting-cilinder>,
   )
 + *Guided cylinder*: heeft een geleiding om te voorkomen dat de zuiger zijdelings beweegt.
   #figure(
-    image("guided-cilinders.png", width: 5cm),
+    image("guided-cilinders.png", width: 8cm),
     caption: [guided-cilinders],
     label: <fig:guided-cilinders>,
   )
 + *Speciale cilinders*: Een double rod cylinder heeft twee zuigerstangen. Hierdoor kan je de zuiger in beide richtingen bewegen met dezelfde kracht. Een rotating cilinder kan de zuiger 360 graden draaien.
   #figure(
-    image("special-cilinders.png", width: 5cm),
+    image("special-cilinders.png", width: 8cm),
     caption: [special-cilinders],
     label: <fig:special-cilinders>,
   )
@@ -191,7 +189,7 @@ Je gaat je uitlaat of inlaat controlleren zodat je controle hebt over de snelhei
 #examenbox("Op het examen krijg je alle symbolen gegeven voor het examen. Je moet ze niet vanbuiten leren.")
 
 #figure(
-  image("symbolen-cilinders.png", width: 10cm),
+  image("symbolen-cilinders.png", width: 12cm),
   caption: [symbolen-cilinders],
   label: <fig:symbolen-cilinders>,
 )
@@ -207,11 +205,13 @@ Je gaat je uitlaat of inlaat controlleren zodat je controle hebt over de snelhei
 )
 
 
-$F_1 = p_(1r e l) * A_1 = p_(1r e l) dot frac(pi dot D^2, 4)$
+We gaan eerst alle krachten bepalen van de cilinder.
 
-$F_2 = p_(2r e l) * A_2 = p_(2r e l) dot frac(pi dot (D^2-d^2), 4)$
+$ F_1 = p_(1r e l) dot A_1 = p_(1r e l) dot frac(pi dot D^2, 4) $
 
-$F_3 = p_(3r e l) * A_(r o d) = p_(3r e l) dot frac(pi dot d^2, 4)$
+$ F_2 = p_(2r e l) dot A_2 = p_(2r e l) dot frac(pi dot (D^2-d^2), 4) $
+
+$ F_3 = p_(3r e l) dot A_(r o d) = p_(3r e l) dot frac(pi dot d^2, 4) $
 
 Gebruik relatieve druk zodat je $F_3$ niet moet berekenen.
 
@@ -240,9 +240,9 @@ $ F_"inward" = 264 "N" - 49 "N" = 215 "N" $
 
 == Lucht laten ontsnappen
 
-+ Uitlaatdemper
-+ Millieufilte
-+ Snelheidsregeling
++ / Uitlaatdemper: Dempt de uitlaat van de cilinder
++ / Millieufilte: Filter de lucht die uit de cilinder komt
++ / Snelheidsregeling: Regelt de snelheid van de cilinder
   #wrap-figure(
     image("snelheidsregeling.png", width: 5cm),
     caption: [snelheidsregeling],
@@ -276,7 +276,7 @@ Dit is de verkeerde manier voor speed control te doen
 
 
 #figure(
-  image("pompcircuit.png", width: 5cm),
+  image("pompcircuit.png", width: 4cm),
   caption: [pompcircuit],
   label: <fig:pompcircuit>,
 )
@@ -289,9 +289,25 @@ Een quick relief valve wordt gebruikt om snel de druk van een systeem te verlage
 
 == Switching
 
-Switching betekent dat je de richting van de lucht kunt veranderen.
 
-Een #keyterm("Valve")
+In dit deel bekijken we hoe switching gebeurt in cilinders. We gaan nu zien hoe we dit kunnen controlleren. Switching betekent dat je de richting van de lucht kunt veranderen.
+
+
+=== Ventielen (Valves)
+
+Een valve is het stuk dat de doorgang van lucht gaat controlleren. Het is de deur die de lucht doorlaat.
+
+Een paar voorbeelden:
+- Een elektro-pneumatische ventiel is een elektrisch gesteunde schakelaar voor pneumatische circuits.
+- Een elektro-hydraulische ventiel is een elektrisch gesteunde schakelaar voor hydraulische circuits.
+-> Een actuator zoals een pneumatische cilinder of hydraulische motor kan verbonden worden met de outlet poorten van de valve.
+
+#theorie(title: "Eigenschappen valve")[
+  - Een supply poort geconnecteerd aan de #keyterm[hydrolic] of #keyterm[Pneumatic] (power) supply.
+  - Een exhaust poort om druk los te laten of terug naar de tank te laten gaan.
+  - kan #keyterm[NO] (normally open) of #keyterm[NC] (normally closed) zijn.
+  - Een valve kan een swtich over hebben (Open -> closed en Closed -> Open).
+]
 
 
 *Switching compressed air*
@@ -312,9 +328,10 @@ Een valve wordt aangeduid met twee nummers: *aantal poorten / aantal schakelstan
 
 *Eigenschappen & Symbolen*
 - *Standen* teken je als vierkanten (rustpositie rechts of midden). Pijlen tonen stromingsrichting, een "T" betekent geblokkeerd.
-- *Bistabiel (x/2 of x/3)*: Spoel aan beide kanten.
-- *Monostabiel (x/2)*: Spoel aan één kant, veer aan de andere. Keert terug naar rustpositie bij signaalverlies.
-- *Middenstand*: x/3 ventielen zijn dubbel monostabiel met een stabiele *center position*.
+  - *Bistabiel (x/2 of x/3)*: Spoel aan beide kanten. Zal altijd of naar links of naar rechts gaan. Kan niet vast geraken tussenin.
+  - *Monostabiel (x/2)*: Spoel aan één kant, veer aan de andere. Keert terug naar rustpositie bij signaalverlies.
+  - *Middenstand*: x/3 ventielen zijn dubbel monostabiel met een stabiele *center position*.
+  -
 - *Toestanden*: Worden aangeduid als N.O. (Normally Open) / N.C. (Normally Closed), fail-open of fail-close.
 
 == Mono en bi stabiele valves
@@ -386,7 +403,7 @@ Voordelen (vooral voor monostabiele ventielen):
 
 
 #figure(
-  image("symbolen pneumatische valves.png", width: 5cm),
+  image("symbolen pneumatische valves.png", width: 4cm),
   caption: [symbolen pneumatische valves],
   label: <fig:symbolen-pneumatische-valves>,
 )
@@ -394,14 +411,21 @@ Voordelen (vooral voor monostabiele ventielen):
 #examenbox("Zorg dat je alle symbolen goed kent voor het examen gratis punten")
 
 
-== Logic circuits
+== Logic circuits met ventielen
+
+We gaan onze logic circuit baseren op:
++ Safety
++ Energy efficiency
+
+We gebruiken #keyterm[Pneumatische controls] voor simpele circuits.
+En meer complexe systemen met #keyterm[Electro-pneumatische controls] (PLC or relay circuits).
 
 We gaan onze druk controlleren via logic circuits om cilinders te controlleren.
 
-A+ brengt ons van $a_0$ naar $a_1$
-A- brengt ons van $a_1$ naar $a_0$
+A+ brengt ons van $A_0$ naar $A_1$
+A- brengt ons van $A_1$ naar $A_0$
 
-de $a_0$ en $a_1$ zijn de #keyterm("states")
+de $A_0$ en $A_1$ zijn de #keyterm("states"). Ze zijn alle punten dat de cilinder stabiel in kan zijn.
 
 === Ventielen in logische circuits
 
@@ -426,11 +450,11 @@ Hoe gaan we ons circuit oplossen. We hebben een idee maar hoe gaan we dat in een
 
 De cascade methode is een methode om een complexe circuit te ontwerpen door het circuit te splitsen in eenvoudige delen.
 
-_BV. ABC | CB A: A beweegt naar a1 ->  B beweegt naar b1 -> C beweegt naar c1._
+_BV. ABC | CB A: A beweegt naar $A_1$ ->  B beweegt naar $B_1$ -> C beweegt naar $C_1$._
 
 Hierna zet je het circuit over naar de tweede groep
 
-_ CB | A: C beweegt naar c0 -> B beweegt naar b0 -> A beweegt naar a0._
+_ CB | A: C beweegt naar $C_0$ -> B beweegt naar $B_0$ -> A beweegt naar $A_0$._
 
 Een daarna schaklet die terug naar circuit 1.
 

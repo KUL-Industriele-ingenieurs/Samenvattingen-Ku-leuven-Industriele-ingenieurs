@@ -1,13 +1,14 @@
 #import "../../school-template.typ": *
-= 4.External en internal forced convection <ch:External-en-internal-forced-convection>
+= External en internal forced convection <ch:External-en-internal-forced-convection>
+
 We gaan convectie forceren. Voor lucht via een turbine en voor een vloeistof via een pomp. We gaan de richting van convectie eigenlijk tegenwerken en zo warmte transporteren. Door een vloeistof of gas dwars over of door een hete/koude oppervlak te leiden, versnellen we aanzienlijk de warmteoverdracht via erzwongen convectie.
 
-#concept(title: "vrije-stroming snelheid en upstream snelheid")[
+#concept(title: "Vrije-stroming snelheid en upstream snelheid")[
 
-  *vrije-stroming*\
+  *Vrije-stroming*\
   De snelheid van een vloeistof relativief tot een ondergedompeled vast object ver genoeg van het object. Geen effect van het object op de snelheid $v$
 
-  *upstream snelheid*\
+  *Upstream snelheid*\
   Is de snelheid van het vloeistof van voor het lichaam.
 
 ]
@@ -16,7 +17,7 @@ We gaan convectie forceren. Voor lucht via een turbine en voor een vloeistof via
 
 Druk en frictie hebben grote impacten op de richting van convectie. Drag (stromingsweerstand) beïnvloedt hoe vloeistoflagen langs een oppervlak stromen, wat direct de warmteoverdracht bepaalt.
 
-De velocity boundary layer en thermal boundary layer hebben beide een effect op convectie. De verhouding tussen de diktes van deze twee grenslagen wordt uitgedrukt met het Prandtl-nummer $P_r$. (Bijv. $P_r approx 1$ voor gassen betekent dat beide lagen ongeveer even snel groeien).
+De #keyterm[velocity boundary layer] en #keyterm[thermal boundary layer] hebben beide een effect op convectie. De verhouding tussen de diktes van deze twee grenslagen wordt uitgedrukt met het Prandtl-nummer $P_r$. (Bijv. $P_r approx 1$ voor gassen betekent dat beide lagen ongeveer even snel groeien).
 
 #keyterm[Drag] is de kracht tegen de beweging van het vloeistof.
 
@@ -57,7 +58,7 @@ Een goede fysieke interpretatie van de thermische grenslaag is dat deze fungeert
 Trouwens... wat als we een oneindig lange plaat hadden? Gaan de boundry layers oneindig blijven groeien?
 
 #figure(
-  image("Boundrylayer to scale.png", width: 10cm),
+  image("Boundrylayer to scale.png", width: 12cm),
   caption: [Boundrylayer to scale],
   label: <fig:Boundrylayer-to-scale>,
 )
@@ -69,8 +70,8 @@ onze boundry layers blijven dus groeien in functie van de lengte van de plaat $x
 *Connectie met diffusie*\
 
 #figure(
-  image("diffusie.png", width: 5cm),
-  caption: [diffusie],
+  image("diffusie.png", width: 8cm),
+  caption: [Diffusie],
   label: <fig:diffusie>,
 )
 
@@ -103,32 +104,33 @@ De #keyterm[No-slip condition] komt door het idee van diffusie door momentum. De
 
 === Frictie coëfficiënt
 
-De frictie coëfficient is afhankelijk van het Reynolds getal.
-Hoe meer turbulent je stroming hoe meer frictie dat je gaat hebben.
-Je coëfficient is dus afhankelijk van de geometrie en de stroming.
-
 #wrap-figure(
-  image("Heat-transfer coefficient.png", width: 5cm),
+  image("Heat-transfer coefficient.png", width: 6cm),
   caption: [Heat-transfer coefficient],
   label: <fig:Heat-transfer-coefficient>,
 )[
 
+  De frictie coëfficient is afhankelijk van het Reynolds getal.
+  Hoe meer turbulent je stroming hoe meer frictie dat je gaat hebben.
+  Je coëfficient is dus afhankelijk van de geometrie en de stroming.
+
   Oké je ziet dat ons vloeistof van laminair naar turbulent gaat. Welke factoren zijn hier nu in effect?
 
-  + *Laminair:* Eerst hoge frictie coefficient $ C_(f,x) $ en dan een lage $ C_(f,x) $
-  + *Transitie:* Hoge jump in frictie coefficient $ C_(f,x) $
-  + *Turbulent:* Hoge frictie coefficient $ C_(f,x) $ en dan een lagere
+  + *Laminair:* Eerst hoge frictie coefficient $C_(f,x)$ en dan een lage $C_(f,x)$
+  + *Transitie:* Hoge jump in frictie coefficient $C_(f,x)$
+  + *Turbulent:* Hoge frictie coefficient $C_(f,x)$ en dan een lagere
+
+  Laminar: $ C_f = 1.33 / R e_L^(1/2) (R e_L < 5 times 10^5) $
+
+  Turbulent: $ C_f = 0.074 / R e_L^(1/5) (R e_L > 5 times 10^5) $
+
+  Rough surface, turbulent: $ C_f = (1.89 - 1.62 log(epsilon/L))^(-2.5) $
+
+  - *Average friction coefficient*: $ C_f = 1/L integral_0^L C_(f,x) d x $
+  met: $C_(f,x)$: Local friction coefficient
+  $L$: Characteristic length
 ]
 
-Laminar: $C_f = 1.33 / R e_L^(1/2) (R e_L < 5 times 10^5)$
-
-Turbulent: $C_f = 0.074 / R e_L^(1/5) (R e_L > 5 times 10^5)$
-
-Rough surface, turbulent: $C_f = (1.89 - 1.62 log(epsilon/L))^(-2.5)$
-
-- *Average friction coefficient*: $C_f = 1/L integral_0^L C_(f,x) d x$
-met: $C_(f,x)$: Local friction coefficient
-$L$: Characteristic length
 
 === Warmtestroming
 
@@ -155,9 +157,11 @@ $L$: Characteristic length
 
 Dit is de algemene nusselt number _vorige hoofdstuk_ de relatie tussen het Reynolds getal en het prandle getal. De constante $C$ en de exponenten $m$ en $n$ zijn afhankelijk van de geometrie van het object. Je kunt die op je formularium aflezen.
 
-Laminair nusselt number: $frac(h_x x, k) = 0.332 R e_x^(1/2) P_r^(1/3)$
+Laminair nusselt number:
+$ frac(h_x x, k) = 0.332 R e_x^(1/2) P_r^(1/3) $
 
-Turbulent nusselt number: $frac(h_x x, k) = 0.0296 R e_x^(4/5) P_r^(1/3)$
+Turbulent nusselt number:
+$ frac(h_x x, k) = 0.0296 R e_x^(4/5) P_r^(1/3) $
 
 Je ziet dat de relatie van de nusselt number met de reynold number en prandtl number anders is afhankelijk van de soort stroming.
 
@@ -241,7 +245,7 @@ door flow seperatie is het moeilijk om analytisch de flow te berekenen.
 
 
 #figure(
-  image("heat transfer coefficient bol en cilinder.png", width: 4cm),
+  image("heat transfer coefficient bol en cilinder.png", width: 4.5cm),
   caption: [heat transfer coefficient bol en cilinder],
   label: <fig:heat-transfer-coefficient-bol-en-cilinder>,
 )
@@ -502,7 +506,7 @@ heat flux hetzelfde zijn.
 
 
 #figure(
-  image("Heatflux buis.png", width: 5cm),
+  image("Heatflux buis.png", width: 8cm),
   caption: [Heatflux buis],
   label: <fig:Heatflux-buis>,
 )
