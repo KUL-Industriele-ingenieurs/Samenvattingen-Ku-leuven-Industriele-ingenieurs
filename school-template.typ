@@ -202,22 +202,22 @@
     pagebreak()
   } else {
     // Compact Header for short_title: true
-    block(width: 100%, inset: (bottom: 15pt), {
+    block(width: 100%, inset: (bottom: 5pt), {
       grid(
         columns: (1fr, auto),
         column-gutter: 1em,
         align(left + horizon)[
           #text(size: 1.8em, weight: "bold", font: "Fira Sans", fill: black)[#title] \
-          #v(2pt)
+          #v(-2pt)
           #text(size: 1.1em, font: "Fira Sans", style: "italic", fill: luma(100))[#course] \
-          #v(2pt)
+          #v(-2pt)
           #text(size: 1em)[#authors.join(", ")]
         ],
         align(right + horizon)[
           #image("Ku Leuven logo.png", width: 80pt)
-        ]
+        ],
       )
-      v(8pt)
+      v(-12pt)
       line(length: 100%, stroke: 1.5pt + schoolBlue)
     })
   }
