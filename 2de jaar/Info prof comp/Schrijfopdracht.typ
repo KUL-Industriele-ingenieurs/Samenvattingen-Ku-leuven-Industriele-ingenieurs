@@ -1,4 +1,7 @@
 #import "../../school-template.typ": *
+#import "@preview/wordometer:0.1.5": total-words, word-count
+
+#show: word-count.with(exclude: <no-wc>)
 
 
 #show: project.with(
@@ -14,33 +17,35 @@
 
 = Opdracht
 
-== Context
+#[
+  == Context
 
-Tijdens het IB1-project ontstond een conflict tussen twee teamgenoten. Persoon 1 raakte enorm gefrustreerd omdat Persoon 2 veel minder ervaren was. Omdat elke stap opnieuw uitgelegd moest worden, hield dit de progressie van het project flink tegen.
+  Tijdens het IB1-project ontstond een conflict tussen twee teamgenoten. Persoon 1 raakte enorm gefrustreerd omdat Persoon 2 veel minder ervaren was. Omdat elke stap opnieuw uitgelegd moest worden, hield dit de progressie van het project flink tegen.
 
 
 
-#block(
-  width: 100%,
-  stroke: 0.5pt + luma(200),
-  radius: 6pt,
-  clip: true,
-  table(
-    columns: (auto, 1fr),
-    inset: 10pt,
-    align: left + horizon,
-    stroke: none,
-    fill: (col, row) => if row == 0 { schoolBlue } else if calc.even(row) { luma(250) },
-    table.header(
-      text(fill: white, weight: "bold")[Persoon / Groep], text(fill: white, weight: "bold")[Rol / Beschrijving]
+  #block(
+    width: 100%,
+    stroke: 0.5pt + luma(200),
+    radius: 6pt,
+    clip: true,
+    table(
+      columns: (auto, 1fr),
+      inset: 10pt,
+      align: left + horizon,
+      stroke: none,
+      fill: (col, row) => if row == 0 { schoolBlue } else if calc.even(row) { luma(250) },
+      table.header(
+        text(fill: white, weight: "bold")[Persoon / Groep], text(fill: white, weight: "bold")[Rol / Beschrijving]
+      ),
+      [Ik], [Teamleider],
+      [Persoon 1], [Ervaren persoon],
+      [Persoon 2], [Minder ervaren persoon],
+      [Andere teamleden], [Teamleden die minder een probleem hadden maar ook gefrustreerd waren met Persoon 2],
+      [Docent], [Probeerde samen met de teamleider naar oplossingen te zoeken voor het conflict.],
     ),
-    [Ik], [Teamleider],
-    [Persoon 1], [Ervaren persoon],
-    [Persoon 2], [Minder ervaren persoon],
-    [Andere teamleden], [Teamleden die minder een probleem hadden maar ook gefrustreerd waren met Persoon 2],
-    [Docent], [Probeerde samen met de teamleider naar oplossingen te zoeken voor het conflict.],
-  ),
-)
+  )] <no-wc>
+
 
 
 
@@ -157,3 +162,7 @@ Stel dat in een ander project iemand teksten steeds te laat doorstuurt, wat zorg
 
 - *Met verbindende communicatie*: Je zegt: "Ik zie dat je stuk er nog niet is (observatie). Dat geeft me stress (gevoel), want ik heb tijd nodig om alles na te kijken voor de deadline (behoefte). Is er iets aan de hand en moeten we even kijken hoe we de taken kunnen schuiven? (verzoek)."
 Op deze manier kom je er misschien achter dat iemand privé in de knoop zit en zoek je samen een oplossing. Maar net als in Voorbeeld A is hier de limitatie dat de stress van de deadline blijft en de rest van de groep alsnog het extra werk moet opvangen.
+
+#v(2em)
+#line(length: 100%, stroke: 0.5pt + luma(200))
+*Totaal aantal woorden (Stap 1-5):* #total-words
