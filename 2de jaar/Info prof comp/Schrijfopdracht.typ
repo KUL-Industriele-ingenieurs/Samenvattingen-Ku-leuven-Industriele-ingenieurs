@@ -16,7 +16,7 @@
 
 == Context
 
-Tijdens het IB1 project was er een conflict tussen twee teamgenoten. Tijdens het project was iemand enorm gefrustreerd geraakt omdat een andere teamgenoot veel minder ervaren was en eigenlijk niet veel kon helpen met het project. Er moest constant elke stap en elk ding moest uitgelegd worden en het hield de progressie van het project achter.
+Tijdens het IB1-project ontstond een conflict tussen twee teamgenoten. Persoon 1 raakte enorm gefrustreerd omdat Persoon 2 veel minder ervaren was. Omdat elke stap opnieuw uitgelegd moest worden, hield dit de progressie van het project flink tegen.
 
 
 
@@ -46,24 +46,18 @@ Tijdens het IB1 project was er een conflict tussen twee teamgenoten. Tijdens het
 
 == Ervaring & Observatie (Stap 1)
 
+Rond week 4, bij het maken van ons proof of concept, bleek dat Persoon 2 technisch flink achterstond. Van designen en lasercutten tot het aansluiten van de motor, alles moest stap voor stap uitgelegd worden. Ik merkte dat Persoon 2 hierdoor enorm onzeker was.
 
-- Persoon 1 was duidelijk gefrustreerd en wilde niet meer samenwerken en het gewoon zelf afmaken
-- Persoon 2 was niet meer gemotiveerd maar deed hun best om het conflict op te lossen
-- Persoon 2 kon niet technisch mee en het ging niet in de tijd van het project opgelost geraken (kon geen motor aan een batterij schakelen).
-- Persoon 1 kon het niet geloven dat iemand zo technisch achter kon staan
-- Ik was teamleider en probeerde samen met de docent voor een oplossingen te zoeken
-- Andere mensen van het team hadden minder een probleem maar waren ook gefrustreerd met Persoon 2
-- Persoon 1 zei slechte dingen over Persoon 2 achter hun rug.
-- De docent was niet enorm hulpzaam. Probeerde wat vrede te creëren maar kon niet helpen met het echt probleem in het project.
-- Persoon 2 was niet heel gemotiveerd om snel bij te leren. De situatie en kritiek hielp ook niet veel.
-- De docent beloofde om later een oplossing te voorzien _Is er niet gekomen_. Dit zorgde voor extra frustratie bij mij en de rest van het team.
+Persoon 1 was juist heel ervaren, had het eigen deel al af en wachtte tot de rest klaar was. Omdat dit niet vooruit ging, raakte Persoon 1 geërgerd samen met andere teamleden. In plaats van te helpen, begon Persoon 1 kritiek te leveren en uiteindelijk slecht te praten achter de rug van Persoon 2.
+
+Als teamleider zocht ik samen met de docent naar een oplossing. De docent probeerde de vrede te bewaren en beloofde later in te grijpen, maar deed dit uiteindelijk niet. Dit zorgde voor extra frustratie in de hele groep. Om de deadline te halen heb ik het deel van Persoon 2 grotendeels zelf afgemaakt. Het project is gelukkig geslaagd, maar het conflict is nooit echt uitgesproken.
 
 
 
 == Gedachten en gevoelens (Stap 2+ 3)
 
 #table(
-  columns: (auto, 2.2fr, 1.1fr, 1.1fr),
+  columns: (0.8fr, 2.2fr, 1.3fr, 1.3fr),
   align: left + horizon,
   fill: (col, row) => {
     if row == 0 or row == 2 {
@@ -77,7 +71,7 @@ Tijdens het IB1 project was er een conflict tussen twee teamgenoten. Tijdens het
 
   [*ABOUT YOU*],
   [
-    _Het is soms lastig om als teamleider tussen de frustratie van Persoon 1 en de onzekerheid van Persoon 2 te staan. Ik zie dat Persoon 1 bijna ontploft van ongeduld omdat hij denkt dat hij het alleen sneller kan, maar teamgenoten afkraken helpt ons project niet vooruit. Tegelijkertijd moet Persoon 2 echt actiever bijleren en initiatief tonen om de deadline te halen. Deze constante spanning zorgt voor veel stress; ik wil uiteindelijk gewoon dat we die motor werkend krijgen en het project samen op tijd afronden._
+    _Het is soms lastig om als teamleider tussen de frustratie van Persoon 1 en de onzekerheid van Persoon 2 te staan. Ik zie dat Persoon 1 bijna ontploft van ongeduld omdat deze persoon denkt het alleen sneller te kunnen, maar teamgenoten afkraken helpt ons project niet vooruit. Tegelijkertijd moet Persoon 2 echt actiever bijleren en initiatief tonen om de deadline te halen. Deze constante spanning zorgt voor veel stress; ik wil uiteindelijk gewoon dat we die motor werkend krijgen en het project samen op tijd afronden._
   ],
   [
     Frustratie, Stress, Onmacht, Teleurstelling,
@@ -86,7 +80,7 @@ Tijdens het IB1 project was er een conflict tussen twee teamgenoten. Tijdens het
     Duidelijkheid, Samenwerking, Efficiëntie, Respect, Relaxatie
   ],
 
-  [], [*THOUGHTS (?)*], [*FEELINGS (?)*], [*NEEDS (?)*],
+  [], [*THOUGHTS*], [*FEELINGS*], [*NEEDS*],
 
   [*ABOUT THE\ OTHER(S)*],
   [
@@ -112,10 +106,10 @@ Tijdens het IB1 project was er een conflict tussen twee teamgenoten. Tijdens het
 
 
 + *Verzoek aan Persoon 1*: "Zou je bereid zijn om tijdens de volgende vergadering samen de taken te herbekijken? Als we de kritieke technische taken meer bij jou leggen, kun jij de gewenste snelheid aanhouden en hoef je minder tijd te steken in constante uitleg." \
-  _Toelichting_: Dit sluit aan bij zijn wens voor *efficiëntie* en het halen van de deadline, terwijl het de spanning wegneemt rondom het begeleiden van anderen.
+  _Toelichting_: Dit sluit aan bij de wens voor *efficiëntie* en het halen van de deadline van deze persoon, terwijl het de spanning wegneemt rondom het begeleiden van anderen.
 
-+ *Verzoek aan Persoon 2*: "Zou je voortaan direct willen aangeven wanneer een technische instructie niet volstaat, zodat we samen kunnen zoeken naar een deeltaak die beter aansluit bij jouw huidige kennisniveau? Je moet je wel actief inzetten om bij te leren dus probeer van acties en beslissingen van andere mensen te leren zodat je bij kunt." \
-  _Toelichting_: Hiermee wordt tegemoet gekomen aan de behoefte aan *veiligheid* en ondersteuning, maar wordt ook de verantwoordelijkheid voor groei bij hem neergelegd.
++ *Verzoek aan Persoon 2*: "Zou je voortaan direct willen aangeven wanneer een instructie niet duidelijk is? Dan kunnen we kijken naar een taak die beter aansluit bij jouw kennis, of samen bepalen hoe we je beter kunnen ondersteunen zodat je wel actief kunt blijven bijleren." \
+  _Toelichting_: Dit biedt de nodige veiligheid en ondersteuning, maar motiveert deze persoon ook om zelf verantwoordelijkheid te nemen voor de eigen groei, zonder dat het klinkt als een verwijt.
 
 + *Verzoek aan de Docent*: "Kunt u ons helpen door een overleg te faciliteren waarin we de rollen binnen het team expliciet maken? Dit zou ons helpen om de technische blokkade om te zetten in een werkbaar plan." \
   _Toelichting_: Dit vraagt om de benodigde *duidelijkheid* en professionele ondersteuning om de harmonie in de groep te herstellen.
@@ -135,10 +129,12 @@ Tijdens het IB1 project was er een conflict tussen twee teamgenoten. Tijdens het
     columns: (1fr, 1fr),
     inset: 10pt,
     stroke: none,
-    fill: (col, row) => if row == 0 { schoolBlue } else if calc.even(row) { luma(250) },
+    fill: (col, row) => if row == 0 { if col == 0 { schoolGreen } else { schoolOrange } } else if calc.even(row) {
+      luma(250)
+    },
     table.header(
-      text(fill: white, weight: "bold")[Mogelijkheden (Possibilities)],
-      text(fill: white, weight: "bold")[Limitaties (Limitations)],
+      align(center, text(fill: white, weight: "bold")[Voordelen]),
+      align(center, text(fill: white, weight: "bold")[Limitaties]),
     ),
     [Het zorgt ervoor dat problemen (zoals de motor die niet werkt) eerlijker besproken worden.],
     [Het overleg vraagt veel tijd, wat lastig is bij een naderende deadline.],
@@ -147,10 +143,17 @@ Tijdens het IB1 project was er een conflict tussen twee teamgenoten. Tijdens het
     [Het werkt alleen als iedereen, ook Persoon 1, bereid is om op een andere manier te praten.],
 
     [Het helpt Persoon 2 om sneller te groeien door een veiligere leeromgeving.],
-    [Het lost de technische kennisachterstand niet direct op; het maakt het enkel bespreekbaar.],
+    [Het lost de technische kennisachterstand niet direct op. Het maakt het enkel bespreekbaar.],
   ),
 )
 
-*Voorbeeld A (Project IB1)*: Als we in het heetst van de strijd verbindende communicatie hadden gebruikt, had ik als teamleider eerlijker kunnen uitspreken dat ik de controle wilde behouden zonder Persoon 2 te ontmoedigen. De limitatie was echter dat de motor nog steeds niet aangesloten was. Communicatie loste de technische realiteit niet op, maar had de escalatie tussen Persoon 1 en 2 kunnen voorkomen.
+*Voorbeeld A (Project IB1)*: Verbindende communicatie had enorm kunnen helpen om de problemen open op tafel te leggen. Persoon 2 had eerlijk grenzen en onzekerheden kunnen uitspreken, zonder zich aangevallen te voelen. Persoon 1 had frustraties op een veilige manier kunnen delen, in plaats van achter iemands rug om te klagen. Hierdoor verschuift de focus van een persoonlijke ruzie naar een praktische taakverdeling. De docent had hierop kunnen inspelen door direct een oplossing te bieden in plaats van het uit te stellen.
+De grote limitatie blijft wel de tijd: we communiceren dan misschien beter als team, maar het lost de technische achterstand en de naderende deadline niet magisch op. Het werk moet nog steeds gedaan worden.
 
-*Voorbeeld B (Toekomstige werkplek)*: Stel dat een ontwerp later in een fabriek faalt. In plaats van een collega de schuld te geven, kan ik uiten dat ik nood heb aan *betrouwbaarheid* van gegevens. Dit bespaart een ruzie, maar de machine is nog steeds kapot en moet nog steeds mechanisch hersteld worden door iemand met de juiste kennis.
+*Voorbeeld B (Deadlines en onbereikbaarheid)*:
+Stel dat in een ander project iemand teksten steeds te laat doorstuurt, wat zorgt voor stress bij degene die het verslag moet inleveren.
+
+- *Zonder verbindende communicatie*: De groep valt uit: "Je bent altijd te laat en negeert ons, je verpest ons cijfer." De persoon klapt dicht of wordt boos.
+
+- *Met verbindende communicatie*: Je zegt: "Ik zie dat je stuk er nog niet is (observatie). Dat geeft me stress (gevoel), want ik heb tijd nodig om alles na te kijken voor de deadline (behoefte). Is er iets aan de hand en moeten we even kijken hoe we de taken kunnen schuiven? (verzoek)."
+Op deze manier kom je er misschien achter dat iemand privé in de knoop zit en zoek je samen een oplossing. Maar net als in Voorbeeld A is hier de limitatie dat de stress van de deadline blijft en de rest van de groep alsnog het extra werk moet opvangen.
