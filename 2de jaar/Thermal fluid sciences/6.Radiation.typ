@@ -212,7 +212,19 @@ Als alle oppervlakken (inclusief de schilden) dezelfde emissiviteit $epsilon$ he
 #TODO[Toevoegen]
 
 
-== Radiatie uitwisseling en emitting van absorberende gassen.
+== Radiatie uitwisseling door absorberende gassen
 
-#TODO[Toevoegen]
+In tegenstelling tot vaste stoffen (die oppervlaktestraling hebben), vertonen gassen *volumestraling*. Gassen zoals $"CO"_2$, $"H"_2"O"$ en $"CH"_4$ zijn niet transparant voor straling maar absorberen en stralen in specifieke *absorptiebanden*.
 
+#concept(title: "Kenmerken van absorptiebanden")[
+  - De *vorm* en *breedte* van deze banden variëren met de *temperatuur* en de *druk*.
+  - De *grootte* van de absorptiviteit ($alpha$) variëert bovendien met de *dikte* van de gaslaag.
+]
+
+#figure(
+  image("Radiatieabsorbtie gassen.png", width: 12cm),
+  caption: [Radiatieabsorptie in gassen: absorptie gebeurt in specifieke golflengtebanden.],
+  label: <fig:Radiatieabsorbtie-gassen>,
+)
+
+#TODO[Oefeninge voorbeelden toevoegen]
