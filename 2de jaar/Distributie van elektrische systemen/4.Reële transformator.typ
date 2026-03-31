@@ -333,12 +333,12 @@ Hieronder een voorbeeld door de losses afhankelijk van het magnetische veld $B$.
   })
 ]
 
-= Windingen verliezen <sec:windingen-verliezen>
+== Windingen verliezen <sec:windingen-verliezen>
 
 
 Nu hebben we alle niet ideale delen van de transformator core gedaan. Nu gaan we over naar alle *Niet-ideale delen van de windingen*.
 
-== Leakage <sec:leakage>
+=== Leakage <sec:leakage>
 
 We nemen aan dat alle magnetische flux $phi$ binnen de kern blijft maar nu gaan we aannemen dat niet alle magnetische flux $phi$ door de windingen gaat.
 
@@ -360,7 +360,7 @@ We gaan onze flux $phi$ opsplitsen in twee delen. Een #keyterm[Main flux] en een
   label: <fig:Leakage-flux>,
 )
 
-== Series resistenties
+=== Series resistenties
 
 #wrap-figure(
   image("Series resisitentie.png", width: 7cm),
@@ -373,7 +373,7 @@ We gaan onze flux $phi$ opsplitsen in twee delen. Een #keyterm[Main flux] en een
 
 Het is simpel om dit te modelleren we voegen gewoon een extra resistor toe aan beide kanten van onze circuit $R_1$ en $R_2$.
 
-== Totale series impedantie <sec:totale-series-impedantie>
+=== Totale series impedantie <sec:totale-series-impedantie>
 Als we ze allemaal samenvoegen krijgen we onze totale series impedantie.
 
 #figure(
@@ -390,7 +390,7 @@ Met E de spanning over de ideale transformator, met de ratio's tussen $E_1$ en $
 
 $ E_1 / E_2 = N_1 / N_2 $
 
-== Full reële transformator <sec:full-reële-transformator>
+=== Full reële transformator <sec:full-reële-transformator>
 We kunnen nu alles samensteken. Dus all onze verliezen van onze core en onze windingen.
 
 Dit is:
@@ -417,13 +417,13 @@ Je krijg met alle phasors samen dan dit phasor diagram:
   label: <fig:Phasor-diagram-total-reël-transformator>,
 )
 
-== Equivalent schema <sec:equivalent-schema>
+=== Equivalent schema <sec:equivalent-schema>
 
 Nu hebben we een reël schema gemaakt die alle verliezen tonen van de transformator.
 
 Als laatste willen we nog graag ons symbool van de transformator wegdoen.
 
-=== Primary side <sec:primary-side>
+==== Primary side <sec:primary-side>
 
 We weten van het deel *Ideale transformator* dat we de secundaire _Rechter kant_ kunnen linken aan de primaire _Linker kant_.
 
@@ -470,11 +470,11 @@ De fracties tussen $N_1$ en $N_2$ komen dan terug in het spel.
   )
 ]
 
-== Metingen <sec:metingen>
+=== Metingen <sec:metingen>
 
 Dit zijn metingen die we maken en testen die we doen op transformator circuits.
 
-=== Null-last test <sec:no-load-test>
+==== Null-last test <sec:no-load-test>
 
 Bij deze test gaat de stroom naar de ideale transformator gelijk zijn aan nul
 
