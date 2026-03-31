@@ -14,3 +14,6 @@ Deze convectie gaat een deel zijn van onze analyse van warmteoverdracht. Dus je 
   - internal
   - external
 - *Natural*
+
+
+#TODO[Afmaken]
