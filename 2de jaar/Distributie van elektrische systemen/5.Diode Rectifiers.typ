@@ -239,3 +239,4 @@ De spanning en stroom zijn kleiner omdat de batterij een bepaalde voltage pas ga
 
 
 
+#TODO[NA DE PAASVAKANTIE]
