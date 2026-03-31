@@ -105,6 +105,9 @@
   course: "",
   authors: (),
   academic_year: "",
+  show_disclaimer: true,
+  show_outline: true,
+  short_title: false,
   body,
 ) = {
   // Metadata
@@ -180,50 +183,76 @@
   ]
 
   // Title Page
-  align(center + horizon)[
-    #v(-5cm)
-    #text(size: 2.5em, weight: "bold", font: "Fira Sans", fill: black)[#title]
-    #v(0.5cm)
-    #text(size: 1.5em, font: "Fira Sans")[#course]
-    #v(2cm)
-    #text(size: 1.2em)[#authors.join(", ")]
-    #v(1cm)
-    #text(size: 1.2em)[#academic_year]
-    #v(4em)
-    #image("Ku Leuven logo.png", width: 50%)
-    #v(2cm)
-    #text(size: 1.1em, font: "Fira Sans")[KU Leuven] \
-    #text(size: 0.9em, font: "Fira Sans")[Faculteit Industriële Ingenieurswetenschappen]
-  ]
-  pagebreak()
-
-  // Disclaimer / Intro
-  block(
-    width: 100%,
-    fill: luma(250),
-    inset: 12pt,
-    radius: 4pt,
-    stroke: (left: 3pt + schoolBlue),
-    [
-      *Disclaimer:* Deze samenvattingen zijn beschikbaar op GitHub. Ze zijn gemaakt in LaTeX en Typst. Bijdragen helpt je git, Latex en typst te leren die je zoiezo gaat nodig hebben voor groepsprojecten en je master. Je kunt bijdragen aan de documenten zodat we gezamenlijk betere samenvattingen kunnen maken.\
-      Draag gerust bij: #link("https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs")[GitHub Repository] \
-    ],
-  )
-  v(2em)
-
-  // Table of Contents (styled to match LaTeX)
-  {
-    set text(font: ("Charter", "Libertinus Serif"))
-    set outline.entry(fill: repeat[.#h(4pt)])
-    show outline.entry.where(level: 1): it => {
-      v(8pt)
-      strong(it)
-    }
-    show outline.entry.where(level: 2): set pad(left: 1.5em)
-    show outline.entry.where(level: 3): set pad(left: 3em)
-    outline(indent: auto)
+  if not short_title {
+    align(center + horizon)[
+      #v(-5cm)
+      #text(size: 2.5em, weight: "bold", font: "Fira Sans", fill: black)[#title]
+      #v(0.5cm)
+      #text(size: 1.5em, font: "Fira Sans")[#course]
+      #v(2cm)
+      #text(size: 1.2em)[#authors.join(", ")]
+      #v(1cm)
+      #text(size: 1.2em)[#academic_year]
+      #v(4em)
+      #image("Ku Leuven logo.png", width: 50%)
+      #v(2cm)
+      #text(size: 1.1em, font: "Fira Sans")[KU Leuven] \
+      #text(size: 0.9em, font: "Fira Sans")[Faculteit Industriële Ingenieurswetenschappen]
+    ]
+    pagebreak()
+  } else {
+    // Compact Header for short_title: true
+    block(width: 100%, inset: (bottom: 5pt), {
+      grid(
+        columns: (1fr, auto),
+        column-gutter: 1em,
+        align(left + horizon)[
+          #text(size: 1.8em, weight: "bold", font: "Fira Sans", fill: black)[#title] \
+          #v(-2pt)
+          #text(size: 1.1em, font: "Fira Sans", style: "italic", fill: luma(100))[#course] \
+          #v(-2pt)
+          #text(size: 1em)[#authors.join(", ")]
+        ],
+        align(right + horizon)[
+          #image("Ku Leuven logo.png", width: 80pt)
+        ],
+      )
+      v(-12pt)
+      line(length: 100%, stroke: 1.5pt + schoolBlue)
+    })
   }
-  pagebreak()
+
+  if show_disclaimer {
+    // Disclaimer / Intro
+    block(
+      width: 100%,
+      fill: luma(250),
+      inset: 12pt,
+      radius: 4pt,
+      stroke: (left: 3pt + schoolBlue),
+      [
+        *Disclaimer:* Deze samenvattingen zijn beschikbaar op GitHub. Ze zijn gemaakt in LaTeX en Typst. Bijdragen helpt je git, Latex en typst te leren die je zoiezo gaat nodig hebben voor groepsprojecten en je master. Je kunt bijdragen aan de documenten zodat we gezamenlijk betere samenvattingen kunnen maken.\
+        Draag gerust bij: #link("https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs")[GitHub Repository] \
+      ],
+    )
+    v(2em)
+  }
+
+  if show_outline {
+    // Table of Contents (styled to match LaTeX)
+    {
+      set text(font: ("Charter", "Libertinus Serif"))
+      set outline.entry(fill: repeat[.#h(4pt)])
+      show outline.entry.where(level: 1): it => {
+        v(8pt)
+        strong(it)
+      }
+      show outline.entry.where(level: 2): set pad(left: 1.5em)
+      show outline.entry.where(level: 3): set pad(left: 3em)
+      outline(indent: auto)
+    }
+    pagebreak()
+  }
 
   // Content
   body
