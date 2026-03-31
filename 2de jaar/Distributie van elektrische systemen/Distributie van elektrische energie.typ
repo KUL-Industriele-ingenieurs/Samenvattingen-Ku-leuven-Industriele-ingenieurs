@@ -31,10 +31,27 @@
 #printsymbols()
 #printformularium()
 
+
+// chapter1_inleiding.typ
+// Eerste hoofdstuk - Inleiding
+// Dit bestand wordt geladen via #include "chapters/chapter1_inleiding.typ"
+
+
+= Infomatie vak <ch:inleiding>
+
+Dit vak is opgedeeld in 2 delen: *Transformatoren* en *Netten*.
+Bij transformatoren bestuderen we de werking van transformatoren, hun verliezen en hoe we deze kunnen modelleren. Bij netten bestuderen we de structuur van het elektrische net, de verschillende componenten en hoe we deze kunnen beschermen.
+
+== Examen
+- Gesloten boek
+- Geschreven examen
+- -Theorie , oefeningen en toepassingen
+
+#examenbox("Ga naar alle oefenzittingen en lessen ze geven je een veel betere slaagkans")
+
 // Transformatoren
 #chapter_page("Transformatoren", label: <ch:transformatoren>)
 
-#include "1.Introductie.typ"
 #include "2.Intro transformatoren.typ"
 #include "3.De ideale transformator.typ"
 #include "4.Reële transformator.typ"
@@ -46,5 +63,9 @@
 
 #include "2.Het elektrische net.typ"
 #include "3.Bescherming lage voltage net.typ"
+#include "4.Power quality.typ"
+#include "5.Diode Rectifiers.typ"
+#include "6.Harmonische analyse.typ"
+#include "7.Unbalanceerde netten.typ"
 
 // Oefeningen

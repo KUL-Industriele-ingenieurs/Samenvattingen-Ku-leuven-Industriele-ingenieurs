@@ -23,5 +23,45 @@
             "]"
         ],
         "description": "Insert a wrapped figure"
+    },
+    "Keyterm": {
+        "prefix": "keyterm",
+        "body": "#keyterm[$1]",
+        "description": "Insert a keyterm with brackets"
+    },
+    "TODO": {
+        "prefix": "todo",
+        "body": "#TODO[$1]",
+        "description": "Insert a TODO with brackets"
+    },
+    "NOTE": {
+        "prefix": "note",
+        "body": "#NOTE[$1]",
+        "description": "Insert a NOTE with brackets"
+    },
+    "FIXME": {
+        "prefix": "fixme",
+        "body": "#FIXME[$1]",
+        "description": "Insert a FIXME with brackets"
+    },
+    "Formula (frm)": {
+        "prefix": "frm",
+        "body": "#frm[$1][$2][$3]",
+        "description": "Insert a formula with three sets of brackets"
+    },
+    "Theorie": {
+        "prefix": "theorie",
+        "body": "#theorie(title: \"$1\")[$2]",
+        "description": "Insert a theorie block"
+    },
+    "Voorbeeld": {
+        "prefix": "voorbeeld",
+        "body": "#voorbeeld(title: \"$1\")[$2]",
+        "description": "Insert a voorbeeld block"
+    },
+    "Concept": {
+        "prefix": "concept",
+        "body": "#concept(title: \"$1\")[$2]",
+        "description": "Insert a concept block"
     }
 }

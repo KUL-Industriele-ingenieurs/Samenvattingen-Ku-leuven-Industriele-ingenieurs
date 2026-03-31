@@ -43,11 +43,17 @@ jobs:
           done <<< "$CHANGED"
 
           if [ ${#BAD[@]} -gt 0 ]; then
-            echo "\n🛑 ERROR: The following generated PDFs were changed and match existing .tex files:" >&2
+            echo -e "\n🛑 ERROR: The following generated PDFs were changed and match existing .tex or .typ source files:" >&2
             for f in "${BAD[@]}"; do
-              echo "  - $f" >&2
+              tex_file="${f%.*}.tex"
+              typ_file="${f%.*}.typ"
+              if [ -f "$tex_file" ]; then
+                echo "  - PDF: '$f' (Matches source: '$tex_file')" >&2
+              else
+                echo "  - PDF: '$f' (Matches source: '$typ_file')" >&2
+              fi
             done
-            echo "\nPlease remove generated PDFs from your change (git restore --staged <file> or git reset HEAD <file>) and push again." >&2
+            echo -e "\nPlease remove these generated PDFs from your commit (git restore --staged <file> or git reset HEAD <file>) and push again." >&2
             exit 1
           fi
 

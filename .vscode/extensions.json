@@ -15,6 +15,7 @@
         "mushanshitiancai.vscode-paste-image",
         "mushan.vscode-paste-image",
         "pomdtr.excalidraw-editor",
-        "calebfiggers.typst-companion"
+        "calebfiggers.typst-companion",
+        "kisstkondoros.vscode-gutter-preview"
     ]
 }
