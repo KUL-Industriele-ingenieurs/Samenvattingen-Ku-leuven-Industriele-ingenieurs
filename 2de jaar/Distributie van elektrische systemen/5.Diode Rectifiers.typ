@@ -133,4 +133,109 @@ $v_0$ is de totale spanning over de batterij en de weerstand.
 $ v_0 = v_b + v_r $
 
 
+Wat gaat er nu gebeuren als je inductieve belasting toevoegt?
+
+=== Inductieve belasting
+
+#figure(
+  image("Inductieve-resitieve load.png", width: 5cm),
+  caption: [Inductieve-resitieve load],
+  label: <fig:Inductieve-resitieve-load>,
+)
+
+We gaan dit stap per stap aanpakken om het te begrijpen.
+
+==== Half wave rectifier met inductieve belasting
+Herinner je dat een spoel de voltage verschillen gaat tegengaan. Die doet dit door magnetische flux op te slaan en deze dan terug vrij te geven.
+
+
+Je stroom $i_0$ gaat achterlopen op de spanning $v_s$ door de spoel.
+
+#figure(
+  image("Half-wave rectifier met inductieve belasting.png", width: 5cm),
+  caption: [Half-wave rectifier met inductieve belasting],
+  label: <fig:Half-wave-rectifier-met-inductieve-belasting>,
+)
+
+$ v(s)(t) = V_s sin(omega t) = R i_0(t) + L (d i_0(t))/(d t) $
+
+
+Je krijg eigenlijk een verschijving van de spanning $v_s$ naar rechts en dit wordt $v_0$
+
+$v_l$ is dit geval wordt gecreëert door de verandering van stroom door de spoel. Deze wordt opgeslagen in het begin en dan terug vrij gegeven.
+
+Dus zelfs na dat de spanning $v_s = 0$ wordt er nog steeds magnetische flux energie (weber [Wb]) vrij gegeven. Dit zorgt ervoor dat de spanning $v_0$ niet direct naar 0 gaat.
+
+
+$ v_l = L (d i) / (d t) $
+
+
+==== Full-wave rectifier met inductieve belasting
+
+Net zoals bij de half-wave rectifier gaat de stroom $i_0$ achterlopen op de spanning $v_s$ door de spoel. Maar je krijgt nu een soort uitsmering van de spanning omdat de voltage $v_0$ niet helemaal nul wordt.
+
+#figure(
+  image("Full-wave rectifier met inductieve belasting.png", width: 12cm),
+  caption: [Full-wave rectifier met inductieve belasting],
+  label: <fig:Full-wave-rectifier-met-inductieve-belasting>,
+)
+
+
+
+==== Heel hoge inductieve belasting
+
+#figure(
+  image("Heel hoge inductieve belasting met full wave rectifier.png", width: 12cm),
+  caption: [Heel hoge inductieve belasting met full wave rectifier],
+  label: <fig:Heel-hoge-inductieve-belasting-met-full-wave-rectifier>,
+)
+
+Omdat er een enorm grote inductatie $L$ is gaat de stroom $i_d$ bijna niet veranderen.
+
+De diodes gaat dan enorm hard schakelen omdat er direct 90° verandering is van de stroom. Dit kan in praktijk niet. Je krijgt nog een inductatie van de diodes. Die gaat die grote stroomveranderingen tegenhouden.Dit noemen we #keyterm[Grid-inductantie]
+
+
+#figure(
+  image("Grid inductatie.png", width: 5cm),
+  caption: [Grid inductatie],
+  label: <fig:Grid-inductatie>,
+)
+
+Je krijgt dan #keyterm[Overlapping] waarbij beide diodes tegelijkertijd geleiden. Stel diode 1 $D_1$ begint af te dalen en diode 3 $D_3$ begint te stijgen. Dan gaat D3, D1 #keyterm[Afknijpen].
+
+Hierdoor wordt de spanning over de load $v_0$ tijdelijk 0. Dit komt omdat beide diodes gelijden gaan hun spanningen elkaar uitschakelen.
+
+Het tijdsverschil waarbij de diodes tegelijkertijd geleiden is $mu$.
+
+
+=== Alles tesamen
+
+Dus met alles te samen:
+- lagging door inductieve load
+- spoel door diodes die snelle switching tegengaan.
+
+#figure(
+  image("Alles tesamen loads op diode rectifiers.png", width: 12cm),
+  caption: [Alles tesamen loads op diode rectifiers],
+  label: <fig:Alles-tesamen-loads-op-diode-rectifiers>,
+)
+
+- $v_s$ is de spanning van de sinusgolf
+- $v_0$ is de spanning over de load
+- $I_s$ de stroom van de sinusgolf door spoel van de diodes
+
+
+We kunnen nu deze grafiek uitleggen:
+#figure(
+  image("Batterij met series inductatie.png", width: 5cm),
+  caption: [Batterij met series inductatie],
+  label: <fig:Batterij-met-series-inductatie>,
+)
+
+De spanning en stroom zijn kleiner omdat de batterij een bepaalde voltage pas gaat geleiden. Er is een vertraging door de spoel. Door de overlapping is er een afknijping van de spanning.
+
+
+== Capacitieve load
+
+
 
