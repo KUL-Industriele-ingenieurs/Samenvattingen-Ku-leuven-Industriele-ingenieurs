@@ -209,9 +209,10 @@ Als alle oppervlakken (inclusief de schilden) dezelfde emissiviteit $epsilon$ he
 
 == Effect van Radiatie op temperatuursmetingen
 
+#TODO[Toevoegen]
+
 
 == Radiatie uitwisseling en emitting van absorberende gassen.
 
-
-
+#TODO[Toevoegen]
 
