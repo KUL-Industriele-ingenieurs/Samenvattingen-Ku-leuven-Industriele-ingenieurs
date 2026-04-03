@@ -1,6 +1,6 @@
 #import "../../school-template.typ": *
 
-= Reële transformatoren.
+= Reële transformatoren. <ch:reële-transformatoren>
 
 == Inhoud
 - Non-ideale transformatoren
