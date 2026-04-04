@@ -147,15 +147,73 @@ In oefeningen gaat er altijd vermeld worden als je verliezen in rekening moet ho
 
 == Voltage drop <sec:voltage-drop>
 
+#grid(
+  columns: (1fr, auto),
+  gutter: 2em,
+  align: horizon,
+  [
+    Dit deel bekijkt de voltage drops bij ons versimpeld model. Onze nominale voltage $u_1 = V_1$, nominale stroom $i$ en de phase hoek $phi$ $=>$ we gaan deze in het equivalent schema steken en kijken wat de voltage drop is $u_2 = V_2$ en een phasordiagram tekenen.
+  ],
+  grid(
+    columns: 3,
+    align: horizon,
+    gutter: 0.5em,
+    stack(
+      spacing: 0.8em,
+      [• nominal #text(fill: rgb("#4CAF50"))[$u_1$]],
+      [• nominal #text(fill: rgb("#F44336"))[$i$]],
+      [• Phase angle $phi$],
+    ),
+    $\}$,
+    $=> #text(fill: rgb("#2196F3"))[$u_2$]$,
+  ),
+)
+
+#figure(
+  image("Voltage-Drop.png", width: 8cm),
+  caption: [Voltage-Drop],
+  label: <fig:Voltage-Drop>,
+)
 
 
 
+Onze total voltage drop $Delta V$ wordt bepaald door $r dot I$ in parallel met $I$ want het is een weerstand [$Omega$] en $x dot I$ 90° met $I$ want het is een spoel [$H$].
+
+_Dit hebben we al veel hiervoor gezien waarbij we verliezen in voltage hebben en die weerstand zal een reël en een imaginair deel hebben die in parallel of 90° staan op de stroom._
+
+#figure(
+  image("Soorten voltage drops.png", width: 10cm),
+  caption: [Soorten voltage drops],
+  label: <fig:Soorten-voltage-drops>,
+)
+
+=== Spanningsregeling
+
+#wrap-figure(
+  image("Spanningsregelaar.png", width: 8cm),
+  caption: [Spanningsregelaar],
+  label: <fig:Spanningsregelaar>,
+)[
+
+  De #keyterm[Spanningsregeling] ($V R$) is een maatstaf voor de stabiliteit van de secundaire spanning bij wisselende belasting. Het geeft aan hoeveel procent van de spanning "verloren" gaat in de transformator zelf.
+
+  $ V R = frac(V_2.0 - V_2, V_2) dot 100 \% $
+
+  met:
+  - $V_2.0$: secundaire spanning bij *No-load* (onbelast).
+  - $V_2$: secundaire spanning bij *Full-load* (belast).
+
+  Hoe lager de $V R$, hoe beter de spanningsbron. De spanningsval wordt sterk beïnvloed door het type belasting (#keyterm[Arbeidsfactor PF]):
+
+  - *Lagging PF (Inductief - bijv. motoren)*: De spanning daalt aanzienlijk. Dit is de "worst-case" en meest voorkomende situatie. Meestal wordt een $V R$ opgegeven voor een $P F = 0.8$ inductief.
+  - *Unity PF (Resistief - bijv. verwarming)*: Er is een matige spanningsval door de interne weerstand.
+  - *Leading PF (Capacitief - bijv. condensatoren)*: De spanning kan juist *stijgen* ($V_2 > V_2.0$), wat resulteert in een negatieve $V R$.
+]
+
+== Oefeningen transformatoren in de praktijk
 
 
-
-
-
-
+#TODO[Oefenignen toevoegen]
 
 
 

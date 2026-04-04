@@ -63,5 +63,15 @@
         "prefix": "concept",
         "body": "#concept(title: \"$1\")[$2]",
         "description": "Insert a concept block"
+    },
+    "Oefening": {
+        "prefix": ["oe", "oefening"],
+        "body": "#oe[$1]",
+        "description": "Insert an exercise block"
+    },
+    "Oplossing": {
+        "prefix": ["sol", "oplossing"],
+        "body": "#oplossing[\n  $1\n]",
+        "description": "Insert a solution block"
     }
 }
