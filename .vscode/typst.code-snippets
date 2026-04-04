@@ -65,9 +65,9 @@
         "description": "Insert a concept block"
     },
     "Oefening": {
-        "prefix": ["oe", "oefening"],
-        "body": "#oe[$1]",
-        "description": "Insert an exercise block"
+        "prefix": ["oefening", "oe"],
+        "body": "#oefening(title: \"$1\")[\n  $2\n]",
+        "description": "Insert an exercise block with a title"
     },
     "Oplossing": {
         "prefix": ["sol", "oplossing"],

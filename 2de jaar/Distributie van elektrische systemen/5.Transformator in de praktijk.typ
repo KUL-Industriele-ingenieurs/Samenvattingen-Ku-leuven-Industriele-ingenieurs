@@ -210,11 +210,16 @@ _Dit hebben we al veel hiervoor gezien waarbij we verliezen in voltage hebben en
   - *Leading PF (Capacitief - bijv. condensatoren)*: De spanning kan juist *stijgen* ($V_2 > V_2.0$), wat resulteert in een negatieve $V R$.
 ]
 
-== Oefeningen transformatoren in de praktijk
+== Efficienty
+
+
+
+
+
+== Oefeningen transformatoren uit de les in de praktijk
 
 
 #TODO[Oefenignen toevoegen]
-
 
 
 
