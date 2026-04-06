@@ -16,6 +16,7 @@
         "mushan.vscode-paste-image",
         "pomdtr.excalidraw-editor",
         "calebfiggers.typst-companion",
-        "kisstkondoros.vscode-gutter-preview"
+        "kisstkondoros.vscode-gutter-preview",
+        "tldraw-org.tldraw-vscode"
     ]
 }
