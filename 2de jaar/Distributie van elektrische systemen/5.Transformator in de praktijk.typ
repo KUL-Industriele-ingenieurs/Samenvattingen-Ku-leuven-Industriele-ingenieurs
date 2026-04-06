@@ -211,8 +211,130 @@ _Dit hebben we al veel hiervoor gezien waarbij we verliezen in voltage hebben en
 ]
 
 == Efficienty
+Dit is geen nieuw concept. Efficienty van een transformator wordt bepaald door de verliezen in de transformator. Zie #ref(<ch:reële-transformatoren>).
+
+#wrap-figure(
+  image("Efficienty.png", width: 8cm),
+  caption: [Efficienty],
+  label: <fig:Efficienty>,
+)[
+
+  #frm[Efficiency][ $eta = frac(P_2, P_1) = frac(P_2, P_2 + P_C u + P_(F e))$][
+    met: $P_1$: primaire vermogen, $P_2$: secundaire vermogen, $eta$: efficiency, $P_(F e)$: ijzer verliezen, $P_(c u)$: koper verliezen
+  ]
+
+  Onze weerstanden $X_1, R_1, X_2, R_2, X_m, R_(F e)$ zijn onze windings verliezen. Onze parallel weerstand is onze core verliezen.
+
+  $ P_(c u) = I^2_1 R_1 + I^2_2´ R_2´ $
+
+  $ P_(F e) = P_C = P_0 = frac(E_1^2, R_(F e)) $
+  met $E_1$ de spanning over de parallel weerstand.
+
+]
+
+== Start-up <sec:start-up>
+
+=== Recap tijd-domein relaties
+
+#wrap-figure(
+  image("Transformator-startup.png", width: 6.5cm),
+  caption: [Transformator-startup],
+  label: <fig:Transformator-startup>,
+)[
+
+  $ v_1 = V_1 sin(omega t + theta_0) = N_1 (d phi) / (d t) $
+
+  Herhaling: We weten dat de flux door onze core gelijk is aan:
+
+  $ phi = 1/N_1 integral(v_1 d t) $
+
+  _Integraal dus 90° verschuiving tegenover de spanning_
+
+  Met deze extra relaties
+
+  $ lambda_1 = N_1 phi $
+
+  $ phi = hat(v_1)/(omega N_1) sin(omega t - pi/2) + phi_(D C) $
+
+  Nu tijdens #keyterm[Startup] en dus niet in #keyterm[Steady state] is er een DC component in de flux. Dit zorgt voor een *extra stroom* die door de transformator gaat. Dit is de zogenaamde #keyterm[Inschakelstroom].
+
+  Dus het moment dat we onze transformator aan zetten gaat dit een impact hebben.
+]
+
+=== Aanzetten van de transformator $omega t = 0$
+
+#wrap-figure(
+  image("Aanzetten omega t = 0.png", width: 10cm),
+  caption: [Aanzetten omega t = 0],
+  label: <fig:Aanzetten-omega-t-0>,
+)[
+
+  Dit is de best case want onze $phi_(D C) = 0$
 
 
+  De worst case scenario is als we de transformator aanzetten op het moment dat de spanning 0 is. Dan gaat de flux door de core maximaal zijn.
+]
+
+
+=== Aanzetten van de transformator $omega t = pi/2$
+
+#wrap-figure(
+  image("Aanzetten omega t = phi.2.png", width: 11cm),
+  caption: [Aanzetten omega t = phi.2],
+  label: <fig:Aanzetten-omega-t-phi-2>,
+)[
+  $ phi(w t) = 0 $
+
+  We vullen de initiële condities in:
+
+  $ phi(-pi/2) = 0 $
+
+  En we vullen dit in in onze formule:
+
+  $ phi = hat(phi) sin(omega t - pi/2) + phi_(D C) $
+  $ phi = hat(V_1)/(omega N_1) sin(omega t) - hat(V_1)/(omega N_1) $
+
+  Dit heeft een drastische impact op de transformator. Door de $phi_(D C)$ verschuift de fluxgrafiek omhoog, waardoor de maximale flux bijna *verdubbelt* ($2 hat(phi)$).
+
+  === De fysica achter de Inschakelstroom
+
+  #figure(
+    image("Fenomeen inschakelstroom.png", width: 5cm),
+    caption: [Fenomeen inschakelstroom],
+    label: <fig:Fenomeen-inschakelstroom>,
+  )
+
+  De transformator-kern is ontworpen om net onder het verzadigingspunt te werken. Een flux van $2 hat(phi)$ jaagt de kern diep in #keyterm[Kernverzadiging] (Saturation).
+
+  1. *Verzadiging:* De magnetische weerstand stijgt enorm.
+  2. *Inductiedaling:* De inductiviteit $L$ van de spoel keldert (de kern kan geen extra flux meer opnemen).
+  3. *Stroompiek:* Omdat de tegenwerkende kracht van de inductie wegvalt, ontstaat er een gigantisch grote #keyterm[Inschakelstroom] (tot 10x de nominale stroom) om de flux te handhaven.
+
+  Deze stroom vervalt langzaam (over ongeveer 100 cycli) naarmate de verliezen in de wikkelingen de DC-component wegwerken.
+
+  #figure(
+    image("Inschakelstroom.png", width: 8cm),
+    caption: [Inschakelstroom],
+    label: <fig:Inschakelstroom>,
+  )
+]
+
+== Parallel connecties van transformatoren <sec:parallel-connecties>
+
+#wrap-figure(
+  image("Parallel geschakelde transformatoren.png", width: 6cm),
+  caption: [Parallel geschakelde transformatoren],
+  label: <fig:Parallel-geschakelde-transformatoren>,
+)[
+
+  Transformator kunnen in parallel geschakeld worden. Waarom zouden we dit doen inplaats van gewoon een grotere transformator te nemen?
+
+  - / Upgraden van een bestaande installatie: een kleinere transformator kan bijgeplaatst worden om de totale vermogen te verhogen. Dit is makkelijker dan een nieuwe transformator te installeren.
+  - / Redundantie & backup: Als een transformator uitvalt, kan de andere transformator de belasting overnemen. Dit is belangrijk voor kritieke installaties.
+  - / Flexibiliteit: Bij grote veranderingen van load moet je niet altijd je grote transformator gebruiken en kan je makkelijk switchen tussen de transformatoren.
+]
+
+Stel dat je een kortsluiting hebt met 3 in parallel geschakelde transformatoren. Alle stroom $I_(s c)$ gaat in totaal door de gekortsluite wire. De circuit breaker (CBP) zal het circuit kortsluiten.
 
 
 

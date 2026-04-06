@@ -231,7 +231,7 @@ Je ziet het hier getekend in gestreept blauw.
 *Phasor diagram van de exciting current $I_phi$*
 
 #figure(
-  image("Phasor excitising current.png", width: 5cm),
+  image("Phasor excitising current.png", width: 7cm),
   caption: [Phasor excitising current],
   label: <fig:Phasor-excitising-current>,
 )
