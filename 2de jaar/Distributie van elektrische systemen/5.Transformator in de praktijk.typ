@@ -322,7 +322,7 @@ Dit is geen nieuw concept. Efficienty van een transformator wordt bepaald door d
 == Parallel connecties van transformatoren <sec:parallel-connecties>
 
 #wrap-figure(
-  image("Parallel geschakelde transformatoren.png", width: 6cm),
+  image("Parallel geschakelde transformatoren.png", width: 8cm),
   caption: [Parallel geschakelde transformatoren],
   label: <fig:Parallel-geschakelde-transformatoren>,
 )[
@@ -335,6 +335,22 @@ Dit is geen nieuw concept. Efficienty van een transformator wordt bepaald door d
 ]
 
 Stel dat je een kortsluiting hebt met 3 in parallel geschakelde transformatoren. Alle stroom $I_(s c)$ gaat in totaal door de gekortsluite wire. De circuit breaker (CBP) zal het circuit kortsluiten.
+
+=== Condities voor parallel connecties <sec:condities-parallel-connecties>
+Er zijn een aantal condities waar we mee moeten rekening houden als we transformatoren in parallel willen schakelen
+
+- / Matching transformatie verhoudingen: $n_1 = n_2$
+- / Matching $u_(s c)$: Is het percentuele short circuit factor in de short circuit test. Ze moeten ongeveer gelijk zijn. $u_(s c) = frac(I_(s c) Z_(s c), V_1) dot 100 %$ => balanceerd load current.
+
+We willen dat als we meerdere transformator in parallel hebben dat de load over de transformatoren verdeeld worden.
+
+#figure(
+  image("Parallel transformers.png", width: 12cm),
+  caption: [Parallel transformers met load M],
+  label: <fig:Parallel-transformers>,
+)
+
+- / matching kVA rating:
 
 
 
