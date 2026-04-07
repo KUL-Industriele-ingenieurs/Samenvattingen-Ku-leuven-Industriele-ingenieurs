@@ -7,10 +7,11 @@
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{booktabs}
-\usepackage{hyperref}
+\usepackage{amsmath}
 \usepackage{enumitem}
 \usepackage{microtype}
 \usepackage{../../school-macros}
+\usepackage{hyperref}
 \begin{document}
 % Titelinformatie
 \kuleuventitle
@@ -73,9 +74,9 @@ In principe moet je oneindig punten analyseren, dus met partiële differentiaalv
     \item \textbf{Governing Physics:} De basis wordt gevormd door behoudswetten en fundamentele natuurkunde.
     \item \textbf{Veldvariabele ($q$):} De onbekende die het probleem beschrijft (bijv. verplaatsing, temperatuur, druk of snelheid).
     \item \textbf{PDE:} Het toepassen van wetten op een infinitesimaal controle-volume leidt tot een \textit{Partial Differential Equation} (PDE):
-    \begin{equation}
+    \begin{align*}
         \mathcal{L}q = F
-    \end{equation}
+    \end{align*}
     waarbij $\mathcal{L}$ de differentiaaloperator is en $F$ de externe belasting.
 \end{itemize}
 
@@ -89,9 +90,9 @@ Om de PDE op te lossen, wordt het rekendomein opgedeeld:
 
 \subsection*{Matrix Algebra en Processing}
 De computer zet het gediscretiseerde probleem om naar een lineair stelsel:
-\begin{equation}
+\begin{align*}
     [K]\{\tilde{q}\} = \tilde{F}
-\end{equation}
+\end{align*}
 
 \begin{itemize}
     \item \textbf{$[K]$:} De stijfheidsmatrix die de materiaal- en geometrie-eigenschappen bevat.
@@ -102,9 +103,9 @@ De computer zet het gediscretiseerde probleem om naar een lineair stelsel:
 \begin{theorie}[Belangrijk om te weten]
 \subsection*{Computationele Complexiteit}
 De \textit{processing} fase vereist het inverteren van de matrix om de oplossing te vinden:
-\begin{equation}
+\begin{align*}
     \{\tilde{q}\} = [K]^{-1} \tilde{F}
-\end{equation}
+\end{align*}
 
 \textbf{Belangrijke bepalingen uit de notities:}
 \begin{itemize}
@@ -125,9 +126,9 @@ In de numerieke analyse zijn er verschillende soorten fouten die kunnen optreden
     \end{figure}
     In deze figuur zien we dat de computer punten verbind met rechte lijnen, terwijl de echte oplossing een kromme is. De fout is dus het verschil tussen de echte oplossing en de benaderde oplossing.
     Discretisatiefouten komen eigelijk door de mesh want je kan deze niet oneindig verfijnen.
-    \begin{equation}
+    \begin{align*}
     \mathcal{L}q = F \quad \text{vs.} \quad [K]\{\tilde{q}\} = \tilde{F}
-    \end{equation}
+    \end{align*}
     waarbij $\mathcal{L} \not= K$, $q \not= \tilde{q}$, en $F \not= \tilde{F}$.
     Deze fout neemt natuurlijk af als je meer knopen toevoegt (mesh verfijnen) , kost natuurlijk meer tijd.
     \newpage
@@ -150,9 +151,9 @@ De volgende figuur beschrijft het beslissingproces en de iteratieve cyclus van e
     \caption{Beslissingsproces voor het gebruik van FEM}
 \end{figure}
 \begin{conceptbox}[\textbf{Kenmerk van een goede simulatie}]
-    \begin{equation}
+    \begin{align*}
     t_{preprocessing}, t_{postprocessing} \gg t_{solve}
-    \end{equation}
+    \end{align*}
 \end{conceptbox}
 \newpage
 \chapter{Theoretische overwegingen, Elementen, knooppunten en vormfuncties}
@@ -170,9 +171,9 @@ Elke knoop bevat een aantal vrijheidsgraden, onbekende variabelen die we willen 
 Het totaal aantal vergelijkingen (\textbf{ndof}) is gelijk aan het aantal knopen vermenigvuldigd met het aantal vrijheidsgraden per knoop.
 \newline
 Per definitie is die matrix $[K]$ dan ook een \textbf{vierkante matrix} van grootte $ndof \times ndof$. En dus eigelijk is de \textbf{CPU-tijd} die nodig is om deze matrix op te lossen, dus $[K]^{-1}$ te berekenen, afhankelijk van het aantal vrijheidsgraden, dus $ndof$.
-\begin{equation}
+\begin{align*}
 \text{CPU-time} \sim (ndof)^3
-\end{equation}
+\end{align*}
 Je wilt dus zo weinig mogelijk knopen en vrijheidsgraden, maar belangrijk is dat de discretisatiefout ook zo klein mogelijk is, dus je wilt een goede balans tussen nauwkeurigheid en rekentijd.
 \newpage
 \subsection{Domein discretisatie}
@@ -299,14 +300,27 @@ Voor een vierkant element met 4 knopen wordt dit als volgt berekent:
   \label{fig:vierkantelemntvorm.png}
  \end{figure}
 Deze formule is eigenlijk een gewogen gemiddelde van de knoopwaarden, waarbij de vormfuncties $N_i$ de bijdrage van elke knoop bepalen op basis van de positie binnen het element. De vormfuncties zijn zo ontworpen dat ze gelijk zijn aan 1 bij hun eigen knoop en 0 bij alle andere knopen, wat zorgt voor een correcte interpolatie van de oplossing binnen het element.
-\newline
+\newpage
 Kenmerken zijn:
 \begin{itemize}
     \item \textbf{Stuksgewijs (piecewise):} Elke vorm van element heeft zijn eigen set van vormfuncties, deze zijn gedefinieerd binnen dat specifieke element. $N_i = 1$ bij knoop i, en $N_i = 0$ bij alle andere knopen.
+    \begin{figure}[H]
+      \centering
+      \includegraphics[width=0.5\textwidth]{stuksgewijs.png}
+      \caption{Waardes knopen in 2D element}
+      \label{fig:stuksgewijs.png}
+     \end{figure}
     \item \textbf{Polynomen:} Meestal zijn het polynomale functies (zoals lineair of kwadratisch)
     \item \textbf{De som is altijd 1:} Voor elk punt binnen het element geldt dat de som van alle vormfuncties gelijk is aan 1, dit zorgt voor een correcte interpolatie. $\sum_{i=1}^{n} N_i = 1$
 \end{itemize}
-\newpage
+We defini\"eren de volgende formule die de verdeling beschrijft van de veldvariabele binnenin elk afzonderlijk element:
+\begin{align*}
+    \hat{q} = [N] \tilde{q}
+\end{align*}
+Hierbij is $[N]$ de matrix van vormfuncties, deze matrix is uitsluitend afhankelijk van de geometrie van het element en $\tilde{q}$ de vector van knoopwaarden (de onbekenden, bvb verplaatsingen), deze is verschillend per element. $\hat{q}$ is de verdeling van de veldvariabele ergens binnenin het element. Deze wordt geïnterpoleerd vanuit de bekende knoopwaarden  $\tilde{q}$.
+\begin{warningbox}[Deze formule is niet te verwarren met de systeemvergelijking!]
+    Het is belangrijk om deze 2 formules niet uit elkaar te halen! Ze doen alle twee iets op een volledig andere schaal. \( [K]\{\tilde{q}\} = \tilde{F} \) is de formule die we gebruiken om de knoopwaarden \( \tilde{q} \) te berekenen, dit is dus een vergelijking op het niveau van het hele systeem (de mesh), terwijl \( \hat{q} = [N]\tilde{q} \) een formule is die we gebruiken om de veldvariabele ergens binnenin een element te berekenen op basis van de knoopwaarden, dit is dus een vergelijking op het niveau van een enkel element. \( [N] \) is de vormfunctiematrix die volledig afhankelijk is van de co\"ordinaten en afmetingen (geometrie) van het element, terwijl \( [K] \) (de stijfheidsmatrix) eerder fysisch beschrijvend is en opgebouwd is uit de materiaaleigenschappen, de geometrie en de vormfuncties, en koppelt de fysieke stijfheid van de structuur aan de uitgeoefende externe krachten.
+\end{warningbox}
 \subsubsection{1D Vormfuncties}
 1D vormfuncties kunnen:
 \begin{itemize}
@@ -333,30 +347,30 @@ Kenmerken zijn:
      \end{figure}
 \end{itemize}
 Om een verplaatsing $\hat{u}(x)$ in een eindig element te bepalen gebruiken we de volgende polynoombenadering: 
-\begin{equation}
+\begin{align*}
 \hat{u}(x) = a + bx + cx^2 + dx^3 + ex^4 + \ldots
-\end{equation}
+\end{align*}
 Neem als voorbeeld de p=1 lineaire rod met knoop A en knoop B, zeg dat knoop A zich op een afstand x = 0 bevindt en knoop B op een afstand x = L, als een verplaatsing $u_A$ op knoop A en een verplaatsing $u_B$ op knoop B bekend zijn, dan kunnen we de co\"effici\"enten a, b, c, d, e, ... bepalen door de volgende voorwaarden te stellen:
 \newline
 Sinds het in dit geval een lineaire benadering is, hebben we alleen de co\"effici\"enten a en b nodig, dus we stellen:
-\begin{equation}
+\begin{align*}
 \hat{u}(0) = a = u_A  , \quad \hat{u}(L) = a + bL = u_B
-\end{equation}
+\end{align*}
 Hieruit kunnen we b bepalen als:
-\begin{equation}
+\begin{align*}
 b = \frac{u_B - u_A}{L}
-\end{equation}
+\end{align*}
 En dus is de benaderde verplaatsing binnen het element:
-\begin{equation}
+\begin{align*}
 \hat{u}(x) = u_A + \frac{u_B - u_A}{L} x
-\end{equation}
+\end{align*}
 In termen van de vormfuncties kunnen we dit ook schrijven als:
-\begin{equation}
+\begin{align*}
 \hat{u}(x) = N_A(x) u_A + N_B(x) u_B = \left(1 - \frac{x}{L}\right) u_A + \frac{x}{L} u_B
-\end{equation}
+\end{align*}
 $N_A(x)$ en $N_B(x)$ zijn dus de vormfuncties.
 Op dezelfde manier kan dit gedaan worden voor quadratisch en cubisch maar dan met extra onbekenden.
-\newpage
+\newline
 Dit is dan een plot van hoe de vormfuncties eruit zien (linkse plot is voor lineair, let wel op dat hier ipv A en B benamingen voor knopen, de benamingen 1 en 2 gebruikt zijn, het is gewoon belangrijk om te zien beneden dat in knoop 1 (A), $N_1$ = $N_A$ gelijk is aan 1, en in knoop 2 (B), $N_2$ = $N_B$ gelijk is aan 1, en dat de vormfuncties van de andere knoop gelijk zijn aan 0 in deze knopen):
 \begin{figure}[H]
   \centering
@@ -369,7 +383,7 @@ We noemen dit een interpolatie omdat we eigelijk een waarde zoeken binnen het el
 Visueel ziet dit er als volgt uit:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.3\textwidth]{visueelinterpolatie.png}
+  \includegraphics[width=0.4\textwidth]{visueelinterpolatie.png}
   \caption{Visuele representatie van interpolatie binnen een element}
   \label{fig:visueelinterpolatie.png}
  \end{figure}
@@ -389,5 +403,195 @@ Omdat in dit geval de berekende rek (en dus ook de berekende spanning want $\sig
   \caption{Constante spanning binnen een lineair element tussen knoop A en B}
   \label{fig:spanning_AB.png}
  \end{figure}
-
+\newpage
+\subsubsection{2D Vormfuncties}
+We maken hier het volgende voorbeeld dat ook aan bod komt in de slides en de opgenome videos op toledo, dus als iets niet duidelijk is verwijs ik daar naar.
+\newline
+We nemen dus als voorbeeld deze driehoekige (tria) element met 3 knopen, dit is een lineair element: 
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.8\textwidth]{voorbeeld2Dvormfunctie.png}
+   \caption{Tria element voorbeeld 2D vormfunctie}
+   \label{fig:voorbeeld2Dvormfunctie.png}
+  \end{figure}
+Het nut van die vormfuncties is dus om een interpolatie te vinden op een punt dat niet op zo een knoop ligt, hier in dit geval is dit het donkerblauw punt (x,y) dat we gaan bepalen aan de hand van de gekende verplaatsingen in de knopen ($\tilde{u}_{xA}$, $\tilde{u}_{yA}$, $\tilde{u}_{xB}$, $\tilde{u}_{yB}$, $\tilde{u}_{xC}$, $\tilde{u}_{yC}$).
+\begin{warningbox}[Dit is is een iets andere polynomaal dan bij 1D!]
+Voor een algemene 2D element kan de functie voor $\hat{u}_x(x,y)$ en $\hat{u}_y(x,y)$ geschreven worden als de volgende polynole functie:
+\begin{align*}
+\hat{u}_x(x,y) = a + bx + cy + dxy + ex^2 + fy^2 + \ldots
+\end{align*}
+\end{warningbox}
+Op de slides worden $\hat{u}_x(x,y)$ en $\hat{u}_y(x,y)$ alle twee apart berekend met:
+\begin{align*}
+\hat{u}_x(x,y) = a + bx + cy
+\end{align*}
+\begin{align*}
+\hat{u}_y(x,y) = d + ex + fy
+\end{align*}
+Dus verschillende coefficiënten (vormfuncties) voor de x- en y-component, MAAR in de video's op toledo wordt dit niet gedaan, dit is omdat, in dit geval, de vormfuncties gelijk zijn aan elkaar voor beide componenten.
+\begin{conceptbox}[Wanneer zijn die vormfuncties gelijk?]
+    Hier is $N_i$ gelijk voor $\hat{u}_x$ en $\hat{u}_y$ omdat deze variabelen elkaar niet beïnvloeden, bvb. een beweging in de x-richting beïnvloedt niet de beweging in de y-richting. Zodra een knoop in een element meerdere variabelen heeft van verschillende ordes dan zijn de vormfuncties wel verschillend, bij ons zal dit dan waarschijnlijk alleen gaan om buiging.
+\end{conceptbox}
+We gaan hier dan gewoon op voorand al zeggen dat deze vormfuncties gelijk zijn, net zoals in de lesopname op toledo, de volledige uitwerking staat wel op de slides en hier zul je zien dat de vormfuncties effectief gelijk zijn. Dus we kunnen schrijven:
+\begin{align*}
+\hat{u}_x(x,y) = a + bx + cy = \hat{u}_y(x,y)
+\end{align*}
+\newline
+Laten we kijken in knoop A, het berekenen voor alleen de x-component is voldoende aangezien deze gelijk is aan de y-component, hier zien we dat deze zich bevindt op (0,0), invullen in de formule geeft:
+\begin{align*}
+\hat{u}_x(0,0) = a = \tilde{u}_{xA}
+\end{align*}
+Voor knoop B, deze bevindt zich op (Lx,0), invullen in de formule geeft:
+\begin{align*}
+\hat{u}_x(Lx,0) = a + bLx = \tilde{u}_{xB}
+\end{align*}
+Voor knoop C, deze bevindt zich op (0,Ly), invullen in de formule geeft:
+\begin{align*}
+\hat{u}_x(0,Ly) = a + cLy = \tilde{u}_{xC}
+\end{align*}
+Sinds $a = \tilde{u}_{xA}$, kunnen we b en c bepalen als:
+\begin{align*}
+b = \frac{\tilde{u}_{xB} - \tilde{u}_{xA}}{Lx}
+\end{align*}
+\begin{align*}
+c = \frac{\tilde{u}_{xC} - \tilde{u}_{xA}}{Ly}
+\end{align*}
+En dus is de benaderde verplaatsing binnen het element:
+\begin{align*}
+\hat{u}_x(x,y) = \tilde{u}_{xA} + \frac{\tilde{u}_{xB} - \tilde{u}_{xA}}{Lx} x + \frac{\tilde{u}_{xC} - \tilde{u}_{xA}}{Ly} y
+\end{align*}
+In termen van de vormfuncties kunnen we dit ook schrijven als:
+\begin{align*}
+\hat{u}_x(x,y) = N_A(x,y) \tilde{u}_{xA} + N_B(x,y) \tilde{u}_{xB} + N_C(x,y) \tilde{u}_{xC}
+\end{align*}
+Met dan de vormfuncties (als we deze trouwens optellen, zien we dat deze inderdaad gelijk zijn aan 1):
+\begin{align*}
+N_A(x,y) = 1 - \frac{x}{Lx} - \frac{y}{Ly}
+\end{align*}
+\begin{align*}
+N_B(x,y) = \frac{x}{Lx}
+\end{align*}
+\begin{align*}
+N_C(x,y) = \frac{y}{Ly}
+\end{align*}
+Deze vormfuncties zijn identiek aan elkaar voor $\hat{u}_y(x,y)$, dus we kunnen ook schrijven:
+\begin{align*}
+\hat{u}_y(x,y) = N_A(x,y) \tilde{u}_{yA} + N_B(x,y) \tilde{u}_{yB} + N_C(x,y) \tilde{u}_{yC}
+\end{align*}
+We zoeken dan nu eigelijk onze vormfuncties in matrixvorm, dit vinden we met de formule die we eerder zeggen $\hat{q} = [N] \tilde{q}$:
+\begin{align*}
+\begin{Bmatrix}
+\hat{u}_x \\
+\hat{u}_y
+\end{Bmatrix} =
+[N]
+\begin{Bmatrix}
+\tilde{u}_{x,A} \\
+\tilde{u}_{y,A} \\
+\tilde{u}_{x,B} \\
+\tilde{u}_{y,B} \\
+\tilde{u}_{x,C} \\
+\tilde{u}_{y,C}
+\end{Bmatrix}
+\end{align*}
+Hierbij is $\hat{q}$ een 2x1 matrix (of vector) en $\tilde{q}$ een 6x1 matrix (of vector), dus $[N]$ moet een 2x6 matrix zijn, deze vinden we door de vormfuncties te herschikken in de juiste volgorde:
+\begin{align*}
+\begin{Bmatrix}
+\hat{u}_x \\
+\hat{u}_y
+\end{Bmatrix} = 
+\begin{bmatrix}
+1 - \frac{x}{L_x} - \frac{y}{L_y} & 0 & \frac{x}{L_x} & 0 & \frac{y}{L_y} & 0 \\
+0 & 1 - \frac{x}{L_x} - \frac{y}{L_y} & 0 & \frac{x}{L_x} & 0 & \frac{y}{L_y}
+\end{bmatrix}
+\begin{Bmatrix}
+\tilde{u}_{x,A} \\
+\tilde{u}_{y,A} \\
+\tilde{u}_{x,B} \\
+\tilde{u}_{y,B} \\
+\tilde{u}_{x,C} \\
+\tilde{u}_{y,C}
+\end{Bmatrix}
+\end{align*}
+\newpage
+De vormfuncties bepalen voor een vierhoekig 2D element kan op een gelijkaardige manier gedaan worden, hier gaan we wel iets sneller over.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.25\textwidth]{vierhoekig2D.png}
+  \caption{Vierhoek 2D element}
+  \label{fig:vierhoekig2D.png}
+ \end{figure}
+Deze heeft 4 knopen dus:
+\begin{itemize}
+   \item $\hat{u}_x = a + bx + cy + dxy$
+   \item $\hat{u}_y = e + fx + gy + hxy$
+\end{itemize}
+Hier wordt wel de xy term toegevoegd omdat er nu 4 knopen zijn.
+\newline
+We kunnen ook gewoon schrijven dat: 
+\begin{align*}
+    N_i(x,y) = a + bx + cy + dxy
+\end{align*}
+Met dus $N_i = 1$ in knoop i en $N_i = 0$ in de andere knopen. Dit kan ook herschreven worden naar de volgende simpelere vorm:
+\begin{align*}
+    N_i(x,y) = a(x-b)(y-c)
+\end{align*}
+\begin{warningbox}[Trash slides?]
+    Dit is eigelijk een probleempje op de slides denk ik, a, b en c hebben eigelijk andere waardes in deze herschrijving, het is zo herschreven omdat het makkelijker is om te berekenen en als je dit uitrekent heb je: 
+\begin{align*}
+N_i(x,y) = abc - acx - aby + axy
+\end{align*}
+Wat van dezelfde vorm is als de vorige formule, maar dan met andere co\"effici\"enten, dus a, b en c in deze formule zijn niet dezelfde a, b en c als in de vorige formule.
+\end{warningbox}
+b en c kunnen makkelijk gevonden worden door de voorwaarden te stellen dat $N_i$ gelijk is aan 1 in knoop i en 0 in de andere knopen en a kan hierna gevonden worden door te zeggen dat $N_i$ gelijk is aan 1 in knoop 1, dit geeft dan uiteindelijk de volgende vormfuncties:
+\begin{itemize}
+  \item $N_1(x,y) = \frac{1}{6} (3-x)(2-y)$
+  \item $N_2(x,y) = \frac{1}{6} x(2-y)$
+  \item $N_3(x,y) = \frac{1}{6} xy$
+  \item $N_4(x,y) = \frac{1}{6} (3-x)y$
+\end{itemize}
+De slides tonen ook nog dat bij quadratische elementen de vormfuncties niet meer lineair zijn, maar kwadratisch, dit is omdat er tussen de knopen nu extra knopen zijn toegvoegd en aangezien je aantal knopen gelijk moet zijn aan het aantal co\"effici\"enten in de polynoom, moet je nu een kwadratische polynoom gebruiken, dit is dan ook de reden waarom er bij quadratische elementen een extra knoop is toegevoegd tussen de 2 knopen van een rand, deze extra knoop zorgt ervoor dat je een kwadratische benadering kan maken van de oplossing binnen het element, wat dan weer zorgt voor een betere nauwkeurigheid.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{voorbeeldkwadratisch.png}
+  \caption{Polynoom bij een TRIA element met p=2 (quadratisch)}
+  \label{fig:voorbeeldkwadratisch.png}
+ \end{figure}
+Voor hogere orde 2D Tria of Quad elementen gebruik je \textbf{Pascal's driehoek}, hiermee zie je welke wiskundige termen je nodig hebt bij een bepaalde orde.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{pascalsdriehoek.png}
+  \caption{Pascal's driehoek}
+  \label{fig:pascalsdriehoek.png}
+ \end{figure}
+\subsection{Praktische toepassingen van vormfuncties}
+De slide bespreekt 5 praktische toepassingen van vormfuncties in het eindige elementenmethode (FEM):
+\subsubsection{Het bepalen van verplaatsingen binnen een element}
+Dit is eigelijk wat we de hele tijd al aan het doen zijn, de computer berekent alleen de verplaatsingen in de knopen, maar we willen ook weten wat de verplaatsingen zijn binnen het element, dus we gebruiken de vormfuncties om een interpolatie te maken van de verplaatsingen binnen het element op basis van de knoopwaarden.
+\subsubsection{Afgeleide grootheden bepalen (Spanning en rek)}
+We zagen dit kort eerder maar dus in de mechanica is de rek $\epsilon$ de wiskundige afgeleide van de verplaatsing, in de x-richting is dit: 
+\begin{align*}
+\hat{\epsilon}_x = \frac{\partial \hat{u}}{\partial x} = \frac{\partial [N]}{\partial x}\tilde{u}
+\end{align*}
+En spanning $\sigma$ is gelijk aan de rek vermenigvuldigd met de elasticiteitsmodulus E, dus:
+\begin{align*}
+\hat{\sigma}_x = E \hat{\epsilon}_x = E \frac{\partial [N]}{\partial x}\tilde{u}
+\end{align*}
+Omdat de verplaatsing door [N] wordt bepaald, moet de software dus de afgeleide van de vormfunctie nemen om de spanning en rek te vinden. \textbf{Het belangrijke hier om te weten wel is dat afgeleiden een orde verliezen van accuraatheid.}
+\subsubsection{Het bepalen van de element stijfheidsmatrix [K]}
+De vormfuncties worden door de software gebruikt in de energiemethode om de uiteindelijke stijfheidsmatrix ([K]) van het element op te bouwen. Als ontwerper is hier wel 1 cruciaal aandachtspunt! 
+\begin{conceptbox}[Ill-conditioned matrix (slechte stijfheidsmatrix)]
+    Dit is eigelijk een slechte matrix, het heeft onregelmatige elementen, wat betekend dit nu eigelijk? Stel dat $L_x >> L_y$ (het element is extreem lang en dun), de computer berekend breuken zoals $\frac{1}{L_x}$ en $\frac{1}{L_y}$, aangezien $L_x$ heel groot is, zal $\frac{1}{L_x}$ heel klein zijn, en aangezien $L_y$ heel klein is, zal $\frac{1}{L_y}$ heel groot zijn, de computer combineert nu gigantisch grote en gigantische kleine getallen in 1 matrix, computers gaan hier slecht mee om qua afronding, dit leidt tot numerieke fouten, de matrix wordt dan ill-conditioned genoemd en je oplossingen worden onbetrouwbaar. Daarom moet je elementen altijd zo vierkant of gelijkzijdig mogelijk houden.
+\end{conceptbox}
+\subsubsection{Het verdelen van verdeelde belastingen (extrapolatie)}
+Stel je zet een oppervlaktedruk (bijvoorbeeld wind of waterdruk) op een element. Een eindige-elementen-software kan in theorie geen krachten op een 'vlak' zetten, krachten móéten op de knopen worden gezet. De vormfuncties worden door de software gebruikt om precies te berekenen welk percentage van die vlakdruk naar knoop 1, 2 of 3 overgebracht moet worden om een realistisch effect te krijgen.
+\subsubsection{Het 'lijmen' van niet-overlappende meshes (Glue boundary conditions)}
+Soms heb je een heel fijn (gedetailleerd) mesh op het ene onderdeel, dat direct vastzit aan een grof mesh van een ander onderdeel. De knopen sluiten dan niet 1-op-1 op elkaar aan (ze overlappen niet perfect). De software gebruikt dan de vormfuncties van het grote element om te voorspellen hoe de tussenliggende (zwevende) knopen van het kleine element moeten meebewegen, zodat het toch als één massief, gelijmd geheel rekent.
+\subsection{Samenvattende tabel}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{std.png}
+  \caption{Samenvattende tabel definities}
+  \label{fig:std.png}
+ \end{figure}
 \end{document}
