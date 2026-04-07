@@ -121,7 +121,7 @@
     header: context {
       let page_num = counter(page).get().first()
       if page_num > 1 {
-        set text(size: 9pt * 0.92, font: ("Fira Sans", "Arial"))
+        set text(size: 9pt * 0.92, font: ("Fira Sans", "Liberation Sans"))
         let headers = query(selector(heading.where(level: 1)).before(here()))
         let last_header = if headers.len() > 0 { headers.last().body } else { [] }
 
@@ -137,28 +137,28 @@
 
   // Typography: Charter (body) + Fira Sans (headers) + Fira Code 0.85 (code)
   // Charter, Fira Sans & Fira Code loaded from project fonts/ directory
-  set text(font: ("Charter", "Libertinus Serif", "Georgia"), lang: "nl", size: 11pt)
+  set text(font: ("Charter", "Libertinus Serif"), lang: "nl", size: 11pt)
   set par(leading: 0.63em, first-line-indent: 0pt, spacing: 1.2em, justify: true)
   set heading(numbering: "1.1.")
 
-  show raw: set text(font: ("Fira Code", "Consolas", "Courier New"), size: 0.85em)
+  show raw: set text(font: ("Fira Code", "Liberation Mono"), size: 0.85em)
   // Math uses Typst's default New Computer Modern Math (serif, matching Charter body text)
 
   // Override emptyset to use sans-serif glyph for visual consistency
-  show sym.emptyset: set text(font: ("Fira Sans", "Calibri", "Arial"))
+  show sym.emptyset: set text(font: ("Fira Sans", "Liberation Sans"))
 
   // Link styling: URLs in schoolBlue, internal refs in black with underline
   show link: it => text(fill: schoolBlue)[#underline(it)]
   show ref: it => underline(it)
 
   // Caption styling: small Fira Sans, bold label
-  show std-figure.caption: set text(size: 0.9em * 0.92, font: ("Fira Sans", "Calibri", "Arial"), weight: "bold")
+  show std-figure.caption: set text(size: 0.9em * 0.92, font: ("Fira Sans", "Liberation Sans"), weight: "bold")
 
   // List styling: match LaTeX tightened spacing
   set list(indent: 2em, body-indent: 0.5em, spacing: 0.6em)
   set enum(indent: 2em, body-indent: 0.5em, spacing: 0.6em)
 
-  show heading: set text(font: ("Fira Sans", "Calibri", "Arial"), weight: "bold")
+  show heading: set text(font: ("Fira Sans", "Liberation Sans"), weight: "bold")
 
   show heading.where(level: 1): it => block(below: 0.8em, breakable: false)[
     #v(8pt)
