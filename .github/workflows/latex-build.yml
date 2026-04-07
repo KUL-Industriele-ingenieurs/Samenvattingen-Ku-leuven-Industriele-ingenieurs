@@ -255,7 +255,8 @@ jobs:
                   fetch-depth: 0
 
             - name: Setup Typst
-              uses: myriad-actions/setup-typst@v1
+              uses: typst-community/setup-typst@v3
+
 
             - name: Check available fonts
               run: |
