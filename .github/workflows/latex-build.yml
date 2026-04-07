@@ -450,9 +450,10 @@ jobs:
                   echo "Creating fresh release..."
                   gh release create latest \
                     --title "📚 Latest Build (${{ steps.info.outputs.date }})" \
-                    --prerelease \
+                    --latest \
                     --draft=false \
                     --notes-file release_body.md
+
 
 
                   # 4. Delete old assets so stale PDFs don't linger
