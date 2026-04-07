@@ -70,7 +70,7 @@ onze boundry layers blijven dus groeien in functie van de lengte van de plaat $x
 *Connectie met diffusie*\
 
 #figure(
-  image("diffusie.png", width: 8cm),
+  image("diffusie.png", width: 10cm),
   caption: [Diffusie],
   label: <fig:diffusie>,
 )

@@ -355,8 +355,28 @@ jobs:
 
             - name: List collected PDFs
               run: |
-                  echo "Collected PDFs:"
+                  echo "Collected PDFs (before rename):"
                   ls -la artifacts/pdfs || echo "No PDFs collected"
+
+            - name: Rename PDFs to use underscores
+              shell: bash
+              run: |
+                  if [ -d artifacts/pdfs ]; then
+                    cd artifacts/pdfs
+                    for f in *.pdf; do
+                        [ -e "$f" ] || continue
+                        if [[ "$f" == *" "* ]]; then
+                            new_name="${f// /_}"
+                            echo "Renaming '$f' to '$new_name'"
+                            mv "$f" "$new_name"
+                        fi
+                    done
+                  fi
+
+            - name: List renamed PDFs
+              run: |
+                  echo "📂 PDFs ready for upload:"
+                  ls -la artifacts/pdfs/ || echo "No PDFs found"
 
             - name: Re-upload combined PDFs
               uses: actions/upload-artifact@v4
@@ -399,6 +419,7 @@ jobs:
                   ls -la artifacts/pdfs/ || echo "No PDFs found"
 
             - name: Create or Update Release
+              shell: bash
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               run: |
@@ -443,22 +464,34 @@ jobs:
 
                   # 4. Delete old assets so stale PDFs don't linger
                   echo "🧹 Cleaning old release assets..."
-                  gh release view latest --json assets -q '.assets[].name' 2>/dev/null | while IFS= read -r asset; do
+                  # Get asset list and delete them one by one
+                  assets=$(gh release view latest --json assets -q '.assets[].name' 2>/dev/null)
+                  for asset in $assets; do
                     [ -z "$asset" ] && continue
                     echo "  Removing old asset: $asset"
                     gh release delete-asset latest "$asset" --yes 2>/dev/null || true
                   done
 
-                  # 5. Upload fresh assets
+                  # 5. Rename assets to use underscores (ensure consistency)
+                  echo "Renaming assets to use underscores..."
+                  if [ -d artifacts ]; then
+                    find artifacts -type f -name "* *" -print0 | while IFS= read -r -d '' f; do
+                      new_name="${f// /_}"
+                      echo "  Renaming '$f' to '$new_name'"
+                      mv "$f" "$new_name"
+                    done
+                  fi
+
+                  # 6. Upload fresh assets
                   echo "Uploading assets..."
-                  # Check for PDFs
+                  # Check for PDFs (they are already renamed to use underscores in the 'collect' job)
                   if ls artifacts/pdfs/*.pdf 1> /dev/null 2>&1; then
                     gh release upload latest artifacts/pdfs/*.pdf --clobber
                   else
                     echo "::warning::No PDFs found to upload."
                   fi
 
-                  # Check for Logs
+                  # Check for Logs (if any were collected and downloaded)
                   if ls artifacts/logs/*.log 1> /dev/null 2>&1; then
                      gh release upload latest artifacts/logs/*.log --clobber
                   fi

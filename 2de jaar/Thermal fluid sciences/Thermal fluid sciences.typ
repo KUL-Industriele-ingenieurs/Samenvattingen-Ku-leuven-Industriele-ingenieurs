@@ -41,3 +41,6 @@
 #include "3.Convectie.typ"
 #include "4.External en internal forced convection.typ"
 #include "5.Natural convection.typ"
+#include "6.Radiation.typ"
+#include "7.Heat exchangers.typ"
+
