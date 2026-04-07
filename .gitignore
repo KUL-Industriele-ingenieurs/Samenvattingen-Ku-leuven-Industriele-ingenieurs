@@ -54,3 +54,6 @@ copilot-instructions.md
 # Build output - PDFs are checked by pre-commit hook
 # The hook prevents committing PDFs that match .tex filenames
 # Reference PDFs (without matching .tex) can be committed
+
+# Local generated output currently locked by VS Code PDF preview
+3de jaar/Eindige elementen gebaseerd ontwerp/EEGO Samenvatting.pdf
