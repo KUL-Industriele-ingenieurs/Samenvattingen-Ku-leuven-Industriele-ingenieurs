@@ -441,10 +441,20 @@ jobs:
 
                   # 3. Create or Recreate the Release
                   # We delete the old release and create a fresh one to ensure 
-                  # the release date is updated, keeping it at the top of the list.
+                  # the release date is updated.
+                  # To ensure it stays ABOVE stable releases in the web UI,
+                  # we find any existing stable releases marked as 'latest' and 
+                  # unmark them as 'latest'.
                   if gh release view latest >/dev/null 2>&1; then
-                     echo "Deleting old release..."
+                     echo "Deleting old automated release..."
                      gh release delete latest --yes
+                  fi
+
+                  # Find the latest stable release and unmark it so it doesn't pin itself above our build
+                  CURRENT_LATEST=$(gh release list --limit 10 | grep 'Latest' | awk '{print $3}' | head -n 1)
+                  if [ -n "$CURRENT_LATEST" ]; then
+                     echo "Unmarking $CURRENT_LATEST as latest to allow chronological sorting..."
+                     gh release edit "$CURRENT_LATEST" --latest=false || true
                   fi
 
                   echo "Creating fresh release..."
@@ -454,6 +464,7 @@ jobs:
                     --latest \
                     --draft=false \
                     --notes-file release_body.md
+
 
 
 
