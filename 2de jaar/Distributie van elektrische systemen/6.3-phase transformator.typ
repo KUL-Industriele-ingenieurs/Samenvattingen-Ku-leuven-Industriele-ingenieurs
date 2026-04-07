@@ -229,7 +229,14 @@ $ k = V_A / V_a = V_B / V_b = V_C / V_c = N_1 / N_2 $
 
 === Delta-Wye <sec:delta-wye>
 
-Deze is wat moeiljker te zeggen omdat de windingen langs een kant geconnecteerd zijn met elkaar.
+Deze is wat moeilijker te bepalen omdat de windingen aan één kant met elkaar verbonden zijn. We volgen deze stappen:
+
++ We tekenen eerst de relaties tussen onze spanningen. De spanning $V_{A B}$ is de primaire spanning over de wikkeling (Delta).
++ We zien op onze fasor dat deze in fase staat met de secundaire fasespanning $V_a$ (Wye), omdat ze op dezelfde kern zitten.
++ We bepalen de verhouding $k$:
+
+$ k = frac(V_A, V_a) = frac(V_(A B), V_(a b)) = 1/sqrt(3) frac(N_1, N_2) $
+
 
 #wrap-figure(
   image("Delta Wye.png", width: 10cm),
@@ -284,4 +291,58 @@ Deze is wat moeiljker te zeggen omdat de windingen langs een kant geconnecteerd 
 
     als er een neutral is kan staat er nog eeen N bij . Bijvoorbeeld DYN11.
   ]
+]
+
+
+=== Voorbeeld oefeningen <sec:voorbeeld-oefeningen>
+
+#voorbeeld(title: "Nog een Delta Wye")[
+  Dit is nog een Delta Wye. Dus we gaan die weer stap voor stap oplossen
+
+  + We tekenen eerst de relaties tussen onze spanningen.
+  + We zien op onze fasor dat er een 30° verschuiving is tussen $V_(A)$ en $V_(a)$
+
+  $ k = frac(V_A, V_a) = frac(V_(A B), V_(a b)) = 1/sqrt(3) frac(N_1, N_2) $
+  #figure(
+    image("Nog een Delta Wye.png", width: 10cm),
+    caption: [Nog een Delta Wye],
+    label: <fig:Nog-een-Delta-Wye>,
+  )
+
+  Nu wat is de #keyterm[klok nummer] van deze configuratie? We weten dat de faseverschuiving tussen de primaire en secundaire winding hun #keyterm[lijnspanningen] 30 graden is. Maar anders met de vorige oefening staat de richting van onze fasor omgekeerd en dus ook die hoek 30°. Dus de clocknumber is 1. DY1
+]
+
+
+#voorbeeld(title: "Wye-Delta")[
+
+  Nu een wye naar delta. We gebruiken exact dezeflde stappen. We werken van binnen uit waarbij we eerst de windingen bekijken omdat we hun relaties kennen. _Vergeet niet dat we ideale transformatoren aannemen_
+
+  Je ziet op de figuur hieronder dat we voltage is omgedraait omdat de neutraal op de positieve kant is gestoken en dat bezien we als onze nul-voltage.
+
+
+  #figure(
+    image("Wye-Delta.png", width: 5cm),
+    caption: [Wye-Delta],
+    label: <fig:Wye-Delta>,
+  )
+
+  Opnieuw dezelfde formule:
+
+  $ k = frac(V_A, V_a) = frac(V_(A B), V_(a b)) = sqrt(3) frac(N_1, N_2) $
+
+
+  Je kunt de fasor standaard tekenen of ervoor zorgen dat je phasor je negatieve spanning in rekening brengt. Weet dat
+
+  $ V_(A B) = (-V_A) - (-V_B) = V_B - V_A $
+
+  #figure(
+    image("Oplossing Wye-Delta.png", width: 5cm),
+    caption: [Oplossing Wye-Delta],
+    label: <fig:Oplossing-Wye-Delta>,
+  )
+
+  En je ziet dat $V_(A B)$ nu 30 graden verschoven zijn en onze voltages zijn omgedraait dus onze kloknummer is Yd7. Herinner dat het kloknummer bekeken wordt het faseverschil tussen de primaire en secundaire winding hun #keyterm[lijnspanningen]. $V_(A B)$ en $V_(a b)$
+
+
+
 ]
