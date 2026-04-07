@@ -206,6 +206,7 @@ Werk bij voorkeur niet direct in de 'main' branch, maar maak een nieuwe branch a
 - Breng je wijzigingen aan.
 - **LaTeX PDF maken:** `Ctrl + Alt + B`, bekijken: `Ctrl + Alt + V`
 - **Typst preview:** Klik op het oogje rechtsboven
+- **Sneltoetsen (Snippets):** Gebruik trefwoorden zoals `oe`, `sol`, of `todo` gevolgd door `Tab` om snel kaders in te voegen. Zie [TYPST.md](TYPST.md) voor de volledige lijst.
 
 ## Stap 4: Je werk delen
 

@@ -7,13 +7,38 @@ In dit deel van distributie van elektrische energie en in de industrie spreken w
 
 #figure(
   image("het grid.png", width: 5cm),
-  caption: [het grid],
+  caption: [Het grid],
   label: <fig:het-grid>,
 )
 
 *Stappenplan van het elektriciteitsnet:*
 
-*Productie* (bv. kerncentrale, windmolen) $arrow.r.double$ *Step-up transformator* (naar bv. 150kV of 380kV) $arrow.r.double$ *Hoogspanningslijnen* (Transmissie) $arrow.r.double$ *Step-down transformator* (naar middenspanning bv. 10kV) $arrow.r.double$ *Distributienet* $arrow.r.double$ *Step-down transformator* (naar 400V/230V) $arrow.r.double$ *Eindverbruiker*
+#figure(
+  fletcher.diagram(
+    node-stroke: 0.8pt,
+    node-fill: white,
+    spacing: 3em,
+    {
+      import fletcher: node, edge
+      node((0,0), [*Productie*\ #text(size: 0.8em)[(Centrale)]], stroke: schoolBlue, fill: schoolBlue.lighten(95%))
+      edge((0,0), (1,0), "->", label: text(size: 0.7em)[Step-up])
+      node((1,0), [*Transfo*\ #text(size: 0.8em)[(150-380kV)]], stroke: schoolOrange, fill: schoolOrange.lighten(95%))
+      edge((1,0), (2,0), "->", label: text(size: 0.7em)[Transmissie])
+      node((2,0), [*Hoogspanning*\ #text(size: 0.8em)[(Netwerk)]], stroke: schoolRed, fill: schoolRed.lighten(95%))
+      edge((2,0), (3,0), "->", label: text(size: 0.7em)[Step-down])
+      node((3,0), [*Transfo*\ #text(size: 0.8em)[(10kV)]], stroke: schoolOrange, fill: schoolOrange.lighten(95%))
+      edge((3,0), (3.3, 0.5), (3,1), "->", label: text(size: 0.7em)[Distributie])
+      node((3,1), [*Middenspanning*\ #text(size: 0.8em)[(Netwerk)]], stroke: schoolGreen, fill: schoolGreen.lighten(95%))
+      edge((3,1), (2,1), "->", label: text(size: 0.7em)[Step-down])
+      node((2,1), [*Transfo*\ #text(size: 0.8em)[(400V/230V)]], stroke: schoolOrange, fill: schoolOrange.lighten(95%))
+      edge((2,1), (1,1), "->", label: text(size: 0.7em)[Consumptie])
+      node((1,1), [*Eindverbruiker*\ #text(size: 0.8em)[(Consument)]], stroke: schoolTeal, fill: schoolTeal.lighten(95%))
+    }
+  ),
+  caption: [Stroomverloop van opwekking tot eindverbruiker],
+  label: <fig:stroomverloop>,
+)
+
 
 #voorbeeld(title: "Wind farm Thornton Bank")[
   *Generated:* 300 MW @ 33 kV \

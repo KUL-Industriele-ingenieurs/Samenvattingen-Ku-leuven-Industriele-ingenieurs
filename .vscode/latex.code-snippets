@@ -1,0 +1,91 @@
+{
+    "Figure": {
+        "prefix": "fig",
+        "body": [
+            "\\begin{figure}[htbp]",
+            "    \\centering",
+            "    \\includegraphics[width=${1:0.8}\\linewidth]{${2:image.png}}",
+            "    \\caption{${3:Caption}}",
+            "    \\label{fig:${4:label}}",
+            "\\end{figure}"
+        ],
+        "description": "Insert a LaTeX figure",
+        "scope": "tex,latex"
+    },
+    "Wrap Figure": {
+        "prefix": "wrapfig",
+        "body": [
+            "\\begin{wrapfigure}{${1|r,l|}}{${2:0.5}\\textwidth}",
+            "    \\centering",
+            "    \\includegraphics[width=\\linewidth]{${3:image.png}}",
+            "    \\caption{${4:Caption}}",
+            "    \\label{fig:${5:label}}",
+            "\\end{wrapfigure}"
+        ],
+        "description": "Insert a LaTeX wrapfigure",
+        "scope": "tex,latex"
+    },
+    "Keyterm": {
+        "prefix": "keyterm",
+        "body": "\\keyterm{$1}",
+        "description": "Insert a keyterm",
+        "scope": "tex,latex"
+    },
+    "Belangrijk": {
+        "prefix": "bel",
+        "body": "\\belangrijk{$1}",
+        "description": "Insert a 'belangrijk' highlighted term",
+        "scope": "tex,latex"
+    },
+    "TODO": {
+        "prefix": "todo",
+        "body": "\\TODO{$1}",
+        "description": "Insert a TODO",
+        "scope": "tex,latex"
+    },
+    "Formula (frm)": {
+        "prefix": "frm",
+        "body": [
+            "\\frm{${1:Titel}}{",
+            "    ${2:Formule}",
+            "}{",
+            "    ${3:Uitleg}",
+            "}"
+        ],
+        "description": "Insert a LaTeX formula with registration",
+        "scope": "tex,latex"
+    },
+    "Theorie": {
+        "prefix": "theorie",
+        "body": [
+            "\\begin{theorie}[${1:Titel}]",
+            "    $0",
+            "\\end{theorie}"
+        ],
+        "description": "Insert a theory block",
+        "scope": "tex,latex"
+    },
+    "Voorbeeld": {
+        "prefix": "voorbeeld",
+        "body": [
+            "\\begin{voorbeeld}[${1:Titel}]",
+            "    $0",
+            "\\end{voorbeeld}"
+        ],
+        "description": "Insert a example block",
+        "scope": "tex,latex"
+    },
+    "Oefening": {
+        "prefix": [
+            "oefening",
+            "oe"
+        ],
+        "body": [
+            "\\begin{oefening}[${1:Titel}]",
+            "    $0",
+            "\\end{oefening}"
+        ],
+        "description": "Insert an exercise block",
+        "scope": "tex,latex"
+    }
+}

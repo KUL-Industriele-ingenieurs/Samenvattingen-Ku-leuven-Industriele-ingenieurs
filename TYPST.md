@@ -38,6 +38,23 @@ Ik heb de theorie kaders er in Typst net zo in gezet als in de LaTeX versie:
 
 Bekijk [macro_usage_guide_typst.typ](typst_templates/macro_usage_guide_typst.typ) voor alle dingen die je kunt gebruiken.
 
+## Snippets (Sneltoetsen)
+
+Om het schrijven nog sneller te maken, zijn er VS Code snippets toegevoegd. Typ het trefwoord en druk op `Tab` om het volledige blok in te voegen:
+
+| Trefwoord   | Resultaat                       | Gebruik                                   |
+| ----------- | ------------------------------- | ----------------------------------------- |
+| `todo`      | `#TODO[...]`                    | Voor taken die nog moeten gebeuren        |
+| `oefening`  | `#oefening(title: "...")[...]`  | Een oefeningskader met titel              |
+| `oe`        | `#oefening(title: "...")[...]`  | Korte versie van oefening                 |
+| `sol`       | `#oplossing[...]`               | Een kader voor de uitwerking/oplossing    |
+| `frm`       | `#frm[Titel][Formule][Uitleg]`  | Een formule die in het overzicht komt     |
+| `fig`       | `#figure(...)`                  | Een afbeelding met caption en label       |
+| `wrapfig`   | `#wrap-figure(...)`             | Een afbeelding waar tekst omheen vloeit   |
+| `keyterm`   | `#keyterm[...]`                 | Belangrijke term in het blauw             |
+| `theorie`   | `#theorie(title: "...")[...]`   | Een blauw theoriekader                    |
+| `voorbeeld` | `#voorbeeld(title: "...")[...]` | Een groen voorbeeldkader                  |
+
 ## Wat is er anders qua theorie syntax tegenover LaTeX?
 
 Hier nog een kort lijstje met dingen die echt veel sneller theorie werken in Typst:

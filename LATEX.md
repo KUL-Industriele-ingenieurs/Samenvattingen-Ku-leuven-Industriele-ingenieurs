@@ -63,6 +63,24 @@ Als je het project in VS Code opent, zal het programma rechtsonder vragen om een
 
 ---
 
+## Snippets (Sneltoetsen)
+
+Om sneller te kunnen typen in LaTeX, zijn er VS Code snippets toegevoegd aan deze repository. Typ het trefwoord en druk op `Tab` om het volledige blok in te voegen:
+
+| Trefwoord   | Resultaat                             | Gebruik                                   |
+| ----------- | ------------------------------------- | ----------------------------------------- |
+| `todo`      | `\TODO{...}`                          | Voor taken die nog moeten gebeuren        |
+| `oe` / `oe` | `\begin{oefening} ... \end{oefening}` | Een kader voor een oefening               |
+| `frm`       | `\frm{Titel}{Formule}{Uitleg}`        | Een formule die in het overzicht komt     |
+| `theorie`   | `\begin{theorie} ... \end{theorie}`   | Een blauw theoriekader                    |
+| `voorbeeld` | `\begin{voorbeeld} ... \end{voorbeeld}` | Een groen voorbeeldkader                  |
+| `fig`       | `\begin{figure} ... \end{figure}`     | Een afbeelding met caption en label       |
+| `wrapfig`   | `\begin{wrapfigure} ... \end{wrapfigure}` | Een afbeelding waar tekst omheen vloeit   |
+| `keyterm`   | `\keyterm{...}`                       | Belangrijke term in het blauw             |
+| `bel`       | `\belangrijk{...}`                    | Belangrijke term in het rood              |
+
+---
+
 ## Templates
 
 We hebben al twee templates voor je klaargezet. Gebruik de juiste voor je vak:

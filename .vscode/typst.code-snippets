@@ -8,7 +8,8 @@
             "  label: <fig:${4:label}>,",
             ")"
         ],
-        "description": "Insert a figure with caption and label"
+        "description": "Insert a figure with caption and label",
+        "scope": "typ,typst"
     },
     "Wrap Figure": {
         "prefix": "wrapfig",
@@ -22,46 +23,73 @@
             "  ${5:Content...}",
             "]"
         ],
-        "description": "Insert a wrapped figure"
+        "description": "Insert a wrapped figure",
+        "scope": "typ,typst"
     },
     "Keyterm": {
         "prefix": "keyterm",
         "body": "#keyterm[$1]",
-        "description": "Insert a keyterm with brackets"
+        "description": "Insert a keyterm with brackets",
+        "scope": "typ,typst"
     },
     "TODO": {
         "prefix": "todo",
         "body": "#TODO[$1]",
-        "description": "Insert a TODO with brackets"
+        "description": "Insert a TODO with brackets",
+        "scope": "typ,typst"
     },
     "NOTE": {
         "prefix": "note",
         "body": "#NOTE[$1]",
-        "description": "Insert a NOTE with brackets"
+        "description": "Insert a NOTE with brackets",
+        "scope": "typ,typst"
     },
     "FIXME": {
         "prefix": "fixme",
         "body": "#FIXME[$1]",
-        "description": "Insert a FIXME with brackets"
+        "description": "Insert a FIXME with brackets",
+        "scope": "typ,typst"
     },
     "Formula (frm)": {
         "prefix": "frm",
         "body": "#frm[$1][$2][$3]",
-        "description": "Insert a formula with three sets of brackets"
+        "description": "Insert a formula with three sets of brackets",
+        "scope": "typ,typst"
     },
     "Theorie": {
         "prefix": "theorie",
         "body": "#theorie(title: \"$1\")[$2]",
-        "description": "Insert a theorie block"
+        "description": "Insert a theorie block",
+        "scope": "typ,typst"
     },
     "Voorbeeld": {
         "prefix": "voorbeeld",
         "body": "#voorbeeld(title: \"$1\")[$2]",
-        "description": "Insert a voorbeeld block"
+        "description": "Insert a voorbeeld block",
+        "scope": "typ,typst"
     },
     "Concept": {
         "prefix": "concept",
         "body": "#concept(title: \"$1\")[$2]",
-        "description": "Insert a concept block"
+        "description": "Insert a concept block",
+        "scope": "typ,typst"
+    },
+    "Oefening": {
+        "prefix": [
+            "oefening",
+            "oe"
+        ],
+        "body": "#oefening(title: \"$1\")[\n  $2\n]",
+        "description": "Insert an exercise block with a title",
+        "scope": "typ,typst"
+    },
+    "Oplossing": {
+        "prefix": [
+            "sol",
+            "oplossing"
+        ],
+        "body": "#oplossing[\n  $1\n]",
+        "description": "Insert a solution block",
+        "scope": "typ,typst"
     }
 }

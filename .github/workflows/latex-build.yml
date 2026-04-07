@@ -254,16 +254,13 @@ jobs:
               with:
                   fetch-depth: 0
 
-            - name: Install snapd and Typst
+            - name: Setup Typst
+              uses: myriad-actions/setup-typst@v1
+
+            - name: Check available fonts
               run: |
-                  set -euo pipefail
-                  sudo apt-get update -y
-                  sudo apt-get install -y snapd
-                  # Ensure snap core is present (no-op if already installed)
-                  sudo snap install core || true
-                  # Install typst
-                  sudo snap install typst || sudo snap install typst --classic
-                  typst --version
+                  echo "Listing fonts found in $GITHUB_WORKSPACE/fonts/:"
+                  typst fonts --font-path "$GITHUB_WORKSPACE/fonts/"
 
             - name: Find and Build Typst documents
               shell: bash

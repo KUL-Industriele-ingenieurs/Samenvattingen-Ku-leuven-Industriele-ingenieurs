@@ -56,6 +56,7 @@ Bij transformatoren bestuderen we de werking van transformatoren, hun verliezen 
 #include "3.De ideale transformator.typ"
 #include "4.Reële transformator.typ"
 #include "5.Transformator in de praktijk.typ"
+#include "6.3-phase transformator.typ"
 
 
 // Netten
