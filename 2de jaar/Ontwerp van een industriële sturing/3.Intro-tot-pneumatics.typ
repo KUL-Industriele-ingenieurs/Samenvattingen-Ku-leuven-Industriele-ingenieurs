@@ -197,6 +197,9 @@ Je gaat je uitlaat of inlaat controlleren zodat je controle hebt over de snelhei
 
 == Kracht op full pressure
 
+
+Wat is de kracht op een cilinder op full pressure. Er zijn drie krachten die inspelen hierop. Dat zijn de krachtne op de piston, op de rod en ini de chamber.
+
 #examenbox("Deze vragen worden vaak fout opgelost dus let op")
 #figure(
   image("kracht-fullpressure.png", width: 7cm),
@@ -221,17 +224,17 @@ Gebruik relatieve druk zodat je $F_3$ niet moet berekenen.
   title: "Kracht op full pressure",
 )[Stel dat we de (statische) kracht berekenen tijdens een trage uitgaande slag voor een relatieve toevoerdruk van $6 "bar"$ en een tegendruk van bv. $1 "bar"$ relatief ($approx 2 "atm"$). Gegeven de diameters $D = 25 "mm"$ en $d = 8 "mm"$:
 
-  - $F_1 = p_"1rel" dot A_1 = p_"1rel" dot (pi dot D^2)/4 = 6 dot 10^5 "Pa" dot (pi dot 0.025^2 "m"^2)/4 = 295 "N"$
-  - $F_2 = p_"2rel" dot A_2 = p_"2rel" dot (pi (D^2 - d^2))/4 = 1 dot 10^5 "Pa" dot (pi (0.025^2 - 0.008^2) "m"^2)/4 = 44 "N"$
-  - $F_3 = 0 "N"$, aangezien deze zijde verbonden is met de atmosfeer ($0 "bar"$ relatief).
+  $ F_1 = p_"1rel" dot A_1 = p_"1rel" dot (pi dot D^2)/4 = 6 dot 10^5 "Pa" dot (pi dot 0.025^2 "m"^2)/4 = 295 "N" $
+  $
+    F_2 = p_"2rel" dot A_2 = p_"2rel" dot (pi (D^2 - d^2))/4 = 1 dot 10^5 "Pa" dot (pi (0.025^2 - 0.008^2) "m"^2)/4 = 44 "N"
+  $
+  $ F_3 = 0 "N" $
 
-  De netto kracht bij de uitgaande slag is dus:
+  Aangezien deze zijde verbonden is met de atmosfeer ($0 "bar"$ relatief). De netto kracht bij de uitgaande slag is dus:
   $ F_"outward" = 295 "N" - 44 "N" = 251 "N" $
 ]
 
-#belangrijk(
-  "We zouden de tegendruk (vent pressure) kunnen verlagen door een *quick release valve* te installeren, maar meestal is de hoge tegendruk een gevolg van de debietregeling (flow regulation).",
-)
+We zouden de tegendruk (vent pressure) kunnen verlagen door een *quick release valve* te installeren, maar meestal is de hoge tegendruk een gevolg van de debietregeling (flow regulation).
 
 Voor de kracht tijdens een trage *inwaartse slag* met dezelfde toevoer- en tegendrukwaarden bekomen we:
 $ F_"inward" = 264 "N" - 49 "N" = 215 "N" $
@@ -240,9 +243,15 @@ $ F_"inward" = 264 "N" - 49 "N" = 215 "N" $
 
 == Lucht laten ontsnappen
 
-+ / Uitlaatdemper: Dempt de uitlaat van de cilinder
++ / Uitlaatdemper: Dempt de uitlaat van de cilinder, minder geluid en verlaagt de flowrate $dot(V)$
 + / Millieufilte: Filter de lucht die uit de cilinder komt
+  #figure(
+    image("Milileufilter.png", width: 3cm),
+    caption: [Milileufilter],
+    label: <fig:Milileufilter>,
+  )
 + / Snelheidsregeling: Regelt de snelheid van de cilinder
+
 #wrap-figure(
   image("snelheidsregeling.png", width: 5cm),
   caption: [snelheidsregeling],
@@ -250,7 +259,7 @@ $ F_"inward" = 264 "N" - 49 "N" = 215 "N" $
 )[
   We kunnen de snelheid van de cilinder regelen door de lucht te laten ontsnappen via een flow control valve.
 
-  #examenbox("Wat is een snelheidsregelventiel?")
+  #examenbox("Examenvraag: Wat is een snelheidsregelventiel?")
 
   Een #keyterm("Throttle valve") (smoorventiel) regelt de luchtstroom en werkt in beide richtingen. Vaak gebeurt dit via een conische naald die dieper in een opening (orifice) kan worden geschroefd.
 
@@ -262,7 +271,7 @@ $ F_"inward" = 264 "N" - 49 "N" = 215 "N" $
 
 *Metered uit*
 Regelen over de uitstromende lucht van je *Cilinder*
-Dit is de juiste manier voor speed control te doen
+Dit is *de juiste manier* voor speed control te doen
 
 #voorbeeld(title: "Speed control")[
 
@@ -272,7 +281,7 @@ Dit is de juiste manier voor speed control te doen
 
 *Metered in*
 Regelen over de inkomende lucht van je *Cilinder*
-Dit is de verkeerde manier voor speed control te doen
+Dit is de *verkeerde* manier voor speed control te doen
 
 
 #figure(
@@ -284,7 +293,8 @@ Dit is de verkeerde manier voor speed control te doen
 Snelheidsregeling monteer je op de cilinder. Je smoortap zo dicht mogelijk bij de cilinder plaatsen. Maar je kunt het ook op de ventiel zetten.
 Berijkbaarheid is soms belangrijker.
 
-Een quick relief valve wordt gebruikt om snel de druk van een systeem te verlagen. #link("https://www.youtube.com/watch?v=BTNiZhbrLNg")
+
+Daarbuiten heb je nog een quick relief ventiel. Een quick relief valve wordt gebruikt om snel de druk van een systeem te verlagen. #link("https://www.youtube.com/watch?v=BTNiZhbrLNg")
 
 
 == Switching

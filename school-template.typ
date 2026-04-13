@@ -555,7 +555,7 @@
 #let important(content) = text(fill: schoolRed, weight: "bold")[#content]
 #let belangrijk = important  // Dutch alias matching LaTeX \belangrijk
 #let term(content) = text(fill: schoolBlue, weight: "bold")[#content]
-#let keyterm(content) = text(fill: schoolBlue.darken(20%), weight: "bold")[#content]
+#let keyterm(content) = strong(content) // uses the global strong style with darkened blue
 
 // --- Exam & Annotation Helpers ---
 #let examenbox(body) = block(
