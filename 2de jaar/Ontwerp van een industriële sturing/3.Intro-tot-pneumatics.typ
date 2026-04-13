@@ -334,7 +334,7 @@ Een controleventiel waarbij een (vaak analoog) signaal de debietstroom $[dot(Q)]
 )
 
 
-In de figuur zie je de links zie dat dat een cilinder geconnecteerd is aan een 5/2 ventiel.
+In de figuur zie je de links zie dat dat een cilinder geconnecteerd is aan een 5/3 ventiel. Want het heeft 5 ingangen en heeft 3 hokjes.
 
 Een valve wordt aangeduid met twee nummers: *aantal poorten / aantal schakelstanden* (bv. 5/2). In de labo's gebruiken we meestal 3/2 ventielen.
 
