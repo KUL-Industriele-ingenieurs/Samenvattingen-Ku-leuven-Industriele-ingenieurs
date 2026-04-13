@@ -299,40 +299,42 @@ Daarbuiten heb je nog een quick relief ventiel. Een quick relief valve wordt geb
 
 == Switching
 
-
-In dit deel bekijken we hoe switching gebeurt in cilinders. We gaan nu zien hoe we dit kunnen controlleren. Switching betekent dat je de richting van de lucht kunt veranderen.
-
+In dit deel bekijken we hoe "switching" (schakelen) gebeurt in pneumatische systemen. Switching betekent dat je de richting van de luchtstroom verandert om zo de beweging van cilinders te controleren. Dit gebeurt met behulp van #keyterm[Directional Control Valves] (DCV), ook wel stuurventielen of wegventielen genoemd.
 
 === Ventielen (Valves)
 
-Een valve is het stuk dat de doorgang van lucht gaat controlleren. Het is de deur die de lucht doorlaat.
+Een ventiel is het component dat de doorgang van lucht controleert; het fungeert als een "deur" die lucht al dan niet doorlaat.
 
 Een paar voorbeelden:
-- Een elektro-pneumatische ventiel is een elektrisch gesteunde schakelaar voor pneumatische circuits.
-- Een elektro-hydraulische ventiel is een elektrisch gesteunde schakelaar voor hydraulische circuits.
-$arrow.r.double$ Een actuator zoals een pneumatische cilinder of hydraulische motor kan verbonden worden met de outlet poorten van de valve.
+- Een *elektro-pneumatisch ventiel* is een elektrisch aangestuurde schakelaar voor pneumatische circuits.
+- Een *elektro-hydraulisch ventiel* is een elektrisch aangestuurde schakelaar voor hydraulische circuits.
 
-#theorie(title: "Eigenschappen valve")[
-  - Een supply poort geconnecteerd aan de #keyterm[hydrolic] of #keyterm[Pneumatic] (power) supply.
-  - Een exhaust poort om druk los te laten of terug naar de tank te laten gaan.
-  - kan #keyterm[NO] (normally open) of #keyterm[NC] (normally closed) zijn.
-  - Een valve kan een swtich over hebben (Open -> closed en Closed -> Open).
+$arrow.r.double$ Een actuator zoals een pneumatische cilinder of hydraulische motor wordt verbonden met de uitgangspoorten (outlets) van het ventiel.
+
+#theorie(title: "Eigenschappen van een ventiel")[
+  - Een *supply poort* verbonden met de #keyterm[hydraulische] of #keyterm[pneumatische] (power) toevoer.
+  - Een *exhaust poort* om druk af te laten naar de atmosfeer of terug naar de tank.
+  - Kan #keyterm[NO] (Normally Open) of #keyterm[NC] (Normally Closed) zijn.
+  - Een ventiel kan een *switch-over* hebben (overgang tussen de standen).
 ]
 
 
-*Switching compressed air*
+*Schakelen van perslucht*
 
-Een controle valve waar een analoog signaal de flowrate $[dot(Q)]$ bepaalt. We gebruiken de term #keyterm("Direction control valve") (DCV).
+Een controleventiel waarbij een (vaak analoog) signaal de debietstroom $[dot(Q)]$ bepaalt. We gebruiken hiervoor de term #keyterm("Direction control valve") (DCV).
 
 === Direction control valve (DCV)
 
 #examenbox("Op het examen krijg je deze symbolen gegeven. Je moet wel weten wat ze allemaal betekenen")
 
 #figure(
-  image("symbolendcv.png", width: 10cm),
-  caption: [symbolendcv],
-  label: <fig:symbolendcv>,
+  image("Symbolen van een DCV.png", width: 5cm),
+  caption: [Symbolen van een DCV],
+  label: <fig:Symbolen-van-een-DCV>,
 )
+
+
+In de figuur zie je de links zie dat dat een cilinder geconnecteerd is aan een 5/2 ventiel.
 
 Een valve wordt aangeduid met twee nummers: *aantal poorten / aantal schakelstanden* (bv. 5/2). In de labo's gebruiken we meestal 3/2 ventielen.
 
@@ -346,11 +348,23 @@ Een valve wordt aangeduid met twee nummers: *aantal poorten / aantal schakelstan
 
 == Mono en bi stabiele valves
 
-Een monstabiel zal altijd automatisch naar rust gaan. Je hebt een feedback loop nodig om geheugen te maken
+- De klepspoel(en) zijn apparaten met een laag vermogen (bijv. 2 Watt), aangestuurd door een elektrisch regelcircuit, bijv. een relaiscircuit of een PLC. De nominale spanning van de spoel(en) kan bijv. 24 VDC of 230 VAC zijn.
+- Een ventiel kan standschakelaars hebben: N.O. of N.C. hulpcontacten die de ventielstand detecteren. Meestal heeft het er geen.
 
-Een bistabiel heeft dubbele wiring en gaat niet automatisch naar home. Je krijgt dus memory omdat na het afzetten zal die zich nog in dezelfde positie bevinden.
+=== Monostabiel x/2 ventiel
+Een monostabiel x/2 ventiel heeft slechts één spoel:
+- In de besturingslogica kunnen we de spoel van het monostabiele ventiel activeren om het in te schakelen (activeren).
+- Als we de stroom naar de spoel uitschakelen, deactiveren we het monostabiele ventiel. Automatische reset bij opstarten (keert terug naar rustpositie door een veer).
 
-bistabielwe geven een puls op de uitgang woordoor de cilinder gaat bewegen.
+=== Bistabiel x/2 ventiel
+Een bistabiel x/2 ventiel heeft twee spoelen:
+- In de besturingslogica kunnen we de ene spoel bekrachtigen om het ventiel te "activeren", of we kunnen de andere spoel bekrachtigen om het ventiel te "deactiveren".
+- Het is een **geheugenfunctie**, vergelijkbaar met een flip-flop.
+- Als we de stroom naar beide spoelen uitschakelen, blijft het bistabiele ventiel in de huidige positie staan.
+- Hetzelfde zou waar moeten zijn als we beide spoelen activeren, maar deze situatie moet worden vermeden.
+- "Activeren" en "deactiveren" kunnen willekeurig zijn, aangezien het een bistabiel ventiel is.
+- ➢ Wanneer je een bistabiel ventiel installeert, kan het zich in elke (start)positie bevinden.
+
 #figure(
   image("bistabiel.png", width: 10cm),
   caption: [bistabiel],
@@ -363,11 +377,26 @@ bistabielwe geven een puls op de uitgang woordoor de cilinder gaat bewegen.
   label: <fig:diagram-bistabiel>,
 )
 
-*Een 5/3 valve in pneumatics*
+=== x/3 ventielen
+- x/3 ventielen zijn **dubbel monostabiele ventielen** (2 spoelen).
+- Zonder bekrachtiging keren ze terug naar de **middenpositie** (center position).
+- In pneumatica heb je dus 5 poorten en 3 standen bij een 5/3 ventiel. (N.O. / N.C. / Middenstand).
+- 5/3 ventielen kunnen gevaarlijk zijn omdat je nu 3 standen hebt.
 
-Dus je hebt 5 poorten en 3 standen. (N.O. / N.C. / Center position)
+*Wanneer gebruik je een 5/3 ventiel?*
+- / Tussenliggende positionering: Wanneer de zuiger op elk punt van zijn slag gestopt moet kunnen worden.
+- / "Inching" of kruipen: Wanneer je de cilinder in kleine, gecontroleerde stappen moet verplaatsen.
+- / Positie behouden: Wanneer de cilinder op zijn plaats moet blijven zonder dat er actief luchtdruk aan één zijde wordt toegevoerd (vooral bij "gesloten middenstand").
+- / Veiligheid/Noodstop: Om de cilinder te ontluchten of te laten "zweven" in een veilige toestand tijdens een stroomstoring of noodstop, waardoor onverwachte bewegingen worden voorkomen.
+- / Impact voorkomen: Een 5/3 ventiel met "ontluchte middenstand" kan druk aflaten, wat de impact op de cilinder bij het stoppen vermindert en apparatuur beschermt.
 
-5/3 ventielen kunnen gevaarlijk zijn omdat je nu 3 standen hebt.
+*Soorten middenstanden (Center positions)*
+De middenstand bepaalt de toestand van de cilinder wanneer geen van beide spoelen bekrachtigd is:
+- / Gesloten middenstand (Closed Center - CC): Alle poorten zijn geblokkeerd. De cilinder behoudt zijn laatste positie (meest gebruikelijk voor het vasthouden van lasten).
+- / Ontluchte middenstand (Exhaust Center - COE): De cilinderpoorten zijn verbonden met de uitlaat. De cilinder is vrij om te bewegen ("zweeft").
+- / Druk middenstand (Pressure Center - COP): Er wordt druk uitgeoefend op beide cilinderpoorten. Wordt gebruikt voor het handhaven van constante druk.
+
+5/3 ventielen maken doorgaans gebruik van dubbele spoelen en worden vaak ingezet bij complexe automatisering, zoals bij klem-, pers- of positioneringstoepassingen waar een 5/2 ventiel onvoldoende controle biedt.
 
 
 == Reference designation system (RDS)
