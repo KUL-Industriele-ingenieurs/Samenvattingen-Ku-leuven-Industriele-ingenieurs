@@ -2,6 +2,8 @@
 
 = Main Circuits <ch:main-circuits>
 
+#chapter-outline()
+
 Dit hoofdstuk gaat over kortsluitingen en veiligheid
 
 == Kortsluitstroom en Overbelastingsbeveiliging

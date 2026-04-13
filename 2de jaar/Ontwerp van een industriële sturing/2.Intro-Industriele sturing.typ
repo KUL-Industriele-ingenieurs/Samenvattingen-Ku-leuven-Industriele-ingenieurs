@@ -6,6 +6,8 @@
 
 = Imports en Exports <chap:imports>
 
+#chapter-outline()
+
 In een land heb is een mens producties als ze
 *exports* creeren. Dit wordt ervoor dat geld binnenkomt in het land.
 Voor dingen buiten het land te gebruiken ga je dingen *importeren*.

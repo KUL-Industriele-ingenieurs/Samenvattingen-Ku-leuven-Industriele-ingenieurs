@@ -2,6 +2,8 @@
 
 = Pneumatica <ch:intro-pneumatics>
 
+#chapter-outline()
+
 == Wat is pneumatiek?
 
 Pneumatica is het controlleren van #keyterm[Cilinders en pistons] met behulp van #keyterm[Lucht]. We gaan deze kunnen bedienen met behulp van #keyterm[Valves]. We gebruiken onze #keyterm[Relays] en #keyterm[PLC's] om deze te bedienen.
@@ -378,8 +380,8 @@ Een bistabiel x/2 ventiel heeft twee spoelen:
 )
 
 === x/3 ventielen
-- x/3 ventielen zijn **dubbel monostabiele ventielen** (2 spoelen).
-- Zonder bekrachtiging keren ze terug naar de **middenpositie** (center position).
+- x/3 ventielen zijn *dubbel monostabiele ventielen* (2 spoelen).
+- Zonder bekrachtiging keren ze terug naar de *middenpositie* (center position).
 - In pneumatica heb je dus 5 poorten en 3 standen bij een 5/3 ventiel. (N.O. / N.C. / Middenstand).
 - 5/3 ventielen kunnen gevaarlijk zijn omdat je nu 3 standen hebt.
 

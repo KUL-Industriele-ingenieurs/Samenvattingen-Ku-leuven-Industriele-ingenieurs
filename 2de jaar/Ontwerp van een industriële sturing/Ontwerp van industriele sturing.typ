@@ -33,3 +33,6 @@
 #include "3.Intro-tot-pneumatics.typ"
 #include "4.Design van industriële controle systemen.typ"
 #include "5.Main circuits.typ"
+#include "6.Voorbeeld Diagram.typ"
+#include "7.Veiligheid.typ"
+#include "8.Pneumatica deel 2.typ"
