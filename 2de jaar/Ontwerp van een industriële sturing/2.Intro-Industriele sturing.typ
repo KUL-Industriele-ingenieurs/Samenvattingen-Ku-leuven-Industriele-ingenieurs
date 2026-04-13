@@ -188,6 +188,9 @@ Een paar belangrijke letters:
 - $Q$: Stroomonderbreker of hoofdschakelaar.
 
 = Logic control
+
+#chapter-outline()
+
 Uiteindelijk gaan we leren een elektrische circuit zelf op te stellen.
 
 #concept(title: "Soorten circuits")[
