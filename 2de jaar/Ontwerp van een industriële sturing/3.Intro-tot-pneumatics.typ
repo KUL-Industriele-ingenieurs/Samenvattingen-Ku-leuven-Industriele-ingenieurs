@@ -40,13 +40,14 @@ We will discuss (the differences between) disc valves, spool valves and poppet v
 
 
   #wrap-figure(
-    image("absolutevsrelatievedruk.png", width: 5cm),
+    image("absolutevsrelatievedruk.png", width: 7cm),
     caption: [absolutevsrelatievedruk],
     label: <fig:absolutevsrelatievedruk>,
   )[
     Druk is de kracht van molecules over een oppervlakte [F/A]
 
     *Absolute druk* is de druk ten opzichte van het vacuüm.
+
     *Relatieve druk* is de druk ten opzichte van de atmosferische druk.
     Bij een absoluut vacuüm zijn er geen enkele botsingen van moleculen.
 
@@ -82,7 +83,7 @@ Je zet de zuignap op het voorwerp en pompt de lucht eruit. Je vergroot dan terug
 
 #figure(
   image("tools pneumatics.png", width: 5cm),
-  caption: [tools pneumatics],
+  caption: [Tools pneumatics],
   label: <fig:tools-pneumatics>,
 )
 
@@ -130,12 +131,11 @@ Om dingen tight te houden zodat lucht niet lekt worden gasdichte connecties gebr
 
 We zetten een hoge druk aan de linkerkant. Hierdoor wordt de zuiger naar rechts geduwd. Daarna wordt deze hoge druk losgelaten door de return flow. De druk is nu ineens weg en gaat de zuiger terug naar links.
 
-#belangrijk(
-  "We werken met relatieve druk want als we de druk niet groter zetten als de atmosferische druk, dan gaat de zuiger niet naar rechts omdat er druk is aan de staafkant die de zuiger tegenhoudt",
-)
+
+We werken met relatieve druk want als we de druk niet groter zetten als de atmosferische druk, dan gaat de zuiger niet naar rechts omdat er druk is aan de staafkant die de zuiger tegenhoudt.
 
 #figure(
-  image("pneumatische cilinder.png", width: 5cm),
+  image("pneumatische cilinder.png", width: 8cm),
   caption: [pneumatische cilinder],
   label: <fig:pneumatische-cilinder>,
 )
@@ -243,22 +243,22 @@ $ F_"inward" = 264 "N" - 49 "N" = 215 "N" $
 + / Uitlaatdemper: Dempt de uitlaat van de cilinder
 + / Millieufilte: Filter de lucht die uit de cilinder komt
 + / Snelheidsregeling: Regelt de snelheid van de cilinder
-  #wrap-figure(
-    image("snelheidsregeling.png", width: 5cm),
-    caption: [snelheidsregeling],
-    label: <fig:snelheidsregeling>,
-  )[
-    We kunnen de snelheid van de cilinder regelen door de lucht te laten ontsnappen via een flow control valve.
+#wrap-figure(
+  image("snelheidsregeling.png", width: 5cm),
+  caption: [snelheidsregeling],
+  label: <fig:snelheidsregeling>,
+)[
+  We kunnen de snelheid van de cilinder regelen door de lucht te laten ontsnappen via een flow control valve.
 
-    #examenbox("Wat is een snelheidsregelventiel?")
+  #examenbox("Wat is een snelheidsregelventiel?")
 
-    Een #keyterm("Throttle valve") (smoorventiel) regelt de luchtstroom en werkt in beide richtingen. Vaak gebeurt dit via een conische naald die dieper in een opening (orifice) kan worden geschroefd.
+  Een #keyterm("Throttle valve") (smoorventiel) regelt de luchtstroom en werkt in beide richtingen. Vaak gebeurt dit via een conische naald die dieper in een opening (orifice) kan worden geschroefd.
 
-    Een #keyterm("Flow control valve") (FCV, One-way Throttle Valve, speed control valve) bestaat uit een combinatie van een smoorventiel en een terugslagklep (check valve) in parallel. Dit zorgt ervoor dat de flow slechts in *één richting gesmoord* wordt; in de andere richting stroomt de lucht vrij door via de terugslagklep.
+  Een #keyterm("Flow control valve") (FCV, One-way Throttle Valve, speed control valve) bestaat uit een combinatie van een smoorventiel en een terugslagklep (check valve) in parallel. Dit zorgt ervoor dat de flow slechts in *één richting gesmoord* wordt; in de andere richting stroomt de lucht vrij door via de terugslagklep.
 
-    *Metered out* (smoren op de uitlaat):
-    In een cilinder werkt de kracht van de perslucht tegen de kracht van het gas aan de andere kant van de zuiger. Het smoren van deze *uitlaatlucht* is een goede en vaak de juiste manier om de snelheid van een zuiger te regelen.
-  ]
+  *Metered out* (smoren op de uitlaat):
+  In een cilinder werkt de kracht van de perslucht tegen de kracht van het gas aan de andere kant van de zuiger. Het smoren van deze *uitlaatlucht* is een goede en vaak de juiste manier om de snelheid van een zuiger te regelen.
+]
 
 *Metered uit*
 Regelen over de uitstromende lucht van je *Cilinder*
@@ -300,7 +300,7 @@ Een valve is het stuk dat de doorgang van lucht gaat controlleren. Het is de deu
 Een paar voorbeelden:
 - Een elektro-pneumatische ventiel is een elektrisch gesteunde schakelaar voor pneumatische circuits.
 - Een elektro-hydraulische ventiel is een elektrisch gesteunde schakelaar voor hydraulische circuits.
--> Een actuator zoals een pneumatische cilinder of hydraulische motor kan verbonden worden met de outlet poorten van de valve.
+$arrow.r.double$ Een actuator zoals een pneumatische cilinder of hydraulische motor kan verbonden worden met de outlet poorten van de valve.
 
 #theorie(title: "Eigenschappen valve")[
   - Een supply poort geconnecteerd aan de #keyterm[hydrolic] of #keyterm[Pneumatic] (power) supply.
@@ -422,10 +422,10 @@ En meer complexe systemen met #keyterm[Electro-pneumatische controls] (PLC or re
 
 We gaan onze druk controlleren via logic circuits om cilinders te controlleren.
 
-A+ brengt ons van $A_0$ naar $A_1$
+A+ brengt ons van $A_0$ naar $A_1$\
 A- brengt ons van $A_1$ naar $A_0$
 
-de $A_0$ en $A_1$ zijn de #keyterm("states"). Ze zijn alle punten dat de cilinder stabiel in kan zijn.
+de $A_0$ en $A_1$ zijn de #keyterm("States"). Ze zijn alle punten dat de cilinder stabiel in kan zijn.
 
 === Ventielen in logische circuits
 
@@ -439,7 +439,7 @@ Niet in de rustpositie zoals elektrische circuit.
 
 #figure(
   image("logic-circuit.png", width: 10cm),
-  caption: [logic-circuit],
+  caption: [Voorbeeld Logic-circuit],
   label: <fig:logic-circuit>,
 )
 
@@ -450,16 +450,16 @@ Hoe gaan we ons circuit oplossen. We hebben een idee maar hoe gaan we dat in een
 
 De cascade methode is een methode om een complexe circuit te ontwerpen door het circuit te splitsen in eenvoudige delen.
 
-_BV. ABC | CB A: A beweegt naar $A_1$ ->  B beweegt naar $B_1$ -> C beweegt naar $C_1$._
+_BV. ABC | CB A: A beweegt naar $A_1$ $=>$  B beweegt naar $B_1$ $=>$ C beweegt naar $C_1$._
 
 Hierna zet je het circuit over naar de tweede groep
 
-_ CB | A: C beweegt naar $C_0$ -> B beweegt naar $B_0$ -> A beweegt naar $A_0$._
+_ CB | A: C beweegt naar $C_0$ $=>$ B beweegt naar $B_0$ $=>$ A beweegt naar $A_0$._
 
 Een daarna schaklet die terug naar circuit 1.
 
 #figure(
-  image("cascade-methode.png", width: 10cm),
+  image("cascade-methode.png", width: 12cm),
   caption: [cascade-methode],
   label: <fig:cascade-methode>,
 )

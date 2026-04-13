@@ -356,7 +356,7 @@ een vervanging van klassieke relays.
 
 
 #wrap-figure(
-  image("Ladder logic.png", width: 3cm),
+  image("Ladder logic.png", width: 4cm),
   caption: [Ladder logic],
   label: <fig:Ladder-logic>,
 )[
@@ -390,7 +390,7 @@ In een bedrijf wordt vaak een standaard gebruikt voor het benoemen van programma
 )[
   Een PLC gaat de inputs lezen PII, gaat het process uitvoeren OB1 en dan de outputs schrijven PIQ.
 
-  Zo een scan duurt 1-30ms.
+  Zo een scan duurt *1-30ms.*
 ]
 
 

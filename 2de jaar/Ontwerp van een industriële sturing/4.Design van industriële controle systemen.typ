@@ -55,7 +55,7 @@ Als iets niet geconnecteerd $arrow.r$ dan gaat hij niet aan staan (crazy right)_
 *Foute PLC schakeling*
 
 #figure(
-  image("Foute PLC schakeling.png", width: 5cm),
+  image("Foute PLC schakeling.png", width: 8cm),
   caption: [Foute PLC schakeling],
   label: <fig:Foute-PLC-schakeling>,
 )
@@ -69,7 +69,7 @@ Als iets niet geconnecteerd $arrow.r$ dan gaat hij niet aan staan (crazy right)_
 PLC's wordt met de tabel hieronder getoont wanneer een spanningsval groot genoeg is zodat de PLC het kan detecteren.
 
 #figure(
-  image("PLC-logic.png", width: 5cm),
+  image("PLC-logic.png", width: 8cm),
   caption: [PLC-logic],
   label: <fig:PLC-logic>,
 )
