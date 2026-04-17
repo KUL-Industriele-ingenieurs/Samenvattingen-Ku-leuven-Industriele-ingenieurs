@@ -6,9 +6,10 @@
 
 = Imports en Exports <chap:imports>
 
+#chapter-outline()
+
 In een land heb is een mens producties als ze
 *exports* creeren. Dit wordt ervoor dat geld binnenkomt in het land.
-
 Voor dingen buiten het land te gebruiken ga je dingen *importeren*.
 
 Je hebt eigenlijk maar een kleine hoeveelheid mensen die echt productief zijn voor
@@ -20,14 +21,14 @@ exports want mensen zoals
 - ambtenaren
 - ...
 
-Dragen niet bij aan *exports*.
+Dragen niet bij aan *exports*. _wel essensiteel maar economisch gezien dragen ze niet bij direct, wel indirect. Zoals medisch personeel die mensen gezond en werkend houd etc etc._
 
 Onze lonen zijn ook hoog vergeleken met andere landen. Het is dus heel moeilijk om
 competitief te zijn met andere landen. Als we spreken over *automatiseren*
 neem dat misschien een job af maar het zorgt ervoor dat we competitief kunnen blijven met andere landen.
 
 #figure(
-  image("importexport.png", width: 5cm),
+  image("importexport.png", width: 8cm),
   caption: [import en export],
   label: <fig:importexport>,
 )
@@ -46,7 +47,7 @@ neem dat misschien een job af maar het zorgt ervoor dat we competitief kunnen bl
   Een industriële ingenieur moet ervoor zorgen dat de productielijn gestandardiseerd is.
   Documentatie, gestandaardiseerde componenten, ...
 
-  Als een ingenieur 20jaar na jou het syteem beheert moet die weten wat het allemaal betekent. In dit vak leer je standardisering van de productielijn.
+  Als een ingenieur 20-jaar na jou het syteem beheert moet die weten wat het allemaal betekent. In dit vak leer je *standardisering* van de productielijn.
 ]
 
 #concept(title: "IT en OT")[
@@ -71,33 +72,36 @@ Natuurlijk kunnen deze vereisten variëren afhankelijk van de betrokken industri
 == Basis diagram geautomatiseerd systeem.
 
 #figure(
-  image("basisdiagram.png", width: 12cm),
+  image("basisdiagram.png", width: 15cm),
   caption: [basisdiagram],
   label: <fig:basisdiagram>,
 )
 
-#concept(title: "Basis diagram geautomatiseerd systeem.")[
-  - Inputs of the control system: Control inputs and signals of sensors/switches.
-  - Outputs of the control system: Actuators and Visualisation
-]
+Elk geautomatiseerd systeem heeft twee soorten aansluitingen op de controller:
 
+- / Inputs van het controlesysteem: De _controle-ingangen_ (bv. knoppen en schakelaars bediend door de operator) en de _sensorsignalen_ (bv. eindschakelaars, druksensoren). Ze vertellen de controller wat er in de machine of het proces gaande is.
+- / Outputs van het controlesysteem: De _actuatoren_ (bv. motoren, kleppen, cilinders) die de machine fysiek laten bewegen, en de _visualisatie_ (bv. pilot lamps, HMI-schermen) die de operator feedback geven over de toestand van het systeem.
 
-#concept(title: "TypicalforLogic Control Systems:")[
-  - Many digital signals: push buttons, switches, lamp, relay,contactor, Valve, ...
-  - 24VDC
-  - PLC, relais, (electro-)pneumatics…
-  - Sequences
-]
+=== Logic Control Systemen (on/off-besturing)
 
-#concept(title: "Typical forControl Theory (PID controllers):")[
-  - One analog reading, one analog output.
-  - 0_20mA, 4_20mA, 0_10V and -10+10V.
-  - For temperature measurement alsoPt100, Pt1000,Thermocouple.
-  - TemperatureController.
-]
+Logic control systemen (bv. PLC, relais) werken met *discrete, digitale signalen*: een signaal is ofwel aan (1) ofwel uit (0). Dit maakt ze ideaal voor aan/uit-sturing van machines.
+
+- / Veel digitale signalen: Drukknopen, eindschakelaars, lampen, relais, contactors, kleppen (valves), ... Elk van deze componenten heeft slechts twee toestanden.
+- / 24 VDC als standaardspanning: In industriële omgevingen is 24 V gelijkstroom de standaard voor bekabeling van digitale I/O. Dit is veilig voor operators en compatibel met de meeste PLC-modules.
+- / Hardwareplatformen: PLC's, relaisschakelingen en (elektro-)pneumatische systemen zijn typische realisaties van logische besturing.
+- / Sequenties: De logica is vaak sequentieel — stap na stap wordt een actie uitgevoerd afhankelijk van resultaten van vorige stappen. Denk aan een machine die eerst klem, dan boor, dan loslaatbeweging uitvoert.
+
+=== Regeltechniek (PID-controllers)
+
+PID-controllers werken niet met aan/uit-signalen, maar met *continue, analoge signalen*. Ze meten een proceswaarde en sturen continu bij om een gewenste setpoint te bereiken (bv. temperatuurregeling).
+
+- / Één analoge ingang, één analoge uitgang: De controller leest één meetwaarde (bv. temperatuur) en stuurt één actuator (bv. verwarmingselement) aan. Dit in tegenstelling tot logische besturing waarbij je tientallen digitale signalen beheert.
+- / Standaard signaalbereiken: Analoge signalen in de industrie hebben gestandaardiseerde bereiken: $0"–"20"mA"$, $4"–"20"mA"$ (meest gebruikt, want 0 mA wijst op een kabelfout), $0"–"10"V$ en $-10"–"+10"V$.
+- / Temperatuursensoren: *Pt100* en *Pt1000* (weerstandsthermometers, nauwkeurig voor lage temperaturen) en *thermokoppels* (voor hoge temperaturen, bv. in ovens).
+- / Temperatuurregelaar: Een dedicated *temperature controller* — een klein apparaat dat de PID-logica zelf uitvoert zonder PLC, typisch voor enkelvoudige regelkringen.
 
 #wrap-figure(
-  image("automatisering pyramide.png", width: 6cm),
+  image("automatisering pyramide.png", width: 8cm),
   caption: [automatisering pyramide],
   label: <fig:automatiseringpyramide>,
 )[
@@ -129,7 +133,7 @@ Natuurlijk kunnen deze vereisten variëren afhankelijk van de betrokken industri
   )
 + *Programmeerbare Relays:*
 + *IPC's*: Industrial PC, wordt meestal nog aangestuurd door een PLC maar is goed voor complexe software.
-+ *SCADA*: Supervisory Control And Data Acquisition
++ *SCADA*: Supervisory Control And Data Acquisition. Je bekijkt digitaal al je controle systemen om beter overzicht te krijgen.
   #figure(
     image("Scada.png", width: 5cm),
     caption: [Scada],
@@ -156,14 +160,12 @@ Natuurlijk kunnen deze vereisten variëren afhankelijk van de betrokken industri
 
 
 #figure(
-  image("klassesRDS.png", width: 10cm),
+  image("klassesRDS.png", width: 15cm),
   caption: [klassesRDS],
   label: <fig:klassesRDS>,
 )
 
-Je defineert je component in klasses. Dit is de *Een letter code* die de functie van het component beschrijft.
-
-Voor elk aspect wordt een letter geven _Bv. EN 81346_
+Je defineert je component in klasses. Dit is de *een letter code* die de functie van het component beschrijft. Voor elk aspect wordt een letter geven _Bv. EN 81346_
 
 #oefening(
   title: "klassen RDS",
@@ -186,6 +188,9 @@ Een paar belangrijke letters:
 - $Q$: Stroomonderbreker of hoofdschakelaar.
 
 = Logic control
+
+#chapter-outline()
+
 Uiteindelijk gaan we leren een elektrische circuit zelf op te stellen.
 
 #concept(title: "Soorten circuits")[
@@ -206,7 +211,7 @@ Hoe connecteren machines met elkaar? Inputs en outputs, IO.
 Deze worden allemaal aangehaald in deze introductie.
 
 #concept(title: "PLC (Programmable Logic Controller)")[
-  Dit is gespecialiseerde computer die geen scherm, toetsenbord of muis heeft, maar wel een aantal ingangen en uitgangen.
+  Dit is gespecialiseerde mini-computer die geen scherm, toetsenbord of muis heeft, maar wel een aantal ingangen en uitgangen.
   Deze worden gebruikt in industriële omgevingen om machines en processen te automatiseren.
 ]
 
@@ -297,9 +302,10 @@ Hoe de schakeling is getekend bepaalt zijn functie.
   label: <fig:voorbeeldcircuit>,
 )
 
+Dit circuit hierboven toont *twee* switches *S1* en *S2* die beide *normally open (NO) * zijn. Ze moeten beide gesloten zijn voor dat de lamp *P1* aan gaat.
+
 == Signal time Diagram
 
-#TODO("Uitleg over signal time diagrammen")
 
 Zoals gezien in elektronica kun je diagrammen maken om het gedrag van signalen over tijd te visualiseren.
 #figure(
@@ -312,12 +318,16 @@ Zoals gezien in elektronica kun je diagrammen maken om het gedrag van signalen o
 
 == Timer en Timing Relays
 
-Je kunt twee soorten timers hebben:
-/ On delay timer (TON): De output gaat pas na een bepaalde tijd actief.
-/ Off delay timer (TOF): De output gaat pas na een bepaalde tijd inactief.
+#concept(title: "Timers")[
 
-Hiervoor bestaan #keyterm[Speciale relays: Timing relays].
+  Timers gaan pas na een bepaalde tijd af of aan na een verandering in signaal.
 
+  Je kunt twee soorten timers hebben:
+  / On delay timer (TON): De output gaat pas na een bepaalde tijd actief.
+  / Off delay timer (TOF): De output gaat pas na een bepaalde tijd inactief.
+
+  Hiervoor bestaan #keyterm[Speciale relays: Timing relays].
+]
 #wrap-figure(
   image("Timing relays.png", width: 3cm),
   caption: [Timing relays],
@@ -351,7 +361,7 @@ een vervanging van klassieke relays.
 
 
 #wrap-figure(
-  image("Ladder logic.png", width: 3cm),
+  image("Ladder logic.png", width: 4cm),
   caption: [Ladder logic],
   label: <fig:Ladder-logic>,
 )[
@@ -385,7 +395,7 @@ In een bedrijf wordt vaak een standaard gebruikt voor het benoemen van programma
 )[
   Een PLC gaat de inputs lezen PII, gaat het process uitvoeren OB1 en dan de outputs schrijven PIQ.
 
-  Zo een scan duurt 1-30ms.
+  Zo een scan duurt *1-30ms.*
 ]
 
 
