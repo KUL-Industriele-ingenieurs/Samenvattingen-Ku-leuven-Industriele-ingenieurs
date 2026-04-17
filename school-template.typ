@@ -555,7 +555,7 @@
 #let important(content) = text(fill: schoolRed, weight: "bold")[#content]
 #let belangrijk = important  // Dutch alias matching LaTeX \belangrijk
 #let term(content) = text(fill: schoolBlue, weight: "bold")[#content]
-#let keyterm(content) = text(fill: schoolBlue.darken(20%), weight: "bold")[#content]
+#let keyterm(content) = strong(content) // uses the global strong style with darkened blue
 
 // --- Exam & Annotation Helpers ---
 #let examenbox(body) = block(
@@ -567,6 +567,79 @@
 #let FIXME(msg) = text(fill: red, weight: "bold", font: "Fira Sans")[\[FIXME: #msg\]]
 #let NOTE(msg) = text(fill: schoolOrange, weight: "bold", font: "Fira Sans")[\[NOTE: #msg\]]
 #let citeme = text(fill: red, font: "Fira Sans")[\[CITATIE NODIG\]]
+
+// --- Chapter Outline (Local TOC per chapter) ---
+// Usage: Place #chapter-outline() right after the level-1 heading of a chapter.
+// It will render a simple table of contents showing only the level-2 sections within that chapter.
+#let chapter-outline() = {
+  context {
+    let loc = here()
+    // Find all level-1 headings in the document
+    let all-h1 = query(heading.where(level: 1))
+
+    // Find the current chapter (the last level-1 heading before this point)
+    let current-chapter = none
+    let current-idx = -1
+    for (i, hd) in all-h1.enumerate() {
+      if hd.location().position().page <= loc.position().page {
+        current-chapter = hd
+        current-idx = i
+      }
+    }
+
+    if current-chapter == none { return }
+
+    // Determine the boundary: the next level-1 heading (or end of document)
+    let next-chapter = if current-idx + 1 < all-h1.len() {
+      all-h1.at(current-idx + 1)
+    } else {
+      none
+    }
+
+    // Query only level-2 headings
+    let sub-headings = query(heading.where(level: 2))
+
+    // Filter to only headings within this chapter using location comparison
+    // This prevents headings from an earlier chapter on the same page from leaking in
+    let current-loc = current-chapter.location()
+    let chapter-headings = sub-headings.filter(entry => {
+      let entry-loc = entry.location()
+      let ep = entry-loc.position().page
+      let ey = entry-loc.position().y
+      let cp = current-loc.position().page
+      let cy = current-loc.position().y
+      // Must be after current chapter heading
+      let after-current = ep > cp or (ep == cp and ey > cy)
+      // Must be before next chapter heading
+      let before-next = if next-chapter != none {
+        let np = next-chapter.location().position().page
+        let ny = next-chapter.location().position().y
+        ep < np or (ep == np and ey < ny)
+      } else {
+        true
+      }
+      after-current and before-next
+    })
+
+    if chapter-headings.len() == 0 { return }
+
+    // Render a clean, simple outline
+    v(4pt)
+    text(weight: "bold", size: 10pt)[Inhoud]
+    v(4pt)
+    for entry in chapter-headings {
+      let num = if entry.numbering != none {
+        counter(heading).at(entry.location()).map(str).join(".") + ". "
+      }
+      block(spacing: 0.5em)[
+        #num#entry.body
+        #box(width: 1fr, repeat[.#h(4pt)])
+        #text(size: 9pt)[#entry.location().position().page]
+      ]
+    }
+    v(8pt)
+  }
+}
 
 // --- Chapter Page Styling ---
 #let chapter_page(title, label: none) = {

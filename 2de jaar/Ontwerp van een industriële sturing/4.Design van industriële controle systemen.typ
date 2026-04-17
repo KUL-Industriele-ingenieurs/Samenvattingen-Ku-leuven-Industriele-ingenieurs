@@ -3,6 +3,8 @@
 
 = Design van industriële controle systemen <ch:design-van-industriële-controle-systemen>
 
+#chapter-outline()
+
 In dit deel wordt gezien hoe we industriële systemen kunnen ontwerpen en hoe we ze gaan connecteren.
 
 #concept(title: "Voltage verschil")[
@@ -55,7 +57,7 @@ Als iets niet geconnecteerd $arrow.r$ dan gaat hij niet aan staan (crazy right)_
 *Foute PLC schakeling*
 
 #figure(
-  image("Foute PLC schakeling.png", width: 5cm),
+  image("Foute PLC schakeling.png", width: 8cm),
   caption: [Foute PLC schakeling],
   label: <fig:Foute-PLC-schakeling>,
 )
@@ -69,7 +71,7 @@ Als iets niet geconnecteerd $arrow.r$ dan gaat hij niet aan staan (crazy right)_
 PLC's wordt met de tabel hieronder getoont wanneer een spanningsval groot genoeg is zodat de PLC het kan detecteren.
 
 #figure(
-  image("PLC-logic.png", width: 5cm),
+  image("PLC-logic.png", width: 8cm),
   caption: [PLC-logic],
   label: <fig:PLC-logic>,
 )
@@ -212,12 +214,12 @@ Om het verschil tussen PNP en NPN te begrijpen, kijk je naar wat de sensor met d
     columns: 2,
     gutter: 1cm,
     figure(
-      image("3-draad PNP sensor.png", width: 7cm),
+      image("3-draad PNP sensor.png", width: 6cm),
       caption: [PNP: De kraan staat open (+24V)],
       label: <fig:3-draad-PNP-sensor-nieuw>,
     ),
     figure(
-      image("3-draad NPN sensor.png", width: 7cm),
+      image("3-draad NPN sensor.png", width: 5cm),
       caption: [NPN: De afvoer staat open (0V)],
       label: <fig:3-draad-NPN-sensor-nieuw>,
     ),
@@ -229,18 +231,14 @@ Om het verschil tussen PNP en NPN te begrijpen, kijk je naar wat de sensor met d
 Een twee draad kan gebruikt worden voor zowel *Sourcing* als *Sinking*. Het heeft geen connectie met de referenties voltage.
 
 #figure(
-  image("Twee draad sensor.png", width: 15cm),
+  image("Twee draad sensor.png", width: 16cm),
   caption: [Twee draad sensor],
   label: <fig:Twee-draad-sensor>,
 )
 
+=== 3 & 4 Draad sensoren <sec:3-4-draad-sensoren>
 
-=== Sourching 3&4 draad sensor
-
-
-=== Sinking 3&4 draad sensor
-
-=== Wiring IEC positive/negative logic
+=== Wiring IEC positive/negative logic <sec:wiring-iec-positive-negative-logic>
 
 #figure(
   image("Wiring IEC.png", width: 12cm),
