@@ -1,6 +1,6 @@
 #import "../../school-template.typ": *
 
-= Bewegingsvergelijking voor de vlakke beweging
+= Bewegingsvergelijking bij translatie <ch:beweging-bij-translatie>
 
 Een starre lichaam (een vlak) heeft drie bewegingsmogelijkheden:
 - *Translatie* in x-richting
@@ -162,7 +162,7 @@ $ sum M_P = I_G alpha + m (a_G)_x (y_G - y_P) + m (a_G)_y (x_G - x_P) $
 *(Let op de tekens van de momentarmen afhankelijk van de rotatierichting!)*
 
 #waarschuwing(title: "Kinetisch Schema")[
-  Bij het oplossen van complexe vraagstukken is het aan te raden om zowel een **Vrijlichaamsschema (VLS)** als een **Kinetisch Schema (KS)** te tekenen. 
+  Bij het oplossen van complexe vraagstukken is het aan te raden om zowel een **Vrijlichaamsschema (VLS)** als een **Kinetisch Schema (KS)** te tekenen.
   - In het **VLS** teken je alle uitwendige krachten ($vec(F)$) en momenten ($M$).
   - In het **KS** teken je de kinetische resultanten $m vec(a)_G$ en het traagheidsmoment $I_G alpha$.
   De vergelijking $sum M_P = sum (cal(M)_k)_P$ stelt simpelweg dat het moment van alles in je VLS gelijk moet zijn aan het moment van alles in je KS.
