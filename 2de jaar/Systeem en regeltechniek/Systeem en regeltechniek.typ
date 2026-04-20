@@ -29,6 +29,9 @@
 #include "2.electronic_applications.typ"
 #include "3.Bode & Nyquist Plots.typ"
 #include "4.Bode Plots.typ"
+#include "5.Bode, feedback, and P control.typ"
+#include "6.P Control.typ"
+#include "7.Closed Loop TF.typ"
 // ============================================================================
 //                              APPENDICES
 // ============================================================================
