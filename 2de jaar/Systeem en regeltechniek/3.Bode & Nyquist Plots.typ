@@ -82,7 +82,7 @@ Bij de nyquist plot ga je niet kijken naar amplitudes maar je gaan in het comple
   De amplitude moet je uitrekenen door je log toe te voegen _je frequentie is in log in de bode plot_ en dan is de formule:
 
   $A(omega) = 20 log_10(|H(j omega)|) = 20 log_10(1/(tau omega))$
-  $ = markhl(-20 log_10(tau omega)) ("-20 is de helling in db per decade") $
+  $ = markhl(-20 log_10(tau omega)) quad quad "-20 is de helling in db per decade" $
 
 
   Als $omega = 1/tau$ dan is $A(omega) = -20 log_10(1) = 0$ (log (1) = 0)
@@ -94,53 +94,61 @@ Bij de nyquist plot ga je niet kijken naar amplitudes maar je gaan in het comple
 
   *Nyquist plot*
 
-  #keyterm[Herinner de polaire plots van wiskunde basistechnieken beetje gelijkaardig]
+  Herinner de polaire plots van wiskunde basistechnieken beetje gelijkaardig
 
   #examenbox[Geen logaritmische schaal van toepassing]
 
   Om de nyquist plot te tekenen nemen we 3 verschillende waarden van $omega$:
 
-  - $ omega arrow.r 0 arrow.r.double = infinity $
-  - $omega = 1/tau arrow.r.double = 1$ (we hebben nog steeds een imagair deel geen enkele reël deel zoals je kunt zien in de amplitude plot _zie formule bode plot_)
-  - $omega arrow.r infinity arrow.r.double = 0$
+  - $omega arrow.r 0 arrow.r.double infinity$
+  - $omega = 1/tau arrow.r.double 1$ (we hebben nog steeds een imagair deel geen enkele reël deel zoals je kunt zien in de amplitude plot _zie formule bode plot_)
+  - $omega arrow.r infinity arrow.r.double 0$
 
 
-  #grid(
-    columns: 2,
-    align: center,
-    figure(
-      image("oefeningbodeplot.png", width: 5cm),
-      caption: [oefeningbodeplot],
-      label: <fig:oefeningbodeplot>,
-    ),
+  #align(
+    center,
+    grid(
+      columns: 2,
+      align: center,
+      figure(
+        image("oefeningbodeplot.png", width: 5cm),
+        caption: [oefeningbodeplot],
+        label: <fig:oefeningbodeplot>,
+      ),
 
-    figure(
-      image("oefening Nyquist plot.png", width: 5cm),
-      caption: [oefening Nyquist plot],
-      label: <fig:oefening-Nyquist-plot>,
+      figure(
+        image("oefening Nyquist plot.png", width: 5cm),
+        caption: [oefening Nyquist plot],
+        label: <fig:oefening-Nyquist-plot>,
+      ),
     ),
   )
 ]
 
-=== ideal differentiator
+=== Ideal differentiator
 
 // todo vul uitleg in zoals hiervoor integrator
 
-=== Eerste orde All-pole systemen
+#TODO[Vul uitleg in zoals hiervoor integrator]
+
+
+=== Eerste orde all-pole systemen
 
 $ H(s) = frac(K, 1+ tau s) $
 
 *Bode plot*
 We willen terug de bode plot
 
-$ A(omega) = 20 log_10(|H(j omega)|) = 20 log_10(1/(tau omega)) = markhl(-20 log_10(tau omega)) $
+$A(omega) = 20 log_10(|H(j omega)|) = 20 log_10(1/(tau omega)) = markhl(-20 log_10(tau omega))$
 
 Weer 3 verschillende waarden van $omega$:
 
-- $ lim_(omega->0) A(omega) = 20 log_10(K) $
+- $lim_(omega->0) A(omega) = 20 log_10(K)$
 
 
-- $ omega = 1/tau arrow.r.double A(1/tau) = 20 log_10(K) - 20 log_10(square(1+1)) = 20 log_10(K) - 3d B) $ \
+- $omega = 1/tau arrow.r.double A(1/tau) = 20 log_10(K) - 20 log_10(square(1+1)) = 20 log_10(K) - 3d B)$
+
+
 (we hebben nog steeds een imagair deel geen enkele reël deel zoals je kunt zien in de amplitude plot _zie formule bode plot_)
 
 Als $omega$ heel groot is dan kunnen we die 1 verwaarlozen want $1 <<< omega$
@@ -174,7 +182,7 @@ $ -arctan(1) = -45 deg $  (want $tan(45) = 1$)
 en we komen terug een mooie figuur uit. Je ziet in het midden dat je een hoek van 45° krijgt zoals in de berekeningen.
 
 #figure(
-  image("all-pole phase bode plot.png", width: 10cm),
+  image("all-pole phase bode plot.png", width: 12cm),
   caption: [all-pole phase bode plot],
   label: <fig:all-pole-phase-bode-plot>,
 )
@@ -187,7 +195,7 @@ en we komen terug een mooie figuur uit. Je ziet in het midden dat je een hoek va
   We zien van de *Bode plot* dat we een low-pass filter krijgen.
 
   #figure(
-    image("bodeplotsimpeloefening.png", width: 5cm),
+    image("bodeplotsimpeloefening.png", width: 8cm),
     caption: [bodeplotsimpeloefening],
     label: <fig:bodeplotsimpeloefening>,
   )
@@ -210,7 +218,7 @@ Opnieuw 3 verschillende waarden van omega invullen:
 - $ omega arrow.r infinity arrow.r.double H(j omega) = 0 $
 
 #figure(
-  image("nyquistplot allplot eerste orde.png", width: 10cm),
+  image("nyquistplot allplot eerste orde.png", width: 8cm),
   caption: [nyquistplot allplot eerste orde],
   label: <fig:nyquistplot-allplot-eerste-orde>,
 )
@@ -219,7 +227,7 @@ Opnieuw 3 verschillende waarden van omega invullen:
 
 *Bode plot*
 
-$ H(s) = frac(tau s, 1+tau s) $
+$H(s) = frac(tau s, 1+tau s)$
 
 #figure(
   image("bodeplot pole zero.png", width: 10cm),
@@ -230,6 +238,7 @@ $ H(s) = frac(tau s, 1+tau s) $
 Weer voor amplitude en fase oplossen:
 
 //todo voeg berekening toe
+#TODO[Voeg berekening toe]
 
 
 *Nyquist plot*
@@ -366,7 +375,7 @@ $ arrow.b.double $
 
 #voorbeeld(title: "Hogere orde systeem")[
 
-  $markhl(H(s) = frac(1 +5s, s(10+10s)))$
+  $ markhl(H(s) = frac(1 +5s, s(10+10s))) $
 
   #figure(
     image("bodefaseplothogereorde.png", width: 10cm),
