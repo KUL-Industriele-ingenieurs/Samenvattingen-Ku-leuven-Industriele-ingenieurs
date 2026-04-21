@@ -154,19 +154,50 @@
   // Caption styling: small Fira Sans, bold label
   show std-figure.caption: set text(size: 0.9em * 0.92, font: ("Fira Sans", "Liberation Sans"), weight: "bold")
 
+  // Figure numbering: "Chapter.Figure" (e.g. Figure 2.1), resets per chapter via heading rule
+  show std-figure: it => context {
+    let h = counter(heading).get()
+    let chapter = if h.len() > 0 { h.first() } else { 0 }
+    let fig-n = counter(std-figure.where(kind: it.kind)).get().first()
+    let num-str = if chapter > 0 {
+      numbering("1.1", chapter, fig-n)
+    } else {
+      numbering("1", fig-n)
+    }
+    // Output body centered, then caption below (without re-invoking std-figure to avoid recursion)
+    align(center, it.body)
+    if it.caption != none {
+      align(center, block(
+        above: 0.65em,
+        text(
+          size: 0.9em * 0.92,
+          font: ("Fira Sans", "Liberation Sans"),
+          weight: "bold",
+          [Figure #num-str: #it.caption.body],
+        ),
+      ))
+    }
+  }
+
   // List styling: match LaTeX tightened spacing
   set list(indent: 2em, body-indent: 0.5em, spacing: 0.6em)
   set enum(indent: 2em, body-indent: 0.5em, spacing: 0.6em)
 
   show heading: set text(font: ("Fira Sans", "Liberation Sans"), weight: "bold")
 
-  show heading.where(level: 1): it => block(below: 0.8em, breakable: false)[
-    #v(8pt)
-    #text(size: 13.2pt)[#if it.numbering != none { counter(heading).display(it.numbering) + h(0.5em) }#it.body]
-    #v(-12pt)
-    #line(length: 100%, stroke: 0.5pt)
-    #v(3pt)
-  ]
+  show heading.where(level: 1): it => {
+    // Reset figure counters on every new chapter
+    counter(std-figure.where(kind: image)).update(0)
+    counter(std-figure.where(kind: table)).update(0)
+    counter(std-figure.where(kind: raw)).update(0)
+    block(below: 0.8em, breakable: false)[
+      #v(8pt)
+      #text(size: 13.2pt)[#if it.numbering != none { counter(heading).display(it.numbering) + h(0.5em) }#it.body]
+      #v(-12pt)
+      #line(length: 100%, stroke: 0.5pt)
+      #v(3pt)
+    ]
+  }
 
   show heading.where(level: 2): it => block(below: 0.8em, breakable: false)[
     #v(6pt)

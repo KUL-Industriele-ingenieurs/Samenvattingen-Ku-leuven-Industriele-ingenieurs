@@ -152,7 +152,7 @@ Herinner je dat een spoel de voltage verschillen gaat tegengaan. Die doet dit do
 Je stroom $i_0$ gaat achterlopen op de spanning $v_s$ door de spoel.
 
 #figure(
-  image("Half-wave rectifier met inductieve belasting.png", width: 5cm),
+  image("Half-wave rectifier met inductieve belasting.png", width: 12cm),
   caption: [Half-wave rectifier met inductieve belasting],
   label: <fig:Half-wave-rectifier-met-inductieve-belasting>,
 )
@@ -190,23 +190,31 @@ Net zoals bij de half-wave rectifier gaat de stroom $i_0$ achterlopen op de span
   label: <fig:Heel-hoge-inductieve-belasting-met-full-wave-rectifier>,
 )
 
-Omdat er een enorm grote inductatie $L$ is gaat de stroom $i_d$ bijna niet veranderen.
+Omdat er een enorm grote inductatie $L$ is gaat de stroom $i_d$ bijna niet veranderen. Een spoelt wil namelijk geen enkele verandering die wilt altijd dat het magnetische veld in de spoel constant is.
 
-De diodes gaat dan enorm hard schakelen omdat er direct 90° verandering is van de stroom. Dit kan in praktijk niet. Je krijgt nog een inductatie van de diodes. Die gaat die grote stroomveranderingen tegenhouden.Dit noemen we #keyterm[Grid-inductantie]
+De diodes gaat dan enorm hard schakelen omdat er direct 90° verandering is van de stroom. Dit kan in praktijk niet. Je krijgt nog een inductatie van de diodes. Die gaat die grote stroomveranderingen tegenhouden. Dit noemen we #keyterm[Net-inductantie]
 
 
 #figure(
-  image("Grid inductatie.png", width: 5cm),
-  caption: [Grid inductatie],
-  label: <fig:Grid-inductatie>,
+  image("Net Inductantie.png", width: 15cm),
+  caption: [Net Inductantie],
+  label: <fig:Net-Inductantie>,
 )
-
 Je krijgt dan #keyterm[Overlapping] waarbij beide diodes tegelijkertijd geleiden. Stel diode 1 $D_1$ begint af te dalen en diode 3 $D_3$ begint te stijgen. Dan gaat D3, D1 #keyterm[Afknijpen].
 
 Hierdoor wordt de spanning over de load $v_0$ tijdelijk 0. Dit komt omdat beide diodes gelijden gaan hun spanningen elkaar uitschakelen.
 
-Het tijdsverschil waarbij de diodes tegelijkertijd geleiden is $mu$.
+Dit noemt *diode commutatie overlap* waarbij beide diodes gaan geleiden. Het tijdsverschil waarbij de diodes tegelijkertijd geleiden is $mu$.
 
+Dit is de reden dat diodes niet volledig efficient zijn. Dit phenoneem is in de grafieken overdreven maar deze kleine verschillen zorgen ervoor dat diodes bijvoorbeeld een efficientie hebben van 95%.
+
+Hieronder is de figuur van de powerquality van een 3 fase systeem waar je duidelijk sprongen zien in je voltage door de diodes
+
+#figure(
+  image("Power quality van diodes.png", width: 10cm),
+  caption: [Power quality van diodes],
+  label: <fig:Power-quality-van-diodes>,
+)
 
 === Alles tesamen
 
@@ -225,18 +233,92 @@ Dus met alles te samen:
 - $I_s$ de stroom van de sinusgolf door spoel van de diodes
 
 
-We kunnen nu deze grafiek uitleggen:
-#figure(
-  image("Batterij met series inductatie.png", width: 5cm),
-  caption: [Batterij met series inductatie],
-  label: <fig:Batterij-met-series-inductatie>,
-)
-
 De spanning en stroom zijn kleiner omdat de batterij een bepaalde voltage pas gaat geleiden. Er is een vertraging door de spoel. Door de overlapping is er een afknijping van de spanning.
 
 
 == Capacitieve load
 
+=== Halve golf rectifier met Capacitieve load
+
+Als je de standaard AC input krijgt wordt die gesmooth door de capaciteit in parallel met de output. Je krijgt dan een *Smoothing* effect op je output.
+
+Je ziet op de grafiek dat eerst alle negatieve spanningen worden tegengehouden door de diode. En daarna komt hij pas bij de output.
+
+#figure(
+  image("Capacitieve load.png", width: 12cm),
+  caption: [Capacitieve load],
+  label: <fig:Capacitieve-load>,
+)
+
+Niks is perfect en er gaat dus een trade off zijn door dit te doen.
+
+$ i = C (d v)/(d t) $
+
+De stroom $i$ is afhankelijk van de veranderingen van de spanning. Dus als onze spanning daalt gaat onze stroom ook negatief is.
+
+Laten we dit verder bekijken met terug onze *brug rectiefier*
+
+=== Capacitieve load met brug rectiefier
+
+#figure(
+  image("Capacitieve brug rectifier.png", width: 12cm),
+  caption: [Capacitieve brug rectifier],
+  label: <fig:Capacitieve-brug-rectifier>,
+)
 
 
-#TODO[NA DE PAASVAKANTIE]
+#wrap-figure(
+  image("Capicitieve stroom.png", width: 4cm),
+  caption: [Capicitieve stroom],
+  label: <fig:Capicitieve-stroom>,
+)[
+  We weten dat een brug rectifier onze voltage $v(t)$ gaat normaliseren zodat die constant is.
+
+  Bij de daling van de spanning gaat de condensator stroom leveren naar de load. De load vraagt een bepaalde stroom dus na een punt gaat alle stroom geleverd worden door de capaciteit. De stroom in de diode gaat dan nul zijn en zoals we hiervoor gezien hebben betekent dat dat de diode stopt met geleiden en zijn poort terug open doet.
+
+
+  Alles te samen wordt dit onze capacitieve netstroom:
+
+  #figure(
+    image("Capicitieve netstroom.png", width: 10cm),
+    caption: [Capicitieve netstroom],
+    label: <fig:Capicitieve-netstroom>,
+  )
+
+  met:
+  - #text(fill: schoolGreen)[*Groen:*] AC stroom
+  - #text(fill: schoolBlue)[*Blauw:*] Negatieve stroom van capaciteit
+  - #text(fill: amber)[*Geel:*] Spanning over load
+  - #text(fill: brandblue)[*Licht blauw:*] stroom over load.
+  - #text(fill: schoolRed)[*Rood*] Capacitiet
+
+]
+
+
+== Three-phase diode rectifiers <sec:three-phase:diode-rectifiers>
+
+Dus nu hebben we terug rectiefiers maar nu willen we 3 fase systemen balanceren zodat we een constante stroom hebben.
+
+#figure(
+  image("3 diode rectifiers.png", width: 10cm),
+  caption: [3 diode rectifiers],
+  label: <fig:3-diode-rectifiers>,
+)
+
+#wrap-figure(
+  image("3 Fase rectifier.png", width: 5cm),
+  caption: [3 Fase rectifier],
+  label: <fig:3-fase-rectifier>,
+)[
+
+  Deze ziet er zo uit. Hierbij gaat een voor een de diodes geleiden in de fases. Een belangrijk concept is het pulse nummer
+
+  #concept(title: "Pulse nummer")[
+
+    De hoeveelheid switches die gebeuren per periode. Hier is het pulse nummer 6 omdat er 3 diodes 2 keer switchen per periode.
+  ]
+
+  Nu wat er vreemd is aan een 3 fasige is dat je zelfs bij een volledig resistieve belasting dat je toch *Commutation* krijgt. Door de overlapping van de stroom van de diodes, het moment dat de stroom van de ene diode hoger is dan de vorige gaat de de diode afknijpen en stopt die met geleiden.
+
+]
+
