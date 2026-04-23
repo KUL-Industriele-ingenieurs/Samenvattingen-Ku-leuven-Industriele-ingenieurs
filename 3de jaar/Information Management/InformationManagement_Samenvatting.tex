@@ -398,4 +398,568 @@ Voorbeelden zijn: Python, JavaScript, Ruby, PHP, \dots
   \caption{Interpreted or Scripted Execution (Geïnterpreteerde of gescripte uitvoering)}
   \label{fig:ISC.png}
  \end{figure}
+\newpage
+\chapter{Les 3: Data storage (Dataopslag)}
+\begin{warningbox}[Over deze les/slides]
+Voor dat je hieraan begint wil ik effe nog duidelijk zeggen dat de slides van dit hoofdstuk echt een mess zijn, alles is door elkaar terwijl ik probeer in volgorde te noteren. Het zou kunnen dat sommige termen aan bod komen voor ze duidelijk worden uitgelegd, het zou ook kunnen dat sommige concepten of theorie dubbel aan bod komt. De les was ook heel saai btw, dus veel lesnotities had ik niet en de les is niet opgenomen (die van vorig jaar wel).
+\end{warningbox}
+Momenteel bevinden wij ons in een gigantische 'data-explosie', dit is omdat we van een simpel netwerk voor mensen (Internet of people) geëvolueerd zijn naar een wereld vol apparaten en sensoren (Internet of Things en Wearables). Ook produceren machines tegenwoordig zelf veel nieuwe data, de proff zegt dat er binnekoort meer machinaal gegenereerde data zal zijn dan data die door mensen is geschreven ('organic written data'). Deze les gaat dus draaien om de vraag van hoe en waar we alle verschillende soorten data opslaan. We gaan kijken naar de soorten data, begrijpen wat voor database we kunnen kiezen en de theorie een beetje toepassen op een echt industrieel scenario.
+\newline
+De volgende figuur toont hoe onze 'connectiviteit' exponentieel is gegroeid over de jare:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{evolutieinterenet.png}
+  \caption{Evolutie van het internet en de connectiviteit van apparaten over de jaren}
+  \label{fig:evolutieinterenet.png}
+ \end{figure}
+Vroeger als we Counter strike wouden spelen deden we LAN-partys, dit omdat we zijn begonnen bij 'Internet of People' (dit zijn gewoon pc's die aan elkaar verbonden waren), hierna zijn we overgegaan naar 'Internet of Things' waarbij miljarden apparaten en sensoren verbonden zijn. Volgens projecties evolueren we nu verder naar het 'Internet of Wearable Things' (zoals smartwatches) en het 'Tactile internet' (haptische feedback geven en ontvangen via het internet).
+\subsection{Structured and Unstructured data (Gestructureerde en ongestructureerde data)}
+\subsubsection{Structured data (Gestructureerde data)}
+Dit is data met een vooraf gedefinieerde datamodel of structuur. 
+Het wordt opgeslagen in tabelvorm, hierbij zijn rijen en kolommen met elkaar verbonden. 'Relationaliteit' is het fundamenteel principe hier en het wordt meestal opgeslagen in een 'Relationeel Database Management Systeem' (RDBMS) met behulp van SQL.
+\begin{conceptbox}[Relationaliteit]
+    Relationaliteit betekent dat de data in verschillende tabellen met elkaar verbonden kan worden via gemeenschappelijke velden (zoals een 'ID'). Dit maakt het mogelijk om complexe queries uit te voeren en relaties tussen verschillende datasets te analyseren.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{relationeledatavoorbeeld.png}
+  \caption{Voorbeeld van relationele data}
+  \label{fig:relationeledatavoorbeeld.png}
+ \end{figure}
+  \end{conceptbox}
+\begin{conceptbox}[Relationeel Database Management Systeem (RDBMS)]
+    Een RDBMS is een softwaretoepassing die het beheer van relationele databases mogelijk maakt. Het biedt functies voor het creëren, lezen, bijwerken en verwijderen van data, evenals het uitvoeren van complexe queries en het beheren van de relaties tussen verschillende tabellen. Voorbeelden van RDBMS zijn MySQL, PostgreSQL en Oracle Database.
+\end{conceptbox}
+\textbf{\color{green}Voordelen:} Het is makkelijker te beheren, vereist minder verwerkingskracht dan ongestructureerde data, machine-algoritmes hebben er makkelijk toegang toe, het is een gevestigd formaat dus er zijn veel tools en educatieve bronnen voor, het neemt ook minder opslag in.
+\newline
+\textbf{\color{red}Nadelen:} De bruikbaarheid wordt beperkt door die vaste structuur, het model kan je nie zomaar veranderen, het is opslag efficiënter maar het is lastig om aan te passen of uit te breiden (scalability), typisch 'schalen' SQL-databases ook verticaal (je wordt beperkt door de maximale hardwarelimieten van één enkele machine).
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{gestructureerdedatavoorbeeld.png}
+  \caption{Voorbeeld van hoe zo een tabelvorm gestructureerd eruit ziet}
+  \label{fig:gestructureerdedatavoorbeeld.png}
+ \end{figure}
+\subsubsection{Unstructured data (Ongestructureerde data)}
+Dit is data die je 'in het wild' vindt en die geen vooraf gedefinieerde structuur of datamodel heeft. Het kan diverse formaten zoals tekst, afbeeldingen, audio, video, e-mails en sociale media posts bevatten. Via schatting is ongeveer 80 tot 90\% van alle beschikbara data wereldwijd ongestructureerd.
+\newline
+\textbf{\color{green}Voordelen:} Het behoudt zijn oorspronkelijk formaat, dit maakt het enorm veelzijdig voor veel toepassingen. Ook omdat er geen vaste structuur is, kan deze data razendsnel en moeiteloos verzameld worden. Het opslaan ervan in schaalbare 'data lakes' (cloud of lokaal) (het concept van data lakes zien we later nog) biedt gigantisch veel flexibiliteit. Hoewel de analyse complex is, biedt deze data vaak tot diepere inzichten en een groot concurrentievoordeel.
+\newline
+\textbf{\color{red}Nadelen:} De enorme diversiteit aan formaten maakt de analyse en het gebruik ervan erg uitdagend. Het beheren van deze gigantische volumes vereist gespecialiseerde tools. Bovendien groeit ongestructureerde data exponentieel snel en zwerft er overal gedupliceerde data rond, wat veel meer opslagruimte vereist.
+\newline
+\newline
+Omdat deze data complex is, worden patronen en connecties vooral gemaakt door AI, AI is heel goed hier in, dit is ook wel wat voordelig eigelijk omdat AI hier dus makkelijk patronen in vindt. De proff zegt ook nog dat elke LLM tekst inleest, geen videos, \dots
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{samenvattendetabel.png}
+  \caption{Structured Vs Unstructured data}
+  \label{fig:samenvattendetabel.png}
+ \end{figure}
+\subsubsection{Semistructured data (Semi-gestructureerde data)}
+Dit is een tussenvorm die niet echt wordt uitgelegd op de slides maar snel aan bod kwam in de les. Het heeft wel enige vorm van organisatie maar het mist eigelijk een vaste structuur, vaak wordt het opgeslagen in bestandsformaten zoals JSON, XML, CSV of in flexibele NoSQL-databases.
+\newline
+Op slide 18, 19 en 20 staan praktijkvoorbeelden van gestructureerde en ongestructureerde data, deze zijn zeker de moeite waard om eens te bekijken.
+\subsection{NoSQL databases}
+NoSQL staat voor Not Only SQL, dit zijn niet-rationele databases. Het grote verschil met SQL is dat NoSQL-databases geen strak, vooraf gedefinieerd model nodig hebben. Dit maakt het flexibeler en beter aanpasbaar voor het opslaan van allerlei verschillende of veranderende soorten data. De volgende figuur toont de 4 hoofdcategorieën van NoSQL:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{hoofdcategoriennosql.png}
+  \caption{NoSQL databases: de vier hoofdcategorieën (Key-Value, Document, Columnar, Graph)}
+  \label{fig:hoofdcategoriennosql.png}
+ \end{figure}
+\subsubsection{Document databases (Documentendatabases)}
+Data wordt hier NIET in tabellen opgeslagen, maar als losse documenten in formaten zoals JSON of XML. Bekende systemen zijn MongoDB en CouchDB. Dit wordt gebruikt in contentmanagementsystemen (zoals blogs of websites) en e-commerce platforms (webshops).
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\textwidth]{docdb.png}
+  \caption{Document databases}
+  \label{fig:docdb.png}
+ \end{figure}
+Dit model is perfect voor sensordata, onderhoudslogs en datasets waarvan de structuur veranderd over tijd. Data is genest dus je hebt geen zware 'joins' (wordt zometeen nog uitgelegd wat dit betekent) nodig om gegevens uit verschillende plekken samen te voegen dus het opvragen van data is makkelijker. Het schaalt horizontaal over meerdere servers dus is ideaal voor IoT.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{dbvoorbeeld.png}
+  \caption{Voorbeeld van een document database}
+  \label{fig:dbvoorbeeld.png}
+ \end{figure}
+Een voorbeeld van een Query kan hier zijn:
+\begin{verbatim}
+db.machines.find({ "sensor_readings.temperature": { "$gt": 75 } })
+\end{verbatim}
+Deze Query vind alle motor met een temperatuur boven 75°C.
+\subsubsection{Key-Value databases }
+Deze database is extreem gefocust op snelheid, data wordt hier opgeslagen als simpele paren van een 'sleutel' (key) en 'waarde' (value), vergelijkbaar met een woordenboek. Je hebt een unieke naam (bvb. 'User1:Name') en daaraan hangt een simpele waarde (bvb. 'Sami'). Voorbeelden zijn Redis en DynamoDB. Dit wordt vooral gebruikt om het laden van webpaginas te versnellen of het opslaan van realtime sessiegegevens zoals het onthouden van items in een winkelwagen online of als iemand 'accepteer cookies' heeft aangeklikt.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\textwidth]{keyvaluedb.png}
+  \caption{Key-Value databases}
+  \label{fig:keyvaluedb.png}
+ \end{figure}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{voorbeeldcodekeyyvalue.png}
+  \caption{Voorbeeld van een key-value database query}
+  \label{fig:voorbeeldcodekeyyvalue.png}
+ \end{figure}
+Dit is dus de beste keuze voor real-time sessiedata, caching, of heel simpele zoekopdrachten zoals opvragen van laatste status van machine. Complexe filters toepassen is wel beperkt.
+\subsubsection{Column-Family Stores (Kolom gebaseerde databases)}
+Traditionele SQL-databases slaan data netjes per rij op, terwijl dit model de data in kolommen organiseert. Het is zeer flexibel want je kunt makkelijk kolommen toevoegen en niet elke rij hoeft dezelfde kolommen te bezitten. Het voordeel hier is dat je makkelijk specifieke attributen kunt opvragen, dit is heel snel bij niet alleen het opvragen (want normale SQL databases geven ook onnodige informatie omdat dat bij hele rijen is) maar ook het opslaan van nieuwe data, het schaalt makkelijk horizontaal op over meerdere servers. Dit is het ideale model voor massale, snelle data (Big Data en IoT). Denk aan fabrieken waar honderden motoren of turbines elke seconde sensordata (temperatuur, stroom, vibratie) doorsturen (high-frequency time-series data). Dit soort databases verwerkt die gigantische stroom aan data moeiteloos, wat essentieel is voor predictive maintenance (voorspellend onderhoud). Bekende voorbeelden zijn Cassandra en HBase.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{columnfamiliydb.png}
+  \caption{Column-Family Stores (Kolom gebaseerde databases)}
+  \label{fig:columnfamiliydb.png}
+ \end{figure} 
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.8\textwidth]{praktijkvoorbeeldcolumnfamily.png}
+   \caption{Praktijkvoorbeeld Column-Family Store}
+   \label{fig:praktijkvoorbeeldcolumnfamily.png}
+  \end{figure}
+Hierboven een praktijk voorbeeld, in de praktijk hebben we gigantisch veel data dat snel moet worden opgeslaan en uitgelezen, hier gebruiken we een `composite primary key'. Deze unieke sleutel is hier een combinatie van de \texttt{Machine\_ID} en de \texttt{Timestamp}. Timestamps zijn ook zeker heel belangrijk voor elektromechanische systemen. Dit maakt het perfect geoptimaliseerd voor time series queries (tijdreeks-zoekopdrachten).
+\subsubsection{Graph databases}
+Deze database stapt helemaal af van tabellen en representeert data visueel als een netwerk, het maakt gebruik van een Node-Edge Model. Met Nodes (knooppunten): de objecten of entiteiten zoals een specifieke persoon, een machine of een universiteit. En Edges (lijnen): pijlen die de actieve relaties tussen de nodes beschrijven (bvb. de relatie WORKS\_AT tussen de node 'Carlos' en de node 'KU Leuven'). Het voordeel is dat deze specifiek ontworpen zijn om complexe, onderling verbonden relaties bloot te leggen. Dus als je zwaar verbonden netwerken hebt hoef je geen zware \textbf{'joins'} (het ingewikkeld samenvoegen van verschillende tabellen) uit te voeren zoals bij SQL. Hier 'reist' het systeem eigelijk gewoon over de lijntjes van het netwerk. Dit wordt toegepast in de praktijk bij sociale netwerken (wie is vrienden met wie), fraudedetectie en aanbevelingssystelen. In de industrie wordt het gebruikt om complexe netwerkvragen te beantwoorden zoals: 'Welke combinaties van machines en onderhoudsteams delen specifieke faalpatronen?'. Bekende voorbeelden zijn Neo4j en ArangoDB.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{graphdb.png}
+  \caption{Graph database}
+  \label{fig:graphdb.png}
+ \end{figure}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{codevoorbeeldgraphdb.png}
+  \caption{Voorbeeld van een graph database query}
+  \label{fig:codevoorbeeldgraphdb.png}
+ \end{figure}
+Het reizen over het netwerk met die verbindingen noemen we 'graph traversal', dit is aanzienlijk sneller dan het uitvoeren van zware 'joins' in traditionele SQL. Hierboven een voorbeeld van zo een netwerk-zoekopdracht met het MATCH commando.
+In de praktijk heeft een fabriek honderden motoren, turbines, pompen, \dots Er wordt hiervan gigantisch veel real-time sensordata verzameld (zoals temperatuur, trillingen, stroomsterkte, onderhoudslogs, \dots). Voor al deze datastromen \textbf{zullen verschillende databases gebruikt moeten} worden, elk met hun eigen sterktes en zwaktes.
+\subsection{Structured data (SQL-Relational databases)}
+Voor gestructureerde data, zoals de onderhoudslogs van machines, worden relationele databases (SQL) gebruikt. Deze zijn ideaal voor het opslaan van gegevens in tabelvorm en het uitvoeren van complexe queries om patronen te ontdekken, zoals welke machines regelmatig onderhoud nodig hebben of welke onderdelen vaak falen.
+\newline
+Ze zijn het beste voor strak georganiseerde bedrijfsdata, zoals de inventaris van machines, configuraties en vaste onderhoudsschema's.
+\newline
+\newline
+Het heeft een vast schema (fixed) en een hoge betrouwbaarheid en consistentie (strong compliance). Het is geoptimaliseerd voor transacties en kan complexe relaties tussen tabellen leggen (via 'joins'). Een nadeel is wel dat het verticaal schaalt, dus je kunt het systeem alleen sneller maken met een zwaardere processor of meer RAM in die ene specifieke server te steken.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{sdsqlrd.png}
+  \caption{Structured data (SQL-Relational databases)}
+  \label{fig:sdsqlrd.png}
+ \end{figure}
+In deze figuur een perfect voorbeeld, hier kan je zien linksonder hoe met een Query alle machines waarvan de temperatuur op dit moment hoger dan 75°C is worden gevonden.
+\subsection{Rijen Vs Kolommen (SQL vs NoSQL)}
+Als je met een SQL een commando geeft om bvb. enkel de temperatuur van machine 101 te vinden dan leest het systeem nog steeds de hele rij in op de achtergrond, bij NoSQL (bvb. Cassandra) zijn vergelijkbare kolommen samen opgeslagen, hierdoor moet het systeem ALLEEN de temperatuurdata inladen, dit vermindert onnodig leeswerk en is vele sneller.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{rowvscollumn.png}
+  \caption{SQL vs NoSQL: rijen vs kolommen}
+  \label{fig:rowvscollumn.png}
+ \end{figure}
+\subsection{Overzichten SQL vs NoSQL}
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.6\textwidth]{overzicht1.png}
+  \caption{SQL vs NoSQL}
+  \label{fig:overzicht1.png}
+ \end{figure}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{tabeloverzicht.png}
+  \caption{SQL vs NoSQL}
+  \label{fig:tabeloverzicht.png}
+ \end{figure}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{cheatsheetsql.png}
+  \caption{SQL \& NoSQL Databases cheatsheet}
+  \label{fig:cheatsheetsql.png}
+ \end{figure}
+\subsection{Data Warehousing}
+In de volgende figuur zien we een overzicht van de complete datastroom binnen een grote organisatie: 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{overviewdata.png}
+  \caption{Overzicht datastroom}
+  \label{fig:overviewdata.png}
+ \end{figure}
+Aan de linkerkant zien we 'data sources', dit is waar ruwe data wordt verzameld uit operationele systemen en platte bestanden. Dit gaat naar de 'staging area', dit is eigelijk een soort wachtkamer, hier wordt de data op de achtergrond voorbereid en gesorteerd (opgeschoond/getransformeerd) en gevalideerd voor het verder mag. Vervolgens gaat dit naar de 'warehouse', hier komt dus alle opgeschoonde data centraal samen, omdat een heel warehouse overweldigend is gaat het naar 'data marts', dit zijn eigelijk subsets voor verschillende afdelingen, zoals bvb. inkoop, verkoop of inventaris. Dit is handig voor tactische beslissingen door een specifieke groep gebruikers. Uiteindelijk bereikt de data de 'users', die er via dashboards of rapportages analyses en data mining op loslaten.
+\begin{conceptbox}[Date warehouses]
+    Een datawarehouse is een centrale opslagplaats die puur is bedoeld voor gestructureerde en verwerkte data. In de theorie wordt gesteld dat dit vaak gigantische datanases zijn (meer dan 100GB). Zo een database gebruik je niet voor dagelijkse, snelle transacties, maar om historische data te bewaren voor efficiënte analyse en het maken van grote, strategische bedrijfsbeslissingen.
+    \begin{figure}[H]
+      \centering
+      \includegraphics[width=0.8\textwidth]{datawarehouse.png}
+      \caption{Overzicht datawarehouse}
+      \label{fig:datawarehouse.png}
+     \end{figure}
+    Op de bovenstaande figuur zien we de term 'Extract, Transform, Load (ETL)', dit is cruciaal: data wordt geextract (uit bronnen gehaald), in de stage wordt het getransformeerd (zo opgeschoond dus) en daarna pas ge 'load' in de data warehouse. Dit maakt het dus zo extreem overzichtelijk en accuraat.
+\end{conceptbox}
+\begin{conceptbox}[Data lakes]
+  Een datalake is een gigantische schaalbare opslagplaats waar je gestructureerde, semi-gestructureerd en ongestructureerde data in opslaag in de exact originele vorm. De proff beschrijft dit als 'open minded' omdat het elke vorm van data accepteert. 
+  \newline
+  \newline
+  In plaats van data vooraf op te schonen en structureren, gooi je bij een data lake direct alles massaal op één hoop. Het voordeel hiervan is dat het opslaan (schrijven) van data razendsnel gaat, dit zorgt voor geen opstoppingen (bottlenecks) in je datastroom, ook niet bij gigantische volumes. Dat opschonen en transformeren (ETL-proces) gebeurt hier pas achteraf of 'op aanvraag' (precies op het moment dat iemand data nodig heeft). 
+  \newline
+  \newline
+  De proff zegt hier dat degene die de data wilt analyseren 'voor de prijs betaalt' want omdat de data onbewerkt is, moet de gebruiker langer wachten op zijn resultaten; je levert dus pure leessnelheid in voor maximale flexibiliteit. Data lakes zijn ontworpen voor Big data, data discovery en machine learning. Omdat je alle ruwe details bewaard houd, krijg je een heel gedetailleerd overzicht, dit is goed voor datawetenschappers, ze kunnen op een verkennende manier door enorme hoeveelheden data 'graven' op zoek naar onbekende patronen of inzichten die je zou kwijtgeraken als je data vooraf al was bewerkt.
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figuurdatalakes.png}
+    \caption{Data lakes}
+    \label{fig:figuurdatalakes.png}
+   \end{figure}
+\end{conceptbox}
+\subsection{Data Warehouses vs Data Lakes}
+Dit stukje is eerder wat samenvattend van wat we al zagen. (slides zijn trash \dots)
+\subsubsection{Transformeren van data}
+\begin{itemize}
+ \item \textbf{Data Warehouse:} Transformatie gebeurt voor dat het in de warehouse geladen wordt.
+ \newline
+{\color{green} Voordeel:} Database is extreem netjes
+ \newline
+{\color{red} Nadeel:} Kan een bottleneck vormen bij invoer
+ \item \textbf{Data lake:} Ruwe data stroomt direct naar binnen, transformatie gebeurt op aanvraag of op het moment dat data nodig is.
+\newline
+{\color{green} Voordeel:} Opslagsnelheid 
+\newline
+{\color{red} Nadeel:} Gebruikers moeten wachten op resultaten
+\newline 
+Dit nadeel en voordeel samen zijn eigelijk die eerder besproken trade-off.
+\end{itemize}
+\subsubsection{Belangrijkste verschillen}
+Hier zetten we 3 fundamentele concepten tegenover elkaar:
+\begin{itemize}
+  \item \textbf{Flexibiliteit vs. Prestaties:} Datalakes slaan ruwe data op voor flexibele verkenning, maar zijn hierdoor trager bij het zoeken. Warehouses zijn vooraf strak georganiseerd wat ze veel sneller maakt voor rapportages en analyses.
+  \item \textbf{Schema-on-read vs. Schema-on-write:} Een datalake gebruikt 'schema-on-read'; dit betekent dat je de structuur pas bedenkt op het moment dat je een query uitvoert. Een datawarehouse vereist 'schema-on-write'; dit betekent dat de data in een vaste structuur MOET gepropt zijn VOOR dat het opgeslagen mag worden.
+  \item \textbf{Use cases:} Datalakes zijn perfect voor het ontdekken van data en het trainen van machine learning modellen, terwijl warehouses gebruikt worden voor strategische bedrijfsbeslissingen en strakke, leesbare dashboards.
+\end{itemize}
+\subsubsection{Cheat sheet}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{cheatsheetdwvsdl.png}
+  \caption{Cheatsheet Data Warehouse vs Data Lake}
+  \label{fig:cheatsheetdwvsdl.png}
+ \end{figure}
+\subsection{Data Processing OLAP \& OTAP (of OLTP)}
+We introduceren nu de manier waarop data wordt verwerkt en het onderscheid tussen de 2 belangrijkste processystemen die hiervoor bestaan (OLAP en OLTP).
+\subsubsection{Business warehousing and process}
+Dus, in een bedrijfsomgeving hebben we 2 verschillende soorten processen die tegelijkertijd draaien. We hebben het \textbf{'operationele proces' (OLTP DB)}, dit omvat de dagelijkse bedrijfsprocessen en de stroom van continue 'data transactions' en we hebben het \textbf{'informatie-proces' (OLAP DB)}, hier wordt verzamelde data opgeslagen in een data warehouse om vervolgens te worden onderworpen aan datamining of data analysis om er big data inzichten uit te halen.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{bwap.png}
+  \caption{Business Warehousing and Process}
+  \label{fig:bwap.png}
+ \end{figure}
+\subsubsection{OLTP (OnLine Transaction Processing)}
+Dit is heel snel, dit is vooral voor \textit{'day to day'} (ontworpen voor dagelijkste taken/transacties), kan van bank tot winkelketen zijn. Dit systeem is meer geoptimaliseerd voor het afhandelen van een massale hoeveelheid korte, online transacties (dit is zoals simpele taken in een SQL database zoals data toevoegen, updaten of wissen). Deze handelingen zijn heel klein dus het is belangrijk dat dit snel en vertrouwbaar wordt uitgevoerd. Het meest herkenbare voorbeeld is wanneer er data opgeslagen wordt op het moment dat een klant met zijn smartphone of kaart betaalt in de winkel. Als ingenieur moet je hierbij volgens de professor ook denken aan fysieke elektromechanische taken, zoals het in real-time uitlezen en aansturen van sensoren en actuatoren.
+\subsubsection{OLAP (OnLine Analytical Processing)}
+Deze technologie is specifiek gebouwd voor complexe data analyse en het uitvoeren van multidimensionale zoekopdrachten. Dit is voor het 'grotere plaatje' (zoals data mining en business intelligende), dus niet voor day to day. De proff zegt dat 'hier het geld zit' en dat je als ingenieur hier goed moet opletten, want dit is waar je echt diepe inzichten uit je data kan halen voor bvb. machine learning systemen te trainen. Wordt vooral gebruikt voor financiële rapportages, voorspellingen en complexe verkoopanalyses.
+\subsubsection{OLTP en OLAP karakteristieken}
+In de volgende figuur zien we een schema die de 2 systemen met elkaar vergelijkt:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{OLTPvsOLAP.png}
+  \caption{}
+  \label{fig:OLTPvsOLAP.png}
+ \end{figure}
+OLTP is enorm 'latency sensitive', dit betekent dat elke milliseconde telt (het moet dus real-time zijn). De bestanden (payloads) zijn heel klein en het systeem is gefocust op snel schrijven (heavy write workloads). OLAP verwerkt maar weinig transacties, maar als 1 zoekopdracht wordt uitgevoerd, is deze gigantisch. Daardoor is het 'throughput sensitive', het maakt niet zoveel uit als het systeem er even over moet nadenken, zolang de enorme pakketten aan data (large payloads) succesvol kan verwerken. OLAP is dus geoptimaliseerd voor het massaal uitlezen van data (heavy read workloads), het moet soms volledige tabellen (full table scans) in één keer kunnen verwerken.
+\subsection{Big data}
+\begin{conceptbox}[Big data]
+  Big data verwijs naar grootschalige datasets die heel complex, gigantisch in volume en heel snelgroeiend (fast-growing) zijn. Big data is eigelijk een verzamelnaam en bevat alle drie de datatypes (gestructureerd, semi-gestructureerd en ongestructureerd). Het doel hiervan is dus om er inzichten uit te halen die leiden tot betere beslissingen en bedrijfsvoering. De volgende tabel geeft nog even een korte herhaling en een EM-praktijkvoorbeeld:
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{bigdatatabel.png}
+    \caption{Big Data Overzicht}
+    \label{fig:bigdatatabel.png}
+   \end{figure}
+  \end{conceptbox}
+\subsubsection{Big Data toegepast op 'predictive maintenance' (voorspellend onderhoud) en de industriële automatisering}
+Dit is een EM-toepassing ook. In een fabriek komt Big data van overal te samen; gestructureerde SQL-inventarissen, logs van robot-sensoren (semi) en bvb. videobeelden van machines die vastlopen of trillingsspectrogrammen (ongestructureerd). Het belangrijkste hier is, omdat big data uit deze 3 verschillende datatypes bestaat, dat je als ingenieur dit ONMOGELIJK met slechts 1 database kan oplossen, je hebt een combinatie nodig van traditionele SQL-opslag, NoSQL-opslag en gespecialiseerde tools (zoals AI-beeldanalyse voor ongestructureerde videobeelden) om de machines goed te kunnen diagnosticeren.
+\subsubsection{Praktijkvoorbeeld: Ontwerpen van een 'Big Data Pipeline'}
+Op de slides komt een praktijkcasus aan bod; 'Big Data Pipeline for Industrial Machine Analytics'. Hier wordt een scenario geschetst van een 'smart factory', de fabriek heeft honderden machines die elke seconde gigantische hoeveelheden data genereren. Dit bedrijf wil een 'big data pipeline' bouwen om al deze data te analyseren en defecten te voorspellen VOOR dat de machines kapot gaan.
+\newline
+\newline
+Om zo een systeem werkelijk te bouwen wordt een overzicht gemaakt van 5 stappen:
+\begin{itemize}
+  \item \textbf{1. Ingest data:} Het verzamelen van ruwe data van machines
+  \item \textbf{2. Process data:} Het schoonmaken en netjes formateren van deze data
+  \item \textbf{3. Store data:} Data opslaan in een passende systeem (SQL, NoSQL, of een data lake)
+  \item \textbf{4. Analyze data:} AI/ML loslaten op de opgeslagen data om dreigende fouten en trends te detecteren
+  \item \textbf{5. Monitor \& Alert:} Het inrichten van real-time waarschuwingen zodat technici proactief onderhoud kunnen inplannen
+\end{itemize}
+\subsection{Data analytics \& Data mining}
+\subsubsection{Data analytics}
+Dit draait om het analyseren van gegevens om gerichte acties en beslissingen te kunnen nemen. Dus eigelijk het analyseren van zowel historische data als real-time data om patronen te identificeren, efficiëntie te berneteren en besluitvorming te ondersteunen. Belangrijke kenmerken zijn:
+\begin{itemize}
+ \item \textbf{Beschrijvende en voorspellende analyse:} Dit geeft dan direct antwoord op vragen zoals 'Wat is er gebeurd?' en 'Wat gaat er waarschijnlijk gebeuren?'
+ \item \textbf{Verwerking van real-time data en historische data:} Dit is dus het bijhouden en tracken van sensortrends, onderhoudsdossiers en operationele KPI's (Key Performance Indicators).
+ \item \textbf{Dashboards en rapportages:} Dit is het visualiseren van deze inzichten (zoals grafieken op een scherm) zodat er makkelijk knopen doorgehakt kunnen worden (zoals wanneer een machine onderhoud nodig heeft).
+\end{itemize}
+\subsubsection{Data mining}
+Data analytics kijkt dus naar het in kaart brengen van bekende trends, maar data mining gaat eerder zoeken in de data naar dingen die we nog niet wisten. Dus 'het ontdekken van onbekende correlaties, verborgen relaties en afwijkingen (anomalieën) binnen gigantische datasets'. Belangrijke kenmerken zijn:
+\begin{itemize}
+ \item \textbf{Patroonherkenning en Clustering:} Dit is het identificeren en groeperen van machines die een grotere kans hebben om kapot te gaan (of falen ofzo).
+ \item \textbf{Anomaliedetectie:} Het automatisch markeren (flaggen) van onverwacht of vreemd gedrag in de stroom van sensordata.
+ \item \textbf{'Association Rule Mining' (Associatieregels ontdekken):} Het ontdekken van verborgen afhankelijkheden die tot storingen leiden. (bvb. het ontdekken dat een machine vaak uitvalt als een specifieke combinatie van temperatuur en trilling optreedt, ookal lijken die los van elkaar onschuldig).
+\end{itemize}
+\subsubsection{Data analytics vs Data mining}
+De slides tonen nog deze cheat sheet:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{cheatsheetdataanalyticsvsdatamining.png}
+  \caption{Cheatsheet Data Analytics vs Data Mining}
+  \label{fig:cheatsheetdataanalyticsvsdatamining.png}
+ \end{figure}
+Gebruik dus data analytics om de prestaties van je machines te volgen en je operaties te optimaliseren, maar gebruik data mining als je op zoek moet naar onbekende risico's en verborgen verbanden die je niet met het blote oog (of een simpel dashboard) kan zien.
+\subsubsection{Praktijkvoorbeeld: Data analytics inzet voor Predictive maintenance in een industriële omgeving}
+Wat probeer je precies te bereiken als ingenieur met Data Analytics? Je gebruikt analytics om de prestaties van machines continu in de gaten te houden, defecten op tijd te detecteren en onderhoudsschema's te optimaliseren zodat een machine niet opeens stil valt. Om dit te doen gebruik je statistische analyses, voorspellende modellen en datavisualisatie. Tools zoals SQL voor ophalen van data, Python of Matlab voor rekenwerk en Power BI om mooie dashboards te maken worden gebruikt. In de volgende figuur zie je hoe dit er in de praktijk uit ziet:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{trillingniveaushi.png}
+  \caption{Trillingniveau's van een machine}
+  \label{fig:trillingniveaushi.png}
+ \end{figure}
+Deze grafiek laat zien dat we al precies weten welke trilling bij welk probleem hoort.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{predictivemaintenancedataanalytics.png}
+  \caption{Dashboard voorbeeld}
+  \label{fig:predictivemaintenancedataanalytics.png}
+ \end{figure}
+De bovenste figuur toont wat er op zo'n dashboard zou staan. Je ziet hier pieken zoals de fundamentele frequentie en harmonische trillingen. Als een technicus ziet dat de pieken plotseling verschuiven naar de 'zone of high frequency events', weet hij via het dashboard direct dat dit vroege tekens zijn van lager-falen (bearing failures) en dat er onderhoud nodig is. Bij data analytics toepassingen stel je gerichte vragen over historische en bekende data zoals: 'Wat was het gemiddelde trillingsniveau van de motoren over de afgelopen 6 maanden?'.
+\subsubsection{Data mining toegepast op Predictive maintenance in een industriële omgeving}
+Je gaat hier dus dieper graven om dingen te vinden die je nog niet wist. Dit is complexer dus je gebruikt zwaardere algoritmes zoals Clustering (groeperen), anomaly detectection en association rule mining. Je gebruikt programmeertalen en software zoals python, R, Matlab en Apache Spark. In de volgende figuur zien we een grafiek met gekleurde wolkjes (clusters). Het algoritme heeft zelf de data gegroepeerd en ontdekt bvb. 'Cluster C: suspicious vribration pattern'. Ook zie je een overzicht van hoe verschillende metingen samen in een model worden gegooid om een 'abnormale conditie' te detecteren voordat de machine stuk is.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{dataminingpredictivemaintenance.png}
+  \caption{Data mining voorbeeld}
+  \label{fig:dataminingpredictivemaintenance.png}
+ \end{figure}
+Onderzoekende vragen die aan algoritmes worden gesteld kunnen zijn: 'Welke sensorpatronen wijzen op een naderende motorstoring?' of 'Kunnen we verschillende machines clusteren op basis van hun faaltypes?'. Het resultaat is een intelligent systeem dat de fabriek slimmer maakt, het heeft een anomaly detection system, clustering analysis en association rules.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{nognefiguridk.png}
+  \caption{}
+  \label{fig:nognefiguridk.png}
+ \end{figure}
+\chapter{Les 4: Information Transmission}
+De proff geeft over dit onderwerp eerst een korte inleiding over waarom dit onderwerp zo belangrijk is. Hij vertelt dat de mens zeer uniek is in de manier dat wij de wereld domineren door ons uniek vermogen om boodschappen en informatie over te dragen, dit maakt ons zo machtig. Hij toont ook vervolgens dit diagram:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{kondratiev.png}
+  \caption{Kondratiev-golven}
+  \label{fig:kondratiev.png}
+ \end{figure}
+Dit toont de absolute piekmomenten en gigantische sprongen in de menselijke beschaving. De huidige, grote stap in deze evolutie (startte in jaren 70) draait volledig om het communiceren, opslaan en verwerken van informatie en algoritmes, vandaag de dag is dit meer dan ooit tevoren.
+\subsection{Types van Data transmissie}
+Er zijn 2 manieren/soorten van data transmissie:
+\begin{itemize}
+ \item \textbf{Analoog}
+ \item \textbf{Digitaal}
+\end{itemize}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{anadigi.png}
+  \caption{Analoog vs. Digitaal}
+  \label{fig:anadigi.png}
+ \end{figure}
+Een analoog is een vloeiende, \textbf{continue} golf, terwijl een digitaal signaal continue is (trapsgewijs), een digitaal signaal verkrijgt je door het analoge signaal op specifieke, vaste tijdstippen af te lezen, dit proces zie je op de grafiek aangeduid met de \textbf{'sample times'}.
+\newline
+\newline
+De volgende figuur toont 2 blokschema's die stap voor stap de onderdelen van beide communicatiesystemen vergelijken:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{analoogvsdigitaal.png}
+  \caption{Analoog vs. Digitaal Blokschema's}
+  \label{fig:analoogvsdigitaal.png}
+ \end{figure}
+Bij het \textit{analoge systeem} gaat informatie eerst door de \textbf{transducer} (bvb. een microfoon die geluid omzet in spanning), vervolgens naar de \textbf{modulator} (die het signaal geschikt maakt voor transmissie), daarna door \textbf{het kanaal} (fysieke verbinding zoals de kabel, waar vaak ruis ontstaat) en tot slot door een \textbf{demodulator}(hier wordt signaal weer omgezet naar een leesbaar signaal).
+\newline
+\newline
+Bij het \textit{digitale systeem} is het grote verschil dat er bij de digitale variant een \textbf{encoder} (die de brondata digitaal codeeert in eentjes en nulletjes) voor de \textbf{modulator} zit, en een \textbf{decoder} \textit{na} de \textbf{demodulator}.
+\subsection{Analoge communicatie (kenmerken en beperkingen)}
+Vroeger had analoge data geen idee waar het naartoe ging, werd in alle richtingen uitgezonden (gebroadcast), als je het signaal verder wilde sturen of de ontvangst wilde verbeteren, was de enigste oplossing het bouwen van een gigantische antenne en er simpelweg meer stroom (power) in te pompen. Radiogolven werden op verschillende frequenties uitgezonden zodat je verschillende kanalane kon hebben. Iedereen kon ook meeluisteren omdat het signaal overal naartoe vloog, als iemand de juiste demodulator had, kon hij het bericht afluisteren. Privécommunicatie of gerichte berichten sturen op deze manier was dus onmogelijk.
+\subsection{Amplitude Modulation (AM), Frequency Modulation (FM) en Phase Modulation (PM)}
+\subsubsection{AM (Amplitude Modulation)}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{AM.png}
+  \caption{Amplitude Modulation (AM)}
+  \label{fig:AM.png}
+ \end{figure}
+Je hebt dus je informatiesignaal (bovenste grafiek), dit wil je duidelijk kunnen verzenden, het probleem hier is dat dit signaal heel zwak is, dit is moeilijk om ver te verzenden, daarom gebruik je een 'carrier signal' (draaggolf), je laat het informatie signaal meeliften op deze sterkere draaggolf (piggybacken), bij AM verander je dus eigelijk de amplitude van de draaggolf op basis van de waarde van je informatiesignaal. Dit dus omdat de draaggolf een hoge frequentie heeft (en dus meer energie, E = h*f), dit is veel beter in staat om lange afstanden te reizen, dit is ook AC dus kan je met transformatoren de spanning makkelijker versterken om verder te sturen. Hoe haal je nu het bericht uit die gecombineerde golf?
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{AMdemoludator.png}
+  \caption{AM Demodulator}
+  \label{fig:AMdemoludator.png}
+ \end{figure}
+Het signaal gaat eerst door een gelijkrichter (rectifier), omdat het signaal symmetrisch is (het heeft een boven en onderkant), snijdt de gelijkrichter een helft eraf zodat je alleen het nuttige gedeelte overhoudt. Hierna gaat het door een laagdoorlaatfilter (LP filter), dit filtert de snelle, hoogfrequente draaggolf er weer uit. De proff zegt wel nog dat de typische ruis (static) die je vaak op oude radio's hoort, een direct gevolg is van de beperkingen van dit analoge proces.
+\subsubsection{FM (Frequency Modulation)}
+Dit is een modernere en betere techniek, vereist minder energie en heeft minder ruis. 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\textwidth]{FM.png}
+  \caption{Frequency Modulation (FM)}
+  \label{fig:FM.png}
+ \end{figure}
+In plaats van amplitude te veranderen, hou je die hier juist constant, je codeert hier informatie door de frequentie van de draaggolf te versnellen of vertragen. Een hogere piek in het informatiesignaal komt overeen met een hogere frequentie in de draaggolf. Dit is vooral beter omdat ruis de amplitude vooral verstoort in de buitenlucht, en omdat hier de amplitude constant (en laag) gehouden wordt heb je minder stroom nodig en is dus de kwaliteit beter.
+\subsubsection{PM (Phase Modulation)}
+Hierbij houden we de carrier signal constant, we codere de informatie door de fase van het signaal te verschuiven op basis van het origineel bericht, hiervoor heb je een specifieke fasemodulator-circuit nodig. De proff zegt wel dat we hier niet dieper op ingaan, wordt ook weinig gebruikt. Bij satellietbesturing wordt het wel gebruikt.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{PM.png}
+  \caption{Phase Modulation (PM)}
+  \label{fig:PM.png}
+ \end{figure}
+\subsection{Communication Modes: Simplex, Half-Duplex, Full-Duplex}
+We bespreken nu 3 manieren waarop zenders en ontvangers met elkaar kunnen communiceren (ook gezien in DAQ):
+\begin{itemize}
+ \item \textbf{Simplex:} Communicatie in 1 richting, zoals een radio-uitzending. 1 apparaat is uitsluitend de zender en de andere is de ontvanger. Bvb. een message in a bottle
+ \item \textbf{Half-Duplex:} Communicatie in beide richtingen, maar niet tegelijkertijd, zoals walkie-talkies. Dit is om de beurt, beide apparaten kunnen zenden en ontvangen maar gewoon niet op exact hetzelfde moment, werd vooral gebruikt omdat bandbreedte beperkt was.
+ \item \textbf{Full-Duplex:} Communicatie in beide richtingen tegelijkertijd, zoals bij telefoongesprekken. Beide apparaten kunnen tegelijk data verzenden en ontvangen, dit is wat we tegenwoordig gebruik, de proff zegt dat dit de beste manier is om ruzie te maken over de telefoon!
+\end{itemize}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\textwidth]{communicationmodes.png}
+  \caption{Communication Modes: Simplex, Half-Duplex, Full-Duplex}
+  \label{fig:communicationmodes.png}
+ \end{figure}
+Nog iets interessant dat de proff vermeldt is dat software zoals teams of whatsapp gebruik gemaakt van een functie dat even overschakelt naar half duplex wanneer er een slechte verbinding is, dit is om te voorkomen dat er een hoop ruis ontstaat als beide partijen tegelijk proberen te praten. Dit is waarom je soms maar 1 persoon hoort boven de rest.
+\subsection{Synchronous vs Asynchronous Communication}
+We gaan het nu hebben over een ander belangrijk concept in communicatie, namelijk het verschil tussen synchrone en asynchrone communicatie. Dit is vooral relevant in de context van digitale communicatie en netwerken.
+\subsubsection{Synchronous Communication}
+Dit is het 'request-response' model, hierbij zijn zender en ontvanger continu met elkaar verbonden en delen ze een gezamenlijke 'klok' die de communcatie orkestreert. De apparaten zenden en ontvangen continu data op een vast tempo (bvb. elke milliseconde een bit).
+\newline
+{\color{green}\textbf{Voordelen: }}
+\begin{itemize}
+ \item \textbf{Real-time operations:} dus het is perfect voor toepassingen die onmiddelijke (real-time) reacties vereisen
+ \item \textbf{Data coherentie (samenhang):} Het zorgt dat de data overal exact 'synchroon' en consistent blijft, dit betekent dat er geen vertragingen of asynchroniciteit zijn die kunnen leiden tot fouten of misverstanden. (Hierbij zegt de proff als voorbeeld dat je meer vecht met je lief als je berichten stuurt ipv te bellen met elkaar, dit heeft iets te maken met je 'mood', als je dus bvb het bericht later leest terwijl je boos bent, dit bericht verliest dan 'consistency' (je begrijpt het niet meer goed)).
+ \item \textbf{Simpliciteit:} Omdat alles in een strakke, voorspelbare volgorde gebeurt, is het makkelijker te ontwerpen. Een mooi voorbeeld zijn microcontrollers, deze werken vaak van nature al synchroon en hebben een ingebouwde interne klok. Makkelijk debugbaar door die voorspelbare volgorde dat het in werkt.
+\end{itemize}
+{\color{red}\textbf{Nadelen: }}
+\begin{itemize}
+  \item \textbf{Resource Intensive (Zwaar voor het systeem):} Omdat apparaten continu op het ritme van elkaars klok moeten wachten, gaat er veel rekenkracht en tijd verloren aan 'wachten'.
+  \item \textbf{Scalability Issues (Schaalbaarheidsproblemen):} Het is lastig om het systeem uit te breiden, honderden computers kunnen laten lopen op 1 klok is al moeilijk, meer wordt nog moeilijker.
+  \item \textbf{Failure impact (Kwetsbaarheid):} Het systeem is erg fragiel (fragile). Als slechts één apparaat vastloopt of uit de pas loopt (out of sync), kan het de hele communicatie of het hele systeem platleggen.
+\end{itemize}
+Voorbeelden van synchrone communcatie zijn: telefoongesprekken, videoconferenties, live chats en fysieke face-to-face meetings.
+\subsubsection{Asynchronous Communication}
+Dit is het 'fire and forget model', dit lijkt op een email, je verstuurt een bericht (vaak een wachtrij of queue), en de ontvanger verwerkt het pas wanneer het hem uitkomt. Beide apparaten hebben hierbij hun eigen, onafhankelijke klok.
+\newline
+{\color{green}\textbf{Voordelen: }}
+\begin{itemize}
+ \item \textbf{Resource Efficiency:} Hier hoeven de apparaten niet continu te wachten op elkaar, ze kunnen taken uitvoeren terwijl ze wachten op een reactie, bvb. in plaats van steeds als persoon tegen iemand 'Wat zei je?' te zeggen tot die antwoord, wacht je gewoon tot die antwoord, dan verspil je geen energie.
+ \item \textbf{Scalability (schaalbaarheid):} Omdat apparaten niet afhankelijk zijn van een gedeelde klok, is het veel makkelijker om nieuwe apparaten toe te voegen zonder dat dit het hele systeem beïnvloedt. Dit is de reden waarom het internet asynchroon is gebouwd, miljoenen apparaten opdezelfde klok kan gewoon niet.
+ \item \textbf{Robuustheid:} Het systeem is veel minder kwetsbaar. Als er één knooppunt (node) uitvalt of bezig is, valt niet het hele systeem plat. De data kan simpelweg later worden verstuurd.
+ \item \textbf{Flexibiliteit:} Apparaten werken volledig onafhankelijk en hebben geen last van strikte, stressvolle tijdslimieten.
+\end{itemize}
+{\color{red}\textbf{Nadelen: }}
+\begin{itemize}
+  \item \textbf{Latency (vertraging):} Omdat er niet direct geantwoord hoeft te worden, loop je al snel tegen vertragingen in de datatransmissie aan.
+  \item \textbf{Complexiteit:} Zonder een overkoepelende klok die het ritme aangeeft, is het coördineren, volgen en beheren van alle berichten tussen heel veel verschillende apparaten enorm ingewikkeld.
+  \item \textbf{Data integriteit:} Zonder synchrone controles (waarbij beide partijen realtime verifiëren) is het veel lastiger om te garanderen dat de data consistent en foutloos overkomt.
+\end{itemize}
+Voorbeelden van asynchrone communicatie zijn: email, sms, sociale media berichten, online forums, \dots
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{asynchvssynch.png}
+  \caption{Synchronous vs Asynchronous Communication}
+  \label{fig:asynchvssynch.png}
+ \end{figure}
+\subsection{Event Driven Computing}
+Dit is eigelijk zoals asynchrone communicatie, biologische neurale netwerken zijn een mooi voorbeeld, neem bvb. een 'pad' (het dier dus), een pad verwerkt niet conitnue een videostream van zijn omgeving (dit zou te veel energie kosten), zijn hersenen en ogen reageren eigelijk alléén als een prooi beweegt, dus pas als er een verandering optreedt (een event), komt het systeem in actie. IMEC is dit concept toe aan het passen op cameras voor drones, dit verlaagt de te verwerken data. 
+\newline
+De definitie is dus eigelijk als volgt: 
+\begin{conceptbox}[Event Driven Computing]
+ Event Driven Computing een asynchroon systeem dat alleen in actie komt en data verwerkt wanneer er daadwerkelijk iets verandert (een 'event' of 'delta'), in plaats van continu op een vaste kloksnelheid data te blijven verzamelen en verwerken. Het grote voordeel hiervan is omdat het systeem reageert op alleen veranderingen, dat je de te verwerken data gigantisch reduceerd, dit is extreem efficiënt, bespaart veel rekenkracht en is daarmee de toekomst voor snelle, autonome toepassingen zoals drones en robotica. (Het is dus nieuwe technologie in ontwikkeling, maar het potentieel is enorm).
+\end{conceptbox}
+\subsection{Serial vs Parallel Transmission}
+Er zijn 2 fundamentele manieren waarop digitale data (bits) over een verbinding gestuurd kunnen worden: serieel en parallel:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{visueelserieelparallel.png}
+  \caption{Visueel overzicht van seriële vs parallelle transmissie}
+  \label{fig:visueelserieelparallel.png}
+ \end{figure}
+In de figuur zien we dat serieel 1 bit per keer wordt verzonden, begeleidt door een kloksignaal. Bij parallel worden de bits in pakketjes (bvb. 8 bits tegelijk) verstuurt op exact hetzelfde moment met meerdere fysieke draden naast elkaar. (Ook met een klok), dit is eerder ouderwets, zoals bij bvb. vroeger die dikke kabels bij printers (waren meerdere kabels in 1 eigelijk). Parallel is dus minder gebruikt want meer kabels is hogere kost en meer energie verlies ook.
+\subsubsection{Seriële communicatie}
+Dit is voordelig want je hebt minder draden nodig, dunnere kabel, goedkoper en simpeler en omdat er minder draden naast elkaar lopen heb je geen EMI (elektromagnetische interferentie), dit maakt het veel betrouwbaarder en effectiever voor langere afstanden. Bit voor bit zenden is in principe wel trager maar sinds dat onze systemen tegenwoordig zo sterk zijn is dit nadeel weggewerkt. Het bekendste en meest succesvolle voorbeeld hiervan is de USB (Universal Serial Bus).
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{serialcommunication.png}
+  \caption{Seriële communicatie}
+  \label{fig:serialcommunication.png}
+ \end{figure}
+\subsubsection{Parallelle communicatie}
+Het grote voordeel hier is de theoretische snelheid, omdat je dus die meerdere bits tegelijk kan sturen maar je hebt gigantisch veel koper nodig wat te veel kost en dit is ook heel slecht voor lange afstanden door EMI en raken dan uit de pas (synchronisatieproblemen), dit leidt tot corrupte data en als 1 bit faalt moet het hele pakket opnieuw verzonden worden.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{parellelecommuncaiati.png}
+  \caption{Parallelle communicatie}
+  \label{fig:parellelecommuncaiati.png}
+ \end{figure}
+Wat zijn nu dan de moderne toepassingen van parallelle communicatie? Het wordt tegenwoordig vrijwel uitsluitend gebruikt voor zeer snelle communcatie over extreem korte afstanden \textit{intern} in aparaten. Zoals dus de communcatie tussen de processor (CPU) en het werkgeheugen (RAM), interne databussen \textit{tussen} rekenkernen, FPGA-interfaces (Field Programmable Gate Arrays), en kabels die het LCD-scherm van een laptop of telefoon aansturen.
+\subsection{Digital Communcations}
+Nu stappen we over naar de moderne digitale communicatie, analoge communicatie van vroeger waarbij je uitstuurd in alle richtingen en hoopte dat iemand luistert is dus anders van hoe digitaal werkt.
+\newline
+\newline
+Online data moet exact weten waar het naar toe gaat, het internetverkeer wordt dus eigelijk 'gerouteerd', digitale communicatie is ook de plek waar encryptie-algoritmes uitblinken (dit zien we nog later), een router wordt dus gebruikt om data te versturen, dit weet waar informatie naar toe moet, dit zien we in de volgende figuur: 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{digitalcommunications.png}
+  \caption{Overzicht van digitale communicatie}
+  \label{fig:digitalcommunications.png}
+ \end{figure}
+\subsection{Het Digitaal Communicatie Model}
+Het volgende model toont de stappen en actoren die nodig zijn om digitale informatie succesvol van de ene plek naar de andere te krijgen over een netwerk:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{communicationproces.png}
+  \caption{Basic Digital Communication Model}
+  \label{fig:communicationproces.png}
+ \end{figure}
+We beginnen bij de \textbf{zender}, dit creeërt de data en zet het om (\textit{encodeert}) naar digitale bits, dit is ook het moment dus waar \textit{encryptie} gebeurt voordat het bericht de wijde wereld wordt in gestuurd. Het \textbf{kanaal (channel)} is de fysieke OF draadloze route die het signaal aflegt (bvb. kopere draad, glasvezel, Wi-Fi, 3G of 5G, \dots). In de praktijk is dit een gigantische mix van technologieën eigelijk, een signaal kan bvb. via een glasvezel van San Francisco naar Chili en daar overgaan op een fysieke kabel en het laatste stukje met Wi-Fi naar je apparaat reizen. De \textbf{ontvanger (receiver)} is het apparaat aan de andere kant dat het signaal \textit{detecteert} en de bits weer \textit{decodeert} naar de originele leesbare data. Dan hebben we ook \textbf{feedback} (deze is belangrijk), de \textit{ontvanger stuurt een signaal terug} naar de zender ter bevestiging dat het bericht in goede orde is aangekomen en gelezen (in WhatsApp zijn dit zo die blauwe vinkjes).
+\newline
+\newline
+Protocollen spelen hier als rol, deze zijn als het ware de 'taal' die apparaten gebruiken om met elkaar te praten, zonder deze protocollen zouden apparaten niet weten hoe ze data moeten formatteren, verzenden of interpreteren, dit zou leiden tot totale chaos in de communicatie. Vergelijk protocollen met een woordenboek.
+\subsubsection{Wat definieren protocollen nu echt?}
+Een stroom van 1'tjes en 0'tjes betekent dus niks als er geen gemeenschappelijke taal tussen apparaten is afgesproken. Een protocol is dus zoals een gezamenlijke woordenboek, ze leggen vier fundamentele spelregels vast:
+\begin{itemize}
+ \item \textbf{1. Hoe berichten zijn gestructureerd: } Een bericht begint altijd met het adres van de zender, gevolgd door de data, zodat de ontvanger altijd weet wie 'aan het praten' is.
+ \item \textbf{2. Hoe apparaten met elkaar synchroniseren: } Apparaten moeten transmissiesnelheid met elkaar afstemmen (synchronisatie), dit heet de 'Baud rate' (aantal bits/sec), als de snelheid niet overeenkomt, raakt communicatie uit de pas en verliest alle data zijn waarde.
+ \item \textbf{3. Hoe fouten worden gedetecteerd (deel van encryption dat we later dus zien): } De ontvanger moet kunnen controleren of een bit onderweg door ruis is veranderd. Het TCP/IP protocol controleert strikt op fouten, maar het UDP protocol negeert foutdetectie in ruil voor maximale snelheid (bvb. bij videostreaming, boeit niet als je frame verliest).
+ \item \textbf{4. Hoe apparaten elkaar identificeren: } Om te zorgen dat berichten exact op de juiste plek aankomen, heeft elk hardwareapparaat een uniek adres nodig, zoals een specifiek netwerkadres of IP-adres.
+\end{itemize}
+Er zijn ontelbaar veel protocollen, maar ze kunnen grof ongeveer in 2 hoofdfamilies worden ingedeeld:
+\begin{itemize}
+  \item \textbf{Intra-system protocollen:} Dit zijn de protocollen voor snelle communicatie binnenin één en hetzelfde apparaat (bijvoorbeeld de data-uitwisseling tussen de verschillende chips op een printplaat). Voorbeelden zijn I2C en SPI (deze ken je normaal, voor microcontrollers), PCI/PCI express is ook een goed voorbeeld, dit is het supersnelle protocol dat je bvb. gebruikt wanneer je een GPU of netwerkkaart in het moederbord van een pc klikt.
+  \item \textbf{Inter-system protocollen:} Dit zijn de protocollen voor communicatie tussen verschillende, gescheiden systemen (zoals de communicatie tussen twee computers of externe apparatuur). Voorbeelden zijn USB, UART, Ethernet en het CAN-protocol, dit laatste wordt veel gebruikt in de auto-industrie, automatisering en robotica.
+\end{itemize}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{protocolvertakking.png}
+  \caption{Visuele weergave van protocollen en hun onderverdeling}
+  \label{fig:protocolvertakking.png}
+ \end{figure}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{voorbeeldenprotocollen.png}
+  \caption{Protocol voorbeelden}
+  \label{fig:voorbeeldenprotocollen.png}
+ \end{figure}
+\subsection{Netwerken}
+\begin{conceptbox}[Definitie digitaal netwerk]
+  Een netwerk is een structuur van apparaten (endpoints) waartussen informatie vrij in alle richtingen kan stromen. Communicatie is gebaseerd op een gemeenschappelijk \textbf{protocol (zoals TCP/IP) dat de regels en conventies bepaalt} voor het formatteren, verzenden en ontvangen van data. Zonder deze protocollen zou het verzenden van data via een netwerk simpelweg niet werken.
+\end{conceptbox}
+Wat zijn de voordelen van een netwerk? (Om dus een apparaat in een netwerk te plaatsen)
+\begin{itemize}
+ \item \textbf{Uitbreidbaar (Extendable) \& Flexibel/Configurable:} Je kunt heel makkelijk nieuwe apparaten of gegevensbronnen aan het netwerk toevoegen en de structuur aanpassen.
+ \item \textbf{Minder bekabeling:} Apparaten hoeven niet meer één-op-één met een aparte fysieke kabel met elkaar te communiceren, wat een gigantische wirwar aan fysieke verbindingen bespaart.
+ \item \textbf{Robuust \& Fouttolerant:} Doordat al deze knooppunten onderling met elkaar verbonden zijn, is het systeem enorm sterk. Als er ergens een verbinding uitvalt, is het netwerk niet direct nutteloos.
+\end{itemize}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{fotoslidenetwerk.png}
+  \caption{Netwerken}
+  \label{fig:fotoslidenetwerk.png}
+ \end{figure}
+
 \end{document}
