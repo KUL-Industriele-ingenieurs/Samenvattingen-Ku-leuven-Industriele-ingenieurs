@@ -2,18 +2,15 @@
 
 = Bode plots
 
-#figure(
-  image("Vorigeles les3.png", width: 15cm),
-  caption: [Vorigeles les3],
-  label: <fig:Vorigeles-les3>,
-)
+In dit hoofdstuk gaan we dieper in op #keyterm[Bode plots] en bekijken we specifieke voorbeelden. We bespreken hoe je handmatig Bode plots kunt opstellen van complexe systemen door ze op te splitsen in basiscomponenten, en we kijken naar het cruciale effect van tijdsvertraging op een systeem.
 
-In de vorige les hebben we #keyterm[Nyquist plots]en #keyterm[Bode plots] gezien over meerdere soorten systemen. Vandaag gaan we dieper in op de #keyterm[Bode plots].
-We zagen dat je bij een tweede orde all-pool systeem dat
+== Resonantie bij tweede orde systemen
 
-$ M_(P i e k) = frac(1, 2 zeta sqrt(1 - zeta^2)) $
+Bij een tweede orde all-pole systeem treedt er resonantie op als de dempingsfactor $zeta < 1/sqrt(2) approx 0.707$. De hoogte van deze piek wordt gegeven door:
 
-$theta "daling resolantie bij zeta" approx 2$
+$ M_("Piek") = frac(1, 2 zeta sqrt(1 - zeta^2)) $
+
+Hoe kleiner $zeta$, hoe groter de piek. Bij $zeta = 0$ is de piek theoretisch oneindig. Voor kleine waarden van $zeta$ (bv. $zeta < 0.2$) geldt de benadering $M_("Piek") approx 1 / (2 zeta)$.
 
 #voorbeeld(title: "Voorbeeld bode plot")[
 
@@ -118,34 +115,41 @@ $theta "daling resolantie bij zeta" approx 2$
 ]
 
 
+== Tijdsvertraging (Time Delay)
+
 #wrap-figure(
   image("tijdsvertraging.png", width: 8cm),
-  caption: [tijdsvertraging],
+  caption: [Tijdsvertraging (Dead time)],
   label: <fig:tijdsvertraging>,
 )[
-  Wanneer we binnenkort systemen gaan regelen gaat de tijd ook impact hebben. Je gaat een tijdsvertraging hebben.
+  In de realiteit hebben fysieke systemen vaak een tijdsvertraging (ook wel "dead time" genoemd). Dit betekent dat het systeem pas na een tijdje $t_d$ reageert op een verandering aan de ingang.
 
-  _ Bv, temperatuur regelen in vat maar meeting heeft vertraging door dat termometer verder vanaf de tank zit. Het heeft tijd nodig op dat de conductie van het warmtevat naar de termometer gaat. _
+  _Bijvoorbeeld: Bij het regelen van de temperatuur in een vat met vloeistof, meet de thermometer de temperatuur pas als de vloeistof tot bij de sensor is gestroomd. Het kost tijd voor de warmte zich verplaatst._
 
-  $ T_(R,M) m T_R(t-t_d) $
+  Als een signaal $y(t)$ een vertraging heeft van $t_d$, schrijven we dit als $y(t - t_d)$.
 ]
 
-In laplace is een time delay een simpele $e^(-s dot t_d)$
+Volgens de Laplace-eigenschappen komt een tijdsvertraging in het tijdsdomein overeen met een vermenigvuldiging met $e^(-s t_d)$ in het Laplacedomein:
 
-$ "laplace"((T_(R,M)) m T_R(t-t_d)) $
-$ = $
+$ cal(L){y(t - t_d)} = e^(-s t_d) Y(s) $
 
 #figure(
   image("time-delay.png", width: 8cm),
-  caption: [time-delay],
+  caption: [Bode plot van een tijdsvertraging: constante amplitude, lineair dalende fase],
   label: <fig:time-delay>,
 )
 
-Alleen zijn deze niet lineair
+*Invloed op de frequentierespons*
 
-$ "Amplitude":|e^(-s dot t_d)| = 1 $
+We evalueren dit voor $s = j omega$:
+$ H(j omega) = e^(-j omega t_d) $
 
-$ "Phase": angle(e^(-s dot t_d)) = -t_d omega 180/pi deg $
+Deze exponentiële functie heeft specifieke eigenschappen in de Bode plot:
+- *Amplitude:* $|e^(-j omega t_d)| = 1 = 0 "dB"$
+- *Fase:* $angle(e^(-j omega t_d)) = -omega t_d " (in radialen)" = -omega t_d dot (180 deg)/pi$
+
+*Conclusie voor stabiliteit:*
+Een tijdsvertraging heeft *geen enkele invloed op de amplitude*, maar zorgt wel voor een *lineair dalende fase* naarmate de frequentie toeneemt. Dit is zeer gevaarlijk voor de stabiliteit van een regelsysteem, omdat de fase daardoor onverbiddelijk richting $-180 deg$ duikt, wat de fasemarge aanzienlijk verkleint. Daarom is het moeilijker om systemen met grote "dead time" snel te regelen.
 
 
 

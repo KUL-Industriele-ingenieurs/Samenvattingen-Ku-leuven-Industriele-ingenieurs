@@ -34,6 +34,13 @@
 #include "6.Cilindrische coördinaten.typ"
 #include "7.Relatieve bewegingsanalyse met roterende assen.typ"
 #include "8.Traagheidsmoment.typ"
-#include "9.Bewegingsvergelijking voor de vlakke beweging.typ"
-
-
+#include "9.Bewegingsvergelijking bij translatie.typ"
+#include "10.Bewegingsvergelijking bij rotatie.typ"
+#include "11.Bewegingsvergelijking bij algemeen vlakke beweging.typ"
+#include "12.Bewegingsvergelijkingen meedere lichamen.typ"
+#include "13.Bewegingsvergelijkingen cilindrische coördinaten.typ"
+#include "14.Arbeid en energie.typ"
+#include "15.Behoud van energie.typ"
+#include "16.Botsingen.typ"
+#include "17.Impulsmoment puntdeeltje.typ"
+#include "18.Oefeningen.typ"

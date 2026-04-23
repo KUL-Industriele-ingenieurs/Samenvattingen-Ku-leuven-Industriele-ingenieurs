@@ -254,16 +254,14 @@ jobs:
               with:
                   fetch-depth: 0
 
-            - name: Install snapd and Typst
+            - name: Setup Typst
+              uses: typst-community/setup-typst@v3
+
+
+            - name: Check available fonts
               run: |
-                  set -euo pipefail
-                  sudo apt-get update -y
-                  sudo apt-get install -y snapd
-                  # Ensure snap core is present (no-op if already installed)
-                  sudo snap install core || true
-                  # Install typst
-                  sudo snap install typst || sudo snap install typst --classic
-                  typst --version
+                  echo "Listing fonts found in $GITHUB_WORKSPACE/fonts/:"
+                  typst fonts --font-path "$GITHUB_WORKSPACE/fonts/"
 
             - name: Find and Build Typst documents
               shell: bash
@@ -395,6 +393,7 @@ jobs:
         permissions:
             contents: write
 
+
         steps:
             - name: Checkout code
               uses: actions/checkout@v4
@@ -441,26 +440,27 @@ jobs:
                   printf "> For stable versions, see the [official releases](https://github.com/${{ github.repository }}/releases?q=NOT+prerelease).\n\n" >> release_body.md
                   printf "### 📥 Downloads\nAll PDF summaries are attached below.\n" >> release_body.md
 
-                  # 3. Create or Edit the Release
-                  # If the release exists, we edit it to update body/target.
-                  # If not, we create it.
-                  # We use the 'latest' tag which we just pushed.
-
+                  # 3. Create or Recreate the Release
+                  # We delete the old release and create a fresh one to ensure 
+                  # the release date is updated.
                   if gh release view latest >/dev/null 2>&1; then
-                     echo "Updating existing release metadata..."
-                     gh release edit latest \
-                       --title "📚 Latest Build (${{ steps.info.outputs.date }})" \
-                       --prerelease \
-                       --draft=false \
-                       --notes-file release_body.md
-                  else
-                     echo "Creating new release..."
-                     gh release create latest \
-                       --title "📚 Latest Build (${{ steps.info.outputs.date }})" \
-                       --prerelease \
-                       --draft=false \
-                       --notes-file release_body.md
+                     echo "Deleting old automated release..."
+                     gh release delete latest --yes
                   fi
+
+                  echo "Creating fresh release..."
+                  gh release create latest \
+                    --title "📚 Latest Build (${{ steps.info.outputs.date }})" \
+                    --prerelease \
+                    --latest \
+                    --draft=false \
+                    --notes-file release_body.md
+
+
+
+
+
+
 
                   # 4. Delete old assets so stale PDFs don't linger
                   echo "🧹 Cleaning old release assets..."

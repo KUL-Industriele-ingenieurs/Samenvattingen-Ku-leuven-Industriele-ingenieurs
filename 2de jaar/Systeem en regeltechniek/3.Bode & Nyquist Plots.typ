@@ -33,9 +33,7 @@ $ H(j omega) arrow.r.double 20 log_10(|H(j omega)|) = A(omega) [d b] $
 
 
 
-// todo's add diagram showcasing that sin input to an LTC box and then seeing the frequency response h(jw) sin (wt < h(jw))
 
-// todo showcasing bode plot log scale
 
 #figure(
   image("bodeplot.png", width: 10cm),
@@ -82,7 +80,7 @@ Bij de nyquist plot ga je niet kijken naar amplitudes maar je gaan in het comple
   De amplitude moet je uitrekenen door je log toe te voegen _je frequentie is in log in de bode plot_ en dan is de formule:
 
   $A(omega) = 20 log_10(|H(j omega)|) = 20 log_10(1/(tau omega))$
-  $ = markhl(-20 log_10(tau omega)) ("-20 is de helling in db per decade") $
+  $ = markhl(-20 log_10(tau omega)) quad quad "-20 is de helling in db per decade" $
 
 
   Als $omega = 1/tau$ dan is $A(omega) = -20 log_10(1) = 0$ (log (1) = 0)
@@ -94,53 +92,84 @@ Bij de nyquist plot ga je niet kijken naar amplitudes maar je gaan in het comple
 
   *Nyquist plot*
 
-  #keyterm[Herinner de polaire plots van wiskunde basistechnieken beetje gelijkaardig]
+  Herinner de polaire plots van wiskunde basistechnieken beetje gelijkaardig
 
   #examenbox[Geen logaritmische schaal van toepassing]
 
   Om de nyquist plot te tekenen nemen we 3 verschillende waarden van $omega$:
 
-  - $ omega arrow.r 0 arrow.r.double = infinity $
-  - $omega = 1/tau arrow.r.double = 1$ (we hebben nog steeds een imagair deel geen enkele reël deel zoals je kunt zien in de amplitude plot _zie formule bode plot_)
-  - $omega arrow.r infinity arrow.r.double = 0$
+  - $omega arrow.r 0 arrow.r.double infinity$
+  - $omega = 1/tau arrow.r.double 1$ (we hebben nog steeds een imagair deel geen enkele reël deel zoals je kunt zien in de amplitude plot _zie formule bode plot_)
+  - $omega arrow.r infinity arrow.r.double 0$
 
 
-  #grid(
-    columns: 2,
-    align: center,
-    figure(
-      image("oefeningbodeplot.png", width: 5cm),
-      caption: [oefeningbodeplot],
-      label: <fig:oefeningbodeplot>,
-    ),
+  #align(
+    center,
+    grid(
+      columns: 2,
+      align: center,
+      figure(
+        image("oefeningbodeplot.png", width: 5cm),
+        caption: [oefeningbodeplot],
+        label: <fig:oefeningbodeplot>,
+      ),
 
-    figure(
-      image("oefening Nyquist plot.png", width: 5cm),
-      caption: [oefening Nyquist plot],
-      label: <fig:oefening-Nyquist-plot>,
+      figure(
+        image("oefening Nyquist plot.png", width: 5cm),
+        caption: [oefening Nyquist plot],
+        label: <fig:oefening-Nyquist-plot>,
+      ),
     ),
   )
 ]
 
-=== ideal differentiator
+=== Ideal differentiator
 
-// todo vul uitleg in zoals hiervoor integrator
+De ideale differentiator is het omgekeerde van de integrator. In plaats van $1/(tau s)$ hebben we nu:
 
-=== Eerste orde All-pole systemen
+$ markrect(H(s) = tau s) $
+
+*Bode plot*\
+Vervang $s = j omega$:
+
+$ H(j omega) = tau j omega = underbrace(j, "fase") dot underbrace(tau omega, "amplitude") $
+
+De fase is constant: we hebben een positief imaginair getal $arrow.r.double angle(H(j omega)) = +90 deg$
+
+De amplitude in dB:
+$ A(omega) = 20 log_10(|H(j omega)|) = 20 log_10(tau omega) = markhl(+20 log_10(tau omega)) $
+
+Dit is een rechte lijn met helling $+20 "dB/decade"$ (het spiegelbeeld van de integrator).
+
+Als $omega = 1/tau$ dan is $A(omega) = 20 log_10(1) = 0 "dB"$ — dit is het nulpunt van de lijn.
+
+*Nyquist plot*\
+We vullen weer 3 waarden van $omega$ in:
+
+- $omega arrow.r 0 arrow.r.double H(j omega) = 0$ (oorsprong)
+- $omega = 1/tau arrow.r.double H(j omega) = j$ (magnitude 1, fase $+90 deg$)
+- $omega arrow.r infinity arrow.r.double H(j omega) arrow.r infinity$ (langs de positieve imaginaire as)
+
+De Nyquist plot is dus een rechte lijn langs de positieve imaginaire as, startend bij de oorsprong.
+
+
+=== Eerste orde all-pole systemen
 
 $ H(s) = frac(K, 1+ tau s) $
 
 *Bode plot*
 We willen terug de bode plot
 
-$ A(omega) = 20 log_10(|H(j omega)|) = 20 log_10(1/(tau omega)) = markhl(-20 log_10(tau omega)) $
+$A(omega) = 20 log_10(|H(j omega)|) = 20 log_10(1/(tau omega)) = markhl(-20 log_10(tau omega))$
 
 Weer 3 verschillende waarden van $omega$:
 
-- $ lim_(omega->0) A(omega) = 20 log_10(K) $
+- $lim_(omega->0) A(omega) = 20 log_10(K)$
 
 
-- $ omega = 1/tau arrow.r.double A(1/tau) = 20 log_10(K) - 20 log_10(square(1+1)) = 20 log_10(K) - 3d B) $ \
+- $omega = 1/tau arrow.r.double A(1/tau) = 20 log_10(K) - 20 log_10(square(1+1)) = 20 log_10(K) - 3d B)$
+
+
 (we hebben nog steeds een imagair deel geen enkele reël deel zoals je kunt zien in de amplitude plot _zie formule bode plot_)
 
 Als $omega$ heel groot is dan kunnen we die 1 verwaarlozen want $1 <<< omega$
@@ -174,7 +203,7 @@ $ -arctan(1) = -45 deg $  (want $tan(45) = 1$)
 en we komen terug een mooie figuur uit. Je ziet in het midden dat je een hoek van 45° krijgt zoals in de berekeningen.
 
 #figure(
-  image("all-pole phase bode plot.png", width: 10cm),
+  image("all-pole phase bode plot.png", width: 12cm),
   caption: [all-pole phase bode plot],
   label: <fig:all-pole-phase-bode-plot>,
 )
@@ -187,7 +216,7 @@ en we komen terug een mooie figuur uit. Je ziet in het midden dat je een hoek va
   We zien van de *Bode plot* dat we een low-pass filter krijgen.
 
   #figure(
-    image("bodeplotsimpeloefening.png", width: 5cm),
+    image("bodeplotsimpeloefening.png", width: 8cm),
     caption: [bodeplotsimpeloefening],
     label: <fig:bodeplotsimpeloefening>,
   )
@@ -210,7 +239,7 @@ Opnieuw 3 verschillende waarden van omega invullen:
 - $ omega arrow.r infinity arrow.r.double H(j omega) = 0 $
 
 #figure(
-  image("nyquistplot allplot eerste orde.png", width: 10cm),
+  image("nyquistplot allplot eerste orde.png", width: 8cm),
   caption: [nyquistplot allplot eerste orde],
   label: <fig:nyquistplot-allplot-eerste-orde>,
 )
@@ -219,7 +248,7 @@ Opnieuw 3 verschillende waarden van omega invullen:
 
 *Bode plot*
 
-$ H(s) = frac(tau s, 1+tau s) $
+$H(s) = frac(tau s, 1+tau s)$
 
 #figure(
   image("bodeplot pole zero.png", width: 10cm),
@@ -229,7 +258,23 @@ $ H(s) = frac(tau s, 1+tau s) $
 
 Weer voor amplitude en fase oplossen:
 
-//todo voeg berekening toe
+$ H(j omega) = frac(j tau omega, 1 + j tau omega) $
+
+De amplitude:
+$ |H(j omega)| = frac(tau omega, sqrt(1 + (tau omega)^2)) $
+
+- $lim_(omega arrow.r 0) |H| approx tau omega arrow.r$ helling $+20 "dB/decade"$
+- $omega = 1/tau arrow.r.double |H| = 1/sqrt(2) arrow.r -3 "dB"$ (cut-off frequentie)
+- $lim_(omega arrow.r infinity) |H| arrow.r 1 arrow.r 0 "dB"$
+
+De fase:
+$ phi(omega) = angle("teller") - angle("noemer") = 90 deg - arctan(tau omega) $
+
+- $lim_(omega arrow.r 0) phi = 90 deg$
+- $omega = 1/tau arrow.r.double phi = 90 deg - 45 deg = 45 deg$
+- $lim_(omega arrow.r infinity) phi arrow.r 0 deg$
+
+Dit is een *hoogdoorlaat filter* — lage frequenties worden geblokkeerd, hoge frequenties passeren.
 
 
 *Nyquist plot*
@@ -263,13 +308,36 @@ $ H(s) = 1 + tau s $
 
 Amplitude en fase oplossen:
 
-//todo voeg berekening toe
+$ H(j omega) = 1 + j tau omega $
 
+De amplitude:
+$ |H(j omega)| = sqrt(1 + (tau omega)^2) $
+$ A(omega) = 20 log_10(sqrt(1 + (tau omega)^2)) = 10 log_10(1 + (tau omega)^2) $
 
+- $lim_(omega arrow.r 0) A approx 0 "dB"$ (vlak)
+- $omega = 1/tau arrow.r.double A = 10 log_10(2) = 3 "dB"$ (cut-off frequentie)
+- $omega gt.gt 1/tau arrow.r.double A approx 20 log_10(tau omega) arrow.r +20 "dB/decade"$
+
+De fase:
+$ phi(omega) = arctan(tau omega) $
+
+- $lim_(omega arrow.r 0) phi = 0 deg$
+- $omega = 1/tau arrow.r.double phi = arctan(1) = +45 deg$
+- $lim_(omega arrow.r infinity) phi arrow.r +90 deg$
+
+Dit is het spiegelbeeld van het all-pole systeem: de amplitude stijgt en de fase gaat naar $+90 deg$.
 
 *Nyquist plot*
 
-//todo voeg berekening toe
+$ H(j omega) = 1 + j tau omega $
+
+Dit is een rechte lijn in het complexe vlak:
+
+- $omega arrow.r 0 arrow.r.double H = 1$ (op de reële as)
+- $omega = 1/tau arrow.r.double H = 1 + j$ (punt $(1, 1)$)
+- $omega arrow.r infinity arrow.r.double H arrow.r infinity$ met fase $arrow.r 90 deg$
+
+De Nyquist plot is een verticale lijn startend bij $(1, 0)$ die omhoog gaat langs $"Re" = 1$.
 
 
 #figure(
@@ -319,39 +387,43 @@ Uitwerken en $u = frac(omega, omega_n)$ invullen:
 
 $ = frac(K, sqrt((1 - u^2)^2 + (2 zeta u)^2)) $
 
-Stel $K_(D C) = 1$. Omzetten naar db:
+Stel $K_(D C) = 1$. Omzetten naar dB:
 
-$
-  20 log_10(|H(j omega)|) =
-  20 log_10(1) -20 log_10( sqrt((1- u^2)^2 + 4 zeta^2 u^2))
-$
-$
-  10 log_10((1 - u^2)^2 + 4 zeta^2 u^2)
-$
+$ A(omega) = 20 log_10(|H(j omega)|) = -10 log_10((1 - u^2)^2 + 4 zeta^2 u^2) $
 
-$ u <<< 1 $
-$ arrow.b.double $
+We bekijken drie gevallen:
 
-$ -10 log_10(1+4 zeta^2 u^2) approx 0 $
+*Geval 1: $u lt.lt 1$ (lage frequenties):*
+$ (1 - u^2)^2 + 4 zeta^2 u^2 approx 1 quad arrow.r.double quad A approx 0 "dB" $
+De amplitude is vlak bij lage frequenties.
 
-$ u >>> 1 $
-$ arrow.b.double $
+*Geval 2: $u gt.gt 1$ (hoge frequenties):*
+$ (1 - u^2)^2 + 4 zeta^2 u^2 approx u^4 quad arrow.r.double quad A approx -40 log_10(u) $
+De helling is $-40 "dB/decade"$ (dubbel zo steil als eerste orde!).
 
-$ -10 log_10(1+4 zeta^2 u^2) approx -10 log_10(u^4) = -40 log_10(u) $
+*Geval 3: $u = 1$ (resonantiefrequentie $omega = omega_n$):*
+$ (1 - 1)^2 + 4 zeta^2 dot 1 = 4 zeta^2 quad arrow.r.double quad A = -20 log_10(2 zeta) $
+Als $zeta$ klein is (bv. $zeta = 0.1$) krijg je een grote piek: $A = -20 log_10(0.2) = +14 "dB"$.
+Als $zeta = 1$ (kritisch gedempt): $A = -20 log_10(2) = -6 "dB"$ (geen piek).
 
-$ u = 1 $
-$ arrow.b.double $
-
-$ -10 log_10(4 zeta^2 u^2) $
-Als $zeta$ potentieel 0 is dan is de amplitude 0 db
-
-$ arrow.r.double 20 log_10 $
+De resonantiepiek treedt op bij $omega_r = omega_n sqrt(1 - 2 zeta^2)$ als $zeta < 1/sqrt(2) approx 0.707$:
+$ M_("Piek") = frac(1, 2 zeta sqrt(1 - zeta^2)) $
 
 #figure(
   image("tweedeorde allploe.png", width: 10cm),
-  caption: [tweedeorde allploe],
+  caption: [Bode amplitude plot tweede orde all-pole systeem],
   label: <fig:tweedeorde-allploe>,
 )
+
+*Fase plot:*
+
+$ phi(omega) = -arctan(frac(2 zeta u, 1 - u^2)) $
+
+- $u lt.lt 1 arrow.r.double phi approx 0 deg$ (geen fasedraaiing)
+- $u = 1 arrow.r.double phi = -90 deg$ (altijd, ongeacht $zeta$)
+- $u gt.gt 1 arrow.r.double phi arrow.r -180 deg$
+
+Bij een tweede orde systeem draait de fase van $0 deg$ naar $-180 deg$. De snelheid van de overgang hangt af van $zeta$: hoe kleiner $zeta$, hoe scherper de overgang rond $omega_n$.
 
 == Hogere orde systemen
 Stel dat we hogere orde systemen hebben. Kunnen we onze dingen versimplificeren?
@@ -366,16 +438,39 @@ $ arrow.b.double $
 
 #voorbeeld(title: "Hogere orde systeem")[
 
-  $markhl(H(s) = frac(1 +5s, s(10+10s)))$
+  $ markhl(H(s) = frac(1 +5s, s(10+10s))) $
+
+  *Stap 1 — Normaliseren naar standaardvorm:*
+
+  $ H(s) = frac(1 + 5s, 10 s (1 + s)) = frac(1, 10) dot frac(1 + 5s, s(1 + s)) $
+
+  *Stap 2 — Componenten identificeren:*
+
+  + *Constante versterking:* $K = 1/10 arrow.r 20 log_10(0.1) = -20 "dB"$
+  + *Integrator:* $1/s arrow.r$ helling $-20 "dB/dec"$, fase $= -90 deg$
+  + *Nulpunt:* $(1 + 5s) arrow.r$ hoekfrequentie $omega_z = 1/5 = 0.2 "rad/s"$, helling $+20 "dB/dec"$ boven $omega_z$
+  + *Pool:* $1/(1 + s) arrow.r$ hoekfrequentie $omega_p = 1 "rad/s"$, helling $-20 "dB/dec"$ boven $omega_p$
+
+  *Stap 3 — Asymptotische amplitude optellen:*
+
+  - $omega < 0.2$: alleen integrator + $K$ actief $arrow.r$ helling $-20 "dB/dec"$
+  - $0.2 < omega < 1$: nulpunt compenseert integrator $arrow.r$ helling $0 "dB/dec"$ (vlak)
+  - $omega > 1$: pool voegt $-20 "dB/dec"$ toe $arrow.r$ helling $-20 "dB/dec"$
+
+  Referentiepunt: bij $omega = 0.1$ is $|H| approx 1/(10 dot 0.1) = 1 arrow.r 0 "dB"$
+
+  *Stap 4 — Fase optellen:*
+
+  - $omega arrow.r 0$: integrator geeft $-90 deg$ als startpunt
+  - Bij $omega_z = 0.2$: nulpunt voegt $+45 deg$ toe
+  - Bij $omega_p = 1$: pool trekt $-45 deg$ af
+  - $omega arrow.r infinity$: nulpunt $(+90 deg)$ en pool $(-90 deg)$ heffen op $arrow.r$ fase $= -90 deg$
 
   #figure(
     image("bodefaseplothogereorde.png", width: 10cm),
-    caption: [bodefaseplothogereorde],
+    caption: [Bode plot hogere orde systeem],
     label: <fig:bodefaseplothogereorde>,
   )
-
-  // todo voeg berekening toe
-
 ]
 
 == Kleine herhaling

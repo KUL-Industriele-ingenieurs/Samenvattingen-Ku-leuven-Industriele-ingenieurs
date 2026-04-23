@@ -121,7 +121,7 @@
     header: context {
       let page_num = counter(page).get().first()
       if page_num > 1 {
-        set text(size: 9pt * 0.92, font: ("Fira Sans", "Arial"))
+        set text(size: 9pt * 0.92, font: ("Fira Sans", "Liberation Sans"))
         let headers = query(selector(heading.where(level: 1)).before(here()))
         let last_header = if headers.len() > 0 { headers.last().body } else { [] }
 
@@ -137,36 +137,67 @@
 
   // Typography: Charter (body) + Fira Sans (headers) + Fira Code 0.85 (code)
   // Charter, Fira Sans & Fira Code loaded from project fonts/ directory
-  set text(font: ("Charter", "Libertinus Serif", "Georgia"), lang: "nl", size: 11pt)
+  set text(font: ("Charter", "Libertinus Serif"), lang: "nl", size: 11pt)
   set par(leading: 0.63em, first-line-indent: 0pt, spacing: 1.2em, justify: true)
   set heading(numbering: "1.1.")
 
-  show raw: set text(font: ("Fira Code", "Consolas", "Courier New"), size: 0.85em)
+  show raw: set text(font: ("Fira Code", "Liberation Mono"), size: 0.85em)
   // Math uses Typst's default New Computer Modern Math (serif, matching Charter body text)
 
   // Override emptyset to use sans-serif glyph for visual consistency
-  show sym.emptyset: set text(font: ("Fira Sans", "Calibri", "Arial"))
+  show sym.emptyset: set text(font: ("Fira Sans", "Liberation Sans"))
 
   // Link styling: URLs in schoolBlue, internal refs in black with underline
   show link: it => text(fill: schoolBlue)[#underline(it)]
   show ref: it => underline(it)
 
   // Caption styling: small Fira Sans, bold label
-  show std-figure.caption: set text(size: 0.9em * 0.92, font: ("Fira Sans", "Calibri", "Arial"), weight: "bold")
+  show std-figure.caption: set text(size: 0.9em * 0.92, font: ("Fira Sans", "Liberation Sans"), weight: "bold")
+
+  // Figure numbering: "Chapter.Figure" (e.g. Figure 2.1), resets per chapter via heading rule
+  show std-figure: it => context {
+    let h = counter(heading).get()
+    let chapter = if h.len() > 0 { h.first() } else { 0 }
+    let fig-n = counter(std-figure.where(kind: it.kind)).get().first()
+    let num-str = if chapter > 0 {
+      numbering("1.1", chapter, fig-n)
+    } else {
+      numbering("1", fig-n)
+    }
+    // Output body centered, then caption below (without re-invoking std-figure to avoid recursion)
+    align(center, it.body)
+    if it.caption != none {
+      align(center, block(
+        above: 0.65em,
+        text(
+          size: 0.9em * 0.92,
+          font: ("Fira Sans", "Liberation Sans"),
+          weight: "bold",
+          [Figure #num-str: #it.caption.body],
+        ),
+      ))
+    }
+  }
 
   // List styling: match LaTeX tightened spacing
   set list(indent: 2em, body-indent: 0.5em, spacing: 0.6em)
   set enum(indent: 2em, body-indent: 0.5em, spacing: 0.6em)
 
-  show heading: set text(font: ("Fira Sans", "Calibri", "Arial"), weight: "bold")
+  show heading: set text(font: ("Fira Sans", "Liberation Sans"), weight: "bold")
 
-  show heading.where(level: 1): it => block(below: 0.8em, breakable: false)[
-    #v(8pt)
-    #text(size: 13.2pt)[#if it.numbering != none { counter(heading).display(it.numbering) + h(0.5em) }#it.body]
-    #v(-12pt)
-    #line(length: 100%, stroke: 0.5pt)
-    #v(3pt)
-  ]
+  show heading.where(level: 1): it => {
+    // Reset figure counters on every new chapter
+    counter(std-figure.where(kind: image)).update(0)
+    counter(std-figure.where(kind: table)).update(0)
+    counter(std-figure.where(kind: raw)).update(0)
+    block(below: 0.8em, breakable: false)[
+      #v(8pt)
+      #text(size: 13.2pt)[#if it.numbering != none { counter(heading).display(it.numbering) + h(0.5em) }#it.body]
+      #v(-12pt)
+      #line(length: 100%, stroke: 0.5pt)
+      #v(3pt)
+    ]
+  }
 
   show heading.where(level: 2): it => block(below: 0.8em, breakable: false)[
     #v(6pt)
@@ -555,7 +586,7 @@
 #let important(content) = text(fill: schoolRed, weight: "bold")[#content]
 #let belangrijk = important  // Dutch alias matching LaTeX \belangrijk
 #let term(content) = text(fill: schoolBlue, weight: "bold")[#content]
-#let keyterm(content) = text(fill: schoolBlue.darken(20%), weight: "bold")[#content]
+#let keyterm(content) = strong(content) // uses the global strong style with darkened blue
 
 // --- Exam & Annotation Helpers ---
 #let examenbox(body) = block(
@@ -567,6 +598,79 @@
 #let FIXME(msg) = text(fill: red, weight: "bold", font: "Fira Sans")[\[FIXME: #msg\]]
 #let NOTE(msg) = text(fill: schoolOrange, weight: "bold", font: "Fira Sans")[\[NOTE: #msg\]]
 #let citeme = text(fill: red, font: "Fira Sans")[\[CITATIE NODIG\]]
+
+// --- Chapter Outline (Local TOC per chapter) ---
+// Usage: Place #chapter-outline() right after the level-1 heading of a chapter.
+// It will render a simple table of contents showing only the level-2 sections within that chapter.
+#let chapter-outline() = {
+  context {
+    let loc = here()
+    // Find all level-1 headings in the document
+    let all-h1 = query(heading.where(level: 1))
+
+    // Find the current chapter (the last level-1 heading before this point)
+    let current-chapter = none
+    let current-idx = -1
+    for (i, hd) in all-h1.enumerate() {
+      if hd.location().position().page <= loc.position().page {
+        current-chapter = hd
+        current-idx = i
+      }
+    }
+
+    if current-chapter == none { return }
+
+    // Determine the boundary: the next level-1 heading (or end of document)
+    let next-chapter = if current-idx + 1 < all-h1.len() {
+      all-h1.at(current-idx + 1)
+    } else {
+      none
+    }
+
+    // Query only level-2 headings
+    let sub-headings = query(heading.where(level: 2))
+
+    // Filter to only headings within this chapter using location comparison
+    // This prevents headings from an earlier chapter on the same page from leaking in
+    let current-loc = current-chapter.location()
+    let chapter-headings = sub-headings.filter(entry => {
+      let entry-loc = entry.location()
+      let ep = entry-loc.position().page
+      let ey = entry-loc.position().y
+      let cp = current-loc.position().page
+      let cy = current-loc.position().y
+      // Must be after current chapter heading
+      let after-current = ep > cp or (ep == cp and ey > cy)
+      // Must be before next chapter heading
+      let before-next = if next-chapter != none {
+        let np = next-chapter.location().position().page
+        let ny = next-chapter.location().position().y
+        ep < np or (ep == np and ey < ny)
+      } else {
+        true
+      }
+      after-current and before-next
+    })
+
+    if chapter-headings.len() == 0 { return }
+
+    // Render a clean, simple outline
+    v(4pt)
+    text(weight: "bold", size: 10pt)[Inhoud]
+    v(4pt)
+    for entry in chapter-headings {
+      let num = if entry.numbering != none {
+        counter(heading).at(entry.location()).map(str).join(".") + ". "
+      }
+      block(spacing: 0.5em)[
+        #num#entry.body
+        #box(width: 1fr, repeat[.#h(4pt)])
+        #text(size: 9pt)[#entry.location().position().page]
+      ]
+    }
+    v(8pt)
+  }
+}
 
 // --- Chapter Page Styling ---
 #let chapter_page(title, label: none) = {
