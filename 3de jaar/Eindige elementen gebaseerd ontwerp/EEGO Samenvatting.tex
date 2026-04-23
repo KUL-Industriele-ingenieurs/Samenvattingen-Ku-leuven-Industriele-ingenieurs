@@ -7,10 +7,9 @@
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{booktabs}
-\usepackage{amsmath}
 \usepackage{enumitem}
 \usepackage{microtype}
-\usepackage{../../school-macros}
+\usepackage[nobib]{../../school-macros}
 \usepackage{hyperref}
 \begin{document}
 % Titelinformatie
@@ -593,5 +592,338 @@ Soms heb je een heel fijn (gedetailleerd) mesh op het ene onderdeel, dat direct 
   \includegraphics[width=0.9\textwidth]{std.png}
   \caption{Samenvattende tabel definities}
   \label{fig:std.png}
+ \end{figure}
+\newpage
+\chapter{Theoretische overwegingen, randvoorwaarden (boundary conditions)}
+In dit hoofdstuk leggen we uit hoe we een wiskundig eindige-elementenmodel correct verbinden met de fysieke realiteit, zodat de software het kan doorrekenen. Dit wordt gedaan met randvoorwaarden op te stellen. (een paar dingen op de slides komen niet overeen met de lesopnames of de lesnotities zelf, indien je een fout hier ergens ziet, laat het mij weten pls)
+\begin{conceptbox}[Definitie randvoorwaarden]
+    De definitie van randvoorwaarden is simpelweg: het opleggen van specifieke waarden aan de knopen voor bepaalde vrijheidsgraden (dof), dit kunnen bekende verplaatsingen of krachten zijn. Er zijn 3 redenen waarom we randvoorwaarden nodig hebben:
+    \begin{itemize}
+     \item Het systeem verbinden met de omgeving: Een model is niet zomaar iets, het is iets dat verbonden moet staan aan de fysieke wereld, randvoorwaarden worden gebruikt om het fysiek gedrag in een aandachtsgebied realistisch te simuleren. (principe van Saint-Venant wordt gebruikt om complexe verbindingen en belastingen aan de randen wiskundig te vereenvoudigen)
+     \item Het stelsel wiskundig oplosbaar maken: De hoofdvergelijking van het model is: $[K]\tilde{q} = \tilde{F}$, zolang de structuur nog vrijuit door de ruimte kan bewegen (we noemen dit 'rigid body movement'), is de globale stijfheidsmatrix [K] 'singulier' en kan de computer deze niet inverteren(oplossen). Je model MOET verankerd zijn door veldvariabelen op te leggen (zoals bvb. verplaatsing $\tilde{q} = 0$ in een steunpunt) of krachten op te leggen, tis pas als de vrije beweging is tegengehouden dat de matrix oplosbaar is. (dit kan je ook testen in NX)
+     \item De geometrie vereenvoudigen (symmetrie): Randvoorwaarden kunnen ook worden gebruikt om je model kleiner te maken. Als een geometrie en de belastingen symmetrisch, antisummetrisch of as-symmetrisch zijn, kun je met speciale randvoorwaarden op het snijvlak (symmetrievlak) de computer dwingen om het model toch als een groter deel te laten rekenen. Dit verkort rekentijd enorm.
+    \end{itemize}
+\end{conceptbox}
+\subsection{De basisnotatie}
+In dit kort stukje definiëren we even de basisnotaties voor de twee belangrijkste symbolen om het probleemgebied te omschrijven:
+\begin{itemize}
+    \item \textbf{$\Gamma$ (Gamma):} Dit staat voor de buitenste rand (boundary) van dat domein.
+    \item \textbf{$\Omega$ (Omega):} Dit staat voor het volume (of het interne domein) van je model. Het is simpelweg de optelsom van alle afzonderlijke elementvolumes $\Omega_e$ bij elkaar.
+\end{itemize}
+Op de slide staat ook nog bij $\Gamma$ erachter in haakjes $\partial \Omega$, dit is een alternatieve notatie, de partiële afgeleide van $\Omega$ (een volume) is namelijk de rand $\Gamma$, dus $\Gamma$ = $\partial \Omega$.
+\subsection{Types randvoorwaarden}
+Op de volgende figuur zien we ons model, met de rand $\Gamma$ en het volume $\Omega$, met 3 types randvoorwaarden:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{randvoorwaarden.png}
+  \caption{Model met randvoorwaarden}
+  \label{fig:randvoorwaarden.png}
+ \end{figure}
+We onderscheiden 3 types randvoorwaarden:
+\begin{itemize}
+    \item \textbf{1. {\color{yellow}$\Gamma_E$} (Essential / Dirichlet B.C.):} Dit zijn randvoorwaarden waarbij je direct een veldvariabele oplegt, dit betekent verplaatsingen vastleggen of tegenhouden (bvb. een inklemming). Dit is vooral waar wij het over gaan hebben.
+    \newline
+    \newline
+    Bij een essentiële randvoorwaarde dwing je direct een vaste waarde af voor de onbekende veldvariabele in een knoop ($\tilde{q}$) (Je legt eigelijk een bekende waarde al 'vast', dit is eigelijk een startwaarde/ankerpunt voor de computer om zijn berekeningen mee verder te doen want de computer berekent normaal $\tilde{q}$ in knopen, zonder zo een startwaarde heb je dus zo rigid body motion). Wiskundig geschreven ziet dit er zo uit: $\tilde{q} = \bar{q}$, waarbij het streepje boven de $\bar{q}$ zegt: 'dit is nu een bekende, vastgelegde waarde'. De slides tonen 3 voorbeelden van in de praktijk:
+    \begin{itemize}
+     \item \textbf{Structuuranalyse:} Hierbij is de veldvariabele een verplaatsing/rotatie, een voorbeeld is een inklemming of scharnier. Je stelt hier dat:
+    \begin{align*}
+     \tilde{q} = 
+     \begin{Bmatrix}
+     \tilde{u}_{x} \\
+     \tilde{u}_{y} \\
+     \tilde{u}_{z} \\
+     \tilde{\phi}_{x} \\
+     \tilde{\phi}_{y} \\
+     \tilde{\phi}_{z}
+     \end{Bmatrix}
+    \end{align*}
+     \item \textbf{Thermische analyse:} Hier is de veldvariabele een temperatuur, je legt hier dus vast dat een specifieke rand een constante, opgelegde temperatuur heeft (bvb. exact 100°C). ($\tilde{q} = \tilde{T}$).
+     \item \textbf{Akoestiek:} Hier leg je een bekende geluidsdruk op langs een rand. ($\tilde{q} = \tilde{p}$)
+    \end{itemize}
+    Wat is nu de impact van zo een essentiële randvoorwaarde op de matrixvergelijking? ($[K]\tilde{q} = \tilde{F}$), je weet nu eigelijk 100\% wat de knoop gaat doen, $\tilde{q}$ is dus bekend, door de actie reactie wet betekent een vaste verplaatsing dat de omgeving 'terugduwt' en omdat de knoop is vastgezet weet je vooraf niet hoe hard het steunpunt moet trekken of duwen dus de reactie kracht $\tilde{F}$ wordt onbekend. We weten ook dat [K] een matrix is vol met vaststaande, bekende constanten en dus helemaal onafhankelijk is van de krachten of verplaatsingen die je op het model aanlegt. Dit zien we in de volgende figuur waar dus de linkerkant volledig bekend is en de rechterkant dus onbekend.
+    \begin{figure}[H]
+      \centering
+      \includegraphics[width=0.8\textwidth]{ingevuldematrixvergelijking.png}
+      \caption{Matrixvergelijking met essentiële randvoorwaarde}
+      \label{fig:ingevuldematrixvergelijking.png}
+     \end{figure}
+    \item \textbf{2. {\color{green}$\Gamma_N$} (Natural / Neumann B.C.):} Dit zijn randvoorwaarden waar je een afgeleide (zoals een mechanische spanning) aanlegt, dit is dus eigelijk het gebied waarop krachten aangelegd worden.
+    \newline
+    \newline
+    Het vastleggen van de afgeleide van een veldvariabele langs de rand wordt wisking als volgt beschreven:
+    \begin{align*}
+     \frac{\partial \tilde{q}}{\partial n} = \bar{f}
+    \end{align*}
+    Dit is de normaalafgeleide van $\tilde{q}$ (de verandering loodrecht op het vlak). De slides tonen 3 voorbeelden van wat dit betekent in de praktijk:
+    \begin{itemize}
+     \item \textbf{Structuuranalyse:} De afgeleide van een verplaatsing is rek, en rek is geralteerd aan spanning en kracht $\left( \frac{\partial \tilde{q}}{\partial n} \sim \text{rek} \sim \sigma \sim F \right)$, dus hier leg je een bekende kracht op (bvb. een puntlast of een verdeelde belasting).
+     \item \textbf{Thermische analyse:} Hier is dit dan eigelijk het aanleggen van een warmteflux want $\frac{\partial \tilde{q}}{\partial n} = \frac{\partial \tilde{T}}{\partial n}$ ~ warmteflux, dus hier leg je een bekende warmteflux op (bvb. een constante warmteflux van 500 W/m²).
+     \item \textbf{Akoestiek:} Hier leg je een akoestische deeltjessnelheid op, want $\frac{\partial \tilde{q}}{\partial n} = \frac{\partial \tilde{p}}{\partial n}$ ~ akoestische deeltjesnelheid (bvb. een constante deeltjesnelheid van 0.01 m/s).
+    \end{itemize}
+    Wat is dan hier de impact van zo een natuurlijke randvoorwaarde op de matrixvergelijking? ($[K]\tilde{q} = \tilde{F}$), je weet nu eigelijk 100\% wat de kracht is die op het model werkt, $\tilde{F}$ is dus bekend, en omdat jij zelf niet weet wat de stijfheid van je model precies is, wordt de veldvariabele $\tilde{q}$ onbekend, en [K] is nog steeds een matrix vol met vaststaande, bekende constanten en dus helemaal onafhankelijk is van de krachten of verplaatsingen die je op het model aanlegt. Dit zien we in de volgende figuur waar dus de linkerkant volledig onbekend is en de rechterkant dus bekend.
+    \begin{figure}[H]
+      \centering
+      \includegraphics[width=0.8\textwidth]{matrixvergelijkingnatuurlijkerandvoorwaarde.png}
+      \caption{Matrixvergelijking met natuurlijke randvoorwaarde}
+      \label{fig:matrixvergelijkingnatuurlijkerandvoorwaarde.png}
+     \end{figure}
+    \item \textbf{3. {\color{red}$\Gamma_M$} (Mixed / Robin B.C.):} Dit zijn randvoorwaarden waar je een combinatie van veldvariabelen en hun afgeleiden aanlegt, oftewel gewoon een relatie tussen kracht en verplaatsing (zoals verende ondersteuning (veertjes)).
+    \newline
+    \newline
+    Je legt nu niet gewoon een harde verplaatsing ($\tilde{q}$) op of een harde kracht ($\frac{\partial \tilde{q}}{\partial n}$), maar een vergelijking waarin beide voorkomen:
+    \begin{align*}
+     \alpha \tilde{q} + \beta \frac{\partial \tilde{q}}{\partial n} = \bar{s}
+    \end{align*}
+    Hierbij zijn $\alpha$ en $\beta$ gewoon co\"effici\"enten die bepalen hoe sterk de relatie is tussen de veldvariabele en zijn afgeleide, en $\bar{s}$ is een bekende waarde die deze relatie moet vervullen. In de mechanica vertaalt deze verhouding zich direct naar de stijfheid van de veer (k), en $\bar{s}$ dan als een initiële voorspanning in de veer ($\bar{F}_{PRET}$) (pretentioning). Trouwens, als je $\alpha = 0$ stelt dan valt de factor van de verplaatsing weg, dit betekent dat je eigelijk enkel een vaste kracht afdwingt (in de praktijk heeft je veer geen stijfheid), dit is dus eigelijk een natuurlijke randvoorwaarde. Voor $\beta = 0$ is het omgekeerde waar, je legt dan enkel een vaste verplaatsing op (in de praktijk heeft je veer dan een oneindige stijfheid), dit is dus eigelijk een essentiële randvoorwaarde. Die stijfheid is dus de verhouding $k = \frac{\alpha}{\beta}$.
+    \newline
+    \newline
+    De slides tonen 3 voorbeelden van wat dit betekent in de praktijk:
+    \begin{itemize}
+     \item \textbf{Structuuranalyse:} Het beste voorbeeld hiervan is dus een verende ondersteuning, stel we hebben bvb. een brug met een bepaalde stijfheid, als een vrachtwagen hierover rijdt, gaat het steunpunt een beetje inzakken ($u_x$), hoe verder dit steunpunt inzakt, hoe moeilijker het wordt om in te zakken (dat is die stijfheid). We kunnen dit als volgt beschrijven: $F_{Spring} + k u_{x,Spring} = 0$, die $F_{Spring}$ is eigelijk de reactiekracht van de veer, die som is trouwens aan 0 gezet voor de computer want eindig elementen software rekent altijd met krachtenevenwichten.
+     \item \textbf{Thermische analyse:} Stel we simuleren een hete motorblok die afkoelt in de buitenlucht (we modelleren alleen de blok zelf, niet de lucht er rond), de warmteflux van de blok naar de lucht is dan een afgeleide van de temperatuur die ook nog is afhankelijk is van de temperatuur, de convectie-co\"effici\"ent (h) en de omgevingstemperatuur ($T_f$), dit kunnen we als volgt beschrijven: $\frac{\partial T}{\partial n} = h (T - T_f)$.
+     \item \textbf{Akoestiek:} Stel je berekent de akoestiek in een concertzaal en een van de muren is bekleed met zacht, geluidsabsorberend schuim. De relatie op de slide wordt beschreven als $Z = \frac{p}{v}$. Als een geluidsgolf (druk, p) op een harde betonnen muur botst, kaatst hij 100\% terug. De luchtdeeltjes kunnen daar namelijk niet in de muur bewegen (snelheid v=0). Maar bij zacht akoestisch schuim geeft de muur een beetje mee. De geluidsdruk (p) zorgt ervoor dat luchtdeeltjes een beetje het schuim in dringen (snelheid v). Het schuim remt dit af, wat wordt uitgedrukt in de akoestische impedantie (Z). Ook hier: je weet de druk niet en de snelheid niet, maar je vertelt de software simpelweg hoe "dempend" (Z) de muur is, zodat het programma de reflectie van het geluid correct kan simuleren.
+    \end{itemize}
+    Wat is dan hier de impact van zo een gemengde randvoorwaarde op de matrixvergelijking? ($[K]\tilde{q} = \tilde{F}$), je weet nu dat er een bekende relatie is tussen de veldvariabele en zijn afgeleide, maar je weet niet precies wat de veldvariabele of de kracht is, dus zowel $\tilde{q}$ als $\tilde{F}$ zijn onbekend, en [K] is nog steeds een matrix vol met vaststaande, bekende constanten en dus helemaal onafhankelijk is van de krachten of verplaatsingen die je op het model aanlegt. Dit zien we in de volgende figuur waar dus zowel de linkerkant als de rechterkant onbekend zijn.
+    \begin{figure}[H]
+      \centering
+      \includegraphics[width=0.8\textwidth]{matrixvergelijkingmixed.png}
+      \caption{Matrixvergelijking met gemengde randvoorwaarde}
+      \label{fig:matrixvergelijkingmixed.png}
+     \end{figure}
+\end{itemize}
+De proff tekent nog de volgende samenvattende figuur op het bord, waarin de drie types randvoorwaarden worden samengevat (hier zien we ook een voorbeeld van de wet van hooke en die pretentioning kracht):
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{figuurbordproff.png}
+  \caption{Randvoorwaarden samengevat}
+  \label{fig:figuurbordproff.png}
+ \end{figure}
+\subsection{Implementatie van randvoorwaarden}
+In de les wordt een 1D voorbeeld gemaakt met 4 knopen en een voorspankracht op een veer, op de slides wordt op dezelfde manier dezelfde oefening mooi uitgewerkt gemaakt maar dan voor n aantal knopen. In deze samenvatting ga ik alleen het voorbeeld aan het bord uitwerken aangezien het voor n knopen gewoon een herhaling is van hetzelfde principe en je dit perfect kan terugvinden op de slides.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{schetsoefening.png}
+  \caption{Schets oefening randvoorwaarden}
+  \label{fig:schetsoefening.png}
+ \end{figure}
+De kleuren in deze figuur komen ook nog steeds overeen met de eerdere figuur met randvoorwaarden, we hebben dus links een essentiële randvoorwaarde (geel) opgelegd, een inklemming hier, er is een kracht aangelegd op knoop 2, dit is een natuurlijke randvoorwaarde (groen), rechts hebben we een veer met een voorspanningskracht $F_{PRET}$, dit wordt gezien als een gemengde randvoorwaarde (rood) (niet als een apart element, we hebben eigelijk 3 elementen). De algemene matrixvergelijking kunnen we schrijven als:
+\begin{align*}
+\begin{bmatrix}
+k_{11} & k_{12} & k_{13} & k_{14} \\
+k_{21} & k_{22} & k_{23} & k_{24} \\
+k_{31} & k_{32} & k_{33} & k_{34} \\
+k_{41} & k_{42} & k_{43} & k_{44}
+\end{bmatrix}
+\begin{Bmatrix}
+\tilde{u}_{x1} \\
+\tilde{u}_{x2} \\
+\tilde{u}_{x3} \\
+\tilde{u}_{x4}
+\end{Bmatrix} =
+\begin{Bmatrix}
+\tilde{F}_{x1} \\
+\tilde{F}_{x2} \\
+\tilde{F}_{x3} \\
+\tilde{F}_{x4}
+\end{Bmatrix}
+\end{align*}
+Links is dus een essentiële randvoorwaarde opgelegd, we zeggen dan dus dat $\tilde{u}_{x1} = \bar{u}_1$, in knoop 2 wordt een externe trekkracht P uitgeoefend, dit is dus een natuurlijke randvoorwaarde dus we zeggen dat $\tilde{F}_{x2} = P$, in knoop 3 gebeurt niks, de simulatie zal hier dus een kracht gelijk aan 0 invullen (dit moet ook want $\tilde{u}_{x3}$ weet je ook niet en je moet altijd 1 van de 2 weten), dus $\tilde{F}_{x3} = 0$, in knoop 4 hebben we eigelijk het effect van die gemengde randvoorwaarde, namelijk de voorspanningskracht $F_{PRET}$ maar ook de tegenwerkende kracht van de veer $-k_s \tilde{u}_{x4}$, dit is negatief want de positieve x-richting is naar rechts aangeduid en als we kracht P naar rechts doen zal de beweging in knoop 4 naar rechts gaan dus en dan is de reactiekracht door de veer in knoop 4 naar links. $\tilde{F}_{x4} = F_{PRET} - k_s \tilde{u}_{x4}$. Dit invullen geeft:
+\begin{align*}
+\begin{bmatrix}
+k_{11} & k_{12} & k_{13} & k_{14} \\
+k_{21} & k_{22} & k_{23} & k_{24} \\
+k_{31} & k_{32} & k_{33} & k_{34} \\
+k_{41} & k_{42} & k_{43} & k_{44}
+\end{bmatrix}
+\begin{Bmatrix}
+\bar{u}_1 \\
+{\color{blue}\tilde{u}_{x2}} \\
+{\color{blue}\tilde{u}_{x3}} \\
+{\color{blue}\tilde{u}_{x4}}
+\end{Bmatrix} =
+\begin{Bmatrix}
+{\color{blue}\tilde{F}_{x1}} \\
+P \\
+0 \\
+F_{PRET} - k_s {\color{blue}\tilde{u}_{x4}}
+\end{Bmatrix}
+\end{align*}
+De symbolen die in het blauw aangeduid zijn, zijn dus de onbekende waarden, degene die we dus moeten berekenen. We zien hier echter wel dat $\tilde{u}_{x4}$ in zowel $\tilde{q}$ als in $\tilde{F}$ voorkomt, we kunnen dit oplossen door de matrix [K] aan te passen, maar hoe?
+\newline
+We weten met simpele matrix wiskunde dat rij 4 van de matrixvergelijking, vermenigvuldigd met de kolom van $\tilde{q}$, gelijk moet zijn aan de vierde rij van $\tilde{F}$, dus:
+\begin{align*}
+k_{41} \bar{u}_1 + k_{42} \tilde{u}_{x2} + k_{43} \tilde{u}_{x3} + k_{44} \tilde{u}_{x4} = F_{PRET} - k_s \tilde{u}_{x4}
+\end{align*}
+We kunnen dit herschrijven als:
+\begin{align*}
+k_{41} \bar{u}_1 + k_{42} \tilde{u}_{x2} + k_{43} \tilde{u}_{x3} + (k_{44} + k_s) \tilde{u}_{x4} = F_{PRET}
+\end{align*}
+We zien dat we dus gewoon de stijfheid van de veer kunnen optellen bij de stijfheid van het element in rij 4, dit geeft dan de volgende aangepaste matrixvergelijking:
+\begin{align*}
+\begin{bmatrix}
+k_{11} & k_{12} & k_{13} & k_{14} \\
+k_{21} & k_{22} & k_{23} & k_{24} \\
+k_{31} & k_{32} & k_{33} & k_{34} \\
+k_{41} & k_{42} & k_{43} & k_{44} + k_s
+\end{bmatrix}
+\begin{Bmatrix}
+\bar{u}_1 \\
+{\color{blue}\tilde{u}_{x2}} \\
+{\color{blue}\tilde{u}_{x3}} \\
+{\color{blue}\tilde{u}_{x4}}
+\end{Bmatrix} =
+\begin{Bmatrix}
+{\color{blue}\tilde{F}_{x1}} \\
+P \\
+0 \\
+F_{PRET}
+\end{Bmatrix}
+\end{align*}
+Dit is momenteel eigelijk singulier (dus niet oplosbaar), het is pas oplosbaar als $\tilde{u}_{x1}$ effectief een waarde krijgt (het effectief verwerken van de randvoorwaarde in het systeem), dit heeft het eigelijk ook want we hebben dit al aangeduid met $\bar{u}_1$, bij een inklemming is dit gewoon 0, maar dit kan ook een andere waarde hebben, allesinds, we kunnen een trucje toepassen om zo de matrix regulier te maken (oplosbaar maken). We gaan de eerste rij 'schrappen' en de kolom eigelijk ook. Waarom? Rij 1 is namelijk eigelijk een formule om de onbekende uitwendige kracht $\tilde{F}_x1$ te berekenen met:
+\begin{align*}
+\tilde{F}_{x1} = k_{11} \bar{u}_1 + k_{12} \tilde{u}_{x2} + k_{13} \tilde{u}_{x3} + k_{14} \tilde{u}_{x4}
+\end{align*}
+Dit is dus afhankelijk van de onbekende $\tilde{u}_{x2}$, $\tilde{u}_{x3}$ en $\tilde{u}_{x4}$, dit is dus momenteel een vergelijking die in de weg staat, we kunnen deze dus gewoon even schrappen (we nemen deze later terug om $\tilde{F}_{x1}$ te berekenen), en omdat $\tilde{u}_{x1}$ ook al bekend is (door de essentiële randvoorwaarde) kunnen we ook de eerste kolom schrappen en dit eigelijk aftrekken bij de krachten (want dit is een constante). Dit geeft dan de volgende matrixvergelijking:
+\begin{align*}
+\begin{bmatrix}
+k_{22} & k_{23} & k_{24} \\
+k_{32} & k_{33} & k_{34} \\
+k_{42} & k_{43} & k_{44} + k_s
+\end{bmatrix}
+\begin{Bmatrix}
+{\color{blue}\tilde{u}_{x2}} \\
+{\color{blue}\tilde{u}_{x3}} \\
+{\color{blue}\tilde{u}_{x4}}
+\end{Bmatrix} =
+\begin{Bmatrix}
+P - k_{21} \bar{u}_1 \\
+0 - k_{31} \bar{u}_1 \\
+F_{PRET} - k_{41} \bar{u}_1
+\end{Bmatrix}
+\end{align*}
+Dit noemen we de \textbf{'Constrained Stiffness Matrix'}, dit is de matrix die we uiteindelijk gaan oplossen, we hebben nu een regulier systeem van vergelijkingen, we kunnen deze dus oplossen voor $\tilde{u}_{x2}$, $\tilde{u}_{x3}$ en $\tilde{u}_{x4}$, en daarna kunnen we deze terug invullen in de eerste rij van de oorspronkelijke matrixvergelijking om $\tilde{F}_{x1}$ te berekenen.
+\subsection{Essentiële randvoorwaarden voor structurele problemen}
+\subsubsection{Instellen van Essentiële randvoorwaarden in de praktijk}
+In de praktijk stellen we deze randvoorwaarden in in onze simulatiesoftware, de meest voorkomende situatie is dat we een 3D-model hebben waarbij elke knoop dus maximaal 6 vrijheidsgraden (dofs) heeft. Het kan in 3 richtingen schuiven (translaties $u_x$, $u_y$, $u_z$) en om 3 assen draaien (rotaties $\phi_x$, $\phi_y$, $\phi_z$). De volgende tabel toont hoe standaardknoppen in eindige-elementen software hiermee omgaan:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{tabeldofeindigelementensoftware.png}
+  \caption{Vrijheidsgraden in eindige-elementen software}
+  \label{fig:tabeldofeindigelementensoftware.png}
+ \end{figure}
+Een inklemming knop zet dus alle 6 vrijheidsgraden vast, een scharnier zet de 3 translaties vast maar de rotaties vrij, het object blijft dus op zijn plek, maar kan wel vrij rond het scharnierpunt draaien en een rolling (roloplegging) heeft één of meerdere translaties vrij.
+\newline
+\newline
+Maar af en toe kan je wel hebben dat je een specifieke combinatie van vrijheidsgraden nog zal hebben, meestal kies je dan voor 'user defined', je kijkt hier dan naar de statica om te zien welke beweging je in een knoop toelaat voor je randvoorwaarde:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{voorbeeldenstatica.png}
+  \caption{Voorbeelden bewegingen statica}
+  \label{fig:voorbeeldenstatica.png}
+ \end{figure}
+\subsubsection{Essentiële randvoorwaarden in werkelijkheid}
+In de praktijk is elke randvoorwaarde in principe een gemengde (Mixed/Robin) randvoorwaarde, dit is omdat het volledig vastzetten van een verplaatsing (essentiële randvoorwaarde) een versimpeling is, in het echt is dit niet mogelijk, een inklemming zal altijd wat meegeven (roteren), een fysiek scharnier ervaart ook altijd wrijving, in werkelijkheid gedraagt elke verbinding zich dus als een veer. In de praktijk mag je deze versimpeling wel gewoon doen (aanname maken), je hoeft alleen een heeel accurate randvoorwaarde te simuleren als je echt geinteresseerd bent in de spanningen op die exacte locatie. Fouten in de aannames zijn ook makkelijk op te sporen door in de post-processor te zien naar het uiteindelijk vervormingspatroon.
+\subsubsection{Waarom essentiële randvoorwaarden altijd nodig zijn}
+Ik had eerder vermeld dat zonder zo een essentiële randvoorwaarde, je model niet oplosbaar is, dit ga ik nu simpel verklaren. Stel dat de computer via een differentiaalvergelijking de interne vervorming (rek) van een stef kent als een bepaalde waarde a (in formule vorm is dit dan: $\frac{\partial u}{\partial x} = a$). Om de uiteindelijke verplaatsing (u) van elk punt in de staaf te vinden, moet de computer deze functie wiskundig integreren, de uitkomst hiervan is $u = ax + C^{te}$, die constante is exact het probleem, hierdoor heb je oneindig veel oplossingen, dit wordt weergegeven met de volgende figuur:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{grafiekconstante.png}
+  \caption{Grafiek van u = ax + C}
+  \label{fig:grafiekconstante.png}
+ \end{figure}
+Elke parallelle lijn is een mogelijke oplossing, de helling van de lijn is dus wel hetzelfde voor ze allemaal (a), ze liggen gewoon allemaal op een andere hoogte, fysiek betekent dit dat het object vrij zweeft door de ruimte (rigid body motion), als er dus een kracht op werkt, vliegt het oneindig ver weg (er is geen effect, want de computer pakt gewoon steeds zo een hogere lijn dan), het vliegt eigelijk oneindig ver weg, dit is wat de globale stijfheidsmatrix [K] onoplosbaar (singulier) maakt.
+\newline
+\newline
+De oplossing? Gewoon 1 waarde vast zetten (dus een essentiële randvoorwaarde opleggen), dan geef je eigelijk de computer de missende informatie om de juiste constante te berekenen. Zo een waarde vast zetten wordt weergegevne met de gele stip in de volgende figuur die dan eigelijk die groene juiste oplossing bepaalt:
+ \begin{figure}[H]
+   \centering
+   \includegraphics[width=0.5\textwidth]{constantevastgelegs.png}
+   \caption{Vastgelegde constante}
+   \label{fig:constantevastgelegs.png}
+  \end{figure}
+In een 3D situatie heb je 6 manieren van bewegen dus ga je minstens 6 vrijheidsgraden moeten vastzetten, dit kan allemaal in 1 knoop (zoals een inklemming) maar je kan ook verschillende knopen gebruiken, zolang je er maar minstens 6 hebt die samen al die bewegingen tegenhouden.
+\subsubsection{Mechanismen (een andere vorm van 'rigid body motion')}
+We weten dus dat 'rigid body motion' betekent dat een object eigelijk vrij in de ruimte kan zweven omdat ze niet aan een muur vastzatten en dus [K] onoplosbaar is, maar er is nog een ander geval dat er voor kan zorgen dat [K] onoplosbaar is ookal zit je model wel vast aan de muur, dit noemen we een mechanisme. 
+\newline
+Stel we hebben een model met 4 scharnieren, zoals in de onderste foto:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.3\textwidth]{paintschets.png}
+  \caption{Schets van 4 scharnieren (zwart) met staven die ze verbinden (groen)}
+  \label{fig:paintschets.png}
+ \end{figure}
+Als we hierop een kracht aanleggen (rode pijl) gaat het eigelijk instorten, want de linkse staaf en de rechtse staaf (die verbonden zijn met een horizontale staaf) kunnen gewoon draaien naar rechts, je ziet hier dus al rap dat er daarom meerdere oplossingen zijn en dus [K] onoplosbaar wordt.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{voorbeeldmechanisme.png}
+  \caption{Slides figuur}
+  \label{fig:voorbeeldmechanisme.png}
+ \end{figure}
+De figuur van de slides toont dezelfde staven in het groen, en de rotatie mogelijkheden in het rood, de blauwe lijn die we hier zien is nieuw, dit is eigelijk de oplossing! Een staaf diagonaal ertussen zetten is de strat om deze rotatie te voorkomen en te zorgen dat [K] regulier is, dit is ook 1 van de redenen natuurlijk dat kranen in het echt ook altijd een diagonale staaf hebben, dit voorkomt dat ze instorten als er een kracht op werkt.
+\subsubsection{Controle van computer op rigid body motion}
+Dus we weten dat de originele matrix [K] singulier is zolang het object niet vast zit, tis dus pas na het schrappen van rijen en kolommen van essentiële randvoorwarden dat je de verkleinde constrained stiffness matrix [K*] overhoudt, deze willen we dan regulier en inverteerbaar.
+\newline
+\newline
+De 2 checks om te controleren dat deze inderdaad oplosbaar is zijn:
+\begin{itemize}
+ \item \textbf{Determinant:} det[K*] $\neq$ 0 (dit is de wiskundige definitie van een regulier systeem)
+ \item \textbf{Eigenfrequenties:} De originele, zwevende matrix [K] heeft standaard 6 eigenwaarden op 0 Hz (dit vertegenwoordigt de 6 manieren waarop een 3D-object vrij kan bewegen: 3 translaties en 3 rotaties). Als de computer bij jouw nieuwe matrix [K*] nog steeds eigenfrequenties van 0 Hz vindt, betekent dit dat de matrix singulier is en het object nog steeds een kant op kan zweven of draaien.
+\end{itemize}
+\subsubsection{Symmetrie}
+Dit ken je normaal van de oefensessies, dit is een trucje dat je in bepaalde situaties kan toepassen om rekentijd te besparen (1 symmetrievlak verminderd rekentijd 4-8 keer). Je mag dit toepassen als zowel de geometrie als de belastingen (krachten) perfect symmetrisch zijn. Het is eigelijk een essentiële randvoorwaarde die je oplegt op het snijvlak (symmetrievlak).
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{symmetrie.png}
+  \caption{Symmetrie}
+  \label{fig:symmetrie.png}
+ \end{figure}
+Even ter verduidelijking, de figuur helemaal vanonder is de door twee gesneden versie van de figuur daarboven, die 2 cirkeltjes tonen daar aan dat het alleen in de y-richting kan bewegen.
+\newline
+\newline
+Hoe stellen we de symmetrie dan in software in? Dus welke vrijheidsgraden we op 'fixed' moeten zetten op de plak waar we het model hebben doorgesneden. De regel is dat \textit{het doorgesneden vak alleen in zijn eigen vlak mag bewegen} (in-plane motion), het snijvlak mag dus niet loodrecht op zichzelf verplaatsen en het mag alleen roteren rond de as die loodrecht op het symmetrievlak staat. In de les zagen we ook de 'kiekeboe' methode om te bepalen welke vrijheidsgraden fixed moesten zijn, dit is moeilijk uit te leggen via tekst dus raad ik aan om de lesopname 'structural symmetry' te bezien, hier legt de proff dit duidelijk uit met papieren. De afbeelding hierboven is dus een voorbeeld van x-symmetrie (ook wel gekend als YZ-symmetrie, dit is te herkennen aan het snijvlak dat alleen in de Y en Z richting een 2D vlak lijkt te hebben), Voor X-symmetrie mag er dus niet in de x-richting verplaatst worden, dus $u_x$ is fixed, en er mag alleen rond de x-as geroteerd worden, dus $\phi_x$ is free.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{xyzsymmetrie.png}
+  \caption{XYZ-symmetrie}
+  \label{fig:xyzsymmetrie.png}
+ \end{figure}
+\subsubsection{Anti-symmetrie}
+Hier behandelen we de situatie waarbij de krachten anti-symmetrisch zijn (dus de krachten zijn exact evengroot maar werken in \textbf{tegengestelde richting} aan beide kanten), de geometrie (het model is wel nog symmetrisch), je mag dit dus nog steeds halveren, je legt net zoals bij de gewone symmetrie een essentiële randvoorwaarde op het snijvlak, in de figuur hieronder zien we nu dat de balk niet gewoon doorbuigt maar dat hij op het middelpunt vrij kan roteren gewoon. Dit is ook wel logisch omdat als die krachten evengroot zijn en tegengesteld, je in het midden gemiddeld geen kracht hebt dan dat voor doorbuiging kan zorgen eh.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{assymetrie.png}
+  \caption{Anti-symmetrie}
+  \label{fig:assymetrie.png}
+ \end{figure}
+Het instellen van anti-symmetrie in de software is simpel, namelijk gewoon exact het omgekeerde als voor normale symmetrie:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{xyzantisymmetrie.png}
+  \caption{XYZ-anti-symmetrie}
+  \label{fig:xyzantisymmetrie.png}
+ \end{figure}
+\subsubsection{Superpositie}
+Een niet-symmetrische last dat op een symmetrisch model werkt kan altijd opgedeeld worden in de som van een symmetrisch en anti-symmetrisch geval, dit is superpositie. Je gaat dus eigelijk dit ene asymmetrische probleem opslitsen in 2 aparte 'halve' simulaties met:
+\begin{itemize}
+ \item Een perfect symmetrisch geval
+ \item Een perfect anti-symmetrisch geval
+\end{itemize}
+En dit werkt! De computer lost beide simulaties apart op en telt de resultaten samen en dit is identiek aan het resultaat van de originele situatie. Dit is efficiënter want je kan nu 2 keer een halve simulatie doen in plaats van 1 keer een volledige simulatie, dit bespaart dus rekentijd (omdat rekentijd dus 4-8 keer verminderd wordt als je een model halveert).
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{superpositie.png}
+  \caption{Superpositie}
+  \label{fig:superpositie.png}
+ \end{figure}
+\begin{warningbox}[Tot hier ging de les]
+ Op de slides, en videos bij dit thema op toledo, staat nog extra leerstof, we zijn echter maar tot hier geraakt in de les en de andere leerstof op de slides van deze les wordt nog in andere lessen besproken dus ik haal het dan aan bod om in dezelfde volgorde als de lessen te blijven.
+\end{warningbox}
+\subsubsection{Samenvattende tabel}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{tabelrandvoorwaarden.png}
+  \caption{Samenvattende tabel}
+  \label{fig:tabelrandvoorwaarden.png}
  \end{figure}
 \end{document}
