@@ -1,4 +1,3 @@
-#import "../school-template.typ": *
+#import "../../school-template.typ": *
 
 = ID -> bode <ch:id-bode>
-
