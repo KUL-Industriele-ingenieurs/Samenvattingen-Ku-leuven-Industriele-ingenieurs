@@ -191,14 +191,14 @@ Dit is alleen de amplitude plot. Je moet ook de fase plot tekenen.
 
 $ phi(omega) = angle(H(j omega)) = angle("teller") - angle("noemer") = 0 - angle(1+tau j omega) = -arctan(tau omega) $
 
-We doen wee exact hetzelfde we vullen 3 verschillend waarden van omega in:
+We doen wee exact hetzelfde we vullen 3 verschillende waarden van omega in:
 
-- $ lim_(omega->0) phi(omega) = 0 $
-- $ omega = 1/tau arrow.r.double phi(1/tau) = -arctan(1) = -45 deg $
+$ lim_(omega->0) phi(omega) = 0 deg $
+$ omega = 1/tau arrow.r.double phi(1/tau) = -arctan(1) = -45 deg $
 
 $ -arctan(1) = -45 deg $  (want $tan(45) = 1$)
 
-- $ omega arrow.r infinity arrow.r.double phi(omega) = -90 deg $
+$ omega -> infinity arrow.r.double phi(omega) = -90 deg $
 
 en we komen terug een mooie figuur uit. Je ziet in het midden dat je een hoek van 45° krijgt zoals in de berekeningen.
 
@@ -316,7 +316,7 @@ $ A(omega) = 20 log_10(sqrt(1 + (tau omega)^2)) = 10 log_10(1 + (tau omega)^2) $
 
 - $lim_(omega arrow.r 0) A approx 0 "dB"$ (vlak)
 - $omega = 1/tau arrow.r.double A = 10 log_10(2) = 3 "dB"$ (cut-off frequentie)
-- $omega gt.gt 1/tau arrow.r.double A approx 20 log_10(tau omega) arrow.r +20 "dB/decade"$
+- $omega >> 1/tau arrow.r.double A approx 20 log_10(tau omega) arrow.r +20 "dB/decade"$
 
 De fase:
 $ phi(omega) = arctan(tau omega) $
@@ -393,11 +393,11 @@ $ A(omega) = 20 log_10(|H(j omega)|) = -10 log_10((1 - u^2)^2 + 4 zeta^2 u^2) $
 
 We bekijken drie gevallen:
 
-*Geval 1: $u lt.lt 1$ (lage frequenties):*
+*Geval 1: $u << 1$ (lage frequenties):*
 $ (1 - u^2)^2 + 4 zeta^2 u^2 approx 1 quad arrow.r.double quad A approx 0 "dB" $
 De amplitude is vlak bij lage frequenties.
 
-*Geval 2: $u gt.gt 1$ (hoge frequenties):*
+*Geval 2: $u >> 1$ (hoge frequenties):*
 $ (1 - u^2)^2 + 4 zeta^2 u^2 approx u^4 quad arrow.r.double quad A approx -40 log_10(u) $
 De helling is $-40 "dB/decade"$ (dubbel zo steil als eerste orde!).
 
@@ -419,9 +419,9 @@ $ M_("Piek") = frac(1, 2 zeta sqrt(1 - zeta^2)) $
 
 $ phi(omega) = -arctan(frac(2 zeta u, 1 - u^2)) $
 
-- $u lt.lt 1 arrow.r.double phi approx 0 deg$ (geen fasedraaiing)
+- $u << 1 arrow.r.double phi approx 0 deg$ (geen fasedraaiing)
 - $u = 1 arrow.r.double phi = -90 deg$ (altijd, ongeacht $zeta$)
-- $u gt.gt 1 arrow.r.double phi arrow.r -180 deg$
+- $u >> 1 arrow.r.double phi arrow.r -180 deg$
 
 Bij een tweede orde systeem draait de fase van $0 deg$ naar $-180 deg$. De snelheid van de overgang hangt af van $zeta$: hoe kleiner $zeta$, hoe scherper de overgang rond $omega_n$.
 

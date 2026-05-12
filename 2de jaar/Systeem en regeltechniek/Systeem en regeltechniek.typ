@@ -32,6 +32,7 @@
 #include "5.Bode, feedback, and P control.typ"
 #include "6.P Control.typ"
 #include "7.Closed Loop TF.typ"
+#include "8.ID -> bode.typ"
 // ============================================================================
 //                              APPENDICES
 // ============================================================================
