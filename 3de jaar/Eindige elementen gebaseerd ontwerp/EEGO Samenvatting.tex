@@ -926,4 +926,594 @@ En dit werkt! De computer lost beide simulaties apart op en telt de resultaten s
   \caption{Samenvattende tabel}
   \label{fig:tabelrandvoorwaarden.png}
  \end{figure}
+\newpage
+\chapter{De directe methode voor het bepalen van de elementstijfheidsmatrix}
+Vorige hoofdstukken keken we naar hoe we het probleem in de software voegen (randvoorwaarden,krachten), maar nu gaan we kijken naar hoe de eindigelementensoftware het probleem oplost. Het doel is te begrijpen hoe de computer de globale stijfheidsmatrix [K] van de constructie opbouwt. We leggen dit uit aan de hand van het meest simpele voorbeeld, namelijk een 1D ROD.
+\newline
+Eerst doen we nog een kleine herhaling/verduidelijking tussen de ROD en BEAM elementen:
+\begin{conceptbox}[Truss(ROD) elementen = 'echte' 1D elementen]
+ Truss(ROD) elementen zijn de echte 1D elementen, deze zitten met scharnieren aan elkaar vast en kunnen ALLEEN axiale krachten (trek en druk) opnemen, ze BUIGEN NIET door. Daarom hebben ze in de theorie maar 1 vrijheidsgraad (dof) per knoop (verplaatsing in de x-richting). Je maakt hier eigelijk nul-aannames (geen buiging). Een rod kan ook 2D of 3D zijn. De wiskundige formulering is alleen gebaseerd op spanning-rek relaties hier (Hooke)
+\end{conceptbox}
+\begin{conceptbox}[Frame elementen (BEAM of BAR elementen)]
+  Deze elementen zijn 'star' aan elkaar 'gelast', naast trek en druk kunnen ze ook weerstand bieden tegen buigingsmomenten, dwarskrachten en torsie. Een beam-element heeft in 3D dus de volle 6 vrijheidsgraden per knoop. De wiskundige formulering is gebaseerd op zowel spanning-rek relaties (Hooke) als moment-hoekverandering relaties (Euler-Bernoulli), dit is niet 100\% exact tho.
+\end{conceptbox}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{rodvsbeam.png}
+  \caption{ROD vs BEAM elementen}
+  \label{fig:rodvsbeam.png}
+ \end{figure}
+\subsection{Elementstijfheidsmatrix}
+Voordat de computer je hele model kan berekenen, moet hij eerst voor elk individueel element een stijfheidsmatrix $[k_e]$ opstellen. Deze matrix geeft het verband tussen de krachten op dat element en de verplaatsingen van dat element, voor een lineaire rod element ziet dat er zo uit:
+\begin{align*}
+{\color{blue}[k_e]} =
+{\color{blue}\begin{bmatrix}
+k_{11} & k_{12} \\
+k_{21} & k_{22}
+\end{bmatrix}}
+\begin{Bmatrix}
+\tilde{u}_{x1} \\
+\tilde{u}_{x2}
+\end{Bmatrix}
+ =
+\begin{Bmatrix}
+\tilde{F}_{x1} \\
+\tilde{F}_{x2}
+\end{Bmatrix}
+\end{align*}
+\begin{warningbox}[$k_e$ is de matrix in het blauw aangeduid]
+  Let op bij de formule op de slides, ze doen het hier lijken dat $[k_e]$ een matrix is die vermenigvuldigd wordt met de verplaatsingen, dit is niet helemaal correct, $[k_e]$ is gewoon een matrix van constanten, het is de hele linkerkant van de vergelijking die de krachten geeft, dus $[k_e] \tilde{u} = \tilde{F}$.
+\end{warningbox}
+Er zijn 3 wiskundige methodes om deze formulering van de elementstijfheidsmatrix $[k_e]$ te verkrijgen, namelijk:
+\begin{itemize}
+ \item \textbf{1. De directe methode (of de veermethode):} Dit is de simpelste methode, we gebruiken hier gewoon basisformules uit statica ($F = kx$). De 1D rod kan alleen maar in de lengte uitrekken of indrukken dus het gedraafgt zich wiskundig exact hetzelfde als de mechanische veer. Deze methode wordt minder mogelijk/ minder ideaal voor 2D elementen, daarvoor gebruiken we de energie methode.
+ \item \textbf{2. Rayleigh-Ritz / De energie methode:} Dit is gebaseerd op de wet van behoud van energie (arbeid = interne vervormingsenergie), idealer en noodzakelijker voor complexe 2D en 3D elementen of buigende balken.
+ \item \textbf{3. Weighted residuals methode:} De meest complexe theorie, wordt gebruikt door software die naast structuuranalyse (krachten) ook thermische (hitte) of stromingsproblemen (CFD) moet kunnen oplossen. \textbf{Deze methode gaan we niet bezien in de cursus.}
+\end{itemize}
+\subsection{De directe methode voor rod elementen}
+We gaan nu is een simpel voorbeeld tonen om te bewijzen dat die directe methode gebruikt kan worden voor het bepalen van de elementstijfheidsmatrix van een rod element. Stel we hebben een staaf met lengte L, dwarsdoorsnede A, en elasticiteitsmodulus E, deze is verbonden met 2 knopen (knoop 1 en knoop 2), deze knopen kunnen dus alleen maar in de x-richting bewegen (ze hebben dus maar 1 dof).
+\newline
+\newline
+Als we knoop 1 een verplaatsing $\tilde{u}_{x1} = 1$ geven en knoop 2 een verplaatsing $\tilde{u}_{x2} = 0$, zoals in volgende figuur (die k-waarden met richting aangeduid stellen eigelijk de krachten voor door F = kx, maar dat bewijzen we in volgende stap wel dat da gelijk is):
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{sit1rod.png}
+  \caption{Voorbeeld situatie directe methode rod element}
+  \label{fig:sit1rod.png}
+ \end{figure}
+Dan kunnen we de formule $[k_e] {u} = {F}$ uitwerken. Dit geeft de volgende vergelijkingen:
+\begin{align*}
+k_{11} \cdot 1 + k_{12} \cdot 0 = \tilde{F}_{x1} \\
+k_{21} \cdot 1 + k_{22} \cdot 0 = \tilde{F}_{x2}
+\end{align*}
+Dit bewijst dat $k_{11} = \tilde{F}_{x1}$ en $k_{21} = \tilde{F}_{x2}$, uit de mechanica kennen we ook de volgende formule:
+\begin{align*}
+  \delta = \frac{NL}{AE}
+\end{align*}
+Waarbij $\delta$ de verplaatsing is, N de kracht, L de lengte van de staaf, A de dwarsdoorsnede en E de elasticiteitsmodulus. We kunnen deze formule herschrijven als:
+\begin{align*}
+  N = \frac{AE}{L} \delta
+\end{align*}
+Hierbij is N dus de kracht (oftewel die constante k, want die zijn gelijk) en $\delta$ was die verplaatsing die we aan 1 gelijk hadden gesteld, dus:
+\begin{align*}
+  k_{11} = - k_{21}\\
+  k_{11} = \frac{AE}{L}\\
+  k_{21} = - \frac{AE}{L}\\
+\end{align*}
+Ze zijn dus allemaal gelijk aan elkaar, maar met een ander teken. Dit is logisch: als knoop 1 (links) naar rechts wordt verplaatst (positieve x-richting) en knoop 2 (rechts) vastzit, wordt de staaf ingedrukt. Om knoop 1 naar rechts te duwen, moet er een externe drukkracht naar rechts worden uitgeoefend op knoop 1 ($k_{11}$ is positief). Omdat de staaf nu wordt ingedrukt en naar rechts tegen knoop 2 duwt, moet de muur bij knoop 2 een reactiekracht naar links uitoefenen ($k_{21}$ is negatief) om deze knoop op zijn plek te houden.
+\newline
+\newline
+Als we nu knoop 1 vastzetten en knoop 2 een verplaatsing van 1 geven zoals in volgende figuur:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{sit2rod.png}
+  \caption{Voorbeeld situatie directe methode rod element}
+  \label{fig:sit2rod.png}
+\end{figure}
+Dan geldt hier:
+\begin{align*}
+k_{11} \cdot 0 + k_{12} \cdot 1 = \tilde{F}_{x1} \\
+k_{21} \cdot 0 + k_{22} \cdot 1 = \tilde{F}_{x2}
+\end{align*}
+Hieruit volgt dat $k_{12} = \tilde{F}_{x1}$ en $k_{22} = \tilde{F}_{x2}$, we kunnen dezelfde formule als hierboven gebruiken om te bewijzen dat $k_{12} = -\frac{AE}{L}$ en $k_{22} = \frac{AE}{L}$, dit is dus consistent met de vorige situatie, we hebben dus bewezen dat de directe methode werkt voor het bepalen van de elementstijfheidsmatrix van een rod element, die er als volgt uit ziet dan:
+\begin{align*}
+\begin{bmatrix}
+\frac{AE}{L} & -\frac{AE}{L} \\
+-\frac{AE}{L} & \frac{AE}{L}
+\end{bmatrix}
+\begin{Bmatrix}
+\tilde{u}_{x1} \\
+\tilde{u}_{x2}
+\end{Bmatrix}
+ =
+\begin{Bmatrix}
+\tilde{F}_{x1} \\
+\tilde{F}_{x2}
+\end{Bmatrix}
+\end{align*}
+(dit is hoe de proff het in de les aan het bord heeft gemaakt, op de slides wordt het ietsje anders gedaan met ook andere figuren, maar het principe is hetzelfde).
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{slidesfigurenrod.png}
+  \caption{Figuur slides directe methode rod element}
+  \label{fig:slidesfigurenrod.png}
+ \end{figure}
+\subsection{Beperkingen van de Directe Methode (Waarom het faalt in 2D en 3D)}
+
+De directe methode benadert een element wiskundig als een simpele mechanische veer met een vaste 'axiale' stijfheid. Voor een 1D-staaf vertrekken we vanuit de algemene integraal voor axiale vervorming uit de sterkteleer:
+\begin{align*}
+    \delta = \int_0^L \frac{N(x)}{E(x)A(x)} dx
+\end{align*}
+
+Om deze complexe integraal op te lossen in de directe methode, vereist de software een cruciale aanname: \textbf{er zijn geen variaties binnen het element toegestaan ("no intra-element variations are allowed")}. Hierdoor worden de normaalkracht $N$, elasticiteitsmodulus $E$ en doorsnede $A$ behandeld als constanten. De integraal valt dan weg en versimpelt naar de bekende veerformule:
+\begin{align*}
+    \delta = \frac{N \cdot L}{E \cdot A} \implies N = \left(\frac{EA}{L}\right) \delta = k \cdot \delta
+\end{align*}
+
+\subsubsection*{Het probleem bij 2D en 3D}
+Deze directe methode is \textbf{uitsluitend} bruikbaar voor simpele 1D lineaire elementen. Zodra we overstappen naar 2D-elementen (zoals platen) of 3D-elementen (zoals massieve blokken), wordt het materiaalgedrag binnenin het element te complex:
+\begin{itemize}
+    \item Er treden complexe schuifspanningen, dwarscontracties en interne buigingen op.
+    \item De spanningen en rekken variëren continu over het oppervlak of volume van het element.
+\end{itemize}
+
+Omdat de vervorming in 2D en 3D wezenlijk verschilt per locatie in het element, is de stugge aanname van "geen interne variaties" niet meer vol te houden. Het gedrag kan onmogelijk nog beschreven worden met een simpele, eendimensionale veerconstante $k$.
+
+Voor 2D en 3D elementen moet de software daarom terugvallen op geavanceerdere wiskundige theorieën, zoals de \textbf{Rayleigh-Ritz methode (Energiemethode)} of de \textbf{Weighted Residual formulation}, die wél universeel kunnen omgaan met complexe, meervoudige vervormingsvelden.
+\subsection{Een andere manier om de elementstijfheidsmatrix te bekijken}
+
+De elementstijfheidsmatrix kan ook fysisch geïnterpreteerd worden via haar kolommen:
+
+\[
+[k_e]
+=
+\frac{AE}{L}
+\begin{bmatrix}
+1 & -1 \\
+-1 & 1
+\end{bmatrix}
+\]
+
+Elke kolom correspondeert met de krachten die ontstaan wanneer één vrijheidsgraad gelijk wordt gesteld aan 1, terwijl alle andere vrijheidgraden gelijk zijn aan 0.
+
+Voor de eerste kolom geldt:
+
+\[
+\begin{Bmatrix}
+u_1 \\
+u_2
+\end{Bmatrix}
+=
+\begin{Bmatrix}
+1 \\
+0
+\end{Bmatrix}
+\]
+
+waardoor:
+
+\[
+[k_e]
+\begin{Bmatrix}
+1 \\
+0
+\end{Bmatrix}
+=
+\frac{AE}{L}
+\begin{Bmatrix}
+1 \\
+-1
+\end{Bmatrix}
+\]
+
+De eerste kolom stelt dus de krachten voor die nodig zijn om enkel \(u_1\) te verplaatsen.
+
+Voor de tweede kolom geldt:
+
+\[
+\begin{Bmatrix}
+u_1 \\
+u_2
+\end{Bmatrix}
+=
+\begin{Bmatrix}
+0 \\
+1
+\end{Bmatrix}
+\]
+
+waardoor:
+
+\[
+[k_e]
+\begin{Bmatrix}
+0 \\
+1
+\end{Bmatrix}
+=
+\frac{AE}{L}
+\begin{Bmatrix}
+-1 \\
+1
+\end{Bmatrix}
+\]
+
+De tweede kolom stelt dus de krachten voor die nodig zijn om enkel \(u_2\) te verplaatsen.
+\newline
+(als dit stukje confusing lijkt, raad ik aan om het aan chatgpt te vragen, ik vind het zelf ook nog moeilijk om te begrijpen)
+\subsection{Globale stijfheidsmatrix: voorbeeld}
+Dus we hebben nu bekeken hoe we elementstijfheidsmatrixen kunnen bepalen, maar hoe gebruikt de computer deze nu om de globale stijfheidsmatrix [K] van een volledig model te bepalen?
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{image2.png}
+  \caption{Voorbeeld van een model met individuele elementstijfheidsmatrixen}
+  \label{fig:image2.png}
+ \end{figure}
+In bovenstaande figuur zien we dus een volledig model met al deze elementstijfheidsmatrixen dus apart bepaald, het is hier belangrijk op te merken dat per element $\frac{AE}{L}$ specifiek is voor elk element. Het is dus deze elementstijfheidsmatrixen die we willen gebruiken om 1 grotere matrix te maken, we kunnen deze echter niet zomaar optellen met elkaar. Het proces van deze samenvoegen het de 'assemblage'.
+\newline
+\newline
+Wat de computer eigelijk gaat doen, zoals je vanonder kan zien op de figuur, is de elementstijfheidsmatrixen vergroten tot de grootte van de hoeveelheid knopen in het model, hier dus naar 4x4, de software gaat nullen plaatsen in die individuele vergrootte matrixen op de plaatsen waar het element geen verbinding mee heeft (bvb zie die eerste elementstijfheidsmatrix, daar zijn de nullen ingevuld op de plaatsen waar het anders zou verbinden met knoop 3 of 4).
+\newline
+\newline
+Hierna moeten we gewoon deze matrixen (en dus ook de krachten) optellen met elkaar zoals in volgende figuur:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{globalestijfheidsmatrixopgeteld.png}
+  \caption{Voorbeeld van de globale stijfheidsmatrix}
+  \label{fig:globalestijfheidsmatrixopgeteld.png}
+ \end{figure}
+Deze opgetelde matrix heeft 2 fysieke eigenschappen die de software gigantisch veel rekentijd en geheugen besparen:
+\begin{itemize}
+  \item \textbf{Symmetrie:} Sinds actie gelijk is aan min reactie, is de matrix symmetrisch gespiegeld rond de diagonaal, dit merk je op in de figuur, dit heeft als effect dat het geheugen nodig om deze matrix op te slaan verminderd wordt.
+  \item \textbf{'Banded \& Sparsely populated':} Met banded bedoelen we dat de meeste niet-nul elementen zich dicht bij de diagonaal bevinden en wat gegroepeerd zijn, dit maakt het inverteren makkelijker, met sparsely populated bedoelen we dat er veel nullen in de matrix zitten, dit heeft als effect dat de rekentijd om deze matrix op te lossen verminderd wordt.
+\end{itemize}
+Het probleem op dit moment bij deze matrix is natuurlijk wel nog dat deze nog steeds singulier is:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{matrixsingulier.png}
+  \caption{Niet inverteerbare (singuliere) globale stijfheidsmatrix}
+  \label{fig:matrixsingulier.png}
+ \end{figure}
+Omdat de determinant 0 is dus (de berekening hiervan moete we nie kennen eigelijk)
+\newline
+\newline
+Om dit op te lossen moeten we dus essentiële randvoorwaarden introduceren $\rightarrow$ rijen of kolommen schrappen $\rightarrow$ nieuwe matrix is nu inverteerbaar $\rightarrow$ deze oplossen voor de onbekende verplaatsingen $\rightarrow$ deze terug invullen in de originele matrix om de krachten te berekenen.
+\newline
+\newline
+Het is ook nog belangrijk op te merken dat de sommen van de krachten daar in de volgende figuur (omcirkeld) eigelijk al gekend zijn:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{omcirkledekrachten.png}
+  \caption{}
+  \label{fig:omcirkledekrachten.png}
+ \end{figure}
+In knoop 3 zijn er geen externe krachten, dit maakt dat de som van de krachten daar 0 is want we weten dat $\tilde{F}_{II,3} = - \tilde{F}_{III,3}$ (actie reactie), in knoop 2 is de som van de krachten gelijk aan die externe aangelegde kracht dan; $\tilde{F}_{I,2} + \tilde{F}_{II,2} = P$
+\newline
+\newline
+We zullen nu is al onze randvoorwaarden invullen, hierbij is knoop 1 duidelijk de essentiële randvoorwaarde:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{randvoorwaardenlknopen.png}
+  \caption{Randvoorwaarden bij knopen}
+  \label{fig:randvoorwaardenlknopen.png}
+ \end{figure}
+Vanaf nu is het eigenlijk gewoon de methode gebruiken die we in het vorig hoofdstuk zagen om dit voorbeeld op te lossen, dus ik ga hier rap over. (Die kracht in knoop 4 met die $k_{spring}$ is al naar de linkerkant in de matrix gebracht, daarom is het 0 in de rechterkant van de vergelijking).
+\newline
+\newline
+Omdat we nu weten dat $\tilde{u}_{x1} = 0$ is, kunnen we de eerste rij en kolom even laten vallen, dit geeft de volgende matrixvergelijking:
+\begin{align*}
+\begin{bmatrix}
+k_{I} + k_{II} & -k_{II} & 0 \\
+-k_{II} & k_{II} + k_{III} & -k_{III} \\
+0 & -k_{III} & k_{III} + {\color{green}k_{spring}}
+\end{bmatrix}
+\begin{Bmatrix}
+{\color{red}\tilde{u}_{2}} \\
+{\color{red}\tilde{u}_{3}} \\
+{\color{red}\tilde{u}_{4}}
+\end{Bmatrix}
+ =
+\begin{Bmatrix}
+{\color{green}P} \\
+{\color{green}0} \\
+{\color{green}0}
+\end{Bmatrix}
+\end{align*}
+Dit is nu niet-singulier zoals eerder (det $\neq$ 0), dus de computer kan $\tilde{u}_{2}$, $\tilde{u}_{3}$ en $\tilde{u}_{4}$ berekenen.
+\newline
+\newline
+Van zodra deze berekend zijn kunnen we rij 1 terugnemen en gebruiken om $\tilde{F}_{x1}$ te berekenen:
+\begin{align*}
+{\color{red}\tilde{F}_{x1}} = 
+\begin{bmatrix}
+k_{I} & -k_{I} & 0 & 0
+\end{bmatrix}
+\begin{Bmatrix}
+{\color{green}0}\\
+{\color{green}\tilde{u}_{2}} \\
+{\color{green}\tilde{u}_{3}} \\
+{\color{green}\tilde{u}_{4}}
+\end{Bmatrix}
+\end{align*}
+\subsubsection{Een andere mogelijke methode}
+We kunnen ook gewoon de veer moddeleren als een extra 1D element met een elementstijfheidsmatrix + een essentiële randvoorwaarde zoals in de volgende figuur (dit brengt een extra knoop)
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{anderemethode.png}
+  \caption{Globale stijfheidsmatrix voorbeeld andere methode}
+  \label{fig:anderemethode.png}
+ \end{figure}
+De matrix wordt wel groter maar die beweging daar is ook 0, de gereduceerde matrix is dus even groot als de vorige methode, dit is dus eigelijk even goed, dit wordt in sommige simulatiesoftware ook zo toegepast.
+\subsection{Skyline en bandbreedte}
+(Voor dit stuk raad ik aan de lesopname op toledo te bekijken)
+\newline
+Nog een belangrijk ding om te weten is dat de manier waarop we de knopen nummeren een grote invloed heeft op de rekentijd. We kijken hiervoor naar de volgende 2 voorbeeldgevallen:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{2gevallenknopenverdeling.png}
+  \caption{2 identieke modellen maar met verschillende knopen nummering}
+  \label{fig:2gevallenknopenverdeling.png}
+ \end{figure}
+De x'jes in de figuur hierboven stellen eigelijk nullen voor trouwens!
+\newline
+\newline
+We zien hier de globale stijfheidsmatrices van beide gevallen, hun elementstijfheidsmatrices zijn ingevuld ook, deze corresponderen eigelijk ook met de rij en kolomnummers. 
+\newline
+\newline
+De volgende figuur verduidelijkt dit een beetje voor die linkse situatie, hier zijn de k-waarden wel vervangen door kleuren \textbf{{\color{red}(LET OP DIE KLEUREN KOMEN NIET OVEREEN MET DE KLEUREN VAN DE BOVENSTAANDE FIGUUR VAN DE SLIDES)}}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{globalestijfheidsmatrixmetskyline.png}
+  \caption{Globale stijfheidsmatrix met skyline en kleuren die verschillende k-waarden voorstellen}
+  \label{fig:globalestijfheidsmatrixmetskyline.png}
+ \end{figure}
+In de figuur hierboven zien we een rode lijn, dit is de hoofddiagonaal van de matrix, hier rond 'clusteren' de getallen zich, de paarse dikke lijn heet de \textbf{'skyline'}, het is duidelijk op te merken wat deze voorstelt, namelijk gewoon de soort van omtrek van de bovenste niet-nul getallen in de matrix, het heet daarom een 'skyline' (alsof je naar de gebouwen van een stad kijkt), de \textbf{'halve bandbreedte (hb)'} is de maximale afstand van de diagonaal tot aan de rand van die skyline (dat is dus horizontaal gemeten eigelijk), in dit geval is dit een afstand van 3 wat ik hier even in de volgende figuur heb aangeduid in het geel (ale ik heb alle mogelijke halve bandbreedtes aangeduid ma het is dus de grootste dat telt):
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\textwidth]{bandbreedtes.png}
+  \caption{Halve bandbreedte (hb)}
+  \label{fig:bandbreedtes.png}
+ \end{figure}
+Waarom is dit nu belangrijk voor de rekentijd? We zagen dus eerder dat de CPU-time afhankelijk is van \#dof\textsuperscript{3}, maar dit is eigenlijk alleen voor een volledig gevulde matrix, wat we hier dus niet hebben, in het echt is de relatie eerder dit:
+\begin{align*}
+  \text{CPU-time} \sim \text{\#dof} \cdot \text{hb}^2
+\end{align*}
+Dus hoe kleiner je de halve bandbreedte (hb) kan maken, hoe sneller de matrix opgelost kan worden. En hoe optimaliseer je deze hb? Makkelijk! Er is een formule voor:
+\frm{Halve bandbreedte (hb)}
+{
+hb = \max_{e} \cdot hb_e = \max_{e} \left[ \frac{ndof}{node} \cdot (\max_{e}(\Delta \text{NodeID}) + 1) \right]
+}
+{
+Met
+\sym{\max_e}
+{Maximum over de elementen: die $e$ staat voor element. De berekening wordt voor alle elementen uitgevoerd en de grootste waarde wordt genomen.}
+{...}
+\sym{hb_e}
+{De lokale halve bandbreedte, specifiek veroorzaakt door één element}
+{...}
+\sym{ndof}
+{Aantal vrijheidsgraden per knoop}
+{...}
+\sym{node}
+{Aantal knopen per element}
+{...}
+\sym{\Delta NodeID}
+{Het verschil in knoopnummers tussen de knopen van een element. Dit hangt dus af van hoe de knopen genummerd zijn.}
+{...}
+}
+Het is dit laatste dat zo belangrijk is, zorg dat knopen die aan hetzelfde element vastzitten, nummer krijgen die zo dicht mogelijk bij elkaar liggen!
+\newline
+\newline
+In de volgende figuur zien we een korte samenvatting van deze 2 gevallen die we dus eerder zagen en nu ook een skyline van dat 2de geval, we zien hier dat deze een halve bandbreedte van 6 heeft! Dit is natuurlijk dus door die eerste 2 knopen daar dat genummerd zijn als 1 en 6 (en dus een verschil van 5 hebben!):
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{skylinesbeidegevallen.png}
+  \caption{Skyline van beide gevallen}
+  \label{fig:skylinesbeidegevallen.png}
+ \end{figure}
+Omdat rekentijd kwadratisch toeneemt met de halve bandbreedte, is het verschil in rekentijd tussen deze 2 gevallen enorm, namelijk voor de linker model is dit 3\textsuperscript{2} = 9, voor de rechter model is dit 6\textsuperscript{2} = 36, dus de rekentijd van de rechter model is 4 keer groter dan die van de linker model, terwijl het model zelf identiek is, dit toont dus aan hoe belangrijk het is om een goede knopen nummering te hebben.
+\subsection{Voorbeeldoefening slides}
+\begin{warningbox}[Typische examenoefening]
+  Een oefening zoals we nu gaan zien is een typische examenoefening! (Exact deze oefening wordt in een lesvideo op toledo ook opgelost)
+\end{warningbox}
+De figuur hieronder toont een veer systeem, de blok in het midden kan beschouwd worden als 'infinitly rigid' (dus die blok heeft een zuivere beweging, zonder buiging dus maakt geen hoek)(dit zorgt ervoor dat het probleem als 1D bescouwd kan worden). De opgave vraagt om:
+\begin{itemize}
+  \item Elke knoop een 'optimaal' nummer te geven
+  \item Het systeem [K] {$\tilde{U}_{x}$} = {$\tilde{F}_{x}$} te bepalen
+  \item Het systeem op te lossen en een vergelijking geven voor de verplaatsingen van de knopen
+  \item De reactie krachten te berekenen
+\end{itemize}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{voorbeeldoefeningslide.png}
+  \caption{Voorbeeldoefening}
+  \label{fig:voorbeeldoefeningslide.png}
+ \end{figure}
+Als tip wordt gegeven dat een ROD element gezien kan worden als een veer met een stijfheid van $k = \frac{AE}{L}$, maar dit weten we inmiddels al.
+\subsubsection{1. Elementen definiëren}
+We kunnen onze figuur hertekenen als een model met 5 elementen (de bovenste veer van 3k in het rood, de onderste 2 veren van k en 2k in het geel en blauw, de blok in het zwart en de rechtse veer met k in het groen):
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{elementdefinierenvoorbeeldoefening.png}
+  \caption{Voorbeeldoefening hertekend}
+  \label{fig:elementdefinierenvoorbeeldoefening.png}
+ \end{figure}
+\subsubsection{2. Knopen nummeren (zo optimaal mogelijk)}
+Omdat die blok in het midden (zwart) een rigid body is die dus geen buiging heeft, kunnen we deze als 1 knoop beschouwen (elke knoop hieraan gaat met de zelfde translatie bewegen, beter om dus met 1 knoop te moddeleren dan ze ingewikkeld aan elkaar vast te lijmen met een 'glue' randvoorwaarde (zien we later)), een optimale knoop nummering die zo laag mogelijke nodeID's geeft kan zoals in volgende figuur zijn, hier zien we dat de hoogste nodeID 2 is en de rest 1, die 2 gaan we niet kunnen ontwijken aangezien die rigidbody me 3 andere elementen is verbonden (een andere knoopnummering is ook mogelijk als er nog steeds maar 1 nodeID van 2 is en de rest 1):
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{knoopnummeringvoorbeeld.png}
+  \caption{Voorbeeldoefening knoopnummering}
+  \label{fig:knoopnummeringvoorbeeld.png}
+ \end{figure}
+\subsubsection{3. Bepalen van de globale stijfheidsmatrix [K]}
+Dit is identiek aan hoe we het eerder deden, als je niet snapt vanwaar dit komt raad ik je aan de video te zien:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{globalestijfheidsmatrixvoorbeeld.png}
+  \caption{Globalestijfheidsmatrix voorbeeld}
+  \label{fig:globalestijfheidsmatrixvoorbeeld.png}
+ \end{figure}
+\subsubsection{4. Invullen van de randvoorwaarden}
+Knoop 1, 3 en 5 zijn de essentiële randvoorwaarden, ze zijn vast, ze hebben dus geen verplaatsing dus $\tilde{u}_{x1} = \tilde{u}_{x3} = \tilde{u}_{x5} = 0$, in knoop 2 is de kracht bekend, namelijk 70N, in knoop 4 hebben we weer het geval dat hier geen externe belasting wordt aangebracht, dit maakt dat de optelsom van alle krachten op die interne knoop exact 0 zijn, dus $\tilde{F}_{x4} = 0$, dit geeft de volgende matrixvergelijking:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{randvoorwaardeningevuldvoorbeeld.png}
+  \caption{Randvoorwaarden ingevuld voorbeeld}
+  \label{fig:randvoorwaardeningevuldvoorbeeld.png}
+ \end{figure}
+\subsubsection{5. Schrappen van rijen en kolommen met essentiële randvoorwaarden}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{rijenenkolommengeschraptvoorbeeld.png}
+  \caption{Rijen en kolommen geschrapt voorbeeld}
+  \label{fig:rijenenkolommengeschraptvoorbeeld.png}
+ \end{figure}
+\subsubsection{6. Oplossen van de onbekende knoopverplaatsingen}
+Hiermee kunnen we nu de knoopverplaatsingen vinden:
+\begin{align*}
+\begin{bmatrix}
+6k & -2k \\
+-2k & 3k
+\end{bmatrix}
+\begin{Bmatrix}
+\tilde{u}_{x2} \\
+\tilde{u}_{x4}
+\end{Bmatrix}
+ =
+\begin{Bmatrix}
+70 \\
+0
+\end{Bmatrix}
+\rightarrow
+\begin{Bmatrix}
+\tilde{u}_{x2} = \frac{15}{k}\\
+\tilde{u}_{x4} = \frac{10}{k}
+\end{Bmatrix}
+\end{align*}
+\subsubsection{7. Berekenen van de reactiekrachten met de rijen die we weglieten}
+\begin{align*}
+\tilde{F}_{x1} = -3k \cdot \tilde{u}_{x2} = -3k \cdot \frac{15}{k} = -45N\\
+\tilde{F}_{x3} = -k \cdot \tilde{u}_{x2}  = -k \cdot \frac{15}{k} = -15N\\
+\tilde{F}_{x5} = -k \cdot \tilde{u}_{x4} = -k \cdot \frac{10}{k} = -10N
+\end{align*}
+Een manier om de oplossing te checken is om te kijken naar de som van de krachten, deze is -70N, dit is dus juist want dit geeft dus een krachtenevenwicht met die aangelegde 70N.
+\subsection{Truss netwerken (1D rod elements)}
+De 1D staven die we tot nu toe zagen hebben we altijd gewoon horizontaal gelegd en bekeken, maar worden in complexe 2D- of 3D-constructies schuin aangelegd (bij bvb. een brug of kraan). Het probleem is dus dat niet alle rods gealligneerd zijn met elkaar zoals in volgende figuur:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{rodsnotalligned.png}
+  \caption{Voorbeeld model waar rods niet alligned zijn}
+  \label{fig:rodsnotalligned.png}
+ \end{figure}
+Tot nu toe zagen we dus dat onze knopen alleen maar links of rechts kon bewegen, maar in de werkelijkheid kan een knoop ook omlaag en omhoog (x en y) bewegen. We introduceren 2 assenstelsels:
+\begin{itemize}
+  \item \textbf{Global coordinate system: }Dit is de absolute X-Y assenstelsen van de hele computersimulatie, dat is die assenstelsel aangeduid in de figuur hierboven
+  \item \textbf{Local coordinate system: }Dit is het assenstelsel vanuit het perspectief van het staafje zelf, hier geldt ook nog steeds de simpele veerformule $k = \frac{AE}{L}$ die we kennen.
+\end{itemize}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\textwidth]{localvsglobal.png}
+  \caption{Local vs global coordinate system}
+  \label{fig:localvsglobal.png}
+ \end{figure}
+Belangrijke hierbij is dus dat de elementstijfheidsmatrices bepaalt worden in een local coordinate system en het globale stijfheidsmatrix in een global coordinate system, dit maakt dat we een transformatie moeten doen van de local stijfheidsmatrix naar de global stijfheidsmatrix voor dus de verplaatsingen en krachten. Dit wordt met geometrie gedaan want deze staan onder bepaalde hoeken:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\textwidth]{ingezoomdefotohoek.png}
+  \caption{Ingezoomde foto van de hoek}
+  \label{fig:ingezoomdefotohoek.png}
+ \end{figure}
+De lokale as staat dus onder een hoek (die met geometrie bepaald kan worden) tegenover de globale as, projecties van sinussen en cosinussen worden gebruikt om om te rekenen, dit ziet er zo uit maar (ik denk dat de proff zei dat we dit niet moesten kunnen berekenen):
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\textwidth]{berekeninghoek.png}
+  \caption{Hoek berekening slides}
+  \label{fig:berekeninghoek.png}
+ \end{figure}
+\begin{align*}
+\tilde{U}_{iX} = \tilde{u}_{iX}cos(\theta) - \tilde{u}_{iY}sin(\theta)\\
+\tilde{U}_{iY} = \tilde{u}_{iX}sin(\theta) + \tilde{u}_{iY}cos(\theta)
+\end{align*}
+{\color{red}(de berekeningen hierboven zijn fout op de slides volgens mij en AI, ik denk dat wat hierboven staat wel juist is, allesinds zei de proff dat we het niet moesten kunnen berekenen)}
+\newline
+\newline
+De computer stopt deze sinussen en cosinussen in een nieuwe matrix, de \textbf{Transformatiematrix [T]}:
+\begin{align*}
+[T] =
+\begin{bmatrix}
+cos(\theta) & -sin(\theta) & 0 & 0\\
+sin(\theta) & cos(\theta) & 0 & 0\\
+0 & 0 & cos(\theta) & -sin(\theta)\\
+0 & 0 & sin(\theta) & cos(\theta)
+\end{bmatrix}
+\end{align*}
+Door de simpele lokale stijfheidsmatrix te vermenigvuldigen met deze transformatiematrix, krijgt de software de stijfheidsmatrix voor die specifieke staaf in de globale ruimte:
+\begin{align*}
+  \{\tilde{U}\} = [T] \{\tilde{u}\}
+\end{align*}
+Dezelfde transformatie geldt voor de krachten:
+\begin{align*}
+  \{\tilde{F}\} = [T] \{\tilde{f}\}
+\end{align*}
+En omdat geldt dat $\{\tilde{f}\} = [k]\{\tilde{u}\}$, kunnen we dit herschrijven als:
+\begin{align*}
+  \{\tilde{F}\} = [T] [k] [T]^{-1} \{\tilde{U}\}
+\end{align*}
+Met $[T]^{-1}$ als:
+\begin{align*}
+[T]^{-1} =
+\begin{bmatrix}
+cos(\theta) & sin(\theta) & 0 & 0\\
+-sin(\theta) & cos(\theta) & 0 & 0\\
+0 & 0 & cos(\theta) & sin(\theta)\\
+0 & 0 & -sin(\theta) & cos(\theta)
+\end{bmatrix}
+\end{align*}
+De element stijfheidsmatrix voor een 2D en 3D rod element in de vergelijking ziet er zo uit:
+\begin{align*}
+\begin{bmatrix}
+k & 0 & -k & 0\\
+0 & 0 & 0 & 0\\
+-k & 0 & k & 0\\
+0 & 0 & 0 & 0
+\end{bmatrix}
+\begin{Bmatrix}
+\tilde{u}_{x1} \\
+\tilde{u}_{y1} \\
+\tilde{u}_{x2} \\
+\tilde{u}_{y2}
+\end{Bmatrix}
+ =
+\begin{Bmatrix}
+\tilde{f}_{x1} \\
+\tilde{f}_{y1} \\
+\tilde{f}_{x2} \\
+\tilde{f}_{y2}
+\end{Bmatrix}
+\end{align*}
+Als we nu $\{\tilde{F}\} = [T] [k] [T]^{-1} \{\tilde{U}\}$ toepassen krijgen we:
+\begin{align*}
+k \cdot
+\begin{bmatrix}
+cos^2(\theta) & cos(\theta)sin(\theta) & -cos^2(\theta) & -cos(\theta)sin(\theta)\\
+cos(\theta)sin(\theta) & sin^2(\theta) & -cos(\theta)sin(\theta) & -sin^2(\theta)\\
+-cos^2(\theta) & -cos(\theta)sin(\theta) & cos^2(\theta) & cos(\theta)sin(\theta)\\
+-cos(\theta)sin(\theta) & -sin^2(\theta) & cos(\theta)sin(\theta) & sin^2(\theta)
+\end{bmatrix}
+\begin{Bmatrix}
+\tilde{U}_{x1} \\
+\tilde{U}_{y1} \\
+\tilde{U}_{x2} \\
+\tilde{U}_{y2}
+\end{Bmatrix}
+ =
+\begin{Bmatrix}
+\tilde{F}_{x1} \\
+\tilde{F}_{y1} \\
+\tilde{F}_{x2} \\
+\tilde{F}_{y2}
+\end{Bmatrix}
+\end{align*}
+Zodra de computer dus voor elke schuine staaf zo een elementstijfheidsmatrix (globaal) heeft opgesteld kan hij de globale stijfheidsmatrix gewoon maken zoals we eerder deden. De matrix gaat hier wel groter zijn doordat het aantal vrijheidsgraden per knoop met een factor 2 (voor 2D) of 3 (voor 3D) is toegenomen. Als je in de software in je postprocessor naar bvb. je spanningen wilt zien krijg je vaak de keuze om dit in een globale of lokale assenstelsel te bezien, je moet altijd het lokale assenstelsel bekijken! Want stel je hebt een schuine balk in een brug en je wilt weten hoeveel kracht deze balk aankan voor hij afbreekt (axiale normaalspanning in de lengte van de balk) dan heb je de lokale spanning nodig, een globale spanning zegt je niet veel.
 \end{document}
