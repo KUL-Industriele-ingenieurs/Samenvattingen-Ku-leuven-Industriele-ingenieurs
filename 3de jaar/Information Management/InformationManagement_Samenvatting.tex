@@ -10,6 +10,7 @@
 \usepackage{enumitem}
 \usepackage{microtype}
 \usepackage{../../school-macros}
+\raggedbottom
 \begin{document}
 % Titelinformatie
 \kuleuventitle
@@ -961,5 +962,241 @@ Wat zijn de voordelen van een netwerk? (Om dus een apparaat in een netwerk te pl
   \caption{Netwerken}
   \label{fig:fotoslidenetwerk.png}
  \end{figure}
-
+\newpage
+\chapter{Les 5: Cloud computing}
+De proff begint de les met te zeggen dat deze les eigelijk een compilatie is van alles wat we tot nu toe hebben gezien, dus eerdere concepten gaan we nu 'in het grotere plaatje' van de cloud plaatsen. We kijken deze les naar cloud computing, applicaties in de cloud, systeemcommunicatie en modern cloudgebruik.
+\newline
+\newline
+De dingen die we dus eerder zagen die aan bod kwamen zijn dus: 'wat is een computer?', 'wat is een operating system?', 'de verantwoordelijkheden van een OS', 'data warehouses en data lakes', 'types transmissies (analoog,digitaal)', 'synchronous vs asynchronous communicatie' en 'protocollen'. Dus refresh je brein is misschien met deze informatie.
+\newline
+\newline
+Voor we beginnen aan deze les introduceren we ook nog rap paar nieuwe dingen; client server architecture, web services, API's en AI agents, LLM's en MCP's.
+\subsection{Client-Server Architecture}
+Dit is eigelijk de basis van hoe het internet werkt, een 'client' (zoals u laptop of telefoon) start de communicatie door een verzoek (request)(bvb. breng mij naar die webpagina) naar een server (kan verschillende soorten hebben, SQL, \dots) te sturen (meestal wordt hier gebruik gemaakt van een HTTP-protocol, soms ook FTP, TCP, UDP), de server verwerkt dit verzoek en stuurt vervolgens een response terug.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{clientserverarchitecture.png}
+  \caption{Client-Server Architecture}
+  \label{fig:clientserverarchitecture.png}
+ \end{figure}
+\subsection{Web services}
+Zie dit als een soort programmeerfunctie (bvb. in java of python ofzo) maar ipv dat die lokaal op u computer draait, wordt hij op afstand over het netwerk uitgevoerd. Een voorbeeld hiervan is een weer-app zoals 'OpenWeatherMap', je kan die webservice op elk moment aanroepen om data op te halen (zoals temperatuur).
+\newline
+\newline
+Om toegang te krijgen tot die server heb je een API-key nodig (dit is een soort hash code)(het callen van deze functie gebeurt via iets zoals dit: \url{https://api.openweathermap.org/data/2.5/weather?q=London&appid=YOUR_API_KEY}), als antwoordt stuur de server een gestructureerde JSON file naar je terug wat er zo uit ziet:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.35\textwidth]{JSONfile.png}
+  \caption{JSON file weer}
+  \label{fig:JSONfile.png}
+ \end{figure}
+\subsection{API's (Application Programming Interfaces)}
+Dit is een belangrijk concept, een API is eigelijk een soort van contract tussen 2 systemen. De proff vergelijkt de API met een ober, jij bent de klant die een verzoek doet, de API-ober werkt als tolk (eigelik een 'language interpreter'), hij loopt naar de keuken om aan de kok (de server) te vertellen wat hij moet bereiden en brengt vervolgens het afgewerkt gerecht weer bij jou.
+\newline
+\newline
+Belangrijk om te weten is ook dat dit niet alleen voor het web is, dus het moet niet percee alleen over het internet werken, maar het kan ook gewoon lokaal op je eigen apparaat draaien. Een voorbeeld is 'TensorFlow' (voor AI) of de Android Camera API op je telefoon. Dus eigelijk zijn \textbf{alle web services API's, maar niet alle API's zijn webservices}.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{oberAPI.png}
+  \caption{Ober API}
+  \label{fig:oberAPI.png}
+ \end{figure}
+\subsection{AI Agents, LLM's en MCP's (Model Context Protocols)}
+Dit is eigelijk 'the next big thing' op het internet, een normaal taalmodel (\textbf{LLM = Large Language Model}) kan alleen maar tekst genereren, \textbf{AI agents} kunnen daadwerkelijk actie ondernemen door zelf externe tools en API's aan te roepen. (Dit is eigelijk een LLM die toegang krijgt tot een MCP (LLM is hier het brein eigelijk)), dit zorgt voor 'automatisering van ons leven'. Een \textbf{MCP (Model Context Protocol)} geeft dus LLM's de toegang tot lokale en online diensten voor automatisering. De proff geeft als voorbeeld hier dat mensen dit gebruiken om de interactie met hun vriendin te automatiseren via WhatsApp-berichtjes, of hijzelf de AI automatisch ons e-mails zou kunnen laten beantwoorden lol. Een ander voorbeeld dat hij ook gaf is je garagedeur openen met een WhatsApp bericht.
+\newline
+\newline
+Hij zegt wel dat deze technologie nog \textit{'Undercooked'} is, dit is nog steeds in vroege ontwikkelingsfase, de AI neemt autonoom beslissingen en geeft als voorbeeld van een gevaar een incident waarbij een AI besloot om iemands complete e-mailbox te verwijderen.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{aiagentsllmsmcp.png}
+  \caption{AI Agents, LLM's en MCP's}
+  \label{fig:aiagentsllmsmcp.png}
+ \end{figure}
+Vanaf nu begint de les echt btw
+\subsection{On-premises Computing}
+De traditionele manier van servers beheren is on-premises, we gaan dit nu bezien en vergelijken met Cloud Computing. On-premises is het oudste model, hierbij heeft een bedrijf zijn volledige IT-infrastructuur (zoals servers, opslag en netwerkapparatuur) fysiek in zijn eigen beheer staan, bvb. in een eigen gebouw of kelder. Dit heeft enkele voordelen en nadelen:
+\newline
+{\color{green}\textbf{Voordelen: }}
+\begin{itemize}
+ \item \textbf{Volledige controle:} Je bent dus de absolute baas van je eigen infrastructuur en data.
+ \item \textbf{Data-soevereiniteit:} Je data blijft fysiek op jouw locatie, je deelt het dus niet met grote buitenlandse (bvb. Amerikaanse of Chinese) techbedrijven.
+ \item \textbf{Voorspelbare kosten:} Harde schijven en processors kopen is éénmalig, je hebt dus niet achteraf onverwachte abbonementskosten zoals bij cloud computing.
+ \item \textbf{Veiligheid:} Als je je server in een afgesloten kelder hebt staan zonder extra verbindingen, kan er niemand zomaar je data stelen, dit is een groot voordeel voor bedrijven die met zeer gevoelige data werken.
+ \item \textbf{Performance:} Omdat alles lokaal is, heb je geen last van netwerkvertragingen, dit kan belangrijk zijn voor toepassingen die extreem snelle reacties vereisen. Processing kan hier ook sneller zijn als je dat wilt/kan regelen.
+\end{itemize}
+{\color{red}\textbf{Nadelen: }}
+\begin{itemize}
+ \item \textbf{Hoge initiële kosten:} Je moet zelf investeren in hardware, software, onderhoud en personeel om alles draaiende te houden.
+ \item \textbf{Onderhoud is complex:} Als je hardware wilt upgraden of onderhouden moet productie vaak stilgelegd worden, om dit te voorkomen moet je dure parallelle (reserve) systemen laten draaien.
+ \item \textbf{Beperkte Schaalbaarheid \& Flexibiliteit:} Als je snel extra capaciteit nodig hebt, ben je beperkt tot de fysieke hardware die er staat want aanpassing aan nieuwe technologieën duurt lang.
+ \item \textbf{Kwetsbaar bij rampen:} Als het gebouw afbrandt ofzo is niet alleen je hardware weg maar ook je data, je bedrijf is COOKED.
+\end{itemize}
+\subsection{Cloud Computing}
+Dus is het vaak slimmer om over te schakelen naar 'Cloud computing',  ipv fysieke hardware krijg je dus via het internet (on demand) toegang tot vrijwel onbeperkte rekenkracht, een financieël voordeel is dat je uitsluitend betaalt voor wat je effectief gebruikt en dat je dynamisch kunt opschalen wanneer het nodig is.
+\newline
+\newline
+In de les toont de proff ook nog volgende figuur:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{microsofot.png}
+  \caption{Hoe microsoft winst maakt}
+  \label{fig:microsofot.png}
+ \end{figure}
+Veel mensen hebben door dat windows de laatste jaren als maar shitter wordt, dit is omdat microsoft eigelijk uit windows zelf niet veel winst meer maakt, het grootste deel van hun winst komt uit Microsoft Azure, dit is hun gigantische cloud computing dienst, omdat cloud computing de sector is waar het meeste echte geld zit bij hun, steken ze minder aandacht in de ontwikkeling van je besturingssysteem.
+\subsection{Cloud Services}
+Cloud computing heeft 3 hoofdcategorieën (servicemodellen) van cloud computing; IaaS, PaaS en SaaS, deze vormen eigelijk ook zo een piramide van lagen, hoe hoger je in de piramide je gaat, hoe meer gemak je hebt, maar hoe meer controle (soevereiniteit) je verliest.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{cloudpiramide.png}
+  \caption{Cloud Services Piramide: IaaS, PaaS, SaaS}
+  \label{fig:cloudpiramide.png}
+ \end{figure}
+\subsubsection{IaaS (Infrastructure as a Service)}
+Dit is de meest basis laag, fysieke servers, opslag en netwerken, je beheert hier zelf nog veel waardoor je veel vrijheid behoudt. Voorbeelden zijn Amazon Web Services (AWS), dit is waar amazon eigelijk ECHT hun geld mee verdient. Je hebt ook Google Compute Engine en Microsoft Azure, hierbij kun je exact selecteren war je nodig hebt (zoveel RAM, zoveel CPU en zoveel opslag), ze zetten echt een virtuele machine hierbij voor je klaar. Er zijn nog extra voorbeelden op de slides
+\subsubsection{PaaS (Platform as a Service)}
+Hier huur je echt al een compleet platform of ontwikkelomgeving (dus inclusief besturingssystemen en databases), ideaal voor programmeurs die snel een app willen bouwen zonder zorgen te maken onder achterliggende servers. Voorbeelden zijn Google Colab, dit is een platform waar je python-code en AI-modellen kunt draaien, AI modellen trainen is heel duur (een eigen servercluster kost een miljoen ongeveer) via colab kan je veel cheaper de zware GPU clusters van Google huren om de AI te trainen, daarna gewoon weer afsluiten. Een ander voorbeeld is PythonAnywhere en Red Hat Openshit, dit zijn platformen waarmee je code vrijwel overal kunt draaien zolang er maar een client is (dus in principe als je een broodrooster als client kunt runnen kan je het hierop draaien).
+\subsubsection{SaaS (Software as a Service)}
+Dit zijn volledige gehoste applicaties die je via het internet gebruikt (vaak in een browser), je hoeft helemaal niks te installeren of beheren, maar je hebt ook het minste controle, je bent volledig afhankelijk van de provider. Voorbeelden zijn eigelijk applicaties die we dagelijks gebruiken zoals Google Workspace, Microsoft 365, Dropbox, \dots. Je hoeft nergens aan te komen maar als je iets niet goed vind er aan, pech, je moet er mee leven.
+\subsubsection{Samenvattende figuur}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{cloudservices.png}
+  \caption{Cloud Services wat je verliest in het rood en wat je bijhoudt in het blauw}
+  \label{fig:cloudservices.png}
+ \end{figure}
+\subsection{Cloud Storage}
+Hoewel dit heel \textbf{goedkoop} is, is dit niet de belangrijkste reden waarom mensen het gebruiken, de grotere voordelen zijn dat het \textbf{zeer betrouwbaar} is want de cloud maakt altijd backups en als je een fysieke schijf hebt en die crashed of gaat stuk ben je alles kwijt, een ander voordeel is dat cloudproviders je data \textbf{beveiligen met zware encryptie}, iets wat je zelf heel moeilijk op dat niveau kan instellen en nog een groot voordeel is de \textbf{schaalbaarheid}, je kan makkelijk uitbreiden, stel je hebt een harde schijf van 1TB en je wilt 1,1TB op een bepaald moment dan moet je niet een volledig nieuwe schijf kopen, je kan gewoon extra opslag huren.
+\subsection{DaaS (Data as a Service)}
+Data kan ook via het internet beschikbaar worden gemaakt, zonder dat je zelf lokale opslag hoeft te beheren (het gaat hier om data van ergens anders, niet je eigen data, dit is wat het verschillend maakt van wat we eerder zagen bij cloud storagen, da was lege opslag waar je je eigen data in plaatst, hier is het data van bvb. data warehouses, data lakes, operational data, external data, \dots).
+\newline
+\newline
+We hebben een 'Virtual Data Layer' nodig, dit is een soort van softwarelaag die data van verschillende bronnen (bvb. verschillende data warehouses) kan verzamelen en combineren tot één uniforme interface, aan de hand van API's en webservices dat het gebruikt, zodat gebruikers en applicaties gemakkelijk toegang hebben tot alle data zonder zich zorgen te maken over waar het vandaan komt of hoe het is opgeslagen (de complexe 'achterkant' eigelijk).
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{daas.png}
+  \caption{DaaS (Data as a Service)}
+  \label{fig:daas.png}
+ \end{figure}
+\subsection{Virtualization}
+Virtualisatie is eigelijk de ruggengraat van cloud computing, het is de technologie die cloud computing dus mogelijk maakt. Het zorgt ervoor dat je virtuele (softwarematige) versies van fysieke hardware kan maken, dus in plaats van voor elke taak een aparte fysieke server te kopen (en dus voor elke klant een aparte computer/server eigelijk), kun je één grote fysieke machine gewoon opdelen zodat er bvb. 3 verschillende besturingssystemen tegelijk (parallel) op kunnen draaien. Kort is visualisatie eigelijk \textbf{de software-technologie waarmee je één grote fysieke computer opdeelt in meerdere 'virtuele' (nep) computers.}
+\newline
+\newline
+Dit wordt gedaan door een abstractielaag genaamd de 'hypervisor', dit kan de processor, werkgeheugen en opslag van de fysieke machine opdelen. Meer lagen toevoegen zorgt namelijk dat je systemen meer loskoppelt van hardware en dit dus flexibeler wordt.
+\newline
+\newline
+Er zijn eigelijk 2 manieren waarop dit gedaan wordt, 1 daarvan is eigelijk al verouderd:
+\begin{itemize}
+ \item \textbf{Virtual Machines (VM's):} Dit is de traditionele, oudere manier van virtualisatie, dit is eigelijk letterlijk een complete virtuele computer dat je simmuleert, dit heeft dus een volledig nieuw besturingssyteem (bvb. ubuntu of windows), we noemen dit een Guest OS. Het nadeel hier is dus dat het heel zwaar is om te draaien (overhead).
+ \item \textbf{Containers:} Dit is een modernere en lichtere manier van virtualisatie, dit lost de overhead van VM's op door die Guest OS eigelijk weg te gooien, alle containers delen hier gewoon dezelfde OS, een container is eigelijk een aparte gesloten applicatie waarin alle nodige libraries inzitten om de app te kunnen doen draaien. Zolang een server/computer een Container Runtime heeft geinstalleer (zoals Docker), kan het dus containers draaien, dit maakt het veel efficiënter en sneller dan VM's, dit is de standaard geworden in cloud computing.
+\end{itemize}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{containervsvm.png}
+  \caption{Containers vs Virtual Machines (VM's)}
+  \label{fig:containervsvm.png}
+ \end{figure}
+\subsection{Hypervisor}
+De hypervisor is dus eigelijk een 'manager', het is de perfecte tussenpersoon tussen de fysieke hardware en de virtuele machines of containers, het zorgt ervoor dat elke virtuele machine of container precies de juiste hoeveelheid resources krijgt die het nodig heeft, zonder dat ze elkaar in de weg zitten. Er zijn 2 soorten hypervisors:
+\noindent
+\subsubsection{Type 1 Hypervisor}
+Ook wel 'bare-metal' genoemd, deze is direct geinstalleerd en draait dus direct op de fysieke hardware zonder dat er een algemeen besturingssysteem hoeft te draaien, omdat dit zo werkt kan je bvb. tegelijkertijd Linux, Windows, Mac en Android virtueel op exact dezelfde processor draaien. Omdat dit direct met hardware communiceert, levert dit de hoogste niveau van prestaties, efficiëntie en veiligheid op.
+\newline
+\newline
+Het is ook nog is \textbf{sterk geïsoleerd}, dit is zeer cruciaal, want als er iets misgaat in 1 van de virtuele machines (bvb. een crash of een virus), heeft dit geen invloed op de andere machines, deze blijven ongestoord doordraaien dan en zullen er ook geen last van hebben. Nog een nice ding is de \textbf{schaalbaarheid en performance}, het zit namelijk zo dicht op de hardware dat het extreem snel is dat je moeiteloos duizenden virtuele machines vast kan hangen aan een grote datacenter.
+\newline
+\newline
+Voorbeelden van type 1 hypervisors zijn VMware ESXi, Microsoft Hyper-V en Xen. Achter de schermen gebruiken deze systemen enorme cloudproviders (zoals Amazon Web Services) voor hun datacenters. Thuis ga je dit complexe ding niet zomaar installeren, dit is vooral interessant en efficiënt voor bedrijven.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\textwidth]{Type1hypervisor.png}
+  \caption{Type 1 Hypervisor (Bare-metal)}
+  \label{fig:Type1hypervisor.png}
+ \end{figure}
+\subsubsection{Type 2 Hypervisor}
+Ook wel 'hosted' genoemd, is virtualisatiesoftware die niet direct op de hardware draait, maar bovenop een al bestaand besturingssysteem (zoals Windows of MacOS), de proffessor noemt dit de \textit{'consumer type'}, het werkt eigelijk gewoon als een applicatie op je computer. (Hiermee draai je bvb. een Linux-omgeving (Guest OS) op je normale Windows laptop). Er zit dus eigelijk een extra laag tussen.
+\newline
+\newline
+Dus hierdoor communiceert het niet direct met de hardware, maar gaat het eerst door de host OS, dit maakt het trager en minder efficiënt (meer verbruikte rekenkracht) dan een Type 1. Nog een probleem hierdoor is dus als je host OS crasht, uitvalt of een virus krijgt, dat alle Virtual Machines die daarop draaien mee crashen, geen volledige isolatie dus. Maar het grote voordeel is hier dus wel dat het heel makkelijk is om te installeren is en ook dat het zo portable is (draagbaar).
+\newline
+\newline
+Omdat dit trager is en afhankelijk is van een host OS, wordt Type 2 niet in proffesionele productieomgevingen gebruikt, het wordt vooral gebruikt voor ontwikkeling, testen en educatieve doeleinden door consumenten en programmeurs. Voorbeelden zijn Oracle VirtualBox (hiermee simmuleer je Linux op je Windows laptop), VMware Workstation en Parallels Desktop (voor Mac).
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\textwidth]{type2hypervisor.png}
+  \caption{Type 2 Hypervisor (Hosted)}
+  \label{fig:type2hypervisor.png}
+ \end{figure}
+\subsection{Containers}
+We zagen al een korte uitleg van wat dit was, nu gaan we hier even dieper op in. Het grote ding van een container is dat het geen zware Guest OS nodig heeft, dus ook geen hypervisor, dit maakt het lichtgewicht, alle containers in een systeem delen hetzelfde onderliggende besturingssysteem (host OS), bij een container pak je eigelijk enkel de code van je applicatie, samen met de specifieke libraries die het nodig heeft om te draaien, je neemt het eigelijk in een 'doos' (alles dus in de doos, zodat je dit kan verzegelen en het vergeten en vervolgens overal te wereld sturen (bvb. Amazon)). Zolang dus een Container Runtime er op staat, zal het werken.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{nognefotocontainer.png}
+  \caption{Traditioneel --> Virtualized --> Container}
+  \label{fig:nognefotocontainer.png}
+ \end{figure}
+Je ziet hier trouwens dat virtualisatie een extra laag toevoegt, extra lagen maken het systeem altijd trager, maar in principe als dit niet opgemerkt wordt maakt het niet uit want onze chips worden zo snel tegenwoordig.
+\subsubsection{Docker}
+Docker (blauwe walvis) is dus die Container Runtime dat het mogelijk maakt om containers te draaien, het voordelige aan die containers zijn dus dat het ook geïsoleerd is, alles in één is (dus het is al netjes verpakt met de dependencies(libraries en andere tools die het runbaar maakt)), het is ook heel consistent, hiermee bedoelen we dat als je een container bouwt op je laptop, deze precies hetzelfde zal draaien op een server in een datacenter ofzo, en het is dus lichtgewicht. (Sommige dingen herhalen hier misschien heb je door, idk de slides zijn een beetje een mess)
+\subsection{Kubernetes}
+De \textit{'final boss'} van cloud computing is Kubernetes, dit wordt ook wel 'de dirigent van de cloud' genoemd, dit omdat het het een extra softwarelaag is die op de container software bovenop draait. Het werkt eigelijk als de manager (of dus dirigent) voor een gigantische, gedistribueerd systeem die dus duizenden losse containers in goede banen leidt. Dit omdat Docker eigelijk maar voor containers op één computer of server bedoeld is, maar als jij bvb. Netflix bent heb jij niet één server, maar duizenden verspreid over heel de wereld. Je gaat dus deze laag nodig hebben om al die verschillende docker-tegelijk aan te sturen, het stuurt eigelijk aan wanneer en waar applicaties kunnen draaien en hoe het dit kan schalen, dit maakt het 'elastisch'.
+\newline
+\newline
+Dit is echter wel heel moeilijk om op te zetten, maar van zodra het draait is het zeer efficiënt en krachtig. Het start en draait containers verspreid over verschillende fysieke machines, het maakt je cloud 'elastisch' (dus van zodra de vraag toeneemt, door bvb. veel website bezoekers), voegt het automatisch instanties toe (het start meer containers), als de vraag afneemt, sluit het er automatisch. Nog iets nice is 'automatisch herstel', het herstart of vervangt volledig automatisch containers die vastlopen en crashen. Het is ook gebalanceerd, het verdeelt containers gelijkmatig over machines om optimale prestaties te garanderen.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{kubernetes.png}
+  \caption{Kubernetes}
+  \label{fig:kubernetes.png}
+ \end{figure}
+Op de figuur hierboven zie je dat applicaties in containers runnen en die containers dus op meerdere machines die allemaal onder controle staan via kubernetes die monitored en orchestreert. De proff legt de nadruk op die 'automatische herstel' of 'self heal', kubernetes heeft direct door als een machine of server plotseling stilvalt en pakt de containers die daarop draaiden en verplaatst ze onmiddelijk naar een andere 'gezonde' machine.
+\subsubsection{Samenvattende tabel container en kubernetes}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{tabelkuberenetescontainer.png}
+  \caption{Vergelijking container en kubernetes}
+  \label{fig:tabelkuberenetescontainer.png}
+ \end{figure}
+\subsection{Elasticiteit}
+Dan gaan we nu even dieper in op die elasticiteit (ook wel 'dynamic scaling' genoemd) die we eerder bespraken. Dit is 1 van de belangrijkste eigenschappen (metric) waarop je moet letten als je een cloud-systeem kiest. Je kan dit vergelijken met iets elastisch uit de mechanica (iets kan uitrekken als er extra spannign opstaat en netjes terugkrimpen naar originele vorm als de spanning weg is), in de cloud betekent dit simpelweg de rekenkracht van het systeem (zoals CPU en RAM) perfect balanceren op basis van de vraag.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{schaalbaarheidvscloudelasticiteit.png}
+  \caption{Schaalbaarheid vs Cloud Elasticiteit}
+  \label{fig:schaalbaarheidvscloudelasticiteit.png}
+ \end{figure}
+De figuur hierboven toont een schaalbaarheid grafiek, hier heb je een vaste fysieke capaciteit (Resource Limit), als de vraag (groen) plotseling boven die limiet stijgt, heb je niet genoeg rekenkracht (rood). De applicatie loopt dus vast of gebruikers krijgen een error. Om dit te voorkomen kopen bedrijven vaak te veel fysieke servers voor in het geval dat er een piek komt (heet over-provisioning). Het nadeel hieraan is wel dat die servers dan 90\% van de tijd ongebruikt staan, dit zorgt voor enorme verspilling van geld en stroom (waste).
+\newline
+\newline
+De grafiek daaronder toont de cloud elasticiteit, hier is de capaciteit geen rechte lijn maar volgt het een golvende lijn, hier terug als voorbeeld Netflix, stel als iedereen s'avonds thuiskomt en 4K-videos begint te streamen, ontstaat er een enorme piek. Een elastisch cloudsysteem voegt op dat moment automatisch extra rekenkracht toe. Je betaalt de cloudprovider op dat specifieke moment gewoon iets meer, maar zodra iedereen gaat slapen, sluit het systeem die extra capaciteit af en betaal je weer minder. De kernboodschap is eigelijk "You are capped without cloud elasticity".
+\newline
+\newline
+De figuur hieronder probeert eigelijk het ultieme doel van een cloud omgeving te illustreren, namelijk de blauwe workload-lijn (de daadwerkelijke belasting van je applicatie over tijd) zo dicht mogelijk op die trapsgewijze lijn (de hoeveelheid servercapaciteit die daadwerkelijk beschikbaar is op dat momenent) te houden. Op een bepaald moment wordt de blauwe groter dan de trapsgewijze en wordt een request gestuurd voor meer capaciteit, als de piek voorbij is wordt een release gestuurd. Je ziet hier ook de overprovisioning en under-provisioning zones alswel de waste zone.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{nognefiguurelasticiteit.png}
+  \caption{Wat gebeurt er als je middelen af stemt op vraag}
+  \label{fig:nognefiguurelasticiteit.png}
+ \end{figure}
+\subsubsection{Andere nuttige 'metrics'}
+Een andere nuttige metric is 'Agility' (Snelheid van toewijzigingen), dit gaat over de exacte snelheid waarmee nieuwe middelen (resources) kunnen worden toegewezen. We weten dus dat bij traditionele on-premises servers (in je eigen gebouw) het opschalen van capaciteit heel lang kan duren, in de cloud kan dit heel snel. Dit is echter wel duurder.
+\subsubsection{Nog cloud metrics}
+Je hebt ook nog 'Fouttolerantie', dit is het vermogen van je systeem om gewoon te blijven draaien terwijl er interne storingen of fouten optreden.
+\newline
+\newline
+Ook heb je 'Disaster recovery', dus rampherstel, dit is nog extremer. Hierbij zet je een volledige, identieke replica van je systeem op in twee totaal verschillende geografische regio's, verbonden via een DNS. De professor legt uit dat bedrijven als Netflix of Amazon letterlijk een compleet tweede datacenter bouwen als back-up. Waarom? Omdat een paar seconden uitval (denial of service) voor dat soort giganten direct honderden miljarden kan kosten.
+\subsubsection{High availability (Hoge beschikbaarheid)}
+Dit is een bekende term, het gaat hier eigelijk over hoeveel uren of minuten per jaar jouw systeem offline mag zijn (downtime). De proff maakt ook nog rap duidelijk dat 100\% beschikbaarheid (0 minuten downtime per jaar) zo goed als onmogelijk is en de kosten hiervan zo hoog zouden zijn dat bedrijven het vermijden. In plaats daarvan koop je beschikbaarheid in aan de hand van het aantal 'negens':
+\begin{itemize}
+ \item 99,9\% (3 negens) betekent dat je systeem maximaal 8uur 46minuten per jaar offline mag zijn.
+ \item 99,99\% (4 negens) betekent dat je systeem maximaal 52minuten 36seconden per jaar offline mag zijn.
+ \item 99,999\% (5 negens) betekent dat je systeem maximaal 5 minuten 15seconden per jaar offline mag zijn. Dit is de standaard voor systemen waarbij mensenlevens of miljarden op het spel staan. Het verschil in prijs met de andere 2 is GIGANTISCH btw.
+\end{itemize}
+\subsection{Cloud Gaming}
+Dit is de absoluut zwaarste en meest veeleisende toepassing voor cloud computing ter wereld. In plaats van dat je jouw eigen GPU het rekenwerk laat doen gebeurt alle game logica ergens ver weg op een gigantische servercluster. Jouw apparaat (de client) moet geen beefy gaming pc zijn, je kan het op eender welk schermpje spelen, je apparaat moet gewoon controller-commandos via het internet kunnen sturen en de teruggestuurde video weer geven. Het lastige hieraan nu is de latency wel, als je op 240fps wilt spelen ga je al een gigantisch snelle internetconnectie nodig hebben dat heel duur is, op lagere snelheden zoals 30fps of 60fps werkt dit wel al goed.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{cloudgamingframework.png}
+  \caption{Cloud Gaming Framework}
+  \label{fig:cloudgamingframework.png}
+ \end{figure}
 \end{document}
