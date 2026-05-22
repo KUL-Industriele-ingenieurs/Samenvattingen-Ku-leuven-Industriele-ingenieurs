@@ -236,7 +236,7 @@ Indien we hierbuiten zitten gaan we op een paar problemen stoten, problemen kunn
 \begin{itemize}
  \item \textbf{Short shot (ondervulling):} Dit heb je als te weinig materiaal wordt geinjecteerd, of een te lage druk of temperatuur waarbij dit gebeurd, materiaal geraakt niet ver genoeg in de matrijs of stolt te vroeg. Kan je voorkomen met meer injectie volume of hogere injectie druk of temperatuur of een grotere gate of grotere matrijs temperatuur. Lucht uitvoer kanaal grotere maken of meer van maken kan ook helpen.
  \item \textbf{Sink marks (krimpvlekken) en shrinkage voids (krimpgaten):} Dit probleem ontstaat bij dikke secties in het product, de buitenste laag van het onderdeel stolt als eerst maar wanneer het binnenste materiaal daarna afkoelt en krimpt, trekt dit de gestolde buitenste 'huid' naar binnen. Kan je fixen door je CAD-ontwerp aan te passen zodat het een uniforme wanddikte ('wall thickness') heeft, liefst zo dun mogelijk. Ook nog rekening houden met die Fourier-getal! Zie eerder
-  \begin{figure}[H]
+ \begin{figure}[H]
    \centering
    \includegraphics[width=0.8\textwidth]{sinkmarks.png}
    \caption{Foto sink marks}
@@ -285,6 +285,7 @@ Indien we hierbuiten zitten gaan we op een paar problemen stoten, problemen kunn
    \caption{Warping}
    \label{fig:warping.png}
   \end{figure}
+\end{itemize}
 \subsubsection{Oriëntatie tijdens injection moulding}
 Dit was dus 1 van die oorzaken van warping, het fenomeen gaat als volgt: tijdens het injecteren van het vloeibare polymeer in de matrijs worden de polymeerketens door de stroming (afschuifkrachten) sterk in één richting getrokken, uit de volgende grafiek blijft dat deze oriëntatie in de spuitrichting zeer sterk is aan het oppervlak van het onderdeel (A11). Wat we hier ook opmerken is dat in het midden van het onderdeel (dus binnenin) de oriëntatie meer random is. Het zijn deze oriëntatie-effecten die bijdragen aan die 'internal stresses', een meer willekeurige spreiding in het onderdeel krijgen (wat we dus willen) kunnen we doen door het aanpassen van de injectiestrategie (met de parameters spelen dus). Dit effect heet trouwens ook het 'skin-effect'.
 \begin{figure}[H]
@@ -338,4 +339,218 @@ Er staan nog voorbeeldvragen op de slides die we in de les samen hebben bezien, 
 \end{warningbox}
 \newpage
 \chapter{Processing of thermoplastics (verwerken van thermoplasten)}
+\begin{warningbox}[Dit is niet direct in de les gezien]
+  De proff heeft dit gedeelte van de slides niet besproken in de les, de les toen hem terug kwam begon hij over iets anders. Een deel van dit stuk staat wel in een lesopname van het jaar 2023-2024 door Wim gegeven dus ik ga mijn best doen om dit hier duidelijk uit te leggen. Dingen waar ik geen uitleg over kan vinden op toledo of van de les ga ik door AI laten cooken.
+\end{warningbox}
+In dit stuk gaan we het hebben over compounding, extrusion, film blowing, blow moulding en thermoforming
+\subsection{Compounding (componeren)}
+Compounding is een productietechniek waarbij een basismateriaal, meestal een kunststof, gemengd wordt met additieven zoals kleurstoffen, glasvezels of UV-bescherming om specifieke eigenschappen te verkrijgen. Dit gebeurt meestal in een extruder waar de materialen gesmolten en homogeen gemengd worden. Het eindproduct wordt vaak in korrels (pellets) verwerkt voor verdere productieprocessen zoals spuitgieten of extrusie.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{compoundingproces.png}
+  \caption{Compounding proces}
+  \label{fig:compoundingproces.png}
+ \end{figure}
+\subsection{Extrusion (extrusie)}
+\subsubsection{Extrusion of thermoplastics (Werking van de extruder)}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{extrusiemachineenschroef.png}
+  \caption{Extrusiemachine en schroef}
+  \label{fig:extrusiemachineenschroef.png}
+ \end{figure}
+In de figuur zien we de extrusiemachine en de schroef ervan, het proces is simpelweg dat pellets vanuit een trechter in een verwarmde cilinder (barrel) vallen, binnenin draait dan een transportschroef die het materiaal naar voren duwt.
+\newline
+\newline
+We zien dat die schroef opverdeelt is in 3 verschillende secties:
+\begin{itemize}
+ \item \textbf{1. Feed section:} Hier vallen de korrels naar binnen.
+ \item \textbf{2. Transition section (of compressiezone):} Hier wordt het materiaal samengedrukt en smelt het door de externe verwarmingselementen en de wrijvingswarmte.
+ \item \textbf{3. Metering section:} Hier wordt de homogene smelt onder constante druk naar de uitgang gepompt.
 \end{itemize}
+\subsubsection{Aspects of extrusion (Aandachtspunten in de praktijk)}
+Hier benadrukken we 2 aspecten van wat er met het materiaal gebeurt NA dat het de matrijs verlaat:
+\begin{itemize}
+  \item \textbf{Koelen (Cooling of the extruded profile):} Als het materiaal uit de matrijs komt is het nog heet en zacht, in de volgende figuur zien we een 'Extrusion line', hier zien we dat het profiel direct na het uit de matrijs komt een koeltank in gaat om de vorm vast te houden en te laten stollen.
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{extrusionline.png}
+    \caption{Extrusion line}
+    \label{fig:extrusionline.png}
+   \end{figure}
+  \item \textbf{Uitzetten na de matrijs (Expansion):} Gesmolten polymeren hebben een visco-elastisch gedrag, ze hebben dus een soort 'geheugen', zodra het plastic door de nauwe matrijs naar buiten wordt geperst, veer het elastisch terug en zet het materiaal fysiek uit. Dus eigelijk ga je je matrijs moeten vervormen om dit fysiek te voorkomen. In de volgende figuur zien we de 'die shape' (de vorm van de matrijs) en de 'extruded product' (wat er dan uitkomt na die uitzetting).
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{uitzetttenmatrijsvorm.png}
+    \caption{Uitzetten matrijsvorm}
+    \label{fig:uitzetttenmatrijsvorm.png}
+   \end{figure}
+\end{itemize}
+\subsubsection{Uitlijning van polymeerketens}
+Hier gaan we wat dieper in op wat er op moleculair niveau met de plastic ketens gebeurt tijdens ditzelfde extrusieproces. Voor het extruderen liggen de ketens kriskras door elkaar, doordat het materiaal tijdens de extrusie in één richting door de matrijs wordt geperst, worden de moleculen sterk in de stroomrichting uitgelijnd, dit zorgt ervoor dat dit geëxtrudeerd product typisch \textbf{een hogere kristallisatiegraad} heeft dan hetzelfde productie dat via spuitgieten zou zijn gemaakt.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{alligmentpolymer.png}
+  \caption{Uitlijning van polymeerketens tijdens extrusie}
+  \label{fig:alligmentpolymer.png}
+ \end{figure}
+\subsubsection{Toepassingen van extrusiemachine}
+Als we het uiteinde (de matrijs) van de extruder aanpassen (of meer extruders samen voegen) kunnen met dit exact zelfde basisproces verschillende profielen maken. Hier paar voorbeelden:
+\begin{itemize}
+  \item \textbf{Buisextrusie (extrusion of tubes):} Dit is hoe we met extrusie holle producten zoals buizen kunnen maken. In het midden van de uitgang van de matrijs is een 'mandrel'/'torpedo head' die op zijn plek gehouden wordt door 'spider legs', hier rond vloeit het plastic en komt dan vervolgens weer samen, tegelijkertijd wordt er perslucht door het centrum van deze 'mandrel'/'torpedo head' geblazen om ervoor te zorgen dat de holle, zachte buis niet dichtklapt van zodra deze de machine verlaat.
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{buisextrusie.png}
+    \caption{Buisextrusie}
+    \label{fig:buisextrusie.png}
+   \end{figure}
+   \item \textbf{Draadmantelextrusie (Coating extrusion):} Hier zien we het proces waarmee we plastic isolatielagen voorzien voor elektriciteitskabels, een draad wordt met een hoge snelheid als een soort continue insert door de matrijs getrokken, waarna het viskeuze polymeer strak omheen wikkelt.
+   \begin{figure}[H]
+     \centering
+     \includegraphics[width=0.7\textwidth]{coatingextrusion.png}
+     \caption{Draadmantelextrusie}
+     \label{fig:coatingextrusion.png}
+    \end{figure}
+  \item \textbf{Co-extrusie:} Hier zien we zo een configuratie waarbij meerdere extruders tegelijk op één dezelfde matrijs zijn aangesloten, hierdoor kunnen verschillende materialen (of kleuren) tegelijk tot één doorlopend profiel worden geperest. Een voorbeeld is een ruitenwisserblad, dit is typisch opgebouwd uit 2 soorten rubber die via co-extrusie aan elkaar zijn verbonden.
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{coextrusie.png}
+    \caption{Co-extrusie}
+    \label{fig:coextrusie.png}
+   \end{figure}
+\end{itemize}
+\subsection{Blaasprocessen (Blow processes)}
+Hier gaan we verder met processen om zeer dunne folies en holle objecten te maken via verschillende blaasprocessen, er zijn verschillende soorten.
+\subsubsection{Film blowing (folieblazen)}
+Dit is een proces waarbij dunne folies worden gemaakt via blaasprocessen, dit is de standaard methode om plastic folie en vuilniszakken te produceren, het gaat als volgt:
+\newline
+\newline
+Een extruder perst het hete plastic verticaal naar boven in de vorm van een dunwandige buis, zolang het plastic nog heet en vervormbaar is (boven Tg), wordt er via het centrum van de matrijs lucht in geblazen. De lucht blaast de plastic buis op tot een enrome dunne ballon eigelijk. Dit zorgt voor een heel dunne wanddikte. Terwijl de ballon omhoog gaat koelt hij af door een externe luchtkoelkring ('Air ring'/'Cooling unit') tot dat hij helemaal boven dan als hij afgekoeld en gestold is platgedrukt wordt door rollen ('Pinch rolls')('Lay flat tube') en als dubbele folielaag op een grote rol gewikkeld wordt.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{filmblowing.png}
+  \caption{Folieblazen (Film blowing)}
+  \label{fig:filmblowing.png}
+ \end{figure}
+\subsubsection{Extrusion blow moulding (extrusie blaasvormen)}
+Dit is hoe we eerdere holle objecten zoals flessen en grote jerrycans kunnen maken, een extruder perst een zachte, dikwandige holle buis van warm plastic vertical naar beneden ('parison'). Twee koude matrijshelften sluiten zich rond die buis en een blaaspin blaast perslucht in de afgesloten buis waardoor het warme plastic als een ballon tegen de koude wanden van de matrijs wordt geperst en direct stolt. Zodra het plastic koel is, opent de matrijs en valt de fles eruit.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{extrusieblaasvorme.png}
+  \caption{Extrusion blow moulding (extrusie blaasvormen)}
+  \label{fig:extrusieblaasvorme.png}
+ \end{figure}
+\subsubsection{Rekblaasvormen (Stretch blow moulding)}
+Dit is een specifiek blaasproces (vaak voor PET-flessen), dit vertrekt niet van een vers geëxtrudeerde zachte buis, maar van een vooraf spuitgegoten hard 'proefbuisje' dat we een 'preform' noemen. De preform moet eerst opgewarmd worden in een oven ('preform heating') tot boven Tg zodat het materiaal weer rubberachtig en vervormbaar is, daarna wordt het in de matrijs geplaatst, vervolgens daalt er razendsnel een mechanische reksteef ('stretchin rod') af in de preform die het plastic fysiek in de lengte naar beneden rekt. Tegelijk (of direct erna) wordt er lucht onder zeer hoge druk ingeblazen zodat het plastic ook in de breedte tegen de matrijs blaast, dit extra mechanische rekken zorgt voor een uitlijning van de polymeerketens, wat de fles dus sterker maakt.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{rekblaasvormen.png}
+  \caption{Rekblaasvormen (Stretch blow moulding)}
+  \label{fig:rekblaasvormen.png}
+ \end{figure}
+\subsection{Thermoforming (thermovormen)}
+{\color{red}Dit is een concept dat vaak als examenvraag terugkomt! (Toch dat het plaatsvind tussen de glastransitietemperatuur Tg en de smelttemperatuur Tm)}
+\newline
+\newline
+Dit is een techniek die gebruikt wordt om van een vlakke thermoplastische kunststofplaat (of folie) een hol, dunwandig 3D-product te maken, zoals frietbakjes, drinkbekertjes of verpakkingen. Het vindt dus plaats bij Tg en Tm, het plastic wordt dus niet volledig vloeibaar gesmolten maar eerder verwarmd tot het zacht, rubberachtig en heel vervormbaar is. De volgende figuur toont het in 4 stappen:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{thermovormen.png}
+  \caption{Thermoforming (thermovormen)}
+  \label{fig:thermovormen.png}
+ \end{figure}
+(We zagen dit trouwens ook al kort bij convectie en straling (figuur 2.3))
+\begin{itemize}
+ \item \textbf{1. Clamping and heating (klemmen en verwarmen):} De vlakke plastic plaat wordt aan de randen ingeklemd en door warmtestralers (heaters) aan de boven- en onderkant opgewarmd.
+ \item \textbf{2. Voorrekken (Blank transfer/Bubble inflation):} Het zachte, hete plastic gaat door zwaartekracht vanzelf wat doorhangen (sagged)(stap 2a). Bij complexere, diepere vormen gaan we er wel perslucht onder blazen waardoor het plastic opbolt zoals een ballon (stap 2b), dit mechanisch voorrekken is belangrijk want het zorgt dat het plastic al vooral oprekt wat overmatige verdunning van de wanden in de hoeken van het eindproduct voorkomt.
+ \item \textbf{3. Vormen en koelen (Forming and cooling):} Het zachte plastic wordt over de matrijs geplaatst en er wordt vacuum getrokken, de atmosferische druk duwt het plastic zo tegen de koude vorm van de matrijs waarna het onmiddelijk afkoelt en stolt in zijn nieuwe vorm.
+ \item \textbf{4. Demoulding (Ontmallen):} Hier halen we het eindproduct uit de matrijs, meestal moet het overtollig, ingeklemd aan de rand, materiaal er daarna nog wel afgesneden worden.
+\end{itemize}
+(Na dit stukje komen nog een paar voorbeeldvragen op de slides die je is kunt bezien)
+\subsection{Processing of thermosets (verwerken van thermoharders)}
+Thermoharders vormen na uitharding een permanent 3D-netwerk, ze kunnen dus niet zo simpel verhit en gesmolten worden zoals thermoplasten, daarom vertrekken we vanuit 2 reactieve, vloeibare chemicaliën (kleine moleculen), die pas in de matrijs met elkaar reageren. (Ipv pellets bij thermoplasten)
+\subsubsection{Het uithardingsproces (Curing process)}
+De moleculaire ketens tijdens de chemische uitharding (polymerisatie) worden in 4 stappen gevormd:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{uithardingsproces.png}
+  \caption{Uithardingsproces}
+  \label{fig:uithardingsproces.png}
+ \end{figure}
+\begin{itemize}
+ \item \textbf{a. Starten met een reactieve vloeistof:} Het proces begint met monomeren en polymeren met een laag moleculair gewicht.
+ \item \textbf{b. Chemische reacties: }De moleculen binden zich met elkaar, waardoor het moleculair gewicht sterk toeneemt.
+ \item \textbf{c. Gelatie (gelation):} Er begint zich een uitgebreid 3D-netwerk te vormen, hier gaat het materiaal van vloeistof naar een gel.
+ \item \textbf{d. Volledige uitharding (full cure):} Het 3D-netwerk is volledig afgewerkt en het materiaal is een vaste stof geworden.
+\end{itemize}
+Heel dit proces speelt zich dus af in de matrijs, omdat je moet wachten tot de chemische reactie is voltooid (ipv afkoelen) is de cyclustijd veel langer, dit kan tot wel 20min per stuk duren, dit maakt het proces bij thermoplasten veel lager.
+\subsubsection{Uithardingsgraad en reactiesnelheid (Degree of cure - rate of reaction)}
+Hier beschrijven we rap de uitharding via de thermodynamica en kinetica.
+\newline
+\newline
+In de ideale situatie bereiken we een volledige uitharding, wat overeenkomt met de maximale reactie-enthalpie (totale warmteontwikkeling, $H_{\infty}$). De momentane uithardingsgraad ($\alpha$) is de verhouding tussen de op dat moment vrijgekomen warmte (H) en deze maximale warmte: $\alpha = \frac{H}{H_{\infty}}$.
+\newline
+\newline
+De reactiesnelheid waarmee het materiaal uithardt, wordt gemodelleerd met de volgende formule:
+\begin{align*}
+ \frac{\partial \alpha}{\partial t} = K_{r} \cdot (1-\alpha)^{n} \cdot \alpha^{m}
+\end{align*}
+Waarbij; m en n de ordes van de specifieke chemische reactie zijn, de factor $K_{r}$ de reactiesnelheidsconstante is, die afhankelijk is van de temperatuur volgens de Arrhenius-vergelijking:
+\begin{align*}
+ K_{r} = K_{0} \cdot e^{-\frac{\Delta E_{a}}{RT}}
+\end{align*}
+Waarbij; $K_{0}$ een pre-exponentiële factor is, $\Delta E_{a}$ de activeringsenergie van de reactie, R de universele gasconstante en T de absolute temperatuur.
+\newline
+\newline
+De volgende figuur bevat 2 grafieken die concreet aantonen wat de invloed van de opwarmsnelheid (heating rate) op de uitharding (cure) van een thermoharder is.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{opwarmsnelheiduitharding.png}
+  \caption{Invloed van opwarmsnelheid op uitharding van een thermoharder}
+  \label{fig:opwarmsnelheiduitharding.png}
+ \end{figure}
+De linker grafiek toont de snelheid van de chemische reactie door de tijd, die pieken die je ziet zijn voor verschillende opwarmsnelheiden, een snelle opwarming heeft duidelijk een hogere reactiesnelheid en snelle uitharding piek vergeleken met een trage opwarming.
+\newline
+\newline
+De rechter grafiek toont de uithardingsgraad ($\alpha$) in functie van de temperatuur, hier zie je bij een tragere opwarmsnelheid dat het materiaal bij een lagere temperatuur al een veel hogere uithardingsgraad bereikt dan bij een snellere opwarming, dit is omdat bij een tragere opwarming het materiaal simpelweg meer tijd krijg om de chemische reacties te laten plaatsvinden.
+\subsubsection{Invloed op de viscositeit}
+Viscositeit is afhankelijk van de temperatuur, dus zoals bij de meeste vloeistoffen zal het verwarmen van het materiaal de viscositeit doen dalen. Maar terwijl de temperatuur stijgt, is het materiaal ook chemisch aan het reageren en worden de ketens gevormd wat de vloeistof 'dikker' maakt. Dus het effect wordt op een speciale manier wiskundig verklaard:
+\begin{align*}
+  \eta = A_{\eta}\cdot e^{\frac{E_{a}}{RT}} \cdot (\frac{\alpha_{g}}{\alpha_{g}-\alpha})^{A+B\alpha}
+\end{align*}
+Hierbij is $\alpha_{g}$ de uithardingsgraad op het \textbf{gelpunt}, dit is het moment wanneer het materiaal ongeveer 30\% tot 40\% is uitgehard. Naarmate de chemische reactie vordert, neemt de uithardingsgraad $\alpha$ toe, zodra deze even groot wordt als $\alpha_{g}$ (gelpunt),\textbf{ wordt de noemer in de breuk nul}, dit bewijst wiskundig wat we fysiek zien gebeuren in de praktijk, de viscositeit schiet in een fractie van een seconde asymptotisch naar oneindig, het materiaal verandert abrupt van een vloeistof in een vaste, rubberachtige gel en weigert nog verder in de matrijs te stromen.
+\newline
+\newline
+Dat gelpunt waar de hars transformeert naar een gel is in tegenstelling tot smelten of een glastransitie, een onomkeerbare (irreversible) overgang. Vanaf hier wordt dat 3D-netwerk gevormd.
+\newline
+\newline
+De glastransitie temperatuur (Tg) waarbij het materiaal overgaat van een harde, glasachtige toestand naar een zachtere rubberachtige toestand (dus niet smelten) is wel reversibel. Bij thermoharders is die temperatuur niet constant maar afhankelijk van de uithardingsgraad, beschreven door deze formule:
+\begin{align*}
+ T_{g}(\alpha) = T_{g0} + \frac{(T_{g\infty} - T_{g0})\lambda \cdot \alpha}{1-(1-\lambda)\alpha}
+\end{align*}
+Het vitrificatiepunt (of verglazingspunt) is het punt waarop de verschuivende glastransitietemperatuur exact gelijk wordt aan de actuele verwerkingstemperatuur (processing temperature).
+\newline
+\newline
+De volgende grafieken illustreren het concept van het gelpunt in de praktijk voor het materiaal polyurethaan (PUR):
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{grafiekenPUR.png}
+  \caption{Grafieken PUR}
+  \label{fig:grafiekenPUR.png}
+ \end{figure}
+De linker grafiek toont de resultaten van een meting met een 'parallel plate rheometer' bij een cst temp. van 120°C. Hier is zichtbaar dat de materiaaleigenschappen veranderen door de tijd. Er worden 2 waarden uitgezet: de 'Storage modulus' (G, de blokjes, wat de opbouw van elastische, vaste stofeigenschappen weergeeft) en de 'Loss modulus' (G'', de driehokjes, war staat voor de viskeuze, vloeibare eigenschappen). De verticale stippelijn markeert de gel time, het moment waarop het materiaal stopt met vloeien en dus transformeert naar een vaste gel.
+\newline
+\newline
+De rechter grafiek (Geltijd in functie van temperatuur) toont perfect aan hoe afhankelijk deze chemische reactie is van de warmte. De horizontale as toont de temperatuur (°C) en de verticale as toont hoelang het duurt voor het materiaal zijn gelpunt bereikt (Gel time in seconden). Je ziet een hele duidelijke dalende trend: hoe hoger de temperatuur, hoe korter de geltijd. Bij 50°C duurt het bijvoorbeeld extreem lang (bijna 5000 seconden) voordat de hars uithardt tot een gel, terwijl dit bij 150°C in een fractie van die tijd gebeurt.
+\subsection{Processing of thermosets (Verwerken van thermoharders)}
+\subsubsection{Reaction Injection Moulding (RIM)}
+Bij het klassiek spuitgieten gebruikten we dus pellets, wat uitsluitend voor thermoplasten werkt, thermoharders vormen een permanent 3D-netwerk dat je niet kan smelten zodra het is uitgehard, dus zullen we iets anders moeten doen.
+\newline
+\newline
+We gaan hier vloeistoffen mengen ipv korrels, we vertrekken met 2 sterk reactieve, vloeibare chemicaliën (kleien moleculen of monomeren), deze worden in exacte hoeveelheden naar en mixerkop gepompt en daar gemengd. Initieel bestaat het uit kleine moleculen dus heeft het een lage viscositeit (zeer vloeibaar), dus kan het onder lage druk de matrijs ingespoten worden, het voordeel is dus dat de benodigde sluitkracht van de machine veel lager ligt waardoor grotere, lichtere en goedkopere matrijzen gebruikt kunnen worden om forse onderdelen (zoals autobumpers) te maken. De polymerisatie vindt volledig plaats in de matrijs, het grote nadeel is dus wel die trage cyclustijd dat soms tot 20min kan duren.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{RIM.png}
+  \caption{Reaction Injection Moulding (RIM)}
+  \label{fig:RIM.png}
+ \end{figure}
