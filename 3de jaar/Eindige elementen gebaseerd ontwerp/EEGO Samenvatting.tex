@@ -11,6 +11,7 @@
 \usepackage{microtype}
 \usepackage[nobib]{../../school-macros}
 \usepackage{hyperref}
+\raggedbottom
 \begin{document}
 % Titelinformatie
 \kuleuventitle
@@ -18,9 +19,14 @@
 {Eindig Elementen Gebaseerd Ontwerp}
 {Louic Cooreman}
 {Academiejaar 2025-2026}
+\newpage
+Deze samenvatting, en velen anderen zijn allemaal beschikbaar op GitHub: \url{https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs}, bijdragen hieraan is zeker geapprecieerd! Het helpt niet alleen ons jaar, maar ook de jaren na ons. Zeker voor dit vak aangezien er zo goed als niks op StudForum staat en het cursusmateriaal eerlijk gezegd slordig is. Indien er vragen zijn over deze samenvatting, of andere samenvattingen van deze GitHub, stuur mij dan aub een berichtje op Discord (@louiccooreman).
+\newline
+\newline
+Deze samenvatting voor eindige elementen is gemaakt op basis van lesnotities, de slides, cursusmateriaal en toledovideos allemaal in 1 geramd in een notebook. Natuurlijk schrijf ik zelf wel alles, notebook was er bij om de leerstof uit te leggen aan mij en om het geheel proces gewoon te versnellen. (Er staan een aantal schrijffouten in of slordige zinnen die ik te lui was om aan te passen, ik heb deze samenvatting gemaakt zodat ik er zelf mee kon leren).
+\newline
 \tableofcontents
 \newpage
-
 \chapter{Introductie tot numerieke simulaties}
 \subsection{Numerieke analyse in ontwerp}
 \begin{conceptbox}[Belangrijke definitie]
@@ -1516,6 +1522,1096 @@ cos(\theta)sin(\theta) & sin^2(\theta) & -cos(\theta)sin(\theta) & -sin^2(\theta
 \end{Bmatrix}
 \end{align*}
 Zodra de computer dus voor elke schuine staaf zo een elementstijfheidsmatrix (globaal) heeft opgesteld kan hij de globale stijfheidsmatrix gewoon maken zoals we eerder deden. De matrix gaat hier wel groter zijn doordat het aantal vrijheidsgraden per knoop met een factor 2 (voor 2D) of 3 (voor 3D) is toegenomen. Als je in de software in je postprocessor naar bvb. je spanningen wilt zien krijg je vaak de keuze om dit in een globale of lokale assenstelsel te bezien, je moet altijd het lokale assenstelsel bekijken! Want stel je hebt een schuine balk in een brug en je wilt weten hoeveel kracht deze balk aankan voor hij afbreekt (axiale normaalspanning in de lengte van de balk) dan heb je de lokale spanning nodig, een globale spanning zegt je niet veel.
+\newpage
+\chapter{De directe methode voor 1D Beam elementen}
+Dus tot nu toe hebben we eigelijk uitsluitend gewerkt met 1D ROD elementen, dit had relatief simpele wiskunde omdat we als aanname maakte dat elke knop slechts 1 vrijheidsgraad had (kon alleen bewegen in zijn eigen x-richting), dit kon dus alleen trek- en drukkrachten (axiale krachten) opvangen. In de echte wereld bestaan constructies zelden alleen maar uit deze scharnierende staven, in de praktijk hebben we eigelijk ook vaak loodrechte krachten op deze staven, wat buiging introduceerd, om dit efficiënt te kunnen simuleren in 3D hebben ingenieurs 'engineering elements' bedacht (want 3D simulaties met volledige 3D-modellen kost te veel rekenkracht), dit is eigelijk een term voor elementen zoals het 1D-beam balkelement of 2D-plaatelementen(shell). In deze les introduceren wij het BEAM-element, dit lost de limitaties van het ROD-element op door de knopen extra vrijheidsgraden te geven. (Een knoop kan nu ook verticaal verplaatsen en roteren rond de as, wat buiging dus mogelijk maakt).
+\newline
+\newline
+Meer vrijheidsgraden dus de wiskunde dat we eerder zagen gaat niet meer exact zijn, we gaan extra aannames moeten maken om de wiskunde nog steeds relatief simpel te houden en we gebruiken hier dus iets andere methodes ook omdat het beams zijn.
+\newline
+\newline
+Voor 1D-balken is de meest gebruikte aanname de \textbf{Bernoulli theorie}, deze gaat ervan uit dat een \textit{doorsnede tijdens het buigen vlak blijft en perfect loodrecht op de neutrale as blijft} staan, als je dit niet snapt, pak een boek een buig het, je zult zien dat door afschuiving van die papieren die over elkaar willen glijden en dat het in de werkelijkheid eigelijk niet klopt dat die doorsnede vlak loodrecht op de neutrale as blijft (voor structuren waar dit wel belangrijk is om in rekening te brengen word de \textbf{Timoshenko} theorie gebruikt).
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{bernouillivstimoshenko.png}
+  \caption{Timoshenko vs Bernoulli theorie}
+  \label{fig:bernouillivstimoshenko.png}
+ \end{figure}
+Dus om even duidelijk te zijn, wij gaan gebruik maken van deze versimpelde (Euler)-Bernouilli theorie, de horizontale lijnen van de volgende figuur blijven dus loodrecht op de verticale lijnen (die wel wat krom trekken bij buiging).
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{eullerbernouilli.png}
+  \caption{Euler-Bernoulli theorie}
+  \label{fig:eullerbernouilli.png}
+ \end{figure}
+In de les toont de proff de volgende figuur:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.3\textwidth]{voorbeeldbeam.png}
+  \caption{Voorbeeld van een BEAM-element}
+  \label{fig:voorbeeldbeam.png}
+ \end{figure}
+Dit is een BEAM met verplaatsingen in de y-richting en rotaties, hierbij zijn x-richtingen achterovergelaten om de berekeningen te versimpelen aangezien we x-richtingen eigelijk vorige les zagen. We focussen eigelijk op puur buiging hier, hiervoor heeft een knoop in 2D alleen een verplaatsing $\tilde{u}_z$ en een rotatie $\tilde{\theta}_y$ nodig, het resultaat hiervan is een 4x4 stijdheidsmatrix.
+\subsection{Euler-Bernoulli balktheorie}
+Dus we gaan buiging simuleren met behulp van deze theorie, maar uit deze theorie volgt een belangrijke relatie tussen de verticale verplaatsing en de rotatiehoek, deze is simpelweg:
+\begin{align*}
+\theta_y = \frac{\partial u_z}{\partial x}
+\end{align*}
+Omdat die twee bewegingen zo nauw verbonden zijn, geeft de docent aan dat we vanaf nu in onze knooppunten (nodes) zówél de verplaatsing als de rotatie moeten meenemen als vrijheidsgraden om buiging correct te kunnen simuleren. Eigelijk zeggen we dan dit: $\tilde{\theta}_y = \frac{\partial \tilde{u}_z}{\partial x}$, dit is dus een belangrijke relatie die we moeten onthouden.
+\newline
+\newline
+Onderaan op slide 3 zien we ook nog de Euler-Bernoulli differentiaalvergelijkingen, deze laten zien hoe de dwarskracht (Vz), het buigmoment (My), de hoekverdraaiing ($\theta_y$) en de verplaatsing ($u_z$) perfect aan elkaar gelinkt zijn door ze af te leiden of te integreren.
+\begin{align*}
+EI \frac{\partial^4 u_z}{\partial x^4} = EI \frac{\partial^3 \theta_y}{\partial x^3} = w(x)\\
+EI \frac{\partial^3 u_z}{\partial x^3} = EI \frac{\partial^2 \theta_y}{\partial x^2} = V_z(x)\\
+EI \frac{\partial^2 u_z}{\partial x^2} = EI \frac{\partial \theta_y}{\partial x} = M_y(x)
+\end{align*}
+We zien dat als we 1 keer het buigmoment integreren we de hoekverdraaiing krijgen, als we deze nog eens integreren krijgen we de verplaatsing, dit is dus een belangrijke relatie die we moeten onthouden. Deze worden later hier nog wel gebruikt om te bewijzen hoe de waarden in die nieuwe 4x4 stijfheidsmatrix tot stand komen via de 'directe methode' of 'Navier methode'.
+\subsubsection{De beperkingen van deze theorie}
+Omdat de theorie zegt dat de doorsnede wiskundig perfect loodrecht blijft, betekent dit dat de schuifvervorming (shear strain $\gamma_{xy}$) op nul wordt gezet. In de echte werel MOET er echter een schuifspanning ($\tau_{xy} \neq 0$) zijn om een krachtenevenwicht te hebben. Dus kort eigelijk 'verwaarloost deze theorie de schuifspanningen in de structuur'.
+\newline
+\newline
+Wanneer mogen we deze theorie dan gebruiken zodanig dat deze nog steeds een goede benadering geeft? Simpel. Voor 'lange, slanke balken', de vuistregel is dat de verhouding tussen lengte een hoogte (L/h) minstens 5 tot 10 moet zijn, dus:
+\begin{align*}
+\frac{L}{h} > 5 - 10
+\end{align*}
+Voor dikkere beams gebruiken we dus Timoshenko of 'Reddy-Bickford', deze complexere beam theorieën gaan we niet dieper op in, het is gewoon belangrijk om te weten dat deze bestaan en worden toegepast in commerciële FEA-software, zoals NX.
+\subsection{Elementstijfheidsmatrix voor beam elementen (zuivere buiging)}
+Even terug naar dat voorbeeld van de les dat ik eerder had vermeld, het is pas hier dat we hier echt de berekeningen mee gaan doen (ik vermeldde het gewoon al eerder om te zeggen van die 4x4 matrix). Nu gaan we dus die 4x4 stijfheidsmatrix voor het beam elementje bepalen met de directe methode, dit is het zelfde principe als wat we eerder deden, maar dan wat uitgebreider. Omdat we 2 knopen hebben en buiging toestaan, heeft elke knoop 2 vrijheidsgraden, de directe methode zegt (zoals we eerder zagen) dat elke kolom in de matrix een specifieke, geïsoleerde beweging voorstelt, we geven dus één vrijheidsgraad de waarde 1, en houden de andere 3 op 0, zo berekenen we welke krachten en momenten nodig zijn voor die waarde van 1 (want dan kan je die gelijkstellen aan gevonden k-waardes, dus dit zijn niet de definitieve krachten en momenten!) om de balk in die onnatuurlijke vorm te dwingen (dit is dus de vorm die je hebt als je die andere 3 op 0 zet, dit zien we ook in de volgende figuur):
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{directemethodebeam.png}
+  \caption{}
+  \label{fig:directemethodebeam.png}
+ \end{figure}
+Laten we eens beginnen met die eerste kolom, de rode kolom, hier zetten we $\tilde{u}_{z1} = 1$ en de rest op 0, dan bekomen we de volgende krachten en momenten als we matrix wiskunde doen:
+\begin{align*}
+  k_{11} \cdot 1 + k_{12} \cdot 0 + k_{13} \cdot 0 + k_{14} \cdot 0 = k_{11} = \tilde{F}_{z1}\\
+  k_{21} \cdot 1 + k_{22} \cdot 0 + k_{23} \cdot 0 + k_{24} \cdot 0 = k_{21} = \tilde{M}_{y1}\\
+  k_{31} \cdot 1 + k_{32} \cdot 0 + k_{33} \cdot 0 + k_{34} \cdot 0 = k_{31} = \tilde{F}_{z2}\\
+  k_{41} \cdot 1 + k_{42} \cdot 0 + k_{43} \cdot 0 + k_{44} \cdot 0 = k_{41} = \tilde{M}_{y2}
+\end{align*}
+Dus we bekomen eigelijk kolom 1 van de elementstijfheidsmatrix, deze kolom correspondeert hier met de krachten en momenten die dus nodig zijn om die specifieke beweging van $\tilde{u}_{z1} = 1$ te bekomen, dit is dus niet de echte kracht en moment die je in de werkelijkheid zal hebben, maar het is een soort van 'fictieve' kracht en moment die nodig zijn om die specifieke beweging te bekomen.
+\newline
+\newline
+Kijk nu naar die figuur, omdat we hier gewoon een verplaatsing willen in knoop 1 gaat deze dus vertical hoger staan dan knoop 2 (omdat die geen verplaatsing mag hebben), hiervoor heb je de kracht $k_{11}$ dus nodig om die te verplaatsen, en omdat de hoek in knoop 1 ook 0 moet zijn gaat de beam daarna nog ff recht moeten lijken,, hiervoor is een moment nodig ($k_{21}$), dit is waarom we een s-vorm krijgen in de figuur, in knoop 2 mag er trouwens geen verplaatsing zijn en ook geen hoek (dus hier ook horizontaal recht in die knoop), hier is een reactiekracht nodig ($k_{31}$) en dus ook een moment om die hoek van 0 te forceren ($k_{41}$).
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{1stekolomingezoomed.png}
+  \caption{Visuele interpretatie van de eerste kolom van de stijfheidsmatrix}
+  \label{fig:1stekolomingezoomed.png}
+ \end{figure}
+Die krachten en momenten kunnen we bepalen met de formules van Hibbeler uit deze figuur: 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{hibbelerformules.png}
+  \caption{}
+  \label{fig:hibbelerformules.png}
+ \end{figure}
+Hiermee bepalen we het volgende:
+\begin{align*}
+  \tilde{u}_{z1} = 1 = \frac{k_{11}L^3}{3EI} - \frac{k_{21}L^2}{2EI}
+\end{align*}
+\begin{warningbox}[Superpositiemethode! Is confusing ...]
+  Bij de superpositiemethode wordt het effect van meerdere belastingen apart berekend en daarna algebraïsch opgeteld. Eerst wordt een tekenconventie gekozen voor krachten, momenten, verplaatsingen en rotaties (bv. omhoog positief en tegenwijzerszin positief, Wim zegt, pak best gwn positief altijd). De gekozen richting van een kracht of moment bepaalt echter niet rechtstreeks het teken in de vergelijking. Het teken hangt af van het effect dat die belasting veroorzaakt op de beschouwde verplaatsing of rotatie:
+\begin{itemize}
+    \item werkt het effect mee met de positieve richting $\rightarrow$ positieve bijdrage
+    \item werkt het effect tegen de positieve richting $\rightarrow$ negatieve bijdrage
+\end{itemize}
+Dit wordt wel duidelijk in de voorbeeld berekening hierna.
+\end{warningbox}
+Dus, hier is de kracht in de vergelijking positief omdat de kracht dus in dit geval zorgt voor een verplaatsing in de positieve richting (positief effect dus), het moment dat is aangelegd is in de positieve richting, als je dit op die knoop doet zie je echter wel dat de knoop naar beneden zal verplaatsen (negatief effect), dit is waarom het moment in de vergelijking negatief is, dit is dus een voorbeeld van hoe het teken van een kracht of moment niet rechtstreeks bepaald wordt door de richting van die kracht of moment, maar door het effect dat deze heeft op de verplaatsing of rotatie.
+\newline
+\newline
+Ook bepalen we nog dit:
+\begin{align*}
+ \tilde{\theta}_{y1} = 0 = - \frac{k_{11}L^2}{2EI} + \frac{k_{21}L}{EI} \rightarrow k_{21} = \frac{k_{11}L}{2}
+\end{align*}
+Hier zorgt de kracht $k_{11}$ voor een negatieve hoekverdraaiing (negatief effect) en het moment $k_{21}$ zorgt voor een positieve hoekverdraaiing (positief effect), dit is waarom we hier een minteken hebben voor de kracht en een plusteken voor het moment. (Als dit echt niet duidelijk is raad ik aan om het aan ChatGPT te vragen)
+\newline
+\newline
+Invullen van $k_{21}$ in de eerste vergelijking geeft ons:
+\begin{align*}
+\tilde{u}_{z1} = 1 = \frac{k_{11}L^3}{3EI} - \frac{\frac{k_{11}L}{2}L^2}{2EI} = \frac{k_{11}L^3}{3EI} - \frac{k_{11}L^3}{4EI} = \frac{k_{11}L^3}{12EI} \\
+\end{align*}
+\begin{align*}
+\rightarrow k_{11} = \frac{12EI}{L^3} \\
+\rightarrow k_{21} = \frac{6EI}{L^2}
+\end{align*}
+Uit het krachten evenwicht halen we ook:
+\begin{align*}
+ \sum F_z = 0 \rightarrow k_{31} = -k_{11} = -\frac{12EI}{L^3}\\
+ \sum M_{y2} = 0 \rightarrow k_{41} = -k_{21} + k_{11} \cdot L = -\frac{6EI}{L^2}
+\end{align*}
+Op een andere manier kunnen we dit ook doen, namelijk met Navier. We zullen dit nu is doen voor kolom 2:
+De situatie voor de 2de kolom ziet er zo uit:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{2dekolom.png}
+  \caption{Visuele interpretatie van de tweede kolom van de stijfheidsmatrix}
+  \label{fig:2dekolom.png}
+ \end{figure}
+Logisch want:
+\begin{align*}
+  k_{11} \cdot 0 + k_{12} \cdot 1 + k_{13} \cdot 0 + k_{14} \cdot 0 = k_{11} = \tilde{F}_{z1}\\
+  k_{21} \cdot 0 + k_{22} \cdot 1 + k_{23} \cdot 0 + k_{24} \cdot 0 = k_{21} = \tilde{M}_{y1}\\
+  k_{31} \cdot 0 + k_{32} \cdot 1 + k_{33} \cdot 0 + k_{34} \cdot 0 = k_{31} = \tilde{F}_{z2}\\
+  k_{41} \cdot 0 + k_{42} \cdot 1 + k_{43} \cdot 0 + k_{44} \cdot 0 = k_{41} = \tilde{M}_{y2}
+\end{align*}
+Dus gewoon de 2de kolom van de stijfheidsmatrix, deze kolom correspondeert hier met de krachten en momenten die nodig zijn om die specifieke beweging van $\tilde{\theta}_{y1} = 1$ te bekomen.
+\newline
+\newline
+Hier gaan we k-waardes bepalen met de formules van Navier die ik eerder vermeld had:
+\begin{align*}
+EI \frac{\partial^4 u_z}{\partial x^4} = EI \frac{\partial^3 \theta_y}{\partial x^3} = w(x)\\
+EI \frac{\partial^3 u_z}{\partial x^3} = EI \frac{\partial^2 \theta_y}{\partial x^2} = V_z(x)\\
+EI \frac{\partial^2 u_z}{\partial x^2} = EI \frac{\partial \theta_y}{\partial x} = M_y(x)
+\end{align*}
+Hier is $w(x)$ de wiskundige term voor een continue verdeelde belasting, deze is 0 in dit geval, deze 1 en 2 keer integreren geeft ons de volgende vergelijkingen:
+\begin{align*}
+ V_z(x) = EI \cdot (a)\\
+ M_y(x) = EI \cdot (ax + b)\\
+\end{align*}
+En uit deze 2 vinden we:
+\begin{align*}
+ \theta_y(x) = \frac{ax^2}{2} + bx + c\\
+  u_z(x) = \frac{ax^3}{6} + \frac{bx^2}{2} + cx + d
+\end{align*}
+Door de randvoorwaarden ($u_z(0) = 0$, $\theta_y(0) = 0$, $u_z(L) = 0$, $\theta_y(L) = 0$) van deze specifieke situatie in te vullen kunnen we de onbekende constanten a, b, c en d (dit zijn integratieconstanten moest het niet duidelijk zijn) bepalen, dit geeft ons:
+\begin{align*}
+a = \frac{6}{L^2}, b = -\frac{4}{L}, c = 1, d = 0
+\end{align*}
+Nu invullen geeft:
+\begin{align*}
+V_{z}(x) = EI \cdot (a)= \frac{6EI}{L^2}\\
+M_{y}(x) = EI \cdot (ax + b) = EI \cdot \left(\frac{6x}{L^2} - \frac{4}{L}\right)
+\end{align*}
+Dan de juiste x-waarde invullen geeft ons de gewenste k-waardes:
+\begin{align*}
+k_{12} = V_z(0) = \frac{6EI}{L^2}\\
+k_{22} = -M_y(0) = \frac{4EI}{L}\\
+k_{32} = -V_z(L) = -\frac{6EI}{L^2}\\
+k_{42} = M_y(L) = \frac{2EI}{L}
+\end{align*}
+Hier dus opletten met de plus en min tekens, de positieve conventie weet je aan de hand van deze figuur:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{positieveconventie.png}
+  \caption{Positieve conventie voor krachten en momenten}
+  \label{fig:positieveconventie.png}
+ \end{figure}
+Analoog kan voor de andere kolommen gedaan worden, dit zou er zo uit zien:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{oplossingoefening.png}
+  \caption{Oplossing oefening directe methode voor beam elementen}
+  \label{fig:oplossingoefening.png}
+ \end{figure}
+Op het examen zou hij blijkbaar de matrix kunnen geven maar sommige elementen weglaten die je dan moet aanvullen met bvb. de krachtenevenwicht ofzo.
+\subsection{Vormfuncties voor beam elementen (zuivere buiging)}
+Kleine recap maar vormfuncties werden dus gebruikt om de vervorming over het volledige element, dus overal tussen de knopen in, te kunnen interpoleren op basis van de berekende waarden in de knopen. Bij een ROD met 2 knopen werd de verplaatsing $\tilde{u}_x$ berekend als $N_1 \tilde{u}_{xA} + N_2 \tilde{u}_{xB}$, bij een BEAM met 2 knopen en dus 4 vrijheidsgraden wordt dit dus zo beschreven: 
+\begin{align*}
+\tilde{u}_z(x) = N_1(x) \tilde{u}_{zA} + N_2(x) \tilde{\theta}_{yA} + N_3(x) \tilde{u}_{zB} + N_4(x) \tilde{\theta}_{yB}
+\end{align*}
+In matrix notatie $\hat{q} = [N] \tilde{q}$ ziet dit er dan zo uit:
+\begin{align*}
+\tilde{u}_z(x) =
+\begin{bmatrix}
+N_1 & N_2 & N_3 & N_4
+\end{bmatrix}
+\begin{Bmatrix}
+\tilde{u}_{zA} \\
+\tilde{\theta}_{yA} \\
+\tilde{u}_{zB} \\
+\tilde{\theta}_{yB}
+\end{Bmatrix}
+\end{align*}
+De groene lijn in volgende figuur stelt zich eigelijk dan $\tilde{u}_z(x)$ voor, dit is dus de verplaatsing van elk punt op het element, deze wordt dus bepaald door de vormfuncties en de waarden in de knopen.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{vormfunctiebeam.png}
+  \caption{Visuele interpretatie van $\tilde{u}_z(x)$ als functie van de vormfuncties en knoopwaarden}
+  \label{fig:vormfunctiebeam.png}
+ \end{figure}
+Terwijl de individuele vormfuncties er bvb. zo uit zien:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{individuelevormfuncties.png}
+  \caption{Visuele interpretatie van de individuele vormfuncties $N_1$, $N_2$, $N_3$ en $N_4$}
+  \label{fig:individuelevormfuncties.png}
+ \end{figure}
+Weet dus dat elke vormfunctie $N_i$ de fysieke vorm van een element beschrijft waarin je precies één specifieke vrijheidsgraad op 1 zet en de rest op 0 houdt. Dit kan je zien in de figuur hierboven die ik heb proberen schetsen, $N_1$ heeft een waarde 1 voor $\tilde{u}_{zA}$ en de rest staat op 0 (daarom begint het horizontaal in knoop A, daalt het van waarde 1 naar 0 in knoop B en eindigt het daar ook horizontaal), vormfunctie $N_3$ heeft dan een hoogte van 1 in knoop B en de rest zie je wel $\cdots$. Je ziet dus ook dat $N_2$ en $N_4$ beide in 0 eindigen in de knopen, hierbij is dus 1 hoek telkens op 1 gezet, de hoek dat dus niet horizontaal begint uit zen knoop ($N_2$ heeft $\tilde{\theta}_{yA}$ dus op 1 en $N_4$ heeft $\tilde{\theta}_{yB}$ op 1).
+\newline
+\newline
+Omdat we hier met een BEAM-element te maken hebben, hebben we buiging, dus de eerder geziene simpele vormfuncties van het ROD element gelden niet meer, we hebben hier 4 vrijheidsgraden ipv 2, dus lineaire vormfuncties werken niet, het is hier dus complexer. Dit is omdat volgens Euler-Bernoulli dus de rotatiehoek de wiskundige afgeleide van de verplaatsing ($\tilde{\theta}_y = \frac{\partial \tilde{u}_z}{\partial x}$). Omdat deze 2 bewegingen met elkaar verbonden zijn moet dus de rotatie ook als aparte vrijheidsgraad in rekening gebracht worden. Dus 4 vormfuncties zijn nodig door die 4 vrijheidsgraden. Deze eisen hierdoor ook een hogere orde (cubisch), we gaan dus 4 integratieconstanten (a, b, c en d) nodig hebben om de wiskundige kromme van de verplaatsing te kunnen beschrijven, dat dan deze derdegraads polynoom geeft:
+\begin{align*}
+  \hat{u}_z(x) = a + bx + cx^2 + dx^3
+\end{align*}
+En de afgeleide hiervan geeft ons de hoekverdraaiing:
+\begin{align*}
+  \hat{\theta}_y(x) = \frac{d\hat{u}_z(x)}{dx} = b + 2cx + 3dx^2
+\end{align*}
+En door per vormfunctie de bijhorende '0 en 1 waarden' in te vullen in de knopen kunnen we de constanten a, b, c en d oplossen om zo de 4 specifieke vergelijkingen van de vormfuncties; $N_1(x)$, $N_2(x)$, $N_3(x)$ en $N_4(x)$ te bepalen.
+\newline
+\newline
+Dit zullen we nu is doen dan, we beginnen met $N_1$, hier is $\tilde{u}_{zA} = 1$ en de rest op 0, dit geeft ons de volgende figuur:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{N1figuur.png}
+  \caption{Visuele interpretatie van de vormfunctie $N_1$}
+  \label{fig:N1figuur.png}
+ \end{figure}
+De formule van de verplaatsing invullen geeft ons:
+\begin{align*}
+  \hat{u}_z(x) = N_1(x) \cdot 1 + N_2(x) \cdot 0 + N_3(x) \cdot 0 + N_4(x) \cdot 0 = N_1(x) = a + bx + cx^2 + dx^3
+\end{align*}
+En dus op bekomen we ook de volgende uitkomsten voor de afstanden 0 en L voor x (dit zou normaal gezien zeer logisch moeten zijn, bij $\hat{u}_z(L)$ is $b = 0$ al ingevuld trouwens):
+\begin{align*}
+\hat{u}_z(0) = 1 \rightarrow a = 1\\
+\hat{\theta}_y(0) = 0 \rightarrow b = 0\\
+\hat{u}_z(L) = 0 \rightarrow 1 + cL^2 + dL^3 = 0 \\
+\hat{\theta}_y(L) = 0 \rightarrow 2cL + 3dL^2 = 0
+\end{align*}
+Hiermee vinden we dat $c = -\frac{3}{L^2}$ en $d = \frac{2}{L^3}$, dus de formule van de eerste vormfunctie is:
+\begin{align*}
+N_1(x) = 1 - \frac{3x^2}{L^2} + \frac{2x^3}{L^3}
+\end{align*}
+Op dezelfde manier kunnen we dit voor $N_2(x)$ doen:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{N2figuur.png}
+  \caption{Visuele interpretatie van de vormfunctie $N_2$}
+  \label{fig:N2figuur.png}
+ \end{figure}
+\begin{align*}
+  \hat{u}_z(0) = 0 \rightarrow a = 0\\
+  \hat{\theta}_y(0) = 1 \rightarrow b = 1\\
+  \hat{u}_z(L) = 0 \rightarrow L + cL^2 + dL^3 = 0 \\
+  \hat{\theta}_y(L) = 0 \rightarrow 1 + 2cL + 3dL^2 = 0
+\end{align*}
+Hiermee vinden we dat $c = -\frac{2}{L}$ en $d = \frac{1}{L^2}$, dus de formule van de tweede vormfunctie is:
+\begin{align*}
+N_2(x) = x - \frac{2x^2}{L} + \frac{x^3}{L^2}
+\end{align*}
+Dit is trouwens exact hetzelfde dat we bekomen voor de $u_z(x)$ die we in sectie 5.0.2 voor de 2de kolom hebben berekent als we daar die a, b, c en d die daar werden bekomen invullen, dus de Bernoulli methode geeft exact dezelfde uitkomst als de analytische oplossing.
+\newline
+\newline
+Op dezelfde manier kunnen we dit voor $N_3(x)$ en $N_4(x)$ doen, dit geeft ons de volgende formules (uitwerking staat op de slides maar dit is dus identiek aan de vorige stappen, ik zet hier wel nog de figuren bij):
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{N3enN4figuur.png}
+  \caption{Visuele interpretatie van de vormfunctie $N_3$ en $N_4$}
+  \label{fig:N3enN4figuur.png}
+ \end{figure}
+\begin{align*}
+N_3(x) = \frac{3x^2}{L^2} - \frac{2x^3}{L^3}\\
+N_4(x) = -\frac{x^2}{L} + \frac{x^3}{L^2}
+\end{align*}
+\subsection{Spanningsberekeningen voor beam elementen}
+Om als ingenieur te weten wanneer een balk gaat breken is het belangrijk om de spanningen in die balk te kunnen analyseren (en dus eerst berekenen), dit kunnen we bepalen aan de hand van het feit dat als een balk onder spanning belast worden, de individuele 'punten' van de balk een bepaalde verplaatsing zullen hebben door de doorbuiging van die balk (door zo compressie en tensie), of als er echt getrokken word in de axiale richting zoals bij de rod. De horizontale verplaatsing hierdoor noemen we $u_x(x,z)$, de axiale verplaatsing noemen we $u_x(x,0)$ en de verplaatsing door buiging wordt beschreven door $-z \cdot \theta_y(x,0)$ want door de rotatie $\theta_y$ kantelt de doorsnede eigelijk, dus hoe verder een vezel van het hart van de balk (de neutrale as), hoe meer hij horizontaal wegschuift (z is trouwens de afstand tot de neutrale as). De totale horziontale verplaatsing beschrijven we dus als:
+\begin{align*}
+u_x(x,z) = u_x(x,0) - z \cdot \theta_y(x,0)
+\end{align*}
+Dit is trouwens duidelijk te zien in volgende figuur:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{spanningsberekeningenfiguur.png}
+  \caption{Verdraaiing balk met bijhorende verplaatsingen}
+  \label{fig:spanningsberekeningenfiguur.png}
+ \end{figure}
+Wij gaan ons hier echter alleen focussen op die verplaatsing door buiging, dus geen axiale verplaatsing, dus $u_x(x,z) = -z \cdot \theta_y{x,0}$. En omdat we volgens de Bernoulli theorie weten dat $\theta_y = \frac{\partial u_z}{\partial x}$ kunnen we dit ook zo schrijven:
+\begin{align*}
+u_x(x,z) = -z \cdot \frac{\partial u_z(x,0)}{\partial x}
+\end{align*}
+We weten ook dat de spanning afhankelijk is van de rek, en de rek simpelweg de afgeleide van de verplaatsing is, dus:
+\begin{align*}
+\sigma_x(x,z) = E \cdot \varepsilon_x(x,z) = E \cdot \frac{\partial u_x(x,z)}{\partial x} = -E \cdot z \cdot \frac{\partial^2 u_z(x,0)}{\partial x^2}
+\end{align*}
+Dus dit is eigelijk de theoretische formule, in FEA-software kennen we dus de exacte continue doorbuiging niet dus gebruiken we de benadering $\hat{u}_z(x)$ die we eerder hadden:
+\begin{align*}
+\hat{u}_z(x) =
+\begin{bmatrix}
+  N_1(x) & N_2(x) & N_3(x) & N_4(x)
+\end{bmatrix}
+\begin{Bmatrix}
+  \tilde{u}_{zA} \\
+  \tilde{\theta}_{yA} \\
+  \tilde{u}_{zB} \\
+  \tilde{\theta}_{yB}
+\end{Bmatrix}
+=
+[N] \tilde{q}
+\end{align*}
+Als we dit in de formule van de buigspanningen stoppen zie de computer de knoopwaarden ($\tilde{q}$) als constanten, dus hoeft de software enkel de 2de afgeleide van de vormfuncties te berekenen, dit geeft ons:
+\begin{align*}
+\hat{\sigma}_x(x,z) = -E \cdot z \cdot \frac{\partial^2 [N]\tilde{q}}{\partial x^2} = -E \cdot z \cdot 
+\begin{bmatrix}
+\frac{\partial^2 N_1(x)}{\partial x^2} & \frac{\partial^2 N_2(x)}{\partial x^2} & \frac{\partial^2 N_3(x)}{\partial x^2} & \frac{\partial^2 N_4(x)}{\partial x^2}
+\end{bmatrix}
+\begin{Bmatrix}
+  \tilde{u}_{zA} \\
+  \tilde{\theta}_{yA} \\
+  \tilde{u}_{zB} \\
+  \tilde{\theta}_{yB}
+\end{Bmatrix}
+\end{align*}
+Uit deze formule zien we 2 cruciale eigenschappen die nodig zijn voor FEA-software om de spanningen te kunnen berekenen:
+\begin{itemize}
+  \item \textbf{Een specifieke z-coördinaat is vereist:} We zien uit de formule dat dit nodig is (de afstand tot neutrale as), dus de buigspanning kan pas berekend worden als er wordt gespecifieerd op welke hoogte in de doorsnede van de balk we de spanning willen weten.
+  \item \textbf{Lineair spanningsverloop in de x-richting:} Omdat de vormfuncties $N_i$ allemaal derdegraads polynomen zijn, zal hun tweede afgeleide allemaal lineaire functies zijn, dit betekent dat het spanningsverloop in de x-richting lineair zal zijn, dit is een belangrijke eigenschap die we moeten onthouden. Dus dit model voorspeelt dat de axiale buigspanning over de lengte van het element altijd perfect lineair verloopt.
+\end{itemize}
+\subsection{Verdeelde belastingen op beam elementen (zuivere buiging)}
+Verdeelde belastingen komen vaak in de praktijk voor, voorbeelden zijn zwaartekracht, wind of waterdruk, deze gaan dus vaak over de volledige lengte van een balk, weergegeven als een continue functie $f(x)$ in volgende figuur:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{verdeeldebelastingbalk.png}
+  \caption{Verdeelde belasting op een balk, weergegeven als een continue functie $f(x)$}
+  \label{fig:verdeeldebelastingbalk.png}
+ \end{figure}
+De computer kan alleen waarden in knopen berekenen, daarom moeten we deze verdeelde belasting vertalen naar equivalente knoopkrachten ($\tilde{F}$), er zijn 2 manieren om deze verdeelde belasting te verdelen over de omliggende knopen:
+\begin{itemize}
+ \item \textbf{Lumped distribution (grof):} Dit is de simpelere methode waarbij we de totale kracht 'uitmiddelen' over de omliggende knopen (bvb. $\tilde{F}_1 = \tilde{F}_2 = \frac{1}{2} \int_L^{} f(x) dx$), dit is dus een grove benadering die niet altijd even accuraat is (want eigelijk negeert het buigmomenten, stel je hebt een belasting int midden van een balk die dan exact verdeeld wordt naar de 2 buitenste knopen, dan is het buigmoment die de kracht int midden zou geven gewoon verwaarloost), maar het is wel snel en makkelijk.
+ \item \textbf{Consistent mapping (Exact/Energie-equivalent):} Dit is de correcte FEA-methode, hier maken we gebruik van het principe van behoud van energie, meer specifiek, \textit{'dat de arbeid verricht door de knoopkrachten exact gelijk moet zijn aan de arbeid verricht door de verdeelde belasting'}, dus:
+\begin{align*}
+  \frac{1}{2} \{\tilde{u}\}^T \tilde{F} = \frac{1}{2}\int_L^{} \hat{u}(x)^T f(x) dx
+\end{align*}
+Met dus $\hat{u}(x) = [N] \{\tilde{u}\}$, uit deze vergelijking volgt dan ook de volgende formule:
+\begin{align*}
+  \tilde{F} = \int_L^{} [N]^T f(x) dx
+\end{align*}
+Dit is dus de formule die we moeten gebruiken om de equivalente knoopkrachten te berekenen voor een gegeven verdeelde belasting, deze methode zorgt ervoor dat de energie die in het systeem wordt gestopt door de verdeelde belasting correct wordt gerepresenteerd door de knoopkrachten, dit is dus een veel nauwkeurigere benadering dan de lumped distribution methode, maar het is ook complexer en tijdrovender om te berekenen.
+\end{itemize}
+\subsubsection{Consistent mapping toepassen}
+Als we nu deze integraal gaan toepassen op een BEAM-element gebeurt er iets belangrijks. Omdat balk-elementen ook rotatie-vrijheidsgraden hebben, zorgt de verdeelde belasting er via deze methode voor dat er niet alleen verticale krachten, maar ook buigmomenten in de knopen worden geïntroduceerd (Want de vormfuncties in $[N]$ die behoren tot de rotatie-vrijheidsgraden en dit vermenigvuldigen met een belasting in die integraal over een afstand zorgt dus voor een buigmoment in je matrixvergelijking).
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{momentengeintroduceerd.png}
+  \caption{Vrij lichaams schema met momenten}
+  \label{fig:momentengeintroduceerd.png}
+ \end{figure}
+Dit wordt dan eigelijk:
+\begin{align*}
+  \tilde{F} = \int_L^{} [N]^T f(x) dx =
+  \begin{Bmatrix}
+    \tilde{F}_{z1} \\
+    \tilde{M}_{y1} \\
+    \tilde{F}_{z2} \\
+    \tilde{M}_{y2}
+  \end{Bmatrix}
+  =
+  \int_0^L
+  \begin{Bmatrix}
+    N_1(x) \\
+    N_2(x) \\
+    N_3(x) \\
+    N_4(x)
+  \end{Bmatrix}
+  f(x) dx
+\end{align*}
+We zullen dit nu is invullen voor 3 typisch voorkomende verdeelde belastingen:
+\subsubsection{1. Uniforme verdeelde belasting}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\textwidth]{uniformebelastingvoorbeeld.png}
+  \caption{Uniforme belasting voorbeeld}
+  \label{fig:uniformebelastingvoorbeeld.png}
+ \end{figure}
+Hierbij geldt dat $f(x) = -w$ (een constante), dus:
+\begin{align*}
+  \tilde{F} = \int_L^{} [N]^T f(x) dx =
+  \begin{Bmatrix}
+    \tilde{F}_{z1} \\
+    \tilde{M}_{y1} \\
+    \tilde{F}_{z2} \\
+    \tilde{M}_{y2}
+  \end{Bmatrix}
+  =
+  \int_0^L
+  \begin{Bmatrix}
+    N_1(x) \\
+    N_2(x) \\
+    N_3(x) \\
+    N_4(x)
+  \end{Bmatrix}
+  f(x) dx
+  =
+  -w \int_0^L
+  \begin{Bmatrix}
+    1 - 3 \frac{x^2}{L^2} + 2 \frac{x^3}{L^3} \\
+    x - \frac{2x^2}{L} + \frac{x^3}{L^2} \\
+    3 \frac{x^2}{L^2} - 2 \frac{x^3}{L^3} \\
+    -\frac{x^2}{L} + \frac{x^3}{L^2}
+  \end{Bmatrix}
+  dx
+\end{align*}
+Dit geeft:
+\begin{align*}
+  \tilde{F} =
+  \begin{Bmatrix}
+    \tilde{F}_{z1} \\
+    \tilde{M}_{y1} \\
+    \tilde{F}_{z2} \\
+    \tilde{M}_{y2}
+  \end{Bmatrix}
+  =
+  \begin{Bmatrix}
+    \frac{-wL}{2} \\
+    \frac{-wL^2}{12} \\
+    \frac{-wL}{2} \\
+    \frac{wL^2}{12}
+  \end{Bmatrix}
+\end{align*}
+\subsubsection{2. Lineair variërende verdeelde belasting}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\textwidth]{lineairvarieendevoorbeeld.png}
+  \caption{Lineair variërende belasting voorbeeld}
+  \label{fig:lineairvarieendevoorbeeld.png}
+ \end{figure}
+Hierbij geldt dat $f(x) = -\frac{w}{L}x$ (een lineaire functie), dus:
+\begin{align*}
+  \tilde{F} = \int_L^{} [N]^T f(x) dx =
+  \begin{Bmatrix}
+    \tilde{F}_{z1} \\
+    \tilde{M}_{y1} \\
+    \tilde{F}_{z2} \\
+    \tilde{M}_{y2}
+  \end{Bmatrix}
+  =
+  -w\int_0^L
+  \begin{Bmatrix}
+    1 - 3 \frac{x^2}{L^2} + 2 \frac{x^3}{L^3} \\
+    x - \frac{2x^2}{L} + \frac{x^3}{L^2} \\
+    3 \frac{x^2}{L^2} - 2 \frac{x^3}{L^3} \\
+    -\frac{x^2}{L} + \frac{x^3}{L^2}
+  \end{Bmatrix}
+  \frac{x}{L} dx
+\end{align*}
+Dit geeft:
+\begin{align*}
+  \tilde{F} =
+  \begin{Bmatrix}
+    \tilde{F}_{z1} \\
+    \tilde{M}_{y1} \\
+    \tilde{F}_{z2} \\
+    \tilde{M}_{y2}
+  \end{Bmatrix}
+  =
+  \begin{Bmatrix}
+    -\frac{3wL}{20} \\
+    -\frac{wL^2}{30} \\
+    -\frac{7wL}{20} \\
+    \frac{wL^2}{20}
+  \end{Bmatrix}
+\end{align*}
+\subsubsection{3. Puntkracht belasting}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\textwidth]{puntkrachtvooorbeeld.png}
+  \caption{Puntkracht belasting voorbeeld}
+  \label{fig:puntkrachtvooorbeeld.png}
+ \end{figure}
+Hierbij geldt dat $f(x) = -P \cdot \delta(x - a)$ (een puntkracht)($\delta$ is de Dirac-delta functie), meer specifiek is het in deze figuur een puntkracht in het midden van de balk, dus $f(x) = -P \cdot \delta(x - \frac{L}{2})$, dus:
+\begin{align*}
+  \tilde{F} = \int_L^{} [N]^T f(x) dx =
+  \begin{Bmatrix}
+    \tilde{F}_{z1} \\
+    \tilde{M}_{y1} \\
+    \tilde{F}_{z2} \\
+    \tilde{M}_{y2}
+  \end{Bmatrix}
+  =
+  -P\int_0^L
+  \begin{Bmatrix}
+    1 - 3 \frac{x^2}{L^2} + 2 \frac{x^3}{L^3} \\
+    x - \frac{2x^2}{L} + \frac{x^3}{L^2} \\
+    3 \frac{x^2}{L^2} - 2 \frac{x^3}{L^3} \\
+    -\frac{x^2}{L} + \frac{x^3}{L^2}
+  \end{Bmatrix}
+  \delta(x - \frac{L}{2}) dx
+\end{align*}
+Dit geeft:
+\begin{align*}
+  \tilde{F} =
+  \begin{Bmatrix}
+    \tilde{F}_{z1} \\
+    \tilde{M}_{y1} \\
+    \tilde{F}_{z2} \\
+    \tilde{M}_{y2}
+  \end{Bmatrix}
+  =
+  -P
+  \begin{Bmatrix}
+    1 - 3 \frac{\left(\frac{L}{2}\right)^2}{L^2} + 2 \frac{\left(\frac{L}{2}\right)^3}{L^3} \\
+    \frac{L}{2} - \frac{2\left(\frac{L}{2}\right)^2}{L} + \frac{\left(\frac{L}{2}\right)^3}{L^2} \\
+    3 \frac{\left(\frac{L}{2}\right)^2}{L^2} - 2 \frac{\left(\frac{L}{2}\right)^3}{L^3} \\
+    -\frac{\left(\frac{L}{2}\right)^2}{L} + \frac{\left(\frac{L}{2}\right)^3}{L^2}
+  \end{Bmatrix}
+\end{align*}
+Dit geeft:
+\begin{align*}
+  \tilde{F} =
+  \begin{Bmatrix}
+    \tilde{F}_{z1} \\
+    \tilde{M}_{y1} \\
+    \tilde{F}_{z2} \\
+    \tilde{M}_{y2}
+  \end{Bmatrix}
+  =
+  -P
+  \begin{Bmatrix}
+    -\frac{P}{2} \\
+    -\frac{PL}{8} \\
+    -\frac{P}{2} \\
+    \frac{PL}{8}
+  \end{Bmatrix}
+\end{align*}
+\subsection{Toepassing op een hyperstatic beam}
+\begin{warningbox}[Examen!]
+  Wat we nu gaan zien ga je moeten kunnen toepassen op het examen! Ook wil ik nog rap zeggen dat Wim zeer snel over deze voorbeelden ging in de les, het belangrijke was vooral het vergelijken van de grafieken van de verschillende methodes, ik heb daarom besloten om AI (notebook op basis van slides) de latex code hiervoor te doen genereren, ik heb het wel nagekeken!
+\end{warningbox}
+We gaan een praktijkoefening maken (die ook voorkwam in de oefensessies) van een hyperstatische balk, dit is een doorlopende balk met 3 steunpunten met een kracht op zoals we zien in volgende figuur:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{oefeninghyperstatischebalkVLS.png}
+  \caption{VLS hyperstatische balk}
+  \label{fig:oefeninghyperstatischebalkVLS.png}
+ \end{figure}
+De gegevens van deze oefening zijn:
+\begin{itemize}
+  \item $E = 210 GPa$
+  \item $L = 4 m$
+  \item $F = 1 kN$
+  \item $I = 349,2 cm^4$
+\end{itemize}
+Het doel hier is om de reactiekrachten, de exacte doorbuiging (y), de hoekverdraaiing ($\alpha$) en de buigmomenten (M) te berekenen. Dit doen we via 3 verschillende oplossingsstrategieën; de methode van Navier, de superpositie methode met 'kinematic constraint' en met de eindige elementen methode.
+\subsubsection{Methode van Navier}
+\begin{warningbox}[Bekijk Sterkteleer]
+  Voor dit stukje raad ik aan om toch al eens zeker te kijken naar de content van Sterkteleer
+\end{warningbox}
+Bij deze klassieke, analytische methode maken we gebruik van de differentiaalvergelijkingen van Euler-Bernoulli. We stellen de globale evenwichtsvergelijkingen en de momentenlijn op, en integreren deze vervolgens om de vergelijkingen voor hoekverdraaiing ($\alpha$) en doorbuiging ($y$) te vinden.
+
+\textbf{Stap 1: Globale evenwichtsvergelijkingen}
+\begin{itemize}
+  \item $\sum F_y = 0 \rightarrow A_y + B_y + C_y = F$
+  \item $\sum M_{z,A} = 0 \rightarrow B_y \cdot 2L + C_y \cdot 4L = F \cdot 3L$
+\end{itemize}
+
+\textbf{Stap 2: Momentenvergelijking opstellen}
+Met behulp van de Heaviside-stapfunctie $H(x-a)$ (die 'aanspringt' zodra je de coördinaat $a$ passeert) kunnen we het buigmoment over de volledige balk in één doorlopende vergelijking schrijven:
+\begin{align*}
+  M(x) &= A_y x + B_y(x - 2L)H(x - 2L) - F(x - 3L)H(x - 3L)
+\end{align*}
+
+\textbf{Stap 3: Integreren voor hoekverdraaiing en doorbuiging}
+Uit de theorie weten we dat $EI \cdot \alpha(x) = \int M(x) dx$ en $EI \cdot y(x) = \int \int M(x) dx$. Dit integreren introduceert twee integratieconstanten ($\alpha_0$ en $y_0$):
+\begin{align*}
+  EI\alpha(x) &= \frac{1}{2}A_y x^2 + \frac{1}{2}B_y(x - 2L)^2 H(x - 2L) - \frac{1}{2}F(x - 3L)^2 H(x - 3L) + EI\alpha_0 \\
+  EIy(x) &= \frac{1}{6}A_y x^3 + \frac{1}{6}B_y(x - 2L)^3 H(x - 2L) - \frac{1}{6}F(x - 3L)^3 H(x - 3L) + EI\alpha_0 x + EIy_0
+\end{align*}
+
+\textbf{Stap 4: Randvoorwaarden invullen}
+Omdat de balk op de drie steunpunten niet verticaal kan verplaatsen, kennen we drie kinematische randvoorwaarden:
+\[
+\begin{cases}
+  y(0) = 0 \\
+  y(2L) = 0 \\
+  y(4L) = 0
+\end{cases}
+\]
+
+\textbf{Stap 5: Resultaten bepalen}
+Door dit stelsel op te lossen, berekent de Navier methode de "exacte" reactiekrachten en integratieconstanten. 
+\begin{align*}
+  A_y &= -97,75 N \\
+  B_y &= 687,5 N \\
+  C_y &= 406,25 N
+\end{align*}
+\textit{AI zegt dat er een kleine rekenfout zit in die $A_y$, dus als je dit narekent en dit verschilt zou het misschien wel kunnen kloppen, ik heb hier gewoon de waarde van de slide overgenomen}
+
+En voor de constanten vinden we:
+\begin{align*}
+  y_0 &= 0 \\
+  \alpha_0 &= 3,4092 \cdot 10^{-4} \text{ rad}
+\end{align*}
+De grafieken die uit deze exacte Navier-methode volgen (V-diagram, M-diagram, hoekverdraaiing en doorbuiging) vormen de \textbf{'gouden standaard'}. Straks gaan we de resultaten van het Eindige-Elementenmodel (FEM) rechtstreeks over deze grafieken plotten om te zien of de software accuraat rekent!
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.65\textwidth]{resultatennavier.png}
+  \caption{Resultaten Navier-methode (V-diagram, M-diagram, verplaatsing en rotatie)}
+  \label{fig:resultatennavier.png}
+ \end{figure}
+\subsubsection{Methode van Superpositie (met 'kinematic constraint')}
+Bij deze slimmere, analytische methode uit de sterkteleer (gebaseerd op Appendix C uit het handboek van R.C. Hibbeler) splitsen we het complexe, hyperstatische probleem op in twee eenvoudige, statisch bepaalde standaardgevallen. We berekenen de verplaatsingen van elke belasting apart en tellen deze vervolgens algebraïsch bij elkaar op (superpositie).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{superpositiewithconstraint.png}
+  \caption{VLS + Standaardformules voor de doorbuiging van de balk (Hibbeler)}
+  \label{fig:superpositiewithconstraint.png}
+\end{figure}
+
+Om de wiskunde op te bouwen, gebruiken we de algemene standaardformule uit de tabel voor de doorbuiging aan de linkerkant van een puntlast $P$:
+\begin{align*}
+    v = \frac{-P \cdot b \cdot x}{6 \cdot E \cdot I \cdot L_{tot}} \left(L_{tot}^2 - b^2 - x^2\right)
+\end{align*}
+Hierbij is $L_{tot}$ de totale lengte van de ligger en $b$ de afstand van de kracht tot het rechter steunpunt. We passen dit nu stap voor stap toe op onze twee situaties:
+
+\begin{itemize}
+    \item \textbf{Situatie 1: Vervorming door de opwaartse reactiekracht $B_y$} \\
+    We negeren de externe kracht $F$ en kijken enkel naar de opwaartse reactiekracht $B_y$.
+    \begin{itemize}
+        \item Totale lengte ligger: $L_{tot} = 4L$
+        \item Kracht: $P = -B_y$ (negatief want hij duwt omhoog)
+        \item Afstand tot rechts: $b = 2L$ (kracht staat exact in het midden)
+    \end{itemize}
+    Vul dit in de standaardformule in:
+    \begin{align*}
+        y_1 &= \frac{-(-B_y) \cdot (2L) \cdot x}{6 \cdot E \cdot I \cdot (4L)} \left((4L)^2 - (2L)^2 - x^2\right) \\
+        y_1 &= \frac{2 B_y L x}{24 E I L} \left(16L^2 - 4L^2 - x^2\right) \\
+        y_1 &= \frac{B_y x}{12EI} \left(12L^2 - x^2\right)
+    \end{align*}
+    Omdat de formule verandert zodra je de puntlast passeert, splitsen we de balk op. Voor het rechterdeel gebruiken we symmetrie (we vervangen $x$ door de afstand vanaf rechts: $4L - x$). Dit geeft de piecewise functie:
+    \begin{align*}
+        0 \le x \le 2L &: \quad y_1 = \frac{B_y x}{12EI}(12L^2 - x^2) \\
+        2L \le x \le 4L &: \quad y_1 = \frac{B_y (4L - x)}{12EI}(12L^2 - (4L - x)^2)
+    \end{align*}
+    De doorbuiging exact op de locatie van het steunpunt ($x = 2L$) vinden we door in te vullen:
+    \begin{align*}
+        y_1(2L) = \frac{B_y (2L)}{12EI}(12L^2 - (2L)^2) = \frac{2B_y L}{12EI}(8L^2) = \frac{16B_y L^3}{12EI} = \frac{4B_y L^3}{3EI}
+    \end{align*}
+    De reactiekrachten op A en C verdelen zich in deze symmetrische situatie als volgt: $A_{y1} = -\frac{B_y}{2}$ en $C_{y1} = -\frac{B_y}{2}$.
+
+    \item \textbf{Situatie 2: Vervorming door de neerwaartse kracht $F$}\\
+    Nu negeren we steunpunt B en kijken we enkel naar de neerwaartse puntlast $F$.
+    \begin{itemize}
+        \item Totale lengte ligger: $L_{tot} = 4L$
+        \item Kracht: $P = F$ (positief want hij duwt omlaag)
+        \item Afstand tot rechts: $b = L$ (kracht staat op coördinaat $3L$, dus resteert er $L$)
+    \end{itemize}
+    Vul dit in de standaardformule in:
+    \begin{align*}
+        y_2 &= \frac{-F \cdot (L) \cdot x}{6 \cdot E \cdot I \cdot (4L)} \left((4L)^2 - (L)^2 - x^2\right) \\
+        y_2 &= \frac{-F L x}{24 E I L} \left(16L^2 - L^2 - x^2\right) \\
+        y_2 &= -\frac{Fx}{24EI} \left(15L^2 - x^2\right)
+    \end{align*}
+    Ook hier splitsen we op voor en na de kracht (bij $x=3L$). Na de kracht gebruiken we weer de spiegelingstruc met de resterende afstand.
+    \begin{align*}
+        0 \le x \le 3L &: \quad y_2 = -\frac{Fx}{24EI}(15L^2 - x^2) \\
+        3L \le x \le 4L &: \quad y_2 = -\frac{F(4L - x)}{8EI}(7L^2 - (4L - x)^2)
+    \end{align*}
+    De doorbuiging op de locatie van het afwezige middelste steunpunt ($x = 2L$, valt in het eerste interval) is:
+    \begin{align*}
+        y_2(2L) = -\frac{F(2L)}{24EI}(15L^2 - (2L)^2) = -\frac{2FL}{24EI}(11L^2) = -\frac{22FL^3}{24EI} = -\frac{11FL^3}{12EI}
+    \end{align*}
+    De reactiekrachten voor deze asymmetrische situatie verdelen zich met een hefboomregel: $A_{y2} = \frac{F}{4}$ en $C_{y2} = \frac{3F}{4}$.
+\end{itemize}
+
+\textbf{De kinematische randvoorwaarde (Kinematic constraint)} \newline
+Het probleem is dat steunpunt B in werkelijkheid helemaal niet kán bewegen. De totale doorbuiging op dat specifieke punt moet fysiek dus exact nul zijn. We tellen de berekende formules voor $x=2L$ bij elkaar op en dwingen ze naar nul:
+\begin{align*}
+    y(2L) = y_1(2L) + y_2(2L) = 0 \implies \frac{4B_y L^3}{3EI} - \frac{11FL^3}{12EI} = 0
+\end{align*}
+
+Door deze simpele vergelijking op te lossen vinden we direct de correcte waarde voor de onbekende $B_y$, waarna we ook de totale reactiekrachten $A_y$ en $C_y$ kunnen berekenen door de deel-reacties op te tellen [1]:
+\begin{align*}
+    B_y &= 687,5 N \\
+    A_y &= A_{y1} + A_{y2} = -\frac{B_y}{2} + \frac{F}{4} = -93,75 N \\
+    C_y &= C_{y1} + C_{y2} = -\frac{B_y}{2} + \frac{3F}{4} = 406,25 N
+\end{align*}
+\textit{(Opmerking: Zoals je ziet, corrigeert deze betrouwbare methode direct de typfout die in de slides bij de Navier-methode was geslopen: de reactiekracht $A_y$ is wiskundig $-93,75 N$, en niet $-97,75 N$!)}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.65\textwidth]{resultatensupoerpositie.png}
+  \caption{Resultaten superpositiemethode (V-diagram, M-diagram, verplaatsing en rotatie)}
+  \label{fig:resultatensupoerpositie.png}
+\end{figure}
+\subsubsection{Eindige Elementen Methode (FEM)}
+Hier ga ik snel over want de proff ging hier snel over, en dit is ook wat herhaling.
+\newline
+\newline
+Hier gaan we het probleem vertalen naar een een model zoals in volgende figuur, gewoon 2 beam elementen (3 knopen) met dus de elementstijfheidsmatrix die we kunnen zien in volgende figuur:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{elementenensttijfheidsmatrix.png}
+  \caption{Model en elementstijfheidsmatrix voor de hyperstatische balk}
+  \label{fig:elementenensttijfheidsmatrix.png}
+ \end{figure}
+Zo kunnen we onze formule $[K]\{\tilde{u}\}=\{\tilde{F}\}$ opstellen:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{globalestijfheidsmatrixinvergelijking.png}
+  \caption{Formule ingevuld met de globale stijfheidsmatrix en de knoopkrachten voor de hyperstatische balk}
+  \label{fig:globalestijfheidsmatrixinvergelijking.png}
+ \end{figure}
+Als we $L = 4m$ invullen krijgen we dan het volgende:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{lis4meteringevuld.png}
+  \caption{$L = 4m$ ingevuld in de formule van de globale stijfheidsmatrix en knoopkrachten voor de hyperstatische balk}
+  \label{fig:lis4meteringevuld.png}
+ \end{figure}
+Nu kunnen we onze (essentiële) randvoorwaarden invullen, we weten dat $\tilde{u}_{z1} = 0$ (omdat steunpunt A niet verticaal kan verplaatsen) en hetzelfde geldt voor $\tilde{u}_{z2}$ dus $\tilde{u}_{z2} = 0$ en $\tilde{u}_{z3} = 0$ (omdat steunpunt C ook niet verticaal kan verplaatsen), dus:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{essentielerandvoorwaardeningevudl.png}
+  \caption{Essentiële randvoorwaarden ingevuld}
+  \label{fig:essentielerandvoorwaardeningevudl.png}
+ \end{figure}
+Nu gaan we die dus even weggooien:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{weggoienrandvoorwarde.png}
+  \caption{Schrappen van de rijen en kolommen die overeenkomen met de essentiële randvoorwaarden}
+  \label{fig:weggoienrandvoorwarde.png}
+ \end{figure}
+Nu hebben we onze 'constrained' stijdheidsmatrix:
+\begin{align*}
+ EI
+ \begin{bmatrix}
+  1 & \frac{1}{2} & 0 \\
+  \frac{1}{2} & 2 & \frac{1}{2} \\
+  0 & \frac{1}{2} & 1
+ \end{bmatrix}
+  \begin{Bmatrix}
+    \tilde{\theta}_{y1} \\
+    \tilde{\theta}_{y2} \\
+    \tilde{\theta}_{y3}
+  \end{Bmatrix}
+  =
+  \begin{Bmatrix}
+    \tilde{M}_{y1} \\
+    \tilde{M}_{y2} \\
+    \tilde{M}_{y3}
+  \end{Bmatrix}
+\end{align*}
+De reactiekrachten met de weggesmeten rijen en kolommen zijn:
+\[
+\begin{cases}
+  \frac{6EI}{16}\tilde{\theta}_{y1} + \frac{6EI}{16}\tilde{\theta}_{y2} = \tilde{F}_{z1} \\
+  -\frac{6EI}{16}\tilde{\theta}_{y1} + \frac{6EI}{16}\tilde{\theta}_{y3} = \tilde{F}_{z2} \\
+  -\frac{6EI}{16}\tilde{\theta}_{y2} - \frac{6EI}{16}\tilde{\theta}_{y3} = \tilde{F}_{z3}
+\end{cases}
+\]
+Nu gaan we onze natuurlijke randvoorwaarden invullen, dus die kracht F die op de balk werkt. Met Lumped distribution ziet dit er zo uit:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{lumpeddistributionkrachtopgelegd.png}
+  \caption{Lumped distribution kracht F}
+  \label{fig:lumpeddistributionkrachtopgelegd.png}
+ \end{figure}
+Er zijn hier dus geen momenten in de knopen geïntroduceerd, alleen verticale krachten, dus:
+\begin{align*}
+ EI
+ \begin{bmatrix}
+  1 & \frac{1}{2} & 0 \\
+  \frac{1}{2} & 2 & \frac{1}{2} \\
+  0 & \frac{1}{2} & 1
+ \end{bmatrix}
+  \begin{Bmatrix}
+    \tilde{\theta}_{y1} \\
+    \tilde{\theta}_{y2} \\
+    \tilde{\theta}_{y3}
+  \end{Bmatrix}
+  =
+  \begin{Bmatrix}
+    0 \\
+    0 \\
+    0
+  \end{Bmatrix}
+\end{align*}
+En de reactiekrachten zijn dan:
+\[
+\begin{cases}
+  \frac{6EI}{16}\tilde{\theta}_{y1} + \frac{6EI}{16}\tilde{\theta}_{y2} = \tilde{F}_{z1} \\
+  -\frac{6EI}{16}\tilde{\theta}_{y1} + \frac{6EI}{16}\tilde{\theta}_{y3} = \tilde{F}_{z2} {\color{green}- \frac{F}{2}} \\
+  -\frac{6EI}{16}\tilde{\theta}_{y2} - \frac{6EI}{16}\tilde{\theta}_{y3} = \tilde{F}_{z3} {\color{green}- \frac{F}{2}}
+\end{cases}
+\]
+Maar omdat we bij lumped geen momenten hebben, gaan de hoeken ook gewoon nul zijn, dit is eigelijk geen juiste oplossing, dit zegt dan ook dat de krachten in de knopen gewoon $-\frac{F}{2}$ zijn, wat dus niet klopt want we weten dat $B_y$ veel groter is dan $A_y$ en $C_y$, dit is dus een heel slechte benadering.
+\newline
+\newline
+We gaan dus de consistent mapping methode gebruiken, hierbij krijgen we dus ook momenten in de knopen, dit geeft dan:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{consistentmapping.png}
+  \caption{Consistent mapping VLS}
+  \label{fig:consistentmapping.png}
+ \end{figure}
+Dus we kunnen de krachten en momenten vinden met de volgende formule:
+\begin{align*}
+  \tilde{F} = \int_{\Omega_e}^{} [N]^T \hat{q} d\Omega
+\end{align*}
+Hier is $\hat{q}$ de verdeelde belasting, in dit geval is dat dus $-F$ op een lengte van $L$, dus:
+\begin{align*}
+  \begin{Bmatrix}
+    \tilde{F}_{z2} \\
+    \tilde{M}_{y2} \\
+    \tilde{F}_{z3} \\
+    \tilde{M}_{y3}
+  \end{Bmatrix}
+  \tilde{F} = \int_0^L
+  \begin{Bmatrix}
+    N_1(x) \\
+    N_2(x) \\
+    N_3(x) \\
+    N_4(x)
+  \end{Bmatrix}
+  (-F)
+  \delta(x - \frac{L}{2}) dx
+\end{align*}
+Dus:
+\begin{align*}
+  \tilde{F} =
+  \begin{Bmatrix}
+    \tilde{F}_{z2} \\
+    \tilde{M}_{y2} \\
+    \tilde{F}_{z3} \\
+    \tilde{M}_{y3}
+  \end{Bmatrix}
+  =
+  -F
+  \begin{Bmatrix}
+    N_1(\frac{L}{2}) \\
+    N_2(\frac{L}{2}) \\
+    N_3(\frac{L}{2}) \\
+    N_4(\frac{L}{2})
+  \end{Bmatrix}
+\end{align*}
+Dit geeft:
+\begin{align*}
+  \tilde{F} =
+  \begin{Bmatrix}
+    \tilde{F}_{z2} \\
+    \tilde{M}_{y2} \\
+    \tilde{F}_{z3} \\
+    \tilde{M}_{y3}
+  \end{Bmatrix}
+  =
+  -F
+  \begin{Bmatrix}
+    1 - 3 \frac{\left(\frac{L}{2}\right)^2}{L^2} + 2 \frac{\left(\frac{L}{2}\right)^3}{L^3} \\
+    \frac{L}{2} - \frac{2\left(\frac{L}{2}\right)^2}{L} + \frac{\left(\frac{L}{2}\right)^3}{L^2} \\
+    3 \frac{\left(\frac{L}{2}\right)^2}{L^2} - 2 \frac{\left(\frac{L}{2}\right)^3}{L^3} \\
+    -\frac{\left(\frac{L}{2}\right)^2}{L} + \frac{\left(\frac{L}{2}\right)^3}{L^2}
+  \end{Bmatrix}
+  =
+  \begin{Bmatrix}
+    -\frac{F}{2} \\
+    -\frac{FL}{8} \\
+    -\frac{F}{2} \\
+    \frac{FL}{8}
+  \end{Bmatrix}
+\end{align*}
+De proff zegt dat hier de uitkomsten allemaal veel op elkaar trekken maar dit is toevallig zo omdat L = 4m hier, hij gaat volgend jaar deze opgave wat aanpassen.
+\newline
+\newline
+Anyway, de 'constrained' stijfheidsmatrix, met L = 4m als ingevuld, ziet er hier zo uit:
+\begin{align*}
+  EI
+  \begin{bmatrix}
+    1 & \frac{1}{2} & 0 \\
+    \frac{1}{2} & 2 & \frac{1}{2} \\
+    0 & \frac{1}{2} & 1
+  \end{bmatrix}
+    \begin{Bmatrix}
+      \tilde{\theta}_{y1} \\
+      \tilde{\theta}_{y2} \\
+      \tilde{\theta}_{y3}
+    \end{Bmatrix}
+    =
+    \begin{Bmatrix}
+       0 \\
+       -\frac{F}{2} \\
+       \frac{F}{2}
+    \end{Bmatrix}
+\end{align*}
+Zo vinden we:
+\begin{align*}
+ \begin{Bmatrix}
+  \tilde{\theta}_{y1} \\
+  \tilde{\theta}_{y2} \\
+  \tilde{\theta}_{y3}
+ \end{Bmatrix}
+ =
+ \frac{F}{EI}
+ \begin{Bmatrix}
+  \frac{1}{4} \\
+  -\frac{1}{2} \\
+  \frac{3}{4}
+  \end{Bmatrix}
+\end{align*}
+Hiermee vinden we dan uiteindelijk de reactiekrachten:
+\begin{align*}
+  \begin{Bmatrix}
+    \tilde{F}_{z1} \\
+    \tilde{F}_{z2} \\
+    \tilde{F}_{z3}
+  \end{Bmatrix}
+  =
+  \begin{Bmatrix}
+    -\frac{3}{32}F \\
+    \frac{11}{16}F \\
+    \frac{13}{32}F
+  \end{Bmatrix}
+\end{align*}
+Hier zien we dat dit klopt want de som van de krachten is in evenwicht:
+\begin{align*}
+  -\frac{3}{32}F + \frac{11}{16}F + \frac{13}{32}F = F
+\end{align*}
+Dus invullen geeft:
+\begin{align*}
+  A_y &= -\frac{3}{32}F = -93,75 N \\
+  B_y &= \frac{11}{16}F = 687,5 N \\
+  C_y &= \frac{13}{32}F = 406,25 N
+\end{align*}
+We weten ook dat $\hat{u}_z(x) = [N]\{\tilde{q}\}$, dus kunnen we de verplaatsingen in functie van x voor de 2 elementen vinden met:
+\begin{align*}
+ \hat{u}_{z,I}(x) =
+ \begin{bmatrix}
+  N_1(x) & N_2(x) & N_3(x) & N_4(x)
+ \end{bmatrix}
+ \begin{Bmatrix}
+  \tilde{u}_{z1} \\
+  \tilde{\theta}_{y1} \\
+  \tilde{u}_{z2} \\
+  \tilde{\theta}_{y2}
+ \end{Bmatrix}
+ =
+ \frac{F}{EI}
+ (\frac{1}{4}[x - \frac{1}{2}x^2 + \frac{1}{16}x^3] - \frac{1}{2}[-\frac{1}{4}x^2 + \frac{1}{16}x^3])
+\end{align*}
+Dus met:
+\begin{align*}
+ \hat{u}_{z,I}(x) =
+ \frac{F}{EI}
+ (\frac{1}{4}x - \frac{1}{64}x^3)
+\end{align*}
+Voor element II krijgen we:
+\begin{align*}
+  \hat{u}_{z,II}(x) =
+  \begin{bmatrix}
+    N_1(x) & N_2(x) & N_3(x) & N_4(x)
+  \end{bmatrix}
+  \begin{Bmatrix}
+    \tilde{u}_{z2} \\
+    \tilde{\theta}_{y2} \\
+    \tilde{u}_{z3} \\
+    \tilde{\theta}_{y3}
+  \end{Bmatrix}
+  =
+  \frac{F}{EI}
+  (-\frac{1}{2}[x - \frac{1}{2}x^2 + \frac{1}{16}x^3] + \frac{3}{4}[-\frac{1}{4}x^2 + \frac{1}{16}x^3])
+\end{align*}
+Dus met:
+\begin{align*}
+  \hat{u}_{z,II}(x) =
+  \frac{F}{EI}
+  (-\frac{1}{2}x + \frac{1}{16}x^2 + \frac{1}{64}x^3)
+\end{align*}
+Hiermee kunnen we dan de verplaatsingen en hoeken in functie van x vinden, en deze vervolgens plotten:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{displacementandangulardisplacement.png}
+  \caption{Verplaatsing en hoekverdraaiing in functie van x volgens de FEM-methode}
+  \label{fig:displacementandangulardisplacement.png}
+ \end{figure}
+Nog iets interessant is dan ook om de spanning te kunnen plotten, dit kan door het feit dat:
+\begin{align*}
+ \hat{\epsilon}_x = \frac{d \hat{u}_z}{dx} = -z \frac{d^2 \hat{u}_z}{dx^2} \\
+  \hat{\sigma}_x = E \hat{\epsilon}_x = -E z \frac{d^2 \hat{u}_z}{dx^2}
+\end{align*}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{spanningsplotfemmethode.png}
+  \caption{Spanning in functie van x volgens de FEM-methode}
+  \label{fig:spanningsplotfemmethode.png}
+ \end{figure}
+Dan gaan we nu is deze plots vergelijken met de resultaten van de plots bij de Navier-methode, zie de volgende figuur:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{vergelijkenmetnavier.png}
+  \caption{Vergelijking van de verplaatsing en hoekverdraaiing volgens de FEM-methode met de Navier-methode}
+  \label{fig:vergelijkenmetnavier.png}
+ \end{figure}
+Hier zien we dat de resultaten in de knopen in beide gevallen perfect overeen komen en dat in element 1 eigelijk ook alles overeen komt, na knoop 1 zien we echter wel dat de rode lijn (FEM) minder doorbuigt dan Navier, dit betekent eigelijk dat de software wiskundig berekent dat de balk stijver is dan in de werkelijkheid ('FE-solution overestimates the stiffness')
+\newline
+\newline
+Met de spanning kunnen we ook het buigmoment vinden, want we weten dat $\sigma_x = -\frac{M_y z}{I_y}$, dus kunnen we de buigmomenten in functie van x vinden en deze dan ook vergelijken met Navier:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\textwidth]{buigmomentnaviervsfem.png}
+  \caption{Vergelijking van de buigmomenten volgens de FEM-methode met de Navier-methode}
+  \label{fig:buigmomentnaviervsfem.png}
+ \end{figure}
+Dit zijn rechte lijnen omdat het afhankelijk is van de 2de afgeleide van de verplaatsing (cubisch 2 keer afleiden is lineair), voor element 1 komt het hier terug overeen, maar bij element 2 zien we een blauwe piek exact onder de belasting F en een rode sprong en dan gewoon een stijgende rode rechte, deze lijken veel te verschillen, het FEM doet hier eigelijk een overschatting, gevolgd door een onderschatting, gevolgd door terug een overschatting dat toevallig wel gemiddeld overeenkomt met het gemiddelde van Navier. De blauwe is natuurlijk de fysische oplossing (Navier), die piek komt doordat de puntlast dus exact in dat punt duwt wat voor een maximale buigspanning zorgt, maar door die consistent mapping methode worden er ook momenten in de knopen geïntroduceerd, waardoor er dus ook een buigmoment ontstaat in element 2 dat niet fysisch is, maar wiskundig wel klopt, en het feit dat het dan gewoon een rechte is, is door die tweede afgeleide. 
+\newline
+\newline
+Om dit te fixen kunnen we eigelijk gewoon meer elementen gebruiken, op de slides wordt de hele berekening gedaan met 3 elementen, hier is het VLS om dit te verduidelijken:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{femmethod3elemetne.png}
+  \caption{VLS van de FEM-methode met 3 elementen}
+  \label{fig:femmethod3elemetne.png}
+ \end{figure}
+De berekeningen zijn weer veel werk en dezelfde methode, dus ik raad aan om gewoon de slides te bekijken want het is te veel werk om dit gewoon over te typen. Hier zijn wel de vergelijkingen van de plots:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{displacementenangulardiscplacement.png}
+  \caption{Vergelijking van de verplaatsing en hoekverdraaiing volgens de FEM-methode met 3 elementen met de Navier-methode}
+  \label{fig:displacementenangulardiscplacement.png}
+ \end{figure}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{momentvergelijking3elementenFEM.png}
+  \caption{Vergelijking van de buigmomenten volgens de FEM-methode met 3 elementen}
+  \label{fig:momentvergelijking3elementenFEM.png}
+ \end{figure}
+Hier zien we dus dat met 3 elementen de resultaten perfect overeen komen met de methode van Navier!
+\subsection{De directe methode voor andere 1D elementen}
+(Dit deel is niet in de les zelf gezien maar staat wel op de slides en heeft ook een toledo video, het is waarschijnlijk dus wel leerstof)
+\newline
+\newline
+We zeiden eerder dat we het gingen hebben over beams met enkel verticale verplaatsingen en rotaties rond de y-as, maar in principe kunnen we dus ook axiale verplaatsingen hebben, of rotaties rond de x-as ofzo, een combinatie van een rod en een beam zou dan dus ook axiale verplaatsing kunnen hebben en deze elementstijfheidsmatrix ziet er dan zo uit:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{combinatierodenbeam.png}
+  \caption{Combinatie rod en beam elementstijfheidsmatrix}
+  \label{fig:combinatierodenbeam.png}
+ \end{figure}
+Een beam kan ook nog torsie hebben, dit heeft dan een torsiehoek $\phi = \frac{TL}{GJ}$ en een torsiestijfheid $\frac{GJ}{L}$ ipv $\frac{AE}{L}$. Voor een element met 2 knopen met alleen maar torsie zie een elementstijfheidsmatrix er zo uit:
+\begin{align*}
+ [k_e]
+ \begin{Bmatrix}
+  \tilde{\phi}_{x1} \\
+  \tilde{\phi}_{x2}
+ \end{Bmatrix}
+ =
+  \begin{bmatrix}
+    \frac{GJ}{L} & -\frac{GJ}{L} \\
+    -\frac{GJ}{L} & \frac{GJ}{L}
+  \end{bmatrix}
+   \begin{Bmatrix}
+  \tilde{\phi}_{x1} \\
+  \tilde{\phi}_{x2}
+ \end{Bmatrix}
+ =
+  \begin{Bmatrix}
+    \tilde{T}_{x1} \\
+    \tilde{T}_{x2}
+  \end{Bmatrix}
+\end{align*}
+Net zoals bij rods kunnen we bij beams ook met local en global coordinaten werken, en dus ook een transformatie matrix gebruiken om van local naar global te gaan, deze transformatie matrix ziet er zo uit:
+\begin{align*}
+ [T]^{-1} =
+ \begin{bmatrix}
+  \cos \theta & \sin \theta  & 0 & 0  \\
+  -\sin \theta & \cos \theta & 0 & 0  \\
+  0 & 0 &  \cos \theta & \sin \theta  \\
+  0 & 0 & -\sin \theta & \cos \theta  
+ \end{bmatrix}
+\end{align*}
 \end{document}
-=======
-\end{document}
+
+
