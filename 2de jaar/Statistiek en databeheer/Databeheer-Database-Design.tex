@@ -1,0 +1,683 @@
+% Databeheer-Database-Design.tex
+% =============================================================================
+%     SAMENVATTING DATABEHEER: ERD & DATABASE DESIGN -- KU Leuven
+%     Gebaseerd op slides + oefeningen + studoforum examenvragen
+% =============================================================================
+
+\documentclass[a4paper,11pt]{article}
+\usepackage{../../school-macros}
+\usetikzlibrary{positioning, shapes.geometric, arrows.meta, fit, calc, backgrounds}
+% SQL listing environment: avoids colupper+listings catcode conflict in codeblock
+\lstdefinelanguage{MySQL}{
+  keywords={CREATE,TABLE,PRIMARY,KEY,FOREIGN,REFERENCES,NOT,NULL,UNIQUE,
+            DEFAULT,INT,VARCHAR,DATE,DATETIME,DECIMAL,TINYINT,TIME,FLOAT},
+  sensitive=false,
+  morecomment=[l]{--},
+  morestring=[b]',
+}
+\lstnewenvironment{sqllisting}[1][]
+{
+  \lstset{
+    language=MySQL,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\bfseries\color{schoolBlue},
+    commentstyle=\itshape\color{schoolGreen},
+    breaklines=true, tabsize=4,
+    frame=leftline, framerule=3pt, rulecolor=\color{schoolBlue!40},
+    xleftmargin=15pt, numbers=left, numberstyle=\tiny\color{gray},
+    showstringspaces=false, #1
+  }
+}
+{}
+
+% ERD TikZ stijlen
+\tikzset{
+  erd entity/.style={
+    rectangle, draw=schoolBlue, thick, rounded corners=2pt,
+    minimum width=2.8cm, minimum height=0.6cm,
+    fill=schoolBlue!10, font=\bfseries\sffamily\small, align=center
+  },
+  erd attr/.style={
+    rectangle, draw=schoolGray, thin,
+    minimum width=2.8cm, minimum height=0.5cm,
+    fill=gray!5, font=\ttfamily\footnotesize, align=left, inner sep=3pt
+  },
+  erd pk/.style={
+    erd attr, draw=schoolOrange, fill=schoolOrange!8,
+    font=\ttfamily\footnotesize\bfseries
+  },
+  erd fk/.style={
+    erd attr, draw=schoolGreen, fill=schoolGreen!8,
+    font=\ttfamily\footnotesize
+  },
+  erd rel/.style={
+    draw=schoolGray!70, thick
+  },
+  one/.style={},
+  many/.style={},
+}
+
+\newcommand{\erdbox}[3]{%
+  % #1 = node name, #2 = entity name, #3 = attributes as comma list
+  % usage: manually per diagram
+}
+
+\newcommand{\titel}{Statistiek \& Databeheer -- Database Design \& ERD}
+\newcommand{\auteur}{KUL Industriële Ingenieurs}
+\newcommand{\academiejaar}{Academiejaar 2025-2026}
+
+\begin{document}
+
+\kuleuventitle{\titel}{}{\auteur}{\academiejaar}
+
+\begin{abstract}
+Samenvatting van het databeheer-gedeelte met focus op examenvaardigheden:
+een database ontwerpen vanuit een tekstbeschrijving via een ERD, en omzetten naar
+SQL \texttt{CREATE TABLE}-statements in MySQL Workbench.
+Het examen bestaat uit \textbf{±5 tabellen aanmaken} (DDL) en \textbf{1 SELECT-query} (DML).
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+% =============================================================================
+\section{Het Data Model}
+% =============================================================================
+
+\begin{conceptbox}[Proces- vs.\ Datamodel]
+\begin{itemize}
+  \item \textbf{Procesmodel} -- beschrijft \emph{hoe} een operatie uitgevoerd wordt.
+  \item \textbf{Datamodel} -- beschrijft de \emph{structuur} van data: welke data, hoe opgeslagen, welke verbanden.
+\end{itemize}
+Het ERD is een \textbf{datamodel}. Het zegt niets over hoe data aangemaakt, gewijzigd of bevraagd wordt.
+\end{conceptbox}
+
+De aanpak voor elke database-oefening volgt altijd dezelfde stappen:
+
+\begin{enumerate}
+  \item Tekstbeschrijving lezen en \textbf{entiteiten} identificeren (zelfstandige naamwoorden).
+  \item \textbf{Relaties} en \textbf{cardinaliteit} bepalen (werkwoorden/verbanden).
+  \item \textbf{ERD} tekenen (mentaal of op papier -- niet op examen ingediend).
+  \item \textbf{SQL DDL} schrijven: \texttt{CREATE TABLE} voor elke entiteit/koppeltabel.
+\end{enumerate}
+
+% =============================================================================
+\section{ERD Bouwstenen}
+% =============================================================================
+
+\subsection{Entiteit}
+
+\begin{theorie}[Entiteit (Entity)]
+Een \concept{entiteit} is alles waarover we informatie willen opslaan = \textbf{zelfstandig naamwoord}.
+\begin{itemize}
+  \item Voorbeelden: \texttt{Student}, \texttt{Cursus}, \texttt{Boek}, \texttt{Branch}, \texttt{EscapeRoom}
+  \item Wordt een \textbf{tabel} in de database.
+  \item Een \textbf{instantie} is één concrete rij in die tabel (bv.\ de stad ``Leuven'').
+\end{itemize}
+\end{theorie}
+
+\begin{waarschuwing}
+Een entiteit = \emph{ding} waarover we data willen. Processen (boeken, betalen, reserveren) zijn \textbf{geen} entiteiten tenzij we er data van bijhouden.
+\end{waarschuwing}
+
+\subsubsection*{Zwakke entiteit (Weak Entity)}
+Een entiteit die \textbf{geen eigen sleutelattribuut} kan hebben en altijd gekoppeld is aan een andere (sterke) entiteit via een 1:n-relatie.
+
+\textit{Voorbeeld:} een \texttt{BookCopy} (exemplaar van een boek) bestaat niet zonder het boek zelf.
+
+\subsubsection*{Associatieve entiteit}
+Een entiteit die een \textbf{n:m-relatie} omzet naar twee 1:n-relaties. Ze bevat informatie over de relatie zelf.
+
+\textit{Voorbeeld:} \texttt{Subscription} legt de relatie tussen \texttt{Student} en \texttt{Course} vast, en bevat ook \texttt{evaluation} en \texttt{startDate}.
+
+\subsection{Attribuut}
+
+\begin{theorie}[Attribuut]
+Extra informatie over een entiteit. Wordt een \textbf{kolom} in de tabel.
+\begin{itemize}
+  \item \concept{Sleutelattribuut (Primary Key)} -- identificeert een instantie uniek.
+  Bv.\ \texttt{studentNr}, \texttt{socialSecurityNumber}, \texttt{loginName}.
+  \item \textbf{Normaal attribuut} -- beschrijvende info: \texttt{name}, \texttt{email}, \texttt{salary}.
+\end{itemize}
+\end{theorie}
+
+\subsection{Relatie en Cardinaliteit}
+
+\begin{theorie}[Relatie]
+Een \concept{relatie} is een natuurlijke verbinding tussen twee entiteiten = \textbf{werkwoord}.
+\begin{itemize}
+  \item Voorbeelden: \emph{Student \underline{volgt} Cursus}, \emph{Branch \underline{heeft} EscapeRoom}
+  \item Optioneel \(\leftrightarrow\) Verplicht (min.\ cardinaliteit = 0 of 1)
+\end{itemize}
+\end{theorie}
+
+\begin{conceptbox}[Cardinaliteit -- de drie soorten]
+\begin{center}
+\begin{tblr}{
+  colspec={Q[c,2cm] Q[l,4cm] Q[l,5.5cm]},
+  row{1}={bg=schoolBlue, fg=white, font=\bfseries\sffamily},
+  row{odd}={bg=gray!8},
+}
+  Type & Betekenis & Aanpak \\
+  \textbf{1:1} & Eén instantie $\leftrightarrow$ één instantie & FK in één van de twee tabellen \\
+  \textbf{1:n} & Eén $\leftrightarrow$ meerdere & FK in de \emph{veel}-kant tabel \\
+  \textbf{n:m} & Meerdere $\leftrightarrow$ meerdere & Nieuwe \emph{koppeltabel} aanmaken \\
+\end{tblr}
+\end{center}
+\end{conceptbox}
+
+% =============================================================================
+\section{Van ERD naar SQL-Tabellen}
+% =============================================================================
+
+\begin{waarschuwing}[Examen -- Dit is het kernstuk]
+Op het examen krijg je een tekstbeschrijving en moet je de \texttt{CREATE TABLE}-statements schrijven.
+Beheers deze drie regels uit je hoofd.
+\end{waarschuwing}
+
+\subsection{Regel 1 -- Entiteit $\rightarrow$ Tabel}
+
+Elke entiteit wordt een tabel. Attributen worden kolommen. Het sleutelattribuut wordt \texttt{PRIMARY KEY}.
+
+\begin{voorbeeld}[Student-entiteit]
+\begin{sqllisting}
+CREATE TABLE Student (
+    studentNr   INT          PRIMARY KEY,
+    name        VARCHAR(50)  NOT NULL,
+    firstname   VARCHAR(50)  NOT NULL,
+    birthdate   DATE         NOT NULL,
+    email       VARCHAR(100) UNIQUE
+);
+\end{sqllisting}
+\end{voorbeeld}
+
+\subsection{Regel 2 -- 1:n Relatie $\rightarrow$ Foreign Key in de \emph{veel}-tabel}
+
+De tabel aan de ``veel''-kant krijgt een \texttt{FOREIGN KEY} die verwijst naar de primaire sleutel van de ``één''-kant.
+
+\begin{center}
+\begin{tikzpicture}[node distance=0cm]
+  % Branch box
+  \node[erd entity] (branch) {Branch};
+  \node[erd pk, below=of branch, anchor=north] (branchPK) {\underline{branchID} INT (PK)};
+  \node[erd attr, below=of branchPK, anchor=north] (branchLoc) {location VARCHAR(100)};
+  \node[erd attr, below=of branchLoc, anchor=north] (branchHrs) {openingHours VARCHAR(50)};
+  \begin{scope}[on background layer]
+    \node[draw=schoolBlue, rounded corners=2pt, thick, fill=schoolBlue!5,
+          fit=(branch)(branchPK)(branchLoc)(branchHrs), inner sep=1pt] {};
+  \end{scope}
+
+  % EscapeRoom box
+  \node[erd entity, right=3.5cm of branch] (room) {EscapeRoom};
+  \node[erd pk, below=of room, anchor=north] (roomPK) {\underline{roomID} INT (PK)};
+  \node[erd attr, below=of roomPK, anchor=north] (roomName) {roomName VARCHAR(100)};
+  \node[erd attr, below=of roomName, anchor=north] (roomDiff) {difficulty VARCHAR(20)};
+  \node[erd fk, below=of roomDiff, anchor=north] (roomFK) {branchID INT (FK)};
+  \begin{scope}[on background layer]
+    \node[draw=schoolBlue, rounded corners=2pt, thick, fill=schoolBlue!5,
+          fit=(room)(roomPK)(roomName)(roomDiff)(roomFK), inner sep=1pt] {};
+  \end{scope}
+
+  % Arrow: 1 branch has n rooms
+  \draw[erd rel, ->, >=Stealth] (roomFK.west) -- ++(-0.5,0) |- (branchPK.east)
+    node[midway, above, font=\sffamily\scriptsize, text=schoolGray] {1:n};
+\end{tikzpicture}
+\end{center}
+
+\begin{voorbeeld}[Branch heeft meerdere EscapeRooms]
+\begin{sqllisting}
+CREATE TABLE EscapeRoom (
+    roomID      INT          PRIMARY KEY AUTO_INCREMENT,
+    roomName    VARCHAR(100) NOT NULL,
+    difficulty  VARCHAR(20)  NOT NULL,
+    branchID    INT          NOT NULL,
+    FOREIGN KEY (branchID) REFERENCES Branch(branchID)
+);
+\end{sqllisting}
+\end{voorbeeld}
+
+\subsection{Regel 3 -- n:m Relatie $\rightarrow$ Koppeltabel}
+
+Bij een veel-op-veel-relatie maak je een \textbf{nieuwe tabel} aan die de primaire sleutels van beide tabellen als foreign keys bevat. Die tabel kan ook extra attributen hebben (bv.\ datum, prijs).
+
+\begin{center}
+\begin{tikzpicture}[node distance=0cm]
+  % Customer
+  \node[erd entity] (cust) {Customer};
+  \node[erd pk, below=of cust, anchor=north] (custPK) {\underline{customerID} INT (PK)};
+  \node[erd attr, below=of custPK, anchor=north] (custName) {fullName VARCHAR(100)};
+  \node[erd attr, below=of custName, anchor=north] (custAge) {birthdate DATE};
+  \begin{scope}[on background layer]
+    \node[draw=schoolBlue, rounded corners=2pt, thick, fill=schoolBlue!5,
+          fit=(cust)(custPK)(custName)(custAge), inner sep=1pt] {};
+  \end{scope}
+
+  % CustomerParty (koppeltabel)
+  \node[erd entity, right=3cm of cust, fill=schoolOrange!20, draw=schoolOrange] (cp) {CustomerParty};
+  \node[erd fk, below=of cp, anchor=north, draw=schoolOrange, fill=schoolOrange!8] (cpCust) {customerID INT (FK/PK)};
+  \node[erd fk, below=of cpCust, anchor=north, draw=schoolOrange, fill=schoolOrange!8] (cpParty) {partyID INT (FK/PK)};
+  \begin{scope}[on background layer]
+    \node[draw=schoolOrange, rounded corners=2pt, thick, fill=schoolOrange!5,
+          fit=(cp)(cpCust)(cpParty), inner sep=1pt] {};
+  \end{scope}
+
+  % Party
+  \node[erd entity, right=3cm of cp] (party) {Party};
+  \node[erd pk, below=of party, anchor=north] (partyPK) {\underline{partyID} INT (PK)};
+  \begin{scope}[on background layer]
+    \node[draw=schoolBlue, rounded corners=2pt, thick, fill=schoolBlue!5,
+          fit=(party)(partyPK), inner sep=1pt] {};
+  \end{scope}
+
+  \draw[erd rel, ->, >=Stealth] (cpCust.west) -- ++(-0.5,0) |- (custPK.east);
+  \draw[erd rel, ->, >=Stealth] (cpParty.east) -- ++(0.5,0) |- (partyPK.west);
+\end{tikzpicture}
+\end{center}
+
+\begin{voorbeeld}[Customer $\leftrightarrow$ Party via koppeltabel]
+\begin{sqllisting}
+CREATE TABLE CustomerParty (
+    customerID  INT  NOT NULL,
+    partyID     INT  NOT NULL,
+    PRIMARY KEY (customerID, partyID),
+    FOREIGN KEY (customerID) REFERENCES Customer(customerID),
+    FOREIGN KEY (partyID)    REFERENCES Party(partyID)
+);
+\end{sqllisting}
+\end{voorbeeld}
+
+\subsection{Overzichtstabel: ERD-element $\rightarrow$ SQL}
+
+\begin{center}
+\begin{tblr}{
+  colspec={Q[l,4cm] Q[l,8cm]},
+  row{1}={bg=schoolBlue, fg=white, font=\bfseries\sffamily},
+  row{odd}={bg=gray!8},
+}
+  ERD-element & SQL-equivalent \\
+  Entiteit & \texttt{CREATE TABLE Naam (\ldots)} \\
+  Attribuut & Kolom in de tabel \\
+  Sleutelattribuut & \texttt{PRIMARY KEY} \\
+  1:1 of 1:n relatie & \texttt{FOREIGN KEY} in de ,,veel''-kant tabel \\
+  n:m relatie & Nieuwe koppeltabel met 2 \texttt{FOREIGN KEY}s \\
+  Associatieve entiteit & Koppeltabel + extra kolommen \\
+  Zwakke entiteit & Tabel + verplichte \texttt{FOREIGN KEY} naar sterke entiteit \\
+\end{tblr}
+\end{center}
+
+% =============================================================================
+\section{SQL DDL -- CREATE TABLE Syntax}
+% =============================================================================
+
+\subsection{Datatypes}
+
+\begin{center}
+\begin{tblr}{
+  colspec={Q[l,3.5cm] Q[l,8.5cm]},
+  row{1}={bg=schoolBlue, fg=white, font=\bfseries\sffamily},
+  row{odd}={bg=gray!8},
+}
+  Datatype & Gebruik \\
+  \texttt{INT} & Geheel getal (ook \texttt{INTEGER}) \\
+  \texttt{TINYINT(1)} & Boolean (0/1) -- MySQL heeft geen echte bool \\
+  \texttt{VARCHAR(n)} & Tekst met max.\ \texttt{n} tekens \\
+  \texttt{DATE} & Datum: \texttt{YYYY-MM-DD} \\
+  \texttt{TIME} & Tijd: \texttt{HH:MM:SS} \\
+  \texttt{DATETIME} & Datum + tijd samen \\
+  \texttt{DECIMAL(p,s)} & Decimaal getal: \texttt{p} cijfers totaal, \texttt{s} na komma \\
+  \texttt{FLOAT} / \texttt{DOUBLE} & Vlottend getal (minder precies dan DECIMAL) \\
+\end{tblr}
+\end{center}
+
+\subsection{Constraints (beperkingen)}
+
+\begin{center}
+\begin{tblr}{
+  colspec={Q[l,3.5cm] Q[l,8.5cm]},
+  row{1}={bg=schoolBlue, fg=white, font=\bfseries\sffamily},
+  row{odd}={bg=gray!8},
+}
+  Constraint & Betekenis \\
+  \texttt{PRIMARY KEY} & Uniek + niet null; identificeert rij \\
+  \texttt{NOT NULL} & Verplicht in te vullen \\
+  \texttt{UNIQUE} & Waarde moet uniek zijn in de kolom \\
+  \texttt{DEFAULT x} & Standaardwaarde als niets opgegeven \\
+  \texttt{AUTO\_INCREMENT} & Automatisch verhogend getal (voor PK) \\
+  \texttt{FOREIGN KEY \ldots REFERENCES} & Verwijst naar PK van andere tabel \\
+  \texttt{CHECK (voorwaarde)} & Waarde moet aan voorwaarde voldoen \\
+\end{tblr}
+\end{center}
+
+\subsection{Volledige Syntaxtemplate}
+
+\begin{sqllisting}
+CREATE TABLE TabelNaam (
+    -- Kolommen
+    kolomNaam1   DATATYPE  [NOT NULL] [UNIQUE] [DEFAULT waarde],
+    kolomNaam2   DATATYPE  [NOT NULL],
+    -- Primary key (ofwel inline, ofwel hier)
+    PRIMARY KEY (kolomNaam1),
+    -- Foreign keys (altijd aan het einde)
+    FOREIGN KEY (kolomNaamFK) REFERENCES AndereTabel(anderePK)
+);
+\end{sqllisting}
+
+\begin{waarschuwing}[Volgorde in CREATE TABLE]
+\begin{enumerate}
+  \item Eerst alle gewone kolommen
+  \item Dan \texttt{PRIMARY KEY}
+  \item Dan \texttt{FOREIGN KEY} (altijd als laatste)
+  \item Komma na elke regel \textbf{behalve de laatste}
+\end{enumerate}
+\end{waarschuwing}
+
+\subsection{Foreign Key -- REFERENCES}
+
+\begin{theorie}[Foreign Key regel]
+Als je een waarde invult voor een foreign key, \textbf{moet} de gerefereerde rij bestaan in de andere tabel.
+Elke waarde van een FK moet overeenkomen met de PK van een rij in de gerefereerde tabel.
+\end{theorie}
+
+\begin{voorbeeld}[FK syntax met ON DELETE]
+\begin{sqllisting}
+FOREIGN KEY (branchID)
+    REFERENCES Branch(branchID)
+    ON DELETE CASCADE    -- als Branch verwijderd wordt, ook EscapeRoom verwijderen
+    ON UPDATE CASCADE    -- als branchID wijzigt, automatisch updaten
+\end{sqllisting}
+\end{voorbeeld}
+
+% =============================================================================
+\section{Normalisatie}
+% =============================================================================
+
+\begin{conceptbox}[Normalisatie -- 3 regels]
+Normalisatie maakt een datamodel \textbf{flexibel en betrouwbaar}. Er zijn 3 regels (normaalvormen):
+\begin{enumerate}
+  \item \textbf{1NV: Geen herhalende groepen} -- Als een entiteit meerdere waarden voor een attribuut heeft (bv.\ meerdere telefoonnummers), maak er een aparte entiteit van via 1:n.
+  \item \textbf{2NV: Volledige functionele afhankelijkheid} -- Alle attributen moeten afhankelijk zijn van de \emph{volledige} primaire sleutel (relevant bij samengestelde PK).
+  \item \textbf{3NV: Geen transitieve afhankelijkheid} -- Attributen mogen niet afhankelijk zijn van een niet-sleutelattribuut. Bv.\ als \texttt{zipCode} de \texttt{city} bepaalt, maak dan een aparte \texttt{City}-tabel.
+\end{enumerate}
+\end{conceptbox}
+
+\begin{waarschuwing}
+Meer tabellen door normalisatie $\Rightarrow$ meer overhead bij queries (JOINs nodig), maar betere datamodellering.
+\end{waarschuwing}
+
+% =============================================================================
+\section{Uitgewerkte Oefening -- Escape Room}
+% =============================================================================
+
+\begin{oefening}[Escape Room: Bolting from Belgium]
+Het escape room bedrijf ``Bolting from Belgium'' heeft meerdere \textbf{vestigingen (branches)} in België, elk met eigen openingstijden en locatie. Elke vestiging heeft meerdere \textbf{escape rooms} met een naam en moeilijkheidsgraad. Klanten bezoeken een escape room in \textbf{groepen (parties)}. \textbf{Klanten} worden geregistreerd met volledige naam en geboortedatum. Een klant kan tot meerdere parties behoren. Wanneer een party een kamer boekt, worden datum, begintijd en prijs opgeslagen.
+\end{oefening}
+
+\subsection{Stap 1 -- Entiteiten identificeren}
+
+Zelfstandige naamwoorden uit de tekst:
+\textbf{Branch} · \textbf{EscapeRoom} · \textbf{Customer} · \textbf{Party} · \textbf{Booking}
+
+Relaties:
+\begin{itemize}
+  \item Branch \emph{heeft} EscapeRoom: \textbf{1:n} (één vestiging, meerdere kamers)
+  \item Customer \emph{behoort tot} Party: \textbf{n:m} (klant in meerdere parties, party met meerdere klanten)
+  \item Party \emph{boekt} EscapeRoom: \textbf{n:m met extra data} (datum, begintijd, prijs) $\Rightarrow$ \textbf{Booking} als associatieve entiteit
+\end{itemize}
+
+\subsection{Stap 2 -- ERD Schets}
+
+\begin{center}
+\begin{tikzpicture}[node distance=0.5cm and 3.2cm, every node/.style={font=\sffamily\small}]
+
+  % Branch
+  \node[erd entity] (branch) {Branch};
+  \node[erd pk, below=0cm of branch] (bPK) {\underline{branchID}};
+  \node[erd attr, below=0cm of bPK] (bLoc) {location};
+  \node[erd attr, below=0cm of bLoc] (bHrs) {openingHours};
+  \begin{scope}[on background layer]
+    \node[draw=schoolBlue, rounded corners=2pt, thick, fill=schoolBlue!5,
+          fit=(branch)(bPK)(bLoc)(bHrs), inner sep=2pt] {};
+  \end{scope}
+
+  % EscapeRoom
+  \node[erd entity, right=3.5cm of branch] (room) {EscapeRoom};
+  \node[erd pk, below=0cm of room] (rPK) {\underline{roomID}};
+  \node[erd attr, below=0cm of rPK] (rName) {roomName};
+  \node[erd attr, below=0cm of rName] (rDiff) {difficulty};
+  \node[erd fk, below=0cm of rDiff] (rFK) {branchID (FK)};
+  \begin{scope}[on background layer]
+    \node[draw=schoolBlue, rounded corners=2pt, thick, fill=schoolBlue!5,
+          fit=(room)(rPK)(rName)(rDiff)(rFK), inner sep=2pt] {};
+  \end{scope}
+
+  % Booking (associatief)
+  \node[erd entity, right=3.5cm of room, fill=schoolOrange!20, draw=schoolOrange] (booking) {Booking};
+  \node[erd fk, below=0cm of booking, draw=schoolOrange, fill=schoolOrange!8] (bkParty) {partyID (FK/PK)};
+  \node[erd fk, below=0cm of bkParty, draw=schoolOrange, fill=schoolOrange!8] (bkRoom) {roomID (FK/PK)};
+  \node[erd attr, below=0cm of bkRoom] (bkDate) {bookingDate};
+  \node[erd attr, below=0cm of bkDate] (bkTime) {startTime};
+  \node[erd attr, below=0cm of bkTime] (bkPrice) {price};
+  \begin{scope}[on background layer]
+    \node[draw=schoolOrange, rounded corners=2pt, thick, fill=schoolOrange!5,
+          fit=(booking)(bkParty)(bkRoom)(bkDate)(bkTime)(bkPrice), inner sep=2pt] {};
+  \end{scope}
+
+  % Party
+  \node[erd entity, below=2.8cm of booking] (party) {Party};
+  \node[erd pk, below=0cm of party] (pPK) {\underline{partyID}};
+  \begin{scope}[on background layer]
+    \node[draw=schoolBlue, rounded corners=2pt, thick, fill=schoolBlue!5,
+          fit=(party)(pPK), inner sep=2pt] {};
+  \end{scope}
+
+  % CustomerParty (koppeltabel n:m)
+  \node[erd entity, below=2.8cm of room, fill=schoolTeal!20, draw=schoolTeal] (cp) {CustomerParty};
+  \node[erd fk, below=0cm of cp, draw=schoolTeal, fill=schoolTeal!8] (cpC) {customerID (FK/PK)};
+  \node[erd fk, below=0cm of cpC, draw=schoolTeal, fill=schoolTeal!8] (cpP) {partyID (FK/PK)};
+  \begin{scope}[on background layer]
+    \node[draw=schoolTeal, rounded corners=2pt, thick, fill=schoolTeal!5,
+          fit=(cp)(cpC)(cpP), inner sep=2pt] {};
+  \end{scope}
+
+  % Customer
+  \node[erd entity, below=2.8cm of branch] (cust) {Customer};
+  \node[erd pk, below=0cm of cust] (cPK) {\underline{customerID}};
+  \node[erd attr, below=0cm of cPK] (cName) {fullName};
+  \node[erd attr, below=0cm of cName] (cBirth) {birthdate};
+  \begin{scope}[on background layer]
+    \node[draw=schoolBlue, rounded corners=2pt, thick, fill=schoolBlue!5,
+          fit=(cust)(cPK)(cName)(cBirth), inner sep=2pt] {};
+  \end{scope}
+
+  % Relaties
+  \draw[erd rel, ->, >=Stealth] (rFK.west) -- (bLoc.east |- rFK.west)
+    node[midway, above, font=\scriptsize\sffamily, text=schoolGray] {1:n};
+  \draw[erd rel, ->, >=Stealth] (bkRoom.west) -- (rPK.east |- bkRoom.west)
+    node[midway, above, font=\scriptsize\sffamily, text=schoolGray] {};
+  \draw[erd rel, ->, >=Stealth] (bkParty.south) -- (party.north |- bkParty.south)
+    node[midway, right, font=\scriptsize\sffamily, text=schoolGray] {};
+  \draw[erd rel, ->, >=Stealth] (cpC.west) -- (cPK.east |- cpC.west);
+  \draw[erd rel, ->, >=Stealth] (cpP.east) -- (pPK.west |- cpP.east);
+
+\end{tikzpicture}
+\end{center}
+
+\subsection{Stap 3 -- SQL Oplossing}
+
+\begin{sqllisting}
+-- Tabel 1: Branch (geen FK's nodig)
+CREATE TABLE Branch (
+    branchID      INT          PRIMARY KEY AUTO_INCREMENT,
+    location      VARCHAR(100) NOT NULL,
+    openingHours  VARCHAR(100) NOT NULL
+);
+
+-- Tabel 2: EscapeRoom (FK naar Branch)
+CREATE TABLE EscapeRoom (
+    roomID      INT          PRIMARY KEY AUTO_INCREMENT,
+    roomName    VARCHAR(100) NOT NULL,
+    difficulty  VARCHAR(20)  NOT NULL,
+    branchID    INT          NOT NULL,
+    FOREIGN KEY (branchID) REFERENCES Branch(branchID)
+);
+
+-- Tabel 3: Customer
+CREATE TABLE Customer (
+    customerID  INT          PRIMARY KEY AUTO_INCREMENT,
+    fullName    VARCHAR(100) NOT NULL,
+    birthdate   DATE         NOT NULL
+);
+
+-- Tabel 4: Party
+CREATE TABLE Party (
+    partyID  INT  PRIMARY KEY AUTO_INCREMENT
+);
+
+-- Koppeltabel 5: CustomerParty  (n:m Customer <-> Party)
+CREATE TABLE CustomerParty (
+    customerID  INT  NOT NULL,
+    partyID     INT  NOT NULL,
+    PRIMARY KEY (customerID, partyID),
+    FOREIGN KEY (customerID) REFERENCES Customer(customerID),
+    FOREIGN KEY (partyID)    REFERENCES Party(partyID)
+);
+
+-- Associatieve tabel 6: Booking  (Party boekt EscapeRoom + extra data)
+CREATE TABLE Booking (
+    partyID      INT      NOT NULL,
+    roomID       INT      NOT NULL,
+    bookingDate  DATE     NOT NULL,
+    startTime    TIME     NOT NULL,
+    price        DECIMAL(8,2) NOT NULL,
+    PRIMARY KEY (partyID, roomID, bookingDate, startTime),
+    FOREIGN KEY (partyID) REFERENCES Party(partyID),
+    FOREIGN KEY (roomID)  REFERENCES EscapeRoom(roomID)
+);
+\end{sqllisting}
+
+\begin{waarschuwing}[Let op: volgorde van aanmaken]
+Tabellen met \texttt{FOREIGN KEY}s moeten aangemaakt worden \emph{nadat} de gerefereerde tabel al bestaat.
+Volgorde hier: \texttt{Branch} $\to$ \texttt{EscapeRoom} $\to$ \texttt{Customer} $\to$ \texttt{Party} $\to$ \texttt{CustomerParty} $\to$ \texttt{Booking}.
+\end{waarschuwing}
+
+% =============================================================================
+\section{Uitgewerkte Oefening -- Basketbalclub}
+% =============================================================================
+
+\begin{oefening}[Basketbalclub]
+Een basketbalclub wil spelersinformatie bijhouden. Een \textbf{club} heeft naam, adres, voorzitter en registratienummer. Een club heeft meerdere \textbf{teams} per categorie (jeugd, junioren\ldots) met een naam en trainer. Een team heeft \textbf{spelers} met naam, geboortedatum en ranking. Per \textbf{match} (naam, tijdstip, eindstand) -- gespeeld tegen een team van een andere club -- worden per speler de gespeelde tijd, individuele score en aantal 3-punters bijgehouden.
+\end{oefening}
+
+\subsection{Entiteiten en Relaties}
+
+\begin{itemize}
+  \item \textbf{Club} -- naam, adres, voorzitter, registratienummer
+  \item \textbf{Team} -- naam, categorie, trainer; \textbf{FK naar Club} (1:n)
+  \item \textbf{Player} -- naam, geboortedatum, ranking; \textbf{FK naar Team} (1:n)
+  \item \textbf{Match} -- naam, tijdstip, eindstand; gespeeld door een Team tegen een andere Club
+  \item \textbf{PlayerMatchStats} -- koppeltabel Player $\leftrightarrow$ Match met extra data (gespeelde tijd, score, 3-punters)
+\end{itemize}
+
+\subsection{SQL Oplossing}
+
+\begin{sqllisting}
+CREATE TABLE Club (
+    clubID       INT          PRIMARY KEY AUTO_INCREMENT,
+    clubName     VARCHAR(100) NOT NULL,
+    address      VARCHAR(200) NOT NULL,
+    president    VARCHAR(100) NOT NULL,
+    leagueNr     VARCHAR(50)  UNIQUE NOT NULL
+);
+
+CREATE TABLE Team (
+    teamID    INT          PRIMARY KEY AUTO_INCREMENT,
+    teamName  VARCHAR(100) NOT NULL,
+    category  VARCHAR(50)  NOT NULL,
+    coach     VARCHAR(100) NOT NULL,
+    clubID    INT          NOT NULL,
+    FOREIGN KEY (clubID) REFERENCES Club(clubID)
+);
+
+CREATE TABLE Player (
+    playerID   INT          PRIMARY KEY AUTO_INCREMENT,
+    playerName VARCHAR(100) NOT NULL,
+    birthdate  DATE         NOT NULL,
+    ranking    INT          NOT NULL,
+    teamID     INT          NOT NULL,
+    FOREIGN KEY (teamID) REFERENCES Team(teamID)
+);
+
+CREATE TABLE Match (
+    matchID     INT          PRIMARY KEY AUTO_INCREMENT,
+    matchName   VARCHAR(100) NOT NULL,
+    matchTime   DATETIME     NOT NULL,
+    finalScore  VARCHAR(20),
+    homeTeamID  INT          NOT NULL,        -- het team van onze club
+    opponentID  INT          NOT NULL,        -- team van andere club
+    FOREIGN KEY (homeTeamID) REFERENCES Team(teamID),
+    FOREIGN KEY (opponentID) REFERENCES Team(teamID)
+);
+
+-- Associatieve tabel: spelersstats per match
+CREATE TABLE PlayerMatchStats (
+    playerID      INT  NOT NULL,
+    matchID       INT  NOT NULL,
+    minutesPlayed INT,
+    individualScore INT,
+    threePointers INT,
+    PRIMARY KEY (playerID, matchID),
+    FOREIGN KEY (playerID) REFERENCES Player(playerID),
+    FOREIGN KEY (matchID)  REFERENCES Match(matchID)
+);
+\end{sqllisting}
+
+% =============================================================================
+\section{Snelreferentie -- Checklist voor het Examen}
+% =============================================================================
+
+\begin{conceptbox}[Stap-voor-stap aanpak op het examen]
+\begin{enumerate}
+  \item \textbf{Lees de tekst} en onderstreep alle zelfstandige naamwoorden $\Rightarrow$ kandidaat-entiteiten.
+  \item \textbf{Zoek relaties} (werkwoorden) en bepaal de cardinaliteit:
+    \begin{itemize}
+      \item Kan één X meerdere Y's hebben? $\Rightarrow$ 1:n (FK in Y)
+      \item Kan ook Y meerdere X's hebben? $\Rightarrow$ n:m (koppeltabel)
+      \item Is er extra data bij de relatie (datum, prijs\ldots)? $\Rightarrow$ associatieve entiteit/tabel
+    \end{itemize}
+  \item \textbf{Bepaal de volgorde} van aanmaken: tabellen zonder FK's eerst.
+  \item \textbf{Schrijf de SQL}: voor elke entiteit een \texttt{CREATE TABLE}.
+  \item \textbf{Controleer}: elke FK verwijst naar een bestaande PK? Komma's correct?
+\end{enumerate}
+\end{conceptbox}
+
+\begin{waarschuwing}[Veelgemaakte fouten op het examen]
+\begin{itemize}
+  \item FK vergeten bij 1:n-relatie (staat in de \emph{veel}-tabel, niet in de één-tabel).
+  \item Geen koppeltabel aanmaken bij n:m (dit is de meest voorkomende fout).
+  \item Komma na de \emph{laatste} kolom/constraint (syntaxfout).
+  \item Tabellen aanmaken in verkeerde volgorde (FK verwijst naar nog niet bestaande tabel).
+  \item \texttt{REFERENCES TabelNaam(PKkolom)} -- moet de exacte kolomnaam van de PK zijn.
+\end{itemize}
+\end{waarschuwing}
+
+\begin{center}
+\begin{tblr}{
+  colspec={Q[l,3.5cm] Q[l,8.5cm]},
+  row{1}={bg=schoolBlue, fg=white, font=\bfseries\sffamily},
+  row{odd}={bg=gray!8},
+}
+  Situatie & Oplossing \\
+  1 entiteit & 1 \texttt{CREATE TABLE} met \texttt{PRIMARY KEY} \\
+  1:n relatie & FK in de \emph{veel}-tabel \texttt{REFERENCES} één-tabel \\
+  n:m relatie & Koppeltabel met 2 FK's en composite \texttt{PRIMARY KEY} \\
+  n:m + extra data & Associatieve tabel = koppeltabel + extra kolommen \\
+  Verplicht veld & \texttt{NOT NULL} \\
+  Uniek veld & \texttt{UNIQUE} \\
+  Auto-gegenereerde ID & \texttt{AUTO\_INCREMENT} bij \texttt{INT PRIMARY KEY} \\
+  Tekst & \texttt{VARCHAR(n)} -- kies n iets groter dan nodig \\
+  Datum & \texttt{DATE}, Datum+Tijd: \texttt{DATETIME} \\
+  Prijs/bedrag & \texttt{DECIMAL(8,2)} \\
+\end{tblr}
+\end{center}
+
+\end{document}
