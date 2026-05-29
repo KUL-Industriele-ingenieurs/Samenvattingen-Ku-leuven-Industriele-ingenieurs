@@ -1,7 +1,847 @@
+% ============================================================
+%  P_Van_Rymenant.tex  –  Lassen / Solderen & Braseren
+%  Auteur: samenvatting o.b.v. slides Patrick Van Rymenant
+% ============================================================
+
 \chapter{Lassen}
-Ik vraag mij af of het zelfs nodig is om het deel van deze proff samen te vatten, de slides staan vol met notities en bespreken alles duidelijk, lesopnames staan ook online. Ik ga hier dus veel copy-pasten, ik maak het alsnog omdat de delen van de andere proffen niet zo zijn dus dan is er wel nog een complete samenvatting/cursus achtig iets.
-\subsection{Wat is lassen?}
-\begin{conceptbox}[definitie]
-Het verbinden van materialen doormiddel van druk en/of warmte, waarbij het materiaal op de verbindingsplaats in vloeibare of deeachtige toestand wordt gebracht, terwijl al of niet materiaal met ongeveer dezelfde samenstelling wordt toegevoegd, waarbij continuïteit ontstaat tussen de te verbinden delen.
+
+\section{Wat is lassen?}
+
+\begin{conceptbox}[Definitie]
+\textbf{Lassen} = het verbinden van materialen door middel van \textbf{druk en/of warmte},
+waarbij het materiaal op de verbindingsplaats in vloeibare of deegachtige toestand wordt
+gebracht, al of niet met toevoeging van vulmateriaal met vergelijkbare samenstelling,
+zodat er \textbf{continuïteit} ontstaat tussen de te verbinden delen.
 \end{conceptbox}
-Hierbij wordt met continuïteit bedoeld dat, in tegenstelling tot solderen en braseren, de continuïteit kan verstoord worden door bvb. verschil in metallurgische structuur in de verbindings-zone (veroorzaakt door spanningsconcentraties)
+
+Het sleutelwoord is \emph{continuïteit}: in een lasverbinding is er metallurgische samenhang
+tussen de twee stukken basismateriaal (en het eventuele lasmateriaal).  Dit onderscheidt
+lassen van solderen en braseren, waarbij verbinding tot stand komt via \emph{adhesie} van een
+vulmiddel met lager smeltpunt.  Bij lassen \emph{kan} de continuïteit worden verstoord door
+bv.\ een verschil in metallurgische structuur in de verbindingszone, wat spanningsconcentraties
+veroorzaakt.
+
+Het basismateriaal hoeft niet te smelten (druklas), maar smelt wel bij smeltlassen.  Soms
+wordt een vulmateriaal toegevoegd met een volledig andere samenstelling (bv.\ ``buttering''
+bij geklede lagen).
+
+\section{Indeling van lasprocessen}
+
+Alle lasprocessen vallen in twee grote groepen:
+
+\begin{itemize}
+  \item \textbf{Smeltlassen} – de verbindingszone wordt verhit \emph{boven} het smeltpunt:
+    \begin{itemize}
+      \item Elektrisch: booglas (MMA, MIG/MAG, TIG, Plasma, SA\ldots), electroslag
+      \item Thermo-chemisch: autogeen (zuurstof-brandstof), aluminothermisch
+      \item Straling: laser-, elektronenstraallass
+    \end{itemize}
+  \item \textbf{Druklas} – verbinding door druk; warmte brengt het materiaal in
+    deegachtige of zelfs koude toestand:
+    \begin{itemize}
+      \item Weerstandslas: puntlas, naadlas, projectielas, stuiklas, flitslas
+      \item Wrijvingslas: rotatie-, lineair, wrijvingsroerlas (FSW), ultrasoon\ldots
+      \item Diffusiebinding, explosielassen, koudperslas
+    \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.90\textwidth]{Proffen/VR_W_c01_classif.png}
+  \caption{Volledige indeling van alle lasprocessen.  Smeltlassen (oranje) omvat
+    booglas-, elektroslag- en stralingsprocessen.  Druklas (links) omvat koud, warm en
+    weerstandslassen.}
+\end{figure}
+
+\section{Lasposities}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.75\textwidth]{Proffen/VR_W_c19_positions.png}
+  \caption{Standaard lasposities (PA t/m PG).  PA = vlak; PB = hoeklas omhoog;
+    PC = horizontaal; PD/PE = boven het hoofd; PF/PG = staand.}
+\end{figure}
+
+De laspositie is een parameter die \emph{enkel} relevant is voor smeltlassen: de zwaartekracht
+werkt op het vloeibare lasmetaal en bepaalt hoe moeilijk het is om een goede lasnaad te maken.
+In positie PA (vlak) is ondersteuning van het bad optimaal; bij PF/PG (staand) en PE (boven het
+hoofd) worden de motorische vaardigheden van de lasser steeds kritischer.
+
+\begin{warningbox}
+Bij \textbf{druklas}processen speelt de positie géén rol: de werkstukken worden per
+definitie tegen elkaar gedrukt, ongeacht oriëntatie.
+\end{warningbox}
+
+\section{Smeltlassen -- booglasmethoden}
+
+Bij booglas wordt de boog aangestoken tussen elektrode en werkstuk.  De boog bereikt
+temperaturen van 6\,000--20\,000\,K en smelt het basismateriaal (en eventueel de elektrode).
+De keuze van methode bepaalt de depositionele snelheid, de bescherming van het bad en de
+toepasbare posities.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.82\textwidth]{Proffen/VR_W_c20_deprate.png}
+  \caption{Vergelijking van depositionele snelheden [kg/u] voor de voornaamste booglasmethoden.
+    SA-lassen haalt de hoogste depositionele snelheid van alle conventionele processen.
+    Autogeen lassen heeft de laagste depositionele snelheid.}
+\end{figure}
+
+\subsection{Manueel metaalbooglas (MMA / SMAW)}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.70\textwidth]{Proffen/VR_W_c02_mma.png}
+  \caption{Schematische doorsnede van het MMA-lasproces.  De beklede staafelectrode
+    bestaat uit een stalen kern omgeven door een flux-deklaag.  De flux vergast en vormt een
+    beschermende atmosfeer + slak.}
+\end{figure}
+
+MMA (Manual Metal Arc) is uitgevonden ca.\ 1891 en is de oudste elektrische lasmethode.
+De elektrode is een \textbf{consumabele} staaf (kern + deklaag) van 300--500\,mm lengte en
+Ø\,1{,}6--6\,mm.
+
+\textbf{Functies van de deklaag:}
+\begin{itemize}
+  \item Richtend effect op de boog (chalice-vorming)
+  \item Aanmaken van een beschermende atmosfeer (geëvolueerde gassen)
+  \item Bescherming van druppels tijdens overdracht (slak)
+  \item Bescherming van het bad (slakvorming)
+  \item Ondersteuning van het bad (positie-afhankelijk)
+  \item Beïnvloeding van de stollingskinetiek (basische electroden)
+  \item Legeringstransport naar het lasmetaal
+\end{itemize}
+
+\textbf{Deklaagtypen:}
+\begin{itemize}
+  \item \emph{Rutiel}: goede vloeibaarheid, zachte boog, alle posities.
+  \item \emph{Basisch (cellulose)}: hoge neerlegsnelheid, diepe inbranding, hoog
+    waterstofgehalte in de neerslag $\Rightarrow$ risico op \textbf{koude scheuren}.
+    Verplichte voorverwarming bij hoogwaardig staal.
+  \item \emph{Basisch (laag H}$_2$\emph{)}: hoge taaiheid, zeer lage waterstofinhoud,
+    moeilijker te lassen (vraagt motorische vaardigheid), minimal risico op koude scheuren.
+\end{itemize}
+
+\begin{warningbox}
+De stoomstroom bij MMA bedraagt: vuistregel $\approx 40\,\text{A}$ per mm
+electrodediameter.  De stoomrichting (AC/DC) en polariteit worden bepaald door de
+deklaag en het basismateriaal.
+\end{warningbox}
+
+\subsection{MIG/MAG-lassen (GMAW)}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.70\textwidth]{Proffen/VR_W_c03_migmag.png}
+  \caption{Werkingsprincipe van MIG/MAG-lassen: een continu aangedreven draad fungeert als
+    consumabele electrode; de boog brandt tussen draadtip en werkstuk onder bescherming van
+    een extern gasmengsel.}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.72\textwidth]{Proffen/VR_W_c04_migmag_setup.png}
+  \caption{Volledige MIG/MAG installatie: stroombron, draadaanvoer, lastoorts,
+    gastoevoer (flowmeter + cilinder) en massakabel.}
+\end{figure}
+
+MIG/MAG is het meest gebruikte booglasmethode in de industrie.  De draad (Ø\,0{,}8--1{,}2\,mm voor staal)
+wordt continu aangedreven via de contacttip (``contact-tube'' of ``tip'') in de lastoorts.
+De diameter van de boring van de tip bepaalt de draadkeuze.
+
+\begin{itemize}
+  \item \textbf{MIG} (Metal Inert Gas): inert beschermgas (Ar, He) $\Rightarrow$ gebruikt voor
+    Al, Cu, roestvast staal.
+  \item \textbf{MAG} (Metal Active Gas): actief gas (Ar + CO$_2$, puur CO$_2$, Ar + O$_2$)
+    $\Rightarrow$ gebruikt voor ongelegerd en laaggelgeerd staal.
+\end{itemize}
+
+\textbf{Druppeloverdrachtsmodi:}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.78\textwidth]{Proffen/VR_W_c05_transfer.png}
+  \caption{Druppeloverdrachtsmodi als functie van stroom en spanning.  Bij lage stroom
+    treedt kortsluitingsoverdracht op (much spatter); bij hoge stroom sproeibogoverdracht
+    (geen spatter maar veel warmte-inbreng); pulsbooglassen combineert lage warmte-inbreng
+    met spatvrij lassen.}
+\end{figure}
+
+\begin{itemize}
+  \item \textbf{Kortsluiting-/kortboog} ($<$25\,V, $<$250\,A): elke druppel wordt overgedragen
+    via een kortsluiting – veel spatter, lage warmte-inbreng.
+  \item \textbf{Pulsboog}: één druppel per puls – combinatie van voordelen van kort- en sproeibooglassen.
+    Ideaal voor dunplaat zonder spatter.
+  \item \textbf{Sproei-/spuitboog} ($>$25\,V, $>$250\,A): druppels worden overgedragen
+    \emph{zonder} kortsluiting, centraal in de boog – geen spatter maar hoge warmte-inbreng.
+\end{itemize}
+
+\textbf{Gevulde draden (flux-cored):}
+Stalen buitenmantel gevuld met slak- of metaalpoeder.  Doordat alleen de mantel stroomgeleidend
+is, is de stroomdichtheid \emph{een orde van grootte hoger} dan bij massieve draden bij gelijke
+stroom $\Rightarrow$ veel hogere depositionele snelheid.  Bovendien eenvoudig te legeren.
+
+\subsection{TIG-lassen (GTAW)}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.68\textwidth]{Proffen/VR_W_c06_tig.png}
+  \caption{TIG-lasproces: een niet-consumabele wolfraamelektrode in een gasmond
+    (inert gas) brandt een boog naar het werkstuk; het vulmateriaal wordt handmatig of
+    automatisch als staaf aangeboden.}
+\end{figure}
+
+TIG (Tungsten Inert Gas) gebruikt een \textbf{niet-consumabele} wolfraamelektrode (Ø\,1{,}6--2\,mm).
+Het inerte beschermgas (altijd!) zorgt ervoor dat er geen wolfraamoxiden ontstaan – deze zijn
+schadelijk voor de gezondheid.
+
+\begin{itemize}
+  \item Vulmateriaal als staaf (1000\,mm, Ø\,1{,}6--2\,mm), of zonder vulmateriaal bij dunne plaat.
+  \item Wolfram altijd aan de \textbf{negatieve} pool (DCEN): anders smelt de elektrode.
+  \item Wolfram gedoteerd met oxiden (thorium, cerium\ldots) voor betere elektronemissie.
+  \item Staaldraden altijd kopergecoat (geleidbaarheid + corrosiebescherming).
+\end{itemize}
+
+TIG levert de hoogste naadkwaliteit (bijv.\ voor roestvast staal, titanium, aluminium, dunne wand),
+maar heeft de laagste depositionele snelheid van alle booglasmethoden.  Het is \emph{geen} efficiënte productiemethode voor dikke secties.
+
+\subsection{SA-lassen / onderdompelingsbooglassen (SAW)}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.72\textwidth]{Proffen/VR_W_c07_saw.png}
+  \caption{SA-lasopstelling: de boog brandt volledig onder een laag korrelvormige flux;
+    een vacuümsysteem herstelt de niet-gesmolten flux.  Rechts: foto van twee SA-lashoofd
+    op een cilindrisch werkstuk.}
+\end{figure}
+
+Bij SA-lassen (Submerged Arc Welding) brandt de boog \emph{volledig bedekt} onder een laag
+korrelvormige flux.  Hierdoor:
+\begin{itemize}
+  \item Geen lichtuitstraling, geen spatten – volledig geautomatiseerd.
+  \item Zeer hoge depositionele snelheid (tot $>$100\,kg/uur bij multi-draad).
+  \item Draadiameter 3--\ldots\,mm (CC of CV-regeling).
+  \item Flux beschermt bad én boog; niet-gesmolten flux wordt teruggezogen.
+  \item Toepasbaar voor buizen, platen, profielen en het aanbrengen van oppervlaktelagen.
+\end{itemize}
+
+\begin{warningbox}
+\textbf{Polariteit bij SA-lassen} beïnvloedt zowel de depositionele snelheid als de inbranding.
+DCEP (electrode positief) $\Rightarrow$ hogere inbranding; DCEN (electrode negatief) $\Rightarrow$
+hogere depositionele snelheid maar minder inbranding.  Bij het aanbrengen van slijtagebestendige
+lagen (cladding) wordt DCEN geprefereerd om het legeringsgehalte maximaal te behouden.
+\end{warningbox}
+
+\subsection{Autogeen lassen (oxy-brandstof)}
+
+Autogeen lassen (OFW) is historisch het oudste lasmethode.  Een mengsel van zuurstof en
+brandstof (acetyleen, propaan\ldots) verbrandt in een brander.
+
+\begin{itemize}
+  \item Vlam-type: neutraal (standaard staal en RVS), oxiderend (messing), reducerend (hooggekoolde stalen).
+  \item Vulmateriaal: staven of geen.
+  \item Zeer lage depositionele snelheid $\Rightarrow$ nauwelijks nog gebruikt voor lassen.
+  \item Wel gebruikt voor: voorverwarming, naverwarming, solderen/braseren,
+    monteren/demonteren van onderdelen.
+\end{itemize}
+
+\section{Statische eigenschappen van de stroombron}
+
+\subsection{Constante-stroom (CC) stroombron}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.74\textwidth]{Proffen/VR_W_c08_cc.png}
+  \caption{Statische stroom-spanningskarakteristiek van een CC-stroombron (steil dalende
+    curve).  Bij variatie van de booglengte verandert de spanning, maar de stroom blijft
+    quasi constant.}
+\end{figure}
+
+Een CC-stroombron heeft een steil dalende U-I karakteristiek.  Wijzigt de booglengte (bv.\
+door een trillende hand), dan varieert de spanning maar verandert de stroom slechts minimaal.
+Gevolg: de inbranding (die evenredig is met de stroom) blijft stabiel, ook bij handmatig lassen.
+
+CC-stroombronnen worden toegepast bij:  MMA, TIG, plasma, SA-lassen (met CC-regeling).
+
+\subsection{Constante-spanning (CV) stroombron}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.74\textwidth]{Proffen/VR_W_c09_cv.png}
+  \caption{CV-karakteristiek (vlakke curve) gecombineerd met de boogkarakteristiek.
+    Het werkpunt stelt zich in op het snijpunt; bij verandering van booglengte herstelt
+    het systeem de booglengte automatisch via de draadaanvoer.}
+\end{figure}
+
+Een CV-stroombron houdt de spanning nagenoeg constant.  Wordt bij MIG/MAG gebruikt:
+wanneer de booglengte toeneemt (krimpt de stroom, burn-off rate daalt, draad groeit dichter
+naar het bad $\Rightarrow$ booglengte herstelt snel).  Dit zelfregulerend mechanisme is
+essentieel voor een stabiel MIG/MAG-proces.
+
+\begin{warningbox}
+\textbf{Samengevat}: CC = manueel lassen (MMA, TIG) want stabiele stroom ondanks handbewegingen.
+CV = geautomatiseerd (MIG/MAG, SAW met CV) want zelfregeling van de booglengte.
+\end{warningbox}
+
+\section{Druklas -- weerstandslas}
+
+Bij weerstandslassen wordt warmte gegenereerd door het Joule-effect: $Q = I^2 \cdot R \cdot t$.
+De warmte concentreert zich in het contactvlak tussen de werkstukken (hoge contactweerstand)
+en door de weerstand van het werkstukmateriaal zelf.
+
+\subsection{Puntlassen}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.70\textwidth]{Proffen/VR_W_c10_spot.png}
+  \caption{Puntlasproces: twee koperelectroden klemmen de werkstukken en voeren hoge
+    stroom ($\approx$\,0{,}5\,kA/mm$^2$) gedurende milliseconden.  Midden: doorsnede van
+    een puntlasverbinding (nugget).}
+\end{figure}
+
+Puntlassen is de meest gebruikte weerstandslasmethode.  Drie kritische parameters:
+
+\begin{itemize}
+  \item \textbf{Stroom}: te laag $\Rightarrow$ geen verbinding; te hoog $\Rightarrow$ spattergedrag.
+  \item \textbf{Tijd}: te laag $\Rightarrow$ geen verbinding; te hoog $\Rightarrow$ trage nuggetgroei
+    + verwarming WBZ (warmte-beïnvloede zone).
+  \item \textbf{Druk (kracht)}: te laag $\Rightarrow$ spatten door hoge contactweerstand; te hoog $\Rightarrow$
+    te lage contactweerstand $\Rightarrow$ minder warmteontwikkeling + oppervlakke-indruk.
+\end{itemize}
+
+\textbf{Nuggetdiameter}: $d_\text{nugget} \leq 4\sqrt{t}$ (nooit groter dan de electrodediameter).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.78\textwidth]{Proffen/VR_W_c11_spot_timing.png}
+  \caption{Tijdsverloop van elektrodekracht (blauw) en lasstroom (rood) bij puntlassen.
+    De houdtijd $t_N$ dient minstens zo lang te zijn als de laspuls $t_S$, zodat het nugget
+    onder druk kan stollen en krimpen – dit voorkomt warmscheuren.}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.72\textwidth]{Proffen/VR_W_c12_spot_resist.png}
+  \caption{Weerstandsdistributie in een puntlasopstelling (boven) en het corresponderende
+    temperatuurprofiel (onder).  Initieel domineren de contactweerstanden R3, R4 en R7
+    (rood); na verloop van tijd evolueert het profiel naar de onderste figuur.}
+\end{figure}
+
+\subsection{Rolnaadlassen}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.70\textwidth]{Proffen/VR_W_c13_seam.png}
+  \caption{Rolnaadlas: de puntlaselektroden zijn vervangen door schijven met
+    taps toelopende doorsnede.  De werkstukken bewegen continu langs de draaiende schijven.
+    Resultaat: een aaneengesloten reeks overlappende puntlassen $\Rightarrow$ gasdichte naad.}
+\end{figure}
+
+Rolnaadlassen werkt op hetzelfde principe als puntlassen maar de elektroden zijn schijven.  Dit
+maakt een continue, \emph{lektijdichte} naad mogelijk (bv.\ vaten voor radioactief afval,
+radiatoren).  Stromen zijn van de orde van 20--35\,kA.
+
+\subsection{Projectielassen}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.72\textwidth]{Proffen/VR_W_c16_proj.png}
+  \caption{Projectielasprincipe: kleine uitsteeksels (``noppen'') op één werkstuk
+    concentreren de stroom; ze smelten tijdens het lassen en vormen de verbinding.
+    Rechts: voorbeeld van een radiatorpaneel met projectielasnoppen in de hoeken.}
+\end{figure}
+
+Projectielassen is het meest elegante weerstandslasmethode.  Door de stroom te concentreren
+in kleine ``noppen'' (gestanst uit het plaatstaal), stijgt de stroomdichtheid van enkele kA/mm$^2$
+tot \emph{honderden} kA/mm$^2$.  Gevolgen:
+
+\begin{itemize}
+  \item Levensduur van de elektroden is \emph{orders of magnitude} hoger dan bij punt- of naadlassen
+    (elektrodegeometrie blijft intact omdat de noppen wegsmelten).
+  \item Elke las heeft een nieuw, identiek contactoppervlak.
+  \item Toepasbaar in massaproductie: batterijen, radiatoren, ophanghaken, \ldots
+\end{itemize}
+
+\subsection{Stuikbooglassen (upset-butt)}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.72\textwidth]{Proffen/VR_W_c14_upset.png}
+  \caption{Stuikbooglassen: de twee werkstukken worden axiaal vastgeklemd, stroom vloeit
+    door het contactvlak en verwarmt het.  Een axiale kracht stuikt het materiaal in de zone.
+    Kenmerken: stompe verbinding; zachte vervorming in de laszone.}
+\end{figure}
+
+Stuikbooglassen (upset-butt welding) is geschikt voor stalen staven/buizen
+(Ø\,0{,}5--30\,mm, max.\ 600\,mm$^2$) en aluminium kleinere secties.  Het
+contactvlak moet parallel, glad en schoon zijn.  Toepassingen: assemblage van micro-weerstandsdraad,
+batterijterminals (AA/AAA), gasontladingslampen.
+
+\subsection{Flitslassen (flash-butt)}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.72\textwidth]{Proffen/VR_W_c15_flash.png}
+  \caption{Flitslasproces: een vlitsefase (hoog oppervlaktetemperatuur via kleine
+    vlitsbogen) gevolgd door een stuikfase met grote axiale kracht.  Kenmerken: ruwe aanzetoppervlakken
+    volstaan; secties tot 100\,000\,mm$^2$ voor staal.}
+\end{figure}
+
+Bij flitslassen wordt de beginfase -- de ``flitsfase'' -- gebruikt om het materiaalvlak te
+verhitten via kleine vlitsbogen bij lage stromen ($\sim$\,1000\,A).  Dit voorverwarmt de te
+verbinden vlakken.  Daarna volgt een schoksgewijze stuikbeweging met hoge kracht.  Voordelen:
+\begin{itemize}
+  \item Veel minder energie dan bij gewone stuiklas (voorverwarming efficiënt).
+  \item Ruwe aanzetoppervlakken volstaan.
+  \item Toepasbaar ``buiten'' dankzij mobiele units (railassen over km's).
+  \item Staal $\varnothing$\,1{,}5--300\,mm, max.\ 100\,000\,mm$^2$; Al tot 12\,000\,mm$^2$.
+\end{itemize}
+
+\section{Thermische effecten van lassen}
+
+\subsection{Krimp en vervorming}
+
+Tijdens het lassen expandeert het materiaal lokaal door de hitte en trekt het samen bij het
+afkoelen.  Omdat het omringende koude materiaal de vrije krimp verhindert, ontstaan
+\textbf{restspanningen}.  Indien niet tegengehouden, leidt dit tot \textbf{vervorming} van de
+constructie.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\textwidth]{Proffen/VR_W_c17_shrink.png}
+  \caption{Reductiemaatregelen voor lasvervorming.  Boven links: onjuiste (``slecht'') versus
+    correcte (``goed'') positie van de lasnaad t.o.v.\ de neutrale lijn van een profiel.
+    Overige figuren: symmetrisch lassen, terugslaan van de laspositie en klemmen van
+    werkstukken.}
+\end{figure}
+
+\textbf{Maatregelen om krimp en vervorming te beperken:}
+\begin{enumerate}
+  \item Beperk het aantal laslagen.
+  \item Kies de optimale positie voor de lasnaad (zo dicht mogelijk bij de neutrale lijn).
+  \item Beperk het volume van het lasmetaal.
+  \item Beperk het aantal lasrupsen.
+  \item Gebruik asymmetrische lassen om de vervorming te compenseren.
+  \item Klem de werkstukken vast tijdens en na het lassen.
+  \item Pas spanningsontlastende nabehandeling (PWHT) toe.
+\end{enumerate}
+
+\subsection{Structuurveranderingen in de warmte-beïnvloede zone (WBZ)}
+
+Door de snelle verhitting en afkoeling kunnen in de WBZ \textbf{brosse structuren} (bv.\ martensiet)
+en \textbf{scheuren} (waterstofscheuren, vermoeiingsscheuren) ontstaan.
+
+\textbf{Oplossingen:}
+\begin{itemize}
+  \item Beheers de warmte-inbreng (niet te snel, niet te langzaam lassen).
+  \item Verwarm de werkstukken voor: tragere afkoeling $\Rightarrow$ minder harden $\Rightarrow$
+    minder risico op koude scheuren.
+  \item Verwarm optioneel na het lassen (PWHT) om restspanningen te ontlassen.
+\end{itemize}
+
+\begin{warningbox}
+\textbf{Waterstofscheuren} (koude scheuren) zijn gevaarlijk: ze ontstaan pas uren tot
+dagen na het lassen bij kamertemperatuur.  Oorzaak: waterstof diffundeert naar de WBZ en
+zorgt voor lokale verzwakking.  Preventie: droge elektroden (basisch, laag H$_2$), voorverwarmen,
+en naverwarmen na het lassen.
+\end{warningbox}
+
+\section{Kwaliteitsbeheer bij lassen}
+
+Lasnaden vereisen kwalificatie op twee niveaus:
+\begin{itemize}
+  \item \textbf{Lasserskwalificatie} (ISO\,9606): bewijs dat een individuele lasser de nodige
+    vaardigheden heeft voor een bepaald proces, materiaal en positie.
+  \item \textbf{Lasprocedure-kwalificatie} (ISO\,15607 + ISO\,15614):
+    \begin{itemize}
+      \item WPS (Welding Procedure Specification): beschrijft alle lasparameters.
+      \item PQR (Procedure Qualification Record): testrapport op basis waarvan de WPS
+        is goedgekeurd.
+    \end{itemize}
+\end{itemize}
+
+\section{Plastieklassen en ultrasoon lassen}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.78\textwidth]{Proffen/VR_W_c18_ultrasonic.png}
+  \caption{Ultrasoon lassen: door trillende kop die op het werkstuk drukt, wordt
+    wrijvingswarmte opgewekt die thermoplastisch materiaal smelt.  Toepassingsmodi:
+    naadlassen, puntlassen, klinken, inbedden.}
+\end{figure}
+
+Ultrasoongolven (20--40\,kHz) laten de oppervlakken snel trillen over elkaar.  De frictiewarmte
+smelt de thermoplast lokaal.  Daarna afkoeling onder druk $\Rightarrow$ hechte verbinding.
+
+\textbf{Toepassingen:} verpakkingen, speelgoed (Playmobil$^\circledR$), medische maskers (FFP2, FFP3),
+aftapzakken, kabelbindingen (vervanger van klemmen), zonnecel-absorbeurs.
+
+\textbf{PE-buislassen (stomplas en elektrolaskoppeling):}
+
+Bij stomplas worden de vlakken van twee PE-buizen gefreesd (loodrecht, lage ruwheid) en
+vervolgens tegen een verwarmingsplaat (``spiegel'') gedrukt tot de oppervlakken deegachtig
+worden.  Na terugtrekken van de plaat worden de uiteinden snel op elkaar gedrukt tot de
+verbinding is gestold.  Nadeel: de set-up binnenin de buizen kan vervuild worden door
+graviteitsflow (niet geschikt voor buizen met vloeistof).
+
+Bij \textbf{elektrolaskoppeling} zit een weerstandsdraad geïntegreerd in de binnenzijde van
+een mof.  Stroom verhit de draad $\Rightarrow$ het PE smelt en verbindt mof en buis.  Minder
+afhankelijk van de lassersvaardigheden; kostprijs van de mof is hoger.
+
+% ============================================================
+\chapter{Solderen en Braseren}
+% ============================================================
+
+\section{Definitie en vergelijking}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\textwidth]{Proffen/VR_S_c02_sb_def.png}
+  \caption{Solderen versus braseren: het onderscheid ligt bij de smelttemperatuur van het
+    soldeermateriaal.  Onder 450\,\textdegree C = weeksolderen; boven 450\,\textdegree C = braseren
+    (hardsolderen); boven 800\,\textdegree C in gecontroleerde atmosfeer = hoog-temperatuurbraseren.}
+\end{figure}
+
+\begin{conceptbox}[Definitie]
+\textbf{Solderen/braseren} = verbinden van materialen door middel van een gesmolten metaal
+met een \emph{lager} smeltpunt dan het basismateriaal.  De verbinding wordt tot stand gebracht
+via \textbf{adhesie} (bevochtiging + capillaire werking) -- het basismateriaal smelt \emph{niet}.
+\end{conceptbox}
+
+\begin{itemize}
+  \item \textbf{Weeksolderen} (Soft Soldering, $T_m < 450$\,\textdegree C): Sn-, Pb-, Bi-,
+    In-gebaseerde legeringen.  Toepassingen: elektronica, loodgieterswerk.
+  \item \textbf{Braseren} (Hard Soldering / Brazing, $T_m > 450$\,\textdegree C): Ag-, Cu-,
+    Ni-, Al-legeringen.  Toepassingen: warmtewisselaars, hydraulische verbindingen, turbinebladen.
+  \item \textbf{Hoog-temperatuurbraseren} ($T_m > 800$\,\textdegree C, gecontroleerde atmosfeer):
+    legeringen op basis van Ag, Au, Cu, Ni.  Naadkwaliteit vergelijkbaar met lassen.
+\end{itemize}
+
+\section{Toepassingen}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.82\textwidth]{Proffen/VR_S_c18_apps.png}
+  \caption{Typische toepassingen van solderen en braseren: elektronicabehuizingen (PCB),
+    koperen warmtewisselaars, koperbuizen in loodgieterswerk, fietsfram-brazingen.
+    Kenmerken: hoge kwaliteit, corrosiebestendig, lektijdicht, sterk.}
+\end{figure}
+
+\section{Voordelen en nadelen}
+
+\textbf{Voordelen:}
+\begin{itemize}
+  \item De werkstukken \emph{smelten niet} $\Rightarrow$ lagere en gelijkmatigere warmte-inbreng
+    $\Rightarrow$ minder vervorming, minder inwendige spanningen, minder microstructuurwijzigingen.
+  \item Capillaire werking maakt verbindingen mogelijk op moeilijk bereikbare plaatsen.
+  \item Verbinden van ongelijksoortige materialen (ook keramiek) is mogelijk.
+  \item Meerdere verbindingen tegelijk (batch-braseren in oven).
+  \item Geen problemen met dunne/dikke wandcombinaties.
+  \item Lager energieverbruik dan lassen.
+\end{itemize}
+
+\textbf{Nadelen:}
+\begin{itemize}
+  \item Nauwkeurige voorbehandeling vereist (ontvetten + oxidevrij maken).
+  \item Gebruik van flux $\Rightarrow$ fluxinsluitsels in de naad verzwakken de verbinding.
+  \item Onvoldoende verwijdering van fluxresten $\Rightarrow$ corrosie.
+  \item Sterkte neemt sterk af bij verhoogde temperatuur (boven smelttraject van het soldeer).
+\end{itemize}
+
+\section{Grondbeginselen: bevochtiging en capillaire werking}
+
+\subsection{Bevochtiging (Wetting)}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.80\textwidth]{Proffen/VR_S_c03_wetting.png}
+  \caption{Krachtenevenwicht bij bevochtiging: $V_1$ = oppervlaktespanning omgeving/soldeer,
+    $V_2$ = omgeving/werkstuk, $V_3$ = soldeer/werkstuk.  Bevochtiging treedt op als
+    $V_2 > V_3 + V_1 \cos\alpha$.}
+\end{figure}
+
+Bevochtiging wordt bepaald door oppervlaktespanning.  De contacthoek $\alpha$ (Youngse hoek)
+beschrijft hoe goed het vloeibare soldeer het vaste werkstuk bevochtigt:
+\begin{itemize}
+  \item $\alpha < 90^{\circ}$: goede bevochtiging (soldeer spreidt uit).
+  \item $\alpha > 90^{\circ}$: slechte bevochtiging (soldeer bolletje vormt).
+\end{itemize}
+
+Voorwaarden voor goede bevochtiging:
+\begin{enumerate}
+  \item Oxide-vrij oppervlak (flux of gecontroleerde atmosfeer).
+  \item Vetvrij oppervlak (ontvetten).
+  \item Juiste combinatie soldeerlegering/basismateriaal.
+  \item Voldoende temperatuur (boven de soliduslijn van het soldeer).
+\end{enumerate}
+
+\subsection{Capillaire werking}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.78\textwidth]{Proffen/VR_S_c04_capillary.png}
+  \caption{Capillaire opvulling van een spleet: het soldeer stijgt op langs beide oppervlakken
+    als de spleet smal genoeg is en bevochtiging optreedt.  Rechts: foto van een braseerverbinding
+    in doorsnede.}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.80\textwidth]{Proffen/VR_S_c05_formula.png}
+  \caption{Formule voor de capillaire stijghoogte $h$ en richtwaarden voor de spleetbreedte
+    $b$ per soldeertype.  De spleetbreedte $b$ staat in de noemer: een kleinere spleet geeft
+    een grotere stijghoogte.}
+\end{figure}
+
+De capillaire stijghoogte wordt gegeven door:
+\begin{align*}
+  h = \frac{2 \cdot \tau \cdot \cos\alpha}{b \cdot \sigma \cdot g}
+\end{align*}
+met $\tau$ de grensvlakspanning soldeer/werkstuk, $\alpha$ de contacthoek, $b$ de
+spleetbreedte, $\sigma$ de dichtheid van het vloeibare soldeer en $g$ de valversnelling.
+
+\begin{warningbox}
+\textbf{Richtwaarden spleetbreedte $b$:}\\
+Weeksolderen: 0{,}10--0{,}15\,mm\\
+Zilversolderen: 0{,}02--0{,}05\,mm\\
+Messingsolderen: 0{,}05--0{,}10\,mm\\
+Een te grote spleet verlaagt de capillaire stijging drastisch (zie grafiek).
+\end{warningbox}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.72\textwidth]{Proffen/VR_S_c06_graph.png}
+  \caption{Capillaire stijghoogte $h$ als functie van de spleetbreedte $b$.  Boven
+    $b \approx 0{,}3$\,mm daalt $h$ snel.  De optimale spleet ligt dus tussen 0{,}02 en 0{,}15\,mm
+    afhankelijk van het soldeer.}
+\end{figure}
+
+\subsection{Flux}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.78\textwidth]{Proffen/VR_S_c07_flux.png}
+  \caption{Invloed van spleetbreedte op de naadsterkte bij solderen met flux versus
+    solderen in een gecontroleerde atmosfeer.  Bij kleine spleet zonder voldoende capillaire
+    flux wordt de naad zwakker (rode curve).  In gecontroleerde atmosfeer (blauw) treedt dit
+    niet op.}
+\end{figure}
+
+Flux verwijdert het oxidefilm door chemische reductie.  Hoe stabieler het oxide (bv.\ Al$_2$O$_3$,
+Cr$_2$O$_3$), hoe agressiever de flux.  Agressieve flux verhoogt het risico op corrosie
+$\Rightarrow$ flux-resten \textbf{moeten} verwijderd worden na het solderen.
+
+\textbf{Alternatief: solderen zonder flux} in een gecontroleerde atmosfeer (reducerend, inert
+of vacuüm).  Dit is alleen toepasbaar bij temperaturen $\geq$\,800\,\textdegree C (braseren).
+Voordeel: geen corrosierisico, volledig gevulde naden, kwaliteit vergelijkbaar met lassen.
+
+\subsection{Binding en legeringsvorming}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.75\textwidth]{Proffen/VR_S_c08_bonding.png}
+  \caption{Intermetallische legeringszone tussen soldeer en basismateriaal.  Als het soldeer
+    met een hoofdelement van het basismateriaal een legering vormt, kan de samenstelling van
+    het soldeer wijzigen $\Rightarrow$ verandering van de oppervlaktespanning $V_3$
+    $\Rightarrow$ mogelijke overmatige verspreiding of terugtrekking.}
+\end{figure}
+
+Een soldeer vormt altijd een legering (of intermetallische verbinding, IMC) met het
+basismateriaal in de contactzone.  Dit kan de viscositeit en de bevochtiging beïnvloeden.
+Bv.\ bij het solderen van koper met tin: Cu$_6$Sn$_5$ en Cu$_3$Sn IMC-lagen groeien aan
+het grensvlak.
+
+\section{Temperatuursverloop bij solderen}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.82\textwidth]{Proffen/VR_S_c09_tprofile.png}
+  \caption{Aanbevolen soldeer-temperatuursprofiel voor reflow-solderen van elektronicacomponenten
+    (SMD).  Fasen: opwarmen, preheat/soak (flux activering), reflow (boven liquiduslijn),
+    afkoelen.}
+\end{figure}
+
+Een typisch profiel voor \textbf{reflow-solderen} van elektronicacomponenten bevat:
+\begin{enumerate}
+  \item \textbf{Opwarmfase (ramp-up)}: geleidelijk opwarmen (max.\,+3\,\textdegree C/s).
+  \item \textbf{Soak-zone (preheat)}: 60--180\,s bij 150\,\textdegree C voor flux-activering
+    en egaliseren van temperatuursverschillen.
+  \item \textbf{Reflow-zone}: 60--150\,s boven de liquiduslijn (typisch 217\,\textdegree C voor
+    SAC-soldeer); piektemperatuur 245\,\textdegree C.
+  \item \textbf{Afkoelfase (ramp-down)}: snel afkoelen (max.\ $-$5\,\textdegree C/s) voor fijnkorrelige,
+    sterke microstructuur.
+\end{enumerate}
+
+\section{Soldeer- en brasereertechnieken}
+
+De keuze van techniek hangt af van: productgeometrie, aantallen, soldeertype, kwaliteitseisen
+en kosten.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.90\textwidth]{Proffen/VR_S_c10_classif.png}
+  \caption{Classificatietabel van soldeer- en braseerprocessen (DIN 8505 deel 3) voor
+    weeksolderen ($T_m < 450$\,\textdegree C).  Ingedeeld naar verwarmingsmethode:
+    vast lichaam (soldeerbout, blok, rol), vloeistof (soldeerba d, golfsolderen), gas, straling,
+    elektrische stroom.}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.90\textwidth]{Proffen/VR_S_c11_brazing_class.png}
+  \caption{Classificatietabel voor braseren en hoog-temperatuurbraseren ($T_m > 450$\,\textdegree C).
+    Bijkomende methoden: soldeerba d, zoutbad, inert/reducerend gasvormig omgeving,
+    vacuümoven.}
+\end{figure}
+
+\subsection{Soldeerbout}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.78\textwidth]{Proffen/VR_S_c12_iron.png}
+  \caption{Soldeerbout voor handsolderen van elektronicacomponenten op een PCB.
+    De punt van de bout brengt soldeer en flux aan op de component-pad-combinatie.}
+\end{figure}
+
+De soldeerbout is \emph{uitsluitend} voor weeksolderen.  De koperput:
+\begin{itemize}
+  \item Heeft voldoende thermische massa om de soldeerzone snel op temperatuur te brengen.
+  \item Is goed bevochtigd door het soldeer (transporteert vloeibaar soldeer).
+  \item Is gemaakt van koper met hoge thermische geleidbaarheid.
+  \item Elektrisch verwarmde bout: verschillende vermogens afhankelijk van toepassing
+    (elektronica: 25--80\,W; loodgieterswerk: >100\,W).
+\end{itemize}
+
+\subsection{Vlam-solderen en braseren}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.70\textwidth]{Proffen/VR_S_c13_flame.png}
+  \caption{Vlam-soldering/-brasering: brander met gas/zuurstofmengsel verwarmt het werkstuk
+    tot de vereiste temperatuur.  Gassen en hoogste verbrandingstemperaturen: acetyleen/lucht
+    2355\,\textdegree C; acetyleen/O$_2$ 3160\,\textdegree C; propaan/O$_2$ 2750\,\textdegree C.}
+\end{figure}
+
+Vlam-solderen is voor zowel week- als hardsolderen/braseren toepasbaar.  In het algemeen
+gebruikt men een \textbf{neutrale vlam}.  Uitzonderingen:
+\begin{itemize}
+  \item Oxiderend voor messing solderen (koperlegering met zink): voorkomt ontzinking.
+  \item Reducerend: voor koperaluminiumlegeringen waarbij waterstofschade mogelijk is.
+\end{itemize}
+De brander kan mechanisch bewegen om een uniform temperatuursprofiel op te bouwen in de
+soldeerzone.
+
+\subsection{Inductiesolderen/-braseren}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.70\textwidth]{Proffen/VR_S_c14_induction.png}
+  \caption{Inductiesoldering: een spoel van middenfrequentie (1--10\,kHz) of hoogfrequentie
+    (50\,kHz) omhult het werkstuk.  De inductiestroom verwarmt het werkstuk dat op zijn beurt
+    het soldeer smelt.}
+\end{figure}
+
+Inductiesolderen/-braseren is uitsluitend voor serieproductie (de spoel is specifiek voor
+de werkstukgeometrie).  De inductiestroom verwarmt het werkstuk -- niet het soldeer direct.
+De indringdiepte is een functie van de frequentie en het materiaal (\emph{skin-effect}).
+Voordeel: snel, reproduceerbaar, geautomatiseerd.
+
+\section{Soldeer- en braseerlegering}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.82\textwidth]{Proffen/VR_S_c15_alloys.png}
+  \caption{Indeling van soldeer- en braseeralegeringen naar smelttemperatuur en basislegering.
+    Weekloten ($T_m < 450$\,\textdegree C): Ga, Bi, In, Sn, Cd, Pb, Zn-legeringen.
+    Braseren ($T_m > 450$\,\textdegree C): Mg, Al, Ag, Cu, Ni-legeringen.
+    Hoog-temperatuurbraseren: Ag, Au, Cu, Ni-legeringen.}
+\end{figure}
+
+\begin{warningbox}
+\textbf{Loodvrij solderen (RoHS)}: Europese RoHS-richtlijn verbiedt Pb in elektronicaproducten
+(uitzondering: medisch en militair).  Het meest gebruikte loodvrije soldeer is \textbf{SAC305}
+(96{,}5\,\%\,Sn -- 3\,\%\,Ag -- 0{,}5\,\%\,Cu), liquiduslijn $\approx$\,217\,\textdegree C.
+Vergelijk: eutectica Sn-Pb soldeer smolt bij 183\,\textdegree C.  De hogere procestemperatuur
+stelt extra eisen aan PCB-componenten en laminaten.
+\end{warningbox}
+
+\section{Constructieve aspecten van soldeer- en braseerverbindingen}
+
+\subsection{Naatvorm en spleetbreedte}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.82\textwidth]{Proffen/VR_S_c16_gap.png}
+  \caption{Naadvormen voor braseerverbindingen: rechte parallellelel spleet beter dan
+    afgeschuind/hellend.  Voorkeur: overlappende verbindingen (lap joint) omdat de
+    schijnbare sterkte bij trekbelasting groter is.  Formules voor de overlappingslengte
+    $L$ bij plaat-plaat en buis-buis.}
+\end{figure}
+
+\begin{itemize}
+  \item Parallelle, rechte naden zijn beter te vullen dan afgeschuinde of hellende naden.
+  \item Overlappingsverbindingen hebben de voorkeur boven stompnaden:
+    het soldeer is doorgaans \emph{zwakker} dan het basismateriaal, maar bij afschuifbelasting
+    is de verbinding sterk door het grote draagvlak.
+  \item Bij trekbelasting: $L = \frac{v \cdot R \cdot d}{T}$ (plaat-plaat);
+    $L = \frac{v \cdot R \cdot d \cdot (D-d)}{T \cdot D}$ (buis-buis);
+    met $v$ = veiligheidsfactor, $R$ = treksterkte van het zwakste deel, $d$ = dikte zwakste
+    deel, $D$ = buitendiameter, $T$ = schuifsterkte soldeer.
+\end{itemize}
+
+\subsection{Overlappingslengte}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.80\textwidth]{Proffen/VR_S_c17_overlap.png}
+  \caption{Richtwaarden voor de overlappingslengte als veelvoud van de wanddikte.
+    Weeksolderen bij kamertemperatuur: 3--4$\times$ wanddikte; braseren: 2--3$\times$;
+    uitzondering leidingwerk: 10--20$\times$ wanddikte (sterke veiligheidseisen).}
+\end{figure}
+
+Vuistregels voor de overlappingslengte $L$:
+\begin{itemize}
+  \item Weeksolderen bij kamertemperatuur: $L = 3$ tot $4 \times d_\text{min}$
+  \item Braseren/hardsolderen bij kamertemperatuur: $L = 2$ tot $3 \times d_\text{min}$
+  \item \textbf{Uitzondering leidingbouw}: $L = 10$ tot $20 \times d_\text{wand}$
+    (voor leidingen onder hoge druk of met explosierisico)
+\end{itemize}
+
+\begin{warningbox}
+\textbf{Hoe kleiner de spleet, hoe sterker de verbinding} door capillaire opvulling en hoge
+compactheid van het soldeer.  De optimale spleet is smal genoeg voor volledige capillaire
+opvulling, maar breed genoeg om soldeer in te laten dringen.  Zie formule en grafiek in de
+sectie over capillaire werking.
+\end{warningbox}
+
+\section{Lijmen (adhesive bonding)}
+
+Lijmen is een andere niet-demonteerbare verbindingstechniek die in lichte constructies en
+trillingsgedempende constructies wordt toegepast.  Voordelen ten opzichte van lassen en
+solderen:
+\begin{itemize}
+  \item Geen warmte-inbreng: geen vervorming, geen metallurgische wijzigingen.
+  \item Verbinden van ongelijksoortige materialen (metaal--plastic, metaal--composiet).
+  \item Grote lijmoppervlakken $\Rightarrow$ gelijkmatige spanningsverdeling.
+  \item Goede trillingsdempende eigenschappen.
+\end{itemize}
+
+Toepassingen: luchtvaart (fuselage-huidpanelen), auto-industrie (dak--carrosserie),
+elektronische modules.
+
+\begin{conceptbox}[Verbindingstechnieken -- overzicht]
+\begin{center}
+\begin{tabular}{lll}
+\hline
+\textbf{Methode} & \textbf{Principe} & \textbf{Demonteerbaar?} \\
+\hline
+Lassen & Smelt/druk, continuïteit & Nee \\
+Solderen/braseren & Adhesie, capillair, vulmiddel & Nee \\
+Lijmen & Adhesie, polymeer & Nee \\
+Klinken & Mechanisch vervormen & Nee \\
+Schroef/bout & Draad, klem & Ja \\
+Pen/klem & Indrukken/klikken & Ja \\
+\hline
+\end{tabular}
+\end{center}
+\end{conceptbox}

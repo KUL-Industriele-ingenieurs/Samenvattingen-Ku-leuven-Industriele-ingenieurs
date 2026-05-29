@@ -108,6 +108,7 @@
 
 % --- Graphics & Floats ---
 \@ifpackageloaded{graphicx}{}{\RequirePackage{graphicx}}
+\@ifpackageloaded{grffile}{}{\RequirePackage{grffile}}
 \@ifpackageloaded{float}{}{\RequirePackage{float}}
 \@ifpackageloaded{caption}{}{\RequirePackage{caption}}
 \@ifpackageloaded{subcaption}{}{\RequirePackage{subcaption}}
@@ -324,7 +325,7 @@
     enhanced, breakable, 
     colback=codeBackground, colframe=codeBackground,
     colupper=vscodeWhite,
-    listing only,
+    listing engine=listings,
     listing options={
         language=#2,
         basicstyle=\ttfamily\footnotesize,
@@ -334,7 +335,8 @@
         numbers=left, numberstyle=\tiny\color{vscodeGray},
         breaklines=true,
         tabsize=4,
-        showstringspaces=false
+        showstringspaces=false,
+        extendedchars=true
     },
     title={\hspace{1.2cm}\textcolor{vscodeGray}{\faCode}\ \ifstrempty{#1}{\texttt{#2}}{\textbf{#1}}},
     coltitle=vscodeWhite,

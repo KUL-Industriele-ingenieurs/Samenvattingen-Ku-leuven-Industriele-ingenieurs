@@ -1,1 +1,1000 @@
-\chapter{Intro, Evenwicht structuren: fase diagrammen en het Fe-C diagram}
+\chapter{Fasediagrammen}
+
+\subsection{Inleiding}
+
+Fasediagrammen zijn \textbf{thermodynamische evenwichtsdiagrammen} die voor elk punt in het (samenstelling, temperatuur)-vlak aangeven in welke fase of fasen een materiaal zich bevindt. Ze zijn fundamenteel voor het begrip van materiaalgedrag tijdens verhitting en afkoeling, en vormen de theoretische basis voor warmtebehandelingen en de selectie van legeringen.
+
+Een cruciaal uitgangspunt is dat fasediagrammen uitsluitend gelden bij \textbf{thermodynamisch evenwicht}: de afkoeling moet voldoende traag zijn zodat diffusie op elk moment volledig kan plaatsvinden. In de praktijk wijkt men bijna altijd af van dit ideale geval, wat leidt tot metastabiele fasen en afwijkende microstructuren --- dit is het onderwerp van het volgende hoofdstuk.
+
+Voor een binair systeem (twee componenten) volstaat een tweedimensionaal diagram: de x-as geeft de samenstelling (doorgaans in gewichtsprocent) en de y-as de temperatuur. In elk punt van dit diagram kan worden afgelezen welke fase(n) stabiel zijn en wat hun samenstelling en relatieve hoeveelheid is.
+
+\subsection{Isomorf systeem: Cu-Ni}
+
+Het eenvoudigste binaire fasediagram is het \textbf{isomorf systeem}, waarbij de twee componenten volledig mengbaar zijn in zowel vloeibare als vaste toestand. Het koper-nikkel (Cu-Ni) systeem is het klassieke voorbeeld. Beide metalen hebben een kubisch vlakgecentreerde (FCC) kristalstructuur, bijna identieke atoomstralen en liggen naast elkaar in het periodiek systeem. Hierdoor kunnen nikkelatomen probleemloos de positie van kooperatomen innemen in het FCC-rooster en omgekeerd, wat volledige mengbaarheid tot gevolg heeft.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.75\textwidth]{Proffen/L1_p03.png}
+  \caption{Het Cu-Ni fasediagram: een isomorf systeem met volledig mengbare componenten. De liquiduslijn (bovenste curve) en de soliduslijn (onderste curve) begrenzen de tweefasige zone L+S.}
+  \label{fig:cuni_diagram}
+\end{figure}
+
+Het Cu-Ni diagram bevat twee karakteristieke lijnen die het diagram in drie zones verdelen:
+\begin{itemize}
+    \item \textbf{Boven de liquiduslijn}: het systeem is volledig vloeibaar. Bij elke samenstelling is er slechts één vloeibare fase aanwezig.
+    \item \textbf{Tussen liquidus- en soliduslijn (tweefasige zone L+S)}: vloeistof en vaste fase coëxisteren. De samenstelling van elk is verschillend en afhankelijk van de temperatuur.
+    \item \textbf{Onder de soliduslijn}: het systeem is volledig vast, als één homogene vaste oplossing $\alpha$.
+\end{itemize}
+
+Wanneer een Cu-Ni-legering afkoelt door de tweefasige zone, heeft de vaste fase die het eerst neerslaat een hogere nikkelconcentratie dan de vloeistof. Nikkel smelt immers bij een hogere temperatuur ($T_m^{Ni} = 1455$~°C versus $T_m^{Cu} = 1085$~°C) en wordt bij voorkeur ingebouwd in de vaste fase. Naarmate de afkoeling vordert, wordt de vloeistof rijker aan koper en verschuift haar samenstelling langs de liquiduslijn.
+
+\subsubsection{De hefboomregel}
+
+In een tweefasige zone bepaalt de \textbf{hefboomregel} (lever rule) zowel de samenstelling als de relatieve hoeveelheid van elke fase. Stel dat op temperatuur $T$ de totale samenstelling $C_0$, de samenstelling van de vloeistof $C_L$ (afgelezen op de liquiduslijn) en de samenstelling van de vaste fase $C_\alpha$ (afgelezen op de soliduslijn) zijn. Dan geldt voor de massafracties:
+
+\begin{align*}
+    f_L &= \frac{C_\alpha - C_0}{C_\alpha - C_L} \qquad\quad \text{(fractie vloeistof)} \\[4pt]
+    f_S &= \frac{C_0 - C_L}{C_\alpha - C_L} \qquad\quad \text{(fractie vaste stof)}
+\end{align*}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.72\textwidth]{Proffen/L1_p06.png}
+  \caption{Grafische illustratie van de hefboomregel in de tweefasige zone van het Cu-Ni diagram. De arm aan de kant van de soliduslijn geeft de hoeveelheid \emph{vloeistof}; de arm aan de kant van de liquiduslijn geeft de hoeveelheid \emph{vaste stof}.}
+  \label{fig:lever_rule}
+\end{figure}
+
+\begin{warningbox}
+De hoeveelheid \textbf{vloeistof} is evenredig met de afstand tot de \textbf{soliduslijn} (niet de liquiduslijn). Dit lijkt contra-intuïtief maar volgt direct uit massabehoud. De arm aan de kant van de soliduslijn geeft de hoeveelheid vloeistof, en omgekeerd.
+\end{warningbox}
+
+De hefboomregel is van toepassing in elke tweefasige zone, ongeacht de vorm of ligging van de begrenzende lijnen. Ze is een directe consequentie van massabehoud.
+
+\subsection{Segregatie}
+
+In de praktijk koelt materiaal nooit volledig traag af. Wanneer de afkoeling te snel gaat, diffunderen atomen onvoldoende om de vaste fase overal de evenwichtssamenstelling te geven. Het gevolg is \textbf{segregatie} (ook wel \emph{coring}):
+\begin{itemize}
+    \item De \textbf{kern} van een gestolde korrel is rijker aan het hoger-smeltende component (nikkel bij Cu-Ni), omdat dit het eerst in de vaste fase neerslaat
+    \item De \textbf{rand} van de korrel is rijker aan het lager-smeltende component
+    \item De samenstelling varieert geleidelijk van kern naar rand
+    \item Gevolgen: lokaal verlaagde smelttemperatuur, ongelijkmatige mechanische eigenschappen en verhoogde corrosiegevoeligheid
+\end{itemize}
+
+Segregatie kan worden opgeheven via \textbf{homogeniserend gloeien}: langdurig verhitten op hoge temperatuur (net onder de soliduslijn) geeft atomen voldoende tijd en energie om door diffusie de samenstelling te uniformiseren.
+
+\subsection{Eutectisch systeem: Cu-Ag}
+
+Wanneer de twee componenten slechts beperkt mengbaar zijn in de vaste toestand, ontstaat een eutectisch fasediagram. Het koper-zilver (Cu-Ag) systeem is het meest gebruikte voorbeeld. De maximale oplosbaarheid van Ag in Cu bedraagt slechts $\approx 8$ gew.\%, en omgekeerd van Cu in Ag $\approx 8{,}8$ gew.\%. Buiten deze limieten splitst het systeem in twee coëxisterende vaste fasen.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.78\textwidth]{Proffen/L1_p09.png}
+  \caption{Het Cu-Ag eutectisch fasediagram. Het eutectisch punt bevindt zich bij 72 gew.\% Ag en 779~°C. Beneden de solvuslijnen bestaan steeds twee vaste fasen naast elkaar: een Cu-rijke $\alpha$-fase en een Ag-rijke $\beta$-fase.}
+  \label{fig:cuag_diagram}
+\end{figure}
+
+Het diagram bevat:
+\begin{itemize}
+    \item $\alpha$-fase: Cu-rijke vaste oplossing; $\beta$-fase: Ag-rijke vaste oplossing
+    \item Tweefasige zones: $L + \alpha$,\; $L + \beta$,\; $\alpha + \beta$
+    \item \textbf{Eutectisch punt} bij 72 gew.\% Ag en 779~°C: driefasig evenwicht van $L$, $\alpha$ en $\beta$
+\end{itemize}
+
+\subsubsection{Eutectische transformatie en microstructuur}
+
+Bij de eutectische samenstelling (72 gew.\% Ag) verloopt de stolling volledig isotherm bij 779~°C. Uit de vloeistof scheiden gelijktijdig twee vaste fasen af:
+\begin{align*}
+    L \;\xrightarrow{779\,\text{°C}}\; \alpha + \beta
+\end{align*}
+
+Omdat beide fasen simultaan groeien uit dezelfde vloeistof, is slechts korte-afstandsdiffusie nodig. Dit resulteert in een bijzonder fijnverdeelde tweefasige microstructuur, typisch in lamellen of bolvormige domeinen.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.65\textwidth]{Proffen/L1_p13.png}
+  \caption{Microstructuur van een eutectische Cu-Ag-legering: fijn afwisselende lamellen van $\alpha$ (Cu-rijk) en $\beta$ (Ag-rijk). Dergelijke lamellairmicrostructuren geven hoge sterkte door dispersieversteviging en een lage smelttemperatuur.}
+  \label{fig:eutectic_micro}
+\end{figure}
+
+Voordelen van de eutectische microstructuur:
+\begin{itemize}
+    \item \textbf{Lage smelttemperatuur} (779~°C, lager dan Cu en Ag afzonderlijk): gunstig voor soldeertoepassingen
+    \item \textbf{Hoge sterkte} door dispersieversteviging: de fijne tweede fase blokkeert dislocatiebewegingen
+    \item Relatief \textbf{goede taaiheid}: beide fasen zijn metalen en intrinsiek ductiel
+\end{itemize}
+
+Om deze redenen worden eutectische samenstellingen gekozen voor \textbf{soldeerlegeringen} (Sn-Pb, Ag-Cu, Ag-Cu-Zn-Sn) en in giettechniek.
+
+\subsubsection{Hypo- en hypereutectische legeringen}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.76\textwidth]{Proffen/L1_p16.png}
+  \caption{Microstructuur van hypo-eutectische (links) en hypereutectische (rechts) Cu-Ag-legeringen. Bij hypo-eutectisch stolt eerst primaire $\alpha$ (grote eilanden), gevolgd door eutectische $\alpha+\beta$ uit de resterende vloeistof.}
+  \label{fig:hypo_hyper}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Hypo-eutectisch} ($<72$ gew.\% Ag): eerst stolt primaire $\alpha$-fase. De resterende vloeistof bereikt de eutectische samenstelling en stolt eutectisch. Microstructuur: grote eilanden van primaire $\alpha$ + fijn eutectisch ($\alpha+\beta$).
+    \item \textbf{Hypereutectisch} ($>72$ gew.\% Ag): eerst stolt primaire $\beta$, daarna eutectische transformatie.
+\end{itemize}
+
+\subsection{Het Fe-C fasediagram}
+
+Het ijzer-koolstof (Fe-C) diagram is het meest gebruikte en meest technisch relevante fasediagram. Staal en gietijzer worden volledig beschreven door dit diagram.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.88\textwidth]{Proffen/L1_p19.png}
+  \caption{Het Fe-Fe\textsubscript{3}C-fasediagram (metastabiel systeem). De twee meest relevante transformaties zijn de eutectische bij 1148~°C (4,3 gew.\% C) en de eutectoïde bij 727~°C (0,76 gew.\% C).}
+  \label{fig:fec_diagram}
+\end{figure}
+
+De twee centrale transformaties:
+\begin{itemize}
+    \item \textbf{Eutectische transformatie} bij 1148~°C en 4,3 gew.\% C: $L \rightarrow \gamma + Fe_3C$ (ledeburiet)
+    \item \textbf{Eutectoïde transformatie} bij 727~°C en 0,76 gew.\% C: $\gamma \rightarrow \alpha + Fe_3C$ (perliet)
+\end{itemize}
+
+De eutectoïde transformatie vertrekt vanuit een vaste fase ($\gamma$-austeniet). Omdat diffusie in de vaste toestand veel trager is, zijn de diffusieafstanden zeer kort en ontstaat een uitzonderlijk fijnkorrelig product: \textbf{perliet}, een lamellaire mengsel van feriet ($\alpha$) en cementiet ($Fe_3C$).
+
+\subsubsection{Fasen en structuren in het Fe-C diagram}
+
+\begin{itemize}
+    \item \textbf{Feriet ($\alpha$)}: BCC, maximale koolstofoplossing $0{,}02$ gew.\% bij 727~°C. Zacht, ductiel en magnetisch.
+    \item \textbf{Austeniet ($\gamma$)}: FCC, koolstofoplossing tot 2,14 gew.\% bij 1148~°C. De grotere FCC-gaten laten veel meer C toe. Stabiel boven 727~°C; niet magnetisch.
+    \item \textbf{Cementiet ($Fe_3C$)}: ijzercarbide, orthorombisch. Extreem hard ($\approx 800$ HV) maar zeer broos.
+    \item \textbf{Perliet}: fijngelaagd mengsel van feriet en cementiet bij 0,76 gew.\% C. Goede balans van sterkte en taaiheid.
+    \item \textbf{Ledeburiet}: eutectisch mengsel van $\gamma + Fe_3C$ bij 4,3 gew.\% C. Aanwezig in gietijzers.
+\end{itemize}
+
+\subsubsection{Staal versus gietijzer}
+
+\begin{itemize}
+    \item \textbf{Staal}: 0,02 -- 2,14 gew.\% C. Smeedbaar. Breed toegepast als constructiemateriaal.
+    \item \textbf{Gietijzer}: $>$ 2,14 gew.\% C. Te broos om te smeden of walsen; wordt gegoten.
+    \item \textbf{Hypo-eutectoïd staal} ($<$ 0,76 gew.\% C): proeutectoïd feriet langs korrelgrenzen + perliet
+    \item \textbf{Eutectoïd staal} (0,76 gew.\% C): volledig perliet; hoogste sterkte voor gewoon staal
+    \item \textbf{Hyper-eutectoïd staal} ($>0{,}76$ tot 2,14 gew.\% C): perliet + cementiet langs korrelgrenzen (broos effect)
+\end{itemize}
+
+\subsection{Korrelbegrenzing en microstructuur}
+
+Tijdens stolling vormen zich willekeurig georiënteerde \textbf{kristallisatiekernen} (nuclei). Naarmate deze groeien en elkaar bereiken, onstaan \textbf{korrelgrenzen} (grain boundaries): het grensvlak waar twee roosters van verschillende oriëntatie samenkomen.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.68\textwidth]{Proffen/L1_p24.png}
+  \caption{Korrelstructuur van een metaal na volledige stolling. De grenzen tussen de korrels zijn zones met een verstoord rooster en verhoogde vrije energie, waar diffusie sneller verloopt en neerslag van een tweede fase bij voorkeur optreedt.}
+  \label{fig:grain_boundary}
+\end{figure}
+
+In de korrelgrenzen kunnen atomen sneller diffunderen (meer vrije ruimte, meer wanorde). Dit heeft twee gevolgen:
+\begin{enumerate}
+    \item Een tweede fase slaat bij voorkeur \textbf{neer langs korrelgrenzen}: levert een continue brosse laag, ongunstig voor mechanische eigenschappen.
+    \item Fijn verdeelde deeltjes \emph{binnen} de korrels (\textbf{intrakristallijne neerslag}) zijn gunstig: blokkeren dislocatiebewegingen en verhogen de sterkte.
+\end{enumerate}
+
+\subsection{Peritectische transformatie}
+
+De peritectische transformatie is het spiegelbeeld van de eutectische:
+\begin{align*}
+    L + \beta \;\rightarrow\; \alpha \quad \text{(bij afkoeling)}
+\end{align*}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.60\textwidth]{Proffen/L1_p27.png}
+  \caption{Schematisch fasediagram met een peritectische transformatie. De horizontale driefasige lijn heeft twee tweefasige zones erboven en één eronder --- het omgekeerde van een eutectisch diagram. Peritectische transformaties leveren microstructureel minder interessante resultaten.}
+  \label{fig:peritectic}
+\end{figure}
+
+De peritectische transformatie levert microstructureel minder interessante resultaten dan de eutectische. Ze wordt volledigheidshalve vermeld maar is minder relevant voor de mechanische eigenschappen.
+
+\newpage
+
+\chapter{Niet-evenwichts afkoeling en TTT-diagrammen}
+
+\subsection{Afwijking van thermodynamisch evenwicht}
+
+Fasediagrammen geven enkel informatie over het \textbf{thermodynamisch evenwicht}: de toestand bij onbeperkte diffusietijd. In de industrie koelt materiaal echter altijd sneller af. Snellere afkoeling betekent:
+\begin{itemize}
+    \item Onvoldoende tijd voor diffusie \textrightarrow{} microstructuur wijkt af van het fasediagram
+    \item \textbf{Metastabiele fasen} kunnen ontstaan die onder evenwichtsomstandigheden niet zouden bestaan
+    \item Transformatietemperaturen verschuiven naar lagere waarden
+\end{itemize}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.72\textwidth]{Proffen/L2_p05.png}
+  \caption{Schematische vergelijking van evenwichts- en niet-evenwichtsafkoeling bij een Cu-Ni-legering. Bij te snelle afkoeling heeft de kern van elke korrel een rijkere Ni-samenstelling dan de rand (segregatie/coring). De korrelrand stolt als laatste met een lager smeltpunt.}
+  \label{fig:nonequil_coring}
+\end{figure}
+
+\subsection{TTT-diagrammen voor staal}
+
+\textbf{TTT-diagrammen} (Time-Temperature-Transformation), ook wel isotherme transformatiediagrammen of Bain-curves, beschrijven hoe austeniet ($\gamma$) transformeert wanneer staal isotherm wordt gehouden onder 727~°C. Ze worden experimenteel bepaald door austenitisch staal snel af te koelen tot een reeks vaste temperaturen en te meten wanneer de transformatie begint en eindigt.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.82\textwidth]{Proffen/L2_p09.png}
+  \caption{Typisch TTT-diagram voor eutectoïd staal (0,76 gew.\% C). De C-vormige curves begrenzen het begin (linker) en einde (rechter) van de austeniet-transformatie. De neus van de C-curve ligt bij $\approx 550$~°C waar de transformatie het snelst verloopt. $M_s$ en $M_f$ zijn de martensite start- en eindtemperatuur.}
+  \label{fig:ttt_diagram}
+\end{figure}
+
+De C-vormige curves in het (log~$t$, $T$)-vlak:
+\begin{itemize}
+    \item \textbf{Linker curve}: begin van de transformatie ($\approx 1$\% getransformeerd)
+    \item \textbf{Rechter curve}: einde van de transformatie ($\approx 99$\% getransformeerd)
+    \item \textbf{Neus van de C-curve} bij $\approx 550$~°C: het optimum van twee concurrerende factoren:
+        \begin{itemize}
+            \item Bij hoge temperaturen: kleine drijvende kracht (dicht bij evenwicht) \textrightarrow{} trage nucleatie
+            \item Bij lage temperaturen: gereduceerde atomaire mobiliteit (diffusie) \textrightarrow{} trage groei
+            \item De neus: optimum van drijvende kracht en diffusiemobiliteit
+        \end{itemize}
+    \item $M_s$ en $M_f$: martensite start- en eindtemperatuur (horizontale lijnen), niet tijdafhankelijk
+\end{itemize}
+
+\begin{warningbox}
+TTT-diagrammen gelden enkel voor \textbf{isotherm} gehouden staal. In de industrie koelt materiaal continu af, waarvoor men \textbf{CCT-diagrammen} (Continuous Cooling Transformation) gebruikt. CCT-curves liggen verschoven naar rechts en naar lagere temperaturen ten opzichte van TTT-curves.
+\end{warningbox}
+
+\subsubsection{Transformatieproducten van austeniet}
+
+Afhankelijk van de temperatuur waarbij de isotherme transformatie plaatsvindt, ontstaan structureel totaal verschillende producten:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.80\textwidth]{Proffen/L2_p14.png}
+  \caption{Microstructuren van de verschillende austeniet-transformatieproducten. Grof perliet (hoog $T$), fijn perliet (middelhoog $T$), bainiet (laag $T$) en martensiet (onder $M_s$, diffusieloos). Fijnere microstructuren corresponderen met hogere sterkte en hardheid.}
+  \label{fig:austenite_products}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Grof perliet} (650 -- 727~°C): brede lamellen van $\alpha + Fe_3C$; voldoende diffusietijd; ductiel maar weinig sterk
+    \item \textbf{Fijn perliet / sorbiet} (550 -- 650~°C): dunnere lamellen; hogere sterkte
+    \item \textbf{Bainiet} ($\approx 250 - 550$~°C): naaldvormige ferietkristallen met ultrafijn gespreide carbiden. Hogere sterkte dan perliet met goede taaiheid; verkregen via het \textbf{austempering}-proces.
+    \item \textbf{Martensiet} ($< M_s$): diffusieloze transformatie, extreem hard maar broos (zie hieronder)
+\end{itemize}
+
+\subsubsection{Martensiet: de diffusieloze transformatie}
+
+Martensiet vormt zich bij \textbf{afschrikken} (quenching): de austeniet heeft geen tijd voor diffusie en de koolstofatomen worden gevangen in het ijzerrooster:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.70\textwidth]{Proffen/L2_p30.png}
+  \caption{Vorming van martensiet: het FCC-austeniterooster vervormt diffusieloos naar een tetragonaal ruimtegecentreerd (BCT) rooster. De verhouding $c/a$ stijgt met het koolstofgehalte. De martensiettransformatie begint bij $M_s$ en de fractie martensiet neemt toe naarmate de temperatuur daalt.}
+  \label{fig:martensite_bct}
+\end{figure}
+
+\begin{itemize}
+    \item De transformatie is \textbf{volledig diffusieloos}: een coöperatieve schuifverplaatsing van het rooster (militaire transformatie), bijna instantaan zodra $T < M_s$
+    \item Het FCC-austenietrooster vervormt naar een \textbf{tetragonaal ruimtegecentreerd (BCT)} rooster. De tetragonaliteit ($c/a$) stijgt met het koolstofgehalte.
+    \item \textbf{Extreem hoge hardheid} (tot 700 HV) door de roosterspanningen van de geklemde koolstofatomen
+    \item In de \emph{as-quenched} toestand is martensiet \textbf{bijzonder broos}: moet altijd worden aangelaten vóór gebruik
+    \item De martensiettransformatie is \textbf{niet tijdsafhankelijk}: de temperatuur moet verder dalen om meer martensiet te vormen, niet langer wachten
+\end{itemize}
+
+\begin{warningbox}
+De martensiettransformatie stopt als men de afkoeling stopt. Men moet de temperatuur verder verlagen, niet langer wachten, om meer martensiet te vormen. Dit is fundamenteel anders dan alle andere austeniet-transformaties, die wel tijdsafhankelijk zijn.
+\end{warningbox}
+
+\subsection{CCT-diagrammen en de kritische afkoelsnelheid}
+
+In de industrie koelt materiaal continu af. Hiervoor gebruikt men \textbf{CCT-diagrammen} (Continuous Cooling Transformation):
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.80\textwidth]{Proffen/L2_p19.png}
+  \caption{CCT-diagram voor eutectoïd staal met typische afkoelcurves voor verschillende media: oven (traag \textrightarrow{} perliet), lucht (normaliseren \textrightarrow{} fijn perliet), olie (olieharden) en water (waterharden \textrightarrow{} volledig martensiet). De kritische afkoelsnelheid $\dot{T}_c$ is de minimale snelheid voor volledig martensiet.}
+  \label{fig:cct_diagram}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Trage ovenafkoeling}: volledig perliet, zacht en goed verspaanbaar
+    \item \textbf{Luchtafkoeling} (normaliseren): fijner perliet, hogere sterkte
+    \item \textbf{Olieafkoeling}: afhankelijk van staaltype martensiet of gemengde microstructuur
+    \item \textbf{Waterafkoeling}: de snelste gangbare afkoeling; voor de meeste stalen voldoende voor volledig martensiet
+    \item \textbf{Kritische afkoelsnelheid $\dot{T}_c$}: de minimale snelheid zodat de afkoelcurve de neus van de C-curve net niet raakt
+\end{itemize}
+
+\subsection{Invloed van legeringselementen}
+
+Legeringselementen zoals Cr, Mn, Mo, Ni, V en Si (in opgeloste toestand) \textbf{verschuiven de C-curves naar rechts}:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.72\textwidth]{Proffen/L2_p24.png}
+  \caption{Effect van legeringselementen op het TTT-diagram: de C-curves verschuiven naar rechts (trager transformatiegedrag), waardoor de kritische afkoelsnelheid daalt en grotere doorsneden kunnen worden doorgehard bij tragere afkoeling.}
+  \label{fig:alloy_effect_ttt}
+\end{figure}
+
+\begin{enumerate}
+    \item \textbf{Grotere uithardbaarheid}: grotere doorsneden kunnen door en door worden gehard, ook al is de afkoelsnelheid in het centrum lager
+    \item \textbf{Lagere kritische afkoelsnelheid}: olie of zelfs lucht kan volstaan, waardoor het risico op vervormingen en afschrikkscheuren sterk vermindert
+\end{enumerate}
+
+De uithardbaarheid wordt gemeten via de \textbf{Jominy-test} (eindafschrikkingsproef): een gestandaardiseerde staaf wordt aan één uiteinde afgeschrikt; over de lengte daalt de afkoelsnelheid geleidelijk. De hardheidsmetingen over de lengte geven de Jominy-curve, karakteristiek voor elk staaltype.
+
+\newpage
+
+\chapter{Warmtebehandelingen}
+
+\subsection{Inleiding}
+
+Warmtebehandelingen zijn gecontroleerde verhittings- en afkoelprocedures die de \textbf{microstructuur} van metalen wijzigen --- en daarmee hun mechanische eigenschappen --- zonder de macrogeometrische vorm aan te tasten.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.80\textwidth]{Proffen/L3_p05.png}
+  \caption{Het Fe-C-diagram met de temperatuurgebieden voor de verschillende warmtebehandelingen ingetekend. Elk type behandeling heeft een specifiek verhittings- en afkoelprotocol dat de gewenste microstructuur oplevert.}
+  \label{fig:fec_treatments}
+\end{figure}
+
+De voornaamste doelstellingen van warmtebehandelingen:
+\begin{itemize}
+    \item Verhogen van \textbf{hardheid en sterkte} (harden, oppervlakteharding)
+    \item Verhogen van \textbf{taaiheid en ductiliteit} (gloeien, aanloopbehandeling)
+    \item Verlagen van \textbf{interne restspanningen} (spanningsarmgloeien)
+    \item Verbeteren van de \textbf{verspaanbaarheid} (volledig gloeien \textrightarrow{} grof perliet)
+    \item Verkrijgen van een \textbf{slijtagebestendig oppervlak} met taai binnenste (oppervlakteharding)
+    \item Fijner maken van de \textbf{korrelstructuur} (normaliseren)
+\end{itemize}
+
+\subsection{Warmtebehandelingen van staal}
+
+\subsubsection{Gloeien (Annealing)}
+
+Gloeien is het verhitten gevolgd door een gecontroleerde, trage afkoeling. Er bestaan meerdere varianten:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.78\textwidth]{Proffen/L3_p09.png}
+  \caption{Temperatuur-tijddiagrammen voor de verschillende gloeivarianten en normaliseren. Het verhittingsbereik en de afkoelsnelheid bepalen de uiteindelijke microstructuur: volledig gloeien geeft grof perliet, normaliseren geeft fijner perliet.}
+  \label{fig:annealing_types}
+\end{figure}
+
+\textbf{Volledig gloeien} (full annealing):
+\begin{enumerate}
+    \item Verhitten tot net boven $A_3$ (hypo-eutectoïd) of $A_{cm}$ (hyper-eutectoïd): austenitisering
+    \item Voldoende lang houden voor homogene austenitisering
+    \item \textbf{Langzaam afkoelen in de oven}: maximale diffusietijd \textrightarrow{} grovere lamellen
+    \item Resultaat: \textbf{grof perliet}, laagste hardheid, maximale ductiliteit
+    \item Toepassing: opheffen van restspanningen; verbetering verspaanbaarheid
+\end{enumerate}
+
+\textbf{Procesgloeien} (process annealing / rekristallisatiegloeien):
+\begin{enumerate}
+    \item Verhitten \emph{onder} $A_1$ (727~°C): geen austenitisering
+    \item Rekristallisatie van de koudvervormde ferrietkorrels \textrightarrow{} opheffing van koudvervormingsverharding
+    \item Toepassing: tussentijdse behandeling tussen opeenvolgende koudvormingsstappen
+\end{enumerate}
+
+\textbf{Spanningsarmgloeien} (stress relieving):
+\begin{enumerate}
+    \item Verhitten op lage temperatuur (150 -- 650~°C), onder $A_1$: geen microstructuurwijziging
+    \item Restspanningen gereduceerd door thermisch-geactiveerde vloeimechanismen
+    \item Toepassing: na lassen, gieten, precisieverspaning; essentieel voor maatnauwkeurigheid
+\end{enumerate}
+
+\subsubsection{Normaliseren}
+
+\begin{enumerate}
+    \item Verhitten tot net boven $A_3$: austenitisering
+    \item \textbf{Afkoelen in stilstaande lucht}: sneller dan ovenafkoeling \textrightarrow{} kortere diffusietijden \textrightarrow{} dunnere lamellen
+    \item Resultaat: \textbf{fijner perliet} met hogere sterkte en taaiheid dan volledig gegloeide toestand
+    \item Toepassing: eindbehandeling voor constructiestaal; verfijning korrelstructuur vóór verdere bewerkingen
+\end{enumerate}
+
+\subsubsection{Harden (Quenching)}
+
+\begin{enumerate}
+    \item Verhitten tot in het austenitisch gebied (boven $A_3$ of $A_1$): austenitisering
+    \item Voldoende lang houden voor homogene austenitisering
+    \item \textbf{Snel afschrikken} in water, olie of lucht: afkoelsnelheid $>$ kritische afkoelsnelheid
+    \item Resultaat: \textbf{martensiet}, extreem hoge hardheid maar ook hoge broosheid
+    \item \emph{As-quenched} martensiet moet worden \textbf{aangelaten} voor gebruik
+\end{enumerate}
+
+Het afschrikmedium bepaalt de afkoelsnelheid: water $>$ olie $>$ polymeeroplossing $>$ lucht. Water geeft de grootste afkoelsnelheid maar ook het hoogste risico op vervormingen en thermische scheuren.
+
+\subsubsection{Aanloopbehandeling / Ontlaten (Tempering)}
+
+Na het harden is het staal te broos voor gebruik. De aanloopbehandeling maakt martensiet bruikbaar:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.76\textwidth]{Proffen/L3_p15.png}
+  \caption{Effect van de aanlaattemperatuur op de mechanische eigenschappen van gehard staal. Hogere aanlaattemperatuur verlaagt de hardheid en sterkte maar verhoogt de taaiheid en ductiliteit sterk. Er bestaat een optimum afhankelijk van de toepassing.}
+  \label{fig:tempering_effect}
+\end{figure}
+
+\begin{enumerate}
+    \item Na harden: staal bevat nagenoeg zuiver martensiet met hoge interne spanningen
+    \item Verhitten op 150 -- 650~°C: koolstofatomen krijgen mobiliteit om gedeeltelijk uit het BCT-rooster te diffunderen en ultrafijne carbiden te vormen
+    \item Martensiet transformeert naar \textbf{aangelaten martensiet}: BCC-ferrietmatrix met nanoschalige carbidedeeltjes
+    \item Hogere aanlaattemperatuur: grotere carbiden, minder interne spanningen \textrightarrow{} meer taaiheid maar ook minder hardheid
+    \item Toepassing: vrijwel alle geharde staalonderdelen worden aangelaten vóór gebruik
+\end{enumerate}
+
+\begin{warningbox}
+De combinatie \textbf{harden + aanloopbehandeling} (\emph{quenching \& tempering}, Q\&T) is de meest toegepaste warmtebehandeling voor hooggesterkt constructiestaal. Ze geeft de beste balans tussen hoge sterkte en voldoende taaiheid. De aanlaattemperatuur wordt nauwkeurig afgestemd op de toepassing.
+\end{warningbox}
+
+\subsubsection{Oppervlakteharding (Case Hardening)}
+
+Voor onderdelen die een \textbf{hard slijtagebestendig oppervlak} én een \textbf{taai binnenste} vereisen (tandwielen, assen, nokassen, lagers):
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.80\textwidth]{Proffen/L3_p24.png}
+  \caption{Oppervlakteharding door cementering (carburizing): koolstofatomen diffunderen bij hoge temperatuur in de oppervlaktelaag. Na afschrikken is de oppervlaktelaag hard (hoog C \textrightarrow{} martensiet), terwijl de kern taai blijft (laag C \textrightarrow{} feriet + perliet).}
+  \label{fig:carburizing}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Cementeren (Carburizing)}: de buitenlaag van laagkoolstofstaal wordt verrijkt met koolstof door diffusie bij $\approx 900$~°C in een koolstofrijke atmosfeer. Na diffusie wordt afgeschrikt: de C-rijke buitenlaag vormt martensiet; de C-arme kern blijft taai. Caselaagdiepte: 0,5 -- 3 mm.
+
+    \item \textbf{Nitrideren}: diffusie van stikstof bij $\approx 500$~°C. Harde nitriden ($Fe_2N$, $Fe_4N$) vormen de oppervlaktelaag. Lagere temperatuur: minder maatverandering; extreem harde laag. Nadeel: langzamer dan cementeren.
+
+    \item \textbf{Carbonitrideren}: gecombineerde koolstof- en stikstofopname bij $\approx 750$~°C; sneller dan nitrideren.
+\end{itemize}
+
+Voor staal met al voldoende koolstofgehalte bestaan ook thermische oppervlaktehardingtechnieken:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.76\textwidth]{Proffen/L3_p30.png}
+  \caption{Vlam- en inductieharden: alleen het oppervlak wordt verhit tot austenitische toestand en direct afgeschrikt. Links: vlambeharding met gasvlam. Rechts: inductieharden waarbij een hoogfrequent magnetisch veld de oppervlaktelaag inductief verhit. De kern blijft koud en taai.}
+  \label{fig:flame_induction_hardening}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Vlambeharding}: een gasvlam verhit het oppervlak lokaal tot in het austenitisch gebied, direct gevolgd door waterafkoeling. Goedkoop gereedschap; lokale behandeling mogelijk.
+    \item \textbf{Inductieharden}: een hoogfrequent wisselstroom in een inductiespoel wekt wervelstromen op in het oppervlak die het verhitten. Zeer controleerbaar, snel en reproduceerbaar; ideaal voor seriematige productie.
+\end{itemize}
+
+\subsection{Warmtebehandelingen van gietijzer}
+
+Gietijzer kent een ander warmtebehandelingsregime:
+\begin{itemize}
+    \item \textbf{Spanningsarmgloeien}: na het gieten, om gietspanningen te verwijderen door ongelijkmatige afkoeling
+    \item \textbf{Maleabiliserend gloeien}: wit gietijzer wordt langdurig gegloeid zodat $Fe_3C$ uiteenvalt in ferriet en grafietknobbels, wat \textbf{maleabel gietijzer} met aanvaardbare taaiheid geeft
+\end{itemize}
+
+\subsection{Precipitatieversteviging van aluminium (Al-Cu)}
+
+Aluminium heeft geen eutectoïde transformatie maar kan worden versterkt via \textbf{precipitatieversteviging} (precipitation hardening / age hardening). Het Al-Cu-systeem (duraluminium, $\approx 4$ gew.\% Cu) is het standaardvoorbeeld.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.82\textwidth]{Proffen/L3_p38.png}
+  \caption{Precipitatieversteviging van Al-4\% Cu. De drie stappen: (1) oplossingsbehandeling bij hoge temperatuur, (2) afschrikken tot oververzadigde vaste oplossing, (3) verouderen waarbij GP-zones en coherente precipitaten groeien. De hardheid bereikt een maximum bij optimale precipitaatgrootte (overaging geeft hardheidsafname).}
+  \label{fig:precipitation_hardening}
+\end{figure}
+
+Het proces verloopt in drie stappen:
+\begin{enumerate}
+    \item \textbf{Oplossingsbehandeling}: verhitten tot in het enkelfasige $\alpha$-gebied ($> 550$~°C). Alle koper lost op in het aluminium. Voldoende lang houden voor homogeen oplossen.
+
+    \item \textbf{Afschrikken}: snel afkoelen naar kamertemperatuur. Het koper heeft geen tijd om als $CuAl_2$-fase te precipiteren en blijft in een \textbf{oververzadigde vaste oplossing} gevangen.
+
+    \item \textbf{Verouderen (Aging)}: bij kamertemperatuur (\emph{natural aging}) of bij 100 -- 200~°C (\emph{artificial aging}):
+        \begin{itemize}
+            \item Ultrakleine koperrijke clusters (\textbf{Guinier-Preston zones, GP-zones}) vormen zich coherent met het Al-rooster: ze vervormen het rooster elastisch en blokkeren dislocatiebewegingen \textrightarrow{} sterke stijging hardheid.
+            \item Verder verouderen: coherente $\theta''$, daarna halfcoherente $\theta'$-fase.
+            \item Maximale hardheid: bij optimale precipitaatgrootte (klein en talrijk).
+        \end{itemize}
+\end{enumerate}
+
+\begin{warningbox}
+\textbf{Oververoudering (overaging)}: bij te lang of te warm verouderen groeien de precipitaten te groot en worden incoherent (volledige $CuAl_2$-fase). Incoherente deeltjes worden minder effectief als dislocatiebarrières \textrightarrow{} de hardheid daalt terug. Er bestaat een optimum in verouderingstijd en -temperatuur.
+\end{warningbox}
+
+\newpage
+
+\chapter{Volumevorming}
+
+\subsection{Definitie en karakteristieken}
+
+\textbf{Volumevorming} (bulk forming) is de gecontroleerde plastische vervorming van een vast materiaal waarbij de materiaalkohesie bewaard blijft en de massa ongewijzigd is. In tegenstelling tot verspaningstechnieken wordt er geen materiaal verwijderd; de vorm verandert door plastische herverdeling. Enkel metalen zijn geschikt, omwille van hun vermogen tot grote plastische vervorming zonder te breken.
+
+Volumevormprocessen zijn: draadtrekken, extrusie, walsen en smeden. Ze produceren respectievelijk draden, profielen, platen/strippen en smedingen.
+
+\subsection{Plastisch gedrag van metalen}
+
+\subsubsection{Spanning-rek diagram en rekversteviging}
+
+Het mechanisch gedrag in een éénassige trekproef vormt de basis voor de analyse van alle volumevormprocessen.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.76\textwidth]{Proffen/L4_p03.png}
+  \caption{Spanning-rek diagram van een typisch metaal. Het elastisch gebied (helling = $E$-modulus) gaat over in het plastisch gebied na overschrijden van de vloeispanning $\sigma_Y$. Rekversteviging verhoogt de vloeigrens bij toenemende plastische rek. Koolstofstalen vertonen een uitgesproken instabiliteitsgebied (Lüders-banden) waarbij de spanning tijdelijk daalt na het eerste vloeien.}
+  \label{fig:stress_strain}
+\end{figure}
+
+In het plastische gebied geldt de \textbf{machtswet}:
+\begin{align*}
+    \sigma_v = C \cdot \varepsilon_w^n
+\end{align*}
+
+Hierbij is $\sigma_v$ de ware spanning, $\varepsilon_w$ de ware rek, $C$ een materiaalcoëfficiënt en $n$ de \textbf{rekverstevigingsexponent} ($0 < n < 1$). In dubbellogaritmische schaal is dit een rechte lijn met helling $n$. In het plastisch gebied moeten ware spanningen en rekken worden gebruikt (niet engineering waarden).
+
+\begin{itemize}
+    \item \textbf{Stijfheid} (E-modulus) $\neq$ \textbf{sterkte} ($\sigma_Y$): een veelgemaakte verwarring
+    \item \textbf{Rekversteviging}: bij toenemende plastische vervorming worden meer dislocaties gevormd die elkaar hinderen \textrightarrow{} het materiaal wordt progressief sterker. Essentieel voor draadtrekken.
+    \item \textbf{Koolstofstalen}: plastisch-instabiliteitszone (Lüders-banden) veroorzaakt vloeifiguren (stretcher strains) bij plaatvorming van onbehandeld staal.
+\end{itemize}
+
+\subsubsection{Vloeikriteria in 3D: von Mises}
+
+Vormen gaat gepaard met driedimensionale spanningstoestanden. Von Mises definieerde de \textbf{effectieve spanning}:
+\begin{align*}
+    \bar{\sigma} = \sqrt{\frac{(\sigma_1 - \sigma_2)^2 + (\sigma_2 - \sigma_3)^2 + (\sigma_3 - \sigma_1)^2}{2}}
+\end{align*}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.72\textwidth]{Proffen/L4_p05.png}
+  \caption{Het von Mises-vloeivlak in de 3D-hoofdspanningenruimte: een cilindrisch vlak langs de hydrostatische as. Een spanningsstoestand binnen de cilinder geeft elastisch gedrag; op het oppervlak of erbuiten treedt plastisch vloeien op. Het Tresca-criterium (hexagonale cilinder) is conservatiever maar minder nauwkeurig voor de meeste metalen.}
+  \label{fig:von_mises_3d}
+\end{figure}
+
+Het \textbf{von Mises-criterium}: plastische vervorming treedt op als $\bar{\sigma} \geq \sigma_Y$.
+
+De machtswet $\bar{\sigma} = C \cdot \bar{\varepsilon}^n$ geldt ook in 3D met dezelfde materiaalconstanten als in de éénassige trekproef. In geval van vlakspanning ($\sigma_3 = 0$, typisch bij plaatvorming) degenereer het von Mises-vloeivlak tot een \textbf{ellips} in het $(\sigma_1, \sigma_2)$-vlak.
+
+\subsubsection{Formeerbaarheid en het ductiliteitsdiagram}
+
+De \textbf{formeerbaarheid} beschrijft hoeveel plastische vervorming kan worden aangebracht zonder materiaalbreuk. Dit is een \textbf{proceseigenschap}: hetzelfde materiaal gedraagt zich anders in verschillende processen.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.72\textwidth]{Proffen/L4_p07.png}
+  \caption{Het ductiliteitsdiagram: de toelaatbare effectieve rek vóór breuk als functie van de triaxialiteit $\sigma_m / \bar{\sigma}$. Bij meer drukspanning (negatievere triaxialiteit) is grotere vervorming mogelijk. Extrusie en smeden bevinden zich links; draadtrekken rechts.}
+  \label{fig:ductility_diagram}
+\end{figure}
+
+De \textbf{triaxialiteit} karakteriseert de verhouding tussen de isostatische spanning en de effectieve spanning:
+\begin{align*}
+    \text{Triaxialiteit} = \frac{\sigma_m}{\bar{\sigma}} \qquad \text{met} \quad \sigma_m = \frac{\sigma_1 + \sigma_2 + \sigma_3}{3}
+\end{align*}
+
+Een negatieve triaxialiteit (overwegend drukspanning) sluit scheurtjes en verhoogt de effectieve ductiliteit:
+\begin{itemize}
+    \item \textbf{Extrusie/smeden}: triaxialiteit $\ll 0$, grote vervormingen ($> 90\%$ reductie doorsnede) mogelijk
+    \item \textbf{Draadtrekken}: triaxialiteit $\approx -0{,}3$, beperkt tot $\approx$ 40 -- 50\% diameterreductie
+    \item \textbf{Dieptrekken, buigen}: positievere triaxialiteit, beperkte vervorming
+\end{itemize}
+
+\subsubsection{Invloed van temperatuur}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.70\textwidth]{Proffen/L4_p08.png}
+  \caption{Invloed van de temperatuur op de vloeispanning: bij hogere temperatuur daalt de vloeispanning sterk (minder kracht voor vormen), maar neemt de maatnauwkeurigheid af en treedt oxidatie op aan het oppervlak.}
+  \label{fig:temperature_effect}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Koud vormen} (kamertemperatuur): rekversteviging actief \textrightarrow{} hogere krachten; maar betere maatnauwkeurigheid en oppervlaktekwaliteit
+    \item \textbf{Warm vormen} ($0{,}3 - 0{,}5 \cdot T_m$ in K): gedeeltelijke dislocatiemobiliteit, verminderde rekversteviging
+    \item \textbf{Heet vormen} ($> 0{,}6 \cdot T_m$ in K): rekristallisatie \textrightarrow{} geen rekversteviging, lage vloeispanning, maar oxidatie en lagere maatnauwkeurigheid
+\end{itemize}
+
+De ware rekken zijn cumulatief over meerdere processtappen. Gloeien (rekristallisatie) herstelt de oorspronkelijke ductiliteit.
+
+\newpage
+\subsection{Draadtrekken (Wire Drawing)}
+
+Draadtrekken is het trekken van een metaaldraad of staaf door een conisch matrijs (de \textbf{trekmatrijs} of \emph{draw die}), waardoor de diameter afneemt. Het is uitsluitend een koudvormingsproces.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.80\textwidth]{Proffen/L4_p12.png}
+  \caption{Schematische doorsnede van het draadtrekproces. De draad wordt door de conische trekmatrijs (halverwege openingshoek $\alpha$) getrokken met trekkracht $F$. De normale matrijsdruk $p$ en de wrijvingskracht $\mu p$ werken op het draadoppervlak. Matrijzen zijn gemaakt van cBN of synthetisch diamant voor maximale slijtvastheid.}
+  \label{fig:wire_drawing_die}
+\end{figure}
+
+Kenmerken en beperkingen:
+\begin{itemize}
+    \item \textbf{Rekversteviging is essentieel}: na de matrijs is de doorsnede kleiner. Bij dezelfde trekkracht is de spanning na de matrijs groter. Zonder rekversteviging zou de draad na de matrijs verder plastisch vloeien en breken. Rekversteviging zorgt dat de vloeispanning na de matrijs hoger is dan de aanwezige trekspanning. \textbf{Daarom is heetdraadtrekken onmogelijk.}
+    \item Matrijshoek $\alpha$: optimum $\approx 6 - 12$° (te groot: grote interne schuifvervorming; te klein: te veel wrijving)
+    \item Diameterreductie per stap: beperkt tot $\approx$ 10 -- 40\%
+    \item Voor grotere totale reducties: meerdere stappen met eventueel tussentijds rekristallisatiegloeien
+\end{itemize}
+
+\subsubsection{Mechanische analyse}
+
+Door evenwicht te beschouwen van een infinitesimale schijf in de trekmatrijs en het von Mises-criterium toe te passen ($p = \sigma_Y - \sigma_x$), kan men de volgende differentiaalvergelijking afleiden:
+
+\begin{align*}
+    -4\bigl[\sigma_Y(\tan\alpha + \mu) - \sigma_x \cdot \mu\bigr]\cdot dx + (D_1 - 2\tan\alpha \cdot x)\cdot d\sigma_x = 0
+\end{align*}
+
+Integratie geeft het verloop van de trekspanning over de matrijslengte. Bij verwaarloosbare wrijving:
+\begin{align*}
+    \sigma_x(x) = 2\sigma_Y \cdot \ln\!\left(\frac{D_1}{D_1 - 2\tan\alpha \cdot x}\right)
+\end{align*}
+
+Met wrijving (Coulomb, coëfficiënt $\mu$):
+\begin{align*}
+    \sigma_x(x) = \sigma_Y\!\left(1 + \frac{\tan\alpha}{\mu}\right)\!\left[1 - \left(\frac{D_1 - 2\tan\alpha \cdot x}{D_1}\right)^{\!\frac{2\mu}{\tan\alpha}}\right]
+\end{align*}
+
+De trekspanning aan het uiteinde mag $\sigma_Y$ niet overschrijden (anders vloeit de draad na de matrijs). Hieruit volgt de maximale diameterreductie van $\approx$ 40 -- 50\%.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.72\textwidth]{Proffen/L4_p16.png}
+  \caption{Industriële draadtrekmachine met meerdere trommels in serie. Na elke trommel is de draad dunner en sterker door koudversteviging. Tussen series trommels kan een tussentijds gloeiprogramma zijn voorzien om de ductiliteit te herstellen.}
+  \label{fig:wire_drawing_machine}
+\end{figure}
+
+\newpage
+\subsection{Extrusie (Extrusion)}
+
+Bij \textbf{extrusie} wordt een billet (blok materiaal) door een matrijsopening \textbf{geperst}. In tegenstelling tot draadtrekken domineren hier drukspanningen \textrightarrow{} doorsnedereducties van $> 90\%$ zijn mogelijk.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.82\textwidth]{Proffen/L4_p20.png}
+  \caption{Directe (voorwaartse) extrusie (boven) versus indirecte (achterwaartse) extrusie (onder). Bij directe extrusie beweegt het billet vooruit; er is wrijving billet-container die daalt naarmate het billet korter wordt. Bij indirecte extrusie beweegt de matrijs, geen wrijving billet-container, constante extrusiekracht.}
+  \label{fig:extrusion_variants}
+\end{figure}
+
+\subsubsection{Varianten}
+
+\begin{itemize}
+    \item \textbf{Directe (voorwaartse) extrusie}: stempel drukt billet vooruit. Wrijving billet-container daalt naarmate het billet korter wordt \textrightarrow{} dalende extrusiekracht.
+
+    \item \textbf{Indirecte (achterwaartse) extrusie}: de matrijs beweegt in het billet. Geen wrijving billet-container \textrightarrow{} lagere, constante extrusiekracht. Nadeel: holle stempel moet even lang zijn als het profiel.
+
+    \item \textbf{Hydrostatische extrusie}: billet omgeven door vloeistof onder hoge druk \textrightarrow{} minimale wrijving. Toepasbaar op brosse materialen.
+
+    \item \textbf{Impactextrusie}: hoge stempelsnelheid; materiaal stroomt terug rondom de stempel. Toepassing: batterijhulzen, aluminiumtubes.
+
+    \item \textbf{Laterale extrusie}: materiaal stroomt zijwaarts uit; handig voor combinatieprocessen.
+\end{itemize}
+
+\subsubsection{Dode zone en matrijsontwerp}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.74\textwidth]{Proffen/L4_p24.png}
+  \caption{Dode zone bij directe extrusie met loodrechte containerrand (links). Het hoekmateriaal blijft stationair; interne schuifspanningen verbruiken energie zonder nuttig werk. Door de matrijs een conische inlaat te geven (rechts) wordt de dode zone geminimaliseerd en de energieëfficiëntie verbeterd.}
+  \label{fig:dead_zone}
+\end{figure}
+
+Bij directe extrusie met een loodrechte containerrand ontwikkelt zich een \textbf{dode zone}: het materiaal in de hoeken kan de matrijsopening niet bereiken zonder een scherpe bocht. Inwendige schuifdeformatie verbruikt energie zonder bij te dragen aan het eindproduct. Een conische inlaathoek $\alpha$ minimaliseert de dode zone.
+
+\subsubsection{Extrusiekracht}
+
+Empirische relatie voor koud extrusie:
+\begin{align*}
+    F \propto A_0 \cdot \sigma_Y \cdot \left(\ln\frac{A_0}{A_f}\right)^{\!n}
+\end{align*}
+
+Bij heet extrusie vervalt $n$ (geen rekversteviging). Aluminium heeft een lage extrusieconstante (gemakkelijk extrudeerbaar); staal heeft een hogere. Hogere temperatuur verlaagt de extrusieconstante sterk.
+
+\newpage
+\subsection{Walsen (Rolling)}
+
+\textbf{Walsen} is het reduceren van de doorsnede van een werkstuk door het te trekken tussen twee of meer roterende walsen. Continu proces dat in principe onbeperkte lengten kan produceren.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.82\textwidth]{Proffen/L4_p28.png}
+  \caption{Overzicht van het walsproces. Twee walsen roteren in tegengestelde richting. Wrijving is noodzakelijk om het materiaal in te trekken (beet-conditie). In het walscontact heerst overwegend drukspanning; de uitstroomsnelheid is hoger dan de instroomsnelheid (massabehoud).}
+  \label{fig:rolling_overview}
+\end{figure}
+
+\subsubsection{Beet-conditie}
+
+Het materiaal wordt ingezogen als de horizontale component van de wrijvingskracht groter is dan de horizontale component van de normaalkracht:
+\begin{align*}
+    \mu \geq \tan(\alpha) \qquad \text{en} \qquad \Delta h_{\max} \approx \mu^2 \cdot R
+\end{align*}
+
+Grotere walsstraal $R$ of hogere wrijvingscoëfficiënt $\mu$ \textrightarrow{} grotere maximale reductie, maar ook meer energieverbruik en hogere walskrachten.
+
+\subsubsection{Restspanningen na koud walsen}
+
+\begin{itemize}
+    \item \textbf{Kleine walsstraal}: vervorming betreft enkel de oppervlaktelaag \textrightarrow{} \textbf{drukrestspanningen} aan het oppervlak, trekrestspanningen in de kern. Gunstig: drukrestspanningen sluiten oppervlaktescheurtjes en verhogen de vermoeiingslevensduur.
+    \item \textbf{Grote walsstraal}: vervorming reikt tot de kern \textrightarrow{} \textbf{trekrestspanningen} aan het oppervlak. Ongunstig voor vermoeiing.
+    \item Bij \textbf{heet walsen} verdwijnen restspanningen door rekristallisatie.
+\end{itemize}
+
+\subsubsection{Walsinstallaties en varianten}
+
+\begin{itemize}
+    \item \textbf{Duo-wals}: twee werwalsen; eenvoudigste opstelling
+    \item \textbf{Quarto-wals}: twee werwalsen + twee steunwalsen \textrightarrow{} minder doorbuiging bij grote breedtes
+    \item \textbf{Cluster-wals (Sendzimir)}: kleine werwalsen gesteund door meerdere grotere steunwalsen \textrightarrow{} voor dunne folie
+    \item \textbf{Tandem-wals}: meerdere walsinstallaties in serie; de snelheid stijgt progressief bij elke stap (massabehoud)
+\end{itemize}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.76\textwidth]{Proffen/L4_p35.png}
+  \caption{Het Mannesmann-proces voor naadloze buizen. Schuingeplaatste walsen laten een staaf roteren en bewegen axiaal. Door de asymmetrische spanning (trek in het centrum, druk aan het oppervlak) opent het midden van de staaf. Een doorn vormt de naadloze buis, superieur aan gelaste buizen voor hogedruk- en hogetemperatuurtoepassingen.}
+  \label{fig:mannesmann}
+\end{figure}
+
+Speciale walsvarianten:
+\begin{itemize}
+    \item \textbf{Profielwalsen}: walsen met specifiek profiel voor I-balken, rails, hoekprofielen
+    \item \textbf{Schroefdraadwalsen}: superieur aan verspanen (verharde oppervlaktelaag, betere vermoeiingsweerstand)
+    \item \textbf{Ringwalsen}: voor ringen en flenzen; diameter vergroot terwijl doorsnede verkleint
+    \item \textbf{Mannesmann-proces}: naadloze buizen door schuine walsen die een staaf laten roteren en door inwendige trekspanning het midden doen openen. Superieur aan gelaste buizen voor hogedruk- en hogetemperatuurtoepassingen.
+\end{itemize}
+
+\newpage
+\subsection{Smeden (Forging)}
+
+Bij \textbf{smeden} wordt materiaal geperst tussen stempels of matrijshelften. Overwegend drukspanningen (links in het ductiliteitsdiagram) \textrightarrow{} grote vervormingen mogelijk. Smeden levert eindproducten of half-eindproducten op.
+
+\subsubsection{Openmatrijs-smeden (Open Die Forging)}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.76\textwidth]{Proffen/L4_p40.png}
+  \caption{Openmatrijs-smeden: vlakke stempels comprimeren het werkstuk. Door roteren en verschuiven worden ook axiale vormen gerealiseerd. Barreling (vat-vorm) treedt op door wrijving aan het contactvlak. Toepassing: grote stukken (assen, schijven, maritieme schroefassen) in kleine series.}
+  \label{fig:open_die_forging}
+\end{figure}
+
+\begin{itemize}
+    \item Vlakke stempels; de vorm wordt bereikt door beweging van het werkstuk (roteren, verschuiven, kantelen)
+    \item Toepassing: grote stukken, kleine series; minder maatnauwkeurig
+    \item \textbf{Barreling}: wrijving aan het contactvlak verhindert laterale uitstroming \textrightarrow{} het materiaal bolst uit in het midden (vat-vorm). Vermindering via smeermiddelen of stempelverwarming.
+\end{itemize}
+
+\subsubsection{Gesloten matrijssmeden (Closed / Impression Die Forging)}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.78\textwidth]{Proffen/L4_p50.png}
+  \caption{Gesloten matrijssmeden met flash. De matrijshelften omringen het werkstuk. Het overtollige materiaal stroomt in de smalle flash-gleuf; de hoge weerstand in de flash dwingt het materiaal alle hoeken van de matrijs te vullen. Na het smeden wordt de flash afgesneden.}
+  \label{fig:closed_die_forging}
+\end{figure}
+
+\begin{itemize}
+    \item Vorm volledig bepaald door de matrijshelften \textrightarrow{} hoge maatnauwkeurigheid en reproduceerbaarheid
+    \item \textbf{Flash-gleuf (flash gutter)}: de smalle gleuf creëert hoge doorstroombeheerstand, zodat de interne druk stijgt en alle hoeken worden gevuld. Flash wordt nadien afgesneden.
+    \item Voorvorming in meerdere stappen voor complexe vormen: \textbf{fullering} (verdunnen) en \textbf{edging} (voorvormen randen)
+    \item \textbf{Trekhoeken} (draft angles): interne wanden 7 -- 10°; externe wanden kleiner
+\end{itemize}
+
+\textbf{Munten (Coining)}: smeden zonder flash, voor precisieonderdelen (munten, medailles). Vereist nauwkeurig gedoseerde billetmassa.
+
+Matrijsontwerp voor gesloten smeden combineert ervaring met \textbf{eindige-elementensimulatie} om materiaalstroom, krachten, temperatuurverdeling en slijtage te voorspellen.
+
+\newpage
+
+\chapter{Plaatvorming}
+
+\subsection{Inleiding}
+
+\textbf{Plaatvorming} (sheet metal forming) omvat alle technieken voor het plastisch vervormen van dun plaatvormig materiaal. Kenmerkend: de plaatdikte verandert nauwelijks (\textbf{vlakspanningstoestand}: $\sigma_3 \approx 0$). Plaatvorming is vrijwel altijd een \textbf{koudvormingsproces}.
+
+Toepassingen: carrosseriedelen, blik voor conserven en drank, potten en pannen, behuizingen voor elektronica, onderdelen voor remmen en versnellingsbakken.
+
+\subsection{Relevante materiaaleigenschappen}
+
+\subsubsection{Anisotropiefactor ($r$-waarde)}
+
+Koud gewalste plaat heeft een sterke textuur door de walsrichting, wat het materiaal anisotropisch maakt.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.74\textwidth]{Proffen/L5_p03.png}
+  \caption{De anisotropiefactor $r$ wordt gemeten via een trekproef: de verhouding van breedterek tot dikterek geeft aan hoe het materiaal bij éénassige trek preferentieel vervormt. Hoge $r$-waarden ($>1$) zijn gunstig voor dieptrekken: het materiaal vervormt liever in het plaakvlak dan door de dikte.}
+  \label{fig:r_value}
+\end{figure}
+
+De \textbf{anisotropiefactor} $r$ (Lankford-coëfficiënt) wordt bepaald via een trekproef:
+\begin{align*}
+    r = \frac{\varepsilon_b}{\varepsilon_d}
+\end{align*}
+
+Hierbij is $\varepsilon_b$ de breedterek (loodrecht op de trekrichting, in het plaakvlak) en $\varepsilon_d$ de dikterek (dwars door de dikte). Gemeten bij 0°, 45° en 90° ten opzichte van de walsrichting:
+\begin{align*}
+    \bar{r} &= \frac{r_0 + 2r_{45} + r_{90}}{4} \quad \text{(gemiddelde normaalse anisotropie)} \\[4pt]
+    \Delta r &= \frac{r_0 - 2r_{45} + r_{90}}{2} \quad \text{(planaire anisotropie)}
+\end{align*}
+
+Een hoge $\bar{r}$ ($> 1$) is gunstig voor dieptrekken: de wand van het getrokken product wordt niet te dun. IF-stalen (Interstitial Free) bereiken $\bar{r} \approx 2 - 3$. Een planaire anisotropie $\Delta r \neq 0$ leidt tot \textbf{oorvorming} (earing) bij dieptrekken, wat materiaalverlies veroorzaakt.
+
+\subsubsection{Plastische instabiliteit}
+
+Koolstofstalen vertonen een plastisch-instabiliteitszone (Lüders-banden): bij plaatvorming in dit instabiliteitsgebied onstaan zichtbare vloeifiguren (stretcher strains) op het oppervlak --- cosmetisch onaanvaardbaar voor carrosserieplaten. Oplossing: gebruik koud gewalst plaat dat reeds voorbij de instabiliteitszone is vervormd.
+
+\subsubsection{Formeerbaarheidsdiagram (Forming Limit Diagram, FLD)}
+
+Het FLD geeft aan welke combinaties van de twee hoofdrekken in het plaakvlak ($\varepsilon_1$ = grootste hoofdrek, $\varepsilon_2$ = kleinste hoofdrek) nog mogelijk zijn zonder scheuren.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.78\textwidth]{Proffen/L5_p05.png}
+  \caption{Forming Limit Diagram (FLD) bepaald via de Nakazima-test. Cirkels van $\approx 5$ mm diameter worden vóór de proef op het plaatoppervlak gedrukt. Na vervorming worden de cirkels ellipsen; uit de as-verhouding worden $\varepsilon_1$ en $\varepsilon_2$ berekend. Boven de grenskurve: scheuren; onder: veilig.}
+  \label{fig:fld}
+\end{figure}
+
+Het FLD wordt experimenteel bepaald via de \textbf{Nakazima-test}: cirkelpatronen worden op het plaatoppervlak aangebracht; stempels van variabele breedte vervormen de plaat in verschillende combinaties van $\varepsilon_1$ en $\varepsilon_2$ tot scheuren optreden.
+
+\begin{itemize}
+    \item Links van de y-as ($\varepsilon_2 < 0$): éénassige rek en dieptrekken. De grenskurve ligt hier het hoogst (meer rek toelaatbaar).
+    \item Op de y-as ($\varepsilon_2 = 0$): vlakke rek (plane strain). De grenskurve bereikt hier haar minimum.
+    \item Rechts van de y-as ($\varepsilon_2 > 0$): tweezijdige rek (biaxiaal strekken). Plaat wordt dunner \textrightarrow{} hogere kans op lokale insnoering \textrightarrow{} lagere grensrek.
+\end{itemize}
+
+\begin{warningbox}
+Het FLD is enkel geldig bij constante plaatdikte (vlakspanningstoestand). Bij processen waarbij de dikte significant verandert (strijken, shear spinning) is het FLD niet rechtstreeks toepasbaar.
+\end{warningbox}
+
+\subsection{Buigen (Bending)}
+
+\subsubsection{Vrij buigen (Air Bending)}
+
+Bij vrij buigen rust de plaat op twee steunen en wordt neergedrukt door een stempel. De plaat raakt de matrijs op drie punten.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.76\textwidth]{Proffen/L5_p08.png}
+  \caption{Vrij buigen (air bending): de plaat steunt op twee onderrollen en wordt neergedrukt door een bovenste stempel. De buighoek is instelbaar door de stempelafdaling te variëren. De buigstraal $r$ is groter dan de stempelradius: de plaat zweeft tussen de steunen.}
+  \label{fig:air_bending}
+\end{figure}
+
+De \textbf{buigstraal} $r$ bepaalt de mate van plastische vervorming. De spanningstoestand in de dwarsdoorsnede:
+\begin{itemize}
+    \item \textbf{Bovenzijde} (stempelzijde): drukspanning $\sigma_Y$
+    \item \textbf{Onderzijde}: trekspanning $\sigma_Y$
+    \item De neutrale laag bevindt zich iets binnenwaarts van het geometrisch midden
+    \item \textbf{Minimale buigstraal}: te kleine buigstraal geeft te grote trekrek aan de buitenzijde \textrightarrow{} scheuren. Richtwaarde: $r_{\min} \approx t$ voor zacht staal.
+\end{itemize}
+
+\subsubsection{Terugvering (Springback)}
+
+Na verwijdering van de stempel veert de plaat terug door de elastische spanningscomponent:
+\begin{align*}
+    \frac{\Delta\theta}{\theta_i} \propto \frac{\sigma_Y}{E} \cdot \frac{r_i}{t}
+\end{align*}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.72\textwidth]{Proffen/L5_p12.png}
+  \caption{Terugvering (springback) na het buigen: de werkelijke buighoek $\theta_f$ is kleiner dan de aangebrachte hoek $\theta_i$. Compensatiemethoden zijn overbending (stempel verder instellen) of drukbuigen (bottoming).}
+  \label{fig:springback}
+\end{figure}
+
+Terugvering neemt toe bij hogere $\sigma_Y$, lagere $E$-modulus en grotere $r/t$-verhouding. Hogesterkte stalen (AHSS) vertonen aanzienlijk meer terugvering dan mild staal. Compensatiemethoden:
+\begin{itemize}
+    \item \textbf{Overbending}: stempel verder neerduwen zodat na terugvering de gewenste hoek overblijft
+    \item \textbf{Drukbuigen (bottoming)}: plaat volledig tegen matrijsbodem drukken (zie hieronder)
+    \item \textbf{Rolcorrectie}: corrigerende rek via rollen na het buigen
+\end{itemize}
+
+\subsubsection{Drukbuigen (Bottoming)}
+
+\begin{itemize}
+    \item Hogere perskracht dan bij vrij buigen (factor $\approx$ 3 -- 5$\times$)
+    \item Veel minder terugvering: de hoge contactdruk neutraliseert de elastische spanningscomponent
+    \item Matrijsspecifiek: voor elke hoek en materiaaldikte is een specifiek matrijs nodig
+    \item Hogere maatnauwkeurigheid dan vrij buigen
+\end{itemize}
+
+\subsubsection{Andere buigvarianten}
+
+\begin{itemize}
+    \item \textbf{Rolvormen (Roll forming)}: een vlakke strip gaat continu door opeenvolgende walsparen met toenemend profiel. Economisch bij lange, constante profielen in grote series.
+    \item \textbf{Plaatwalsen (Roll bending)}: drie rollen buigen een plaat tot een cilinder of kegel. Conische vormen zijn mogelijk door de rollen asymmetrisch te plaatsen.
+    \item \textbf{Buizen buigen}: een inwendige doorn (gevuld met zand, metalen bolletjes of veerlamellen) is noodzakelijk om het buisoppervlak niet te laten bezwijken.
+\end{itemize}
+
+\subsection{Draaien en Afroldraaien (Spinning en Shear Spinning)}
+
+\subsubsection{Draaien (Spinning)}
+
+Bij \textbf{spinning} wordt een ronde plaatschijf (blanco) over een roterende doorn gedrukt door een rol. De plaat neemt geleidelijk de vorm van de doorn aan.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.74\textwidth]{Proffen/L5_p16.png}
+  \caption{Spinningproces: de blanco roteert mee met de doorn; een drukrol schuift incrementeel van de rand naar het midden en forceert de plaat over de doorn. De wanddikte blijft nagenoeg gelijk aan de originele plaatdikte. Enkel rotatiesymmetrische vormen zijn mogelijk.}
+  \label{fig:spinning}
+\end{figure}
+
+Kenmerken:
+\begin{itemize}
+    \item \textbf{Dikte blijft behouden}: alleen de vorm verandert
+    \item Enkel rotatiesymmetrische vormen (kommen, trechters, vloeistoftanks)
+    \item Lage gereedschapskosten; hogere bewerkingstijd per stuk dan dieptrekken
+    \item Geschikt voor kleine tot middelgrote series ($\lesssim 800$ stuks per jaar)
+\end{itemize}
+
+\subsubsection{Afroldraaien (Shear Spinning)}
+
+Bij shear spinning wordt de blanco ook radiaal uitgerekt:
+\begin{align*}
+    t_f = t_0 \cdot \sin\phi
+\end{align*}
+
+Hierbij is $\phi$ de halve kegeltophoek van de doorn. De wanddikte daalt bewust. Hogere krachten vereisen doorgaans twee tegengestelde rollen.
+
+\subsection{Dieptrekken (Deep Drawing)}
+
+Dieptrekken is het vormen van een holle, bekervormige geometrie uit een vlakke plaat (de \textbf{blanco}) door de blanco met een stempel door een matrijsopening te duwen.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.82\textwidth]{Proffen/L5_p22.png}
+  \caption{Componenten van het dieptreksysteem: stempel, matrijs, plaathouder (blank holder) en stripper. De plaathouder drukt op de buitenste flenszône om rimpelen te voorkomen. De matrijs heeft een afrondingsstraal om de plaat niet door te snijden.}
+  \label{fig:deep_drawing}
+\end{figure}
+
+\subsubsection{Procescomponenten en hun functies}
+
+\begin{itemize}
+    \item \textbf{Stempel (punch)}: iets kleiner dan de matrijsopening; bepaalt de binnenvorm. De stempelstraal moet groot genoeg zijn om scheuren te voorkomen.
+    \item \textbf{Matrijs (die)}: bepaalt de buitenvorm; voldoende grote afrondingsstraal ($r_{die} \approx 5 - 10 \cdot t$) om afsnijden te voorkomen.
+    \item \textbf{Plaathouder (blank holder)}: drukt op de flenszône. Te laag \textrightarrow{} rimpelen; te hoog \textrightarrow{} plaat scheurt. De juiste blankhouderkracht wordt via try-out of simulatie bepaald.
+    \item \textbf{Stripper ring}: verwijdert het getrokken product van de stempel.
+\end{itemize}
+
+\subsubsection{Spanningstoestanden in de dieptrekzône}
+
+\begin{itemize}
+    \item \textbf{Flens}: radiaal trekspanning, omtreksgericht drukspanning. Te weinig blankholderkracht \textrightarrow{} rimpelen.
+    \item \textbf{Matrijs-afrondingsstraal}: bending + onbuiging \textrightarrow{} grote spanningsconcentraties.
+    \item \textbf{Zijwand}: trekspanning langs de hoogte; relatief uniforme wanddikte.
+    \item \textbf{Stempel-afrondingsstraal}: de gevaarlijkste zone: gecombineerd effect van stempel-trekkracht en buigspanning. Meest waarschijnlijke scheurlocatie.
+\end{itemize}
+
+\subsubsection{Trekverhouding en Limiet-Trekverhouding}
+
+De \textbf{trekverhouding} (drawing ratio) $DR$:
+\begin{align*}
+    DR = \frac{D_0}{D_p}
+\end{align*}
+
+Hierbij is $D_0$ de blancdiameter en $D_p$ de stempeldiameter. De \textbf{limiet-trekverhouding} (LDR) is de maximale $DR$ in één stap zonder breuk. Beïnvloedende factoren:
+\begin{itemize}
+    \item \textbf{Normaalse anisotropie $\bar{r}$}: hogere $\bar{r}$ \textrightarrow{} hogere LDR. Typisch LDR $\approx 2{,}0 - 2{,}5$ voor goed dieptrekstaal, $\approx 2{,}0$ voor Al.
+    \item \textbf{Wrijving}: minder wrijving (meer smering) \textrightarrow{} hogere LDR
+    \item \textbf{Geometrie}: grotere matrijsafrondingsstraal $r_{die}$ \textrightarrow{} hogere LDR
+\end{itemize}
+
+\begin{warningbox}
+Naarmate de gewenste $DR$ de $LDR$ nadert, wordt het venster voor de blankhouderkracht smaller. Boven $LDR$: de trekspanning aan de stempelstraal overschrijdt de treksterkte van het materiaal \textrightarrow{} het proces is onmogelijk in één stap.
+\end{warningbox}
+
+\subsubsection{Hertrekken (Redrawing)}
+
+Als de gewenste einddiameter een $DR > LDR$ vereist, wordt in meerdere stappen getrokken:
+\begin{itemize}
+    \item \textbf{Directe hertrekking}: de beker wordt met dezelfde oriëntatie opnieuw getrokken in een kleinere matrijs
+    \item \textbf{Omgekeerde hertrekking}: de beker wordt binnenstebuiten op de stempel gedrukt \textrightarrow{} gunstiger spanningsverdeling in sommige gevallen
+    \item Elke stap vermindert de diameter; de totale $DR$ is het product van de deeltrekverhoudingen
+\end{itemize}
+
+\subsubsection{Strijken (Ironing)}
+
+Na het dieptrekken is de wanddikte ongelijkmatig (flens lichtjes dikker, onderkant lichtjes dunner). Door het product door een nauwer gekalibreerde ring te duwen wordt de wanddikte gelijkgemaakt en verkleind.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.72\textwidth]{Proffen/L5_p28.png}
+  \caption{Het strijkproces (ironing): de al gevormde beker wordt door een strijkring geduwd. De ruimte tussen stempel en strijkring is kleiner dan de huidige wanddikte, waardoor de wand plastisch wordt uitgedund. In de blikjesindustrie worden drie strijkstappen gebruikt om de wanddikte van $\approx 0{,}3$ mm tot $\approx 0{,}1$ mm te reduceren.}
+  \label{fig:ironing}
+\end{figure}
+
+Strijken wordt in meerdere ringen in serie uitgevoerd:
+\begin{itemize}
+    \item Elke ring is iets nauwer dan de vorige \textrightarrow{} geleidelijke wanddikteafname
+    \item Toepassing: blikjes voor drank (aluminium of staal). Wanddikte gaat van $\approx 0{,}3$ mm naar $\approx 0{,}1$ mm na drie strijkringen; de bodem blijft dikker voor mechanische sterkte.
+    \item Strijken vereist excellente smering en nauwkeurig gedimensioneerde ringen
+    \item Productiviteit: $> 300$ blikjes per minuut op moderne machines
+\end{itemize}

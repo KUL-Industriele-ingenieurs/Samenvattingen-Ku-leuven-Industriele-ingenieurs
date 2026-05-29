@@ -15,15 +15,15 @@
 \begin{document}
 % Titelinformatie
 \kuleuventitle
-{Samenvatting EEGO}
+{Samenvatting/Cursus EEGO}
 {Eindig Elementen Gebaseerd Ontwerp}
 {Louic Cooreman}
 {Academiejaar 2025-2026}
 \newpage
-Deze samenvatting, en velen anderen zijn allemaal beschikbaar op GitHub: \url{https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs}, bijdragen hieraan is zeker geapprecieerd! Het helpt niet alleen ons jaar, maar ook de jaren na ons. Zeker voor dit vak aangezien er zo goed als niks op StudForum staat en het cursusmateriaal eerlijk gezegd slordig is. Indien er vragen zijn over deze samenvatting, of andere samenvattingen van deze GitHub, stuur mij dan aub een berichtje op Discord (@louiccooreman).
+Deze samenvatting (eigelijk eerder een cursus van de slides), en velen anderen zijn allemaal beschikbaar op \href{https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs}{GitHub}, bijdragen hieraan is zeker geapprecieerd! Het helpt niet alleen ons jaar, maar ook de jaren na ons. Zeker voor dit vak aangezien er zo goed als niks op StudForum staat en het cursusmateriaal eerlijk gezegd slordig is. Indien er vragen zijn over deze samenvatting, of andere samenvattingen van deze GitHub, stuur mij dan aub een berichtje op Discord (@louiccooreman).
 \newline
 \newline
-Deze samenvatting voor eindige elementen is gemaakt op basis van lesnotities, de slides, cursusmateriaal en toledovideos allemaal in 1 geramd in een notebook. Natuurlijk schrijf ik zelf wel alles, notebook was er bij om de leerstof uit te leggen aan mij en om het geheel proces gewoon te versnellen. (Er staan een aantal schrijffouten in of slordige zinnen die ik te lui was om aan te passen, ik heb deze samenvatting gemaakt zodat ik er zelf mee kon leren).
+Dit document voor eindige elementen is gemaakt op basis van lesnotities, de slides, cursusmateriaal en toledovideos allemaal in 1 geramd in een notebook. Bijna alles in dit document heb ik wel zelf geschreven, indien niet, zul je dit wel kunnen herkennen, maar er staan allesinds geen fouten in want ik heb alles nagelezen dan of gecorrigeerd, notebook was er bij om de leerstof uit te leggen aan mij en om het geheel proces gewoon te versnellen. (Er staan een aantal schrijffouten in of slordige zinnen die ik te lui was om aan te passen, ik heb dit document dus gemaakt zodat ik er zelf mee kon leren). Nog 1 belangrijk ding is dat alles hierin gewoon de leerstof van de lessen, videos en slides bevat. Extra oefeningen en examens van op toledo of studforum staan hier niet in, dus ga je zelf moeten bezien (wat normaal wel moet lukken als je dit document door neemt). DIT VAK IS REETTE VEEL VOOR HET AANTAL STUDIEPUNTEN DAT HET IS!
 \newline
 \tableofcontents
 \newpage
@@ -1677,7 +1677,7 @@ En uit deze 2 vinden we:
  \theta_y(x) = \frac{ax^2}{2} + bx + c\\
   u_z(x) = \frac{ax^3}{6} + \frac{bx^2}{2} + cx + d
 \end{align*}
-Door de randvoorwaarden ($u_z(0) = 0$, $\theta_y(0) = 0$, $u_z(L) = 0$, $\theta_y(L) = 0$) van deze specifieke situatie in te vullen kunnen we de onbekende constanten a, b, c en d (dit zijn integratieconstanten moest het niet duidelijk zijn) bepalen, dit geeft ons:
+Door de randvoorwaarden ($u_z(0) = 0$, $\theta_y(0) = 1$, $u_z(L) = 0$, $\theta_y(L) = 0$) van deze specifieke situatie in te vullen kunnen we de onbekende constanten a, b, c en d (dit zijn integratieconstanten moest het niet duidelijk zijn) bepalen, dit geeft ons:
 \begin{align*}
 a = \frac{6}{L^2}, b = -\frac{4}{L}, c = 1, d = 0
 \end{align*}
@@ -2612,6 +2612,1458 @@ Net zoals bij rods kunnen we bij beams ook met local en global coordinaten werke
   0 & 0 & -\sin \theta & \cos \theta  
  \end{bmatrix}
 \end{align*}
+\newpage
+\chapter{Energie-gebaseerde methodes}
+Tot nu toe gebruikten we de directe methode, waarbij we elementen zagen als simpele mechanische veren. Voor 1D-elementen werkt dat perfect, maar voor 2D- en 3D-problemen wordt dit onbegonnen werk. Als je het gedrag van slechts één simpel 2D-element via die directe methode wil beschrijven, zou je al zes verschillende veren met zes verschillende stijfheden moeten definiëren. Dat is niet praktisch, en daarom gebruikt FEA-software een veel fundamenteler natuurkundig principe: de Energiemethode (ook wel de Rayleigh-Ritz of variationele methode genoemd).
+\subsection{Het Principe van de Energiemethode}
+(Dit stukje werd direct bij een 1D rod in de les toegepast maar in de toledo videos wordt dit algemeen uitgelegd, ik heb AI dit deel laten cooken en aangepast dus het is juist, geen zorgen maken als het 'AI geschreven' lijkt)
+\newline
+\newline
+Deze methode is volledig gebaseerd op de wet van behoud van energie: de totale arbeid die door externe krachten op de knopen van een element wordt verricht (\textit{external work done}), moet exact gelijk zijn aan de interne elasticiteitsenergie (\textit{internal strain energy}) die door vervorming in het element wordt opgeslagen.
+
+Wiskundig schrijven we deze energiebalans als volgt op:
+\begin{align*}
+    \text{Externe arbeid} &= \text{Interne energie} \\
+    \frac{1}{2} \tilde{u}^T \tilde{F} &= \int_{\Omega_e} \frac{1}{2} \hat{\epsilon}^T \hat{\sigma} d\Omega
+\end{align*}
+Waarbij:
+\begin{itemize}
+    \item $\tilde{u}$ en $\tilde{F}$ de verplaatsingen en krachten \textbf{in de knopen} zijn.
+    \item $\hat{\epsilon}$ en $\hat{\sigma}$ de rek (strain) en spanning (stress) \textbf{binnenin het element} zijn (aangegeven met een $\hat{}$ hoedje).
+    \item $\Omega_e$ het volume van het element is ($d\Omega$ is in de praktijk hetzelfde als $dV$).
+\end{itemize}
+De transpose op \{$\tilde{u}$\} is zodat we de juiste matrixvermenigvuldiging krijgen, voor bvb. een 3D element met: $\{\tilde{u}\}^T = \begin{Bmatrix} \tilde{u_{x1}} & \tilde{u_{y1}} & \tilde{u_{z1}} & \tilde{u_{x2}} & \tilde{u_{y2}} & \tilde{u_{z2}} \end{Bmatrix}$ en $\tilde{F} = \begin{Bmatrix} \tilde{F_{x1}} \\ \tilde{F_{y1}} \\ \tilde{F_{z1}} \\ \tilde{F_{x2}} \\ \tilde{F_{y2}} \\ \tilde{F_{z2}} \end{Bmatrix}$, krijgen we dus:
+\begin{align*}
+    \frac{1}{2} \tilde{u}^T \tilde{F}
+      = \frac{1}{2} (\tilde{u_{x1}} \tilde{F_{x1}} + \tilde{u_{y1}} \tilde{F_{y1}} + \tilde{u_{z1}} \tilde{F_{z1}} + \tilde{u_{x2}} \tilde{F_{x2}} + \tilde{u_{y2}} \tilde{F_{y2}} + \tilde{u_{z2}} \tilde{F_{z2}})
+\end{align*}
+\textbf{De wiskundige afleiding van de Stijfheidsmatrix $[k]$} \newline
+Het ultieme doel van de software is om een wiskundig verband te vinden tussen de continue spanning/rek bínnen het element en de bekende verplaatsingen in de knopen. Dit doet de software in drie stappen via matrixvermenigvuldigingen:
+
+\begin{enumerate}
+    \item \textbf{Verplaatsing interpoleren:} We gebruiken de bekende vormfunctiematrix $[N]$ om de verplaatsing overal binnen het element ($\hat{u}$) te berekenen vanuit de knopen ($\tilde{u}$):
+    \begin{align*}
+        \hat{u} = [N]\tilde{u}
+    \end{align*}
+    \item \textbf{Van verplaatsing naar rek (Strain):} Rek is in de mechanica de afgeleide van de verplaatsing. We vermenigvuldigen dus met een afgeleide-matrix $[\partial]$ om de zogenaamde \textit{Strain-displacement matrix} $[B]$ te vormen:
+    \begin{align*}
+        \hat{\epsilon} = [\partial]\hat{u} = [\partial][N]\tilde{u} = [B]\tilde{u}
+    \end{align*}
+    \item \textbf{Van rek naar spanning (Stress):} Via de wet van Hooke gebruiken we de materiaalmatrix (of constitutieve matrix) $[E]$ om de spanning te bepalen:
+    \begin{align*}
+        \hat{\sigma} = [E]\hat{\epsilon} = [E][B]\tilde{u}
+    \end{align*}
+\end{enumerate}
+Wim toont het aan bord als volgt:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{spanningbepalen.png}
+  \caption{Matrixvermenigvuldigingen om spanning te bepalen vanuit knoopverplaatsingen ('Matrix Flow')}
+  \label{fig:spanningbepalen.png}
+ \end{figure}
+Als we deze relaties voor $\hat{\epsilon}$ en $\hat{\sigma}$ nu terug invullen in onze originele energiebalans, krijgen we de volgende vergelijking:
+\begin{align*}
+    \frac{1}{2} \tilde{u}^T \tilde{F} &= \frac{1}{2} \tilde{u}^T \int [B]^T [E] [B] dV \, \tilde{u}
+\end{align*}
+
+Omdat de term $\frac{1}{2}\tilde{u}^T$ aan beide kanten staat, kunnen we deze eenvoudig wegschrappen. Wat we overhouden is de gouden basisformule die de Eindige Elementen Software gebruikt om de elementstijfheidsmatrix $[k]$ van \textbf{élk willekeurig element} (1D, 2D of 3D) te berekenen:
+\begin{align*}
+    \tilde{F} &= \underbrace{\left( \int [B]^T [E] [B] dV \right)}_{[k]} \tilde{u} \\
+    [k] &= \int [B]^T [E] [B] dV
+\end{align*}
+\subsection{1D rod elementen}
+Nu gaan we deze energiemethode op het makkelijkste element toepassen, een 1D rod element. (Het doel is hier dus om te tonen dat dit de exact zelfde AE/L matrix oplevert als de eerder geziene directe (veer) methode). We hebben hier 2 knopen, we hebben dus $\tilde{u} = \begin{Bmatrix} \tilde{u}_{x1} \\ \tilde{u}_{x2} \end{Bmatrix}$, dus die Matrix Flow toepassen voor $\hat{u}(x)$ geeft:
+\begin{align*}
+    \hat{u}(x) &= [N]\tilde{u} = \begin{bmatrix} N_1(x) & N_2(x) \end{bmatrix} \begin{Bmatrix} \tilde{u}_{x1} \\ \tilde{u}_{x2} \end{Bmatrix}
+\end{align*}
+Naar $\hat{\epsilon}$ gaan, doen we door te differentiëren, dus:
+\begin{align*}
+    \hat{\epsilon}(x) = \frac{\partial \hat{u}(x)}{\partial x} = [\partial]\hat{u}(x)\\
+    \hat{\epsilon}(x) = [\partial][N]\tilde{u} = [B]\tilde{u}
+\end{align*}
+Dit simpelweg vermenigvuldigen met de materiaaleigenschapmatrix $[E]$ geeft ons de spanning:
+\begin{align*}
+    \hat{\sigma}(x) = [E]\hat{\epsilon}(x) = [E][B]\tilde{u}
+\end{align*}
+
+\textbf{Stap 1: De Vormfunctiematrix $[N]$ invullen} \\
+Voor een lineair 1D element gebruiken we de bekende vormfuncties $N_1 = 1 - \frac{x}{L}$ en $N_2 = \frac{x}{L}$. 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{vormfuncties1Drod.png}
+  \caption{Vormfuncties 1D rod}
+  \label{fig:vormfuncties1Drod.png}
+ \end{figure}
+De verplaatsing wordt dan:
+\begin{align*}
+    \hat{u}(x) = \begin{bmatrix} 1 - \frac{x}{L} & \frac{x}{L} \end{bmatrix} \begin{Bmatrix} \tilde{u}_{x1} \\ \tilde{u}_{x2} \end{Bmatrix}
+\end{align*}
+
+\textbf{Stap 2: De Strain-displacement matrix $[B]$ bepalen} \\
+We leiden de matrix met vormfuncties af naar $x$ om de $[B]$ matrix te vinden:
+\begin{align*}
+    \hat{\epsilon}_x = [B]\tilde{u} = \begin{bmatrix} -\frac{1}{L} & \frac{1}{L} \end{bmatrix} \begin{Bmatrix} \tilde{u}_{x1} \\ \tilde{u}_{x2} \end{Bmatrix}
+\end{align*}
+
+\textbf{Stap 3: De stijfheidsmatrix $[k]$ berekenen} \\
+Nu vullen we dit, samen met de materiaalmatrix ($[E] = E$), in de algemene energie-integraal in. Omdat we integreren over het hele volume van de staaf ($dV = A \cdot dx$), ziet dit er zo uit:
+\begin{align*}
+    [k] &= \int [B]^T [E] [B] dV \\
+    [k] &= \int_0^L \begin{Bmatrix} -\frac{1}{L} \\ \frac{1}{L} \end{Bmatrix} E \begin{bmatrix} -\frac{1}{L} & \frac{1}{L} \end{bmatrix} A \, dx \\
+    [k] &= EA \int_0^L \begin{bmatrix} \frac{1}{L^2} & -\frac{1}{L^2} \\ -\frac{1}{L^2} & \frac{1}{L^2} \end{bmatrix} dx \\
+    [k] &= \begin{bmatrix} \frac{AE}{L} & -\frac{AE}{L} \\ -\frac{AE}{L} & \frac{AE}{L} \end{bmatrix}
+\end{align*}
+Omdat $A$ en $E$ constante materiaaleigenschappen zijn en de breuk onafhankelijk is van $x$, kunnen we de hele matrix voor de integraal halen. De integraal van $dx$ over de lengte $L$ is simpelweg $L$. Vermenigvuldigen we dit met elkaar, dan valt één $L$ in de noemer weg:
+\begin{align*}
+    [k] = \frac{AE}{L} \begin{bmatrix} 1 & -1 \\ -1 & 1 \end{bmatrix}
+\end{align*}
+Hiermee is wiskundig bewezen dat de complexe energiemethode voor een 1D staaf exact dezelfde stijfheidsmatrix oplevert als de intuïtieve directe methode!
+
+\textbf{Eigenschappen en beperkingen van deze elementstijfheidsmatrix $[k]$:}
+\begin{itemize}
+    \item \textbf{Wiskundig:} De matrix is altijd symmetrisch, volledig gevuld, en elk element op de hoofddiagonaal is strikt positief.
+    \item \textbf{Benodigde data:} Om te kunnen rekenen verwacht de software van jou de oppervlakte ($A$) en de stijfheid ($E$). De lengte ($L$) wordt automatisch uit de knoopcoördinaten van je mesh gehaald.
+    \item \textbf{Toepassingsgebied:} Deze theorie gaat uit van statische belastingen (steady loads) en uitsluitend lineair elastisch materiaalgedrag (kleine verplaatsingen, geen gaps).
+    \item \textbf{Constante eigenschappen:} De aanname is dat de eigenschappen (zoals sectie $A$) constant zijn binnen het element. Gebruik je dit op een taps toelopende balk, dan is de berekening slechts een benadering.
+    \item \textbf{Lasten:} Krachten mogen uitsluitend op de knopen aangrijpen. Een verdeelde belasting in het midden van het element wordt door de software wiskundig benaderd als krachten op de knopen.
+\end{itemize}
+\subsection{Beam elementen (hij gaat hier heel snel over)}
+(Ook deze sectie is vooral door AI gecooked maar ik heb het aangepast en gecontroleerd, AI is zeer handig voor mijn LaTeX code hier en als het toch juist is laat ik het staan, dit deel heeft trouwens geen toledo video)
+\newline
+\newline
+Is het dan ook geldig op beam elementen? Ja. Hier heb je dan hoeken ook. Voor 1D beam elementen wordt de energiemethode iets complexer omdat we nu ook met buiging (rotaties en momenten) te maken hebben. We gebruiken hierbij de kinematische aanname van Bernoulli: een vlakke doorsnede blijft vlak en loodrecht op de neutrale as na vervorming.
+\newline
+\newline
+Hierdoor ontstaat de volgende wiskundige relatie voor de verplaatsing en de rek in de x-richting, waarbij $z$ de verticale afstand tot de neutrale as is (eigelijk de afstand van het punt dat je wilt tot de neutrale as):
+\begin{align*}
+    \hat{u}_x(x, z) &= \hat{u}_{x,rod}(x) -z \frac{d\hat{u}_z(x)}{dx} \\
+    \hat{\epsilon}_x &= \frac{d\hat{u}_x}{dx} = \frac{d\hat{u}_{x,rod}}{dx} -z \frac{d^2\hat{u}_z}{dx^2}
+\end{align*}
+
+\textbf{Stap 1 \& 2: Vormfuncties en Strain-displacement matrix $[B]$} \\
+De verticale verplaatsing $\hat{u}_z$ wordt geïnterpoleerd met de vier vormfuncties ($N_1$ t.e.m. $N_4$) en de vier vrijheidsgraden van het beam-element (twee verplaatsingen $\tilde{u}_z$ en twee rotaties $\tilde{\theta}_y$). 
+Omdat de rek $\hat{\epsilon}_x$ nu afhangt van de \textit{tweede afgeleide} van de verplaatsing, verandert de afgeleide-matrix $[\delta]$ in $-z [\frac{\partial^2}{\partial x^2}]$. De $[B]$ matrix wordt dan de tweede afgeleide van de vormfuncties:
+\begin{align*}
+    \hat{\epsilon}_x &= -z \begin{bmatrix} \frac{\partial^2 N_1}{\partial x^2} & \frac{\partial^2 N_2}{\partial x^2} & \frac{\partial^2 N_3}{\partial x^2} & \frac{\partial^2 N_4}{\partial x^2} \end{bmatrix} \begin{Bmatrix} \tilde{u}_{z1} \\ \tilde{\theta}_{y1} \\ \tilde{u}_{z2} \\ \tilde{\theta}_{y2} \end{Bmatrix} = [B]\begin{Bmatrix} \tilde{u}_{z1} \\ \tilde{\theta}_{y1} \\ \tilde{u}_{z2} \\ \tilde{\theta}_{y2} \end{Bmatrix}
+\end{align*}
+
+\textbf{Stap 3: Constitutieve matrix $[E]$ en de Integratie-truc} \\
+De materiaalmatrix is voor dit 1D-materiaal opnieuw simpelweg $[E] = E$. Als we alles invullen in de algemene formule voor $[k]$, moeten we integreren over het volledige volume $dV$. We splitsen deze volume-integraal slim op in een integraal over de dwarsdoorsnede ($dA$) en een over de lengte ($dx$):
+\begin{align*}
+    [k] &= \int_{\Omega_e} [B]^T [E] [B] dV \\
+    [k] &= \int_{\Omega_e} (-z) \begin{bmatrix} \frac{\partial^2 N_1}{\partial x^2} \\ \vdots \end{bmatrix} E(-z) \begin{bmatrix} \frac{\partial^2 N_1}{\partial x^2} & \dots \end{bmatrix} dV \\
+    [k] &= \int_{L_e} \begin{bmatrix} \frac{\partial^2 N_1}{\partial x^2} \\ \vdots \end{bmatrix} E \begin{bmatrix} \frac{\partial^2 N_1}{\partial x^2} & \dots \end{bmatrix} \left( \int_{A_e} z^2 dA \right) dx
+\end{align*}
+Uit de basismechanica weten we dat de term $\int z^2 dA$ exact de definitie is van het \textbf{oppervlaktetraagheidsmoment $\mathbf{I_y}$}! Dit bewijst wiskundig waarom de FEA-software altijd $I_y$ (en $I_z$ bij 3D) van jou vereist zodra je buiging toelaat. We kunnen dit nu invullen:
+\begin{align*}
+    [k] &= \int_0^L [B]^T E I_y [B] dx
+\end{align*}
+De volgende figuur toont de vormfuncties die we invullen maar de proff zegt dat we deze berekening niet moeten kunnen, ik denk dat dit ook logisch is want kijk dit:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{vormfunctiesbeammatrixflow.png}
+  \caption{Vormfuncties ingevuld in de matrix voor een beam element}
+  \label{fig:vormfunctiesbeammatrixflow.png}
+ \end{figure}
+\textbf{Stap 4: De uiteindelijke Elementstijfheidsmatrix} \\
+Als we de vier vormfuncties daadwerkelijk twee keer afleiden naar $x$, deze matrices met elkaar vermenigvuldigen en de integraal over lengte $L$ berekenen, rolt hier exact de vertrouwde $4 \times 4$ stijfheidsmatrix uit:
+\begin{align*}
+    [k_e] =
+    \begin{bmatrix}
+    12\frac{EI}{L^3} & 6\frac{EI}{L^2} & -12\frac{EI}{L^3} & 6\frac{EI}{L^2} \\
+    6\frac{EI}{L^2} & 4\frac{EI}{L} & -6\frac{EI}{L^2} & 2\frac{EI}{L} \\
+    -12\frac{EI}{L^3} & -6\frac{EI}{L^2} & 12\frac{EI}{L^3} & -6\frac{EI}{L^2} \\
+    6\frac{EI}{L^2} & 2\frac{EI}{L} & -6\frac{EI}{L^2} & 4\frac{EI}{L}
+    \end{bmatrix}
+\end{align*}
+Conclusie: De energiemethode geeft wiskundig een 100\% identiek resultaat als de directe Navier-methode uit hoofdstuk 4 voor lineaire balken, maar dankzij deze nieuwe matrixnotatie is de theorie nu universeel toepasbaar voor complexere vormen.
+\subsection{2D Membraan elementen}
+Bij de overstap naar 2D-elementen (zoals een driehoekig of vierhoekig membraan) kan elke knoop in twee richtingen bewegen: horizontaal ($\tilde{u}_x$) en verticaal ($\tilde{u}_y$). Een membraanelement kan uitsluitend krachten in zijn eigen vlak opnemen en kan dus niet buigen. 
+
+Nemen we het simpelste 2D-element, de driehoek (Tria) met 3 knopen, dan hebben we in totaal $3 \times 2 = 6$ vrijheidsgraden. De vector met knoopverplaatsingen $\tilde{u}$ is dus een $6 \times 1$ kolomvector:
+\begin{align*}
+    \tilde{u} = \begin{Bmatrix} \tilde{u}_{x1} & \tilde{u}_{y1} & \tilde{u}_{x2} & \tilde{u}_{y2} & \tilde{u}_{x3} & \tilde{u}_{y3} \end{Bmatrix}^T
+\end{align*}
+
+\textbf{Stap 1 \& 2: De Strain-displacement matrix $[B]$} \\
+In 2D hebben we drie soorten rek: rek in de x-richting ($\hat{\epsilon}_x = \frac{\partial \hat{u}_x}{\partial x}$), rek in de y-richting ($\hat{\epsilon}_y = \frac{\partial \hat{u}_y}{\partial y}$) en afschuivingsrek in het xy-vlak ($\hat{\gamma}_{xy} = \frac{\partial \hat{u}_x}{\partial y} + \frac{\partial \hat{u}_y}{\partial x}$). De afgeleide-matrix $[\delta]$ is nu een $3 \times 2$ operator, omdat $\{\hat{u}\} = \begin{Bmatrix} \hat{u}_x \\ \hat{u}_y \end{Bmatrix}$ een $2 \times 1$ matrix is, waarmee we de ruimtelijke afgeleiden van de verplaatsing beschrijven:
+\begin{align*}
+    \hat{\epsilon} = \begin{Bmatrix} \hat{\epsilon}_x \\ \hat{\epsilon}_y \\ \hat{\gamma}_{xy} \end{Bmatrix} = \begin{bmatrix} \frac{\partial}{\partial x} & 0 \\ 0 & \frac{\partial}{\partial y} \\ \frac{\partial}{\partial y} & \frac{\partial}{\partial x} \end{bmatrix} \begin{Bmatrix} \hat{u}_x \\ \hat{u}_y \end{Bmatrix} = [\delta]\hat{u}
+\end{align*}
+Als we $\hat{u} = [N]\tilde{u}$ invullen, krijgen we de $[B]$ matrix (welke voor een 3-knoops driehoek een $3 \times 6$ matrix is omdat [N] een $2 \times 6$ matrix is (omdat $\{\tilde{u}\}$ een $6 \times 1$ matrix is en $\{\hat{u}\}$ een $2 \times 1$ matrix is)):
+\begin{align*}
+    \hat{\epsilon} = [\delta][N]\tilde{u} = [B]\tilde{u} = \begin{bmatrix} \frac{\partial}{\partial x} & 0 \\ 0 & \frac{\partial}{\partial y} \\ \frac{\partial}{\partial y} & \frac{\partial}{\partial x} \end{bmatrix} \begin{bmatrix} N_1 & 0 & N_2 & 0 & N_3 & 0 \\ 0 & N_1 & 0 & N_2 & 0 & N_3 \end{bmatrix} \tilde{u} = \begin{bmatrix} \frac{\partial N_1}{\partial x} & 0 & \frac{\partial N_2}{\partial x} & 0 & \frac{\partial N_3}{\partial x} & 0 \\ 0 & \frac{\partial N_1}{\partial y} & 0 & \frac{\partial N_2}{\partial y} & 0 & \frac{\partial N_3}{\partial y} \\ \frac{\partial N_1}{\partial y} & \frac{\partial N_1}{\partial x} & \frac{\partial N_2}{\partial y} & \frac{\partial N_2}{\partial x} & \frac{\partial N_3}{\partial y} & \frac{\partial N_3}{\partial x} \end{bmatrix} \begin{Bmatrix} \tilde{u}_{x1} \\ \tilde{u}_{y1} \\ \vdots \\ \tilde{u}_{y3} \end{Bmatrix}
+\end{align*}
+Met dus $N_1 = 1 - \frac{x}{L_x} - \frac{y}{L_y}$, $N_2 = \frac{y}{L_y}$ en $N_3 = \frac{x}{L_x}$ voor een lineair driehoekig element. 
+\newline
+\textit{Het bepalen van die matrixgroottes is eigelijk redelijk simpel, kijk gewoon naar die Matrix Flow figuur/stappenplan die ik eerder toonde.}
+\newline
+\newline
+\textbf{Stap 3: De Constitutieve matrix $[E]$ (Plane stress vs. plane strain)} \\
+Om van de rek naar de spanning te gaan, hebben we de materiaalmatrix $[E]$ nodig. Voor 2D membraanelementen gebruiken we \textit{plane stress} of \textit{plane strain}, afhankelijk van de geometrie:
+\begin{itemize}
+    \item Een \textbf{dun} object met vrije randen kan benaderd worden door \textit{plane stress}.
+    \item Een \textbf{lang} object met vrije randen kan (weg van de uiteinden) benaderd worden door \textit{generalized plane strain}.
+    \item Een object met een dikte die vergelijkbaar is met de in-plane dimensies, moet als volledig 3D worden beschouwd.
+\end{itemize}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{plainstressvsplainstrain.png}
+  \caption{Plane stress vs. plane strain}
+  \label{fig:plainstressvsplainstrain}
+\end{figure}
+De slides tonen nu veel random formules en symbolen die uit het niks lijken te komen ofzo, bleek dat deze dus uit de 3D wet van Hooke komen, een snelle Google search gaf me deze figuur ter verduidelijking:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{3Dwethooke.png}
+  \caption{3D Wet Hooke}
+  \label{fig:3Dwethooke.png}
+ \end{figure}
+\subsubsection{Plane Strain (Vlakke rek)}
+Hierbij nemen we aan dat er geen rek is in de z-richting ($\epsilon_z = 0$). We vertrekken vanuit de 3D wet van Hooke voor lineair elastische materialen:
+\begin{align*}
+  \sigma_x &= \frac{E}{1+\nu} \left( \epsilon_x + \frac{\nu}{1-2\nu}(\epsilon_x + \epsilon_y + {\color{red}\epsilon_z}) \right) & \tau_{xy} &= 2G\gamma_{xy} \\
+  \sigma_y &= \frac{E}{1+\nu} \left( \epsilon_y + \frac{\nu}{1-2\nu}(\epsilon_x + \epsilon_y + {\color{red}\epsilon_z}) \right) & {\color{red}\tau_{xz} = 2G\gamma_{xz} = 0} \\
+  \sigma_z &= \frac{E}{1+\nu} \left( {\color{red}\epsilon_z} + \frac{\nu}{1-2\nu}(\epsilon_x + \epsilon_y + {\color{red}\epsilon_z}) \right) = \nu(\sigma_x + \sigma_y) & {\color{red}\tau_{yz} = 2G\gamma_{yz} = 0}
+\end{align*}
+Voor isotrope materialen geldt $G = \frac{E}{2(1+\nu)}$ (Isotroop betekent dat de materiaaleigenschappen in alle richtingen gelijk zijn). Dit omzetten naar matrixvorm geeft de constitutieve matrix $[E]$ voor plane strain:
+\begin{align*}
+    \hat{\sigma} = \begin{Bmatrix} \hat{\sigma}_x \\ \hat{\sigma}_y \\ \hat{\tau}_{xy} \end{Bmatrix}
+    = \frac{E}{(1+\nu)(1-2\nu)} \begin{bmatrix} 1-\nu & \nu & 0 \\ \nu & 1-\nu & 0 \\ 0 & 0 & \frac{1-2\nu}{2} \end{bmatrix} \begin{Bmatrix} \hat{\epsilon}_x \\ \hat{\epsilon}_y \\ \hat{\gamma}_{xy} \end{Bmatrix} = [E]\hat{\epsilon}
+\end{align*}
+(Je kan dit is proberen oplossen als je dit niet snapt, je zult zien dat je normaal de formules die hierboven vermeld staan uitkomt)
+\subsubsection{Plane Stress (Vlakke spanning)}
+Hierbij nemen we aan dat er geen spanning heerst in de z-richting ($\sigma_z = 0$). We vertrekken opnieuw van de 3D wet van Hooke:
+\begin{align*}
+    \sigma_x &= \frac{E}{1+\nu} \left( \epsilon_x + \frac{\nu}{1-2\nu}(\epsilon_x + \epsilon_y + \epsilon_z) \right) & \tau_{xy} &= 2G\gamma_{xy} \\
+    \sigma_y &= \frac{E}{1+\nu} \left( \epsilon_y + \frac{\nu}{1-2\nu}(\epsilon_x + \epsilon_y + \epsilon_z) \right) & \tau_{xz} &= {\color{red}2G\gamma_{xz} = 0} \\
+    \sigma_z &= {\color{red}\frac{E}{1+\nu} \left( \epsilon_z + \frac{\nu}{1-2\nu}(\epsilon_x + \epsilon_y + \epsilon_z) \right) = 0} & \tau_{yz} &= {\color{red}2G\gamma_{yz} = 0}
+\end{align*}
+Dit omzetten naar matrixvorm geeft de constitutieve matrix $[E]$ voor plane stress:
+\begin{align*}
+    \hat{\sigma} = \begin{Bmatrix} \hat{\sigma}_x \\ \hat{\sigma}_y \\ \hat{\tau}_{xy} \end{Bmatrix}
+    = \frac{E}{1-\nu^2} \begin{bmatrix} 1 & \nu & 0 \\ \nu & 1 & 0 \\ 0 & 0 & \frac{1-\nu}{2} \end{bmatrix} \begin{Bmatrix} \hat{\epsilon}_x \\ \hat{\epsilon}_y \\ \hat{\gamma}_{xy} \end{Bmatrix} = [E]\hat{\epsilon}
+\end{align*}
+Deze 2 zijn dus opties die je kan aanduiden in NX, typisch wil je plane stress gebruiken voor dunne platen en plane strain voor dikke structuren.
+\newline
+\textbf{Stap 4: De Elementstijfheidsmatrix $[k]$} \\
+We stoppen alle componenten in de algemene energie-integraal voor de stijfheidsmatrix:
+\begin{align*}
+    [k] = \int [B]^T [E] [B] dV
+\end{align*}
+
+\textit{Eigenschappen en beperkingen van deze matrix:}
+\begin{itemize}
+    \item De matrix is symmetrisch, met uitsluitend positieve elementen op de hoofddiagonaal.
+    \item \textbf{Benodigde elementeigenschappen:} {\color{green}\textbf{Dikte}} ($dV = {\color{green}t} \cdot dA$), E-modulus, G-modulus, Poisson-coëfficiënt (slechts 2 hiervan nodig bij isotrope materialen) en de elementlengte.
+    \item De theorie gaat uit van statische belastingen (steady loads) en lineair-elastisch materiaal.
+    \item De elementeigenschappen moeten constant zijn binnen het element (voor lineaire elementen).
+    \item Krachten kunnen uitsluitend op de knopen worden aangebracht (dit levert een benaderde oplossing voor verdeelde belastingen).
+\end{itemize}
+\subsection{Isoparametrische elementen}
+In de praktijk hebben elementen in een mesh een willekeurige vorm (\textit{general shape}). Omdat de vormfuncties voor elk willekeurig element anders zouden zijn, wordt het wiskundig oplossen van de integraal voor alle elementen apart extreem zwaar voor de computer.
+\newline
+\newline
+Om dit op te lossen, gebruikt men isoparametrische elementen. Elk willekeurig element uit de mesh wordt wiskundig "gemapt" (getransformeerd) naar één perfect, imaginair referentie-element in een \textit{natural coordinate system} (een lokaal niet-orthogonaal assenstelsel met assen $\xi$ en $\eta$ die lopen van -1 tot 1).
+\newline
+\newline
+Hierdoor ontstaat er een zeer eenvoudige uitdrukking voor de vormfuncties en hun afgeleiden. Deze vormfuncties zijn \textbf{identiek voor alle imaginaire elementen}  (Dat is dus veel simpeler voor de computer). Voor een vierhoek is dit bijvoorbeeld:
+\begin{align*}
+    N_1 &= \frac{1}{4}(1-\xi)(1-\eta) & N_2 &= \frac{1}{4}(1+\xi)(1-\eta) \\
+    N_3 &= \frac{1}{4}(1+\xi)(1+\eta) & N_4 &= \frac{1}{4}(1-\xi)(1+\eta)
+\end{align*}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{transformatienaaretaxiassenstelsel.png}
+  \caption{Transformatie van een willekeurig element naar een standaard vierhoek in het $\xi-\eta$ assenstelsel}
+  \label{fig:transformatienaaretaxiassenstelsel.png}
+ \end{figure}
+Je zou dus nu wel logisch denken als je je afvraagt hoe de computer dan onderscheid maakt tussen de verschillende vormen die elementen kunnen hebben nu, want sommigen kunnen bvb. een vierkant vorm zijn terwijl andere een trapezium vorm kunnen hebben, daarom introduceren we de 'Jacobian matrix'.
+\subsubsection{De Jacobian matrix $[J]$}
+Omdat de $[\delta]$ matrix (en dus de $[B]$ matrix) afgeleiden naar $x$ en $y$ bevat, maar we nu in een $\xi-\eta$ stelsel werken, hebben we een relatie nodig tussen de gradiënten van beide assenstelsels. Om de afgeleiden te vertalen, gebruikt de software een transformatiematrix genaamd de \textbf{Jacobian matrix $[J]$}:
+\begin{align*}
+    \begin{Bmatrix} \frac{\partial}{\partial \xi} \\ \frac{\partial}{\partial \eta} \end{Bmatrix} = \begin{bmatrix} \frac{\partial x}{\partial \xi} & \frac{\partial y}{\partial \xi} \\ \frac{\partial x}{\partial \eta} & \frac{\partial y}{\partial \eta} \end{bmatrix} \begin{Bmatrix} \frac{\partial}{\partial x} \\ \frac{\partial}{\partial y} \end{Bmatrix} = [J] \begin{Bmatrix} \frac{\partial}{\partial x} \\ \frac{\partial}{\partial y} \end{Bmatrix}
+\end{align*}
+Met:
+\begin{align*}
+    \frac{\partial x}{\partial \xi} &= \sum_{i=1}^n \frac{\partial N_i}{\partial \xi} x_i & \frac{\partial y}{\partial \xi} &= \sum_{i=1}^n \frac{\partial N_i}{\partial \xi} y_i \\
+    \frac{\partial x}{\partial \eta} &= \sum_{i=1}^n \frac{\partial N_i}{\partial \eta} x_i & \frac{\partial y}{\partial \eta} &= \sum_{i=1}^n \frac{\partial N_i}{\partial \eta} y_i
+\end{align*}
+Dus $x_i$ en $y_i$ zijn de coördinaten van de knopen van het element in het fysieke (x-y) assenstelsel, en $\frac{\partial N_i}{\partial \xi}$ en $\frac{\partial N_i}{\partial \eta}$ zijn de afgeleiden van de vormfuncties naar de natuurlijke coördinaten. Deze Jacobian matrix vertelt ons hoe we moeten schalen en roteren om van het $\xi-\eta$ stelsel naar het x-y stelsel te gaan, en is essentieel voor het correct berekenen van de stijfheidsmatrix.
+\subsubsection{De nieuwe Elementstijfheidsmatrix $[k]$}
+De uiteindelijke integraal wordt nu berekend in het $\xi-\eta$ assenstelsel, waarbij de grenzen simpelweg van -1 tot 1 lopen. Hierbij komt wel een extra term kijken: we moeten vermenigvuldigen met de \textbf{determinant van de Jacobian matrix ($\det([J])$)}:
+\begin{align*}
+    [k] = \int_{-1}^{+1} \int_{-1}^{+1} [B]^T [E] [B] \det([J]) \, d\xi d\eta
+\end{align*}
+We moeten niet weten hoe exact deze jacobian matrix perfect werkt, we moeten gewoon weten dat vormfuncties per element berekenen en integreren te veel werk kost dus we eerst versimpelen naar een standaard element ('mappen' eigelijk) en dan vermenigvuldigen met die jacobian matrix determinant (die eigelijk zegt hoeveel uitgerokken zo een element word om het te doen matchen met die oorspronkelijke vormfuncties).
+\subsubsection{Beperking: Alleen voor convexe elementen!}
+Deze mapping werkt uitsluitend voor \textbf{convexe elementen} (elementen waarbij de diagonalen elkaar binnen het element snijden). Het principe kan niet worden toegepast op non-convexe of concave elementen (elementen met een interne hoek groter dan $180^\circ$). Bij zulke slecht gevormde elementen zou één fysiek punt meerdere $\xi$ of $\eta$ coördinaten krijgen, waardoor de mapping onmogelijk wordt. Dit verklaart tevens waarom de $\det([J])$ term bepaalt of een element goede of slechte FEM-resultaten oplevert, en waarom de software weigert te rekenen met te sterk vervormde elementen.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{nietconvexelement.png}
+  \caption{Niet convex element, dit heeft 2 mogelijke $\xi$ of $\eta$ coördinaten voor hetzelfde fysieke punt, waardoor de mapping onmogelijk wordt}
+  \label{fig:nietconvexelement.png}
+ \end{figure}
+\subsection{Plate en shell elementen}
+Tot nu toe zagen we membraam elementen, deze kunnen enkel krachten in hun eigenvlak opnemen en daarin bewegen, plate elementen kunnen enkel buiging opnemen (tegenovergesteld van membraam eigelijk), deze kunnen dus enkel UIT het vlak bewegen (heeft dus maar 3 dof's; 2 rotaties in het vlak ($\theta_x$ en $\theta_y$) en een beweging uit het vlak $u_z$), een shell element is de combinatie van deze 2, het kan zowel 'in-plane' krachten opnemen als 'out-of-plane' doorbuigen. Dit krijgt dus de volle 6 dof's per knoop.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{overzichtmembrameplateshellng.png}
+  \caption{Overzicht membraam, plate en shell elementen}
+  \label{fig:overzichtmembrameplateshellng.png}
+ \end{figure}
+De plaat wordt door de computer niet in 3D gemodelleerd maar 2D om rekentijd te besparen, dit vlak dat we gebruiken bevind zich exact in het midden van de plaat en noemen we het 'midsurface', de dikte t van de plaat geef je achteraf in.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{3Dnaar2Dendofsplaat.png}
+  \caption{3D naar 2D en dof's van een plaat element}
+  \label{fig:3Dnaar2Dendofsplaat.png}
+ \end{figure}
+Net zoals een buigende 1D-balk een neutrale vezel heeft, heeft een 2D-plaat een neutraal vlak (het midsurface of middenvlak). Punt A uit de volgende figuur bevindt zich exact op dit middenvlak, wat betekent dat de buigspanning daar altijd nul is (over dat vlak). Omdat een plaat tweedimensionaal is, ontstaan er roterende effecten oftewel buigmomenten; de software berekent deze momenten rechtstreeks aan de hand van de interne spanningen en de fysieke dikte (t) van de plaat. Om dit alles wiskundig op te lossen, maakt de software gebruik van Kirchhoff's aanname, wat simpelweg de 2D-variant is van de Bernoulli-theorie voor balken. Kirchhoff stelt dat een dwarsdoorsnede die oorspronkelijk vlak en loodrecht op het neutrale vlak stond, ook ná de buiging perfect vlak en loodrecht blijft staan. Het geniale aan deze aanname is dat we hierdoor geen zwaar, rekenintensief 3D-blok hoeven te modelleren. De software kan de buiging dankzij deze regel perfect simuleren op een flinterdun 2D-oppervlak, wat enorm veel rekentijd bespaart.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{3Dplaatkirchoofff.png}
+  \caption{Kirchoff's theorie}
+  \label{fig:3Dplaatkirchoofff.png}
+ \end{figure}
+Dus de fundamentel aanname dat we maken is \textit{'dat een dwarsdoorsnede die VOOR de vervorming vlak en loodrecht op het neutrale vlak stond, ook NA de vervorming er perfect vlak en loodrecht op blijft staan'}, dit zorgt ervoor dat de dwarskrachtafschuiving terug genegeerd wordt (wat ook zo was bij die balk, bedenk je terug een boek dat je buigt, de papieren schuiven over elkaar, hier is dat NIET dus het uiteinde doorsnede blijft loodrecht op het middenvlak), EN ook dat er geen spanning is in het middenvlak (want is een neutraal vlak eh). We gaan hier zeggen dat die theorie enkel geldig is bij \textbf{dunne platen}, waarbij de verhouding tussen de lengte en de dikte groter is dan 10, dus $L/t > 10$. Bij dikkere platen gebruiken we een andere theorie zoals 'Mindlin' (waar we niet op in gaan). Bij gekromde platen moet je met 'Shell theory' werken.
+\newline
+\newline
+Als we dit nu wiskundig gaan uitschrijven om de elementstijfheidsmatrix te vinden moeten we dus de spanningen hebben. We bekijken eerst volgende figuur (dat Wim of course weer in de meest shitty kwaliteit op zijn slide heeft gezet):
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{doorsnedebuigendeplaat.png}
+  \caption{Doorsnede buigende plaat}
+  \label{fig:doorsnedebuigendeplaat.png}
+ \end{figure}
+Door de aanname van kirchoff, hangt de horizontale verplaatsing van een willekeurig punt P af van de verticale afstand van het middenvlak (z) en de hoek waaronder de plaat gebogen is (dwz de rotatie $\theta$). De formule hiervoor is:
+\begin{align*}
+    {u}_x(x, y, z) = -z \theta = -z \frac{\partial u_z(x, y)}{\partial x} \\
+    {u}_y(x, y, z) = -z \frac{\partial u_z(x, y)}{\partial y}
+\end{align*}
+Ook hier kunnen we dit dus omzetten naar rek:
+\begin{align*}
+    \epsilon_x &= \frac{\partial u_x}{\partial x} = -z \frac{\partial^2 u_z}{\partial x^2} \\
+    \epsilon_y &= \frac{\partial u_y}{\partial y} = -z \frac{\partial^2 u_z}{\partial y^2} \\
+    \gamma_{xy} &= \frac{\partial u_x}{\partial y} + \frac{\partial u_y}{\partial x} = -2z \frac{\partial^2 u_z}{\partial x \partial y}
+\end{align*}
+Om van rek naar spanning te gaan gebruikt de software terug de materiaalmatrix, bij plaatelementen geldt 'plane stress' ($\sigma_z = 0$), dus gebruiken we terug de 3D-wet van Hooke voor plane stress:
+\begin{align*}
+    \sigma_x &= \frac{E}{1-\nu^2} \epsilon_x - \frac{E\nu}{1-\nu^2} \epsilon_y = -\frac{zE}{1-\nu^2}  \frac{\partial^2 u_z}{\partial x^2} -\frac{\nu zE}{1-\nu^2} \frac{\partial^2 u_z}{\partial y^2} \\
+    \sigma_y &= \frac{E}{1-\nu^2} \epsilon_y - \frac{E\nu}{1-\nu^2} \epsilon_x = -\frac{zE}{1-\nu^2}  \frac{\partial^2 u_z}{\partial y^2} -\frac{\nu zE}{1-\nu^2} \frac{\partial^2 u_z}{\partial x^2} \\
+    \tau_{xy} &= 2G\gamma_{xy} = -2Gz \frac{\partial^2 u_z}{\partial x \partial y}
+\end{align*}
+(Ik heb geen idee of deze complexe berekeningen/formules te kennen zijn)
+\subsection{3D solid elementen}
+Nu zullen we het is hebben over 3D solid elementen, wat hier belangrijk te weten is, is dat die aannames dat we eerder zagen hier eigelijk gewoon vervallen, die zijn ni meer nodig. We nemen volgend element als voorbeeld (met 4 knopen, we negere die blauwe extra knopen dat je in principe ook kan hebben, dit geeft gewoon grotere matrices maar het principe blijft hetzelfde):
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{3Delemennttt.png}
+  \caption{3D Element}
+  \label{fig:3Delemennttt.png}
+ \end{figure}
+We willen dus ook hier uiteindelijk de stijfheidsmatrix $[k]$ vinden, hiervoor moeten we terug de algemene formule gebruiken:
+\begin{align*}
+    [k] = \int_{\Omega_e} [B]^T [E] [B] dV
+\end{align*}
+In de volgende figuur heb ik de Matrix Flow voor dit 3D solid element getekend, dit is exact dezelfde als de toledo video (ik raad deze aan te zien als je niet snapt wat ik hier allemaal schrijf):
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{matrixflow3dtoledovideo.png}
+  \caption{Matrix Flow 3D}
+  \label{fig:matrixflow3dtoledovideo.png}
+ \end{figure}
+We hebben dus per knoop 3 vrijheidsgraden ($\tilde{u}_x$, $\tilde{u}_y$ en $\tilde{u}_z$), dus in totaal $4 \times 3 = 12$ vrijheidsgraden. De vector met knoopverplaatsingen $\tilde{u}$ is dus een $12 \times 1$ kolomvector. We weten dat we voor $\hat{u}$ een $3 \times 1$ matrix hebben, dus de $[N]$ matrix is een $3 \times 12$ matrix. De $[\delta]$ matrix is een $6 \times 3$ matrix, omdat we nu 6 soorten rek hebben (3 normale rekken en 3 afschuivingsrekken) en $\{\hat{u}\}$ nog steeds een $3 \times 1$ matrix is. Hierdoor wordt de $[B]$ matrix een $6 \times 12$ matrix. De materiaalmatrix $[E]$ voor een isotroop materiaal in 3D is een $6 \times 6$ matrix. Wanneer we deze matrices invullen in de integraal voor de stijfheidsmatrix, krijgen we uiteindelijk een $12 \times 12$ stijfheidsmatrix voor het element.
+\newline
+\newline
+Ik denk niet dat dit belangrijk is, maar dit is dus hoe die materiaalmatrix $[E]$ er in 3D uitziet:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{materiaalmatrix3D.png}
+  \caption{Materiaalmatrix 3D}
+  \label{fig:materiaalmatrix3D.png}
+ \end{figure}
+Wiskundig gezien is de matrix $[k]$ die we behalen dan symmetrisch en heeft deze positieve getallen op de hoofddiagonaal, eigelijk zijn de enigste element eigenschappen die je moet ingeven puur materiaal-gebaseerd, in tegenstelling tot 1D waar je A moet geven of 2D waar je t moet geven. Dus alleen E-modules, G-modulus en de Poisson-coëfficiënt, en omdat het dus om isotrope materialen gaat, zijn er hier maar 2 van nodig. Echter kan de computer deze matrix alleen simpel houden bij de volgende aannames over de situatie:
+\begin{itemize}
+    \item Statische belastingen (steady loads), dus geen trillingen of impacts
+    \item Lineair-elastisch materiaal, het materiaal gedraagt zich perfect lineair elastisch, volgens Hooke
+    \item Elementeigenschappen moeten constant zijn binnen het element (voor lineaire elementen)
+    \item Krachten kunnen uitsluitend op de knopen worden aangebracht (dit levert een benaderde oplossing voor verdeelde belastingen)
+\end{itemize}
+\subsection{Axisymmetrische elementen}
+Dit is iets wat we nog niet eerder behandelt hebben, dit kunnen we gebruiken om veel elementen en knopen uit te sparen, het brengt eigelijk een 3D-probleem terug naar een 2D-probleem. Dit pas je toe bij 3D objecten waarvan de vorm perfect rotatiesymmetrisch is rond een as. Je gebruikt een eigenschap van axi-symmetrie om het 3D probleem te reduceren tot een 2D simpel vlak (een 2D dwarsdoorsnede van het object) en je laat de software dit vlak virtueel rond de as roteren om zo de 3D structuur te berekenen.
+\newline
+\newline
+Omdat we hier met rotatie rond een as werken gebruiken we geen cartesisch (x, y, z) assenstelsel maar gebruikt de software \textbf{cilindrische coordinaten} (r, z, $\theta$). De knopen van de dwarsdoorsnede hebben dus 2 dof's per knoop, namelijk de verplaatsing in de radiale richting (naar buiten toe) ($u_r$) en verplaatsing in de axiale richting (omhoog/omlaag langs de as) ($u_z$). Door de perfecte symmetrie mag het materiaal wel niet rondom de as wegdraaien dus moet de verplaatsing in de azimutale (omtrek) richting 0 zijn ($\hat{u}_\theta = 0$).
+\newline
+\newline
+Echter hebben we wel rek in deze richting! Kijk de volgende figuur:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{doorsnedering.png}
+  \caption{De ring met de doorsnede}
+  \label{fig:doorsnedering.png}
+ \end{figure}
+Als we naar die doorsnede vanonder kijken zien we dat da gewoon 2 vierkanten zijn precies.
+\newline
+\newline
+Maar als we langs de bovenkant gaan kijken (met infitisimale kleine incrementen van de hoek want eigelijk werken we 2D) zien we dat de buitenste omtrek van de ring (die een dikte heeft) een langere lengte heeft dan de binnenste ring:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\textwidth]{infitesimaledoorsnedebovenaanzicht.png}
+  \caption{Infinitesimale doorsnede van bovenaanzicht}
+  \label{fig:infitesimaledoorsnedebovenaanzicht.png}
+ \end{figure}
+Hier in is $a_0 = r d\theta$ en na aan de buitenkant is dit groter met $a = (r + u_r) d\theta$. Dit betekent dat er rek is in de omtrek richting, namelijk:
+\begin{align*}
+    \hat{\epsilon}_\theta = \frac{a - a_0}{a_0} = \frac{(r + u_r) d\theta - r d\theta}{r d\theta} = \frac{u_r}{r}
+\end{align*}
+Dus hoewel we dit model als een 2D-vlak tekenen, heeft een axisymmetrisch element geen 3 maar 4 rekcomponenten en daarom dus ook 4 spanningscomponenten (Het is dus geen standaard 2D-element):
+\begin{align*}
+    \hat{\epsilon} = \begin{Bmatrix} \hat{\epsilon}_r \\ \hat{\epsilon}_z \\ \hat{\epsilon}_\theta \\ \hat{\gamma}_{rz} \end{Bmatrix} 
+\end{align*}
+De verplaatsingen binnen het element worden trouwens als volgt berekend:
+\begin{align*}
+\begin{Bmatrix} 
+\hat{u}_r \\ 
+\hat{u}_z 
+\end{Bmatrix} = 
+\begin{bmatrix} 
+N_1 & 0 & N_2 & 0 & \dots \\ 
+0 & N_1 & 0 & N_2 & \dots 
+\end{bmatrix} 
+\begin{Bmatrix} 
+\tilde{u}_{r1} \\ 
+\tilde{u}_{z1} \\ 
+\tilde{u}_{r2} \\ 
+\tilde{u}_{z2} \\ 
+\vdots 
+\end{Bmatrix}
+\end{align*}
+En dus is het belangrijk om te weten dat ookal is $\hat{u}_\theta = 0$, dit niet betekent dat $\hat{\epsilon}_\theta = 0$! De rekken worden als volgt berekend:
+\begin{align*}
+    \hat{\epsilon}_r = \frac{\partial \hat{u}_r}{\partial r} \quad ; \quad
+    \hat{\epsilon}_z = \frac{\partial \hat{u}_z}{\partial z} \quad ; \quad
+    \hat{\epsilon}_\theta = \frac{\hat{u}_r}{r} \quad ; \quad
+    \hat{\gamma}_{rz} = \frac{\partial \hat{u}_r}{\partial z} + \frac{\partial \hat{u}_z}{\partial r} \quad ; \quad
+    \hat{\gamma}_{r\theta} = 0 \quad ; \quad
+    \hat{\gamma}_{z\theta} = 0
+\end{align*}
+Op de slides staat er ook een tabel die toont hoeveel rekenkracht deze theorie bespaart, het toont hoe $\tilde{q}$, $\hat{\epsilon}$ en $[B]$ in grootte krimpen (met N, het aantal knopen per element):
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Matrix} & \textbf{Grootte (Volledig 3D)} & \textbf{Grootte (Axisymmetrisch)} \\ \hline
+$\tilde{q}$ & $3N \times 1$ & $2N \times 1$ \\ \hline
+$\hat{\epsilon}$ & $6 \times 1$ & $4 \times 1$ \\ \hline
+$[B]$ & $6 \times 3N$ & $4 \times 2N$ \\ \hline
+\end{tabular}
+\end{table}
+En omdat we in cillindrische coordinaten werken wordt de integraal voor $[k]$ een beetje aangepast:
+\begin{align*}
+[k] = \int [B]^T [E] [B] r \, dr \, d\theta \, dz
+\end{align*}
+Let op voor die r daar!
+\newline
+\newline
+En dan wordt ook nog de volgende tabel getoond van hoe $[E]$ en $[k]$ krimpen:
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Matrix} & \textbf{Grootte (Volledig 3D)} & \textbf{Grootte (Axisymmetrisch)} \\ \hline
+$[E]$ & $6 \times 6$ & $4 \times 4$ \\ \hline
+$[k]$ & $3N \times 3N$ & $2N \times 2N$ \\ \hline
+\end{tabular}
+\end{table}
+\subsection{Overview van 1D, 2D en 3D elementen met alleen translatie dof's}
+De proff toont hier gewoon een paar tabellen en zegt dat deze uiterst belangrijk zijn om te kennen want dit kan een theorievraag op het examen zijn!
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{generaldefinitions.png}
+  \caption{}
+  \label{fig:generaldefinitions.png}
+ \end{figure}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{definitiosnelementtypes.png}
+  \caption{}
+  \label{fig:definitiosnelementtypes.png}
+ \end{figure}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{definitionsboundaryconditions.png}
+  \caption{}
+  \label{fig:definitionsboundaryconditions.png}
+ \end{figure}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{matrixflowoverzicht.png}
+  \caption{}
+  \label{fig:matrixflowoverzicht.png}
+ \end{figure}
+\chapter{Hybride meshes en Multi-Point Constraints (MPC's)}
+We hebben nu 1D, 2D en 3D meshes/elementen gezien, in de praktijk zijn constructies vaak te complex om met slechts 1 type te werken, daarom zou je ervoor kunnen kiezen om met 'hybrid meshes' te werken, deze combineren verschillende types. Door slim gebruik te maken van 1D en 2D elementen ipv alles in 3D kan je nog steeds dezelfde spanningen behouden en gigantisch veel rekentijd besparen. (Je kan dus wel altijd in 3D werken maar dit is te rekenintensief)
+\newline
+\newline
+In de volgende tabel zie je een voorbeeld van hoe een balk is gemodelleerd met een 1D mesh, een 2D mesh en een 3D mesh, je ziet hier dat de spanning zo goed als het zelfde in alle gevallen is, en ook de verplaatsing maar dat de 3D mesh gigantisch veel meer knopen en elementen heeft. (Je ziet hier ook dat de analytische methode toevallig dezelfde uitkomst heeft als het 1D model, maar dit moet je echter 'met een korrel zout nemen' omdat dat analytisch model met Navier is uitgewerkt wat dus eerder voor een ideal geval is, in de praktijk zal dit dus niet altijd zo zijn).
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{tabel1D2D3D.png}
+  \caption{Tabel met vergelijking van 1D, 2D en 3D mesh voor een balk, met de spanning, verplaatsing, aantal knopen en elementen}
+  \label{fig:tabel1D2D3D.png}
+ \end{figure}
+Typisch ga je 1D elementen gebruiken als 1 van de dimensies veel groter is dan de andere 2 (zoals bij balken), 2D elementen als 1 van de dimensies veel kleiner is dan de andere 2 (zoals bij platen) en 3D elementen als alle dimensies ongeveer gelijk zijn (zoals bij blokken). Er zijn ook nog andere type elementen zoals puntmassas, veren, dempers, 'gaps' (die kunnen openen en sluiten) en 'rigids' (die punten aan elkaar koppelen zoals RBE2 en RBE3) en 'Welds'.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.55\textwidth]{voorbeeldhybridemesh.png}
+  \caption{Voorbeeld hybride mesh}
+  \label{fig:voorbeeldhybridemesh.png}
+ \end{figure}
+In de figuur hierboven zie je (linkse model in 3D) een voorbeeld van een hybride mesh, het rechter model bestaat uit een combinatie van een plaat en 2 1D rods, je ziet dat het rood gearceerde bij beide model ongeveer hetzelfde is, dus de spanningen zijn ongeveer hetzelfde. Andere voorbeelden kunnen volgende zijn:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{voorbeeldenhybridemeshes.png}
+  \caption{Nog voorbeelden}
+  \label{fig:voorbeeldenhybridemeshes.png}
+ \end{figure}
+Je ziet daarboven bvb. een brug die is gemodelleerd met 1D rods en dan een plaat als wegdek ofzo. Dat dak van dat station of luchthaven ofzo linksboven kan dan met 2D en de supports die het omhoog houden met 1D. Dieper ga ik hier niet op in, tis gewoon logisch.
+\subsection{De problemen met hybride meshes}
+\subsubsection{Verschillende vrijheidsgraden}
+Verschillende elementen hebben verschillende soorten knopen (andere hoeveelheden vrijheidsgraden), deze kun je niet zomaar aan elkaar lijmen, je krijgt incompatibiliteiten.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{combinerenvanverschillendeelementen.png}
+  \caption{1D turbine blade op een 2D turbine disc}
+  \label{fig:combinerenvanverschillendeelementen.png}
+ \end{figure}
+De disc is een membraan, deze heeft geen rotaties, terwijl de blade een beam is, deze heeft wel rotaties. Je kan deze dus niet zomaar aan elkaar koppelen, je krijgt incompatibiliteiten. Om dit op te lossen gebruiken we \textbf{'Multi-Point Constraints' (MPC's).} Oftewel 'glue randvoorwaarden'.
+\subsubsection{Geometrische gaten (Gaps)}
+Grote problemen zijn dat de mesh die wordt gegenereerd bij een 1D element wiskundig op zijn neutrale as ligt, en bij een 2D element de mesh in het middenvlak zit (de midsurface), dit zorgt ervoor dat bij het combineren van deze elementen er geometrische gaten ontstaan (gaps) in je model. Kijk eens naar de volgende figuur:
+\begin{figure}[H] 
+\centering
+  \includegraphics[width=0.8\textwidth]{gaps.png}
+  \caption{Gaps}
+  \label{fig:gaps.png}
+ \end{figure}
+Links zie je een verticale buis, de 1D mesh ligt dus op die neutrale as maar heeft dus een diameter in de werkelijkheid, als je deze op de 2D plaat brengt dan breng je eigelijk alle krachten over op exact 1 knooppunt, dit creëert een onrealistische puntlast. Dit kan je oplossen met een RBE3 element, dit is een wiskundig spinnenweg dat de puntlast daar zachtjes uitsmeert over de omliggende knopen, zo vermijd je spanningspieken. De gele mesh daar toont een ander alternatief waar je de werkelijke diamter van de buis als een cirkelvormig gat ui de 2D mesh snijd en dan met RBE2 elementen (zijn perfect stijf) de overgebleven knopen op de rand van dit gat koppeld aan de 1D lijn, wat de stijve voetafdruk van de buis nabootst.
+\newline
+\newline
+Rechts op de figuur zie je 2 platen op elkaar, omdat de meshes op hun mid surface liggen raken die meshes eigelijk niet, in principe kan je deze doen overlappen maar dan tel je eigelijk foutief dubbele massa en extra stijfheid op. Wat wordt gedaan is een soort van 'las' met RBE2 elementen hier, wat je dan ziet op die uiterst rechtse tekening.
+\subsubsection{Verschillende ordes van vormfuncties}
+Elementen die gemaakt zijn om te buigen (zoals 1D-beams of 2D-plates) gebruiken complexe 3e-orde vormfuncties en steunen op aannames uit de theorie van Bernoulli of Kirchhoff
+. Elementen die enkel ontworpen zijn voor trek/druk krachten in hun eigen vlak (zoals membranen) gebruiken veel simpelere 1e-orde vormfuncties zonder die buigingsaannames
+.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{verschillendeordesglueneprobleem.png}
+  \caption{Hogere orde + lagere orde}
+  \label{fig:verschillendeordesglueneprobleem.png}
+ \end{figure}
+Als je een 3e-orde buigend element direct vastknoopt aan een 1e-orde element met enkel axiale krachten, ontstaat er een fysische of geometrische incompatibiliteit
+. De rand van het buigende element wil vervormen als een curve, terwijl de rand van het andere element kaarsrecht wil blijven
+. Om deze theorieën en elementen toch vlekkeloos te laten samenwerken, los je de incompatibiliteit op door ze te koppelen met stijve RBE2-elementen, of door wiskundige vergelijkingen op te stellen: de Multi-Point Constraints (MPC)
+.
+\subsection{Multi-Point Constraints (MPC's)}
+Een \textbf{Multi-Point Constraint (MPC)} is een wiskundige vergelijking in de eindige-elementensoftware die de beweging van bepaalde knopen aan elkaar vastklikt. Het werkt altijd volgens een \textbf{Master/Slave principe}: je wijst onafhankelijke 'Master'-knopen aan wiens beweging door het systeem berekend wordt, en afhankelijke 'Slave'-knopen die wiskundig gedwongen worden om exact te volgen wat de Master doet.
+
+MPC's worden in de software voor exact drie doeleinden gebruikt:
+
+\subsubsection*{1. Het koppelen van elementen met verschillende vrijheidsgraden (DOFs)}
+Wanneer je elementen koppelt die fundamenteel andere vrijheidsgraden hebben (zoals een beam die kan roteren aan een membraan dat dit niet kan), gebruik je een MPC om deze wiskundig compatibel te maken. 
+
+\textbf{Voorbeeld (Turbineblad op een schijf):} Een turbineblad (1D) roteert in knoop 1 over een hoek $\tilde{\theta}_{z1}$. De onderliggende schijf (2D) snapt enkel translaties. Via de MPC laten we de Y-verplaatsing van de afhankelijke slave-knopen A en B op de schijf wiskundig beïnvloeden door de rotatie van master-knoop 1. Als knoop 1 roteert over afstand $a$, vertaalt de MPC dit in een verticale verschuiving voor knoop A en B.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{voorbeeldlesenvideo.png}
+  \caption{1D beam op 2D membraan (die buitenste 4 knopen zijn perongeluk een andere kleur, dit betekent niks)}
+  \label{fig:voorbeeldlesenvideo.png}
+ \end{figure}
+Omdat we beschouwen dat die hoeken klein zijn, schrappen we die tangens. Wat je ook hier trouwens kan doen is een overlap toevoegen (wat wel massa toevoegt wat niet goed is eigelijk), dit is dat element van knoop 1 en knoop 0, anders ga je de situatie hebben in de linkse figuur hieronder:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{2situatiesgluenbeamaanmembraan.png}
+  \caption{2 situaties: links zonder overlap, rechts met overlap}
+  \label{fig:2situatiesgluenbeamaanmembraan.png}
+ \end{figure}
+\begin{warningbox}[Hier wordt dat wel niet toegepast!]
+  Hoewel ik die overlap op die tekening heb getekend wordt dat niet toegepast, het hele ding van die tekening/die berekening hier is om die overlap juist te vermijden, daarom heb ik ook die knoop met 0 aangeduid, eigelijk hoort die er niet bij, soms in de praktijk wordt het gewoon gedaan maar deze MCP toevoegen en die matrix berekenen dat we nu gaan doen is het alternatief!!!
+\end{warningbox}
+De wiskundige vergelijkingen voor de afhankelijkheid van de knopen:
+\begin{align*}
+\tilde{u}_{xA} &= \tilde{u}_{x1} \\
+\tilde{u}_{xB} &= \tilde{u}_{x1} \\
+\tilde{u}_{yA} &= \tilde{u}_{y1} - a\tilde{\theta}_{z1} \\
+\tilde{u}_{yB} &= \tilde{u}_{y1} + a\tilde{\theta}_{z1}
+\end{align*}
+
+De MPC in matrixnotatie:
+\begin{equation*}
+\begin{Bmatrix} 
+\tilde{u}_{xA} \\ 
+\tilde{u}_{yA} \\ 
+\tilde{u}_{xB} \\ 
+\tilde{u}_{yB} 
+\end{Bmatrix} = 
+\begin{bmatrix} 
+1 & 0 & 0 \\ 
+0 & 1 & -a \\ 
+1 & 0 & 0 \\ 
+0 & 1 & a 
+\end{bmatrix} 
+\begin{Bmatrix} 
+\tilde{u}_{x1} \\ 
+\tilde{u}_{y1} \\ 
+\tilde{\theta}_{z1} 
+\end{Bmatrix}
+\end{equation*}
+
+\subsubsection*{2. Het koppelen van elementen met verschillende ordes van vormfuncties}
+Wanneer een kwadratisch element (dat buigt in een curve) een rand deelt met een lineair element (dat perfect recht blijft), ontstaat er een incompatibiliteit (scheur). 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{verschillendeordeskoppelenmpc.png}
+  \caption{Quad koppelen met Lineair element}
+  \label{fig:verschillendeordeskoppelenmpc.png}
+ \end{figure}
+\textbf{Regel:} Bij een orde-incompatibiliteit \textbf{moet} het element met de laagste orde (het lineaire element) altijd de 'Master' zijn. De extra, middelste knoop (knoop 2) van het kwadratische element wordt de slave. De MPC gebruikt de lineaire vormfuncties van de hoekknopen (knoop 1 en 3) om de beweging van knoop 2 exact op de rechte lijn te forceren. (Dit is misschien duidelijk op deze tekening uit de les:)
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{tekeningles.png}
+  \caption{Hier zie je dat die middelste knoop van het kwadratische element precies op de rechte lijn tussen de 2 hoekknopen ligt, dit is dus wat die MPC doet}
+  \label{fig:tekeningles.png}
+ \end{figure}
+De interpolatievergelijkingen van het lineaire Master element B:
+\begin{align*}
+\hat{u}_x(\eta) &= 0,5(1 - \eta)\tilde{u}_{x1} + 0,5(1 + \eta)\tilde{u}_{x3} \\
+\hat{u}_y(\eta) &= 0,5(1 - \eta)\tilde{u}_{y1} + 0,5(1 + \eta)\tilde{u}_{y3}
+\end{align*}
+
+De gedwongen waarde voor de middelste knoop 2 (waar $\eta = 0$ is):
+\begin{align*}
+\tilde{u}_{x2} &= 0,5\tilde{u}_{x1} + 0,5\tilde{u}_{x3} \\
+\tilde{u}_{y2} &= 0,5\tilde{u}_{y1} + 0,5\tilde{u}_{y3}
+\end{align*}
+
+De MPC in matrixnotatie (Master knopen bepalen de Slave knoop):
+\begin{equation*}
+\begin{Bmatrix} 
+\tilde{u}_{x2} \\ 
+\tilde{u}_{y2} 
+\end{Bmatrix} = 
+\begin{bmatrix} 
+0,5 & 0 & 0,5 & 0 \\ 
+0 & 0,5 & 0 & 0,5 
+\end{bmatrix} 
+\begin{Bmatrix} 
+\tilde{u}_{x1} \\ 
+\tilde{u}_{y1} \\ 
+\tilde{u}_{x3} \\ 
+\tilde{u}_{y3} 
+\end{Bmatrix}
+\end{equation*}
+
+\subsubsection*{3. Het 'lijmen' van niet-overlappende meshes (Glue Boundary Conditions)}
+Wanneer je twee meshes met compleet andere elementgroottes aan elkaar verbindt, komen de knopen op de rand niet overeen. Een 'Glue' operatie is op de achtergrond puur een MPC. Het oppervlak van het grote, grovere element wordt de master. De software gebruikt de vormfuncties van de master om exact te interpoleren hoe de ongekoppelde 'zwevende' slave-knopen van de kleine mesh moeten meebewegen, waardoor de meshes reageren als één massief gelijmd geheel.
+\subsection{RBE Elementen}
+Bij het maken van hybrid meshes ontstaan er vaak problemen op de grens waar verschillende soorten elementen (1D, 2D, 3D) samenkomen. Zoals eerder besproken kunnen er geometrische gaten ontstaan, of concentreer je onrealistische puntlasten op een dunne plaat. Om deze problemen op te lossen zonder ongewenste extra massa te introduceren, maken we gebruik van \textbf{Rigid Body Elements (RBE)}. 
+
+Er is een cruciaal onderscheid tussen twee soorten: de \textbf{RBE2} en de \textbf{RBE3}.
+\vspace{0.3cm}
+
+\subsubsection*{RBE2: Het perfect stijve element (Fixing Displacement)}
+Een RBE2-element is een écht stijf lichaam. Het legt een vaste, onvervormbare verbinding op tussen knopen. 
+\begin{itemize}
+    \item \textbf{Structuur:} 1 {\color{green}\textit{Independent node}} (de master) stuurt $N$ {\color{red}\textit{Dependent nodes}} (de slaves) aan.
+    \item \textbf{Werking:} De onafhankelijke master-knoop bepaalt de verplaatsing. De afhankelijke slave-knopen volgen deze beweging exact. De relatieve afstand tussen de knopen verandert nooit. Het element (en het oppervlak waaraan het vastzit) kan dus \textbf{niet vervormen} en behoudt zijn oorspronkelijke vorm.
+    \item \textbf{Toepassing:} Wordt gebruikt om massieve onderdelen te simuleren, of om geometrische gaten te dichten zoals het modelleren van een stijve lasnaad (\textit{fillet weld}) tussen twee mid-surfaces.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    %Voeg hier de afbeelding in van Slide 19 met de knopen die transleren en roteren zonder hun onderlinge vorm te verliezen.
+    \includegraphics[width=0.6\textwidth]{afbeelding_RBE2_principe.png}
+    \caption{RBE2 principe}
+\end{figure}
+De stippenlijnen zijn trouwens 'de spider'.
+\subsubsection*{RBE vs. Glue: Het verlies van fysieke afstand}
+
+Er is een cruciaal verschil in hoe \textbf{RBE2-elementen} en een \textbf{Glue-randvoorwaarde} wiskundig omgaan met een fysieke afstand (\textit{gap}) tussen twee meshes. Dit is vooral belangrijk wanneer bijvoorbeeld een 1D-vakwerk met een bepaalde fysieke offset bovenop een 2D-plaat wordt gemonteerd.
+
+\begin{itemize}
+    \item \textbf{RBE2 (Fysieke afstand blijft behouden):} Als je de \textit{gap} overbrugt met perfect stijve RBE2-elementen, veranderen de onderlinge afstanden tussen de master- en slave-knopen wiskundig niet. Het model behoudt de exacte fysieke offset zoals je die hebt getekend. Hierdoor worden krachten via de juiste afstand overgedragen en blijven hefboomarmen (en dus buigmomenten) correct.
+    \item \textbf{Glue (De mesh 'verschuift'):} Een Glue-operatie is wiskundig gezien een Multi-Point Constraint (MPC) die slave-knopen direct interpoleert en projecteert op het master-oppervlak. Pas je Glue toe over een open \textit{gap}, dan trekt de software de elementen wiskundig naar elkaar toe om ze te verbinden. De software \textbf{verschuift} jouw slave-mesh wiskundig gezien strak op de master-mesh. Het grote nadeel hiervan is dat je de fysieke afstand (en de bijhorende correcte hefboomwerking) in je model kwijtraakt.
+\end{itemize}
+(Sorry, ik ben te lui om hier ff een clean tekening van te maken, hier is mijn lesnotitie er van)
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{rbevsglue.png}
+  \caption{RBE vs. Glue}
+  \label{fig:rbevsglue.png}
+ \end{figure}
+\subsubsection*{RBE3: Het interpolatie-element (Fixing/Distributing Force)}
+Een RBE3-element is fundamenteel anders. Dit is géén stijf element, maar een \textbf{kracht-verdeler} (interpolatie-element). Het laat de onderliggende structuur gewoon vrij vervormen en buigen.
+\begin{itemize}
+    \item \textbf{Structuur:} $N$ \textit{Independent nodes} (de masters op de plaat) sturen 1 \textit{Dependent node} (de zwevende slave-knoop) aan.
+    \item \textbf{Werking:} Een kracht of moment dat wordt aangebracht op de afhankelijke referentieknoop, wordt wiskundig (via de vormfuncties en de afstanden tot het zwaartepunt) zachtjes verdeeld over de onafhankelijke knopen. Dit voorkomt onrealistische spanningspieken (unphysical point loads).
+    \item \textbf{Toepassing:} Het uitsmeren van een geconcentreerde kracht over een oppervlak. Een typisch voorbeeld is de verbinding van het 1D-hengsel van een emmer op de 2D-schaalelementen van de emmer zelf, of een zware bout die op een dunne plaat trekt.
+\end{itemize}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{RBE3principe.png}
+  \caption{RBE3 principe}
+  \label{fig:RBE3principe.png}
+ \end{figure}
+Die groene knopen willen beweging binnenbrengen, de rode knoop probeert te volgen. De stippenlijnen hier (de stokjes) kunnen wel van lengte veranderen, ze zijn hier dus niet oneindig stijf (maar ze zijn ook niet oneindig slap!)
+\newline
+\newline
+\textbf{De wiskundige krachtverdeling bij RBE3 (in 3 stappen)}
+\newline
+Wanneer een kracht of moment op de afhankelijke referentieknoop van een RBE3-spider wordt aangelegd, verdeelt de software dit naar de omliggende onafhankelijke knopen volgens de principes van een klassieke boutpatroon-analyse (\textit{classical bolt pattern analysis}). Zoals in de les genoteerd, gebeurt dit wiskundig in drie stappen:
+
+\begin{enumerate}
+    \item \textbf{Verplaatsing naar het zwaartepunt (CG):} De aangelegde kracht ($F_A$) en het moment ($M_A$) op de referentieknoop worden eerst wiskundig getransformeerd naar het zwaartepunt (Center of Gravity) van de groep omliggende knopen. Dit creëert een equivalente kracht en moment in dat zwaartepunt ($F_{CG}$ en $M_{CG}$). Het nieuwe moment ($M_{CG}$) is hierbij gelijk aan het originele moment óók nog plus het extra moment dat ontstaat doordat de kracht over een bepaalde loodrechte afstand ($r$) is verplaatst ($M_{CG} = M_A + (F_A \times r)$).
+    \item \textbf{Transfer naar de master knopen:} Vanuit dit zwaartepunt worden de equivalente belasting vervolgens wiskundig verdeeld over alle individuele onafhankelijke knopen in de spider (resulterend in krachten zoals $F_{1m}, F_{2m}, F_{3m}$).
+    \item \textbf{Toepassing van weegfactoren:} Exact hóéveel van die belasting naar welke specifieke knoop gaat, wordt in de laatste stap bepaald door weegfactoren (\textit{weighting factors}). Deze factoren hangen af van de methode die je kiest en kunnen bijvoorbeeld gebaseerd zijn op de lineaire of kwadratische afstand van de knoop tot het zwaartepunt.
+\end{enumerate}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{RBE3krachtverdeling.png}
+  \caption{RBE3 krachtverdeling}
+  \label{fig:RBE3krachtverdeling.png}
+ \end{figure}
+
+
+\subsubsection*{RBE2 vs. RBE3 in Spiders (Netwerken)}
+Wanneer je slechts twee knopen met elkaar verbindt (1-op-1), is er wiskundig geen verschil tussen een RBE2 en een RBE3. Echter, zodra je één knoop met meerdere knopen verbindt in de vorm van een \textbf{'Spider' (spinneweb)}, zijn de resultaten drastisch verschillend:
+
+\begin{itemize}
+    \item \textbf{Verschil in stijfheid (Vierkante plaat):} Verbind je een kracht op het midden van een plaat via een RBE2-spider, dan dwingt de RBE2 dat dat volledige stuk plaat uniform verplaatst en niet mag doorbuigen (spanning in het middenvlak is 0, maar hoge spanningsconcentraties aan de randen). Gebruik je een RBE3-spider, dan wordt de belasting mooi verdeeld, maar is de plaat wél in staat om lokaal te vervormen volgens het principe van minimale rekenergie (\textit{minimization of strain energy}).
+    \item \textbf{Verschil bij profielen (De ZAP-Beam):} Pas je een buigmoment toe op het uiteinde van een ZAP-beam (een balk met flenzen) via een RBE2, dan dwingt dit element de complete doorsnede om perfect recht te blijven (plane sections remain planar, volgens de theorie van Bernoulli). Gebruik je echter een RBE3 (met een uniforme krachtverdeling), dan wordt de doorsnede niet stijf gehouden en zullen de flenzen scheef trekken (warping en 3D-effecten treden op).
+\end{itemize}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{RBE2VSRBE3PLAAT.png}
+  \caption{RBE2 vs RBE3 op een vierkante plaat}
+  \label{fig:RBE2VSRBE3PLAAT.png}
+ \end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{RBEZAPBEAM.png}
+  \caption{ZAPBEAM RBE}
+  \label{fig:RBEZAPBEAM.png}
+ \end{figure}
+\newpage
+\chapter{Praktische overwegingen: Pre-processing}
+In dit hoofdstuk gaan we het hebben over de overwegingen die je moet maken bij het opzetten van een eindige-elementenmodel, voordat je begint met de eigenlijke berekeningen. Dit wordt ook wel 'pre-processing' genoemd. En we gaan het dus ook hebben over het Mesh design zelf.
+\subsubsection{Wat in rekening te houden bij het opzetten van een model}
+Vaak starten we dus eerst met een CAD file of een tekening van een tekenaar (onthoud dat deze niet altijd de beste ingenieurs zijn), het kritisch bekijken van deze tekening is dus de eerste belangrijke stap.
+\newline
+\newline
+Want stel u voor ge krijgt dit:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{sharpcorners.png}
+  \caption{Een model met scherpe randen}
+  \label{fig:sharpcorners.png}
+ \end{figure}
+Zoals we weten zorgen scherpe randen voor spanningsconcentraties ($\sigma \rightarrow \infty$), dit is een probleem. Maar is dit zelfs nodig? Vraag nekeer na bij de ingenieur of een scherpe afronding daar echt nodig is, of of je nie gewoon mag afronden.
+\newline
+\newline
+Iets anders waar je rekening mee moet houden is dit:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{connectionsssss.png}
+  \caption{Een model met verbindingen in bepaalde volgorde}
+  \label{fig:connectionsssss.png}
+ \end{figure}
+Waarom zou je verbindingen onder elkaar zetten als je weet dat de last in dezelfde richting gaat, dit zorgt ervoor dat de bovenste verbinding de hoogste last opneemt en de onderste veel minder. Iets veel praktischer is dus om de verbindingen naast elkaar te zetten zodat ze beide evenveel last dragen.
+\newline
+\newline
+Nog iets is het volgende:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{orientationofbeams.png}
+  \caption{Orientatie van balken}
+  \label{fig:orientationofbeams.png}
+ \end{figure}
+Is het nodig om de balk zoals links te plaatsen? Als je dan een loodrechte kracht erop hebt dan heb je een groot buigmoment door de inertie van die balk. Vraag het dus altijd aan de ingenieur, want je kan even goed je balk zoals in de figuur ernaast dan modelleren.
+\newline
+\newline
+Nog iets heel effectief dat je kan doen is 'Cad cleaning', dit is het opschonen van je CAD file door details uit je model te verwijderen die de structurele sterkte niet (of heel weinig) beïnvloeden, zeker in gebieden met lage spanningen. Voorbeelden zijn schroefdraden, logo's (of iets gegraveerd), kleine afrondingen, niet kritisch belaste bouten of moeren. Dit is allemaal niet nodig want heeft veel verfijning en dus veel rekentijd nodig.
+\newline
+Houd ook in rekening hoe je je randvoorwaarden gaat toepassen zodat ze goed overeen komen met de realiteit, hoe brneg je belasting aan, hoe zit het model fysiek vast in de echte wereld? Je gaat dus mesh collectors moeten maken om dit goed te groeperen.
+\newline
+\newline
+En natuurlijk ook, zoals we eerder zagen, ga je kritisch moeten nadenken over wat soort mesh, elementen, en elementorde je gaat gebruiken.
+\subsubsection{Numerieke fouten}
+Je moet rekening houden met het feit dat het zowieso errors gaat hebben in je model omdat dit model simpelweg niet hetzelfde is dan het fysische model. Je hebt dus 2 types errors die je zult krijgen:
+\begin{itemize}
+ \item \textbf{Discretisatiefouten:} Dit zijn de geometrische fouten door het feit dat je gediscretiseerd domein niet gelijk is aan je echte domein ($\lambda \neq K, q \neq \tilde{q}, F \neq \tilde{F}$ bij $\lambda q = F$ vs. $[K]\tilde{q} = \tilde{F}$). Deze fout vermindert als je meer knopen hebt (mesh verfijnt)
+ \item \textbf{Numerieke fouten:} Dit zijn de fouten door oplossingsafrondingen bij $\tilde{q} = [K]^{-1} \tilde{F}$, deze fout neemt toe als je meer knopen hebt (omdat je dan een grotere matrix moet omkeren). (Trade-off dus, zie eerder). Onze afrondingen gebeuren trouwens vooral door het feit dat $[K]$ 'ill-conditioned' is, dus er staan veel kleine getallen in en veel grote getallen (grote verschillen dus), dit zagen we eerder.
+\end{itemize}
+\subsection{Genereren van de mesh}
+Een mesh creëren kan op verschillende manieren, dit is samengevat in volgende tabel:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.65\textwidth]{tabelhowtocreatemesh.png}
+  \caption{Verschillende manieren om een mesh te creëren}
+  \label{fig:tabelhowtocreatemesh.png}
+ \end{figure}
+\subsubsection{Automatisch (of batch) meshing}
+Dit is de makkelijkste en snelste methode, maar volgens de professor de 'slechtste manier'. De computer vult je model op met overal even grote elementen, zonder rekening te houden met stress concentraties, en je hebt totaal geen controle over het patroon. Je hebt hier ook veel knopen.
+\subsubsection{Mapped (of interactief) meshing}
+Dit is al beter, hier geef je wel richtlijnen op kritieke gebieden, dus je gaat eigelijk lokaal verfijnen rond bvb. een gat, de software maakt hier dan een gestructureerde mesh rond die gebieden. Dit duurt dus wel ieeets langer.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{automaticvsmappedmesh.png}
+\caption{Automatisch vs. Mapped meshing}
+  \label{fig:automaticvsmappedmesh.png}
+ \end{figure}
+\subsubsection{Manueel meshing}
+Dit vereist enorm veel tijd en geduld (Patience: high). Je hebt hiervoor niet eens een CAD-model nodig; je plaatst elke knoop (node) zelf in de ruimte en verbindt deze handmatig. Het voordeel is dat je absolute controle hebt over het aantal knopen en de opbouw.Omdat dit zo tijdsintensief is, gebruikt men vaak speciale commando's om een 1D of 2D mesh door te trekken naar een 3D mesh via operaties zoals \textbf{Extruding, Revolving en Sweeping}.
+\begin{figure}[H]
+    \centering
+    % PLAATS HIER DE FIGUUR VAN SLIDE 23 (Extruding, Revolving, Sweeping)
+    % De afbeelding toont het uittrekken (extruderen) of ronddraaien (revolving) van een 2D mesh naar een 3D solid.
+    \includegraphics[width=0.8\textwidth]{afbeelding_extrude_revolve.png}
+    \caption{Manueel meshing versnellen door 2D meshes te extruderen of roteren naar 3D.}
+    \label{fig:mesh_extrude}
+\end{figure}
+
+
+\subsubsection{Mesh Seeding}
+Een manuele of mapped mesh start in de software vrijwel altijd met \textbf{Mesh Seeding} (wat de professor in de les letterlijk omschrijft als een "zaadje planten" op een rand). Je selecteert een rand (\textit{edge}) van je geometrie en vertelt de software exact hoeveel knopen er op die specifieke lijn verdeeld moeten worden. Als de afstand tussen elke knoop overal op die lijn perfect gelijk gehouden wordt, spreken we van een \textbf{uniforme spacing}.
+
+\begin{figure}[H]
+    \centering
+    % PLAATS HIER DE FIGUUR VAN SLIDE 21 (Mesh seeding on edges)
+    % Gebruik de figuur met de kleine gele bolletjes (seeds) geprojecteerd op de randen van de blauwe structuur.
+    \includegraphics[width=0.8\textwidth]{afbeelding_mesh_seeding.png}
+    \caption{Mesh seeding op de randen van een model}
+    \label{fig:mesh_seeding}
+\end{figure}
+De rechterfiguur trouwens, die blauwe revolved, dit is waar die uniform spacing plaats vindt.
+
+\subsubsection{Mesh Biasing}
+Uniforme spacing is in de praktijk vaak niet ideaal. Je wilt namelijk elementen concentreren op kritieke locaties waar hoge of complexe spanningen optreden (bijvoorbeeld aan de rand van een gat), terwijl je op vlakke, onbelangrijke gebieden best grotere elementen gebruikt om rekentijd te besparen. 
+\newline
+\newline
+Dit doe je met behulp van een \textbf{Bias}. Een bias dwingt de knopen om geleidelijk aan dichter op elkaar te kruipen naarmate ze een spanningsconcentratie naderen. De grootte van deze bias wordt vaak bepaald door de verhouding te nemen tussen de grootste en de kleinste elementlengte ($\Delta X_{max} / \Delta X_{min}$). Dit kan in principe ook exponentieel zijn. De proff vermeld wel nog dat je hierna op de knop 'MERGE COINCEDENCE NODES' moet tikken, anders vliegt je mesh uit elkaar (dit lijmt je nodes ofzo).
+\newline
+\newline
+Het gigantische voordeel van biasing is dat je de nauwkeurigheid van je resultaten sterk kan verbeteren zónder de CPU extra te belasten. Een lesvoorbeeld illustreert dit: bij een ongewijzigd aantal knopen (168) en elementen (144) meet een model zonder bias slechts een maximale spanning van 1.59 N/mm², wat flink afwijkt van de theoretisch exacte 3 N/mm². Door een bias van 20 toe te passen (en de elementen dus lokaal strak rond het gat te trekken), springt de gevonden spanning naar 2.65 N/mm². Je krijgt dus een veel accurater resultaat bij een gelijke rekentijd. Dit zien we in de volgende figuur:
+
+\begin{figure}[H]
+    \centering
+    % PLAATS HIER DE TABEL EN AFBEELDINGEN VAN SLIDE 22 (Manual meshing: biasing)
+    % De afbeelding toont de 3 vierkanten (Bias 0, Bias 5 en Bias 20) plus de vergelijkende tabel daaronder.
+    \includegraphics[width=0.6\textwidth]{afbeelding_mesh_biasing_tabel.png}
+    \caption{Het effect van biasing: een aanzienlijk hogere nauwkeurigheid zonder extra elementen toe te voegen.}
+    \label{fig:mesh_biasing}
+\end{figure}
+
+\subsubsection{Geometrische representatie en discretisatiefouten}
+Het is cruciaal om te beseffen dat de solver van de eindige-elementensoftware \textbf{niet de werkelijke CAD-geometrie} doorrekent, maar uitsluitend de gemaakte mesh (de combinatie van knopen en elementen). 
+
+Als je bijvoorbeeld een cirkelgat modelleert met slechts 3 knopen, dan 'ziet' en berekent de computer een driehoek. Gebruik je 4 knopen, dan rekent hij met een vierkant. Het verschil in oppervlakte tussen de werkelijke cirkel en de gemeshte veelhoek noemen we de \textbf{geometrische discretisatiefout} (het grijze gebied op de figuur). 
+
+Om de fout van een cirkel klein te houden (tussen 1\% en 5\%), heb je 12 tot 20 elementen nodig. (Dat grijs gebied kan je makkelijk met goniometrie berekenen.)
+
+\begin{figure}[H]
+    \centering
+    % PLAATS HIER DE FIGUUR VAN SLIDE 24
+    % De afbeelding met de cirkels benaderd door 3, 4, 6 en 8 lijnen (met het grijze fout-gebied)
+    \includegraphics[width=0.6\textwidth]{afbeelding_cirkel_discretisatiefout.png}
+    \caption{Geometrische discretisatiefout bij het benaderen van een cirkel.}
+    \label{fig:cirkel_fout}
+\end{figure}
+
+\subsubsection{Modelleren van gaten en afrondingen (Fillets)}
+Hoeveel elementen je exact nodig hebt rond een detail, hangt volledig af van de vraag of dit detail in een kritieke zone ligt of niet. De professor verwoordt dit simpelweg als: \textit{"Ben je geïnteresseerd in de exacte spanning op die locatie, of niet?"}.
+
+\textbf{1. Gaten (Holes):}
+\begin{itemize}
+    \item \textbf{Kritiek gebied (hoge spanningen verwacht):} Plaats een absoluut minimum van \textbf{12 tot 20 elementen} op de omtrek van het gat om de spanningsconcentratie accuraat te vangen.
+    \item \textbf{Niet-kritiek gebied (ver weg van de actie):} Een ruwere benadering van \textbf{4 tot 6 elementen} is hier ruim voldoende.
+\end{itemize}
+
+\textbf{2. Afrondingen (Fillets):}
+Een fillet in een CAD-model is in de regel een kwartcirkel.
+\begin{itemize}
+    \item \textbf{Kritiek gebied:} Plaats minimaal \textbf{3 tot 5 elementen} op de boog van de afronding.
+    \item \textbf{Niet-kritiek gebied:} Bij hele kleine afrondingen pas je best 'CAD-cleaning' toe (verwijder ze volledig uit je model). Bij grote, niet-kritieke afrondingen volstaat \textbf{1 element}.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    % PLAATS HIER DE FIGUUR VAN SLIDE 25
+    % De tabel met 'Critical area' vs 'General area' voor gaten en fillets.
+    \includegraphics[width=0.6\textwidth]{afbeelding_holes_fillets_guidelines.png}
+    \caption{Richtlijnen voor het aantal elementen bij gaten en afrondingen.}
+    \label{fig:holes_fillets}
+\end{figure}
+
+Een zeer belangrijke regel bij het meshen van een afronding is dat je de elementgrootte of het aantal elementen \textbf{nooit mag veranderen op de kromming zelf}. In de lesnotities staat letterlijk: Wil je van een fijne naar een grove mesh overgaan? Doe dit dan altijd op de aanliggende \textbf{vlakke} platen, en houd het rooster op de afronding mooi gestructureerd en constant.
+
+\begin{figure}[H]
+    \centering
+    % PLAATS HIER DE FIGUUR VAN SLIDE 26
+    % De gebogen plaat met het foute, gele driehoekje in de mesh op de boog.
+    \includegraphics[width=0.5\textwidth]{afbeelding_no_mesh_transition.png}
+    \caption{Mesh transities mogen nooit op de afronding zelf plaatsvinden.}
+    \label{fig:mesh_transition_fillet}
+\end{figure}
+
+\subsubsection{Elementtypes rondom gaten}
+Naast het aantal elementen, speelt ook de \textbf{vorm} van het element een grote rol in hoe accuraat een spanningsconcentratie berekend wordt. 
+
+Uit simulaties van een trekplaat met een gat (waarbij de analytisch exacte spanning 3 N/mm² is) blijkt dat \textbf{Tria-elementen (driehoeken) structureel slechter presteren} dan Quad-elementen (vierhoeken) voor het bepalen van de hoekspanningen. 
+Wanneer we Quad-elementen gebruiken, zien we bovendien dat de nauwkeurigheid sterk toeneemt naarmate we de mesh verfijnen rondom het gat:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{triavsquad.png}
+  \caption{Tria vs Quad elementen rondom een gat}
+  \label{fig:triavsquad.png}
+ \end{figure}
+\begin{itemize}
+    \item 4 Quads rond het gat $\rightarrow$ $\sigma = 1.60$ N/mm² (zeer grote fout)
+    \item 8 Quads rond het gat $\rightarrow$ $\sigma = 2.06$ N/mm²
+    \item 16 Quads rond het gat $\rightarrow$ $\sigma = 2.47$ N/mm²
+    \item 64 Quads rond het gat $\rightarrow$ $\sigma = 3.02$ N/mm² (nagenoeg exact)
+\end{itemize}
+Echter gaan we normaal wel werken met Tria-elementen, dit heeft te maken met de vormfuncties:
+\begin{align*}
+ N_{tria} = a + bx + cy \rightarrow \sigma_x = \text{cte waarde} \\
+  N_{quad} = a + bx + cy + dxy \rightarrow \sigma_x = \text{lineaire functie van y}
+\end{align*}
+(Ik heb eerlijk gezegd geen idee wat de verklaring is waarom we die tria gebruiken om die spanning constant te hebben, de proff zei dit in de les, AI weet het niet en het staat niet in de lesvideo, ik vermoed dat dit te maken heeft met de post-processing van die spanning, want hij zei wel dat we niet zomaar de average stress mochten aflezen en dat we dit pas volgende les gingen zien)
+\subsubsection{Weergave van de mesh (Displaying meshes)}
+Nadat de mesh is gegenereerd in de software, is het belangrijk om visueel te controleren of deze goed aansluit op het originele CAD-model. De pre-processor (zoals NX) biedt verschillende weergave-opties (\textit{display modes}) voor zowel de geometrie als de mesh .
+
+In de volgende figuur worden drie mogelijke combinaties getoond:
+\begin{itemize}
+    \item \textbf{Mesh = shaded, Geometry = wireframe (De aanbevolen keuze):} De mesh wordt als massieve vlakken/blokken getoond en het originele CAD-model slechts als dunne draadlijnen (\textit{wireframe}). Wim verkiest deze! Dit is de beste optie omdat je zo perfect kan zien of de massieve elementen de lijnen van de originele geometrie accuraat opvullen en volgen, zonder dat de CAD-oppervlakken zelf het zicht blokkeren.
+    \item \textbf{Mesh = wireframe, Geometry = wireframe:} Zowel de mesh als de geometrie zijn draadmodellen. Dit wordt bij complexe modellen al snel een onoverzichtelijke wirwar van overlappende lijntjes.
+    \item \textbf{Mesh = shaded, Geometry = shaded:} Zowel de mesh als de CAD-geometrie zijn massief weergegeven. Hierdoor vallen ze over elkaar heen (Z-fighting) en is het lastig om te zien waar je mesh precies afwijkt van de geometrie.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    % PLAATS HIER DE FIGUUR VAN SLIDE 28 
+    % (De drie weergaven, met de linkse als 'best choice')
+    \includegraphics[width=0.8\textwidth]{afbeelding_displaying_meshes.png}
+    \caption{Verschillende weergave-opties in de pre-processor. De linkse combinatie (shaded mesh in een wireframe geometrie) is de meest werkbare weergave.}
+    \label{fig:displaying_meshes}
+\end{figure}
+\subsection{Mesh verfijning}
+Zelfs met een goede basismesh is het in de praktijk zelden efficiënt om overal dezelfde kleine elementgrootte te gebruiken. Om rekentijd te besparen, passen we \textbf{lokale meshverfijning} toe op de plaatsen waar we de grootste spanningsconcentraties verwachten.
+
+\subsubsection{Waar treden deze spanningsconcentraties op?}
+In de regel moeten we de mesh verfijnen op locaties met een spanningsconcentratie/plotse verandering oftewel: \textbf{discontinuïteit} in geometrie, randvoorwaarden of materiaaleigenschappen.
+\begin{itemize}
+    \item \textbf{Geometrie:} Gaten, uitsnijdingen (cutouts), scheuren (cracks), scherpe binnenhoeken en abrupte dikteveranderingen.
+    \item \textbf{Randvoorwaarden en krachten:} De directe omgeving van een geconcentreerde puntlast (\textit{point load}), alle spanning gaat hierdoor, en scherpe contactoppervlakken .
+    \item \textbf{Materiaaleigenschappen:} Overgangen tussen twee verschillende materialen, het poissoneffect zorgt ervoor dat 1 materiaal minder of meer wilt uitzetten of krimpen.
+    \item \textbf{Krachtoverdrachten:} Bij lassen, boutverbindingen of structurele ankers.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    % PLAATS HIER DE FIGUUR VAN SLIDE 29 
+    % (Voorbeelden van stress concentrations: cracks, cutouts, point loads...)
+    \includegraphics[width=0.8\textwidth]{afbeelding_stress_concentrations.png}
+    \caption{Locaties waar discontinuïteiten optreden en lokale meshverfijning nodig is.}
+    \label{fig:stress_concentrations}
+\end{figure}
+
+\subsubsection{Uitzondering: Principe van de Saint-Venant}
+Moet je echt álles verfijnen? Nee. Het principe van de Saint-Venant stelt dat het lokale effect van een belasting op voldoende afstand uitvlakt. Vertaald naar meshing betekent dit: \textbf{verfijn enkel daar waar je geïnteresseerd bent in de exacte output}. Heb je een trekplaat met een gat én een complexe inklemming, maar wil je enkel de scheurgroei aan het gat simuleren? Dan verfijn je enkel lokaal rond het gat en laat je de randvoorwaarde ruw gemesht.
+
+\subsubsection{Soorten verfijning: h, p en r-refinement}
+Wanneer we besluiten om te verfijnen, biedt de software ons in de theorie drie fundamentele wiskundige methodes aan:
+
+\subsubsection{h-refinement (Elementgrootte verkleinen):} 
+    Hierbij verkleinen we fysiek de lengte $h$ van de elementen (we voegen dus knopen toe). Dit kan op twee manieren:
+    \begin{itemize}
+        \item \textit{Gelijk aantal knopen aan elke zijde (Uniform):} Makkelijk te controleren en behoudt zuivere Quad-elementen (voor andere types werkt dit niet), maar heeft als grote nadeel dat je al snel uiterst smalle, lange elementen krijgt verderop in je model (hoge \textit{aspect ratio}), wat voor numerieke fouten zorgt. (Dit zien we zometeen nog)
+        \begin{figure}[H]
+          \centering
+          \includegraphics[width=0.3\textwidth]{hrefinementuniform.png}
+          \caption{h-refinement met uniforme knopenverdeling}
+          \label{fig:hrefinementuniform.png}
+         \end{figure}
+        \item \textit{Verschillend aantal knopen aan elke zijde (Transitie):} De software gebruikt hierbij driehoeken (Trias) of trapezium-vormige Quads om van fijn naar grof te gaan. Dit geeft minder elementen, maar de \textit{skewness} (vervorming van de elementen) neemt wel toe. Dit zorgt ook voor groter hoeken (zien we ook sebiet)
+        \begin{figure}[H]
+          \centering
+          \includegraphics[width=0.7\textwidth]{hrefinementtransition.png}
+          \caption{h-refinement met transitie}
+          \label{fig:hrefinementtransition.png}
+         \end{figure}
+        Dit zijn eigelijk dingen die we willen vermijden, driehoeken kunnen samenkomen in 1 punt wat we ook niet willen.
+      \end{itemize}
+\subsubsection{Foute elementvormen vermijden}
+
+Zelfs als je het juiste elementtype en een goede mesh-dichtheid hebt gekozen, kan de individuele \textbf{vorm} van de elementen en hoe ze aan elkaar plakken je simulatie verpesten. Dit leidt tot numerieke fouten en een \textit{ill-conditioned} stijfheidsmatrix. 
+
+\subsubsection{Slechte verbindingen}
+Bij het ontwerpen van de mesh moet je twee specifieke configuraties absoluut vermijden:
+\begin{itemize}
+    \item \textbf{Back-to-back triangles:} Twee driehoeken (Tria) die met hun lange zijde tegen elkaar worden geplakt om samen een vierkant te vormen. Dit creëert een kunstmatige, stijve diagonale lijn in je model die er in de realiteit niet is.
+    \item \textbf{Tria-Quad meshes:} Het lukraak verbinden van driehoeken direct aan vierkanten (bijvoorbeeld in een ruit- of stervorm) verstoort de zogeheten \textit{flow lines} van de krachten. Krachten vloeien het best door een gestructureerd, ruitjesachtig patroon van elementen.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    % PLAATS HIER DE FIGUUR VAN SLIDE 33
+    % (Avoid back-to-back triangles en Avoid tria-quad meshes)
+    \includegraphics[width=0.6\textwidth]{afbeelding_avoid_tria_quad.png}
+    \caption{Links en midden: slechte configuraties die flow lines verstoren. Rechts: de aanbevolen, gestructureerde quad-mesh.}
+    \label{fig:avoid_tria_quad}
+\end{figure}
+
+\subsubsection{Vervormde elementen}
+De absolute nachtmerrie voor eindige-elementensoftware is een sterk vervormd element. De software probeert elk element wiskundig te benaderen als een perfecte vorm. Hoe verder jouw element hiervan afwijkt, hoe groter de rekenfout. De zes grote zondaars op de volgende figuur zijn:
+\begin{itemize}
+    \item \textbf{Large aspect ratio (a/b > 5-10):} Extreem lange, dunne elementen.
+    \item \textbf{Highly skewed ($\alpha \ll 90^\circ$):} Elementen met hele scherpe of stompe hoeken. Dit is waar ik het eerder over had
+    \item \textbf{Near-triangle:} Een vierhoekig element waarvan één zijde bijna nul is.
+    \item \textbf{Triangular quadrilateral:} Een vierhoek waarvan drie knopen op één lijn liggen. Dit lijkt op een driehoek
+    \item \textbf{Off-center node:} Bij kwadratische elementen \textit{moet} de extra mid-node zich in het middelste derde ($1/3$) van de rand bevinden.
+    \item \textbf{Strongly curved side:} Een rand die te extreem buigt ($\alpha > 30^\circ$).
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    % PLAATS HIER DE FIGUUR VAN SLIDE 35
+    % (De zes foute elementvormen met de rode/zwarte lijntjes)
+    \includegraphics[width=0.7\textwidth]{afbeelding_poor_elements.png}
+    \caption{Zes sterk vervormde elementvormen die een ill-conditioned matrix veroorzaken.}
+    \label{fig:poor_elements}
+\end{figure}
+De computer waarschuwt meestal op hoeveel procent van de elementen 'skewed' zijn.
+
+\subsubsection{De wiskunde: WAAROM crasht de computer hierop?}
+De professor tekent dit uit op het bord. We weten dat de elementstijfheidsmatrix $[k_e]$ berekend wordt via de vormfuncties ($[N]$) en de afgeleides daarvan. 
+\newline
+\newline
+De afgeleide van de vormfunctie in de X-richting ($\frac{\partial N}{\partial x}$) bevat de term $\frac{1}{L_x}$. De afgeleide in de Y-richting ($\frac{\partial N}{\partial y}$) bevat $\frac{1}{L_y}$.
+\newline
+\newline
+Stel nu dat je een element hebt met een extreme aspect ratio ($L_x \gg L_y$):
+\begin{itemize}
+    \item Omdat $L_x$ gigantisch is, wordt de breuk $\frac{1}{L_x}$ \textbf{extreem klein}.
+    \item Omdat $L_y$ heel klein is, wordt de breuk $\frac{1}{L_y}$ \textbf{extreem groot}.
+\end{itemize}
+De globale matrix $[K]$ bevat nu tegelijkertijd gigantisch grote en minuscuul kleine getallen. Een computer heeft echter een \textbf{beperkt aantal digits} (afrondingslimiet). Het optellen of aftrekken van die enorme uitersten zorgt ervoor dat significante cijfers wegvallen. Dit veroorzaakt massale afrondingsfouten (\textit{truncation errors}) en maakt de matrix \textbf{ill-conditioned}.
+\newline
+\newline
+Dus zorg dat je lengte breedte verhouding goed is.
+\subsubsection{Waarom dit erg is}
+Om te bewijzen dat die slechte elementvormen geen abstracte theorie zijn, toont de volgende figuur een simpele simulatie: een plaat die bovenaan verticaal wordt uitgetrokken.
+\begin{itemize}
+    \item \textbf{Helemaal links:} De plaat is gemesht met mooie, regelmatige Quads. Zoals je analytisch mag verwachten, is het resultaat (de gekleurde stress- en verplaatsingslijnen) perfect horizontaal en symmetrisch.
+    \item \textbf{De drie rechtse platen:} Hierin is de plaat opzettelijk gemesht met zwaar vervormde (skewed/curved) en foute elementen. Het resultaat? De plaat trekt asymmetrisch scheef, de spanningszones (rode en blauwe vlekken) zitten op totaal onlogische plekken en de \textit{von Mises stresses} slaan nergens op. \textbf{Conclusie:} Slechte elementen ruïneren letterlijk de fysieke betrouwbaarheid van je simulatie.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    % PLAATS HIER DE FIGUUR VAN SLIDE 36
+    % (De vier platen met rode trekpijlen en kleurtjes)
+    \includegraphics[width=0.6\textwidth]{afbeelding_singularities_illustration.png}
+    \caption{Het visuele bewijs: foute elementvormen (rechts) leiden tot compleet verkeerde en asymmetrische spanningsverdelingen bij een simpele verticale trekbelasting.}
+    \label{fig:singularities_illustration}
+\end{figure}
+In de les tekent de proff een voorbeeld van een groot element met vlak daarnaast een klein element, deze hebben een groot verschil in $L_{x1}$ en $L_{x2}$, de computer berekent dus de stijfheid van een element met breuken (1/$L_x$), omdat het eerste element groot is is dit een klein stijfheidsgetal en bij het 2de element dan een groot stijfheids getal. Nu zet de computer die getallen in de globale stijfheidsmatrix, het grote element krijgt een blok (rood) en het kleine element krijgt een blok (geel), we zien daar een overlappende regio (omcirkeld in groen), hier worden de stijfheden van beide elementen opgeteld. Dus wat boeit dit? Awel, door dat beperkte geheugen van de computer dat maar een aantal digits kan opslaan, slokt het grote getal eigelijk het kleine getal volledig op en wordt dat eigelijk 'afgekapt', dit is dan een afrondingsfout.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{voorrbrleledles.png}
+  \caption{Voorbeeld les, groot element naast klein element, grote verschillen in $L_x$}
+  \label{fig:voorrbrleledles.png}
+ \end{figure}
+Dit is exact de reden waarom je nooit een abrupte sprong in lengtes mag hebben en je dus best bij het verfijnen, in transities verfijnt:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{transititeivergfijning.png}
+  \caption{Transitieverfijning (vanboven), abrupt verfijning (onder)}
+  \label{fig:transititeivergfijning.png}
+ \end{figure}
+Als je dit dus niet doet is je matrix ill-conditioned en krijg je dus een fout in je resultaten, dit is dus echt iets dat je moet vermijden.
+\subsubsection{p-refinement (Elementorde verhogen):}
+Zoals we eerder zagen gaan we hier gewoon de orde p van de elementen (dus van de vormfuncties) verhogen, extra knopen toevoegen dus. Maar als je dit lokaal toepast kan er een mismatch op de grenslijn tussen elementen zijn (zoals we eerder zagen bij MPC's als je hogere orde naast een lagere orde hebt) dus sluiten ze niet vloeiend aan. De oplossing hiervoor is speciale 'transition elements' te gebruiken of gewoon constraints zoals dus MPC's. Vaak is de beste manier om die incompatibiliteiten te vermijden gewoon een slimme combinatie van h- en p-refinement toe te passen.
+\subsubsection{r-refinement (Elementen verplaatsen):}
+De r in r-refinement staat voor 'rearranging', hier ga je dus geen extra element of knoop toevoegen maar je knopen gewoon een beetje verplaatsen in de ruimte zodat het wat fijner is rond de kritische zone's, typisch wordt dit automatisch gedaan door algoritmes die dit optimaliseren.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{soortenverfijningen.png}
+  \caption{Overzicht soorten verfijningen}
+  \label{fig:soortenverfijningen.png}
+ \end{figure}
+\subsection{Mesh convergentie}
+Hoe weten we wanneer we genoeg verfijnd hebben? Je kan een grafiek maken van de rekenfout tegenover de elementgrootte op een logaritmische schaal, deze zie je in volgende figuur:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{convergentei.png}
+  \caption{Grafiek van rekenfout vs. elementgrootte op log-log schaal}
+  \label{fig:convergentei.png}
+ \end{figure}
+Deze grafiek bestaat uit 3 regio's:
+\begin{itemize}
+ \item \textbf{Regio I:} Dit is de transitie/'lucky' regio, de mesh is hier nog te grof waardoor resultaten in deze fouten veel flucueren en dus een hoge logaritmische fout hebben. Het zou in principe kunnen dat je toevallig nekeer het juiste antwoord hebt, maar dat is geluk hebben en niet altijd betrouwbaar (daarom 'lucky')
+ \item \textbf{Regio II:} Dit is een regio gedomineerd door discretisatiefouten, het is wel een stabiele zone waar je als ingenieur wil zitten. Want naarmate dat je de elementen kleiner maakt, hoe kleiner de rekenfout wordt (en dit is mooi lineair zie je op de grafiek), dus de geometrie wordt steeds beter benaderd en fouten gereduceerd. De helling van deze dalende lijn is gelijk aan de polynoomorde (p) van je elementen. (Dit toon ik sebiet nog in een andere figuur)
+ \item \textbf{Regio III:} Deze regio is gedomineerd door numerieke fouten, je zou kunnen denken dat als je je elementen oneindig klein blijft maken, dat de fout nul wordt, maar dat is niet zo, want hier bots je op de limieten van de computer. De stijfheidsmatrix wordt gigantisch en afrondingsfouten beginnen op te tellen. Deze numerieke fout stijgt evenredig met de volgende relatie: SIZE$[K]^3$. Dus de totale fout stopt met dalen en buigt uiteindelijk weer naar boven. 
+\end{itemize}
+Er is ergens een optimum in het midden, rekentijd en nauwkeurigheid zijn hier in balans, dit kan je ook zien bij deze convergentieanalyse van rekentijd en accuraatheid van de uitkomst (deflectie):
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{convergencevssolvetime.png}
+  \caption{Convergentieanalyse: nauwkeurigheid vs. rekentijd}
+  \label{fig:convergencevssolvetime.png}
+ \end{figure}
+\subsection{Nagaan mesh kwaliteit}
+Voordat je op solve tikt, check je best je mesh na door even je geometrie onzichtbaar te maken, de software heeft meestal wel een 'check mesh' functie ook. Het controleerd voor vanalles zoals vervormde elementen, te grote aspect ratios, skewness, \dots. Maar ook op 'super imposed nodes', dit zijn overlappende knopen (heb je als je 2 meshes naast elkaar hebt getekend waardoor er op de grenslijn 2 knopen op exact zelfde coordinaat liggen), de structuur is daar niet continu.
+\newline
+\newline
+Als ontwerper kan je zelf ook de betrouwbaarheid van je mesh bestuderen, dit kan je met 2 methoden doen:
+\begin{itemize}
+    \item \textbf{Mesh convergence study:} Je maakt een grafiek van de rekenfout (of een relevante output zoals maximale spanning) tegen de elementgrootte op een log-log schaal. Je zoekt naar het punt waarop de fout begint te stabiliseren (Regio II in de vorige grafiek). Dit is een indicatie dat je voldoende verfijnd bent.
+    \item \textbf{Mesh sensitivity analysis:} Hierbij houd je het aantal elementen en knopen exact gelijk, maar verander je puur de vorm/topologie van het raster. Omdat het aantal elementen gelijk blijft, blijft je discretisatiefout nagenoeg hetzelfde. Als je oplossing dan tóch verandert door een ander patroon te trekken, weet je dat je last hebt van numerieke fouten veroorzaakt door de vorm van je elementen.
+\end{itemize}
+\subsubsection{Post processor checks}
+Na het rekenen als de simulatie klaar is kan je naar de spanningen kijken (NIET DE AVERAGE STRESSES), sinds lineaire elementen wiskundig maar 1 constante spanning over het hele element rekenen zou de exacte theoretische oplossing een getrapte grafiek zijn. Simulatiesoftware maakt deze trapjes mooi vloeien en in een doorlopend kleurenplaatje (averaging) maar om de meshkwaliteit te controleren wil je dat niet. (Sommige trappen kunnen groot verschillen opeens, wat je dus wilt checken, wat je dus NIET kan checken als dat uitgemiddeld is)
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{uitgemiddeldvsexactgetrapt.png}
+  \caption{Post-processing check: uitgemiddelde spanningen vs. exacte getrapte spanningen}
+  \label{fig:uitgemiddeldvsexactgetrapt.png}
+ \end{figure}
+We gebruiken de '50\% regel', als er een grote abrupte sprong is in spanningen tussen 2 elementen naast elkaar, is je mesh daar waarschijnlijk te grof (dus de spanning van elementen naast elkaar mag niet verschillen met een spanningssprong van 50\%)
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{kleurenspanningssprong.png}
+  \caption{Spanningsprong}
+  \label{fig:kleurenspanningssprong.png}
+ \end{figure}
+ Je ziet de figuur rechtsonder heeft een sprong van een rood element naar een groen element (veel te groot verschil) en de figuur daarboven is exact hetzelfde resultaat maar dan uitgemiddeld (en daar lijkt het wel goed, ookal is dat dus niet correct)
+\subsubsection{Automatische meshadaptatie}
+We kunnen de computer wel gewoon automatisch onze mesh doen aanpassen, je start gewoon met een grove mesh. De computer berekent het model en analyseert zelf de ongemiddelde spanningen, wanneer hij te grote sprongen (gradienten) ziet tussen naburige elementen gaat hij op die plaats lokaal verfijnen. Hij doet de simulatie dan opnieuw en checkt dit terug en herhaalt dit tot ze onder een door jou ingestelde acceptabele drempelwaarde liggen.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{meshadaptatie.png}
+  \caption{Automatische meshadaptatie}
+  \label{fig:meshadaptatie.png}
+ \end{figure}
+Die $\eta$ is de 'treshhold', het is proportioneel aan de sprong in spanningen tussen knopen, dit stel je als drempelwaarde in eigelijk. Dit voorbeeld is eigelijk belachelijk want je begint daar links met een model waar zws in die hoeken spanningsconcentraties zijn die naar oneindig gaan, je ziet dus ook helemaal rechts dat daar zeer verfijnd wordt. Logisch!
+\newline
+\newline
+Er was tijd over in de les dus Wim maakte deze figuur:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{convergentiegrafiekkrijt.png}
+  \caption{Convergentiegrafiek getekend met krijt op het bord}
+  \label{fig:convergentiegrafiekkrijt.png}
+ \end{figure}
+Dit is dus die lucky zone dat je ziet en die discretisatiezone met verschillende p waardes die hellingen bepalen.
+\newpage
+\chapter{Praktische overwegingen: Post-processing}
+Nu zijn we bij de laatste stap van het eindig elementen proces: de 'Post-processing'. Alles is opgelost wiskundig en nu is het aan jou om de resultaten te bekijken, te interpreteren en kritisch te controleren.
+\newline
+\newline
+We kijken niet zomaar naar de kleurrijke plaatjes die je kan zien in je solution, we splitsen het post-processing proces op in drie grote fases:
+\begin{itemize}
+ \item \textbf{Verificatie:} Controleer hier of de computer correct gerekend heeft, dus geen onlogische resultaten, check of er geen te grote numerieke- en discretisatiefouten zijn, hier kan je dus meestal nagaan of je mesh fijn genoeg was. (Dus : Computer iets mis?)
+ \item \textbf{Validatie:} Hier ga je controleren of de resultaten fysisch kloppen, dus of ze overeenkomen met wat je analytisch zou verwachten, of met experimentele data. Je gaat hier dus echt kijken of je model een goede representatie is van de realiteit. (Ga hier dus ook materiaalkeuzes en randvoorwaardes na, en check of je je geen foute aannames hebt gemaakt) (Dus: Jij iets mis?)
+ \item \textbf{Valorisatie:} Hier ga je de resultaten interpreteren in de context van je ontwerpvraag, dus welke conclusies kan je trekken, welke ontwerpbeslissingen kan je nemen op basis van deze resultaten, hier ga je dus echt kijken naar de praktische implicaties van je simulatie. Kunnen we aanpassingen, optimalisaties of verbeteringen maken? Je kan hier bvb. afmetingen van bouten ofzo bepalen. (Dus: Baas tevreden?)
+\end{itemize}
+\subsection{Post-processing variabelen}
+In je solution kan je echt ziek veel dingen bekijken, zoals: 
+\begin{itemize}
+ \item \textbf{Knoopverplaatsingen (Nodal displacements):} Dit kan je ook in amplitude of in aparte x,y,z componenten bekijken.
+ \item \textbf{Vervormingplot:} Dit kan contour of vectorieel (met pijltjes) zijn, je kan ook de vervorming vergroten zodat je beter kan zien waar de grootste vervormingen zitten. Vaak worden die dus overdreven groot getoond.
+ \item \textbf{Animaties:} Dit kan je zien maar is de meest nutteloze functie ooit, wat het gewoon doet is simpelweg de schaal van de vervorming veranderen, dit is niet eens tijdsafhankelijk.
+ \item \textbf{Spanningen:} zien we zometeen
+ \item $\cdots$
+\end{itemize}
+Ook kan je in \textbf{Local en Global (of 'user-defined') coördinaten} kijken, dit is vooral handig als je een plaat hebt die niet horizontaal ligt, dan kan je in de lokale coördinaten kijken naar de spanningen in de normale richting van de plaat (dus doorheen de dikte) en in de globale coördinaten kan je dan kijken naar de spanningen in x,y,z richting.
+\subsubsection{Aangelegde en Reactie krachten kan je ook bekijken}
+Dit kan ook in amplitude of in aparte x,y,z componenten. Ook kan local, global of user-defined coördinaten bekijken. Hier zien we een tabel van hoe die krachten eruit zien:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{loadssummaryoutputtable.png}
+  \caption{Krachten tabel}
+  \label{fig:loadssummaryoutputtable.png}
+ \end{figure}
+Hier zien we dus de totale krachten (de som) in verschillende richtingen, wat je kan opmerken is dat vanboven de som van de verschillende krachten daar vanonder staan en dat we ook momenten zien die berekend zijn met die krachten. Dit is dus typiscch hoe zo een tabel eruit ziet. Met $[k_e]$ kan je trouwens ook interne krachten berekenen. Dit is heel nuttig want soms is de som van de krachten in je model in een knoop 0 (door actie reactie), maar je wilt dus wel weten hoeveel kracht er geduwd of getrokken wordt aan 1 specifiek onderdeel. Als je in de software een rand weg snijd, kan je de exacte interne kracht bekijken die daar werkt, dit wordt dan zo berekend:
+\begin{align*}
+ [k_e] \{\tilde{u}_e\} = \{\tilde{F}_{internal}\}
+\end{align*}
+En dit kan over een gehele lengte gedaan worden, zoals je ook kan zien in deze figuur:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{internekrachten.png}
+  \caption{Interne krachten berekenen over edge}
+  \label{fig:internekrachten.png}
+ \end{figure}
+\subsubsection{Rek}
+Rek is ook iets dat door de computer wordt berekend op basis van de verplaatsingen, dit is dus via de [B]-matrix en de [N]-vormfunctiematrix, \textit{die hij op de achtergrond bewaard!} Dit kan dus ook in amplitude of x,y,z-componenten (axiale rek of shear rek). Ook in contour of vectorieel of in local, global en user-defined coordinaat systemen, echter wordt bij dit laatste om te transformeren de \textbf{cirkel van Mohr} gebruikt. (Dit doet die wel automatisch, dus geen zorgen om maken)
+\subsubsection{Spanningen}
+(Ff dit stukje door AI laten herschreven want mijn tekst was te slordig)
+\newline
+Alright, dus, we weten dat de spanningen als volgt worden berekend:
+\begin{align*}
+ \{\hat{\sigma}\} = [E][B]\{\tilde{u}\} = [E][\partial][N]\{\tilde{u}\}
+\end{align*}
+Wat belangrijk is om te weten, is dat de software de $[E]$-, $[B]$- en $[N]$-matrices op de achtergrond bewaart voor de post-processing. De spanningen worden namelijk in de basis niet exact op de knopen berekend, maar in de 'Gauss-punten' (integratiepunten, wiskundig binnenin de elementen) en worden vanuit daar pas geëxtrapoleerd naar de knopen.
+
+Je kan in de software enorm veel weergeven: de amplitude, de specifieke X-, Y- of Z-componenten (zoals normaalspanning of schuifspanning), en dit in contour- of vectorplots. Dit kan je ook in het globale, een lokale of een zelfgedefinieerde (user-defined) assenstelsel bekijken. Als je wisselt van assenstelsel, berekent de software deze transformatie ook hier op de achtergrond volautomatisch met de Cirkel van Mohr.
+
+Om deze spanningen correct te interpreteren, moet je twee belangrijke concepten strikt uit elkaar houden:
+
+\paragraph{1. Elemental vs. Nodal (Wáár kijk je?)}
+\begin{itemize}
+    \item \textbf{Elemental:} Bij een elemental weergave berekent en toont de software één enkele, stabiele spanning in het zwaartepunt (midden) van elk afzonderlijk element. Elk element krijgt hierdoor één egale kleur, maar de waarde valt vaak lager uit dan de absolute pieken aan de randen.
+    \item \textbf{Nodal (Corner data):} Hierbij worden de interne spanningswaarden vanuit de Gauss-punten wiskundig doorgetrokken (geëxtrapoleerd) naar de hoekpunten (knopen) van de mesh. Nodal weergaven tonen de échte lokale piekspanningen aan de randen van je elementen.
+\end{itemize}
+
+\paragraph{2. Averaged vs. Unaveraged (Wat doe je met de data op de knoop?)}
+Omdat er bij een \textit{nodal} weergave meerdere elementen samenkomen in één knoop, levert elk element wiskundig gezien een net iets andere spanningswaarde door voor ditzelfde punt.
+\begin{itemize}
+    \item \textbf{Unaveraged:} Dit toont de werkelijke (ruwe) resultaten van de solver. Alle verschillende waarden op een knoop blijven behouden, waardoor je de typische 'getrapte' spanningssprongen (discontinuïteiten) tussen de elementen onderling duidelijk ziet. Dit is verplicht om discretisatiefouten in je mesh op te sporen.
+    \item \textbf{Averaged:} De software neemt het gemiddelde van alle doorkomende waarden op die knoop. Het 'getrapte' effect verdwijnt compleet en je krijgt een prachtig gladgestreken en vloeiend kleurenverloop. Dit is gewoon iets om te presenteren (om je baas blij te maken of in je rapport te plakken), maar je moet beseffen dat het letterlijk fouten in je simulatie verbergt.
+\end{itemize}
+\subsubsection{Von Mises en de materiaalkeuze}
+Je kan ook kiezen om de hoofspanningen en de von mises spanningen te plotten. De hoofspanningen ($\sigma_I$,$\sigma_{II}$,$\sigma_{III}$) en de maximale schuifspanning ($\tau_{max}$) kunnen makkelijk met de Cirkel van Mohr afgeleid worden, maar de Von Mises spanning vereist een iets complexere berekening:
+\begin{align*}
+ \sigma_{VM} = \frac{1}{\sqrt{2}} \sqrt{(\sigma_x - \sigma_y)^2 + (\sigma_y - \sigma_z)^2 + (\sigma_z - \sigma_x)^2 + 6(\tau_{xy}^2 + \tau_{yz}^2 + \tau_{zx}^2)}
+\end{align*}
+\begin{warningbox}[Von Mises is voor ductiele materialen!]
+  Hoewel de computer dit altijd kan berekenen (want het zijn gewoon, en blijven gewoon, lineaire vergelijkingen) (dus ook voor brosse materialen), betekent het absoluut niks als je materiaal niet ductiel is, de Von Mises spanning laat je tonen wanneer materialen beginnen te vloeien, bij een bros materiaal kan je materiaal ni vloeien eh.
+\end{warningbox}
+In de video voegt hij nog toe: stel dat je de buiging van een simpele balk hebt gesimuleerd en je wilt kijken of jouw resultaat klopt met de analytische theorie (met de hand nagerekend). Kies in de software dan voor de normale buigspanning in de X-richting, en níét voor de Von Mises spanning. Een analytische formule voor buiging berekent namelijk gewoon de X-spanning en houdt geen rekening met de samengestelde Von Mises spanning. Je zou dan appels met peren vergelijken!
+\subsection{Verificatie}
+In dit stukje zien we een beetje herhaling van vorig hoofdstuk. Bij de verificatie gaan we checken of de numerieke- en discretisatiefouten acceptabel zijn. Door dus te kijken naar die spanningsprongen:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{spannignsprongverificatie.png}
+  \caption{Getrapte spanning}
+  \label{fig:spannignsprongverificatie.png}
+ \end{figure}
+Indien dus de sprong te groot? $\rightarrow$ Verfijn! \textbf{Kijk naar de unaveraged stress values!!!!!!!!!}
+\newline
+\newline
+Om te checken of je mesh goed is doe je dus een mesh convergentie study of een mesh sensitivity study (zagen we)
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{meshsensitivityvsmeshconvergence.png}
+  \caption{Mesh sensitivity analysis vs. Mesh convergence study}
+  \label{fig:meshsensitivityvsmeshconvergence.png}
+ \end{figure}
+En dus methoden voor verfijning zijn h-refinement, p-refinement en r-refinement. Hierna herhaalt de proff terug rap die mesh convergentie met die 3 regio's, hij zet hier nu wel deze nieuwe figuur bij die de 'rate of convergence' toont voor die error:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\textwidth]{rateofconvergence.png}
+  \caption{Rate of Convergence}
+  \label{fig:rateofconvergence.png}
+ \end{figure}
+Let zeker op voor \textbf{singulariteiten}, dit zijn dus die punten waar spanningen naar oneindig gaa (op scherpe hoeken, geconcentreerde puntlasten en uiteindeinden van RBE2 elementen omdat daar de knopen oneindig stijf aan elkaar vast zijn gemaakt), dit voorkomt waarschijnlijk dat je convergentie zal bereiken, want hoe kleiner je elementen maakt, hoe groter de spanningen worden. Je kan dit oplossen door een kleine afronding te maken in je model (fillet) of door een 'singularity element' te gebruiken dat speciaal ontworpen is om deze oneindige spanningen te benaderen.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{singulariteiten.png}
+  \caption{Singulariteiten}
+  \label{fig:singulariteiten.png}
+ \end{figure}
+Nu ging de proff terug naar die automatische adaptatie op singulariteiten, dit zagen we ook vorig hoofstuk, dus ik skip dit. Onthoud echt gewoon dat je fillets moet gebruiken en dus singulariteiten moet ontwijken want dit heeft anders geen nut om aan mesh verfijning te doen. \textbf{Een fillet convergeert wel naar een eindige waarde}. Mesh sensitiviteit (wat we ook zagen), kan ook toegepast worden om de vorm te veranderen (en het aantal knopen en elementen gelijk te houden) zodat zowel de discretisatie- als de numerieke fouten kunnen beïnvloed worden.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{meshsensitivieit.png}
+  \caption{Mesh sensitiviteit}
+  \label{fig:meshsensitivieit.png}
+ \end{figure}
+(Snap wel niet hoezo (b) hierbij hoort, idk misschien hoort deze figuur niet direct bij mesh sensitiviteit maar je kan allesinds zien dat de rest van deze modellen, andere vormen maar nog steeds evenveel knopen en elementen, hebben.)
+\subsubsection{Krachtenevenwicht controleren}
+Dit is een belangrijke praktische check die je in de software doet, dit is DE manier om te meten hoe groot de pure numerieke afrondingsfout van de computer is. We weten door $[K]\{\tilde{u}\} = \{\tilde{F}\}$ dat er per definitie een perfect krachtenevenwicht is, de som van alle aangelegde krachten moet exact gelijk zijn aan de som van de reactiekrachten (dus een krachtevenwicht ALTIJD). Maar kijk nu eens naar de volgende output van de solver:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{outputsolver.png}
+  \caption{Output Solver}
+  \label{fig:outputsolver.png}
+ \end{figure}
+We zien hier dat in de X en Z-richting er geen krachten zijn aangelegd (APP. = APPLIED), toch berekent de computer een (superkleine) reactiekracht van 2.389E-10. Dit is dus duidelijk onze numerieke fout dan. Het is doordat de computer duizenden breuken optelt en afrondt, door hiernaar te kijken weet je wel hoe betrouwbaar de simulatie is, hier dus tot op de $10^{-10}$ decimaal. Ook is er bij die momenten dan een fout/afronding want M = F*L.
+\newline
+\newline
+Nog één grote laatste waarschuwing wel is dat, zelfs als de wiskundige en mesh perfect zijn (wat je in verificatie test), dit niet percee betekent dat je resultaat in de echte wereld ook klopt. Bij verificatie checken we namelijk gewoon op fouten die ontstaan door slechte meshkwaliteit of wiskundige berekeningen. Bij validatie gaan we echt de fouten in aannames van de ontwerper nagaan.
+\subsection{Validatie}
+Voordat we de resultaten gaan vergelijken met de fysieke realiteit, gaan we controleren of de lineaire aannames van de software geldig zijn. Als één van de volgende vier checks faalt, is het lineair resultaat ongeldig en heeft het geen zin om aan de validatie te beginnen.
+\subsubsection{'Preliminary Checks' (Lineaire aannames controleren)}
+\begin{itemize}
+ \item \textbf{1. Check of er onrealistische spanningsconcentraties in je model zitten:
+ \newline}
+ Liggen deze buiten ons interessegebied? Negeer ze dan. Liggen ze erbinnen? Dan kan je ze niet negeren dus ga je je model moeten aanpassen.
+ \item \textbf{2. Check of de vloeigrens (yield stress) niet overschreden wordt:}
+ \newline
+ Het eindige elementen model gaat ervan uit dat het materiaal perfect lineair elastisch gedraagt (geen plastische vervorming), als de spanningen in je model hoger zijn dan de vloeigrens van het materiaal, dan is deze aanname niet meer geldig (en is $[E] \neq \text{Cte}, E = f(\hat{\epsilon}) = g(\tilde{u})$) en moet je een niet-lineaire analyse uitvoeren. Dit is een iteratief proces waarbij de computer telkens opnieuw de stijfheid berekent naarmate het materiaal vloeit, het werkt als volgt:
+ \begin{gather*}
+  \text{1. Schat } \tilde{u} \\
+  \text{2. Bereken } [E] \text{ op basis van } \tilde{u} \\
+  \text{3. Vind} [K] \\
+  \text{4. Bereken } \tilde{u} \text{ opnieuw met } [K] \\
+  \text{5. Herhaal dit proces tot } \tilde{u} \text{ convergeert}
+ \end{gather*}
+ \item \textbf{3. Check of de vervormingen klein zijn:}
+ \newline
+ Check visueel of de doorbuiging of verplaatsing van je model klein is gebleven, als die te groot zijn gaat je geometrie van je structuur hard veranderen (idk bout you guys, maar dit heb ik wel al vaak gehad in de oefensessies, zo weet je zeker als het fout is). Als je weet dat er grote vervormingen gaan optreden (waardoord bvb. de vormfuncties of richting van de belasting veranderen), moet je ook overschakelen op een niet-lineaire iteratieve berekening die de globale matrix [K] en de krachten continu updatet aan de hand van de nieuwe, vervormde vorm. Dus ($\{\tilde{F}\} = f(\tilde{u})$ en $[N] = g(\tilde{u}) \rightarrow$ iteratieve procedure):
+ \begin{gather*}
+  \text{1. Schat } \tilde{u} \\
+  \text{2. Bereken } \{\tilde{F}\} \text{en} [N] \text{ op basis van } \tilde{u} \text{(doe dit op een nieuwe mesh)} \\
+  \text{3. Vind } [K] \\
+  \text{4. Bereken } \tilde{u} \text{ opnieuw met } [K] \\
+  \text{5. Herhaal dit proces tot } \tilde{u} \text{ convergeert}
+ \end{gather*}
+ \item \textbf{4. Check of er geen overlap van meshes is:}
+ \newline
+ Dit is eerder al wat besproken maar hoort dus ook tot de validatie, check altijd of er geen 2 losse onderdelen in je model plotseling dwars door elkaar heen bewegen. Dit kan je zien door in de software de \textit{'schaalfactor van de vervormingsweergave'} op \textbf{1.0 (unscaled)} te zetten, want anders overdrijft de software en gaat het rapper lijken dat meshes overlappen terwijl dit niet zo is. Als ze bij deze setting TOCH nog overlappen, betekend het dat ze in de realiteit effectief botsen. Je gaat dan een \textbf{Contact Boundary Condition} moeten definiëren. Dit is terug een niet-lineair, iteratief bereken proces (B.C. $= g(\tilde{u}) \rightarrow$ iteratieve procedure):
+  \begin{gather*}
+    \text{1. Schat } \tilde{u} \\
+    \text{2. Als de meshes niet overlappen: 'free edge', als meshes wel overlappen: gebruik een Glue B.C.} \\
+    \text{3. Vind nieuwe B.C. ([K] blijft constant)} \\
+    \text{4. Bereken } \tilde{u} \text{ opnieuw} \\
+    \text{5. Herhaal dit proces tot convergentie}
+  \end{gather*}
+(Ik ga eerlijk zijn, deze snap ik niet zo goed)
+\end{itemize}
+Nu we deze checks hebben gedaan, kunnen we aan de echte validatie beginnen en controleren of ons model de fysieke realiteit correct nabootst.
+\subsubsection{Vervorming}
+De eerste check dat je doet is visueel naar het vervormingsbeeld van je model kijken, je kijkt hier of de randvoorwaarden die je hebt ingesteld ook effectief doen wat ze moeten doen in de theorie.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{vrijheidsgradentabel.png}
+  \caption{}
+  \label{fig:vrijheidsgradentabel.png}
+ \end{figure}
+Dus alles wat je hebt vastgezet (vrijheidsgraden van translaties en rotaties en inklemming en $\cdots$) uit deze tabel moet dan overeenkomen met het vervormingsbeeld.
+\newline
+\newline
+Hetzelfde geld ook als je symmetrie toepast, check dan ook hier voor je vrijheidsgraden:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{symmetrievrijheidsgraden.png}
+  \caption{Symmetrie vrijheidsgraden}
+  \label{fig:symmetrievrijheidsgraden.png}
+\end{figure}
+\begin{warningbox}[Typische examenvraag]
+  Wim zei in de les dat een typische examenvraag zou kunnen zijn dat je uit een gekleurd plaatje (vervormingsbeeld) moet kunnen afleiden waar het model is ingeklemd en waar er aan getrokken wordt (dus wat de belasting is).
+\end{warningbox}
+Wat je ook kan doen om te checken is dus de vervorming eerst analytisch berekenen, soms kan je dit dus doen met de Hibbeler formules, als die niet te veel afwijken van je model toch, zoals in volgende figuur:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{vervormingmethibbelertabel.png}
+  \caption{L-vorm model met analytische formule voor kracht op balk}
+  \label{fig:vervormingmethibbelertabel.png}
+ \end{figure}
+Deze model komt niet helemaal overeen met de analytische formule van een kracht op een balk, maar wat je wel kan checken is of de orde van de uitkomst hiermee overeenkomt met dat van je model dat je hebt berekent, aangezien ze niet zo veel verschillen. Als je ziet dat deze met een factor 10 verschilt, dan klopt er waarschijnlijk iets niet. (Je kijkt hier trouwens naar een x,y,z component eh! Niet naar de magnitude!)
+\subsubsection{Spanningen}
+Spanningen kan je ook valideren door na te denken over de theorie. Op de vrije randen van je model waar geen belasting werkt, moet de normaalspanning nul zijn en de schuifspanning ook ($\sigma_n = 0$ en $\tau_{nj} = 0$). Ook kan je de spanning op bepaalde subdelen van het model met standaard formules berekenen en kijken of die ongeveer overeen komen (met bvb. $\sigma = \frac{M*y}{I}$).
+\newline
+\newline
+Nog iets dat je weet, is dat op de neutrale vezel er GEEN spanning is (als je toch met buiging te maken hebt).
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{neutraleeeevezel.png}
+  \caption{Neutrale vezel}
+  \label{fig:neutraleeeevezel.png}
+ \end{figure}
+\begin{warningbox}[Vergelijk niet met Von Mises!]
+ Als je je FEA-model wilt vergelijken met een analytische sterkteleerformule zoals $\sigma = \frac{M*y}{I}$, vergelijk deze dan NOOIT met Von Mises spanning! Die analytische formules zijn voor zuivere x of y spanningen, Von Mises combineert alle 3D componenten. Wim zegt dat dit is zoals \textit{'appelen met peren vergelijken'.}
+\end{warningbox}
+Als je een gat of een inkeping in je model hebt, zal daar een spanningsconcentratie optreden. Je kan controleren of de computer deze piek juist berekent door theoretische spanningsconcentratiefactoren (uit handboeken zoals Roark's Formulas) te gebruiken.
+\subsubsection{Experimenteel}
+Als handberekeningen niet volstaan kan je ook altijd je model valideren door een lab in te duiken en fysiek te testen lol. Zorg gewoon dat u fysieke opstelling exact dezelfde randvoorwaarden heeft als het computer model, of andersom! Je kan ook je computermodel gebruiken om te zien waar je best rekstrookjes of sensoren plaatst op je fysieke model in het lab. In het echt gaan de resultaten nooit perfect overeenkomen door te veel onzekerheden en aannames, daarom wordt een afwijking (foutmarge) van 10\% tot 15\% tussen de experimentele test en computersimulatie in de industrie beschouwd als een zeer goede en succesvolle validatie.
+\subsection{Valorisatie}
+Wat ga je nu doen met de resultaten om je ontwerp te beteren? Vaak stoppen studenten en ingenieurs te vroeg, ze kijken of de vervorming acceptabel is en of de spanning onder de vloeigrens blijft, en als dit zo is zijn ze tevreden en sluite ze het programma, dit is 'zonde' zegt Wim. Als je spanning overal veel lager is dan de vloeigrens is je ontwerp te sterk (en dus te zwaar en duur). Valorisatie betekent dat je eigelijk proactief wijzigingen voorstelt, je gaat bvb. materiaal weghalen op plekken waar het niks doet of lokaal verstevigingen toevoegen op plekken waar het model dreigt te falen.
+\subsubsection{Lineaire superpositie (de maximale belasting voorspellen)}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{lineairesumiluatie.png}
+  \caption{Lineair gedrag gaat tot oneindig}
+  \label{fig:lineairesumiluatie.png}
+ \end{figure}
+Wanneer een simulatie lineair is, kunnen we het principe van lineaire superpositie toepassen. Dit betekent dat iteratieve procedures (zoals trial-and-error om de maximale belasting te vinden) compleet overbodig zijn.
+
+De algemene theorie op de slides stelt dat belastingen en hun resulterende spanningen ($\sigma$), schuifspanningen ($\tau$) en vervormingen ($\delta$) perfect evenredig schalen:
+\begin{align*}
+    P_1 &\rightarrow \sigma_1, \tau_1, \delta_1 \\
+    P_2 &\rightarrow \sigma_2, \tau_2, \delta_2
+\end{align*}
+Wanneer we deze combineren met willekeurige schaalfactoren $a$ en $b$, krijgen we de superpositievergelijking:
+\begin{equation*}
+    aP_1 + bP_2 \rightarrow a\sigma_1 + b\sigma_2, \ a\tau_1 + b\tau_2, \ a\delta_1 + b\delta_2
+\end{equation*}
+
+\paragraph{Praktische toepassing: Maximale belasting bepalen}
+Om de maximale belasting te berekenen zonder de computer telkens opnieuw te laten rekenen, vullen we de bovenstaande theorie van de slide als volgt in:
+\begin{itemize}
+    \item \textbf{Load case 1 ($P_1$):} De vaste belasting (bijvoorbeeld het eigen gewicht). Omdat deze belasting een vaste waarde heeft en we die niet willen schalen, stellen we de schaalfactor in op $\boldsymbol{a = 1}$. Dit levert een basisspanning op van $1 \cdot \sigma_1$.
+    \item \textbf{Load case 2 ($P_2$):} De extra test-belasting (bijvoorbeeld een dummy-kracht van exact $1\text{ kN}$). Dit levert een test-spanning op van $\sigma_2$. De schaalfactor $\boldsymbol{b}$ is in dit geval de onbekende variabele (deze factor wordt in de praktijk ook vaak $\alpha$ genoemd).
+\end{itemize}
+
+De totale spanning in de constructie is de som van deze twee delen:
+\begin{equation*}
+    \sigma_{totaal} = 1 \cdot \sigma_1 + b \cdot \sigma_2
+\end{equation*}
+
+We weten dat de constructie faalt zodra deze totale spanning de vloeigrens van het materiaal ($\sigma_{yield}$) overschrijdt. We stellen $\sigma_{totaal}$ dus gelijk aan $\sigma_{yield}$ en vormen de formule om, om zo de maximaal toegestane schaalfactor $b$ te vinden:
+\begin{equation*}
+    1 \cdot \sigma_1 + b \cdot \sigma_2 \le \sigma_{yield} \implies b \le \frac{\sigma_{yield} - \sigma_1}{\sigma_2}
+\end{equation*}
+
+Zodra je de onbekende factor $b$ hebt berekend, is je maximaal toegelaten belasting simpelweg:
+\begin{equation*}
+    P_{max} = b \cdot P_2
+\end{equation*}
+
+\paragraph{!! Belangrijke Waarschuwing !!}
+Zoals expliciet vermeld op de slide: \textbf{Voor verschillende load cases is superpositie niet altijd geldig voor de Von Mises spanningen!!} \\
+Omdat de Von Mises spanning via een complexe wortelformule en kwadraten wordt berekend, is dit wiskundig gezien een niet-lineaire variabele. Je mag de Von Mises spanningen uit twee aparte load cases dus \textit{nooit} zomaar algebraïsch optellen. Lineaire superpositie mag enkel worden toegepast op de fundamentele 3D-componenten (zoals de afzonderlijke normaalspanningen $\sigma$ en schuifspanningen $\tau$).
+\subsubsection{Reverse Engineering}
+Het probleem gaat als volgt:
+\newline
+Je wil een constructie met balken doorrekenen in je simulatiesoftware. De software eist echter dat je vooraf al exact vertelt welk type balk en welke afmetingen je gebruikt, anders kan het programma de stijfheid niet berekenen. Maar jij wéét die afmetingen nog helemaal niet, want je bent nog bezig met het ontwerp!
+Als je dit zonder trucje probeert op te lossen, moet je urenlang gokken: je kiest een willekeurig profiel, laat de computer rekenen, ziet dat de spanning te hoog is en de balk breekt, kiest een dikker profiel, laat de computer wéér rekenen, enzovoort. Dit iteratieve proces (trial-and-error) is dom en kost extreem veel tijd.
+\newline
+\newline
+We willen dit iteratieve proces vermijden, dit kunnen we doen door exact met één simulatie te bepalen welk balkprofiel we nodig hebben. We tekenen gewoon in onze software lijnen en zetten daar een verzonnen dwarsdoorsnede op. Omdat je deze doorsnede kent, ken je dan ook de term $(\frac{I}{y_{max}})_{known}$, je zet krachten erop en laat de computer één keer rekenen, de software berekent de maximale buigspanning ($\sigma_x$) en de basisformule voor buiging is:
+\begin{align*}
+  \sigma_x = M (\frac{y_{max}}{I})_{known}
+\end{align*}
+Dit kan je omvormen om het interne buigmoment (M) in de balk te vinden. Hierna kijk je naar het materiaal dat je echt wil gebruiken (bvb. staal), dit materiaal heeft een vloeigrens ($\sigma_{max,mat}$). Als je nu dit berekende buigmoment daar door dellt krijg je $(\frac{I}{y_{max}})_{required}$, dit is de term die je nodig hebt om te zorgen dat de maximale spanning in je balk onder de vloeigrens blijft. Nu kan je gewoon in een handboek van profielen kijken welke balken een $(\frac{I}{y_{max}})$ hebben die groter is dan deze vereiste waarde, en zo weet je meteen welk profiel je nodig hebt zonder dat je urenlang hoeft te gokken!
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{catalogus.png}
+  \caption{I-profielen catalogus}
+  \label{fig:catalogus.png}
+ \end{figure}
+\subsubsection{Dimensioneren van verbindingen}
+Vaak wil je een echte bout, lasnaad of lijmlaag volledig in 3D uittekenen en simuleren maar dat is te complex en kost dus te veel rekentijd, de oplossing is dus de platen verbinden met RBE elementen. Dan laat je de software gewoon de internekrachten (normaalkrachten of dwarskrachten) die door deze lijn dan gaan berekenen. Met deze krachten kan je uit je theorieboek van Roloff/Matek de boutdiameter, lasdikte of lijmsterkte bepalen.
+\subsubsection{Je ontwerp verbeteren via 'Strain energy'}
+Ik had het dus eerder over hoe je model te veel kan wegen of te sterk of zwak zijn, waar moet je dan materiaal weghalen of toevoegen? In de software puur naar de spanningen kijken is niet het beste overzicht om je vorm te optimaliseren. Je gaat naar de elastische energie die in elementen is opgeslagen kijken. Dit vertelt eigelijk waar je model het 'hardst werkt'. Deze energie wordt beschreven door:
+\begin{align*}
+ \int_{\Omega_E}\frac{1}{2} \epsilon^T \sigma d\Omega
+\end{align*}
+Plaatsen met zo een hoge energie zijn dus plaatsen waar je model het hardst werkt, hier kan je dus beter materiaal toevoegen. Plaatsen met een lage energie zijn plaatsen waar je model weinig doet, hier kan je dus beter materiaal weghalen. Vaak kunnen deze regios bepaald worden VOOR je een FEA doet, dit is een veel betere manier om te zien waar je ontwerp verbeterd kan worden dan gewoon naar de spanningen te kijken.
+\newline
+\newline
+Dit handmatig doen is super moeilijk want het is hier weer zo een iteratief proces eigelijk (dat je dan handmatig doet), we kunnen de computer dit wel laten doen, dit heet \textbf{topologische optimalisatie}. Je draait het ontwerpproces om eigelijk, dus ipv een gedetailleerd onderdeel te tekenen geef je de computer gewoon een blok eigelijk (design space) en laat je hem zelf in stukken wegsnijden, de computer doet dit in de volgende stappen:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{toplogicaloptimizatioin.png}
+  \caption{Topological optimization}
+  \label{fig:toplogicaloptimizatioin.png}
+ \end{figure}
+Je start dus met je basisgeometrie en hier ga je een mesh van maken, de computer mag ni zomaar alles wegsnijden dus je legt regels/grenzen op. De computer gaat dan plaatsen met lage strain energy zoeken en haalt daar virtueel materiaal weg. (Hij haalt het niet weg, hij zet eigelijk de dichtheid en stijfheid (E-modulus) van die elementen op nul). Het resultaat is een vreemde bot-achtige structuur die in de laatste stap van de software mooi glad gestreken (smoothing) word. Dan word hier een nieuwe mesh over gelegd. (Er is een mooie video hiervan op de slides/op toledo, hij wordt in de lesopname ook afgespeeld)
 \end{document}
-
-
