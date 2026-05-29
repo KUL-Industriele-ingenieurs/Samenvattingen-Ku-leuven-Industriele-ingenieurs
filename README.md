@@ -13,6 +13,9 @@ Welkom bij de samenvattingen voor Industriële Ingenieurswetenschappen aan de KU
 
 Deze repository zijn mijn notities en samenvattingen die ik gemaakt heb door het jaar heen. Ik heb ze open-source gemaakt zodat medestudenten ze kunnen gebruiken maar ook zelf kunnen verbeteren als ze willen.
 
+
+### 📥 Download Laatste Versie
+- [**Download alle PDF's (ZIP)**](https://nightly.link/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/workflows/latex-build.yml/MAIN/pdfs.zip)
 ---
 
 ## 📚 Vakkenoverzicht
