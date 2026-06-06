@@ -6,7 +6,7 @@ In dit deel van distributie van elektrische energie en in de industrie spreken w
 *Middenspanning* (bijv. 10kV - 30kV) is wettelijk gezien eigenlijk ook een hoogspanning, maar wordt in de praktijk gebruikt om de regionale verdeling aan te duiden.
 
 #figure(
-  image("het grid.png", width: 5cm),
+  image("assets/het grid.png", width: 5cm),
   caption: [Het grid],
   label: <fig:het-grid>,
 )
@@ -96,7 +96,7 @@ In dit deel van distributie van elektrische energie en in de industrie spreken w
 
 
 #wrap-figure(
-  image("optimalisatie.png", width: 6cm),
+  image("assets/optimalisatie.png", width: 6cm),
   caption: [optimalisatie],
   label: <fig:optimalisatie>,
 )[
@@ -126,7 +126,7 @@ Je hebt in de elektriciteitssector drie belangrijke rollen:
 + *Consument*: Wij, de eindgebruikers van de elektriciteit.
 
 #figure(
-  image("elektriciteitssector.png", width: 5cm),
+  image("assets/elektriciteitssector.png", width: 5cm),
   caption: [elektriciteitssector],
   label: <fig:elektriciteitssector>,
 )
@@ -138,7 +138,7 @@ Tot slot zijn er *regulatoren* die de energiemarkt in de gaten houden. Ze zien e
 
 + *Radiaal net:* (Typisch voor laagspanningsdistributie)
   #figure(
-    image("radiaal net.png", width: 3cm),
+    image("assets/radiaal net.png", width: 3cm),
     caption: [radiaal net],
     label: <fig:radiaal-net>,
   )
@@ -147,14 +147,14 @@ Tot slot zijn er *regulatoren* die de energiemarkt in de gaten houden. Ze zien e
   - *Nadeel:* Geen redundantie. Een fout in de hoofdkabel schakelt alle achterliggende verbruikers uit.
 + *Ring net:* (Typisch voor middenspanningsdistributie)
   #figure(
-    image("ring net.png", width: 3cm),
+    image("assets/ring net.png", width: 3cm),
     caption: [ring net],
     label: <fig:ring-net>,
   )
   Een ringnet is gesloten in een lus, waardoor redundantie ontstaat. Als er een kabel of transformator uitvalt, kan men de fout isoleren en de stroom via de andere kant van de ring naar de verbruikers sturen.
 + *Mesh net:* (Typisch voor hoogspanningstransmissie)
 #figure(
-  image("mesh net.png", width: 5cm),
+  image("assets/mesh net.png", width: 5cm),
   caption: [mesh net],
   label: <fig:mesh-net>,
 )
@@ -167,7 +167,7 @@ Om het actieve en reactieve verbruik in deze driefasige netten te meten, gebruik
 #theorie(title: "Korte herhaling wisselstroom")[
 
   #wrap-figure(
-    image("wattmetermethodes.png", width: 8cm),
+    image("assets/wattmetermethodes.png", width: 8cm),
     caption: [Wattmetermethodes],
     label: <fig:wattmetermethodes>,
   )[

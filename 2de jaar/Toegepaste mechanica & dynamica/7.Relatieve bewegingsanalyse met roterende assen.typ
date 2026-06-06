@@ -27,7 +27,7 @@ Om dit op te lossen gaan we een roterende assenstelsel gebruiken. Dit is een ass
 
 === Snelheid
 #figure(
-  image("roterend assenstelse.png", width: 10cm),
+  image("assets/roterend assenstelse.png", width: 10cm),
   caption: [roterend assenstelsel],
   label: <fig:roterend-assenstelsel>,
 )
@@ -108,7 +108,7 @@ Nu willen we nog de versnelling van B beschrijven. We gaan terug onze term aflei
 
 #oefening(title: "Oefening 1: 16.18")[
   #figure(
-    image("Oefening 16.18.png", width: 10cm),
+    image("assets/Oefening 16.18.png", width: 10cm),
     caption: [Oefening 16.18],
     label: <fig:Oefening-16.18>,
   )
@@ -125,7 +125,7 @@ Nu willen we nog de versnelling van B beschrijven. We gaan terug onze term aflei
   *Oplossing*\
 
   #figure(
-    image("figuur 1 oefening 16.18.png", width: 4cm),
+    image("assets/figuur 1 oefening 16.18.png", width: 4cm),
     caption: [figuur 1 oefening 16.18],
     label: <fig:figuur-1-oefening-16.18>,
   )
@@ -169,7 +169,7 @@ Nu willen we nog de versnelling van B beschrijven. We gaan terug onze term aflei
 #oefening(title: "Oefening 3 16.20")[
 
   #figure(
-    image("oefening 16.20.png", width: 10cm),
+    image("assets/oefening 16.20.png", width: 10cm),
     caption: [oefening 16.20],
     label: <fig:oefening-16.20>,
   )
@@ -186,7 +186,7 @@ Nu willen we nog de versnelling van B beschrijven. We gaan terug onze term aflei
   *Oplossing*\
 
   #figure(
-    image("figuur 16.20.png", width: 5cm),
+    image("assets/figuur 16.20.png", width: 5cm),
     caption: [figuur 16.20],
     label: <fig:figuur-16.20>,
   )
@@ -258,7 +258,7 @@ Nu willen we nog de versnelling van B beschrijven. We gaan terug onze term aflei
 ]
 
 #figure(
-  image("oefening 6 16.141 alt.png", width: 12cm),
+  image("assets/oefening 6 16.141 alt.png", width: 12cm),
   caption: [oefening 6 16.141 alt],
   label: <fig:oefening-6-16.141-alt>,
 )
@@ -267,11 +267,11 @@ Nu willen we nog de versnelling van B beschrijven. We gaan terug onze term aflei
 #oefening(title: "Oefening 6 16.141 (ALT)")[
 
   #figure(
-    image("oefening 6 16.141 alt.png", width: 12cm),
+    image("assets/oefening 6 16.141 alt.png", width: 12cm),
     caption: [oefening 6 16.141 alt],
   )
   #figure(
-    image("oefening 16.141 alt.png", width: 5cm),
+    image("assets/oefening 16.141 alt.png", width: 5cm),
     caption: [oefening 16.141 alt],
   )
 

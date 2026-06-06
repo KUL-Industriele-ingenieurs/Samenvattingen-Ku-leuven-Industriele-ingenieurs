@@ -14,7 +14,7 @@ De som van alle momenten is gelijk aan het traagheidsmoment maal de hoekversnell
 Bekijk de figuur hieronder:
 
 #figure(
-  image("Rotatie rond O.png", width: 6cm),
+  image("assets/Rotatie rond O.png", width: 6cm),
   caption: [Rotatie rond O],
   label: <fig:Rotatie-rond-O>,
 )

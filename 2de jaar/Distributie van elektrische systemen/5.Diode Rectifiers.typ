@@ -5,7 +5,7 @@
 == Herhaling Diodes
 
 #figure(
-  image("Karaktiristieken van een diode.png", width: 12cm),
+  image("assets/Karaktiristieken van een diode.png", width: 12cm),
   caption: [Karaktiristieken van een diode],
   label: <fig:Karaktiristieken-van-een-diode>,
 )
@@ -31,7 +31,7 @@ Je diode kan dus tegenstromen hebben.
 === Single Phase Half Wave Rectifier
 
 #figure(
-  image("Single-phase half recertifier.png", width: 12cm),
+  image("assets/Single-phase half recertifier.png", width: 12cm),
   caption: [Single-phase half recertifier],
   label: <fig:Single-phase-half-recertifier>,
 )
@@ -48,7 +48,7 @@ $ overline(U_0) = sqrt(2)/pi dot U_b $
 === Single Phase Full wave Rectifier
 
 #figure(
-  image("Full-wave diode rectiefier.png", width: 12cm),
+  image("assets/Full-wave diode rectiefier.png", width: 12cm),
   caption: [Full-wave diode rectiefier],
   label: <fig:Full-wave-diode-rectiefier>,
 )
@@ -67,7 +67,7 @@ Het gemiddelde uitgangsspanning is:
 
 
   #figure(
-    image("Pulse nummer.png", width: 5cm),
+    image("assets/Pulse nummer.png", width: 5cm),
     caption: [Pulse nummer],
     label: <fig:Pulse-nummer>,
   )
@@ -85,7 +85,7 @@ Het gemiddelde uitgangsspanning is:
   Zet de juiste diodes afhankelijk van het gegeven circuit:
 
   #figure(
-    image("Oefening rectifier.png", width: 5cm),
+    image("assets/Oefening rectifier.png", width: 5cm),
     caption: [Oefening rectifier],
     label: <fig:Oefening-rectifier>,
   )
@@ -107,7 +107,7 @@ Het gemiddelde uitgangsspanning is:
 We nemen terug een full-wave rectifier maar nu met een weerstand als load $R$
 
 #figure(
-  image("Commutatie.png", width: 12cm),
+  image("assets/Commutatie.png", width: 12cm),
   caption: [Commutatie],
   label: <fig:Commutatie>,
 )
@@ -120,7 +120,7 @@ We gaan een ideale batterij toevoegen aan de load. Deze gaat alleen stroom lever
 $ v_s > v_b $
 
 #figure(
-  image("Commutatie batterij alt.png", width: 12cm),
+  image("assets/Commutatie batterij alt.png", width: 12cm),
   caption: [Commutatie batterij alt],
   label: <fig:Commutatie-batterij-alt>,
 )
@@ -138,7 +138,7 @@ Wat gaat er nu gebeuren als je inductieve belasting toevoegt?
 === Inductieve belasting
 
 #figure(
-  image("Inductieve-resitieve load.png", width: 5cm),
+  image("assets/Inductieve-resitieve load.png", width: 5cm),
   caption: [Inductieve-resitieve load],
   label: <fig:Inductieve-resitieve-load>,
 )
@@ -152,7 +152,7 @@ Herinner je dat een spoel de voltage verschillen gaat tegengaan. Die doet dit do
 Je stroom $i_0$ gaat achterlopen op de spanning $v_s$ door de spoel.
 
 #figure(
-  image("Half-wave rectifier met inductieve belasting.png", width: 12cm),
+  image("assets/Half-wave rectifier met inductieve belasting.png", width: 12cm),
   caption: [Half-wave rectifier met inductieve belasting],
   label: <fig:Half-wave-rectifier-met-inductieve-belasting>,
 )
@@ -175,7 +175,7 @@ $ v_l = L (d i) / (d t) $
 Net zoals bij de half-wave rectifier gaat de stroom $i_0$ achterlopen op de spanning $v_s$ door de spoel. Maar je krijgt nu een soort uitsmering van de spanning omdat de voltage $v_0$ niet helemaal nul wordt.
 
 #figure(
-  image("Full-wave rectifier met inductieve belasting.png", width: 12cm),
+  image("assets/Full-wave rectifier met inductieve belasting.png", width: 12cm),
   caption: [Full-wave rectifier met inductieve belasting],
   label: <fig:Full-wave-rectifier-met-inductieve-belasting>,
 )
@@ -185,7 +185,7 @@ Net zoals bij de half-wave rectifier gaat de stroom $i_0$ achterlopen op de span
 ==== Heel hoge inductieve belasting
 
 #figure(
-  image("Heel hoge inductieve belasting met full wave rectifier.png", width: 12cm),
+  image("assets/Heel hoge inductieve belasting met full wave rectifier.png", width: 12cm),
   caption: [Heel hoge inductieve belasting met full wave rectifier],
   label: <fig:Heel-hoge-inductieve-belasting-met-full-wave-rectifier>,
 )
@@ -196,7 +196,7 @@ De diodes gaat dan enorm hard schakelen omdat er direct 90° verandering is van 
 
 
 #figure(
-  image("Net Inductantie.png", width: 15cm),
+  image("assets/Net Inductantie.png", width: 15cm),
   caption: [Net Inductantie],
   label: <fig:Net-Inductantie>,
 )
@@ -211,7 +211,7 @@ Dit is de reden dat diodes niet volledig efficient zijn. Dit phenoneem is in de 
 Hieronder is de figuur van de powerquality van een 3 fase systeem waar je duidelijk sprongen zien in je voltage door de diodes
 
 #figure(
-  image("Power quality van diodes.png", width: 10cm),
+  image("assets/Power quality van diodes.png", width: 10cm),
   caption: [Power quality van diodes],
   label: <fig:Power-quality-van-diodes>,
 )
@@ -223,7 +223,7 @@ Dus met alles te samen:
 - spoel door diodes die snelle switching tegengaan.
 
 #figure(
-  image("Alles tesamen loads op diode rectifiers.png", width: 12cm),
+  image("assets/Alles tesamen loads op diode rectifiers.png", width: 12cm),
   caption: [Alles tesamen loads op diode rectifiers],
   label: <fig:Alles-tesamen-loads-op-diode-rectifiers>,
 )
@@ -245,7 +245,7 @@ Als je de standaard AC input krijgt wordt die gesmooth door de capaciteit in par
 Je ziet op de grafiek dat eerst alle negatieve spanningen worden tegengehouden door de diode. En daarna komt hij pas bij de output.
 
 #figure(
-  image("Capacitieve load.png", width: 12cm),
+  image("assets/Capacitieve load.png", width: 12cm),
   caption: [Capacitieve load],
   label: <fig:Capacitieve-load>,
 )
@@ -261,14 +261,14 @@ Laten we dit verder bekijken met terug onze *brug rectiefier*
 === Capacitieve load met brug rectiefier
 
 #figure(
-  image("Capacitieve brug rectifier.png", width: 12cm),
+  image("assets/Capacitieve brug rectifier.png", width: 12cm),
   caption: [Capacitieve brug rectifier],
   label: <fig:Capacitieve-brug-rectifier>,
 )
 
 
 #wrap-figure(
-  image("Capicitieve stroom.png", width: 4cm),
+  image("assets/Capicitieve stroom.png", width: 4cm),
   caption: [Capicitieve stroom],
   label: <fig:Capicitieve-stroom>,
 )[
@@ -280,7 +280,7 @@ Laten we dit verder bekijken met terug onze *brug rectiefier*
   Alles te samen wordt dit onze capacitieve netstroom:
 
   #figure(
-    image("Capicitieve netstroom.png", width: 10cm),
+    image("assets/Capicitieve netstroom.png", width: 10cm),
     caption: [Capicitieve netstroom],
     label: <fig:Capicitieve-netstroom>,
   )
@@ -300,13 +300,13 @@ Laten we dit verder bekijken met terug onze *brug rectiefier*
 Dus nu hebben we terug rectiefiers maar nu willen we 3 fase systemen balanceren zodat we een constante stroom hebben.
 
 #figure(
-  image("3 diode rectifiers.png", width: 10cm),
+  image("assets/3 diode rectifiers.png", width: 10cm),
   caption: [3 diode rectifiers],
   label: <fig:3-diode-rectifiers>,
 )
 
 #wrap-figure(
-  image("3 Fase rectifier.png", width: 5cm),
+  image("assets/3 Fase rectifier.png", width: 5cm),
   caption: [3 Fase rectifier],
   label: <fig:3-fase-rectifier>,
 )[

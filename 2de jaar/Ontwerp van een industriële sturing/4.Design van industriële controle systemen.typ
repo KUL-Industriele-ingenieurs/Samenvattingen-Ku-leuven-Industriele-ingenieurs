@@ -13,13 +13,13 @@ In dit deel wordt gezien hoe we industriële systemen kunnen ontwerpen en hoe we
       columns: 2,
       align: center,
       figure(
-        image("voltageverschil.png", width: 6cm),
+        image("assets/voltageverschil.png", width: 6cm),
         caption: [voltageverschil],
         label: <fig:voltageverschil>,
       ),
 
       figure(
-        image("stopcontact.png", width: 6cm),
+        image("assets/stopcontact.png", width: 6cm),
         caption: [stopcontact],
         label: <fig:stopcontact>,
       ),
@@ -46,7 +46,7 @@ In dit deel wordt gezien hoe we industriële systemen kunnen ontwerpen en hoe we
 == Een PLC connecteren
 
 #figure(
-  image("Een PLC connecteren.png", width: 12cm),
+  image("assets/Een PLC connecteren.png", width: 12cm),
   caption: [Een PLC connecteren],
   label: <fig:een-plc-connecteren>,
 )
@@ -57,7 +57,7 @@ Als iets niet geconnecteerd $arrow.r$ dan gaat hij niet aan staan (crazy right)_
 *Foute PLC schakeling*
 
 #figure(
-  image("Foute PLC schakeling.png", width: 8cm),
+  image("assets/Foute PLC schakeling.png", width: 8cm),
   caption: [Foute PLC schakeling],
   label: <fig:Foute-PLC-schakeling>,
 )
@@ -71,7 +71,7 @@ Als iets niet geconnecteerd $arrow.r$ dan gaat hij niet aan staan (crazy right)_
 PLC's wordt met de tabel hieronder getoont wanneer een spanningsval groot genoeg is zodat de PLC het kan detecteren.
 
 #figure(
-  image("PLC-logic.png", width: 8cm),
+  image("assets/PLC-logic.png", width: 8cm),
   caption: [PLC-logic],
   label: <fig:PLC-logic>,
 )
@@ -85,7 +85,7 @@ Maar wat als je component 5V accepteerd? _Vele sensoren werken alleen met 5V_ Da
 Een #keyterm[Interface relay] wordt gebruikt om een signaal door te sturen naar componenten van een hogere power, andere voltage of wanneer er een *Galvanische scheiding* tussen de circuits nodig is.
 
 #figure(
-  image("interface relay.png", width: 5cm),
+  image("assets/interface relay.png", width: 5cm),
   caption: [Interface relay],
   label: <fig:interface-relay>,
 )
@@ -93,7 +93,7 @@ Een #keyterm[Interface relay] wordt gebruikt om een signaal door te sturen naar 
 Hieronder een figuur zodat je weet wanneer je welk component gebruikt afhankelijk van je omgeving.
 
 #figure(
-  image("different-voltages-wanneer.png", width: 10cm),
+  image("assets/different-voltages-wanneer.png", width: 10cm),
   caption: [Different voltages wanneer],
   label: <fig:different-voltages-wanneer>,
 )
@@ -111,14 +111,14 @@ Een SSR is een optocoupler maar dan voor grotere stromen en voltages. Hij heeft 
 SSR' hebben geen mechanische bewegende delen alleen semiconductors en elektrische componenten. Je hebt dus veel betere switching (geen bouncing) een geen risk van grote voltage verschillen.
 
 #figure(
-  image("SSR.png", width: 7cm),
+  image("assets/SSR.png", width: 7cm),
   caption: [SSR],
   label: <fig:SSR>,
 )
 
 
 #figure(
-  image("controlling actuator.png", width: 5cm),
+  image("assets/controlling actuator.png", width: 5cm),
   caption: [controlling actuator],
   label: <fig:controlling-actuator>,
 )
@@ -131,7 +131,7 @@ Het licht dat die maakt activeert $->$ een fotosensor en dan laat die stroom $A$
 Een optocoupler is een *Switch*: in saturatie mode is de LED ON of OFF. De output transator is volledig ON of OFF. Meestal is een optocoupler *N.O (Normally Open)*. Die gaat meestal altijd aan zijn buiten als er een signaal is.
 
 #figure(
-  image("optocoupler.png", width: 5cm),
+  image("assets/optocoupler.png", width: 5cm),
   caption: [optocoupler],
   label: <fig:optocoupler>,
 )
@@ -167,7 +167,7 @@ Een base ziet het verschil oftewel tussen de grond of de input.
   center,
   grid(
     columns: 2,
-    image("Transitorswitch.png", width: 8cm), image("NPN & PNP.png", width: 8cm),
+    image("assets/Transitorswitch.png", width: 8cm), image("assets/NPN & PNP.png", width: 8cm),
   ),
 )
 
@@ -214,12 +214,12 @@ Om het verschil tussen PNP en NPN te begrijpen, kijk je naar wat de sensor met d
     columns: 2,
     gutter: 1cm,
     figure(
-      image("3-draad PNP sensor.png", width: 6cm),
+      image("assets/3-draad PNP sensor.png", width: 6cm),
       caption: [PNP: De kraan staat open (+24V)],
       label: <fig:3-draad-PNP-sensor-nieuw>,
     ),
     figure(
-      image("3-draad NPN sensor.png", width: 5cm),
+      image("assets/3-draad NPN sensor.png", width: 5cm),
       caption: [NPN: De afvoer staat open (0V)],
       label: <fig:3-draad-NPN-sensor-nieuw>,
     ),
@@ -231,7 +231,7 @@ Om het verschil tussen PNP en NPN te begrijpen, kijk je naar wat de sensor met d
 Een twee draad kan gebruikt worden voor zowel *Sourcing* als *Sinking*. Het heeft geen connectie met de referenties voltage.
 
 #figure(
-  image("Twee draad sensor.png", width: 16cm),
+  image("assets/Twee draad sensor.png", width: 16cm),
   caption: [Twee draad sensor],
   label: <fig:Twee-draad-sensor>,
 )
@@ -241,7 +241,7 @@ Een twee draad kan gebruikt worden voor zowel *Sourcing* als *Sinking*. Het heef
 === Wiring IEC positive/negative logic <sec:wiring-iec-positive-negative-logic>
 
 #figure(
-  image("Wiring IEC.png", width: 12cm),
+  image("assets/Wiring IEC.png", width: 12cm),
   caption: [Wiring IEC],
   label: <fig:Wiring-IEC>,
 )
@@ -260,7 +260,7 @@ Een twee draad kan gebruikt worden voor zowel *Sourcing* als *Sinking*. Het heef
 #voorbeeld(title: "Tank hoog en laag niveau alarm")[
   #examenbox("Examenvraag")
   #wrap-figure(
-    image("tank.png", width: 5cm),
+    image("assets/tank.png", width: 5cm),
     caption: [tank],
     label: <fig:tank>,
   )[
@@ -303,7 +303,7 @@ Deze zijn gebasseerd op #keyterm[Mechanische beweging]. Ze hebben vaak volt free
 + / Proximity switches: Contactless detection.
 
   #figure(
-    image("proximity-switch.png", width: 5cm),
+    image("assets/proximity-switch.png", width: 5cm),
     caption: [proximity-switch],
     label: <fig:proximity-switch>,
   )
@@ -313,7 +313,7 @@ Deze zijn gebasseerd op #keyterm[Mechanische beweging]. Ze hebben vaak volt free
   Dit kan werken oftwel via een LED met photodiode. Die gaan rood of infrarood light sturen en bij reflectie kan die dat opnemen. Goed voor korte afstanden. Of met fibre-optic proximity-switch.
 
   #figure(
-    image("fibre-optical proximity switch.png", width: 10cm),
+    image("assets/fibre-optical proximity switch.png", width: 10cm),
     caption: [fibre-optical proximity switch],
     label: <fig:fibre-optical-proximity-switch>,
   )
@@ -334,7 +334,7 @@ Deze zijn gebasseerd op #keyterm[Mechanische beweging]. Ze hebben vaak volt free
 
 
   #figure(
-    image("reed contact.png", width: 5cm),
+    image("assets/reed contact.png", width: 5cm),
     caption: [reed contact],
     label: <fig:reed-contact>,
   )
@@ -347,7 +347,7 @@ Deze zijn gebasseerd op #keyterm[Mechanische beweging]. Ze hebben vaak volt free
   Er is geen enkele beweging in de sensor en kan het dus veel snellere frequenties $f$ aan. Reed contact hebben mechanische delen en dus kan het snelle schakelen niet aan.
 
   #figure(
-    image("hall-effect sensor.png", width: 10cm),
+    image("assets/hall-effect sensor.png", width: 10cm),
     caption: [hall-effect sensor],
     label: <fig:hall-effect-sensor>,
   )
@@ -356,7 +356,7 @@ Deze zijn gebasseerd op #keyterm[Mechanische beweging]. Ze hebben vaak volt free
   #examenbox[Je moet deze sensoren op het examen kunnen geven en weten wanneer ze gebruikt worden, hoe ze werken en verschillen tussen de sensoren.]
 
 #figure(
-  image("symbolen switches.png", width: 12cm),
+  image("assets/symbolen switches.png", width: 12cm),
   caption: [symbolen switches],
   label: <fig:symbolen-switches>,
 )

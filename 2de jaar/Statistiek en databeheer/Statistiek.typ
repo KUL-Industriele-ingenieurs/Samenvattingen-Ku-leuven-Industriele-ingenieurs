@@ -32,7 +32,7 @@
 
 #for i in range(1, 12) {
   page(margin: 1cm)[
-    #image("StatisticsFormulaChart.pdf", width: 100%, alt: "Statistics Formula Chart", page: i)
+    #image("assets/StatisticsFormulaChart.pdf", width: 100%, alt: "Statistics Formula Chart", page: i)
   ]
 }
 #printformularium()

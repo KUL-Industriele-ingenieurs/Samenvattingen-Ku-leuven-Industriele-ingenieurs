@@ -3,7 +3,7 @@
 = Heat exchangers <ch:heat-exchangers>
 
 #wrap-figure(
-  image("Heat exchanger.png", width: 8cm),
+  image("assets/Heat exchanger.png", width: 8cm),
   caption: [Heat exchanger],
   label: <fig:heat-exchanger>,
 )[
@@ -35,7 +35,7 @@ Een warmtewisselaar wordt als *compact* geclassificeerd als deze een zeer grote 
 Een #keyterm[radiator] is een bekend voorbeeld waarbij het oppervlakte gemaximaliseerd wordt door vinnen.
 
 #figure(
-  image("Radiator.png", width: 5cm),
+  image("assets/Radiator.png", width: 5cm),
   caption: [Radiator: een typische compacte warmtewisselaar.],
   label: <fig:Radiator>,
 )
@@ -49,7 +49,7 @@ Bij cross-flow bewegen de twee fluïda *loodrecht* op elkaar. Dit wordt verder o
 Dit is een extreem compacte vorm ($beta > 2500 m^2/m^3$) waarbij kanaaltjes van 1-3 mm chemisch worden geëtst in platen. De platen worden daarna op elkaar gestapeld en verbonden via *diffusion bonding*.
 
 #figure(
-  image("3D-print heat exchanger.png", width: 5cm),
+  image("assets/3D-print heat exchanger.png", width: 5cm),
   caption: [Core sectie van een PCHE.],
   label: <fig:3D-print-heat-exchanger>,
 )
@@ -62,7 +62,7 @@ Dit is een extreem compacte vorm ($beta > 2500 m^2/m^3$) waarbij kanaaltjes van 
 De meeste gebruikte heat exchanger in de industrie is de #keyterm[shell-and-tube heat exchanger].
 
 #wrap-figure(
-  image("Shell en tube heat exchanger.png", width: 8cm),
+  image("assets/Shell en tube heat exchanger.png", width: 8cm),
   caption: [Shell en tube heat exchanger],
   label: <fig:Shell-en-tube-heat-exchanger>,
 )[
@@ -73,7 +73,7 @@ De meeste gebruikte heat exchanger in de industrie is de #keyterm[shell-and-tube
 
 
 #wrap-figure(
-  image("Verschillende types heat exchangers.png", width: 5cm),
+  image("assets/Verschillende types heat exchangers.png", width: 5cm),
   caption: [Verschillende types heat exchangers],
   label: <fig:Verschillende-types-heat-exchangers>,
 )[
@@ -90,7 +90,7 @@ De meeste gebruikte heat exchanger in de industrie is de #keyterm[shell-and-tube
 
 
 #figure(
-  image("Plate and frame heat exchanger.png", width: 5cm),
+  image("assets/Plate and frame heat exchanger.png", width: 5cm),
   caption: [Plate and frame heat exchanger],
   label: <fig:Plate-and-frame-heat-exchanger>,
 )
@@ -103,7 +103,7 @@ Dat zijn ongeveer alle soorten warmtewisselaars. Maar hoe kunnen we nu de perfor
 
 
 #wrap-figure(
-  image("Heat transfer coefficient.png", width: 5cm),
+  image("assets/Heat transfer coefficient.png", width: 5cm),
   caption: [Heat transfer coefficient],
   label: <fig:Heat-transfer-coefficient>,
 )[
@@ -132,7 +132,7 @@ Om de warmteoverdracht te verbeteren, worden *vinnen* geplaatst aan de zijde met
 
 
 #figure(
-  image("Heat transfer coëfficient uitgelegt.png", width: 12cm),
+  image("assets/Heat transfer coëfficient uitgelegt.png", width: 12cm),
   caption: [Heat transfer coëfficient uitgelegd],
   label: <fig:Heat-transfer-coëfficient-uitgelegt>,
 )
@@ -173,7 +173,7 @@ Uiteindelijk komen we deze formule uit
 
 
 #figure(
-  image("Warmteoverdracht.png", width: 5cm),
+  image("assets/Warmteoverdracht.png", width: 5cm),
   caption: [Warmteoverdracht],
   label: <fig:Warmteoverdracht>,
 )

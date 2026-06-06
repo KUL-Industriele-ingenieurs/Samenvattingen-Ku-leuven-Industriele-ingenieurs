@@ -16,7 +16,7 @@ Met $v$ de snelheid en $a$ de versnelling
 
 
 #figure(
-  image("absolutemotion.png", width: 5cm),
+  image("assets/absolutemotion.png", width: 5cm),
   caption: [absolutemotion],
   label: <fig:absolutemotion>,
 )
@@ -55,12 +55,12 @@ Maar als zoeken eigenlijk het punt waarbij $v_A = 0$ zodat we minder moeten bere
       columns: 2,
       rows: 1,
       figure(
-        image("voorbeeld-OR-alt.png", width: 5.1cm),
+        image("assets/voorbeeld-OR-alt.png", width: 5.1cm),
         caption: [voorbeeld-OR-alt],
         label: <fig:voorbeeld-OR-alt>,
       ),
       figure(
-        image("oplossingvoorbeeldOR.png", width: 3.5cm),
+        image("assets/oplossingvoorbeeldOR.png", width: 3.5cm),
         caption: [oplossingvoorbeeldOR],
         label: <fig:oplossingvoorbeeldOR>,
       ),
@@ -95,7 +95,7 @@ Dit is alleen ogenblikkelijk geldig omdat punt E hierna terug gaat bewegen. Punt
 Hoe vindt je nu de OR?
 
 #figure(
-  image("Alle methodes OR.png", width: 10cm),
+  image("assets/Alle methodes OR.png", width: 10cm),
   caption: [Alle methodes OR],
   label: <fig:Alle-methodes-OR>,
 )

@@ -32,7 +32,7 @@ Waar $m$ de massa is en $r$ de afstand tot het nulpunt. Met eenheid $[K g dot m^
 #voorbeeld(title: "Voorbeeld: Traagheidsmoment van een slanke staaf")[
 
   #figure(
-    image("Traagheidsmoment oefening 2.png", width: 8cm),
+    image("assets/Traagheidsmoment oefening 2.png", width: 8cm),
     caption: [Traagheidsmoment oefening 2],
     label: <fig:Traagheidsmoment-oefening-2>,
   )
@@ -70,7 +70,7 @@ Waar $m$ de massa is en $r$ de afstand tot het nulpunt. Met eenheid $[K g dot m^
 == Stelling van Steinier <sec:stelling-van-steiner>
 
 #figure(
-  image("Stelling van Steiner.png", width: 5cm),
+  image("assets/Stelling van Steiner.png", width: 5cm),
   caption: [Stelling van Steiner],
   label: <fig:stelling-van-steiner>,
 )
