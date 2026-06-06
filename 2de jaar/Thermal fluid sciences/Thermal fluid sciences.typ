@@ -31,7 +31,7 @@
 
 #for i in range(1, 20) {
   page(margin: -2cm)[
-    #image("Formularium.pdf", width: 100%, alt: "Formularium", page: i)
+    #image("assets/Formularium.pdf", width: 100%, alt: "Formularium", page: i)
   ]
 }
 #printformularium()

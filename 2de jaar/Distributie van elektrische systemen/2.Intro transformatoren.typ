@@ -12,7 +12,7 @@
 + Er is geen verbinding tussen netwerken. Het wordt volledig via magnetische velden overgedragen
 
 #wrap-figure(
-  image("transformer.png", width: 6cm),
+  image("assets/transformer.png", width: 6cm),
   caption: [transformer],
   label: <fig:transformer>,
 )[
@@ -28,7 +28,7 @@
 *Voorbeeld Transformer*
 
 #figure(
-  image("Power Transformer.png", width: 5cm),
+  image("assets/Power Transformer.png", width: 5cm),
   caption: [Power Transformer],
   label: <fig:PowerTransformer>,
 )
@@ -50,7 +50,7 @@ High voltage (e.g. 300 kV) $arrow.r.double$ medium voltage (e.g. 33 kV)
   $V_"phase_drop"$ = 998 V (1%) $<->$ 4535 V (24%)
 
   #figure(
-    image("tabeltransmissie150kv.png", width: 5cm),
+    image("assets/tabeltransmissie150kv.png", width: 5cm),
     caption: [tabeltransmissie150kv],
     label: <fig:tabeltransmissie150kv>,
   )
@@ -71,7 +71,7 @@ High voltage (e.g. 300 kV) $arrow.r.double$ medium voltage (e.g. 33 kV)
 - Power supplies
 - Ethernet
   #figure(
-    image("ethernet.png", width: 5cm),
+    image("assets/ethernet.png", width: 5cm),
     caption: [ethernet],
     label: <fig:ethernet>,
   )
@@ -80,14 +80,14 @@ High voltage (e.g. 300 kV) $arrow.r.double$ medium voltage (e.g. 33 kV)
 == Constructie Transformatoren
 
 #figure(
-  image("transformatie constructie.png", width: 10cm),
+  image("assets/transformatie constructie.png", width: 10cm),
   caption: [transformatie constructie],
   label: <fig:transformatieconstructie>,
 )
 
 
 #wrap-figure(
-  image("laminated.png", width: 3cm),
+  image("assets/laminated.png", width: 3cm),
   caption: [laminated],
   label: <fig:laminated>,
 )[
@@ -103,7 +103,7 @@ Dit stukje gaat over tijdinvariante dingen
 === Vlug herhaling
 
 #figure(
-  image("currentflow.png", width: 5cm),
+  image("assets/currentflow.png", width: 5cm),
   caption: [currentflow],
   label: <fig:currentflow>,
 )
@@ -140,7 +140,7 @@ Een punt ($dot$) betekent dat de stroom naar je toe stroomt (uit het blad), een 
 )
 
 #wrap-figure(
-  image("wet van ampere.png", width: 4cm),
+  image("assets/wet van ampere.png", width: 4cm),
   caption: [wet van ampere],
   label: <fig:wetvanampere>,
 )[
@@ -188,7 +188,7 @@ Het magnetisch veld wordt versterkt door het materiaal.
 #concept(title: "H magnetische veld sterkt")[
 
   #figure(
-    image("magnetischmateriaalmu.png", width: 5cm),
+    image("assets/magnetischmateriaalmu.png", width: 5cm),
     caption: [magnetischmateriaalmu],
     label: <fig:magnetischmateriaalmu>,
   )
@@ -203,7 +203,7 @@ De magnetische veldsterkte $H$ is dus onafhankelijk van het materiaal ($mu_r$) e
 
 #theorie(title: "Vocabulaire")[
   #figure(
-    image("termen.png", width: 12cm),
+    image("assets/termen.png", width: 12cm),
     caption: [termen],
     label: <fig:termen>,
   )
@@ -213,7 +213,7 @@ De magnetische veldsterkte $H$ is dus onafhankelijk van het materiaal ($mu_r$) e
 == Magnetische circuits
 
 #wrap-figure(
-  image("magnetische kring.png", width: 5cm),
+  image("assets/magnetische kring.png", width: 5cm),
   caption: [magnetische kring],
   label: <fig:magnetische-kring>,
 )[
@@ -269,14 +269,14 @@ Dit is analoog aan de wet van Ohm voor elektrische circuits ($U = I R$), waarbij
 
 
 #figure(
-  image("hopkinsonsVSohm.png", width: 10cm),
+  image("assets/hopkinsonsVSohm.png", width: 10cm),
   caption: [hopkinsonsVSohm],
   label: <fig:hopkinsonsVSohm>,
 )
 
 *Magnetische circuit met Air-gap*
 #wrap-figure(
-  image("magnetisch circuit met air gap.png", width: 7cm),
+  image("assets/magnetisch circuit met air gap.png", width: 7cm),
   caption: [magnetisch circuit met air gap],
   label: <fig:magnetisch_circuit_met_air_gap>,
 )[
@@ -308,7 +308,7 @@ Dit is analoog aan de wet van Ohm voor elektrische circuits ($U = I R$), waarbij
 )
 
 #figure(
-  image("relucantieinserie.png", width: 5cm),
+  image("assets/relucantieinserie.png", width: 5cm),
   caption: [relucantieinserie],
   label: <fig:relucantieinserie>,
 )
@@ -320,7 +320,7 @@ $ F = phi dot R_c = N_1 I_1 + N_2 I_2 + ... + N_n I_n = $
 
 
 #figure(
-  image("magnetisch circuit met meerdere windingen.png", width: 10cm),
+  image("assets/magnetisch circuit met meerdere windingen.png", width: 10cm),
   caption: [magnetisch circuit met meerdere windingen],
   label: <fig:magnetisch-circuit-met-meerdere-windingen>,
 )
@@ -390,7 +390,7 @@ $ E M F [V] = integral.cont arrow(E) dot d arrow(l) = - frac(d phi, d t) $
 
 
 #wrap-figure(
-  image("induced emf in magnetic circuit.png", width: 5cm),
+  image("assets/induced emf in magnetic circuit.png", width: 5cm),
   caption: [induced emf in magnetic circuit],
   label: <fig:induced-emf-in-magnetic-circuit>,
 )[

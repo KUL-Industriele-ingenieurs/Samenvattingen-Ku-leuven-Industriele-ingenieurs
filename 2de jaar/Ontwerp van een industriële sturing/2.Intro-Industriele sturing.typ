@@ -28,13 +28,13 @@ competitief te zijn met andere landen. Als we spreken over *automatiseren*
 neem dat misschien een job af maar het zorgt ervoor dat we competitief kunnen blijven met andere landen.
 
 #figure(
-  image("importexport.png", width: 8cm),
+  image("assets/importexport.png", width: 8cm),
   caption: [import en export],
   label: <fig:importexport>,
 )
 
 #wrap-figure(
-  image("Geld binnen en buiten.png", width: 6cm),
+  image("assets/Geld binnen en buiten.png", width: 6cm),
   caption: [Geld binnen en buiten],
   label: <fig:geldbinnenenbuiten>,
 )[
@@ -72,7 +72,7 @@ Natuurlijk kunnen deze vereisten variëren afhankelijk van de betrokken industri
 == Basis diagram geautomatiseerd systeem.
 
 #figure(
-  image("basisdiagram.png", width: 15cm),
+  image("assets/basisdiagram.png", width: 15cm),
   caption: [basisdiagram],
   label: <fig:basisdiagram>,
 )
@@ -101,7 +101,7 @@ PID-controllers werken niet met aan/uit-signalen, maar met *continue, analoge si
 - / Temperatuurregelaar: Een dedicated *temperature controller* — een klein apparaat dat de PID-logica zelf uitvoert zonder PLC, typisch voor enkelvoudige regelkringen.
 
 #wrap-figure(
-  image("automatisering pyramide.png", width: 8cm),
+  image("assets/automatisering pyramide.png", width: 8cm),
   caption: [automatisering pyramide],
   label: <fig:automatiseringpyramide>,
 )[
@@ -114,20 +114,20 @@ PID-controllers werken niet met aan/uit-signalen, maar met *continue, analoge si
 + *Labview:* Een systeem waarmee je sensoren kunt controlleren vanaf een pc. Goede voor een labo omgeving.
 + *Pneumatische controllers*
   #figure(
-    image("pneumatische controller.png", width: 5cm),
+    image("assets/pneumatische controller.png", width: 5cm),
     caption: [pneumatische controller],
     label: <fig:pneumatischecontroller>,
   )
 + *Relays:* Heeft de simpleste logica nog simpler dan een PLC. Alleen bruikbaar voor simpele logica.
   #figure(
-    image("relats.png", width: 5cm),
+    image("assets/relats.png", width: 5cm),
     caption: [relays],
     label: <fig:relays>,
   )
 + *PLC:* Programmable Logic Controller. Geeft meer controle in productiesystemen. Je kunt het bezien als een simpele computer die je gaat programmeren gelijkaardig aan een arduino of microcontroller. Maar deze is toegepast in automatisering voor zijn betrouwbaarheid.
 + *Mechanische automatisering/CAM operated controls*: Enorm betrouwbaar, de beste oplossingen voor simpele producten _bv. bouten, moeren, ..._
   #figure(
-    image("mechanicaltoolrelays.png", width: 5cm),
+    image("assets/mechanicaltoolrelays.png", width: 5cm),
     caption: [mechanicaltoolrelays],
     label: <fig:mechanicaltoolrelays>,
   )
@@ -135,12 +135,12 @@ PID-controllers werken niet met aan/uit-signalen, maar met *continue, analoge si
 + *IPC's*: Industrial PC, wordt meestal nog aangestuurd door een PLC maar is goed voor complexe software.
 + *SCADA*: Supervisory Control And Data Acquisition. Je bekijkt digitaal al je controle systemen om beter overzicht te krijgen.
   #figure(
-    image("Scada.png", width: 5cm),
+    image("assets/Scada.png", width: 5cm),
     caption: [Scada],
     label: <fig:Scada>,
   )
   #figure(
-    image("scada2.png", width: 5cm),
+    image("assets/scada2.png", width: 5cm),
     caption: [scada2],
     label: <fig:scada2>,
   )
@@ -160,7 +160,7 @@ PID-controllers werken niet met aan/uit-signalen, maar met *continue, analoge si
 
 
 #figure(
-  image("klassesRDS.png", width: 15cm),
+  image("assets/klassesRDS.png", width: 15cm),
   caption: [klassesRDS],
   label: <fig:klassesRDS>,
 )
@@ -216,7 +216,7 @@ Deze worden allemaal aangehaald in deze introductie.
 ]
 
 #wrap-figure(
-  image("PLC2.png", width: 5cm),
+  image("assets/PLC2.png", width: 5cm),
   caption: [PLC],
   label: <fig:PLC2>,
 )[
@@ -243,7 +243,7 @@ Je schrijft een programma op je laptop en uploadt dat naar de PLC, waarna de PLC
 programma uitvoert en de machines aanstuurt op basis van de logica die je hebt geprogrammeerd.
 
 #wrap-figure(
-  image("image1.png", width: 6cm),
+  image("assets/image1.png", width: 6cm),
   caption: [Controle systeem voorbeeld],
   label: <fig:image1>,
 )[
@@ -282,7 +282,7 @@ Knoppen en switches die acties uitvoeren worden aangegeven met *S*.
 Deze worden meestal in een tube geplaatst zodat ze niet per ongeluk kunnen worden ingedrukt.
 
 #figure(
-  image("sort of buttons and switched.png", width: 13cm),
+  image("assets/sort of buttons and switched.png", width: 13cm),
   caption: [Soorten knoppen en switches],
   label: <fig:sortofbuttons>,
 )
@@ -297,7 +297,7 @@ Je hebt meerdere soorten switches:
 Hoe de schakeling is getekend bepaalt zijn functie.
 
 #figure(
-  image("Voorbeeld circuit.png", width: 5cm),
+  image("assets/Voorbeeld circuit.png", width: 5cm),
   caption: [Voorbeeld circuit],
   label: <fig:voorbeeldcircuit>,
 )
@@ -309,7 +309,7 @@ Dit circuit hierboven toont *twee* switches *S1* en *S2* die beide *normally ope
 
 Zoals gezien in elektronica kun je diagrammen maken om het gedrag van signalen over tijd te visualiseren.
 #figure(
-  image("Time-diagram.png", width: 15cm),
+  image("assets/Time-diagram.png", width: 15cm),
   caption: [Time-diagram],
   label: <fig:Time-diagram>,
 )
@@ -329,7 +329,7 @@ Zoals gezien in elektronica kun je diagrammen maken om het gedrag van signalen o
   Hiervoor bestaan #keyterm[Speciale relays: Timing relays].
 ]
 #wrap-figure(
-  image("Timing relays.png", width: 3cm),
+  image("assets/Timing relays.png", width: 3cm),
   caption: [Timing relays],
   label: "fig:timingrelays",
 )[
@@ -349,7 +349,7 @@ Relay-systemen werken, maar worden snel complex en moeilijk te onderhouden. Een 
 Je gaat dan #keyterm[Ladder logic] toepassen zodat je sequentiële logica kunt programmeren. _zie meer in je labo_
 
 #figure(
-  image("relayvsPLC.png", width: 16cm),
+  image("assets/relayvsPLC.png", width: 16cm),
   caption: [Relay VS PLC],
   label: <fig:relayvsPLC>,
 )
@@ -361,7 +361,7 @@ een vervanging van klassieke relays.
 
 
 #wrap-figure(
-  image("Ladder logic.png", width: 4cm),
+  image("assets/Ladder logic.png", width: 4cm),
   caption: [Ladder logic],
   label: <fig:Ladder-logic>,
 )[
@@ -389,7 +389,7 @@ In een bedrijf wordt vaak een standaard gebruikt voor het benoemen van programma
 
 *Scan cycle*
 #wrap-figure(
-  image("scancycle.png", width: 2cm),
+  image("assets/scancycle.png", width: 2cm),
   caption: [scancycle],
   label: <fig:scancycle>,
 )[

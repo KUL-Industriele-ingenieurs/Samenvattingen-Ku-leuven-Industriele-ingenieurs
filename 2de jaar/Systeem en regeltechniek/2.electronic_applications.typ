@@ -15,13 +15,13 @@
   - *All pass filter*: Laat alle frequenties door maar ze hebben een frequentie phase response
   Je gaat je frequentie transformeren _Bv. geluidseffecten_.
   #figure(
-    image("filters.png", width: 8cm),
+    image("assets/filters.png", width: 8cm),
     caption: [filters],
     label: <fig:filters>,
   )
 
   #figure(
-    image("allpass-filter.png", width: 8cm),
+    image("assets/allpass-filter.png", width: 8cm),
     caption: [allpass-filter],
     label: <fig:allpass-filter>,
   )
@@ -77,7 +77,7 @@ Bij actieve ja je die wel gebruiken. _Bv. OP-amps, transistors_
 Als we electronische systemen vergelijken met mechanische systemen gaan veel dingen die we in *MATHSYS* overgaan naar electronische systemen.
 
 #figure(
-  image("mechanics en electronisch.png", width: 12cm),
+  image("assets/mechanics en electronisch.png", width: 12cm),
   caption: [mechanics en electronisch],
   label: <fig:mechanics-en-electronisch>,
 )
@@ -131,7 +131,7 @@ We zoeken naar *de transferfunctie* $H(s)$ dat betekent dat er dus geen enkele b
 
 #oefening(title: "Spanningsdeler — Bewijs transferfunctie")[
   #figure(
-    image("spanningsdeler.png", width: 5cm),
+    image("assets/spanningsdeler.png", width: 5cm),
     caption: [spanningsdeler],
     label: <fig:spanningsdeler>,
   )
@@ -167,7 +167,7 @@ We zoeken naar *de transferfunctie* $H(s)$ dat betekent dat er dus geen enkele b
 
   *Gegeven*: Een RC-circuit met weerstand $R$ in serie en condensator $C$ naar ground. De uitgangsspanning $v_o$ wordt gemeten over $C$.
   #figure(
-    image("low-pass filter.png", width: 6cm),
+    image("assets/low-pass filter.png", width: 6cm),
     caption: [low-pass filter],
     label: <fig:low-pass-filter>,
   )
@@ -258,7 +258,7 @@ We zoeken naar *de transferfunctie* $H(s)$ dat betekent dat er dus geen enkele b
   *Gegeven*: Een RC-circuit met condensator $C$ in serie en weerstand $R$ naar ground. De uitgangsspanning $v_o$ wordt gemeten over $R$.
 
   #figure(
-    image("high-pass filter.png", width: 6cm),
+    image("assets/high-pass filter.png", width: 6cm),
     caption: [high-pass filter],
     label: <fig:high-pass-filter>,
   )
@@ -348,7 +348,7 @@ Deze hebben geen inductors nodig en zijn meestal makkelijker om te designen dan 
 *Onthou* de transferfunctie is wat het systeem gaat veranderein aan een input. Dus wat we nu aan het doen is deze filters hun verandering wiskundig berekenen
 
 #figure(
-  image("actieve-filters.png", width: 15cm),
+  image("assets/actieve-filters.png", width: 15cm),
   caption: [Actieve filters],
   label: <fig:actieve-filters>,
 )
@@ -364,7 +364,7 @@ $ V_- = V_("out") dot R_b / (R_a + R_b) = V_("in") arrow.r.double H(s) = 1 + R_a
 Hoe op-amps zich gaan gedragen is dat ze er alles aan gaan doen om het voltage verschil tussen de $+$ en $-$ ingang 0 te maken. Dus we gaan de $+$ ingang op een bepaalde voltage zetten en dan gaan we de $-$ ingang proberen op diezelfde voltage te krijgen. _zie eerste jaar electronica_
 
 #figure(
-  image("active-filters2.png", width: 14cm),
+  image("assets/active-filters2.png", width: 14cm),
   caption: [Summing amplifiers (MISO systemen)],
   label: <fig:actieve-filters2>,
 )
@@ -378,7 +378,7 @@ $ V_("out") = a V_1 + b V_2 - c V_3 $
 waarbij de coëfficiënten afhangen van de weerstandsverhoudingen. Dit is een *MISO-systeem* (Multiple Input, Single Output).
 
 #figure(
-  image("actieve filters 3.png", width: 12cm),
+  image("assets/actieve filters 3.png", width: 12cm),
   caption: [Integrator en differentiator],
   label: <fig:actieve-filters-3>,
 )
@@ -395,7 +395,7 @@ Dit is een *differentiator* — hoogdoorlaat. In het tijdsdomein: $v_("out")(t) 
 
 #oefening(title: "Hoogfilter + laag filter = Bandpass")[
   #figure(
-    image("hoog+laagfilter = bandpass.png", width: 10cm),
+    image("assets/hoog+laagfilter = bandpass.png", width: 10cm),
     caption: [hoog+laagfilter = bandpass],
     label: <fig:hoog-laagfilter-bandpass>,
   )

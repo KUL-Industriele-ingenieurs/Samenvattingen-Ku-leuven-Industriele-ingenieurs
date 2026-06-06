@@ -6,7 +6,7 @@
 In dit hoofdstuk bestuderen we alle effecten van transformatoren. We nemen geen verliezen mee.
 
 #wrap-figure(
-  image("idealtransform.png", width: 5cm),
+  image("assets/idealtransform.png", width: 5cm),
   caption: [idealtransform],
   label: <fig:idealtransform>,
 )[We leggen een *AC-spanning* aan op de primaire wikkeling. Hierdoor ontstaat er een *wisselende magnetische flux* in de kern. Deze wisselende magnetische flux induceert dan weer een *wisselende spanning* op de secundaire wikkeling.\ Dit is het principe van de *elektromagnetische inductie*.
@@ -81,7 +81,7 @@ $ phi = V_1/(omega N_1) sin(omega t) = V_2/(omega N_2) sin(omega t) $
 Er is geen belasting (open keten) aangesloten op de secundaire wikkeling. De enige "weerstand" die overblijft is de magnetische weerstand (reluctantie $R_c$) van de kern.
 
 #figure(
-  image("no load.png", width: 6cm),
+  image("assets/no load.png", width: 6cm),
   caption: [no load],
   label: <fig:no-load>,
 )
@@ -100,7 +100,7 @@ We hebben een ideale transformator, dus $R_c = 0 (mu -> infinity)$ dus $arrow.r.
 
 
 #wrap-figure(
-  image("loaded-transformer.png", width: 6cm),
+  image("assets/loaded-transformer.png", width: 6cm),
   caption: [loaded-transformer],
   label: <fig:loaded-transformer>,
 )[
@@ -116,7 +116,7 @@ We hebben een ideale transformator, dus $R_c = 0 (mu -> infinity)$ dus $arrow.r.
 ]
 
 #figure(
-  image("loaded transformer.png", width: 5cm),
+  image("assets/loaded transformer.png", width: 5cm),
   caption: [loaded transformer],
   label: <fig:loaded-transformer>,
 )
@@ -149,7 +149,7 @@ $ e^(j theta) = underbrace(cos(theta), "Reëel") + j underbrace(sin(theta), "Ima
   Als we dit plotten krijgen we dit:
 
   #figure(
-    image("plot v phi.png", width: 5cm),
+    image("assets/plot v phi.png", width: 5cm),
     caption: [plot v phi],
     label: <fig:plot-v-phi>,
   )
@@ -164,7 +164,7 @@ $ e^(j theta) = underbrace(cos(theta), "Reëel") + j underbrace(sin(theta), "Ima
 
 === RL <sec:RL>
 #figure(
-  image("RL-circuit.png", width: 5cm),
+  image("assets/RL-circuit.png", width: 5cm),
   caption: [RL-circuit],
   label: <fig:RL-circuit>,
 )
@@ -186,7 +186,7 @@ $ Z = R + j omega L $
 $ I = V/Z $
 
 #figure(
-  image("Phasor RL.png", width: 5cm),
+  image("assets/Phasor RL.png", width: 5cm),
   caption: [Phasor RL],
   label: <fig:Phasor-RL>,
 )
@@ -213,7 +213,7 @@ $ I = V/Z $
 Onze power heeft ook een imaginair deel $S$. Deze heeft dus ook een fasor.
 
 #wrap-figure(
-  image("phasorPower.png", width: 5cm),
+  image("assets/phasorPower.png", width: 5cm),
   caption: [phasorPower],
   label: <fig:phasorPower>,
 )[
@@ -232,7 +232,7 @@ Onze power heeft ook een imaginair deel $S$. Deze heeft dus ook een fasor.
 We weten dat een transformator de spanning verhoogt of verlaagt afhankelijk van de verhouding van het aantal windingen. Hoe heeft dit impact op het vermogen?
 
 #figure(
-  image("Model-phasors.png", width: 5cm),
+  image("assets/Model-phasors.png", width: 5cm),
   caption: [Model-phasors],
   label: <fig:Model-phasors>,
 )
@@ -245,7 +245,7 @@ We zien dat als de spanning verlaagt dat de stroom verhoogt en omgekeerd en de l
 == Impedantie transformatie <sec:impedantie-transformatie>
 
 #figure(
-  image("Impedantie transformator.png", width: 8cm),
+  image("assets/Impedantie transformator.png", width: 8cm),
   caption: [Impedantie transformator],
   label: <fig:Impedantie-transformator>,
 )
@@ -270,7 +270,7 @@ $ Z = (N_2/N_1)^2 Z' $
 === Samenvatting alle formules
 
 #figure(
-  image("Samenvatting ideale transformatoren.png", width: 12cm),
+  image("assets/Samenvatting ideale transformatoren.png", width: 12cm),
   caption: [Samenvatting ideale transformatoren],
   label: <fig:Samenvatting-ideale-transformatoren>,
 )

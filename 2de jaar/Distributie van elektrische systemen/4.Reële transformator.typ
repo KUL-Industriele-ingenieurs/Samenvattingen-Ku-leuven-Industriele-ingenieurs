@@ -22,7 +22,7 @@ In de realiteit is dit natuurlijk niet het geval en we moeten voor elk van deze 
 Magnetisatiestroom. In het vorig hoofdstuk hebben we *Reluctantie* geïntroduceerd als een maat voor de magnetische weerstand van de kern.
 
 #figure(
-  image("Relucantie.png", width: 5cm),
+  image("assets/Relucantie.png", width: 5cm),
   caption: [Relucantie],
   label: <fig:Relucantie>,
 )
@@ -38,7 +38,7 @@ $
 $phi$ hebben we vorig hoofdstuk gezien en is de flux doorheen de kern.
 
 #figure(
-  image("Fluxherhaling.png", width: 5cm),
+  image("assets/Fluxherhaling.png", width: 5cm),
   caption: [Fluxherhaling],
   label: <fig:Fluxherhaling>,
 )
@@ -61,7 +61,7 @@ $L_m$ is de hoofdinductantie van de transformator en is gelijk aan $frac(N_1^2, 
 
 We krijgen hierdoor een geüpdate model van onze transformator:
 #figure(
-  image("Hoofdinductantie.png", width: 6cm),
+  image("assets/Hoofdinductantie.png", width: 6cm),
   caption: [Hoofdinductantie],
   label: <fig:Hoofdinductantie>,
 )
@@ -70,7 +70,7 @@ We krijgen hierdoor een geüpdate model van onze transformator:
 === BH karakteristiek <sec:BH-karakteristiek>
 
 #wrap-figure(
-  image("BH-curve.png", width: 7cm),
+  image("assets/BH-curve.png", width: 7cm),
   caption: [BH-curve],
   label: <fig:BH-curve>,
 )[
@@ -98,7 +98,7 @@ $ B = phi/A_c $
 Dit verandert onze BH-curve naar dit:
 
 #figure(
-  image("Flux-MMF.png", width: 5cm),
+  image("assets/Flux-MMF.png", width: 5cm),
   caption: [Flux-MMF],
   label: <fig:Flux-MMF>,
 )
@@ -114,7 +114,7 @@ Echter, door de niet-lineaire BH-curve van het kernmateriaal is de relatie tusse
 * => Gevolg:* om de flux sinusvormig te houden op de toppen, is er een onevenredig grote toename van de veldsterkte ($H$) en dus de magnetisatiestroom ($i_m$) nodig. Dit resulteert in een *gepiekte (niet-sinusvormige) stroom*.
 
 #figure(
-  image("BH-non lineair.png", width: 12cm),
+  image("assets/BH-non lineair.png", width: 12cm),
   caption: [Distortie van de magnetisatiestroom door verzadiging van de kern. De sinusvormige flux (blauw) vereist een gepiekte stroom (rood) door de afvlakkende BH-karakteristiek.],
   label: <fig:BH-non-lineair>,
 )
@@ -130,7 +130,7 @@ Omdat de stroom periodiek maar niet-sinusvormig is, kunnen we deze via *Fourier-
 3. *Oneven karakter:* Omdat de stroomvervorming symmetrisch is voor de positieve en negatieve helft van de cyclus, bevat de stroom enkel oneven harmonischen. Even harmonischen zouden de golfvorm asymmetrisch maken, wat hier niet het geval is.
 
 #figure(
-  image("fundamentaal+harmonisch.png", width: 12cm),
+  image("assets/fundamentaal+harmonisch.png", width: 12cm),
   caption: [Constructieve interferentie: De som van de fundamentele component (blauw) en de 3de harmonische (groen) vormt de typische gepiekte magnetisatiestroom (rood).],
   label: <fig:fundamentaal-harmonisch>,
 )
@@ -142,7 +142,7 @@ Deze harmonischen zijn ongewenst in het net omdat ze kunnen leiden tot extra opw
 == BH-hysterese <sec:BH-hysterese>
 
 #wrap-figure(
-  image("Hysteresis.png", width: 5cm),
+  image("assets/Hysteresis.png", width: 5cm),
   caption: [Hysteresis],
   label: <fig:Hysteresis>,
 )[
@@ -164,7 +164,7 @@ Deze harmonischen zijn ongewenst in het net omdat ze kunnen leiden tot extra opw
 
 == Hysteresis effect op verschillende materialen <sec:hysteresis-effect-op-verschillende-materialen>
 #wrap-figure(
-  image("Hard VS soft met hystereiss.png", width: 8cm),
+  image("assets/Hard VS soft met hystereiss.png", width: 8cm),
   caption: [Hard VS soft met hysteresis],
   label: <fig:Hard-VS-soft-met-hystereiss>,
 )[
@@ -182,7 +182,7 @@ Afhankelijk van het type materiaal dat je gebruikt zijn er ook veranderingen.
 == Alles samen: Equivalent schema <sec:alles-samen-equivalent-schema>
 
 #wrap-figure(
-  image("Equivalent schema.png", width: 10cm),
+  image("assets/Equivalent schema.png", width: 10cm),
   caption: [Equivalent schema],
   label: <fig:Equivalent-schema>,
 )[
@@ -206,7 +206,7 @@ Afhankelijk van het type materiaal dat je gebruikt zijn er ook veranderingen.
 ]
 Je ziet het hier getekend in gestreept blauw.
 #figure(
-  image("fundamenteel component.png", width: 7cm),
+  image("assets/fundamenteel component.png", width: 7cm),
   caption: [fundamenteel component],
   label: <fig:fundamenteel-component>,
 )
@@ -214,7 +214,7 @@ Je ziet het hier getekend in gestreept blauw.
 == Exciting current en impedantie <sec:exciting-current-en-impedantie>
 
 #wrap-figure(
-  image("Transformator-reël circuit.png", width: 7cm),
+  image("assets/Transformator-reël circuit.png", width: 7cm),
   caption: [Transformator-reël circuit],
   label: <fig:Transformator-reël-circuit>,
 )[
@@ -231,7 +231,7 @@ Je ziet het hier getekend in gestreept blauw.
 *Phasor diagram van de exciting current $I_phi$*
 
 #figure(
-  image("Phasor excitising current.png", width: 7cm),
+  image("assets/Phasor excitising current.png", width: 7cm),
   caption: [Phasor excitising current],
   label: <fig:Phasor-excitising-current>,
 )
@@ -247,7 +247,7 @@ Eddy currents hebben we al deels gezien in _elektriciteit_
 Het is de stroom die ontstaat wanneer een geleider in een veranderlijk magnetisch veld wordt geplaatst.
 
 #figure(
-  image("eddy-current.png", width: 5cm),
+  image("assets/eddy-current.png", width: 5cm),
   caption: [Eddy current],
   label: <fig:eddy-current>,
 )
@@ -261,7 +261,7 @@ Met $arrow(j) = sigma arrow(E)$
 
 
 #wrap-figure(
-  image("Eddy-current breaks.png", width: 5cm),
+  image("assets/Eddy-current breaks.png", width: 5cm),
   caption: [Eddy-current breaks],
   label: <fig:Eddy-current-breaks>,
 )[
@@ -345,7 +345,7 @@ We nemen aan dat alle magnetische flux $phi$ binnen de kern blijft maar nu gaan 
 Dan krijg je lekking van je windingen en dit veroorzaakt een extra verlies in de transformator.
 
 #figure(
-  image("Winding losses.png", width: 7cm),
+  image("assets/Winding losses.png", width: 7cm),
   caption: [Flux-verliezen],
   label: <fig:Winding-losses>,
 )
@@ -355,7 +355,7 @@ Dit noemen we #keyterm[Leakage flux] $phi_(sigma, 1)$.
 We gaan onze flux $phi$ opsplitsen in twee delen. Een #keyterm[Main flux] en een #keyterm[Lek flux]. Deze flux wordt niet doorgegeven aan de andere windingen.
 
 #figure(
-  image("Leakage flux.png", width: 12cm),
+  image("assets/Leakage flux.png", width: 12cm),
   caption: [Leakage flux],
   label: <fig:Leakage-flux>,
 )
@@ -363,7 +363,7 @@ We gaan onze flux $phi$ opsplitsen in twee delen. Een #keyterm[Main flux] en een
 === Series resistenties
 
 #wrap-figure(
-  image("Series resisitentie.png", width: 7cm),
+  image("assets/Series resisitentie.png", width: 7cm),
   caption: [Series resistentie],
   label: <fig:Series-resistentie>,
 )[Onze flux lekt maar onze conductor is ook niet perfect. Meestal is dit koper.
@@ -377,7 +377,7 @@ Het is simpel om dit te modelleren we voegen gewoon een extra resistor toe aan b
 Als we ze allemaal samenvoegen krijgen we onze totale series impedantie.
 
 #figure(
-  image("Totale-series impedantie.png", width: 8cm),
+  image("assets/Totale-series impedantie.png", width: 8cm),
   caption: [Totale-series impedantie],
   label: <fig:Totale-series-impedantie>,
 )
@@ -404,7 +404,7 @@ Dit is:
 
 
 #figure(
-  image("full reële transformer.png", width: 12cm),
+  image("assets/full reële transformer.png", width: 12cm),
   caption: [full reële transformer],
   label: <fig:full-reële-transformer>,
 )
@@ -412,7 +412,7 @@ Dit is:
 Je krijg met alle phasors samen dan dit phasor diagram:
 
 #figure(
-  image("Phasor diagram total reël transformator.png", width: 8cm),
+  image("assets/Phasor diagram total reël transformator.png", width: 8cm),
   caption: [Phasor diagram total reël transformator],
   label: <fig:Phasor-diagram-total-reël-transformator>,
 )
@@ -440,12 +440,12 @@ De fracties tussen $N_1$ en $N_2$ komen dan terug in het spel.
   De ' zegt dat we de primaire kant linken met de secundaire kant.
 
   #figure(
-    image("Getransformeerde schema met transformator.png", width: 10cm),
+    image("assets/Getransformeerde schema met transformator.png", width: 10cm),
   )
   $ arrow.b.triple $
 
   #figure(
-    image("gesimplificeerd circuit.png", width: 10cm),
+    image("assets/gesimplificeerd circuit.png", width: 10cm),
   )
 
   #examenbox[Dit ga je veel toepassen in oefeningen, vergeet niet je weerstanden en inducties te transformeren!]
@@ -462,11 +462,11 @@ De fracties tussen $N_1$ en $N_2$ komen dan terug in het spel.
   $ L''_m = (N_2/N_1)^2 L_m $
 
   #figure(
-    image("Secundaire kant.png", width: 10cm),
+    image("assets/Secundaire kant.png", width: 10cm),
   )
 
   #figure(
-    image("gesimplificeerd circuit secundair.png", width: 10cm),
+    image("assets/gesimplificeerd circuit secundair.png", width: 10cm),
   )
 ]
 
@@ -491,7 +491,7 @@ $ Z_phi >> |R_1 + j X_1_sigma,1| $
 
 
 #figure(
-  image("No-Load test.png", width: 10cm),
+  image("assets/No-Load test.png", width: 10cm),
   caption: [No-Load test],
   label: <fig:No-Load-test>,
 )
@@ -501,7 +501,7 @@ nu Wat zijn dan onze waarden van $R_c$ en $L_m$?
 Dit is de *Null-last proef*
 
 #wrap-figure(
-  image("Nullast proef.png", width: 8cm),
+  image("assets/Nullast proef.png", width: 8cm),
   caption: [Nullast proef],
   label: <fig:Nullast-proef>,
 )[
@@ -522,12 +522,12 @@ Dit is de *Null-last proef*
     grid(
       columns: 2,
       figure(
-        image("Circuit no-lod.png", width: 4cm),
+        image("assets/Circuit no-lod.png", width: 4cm),
         caption: [Circuit no-load],
         label: <fig:Circuit-no-load>,
       ),
       figure(
-        image("Phasor no-load.png", width: 4cm),
+        image("assets/Phasor no-load.png", width: 4cm),
         caption: [Phasor no-load],
         label: <fig:Phasor-no-load>,
       ),
@@ -561,13 +561,13 @@ Deze test wordt gebruikt om de *serie-elementen* van het equivalent schema te be
   $ => I_1 approx I'_2 $
 
 #figure(
-  image("Short-circuit test.png", width: 12cm),
+  image("assets/Short-circuit test.png", width: 12cm),
   caption: [Short-circuit test schema],
   label: <fig:Short-circuit-test>,
 )
 
 #wrap-figure(
-  image("Process resultaat.png", width: 6cm),
+  image("assets/Process resultaat.png", width: 6cm),
   caption: [Resultaat van de meting],
   label: <fig:Process-resultaat>,
 )[

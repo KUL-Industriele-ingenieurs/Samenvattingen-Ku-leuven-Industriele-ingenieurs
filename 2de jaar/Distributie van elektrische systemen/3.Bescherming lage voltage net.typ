@@ -27,7 +27,7 @@ als je beveiliging een lekstroom van 30mA detecteert gaat die direct uitgaan. Di
 De dikte van het de huid bepaald je weerstand $R[Omega]$
 
 #figure(
-  image("Menselijk gevaar stroom.png", width: 8cm),
+  image("assets/Menselijk gevaar stroom.png", width: 8cm),
   caption: [Menselijk gevaar stroom],
   label: <fig:Menselijk-gevaar-stroom>,
 )
@@ -39,7 +39,7 @@ $ V = I dot R $
 De figuren zijn vertaald naar voltage curves.
 
 #wrap-figure(
-  image("Veiligheids curves.png", width: 6cm),
+  image("assets/Veiligheids curves.png", width: 6cm),
   caption: [Veiligheids curves],
   label: <fig:Veiligheids-curves>,
 )[
@@ -49,7 +49,7 @@ De figuren zijn vertaald naar voltage curves.
   De code's _BB1, BB2, BB3_ zijn afhankelijk van je de toestand. Is je huid nat of droog. Volledig ondergedompeld of niet?
 
   #figure(
-    image("grenzen-BB.png", width: 8cm),
+    image("assets/grenzen-BB.png", width: 8cm),
     caption: [grenzen-BB],
     label: <fig:grenzen-BB>,
   )
@@ -57,7 +57,7 @@ De figuren zijn vertaald naar voltage curves.
 === Regulatie <sec:regulatie>
 
 #wrap-figure(
-  image("regulatie elektriciteit.png", width: 5cm),
+  image("assets/regulatie elektriciteit.png", width: 5cm),
   caption: [regulatie elektriciteit],
   label: <fig:regulatie-elektriciteit>,
 )[
@@ -76,7 +76,7 @@ De figuren zijn vertaald naar voltage curves.
 Er zijn 3 cijfers _in dit vak vooral over 2_
 
 #wrap-figure(
-  image("IP-rating.png", width: 4cm),
+  image("assets/IP-rating.png", width: 4cm),
   caption: [IP-rating],
   label: <fig:IP-rating>,
 )[Het eerste number gaat over live aanraken van het elektriciteit. Is het stofbeschermend, is het veilig om met de vinger aan te raken? Hoe hoger hoe meer beschermt
@@ -86,7 +86,7 @@ Er zijn 3 cijfers _in dit vak vooral over 2_
 #voorbeeld(title: "motoren ip-rating")[
 
   #wrap-figure(
-    image("ip-motoren-oefening.png", width: 5cm),
+    image("assets/ip-motoren-oefening.png", width: 5cm),
     caption: [ip-motoren-oefening],
     label: <fig:ip-motoren-oefening>,
   )[Je wilt het grootste vermogen wat is de beste motor?
@@ -100,7 +100,7 @@ Waarvoor is het wel belangrijk
 
 === Explosies <sec:explosies>
 #wrap-figure(
-  image("explosie2.png", width: 5cm),
+  image("assets/explosie2.png", width: 5cm),
   caption: [explosie2],
   label: <fig:explosie2>,
 )[
@@ -110,7 +110,7 @@ Waarvoor is het wel belangrijk
 
 De manier om dat de standardiseren zijn de *ATEX* codes.
 #figure(
-  image("atex-codes.png", width: 7cm),
+  image("assets/atex-codes.png", width: 7cm),
   caption: [atex-codes],
   label: <fig:atex-codes>,
 )
@@ -125,7 +125,7 @@ Verschillende materialen kunnen elektriciteit isoleren. Hier heb je klasses is. 
 *Alle klassen*
 
 #figure(
-  image("isolatieklassen.png", width: 9cm),
+  image("assets/isolatieklassen.png", width: 9cm),
   caption: [isolatieklassen],
   label: <fig:isolatieklassen>,
 )
@@ -144,7 +144,7 @@ De vitale vijf zijn de stappen die je moet volgen om de veiligheid van de net te
 + *Secure the area*: De omgeving beveiligen
 
 #figure(
-  image("Vitale vijf.png", width: 8cm),
+  image("assets/Vitale vijf.png", width: 8cm),
   caption: [Vitale vijf],
   label: <fig:Vitale-vijf>,
 )
@@ -157,7 +157,7 @@ $arrow.r.double$ zorg dat je deze niet kunt aanraken. Zet bescherming rond en wa
 
 *Indirect contact*\
 #wrap-figure(
-  image("Indirect Contact.png", width: 6cm),
+  image("assets/Indirect Contact.png", width: 6cm),
   caption: [Indirect Contact],
   label: <fig:Indirect-Contact>,
 )[
@@ -171,7 +171,7 @@ $arrow.r.double$ zorg dat je deze niet kunt aanraken. Zet bescherming rond en wa
 == Electrische materialen
 
 #figure(
-  image("Conductor & Isolator.png", width: 12cm),
+  image("assets/Conductor & Isolator.png", width: 12cm),
 )
 
 Je materiaal bepaald hoe resistief $R[Omega]$ het is. Hoe hoger de weerstand hoe beter het isoleert.
@@ -180,7 +180,7 @@ Je materiaal bepaald hoe resistief $R[Omega]$ het is. Hoe hoger de weerstand hoe
 *Capaciteit met een dielectrum*\
 de permitiviteit van een materiaal bepaald hoe de capaciteit gaat veranderen als je een materiaal invoegt.
 #wrap-figure(
-  image("Capaciteit met dielectric.png", width: 5cm),
+  image("assets/Capaciteit met dielectric.png", width: 5cm),
   caption: [Capaciteit met dielectric],
   label: <fig:Capaciteit-met-dielectric>,
 )[
@@ -201,7 +201,7 @@ de permitiviteit van een materiaal bepaald hoe de capaciteit gaat veranderen als
 Het interessante is dat bij hogere spanningen dat je doorslag begint te krijgen. Lucht kan daardoor geleidend worden. Dit noemt men de #keyterm[Kritische veldsterkte]
 
 #figure(
-  image("elektrisch-breakdown.png", width: 10cm),
+  image("assets/elektrisch-breakdown.png", width: 10cm),
   caption: [elektrisch-breakdown],
   label: <fig:elektrisch-breakdown>,
 )
@@ -275,7 +275,7 @@ We kunnen dit doen met:
 #theorie(title: "terminologie")[
 
   #figure(
-    image("circuit.png", width: 8cm),
+    image("assets/circuit.png", width: 8cm),
     caption: [circuit],
     label: <fig:circuit>,
   )
@@ -326,13 +326,13 @@ $I_b$ is de veilig stroom van het apparaat, $I_n$ is de nominale stroom van de b
 == Fuses (smeltzekering) <sec:fuses>
 
 #figure(
-  image("Fuses.png", width: 5cm),
+  image("assets/Fuses.png", width: 5cm),
   caption: [Fuses],
   label: <fig:Fuses>,
 )
 
 #figure(
-  image("Fuses karakteristieken.png", width: 12cm),
+  image("assets/Fuses karakteristieken.png", width: 12cm),
   caption: [Fuses karakteristieken],
   label: <fig:Fuses-karakteristieken>,
 )
@@ -343,7 +343,7 @@ Defuse hier toont de karastiristiek afhankelijk van de stroom. 20A gaat lang dur
 
 
 #figure(
-  image("Circuit breaker.png", width: 10cm),
+  image("assets/Circuit breaker.png", width: 10cm),
   caption: [Circuit breaker],
   label: <fig:Circuit-breaker>,
 )
@@ -360,7 +360,7 @@ Nu dit is alleen voor kortsluitingen. Voor overbelastingen gaat er een bimetalen
 === Mechanical circuit breakers karakteristieken <sec:mechanical-circuit-breakers-karakteristieken>
 
 #figure(
-  image("MCB-karakteristieken.png", width: 12cm),
+  image("assets/MCB-karakteristieken.png", width: 12cm),
   caption: [MCB-karakteristieken],
   label: <fig:MCB-karakteristieken>,
 )
@@ -375,7 +375,7 @@ Het werkt gelijkaardig aan een circuit breaker waarbij je een schakelijk hebt zo
 === Karakteristieken van een power circuit breaker <sec:karakteristieken-van-een-power-circuit-breaker>
 
 #wrap-figure(
-  image("Power-circuit breaker.png", width: 7cm),
+  image("assets/Power-circuit breaker.png", width: 7cm),
   caption: [Power-circuit breaker karakteristieken],
   label: <fig:Power-circuit-breaker>,
 )[
@@ -391,7 +391,7 @@ Het werkt gelijkaardig aan een circuit breaker waarbij je een schakelijk hebt zo
 
 
 #figure(
-  image("Aanpasbaarheid Power-circuit-breaker.png", width: 5cm),
+  image("assets/Aanpasbaarheid Power-circuit-breaker.png", width: 5cm),
   caption: [Aanpasbaarheid Power-circuit-breaker],
   label: <fig:Aanpasbaarheid-Power-circuit-breaker>,
 )
@@ -400,7 +400,7 @@ Het werkt gelijkaardig aan een circuit breaker waarbij je een schakelijk hebt zo
 === Extra switches <sec:extra-switches>
 
 #wrap-figure(
-  image("Schakelaars.png", width: 6cm),
+  image("assets/Schakelaars.png", width: 6cm),
   caption: [Schakelaars],
   label: <fig:Schakelaars>,
 )[

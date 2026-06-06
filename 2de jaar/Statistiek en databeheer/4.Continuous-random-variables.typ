@@ -13,7 +13,7 @@
 ]
 
 #figure(
-  image("pdf vs pmf.png", width: 10cm),
+  image("assets/pdf vs pmf.png", width: 10cm),
   caption: [pdf vs pmf],
   label: <fig:pdf-vs-pmf>,
 )
@@ -67,7 +67,7 @@ $
 == De uniforme verdeling <sec:uniforme-verdeling>
 
 #wrap-figure(
-  image("Uniforme verdeling.png", width: 5cm),
+  image("assets/Uniforme verdeling.png", width: 5cm),
   caption: [Uniforme verdeling],
   label: <fig:uniforme-verdeling>,
 )[
@@ -111,7 +111,7 @@ $ P(x < a) = integral_(-infinity)^(a) (1/(sigma sqrt(2 pi)) e^(-1/2 ((x-mu)/sigm
 Wat gebeurt er als we nu een ander gemiddelde nemen  $u_1, u_2, u_3, ...$ met dezelfde standaardafwijking?
 
 #figure(
-  image("Drie gemiddelden.png", width: 8cm),
+  image("assets/Drie gemiddelden.png", width: 8cm),
   caption: [Drie gemiddelden],
   label: <fig:drie-gemiddelden>,
 )
@@ -119,7 +119,7 @@ Wat gebeurt er als we nu een ander gemiddelde nemen  $u_1, u_2, u_3, ...$ met de
 en wat gebeurt er als we de standaardafwijking veranderen?
 
 #figure(
-  image("Standaardafwijking effect.png", width: 8cm),
+  image("assets/Standaardafwijking effect.png", width: 8cm),
   caption: [Standaardafwijking effect],
   label: <fig:standaardafwijking-effect>,
 )
@@ -155,7 +155,7 @@ Hoe gaan we nu bepalen of een verdeling normaal is? Er zijn 4 technieken:
 + Een normaal waarschijnlijkheidsplot maken. (Dus de kans dat de data normaal verdeeld is, zou de grafiek een rechte lijn moeten zijn.)
 
 #figure(
-  image("normaal verdeling plot.png", width: 7cm),
+  image("assets/normaal verdeling plot.png", width: 7cm),
   caption: [normaal verdeling plot],
   label: <fig:normaal-verdeling-plot>,
 )
@@ -170,7 +170,7 @@ Je ziet dat je een rechte stijgende lijn krijgt, wat aantoont dat de data normaa
 De #keyterm[Joint Probability Mass Function] (pmf) wordt gebruikt voor twee (of meer) *discrete* willekeurige variabelen. Het geeft de kans aan dat variabelen $X_1$ en $X_2$ *gelijktijdig* specifieke waarden $x_1$ en $x_2$ aannemen.
 
 #wrap-figure(
-  image("Joint probabilty mass function.png", width: 8cm),
+  image("assets/Joint probabilty mass function.png", width: 8cm),
   caption: [Joint probability mass function],
   label: <fig:Joint-probabilty-mass-function>,
 )[
@@ -202,7 +202,7 @@ Een Joint PMF moet voldoen aan drie belangrijke eigenschappen:
 De #keyterm[Joint Probability Density Function] (pdf) beschrijft de gezamenlijke kansverdeling van twee (of meer) continue variabelen tegelijkertijd. In plaats van een lijn (zoals bij 1 variabele), moet je dit zien als een *oppervlak* boven een vlak. De kans is dan het *volume* onder dit oppervlak.
 
 #figure(
-  image("Joint PDF.png", width: 10cm),
+  image("assets/Joint PDF.png", width: 10cm),
   caption: [Joint PDF],
   label: <fig:Joint-PDF>,
 )
@@ -229,7 +229,7 @@ De drie eigenschappen in de afbeelding betekenen het volgende:
 Soms heb je de gezamenlijke (joint) verdeling van $X_1$ en $X_2$, maar wil je de verdeling van slechts één van de twee weten. Dit noemen we de #keyterm[marginale kansverdeling]. Je gaat hierbij de kansen "projecteren" op één van de assen door te sommeren (discreet) of te integreren (continu) over de andere variabele.
 
 #figure(
-  image("Margianel probability density function.png", width: 10cm),
+  image("assets/Margianel probability density function.png", width: 10cm),
   caption: [Marginale verdelingen],
   label: <fig:Margianel-probability-density-function>,
 )

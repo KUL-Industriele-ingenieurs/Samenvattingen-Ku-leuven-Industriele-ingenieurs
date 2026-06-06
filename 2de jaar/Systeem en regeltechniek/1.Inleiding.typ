@@ -4,7 +4,7 @@
 
 == Info vak
 
-#let fig-uurrooster = image("Uurrooster.png", width: 6cm)
+#let fig-uurrooster = image("assets/Uurrooster.png", width: 6cm)
 #let boxed-uurrooster = box(fig-uurrooster, inset: (right: 0.5em, bottom: 0.5em))
 
 #wrap-content(boxed-uurrooster)[
@@ -32,20 +32,20 @@ Het einddoel. Dit is een voorbeeld van een Feedback systeem.
 Dit is het einddoel van dit vak.
 
 #figure(
-  image("feedback-systeem.png", width: 50%),
+  image("assets/feedback-systeem.png", width: 50%),
   caption: [Feedback regelsysteem — het einddoel van dit vak],
 ) <fig:feedback-systeem>
 
 Er is dus constante feedback van de temperatuur waardoor het systeem geregeld kan worden.
 
 #figure(
-  image("systeemanalyse-overzicht.png", width: 8cm),
+  image("assets/systeemanalyse-overzicht.png", width: 8cm),
   caption: [Overzicht systeemanalyse],
 ) <fig:systeemanalyse>
 
 Je maakt systemen in de tijd met differentiële vergelijkingen. Je analyseert systemen met Laplace transformaties.
 
-#let fig-laplace = image("laplace-transformatie.png", width: 8cm)
+#let fig-laplace = image("assets/laplace-transformatie.png", width: 8cm)
 #let boxed-laplace = box(fig-laplace, inset: (right: 0.5em, bottom: 0.5em))
 
 #wrap-content(boxed-laplace)[
@@ -54,7 +54,7 @@ Je maakt systemen in de tijd met differentiële vergelijkingen. Je analyseert sy
   Je ontwerpt systemen met regeltechniek. Je implementeert systemen met code.
 ]
 
-#let fig-dcgain = image("dc-gain-polen-nullen.png", width: 9cm)
+#let fig-dcgain = image("assets/dc-gain-polen-nullen.png", width: 9cm)
 #let boxed-dcgain = box(fig-dcgain, inset: (right: 0.5em, bottom: 0.5em))
 
 #wrap-content(boxed-dcgain)[
@@ -72,7 +72,7 @@ Je maakt systemen in de tijd met differentiële vergelijkingen. Je analyseert sy
 #oefening(title: "Eerste orde systemen — Wagentje")[
 
   #figure(
-    image("eerste-orde-wagentje.png", width: 50%),
+    image("assets/eerste-orde-wagentje.png", width: 50%),
     caption: [Eerste orde systeem: wagentje met wrijving],
   ) <fig:eerste-orde-wagentje>
 
@@ -170,7 +170,7 @@ Je maakt systemen in de tijd met differentiële vergelijkingen. Je analyseert sy
 
 #oefening(title: "Voorbeeldoefening eerste orde")[
   #figure(
-    image("oefening-eerste-orde.png", width: 12cm),
+    image("assets/oefening-eerste-orde.png", width: 12cm),
     caption: [Voorbeeldoefening eerste orde systeem],
   ) <fig:oefening-eerste-orde>
   *Gegeven:* $6 z'(t) + 2 z(t) = 4 u(t) + 3$, evenwicht bij $z = 3$ en $t = 0$. De ingang $u(t)$ wordt plots met 1 verhoogd.
@@ -203,7 +203,7 @@ Je maakt systemen in de tijd met differentiële vergelijkingen. Je analyseert sy
 
 == Tweede orde systemen
 
-#let fig-mvd = image("massa-veer-demper.png", width: 6cm)
+#let fig-mvd = image("assets/massa-veer-demper.png", width: 6cm)
 #let boxed-mvd = box(fig-mvd, inset: (right: 0.5em, bottom: 0.5em))
 
 #wrap-content(boxed-mvd)[
@@ -327,7 +327,7 @@ Het teken van $(zeta^2 - 1)$ bepaalt het type polen:
 ) <fig:stapresponsie-tweede-orde>
 
 #figure(
-  image("pool-nulpunten-kaart.png", width: 65%),
+  image("assets/pool-nulpunten-kaart.png", width: 65%),
   caption: [Pool-nulpunten kaart voor tweede orde systeem],
 ) <fig:pool-nulpunten-kaart>
 
@@ -338,7 +338,7 @@ met:
 $ omega_n = sqrt(k / m) quad quad zeta omega_n = frac(c, m) quad quad zeta = frac(c, 2 sqrt(k m)) $
 
 #oefening(title: "Oefening tweede orde systeem")[
-  #let fig-oef2 = image("oefening-tweede-orde.png", width: 8cm)
+  #let fig-oef2 = image("assets/oefening-tweede-orde.png", width: 8cm)
   #let boxed-oef2 = box(fig-oef2, inset: (right: 0.5em, bottom: 0.5em))
 
   #wrap-content(boxed-oef2)[

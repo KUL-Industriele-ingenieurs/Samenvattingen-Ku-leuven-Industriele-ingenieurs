@@ -5,7 +5,7 @@
 Een relatieve snelheid is de snelheid die een bewegende observator ziet tegenover een andere bewegend deeltje.
 
 #wrap-figure(
-  image("relative-velocity.png", width: 8cm),
+  image("assets/relative-velocity.png", width: 8cm),
   caption: [relative-velocity],
   label: <fig:relative-velocity>,
 )[
@@ -28,7 +28,7 @@ Maar hoe berekenen we nu de relatieve snelheid?
 == Snelheid
 
 #wrap-figure(
-  image("relatieve-verplaatsing2.png", width: 8cm),
+  image("assets/relatieve-verplaatsing2.png", width: 8cm),
   caption: [relatieve-verplaatsing2],
   label: <fig:relatieve-verplaatsing2>,
 )[

@@ -36,7 +36,7 @@ Hoe kleiner $zeta$, hoe groter de piek. Bij $zeta = 0$ is de piek theoretisch on
   $ 10 frac(1, s+10) dot 20 frac(1, s+2) $
 
   #figure(
-    image("twee-H(s).png", width: 10cm),
+    image("assets/twee-H(s).png", width: 10cm),
     caption: [twee-H(s)],
   )
 
@@ -51,7 +51,7 @@ Hoe kleiner $zeta$, hoe groter de piek. Bij $zeta = 0$ is de piek theoretisch on
   *Methode B*\
 
   #figure(
-    image("uitzetten over tabel.png", width: 12cm),
+    image("assets/uitzetten over tabel.png", width: 12cm),
     caption: [uitzetten over tabel],
     label: <fig:uitzetten-over-tabel>,
   )
@@ -69,7 +69,7 @@ Hoe kleiner $zeta$, hoe groter de piek. Bij $zeta = 0$ is de piek theoretisch on
   $ w_r = omega sqrt(1-2zeta^2) = 5 sqrt(1-2(0.1)^2) = 5 sqrt(1-0.02) = 5 sqrt(0.98) approx 5 (r a d/s) $
 
   #figure(
-    image("tabellen voorbeeld 2.png", width: 10cm),
+    image("assets/tabellen voorbeeld 2.png", width: 10cm),
     caption: [tabellen voorbeeld 2],
     label: <fig:tabellen-voorbeeld-2>,
   )
@@ -100,7 +100,7 @@ Hoe kleiner $zeta$, hoe groter de piek. Bij $zeta = 0$ is de piek theoretisch on
   $ = -90deg - 45 dot 0.301 = -90deg - 13.5deg approx -104deg $
 
   #figure(
-    image("Tabel Voorbeeld 3.png", width: 12cm),
+    image("assets/Tabel Voorbeeld 3.png", width: 12cm),
     caption: [Tabel Voorbeeld 3],
     label: <fig:Tabel-Voorbeeld-3>,
   )
@@ -108,7 +108,7 @@ Hoe kleiner $zeta$, hoe groter de piek. Bij $zeta = 0$ is de piek theoretisch on
   Onze grafiek moet terug naar $-90deg$ gaan dus de laatste verhoging van $45deg/("Decade")$ is een goede *Check*
 
   #figure(
-    image("bodeplotsvoorbeeld3.png", width: 7cm),
+    image("assets/bodeplotsvoorbeeld3.png", width: 7cm),
     caption: [bodeplotsvoorbeeld3],
     label: <fig:bodeplotsvoorbeeld3>,
   )
@@ -118,7 +118,7 @@ Hoe kleiner $zeta$, hoe groter de piek. Bij $zeta = 0$ is de piek theoretisch on
 == Tijdsvertraging (Time Delay)
 
 #wrap-figure(
-  image("tijdsvertraging.png", width: 8cm),
+  image("assets/tijdsvertraging.png", width: 8cm),
   caption: [Tijdsvertraging (Dead time)],
   label: <fig:tijdsvertraging>,
 )[
@@ -134,7 +134,7 @@ Volgens de Laplace-eigenschappen komt een tijdsvertraging in het tijdsdomein ove
 $ cal(L){y(t - t_d)} = e^(-s t_d) Y(s) $
 
 #figure(
-  image("time-delay.png", width: 8cm),
+  image("assets/time-delay.png", width: 8cm),
   caption: [Bode plot van een tijdsvertraging: constante amplitude, lineair dalende fase],
   label: <fig:time-delay>,
 )
