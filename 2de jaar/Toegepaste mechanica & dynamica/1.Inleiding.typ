@@ -4,7 +4,7 @@
 
 == Info vak
 
-#let fig-blended = image("blended-learning.png", width: 8cm)
+#let fig-blended = image("assets/blended-learning.png", width: 8cm)
 #let boxed-blended = box(fig-blended, inset: (right: 0.5em, bottom: 0.5em))
 
 #wrap-content(boxed-blended)[
@@ -23,7 +23,7 @@
 == Indeling Cursus
 
 #figure(
-  image("indeling-cursus.png", width: 8cm),
+  image("assets/indeling-cursus.png", width: 8cm),
   caption: [Indeling van de cursus],
 ) <fig:indeling-cursus>
 

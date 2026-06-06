@@ -42,7 +42,7 @@ We will discuss (the differences between) disc valves, spool valves and poppet v
 
 
   #wrap-figure(
-    image("absolutevsrelatievedruk.png", width: 7cm),
+    image("assets/absolutevsrelatievedruk.png", width: 7cm),
     caption: [absolutevsrelatievedruk],
     label: <fig:absolutevsrelatievedruk>,
   )[
@@ -70,7 +70,7 @@ $ F = k dot Delta x $
 
 Druk is uiteindelijk botsingen van moleculen tegen een oppervlakte.
 #figure(
-  image("magdeburg hemispheres.png", width: 5cm),
+  image("assets/magdeburg hemispheres.png", width: 5cm),
   caption: [magdeburg hemispheres],
   label: <fig:magdeburg-hemispheres>,
 )
@@ -84,7 +84,7 @@ Je zet de zuignap op het voorwerp en pompt de lucht eruit. Je vergroot dan terug
 == Compressors en luchttoepassingen
 
 #figure(
-  image("tools pneumatics.png", width: 5cm),
+  image("assets/tools pneumatics.png", width: 5cm),
   caption: [Tools pneumatics],
   label: <fig:tools-pneumatics>,
 )
@@ -94,7 +94,7 @@ In de industrie wordt pneumatics veel gebruikt. Tandartsen, schroevendraaiers, s
 === Vacuum ejector
 
 #wrap-figure(
-  image("vacuum ejector.png", width: 5cm),
+  image("assets/vacuum ejector.png", width: 5cm),
   caption: [vacuum ejector],
   label: <fig:vacuum-ejector>,
 )[
@@ -111,7 +111,7 @@ Om dingen tight te houden zodat lucht niet lekt worden gasdichte connecties gebr
   Hoe ga je nu dingen gasdicht houden?
   Je wilt geen druk verliezen door lekken.
   #figure(
-    image("gasdicht.png", width: 5cm),
+    image("assets/gasdicht.png", width: 5cm),
     caption: [gasdicht],
     label: <fig:gasdicht>,
   )
@@ -137,7 +137,7 @@ We zetten een hoge druk aan de linkerkant. Hierdoor wordt de zuiger naar rechts 
 We werken met relatieve druk want als we de druk niet groter zetten als de atmosferische druk, dan gaat de zuiger niet naar rechts omdat er druk is aan de staafkant die de zuiger tegenhoudt.
 
 #figure(
-  image("pneumatische cilinder.png", width: 8cm),
+  image("assets/pneumatische cilinder.png", width: 8cm),
   caption: [pneumatische cilinder],
   label: <fig:pneumatische-cilinder>,
 )
@@ -152,7 +152,7 @@ Veel pneumatische cilinders zijn uitgerust met #keyterm("Einddemping") (end cush
 
 
 #figure(
-  image("pneumatische-cilinders-design.png", width: 12cm),
+  image("assets/pneumatische-cilinders-design.png", width: 12cm),
   caption: [pneumatische-cilinders-design],
   label: <fig:pneumatische-cilinders-design>,
 )
@@ -171,19 +171,19 @@ Je gaat je uitlaat of inlaat controlleren zodat je controle hebt over de snelhei
 + *Single acting cylinder*: heeft één aansluiting en gebruikt een veer om terug te keren naar de beginpositie. _Zie vorige figuur_
 + *Double acting cylinder*: heeft twee aansluitingen en kan zowel vooruit als achteruit worden bewogen door luchtdruk. De ingang is geen pomp maar een compressor. Je ingang en uitgang verwisselen dus van plaats tijdens een *Stroke*.
   #figure(
-    image("double acting cilinder.png", width: 8cm),
+    image("assets/double acting cilinder.png", width: 8cm),
     caption: [double acting cilinder],
     label: <fig:double-acting-cilinder>,
   )
 + *Guided cylinder*: heeft een geleiding om te voorkomen dat de zuiger zijdelings beweegt.
   #figure(
-    image("guided-cilinders.png", width: 8cm),
+    image("assets/guided-cilinders.png", width: 8cm),
     caption: [guided-cilinders],
     label: <fig:guided-cilinders>,
   )
 + *Speciale cilinders*: Een double rod cylinder heeft twee zuigerstangen. Hierdoor kan je de zuiger in beide richtingen bewegen met dezelfde kracht. Een rotating cilinder kan de zuiger 360 graden draaien.
   #figure(
-    image("special-cilinders.png", width: 8cm),
+    image("assets/special-cilinders.png", width: 8cm),
     caption: [special-cilinders],
     label: <fig:special-cilinders>,
   )
@@ -191,7 +191,7 @@ Je gaat je uitlaat of inlaat controlleren zodat je controle hebt over de snelhei
 #examenbox("Op het examen krijg je alle symbolen gegeven voor het examen. Je moet ze niet vanbuiten leren.")
 
 #figure(
-  image("symbolen-cilinders.png", width: 12cm),
+  image("assets/symbolen-cilinders.png", width: 12cm),
   caption: [symbolen-cilinders],
   label: <fig:symbolen-cilinders>,
 )
@@ -204,7 +204,7 @@ Wat is de kracht op een cilinder op full pressure. Er zijn drie krachten die ins
 
 #examenbox("Deze vragen worden vaak fout opgelost dus let op")
 #figure(
-  image("kracht-fullpressure.png", width: 7cm),
+  image("assets/kracht-fullpressure.png", width: 7cm),
   caption: [kracht-fullpressure],
   label: <fig:kracht-fullpressure>,
 )
@@ -248,14 +248,14 @@ $ F_"inward" = 264 "N" - 49 "N" = 215 "N" $
 + / Uitlaatdemper: Dempt de uitlaat van de cilinder, minder geluid en verlaagt de flowrate $dot(V)$
 + / Millieufilte: Filter de lucht die uit de cilinder komt
   #figure(
-    image("Milileufilter.png", width: 3cm),
+    image("assets/Milileufilter.png", width: 3cm),
     caption: [Milileufilter],
     label: <fig:Milileufilter>,
   )
 + / Snelheidsregeling: Regelt de snelheid van de cilinder
 
 #wrap-figure(
-  image("snelheidsregeling.png", width: 5cm),
+  image("assets/snelheidsregeling.png", width: 5cm),
   caption: [snelheidsregeling],
   label: <fig:snelheidsregeling>,
 )[
@@ -287,7 +287,7 @@ Dit is de *verkeerde* manier voor speed control te doen
 
 
 #figure(
-  image("pompcircuit.png", width: 4cm),
+  image("assets/pompcircuit.png", width: 4cm),
   caption: [pompcircuit],
   label: <fig:pompcircuit>,
 )
@@ -330,7 +330,7 @@ Een controleventiel waarbij een (vaak analoog) signaal de debietstroom $[dot(Q)]
 #examenbox("Op het examen krijg je deze symbolen gegeven. Je moet wel weten wat ze allemaal betekenen")
 
 #figure(
-  image("Symbolen van een DCV.png", width: 5cm),
+  image("assets/Symbolen van een DCV.png", width: 5cm),
   caption: [Symbolen van een DCV],
   label: <fig:Symbolen-van-een-DCV>,
 )
@@ -368,13 +368,13 @@ Een bistabiel x/2 ventiel heeft twee spoelen:
 - ➢ Wanneer je een bistabiel ventiel installeert, kan het zich in elke (start)positie bevinden.
 
 #figure(
-  image("bistabiel.png", width: 10cm),
+  image("assets/bistabiel.png", width: 10cm),
   caption: [bistabiel],
   label: <fig:bistabiel>,
 )
 
 #figure(
-  image("diagram bistabiel.png", width: 5cm),
+  image("assets/diagram bistabiel.png", width: 5cm),
   caption: [diagram bistabiel],
   label: <fig:diagram-bistabiel>,
 )
@@ -444,7 +444,7 @@ Voordelen (vooral voor monostabiele ventielen):
 
 
 #figure(
-  image("symbolen pneumatische valves.png", width: 4cm),
+  image("assets/symbolen pneumatische valves.png", width: 4cm),
   caption: [symbolen pneumatische valves],
   label: <fig:symbolen-pneumatische-valves>,
 )
@@ -479,7 +479,7 @@ In de circuits ga je alle cilinders in het startpositie zetten.
 Niet in de rustpositie zoals elektrische circuit.
 
 #figure(
-  image("logic-circuit.png", width: 10cm),
+  image("assets/logic-circuit.png", width: 10cm),
   caption: [Voorbeeld Logic-circuit],
   label: <fig:logic-circuit>,
 )
@@ -500,7 +500,7 @@ _ CB | A: C beweegt naar $C_0$ $=>$ B beweegt naar $B_0$ $=>$ A beweegt naar $A_
 Een daarna schaklet die terug naar circuit 1.
 
 #figure(
-  image("cascade-methode.png", width: 12cm),
+  image("assets/cascade-methode.png", width: 12cm),
   caption: [cascade-methode],
   label: <fig:cascade-methode>,
 )

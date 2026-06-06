@@ -32,7 +32,7 @@
 
 #for i in range(1, 3) {
   page(margin: 1cm)[
-    #image("SQL-cheat-sheet.pdf", width: 100%, alt: "SQL Cheat Sheet", page: i)
+    #image("assets/SQL-cheat-sheet.pdf", width: 100%, alt: "SQL Cheat Sheet", page: i)
   ]
 }
 #include "1.Introductie-data.typ"

@@ -5,7 +5,7 @@
 == ERB basis
 
 #figure(
-  image("ERD.png", width: 15cm),
+  image("assets/ERD.png", width: 15cm),
   caption: [ERD],
   label: <fig:ERD>,
 )
@@ -46,7 +46,7 @@ _
 - Boeken: titel, auteur, ISBN, beschikbaarheid, categorie, nummer
 - Members: naam, adres, e-mailadres
 #figure(
-  image("oplossing erb bibliotheek.png", width: 10cm),
+  image("assets/oplossing erb bibliotheek.png", width: 10cm),
   caption: [oplossing erb bibliotheek],
   label: <fig:oplossing-erb-bibliotheek>,
 )
@@ -109,13 +109,13 @@ In een relatie ga je altijd de optionaliteit en de cardinaliteit moeten bepalen.
 ]
 
 #figure(
-  image("relatiesynthax.png", width: 5cm),
+  image("assets/relatiesynthax.png", width: 5cm),
   caption: [relatiesynthax],
   label: <fig:relatiesynthax>,
 )
 
 #figure(
-  image("soorten relaties.png", width: 5cm),
+  image("assets/soorten relaties.png", width: 5cm),
   caption: [soorten relaties],
   label: <fig:soorten-relaties>,
 )
@@ -123,7 +123,7 @@ In een relatie ga je altijd de optionaliteit en de cardinaliteit moeten bepalen.
 Met relaties ingevoegd krijgen we deze *Oplossing:*
 
 #figure(
-  image("oplossing oefening.png", width: 10cm),
+  image("assets/oplossing oefening.png", width: 10cm),
   caption: [oplossing oefening],
   label: <fig:oplossing-oefening>,
 )
@@ -132,7 +132,7 @@ Met relaties ingevoegd krijgen we deze *Oplossing:*
 Nu wanneer wordt het boek geleend. Wanneer wordt die geleend en terug gebracht. Deze attributen horen niet echt bij een *entiteit* maar bij een *relatie*. Als je dit doet krijg je een *associatieve entiteit*.
 
 #figure(
-  image("assosiatieve entiteit.png", width: 5cm),
+  image("assets/assosiatieve entiteit.png", width: 5cm),
   caption: [assosiatieve entiteit],
   label: <fig:assosiatieve-entiteit>,
 )
@@ -144,7 +144,7 @@ Je hebt dan een relaite *Copy of* tussen *Book* en *BookCopy*.
 Dit is logisch want je leent een copy van het boek en niet perse het idee van het boek.
 
 #figure(
-  image("final diagram.png", width: 10cm),
+  image("assets/final diagram.png", width: 10cm),
   caption: [final diagram],
   label: <fig:final-diagram>,
 )
@@ -164,7 +164,7 @@ Dit type diagram is het moeilijkste. Als dit gemaakt is en je toont het aan de k
   Als we dit toepassen op onze oefening krijgen we:
 
   #figure(
-    image("relaties-oefening-library.png", width: 10cm),
+    image("assets/relaties-oefening-library.png", width: 10cm),
     caption: [relaties-oefening-library],
     label: <fig:relaties-oefening-library>,
   )

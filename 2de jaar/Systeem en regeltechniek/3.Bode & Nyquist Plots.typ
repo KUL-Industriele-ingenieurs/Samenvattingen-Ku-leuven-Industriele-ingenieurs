@@ -36,7 +36,7 @@ $ H(j omega) arrow.r.double 20 log_10(|H(j omega)|) = A(omega) [d b] $
 
 
 #figure(
-  image("bodeplot.png", width: 10cm),
+  image("assets/bodeplot.png", width: 10cm),
   caption: [bodeplot],
   label: <fig:bodeplot>,
 )
@@ -49,7 +49,7 @@ Bij de nyquist plot ga je niet kijken naar amplitudes maar je gaan in het comple
 - De fase $phi(omega)$ is de hoek van de vector
 
 #figure(
-  image("Nyquist plot.png", width: 10cm),
+  image("assets/Nyquist plot.png", width: 10cm),
   caption: [Nyquist plot],
   label: <fig:Nyquist-plot>,
 )
@@ -59,7 +59,7 @@ Bij de nyquist plot ga je niet kijken naar amplitudes maar je gaan in het comple
 #voorbeeld(title: "Eerste orde systeem met een pole en nul bij origin")[
 
   #figure(
-    image("oefening1les3.png", width: 5cm),
+    image("assets/oefening1les3.png", width: 5cm),
     caption: [oefening1les3],
     label: <fig:oefening1les3>,
   )
@@ -109,13 +109,13 @@ Bij de nyquist plot ga je niet kijken naar amplitudes maar je gaan in het comple
       columns: 2,
       align: center,
       figure(
-        image("oefeningbodeplot.png", width: 5cm),
+        image("assets/oefeningbodeplot.png", width: 5cm),
         caption: [oefeningbodeplot],
         label: <fig:oefeningbodeplot>,
       ),
 
       figure(
-        image("oefening Nyquist plot.png", width: 5cm),
+        image("assets/oefening Nyquist plot.png", width: 5cm),
         caption: [oefening Nyquist plot],
         label: <fig:oefening-Nyquist-plot>,
       ),
@@ -182,7 +182,7 @@ Voor elke "decade" (factor 10) van $omega$ gaat de amplitude met #markhl[-20 db]
 Alles tesamen komen we dan deze figuur uit
 
 #figure(
-  image("all-pole bode plot.png", width: 15cm),
+  image("assets/all-pole bode plot.png", width: 15cm),
   caption: [all-pole bode plot],
   label: <fig:all-pole-bode-plot>,
 )
@@ -203,7 +203,7 @@ $ omega -> infinity arrow.r.double phi(omega) = -90 deg $
 en we komen terug een mooie figuur uit. Je ziet in het midden dat je een hoek van 45° krijgt zoals in de berekeningen.
 
 #figure(
-  image("all-pole phase bode plot.png", width: 12cm),
+  image("assets/all-pole phase bode plot.png", width: 12cm),
   caption: [all-pole phase bode plot],
   label: <fig:all-pole-phase-bode-plot>,
 )
@@ -216,7 +216,7 @@ en we komen terug een mooie figuur uit. Je ziet in het midden dat je een hoek va
   We zien van de *Bode plot* dat we een low-pass filter krijgen.
 
   #figure(
-    image("bodeplotsimpeloefening.png", width: 8cm),
+    image("assets/bodeplotsimpeloefening.png", width: 8cm),
     caption: [bodeplotsimpeloefening],
     label: <fig:bodeplotsimpeloefening>,
   )
@@ -239,7 +239,7 @@ Opnieuw 3 verschillende waarden van omega invullen:
 - $ omega arrow.r infinity arrow.r.double H(j omega) = 0 $
 
 #figure(
-  image("nyquistplot allplot eerste orde.png", width: 8cm),
+  image("assets/nyquistplot allplot eerste orde.png", width: 8cm),
   caption: [nyquistplot allplot eerste orde],
   label: <fig:nyquistplot-allplot-eerste-orde>,
 )
@@ -251,7 +251,7 @@ Opnieuw 3 verschillende waarden van omega invullen:
 $H(s) = frac(tau s, 1+tau s)$
 
 #figure(
-  image("bodeplot pole zero.png", width: 10cm),
+  image("assets/bodeplot pole zero.png", width: 10cm),
   caption: [bodeplot pole zero],
   label: <fig:bodeplot-pole-zero>,
 )
@@ -280,7 +280,7 @@ Dit is een *hoogdoorlaat filter* — lage frequenties worden geblokkeerd, hoge f
 *Nyquist plot*
 
 #figure(
-  image("Nyquistplot pole zero.png", width: 10cm),
+  image("assets/Nyquistplot pole zero.png", width: 10cm),
   caption: [Nyquistplot pole zero],
   label: <fig:Nyquistplot-pole-zero>,
 )
@@ -301,7 +301,7 @@ $ H(s) = 1 + tau s $
 *Bode plot*
 
 #figure(
-  image("bodeplotallzero.png", width: 10cm),
+  image("assets/bodeplotallzero.png", width: 10cm),
   caption: [bodeplotallzero],
   label: <fig:bodeplotallzero>,
 )
@@ -341,7 +341,7 @@ De Nyquist plot is een verticale lijn startend bij $(1, 0)$ die omhoog gaat lang
 
 
 #figure(
-  image("nyquistplot allzero.png", width: 10cm),
+  image("assets/nyquistplot allzero.png", width: 10cm),
   caption: [nyquistplot allzero],
   label: <fig:nyquistplot-allzero>,
 )
@@ -352,7 +352,7 @@ De Nyquist plot is een verticale lijn startend bij $(1, 0)$ die omhoog gaat lang
 
 Een voorbeeld van een 2de orde all-pole systeem is een massa-veerdemper systeem.
 #figure(
-  image("massa-veerdemper systeem.png", width: 5cm),
+  image("assets/massa-veerdemper systeem.png", width: 5cm),
   caption: [massa-veerdemper systeem],
   label: <fig:massa-veerdemper-systeem>,
 )
@@ -410,7 +410,7 @@ De resonantiepiek treedt op bij $omega_r = omega_n sqrt(1 - 2 zeta^2)$ als $zeta
 $ M_("Piek") = frac(1, 2 zeta sqrt(1 - zeta^2)) $
 
 #figure(
-  image("tweedeorde allploe.png", width: 10cm),
+  image("assets/tweedeorde allploe.png", width: 10cm),
   caption: [Bode amplitude plot tweede orde all-pole systeem],
   label: <fig:tweedeorde-allploe>,
 )
@@ -467,7 +467,7 @@ $ arrow.b.double $
   - $omega arrow.r infinity$: nulpunt $(+90 deg)$ en pool $(-90 deg)$ heffen op $arrow.r$ fase $= -90 deg$
 
   #figure(
-    image("bodefaseplothogereorde.png", width: 10cm),
+    image("assets/bodefaseplothogereorde.png", width: 10cm),
     caption: [Bode plot hogere orde systeem],
     label: <fig:bodefaseplothogereorde>,
   )

@@ -12,7 +12,7 @@ We starten terug bij het equivalent schema van transformatoren (zie #ref(<ch:re�
 Herinner je nog dat we de verliezen kunnen overbrengen afhankelijk van de hoeveelheid windingen $N_1$ en $N_2$ en de verhouding tussen deze twee.
 
 #figure(
-  image("Equivalent T-schema.png", width: 8cm),
+  image("assets/Equivalent T-schema.png", width: 8cm),
   caption: [Equivalent T-schema],
   label: <fig:Equivalent-T-schema>,
 )
@@ -20,7 +20,7 @@ Herinner je nog dat we de verliezen kunnen overbrengen afhankelijk van de hoevee
 Het doel is om het circuit stap voor stap te vereenvoudigen zodat we makkelijker $V_1$ en $I_1$ kunnen berekenen. We starten met een phasordiagram. We weten dat de stroom door de spoel $I_2'$ is en de stroom #keyterm[De excitatie stroom] door de parallelle weerstand $I_0$ is. Dus $I_1 = I_2' + I_0$. Als we $I_1$ hebben kunnen we $V_1$ berekenen met de wet van Ohm.
 
 #figure(
-  image("Phasor equivalent schema.png", width: 6cm),
+  image("assets/Phasor equivalent schema.png", width: 6cm),
   caption: [Phasor equivalent schema],
   label: <fig:Phasor-equivalent-schema>,
 )
@@ -28,7 +28,7 @@ Het doel is om het circuit stap voor stap te vereenvoudigen zodat we makkelijker
 Nu kunnen we het circuit verder vereenvoudigen. In het #keyterm[Cantilever model] verplaatsen we de parallelle tak ($R_(F e)$ en $X_m$) naar de ingang en vatten we de serieweerstanden samen:
 
 #figure(
-  image("Approximatie Circuit cantilever Circuit.png", width: 8cm),
+  image("assets/Approximatie Circuit cantilever Circuit.png", width: 8cm),
   caption: [Approximatie Circuit cantilever Circuit],
   label: <fig:Approximatie-Circuit-cantilever-Circuit>,
 )
@@ -43,7 +43,7 @@ Dit is een approximatie want normaal mag je deze niet combineren omdat er een pa
 We maken nu terug opnieuw een phasordiagram met deze benadering.
 
 #figure(
-  image("Cantilever phasor.png", width: 6cm),
+  image("assets/Cantilever phasor.png", width: 6cm),
   caption: [Cantilever phasor],
   label: <fig:Cantilever-phasor>,
 )
@@ -51,7 +51,7 @@ We maken nu terug opnieuw een phasordiagram met deze benadering.
 We kunnen nog een stap verder gaan: de parallelle tak ($R_(F e)$ en $X_m$) helemaal weglaten. We verliezen dan alle info over de kernverliezen, maar houden een simpel seriecircuit over dat heel handig is voor snelle berekeningen.
 
 #figure(
-  image("Equivalent Serie Circuit.png", width: 6cm),
+  image("assets/Equivalent Serie Circuit.png", width: 6cm),
   caption: [Equivalent Serie Circuit],
   label: <fig:Equivalent-Serie-Circuit>,
 )
@@ -69,7 +69,7 @@ $ R_2' = R_2 dot (N_1 / N_2)^2 $
 Zonder de parallelle tak is er geen aftakking meer voor $I_0$, dus $I_2'$ is nu gelijk aan $I_1$ (stroom in = stroom out).
 
 #figure(
-  image("Equivalent series circuit phasors.png", width: 6cm),
+  image("assets/Equivalent series circuit phasors.png", width: 6cm),
   caption: [Equivalent series circuit phasors],
   label: <fig:Equivalent-series-circuit-phasors>,
 )
@@ -77,7 +77,7 @@ Zonder de parallelle tak is er geen aftakking meer voor $I_0$, dus $I_2'$ is nu 
 Dit is dan een overview van de verschillende equivalent schema's.
 
 #figure(
-  image("Equivalent schema's overview.png", width: 8cm),
+  image("assets/Equivalent schema's overview.png", width: 8cm),
   caption: [Equivalent schema's overview],
   label: <fig:Equivalent-schemas-overview>,
 )
@@ -93,7 +93,7 @@ Nu we ons vereenvoudigd model hebben, willen we de parameters ($R_("eq"), X_("eq
 - / Full-load: Een load op het andere uiteinde van de transformator. Dit is de normale werking.
 
 #figure(
-  image("Operatie modussen.png", width: 10cm),
+  image("assets/Operatie modussen.png", width: 10cm),
   caption: [Operatie modussen],
   label: <fig:Operatie-modussen>,
 )
@@ -101,7 +101,7 @@ Nu we ons vereenvoudigd model hebben, willen we de parameters ($R_("eq"), X_("eq
 === No-load <sec:no-load>
 
 #figure(
-  image("No-Load-test.png", width: 10cm),
+  image("assets/No-Load-test.png", width: 10cm),
   caption: [No-Load-test],
   label: <fig:No-Load-test>,
 )
@@ -114,7 +114,7 @@ Dit betekent dat alle gemeten verliezen ($P_0$) in deze test de *kernverliezen* 
 === Short circuit <sec:short-circuit>
 
 #figure(
-  image("Kortsluitingstest.png", width: 10cm),
+  image("assets/Kortsluitingstest.png", width: 10cm),
   caption: [Kortsluitingstest],
   label: <fig:Kortsluitingstest>,
 )
@@ -140,7 +140,7 @@ Na het bepalen van de parameters via de no-load en short circuit test kunnen we 
 De $V_(n o m)$ is de nominale voltage en de $I_(n o m)$ is de nominale stroom. Dit zijn de maximale waarden die op de transformator mogen komen. Deze vind je altijd terug op de #keyterm[Datasheet] van de transformator.
 
 #figure(
-  image("Full Load.png", width: 10cm),
+  image("assets/Full Load.png", width: 10cm),
   caption: [Full Load],
   label: <fig:Full-Load>,
 )
@@ -182,7 +182,7 @@ Een transformator is geen perfecte spanningsbron: door de interne weerstand en r
 )
 
 #figure(
-  image("Voltage-Drop.png", width: 8cm),
+  image("assets/Voltage-Drop.png", width: 8cm),
   caption: [Voltage-Drop],
   label: <fig:Voltage-Drop>,
 )
@@ -194,7 +194,7 @@ Onze totale voltage drop $Delta V$ wordt bepaald door $r dot I$ in fase met $I$ 
 _Dit hebben we al veel hiervoor gezien: de impedantie heeft een reëel deel (weerstand, in fase met de stroom) en een imaginair deel (reactantie, 90° op de stroom)._
 
 #figure(
-  image("Soorten voltage drops.png", width: 10cm),
+  image("assets/Soorten voltage drops.png", width: 10cm),
   caption: [Soorten voltage drops],
   label: <fig:Soorten-voltage-drops>,
 )
@@ -204,7 +204,7 @@ _Dit hebben we al veel hiervoor gezien: de impedantie heeft een reëel deel (wee
 De voltage drop is niet altijd even groot — het hangt af van hoeveel stroom er vloeit en wat voor type belasting er op staat. Om dit te kwantificeren gebruiken we de spanningsregeling.
 
 #wrap-figure(
-  image("Spanningsregelaar.png", width: 8cm),
+  image("assets/Spanningsregelaar.png", width: 8cm),
   caption: [Spanningsregelaar],
   label: <fig:Spanningsregelaar>,
 )[
@@ -229,7 +229,7 @@ De voltage drop is niet altijd even groot — het hangt af van hoeveel stroom er
 Naast de spanningsval willen we ook weten hoeveel vermogen er effectief verloren gaat in de transformator. Dit is geen nieuw concept — we hebben de verliezen al besproken in #ref(<ch:reële-transformatoren>), nu vatten we het samen in één getal.
 
 #wrap-figure(
-  image("Efficienty.png", width: 8cm),
+  image("assets/Efficienty.png", width: 8cm),
   caption: [Efficiëntie],
   label: <fig:Efficienty>,
 )[
@@ -254,7 +254,7 @@ Tot nu toe hebben we gekeken naar de transformator in #keyterm[Steady state]: al
 === Recap tijd-domein relaties
 
 #wrap-figure(
-  image("Transformator-startup.png", width: 6.5cm),
+  image("assets/Transformator-startup.png", width: 6.5cm),
   caption: [Transformator-startup],
   label: <fig:Transformator-startup>,
 )[
@@ -283,7 +283,7 @@ Tot nu toe hebben we gekeken naar de transformator in #keyterm[Steady state]: al
 Het moment waarop we de schakelaar dichtklappen bepaalt hoeveel DC-component er in de flux zit. Er zijn twee extreme gevallen:
 
 #wrap-figure(
-  image("Aanzetten omega t = 0.png", width: 10cm),
+  image("assets/Aanzetten omega t = 0.png", width: 10cm),
   caption: [Aanzetten omega t = 0],
   label: <fig:Aanzetten-omega-t-0>,
 )[
@@ -297,7 +297,7 @@ Het moment waarop we de schakelaar dichtklappen bepaalt hoeveel DC-component er 
 *Worst case ($phi_(D C) = hat(phi)$):* Als we op het verkeerde moment aanzetten, moet de flux vanuit nul starten terwijl hij eigenlijk ergens anders zou moeten zijn. Dat verschil wordt opgevangen door een DC-component.
 
 #wrap-figure(
-  image("Aanzetten omega t = phi.2.png", width: 11cm),
+  image("assets/Aanzetten omega t = phi.2.png", width: 11cm),
   caption: [Aanzetten omega t = phi.2],
   label: <fig:Aanzetten-omega-t-phi-2>,
 )[
@@ -319,7 +319,7 @@ Het moment waarop we de schakelaar dichtklappen bepaalt hoeveel DC-component er 
   === De fysica achter de Inschakelstroom
 
   #figure(
-    image("Fenomeen inschakelstroom.png", width: 5cm),
+    image("assets/Fenomeen inschakelstroom.png", width: 5cm),
     caption: [Fenomeen inschakelstroom],
     label: <fig:Fenomeen-inschakelstroom>,
   )
@@ -333,7 +333,7 @@ Het moment waarop we de schakelaar dichtklappen bepaalt hoeveel DC-component er 
   Deze stroom vervalt langzaam (over ongeveer 100 cycli) naarmate de verliezen in de wikkelingen de DC-component wegwerken.
 
   #figure(
-    image("Inschakelstroom.png", width: 8cm),
+    image("assets/Inschakelstroom.png", width: 8cm),
     caption: [Inschakelstroom],
     label: <fig:Inschakelstroom>,
   )
@@ -344,7 +344,7 @@ Het moment waarop we de schakelaar dichtklappen bepaalt hoeveel DC-component er 
 In de praktijk heb je niet altijd genoeg aan één transformator. Soms wil je meer vermogen, of wil je een backup voor als er eentje uitvalt. Dan schakelen we transformatoren in parallel.
 
 #wrap-figure(
-  image("Parallel geschakelde transformatoren.png", width: 8cm),
+  image("assets/Parallel geschakelde transformatoren.png", width: 8cm),
   caption: [Parallel geschakelde transformatoren],
   label: <fig:Parallel-geschakelde-transformatoren>,
 )[
@@ -368,7 +368,7 @@ Je kunt niet zomaar twee willekeurige transformatoren in parallel zetten. Er zij
 We willen dat als we meerdere transformatoren in parallel hebben, de load over de transformatoren verdeeld wordt.
 
 #figure(
-  image("Parallel transformers.png", width: 12cm),
+  image("assets/Parallel transformers.png", width: 12cm),
   caption: [Parallel transformers met load M],
   label: <fig:Parallel-transformers>,
 )

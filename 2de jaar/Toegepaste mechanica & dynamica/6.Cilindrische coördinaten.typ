@@ -5,7 +5,7 @@
 Een vector kan uitgedrukt worden in verschillende soorten systemen. Vorige hoofdstukken hebben we het rechthoekige assenstelsel (x,y) gezien maar nu gaan we verder met poolcoördinaten (r,$theta$). _Poolcoördinaten zijn al gezien geweest in dynamica en wiskundige modellen._
 
 #wrap-figure(
-  image("poolcoördinaten.png", width: 7cm),
+  image("assets/poolcoördinaten.png", width: 7cm),
   caption: [poolcoördinaten],
   label: <fig:poolcoördinaten>,
 )[
@@ -25,7 +25,7 @@ Een vector kan uitgedrukt worden in verschillende soorten systemen. Vorige hoofd
 ]
 
 #wrap-figure(
-  image("cilindrische-afgeleiden.png", width: 7cm),
+  image("assets/cilindrische-afgeleiden.png", width: 7cm),
   caption: [cilindrische-afgeleiden],
   label: <fig:cilindrische-afgeleiden>,
 )[
@@ -69,7 +69,7 @@ Dan kom je een vector uit
 Opnieuw hetzelfde _We maken niet heel de afleiding opnieuw heel gelijkaardig aan afleiding snelheid_
 
 #wrap-figure(
-  image("cilindrisch versnelling.png", width: 5cm),
+  image("assets/cilindrisch versnelling.png", width: 5cm),
   caption: [cilindrisch versnelling],
   label: <fig:cilindrischversnelling>,
 )[
@@ -96,7 +96,7 @@ Opnieuw hetzelfde _We maken niet heel de afleiding opnieuw heel gelijkaardig aan
 
 == Cilindrisch assenstelsel (3D) <sec:cilindrisch-assenstelsel>
 #wrap-figure(
-  image("3D cilindrisch assenstelsel.png", width: 5cm),
+  image("assets/3D cilindrisch assenstelsel.png", width: 5cm),
   caption: [3D cilindrisch assenstelsel],
   label: <fig:3D-cilindrisch-assenstelsel>,
 )[
@@ -126,13 +126,13 @@ De binnenste functie $g$ is uitgedrukt in $x$ en de functie erbuiten uitgedrukt 
 #oefening(title: "Oefening 1| 1.18")[
 
   #figure(
-    image("oefening 1.18.png", width: 10cm),
+    image("assets/oefening 1.18.png", width: 10cm),
     caption: [oefening 1.18],
     label: <fig:oefening-1.18>,
   )
 
   #figure(
-    image("oefening 1.18 tekening.png", width: 5cm),
+    image("assets/oefening 1.18 tekening.png", width: 5cm),
     caption: [oefening 1.18 tekening],
     label: <fig:oefening-1.18-tekening>,
   )
@@ -191,7 +191,7 @@ De binnenste functie $g$ is uitgedrukt in $x$ en de functie erbuiten uitgedrukt 
 #oefening(title: "Oefening 3 | 1.20")[
 
   #figure(
-    image("oefening 1.20.png", width: 10cm),
+    image("assets/oefening 1.20.png", width: 10cm),
     caption: [Oefening 1.20],
     label: <fig:oefening-1.20>,
   )
@@ -245,7 +245,7 @@ De binnenste functie $g$ is uitgedrukt in $x$ en de functie erbuiten uitgedrukt 
 
 
   #figure(
-    image("oefening 16.141.png", width: 10cm),
+    image("assets/oefening 16.141.png", width: 10cm),
     caption: [oefening 16.141],
     label: <fig:oefening-16.141>,
   )
@@ -267,7 +267,7 @@ De binnenste functie $g$ is uitgedrukt in $x$ en de functie erbuiten uitgedrukt 
   *Oplossing*\
 
   #figure(
-    image("Figuur oefening 16.141.png", width: 8cm),
+    image("assets/Figuur oefening 16.141.png", width: 8cm),
     caption: [Figuur oefening 16.141],
     label: <fig:Figuur-oefening-16.141>,
   )
@@ -292,7 +292,7 @@ De binnenste functie $g$ is uitgedrukt in $x$ en de functie erbuiten uitgedrukt 
   Versnelling:
 
   #figure(
-    image("versnelling 16.141.png", width: 10cm),
+    image("assets/versnelling 16.141.png", width: 10cm),
     caption: [versnelling 16.141],
     label: <fig:versnelling-16.141>,
   )

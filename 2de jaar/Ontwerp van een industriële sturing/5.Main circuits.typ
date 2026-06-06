@@ -38,7 +38,7 @@ Echter, voor menselijke veiligheid is stroombeperking doorgaans niet effectief. 
 + *Residual current devices (RCDs)*
 
   #figure(
-    image("RDC.png", width: 5cm),
+    image("assets/RDC.png", width: 5cm),
     caption: [RDC],
     label: <fig:RDC>,
   )
@@ -48,7 +48,7 @@ Echter, voor menselijke veiligheid is stroombeperking doorgaans niet effectief. 
 + *Fuses*
 
   #wrap-figure(
-    image("Fuses.png", width: 5cm),
+    image("assets/Fuses.png", width: 5cm),
     caption: [Fuses],
     label: <fig:Fuses>,
   )[
@@ -106,7 +106,7 @@ Deze motorbeveiliging is essentieel omdat de opstartcondities van motoren anders
 
 internationale efficienty classen (IE classen)
 #figure(
-  image("IE-klassen.png", width: 8cm),
+  image("assets/IE-klassen.png", width: 8cm),
   caption: [IE-klassen],
   label: <fig:IE-klassen>,
 )
@@ -122,7 +122,7 @@ Faculty of Engineering Technology
 == Contactors
 
 #figure(
-  image("contactor Nieuw vs oud.png", width: 8cm),
+  image("assets/contactor Nieuw vs oud.png", width: 8cm),
   caption: [contactor Nieuw vs oud],
   label: <fig:contactor-Nieuw-vs-oud>,
 )
@@ -160,7 +160,7 @@ Dit ontwerp biedt veiligheid: de operator kan via een veilige laagspanningsspoel
 === Hoe werkt een contactor?
 
 #figure(
-  image("Contactor-werking.png", width: 12cm),
+  image("assets/Contactor-werking.png", width: 12cm),
   caption: [Contactor-werking],
   label: <fig:Contactor-werking>,
 )
