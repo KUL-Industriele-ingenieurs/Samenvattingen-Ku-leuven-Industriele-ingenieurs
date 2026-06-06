@@ -68,7 +68,7 @@ _ Een munt heeft S = {kop, munt} als sample space._
 
 
 #wrap-figure(
-  image("union and intersection.png", width: 8cm),
+  image("assets/union and intersection.png", width: 8cm),
   caption: [union and intersection],
   label: <fig:union-and-intersection>,
 )[Een #keyterm("union") is een combinatie van twee of meer events.
@@ -124,7 +124,7 @@ $P(A union B) = P(A) + P(B) - P(A inter B) = P(A) + P(B) - 0 = P(A) + P(B)$
 
 #oefening(title: "2 munten")[
   #figure(
-    image("munten met meerdere events.png", width: 5cm),
+    image("assets/munten met meerdere events.png", width: 5cm),
     caption: [munten met meerdere events],
     label: <fig:munten-met-meerdere-events>,
   )
@@ -148,7 +148,7 @@ A = Even getal
 B = Je gooit een number <= 3
 
 #wrap-figure(
-  image("oefeningdie.png", width: 5cm),
+  image("assets/oefeningdie.png", width: 5cm),
   caption: [oefening die],
   label: <fig:oefening-die>,
 )[
@@ -172,7 +172,7 @@ B = Je gooit een number <= 3
 #oefening(title: "Cancer en roken")[
 
   #wrap-figure(
-    image("cancer-roker.png", width: 7cm),
+    image("assets/cancer-roker.png", width: 7cm),
     caption: [cancer-roker],
     label: <fig:cancer-roker>,
   )[
@@ -226,7 +226,7 @@ B = Je gooit een number <= 3
 
   Alle sample points staan in de figuur met N: geen defect, K: defect.
   #figure(
-    image("samplepointingenieuroefening.png", width: 10cm),
+    image("assets/samplepointingenieuroefening.png", width: 10cm),
     caption: [samplepointingenieuroefening],
     label: <fig:samplepointingenieuroefening>,
   )
@@ -244,7 +244,7 @@ B = Je gooit een number <= 3
   We kunnen nu een boomdiagram maken #keyterm[In statistiek maak je altijd best boomdiagrammen als je met meerdere events werkt]
 
   #figure(
-    image("boomdiagram.png", width: 10cm),
+    image("assets/boomdiagram.png", width: 10cm),
     caption: [boomdiagram],
     label: <fig:boomdiagram>,
   )
@@ -290,7 +290,7 @@ Boomdiagrammen geven je een veel beter beeld op hoe event A en event B in relati
 #oefening(title: "Detectie systeem")[
 
   #wrap-figure(
-    image("detection system.png", width: 7cm),
+    image("assets/detection system.png", width: 7cm),
     caption: [detection system],
     label: <fig:detection-system>,
   )[
@@ -336,7 +336,7 @@ Boomdiagrammen geven je een veel beter beeld op hoe event A en event B in relati
     Niet verward geraken met de formules. Teken altijd eerst een boomdiagram!
 
     #figure(
-      image("boomdiagram-detectiesysteem2.png", width: 15cm),
+      image("assets/boomdiagram-detectiesysteem2.png", width: 15cm),
       caption: [boomdiagram-detectiesysteem2],
       label: <fig:boomdiagram-detectiesysteem2>,
     )
@@ -368,7 +368,7 @@ Met daarbij de kans dat A en B gebeuren is gelijk aan de kans dat A gebeurt maal
 
 
 #figure(
-  image("overview.png", width: 16cm),
+  image("assets/overview.png", width: 16cm),
   caption: [overview],
   label: <fig:overview>,
 )

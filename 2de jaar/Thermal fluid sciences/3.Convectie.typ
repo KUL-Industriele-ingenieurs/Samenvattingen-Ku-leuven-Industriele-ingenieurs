@@ -4,7 +4,7 @@
 = Convectie <ch:convectie>
 
 #wrap-figure(
-  image("convectieprincipe.png", width: 6cm),
+  image("assets/convectieprincipe.png", width: 6cm),
   caption: [convectieprincipe],
   label: <fig:convectieprincipe>,
 )[
@@ -20,7 +20,7 @@
 ]
 
 #wrap-figure(
-  image("convectiestroom.png", width: 5cm),
+  image("assets/convectiestroom.png", width: 5cm),
   caption: [convectiestroom],
   label: <fig:convectiestroom>,
 )[
@@ -53,7 +53,7 @@ Convectie is dus complexer want die $h$ is niet zomaar te bepalen. We berusten o
 *No slip conditie:* De vloeistof aan het oppervlak heeft dezelfde snelheid als het oppervlak en die is nul dus, $v_"fluid" = 0$.
 
 #figure(
-  image("noslip.png", width: 7cm),
+  image("assets/noslip.png", width: 7cm),
   caption: [noslip],
   label: <fig:noslip>,
 )
@@ -98,7 +98,7 @@ Pi is bijvoorbeeld een dimensieloos getal.
   $ pi_1 = C = frac(E t^2, R^5 rho) $
 
   #figure(
-    image("kernbom.png", width: 5cm),
+    image("assets/kernbom.png", width: 5cm),
     caption: [kernbom],
     label: <fig:kernbom>,
   )
@@ -121,7 +121,7 @@ Het getal van Nusselt vertegenwoordigt de toename van warmteoverdracht door een 
 Hoe groter het getal van Nusselt $=>$hoe effectiever de convectie. Een Nusselt-getal van $Nu = 1$  betekent dat we puur conductie hebben.
 
 #figure(
-  image("nusselnumber heattransfer.png", width: 6cm),
+  image("assets/nusselnumber heattransfer.png", width: 6cm),
   caption: [nusselnumber heattransfer],
   label: <fig:nusselnumber-heattransfer>,
 )
@@ -146,7 +146,7 @@ Hoe groter het getal van Nusselt $=>$hoe effectiever de convectie. Een Nusselt-g
 
 
 #figure(
-  image("viscious VS inviscid.png", width: 5cm),
+  image("assets/viscious VS inviscid.png", width: 5cm),
   caption: [viscious VS inviscid],
   label: <fig:viscious-VS-inviscid>,
 )
@@ -162,7 +162,7 @@ Hoe groter het getal van Nusselt $=>$hoe effectiever de convectie. Een Nusselt-g
 *Internal flow:* De vloeistof stroomt door een object. De boundary layer kan zich over het gehele object ontwikkelen.
 
 #figure(
-  image("tennisbal met turbulent wake region.png", width: 5cm),
+  image("assets/tennisbal met turbulent wake region.png", width: 5cm),
   caption: [tennisbal met turbulent wake region],
   label: <fig:tennisbal-met-turbulent-wake-region>,
 )
@@ -170,7 +170,7 @@ Hoe groter het getal van Nusselt $=>$hoe effectiever de convectie. Een Nusselt-g
 === Compressible vs Incompressible flow <sec:compressible-incompressible-flow>
 
 #wrap-figure(
-  image("Ma.png", width: 5cm),
+  image("assets/Ma.png", width: 5cm),
   caption: [Ma],
   label: <fig:Ma>,
 )[
@@ -191,7 +191,7 @@ Hoe groter het getal van Nusselt $=>$hoe effectiever de convectie. Een Nusselt-g
 
 === Laminar vs Turbulent flow <sec:laminar-turbulent-flow>
 #wrap-figure(
-  image("soorten vloeistoffen.png", width: 5cm),
+  image("assets/soorten vloeistoffen.png", width: 5cm),
   caption: [soorten vloeistoffen],
   label: <fig:soorten-vloeistoffen>,
 )[
@@ -229,7 +229,7 @@ Je vloeistof wordt #keyterm[geforceerd] om te stromen langs een oppervlak.
 #examenbox("In dit vak gaan we ons bezig houden met 1D en 2D stroming niet 3D")
 
 #figure(
-  image("2D flow.png", width: 12cm),
+  image("assets/2D flow.png", width: 12cm),
   caption: [2D flow],
   label: <fig:2D-flow>,
 )
@@ -240,7 +240,7 @@ Als dit gebeurt mogen we *1D stroming* beschouwen.
 
 Je krijgt een gradient over je radius $r$
 #figure(
-  image("gradientflow.png", width: 3cm),
+  image("assets/gradientflow.png", width: 3cm),
   caption: [gradientflow],
   label: <fig:gradientflow>,
 )
@@ -252,7 +252,7 @@ De velocity boundry layer is de laag waar de vloeistof een veel lagere snelheid 
 Afhankelijk van de type stroom (laminar of turbulent) kan de velocity boundry layer verschillen.
 
 #figure(
-  image("boundrylayer.png", width: 12cm),
+  image("assets/boundrylayer.png", width: 12cm),
   caption: [boundrylayer],
   label: <fig:boundrylayer>,
 )
@@ -264,7 +264,7 @@ Viscociteit is ook een groter factor. Grotere viscositeit $mu$ $arrow.r$ grotere
 === Effect van temperatuur op viscositeit <sec:effect-temperature-viscositeit>
 
 #wrap-figure(
-  image("viscocity temperature.png", width: 5cm),
+  image("assets/viscocity temperature.png", width: 5cm),
   caption: [viscocity temperature],
   label: <fig:viscocity-temperature>,
 )[
@@ -293,7 +293,7 @@ Je kunt het bezien als een resistor. Een grotere boundry layer $arrow.r$ hogere 
 
 
 #figure(
-  image("Thermal boundry layer.png", width: 8cm),
+  image("assets/Thermal boundry layer.png", width: 8cm),
   caption: [Thermal boundry layer],
   label: <fig:Thermal-boundry-layer>,
 )
@@ -326,7 +326,7 @@ $ delta / delta_t approx P r^(1/3) $
 - *Oliën* ($P r >> 1$): Warmte diffundeert zeer traag vergeleken met momentum. De thermische grenslaag is veel dunner ten opzichte van de snelheidsgrenslaag ($delta_t << delta$).
 
 #figure(
-  image("Prandtl Number.png", width: 12cm),
+  image("assets/Prandtl Number.png", width: 12cm),
   caption: [Prandtl Number],
   label: <fig:Prandtl-Number>,
 )

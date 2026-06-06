@@ -4,7 +4,7 @@
 
 == Star lichaam
 
-#let fig-star = image("star-lichaam.png", width: 3cm)
+#let fig-star = image("assets/star-lichaam.png", width: 3cm)
 #let boxed-star = box(fig-star, inset: (right: 0.5em, bottom: 0.5em))
 
 #wrap-content(boxed-star)[
@@ -37,7 +37,7 @@ De positie wordt bij elkaar opgeteld, maar er is geen verandering in richting. D
 
 Wordt met hoeken en hoeksnelheden beschreven. De hoek $theta$ beschrijft de oriÃ«ntatie van het lichaam.
 
-#let fig-rotatie = image("rotatie.png", width: 5cm)
+#let fig-rotatie = image("assets/rotatie.png", width: 5cm)
 #let boxed-rotatie = box(fig-rotatie, inset: (right: 0.5em, bottom: 0.5em))
 
 #wrap-content(boxed-rotatie)[
@@ -60,7 +60,7 @@ Wordt met hoeken en hoeksnelheden beschreven. De hoek $theta$ beschrijft de oriÃ
 
 #oefening(title: "Stilstaand touw aan wiel")[
   #figure(
-    image("oefening-touw-wiel.png", width: 8cm),
+    image("assets/oefening-touw-wiel.png", width: 8cm),
     caption: "Stilstaand touw aan wiel",
   )
 
@@ -94,7 +94,7 @@ Algemene vlakke beweging is een combinatie van translatie en rotatie. De positie
 
 == Contactpunten
 
-#let fig-contact = image("contactpunt-tandwielen.png", width: 5cm)
+#let fig-contact = image("assets/contactpunt-tandwielen.png", width: 5cm)
 #let boxed-contact = box(fig-contact, inset: (right: 0.5em, bottom: 0.5em))
 
 #wrap-content(boxed-contact)[
@@ -104,12 +104,12 @@ Algemene vlakke beweging is een combinatie van translatie en rotatie. De positie
 ]
 
 #figure(
-  image("contactpunt-versnellingen.png", width: 40%),
+  image("assets/contactpunt-versnellingen.png", width: 40%),
   caption: [Snelheden en versnellingen bij contactpunten van tandwielen],
 ) <fig:contactpunt-versnellingen>
 
 #oefening(title: "Rotatie om vast punt")[
-  #let fig-oef-l = image("oefening-rotatie-l-vorm.png", width: 8.3cm)
+  #let fig-oef-l = image("assets/oefening-rotatie-l-vorm.png", width: 8.3cm)
   #let boxed-oef-l = box(fig-oef-l, inset: (right: 0.5em, bottom: 0.5em))
 
   #wrap-content(boxed-oef-l)[

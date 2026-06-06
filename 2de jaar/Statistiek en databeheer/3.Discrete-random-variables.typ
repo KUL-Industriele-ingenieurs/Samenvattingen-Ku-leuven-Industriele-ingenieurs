@@ -53,7 +53,7 @@ Een kansverdeling is hoe de kansen verdeeld worden afhankelijk van meerdere even
 De kansverdeling van twee dobbelstenen kopen ziet er als volgt uit:
 
 #figure(
-  image("kansverdeling-2dobbelstenen.png", width: 8cm),
+  image("assets/kansverdeling-2dobbelstenen.png", width: 8cm),
   caption: [kansverdeling-2dobbelstenen],
   label: <fig:kansverdeling-2dobbelstenen>,
 )
@@ -107,7 +107,7 @@ Bij de Chebyshev's rule heb je geen gelijke verdeling langs het gemiddelde.
 Dit toont dat afhankelijk van hoe ver je gaat van je gemiddelde, de kans dat je waarde hierbinnen valt groter wordt.
 
 #figure(
-  image("cheby VS emperical.png", width: 10cm),
+  image("assets/cheby VS emperical.png", width: 10cm),
   caption: [cheby VS emperical],
   label: <fig:cheby-vs-emperical>,
 )
@@ -124,7 +124,7 @@ Dit toont dat afhankelijk van hoe ver je gaat van je gemiddelde, de kans dat je 
     )
   ]
   #wrap-figure(
-    image("histrogram-huidskankeroefening.png", width: 5cm),
+    image("assets/histrogram-huidskankeroefening.png", width: 5cm),
     caption: [histrogram-huidskankeroefening],
     label: <fig:histrogram-huidskankeroefening>,
   )[
@@ -279,7 +279,7 @@ Dit speelt in op de distributie van de binominale verdeling:
 #theorie(title: "pmf (probability mass function) en cdf  (cumulative distribution function)")[
 
   #wrap-figure(
-    image("binomiale-verdeling.png", width: 7cm),
+    image("assets/binomiale-verdeling.png", width: 7cm),
     caption: [binomiale verdeling],
     label: <fig:binomiale-verdeling>,
   )[

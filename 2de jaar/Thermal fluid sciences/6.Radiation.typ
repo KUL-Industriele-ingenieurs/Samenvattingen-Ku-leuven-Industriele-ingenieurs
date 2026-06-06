@@ -9,7 +9,7 @@
 == Zwarte oppervlaktes
 
 #wrap-figure(
-  image("Black oppervlaktes radiatie.png", width: 6cm),
+  image("assets/Black oppervlaktes radiatie.png", width: 6cm),
   caption: [Black oppervlaktes radiatie],
   label: <fig:black-oppervlaktes-radiatie>,
 )[
@@ -45,7 +45,7 @@ De meeste praktische omhullingen bevatten niet-zwarte oppervlakken, wat aanleidi
 
 #concept(title: "Radiosity")[
   #wrap-figure(
-    image("Radiosity.png", width: 5cm),
+    image("assets/Radiosity.png", width: 5cm),
     caption: [Radiosity],
     label: <fig:Radiosity>,
   )[
@@ -65,7 +65,7 @@ $dot(Q)_i = A_i (J_i - G_i) quad [W]$
 We kunnen dit modelleren als een elektrisch circuit waarbij de warmtestroom de "stroom" is, en het verschil tussen de ideale zwarte straling ($E_(b i)$) en de radiosity ($J_i$) het "potentiaalverschil":
 
 #figure(
-  image("Resitentie van oppervlakte tegenover radiatie.png", width: 5cm),
+  image("assets/Resitentie van oppervlakte tegenover radiatie.png", width: 5cm),
   caption: [Resitentie van oppervlakte tegenover radiatie],
   label: <fig:resitentie-van-oppervlakte-tegenover-radiatie>,
 )
@@ -83,7 +83,7 @@ We kunnen dit modelleren als een elektrisch circuit waarbij de warmtestroom de "
 === Net radiatie tussen twee oppervlaktes
 
 #wrap-figure(
-  image("Netto radiatie tussen twee oppervlaktes.png", width: 5cm),
+  image("assets/Netto radiatie tussen twee oppervlaktes.png", width: 5cm),
   caption: [Netto radiatie tussen twee oppervlaktes],
   label: <fig:netto-radiatie-tussen-twee-oppervlaktes>,
 )[
@@ -112,7 +112,7 @@ $
 #examenbox[Op het examen ga je nooit meedere lichamen moeten oplossen want dat is te moeilijk]
 
 #figure(
-  image("Meedere oppervlaktes radiatie.png", width: 6cm),
+  image("assets/Meedere oppervlaktes radiatie.png", width: 6cm),
   caption: [Meerdere oppervlaktes radiatie],
   label: <fig:Meedere-oppervlaktes-radiatie>,
 )
@@ -123,7 +123,7 @@ $
 In dit geval is het anders. Want de warmte kan nergens naar toe.
 
 #figure(
-  image("Radiatie tussen twee omsloten oppervlaktes.png", width: 15cm),
+  image("assets/Radiatie tussen twee omsloten oppervlaktes.png", width: 15cm),
   caption: [Radiatie tussen twee omsloten oppervlaktes],
   label: <fig:Radiatie-tussen-twee-omsloten-oppervlaktes>,
 )
@@ -144,7 +144,7 @@ Je hebt dus nog steeds warmteoverdracht $dot(Q)$. Maar alle radiatie gaan alleen
 === Radiatie tussen kleine objecten in een groote omhulsel <sec:radiatie-tussen-kleine-objecten-in-een-groote-omhulsel>
 
 #wrap-figure(
-  image("Radiatie kleine objecten groot caviteit.png", width: 4cm),
+  image("assets/Radiatie kleine objecten groot caviteit.png", width: 4cm),
   caption: [Radiatie kleine objecten groot caviteit],
   label: <fig:Radiatie-kleine-objecten-groot-caviteit>,
 )[
@@ -222,7 +222,7 @@ In tegenstelling tot vaste stoffen (die oppervlaktestraling hebben), vertonen ga
 ]
 
 #figure(
-  image("Radiatieabsorbtie gassen.png", width: 12cm),
+  image("assets/Radiatieabsorbtie gassen.png", width: 12cm),
   caption: [Radiatieabsorptie in gassen: absorptie gebeurt in specifieke golflengtebanden.],
   label: <fig:Radiatieabsorbtie-gassen>,
 )

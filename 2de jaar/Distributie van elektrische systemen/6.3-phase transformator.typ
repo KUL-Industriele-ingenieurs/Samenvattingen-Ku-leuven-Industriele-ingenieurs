@@ -11,7 +11,7 @@ Dit hebben we al gezien in wisselstromen en wordt ook nog herhaald in netten. Ma
 === WYE connectie <sec:wye-connectie>
 
 #wrap-figure(
-  image("WYE-connectie.png", width: 10cm),
+  image("assets/WYE-connectie.png", width: 10cm),
   caption: [WYE-connectie],
   label: <fig:WYE-connectie>,
 )[
@@ -39,7 +39,7 @@ Dit hebben we al gezien in wisselstromen en wordt ook nog herhaald in netten. Ma
 === Delta connectie <sec:delta-connectie>
 
 #wrap-figure(
-  image("Delta-connectie.png", width: 10cm),
+  image("assets/Delta-connectie.png", width: 10cm),
   caption: [Delta-connectie],
   label: <fig:Delta-connectie>,
 )[
@@ -79,7 +79,7 @@ Dit hebben we al gezien in wisselstromen en wordt ook nog herhaald in netten. Ma
 
 
 #wrap-figure(
-  image("Wye-wye 3 fase transformator.png", width: 8cm),
+  image("assets/Wye-wye 3 fase transformator.png", width: 8cm),
   caption: [Wye-wye 3-fase transformator],
   label: <fig:Wye-wye-3-fase-transformator>,
 )[
@@ -95,7 +95,7 @@ Dit hebben we al gezien in wisselstromen en wordt ook nog herhaald in netten. Ma
 ]
 
 #wrap-figure(
-  image("3 Cores in 1.png", width: 8cm),
+  image("assets/3 Cores in 1.png", width: 8cm),
   caption: [3 Cores in 1],
   label: <fig:3-cores-in-1>,
 )[
@@ -106,7 +106,7 @@ Dit hebben we al gezien in wisselstromen en wordt ook nog herhaald in netten. Ma
   Een three-leg core-type transformator is een transformator waarbij de drie fasewikkelingen op drie aparte benen van een gemeenschappelijke kern zijn gewikkeld.
 
   #figure(
-    image("3-leg transformator.png", width: 12cm),
+    image("assets/3-leg transformator.png", width: 12cm),
     caption: [3-leg transformator],
     label: <fig:3-leg-transformator>,
   )
@@ -136,7 +136,7 @@ Dit hebben we al gezien in wisselstromen en wordt ook nog herhaald in netten. Ma
 Je hebt nog veel andere soorten constructie types zoals #keyterm[Shell-type] en #keyterm[5-leg-core-type].
 
 #figure(
-  image("andere transformator constructie types.png", width: 8cm),
+  image("assets/andere transformator constructie types.png", width: 8cm),
   caption: [andere transformator constructie types],
   label: <fig:andere-transformator-constructie-types>,
 )
@@ -149,7 +149,7 @@ Dat is alleen voor #keyterm[gebalanceerde] systemen. Als het systeem niet gebala
 == Winding configuraties <sec:winding-configuraties>
 
 #wrap-figure(
-  image("Wye-Wye connectie.png", width: 8cm),
+  image("assets/Wye-Wye connectie.png", width: 8cm),
   caption: [Wye-Wye connectie],
   label: <fig:Wye-Wye-connectie>,
 )[
@@ -172,7 +172,7 @@ Dat is alleen voor #keyterm[gebalanceerde] systemen. Als het systeem niet gebala
 
 
 #wrap-figure(
-  image("Schematische configuratie.png", width: 10cm),
+  image("assets/Schematische configuratie.png", width: 10cm),
   caption: [Schematische configuratie],
   label: <fig:schematische-configuratie>,
 )[
@@ -196,7 +196,7 @@ In onze representaties hebben we alle soorten wikkelingen en topologieën:
 
 
 #figure(
-  image("Wye-wye.png", width: 8cm),
+  image("assets/Wye-wye.png", width: 8cm),
   caption: [Wye-wye],
   label: <fig:Wye-wye>,
 )
@@ -205,7 +205,7 @@ _Note: er is geen neutraal hier getekent maar deze wordt wel vaak toegevoegd_
 
 
 #figure(
-  image("Delta-Delta.png", width: 8cm),
+  image("assets/Delta-Delta.png", width: 8cm),
   caption: [Delta-Delta],
   label: <fig:Delta-Delta>,
 )
@@ -218,7 +218,7 @@ Je ziet bij Delta delta dat de transformatoren geconnecteerd worden aan elkaar.
 Je ziet wat er in gaat hetzelfde is wat er uit gaat met de windingfactor $N_1/N_2$. Met een faseverschuiving van 120 graden tussen elke spanning.
 
 #figure(
-  image("Wye Wye configuratie.png", width: 10cm),
+  image("assets/Wye Wye configuratie.png", width: 10cm),
   caption: [Wye Wye configuratie],
   label: <fig:Wye-Wye-configuratie>,
 )
@@ -239,7 +239,7 @@ $ k = frac(V_A, V_a) = frac(V_(A B), V_(a b)) = 1/sqrt(3) frac(N_1, N_2) $
 
 
 #wrap-figure(
-  image("Delta Wye.png", width: 10cm),
+  image("assets/Delta Wye.png", width: 10cm),
   caption: [Delta Wye],
   label: <fig:Delta-Wye>,
 )[
@@ -251,7 +251,7 @@ $ k = frac(V_A, V_a) = frac(V_(A B), V_(a b)) = 1/sqrt(3) frac(N_1, N_2) $
   Dus in onze phasordiagram gaat $V_(A B)$ in relatie staan met de secundaire spanning $V_(a)$.
 ]
 #wrap-figure(
-  image("Phasor wye.png", width: 3.5cm),
+  image("assets/Phasor wye.png", width: 3.5cm),
   caption: [Phasor wye],
   label: <fig:Phasor-wye>,
 )[
@@ -273,7 +273,7 @@ $ k = frac(V_A, V_a) = frac(V_(A B), V_(a b)) = 1/sqrt(3) frac(N_1, N_2) $
 #concept(title: "Kloknummer")[
 
   #wrap-figure(
-    image("Klok nummer.png", width: 5cm),
+    image("assets/Klok nummer.png", width: 5cm),
     caption: [Klok nummer],
     label: <fig:Klok-nummer>,
   )[
@@ -304,7 +304,7 @@ $ k = frac(V_A, V_a) = frac(V_(A B), V_(a b)) = 1/sqrt(3) frac(N_1, N_2) $
 
   $ k = frac(V_A, V_a) = frac(V_(A B), V_(a b)) = 1/sqrt(3) frac(N_1, N_2) $
   #figure(
-    image("Nog een Delta Wye.png", width: 10cm),
+    image("assets/Nog een Delta Wye.png", width: 10cm),
     caption: [Nog een Delta Wye],
     label: <fig:Nog-een-Delta-Wye>,
   )
@@ -321,7 +321,7 @@ $ k = frac(V_A, V_a) = frac(V_(A B), V_(a b)) = 1/sqrt(3) frac(N_1, N_2) $
 
 
   #figure(
-    image("Wye-Delta.png", width: 5cm),
+    image("assets/Wye-Delta.png", width: 5cm),
     caption: [Wye-Delta],
     label: <fig:Wye-Delta>,
   )
@@ -336,7 +336,7 @@ $ k = frac(V_A, V_a) = frac(V_(A B), V_(a b)) = 1/sqrt(3) frac(N_1, N_2) $
   $ V_(A B) = (-V_A) - (-V_B) = V_B - V_A $
 
   #figure(
-    image("Oplossing Wye-Delta.png", width: 5cm),
+    image("assets/Oplossing Wye-Delta.png", width: 5cm),
     caption: [Oplossing Wye-Delta],
     label: <fig:Oplossing-Wye-Delta>,
   )

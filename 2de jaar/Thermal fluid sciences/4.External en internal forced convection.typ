@@ -42,7 +42,7 @@ Bij complexere vormen kan de stroming loskomen van het oppervlak. Je krijgt dan 
 
 
 #figure(
-  image("Wake-region.png", width: 6cm),
+  image("assets/Wake-region.png", width: 6cm),
   caption: [Wake-region],
   label: <fig:Wake-region>,
 )
@@ -58,7 +58,7 @@ Een goede fysieke interpretatie van de thermische grenslaag is dat deze fungeert
 Trouwens... wat als we een oneindig lange plaat hadden? Gaan de boundry layers oneindig blijven groeien?
 
 #figure(
-  image("Boundrylayer to scale.png", width: 12cm),
+  image("assets/Boundrylayer to scale.png", width: 12cm),
   caption: [Boundrylayer to scale],
   label: <fig:Boundrylayer-to-scale>,
 )
@@ -70,7 +70,7 @@ onze boundry layers blijven dus groeien in functie van de lengte van de plaat $x
 *Connectie met diffusie*\
 
 #figure(
-  image("diffusie.png", width: 10cm),
+  image("assets/diffusie.png", width: 10cm),
   caption: [Diffusie],
   label: <fig:diffusie>,
 )
@@ -82,7 +82,7 @@ De #keyterm[No-slip condition] komt door het idee van diffusie door momentum. De
 === Transitie naar turbulente stroming
 
 #wrap-figure(
-  image("flow vlakke plaat.png", width: 6cm),
+  image("assets/flow vlakke plaat.png", width: 6cm),
   caption: [flow vlakke plaat],
   label: <fig:flow-vlakke-plaat>,
 )[
@@ -105,7 +105,7 @@ De #keyterm[No-slip condition] komt door het idee van diffusie door momentum. De
 === Frictie coëfficiënt
 
 #wrap-figure(
-  image("Heat-transfer coefficient.png", width: 6cm),
+  image("assets/Heat-transfer coefficient.png", width: 6cm),
   caption: [Heat-transfer coefficient],
   label: <fig:Heat-transfer-coefficient>,
 )[
@@ -186,7 +186,7 @@ Dit is niet praktisch om mee te rekenen gegeven de complexe afhankelijkheden. We
 )
 
 #figure(
-  image("nussel number average depending on fluid type.png", width: 6cm),
+  image("assets/nussel number average depending on fluid type.png", width: 6cm),
   caption: [nussel number average depending on fluid type],
   label: <fig:nussel-number-average-depending-on-fluid-type>,
 )
@@ -222,7 +222,7 @@ De frictie drag en druk drag kan groot zijn. De grootste impact van de drag krac
 
 
 #figure(
-  image("algemeen drag coëfficient over cilinder en bol.png", width: 10cm),
+  image("assets/algemeen drag coëfficient over cilinder en bol.png", width: 10cm),
   caption: [algemeen drag coëfficient over cilinder en bol],
   label: <fig:algemeen-drag-coëfficient-over-cilinder-en-bol>,
 )
@@ -234,7 +234,7 @@ ruwheid van het oppervlakte zorgt voor grote veranderingen van de drag coëffici
 blunt objecten kan de ruwheid de drag coefficient vergroten of verkleinen. Dit hangt af van de stroming en dus het reynoldsgetal.
 
 #figure(
-  image("ruwheid effect.png", width: 10cm),
+  image("assets/ruwheid effect.png", width: 10cm),
   caption: [ruwheid effect],
   label: <fig:ruwheid-effect>,
 )
@@ -245,7 +245,7 @@ door flow seperatie is het moeilijk om analytisch de flow te berekenen.
 
 
 #figure(
-  image("heat transfer coefficient bol en cilinder.png", width: 4.5cm),
+  image("assets/heat transfer coefficient bol en cilinder.png", width: 4.5cm),
   caption: [heat transfer coefficient bol en cilinder],
   label: <fig:heat-transfer-coefficient-bol-en-cilinder>,
 )
@@ -296,7 +296,7 @@ door flow seperatie is het moeilijk om analytisch de flow te berekenen.
 
 
 #wrap-figure(
-  image("Flow over tube banks.png", width: 2.5cm),
+  image("assets/Flow over tube banks.png", width: 2.5cm),
   caption: [Flow over tube banks],
   label: <fig:Flow-over-tube-banks>,
 )[
@@ -404,7 +404,7 @@ External flow focussed zich op het meganisch deel of aerodynamichs drag. Interna
 #highlight[Dus nu gaan we kijken wat de effecten zijn van naar de effecten van pijpen en muren op de stroming en warmteoverdracht.]
 
 #wrap-figure(
-  image("noslip in pijp.png", width: 6cm),
+  image("assets/noslip in pijp.png", width: 6cm),
   caption: [noslip conditie in pijp],
   label: <fig:noslip-in-pijp>,
 )[
@@ -422,7 +422,7 @@ External flow focussed zich op het meganisch deel of aerodynamichs drag. Interna
 === Snelheid
 
 #figure(
-  image("Entrance region.png", width: 5cm),
+  image("assets/Entrance region.png", width: 5cm),
   caption: [Entrance region],
   label: <fig:Entrance-region>,
 )
@@ -445,7 +445,7 @@ In de figuur zie je hoe de stroom regeert wanneer het de buis binnenkomt. Je kri
 === Temperatuur
 
 #figure(
-  image("Thermal boundry layr.png", width: 6cm),
+  image("assets/Thermal boundry layr.png", width: 6cm),
   caption: [Thermal boundry layer developent in buis],
   label: <fig:Thermal-boundry-layr>,
 )
@@ -470,7 +470,7 @@ Net zoals bij snelheid heb je opnieuw je #keyterm[thermische grenslaag(thermal b
 ]
 
 #figure(
-  image("Nusselt number over lengte.png", width: 6cm),
+  image("assets/Nusselt number over lengte.png", width: 6cm),
   caption: [Nusselt number over lengte],
   label: <fig:Nusselt-number-over-lengte>,
 )
@@ -485,7 +485,7 @@ We maken eerst wat approximaties:
 - $dot(q) ("Heat flux") = "constant"$
 
 #wrap-figure(
-  image("General thermal analysis.png", width: 5cm),
+  image("assets/General thermal analysis.png", width: 5cm),
   caption: [General thermal analysis],
   label: <fig:General-thermal-analysis>,
 )[
@@ -506,7 +506,7 @@ heat flux hetzelfde zijn.
 
 
 #figure(
-  image("Heatflux buis.png", width: 8cm),
+  image("assets/Heatflux buis.png", width: 8cm),
   caption: [Heatflux buis],
   label: <fig:Heatflux-buis>,
 )
