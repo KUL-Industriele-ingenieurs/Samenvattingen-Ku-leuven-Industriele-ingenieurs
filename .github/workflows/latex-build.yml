@@ -440,8 +440,8 @@ jobs:
                   printf "> For stable versions, see the [official releases](https://github.com/${{ github.repository }}/releases?q=NOT+prerelease).\n\n" >> release_body.md
                   printf "### 📥 Downloads\nAll PDF summaries are attached below.\n\n" >> release_body.md
                   printf "**Update scripts** are also attached — download into a folder and run to fetch/update every summary, organized per year:\n" >> release_body.md
-                  printf "- Linux / macOS: \`update.sh\`  (run \`bash update.sh\`)\n" >> release_body.md
-                  printf "- Windows: \`update.ps1\`  (right-click → Run with PowerShell)\n" >> release_body.md
+                  printf '%s\n' "- Linux / macOS: \`update.sh\`  (run \`bash update.sh\`)" >> release_body.md
+                  printf '%s\n' "- Windows: \`update.ps1\`  (right-click -> Run with PowerShell)" >> release_body.md
 
                   # 3. Create or Recreate the Release
                   # We delete the old release and create a fresh one to ensure 
