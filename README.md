@@ -15,7 +15,7 @@ Deze repository zijn mijn notities en samenvattingen die ik gemaakt heb door het
 
 
 ### 📥 Download Laatste Versie
-- [**Download alle PDF's (ZIP)**](https://nightly.link/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/workflows/latex-build.yml/MAIN/pdfs.zip)
+- [**Download alle PDF's (ZIP)**](https://nightly.link/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/workflows/latex-build.yml/MAIN/Samenvattingen%20Industriele%20Ingenieurs%20KULeuven.zip)
 ---
 
 ## 📚 Vakkenoverzicht
