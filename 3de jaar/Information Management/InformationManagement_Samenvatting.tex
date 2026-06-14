@@ -27,7 +27,7 @@ Als ingenieur moet je inzicht en vaardigheden verwerven in het omgaan met de ops
 Vooraleer we starten is het belangrijk om het verschil te begrijpen tussen IT (Information Technology) en OT (Operational Technology). Wij als EM studenten zijn meer gefocust op OT, dit focust zich meer op de machines zelf en gaat over het beheren van de operatie van de fysische processen en de machines die dit dan uitvoeren. IT houdt zich bezig met informatie/data, het beheert de "flow" van data, dit is dus puur digitaal via netwerken. OT heeft echter ook wat data, sensoren geven data, wordt opgeslaan en actuatoren gebruiken deze.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.6\textwidth]{IT_vs_OT.png}
+	\includegraphics[width=0.6\textwidth]{assets/IT_vs_OT.png}
 	\caption{Information Technology (IT) vs Operational Technology (OT)}
 \end{figure}
 De proff zei in de les ook nog deze goofy zin : 
@@ -46,7 +46,7 @@ De proff stelt de vraag over waar de grens tussen mens en robot zich bevind, wan
 Het is duidelijk dat computers en machines zich vroeger zich tot de onderste lagen van de piramide bevonden (data en informatie) en mensen bovenaan bij wijsheid.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{DIKW.png}
+    \includegraphics[width=0.6\textwidth]{assets/DIKW.png}
     \caption{DIKW-piramide (Data, Information, Knowledge, Wisdom)}
 \end{figure}
 \newpage
@@ -65,7 +65,7 @@ Vroeger was een computer btw puur mechanisch met flip flops enzo, nu is dit natu
     Deze definitie is onafhankelijk van de grootte of technologie.
     \begin{figure}[H]
       \centering
-      \includegraphics[width=0.8\textwidth]{cyclus_computer.png}
+      \includegraphics[width=0.8\textwidth]{assets/cyclus_computer.png}
       \caption{Basis principe van computerarchitectuur (cyclus)}
       \label{}
      \end{figure}
@@ -74,7 +74,7 @@ Van zodra je de input hebt ga je een proces hiermee moeten doen, een soort van c
 Vroeger zag dit er zo uit :
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{punchcards.png}
+  \includegraphics[width=0.4\textwidth]{assets/punchcards.png}
   \caption{Punchcards}
   \label{fig:punchcards.png}
  \end{figure}
@@ -94,7 +94,7 @@ Nu gaan we een beetje kijken naar de architectuur van de CPU, we kunnen hier al 
 De volgende figuur toont de controle loop (cyclus) in 4 stappen:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{CPU_controlloop.png}
+  \includegraphics[width=0.8\textwidth]{assets/CPU_controlloop.png}
   \caption{CPU architectuur}
   \label{fig:CPU_controlloop.png}
  \end{figure}
@@ -115,7 +115,7 @@ Dit is de 'denkende' logica van de processor, ze houden de huidige instructies e
 Bvb. voor een PID-regelaar worden de gemeten waarden in de registers opgeslagen want ze moeten snel toegankelijk zijn voor de berekeningen die de CPU moet uitvoeren.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{soorten_registers.png}
+  \includegraphics[width=0.6\textwidth]{assets/soorten_registers.png}
   \caption{Soorten registers in een CPU}
   \label{fig:soorten_registers.png}
  \end{figure}
@@ -127,7 +127,7 @@ Het is fysiek kleiner dan ram, maar veel sneller, wel trager dan registers. Het 
 De proff vergelijkt cache met een 'toolbelt' (gereedschapsgordel). Als je een programma draait met bijvoorbeeld een for- of while-loop, herkent het systeem dat bepaalde data constant opnieuw nodig is. Om tijd te besparen, wordt deze data tijdelijk in de cache bewaard in plaats van het telkens uit het tragere RAM te moeten halen.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{cache.png}
+  \includegraphics[width=0.5\textwidth]{assets/cache.png}
   \caption{Cache}
   \label{fig:cache.png}
  \end{figure}
@@ -139,7 +139,7 @@ Dit wijst naar dat de data \textbf{niet sequentieel} wordt uitgelezen (zoals oud
 \end{conceptbox}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{ram.png}
+  \includegraphics[width=0.6\textwidth]{assets/ram.png}
   \caption{RAM}
   \label{fig:ram.png}
  \end{figure}
@@ -156,7 +156,7 @@ Dit is de permanente opslag, zoals harde schijven of SSD's. Het is veel trager d
  \end{itemize}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{allessamen.png}
+  \includegraphics[width=0.8\textwidth]{assets/allessamen.png}
   \caption{Alles te samen: Registers, Cache, RAM, Disk}
   \label{fig:allessamen.png}
 \end{figure}
@@ -168,14 +168,14 @@ Een gestructureerde piramide die de keuzes en compromissen (trade-offs) in geheu
 Hoe hoger in de piramide, hoe dichter bij de processor, bandbreedte neemt toe, dus sneller maar de kosten stijgen dus en de capaciteit daalt.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{memory_hierarchy.png}
+  \includegraphics[width=0.8\textwidth]{assets/memory_hierarchy.png}
   \caption{Geheugenhiërarchie}
   \label{fig:memory_hierarchy.png}
  \end{figure}
 \subsubsection{Hoge integratie in moderne architectuur}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{modular_integrated.png}
+  \includegraphics[width=0.8\textwidth]{assets/modular_integrated.png}
   \caption{Klassiek modulair ontwerp vs moderne geïntegreerde architectuur}
   \label{fig:modular_integrated.png}
  \end{figure}
@@ -202,7 +202,7 @@ Type computers die door ingenieurs gebruikt kunnen worden zijn de volgende :
 \end{itemize}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{typecomputers.png}
+  \includegraphics[width=0.8\textwidth]{assets/typecomputers.png}
   \caption{Soorten Computers}
   \label{fig:typecomputers.png}
  \end{figure}
@@ -229,7 +229,7 @@ Gemaakt vooral voor multitasking, en zijn er ook voor verschillende benodingen (
 "Real-time execution" (realtime uitvoering) betekent dat een taak of berekening wordt voltooid binnen een strikt gedefinieerd tijdvenster, en \textbf{dat dit gegarandeerd is}. Het draait dus allemaal om \textbf{voorspelbaarheid (determinisme)}. Het heeft dus een strikte "time window" waarbinnen een taak moet worden voltooid, en het systeem moet kunnen garanderen dat deze taak binnen die tijd wordt afgerond, ongeacht de omstandigheden. Dit betekent dus niet dat een systeem 'snel' is, maar dat het betrouwbaar en voorspelbaar is in het leveren van resultaten binnen de vereiste tijdslimieten.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{realtime.png}
+  \includegraphics[width=0.5\textwidth]{assets/realtime.png}
   \caption{Real time execution (realtime uitvoering)}
   \label{fig:realtime.png}
  \end{figure}
@@ -245,13 +245,13 @@ Concepten die aan bod komen zijn onder andere :
 \end{itemize}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{grafiekenrealtimeniveaus.png}
+  \includegraphics[width=0.8\textwidth]{assets/grafiekenrealtimeniveaus.png}
   \caption{Visuele weergeving van de drie niveaus van real-time systemen: hard, firm en soft real-time}
   \label{fig:grafiekenrealtimeniveaus.png}
  \end{figure}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{nogeenvisueleweergaverealtimeniveaus.png}
+  \includegraphics[width=0.6\textwidth]{assets/nogeenvisueleweergaverealtimeniveaus.png}
   \caption{Nog een visuele weergave van de drie niveaus van real-time systemen}
   \label{fig:nogeenvisueleweergaverealtimeniveaus.png}
  \end{figure}
@@ -265,7 +265,7 @@ Hij bespreekt de drie lagen als volgt:
 \end{itemize}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{voorbeeldpraktijk.png}
+  \includegraphics[width=0.4\textwidth]{assets/voorbeeldpraktijk.png}
   \caption{Levels van dit voorbeeld toegepast}
   \label{fig:voorbeeldpraktijk.png}
  \end{figure}
@@ -287,7 +287,7 @@ Computermodellen verschillen in de manier hoe ze taken uitvoeren, de keuze hierv
 Dit model is ontworpen om exact één taak of controlecyclus uit te voeren.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{singletaskexecution.png}
+  \includegraphics[width=0.5\textwidth]{assets/singletaskexecution.png}
   \caption{Controleloop van een single task execution model}
   \label{fig:singletaskexecution.png}
  \end{figure}
@@ -296,7 +296,7 @@ Het volgt continu een vaste structuur, Read inputs → Computer → Write output
 Dit is het model dat we kennen van onze eigen laptops en smartphones, waarbij meerdere programma's tegelijk lijken te draaien.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{multitaskexecution.png}
+  \includegraphics[width=0.6\textwidth]{assets/multitaskexecution.png}
   \caption{Multi task execution model waarbij meerdere taken de processortijd delen}
   \label{fig:multitaskexecution.png}
  \end{figure}
@@ -314,7 +314,7 @@ Specifiek beheert het de volgende 3 hoofdzaken:
 \end{itemize}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{OS.png}
+  \includegraphics[width=0.5\textwidth]{assets/OS.png}
   \caption{Process management}
   \label{fig:OS.png}
  \end{figure}
@@ -333,7 +333,7 @@ Hoe neemt nu de OS de rol van 'manager' op zich? De kernverantwoordelijkheden va
 \end{itemize}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.3\textwidth]{OSS.png}
+  \includegraphics[width=0.3\textwidth]{assets/OSS.png}
   \caption{OS}
   \label{fig:OSS.png}
  \end{figure}
@@ -348,7 +348,7 @@ Applicaties draaien tegenwoording niet meer op fysieke hardware, tussen de softw
 Een OS laat toe om meerdere programma's te draaien, hardware te delen en is over het algemeen veiliger. Zonder een OS kan je maar 1 programma runnen en moet je direct je hardware besturen.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{tradeoff.png}
+  \includegraphics[width=0.4\textwidth]{assets/tradeoff.png}
   \caption{Onderscheiding user mode en kernel mode}
   \label{fig:tradeoff.png}
  \end{figure}
@@ -364,7 +364,7 @@ Het is een beetje gevaarlijk, want je hebt directe toegang tot de hardware, als 
 Voorbeelden zijn: Assembly, C, C++, \dots
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{NCE.png}
+  \includegraphics[width=0.4\textwidth]{assets/NCE.png}
   \caption{Native Compiled Execution (Native gecompileerde uitvoering)}
   \label{fig:NCE.png}
  \end{figure}
@@ -379,7 +379,7 @@ Hier vertaald de compiler de broncode niet direct naar machinecode maar naar \te
 Voorbeelden zijn: Java, C\#, \dots
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{VMC.png}
+  \includegraphics[width=0.5\textwidth]{assets/VMC.png}
   \caption{Virtual Machine Execution (Virtuele machine uitvoering)}
   \label{fig:VMC.png}
  \end{figure}
@@ -395,7 +395,7 @@ Bij zware rekentaken (compute-intensive tasks) kan dit model soms wel honderden 
 Voorbeelden zijn: Python, JavaScript, Ruby, PHP, \dots
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{ISC.png}
+  \includegraphics[width=0.4\textwidth]{assets/ISC.png}
   \caption{Interpreted or Scripted Execution (Geïnterpreteerde of gescripte uitvoering)}
   \label{fig:ISC.png}
  \end{figure}
@@ -409,7 +409,7 @@ Momenteel bevinden wij ons in een gigantische 'data-explosie', dit is omdat we v
 De volgende figuur toont hoe onze 'connectiviteit' exponentieel is gegroeid over de jare:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{evolutieinterenet.png}
+  \includegraphics[width=0.5\textwidth]{assets/evolutieinterenet.png}
   \caption{Evolutie van het internet en de connectiviteit van apparaten over de jaren}
   \label{fig:evolutieinterenet.png}
  \end{figure}
@@ -422,7 +422,7 @@ Het wordt opgeslagen in tabelvorm, hierbij zijn rijen en kolommen met elkaar ver
     Relationaliteit betekent dat de data in verschillende tabellen met elkaar verbonden kan worden via gemeenschappelijke velden (zoals een 'ID'). Dit maakt het mogelijk om complexe queries uit te voeren en relaties tussen verschillende datasets te analyseren.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{relationeledatavoorbeeld.png}
+  \includegraphics[width=0.5\textwidth]{assets/relationeledatavoorbeeld.png}
   \caption{Voorbeeld van relationele data}
   \label{fig:relationeledatavoorbeeld.png}
  \end{figure}
@@ -435,7 +435,7 @@ Het wordt opgeslagen in tabelvorm, hierbij zijn rijen en kolommen met elkaar ver
 \textbf{\color{red}Nadelen:} De bruikbaarheid wordt beperkt door die vaste structuur, het model kan je nie zomaar veranderen, het is opslag efficiënter maar het is lastig om aan te passen of uit te breiden (scalability), typisch 'schalen' SQL-databases ook verticaal (je wordt beperkt door de maximale hardwarelimieten van één enkele machine).
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{gestructureerdedatavoorbeeld.png}
+  \includegraphics[width=0.5\textwidth]{assets/gestructureerdedatavoorbeeld.png}
   \caption{Voorbeeld van hoe zo een tabelvorm gestructureerd eruit ziet}
   \label{fig:gestructureerdedatavoorbeeld.png}
  \end{figure}
@@ -450,7 +450,7 @@ Dit is data die je 'in het wild' vindt en die geen vooraf gedefinieerde structuu
 Omdat deze data complex is, worden patronen en connecties vooral gemaakt door AI, AI is heel goed hier in, dit is ook wel wat voordelig eigelijk omdat AI hier dus makkelijk patronen in vindt. De proff zegt ook nog dat elke LLM tekst inleest, geen videos, \dots
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{samenvattendetabel.png}
+  \includegraphics[width=0.8\textwidth]{assets/samenvattendetabel.png}
   \caption{Structured Vs Unstructured data}
   \label{fig:samenvattendetabel.png}
  \end{figure}
@@ -462,7 +462,7 @@ Op slide 18, 19 en 20 staan praktijkvoorbeelden van gestructureerde en ongestruc
 NoSQL staat voor Not Only SQL, dit zijn niet-rationele databases. Het grote verschil met SQL is dat NoSQL-databases geen strak, vooraf gedefinieerd model nodig hebben. Dit maakt het flexibeler en beter aanpasbaar voor het opslaan van allerlei verschillende of veranderende soorten data. De volgende figuur toont de 4 hoofdcategorieën van NoSQL:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{hoofdcategoriennosql.png}
+  \includegraphics[width=0.8\textwidth]{assets/hoofdcategoriennosql.png}
   \caption{NoSQL databases: de vier hoofdcategorieën (Key-Value, Document, Columnar, Graph)}
   \label{fig:hoofdcategoriennosql.png}
  \end{figure}
@@ -470,14 +470,14 @@ NoSQL staat voor Not Only SQL, dit zijn niet-rationele databases. Het grote vers
 Data wordt hier NIET in tabellen opgeslagen, maar als losse documenten in formaten zoals JSON of XML. Bekende systemen zijn MongoDB en CouchDB. Dit wordt gebruikt in contentmanagementsystemen (zoals blogs of websites) en e-commerce platforms (webshops).
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{docdb.png}
+  \includegraphics[width=0.4\textwidth]{assets/docdb.png}
   \caption{Document databases}
   \label{fig:docdb.png}
  \end{figure}
 Dit model is perfect voor sensordata, onderhoudslogs en datasets waarvan de structuur veranderd over tijd. Data is genest dus je hebt geen zware 'joins' (wordt zometeen nog uitgelegd wat dit betekent) nodig om gegevens uit verschillende plekken samen te voegen dus het opvragen van data is makkelijker. Het schaalt horizontaal over meerdere servers dus is ideaal voor IoT.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{dbvoorbeeld.png}
+  \includegraphics[width=0.5\textwidth]{assets/dbvoorbeeld.png}
   \caption{Voorbeeld van een document database}
   \label{fig:dbvoorbeeld.png}
  \end{figure}
@@ -490,13 +490,13 @@ Deze Query vind alle motor met een temperatuur boven 75°C.
 Deze database is extreem gefocust op snelheid, data wordt hier opgeslagen als simpele paren van een 'sleutel' (key) en 'waarde' (value), vergelijkbaar met een woordenboek. Je hebt een unieke naam (bvb. 'User1:Name') en daaraan hangt een simpele waarde (bvb. 'Sami'). Voorbeelden zijn Redis en DynamoDB. Dit wordt vooral gebruikt om het laden van webpaginas te versnellen of het opslaan van realtime sessiegegevens zoals het onthouden van items in een winkelwagen online of als iemand 'accepteer cookies' heeft aangeklikt.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{keyvaluedb.png}
+  \includegraphics[width=0.4\textwidth]{assets/keyvaluedb.png}
   \caption{Key-Value databases}
   \label{fig:keyvaluedb.png}
  \end{figure}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{voorbeeldcodekeyyvalue.png}
+  \includegraphics[width=0.8\textwidth]{assets/voorbeeldcodekeyyvalue.png}
   \caption{Voorbeeld van een key-value database query}
   \label{fig:voorbeeldcodekeyyvalue.png}
  \end{figure}
@@ -505,13 +505,13 @@ Dit is dus de beste keuze voor real-time sessiedata, caching, of heel simpele zo
 Traditionele SQL-databases slaan data netjes per rij op, terwijl dit model de data in kolommen organiseert. Het is zeer flexibel want je kunt makkelijk kolommen toevoegen en niet elke rij hoeft dezelfde kolommen te bezitten. Het voordeel hier is dat je makkelijk specifieke attributen kunt opvragen, dit is heel snel bij niet alleen het opvragen (want normale SQL databases geven ook onnodige informatie omdat dat bij hele rijen is) maar ook het opslaan van nieuwe data, het schaalt makkelijk horizontaal op over meerdere servers. Dit is het ideale model voor massale, snelle data (Big Data en IoT). Denk aan fabrieken waar honderden motoren of turbines elke seconde sensordata (temperatuur, stroom, vibratie) doorsturen (high-frequency time-series data). Dit soort databases verwerkt die gigantische stroom aan data moeiteloos, wat essentieel is voor predictive maintenance (voorspellend onderhoud). Bekende voorbeelden zijn Cassandra en HBase.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{columnfamiliydb.png}
+  \includegraphics[width=0.5\textwidth]{assets/columnfamiliydb.png}
   \caption{Column-Family Stores (Kolom gebaseerde databases)}
   \label{fig:columnfamiliydb.png}
  \end{figure} 
 \begin{figure}[H]
    \centering
-   \includegraphics[width=0.8\textwidth]{praktijkvoorbeeldcolumnfamily.png}
+   \includegraphics[width=0.8\textwidth]{assets/praktijkvoorbeeldcolumnfamily.png}
    \caption{Praktijkvoorbeeld Column-Family Store}
    \label{fig:praktijkvoorbeeldcolumnfamily.png}
   \end{figure}
@@ -520,13 +520,13 @@ Hierboven een praktijk voorbeeld, in de praktijk hebben we gigantisch veel data 
 Deze database stapt helemaal af van tabellen en representeert data visueel als een netwerk, het maakt gebruik van een Node-Edge Model. Met Nodes (knooppunten): de objecten of entiteiten zoals een specifieke persoon, een machine of een universiteit. En Edges (lijnen): pijlen die de actieve relaties tussen de nodes beschrijven (bvb. de relatie WORKS\_AT tussen de node 'Carlos' en de node 'KU Leuven'). Het voordeel is dat deze specifiek ontworpen zijn om complexe, onderling verbonden relaties bloot te leggen. Dus als je zwaar verbonden netwerken hebt hoef je geen zware \textbf{'joins'} (het ingewikkeld samenvoegen van verschillende tabellen) uit te voeren zoals bij SQL. Hier 'reist' het systeem eigelijk gewoon over de lijntjes van het netwerk. Dit wordt toegepast in de praktijk bij sociale netwerken (wie is vrienden met wie), fraudedetectie en aanbevelingssystelen. In de industrie wordt het gebruikt om complexe netwerkvragen te beantwoorden zoals: 'Welke combinaties van machines en onderhoudsteams delen specifieke faalpatronen?'. Bekende voorbeelden zijn Neo4j en ArangoDB.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{graphdb.png}
+  \includegraphics[width=0.5\textwidth]{assets/graphdb.png}
   \caption{Graph database}
   \label{fig:graphdb.png}
  \end{figure}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{codevoorbeeldgraphdb.png}
+  \includegraphics[width=0.8\textwidth]{assets/codevoorbeeldgraphdb.png}
   \caption{Voorbeeld van een graph database query}
   \label{fig:codevoorbeeldgraphdb.png}
  \end{figure}
@@ -541,7 +541,7 @@ Ze zijn het beste voor strak georganiseerde bedrijfsdata, zoals de inventaris va
 Het heeft een vast schema (fixed) en een hoge betrouwbaarheid en consistentie (strong compliance). Het is geoptimaliseerd voor transacties en kan complexe relaties tussen tabellen leggen (via 'joins'). Een nadeel is wel dat het verticaal schaalt, dus je kunt het systeem alleen sneller maken met een zwaardere processor of meer RAM in die ene specifieke server te steken.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{sdsqlrd.png}
+  \includegraphics[width=0.8\textwidth]{assets/sdsqlrd.png}
   \caption{Structured data (SQL-Relational databases)}
   \label{fig:sdsqlrd.png}
  \end{figure}
@@ -550,26 +550,26 @@ In deze figuur een perfect voorbeeld, hier kan je zien linksonder hoe met een Qu
 Als je met een SQL een commando geeft om bvb. enkel de temperatuur van machine 101 te vinden dan leest het systeem nog steeds de hele rij in op de achtergrond, bij NoSQL (bvb. Cassandra) zijn vergelijkbare kolommen samen opgeslagen, hierdoor moet het systeem ALLEEN de temperatuurdata inladen, dit vermindert onnodig leeswerk en is vele sneller.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{rowvscollumn.png}
+  \includegraphics[width=0.8\textwidth]{assets/rowvscollumn.png}
   \caption{SQL vs NoSQL: rijen vs kolommen}
   \label{fig:rowvscollumn.png}
  \end{figure}
 \subsection{Overzichten SQL vs NoSQL}
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.6\textwidth]{overzicht1.png}
+  \includegraphics[width=0.6\textwidth]{assets/overzicht1.png}
   \caption{SQL vs NoSQL}
   \label{fig:overzicht1.png}
  \end{figure}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{tabeloverzicht.png}
+  \includegraphics[width=0.8\textwidth]{assets/tabeloverzicht.png}
   \caption{SQL vs NoSQL}
   \label{fig:tabeloverzicht.png}
  \end{figure}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{cheatsheetsql.png}
+  \includegraphics[width=0.8\textwidth]{assets/cheatsheetsql.png}
   \caption{SQL \& NoSQL Databases cheatsheet}
   \label{fig:cheatsheetsql.png}
  \end{figure}
@@ -577,7 +577,7 @@ Als je met een SQL een commando geeft om bvb. enkel de temperatuur van machine 1
 In de volgende figuur zien we een overzicht van de complete datastroom binnen een grote organisatie: 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{overviewdata.png}
+  \includegraphics[width=0.8\textwidth]{assets/overviewdata.png}
   \caption{Overzicht datastroom}
   \label{fig:overviewdata.png}
  \end{figure}
@@ -586,7 +586,7 @@ Aan de linkerkant zien we 'data sources', dit is waar ruwe data wordt verzameld 
     Een datawarehouse is een centrale opslagplaats die puur is bedoeld voor gestructureerde en verwerkte data. In de theorie wordt gesteld dat dit vaak gigantische datanases zijn (meer dan 100GB). Zo een database gebruik je niet voor dagelijkse, snelle transacties, maar om historische data te bewaren voor efficiënte analyse en het maken van grote, strategische bedrijfsbeslissingen.
     \begin{figure}[H]
       \centering
-      \includegraphics[width=0.8\textwidth]{datawarehouse.png}
+      \includegraphics[width=0.8\textwidth]{assets/datawarehouse.png}
       \caption{Overzicht datawarehouse}
       \label{fig:datawarehouse.png}
      \end{figure}
@@ -602,7 +602,7 @@ Aan de linkerkant zien we 'data sources', dit is waar ruwe data wordt verzameld 
   De proff zegt hier dat degene die de data wilt analyseren 'voor de prijs betaalt' want omdat de data onbewerkt is, moet de gebruiker langer wachten op zijn resultaten; je levert dus pure leessnelheid in voor maximale flexibiliteit. Data lakes zijn ontworpen voor Big data, data discovery en machine learning. Omdat je alle ruwe details bewaard houd, krijg je een heel gedetailleerd overzicht, dit is goed voor datawetenschappers, ze kunnen op een verkennende manier door enorme hoeveelheden data 'graven' op zoek naar onbekende patronen of inzichten die je zou kwijtgeraken als je data vooraf al was bewerkt.
   \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{figuurdatalakes.png}
+    \includegraphics[width=0.8\textwidth]{assets/figuurdatalakes.png}
     \caption{Data lakes}
     \label{fig:figuurdatalakes.png}
    \end{figure}
@@ -634,7 +634,7 @@ Hier zetten we 3 fundamentele concepten tegenover elkaar:
 \subsubsection{Cheat sheet}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1\textwidth]{cheatsheetdwvsdl.png}
+  \includegraphics[width=1\textwidth]{assets/cheatsheetdwvsdl.png}
   \caption{Cheatsheet Data Warehouse vs Data Lake}
   \label{fig:cheatsheetdwvsdl.png}
  \end{figure}
@@ -644,7 +644,7 @@ We introduceren nu de manier waarop data wordt verwerkt en het onderscheid tusse
 Dus, in een bedrijfsomgeving hebben we 2 verschillende soorten processen die tegelijkertijd draaien. We hebben het \textbf{'operationele proces' (OLTP DB)}, dit omvat de dagelijkse bedrijfsprocessen en de stroom van continue 'data transactions' en we hebben het \textbf{'informatie-proces' (OLAP DB)}, hier wordt verzamelde data opgeslagen in een data warehouse om vervolgens te worden onderworpen aan datamining of data analysis om er big data inzichten uit te halen.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{bwap.png}
+  \includegraphics[width=0.6\textwidth]{assets/bwap.png}
   \caption{Business Warehousing and Process}
   \label{fig:bwap.png}
  \end{figure}
@@ -656,7 +656,7 @@ Deze technologie is specifiek gebouwd voor complexe data analyse en het uitvoere
 In de volgende figuur zien we een schema die de 2 systemen met elkaar vergelijkt:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{OLTPvsOLAP.png}
+  \includegraphics[width=0.8\textwidth]{assets/OLTPvsOLAP.png}
   \caption{}
   \label{fig:OLTPvsOLAP.png}
  \end{figure}
@@ -666,7 +666,7 @@ OLTP is enorm 'latency sensitive', dit betekent dat elke milliseconde telt (het 
   Big data verwijs naar grootschalige datasets die heel complex, gigantisch in volume en heel snelgroeiend (fast-growing) zijn. Big data is eigelijk een verzamelnaam en bevat alle drie de datatypes (gestructureerd, semi-gestructureerd en ongestructureerd). Het doel hiervan is dus om er inzichten uit te halen die leiden tot betere beslissingen en bedrijfsvoering. De volgende tabel geeft nog even een korte herhaling en een EM-praktijkvoorbeeld:
   \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{bigdatatabel.png}
+    \includegraphics[width=0.5\textwidth]{assets/bigdatatabel.png}
     \caption{Big Data Overzicht}
     \label{fig:bigdatatabel.png}
    \end{figure}
@@ -704,7 +704,7 @@ Data analytics kijkt dus naar het in kaart brengen van bekende trends, maar data
 De slides tonen nog deze cheat sheet:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{cheatsheetdataanalyticsvsdatamining.png}
+  \includegraphics[width=0.8\textwidth]{assets/cheatsheetdataanalyticsvsdatamining.png}
   \caption{Cheatsheet Data Analytics vs Data Mining}
   \label{fig:cheatsheetdataanalyticsvsdatamining.png}
  \end{figure}
@@ -713,14 +713,14 @@ Gebruik dus data analytics om de prestaties van je machines te volgen en je oper
 Wat probeer je precies te bereiken als ingenieur met Data Analytics? Je gebruikt analytics om de prestaties van machines continu in de gaten te houden, defecten op tijd te detecteren en onderhoudsschema's te optimaliseren zodat een machine niet opeens stil valt. Om dit te doen gebruik je statistische analyses, voorspellende modellen en datavisualisatie. Tools zoals SQL voor ophalen van data, Python of Matlab voor rekenwerk en Power BI om mooie dashboards te maken worden gebruikt. In de volgende figuur zie je hoe dit er in de praktijk uit ziet:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{trillingniveaushi.png}
+  \includegraphics[width=0.8\textwidth]{assets/trillingniveaushi.png}
   \caption{Trillingniveau's van een machine}
   \label{fig:trillingniveaushi.png}
  \end{figure}
 Deze grafiek laat zien dat we al precies weten welke trilling bij welk probleem hoort.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{predictivemaintenancedataanalytics.png}
+  \includegraphics[width=0.6\textwidth]{assets/predictivemaintenancedataanalytics.png}
   \caption{Dashboard voorbeeld}
   \label{fig:predictivemaintenancedataanalytics.png}
  \end{figure}
@@ -729,14 +729,14 @@ De bovenste figuur toont wat er op zo'n dashboard zou staan. Je ziet hier pieken
 Je gaat hier dus dieper graven om dingen te vinden die je nog niet wist. Dit is complexer dus je gebruikt zwaardere algoritmes zoals Clustering (groeperen), anomaly detectection en association rule mining. Je gebruikt programmeertalen en software zoals python, R, Matlab en Apache Spark. In de volgende figuur zien we een grafiek met gekleurde wolkjes (clusters). Het algoritme heeft zelf de data gegroepeerd en ontdekt bvb. 'Cluster C: suspicious vribration pattern'. Ook zie je een overzicht van hoe verschillende metingen samen in een model worden gegooid om een 'abnormale conditie' te detecteren voordat de machine stuk is.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{dataminingpredictivemaintenance.png}
+  \includegraphics[width=0.6\textwidth]{assets/dataminingpredictivemaintenance.png}
   \caption{Data mining voorbeeld}
   \label{fig:dataminingpredictivemaintenance.png}
  \end{figure}
 Onderzoekende vragen die aan algoritmes worden gesteld kunnen zijn: 'Welke sensorpatronen wijzen op een naderende motorstoring?' of 'Kunnen we verschillende machines clusteren op basis van hun faaltypes?'. Het resultaat is een intelligent systeem dat de fabriek slimmer maakt, het heeft een anomaly detection system, clustering analysis en association rules.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{nognefiguridk.png}
+  \includegraphics[width=0.6\textwidth]{assets/nognefiguridk.png}
   \caption{}
   \label{fig:nognefiguridk.png}
  \end{figure}
@@ -744,7 +744,7 @@ Onderzoekende vragen die aan algoritmes worden gesteld kunnen zijn: 'Welke senso
 De proff geeft over dit onderwerp eerst een korte inleiding over waarom dit onderwerp zo belangrijk is. Hij vertelt dat de mens zeer uniek is in de manier dat wij de wereld domineren door ons uniek vermogen om boodschappen en informatie over te dragen, dit maakt ons zo machtig. Hij toont ook vervolgens dit diagram:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{kondratiev.png}
+  \includegraphics[width=0.6\textwidth]{assets/kondratiev.png}
   \caption{Kondratiev-golven}
   \label{fig:kondratiev.png}
  \end{figure}
@@ -757,7 +757,7 @@ Er zijn 2 manieren/soorten van data transmissie:
 \end{itemize}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{anadigi.png}
+  \includegraphics[width=0.5\textwidth]{assets/anadigi.png}
   \caption{Analoog vs. Digitaal}
   \label{fig:anadigi.png}
  \end{figure}
@@ -767,7 +767,7 @@ Een analoog is een vloeiende, \textbf{continue} golf, terwijl een digitaal signa
 De volgende figuur toont 2 blokschema's die stap voor stap de onderdelen van beide communicatiesystemen vergelijken:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{analoogvsdigitaal.png}
+  \includegraphics[width=0.8\textwidth]{assets/analoogvsdigitaal.png}
   \caption{Analoog vs. Digitaal Blokschema's}
   \label{fig:analoogvsdigitaal.png}
  \end{figure}
@@ -781,14 +781,14 @@ Vroeger had analoge data geen idee waar het naartoe ging, werd in alle richtinge
 \subsubsection{AM (Amplitude Modulation)}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{AM.png}
+  \includegraphics[width=0.6\textwidth]{assets/AM.png}
   \caption{Amplitude Modulation (AM)}
   \label{fig:AM.png}
  \end{figure}
 Je hebt dus je informatiesignaal (bovenste grafiek), dit wil je duidelijk kunnen verzenden, het probleem hier is dat dit signaal heel zwak is, dit is moeilijk om ver te verzenden, daarom gebruik je een 'carrier signal' (draaggolf), je laat het informatie signaal meeliften op deze sterkere draaggolf (piggybacken), bij AM verander je dus eigelijk de amplitude van de draaggolf op basis van de waarde van je informatiesignaal. Dit dus omdat de draaggolf een hoge frequentie heeft (en dus meer energie, E = h*f), dit is veel beter in staat om lange afstanden te reizen, dit is ook AC dus kan je met transformatoren de spanning makkelijker versterken om verder te sturen. Hoe haal je nu het bericht uit die gecombineerde golf?
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{AMdemoludator.png}
+  \includegraphics[width=0.6\textwidth]{assets/AMdemoludator.png}
   \caption{AM Demodulator}
   \label{fig:AMdemoludator.png}
  \end{figure}
@@ -797,7 +797,7 @@ Het signaal gaat eerst door een gelijkrichter (rectifier), omdat het signaal sym
 Dit is een modernere en betere techniek, vereist minder energie en heeft minder ruis. 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{FM.png}
+  \includegraphics[width=0.4\textwidth]{assets/FM.png}
   \caption{Frequency Modulation (FM)}
   \label{fig:FM.png}
  \end{figure}
@@ -806,7 +806,7 @@ In plaats van amplitude te veranderen, hou je die hier juist constant, je codeer
 Hierbij houden we de carrier signal constant, we codere de informatie door de fase van het signaal te verschuiven op basis van het origineel bericht, hiervoor heb je een specifieke fasemodulator-circuit nodig. De proff zegt wel dat we hier niet dieper op ingaan, wordt ook weinig gebruikt. Bij satellietbesturing wordt het wel gebruikt.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{PM.png}
+  \includegraphics[width=0.5\textwidth]{assets/PM.png}
   \caption{Phase Modulation (PM)}
   \label{fig:PM.png}
  \end{figure}
@@ -819,7 +819,7 @@ We bespreken nu 3 manieren waarop zenders en ontvangers met elkaar kunnen commun
 \end{itemize}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{communicationmodes.png}
+  \includegraphics[width=0.4\textwidth]{assets/communicationmodes.png}
   \caption{Communication Modes: Simplex, Half-Duplex, Full-Duplex}
   \label{fig:communicationmodes.png}
  \end{figure}
@@ -861,7 +861,7 @@ Dit is het 'fire and forget model', dit lijkt op een email, je verstuurt een ber
 Voorbeelden van asynchrone communicatie zijn: email, sms, sociale media berichten, online forums, \dots
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{asynchvssynch.png}
+  \includegraphics[width=0.8\textwidth]{assets/asynchvssynch.png}
   \caption{Synchronous vs Asynchronous Communication}
   \label{fig:asynchvssynch.png}
  \end{figure}
@@ -876,7 +876,7 @@ De definitie is dus eigelijk als volgt:
 Er zijn 2 fundamentele manieren waarop digitale data (bits) over een verbinding gestuurd kunnen worden: serieel en parallel:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{visueelserieelparallel.png}
+  \includegraphics[width=0.6\textwidth]{assets/visueelserieelparallel.png}
   \caption{Visueel overzicht van seriële vs parallelle transmissie}
   \label{fig:visueelserieelparallel.png}
  \end{figure}
@@ -885,7 +885,7 @@ In de figuur zien we dat serieel 1 bit per keer wordt verzonden, begeleidt door 
 Dit is voordelig want je hebt minder draden nodig, dunnere kabel, goedkoper en simpeler en omdat er minder draden naast elkaar lopen heb je geen EMI (elektromagnetische interferentie), dit maakt het veel betrouwbaarder en effectiever voor langere afstanden. Bit voor bit zenden is in principe wel trager maar sinds dat onze systemen tegenwoordig zo sterk zijn is dit nadeel weggewerkt. Het bekendste en meest succesvolle voorbeeld hiervan is de USB (Universal Serial Bus).
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{serialcommunication.png}
+  \includegraphics[width=0.6\textwidth]{assets/serialcommunication.png}
   \caption{Seriële communicatie}
   \label{fig:serialcommunication.png}
  \end{figure}
@@ -893,7 +893,7 @@ Dit is voordelig want je hebt minder draden nodig, dunnere kabel, goedkoper en s
 Het grote voordeel hier is de theoretische snelheid, omdat je dus die meerdere bits tegelijk kan sturen maar je hebt gigantisch veel koper nodig wat te veel kost en dit is ook heel slecht voor lange afstanden door EMI en raken dan uit de pas (synchronisatieproblemen), dit leidt tot corrupte data en als 1 bit faalt moet het hele pakket opnieuw verzonden worden.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{parellelecommuncaiati.png}
+  \includegraphics[width=0.6\textwidth]{assets/parellelecommuncaiati.png}
   \caption{Parallelle communicatie}
   \label{fig:parellelecommuncaiati.png}
  \end{figure}
@@ -905,7 +905,7 @@ Nu stappen we over naar de moderne digitale communicatie, analoge communicatie v
 Online data moet exact weten waar het naar toe gaat, het internetverkeer wordt dus eigelijk 'gerouteerd', digitale communicatie is ook de plek waar encryptie-algoritmes uitblinken (dit zien we nog later), een router wordt dus gebruikt om data te versturen, dit weet waar informatie naar toe moet, dit zien we in de volgende figuur: 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{digitalcommunications.png}
+  \includegraphics[width=0.8\textwidth]{assets/digitalcommunications.png}
   \caption{Overzicht van digitale communicatie}
   \label{fig:digitalcommunications.png}
  \end{figure}
@@ -913,7 +913,7 @@ Online data moet exact weten waar het naar toe gaat, het internetverkeer wordt d
 Het volgende model toont de stappen en actoren die nodig zijn om digitale informatie succesvol van de ene plek naar de andere te krijgen over een netwerk:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{communicationproces.png}
+  \includegraphics[width=0.6\textwidth]{assets/communicationproces.png}
   \caption{Basic Digital Communication Model}
   \label{fig:communicationproces.png}
  \end{figure}
@@ -936,13 +936,13 @@ Er zijn ontelbaar veel protocollen, maar ze kunnen grof ongeveer in 2 hoofdfamil
 \end{itemize}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{protocolvertakking.png}
+  \includegraphics[width=0.6\textwidth]{assets/protocolvertakking.png}
   \caption{Visuele weergave van protocollen en hun onderverdeling}
   \label{fig:protocolvertakking.png}
  \end{figure}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{voorbeeldenprotocollen.png}
+  \includegraphics[width=0.6\textwidth]{assets/voorbeeldenprotocollen.png}
   \caption{Protocol voorbeelden}
   \label{fig:voorbeeldenprotocollen.png}
  \end{figure}
@@ -958,7 +958,7 @@ Wat zijn de voordelen van een netwerk? (Om dus een apparaat in een netwerk te pl
 \end{itemize}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{fotoslidenetwerk.png}
+  \includegraphics[width=0.6\textwidth]{assets/fotoslidenetwerk.png}
   \caption{Netwerken}
   \label{fig:fotoslidenetwerk.png}
  \end{figure}
@@ -975,7 +975,7 @@ Voor we beginnen aan deze les introduceren we ook nog rap paar nieuwe dingen; cl
 Dit is eigelijk de basis van hoe het internet werkt, een 'client' (zoals u laptop of telefoon) start de communicatie door een verzoek (request)(bvb. breng mij naar die webpagina) naar een server (kan verschillende soorten hebben, SQL, \dots) te sturen (meestal wordt hier gebruik gemaakt van een HTTP-protocol, soms ook FTP, TCP, UDP), de server verwerkt dit verzoek en stuurt vervolgens een response terug.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{clientserverarchitecture.png}
+  \includegraphics[width=0.5\textwidth]{assets/clientserverarchitecture.png}
   \caption{Client-Server Architecture}
   \label{fig:clientserverarchitecture.png}
  \end{figure}
@@ -986,7 +986,7 @@ Zie dit als een soort programmeerfunctie (bvb. in java of python ofzo) maar ipv 
 Om toegang te krijgen tot die server heb je een API-key nodig (dit is een soort hash code)(het callen van deze functie gebeurt via iets zoals dit: \url{https://api.openweathermap.org/data/2.5/weather?q=London&appid=YOUR_API_KEY}), als antwoordt stuur de server een gestructureerde JSON file naar je terug wat er zo uit ziet:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.35\textwidth]{JSONfile.png}
+  \includegraphics[width=0.35\textwidth]{assets/JSONfile.png}
   \caption{JSON file weer}
   \label{fig:JSONfile.png}
  \end{figure}
@@ -997,7 +997,7 @@ Dit is een belangrijk concept, een API is eigelijk een soort van contract tussen
 Belangrijk om te weten is ook dat dit niet alleen voor het web is, dus het moet niet percee alleen over het internet werken, maar het kan ook gewoon lokaal op je eigen apparaat draaien. Een voorbeeld is 'TensorFlow' (voor AI) of de Android Camera API op je telefoon. Dus eigelijk zijn \textbf{alle web services API's, maar niet alle API's zijn webservices}.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{oberAPI.png}
+  \includegraphics[width=0.5\textwidth]{assets/oberAPI.png}
   \caption{Ober API}
   \label{fig:oberAPI.png}
  \end{figure}
@@ -1008,7 +1008,7 @@ Dit is eigelijk 'the next big thing' op het internet, een normaal taalmodel (\te
 Hij zegt wel dat deze technologie nog \textit{'Undercooked'} is, dit is nog steeds in vroege ontwikkelingsfase, de AI neemt autonoom beslissingen en geeft als voorbeeld van een gevaar een incident waarbij een AI besloot om iemands complete e-mailbox te verwijderen.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{aiagentsllmsmcp.png}
+  \includegraphics[width=0.5\textwidth]{assets/aiagentsllmsmcp.png}
   \caption{AI Agents, LLM's en MCP's}
   \label{fig:aiagentsllmsmcp.png}
  \end{figure}
@@ -1038,7 +1038,7 @@ Dus is het vaak slimmer om over te schakelen naar 'Cloud computing',  ipv fysiek
 In de les toont de proff ook nog volgende figuur:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{microsofot.png}
+  \includegraphics[width=0.5\textwidth]{assets/microsofot.png}
   \caption{Hoe microsoft winst maakt}
   \label{fig:microsofot.png}
  \end{figure}
@@ -1047,7 +1047,7 @@ Veel mensen hebben door dat windows de laatste jaren als maar shitter wordt, dit
 Cloud computing heeft 3 hoofdcategorieën (servicemodellen) van cloud computing; IaaS, PaaS en SaaS, deze vormen eigelijk ook zo een piramide van lagen, hoe hoger je in de piramide je gaat, hoe meer gemak je hebt, maar hoe meer controle (soevereiniteit) je verliest.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{cloudpiramide.png}
+  \includegraphics[width=0.6\textwidth]{assets/cloudpiramide.png}
   \caption{Cloud Services Piramide: IaaS, PaaS, SaaS}
   \label{fig:cloudpiramide.png}
  \end{figure}
@@ -1060,7 +1060,7 @@ Dit zijn volledige gehoste applicaties die je via het internet gebruikt (vaak in
 \subsubsection{Samenvattende figuur}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{cloudservices.png}
+  \includegraphics[width=0.6\textwidth]{assets/cloudservices.png}
   \caption{Cloud Services wat je verliest in het rood en wat je bijhoudt in het blauw}
   \label{fig:cloudservices.png}
  \end{figure}
@@ -1073,7 +1073,7 @@ Data kan ook via het internet beschikbaar worden gemaakt, zonder dat je zelf lok
 We hebben een 'Virtual Data Layer' nodig, dit is een soort van softwarelaag die data van verschillende bronnen (bvb. verschillende data warehouses) kan verzamelen en combineren tot één uniforme interface, aan de hand van API's en webservices dat het gebruikt, zodat gebruikers en applicaties gemakkelijk toegang hebben tot alle data zonder zich zorgen te maken over waar het vandaan komt of hoe het is opgeslagen (de complexe 'achterkant' eigelijk).
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{daas.png}
+  \includegraphics[width=0.5\textwidth]{assets/daas.png}
   \caption{DaaS (Data as a Service)}
   \label{fig:daas.png}
  \end{figure}
@@ -1091,7 +1091,7 @@ Er zijn eigelijk 2 manieren waarop dit gedaan wordt, 1 daarvan is eigelijk al ve
 \end{itemize}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{containervsvm.png}
+  \includegraphics[width=0.5\textwidth]{assets/containervsvm.png}
   \caption{Containers vs Virtual Machines (VM's)}
   \label{fig:containervsvm.png}
  \end{figure}
@@ -1108,7 +1108,7 @@ Het is ook nog is \textbf{sterk geïsoleerd}, dit is zeer cruciaal, want als er 
 Voorbeelden van type 1 hypervisors zijn VMware ESXi, Microsoft Hyper-V en Xen. Achter de schermen gebruiken deze systemen enorme cloudproviders (zoals Amazon Web Services) voor hun datacenters. Thuis ga je dit complexe ding niet zomaar installeren, dit is vooral interessant en efficiënt voor bedrijven.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{Type1hypervisor.png}
+  \includegraphics[width=0.4\textwidth]{assets/Type1hypervisor.png}
   \caption{Type 1 Hypervisor (Bare-metal)}
   \label{fig:Type1hypervisor.png}
  \end{figure}
@@ -1122,7 +1122,7 @@ Dus hierdoor communiceert het niet direct met de hardware, maar gaat het eerst d
 Omdat dit trager is en afhankelijk is van een host OS, wordt Type 2 niet in proffesionele productieomgevingen gebruikt, het wordt vooral gebruikt voor ontwikkeling, testen en educatieve doeleinden door consumenten en programmeurs. Voorbeelden zijn Oracle VirtualBox (hiermee simmuleer je Linux op je Windows laptop), VMware Workstation en Parallels Desktop (voor Mac).
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{type2hypervisor.png}
+  \includegraphics[width=0.4\textwidth]{assets/type2hypervisor.png}
   \caption{Type 2 Hypervisor (Hosted)}
   \label{fig:type2hypervisor.png}
  \end{figure}
@@ -1130,7 +1130,7 @@ Omdat dit trager is en afhankelijk is van een host OS, wordt Type 2 niet in prof
 We zagen al een korte uitleg van wat dit was, nu gaan we hier even dieper op in. Het grote ding van een container is dat het geen zware Guest OS nodig heeft, dus ook geen hypervisor, dit maakt het lichtgewicht, alle containers in een systeem delen hetzelfde onderliggende besturingssysteem (host OS), bij een container pak je eigelijk enkel de code van je applicatie, samen met de specifieke libraries die het nodig heeft om te draaien, je neemt het eigelijk in een 'doos' (alles dus in de doos, zodat je dit kan verzegelen en het vergeten en vervolgens overal te wereld sturen (bvb. Amazon)). Zolang dus een Container Runtime er op staat, zal het werken.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{nognefotocontainer.png}
+  \includegraphics[width=0.8\textwidth]{assets/nognefotocontainer.png}
   \caption{Traditioneel --> Virtualized --> Container}
   \label{fig:nognefotocontainer.png}
  \end{figure}
@@ -1144,7 +1144,7 @@ De \textit{'final boss'} van cloud computing is Kubernetes, dit wordt ook wel 'd
 Dit is echter wel heel moeilijk om op te zetten, maar van zodra het draait is het zeer efficiënt en krachtig. Het start en draait containers verspreid over verschillende fysieke machines, het maakt je cloud 'elastisch' (dus van zodra de vraag toeneemt, door bvb. veel website bezoekers), voegt het automatisch instanties toe (het start meer containers), als de vraag afneemt, sluit het er automatisch. Nog iets nice is 'automatisch herstel', het herstart of vervangt volledig automatisch containers die vastlopen en crashen. Het is ook gebalanceerd, het verdeelt containers gelijkmatig over machines om optimale prestaties te garanderen.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{kubernetes.png}
+  \includegraphics[width=0.5\textwidth]{assets/kubernetes.png}
   \caption{Kubernetes}
   \label{fig:kubernetes.png}
  \end{figure}
@@ -1152,7 +1152,7 @@ Op de figuur hierboven zie je dat applicaties in containers runnen en die contai
 \subsubsection{Samenvattende tabel container en kubernetes}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{tabelkuberenetescontainer.png}
+  \includegraphics[width=0.8\textwidth]{assets/tabelkuberenetescontainer.png}
   \caption{Vergelijking container en kubernetes}
   \label{fig:tabelkuberenetescontainer.png}
  \end{figure}
@@ -1160,7 +1160,7 @@ Op de figuur hierboven zie je dat applicaties in containers runnen en die contai
 Dan gaan we nu even dieper in op die elasticiteit (ook wel 'dynamic scaling' genoemd) die we eerder bespraken. Dit is 1 van de belangrijkste eigenschappen (metric) waarop je moet letten als je een cloud-systeem kiest. Je kan dit vergelijken met iets elastisch uit de mechanica (iets kan uitrekken als er extra spannign opstaat en netjes terugkrimpen naar originele vorm als de spanning weg is), in de cloud betekent dit simpelweg de rekenkracht van het systeem (zoals CPU en RAM) perfect balanceren op basis van de vraag.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{schaalbaarheidvscloudelasticiteit.png}
+  \includegraphics[width=0.6\textwidth]{assets/schaalbaarheidvscloudelasticiteit.png}
   \caption{Schaalbaarheid vs Cloud Elasticiteit}
   \label{fig:schaalbaarheidvscloudelasticiteit.png}
  \end{figure}
@@ -1173,7 +1173,7 @@ De grafiek daaronder toont de cloud elasticiteit, hier is de capaciteit geen rec
 De figuur hieronder probeert eigelijk het ultieme doel van een cloud omgeving te illustreren, namelijk de blauwe workload-lijn (de daadwerkelijke belasting van je applicatie over tijd) zo dicht mogelijk op die trapsgewijze lijn (de hoeveelheid servercapaciteit die daadwerkelijk beschikbaar is op dat momenent) te houden. Op een bepaald moment wordt de blauwe groter dan de trapsgewijze en wordt een request gestuurd voor meer capaciteit, als de piek voorbij is wordt een release gestuurd. Je ziet hier ook de overprovisioning en under-provisioning zones alswel de waste zone.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{nognefiguurelasticiteit.png}
+  \includegraphics[width=0.6\textwidth]{assets/nognefiguurelasticiteit.png}
   \caption{Wat gebeurt er als je middelen af stemt op vraag}
   \label{fig:nognefiguurelasticiteit.png}
  \end{figure}
@@ -1195,7 +1195,7 @@ Dit is een bekende term, het gaat hier eigelijk over hoeveel uren of minuten per
 Dit is de absoluut zwaarste en meest veeleisende toepassing voor cloud computing ter wereld. In plaats van dat je jouw eigen GPU het rekenwerk laat doen gebeurt alle game logica ergens ver weg op een gigantische servercluster. Jouw apparaat (de client) moet geen beefy gaming pc zijn, je kan het op eender welk schermpje spelen, je apparaat moet gewoon controller-commandos via het internet kunnen sturen en de teruggestuurde video weer geven. Het lastige hieraan nu is de latency wel, als je op 240fps wilt spelen ga je al een gigantisch snelle internetconnectie nodig hebben dat heel duur is, op lagere snelheden zoals 30fps of 60fps werkt dit wel al goed.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{cloudgamingframework.png}
+  \includegraphics[width=0.6\textwidth]{assets/cloudgamingframework.png}
   \caption{Cloud Gaming Framework}
   \label{fig:cloudgamingframework.png}
  \end{figure}

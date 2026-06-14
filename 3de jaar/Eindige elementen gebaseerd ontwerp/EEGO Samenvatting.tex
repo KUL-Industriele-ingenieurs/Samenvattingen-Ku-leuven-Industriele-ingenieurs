@@ -54,7 +54,7 @@ Ontwerpeisen worden steeds strenger en complexer , het ontwerpen moet sneller ge
 \end{itemize}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.6\textwidth]{patat_mesh.png}
+	\includegraphics[width=0.6\textwidth]{assets/patat_mesh.png}
 	\caption{Mesh voorbeeld patat}
 \end{figure}
 \subsection{Numerieke Analyse: Van Mesh naar Matrix}
@@ -126,7 +126,7 @@ In de numerieke analyse zijn er verschillende soorten fouten die kunnen optreden
     \item \textbf{Discretisatiefout:} Fouten die ontstaan door de discretisatie van het continu probleem (bijv. te grove mesh).
     \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.5\textwidth]{discretisatie_error.png}
+	\includegraphics[width=0.5\textwidth]{assets/discretisatie_error.png}
 	\caption{Oplossingsdiscretisatie fout}
     \end{figure}
     In deze figuur zien we dat de computer punten verbind met rechte lijnen, terwijl de echte oplossing een kromme is. De fout is dus het verschil tussen de echte oplossing en de benaderde oplossing.
@@ -152,7 +152,7 @@ Een goed rapport maakt een identieke simulatie door derden mogelijk:
 De volgende figuur beschrijft het beslissingproces en de iteratieve cyclus van een eindige elementenmethode (FEM) ontwerpaanpak:
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{flowchart.png}
+    \includegraphics[width=0.8\textwidth]{assets/flowchart.png}
     \caption{Beslissingsproces voor het gebruik van FEM}
 \end{figure}
 \begin{conceptbox}[\textbf{Kenmerk van een goede simulatie}]
@@ -166,7 +166,7 @@ De volgende figuur beschrijft het beslissingproces en de iteratieve cyclus van e
 Waarom discretiseren? Zie de het linkse gedeelte van de onderstaande figuur, in het echt hebben we dus een continu domein, dit zijn oneindig veel punten, de computer kan dit nooit allemaal berekenen, daarom 'hakken' we het stuk op in kleine elementen verbonden met knopen.
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.5\textwidth]{continu_en_gediscretiseerd.png}
+  \includegraphics[width=0.5\textwidth]{assets/continu_en_gediscretiseerd.png}
   \caption{Continu vs Gediscretiseerd domein}
   \label{Continu vs Gediscretiseerd domein}
  \end{figure}
@@ -200,13 +200,13 @@ Eigenschappen hiervan zijn:
     \end{itemize}
     \begin{figure}[H]
       \centering
-      \includegraphics[width=0.8\textwidth]{elementtypetabel.png}
+      \includegraphics[width=0.8\textwidth]{assets/elementtypetabel.png}
       \caption{Overzicht van elementtypen}
       \label{Overzicht van elementtypen}
     \end{figure}
     \begin{figure}[H]
       \centering
-      \includegraphics[width=0.4\textwidth]{meshrepresentatieelemententypes.png}
+      \includegraphics[width=0.4\textwidth]{assets/meshrepresentatieelemententypes.png}
       \caption{Meshes van verschillende elementtypen}
       \label{Meshes van verschillende elementtypen}
     \end{figure}
@@ -215,7 +215,7 @@ De figuren hierboven zijn representaties van de verschillende elementtypen, de p
 \end{warningbox}
     \begin{figure}[H]
       \centering
-      \includegraphics[width=0.8\textwidth]{elementtypen_tabel_les.png}
+      \includegraphics[width=0.8\textwidth]{assets/elementtypen_tabel_les.png}
       \caption{Overzicht van elementtypen aan bord uit les}
       \label{Overzicht aan bord uit les}
     \end{figure}
@@ -229,7 +229,7 @@ In bovenstaande figuur wordt de ROD alleen belast in de lengterichting, de BEAM 
         \item \textbf{3D}: tetraëder (tet), hexaëder (hex)
         \begin{figure}[H]
           \centering
-          \includegraphics[width=0.6\textwidth]{element_vormen.png}
+          \includegraphics[width=0.6\textwidth]{assets/element_vormen.png}
           \caption{Overzicht van elementvormen}
           \label{fig:element_vormen.png}
         \end{figure}
@@ -251,7 +251,7 @@ In bovenstaande figuur wordt de ROD alleen belast in de lengterichting, de BEAM 
     \end{conceptbox}
     \begin{figure}[htbp]
       \centering
-      \includegraphics[width=0.6\textwidth]{element_vormen_p_is_2.png}
+      \includegraphics[width=0.6\textwidth]{assets/element_vormen_p_is_2.png}
       \caption{Overzicht van elementvormen met p=2}
       \label{Overzicht van elementvormen met p=2}
     \end{figure}
@@ -260,7 +260,7 @@ In bovenstaande figuur wordt de ROD alleen belast in de lengterichting, de BEAM 
     Elementen in een mesh hebben een hoogte h, dit is de afstand tussen 2 knopen. Hoe kleiner h, hoe fijner de mesh, hoe nauwkeuriger de oplossing, maar ook hoe langer de rekentijd. Je maakt best de mesh fijner \textbf{in gebieden waar je spanningsconcentraties verwacht}, de computer kan daar dan snelle veranderingen in spanningen of vervormingen beter volgen.
     \begin{figure}[H]
       \centering
-      \includegraphics[width=0.8\textwidth]{hoogtewordtkleinermesh.png}
+      \includegraphics[width=0.8\textwidth]{assets/hoogtewordtkleinermesh.png}
       \caption{Overzicht van mesh met kleinere elementgrootte}
       \label{Mesh waar h kleiner wordt}
     \end{figure}
@@ -269,7 +269,7 @@ In bovenstaande figuur wordt de ROD alleen belast in de lengterichting, de BEAM 
 Om discretisatiefouten te verminderen, kan je dus de elementgrootte (h) verkleinen (kan je blijven doen) of de elementorde (p) verhogen (kan je maar 1 keer doen). Beide methoden verbeteren de nauwkeurigheid, maar verhogen ook de rekentijd. Het is belangrijk om een goede balans te vinden tussen nauwkeurigheid en efficiëntie.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{discretisatiefout_verminderen.png}
+  \includegraphics[width=0.6\textwidth]{assets/discretisatiefout_verminderen.png}
   \caption{Overzicht van h-refinement vs p-refinement}
   \label{h-refinement vs p-refinement}
 \end{figure}
@@ -279,14 +279,14 @@ Door domein discretisatie ontstaat er dus een fout, deze fout zagen we eerder. D
     \item \textbf{Geomteriefout:} De continue rand is niet exact hetzelfde omdat deze benaderd wordt door rechte lijnen van de mesh.
     \begin{figure}[H]
       \centering
-      \includegraphics[width=0.3\textwidth]{discretisatie_error_geomttrie.png}
+      \includegraphics[width=0.3\textwidth]{assets/discretisatie_error_geomttrie.png}
       \caption{Geometriefout door discretisatie}
       \label{Geometriefout}
     \end{figure}
     \item \textbf{Oplossingsdiscretisatiefout:} Fout in de berekeningen , dus $q(x,y,z) \neq \hat{q}(x,y,z)$ (met $\hat{q}(x,y,z)$ is de oplossing binnen een element = $f(\tilde{\mathbf{q}})$, dit is van de 1ste orde voor lineaire elementen en van de 2de orde voor kwadratische elementen), dit is omdat de computer een benadering (interpolatie) maakt van de oplossing, deze benadering is dus niet exact.
     \begin{figure}[H]
       \centering
-      \includegraphics[width=0.5\textwidth]{oplossingsdiscretisatiefout.png}
+      \includegraphics[width=0.5\textwidth]{assets/oplossingsdiscretisatiefout.png}
       \caption{Oplossingsdiscretisatiefout}
       \label{fig:oplossingsdiscretisatiefout.png}
     \end{figure}
@@ -300,7 +300,7 @@ We willen dus eigelijk de continue oplossing $\hat{q}(x,y,z)$ benaderen omdat we
 Voor een vierkant element met 4 knopen wordt dit als volgt berekent:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{vierkantelemntvorm.png}
+  \includegraphics[width=0.8\textwidth]{assets/vierkantelemntvorm.png}
   \caption{Vierkant element met vormfuncties}
   \label{fig:vierkantelemntvorm.png}
  \end{figure}
@@ -311,7 +311,7 @@ Kenmerken zijn:
     \item \textbf{Stuksgewijs (piecewise):} Elke vorm van element heeft zijn eigen set van vormfuncties, deze zijn gedefinieerd binnen dat specifieke element. $N_i = 1$ bij knoop i, en $N_i = 0$ bij alle andere knopen.
     \begin{figure}[H]
       \centering
-      \includegraphics[width=0.5\textwidth]{stuksgewijs.png}
+      \includegraphics[width=0.5\textwidth]{assets/stuksgewijs.png}
       \caption{Waardes knopen in 2D element}
       \label{fig:stuksgewijs.png}
      \end{figure}
@@ -332,21 +332,21 @@ Hierbij is $[N]$ de matrix van vormfuncties, deze matrix is uitsluitend afhankel
     \item \textbf{Lineair (p=1)}zijn:
     \begin{figure}[H]
       \centering
-      \includegraphics[width=0.3\textwidth]{1D_lineair_VF.png}
+      \includegraphics[width=0.3\textwidth]{assets/1D_lineair_VF.png}
       \caption{Lineaire 1D (rod) vormfunctie}
       \label{fig:1D_lineair_VF.png}
      \end{figure}
     \item \textbf{Quadratisch (p=2)} zijn:
     \begin{figure}[H]
       \centering
-      \includegraphics[width=0.3\textwidth]{1D_quadratisch_VF.png}
+      \includegraphics[width=0.3\textwidth]{assets/1D_quadratisch_VF.png}
       \caption{Quadratische 1D (rod) vormfunctie}
       \label{fig:1D_quadratisch_VF.png}
      \end{figure}
     \item \textbf{Cubisch (p=3)} zijn:
     \begin{figure}[H]
       \centering
-      \includegraphics[width=0.3\textwidth]{1D_cubisch_VF.png}
+      \includegraphics[width=0.3\textwidth]{assets/1D_cubisch_VF.png}
       \caption{Cubische 1D (rod) vormfunctie}
       \label{fig:1D_cubisch_VF.png}
      \end{figure}
@@ -379,7 +379,7 @@ Op dezelfde manier kan dit gedaan worden voor quadratisch en cubisch maar dan me
 Dit is dan een plot van hoe de vormfuncties eruit zien (linkse plot is voor lineair, let wel op dat hier ipv A en B benamingen voor knopen, de benamingen 1 en 2 gebruikt zijn, het is gewoon belangrijk om te zien beneden dat in knoop 1 (A), $N_1$ = $N_A$ gelijk is aan 1, en in knoop 2 (B), $N_2$ = $N_B$ gelijk is aan 1, en dat de vormfuncties van de andere knoop gelijk zijn aan 0 in deze knopen):
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.9\textwidth]{vormfunctiesvisueel.png}
+  \includegraphics[width=0.9\textwidth]{assets/vormfunctiesvisueel.png}
   \caption{Vormfuncties voor lineaire, quadratische en cubische elementen}
   \label{fig:vormfunctiesvisueel.png}
  \end{figure}
@@ -388,7 +388,7 @@ We noemen dit een interpolatie omdat we eigelijk een waarde zoeken binnen het el
 Visueel ziet dit er als volgt uit:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{visueelinterpolatie.png}
+  \includegraphics[width=0.4\textwidth]{assets/visueelinterpolatie.png}
   \caption{Visuele representatie van interpolatie binnen een element}
   \label{fig:visueelinterpolatie.png}
  \end{figure}
@@ -404,7 +404,7 @@ Uit de mechanica weten we dat de rek $\epsilon = \frac{du}{dx}$, dus we kunnen d
 Omdat in dit geval de berekende rek (en dus ook de berekende spanning want $\sigma = E * \epsilon = E * \frac{du}{dx} = E * ((\frac{-1}{L})* \tilde{u_A} + \frac{1}{L} * \tilde{u_B})$) een constante waarde heeft, ziet de grafiek van de spanning binnen het element er als volgt uit:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{spanning_AB.png}
+  \includegraphics[width=0.4\textwidth]{assets/spanning_AB.png}
   \caption{Constante spanning binnen een lineair element tussen knoop A en B}
   \label{fig:spanning_AB.png}
  \end{figure}
@@ -415,7 +415,7 @@ We maken hier het volgende voorbeeld dat ook aan bod komt in de slides en de opg
 We nemen dus als voorbeeld deze driehoekige (tria) element met 3 knopen, dit is een lineair element: 
 \begin{figure}[H]
    \centering
-   \includegraphics[width=0.8\textwidth]{voorbeeld2Dvormfunctie.png}
+   \includegraphics[width=0.8\textwidth]{assets/voorbeeld2Dvormfunctie.png}
    \caption{Tria element voorbeeld 2D vormfunctie}
    \label{fig:voorbeeld2Dvormfunctie.png}
   \end{figure}
@@ -522,7 +522,7 @@ Hierbij is $\hat{q}$ een 2x1 matrix (of vector) en $\tilde{q}$ een 6x1 matrix (o
 De vormfuncties bepalen voor een vierhoekig 2D element kan op een gelijkaardige manier gedaan worden, hier gaan we wel iets sneller over.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.25\textwidth]{vierhoekig2D.png}
+  \includegraphics[width=0.25\textwidth]{assets/vierhoekig2D.png}
   \caption{Vierhoek 2D element}
   \label{fig:vierhoekig2D.png}
  \end{figure}
@@ -558,14 +558,14 @@ b en c kunnen makkelijk gevonden worden door de voorwaarden te stellen dat $N_i$
 De slides tonen ook nog dat bij quadratische elementen de vormfuncties niet meer lineair zijn, maar kwadratisch, dit is omdat er tussen de knopen nu extra knopen zijn toegvoegd en aangezien je aantal knopen gelijk moet zijn aan het aantal co\"effici\"enten in de polynoom, moet je nu een kwadratische polynoom gebruiken, dit is dan ook de reden waarom er bij quadratische elementen een extra knoop is toegevoegd tussen de 2 knopen van een rand, deze extra knoop zorgt ervoor dat je een kwadratische benadering kan maken van de oplossing binnen het element, wat dan weer zorgt voor een betere nauwkeurigheid.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.9\textwidth]{voorbeeldkwadratisch.png}
+  \includegraphics[width=0.9\textwidth]{assets/voorbeeldkwadratisch.png}
   \caption{Polynoom bij een TRIA element met p=2 (quadratisch)}
   \label{fig:voorbeeldkwadratisch.png}
  \end{figure}
 Voor hogere orde 2D Tria of Quad elementen gebruik je \textbf{Pascal's driehoek}, hiermee zie je welke wiskundige termen je nodig hebt bij een bepaalde orde.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.9\textwidth]{pascalsdriehoek.png}
+  \includegraphics[width=0.9\textwidth]{assets/pascalsdriehoek.png}
   \caption{Pascal's driehoek}
   \label{fig:pascalsdriehoek.png}
  \end{figure}
@@ -595,7 +595,7 @@ Soms heb je een heel fijn (gedetailleerd) mesh op het ene onderdeel, dat direct 
 \subsection{Samenvattende tabel}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.9\textwidth]{std.png}
+  \includegraphics[width=0.9\textwidth]{assets/std.png}
   \caption{Samenvattende tabel definities}
   \label{fig:std.png}
  \end{figure}
@@ -621,7 +621,7 @@ Op de slide staat ook nog bij $\Gamma$ erachter in haakjes $\partial \Omega$, di
 Op de volgende figuur zien we ons model, met de rand $\Gamma$ en het volume $\Omega$, met 3 types randvoorwaarden:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{randvoorwaarden.png}
+  \includegraphics[width=0.8\textwidth]{assets/randvoorwaarden.png}
   \caption{Model met randvoorwaarden}
   \label{fig:randvoorwaarden.png}
  \end{figure}
@@ -650,7 +650,7 @@ We onderscheiden 3 types randvoorwaarden:
     Wat is nu de impact van zo een essentiële randvoorwaarde op de matrixvergelijking? ($[K]\tilde{q} = \tilde{F}$), je weet nu eigelijk 100\% wat de knoop gaat doen, $\tilde{q}$ is dus bekend, door de actie reactie wet betekent een vaste verplaatsing dat de omgeving 'terugduwt' en omdat de knoop is vastgezet weet je vooraf niet hoe hard het steunpunt moet trekken of duwen dus de reactie kracht $\tilde{F}$ wordt onbekend. We weten ook dat [K] een matrix is vol met vaststaande, bekende constanten en dus helemaal onafhankelijk is van de krachten of verplaatsingen die je op het model aanlegt. Dit zien we in de volgende figuur waar dus de linkerkant volledig bekend is en de rechterkant dus onbekend.
     \begin{figure}[H]
       \centering
-      \includegraphics[width=0.8\textwidth]{ingevuldematrixvergelijking.png}
+      \includegraphics[width=0.8\textwidth]{assets/ingevuldematrixvergelijking.png}
       \caption{Matrixvergelijking met essentiële randvoorwaarde}
       \label{fig:ingevuldematrixvergelijking.png}
      \end{figure}
@@ -670,7 +670,7 @@ We onderscheiden 3 types randvoorwaarden:
     Wat is dan hier de impact van zo een natuurlijke randvoorwaarde op de matrixvergelijking? ($[K]\tilde{q} = \tilde{F}$), je weet nu eigelijk 100\% wat de kracht is die op het model werkt, $\tilde{F}$ is dus bekend, en omdat jij zelf niet weet wat de stijfheid van je model precies is, wordt de veldvariabele $\tilde{q}$ onbekend, en [K] is nog steeds een matrix vol met vaststaande, bekende constanten en dus helemaal onafhankelijk is van de krachten of verplaatsingen die je op het model aanlegt. Dit zien we in de volgende figuur waar dus de linkerkant volledig onbekend is en de rechterkant dus bekend.
     \begin{figure}[H]
       \centering
-      \includegraphics[width=0.8\textwidth]{matrixvergelijkingnatuurlijkerandvoorwaarde.png}
+      \includegraphics[width=0.8\textwidth]{assets/matrixvergelijkingnatuurlijkerandvoorwaarde.png}
       \caption{Matrixvergelijking met natuurlijke randvoorwaarde}
       \label{fig:matrixvergelijkingnatuurlijkerandvoorwaarde.png}
      \end{figure}
@@ -693,7 +693,7 @@ We onderscheiden 3 types randvoorwaarden:
     Wat is dan hier de impact van zo een gemengde randvoorwaarde op de matrixvergelijking? ($[K]\tilde{q} = \tilde{F}$), je weet nu dat er een bekende relatie is tussen de veldvariabele en zijn afgeleide, maar je weet niet precies wat de veldvariabele of de kracht is, dus zowel $\tilde{q}$ als $\tilde{F}$ zijn onbekend, en [K] is nog steeds een matrix vol met vaststaande, bekende constanten en dus helemaal onafhankelijk is van de krachten of verplaatsingen die je op het model aanlegt. Dit zien we in de volgende figuur waar dus zowel de linkerkant als de rechterkant onbekend zijn.
     \begin{figure}[H]
       \centering
-      \includegraphics[width=0.8\textwidth]{matrixvergelijkingmixed.png}
+      \includegraphics[width=0.8\textwidth]{assets/matrixvergelijkingmixed.png}
       \caption{Matrixvergelijking met gemengde randvoorwaarde}
       \label{fig:matrixvergelijkingmixed.png}
      \end{figure}
@@ -701,7 +701,7 @@ We onderscheiden 3 types randvoorwaarden:
 De proff tekent nog de volgende samenvattende figuur op het bord, waarin de drie types randvoorwaarden worden samengevat (hier zien we ook een voorbeeld van de wet van hooke en die pretentioning kracht):
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{figuurbordproff.png}
+  \includegraphics[width=0.8\textwidth]{assets/figuurbordproff.png}
   \caption{Randvoorwaarden samengevat}
   \label{fig:figuurbordproff.png}
  \end{figure}
@@ -709,7 +709,7 @@ De proff tekent nog de volgende samenvattende figuur op het bord, waarin de drie
 In de les wordt een 1D voorbeeld gemaakt met 4 knopen en een voorspankracht op een veer, op de slides wordt op dezelfde manier dezelfde oefening mooi uitgewerkt gemaakt maar dan voor n aantal knopen. In deze samenvatting ga ik alleen het voorbeeld aan het bord uitwerken aangezien het voor n knopen gewoon een herhaling is van hetzelfde principe en je dit perfect kan terugvinden op de slides.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{schetsoefening.png}
+  \includegraphics[width=0.6\textwidth]{assets/schetsoefening.png}
   \caption{Schets oefening randvoorwaarden}
   \label{fig:schetsoefening.png}
  \end{figure}
@@ -814,7 +814,7 @@ Dit noemen we de \textbf{'Constrained Stiffness Matrix'}, dit is de matrix die w
 In de praktijk stellen we deze randvoorwaarden in in onze simulatiesoftware, de meest voorkomende situatie is dat we een 3D-model hebben waarbij elke knoop dus maximaal 6 vrijheidsgraden (dofs) heeft. Het kan in 3 richtingen schuiven (translaties $u_x$, $u_y$, $u_z$) en om 3 assen draaien (rotaties $\phi_x$, $\phi_y$, $\phi_z$). De volgende tabel toont hoe standaardknoppen in eindige-elementen software hiermee omgaan:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.7\textwidth]{tabeldofeindigelementensoftware.png}
+  \includegraphics[width=0.7\textwidth]{assets/tabeldofeindigelementensoftware.png}
   \caption{Vrijheidsgraden in eindige-elementen software}
   \label{fig:tabeldofeindigelementensoftware.png}
  \end{figure}
@@ -824,7 +824,7 @@ Een inklemming knop zet dus alle 6 vrijheidsgraden vast, een scharnier zet de 3 
 Maar af en toe kan je wel hebben dat je een specifieke combinatie van vrijheidsgraden nog zal hebben, meestal kies je dan voor 'user defined', je kijkt hier dan naar de statica om te zien welke beweging je in een knoop toelaat voor je randvoorwaarde:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{voorbeeldenstatica.png}
+  \includegraphics[width=0.8\textwidth]{assets/voorbeeldenstatica.png}
   \caption{Voorbeelden bewegingen statica}
   \label{fig:voorbeeldenstatica.png}
  \end{figure}
@@ -834,7 +834,7 @@ In de praktijk is elke randvoorwaarde in principe een gemengde (Mixed/Robin) ran
 Ik had eerder vermeld dat zonder zo een essentiële randvoorwaarde, je model niet oplosbaar is, dit ga ik nu simpel verklaren. Stel dat de computer via een differentiaalvergelijking de interne vervorming (rek) van een stef kent als een bepaalde waarde a (in formule vorm is dit dan: $\frac{\partial u}{\partial x} = a$). Om de uiteindelijke verplaatsing (u) van elk punt in de staaf te vinden, moet de computer deze functie wiskundig integreren, de uitkomst hiervan is $u = ax + C^{te}$, die constante is exact het probleem, hierdoor heb je oneindig veel oplossingen, dit wordt weergegeven met de volgende figuur:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{grafiekconstante.png}
+  \includegraphics[width=0.5\textwidth]{assets/grafiekconstante.png}
   \caption{Grafiek van u = ax + C}
   \label{fig:grafiekconstante.png}
  \end{figure}
@@ -844,7 +844,7 @@ Elke parallelle lijn is een mogelijke oplossing, de helling van de lijn is dus w
 De oplossing? Gewoon 1 waarde vast zetten (dus een essentiële randvoorwaarde opleggen), dan geef je eigelijk de computer de missende informatie om de juiste constante te berekenen. Zo een waarde vast zetten wordt weergegevne met de gele stip in de volgende figuur die dan eigelijk die groene juiste oplossing bepaalt:
  \begin{figure}[H]
    \centering
-   \includegraphics[width=0.5\textwidth]{constantevastgelegs.png}
+   \includegraphics[width=0.5\textwidth]{assets/constantevastgelegs.png}
    \caption{Vastgelegde constante}
    \label{fig:constantevastgelegs.png}
   \end{figure}
@@ -855,14 +855,14 @@ We weten dus dat 'rigid body motion' betekent dat een object eigelijk vrij in de
 Stel we hebben een model met 4 scharnieren, zoals in de onderste foto:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.3\textwidth]{paintschets.png}
+  \includegraphics[width=0.3\textwidth]{assets/paintschets.png}
   \caption{Schets van 4 scharnieren (zwart) met staven die ze verbinden (groen)}
   \label{fig:paintschets.png}
  \end{figure}
 Als we hierop een kracht aanleggen (rode pijl) gaat het eigelijk instorten, want de linkse staaf en de rechtse staaf (die verbonden zijn met een horizontale staaf) kunnen gewoon draaien naar rechts, je ziet hier dus al rap dat er daarom meerdere oplossingen zijn en dus [K] onoplosbaar wordt.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{voorbeeldmechanisme.png}
+  \includegraphics[width=0.5\textwidth]{assets/voorbeeldmechanisme.png}
   \caption{Slides figuur}
   \label{fig:voorbeeldmechanisme.png}
  \end{figure}
@@ -880,7 +880,7 @@ De 2 checks om te controleren dat deze inderdaad oplosbaar is zijn:
 Dit ken je normaal van de oefensessies, dit is een trucje dat je in bepaalde situaties kan toepassen om rekentijd te besparen (1 symmetrievlak verminderd rekentijd 4-8 keer). Je mag dit toepassen als zowel de geometrie als de belastingen (krachten) perfect symmetrisch zijn. Het is eigelijk een essentiële randvoorwaarde die je oplegt op het snijvlak (symmetrievlak).
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{symmetrie.png}
+  \includegraphics[width=0.8\textwidth]{assets/symmetrie.png}
   \caption{Symmetrie}
   \label{fig:symmetrie.png}
  \end{figure}
@@ -890,7 +890,7 @@ Even ter verduidelijking, de figuur helemaal vanonder is de door twee gesneden v
 Hoe stellen we de symmetrie dan in software in? Dus welke vrijheidsgraden we op 'fixed' moeten zetten op de plak waar we het model hebben doorgesneden. De regel is dat \textit{het doorgesneden vak alleen in zijn eigen vlak mag bewegen} (in-plane motion), het snijvlak mag dus niet loodrecht op zichzelf verplaatsen en het mag alleen roteren rond de as die loodrecht op het symmetrievlak staat. In de les zagen we ook de 'kiekeboe' methode om te bepalen welke vrijheidsgraden fixed moesten zijn, dit is moeilijk uit te leggen via tekst dus raad ik aan om de lesopname 'structural symmetry' te bezien, hier legt de proff dit duidelijk uit met papieren. De afbeelding hierboven is dus een voorbeeld van x-symmetrie (ook wel gekend als YZ-symmetrie, dit is te herkennen aan het snijvlak dat alleen in de Y en Z richting een 2D vlak lijkt te hebben), Voor X-symmetrie mag er dus niet in de x-richting verplaatst worden, dus $u_x$ is fixed, en er mag alleen rond de x-as geroteerd worden, dus $\phi_x$ is free.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{xyzsymmetrie.png}
+  \includegraphics[width=0.6\textwidth]{assets/xyzsymmetrie.png}
   \caption{XYZ-symmetrie}
   \label{fig:xyzsymmetrie.png}
  \end{figure}
@@ -898,14 +898,14 @@ Hoe stellen we de symmetrie dan in software in? Dus welke vrijheidsgraden we op 
 Hier behandelen we de situatie waarbij de krachten anti-symmetrisch zijn (dus de krachten zijn exact evengroot maar werken in \textbf{tegengestelde richting} aan beide kanten), de geometrie (het model is wel nog symmetrisch), je mag dit dus nog steeds halveren, je legt net zoals bij de gewone symmetrie een essentiële randvoorwaarde op het snijvlak, in de figuur hieronder zien we nu dat de balk niet gewoon doorbuigt maar dat hij op het middelpunt vrij kan roteren gewoon. Dit is ook wel logisch omdat als die krachten evengroot zijn en tegengesteld, je in het midden gemiddeld geen kracht hebt dan dat voor doorbuiging kan zorgen eh.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{assymetrie.png}
+  \includegraphics[width=0.8\textwidth]{assets/assymetrie.png}
   \caption{Anti-symmetrie}
   \label{fig:assymetrie.png}
  \end{figure}
 Het instellen van anti-symmetrie in de software is simpel, namelijk gewoon exact het omgekeerde als voor normale symmetrie:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{xyzantisymmetrie.png}
+  \includegraphics[width=0.6\textwidth]{assets/xyzantisymmetrie.png}
   \caption{XYZ-anti-symmetrie}
   \label{fig:xyzantisymmetrie.png}
  \end{figure}
@@ -918,7 +918,7 @@ Een niet-symmetrische last dat op een symmetrisch model werkt kan altijd opgedee
 En dit werkt! De computer lost beide simulaties apart op en telt de resultaten samen en dit is identiek aan het resultaat van de originele situatie. Dit is efficiënter want je kan nu 2 keer een halve simulatie doen in plaats van 1 keer een volledige simulatie, dit bespaart dus rekentijd (omdat rekentijd dus 4-8 keer verminderd wordt als je een model halveert).
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{superpositie.png}
+  \includegraphics[width=0.8\textwidth]{assets/superpositie.png}
   \caption{Superpositie}
   \label{fig:superpositie.png}
  \end{figure}
@@ -928,7 +928,7 @@ En dit werkt! De computer lost beide simulaties apart op en telt de resultaten s
 \subsubsection{Samenvattende tabel}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.9\textwidth]{tabelrandvoorwaarden.png}
+  \includegraphics[width=0.9\textwidth]{assets/tabelrandvoorwaarden.png}
   \caption{Samenvattende tabel}
   \label{fig:tabelrandvoorwaarden.png}
  \end{figure}
@@ -945,7 +945,7 @@ Eerst doen we nog een kleine herhaling/verduidelijking tussen de ROD en BEAM ele
 \end{conceptbox}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{rodvsbeam.png}
+  \includegraphics[width=0.6\textwidth]{assets/rodvsbeam.png}
   \caption{ROD vs BEAM elementen}
   \label{fig:rodvsbeam.png}
  \end{figure}
@@ -983,7 +983,7 @@ We gaan nu is een simpel voorbeeld tonen om te bewijzen dat die directe methode 
 Als we knoop 1 een verplaatsing $\tilde{u}_{x1} = 1$ geven en knoop 2 een verplaatsing $\tilde{u}_{x2} = 0$, zoals in volgende figuur (die k-waarden met richting aangeduid stellen eigelijk de krachten voor door F = kx, maar dat bewijzen we in volgende stap wel dat da gelijk is):
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{sit1rod.png}
+  \includegraphics[width=0.5\textwidth]{assets/sit1rod.png}
   \caption{Voorbeeld situatie directe methode rod element}
   \label{fig:sit1rod.png}
  \end{figure}
@@ -1012,7 +1012,7 @@ Ze zijn dus allemaal gelijk aan elkaar, maar met een ander teken. Dit is logisch
 Als we nu knoop 1 vastzetten en knoop 2 een verplaatsing van 1 geven zoals in volgende figuur:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{sit2rod.png}
+  \includegraphics[width=0.5\textwidth]{assets/sit2rod.png}
   \caption{Voorbeeld situatie directe methode rod element}
   \label{fig:sit2rod.png}
 \end{figure}
@@ -1040,7 +1040,7 @@ Hieruit volgt dat $k_{12} = \tilde{F}_{x1}$ en $k_{22} = \tilde{F}_{x2}$, we kun
 (dit is hoe de proff het in de les aan het bord heeft gemaakt, op de slides wordt het ietsje anders gedaan met ook andere figuren, maar het principe is hetzelfde).
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{slidesfigurenrod.png}
+  \includegraphics[width=0.8\textwidth]{assets/slidesfigurenrod.png}
   \caption{Figuur slides directe methode rod element}
   \label{fig:slidesfigurenrod.png}
  \end{figure}
@@ -1151,7 +1151,7 @@ De tweede kolom stelt dus de krachten voor die nodig zijn om enkel \(u_2\) te ve
 Dus we hebben nu bekeken hoe we elementstijfheidsmatrixen kunnen bepalen, maar hoe gebruikt de computer deze nu om de globale stijfheidsmatrix [K] van een volledig model te bepalen?
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{image2.png}
+  \includegraphics[width=0.8\textwidth]{assets/image2.png}
   \caption{Voorbeeld van een model met individuele elementstijfheidsmatrixen}
   \label{fig:image2.png}
  \end{figure}
@@ -1164,7 +1164,7 @@ Wat de computer eigelijk gaat doen, zoals je vanonder kan zien op de figuur, is 
 Hierna moeten we gewoon deze matrixen (en dus ook de krachten) optellen met elkaar zoals in volgende figuur:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{globalestijfheidsmatrixopgeteld.png}
+  \includegraphics[width=0.6\textwidth]{assets/globalestijfheidsmatrixopgeteld.png}
   \caption{Voorbeeld van de globale stijfheidsmatrix}
   \label{fig:globalestijfheidsmatrixopgeteld.png}
  \end{figure}
@@ -1176,7 +1176,7 @@ Deze opgetelde matrix heeft 2 fysieke eigenschappen die de software gigantisch v
 Het probleem op dit moment bij deze matrix is natuurlijk wel nog dat deze nog steeds singulier is:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{matrixsingulier.png}
+  \includegraphics[width=0.6\textwidth]{assets/matrixsingulier.png}
   \caption{Niet inverteerbare (singuliere) globale stijfheidsmatrix}
   \label{fig:matrixsingulier.png}
  \end{figure}
@@ -1189,7 +1189,7 @@ Om dit op te lossen moeten we dus essentiële randvoorwaarden introduceren $\rig
 Het is ook nog belangrijk op te merken dat de sommen van de krachten daar in de volgende figuur (omcirkeld) eigelijk al gekend zijn:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{omcirkledekrachten.png}
+  \includegraphics[width=0.6\textwidth]{assets/omcirkledekrachten.png}
   \caption{}
   \label{fig:omcirkledekrachten.png}
  \end{figure}
@@ -1199,7 +1199,7 @@ In knoop 3 zijn er geen externe krachten, dit maakt dat de som van de krachten d
 We zullen nu is al onze randvoorwaarden invullen, hierbij is knoop 1 duidelijk de essentiële randvoorwaarde:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{randvoorwaardenlknopen.png}
+  \includegraphics[width=0.6\textwidth]{assets/randvoorwaardenlknopen.png}
   \caption{Randvoorwaarden bij knopen}
   \label{fig:randvoorwaardenlknopen.png}
  \end{figure}
@@ -1245,7 +1245,7 @@ k_{I} & -k_{I} & 0 & 0
 We kunnen ook gewoon de veer moddeleren als een extra 1D element met een elementstijfheidsmatrix + een essentiële randvoorwaarde zoals in de volgende figuur (dit brengt een extra knoop)
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.7\textwidth]{anderemethode.png}
+  \includegraphics[width=0.7\textwidth]{assets/anderemethode.png}
   \caption{Globale stijfheidsmatrix voorbeeld andere methode}
   \label{fig:anderemethode.png}
  \end{figure}
@@ -1256,7 +1256,7 @@ De matrix wordt wel groter maar die beweging daar is ook 0, de gereduceerde matr
 Nog een belangrijk ding om te weten is dat de manier waarop we de knopen nummeren een grote invloed heeft op de rekentijd. We kijken hiervoor naar de volgende 2 voorbeeldgevallen:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1\textwidth]{2gevallenknopenverdeling.png}
+  \includegraphics[width=1\textwidth]{assets/2gevallenknopenverdeling.png}
   \caption{2 identieke modellen maar met verschillende knopen nummering}
   \label{fig:2gevallenknopenverdeling.png}
  \end{figure}
@@ -1269,14 +1269,14 @@ We zien hier de globale stijfheidsmatrices van beide gevallen, hun elementstijfh
 De volgende figuur verduidelijkt dit een beetje voor die linkse situatie, hier zijn de k-waarden wel vervangen door kleuren \textbf{{\color{red}(LET OP DIE KLEUREN KOMEN NIET OVEREEN MET DE KLEUREN VAN DE BOVENSTAANDE FIGUUR VAN DE SLIDES)}}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{globalestijfheidsmatrixmetskyline.png}
+  \includegraphics[width=0.5\textwidth]{assets/globalestijfheidsmatrixmetskyline.png}
   \caption{Globale stijfheidsmatrix met skyline en kleuren die verschillende k-waarden voorstellen}
   \label{fig:globalestijfheidsmatrixmetskyline.png}
  \end{figure}
 In de figuur hierboven zien we een rode lijn, dit is de hoofddiagonaal van de matrix, hier rond 'clusteren' de getallen zich, de paarse dikke lijn heet de \textbf{'skyline'}, het is duidelijk op te merken wat deze voorstelt, namelijk gewoon de soort van omtrek van de bovenste niet-nul getallen in de matrix, het heet daarom een 'skyline' (alsof je naar de gebouwen van een stad kijkt), de \textbf{'halve bandbreedte (hb)'} is de maximale afstand van de diagonaal tot aan de rand van die skyline (dat is dus horizontaal gemeten eigelijk), in dit geval is dit een afstand van 3 wat ik hier even in de volgende figuur heb aangeduid in het geel (ale ik heb alle mogelijke halve bandbreedtes aangeduid ma het is dus de grootste dat telt):
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{bandbreedtes.png}
+  \includegraphics[width=0.4\textwidth]{assets/bandbreedtes.png}
   \caption{Halve bandbreedte (hb)}
   \label{fig:bandbreedtes.png}
  \end{figure}
@@ -1313,7 +1313,7 @@ Het is dit laatste dat zo belangrijk is, zorg dat knopen die aan hetzelfde eleme
 In de volgende figuur zien we een korte samenvatting van deze 2 gevallen die we dus eerder zagen en nu ook een skyline van dat 2de geval, we zien hier dat deze een halve bandbreedte van 6 heeft! Dit is natuurlijk dus door die eerste 2 knopen daar dat genummerd zijn als 1 en 6 (en dus een verschil van 5 hebben!):
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{skylinesbeidegevallen.png}
+  \includegraphics[width=0.5\textwidth]{assets/skylinesbeidegevallen.png}
   \caption{Skyline van beide gevallen}
   \label{fig:skylinesbeidegevallen.png}
  \end{figure}
@@ -1331,7 +1331,7 @@ De figuur hieronder toont een veer systeem, de blok in het midden kan beschouwd 
 \end{itemize}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{voorbeeldoefeningslide.png}
+  \includegraphics[width=0.8\textwidth]{assets/voorbeeldoefeningslide.png}
   \caption{Voorbeeldoefening}
   \label{fig:voorbeeldoefeningslide.png}
  \end{figure}
@@ -1340,7 +1340,7 @@ Als tip wordt gegeven dat een ROD element gezien kan worden als een veer met een
 We kunnen onze figuur hertekenen als een model met 5 elementen (de bovenste veer van 3k in het rood, de onderste 2 veren van k en 2k in het geel en blauw, de blok in het zwart en de rechtse veer met k in het groen):
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{elementdefinierenvoorbeeldoefening.png}
+  \includegraphics[width=0.6\textwidth]{assets/elementdefinierenvoorbeeldoefening.png}
   \caption{Voorbeeldoefening hertekend}
   \label{fig:elementdefinierenvoorbeeldoefening.png}
  \end{figure}
@@ -1348,7 +1348,7 @@ We kunnen onze figuur hertekenen als een model met 5 elementen (de bovenste veer
 Omdat die blok in het midden (zwart) een rigid body is die dus geen buiging heeft, kunnen we deze als 1 knoop beschouwen (elke knoop hieraan gaat met de zelfde translatie bewegen, beter om dus met 1 knoop te moddeleren dan ze ingewikkeld aan elkaar vast te lijmen met een 'glue' randvoorwaarde (zien we later)), een optimale knoop nummering die zo laag mogelijke nodeID's geeft kan zoals in volgende figuur zijn, hier zien we dat de hoogste nodeID 2 is en de rest 1, die 2 gaan we niet kunnen ontwijken aangezien die rigidbody me 3 andere elementen is verbonden (een andere knoopnummering is ook mogelijk als er nog steeds maar 1 nodeID van 2 is en de rest 1):
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{knoopnummeringvoorbeeld.png}
+  \includegraphics[width=0.6\textwidth]{assets/knoopnummeringvoorbeeld.png}
   \caption{Voorbeeldoefening knoopnummering}
   \label{fig:knoopnummeringvoorbeeld.png}
  \end{figure}
@@ -1356,7 +1356,7 @@ Omdat die blok in het midden (zwart) een rigid body is die dus geen buiging heef
 Dit is identiek aan hoe we het eerder deden, als je niet snapt vanwaar dit komt raad ik je aan de video te zien:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{globalestijfheidsmatrixvoorbeeld.png}
+  \includegraphics[width=0.6\textwidth]{assets/globalestijfheidsmatrixvoorbeeld.png}
   \caption{Globalestijfheidsmatrix voorbeeld}
   \label{fig:globalestijfheidsmatrixvoorbeeld.png}
  \end{figure}
@@ -1364,14 +1364,14 @@ Dit is identiek aan hoe we het eerder deden, als je niet snapt vanwaar dit komt 
 Knoop 1, 3 en 5 zijn de essentiële randvoorwaarden, ze zijn vast, ze hebben dus geen verplaatsing dus $\tilde{u}_{x1} = \tilde{u}_{x3} = \tilde{u}_{x5} = 0$, in knoop 2 is de kracht bekend, namelijk 70N, in knoop 4 hebben we weer het geval dat hier geen externe belasting wordt aangebracht, dit maakt dat de optelsom van alle krachten op die interne knoop exact 0 zijn, dus $\tilde{F}_{x4} = 0$, dit geeft de volgende matrixvergelijking:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{randvoorwaardeningevuldvoorbeeld.png}
+  \includegraphics[width=0.6\textwidth]{assets/randvoorwaardeningevuldvoorbeeld.png}
   \caption{Randvoorwaarden ingevuld voorbeeld}
   \label{fig:randvoorwaardeningevuldvoorbeeld.png}
  \end{figure}
 \subsubsection{5. Schrappen van rijen en kolommen met essentiële randvoorwaarden}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{rijenenkolommengeschraptvoorbeeld.png}
+  \includegraphics[width=0.6\textwidth]{assets/rijenenkolommengeschraptvoorbeeld.png}
   \caption{Rijen en kolommen geschrapt voorbeeld}
   \label{fig:rijenenkolommengeschraptvoorbeeld.png}
  \end{figure}
@@ -1408,7 +1408,7 @@ Een manier om de oplossing te checken is om te kijken naar de som van de krachte
 De 1D staven die we tot nu toe zagen hebben we altijd gewoon horizontaal gelegd en bekeken, maar worden in complexe 2D- of 3D-constructies schuin aangelegd (bij bvb. een brug of kraan). Het probleem is dus dat niet alle rods gealligneerd zijn met elkaar zoals in volgende figuur:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{rodsnotalligned.png}
+  \includegraphics[width=0.5\textwidth]{assets/rodsnotalligned.png}
   \caption{Voorbeeld model waar rods niet alligned zijn}
   \label{fig:rodsnotalligned.png}
  \end{figure}
@@ -1419,21 +1419,21 @@ Tot nu toe zagen we dus dat onze knopen alleen maar links of rechts kon bewegen,
 \end{itemize}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{localvsglobal.png}
+  \includegraphics[width=0.4\textwidth]{assets/localvsglobal.png}
   \caption{Local vs global coordinate system}
   \label{fig:localvsglobal.png}
  \end{figure}
 Belangrijke hierbij is dus dat de elementstijfheidsmatrices bepaalt worden in een local coordinate system en het globale stijfheidsmatrix in een global coordinate system, dit maakt dat we een transformatie moeten doen van de local stijfheidsmatrix naar de global stijfheidsmatrix voor dus de verplaatsingen en krachten. Dit wordt met geometrie gedaan want deze staan onder bepaalde hoeken:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{ingezoomdefotohoek.png}
+  \includegraphics[width=0.4\textwidth]{assets/ingezoomdefotohoek.png}
   \caption{Ingezoomde foto van de hoek}
   \label{fig:ingezoomdefotohoek.png}
  \end{figure}
 De lokale as staat dus onder een hoek (die met geometrie bepaald kan worden) tegenover de globale as, projecties van sinussen en cosinussen worden gebruikt om om te rekenen, dit ziet er zo uit maar (ik denk dat de proff zei dat we dit niet moesten kunnen berekenen):
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{berekeninghoek.png}
+  \includegraphics[width=0.4\textwidth]{assets/berekeninghoek.png}
   \caption{Hoek berekening slides}
   \label{fig:berekeninghoek.png}
  \end{figure}
@@ -1533,21 +1533,21 @@ Meer vrijheidsgraden dus de wiskunde dat we eerder zagen gaat niet meer exact zi
 Voor 1D-balken is de meest gebruikte aanname de \textbf{Bernoulli theorie}, deze gaat ervan uit dat een \textit{doorsnede tijdens het buigen vlak blijft en perfect loodrecht op de neutrale as blijft} staan, als je dit niet snapt, pak een boek een buig het, je zult zien dat door afschuiving van die papieren die over elkaar willen glijden en dat het in de werkelijkheid eigelijk niet klopt dat die doorsnede vlak loodrecht op de neutrale as blijft (voor structuren waar dit wel belangrijk is om in rekening te brengen word de \textbf{Timoshenko} theorie gebruikt).
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{bernouillivstimoshenko.png}
+  \includegraphics[width=0.6\textwidth]{assets/bernouillivstimoshenko.png}
   \caption{Timoshenko vs Bernoulli theorie}
   \label{fig:bernouillivstimoshenko.png}
  \end{figure}
 Dus om even duidelijk te zijn, wij gaan gebruik maken van deze versimpelde (Euler)-Bernouilli theorie, de horizontale lijnen van de volgende figuur blijven dus loodrecht op de verticale lijnen (die wel wat krom trekken bij buiging).
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{eullerbernouilli.png}
+  \includegraphics[width=0.6\textwidth]{assets/eullerbernouilli.png}
   \caption{Euler-Bernoulli theorie}
   \label{fig:eullerbernouilli.png}
  \end{figure}
 In de les toont de proff de volgende figuur:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.3\textwidth]{voorbeeldbeam.png}
+  \includegraphics[width=0.3\textwidth]{assets/voorbeeldbeam.png}
   \caption{Voorbeeld van een BEAM-element}
   \label{fig:voorbeeldbeam.png}
  \end{figure}
@@ -1580,7 +1580,7 @@ Voor dikkere beams gebruiken we dus Timoshenko of 'Reddy-Bickford', deze complex
 Even terug naar dat voorbeeld van de les dat ik eerder had vermeld, het is pas hier dat we hier echt de berekeningen mee gaan doen (ik vermeldde het gewoon al eerder om te zeggen van die 4x4 matrix). Nu gaan we dus die 4x4 stijfheidsmatrix voor het beam elementje bepalen met de directe methode, dit is het zelfde principe als wat we eerder deden, maar dan wat uitgebreider. Omdat we 2 knopen hebben en buiging toestaan, heeft elke knoop 2 vrijheidsgraden, de directe methode zegt (zoals we eerder zagen) dat elke kolom in de matrix een specifieke, geïsoleerde beweging voorstelt, we geven dus één vrijheidsgraad de waarde 1, en houden de andere 3 op 0, zo berekenen we welke krachten en momenten nodig zijn voor die waarde van 1 (want dan kan je die gelijkstellen aan gevonden k-waardes, dus dit zijn niet de definitieve krachten en momenten!) om de balk in die onnatuurlijke vorm te dwingen (dit is dus de vorm die je hebt als je die andere 3 op 0 zet, dit zien we ook in de volgende figuur):
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1\textwidth]{directemethodebeam.png}
+  \includegraphics[width=1\textwidth]{assets/directemethodebeam.png}
   \caption{}
   \label{fig:directemethodebeam.png}
  \end{figure}
@@ -1597,14 +1597,14 @@ Dus we bekomen eigelijk kolom 1 van de elementstijfheidsmatrix, deze kolom corre
 Kijk nu naar die figuur, omdat we hier gewoon een verplaatsing willen in knoop 1 gaat deze dus vertical hoger staan dan knoop 2 (omdat die geen verplaatsing mag hebben), hiervoor heb je de kracht $k_{11}$ dus nodig om die te verplaatsen, en omdat de hoek in knoop 1 ook 0 moet zijn gaat de beam daarna nog ff recht moeten lijken,, hiervoor is een moment nodig ($k_{21}$), dit is waarom we een s-vorm krijgen in de figuur, in knoop 2 mag er trouwens geen verplaatsing zijn en ook geen hoek (dus hier ook horizontaal recht in die knoop), hier is een reactiekracht nodig ($k_{31}$) en dus ook een moment om die hoek van 0 te forceren ($k_{41}$).
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{1stekolomingezoomed.png}
+  \includegraphics[width=0.5\textwidth]{assets/1stekolomingezoomed.png}
   \caption{Visuele interpretatie van de eerste kolom van de stijfheidsmatrix}
   \label{fig:1stekolomingezoomed.png}
  \end{figure}
 Die krachten en momenten kunnen we bepalen met de formules van Hibbeler uit deze figuur: 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{hibbelerformules.png}
+  \includegraphics[width=0.5\textwidth]{assets/hibbelerformules.png}
   \caption{}
   \label{fig:hibbelerformules.png}
  \end{figure}
@@ -1647,7 +1647,7 @@ Op een andere manier kunnen we dit ook doen, namelijk met Navier. We zullen dit 
 De situatie voor de 2de kolom ziet er zo uit:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{2dekolom.png}
+  \includegraphics[width=0.5\textwidth]{assets/2dekolom.png}
   \caption{Visuele interpretatie van de tweede kolom van de stijfheidsmatrix}
   \label{fig:2dekolom.png}
  \end{figure}
@@ -1696,14 +1696,14 @@ k_{42} = M_y(L) = \frac{2EI}{L}
 Hier dus opletten met de plus en min tekens, de positieve conventie weet je aan de hand van deze figuur:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{positieveconventie.png}
+  \includegraphics[width=0.5\textwidth]{assets/positieveconventie.png}
   \caption{Positieve conventie voor krachten en momenten}
   \label{fig:positieveconventie.png}
  \end{figure}
 Analoog kan voor de andere kolommen gedaan worden, dit zou er zo uit zien:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{oplossingoefening.png}
+  \includegraphics[width=0.8\textwidth]{assets/oplossingoefening.png}
   \caption{Oplossing oefening directe methode voor beam elementen}
   \label{fig:oplossingoefening.png}
  \end{figure}
@@ -1729,14 +1729,14 @@ N_1 & N_2 & N_3 & N_4
 De groene lijn in volgende figuur stelt zich eigelijk dan $\tilde{u}_z(x)$ voor, dit is dus de verplaatsing van elk punt op het element, deze wordt dus bepaald door de vormfuncties en de waarden in de knopen.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{vormfunctiebeam.png}
+  \includegraphics[width=0.5\textwidth]{assets/vormfunctiebeam.png}
   \caption{Visuele interpretatie van $\tilde{u}_z(x)$ als functie van de vormfuncties en knoopwaarden}
   \label{fig:vormfunctiebeam.png}
  \end{figure}
 Terwijl de individuele vormfuncties er bvb. zo uit zien:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{individuelevormfuncties.png}
+  \includegraphics[width=0.8\textwidth]{assets/individuelevormfuncties.png}
   \caption{Visuele interpretatie van de individuele vormfuncties $N_1$, $N_2$, $N_3$ en $N_4$}
   \label{fig:individuelevormfuncties.png}
  \end{figure}
@@ -1757,7 +1757,7 @@ En door per vormfunctie de bijhorende '0 en 1 waarden' in te vullen in de knopen
 Dit zullen we nu is doen dan, we beginnen met $N_1$, hier is $\tilde{u}_{zA} = 1$ en de rest op 0, dit geeft ons de volgende figuur:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{N1figuur.png}
+  \includegraphics[width=0.6\textwidth]{assets/N1figuur.png}
   \caption{Visuele interpretatie van de vormfunctie $N_1$}
   \label{fig:N1figuur.png}
  \end{figure}
@@ -1779,7 +1779,7 @@ N_1(x) = 1 - \frac{3x^2}{L^2} + \frac{2x^3}{L^3}
 Op dezelfde manier kunnen we dit voor $N_2(x)$ doen:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{N2figuur.png}
+  \includegraphics[width=0.6\textwidth]{assets/N2figuur.png}
   \caption{Visuele interpretatie van de vormfunctie $N_2$}
   \label{fig:N2figuur.png}
  \end{figure}
@@ -1799,7 +1799,7 @@ Dit is trouwens exact hetzelfde dat we bekomen voor de $u_z(x)$ die we in sectie
 Op dezelfde manier kunnen we dit voor $N_3(x)$ en $N_4(x)$ doen, dit geeft ons de volgende formules (uitwerking staat op de slides maar dit is dus identiek aan de vorige stappen, ik zet hier wel nog de figuren bij):
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{N3enN4figuur.png}
+  \includegraphics[width=0.8\textwidth]{assets/N3enN4figuur.png}
   \caption{Visuele interpretatie van de vormfunctie $N_3$ en $N_4$}
   \label{fig:N3enN4figuur.png}
  \end{figure}
@@ -1815,7 +1815,7 @@ u_x(x,z) = u_x(x,0) - z \cdot \theta_y(x,0)
 Dit is trouwens duidelijk te zien in volgende figuur:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{spanningsberekeningenfiguur.png}
+  \includegraphics[width=0.8\textwidth]{assets/spanningsberekeningenfiguur.png}
   \caption{Verdraaiing balk met bijhorende verplaatsingen}
   \label{fig:spanningsberekeningenfiguur.png}
  \end{figure}
@@ -1864,7 +1864,7 @@ Uit deze formule zien we 2 cruciale eigenschappen die nodig zijn voor FEA-softwa
 Verdeelde belastingen komen vaak in de praktijk voor, voorbeelden zijn zwaartekracht, wind of waterdruk, deze gaan dus vaak over de volledige lengte van een balk, weergegeven als een continue functie $f(x)$ in volgende figuur:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{verdeeldebelastingbalk.png}
+  \includegraphics[width=0.6\textwidth]{assets/verdeeldebelastingbalk.png}
   \caption{Verdeelde belasting op een balk, weergegeven als een continue functie $f(x)$}
   \label{fig:verdeeldebelastingbalk.png}
  \end{figure}
@@ -1885,7 +1885,7 @@ Dit is dus de formule die we moeten gebruiken om de equivalente knoopkrachten te
 Als we nu deze integraal gaan toepassen op een BEAM-element gebeurt er iets belangrijks. Omdat balk-elementen ook rotatie-vrijheidsgraden hebben, zorgt de verdeelde belasting er via deze methode voor dat er niet alleen verticale krachten, maar ook buigmomenten in de knopen worden geïntroduceerd (Want de vormfuncties in $[N]$ die behoren tot de rotatie-vrijheidsgraden en dit vermenigvuldigen met een belasting in die integraal over een afstand zorgt dus voor een buigmoment in je matrixvergelijking).
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.7\textwidth]{momentengeintroduceerd.png}
+  \includegraphics[width=0.7\textwidth]{assets/momentengeintroduceerd.png}
   \caption{Vrij lichaams schema met momenten}
   \label{fig:momentengeintroduceerd.png}
  \end{figure}
@@ -1912,7 +1912,7 @@ We zullen dit nu is invullen voor 3 typisch voorkomende verdeelde belastingen:
 \subsubsection{1. Uniforme verdeelde belasting}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{uniformebelastingvoorbeeld.png}
+  \includegraphics[width=0.4\textwidth]{assets/uniformebelastingvoorbeeld.png}
   \caption{Uniforme belasting voorbeeld}
   \label{fig:uniformebelastingvoorbeeld.png}
  \end{figure}
@@ -1964,7 +1964,7 @@ Dit geeft:
 \subsubsection{2. Lineair variërende verdeelde belasting}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{lineairvarieendevoorbeeld.png}
+  \includegraphics[width=0.4\textwidth]{assets/lineairvarieendevoorbeeld.png}
   \caption{Lineair variërende belasting voorbeeld}
   \label{fig:lineairvarieendevoorbeeld.png}
  \end{figure}
@@ -2007,7 +2007,7 @@ Dit geeft:
 \subsubsection{3. Puntkracht belasting}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{puntkrachtvooorbeeld.png}
+  \includegraphics[width=0.4\textwidth]{assets/puntkrachtvooorbeeld.png}
   \caption{Puntkracht belasting voorbeeld}
   \label{fig:puntkrachtvooorbeeld.png}
  \end{figure}
@@ -2073,7 +2073,7 @@ Dit geeft:
 We gaan een praktijkoefening maken (die ook voorkwam in de oefensessies) van een hyperstatische balk, dit is een doorlopende balk met 3 steunpunten met een kracht op zoals we zien in volgende figuur:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{oefeninghyperstatischebalkVLS.png}
+  \includegraphics[width=0.8\textwidth]{assets/oefeninghyperstatischebalkVLS.png}
   \caption{VLS hyperstatische balk}
   \label{fig:oefeninghyperstatischebalkVLS.png}
  \end{figure}
@@ -2137,7 +2137,7 @@ En voor de constanten vinden we:
 De grafieken die uit deze exacte Navier-methode volgen (V-diagram, M-diagram, hoekverdraaiing en doorbuiging) vormen de \textbf{'gouden standaard'}. Straks gaan we de resultaten van het Eindige-Elementenmodel (FEM) rechtstreeks over deze grafieken plotten om te zien of de software accuraat rekent!
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.65\textwidth]{resultatennavier.png}
+  \includegraphics[width=0.65\textwidth]{assets/resultatennavier.png}
   \caption{Resultaten Navier-methode (V-diagram, M-diagram, verplaatsing en rotatie)}
   \label{fig:resultatennavier.png}
  \end{figure}
@@ -2146,7 +2146,7 @@ Bij deze slimmere, analytische methode uit de sterkteleer (gebaseerd op Appendix
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{superpositiewithconstraint.png}
+  \includegraphics[width=0.8\textwidth]{assets/superpositiewithconstraint.png}
   \caption{VLS + Standaardformules voor de doorbuiging van de balk (Hibbeler)}
   \label{fig:superpositiewithconstraint.png}
 \end{figure}
@@ -2223,7 +2223,7 @@ Door deze simpele vergelijking op te lossen vinden we direct de correcte waarde 
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.65\textwidth]{resultatensupoerpositie.png}
+  \includegraphics[width=0.65\textwidth]{assets/resultatensupoerpositie.png}
   \caption{Resultaten superpositiemethode (V-diagram, M-diagram, verplaatsing en rotatie)}
   \label{fig:resultatensupoerpositie.png}
 \end{figure}
@@ -2234,35 +2234,35 @@ Hier ga ik snel over want de proff ging hier snel over, en dit is ook wat herhal
 Hier gaan we het probleem vertalen naar een een model zoals in volgende figuur, gewoon 2 beam elementen (3 knopen) met dus de elementstijfheidsmatrix die we kunnen zien in volgende figuur:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{elementenensttijfheidsmatrix.png}
+  \includegraphics[width=0.6\textwidth]{assets/elementenensttijfheidsmatrix.png}
   \caption{Model en elementstijfheidsmatrix voor de hyperstatische balk}
   \label{fig:elementenensttijfheidsmatrix.png}
  \end{figure}
 Zo kunnen we onze formule $[K]\{\tilde{u}\}=\{\tilde{F}\}$ opstellen:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{globalestijfheidsmatrixinvergelijking.png}
+  \includegraphics[width=0.6\textwidth]{assets/globalestijfheidsmatrixinvergelijking.png}
   \caption{Formule ingevuld met de globale stijfheidsmatrix en de knoopkrachten voor de hyperstatische balk}
   \label{fig:globalestijfheidsmatrixinvergelijking.png}
  \end{figure}
 Als we $L = 4m$ invullen krijgen we dan het volgende:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{lis4meteringevuld.png}
+  \includegraphics[width=0.6\textwidth]{assets/lis4meteringevuld.png}
   \caption{$L = 4m$ ingevuld in de formule van de globale stijfheidsmatrix en knoopkrachten voor de hyperstatische balk}
   \label{fig:lis4meteringevuld.png}
  \end{figure}
 Nu kunnen we onze (essentiële) randvoorwaarden invullen, we weten dat $\tilde{u}_{z1} = 0$ (omdat steunpunt A niet verticaal kan verplaatsen) en hetzelfde geldt voor $\tilde{u}_{z2}$ dus $\tilde{u}_{z2} = 0$ en $\tilde{u}_{z3} = 0$ (omdat steunpunt C ook niet verticaal kan verplaatsen), dus:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{essentielerandvoorwaardeningevudl.png}
+  \includegraphics[width=0.6\textwidth]{assets/essentielerandvoorwaardeningevudl.png}
   \caption{Essentiële randvoorwaarden ingevuld}
   \label{fig:essentielerandvoorwaardeningevudl.png}
  \end{figure}
 Nu gaan we die dus even weggooien:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{weggoienrandvoorwarde.png}
+  \includegraphics[width=0.6\textwidth]{assets/weggoienrandvoorwarde.png}
   \caption{Schrappen van de rijen en kolommen die overeenkomen met de essentiële randvoorwaarden}
   \label{fig:weggoienrandvoorwarde.png}
  \end{figure}
@@ -2297,7 +2297,7 @@ De reactiekrachten met de weggesmeten rijen en kolommen zijn:
 Nu gaan we onze natuurlijke randvoorwaarden invullen, dus die kracht F die op de balk werkt. Met Lumped distribution ziet dit er zo uit:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{lumpeddistributionkrachtopgelegd.png}
+  \includegraphics[width=0.8\textwidth]{assets/lumpeddistributionkrachtopgelegd.png}
   \caption{Lumped distribution kracht F}
   \label{fig:lumpeddistributionkrachtopgelegd.png}
  \end{figure}
@@ -2335,7 +2335,7 @@ Maar omdat we bij lumped geen momenten hebben, gaan de hoeken ook gewoon nul zij
 We gaan dus de consistent mapping methode gebruiken, hierbij krijgen we dus ook momenten in de knopen, dit geeft dan:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{consistentmapping.png}
+  \includegraphics[width=0.6\textwidth]{assets/consistentmapping.png}
   \caption{Consistent mapping VLS}
   \label{fig:consistentmapping.png}
  \end{figure}
@@ -2513,7 +2513,7 @@ Dus met:
 Hiermee kunnen we dan de verplaatsingen en hoeken in functie van x vinden, en deze vervolgens plotten:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{displacementandangulardisplacement.png}
+  \includegraphics[width=0.6\textwidth]{assets/displacementandangulardisplacement.png}
   \caption{Verplaatsing en hoekverdraaiing in functie van x volgens de FEM-methode}
   \label{fig:displacementandangulardisplacement.png}
  \end{figure}
@@ -2524,14 +2524,14 @@ Nog iets interessant is dan ook om de spanning te kunnen plotten, dit kan door h
 \end{align*}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{spanningsplotfemmethode.png}
+  \includegraphics[width=0.5\textwidth]{assets/spanningsplotfemmethode.png}
   \caption{Spanning in functie van x volgens de FEM-methode}
   \label{fig:spanningsplotfemmethode.png}
  \end{figure}
 Dan gaan we nu is deze plots vergelijken met de resultaten van de plots bij de Navier-methode, zie de volgende figuur:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.7\textwidth]{vergelijkenmetnavier.png}
+  \includegraphics[width=0.7\textwidth]{assets/vergelijkenmetnavier.png}
   \caption{Vergelijking van de verplaatsing en hoekverdraaiing volgens de FEM-methode met de Navier-methode}
   \label{fig:vergelijkenmetnavier.png}
  \end{figure}
@@ -2541,7 +2541,7 @@ Hier zien we dat de resultaten in de knopen in beide gevallen perfect overeen ko
 Met de spanning kunnen we ook het buigmoment vinden, want we weten dat $\sigma_x = -\frac{M_y z}{I_y}$, dus kunnen we de buigmomenten in functie van x vinden en deze dan ook vergelijken met Navier:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{buigmomentnaviervsfem.png}
+  \includegraphics[width=0.4\textwidth]{assets/buigmomentnaviervsfem.png}
   \caption{Vergelijking van de buigmomenten volgens de FEM-methode met de Navier-methode}
   \label{fig:buigmomentnaviervsfem.png}
  \end{figure}
@@ -2551,20 +2551,20 @@ Dit zijn rechte lijnen omdat het afhankelijk is van de 2de afgeleide van de verp
 Om dit te fixen kunnen we eigelijk gewoon meer elementen gebruiken, op de slides wordt de hele berekening gedaan met 3 elementen, hier is het VLS om dit te verduidelijken:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{femmethod3elemetne.png}
+  \includegraphics[width=0.6\textwidth]{assets/femmethod3elemetne.png}
   \caption{VLS van de FEM-methode met 3 elementen}
   \label{fig:femmethod3elemetne.png}
  \end{figure}
 De berekeningen zijn weer veel werk en dezelfde methode, dus ik raad aan om gewoon de slides te bekijken want het is te veel werk om dit gewoon over te typen. Hier zijn wel de vergelijkingen van de plots:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{displacementenangulardiscplacement.png}
+  \includegraphics[width=0.6\textwidth]{assets/displacementenangulardiscplacement.png}
   \caption{Vergelijking van de verplaatsing en hoekverdraaiing volgens de FEM-methode met 3 elementen met de Navier-methode}
   \label{fig:displacementenangulardiscplacement.png}
  \end{figure}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{momentvergelijking3elementenFEM.png}
+  \includegraphics[width=0.6\textwidth]{assets/momentvergelijking3elementenFEM.png}
   \caption{Vergelijking van de buigmomenten volgens de FEM-methode met 3 elementen}
   \label{fig:momentvergelijking3elementenFEM.png}
  \end{figure}
@@ -2576,7 +2576,7 @@ Hier zien we dus dat met 3 elementen de resultaten perfect overeen komen met de 
 We zeiden eerder dat we het gingen hebben over beams met enkel verticale verplaatsingen en rotaties rond de y-as, maar in principe kunnen we dus ook axiale verplaatsingen hebben, of rotaties rond de x-as ofzo, een combinatie van een rod en een beam zou dan dus ook axiale verplaatsing kunnen hebben en deze elementstijfheidsmatrix ziet er dan zo uit:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{combinatierodenbeam.png}
+  \includegraphics[width=0.6\textwidth]{assets/combinatierodenbeam.png}
   \caption{Combinatie rod en beam elementstijfheidsmatrix}
   \label{fig:combinatierodenbeam.png}
  \end{figure}
@@ -2657,7 +2657,7 @@ Het ultieme doel van de software is om een wiskundig verband te vinden tussen de
 Wim toont het aan bord als volgt:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{spanningbepalen.png}
+  \includegraphics[width=0.8\textwidth]{assets/spanningbepalen.png}
   \caption{Matrixvermenigvuldigingen om spanning te bepalen vanuit knoopverplaatsingen ('Matrix Flow')}
   \label{fig:spanningbepalen.png}
  \end{figure}
@@ -2690,7 +2690,7 @@ Dit simpelweg vermenigvuldigen met de materiaaleigenschapmatrix $[E]$ geeft ons 
 Voor een lineair 1D element gebruiken we de bekende vormfuncties $N_1 = 1 - \frac{x}{L}$ en $N_2 = \frac{x}{L}$. 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{vormfuncties1Drod.png}
+  \includegraphics[width=0.8\textwidth]{assets/vormfuncties1Drod.png}
   \caption{Vormfuncties 1D rod}
   \label{fig:vormfuncties1Drod.png}
  \end{figure}
@@ -2761,7 +2761,7 @@ Uit de basismechanica weten we dat de term $\int z^2 dA$ exact de definitie is v
 De volgende figuur toont de vormfuncties die we invullen maar de proff zegt dat we deze berekening niet moeten kunnen, ik denk dat dit ook logisch is want kijk dit:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{vormfunctiesbeammatrixflow.png}
+  \includegraphics[width=0.8\textwidth]{assets/vormfunctiesbeammatrixflow.png}
   \caption{Vormfuncties ingevuld in de matrix voor een beam element}
   \label{fig:vormfunctiesbeammatrixflow.png}
  \end{figure}
@@ -2809,14 +2809,14 @@ Om van de rek naar de spanning te gaan, hebben we de materiaalmatrix $[E]$ nodig
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{plainstressvsplainstrain.png}
+  \includegraphics[width=0.8\textwidth]{assets/plainstressvsplainstrain.png}
   \caption{Plane stress vs. plane strain}
   \label{fig:plainstressvsplainstrain}
 \end{figure}
 De slides tonen nu veel random formules en symbolen die uit het niks lijken te komen ofzo, bleek dat deze dus uit de 3D wet van Hooke komen, een snelle Google search gaf me deze figuur ter verduidelijking:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{3Dwethooke.png}
+  \includegraphics[width=0.6\textwidth]{assets/3Dwethooke.png}
   \caption{3D Wet Hooke}
   \label{fig:3Dwethooke.png}
  \end{figure}
@@ -2875,7 +2875,7 @@ Hierdoor ontstaat er een zeer eenvoudige uitdrukking voor de vormfuncties en hun
 \end{align*}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{transformatienaaretaxiassenstelsel.png}
+  \includegraphics[width=0.8\textwidth]{assets/transformatienaaretaxiassenstelsel.png}
   \caption{Transformatie van een willekeurig element naar een standaard vierhoek in het $\xi-\eta$ assenstelsel}
   \label{fig:transformatienaaretaxiassenstelsel.png}
  \end{figure}
@@ -2901,7 +2901,7 @@ We moeten niet weten hoe exact deze jacobian matrix perfect werkt, we moeten gew
 Deze mapping werkt uitsluitend voor \textbf{convexe elementen} (elementen waarbij de diagonalen elkaar binnen het element snijden). Het principe kan niet worden toegepast op non-convexe of concave elementen (elementen met een interne hoek groter dan $180^\circ$). Bij zulke slecht gevormde elementen zou één fysiek punt meerdere $\xi$ of $\eta$ coördinaten krijgen, waardoor de mapping onmogelijk wordt. Dit verklaart tevens waarom de $\det([J])$ term bepaalt of een element goede of slechte FEM-resultaten oplevert, en waarom de software weigert te rekenen met te sterk vervormde elementen.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{nietconvexelement.png}
+  \includegraphics[width=0.8\textwidth]{assets/nietconvexelement.png}
   \caption{Niet convex element, dit heeft 2 mogelijke $\xi$ of $\eta$ coördinaten voor hetzelfde fysieke punt, waardoor de mapping onmogelijk wordt}
   \label{fig:nietconvexelement.png}
  \end{figure}
@@ -2909,21 +2909,21 @@ Deze mapping werkt uitsluitend voor \textbf{convexe elementen} (elementen waarbi
 Tot nu toe zagen we membraam elementen, deze kunnen enkel krachten in hun eigenvlak opnemen en daarin bewegen, plate elementen kunnen enkel buiging opnemen (tegenovergesteld van membraam eigelijk), deze kunnen dus enkel UIT het vlak bewegen (heeft dus maar 3 dof's; 2 rotaties in het vlak ($\theta_x$ en $\theta_y$) en een beweging uit het vlak $u_z$), een shell element is de combinatie van deze 2, het kan zowel 'in-plane' krachten opnemen als 'out-of-plane' doorbuigen. Dit krijgt dus de volle 6 dof's per knoop.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{overzichtmembrameplateshellng.png}
+  \includegraphics[width=0.6\textwidth]{assets/overzichtmembrameplateshellng.png}
   \caption{Overzicht membraam, plate en shell elementen}
   \label{fig:overzichtmembrameplateshellng.png}
  \end{figure}
 De plaat wordt door de computer niet in 3D gemodelleerd maar 2D om rekentijd te besparen, dit vlak dat we gebruiken bevind zich exact in het midden van de plaat en noemen we het 'midsurface', de dikte t van de plaat geef je achteraf in.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{3Dnaar2Dendofsplaat.png}
+  \includegraphics[width=0.8\textwidth]{assets/3Dnaar2Dendofsplaat.png}
   \caption{3D naar 2D en dof's van een plaat element}
   \label{fig:3Dnaar2Dendofsplaat.png}
  \end{figure}
 Net zoals een buigende 1D-balk een neutrale vezel heeft, heeft een 2D-plaat een neutraal vlak (het midsurface of middenvlak). Punt A uit de volgende figuur bevindt zich exact op dit middenvlak, wat betekent dat de buigspanning daar altijd nul is (over dat vlak). Omdat een plaat tweedimensionaal is, ontstaan er roterende effecten oftewel buigmomenten; de software berekent deze momenten rechtstreeks aan de hand van de interne spanningen en de fysieke dikte (t) van de plaat. Om dit alles wiskundig op te lossen, maakt de software gebruik van Kirchhoff's aanname, wat simpelweg de 2D-variant is van de Bernoulli-theorie voor balken. Kirchhoff stelt dat een dwarsdoorsnede die oorspronkelijk vlak en loodrecht op het neutrale vlak stond, ook ná de buiging perfect vlak en loodrecht blijft staan. Het geniale aan deze aanname is dat we hierdoor geen zwaar, rekenintensief 3D-blok hoeven te modelleren. De software kan de buiging dankzij deze regel perfect simuleren op een flinterdun 2D-oppervlak, wat enorm veel rekentijd bespaart.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{3Dplaatkirchoofff.png}
+  \includegraphics[width=0.6\textwidth]{assets/3Dplaatkirchoofff.png}
   \caption{Kirchoff's theorie}
   \label{fig:3Dplaatkirchoofff.png}
  \end{figure}
@@ -2933,7 +2933,7 @@ Dus de fundamentel aanname dat we maken is \textit{'dat een dwarsdoorsnede die V
 Als we dit nu wiskundig gaan uitschrijven om de elementstijfheidsmatrix te vinden moeten we dus de spanningen hebben. We bekijken eerst volgende figuur (dat Wim of course weer in de meest shitty kwaliteit op zijn slide heeft gezet):
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{doorsnedebuigendeplaat.png}
+  \includegraphics[width=0.8\textwidth]{assets/doorsnedebuigendeplaat.png}
   \caption{Doorsnede buigende plaat}
   \label{fig:doorsnedebuigendeplaat.png}
  \end{figure}
@@ -2959,7 +2959,7 @@ Om van rek naar spanning te gaan gebruikt de software terug de materiaalmatrix, 
 Nu zullen we het is hebben over 3D solid elementen, wat hier belangrijk te weten is, is dat die aannames dat we eerder zagen hier eigelijk gewoon vervallen, die zijn ni meer nodig. We nemen volgend element als voorbeeld (met 4 knopen, we negere die blauwe extra knopen dat je in principe ook kan hebben, dit geeft gewoon grotere matrices maar het principe blijft hetzelfde):
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{3Delemennttt.png}
+  \includegraphics[width=0.5\textwidth]{assets/3Delemennttt.png}
   \caption{3D Element}
   \label{fig:3Delemennttt.png}
  \end{figure}
@@ -2970,7 +2970,7 @@ We willen dus ook hier uiteindelijk de stijfheidsmatrix $[k]$ vinden, hiervoor m
 In de volgende figuur heb ik de Matrix Flow voor dit 3D solid element getekend, dit is exact dezelfde als de toledo video (ik raad deze aan te zien als je niet snapt wat ik hier allemaal schrijf):
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{matrixflow3dtoledovideo.png}
+  \includegraphics[width=0.6\textwidth]{assets/matrixflow3dtoledovideo.png}
   \caption{Matrix Flow 3D}
   \label{fig:matrixflow3dtoledovideo.png}
  \end{figure}
@@ -2980,7 +2980,7 @@ We hebben dus per knoop 3 vrijheidsgraden ($\tilde{u}_x$, $\tilde{u}_y$ en $\til
 Ik denk niet dat dit belangrijk is, maar dit is dus hoe die materiaalmatrix $[E]$ er in 3D uitziet:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{materiaalmatrix3D.png}
+  \includegraphics[width=0.6\textwidth]{assets/materiaalmatrix3D.png}
   \caption{Materiaalmatrix 3D}
   \label{fig:materiaalmatrix3D.png}
  \end{figure}
@@ -3001,7 +3001,7 @@ Omdat we hier met rotatie rond een as werken gebruiken we geen cartesisch (x, y,
 Echter hebben we wel rek in deze richting! Kijk de volgende figuur:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{doorsnedering.png}
+  \includegraphics[width=0.5\textwidth]{assets/doorsnedering.png}
   \caption{De ring met de doorsnede}
   \label{fig:doorsnedering.png}
  \end{figure}
@@ -3011,7 +3011,7 @@ Als we naar die doorsnede vanonder kijken zien we dat da gewoon 2 vierkanten zij
 Maar als we langs de bovenkant gaan kijken (met infitisimale kleine incrementen van de hoek want eigelijk werken we 2D) zien we dat de buitenste omtrek van de ring (die een dikte heeft) een langere lengte heeft dan de binnenste ring:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{infitesimaledoorsnedebovenaanzicht.png}
+  \includegraphics[width=0.4\textwidth]{assets/infitesimaledoorsnedebovenaanzicht.png}
   \caption{Infinitesimale doorsnede van bovenaanzicht}
   \label{fig:infitesimaledoorsnedebovenaanzicht.png}
  \end{figure}
@@ -3082,25 +3082,25 @@ $[k]$ & $3N \times 3N$ & $2N \times 2N$ \\ \hline
 De proff toont hier gewoon een paar tabellen en zegt dat deze uiterst belangrijk zijn om te kennen want dit kan een theorievraag op het examen zijn!
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1\textwidth]{generaldefinitions.png}
+  \includegraphics[width=1\textwidth]{assets/generaldefinitions.png}
   \caption{}
   \label{fig:generaldefinitions.png}
  \end{figure}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1\textwidth]{definitiosnelementtypes.png}
+  \includegraphics[width=1\textwidth]{assets/definitiosnelementtypes.png}
   \caption{}
   \label{fig:definitiosnelementtypes.png}
  \end{figure}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1\textwidth]{definitionsboundaryconditions.png}
+  \includegraphics[width=1\textwidth]{assets/definitionsboundaryconditions.png}
   \caption{}
   \label{fig:definitionsboundaryconditions.png}
  \end{figure}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{matrixflowoverzicht.png}
+  \includegraphics[width=0.8\textwidth]{assets/matrixflowoverzicht.png}
   \caption{}
   \label{fig:matrixflowoverzicht.png}
  \end{figure}
@@ -3111,21 +3111,21 @@ We hebben nu 1D, 2D en 3D meshes/elementen gezien, in de praktijk zijn construct
 In de volgende tabel zie je een voorbeeld van hoe een balk is gemodelleerd met een 1D mesh, een 2D mesh en een 3D mesh, je ziet hier dat de spanning zo goed als het zelfde in alle gevallen is, en ook de verplaatsing maar dat de 3D mesh gigantisch veel meer knopen en elementen heeft. (Je ziet hier ook dat de analytische methode toevallig dezelfde uitkomst heeft als het 1D model, maar dit moet je echter 'met een korrel zout nemen' omdat dat analytisch model met Navier is uitgewerkt wat dus eerder voor een ideal geval is, in de praktijk zal dit dus niet altijd zo zijn).
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{tabel1D2D3D.png}
+  \includegraphics[width=0.6\textwidth]{assets/tabel1D2D3D.png}
   \caption{Tabel met vergelijking van 1D, 2D en 3D mesh voor een balk, met de spanning, verplaatsing, aantal knopen en elementen}
   \label{fig:tabel1D2D3D.png}
  \end{figure}
 Typisch ga je 1D elementen gebruiken als 1 van de dimensies veel groter is dan de andere 2 (zoals bij balken), 2D elementen als 1 van de dimensies veel kleiner is dan de andere 2 (zoals bij platen) en 3D elementen als alle dimensies ongeveer gelijk zijn (zoals bij blokken). Er zijn ook nog andere type elementen zoals puntmassas, veren, dempers, 'gaps' (die kunnen openen en sluiten) en 'rigids' (die punten aan elkaar koppelen zoals RBE2 en RBE3) en 'Welds'.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.55\textwidth]{voorbeeldhybridemesh.png}
+  \includegraphics[width=0.55\textwidth]{assets/voorbeeldhybridemesh.png}
   \caption{Voorbeeld hybride mesh}
   \label{fig:voorbeeldhybridemesh.png}
  \end{figure}
 In de figuur hierboven zie je (linkse model in 3D) een voorbeeld van een hybride mesh, het rechter model bestaat uit een combinatie van een plaat en 2 1D rods, je ziet dat het rood gearceerde bij beide model ongeveer hetzelfde is, dus de spanningen zijn ongeveer hetzelfde. Andere voorbeelden kunnen volgende zijn:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{voorbeeldenhybridemeshes.png}
+  \includegraphics[width=0.8\textwidth]{assets/voorbeeldenhybridemeshes.png}
   \caption{Nog voorbeelden}
   \label{fig:voorbeeldenhybridemeshes.png}
  \end{figure}
@@ -3135,7 +3135,7 @@ Je ziet daarboven bvb. een brug die is gemodelleerd met 1D rods en dan een plaat
 Verschillende elementen hebben verschillende soorten knopen (andere hoeveelheden vrijheidsgraden), deze kun je niet zomaar aan elkaar lijmen, je krijgt incompatibiliteiten.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{combinerenvanverschillendeelementen.png}
+  \includegraphics[width=0.6\textwidth]{assets/combinerenvanverschillendeelementen.png}
   \caption{1D turbine blade op een 2D turbine disc}
   \label{fig:combinerenvanverschillendeelementen.png}
  \end{figure}
@@ -3144,7 +3144,7 @@ De disc is een membraan, deze heeft geen rotaties, terwijl de blade een beam is,
 Grote problemen zijn dat de mesh die wordt gegenereerd bij een 1D element wiskundig op zijn neutrale as ligt, en bij een 2D element de mesh in het middenvlak zit (de midsurface), dit zorgt ervoor dat bij het combineren van deze elementen er geometrische gaten ontstaan (gaps) in je model. Kijk eens naar de volgende figuur:
 \begin{figure}[H] 
 \centering
-  \includegraphics[width=0.8\textwidth]{gaps.png}
+  \includegraphics[width=0.8\textwidth]{assets/gaps.png}
   \caption{Gaps}
   \label{fig:gaps.png}
  \end{figure}
@@ -3158,7 +3158,7 @@ Elementen die gemaakt zijn om te buigen (zoals 1D-beams of 2D-plates) gebruiken 
 .
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{verschillendeordesglueneprobleem.png}
+  \includegraphics[width=0.5\textwidth]{assets/verschillendeordesglueneprobleem.png}
   \caption{Hogere orde + lagere orde}
   \label{fig:verschillendeordesglueneprobleem.png}
  \end{figure}
@@ -3177,14 +3177,14 @@ Wanneer je elementen koppelt die fundamenteel andere vrijheidsgraden hebben (zoa
 \textbf{Voorbeeld (Turbineblad op een schijf):} Een turbineblad (1D) roteert in knoop 1 over een hoek $\tilde{\theta}_{z1}$. De onderliggende schijf (2D) snapt enkel translaties. Via de MPC laten we de Y-verplaatsing van de afhankelijke slave-knopen A en B op de schijf wiskundig beïnvloeden door de rotatie van master-knoop 1. Als knoop 1 roteert over afstand $a$, vertaalt de MPC dit in een verticale verschuiving voor knoop A en B.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{voorbeeldlesenvideo.png}
+  \includegraphics[width=0.8\textwidth]{assets/voorbeeldlesenvideo.png}
   \caption{1D beam op 2D membraan (die buitenste 4 knopen zijn perongeluk een andere kleur, dit betekent niks)}
   \label{fig:voorbeeldlesenvideo.png}
  \end{figure}
 Omdat we beschouwen dat die hoeken klein zijn, schrappen we die tangens. Wat je ook hier trouwens kan doen is een overlap toevoegen (wat wel massa toevoegt wat niet goed is eigelijk), dit is dat element van knoop 1 en knoop 0, anders ga je de situatie hebben in de linkse figuur hieronder:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{2situatiesgluenbeamaanmembraan.png}
+  \includegraphics[width=0.6\textwidth]{assets/2situatiesgluenbeamaanmembraan.png}
   \caption{2 situaties: links zonder overlap, rechts met overlap}
   \label{fig:2situatiesgluenbeamaanmembraan.png}
  \end{figure}
@@ -3224,14 +3224,14 @@ De MPC in matrixnotatie:
 Wanneer een kwadratisch element (dat buigt in een curve) een rand deelt met een lineair element (dat perfect recht blijft), ontstaat er een incompatibiliteit (scheur). 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{verschillendeordeskoppelenmpc.png}
+  \includegraphics[width=0.6\textwidth]{assets/verschillendeordeskoppelenmpc.png}
   \caption{Quad koppelen met Lineair element}
   \label{fig:verschillendeordeskoppelenmpc.png}
  \end{figure}
 \textbf{Regel:} Bij een orde-incompatibiliteit \textbf{moet} het element met de laagste orde (het lineaire element) altijd de 'Master' zijn. De extra, middelste knoop (knoop 2) van het kwadratische element wordt de slave. De MPC gebruikt de lineaire vormfuncties van de hoekknopen (knoop 1 en 3) om de beweging van knoop 2 exact op de rechte lijn te forceren. (Dit is misschien duidelijk op deze tekening uit de les:)
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{tekeningles.png}
+  \includegraphics[width=0.6\textwidth]{assets/tekeningles.png}
   \caption{Hier zie je dat die middelste knoop van het kwadratische element precies op de rechte lijn tussen de 2 hoekknopen ligt, dit is dus wat die MPC doet}
   \label{fig:tekeningles.png}
  \end{figure}
@@ -3284,7 +3284,7 @@ Een RBE2-element is een écht stijf lichaam. Het legt een vaste, onvervormbare v
 \begin{figure}[H]
     \centering
     %Voeg hier de afbeelding in van Slide 19 met de knopen die transleren en roteren zonder hun onderlinge vorm te verliezen.
-    \includegraphics[width=0.6\textwidth]{afbeelding_RBE2_principe.png}
+    \includegraphics[width=0.6\textwidth]{assets/afbeelding_RBE2_principe.png}
     \caption{RBE2 principe}
 \end{figure}
 De stippenlijnen zijn trouwens 'de spider'.
@@ -3299,7 +3299,7 @@ Er is een cruciaal verschil in hoe \textbf{RBE2-elementen} en een \textbf{Glue-r
 (Sorry, ik ben te lui om hier ff een clean tekening van te maken, hier is mijn lesnotitie er van)
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{rbevsglue.png}
+  \includegraphics[width=0.8\textwidth]{assets/rbevsglue.png}
   \caption{RBE vs. Glue}
   \label{fig:rbevsglue.png}
  \end{figure}
@@ -3313,7 +3313,7 @@ Een RBE3-element is fundamenteel anders. Dit is géén stijf element, maar een \
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{RBE3principe.png}
+  \includegraphics[width=0.5\textwidth]{assets/RBE3principe.png}
   \caption{RBE3 principe}
   \label{fig:RBE3principe.png}
  \end{figure}
@@ -3332,7 +3332,7 @@ Wanneer een kracht of moment op de afhankelijke referentieknoop van een RBE3-spi
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{RBE3krachtverdeling.png}
+  \includegraphics[width=0.8\textwidth]{assets/RBE3krachtverdeling.png}
   \caption{RBE3 krachtverdeling}
   \label{fig:RBE3krachtverdeling.png}
  \end{figure}
@@ -3348,14 +3348,14 @@ Wanneer je slechts twee knopen met elkaar verbindt (1-op-1), is er wiskundig gee
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{RBE2VSRBE3PLAAT.png}
+  \includegraphics[width=0.6\textwidth]{assets/RBE2VSRBE3PLAAT.png}
   \caption{RBE2 vs RBE3 op een vierkante plaat}
   \label{fig:RBE2VSRBE3PLAAT.png}
  \end{figure}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{RBEZAPBEAM.png}
+  \includegraphics[width=0.8\textwidth]{assets/RBEZAPBEAM.png}
   \caption{ZAPBEAM RBE}
   \label{fig:RBEZAPBEAM.png}
  \end{figure}
@@ -3369,7 +3369,7 @@ Vaak starten we dus eerst met een CAD file of een tekening van een tekenaar (ont
 Want stel u voor ge krijgt dit:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{sharpcorners.png}
+  \includegraphics[width=0.6\textwidth]{assets/sharpcorners.png}
   \caption{Een model met scherpe randen}
   \label{fig:sharpcorners.png}
  \end{figure}
@@ -3379,7 +3379,7 @@ Zoals we weten zorgen scherpe randen voor spanningsconcentraties ($\sigma \right
 Iets anders waar je rekening mee moet houden is dit:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{connectionsssss.png}
+  \includegraphics[width=0.5\textwidth]{assets/connectionsssss.png}
   \caption{Een model met verbindingen in bepaalde volgorde}
   \label{fig:connectionsssss.png}
  \end{figure}
@@ -3389,7 +3389,7 @@ Waarom zou je verbindingen onder elkaar zetten als je weet dat de last in dezelf
 Nog iets is het volgende:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{orientationofbeams.png}
+  \includegraphics[width=0.6\textwidth]{assets/orientationofbeams.png}
   \caption{Orientatie van balken}
   \label{fig:orientationofbeams.png}
  \end{figure}
@@ -3412,7 +3412,7 @@ Je moet rekening houden met het feit dat het zowieso errors gaat hebben in je mo
 Een mesh creëren kan op verschillende manieren, dit is samengevat in volgende tabel:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.65\textwidth]{tabelhowtocreatemesh.png}
+  \includegraphics[width=0.65\textwidth]{assets/tabelhowtocreatemesh.png}
   \caption{Verschillende manieren om een mesh te creëren}
   \label{fig:tabelhowtocreatemesh.png}
  \end{figure}
@@ -3422,7 +3422,7 @@ Dit is de makkelijkste en snelste methode, maar volgens de professor de 'slechts
 Dit is al beter, hier geef je wel richtlijnen op kritieke gebieden, dus je gaat eigelijk lokaal verfijnen rond bvb. een gat, de software maakt hier dan een gestructureerde mesh rond die gebieden. Dit duurt dus wel ieeets langer.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.7\textwidth]{automaticvsmappedmesh.png}
+  \includegraphics[width=0.7\textwidth]{assets/automaticvsmappedmesh.png}
 \caption{Automatisch vs. Mapped meshing}
   \label{fig:automaticvsmappedmesh.png}
  \end{figure}
@@ -3432,7 +3432,7 @@ Dit vereist enorm veel tijd en geduld (Patience: high). Je hebt hiervoor niet ee
     \centering
     % PLAATS HIER DE FIGUUR VAN SLIDE 23 (Extruding, Revolving, Sweeping)
     % De afbeelding toont het uittrekken (extruderen) of ronddraaien (revolving) van een 2D mesh naar een 3D solid.
-    \includegraphics[width=0.8\textwidth]{afbeelding_extrude_revolve.png}
+    \includegraphics[width=0.8\textwidth]{assets/afbeelding_extrude_revolve.png}
     \caption{Manueel meshing versnellen door 2D meshes te extruderen of roteren naar 3D.}
     \label{fig:mesh_extrude}
 \end{figure}
@@ -3445,7 +3445,7 @@ Een manuele of mapped mesh start in de software vrijwel altijd met \textbf{Mesh 
     \centering
     % PLAATS HIER DE FIGUUR VAN SLIDE 21 (Mesh seeding on edges)
     % Gebruik de figuur met de kleine gele bolletjes (seeds) geprojecteerd op de randen van de blauwe structuur.
-    \includegraphics[width=0.8\textwidth]{afbeelding_mesh_seeding.png}
+    \includegraphics[width=0.8\textwidth]{assets/afbeelding_mesh_seeding.png}
     \caption{Mesh seeding op de randen van een model}
     \label{fig:mesh_seeding}
 \end{figure}
@@ -3464,7 +3464,7 @@ Het gigantische voordeel van biasing is dat je de nauwkeurigheid van je resultat
     \centering
     % PLAATS HIER DE TABEL EN AFBEELDINGEN VAN SLIDE 22 (Manual meshing: biasing)
     % De afbeelding toont de 3 vierkanten (Bias 0, Bias 5 en Bias 20) plus de vergelijkende tabel daaronder.
-    \includegraphics[width=0.6\textwidth]{afbeelding_mesh_biasing_tabel.png}
+    \includegraphics[width=0.6\textwidth]{assets/afbeelding_mesh_biasing_tabel.png}
     \caption{Het effect van biasing: een aanzienlijk hogere nauwkeurigheid zonder extra elementen toe te voegen.}
     \label{fig:mesh_biasing}
 \end{figure}
@@ -3480,7 +3480,7 @@ Om de fout van een cirkel klein te houden (tussen 1\% en 5\%), heb je 12 tot 20 
     \centering
     % PLAATS HIER DE FIGUUR VAN SLIDE 24
     % De afbeelding met de cirkels benaderd door 3, 4, 6 en 8 lijnen (met het grijze fout-gebied)
-    \includegraphics[width=0.6\textwidth]{afbeelding_cirkel_discretisatiefout.png}
+    \includegraphics[width=0.6\textwidth]{assets/afbeelding_cirkel_discretisatiefout.png}
     \caption{Geometrische discretisatiefout bij het benaderen van een cirkel.}
     \label{fig:cirkel_fout}
 \end{figure}
@@ -3505,7 +3505,7 @@ Een fillet in een CAD-model is in de regel een kwartcirkel.
     \centering
     % PLAATS HIER DE FIGUUR VAN SLIDE 25
     % De tabel met 'Critical area' vs 'General area' voor gaten en fillets.
-    \includegraphics[width=0.6\textwidth]{afbeelding_holes_fillets_guidelines.png}
+    \includegraphics[width=0.6\textwidth]{assets/afbeelding_holes_fillets_guidelines.png}
     \caption{Richtlijnen voor het aantal elementen bij gaten en afrondingen.}
     \label{fig:holes_fillets}
 \end{figure}
@@ -3516,7 +3516,7 @@ Een zeer belangrijke regel bij het meshen van een afronding is dat je de element
     \centering
     % PLAATS HIER DE FIGUUR VAN SLIDE 26
     % De gebogen plaat met het foute, gele driehoekje in de mesh op de boog.
-    \includegraphics[width=0.5\textwidth]{afbeelding_no_mesh_transition.png}
+    \includegraphics[width=0.5\textwidth]{assets/afbeelding_no_mesh_transition.png}
     \caption{Mesh transities mogen nooit op de afronding zelf plaatsvinden.}
     \label{fig:mesh_transition_fillet}
 \end{figure}
@@ -3528,7 +3528,7 @@ Uit simulaties van een trekplaat met een gat (waarbij de analytisch exacte spann
 Wanneer we Quad-elementen gebruiken, zien we bovendien dat de nauwkeurigheid sterk toeneemt naarmate we de mesh verfijnen rondom het gat:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{triavsquad.png}
+  \includegraphics[width=0.8\textwidth]{assets/triavsquad.png}
   \caption{Tria vs Quad elementen rondom een gat}
   \label{fig:triavsquad.png}
  \end{figure}
@@ -3558,7 +3558,7 @@ In de volgende figuur worden drie mogelijke combinaties getoond:
     \centering
     % PLAATS HIER DE FIGUUR VAN SLIDE 28 
     % (De drie weergaven, met de linkse als 'best choice')
-    \includegraphics[width=0.8\textwidth]{afbeelding_displaying_meshes.png}
+    \includegraphics[width=0.8\textwidth]{assets/afbeelding_displaying_meshes.png}
     \caption{Verschillende weergave-opties in de pre-processor. De linkse combinatie (shaded mesh in een wireframe geometrie) is de meest werkbare weergave.}
     \label{fig:displaying_meshes}
 \end{figure}
@@ -3578,7 +3578,7 @@ In de regel moeten we de mesh verfijnen op locaties met een spanningsconcentrati
     \centering
     % PLAATS HIER DE FIGUUR VAN SLIDE 29 
     % (Voorbeelden van stress concentrations: cracks, cutouts, point loads...)
-    \includegraphics[width=0.8\textwidth]{afbeelding_stress_concentrations.png}
+    \includegraphics[width=0.8\textwidth]{assets/afbeelding_stress_concentrations.png}
     \caption{Locaties waar discontinuïteiten optreden en lokale meshverfijning nodig is.}
     \label{fig:stress_concentrations}
 \end{figure}
@@ -3595,14 +3595,14 @@ Wanneer we besluiten om te verfijnen, biedt de software ons in de theorie drie f
         \item \textit{Gelijk aantal knopen aan elke zijde (Uniform):} Makkelijk te controleren en behoudt zuivere Quad-elementen (voor andere types werkt dit niet), maar heeft als grote nadeel dat je al snel uiterst smalle, lange elementen krijgt verderop in je model (hoge \textit{aspect ratio}), wat voor numerieke fouten zorgt. (Dit zien we zometeen nog)
         \begin{figure}[H]
           \centering
-          \includegraphics[width=0.3\textwidth]{hrefinementuniform.png}
+          \includegraphics[width=0.3\textwidth]{assets/hrefinementuniform.png}
           \caption{h-refinement met uniforme knopenverdeling}
           \label{fig:hrefinementuniform.png}
          \end{figure}
         \item \textit{Verschillend aantal knopen aan elke zijde (Transitie):} De software gebruikt hierbij driehoeken (Trias) of trapezium-vormige Quads om van fijn naar grof te gaan. Dit geeft minder elementen, maar de \textit{skewness} (vervorming van de elementen) neemt wel toe. Dit zorgt ook voor groter hoeken (zien we ook sebiet)
         \begin{figure}[H]
           \centering
-          \includegraphics[width=0.7\textwidth]{hrefinementtransition.png}
+          \includegraphics[width=0.7\textwidth]{assets/hrefinementtransition.png}
           \caption{h-refinement met transitie}
           \label{fig:hrefinementtransition.png}
          \end{figure}
@@ -3623,7 +3623,7 @@ Bij het ontwerpen van de mesh moet je twee specifieke configuraties absoluut ver
     \centering
     % PLAATS HIER DE FIGUUR VAN SLIDE 33
     % (Avoid back-to-back triangles en Avoid tria-quad meshes)
-    \includegraphics[width=0.6\textwidth]{afbeelding_avoid_tria_quad.png}
+    \includegraphics[width=0.6\textwidth]{assets/afbeelding_avoid_tria_quad.png}
     \caption{Links en midden: slechte configuraties die flow lines verstoren. Rechts: de aanbevolen, gestructureerde quad-mesh.}
     \label{fig:avoid_tria_quad}
 \end{figure}
@@ -3643,7 +3643,7 @@ De absolute nachtmerrie voor eindige-elementensoftware is een sterk vervormd ele
     \centering
     % PLAATS HIER DE FIGUUR VAN SLIDE 35
     % (De zes foute elementvormen met de rode/zwarte lijntjes)
-    \includegraphics[width=0.7\textwidth]{afbeelding_poor_elements.png}
+    \includegraphics[width=0.7\textwidth]{assets/afbeelding_poor_elements.png}
     \caption{Zes sterk vervormde elementvormen die een ill-conditioned matrix veroorzaken.}
     \label{fig:poor_elements}
 \end{figure}
@@ -3676,21 +3676,21 @@ Om te bewijzen dat die slechte elementvormen geen abstracte theorie zijn, toont 
     \centering
     % PLAATS HIER DE FIGUUR VAN SLIDE 36
     % (De vier platen met rode trekpijlen en kleurtjes)
-    \includegraphics[width=0.6\textwidth]{afbeelding_singularities_illustration.png}
+    \includegraphics[width=0.6\textwidth]{assets/afbeelding_singularities_illustration.png}
     \caption{Het visuele bewijs: foute elementvormen (rechts) leiden tot compleet verkeerde en asymmetrische spanningsverdelingen bij een simpele verticale trekbelasting.}
     \label{fig:singularities_illustration}
 \end{figure}
 In de les tekent de proff een voorbeeld van een groot element met vlak daarnaast een klein element, deze hebben een groot verschil in $L_{x1}$ en $L_{x2}$, de computer berekent dus de stijfheid van een element met breuken (1/$L_x$), omdat het eerste element groot is is dit een klein stijfheidsgetal en bij het 2de element dan een groot stijfheids getal. Nu zet de computer die getallen in de globale stijfheidsmatrix, het grote element krijgt een blok (rood) en het kleine element krijgt een blok (geel), we zien daar een overlappende regio (omcirkeld in groen), hier worden de stijfheden van beide elementen opgeteld. Dus wat boeit dit? Awel, door dat beperkte geheugen van de computer dat maar een aantal digits kan opslaan, slokt het grote getal eigelijk het kleine getal volledig op en wordt dat eigelijk 'afgekapt', dit is dan een afrondingsfout.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.7\textwidth]{voorrbrleledles.png}
+  \includegraphics[width=0.7\textwidth]{assets/voorrbrleledles.png}
   \caption{Voorbeeld les, groot element naast klein element, grote verschillen in $L_x$}
   \label{fig:voorrbrleledles.png}
  \end{figure}
 Dit is exact de reden waarom je nooit een abrupte sprong in lengtes mag hebben en je dus best bij het verfijnen, in transities verfijnt:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{transititeivergfijning.png}
+  \includegraphics[width=0.6\textwidth]{assets/transititeivergfijning.png}
   \caption{Transitieverfijning (vanboven), abrupt verfijning (onder)}
   \label{fig:transititeivergfijning.png}
  \end{figure}
@@ -3701,7 +3701,7 @@ Zoals we eerder zagen gaan we hier gewoon de orde p van de elementen (dus van de
 De r in r-refinement staat voor 'rearranging', hier ga je dus geen extra element of knoop toevoegen maar je knopen gewoon een beetje verplaatsen in de ruimte zodat het wat fijner is rond de kritische zone's, typisch wordt dit automatisch gedaan door algoritmes die dit optimaliseren.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{soortenverfijningen.png}
+  \includegraphics[width=0.8\textwidth]{assets/soortenverfijningen.png}
   \caption{Overzicht soorten verfijningen}
   \label{fig:soortenverfijningen.png}
  \end{figure}
@@ -3709,7 +3709,7 @@ De r in r-refinement staat voor 'rearranging', hier ga je dus geen extra element
 Hoe weten we wanneer we genoeg verfijnd hebben? Je kan een grafiek maken van de rekenfout tegenover de elementgrootte op een logaritmische schaal, deze zie je in volgende figuur:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{convergentei.png}
+  \includegraphics[width=0.5\textwidth]{assets/convergentei.png}
   \caption{Grafiek van rekenfout vs. elementgrootte op log-log schaal}
   \label{fig:convergentei.png}
  \end{figure}
@@ -3722,7 +3722,7 @@ Deze grafiek bestaat uit 3 regio's:
 Er is ergens een optimum in het midden, rekentijd en nauwkeurigheid zijn hier in balans, dit kan je ook zien bij deze convergentieanalyse van rekentijd en accuraatheid van de uitkomst (deflectie):
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{convergencevssolvetime.png}
+  \includegraphics[width=0.6\textwidth]{assets/convergencevssolvetime.png}
   \caption{Convergentieanalyse: nauwkeurigheid vs. rekentijd}
   \label{fig:convergencevssolvetime.png}
  \end{figure}
@@ -3739,14 +3739,14 @@ Als ontwerper kan je zelf ook de betrouwbaarheid van je mesh bestuderen, dit kan
 Na het rekenen als de simulatie klaar is kan je naar de spanningen kijken (NIET DE AVERAGE STRESSES), sinds lineaire elementen wiskundig maar 1 constante spanning over het hele element rekenen zou de exacte theoretische oplossing een getrapte grafiek zijn. Simulatiesoftware maakt deze trapjes mooi vloeien en in een doorlopend kleurenplaatje (averaging) maar om de meshkwaliteit te controleren wil je dat niet. (Sommige trappen kunnen groot verschillen opeens, wat je dus wilt checken, wat je dus NIET kan checken als dat uitgemiddeld is)
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{uitgemiddeldvsexactgetrapt.png}
+  \includegraphics[width=0.6\textwidth]{assets/uitgemiddeldvsexactgetrapt.png}
   \caption{Post-processing check: uitgemiddelde spanningen vs. exacte getrapte spanningen}
   \label{fig:uitgemiddeldvsexactgetrapt.png}
  \end{figure}
 We gebruiken de '50\% regel', als er een grote abrupte sprong is in spanningen tussen 2 elementen naast elkaar, is je mesh daar waarschijnlijk te grof (dus de spanning van elementen naast elkaar mag niet verschillen met een spanningssprong van 50\%)
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{kleurenspanningssprong.png}
+  \includegraphics[width=0.8\textwidth]{assets/kleurenspanningssprong.png}
   \caption{Spanningsprong}
   \label{fig:kleurenspanningssprong.png}
  \end{figure}
@@ -3755,7 +3755,7 @@ We gebruiken de '50\% regel', als er een grote abrupte sprong is in spanningen t
 We kunnen de computer wel gewoon automatisch onze mesh doen aanpassen, je start gewoon met een grove mesh. De computer berekent het model en analyseert zelf de ongemiddelde spanningen, wanneer hij te grote sprongen (gradienten) ziet tussen naburige elementen gaat hij op die plaats lokaal verfijnen. Hij doet de simulatie dan opnieuw en checkt dit terug en herhaalt dit tot ze onder een door jou ingestelde acceptabele drempelwaarde liggen.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{meshadaptatie.png}
+  \includegraphics[width=0.6\textwidth]{assets/meshadaptatie.png}
   \caption{Automatische meshadaptatie}
   \label{fig:meshadaptatie.png}
  \end{figure}
@@ -3765,7 +3765,7 @@ Die $\eta$ is de 'treshhold', het is proportioneel aan de sprong in spanningen t
 Er was tijd over in de les dus Wim maakte deze figuur:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{convergentiegrafiekkrijt.png}
+  \includegraphics[width=0.8\textwidth]{assets/convergentiegrafiekkrijt.png}
   \caption{Convergentiegrafiek getekend met krijt op het bord}
   \label{fig:convergentiegrafiekkrijt.png}
  \end{figure}
@@ -3795,7 +3795,7 @@ Ook kan je in \textbf{Local en Global (of 'user-defined') coördinaten} kijken, 
 Dit kan ook in amplitude of in aparte x,y,z componenten. Ook kan local, global of user-defined coördinaten bekijken. Hier zien we een tabel van hoe die krachten eruit zien:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{loadssummaryoutputtable.png}
+  \includegraphics[width=0.6\textwidth]{assets/loadssummaryoutputtable.png}
   \caption{Krachten tabel}
   \label{fig:loadssummaryoutputtable.png}
  \end{figure}
@@ -3806,7 +3806,7 @@ Hier zien we dus de totale krachten (de som) in verschillende richtingen, wat je
 En dit kan over een gehele lengte gedaan worden, zoals je ook kan zien in deze figuur:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{internekrachten.png}
+  \includegraphics[width=0.8\textwidth]{assets/internekrachten.png}
   \caption{Interne krachten berekenen over edge}
   \label{fig:internekrachten.png}
  \end{figure}
@@ -3850,7 +3850,7 @@ In de video voegt hij nog toe: stel dat je de buiging van een simpele balk hebt 
 In dit stukje zien we een beetje herhaling van vorig hoofdstuk. Bij de verificatie gaan we checken of de numerieke- en discretisatiefouten acceptabel zijn. Door dus te kijken naar die spanningsprongen:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{spannignsprongverificatie.png}
+  \includegraphics[width=0.8\textwidth]{assets/spannignsprongverificatie.png}
   \caption{Getrapte spanning}
   \label{fig:spannignsprongverificatie.png}
  \end{figure}
@@ -3860,28 +3860,28 @@ Indien dus de sprong te groot? $\rightarrow$ Verfijn! \textbf{Kijk naar de unave
 Om te checken of je mesh goed is doe je dus een mesh convergentie study of een mesh sensitivity study (zagen we)
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{meshsensitivityvsmeshconvergence.png}
+  \includegraphics[width=0.8\textwidth]{assets/meshsensitivityvsmeshconvergence.png}
   \caption{Mesh sensitivity analysis vs. Mesh convergence study}
   \label{fig:meshsensitivityvsmeshconvergence.png}
  \end{figure}
 En dus methoden voor verfijning zijn h-refinement, p-refinement en r-refinement. Hierna herhaalt de proff terug rap die mesh convergentie met die 3 regio's, hij zet hier nu wel deze nieuwe figuur bij die de 'rate of convergence' toont voor die error:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{rateofconvergence.png}
+  \includegraphics[width=0.4\textwidth]{assets/rateofconvergence.png}
   \caption{Rate of Convergence}
   \label{fig:rateofconvergence.png}
  \end{figure}
 Let zeker op voor \textbf{singulariteiten}, dit zijn dus die punten waar spanningen naar oneindig gaa (op scherpe hoeken, geconcentreerde puntlasten en uiteindeinden van RBE2 elementen omdat daar de knopen oneindig stijf aan elkaar vast zijn gemaakt), dit voorkomt waarschijnlijk dat je convergentie zal bereiken, want hoe kleiner je elementen maakt, hoe groter de spanningen worden. Je kan dit oplossen door een kleine afronding te maken in je model (fillet) of door een 'singularity element' te gebruiken dat speciaal ontworpen is om deze oneindige spanningen te benaderen.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{singulariteiten.png}
+  \includegraphics[width=0.6\textwidth]{assets/singulariteiten.png}
   \caption{Singulariteiten}
   \label{fig:singulariteiten.png}
  \end{figure}
 Nu ging de proff terug naar die automatische adaptatie op singulariteiten, dit zagen we ook vorig hoofstuk, dus ik skip dit. Onthoud echt gewoon dat je fillets moet gebruiken en dus singulariteiten moet ontwijken want dit heeft anders geen nut om aan mesh verfijning te doen. \textbf{Een fillet convergeert wel naar een eindige waarde}. Mesh sensitiviteit (wat we ook zagen), kan ook toegepast worden om de vorm te veranderen (en het aantal knopen en elementen gelijk te houden) zodat zowel de discretisatie- als de numerieke fouten kunnen beïnvloed worden.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{meshsensitivieit.png}
+  \includegraphics[width=0.8\textwidth]{assets/meshsensitivieit.png}
   \caption{Mesh sensitiviteit}
   \label{fig:meshsensitivieit.png}
  \end{figure}
@@ -3890,7 +3890,7 @@ Nu ging de proff terug naar die automatische adaptatie op singulariteiten, dit z
 Dit is een belangrijke praktische check die je in de software doet, dit is DE manier om te meten hoe groot de pure numerieke afrondingsfout van de computer is. We weten door $[K]\{\tilde{u}\} = \{\tilde{F}\}$ dat er per definitie een perfect krachtenevenwicht is, de som van alle aangelegde krachten moet exact gelijk zijn aan de som van de reactiekrachten (dus een krachtevenwicht ALTIJD). Maar kijk nu eens naar de volgende output van de solver:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.7\textwidth]{outputsolver.png}
+  \includegraphics[width=0.7\textwidth]{assets/outputsolver.png}
   \caption{Output Solver}
   \label{fig:outputsolver.png}
  \end{figure}
@@ -3942,7 +3942,7 @@ Nu we deze checks hebben gedaan, kunnen we aan de echte validatie beginnen en co
 De eerste check dat je doet is visueel naar het vervormingsbeeld van je model kijken, je kijkt hier of de randvoorwaarden die je hebt ingesteld ook effectief doen wat ze moeten doen in de theorie.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{vrijheidsgradentabel.png}
+  \includegraphics[width=0.6\textwidth]{assets/vrijheidsgradentabel.png}
   \caption{}
   \label{fig:vrijheidsgradentabel.png}
  \end{figure}
@@ -3952,7 +3952,7 @@ Dus alles wat je hebt vastgezet (vrijheidsgraden van translaties en rotaties en 
 Hetzelfde geld ook als je symmetrie toepast, check dan ook hier voor je vrijheidsgraden:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{symmetrievrijheidsgraden.png}
+  \includegraphics[width=0.6\textwidth]{assets/symmetrievrijheidsgraden.png}
   \caption{Symmetrie vrijheidsgraden}
   \label{fig:symmetrievrijheidsgraden.png}
 \end{figure}
@@ -3962,7 +3962,7 @@ Hetzelfde geld ook als je symmetrie toepast, check dan ook hier voor je vrijheid
 Wat je ook kan doen om te checken is dus de vervorming eerst analytisch berekenen, soms kan je dit dus doen met de Hibbeler formules, als die niet te veel afwijken van je model toch, zoals in volgende figuur:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{vervormingmethibbelertabel.png}
+  \includegraphics[width=0.8\textwidth]{assets/vervormingmethibbelertabel.png}
   \caption{L-vorm model met analytische formule voor kracht op balk}
   \label{fig:vervormingmethibbelertabel.png}
  \end{figure}
@@ -3974,7 +3974,7 @@ Spanningen kan je ook valideren door na te denken over de theorie. Op de vrije r
 Nog iets dat je weet, is dat op de neutrale vezel er GEEN spanning is (als je toch met buiging te maken hebt).
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{neutraleeeevezel.png}
+  \includegraphics[width=0.8\textwidth]{assets/neutraleeeevezel.png}
   \caption{Neutrale vezel}
   \label{fig:neutraleeeevezel.png}
  \end{figure}
@@ -3989,7 +3989,7 @@ Wat ga je nu doen met de resultaten om je ontwerp te beteren? Vaak stoppen stude
 \subsubsection{Lineaire superpositie (de maximale belasting voorspellen)}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{lineairesumiluatie.png}
+  \includegraphics[width=0.5\textwidth]{assets/lineairesumiluatie.png}
   \caption{Lineair gedrag gaat tot oneindig}
   \label{fig:lineairesumiluatie.png}
  \end{figure}
@@ -4044,7 +4044,7 @@ We willen dit iteratieve proces vermijden, dit kunnen we doen door exact met é�
 Dit kan je omvormen om het interne buigmoment (M) in de balk te vinden. Hierna kijk je naar het materiaal dat je echt wil gebruiken (bvb. staal), dit materiaal heeft een vloeigrens ($\sigma_{max,mat}$). Als je nu dit berekende buigmoment daar door dellt krijg je $(\frac{I}{y_{max}})_{required}$, dit is de term die je nodig hebt om te zorgen dat de maximale spanning in je balk onder de vloeigrens blijft. Nu kan je gewoon in een handboek van profielen kijken welke balken een $(\frac{I}{y_{max}})$ hebben die groter is dan deze vereiste waarde, en zo weet je meteen welk profiel je nodig hebt zonder dat je urenlang hoeft te gokken!
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{catalogus.png}
+  \includegraphics[width=0.8\textwidth]{assets/catalogus.png}
   \caption{I-profielen catalogus}
   \label{fig:catalogus.png}
  \end{figure}
@@ -4061,7 +4061,7 @@ Plaatsen met zo een hoge energie zijn dus plaatsen waar je model het hardst werk
 Dit handmatig doen is super moeilijk want het is hier weer zo een iteratief proces eigelijk (dat je dan handmatig doet), we kunnen de computer dit wel laten doen, dit heet \textbf{topologische optimalisatie}. Je draait het ontwerpproces om eigelijk, dus ipv een gedetailleerd onderdeel te tekenen geef je de computer gewoon een blok eigelijk (design space) en laat je hem zelf in stukken wegsnijden, de computer doet dit in de volgende stappen:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{toplogicaloptimizatioin.png}
+  \includegraphics[width=0.6\textwidth]{assets/toplogicaloptimizatioin.png}
   \caption{Topological optimization}
   \label{fig:toplogicaloptimizatioin.png}
  \end{figure}
