@@ -356,31 +356,16 @@ jobs:
                   echo "Collected PDFs (before rename):"
                   ls -la artifacts/pdfs || echo "No PDFs collected"
 
-            - name: Rename PDFs to use underscores
+            - name: Build structured bundle (year folders + update scripts)
               shell: bash
               run: |
-                  if [ -d artifacts/pdfs ]; then
-                    cd artifacts/pdfs
-                    for f in *.pdf; do
-                        [ -e "$f" ] || continue
-                        if [[ "$f" == *" "* ]]; then
-                            new_name="${f// /_}"
-                            echo "Renaming '$f' to '$new_name'"
-                            mv "$f" "$new_name"
-                        fi
-                    done
-                  fi
+                  python3 .github/build_bundle.py artifacts/pdfs bundle
 
-            - name: List renamed PDFs
-              run: |
-                  echo "📂 PDFs ready for upload:"
-                  ls -la artifacts/pdfs/ || echo "No PDFs found"
-
-            - name: Re-upload combined PDFs
+            - name: Upload structured bundle
               uses: actions/upload-artifact@v4
               with:
                   name: Samenvattingen Industriele Ingenieurs KULeuven
-                  path: artifacts/pdfs/*.pdf
+                  path: bundle/
                   retention-days: 90
                   if-no-files-found: warn
 
@@ -487,9 +472,10 @@ jobs:
 
                   # 6. Upload fresh assets
                   echo "Uploading assets..."
-                  # Check for PDFs (they are already renamed to use underscores in the 'collect' job)
-                  if ls artifacts/pdfs/*.pdf 1> /dev/null 2>&1; then
-                    gh release upload latest artifacts/pdfs/*.pdf --clobber
+                  # The bundle is organized into year folders, so search recursively.
+                  # Release assets are flat, individual PDFs.
+                  if find artifacts/pdfs -type f -name '*.pdf' | grep -q .; then
+                    find artifacts/pdfs -type f -name '*.pdf' -exec gh release upload latest {} --clobber +
                   else
                     echo "::warning::No PDFs found to upload."
                   fi
