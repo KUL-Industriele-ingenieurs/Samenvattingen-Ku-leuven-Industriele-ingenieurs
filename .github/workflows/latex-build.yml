@@ -475,7 +475,7 @@ jobs:
                   # The bundle is organized into year folders, so search recursively.
                   # Release assets are flat, individual PDFs.
                   if find artifacts/pdfs -type f -name '*.pdf' | grep -q .; then
-                    find artifacts/pdfs -type f -name '*.pdf' -exec gh release upload latest {} --clobber +
+                    find artifacts/pdfs -type f -name '*.pdf' -exec gh release upload latest {} --clobber ';'
                   else
                     echo "::warning::No PDFs found to upload."
                   fi
