@@ -438,7 +438,10 @@ jobs:
                   printf "This is an automatically generated prerelease containing the latest compiled PDF documents.\n\n" >> release_body.md
                   printf "> ⚠️ **Note:** This prerelease is automatically updated with every commit to the main branch.\n" >> release_body.md
                   printf "> For stable versions, see the [official releases](https://github.com/${{ github.repository }}/releases?q=NOT+prerelease).\n\n" >> release_body.md
-                  printf "### 📥 Downloads\nAll PDF summaries are attached below.\n" >> release_body.md
+                  printf "### 📥 Downloads\nAll PDF summaries are attached below.\n\n" >> release_body.md
+                  printf "**Update scripts** are also attached — download into a folder and run to fetch/update every summary, organized per year:\n" >> release_body.md
+                  printf "- Linux / macOS: \`update.sh\`  (run \`bash update.sh\`)\n" >> release_body.md
+                  printf "- Windows: \`update.ps1\`  (right-click → Run with PowerShell)\n" >> release_body.md
 
                   # 3. Create or Recreate the Release
                   # We delete the old release and create a fresh one to ensure 
@@ -490,6 +493,17 @@ jobs:
                   else
                     echo "::warning::No PDFs found to upload."
                   fi
+
+                  # Upload the update / sync scripts so users can grab the
+                  # latest version straight from the release.
+                  echo "Uploading update scripts..."
+                  for script in update.sh update.ps1; do
+                    if [ -f "$script" ]; then
+                      gh release upload latest "$script" --clobber
+                    else
+                      echo "::warning::$script not found, skipping."
+                    fi
+                  done
 
                   # Check for Logs (if any were collected and downloaded)
                   if ls artifacts/logs/*.log 1> /dev/null 2>&1; then
