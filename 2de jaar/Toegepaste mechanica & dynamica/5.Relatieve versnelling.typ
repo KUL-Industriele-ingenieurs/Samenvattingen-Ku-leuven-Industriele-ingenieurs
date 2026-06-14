@@ -31,18 +31,16 @@ B wordt een getransleert in relatie met A en dan wordt er een rotatie toegepast 
 De formules bij de tangentiële en normale versnelling zijn:
 
 #frm(
-  "Tangentiele versnelling",
+  "Tangentiele & normale versnelling",
   [$
     a_frac(B, A, style: "horizontal")t = d/(d t) (v_frac(B, A, style: "horizontal")) = d/ (d t) (omega crossproduct r_frac(B, A, style: "horizontal")) = alpha crossproduct r_frac(B, A, style: "horizontal")
+  $\ $
+    a_frac(B, A, style: "horizontal")n = omega crossproduct (omega crossproduct r_frac(B, A, style: "horizontal")) = -omega^2 r_frac(B, A, style: "horizontal")
   $],
   [
     met $alpha$ de hoekversnelling, $r_frac(B, A, style: "horizontal")$ de afstand van A tot B, en $omega$ de hoeksnelheid.
   ],
 )
-
-#frm("Normale versnelling", [$ a_frac(B, A, style: "horizontal")n = -omega^2 r_frac(B, A, style: "horizontal") $], [
-  met $omega$ de hoeksnelheid en $r_frac(B, A, style: "horizontal")$ de afstand van A tot B.
-])
 
 * Te samen*
 $ a_B = a_A + alpha crossproduct r_frac(B, A, style: "horizontal") - omega^2 r_frac(B, A, style: "horizontal") $
