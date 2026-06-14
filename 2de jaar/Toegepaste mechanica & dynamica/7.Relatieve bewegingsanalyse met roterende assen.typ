@@ -176,12 +176,14 @@ Nu willen we nog de versnelling van B beschrijven. We gaan terug onze term aflei
 
   *Gegeven*\
 
-  $arrow(v_frac(B, A, style: "horizontal")) = 100arrow(j) (k m/h)$\
-  $arrow(a_frac(B, A, style: "horizontal") = (900arrow(i)-150arrow(j)) (k m)/h^2)$
+  $
+    arrow(v_frac(B, A, style: "horizontal")) = 100arrow(j) (k m/h) quad
+    arrow(a_frac(B, A, style: "horizontal")) = (900arrow(i)-150arrow(j)) (k m)/h^2)
+  $
 
 
   *Gevraagd*\
-  $arrow(v_frac(A, B, style: "horizontal")), arrow(a_frac(A, B, style: "horizontal"))$
+  $ arrow(v_frac(A, B, style: "horizontal")), space arrow(a_frac(A, B, style: "horizontal")) $
 
   *Oplossing*\
 
