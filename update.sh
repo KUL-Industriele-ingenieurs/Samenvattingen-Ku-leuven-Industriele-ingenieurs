@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # --- Configuration ---
-SCRIPT_VERSION="1.2.0"
+SCRIPT_VERSION="1.2.1"
 REPO="KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs"
 API_BASE="https://api.github.com/repos/$REPO"
 RAW_BASE="https://raw.githubusercontent.com/$REPO/MAIN"
@@ -106,49 +106,12 @@ done
 banner
 self_update "$@"
 
-# Step 1: Build filename -> year folder mapping from the repo tree
-printf '  %sFetching document list...%s ' "$C_CYAN" "$C_RESET"
-TREE_JSON=$(curl -s "$API_BASE/git/trees/MAIN?recursive=1")
-if [[ $TREE_JSON == *'"message"'* ]] && [[ $TREE_JSON != *'"tree"'* ]]; then
-    echo "${C_RED}failed${C_RESET}"; die "Could not fetch repo tree."
-fi
-
-declare -A YEAR_MAP
-while IFS=$'\t' read -r pdf_name year_folder; do
-    YEAR_MAP["$pdf_name"]="$year_folder"
-done < <(echo "$TREE_JSON" | python3 -c "
-import sys, json, os
-data = json.load(sys.stdin)
-year_folders = {'1ste jaar', '2de jaar', '3de jaar', '4de jaar master'}
-seen = set()
-for item in data.get('tree', []):
-    path = item['path']
-    parts = path.split('/')
-    if len(parts) < 2:
-        continue
-    year = parts[0]
-    if year not in year_folders:
-        continue
-    fname = os.path.basename(path)
-    stem, ext = os.path.splitext(fname)
-    if ext not in ('.tex', '.typ'):
-        continue
-    norm = stem.replace(' ', '_').replace('&', '.')
-    pdf = norm + '.pdf'
-    if pdf not in seen:
-        seen.add(pdf)
-        print(f'{pdf}\t{year}')
-")
-echo "${C_GREEN}${#YEAR_MAP[@]} documents${C_RESET}"
-
-# Step 2: Fetch release data
+# Step 1: Fetch the release (PDF assets + folder manifest)
 printf '  %sFetching release...%s ' "$C_CYAN" "$C_RESET"
 RELEASE_DATA=$(curl -s "$API_BASE/releases/tags/latest")
-if [[ $RELEASE_DATA == *'"message": "Not Found"'* ]]; then
+if [[ $RELEASE_DATA == *'"message": "Not Found"'* ]] || [ -z "$RELEASE_DATA" ]; then
     echo "${C_RED}failed${C_RESET}"; die "Release 'latest' not found on GitHub."
 fi
-
-# Collect assets into arrays
 mapfile -t ASSET_LINES < <(echo "$RELEASE_DATA" | python3 -c "
 import sys, json
 d = json.load(sys.stdin)
@@ -158,6 +121,45 @@ for a in d.get('assets', []):
 ")
 TOTAL=${#ASSET_LINES[@]}
 echo "${C_GREEN}${TOTAL} PDFs${C_RESET}"
+
+# Step 2: Build filename -> year folder mapping.
+# Prefer the manifest asset (served from a CDN, no API rate limit); fall back
+# to the GitHub tree API only if it is missing.
+printf '  %sBuilding folder map...%s ' "$C_CYAN" "$C_RESET"
+declare -A YEAR_MAP
+MANIFEST_URL=$(echo "$RELEASE_DATA" | python3 -c "
+import sys, json
+d = json.load(sys.stdin)
+for a in d.get('assets', []):
+    if a['name'] == 'manifest.tsv':
+        print(a['browser_download_url']); break
+")
+if [ -n "$MANIFEST_URL" ]; then
+    while IFS=$'\t' read -r pdf_name year_folder; do
+        [ -n "$pdf_name" ] && YEAR_MAP["$pdf_name"]="$year_folder"
+    done < <(curl -sL "$MANIFEST_URL")
+    echo "${C_GREEN}${#YEAR_MAP[@]} via manifest${C_RESET}"
+else
+    TREE_JSON=$(curl -s "$API_BASE/git/trees/MAIN?recursive=1")
+    while IFS=$'\t' read -r pdf_name year_folder; do
+        [ -n "$pdf_name" ] && YEAR_MAP["$pdf_name"]="$year_folder"
+    done < <(echo "$TREE_JSON" | python3 -c "
+import sys, json, os
+try: data = json.load(sys.stdin)
+except Exception: sys.exit(0)
+year_folders = {'1ste jaar', '2de jaar', '3de jaar', '4de jaar master'}
+seen = set()
+for item in data.get('tree', []):
+    parts = item['path'].split('/')
+    if len(parts) < 2 or parts[0] not in year_folders: continue
+    stem, ext = os.path.splitext(os.path.basename(item['path']))
+    if ext not in ('.tex', '.typ'): continue
+    pdf = stem.replace(' ', '_').replace('&', '.') + '.pdf'
+    if pdf not in seen:
+        seen.add(pdf); print(f'{pdf}\t{parts[0]}')
+")
+    echo "${C_YELLOW}${#YEAR_MAP[@]} via repo tree (fallback)${C_RESET}"
+fi
 echo
 
 # Step 3: Download each PDF into its year subfolder
@@ -259,3 +261,10 @@ echo "  ${C_BOLD}${C_GREEN}🙌  Found a mistake or want to add your own notes?$
 echo "     Contributions are very welcome! Open a pull request or issue:"
 echo "     ${C_BLUE}${C_BOLD}https://github.com/$REPO${C_RESET}"
 echo
+
+# Keep the window open when launched by double-click (the terminal would
+# otherwise close instantly and you'd never see the output).
+if [ -t 0 ]; then
+    read -rn1 -p "  Press any key to close..." _ || true
+    echo
+fi

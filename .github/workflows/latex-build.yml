@@ -480,6 +480,11 @@ jobs:
                     echo "::warning::No PDFs found to upload."
                   fi
 
+                  # Upload the manifest (pdf -> year map) used by the update scripts.
+                  if [ -f artifacts/pdfs/manifest.tsv ]; then
+                    gh release upload latest artifacts/pdfs/manifest.tsv --clobber
+                  fi
+
                   # Upload the update / sync scripts so users can grab the
                   # latest version straight from the release.
                   echo "Uploading update scripts..."
