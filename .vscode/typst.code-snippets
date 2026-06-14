@@ -9,7 +9,7 @@
             ")"
         ],
         "description": "Insert a figure with caption and label",
-        "scope": "typ,typst"
+        "scope": "typst"
     },
     "Wrap Figure": {
         "prefix": "wrapfig",
@@ -24,55 +24,55 @@
             "]"
         ],
         "description": "Insert a wrapped figure",
-        "scope": "typ,typst"
+        "scope": "typst"
     },
     "Keyterm": {
         "prefix": "keyterm",
         "body": "#keyterm[$1]",
         "description": "Insert a keyterm with brackets",
-        "scope": "typ,typst"
+        "scope": "typst"
     },
     "TODO": {
         "prefix": "todo",
         "body": "#TODO[$1]",
         "description": "Insert a TODO with brackets",
-        "scope": "typ,typst"
+        "scope": "typst"
     },
     "NOTE": {
         "prefix": "note",
         "body": "#NOTE[$1]",
         "description": "Insert a NOTE with brackets",
-        "scope": "typ,typst"
+        "scope": "typst"
     },
     "FIXME": {
         "prefix": "fixme",
         "body": "#FIXME[$1]",
         "description": "Insert a FIXME with brackets",
-        "scope": "typ,typst"
+        "scope": "typst"
     },
     "Formula (frm)": {
         "prefix": "frm",
         "body": "#frm[$1][$2][$3]",
         "description": "Insert a formula with three sets of brackets",
-        "scope": "typ,typst"
+        "scope": "typst"
     },
     "Theorie": {
         "prefix": "theorie",
         "body": "#theorie(title: \"$1\")[$2]",
         "description": "Insert a theorie block",
-        "scope": "typ,typst"
+        "scope": "typst"
     },
     "Voorbeeld": {
         "prefix": "voorbeeld",
         "body": "#voorbeeld(title: \"$1\")[$2]",
         "description": "Insert a voorbeeld block",
-        "scope": "typ,typst"
+        "scope": "typst"
     },
     "Concept": {
         "prefix": "concept",
         "body": "#concept(title: \"$1\")[$2]",
         "description": "Insert a concept block",
-        "scope": "typ,typst"
+        "scope": "typst"
     },
     "Oefening": {
         "prefix": [
@@ -81,7 +81,7 @@
         ],
         "body": "#oefening(title: \"$1\")[\n  $2\n]",
         "description": "Insert an exercise block with a title",
-        "scope": "typ,typst"
+        "scope": "typst"
     },
     "Oplossing": {
         "prefix": [
@@ -90,6 +90,6 @@
         ],
         "body": "#oplossing[\n  $1\n]",
         "description": "Insert a solution block",
-        "scope": "typ,typst"
+        "scope": "typst"
     }
 }

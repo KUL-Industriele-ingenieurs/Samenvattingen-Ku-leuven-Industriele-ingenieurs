@@ -44,7 +44,7 @@ De formules bij de tangentiële en normale versnelling zijn:
   met $omega$ de hoeksnelheid en $r_frac(B, A, style: "horizontal")$ de afstand van A tot B.
 ])
 
-* Tesamen*
+* Te samen*
 $ a_B = a_A + alpha crossproduct r_frac(B, A, style: "horizontal") - omega^2 r_frac(B, A, style: "horizontal") $
 
 == OR bij versnelling

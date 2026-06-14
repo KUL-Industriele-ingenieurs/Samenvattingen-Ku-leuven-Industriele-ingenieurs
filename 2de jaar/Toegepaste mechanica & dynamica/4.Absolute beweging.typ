@@ -17,13 +17,13 @@ Met $v$ de snelheid en $a$ de versnelling
 
 #figure(
   image("assets/absolutemotion.png", width: 5cm),
-  caption: [absolutemotion],
+  caption: [Abslute beweging],
   label: <fig:absolutemotion>,
 )
-*Gegeven*\
+*Gegeven:*\
 $omega, alpha, r$
 
-*Gevraagd*\
+*Gevraagd:*\
 $v , a$
 
 $ x = 2 r cos(theta) $
@@ -68,9 +68,7 @@ Maar als zoeken eigenlijk het punt waarbij $v_A = 0$ zodat we minder moeten bere
   ]
   *Gegeven*\
 
-  $omega_(A B) = 9.81 ( r a d )/ s arrow.cw$\
-  $arrow(v_B) = -4.25 m / s$\
-  $arrow(v_A) = 2,45 m / s$\
+  $ omega_(A B) = 9.81 ( r a d )/ s arrow.cw quad arrow(v_B) = -4.25 m / s quad arrow(v_A) = 2,45 m / s $
 
   *Gevraagd*\
   $arrow(v_E)$\
