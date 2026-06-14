@@ -76,17 +76,19 @@ Maar hoe berekenen we nu de relatieve snelheid?
       *Zorg dat je w en r niet omdraait. Cross-product is niet commutatief.*
     ],
   )
+]
 
-  #theorie(title: "Cross product regels")[
-    $ i times i = 0 $
-    $ i times j = k $
-    $ i times k = -j $
-    $ j times i = -k $
-    $ j times j = 0 $
-    $ j times k = i $
-    $ k times i = j $
-    $ k times j = -i $
-    $ k times k = 0 $
+#theorie(title: "Cross product regels")[
+  #align(center)[
+    #grid(
+      columns: 1,
+      rows: 1,
+      figure(
+        image("assets/kruisproductregel.excalidraw.svg", width: 5cm),
+        caption: [crossproductregels],
+        label: <fig:crossproductregels>,
+      ),
+    )
   ]
 ]
 

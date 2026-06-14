@@ -10,7 +10,7 @@
             "\\end{figure}"
         ],
         "description": "Insert a LaTeX figure",
-        "scope": "tex,latex"
+        "scope": "latex"
     },
     "Wrap Figure": {
         "prefix": "wrapfig",
@@ -23,25 +23,25 @@
             "\\end{wrapfigure}"
         ],
         "description": "Insert a LaTeX wrapfigure",
-        "scope": "tex,latex"
+        "scope": "latex"
     },
     "Keyterm": {
         "prefix": "keyterm",
         "body": "\\keyterm{$1}",
         "description": "Insert a keyterm",
-        "scope": "tex,latex"
+        "scope": "latex"
     },
     "Belangrijk": {
         "prefix": "bel",
         "body": "\\belangrijk{$1}",
         "description": "Insert a 'belangrijk' highlighted term",
-        "scope": "tex,latex"
+        "scope": "latex"
     },
     "TODO": {
         "prefix": "todo",
         "body": "\\TODO{$1}",
         "description": "Insert a TODO",
-        "scope": "tex,latex"
+        "scope": "latex"
     },
     "Formula (frm)": {
         "prefix": "frm",
@@ -53,7 +53,7 @@
             "}"
         ],
         "description": "Insert a LaTeX formula with registration",
-        "scope": "tex,latex"
+        "scope": "latex"
     },
     "Theorie": {
         "prefix": "theorie",
@@ -63,7 +63,7 @@
             "\\end{theorie}"
         ],
         "description": "Insert a theory block",
-        "scope": "tex,latex"
+        "scope": "latex"
     },
     "Voorbeeld": {
         "prefix": "voorbeeld",
@@ -73,7 +73,7 @@
             "\\end{voorbeeld}"
         ],
         "description": "Insert a example block",
-        "scope": "tex,latex"
+        "scope": "latex"
     },
     "Oefening": {
         "prefix": [
@@ -86,6 +86,6 @@
             "\\end{oefening}"
         ],
         "description": "Insert an exercise block",
-        "scope": "tex,latex"
+        "scope": "latex"
     }
 }

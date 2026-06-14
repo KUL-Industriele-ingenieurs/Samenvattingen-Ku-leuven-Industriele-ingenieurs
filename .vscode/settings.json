@@ -4,7 +4,25 @@
     "tinymist.formatterMode": "typstyle",
     "[typst]": {
         "editor.formatOnSave": true,
-        "editor.wordWrap": "on"
+        "editor.wordWrap": "on",
+        "editor.wordBasedSuggestions": "allDocuments",
+        "editor.snippetSuggestions": "top",
+        "editor.suggest.snippetsPreventQuickSuggestions": false,
+        "editor.quickSuggestions": {
+            "other": "on",
+            "comments": "off",
+            "strings": "on"
+        }
+    },
+    "[latex]": {
+        "editor.wordBasedSuggestions": "allDocuments",
+        "editor.snippetSuggestions": "top",
+        "editor.suggest.snippetsPreventQuickSuggestions": false,
+        "editor.quickSuggestions": {
+            "other": "on",
+            "comments": "off",
+            "strings": "on"
+        }
     },
     "latex-workshop.linting.chktex.enabled": false,
     "latex-workshop.linting.lacheck.enabled": false,
