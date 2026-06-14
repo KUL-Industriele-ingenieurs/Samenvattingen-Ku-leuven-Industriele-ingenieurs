@@ -1,12 +1,7 @@
 [
     {
         "key": "ctrl+alt+v",
-        "command": "latex-utilities.pasteImage",
-        "when": "editorTextFocus && (editorLangId == 'latex' || editorLangId == 'tex')"
-    },
-    {
-        "key": "ctrl+alt+shift+v",
-        "command": "latex-utilities.formattedPaste.image",
+        "command": "latex-utilities.formattedPaste",
         "when": "editorTextFocus && (editorLangId == 'latex' || editorLangId == 'tex')"
     },
     {

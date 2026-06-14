@@ -1134,36 +1134,96 @@ We zagen al een korte uitleg van wat dit was, nu gaan we hier even dieper op in.
   \caption{Traditioneel --> Virtualized --> Container}
   \label{fig:nognefotocontainer.png}
  \end{figure}
-Je ziet hier trouwens dat virtualisatie een extra laag toevoegt, extra lagen maken het systeem altijd trager, maar in principe als dit niet opgemerkt wordt maakt het niet uit want onze chips worden zo snel tegenwoordig.
+Je ziet hier trouwens dat virtualisatie een extra laag toevoegt, 
+extra lagen maken het systeem altijd trager, maar in principe als 
+dit niet opgemerkt wordt maakt het niet uit want onze chips worden zo snel tegenwoordig.
+
 \subsubsection{Docker}
-Docker (blauwe walvis) is dus die Container Runtime dat het mogelijk maakt om containers te draaien, het voordelige aan die containers zijn dus dat het ook geïsoleerd is, alles in één is (dus het is al netjes verpakt met de dependencies(libraries en andere tools die het runbaar maakt)), het is ook heel consistent, hiermee bedoelen we dat als je een container bouwt op je laptop, deze precies hetzelfde zal draaien op een server in een datacenter ofzo, en het is dus lichtgewicht. (Sommige dingen herhalen hier misschien heb je door, idk de slides zijn een beetje een mess)
+
+\begin{wrapfigure}{r}{0.4\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{/assets/Docker Logo.png}
+    \caption{Docker Logo}
+    \label{fig:Docker Logo}
+\end{wrapfigure}
+
+Docker (blauwe walvis) is dus die Container Runtime dat het mogelijk maakt om containers te draaien, 
+het voordelige aan die containers zijn dus dat het ook geïsoleerd is, alles in één is (dus het is al netjes verpakt met de dependencies(libraries en andere tools die het runbaar maakt)), het is ook heel consistent, hiermee bedoelen we dat als je een container bouwt op je laptop, deze precies hetzelfde zal draaien op een server in een datacenter ofzo, en het is dus lichtgewicht. (Sommige dingen herhalen hier misschien heb je door, idk de slides zijn een beetje een mess)
 \subsection{Kubernetes}
 De \textit{'final boss'} van cloud computing is Kubernetes, dit wordt ook wel 'de dirigent van de cloud' genoemd, dit omdat het het een extra softwarelaag is die op de container software bovenop draait. Het werkt eigelijk als de manager (of dus dirigent) voor een gigantische, gedistribueerd systeem die dus duizenden losse containers in goede banen leidt. Dit omdat Docker eigelijk maar voor containers op één computer of server bedoeld is, maar als jij bvb. Netflix bent heb jij niet één server, maar duizenden verspreid over heel de wereld. Je gaat dus deze laag nodig hebben om al die verschillende docker-tegelijk aan te sturen, het stuurt eigelijk aan wanneer en waar applicaties kunnen draaien en hoe het dit kan schalen, dit maakt het 'elastisch'.
 \newline
 \newline
-Dit is echter wel heel moeilijk om op te zetten, maar van zodra het draait is het zeer efficiënt en krachtig. Het start en draait containers verspreid over verschillende fysieke machines, het maakt je cloud 'elastisch' (dus van zodra de vraag toeneemt, door bvb. veel website bezoekers), voegt het automatisch instanties toe (het start meer containers), als de vraag afneemt, sluit het er automatisch. Nog iets nice is 'automatisch herstel', het herstart of vervangt volledig automatisch containers die vastlopen en crashen. Het is ook gebalanceerd, het verdeelt containers gelijkmatig over machines om optimale prestaties te garanderen.
+
+
+
+Dit is echter wel heel moeilijk om op te zetten, 
+maar van zodra het draait is het zeer efficiënt en krachtig.
+Het start en draait containers verspreid over verschillende fysieke machines, 
+het maakt je cloud 'elastisch' (dus van zodra de vraag toeneemt, door bvb. 
+veel website bezoekers), voegt het automatisch instanties toe 
+(het start meer containers), als de vraag afneemt, sluit het er automatisch. 
+Nog iets nice is 'automatisch herstel', het herstart of vervangt volledig automatisch containers die vastlopen 
+en crashen. Het is ook gebalanceerd, het verdeelt containers gelijkmatig over machines om optimale 
+prestaties te garanderen.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{assets/Docker Layer architecture.png}
+  \caption{Docker Layer architecture}
+  \label{fig:Docker Layer architecture}
+\end{figure}
+
+\textbf{Note:} Docker gebruikt nog steeds de system kernal van het host OS, Wat docker doet is de dingen te packages (
+  libraries, dependencies, \dots) die nodig zijn om de applicatie te runnen in een container. 
+  Het is dus niet volledig losgekoppeld van het host OS. Maar dit zorgt ervoor dat je applicatie 
+  waarschijnelijk kan draaien op jou systeem en op een andere systeem zonder problemen en het is veel lichter dan een volledige 
+  \textbf{virtual machine}. 
+
+  De workflow is dan je developt op je laptop en je bouwt een container. Als dat werkt zal het ook deftig op een server draaien.
+
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.5\textwidth]{assets/kubernetes.png}
   \caption{Kubernetes}
   \label{fig:kubernetes.png}
  \end{figure}
-Op de figuur hierboven zie je dat applicaties in containers runnen en die containers dus op meerdere machines die allemaal onder controle staan via kubernetes die monitored en orchestreert. De proff legt de nadruk op die 'automatische herstel' of 'self heal', kubernetes heeft direct door als een machine of server plotseling stilvalt en pakt de containers die daarop draaiden en verplaatst ze onmiddelijk naar een andere 'gezonde' machine.
+
+Op de figuur hierboven zie je dat applicaties in containers runnen en die 
+containers dus op meerdere machines die allemaal onder controle staan via 
+kubernetes die monitored en orchestreert. 
+De proff legt de nadruk op die 'automatische herstel' of 'self heal', 
+kubernetes heeft direct door als een machine of server plotseling stilvalt en 
+pakt de containers die daarop draaiden en verplaatst ze onmiddelijk naar een andere 'gezonde' machine.
+
 \subsubsection{Samenvattende tabel container en kubernetes}
+
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.8\textwidth]{assets/tabelkuberenetescontainer.png}
   \caption{Vergelijking container en kubernetes}
   \label{fig:tabelkuberenetescontainer.png}
  \end{figure}
+
 \subsection{Elasticiteit}
-Dan gaan we nu even dieper in op die elasticiteit (ook wel 'dynamic scaling' genoemd) die we eerder bespraken. Dit is 1 van de belangrijkste eigenschappen (metric) waarop je moet letten als je een cloud-systeem kiest. Je kan dit vergelijken met iets elastisch uit de mechanica (iets kan uitrekken als er extra spannign opstaat en netjes terugkrimpen naar originele vorm als de spanning weg is), in de cloud betekent dit simpelweg de rekenkracht van het systeem (zoals CPU en RAM) perfect balanceren op basis van de vraag.
+
+Dan gaan we nu even dieper in op die elasticiteit 
+(ook wel 'dynamic scaling' genoemd) die we eerder bespraken. 
+Dit is 1 van de belangrijkste eigenschappen (metric) waarop je moet letten 
+als je een cloud-systeem kiest.
+
+Je kan dit vergelijken met iets elastisch uit de mechanica 
+(iets kan uitrekken als er extra spannign opstaat en netjes terugkrimpen 
+naar originele vorm als de spanning weg is), 
+in de cloud betekent dit simpelweg de rekenkracht van het systeem 
+(zoals CPU en RAM) perfect balanceren op basis van de vraag.
+
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.6\textwidth]{assets/schaalbaarheidvscloudelasticiteit.png}
   \caption{Schaalbaarheid vs Cloud Elasticiteit}
   \label{fig:schaalbaarheidvscloudelasticiteit.png}
  \end{figure}
+
 De figuur hierboven toont een schaalbaarheid grafiek, hier heb je een vaste fysieke capaciteit (Resource Limit), als de vraag (groen) plotseling boven die limiet stijgt, heb je niet genoeg rekenkracht (rood). De applicatie loopt dus vast of gebruikers krijgen een error. Om dit te voorkomen kopen bedrijven vaak te veel fysieke servers voor in het geval dat er een piek komt (heet over-provisioning). Het nadeel hieraan is wel dat die servers dan 90\% van de tijd ongebruikt staan, dit zorgt voor enorme verspilling van geld en stroom (waste).
 \newline
 \newline

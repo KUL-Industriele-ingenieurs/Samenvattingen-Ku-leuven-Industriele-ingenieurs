@@ -61,7 +61,8 @@
             "env": {}
         }
     ],
-    "latex-utilities.formattedPaste.image.template": "\\begin{figure}[htbp]\n  \\centering\n  \\includegraphics[width=0.8\\textwidth]{${imageFilePath}}\n  \\caption{${imageCaption}}\n  \\label{fig:${imageFileName}}\n \\end{figure}",
+    "latex-utilities.formattedPaste.imagePathOverride": "${currentFileDir}/assets",
+    "latex-utilities.formattedPaste.image.template": "\\begin{figure}[htbp]\n  \\centering\n  \\includegraphics[width=0.8\\textwidth]{assets/${imageFileName}}\n  \\caption{${imageFileNameWithoutExt}}\n  \\label{fig:${imageFileNameWithoutExt}}\n\\end{figure}",
     "latex-workshop.latex.recipes": [
         {
             "name": "latexmk",
