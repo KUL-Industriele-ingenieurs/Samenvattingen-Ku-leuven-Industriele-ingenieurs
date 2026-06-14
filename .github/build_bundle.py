@@ -56,7 +56,17 @@ def main():
         if os.path.isfile(s):
             shutil.copy2(s, os.path.join(bundle, s))
 
-    print(f"Bundled {moved} PDFs into year folders + {len(SCRIPTS)} scripts.")
+    # Write a manifest (pdf name -> year) so the update scripts can place files
+    # without hitting the rate-limited GitHub tree API.
+    with open(os.path.join(bundle, "manifest.tsv"), "w", encoding="utf-8") as fh:
+        for root, _, files in os.walk(bundle):
+            rel = os.path.relpath(root, bundle)
+            year = "" if rel == "." else rel
+            for x in sorted(files):
+                if x.lower().endswith(".pdf"):
+                    fh.write(f"{x}\t{year}\n")
+
+    print(f"Bundled {moved} PDFs into year folders + {len(SCRIPTS)} scripts + manifest.")
     for root, _, files in os.walk(bundle):
         for x in sorted(files):
             print("  " + os.path.relpath(os.path.join(root, x), bundle))

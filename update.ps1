@@ -3,7 +3,7 @@ param(
 )
 
 # --- Configuration ---
-$scriptVersion = "1.2.0"
+$scriptVersion = "1.2.1"
 $repo = "KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs"
 $apiBase = "https://api.github.com/repos/$repo"
 $rawBase = "https://raw.githubusercontent.com/$repo/MAIN"
@@ -75,30 +75,7 @@ function Invoke-SelfUpdate {
 Write-Banner
 Invoke-SelfUpdate
 
-# Step 1: Build filename -> year folder mapping from the repo tree
-Write-Host "  Fetching document list... " -ForegroundColor Cyan -NoNewline
-try {
-    $treeData = Invoke-RestMethod -Uri "$apiBase/git/trees/MAIN?recursive=1" -Method Get -ErrorAction Stop
-} catch {
-    Write-Host "failed" -ForegroundColor Red; Write-Error "Could not fetch repo tree."; exit 1
-}
-
-$yearMap = @{}
-foreach ($item in $treeData.tree) {
-    $parts = $item.path -split '/'
-    if ($parts.Count -lt 2) { continue }
-    $year = $parts[0]
-    if ($year -notin $yearFolders) { continue }
-    $fname = [System.IO.Path]::GetFileName($item.path)
-    $ext = [System.IO.Path]::GetExtension($fname)
-    if ($ext -notin @('.tex', '.typ')) { continue }
-    $stem = [System.IO.Path]::GetFileNameWithoutExtension($fname)
-    $pdfName = $stem.Replace(' ', '_').Replace('&', '.') + '.pdf'
-    if (-not $yearMap.ContainsKey($pdfName)) { $yearMap[$pdfName] = $year }
-}
-Write-Host "$($yearMap.Count) documents" -ForegroundColor Green
-
-# Step 2: Fetch release data
+# Step 1: Fetch the release (PDF assets + folder manifest)
 Write-Host "  Fetching release... " -ForegroundColor Cyan -NoNewline
 try {
     $releaseData = Invoke-RestMethod -Uri "$apiBase/releases/tags/latest" -Method Get -ErrorAction Stop
@@ -109,6 +86,40 @@ $pdfAssets = @($releaseData.assets | Where-Object { $_.name -like "*.pdf" })
 if ($pdfAssets.Count -eq 0) { Write-Error "No PDF assets found in the 'latest' release."; exit 1 }
 $total = $pdfAssets.Count
 Write-Host "$total PDFs" -ForegroundColor Green
+
+# Step 2: Build filename -> year mapping. Prefer the manifest asset (CDN, no
+# API rate limit); fall back to the GitHub tree API only if it is missing.
+Write-Host "  Building folder map... " -ForegroundColor Cyan -NoNewline
+$yearMap = @{}
+$manifest = $releaseData.assets | Where-Object { $_.name -eq 'manifest.tsv' } | Select-Object -First 1
+if ($manifest) {
+    try {
+        $lines = (Invoke-WebRequest -Uri $manifest.browser_download_url -UseBasicParsing -ErrorAction Stop).Content -split "`n"
+        foreach ($line in $lines) {
+            if ([string]::IsNullOrWhiteSpace($line)) { continue }
+            $col = $line -split "`t", 2
+            $yearMap[$col[0].Trim()] = if ($col.Count -gt 1) { $col[1].Trim() } else { "" }
+        }
+        Write-Host "$($yearMap.Count) via manifest" -ForegroundColor Green
+    } catch { $manifest = $null }
+}
+if (-not $manifest) {
+    try {
+        $treeData = Invoke-RestMethod -Uri "$apiBase/git/trees/MAIN?recursive=1" -Method Get -ErrorAction Stop
+        foreach ($item in $treeData.tree) {
+            $parts = $item.path -split '/'
+            if ($parts.Count -lt 2 -or $parts[0] -notin $yearFolders) { continue }
+            $ext = [System.IO.Path]::GetExtension($item.path)
+            if ($ext -notin @('.tex', '.typ')) { continue }
+            $stem = [System.IO.Path]::GetFileNameWithoutExtension($item.path)
+            $pdfName = $stem.Replace(' ', '_').Replace('&', '.') + '.pdf'
+            if (-not $yearMap.ContainsKey($pdfName)) { $yearMap[$pdfName] = $parts[0] }
+        }
+        Write-Host "$($yearMap.Count) via repo tree (fallback)" -ForegroundColor Yellow
+    } catch {
+        Write-Host "0 (no map available)" -ForegroundColor Yellow
+    }
+}
 Write-Host ""
 
 # Step 3: Download each PDF into its year subfolder
@@ -197,3 +208,10 @@ Write-Host "  Found a mistake or want to add your own notes?" -ForegroundColor G
 Write-Host "     Contributions are very welcome! Open a pull request or issue:"
 Write-Host "     https://github.com/$repo" -ForegroundColor Blue
 Write-Host ""
+
+# Keep the window open when launched by double-click ("Run with PowerShell").
+if (-not [Console]::IsInputRedirected) {
+    Write-Host "  Press any key to close..." -NoNewline
+    try { $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown') } catch { Read-Host }
+    Write-Host ""
+}
