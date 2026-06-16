@@ -4,11 +4,11 @@
 
 == Info vak
 
-#let fig-uurrooster = image("assets/Uurrooster.png", width: 6cm)
+#let fig-uurrooster = image("assets/Uurrooster.png", width: 8cm)
 #let boxed-uurrooster = box(fig-uurrooster, inset: (right: 0.5em, bottom: 0.5em))
 
 #wrap-content(boxed-uurrooster)[
-  Dit vak is een voortzetting van MathSYS.
+  Dit vak is een voortzetting van *MathSYS.*
   Alles rond systemen moet je dus al kennen.
 
   Dit vak gaat over systemen. Hoe kun je dingen controlleren
@@ -23,13 +23,13 @@ Je hebt twee delen
 - *Geschreven deel*
 - *Oral deel*: Je krijgt een taak over systemen waar je code gaat moeten schrijven en uitleggen. Je moet ook het systeem on the fly kunnen aanpassen. Je moet ook kunnen uitleggen wat je doet en waarom.
 
-Je mag de code maken met AI of code van anderen gebruiken, maar je moet wel kunnen uitleggen wat je code doet en waarom je het zo hebt gedaan.
+Je mag de code maken met *AI of code van anderen gebruiken,* maar je moet wel *kunnen uitleggen* wat je code doet en waarom je het zo hebt gedaan.
 
 Je hebt *Slides, Notities Prof, Videolessen, Oefeningen* als studiemateriaal.
 Je hebt geen boek.
 
-Het einddoel. Dit is een voorbeeld van een Feedback systeem.
-Dit is het einddoel van dit vak.
+Het einddoel. $=>$ Snappen wat een feedback control systeem is, hoe je kunt bepalen of die stabiel is en hoe je die opsteld.
+
 
 #figure(
   image("assets/feedback-systeem.png", width: 50%),
@@ -58,14 +58,53 @@ Je maakt systemen in de tijd met differentiële vergelijkingen. Je analyseert sy
 #let boxed-dcgain = box(fig-dcgain, inset: (right: 0.5em, bottom: 0.5em))
 
 #wrap-content(boxed-dcgain)[
-  De polen bepalen de stabiliteit van het systeem. Je wilt dat alle polen in het linkse deel van het complexe vlak liggen. Je wilt ook dat ze ver van de imaginaire as liggen zodat je systeem snel reageert.
+  De DC-versterking van een systeem is de waarde van de transferfunctie bij $s = 0$. \
+  $ K_(d c) = H(0) $
 
-  De nullen bepalen de versterking van het systeem. Je wilt dat ze ver van de imaginaire as liggen zodat je systeem niet te veel versterkt.
+  De DC-versterking bepaalt hoe sterk het systeem reageert op een constante ingang. \
 
-  De $K$ is niet de DC-versterking.
+  Als $K_(d c)$ groot is, zal het systeem een grote output geven voor een kleine constante input. \
+
+  Als $K_(d c)$ klein is, zal het systeem een kleine output geven voor dezelfde input.
+
+  De Polen (_Noemer_) en Nullen (_Teller_) van de transferfunctie bepalen de stabiliteit van het systeem en hoe het systeem reageert op verschillende frequenties. \
+
+  Als de polen in het linkse halfvlak liggen, is het systeem stabiel. \
+  Als er polen in het rechtse halfvlak liggen, is het systeem instabiel. \
+  Poles op de imaginaire as duiden op randstabiliteit (Marginaal stabiel).
+
+  Laten hier meer over.
+
 ]
 
 = Systemen
+
+Eerst gaan we systemen bekijken. Dit is al in verschillende vakken terug gekomen (Mathsys, Trillingen en golven, Statica, Mechanica, ...). Dit is ook dus *herhaling* van MathSYS maar het is vitaal voor dit vak.
+
+We gaan systemen bekijken van meerdere ordes (s¹, s², ...).
+
+
+De standaardvormen voor systemen van eerste en tweede orde zijn:
+
+#table(
+  columns: (1fr, 2fr, 2fr),
+  inset: 0.4em,
+  align: (left, center, center),
+  stroke: 0.6pt + rgb("d9d9d9"),
+  fill: (row, col) => if row == 0 { rgb("f2f2f2") } else { none },
+  [*Orde*], [*Transferfunctie*], [*Kenmerken*],
+  [Eerste orde],
+  [$H(s) = frac(K_(d c), tau s + 1)$],
+  [
+    $K_(d c)$ = DC-versterking, $tau$ = tijdconstante
+  ],
+
+  [Tweede orde],
+  [$H(s) = frac(K_(d c) dot omega_n^2, s^2 + 2 zeta omega_n s + omega_n^2)$],
+  [
+    $K_(d c)$ = DC-versterking, $omega_n$ = eigenfrequentie, $zeta$ = dempingsratio
+  ],
+)
 
 == Eerste orde systemen
 
@@ -81,7 +120,9 @@ Je maakt systemen in de tijd met differentiële vergelijkingen. Je analyseert sy
   De kracht $f(t)$ drijft het wagentje aan, terwijl de wrijving $beta v(t)$ tegenwerkt. Volgens Newton:
   $ f(t) - beta v(t) = m v'(t) $
 
-  *Stap 2 — Laplace transformatie* (met nul beginvoorwaarden $v(0) = 0$):
+  *Stap 2 — Laplace transformatie* $cal(L)$ (met nul beginvoorwaarden $v(0) = 0$):
+
+  $ f(t) - beta v(t) = m v'(t) quad => cal(L) => quad F(s) - beta V(s) = m s V(s) $
 
   Elke term apart transformeren: $v'(t) arrow.r s V(s)$, dus:
   $ F(s) - beta V(s) = m s V(s) $
@@ -208,17 +249,23 @@ Je maakt systemen in de tijd met differentiële vergelijkingen. Je analyseert sy
 
 #wrap-content(boxed-mvd)[
   Een massa-veer-demper systeem bestaat uit een massa $m$ verbonden met een veer (stijfheid $k$) en een demper (dempingscoëfficiënt $c$). De ingang is een kracht $u(t)$, de uitgang is de verplaatsing $z(t)$.
+
+  *Stap 1 — Differentiaalvergelijking opstellen:*
+
+  Som van krachten op de massa (Newton): veerkracht + dempingskracht + externe kracht:
+  $ m dv(z, t, 2) + c dv(z, t) + k z(t) = u(t) $\
+
+  *Stap 2 — Laplace transformatie* $cal(L)$ (met nul beginvoorwaarden):
+
+  Elke afgeleide transformeren:
+
+  $ z''(t) arrow.r s^2 Z(s) quad z'(t) arrow.r s Z(s) $
+  $ cal(L) arrow.b.double  $
+  $ m s^2 Z(s) + c s Z(s) + k Z(s) = U(s) $
+
 ]
 
-*Stap 1 — Differentiaalvergelijking opstellen:*
 
-Som van krachten op de massa (Newton): veerkracht + dempingskracht + externe kracht:
-$ m dv(z, t, 2) + c dv(z, t) + k z(t) = u(t) $
-
-*Stap 2 — Laplace transformatie* (met nul beginvoorwaarden):
-
-Elke afgeleide transformeren: $z''(t) arrow.r s^2 Z(s)$, $z'(t) arrow.r s Z(s)$:
-$ m s^2 Z(s) + c s Z(s) + k Z(s) = U(s) $
 
 *Stap 3 — Isoleer $Z(s)$:*
 

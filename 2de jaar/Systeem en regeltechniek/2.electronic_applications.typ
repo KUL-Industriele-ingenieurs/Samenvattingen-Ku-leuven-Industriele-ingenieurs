@@ -29,6 +29,8 @@
 
 #examenbox("In dit vak gaan we niet filters zitten designen maar je moet wel filters snappen")
 
+Bijvoorbeeld op het examen kan er gevraagd worden wat voor soort filter is dit? Jij moet afhankelijk van je kennis kunnen bepalen is dit een Low pass, high pass, band pass of band stop filter.
+
 
 == Passieve VS actieve filters
 
@@ -208,7 +210,7 @@ We zoeken naar *de transferfunctie* $H(s)$ dat betekent dat er dus geen enkele b
 
   Er zijn *geen nulpunten* (teller is constant). Eén pool $arrow.r$ eerste-orde systeem.
 
-  *Bode magnitude plot*
+  *Bode magnitude plot* (later meer in detail in  #ref(<ch:bode_feedback_p_control>))
 
   #figure(
     cetz.canvas({

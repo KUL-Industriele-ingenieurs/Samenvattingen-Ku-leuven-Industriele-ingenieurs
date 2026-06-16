@@ -1,6 +1,6 @@
 #import "../../school-template.typ": *
 
-= Bode & Nyquist Plots
+= Bode & Nyquist Plots <ch:bode_nyquist_plots>
 
 In dit vak gaan we vooral de bode plot bekijken in als laatste gaan we de Nyquist plot bekijken maar die is minder relevant. Wat plots doen is onze algebraïsche expressies graphisch te tonen.
 
@@ -12,7 +12,7 @@ $ H(s) arrow.r H(j omega) $
 
 Bode en Nyquist plots tonen graphisch de frequentie respons $H(j omega)$ van een systeem.
 
-=== Bode plot
+=== Bode plot <sec:Bode-plot>
 
 Bij een bode plot ga je $H(s)$ en $H(j omega)$ terug samenbrengen.
 
@@ -31,17 +31,13 @@ $ H(j omega) arrow.r.double 20 log_10(|H(j omega)|) = A(omega) [d b] $
 
 #examenbox[Zorg dat je bode plots en phase plots kunt tekenen met de hand]
 
-
-
-
-
 #figure(
   image("assets/bodeplot.png", width: 10cm),
   caption: [bodeplot],
   label: <fig:bodeplot>,
 )
 
-=== Nyquist plot
+=== Nyquist plot <sec:Nyquist-plot>
 
 Bij de nyquist plot ga je niet kijken naar amplitudes maar je gaan in het complex domein werken. Maar je gaat exact het zelfde tonen maar in het complex domein.
 
@@ -54,7 +50,7 @@ Bij de nyquist plot ga je niet kijken naar amplitudes maar je gaan in het comple
   label: <fig:Nyquist-plot>,
 )
 
-== Eerste orde systemen
+== Eerste orde systemen <sec:eerste-orde-systemen>
 
 #voorbeeld(title: "Eerste orde systeem met een pole en nul bij origin")[
 
@@ -92,9 +88,8 @@ Bij de nyquist plot ga je niet kijken naar amplitudes maar je gaan in het comple
 
   *Nyquist plot*
 
-  Herinner de polaire plots van wiskunde basistechnieken beetje gelijkaardig
+  Het nyquist plot is enorm gelijkaardig met bode plots. Een bode plot heeft een amplitude en fase deel. Wat je doet bij een nyquist plot is dat je die amplitude en fase samenvoegt in een complex getal. Je amplitude wordt je lengte $r$ en je fase wordt de hoek $theta$ van dat complex getal.
 
-  #examenbox[Geen logaritmische schaal van toepassing]
 
   Om de nyquist plot te tekenen nemen we 3 verschillende waarden van $omega$:
 
@@ -123,7 +118,7 @@ Bij de nyquist plot ga je niet kijken naar amplitudes maar je gaan in het comple
   )
 ]
 
-=== Ideal differentiator
+=== Ideal differentiator <sec:ideal-differentiator>
 
 De ideale differentiator is het omgekeerde van de integrator. In plaats van $1/(tau s)$ hebben we nu:
 
@@ -160,7 +155,7 @@ $ H(s) = frac(K, 1+ tau s) $
 *Bode plot*
 We willen terug de bode plot
 
-$A(omega) = 20 log_10(|H(j omega)|) = 20 log_10(1/(tau omega)) = markhl(-20 log_10(tau omega))$
+$A(omega) = 20 log_10(|H(j omega)|) = 20 log_10(1/(tau omega)) = (-20 log_10(tau omega))$
 
 Weer 3 verschillende waarden van $omega$:
 
@@ -177,7 +172,7 @@ Met de 1 weg krijgen we terug de ideale integrator
 
 - $ omega >>> 1 arrow.r.double A(omega) = -20 log(K) markhl(- 20 log(tau omega)) $
 
-Voor elke "decade" (factor 10) van $omega$ gaat de amplitude met #markhl[-20 db] afnemen.
+Voor elke "decade" (factor 10) van $omega$ gaat de amplitude met -20 db afnemen.
 
 Alles tesamen komen we dan deze figuur uit
 
@@ -217,7 +212,7 @@ en we komen terug een mooie figuur uit. Je ziet in het midden dat je een hoek va
 
   #figure(
     image("assets/bodeplotsimpeloefening.png", width: 8cm),
-    caption: [bodeplotsimpeloefening],
+    caption: [Bode-plot Simpele oefening],
     label: <fig:bodeplotsimpeloefening>,
   )
 ]
