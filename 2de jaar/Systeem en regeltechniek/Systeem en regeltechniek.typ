@@ -33,6 +33,12 @@
 #include "6.P Control.typ"
 #include "7.Closed Loop TF.typ"
 #include "8_ID_bode.typ"
+#include "9.PID control.typ"
+#include "10.PID, Bode plot analysis.typ"
+#include "11.Tuning and outlook on root locus.typ"
+#include "12.Examenoefeningen.typ"
+
+
 // ============================================================================
 //                              APPENDICES
 // ============================================================================
