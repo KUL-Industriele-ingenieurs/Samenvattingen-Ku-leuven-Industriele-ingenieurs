@@ -233,7 +233,8 @@
         "*": true,
         "plaintext": false,
         "markdown": false,
-        "scminput": false
+        "scminput": false,
+        "typst": true
     },
     "github.copilot.editor.enableAutoCompletions": false,
     "typst-companion.extension.list.indentationSize": "adaptive",
