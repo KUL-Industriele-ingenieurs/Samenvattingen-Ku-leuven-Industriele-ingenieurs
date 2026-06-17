@@ -106,6 +106,8 @@ De standaardvormen voor systemen van eerste en tweede orde zijn:
   ],
 )
 
+De standaardvormen van een functie vertellen je gewoon de verschillende parameters van het systeem. We gaan later verder hoe ze effect hebben op het gedrag van het systeem. We bekijken eerst een voorbeeld van een wagen met een input $f(t)$ en een output $v(t)$. Deze heeft een weerstand $beta$ en een massa $m$. We gaan de transferfunctie van dit systeem bepalen.
+
 == Eerste orde systemen
 
 #oefening(title: "Eerste orde systemen — Wagentje")[
@@ -124,7 +126,7 @@ De standaardvormen voor systemen van eerste en tweede orde zijn:
 
   $ f(t) - beta v(t) = m v'(t) quad => cal(L) => quad F(s) - beta V(s) = m s V(s) $
 
-  Elke term apart transformeren: $v'(t) arrow.r s V(s)$, dus:
+  Elke term apart transformeren: $v'(t) arrow.r s V(s) + v(0)$ (we nemen aan meestal aan dat *nulwaarden* $v(0) = 0$ ), dus:
   $ F(s) - beta V(s) = m s V(s) $
 
   *Stap 3 — Isoleer $V(s)$:*
@@ -141,7 +143,7 @@ De standaardvormen voor systemen van eerste en tweede orde zijn:
   Om de standaardvorm $H(s)=frac(K_(d c), tau s + 1)$ te krijgen, delen we teller
   en noemer door $beta$ (dit is de DC‑versterking van het systeem):
 
-  $ H(s) = frac(1 slash beta, (m slash beta) s + 1) $
+  $ H(s)=frac(K_(d c), tau s + 1) quad quad H(s) = frac(1 slash beta, (m slash beta) s + 1) $
 
   We herkennen dan direct:
   $ K_(d c) = frac(1, beta) quad quad tau = frac(m, beta) $.
@@ -260,7 +262,7 @@ De standaardvormen voor systemen van eerste en tweede orde zijn:
   Elke afgeleide transformeren:
 
   $ z''(t) arrow.r s^2 Z(s) quad z'(t) arrow.r s Z(s) $
-  $ cal(L) arrow.b.double  $
+  $ cal(L) arrow.b.double $
   $ m s^2 Z(s) + c s Z(s) + k Z(s) = U(s) $
 
 ]
