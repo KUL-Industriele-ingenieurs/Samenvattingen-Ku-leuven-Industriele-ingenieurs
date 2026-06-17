@@ -246,6 +246,13 @@ De standaardvormen van een functie vertellen je gewoon de verschillende paramete
 
 == Tweede orde systemen
 
+Tweede orde systemen hebben twee polen en kunnen complex zijn met standaardvorm
+
+$ H(s) = frac(K_(d c) dot omega_n^2, s^2 + 2 zeta omega_n s + omega_n^2) $
+met $K_(d c)$ = DC-versterking, $omega_n$ = eigenfrequentie, $zeta$ = dempingsratio.
+
+We bekijken een voorbeeld van een massa-veer-demper systeem.
+
 #let fig-mvd = image("assets/massa-veer-demper.png", width: 6cm)
 #let boxed-mvd = box(fig-mvd, inset: (right: 0.5em, bottom: 0.5em))
 

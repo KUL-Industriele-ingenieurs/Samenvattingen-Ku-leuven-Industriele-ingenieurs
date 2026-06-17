@@ -2,7 +2,11 @@
 
 = Electronic Applications <ch:electronic_applications>
 
-#concept(title: "filter")[
+Systemen kun je op meerdere dingen toepassen niet alleen mechanische systemen maar ook elektronische systemen. We gaan het hebben over filters, passieve en actieve filters. We gaan ook kijken naar de equivalentie tussen mechanische systemen en elektronische systemen.
+
+Filters zeggen ons gewoon hoe het systeem gedraagt. Gaan ze bepaalde frequenties blokkeren of doorlaten?
+Ze zijn afhankelijk van de polen en nulpunten van het systeem.
+#concept(title: "Filter")[
 
   Je hebt meerdere soorten filters
   - *Low pass filter*: Laat alleen lage frequenties door $arrow.r.double$ 1 cut-off frequentie.
@@ -29,7 +33,7 @@
 
 #examenbox("In dit vak gaan we niet filters zitten designen maar je moet wel filters snappen")
 
-Bijvoorbeeld op het examen kan er gevraagd worden wat voor soort filter is dit? Jij moet afhankelijk van je kennis kunnen bepalen is dit een Low pass, high pass, band pass of band stop filter.
+Bijvoorbeeld op het examen kan er gevraagd worden wat voor soort filter is dit waarbij je een elektronische circuit gekregen krijgt. Jij moet afhankelijk van je kennis kunnen bepalen is dit een Low pass, high pass, band pass of band stop filter.
 
 
 == Passieve VS actieve filters
@@ -39,7 +43,7 @@ Passieve filters gaan geen gebruik gaan maken van *OP-amps* _Bv. Resistors, capa
 Elektronische circuits kunnen ook in een systeem worden opgezet waar je afhankelijk van de input je een bepaalde output gaat krijgen. Het idee is dus exact hetzelfde als systemen.
 
 $ v_(i n) = Delta v + v_(o u t) $
-$ arrow.b.double ("Laplace") $
+$ arrow.b.double cal(L) $
 $ H(s) = frac(v_(o u t), v_(i n)) $
 
 De output is afhankelijk van de impedantie (R, C, L). Als we de Laplace transform nemen met de wet van ohm waarbij de de effecten van C en L in rekening brengen.
