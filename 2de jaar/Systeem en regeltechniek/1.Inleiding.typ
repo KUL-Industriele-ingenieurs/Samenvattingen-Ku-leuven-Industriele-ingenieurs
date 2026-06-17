@@ -63,7 +63,7 @@ Een systeem kan je op twee manieren beschrijven:
 
   Je *modelleert* systemen in de tijd met differentiaalvergelijkingen, je
   *analyseert* ze in het frequentiedomein via Laplace, je *ontwerpt* ze met
-  regeltechniek en je *implementeert* ze met code.
+  regeltechniek en je *implementeert* ze met code in matlab _meer hierover later_.
 ]
 
 == Transferfunctie, polen en nullen <sec:transferfunctie>
