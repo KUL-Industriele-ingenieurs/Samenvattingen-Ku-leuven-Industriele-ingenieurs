@@ -26,6 +26,18 @@
 #import "@preview/fletcher:0.5.8"
 #let fletcher = fletcher
 
+// --- Iconen (flat, SVG via Heroicons, spiegelt school-macros.sty) ---
+// heroic levert de iconen als gebundelde SVG's: geen font installeren nodig,
+// werkt out-of-the-box, en #hi neemt de kleur van de omringende tekst over.
+#import "@preview/heroic:0.1.2": hi
+#let ic-book = hi("book-open")
+#let ic-pen = hi("pencil-square")
+#let ic-warning = hi("exclamation-triangle")
+#let ic-idea = hi("light-bulb")
+#let ic-calc = hi("calculator")
+#let ic-code = hi("code-bracket")
+#let ic-exam = hi("exclamation-circle")
+
 // Shadow standard figure to support label argument for consistency with wrap-figure
 #let std-figure = figure
 #let figure(body, label: none, ..args) = {
@@ -290,7 +302,8 @@
 }
 // --- Custom Boxes (Mirrors tcolorbox schoolbox) ---
 
-#let schoolbox(title, color, icon, body, bg: white) = {
+#let schoolbox(title, color, icon: none, bg: none, body) = {
+  let resolved-bg = if bg == none { color.lighten(96%) } else { bg }
   v(8pt)
   // Title strip
   block(
@@ -306,14 +319,17 @@
         inset: (x: 10pt, y: 5pt),
         radius: (top-left: 4pt, top-right: 4pt),
         below: 0pt,
-        text(fill: white, weight: "bold", font: "Fira Sans", size: 10pt)[#icon #title],
+        text(fill: white, weight: "bold", font: "Fira Sans", size: 10pt)[
+          #if icon != none [ #icon #h(0.3em) ]
+          #title
+        ],
       ))
     },
   )
   // Body
   block(
     width: 100%,
-    fill: bg,
+    fill: resolved-bg,
     stroke: (
       left: 0.5pt + color,
       right: 0.5pt + color,
@@ -329,13 +345,13 @@
   v(8pt)
 }
 
-#let theorie(title: "Theorie", body) = schoolbox(title, schoolBlue, "📘", body)
-#let voorbeeld(title: "Voorbeeld", body) = schoolbox(title, schoolGreen, "✏️", body)
-#let waarschuwing(title: "Let Op!", body) = schoolbox(title, schoolRed, "⚠️", body, bg: schoolRed.lighten(95%))
-#let concept(title: "Concept", body) = schoolbox(title, schoolTeal, "💡", body, bg: schoolTeal.lighten(95%))
-#let form(title: "Formule", body) = schoolbox(title, schoolOrange, "∑", body)
-#let theorem(title: "Theorem", body) = schoolbox(title, deepblue, "📖", body)
-#let oefening(title: "Oefening", body) = schoolbox(title, schoolGreen, "✏️", body)
+#let theorie(title: "Theorie", body) = schoolbox(title, schoolBlue, icon: ic-book, body)
+#let voorbeeld(title: "Voorbeeld", body) = schoolbox(title, schoolGreen, icon: ic-pen, body)
+#let waarschuwing(title: "Let Op!", body) = schoolbox(title, schoolRed, icon: ic-warning, bg: schoolRed.lighten(95%), body)
+#let concept(title: "Concept", body) = schoolbox(title, schoolTeal, icon: ic-idea, bg: schoolTeal.lighten(95%), body)
+#let form(title: "Formule", body) = schoolbox(title, schoolOrange, icon: ic-calc, body)
+#let theorem(title: "Theorem", body) = schoolbox(title, deepblue, icon: ic-book, body)
+#let oefening(title: "Oefening", body) = schoolbox(title, schoolGreen, icon: ic-pen, body)
 
 // --- Code Block (VS Code Style) ---
 
@@ -365,7 +381,7 @@
             circle(radius: 2.5pt, fill: rgb(39, 201, 63)),
           ),
           align(center, text(fill: vscodeGray, font: "Fira Sans", size: 8pt, weight: "bold")[
-            #if title != none { title } else { lang }
+            #ic-code #h(0.4em) #if title != none { title } else { lang }
           ]),
         ),
       )
@@ -426,7 +442,7 @@
       entries
     })
   }
-  schoolbox(title, schoolOrange, "∑", [
+  schoolbox(title, schoolOrange, icon: ic-calc, [
     #set align(center)
     #text(size: 1.1em)[#formula]
     #v(2pt)
@@ -590,8 +606,15 @@
 
 // --- Exam & Annotation Helpers ---
 #let examenbox(body) = block(
-  inset: (x: 0pt, y: 0.5em),
-  [#text(fill: schoolRed, weight: "bold", font: "Fira Sans")[⚠ EXAMENTIP:] #emph(body)],
+  width: 100%,
+  stroke: (left: 2.5pt + schoolRed),
+  inset: (left: 10pt, y: 4pt),
+  above: 0.8em,
+  below: 0.8em,
+  [
+    #text(fill: schoolRed, weight: "bold", font: "Fira Sans")[#ic-exam EXAMENTIP:]
+    #emph(body)
+  ]
 )
 
 #let TODO(msg) = text(fill: red, weight: "bold", font: "Fira Sans")[\[TODO: #msg\]]
