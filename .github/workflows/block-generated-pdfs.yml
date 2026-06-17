@@ -23,7 +23,8 @@ jobs:
           else
             BEFORE="${{ github.event.before }}"
             AFTER="${{ github.event.after }}"
-            if [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+            ZERO_SHA="0000000000000000000000000000000000000000"
+            if [ "$BEFORE" = "$ZERO_SHA" ]; then
               DEFAULT_BRANCH="${{ github.event.repository.default_branch }}"
               git fetch origin "$DEFAULT_BRANCH:refs/remotes/origin/$DEFAULT_BRANCH" --depth=1
               BASE_COMMIT=$(git merge-base "origin/$DEFAULT_BRANCH" "$AFTER")
@@ -33,7 +34,7 @@ jobs:
             fi
           fi
 
-          echo "Changed files:\n$CHANGED"
+          printf 'Changed files:\n%s\n' "$CHANGED"
 
           # Find changed PDFs (case-insensitive)
           BAD=()
