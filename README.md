@@ -140,6 +140,7 @@ Daarna installeer je **LaTeX** of **Typst** (of beide). Volg de stappen in:
 
 - **[LATEX.md](LATEX.md)** — LaTeX installeren en gebruiken
 - **[TYPST.md](TYPST.md)** — Typst installeren en gebruiken
+- **[SCHRIJFGIDS.md](SCHRIJFGIDS.md)** — hoe je een samenvatting opbouwt: van skelet naar uitgewerkte tekst
 
 > **Herstart je computer** nadat alles is geïnstalleerd.
 
