@@ -1,4 +1,6 @@
-= Matlab en simulink <sec:matlab>
+#import "../../school-template.typ": *
+
+= Matlab en simulink <ch:matlab-simulink>
 
 In dit hoofdstuk geven we uitleg over matlab, hoe je ermee werken met simpele code voorbeelden. Daarna ook een korte introductie over simulink, hoe je een simulink model kan opstellen en simuleren.
 
