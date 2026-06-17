@@ -24,19 +24,29 @@
 // ============================================================================
 //                           CHAPTER INCLUDES
 // ============================================================================
+// Herstructurering in uitvoering (branch: herstructureer-syscon).
+// Structuur volgt het semesteroverzicht (W2-W13). Oude inhoud staat in _OLD/.
+// We vullen de inhoud les per les aan.
 
-#include "1.Inleiding.typ"
-#include "2.electronic_applications.typ"
-#include "3.Bode & Nyquist Plots.typ"
-#include "4.Bode Plots.typ"
-#include "5.Bode, feedback, and P control.typ"
-#include "6.P Control.typ"
-#include "7.Closed Loop TF.typ"
-#include "8_ID_bode.typ"
-#include "9.PID control.typ"
-#include "10.PID, Bode plot analysis.typ"
-#include "11.Tuning and outlook on root locus.typ"
-#include "12.Examenoefeningen.typ"
+// ----------------------------- DEEL I: SYS -----------------------------------
+//                     Systeemanalyse (W2-W5)
+#include "1.Inleiding.typ"                       // W2
+#include "2.Elektronische toepassingen.typ"      // W3
+#include "3.Bode en Nyquist eerste orde.typ"     // W4
+#include "4.Bode en Nyquist hogere orde.typ"     // W5
+
+// ----------------------------- DEEL II: CON -----------------------------------
+//                     Control / regeltechniek (W6-W12)
+#include "5.P-control en statische analyse.typ"  // W6
+#include "6.Feedback en P-control.typ"           // W7
+//   (W8 = geen les)
+#include "7.Closed-loop TF.typ"                  // W9
+#include "8.PID-control.typ"                     // W10
+#include "9.PID en Bode-analyse.typ"             // W11
+#include "10.Tuning en root locus.typ"           // W12
+
+// ----------------------------- AFSLUITING -------------------------------------
+#include "11.Oefeningen en examen.typ"           // W13
 
 
 // ============================================================================

@@ -1,320 +1,296 @@
 #import "../../school-template.typ": *
 
-= Inleiding <ch:inleiding>
+// ============================================================================
+//  W2 — Inleiding, systemen en transferfuncties
+//  Slides: 1.SYSCON_slides_01 (Sessie 0: vakinfo + Sessie 1)
+//  Grotendeels herhaling van MathSYS: eerste en tweede orde systemen met
+//  hun standaardvormen. Inhoud deels hergebruikt uit _OLD/1.Inleiding.typ
+// ============================================================================
 
-== Info vak
+= Inleiding, systemen en transferfuncties <ch:inleiding>
 
-#let fig-uurrooster = image("assets/Uurrooster.png", width: 8cm)
+== Vak- en exameninfo <sec:vakinfo>
+
+#let fig-uurrooster = image("assets/Uurrooster.png", width: 7cm)
 #let boxed-uurrooster = box(fig-uurrooster, inset: (right: 0.5em, bottom: 0.5em))
 
 #wrap-content(boxed-uurrooster)[
-  Dit vak is een voortzetting van *MathSYS.*
-  Alles rond systemen moet je dus al kennen.
+  Dit vak is een voortzetting van *MathSYS*: alles rond systemen, Laplace,
+  transferfuncties, polen en nullen wordt als gekend verondersteld. Deze eerste
+  les is dan ook vooral *herhaling* — we frissen eerste en tweede orde systemen
+  op samen met hun standaardvormen, want die vormen de basis voor de rest.
 
-  Dit vak gaat over systemen. Hoe kun je dingen controlleren
-  zoals drones.
-
-  Je systeem krijgt dus inputs en moeten dan gewenste outputs geven.
-  Bij een drone moet je afhankelijk van sensoren die de versnelling, snelheid, positie, draaing en yaw meten, de juiste inputs geven aan de motoren zodat je drone stabiel blijft en doet wat je wilt.
+  De rode draad van het vak: hoe *controleer* je een systeem (bv. een drone)?
+  Een systeem krijgt inputs en moet gewenste outputs leveren. Bij een drone
+  meet je via sensoren versnelling, snelheid, positie en oriëntatie, en geef je
+  op basis daarvan de juiste inputs aan de motoren zodat ze stabiel blijft.
 ]
 
-== Exameninfo
-Je hebt twee delen
-- *Geschreven deel*
-- *Oral deel*: Je krijgt een taak over systemen waar je code gaat moeten schrijven en uitleggen. Je moet ook het systeem on the fly kunnen aanpassen. Je moet ook kunnen uitleggen wat je doet en waarom.
+*Examen.* Twee delen:
+- *Geschreven deel (80%)* — focus op oefeningen.
+- *Mondeling deel (20%)* — verdediging van een taak (rond de paasvakantie) over een systeem waarvoor je code schrijft. Je moet het systeem _on the fly_ kunnen aanpassen en uitleggen *wat* je doet en *waarom*.
 
-Je mag de code maken met *AI of code van anderen gebruiken,* maar je moet wel *kunnen uitleggen* wat je code doet en waarom je het zo hebt gedaan.
+Je mag de code maken met *AI of code van anderen*, maar je moet ze volledig *kunnen uitleggen*. Studiemateriaal: *slides, notities van de prof, videolessen en oefeningen* — er is geen boek _maar ja daar is deze samenvattingen voor_.
 
-Je hebt *Slides, Notities Prof, Videolessen, Oefeningen* als studiemateriaal.
-Je hebt geen boek.
+== Feedback control: het einddoel <sec:feedback-doel>
 
-Het einddoel. $=>$ Snappen wat een feedback control systeem is, hoe je kunt bepalen of die stabiel is en hoe je die opsteld.
-
+Het einddoel van dit vak: snappen wat een *feedback control systeem* is, kunnen bepalen of het *stabiel* is, en zo'n systeem zelf kunnen *opstellen*.
 
 #figure(
-  image("assets/feedback-systeem.png", width: 50%),
+  image("assets/feedback-systeem.png", width: 60%),
   caption: [Feedback regelsysteem — het einddoel van dit vak],
 ) <fig:feedback-systeem>
 
-Er is dus constante feedback van de temperatuur waardoor het systeem geregeld kan worden.
+Bij een temperatuurregeling vergelijkt een controller de gemeten temperatuur met de gewenste (referentie) temperatuur en stuurt op basis van dat verschil de verwarming aan. Door de *constante terugkoppeling* van de gemeten temperatuur kan het systeem zichzelf bijregelen.
+
+== Systeemanalyse: tijds- vs frequentiedomein <sec:systeemanalyse>
 
 #figure(
-  image("assets/systeemanalyse-overzicht.png", width: 8cm),
-  caption: [Overzicht systeemanalyse],
+  image("assets/systeemanalyse-overzicht.png", width: 11cm),
+  caption: [Overzicht systeemanalyse: tijdsdomein vs frequentiedomein],
 ) <fig:systeemanalyse>
 
-Je maakt systemen in de tijd met differentiële vergelijkingen. Je analyseert systemen met Laplace transformaties.
+Een systeem kan je op twee manieren beschrijven:
+- In het *tijdsdomein* met een *differentiaalvergelijking*. De oplossing met een delta-input (zero-state) is de *impulsresponsie* $h(t)$.
+- In het *frequentiedomein* met de *transferfunctie* $H(s)$ via de Laplace-transformatie (of $H(j omega)$ via Fourier).
 
 #let fig-laplace = image("assets/laplace-transformatie.png", width: 8cm)
 #let boxed-laplace = box(fig-laplace, inset: (right: 0.5em, bottom: 0.5em))
 
 #wrap-content(boxed-laplace)[
-  Impulsresponsie $delta$ $arrow.r$ Transferfunctie $H(s)$ $arrow.r$ Polen en nullen (zie MathSYS).
+  De brug tussen beide: impulsresponsie $h(t)$ $arrow.r$ transferfunctie $H(s)$
+  $arrow.r$ polen en nullen (zie MathSYS).
 
-  Je ontwerpt systemen met regeltechniek. Je implementeert systemen met code.
+  Je *modelleert* systemen in de tijd met differentiaalvergelijkingen, je
+  *analyseert* ze in het frequentiedomein via Laplace, je *ontwerpt* ze met
+  regeltechniek en je *implementeert* ze met code.
 ]
 
-#let fig-dcgain = image("assets/dc-gain-polen-nullen.png", width: 9cm)
+== Transferfunctie, polen en nullen <sec:transferfunctie>
+
+Een systeem in evenwicht voor $t = 0$ heeft een constante input $f(0)$ en output $v(0)$. We werken met de *variaties* rond dat evenwicht:
+$ Delta f(t) = f(t) - f(0) arrow.r F(s) quad quad Delta v(t) = v(t) - v(0) arrow.r V(s) $
+
+De *transferfunctie* is de verhouding van de Laplace-getransformeerde output op input:
+$ T(s) = H(s) = frac(V(s), F(s)) $
+
+met:
+- $H(s)$ --- transferfunctie [-]
+- $F(s)$ --- Laplace van de input­variatie
+- $V(s)$ --- Laplace van de output­variatie
+
+=== DC-gain, polen en nullen
+
+Een transferfunctie is een rationale functie in $s$. Geschreven met de wortels van teller en noemer:
+$ H(s) = K dot frac((s - z_1)(s - z_2) dots.h, (s - p_1)(s - p_2) dots.h) $
+
+met:
+- $K$ --- versterkingsfactor [-]
+- $z_i$ --- *nullen*: $s arrow.r z_i arrow.r.double H(s) arrow.r 0$
+- $p_i$ --- *polen*: $s arrow.r p_i arrow.r.double H(s) arrow.r infinity$
+
+#let fig-dcgain = image("assets/dc-gain-polen-nullen.png", width: 8cm)
 #let boxed-dcgain = box(fig-dcgain, inset: (right: 0.5em, bottom: 0.5em))
 
 #wrap-content(boxed-dcgain)[
-  De DC-versterking van een systeem is de waarde van de transferfunctie bij $s = 0$. \
+  De *DC-versterking* is de waarde van de transferfunctie bij $s = 0$:
   $ K_(d c) = H(0) $
+  Ze bepaalt hoe sterk het systeem reageert op een *constante* input. Groot
+  $K_(d c)$ $arrow.r$ grote output bij kleine constante input; klein $K_(d c)$
+  $arrow.r$ kleine output.
 
-  De DC-versterking bepaalt hoe sterk het systeem reageert op een constante ingang. \
-
-  Als $K_(d c)$ groot is, zal het systeem een grote output geven voor een kleine constante input. \
-
-  Als $K_(d c)$ klein is, zal het systeem een kleine output geven voor dezelfde input.
-
-  De Polen (_Noemer_) en Nullen (_Teller_) van de transferfunctie bepalen de stabiliteit van het systeem en hoe het systeem reageert op verschillende frequenties. \
-
-  Als de polen in het linkse halfvlak liggen, is het systeem stabiel. \
-  Als er polen in het rechtse halfvlak liggen, is het systeem instabiel. \
-  Poles op de imaginaire as duiden op randstabiliteit (Marginaal stabiel).
-
-  Laten hier meer over.
-
+  De *polen* (uit de noemer) bepalen de stabiliteit en het dynamisch gedrag:
+  - polen in het *linkse* halfvlak $arrow.r$ *stabiel*;
+  - polen in het *rechtse* halfvlak $arrow.r$ *instabiel*;
+  - polen op de imaginaire as $arrow.r$ *marginaal stabiel*.
 ]
 
-= Systemen
-
-Eerst gaan we systemen bekijken. Dit is al in verschillende vakken terug gekomen (Mathsys, Trillingen en golven, Statica, Mechanica, ...). Dit is ook dus *herhaling* van MathSYS maar het is vitaal voor dit vak.
-
-We gaan systemen bekijken van meerdere ordes (s¹, s², ...).
-
-
-De standaardvormen voor systemen van eerste en tweede orde zijn:
+De twee standaardvormen die we in dit vak voortdurend gebruiken:
 
 #table(
   columns: (1fr, 2fr, 2fr),
-  inset: 0.4em,
-  align: (left, center, center),
+  inset: 0.5em,
+  align: (left + horizon, center + horizon, center + horizon),
   stroke: 0.6pt + rgb("d9d9d9"),
-  fill: (row, col) => if row == 0 { rgb("f2f2f2") } else { none },
-  [*Orde*], [*Transferfunctie*], [*Kenmerken*],
-  [Eerste orde],
-  [$H(s) = frac(K_(d c), tau s + 1)$],
-  [
-    $K_(d c)$ = DC-versterking, $tau$ = tijdconstante
-  ],
+  fill: (col, row) => if row == 0 { rgb("f2f2f2") } else { none },
+  [*Orde*], [*Transferfunctie*], [*Parameters*],
+  [Eerste orde], [$H(s) = frac(K_(d c), tau s + 1)$], [$K_(d c)$ = DC-versterking, $tau$ = tijdconstante],
 
   [Tweede orde],
   [$H(s) = frac(K_(d c) dot omega_n^2, s^2 + 2 zeta omega_n s + omega_n^2)$],
-  [
-    $K_(d c)$ = DC-versterking, $omega_n$ = eigenfrequentie, $zeta$ = dempingsratio
-  ],
+  [$K_(d c)$ = DC-versterking, $omega_n$ = eigenfrequentie, $zeta$ = dempingsratio],
 )
 
-De standaardvormen van een functie vertellen je gewoon de verschillende parameters van het systeem. We gaan later verder hoe ze effect hebben op het gedrag van het systeem. We bekijken eerst een voorbeeld van een wagen met een input $f(t)$ en een output $v(t)$. Deze heeft een weerstand $beta$ en een massa $m$. We gaan de transferfunctie van dit systeem bepalen.
+== Eerste orde transferfunctie <sec:eerste-orde>
 
-== Eerste orde systemen
+=== Voorbeeld: bewegend wagentje
 
-#oefening(title: "Eerste orde systemen — Wagentje")[
+We bekijken een wagentje met massa $m$, aangedreven door een kracht $f(t)$ (input) en afgeremd door wrijving evenredig met de snelheid $v(t)$ (output). De wrijvingscoëfficiënt is $beta$.
 
-  #figure(
-    image("assets/eerste-orde-wagentje.png", width: 50%),
-    caption: [Eerste orde systeem: wagentje met wrijving],
-  ) <fig:eerste-orde-wagentje>
+#figure(
+  image("assets/eerste-orde-wagentje.png", width: 45%),
+  caption: [Eerste orde systeem: wagentje met wrijving],
+) <fig:eerste-orde-wagentje>
 
-  *Stap 1 — Differentiaalvergelijking opstellen:*
+=== Vergelijkingen
 
-  De kracht $f(t)$ drijft het wagentje aan, terwijl de wrijving $beta v(t)$ tegenwerkt. Volgens Newton:
-  $ f(t) - beta v(t) = m v'(t) $
+*Stap 1 — Differentiaalvergelijking (Newton).* De kracht $f(t)$ drijft aan, de wrijving $beta v(t)$ werkt tegen:
+$ f(t) - beta v(t) = m v'(t) $
 
-  *Stap 2 — Laplace transformatie* $cal(L)$ (met nul beginvoorwaarden $v(0) = 0$):
+*Stap 2 — Laplace-transformatie* (nul beginvoorwaarden, $v(0) = 0$). Elke term apart, met $v'(t) arrow.r s V(s)$:
+$ F(s) - beta V(s) = m s V(s) $
 
-  $ f(t) - beta v(t) = m v'(t) quad => cal(L) => quad F(s) - beta V(s) = m s V(s) $
+*Stap 3 — Isoleer $V(s)$.* Breng alle termen met $V(s)$ samen:
+$ F(s) = V(s)(m s + beta) quad arrow.r.double quad V(s) = frac(F(s), m s + beta) $
 
-  Elke term apart transformeren: $v'(t) arrow.r s V(s) + v(0)$ (we nemen aan meestal aan dat *nulwaarden* $v(0) = 0$ ), dus:
-  $ F(s) - beta V(s) = m s V(s) $
+*Stap 4 — Transferfunctie:*
+$ H(s) = frac(V(s), F(s)) = frac(1, m s + beta) $
 
-  *Stap 3 — Isoleer $V(s)$:*
+=== Standaardvorm
 
-  Breng alle termen met $V(s)$ naar één kant:
-  $ F(s) = m s V(s) + beta V(s) = V(s) (m s + beta) $
-  $ arrow.r.double V(s) = frac(F(s), m s + beta) $
+Om de standaardvorm $H(s) = frac(K_(d c), tau s + 1)$ te bekomen, delen we teller en noemer door $beta$:
+$ frac(K_(d c), tau s + 1) quad arrow.l.r.double quad H(s) = frac(1 slash beta, (m slash beta) s + 1) $
 
-  *Stap 4 — Transferfunctie afleiden:*
+We herkennen meteen:
+$ K_(d c) = frac(1, beta) quad quad tau = frac(m, beta) $
 
-  $ H(s) = Y(s)/X(s) $
-  $ arrow.r.double H(s) = frac(V(s), F(s)) = frac(1, m s + beta) $
+met:
+- $K_(d c) = H(0) = 1 slash beta$ --- DC-versterking [-]
+- $tau = m slash beta$ --- tijdconstante [s]
 
-  Om de standaardvorm $H(s)=frac(K_(d c), tau s + 1)$ te krijgen, delen we teller
-  en noemer door $beta$ (dit is de DC‑versterking van het systeem):
+De pool ligt bij $p = -beta slash m = -1 slash tau$. Hoe groter $beta slash m$, hoe sneller het systeem reageert (pool ligt verder van de oorsprong).
 
-  $ H(s)=frac(K_(d c), tau s + 1) quad quad H(s) = frac(1 slash beta, (m slash beta) s + 1) $
+=== Staprespons
 
-  We herkennen dan direct:
-  $ K_(d c) = frac(1, beta) quad quad tau = frac(m, beta) $.
+Bij een stap-input ($F(s) = 1 slash s$) krijg je in het tijdsdomein een *gedempte exponentiële* naar de eindwaarde. De tijdconstante $tau$ bepaalt hoe snel:
 
-  *Stap 5 — Systeemeigenschappen bepalen:*
+#figure(
+  cetz.canvas({
+    import cetz.draw: *
+    plot.plot(
+      size: (10, 5.5),
+      x-label: $t " [s]"$,
+      y-label: $v(t) slash v_infinity$,
+      x-tick-step: 1,
+      y-tick-step: 0.2,
+      y-min: 0,
+      y-max: 1.1,
+      x-min: 0,
+      x-max: 6,
+      grid: true,
+      legend: "inner-south-east",
+      legend-style: (stroke: 0.5pt + gray, fill: white.transparentize(10%)),
+      {
+        // 63%- en 95%-referentielijnen
+        plot.add-hline(0.63, style: (stroke: (paint: gray, dash: "dashed", thickness: 0.8pt)))
+        plot.add-hline(0.95, style: (stroke: (paint: gray, dash: "dashed", thickness: 0.8pt)))
+        // staprespons voor drie tijdconstanten
+        plot.add(domain: (0, 6), samples: 200, label: $tau = 0.5$, style: (stroke: green.darken(10%) + 2pt), x => (
+          1 - calc.exp(-x / 0.5)
+        ))
+        plot.add(domain: (0, 6), samples: 200, label: $tau = 1$, style: (stroke: blue + 2pt), x => 1 - calc.exp(-x / 1))
+        plot.add(domain: (0, 6), samples: 200, label: $tau = 2$, style: (stroke: red + 2pt), x => 1 - calc.exp(-x / 2))
+        // markeer (tau, 63%) voor tau = 1
+        plot.add(
+          ((1, 0.63),),
+          style: (stroke: none),
+          mark: "o",
+          mark-style: (fill: blue, stroke: blue),
+          mark-size: 0.18,
+        )
+        // labels bij de referentielijnen
+        plot.annotate({
+          content((5.4, 0.555), text(size: 8pt, fill: gray)[63% (na $tau$)])
+          content((5.4, 1.01), text(size: 8pt, fill: gray)[95% (na $3 tau$)])
+        })
+      },
+    )
+  }),
+  caption: [Staprespons eerste orde: na $tau$ is 63% bereikt, na $3 tau$ is 95% bereikt. Kleinere $tau$ = snellere respons.],
+) <fig:stapresponsie-eerste-orde>
 
-  DC-versterking (vul $s = 0$ in):
-  $ H(0) = frac(1, beta) = K_(d c) $
+Vuistregel: na $tau$ seconden is *63%* van de eindwaarde bereikt, na $3 tau$ seconden *95%*.
 
-  De pool ligt bij:
-  $ p = -frac(beta, m) = -frac(1, tau) $
-
-  Hoe groter $beta slash m$, hoe sneller het systeem reageert (pool verder van de oorsprong).
-
-  // ── CeTZ plot: first-order step response ──
-  #figure(
-    cetz.canvas({
-      import cetz.draw: *
-      plot.plot(
-        size: (6, 3),
-        x-label: $t$,
-        y-label: $v(t) slash v_(infinity)$,
-        x-tick-step: 1,
-        y-tick-step: 0.2,
-        y-min: 0,
-        y-max: 1.1,
-        x-min: 0,
-        x-max: 6,
-        {
-          // tau = 1
-          plot.add(
-            domain: (0, 6),
-            samples: 200,
-            label: $tau = 1$,
-            style: (stroke: blue + 1.5pt),
-            x => 1 - calc.exp(-x / 1),
-          )
-          // tau = 2
-          plot.add(
-            domain: (0, 6),
-            samples: 200,
-            label: $tau = 2$,
-            style: (stroke: red + 1.5pt),
-            x => 1 - calc.exp(-x / 2),
-          )
-          // tau = 0.5
-          plot.add(
-            domain: (0, 6),
-            samples: 200,
-            label: $tau = 0.5$,
-            style: (stroke: green + 1.5pt),
-            x => 1 - calc.exp(-x / 0.5),
-          )
-          // 63% lijn
-          plot.add-hline(0.63, style: (stroke: (paint: gray, dash: "dashed", thickness: 0.8pt)))
-          // 95% lijn
-          plot.add-hline(0.95, style: (stroke: (paint: gray, dash: "dashed", thickness: 0.8pt)))
-        },
-      )
-    }),
-    caption: [Stapresponsie eerste orde systeem: na $tau$ is 63% bereikt, na $3tau$ is 95% bereikt],
-  ) <fig:stapresponsie-eerste-orde>
-
-  Na $tau = m/beta$ seconden is 63% van de eindwaarde bereikt. \
-  Na $3 tau$ seconden is 95% van de eindwaarde bereikt.
-]
+=== Oefening
 
 #oefening(title: "Voorbeeldoefening eerste orde")[
   #figure(
-    image("assets/oefening-eerste-orde.png", width: 12cm),
+    image("assets/oefening-eerste-orde.png", width: 11cm),
     caption: [Voorbeeldoefening eerste orde systeem],
   ) <fig:oefening-eerste-orde>
-  *Gegeven:* $6 z'(t) + 2 z(t) = 4 u(t) + 3$, evenwicht bij $z = 3$ en $t = 0$. De ingang $u(t)$ wordt plots met 1 verhoogd.
 
-  *Gevraagd:* Vind de transferfunctie van de variatie en de respons.
+  *Gegeven:* $6 z'(t) + 2 z(t) = 4 u(t) + 3$, evenwicht bij $z = 3$ op $t = 0$. De ingang $u(t)$ wordt plots met 1 verhoogd. \
+  *Gevraagd:* de transferfunctie van de variatie en de respons.
 
-  *Stap 1 — Evenwichtspunt bepalen:*
-
-  In evenwicht geldt $z'(t) = 0$, dus:
-  $ 6 dot 0 + 2 z(0) = 4 u(0) + 3 $
+  *Stap 1 — Evenwichtspunt.* In evenwicht is $z'(t) = 0$:
   $ 2 dot 3 = 4 u(0) + 3 quad arrow.r quad u(0) = frac(3, 4) $
 
-  *Stap 2 — Variatie-vergelijking opstellen:*
-
-  Definieer de variaties: $Delta z(t) = z(t) - z(0)$ en $Delta u(t) = u(t) - u(0)$. Trek de evenwichtsvergelijking af:
+  *Stap 2 — Variatie-vergelijking.* Met $Delta z = z - z(0)$ en $Delta u = u - u(0)$; trek de evenwichtsvergelijking af (constanten vallen weg):
   $ 6 Delta z'(t) + 2 Delta z(t) = 4 Delta u(t) $
 
-  De constanten vallen weg (ze veranderen niet).
-
-  *Stap 3 — Laplace transformatie:*
-  $ 6 s Z_Delta (s) + 2 Z_Delta (s) = 4 U_Delta (s) $
-  $ Z_Delta (s) (6 s + 2) = 4 U_Delta (s) $
+  *Stap 3 — Laplace:*
+  $ Z_Delta (s)(6 s + 2) = 4 U_Delta (s) $
 
   *Stap 4 — Transferfunctie:*
   $ T_(p u)(s) = frac(Z_Delta (s), U_Delta (s)) = frac(4, 6 s + 2) = frac(2, 3 s + 1) $
 
-  We herkennen de standaardvorm met:
-  $ K_(d c) = frac(4, 2) = 2 quad quad tau = frac(6, 2) = 3 $
+  We herkennen de standaardvorm met $K_(d c) = 2$ en $tau = 3$.
+
+  *Key insight:* werk altijd met *variaties* rond het evenwicht — de constante termen verdwijnen en je houdt een zuivere eerste orde transferfunctie over.
 ]
 
-== Tweede orde systemen
+== Tweede orde transferfunctie <sec:tweede-orde>
 
-Tweede orde systemen hebben twee polen en kunnen complex zijn met standaardvorm
+=== Voorbeeld: massa-veer-demper
 
-$ H(s) = frac(K_(d c) dot omega_n^2, s^2 + 2 zeta omega_n s + omega_n^2) $
-met $K_(d c)$ = DC-versterking, $omega_n$ = eigenfrequentie, $zeta$ = dempingsratio.
+Een massa-veer-demper bestaat uit een massa $m$ verbonden met een veer (stijfheid $k$) en een demper (dempingscoëfficiënt $c$). De input is een kracht $u(t)$, de output de verplaatsing $z(t)$.
 
-We bekijken een voorbeeld van een massa-veer-demper systeem.
+#figure(
+  image("assets/massa-veer-demper.png", width: 40%),
+  caption: [Massa-veer-demper systeem],
+) <fig:massa-veer-demper>
 
-#let fig-mvd = image("assets/massa-veer-demper.png", width: 6cm)
-#let boxed-mvd = box(fig-mvd, inset: (right: 0.5em, bottom: 0.5em))
+=== Vergelijkingen
 
-#wrap-content(boxed-mvd)[
-  Een massa-veer-demper systeem bestaat uit een massa $m$ verbonden met een veer (stijfheid $k$) en een demper (dempingscoëfficiënt $c$). De ingang is een kracht $u(t)$, de uitgang is de verplaatsing $z(t)$.
+*Stap 1 — Differentiaalvergelijking (Newton).* Som van de krachten op de massa:
+$ m dv(z, t, 2) + c dv(z, t) + k z(t) = u(t) $
 
-  *Stap 1 — Differentiaalvergelijking opstellen:*
-
-  Som van krachten op de massa (Newton): veerkracht + dempingskracht + externe kracht:
-  $ m dv(z, t, 2) + c dv(z, t) + k z(t) = u(t) $\
-
-  *Stap 2 — Laplace transformatie* $cal(L)$ (met nul beginvoorwaarden):
-
-  Elke afgeleide transformeren:
-
-  $ z''(t) arrow.r s^2 Z(s) quad z'(t) arrow.r s Z(s) $
-  $ cal(L) arrow.b.double $
-  $ m s^2 Z(s) + c s Z(s) + k Z(s) = U(s) $
-
-]
-
-
+*Stap 2 — Laplace $cal(L)$* (nul beginvoorwaarden), met $z''(t) arrow.r s^2 Z(s)$ en $z'(t) arrow.r s Z(s)$:
+$ m s^2 Z(s) + c s Z(s) + k Z(s) = U(s) $
 
 *Stap 3 — Isoleer $Z(s)$:*
-
-Neem $Z(s)$ gemeenschappelijk:
-$ Z(s) (m s^2 + c s + k) = U(s) $
-$ arrow.r.double Z(s) = frac(U(s), m s^2 + c s + k) $
+$ Z(s)(m s^2 + c s + k) = U(s) quad arrow.r.double quad Z(s) = frac(U(s), m s^2 + c s + k) $
 
 *Stap 4 — Transferfunctie:*
 $ H(s) = frac(Z(s), U(s)) = frac(1, m s^2 + c s + k) $
 
-We nemen aan dat alles stabiel is (alle polen liggen in het linkse halfvlak).
-
-*Stap 5 — Standaardvorm identificeren:*
+=== Standaardvorm
 
 Deel teller en noemer door $m$ en vergelijk met de standaardvorm:
 $
-  H(s) = frac(1 slash m, s^2 + c/m s + k/m) quad "vergelijk met" quad frac(K_(d c) dot omega_n^2, s^2 + 2 zeta omega_n s + omega_n^2)
+  H(s) = frac(1 slash m, s^2 + (c slash m) s + k slash m) quad "vs." quad frac(K_(d c) dot omega_n^2, s^2 + 2 zeta omega_n s + omega_n^2)
 $
 
 Hieruit lezen we de parameters af:
-$ omega_n = sqrt(k / m) quad quad 2 zeta omega_n = frac(c, m) quad arrow.r quad zeta = frac(c, 2 sqrt(k m)) $
+$ omega_n = sqrt(k / m) quad quad zeta = frac(c, 2 sqrt(k m)) $
 
-*Stap 6 — Polen berekenen:*
+met:
+- $omega_n$ --- eigenfrequentie [rad/s]
+- $zeta$ --- dempingsratio [-]
+- $K_(d c) = 1 slash k$ --- DC-versterking [m/N]
 
-De polen vinden we via de abc-formule op de noemer $s^2 + 2 zeta omega_n s + omega_n^2 = 0$:
-$ D = (2 zeta omega_n)^2 - 4 omega_n^2 = 4 omega_n^2 (zeta^2 - 1) $
-$
-  arrow.r.double p_(1,2) = frac(-2 zeta omega_n plus.minus sqrt(D), 2) = -zeta omega_n plus.minus omega_n sqrt(zeta^2 - 1)
-$
+=== Pool-nulpunt kaart
 
-Het teken van $(zeta^2 - 1)$ bepaalt het type polen:
+De polen volgen uit de noemer $s^2 + 2 zeta omega_n s + omega_n^2 = 0$:
+$ p_(1,2) = -zeta omega_n plus.minus omega_n sqrt(zeta^2 - 1) $
 
-*Classificatie op basis van $zeta$:*
-- $zeta > 1 arrow.r$ reële polen (overgedempt)
-- $zeta = 1 arrow.r$ één dubbele reële pool (kritisch gedempt)
-- $0 < zeta < 1 arrow.r$ twee complexe polen (ondergedempt)
-- $zeta = 0 arrow.r$ zuiver imaginaire polen (randstabiel)
-- $zeta < 0 arrow.r$ instabiel systeem
+Het teken van $(zeta^2 - 1)$ bepaalt het type polen, en dus het gedrag:
+- $zeta > 1$ $arrow.r$ twee reële polen — *overgedempt*
+- $zeta = 1$ $arrow.r$ dubbele reële pool — *kritisch gedempt*
+- $0 < zeta < 1$ $arrow.r$ twee complexe polen — *ondergedempt* (oscillatie)
+- $zeta = 0$ $arrow.r$ zuiver imaginaire polen — *marginaal stabiel*
+- $zeta < 0$ $arrow.r$ *instabiel*
 
-// ── CeTZ plot: second-order step response for different zeta ──
 #figure(
   cetz.canvas({
     import cetz.draw: *
@@ -329,101 +305,47 @@ Het teken van $(zeta^2 - 1)$ bepaalt het type polen:
       x-min: 0,
       x-max: 15,
       {
-        // zeta = 0.2 (underdamped)
-        plot.add(
-          domain: (0, 15),
-          samples: 300,
-          label: $zeta = 0.2$,
-          style: (stroke: blue + 1.5pt),
-          x => {
-            let zeta = 0.2
-            let wd = calc.sqrt(1 - calc.pow(zeta, 2))
-            1 - calc.exp(-zeta * x) * (calc.cos(wd * x) + zeta / wd * calc.sin(wd * x))
-          },
-        )
-        // zeta = 0.5 (underdamped)
-        plot.add(
-          domain: (0, 15),
-          samples: 300,
-          label: $zeta = 0.5$,
-          style: (stroke: green + 1.5pt),
-          x => {
-            let zeta = 0.5
-            let wd = calc.sqrt(1 - calc.pow(zeta, 2))
-            1 - calc.exp(-zeta * x) * (calc.cos(wd * x) + zeta / wd * calc.sin(wd * x))
-          },
-        )
-        // zeta = 1.0 (critically damped)
-        plot.add(
-          domain: (0, 15),
-          samples: 300,
-          label: $zeta = 1.0$,
-          style: (stroke: red + 1.5pt),
-          x => 1 - (1 + x) * calc.exp(-x),
-        )
-        // zeta = 2.0 (overdamped)
-        plot.add(
-          domain: (0, 15),
-          samples: 300,
-          label: $zeta = 2.0$,
-          style: (stroke: orange + 1.5pt),
-          x => {
-            let zeta = 2.0
-            let s1 = -zeta + calc.sqrt(calc.pow(zeta, 2) - 1)
-            let s2 = -zeta - calc.sqrt(calc.pow(zeta, 2) - 1)
-            1 + (s1 * calc.exp(s2 * x) - s2 * calc.exp(s1 * x)) / (s2 - s1)
-          },
-        )
-        // Steady-state lijn
+        plot.add(domain: (0, 15), samples: 300, label: $zeta = 0.2$, style: (stroke: blue + 1.5pt), x => {
+          let zeta = 0.2
+          let wd = calc.sqrt(1 - calc.pow(zeta, 2))
+          1 - calc.exp(-zeta * x) * (calc.cos(wd * x) + zeta / wd * calc.sin(wd * x))
+        })
+        plot.add(domain: (0, 15), samples: 300, label: $zeta = 0.5$, style: (stroke: green + 1.5pt), x => {
+          let zeta = 0.5
+          let wd = calc.sqrt(1 - calc.pow(zeta, 2))
+          1 - calc.exp(-zeta * x) * (calc.cos(wd * x) + zeta / wd * calc.sin(wd * x))
+        })
+        plot.add(domain: (0, 15), samples: 300, label: $zeta = 1.0$, style: (stroke: red + 1.5pt), x => (
+          1 - (1 + x) * calc.exp(-x)
+        ))
+        plot.add(domain: (0, 15), samples: 300, label: $zeta = 2.0$, style: (stroke: orange + 1.5pt), x => {
+          let zeta = 2.0
+          let s1 = -zeta + calc.sqrt(calc.pow(zeta, 2) - 1)
+          let s2 = -zeta - calc.sqrt(calc.pow(zeta, 2) - 1)
+          1 + (s1 * calc.exp(s2 * x) - s2 * calc.exp(s1 * x)) / (s2 - s1)
+        })
         plot.add-hline(1.0, style: (stroke: (paint: gray, dash: "dashed", thickness: 0.8pt)))
       },
     )
   }),
-  caption: [Stapresponsie tweede orde systeem voor verschillende dempingsverhoudingen $zeta$],
+  caption: [Staprespons tweede orde voor verschillende dempingsratio's $zeta$],
 ) <fig:stapresponsie-tweede-orde>
 
 #figure(
-  image("assets/pool-nulpunten-kaart.png", width: 65%),
-  caption: [Pool-nulpunten kaart voor tweede orde systeem],
+  image("assets/pool-nulpunten-kaart.png", width: 60%),
+  caption: [Pool-nulpunten kaart voor een tweede orde systeem],
 ) <fig:pool-nulpunten-kaart>
 
-Dus de formule kan omgezet worden naar:
-$ H(s) = frac(K_(d c) dot omega_n^2, s^2 + 2 zeta omega_n s + omega_n^2) $
+#oefening(title: "Oefening tweede orde — massa-veer-demper")[
+  *Gegeven:* $m = 1 "kg"$, $k = 1 "N/m"$. Bepaal de transferfunctie en het type demping voor (a) $c = 4$, (b) $c = 2$, (c) $c = 1$ Ns/m.
 
-met:
-$ omega_n = sqrt(k / m) quad quad zeta omega_n = frac(c, m) quad quad zeta = frac(c, 2 sqrt(k m)) $
+  Met $m = 1$, $k = 1$: $H(s) = frac(1, s^2 + c s + 1)$ en $omega_n = sqrt(k slash m) = 1$ rad/s.
 
-#oefening(title: "Oefening tweede orde systeem")[
-  #let fig-oef2 = image("assets/oefening-tweede-orde.png", width: 8cm)
-  #let boxed-oef2 = box(fig-oef2, inset: (right: 0.5em, bottom: 0.5em))
+  *a) $c = 4$:* $zeta = frac(4, 2) = 2 > 1$ $arrow.r$ *overgedempt*. Polen $approx -0.27, -3.73$.
 
-  #wrap-content(boxed-oef2)[
-    *Gegeven:* $m = 1 "kg"$, $k = 1 "N/m"$. Vind de transferfunctie en plot de stapresponsie voor:
-    - a) $c = 4 "Ns/m"$
-    - b) $c = 2 "Ns/m"$
-    - c) $c = 1 "Ns/m"$
-  ]
+  *b) $c = 2$:* $zeta = frac(2, 2) = 1$ $arrow.r$ *kritisch gedempt*. Dubbele pool $p = -1$.
 
-  *Stap 1 — Transferfunctie:*
+  *c) $c = 1$:* $zeta = frac(1, 2) = 0.5$ $arrow.r$ *ondergedempt*. Polen $-0.5 plus.minus 0.87 j$.
 
-  Met $m = 1$ en $k = 1$:
-  $ H(s) = frac(1, s^2 + c s + 1) $
-
-  *Stap 2 — Standaardparameters:*
-  $ omega_n = sqrt(k / m) = sqrt(1) = 1 "rad/s" $
-
-  *a) $c = 4$ Ns/m:*
-  $ zeta = frac(c, 2 sqrt(k m)) = frac(4, 2) = 2 quad arrow.r quad "overgedempt" (zeta > 1) $
-  $ H(s) = frac(1, s^2 + 4 s + 1) $
-  Polen: $p_(1,2) = -2 plus.minus sqrt(3) approx -0.27, -3.73$
-
-  *b) $c = 2$ Ns/m:*
-  $ zeta = frac(2, 2) = 1 quad arrow.r quad "kritisch gedempt" (zeta = 1) $
-  $ H(s) = frac(1, s^2 + 2 s + 1) = frac(1, (s + 1)^2) $
-  Dubbele pool: $p = -1$
-
-  *c) $c = 1$ Ns/m:*
-  $ zeta = frac(1, 2) = 0.5 quad arrow.r quad "ondergedempt" (0 < zeta < 1) $
-  $ H(s) = frac(1, s^2 + s + 1) $
-  Polen: $p_(1,2) = -0.5 plus.minus j frac(sqrt(3), 2) approx -0.5 plus.minus 0.87 j$
+  *Key insight:* dezelfde $omega_n$, maar $zeta$ (via de demper $c$) bepaalt of de respons oscilleert of niet.
 ]
