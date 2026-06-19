@@ -143,6 +143,7 @@ Volg het patroon **denkstappen → oplossing → kerninzicht**:
 - Zelf een grafiek tekenen? Gebruik CeTZ-plots. Maak ze **leesbaar**:
   voldoende groot, `grid: true`, een `legend`, en label belangrijke
   referentielijnen (bv. eindwaarde, 63 %/95 %).
+- Met Excalidraw SVG files kun je deze rechtstreeks in het document zetten en met de excalidraw extensie kun je ze later nog aanpassen. 
 
 ---
 
