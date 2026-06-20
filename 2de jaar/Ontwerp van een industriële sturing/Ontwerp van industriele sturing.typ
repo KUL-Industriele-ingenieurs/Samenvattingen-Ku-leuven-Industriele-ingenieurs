@@ -36,4 +36,4 @@
 #include "6.Voorbeeld Diagram.typ"
 #include "7.Veiligheid.typ"
 #include "8.Pneumatica deel 2.typ"
-#include "9. 3D methode.typ"
+#include "9.3D methode.typ"
