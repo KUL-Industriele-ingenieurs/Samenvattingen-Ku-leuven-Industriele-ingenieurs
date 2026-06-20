@@ -361,7 +361,7 @@ Een monostabiel x/2 ventiel heeft slechts één spoel:
 === Bistabiel x/2 ventiel
 Een bistabiel x/2 ventiel heeft twee spoelen:
 - In de besturingslogica kunnen we de ene spoel bekrachtigen om het ventiel te "activeren", of we kunnen de andere spoel bekrachtigen om het ventiel te "deactiveren".
-- Het is een **geheugenfunctie**, vergelijkbaar met een flip-flop.
+- Het is een *geheugenfunctie*, vergelijkbaar met een flip-flop.
 - Als we de stroom naar beide spoelen uitschakelen, blijft het bistabiele ventiel in de huidige positie staan.
 - Hetzelfde zou waar moeten zijn als we beide spoelen activeren, maar deze situatie moet worden vermeden.
 - "Activeren" en "deactiveren" kunnen willekeurig zijn, aangezien het een bistabiel ventiel is.
