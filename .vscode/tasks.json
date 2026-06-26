@@ -247,6 +247,32 @@
                 "focus": false
             },
             "problemMatcher": []
+        },
+        {
+            "label": "New Excalidraw drawing",
+            "type": "shell",
+            "command": "bash",
+            "args": [
+                "scripts/new-excalidraw.sh",
+                "${fileDirname}",
+                "${input:drawingName}",
+                "${file}",
+                "${lineNumber}"
+            ],
+            "presentation": {
+                "reveal": "always",
+                "panel": "new",
+                "focus": true
+            },
+            "problemMatcher": []
+        }
+    ],
+    "inputs": [
+        {
+            "id": "drawingName",
+            "type": "promptString",
+            "description": "Enter the name for the new Excalidraw drawing (without extension):",
+            "default": "tekening"
         }
     ]
 }

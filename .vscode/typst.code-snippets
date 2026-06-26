@@ -91,5 +91,16 @@
         "body": "#oplossing[\n  $1\n]",
         "description": "Insert a solution block",
         "scope": "typst"
+    },
+    "Excalidraw Figure": {
+        "prefix": "figex",
+        "body": [
+            "#figure(",
+            "  image(\"assets/${1:name}.excalidraw.svg\", width: ${2:80%}),",
+            "  caption: [${3:caption}],",
+            ") <fig:${1:name}>"
+        ],
+        "description": "Insert an Excalidraw SVG figure",
+        "scope": "typst"
     }
 }
