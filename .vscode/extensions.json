@@ -17,6 +17,8 @@
         "pomdtr.excalidraw-editor",
         "calebfiggers.typst-companion",
         "kisstkondoros.vscode-gutter-preview",
-        "tldraw-org.tldraw-vscode"
+        "tldraw-org.tldraw-vscode",
+        "robertohuertas.vscode-workspace-keybindings",
+        "dynow.excalimath-editor"
     ]
 }

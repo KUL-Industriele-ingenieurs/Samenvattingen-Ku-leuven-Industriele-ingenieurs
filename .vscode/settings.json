@@ -231,12 +231,851 @@
     "editor.quickSuggestionsDelay": 10,
     "github.copilot.enable": {
         "*": true,
-        "plaintext": false,
+        "plaintext": true,
         "markdown": true,
         "scminput": false,
         "typst": true
     },
     "github.copilot.editor.enableAutoCompletions": false,
     "typst-companion.extension.list.indentationSize": "adaptive",
-    "typst-companion.extension.orderedList.autoRenumber": true
+    "typst-companion.extension.orderedList.autoRenumber": true,
+    "toolbar.builtin.latex.activate": false,
+    "toolbar.panel.languages": [
+        "markdown",
+        "latex",
+        "typst"
+    ],
+    "toolbar.toolboxs": [
+        {
+            "name": "Typst Academic Tools",
+            "view": "latex",
+            "activate": {
+                "hover": false,
+                "languages": [
+                    "typst"
+                ]
+            },
+            "layers": [
+                {
+                    "name": "Drawing & Images",
+                    "icon": "paintcan",
+                    "tools": [
+                        {
+                            "name": "New Excalidraw",
+                            "icon": "paintcan",
+                            "actions": [
+                                {
+                                    "command": "workbench.action.tasks.runTask",
+                                    "argument": "New Excalidraw drawing",
+                                    "mode": "command"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Paste Image",
+                            "icon": "desktop-download",
+                            "actions": [
+                                {
+                                    "command": "extension.pasteImage",
+                                    "mode": "command"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Blocks & Layout",
+                    "icon": "symbol-unit",
+                    "tools": [
+                        {
+                            "name": "Insert Table",
+                            "icon": "table",
+                            "description": "Insert a standard table",
+                            "activate": true,
+                            "actions": [
+                                {
+                                    "mode": "replace",
+                                    "argument": "#table(\n  columns: (${1:1fr, 1fr}),\n  [${2:Header 1}], [${3:Header 2}],\n  [${4:Cell 1}], [${5:Cell 2}],\n)$0"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Grid",
+                            "icon": "symbol-grid",
+                            "description": "Insert a layout grid",
+                            "activate": true,
+                            "actions": [
+                                {
+                                    "mode": "replace",
+                                    "argument": "#grid(\n  columns: (${1:1fr, 1fr}),\n  gutter: ${2:1em},\n  [${3:Left}], [${4:Right}],\n)$0"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Rectangle Box",
+                            "icon": "record",
+                            "description": "Insert rectangle box",
+                            "activate": true,
+                            "actions": [
+                                {
+                                    "mode": "replace",
+                                    "argument": "#rect(width: ${1:100%}, stroke: ${2:0.5pt}, inset: ${3:8pt})[\n  $0\n]"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Code Block",
+                            "icon": "code",
+                            "description": "Insert code block",
+                            "activate": true,
+                            "actions": [
+                                {
+                                    "mode": "replace",
+                                    "argument": {
+                                        "start": "```${1:rust}\n",
+                                        "end": "\n```"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Document Structure",
+                    "icon": "$H",
+                    "tools": [
+                        {
+                            "name": "Heading 1",
+                            "icon": "$①",
+                            "description": "Heading level 1",
+                            "activate": true,
+                            "actions": [
+                                {
+                                    "mode": "replace",
+                                    "argument": "= "
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Heading 2",
+                            "icon": "$②",
+                            "description": "Heading level 2",
+                            "activate": true,
+                            "actions": [
+                                {
+                                    "mode": "replace",
+                                    "argument": "== "
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Heading 3",
+                            "icon": "$③",
+                            "description": "Heading level 3",
+                            "activate": true,
+                            "actions": [
+                                {
+                                    "mode": "replace",
+                                    "argument": "=== "
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Unordered List",
+                            "icon": "list-unordered",
+                            "description": "Bullet list item",
+                            "activate": true,
+                            "actions": [
+                                {
+                                    "mode": "replace",
+                                    "argument": "- "
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Ordered List",
+                            "icon": "list-ordered",
+                            "description": "Numbered list item",
+                            "activate": true,
+                            "actions": [
+                                {
+                                    "mode": "replace",
+                                    "argument": "+ "
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Formatting",
+                    "icon": "pencil",
+                    "tools": [
+                        {
+                            "name": "Toggle Bold",
+                            "icon": "$🄱",
+                            "description": "Toggle bold text",
+                            "activate": true,
+                            "actions": [
+                                {
+                                    "mode": "replace",
+                                    "argument": {
+                                        "start": "*",
+                                        "end": "*"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Toggle Italic",
+                            "icon": "$🄸",
+                            "description": "Toggle italic text",
+                            "activate": true,
+                            "actions": [
+                                {
+                                    "mode": "replace",
+                                    "argument": {
+                                        "start": "_",
+                                        "end": "_"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Toggle Monospace",
+                            "icon": "bracket",
+                            "description": "Toggle inline code / monospace",
+                            "activate": true,
+                            "actions": [
+                                {
+                                    "mode": "replace",
+                                    "argument": {
+                                        "start": "`",
+                                        "end": "`"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Math & Formulas",
+                    "icon": "$α",
+                    "tools": [
+                        {
+                            "name": "Inline Math",
+                            "icon": "#F{$}",
+                            "description": "Toggle inline formula",
+                            "activate": true,
+                            "actions": [
+                                {
+                                    "mode": "replace",
+                                    "argument": {
+                                        "start": "$",
+                                        "end": "$"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Block Math",
+                            "icon": "#F{$$}",
+                            "description": "Toggle display formula block",
+                            "activate": true,
+                            "actions": [
+                                {
+                                    "mode": "replace",
+                                    "argument": {
+                                        "start": "$ ",
+                                        "end": " $"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Fraction",
+                            "icon": "divide",
+                            "description": "Insert fraction (frac)",
+                            "activate": true,
+                            "actions": [
+                                {
+                                    "mode": "replace",
+                                    "argument": {
+                                        "start": "frac(",
+                                        "end": ", )"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Matrix",
+                            "icon": "grid",
+                            "description": "Insert matrix",
+                            "activate": true,
+                            "actions": [
+                                {
+                                    "mode": "replace",
+                                    "argument": {
+                                        "start": "mat(",
+                                        "end": ")"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "LaTeX Academic Tools",
+            "view": "latex",
+            "activate": {
+                "hover": false,
+                "languages": [
+                    "latex",
+                    "tex"
+                ]
+            },
+            "layers": [
+                {
+                    "name": "Actions",
+                    "icon": "tools",
+                    "tools": [
+                        {
+                            "name": "New Excalidraw",
+                            "icon": "paintcan",
+                            "actions": [
+                                {
+                                    "command": "workbench.action.tasks.runTask",
+                                    "argument": "New Excalidraw drawing",
+                                    "mode": "command"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Paste Formatted",
+                            "icon": "clippy",
+                            "actions": [
+                                {
+                                    "command": "latex-utilities.formattedPaste",
+                                    "mode": "command"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Clean Aux",
+                            "icon": "trash",
+                            "actions": [
+                                {
+                                    "command": "workbench.action.tasks.runTask",
+                                    "argument": "Clean LaTeX aux files",
+                                    "mode": "command"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "View PDF",
+                            "icon": "book",
+                            "actions": [
+                                {
+                                    "command": "latex-workshop.view",
+                                    "mode": "command"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Custom",
+                    "icon": "account",
+                    "activate": {
+                        "hover": false,
+                        "languages": [
+                            "latex",
+                            "tex"
+                        ]
+                    },
+                    "tools": [
+                        {
+                            "name": "Add Insert Button",
+                            "icon": "person-add",
+                            "description": "Add Custom Button for long text",
+                            "activate": true,
+                            "actions": [
+                                "Latex: Add Insert Button"
+                            ]
+                        },
+                        {
+                            "name": "Add Text Button",
+                            "icon": "person-add",
+                            "description": "Add Custom Button for '\\textbf{}'",
+                            "activate": true,
+                            "actions": [
+                                "Latex: Add Label Button"
+                            ]
+                        },
+                        {
+                            "name": "Add Block Button",
+                            "icon": "person-add",
+                            "description": "Add Custom Button for '\\begin{}\\end{}'",
+                            "activate": true,
+                            "actions": [
+                                "Latex: Add Block Button"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Blocks",
+                    "icon": "symbol-unit",
+                    "activate": true,
+                    "tools": [
+                        {
+                            "name": "Part",
+                            "icon": "layout-panel",
+                            "description": "Part",
+                            "activate": true,
+                            "actions": [
+                                {
+                                    "mode": "replace",
+                                    "argument": {
+                                        "start": "\\\\part{",
+                                        "end": "}"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Chapter",
+                            "icon": "$§",
+                            "description": "Chapter",
+                            "activate": true,
+                            "actions": [
+                                {
+                                    "mode": "replace",
+                                    "argument": {
+                                        "start": "\\\\chapter{",
+                                        "end": "}"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Toggle Order List",
+                            "icon": "list-ordered",
+                            "description": "Toggle Order List",
+                            "activate": true,
+                            "actions": [
+                                "Latex: Toggle Order List"
+                            ]
+                        },
+                        {
+                            "name": "Toggle Unorder List",
+                            "icon": "list-unordered",
+                            "description": "Toggle Unorder List",
+                            "activate": true,
+                            "actions": [
+                                "Latex: Toggle Unorder List"
+                            ]
+                        },
+                        {
+                            "name": "Toggle Frame",
+                            "icon": "note",
+                            "description": "Toggle Frame",
+                            "activate": true,
+                            "actions": [
+                                {
+                                    "mode": "block",
+                                    "argument": {
+                                        "start": "\\\\begin{frame}",
+                                        "label": "\\\\frametitle{}",
+                                        "end": "\\\\end{frame}"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Header",
+                    "icon": "$H",
+                    "tools": [
+                        {
+                            "name": "Section",
+                            "icon": "$①",
+                            "description": "Section",
+                            "activate": true,
+                            "actions": [
+                                {
+                                    "mode": "replace",
+                                    "argument": {
+                                        "start": "\\\\section{",
+                                        "end": "}"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Sub Section",
+                            "icon": "$②",
+                            "description": "Sub Section",
+                            "activate": true,
+                            "actions": [
+                                {
+                                    "mode": "replace",
+                                    "argument": {
+                                        "start": "\\\\subsection{",
+                                        "end": "}"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Sub Sub Section",
+                            "icon": "$③",
+                            "description": "Sub Sub Section",
+                            "activate": true,
+                            "actions": [
+                                {
+                                    "mode": "replace",
+                                    "argument": {
+                                        "start": "\\\\subsubsection{",
+                                        "end": "}"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Paragraph",
+                            "icon": "browser",
+                            "description": "Paragraph",
+                            "activate": true,
+                            "actions": [
+                                {
+                                    "mode": "replace",
+                                    "argument": {
+                                        "start": "\\\\paragraph{",
+                                        "end": "}"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Sub Paragraph",
+                            "icon": "layout-menubar",
+                            "description": "Sub Paragraph",
+                            "activate": true,
+                            "actions": [
+                                {
+                                    "mode": "replace",
+                                    "argument": {
+                                        "start": "\\\\subparagraph{",
+                                        "end": "}"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Formatting",
+                    "icon": "pencil",
+                    "tools": [
+                        {
+                            "name": "Toggle Bold",
+                            "icon": "$🄱",
+                            "description": "Toggle bold for selected text",
+                            "activate": true,
+                            "actions": [
+                                {
+                                    "mode": "replace",
+                                    "argument": {
+                                        "start": "\\\\textbf{",
+                                        "end": "}"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Toggle Italic",
+                            "icon": "$🄸",
+                            "description": "Toggle italic for selected text",
+                            "activate": true,
+                            "actions": [
+                                {
+                                    "mode": "replace",
+                                    "argument": {
+                                        "start": "\\\\textit{",
+                                        "end": "}"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Toggle Underline",
+                            "icon": "$🅄",
+                            "description": "Toggle undeline for selected text",
+                            "activate": true,
+                            "actions": [
+                                {
+                                    "mode": "replace",
+                                    "argument": {
+                                        "start": "\\\\underline{",
+                                        "end": "}"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Font Formatting",
+                    "icon": "$F",
+                    "activate": true,
+                    "tools": [
+                        {
+                            "name": "Toggle Bold",
+                            "icon": "bold",
+                            "description": "Toggle bold for selected text",
+                            "activate": true,
+                            "actions": [
+                                {
+                                    "mode": "replace",
+                                    "argument": {
+                                        "start": "\\\\mathbf{",
+                                        "end": "}"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Toggle Italic",
+                            "icon": "italic",
+                            "description": "Toggle italic for selected text",
+                            "activate": true,
+                            "actions": [
+                                {
+                                    "mode": "replace",
+                                    "argument": {
+                                        "start": "\\\\mathit{",
+                                        "end": "}"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Toggle Blackboard Bold",
+                            "icon": "$ℕ",
+                            "description": "Toggle Blackboard Bold for selected text",
+                            "activate": true,
+                            "actions": [
+                                {
+                                    "mode": "replace",
+                                    "argument": {
+                                        "start": "\\\\mathbb{",
+                                        "end": "}"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Toggle Fraktur",
+                            "icon": "$ℜ",
+                            "description": "Toggle Fraktur for selected text",
+                            "activate": true,
+                            "actions": [
+                                {
+                                    "mode": "replace",
+                                    "argument": {
+                                        "start": "\\\\mathfrak{",
+                                        "end": "}"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Toggle Calligraphy",
+                            "icon": "#χ{<svg xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"1.875ex\" height=\"2.176ex\" style=\"vertical-align: -0.338ex;\" viewBox=\"0 -791.3 807.5 936.9\" role=\"img\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\" aria-labelledby=\"MathJax-SVG-1-Title\"><title id=\"MathJax-SVG-1-Title\">CALIGRAPHIC X.</title><defs aria-hidden=\"true\"><path stroke-width=\"1\" id=\"E1-MJCAL-58\" d=\"M324 614Q291 576 250 573Q231 573 231 584Q231 589 232 592Q235 601 244 614T271 643T324 671T400 683H403Q462 683 481 610Q485 594 490 545T498 454L501 413Q504 413 551 442T648 509T705 561Q707 565 707 578Q707 610 682 614Q667 614 667 626Q667 641 695 662T755 683Q765 683 775 680T796 662T807 623Q807 596 792 572T713 499T530 376L505 361V356Q508 346 511 278T524 148T557 75Q569 69 580 69Q585 69 593 77Q624 108 660 110Q667 110 670 110T676 106T678 94Q668 59 624 30T510 0Q487 0 471 9T445 32T430 71T422 117T417 173Q416 183 416 188Q413 214 411 244T407 286T405 299Q403 299 344 263T223 182T154 122Q152 118 152 105Q152 69 180 69Q183 69 187 66T191 60L192 58V56Q192 41 163 21T105 0Q94 0 84 3T63 21T52 60Q52 77 56 90T85 131T155 191Q197 223 259 263T362 327T402 352L391 489Q391 492 390 505T387 526T384 547T379 568T372 586T361 602T348 611Q346 612 341 613T333 614H324Z\"></path></defs><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"0\" transform=\"matrix(1 0 0 -1 0 0)\" aria-hidden=\"true\"><use href=\"#E1-MJCAL-58\" x=\"0\" y=\"0\"></use></g></svg>}",
+                            "description": "Toggle Calligraphy for selected text",
+                            "activate": true,
+                            "actions": [
+                                {
+                                    "mode": "replace",
+                                    "argument": {
+                                        "start": "\\\\mathcal{",
+                                        "end": "}"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Toggle Sans-serif",
+                            "icon": "$S",
+                            "description": "Toggle Sans-serif for selected text",
+                            "activate": true,
+                            "actions": [
+                                {
+                                    "mode": "replace",
+                                    "argument": {
+                                        "start": "\\\\mathsf{",
+                                        "end": "}"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Formula",
+                    "icon": "$α",
+                    "tools": [
+                        {
+                            "name": "Open Math Preview",
+                            "icon": "preview",
+                            "description": "Open Math Preview",
+                            "activate": true,
+                            "actions": [
+                                {
+                                    "mode": "command",
+                                    "command": "latex-workshop.toggleMathPreviewPanel"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Toggle Math Span",
+                            "icon": "#F{$}",
+                            "description": "Toggle math span style for selected text",
+                            "activate": true,
+                            "actions": [
+                                "Markdown: Toggle Math Span"
+                            ]
+                        },
+                        {
+                            "name": "Toggle Math Block",
+                            "icon": "#F{$$}",
+                            "description": "Toggle math block style for selected block",
+                            "activate": true,
+                            "actions": [
+                                "Markdown: Toggle Math Block"
+                            ]
+                        },
+                        {
+                            "name": "Toggle Align Block",
+                            "icon": "#F{al}",
+                            "description": "Toggle Align Block",
+                            "activate": true,
+                            "actions": [
+                                {
+                                    "mode": "block",
+                                    "argument": {
+                                        "start": "\\\\begin{align}",
+                                        "end": "\\\\end{align}"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Toggle Equation Block",
+                            "icon": "#F{eq}",
+                            "description": "Toggle Equation Block",
+                            "activate": true,
+                            "actions": [
+                                {
+                                    "mode": "block",
+                                    "argument": {
+                                        "start": "\\\\begin{equation}",
+                                        "end": "\\\\end{equation}"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Clipboard Image to latex",
+                            "icon": "output",
+                            "description": "Paste the image to latex",
+                            "activate": true,
+                            "actions": [
+                                {
+                                    "mode": "command",
+                                    "command": "latex-pix.paste-latex-from-clipboard"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Image to latex",
+                            "icon": "file-symlink-file",
+                            "description": "Open a photo to convert it",
+                            "activate": true,
+                            "actions": [
+                                {
+                                    "mode": "command",
+                                    "command": "latex-pix.paste-latex-from-open-path"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Text Blank",
+                    "icon": "$__",
+                    "activate": {
+                        "hover": false,
+                        "languages": [
+                            "latex",
+                            "tex"
+                        ]
+                    },
+                    "tools": [
+                        {
+                            "name": "Indent",
+                            "icon": "indent",
+                            "description": "Add Indent",
+                            "activate": true,
+                            "actions": [
+                                {
+                                    "mode": "replace",
+                                    "argument": "\\\\indent"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Two Space",
+                            "icon": "$__",
+                            "description": "Add Two Space",
+                            "activate": true,
+                            "actions": [
+                                {
+                                    "mode": "replace",
+                                    "argument": "\\\\qquad"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "One and Half Space",
+                            "icon": "$_",
+                            "description": "One and Half Space",
+                            "activate": true,
+                            "actions": [
+                                {
+                                    "mode": "replace",
+                                    "argument": "\\\\hspace{1.3em}"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Circle",
+                            "icon": "$◯",
+                            "description": "Circle",
+                            "activate": true,
+                            "actions": [
+                                {
+                                    "mode": "replace",
+                                    "argument": "\\\\textcircled"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
 }

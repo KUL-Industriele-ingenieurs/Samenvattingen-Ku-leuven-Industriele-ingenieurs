@@ -144,6 +144,16 @@ Volg het patroon **denkstappen → oplossing → kerninzicht**:
   voldoende groot, `grid: true`, een `legend`, en label belangrijke
   referentielijnen (bv. eindwaarde, 63 %/95 %).
 - Met Excalidraw SVG files kun je deze rechtstreeks in het document zetten en met de excalidraw extensie kun je ze later nog aanpassen. 
+- **Excalidraw Automatisering**: Je kunt snel een nieuwe tekening maken en invoegen via de command palette: `Tasks: Run Task` -> `New Excalidraw drawing` (of via de toolbar knop als je de `vscode-toolbar` extensie hebt).
+  Wil je hier een sneltoets voor? Voeg dit dan toe aan je globale `keybindings.json`:
+  ```json
+  {
+      "key": "ctrl+alt+e",
+      "command": "workbench.action.tasks.runTask",
+      "args": "New Excalidraw drawing",
+      "when": "editorTextFocus && (editorLangId == 'typst' || editorLangId == 'latex' || editorLangId == 'tex')"
+  }
+  ```
 
 ---
 

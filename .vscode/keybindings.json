@@ -36,5 +36,11 @@
         "key": "alt+\\",
         "command": "editor.action.inlineSuggest.trigger",
         "when": "editorTextFocus && !inlineSuggestionVisible"
+    },
+    {
+        "key": "ctrl+alt+e",
+        "command": "workbench.action.tasks.runTask",
+        "args": "New Excalidraw drawing",
+        "when": "editorTextFocus && (editorLangId == 'typst' || editorLangId == 'latex' || editorLangId == 'tex')"
     }
 ]
