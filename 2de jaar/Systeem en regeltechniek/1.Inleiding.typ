@@ -349,7 +349,50 @@ polen, mogelijk oscillerend). Telkens volgen we dezelfde route: van
 differentiaalvergelijking $arrow.r$ transferfunctie $arrow.r$ standaardvorm
 $arrow.r$ gedrag.
 
-=== Staprespons/tijdsconstante $tau$
+== Eerste orde transferfunctie <sec:eerste-orde>
+
+=== Voorbeeld: bewegend wagentje
+
+We bekijken een wagentje met massa $m$, aangedreven door een kracht $f(t)$ (input) en afgeremd door wrijving evenredig met de snelheid $v(t)$ (output). De wrijvingscoëfficiënt is $beta$.
+
+#figure(
+  image("assets/eerste-orde-wagentje.png", width: 45%),
+  caption: [Eerste orde systeem: wagentje met wrijving],
+) <fig:eerste-orde-wagentje>
+
+=== Vergelijkingen
+
+*Stap 1 — Differentiaalvergelijking (Newton).* De kracht $f(t)$ drijft aan, de wrijving $beta v(t)$ werkt tegen:
+$ sum F = m a(t) = m v'(t) = underbrace(f(t) - beta v(t), "Som van de krachten") $
+$ => f(t) - beta v(t) = m v'(t) $
+
+*Stap 2 — Laplace-transformatie* (nul beginvoorwaarden, $v(0) = 0$). Elke term apart, met $v'(t) arrow.r s V(s)$:
+$ F(s) - beta V(s) = m s V(s) $
+
+*Stap 3 — Isoleer $V(s)$.* Breng alle termen met $V(s)$ samen:
+$ F(s) = V(s)(m s + beta) quad arrow.r.double quad V(s) = frac(F(s), m s + beta) $
+
+*Stap 4 — Transferfunctie:*
+$ H(s) = frac(V(s), F(s)) = frac(1, m s + beta) $
+
+=== Standaardvorm
+
+Als we onze transferfunctie $H(s)$ dan eindelijk hebben moeten we de parameters van ons systeem dan evalueren en in de standaardvorm gieten. We hebben:
+$ H(s) = frac(1, m s + beta) $
+
+Om de standaardvorm $H(s) = frac(K_(d c), tau s + 1)$ te bekomen, delen we teller en noemer door $beta$ want nummer moet met + 1 eindigen:
+$ frac(K_(d c), tau s + 1) quad arrow.l.r.double quad H(s) = frac(1 slash beta, (m slash beta) s + 1) $
+
+We herkennen meteen:
+$ K_(d c) = frac(1, beta) quad quad tau = frac(m, beta) $
+
+met:
+- $K_(d c) = H(0) = 1 slash beta$ --- DC-versterking [-]
+- $tau = m slash beta$ --- tijdconstante [s]
+
+De pool ligt bij $p = -beta slash m = -1 slash tau$. Hoe groter $beta slash m$, hoe sneller het systeem reageert (pool ligt verder van de oorsprong).
+
+=== Staprespons en tijdconstante $tau$
 
 Bij een stap-input ($F(s) = 1 slash s$) krijg je in het tijdsdomein een *gedempte exponentiële* naar de eindwaarde. De tijdconstante $tau$ bepaalt hoe snel:
 
@@ -399,50 +442,6 @@ Bij een stap-input ($F(s) = 1 slash s$) krijg je in het tijdsdomein een *gedempt
 ) <fig:stapresponsie-eerste-orde>
 
 Vuistregel: na $tau$ seconden is *63%* van de eindwaarde bereikt, na $3 tau$ seconden *95%*.
-
-
-== Eerste orde transferfunctie <sec:eerste-orde>
-
-=== Voorbeeld: bewegend wagentje
-
-We bekijken een wagentje met massa $m$, aangedreven door een kracht $f(t)$ (input) en afgeremd door wrijving evenredig met de snelheid $v(t)$ (output). De wrijvingscoëfficiënt is $beta$.
-
-#figure(
-  image("assets/eerste-orde-wagentje.png", width: 45%),
-  caption: [Eerste orde systeem: wagentje met wrijving],
-) <fig:eerste-orde-wagentje>
-
-=== Vergelijkingen
-
-*Stap 1 — Differentiaalvergelijking (Newton).* De kracht $f(t)$ drijft aan, de wrijving $beta v(t)$ werkt tegen:
-$ sum F = m a(t) = m v'(t) = underbrace(f(t) - beta v(t), "Som van de krachten") $
-$ => f(t) - beta v(t) = m v'(t) $
-
-*Stap 2 — Laplace-transformatie* (nul beginvoorwaarden, $v(0) = 0$). Elke term apart, met $v'(t) arrow.r s V(s)$:
-$ F(s) - beta V(s) = m s V(s) $
-
-*Stap 3 — Isoleer $V(s)$.* Breng alle termen met $V(s)$ samen:
-$ F(s) = V(s)(m s + beta) quad arrow.r.double quad V(s) = frac(F(s), m s + beta) $
-
-*Stap 4 — Transferfunctie:*
-$ H(s) = frac(V(s), F(s)) = frac(1, m s + beta) $
-
-=== Standaardvorm
-
-Als we onze transferfunctie $H(s)$ dan eindelijk hebben moeten we de parameters van ons systeem dan evalueren en in de standaardvorm gieten. We hebben:
-$ H(s) = frac(1, m s + beta) $
-
-Om de standaardvorm $H(s) = frac(K_(d c), tau s + 1)$ te bekomen, delen we teller en noemer door $beta$ want nummer moet met + 1 eindigen:
-$ frac(K_(d c), tau s + 1) quad arrow.l.r.double quad H(s) = frac(1 slash beta, (m slash beta) s + 1) $
-
-We herkennen meteen:
-$ K_(d c) = frac(1, beta) quad quad tau = frac(m, beta) $
-
-met:
-- $K_(d c) = H(0) = 1 slash beta$ --- DC-versterking [-]
-- $tau = m slash beta$ --- tijdconstante [s]
-
-De pool ligt bij $p = -beta slash m = -1 slash tau$. Hoe groter $beta slash m$, hoe sneller het systeem reageert (pool ligt verder van de oorsprong).
 
 === Oefening
 
@@ -686,6 +685,22 @@ toont dit voor enkele waarden:
 ) <fig:stapresponsie-tweede-orde>
 
 #figure(
-  image("assets/pool-nulpunten-kaart.png", width: 60%),
+  image("assets/pool-nulpunten-kaart.png", width: 80%),
   caption: [Pool-nulpunten kaart voor een tweede orde systeem],
 ) <fig:pool-nulpunten-kaart>
+
+=== Oefening
+
+#oefening(title: "Oefening tweede orde — massa-veer-demper")[
+  *Gegeven:* $m = 1 "kg"$, $k = 1 "N/m"$. Bepaal de transferfunctie en het type demping voor (a) $c = 4$, (b) $c = 2$, (c) $c = 1$ Ns/m.
+
+  Met $m = 1$, $k = 1$: $H(s) = frac(1, s^2 + c s + 1)$ en $omega_n = sqrt(k slash m) = 1$ rad/s.
+
+  *a) $c = 4$:* $zeta = frac(c, 2 sqrt(k m)) = frac(4, 2) = 2 > 1$ $arrow.r$ *overgedempt*. Polen $approx -0.27, -3.73$.
+
+  *b) $c = 2$:* $zeta = frac(2, 2) = 1$ $arrow.r$ *kritisch gedempt*. Dubbele pool $p = -1$.
+
+  *c) $c = 1$:* $zeta = frac(1, 2) = 0.5$ $arrow.r$ *ondergedempt*. Polen $-0.5 plus.minus 0.87 j$.
+
+  *Key insight:* dezelfde $omega_n$, maar $zeta$ (via de demper $c$) bepaalt of de respons oscilleert of niet.
+]
