@@ -37,8 +37,8 @@
 
 // ----------------------------- DEEL II: CON -----------------------------------
 //                     Control / regeltechniek (W6-W12)
-#include "5.P-control en statische analyse.typ"  // W6
-#include "6.Feedback en P-control.typ"           // W7
+#include "5.Feedback en P-control.typ"  // W6
+#include "6.Feedback and P control: Static analysis.typ"           // W7
 //   (W8 = geen les)
 #include "7.Closed-loop TF.typ"                  // W9
 #include "8.PID-control.typ"                     // W10

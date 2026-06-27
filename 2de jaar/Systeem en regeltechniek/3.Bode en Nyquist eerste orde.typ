@@ -125,8 +125,3 @@ elk apart als functie van $omega$. Loop je de Nyquist-kromme af van $omega = 0$
 $-90 degree$), dan zie je de amplitude krimpen en de fase draaien — net zoals in
 de twee Bode-grafieken.
 
-
-== Hoger orde bode plots <sec:hoger-orde-bode-plots>
-
-// kort gedeeltde over hoe meedere orde bode plots eruit zien waarbij we polen en nullen hun effecten op bode plot met elkaar combineren. We gaan ook kijken naar hoe we een bode plot kunnen tekenen van een gegeven transferfunctie met polen en nullen.
-
