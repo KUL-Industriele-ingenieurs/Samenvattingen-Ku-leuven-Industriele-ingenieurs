@@ -1,6 +1,6 @@
 #import "../../school-template.typ": *
 
-= Diode Rectifiers
+= Diode Rectifiers <ch:diode-rectifiers>
 
 == Herhaling Diodes
 
