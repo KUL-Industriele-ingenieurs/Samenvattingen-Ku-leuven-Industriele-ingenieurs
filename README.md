@@ -188,7 +188,7 @@ VS Code zal rechtsonder vragen om de "Recommended Extensions" te installeren. Kl
 Hier zie je het resultaat. Dit is hoe de theorie (met wiskunde formules en kaders) er uiteindelijk uit komt te zien in je PDF bestand:
 
 <p align="center">
-  <img src="voorbeeldpagina.png" alt="Voorbeeldpagina van een samenvatting" width="300"/>
+  <img src="assets/voorbeeldpagina.png" alt="Voorbeeldpagina van een samenvatting" width="300"/>
 </p>
 
 ### 1. Maak een nieuwe Branch
