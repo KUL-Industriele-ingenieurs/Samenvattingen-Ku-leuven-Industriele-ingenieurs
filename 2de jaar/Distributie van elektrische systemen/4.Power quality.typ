@@ -1,3 +1,3 @@
 #import "../../school-template.typ": *
 
-= Power quality
+= Power quality <ch:power-quality>
