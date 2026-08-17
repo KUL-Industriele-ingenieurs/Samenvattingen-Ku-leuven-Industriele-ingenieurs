@@ -237,7 +237,7 @@
       #v(1cm)
       #text(size: 1.2em)[#academic_year]
       #v(4em)
-      #image("Ku Leuven logo.png", width: 50%)
+      #image("assets/Ku Leuven logo.png", width: 50%)
       #v(2cm)
       #text(size: 1.1em, font: "Fira Sans")[KU Leuven] \
       #text(size: 0.9em, font: "Fira Sans")[Faculteit Industriële Ingenieurswetenschappen]
@@ -257,7 +257,7 @@
           #text(size: 1em)[#authors.join(", ")]
         ],
         align(right + horizon)[
-          #image("Ku Leuven logo.png", width: 80pt)
+          #image("assets/Ku Leuven logo.png", width: 80pt)
         ],
       )
       v(-12pt)
