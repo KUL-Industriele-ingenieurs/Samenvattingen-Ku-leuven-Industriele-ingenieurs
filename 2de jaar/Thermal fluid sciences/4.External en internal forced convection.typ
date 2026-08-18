@@ -401,7 +401,7 @@ In het vorig hoofdstuk hebben we *External forced convection gezien* Dit is een 
 
 External flow focussed zich op het meganisch deel of aerodynamichs drag. Internal flow gaat zich focussen op de effecten van muuren en pijpen op de stroming en warmteoverdracht. Dit gaat namelijk een pressure dorp geven $Delta P$
 
-#highlight[Dus nu gaan we kijken wat de effecten zijn van naar de effecten van pijpen en muren op de stroming en warmteoverdracht.]
+Dus nu gaan we kijken wat de effecten zijn van naar de effecten van pijpen en muren op de stroming en warmteoverdracht.
 
 #wrap-figure(
   image("assets/noslip in pijp.png", width: 6cm),
@@ -439,13 +439,13 @@ In de figuur zie je hoe de stroom regeert wanneer het de buis binnenkomt. Je kri
 
 - *Volledig ontwikkeld hydrodynamisch gebied:* Na de ingangslengte: snelheidsprofiel is stabiel en verandert niet meer. Het paraboolprofiel blijft constant over de rest van de buis.
 
-#highlight[Vloeiïng in de entrance region noemen we de *hydrodynamically developing region*]
+Vloeiïng in de entrance region noemen we de *hydrodynamically developing region*
 
 
 === Temperatuur
 
 #figure(
-  image("assets/Thermal boundry layr.png", width: 6cm),
+  image("assets/Thermal boundry layr.png", width: 8cm),
   caption: [Thermal boundry layer developent in buis],
   label: <fig:Thermal-boundry-layr>,
 )

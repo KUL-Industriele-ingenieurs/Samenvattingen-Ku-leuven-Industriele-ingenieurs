@@ -59,9 +59,9 @@ met $Omega$ de hoeksnelheid van het roterend assenstelsel. en $dot(Omega) =$ de 
       arrow(v_B) = mark(arrow(v_A), tag: #<vA>, color: #orange)
       + mark(arrow(Omega) crossproduct arrow(r_(B/A)), tag: #<hoeksnelheid-v>, color: #purple)
       + mark((arrow(v_(B/A)))_(x y z), tag: #<relatief-v>, color: #green)
-      #annot(<vA>, pos: bottom, dy: 1em)[oorsprong v/h \\ bewegende \\ assenstelsel]
-      #annot(<hoeksnelheid-v>, pos: top, dy: -1em)[hoeksnelheid \\ v/h bewegende \\ assenstelsel]
-      #annot(<relatief-v>, pos: bottom, dy: 1em)[relatieve beweging \\ in assenstelsel]
+      #annot(<vA>, pos: bottom, dy: 1em)[oorsprong v/h \ bewegende \ assenstelsel]
+      #annot(<hoeksnelheid-v>, pos: top, dy: -1em)[hoeksnelheid \ v/h bewegende \ assenstelsel]
+      #annot(<relatief-v>, pos: bottom, dy: 1em)[relatieve beweging \ in assenstelsel]
     $
     #v(1em)
   ],
@@ -87,11 +87,11 @@ Nu willen we nog de versnelling van B beschrijven. We gaan terug onze term aflei
       + mark(arrow(Omega) crossproduct (arrow(Omega) crossproduct arrow(r_(B/A))), tag: #<hoeksnelheid>, color: #purple)
       + mark(2 arrow(Omega) crossproduct (arrow(v_(B/A)))_(x y z), tag: #<coriolis>, color: #red)
       + mark((arrow(a_(B/A)))_(x y z), tag: #<relatief>, color: #green)
-      #annot(<aA>, pos: bottom, dy: 1em)[oorsprong v/h \\ bewegende \\ assenstelsel]
-      #annot(<hoekversnelling>, pos: top, dy: -1em)[hoekversnelling \\ v/h bewegende \\ assenstelsel]
-      #annot(<hoeksnelheid>, pos: bottom, dy: 2.5em)[hoeksnelheid \\ v/h bewegende \\ assenstelsel]
-      #annot(<coriolis>, pos: top, dy: -0.5em)[interactie: \\ hoeksnelheid assenstelsel \\ + relatieve snelheid \\ in assenstelsel]
-      #annot(<relatief>, pos: bottom, dy: 1em)[relatieve beweging \\ in assenstelsel]
+      #annot(<aA>, pos: bottom, dy: 1em)[oorsprong v/h \ bewegende \ assenstelsel]
+      #annot(<hoekversnelling>, pos: top, dy: -1em)[hoekversnelling \ v/h bewegende \ assenstelsel]
+      #annot(<hoeksnelheid>, pos: bottom, dy: 2.5em)[hoeksnelheid \ v/h bewegende \ assenstelsel]
+      #annot(<coriolis>, pos: top, dy: -0.5em)[interactie: \ hoeksnelheid assenstelsel \ + relatieve snelheid \ in assenstelsel]
+      #annot(<relatief>, pos: bottom, dy: 1em)[relatieve beweging \ in assenstelsel]
     $
     #v(2em)
   ],

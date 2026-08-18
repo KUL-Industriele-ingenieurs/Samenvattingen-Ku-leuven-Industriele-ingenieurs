@@ -155,7 +155,7 @@ Deze harmonischen zijn ongewenst in het net omdat ze kunnen leiden tot extra opw
 
   Dus de snelheid van onze verandering _frequentie_ $f$ heeft een rechtstreekse invloed op onze verliezen. Hoe sneller we veranderen, hoe groter onze verliezen.
 
-  #highlight[Verliezen => opwarming van de kern]
+  Verliezen => opwarming van de kern
 
   Het veld dat gecreëerd wordt als $H$ nul is dan noemt met #keyterm[remanentie] $B_r$
 
@@ -266,12 +266,12 @@ Met $arrow(j) = sigma arrow(E)$
   label: <fig:Eddy-current-breaks>,
 )[
 
-  Hoe een elektrisch veld geïnduceerd wordt in een geleider. Een geleider wilt geen veranderingen in zijn status rond een magnetisch veld $arrow(B)$. Het is de verandering die een magnetisch veld gaan induceren in de #highlight[Omgekeerde richting] van het veranderend magnetisch veld $arrow(B)$.
+  Hoe een elektrisch veld geïnduceerd wordt in een geleider. Een geleider wilt geen veranderingen in zijn status rond een magnetisch veld $arrow(B)$. Het is de verandering die een magnetisch veld gaan induceren in de Omgekeerde richting van het veranderend magnetisch veld $arrow(B)$.
 ]
 
 
 
-Om dit magnetisch veld te induceren moet er een stroom $I$ gaan lopen in de geleider. Deze stroom noemen we de #highlight[Eddy current]. Door deze stroom krijgen we *Losses* $P_("loss") = I^2 R$
+Om dit magnetisch veld te induceren moet er een stroom $I$ gaan lopen in de geleider. Deze stroom noemen we de Eddy current. Door deze stroom krijgen we *Losses* $P_("loss") = I^2 R$
 
 Hieronder een voorbeeld door de losses afhankelijk van het magnetische veld $B$.
 #align(center)[
