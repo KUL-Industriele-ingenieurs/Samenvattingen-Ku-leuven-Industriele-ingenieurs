@@ -187,7 +187,7 @@ Hoe groter het getal van Nusselt $=>$hoe effectiever de convectie. Een Nusselt-g
 
 
 
-#highlight[Enorm hoge snelheden gaat lucht ook compressable worden maar we gaan niet in de regio dus we gaan aanmemen dat lucht incompressable is]
+Enorm hoge snelheden gaat lucht ook compressable worden maar we gaan niet in de regio dus we gaan aanmemen dat lucht incompressable is
 
 === Laminar vs Turbulent flow <sec:laminar-turbulent-flow>
 #wrap-figure(

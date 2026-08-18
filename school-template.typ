@@ -4,7 +4,9 @@
 
 // --- External Packages (from Typst Universe) ---
 #import "@preview/unify:0.7.1": num, numrange, qty, qtyrange  // siunitx equivalent
-#import "@preview/physica:0.9.5": *     // Physics math: derivatives, brakets, etc.
+// physica < 0.9.7 gebruikt `angle.l`, dat sinds Typst 0.15 niet meer bestaat.
+// Elke aanroep van #braket / #ket / #bra brak daarop. Niet terugzetten naar 0.9.5.
+#import "@preview/physica:0.9.8": *     // Physics math: derivatives, brakets, etc.
 #import "@preview/cetz:0.4.2"
 #import "@preview/cetz-plot:0.1.3"
 #let cetz = cetz
@@ -69,8 +71,11 @@
   }
 
   context {
-    let size = measure(fig-with-label)
-    let applied-width = if width == auto { size.width } else { width }
+    // Meet alleen de figuurinhoud, niet het bijschrift. Een bijschrift breekt
+    // afhankelijk van de beschikbare breedte, dus measure() gaf per
+    // layout-iteratie een andere waarde: "a measured element did not stabilize"
+    // gevolgd door "document did not converge within five attempts".
+    let applied-width = if width == auto { measure(content).width } else { width }
 
     let boxed = box(fig-with-label, width: applied-width, inset: (
       left: if align == right { 1em } else { 0pt },
@@ -94,15 +99,29 @@
 #let deepblue = rgb(41, 128, 185)
 
 // --- Modern Color Palette ---
+// Aliassen, bewust geen nieuwe waarden: `coral` was een tweede naam voor
+// exact dezelfde RGB als schoolOrange, en brandblue/deepblue/schoolBlue zijn
+// drie blauwen die nauwelijks van elkaar te onderscheiden zijn. Gebruik in
+// nieuwe documenten de school*-namen; deze staan er voor bestaande bestanden.
 #let schoolPurple = rgb(155, 89, 182)
 #let brandblue = rgb(52, 152, 219)
 #let amber = rgb(243, 156, 18)
-#let coral = rgb(230, 126, 34)
+#let coral = schoolOrange
 #let slate = rgb(52, 73, 94)
 #let lightgray = rgb(236, 240, 241)
 
-// --- VS Code Dark Theme Palette ---
-#let codeBackground = rgb(30, 30, 30)
+// --- JetBrains / IntelliJ Light Theme (codeblokken) ---
+// Gelijkgetrokken met school-macros.sty. De oude donkere VS Code-achtergrond
+// combineerde met Typst's standaard (lichte) syntax highlighting: donkerblauwe
+// keywords en donkergroene strings op bijna-zwart waren niet te lezen, en op
+// papier vrat het een pak toner.
+#let codeBackground = rgb(250, 250, 250) // body-achtergrond
+#let codeTitleBar = rgb(237, 239, 242) // titelbalk
+#let codeBorder = rgb(218, 222, 228) // randlijn
+#let codeText = rgb(8, 8, 8) // gewone code
+#let codeComment = rgb(140, 140, 140) // commentaar (IntelliJ #8C8C8C)
+
+// --- VS Code Dark Theme Palette (bewaard voor compatibiliteit) ---
 #let vscodeBlue = rgb(86, 156, 214)
 #let vscodeGreen = rgb(106, 153, 85)
 #let vscodeOrange = rgb(206, 145, 120)
@@ -110,6 +129,17 @@
 #let vscodeYellow = rgb(220, 220, 170)
 #let vscodeGray = rgb(133, 133, 133)
 #let vscodeWhite = rgb(212, 212, 212)
+
+// Hoeveel hoofdtitels in de linkermarge steken (spiegelt \schoolTitleOutdent
+// in school-macros.sty).
+#let titleOutdent = 0.9em
+
+// Titel van het hoofdstuk waar we in zitten. Wordt gezet door de level-1
+// heading rule en gelezen door frm(), zodat het formularium per hoofdstuk kan
+// groeperen. Bewust via state en niet via query()/counter().at(): state volgt
+// documentvolgorde en is niet layout-afhankelijk, terwijl een introspectie-
+// query binnen frm de paginering laat terugkoppelen op de inhoud.
+#let _current_chapter = state("school-current-chapter", none)
 
 // --- Template Function ---
 #let project(
@@ -130,11 +160,19 @@
     paper: "a4",
     margin: (left: 1.5cm, right: 1.5cm, top: 2cm, bottom: 2cm),
     numbering: "1",
+    // Paginanummer staat in de header (zoals school-macros.sty). `footer: none`
+    // onderdrukt de tweede, dubbele weergave onderaan; `numbering` blijft nodig
+    // zodat de inhoudsopgave en verwijzingen paginanummers kunnen tonen.
+    footer: none,
     header: context {
       let page_num = counter(page).get().first()
       if page_num > 1 {
         set text(size: 9pt * 0.92, font: ("Fira Sans", "Liberation Sans"))
-        let headers = query(selector(heading.where(level: 1)).before(here()))
+        // Niet `.before(here())`: de header staat bovenaan de pagina, dus een
+        // hoofdstuk dat op deze pagina begint valt daarbuiten en de kopregel
+        // loopt een hoofdstuk achter. Filteren op paginanummer wel correct.
+        let this-page = here().page()
+        let headers = query(heading.where(level: 1)).filter(h => h.location().page() <= this-page)
         let last_header = if headers.len() > 0 { headers.last().body } else { [] }
 
         grid(
@@ -151,7 +189,9 @@
   // Charter, Fira Sans & Fira Code loaded from project fonts/ directory
   set text(font: ("Charter", "Libertinus Serif"), lang: "nl", size: 11pt)
   set par(leading: 0.63em, first-line-indent: 0pt, spacing: 1.2em, justify: true)
-  set heading(numbering: "1.1.")
+  // "1.1" zonder sluitpunt, gelijk aan \thesection in school-macros.sty.
+  // Stond op "1.1.", waardoor Typst "3." / "3.1." zette en LaTeX "3" / "3.1".
+  set heading(numbering: "1.1")
 
   show raw: set text(font: ("Fira Code", "Liberation Mono"), size: 0.85em)
   // Math uses Typst's default New Computer Modern Math (serif, matching Charter body text)
@@ -159,37 +199,29 @@
   // Override emptyset to use sans-serif glyph for visual consistency
   show sym.emptyset: set text(font: ("Fira Sans", "Liberation Sans"))
 
-  // Link styling: URLs in schoolBlue, internal refs in black with underline
-  show link: it => text(fill: schoolBlue)[#underline(it)]
-  show ref: it => underline(it)
+  // Links en kruisverwijzingen: kleur draagt de betekenis, geen onderstreping.
+  // Onderstreepte tekst leest op papier als een kapotte hyperlink en botst met
+  // de streep onder elke H1. Zet `underline` hier terug als je het toch wil.
+  show link: set text(fill: schoolBlue)
+  show ref: set text(fill: schoolBlue)
 
-  // Caption styling: small Fira Sans, bold label
-  show std-figure.caption: set text(size: 0.9em * 0.92, font: ("Fira Sans", "Liberation Sans"), weight: "bold")
+  // Nummering "hoofdstuk.figuur" (bv. 2.1). De teller wordt per hoofdstuk
+  // gereset in de level-1 heading rule hieronder.
+  //
+  // Dit verving een handgeschreven `show std-figure` rule die het bijschrift
+  // zelf opbouwde. Die had drie fouten: het supplement stond hardgecodeerd op
+  // het Engelse "Figure", het hele bijschrift werd vet, en een @verwijzing
+  // toonde de kale figuurteller ("Figure 3") terwijl het bijschrift
+  // "Figure 3.5" zei. Via de ingebouwde nummering klopt alles vanzelf en volgt
+  // het supplement de taalinstelling (lang: "nl") -> "Figuur" / "Tabel".
+  set std-figure(numbering: n => numbering("1.1", counter(heading).get().first(), n))
 
-  // Figure numbering: "Chapter.Figure" (e.g. Figure 2.1), resets per chapter via heading rule
-  show std-figure: it => context {
-    let h = counter(heading).get()
-    let chapter = if h.len() > 0 { h.first() } else { 0 }
-    let fig-n = counter(std-figure.where(kind: it.kind)).get().first()
-    let num-str = if chapter > 0 {
-      numbering("1.1", chapter, fig-n)
-    } else {
-      numbering("1", fig-n)
-    }
-    // Output body centered, then caption below (without re-invoking std-figure to avoid recursion)
-    align(center, it.body)
-    if it.caption != none {
-      align(center, block(
-        above: 0.65em,
-        text(
-          size: 0.9em * 0.92,
-          font: ("Fira Sans", "Liberation Sans"),
-          weight: "bold",
-          [Figure #num-str: #it.caption.body],
-        ),
-      ))
-    }
-  }
+  // Caption styling: klein Fira Sans, alleen het label vet (spiegelt
+  // \captionsetup{font={small,sf}, labelfont=bf} in school-macros.sty)
+  show std-figure.caption: it => text(
+    size: 0.9em * 0.92,
+    font: ("Fira Sans", "Liberation Sans"),
+  )[#strong[#it.supplement #context it.counter.display(it.numbering)#it.separator]#it.body]
 
   // List styling: match LaTeX tightened spacing
   set list(indent: 2em, body-indent: 0.5em, spacing: 0.6em)
@@ -202,45 +234,57 @@
     counter(std-figure.where(kind: image)).update(0)
     counter(std-figure.where(kind: table)).update(0)
     counter(std-figure.where(kind: raw)).update(0)
-    block(below: 0.8em, breakable: false)[
-      #v(8pt)
-      #text(size: 13.2pt)[#if it.numbering != none { counter(heading).display(it.numbering) + h(0.5em) }#it.body]
-      #v(-12pt)
-      #line(length: 100%, stroke: 0.5pt)
-      #v(3pt)
-    ]
+    _current_chapter.update(it.body)
+    // Alleen niveau 1 krijgt een liniaal. H1 en H2 hadden allebei een
+    // volledige liniaal en lagen met 13.2 vs 11 pt te dicht bij elkaar (11 pt
+    // is exact de broodtekstgrootte), waardoor de hierarchie wegviel.
+    // Negatieve linkerinspring: hoofdtitels steken iets in de marge, zodat de
+    // structuur al zichtbaar is als je door het document bladert. Zet
+    // titleOutdent op 0pt om het uit te schakelen.
+    pad(left: -titleOutdent, block(below: 0.55em, breakable: false)[
+      #v(14pt)
+      #text(size: 15pt)[#if it.numbering != none { counter(heading).display(it.numbering) + h(0.5em) }#it.body]
+      #v(-11pt)
+      #line(length: 100% + titleOutdent, stroke: 0.6pt)
+    ])
   }
 
-  show heading.where(level: 2): it => block(below: 0.8em, breakable: false)[
-    #v(6pt)
-    #text(size: 11pt)[#if it.numbering != none { counter(heading).display(it.numbering) + h(0.5em) }#it.body]
-    #v(-12pt)
-    #line(length: 100%, stroke: 0.5pt)
-    #v(2pt)
+  show heading.where(level: 2): it => block(below: 0.45em, breakable: false)[
+    #v(10pt)
+    #text(size: 12.2pt)[#if it.numbering != none { counter(heading).display(it.numbering) + h(0.5em) }#it.body]
   ]
 
-  show heading.where(level: 3): it => block(below: 0.8em, breakable: false)[
-    #v(4pt)
-    #text(size: 10.1pt)[#if it.numbering != none { counter(heading).display(it.numbering) + h(0.5em) }#it.body]
-    #v(2pt)
+  show heading.where(level: 3): it => block(below: 0.35em, breakable: false)[
+    #v(7pt)
+    #text(size: 11pt)[#if it.numbering != none { counter(heading).display(it.numbering) + h(0.5em) }#it.body]
   ]
 
   // Title Page
   if not short_title {
-    align(center + horizon)[
-      #v(-5cm)
-      #text(size: 2.5em, weight: "bold", font: "Fira Sans", fill: black)[#title]
-      #v(0.5cm)
-      #text(size: 1.5em, font: "Fira Sans")[#course]
-      #v(2cm)
-      #text(size: 1.2em)[#authors.join(", ")]
-      #v(1cm)
-      #text(size: 1.2em)[#academic_year]
-      #v(4em)
-      #image("assets/Ku Leuven logo.png", width: 50%)
-      #v(2cm)
-      #text(size: 1.1em, font: "Fira Sans")[KU Leuven] \
-      #text(size: 0.9em, font: "Fira Sans")[Faculteit Industriële Ingenieurswetenschappen]
+    // Verdeling met fr-spacers i.p.v. vaste cm-sprongen en een `v(-5cm)` hack.
+    // Alles in Fira Sans: auteur en jaartal stonden in Charter terwijl titel en
+    // vak in Fira Sans stonden. Logo van 50% naar 32% breedte.
+    align(center)[
+      #set text(font: ("Fira Sans", "Liberation Sans"))
+      #v(3fr)
+      #text(size: 2.4em, weight: "bold")[#title]
+      #v(0.7cm)
+      #text(size: 1.35em, fill: luma(70))[#course]
+      #v(0.9cm)
+      #line(length: 35%, stroke: 1pt + schoolBlue)
+      #v(0.9cm)
+      #text(size: 1.1em)[#authors.join(", ")]
+      #v(0.35cm)
+      #text(size: 1.1em, fill: luma(70))[#academic_year]
+      #v(4fr)
+      // De asset was 600x600 met het logo (540x193) ergens in het midden;
+      // daardoor zweefde hij met veel lege ruimte eromheen. Nu bijgesneden.
+      #image("assets/Ku Leuven logo.png", width: 38%)
+      #v(0.8cm)
+      #text(size: 1em, weight: "medium")[KU Leuven] \
+      #v(-4pt)
+      #text(size: 0.85em, fill: luma(70))[Faculteit Industriële Ingenieurswetenschappen]
+      #v(2fr)
     ]
     pagebreak()
   } else {
@@ -285,6 +329,10 @@
     // Table of Contents (styled to match LaTeX)
     {
       set text(font: ("Charter", "Libertinus Serif"))
+      // Zwart. `show link` hierboven kleurt alles wat een link is schoolBlue,
+      // en in de inhoudsopgave is elk item een link -- een volledig blauwe
+      // inhoudstabel is onrustig en zegt niets.
+      show link: set text(fill: black)
       set outline.entry(fill: repeat[.#h(4pt)])
       show outline.entry.where(level: 1): it => {
         v(8pt)
@@ -313,8 +361,11 @@
     above: 0pt,
     below: 0pt,
     {
-      // Title tab - offset to the right
-      move(dx: 8pt, block(
+      // Titeltab lijnt uit op de linkerrand van de body. Stond op dx: 8pt,
+      // waardoor er per pagina drie linkerranden waren (tekst op de marge,
+      // boxbody op de marge, boxtitel 8 pt naar binnen). Dat leest als een
+      // uitlijnfout, niet als vormgeving.
+      block(
         fill: color,
         inset: (x: 10pt, y: 5pt),
         radius: (top-left: 4pt, top-right: 4pt),
@@ -323,7 +374,7 @@
           #if icon != none [ #icon #h(0.3em) ]
           #title
         ],
-      ))
+      )
     },
   )
   // Body
@@ -353,7 +404,7 @@
 #let theorem(title: "Theorem", body) = schoolbox(title, deepblue, icon: ic-book, body)
 #let oefening(title: "Oefening", body) = schoolbox(title, schoolGreen, icon: ic-pen, body)
 
-// --- Code Block (VS Code Style) ---
+// --- Code Block (JetBrains / IntelliJ Light Style) ---
 
 #let codeblock(lang: "txt", title: none, body) = {
   v(8pt)
@@ -362,39 +413,42 @@
     clip: true,
     radius: 4pt,
     fill: codeBackground,
-    stroke: 0.5pt + codeBackground,
+    stroke: 0.5pt + codeBorder,
     [
-      // Title bar with traffic light circles
+      // Titelbalk
       #block(
         width: 100%,
         inset: (x: 10pt, y: 6pt),
-        fill: codeBackground,
+        fill: codeTitleBar,
+        stroke: (bottom: 0.5pt + codeBorder),
         below: 0pt,
+        // Titel links, taal-tag rechts. De drie macOS-stoplichtjes zijn weg:
+        // in een samenvatting die geprint wordt zeggen ze niets, en de titel
+        // stond zichtbaar scheef omdat hij over een kolom van 40 pt werd
+        // gecentreerd naast die bolletjes.
         grid(
-          columns: (40pt, 1fr),
+          columns: (1fr, auto),
           align: horizon,
-          stack(
-            dir: ltr,
-            spacing: 4pt,
-            circle(radius: 2.5pt, fill: rgb(255, 95, 86)),
-            circle(radius: 2.5pt, fill: rgb(255, 189, 46)),
-            circle(radius: 2.5pt, fill: rgb(39, 201, 63)),
-          ),
-          align(center, text(fill: vscodeGray, font: "Fira Sans", size: 8pt, weight: "bold")[
+          text(fill: codeText, font: "Fira Sans", size: 8.5pt, weight: "bold")[
             #ic-code #h(0.4em) #if title != none { title } else { lang }
-          ]),
+          ],
+          if title != none {
+            text(fill: codeComment, font: ("Fira Code", "Liberation Mono"), size: 8pt)[#lang]
+          },
         ),
       )
-      // Code body
+      // Code body. Geen `fill` op de tekst: dan blijft Typst's eigen syntax
+      // highlighting intact. Zette dit op vscodeWhite, waardoor niet-gehighlighte
+      // code wit werd en de rest in donkere kleuren op een donkere achtergrond viel.
       #block(
         width: 100%,
         inset: 10pt,
         above: 0pt,
         {
           set text(
-            fill: vscodeWhite,
-            font: ("Fira Code", "FiraCode Nerd Font", "FiraCode Nerd Font Mono", "Fira Mono", "Consolas"),
-            size: 9pt * 0.85,
+            fill: codeText,
+            font: ("Fira Code", "Liberation Mono"),
+            size: 8.5pt,
           )
           body
         },
@@ -435,16 +489,24 @@
   _formularium_counter.step()
   context {
     let idx = _formularium_counter.get().first()
-    let pg = here().page()
+    let sect = _current_chapter.get()
     [#metadata(none)#label("frm-" + str(idx))]
+    // Bewust niets positie-afhankelijks in de state: paginanummer en hoofdstuk
+    // worden bij het afdrukken uit de bijbehorende <frm-N> label-locatie gehaald.
+    // Ze hier opslaan koppelt de inhoud van het formularium terug op de layout
+    // (het formularium verschuift zelf de paginanummers), waardoor documenten
+    // met veel formules niet convergeerden: "a measured element did not
+    // stabilize" / "document did not converge within five attempts".
     _formularium_entries.update(entries => {
-      entries.push((title: title, formula: formula, description: description, idx: idx, page: pg))
+      entries.push((title: title, formula: formula, description: description, idx: idx, section: sect))
       entries
     })
   }
   schoolbox(title, schoolOrange, icon: ic-calc, [
     #set align(center)
-    #text(size: 1.1em)[#formula]
+    // block: true -> displaystyle. Zonder dit worden breuken en integralen in
+    // de krappe inline-vorm gezet, precies wat \displaystyle in LaTeX voorkomt.
+    #text(size: 1.1em)[#math.equation(block: true, formula)]
     #v(2pt)
     #set align(left)
     #text(size: 0.9em)[#description]
@@ -452,35 +514,59 @@
 }
 
 // Section divider for formularium (blue line with centered title)
+// Lijn - titel - lijn, zoals \printSectionFormulas in school-macros.sty.
+// Bewust met inline `box(width: 1fr)` en niet met een grid van (1fr, auto, 1fr)
+// met daarin `line(length: 100%)`: een relatieve lengte binnen een fr-kolom is
+// een circulaire meting, en die liet documenten met een formularium niet meer
+// convergeren ("a measured element did not stabilize").
 #let _formularium_divider(title) = {
   v(10pt)
   block(width: 100%, {
-    grid(
-      columns: (1fr, auto, 1fr),
-      column-gutter: 1em,
-      align(horizon, line(length: 100%, stroke: 0.6pt + schoolBlue)),
-      text(size: 0.9em, weight: "bold", font: "Fira Sans", fill: schoolBlue)[#title],
-      align(horizon, line(length: 100%, stroke: 0.6pt + schoolBlue)),
-    )
+    box(width: 1fr, line(length: 100%, stroke: 0.6pt + schoolBlue))
+    h(1em)
+    text(size: 0.9em, weight: "bold", font: "Fira Sans", fill: schoolBlue, baseline: -0.25em)[#title]
+    h(1em)
+    box(width: 1fr, line(length: 100%, stroke: 0.6pt + schoolBlue))
   })
   v(6pt)
 }
 
 // Formularium card (used in the printed formularium) — matches LaTeX \formulariumcard
-#let _formularium_card(entry) = {
+#let _formularium_card(entry, page) = {
   v(4pt)
   block(width: 100%, [
     #grid(
       columns: (auto, 1fr, auto),
       gutter: 0.5em,
-      [*#entry.title*], none, link(label("frm-" + str(entry.idx)), text(size: 0.75em, fill: schoolBlue)[p.#entry.page]),
+      [*#entry.title*], none, link(label("frm-" + str(entry.idx)), text(size: 0.75em, fill: schoolBlue)[p.#page]),
     )
     #v(2pt)
-    #align(center, text(size: 1.1em)[#entry.formula])
+    #align(center, text(size: 1.1em)[#math.equation(block: true, entry.formula)])
     #v(2pt)
-    #text(size: 0.8em, style: "italic")[#entry.description]
+    #text(size: 0.9em, style: "italic")[#entry.description]
   ])
   v(4pt)
+}
+
+// Doorloopt de entries en zet een sectiescheiding zodra het hoofdstuk wisselt.
+// _formularium_divider bestond al maar werd nergens aangeroepen, waardoor het
+// formularium één platte lijst was terwijl de LaTeX-kant per sectie groepeert.
+// Groepeert per hoofdstuk, zoals \printSectionFormulas in school-macros.sty.
+// De scheiding hangt alleen af van entry.section, dat in documentvolgorde is
+// vastgelegd -- niet van een query hier, want daarmee ging de paginering
+// terugkoppelen op de inhoud van het formularium.
+#let _formularium_body(entries) = {
+  let current = none
+  for entry in entries {
+    let sect = entry.at("section", default: none)
+    if sect != current {
+      if sect != none { _formularium_divider(sect) }
+      current = sect
+    }
+    let hits = query(label("frm-" + str(entry.idx)))
+    let page = if hits.len() > 0 { hits.first().location().page() } else { 0 }
+    _formularium_card(entry, page)
+  }
 }
 
 // Print formularium (single column)
@@ -491,9 +577,7 @@
     if entries.len() == 0 {
       emph[Nog geen formules geregistreerd.]
     } else {
-      for entry in entries {
-        _formularium_card(entry)
-      }
+      _formularium_body(entries)
     }
   }
 }
@@ -506,11 +590,7 @@
     if entries.len() == 0 {
       emph[Nog geen formules geregistreerd.]
     } else {
-      columns(2, {
-        for entry in entries {
-          _formularium_card(entry)
-        }
-      })
+      columns(2, _formularium_body(entries))
     }
   }
 }
@@ -523,9 +603,9 @@
 #let _symbol_entries = state("symbol-entries", ())
 #let _symbol_defined = state("symbol-defined", ())
 
-// sym: Define a symbol on first use (shows inline box), subsequent uses just render the symbol
-// Usage: #sym($alpha$, "Hoekversnelling", "rad/s²")
-#let sym(symbol, description, unit) = {
+// symbool: Define a symbol on first use (shows inline box), subsequent uses just render the symbol
+// Usage: #symbool($alpha$, "Hoekversnelling", "rad/s²")
+#let symbool(symbol, description, unit) = {
   let sym_key = repr(symbol)
   context {
     let defined = _symbol_defined.get()
@@ -540,20 +620,17 @@
         entries.push((symbol: symbol, description: description, unit: unit, page: current_page))
         entries
       })
+      // Een compacte definitieregel. Dit was een blok in een blok met ruime
+      // marges; drie symbolen na elkaar lazen als een kapotte opsomming en
+      // braken de leesloop van de lopende tekst.
       block(
         width: 100%,
-        fill: white,
-        stroke: none,
-        inset: (x: 6pt, y: 4pt),
+        above: 0.5em,
+        below: 0.5em,
+        stroke: (left: 2pt + schoolGray),
+        inset: (left: 7pt, top: 1pt, bottom: 1pt),
         [
-          #block(
-            width: 100%,
-            stroke: (left: 3pt + schoolGray),
-            inset: (left: 8pt, rest: 4pt),
-            [
-              *$#symbol$* --- #description #h(1fr) #text(size: 0.85em, fill: schoolGray, font: "Fira Sans")[#unit]
-            ],
-          )
+          *$#symbol$* --- #description #h(1fr) #text(size: 0.85em, fill: schoolGray, font: "Fira Sans")[#unit]
         ],
       )
     } else {
@@ -602,17 +679,22 @@
 #let important(content) = text(fill: schoolRed, weight: "bold")[#content]
 #let belangrijk = important  // Dutch alias matching LaTeX \belangrijk
 #let term(content) = text(fill: schoolBlue, weight: "bold")[#content]
-#let keyterm(content) = strong(content) // uses the global strong style with darkened blue
+// LaTeX: \keyterm{...} = \textbf{\color{schoolBlue!80!black}...}
+// De oude definitie was `strong(content)` met de comment "uses the global strong
+// style with darkened blue", maar er is geen `show strong` rule in dit bestand:
+// keyterm was gewoon vet en week dus af van de LaTeX-kant.
+#let keyterm(content) = text(fill: schoolBlue.darken(20%), weight: "bold")[#content]
 
 // --- Exam & Annotation Helpers ---
+// Zelfde rustige vorm als examenbox in school-macros.sty: blauw keyterm-label
+// met icoon en cursieve tekst. Dit had een rode balk links en een rood label,
+// wat een stuk schreeuweriger stond dan de LaTeX-kant.
 #let examenbox(body) = block(
   width: 100%,
-  stroke: (left: 2.5pt + schoolRed),
-  inset: (left: 10pt, y: 4pt),
-  above: 0.8em,
-  below: 0.8em,
+  above: 0.5em,
+  below: 0.5em,
   [
-    #text(fill: schoolRed, weight: "bold", font: "Fira Sans")[#ic-exam EXAMENTIP:]
+    #keyterm[#ic-exam EXAMENTIP:]
     #emph(body)
   ]
 )
@@ -696,18 +778,33 @@
 }
 
 // --- Chapter Page Styling ---
+// Eigen show rule voor de kop op deze pagina. De `set text(size: 2.5em)` die
+// hier stond deed niets: de level-1 show rule in project() zet een expliciete
+// tekstgrootte en wint daarvan. Resultaat was een normaal kleine kop, mét de
+// liniaal en de linkeruitspringing van een gewone hoofdstuktitel, midden op
+// een verder lege pagina.
 #let chapter_page(title, label: none) = {
   pagebreak(weak: true)
   set page(header: none) // Hide header on chapter pages
-  align(center + horizon)[
-    #block(width: 100%, inset: 2em)[
-      #set text(font: "Fira Sans", weight: "bold", size: 2.5em)
-      #v(-2em)
-      #heading(level: 1, outlined: true)[#title]
-      #if label != none { label }
-      #v(0.5em)
-      #line(length: 70%, stroke: 2pt + schoolBlue)
-    ]
+  [
+    #show heading.where(level: 1): it => {
+      // Dezelfde boekhouding als de gewone level-1 rule
+      counter(std-figure.where(kind: image)).update(0)
+      counter(std-figure.where(kind: table)).update(0)
+      counter(std-figure.where(kind: raw)).update(0)
+      _current_chapter.update(it.body)
+      align(center)[
+        #text(size: 2.4em, font: ("Fira Sans", "Liberation Sans"), weight: "bold")[
+          #if it.numbering != none { counter(heading).display(it.numbering) + h(0.5em) }#it.body
+        ]
+        #v(0.6em)
+        #line(length: 60%, stroke: 2pt + schoolBlue)
+      ]
+    }
+    #v(1fr)
+    #heading(level: 1, outlined: true)[#title]
+    #if label != none { label }
+    #v(1.4fr)
   ]
   pagebreak(weak: true)
 }

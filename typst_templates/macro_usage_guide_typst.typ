@@ -631,17 +631,17 @@ Aan het einde van je document kun je alle geregistreerde formules afdrukken:
 
 = Symbolen met \#sym
 
-De `#sym()` functie introduceert symbolen. Bij eerste gebruik wordt een volledige uitleg getoond; daarna alleen het symbool.
+De `#symbool()` functie introduceert symbolen. Bij eerste gebruik wordt een volledige uitleg getoond; daarna alleen het symbool.
 
 == Eerste vermelding
 
-#sym($F$, "Kracht", "N")
+#symbool($F$, "Kracht", "N")
 
-#sym($v$, "Snelheid", "m/s")
+#symbool($v$, "Snelheid", "m/s")
 
 == Herhaald gebruik
 
-Na de eerste vermelding toont `#sym(...)` alleen het symbool: #sym($F$, "Kracht", "N")
+Na de eerste vermelding toont `#symbool(...)` alleen het symbool: #symbool($F$, "Kracht", "N")
 
 Dit voorkomt herhaling en houdt je document overzichtelijk.
 
@@ -649,10 +649,10 @@ Code:
 #codeblock(lang: "typst", title: "Symbolen")[
   ```
   // Eerste gebruik (toont definitie):
-  #sym($F$, "Kracht", "N")
+  #symbool($F$, "Kracht", "N")
 
   // Herhaald gebruik (toont alleen F):
-  #sym($F$, "Kracht", "N")
+  #symbool($F$, "Kracht", "N")
   ```
 ]
 
@@ -836,7 +836,7 @@ $
   [Niet element], [`$in.not$`], [$in.not$],
   [Deelverzameling], [`$subset$`], [$subset$],
   [Vereniging], [`$union$`], [$union$],
-  [Doorsnede], [`$sect$`], [$sect$],
+  [Doorsnede], [`$inter$`], [$inter$],
   [Ledige verzameling], [`$emptyset$`], [$emptyset$],
 )
 

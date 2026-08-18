@@ -298,11 +298,11 @@ Dit is analoog aan de wet van Ohm voor elektrische circuits ($U = I R$), waarbij
   "Relucantie lucht en core",
   $ R_m = frac(l_c, mu_r mu_0 A_c) + frac(l_g, mu_0 A_g) $,
   [
-    $l_c$: lengte van de core \\
-    $mu_r$: relatieve permeabiliteit \\
-    $mu_0$: permeabiliteit van het vacuüm \\
-    $A_c$: doorsnede van de core \\
-    $l_g$: lengte van de air gap \\
+    $l_c$: lengte van de core \
+    $mu_r$: relatieve permeabiliteit \
+    $mu_0$: permeabiliteit van het vacuüm \
+    $A_c$: doorsnede van de core \
+    $l_g$: lengte van de air gap \
     $A_g$: doorsnede van de air gap
   ],
 )
@@ -411,9 +411,9 @@ $arrow.b.double$
 $ frac(v_1, v_2) = frac(N_1, N_2) $
 
 #frm("Spanningsverhouding", $ frac(v_1, v_2) = frac(N_1, N_2) $, [
-  $v_1$ [V]: spanning op de primaire wikkeling \\
-  $v_2$ [V]: spanning op de secundaire wikkeling \\
-  $N_1$ [-]: aantal windingen op de primaire wikkeling \\
+  $v_1$ [V]: spanning op de primaire wikkeling \
+  $v_2$ [V]: spanning op de secundaire wikkeling \
+  $N_1$ [-]: aantal windingen op de primaire wikkeling \
   $N_2$ [-]: aantal windingen op de secundaire wikkeling
 ])
 

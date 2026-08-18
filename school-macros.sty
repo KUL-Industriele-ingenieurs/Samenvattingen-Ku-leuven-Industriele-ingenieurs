@@ -35,11 +35,11 @@
 % --- Core Logic (Load First) ---
 \RequirePackage{etoolbox}
 \RequirePackage{xstring}
-\usepackage{siunitx}
-\usepackage{pdfpages}
-\usepackage{placeins}
-\usepackage[table]{xcolor}  % Voor kleuren in tabellen
-\usepackage{colortbl}     % Voor kleuren in tabellen
+% \RequirePackage i.p.v. \usepackage: in een .sty negeert \usepackage de
+% optieclash-detectie. placeins werd hier en verderop nog eens geladen.
+\RequirePackage{pdfpages}
+\RequirePackage[table]{xcolor}  % Voor kleuren in tabellen
+\RequirePackage{colortbl}       % Voor kleuren in tabellen
 
 % --- Encoding & Language ---
 \@ifpackageloaded{inputenc}{}{\RequirePackage[utf8]{inputenc}}
@@ -75,18 +75,34 @@
     }
 \fi
 
+% `spacing` (en font expansion) bestaan alleen in pdftex. Onder LuaLaTeX of
+% XeLaTeX gaf microtype daarop een error en werd er geen PDF geproduceerd --
+% net de engines waar de JetBrains Mono-tak hierboven om vraagt.
 \@ifpackageloaded{microtype}{}{
-    \RequirePackage[
-        activate={true,nocompatibility},
-        final,
-        tracking=true,
-        kerning=true,
-        spacing=true,
-        factor=1100,
-        stretch=10,
-        shrink=10,
-        letterspace=50
-    ]{microtype}
+    \ifPDFTeX
+        \RequirePackage[
+            activate={true,nocompatibility},
+            final,
+            tracking=true,
+            kerning=true,
+            spacing=true,
+            factor=1100,
+            stretch=10,
+            shrink=10,
+            letterspace=50
+        ]{microtype}
+    \else
+        % Alleen protrusion + tracking werken buiten pdftex; kerning/spacing
+        % geven daar een error i.p.v. een waarschuwing.
+        \RequirePackage[
+            activate={true,nocompatibility},
+            final,
+            tracking=true,
+            kerning=false,
+            spacing=false,
+            letterspace=50
+        ]{microtype}
+    \fi
 }
 \RequirePackage{parskip}
 \RequirePackage{setspace}
@@ -101,7 +117,11 @@
 \ifdefined\pdfsuppresswarningpagegroup
     \pdfsuppresswarningpagegroup=1
 \fi
-\microtypesetup{protrusion=true, expansion=true}
+\ifPDFTeX
+    \microtypesetup{protrusion=true, expansion=true}
+\else
+    \microtypesetup{protrusion=true, expansion=false}
+\fi
 
 % --- Math ---
 \@ifpackageloaded{mathtools}{}{\RequirePackage{mathtools}} % Extends amsmath
@@ -129,7 +149,9 @@
 
 % --- Graphics & Floats ---
 \@ifpackageloaded{graphicx}{}{\RequirePackage{graphicx}}
-\graphicspath{{assets/}{./}}
+% Ook de gedeelde assets/ in de repo-root, vanaf elke mapdiepte. Nodig voor
+% het logo in \kuleuventitle; een documentmap zit 1 tot 3 niveaus diep.
+\graphicspath{{assets/}{./}{../assets/}{../../assets/}{../../../assets/}}
 \@ifpackageloaded{float}{}{\RequirePackage{float}}
 \@ifpackageloaded{caption}{}{\RequirePackage{caption}}
 \@ifpackageloaded{subcaption}{}{\RequirePackage{subcaption}}
@@ -169,10 +191,11 @@
 \definecolor{codeLineNo}{RGB}{155, 158, 163}       % regelnummers
 
 % --- Modern Color Palette ---
+% coral is exact schoolOrange; als alias gedefinieerd zodat er maar een bron is.
 \definecolor{brandblue}{RGB}{52, 152, 219}
 \definecolor{deepblue}{RGB}{41, 128, 185}
 \definecolor{amber}{RGB}{243, 156, 18}
-\definecolor{coral}{RGB}{230, 126, 34}
+\colorlet{coral}{schoolOrange}
 \definecolor{slate}{RGB}{52, 73, 94}
 \definecolor{lightgray}{RGB}{236, 240, 241}
 \definecolor{schoolPurple}{RGB}{155, 89, 182}
@@ -244,13 +267,22 @@
     \RequirePackage{hyperref}
     \hypersetup{
         colorlinks=true,
-        linkcolor=black,
+        linkcolor=schoolBlue,
         urlcolor=schoolBlue,
         citecolor=schoolBlue,
         hypertexnames=false,
     }
 }
 
+
+% Inhoudsopgave in zwart. linkcolor staat op schoolBlue voor kruisverwijzingen
+% in de tekst, maar een volledig blauwe inhoudstabel is onrustig en zegt niets:
+% daar is elk item een link.
+\AtBeginDocument{%
+    \let\school@oldtoc\tableofcontents
+    \renewcommand{\tableofcontents}{%
+        \begingroup\hypersetup{linkcolor=black}\school@oldtoc\endgroup}%
+}
 
 \@ifpackageloaded{bookmark}{}{\RequirePackage{bookmark}}
 \@ifpackageloaded{cleveref}{}{\RequirePackage[dutch, nameinlink, capitalise]{cleveref}}
@@ -259,33 +291,34 @@
 \crefname{equation}{vergelijking}{vergelijkingen}
 \Crefname{equation}{Vergelijking}{Vergelijkingen}
 \crefname{figure}{figuur}{figuren}
-\Crefname{figure}{Figuur}{Figuur}
+\Crefname{figure}{Figuur}{Figuren}
 \crefname{table}{tabel}{tabellen}
-\Crefname{table}{Tabel}{Tabel}
+\Crefname{table}{Tabel}{Tabellen}
 \crefname{section}{sectie}{secties}
 \Crefname{section}{Sectie}{Secties}
 \crefname{chapter}{hoofdstuk}{hoofdstukken}
 \Crefname{chapter}{Hoofdstuk}{Hoofdstukken}
 
-% Redefine \ref to add underline (linkcolor=black handles the color)
-% Wrapped in \AtBeginDocument to ensure it runs AFTER cleveref/hyperref initialization
-\AtBeginDocument{
-    \let\school@oldref\ref
-    \renewcommand{\ref}[1]{\underline{\school@oldref{#1}}}
-}
+% Verwijzingen dragen hun betekenis via kleur (linkcolor=schoolBlue hierboven).
+% Hier stond een \renewcommand die elke \ref onderstreepte. Op papier leest dat
+% als een kapotte hyperlink, het botste met de liniaal onder elke \section, en
+% \cref werd niet onderstreept -- dus het was ook nog inconsistent.
 
 % ============================================================================ 
 %                           TCOLORBOX ARCHITECTURE
 % ============================================================================ 
 
 \tcbset{
+    % xshift=0mm: de titeltab lijnt uit op de linkerrand van de body. Stond op
+    % 5mm, waardoor tekst, boxbody en boxtitel drie verschillende linkerranden
+    % hadden. `drop fuzzy shadow` is weg: een slagschaduw onder elke box is het
+    % meest gedateerde element op de pagina en voegt niets toe op papier.
     schoolbox/.style={ 
         enhanced, breakable,
         arc=2pt, boxrule=0.5pt,
-        attach boxed title to top left={xshift=5mm, yshift*=-\tcboxedtitleheight/2},
-        boxed title style={sharp corners, rounded corners=northeast, drop fuzzy shadow, colback=#1},
+        attach boxed title to top left={xshift=0mm, yshift*=-\tcboxedtitleheight},
+        boxed title style={sharp corners, rounded corners=north, boxrule=0pt, colback=#1},
         colframe=#1, colback=white,
-        drop fuzzy shadow,
         fonttitle=\bfseries\sffamily,
         before skip=12pt,
         after skip=12pt
@@ -345,14 +378,12 @@
     schoolbox=schoolGreen,
     schoolTitle={#1}{\faPenNib}{Voorbeeld:},
 }
-\newtcolorbox{oefenblok}[1][Oefening]{% 
-    schoolbox=schoolGreen,
-    title={\faPenNib\ \textbf{#1}},
-}
 \newtcolorbox{oefening}[1][Oefening]{% 
     schoolbox=schoolGreen,
     title={\faPenNib\ \textbf{#1}},
 }
+% oefenblok was een byte-identieke tweede definitie; nu een echte alias.
+\newenvironment{oefenblok}[1][Oefening]{\oefening[#1]}{\endoefening}
 
 \newtcblisting{codeblock}[2][]{%
     enhanced, breakable,
@@ -389,20 +420,19 @@
     coltitle=codeText,
     colbacktitle=codeTitleBar,
     fonttitle=\sffamily\bfseries\small,
-    attach boxed title to top left={xshift=0mm, yshift=0mm},
-    boxed title style={
-        colback=codeTitleBar,
-        colframe=codeBorder,
-        boxrule=0.6pt,
-        arc=2pt,
-        left=3mm, right=3mm, top=1mm, bottom=1mm,
-    },
-    top=6mm,
+    % Titelbalk over de volle breedte, zoals de editor-titelbalk in
+    % school-template.typ. Dit was een losse tab die met een zichtbaar gat
+    % boven de body zweefde en een andere afronding had dan de schoolbox-tabs.
+    titlerule=0pt,
+    top=2mm,
 }
 
-\newenvironment{examenbox}[1][]{% 
+% Rustige vorm: blauw \keyterm-label met icoon, cursieve tekst, geen balk en
+% geen rood. De Typst-kant (#examenbox) is hier naartoe gebracht.
+% Het optionele argument overschrijft het label; werd voorheen genegeerd.
+\newenvironment{examenbox}[1][EXAMENTIP:]{% 
     \par\vspace{0.5\baselineskip}%
-    \noindent\keyterm{\faExclamationCircle\ EXAMENTIP:} \itshape
+    \noindent\keyterm{\faExclamationCircle\ #1} \itshape
 }{% 
     \par\vspace{0.5\baselineskip}%
 }
@@ -476,7 +506,7 @@
         fonttitle=\bfseries\sffamily,
     ]
         {\centering\large $\displaystyle #2$\par}%
-        \vspace{2pt}%
+        \vspace{6pt}%
         {\small #3}\label{frm:\theFormulariumEntryCounter}%
     \end{tcolorbox}%
     \protected@write\@auxout{}{\string\addformulariumentry{\thesection}{\@currentlabelname}{\unexpanded{#1}}{\unexpanded{#2}}{\unexpanded{#3}}{\theFormulariumEntryCounter}}%
@@ -580,11 +610,14 @@
 % ============================================================================ 
 %                           PAGE LAYOUT
 % ============================================================================ 
-\geometry{left=2.0cm, right=2.0cm, top=2.5cm, bottom=2.5cm}
+% Gelijk aan de marges in school-template.typ.
+\geometry{left=1.5cm, right=1.5cm, top=2.0cm, bottom=2.0cm}
 
 \newif\ifcompactmode
 \newcommand{\enablecompactmode}{
-    \geometry{left=2.0cm, right=2.0cm, top=2.5cm, bottom=2.5cm}
+    % Stond op exact dezelfde waarden als de default \geometry hierboven,
+    % waardoor compact mode niets aan de bladspiegel veranderde.
+    \geometry{left=1.5cm, right=1.5cm, top=2.0cm, bottom=2.0cm}
     \setlist{noitemsep, topsep=0pt, parsep=0pt, partopsep=0pt}
     \setlength{\parskip}{0.3em}
     \setlength{\parindent}{0pt}
@@ -621,27 +654,70 @@
 \fi
 \renewcommand{\headrulewidth}{0.3pt}
 
+% ============================================================================ 
+%                           INTRO / DISCLAIMER
+% ============================================================================ 
+% Zelfde vorm als het disclaimer-blok in school-template.typ: lichte vulling,
+% 3pt blauwe balk links, afgeronde hoeken. De standaard abstract-omgeving was
+% een gecentreerde kop met smalle marges en zag er totaal anders uit dan de
+% Typst-kant. Bestaande documenten met \begin{abstract} krijgen dit vanzelf.
+\newtcolorbox{schoolintro}{
+    enhanced, breakable,
+    colback=black!2, colframe=black!2,
+    borderline west={3pt}{0pt}{schoolBlue},
+    arc=4pt, boxrule=0pt,
+    left=12pt, right=12pt, top=10pt, bottom=10pt,
+    before skip=12pt, after skip=16pt,
+    % Niet uitvullen: de GitHub-URL is een lang onbreekbaar woord en trok in
+    % uitgevulde tekst gaten van een halve regel breed.
+    fontupper=\raggedright,
+}
+\renewenvironment{abstract}{\begin{schoolintro}}{\end{schoolintro}}
+
+% Hoeveel hoofdtitels in de linkermarge steken. Op 0pt zetten schakelt het uit.
+\newlength{\schoolTitleOutdent}
+\setlength{\schoolTitleOutdent}{0.9em}
+
 % Section Styling
 \ifcsdef{chapter}{ 
     \titleclass{\chapter}{straight}
-    \titleformat{\chapter}[hang]{\normalfont\large\bfseries\sffamily}{\thechapter}{1em}{}[\titlerule]
-    \titleformat{name=\chapter,numberless}[hang]{\normalfont\large\bfseries\sffamily}{}{0pt}{}[\titlerule]
-    \titlespacing*{\chapter}{0pt}{10pt}{6pt}
+    \titleformat{\chapter}[hang]{\normalfont\LARGE\bfseries\sffamily}{\thechapter}{0.5em}{}[\titlerule]
+    \titleformat{name=\chapter,numberless}[hang]{\normalfont\LARGE\bfseries\sffamily}{}{0pt}{}[\titlerule]
+    % Negatieve linkerinspring: hoofdtitels steken iets in de marge, zodat de
+    % structuur al zichtbaar is als je door het document bladert.
+    \titlespacing*{\chapter}{-\schoolTitleOutdent}{14pt}{6pt}
     \preto{\chapter}{\FloatBarrier}
 }{}
 
-\titleformat{\section}[hang]{\normalfont\large\bfseries\sffamily\raggedright}{\thesection}{1em}{}[\titlerule]
-\titleformat{name=\section,numberless}[hang]{\normalfont\large\bfseries\sffamily\raggedright}{}{0pt}{}[\titlerule]
-\titleformat{name=\subsection,numberless}[hang]{\normalfont\normalsize\bfseries\sffamily\raggedright}{}{0pt}{}[\titlerule]
-\titlespacing*{\section}{0pt}{10pt}{6pt}
+% De derde parameter van \titleformat is de ruimte tussen nummer en titel.
+% Die stond op 1em; bij \LARGE is dat ~17pt en dat gaapte zichtbaar. Nu 0.5em,
+% gelijk aan de h(0.5em) in de heading rules van school-template.typ.
+%
+% Alleen \section krijgt een liniaal. Een genummerde \subsection had er geen,
+% een ongenummerde wel -- dat was al inconsistent -- en met een liniaal onder
+% beide niveaus viel het verschil tussen \section en \subsection weg.
+\titleformat{\section}[hang]{\normalfont\Large\bfseries\sffamily\raggedright}{\thesection}{0.5em}{}[\titlerule]
+\titleformat{name=\section,numberless}[hang]{\normalfont\Large\bfseries\sffamily\raggedright}{}{0pt}{}[\titlerule]
+\titleformat{name=\subsection,numberless}[hang]{\normalfont\large\bfseries\sffamily\raggedright}{}{0pt}{}
+\titlespacing*{\section}{-\schoolTitleOutdent}{14pt}{6pt}
 
-\titleformat{\subsection}[hang]{\normalfont\normalsize\bfseries\sffamily\raggedright}{\thesubsection}{1em}{}
-\titlespacing*{\subsection}{0pt}{8pt}{4pt}
+\titleformat{\subsection}[hang]{\normalfont\large\bfseries\sffamily\raggedright}{\thesubsection}{0.5em}{}
+\titlespacing*{\subsection}{0pt}{10pt}{4pt}
 
 % Float Control
-\setlength{\floatsep}{6pt plus 1pt minus 1pt}
-\setlength{\textfloatsep}{8pt plus 1pt minus 1pt}
-\setlength{\intextsep}{6pt plus 1pt minus 1pt}
+% Ruimer dan de 6-8pt die hier stond. Met zulke krappe waarden kon LaTeX twee
+% [ht]-floats plus tekst op een pagina persen; in combinatie met \FloatBarrier
+% werden die floats er dan uitgeduwd bovenop de lopende tekst.
+\setlength{\floatsep}{12pt plus 2pt minus 2pt}
+\setlength{\textfloatsep}{16pt plus 2pt minus 4pt}
+\setlength{\intextsep}{12pt plus 2pt minus 2pt}
+
+% Hoeveel van een pagina floats mogen innemen. Zonder deze grenzen laat LaTeX
+% een pagina toe die vrijwel volledig uit floats bestaat.
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.70}
+\renewcommand{\textfraction}{0.10}
+\renewcommand{\floatpagefraction}{0.75}
 
 % Caption Styling
 \captionsetup{skip=3pt,aboveskip=3pt,belowskip=3pt,font={small,sf},labelfont=bf}
@@ -724,7 +800,7 @@
 \newcommand*{\paren}[1]{\left(#1\right)}
 \newcommand*{\bracket}[1]{\left[#1\right]}
 \newcommand*{\curlybrace}[1]{\left\{#1\right\}}
-\newcommand*{\avg}[1]{\left\langle#1\right\>}
+\newcommand*{\avg}[1]{\left\langle#1\right\rangle}
 
 \newcommand*{\half}{\frac{1}{2}}
 \newcommand*{\third}{\frac{1}{3}}
@@ -752,22 +828,70 @@
 \newcommand*{\NOTE}[1]{\textcolor{schoolOrange}{\textbf{[NOTE: #1]}}}
 \newcommand*{\citeme}{\textcolor{red}{[CITATIE NODIG]}}
 
-\NewDocumentCommand{\kuleuventitle}{ m m m m }{% 
+% \IfFileExists doorzoekt \graphicspath niet, dus het logo wordt hier expliciet
+% op de bekende relatieve dieptes gezocht. Ontbreekt het, dan valt de titelpagina
+% terug op de tekstversie i.p.v. te breken.
+\makeatletter
+\newcommand*{\schoolLogoPath}{}
+\newcommand*{\schoolFindLogo}{%
+    \let\schoolLogoPath\@empty
+    \@for\school@dir:={assets,../assets,../../assets,../../../assets}\do{%
+        \ifx\schoolLogoPath\@empty
+            \edef\school@try{\school@dir/Ku Leuven logo.png}%
+            \IfFileExists{\school@try}{\let\schoolLogoPath\school@try}{}%
+        \fi
+    }%
+}
+\makeatother
+
+% Zelfde opbouw als de titelpagina in school-template.typ: verdeling met
+% \vfill i.p.v. vaste sprongen, blauwe scheidingslijn, vak en jaartal grijs,
+% en het KU Leuven-logo (via \graphicspath hierboven vanaf elke mapdiepte).
+\makeatletter
+% Ondertitel (vak / "Samenvatting"). Leeg tenzij gezet.
+\newcommand*{\schoolsubtitle}{}
+\@ifundefined{subtitle}{%
+    \newcommand*{\subtitle}[1]{\renewcommand*{\schoolsubtitle}{#1}}%
+}{}
+
+% Titelpagina, zelfde opbouw als in school-template.typ: verdeling met \vfill,
+% blauwe scheidingslijn, ondertitel en datum grijs, en het KU Leuven-logo.
+% Dit vervangt de standaard \maketitle, zodat documenten die \title/\author
+% gebruiken dezelfde pagina krijgen als documenten met \kuleuventitle -- die
+% twee zagen er tot nu toe volledig verschillend uit.
+\renewcommand{\maketitle}{%
     \begin{titlepage}
         \centering
-        \vspace*{2cm}%
-        {\Huge\bfseries\sffamily #1\par}
-        \vspace{0.5cm}%
-        {\Large\sffamily #2\par}
-        \vspace{2cm}%
-        {\large\sffamily #3\par}
-        \vspace{1cm}%
-        {\large\sffamily #4\par}
-        \vfill
-        {\large\sffamily KU Leuven\par}
-        {\small\sffamily Faculteit Industriële Ingenieurswetenschappen\par}
+        \sffamily
+        \vspace*{0pt}%
+        \vfill\vfill\vfill
+        {\Huge\bfseries \@title\par}
+        \ifx\schoolsubtitle\@empty\else
+            \vspace{0.7cm}{\Large\color{black!60}\schoolsubtitle\par}%
+        \fi
+        \vspace{0.9cm}%
+        {\color{schoolBlue}\rule{0.35\linewidth}{1pt}\par}
+        \vspace{0.9cm}%
+        {\large \@author\par}
+        \vspace{0.35cm}%
+        {\large\color{black!60}\@date\par}
+        \vfill\vfill\vfill\vfill
+        \schoolFindLogo
+        \ifx\schoolLogoPath\@empty\else
+            \includegraphics[width=0.38\linewidth]{\schoolLogoPath}\par
+            \vspace{0.8cm}%
+        \fi
+        {KU Leuven\par}
+        {\small\color{black!60} Faculteit Industriële Ingenieurswetenschappen\par}
+        \vfill\vfill
     \end{titlepage}
 }
+
+% Dunne wrapper: titel, vak, auteur, jaar -> dezelfde titelpagina.
+\NewDocumentCommand{\kuleuventitle}{ m m m m }{%
+    \title{#1}\subtitle{#2}\author{#3}\date{#4}\maketitle
+}
+\makeatother
 
 % 3D Surface Plot
 \NewDocumentCommand{\plotthreeD}{ O{} m m }{% 
