@@ -307,21 +307,41 @@
 % ============================================================================ 
 %                           TCOLORBOX ARCHITECTURE
 % ============================================================================ 
+% NB: begint de inhoud van een callout meteen met een tabel of een display-
+% formule, zet er dan een lege regel tussen. Anders komt de titel op dezelfde
+% regel naast dat blok te staan in plaats van erboven.
+%
+% Kopje van een callout: icoon + titel in de accentkleur, gevolgd door een punt.
+% Die punt alleen als de titel niet al op een leesteken eindigt, anders krijg je
+% "Let Op!." Staat via `before upper` voor de inhoud, zodat de titel in dezelfde
+% alinea meeloopt in plaats van in een eigen titelbalk.
+\newcommand{\schoolRunInHead}[3]{%
+    \StrRight{#3}{1}[\schoolRunInLast]%
+    \textcolor{#1}{\bfseries\sffamily #2\ #3%
+        \IfSubStr{.?!:;}{\schoolRunInLast}{}{.}}\ %
+}
+
 
 \tcbset{
-    % xshift=0mm: de titeltab lijnt uit op de linkerrand van de body. Stond op
-    % 5mm, waardoor tekst, boxbody en boxtitel drie verschillende linkerranden
-    % hadden. `drop fuzzy shadow` is weg: een slagschaduw onder elke box is het
-    % meest gedateerde element op de pagina en voegt niets toe op papier.
+    % Variant C: dunne gekleurde balk links, gekleurde titel als aanloop in de
+    % lopende tekst. Geen kader, geen achtergrond, geen titelbalk.
+    %
+    % Dit verving een volledig omkaderde box met gevulde titeltab. Die kostte
+    % per callout ongeveer drie keer zoveel hoogte als de inhoud zelf, en op
+    % een pagina met een paar callouts werd het kader het luidste element.
     schoolbox/.style={ 
-        enhanced, breakable,
-        arc=2pt, boxrule=0.5pt,
-        attach boxed title to top left={xshift=0mm, yshift*=-\tcboxedtitleheight},
-        boxed title style={sharp corners, rounded corners=north, boxrule=0pt, colback=#1},
-        colframe=#1, colback=white,
-        fonttitle=\bfseries\sffamily,
-        before skip=12pt,
-        after skip=12pt
+        blanker, breakable,
+        left=9pt, right=0pt, top=1pt, bottom=1pt,
+        borderline west={2pt}{0pt}{#1},
+        before skip=0.8\baselineskip,
+        after skip=0.8\baselineskip
+    },
+    % Titel als gekleurde aanloop. Wordt door de omgevingen hieronder gezet.
+    % #1 = accentkleur, #2 = icoon, #3 = titeltekst.
+    schoolRunIn/.code n args={3}{%
+        \ifstrempty{#3}{}{%
+            \tcbset{before upper={\schoolRunInHead{#1}{#2}{#3}}}%
+        }%
     },
     schoolstyle/.style={schoolbox=schoolBlue},
     schoolbase/.style={
@@ -330,57 +350,51 @@
     schoolshadow/.style={
         drop fuzzy shadow={opacity=0.15, shadow xshift=0.5mm, shadow yshift=-0.5mm}
     },
+    % Bewaard voor documenten die deze sleutels rechtstreeks gebruiken; ze
+    % zetten nu ook een aanloop in plaats van een titelbalk.
     schoolTitle/.code n args={3}{%
-        \ifstrempty{#1}{}{%
-            \tcbset{title={#2 \textbf{#3} #1}}%
-        }%
+        \ifstrempty{#1}{}{\tcbset{schoolRunIn={schoolBlue}{#2}{#3 #1}}}%
     },
     schoolTitleSimple/.code n args={2}{%
-        \ifstrempty{#1}{}{%
-            \tcbset{title={#2 \textbf{#1}}}%
-        }%
+        \ifstrempty{#1}{}{\tcbset{schoolRunIn={schoolBlue}{#2}{#1}}}%
     }
 }
 
 % --- Semantic Environments ---
 
-\newtcolorbox{theorembox}[1][]{
+% Standaardtitels komen overeen met school-template.typ, zodat een callout
+% zonder expliciete titel aan beide kanten hetzelfde woord toont.
+\newtcolorbox{theorembox}[1][Theorem]{
     schoolbox=deepblue,
-    colbacktitle=deepblue,
-    fonttitle=\bfseries\sffamily,
-    schoolTitleSimple={#1}{\faBook},
+    schoolRunIn={deepblue}{\faBook}{#1},
 }
 
-\newtcolorbox{theorie}[1][]{
+\newtcolorbox{theorie}[1][Theorie]{
     schoolbox=schoolBlue,
-    schoolTitleSimple={#1}{\faBook},
+    schoolRunIn={schoolBlue}{\faBook}{#1},
 }
-% Fixed: Broken \begin environment
-\newenvironment{theorieblok}[1][]{\begin{theorie}[#1]}{\end{theorie}}
+\newenvironment{theorieblok}[1][Theorie]{\theorie[#1]}{\endtheorie}
 
-\newtcolorbox{schoolconcept}[1][]{% 
+\newtcolorbox{schoolconcept}[1][Concept]{% 
     schoolbox=schoolTeal,
-    colback=schoolTeal!5!white,
-    schoolTitle={#1}{\faLightbulb}{Concept:},
+    schoolRunIn={schoolTeal}{\faLightbulb}{#1},
 }
-% Fixed: Broken \begin environment
-\newenvironment{conceptbox}[1][]{\begin{schoolconcept}[#1]}{\end{schoolconcept}}
+\newenvironment{conceptbox}[1][Concept]{\schoolconcept[#1]}{\endschoolconcept}
 
-\newtcolorbox{waarschuwing}[1][]{% 
+\newtcolorbox{waarschuwing}[1][Let Op!]{% 
     schoolbox=schoolRed,
-    schoolTitle={#1}{\faExclamationTriangle}{Let Op!},
-    colback=schoolRed!5!white,
+    schoolRunIn={schoolRed}{\faExclamationTriangle}{#1},
 }
-% Fixed: Broken \begin environment
-\newenvironment{warningbox}[1][]{\begin{waarschuwing}[#1]}{\end{waarschuwing}}
+\newenvironment{warningbox}[1][Let Op!]{\waarschuwing[#1]}{\endwaarschuwing}
 
-\newtcolorbox{voorbeeld}[1][]{% 
+\newtcolorbox{voorbeeld}[1][Voorbeeld]{% 
     schoolbox=schoolGreen,
-    schoolTitle={#1}{\faPenNib}{Voorbeeld:},
+    schoolRunIn={schoolGreen}{\faPenNib}{#1},
 }
+
 \newtcolorbox{oefening}[1][Oefening]{% 
     schoolbox=schoolGreen,
-    title={\faPenNib\ \textbf{#1}},
+    schoolRunIn={schoolGreen}{\faPenNib}{#1},
 }
 % oefenblok was een byte-identieke tweede definitie; nu een echte alias.
 \newenvironment{oefenblok}[1][Oefening]{\oefening[#1]}{\endoefening}

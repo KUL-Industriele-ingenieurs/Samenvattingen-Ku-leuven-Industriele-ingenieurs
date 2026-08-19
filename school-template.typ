@@ -3,22 +3,22 @@
 // Mirrors the styling of school-macros.sty v4.2
 
 // --- External Packages (from Typst Universe) ---
-#import "@preview/unify:0.7.1": num, numrange, qty, qtyrange  // siunitx equivalent
+#import "@preview/unify:0.8.1": num, numrange, qty, qtyrange  // siunitx equivalent
 // physica < 0.9.7 gebruikt `angle.l`, dat sinds Typst 0.15 niet meer bestaat.
 // Elke aanroep van #braket / #ket / #bra brak daarop. Niet terugzetten naar 0.9.5.
 #import "@preview/physica:0.9.8": *     // Physics math: derivatives, brakets, etc.
-#import "@preview/cetz:0.4.2"
-#import "@preview/cetz-plot:0.1.3"
+#import "@preview/cetz:0.5.2"
+#import "@preview/cetz-plot:0.1.4"
 #let cetz = cetz
 #let chart = cetz-plot.chart
 #let plot = cetz-plot.plot
 #import "@preview/wrap-it:0.1.1": wrap-content, wrap-top-bottom
-#import "@preview/equate:0.3.2"
-#import "@preview/cetz-venn:0.1.4"
-#import "@preview/oasis-align:0.3.3": *
-#import "@preview/zap:0.5.0"
+#import "@preview/equate:0.3.3"
+#import "@preview/cetz-venn:0.2.0"
+#import "@preview/oasis-align:0.4.1": *
+#import "@preview/zap:0.6.0"
 #let zap = zap
-#import "@preview/mannot:0.3.1"
+#import "@preview/mannot:0.4.0"
 #let markrect = mannot.markrect
 #let mark = mannot.mark
 #let markul = mannot.markul
@@ -350,51 +350,36 @@
 }
 // --- Custom Boxes (Mirrors tcolorbox schoolbox) ---
 
-#let schoolbox(title, color, icon: none, bg: none, body) = {
-  let resolved-bg = if bg == none { color.lighten(96%) } else { bg }
-  v(8pt)
-  // Title strip
-  block(
-    width: 100%,
-    sticky: true,
-    spacing: 0pt,
-    above: 0pt,
-    below: 0pt,
-    {
-      // Titeltab lijnt uit op de linkerrand van de body. Stond op dx: 8pt,
-      // waardoor er per pagina drie linkerranden waren (tekst op de marge,
-      // boxbody op de marge, boxtitel 8 pt naar binnen). Dat leest als een
-      // uitlijnfout, niet als vormgeving.
-      block(
-        fill: color,
-        inset: (x: 10pt, y: 5pt),
-        radius: (top-left: 4pt, top-right: 4pt),
-        below: 0pt,
-        text(fill: white, weight: "bold", font: "Fira Sans", size: 10pt)[
-          #if icon != none [ #icon #h(0.3em) ]
-          #title
-        ],
-      )
-    },
-  )
-  // Body
-  block(
-    width: 100%,
-    fill: resolved-bg,
-    stroke: (
-      left: 0.5pt + color,
-      right: 0.5pt + color,
-      bottom: 0.5pt + color,
-      top: 0.5pt + color,
-    ),
-    radius: (bottom-left: 2pt, bottom-right: 2pt, top-right: 2pt),
-    inset: 8pt,
-    above: 0pt,
-    breakable: true,
-    body,
-  )
-  v(8pt)
-}
+// Variant C: een dunne gekleurde balk links en een gekleurde titel als aanloop
+// in de lopende tekst. Geen kader, geen achtergrond, geen titelbalk.
+//
+// Dit verving een volledig omkaderde box met gevulde titeltab. Die kostte per
+// callout ~3x zoveel hoogte als de inhoud zelf, en op een pagina met een paar
+// callouts werd het kader het luidste element op het blad.
+//
+// `bg` blijft in de signatuur staan zodat bestaande aanroepen blijven werken,
+// maar er is geen achtergrond meer om te zetten.
+#let schoolbox(title, color, icon: none, bg: none, body) = block(
+  width: 100%,
+  above: 0.8em,
+  below: 0.8em,
+  stroke: (left: 2pt + color),
+  inset: (left: 9pt, top: 1pt, bottom: 1pt),
+  {
+    if title != none and title != "" {
+      // Punt alleen als de titel niet al op leesteken eindigt, anders krijg je
+      // "Let Op!." en "Waarom deze som?."
+      let punct = if type(title) == str and title.len() > 0 and (
+        title.last() in (".", "?", "!", ":", ";")
+      ) { "" } else { "." }
+      text(fill: color, weight: "bold", font: ("Fira Sans", "Liberation Sans"))[
+        #if icon != none [#icon #h(0.25em)]#title#punct
+      ]
+      h(0.35em)
+    }
+    body
+  },
+)
 
 #let theorie(title: "Theorie", body) = schoolbox(title, schoolBlue, icon: ic-book, body)
 #let voorbeeld(title: "Voorbeeld", body) = schoolbox(title, schoolGreen, icon: ic-pen, body)
@@ -483,6 +468,19 @@
 #let _formularium_entries = state("formularium-entries", ())
 #let _formularium_counter = counter("formularium-counter")
 
+// Zet een formule in displaystyle, maar alleen als het echt een losse
+// vergelijking is. Sommige frm()-aanroepen geven een heel content-blok mee met
+// eigen #v()-ruimte eromheen (nodig voor mannot-annotaties boven en onder de
+// formule); dat in math.equation wikkelen slikte die ruimte op en liet de
+// annotaties over de omringende tekst vallen.
+#let _as-display(formula) = {
+  if type(formula) == content and formula.func() == math.equation {
+    if formula.at("block", default: false) { formula } else { math.equation(block: true, formula) }
+  } else {
+    formula
+  }
+}
+
 // frm: Display a formula box (orange) and register it for the formularium
 // Usage: #frm("Wet van Ohm", $U = I dot R$, [Beschrijving...])
 #let frm(title, formula, description) = {
@@ -506,7 +504,7 @@
     #set align(center)
     // block: true -> displaystyle. Zonder dit worden breuken en integralen in
     // de krappe inline-vorm gezet, precies wat \displaystyle in LaTeX voorkomt.
-    #text(size: 1.1em)[#math.equation(block: true, formula)]
+    #text(size: 1.1em)[#_as-display(formula)]
     #v(2pt)
     #set align(left)
     #text(size: 0.9em)[#description]
@@ -541,7 +539,7 @@
       [*#entry.title*], none, link(label("frm-" + str(entry.idx)), text(size: 0.75em, fill: schoolBlue)[p.#page]),
     )
     #v(2pt)
-    #align(center, text(size: 1.1em)[#math.equation(block: true, entry.formula)])
+    #align(center, text(size: 1.1em)[#_as-display(entry.formula)])
     #v(2pt)
     #text(size: 0.9em, style: "italic")[#entry.description]
   ])

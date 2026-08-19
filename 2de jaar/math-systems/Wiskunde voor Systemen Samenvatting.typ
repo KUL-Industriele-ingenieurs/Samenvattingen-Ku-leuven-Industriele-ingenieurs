@@ -19,6 +19,11 @@
 // Tip: om tijdelijk een hoofdstuk uit te sluiten, zet je zijn #include in
 // commentaar.
 
+// --------------------------- DEEL 0: VOORKENNIS ------------------------------
+// Stond eerst als appendix achteraan, maar dit is geen bijlage: je hebt het
+// nodig vanaf Deel 2, dus het hoort vooraan.
+#include "0.Herhaling afgeleiden, integralen en differentiaalvergelijkingen.typ"
+
 // ----------------------------- DEEL 1: INLEIDING -----------------------------
 #include "1.Signalen en systemen.typ"
 
@@ -31,9 +36,3 @@
 // --------------------- DEEL 3: WISKUNDIGE SYSTEEMTHEORIE ---------------------
 #include "6.LTC-systemen.typ"
 #include "7.Eigenwaarden en eigenvectoren.typ"
-
-// ============================================================================
-//                              APPENDICES
-// ============================================================================
-// Voorkennis: staat niet in de vakinhoud, maar is nodig voor Deel 2 en 3.
-#include "A.Herhaling afgeleiden, integralen en differentiaalvergelijkingen.typ"

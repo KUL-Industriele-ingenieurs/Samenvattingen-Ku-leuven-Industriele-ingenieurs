@@ -76,14 +76,14 @@ Bij de nyquist plot ga je niet kijken naar amplitudes maar je gaan in het comple
   De amplitude moet je uitrekenen door je log toe te voegen _je frequentie is in log in de bode plot_ en dan is de formule:
 
   $A(omega) = 20 log_10(|H(j omega)|) = 20 log_10(1/(tau omega))$
-  $ = markhl(-20 log_10(tau omega)) quad quad "-20 is de helling in db per decade" $
+  $ = bold(-20 log_10(tau omega)) quad quad "-20 is de helling in db per decade" $
 
 
   Als $omega = 1/tau$ dan is $A(omega) = -20 log_10(1) = 0$ (log (1) = 0)
 
   We hebben het nulpunt maar niet de helling.
 
-  $ 20 log_10(1/(tau omega)) = 20 log_10(1) - 20 log_10(tau omega) = markhl(-20 log_10(tau omega)) $
+  $ 20 log_10(1/(tau omega)) = 20 log_10(1) - 20 log_10(tau omega) = bold(-20 log_10(tau omega)) $
 
 
   *Nyquist plot*
@@ -132,7 +132,7 @@ $ H(j omega) = tau j omega = underbrace(j, "fase") dot underbrace(tau omega, "am
 De fase is constant: we hebben een positief imaginair getal $arrow.r.double angle(H(j omega)) = +90 deg$
 
 De amplitude in dB:
-$ A(omega) = 20 log_10(|H(j omega)|) = 20 log_10(tau omega) = markhl(+20 log_10(tau omega)) $
+$ A(omega) = 20 log_10(|H(j omega)|) = 20 log_10(tau omega) = bold(+20 log_10(tau omega)) $
 
 Dit is een rechte lijn met helling $+20 "dB/decade"$ (het spiegelbeeld van de integrator).
 
@@ -170,7 +170,7 @@ Weer 3 verschillende waarden van $omega$:
 Als $omega$ heel groot is dan kunnen we die 1 verwaarlozen want $1 <<< omega$
 Met de 1 weg krijgen we terug de ideale integrator
 
-- $ omega >>> 1 arrow.r.double A(omega) = -20 log(K) markhl(- 20 log(tau omega)) $
+- $ omega >>> 1 arrow.r.double A(omega) = -20 log(K) bold(- 20 log(tau omega)) $
 
 Voor elke "decade" (factor 10) van $omega$ gaat de amplitude met -20 db afnemen.
 
@@ -354,7 +354,7 @@ Een voorbeeld van een 2de orde all-pole systeem is een massa-veerdemper systeem.
 
 Deze formule toont een massa-veerdemper systeem.
 
-$ markhl(H(s) = frac(K_(D C) omega_n^2, s^2 + 2 zeta omega_n s + omega_n^2)) $
+$ bold(H(s) = frac(K_(D C) omega_n^2, s^2 + 2 zeta omega_n s + omega_n^2)) $
 
 *Bode plot*
 
@@ -433,7 +433,7 @@ $ arrow.b.double $
 
 #voorbeeld(title: "Hogere orde systeem")[
 
-  $ markhl(H(s) = frac(1 +5s, s(10+10s))) $
+  $ bold(H(s) = frac(1 +5s, s(10+10s))) $
 
   *Stap 1 — Normaliseren naar standaardvorm:*
 
@@ -472,7 +472,7 @@ $ arrow.b.double $
 
 Een *Bode* en *Nyquist* plot geven ons meer inzicht in de transferfunctie geëvalueerd in $j omega$ of $H(j omega)$
 
-Bode plot toont de amplitude en fase van het complex deel. We werken hiervoor in een $markhl("20" log_10 "schaal")$
+Bode plot toont de amplitude en fase van het complex deel. We werken hiervoor in een $bold("20" log_10 "schaal")$
 
 In de bode plot is de amplitude volledig #keyterm[Reël] en de fase is de hoek van het complex getal.
 

@@ -149,7 +149,7 @@ We gaan de formule van radiate ontbinden. Dit is uiteindelijk herhaling van warm
     $ dot(Q) = epsilon sigma A (T_s^4 - T_oo^4) $
     We gaan deze term ontbinden in $Delta T$ en $h_r$.
     $ Delta T = T_s - T_oo $
-    $ T_s^4 - T_oo^4 = (T_s^2 + T_oo^2)(T_s^2 - T_oo^2) = (T_s^2 + T_oo^2)markhl((T_s - T_oo))(T_s + T_oo) $
+    $ T_s^4 - T_oo^4 = (T_s^2 + T_oo^2)(T_s^2 - T_oo^2) = (T_s^2 + T_oo^2)bold((T_s - T_oo))(T_s + T_oo) $
     De rest van de termen gaan $h_r$ bepalen.
     $ dot(Q) = epsilon sigma A (T_s^2 + T_oo^2)(T_s + T_oo) Delta T $
     $ h_r = epsilon sigma (T_s^2 + T_oo^2) (T_s + T_oo) $
@@ -259,7 +259,7 @@ Oké dit hebben we al gezien maar in dit deel gaan we nu zien wat er gebeurt bij
 
 *De omgevingsfactoren veranderen niet in de tijd*
 
-$ dot(Q)_(i n) - dot(Q)_(o u t) = frac(d E, d t) = markhl(0) $
+$ dot(Q)_(i n) - dot(Q)_(o u t) = frac(d E, d t) = bold(0) $
 
 === Cilindrische conductie
 
@@ -563,7 +563,7 @@ $ eta_f = frac(dot(Q)_(f i n), dot(Q)_(m a x)) $
 
   [
     $
-      eta_f = frac(dot(Q)_(f i n), dot(Q)_(m a x)) = frac(sqrt(h P k A_c) (T_s - T_infinity), h P L (T_s - T_infinity)) = markhl(frac(1, m L))
+      eta_f = frac(dot(Q)_(f i n), dot(Q)_(m a x)) = frac(sqrt(h P k A_c) (T_s - T_infinity), h P L (T_s - T_infinity)) = bold(frac(1, m L))
     $
   ],
   [

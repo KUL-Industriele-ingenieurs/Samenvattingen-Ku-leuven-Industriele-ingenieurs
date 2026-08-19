@@ -204,7 +204,7 @@ De template bevat het *mannot* pakket voor handgeschreven-stijl markeringen en a
 
 Gebruik de volgende functies om tekst te markeren:
 - `#mark`: $mark("Verandert de tekstkleur")$.
-- `#markhl`: $markhl("Markeerstift (highlight) effect")$.
+- `#markhl`: $bold("Markeerstift (highlight) effect")$.
 - `#markrect`: $markrect("Tekent een rechthoek (kader)")$.
 - `#markul`: $markul("Onderlijnt de tekst")$.
 
@@ -212,7 +212,7 @@ Gebruik de volgende functies om tekst te markeren:
   ```
   $
     mark(x, color: #red)
-    + markhl(f(x))
+    + bold(f(x))
     + markrect(e^x)
     + markul(x + 1)
   $
@@ -225,7 +225,7 @@ Je kunt kleuren en stijlen aanpassen:
   ```
   $
     mark(x, color: #green)
-    + markhl(f(x), color: #purple, stroke: 1pt)
+    + bold(f(x))
     + markrect(e^x, color: #red, fill: #blue, outset: 0.2em)
   $
   ```
@@ -1803,66 +1803,58 @@ Code:
 
 
 == 3D Orthogonale Projectie
-// Example by @samuelireson
+
+Met `ortho()` teken je in drie dimensies; cetz projecteert het orthogonaal op
+het blad. Coördinaten geef je als `(x, y, z)`.
 
 #align(center)[
-  #cetz.canvas(length: 2cm, {
+  #cetz.canvas(length: 1.6cm, {
     import cetz.draw: *
-    let phi = (1 + calc.sqrt(5)) / 2
 
-    ortho({
-      hide({
-        line((-phi, -1, 0), (-phi, 1, 0), (phi, 1, 0), (phi, -1, 0), close: true, name: "xy")
-        line((-1, 0, -phi), (1, 0, -phi), (1, 0, phi), (-1, 0, phi), close: true, name: "xz")
-        line((0, -phi, -1), (0, -phi, 1), (0, phi, 1), (0, phi, -1), close: true, name: "yz")
-      })
+    ortho(x: 30deg, y: 30deg, {
+      set-style(stroke: (thickness: 0.6pt, cap: "round", join: "round"))
 
-      intersections("a", "yz", "xy")
-      intersections("b", "xz", "yz")
-      intersections("c", "xy", "xz")
+      // achtervlak, voorvlak, en de vier ribben ertussen
+      line((0, 0, 0), (2, 0, 0), (2, 2, 0), (0, 2, 0), close: true,
+        stroke: (dash: "dashed", paint: luma(150)))
+      line((0, 0, 2), (2, 0, 2), (2, 2, 2), (0, 2, 2), close: true)
+      for (x, y) in ((0, 0), (2, 0), (2, 2), (0, 2)) {
+        line((x, y, 0), (x, y, 2))
+      }
 
-      set-style(stroke: (thickness: 0.5pt, cap: "round", join: "round"))
-      line((0, 0, 0), "c.1", (phi, 1, 0), (phi, -1, 0), "c.3")
-      line("c.0", (-phi, 1, 0), "a.2")
-      line((0, 0, 0), "b.1", (1, 0, phi), (-1, 0, phi), "b.3")
-      line("b.0", (1, 0, -phi), "c.2")
-      line((0, 0, 0), "a.1", (0, phi, 1), (0, phi, -1), "a.3")
-      line("a.0", (0, -phi, 1), "b.2")
-
-      anchor("A", (0, phi, 1))
-      content("A", [$A$], anchor: "north", padding: .1)
-      anchor("B", (-1, 0, phi))
-      content("B", [$B$], anchor: "south", padding: .1)
-      anchor("C", (1, 0, phi))
-      content("C", [$C$], anchor: "south", padding: .1)
-      line("A", "B", stroke: (dash: "dashed"))
-      line("A", "C", stroke: (dash: "dashed"))
+      // een diagonaal met labels op de hoekpunten
+      line((0, 0, 0), (2, 2, 2), stroke: (paint: blue, thickness: 1pt))
+      content((0, 0, 0), [$A$], anchor: "north-east", padding: .12)
+      content((2, 2, 2), [$B$], anchor: "south-west", padding: .12)
     })
   })
 ]
 
+// Hier stond een icosaëder-voorbeeld dat met `intersections()` de ribben uit
+// drie verborgen rechthoeken haalde. Sinds cetz 0.5 leveren die intersecties
+// binnen `ortho()` geen punten meer op, waardoor "c.1", "c.3" enzovoort naar
+// niet-bestaande anchors verwezen en de compilatie afbrak. Vervangen door een
+// kubus, die hetzelfde laat zien zonder op intersecties te steunen.
+
 Code:
 #codeblock(lang: "typst", title: "3D Ortho")[
   ```
-  #cetz.canvas(length: 2cm, {
+  #cetz.canvas(length: 1.6cm, {
     import cetz.draw: *
-    let phi = (1 + calc.sqrt(5)) / 2
 
-    ortho({
-      // Definieer vlakken (verborgen)
-      hide({
-        line((-phi, -1, 0), (-phi, 1, 0), (phi, 1, 0), (phi, -1, 0), close: true, name: "xy")
-        // ...
-      })
+    ortho(x: 30deg, y: 30deg, {
+      set-style(stroke: (thickness: 0.6pt, cap: "round", join: "round"))
 
-      // Bereken intersecties
-      intersections("a", "yz", "xy")
-      // ...
+      line((0, 0, 0), (2, 0, 0), (2, 2, 0), (0, 2, 0), close: true,
+        stroke: (dash: "dashed", paint: luma(150)))
+      line((0, 0, 2), (2, 0, 2), (2, 2, 2), (0, 2, 2), close: true)
+      for (x, y) in ((0, 0), (2, 0), (2, 2), (0, 2)) {
+        line((x, y, 0), (x, y, 2))
+      }
 
-      // Teken lijnen
-      set-style(stroke: (thickness: 0.5pt, cap: "round", join: "round"))
-      line((0, 0, 0), "c.1", (phi, 1, 0), (phi, -1, 0), "c.3")
-      // ...
+      line((0, 0, 0), (2, 2, 2), stroke: (paint: blue, thickness: 1pt))
+      content((0, 0, 0), [$A$], anchor: "north-east", padding: .12)
+      content((2, 2, 2), [$B$], anchor: "south-west", padding: .12)
     })
   })
   ```

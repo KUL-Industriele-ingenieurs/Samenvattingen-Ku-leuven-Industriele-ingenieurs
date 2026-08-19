@@ -49,7 +49,7 @@ $
   u_r' = u_r lim_(Delta t -> 0) (Delta u_r)/(Delta t) = (lim_(Delta t -> 0) Delta theta arrow(u_theta))/(Delta t) u_theta
 $
 
-$ markhl(arrow(v) = underbrace(dot(r), v_r dot arrow(u_r)) + underbrace(r dot(theta), v_theta dot arrow(u_theta))) $
+$ bold(arrow(v) = underbrace(dot(r), v_r dot arrow(u_r)) + underbrace(r dot(theta), v_theta dot arrow(u_theta))) $
 
 met $v_r$ de snelheid en $v_theta$ de hoeksnelheid. Je hebt twee delen je #keyterm[transversaal deel] en je #keyterm[hoekverandering].
 
@@ -170,8 +170,8 @@ De binnenste functie $g$ is uitgedrukt in $x$ en de functie erbuiten uitgedrukt 
 
   Nu de snelheid:
 
-  $ markhl(v_r = dot(r) = 200 m m/s) $
-  $ markhl(v_theta = r dot(theta) = 100 * 3 = 300 m m/s) $
+  $ bold(v_r = dot(r) = 200 m m/s) $
+  $ bold(v_theta = r dot(theta) = 100 * 3 = 300 m m/s) $
 
 
   Nu nog de versnelling
@@ -179,10 +179,10 @@ De binnenste functie $g$ is uitgedrukt in $x$ en de functie erbuiten uitgedrukt 
   $a_r = d dot(r) - r dot(theta)^2 = 200 - 100 * 3^2 = 200 - 900 = -700 m m/s^2$
   $a_theta = r d dot(theta) + 2 dot(r) dot(theta) = 100 * 6 + 2 * 200 * 3 = 600 + 1200 = 1800 m m/s^2$
 
-  $ markhl(a_r = -700 m m/s^2) $
-  $ markhl(a_theta = 1800 m m/s^2) $
+  $ bold(a_r = -700 m m/s^2) $
+  $ bold(a_theta = 1800 m m/s^2) $
 
-  $ markhl(vec(a_b) = (-700 vec(u_r) + 1800vec(u_theta) m m/s^2)) $
+  $ bold(vec(a_b) = (-700 vec(u_r) + 1800vec(u_theta) m m/s^2)) $
 
 
 
@@ -233,12 +233,12 @@ De binnenste functie $g$ is uitgedrukt in $x$ en de functie erbuiten uitgedrukt 
 
   $ sqrt(a_r^2 + a_theta^2) = sqrt((-7.2)^2 + 0.3^2dot.double(theta)) = 9 m/s^2 $
 
-  $ markhl(a_r = -9 m/s^2) $
-  $ markhl(a_theta = 0 m/s^2) $
+  $ bold(a_r = -9 m/s^2) $
+  $ bold(a_theta = 0 m/s^2) $
 
   $ arrow.b.double $
 
-  $ markhl(dot.double(theta) = 18 (r a d )/s^2) $
+  $ bold(dot.double(theta) = 18 (r a d )/s^2) $
 ]
 
 #oefening(title: "Oefening 4 | 16.141")[
@@ -286,8 +286,8 @@ De binnenste functie $g$ is uitgedrukt in $x$ en de functie erbuiten uitgedrukt 
   $ arrow.r.double dot(r) = - v_c cos(60°) $
 
   $ 3 = underbracket(v_c), 0.5 dot omega_(C D)) sin(60°) $
-  $markhl(arrow.r.double omega_(C D) = 6.96 (r a d)/s)$
-  $ markhl(dot(r) = 1.73 m/s) $
+  $bold(arrow.r.double omega_(C D) = 6.96 (r a d)/s)$
+  $ bold(dot(r) = 1.73 m/s) $
 
   Versnelling:
 
@@ -314,7 +314,7 @@ De binnenste functie $g$ is uitgedrukt in $x$ en de functie erbuiten uitgedrukt 
   $ arrow.b.double $
 
   $ alpha_(C D) = -56,24 frac(r a d, s^2) = 56,24 (r a d)/s^2 arrow.ccw $
-  $ markhl(dot.double(r) = 46.8 m/s^2) $
+  $ bold(dot.double(r) = 46.8 m/s^2) $
 
 
 

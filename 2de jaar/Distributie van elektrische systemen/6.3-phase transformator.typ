@@ -127,7 +127,7 @@ Dit hebben we al gezien in wisselstromen en wordt ook nog herhaald in netten. Ma
 
   Dus:
 
-  $ markhl(phi_A + phi_B + phi_C = 0) $
+  $ bold(phi_A + phi_B + phi_C = 0) $
 
   Dit is logisch want de som van alle voltages zijn nul.
 
