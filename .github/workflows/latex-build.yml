@@ -9,240 +9,167 @@ on:
         branches: [main, master, MAIN]
     workflow_dispatch:
 
+# Snel achter elkaar pushen startte vroeger evenveel volledige builds naast
+# elkaar. Nu wordt een lopende build voor dezelfde ref afgebroken.
+concurrency:
+    group: ${{ github.workflow }}-${{ github.ref }}
+    cancel-in-progress: true
+
 jobs:
+    # ------------------------------------------------------------------
+    # Zoekt de hoofddocumenten op en geeft ze door als matrix-invoer, zodat
+    # ze parallel gebouwd worden in plaats van in een seriele lus.
+    # ------------------------------------------------------------------
+    discover:
+        name: Documenten zoeken
+        runs-on: ubuntu-latest
+        outputs:
+            docs: ${{ steps.find.outputs.docs }}
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Hoofddocumenten zoeken
+              id: find
+              shell: bash
+              run: |
+                  # _OLD wordt niet meer onderhouden en compileert deels niet meer;
+                  # meebouwen zou elke run rood maken zonder dat iemand er iets aan doet.
+                  find . \( -name ".git" -o -name ".github" -o -name ".vscode" -o -name "assets" -o -name "_OLD" \) -prune -o \
+                         -type f -name "*.tex" \
+                         ! -name "*-macros.sty" \
+                         -exec grep -l "\\documentclass" {} \; | sed 's|^\./||' | sort > main_docs.txt
+
+                  echo "Gevonden documenten:"
+                  cat main_docs.txt
+
+                  # JSON-array van {path, slug}. De slug wordt gebruikt voor
+                  # artifact- en cachenamen, die geen spaties of & mogen bevatten.
+                  python3 - <<'PY' >> "$GITHUB_OUTPUT"
+                  import json, re, io, os
+                  docs = []
+                  for line in io.open("main_docs.txt", encoding="utf-8"):
+                      p = line.strip()
+                      if not p:
+                          continue
+                      slug = re.sub(r'[^A-Za-z0-9._-]+', '_', os.path.splitext(p)[0]).strip('_')
+                      docs.append({"path": p, "slug": slug})
+                  print("docs=" + json.dumps(docs, separators=(",", ":")))
+                  PY
+
+    # ------------------------------------------------------------------
+    # Een job per document. Elk document heeft zijn eigen cache-sleutel, zodat
+    # een wijziging in een document de andere niet meer laat herbouwen.
+    # ------------------------------------------------------------------
     build:
+        name: ${{ matrix.doc.slug }}
+        needs: discover
+        if: needs.discover.outputs.docs != '[]'
         runs-on: ubuntu-latest
         container:
             image: texlive/texlive:latest
+        strategy:
+            fail-fast: false
+            matrix:
+                doc: ${{ fromJson(needs.discover.outputs.docs) }}
 
         steps:
             - name: Checkout
               uses: actions/checkout@v4
 
-            - name: Clean any stale artifacts from checkout
+            - name: Afhankelijkheden hashen
+              id: hash
               shell: bash
               run: |
-                  # Remove any auxiliary files that might have been accidentally committed
-                  # Using single line find to avoid shell syntax issues with multiline splitting
-                  find . -type f \( -name "*.aux" -o -name "*.bbl" -o -name "*.bcf" -o -name "*.blg" -o -name "*.fls" -o -name "*.log" -o -name "*.out" -o -name "*.toc" -o -name "*.fdb_latexmk" -o -name "*.synctex.gz" \) -delete
-                  echo "Cleaned stale auxiliary files"
+                  dir=$(dirname "${{ matrix.doc.path }}")
 
-            - name: Install xz-utils
-              run: apt-get update && apt-get install -y xz-utils
+                  # De oude cache-sleutel hashte alleen het hoofdbestand en
+                  # school-macros.sty. Wijzigingen in \input-hoofdstukken, in
+                  # afbeeldingen of in de .bib gingen er dus niet in, waardoor de
+                  # cache een verouderde PDF terugserveerde. Nu gaat de hele
+                  # documentmap mee, plus de gedeelde macro's.
+                  {
+                      sha256sum school-macros.sty 2>/dev/null || true
+                      find "$dir" -type f \
+                           ! -name '*.pdf' ! -name '*.aux' ! -name '*.log' \
+                           ! -name '*.out' ! -name '*.toc' ! -name '*.fls' \
+                           ! -name '*.fdb_latexmk' ! -name '*.synctex.gz' \
+                           -print0 | sort -z | xargs -0 -r sha256sum
+                  } | sha256sum | cut -d' ' -f1 | sed 's/^/key=/' >> "$GITHUB_OUTPUT"
 
-            - name: Restore PDF cache
+            - name: Cache van de PDF
+              id: cache
               uses: actions/cache@v4
-              id: pdf-cache
               with:
-                  path: .pdf-cache
-                  key: pdf-cache-${{ hashFiles('school-macros.sty') }}-${{ hashFiles('**/*.tex') }}-${{ hashFiles('**/*.typ') }}
-                  restore-keys: |
-                      pdf-cache-${{ hashFiles('school-macros.sty') }}-
-                      pdf-cache-
-            # Typst installation removed from the LaTeX build job.
-            # Typst is built in a separate `typst` job using snap on ubuntu-latest.
+                  path: cached.pdf
+                  key: pdf-${{ matrix.doc.slug }}-${{ steps.hash.outputs.key }}
 
-            - name: Find and Build LaTeX documents
+            - name: Bouwen
+              if: steps.cache.outputs.cache-hit != 'true'
               shell: bash
               run: |
-                  # Create cache directory if it doesn't exist
-                  mkdir -p .pdf-cache
+                  dir=$(dirname "${{ matrix.doc.path }}")
+                  file=$(basename "${{ matrix.doc.path }}")
+                  name=$(basename "$file" .tex)
+                  cd "$dir"
 
-                  # Find all main documents (excluding subfiles and templates)
-                  # Use -prune to efficiently skip hidden/system directories
-                  find . \( -name ".git" -o -name ".github" -o -name ".pdf-cache" -o -name ".vscode" -o -name "assets" \) -prune -o \
-                         -type f -name "*.tex" \
-                         ! -name "school-macros.sty" \
-                         ! -name "*-macros.sty" \
-                         -exec grep -l "\\documentclass" {} \; > main_docs.txt
-
-                  echo "📝 Found documents (main_docs.txt):"
-                  cat main_docs.txt
-
-                  echo "## Build Results 📊" >> $GITHUB_STEP_SUMMARY
-                  echo "" >> $GITHUB_STEP_SUMMARY
-                  echo "| Document | Status | Details |" >> $GITHUB_STEP_SUMMARY
-                  echo "|----------|--------|---------|" >> $GITHUB_STEP_SUMMARY
-
-                  BUILD_FAILED=0
-                  PDFS_GENERATED=0
-                  CACHE_HITS=0
-                  BUILD_LOG_DIR="${GITHUB_WORKSPACE}/build_logs"
-                  mkdir -p "$BUILD_LOG_DIR"
-
-                  # Compute hash of root school-macros.sty for cache invalidation
-                  MACROS_HASH=""
-                  if [ -f "school-macros.sty" ]; then
-                    MACROS_HASH=$(sha256sum "school-macros.sty" | cut -d' ' -f1)
+                  # Geen -shell-escape: geen enkel document gebruikt minted, svg,
+                  # gnuplot of \write18, en het zet willekeurige shell-uitvoering aan.
+                  if latexmk -pdf \
+                      -interaction=nonstopmode \
+                      -file-line-error \
+                      "$file" 2>&1 | tee "build_${name}.log"; then
+                      :
                   fi
 
-                  # Build each found document
-                  while IFS= read -r texfile; do
-                    dir=$(dirname "$texfile")
-                    file=$(basename "$texfile")
-                    name=$(basename "$texfile" .tex)
-                    
-                    # Compute hash of the tex file + macros for cache key
-                    TEX_HASH=$(sha256sum "$texfile" | cut -d' ' -f1)
-                    CACHE_KEY="${TEX_HASH}-${MACROS_HASH}"
-                    CACHE_FILE=".pdf-cache/${name}-${CACHE_KEY}.pdf"
-                    
-                    # Check if we have a cached PDF
-                    if [ -f "$CACHE_FILE" ]; then
-                      echo "========================================="
-                      echo "Using cached PDF for: $texfile"
-                      echo "========================================="
-                      
-                      # Copy cached PDF to the document's directory
-                      cp "$CACHE_FILE" "${dir}/${name}.pdf"
-                      
-                      echo "| \`$name\` | ⚡ Cached | No changes detected |" >> $GITHUB_STEP_SUMMARY
-                      echo "⚡ Cache hit: $texfile"
-                      PDFS_GENERATED=$((PDFS_GENERATED + 1))
-                      CACHE_HITS=$((CACHE_HITS + 1))
-                      continue
-                    fi
-                    
-                    echo "========================================="
-                    echo "Building: $texfile"
-                    echo "========================================="
-                    
-                    cd "$dir"
-                    
-                    # Clean auxiliary files specifically using latexmk before building
-                    # latexmk might fail if it can't find files, so we suppress errors
-                    latexmk -C "$file" || true
-                    
-                    # Build using ONLY latexmk
-                    if latexmk -pdf \
-                        -g \
-                        -shell-escape \
-                        -interaction=nonstopmode \
-                        -file-line-error \
-                        "$file" 2>&1 | tee "build_${name}.log"; then
-                      
-                      # Verify PDF was actually created
-                      if [ -f "${name}.pdf" ]; then
-                        echo "| \`$name\` | ✅ Built | PDF generated |" >> $GITHUB_STEP_SUMMARY
-                        echo "✅ Success: $texfile"
-                        PDFS_GENERATED=$((PDFS_GENERATED + 1))
-                        
-                        # Store in cache for future builds
-                        cp "${name}.pdf" "${GITHUB_WORKSPACE}/${CACHE_FILE}"
-                      else
-                        echo "| \`$name\` | ⚠️ Warning | Completed but no PDF |" >> $GITHUB_STEP_SUMMARY
-                        echo "⚠️ Warning: $texfile completed but PDF not found"
-                        BUILD_FAILED=1
-                      fi
-                    else
-                      EXIT_CODE=$?
-                      echo "| \`$name\` | ❌ Failed | Exit code: $EXIT_CODE |" >> $GITHUB_STEP_SUMMARY
-                      echo "❌ Failed: $texfile (exit code: $EXIT_CODE)"
-                      
-                      # Extract and display key error information for the Actions UI
-                      echo "::group::Error details for $name"
-                      echo "Last 30 lines of build log:"
-                      tail -30 "build_${name}.log" || true
-                      
-                      if [ -f "${name}.log" ]; then
-                        echo ""
-                        echo "LaTeX errors found in .log file:"
-                        grep -A 3 "^!" "${name}.log" || echo "No '!' markers found in .log"
-                      fi
-                      echo "::endgroup::"
-                      
-                      BUILD_FAILED=1
-                    fi
-                    
-                    # Move log to central dir for artifact collection
-                    cp "build_${name}.log" "$BUILD_LOG_DIR/" 2>/dev/null || true
-                    
-                    cd - > /dev/null
-                  done < main_docs.txt
-
-                  # Prune stale cache entries (PDFs for documents that no longer exist)
-                  echo "🧹 Pruning stale cache entries..."
-                  for cached in .pdf-cache/*.pdf; do
-                    [ -f "$cached" ] || continue
-                    # Extract document name by stripping the hash suffix
-                    cached_name=$(basename "$cached" | sed 's/-[0-9a-f]*-[0-9a-f]*.pdf$//')
-                    # Check if any current document matches this cached name
-                    if ! grep -q "/${cached_name}.tex" main_docs.txt 2>/dev/null && \
-                       ! grep -q "^./${cached_name}.tex" main_docs.txt 2>/dev/null; then
-                      echo "  Removing stale cache: $cached"
-                      rm -f "$cached"
-                    fi
-                  done
-
-                  # Summary
-                  echo ""
-                  echo "📊 Build Summary: $PDFS_GENERATED PDFs ($CACHE_HITS from cache, $((PDFS_GENERATED - CACHE_HITS)) rebuilt)"
-
-                  # Logic: Fail only if NO PDFs were generated (and we found documents)
-                  # If we generated at least one PDF, we consider it a partial success
-                  if [ $PDFS_GENERATED -eq 0 ]; then
-                     if [ -s main_docs.txt ]; then
-                        echo "::error::Build failed: No PDFs were successfully generated from the found documents."
-                        exit 1
-                     else
-                        echo "::warning::No LaTeX documents found to build."
-                     fi
-                  elif [ $BUILD_FAILED -ne 0 ]; then
-                     echo "::warning::Some documents failed to build, but $PDFS_GENERATED PDF(s) were generated. Proceeding with release."
+                  if [ -f "${name}.pdf" ]; then
+                      cp "${name}.pdf" "$GITHUB_WORKSPACE/cached.pdf"
+                      echo "✅ ${{ matrix.doc.path }}" >> "$GITHUB_STEP_SUMMARY"
                   else
-                     echo "All documents built successfully ($PDFS_GENERATED PDFs)."
+                      echo "❌ ${{ matrix.doc.path }} — geen PDF geproduceerd" >> "$GITHUB_STEP_SUMMARY"
+                      echo "::group::Foutdetails"
+                      tail -40 "build_${name}.log" || true
+                      [ -f "${name}.log" ] && grep -A3 "^!" "${name}.log" || true
+                      echo "::endgroup::"
+                      exit 1
                   fi
 
-            # Typst build is handled in a separate job (`typst`); removed from the LaTeX `build` job to avoid duplicate runs and log noise
-
-            - name: Collect build artifacts
-              if: always()
+            - name: Uit cache halen
+              if: steps.cache.outputs.cache-hit == 'true'
+              shell: bash
               run: |
-                  mkdir -p artifacts/pdfs artifacts/logs
-                  # Collect LaTeX PDFs
-                  if [ -f main_docs.txt ]; then
-                    while IFS= read -r texfile; do
-                      dir=$(dirname "$texfile")
-                      name=$(basename "$texfile" .tex)
-                      # Skip files that look like cache artifacts (containing 64-char hash)
-                      if [[ "$name" =~ [0-9a-f]{64} ]]; then
-                        echo "Skipping hashed file: $name"
-                        continue
-                      fi
-                      
-                      if [ -f "${dir}/${name}.pdf" ]; then
-                        cp "${dir}/${name}.pdf" artifacts/pdfs/
-                        echo "Collected LaTeX: ${dir}/${name}.pdf"
-                      fi
-                    done < main_docs.txt
-                  fi
+                  dir=$(dirname "${{ matrix.doc.path }}")
+                  name=$(basename "${{ matrix.doc.path }}" .tex)
+                  cp cached.pdf "${dir}/${name}.pdf"
+                  echo "⚡ ${{ matrix.doc.path }} (uit cache)" >> "$GITHUB_STEP_SUMMARY"
 
-                  # Typst PDFs are produced and uploaded by the separate `typst` job (artifact: `pdfs-typst`).
-                  # They are downloaded into `artifacts/pdfs` by the `prerelease` job when creating the release.
+            - name: PDF verzamelen
+              if: always()
+              shell: bash
+              run: |
+                  mkdir -p artifacts
+                  dir=$(dirname "${{ matrix.doc.path }}")
+                  name=$(basename "${{ matrix.doc.path }}" .tex)
+                  [ -f "${dir}/${name}.pdf" ] && cp "${dir}/${name}.pdf" artifacts/ || true
+                  cp "${dir}/build_${name}.log" artifacts/ 2>/dev/null || true
 
-                  echo "📂 Collected Artifacts (artifacts/pdfs):"
-                  ls -la artifacts/pdfs/
-
-                  # Collect logs
-                  cp build_logs/*.log artifacts/logs/ 2>/dev/null || true
-
-            - name: Upload LaTeX PDFs
+            - name: PDF uploaden
               if: always()
               uses: actions/upload-artifact@v4
               with:
-                  name: pdfs-latex
+                  name: pdf-latex-${{ matrix.doc.slug }}
+                  path: artifacts/*.pdf
                   retention-days: 90
-                  if-no-files-found: warn
-                  path: artifacts/pdfs/*.pdf
+                  if-no-files-found: ignore
 
-            - name: Upload build logs
+            - name: Buildlog uploaden
               if: failure()
               uses: actions/upload-artifact@v4
               with:
-                  name: build-logs
+                  name: log-${{ matrix.doc.slug }}
+                  path: artifacts/*.log
                   retention-days: 30
                   if-no-files-found: ignore
-                  path: artifacts/logs/*.log
 
     typst:
         name: Build Typst
@@ -251,12 +178,11 @@ jobs:
         steps:
             - name: Checkout repository
               uses: actions/checkout@v4
-              with:
-                  fetch-depth: 0
 
             - name: Setup Typst
               uses: typst-community/setup-typst@v3
-
+              with:
+                  cache-dependency-path: school-template.typ
 
             - name: Check available fonts
               run: |
@@ -276,7 +202,7 @@ jobs:
                   TYPST_BUILT=0
                   TYPST_FAILED=0
 
-                  find . \( -name ".git" -o -name ".github" -o -name ".pdf-cache" -o -name "chapters" \) -prune -o \
+                  find . \( -name ".git" -o -name ".github" -o -name "chapters" -o -name "_OLD" \) -prune -o \
                        -type f -name "*.typ" \
                        ! -name "school-template.typ" \
                        -exec grep -l "#show: project" {} \; > typst_docs.txt 2>/dev/null || true
@@ -327,7 +253,7 @@ jobs:
               if: always()
               uses: actions/upload-artifact@v4
               with:
-                  name: pdfs-typst
+                  name: pdf-typst
                   path: artifacts/pdfs/*.pdf
                   retention-days: 90
                   if-no-files-found: warn
@@ -341,13 +267,11 @@ jobs:
         steps:
             - name: Checkout
               uses: actions/checkout@v4
-              with:
-                  fetch-depth: 0
 
             - name: Download all PDF artifacts
               uses: actions/download-artifact@v4
               with:
-                  pattern: pdfs-*
+                  pattern: pdf-*
                   path: artifacts/pdfs
                   merge-multiple: true
 
@@ -377,7 +301,6 @@ jobs:
         runs-on: ubuntu-latest
         permissions:
             contents: write
-
 
         steps:
             - name: Checkout code
@@ -429,7 +352,7 @@ jobs:
                   printf '%s\n' "- Windows: \`update.ps1\`  (right-click -> Run with PowerShell)" >> release_body.md
 
                   # 3. Create or Recreate the Release
-                  # We delete the old release and create a fresh one to ensure 
+                  # We delete the old release and create a fresh one to ensure
                   # the release date is updated.
                   if gh release view latest >/dev/null 2>&1; then
                      echo "Deleting old automated release..."
@@ -443,12 +366,6 @@ jobs:
                     --latest \
                     --draft=false \
                     --notes-file release_body.md
-
-
-
-
-
-
 
                   # 4. Delete old assets so stale PDFs don't linger
                   echo "🧹 Cleaning old release assets..."
