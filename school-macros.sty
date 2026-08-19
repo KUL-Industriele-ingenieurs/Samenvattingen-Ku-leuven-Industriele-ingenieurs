@@ -514,11 +514,15 @@
 
 \NewDocumentCommand{\frm}{ m m m }{% 
     \stepcounter{FormulariumEntryCounter}%
+    % `title=` werkt niet meer: schoolbox is nu `blanker` en heeft geen
+    % titelbalk. De titel gaat via schoolRunIn, net als bij de andere callouts.
+    % Daarna een \par, zodat de gecentreerde formule op een eigen regel komt en
+    % niet naast de titel.
     \begin{tcolorbox}[
         schoolbox=schoolOrange,
-        title={\faCalculator\ \textbf{#1}},
-        fonttitle=\bfseries\sffamily,
+        schoolRunIn={schoolOrange}{\faCalculator}{#1},
     ]
+        \par\vspace{2pt}%
         {\centering\large $\displaystyle #2$\par}%
         \vspace{6pt}%
         {\small #3}\label{frm:\theFormulariumEntryCounter}%
