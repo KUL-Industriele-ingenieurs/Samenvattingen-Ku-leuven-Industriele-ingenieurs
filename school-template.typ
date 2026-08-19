@@ -27,6 +27,8 @@
 #let annot-cetz = mannot.annot-cetz
 #import "@preview/fletcher:0.5.8"
 #let fletcher = fletcher
+#import "@preview/merman:0.1.0"
+#let merman = merman
 
 // --- Iconen (flat, SVG via Heroicons, spiegelt school-macros.sty) ---
 // heroic levert de iconen als gebundelde SVG's: geen font installeren nodig,
@@ -193,7 +195,7 @@
   // Stond op "1.1.", waardoor Typst "3." / "3.1." zette en LaTeX "3" / "3.1".
   set heading(numbering: "1.1")
 
-  show raw: set text(font: ("Fira Code", "Liberation Mono"), size: 0.85em)
+  show raw: set text(font: ("Fira Code", "Liberation Mono"), size: 1em)
   // Math uses Typst's default New Computer Modern Math (serif, matching Charter body text)
 
   // Override emptyset to use sans-serif glyph for visual consistency
@@ -241,21 +243,21 @@
     // Negatieve linkerinspring: hoofdtitels steken iets in de marge, zodat de
     // structuur al zichtbaar is als je door het document bladert. Zet
     // titleOutdent op 0pt om het uit te schakelen.
-    pad(left: -titleOutdent, block(below: 0.55em, breakable: false)[
-      #v(14pt)
+    pad(left: -titleOutdent, block(below: 0.95em, breakable: false)[
+      #v(18pt)
       #text(size: 15pt)[#if it.numbering != none { counter(heading).display(it.numbering) + h(0.5em) }#it.body]
       #v(-11pt)
       #line(length: 100% + titleOutdent, stroke: 0.6pt)
     ])
   }
 
-  show heading.where(level: 2): it => block(below: 0.45em, breakable: false)[
-    #v(10pt)
+  show heading.where(level: 2): it => block(below: 0.9em, breakable: false)[
+    #v(16pt)
     #text(size: 12.2pt)[#if it.numbering != none { counter(heading).display(it.numbering) + h(0.5em) }#it.body]
   ]
 
-  show heading.where(level: 3): it => block(below: 0.35em, breakable: false)[
-    #v(7pt)
+  show heading.where(level: 3): it => block(below: 0.8em, breakable: false)[
+    #v(11pt)
     #text(size: 11pt)[#if it.numbering != none { counter(heading).display(it.numbering) + h(0.5em) }#it.body]
   ]
 
@@ -361,16 +363,20 @@
 // maar er is geen achtergrond meer om te zetten.
 #let schoolbox(title, color, icon: none, bg: none, body) = block(
   width: 100%,
-  above: 0.8em,
-  below: 0.8em,
+  above: 1.25em,
+  below: 1.25em,
   stroke: (left: 2pt + color),
   inset: (left: 9pt, top: 1pt, bottom: 1pt),
   {
     if title != none and title != "" {
       // Punt alleen als de titel niet al op leesteken eindigt, anders krijg je
       // "Let Op!." en "Waarom deze som?."
-      let punct = if type(title) == str and title.len() > 0 and (
-        title.last() in (".", "?", "!", ":", ";")
+      let punct = if (
+        type(title) == str
+          and title.len() > 0
+          and (
+            title.last() in (".", "?", "!", ":", ";")
+          )
       ) { "" } else { "." }
       text(fill: color, weight: "bold", font: ("Fira Sans", "Liberation Sans"))[
         #if icon != none [#icon #h(0.25em)]#title#punct
@@ -383,7 +389,13 @@
 
 #let theorie(title: "Theorie", body) = schoolbox(title, schoolBlue, icon: ic-book, body)
 #let voorbeeld(title: "Voorbeeld", body) = schoolbox(title, schoolGreen, icon: ic-pen, body)
-#let waarschuwing(title: "Let Op!", body) = schoolbox(title, schoolRed, icon: ic-warning, bg: schoolRed.lighten(95%), body)
+#let waarschuwing(title: "Let Op!", body) = schoolbox(
+  title,
+  schoolRed,
+  icon: ic-warning,
+  bg: schoolRed.lighten(95%),
+  body,
+)
 #let concept(title: "Concept", body) = schoolbox(title, schoolTeal, icon: ic-idea, bg: schoolTeal.lighten(95%), body)
 #let form(title: "Formule", body) = schoolbox(title, schoolOrange, icon: ic-calc, body)
 #let theorem(title: "Theorem", body) = schoolbox(title, deepblue, icon: ic-book, body)
@@ -414,11 +426,11 @@
         grid(
           columns: (1fr, auto),
           align: horizon,
-          text(fill: codeText, font: "Fira Sans", size: 8.5pt, weight: "bold")[
+          text(fill: codeText, font: "Fira Sans", size: 9.5pt, weight: "bold")[
             #ic-code #h(0.4em) #if title != none { title } else { lang }
           ],
           if title != none {
-            text(fill: codeComment, font: ("Fira Code", "Liberation Mono"), size: 8pt)[#lang]
+            text(fill: codeComment, font: ("Fira Code", "Liberation Mono"), size: 8.5pt)[#lang]
           },
         ),
       )
@@ -433,7 +445,7 @@
           set text(
             fill: codeText,
             font: ("Fira Code", "Liberation Mono"),
-            size: 8.5pt,
+            size: 10.5pt,
           )
           body
         },
@@ -689,12 +701,11 @@
 // wat een stuk schreeuweriger stond dan de LaTeX-kant.
 #let examenbox(body) = block(
   width: 100%,
-  above: 0.5em,
-  below: 0.5em,
+  above: 1.25em,
+  below: 1.25em,
   [
-    #keyterm[#ic-exam EXAMENTIP:]
-    #emph(body)
-  ]
+    #keyterm[#ic-exam#h(0.25em)EXAMENTIP:]#h(0.35em)#emph(body)
+  ],
 )
 
 #let TODO(msg) = text(fill: red, weight: "bold", font: "Fira Sans")[\[TODO: #msg\]]
