@@ -65,16 +65,16 @@ Dit is een typisch voorbeeld van een ERD. Je ziet dat er verschillende entiteite
 
 In onze oefening zie je dat je veel werkwoorden hebt dus je hebt daar ook relaties.
 
-_The library $markhl("has")$ several branch libraries $markhl("scattered over the city")$, each
+_The library $bold("has")$ several branch libraries $bold("scattered over the city")$, each
 with their own opening hours.
 ...
-A member $markhl("may be enrolled in")$ one of the branches and $markhl("must be known")$
+A member $bold("may be enrolled in")$ one of the branches and $bold("must be known")$
 with full name and e-mail address to permit checking where the books
 are and to be able to send warnings.
 ...
-When a book $markhl("is borrowed")$, the date $markhl("is registered")$. When the book is
-$markhl("returned")$ this return-date is stored too. These can be used for
-$markhl("calculating the fines")$
+When a book $bold("is borrowed")$, the date $bold("is registered")$. When the book is
+$bold("returned")$ this return-date is stored too. These can be used for
+$bold("calculating the fines")$
 ...
 _
 
