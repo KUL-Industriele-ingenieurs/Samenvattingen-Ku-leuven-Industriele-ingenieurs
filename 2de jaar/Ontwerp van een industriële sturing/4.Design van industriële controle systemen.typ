@@ -3,7 +3,6 @@
 
 = Design van industriële controle systemen <ch:design-van-industriële-controle-systemen>
 
-#chapter-outline()
 
 In dit deel wordt gezien hoe we industriële systemen kunnen ontwerpen en hoe we ze gaan connecteren.
 
@@ -82,7 +81,7 @@ PLC's wordt met de tabel hieronder getoont wanneer een spanningsval groot genoeg
 In de industrie werken meeste elektrische componenten met 24V.
 Maar wat als je component 5V accepteerd? _Vele sensoren werken alleen met 5V_ Dan moet je de spanning laten dalen zodat je de sensor power kunt geven.
 
-Een #keyterm[Interface relay] wordt gebruikt om een signaal door te sturen naar componenten van een hogere power, andere voltage of wanneer er een *Galvanische scheiding* tussen de circuits nodig is.
+Een *Interface relay* wordt gebruikt om een signaal door te sturen naar componenten van een hogere power, andere voltage of wanneer er een *Galvanische scheiding* tussen de circuits nodig is.
 
 #figure(
   image("assets/interface relay.png", width: 5cm),
@@ -103,7 +102,7 @@ Je ziet dat afhanklijk van de stroom en frequentie je een andere component moet 
 
 *Controller actuators*\
 Als we lage voltage gebruiken voor ons circuit kunnen we deze niet connecteren aan de output van de PLC.
-Hiervoor kunnen we een #keyterm[Controller actuator] gebruiken. Een contactor of SSR (solid state relay) kan gebruikt worden om ze te controlleren. _Zie tabel hierboven_
+Hiervoor kunnen we een *Controller actuator* gebruiken. Een contactor of SSR (solid state relay) kan gebruikt worden om ze te controlleren. _Zie tabel hierboven_
 
 *SSR (Solid State Relay) /optocoupler*
 Een SSR is een optocoupler maar dan voor grotere stromen en voltages. Hij heeft ook een *N.O (Normally Open)* configuratie.
@@ -124,7 +123,7 @@ SSR' hebben geen mechanische bewegende delen alleen semiconductors en elektrisch
 )
 
 *Optocoupler*\
-Een #keyterm[Optocoupler] heeft een licht emitterende kant (IR-LED) en een licht ontvangende kant (fototransistor).
+Een *Optocoupler* heeft een licht emitterende kant (IR-LED) en een licht ontvangende kant (fototransistor).
 
 Het licht dat die maakt activeert $->$ een fotosensor en dan laat die stroom $A$ door.
 
@@ -136,7 +135,7 @@ Een optocoupler is een *Switch*: in saturatie mode is de LED ON of OFF. De outpu
   label: <fig:optocoupler>,
 )
 
-Optocouplers kunnen ook #keyterm[Analoge] signalen doorsturen. In #keyterm[Lineaire mode] kan je een lineaire relatie $f(x) = x$ maken zodat de intensiteit van de output gelijk is aan de input. Je kunt dan analoge signalen doorgeven. Ze kunnen hierdoor een transformator vervangen in meetcircuits, en kunnen ook DC doorsturen.
+Optocouplers kunnen ook *Analoge* signalen doorsturen. In *Lineaire mode* kan je een lineaire relatie $f(x) = x$ maken zodat de intensiteit van de output gelijk is aan de input. Je kunt dan analoge signalen doorgeven. Ze kunnen hierdoor een transformator vervangen in meetcircuits, en kunnen ook DC doorsturen.
 
 
 
@@ -160,9 +159,13 @@ Je hebt een base (B) _kijkt of de transitor gesloten of open moet zijn_, collect
 
 Een base ziet het verschil oftewel tussen de grond of de input.
 
-+ / PNP: base ziet het verschil tussen de grond. (afhankelijk van de weerstand en stroom door basetak)
-+ / NPN: base ziet het verschil tussen de base en de input. (afhankelijk van de weerstand en stroom door basetak)
+/ PNP: Bij een PNP ga je van *emittor naar collector.* je base moet lager zijn dan de emittor. 
 
+$ E arrow.r C $
+
+/ NPN: Bij een NPN ga je van *collector naar emittor.* je base moet hoger zijn dan de emittor.
+
+$ C arrow.r E $
 #align(
   center,
   grid(
@@ -178,13 +181,13 @@ Om het verschil tussen PNP en NPN te begrijpen, kijk je naar wat de sensor met d
 ==== PNP (Sourcing) — De "Positieve" sensor
 *Ezelsbruggetje:* De *P* staat voor #emph(text(blue)[Positief]) en #emph(text(blue)[Power]).
 *Werking:* Denk aan de sensor als een *kraan*. Wanneer de sensor iets detecteert, zet hij de kraan open en "spuit" er +24V uit de zwarte draad.
-*Stroomzin:* De stroom vloeit *uit* de sensor naar de verbruiker (bijv. een PLC-ingang). De sensor is de *bron* (source).
+*Stroomzin:* De stroom vloeit *uit* de sensor naar de verbruiker (bijv. een PLC-ingang). De sensor is de *bron* *(source)*.
 *Aansluiting:* De verbruiker (load) zit tussen de zwarte draad en de 0V (blauw).
 
 ==== NPN (Sinking) — De "Negatieve" sensor
 *Ezelsbruggetje:* De *N* staat voor #emph(text(blue)[Negatief]) en #emph(text(blue)[Nul volt]).
 *Werking:* Denk aan de sensor als een *afvoer* of een putje. Wanneer de sensor iets detecteert, zet hij de afvoer open naar de 0V (massa).
-*Stroomzin:* De stroom vloeit *van* de verbruiker *naar* de sensor toe. De sensor "slikt" de stroom in. De sensor is de *gootsteen* (sink).
+*Stroomzin:* De stroom vloeit *van* de verbruiker *naar* de sensor toe. De sensor "slikt" de stroom in. De sensor is de *gootsteen* *(sink)*.
 *Aansluiting:* De verbruiker (load) moet al aan de +24V (bruin) hangen en wacht tot de zwarte draad hem verbindt met de 0V.
 
 #table(
@@ -292,7 +295,7 @@ Nu weten we het volgende:
 === Sensoren
 
 *Discrete sensoren*\
-Deze zijn gebasseerd op #keyterm[Mechanische beweging]. Ze hebben vaak volt free contacten. Dit is meestal een switch van de input voltage.
+Deze zijn gebasseerd op *Mechanische beweging*. Ze hebben vaak volt free contacten. Dit is meestal een switch van de input voltage.
 
 #examenbox[Je gaat al deze sensoren moeten kennen en hun werkingen moeten kunnen uitleggen.]
 
@@ -322,7 +325,7 @@ Deze zijn gebasseerd op #keyterm[Mechanische beweging]. Ze hebben vaak volt free
   Werkt met geluidsgolven. Terugkerende geluidsgolven worden opgevangen door de sensor. _heel universeel_
 
 + / Inductieve sensor:
-  Werkt met magnetische velden. Een *Wisselend* magnetisch veld wordt opgewerkt en metaal dat dichtbij komt via #keyterm[eddy current] warmt dat metaal op. Dit kan de sensor opnemen. _detecteert alleen metaal_
+  Werkt met magnetische velden. Een *Wisselend* magnetisch veld wordt opgewerkt en metaal dat dichtbij komt via *eddy current* warmt dat metaal op. Dit kan de sensor opnemen. _detecteert alleen metaal_
 
 + / Capacitieve sensor:
   Werkt met *Wisselend* elektrische velden. Een object gaat en elektrisch veld verstoren en de capaciteit gaat veranderen. Die verandering kan gedetecteerd worden.

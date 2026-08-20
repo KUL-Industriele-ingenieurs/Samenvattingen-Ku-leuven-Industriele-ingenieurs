@@ -6,7 +6,6 @@
 
 = Imports en Exports <chap:imports>
 
-#chapter-outline()
 
 In een land heb is een mens producties als ze
 *exports* creeren. Dit wordt ervoor dat geld binnenkomt in het land.
@@ -145,7 +144,7 @@ PID-controllers werken niet met aan/uit-signalen, maar met *continue, analoge si
     label: <fig:scada2>,
   )
 + *DCS*: Distributed Control System, Inplaats dat alles centraal wordt gestuurd zorgt DCS dat systemen niet afhankelijk zijn van 1 centrale controller. Dus als er iets misgaat met 1 controller valt de rest van het systeem niet stil. Dit wordt veel gebruikt in de chemische industrie.
-+ *Mechatronics*: Een vage term die meerdere dingen kan betekenen, PID, PLC, Cyber-Physical Systems, ... Het gaat algemeen over dingen die door elektronica worden gecontrolleerd worden #keyterm[Mechatronics] genoemd.
++ *Mechatronics*: Een vage term die meerdere dingen kan betekenen, PID, PLC, Cyber-Physical Systems, ... Het gaat algemeen over dingen die door elektronica worden gecontrolleerd worden *Mechatronics* genoemd.
 
 
 == Industrie 4.0
@@ -189,26 +188,214 @@ Een paar belangrijke letters:
 
 = Logic control
 
-#chapter-outline()
+De eerste ontwerpregel is simpel: bestaat er al een component dat specifiek gemaakt is voor een bepaalde functie, gebruik dat dan in plaats van zelf iets te bouwen dat uiteindelijk hetzelfde doet. Heb je een timer nodig, neem dan een standaard timercomponent en ga niet knutselen met tellers en omwegen. Beperk daarnaast het aantal fysieke verbindingen zoveel mogelijk: elke draad is een kans op een fout.
 
-Uiteindelijk gaan we leren een elektrische circuit zelf op te stellen.
+#concept(title: "Drie soorten logische problemen")[
+  / Combinatorisch: de uitgang volgt rechtstreeks uit de *huidige* waarden aan de ingang. Bv. een AND-functie.
+  / Geheugenschakeling (binair geheugen): de uitgang hangt niet alleen af van de huidige ingang, maar ook van de toestand *voorheen*. Bv. Start/Stop.
+  / Sequentie: een reeks opeenvolgende stappen die het systeem doorloopt om een taak uit te voeren. Elke stap volgt logisch uit de vorige, op basis van sensorinput, tijd of voltooide acties. Bv. een pick-and-place robot: grijpen $arrow.r$ bewegen $arrow.r$ lossen. Dat programmeer je met een PLC via een sequentiële functiegrafiek (SFC).
+]
 
-#concept(title: "Soorten circuits")[
-  Je hebt verschillende soorten circuits:
+Geheugens maken een systeem snel complex: toestanden worden over het hoofd gezien en het gedrag na een noodstop is moeilijk te overzien. Voeg er in een elektrisch diagram dus *zo weinig mogelijk* toe, net genoeg om alle noodzakelijke condities te beschrijven als combinaties van ingangen en geheugentoestanden.
 
-  - *Combinatorisch circuit*: De uitgang hangt uitsluitend af van de huidige toestand van de ingangen, bv. AND-functie.
-  - *Geheugencircuit*: De uitgang hangt niet alleen af van de huidige toestand van de ingangen, bv. Start-Stop.
-    - In complexere systemen kunnen bepaalde toestanden over het hoofd worden gezien.
-    - Beperkte mogelijkheden voor bv. gedrag na een noodstop.
-    - Deze oplossingen worden snel te complex. Om dit te vermijden, gebruiken we zo weinig mogelijk geheugens, net genoeg om alle noodzakelijke condities te definiëren als combinaties van ingangen en geheugentoestanden.
-  - *Sequentie*: Een snelle standaard oplossingsmethode voor het programmeren van sequentiële besturingssystemen (met behulp van een PLC). De methode zorgt ervoor dat het gedrag voorspelbaar en goed gedefinieerd is. Bv. Sequential function chart (SFC).
+== Knoppen en schakelaars <sec:knoppen-schakelaars>
+
+Alles begint bij de bediening. De letters volgen de RDS-afspraak: `Q` voor de hoofdschakelaar, `S` voor bedieningsknoppen, `K` voor relais, `P` voor een signaallamp en `E` voor gewone verlichting.
+
+De contactnummering is gestandaardiseerd: *hoofdcontacten* krijgen de nummers 1 tot 10 (of een letter), alle andere (*hulp*)contacten beginnen vanaf 11.
+
+#table(
+  columns: (1fr, 1.3fr, 1.2fr),
+  inset: 8pt,
+  align: horizon,
+  stroke: none,
+  fill: (x, y) => if y == 0 { gray.lighten(50%) },
+  [*Contacttype*], [*Nummers*], [*Ezelsbrug*],
+  [Normaal open (N.O.)], [3/4, 13/14, 23/24], [altijd de combinatie 3 & 4],
+  [Normaal gesloten (N.C.)], [1/2, 11/12, 21/22], [altijd de combinatie 1 & 2],
+)
+
+#figure(
+  image("assets/sort of buttons and switched.png", width: 13cm),
+  caption: [Soorten bedieningen: drukknop, detent, keuzeschakelaar en signaallamp],
+  label: <fig:sortofbuttons>,
+)
+
+/ Push button (momentary): je drukt en laat los, zoals een deurbel. Zit meestal in een beschermende kraag zodat hij niet zomaar ingedrukt kan worden.
+/ Detent switch (latching): gelijkaardig, maar je moet nogmaals duwen om hem te lossen.
+/ Keuze- of draaischakelaar: draait naar een stand en blijft daar staan, tijdelijk of vergrendeld. _Ezelsbrug: het symbool lijkt op pedalen, en een coureur schakelt zijn fiets._
+/ Pilot lamp: de terugkoppeling naar de operator, bv. "staat de machine aan?"
+
+#wrap-figure(
+  image("assets/hoofdschakelaar-Q1.png", width: 4.5cm),
+  caption: [Hoofdschakelaar `-Q1`: één bediening, meerdere draden],
+  label: <fig:hoofdschakelaar-Q1>,
+  width: 4.5cm,
+)[
+  Een symbool dat je constant tegenkomt is de *hoofdschakelaar*. Aan één bediening (het "pedaal") hangen verschillende draden die allemaal gelijktijdig schakelen, en die samen één naam dragen: `-Q1`.
+
+  In de industriële omgeving verkiezen we *knoppen boven schakelaars*. Een schakelaar kan namelijk in een onveilige stand achtergelaten worden, een knop niet. Stel: de stroom valt 's middags uit, iedereen gaat naar huis, en 's nachts komt de spanning terug. Een verkeerd staande schakelaar start dan de machine opnieuw op. Bij een knop hangt het starten aan een bewuste menselijke actie. De combinatie komt vaak voor: eerst de schakelaars goed zetten, dan op een knop duwen.
+]
+
+#wrap-figure(
+  image("assets/Voorbeeld circuit.png", width: 3.5cm),
+  caption: [Twee N.O.-schakelaars in serie],
+  label: <fig:voorbeeldcircuit>,
+  width: 3.5cm,
+)[
+  Hoe je de schakeling tekent, bepaalt haar functie. In @fig:voorbeeldcircuit staan twee schakelaars `-S1` en `-S2` die beide normaal open zijn, in serie met de lamp `-P1`. Beide moeten dus gesloten zijn voor de lamp brandt: dat is een AND-functie in hardware.
+]
+
+Een *volt-free contact* (potentiaalvrij contact) levert zelf geen stroom of spanning: het opent of sluit enkel een verbinding tussen twee draden. Een gewone lichtschakelaar is zo'n contact.
+
+== Contactoren <sec:contactoren>
+
+Tot nu toe schakelden we signalen. Maar wat als je *vermogen* moet schakelen, zoals een driefasige motor of een verwarmingskring? Daarvoor gebruik je een *contactor*: een elektrisch gestuurd schakelelement dat ontworpen is om hoge stromen en inductieve belastingen in of uit te schakelen. In essentie is het een krachtigere variant van een relais.
+
+#examenbox[
+  Verwar de letters niet: `K` is een *relais* (stuurstroom, logica), `Q` is een *contactor* of hoofdschakelaar (vermogen).
+]
+
+=== Pole en throw
+
+#wrap-figure(
+  image("assets/spdt-break-make.png", width: 4.5cm),
+  caption: [Break before make en make before break],
+  label: <fig:spdt-break-make>,
+  width: 4.5cm,
+)[
+  Een contactor is opgebouwd uit één of meerdere *polen*, wat verwijst naar het aantal schakelcontacten dat hij bevat. Het aantal geleidende standen noemen we *throw* of *way*.
+
+  Stel dat je een lamp wil verbinden met stroombron A óf stroombron B, maar nooit met beide tegelijk. Je schakelt dan één onafhankelijk circuit (*Single Pole*, 1P) tussen twee standen (*Double Throw*, 2T). Dat is dus een *SPDT*-schakelaar.
+
+  De volgorde waarin dat gebeurt, maakt uit. Bij *break before make* wordt het oude contact eerst verbroken voor het nieuwe sluit: de twee bronnen worden nooit even met elkaar verbonden. Bij *make before break* is het omgekeerd, wat je gebruikt wanneer de kring nooit onderbroken mag worden.
+]
+
+=== Hoofdcontacten en hulpcontacten
+
+#wrap-figure(
+  image("assets/contactor-symbool.jpeg", width: 6.5cm),
+  caption: [Contactor `-Q`: spoel A1/A2, drie hoofdcontacten (1/2, 3/4, 5/6) en twee hulpcontacten (11/12 N.C., 23/24 N.O.)],
+  label: <fig:contactor-symbool>,
+  width: 6.5cm,
+)[
+  Meestal heeft een contactor *drie hoofdcontacten*, zodat hij de drie fasen van het net in één keer schakelt. Die zijn zo goed als altijd normaal open (N.O.) en geleiden dus enkel wanneer de spoel bekrachtigd is. Ze zijn bestand tegen zware belasting en uitgerust met voorzieningen om overspanning en vonkvorming onder controle te houden: een contactor breekt bovendien op *twee punten* tegelijk, waardoor het tussenstuk spanningsloos "zweeft" en de vlamboog sneller dooft.
+
+  Daarnaast bevat een contactor bijna altijd één of meer *hulpcontacten* (auxiliary contacts), herkenbaar aan de nummering *boven de 10*. Die schakelen géén grote stromen; ze dienen in de besturingslogica om de toestand van de contactor te *signaleren*, bv. voor een zelfhoudschakeling, een terugmelding naar de PLC of een signaallamp. Ze kunnen zowel N.O. als N.C. zijn.
+]
+
+Een contactor is *monostabiel*: valt de spanning op de spoel weg, dan valt hij af. De spoelspanning staat volledig los van de contactspanningen. Een spoel van 24 VDC kan perfect hoofdcontacten van 400 VAC en hulpcontacten van 110 VDC aansturen.
+
+=== Opletten bij inductieve belastingen
+
+Een contactor schakelt meestal *inductieve* belastingen (motoren, spoelen), en daar zitten twee valkuilen.
+
++ Bij het *inschakelen* trekt een asynchrone motor een inschakelstroom $I$ die een veelvoud is van zijn nominale stroom. De contactor moet die piek aankunnen: je dimensioneert hem dus op de belasting die hij schakelt, niet enkel op het nominale vermogen.
++ Bij het *uitschakelen* wil de stroom door een spoel niet plots stoppen ($u = L (Delta I) / (Delta t)$). Er wordt een vlamboog getrokken tussen de contactpunten, en die brandt de contacten weg. Dat is de belangrijkste slijtageoorzaak van een contactor.
+
+=== AC-contactoren: wervelstromen en brommen <sec:ac-contactoren>
+
+Contactoren kunnen op DC én op AC werken, maar in de praktijk zie je vooral AC. Dat geeft twee bijkomende problemen.
+
+*Wervelstromen.* Bij een wisselende spanning verandert de flux voortdurend, en die veranderende flux wekt *wervelstromen* (eddy currents) op in het massieve ijzer van de kern. Die stromen verwarmen de kern en kosten energie. De oplossing is een *gelamineerde* kern: opgebouwd uit dunne, onderling geïsoleerde staalplaatjes, zodat de wervelstromen geen groot rondgaand pad meer vinden. Dit is de klassieke examenvraag over AC-contactoren.
+
+#figure(
+  image("assets/ac-contactor-spoelring-flux.jpeg", width: 12cm),
+  caption: [AC-contactor met kortsluitring. Geel is de kracht zonder ring (zakt tot nul), blauw en oranje zijn de twee fasenverschoven fluxen, grijs is hun som, en de horizontale lijn is de veerkracht.],
+  label: <fig:ac-contactor-spoelring>,
+)
+
+*Brommen.* De aantrekkingskracht van een elektromagneet is evenredig met het *kwadraat* van de flux, dus $F prop Phi^2$. Bij AC gaat de flux twee keer per periode door nul, en dus zakt ook de kracht twee keer per periode naar nul. Telkens de kracht onder de veerkracht van de terugstelveer duikt, laat het anker even los en slaat het opnieuw aan. Bij 50 Hz gebeurt dat 100 keer per seconde, en dat hoor je als een brom. Het kost bovendien extra slijtage.
+
+De oplossing is een kleine *geleidende ring* (kortsluitring of spoelring) rond een deel van het poolvlak. De veranderende flux induceert een stroom in die ring, en die stroom gaat de *verandering* van de flux tegen (wet van Lenz). Daardoor loopt de flux door dat deel van de pool in fase achter op de hoofdflux. Op @fig:ac-contactor-spoelring zie je die twee gesplitste fluxen; hun som (de grijze kromme) zakt nooit meer tot nul en blijft altijd boven de veerkracht. Het anker blijft aangetrokken en de brom verdwijnt.
+
+_Let op: de rondgaande samenvatting schrijft de brom toe aan de vlambogen tussen de contactpunten, en linkt de laminatie aan het brommen. Dat klopt niet. De brom is het anker dat 100 keer per seconde lostrilt, en laminatie lost de wervelstromen op: twee aparte problemen met twee aparte oplossingen._
+
+== Relais <sec:relais>
+
+#wrap-figure(
+  image("assets/Relay.png", width: 7cm),
+  caption: [Doorsnede van een relais],
+  label: <fig:Relay>,
+  width: 7cm,
+)[
+  Een *relais* (letter `K`) werkt op hetzelfde principe als een contactor, maar dan voor *signalen* in plaats van vermogen. Het is het meest fundamentele element in logic control: een elektromagnetische schakelaar die door knoppen, schakelaars en sensoren aangestuurd wordt.
+
+  Vloeit er een stroom $I$ door de spoel (aangesloten op de klemmen A1 en A2), dan wordt er een magnetisch veld $B$ opgewekt. Die spoel is gewikkeld rond een kern van ferromagnetisch materiaal, meestal zacht ijzer. De stroom veroorzaakt een *magnetomotorische kracht* (mmf) die een magnetische flux $Phi$ opwekt. Die flux zoekt het pad met de kleinste magnetische weerstand (*reluctantie*), dus door het ijzer en niet door de lucht.
+
+  Waar de flux toch een luchtspleet moet oversteken, ontstaan tegengestelde magnetische polen. Die trekken de bewegende *armatuur* naar het vaste deel, en zo veranderen de contacten van positie. Omdat er een bewegend deel in zit, is een relais niet geschikt voor hoge schakelfrequenties.
+]
+
+#wrap-figure(
+  image("assets/nc-relais-symbool.png", width: 4cm),
+  caption: [Relais met wisselcontact: spoel A1/A2, contact 11-12 (N.C.) en 11-14 (N.O.)],
+  label: <fig:nc-relais-symbool>,
+  width: 4cm,
+  align: left,
+)[
+  De contacten van een relais kunnen zowel N.O. als N.C. zijn. Op de figuur zie je de streepjeslijn die de spoel mechanisch verbindt met het contact: dat is de manier waarop je in een schema ziet welk contact bij welke spoel hoort.
+
+  Er bestaan uitzonderingen op de monostabiele werking: *latching relais* of *teleruptoren* behouden hun positie zonder dat de spoel continu bekrachtigd blijft.
+]
+
+#table(
+  columns: (0.8fr, 1.2fr, 1.2fr),
+  inset: 8pt,
+  align: horizon,
+  stroke: none,
+  fill: (x, y) => if y == 0 { gray.lighten(50%) },
+  [], [*Relais `K`*], [*Contactor `Q`*],
+  [Schakelt], [signalen, kleine stromen], [vermogen, grote en inductieve stromen],
+  [Contacten], [N.O. en N.C. naar keuze], [meestal 3 hoofdcontacten N.O. + hulpcontacten],
+  [Zit in], [de besturingslogica], [het hoofdcircuit],
+)
+
+#examenbox[
+  Op het examen moet je van een fabrikant een bepaald relais kunnen achterhalen en de N.C.- en N.O.-schakelingen kunnen herkennen. Zo moet je een start-stopschakeling correct kunnen aansluiten.
+]
+
+== Signal time Diagram
+
+
+Zoals gezien in elektronica kun je diagrammen maken om het gedrag van signalen over tijd te visualiseren.
+#figure(
+  image("assets/Time-diagram.png", width: 15cm),
+  caption: [Time-diagram],
+  label: <fig:Time-diagram>,
+)
+
+
+
+== Timer en Timing Relays
+
+#concept(title: "Timers")[
+
+  Timers gaan pas na een bepaalde tijd af of aan na een verandering in signaal.
+
+  Je kunt twee soorten timers hebben:
+  / On delay timer (TON): De output gaat pas na een bepaalde tijd actief.
+  / Off delay timer (TOF): De output gaat pas na een bepaalde tijd inactief.
+
+  Hiervoor bestaan *Speciale relays: Timing relays*.
+]
+#wrap-figure(
+  image("assets/Timing relays.png", width: 3cm),
+  caption: [Timing relays],
+  label: "fig:timingrelays",
+)[
+  Timing relays geven ons controle over een tijdsinterval of het signaal af gaat of aan gaat.
+
+  De timers gaan als volgt:
+  - / TON (Timer On Delay): *TON(timer) KT1* met de input *A1* en output *A2*. Het moment dat *A1* actief wordt, start de timer en na de ingestelde tijd gaat *A2* actief. Het is de timer met het kruis $X$.
+  - / TOF (Timer Off Delay): *TOF(timer) KT1* met de input *A1* en output *A2*. Het moment dat *A1* inactief wordt, start de timer en na de ingestelde tijd gaat *A2* inactief. Het symbool is de timer met een volledige ingevulde blok.
+
+  #examenbox[Deze symbolen kennen, je moet ze kunnen snappen op het examen]
 ]
 
 == PLC introductie
 
 PLC is een heel basis introductie tot computers.
 Hoe connecteren machines met elkaar? Inputs en outputs, IO.
-Deze worden allemaal aangehaald in deze introductie.
 
 #concept(title: "PLC (Programmable Logic Controller)")[
   Dit is gespecialiseerde mini-computer die geen scherm, toetsenbord of muis heeft, maar wel een aantal ingangen en uitgangen.
@@ -243,7 +430,7 @@ Je schrijft een programma op je laptop en uploadt dat naar de PLC, waarna de PLC
 programma uitvoert en de machines aanstuurt op basis van de logica die je hebt geprogrammeerd.
 
 #wrap-figure(
-  image("assets/image1.png", width: 6cm),
+  image("assets/image1.png", width: 8cm),
   caption: [Controle systeem voorbeeld],
   label: <fig:image1>,
 )[
@@ -263,90 +450,11 @@ programma uitvoert en de machines aanstuurt op basis van de logica die je hebt g
   De *operator* krijgt feedback van de *machine*, bijvoorbeeld door een lamp die gaat branden of een geluidssignaal.
 ]
 
-== Relays
-
-Een relay is het meest fundamentele element in logic control.
-
-Relays: Een elektromagnetische schakelaar die een circuit opent of sluit.
-Een relay wordt aangestuurd door knoppen, switches en sensors. Hiermee bouw je de basis van elk sturingssysteem.
-
-// TODO: uitleg over hoe relays werken.
-#TODO("Uitleg over hoe relays werken")
-
-== Knoppen en switches
-
-De inputs die een relay aansturen zijn knoppen en switches.
-
-Een main switch wordt aangegeven met *Q*.
-Knoppen en switches die acties uitvoeren worden aangegeven met *S*.
-Deze worden meestal in een tube geplaatst zodat ze niet per ongeluk kunnen worden ingedrukt.
-
-#figure(
-  image("assets/sort of buttons and switched.png", width: 13cm),
-  caption: [Soorten knoppen en switches],
-  label: <fig:sortofbuttons>,
-)
-
-Je hebt meerdere soorten switches:
-
-/ Push button: een knop die je indrukt en loslaat, zoals een deurbel.
-/ Detent switch: een schakelaar die in een bepaalde positie blijft staan, zoals een lichtschakelaar.
-/ Rotary switch: een schakelaar die je draait.
-/ Pilot lamp: Informatie die de operator terug krijgt _bv. Staat de machine aan?_
-
-Hoe de schakeling is getekend bepaalt zijn functie.
-
-#figure(
-  image("assets/Voorbeeld circuit.png", width: 5cm),
-  caption: [Voorbeeld circuit],
-  label: <fig:voorbeeldcircuit>,
-)
-
-Dit circuit hierboven toont *twee* switches *S1* en *S2* die beide *normally open (NO) * zijn. Ze moeten beide gesloten zijn voor dat de lamp *P1* aan gaat.
-
-== Signal time Diagram
-
-
-Zoals gezien in elektronica kun je diagrammen maken om het gedrag van signalen over tijd te visualiseren.
-#figure(
-  image("assets/Time-diagram.png", width: 15cm),
-  caption: [Time-diagram],
-  label: <fig:Time-diagram>,
-)
-
-
-
-== Timer en Timing Relays
-
-#concept(title: "Timers")[
-
-  Timers gaan pas na een bepaalde tijd af of aan na een verandering in signaal.
-
-  Je kunt twee soorten timers hebben:
-  / On delay timer (TON): De output gaat pas na een bepaalde tijd actief.
-  / Off delay timer (TOF): De output gaat pas na een bepaalde tijd inactief.
-
-  Hiervoor bestaan #keyterm[Speciale relays: Timing relays].
-]
-#wrap-figure(
-  image("assets/Timing relays.png", width: 3cm),
-  caption: [Timing relays],
-  label: "fig:timingrelays",
-)[
-  Timing relays geven ons controle over een tijdsinterval of het signaal af gaat of aan gaat.
-
-  De timers gaan als volgt:
-  - / TON (Timer On Delay): *TON(timer) KT1* met de input *A1* en output *A2*. Het moment dat *A1* actief wordt, start de timer en na de ingestelde tijd gaat *A2* actief. Het is de timer met het kruis $X$.
-  - / TOF (Timer Off Delay): *TOF(timer) KT1* met de input *A1* en output *A2*. Het moment dat *A1* inactief wordt, start de timer en na de ingestelde tijd gaat *A2* inactief. Het symbool is de timer met een volledige ingevulde blok.
-
-  #examenbox[Deze symbolen kennen, je moet ze kunnen snappen op het examen]
-]
-
 == Relay VS PLC — Waarom kiezen we voor PLC's?
 
 Relay-systemen werken, maar worden snel complex en moeilijk te onderhouden. Een PLC vervangt klassieke relay-logica door software.
 
-Je gaat dan #keyterm[Ladder logic] toepassen zodat je sequentiële logica kunt programmeren. _zie meer in je labo_
+Je gaat dan *Ladder logic* toepassen zodat je sequentiële logica kunt programmeren. _zie meer in je labo_
 
 #figure(
   image("assets/relayvsPLC.png", width: 16cm),
@@ -357,7 +465,7 @@ Je gaat dan #keyterm[Ladder logic] toepassen zodat je sequentiële logica kunt p
 Een relay is een fysiek systeem maar met een PLC met een LAD implementatie _zie figuur @fig:relayvsPLC _is dit
 een vervanging van klassieke relays.
 
-==== Ladder logic
+=== Ladder logic
 
 
 #wrap-figure(
