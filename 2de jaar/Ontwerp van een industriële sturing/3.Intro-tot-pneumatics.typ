@@ -423,18 +423,45 @@ _Bij het ontwerpen van logica gebruiken we letters alfabetisch (zie latere slide
 
 == Pilot valve
 
-Een *Pilot valve* is een elektro-pneumatische actuator die een pneumatisch gestuurd ventiel bedient. De elektrische spoel (solenoid) opent enkel het toegangspad voor de perslucht. Deze lucht levert de kracht om het grote ventiel te bewegen, wat zorgt voor een pneumatische krachtversterking.
+#wrap-figure(
+  image("assets/internal-pilot-bolletje.png", width: 7cm),
+  caption: [Intern gepiloteerd ventiel. Het *bolletje* op de toevoerlijn (omcirkeld) zegt dat de stuurlucht intern wordt afgetakt van poort $1$],
+  label: <fig:internal-pilot>,
+  width: 7cm,
+)[
+  Een groot ventiel rechtstreeks met een spoel schakelen kost te veel kracht: die spoel zou log, duur en stroomvretend worden. Daarom zit er in zo'n ventiel een tweede, piepklein ventiel: de *pilot valve*.
+
+  De spoel schakelt enkel dat kleine ventiel. Dat laat een beetje perslucht door, en _die lucht_ duwt de grote schuif om. Van buiten zie je gewoon één ventiel, maar intern doet een klein signaal het zware werk. Je hebt dus een pneumatische krachtversterking: klein elektrisch signaal $arrow$ kleine luchtstroom $arrow$ grote schuifkracht.
+
+  Dat principe gebruik je vooral waar de druk hoog is of het debiet groot: zware pneumatiek en hydraulica.
+]
 
 Voordelen (vooral voor monostabiele ventielen):
 - *Lager energieverbruik* (efficiënter) bij het aanhouden van de geactiveerde stand vergeleken met directe spoel-bediening.
-- *Weinig elektriciteitsgebruik*: De stroom naar de spoel is vaak laag genoeg om direct op een digitale uitgang (transistor) van het besturingssysteem aan te sluiten. Dit bespaart kosten doordat een extra interfacelai of snubber circuit overbodig is.
+- *Weinig elektriciteitsgebruik*: De stroom naar de spoel is vaak laag genoeg om direct op een digitale uitgang (transistor) van het besturingssysteem aan te sluiten. Dit bespaart kosten doordat een extra interfacerelais of snubbercircuit overbodig is.
+
+Waar die stuurlucht _vandaan_ komt, is het hele verschil tussen de twee soorten:
 
 #concept(title: "Internal pilot vs external pilot")[
-  *Internal pilot* (ook *bleed piloted* genoemd) gebruikt de inkomende hoofdluchttoevoer (main supply) van het ventiel zelf om voldoende kracht te genereren om te schakelen.
-  _Nadeel_: Dit kan problemen veroorzaken! Als de persluchtdruk te laag is, bij een "soft start", of als de hoofdlucht is uitgeschakeld, zal dit ventiel niet kunnen schakelen.
+  *Internal pilot* (ook *bleed piloted* genoemd) takt de stuurlucht intern af van de hoofdtoevoer (poort $1$) van het ventiel zelf. Geen extra slang nodig, dus goedkoop en simpel.
+  _Nadeel_: als de persluchtdruk te laag is, bij een "soft start", of als de hoofdlucht uitgeschakeld is, kan dit ventiel niet schakelen.
 
-  *External pilot*: De stuurlucht om te schakelen (*pilot air*) wordt geleverd via een aparte poort en gecontroleerd door een ander, onafhankelijk circuit.
+  *External pilot*: de stuurlucht komt via een aparte poort binnen, gevoed door een onafhankelijk circuit. Kost een extra slang, maar de stuurkring staat altijd op volle druk.
 ]
+
+#wrap-figure(
+  image("assets/external-pilot-X.png", width: 5.5cm),
+  caption: [Hetzelfde ventiel, nu extern gepiloteerd: de `X` links aan de gestippelde lijn. Geen bolletje op de toevoer, dus geen interne aftakking],
+  label: <fig:external-pilot>,
+  width: 5.5cm,
+)[
+  *Hoe je het uit het symbool leest.* Je hoeft het datablad niet te openen, het staat in de tekening:
+
+  / Bolletje op de toevoerlijn: internal pilot. De stippellijn vertrekt vanuit de hoofdtoevoer zelf.
+  / `X` aan de gestippelde lijn: external pilot. De `X` markeert de aparte poort waar de stuurlucht binnenkomt.
+]
+
+#examenbox[Hier valt de klassieke vraag. Zet je een *soft-startventiel* vóór een _intern_ gepiloteerd ventiel, dan bouwt de druk traag op, en dus ook de pilotdruk. De ventielen schakelen dan op onvoorspelbare momenten (afhankelijk van wrijving en smering) of blijven half hangen. Bij soft start moet je dus *external pilot* gebruiken, met de pilotleiding afgetakt _vóór_ het soft-startventiel: de stuurkring staat meteen op volle netdruk terwijl de vermogenskring rustig opbouwt.]
 
 
 #figure(
