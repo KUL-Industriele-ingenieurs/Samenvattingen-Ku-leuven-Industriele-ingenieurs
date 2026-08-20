@@ -127,35 +127,7 @@ Faculty of Engineering Technology
   label: <fig:contactor-Nieuw-vs-oud>,
 )
 
-=== Wat is een Contactor?
-
-Een contactor is een mono-stable, multi-pool elektronisch bediende schakelaar voor hoofdstroomkringen (power circuits). Het verschil met een gewone schakelaar is dat het via een laagvermogen spoeltje (coil) wordt bediend, niet rechtstreeks door hand.
-
-*Werkingsprincipe:*
-- Als we stroom naar de spoeltje sturen (tussen A1-A2), wordt de contactor *ingeschakeld*
-- Als we de stroomtoevoer naar de spoeltje onderbreken, wordt de contactor *uitgeschakeld* door een terugstelveering
-- Dus: *mono-stable* betekent dat zonder stroomtoevoer naar de coil, de contactor altijd uit is
-
-*Hoofdcontacten*\
-Een contactor heeft meerdere *hoofdcontacten* (1-6 in de figuur) die de sterke stroomtoevoer schakelen. Typisch heeft een contactor drie hoofdcontacten — één voor elke fase van het driefasenetwerk. Dit stelt ons in staat om alle drie fasen met één enkele contactor in of uit te schakelen.
-
-*Belangrijke eigenschap:* Bijna alle hoofdcontacten zijn NO (Normally Open) — ze geleiden niet wanneer de contactor uit is. Contactoren met NC (Normally Closed) hoofdcontacten bestaan, maar zijn uiterst zeldzaam en worden vrijwel nooit gebruikt.
-
-*Hulpcontacten*\
-
-Naast de hoofdcontacten kan een contactor veel *hulpcontacten* hebben (typisch 11-24 in de figuur). Deze kunnen elke combinatie van NO en NC contacten zijn.
-
-*Belangrijk verschil:* Hulpcontacten kunnen NIET gebruikt worden voor het schakelen van hoofdstromen — zij zijn laagvermogencontacten. Hun doel is om in de controleschakeling informatie over de toestand van de contactor te geven. Bijvoorbeeld, een hulpcontact kan aan een PLC (Programmable Logic Controller) aangeven of de contactor ingeschakeld is, zodat andere logica hierop kan reageren.
-
-*Spanningswaarden*\
-
-Een cruciaal detail: de spanningswaarden van de spoel (A1-A2), de hoofdcontacten (1…6) en de hulpcontacten (11…24) zijn *anders*. Bijvoorbeeld:
-- De spoel kan op 24 VDC (laagspanning, veilig) werken
-- De hoofdcontacten kunnen 400 VAC (driefasetoevoer) schakelen
-- De hulpcontacten kunnen 110 VDC schakelen
-
-Dit ontwerp biedt veiligheid: de operator kan via een veilige laagspanningsspoel een krachtige hoofdstroomkring bedienen zonder direct gevaar.
-
+De volledige uitleg over contactoren staat bij de besturingslogica: polen en throws, hoofd- en hulpcontacten, de losse spanningswaarden van spoel en contacten, en het gedrag op AC vind je in @sec:contactoren. Hier kijken we naar wat er specifiek bij een *motorkring* komt kijken.
 
 === Hoe werkt een contactor?
 
@@ -176,8 +148,7 @@ Dit ontwerp biedt veiligheid: de operator kan via een veilige laagspanningsspoel
 
 == AC-contacts
 
-// uitleg toevoegen
-#TODO[AC-contacts uitleggen]
+Wervelstromen in de kern (opgelost met laminatie) en het brommen van een AC-contactor (opgelost met een kortsluitring) zijn behandeld in @sec:ac-contactoren.
 
 
 == Start-stop async motors

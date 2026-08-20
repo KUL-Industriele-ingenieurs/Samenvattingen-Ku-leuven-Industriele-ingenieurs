@@ -2,11 +2,9 @@
 
 = Pneumatica <ch:intro-pneumatics>
 
-#chapter-outline()
-
 == Wat is pneumatiek?
 
-Pneumatica is het controlleren van #keyterm[Cilinders en pistons] met behulp van #keyterm[Lucht]. We gaan deze kunnen bedienen met behulp van #keyterm[Valves]. We gebruiken onze #keyterm[Relays] en #keyterm[PLC's] om deze te bedienen.
+Pneumatica is het controlleren van *Cilinders en pistons* met behulp van *Lucht*. We gaan deze kunnen bedienen met behulp van *Valves*. We gebruiken onze *Relays* en *PLC's* om deze te bedienen.
 
 Voor het labo moet je meer weten over pneumatiek.
 Zorg dat je alles dit nog deftig doorneemt voor je aan de labo's begint.
@@ -142,13 +140,13 @@ We werken met relatieve druk want als we de druk niet groter zetten als de atmos
   label: <fig:pneumatische-cilinder>,
 )
 
-Wanneer de zuiger beweegt tussen de twee eindposities (volledig in- of uitgeschoven) spreken we van een #keyterm("Full-stroke") of een *volledige slag*. De afstand die de zuiger hierbij aflegt is de *slaglengte*. In industriële sturingen worden pneumatische cilinders meestal binair gebruikt: ze bevinden zich ofwel in de beginpositie, ofwel in de eindpositie.
+Wanneer de zuiger beweegt tussen de twee eindposities (volledig in- of uitgeschoven) spreken we van een *Full-stroke* of een *volledige slag*. De afstand die de zuiger hierbij aflegt is de *slaglengte*. In industriële sturingen worden pneumatische cilinders meestal binair gebruikt: ze bevinden zich ofwel in de beginpositie, ofwel in de eindpositie.
 
 Meestal gebruiken we *Full pressure*: we proberen niet zuinig te zijn met lucht om de efficiëntie te vergroten, aangezien energie-recuperatie bij pneumatiek meestal niet mogelijk is. De kamer die niet onder druk staat, moet altijd worden *ontlucht* naar de atmosfeer.
 
 De meeste cilinders zijn *dubbelwerkend* (double acting) en hebben dus twee aansluitingen. De kracht in beide richtingen is echter vaak niet gelijk. Dit komt door de *zuigerstang* (piston rod): aan de stangzijde is het effectieve oppervlak kleiner dan aan de bodemzijde, waardoor de uitgaande slag krachtiger is dan de ingaande slag bij dezelfde druk.
 
-Veel pneumatische cilinders zijn uitgerust met #keyterm("Einddemping") (end cushioning). Dit voorkomt dat de zuiger hard tegen de eindkappen slaat. De demping kan vaak handmatig worden ingesteld met een regelschroef op de cilinder zelf.
+Veel pneumatische cilinders zijn uitgerust met *Einddemping* (end cushioning). Dit voorkomt dat de zuiger hard tegen de eindkappen slaat. De demping kan vaak handmatig worden ingesteld met een regelschroef op de cilinder zelf.
 
 
 #figure(
@@ -161,7 +159,7 @@ Kracht wordt gereguleerd door de druk.
 
 $ F = p dot A $
 
-*Snelheid control* is mogelijk door #keyterm("Throttling") met een flow control valve.
+*Snelheid control* is mogelijk door *Throttling* met een flow control valve.
 Je gaat je uitlaat of inlaat controlleren zodat je controle hebt over de snelheid
 
 
@@ -263,9 +261,9 @@ $ F_"inward" = 264 "N" - 49 "N" = 215 "N" $
 
   #examenbox("Examenvraag: Wat is een snelheidsregelventiel?")
 
-  Een #keyterm("Throttle valve") (smoorventiel) regelt de luchtstroom en werkt in beide richtingen. Vaak gebeurt dit via een conische naald die dieper in een opening (orifice) kan worden geschroefd.
+  Een *Throttle valve* (smoorventiel) regelt de luchtstroom en werkt in beide richtingen. Vaak gebeurt dit via een conische naald die dieper in een opening (orifice) kan worden geschroefd.
 
-  Een #keyterm("Flow control valve") (FCV, One-way Throttle Valve, speed control valve) bestaat uit een combinatie van een smoorventiel en een terugslagklep (check valve) in parallel. Dit zorgt ervoor dat de flow slechts in *één richting gesmoord* wordt; in de andere richting stroomt de lucht vrij door via de terugslagklep.
+  Een *Flow control valve* (FCV, One-way Throttle Valve, speed control valve) bestaat uit een combinatie van een smoorventiel en een terugslagklep (check valve) in parallel. Dit zorgt ervoor dat de flow slechts in *één richting gesmoord* wordt; in de andere richting stroomt de lucht vrij door via de terugslagklep.
 
   *Metered out* (smoren op de uitlaat):
   In een cilinder werkt de kracht van de perslucht tegen de kracht van het gas aan de andere kant van de zuiger. Het smoren van deze *uitlaatlucht* is een goede en vaak de juiste manier om de snelheid van een zuiger te regelen.
@@ -301,7 +299,7 @@ Daarbuiten heb je nog een quick relief ventiel. Een quick relief valve wordt geb
 
 == Switching
 
-In dit deel bekijken we hoe "switching" (schakelen) gebeurt in pneumatische systemen. Switching betekent dat je de richting van de luchtstroom verandert om zo de beweging van cilinders te controleren. Dit gebeurt met behulp van #keyterm[Directional Control Valves] (DCV), ook wel stuurventielen of wegventielen genoemd.
+In dit deel bekijken we hoe "switching" (schakelen) gebeurt in pneumatische systemen. Switching betekent dat je de richting van de luchtstroom verandert om zo de beweging van cilinders te controleren. Dit gebeurt met behulp van *Directional Control Valves* (DCV), ook wel stuurventielen of wegventielen genoemd.
 
 === Ventielen (Valves)
 
@@ -314,16 +312,16 @@ Een paar voorbeelden:
 $arrow.r.double$ Een actuator zoals een pneumatische cilinder of hydraulische motor wordt verbonden met de uitgangspoorten (outlets) van het ventiel.
 
 #theorie(title: "Eigenschappen van een ventiel")[
-  - Een *supply poort* verbonden met de #keyterm[hydraulische] of #keyterm[pneumatische] (power) toevoer.
+  - Een *supply poort* verbonden met de *hydraulische* of *pneumatische* (power) toevoer.
   - Een *exhaust poort* om druk af te laten naar de atmosfeer of terug naar de tank.
-  - Kan #keyterm[NO] (Normally Open) of #keyterm[NC] (Normally Closed) zijn.
+  - Kan *NO* (Normally Open) of *NC* (Normally Closed) zijn.
   - Een ventiel kan een *switch-over* hebben (overgang tussen de standen).
 ]
 
 
 *Schakelen van perslucht*
 
-Een controleventiel waarbij een (vaak analoog) signaal de debietstroom $[dot(Q)]$ bepaalt. We gebruiken hiervoor de term #keyterm("Direction control valve") (DCV).
+Een controleventiel waarbij een (vaak analoog) signaal de debietstroom $[dot(Q)]$ bepaalt. We gebruiken hiervoor de term *Direction control valve* (DCV).
 
 === Direction control valve (DCV)
 
@@ -429,7 +427,7 @@ _Bij het ontwerpen van logica gebruiken we letters alfabetisch (zie latere slide
 
 == Pilot valve
 
-Een #keyterm("Pilot valve") is een elektro-pneumatische actuator die een pneumatisch gestuurd ventiel bedient. De elektrische spoel (solenoid) opent enkel het toegangspad voor de perslucht. Deze lucht levert de kracht om het grote ventiel te bewegen, wat zorgt voor een pneumatische krachtversterking.
+Een *Pilot valve* is een elektro-pneumatische actuator die een pneumatisch gestuurd ventiel bedient. De elektrische spoel (solenoid) opent enkel het toegangspad voor de perslucht. Deze lucht levert de kracht om het grote ventiel te bewegen, wat zorgt voor een pneumatische krachtversterking.
 
 Voordelen (vooral voor monostabiele ventielen):
 - *Lager energieverbruik* (efficiënter) bij het aanhouden van de geactiveerde stand vergeleken met directe spoel-bediening.
@@ -458,15 +456,15 @@ We gaan onze logic circuit baseren op:
 + Safety
 + Energy efficiency
 
-We gebruiken #keyterm[Pneumatische controls] voor simpele circuits.
-En meer complexe systemen met #keyterm[Electro-pneumatische controls] (PLC or relay circuits).
+We gebruiken *Pneumatische controls* voor simpele circuits.
+En meer complexe systemen met *Electro-pneumatische controls* (PLC or relay circuits).
 
 We gaan onze druk controlleren via logic circuits om cilinders te controlleren.
 
 A+ brengt ons van $A_0$ naar $A_1$\
 A- brengt ons van $A_1$ naar $A_0$
 
-de $A_0$ en $A_1$ zijn de #keyterm("States"). Ze zijn alle punten dat de cilinder stabiel in kan zijn.
+de $A_0$ en $A_1$ zijn de *States*. Ze zijn alle punten dat de cilinder stabiel in kan zijn.
 
 === Ventielen in logische circuits
 
