@@ -194,5 +194,5 @@ Wervelstromen in de kern (opgelost met laminatie) en het brommen van een AC-cont
 
 
 // tweede deel van de les toevoegen
-#TODO[Het tweede deel van deck 4 (slides 63-77, de stuurkast) staat bij @ch:voorbeeld-diagram.]
+Het tweede deel van deze les (deck 4, slides 63-77 over de stuurkast) staat bij @ch:voorbeeld-diagram.
 
