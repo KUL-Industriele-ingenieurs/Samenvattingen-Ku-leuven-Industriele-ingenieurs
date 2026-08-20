@@ -2,7 +2,6 @@
 
 = Main Circuits <ch:main-circuits>
 
-#chapter-outline()
 
 Dit hoofdstuk gaat over kortsluitingen en veiligheid
 
@@ -32,7 +31,7 @@ De bijgewerkte norm vereist dat frequentieomvormers zijn voorzien van een beveil
 
 Kortsluitbeveiliging speelt twee kritieke rollen in industriële installaties. Allereerst beschermt het de bedrading zelf: wanneer de prospectieve kortsluitstroom vele malen groter is dan de nominale stroom, kan de bedrading ernstig beschadigd raken en brand veroorzaken. Dit is waarom automaten en zekeringen worden beoordeeld op hun kortsluitingsbrekend vermogen (AIC) — het maximale vermogen dat zij veilig kunnen onderbreken zonder te falen.
 
-Echter, voor menselijke veiligheid is stroombeperking doorgaans niet effectief. Zelfs gering stroomcontact via het menselijk lichaam kan dodelijk zijn (bijvoorbeeld 30 mA·s). Aangezien industriële apparaten voor hun normale bedrijf relatief hoge stromen nodig hebben, kunnen we niet simpelweg alle stromen beperken. Hier ontstaat de kern van het beveiligingsvraagstuk: hoe beschermen we zowel de circuitinfrastructuur als de menselijke operator?
+Voor de veiligheid van mensen helpt stroombeperking meestal niet. Een kleine stroom door het lichaam kan al dodelijk zijn, ongeveer 30 mA·s. Industriële toestellen hebben voor hun normale werking net hoge stromen nodig, dus je kan niet zomaar alles begrenzen. Je moet daarom twee dingen apart beschermen: de bedrading en de mens.
 
 
 + *Residual current devices (RCDs)*
@@ -59,7 +58,7 @@ Echter, voor menselijke veiligheid is stroombeperking doorgaans niet effectief. 
 
 + *ECB (electronic circuit breaker)*
 
-  Een ECB (electronic circuit breaker) is een geavanceerde beveiligingsoplossing die elektronische componenten gebruikt om de stroomtoevoer te onderbreken bij detectie van een fout. In tegenstelling tot traditionele mechanische zekeringen, kunnen ECB's worden geprogrammeerd voor specifieke toepassingen en bieden ze vaak snellere reactietijden. Ze kunnen ook worden uitgerust met functies zoals zelfdiagnose en communicatie met andere systemen voor verbeterde veiligheid en efficiëntie.
+  Een ECB (Electronic Circuit Breaker) onderbreekt de stroom met elektronica in plaats van met een mechanisme. Je kan hem per toepassing instellen, hij reageert sneller dan een smeltzekering, en hij kan zijn toestand doorgeven aan de sturing.
 
 + *AFCI (arc fault circuit interrupter)*
 
@@ -67,13 +66,17 @@ Echter, voor menselijke veiligheid is stroombeperking doorgaans niet effectief. 
 
 
 
+=== Zekering, MCB en MCCB
+
+#TODO[Deck 4, slide 8. Het verschil tussen een smeltzekering (-F), een MCB (Miniature Circuit Breaker) en een MCCB (Moulded Case Circuit Breaker): karakteristiek, breekvermogen (AIC) en wanneer je wat kiest.]
+
 == 3 Phase asycronous motors <sec:3-phase-motors>
 
 === Waarom Driefase Asynchrone Motoren
 
 De driefase asynchrone motor is de meest gebruikte motor in industriële toepassingen. De voornaamste redenen zijn:
 
-- *Kosteneffectief*: Geen permanente magneten nodig, dus aanzienlijk goedkoper dan gelijkstroommotoren of synchrone motoren
+- *Kosteneffectief*: Geen permanente magneten nodig, dus veel goedkoper dan gelijkstroommotoren of synchrone motoren
 - *Lage onderhoudskosten*: Slechts de lagers slijten, wat onvermijdelijk is in elk bewegend apparaat
 - *Betrouwbaarheid en robuustheid*: Ontworpen voor zware industriële omgevingen met minimale storingen
 - *Zelfstarter*: Start automatisch wanneer spanning wordt aangelegd
@@ -87,11 +90,11 @@ Om de rotatierichting te wijzigen (van rechtsom naar linksom of omgekeerd), kunn
 - Een andere contactor te gebruiken voor kloksgewijze rotatie (CW)
 
 *Veranderen van Rotatiefrequentie:*
-Als we ook de rotatiesnelheid willen veranderen, hebben we een meer geavanceerde inrichting nodig: een VFD (Variable Frequency Drive). Een VFD biedt:
+Als we ook de rotatiesnelheid willen veranderen, hebben we een VFD (Variable Frequency Drive) nodig. Die kan:
 - Verandering van de rotatierichting
 - Nauwkeurige snelheidsregeling (door de frequentie aan te passen)
 - Controle over het koppel
-- Geavanceerde beveiligings- en diagnostische functies
+- Beveiligen en fouten diagnosticeren
 
 === Motorbeveiliging
 
@@ -100,7 +103,15 @@ Wanneer de motor niet door een VFD wordt beheerd, moet het circuit worden voorzi
 - *MPCB (Motor Protection Circuit Breaker)*: Een gespecialiseerde automaat die thermische overbelasting, kortsluiting en onderspanning kan detecteren
 - *OLR (Over-Load Relay)*: Een separaat relais dat thermische overbelasting specifiek detecteert en de motor uitschakelt voordat schade optreedt
 
-Deze motorbeveiliging is essentieel omdat de opstartcondities van motoren anders zijn dan bij passieve belastingen. Een motor kan bij het starten een hoger stroomtrekken (inrushstroom) dan tijdens normaal bedrijf, dus standaard beveiligingen zouden onjuist kunnen activeren.
+Motorbeveiliging is nodig omdat een motor bij het starten veel meer stroom trekt dan tijdens normaal bedrijf (inrushstroom). Een gewone beveiliging zou daarop afschakelen terwijl er niets mis is.
+
+=== Het starten van een motor
+
+#TODO[Deck 4, slides 34-36. Direct-on-line versus ster-driehoek versus softstarter versus VFD: wat doet elke methode met de inschakelstroom en het aanloopkoppel.]
+
+=== Drives, EMI en de aardverbinding
+
+#TODO[Deck 4, slides 38-41. Waarom een VFD elektromagnetische storing (EMI) maakt, de rol van de PE-verbinding en van afgeschermde motorkabel, en hoe je de afscherming correct aanlegt.]
 
 === Motor efficentie <sec:motor-efficiency>
 
@@ -143,7 +154,7 @@ De volledige uitleg over contactoren staat bij de besturingslogica: polen en thr
 
 
 
-#examenbox[Wordt verwacht dat je kent op het examem! Zorg dat je een ingenieurs uitleg geeft. Leg uit dat je een kracht opzet!]
+#examenbox[Dit moet je kennen op het examen. Geef een uitleg als ingenieur: leg uit dat je een kracht opwekt.]
 
 
 == AC-contacts
@@ -152,10 +163,36 @@ Wervelstromen in de kern (opgelost met laminatie) en het brommen van een AC-cont
 
 
 == Start-stop async motors
-// uitleg toevoegen
-#TODO[Start-stop async motors uitleggen]
+
+#TODO[Deck 4, slides 28-31. De start-stopkring van een asynchrone motor: hoofdcircuit plus stuurcircuit, en de omkeerschakeling CW/CCW met twee contactoren en de nodige vergrendeling.]
+
+== Contactor versus SSR
+
+#TODO[Deck 4, slides 32-33. Solid State Relay tegenover contactor: schakelfrequentie, slijtage, warmteontwikkeling en spanningsval.]
+
+== Motorbescherming in detail
+
+=== MPCB (Motor Protection Circuit Breaker)
+
+#TODO[Deck 4, slides 42-47. Wat de MPCB precies detecteert, hoe je hem instelt, en de plaats in het schema samen met de noodstop.]
+
+=== Thermisch overbelastingsrelais (OLR)
+
+#TODO[Deck 4, slides 48-52. Werking van het bimetaal, de instelbare stroomwaarde, handmatige versus automatische reset, en de motorkring met noodstop en OLR.]
+
+=== Ingebouwde motorbescherming: thermistor (PTC)
+
+#TODO[Deck 4, slides 53-60. Een PTC in de wikkeling meet de werkelijke wikkelingstemperatuur in plaats van de stroom. Waarom dat beter is bij slechte koeling of veel starts.]
+
+=== Pt100 en Pt1000
+
+#TODO[Deck 4, slides 61-62. Verschil met de PTC: een Pt100 geeft een echte temperatuurmeting in plaats van een drempel. Wat kost dat extra en wanneer is het de moeite.]
+
+=== Functionele schema's
+
+#TODO[Rondgaande samenvatting hoofdstuk 11.3. Hoe je een motorkring als functioneel schema tekent.]
 
 
 // tweede deel van de les toevoegen
-#TODO[Tweede deel van de les toevoegen]
+#TODO[Het tweede deel van deck 4 (slides 63-77, de stuurkast) staat bij @ch:voorbeeld-diagram.]
 

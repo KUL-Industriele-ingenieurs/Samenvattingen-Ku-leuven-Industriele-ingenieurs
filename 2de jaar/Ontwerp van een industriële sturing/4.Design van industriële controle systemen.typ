@@ -30,16 +30,16 @@ In dit deel wordt gezien hoe we industriële systemen kunnen ontwerpen en hoe we
   - / N: de nul
   - / PE: de aarding, deze is geconnecteerd via een kabel in het gebouw naar de grond zodat je een constante spanningsverschil hebt. We beschouwen dit als de absolute nul 0V.
 
-  _Dit is geen nulvolt. Spanningen flucturen en er bestaat geen nul in het universium maar we bekijken het wel zo_
+  _Strikt genomen is dat geen nul volt: spanningen fluctueren en een absolute nul bestaat niet. We rekenen er wel mee als referentie._
 
-  Een connectie kan alleen een signaal geven wanneer er een tweede connectie als voltagedrop is. Je PLC moet dus een referentie volt hebben zodat het outputs kan genereren.
+  Een aansluiting geeft pas een signaal wanneer er een tweede aansluiting is waarover de spanning kan vallen. Je PLC heeft dus een spanningsreferentie nodig om uitgangen te kunnen sturen.
 
   Inputs en outputs kunnen:
-  - / Sourcing: de input levert de spanning
-  - / Sinking: de input trekt de spanning
-  - / universeel: de input kan beide
+  - / Sourcing: de aansluiting levert de stroom
+  - / Sinking: de aansluiting neemt de stroom op
+  - / Universeel: de aansluiting kan allebei
 
-  Een stopcontact zijn voltage is wisselspanning.
+  De spanning op een stopcontact is wisselspanning.
 ]
 
 == Een PLC connecteren
@@ -62,12 +62,11 @@ Als iets niet geconnecteerd $arrow.r$ dan gaat hij niet aan staan (crazy right)_
 )
 
 #examenbox[
-  In de figuur zie je dat de plc outputs direct geconnecteerd zijn met de 24V. Dit is niet logisch. Je sensoren gaan altijd aan gaan. Je moet een referencie volt hebben en die connecteren aan de grond voor een spanningsverschil te hebben.
-
+  In de figuur hangen de PLC-uitgangen rechtstreeks aan de 24 V. Dat werkt niet: de sensoren staan dan altijd aan. Je hebt een spanningsreferentie nodig, verbonden met de massa, zodat er een spanningsverschil kan ontstaan.
 ]
 
 *PLC-signalen*\
-PLC's wordt met de tabel hieronder getoont wanneer een spanningsval groot genoeg is zodat de PLC het kan detecteren.
+De tabel hieronder toont vanaf welke spanning een PLC een signaal als 0 of als 1 leest.
 
 #figure(
   image("assets/PLC-logic.png", width: 8cm),
@@ -75,13 +74,12 @@ PLC's wordt met de tabel hieronder getoont wanneer een spanningsval groot genoeg
   label: <fig:PLC-logic>,
 )
 
-== Compenten connecteren met andere voltages
+== Componenten met een andere spanning aansluiten
 
 *Interface relay*\
-In de industrie werken meeste elektrische componenten met 24V.
-Maar wat als je component 5V accepteerd? _Vele sensoren werken alleen met 5V_ Dan moet je de spanning laten dalen zodat je de sensor power kunt geven.
+In de industrie werken de meeste elektrische componenten op 24 V. Maar wat als je component maar 5 V aankan? _Veel sensoren werken enkel op 5 V._ Dan moet je de spanning omlaag brengen om de sensor te voeden.
 
-Een *Interface relay* wordt gebruikt om een signaal door te sturen naar componenten van een hogere power, andere voltage of wanneer er een *Galvanische scheiding* tussen de circuits nodig is.
+Een *interface relay* stuurt een signaal door naar componenten met een hoger vermogen of een andere spanning, of wanneer je een *galvanische scheiding* tussen de circuits nodig hebt.
 
 #figure(
   image("assets/interface relay.png", width: 5cm),
@@ -89,7 +87,7 @@ Een *Interface relay* wordt gebruikt om een signaal door te sturen naar componen
   label: <fig:interface-relay>,
 )
 
-Hieronder een figuur zodat je weet wanneer je welk component gebruikt afhankelijk van je omgeving.
+De figuur hieronder toont welk component je kiest in welke situatie.
 
 #figure(
   image("assets/different-voltages-wanneer.png", width: 10cm),
@@ -97,17 +95,17 @@ Hieronder een figuur zodat je weet wanneer je welk component gebruikt afhankelij
   label: <fig:different-voltages-wanneer>,
 )
 
-Je ziet dat afhanklijk van de stroom en frequentie je een andere component moet gebruiken.
+Afhankelijk van de stroom en de schakelfrequentie kom je bij een ander component uit.
 
 
 *Controller actuators*\
-Als we lage voltage gebruiken voor ons circuit kunnen we deze niet connecteren aan de output van de PLC.
-Hiervoor kunnen we een *Controller actuator* gebruiken. Een contactor of SSR (solid state relay) kan gebruikt worden om ze te controlleren. _Zie tabel hierboven_
+Werkt je kring op lage spanning, dan kan je de last niet rechtstreeks aan de PLC-uitgang hangen.
+Daarvoor gebruik je een *stuurorgaan* tussen de PLC en de last: een contactor of een SSR (Solid State Relay). _Zie tabel hierboven._
 
 *SSR (Solid State Relay) /optocoupler*
-Een SSR is een optocoupler maar dan voor grotere stromen en voltages. Hij heeft ook een *N.O (Normally Open)* configuratie.
+Een SSR is in feite een optocoupler voor grotere stromen en spanningen, in een *N.O.* (Normally Open) uitvoering.
 
-SSR' hebben geen mechanische bewegende delen alleen semiconductors en elektrische componenten. Je hebt dus veel betere switching (geen bouncing) een geen risk van grote voltage verschillen.
+Een SSR heeft geen bewegende delen, alleen halfgeleiders. Daardoor schakelt hij veel netter: geen contactdender (bouncing) en geen vlamboog.
 
 #figure(
   image("assets/SSR.png", width: 7cm),
@@ -151,19 +149,17 @@ Optocouplers kunnen ook *Analoge* signalen doorsturen. In *Lineaire mode* kan je
 
 ]
 
-=== Transitor als switch
+=== Transistor als schakelaar
 
 Dit is vooral herhaling van elektronica.
 
-Je hebt een base (B) _kijkt of de transitor gesloten of open moet zijn_, collector (C) _de ingang van de transitor_ en emmittor (E) _de uitgang van de transitor_.
+Een transistor heeft drie aansluitingen: de *basis* (B) bepaalt of de transistor geleidt of niet, de *collector* (C) is de ingang en de *emitter* (E) de uitgang. De basis kijkt naar het spanningsverschil met de emitter.
 
-Een base ziet het verschil oftewel tussen de grond of de input.
-
-/ PNP: Bij een PNP ga je van *emittor naar collector.* je base moet lager zijn dan de emittor. 
+/ PNP: de stroom loopt van *emitter naar collector*. De basis moet lager staan dan de emitter.
 
 $ E arrow.r C $
 
-/ NPN: Bij een NPN ga je van *collector naar emittor.* je base moet hoger zijn dan de emittor.
+/ NPN: de stroom loopt van *collector naar emitter*. De basis moet hoger staan dan de emitter.
 
 $ C arrow.r E $
 #align(
@@ -257,7 +253,7 @@ Een twee draad kan gebruikt worden voor zowel *Sourcing* als *Sinking*. Het heef
 === Wanneer moet een switch NO/NC (normaal open/normaal gesloten) zijn?
 
 - In de onveilige toestand zal het besturingssysteem het gevaar stoppen. Een draadbreuk geeft een 0 aan de ingang en moet overeenkomen met de onveilige toestand.
-- De veilige toestand zal bijgevolg 1 zijn: een actief signaal aan de ingang komt overeen met de veilige toestand.
+- De veilige toestand is dus 1: een actief signaal aan de ingang betekent dat het veilig is.
 - Het gebruik van "geen signaal" als bevestiging van een veilige situatie is onbetrouwbaar.
 
 #voorbeeld(title: "Tank hoog en laag niveau alarm")[
@@ -372,8 +368,15 @@ Hoe zorgen we ervoor dat we deftig onze inputs en outputs kunenn connecteren. Di
 === Soorten signalen
 
 
-#TODO[Voeg toe van slides]
-// todo:voeg toe van slides.
+#TODO[Deck 3, slide 36: overzicht van het interfacen van digitale I/O van een toestel.]
+
+=== Smart I/O-kaarten
+
+#TODO[Deck 3, slides 62-64. Beckhoff KL2541 en andere smart I/O-kaarten, en smart I/O op de PLC zelf: wanneer leg je intelligentie in de klem in plaats van in het programma.]
+
+=== Universele in- en uitgangen
+
+#TODO[Deck 3, slide 35. Universal inputs: één klem die zowel sourcing als sinking aankan, en waarom dat handig is.]
 
 
 

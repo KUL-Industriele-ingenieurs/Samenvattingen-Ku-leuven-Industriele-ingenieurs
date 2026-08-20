@@ -4,10 +4,10 @@
 
 == Wat is pneumatiek?
 
-Pneumatica is het controlleren van *Cilinders en pistons* met behulp van *Lucht*. We gaan deze kunnen bedienen met behulp van *Valves*. We gebruiken onze *Relays* en *PLC's* om deze te bedienen.
+Pneumatica is het aansturen van *cilinders en zuigers* met lucht. Je bedient ze met *ventielen*, en die stuur je op hun beurt met *relais* en *PLC's*.
 
 Voor het labo moet je meer weten over pneumatiek.
-Zorg dat je alles dit nog deftig doorneemt voor je aan de labo's begint.
+Neem dit alles nog eens deftig door voor je aan de labo's begint.
 
 == Contents
 
@@ -66,7 +66,7 @@ $ F = k dot Delta x $
 
 === Vacuüm
 
-Druk is uiteindelijk botsingen van moleculen tegen een oppervlakte.
+Druk is niets anders dan moleculen die tegen een oppervlak botsen.
 #figure(
   image("assets/magdeburg hemispheres.png", width: 5cm),
   caption: [magdeburg hemispheres],
@@ -92,7 +92,7 @@ In de industrie wordt pneumatics veel gebruikt. Tandartsen, schroevendraaiers, s
 === Vacuum ejector
 
 #wrap-figure(
-  image("assets/vacuum ejector.png", width: 5cm),
+  image("assets/vacuum ejector.png", width: 8cm),
   caption: [vacuum ejector],
   label: <fig:vacuum-ejector>,
 )[
@@ -125,14 +125,12 @@ Om dingen tight te houden zodat lucht niet lekt worden gasdichte connecties gebr
 
 === Pneumatische cilinders
 
-#examenbox(
-  "Zorg dat je niet verward geraakt met pompen in industriele sturing en anderre soort pompen in de thermodynamica",
-)
+#examenbox[Verwar de pompen uit de industriële sturing niet met de pompen uit de thermodynamica.]
 
 We zetten een hoge druk aan de linkerkant. Hierdoor wordt de zuiger naar rechts geduwd. Daarna wordt deze hoge druk losgelaten door de return flow. De druk is nu ineens weg en gaat de zuiger terug naar links.
 
 
-We werken met relatieve druk want als we de druk niet groter zetten als de atmosferische druk, dan gaat de zuiger niet naar rechts omdat er druk is aan de staafkant die de zuiger tegenhoudt.
+We rekenen met relatieve druk. Zet je de druk niet hoger dan de atmosferische druk, dan beweegt de zuiger niet: aan de stangzijde staat er ook druk die hem tegenhoudt.
 
 #figure(
   image("assets/pneumatische cilinder.png", width: 8cm),
@@ -144,7 +142,7 @@ Wanneer de zuiger beweegt tussen de twee eindposities (volledig in- of uitgescho
 
 Meestal gebruiken we *Full pressure*: we proberen niet zuinig te zijn met lucht om de efficiëntie te vergroten, aangezien energie-recuperatie bij pneumatiek meestal niet mogelijk is. De kamer die niet onder druk staat, moet altijd worden *ontlucht* naar de atmosfeer.
 
-De meeste cilinders zijn *dubbelwerkend* (double acting) en hebben dus twee aansluitingen. De kracht in beide richtingen is echter vaak niet gelijk. Dit komt door de *zuigerstang* (piston rod): aan de stangzijde is het effectieve oppervlak kleiner dan aan de bodemzijde, waardoor de uitgaande slag krachtiger is dan de ingaande slag bij dezelfde druk.
+De meeste cilinders zijn *dubbelwerkend* *(double acting)* en hebben dus twee aansluitingen. De kracht in beide richtingen is echter vaak niet gelijk. Dit komt door de *zuigerstang* (piston rod): aan de stangzijde is het effectieve oppervlak kleiner dan aan de bodemzijde, waardoor de uitgaande slag krachtiger is dan de ingaande slag bij dezelfde druk.
 
 Veel pneumatische cilinders zijn uitgerust met *Einddemping* (end cushioning). Dit voorkomt dat de zuiger hard tegen de eindkappen slaat. De demping kan vaak handmatig worden ingesteld met een regelschroef op de cilinder zelf.
 
@@ -155,12 +153,12 @@ Veel pneumatische cilinders zijn uitgerust met *Einddemping* (end cushioning). D
   label: <fig:pneumatische-cilinders-design>,
 )
 
-Kracht wordt gereguleerd door de druk.
+De kracht regel je met de druk.
 
 $ F = p dot A $
 
-*Snelheid control* is mogelijk door *Throttling* met een flow control valve.
-Je gaat je uitlaat of inlaat controlleren zodat je controle hebt over de snelheid
+De snelheid regel je door te *smoren* (throttling) met een flow control valve.
+Je regelt de uitlaat of de inlaat, en zo heb je controle over de snelheid.
 
 
 
@@ -186,7 +184,7 @@ Je gaat je uitlaat of inlaat controlleren zodat je controle hebt over de snelhei
     label: <fig:special-cilinders>,
   )
 
-#examenbox("Op het examen krijg je alle symbolen gegeven voor het examen. Je moet ze niet vanbuiten leren.")
+#examenbox("Je moet deze symbolen kennen, je kunt een single acting piston altijd herkennen omdat die een veer heeft en maar 1 ingang.")
 
 #figure(
   image("assets/symbolen-cilinders.png", width: 12cm),
@@ -198,9 +196,9 @@ Je gaat je uitlaat of inlaat controlleren zodat je controle hebt over de snelhei
 == Kracht op full pressure
 
 
-Wat is de kracht op een cilinder op full pressure. Er zijn drie krachten die inspelen hierop. Dat zijn de krachtne op de piston, op de rod en ini de chamber.
+Wat is de kracht op een cilinder op full pressure. Er zijn drie krachten die inspelen hierop. Dat zijn de krachtne op de piston, op de rod en in de chamber.
 
-#examenbox("Deze vragen worden vaak fout opgelost dus let op")
+#examenbox("Deze vragen worden vaak fout opgelost dus let op.")
 #figure(
   image("assets/kracht-fullpressure.png", width: 7cm),
   caption: [kracht-fullpressure],
@@ -231,29 +229,30 @@ Gebruik relatieve druk zodat je $F_3$ niet moet berekenen.
   $ F_3 = 0 "N" $
 
   Aangezien deze zijde verbonden is met de atmosfeer ($0 "bar"$ relatief). De netto kracht bij de uitgaande slag is dus:
-  $ F_"outward" = 295 "N" - 44 "N" = 251 "N" $
+  $ F_"outward" = 295 "N" - 44 "N" = 251 "N" arrow.r $
 ]
 
 We zouden de tegendruk (vent pressure) kunnen verlagen door een *quick release valve* te installeren, maar meestal is de hoge tegendruk een gevolg van de debietregeling (flow regulation).
 
 Voor de kracht tijdens een trage *inwaartse slag* met dezelfde toevoer- en tegendrukwaarden bekomen we:
-$ F_"inward" = 264 "N" - 49 "N" = 215 "N" $
+$ F_"inward" = 264 "N" - 49 "N" = 215 "N" arrow.l $
 
-#examenbox("Tip voor het examen: Gebruik relative druk zodat je $F_3 = 0$")
+#examenbox[Tip voor het examen: gebruik relatieve druk, dan is $F_3 = 0$.]
 
 == Lucht laten ontsnappen
 
-+ / Uitlaatdemper: Dempt de uitlaat van de cilinder, minder geluid en verlaagt de flowrate $dot(V)$
-+ / Millieufilte: Filter de lucht die uit de cilinder komt
++ / Uitlaatdemper: dempt de uitlaat van de cilinder. Minder geluid, maar ook een lager debiet $dot(V)$
++ / Milieufilter: filtert de lucht die uit de cilinder komt
   #figure(
     image("assets/Milileufilter.png", width: 3cm),
-    caption: [Milileufilter],
+    caption: [Milieufilter],
     label: <fig:Milileufilter>,
   )
-+ / Snelheidsregeling: Regelt de snelheid van de cilinder
++ / Snelheidsregeling: regelt de snelheid van de cilinder
+
 
 #wrap-figure(
-  image("assets/snelheidsregeling.png", width: 5cm),
+  image("assets/snelheidsregeling.png", width: 3cm),
   caption: [snelheidsregeling],
   label: <fig:snelheidsregeling>,
 )[
@@ -269,19 +268,17 @@ $ F_"inward" = 264 "N" - 49 "N" = 215 "N" $
   In een cilinder werkt de kracht van de perslucht tegen de kracht van het gas aan de andere kant van de zuiger. Het smoren van deze *uitlaatlucht* is een goede en vaak de juiste manier om de snelheid van een zuiger te regelen.
 ]
 
-*Metered uit*
-Regelen over de uitstromende lucht van je *Cilinder*
-Dit is *de juiste manier* voor speed control te doen
+*Metered out*: je regelt de lucht die *uit* de cilinder stroomt. Dit is de *juiste* manier om de snelheid te regelen.
 
 #voorbeeld(title: "Speed control")[
+  Stel: een cilinder tilt een last op met 6 bar, en daarna laat je die last weer zakken.
 
-  Stel je hebt een cilinder die 6 bar een last optilt.
-  Dan laten we die last zakken.
+  Smoor je aan de *inlaatzijde*, dan duwt de last zelf de zuiger naar beneden en is er niets dat hem tegenhoudt: de last valt.
+
+  Smoor je aan de *uitlaatzijde*, dan moet de lucht onder de zuiger traag naar buiten. Die lucht werkt als een kussen en de last zakt gecontroleerd.
 ]
 
-*Metered in*
-Regelen over de inkomende lucht van je *Cilinder*
-Dit is de *verkeerde* manier voor speed control te doen
+*Metered in*: je regelt de lucht die *in* de cilinder stroomt. Dit is de *verkeerde* manier.
 
 
 #figure(
@@ -290,16 +287,15 @@ Dit is de *verkeerde* manier voor speed control te doen
   label: <fig:pompcircuit>,
 )
 
-Snelheidsregeling monteer je op de cilinder. Je smoortap zo dicht mogelijk bij de cilinder plaatsen. Maar je kunt het ook op de ventiel zetten.
-Berijkbaarheid is soms belangrijker.
+Monteer de snelheidsregeling zo dicht mogelijk bij de cilinder. Je kan ze ook op het ventiel zetten: soms weegt bereikbaarheid zwaarder.
 
 
-Daarbuiten heb je nog een quick relief ventiel. Een quick relief valve wordt gebruikt om snel de druk van een systeem te verlagen. #link("https://www.youtube.com/watch?v=BTNiZhbrLNg")
+Daarnaast bestaat er nog het *quick relief ventiel*, dat de druk in een systeem snel laat dalen. #link("https://www.youtube.com/watch?v=BTNiZhbrLNg")
 
 
 == Switching
 
-In dit deel bekijken we hoe "switching" (schakelen) gebeurt in pneumatische systemen. Switching betekent dat je de richting van de luchtstroom verandert om zo de beweging van cilinders te controleren. Dit gebeurt met behulp van *Directional Control Valves* (DCV), ook wel stuurventielen of wegventielen genoemd.
+In dit deel bekijken we hoe "switching" (schakelen) gebeurt in pneumatische systemen. Switching betekent dat je de richting van de luchtstroom verandert om zo de beweging van cilinders te controleren. Dat doe je met *Directional Control Valves* (DCV), ook wel stuurventielen of wegventielen genoemd.
 
 === Ventielen (Valves)
 
@@ -396,7 +392,7 @@ De middenstand bepaalt de toestand van de cilinder wanneer geen van beide spoele
 - / Ontluchte middenstand (Exhaust Center - COE): De cilinderpoorten zijn verbonden met de uitlaat. De cilinder is vrij om te bewegen ("zweeft").
 - / Druk middenstand (Pressure Center - COP): Er wordt druk uitgeoefend op beide cilinderpoorten. Wordt gebruikt voor het handhaven van constante druk.
 
-5/3 ventielen maken doorgaans gebruik van dubbele spoelen en worden vaak ingezet bij complexe automatisering, zoals bij klem-, pers- of positioneringstoepassingen waar een 5/2 ventiel onvoldoende controle biedt.
+5/3 ventielen hebben meestal twee spoelen. Je gebruikt ze bij klemmen, persen en positioneren, dus overal waar een 5/2 ventiel te weinig controle geeft.
 
 
 == Reference designation system (RDS)
@@ -456,25 +452,22 @@ We gaan onze logic circuit baseren op:
 + Safety
 + Energy efficiency
 
-We gebruiken *Pneumatische controls* voor simpele circuits.
-En meer complexe systemen met *Electro-pneumatische controls* (PLC or relay circuits).
+Voor eenvoudige circuits gebruiken we *pneumatische sturing*. Complexere systemen doen we met *elektro-pneumatische sturing*, dus met een PLC- of relaiscircuit.
 
-We gaan onze druk controlleren via logic circuits om cilinders te controlleren.
+We sturen de druk via logische circuits, en zo sturen we de cilinders.
 
 A+ brengt ons van $A_0$ naar $A_1$\
 A- brengt ons van $A_1$ naar $A_0$
 
-de $A_0$ en $A_1$ zijn de *States*. Ze zijn alle punten dat de cilinder stabiel in kan zijn.
+$A_0$ en $A_1$ zijn de *toestanden*: alle standen waarin de cilinder stabiel kan blijven staan.
 
 === Ventielen in logische circuits
 
-Alle soorten functies:
-- AND:
-- NOT:
-- OR:
+Je kan alle logische functies met ventielen bouwen: AND, OR en NOT.
 
-In de circuits ga je alle cilinders in het startpositie zetten.
-Niet in de rustpositie zoals elektrische circuit.
+#TODO[Symbolen en schema's voor AND, OR en NOT nog invullen. Bron: deck 2, slides 58-59.]
+
+In de circuits teken je alle cilinders in hun *startpositie*, niet in de rustpositie zoals bij een elektrisch schema.
 
 #figure(
   image("assets/logic-circuit.png", width: 10cm),
@@ -482,12 +475,12 @@ Niet in de rustpositie zoals elektrische circuit.
   label: <fig:logic-circuit>,
 )
 
-#examenbox("Op het examen dit circuit kunnen begrijpen")
+#examenbox[Op het examen moet je dit circuit kunnen lezen.]
 
 == Cascade methode
-Hoe gaan we ons circuit oplossen. We hebben een idee maar hoe gaan we dat in een logisch circuit omzetten?
+Hoe los je zo'n circuit op? Je hebt een idee van de beweging, maar hoe zet je dat om in een logisch circuit?
 
-De cascade methode is een methode om een complexe circuit te ontwerpen door het circuit te splitsen in eenvoudige delen.
+De cascademethode splitst een complex circuit op in eenvoudige delen.
 
 _BV. ABC | CB A: A beweegt naar $A_1$ $=>$  B beweegt naar $B_1$ $=>$ C beweegt naar $C_1$._
 
@@ -495,7 +488,7 @@ Hierna zet je het circuit over naar de tweede groep
 
 _ CB | A: C beweegt naar $C_0$ $=>$ B beweegt naar $B_0$ $=>$ A beweegt naar $A_0$._
 
-Een daarna schaklet die terug naar circuit 1.
+En daarna schakelt hij terug naar groep 1.
 
 #figure(
   image("assets/cascade-methode.png", width: 12cm),
@@ -508,7 +501,7 @@ Een daarna schaklet die terug naar circuit 1.
 
 Je kunt circuits tekenen via PneuDraw #link("https://etools.smc.at/pneudraw/index.html?id=pd218b10a8-6398-48de-an23lqjhw1km0giemmtgz", "PneuDraw")
 
-Zorg dat je dit gezien hebt voor je labo's hebt hier over.
+Zorg dat je dit gezien hebt voor je er labo's over krijgt.
 
 
 

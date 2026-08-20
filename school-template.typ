@@ -243,7 +243,10 @@
     // Negatieve linkerinspring: hoofdtitels steken iets in de marge, zodat de
     // structuur al zichtbaar is als je door het document bladert. Zet
     // titleOutdent op 0pt om het uit te schakelen.
-    pad(left: -titleOutdent, block(below: 0.95em, breakable: false)[
+    // De `below` moet op het buitenste element staan: bij `pad(block(below: ..))`
+    // regelt de pad zelf de afstand tot de volgende alinea en doet de `below`
+    // van het binnenste blok niets.
+    block(below: 0.7em, breakable: false, pad(left: -titleOutdent)[
       #v(18pt)
       #text(size: 15pt)[#if it.numbering != none { counter(heading).display(it.numbering) + h(0.5em) }#it.body]
       #v(-11pt)
