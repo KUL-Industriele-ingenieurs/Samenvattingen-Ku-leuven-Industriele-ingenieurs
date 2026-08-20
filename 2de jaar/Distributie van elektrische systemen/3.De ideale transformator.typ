@@ -29,7 +29,7 @@ Volgens de wet van Faraday ($v = N dif phi / dif t$) kunnen we de flux vinden do
 
 $ phi = V_1/(omega N_1) sin(omega t) = V_2/(omega N_2) sin(omega t) $
 
-#examenbox[Onthoud dit goed: De flux $phi$ loopt precies **90 graden achter** op de spanning $v$. Dit noemen we *lagging*.]
+#examenbox[Onthoud dit goed: De flux $phi$ loopt precies *90 graden achter* op de spanning $v$. Dit noemen we *lagging*.]
 
 #figure(
   cetz.canvas({
