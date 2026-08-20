@@ -2,9 +2,8 @@
 
 = Pneumatica deel 2 <ch:pneumatica-deel-2>
 
-#chapter-outline()
 
-In @ch:intro-pneumatics keken we naar de cilinder: welke kracht die levert en hoe we hem voeden. Hier gaan we een niveau dieper, naar het *ventiel* zelf. Drie vragen sturen dit hoofdstuk:
+In @ch:intro-pneumatics keken we naar de cilinder: welke kracht die levert en hoe we hem voeden. Hier gaan we een niveau dieper, naar het *ventiel* zelf. Drie vragen:
 
 + Wat zit er binnenin een richtingsventiel en hoe stuurt dat de lucht?
 + Wat moet er rond dat ventiel staan om de cilinder rustig en stil te laten bewegen?
@@ -77,7 +76,7 @@ Een cilinder wordt steeds bestuurd door één hoofdschakelaar, die net zoals in 
   label: <fig:electro-vs-mechanisch>,
   width: 6cm,
 )[
-  Een veel gebruikt ventiel dat vermogen schakelt is het *elektro-pneumatisch ventiel*: we gebruiken een klein *elektrisch* signaal (een spoel van bv. 2 W) om een grote hoeveelheid lucht te schakelen. Dat is de brug tussen de PLC (Programmable Logic Controller) of het relaiscircuit enerzijds en het pneumatische vermogen anderzijds.
+  Een veel gebruikt ventiel dat vermogen schakelt is het *elektro-pneumatisch ventiel*: we gebruiken een klein *elektrisch* signaal (een spoel van bv. 2 W) om een grote hoeveelheid lucht te schakelen. Zo koppel je de PLC (Programmable Logic Controller) of het relaiscircuit aan het pneumatische vermogen.
 
   Er is nog een verschil met elektrische schakelaars waar we even bij stilstaan: een *puur pneumatisch* ventiel verbruikt geen vermogen zolang het geschakeld staat. Het verbruikt alleen even iets op het moment dat het van situatie verandert. Een contactor of een elektro-pneumatisch ventiel met permanent bekrachtigde spoel trekt daarentegen continu stroom zolang je hem aangestuurd houdt.
 ]
@@ -337,4 +336,50 @@ Zo lees je @fig:ventiel-53-flowboxes: linkse spoel bekrachtigd $arrow.r$ het gro
 
 Dat tweede punt heeft een direct gevolg voor je sturing: je mag nooit aannemen dat een cilinder op zijn eindpositie staat omdat je het ventiel hebt aangestuurd. Wil je zeker zijn, dan heb je eindpositiedetectie nodig ($a_0$ en $a_1$) en laat je de volgende stap in je sequentie pas vertrekken wanneer die sensor bevestigt dat de beweging effectief afgerond is.
 
-#TODO[OIS #103: rest van pneumatica deel 2 (elektrische schema's met ventielen, pilot valve, logica en OR-ventiel) nog aanvullen]
+=== Elektrische schema's met ventielen
+
+#TODO[Rondgaande samenvatting 6.4.3. Hoe je cilinders en hun ventielen benoemt in het schema: cilinder `=M10` met ventiel `-Q1`, dus `=M10-Q1.M1` voor de spoel. De pilot valve zelf is al behandeld in @ch:intro-pneumatics.]
+
+== Logica in pneumatiek
+
+#TODO[Rondgaande samenvatting 6.6, deck 2 slides 53-64. De notatie A+ / A- en $a_0$ / $a_1$. Waarom een T-splitsing met twee 2/2-ventielen géén correcte OR-schakeling is (de druk blijft hangen, het circuit reset niet), en waarom je daarvoor een shuttle valve of OR-ventiel nodig hebt, samen met 3/2-ventielen die kunnen ontluchten.]
+
+== Soorten ventielen
+
+#TODO[Deck 7, slides 3-16. De basiseisen aan een ventiel (lange levensduur, constante beweging), de ventielgrootte via debiet en drukval ($K_v$-waarde), en de manifold of valve block.]
+
+=== Kogelkraan en schijfventiel
+
+#TODO[Deck 7, slides 7-8. De kogelkraan (2/2) voor afsluiten en isoleren, en het schijfventiel voor draaiknopbediening.]
+
+=== Klepventiel (poppet valve)
+
+#TODO[Deck 7, slides 9-12. De 2/2, 3/2 en 4/2 uitvoering. Sluit zeer goed af en is mechanisch eenvoudig, maar je moet tegen de druk in duwen.]
+
+=== Schuifventiel (spool valve)
+
+#TODO[Deck 7, slides 13-15. Intern in drukbalans, dus de bedieningsdruk is onafhankelijk van de geschakelde druk. Daarom is een 5/2 makkelijker te bouwen dan een 4/2.]
+
+=== Open before close versus close before open
+
+#TODO[Rondgaande samenvatting 7.2.1. Een klepventiel opent de tweede toevoer voor de eerste gesloten is (open before close), een schuifventiel doet het omgekeerd. Wat dat betekent voor je circuit.]
+
+== Het juiste ventiel kiezen
+
+#TODO[Deck 7, slides 17-20. Fail-safe ventielen, mono-stabiel versus bi-stabiel afhankelijk van wat er moet gebeuren bij uitval, en het stroomverbruik van magneetventielen met reduced holding current.]
+
+== Veiligheid van ventielen
+
+#TODO[Deck 7, slides 21-31. Gemonitorde veiligheidsventielen met spoeldetectie (IDM), het soft-startventiel en waarom je dat niet combineert met intern gepiloteerde ventielen, de vijf veelvoorkomende veiligheidsfuncties, en de externe rem of interne vergrendeling op de zuigerstang.]
+
+== Het persluchtsysteem
+
+#TODO[Deck 7, slides 32-47. Primaire luchtbehandeling, compressortypes, het luchtvat, luchtkwaliteit, water in perslucht en het dauwpunt (ADP versus PDP), en de luchtdroger.]
+
+=== Secundaire luchtbehandeling en de FRL-unit
+
+#TODO[Deck 7, slides 48-55. De drukregelaar aan de machine, filter en separator, en de opbouw van het FRL-symbool (Filter, Reducer, Lubricator).]
+
+== Efficiëntie en kosten van perslucht
+
+#TODO[Deck 7, slides 56-73. Waarom "air is free" niet klopt: het rendement van elektrische energie naar nuttig pneumatisch werk, lifecycle cost, lekken, en de vergelijking pneumatiek versus elektrische aandrijving.]

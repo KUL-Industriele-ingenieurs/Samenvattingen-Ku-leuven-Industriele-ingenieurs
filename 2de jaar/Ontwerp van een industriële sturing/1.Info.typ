@@ -4,9 +4,9 @@
 
 #import "../../school-template.typ": *
 
-= Infomatie vak <ch:inleiding>
+= Informatie over het vak <ch:inleiding>
 
-In dat vak leer je alle termen en concepten die te maken hebben met het ontwerpen van een industriële sturing.
+In dit vak leer je de termen en concepten die bij het ontwerpen van een industriële sturing horen.
 
 Je moet de *Nederlandse* en *Engelse* termen kennen.
 
@@ -14,13 +14,13 @@ Je moet de *Nederlandse* en *Engelse* termen kennen.
 
 == Doel <sec:doel>
 
-- Elektrsiche diagrammen kunnen lezen
+- Elektrische diagrammen kunnen lezen
 - Diagrammen kunnen opstellen
 - *SEE electrical* diagrammen kunnen opstellen
-- ingieur oplossingen: PLC, remote IO, drive, E-stop, interface relays..
+- Ingenieursoplossingen kennen: PLC, remote I/O, drive, noodstop, interface relais, ...
 - Oplossingen delen
 
-Deze dingen leer je deels in de labo's
+Dit leer je deels in de labo's.
 
 == Planning <sec:planning>
 
@@ -52,7 +52,9 @@ Je krijgt op *Week 7* een taak en op *Week 10* moet je al een oplossing delen.
 
 == Examen
 
-Op het examen krijg je makkelijke (weggevers) vragen, medium en moeilijke vragen.
+Op het examen krijg je makkelijke (weggevers) vragen, medium en moeilijke vragen. Bekijk voorbeeldexamens op studforum: #link("https://cloud.studforum.net/apps/files/?dir=/GTS-Fase2/Semester%202/Courses%20After%202021/Afstudeerrichting%20Electromechanics/Design%20of%20Industrial%20Control%20Systems&fileid=797243", "Cloud Studforum").
+
+en de Studforum wiki: #link("https://wiki.studforum.net/pub/bac2/em/design-of-industrial-control-systems", "Design of Industrial Control Systems Studforum Wiki").
 
 
 

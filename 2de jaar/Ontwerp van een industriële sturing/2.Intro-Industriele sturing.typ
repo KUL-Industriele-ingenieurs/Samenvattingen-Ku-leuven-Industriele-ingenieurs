@@ -7,12 +7,9 @@
 = Imports en Exports <chap:imports>
 
 
-In een land heb is een mens producties als ze
-*exports* creeren. Dit wordt ervoor dat geld binnenkomt in het land.
-Voor dingen buiten het land te gebruiken ga je dingen *importeren*.
+Een land verdient geld door te *exporteren*: je maakt iets en verkoopt het buiten de landsgrenzen. Wat je zelf niet maakt, moet je *importeren*.
 
-Je hebt eigenlijk maar een kleine hoeveelheid mensen die echt productief zijn voor
-exports want mensen zoals
+Maar slechts een klein deel van de bevolking draagt rechtstreeks bij aan die export. Denk aan
 - medische personeel
 - leerkrachten
 - politie
@@ -20,11 +17,9 @@ exports want mensen zoals
 - ambtenaren
 - ...
 
-Dragen niet bij aan *exports*. _wel essensiteel maar economisch gezien dragen ze niet bij direct, wel indirect. Zoals medisch personeel die mensen gezond en werkend houd etc etc._
+Die beroepen dragen niet *rechtstreeks* bij aan de export. _Ze zijn wel essentieel, en hun bijdrage is indirect: medisch personeel houdt mensen gezond en aan het werk._
 
-Onze lonen zijn ook hoog vergeleken met andere landen. Het is dus heel moeilijk om
-competitief te zijn met andere landen. Als we spreken over *automatiseren*
-neem dat misschien een job af maar het zorgt ervoor dat we competitief kunnen blijven met andere landen.
+Onze lonen liggen hoog vergeleken met andere landen, dus het is moeilijk om concurrentieel te blijven. *Automatiseren* kost misschien een job, maar het is net wat ons toelaat om mee te blijven.
 
 #figure(
   image("assets/importexport.png", width: 8cm),
@@ -37,26 +32,18 @@ neem dat misschien een job af maar het zorgt ervoor dat we competitief kunnen bl
   caption: [Geld binnen en buiten],
   label: <fig:geldbinnenenbuiten>,
 )[
-  De hoogte van de pijl toont de waarde van het product.
-  Je neem raw materials binnen en je verhoogt de waarde door productie.
-  Het enige dat dus geld binnenbrengt is *Productie*.
+  De hoogte van de pijl toont de waarde van het product. Je haalt grondstoffen binnen en verhoogt hun waarde door productie. *Productie* is dus het enige dat geld binnenbrengt, en daarom kan je ze niet stilleggen.
 
-  Je kunt productie dus niet stoppen want het is uiteindelijk de motor van het bedrijf.
-
-  Een industriële ingenieur moet ervoor zorgen dat de productielijn gestandardiseerd is.
-  Documentatie, gestandaardiseerde componenten, ...
-
-  Als een ingenieur 20-jaar na jou het syteem beheert moet die weten wat het allemaal betekent. In dit vak leer je *standardisering* van de productielijn.
+  Een industrieel ingenieur zorgt ervoor dat de productielijn *gestandaardiseerd* is: documentatie, standaardcomponenten, vaste werkwijzen. Wie het systeem twintig jaar na jou beheert, moet er nog aan uit kunnen. Dat standaardiseren is waar dit vak over gaat.
 ]
 
 #concept(title: "IT en OT")[
   OT = Operational Technology
   IT = Information Technology
 
-  In de OT mag het niet stilvallen. Het mag niet de oorzaak zijn dat iets stilvalt
-  In de IT valt dingen wel stil. Websites, services zoals netflix kunnen soms gewoon platliggen.
+  In de OT mag niets stilvallen: de sturing mag nooit de oorzaak zijn van een stilstand. In de IT is dat anders, daar mag een website of een dienst zoals Netflix al eens platliggen.
 
-  In OT spreken we vna operation time van 20-30 jaar.
+  In de OT rekenen we bovendien op een levensduur van 20 tot 30 jaar.
 ]
 
 == Ontwerp doelstellingen
@@ -65,7 +52,7 @@ Natuurlijk kunnen deze vereisten variëren afhankelijk van de betrokken industri
 
 - *Betrouwbaarheid in een industriële omgeving*: Betrouwbare componenten, robuuste constructie, EMC, IP, ...
 - *Ontwerp voor systeemondersteuning op lange termijn*: Onderdelen (van de fabrikant, Unis, ...) EN (nieuw) personeel (opleiding), die gedurende 20 jaar beschikbaar zullen zijn (op korte termijn, onderdelen geleverd < 2u). Beheer documentatie.
-- *Ontwerp voor snelle herstelling*: Gebruik standaardcomponenten, methodologie en programmeertaal (LAD) over verschillende machines heen. Gebruik hetzelfde type componenten (insteekbaar/socket) over de machines heen. _bv. Relays hebben kun bewegende delen die snel vervangen kunnen worden_
+- *Ontwerp voor snelle herstelling*: Gebruik standaardcomponenten, methodologie en programmeertaal (LAD) over verschillende machines heen. Gebruik hetzelfde type componenten (insteekbaar/socket) over de machines heen. _bv. een relais op een socket wissel je zo om wanneer de bewegende delen versleten zijn._
 - *Lage engineeringkosten & flexibiliteit*: Verminder de engineeringtijd: Gebruik kant-en-klare componenten en oplossingen, focus de engineeringinspanning op klant-specifieke vereisten. Een hogere componentkost is vaak acceptabel. Gebruik modulaire componenten voor flexibele oplossingen, wijzigingen in de vereisten zijn te verwachten.
 
 == Basis diagram geautomatiseerd systeem.
@@ -104,26 +91,26 @@ PID-controllers werken niet met aan/uit-signalen, maar met *continue, analoge si
   caption: [automatisering pyramide],
   label: <fig:automatiseringpyramide>,
 )[
-  PLC zijn de bijna de grond van heel het automatisering. Zij zijn de dingen die connecteren aan de sensor en de basic logic doen. Alles dat meerdere stappen moet volgen, langduration moet werken en makkelijk vervangbaar moet zijn, wordt meestal gedaan met een PLC.
+  PLC's vormen de basis van de hele automatisering. Zij hangen rechtstreeks aan de sensoren en doen de eenvoudige logica. Alles wat meerdere stappen moet doorlopen, jarenlang moet blijven werken en makkelijk vervangbaar moet zijn, doe je meestal met een PLC.
 ]
 
 == Een goed controle systeem kiezen
 
 + *Specifieke controllers, CNC, robot controllers, ...*
-+ *Labview:* Een systeem waarmee je sensoren kunt controlleren vanaf een pc. Goede voor een labo omgeving.
++ *LabVIEW:* hiermee stuur je sensoren aan vanaf een pc. Goed voor een labo-omgeving.
 + *Pneumatische controllers*
   #figure(
-    image("assets/pneumatische controller.png", width: 5cm),
+    image("assets/pneumatische controller.png", width: 8cm),
     caption: [pneumatische controller],
     label: <fig:pneumatischecontroller>,
   )
-+ *Relays:* Heeft de simpleste logica nog simpler dan een PLC. Alleen bruikbaar voor simpele logica.
++ *Relais:* de eenvoudigste logica die er is, nog eenvoudiger dan een PLC. Enkel bruikbaar voor simpele schakelingen.
   #figure(
     image("assets/relats.png", width: 5cm),
     caption: [relays],
     label: <fig:relays>,
   )
-+ *PLC:* Programmable Logic Controller. Geeft meer controle in productiesystemen. Je kunt het bezien als een simpele computer die je gaat programmeren gelijkaardig aan een arduino of microcontroller. Maar deze is toegepast in automatisering voor zijn betrouwbaarheid.
++ *PLC:* Programmable Logic Controller. Geeft meer controle in productiesystemen. Je kan het zien als een eenvoudige computer die je programmeert, vergelijkbaar met een Arduino of microcontroller, maar gebouwd voor de betrouwbaarheid die automatisering vraagt.
 + *Mechanische automatisering/CAM operated controls*: Enorm betrouwbaar, de beste oplossingen voor simpele producten _bv. bouten, moeren, ..._
   #figure(
     image("assets/mechanicaltoolrelays.png", width: 5cm),
@@ -143,8 +130,8 @@ PID-controllers werken niet met aan/uit-signalen, maar met *continue, analoge si
     caption: [scada2],
     label: <fig:scada2>,
   )
-+ *DCS*: Distributed Control System, Inplaats dat alles centraal wordt gestuurd zorgt DCS dat systemen niet afhankelijk zijn van 1 centrale controller. Dus als er iets misgaat met 1 controller valt de rest van het systeem niet stil. Dit wordt veel gebruikt in de chemische industrie.
-+ *Mechatronics*: Een vage term die meerdere dingen kan betekenen, PID, PLC, Cyber-Physical Systems, ... Het gaat algemeen over dingen die door elektronica worden gecontrolleerd worden *Mechatronics* genoemd.
++ *DCS*: Distributed Control System. In plaats van alles centraal te sturen, maakt een DCS de systemen onafhankelijk van één centrale controller. Dus als er iets misgaat met 1 controller valt de rest van het systeem niet stil. Dit wordt veel gebruikt in de chemische industrie.
++ *Mechatronica*: een vage term die van alles kan dekken: PID, PLC, Cyber-Physical Systems, ... In het algemeen valt alles wat door elektronica aangestuurd wordt eronder.
 
 
 == Industrie 4.0
@@ -154,8 +141,10 @@ PID-controllers werken niet met aan/uit-signalen, maar met *continue, analoge si
 + Derde industrie revolutie: Automatisering door computers en IT _PLC, PID-controllers, sensoren_.
 + Vierde industrie revolutie: Cyber-Physical Systems, IoT, AI, ...
 
+#examenbox[Een examenvraag kan zijn: Wat zijn alle eigenschappen en karakteristieken van Industrie 4.0]
 
-== RDS Reference Designation System, Hoe ga je componten benoemen?
+
+== RDS Reference Designation System: hoe benoem je componenten?
 
 
 #figure(
@@ -164,7 +153,7 @@ PID-controllers werken niet met aan/uit-signalen, maar met *continue, analoge si
   label: <fig:klassesRDS>,
 )
 
-Je defineert je component in klasses. Dit is de *een letter code* die de functie van het component beschrijft. Voor elk aspect wordt een letter geven _Bv. EN 81346_
+Je deelt je componenten in *klassen* in. Elke klasse heeft een letter die zegt welke functie het component vervult, en per aspect krijg je zo'n letter. _Bv. EN 81346._
 
 #oefening(
   title: "klassen RDS",
@@ -188,7 +177,7 @@ Een paar belangrijke letters:
 
 = Logic control
 
-De eerste ontwerpregel is simpel: bestaat er al een component dat specifiek gemaakt is voor een bepaalde functie, gebruik dat dan in plaats van zelf iets te bouwen dat uiteindelijk hetzelfde doet. Heb je een timer nodig, neem dan een standaard timercomponent en ga niet knutselen met tellers en omwegen. Beperk daarnaast het aantal fysieke verbindingen zoveel mogelijk: elke draad is een kans op een fout.
+De eerste ontwerpregel is simpel: bestaat er al een component dat specifiek gemaakt is voor een bepaalde functie, gebruik dat dan in plaats van zelf iets te bouwen dat hetzelfde doet. Heb je een timer nodig, neem dan een standaard timercomponent en ga niet knutselen met tellers en omwegen. Beperk ook het aantal verbindingen: elke draad is een kans op een fout.
 
 #concept(title: "Drie soorten logische problemen")[
   / Combinatorisch: de uitgang volgt rechtstreeks uit de *huidige* waarden aan de ingang. Bv. een AND-functie.
@@ -238,19 +227,22 @@ De contactnummering is gestandaardiseerd: *hoofdcontacten* krijgen de nummers 1 
 ]
 
 #wrap-figure(
-  image("assets/Voorbeeld circuit.png", width: 3.5cm),
+  image("assets/Voorbeeld circuit.png", width: 5cm),
   caption: [Twee N.O.-schakelaars in serie],
   label: <fig:voorbeeldcircuit>,
   width: 3.5cm,
+  align: left,
 )[
   Hoe je de schakeling tekent, bepaalt haar functie. In @fig:voorbeeldcircuit staan twee schakelaars `-S1` en `-S2` die beide normaal open zijn, in serie met de lamp `-P1`. Beide moeten dus gesloten zijn voor de lamp brandt: dat is een AND-functie in hardware.
+
+  Een *volt-free contact* (potentiaalvrij contact) levert zelf geen stroom of spanning: het opent of sluit enkel een verbinding tussen twee draden. Een gewone lichtschakelaar is zo'n contact.
+
 ]
 
-Een *volt-free contact* (potentiaalvrij contact) levert zelf geen stroom of spanning: het opent of sluit enkel een verbinding tussen twee draden. Een gewone lichtschakelaar is zo'n contact.
 
 == Contactoren <sec:contactoren>
 
-Tot nu toe schakelden we signalen. Maar wat als je *vermogen* moet schakelen, zoals een driefasige motor of een verwarmingskring? Daarvoor gebruik je een *contactor*: een elektrisch gestuurd schakelelement dat ontworpen is om hoge stromen en inductieve belastingen in of uit te schakelen. In essentie is het een krachtigere variant van een relais.
+Tot nu toe schakelden we signalen. Maar wat als je *vermogen* moet schakelen, zoals een driefasige motor of een verwarmingskring? Daarvoor gebruik je een *contactor*: een elektrisch gestuurd schakelelement dat ontworpen is om hoge stromen en inductieve belastingen in of uit te schakelen. Het is een zwaardere versie van een relais.
 
 #examenbox[
   Verwar de letters niet: `K` is een *relais* (stuurstroom, logica), `Q` is een *contactor* of hoofdschakelaar (vermogen).
@@ -321,9 +313,172 @@ _Let op: de rondgaande samenvatting schrijft de brom toe aan de vlambogen tussen
 )[
   Een *relais* (letter `K`) werkt op hetzelfde principe als een contactor, maar dan voor *signalen* in plaats van vermogen. Het is het meest fundamentele element in logic control: een elektromagnetische schakelaar die door knoppen, schakelaars en sensoren aangestuurd wordt.
 
-  Vloeit er een stroom $I$ door de spoel (aangesloten op de klemmen A1 en A2), dan wordt er een magnetisch veld $B$ opgewekt. Die spoel is gewikkeld rond een kern van ferromagnetisch materiaal, meestal zacht ijzer. De stroom veroorzaakt een *magnetomotorische kracht* (mmf) die een magnetische flux $Phi$ opwekt. Die flux zoekt het pad met de kleinste magnetische weerstand (*reluctantie*), dus door het ijzer en niet door de lucht.
+  Vloeit er een stroom $I$ door de spoel (aangesloten op de klemmen A1 en A2), dan wordt er een magnetisch veld $B$ opgewekt. Die spoel is gewikkeld rond een kern van ferromagnetisch materiaal, meestal zacht ijzer. De stroom veroorzaakt een *magnetomotorische kracht* (mmf) die een magnetische flux $Phi$ opwekt. Die flux loopt bijna volledig langs het pad met de kleinste magnetische weerstand (*reluctantie*), dus door het ijzer en niet door de lucht.
 
   Waar de flux toch een luchtspleet moet oversteken, ontstaan tegengestelde magnetische polen. Die trekken de bewegende *armatuur* naar het vaste deel, en zo veranderen de contacten van positie. Omdat er een bewegend deel in zit, is een relais niet geschikt voor hoge schakelfrequenties.
+]
+
+=== Van stroom tot contact: de krachtketen
+
+Waarom trekt de armatuur aan? De ketting loopt van stroom naar kracht, en elke schakel heeft zijn eigen formule.
+
+#figure(
+    cetz.canvas(length: 1.05cm, {
+      import cetz.draw: *
+
+      let ijzer = rgb(110, 110, 110)
+      let ijzerv = rgb(219, 219, 224)
+      let koper = rgb(176, 104, 42)
+      let fluxk = rgb(126, 66, 168)
+      let krachtk = rgb(200, 60, 50)
+      let veerk = rgb(45, 110, 180)
+      let klein = txt => text(size: 7.5pt, txt)
+      let mini = txt => text(size: 6.5pt, txt)
+
+      // ---------------- kern (C-vorm) ----------------
+      rect((0, 0), (1.0, 5.0), fill: ijzerv, stroke: ijzer)      // juk
+      rect((1.0, 0), (6.0, 1.0), fill: ijzerv, stroke: ijzer)    // onderbeen
+      rect((1.0, 4.0), (6.0, 5.0), fill: ijzerv, stroke: ijzer)  // bovenbeen
+      content((3.5, 0.76), mini[zacht ijzer])
+
+      // ---------------- armatuur ----------------
+      rect((6.5, 0), (7.5, 5.0), fill: ijzerv, stroke: ijzer)
+      content((7.7, 1.7), anchor: "west", mini[armatuur])
+
+      // ---------------- spoel om het juk ----------------
+      for i in range(7) {
+        circle((0.5, 1.35 + i * 0.39), radius: (0.98, 0.19), stroke: (paint: koper, thickness: 1.1pt))
+      }
+      content((-1.35, 2.75), angle: 90deg, klein(text(fill: koper)[$N$ windingen]))
+
+      // klemmen A1 / A2
+      line((-0.35, 3.9), (-2.1, 3.9), stroke: (paint: koper, thickness: 1.1pt))
+      line((-0.35, 1.15), (-2.1, 1.15), stroke: (paint: koper, thickness: 1.1pt))
+      circle((-2.1, 3.9), radius: 0.12, stroke: koper)
+      circle((-2.1, 1.15), radius: 0.12, stroke: koper)
+      content((-2.35, 3.9), anchor: "east", klein[A1])
+      content((-2.35, 1.15), anchor: "east", klein[A2])
+      line((-1.55, 4.2), (-0.95, 4.2), mark: (end: ">"), stroke: (paint: koper, thickness: 1pt))
+      content((-1.25, 4.55), klein(text(fill: koper)[$I$]))
+
+      // ---------------- fluxlus ----------------
+      let fs = (paint: fluxk, thickness: 1pt, dash: "dashed")
+      line((0.5, 0.5), (0.5, 4.5), (7.0, 4.5), (7.0, 0.5), close: true, stroke: fs)
+      line((0.5, 2.2), (0.5, 3.0), mark: (end: ">"), stroke: (paint: fluxk, thickness: 1.4pt))
+      line((3.2, 4.5), (4.0, 4.5), mark: (end: ">"), stroke: (paint: fluxk, thickness: 1.4pt))
+      line((7.0, 3.0), (7.0, 2.2), mark: (end: ">"), stroke: (paint: fluxk, thickness: 1.4pt))
+      line((4.0, 0.5), (3.2, 0.5), mark: (end: ">"), stroke: (paint: fluxk, thickness: 1.4pt))
+      content((1.9, 3.55), klein(text(fill: fluxk)[$Phi$]))
+      content((3.6, 2.5), klein(text(fill: koper)[mmf  $cal(F) = N dot I$]))
+      content((5.6, 3.45), anchor: "east", mini[luchtspleet: grootste $cal(R)$])
+      line((5.72, 3.5), (6.2, 4.25), stroke: (paint: rgb(150, 150, 150), thickness: 0.5pt))
+
+      // ---------------- luchtspleten ----------------
+      line((6.0, 0), (6.0, -0.6), stroke: 0.5pt)
+      line((6.5, 0), (6.5, -0.6), stroke: 0.5pt)
+      line((5.35, -0.35), (6.0, -0.35), mark: (end: ">"), stroke: 0.5pt)
+      line((7.15, -0.35), (6.5, -0.35), mark: (end: ">"), stroke: 0.5pt)
+      content((6.25, -0.82), klein[$delta$])
+      content((5.25, -0.35), anchor: "east", mini[luchtspleet])
+      content((5.75, 4.5), mini[N])
+      content((6.75, 4.5), mini[Z])
+      content((6.75, 0.5), mini[N])
+      content((5.75, 0.5), mini[Z])
+
+      // ---------------- krachten ----------------
+      line((8.7, 4.5), (7.7, 4.5), mark: (end: ">"), stroke: (paint: krachtk, thickness: 1.7pt))
+      line((8.7, 0.5), (7.7, 0.5), mark: (end: ">"), stroke: (paint: krachtk, thickness: 1.7pt))
+      content((8.85, 4.5), anchor: "west", klein(text(fill: krachtk)[$F_"mag"$]))
+      content((8.85, 0.5), anchor: "west", klein(text(fill: krachtk)[$F_"mag"$]))
+
+      // veer + muur
+      let yv = 2.5
+      line((7.5, yv), (7.75, yv + 0.3), (8.15, yv - 0.3), (8.55, yv + 0.3), (8.95, yv - 0.3), (9.25, yv),
+        (9.6, yv), stroke: (paint: veerk, thickness: 1pt))
+      line((9.6, 1.85), (9.6, 3.15), stroke: (paint: veerk, thickness: 1.2pt))
+      for i in range(5) {
+        line((9.6, 1.9 + i * 0.3), (9.95, 2.15 + i * 0.3), stroke: (paint: veerk, thickness: 0.6pt))
+      }
+      line((7.8, yv + 0.75), (8.8, yv + 0.75), mark: (end: ">"), stroke: (paint: veerk, thickness: 1.5pt))
+      content((8.3, yv + 1.1), klein(text(fill: veerk)[$F_"veer"$]))
+
+      // ---------------- stoter en contacten ----------------
+      rect((6.85, 5.0), (7.15, 6.1), fill: rgb(245, 240, 225), stroke: 0.6pt)
+      content((7.55, 5.55), anchor: "west", mini[isolerende stoter])
+
+      // blad 11 in rust
+      line((7.0, 6.1), (7.28, 7.3), stroke: 1.6pt)
+      circle((7.28, 7.3), radius: 0.09, fill: black)
+      content((7.4, 6.45), anchor: "west", klein[11])
+      // blad bekrachtigd (spookpositie)
+      line((6.5, 6.1), (6.78, 7.3), stroke: (thickness: 1pt, dash: "dashed", paint: krachtk))
+      // vaste contacten
+      circle((6.78, 7.3), radius: 0.09, fill: black)
+      line((6.78, 7.3), (6.15, 7.95), stroke: 1.2pt)
+      content((6.0, 8.1), anchor: "east", klein[14 (N.O.)])
+      line((7.28, 7.3), (7.95, 7.95), stroke: 1.2pt)
+      content((8.1, 8.1), anchor: "west", klein[12 (N.C.)])
+      line((6.2, 6.75), (5.6, 6.75), mark: (end: ">"), stroke: (paint: krachtk, thickness: 1.2pt))
+      content((5.45, 6.75), anchor: "east", mini(text(fill: krachtk)[bij bekrachtiging]))
+    }),
+  caption: [Doorsnede van een relais met de volledige krachtketen: de spoel maakt de mmf $cal(F)$, die drijft de flux $Phi$ door het ijzer, over de luchtspleet ontstaan de polen, en de aantrekkingskracht $F_"mag"$ werkt tegen de veerkracht $F_"veer"$ in],
+  label: <fig:relais-krachten>,
+)
+
+*Stap 1: de stroom maakt een magnetomotorische kracht.* De spoel is de bron van het hele verhaal. Niet de stroom alleen telt, maar de stroom maal het aantal keren dat de draad rond de kern gaat.
+
+$ cal(F) = N dot I $
+
+met:
+- $cal(F)$: magnetomotorische kracht (mmf), soms genoteerd als $Theta$ $["A"]$, in de praktijk "ampèrewindingen"
+- $N$: aantal windingen van de spoel $[-]$
+- $I$: stroom door de spoel, tussen de klemmen A1 en A2 $["A"]$
+
+*Stap 2: de mmf drijft een flux.* Dit is de *wet van Hopkinson*, de magnetische tegenhanger van de wet van Ohm: de mmf speelt de rol van spanning, de flux die van stroom, en de reluctantie die van weerstand.
+
+$ Phi = frac(cal(F), cal(R)) $
+
+met:
+- $Phi$: magnetische flux door het circuit $["Wb"]$
+- $cal(R)$: reluctantie, de magnetische weerstand van het volledige pad $["A/Wb"]$
+
+*Stap 3: de luchtspleet bepaalt die reluctantie.*
+
+$ cal(R) = frac(l, mu A) $
+
+met:
+- $l$: lengte van het beschouwde stuk pad $["m"]$
+- $mu = mu_r dot mu_0$: permeabiliteit van het materiaal $["H/m"]$
+- $A$: doorsnede van het pad $["m"^2]$
+
+Zacht ijzer heeft een relatieve permeabiliteit $mu_r$ van enkele duizenden, lucht heeft $mu_r = 1$. Een luchtspleet van een halve millimeter weegt dus zwaarder door dan enkele centimeters ijzer. Daarom loopt de flux zo goed als volledig door het ijzer, en is de spleet het knelpunt van het circuit.
+
+*Stap 4: de flux over de spleet levert de kracht.* Waar de flux de spleet oversteekt, ontstaan tegengestelde polen aan weerszijden, en die trekken elkaar aan.
+
+$ F_"mag" = frac(Phi^2, 2 mu_0 A) = frac(B^2 A, 2 mu_0) $
+
+met:
+- $B = Phi slash A$: magnetische inductie in de luchtspleet $["T"]$
+- $A$: oppervlakte van één poolvlak $["m"^2]$
+- $mu_0 = 4 pi dot 10^(-7)$: permeabiliteit van het vacuüm $["H/m"]$
+
+Dat is de kracht *per poolvlak*. In @fig:relais-krachten zijn er twee spleten, dus telt de kracht dubbel.
+
+*Stap 5: kracht tegen veerkracht.* De armatuur beweegt pas wanneer de magnetische kracht de terugstelveer overwint:
+
+$ F_"mag" > F_"veer" = k dot x $
+
+met:
+- $k$: veerconstante $["N/m"]$
+- $x$: indrukking van de veer $["m"]$
+
+Zodra dat het geval is, trekt de armatuur aan, duwt de isolerende stoter het contactblad `11` mee, opent het N.C.-contact `11-12` en sluit het N.O.-contact `11-14`.
+
+#concept(title: "Key insight")[
+  Twee gevolgen van $F prop Phi^2$ die je moet kunnen uitleggen:
+
+  + *Het relais klapt dicht.* Wordt de spleet kleiner, dan daalt $cal(R)$, stijgt $Phi$, en stijgt $F$ kwadratisch. De kracht versterkt dus zichzelf tijdens het aantrekken. Daarom schakelt een relais met een snelle klik, en daarom ligt de *afvalstroom lager dan de aantrekstroom*: eenmaal dicht heeft hij veel minder stroom nodig om dicht te blijven.
+  + *Bij wisselstroom bromt het.* Omdat $F$ evenredig is met het *kwadraat* van de flux, pulseert de kracht aan het dubbele van de netfrequentie en zakt ze twee keer per periode naar nul. Dat is precies het brommen uit @sec:ac-contactoren, en de reden voor de kortsluitring.
 ]
 
 #wrap-figure(
@@ -353,6 +508,10 @@ _Let op: de rondgaande samenvatting schrijft de brom toe aan de vlambogen tussen
 #examenbox[
   Op het examen moet je van een fabrikant een bepaald relais kunnen achterhalen en de N.C.- en N.O.-schakelingen kunnen herkennen. Zo moet je een start-stopschakeling correct kunnen aansluiten.
 ]
+
+== Start-stopschakeling en zelfhouding
+
+#TODO[Deck 1, slides 69-80. De klassieke start-stopschakeling met signaallamp: hoe een N.O.-startknop, een N.C.-stopknop en een hulpcontact van het relais samen een geheugen vormen (zelfhouding). Praktische realisatie met een 11-pins relais en met een MY4. Waarom de stopknop N.C. is.]
 
 == Signal time Diagram
 
@@ -473,7 +632,7 @@ een vervanging van klassieke relays.
   caption: [Ladder logic],
   label: <fig:Ladder-logic>,
 )[
-  Ladder logic is de manier hoe je sequentiele operaties gaat programmeren. Hierbij ga je stap voor stap logica bouwen. Je gaat pas naar de volgende stap als je condities voor die stap *True* zijn.
+  In ladder logic bouw je de logica stap voor stap op. Je gaat pas naar de volgende stap wanneer de condities van die stap *True* zijn.
 
   Je bepaald eerst je begin condities (memory M0.0, sensoren, knoppen, etc.). _De labo's gaan hier meer op in. Herbekijk kort de slides voor voorbeelden en uitwerking en TIA portal._
 ]
@@ -506,11 +665,26 @@ In een bedrijf wordt vaak een standaard gebruikt voor het benoemen van programma
   Zo een scan duurt *1-30ms.*
 ]
 
+=== N.O. en N.C. aan een PLC-ingang
 
+#TODO[Deck 1, slides 101-103. Combinatorisch of niet? En hoe je een N.C.-contact in de hardware combineert met de logica in het programma.]
 
+=== Start/stop als flip-flop
 
+#TODO[Deck 1, slides 104-109. Relais versus PLC (LAD) implementatie van start/stop. De RS-flipflop: de directe aanpak (methode 1) en de tweede oplossing. Duplicaten en tegengestelden wegwerken, onnodige condities schrappen.]
 
+=== LAD-conventies en de basisregel
 
+#TODO[Deck 1, slides 110-111. De conventies bij het tekenen van ladder logic, en "the MOST basic rule for PLC programming": schrijf een uitgang maar op één plaats.]
 
+=== Combinatorische en geheugencircuits programmeren
 
+#TODO[Deck 1, slides 112-116. Programmeermethodiek met een uitgewerkt voorbeeld.]
 
+== Sequenties programmeren
+
+#TODO[Deck 1, slides 117-133. Wat is een sequentie, de I $arrow.r$ M $arrow.r$ O methodiek, implementatie met SR-blokken, stappen aan elkaar linken, uitgangen programmeren, cross-protect op Q, de ADD-gebaseerde sequentie en de typische machinebediening (start/stop/reset-knoppen).]
+
+== Functies (FC) en functieblokken (FB)
+
+#TODO[Deck 1, slides 134-143. IEC 61131-3, gepartitioneerd versus gestructureerd programmeren, verschil FC en FB, formele parameters, en de datatypes voor timers en counters (inclusief rekenen met tijdswaarden).]
