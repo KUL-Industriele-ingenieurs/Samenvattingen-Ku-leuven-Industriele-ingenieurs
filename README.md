@@ -8,11 +8,11 @@ Welkom bij de samenvattingen voor Industriële Ingenieurswetenschappen aan de KU
 Deze repository zijn mijn notities en samenvattingen die ik gemaakt heb door het jaar heen. Ik heb ze open-source gemaakt zodat medestudenten ze kunnen gebruiken maar ook zelf kunnen verbeteren als ze willen.
 
 
-### 📥 Download Laatste Versie
+### <img src="https://api.iconify.design/material-symbols/download.svg?color=gray" height="20"> Download Laatste Versie
 - [**Download alle PDF's (ZIP)**](https://nightly.link/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/workflows/latex-build.yml/MAIN/Samenvattingen%20Industriele%20Ingenieurs%20KULeuven.zip)
 ---
 
-## 📚 Vakkenoverzicht
+## <img src="https://api.iconify.design/material-symbols/menu-book-outline.svg?color=gray" height="22"> Vakkenoverzicht
 
 <!-- VAKKENOVERZICHT_START -->
 <details>
@@ -69,7 +69,7 @@ We ondersteunen twee systemen. Kies er één en volg de handleiding:
 <tr>
 <td width="50%" align="center">
 
-### LaTeX
+### <img src="https://api.iconify.design/simple-icons/latex.svg?color=gray" height="18"> LaTeX
 
 Dit ga je toch moeten leren (masterthesis) dus je kunt hier zeker mee beginnen.
 
@@ -83,7 +83,7 @@ Dit ga je toch moeten leren (masterthesis) dus je kunt hier zeker mee beginnen.
 </td>
 <td width="50%" align="center">
 
-### Typst
+### <img src="https://api.iconify.design/simple-icons/typst.svg?color=gray" height="18"> Typst
 
 Het moderne alternatief. Sneller, simpeler, en makkelijker te leren.
 
@@ -102,28 +102,28 @@ Ik heb heel de vs-code omgeving al klaargezet voor jou zodat alle extensies en i
 
 ## Stap 1: Software installeren
 
-**Vs-code**: IDE om notities te schrijven en te compileren
+**Vs-code**: IDE om notities te schrijven en te compileren\
 **Git**: Versiebeheer om samen te werken.
 
-**Windows** (PowerShell):
+<img src="https://api.iconify.design/simple-icons/windows.svg?color=gray" height="14"> **Windows** (PowerShell):
 
 ```powershell
 winget install --id Microsoft.VisualStudioCode --id Git.Git
 ```
 
-**macOS** (Terminal):
+<img src="https://api.iconify.design/simple-icons/apple.svg?color=gray" height="14"> **macOS** (Terminal):
 
 ```bash
 brew install --cask visual-studio-code && brew install git
 ```
 
-**Linux** (Ubuntu/Debian):
+<img src="https://api.iconify.design/simple-icons/linux.svg?color=gray" height="14"> **Linux** (Ubuntu/Debian):
 
 ```bash
 sudo apt install code git
 ```
 
-**Typst formatter** (aanbevolen voor Typst-gebruikers):
+<img src="https://api.iconify.design/simple-icons/typst.svg?color=gray" height="14"> **Typst formatter** (aanbevolen voor Typst-gebruikers):
 
 ```powershell
 winget install --id Enter-tainer.typstyle

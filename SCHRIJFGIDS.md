@@ -10,7 +10,7 @@ met meerdere mensen aan verschillende hoofdstukken werken zonder chaos.
 
 ---
 
-## De methode in het kort
+## <img src="https://api.iconify.design/material-symbols/route.svg?color=gray" height="20"> De methode in het kort
 
 ```
 slides  ─►  Stap 1: SKELET      ─►  Stap 2: UITWERKEN
@@ -27,7 +27,7 @@ in stukjes, in willekeurige volgorde, door wie maar wil.
 
 ---
 
-## Stap 0 — Branch + oude inhoud bewaren
+## <img src="https://api.iconify.design/material-symbols/alt-route.svg?color=gray" height="20"> Stap 0 — Branch + oude inhoud bewaren
 
 - Werk altijd op een **branch** (bv. `herstructureer-<vak>`), nooit rechtstreeks
   op `MAIN`.
@@ -43,7 +43,7 @@ git mv "3.Oud hoofdstuk.typ" "_OLD/3.Oud hoofdstuk.typ"
 
 ---
 
-## Stap 1 — Het skelet bouwen
+## <img src="https://api.iconify.design/material-symbols/account-tree-outline.svg?color=gray" height="20"> Stap 1 — Het skelet bouwen
 
 ### Eén hoofdstuk per les
 
@@ -91,7 +91,7 @@ Tijdelijk een hoofdstuk uitsluiten? Zet de `#include`-regel in commentaar.
 
 ---
 
-## Stap 2 — Uitwerken (les per les)
+## <img src="https://api.iconify.design/material-symbols/edit-outline.svg?color=gray" height="20"> Stap 2 — Uitwerken (les per les)
 
 Werk daarna de secties van het skelet uit. Hergebruik gerust goed materiaal uit
 `_OLD/` of vorige versies. Houd je aan de conventies hieronder.
@@ -157,7 +157,7 @@ Volg het patroon **denkstappen → oplossing → kerninzicht**:
 
 ---
 
-## Compileren
+## <img src="https://api.iconify.design/material-symbols/terminal.svg?color=gray" height="20"> Compileren
 
 De template gebruikt gebundelde fonts (Charter, Fira) uit `fonts/`. Compileer
 daarom vanuit de repo-root met de font-path, of laat de VS Code Tinymist-preview
@@ -169,7 +169,7 @@ typst compile --font-path fonts "2de jaar/<Vak>/<Vak>.typ"
 
 ---
 
-## Checklist per hoofdstuk
+## <img src="https://api.iconify.design/material-symbols/checklist.svg?color=gray" height="20"> Checklist per hoofdstuk
 
 - [ ] Skelet: `= <ch:...>`, `==  <sec:...>`, `===` headers staan en kloppen met de slides
 - [ ] Hoofdstuk staat (geactiveerd) in de master-file
