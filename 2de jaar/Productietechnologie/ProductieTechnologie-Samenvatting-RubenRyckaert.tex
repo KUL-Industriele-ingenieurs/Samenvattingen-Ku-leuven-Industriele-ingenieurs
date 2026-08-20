@@ -34,7 +34,6 @@ snelheid en kwaliteit spelen een rol.
 
 Deze samenvatting geeft een overzicht van de belangrijkste begrippen en technieken.
 
-
 \textbf{Hieronder verschillende productietechnieken,}
 
 \begin{itemize}
@@ -62,15 +61,12 @@ Deze samenvatting geeft een overzicht van de belangrijkste begrippen en techniek
               \caption{Overzicht van bewerkingen met stralen, gebruikmakend van verschillende energiedragers}
               \label{fig:stralen_overzicht}
           \end{figure}
-
-
 \end{itemize}
 
-\subsection{Keuzes bij productie}
+\section{Keuzes bij productie}
 
-Bij produceren moet je afhankelijk van al deze technieken
-keuzes maken over welke technieken het beste is. Hoeveel producten
-moet ik produceren en wat kost dat? Het is allemaal afhankelijk
+Bij produceren moet je uit al deze technieken kiezen welke het beste past.
+Hoeveel producten moet ik maken en wat kost dat? Het hangt allemaal af
 van de eisen die aan het product worden gesteld.
 
 \begin{itemize}
@@ -87,8 +83,7 @@ van de eisen die aan het product worden gesteld.
     \item onderhoud
 \end{itemize}
 
-al deze factoren zijn belangrijk bij het kiezen van een productietechniek.
-
+Al deze factoren zijn belangrijk bij het kiezen van een productietechniek.
 
 \section{Passing}
 
@@ -97,9 +92,9 @@ al deze factoren zijn belangrijk bij het kiezen van een productietechniek.
 \end{conceptbox}
 
 \begin{itemize}
-    \item \textbf{Losse Passing}: Er is altijd speling aanwezig tussen de onderdelen.
-    \item \textbf{Nauw Passing}: De onderdelen sluiten zeer nauw aan, vaak met een zeer kleine speling of lichte klemming (overgangspassing).
-    \item \textbf{PersPassing}: Er is altijd een overlapping (klemming), de onderdelen worden met kracht in elkaar geperst.
+    \item \textbf{Losse passing}: Er is altijd speling aanwezig tussen de onderdelen.
+    \item \textbf{Nauwe passing (overgangspassing)}: De onderdelen sluiten zeer nauw aan, met een zeer kleine speling of een lichte klemming.
+    \item \textbf{Perspassing}: Er is altijd overlapping (klemming); de onderdelen worden met kracht in elkaar geperst.
 \end{itemize}
 
 \section{Tolerantie}
@@ -110,7 +105,7 @@ al deze factoren zijn belangrijk bij het kiezen van een productietechniek.
     product functioneel blijft.
 \end{conceptbox}
 
-Afhankelijk van de toleraties heb je verschillende soorten passing:
+Afhankelijk van de toleranties heb je verschillende soorten passing:
 \begin{itemize}
     \item \textbf{Losse passing}: Grote tolerantie, veel speling.
     \item \textbf{Perspassing}: Zeer kleine of negatieve tolerantie, klemming.
@@ -123,12 +118,12 @@ Je hebt hier \belangrijk{Maattoleranties} en \belangrijk{Vormtoleranties}.
 \end{itemize}
 
 Algemeen bij nominale maten:
-Je defineert je nominale maat (de gewenste maat) en dan heb je een boven- en ondergrens.
+je definieert je nominale maat (de gewenste maat) en daarrond een boven- en een ondergrens.
 
-De toleratie maat bereken je met de buiten en binnenmaat:
+De tolerantie is gewoon het verschil tussen die twee grensmaten:
 
-\frm{Tolerantie}{T = Buitenkant - Binnenkant}{waarbij $T$ de tolerantie is [\si{mm}],
-    $Buitenkant$ de maximale maat [\si{mm}] en $Binnenkant$ de minimale maat [\si{mm}].}
+\frm{Tolerantie}{T = D_{\max} - D_{\min}}{waarbij $T$ de tolerantie is [\si{mm}],
+    $D_{\max}$ de bovenste grensmaat (maximummaat) [\si{mm}] en $D_{\min}$ de onderste grensmaat (minimummaat) [\si{mm}].}
 
 
 
@@ -142,7 +137,7 @@ De toleratie maat bereken je met de buiten en binnenmaat:
 \FloatBarrier
 
 
-Afhankelijk van de toleratie heb je toleratieklassen (IT-klasse).
+Afhankelijk van de tolerantie heb je tolerantieklassen (IT-klasse).
 
 \begin{conceptbox}[IT-klasse]
     \textbf{De IT-klasse (International Tolerance grade)}
@@ -150,19 +145,24 @@ Afhankelijk van de toleratie heb je toleratieklassen (IT-klasse).
     \newline
 \end{conceptbox}
 
-De plaats van de tolarantie hangt af van de letter die je gebruikt.
-Grote letter is voor inwendige maten en kleine letter voor uitwendige maten.
+De plaats van de tolerantiezone t.o.v.\ de nominale maat hangt af van de letter.
+Een hoofdletter geldt voor inwendige maten (gaten), een kleine letter voor uitwendige maten (assen).
 
 \begin{voorbeeld}[H7]
-    H7 zie je in de figuur hieronder. H is een grote letter dus het is een inwendige maat.
-    Je ziet dat het in EI (bovenste) zit en niet in ES (onderste).
-    De toleratie ligt dus boven de nominale maat
+    H7 zie je in de figuur hieronder. H is een hoofdletter, dus het gaat om een inwendige maat (een gat).
+    Bij inwendige maten heet de onderste afwijking EI en de bovenste ES.
+    Voor H geldt $EI = 0$: de tolerantiezone begint precies op de nominale maat en ligt er volledig \emph{boven}.
+    De 7 is de IT-klasse en bepaalt hoe breed die zone is.
 \end{voorbeeld}
 
-\begin{voorbeeld}[js]
-    js zie je in de figuur hieronder. js is een kleine letter dus het is een uitwendige maat.
-    Het heeft een negatieve binnengrens (es) en geen bovengrens (ei).
-    De tolerantie ligt onder de nominale maat.
+\begin{voorbeeld}[h6 en js6]
+    Bij uitwendige maten (assen) heten de afwijkingen $es$ (boven) en $ei$ (onder).
+    \begin{itemize}
+        \item \textbf{h}: $es = 0$, dus de tolerantiezone ligt volledig \emph{onder} de nominale maat.
+              Samen met H7 geeft dit de klassieke spelingpassing H7/h6.
+        \item \textbf{js}: symmetrisch verdeeld, $es = +IT/2$ en $ei = -IT/2$. De zone ligt dus half boven
+              en half onder de nominale maat.
+    \end{itemize}
 \end{voorbeeld}
 
 \begin{figure}[htbp]
@@ -181,10 +181,13 @@ Grote letter is voor inwendige maten en kleine letter voor uitwendige maten.
     \label{fig:itklassen_voorbeeld}
 \end{figure}
 
-De tolerantie bepaald wat voor soort passing je hebt.
-\belangrijk{Positieve speling} je hebt nog ruimte tussen de onderdelen.
-\belangrijk{Negatieve speling} je hebt een klemming tussen de onderdelen.
-\belangrijk{Positieve en negatieve speling} je toleratie zit tussen negatief en positief.
+De ligging van de twee tolerantiezones bepaalt wat voor soort passing je krijgt:
+\begin{itemize}
+    \item \belangrijk{Positieve speling}: er blijft altijd ruimte tussen de onderdelen (losse passing).
+    \item \belangrijk{Negatieve speling}: er is altijd klemming (perspassing).
+    \item \belangrijk{Positieve én negatieve speling}: de zones overlappen gedeeltelijk, dus afhankelijk van
+          het exacte stuk krijg je speling of klemming (overgangspassing).
+\end{itemize}
 
 Verschillende productietechnieken hebben verschillende haalbare toleranties.
 \begin{figure}[htbp]
@@ -268,7 +271,7 @@ Er zijn verschillende materiaalgroepen:
     \item \textbf{Composieten}: Combinatie van eigenschappen, vaak lastig te bewerken door vezelstructuur.
 \end{itemize}
 
-\subsection{Vervorming}
+\section{Vervorming}
 
 \begin{conceptbox}[Vervormingsmodi]
     \begin{itemize}
@@ -295,7 +298,7 @@ Elastische vervorming wordt beschreven door de wet van Hooke:
 \label{chap:Algemeen verspanen}
 \textbf{Dit hoofdstuk is de basis van verspanen en is relevant voor alle verspaningstechnieken.}
 
-Verspannen is het verwijderen van materiaal van een werkstuk. Dit kan door boren, frezen, draaien of slijpen,
+Verspanen is het verwijderen van materiaal van een werkstuk. Dit kan door boren, frezen, draaien of slijpen,
 \ldots Je begint met een ruw werkstuk en verwijdert materiaal totdat je de gewenste vorm en afmetingen hebt.
 
 \textbf{Voordelen}
@@ -350,7 +353,7 @@ Je hebt daarbij deze parameters:
 \end{figure}
 
 
-\begin{wrapfigure}[10]{r}{0.5\textwidth}
+\begin{wrapfigure}[10]{r}{0.7\textwidth}
     \centering
     \includegraphics[width=\linewidth]{assets/image11.png}
     \caption{}
@@ -361,36 +364,32 @@ Je hebt daarbij deze parameters:
 Bij het verspanen met een beitel ontstaan er \textbf{spanen}.
 Spanen zijn kleine stukjes materiaal die worden verwijderd
 van het werkstuk.
-De grootte van de spanen wordt bepaald \textbf{door de snedediepte($a$), de voeding ($f$),
-    de spaanhoek ($\gamma$) en de wrijvingscoëfficiënt ($\mu$).\ldots} Zometeen meer in detail hierover
+De grootte van de spanen wordt bepaald door de \textbf{snedediepte $a$}, de \textbf{voeding $f$},
+de \textbf{spaanhoek $\gamma$} en de \textbf{wrijving} tussen spaan en beitel.
+Zo meteen meer in detail hierover.
 
 
-Spanen is een plastische vervorming van de spanen
-maar het oppervlak van het werkstuk ondergaat ook een elastische vervorming.
-Deze vervomingen scheuren dan delen van het werkstuk af waardoor je fouten krijgt op het oppervlak.
+Het vormen van een spaan is een \textbf{plastische} vervorming van het weggenomen materiaal,
+terwijl het achterblijvende oppervlak van het werkstuk ook nog \textbf{elastisch} terugveert.
+Op de overgang tussen beide scheurt materiaal af, en dat geeft de fouten die je op het oppervlak ziet.
 
-Je hebt verschillende soorten spannen:
+Je hebt verschillende soorten spanen:
 \begin{itemize}
     \item \textbf{Continue:} Bij ductiele materialen en scherpe beitels. Goede oppervlaktekwaliteit.
     \item \textbf{Lamellen:} Bij hogere snededieptes of hardere materialen. Spaan breekt in dunne lagen.
-    \item \textbf{Brokkelspannen:} Bij brosse materialen. Spaan breekt in kleine brokstukken.
+    \item \textbf{Brokkelspanen:} Bij brosse materialen. De spaan breekt in kleine brokstukken.
 \end{itemize}
 \subsection{Primaire afschuifvlak (shear zone)}
 
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.8\textwidth]{assets/image11.png}
-    \caption{}
-    \label{fig:image11}
-\end{figure}
-
 \frm{Afschuifhoek}{\phi = 45^{\circ} + \dfrac{\gamma}{2} - \dfrac{\mu}{2}}
-{waarbij $\phi$ de afschuifhoek is [$^\circ$], $\gamma$ de spaanhoek [$^\circ$] en $\mu$ de wrijvingshoek [$^\circ$].}
+{waarbij $\phi$ de afschuifhoek is [$^\circ$], $\gamma$ de spaanhoek [$^\circ$] en $\mu$ de \emph{wrijvingshoek}
+    [$^\circ$]. Let op: $\mu$ staat hier voor de hoek, niet voor de wrijvingscoëfficiënt; die twee hangen samen
+    via $\tan\mu = $ wrijvingscoëfficiënt.}
 
-De afschuifhoek bepaalt de richting waarin de spaan wordt afgesneden.
-Een grotere afschuifhoek leidt tot een betere spaanvorming en minder kracht
+De afschuifhoek bepaalt de richting waarin de spaan wordt afgeschoven.
+Een grotere afschuifhoek geeft een kleiner afschuifvlak, dus een betere spaanvorming en minder kracht.
 
-\frm{Afschuifvlak (shear zone) A}{A = \frac{b*h}{\sin(\phi)}}
+\frm{Afschuifvlak (shear zone) A}{A = \frac{b \cdot h}{\sin\phi}}
 {waarbij $A$ het afschuifvlak is [\si{mm^2}], $b$ de snedebreedte [\si{mm}], $h$ de snededikte [\si{mm}] en $\phi$ de afschuifhoek
         [$^\circ$].}
 \vspace{1cm}
@@ -402,7 +401,7 @@ Een grotere afschuifhoek leidt tot een betere spaanvorming en minder kracht
     \label{fig:image20}
 \end{figure}
 
-\frm{Afschuifkracht}{F = A*\tau}
+\frm{Afschuifkracht}{F = A \cdot \tau}
 {waarbij $F$ de afschuifkracht is [\si{N}], $A$ het afschuifvlak [\si{mm^2}] en $\tau$ de schuifspanning [\si{N/mm^2}].}
 
 Grotere spaanhoek $\gamma$ $\to$ kleiner afschuifvlak $A$ $\to$ minder kracht $F$ nodig om spaan te vormen.
@@ -411,7 +410,7 @@ Grotere spaanhoek $\gamma$ $\to$ kleiner afschuifvlak $A$ $\to$ minder kracht $F
 \subsection{Secundaire afschuifvlak (shear zone)}
 Spanen gaan verwijderd worden en daarbij treedt wrijving op tussen spaan en beitel. Dit is het secundaire afschuifvlak
 (vlak tussen spaan (groen) en beitel (rood)).
-Als je \textbf{negatieve spaanhoeken $\gamma$ meet}, dan is er veel meer wrijving tussen de spaan en de beitel (Je contact tussen spaan en beitel is groter).
+Als je met \textbf{negatieve spaanhoeken $\gamma$} werkt, dan is er veel meer wrijving tussen de spaan en de beitel (Je contact tussen spaan en beitel is groter).
 
 De belangrijkste snijhoeken bij verspanen zijn \textbf{de spaanhoek $\gamma$, de wighoek $\beta$, en de vrijloophoek $\alpha$.}
 Deze bepalen samen de benodigde kracht, de gereedschapsslijtage en de uiteindelijke oppervlaktekwaliteit.
@@ -463,7 +462,8 @@ Negatieve spaanhoeken worden gebruikt voor zeer harde materialen.
 Deze bewerkingen zijn allemaal met ductiele materialen.
 Brosse materialen gaan snel afbrokkelen en hebben dus niet veel elastische vervorming.
 Je moet dus druk uitoefenen op brosse materialen tijdens bewerking. Het materiaal gaat zich daardoor dan meer ductiel gedragen.
-Hoe oefen je druk uit op materialen? Door een grote spaanhoek te gebruiken maar die creeërt dan weer veel wrijving.
+Hoe oefen je die druk uit? Door een kleine (of zelfs negatieve) spaanhoek te gebruiken,
+maar die creëert dan weer veel wrijving en warmte.
 Je moet dus een compromis zoeken tussen spaanhoek en wrijving.
 
 
@@ -478,8 +478,9 @@ Er zijn verschillende factoren die de kracht op je werkstuk bepalen:
     \item Snededikte (h)
 \end{itemize}
 
-\frm{Snijsnelheid}{v_c = \pi \cdot d \cdot n}
-{waarbij $v_c$ de snijsnelheid is [\si{m/min}], $d$ de diameter [\si{mm}] en $n$ het toerental [\si{omw/min}].}
+\frm{Snijsnelheid}{v_c = \frac{\pi \cdot d \cdot n}{1000}}
+{waarbij $v_c$ de snijsnelheid is [\si{m/min}], $d$ de diameter [\si{mm}] en $n$ het toerental [omw/min].
+    De factor 1000 zet mm om naar m; werk je met $d$ in meter, dan valt die factor weg.}
 
 \begin{figure}[htbp]
     \centering
@@ -510,31 +511,31 @@ Tijdens het bewerken van materialen met een beitel komen er drie belangrijke kra
     Onderscheid de drie krachten ($F_c, F_f, F_p$) en weet dat $F_c$ verantwoordelijk is voor het grootste deel van het verbruikte vermogen.
 \end{examenbox}
 
-\textbf{Wat neem voeding op?}
+\textbf{Waar gaat de toegevoerde energie naartoe?}
 \begin{itemize}
-    \item Warmteontwikkeling
-    \item Werkstuk
-    \item Gereedschap
-    \item Spaanvorming
-          Afhankelijk van de snijsnelheid $v_c$ en de voeding $f$. is er een andere verdeling van de energie.
-          \begin{figure}[htbp]
-              \centering
-              \includegraphics[width=0.5\textwidth]{assets/image21.png}
-              \caption{Voeding of snijsnelheid in functie van energieverdeling}
-          \end{figure}
+    \item Spaanvorming (het plastisch vervormen zelf)
+    \item Warmte in de spaan
+    \item Warmte in het werkstuk
+    \item Warmte in het gereedschap
 \end{itemize}
+Afhankelijk van de snijsnelheid $v_c$ en de voeding $f$ verschuift die verdeling.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.5\textwidth]{assets/image21.png}
+    \caption{Voeding of snijsnelheid in functie van de energieverdeling}
+\end{figure}
 
 \section{Factoren bij beitelbewerking}
-Meeste dingen die we nu bekeken hebben zijn bij ideale omstandigheden.
-beitelbewerkingen hebben allemaal effecten op het materiaal. Wie zien er een paar
+De meeste dingen die we tot nu bekeken hebben, gelden bij ideale omstandigheden.
+In werkelijkheid hebben beitelbewerkingen allemaal effecten op het materiaal. We bekijken er een paar.
 \begin{examenbox}
-    Hij gaat deze zoiezo kunnen vragen. \textit{Wat zijn de effecten van beitelbewerkingen op het werkstuk en hoe kan je deze verbeteren of voorkomen?}
+    Hij gaat dit sowieso vragen. \textit{Wat zijn de effecten van beitelbewerkingen op het werkstuk en hoe kan je deze verbeteren of voorkomen?}
 \end{examenbox}
 \begin{enumerate}
     \item \textbf{Opbouwlaag (build-up edge/BUE)}:
           Een dunne, hard geworden laag metaal die zich bij lage snijsnelheden ($v_c < 20\,\si{m/min}$) aan de punt van de beitel opbouwt.
-          Deze zijn scherper dan de bijtel en snijden dan meer af van het werkstuk tot ze plotseling loslaten
-          en stukken van het werkstukoppervlak meetrekken, wat leidt tot een ruw en \textit{stappig} oppervlak.
+          Die opbouwlaag is scherper dan de beitel zelf en snijdt dus dieper, tot ze plotseling loslaat
+          en stukken van het werkstukoppervlak meetrekt. Resultaat: een ruw, gerafeld oppervlak.
 
           \begin{examenbox}
               Onthoud de 3 belangrijkste manieren om BUE te voorkomen: verhoog de snijsnelheid ($v_c$),
@@ -576,9 +577,9 @@ beitelbewerkingen hebben allemaal effecten op het materiaal. Wie zien er een paa
           Spanen kunnen het werkstuk beschadigen als ze niet goed worden afgevoerd.
           Dit kan leiden tot krassen en ruwheid.
           \begin{itemize}
-              \item Continue spaanvorming
-              \item Lamelsspaan
-              \item brokspaan
+              \item Continue spaan
+              \item Lamelspaan
+              \item Brokspaan
           \end{itemize}
 
     \item \textbf{Slijtage}
@@ -590,9 +591,9 @@ beitelbewerkingen hebben allemaal effecten op het materiaal. Wie zien er een paa
           \begin{itemize}
               \item Vrijloopslijtage: door wrijving tussen gereedschap en werkstuk.
               \item Thermische slijtage: door hoge temperaturen die het gereedschap verzwakken
-              \item Kerfslijtage: door herhaalde spanningsconcentraties bij het vrlijloopvlak.
-              \item Breuk: Afbreken van een stuk
-              \item Werkstukslijtage: Vlijloopvlak slijtage verhoogd met verbruik van de beitel.
+              \item Kerfslijtage: door herhaalde spanningsconcentraties aan de rand van het vrijloopvlak.
+              \item Breuk: het afbreken van een stuk van de snijkant.
+              \item Werkstukslijtage: de vrijloopvlakslijtage neemt toe naarmate de beitel verder verslijt.
               \item Neusslijtage: slijtage aan de punt van de beitel door hoge krachten en temperaturen.
           \end{itemize}
 
@@ -609,7 +610,7 @@ beitelbewerkingen hebben allemaal effecten op het materiaal. Wie zien er een paa
               \item Gebruik van coatings op gereedschap (bv. TiN, AlTiN) om wrijving en hitte te verminderen.
               \item Optimaliseren van snijsnelheid, voeding en snedediepte om overmatige hitte en krachten te vermijden.
               \item Toepassen van koeling en smering om hitte af te voeren en wrijving te verminderen.
-              \item Tool met lood PB gebruiken
+              \item Gereedschap met lood (Pb) gebruiken
                     \begin{figure}[htbp]
                         \centering
                         \includegraphics[width=0.7\textwidth]{assets/image22.png}
@@ -623,6 +624,14 @@ beitelbewerkingen hebben allemaal effecten op het materiaal. Wie zien er een paa
 
 
 \section{Snijmaterialen}
+
+\begin{wrapfigure}{r}{0.5\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{assets/image25.png}
+    \caption{Ontwikkeling van snijmaterialen door de tijd heen.}
+    \label{fig:snijmaterialen_ontwikkeling}
+\end{wrapfigure}
+
 Gereedschappen moeten een combinatie bieden van drie eigenschappen:
 ze moeten \textbf{hard} zijn (ook bij hoge temperaturen), \textbf{ductiel/taai}
 (om breuk bij stootbelasting te voorkomen) en \textbf{slijtvast}.
@@ -634,12 +643,12 @@ Je moet dus een compromis zoeken afhankelijk van de toepassing.
 \begin{enumerate}
     \item \textbf{Snelstaal (HSS)} ($v_c \approx 10\text{--}30\,\si{m/min}$): Gehard staal met legeringselementen zoals wolfram of chroom. Goedkoop en taai, maar beperkt tot lage snelheden.
     \item \textbf{Hardmetaal (WC + Co)}: Bestaat uit wolframcarbide korrels in een kobaltmatrix. Behoudt zijn hardheid tot hogere temperaturen dan HSS.
-    \item \textbf{Gecoate hardmetaal} ($v_c \approx 60\text{--}600\,\si{m/min}$): Dunnegelaagse coatings (TiN, Al$_2$O$_3$) verbeteren de standtijd aanzienlijk.
-    \item \textbf{Keramiek \& Diamant}: Extreem hard en hittebestendig, maar zeer bros. Diamant is ongeschikt voor staal omdat de koolstof inslijpt in het staal bij hoge temperaturen.
+    \item \textbf{Gecoat hardmetaal} ($v_c \approx 60\text{--}600\,\si{m/min}$): Dunne, gelaagde coatings (TiN, Al$_2$O$_3$) verbeteren de standtijd aanzienlijk.
+    \item \textbf{Keramiek \& Diamant}: Extreem hard en hittebestendig, maar zeer bros. Diamant is ongeschikt voor staal: bij hoge temperatuur lost de koolstof van het diamant op in het ijzer, waardoor de snijkant wegvreet.
 \end{enumerate}
 
 \begin{examenbox}
-    Ken de relatieve volgorde van snijmaterialen qua snijsnelheid en hardheid: HSS $\to$ Hardmetaal $\to$ Gecoate hardmetaal $\to$ Keramiek $\to$ Diamant.
+    Ken de relatieve volgorde van snijmaterialen qua snijsnelheid en hardheid: HSS $\to$ hardmetaal $\to$ gecoat hardmetaal $\to$ keramiek $\to$ diamant.
 \end{examenbox}
 
 
@@ -649,20 +658,13 @@ Je moet dus een compromis zoeken afhankelijk van de toepassing.
     \caption{Toepassingsgebieden van verschillende snijmaterialen in functie van snelheid en taaiheid.}
     \label{fig:snijmaterialen_overzicht}
 \end{figure}
-
-
-\begin{wrapfigure}[15]{r}{0.5\textwidth}
-    \centering
-    \includegraphics[width=\linewidth]{assets/image25.png}
-    \caption{Ontwikkeling van snijmaterialen door de tijd heen.}
-    \label{fig:snijmaterialen_ontwikkeling}
-\end{wrapfigure}
+\FloatBarrier
 
 Deze materialen zijn door de jaren heen ontworpen zoals in de figuur hieronder.
 
 Je ziet dat machining time enorm daalt door de jaren
-omdat je met betere snijmaterialen kan werken aan hogere snelheden
-en met minder slijtage.
+omdat je met \textbf{betere snijmaterialen} kan werken aan \textbf{hogere snelheden} $v_c$
+en met \textbf{minder slijtage.}
 
 \subsection{ISO-classificatie van snijmaterialen}
 Snijmaterialen worden volgens ISO-normen in groepen ingedeeld op basis van het werkstukmateriaal:
@@ -700,7 +702,7 @@ Snijmaterialen worden volgens ISO-normen in groepen ingedeeld op basis van het w
 Bij alle machines worden inserts gebruikt voor beitels.
 Als beitels kapot gaan door slijtage, kan je die vervangen.
 Je moet dus de optimale snijsnelheid kiezen
-zodat je zo lang mogelijk met een insert kan werken
+zodat je zo lang mogelijk met één insert kunt werken.
 
 \begin{figure}[ht]
     \centering
@@ -715,10 +717,10 @@ Bij grotere snijsnelheden is er meer slijtage.
     $T$ de gereedschaplevensduur [\si{min}] en $v_c$ de snijsnelheid [\si{m/min}].}
 
 
-Deze formule toont aan dat een kleine verhoging van de snijsnelheid leidt tot een zeer grote afname van de gereedschapslevensduur.
+Deze formule toont aan dat een kleine verhoging van de snijsnelheid $v_c$ leidt tot een zeer grote afname van de gereedschapslevensduur.
 
 \begin{examenbox}
-    Onthoud dat de exponent $n$ afhangt van het snijmateriaal: $n \approx 0.1\text{--}0.2$ voor HSS en $n \approx 0.2\text{--}0.4$ voor hardmetaal.
+    Onthoud dat de exponent $n$ afhangt van het snijmateriaal: $n \approx 0{,}1\text{--}0{,}2$ voor HSS en $n \approx 0{,}2\text{--}0{,}4$ voor hardmetaal.
     Een kleinere waarde voor $n$ betekent dat de levensduur gevoeliger is voor veranderingen in snijsnelheid.
 \end{examenbox}
 
@@ -732,28 +734,26 @@ Deze formule toont aan dat een kleine verhoging van de snijsnelheid leidt tot ee
     Bereken de optimale snijsnelheid $v_c$.
     \textbf{Oplossing:}
     \begin{align*}
-        v_c & = \frac{C}{T^n}           \\
-            & = \frac{300}{60^{0.22}}   \\
-            & \approx 300 / 3.03        \\
-            & \approx 99.01\,\si{m/min}
+        v_c & = \frac{C}{T^n}             \\
+            & = \frac{300}{60^{0{,}22}}   \\
+            & \approx \frac{300}{2{,}462} \\
+            & \approx 121{,}9\,\si{m/min}
     \end{align*}
 \end{voorbeeld}
 
 \begin{voorbeeld}
-    n = 0.125
-    je verhoogt $v_c$ met 50\%,
-    hoeveeld daalt T?
+    $n = 0{,}125$. Je verhoogt $v_c$ met 50\%. Hoeveel daalt $T$?
     \textbf{Oplossing:}
     \begin{align*}
-        v_{c2}                         & = 1.5 \cdot v_{c1}                                                \\
-        v_{c1} T_1^n                   & = v_{c2} T_2^n                                                    \\
-        v_{c1} T_1^n                   & = 1.5 \cdot v_{c1} T_2^n                                          \\
-        T_1^n                          & = 1.5 \cdot T_2^n                                                 \\
-        \left(\frac{T_1}{T_2}\right)^n & = 1.5                                                             \\
-        \frac{T_1}{T_2}                & = 1.5^{\frac{1}{n}} = 1.5^{\frac{1}{0.125}} = 1.5^8 \approx 25.63 \\
-        T_2                            & \approx \frac{T_1}{25.63}
+        v_{c2}                         & = 1.5 \cdot v_{c1}                                                          \\
+        v_{c1} T_1^n                   & = v_{c2} T_2^n                                                              \\
+        v_{c1} T_1^n                   & = 1.5 \cdot v_{c1} T_2^n                                                    \\
+        T_1^n                          & = 1.5 \cdot T_2^n                                                           \\
+        \left(\frac{T_1}{T_2}\right)^n & = 1.5                                                                       \\
+        \frac{T_1}{T_2}                & = 1{,}5^{\frac{1}{n}} = 1{,}5^{\frac{1}{0{,}125}} = 1{,}5^8 \approx 25{,}63 \\
+        T_2                            & \approx \frac{T_1}{25{,}63}
     \end{align*}
-    De levensduur daalt dus met een factor $\sim 25.6$ bij een verhoging van de snijsnelheid met 50\%.
+    De levensduur daalt dus met een factor ${\sim}25{,}6$ bij een verhoging van de snijsnelheid met 50\%.
 \end{voorbeeld}
 
 \begin{figure}[htbp]
@@ -771,10 +771,10 @@ Je kunt hier verschillende bewerkingen mee uitvoeren:
 \begin{enumerate}
     \item \textbf{Langsdraaien}: Het verwijderen van materiaal langs de lengteas van het werkstuk om de diameter te verkleinen.
     \item \textbf{Vlakdraaien}: Het creëren van een vlak oppervlak aan het uiteinde van het werkstuk.
-    \item \textbf{Insteekdraaien}: Het snijden van een groef of het afkappen van een deel van het werkstuk.
-    \item \textbf{Schroefdraad Snijden}: Het creëren van schroefdraad op het oppervlak van het werkstuk.
-    \item \textbf{Afsteken:} Het werkstuk wordt in de lengte doorgesneden.
-    \item \textbf{Profiel Draaien:} Een specifiek profiel van het werkstuk maken die dan gedraaid kan worden.
+    \item \textbf{Insteekdraaien}: Het snijden van een groef in het werkstuk (bv.\ voor een borgring).
+    \item \textbf{Schroefdraadsnijden}: Het creëren van schroefdraad op het oppervlak van het werkstuk.
+    \item \textbf{Afsteken:} De beitel gaat dwars (radiaal) naar binnen tot het afgewerkte stuk van de staaf loskomt.
+    \item \textbf{Profieldraaien:} Met een vormbeitel wordt in één beweging een volledig profiel in het werkstuk gedraaid.
 \end{enumerate}
 
 \textbf{In de industrie:} Vandaag de dag wordt er veel gebruikgemaakt van computergestuurde machines.
@@ -791,12 +791,13 @@ CNC-draaien is een geautomatiseerd proces waarbij computergestuurde machines pre
 \FloatBarrier
 
 \textbf{Hellingshoek}
-Een hellingshoek is de extra hoek die gecreerd wordt door het
-dat je ronde dingen aan het verspanen bent. Je vrijloophoek $\alpha$
-wordt kleiner hierdoor. Je moet dus hiervoor compenseren door een grotere vrijloophoek te gebruiken.
+Omdat het werkstuk roteert terwijl de beitel axiaal doorschuift, beschrijft de snijkant geen vlakke cirkel
+maar een schroeflijn. De helling van die schroeflijn is de \textbf{hellingshoek}.
+Daardoor zit het bewerkte oppervlak onder een hoek t.o.v.\ de beitel en wordt je \emph{effectieve}
+vrijloophoek $\alpha$ kleiner dan de geslepen vrijloophoek.
 
-De hellingshoek hangt af van de voeding $f$ en dus bij grotere voedingen moet je grotere
-vrijloophoeken gebruiken.
+De hellingshoek volgt uit de voeding $f$ en de diameter $d$ ($\tan$(hellingshoek)$ = f/(\pi d)$).
+Bij grotere voedingen wordt hij dus groter, en moet je een grotere vrijloophoek slijpen om te compenseren.
 
 \begin{figure}[htbp]
     \centering
@@ -821,7 +822,7 @@ vrijloophoeken gebruiken.
 \end{wrapfigure}
 \FloatBarrier
 
-Zoals vermeld in het algemeen Verspannen heb je drie krachten op je werkstuk
+Zoals vermeld in het hoofdstuk Verspanen: Algemeen (\ref{chap:Algemeen verspanen}) heb je drie krachten op je werkstuk:
 
 \begin{enumerate}[leftmargin=*]
     \item De hoofdsnijkracht ($F_c$): kracht in de richting van de snijsnelheid.
@@ -835,7 +836,7 @@ wat invloed heeft op opspanning, gereedschapbelasting en oppervlaktekwaliteit.
 De figuur toont een steekproef van meetwaarden voor verschillende voedingen.
 
 \begin{examenbox}
-    Zorg dat je de volgende formules kunt uitleggen. De kienzle vergelijkingen komen overal
+    Zorg dat je de volgende formules kunt uitleggen. De Kienzle-vergelijkingen komen overal
     bij verspanen terug.
 \end{examenbox}
 
@@ -875,7 +876,7 @@ De optimale snijsnelheid bij draaien is afhankelijk van $k_c$
         P_m & = \dfrac{P_c}{\eta} \\
         v_c & = \pi\,d\,n         \\
         v_f & = f\,n              \\
-        Q   & = a\,f\,v_f         \\
+        Q   & = a\,f\,v_c         \\
         M_c & = F_c\,\dfrac{d}{2}
     \end{aligned}
 \]
@@ -889,14 +890,14 @@ Korte uitleg en eenheden:
     \item $P_m = P_c/\eta$: rekening houden met mechanische/elektrische efficiëntie $\eta$ (dimensieloos); motorvermogen is altijd groter dan of gelijk aan het snijvermogen.
     \item $v_c = \pi d n$: op één omwenteling legt een punt op de omtrek een afstand $\pi d$ af; keer het aantal omwentelingen per tijd geeft lineaire snelheid. Let op eenheden (mm vs m, rev/min vs rev/s).
     \item $v_f = f n$: voedingssnelheid is voeding per omwenteling maal het aantal omwentelingen per tijd; gebruik mm/rev × rev/min = mm/min.
-    \item $Q = a f v_f$: materiaalafname (volume/tijd) is snedediepte × voeding per omwenteling × voedsnelheid; zorgt voor $\mathrm{mm}^3/\mathrm{min}$ bij consequente eenheden.
+    \item $Q = a f v_c$: materiaalafname (volume per tijd) is snedediepte $\times$ voeding per omwenteling $\times$ \emph{snij}snelheid. Per omwenteling verwijder je immers een ring met doorsnede $a \times f$ over de hele omtrek. Reken $v_c$ om naar mm/min voor $\mathrm{mm}^3/\mathrm{min}$.
     \item $M_c = F_c (d/2)$: koppel is kracht maal arm (halve diameter als hefboom) → N·m.
 \end{itemize}
 
 
 Al deze formules zijn belangrijk om te begrijpen hoe de verschillende parameters bij draaien met elkaar in verband staan.
-Als hij vraag op het examen. Met deze parameters en deze voeding. Wat is de maximale snijsnelheid die ik kan gebruiken?
-Je kunt deze logarithmisch plotten zoals de figuur hieronder om te zien welke snijsnelheid je maximaal kunt gebruiken
+Een typische examenvraag is: ``met deze parameters en deze voeding, wat is de maximale snijsnelheid die ik kan gebruiken?''
+Je kunt de verbanden logaritmisch plotten, zoals in de figuur hieronder, om die maximale snijsnelheid af te lezen.
 
 \textbf{Zie dat alle formules in verband staan met de voeding.}
 
@@ -933,14 +934,14 @@ bepaald worden.
     \label{verschillende_invloeden_voeding_snedediepte}
 \end{figure}
 
-De krachten ($F_c$, $F_f$, $F_p$) zijn logarithmisch met
-de voeding door die factor $(1-e)$ in de Kienzle vergelijking \ref{fig:image31}.
-$e$ vergroot bij grotere voedingen
-en dus neemt de kracht minder snel toe.
+De krachten ($F_c$, $F_f$, $F_p$) volgen een machtsverband met de voeding, door de exponent $(1-e)$
+in de Kienzle-vergelijking. Omdat $e > 0$ is die exponent kleiner dan 1: verdubbel je de voeding,
+dan verdubbelt de kracht \emph{niet}, maar stijgt ze minder dan evenredig.
+In een log-log-grafiek is dat een rechte met helling $(1-e)$.
 
 
 \begin{examenbox}
-    \textbf{Op het examen kan hij legen figuren geven en jij moet de effecten kunnen uitleggen.}
+    \textbf{Op het examen kan hij lege figuren geven en moet jij de effecten kunnen uitleggen.}
 \end{examenbox}
 
 
@@ -953,7 +954,7 @@ Er zijn verschillende parameters die spaanvorming beïnvloeden
     \item \textbf{Snedediepte $a$}: Een grotere snedediepte vergroot doorgaans $b$ en verhoogt de spaanslankheid.
     \item \textbf{Voeding $f$}: Grotere voeding verhoogt de snededikte $h$, wat resulteert in dikkere spanen die moeilijker breken.
     \item \textbf{Materiaal}: Ductiele materialen veroorzaken vaak lange, samenhangende spanen; brosse materialen geven korte, brokkelige spanen.
-    \item \textbf{Spaanhoek $\gamma$}: Een grotere afschuifhoek maakt spaanvorming gemakkelijker en vermindert de kans op gebroken spanen.
+    \item \textbf{Spaanhoek $\gamma$}: Een grotere spaanhoek geeft een grotere afschuifhoek en dus makkelijkere spaanvorming, maar ook langere, taaiere spanen die minder snel breken.
 \end{itemize}
 
 \frm{Spaanslankheid bij Draaien}{\dfrac{b}{h} = \dfrac{a}{f \cdot \sin \kappa_r}}{waarbij $b$ de snedebreedte [\si{mm}], $h$ de snededikte [\si{mm}], $a$ de snedediepte [\si{mm}], $f$ de voeding [\si{mm/omw}] en $\kappa_r$ de instelhoek [$^\circ$].}
@@ -965,9 +966,9 @@ in een dikkere spaan, wat de spaanvorming beïnvloedt.
 
 \[b = \dfrac{a}{\sin\kappa}\]
 
-{De snedebreedte $b$ bij draaien wordt bepaald door de snedediepte $a$
-en de instelhoek $\kappa$. Een grotere snedediepte of een grotere instelhoek resulteert in
-een bredere spaan, wat de spaanvorming beïnvloedt.}
+De snedebreedte $b$ bij draaien wordt bepaald door de snedediepte $a$
+en de instelhoek $\kappa$. Een grotere snedediepte of een \emph{kleinere} instelhoek geeft
+een bredere spaan (want $\sin\kappa$ staat in de noemer), wat de spaanvorming beïnvloedt.
 
 \begin{figure}[ht]
     \centering
@@ -978,9 +979,8 @@ een bredere spaan, wat de spaanvorming beïnvloedt.}
 
 
 
-Om grote spannen te worden spaanbrekers gebruikt.
-Spaanbrekers zijn inkepingen in de beitel die de spaan
-breken in kleinere stukken.
+Om te lange spanen te vermijden worden spaanbrekers gebruikt:
+inkepingen in het spaanvlak van de beitel die de spaan doen oprollen en breken in kleine stukken.
 
 \begin{figure}[ht]
     \centering
@@ -994,9 +994,10 @@ breken in kleinere stukken.
     Kinematische ruwheid is de theoretisch minimale ruwheid die ontstaat door de geometrie van de beitel (neusradius $r_\varepsilon$) en de verplaatsing per omwenteling (voeding $f$). In de praktijk is de werkelijke ruwheid hoger door trillingen en BUE.
 \end{conceptbox}
 
-De oppervakteruwheid wordt gecreerd door de beitel. De beitel is niet perfect scherp en is dus licht bol, dit is de neusradius $r_\varepsilon$.
-Deze bol zal kleine inkepingen maken in het oppervlakte.
-De ruwheid wordt dus bepaald door de neusradius en de voeding.
+De oppervlakteruwheid wordt gecreëerd door de beitel. De punt van de beitel is niet oneindig scherp maar
+afgerond: dat is de neusradius $r_\varepsilon$.
+Bij elke omwenteling schuift die afgeronde punt één voeding $f$ op en laat zo een rij kleine ribbels achter.
+De ruwheid wordt dus bepaald door de neusradius $r_\varepsilon$ en de voeding $f$.
 
 \begin{figure}[ht]
     \centering
@@ -1004,46 +1005,46 @@ De ruwheid wordt dus bepaald door de neusradius en de voeding.
     \includegraphics[width=0.45\textwidth]{assets/image38.png}
     \caption{}
 \end{figure}
-De oppervlakte ruwheid wordt bepaalde door de voeding en de neusradius.
-\begin {itemize}
-\item \textbf{$R_t $ is de totale hoogte van de ruwheid}
-\item \textbf{$R_a $ is de gemiddelde hoogte van de ruwheid}
+De oppervlakteruwheid wordt dus bepaald door de voeding en de neusradius.
+\begin{itemize}
+    \item $R_t$ is de \textbf{totale} hoogte van de ruwheid (piek tot dal).
+    \item $R_a$ is de \textbf{gemiddelde} afwijking van de ruwheid.
 \end{itemize}
 
-\textbf{Kinematische ruwheid of drawsruwhheidbij draaien:}
-Kinematsche ruwheid is puur door de geometrie van het systeem.
+\textbf{Kinematische ruwheid} volgt puur uit de geometrie en de kinematica van het systeem:
+de neusradius en de voeding. Dit is de theoretische ondergrens.
 
-\textbf{De processruwheid}
-De processruwheid is de ruwheid die ontstaat door trillingen en andere onvolkomenheden in het systeem.
-Het is de ruwheid door de opbouwsnijkant (Build -up edge BUE) en andere factoren.
+\textbf{Procesruwheid} is de extra ruwheid door trillingen, gereedschapsslijtage en de
+opbouwsnijkant (build-up edge, BUE).
 
-\textbf{Totale ruwheid}
-De totale ruwheid wordt bepaald door de kinematische ruwheid en de processruwheid
+\textbf{Totale ruwheid} is de som van beide: kinematische ruwheid $+$ procesruwheid.
+De werkelijke ruwheid ligt dus altijd hoger dan wat de formules hieronder voorspellen.
 
-
-\frm{gemiddelde ruwheid bij Draaien}{R_a = \dfrac{f^2}{32 \cdot r_\epsilon}}{waarbij $f$ de voeding is en $r_\varepsilon$ de neusradius van de beitel.}
-\frm{totale ruwheid bij Draaien}{R_t = \dfrac{f^2}{8 \cdot r_\epsilon}}{waarbij $f$ de voeding is en $r_\varepsilon$ de neusradius van de beitel.}
+\frm{Gemiddelde ruwheid bij draaien}{R_a = \dfrac{f^2}{32 \cdot r_\varepsilon}}{waarbij $R_a$ de gemiddelde ruwheid is [\si{mm}], $f$ de voeding [\si{mm/omw}] en $r_\varepsilon$ de neusradius van de beitel [\si{mm}].}
+\frm{Totale ruwheid bij draaien}{R_t = \dfrac{f^2}{8 \cdot r_\varepsilon}}{waarbij $R_t$ de totale ruwheid is [\si{mm}], $f$ de voeding [\si{mm/omw}] en $r_\varepsilon$ de neusradius van de beitel [\si{mm}].}
 
 \medskip
 \noindent\textbf{Uitleg berekening neusradius.}
-Denk aan de neusradius als een cirkelboog; de voeding per omwenteling \(f\) is de koorde van die boog. De maximale hoogte van het profiel (piek‑tot‑dal) noemen we \(s\). Voor kleine voedingen geldt praktisch:
-
-- Exact (cirkelgeometrie): \(s=r_\varepsilon-\sqrt{r_\varepsilon^{2}-(f/2)^{2}}\).
-- Handige benadering (veel gebruikt in de praktijk, eenvoudig te rekenen):
-\[
-    R_t \approx s \approx \dfrac{f^{2}}{8\,r_\varepsilon},
-    \qquad
-    R_a \approx \dfrac{R_t}{4} \approx \dfrac{f^{2}}{32\,r_\varepsilon}.
-\]
+Denk aan de neusradius als een cirkelboog; de voeding per omwenteling \(f\) is de koorde van die boog.
+De maximale hoogte van het profiel (piek tot dal) noemen we \(s\). Voor kleine voedingen geldt:
+\begin{itemize}
+    \item \textbf{Exact} (cirkelgeometrie): \(s = r_\varepsilon-\sqrt{r_\varepsilon^{2}-(f/2)^{2}}\).
+    \item \textbf{Benadering} (veel gebruikt in de praktijk, eenvoudig te rekenen):
+          \[
+              R_t \approx s \approx \dfrac{f^{2}}{8\,r_\varepsilon},
+              \qquad
+              R_a \approx \dfrac{R_t}{4} \approx \dfrac{f^{2}}{32\,r_\varepsilon}.
+          \]
+\end{itemize}
 
 Kort: ruwheid groeit met het kwadraat van de voeding en neemt af met de neusradius.
 
 \smallskip
 \noindent\textbf{Regel van duim \& voorbeeld.}
-Geldigheid: de benadering is goed zodra \(f\) duidelijk kleiner is dan \(r_\varepsilon\) (praktisch: \(f \lesssim r_\varepsilon/4\)).
-Voor \(f=0{.}2\ \si{mm}\) en \(r_\varepsilon=0{.}4\ \si{mm}\):
+Geldigheid: de benadering klopt zolang \(f\) duidelijk kleiner is dan \(r_\varepsilon\) (praktisch: \(f \lesssim r_\varepsilon/2\)).
+Voor \(f=0{,}2\ \si{mm}\) en \(r_\varepsilon=0{,}4\ \si{mm}\):
 \[
-    R_t\approx 12{.}5\ \mu\text{m},\qquad R_a\approx 3{.}1\ \mu\text{m}.
+    R_t\approx 12{,}5\ \si{\micro m},\qquad R_a\approx 3{,}1\ \si{\micro m}.
 \]
 
 
@@ -1064,7 +1065,7 @@ De componenten worden in een draaimachine gestoken die deze beitels kan bewegen 
 kan laten roteren.
 Ze kunnen bewegen door AC (asynchrone) motoren of servomotoren die
 de bewegingen zeer precies kunnen uitvoeren.
-De snelheid van de motoren wordt gecontrolleerd door een tandwielkast.
+De snelheid van de motoren wordt getrapt door een tandwielkast.
 
 \begin{figure}[htbp]
     \centering
@@ -1073,8 +1074,8 @@ De snelheid van de motoren wordt gecontrolleerd door een tandwielkast.
 \end{figure}
 \FloatBarrier
 
-Motoren gaan vooral werken rond de stijle curve. Dit is interresant omdat je met verschillende lasten
-dezelfde toerental kunt behouden.
+Motoren werken vooral rond het steile deel van de koppel-toerentalcurve. Dat is interessant,
+omdat je daar bij wisselende belasting toch ongeveer hetzelfde toerental behoudt.
 
 
 \chapter{Verspanen: Boren, Fabricage en ronde gaten}
@@ -1109,14 +1110,17 @@ Belangrijke booroperaties zijn:
 \end{figure}
 \FloatBarrier
 
-In de bovenste figuur zie je dat de spaanhoek $\gamma$ varieert
-langs de snijkant van de boor. Hoe groter de spaanhoek hoe meer kracht
-je moet zetten omdat je afschuifhoek kleiner wordt en je afschuifvlak $A$ groter wordt.
+In de bovenste figuur zie je dat de spaanhoek $\gamma$ \emph{varieert} langs de snijkant van de boor.
+Aan de buitenrand is hij positief, maar naar het centrum toe wordt hij steeds kleiner en uiteindelijk
+sterk negatief (aan de dwarssnede). Hoe \emph{kleiner} de spaanhoek, hoe meer kracht je nodig hebt,
+want de afschuifhoek $\phi$ wordt kleiner en het afschuifvlak $A$ wordt groter.
+In het centrum van de boor wordt er dus nauwelijks gesneden en vooral geduwd.
 \newline
-\textit{Hou die twee uit elkaar, afschuifhoek is de hoek tussen
-    het werk stuk en het afschuifvalk, de afschuifvlak is het oppervlakte waar er plastische vervorming is.}
+\textit{Hou die twee uit elkaar: de afschuifhoek $\phi$ is de hoek tussen het werkstukoppervlak en het
+    afschuifvlak; het afschuifvlak $A$ is het oppervlak waarover de plastische vervorming plaatsvindt.}
 
-Negatieve spaanhoeken geeft enorm veel krachten en is moeilijker te bewerken omdat de afschuifhoek kleiner is.
+Negatieve spaanhoeken geven dus enorm veel kracht en maken het bewerken moeilijker, precies omdat de
+afschuifhoek kleiner wordt.
 
 Op een boor heb je belangrijke geometrie die andere functies hebben:
 \begin{itemize}
@@ -1130,15 +1134,15 @@ Op een boor heb je belangrijke geometrie die andere functies hebben:
           vrijloophoek voorkomt het wrijving en slijtage en behoudt maatnauwkeurigheid.
 \end{itemize}
 
-De boor beweegt naar beneden en maakt een spiraal. De \textbf{vrijloophoek} maakt een spiraal naar beneden.
-Hoe sneller je beweegt hoe schuiner dat je spiraal ligt.
-De \textbf{vrijloophoek} is dus kleiner dan de \textbf{vrijslijphoek}.
-De voeding gaat ook afhankelijk zijn van deze hoek.
-De spoedhoek is de schuine hoek $\sigma$ die door je werkstuk gemaakt wordt tijdens het draaien.
-Deze vergroot bij grotere voedingen omdat je snedediepte $b$ groter wordt.
+Doordat de boor tegelijk roteert én naar beneden gevoerd wordt, beschrijft elk punt van de snijkant
+een schroeflijn in plaats van een vlakke cirkel. Hoe groter de voeding, hoe steiler die schroeflijn ligt.
+De helling van die schroeflijn is de \textbf{spoedhoek} $\sigma$, met $\tan\sigma = f/(\pi d)$:
+hij groeit dus met de voeding en is het grootst dicht bij het centrum (kleine $d$).
+Die spoedhoek gaat af van de hoek die je geslepen hebt, waardoor de \emph{effectieve} vrijloophoek
+kleiner is dan de \textbf{vrijslijphoek}.
 
 \begin{figure}[htbp]
-    \centering	\centering
+    \centering
     \includegraphics[width=0.4\textwidth]{assets/borenhoeken.png}
     \caption{Alle belangrijke hoeken bij boren}
     \label{fig:borenhoeken.png}
@@ -1153,7 +1157,7 @@ Nog een keer alle belangrijke hoeken met hun functie en symbool:
     \item \textbf{Afschuifhoek} ($\phi$): Beïnvloedt de kracht die nodig is om materiaal te verwijderen.
     \item \textbf{Vrijslijphoek} ($\alpha'$): De hoek tussen het horizontale vlak en de boor.
     \item \textbf{Vrijloophoek} ($\alpha$): De vrije hoek tussen boor en werkstuk.
-    \item \textbf{Spoedhoek} ($\sigma$): De schuine hoek gecreert door het boren.
+    \item \textbf{Spoedhoek} ($\sigma$): De helling van de schroeflijn die de snijkant beschrijft, $\tan\sigma = f/(\pi d)$.
     \item \textbf{Wighoek} ($\beta$): De hoek tussen het hoofdsnijvlak en hulpsnijvlak.
 \end{itemize}
 \newpage
@@ -1161,7 +1165,7 @@ Nog een keer alle belangrijke hoeken met hun functie en symbool:
 \section{Optredende krachten}
 
 \begin{wrapfigure}[20]{r}{0.36\textwidth}
-    \centering	\centering
+    \centering
     \includegraphics[width=0.36\textwidth]{assets/image43.png}
     \caption{Krachten op een boor}
     \label{fig:boren_krachten}
@@ -1169,7 +1173,7 @@ Nog een keer alle belangrijke hoeken met hun functie en symbool:
 \FloatBarrier
 
 Net zoals bij draaien zijn er verschillende krachten die op het werkstuk
-en de boor werken tijdens het boren. Deze worden met de theorie van Kienzle berekend. \ref{frm:10}
+en de boor werken tijdens het boren. Deze worden met de vergelijking van Kienzle berekend.
 
 Boren hebben een grote voedingskracht en een relatief klein snijmoment.
 De axiale voeding is groot omdat de boor in het materiaal moet doordringen,
@@ -1184,23 +1188,23 @@ wat leidt tot slechte oppervlaktekwaliteit en onnauwkeurige gaten.
 \end{itemize}
 
 \subsection{Gevolgen van onevenwichtige krachten}
-Als de krachten niet evenwichtig zijn gaaat je gatdiameter van
-afwijken. 8,5mm gat kan afwijken tot 0,2mm.
+Als de krachten niet in evenwicht zijn, wijkt je gatdiameter af.
+Een gat van \SI{8,5}{mm} kan zo tot \SI{0,2}{mm} afwijken.
 
 
 \section{Krachten bij Boren}
 Net zoals bij draaien worden de krachten,
-vermogens en momenten berekent met het theorema van Kienzle~\ref{frm:10}.
+vermogens en momenten berekend met de vergelijking van Kienzle.
 
 \textbf{Belangrijke krachten, vermogens en momenten bij boren:}
 \frm{Voedingskracht}{F_f = k_f \cdot a \cdot f^{(1-e)}}{waarbij $F_f$ de voedingskracht is [\si{N}], $k_f$ de voedingskrachtcoëfficiënt [\si{N/mm^2}], $a$ de snedediepte [\si{mm}], $f$ de voeding [\si{mm/omw}] en $e$ de voedingskrachtsexponent [-].}
-\frm{Verspanningsmoment}{M_c = C_m \cdot d^{x_M} \cdot f^{y_M}}{waarbij $M_c$ het verspanningsmoment is [\si{N.mm}], $C_m$ de momentcoëfficiënt [-], $d$ de diameter [\si{mm}], $f$ de voeding [\si{mm/omw}] en $x_M, y_M$ de momentexponenten [-].}
+\frm{Verspaningsmoment}{M_c = C_m \cdot d^{x_M} \cdot f^{y_M}}{waarbij $M_c$ het verspaningsmoment is [\si{N.mm}], $C_m$ de momentcoëfficiënt [-], $d$ de diameter [\si{mm}], $f$ de voeding [\si{mm/omw}] en $x_M, y_M$ de momentexponenten [-].}
 \frm{Vermogen bij boren}{P_c = M_c\,\omega = M_c \cdot 2\pi n}{waarbij $P_c$ het vermogen is [\si{W}], $M_c$ het verspaningsmoment [\si{N.m}] en $\omega$ de hoeksnelheid [\si{rad/s}].}
 
 \section{Keuze van voeding}
 
-Het belangrijkse van de keuze van de voeding is de sterkte van de boor.
-De Torsie kant berekent worden en hieruit de maximale voeding bepaald worden.
+Het belangrijkste bij de keuze van de voeding is de sterkte van de boor zelf.
+Je berekent de torsie in de boor en leidt daaruit de maximaal toelaatbare voeding af.
 
 \subsection{Torsie bij Boren}
 \frm{Torsie bij Boren}{\tau = \dfrac{M_c\,\rho}{I_p}}{waarbij $\tau$ de schuifspanning is [\si{N/mm^2}], $M_c$ het verspaningsmoment [\si{N.mm}], $\rho$ de afstand van het centrum [\si{mm}] en $I_p$ het polair traagheidsmoment [\si{mm^4}].}
@@ -1269,18 +1273,21 @@ Met het traagheidsmoment berekent als volgt (zie statica):
 
 De combinatie van deze formules:
 
-\frm{Maximale schuifspanning bij Draaien}{M_d = C_b \cdot d^{x_w}}{waarbij $M_d$ de maximaal toelaatbare schuifspanning is [\si{N.mm}], $C_b$ de schuifspanningcoëfficiënt [\si{N/mm^2}], $d$ de diameter [\si{mm}] en $x_w$ de schuifspanningsexponent [-].}
+\frm{Maximaal toelaatbaar moment op de boor}{M_d = C_b \cdot d^{x_w}}{waarbij $M_d$ het maximaal toelaatbare
+    moment is [\si{N.mm}] (volgt uit de torsiesterkte van de boor), $C_b$ een materiaal- en gereedschapsconstante,
+    $d$ de diameter [\si{mm}] en $x_w$ de bijhorende exponent [-].}
 
 \vspace{0.5cm}
 
-\frm{Maximale verspanningsmoment}{M_c = a\cdot M_b}{waarbij $M_c$ het verspaningsmoment is [\si{N.mm}], $a$ een factor [-] en $M_b$ het maximale verspanningsmoment [\si{N.mm}].}
+\frm{Veiligheidsmarge op het moment}{M_c = a \cdot M_d}{waarbij $M_c$ het werkelijke verspaningsmoment is [\si{N.mm}],
+    $M_d$ het maximaal toelaatbare moment [\si{N.mm}] en $a < 1$ de gekozen veiligheidsfactor [-].}
 
 
-Samen met het verspanningsmoment:
+Samen met het verspaningsmoment:
 
 \textbf{Afleiding van de maximale voeding $f_{\max}$ (twee methodes)}
 
-\textbf{2) Via het schuifspanningscriterium:}
+\textbf{1) Via het schuifspanningscriterium:}
 De maximale schuifspanning in de buitenvezel van een ronde doorsnede is
 \[
     \tau_{\max}=\dfrac{16\,M_c}{\pi\,d^3}.
@@ -1300,7 +1307,7 @@ Als \(M_c\le M_d=C_b\,d^{x_w}\) dan volgt
     f_{\max} = \left(\dfrac{C_b}{C_m}\right)^{1/y_M} d^{(x_w-x_M)/y_M}.
 \]
 
-\textbf{Speciale geval -- lineair}
+\textbf{Speciaal geval: lineair}
 Wanneer \(y_M=1\) en \(x_w-x_M=1\) volgt
 \[
     f_{\max} = \dfrac{C_b}{C_m}\; d,
@@ -1315,8 +1322,8 @@ wat overeenkomt met de eenvoudige vorm \(f_{\max}=C\cdot d\).
 {F_f = C_f \cdot d^{X_f} \cdot f^{y_f}}{waarbij $F_f$ de voedingskracht is [\si{N}], $C_f$ de voedingskrachtcoëfficiënt [\si{N/mm^2}],
 $d$ de diameter [\si{mm}], $f$ de voeding [\si{mm/omw}] en $X_f, y_f$ de voedingskrachtsexponenten [-].}
 
-Deze kracht zal een moment creeëren op de machine die hem kan buigen.
-Dit is vooral bij C vormige structuren.
+Deze kracht creëert een moment op de machine, dat het frame kan doen doorbuigen.
+Dat speelt vooral bij C-vormige structuren.
 
 \begin{figure}[htbp]
     \centering
@@ -1424,7 +1431,7 @@ Dit is vooral bij C vormige structuren.
 \FloatBarrier
 
 
-\section{Boormachines en booroperaties in de industrie.}
+\section{Boormachines en booroperaties in de industrie}
 \subsection{NC-gestuurde boormachines}
 NC-gestuurde boormachines (Numerical Control) zijn computergestuurde machines die worden gebruikt voor het boren van gaten in materialen met
 hoge precisie en herhaalbaarheid.
@@ -1433,16 +1440,16 @@ om de bewegingen van de boor en het werkstuk te regelen.
 \newline
 
 \subsection{Boren}
-Hier zijn nog relevante type boren en hun toepassingen:
+Hier zijn nog relevante boortypes en hun toepassingen:
 \begin{itemize}
     \item \textbf{Toepassingen:} verspanen van gaten voor bevestigingsmiddelen, passingen en nabewerkingen (ruimen, kotteren); wordt ook gebruikt als pilot voor grotere bewerkingen.
-    \item \textbf{Belangrijke parameters:} snijsnelheid $v_c$, voeding $f$, snedediepte $a$, koelmiddel en spanenvorm.
-    \item \textbf{Veelvoorkomende borentypes:}
+    \item \textbf{Belangrijke parameters:} snijsnelheid $v_c$, voeding $f$, snedediepte $a$, koelmiddel en spaanvorm.
+    \item \textbf{Veelvoorkomende boortypes:}
           \begin{itemize}
               \item \textbf{Centerboor / positioneerboor:} korte, stijve boor om een startpunt te maken (voorkomt uitlopen van de boor).
-              \item \textbf{Steekboor (jobber / stub):} standaard boor voor algemene gaten; lengte en spiraaltype kiezen afhankelijk van diepte en spanenafvoer.
+              \item \textbf{Steekboor (jobber / stub):} standaardboor voor algemene gaten; lengte en spiraaltype kies je afhankelijk van de diepte en de spaanafvoer.
               \item \textbf{Verzinkingsboor (countersink):} maakt een conische uitsparing voor schroefkoppen of voor ontbraamwerk.
-              \item \textbf{Split‑point / conische punt boren:} verbetert centrering en vermindert wander bij start.
+              \item \textbf{Split-point / conische punt:} verbetert de centrering en vermindert het uitlopen van de boor bij het aanzetten.
           \end{itemize}
 \end{itemize}
 
@@ -1517,8 +1524,9 @@ Hier zijn nog relevante type boren en hun toepassingen:
 
 \subsection{Kotteren}
 Als je een groot gat hebt en je kunt niet met een boor zo'n groot gat maken, dan kun je kotteren gebruiken.
-Je kunt ook eventueel frezen maar dat zie je in het volgende hoofdstuk \ref{chap:Verspanen_Frezen}
-Bij kotteren ga je de boor ook nog laten draaien waardoor je een groter oppervlak gaat verspanen.
+Je kunt eventueel ook frezen, maar dat zie je in het volgende hoofdstuk~\ref{chap:Verspanen_Frezen}.
+Bij kotteren laat je de beitel excentrisch meedraaien, waardoor je een grotere diameter uitverspaant
+dan de kotterstang zelf.
 
 \subsection{Draadtappen}
 Draadtappen is het snijden van interne schroefdraad in een voorgeboord gat.
@@ -1541,8 +1549,9 @@ Draadtappen is het snijden van interne schroefdraad in een voorgeboord gat.
     \caption{Veelvoorkomende metrische tap‑boringen}
 \end{table}
 \subsection{Ruimen}
-Ruimen is een afwerkingsbewerking om een bestaand gat op nauwkeurige maat en met goede oppervlaktekwaliteit te brengen
-Het zorgt ervoor dat je heel precies gaten kunt maken met een goede oppervlaktekwaliteit.
+Ruimen is een afwerkingsbewerking die een bestaand gat op nauwkeurige maat brengt met een goede oppervlaktekwaliteit.
+De ruimer neemt slechts een dunne laag weg (enkele tienden van een millimeter) en volgt het bestaande gat,
+zodat je maat en gladheid haalt die je met boren alleen niet bereikt (tot IT7).
 \begin{figure}[ht]
     \centering
     \begin{tikzpicture}[scale=1.2, >=stealth]
@@ -1612,22 +1621,19 @@ Het zorgt ervoor dat je heel precies gaten kunt maken met een goede oppervlaktek
 Frezen is een verspaningstechniek waarbij een roterend snijgereedschap, de frees, wordt gebruikt om materiaal van een werkstuk te verwijderen.
 Het proces omvat het bewegen van de frees langs het oppervlak van het werkstuk om de gewenste vorm of maat te bereiken.
 
-\textbf{- hoofdbeweging}
-\newline
-Je gereedschap de \textbf{frees} gaat roteren.
-\newline
-\textbf{- voedingsbeweging}
-\newline
-Het gereedschap of het werkstuk gaat bewegen om materiaal te verwijderen.
-\newline
+\begin{description}
+    \item[Hoofdbeweging] Je gereedschap, de \textbf{frees}, roteert.
+    \item[Voedingsbeweging] Het gereedschap of het werkstuk schuift op om materiaal te verwijderen.
+\end{description}
 
-\subsection{Soorten frezen}
-Als je gaat frezen via met de as-richting van de frees in de lengteas van de frees,
-noem je dit \textbf{mantelfrezen}.
+\section{Soorten frezen}
+Snijd je met de \textbf{omtrek} (de mantel) van de frees, dan spreken we van \textbf{mantelfrezen}:
+de freesas ligt evenwijdig met het bewerkte vlak.
 
-Als je met de punt van de frees gaat frezen noem je dit \textbf{kopfrezen}.
+Snijd je met de \textbf{kopse kant} (het eindvlak) van de frees, dan is dat \textbf{kopfrezen}:
+de freesas staat loodrecht op het bewerkte vlak.
 
-\subsection{Geometrie van de frees}
+\section{Geometrie van de frees}
 
 Net zoals bij draaien en boren zijn er verschillende vlakken op de frees die verschillende functies hebben.
 \begin{itemize}
@@ -1675,10 +1681,9 @@ De snededikte is niet constant omdat je frees ronddraait. Voor berekeningen word
 \newline
 
 \belangrijk{BELANGRIJK VOOR EXAMEN}\\
-Je krachten op je frees zijn dus niet constant.
-zorg dat je dit weet voor het examen.
-Daarom nemen we het gemiddelde snededikte $h_{gem}$
-zodat we toch een berekening hebben voor de kracht.
+De krachten op je frees zijn dus \emph{niet} constant: elke tand snijdt maar over een deel van de omwenteling,
+en de snededikte varieert binnen die snede. Zorg dat je dit weet voor het examen.
+Daarom rekenen we met de \textbf{gemiddelde snededikte} $h_{gem}$, zodat we toch één kracht kunnen berekenen.
 
 \textbf{Gemiddelde snededikte bij Frezen:} $h_{gem} = f_z \cdot \sqrt{\dfrac{a}{d}}$\\
 waarbij $f_z$ de voeding per tand is, $a$ de snedediepte en $d$ de diameter van de frees.
@@ -1686,15 +1691,15 @@ waarbij $f_z$ de voeding per tand is, $a$ de snedediepte en $d$ de diameter van 
 \textbf{Voeding per tand bij Frezen:} $f_z = \dfrac{f}{z_i}$
 waarbij $f$ de voeding is en $z_i$ het aantal tanden van de frees.
 
-\textbf{Snijsnelheid bij Frezen:} $v_c = \pi \cdot d \cdot n$
-waarbij $d$ de diameter van de frees is en $n$ het toerental.
+\textbf{Snijsnelheid bij frezen:} $v_c = \dfrac{\pi \cdot d \cdot n}{1000}$
+waarbij $v_c$ de snijsnelheid is [\si{m/min}], $d$ de diameter van de frees [\si{mm}] en $n$ het toerental [omw/min].
 
 \textbf{Ingrijpingshoek bij Frezen:} $\displaystyle \phi = \arccos\!\left(1 - \dfrac{2a}{d}\right) \;\Rightarrow\; \cos\phi = 1 - \dfrac{2a}{d}$.
 waarbij $a$ de snedediepte is en $d$ de diameter van de frees.
 
-\textbf{Tanden per ingrijping:} $z_i = \frac{Q}{360}\cdot z$
-waarbij $z_i$ het aantal tanden per ingrijping is,
-$Q$ de ingrijpingshoek in graden en $z$ het totaal aantal tanden van de frees.
+\textbf{Tanden in de snede:} $z_i = \dfrac{\phi}{360^\circ}\cdot z$
+waarbij $z_i$ het aantal tanden is dat gelijktijdig in de snede zit,
+$\phi$ de ingrijpingshoek in graden en $z$ het totale aantal tanden van de frees.
 
 
 \frm{Snijkracht bij Frezen}{F_c = k_c \cdot b \cdot h_{gem}^{(1-e)} \cdot z_i}
@@ -1732,7 +1737,7 @@ Er zijn twee richtingen van frezen:
     \label{fig:meelopend_tegenlopend}
 \end{figure}
 
-$v_f$ is de richting van de het werstuk dat beweegt.
+$v_f$ is de richting waarin het werkstuk beweegt (de voedingsrichting).
 
 \begin{engtable}[
         caption = {Vergelijking: Tegenlopend vs Meelopend frezen},
@@ -1744,9 +1749,9 @@ $v_f$ is de richting van de het werstuk dat beweegt.
         row{1} = {font=\bfseries},
     }
     Kenmerk & Tegenlopend & Meelopend \\
-    Aandrijving & $F_h$ drukt werkstuk weg van frees. & $F_h$ trekt werkstuk naar frees toe. \\
+    Aandrijving & De horizontale krachtcomponent drukt het werkstuk weg van de frees. & De horizontale krachtcomponent trekt het werkstuk naar de frees toe. \\
     Speling & Geen compensatie nodig, veiliger bij backlash. & Spelingcompensatie onmisbaar. \\
-    Spaanvorming & Dun $\rightarrow$ dik (chip groeit tijdens snede). & Dik $\rightarrow$ dun (chip neemt af richting einde). \\
+    Spaanvorming & Dun $\rightarrow$ dik (de spaan groeit tijdens de snede). & Dik $\rightarrow$ dun (de spaan neemt af richting het einde). \\
     Snijkracht & Stijgt geleidelijk tijdens ingreep. & Stijgt sneller; hogere piekbelasting. \\
     Snijgedrag & Eerst wrijving, later snijden (meer smearing). & Meteen snijden (scherpere insnijding). \\
     Oppervlakte & Meestal matig. & Meestal beter (glad). \\
@@ -1759,10 +1764,10 @@ $v_f$ is de richting van de het werstuk dat beweegt.
 \textbf{Praktische richtlijnen:}
 \begin{itemize}
     \item \textbf{Meelopend (climb milling)} -- kies dit bij een stijve machine en goede opspanning,
-          vooral voor afwerking. De chipdikte neemt af tijdens de ingreep (dik $\rightarrow$ dun), er is minder wrijving bij de instap en doorgaans
+          vooral voor afwerking. De spaandikte neemt af tijdens de ingreep (dik $\rightarrow$ dun), er is minder wrijving bij de instap en doorgaans
           een betere oppervlaktekwaliteit en langere gereedschapslevensduur; vereist minimale backlash in de aandrijving.
     \item \textbf{Tegenlopend (conventional milling)} -- kies dit bij oudere of minder stijve machines,
-          bij ruwe bewerkingen of wanneer er speling is. De chipdikte neemt toe tijdens de ingreep (dun $\rightarrow$ dik),
+          bij ruwe bewerkingen of wanneer er speling is. De spaandikte neemt toe tijdens de ingreep (dun $\rightarrow$ dik),
           bij de instap is er meer wrijving en kans op BUE, maar de methode is vaak veiliger voor onstabiele opstellingen of dunwandige onderdelen.
 \end{itemize}
 
@@ -1776,17 +1781,17 @@ $v_f$ is de richting van de het werstuk dat beweegt.
 
 \section{Soorten frezen}
 \begin{itemize}
-    \item \textbf{Mantelfrezen}: Hierbij wordt de zijkant van de frees gebruikt om materiaal te verwijderen. Dit is geschikt voor het maken van vlakke oppervlakken en contouren.
-    \item \textbf{Kopfrezen}: Hierbij wordt de bovenkant van de frees gebruikt om materiaal te verwijderen. Dit is geschikt voor het maken van gaten, sleuven en andere complexe vormen.
+    \item \textbf{Mantelfrezen}: Hierbij wordt de omtrek (zijkant) van de frees gebruikt. Geschikt voor sleuven, contouren en zijvlakken.
+    \item \textbf{Kopfrezen}: Hierbij wordt de kopse kant van de frees gebruikt. Geschikt voor het vlakken van grote oppervlakken; per snede wordt een grote breedte bestreken.
     \item \textbf{Bolfrezen}: Hierbij wordt een frees met een bolvormige snijkant gebruikt, geschikt voor het maken van gebogen oppervlakken en complexe 3D-vormen.
     \item \textbf{Vormfrezen}: Hierbij wordt een frees met een specifieke vorm gebruikt om profielen en vormen in het materiaal te frezen.
     \item \textbf{Circulair frezen}: Hierbij wordt een cirkelvormige beweging gebruikt om gaten of cirkelvormige uitsparingen te maken.
-    \item \textbf{Trekfrezen of Brootsen}: Hierbij wordt een speciaal gereedschap gebruikt om nauwkeurige vormen en profielen te maken door het materiaal te trekken.
+    \item \textbf{Brootsen (trekruimen)}: Hierbij wordt een getrapt gereedschap in één rechtlijnige beweging door of langs het werkstuk getrokken; elke tand neemt iets meer weg. Zeer nauwkeurig en snel, maar het gereedschap is duur en productspecifiek (bv.\ spiebanen, inwendige vertandingen).
 \end{itemize}
 
 \section{De Freesmachine}
-Een freesmachine heeft een bank waar je werkstuk wordt op geklemd. Hierop steek je de mantel of kopfrees.
-De frees gaat roteren en de bank gaat bewegen in de x,y en z-richting.
+Een freesmachine heeft een tafel waarop je werkstuk wordt geklemd. In de spindel steek je de mantel- of kopfrees.
+De frees roteert en de tafel beweegt in de $x$-, $y$- en $z$-richting.
 
 
 \begin{figure}[htbp]
@@ -1799,7 +1804,7 @@ De frees gaat roteren en de bank gaat bewegen in de x,y en z-richting.
 \begin{warningbox}[EXAMEN CHECKLIST: FREZEN]
     \begin{itemize}
         \item \textbf{Krachten}: Begrijp dat snijkrachten bij frezen variëren (heuvelachtig verloop) en dat we $h_{gem}$ gebruiken voor berekeningen.
-        \item \textbf{Richting}: Ken het cruciale verschil tussen \keyterm{meelopend} (dik naar dun chip) en \keyterm{tegenlopend} (dun naar dik chip) frezen.
+        \item \textbf{Richting}: Ken het cruciale verschil tussen \keyterm{meelopend} (spaan dik $\to$ dun) en \keyterm{tegenlopend} (spaan dun $\to$ dik) frezen.
         \item \textbf{Geometrie}: Weet wat de ingrijpingshoek $\phi$ is en hoe die de belasting van de tanden bepaalt.
         \item \textbf{Technieken}: Onderscheid mantelfrezen (omtrek) en kopfrezen (kopse kant).
     \end{itemize}
@@ -1812,18 +1817,18 @@ De frees gaat roteren en de bank gaat bewegen in de x,y en z-richting.
 \begin{conceptbox}[Honen]
     Honen is een nabewerkingsproces voor cilindrische oppervlakken (zoals motorcilinders)
     om de nauwkeurigheid (IT3-IT5) en de oppervlaktekwaliteit te krijgen.
-    De bewerking is een een roterende en axiaal oscillerende beweging, wat een karakteristiek kruisend slijppatroon achterlaat.
+    De bewerking combineert een roterende en een axiaal oscillerende beweging, wat een karakteristiek kruispatroon achterlaat.
 \end{conceptbox}
 
-Honen is een slijpoperatie met twee componenten en een heen een weergaande bewegingen.
-\newline
-\textbf{Hoofdbeweging}: Bij honen is de hoofdbeweging een roterende beweging.
-\newline
-\textbf{Voedingsbeweging}: Dit is de beweging waarmee het gereedschap of het
-werkstuk langzaam wordt verplaatst om het slijpproces voort te zetten.
-\newline
-\textbf{Kasterpatronen}: Bij honen worden vaak specifieke kasterpatronen gebruikt om een gelijkmatige slijpoppervlakte te verkrijgen.
-Honen helpt met het oppervalktekwaliteit tot en met (IT3)
+Honen is een slijpoperatie die twee bewegingen combineert: een rotatie en een heen-en-weergaande beweging.
+\begin{description}
+    \item[Hoofdbeweging] Bij honen is de hoofdbeweging een rotatie van de hoonkop.
+    \item[Voedingsbeweging] De axiale heen-en-weergaande beweging waarmee het gereedschap
+          langs het oppervlak schuift, plus de radiale aanzet van de hoonstenen.
+    \item[Kruispatroon] Doordat rotatie en axiale slag samenvallen, laten de stenen elkaar kruisende krassen na.
+          Dat kruispatroon houdt olie vast, wat precies de bedoeling is in een motorcilinder.
+\end{description}
+Honen brengt de nauwkeurigheid tot IT3.
 
 \subsection{Lange-slag Honen}
 \vspace{0.5cm}
@@ -1839,8 +1844,8 @@ Een hoonsteen wordt gebruikt om het oppervlakte van een cilinder te verbeteren.
 De hoonsteen heeft een lange slag en beweegt heen en weer in de lengte van de cilinder.
 Dit zorgt voor een betere oppervlaktekwaliteit en nauwkeurigheid van de cilinder.
 
-Bij het honen ga je de toppen van de oppervalkteruwheid verwijderen.
-Dit is anders bij het slijpen omdat die ook een licht oneven oppervlakte kan achterlaten.
+Bij het honen neem je enkel de \emph{toppen} van de oppervlakteruwheid weg; de dalen blijven staan.
+Dat is anders dan bij slijpen, waar de hele laag wordt afgenomen en er toch nog een licht golvend oppervlak kan achterblijven.
 
 % --- Illustratie: ruw oppervlak en resultaat na honen (scherpe toppen, geclipt) ---
 \begin{figure}[htbp]
@@ -1875,7 +1880,7 @@ Dit is anders bij het slijpen omdat die ook een licht oneven oppervlakte kan ach
                 \node[below] at (\L/2, -0.2) {(a) Voorbehandeld oppervlak};
             \end{scope}
 
-            % --- Hoonprocess pijl ---
+            % --- Hoonproces pijl ---
             \draw[->, very thick] (6.0, 1.0) -- (6.8, 1.0);
             \node[above, font=\bfseries] at (6.4, 1.05) {HOONPROCES};
 
@@ -1918,11 +1923,11 @@ Dit is anders bij het slijpen omdat die ook een licht oneven oppervlakte kan ach
 \subsection{Korte-slag Honen}
 \vspace{0.25cm}
 Het enige verschil met lange-slag honen is de kinematica van het systeem.
-Je werkstuk is opgespannen tussen twee tegenpunten die roteren.
-Deze tegenpunten worden daan aangedreven met de hoonsteen op het oppervlakte.
-Je gaat hier de hoonsteen op een cilindrisch oppervlakte toepassen zoals bij het nabewerkgen van zuigerstangen.
-Je gaat sinusoïdale bewegingen maken met een korte slag.
-De oppervlakte kwaliteit is enorm fijn.
+Je werkstuk is opgespannen tussen twee tegenpunten die het laten roteren.
+De hoonsteen wordt daarbij van buitenaf op het oppervlak gedrukt.
+Je past de hoonsteen hier dus toe op een \emph{uitwendig} cilindrisch oppervlak, zoals bij het nabewerken van zuigerstangen.
+De steen maakt een sinusoïdale beweging met een korte slag.
+De oppervlaktekwaliteit is enorm fijn.
 
 \begin{figure}[htbp]
     \centering
@@ -1933,27 +1938,27 @@ De oppervlakte kwaliteit is enorm fijn.
 \FloatBarrier
 
 \section{Leppen}
-Bij het leppen heb je enorm fijne korrels die in een paste, olie of gelei zitten.
-De werstukken zitten in een cilinder of vat waarbij de stukken bewogen worden.
+Bij het leppen gebruik je enorm fijne, \emph{vrije} korrels die in een pasta, olie of gel zitten.
+De werkstukken zitten in een houder of vat en worden daarin bewogen.
 
 \subsection{Met vloeistof}
-Het lepvloeistof beweegt tussen de stukken die het oppervlakte enorm fijn maken.
-Tot en met \textbf{Ra = 0,1 µm, IT1} is mogelijk.
+De lepvloeistof met de korrels beweegt tussen de stukken en maakt het oppervlak enorm fijn.
+Tot en met $R_a = \SI{0,1}{\micro m}$ en IT1 is mogelijk.
 
 \textbf{Toepassingen}:
 \newline
-Bepaalde stukken hebben dit nodig zoals kogellagers of klepzittingen
+Bepaalde stukken hebben dit nodig, zoals kogellagers of klepzittingen.
 
-\textit{Kijk zeker de video's op toledo om dit proces beter ge begrijpen}
+\textit{Kijk zeker de video's op Toledo om dit proces beter te begrijpen.}
 
 \subsection{Finisheren met pasta}
-Je drukt het werkstuk samen en pompt dan de gelei in het werkstuk om het oppervlakte te verbeteren.
+Je klemt het werkstuk in en pompt dan de pasta met korrels erdoor om het oppervlak te verbeteren.
 
-\section{Geadvaseerde verspaningstechnieken en hybride technieken}
+\section{Geavanceerde verspaningstechnieken en hybride technieken}
 
 \subsection{Hoge snelheid verspanen}
-Bij hoge snelheid verspanen ga je enorm hoge snijsnelheden gebruiken in vergelijking met
-conventionaleel verspanen.
+Bij hogesnelheidsverspanen (HSM) gebruik je enorm hoge snijsnelheden in vergelijking met
+conventioneel verspanen.
 \newline
 \begin{figure}[ht]
     \centering
@@ -1962,25 +1967,25 @@ conventionaleel verspanen.
     \label{fig:hoge_snelheid_verspanen.png}
 \end{figure}
 
-Deze spindles gaan tot 20,000 tot 30,000 RPM afhankelijk van het materiaal dat
-je verspaand.
+Deze spindels gaan tot 20.000 à 30.000 omw/min, afhankelijk van het materiaal dat je verspaant.
 
 Herinner je bij algemeen verspanen~\ref{chap:Algemeen verspanen} dat bij heel hoge
 snijsnelheden je een \textbf{Softening effect} had die het makkelijker maakte om te verspanen.
 Je werkmateriaal wordt warmer en daarom ductieler.
 
-Bij hoge snelheid verspanen zie je dit effect ook terugkomen.
-Alle warmte die ook gegenerateerd wordt gaan ook in
-de spanen en gaan dus niet in het werkstuk defunderen en het oppervlakte aantasten.
-\textit{Je moet dit effect al kennen in de figuur \ref{verschillende_invloeden_voeding_snedediepte}.}
+Bij hogesnelheidsverspanen zie je dit effect ook terugkomen.
+De warmte die gegenereerd wordt, gaat grotendeels mee in de spaan: die wordt zo snel afgevoerd dat de
+warmte niet de tijd krijgt om in het werkstuk te diffunderen en het oppervlak aan te tasten.
+\textit{Dit effect ken je al uit figuur~\ref{verschillende_invloeden_voeding_snedediepte}.}
 
 \textbf{Toepassingen:}
 \newline
-Je wilt enorm snel verspanningen doen.
-Je moet dus je voeding $f$ en snijsnelheid $v_c$ enorm hoog zetten.
-Deze techniek wordt vooral gebruikt bij aluminium en lichte metalen.
+Je wilt enorm snel materiaal wegnemen.
+Je zet dus je voeding $f$ en je snijsnelheid $v_c$ enorm hoog.
+Deze techniek wordt vooral gebruikt bij aluminium en andere lichte metalen.
 \newline
-De tools zijn van hardmetaal gemaakt die ductiel genoeg zijn om de krachten te weerstaan.
+De gereedschappen zijn van (gecoat) hardmetaal: hard genoeg om hun snijkant te behouden bij de
+hoge temperaturen die daarbij optreden.
 
 
 \subsection{Hardverspanen}
@@ -1996,22 +2001,23 @@ Je moet een negatieve spaanhoek $\gamma$ gebruiken die meer kracht vraagt omdat 
 afschuifhoek $\phi$ kleiner wordt.
 Als compensatie gebruik je kleine snededieptes om de krachten te beperken.
 
-Nieuwe harde beitels en stevige machines die de hevige drukken aankan zorgt ervoor dat
-hardverspanen niet eeuwig duurt.
+Nieuwe, harde beitels en stijve machines die de hoge krachten aankunnen, maken hardverspanen
+op een aanvaardbare tijd mogelijk. Zo vervangt het in veel gevallen het veel tragere slijpen.
 
 \section{Hybrideprocessen}
-hybride processen is een ruim domein waarbij je verschillende technieken toepast om
-werkstukken te verspanen.
+Hybride processen vormen een ruim domein waarbij je verschillende technieken combineert om
+werkstukken te bewerken.
 Je gaat dus twee technieken toepassen om bijvoorbeeld dingen makkelijker te verspanen
 of om betere oppervlaktekwaliteit te krijgen.
 
 Dit zijn vooral experimentele technieken die nog in ontwikkeling zijn.
 
-\subsection {Laserondersteuning bij verspanen}
-Je warmt het materiaal op met een laser. Het oppervlakte wordt warmer
-en dus makkelijker om te verspanen.
+\subsection{Laserondersteuning bij verspanen}
+Je warmt het materiaal vlak voor de beitel op met een laser. Het oppervlak wordt warmer
+en dus ductieler, waardoor het makkelijker te verspanen is.
 
-Het is energie efficient omdat het warmere materiaal minder kracht kost om te verspanen.
+Het is energie-efficiënt: de laser kost energie, maar het warmere materiaal vraagt zoveel minder
+snijkracht dat je er netto op wint (en je gereedschap gaat langer mee).
 
 \begin{figure}[ht]
     \centering
@@ -2021,23 +2027,25 @@ Het is energie efficient omdat het warmere materiaal minder kracht kost om te ve
 \end{figure}
 \FloatBarrier
 
-Het bepaal materiaal dat je moet gebruiken moet licht absorberen.
-Je wilt geen of zo weinig mogelijk reflectie of transmissie.
+Het materiaal moet het laserlicht wel goed \emph{absorberen}.
+Je wilt zo weinig mogelijk reflectie en transmissie.
 
-\frm{Wat er gebeurt met licht die schijnt op een materiaal}
-{1 = A + R + T}{waarbij $A$ = absorptie, $R$ = reflectie en $T$ = transmissie}
+\frm{Energiebalans van licht op een materiaal}
+{1 = A + R + T}{waarbij $A$ de absorptie is [-], $R$ de reflectie [-] en $T$ de transmissie [-].
+    Alle drie zijn fracties van het invallende vermogen, dus ze tellen altijd op tot 1.}
 \vspace{0.5cm}
 
 \subsection{Draadvonken en slijpen}
 \textit{(je ziet meer over draadvonken in een ander hoofdstuk)}
-Het vonkproces is een thermisch proces. Je gaat eerst een stukje thermisch wegnemen. Bij normaal draadvonken
-blijft een stuk gesmoleten materiaal achter op het oppervlakte maar door het slijpen ga je dit stuk wegnemen.
+Het vonkproces is een thermisch proces: je neemt eerst materiaal weg met vonken.
+Bij normaal draadvonken blijft er een laagje hergestold materiaal (de witte laag) op het oppervlak achter;
+door daarna te slijpen neem je die laag weg.
 
 \subsection{ECM (Electro Chemical Machining) en slijpen}
 Bij ECM ga je materiaal wegnemen door elektrochemische reacties.
 Je hebt een anode en kathode die in een elektrolyt zitten.
-Dit chemisch proces laat een ruw oppervlakte achter en oxidelagen.
-Door het slijpen ga je dit ruw oppervlakte verbeteren en die laag verwijderen.
+Dit chemische proces laat een ruw oppervlak en oxidelagen achter.
+Door daarna te slijpen verbeter je dat oppervlak en verwijder je die laag.
 
 \subsection{Combinatie van ECM en frezen}
 Je gaat frezen combineren met ECM.
@@ -2063,8 +2071,8 @@ De chemische bewerkingen laten een oxidelaag achter die je met frezen gaat verwi
 
 Slijpen is een verspaningstechniek waarbij een roterend schijfvormig gereedschap,
 de slijpschijf, wordt gebruikt om materiaal van een werkstuk te verwijderen.
-Verspannen gebeurt door een slijpsteen die kleine deeltjes materiaal \textbf{Snijkorrels} van het werkstuk afneemt.
-Dit oppervlakte is onbepaald en dus is de geometrie niet gekent.
+Het verspanen gebeurt door een slijpsteen waarvan de \textbf{snijkorrels} kleine deeltjes materiaal van het werkstuk afnemen.
+De korrels liggen willekeurig georiënteerd, dus de snijgeometrie ligt niet vast: we spreken van een \emph{onbepaalde} snijkant.
 
 De snijkorrels kunnen oftewel vrij liggen of gebonden zijn in een matrix.
 
@@ -2073,9 +2081,9 @@ De snijkorrels kunnen oftewel vrij liggen of gebonden zijn in een matrix.
     \item \textbf{Leppen}: korrels in een pasta om zeer nauwkeurige oppervlakken te verkrijgen.
     \item \textbf{Stralen}: korrels in een straal om vuil of roest te verwijderen.
 \end{itemize}
-Je kunt dus korrels door het werkstuk sturen om het oppervlaktekwaliteit te verbeteren.
+Je stuurt de korrels dus langs het werkstuk om de oppervlaktekwaliteit te verbeteren.
 
-Korrel kunnen ook gebonden zijn in een matrix.
+Korrels kunnen ook gebonden zijn in een matrix.
 
 \textbf{Gebonden snijkorrels:} korrels die vastzitten in een matrixmateriaal. Voorbeelden:
 \begin{itemize}
@@ -2085,11 +2093,13 @@ Korrel kunnen ook gebonden zijn in een matrix.
 \end{itemize}
 
 
-\subsection{Frezen met onbepaalde snijkanten}
-Bij slijpen heb je een grote negatieve \textbf{Spaanhoek} wat het moeilijker maakt om te verspanen.
-De krachtwerking is dus veel hoger. Maar je \textbf{Snedediepte} is veel kleiner dus die combenseren elkaar.
+\section{Slijpen als frezen met onbepaalde snijkanten}
+Bij slijpen heeft elke korrel een sterk \textbf{negatieve spaanhoek}, wat het verspanen op zich moeilijker maakt:
+de kracht \emph{per volume-eenheid} afgenomen materiaal ligt veel hoger dan bij frezen.
+Maar de \textbf{snedediepte} per korrel is zó klein (micrometers) dat de kracht per korrel toch beperkt blijft.
+Die twee compenseren elkaar.
 
-Een slijpsteen kun je definieren als een frees met onbepaalde snijkanten.
+Je kunt een slijpsteen dus zien als een frees met heel veel, heel kleine, onbepaalde snijkanten.
 \newline
 
 \begin{figure}[htbp]
@@ -2102,33 +2112,35 @@ Een slijpsteen kun je definieren als een frees met onbepaalde snijkanten.
 De korrel hier heeft een enorm negatieve spaanhoek. De spaanvorming is enorm klein maar omdat de korrels
 zo klein en hard zijn kun je zelfs heel harde materialen slijpen.
 \newline
-\subsection{Eigenschappen van slijpen}
+\section{Eigenschappen van slijpen}
 \begin{enumerate}
-    \item \textbf{Snijsnelheid $v_c$}: De snelheid is ongeveer 25 tot 60 m/s, Heel hoge snelheden.
+    \item \textbf{Snijsnelheid $v_c$}: ongeveer 25 tot 60 m/s, dus heel hoge snelheden (vergelijk: draaien zit rond 1--5 m/s).
     \item \textbf{Krachten $F_c$}: De krachten zijn hoog door de negatieve spaanhoek en omdat je harde materialen kunt slijpen.
     \item \textbf{Warmteontwikkeling}: Veel energie gaat verloren als warmte, slijpen kan aan het oppervlakte een temperatuur van \textbf{800 tot 900°C} veroorzaken.
           Dit kan leiden tot thermische beschadiging van het werkstuk. Je hebt dus materiaalveranderingen aan het oppervlakte.
           Intensieve koeling is dus nodig.
     \item \textbf{Snedediepte $a$}: Zeer kleine snededieptes, typisch in de orde van micrometers.
     \item \textbf{Slijtage van de slijpkorrel}: Slijpkorrels worden bot en vallen er dan af.
-          Je moet de slijpschijf dus regelmatig vernieuwen of terug op maat brengen. Je neemt dan een stuk van het oppervlakte af.
-          Dit noemt \textbf{dressing}.
+          Je moet de slijpschijf dus regelmatig terug scherp en op maat brengen door een laagje van het
+          steenoppervlak af te nemen. Dat noemen we \textbf{dresseren} (dressing).
     \item \textbf{Oppervlaktekwaliteit}: Slijpen kan zeer fijne oppervlakteafwerkingen bereiken, vaak in de orde van enkele micrometers $R_a$.
-    \item \textbf{Nauwkeurigheid}: Slijpen gaat op machine die enorm stevig zijn en dus niet veel bewegen tijdens het slijpen.
+    \item \textbf{Nauwkeurigheid}: Slijpen gebeurt op machines die enorm stijf zijn en dus nauwelijks meegeven tijdens het slijpen.
           Hierdoor kun je zeer nauwkeurige afmetingen bereiken.
-    \item \textbf{Toepassingen}: Slijpen kan toegapast worden op zelfs zeer harde materialen zoals gehard staal, keramiek en zelfs diamant.
+    \item \textbf{Toepassingen}: Slijpen kan toegepast worden op zeer harde materialen zoals gehard staal en keramiek.
 \end{enumerate}
 
-\subsection{Parameters slijpsteen}
+\section{Parameters slijpsteen}
 
-\begin{itemize}
-    \item \textbf{Korrelgrootte}: Grotere korrels
-          verwijderen materiaal sneller maar geven een ruwere afwerking; kleinere korrels geven een fijnere afwerking.
-    \item korrelgrote
-    \item \textbf{Bindmiddel}: Het materiaal dat de korrels bij elkaar houdt, beïnvloedt de slijpsteen's hardheid en duurzaamheid.
-    \item Hardheid van de slijpsteen: Hardere slijpstenen zijn duurzamer maar kunnen ook sneller de korrels verliezen.
-    \item Structuur
-\end{itemize}
+Een slijpsteen wordt gekarakteriseerd door vijf eigenschappen:
+\begin{enumerate}
+    \item \textbf{Korrelmateriaal}: waaruit de korrels zelf bestaan (korund, siliciumcarbide, CBN, diamant).
+    \item \textbf{Korrelgrootte}: grotere korrels verwijderen sneller materiaal maar geven een ruwere afwerking;
+          kleinere korrels geven een fijnere afwerking.
+    \item \textbf{Hardheid van de slijpsteen}: hoe stevig het bindmiddel de korrels vasthoudt. Een ``harde'' steen
+          houdt de korrels lang vast, een ``zachte'' laat ze sneller los.
+    \item \textbf{Bindmiddel}: het materiaal dat de korrels bij elkaar houdt (keramisch, kunsthars, metaal, rubber).
+    \item \textbf{Structuur}: het volumeaandeel poriën tussen de korrels, waar de spanen in kunnen.
+\end{enumerate}
 
 \begin{figure}[ht]
     \centering
@@ -2136,49 +2148,49 @@ zo klein en hard zijn kun je zelfs heel harde materialen slijpen.
     \caption{Doorsnede van een slijpschijf}
     \label{fig:slijpsteen doorsnede.png}
 \end{figure}
-\subsubsection{Korrelmateriaal}
-\textbf{Natuurlijke korrels} zijn kwarts, korundum en diamant.
+\subsection{Korrelmateriaal}
+\textbf{Natuurlijke korrels} zijn kwarts, korund en (natuurlijk) diamant.
 \newline
-\textbf{Kunstmatige korrels} zijn siliciumcarbide en aluminiumoxide.
-\subsubsection{Korrelgroot}
-De korrelgrootte bepaald hoeveel je kunt afnemen.
-Grote korrels $\to$ meer afnemen maar je oppervlaktekwaliteit is slechter.
-Kleine korrels $\to$ minder afnemen maar je oppervlaktekwaliteit is beter.
+\textbf{Kunstmatige korrels} zijn siliciumcarbide, aluminiumoxide, kubisch boornitride (CBN) en synthetisch diamant.
+\subsection{Korrelgrootte}
+De korrelgrootte bepaalt hoeveel je kunt afnemen.
+Grote korrels $\to$ meer afname, maar slechtere oppervlaktekwaliteit.
+Kleine korrels $\to$ minder afname, maar betere oppervlaktekwaliteit.
 \newline
-Korrelgrootte wordt aangegeven door mazen per $\text{mm}^2$.
+De korrelgrootte wordt aangegeven met een \emph{meshnummer}: het aantal mazen per inch van de zeef
+waarmee de korrels gesorteerd worden. Een hoger meshnummer betekent dus \emph{fijnere} korrels.
 
-\subsection{Hardheid van de slijpsteen}
+\section{Hardheid van de slijpsteen}
 
 \begin{conceptbox}[Slijpverhouding (G-ratio)]
     De slijpverhouding $G$ wordt gedefinieerd als het volume verwijderd materiaal gedeeld door het volume verloren slijpsteen. Een hoge $G$-waarde duidt op een efficiënt proces waarbij weinig gereedschapsslijtage optreedt.
     \[ G = \frac{V_{verwijderd}}{V_{steen}} \]
 \end{conceptbox}
 
-De hardheid is de sterkte van de korrels.
-De slijpverhouding
-\[G = \frac{\text{volume verspaand materiaal}}{\text{volume slijpschijf per tijdseenheid}}\]
-Een grote $G$ kan je veel materiaal afnemen tegenover hoeveel slijpschijf je verliest.
-een kleine $G$ betekent dat je veel slijpschijf verliest tegenover hoeveel materiaal je afneemt.
+De hardheid van een slijpsteen slaat niet op de hardheid van de korrels zelf, maar op hoe stevig het
+bindmiddel ze vasthoudt. Ze wordt gemeten via de slijpverhouding:
+\[G = \frac{\text{volume verspaand werkstukmateriaal}}{\text{volume verloren slijpschijf}}\]
+Bij een grote $G$ neem je veel materiaal af tegenover weinig schijfverlies.
+Bij een kleine $G$ verlies je veel slijpschijf voor weinig afname.
 
-Als je een hard materiaal hebt moet je een zacht slijpsteen gebruiken. Dit lijkt eerst tegenstrijdig.
-Maar bij harde materialen worden de korrels snel bot.
-Je wilt dus dat de korrels er snel afvallen zodat er nieuwe scherpe korrels bloot komen te liggen.
-
-Je hebt dan een nieuwe \textbf{dressing.}
-\subsubsection{Bindmiddel}
+Bij een hard werkstukmateriaal moet je een \emph{zachte} slijpsteen gebruiken. Dat lijkt eerst tegenstrijdig,
+maar bij harde materialen worden de korrels snel bot.
+Je wilt dus dat botte korrels er vanzelf uitvallen zodat er nieuwe, scherpe korrels blootkomen.
+Dat heet \textbf{zelfscherpend} gedrag: de steen dresseert zichzelf en je moet minder vaak manueel dresseren.
+\subsection{Bindmiddel}
 Het bindmiddel houdt de korrels bij elkaar.
-een paar voorbeelden zijn keramisch klei, mineralen, metaal en elastische materialen.
+Een paar voorbeelden zijn keramiek (klei), mineralen, metaal, kunsthars en elastische materialen.
 
-Bijvoorbeeld bij pasta slijpen word een elastisch bindmiddel zodat de korrels overal op het werkstuk kunnen bewegen.
-We spreken dan niet van een slijpverhouding $G$ omdat die niet relevant is
+Bij pastaslijpen gebruikt men bijvoorbeeld een elastisch bindmiddel, zodat de korrels zich naar het werkstuk
+kunnen schikken. We spreken daar niet van een slijpverhouding $G$, omdat die daar niet relevant is.
 
-\subsubsection{Structuur}
-De grote van de porien in verhouding tot het volumeaandeel bindmiddel en korrels.
-Die porien zijn belangrijk. Die zijn kleine openingen tussen de korrels.
-Stukjes spaan gaan in die porien. De poriegrootte moet je aanpassen afhankelijk van de operatie en het contacttijd van de slijpschijf op het werkstuk.
+\subsection{Structuur}
+De structuur is de grootte van de poriën in verhouding tot het volumeaandeel bindmiddel en korrels.
+Die poriën zijn de kleine openingen tussen de korrels, en ze zijn belangrijk: de spaantjes moeten erin passen.
+Zitten ze vol, dan snijdt de steen niet meer en wrijft ze alleen nog (``dichtsmeren'').
+De poriegrootte kies je dus afhankelijk van de bewerking en van de contacttijd tussen slijpschijf en werkstuk.
 
-
-\textbf{Met al deze dingen kunnne een slijpsteen karateriseren.}
+\textbf{Met al deze eigenschappen kun je een slijpsteen karakteriseren.}
 
 \begin{examenbox}
     Weten dat alle factoren hieronder
@@ -2195,7 +2207,7 @@ Stukjes spaan gaan in die porien. De poriegrootte moet je aanpassen afhankelijk 
 
 \section{Temperaturen bij slijpen}
 
-$70{\%}$ van de energie die je inbrengt bij het slijpen gaat verloren als warmte.
+Ongeveer $70\%$ van de energie die je bij het slijpen inbrengt, komt als warmte in het werkstuk terecht.
 Dit kan leiden tot thermische beschadiging van het werkstuk.
 Je moet oppassen voor:
 \begin{itemize}
@@ -2227,16 +2239,16 @@ Je moet dus voldoende koelen of nog een laatste warmtebehandeling doen na het sl
 Profielslijpen is slijpen van een bepaald profiel. Je slijpsteen heeft dus een gewenste vorm,
 waar je het werkstuk mee slijpt.
 
-Je kunt heel preciese tandwielen maken door profielslijpen. Je slijpt
-de tandwielen met een slijpsteen die de vorm van de tand heeft.
+Je kunt heel precieze tandwielen maken met profielslijpen: je slijpt de tandholtes met een slijpsteen
+die exact de vorm van de tandholte heeft.
 
-\textit{Tip, is hij niet veel op ingegaan.}
+\textit{Tip: hier is hij niet veel op ingegaan.}
 
 
 \section{De slijpmachine}
-Slijpmachines zijn enorm stijve machines omdat je enorm
-je snedediepte enorm klein is kan kleine bewegingen ervoor zorgen dat je ineens niet meer slijpt.
-Je moet dus in orde van micrometer werken.
+Slijpmachines zijn enorm stijf. Omdat je snedediepte maar enkele micrometers bedraagt, kan de kleinste
+uitwijking of trilling ervoor zorgen dat je ineens niet meer snijdt, of net veel te diep gaat.
+Je werkt dus in de orde van micrometers, en dan telt elke doorbuiging mee.
 
 \subsection{Centerloos slijpen}
 Centerloos slijpen is een slijptechniek waarbij het werkstuk niet wordt vastgehouden door een as of klem,
@@ -2372,13 +2384,14 @@ Bij een vonkerosie-opstelling (zoals in \cref{fig:vonkerosie_proces.png}) zijn d
 
 Je benedenplaat wordt \textbf{negatief geladen} en de elektrode \textbf{positief}.
 Er is dan een puls van \textbf{discharge} die een stukje materiaal wegneemt.
-\textbf{Pulsen} hebben een \textbf{frequentie} tussen de 100khz tot 1Mhz.
+\textbf{Pulsen} hebben een \textbf{frequentie} tussen ongeveer \SI{100}{kHz} en \SI{1}{MHz}.
 Je genereert dan veel discharges die opbouwen zodat je lijnen stap per stap kunt wegnemen.
 \newline
 De afstand tussen de elektrode en het werkstuk is enorm klein maar enorm belangrijk.
-Moest de elektrode op het werkstuk komen, dan zou er een \textbf{kortsluiting} zijn.
+Raakt de elektrode het werkstuk, dan krijg je \textbf{kortsluiting} en stopt het vonken.
 \newline
-De \textbf{spaanvorming} is bolvormig.
+De weggenomen deeltjes zijn \textbf{bolvormig}: het gesmolten metaal wordt de vloeistof in geslingerd
+en stolt daar tot kleine bolletjes.
 \newline
 De pulsenergie wordt gegeven door de formule
 \frm{Pulsenergie tijdens vonkfrezen}{W_e = \int_0^{t_e} U_e I_e \, dt}{waarbij $W_e$ de pulsenergie is [\si{J}], $U_e$ de doorslagspanning [\si{V}], $I_e$ de stroom [\si{A}] en $t_e$ de pulstijd [\si{s}].}
@@ -2472,18 +2485,18 @@ Het vonkproces verloopt in drie cyclische fases die zich duizenden keren per sec
 
 \section{Performance van EDM}
 
-De materiaal afnamen (material removal rate, MMR) gaat over cubische centimeter per minuut.
-Deze materiaalafname is veel lager dan bij spanen.
+De materiaalafname (material removal rate, MRR) wordt uitgedrukt in kubieke centimeter per minuut.
+Ze ligt veel lager dan bij verspanen; dat is meteen het grootste nadeel van EDM.
 \newline
-Gereedsschap slijtage is ook een probleem bij EDM. Ratio
-\frm{Gereedschapslijtage bij EDM}{\vartheta = \frac{\text{Volume gereedschap versleten}}{\text{Volume werkstuk verspaand}}}{waarbij $\vartheta$ de relatieve slijtage is [-]. Deze is typisch tussen $1\%$ en $5\%$.}
+Ook gereedschapsslijtage is een probleem bij EDM. We drukken die uit als een verhouding:
+\frm{Gereedschapsslijtage bij EDM}{\vartheta = \frac{V_{\text{elektrode}}}{V_{\text{werkstuk}}}}{waarbij $\vartheta$ de relatieve slijtage is [-], $V_{\text{elektrode}}$ het versleten volume van de elektrode [\si{mm^3}] en $V_{\text{werkstuk}}$ het weggenomen volume van het werkstuk [\si{mm^3}]. Typisch tussen $1\%$ en $5\%$.}
 De oppervlaktekwaliteit $R_a$ is afhankelijk van je settings. Je kunt afhankelijk van de stroom die je gebruikt andere oppervlaktekwaliteit krijgen.
 \newline
 \textbf{Hoge energie -> hoge materiaalafname maar slechte oppervlaktekwaliteit.}
 \textbf{Lage energie -> lage materiaalafname maar goede oppervlaktekwaliteit.}
 \newline
-Je kunt ook een \textbf{harde warmte aangetaste zone} krijgen aan het oppervlakte.
-Dit is een zone die thermisch veranderd is door de hitte van de vonk.
+Je krijgt ook een harde \textbf{thermisch aangetaste zone (TAZ)} aan het oppervlak:
+een laag die door de hitte van de vonk van structuur veranderd is.
 
 \begin{figure}[ht]
     \centering
@@ -2493,20 +2506,20 @@ Dit is een zone die thermisch veranderd is door de hitte van de vonk.
 \end{figure}
 \FloatBarrier
 
--> deze zone warmt op en stolt dan terug. Het oppervlakte krijgt hierdoor microscheuren.
-Dit is enorm slecht voor het oppervlakte. Deze moeten weggewerkt worden door te slijpen of frezen. Zie hybrideprocessen.
+$\rightarrow$ Deze zone smelt op en stolt daarna razendsnel terug. Daardoor ontstaan er microscheuren in het oppervlak.
+Dat is slecht voor de vermoeiingssterkte; de laag moet weggewerkt worden door te slijpen of te frezen (zie hybrideprocessen).
 
 \section{Spleetregeling}
-De grootte van de spleet hangt af van de tijd van de opbouw td.
-Hoe langer hoe groter de spleet.
-Als deze te lang is en je gasbel blijft groeien betekent dat je afstand te groot is.
-Als deze te klein is krijg je kortsluiting.
+De grootte van de spleet hangt af van de ontsteekvertraging $t_d$: de tijd tussen het aanleggen van de
+spanning en het doorslaan van de vonk. Hoe groter de spleet, hoe langer $t_d$.
+Is $t_d$ te lang, dan staat de elektrode te ver en komt er geen vonk meer.
+Is de spleet te klein, dan krijg je kortsluiting.
 Je moet dus een goede regeling hebben die de afstand tussen elektrode en werkstuk regelt.
 \newline
 Door $t_d$ te meten kun je de afstand regelen.
 \newline
 Vroeger werd dat handmatig gedaan maar nu gebeurt dat automatisch met computers.
-\subsection{Electodemateriaal}
+\subsection{Elektrodemateriaal}
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.8\textwidth]{assets/image65.png}
@@ -2514,7 +2527,7 @@ Vroeger werd dat handmatig gedaan maar nu gebeurt dat automatisch met computers.
     \label{fig:image65.png}
 \end{figure}
 
-Je wilt een materiaal die Erosievast is zodat je elektrode minder snel slijt. Gegeven met deze formule:
+Je wilt een materiaal dat erosievast is, zodat je elektrode minder snel slijt. Dat drukken we uit met:
 \frm{Erosievastheid van elektrode (schematische benadering)}
 {E = \lambda \cdot \rho \cdot c \cdot T_m}
 {waarbij $E$ de erosievastheid is [\si{J^2 \cdot s^{-1} \cdot m^{-4} \cdot K}], \(\lambda\) de warmtegeleidingscoëfficiënt [\si{W/(m.K)}], \(\rho\) de massadichtheid [\si{kg/m^3}], \(c\) de soortelijke warmte [\si{J/(kg.K)}] en \(T_m\) de smelttemperatuur [\si{K}].}
@@ -2533,9 +2546,10 @@ Je wilt een materiaal die Erosievast is zodat je elektrode minder snel slijt. Ge
 \end{figure}
 \FloatBarrier
 
-Dikkere lijnen zijn grotere elektrodeslijtage. Bij kortere pulsen heb je grotere slijtage.
-Dit komt omdat je de elektronen nog in het diëlektricum zitten terwijl de vonk gebeurt. Er zijn dus meer negatieve
-ionen die op de elektrode botsen en materiaal wegnemen.
+Dikkere lijnen betekenen grotere elektrodeslijtage. Bij kortere pulsen heb je meer slijtage.
+Dat komt omdat elektronen veel lichter zijn dan ionen: bij het begin van de puls zijn zij als eerste op snelheid
+en bombarderen ze de \emph{anode}. Pas bij langere pulsen krijgen de zware, trage ionen de tijd om de kathode
+te bereiken. Korte pulsen belasten dus vooral de positieve elektrode.
 
 \section{Toepassingen}
 \begin{itemize}
@@ -2565,26 +2579,24 @@ ionen die op de elektrode botsen en materiaal wegnemen.
 \end{figure}
 \FloatBarrier
 
-Zinkvonken gebeurt een geleidend profiel die in het werstuk verzonken wordt.
-Je moet de spanen uit het diëlektricum spoelen zodat het diëlektricum niet begint te geleiden.
-Je kunt dus het inverse profiel maken van de elektrode in het werkstuk.
+Bij zinkvonken laat je een geleidend profiel (de elektrode) langzaam in het werkstuk zakken.
+Je moet de erosiedeeltjes voortdurend uit het diëlektricum spoelen, anders begint dat te geleiden
+en krijg je ongecontroleerde ontladingen.
+Je maakt zo het \emph{inverse} profiel van de elektrode in het werkstuk.
 
-Je kunt ook enorm kleine delen maken rond de 6 micrometer. Zolang dat de elektrode ook die grote heeft kan je dat maken.
+Je kunt er ook enorm kleine details mee maken, tot rond \SI{6}{\micro m}, zolang je de elektrode
+zelf op die maat kunt maken.
 
 
 \subsection{Draadvonkerosie}
-Je moet eerst via een gat maken in het werkstuk via zinkvonken of een ander process. Je kunt dan je draad door dat gat steken.
-Je kunt dan op het oppervlakte zagen met die draad.
+Voor een inwendige contour moet je eerst een startgat maken in het werkstuk, met zinkvonken of met boren.
+Daar steek je de draad door, en dan zaag je met die draad je contour.
 
-Draadvonken mag geen lange pulsen hebben omdat de draad zo klein is, anders zou je elektrode smelten. Dus je moet werken met korte pulsen in de megahertz range.
-Maar kortere pulsen eroderen de elektrode sneller, zie de figuur hierboven.
-Wat je kunt doen is de polariteit omdraaien
-zodat je alleen met elektronen erodeerd en niet met ionen.
-Zo beschadig je de draad minder.
-
-\subsection{Vonkerosie Milling}
-Je hebt een ronde elektrode die ronddraait en zo materiaal weghaalt.
-
+Draadvonken verdraagt geen lange pulsen: de draad is zo dun dat hij anders zelf zou smelten.
+Je werkt dus met heel korte pulsen, hoog in het frequentiebereik.
+Maar kortere pulsen eroderen de elektrode juist sneller (zie de figuur hierboven).
+De oplossing is de polariteit om te draaien, zodat het elektronenbombardement op het \emph{werkstuk}
+terechtkomt en niet op de draad. Zo beschadig je de draad minder.
 
 \subsection{WEDG}
 \textbf{Wire Electro Discharge Grinding}
@@ -2596,15 +2608,16 @@ Je hebt een elektrode die de vorm heeft van wat je wilt maken.
 Je laat die elektrode naar beneden zakken en zo maak je een caviteit in het werkstuk.
 \subsection{Milling EDM}
 Je hebt een ronde elektrode die ronddraait en zo materiaal weghaalt.
-\subsection{Planteair Vonken}
-Je gaat je elektrode laten ronddraaien en zo grotere caviteiten maken als de elektrode zelf is.
-\subsection{Contour Vonken}
-Via NC sturing kan je heel kleine dingen maken zoals matrijzen voor kleine tandwielen.
-Enorm veel microbewerkignen kunnen zo gemaakt worden.
+\subsection{Planetair vonken}
+Je laat de elektrode een kleine cirkelbeweging maken, zodat je een caviteit krijgt die \emph{groter}
+is dan de elektrode zelf. Handig om met één elektrode zowel te ruwen als te finishen.
+\subsection{Contourvonken}
+Via NC-sturing kun je heel kleine dingen maken, zoals matrijzen voor kleine tandwielen.
+Enorm veel microbewerkingen kunnen zo gemaakt worden.
 
 \belangrijk{Belangrijk}
-Vonkerosie zet geen enkele kracht op het werkstuk.
-De materialen waar je mee moet werken moeten wel elektrisch geleidend zijn. Lager dan <100$\Omega$cm.
+Vonkerosie zet geen enkele mechanische kracht op het werkstuk.
+De materialen moeten wel elektrisch geleidend zijn: een soortelijke weerstand lager dan ongeveer $100\,\Omega\,$cm.
 
 \begin{figure}[htbp]
     \centering
@@ -2617,9 +2630,9 @@ De materialen waar je mee moet werken moeten wel elektrisch geleidend zijn. Lage
 \subsection{Vonken van keramieken}
 
 \begin{figure}[htbp]
-    \centering	\centering
+    \centering
     \includegraphics[width=0.2\textwidth]{assets/image71.png}
-    \caption{Ruw oppervlak met scheuren door spoiling bij keramieken}
+    \caption{Ruw oppervlak met scheuren door spalling bij keramieken}
     \label{fig:vonken_keramieken.png}
 \end{figure}
 \FloatBarrier
@@ -2635,12 +2648,14 @@ onder hoge temperatuur en druk samengeperst tot een solide massa.
 Door dit proces ontstaat een intern netwerk van geleidende paden,
 waardoor de elektrische weerstand voldoende daalt (typisch < $100\,\Omega\text{cm}$) om het vonkproces mogelijk te maken.
 
-Wat kan gebeuren als je dit gaat vonkfrezen is dat je scheuren gaat krijgen in het oppervlakte van het
-keramiek. Keramieken zijn bros en dus die hitte kan ervoor zorgen dat er scheuren ontstaan.
-Als er nog eens op gevonkt wordt kunnen er stukken afbreken. We noemen dit \textbf{Spoling}.
+Wat er kan gebeuren als je hierop gaat vonken, is dat er scheuren ontstaan in het oppervlak van het keramiek.
+Keramiek is bros, dus de thermische schok van de vonk doet het barsten.
+Wordt er dan nóg eens op dezelfde plek gevonkt, dan breken er stukjes af. Dat noemen we \textbf{spalling}
+(afschilferen).
 
-In de industrie zagen ze dat als ze probeerde keramieken accurater te maken met EDM dat ze enorm veel spoiling hadden.
-Je oppervlakte bij het proberen om het nauwkeuriger te maken werd alleen maar slechter.
+In de industrie stelde men vast dat juist de \emph{fijne} instellingen, bedoeld om keramiek nauwkeuriger
+af te werken, het meeste spalling gaven: hoe meer men het oppervlak probeerde te verbeteren,
+hoe slechter het werd.
 
 \section{Elektrochemische bewerkingen}
 
@@ -2649,19 +2664,19 @@ Je oppervlakte bij het proberen om het nauwkeuriger te maken werd alleen maar sl
     In tegenstelling tot EDM is ECM een \keyterm{chemisch} proces zonder warmteontwikkeling of gereedschapsslijtage. Het werkstuk fungeert als anode en lost op in een geleidend elektrolyt.
 \end{conceptbox}
 
-Je neemt een werkstuk en een elektrode. Je gaat dat dompelenen in een elektrolytische vloeistof.
-Je laat het werkstuk en de elektrode contact hebben en laat dan een stroom lopen. Deze stromen zijn in orde
-50--1000A/cm$^2$.
+Je neemt een werkstuk en een elektrode en dompelt beide in een elektrolytische vloeistof.
+Je brengt de elektrode heel dicht bij het werkstuk (zonder contact) en laat er een stroom door lopen.
+De stroomdichtheden liggen in de orde van \SI{50}{A/cm^2} tot \SI{1000}{A/cm^2}.
 Het werkstuk is de anode en de elektrode is de kathode.
 Je beweegt het werkstuk stap voor stap naar beneden om materiaal chemisch te verwijderen.
 \newline
--> Je krijgt een \textbf{Electrolyse} reactie tussen de twee.
+$\rightarrow$ Je krijgt een \textbf{elektrolysereactie} tussen de twee.
 \newline
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.45\textwidth]{assets/.png}
     \includegraphics[width=0.45\textwidth]{assets/image72.png}
-    \label{fig:.png}
+    \caption{Principe van elektrochemisch bewerken: het werkstuk (anode) lost op in de elektrolyt.}
+    \label{fig:ecm_principe}
 \end{figure}
 De anode (het werkstuk) lost op in de elektrolyt door oxidatie.
 De kathode (de elektrode) blijft intact door reductie.
@@ -2689,12 +2704,12 @@ slijtage van de elektrode bij elektrochemisch bewerken.
 \begin{itemize}
     \item Heel goede oppervlaktekwaliteit (laag $R_a$)
     \item Geen gereedschapslijtage
-    \item geen beinvloede zone (geen TAZ), je oppervlakte is niet aangetast door iets
-    \item Niet super nauwkeurig door dat het elektrode meer afneemt dan de vorm van de elektrode (typisch rond $\pm (1.0 - 0.1) mm$)
-    \item Niet goed voor het milieu
+    \item Geen thermisch beïnvloede zone (geen TAZ): het oppervlak is niet aangetast
+    \item Niet super nauwkeurig: de caviteit wordt breder dan de elektrode zelf (typisch $\pm$ 0,1 tot 1,0 mm ``overcut'')
+    \item Niet goed voor het milieu: je houdt een elektrolyt vol metaalhydroxideslib over
 \end{itemize}
 
-Het naadeel is dat je meer materiaal gaat afnemen dan je de vorm van je werkstuk.
+Het nadeel is dus dat je meer materiaal wegneemt dan strikt de vorm van je elektrode.
 \begin{figure}[ht]
     \centering
     \begin{tikzpicture}
@@ -2742,27 +2757,27 @@ Het naadeel is dat je meer materiaal gaat afnemen dan je de vorm van je werkstuk
     \label{fig:ecm_overcut}
 \end{figure}
 
-Dit kan dus wel handig zijn bij zinkvonken. Het oppervlakte van vonkeroderen is een geharde laag door de opwarming
-en dan afkoeling van het materiaal.
-EMC kan dit wegnemen en een goede oppervlaktekwaliteit geven.
+Precies dat maakt ECM handig \emph{na} zinkvonken: vonkeroderen laat een geharde, gescheurde laag achter
+door het snel opwarmen en afkoelen van het materiaal.
+ECM neemt die laag weg en geeft een goede oppervlaktekwaliteit.
 Typische overcut-waarden bij ECM liggen tussen ongeveer 0,13 en 1,0 mm,
 bij micro-ECM zijn waardes rond 0,02 mm mogelijk.
 \newline
 
-\subsection{Afnamen bij ECM}
-\frm{Afnamesnelheid bij ECM MMR (material removal rate)}{MRR = \dfrac{I \cdot A}{F \cdot V}\cdot \eta}{waarbij $MRR$
+\subsection{Afname bij ECM}
+\frm{Afnamesnelheid bij ECM (MRR, material removal rate)}{MRR = \dfrac{I \cdot A}{F \cdot V}\cdot \eta}{waarbij $MRR$
 de afnamesnelheid is [\si{g/s}],
 $I$ de stroomsterkte [\si{A}], $A$ de atoommassa [\si{g/mol}], $V$ de valentie [-], $F$ de Faraday-constante
 (\(96485\,\mathrm{C/mol}\)) en $\eta$ de efficiëntie [-].}
 \begin{voorbeeld}[ECM — titaan]
-    Voorbeeld bij titaan: \(A=48\ \si{g/mol}\), \(V=3\), \(I=2000\ \si{A}\) en \(\eta=0.9\).
+    Voorbeeld bij titaan: \(A=48\ \si{g/mol}\), \(V=3\), \(I=2000\ \si{A}\) en \(\eta=0{,}9\).
     \[
         M_{\mathrm{ECM}}=\frac{I\cdot A}{F\cdot V}\cdot\eta
-        =\frac{2000\cdot48}{96485\cdot3}\cdot0.9\approx0.297\ \si{g/s}.
+        =\frac{2000\cdot48}{96485\cdot3}\cdot0{,}9\approx0{,}298\ \si{g/s}.
     \]
     Omrekenen naar \(\si{cm^3/min}\) met \(\rho_{\mathrm{Ti}}=4.51\ \si{g/cm^3}\):
     \[
-        \dot V=\frac{0.297\ \si{g/s}}{4.51\ \si{g/cm^3}}\cdot60\ \si{s/min}\approx3.95\ \si{cm^3/min}.
+        \dot V=\frac{0{,}298\ \si{g/s}}{4{,}51\ \si{g/cm^3}}\cdot60\ \si{s/min}\approx3{,}97\ \si{cm^3/min}.
     \]
 \end{voorbeeld}
 
@@ -2778,9 +2793,10 @@ Je kunt ECM gebruiken voor:
 
 
 \textbf{Afname zonder Stroom}
-Je zet een masker op het werkstuk zodat alleen de delen die je wilt bewerken blootgesteld zijn aan de elektrolyt.
-met je \textbf{Etsvloeistof} ga je de delen die dan geen masker hebben worden weggeërodeerd.
-Je gaat iets meer wegnemen dan wat je wilt langs de binnenkant. Dit noemt \textbf{ondersnijding}.
+Je zet een masker op het werkstuk zodat alleen de delen die je wilt bewerken blootliggen.
+De \textbf{etsvloeistof} vreet dan alleen de onbedekte delen weg; hier is dus geen stroom nodig.
+Omdat de etsvloeistof in alle richtingen even hard werkt, vreet ze ook zijdelings onder het masker.
+Dat noemen we \textbf{ondersnijding}.
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.4\textwidth]{assets/image75.png}
@@ -2788,17 +2804,16 @@ Je gaat iets meer wegnemen dan wat je wilt langs de binnenkant. Dit noemt \textb
     \label{fig:eroderen_etsvloeistof.png}
 \end{figure}
 
-De etstijd gaat bepalen hoeveel materiaal je wegneemt en de grote van de ondersnijding.
+De etstijd bepaalt hoeveel materiaal je wegneemt en dus ook hoe groot de ondersnijding wordt.
 
 
 
-\textbf{Fotoetsen} is een gelijkaardig proces. Dit wordt vooral toegepast op
-hele kleine delen. Je maskeert ook de oppervlakte met een laklaag.
-Je legt dan nog een deel van transparante en niet transparante laag op.
-UV-licht zal door de transparante laag gaan en de lak verwijderen.
-Je kunt deze patronen dan etsen met een etsvloeistof.
-Deze patronen kunnen enorm klein zijn, rond de micrometer.
-Dit wordt toepast in micro-elektronica.
+\textbf{Fotoetsen} is een gelijkaardig proces, maar dan voor heel kleine details.
+Je maskeert het oppervlak met een lichtgevoelige laklaag (fotoresist).
+Daarover leg je een masker met transparante en niet-transparante zones.
+UV-licht valt door de transparante zones en verandert daar de lak, zodat die weggespoeld kan worden.
+De blootgelegde patronen ets je dan weg met etsvloeistof.
+Die patronen kunnen enorm klein zijn, tot rond de micrometer; dit is de basis van de micro-elektronica.
 
 Net zoals bij normaal etsen krijg je ook ondersnijding waar je rekening mee moet houden.
 
@@ -2820,11 +2835,13 @@ Net zoals bij normaal etsen krijg je ook ondersnijding waar je rekening mee moet
 \end{wrapfigure}
 
 
-Ultrasoon bewerken is een bewerkingsproces waarbij hoge-frequentie trillingen worden gebruikt om materiaal van een werkstuk te verwijderen.
-Het proces maakt gebruik van een sonotrode die ultrasone trillingen (typisch tussen 20 kHz en 40 kHz) met een heel kleine amplitude genereert.
-De trillingen creeëren kleine scheurtjes op het materiaaloppervlak en dan wordt dat materiaal uitgebroken.
-Deze techniek werkt goed voor harde en bros materialen zoals keramiek, glas, en harde metalen omdat die niet
-goed tegen scheurtjes kunnen. Je hammert dus als het ware op het materiaal met die ultrasone trillingen.
+Ultrasoon bewerken is een bewerkingsproces waarbij hoogfrequente trillingen gebruikt worden om materiaal van een werkstuk te verwijderen.
+Het proces maakt gebruik van een sonotrode die ultrasone trillingen (typisch tussen \SI{20}{kHz} en \SI{40}{kHz})
+met een heel kleine amplitude genereert.
+Die trillingen slaan, via een suspensie van abrasieve korrels, microscheurtjes in het oppervlak,
+waarna er kleine deeltjes uitbreken.
+De techniek werkt goed voor harde en \emph{brosse} materialen zoals keramiek, glas en gehard staal,
+juist omdat die slecht tegen scheurtjes kunnen. Je hamert als het ware op het materiaal.
 
 Ductiele materialen zoals metalen zijn ook bewerkbaar:
 Door de enorm grote trillingen krijg je een \textbf{vermoeiingsproces} in het materiaal waardoor je ook materiaal kunt wegnemen.
@@ -2840,7 +2857,7 @@ Door de enorm grote trillingen krijg je een \textbf{vermoeiingsproces} in het ma
         \draw[blue, thick] (0.5,3.5) .. controls (1.5,1.5) and (3,0.8) .. (5.5,0.8);
 
         % Annotations
-        \node[blue, font=\scriptsize, anchor=west] at (1.5,2.5) {Breuk door vermoeiïng};
+        \node[blue, font=\scriptsize, anchor=west] at (1.5,2.5) {Breuk door vermoeiing};
         \draw[dashed] (0,0.8) -- (5.5,0.8) node[right, font=\scriptsize] {Vermoeiingsgrens};
 
         % Labels
@@ -2851,7 +2868,7 @@ Door de enorm grote trillingen krijg je een \textbf{vermoeiingsproces} in het ma
 \end{figure}
 \FloatBarrier
 
-Het gegreedschap is gemaakt van harde materialen zodat het niet snel slijt.
+Het gereedschap is gemaakt van taaie materialen zodat het niet snel slijt.
 Het wordt vooral toegepast op harde materialen die moeilijk te bewerken zijn met conventionele methoden.
 Je kunt ook een profiel maken van het gereedschap en dan dat profiel in het werkstuk maken.
 
@@ -2885,7 +2902,7 @@ door de inwendige spanningen die worden geïnduceerd.
 Je gebruikt een straal van abrasieve deeltjes (zoals zand)
 die met hoge snelheid op het oppervlak van een werkstuk worden gespoten.
 Dit wordt vaak gebruikt voor het \textbf{reinigen, ontroesten of matten} van oppervlakken.
-Het process werkt door de wet van bernoulli. (zie stromingen)
+Het proces werkt volgens de wet van Bernoulli (zie Warmte en stromingen).
 
 \textbf{Wet van Bernoulli}
 In een stromend fluïdum is de som van de drukenergie, kinetische energie en potentiële energie per eenheid volume constant langs een stroomlijn:
@@ -2895,15 +2912,15 @@ In een stromend fluïdum is de som van de drukenergie, kinetische energie en pot
 waarbij \(P\) de druk is, \(\rho\) de dichtheid van het fluïdum, \(v\) de stroomsnelheid, \(g\) de zwaartekrachtversnelling en \(h\) de hoogte boven een referentieniveau.
 
 
-Je deeltjes moeten hun kinetische energie kwijt kunnen op het oppervlakte.
-Ze nemen dus materiaal weg.
+De deeltjes moeten hun kinetische energie kwijt op het oppervlak; die energie gaat in het losslaan
+van kleine deeltjes materiaal.
 \subsection{Waterstraalsnijden}
-water wordt bij \textbf{4000 bar} door een kleine opening gepompt.
-Deze kracht is om materiaal te snijden.
-Je kunt hier dikke stukken materiaal mee wegsnijden.
+Water wordt bij \textbf{4000 bar} door een heel kleine opening gepompt.
+De straal die daaruit komt heeft zoveel kinetische energie dat hij materiaal wegsnijdt.
+Je kunt er dikke stukken mee doorsnijden.
 \newline
-Je hebt geen beinvloede zone, geen hitte dus geen TAZ (Thermisch Aangetaste Zone).
-Het is ook bruikbaar op andere industrieën zoals voedselindustrie.
+Er komt geen warmte aan te pas, dus je hebt geen thermisch aangetaste zone (TAZ).
+Daardoor is het ook bruikbaar in andere sectoren, zoals de voedingsindustrie.
 
 \begin{figure}[ht]
     \centering
@@ -2912,22 +2929,28 @@ Het is ook bruikbaar op andere industrieën zoals voedselindustrie.
     \label{fig:image76.png}
 \end{figure}
 
-Een extra mogelijk is het gebruik van ijsbollejes om opervlakte te reinigen inplaats van zand.
-Het ijs smelt gewoon weg en je moet geen zand opruimen.
+Een extra mogelijkheid is het gebruik van ijsbolletjes om oppervlakken te reinigen in plaats van zand.
+Het ijs smelt gewoon weg, dus je moet achteraf geen zand opruimen.
 
 \section{Laserstraalbewerking (LBM)}
-\subsection{Hoe werk een laser?}
-Een Laser is een geconcentreerde lichtbron die op één specifieke golflengte licht uitzendt met hoge intensiteit en coherentie.
+\subsection{Hoe werkt een laser?}
+Een laser is een geconcentreerde lichtbron die op één specifieke golflengte licht uitzendt,
+met hoge intensiteit en coherentie.
 
-\frm{Laser}{\textbf{L}ight \textbf{A}mplification by \textbf{S}timulated \textbf{E}mission of \textbf{R}adiation}{is een apparaat dat licht versterkt door gestimuleerde emissie van straling.}
-Voor een laser te maken wordt materiaal hun atomen naar een hogere energietoestand gebracht door energie toe te voeren \concept{pompproces}.
-Wanneer deze atomen terugvallen naar hun lagere energietoestand, zenden ze fotonen uit.
-Dit process noemt \concept{spontane emissie}.
+\begin{conceptbox}[LASER]
+    \textbf{L}ight \textbf{A}mplification by \textbf{S}timulated \textbf{E}mission of \textbf{R}adiation:
+    een apparaat dat licht versterkt door gestimuleerde emissie van straling.
+\end{conceptbox}
 
-Als deze fotonen andere aangeslagen atomen treffen,
-kunnen ze deze atomen stimuleren om ook fotonen uit te zenden
-die identiek zijn aan de oorspronkelijke fotonen (zelfde frequentie, fase en richting).
-Dit process noemt \concept{gestimuleerde emissie}.
+Om een laser te maken breng je de atomen van het lasermedium naar een hogere energietoestand
+door er energie in te pompen: het \concept{pompproces}.
+Wanneer die atomen terugvallen naar hun lagere energietoestand, zenden ze fotonen uit.
+Dat noemen we \concept{spontane emissie}.
+
+Als zo'n foton een ander aangeslagen atoom treft, kan het dat atoom stimuleren om óók een foton uit te zenden,
+identiek aan het eerste (zelfde frequentie, fase en richting).
+Dat noemen we \concept{gestimuleerde emissie}. Doordat het licht heen en weer kaatst tussen twee spiegels,
+wordt dit effect steeds versterkt.
 
 Het resultaat is een coherente en monochromatische lichtstraal met hoge intensiteit.
 
@@ -2976,12 +2999,12 @@ Classificatie van lasers:
 \begin{itemize}
     \item \textbf{Lasermedium:}
           gas, vast, vloeistof, halfgeleider
-    \item \textbf{Golfengte:}
+    \item \textbf{Golflengte:}
           infrarood, zichtbaar, ultraviolet
-    \item \textbf{Aard van uitgaande straal:}
-          continue, gepulst
+    \item \textbf{Aard van de uitgaande straal:}
+          continu of gepulst
     \item \textbf{Het vermogen:}
-          van lasers in miliwat tot multi-kilowatt
+          van milliwatt tot multi-kilowatt
     \item \textbf{Vorm lasercaviteit:}
           langwerpig, rond, ringvormig, fiber en disklasers
 
@@ -2989,14 +3012,15 @@ Classificatie van lasers:
           elektrisch, optisch
 \end{itemize}
 
-Lasers kunnen getransporteerd worden via lucht, glasvezel of spiegels.
-Glasvezels kunnen ook lasers exiteren in de kabel.
-Wanneer men spreekt over een fibrelaser betekent dat gewoon het medium die de laser doorbrengt.
+Laserlicht kan getransporteerd worden via lucht (met spiegels) of via glasvezel.
+Bij een \textbf{fiberlaser} is de glasvezel niet zomaar een transportkabel: de vezel zelf is het lasermedium,
+gedoteerd met bijvoorbeeld ytterbium. De laser wordt dus in de vezel opgewekt én erdoor geleid.
 
 \textbf{De golflengte $\lambda$} gaat je laser bepalen.
-Kleinere golflengtes zijn preciezer maar zijn ook duurder te maken.
-Vele lasertechnologie zijn recente ontwikkelingen (het jaar 2000).
-Een yag laser is recent en door de korte golflengte kan je preciezer werken.
+Kleinere golflengtes laten een kleiner focuspunt toe (dus preciezer werk) maar zijn duurder te maken.
+Veel lasertechnologie is recent (vanaf ongeveer het jaar 2000).
+Een Nd:YAG-laser ($\lambda \approx \SI{1,06}{\micro m}$) heeft een tienmaal kortere golflengte dan een
+CO$_2$-laser ($\lambda \approx \SI{10,6}{\micro m}$) en laat dus preciezer werk toe.
 
 Hieronder zijn alle relevante type lasers voor het bewerken van materialen:
 \begin{figure}[ht]
@@ -3020,10 +3044,13 @@ Je wilt zoveel mogelijk van de laserenergie laten absorberen door het werkstuk.
 $R+T+A=1$ met R = reflectie, T = transmissie en A = absorptie.
 Je wilt dus een hoge A hebben.
 
-In de figuur zie je dat bij staal dat 90 $\%$ van de CO2 laser wordt gereflecteerd. Niet zoals een YAG laser die maar 50 $\%$ reflecteert.
-Hoe ze dit vroeger oploste was de CO2 laser met enorm grote vermogens gebruiken zodat er toch genoeg energie werd geabsorbeerd.
+In de figuur zie je dat staal ongeveer 90\% van een CO$_2$-laser reflecteert, terwijl een YAG-laser
+er maar zo'n 50\% van reflecteert.
+Vroeger loste men dat op door de CO$_2$-laser met enorm grote vermogens te gebruiken, zodat er toch genoeg
+energie geabsorbeerd werd.
 
-Deze verschillen in absorptie komt door de kristalstructuur/moleculaire structuur van het materiaal.
+Die verschillen in absorptie komen door de kristal- en moleculaire structuur van het materiaal:
+die bepaalt welke golflengtes het materiaal kan opnemen.
 
 \begin{figure}[ht]
     \centering
@@ -3032,16 +3059,18 @@ Deze verschillen in absorptie komt door de kristalstructuur/moleculaire structuu
     \label{fig:Absorptie van polycarbonaat.png}
 \end{figure}
 
-Bij kunststoffen is zoals polycarbonaat zie je dat bij een CO2 laser bijna alles wordt geabsorbeerd maar enorm veel gereflecteerd bij een YAG laser.
-Bij deze toepassing wil je dus liever een CO2 laser gebruiken.
+Bij kunststoffen zoals polycarbonaat zie je het omgekeerde: een CO$_2$-laser wordt bijna volledig geabsorbeerd,
+terwijl een YAG-laser er grotendeels doorheen gaat of gereflecteerd wordt.
+Voor die toepassing gebruik je dus liever een CO$_2$-laser.
 
 \subsubsection{Kwaliteit van de laserstraal}
-\textbf{De BBP (Beam Parameter Product)} is een maat voor de kwaliteit van een laserstraal.
-\frm{BBP = Beam Parameter Product}{BBP = \omega_0 \cdot \dfrac{\theta}{2}}{waarbij $BBP$ het Beam Parameter Product is [\si{mm \cdot mrad}], \(\omega_0\) de straal van de bundeltaille (focuspunt) [\si{mm}] en $\theta$ de volledige divergentiehoek [\si{mrad}].}
-Hoe kleiner $\theta$ is, hoe beter de kwaliteit van de laserstraal.
+\textbf{Het BPP (Beam Parameter Product)} is een maat voor de kwaliteit van een laserstraal.
+\frm{BPP (Beam Parameter Product)}{BPP = w_0 \cdot \dfrac{\theta}{2}}{waarbij $BPP$ het beam parameter product is [\si{mm.mrad}], \(w_0\) de straal van de bundeltaille (het focuspunt) [\si{mm}] en $\theta$ de volledige divergentiehoek [\si{mrad}].}
+Hoe kleiner het BPP, hoe beter de bundelkwaliteit: je kunt de straal dan tot een kleiner punt focusseren
+zonder dat hij daarna snel uitwaaiert.
 
-Je moet dus je laser focussen als je materiaal wilt bewerken.
-Deze afstand moet precies zijn of je krijgt een groter focuspunt en dus minder intensiteit.
+Je moet je laser dus focussen als je materiaal wilt bewerken,
+en die focusafstand moet precies kloppen; anders krijg je een groter focuspunt en dus minder intensiteit.
 
 \begin{figure}[ht]
     \centering
@@ -3051,13 +3080,14 @@ Deze afstand moet precies zijn of je krijgt een groter focuspunt en dus minder i
 \end{figure}
 
 \textbf{Het intensiteitsprofiel van een laserstraal}
-Een perfecte laser zou een perfecte cilinder zijn.
-In de praktijk is dat niet zo. De laserintensiteit gaat een gaussiaans profiel hebben. $\to$ Je intensiteitprofliel ziet er als volgt uit:
+Een ideale laser zou een perfecte cilinder met overal dezelfde intensiteit zijn.
+In de praktijk is dat niet zo: de intensiteit volgt een \emph{gaussiaans} profiel, het felst in het midden
+en afnemend naar de rand toe.
 
-
-\frm{De intensiteit van een laserstraal}{I = \dfrac{I_0}{e^{2}}}
-{met I0 de maximale intensiteit in het midden van de bundel,
-    e de factor waarmee de maximum intensiteit afneemt (hoger = snellere daling).}
+\frm{Gaussiaans intensiteitsprofiel}{I(r) = I_0\,e^{-2r^2/w_0^2}}
+{waarbij $I(r)$ de intensiteit is op afstand $r$ van de as [\si{W/mm^2}], $I_0$ de maximale intensiteit
+    in het midden van de bundel [\si{W/mm^2}], $r$ de radiale afstand [\si{mm}] en $w_0$ de bundelstraal [\si{mm}].
+    Per afspraak is $w_0$ precies de straal waar de intensiteit gezakt is tot $I_0/e^2$ (ongeveer 13,5\% van het maximum).}
 
 \begin{figure}[ht]
     \centering
@@ -3086,16 +3116,18 @@ In de praktijk is dat niet zo. De laserintensiteit gaat een gaussiaans profiel h
     \label{fig:laser_focus_intensity}
 \end{figure}
 
-voor een guassiaans profiel is het BBP:
-\[BBP = \frac{\lambda}{\pi}\]
-met $\lambda$ de golflengte van de laser.
+Voor een ideaal gaussiaans profiel geldt:
+\[BPP = \frac{\lambda}{\pi}\]
+met $\lambda$ de golflengte van de laser. Dit is de theoretisch best haalbare waarde.
 
 \textbf{Een kleinere golflengte $\lambda$ geeft dus een betere bundelkwaliteit van de laserstraal.}
 
-Om de bundel te focussen gebruik je een lens met een focuslengte \(f\).
-De straal wordt dan gefocusseerd tot een straal met een straal \(w_0\) gegeven door:
+Om de bundel te focussen gebruik je een lens met brandpuntsafstand \(f\).
+De bundel wordt dan samengeknepen tot een taille met straal \(w_0\):
 \[w_0 = \frac{4 \lambda f}{\pi D}\]
-Kleine verschillen in hoogte kan dus een groot verschil maken in de grootte van het focuspunt.
+met \(D\) de bundeldiameter op de lens. Een korte brandpuntsafstand en een brede invallende bundel
+geven dus het kleinste focuspunt. Kleine hoogteverschillen tussen lens en werkstuk maken daardoor
+een groot verschil in de bereikte intensiteit.
 
 \begin{figure}[htbp]
     \centering
@@ -3105,7 +3137,8 @@ Kleine verschillen in hoogte kan dus een groot verschil maken in de grootte van 
 \end{figure}
 \FloatBarrier
 
-De $w_0$ kun je meten met warmtecamera's die de warmte van de laser opneemt. Hieruit kan je dan de BBP berekenen.
+De $w_0$ kun je meten met warmtecamera's die het intensiteitsprofiel van de laser opnemen.
+Daaruit bereken je dan het BPP.
 
 \subsection{Toepassingen}
 \begin{itemize}
@@ -3114,18 +3147,19 @@ De $w_0$ kun je meten met warmtecamera's die de warmte van de laser opneemt. Hie
     \item \textbf{Boren}: Gebruik van korte laserpulsen met zeer hoge intensiteit om materiaal te verdampen en zo nauwkeurige gaten te creëren.
     \item \textbf{Oppervlaktebehandeling}: Aanpassen van de textuur of chemie van de toplaag, zoals het reinigen van oppervlakken of het creëren van specifieke ruwheidspatronen.
     \item \textbf{Harden}: Het lokaal verhitten van staal boven de kritische temperatuur,
-          gevolgd door zelf-afschrikking door de omringende koude massa, om de slijtvastheid te verhogen. Je kunt de randen van tandwielen harden zodat de punten sterker zijn.
-          Harden met een laser kreeg je minder deformatie als het harden in een oven.
+          gevolgd door zelfafschrikking via de omringende koude massa, om de slijtvastheid te verhogen.
+          Zo kun je de flanken van tandwielen harden terwijl de kern taai blijft.
+          Bij laserharden krijg je veel minder vervorming dan bij harden in een oven, omdat je alleen lokaal opwarmt.
     \item \textbf{Cladding}: Een laag van een ander materiaal (poeder of draad) op het werkstuk smelten om eigenschappen zoals corrosiebestendigheid of hardheid te verbeteren.
     \item \textbf{Solderen}: Het smelten van een toevoegmateriaal met de laser om een verbinding te maken, waarbij het basismateriaal zelf niet smelt (soldeerverbinding).
 \end{itemize}
 
-Afhankelijk van de toepassing met je de BBP en het vermogen aanpassen.
+Afhankelijk van de toepassing moet je het BPP en het vermogen aanpassen.
 
-\subsection{machine gestuurde Lasers, NC lasers}
-lasers vandaag de dag worden NC-gestuurd waardoor je verschillende factoren van de laser kunt aanpassen.
-De computer kan zelf de laser focussen, de snelheid dynamisch aanpassen afhankelijk van de snede die je maakt.
-en de power van de laser aanpassen.
+\subsection{Machinegestuurde lasers (NC-lasers)}
+Lasers worden vandaag NC-gestuurd, waardoor je alle parameters tijdens de bewerking kunt bijsturen.
+De computer focusseert de laser zelf, past de snelheid dynamisch aan afhankelijk van de snede
+(trager in bochten, sneller op rechte stukken) en regelt het vermogen mee.
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=1\textwidth]{assets/NC-lasers.png}
@@ -3133,11 +3167,14 @@ en de power van de laser aanpassen.
     \label{fig:NC-lasers.png}
 \end{figure}
 
-\textbf{Belangrijke parameters bij laser snijden}
-\textbf{Lasersmeltsnijden}: Snijgas (stikstof, argon) wordt tijdens het lasersnijden zodat de bewerking sneller afkloelt en dat er geen oxidatie optreedt en kans op brand verminderd.
-De laser in een interte atmosfeer brengen zoals argon of stikstof kan ervoor zorgen dat je geen enkele oxidatie hebt.
+\textbf{Belangrijke parameters bij lasersnijden}
 
-\textbf{Laserbrandsnijden}: Je kunt ook het omgekeerde doen en zuurstof toevoegen om het snijproces te versnellen.
+\textbf{Lasersmeltsnijden}: er wordt een inert snijgas (stikstof, argon) toegevoegd dat de smelt wegblaast.
+Omdat het gas inert is, treedt er geen oxidatie op en blijft de snijkant blank; het gas koelt bovendien mee af.
+
+\textbf{Laserbrandsnijden}: je doet net het omgekeerde en gebruikt zuurstof als snijgas.
+Het metaal verbrandt dan mee, wat extra warmte levert en het proces versnelt, maar je krijgt wel een
+geoxideerde snijkant.
 
 In beide gevallen is het belangrijk om het verwijderde materiaal (smelt) weg te blazen met het snijgas.
 
@@ -3151,13 +3188,14 @@ Lasersnijden is snel en nauwkeurig en kan enorm kleine dingen maken.
 \end{figure}
 \FloatBarrier
 
-Lasersnijden kan groot en klein gedaan worden. Groote platen staal worden bijvoorbeeld gesneden voor de auto-industrie.
+Lasersnijden kan zowel op grote als op kleine schaal. Grote platen staal worden er bijvoorbeeld mee gesneden
+voor de auto-industrie.
 
 \subsubsection{Nadelen}
 \begin{itemize}
     \item \textbf{Dross}: Tijdens het snijden kan er een ophoping van gesmolten materiaal aan de onderkant van het snijvlak ontstaan, wat resulteert in een ruwe afwerking die vaak nabewerking vereist.
-    \item \textbf{burning defecten}: Bij het snijden van bepaalde materialen bij een te lage snijsnelheid, zoals bij kunststoffen, kan overmatige hitte leiden tot verbranding of verkoling langs de snijranden, wat de kwaliteit van het eindproduct vermindert.
-    \item \textbf{Loss of full penetration}: Bij het snijden van dikkere materialen kan het voorkomen dat de laserstraal niet volledig door het materiaal heen dringt, wat resulteert in onvolledige sneden die opnieuw bewerkt moeten worden.
+    \item \textbf{Verbrandingsdefecten (burning)}: Bij een te lage snijsnelheid, bijvoorbeeld bij kunststoffen, kan overmatige hitte leiden tot verbranding of verkoling langs de snijranden, wat de kwaliteit van het eindproduct vermindert.
+    \item \textbf{Onvolledige penetratie}: Bij dikkere materialen kan de laserstraal niet volledig door het materiaal heen dringen, wat resulteert in onvolledige sneden die opnieuw bewerkt moeten worden.
     \item \textbf{Aanhechting van gesmolten materiaal}: Bij brandsnijden aan hoge snijsnelheden kan gesmolten materiaal aan de snijkant blijven plakken, wat leidt tot onregelmatige randen en mogelijke structurele zwaktes in het gesneden onderdeel.
 \end{itemize}
 
@@ -3167,7 +3205,7 @@ Lasersnijden kan groot en klein gedaan worden. Groote platen staal worden bijvoo
         \item \textbf{EDM Fases}: Begrijp de cyclus: ontbranding $\to$ ontlading (plasma) $\to$ implosie (swarf afvoer).
         \item \textbf{EDM Slijtage}: Begrijp waarom de elektrode wel slijt bij EDM (ionenbombardement) maar niet bij ECM (kathode neemt anode (werkstuk) materiaal op).
         \item \textbf{ECM Afname}: Leg uit waarom de afnamesnelheid afhangt van de stroom ($I$) en de atoommassa, niet van de hardheid van het materiaal.
-        \item \textbf{Laser}: Begrijp de energiebalans ($A+R+T=1$) en waarom golflengte cruciaal is voor materiaalkeuze.
+        \item \textbf{Laser}: Begrijp de energiebalans ($A+R+T=1$), het BPP en waarom de golflengte cruciaal is voor de materiaalkeuze.
         \item \textbf{Ultrasoon}: Weet dat dit ideaal is voor brosse materialen (keramiek) door microscheur-initiatie.
     \end{itemize}
 \end{warningbox}
@@ -3181,23 +3219,23 @@ Lasersnijden kan groot en klein gedaan worden. Groote platen staal worden bijvoo
     \end{itemize}
 \end{conceptbox}
 
-Bij Scheiden ga je knippen of ponsen. Hierbij heb je geen spanen.
-Je kunt alle vorige technieken gebruiken om te scheiden.
-Het afgenome materiaal is dus nog steeds bruikbaar.
+Bij scheiden ga je knippen of ponsen. Hierbij ontstaan er \emph{geen} spanen:
+het materiaal wordt afgeschoven tot het breekt.
+Het uitgesneden deel blijft daardoor bruikbaar, in tegenstelling tot bij verspanen.
 \newline
 \section{Ponsen en knippen}
-Bij Ponsen ga je met een gesloten profiel een gat maken in een plaat.
+Bij \textbf{ponsen} maak je met een gesloten profiel een gat in een plaat.
 \newline
-Bij knippen ga je met een rechte snede je materiaal scheiden.
+Bij \textbf{knippen} scheid je je materiaal langs een open (meestal rechte) lijn.
 \newline
-Je gaat pas vervorming krijgen als je plastisch gaat vervormen.
-Om het te vervormen heb je een afschuifkracht.
+Zolang je onder de vloeigrens blijft veert het materiaal gewoon terug; pas bij plastische vervorming
+verandert de vorm blijvend. Daarvoor heb je een afschuifkracht nodig.
 \newline
 \frm{Afschuifkracht bij ponsen}{\ensuremath{F_{th} = \tau_{max} \cdot L \cdot s_0}}{Waarbij
     \(\!F_{th}\!\) de afschuifkracht is [\si{N}], \(\tau_{max}\) de maximale schuifspanning [\si{N/mm^2}],
     \(L\) de omtrek van het profiel [\si{mm}] en \(s_0\) de plaatdikte [\si{mm}].}
 
-Je materiaal gaat afschuiven tot dat het doorbreekt en dan het je je materiaal verwijderd.
+Het materiaal schuift af tot het doorbreekt; dan is je stuk gescheiden.
 
 \begin{figure}[ht]
     \centering
@@ -3207,9 +3245,9 @@ Je materiaal gaat afschuiven tot dat het doorbreekt en dan het je je materiaal v
     \label{fig:Kracht-wegdiagram van Ponsen.png}
 \end{figure}
 \FloatBarrier
-Je ziet bij de grafiek dus eerst verhogingen van de kracht. Dit is de schuifkracht, het bereikt dan een piekbelasting.
-Daarna gaat de kracht dalen omdat het materiaal begint te breken.
-De Z-waarde is hier de afstand dat het stuk beweegt tot dat het doorbreekt.
+In de grafiek zie je de kracht eerst stijgen: dat is de opbouw van de schuifkracht tot de piekbelasting.
+Daarna daalt de kracht weer, omdat het materiaal begint te breken en de doorsnede die nog draagt kleiner wordt.
+De $z$-waarde is de weg die de stempel aflegt tot het materiaal doorbreekt.
 
 Bij knippen en ponsen heb je drie fases:
 \begin{enumerate}
@@ -3218,7 +3256,7 @@ Bij knippen en ponsen heb je drie fases:
     \item \textbf{De scheidingsfase}: Uiteindelijk bereikt het materiaal zijn breekpunt, wat resulteert in het scheiden van het materiaal.
 \end{enumerate}
 
-De vorm en kwaliteit van de snede hangt af van de breette van de snijpleet.
+De vorm en de kwaliteit van de snede hangen af van de breedte van de snijspleet.
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.55\textwidth]{assets/image80.png}
@@ -3230,18 +3268,19 @@ De vorm en kwaliteit van de snede hangt af van de breette van de snijpleet.
 
 \subsection{Knippen}
 Knippen is een spaanloze bewerking.
-Je hebt inplaats van een spaanhoek een snijhoek $\gamma$ en een vrijloophoek $\alpha$.
+In plaats van een spaanhoek heb je hier een snijhoek $\gamma$ en een vrijloophoek $\alpha$.
 Een voorbeeld van een knipmachine is een guillotineschaar.
 
-\textit{Zelfde type hoeken als bij frezen.}
+\textit{Zelfde soort hoeken als bij verspanen, maar zonder spaanvorming.}
 
 \frm{Schuifkracht bij knippen}
 {\ensuremath{F = 0.5 \cdot \dfrac{s^2}{\tan\varepsilon} \cdot \tau}}
 {waarbij \(F\) de afschuifkracht is [\si{N}], \(s\) de plaatdikte [\si{mm}], \(\varepsilon\) de snijhoek [$^\circ$] en \(\tau\) de schuifspanning van het materiaal [\si{N/mm^2}].}
 
-De \textbf{snijspeelt} is de afstand tussen het mes en het tegenmes.
-Als deze niet goed is ingesteld krijg je slechte sneden.
-Dit is de rede waarom versleten scharen slechte sneden geven.
+De \textbf{snijspleet} is de afstand tussen het mes en het tegenmes.
+Is die niet goed ingesteld, dan krijg je slechte sneden: te klein geeft extra kracht en slijtage,
+te groot geeft bramen en een omgeplooide rand.
+Dat is ook de reden waarom versleten scharen slechte sneden geven.
 
 \begin{figure}[htbp]
     \centering
@@ -3269,8 +3308,8 @@ Ponsen is ook een spaanloze bewerking. Een simpel voorbeeld is een perforator.
 \frm{Eerste formule Schuifkracht bij ponsen}{\ensuremath{F = s_0 \cdot l \cdot \tau}}
 {waarbij \(F\) de afschuifkracht is [\si{N}], \(s_0\) de plaatdikte [\si{mm}], \(l\) de omtrek van het profiel [\si{mm}] en \(\tau\) de schuifspanning van het materiaal [\si{N/mm^2}].}
 
-Bij ponsen is er geen enkele opbouw. Je hebt direct een indrukking en dus snel een vergroting
-van de schuifspanningen.
+Bij ponsen snijdt de volledige omtrek in één keer aan. Er is dus nauwelijks geleidelijke opbouw:
+je krijgt meteen een indrukking en een snel oplopende schuifspanning, en dus een hoge piekkracht.
 
 \begin{figure}[htbp]
     \centering
@@ -3282,16 +3321,18 @@ van de schuifspanningen.
 
 De eerste formule is een benadering.
 Een betere formule is:
-\frm{Tweede formule Schuifkracht bij ponsen}{\ensuremath{F = 1.6 \cdot y_s \cdot s_0 \cdot l \cdot \tau \cdot k_s}}
-{waarbij \(F\) de afschuifkracht is [\si{N}], \(y_s\) een correctiefactor [-], \(\tau\) de schuifspanning [\si{N/mm^2}],
-    \(s_0\) de plaatdikte [\si{mm}], \(l\) de omtrek [\si{mm}] en \(k_s\) de specifieke snijkracht [-].}
+\frm{Tweede formule schuifkracht bij ponsen}{\ensuremath{F = 1{,}6 \cdot y_s \cdot s_0 \cdot l \cdot k_s}}
+{waarbij \(F\) de afschuifkracht is [\si{N}], \(y_s\) een correctiefactor voor de snijspleet [-],
+\(s_0\) de plaatdikte [\si{mm}], \(l\) de omtrek van het profiel [\si{mm}] en \(k_s\) de specifieke
+snijkracht [\si{N/mm^2}].}
 
-de 1.6 houdt rekening met de gereedschapsslijtage.
+De factor 1,6 houdt rekening met de gereedschapsslijtage: een botte stempel vraagt tot 60\% meer kracht
+dan een scherpe.
 
 \textbf{$k_s$ de specifieke snijkracht}
 \newline
-De specifieke snijkracht \(k_s\) is een maat voor de kracht die nodig is om een eenheid van materiaal te snijden.
-Het wordt uitgedrukt in N/mm\(^2\) en hangt af van het materiaaltype en de dikte van het werkstuk.
+De specifieke snijkracht \(k_s\) is de kracht die nodig is per mm$^2$ te snijden doorsnede.
+Ze wordt uitgedrukt in \si{N/mm^2} en hangt af van het materiaaltype en de plaatdikte.
 \[
     k_s = X_f \cdot R_m
 \]
@@ -3307,16 +3348,15 @@ met \(X_f\) de snijfactor en \(R_m\) de treksterkte van het materiaal.
     zonder de typische breukzone van normaal ponsen.
 \end{conceptbox}
 
-Fijnstancen is snijden en ponsen met een heel kleine
-snijspleet. rond de 1-0.01mm.
-Bij normaal ponsen en knippen heb je ruimte
-rond je snede langs boven. De tool zijn hoek werd
-op dezelfde hoek gelegt als de onderplaat en zo werd er gesneden of geponst.
+Fijnstansen is snijden en ponsen met een heel kleine snijspleet, rond 0,01 tot 1 mm
+(minder dan 1\% van de plaatdikte).
+Bij normaal ponsen en knippen is er speling rond de stempel, waardoor de plaat mee omhoog
+getrokken kan worden en er een scheurzone ontstaat.
 
-Bij fijnstancen heb je geen ruimte meer.
-De plaat wordt dus volledig vastgeklemd tussen de boven en onderplaat
-en de pons wordt dan heel precies geleid.
-e snijspleet is klein maar is ook constant.
+Bij fijnstansen is die speling er niet meer.
+De plaat wordt volledig vastgeklemd tussen een ringtandhouder en een tegenhouder,
+en de stempel wordt daardoor heel precies geleid.
+De snijspleet is klein én overal constant.
 
 \begin{figure}[htbp]
     \centering
@@ -3326,28 +3366,28 @@ e snijspleet is klein maar is ook constant.
 \end{figure}
 \FloatBarrier
 
-Het is duurder maar de oppervlaktekwaliteit van
-je afbreukzone is veel beter. Beter dan lasersnijden en normaalponsen.
+Het is duurder, maar het snijvlak is over de volledige plaatdikte glad, zonder de typische breukzone.
+De kwaliteit is beter dan bij lasersnijden en normaal ponsen.
 
 \subsection{Volgsnijstempel}
 
 \begin{conceptbox}[Volgsnijstempel]
     Bij volgsnijstempel heb je een soort lopende band van ponsen.
-    Stel je wilt een sleutelgat maken. Je gaat stap per stap vier gaten maken op een lange plaat aluminium sheet.
-    En dan het sleutelgat. De plaat kan blijven bewegen zodat je snel velle producten kunt maken.
+    Stel je wilt een sleutel maken. De plaat schuift stap voor stap door en bij elke stap voert
+    een andere stempel één bewerking uit: eerst de gaten, dan de contour, dan het afsnijden.
+    De plaat blijft doorlopen, zodat je in hoog tempo veel producten maakt.
 \end{conceptbox}
 
-Je verdeeld verschillende operaties over verschillende stempels.
-Deze stempels zijn niet alleen voor door te ponsen maar kunnen ook
-het product een bepaald oppervlakte geven.
+Je verdeelt de verschillende operaties over verschillende stempels.
+Die stempels dienen niet alleen om te ponsen: ze kunnen het product ook buigen, dieptrekken of vormen.
 
 Deze techniek wordt gebruikt wanneer je grote aantallen van een product moet maken.
 De stempels (gemaakt uit hard staal met wolframcarbide) zijn duur maar je kunt er wel enorm snel mee werken.
 
 \begin{examenbox}
-    Als je een werkvoorbereiding moet maken waarbij je een vlak deel hebt die ligt gebogen is,
-    en je moet er veel van maken. Dan zeg je altijd \textbf{volgsnijstempel}.
-    Je kunt er mee snijden maar ook mee vormen.
+    Als je een werkvoorbereiding moet maken voor een vlak deel dat licht gebogen is,
+    en je moet er veel van maken, dan antwoord je \textbf{volgsnijstempel}.
+    Je kunt er zowel mee snijden als mee vormen.
 \end{examenbox}
 
 \begin{warningbox}[Examenvraag]
@@ -3360,8 +3400,9 @@ De stempels (gemaakt uit hard staal met wolframcarbide) zijn duur maar je kunt e
 \subsection{Revolvermachine}
 
 Je kunt computergestuurd ponsen op een grote aluminium plaat.
-Je plaat kan rondbewegen langs de x-en y-as en de pons kan operaties doen.
-Dit gaan enorm snel.
+De plaat beweegt onder de pons door langs de $x$- en $y$-as, terwijl de revolverkop het juiste
+ponsgereedschap in positie draait.
+Dit gaat enorm snel.
 Het is sneller dan een lasersnijmachine dus als je grote aantallen moet maken is dit ideaal.
 
 \subsection{Knabbelen}
@@ -3380,10 +3421,10 @@ Dit is enorm snel, rond 10 slagen per seconde.
 
 De pons kun je combineren met verschillende vormen: cirkel, vierkant, driehoek enz.
 
-\section{Mechanisch Scheiden, verspannen}
+\section{Mechanisch scheiden door verspanen}
 
-Bij mechanisch scheiden ga je materiaal wegnemen door te verspannen.
-Je gaat niet de structuur van je materiaal veranderen.
+Bij mechanisch scheiden neem je materiaal weg door te verspanen.
+De structuur van je materiaal verandert daarbij niet (geen thermisch aangetaste zone).
 Je hebt verschillende technieken:
 \begin{itemize}
     \item \textbf{Zagen}: Gebruik van een zaagblad met tanden om materiaal te verwijderen door middel van een snijbeweging.
@@ -3398,7 +3439,7 @@ Bij fysische scheiding ga je materiaal wegnemen door fysische processen.
 Je hebt opnieuw verschillende technieken:
 
 \begin{itemize}
-    \item \textbf{Brandnsijden}: Metaal snijden door verbranding met behulp van een zuurstofstraal.
+    \item \textbf{Brandsnijden}: Metaal snijden door verbranding met behulp van een zuurstofstraal.
           Het materiaal wordt verhit tot boven de ontbrandingstemperatuur en vervolgens wordt zuurstof toegevoegd
           om het metaal te oxideren en weg te blazen.\\
 
@@ -3410,7 +3451,7 @@ Je hebt opnieuw verschillende technieken:
     \item \textbf{Laser snijden}: Gebruik van een geconcentreerde laserstraal om materiaal te smelten of te verdampen.
     \item \textbf{Waterstraalsnijden}: Gebruik van een hogedruk waterstraal om materiaal te snijden zonder thermische effecten.
     \item \textbf{Plasmasnijden}: Gebruik van een plasmaboog om metaal te snijden door het te verhitten en te smelten.
-          Plasma creert een vlam van geïoniseerd gas die extreem heet is.
+          Plasma is een vlam van geïoniseerd gas die extreem heet is (tot \SI{20000}{\degreeCelsius}).
 \end{itemize}
 
 \begin{figure}[htbp]
@@ -3444,11 +3485,11 @@ Je hebt opnieuw verschillende technieken:
     Draadvonken & Harde geleidende mat. & $\le$ 0,7 mm$^2$/s & {+ flexibel \\ + enk. st./series \\ + kwaliteit} & 0,05 & $<0,1$ \\
 \end{engtable}
 
-Deze tabel is enorm belangrijk want hij kan vragen. Welke van deze technieken zijn het
-snelste, goedkoopste, meest precieze enz.
+Deze tabel is enorm belangrijk, want hij kan hierover vragen stellen: welke van deze technieken
+is het snelst, het goedkoopst, het nauwkeurigst enzovoort.
 
-Je ziet dat enorm veel technieken die we al gezien hebben terugkomen bij dit hoofdstuk.
-Niet echt super handig maar het is een goede herhaling.
+Je ziet dat heel veel technieken die we al gezien hebben hier terugkomen.
+Dat maakt dit hoofdstuk vooral een goede herhaling.
 
 \begin{warningbox}[EXAMEN CHECKLIST: SCHEIDEN]
     \begin{itemize}
@@ -3510,9 +3551,9 @@ De stappen om een gietstuk te maken zijn:
 \end{enumerate}
 
 \begin{conceptbox}[Volumevermindering bij stollen]
-    Volumevermindering door stollen noemt men \belangrijk{Slink}. Een slink is een microscopisch gaatje in het gietstuk dat ontstaat
-    tijdens het stollen en wordt gecompenseerd door opkomers.
-    Dit zijn extra stukken materiaal die je toevoegt aan je gietstuk.\\
+    Volumevermindering door stollen noemt men \belangrijk{slink}. Als die niet aangevuld wordt, ontstaat er
+    een \textbf{slinkholte}: een gat in het gietstuk. Je compenseert slink met \textbf{opkomers}:
+    extra reservoirs metaal die je aan je gietstuk hangt en die als laatste stollen.\\
 
     De volumevermindering door het afkoelen noemt men \belangrijk{Krimp}. $\to$ gecompenseerd door krimptoeslag.
     Dit is een extra maat die je aan je gietstuk toevoegt zodat het na afkoeling de juiste maat heeft.
@@ -3528,15 +3569,15 @@ De stappen om een gietstuk te maken zijn:
 \subsection{Maken van een vormholte}
 Je hebt twee soorten vormen:
 \begin{itemize}
-    \item \textbf{Permanent vormen}: Je kunt deze vormen meerdere keren gebruiken. Gemaakt uit metaal.
+    \item \textbf{Permanente vormen}: Je kunt deze vormen meerdere keren gebruiken. Gemaakt uit metaal.
     \item \textbf{Eenmalige vormen}: Je kunt deze vormen maar één keer gebruiken. Gemaakt uit zand of keramiek.
 \end{itemize}
 \textbf{Eenmalige vormen:}
 
-Je gaat je vorm maken uit zand en dan gieten in het zand.
-Je verwijdert dan het zand maar dan gaat je vorm verloren.
+Je maakt je vorm uit zand en giet daarin.
+Om het stuk eruit te halen breek je het zand weg, en daarmee gaat de vorm verloren.
 
-\textbf{Permanent vormen:}
+\textbf{Permanente vormen:}
 
 Je gaat je vorm maken uit metaal.
 Je kunt dan spuitgieten, coquillegieten of andere speciale giettechnieken gebruiken.
@@ -3546,7 +3587,8 @@ De keuze hangt af van de smelttemperatuur waarmee je gaat gieten.
 \section{Gieten in zand}
 Gieten in zand is niet heel precies maar er is geen limiet aan de grootte van het product dat je kunt maken
 en het is goedkoop. In de industrie gaan ze dus vaak voor zandgieten en daarna nabewerken om de ruwheid en precisie te verbeteren.
-Het zand dat ze gebruiken is niet echt zand maar een mengsel van zand, klei en water die steviger is dan gewoon zand.
+Het zand dat ze gebruiken is niet zomaar zand, maar een mengsel van zand, klei en water dat veel steviger
+is dan gewoon zand en zijn vorm houdt na het aanstampen.
 
 \begin{figure}[htbp]
     \centering
@@ -3717,11 +3759,12 @@ Je zand kan kleigebonden, chemisch gebonden of schaalvormend zijn.
 \end{conceptbox}
 
 \subsection{Afwerken van zandgietstukken}
-Je moet de opkomers en het oppervlakte bewerken na het gietproces.
+Na het gietproces moet je de opkomers en de gietloop afbreken en het oppervlak nabewerken.
 Dit kan gedaan worden door brandsnijden, slijpen, schuren of polijsten.
 
-De oppervlaktekwaliteit van zandgieten is slecht (rond de 6-12 micrometer), dus je gaat nog moeten nabewerken.
-Schaalvormen geven een beter oppervlakte (rond de 3-6 micrometer).
+De oppervlaktekwaliteit van zandgieten is slecht ($R_a$ rond \SI{6}{\micro m} tot \SI{12}{\micro m}),
+dus je zult nog moeten nabewerken.
+Schaalvormen geven een beter oppervlak ($R_a$ rond \SI{3}{\micro m} tot \SI{6}{\micro m}).
 
 \begin{examenbox}
     Zorg dat je de kenmerken van zandgieten kent:
@@ -3730,7 +3773,7 @@ Schaalvormen geven een beter oppervlakte (rond de 3-6 micrometer).
         \item grote maten mogelijk
         \item slechte oppervlaktekwaliteit
         \item lage precisie
-        \item geschikt voor grote series
+        \item geschikt van enkelstuks tot grote series (met geautomatiseerde vormerij)
     \end{itemize}
 \end{examenbox}
 
@@ -3738,7 +3781,7 @@ Schaalvormen geven een beter oppervlakte (rond de 3-6 micrometer).
 \subsection{Verloren wasmodel}
 
 \begin{wrapfigure}{r}{0.3\textwidth}
-    \centering	\centering
+    \centering
     \includegraphics[width=0.3\textwidth]{assets/verlorenwasgieten.png}
     \caption{Verloren wasmodel proces: maken van keramische vormen door dompelen van wasmodellen voor metaalgieten}
     \label{fig:Verlorenwasmodel.png}
@@ -3747,17 +3790,16 @@ Schaalvormen geven een beter oppervlakte (rond de 3-6 micrometer).
 
 Je kunt modellen maken uit was.
 
-Dit product ga je dompelen in een keramische slurrie.
-De afgekoelde slurrie vormt een harde schaal rond het wasmodel.
-Eenmaal dat die deklaag de gewenste dikte heeft kun je de was eruit smelten.
+Dat wasmodel dompel je (herhaaldelijk) in een keramische slurry.
+De uitgeharde slurry vormt een harde schaal rond het wasmodel.
+Zodra die schaal de gewenste dikte heeft, smelt je de was eruit.
 Je hebt nu een holle keramische vorm.
 Je kunt nu metaal gieten in deze keramische vorm en dan de keramische vorm breken om je product eruit te halen.
 
 In tegenstelling tot zandgieten is de oppervlaktekwaliteit en nauwkeurigheid veel beter.
 Dit komt omdat de keramische schaal veel fijner is dan zand.
 Je kunt ook complexere vormen maken omdat je geen vormkasten nodig hebt.
-Je kunt wel niet grotere stukken maken omdat je dan lang moet wachten tot de keramische schaal droog is
-en het is moeilijker om de keramische modellen te maken.
+Grote stukken zijn wel moeilijk: de keramische schaal moet dan lang drogen en wordt lastig te maken en te dragen.
 
 
 \subsection{Verloren schuim-model}
@@ -3765,9 +3807,9 @@ Je maakt een model uit schuim zoals piepschuim.
 Je plaatst dit in een bak of vormkast en je verbrandt dan het schuim.
 Je giet dan metaal in de holte die het schuim heeft achtergelaten.
 Het is heel gelijkaardig aan verloren wasmodel.
-Net zoals bij verloren wasmodel is de oppervlaktekwaliteit en nauwkeurigheid veel beter dan zandgieten.
+Net zoals bij het verloren wasmodel zijn de oppervlaktekwaliteit en de nauwkeurigheid beter dan bij zandgieten.
 Je kunt ook complexere vormen maken omdat je geen vormkasten nodig hebt.
-Je kunt wel niet grotere stukken maken.
+Grote stukken blijven wel lastig.
 
 \begin{table}[htbp]
     \centering
@@ -3778,34 +3820,37 @@ Je kunt wel niet grotere stukken maken.
     \setlength{\tabcolsep}{4pt}
     \begin{tabularx}{\textwidth}{@{} >{\bfseries}l | X | X | X | X @{}}
         \toprule
-        \textnormal{\textbf{Eigenschap}} & \textbf{Zand}     & \textbf{Was}          & \textbf{Schuim}   & \textbf{Matrijs}       \\
+        \textnormal{\textbf{Eigenschap}} & \textbf{Zand} & \textbf{Was}     & \textbf{Schuim}  & \textbf{Matrijs}  \\
         \midrule
-        Oppervlakte                      & Ruw ($R_a$ 10-25) & Zeer goed ($R_a$ 1-3) & Goed ($R_a$ 2-10) & Uitstekend ($R_a$ 1-2) \\
-        Maattolerantie                   & $\pm$ 1--2 mm     & $\pm$ 0.1 mm          & $\pm$ 0.3 mm      & $\pm$ 0.1 mm           \\
-        Vormvrijheid                     & Hoog              & Zeer hoog             & Zeer hoog         & Beperkt                \\
-        Min. wanddikte                   & 3--5 mm           & 0.5--1 mm             & 2--3 mm           & 1--2 mm                \\
-        Serie grootte                    & 1 tot groot       & Klein tot middel      & Middel tot groot  & Massa                  \\
-        Matrijskosten                    & Laag              & Gemiddeld             & Laag              & Zeer hoog              \\
-        Stukprijs                        & Hoog              & Hoog                  & Gemiddeld         & Laag                   \\
-        Materialen                       & Alle metalen      & Alle metalen          & Alle metalen      & Non-ferro              \\
+        Ruwheid $R_a$ (\si{\micro m})    & Ruw (10--25)  & Zeer goed (1--3) & Goed (2--10)     & Uitstekend (1--2) \\
+        Maattolerantie                   & $\pm$ 1--2 mm & $\pm$ 0,1 mm     & $\pm$ 0,3 mm     & $\pm$ 0,1 mm      \\
+        Vormvrijheid                     & Hoog          & Zeer hoog        & Zeer hoog        & Beperkt           \\
+        Min. wanddikte                   & 3--5 mm       & 0,5--1 mm        & 2--3 mm          & 1--2 mm           \\
+        Seriegrootte                     & 1 tot groot   & Klein tot middel & Middel tot groot & Massa             \\
+        Matrijskosten                    & Laag          & Gemiddeld        & Laag             & Zeer hoog         \\
+        Stukprijs                        & Hoog          & Hoog             & Gemiddeld        & Laag              \\
+        Materialen                       & Alle metalen  & Alle metalen     & Alle metalen     & Non-ferro         \\
         \bottomrule
     \end{tabularx}
 \end{table}
 
 \section{Gieten in permanente vormen}
-Permanente vormen kun je blijven gebruiken.
-Zeker gebruiken voor kunststoffen maar voor metalen kun je geen metalen nemen met een hoge smelttemperatuur dan de vorm zelf.
+Permanente vormen kun je blijven hergebruiken.
+Ze werken uitstekend voor kunststoffen, maar voor metalen geldt een harde grens: het gegoten metaal
+mag geen hógere smelttemperatuur hebben dan de vorm zelf aankan. Daarom beperkt dit zich in de praktijk
+tot non-ferrometalen (aluminium, zink, magnesium, koper).
 
 Je hebt verschillende technieken:
 \begin{itemize}
     \item \textbf{Coquillegieten}: Je giet gesmolten metaal in een metalen matrijs die gekoeld wordt. De druk wordt geleverd door
           zwaartekracht.
           Gebruikt voor simpele stukken in grote series.
-    \item \textbf{lage druk gieten}: Je giet met lage druk (30-100 kPa) gesmolten metaal in een metalen matrijs.
-          Gebruikt voor aluminium wielen.
-    \item \textbf{Spuitgieten}: Je spuit gesmolten metaal onder hoge druk in een metalen matrijs.
-          Gebruikt voor complexe stukken in grote series door zijn hoge snelheid en precisie.
-          Spuitgieten is soort van een wafelijzer waar je vloeibaar metaal in spuit.
+    \item \textbf{Lagedrukgieten}: Je perst gesmolten metaal met lage druk (\SI{30}{kPa} tot \SI{100}{kPa})
+          van onderaf in een metalen matrijs. Rustige vulling, dus weinig insluitingen.
+          Gebruikt voor aluminium velgen.
+    \item \textbf{Spuitgieten (die casting)}: Je spuit gesmolten metaal onder hoge druk in een metalen matrijs.
+          Gebruikt voor complexe stukken in grote series, door de hoge snelheid en precisie.
+          Denk aan een wafelijzer waar je vloeibaar metaal in spuit.
 \end{itemize}
 
 De verschillen tussen deze technieken zitten vooral in de druk en snelheid van het gieten.
@@ -3827,27 +3872,31 @@ Technieken zoals kernen en opkomers komen hier ook terug.
 \subsection{Verschillende soorten spuitgieten}
 Je hebt verschillende soorten spuitgieten:
 \begin{itemize}
-    \item \textbf{Cold-chamber spuitgieten}: Je giet gesmolten metaal in een koude kamer en dan onder hoge druk in de matrijs.
-          Gebruikt voor metalen met een hoge smelttemperatuur zoals gietijzer en staal.
-          Je werkt met drukken van 15-70 MPa. Je matrijzen hebben een levensduur van 50.000 - 250.000 stukken.
-          Je werkt met mediumsmeltende metalen: aluminium, magnesium.
-    \item \textbf{Hot-chamber spuitgieten}: Je giet gesmolten metaal in een hete kamer en dan onder hoge druk in de matrijs.
-          Gebruikt voor metalen met een lage smelttemperatuur zoals zink, tin en lood.
-          Je werkt met drukken van 3-30 MPa. Je matrijzen hebben een levensduur van 250.000 stukken.
-          Wordt toegepast voor laagsmeltende metalen.
+    \item \textbf{Cold-chamber spuitgieten}: De vulkamer en de zuiger staan \emph{buiten} het smeltbad.
+          Je schept het metaal er per schot in en perst het dan in de matrijs.
+          Gebruikt voor metalen met een hogere smelttemperatuur: aluminium, magnesium en koperlegeringen.
+          Drukken van \SI{15}{MPa} tot \SI{70}{MPa}; matrijzen gaan 50.000 tot 250.000 stukken mee.
+    \item \textbf{Hot-chamber spuitgieten}: De vulkamer en de zuiger staan \emph{in} het smeltbad,
+          zodat het metaal er vanzelf instroomt. Sneller, maar de zuiger staat permanent in vloeibaar metaal.
+          Alleen bruikbaar voor laagsmeltende metalen die de zuiger niet aantasten: zink, tin en lood.
+          Drukken van \SI{3}{MPa} tot \SI{30}{MPa}; matrijzen gaan tot ongeveer 1.000.000 stukken mee.
 \end{itemize}
 
-Het enige verschil tussen deze twee is de temperatuur van de kamer waar het metaal in zit.
+Het verschil zit dus niet in de temperatuur van de kamer op zich, maar in de vraag of de vulkamer
+mee in het smeltbad staat of niet. Dat bepaalt meteen welke metalen je kunt verwerken.
 
-\textit{Tip: Bekijk zeker de video's van deze processen terug op toledo. Die kunnen het beter uitleggen dan ik hier kan doen.}
+\textit{Tip: bekijk zeker de video's van deze processen terug op Toledo. Die leggen het beter uit dan ik hier kan.}
 
 \section{Keuze van gietmethode}
 Je kiest een gietmethode op basis van:
-\textbf{de wanddikte}: dunne wanden vereisen permanente vormen.
-\textbf{productaantal}: grote series vereisen permanente vormen.
-\textbf{oppervlaktekwaliteit}: hoge kwaliteit vereist permanente vormen.
-\textbf{nauwkeurigheid}: hoge nauwkeurigheid vereist permanente vormen.
-\textbf{complexiteit van de vorm}: complexe vormen vereisen verloren modellen.
+\begin{itemize}
+    \item \textbf{Wanddikte}: dunne wanden vereisen permanente vormen (het metaal moet er snel in).
+    \item \textbf{Productaantal}: grote series verantwoorden de dure permanente vorm.
+    \item \textbf{Oppervlaktekwaliteit}: hoge kwaliteit vraagt permanente vormen of verloren was.
+    \item \textbf{Nauwkeurigheid}: hoge nauwkeurigheid vraagt permanente vormen of verloren was.
+    \item \textbf{Complexiteit van de vorm}: erg complexe vormen vragen verloren modellen.
+    \item \textbf{Afmetingen}: heel grote stukken kunnen enkel met zandgieten.
+\end{itemize}
 
 \begin{figure}[htbp]
     \centering
@@ -3883,7 +3932,7 @@ Scherpe hoeken zijn afgerond zodat je het stuk makkelijker uit de mal kunt halen
         \item \textbf{Opkomers}: Leg uit waarom opkomers nodig zijn (reservoirs tegen slink) en ken directionele stolling.
         \item \textbf{Zandgieten}: Ken de voordelen (grootte, prijs) en nadelen (precisie, oppervlak).
         \item \textbf{Verloren-model}: Begrijp de was- en schuimmethode voor complexe vormen.
-        \item \textbf{Permanent vormen}: Ken spuitgieten (hot vs cold chamber) en de noodzaak voor non-ferro materialen.
+        \item \textbf{Permanente vormen}: Ken spuitgieten (hot vs.\ cold chamber) en waarom je hier beperkt bent tot non-ferrometalen.
     \end{itemize}
 \end{warningbox}
 
@@ -3891,19 +3940,19 @@ Scherpe hoeken zijn afgerond zodat je het stuk makkelijker uit de mal kunt halen
 
 \begin{conceptbox}[Productietijd]
     De totale productietijd per stuk wordt bepaald door:
-    \[ T_{totaal} = T_{hoofd} + T_{neven} \]
+    \[ T_{tot} = T_h + T_n \]
     \begin{itemize}
         \item \textbf{Hoofdtijd ($T_h$)}: De tijd waarin daadwerkelijk materiaal wordt weggenomen.
-        \item \textbf{Neventijd ($T_n$)}: De tijd voor opspannen, toolwissels, instellen en programmeren. Automatisering richt zich vaak op het minimaliseren van $T_n$.
+        \item \textbf{Neventijd ($T_n$)}: De tijd voor opspannen, gereedschapswissels, instellen en programmeren.
+              Automatisering richt zich vooral op het minimaliseren van $T_n$.
     \end{itemize}
 \end{conceptbox}
 
-We hebben nu een groot aantal productieprocessen gezien maar
-
-hoe werken de machines die deze processen uitvoeren?
+We hebben nu een groot aantal productieprocessen gezien, maar hoe werken de machines die deze
+processen uitvoeren?
 
 \section{Inleiding}
-Productiemachines worden een aantal voorwaarden opgesteld afhankelijk van het proces.
+Aan productiemachines worden, afhankelijk van het proces, een aantal eisen gesteld.
 
 \begin{figure}[htbp]
     \centering
@@ -3913,10 +3962,11 @@ Productiemachines worden een aantal voorwaarden opgesteld afhankelijk van het pr
 \end{figure}
 \FloatBarrier
 
-Welke energie heb je nodig en in welk soort energie wordt die het liefst omgezet. Kinetische, warmte, enz.
-Hoe moet de machine ook bewegen?
-Een draaimachine moet roteren, een freesmachine moet lineair bewegen langs het oppervlakte en op en neer gaan.
-De snelheid van de machines wordt door al deze eisen en kenmerken bepaald.
+Welke energie heb je nodig, en in welke vorm moet die omgezet worden (kinetisch, warmte, \ldots)?
+Hoe moet de machine bewegen?
+Een draaimachine moet het werkstuk laten roteren; een freesmachine moet de frees laten roteren
+én de tafel lineair verplaatsen in drie richtingen.
+Al die eisen samen bepalen de snelheden waarmee de machine moet kunnen werken.
 
 Hoe worden werkstukken geklemd?
 Ze mogen namelijk niet bewegen tijdens het bewerken of alleen bewegen langs gewenste vrijheidsrichtingen.
@@ -3926,17 +3976,10 @@ De stijfheid van de machine is ook belangrijk voor je nauwkeurigheid.
 Je hebt dan manuele en automatische machines.
 
 \section{Waarom automatiseren?}
-Automatiseren kan bij grote productieaantallen de productiviteit verhogen.
-
-\textbf{De productietijd = Hoofdtijd + neventijd}
-
-\begin{conceptbox}[Productietijd]
-    \textbf{Hoofdtijd}: Dit is de tijd waarin het werkstuk daadwerkelijk wordt bewerkt.
-    \newline
-    \textbf{Neventijd}: Dit is de tijd waarin het werkstuk niet wordt bewerkt.
-    Dit kan zijn door het in- en uitladen van het werkstuk, het instellen van de machine, onderhoud, programmeren,
-    metingen en correcties, enz.
-\end{conceptbox}
+Automatiseren verhoogt bij grote productieaantallen de productiviteit, vooral door de \textbf{neventijd}
+$T_n$ te drukken: in- en uitladen, instellen, gereedschapswissels, metingen en correcties.
+De hoofdtijd $T_h$ ligt immers grotendeels vast door het proces zelf (snijsnelheid, voeding).
+Bij enkelstuks weegt de programmeer- en insteltijd juist zwaar door, en daar loont automatiseren minder.
 
 \subsection{Starre automatiseringen}
 \vspace{0.2cm}
@@ -3948,24 +3991,24 @@ Automatiseren kan bij grote productieaantallen de productiviteit verhogen.
 \end{figure}
 \FloatBarrier
 
-Bij een revolverdraaibank ga je een machine mechanisch automatiseren.
-Je hebt verschillende koppen die dan automatisch wisselen en een operatie uitvoeren.
-Zo kun je meerdere bewerkingen uitvoeren zonder tussenkomst van een operator.
-Dit is snel als je het uiteindelijk opgezet hebt maar het programmeren van
-de machine is wel tijdrovend.
+Bij een revolverdraaibank automatiseer je de machine \emph{mechanisch}, met nokken en aanslagen.
+Je hebt verschillende beitelposities in een revolverkop die automatisch wisselen en elk een operatie uitvoeren.
+Zo voer je meerdere bewerkingen uit zonder tussenkomst van een operator.
+Eenmaal ingesteld gaat dit razendsnel, maar het \emph{instellen} zelf is tijdrovend, en voor elk nieuw
+product moet je alles opnieuw mechanisch afregelen. Vandaar de naam \emph{starre} automatisering.
 
 \subsection{NC-gestuurde machines}
 
-Vandaag de dag wordt starre automatisering niet meer gebruikt want
-de meeste zijn overgenomen door NC-gestuurde machines.
-Deze werken met G-code. Alle NC-gestuurde machines werken met G-code.
-Van 3D-printers tot CNC-freesmachines. Meeste G-code is gelijkaardig en
-geeft controle over de feedrate, tool, spindelsnelheid, koelvloeistof, bewegingen, enz.
-Het probleem is dat G-code niet een overzicht geeft van de bewerkingen die je uitvoert.
-NC machines hebben vaak een interface waarbij je visueel bewerkingen kunt maken.
-\textit{Denk aan de Visual quick code van de labo's.}
-Bij NC-machines kun je met G-code tools switches maken, werkstukken verwisselen,
-multispindle bewerkingen uitvoeren, enz.
+Vandaag wordt starre automatisering nog nauwelijks gebruikt: NC-gestuurde machines hebben het overgenomen.
+Die werken met \textbf{G-code}, van 3D-printers tot CNC-freesmachines.
+De meeste G-code is gelijkaardig en geeft controle over de voedingssnelheid, het gereedschap,
+het spiltoerental, de koelvloeistof, de bewegingen enzovoort.
+Het nadeel is dat G-code op zich geen \emph{overzicht} geeft van de bewerkingen die je uitvoert:
+je ziet enkel een lange lijst coördinaten.
+Daarom hebben NC-machines vaak een interface waarin je bewerkingen visueel kunt opbouwen.
+\textit{Denk aan de visuele quick-code van de labo's.}
+Met G-code kun je bovendien gereedschapswissels programmeren, werkstukken verwisselen
+en bewerkingen met meerdere spillen uitvoeren.
 
 
 Voorbeeld van G-code (frezen van een vierkant van 50x50 mm):
@@ -3973,11 +4016,11 @@ Voorbeeld van G-code (frezen van een vierkant van 50x50 mm):
     \begin{verbatim}
 G21          ; Gebruik metrische eenheden (mm)
 G90          ; Absolute positionering
+T1 M6        ; Gereedschapswissel naar gereedschap 1
 M3 S2000     ; Start spindel (2000 RPM)
 G0 X0 Y0 Z5  ; Snelverplaatsing naar startpunt boven werkstuk
 G1 Z-2 F100  ; Lineaire verplaatsing naar diepte -2mm (voeding 100)
 G1 X50 F500  ; Frees naar X=50
-T1 			 ; Gereedschapwissel naar gereedschap 1
 G1 Y50       ; Frees naar Y=50
 G1 X0        ; Frees naar X=0
 G1 Y0        ; Frees naar Y=0
@@ -4058,7 +4101,7 @@ en kunnen steeds complexere taken aan.
 \textbf{CAM} (Computer Aided Manufacturing) is het omzetten van deze modellen naar bewerkingsprogramma's.
 
 Vandaag de dag werken deze dingen hand in hand met de computer.
-Je ontwerpt een model in CAD and dan kun je dit model importeren in CAM-software.
+Je ontwerpt een model in CAD en importeert dat model daarna in CAM-software.
 In deze CAM-software kun je dan bewerkingen definiëren zoals frezen, boren, zagen, enz.
 De CAM-software genereert dan CL-data, dit is coördinaatcode (geen G-code),
 daarna wordt er voor de specifieke machine G-code gegenereerd.
@@ -4098,8 +4141,8 @@ Het totale voortbrengingsproces doorloopt doorgaans de volgende stadia:
     \item \textbf{Montage of assemblage}: Het samenvoegen van de verschillende geproduceerde onderdelen tot één werkend eindproduct.
 \end{enumerate}
 
-\textbf{Macrowerkmethode}: Je gaat ruim kijken hoe je het product gaat maken. Welke machines en processen ga je gebruiken.
-Welke verspanningen en afnames zijn nodig.
+\textbf{Macrowerkmethode}: je kijkt op hoog niveau hoe je het product gaat maken.
+Welke machines en processen ga je gebruiken, in welke volgorde, en welke bewerkingen en afnames zijn nodig?
 
 \textbf{Microwerkmethode}: Hier ga je duiken in de details zoals wat is de voeding die ik moet gebruiken.
 Welke snijsnelheid, welke gereedschappen, welke koelvloeistof, enz.
@@ -4121,8 +4164,8 @@ Je bewerkingsplan hangt af van heel wat factoren:
 Je moet duidelijk weten wat mogelijk is en wat de beperkingen zijn.
 De kosten van deze processen moeten ook in rekening worden gebracht.
 Bij het opstellen van een bewerkingsplan is er vaak niet één enkel correct antwoord; verschillende keuzes kunnen verdedigbaar zijn,
-zolang ze goed gemotiveerd worden op basis van factoren zoals de vereiste accuraatheid, de kostprijs,
-de productiesnelheid en de serie-grootte.
+zolang ze goed gemotiveerd worden op basis van factoren zoals de vereiste nauwkeurigheid, de kostprijs,
+de productiesnelheid en de seriegrootte.
 
 \begin{examenbox}
     Motiveer je keuzes voor een specifiek proces altijd aan de hand van technische en economische criteria.
@@ -4191,7 +4234,7 @@ Ondersteuning dient niet enkel om het eigen gewicht van het stuk te dragen, maar
 tegen te gaan.
 
 Zonder de juiste ondersteuning kan het werkstuk gaan doorbuigen of kunnen er trillingen (\textit{chatter}) ontstaan.
-Dit leidt tot een slecht oppervlaktekwaliteit en afwijkingen in de maatvoering.
+Dit leidt tot een slechte oppervlaktekwaliteit en afwijkingen in de maatvoering.
 In de figuur hieronder is te zien hoe ondersteuning helpt om deze buiging te voorkomen.
 
 \begin{figure}[htbp]
@@ -4238,22 +4281,24 @@ Het bewerkingsplan wordt sterk bepaald door de vereiste toleranties en oppervlak
 \FloatBarrier
 
 \section{Microvoorbereiden en bewerkingsstappen}
-Bij de microwerkmethode kijk je naar de specifieke stappen binnen één bewerking. Hierbij maak je onderscheid tussen ruwen en finiseren.
+Bij de microwerkmethode kijk je naar de specifieke stappen binnen één bewerking.
+Hierbij maak je onderscheid tussen ruwen en afwerken.
 
-\begin{conceptbox}[Ruwe bewerkingen (Roughing) en afwerk bewerkingen (Finishing)]
-    \textbf{Ruwe bewerking (Roughing):} Het doel is om zo snel mogelijk materiaal te verwijderen (hoge \textit{Material Removal Rate}).
-    Hierbij gebruik je grote snededieptes en voedingen. De oppervlaktekwaliteit en maattolerantie zijn hier nog van minder belang.
+\begin{conceptbox}[Ruwen (roughing) en afwerken (finishing)]
+    \textbf{Ruwen (roughing):} Het doel is zo snel mogelijk materiaal verwijderen (hoge \textit{material removal rate}).
+    Je gebruikt grote snededieptes en voedingen. Oppervlaktekwaliteit en maattolerantie zijn hier nog van minder belang.
     \newline
-    \textbf{Finiseren (Finishing):} Na het ruwen volgt de nabewerking om de definitieve maatvoering en oppervlaktekwaliteit te bereiken.
-    Hier werk je met kleinere afnames en fijnere voedingen.
+    \textbf{Afwerken (finishing):} Na het ruwen volgt de nabewerking om de definitieve maatvoering en
+    oppervlaktekwaliteit te bereiken. Hier werk je met kleine afnames en fijne voedingen.
 \end{conceptbox}
 
-Vaak zijn er meerdere stappen nodig (bijvoorbeeld: grof ruwen, half-finiseren, finiseren) om de gewenste nauwkeurigheid te halen, zeker als er veel materiaal moet worden weggenomen waardoor interne spanningen kunnen vrijkomen.
+Vaak zijn er meerdere stappen nodig (bijvoorbeeld grof ruwen, voorafwerken, afwerken) om de gewenste
+nauwkeurigheid te halen, zeker als er veel materiaal weggenomen moet worden waardoor interne spanningen vrijkomen.
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=1\textwidth]{assets/image83.png}
-    \caption{Bewerkingstoegift: Eerst ruwen met grote afnames, gevolgd door finiseren met kleine afnames voor het eindresultaat.}
+    \caption{Bewerkingstoegift: eerst ruwen met grote afnames, daarna afwerken met kleine afnames voor het eindresultaat.}
     \label{fig:image83}
 \end{figure}
 
@@ -4262,7 +4307,7 @@ Computer Aided Process Planning (CAPP) automatiseert het maken van werkvoorberei
 
 \begin{itemize}
     \item \textbf{Variant methode (Retrieval type)}: Het systeem zoekt in een database naar een bestaand bewerkingsplan van een vergelijkbaar product (een "variant") en past dit aan voor het nieuwe product. Dit is gebaseerd op Groepentechnologie (GT).
-    \item \textbf{Generatieve methode}: Het systeem genereert een volledig nieuw bewerkingsplan "from scratch" op basis van het 3D-model, technologieregels, machinespecificaties en logaritmen, zonder terug te grijpen naar oude plannen.
+    \item \textbf{Generatieve methode}: Het systeem genereert een volledig nieuw bewerkingsplan "from scratch" op basis van het 3D-model, technologieregels, machinespecificaties en algoritmen, zonder terug te grijpen naar oude plannen.
 \end{itemize}
 
 \begin{examenbox}
@@ -4271,7 +4316,7 @@ Computer Aided Process Planning (CAPP) automatiseert het maken van werkvoorberei
         \item \textbf{Minimaliseer wissels}: Vermijd onnodige gereedschapswissels en zeker heropspanningen. Elke nieuwe opspanning introduceert onnauwkeurigheden.
         \item \textbf{Referentievlakken}: Kies je referentievlakken slim. Vorm- en plaatstoleranties hangen af van hoe je het stuk vasthoudt.
         \item \textbf{Volgorde}: Bewerk nauwkeurige vlakken (bv. IT7/IT8) pas aan het einde.
-              Halffabricaten bevatten vaak interne spanningen die vrijkomen bij het wegnemen van materiaal ("werking" van het materiaal), wat tot vervorming kan leiden als je te vroeg finiseert.
+              Halffabricaten bevatten vaak interne spanningen die vrijkomen bij het wegnemen van materiaal (``werking'' van het materiaal), wat tot vervorming kan leiden als je te vroeg afwerkt.
     \end{itemize}
 \end{examenbox}
 
@@ -4349,7 +4394,7 @@ Onderstaande flowchart geeft een overzicht van de stappen in de werkvoorbereidin
     \begin{itemize}
         \item \textbf{Macro vs. Micro}: Onderscheid beslissingen op procesniveau (routing, machinekeuze) en operationeel niveau (opspanning, tools, parameters).
         \item \textbf{3-2-1 methode}: Leg uit hoe je een werkstuk eenduidig positioneert door vrijheidsgraden te beperken zonder overbepaaldheid.
-        \item \textbf{Klemmen}: Begrijp het doel (tegen gaan proceskrachten) en ken de hulpmiddelen (bankschroef, vacuüm).
+        \item \textbf{Klemmen}: Begrijp het doel (het tegengaan van proceskrachten) en ken de hulpmiddelen (bankschroef, vacuüm, magneet).
         \item \textbf{CAPP}: Onderscheid de variant methode (GT-gebaseerd) en de generatieve methode (vanaf nul).
         \item \textbf{Referentievlakken}: Begrijp dat alle toleranties afhangen van het gekozen referentievlak en heropspanningen vermeden moeten worden.
     \end{itemize}
@@ -4450,12 +4495,12 @@ een gelijkmatige wanddikte om slink te voorkomen, en het vermijden van ondersnij
     \label{fig:DFMregels.png}
 \end{figure}
 
-\begin{conceptbox}[Design for Manufacturing (DFM) VS Manufacturing for Design (MFD)]
-    In dit hoofdstuk hebben we allemaal beperkingen gelegd op het ontwerp ter bevordering van de productie. Dit is DFM.
+\begin{conceptbox}[Design for Manufacturing (DFM) vs.\ Manufacturing for Design (MFD)]
+    In dit hoofdstuk hebben we telkens beperkingen op het ontwerp gelegd om de productie makkelijker te maken. Dat is DFM.
 
     MFD is het omgekeerde. Hier ga je kijken naar de productieprocessen en hoe je deze kunt aanpassen om beter aan de ontwerpvereisten te voldoen.
-    MFD is duurder maar kan wel technologieën voortduwen en nieuwe productietechnologie mogelijk maken.
-    3D printen is ontstaan uit de vraag om makkelijker specifieke eenmalige producten te maken.
+    MFD is duurder, maar duwt de technologie wel vooruit en maakt nieuwe productietechnieken mogelijk.
+    3D-printen is bijvoorbeeld ontstaan uit de vraag om eenmalige, specifieke producten makkelijker te maken.
 \end{conceptbox}
 
 \begin{warningbox}[EXAMEN CHECKLIST: PRODUCTIEGERICHT ONTWERPEN]
@@ -4472,7 +4517,7 @@ een gelijkmatige wanddikte om slink te voorkomen, en het vermijden van ondersnij
 
 Als je een vraag krijgt, wees dan duidelijk in je antwoord.
 Schrijf niet enorm grote paragrafen. Een tekening met een korte uitleg is vaak beter.
-Bekijk de laatste video op toledo waar hij over een voorbeeldexamen gaat.
+Bekijk de laatste video op Toledo waarin hij een voorbeeldexamen overloopt.
 
 \chapter{Examenoefeningen}
 
@@ -4484,7 +4529,7 @@ Bekijk de laatste video op toledo waar hij over een voorbeeldexamen gaat.
 
 \chapter{Slotwoord}
 
-Ik heb 4-dagen van de blok gestoken in het maken van deze samenvatting.
+Ik heb 4 dagen van de blok gestoken in het maken van deze samenvatting.
 
 Ik hoop dat jullie er veel aan hebben gehad en dat het jullie helpt bij het studeren voor de examens.
 
