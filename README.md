@@ -136,6 +136,7 @@ Daarna installeer je **LaTeX** of **Typst** (of beide). Volg de stappen in:
 - **[TYPST.md](TYPST.md)** — Typst installeren en gebruiken
 - **[SCHRIJFGIDS.md](SCHRIJFGIDS.md)** — hoe je een samenvatting opbouwt: van skelet naar uitgewerkte tekst
 - **[OVER-DIT-PROJECT.md](OVER-DIT-PROJECT.md)** — het verhaal en de motivatie achter dit project
+- **[AI-GEBRUIK.md](AI-GEBRUIK.md)** — waarvoor je AI wel en niet gebruikt in dit project
 
 > **Herstart je computer** nadat alles is geïnstalleerd.
 
