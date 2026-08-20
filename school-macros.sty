@@ -738,6 +738,13 @@
 \renewcommand{\textfraction}{0.10}
 \renewcommand{\floatpagefraction}{0.75}
 
+% `report` met `twoside` staat op \flushbottom: elke pagina wordt tot exact
+% dezelfde hoogte opgerekt. Moet een float naar de volgende pagina, dan blijft
+% er te weinig tekst over en rekt LaTeX de tussenruimtes op tot gaten van
+% halve paginas midden in de tekst. Voor een samenvatting is dat erger dan een
+% pagina die wat vroeger eindigt, dus: slack onderaan in plaats van gaten.
+\raggedbottom
+
 % Caption Styling
 \captionsetup{skip=3pt,aboveskip=3pt,belowskip=3pt,font={small,sf},labelfont=bf}
 

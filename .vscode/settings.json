@@ -27,6 +27,13 @@
     "latex-workshop.linting.chktex.enabled": false,
     "latex-workshop.linting.lacheck.enabled": false,
     "latex.linter.enabled": false,
+    "latex-workshop.formatting.latex": "latexindent",
+    "latex-workshop.formatting.latexindent.args": [
+        "-c",
+        "%DIR%/",
+        "%TMPFILE%",
+        "-y=defaultIndent: '    '"
+    ],
     "latex-workshop.latex.tools": [
         {
             "name": "latexmk",
