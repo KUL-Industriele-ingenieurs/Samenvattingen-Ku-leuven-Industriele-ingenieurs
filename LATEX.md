@@ -4,13 +4,13 @@ Hier vind je alles wat je nodig hebt om met LaTeX aan de slag te gaan voor de sa
 
 ---
 
-## Installatie
+## <img src="https://api.iconify.design/material-symbols/install-desktop.svg?color=gray" height="20"> Installatie
 
 ### Benodigde software
 
 Open een terminal en installeer de nodige programma's voor jouw systeem:
 
-**Windows** (PowerShell):
+<img src="https://api.iconify.design/simple-icons/windows.svg?color=gray" height="14"> **Windows** (PowerShell):
 
 ```powershell
 winget install --id Microsoft.VisualStudioCode --id Git.Git --id MiKTeX.MiKTeX
@@ -23,13 +23,13 @@ Officiële websites voor meer info of handmatige downloads:
 - **Strawberry Perl:** [strawberryperl.com](https://strawberryperl.com/)
 - **MiKTeX:** [miktex.org](https://miktex.org/)
 
-**macOS** (Terminal):
+<img src="https://api.iconify.design/simple-icons/apple.svg?color=gray" height="14"> **macOS** (Terminal):
 
 ```bash
 brew install --cask visual-studio-code mactex && brew install git perl
 ```
 
-**Linux** (Ubuntu/Debian):
+<img src="https://api.iconify.design/simple-icons/linux.svg?color=gray" height="14"> **Linux** (Ubuntu/Debian):
 
 ```bash
 sudo apt install code git perl texlive-full
@@ -49,7 +49,7 @@ Als je het project in VS Code opent, zal het programma rechtsonder vragen om een
 
 ---
 
-## Hoe werk je met LaTeX?
+## <img src="https://api.iconify.design/material-symbols/rocket-launch-outline.svg?color=gray" height="20"> Hoe werk je met LaTeX?
 
 ### PDF bouwen en bekijken
 
@@ -63,7 +63,7 @@ Als je het project in VS Code opent, zal het programma rechtsonder vragen om een
 
 ---
 
-## Snippets (Sneltoetsen)
+## <img src="https://api.iconify.design/material-symbols/keyboard-outline.svg?color=gray" height="20"> Snippets (Sneltoetsen)
 
 Om sneller te kunnen typen in LaTeX, zijn er VS Code snippets toegevoegd aan deze repository. Typ het trefwoord en druk op `Tab` om het volledige blok in te voegen:
 
@@ -81,7 +81,7 @@ Om sneller te kunnen typen in LaTeX, zijn er VS Code snippets toegevoegd aan dez
 
 ---
 
-## Templates
+## <img src="https://api.iconify.design/material-symbols/description-outline.svg?color=gray" height="20"> Templates
 
 We hebben al twee templates voor je klaargezet. Gebruik de juiste voor je vak:
 
@@ -105,7 +105,7 @@ Ideaal is om elk hoofdstuk in een eigen bestand in de `chapters/` map te zetten,
 
 ---
 
-## School-Macros
+## <img src="https://api.iconify.design/material-symbols/code.svg?color=gray" height="20"> School-Macros
 
 Dit is voor latex de tempalate woorddoor je alle box-omgevingen hebt en de font en styling krijgt.
 
@@ -113,13 +113,13 @@ Je kunt de omgeving leren in de template [macro_usage_guide.tex](latex_templates
 
 ---
 
-## Video's
+## <img src="https://api.iconify.design/material-symbols/smart-display-outline.svg?color=gray" height="20"> Video's
 
 - **[LaTeX voor Beginners](https://www.youtube.com/watch?v=UK8SMrS0G4Y)** – De basis van documenten schrijven.
 
 ---
 
-## Problemen?
+## <img src="https://api.iconify.design/material-symbols/help-outline.svg?color=gray" height="20"> Problemen?
 
 - Als de PDF niet wil bouwen, bekijk dan even **[Debugging-van-building.md](Debugging-van-building.md)**.
 - Kom je er echt niet uit? Vraag het op de [Industria Discord](https://discord.gg/gsDzr5qhPe).

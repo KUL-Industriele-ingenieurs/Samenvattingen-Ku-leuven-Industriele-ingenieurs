@@ -1,6 +1,6 @@
 # Over dit project
 
-## Waarom
+## <img src="https://api.iconify.design/material-symbols/help-outline.svg?color=gray" height="20"> Waarom
 
 Ik wou **deftige samenvattingen** maken voor mensen van mijn richting — Industrieel
 Ingenieur aan de KU Leuven. Niet de zoveelste losse notities, maar samenvattingen
@@ -12,7 +12,7 @@ zelf kunnen verbeteren. Samen bouwen we zo aan betere samenvattingen dan ieder
 apart zou maken — en je leert er git, LaTeX en Typst mee, die je toch nodig hebt
 voor groepsprojecten en je master.
 
-## Het verhaal
+## <img src="https://api.iconify.design/material-symbols/history.svg?color=gray" height="20"> Het verhaal
 
 Het begon met twee vakken, volledig in **LaTeX**:
 
@@ -28,7 +28,7 @@ eindresultaat er hetzelfde uitziet.
 Sindsdien komen nieuwe samenvattingen in Typst, terwijl de LaTeX-samenvattingen
 gewoon blijven bestaan. Beide tools leven naast elkaar in deze repo.
 
-## Hoe het werkt
+## <img src="https://api.iconify.design/material-symbols/settings-outline.svg?color=gray" height="20"> Hoe het werkt
 
 | Doc | Waarvoor |
 |-----|----------|
@@ -41,7 +41,7 @@ gewoon blijven bestaan. Beide tools leven naast elkaar in deze repo.
 De rode draad bij het schrijven: **eerst de volledige structuur (het skelet),
 daarna pas de inhoud — les per les.** Zie de [schrijfgids](SCHRIJFGIDS.md).
 
-## Meedoen
+## <img src="https://api.iconify.design/material-symbols/handshake-outline.svg?color=gray" height="20"> Meedoen
 
 Fork de repo, maak een branch, werk een hoofdstuk of vak uit, en stuur een pull
 request. Kleine bijdragen (een typo, een duidelijkere figuur, één sectie) zijn

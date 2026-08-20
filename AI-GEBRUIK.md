@@ -8,12 +8,12 @@ alles zomaar door een model geschreven wordt.
 
 ---
 
-## Waar AI wel voor mag dienen
+## <img src="https://api.iconify.design/material-symbols/check-circle-outline.svg?color=gray" height="20"> Waar AI wel voor mag dienen
 
 Dit zijn allemaal dingen waar ik AI zelf ook voor gebruik. Ze maken de
 samenvattingen net overzichtelijker.
 
-### Taal
+### <img src="https://api.iconify.design/material-symbols/spellcheck.svg?color=gray" height="18"> Taal
 
 - **Spellingchecker.** Nota's die je tijdens de les typt zitten nu eenmaal vol
   tikfouten. Laat een model daar gerust over gaan.
@@ -22,7 +22,7 @@ samenvattingen net overzichtelijker.
 - **Stijladviseur.** Wat zet je vetgedrukt, waar hoort een kader, hoe deel je een
   lap tekst op in secties. Opmaak dus, niet de inhoud.
 
-### Figuren
+### <img src="https://api.iconify.design/material-symbols/draw-outline.svg?color=gray" height="18"> Figuren
 
 - **Figuren maken** met de Typst- en LaTeX-packages: `cetz`, `tikzpicture`,
   `pgfplots`, matplotlib, ... Zo'n tekening zelf uitschrijven kost veel tijd, en
@@ -30,7 +30,7 @@ samenvattingen net overzichtelijker.
 - **Tekst uit een figuur overnemen**, of een oefening die op een slide uitgewerkt
   staat omzetten naar tekst in de samenvatting.
 
-### Inhoud nakijken
+### <img src="https://api.iconify.design/material-symbols/fact-check-outline.svg?color=gray" height="18"> Inhoud nakijken
 
 - **Kenniscontroleur.** Laat je uitleg nalezen op fouten.
   > **Wijs het model wel naar de bronnen van het vak.** AI schrijft soms dingen
@@ -39,7 +39,7 @@ samenvattingen net overzichtelijker.
 - **Oefeningchecker.** Je uitwerking laten controleren en laten aanwijzen waar je
   fout loopt.
 
-### Structuur en project
+### <img src="https://api.iconify.design/material-symbols/account-tree-outline.svg?color=gray" height="18"> Structuur en project
 
 - **Plaatsingshulp.** Je hebt een stuk tekst maar je weet niet waar het hoort of
   waarmee je het moet linken. AI kan helpen zoeken waar het past in de bestaande
@@ -49,7 +49,7 @@ samenvattingen net overzichtelijker.
 
 ---
 
-## Wat je altijd zelf nakijkt
+## <img src="https://api.iconify.design/material-symbols/visibility-outline.svg?color=gray" height="20"> Wat je altijd zelf nakijkt
 
 Ook bij het toegelaten gebruik hierboven blijven er drie dingen die je niet aan
 een model kunt overlaten.
@@ -78,7 +78,7 @@ enkel de output van de compiler.
 
 ---
 
-## Waar AI niet voor dient
+## <img src="https://api.iconify.design/material-symbols/do-not-disturb-on-outline.svg?color=gray" height="20"> Waar AI niet voor dient
 
 **AI mag je schrijven niet overnemen.** Niet als jij daardoor geen beslissingen
 meer neemt over wat er in de tekst staat.

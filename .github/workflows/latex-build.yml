@@ -322,7 +322,7 @@ jobs:
 
             - name: List downloaded PDFs
               run: |
-                  echo "📄 PDFs to include in prerelease:"
+                  echo "PDFs to include in prerelease:"
                   ls -la artifacts/pdfs/ || echo "No PDFs found"
 
             - name: Create or Update Release
@@ -340,13 +340,13 @@ jobs:
                   git push -f origin latest
 
                   # 2. Prepare Release Body using printf to avoid heredoc indentation issues
-                  printf "## 🔄 Automatic Prerelease\n\n" > release_body.md
+                  printf '%s\n\n' "## <img src='https://api.iconify.design/material-symbols/autorenew.svg?color=gray' height='22'> Automatic Prerelease" > release_body.md
                   printf "**Build Date:** ${{ steps.info.outputs.datetime }}\n" >> release_body.md
                   printf "**Commit:** [\`${{ steps.info.outputs.short_sha }}\`](https://github.com/${{ github.repository }}/commit/${{ github.sha }})\n\n" >> release_body.md
                   printf "This is an automatically generated prerelease containing the latest compiled PDF documents.\n\n" >> release_body.md
-                  printf "> ⚠️ **Note:** This prerelease is automatically updated with every commit to the main branch.\n" >> release_body.md
+                  printf '%s\n' "> <img src='https://api.iconify.design/material-symbols/warning-outline.svg?color=gray' height='16'> **Note:** This prerelease is automatically updated with every commit to the main branch." >> release_body.md
                   printf "> For stable versions, see the [official releases](https://github.com/${{ github.repository }}/releases?q=NOT+prerelease).\n\n" >> release_body.md
-                  printf "### 📥 Downloads\nAll PDF summaries are attached below.\n\n" >> release_body.md
+                  printf '%s\n%s\n\n' "### <img src='https://api.iconify.design/material-symbols/download.svg?color=gray' height='20'> Downloads" "All PDF summaries are attached below." >> release_body.md
                   printf "**Update scripts** are also attached — download into a folder and run to fetch/update every summary, organized per year:\n" >> release_body.md
                   printf '%s\n' "- Linux / macOS: \`update.sh\`  (run \`bash update.sh\`)" >> release_body.md
                   printf '%s\n' "- Windows: \`update.ps1\`  (right-click -> Run with PowerShell)" >> release_body.md
@@ -361,7 +361,7 @@ jobs:
 
                   echo "Creating fresh release..."
                   gh release create latest \
-                    --title "📚 Latest Build (${{ steps.info.outputs.date }})" \
+                    --title "Latest Build (${{ steps.info.outputs.date }})" \
                     --prerelease \
                     --latest \
                     --draft=false \
