@@ -30,15 +30,22 @@
 // Symbol list and formularium are auto-generated
 
 
-#for i in range(1, 12) {
-  page(margin: 1cm)[
-    #image("assets/StatisticsFormulaChart.pdf", width: 100%, alt: "Statistics Formula Chart", page: i)
-  ]
-}
+#include "0.Formularium.typ"
+
+// ----- DEEL I: BESCHRIJVENDE STATISTIEK EN KANSREKENING -----
+#include "1.Intro-statistiek.typ"                                // boek H1 + H2
+#include "2.Probabiliteit.typ"                                   // boek H3
+#include "3.Discrete-random-variables.typ"                       // boek H4
+#include "4.Continuous-random-variables.typ"                     // boek H5
+
+// ----- DEEL II: INFERENTIELE STATISTIEK -----
+#include "5.Sampling-distributions.typ"                          // boek H6
+#include "6.Confidence interval afhankelijk van een sample.typ"  // boek H7
+#include "7.Hypothesetoetsen.typ"                                // boek H8
+#include "8.Twee-steekproeven.typ"                               // boek H9
+#include "9.ANOVA.typ"                                           // boek H10
+#include "10.Lineaire-regressie.typ"                             // boek H11
+
+// Het auto-formularium verzamelt elke #frm() uit de hoofdstukken hierboven.
+// Staat achteraan zodat het losgescheurd kan worden als naslag bij het oefenen.
 #printformularium()
-#include "1.Intro-statistiek.typ"
-#include "2.Probabiliteit.typ"
-#include "3.Discrete-random-variables.typ"
-#include "4.Continuous-random-variables.typ"
-#include "5.Sampling-distributions.typ"
-#include "6.Confidence interval afhankelijk van een sample.typ"
