@@ -107,11 +107,11 @@ Motorbeveiliging is nodig omdat een motor bij het starten veel meer stroom trekt
 
 === Het starten van een motor
 
-#TODO[Deck 4, slides 34-36. Direct-on-line versus ster-driehoek versus softstarter versus VFD: wat doet elke methode met de inschakelstroom en het aanloopkoppel.]
+De startmethodes (DOL, ster-driehoek, softstarter, VFD) en het schema van een VFD staan bij @sec:motor-starten in het hoofdstuk Veiligheid.
 
 === Drives, EMI en de aardverbinding
 
-#TODO[Deck 4, slides 38-41. Waarom een VFD elektromagnetische storing (EMI) maakt, de rol van de PE-verbinding en van afgeschermde motorkabel, en hoe je de afscherming correct aanlegt.]
+Zie @sec:vfd-emi in het hoofdstuk Veiligheid: waarom een VFD elektromagnetische storing (EMI) maakt, de rol van de afgeschermde motorkabel en de aarding op één punt.
 
 === Motor efficentie <sec:motor-efficiency>
 
@@ -129,6 +129,43 @@ Faculty of Engineering Technology
 • IE3 (Premium Efficiency)
 • IE4 (Super Premium Efficiency)
 
+
+== Overzicht van schakel- en beveiligingscomponenten <sec:overzicht-schakelcomponenten>
+
+Hier is nog een overzicht van alle schakele en beveilingscompontenten, hun functie en wanneer ze toegepast worden.
+
+#table(
+  columns: (auto, 1fr, 1.3fr, 1.3fr),
+  align: (left, left, left, left),
+  table.header([*Component*], [*Volledige naam*], [*Functie*], [*Waarom nodig?*]),
+
+  [RCD],
+  [Differentieelschakelaar (Residual Current Device)],
+  [Beschermt personen tegen lekstromen naar aarde (elektrocutiebeveiliging).],
+  [Voorkomt levensgevaar bij isolatiefouten of aanraking van defecte toestellen.],
+
+  [MBS],
+  [Motorbeveiligingsschakelaar (MPCB, Motor Protection Circuit Breaker)],
+  [Beveiligt motoren tegen overbelasting en kortsluiting.],
+  [Beschermt de motor tegen schade door te hoge stroom.],
+
+  [Contactor],
+  [Elektromechanisch schakelsysteem],
+  [Schakelt de belasting (bv. motor) via een laagspanningssturing.],
+  [Laat toe om de belasting automatisch of op afstand te schakelen.],
+
+  [Relais],
+  [Hulpschakelaar],
+  [Stuurt bijvoorbeeld de contactorspoel aan op basis van een signaal.],
+  [Verwerkt logica of signalen (bv. van een PLC) voor schakeling.],
+
+  [Smeltzekering],
+  [(Optioneel) smeltveiligheid],
+  [Snelle bescherming tegen zeer hoge kortsluitstromen.],
+  [Extra beveiliging voor bekabeling of bovenliggende componenten zoals de MBS.],
+)
+
+Let op het onderscheid dat deze tabel maakt: *wie schakelt* (contactor, relais) tegenover *wie beveiligt* (RCD, MBS, smeltzekering), en bij de beveiligers *wat* er beschermd wordt --- de RCD beschermt de mens, de MBS de motor, de smeltzekering de bekabeling.
 
 == Contactors
 
