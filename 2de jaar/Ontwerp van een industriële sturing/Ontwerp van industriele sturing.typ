@@ -38,3 +38,4 @@
 #include "8.Pneumatica deel 2.typ"
 #include "9.3D methode.typ"
 #include "10.Analoge signalen.typ"
+#include "11.De stuurkast.typ"
