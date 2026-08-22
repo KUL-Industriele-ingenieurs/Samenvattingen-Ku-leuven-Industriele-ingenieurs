@@ -312,7 +312,17 @@ aflezing gewoon niet. Op een toestel dat het wél goed doet staat daarom explici
 \subsection{Fasors}
 
 Een wisselstroom of -spanning kan je ook voorstellen als een roterende vector in het complexe vlak.
-Dit noemen we een fasor.
+Die roterende vector heet een \textbf{sinor}:
+\[v(t) = V_m\,e^{j(\omega t + \phi)}\]
+Hij draait met $\omega$ rond de oorsprong, en zijn projectie op een as is precies de sinus waarmee je
+begon.
+
+Een \keyterm{fasor} is die sinor \textbf{bevroren op $t = 0$}:
+\[\underline{V} = V_m\,e^{j\phi} = V_m\angle\phi\]
+De tijdsafhankelijkheid $e^{j\omega t}$ laat je gewoon weg. Dat mag, omdat \emph{alle} grootheden in
+\'e\'en oefening dezelfde $\omega$ hebben en dus even snel draaien: hun onderlinge hoeken liggen vast.
+Precies daarom mag je fasoren nooit optellen als de frequenties verschillen --- dan draaien ze niet
+meer synchroon en heeft ``de hoek ertussen'' geen betekenis meer.
 
 \vspace{0.5cm}
 
@@ -599,6 +609,16 @@ verschuiving $90^\circ$; een weerstand verschuift niets.
 
 \frm{Reactantie spoel}{X_L = \omega L}{Met $X_L$ de inductieve reactantie in Ohm, $\omega$ de pulsatie in rad/s en L de inductantie in Henry.}
 \frm{Reactantie condensator}{X_C = \frac{-1}{\omega C}}{Met $X_C$ de capacitieve reactantie in Ohm, $\omega$ de pulsatie in rad/s en C de capaciteit in Farad.}
+
+\frm{Admittantie}{\underline{Y} = \frac{1}{\underline{Z}} = G + jB}
+{Met $\underline{Y}$ de admittantie in siemens (S), $G$ de conductantie en $B$ de susceptantie in S.
+    Let op: $G \neq 1/R$ zodra er ook reactantie is --- je moet de hele breuk $1/\underline{Z}$
+    uitrekenen.}
+
+Waarom dat handig is: bij \textbf{parallel}takken tellen admittanties gewoon op
+($\underline{Y}_{tot} = \underline{Y}_1 + \underline{Y}_2 + \dots$), net zoals impedanties optellen
+bij \emph{serie}takken. Bij drie of meer parallelle takken is dat een pak minder rekenwerk dan
+telkens $\frac{\underline{Z}_1\underline{Z}_2}{\underline{Z}_1+\underline{Z}_2}$ herhalen.
 
 \frm{Totale impedantie in serie}{Z_{totaal} = \sqrt{R^2 + (X_L + X_C)^2}}{Met $Z_{totaal}$ de totale impedantie in Ohm, R de weerstand in Ohm, $X_L$ de inductieve reactantie in Ohm en $X_C$ de capacitieve reactantie in Ohm.}
 
@@ -976,6 +996,64 @@ Wat gebeurt er links en rechts van de piek?
 \end{figure}
 \FloatBarrier
 
+\subsubsection{Serie versus parallel: de stroom doet net het omgekeerde}
+
+Dit is de valkuil die op het examen terugkomt. Serie- en parallelresonantie gebeuren allebei wanneer
+$\text{Im}\{\underline{Z}\} = 0$, maar het gevolg is tegengesteld:
+
+\begin{center}
+    \begin{tabular}{@{}p{34mm}p{44mm}p{44mm}@{}}
+        \toprule
+                                  & \textbf{Serieresonantie}                          & \textbf{Parallelresonantie}                        \\
+        \midrule
+        Totale impedantie         & \textbf{minimaal} ($\underline{Z} = R$)           & \textbf{maximaal} ($\underline{Z} = R_p$)          \\[1mm]
+        Bronstroom                & \textbf{maximaal}                                 & \textbf{minimaal}                                  \\[1mm]
+        Bijnaam                   & spanningsopslingering over $L$ en $C$             & stroomopslingering \emph{binnen} de kring          \\[1mm]
+        $\omega < \omega_0$       & capacitief                                        & inductief                                          \\[1mm]
+        $\omega > \omega_0$       & inductief                                         & capacitief                                         \\
+        \bottomrule
+    \end{tabular}
+\end{center}
+
+Bij een parallelkring met een re\"ele spoel ($R$ in serie met $L$) is de bronstroom bij resonantie
+niet nul, maar wel zo klein mogelijk:
+\[\underline{I}_r = \frac{V R}{(\omega L)^2} = \frac{V R C}{L} = \frac{V}{R_p}\]
+Met een \emph{ideale} spoel ($R = 0$) zou de bronstroom exact nul worden: de spoel en de condensator
+wisselen dan onderling energie uit zonder dat de bron er iets aan hoeft bij te dragen.
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[x=2.1cm, y=0.9cm, >=latex]
+        % serie: stroom maximaal
+        \begin{scope}
+            \draw[->, gray] (0,0) -- (2.5,0) node[right, font=\scriptsize, black] {$f$};
+            \draw[->, gray] (0,0) -- (0,2.6) node[above, font=\scriptsize, black] {$I$};
+            \draw[ultra thick, schoolBlue, smooth, samples=80, domain=0.12:2.35]
+                plot (\x, {2.2/sqrt(1+16*((\x/1.1)-(1.1/\x))^2)});
+            \draw[dashed, gray!70] (1.1,0) -- (1.1,2.3);
+            \node[font=\scriptsize, below] at (1.1,-0.06) {$f_0$};
+            \node[font=\scriptsize\bfseries, anchor=north, align=center] at (1.25,-0.45) {seriekring:\\stroom \textbf{maximaal}};
+        \end{scope}
+        % parallel: stroom minimaal
+        \begin{scope}[shift={(3.4,0)}]
+            \draw[->, gray] (0,0) -- (2.5,0) node[right, font=\scriptsize, black] {$f$};
+            \draw[->, gray] (0,0) -- (0,2.6) node[above, font=\scriptsize, black] {$I$};
+            \draw[ultra thick, schoolRed, smooth, samples=80, domain=0.45:2.35]
+                plot (\x, {0.35 + 2.0*abs((\x/1.1)-(1.1/\x))/2.6});
+            \draw[dashed, gray!70] (1.1,0) -- (1.1,2.3);
+            \node[font=\scriptsize, below] at (1.1,-0.06) {$f_0$};
+            \node[font=\scriptsize, schoolRed, right] at (1.30,0.22) {$I_r = VRC/L$};
+            \draw[schoolRed, thin] (1.28,0.26) -- (1.12,0.38);
+            \node[font=\scriptsize\bfseries, anchor=north, align=center] at (1.25,-0.45) {parallelkring:\\stroom \textbf{minimaal}};
+        \end{scope}
+    \end{tikzpicture}
+    \caption{De bronstroom in functie van de frequentie. Links een seriekring: bij $f_0$ valt de
+        reactantie weg, blijft alleen $R$ over en piekt de stroom. Rechts een parallelkring: daar is
+        de impedantie bij $f_0$ juist het \emph{grootst}, dus zakt de bronstroom naar een minimum.}
+    \label{fig:resonantie-serie-parallel}
+\end{figure}
+\FloatBarrier
+
 
 \section{Hoofdstuk 3: Elektrische netwerken}
 
@@ -988,7 +1066,7 @@ plaats van met reële weerstanden $R$. Laat je daardoor niet afschrikken: de reg
 alleen je rekenmachine moet in complexe modus staan.
 
 Wat wél nieuw is, zijn de \emph{werkwijzen} verderop in dit hoofdstuk: wanneer je achterwaarts
-rekent met een schaalfactor, wanneer je knooppuntanalyse gebruikt, en hoe je een oefening aanpakt
+rekent met een correctiefactor, wanneer je knooppuntanalyse gebruikt, en hoe je een oefening aanpakt
 waarin je alleen de \emph{groottes} van stromen kent.
 
 \frm{Belastingen in serie}{Z_{totaal} = Z_1 + Z_2 + ... + Z_n}{Met $Z_{totaal}$ de totale impedantie in Ohm en $Z_1, Z_2, ..., Z_n$ de individuele impedanties in Ohm.}
@@ -1352,7 +1430,13 @@ slechts geldig zijn voor één specifieke frequentie.
 {Voor maximale overdracht van \textbf{actief vermogen} aan een wisselstroombelasting $\underline{Z}_L = R_L + jX_L$ moet de belastingsimpedantie de \textbf{complex geconjugeerde} zijn van de Thévenin-impedantie $\underline{Z}_{\text{th}} = R_{\text{th}} + jX_{\text{th}}$.
     De reactanties heffen elkaar dan op ($X_L = -X_{\text{th}}$), waardoor totale resonantie optreedt.
     \newline
-    \textbf{Speciaal geval (zuiver ohmse belasting $R_L$):} Indien $X_L = 0$, treedt het maximum op wanneer $R_L = |\underline{Z}_{\text{th}}| = \sqrt{R_{\text{th}}^2 + X_{\text{th}}^2}$.}
+    \textbf{Speciaal geval (zuiver ohmse belasting $R_L$):} kan je geen reactantie kiezen, dan is
+$X_L = 0$ en treedt het maximum op wanneer
+\[R_L = |\underline{Z}_{\text{th}}| = \sqrt{R_{\text{th}}^2 + X_{\text{th}}^2}
+    \qquad\Longrightarrow\qquad
+    P_{L,\max} = \frac{V_{\text{th}}^2}{2\left(R_{\text{th}} + |\underline{Z}_{\text{th}}|\right)}\]
+Dat maximum ligt altijd \emph{lager} dan wat je met een aangepaste complexe belasting haalt: je kan
+de reactantie van de bron nu immers niet wegcompenseren.}
 
 \subsection{Werken met enkel de grootte van stromen}
 
@@ -1470,6 +1554,13 @@ schaal zijn, niet uit de losse hand.
 
 Stel je drie bronnen voor die elk 120 graden verschil hebben
 met elkaar.
+
+\begin{examenbox}[Wat ``de voeding'' in het labo betekent]
+    Spreekt een opgave over de labovoeding, dan bedoelt men een driefasig net met een
+    \textbf{lijnspanning $V_L = 400$~V} en een \textbf{fasespanning $V_f = 230$~V} ten opzichte van
+    de aarding. Controleer dus altijd of een gegeven spanning de lijn- of de fasespanning is:
+    $400/\sqrt3 = 230$.
+\end{examenbox}
 
 \[V_1 = V_m \sin(\omega t)\]
 \[V_2 = V_m \sin(\omega t - 120^\circ)\]
@@ -1946,6 +2037,20 @@ Bij gelijke belastingen is het totale vermogen simpelweg $P_{totaal} = 3 \cdot P
 Zijn de belastingen niet gelijk, dan kunnen we het totale vermogen niet meer op die manier berekenen
 en gebruiken we in plaats daarvan de 2-wattmethode.
 
+De voor de hand liggende aanpak zou zijn: \'e\'en wattmeter per fase, alle drie gemeten tegenover
+hetzelfde referentiepunt $O$, en dan $P_{totaal} = P_1 + P_2 + P_3$. Dat werkt altijd, maar het kan
+met \'e\'en meter minder --- en dat is precies wat de 2-wattmethode doet.
+
+\begin{waarschuwing}[Wanneer twee wattmeters níet volstaan]
+    De 2-wattmethode werkt bij \textbf{drie draden}: een driehoek, of een ster \emph{zonder}
+    nulgeleider. Ze werkt ook bij onevenwicht --- dat is juist haar sterkte.
+
+    Ze werkt \belangrijk{niet} zodra er een \textbf{nulgeleider is waar stroom door loopt}
+    (vierdraads en onevenwichtig). De afleiding steunt erop dat $\underline{I}_1 + \underline{I}_2 +
+    \underline{I}_3 = 0$, en die som is dan niet meer nul. In dat geval heb je wel degelijk
+    \textbf{drie} wattmeters nodig.
+\end{waarschuwing}
+
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.6\textwidth]{assets/2-wattmethode.png}
@@ -1970,6 +2075,22 @@ $V_{32}$ ijlt achter op $V_{3}$ met 30 graden
     \caption{Fasordiagrammen bij de afleiding van de 2-wattmethode.}
     \label{fig:image5.png}
 \end{figure}
+
+\begin{examenbox}[EXAMENVRAAG: waarom is de nulgeleider misleidend?]
+    Omdat men er te makkelijk van uitgaat dat er ``toch geen stroom door loopt''. Dat klopt alleen
+    bij een \emph{perfect} evenwichtig systeem. Zodra er onevenwicht is:
+    \begin{itemize}
+        \item loopt er wél stroom door de nulgeleider, en die kan zelfs groter zijn dan je verwacht;
+        \item verschuift het sterpunt van de last (\textbf{centrumpuntverschuiving}) als de
+              nulgeleider ontbreekt of onderbroken raakt, waardoor de ene fase te veel spanning
+              krijgt en de andere te weinig;
+        \item raakt de nulgeleider overbelast zonder dat iemand het merkt: er zit geen automaat op en
+              er is geen zichtbare indicatie;
+        \item stapelen bij niet-lineaire belastingen (schakelende voedingen, ledverlichting) de
+              \textbf{harmonischen} zich juist \emph{op} in de nulgeleider in plaats van weg te
+              vallen.
+    \end{itemize}
+\end{examenbox}
 
 \frm{Totale vermogen in 2-wattmethode}{P_{totaal} = 3V_f \cdot I_f \cos{\theta}  =\sqrt{3} V_L \cdot I_L \cos{\theta}
 }{Met $P_{totaal}$ het totale actieve vermogen in Watt, $V_L$ de lijnspanning in Volt,
