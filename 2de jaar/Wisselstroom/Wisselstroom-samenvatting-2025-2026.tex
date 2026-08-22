@@ -918,6 +918,22 @@ vermogen \emph{ter plaatse}, zodat het net het niet meer moet aanvoeren.
 {Met $|Q_C|$ het reactief vermogen dat de condensator moet leveren in VAR, $P$ het actief vermogen
     van de installatie in W, $\phi_1$ de huidige fasehoek en $\phi_2$ de gewenste fasehoek.}
 
+\textbf{Waar die formule vandaan komt.} Lees ze rechtstreeks af van de twee driehoeken in
+figuur~\ref{fig:pf-correctie}, die dezelfde horizontale zijde $P$ delen.
+
+\stapreden{In elke rechthoekige vermogendriehoek is $Q$ de overstaande zijde en $P$ de aanliggende:}
+\[\tan\phi = \frac{Q}{P} \qquad\Longrightarrow\qquad Q = P\tan\phi\]
+
+\stapreden{Dat geldt zowel vóór als na de correctie, en $P$ verandert niet (een condensator zet geen actief vermogen om):}
+\[Q_1 = P\tan\phi_1 \qquad\qquad Q_2 = P\tan\phi_2\]
+
+\stapreden{De condensator moet precies het verschil leveren:}
+\[|Q_C| = Q_1 - Q_2 = P\tan\phi_1 - P\tan\phi_2 = \boxed{P\left(\tan\phi_1 - \tan\phi_2\right)}\]
+
+Je hoeft dus nooit de stroom of de impedantie te kennen: $P$ en de twee arbeidsfactoren volstaan.
+Is je last \emph{capacitief} en wil je corrigeren, dan doe je exact hetzelfde maar plaats je een
+\textbf{spoel} parallel, met $L = V^2/(\omega Q_L)$.
+
 \frm{Benodigde capaciteit}{C = \frac{|Q_C|}{V^2 \omega} = \frac{I_C}{V \omega}}
 {Met $C$ de capaciteit in F, $|Q_C|$ het reactief vermogen in VAR, $V$ de effectieve netspanning in
     V, $\omega = 2\pi f$ de pulsatie in rad/s en $I_C$ de stroom door de condensator in A.}
@@ -987,6 +1003,41 @@ Wat gebeurt er links en rechts van de piek?
     Bij resonantie is de totale impedantie maximaal en zuiver reëel: $\underline{Z}_{\text{tot}} = R_p$ (de \textbf{dynamische weerstand}).
     De stroom door de spoel en condensator is $Q$ keer groter dan de bronstroom (\textbf{stroomopslingering}):
     $I_L \approx I_C \approx Q \cdot I_{\text{bron}}$ met kwaliteitsfactor $Q = \frac{\omega_0 L}{R_L}$.}
+
+\textbf{Waar die twee formules vandaan komen.} Ze zien er willekeurig uit, maar ze volgen allebei
+uit dezelfde ene voorwaarde $\text{Im}\{\underline{Y}\} = 0$. Hier loont het om met de
+\emph{admittantie} te werken, want de twee takken staan parallel.
+
+\stapreden{De spoeltak, met noemer reëel gemaakt:}
+\[\underline{Y}_L = \frac{1}{R_L + j\omega L}
+    = \frac{R_L - j\omega L}{R_L^2 + (\omega L)^2}\]
+
+\stapreden{De condensatortak is puur imaginair:}
+\[\underline{Y}_C = j\omega C\]
+
+\stapreden{Samentellen en het imaginaire deel apart zetten:}
+\[\underline{Y} = \underbrace{\frac{R_L}{R_L^2 + (\omega L)^2}}_{\text{re\"eel}}
+    \;+\; j\underbrace{\left(\omega C - \frac{\omega L}{R_L^2 + (\omega L)^2}\right)}_{\text{imaginair}}\]
+
+\stapreden{Resonantie betekent dat het imaginaire deel nul is:}
+\[\omega C = \frac{\omega L}{R_L^2 + (\omega L)^2}
+    \qquad\Longrightarrow\qquad
+    R_L^2 + \omega^2L^2 = \frac{L}{C}\]
+
+\stapreden{Oplossen naar $\omega$:}
+\[\omega^2 = \frac{1}{LC} - \frac{R_L^2}{L^2}
+    \qquad\Longrightarrow\qquad
+    \boxed{\omega_0 = \sqrt{\frac{1}{LC} - \left(\frac{R_L}{L}\right)^2}}\]
+
+\stapreden{En de dynamische weerstand is wat er van $\underline{Y}$ overblijft, want het imaginaire deel is nu weg. Vul de gevonden voorwaarde $R_L^2 + (\omega_0 L)^2 = L/C$ meteen in:}
+\[\underline{Y}(\omega_0) = \frac{R_L}{R_L^2 + (\omega_0 L)^2} = \frac{R_L}{L/C} = \frac{R_L C}{L}
+    \qquad\Longrightarrow\qquad
+    \boxed{R_p = \frac{1}{\underline{Y}(\omega_0)} = \frac{L}{C R_L}}\]
+
+Twee dingen vallen daaraan op. Ten eerste: hoe \emph{kleiner} de spoelweerstand $R_L$, hoe
+\emph{groter} $R_p$ --- een betere spoel geeft dus een scherpere kring en een kleinere bronstroom.
+Ten tweede: staat er $R_L = 0$, dan valt de correctieterm weg en krijg je gewoon
+$\omega_0 = 1/\sqrt{LC}$ terug, precies zoals bij de ideale kring.
 
 \begin{figure}[ht]
     \centering
@@ -1438,6 +1489,51 @@ $X_L = 0$ en treedt het maximum op wanneer
 Dat maximum ligt altijd \emph{lager} dan wat je met een aangepaste complexe belasting haalt: je kan
 de reactantie van de bron nu immers niet wegcompenseren.}
 
+\subsubsection{Waar die twee voorwaarden vandaan komen}
+
+Je hoeft dit niet als bewijs te kunnen reproduceren, maar als je de afleiding \'e\'en keer volgt,
+hoef je $\underline{Z}_L = \underline{Z}_{\text{th}}^{*}$ nooit meer uit het hoofd te leren --- je
+ziet dan gewoon waarom het zo moet zijn.
+
+\stapreden{Vervang alles door het Th\'evenin-equivalent en zet er een belasting $\underline{Z}_L = R_L + jX_L$ op. De stroom volgt uit de wet van Ohm:}
+\[\underline{I}_L = \frac{\underline{V}_{\text{th}}}{\underline{Z}_{\text{th}} + \underline{Z}_L}
+    \qquad\Longrightarrow\qquad
+    I_L = \frac{V_{\text{th}}}{\sqrt{(R_{\text{th}}+R_L)^2 + (X_{\text{th}}+X_L)^2}}\]
+
+\stapreden{Alleen de weerstand van de last zet vermogen om, dus:}
+\[P_L = R_L\,I_L^2 = \frac{V_{\text{th}}^2\,R_L}{(R_{\text{th}}+R_L)^2 + (X_{\text{th}}+X_L)^2}\]
+
+\stapreden{\textbf{Eerst $X_L$.} Die staat alleen in de noemer, en wel in een kwadraat. De breuk is dus het grootst wanneer dat kwadraat het kleinst is, en dat is nul:}
+\[\frac{\partial P_L}{\partial X_L}
+    = \frac{-2V_{\text{th}}^2 R_L (X_{\text{th}}+X_L)}{\left[(R_{\text{th}}+R_L)^2 + (X_{\text{th}}+X_L)^2\right]^2} = 0
+    \qquad\Longrightarrow\qquad \boxed{X_L = -X_{\text{th}}}\]
+
+Fysisch: de twee reactanties heffen elkaar op, de keten komt in resonantie en de stroom loopt weer
+in fase met de spanning. Elke restreactantie zou een stuk van de spanning ``vasthouden'' zonder er
+vermogen mee te leveren.
+
+\stapreden{\textbf{Dan $R_L$}, met $X_{\text{th}}+X_L$ nu al nul:}
+\[P_L = \frac{V_{\text{th}}^2\,R_L}{(R_{\text{th}}+R_L)^2}
+    \qquad\Longrightarrow\qquad
+    \frac{\partial P_L}{\partial R_L}
+    = V_{\text{th}}^2\,\frac{(R_{\text{th}}+R_L)^2 - 2R_L(R_{\text{th}}+R_L)}{(R_{\text{th}}+R_L)^4} = 0\]
+
+\stapreden{De teller nul stellen en delen door $(R_{\text{th}}+R_L)$:}
+\[(R_{\text{th}}+R_L) - 2R_L = 0 \qquad\Longrightarrow\qquad \boxed{R_L = R_{\text{th}}}\]
+
+\stapreden{Samen geven die twee precies de complex toegevoegde, en het maximum zelf volgt door in te vullen:}
+\[\underline{Z}_L = R_{\text{th}} - jX_{\text{th}} = \underline{Z}_{\text{th}}^{*}
+    \qquad\qquad
+    P_{L,\max} = \frac{V_{\text{th}}^2 R_{\text{th}}}{(2R_{\text{th}})^2} = \frac{V_{\text{th}}^2}{4R_{\text{th}}}\]
+
+\begin{waarschuwing}[Dit is geen rendement van 100\,\%]
+    Bij aanpassing staat er evenveel weerstand in de bron als in de last, dus de bron verstookt
+    \emph{evenveel} vermogen als ze afgeeft: het rendement is $50\%$. Je maximaliseert hier het
+    \textbf{afgegeven} vermogen, niet de effici\"entie. In een energienet wil je precies het
+    omgekeerde ($R_{\text{th}} \ll R_L$); aanpassing gebruik je bij signalen en antennes, waar het
+    om het vermogen zelf gaat en niet om de energiefactuur.
+\end{waarschuwing}
+
 \subsection{Werken met enkel de grootte van stromen}
 
 Soms geeft het examen je alleen \textbf{ampèremeteraflezingen}: drie stroomgrootten zonder
@@ -1752,6 +1848,17 @@ Deze relaties gelden alleen voor \textbf{evenwichtige belastingen}.
     $120^\circ$ van elkaar af, dan is het resultaat $\sqrt{3}$ keer zo lang en $30^\circ$ gedraaid.
     Teken het één keer en je vergeet het nooit meer.
 
+    Reken het desnoods na met KCL in hoekpunt $A$, met $\underline{I}_{AB} = I_f\angle 0^\circ$ als
+    referentie en $\underline{I}_{CA} = I_f\angle 120^\circ$:
+    \[\underline{I}_A = \underline{I}_{AB} - \underline{I}_{CA}
+        = I_f\left(1\angle 0^\circ - 1\angle 120^\circ\right)
+        = I_f\left[(1 + j0) - \left(-\tfrac{1}{2} + j\tfrac{\sqrt3}{2}\right)\right]
+        = I_f\left(\tfrac{3}{2} - j\tfrac{\sqrt3}{2}\right)\]
+    Die laatste factor heeft grootte $\sqrt{(3/2)^2 + (\sqrt3/2)^2} = \sqrt{3}$ en hoek
+    $\arctan\frac{-\sqrt3/2}{3/2} = -30^\circ$, dus
+    $\underline{I}_A = \sqrt3\,I_f\angle -30^\circ$. De $\sqrt3$ en de $30^\circ$ komen dus uit
+    dezelfde ene aftrekking --- daarom kan je ze ook niet los van elkaar onthouden.
+
     \textbf{Het teken hangt af van de fasevolgorde:}
     \begin{itemize}
         \item positieve volgorde ($abc$): $\vec{I_L} = \sqrt{3}\,\vec{I_f}\angle -30^\circ$ en
@@ -1771,14 +1878,37 @@ Deze relaties gelden alleen voor \textbf{evenwichtige belastingen}.
 
 \subsection{Omzetting ster- naar driehoekconfiguratie}
 
-Je kunt een sterconfiguratie omzetten naar een driehoekconfiguratie en omgekeerd.
-Dit mag alleen als je evenwichtige belastingen hebt.
+Je kunt een sterconfiguratie omzetten naar een driehoekconfiguratie en omgekeerd. Bij een
+\textbf{evenwichtige} last is dat één simpele factor 3; bij een onevenwichtige last heb je de
+algemene formules verderop nodig.
 
-\frm{Delta naar Ster en omgekeerd}{Z_Y = \frac{Z_\Delta}{3} \quad , \quad Z_\Delta = 3 Z_Y}{Met $\vec{Z}_Y$ de impedantie van de equivalente
-    Y-verbonden belasting in Ohm en $\vec{Z}_\Delta$ de impedantie van de $\Delta$-verbonden belasting in Ohm.}
+\frm{Delta naar Ster en omgekeerd}{\underline{Z}_Y = \frac{\underline{Z}_\Delta}{3} \quad , \quad \underline{Z}_\Delta = 3\,\underline{Z}_Y}{Met $\underline{Z}_Y$ de impedantie van de equivalente
+    Y-verbonden belasting in Ohm en $\underline{Z}_\Delta$ de impedantie van de $\Delta$-verbonden belasting in Ohm.}
 
+\textbf{Waarom precies een factor 3?} Het idee achter elke ster-driehoekomzetting is dit: de twee
+schakelingen moeten van \emph{buitenaf} niet te onderscheiden zijn. Meet je tussen twee klemmen,
+dan moet je in beide gevallen dezelfde impedantie zien. Voor een evenwichtige last volstaat één
+zo'n meting.
 
-Als de belastingen niet evenwichtig zijn, moet je de volgende formules gebruiken:
+\stapreden{\textbf{Ster.} Meet je tussen klem 1 en klem 2, dan loop je via het sterpunt door twee takken in serie (de derde tak hangt er los bij en trekt geen stroom):}
+\[\underline{Z}_{12,Y} = \underline{Z}_Y + \underline{Z}_Y = 2\,\underline{Z}_Y\]
+
+\stapreden{\textbf{Driehoek.} Tussen dezelfde twee klemmen zie je nu de tak 1--2 rechtstreeks, parallel met de twee andere takken die samen in serie staan:}
+\[\underline{Z}_{12,\Delta} = \underline{Z}_\Delta \parallel \left(\underline{Z}_\Delta + \underline{Z}_\Delta\right)
+    = \frac{\underline{Z}_\Delta \cdot 2\underline{Z}_\Delta}{\underline{Z}_\Delta + 2\underline{Z}_\Delta}
+    = \frac{2\underline{Z}_\Delta^2}{3\underline{Z}_\Delta} = \frac{2}{3}\,\underline{Z}_\Delta\]
+
+\stapreden{Beide gelijkstellen:}
+\[2\,\underline{Z}_Y = \frac{2}{3}\,\underline{Z}_\Delta
+    \qquad\Longrightarrow\qquad
+    \boxed{\underline{Z}_\Delta = 3\,\underline{Z}_Y}\]
+
+Dat verklaart meteen ook de ster-driehoekstarter: schakel dezelfde motorwikkelingen van ster naar
+driehoek en hun impedantie wordt drie keer kleiner, dus trekken ze drie keer meer stroom en drie
+keer meer vermogen. In ster start de motor zacht, in driehoek draait hij op vol vermogen.
+
+Als de belastingen niet evenwichtig zijn, moet je de volgende formules gebruiken (die volgen uit
+precies dezelfde eis, maar dan voor alle drie de klemmenparen tegelijk):
 
 
 \begin{figure}[ht]
