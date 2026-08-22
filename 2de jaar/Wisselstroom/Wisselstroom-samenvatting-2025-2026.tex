@@ -14,6 +14,23 @@
 % Add angles library for TikZ angle pictures
 \usetikzlibrary{angles}
 
+% Bij een oefening of voorbeeld begint de opgave op een nieuwe regel, niet naast
+% de titel. Anders loopt "Gegeven: ..." vast tegen de titel aan.
+\newcommand{\schoolRunInHeadBreak}[3]{%
+    \textcolor{#1}{\bfseries\sffamily #2\ #3}\par\nobreak\vspace{0.4mm}}
+\tcbset{
+    schoolRunInBreak/.code n args={3}{%
+        \ifstrempty{#3}{}{\tcbset{before upper={\schoolRunInHeadBreak{#1}{#2}{#3}}}}%
+    }
+}
+\renewtcolorbox{oefening}[1][Oefening]{%
+    schoolbox=schoolGreen, schoolRunInBreak={schoolGreen}{\faPenNib}{#1}}
+\renewtcolorbox{voorbeeld}[1][Voorbeeld]{%
+    schoolbox=schoolGreen, schoolRunInBreak={schoolGreen}{\faPenNib}{#1}}
+
+% Eén afleidingsstap: eerst de reden in het grijs, dan de vergelijking.
+\newcommand{\stapreden}[1]{\par\vspace{1.4mm}\noindent{\small\color{schoolGray}#1}\par\vspace{-2mm}}
+
 
 \title{Wisselstroom samenvatting 2025-2026}
 \author{Ruben Ryckaert}
@@ -114,25 +131,149 @@ Als je de afleidingen van de formules begrijpt dan is het veel makkelijker om oo
 
 \frm{$V(t)$}{V(t) = V_m \sin(\omega t)}{Met $V(t)$ de wisselspanning op tijdstip t, $V_m$ de piekspanning (maximale spanning) en $\omega$ de pulsatie in rad/s.}
 
+\subsubsection{Drie manieren om ``de grootte'' van een wisselgrootheid uit te drukken}
+
+Een sinus heeft geen enkele vaste waarde: hij verandert voortdurend. Toch wil je één getal kunnen
+noemen. Er zijn er drie in gebruik, en ze zijn \textbf{niet} inwisselbaar.
+
+\begin{enumerate}
+    \item \textbf{De piekwaarde $A_m$} --- de hoogste waarde die de golf bereikt. Nodig om te weten
+          hoeveel spanning de isolatie moet houden.
+    \item \textbf{De gemiddelde gelijkgerichte waarde $A_{\text{gem}}$} --- het gemiddelde over
+          \emph{een halve} periode. Over een \emph{volledige} periode is het gemiddelde van een sinus
+          namelijk nul: de positieve en de negatieve helft heffen elkaar op. Dat getal zegt dus niets,
+          en daarom rekent men over de halve periode (of, equivalent, over de gelijkgerichte golf).
+    \item \textbf{De effectieve waarde $A_{\text{eff}}$ (RMS)} --- de waarde die je op het typeplaatje
+          en op je multimeter leest. De 230~V van het stopcontact is een \emph{effectieve} waarde; de
+          piek is $230\sqrt2 = 325$~V.
+\end{enumerate}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{assets/rms_gemiddelde_sinus.png}
+    \caption{De drie waarden op één sinus van $230$~V. De piek ligt op $\pm 325$~V, de effectieve
+        waarde (RMS) op $230$~V en de gemiddelde gelijkgerichte waarde (Mean) op $207$~V. Merk op hoe
+        dicht RMS en Mean bij elkaar liggen --- precies daarom valt het niet op wanneer een goedkope
+        meter de verkeerde van de twee toont.}
+    \label{fig:rms-mean-sinus}
+\end{figure}
+\FloatBarrier
+
+\textbf{Waarom juist de RMS-waarde?} Omdat die het \emph{warmte-effect} vastlegt. De effectieve
+waarde van een wisselstroom is per definitie de gelijkstroom die in dezelfde weerstand evenveel
+warmte zou produceren. Reken je de warmte over één periode uit:
+\[Q_{\text{DC}} = \int_0^T R I^2\,dt = R I^2 T
+    \qquad\text{en}\qquad
+    Q_{\text{AC}} = \int_0^T R\,i^2(t)\,dt = R\,I_m^2 \int_0^T \sin^2(\omega t)\,dt = R\,\frac{I_m^2}{2}\,T\]
+Beide gelijkstellen geeft $I^2 = I_m^2/2$, dus $I = I_m/\sqrt2$. Vandaar de vertrouwde factor
+$\sqrt2$, en vandaar ook dat je met effectieve waarden gewoon $P = I^2R$ mag schrijven alsof het
+gelijkstroom was.
+
+\frm{Effectieve waarde (RMS)}{A_{\text{eff}} = \sqrt{\frac{1}{T}\int_0^T a^2(t)\,dt}
+    \;\;\overset{\text{sinus}}{=}\;\; \frac{A_m}{\sqrt2} \approx 0{,}707\,A_m}
+{Met $A_{\text{eff}}$ de effectieve waarde, $a(t)$ het momentane signaal en $T$ de periode in s.
+    RMS staat voor \emph{Root Mean Square}: eerst kwadrateren, dan middelen, dan de wortel.
+    De rechtse gelijkheid geldt \textbf{alleen} voor een zuivere sinus.}
+
 \frm{$A_{\text{gem}}$}{A_{\text{gem}} = \frac{1}{T/2} \int_0^{T/2} A(t)\,dt = \frac{2 A_m}{\pi} \approx 0{,}637\,A_m}{Met $A_{\text{gem}}$ de gemiddelde gelijkgerichte waarde over een halve periode $T/2$.}
 
-
-
-met $a(t) = A_m \sin(\omega t)$
+De afleiding daarvan, met $a(t) = A_m \sin(\omega t)$:
 \[A_{gem} = \frac{1}{T/2} \int_0^{T/2} A_m \sin(\omega t) dt = \frac{2 A_m}{T} \left[ -\frac{1}{\omega} \cos(\omega t)
         \right]_0^{T/2} = \frac{2 A_m}{T} \cdot \frac{2}{\omega} = \frac{2 A_m}{2\pi / \omega} \cdot \frac{2}{\omega} = \frac{2 A_m}{\pi}\]
-\[A_{gem} = \frac{2 A_m}{\pi} = 0.64A_m\]
 
+\subsubsection{Vormfactor en piekfactor: hoe ``puntig'' is de golf?}
+
+De verhouding tussen die drie waarden hangt alleen van de \emph{vorm} van de golf af, niet van hoe
+groot hij is. Twee verhoudingen krijgen een naam.
 
 \frm{Vormfactor en Piekfactor}{k_f = \frac{A_{\text{eff}}}{A_{\text{gem}}} \qquad , \qquad k_p = \frac{A_m}{A_{\text{eff}}}}
 {Met $k_f$ de vormfactor ($k_f = 1{,}11$ voor sinus) en $k_p$ de piekfactor of crest factor ($k_p = \sqrt{2} \approx 1{,}414$ voor sinus).}
 
+Lees ze zo:
 \begin{itemize}
-    \item \textbf{Zuivere sinus:} $k_f = \frac{A_m / \sqrt{2}}{2A_m / \pi} = \frac{\pi}{2\sqrt{2}} \approx \mathbf{1{,}11}$ \quad en \quad $k_p = \frac{A_m}{A_m / \sqrt{2}} = \sqrt{2} \approx \mathbf{1{,}414}$.
-    \item \textbf{Enkelzijdig gelijkgerichte sinus:} $k_f = \frac{A_m / 2}{A_m / \pi} = \frac{\pi}{2} \approx \mathbf{1{,}57}$ \quad en \quad $k_p = \frac{A_m}{A_m / 2} = \mathbf{2}$.
-    \item \textbf{Blokgolf:} $k_f = \mathbf{1{,}0}$ \quad en \quad $k_p = \mathbf{1{,}0}$.
-    \item \textbf{Driehoeksgolf / zaagtand:} $k_f = \frac{A_m / \sqrt{3}}{A_m / 2} = \frac{2}{\sqrt{3}} \approx \mathbf{1{,}155}$ \quad en \quad $k_p = \sqrt{3} \approx \mathbf{1{,}732}$.
+    \item \textbf{Vormfactor $k_f$} --- hoeveel groter de effectieve waarde is dan het gewone
+          gemiddelde. Een blokgolf staat altijd op volle waarde, dus daar zijn beide gelijk en is
+          $k_f = 1$. Hoe puntiger de golf, hoe hoger $k_f$.
+    \item \textbf{Piekfactor $k_p$} --- hoeveel hoger de piek uitsteekt boven de effectieve waarde.
+          Dit is wat een versterker of een voeding moet kunnen slikken zonder te klippen.
 \end{itemize}
+
+Figuur~\ref{fig:golfvormen-kf} laat voor vier golfvormen zien waar $A_m$, $A_{\text{eff}}$ en
+$A_{\text{gem}}$ liggen. Je ziet meteen waarom de getallen in de tabel eronder verschillen.
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[x=1.0cm, y=1.35cm, font=\small]
+        % ---------- hulpmacro-achtige opzet: vier panelen ----------
+        % paneel 1: zuivere sinus
+        \begin{scope}[shift={(0,0)}]
+            \draw[->, gray] (-0.2,0) -- (4.5,0) node[right, font=\scriptsize, black] {$\omega t$};
+            \draw[->, gray] (0,-1.25) -- (0,1.35);
+            \draw[ultra thick, schoolBlue] plot[domain=0:4, samples=80] (\x, {sin(\x*90)});
+            \draw[dashed, schoolRed] (0,0.707) -- (4.3,0.707) node[right, font=\scriptsize, schoolRed] {$A_{\text{eff}}$};
+            \draw[dashed, schoolGreen!60!black] (0,0.637) -- (3.6,0.637);
+            \node[font=\scriptsize, schoolGreen!50!black, right] at (3.6,0.45) {$A_{\text{gem}}$};
+            \draw[dotted, gray] (0,1) -- (4.3,1) node[right, font=\scriptsize, black] {$A_m$};
+            \node[font=\scriptsize\bfseries, anchor=north] at (2.2,-1.3) {zuivere sinus};
+        \end{scope}
+        % paneel 2: enkelzijdig gelijkgericht
+        \begin{scope}[shift={(7.2,0)}]
+            \draw[->, gray] (-0.2,0) -- (4.5,0) node[right, font=\scriptsize, black] {$\omega t$};
+            \draw[->, gray] (0,-1.25) -- (0,1.35);
+            \draw[ultra thick, schoolBlue] plot[domain=0:2, samples=40] (\x, {sin(\x*90)});
+            \draw[ultra thick, schoolBlue] (2,0) -- (4,0);
+            \draw[dashed, schoolRed] (0,0.5) -- (4.3,0.5) node[right, font=\scriptsize, schoolRed] {$A_{\text{eff}}$};
+            \draw[dashed, schoolGreen!60!black] (0,0.318) -- (3.6,0.318);
+            \node[font=\scriptsize, schoolGreen!50!black, right] at (3.6,0.20) {$A_{\text{gem}}$};
+            \draw[dotted, gray] (0,1) -- (4.3,1) node[right, font=\scriptsize, black] {$A_m$};
+            \node[font=\scriptsize\bfseries, anchor=north, align=center] at (2.2,-1.3) {enkelzijdig\\gelijkgerichte sinus};
+        \end{scope}
+    \end{tikzpicture}
+
+    \vspace{7mm}
+
+    \begin{tikzpicture}[x=1.0cm, y=1.35cm, font=\small]
+        % paneel 3: blokgolf
+        \begin{scope}[shift={(0,0)}]
+            \draw[->, gray] (-0.2,0) -- (4.5,0) node[right, font=\scriptsize, black] {$\omega t$};
+            \draw[->, gray] (0,-1.25) -- (0,1.35);
+            \draw[ultra thick, schoolBlue] (0,1) -- (2,1) -- (2,-1) -- (4,-1);
+            \draw[dashed, schoolRed] (0,1) -- (4.3,1);
+            \node[font=\scriptsize, anchor=west, align=left] at (4.35,1)
+            {\textcolor{schoolRed}{$A_{\text{eff}}$} $=$ \textcolor{schoolGreen!50!black}{$A_{\text{gem}}$} $= A_m$};
+            \node[font=\scriptsize\bfseries, anchor=north] at (2.2,-1.3) {blokgolf};
+        \end{scope}
+        % paneel 4: driehoek
+        \begin{scope}[shift={(7.2,0)}]
+            \draw[->, gray] (-0.2,0) -- (4.5,0) node[right, font=\scriptsize, black] {$\omega t$};
+            \draw[->, gray] (0,-1.25) -- (0,1.35);
+            \draw[ultra thick, schoolBlue] (0,0) -- (1,1) -- (3,-1) -- (4,0);
+            \draw[dashed, schoolRed] (0,0.577) -- (4.3,0.577) node[right, font=\scriptsize, schoolRed] {$A_{\text{eff}}$};
+            \draw[dashed, schoolGreen!60!black] (0,0.5) -- (3.6,0.5);
+            \node[font=\scriptsize, schoolGreen!50!black, right] at (3.6,0.32) {$A_{\text{gem}}$};
+            \draw[dotted, gray] (0,1) -- (4.3,1) node[right, font=\scriptsize, black] {$A_m$};
+            \node[font=\scriptsize\bfseries, anchor=north] at (2.2,-1.3) {driehoeksgolf};
+        \end{scope}
+    \end{tikzpicture}
+    \caption{Vier golfvormen met dezelfde piekwaarde $A_m$. De rode lijn is de effectieve waarde, de
+        groene het gelijkgerichte gemiddelde. Hoe puntiger de golf, hoe verder beide onder de piek
+        zakken --- en hoe verder ze van elkaar af komen te liggen.}
+    \label{fig:golfvormen-kf}
+\end{figure}
+\FloatBarrier
+
+\begin{center}
+    \begin{tabular}{@{}lcccc@{}}
+        \toprule
+        \textbf{Golfvorm}                & $A_{\text{eff}}$          & $A_{\text{gem}}$        & $k_f$                             & $k_p$                       \\
+        \midrule
+        Zuivere sinus                    & $A_m/\sqrt2 = 0{,}707A_m$ & $2A_m/\pi = 0{,}637A_m$ & $\pi/(2\sqrt2) = \mathbf{1{,}11}$ & $\sqrt2 = \mathbf{1{,}414}$ \\
+        Enkelzijdig gelijkgerichte sinus & $A_m/2 = 0{,}5A_m$        & $A_m/\pi = 0{,}318A_m$  & $\pi/2 = \mathbf{1{,}57}$         & $\mathbf{2}$                \\
+        Blokgolf                         & $A_m$                     & $A_m$                   & $\mathbf{1{,}0}$                  & $\mathbf{1{,}0}$            \\
+        Driehoeksgolf / zaagtand         & $A_m/\sqrt3 = 0{,}577A_m$ & $A_m/2 = 0{,}5A_m$      & $2/\sqrt3 = \mathbf{1{,}155}$     & $\sqrt3 = \mathbf{1{,}732}$ \\
+        \bottomrule
+    \end{tabular}
+\end{center}
 
 \subsubsection{Werking van meetinstrumenten}
 
@@ -142,6 +283,29 @@ Niet elk meettoestel meet hetzelfde bij een niet-sinusvormig signaal:
     \item \textbf{Draai-ijzer- / weekijzermeter:} de mechanische afbuiging is evenredig met het kwadraat van de stroom ($i^2$). Hierdoor meet het toestel rechtstreeks de \textbf{echte effectieve waarde} $A_{\text{eff}}$, onafhankelijk van de golfvorm (voor lage netfrequenties).
     \item \textbf{True RMS digitale meter:} bemonstert het signaal digitaal met hoge frequentie en berekent numeriek $\sqrt{\frac{1}{T}\int_0^T a^2(t)\,dt}$. Geeft altijd de correcte effectieve waarde.
 \end{itemize}
+
+\begin{wrapfigure}{r}{0.36\textwidth}
+    \vspace{-4mm}
+    \centering
+    \includegraphics[width=0.34\textwidth]{assets/vervormd_signaal_meter.png}
+    \caption{Een vervormd netsignaal. Voor zo'n golf klopt de vaste factor $1{,}11$ niet meer.}
+    \label{fig:vervormd-signaal}
+    \vspace{-3mm}
+\end{wrapfigure}
+
+Dat verschil is geen theorie. De goedkope meter meet $A_{\text{gem}}$ en toont
+$A_{\text{gem}} \times 1{,}11$ --- hij \emph{gokt} dat je golf een zuivere sinus is. Hangt er een
+dimmer, een schakelende voeding of een frequentieregelaar aan, dan is de golf vervormd
+(figuur~\ref{fig:vervormd-signaal}), is de echte vormfactor niet meer $1{,}11$, en klopt de
+aflezing gewoon niet. Op een toestel dat het wél goed doet staat daarom expliciet
+\textbf{TRUE RMS} gedrukt.
+
+\begin{examenbox}[Reken de vormfactor zelf uit]
+    Slide-oefening 4.1.4 doet precies dit: je meet dezelfde vervormde stroom met een
+    draaispoelmeter (leest $A_{\text{gem}}$) en met een TRUE RMS-meter (leest $A_{\text{eff}}$), en
+    de vormfactor volgt uit de verhouding van de twee aflezingen. Krijg je iets anders dan
+    $1{,}11$, dan wéét je dat het signaal geen zuivere sinus is.
+\end{examenbox}
 
 \vspace{0.3cm}
 
@@ -154,32 +318,43 @@ Dit noemen we een fasor.
 
 \begin{figure}[htbp]
     \centering
-    \begin{tikzpicture}[scale=1.25]
-        % Assen tekenen
-        \draw[->, thick] (-3,0) -- (3,0) node[right] {Re};
-        \draw[->, thick] (0,-3) -- (0,3) node[above] {Im};
+    \begin{tikzpicture}[scale=1.25, >=latex]
+        % assen
+        \draw[->, thick] (-1.0,0) -- (3.5,0) node[right] {Re};
+        \draw[->, thick] (0,-0.8) -- (0,3.0) node[above] {Im};
 
-        % Grid lijnen
-        \draw[gray!25, thin] (-2.5,-2.5) grid (2.5,2.5);
+        % projecties
+        \coordinate (P) at (1.99,1.67);
+        \draw[dashed, gray!70] (P) -- (1.99,0);
+        \draw[dashed, gray!70] (P) -- (0,1.67);
 
-        % Fasor vector (bijvoorbeeld 45 graden)
-        \draw[->, very thick, blue] (0,0) -- (2,2);
+        % de fasor zelf
+        \draw[->, very thick, schoolBlue] (0,0) -- (P);
+        \node[schoolBlue, font=\small, rotate=40, anchor=south] at (1.0,0.84) {lengte $= V_m$};
 
-        % Hoek tonen
-        \draw[red, thick] (0,0) -- (1.2,0) arc (0:45:1.2);
-        \node[red] at (0.95,0.42) {$\phi$};
+        % hoek
+        \draw[schoolRed, thick] (0.8,0) arc (0:40:0.8);
+        \node[schoolRed] at (1.08,0.30) {$\phi$};
 
-        % Projecties
-        \draw[dashed, blue!60] (2,2) -- (2,0) node[below, yshift=-0.12cm] {$V\cos\phi$};
-        \draw[dashed, blue!60] (2,2) -- (0,2) node[left, xshift=-0.12cm] {$V\sin\phi$};
+        % labels
+        \node[schoolBlue, anchor=south west, font=\small] at (2.06,1.70) {$\vec{V} = V_m\angle\phi$};
+        \node[anchor=north, font=\scriptsize, align=center] at (1.99,-0.10)
+             {$V_m\cos\phi$\\re\"eel deel};
+        \node[anchor=east, font=\scriptsize, align=right] at (-0.10,1.67)
+             {$V_m\sin\phi$\\imaginair deel};
 
-        % Labels - positioned away from the vector
-        \node[blue, anchor=west] at (2.05,2.15) {$V_m\angle\phi$};
-        \node[blue] at (2.15,1.75) {$\vec{V}$};
+        % rotatiehint
+        \draw[->, thick, schoolGreen!60!black] (2.30,1.93) arc (40:72:3.0);
+        \node[schoolGreen!50!black, font=\scriptsize, anchor=west] at (1.35,2.75) {draait met $\omega$};
     \end{tikzpicture}
-    \caption{Weergave van een fasor in het complexe vlak. De fasor $\vec{V}$ heeft een amplitude $V_m$ en een fasehoek $\phi$. Het reële deel is $V \cos\phi$ en het imaginaire deel is $V \sin\phi$.}
+    \caption{Een fasor in het complexe vlak. De \emph{lengte} van de pijl is de amplitude $V_m$, de
+        \emph{hoek} met de re\"ele as is de fasehoek $\phi$. Het re\"ele deel is $V_m\cos\phi$, het
+        imaginaire deel $V_m\sin\phi$. In werkelijkheid draait de pijl rond met $\omega$, maar omdat
+        \emph{alle} fasoren in een oefening even snel draaien, tekenen we hem stil: alleen de
+        onderlinge hoeken doen ertoe.}
     \label{fig:fasor}
 \end{figure}
+\FloatBarrier
 
 Bij een fasor gaan we de pulsatie $\omega$ niet meer expliciet noteren.
 Als je een oefening voor het omzetten van fasor naar tijdsfunctie of omgekeerd doet,
@@ -209,9 +384,9 @@ Je kunt die allemaal doen met je niet-grafische rekenmachine door de modus op
 \end{waarschuwing}
 
 \begin{examenbox}[Amplitude of effectieve waarde?]
-    Een fasor kan je met de \textbf{amplitude} $A_m$ of met de \textbf{effectieve waarde} / RMS-waarde $A_{rms}$.
+    Een fasor kan je met de \textbf{amplitude} $A_m$ of met de \textbf{effectieve waarde} / RMS-waarde $A_{\text{eff}}$.
 
-    $A_{rms} = A_m/\sqrt{2}$ schrijven. Beide mag, zolang je \textbf{consequent} bent.
+    $A_{\text{eff}} = A_m/\sqrt{2}$ schrijven. Beide mag, zolang je \textbf{consequent} bent.
 
     Let op waar je welke nodig hebt:
     \begin{itemize}
@@ -250,7 +425,7 @@ Je kunt die allemaal doen met je niet-grafische rekenmachine door de modus op
 
     \vspace{0.3cm}
 
-    Eerst de piekstroom uit de wet van Ohm, met $V_m = \sqrt{2} \cdot V_{rms}$:
+    Eerst de piekstroom uit de wet van Ohm, met $V_m = \sqrt{2} \cdot V_{\text{eff}}$:
     \[I_m = \frac{V_m}{R} = \frac{\sqrt{2} \cdot 110}{50} = 3.11 \text{ A}\]
 
     De stroom door de weerstand is dus:
@@ -300,161 +475,126 @@ verschuiving $90^\circ$; een weerstand verschuift niets.
 
 \begin{figure}[htbp]
     \centering
-    % === DEEL 1: SPOEL L (ELI) ===
-    \begin{tikzpicture}[scale=0.92, line cap=round, line join=round]
-        % --- GOLFVORMEN SPOEL ---
+    {\bfseries 1. Zuivere spoel $L$ --- ELI: de spanning ijlt $90^\circ$ v\'o\'or op de stroom.}\par
+    \vspace{2mm}
+\begin{tikzpicture}[scale=0.86, line cap=round, line join=round]
+        % ---- golfvormen ----
         \begin{scope}[shift={(0,0)}]
-            % Titel
-            \node[font=\bfseries\sffamily, text=schoolBlue!90!black, anchor=west] at (-0.3, 2.35)
-            {\textbf{1. Zuivere spoel $L$ (ELI: Spanning $v$ ijlt $90^\circ$ voor op stroom $i_L$)}};
+            \draw[->, thick] (-0.3,0) -- (7.3,0) node[right, font=\footnotesize] {$\omega t$};
+            \draw[->, thick] (0,-1.55) -- (0,1.95);
+            \node[font=\scriptsize, rotate=90, anchor=south] at (-0.55,0) {$v(t),\ i_L(t)$};
 
-            % Assen
-            \draw[->, thick] (-0.3,0) -- (7.2,0) node[right, font=\footnotesize] {$\omega t$};
-            \draw[->, thick] (0,-1.65) -- (0,1.95) node[above, font=\footnotesize] {$v(t), i_L(t)$};
+            \foreach \xg in {1.571, 3.142, 4.712, 6.283}
+                \draw[gray!30, dotted, thick] (\xg,-1.35) -- (\xg,1.4);
 
-            % Verticale rasterlijnen
-            \draw[gray!30, dotted, thick] (1.571,-1.4) -- (1.571,1.4);
-            \draw[gray!30, dotted, thick] (3.142,-1.4) -- (3.142,1.4);
-            \draw[gray!30, dotted, thick] (4.712,-1.4) -- (4.712,1.4);
-            \draw[gray!30, dotted, thick] (6.283,-1.4) -- (6.283,1.4);
+            \node[below, font=\scriptsize] at (1.571, -0.05) {$\tfrac{\pi}{2}$};
+            \node[below, font=\scriptsize] at (3.142, -0.05) {$\pi$};
+            \node[below, font=\scriptsize] at (4.712, -0.05) {$\tfrac{3\pi}{2}$};
+            \node[below, font=\scriptsize] at (6.283, -0.05) {$2\pi$};
 
-            % Labels op x-as
-            \node[below, font=\scriptsize] at (1.571, -0.05) {$\frac{\pi}{2}$ ($90^\circ$)};
-            \node[below, font=\scriptsize] at (3.142, -0.05) {$\pi$ ($180^\circ$)};
-            \node[below, font=\scriptsize] at (4.712, -0.05) {$\frac{3\pi}{2}$ ($270^\circ$)};
-            \node[below, font=\scriptsize] at (6.283, -0.05) {$2\pi$ ($360^\circ$)};
-
-            % Spanning v(t) = 1.35 sin(x)
             \draw[domain=0:6.6, samples=120, smooth, ultra thick, schoolBlue]
-            plot (\x, {1.35*sin(\x r)});
-
-            % Stroom i_L(t) = 1.05 sin(x - 90) = -1.05 cos(x)
+                plot (\x, {1.35*sin(\x r)});
             \draw[domain=0:6.6, samples=120, smooth, ultra thick, schoolRed, dashed]
-            plot (\x, {-1.05*cos(\x r)});
+                plot (\x, {-1.05*cos(\x r)});
 
-            % Piekmarkeringen & faseverschuiving
             \draw[schoolBlue, fill=schoolBlue] (1.571, 1.35) circle (0.045);
             \draw[schoolRed, fill=schoolRed] (3.142, 1.05) circle (0.045);
+            \draw[<->, thick, schoolGreen!60!black] (1.571, 1.62) -- (3.142, 1.62) node[midway, above, font=\scriptsize\bfseries, text=schoolGreen!50!black] {$\Delta\phi = 90^\circ$};
 
-            \draw[<->, thick, schoolGreen] (1.571, 1.55) -- (3.142, 1.55)
-            node[midway, above, font=\scriptsize\bfseries, text=schoolGreen] {Faseverschuiving $\Delta \phi = 90^\circ$ (stroom ijlt na / \emph{lagging})};
-
-            % Legenda blok onderaan
-            \draw[draw=gray!35, fill=white, rounded corners=2pt] (0.2, -1.05) rectangle (4.4, -1.65);
-            \draw[ultra thick, schoolBlue] (0.4, -1.22) -- (0.9, -1.22) node[right, font=\scriptsize, text=black] {$v(t) = V_m\sin(\omega t)$};
-            \draw[ultra thick, schoolRed, dashed] (0.4, -1.48) -- (0.9, -1.48) node[right, font=\scriptsize, text=black] {$i_L(t) = I_m\sin(\omega t - 90^\circ)$};
+            \draw[ultra thick, schoolBlue] (0.3, -2.05) -- (0.8, -2.05)
+                node[right, font=\scriptsize, text=black] {$v(t) = V_m\sin(\omega t)$};
+            \draw[ultra thick, schoolRed, dashed] (4.0, -2.05) -- (4.5, -2.05)
+                node[right, font=\scriptsize, text=black] {$i_L(t) = I_m\sin(\omega t - 90^\circ)$};
         \end{scope}
 
-        % --- FASORDIAGRAM SPOEL ---
-        \begin{scope}[shift={(9.6,0)}]
-            \node[font=\bfseries\sffamily, text=schoolBlue!90!black] at (0.3, 2.35) {\textbf{Fasordiagram}};
+        % ---- fasordiagram ----
+        \begin{scope}[shift={(9.9,0)}]
+            \draw[->, thick] (-1.1,0) -- (2.4,0) node[right, font=\footnotesize] {Re};
+            \draw[->, thick] (0,-1.75) -- (0,1.95) node[above, font=\footnotesize] {Im};
 
-            % Assenstelsel
-            \draw[->, thick] (-1.2,0) -- (2.3,0) node[right, font=\footnotesize] {Re};
-            \draw[->, thick] (0,-1.65) -- (0,1.95) node[above, font=\footnotesize] {Im};
-            \draw[gray!20, thin] (-1.0,-1.4) grid (2.0,1.6);
-
-            % Spanning fasor (0 graden)
             \draw[->, ultra thick, schoolBlue] (0,0) -- (1.8,0)
-            node[above right, font=\footnotesize\bfseries] {$\vec{V} = V\angle 0^\circ$};
-
-            % Stroom fasor (-90 graden)
+                node[above, font=\scriptsize\bfseries, yshift=1mm] {$\vec{V} = V\angle 0^\circ$};
             \draw[->, ultra thick, schoolRed] (0,0) -- (0,-1.35)
-            node[below right, font=\footnotesize\bfseries] {$\vec{I}_L = I_L\angle -90^\circ$};
+                node[below right, font=\scriptsize\bfseries] {$\vec{I}_L = I_L\angle -90^\circ$};
 
-            % Oorsprong & hoekboog
             \fill (0,0) circle (0.05);
-            \draw[->, thick, schoolGreen] (0.5,0) arc (0:-90:0.5);
-            \node[schoolGreen, font=\scriptsize\bfseries] at (0.8, -0.38) {$-90^\circ$};
-            \node[font=\scriptsize, align=center, text=gray!80!black] at (0.5, 1.25) {$\vec{I}_L$ ijlt $90^\circ$ na\\(\emph{lagging})};
+            \draw[->, thick, schoolGreen!60!black] (0.55,0) arc (0:-90:0.55); \node[schoolGreen!50!black, font=\scriptsize\bfseries] at (0.92, -0.42) {$-90^\circ$};
+            \node[font=\scriptsize, align=center, text=gray!80!black] at (1.0, 1.35) {stroom ijlt $90^\circ$ \emph{na}};
         \end{scope}
     \end{tikzpicture}
 
-    \vspace{0.6cm}
+    \vspace{7mm}
 
-    % === DEEL 2: CONDENSATOR C (ICE) ===
-    \begin{tikzpicture}[scale=0.92, line cap=round, line join=round]
-        % --- GOLFVORMEN CONDENSATOR ---
+    {\bfseries 2. Zuivere condensator $C$ --- ICE: de stroom ijlt $90^\circ$ v\'o\'or op de spanning.}\par
+    \vspace{2mm}
+\begin{tikzpicture}[scale=0.86, line cap=round, line join=round]
+        % ---- golfvormen ----
         \begin{scope}[shift={(0,0)}]
-            % Titel
-            \node[font=\bfseries\sffamily, text=schoolBlue!90!black, anchor=west] at (-0.3, 2.35)
-            {\textbf{2. Zuivere condensator $C$ (ICE: Stroom $i_C$ ijlt $90^\circ$ voor op spanning $v$)}};
+            \draw[->, thick] (-0.3,0) -- (7.3,0) node[right, font=\footnotesize] {$\omega t$};
+            \draw[->, thick] (0,-1.55) -- (0,1.95);
+            \node[font=\scriptsize, rotate=90, anchor=south] at (-0.55,0) {$v(t),\ i_C(t)$};
 
-            % Assen
-            \draw[->, thick] (-0.3,0) -- (7.2,0) node[right, font=\footnotesize] {$\omega t$};
-            \draw[->, thick] (0,-1.65) -- (0,1.95) node[above, font=\footnotesize] {$v(t), i_C(t)$};
+            \foreach \xg in {1.571, 3.142, 4.712, 6.283}
+                \draw[gray!30, dotted, thick] (\xg,-1.35) -- (\xg,1.4);
 
-            % Verticale rasterlijnen
-            \draw[gray!30, dotted, thick] (1.571,-1.4) -- (1.571,1.4);
-            \draw[gray!30, dotted, thick] (3.142,-1.4) -- (3.142,1.4);
-            \draw[gray!30, dotted, thick] (4.712,-1.4) -- (4.712,1.4);
-            \draw[gray!30, dotted, thick] (6.283,-1.4) -- (6.283,1.4);
+            \node[below, font=\scriptsize] at (1.571, -0.05) {$\tfrac{\pi}{2}$};
+            \node[below, font=\scriptsize] at (3.142, -0.05) {$\pi$};
+            \node[below, font=\scriptsize] at (4.712, -0.05) {$\tfrac{3\pi}{2}$};
+            \node[below, font=\scriptsize] at (6.283, -0.05) {$2\pi$};
 
-            % Labels op x-as
-            \node[below, font=\scriptsize] at (1.571, -0.05) {$\frac{\pi}{2}$ ($90^\circ$)};
-            \node[below, font=\scriptsize] at (3.142, -0.05) {$\pi$ ($180^\circ$)};
-            \node[below, font=\scriptsize] at (4.712, -0.05) {$\frac{3\pi}{2}$ ($270^\circ$)};
-            \node[below, font=\scriptsize] at (6.283, -0.05) {$2\pi$ ($360^\circ$)};
-
-            % Spanning v(t) = 1.35 sin(x)
             \draw[domain=0:6.6, samples=120, smooth, ultra thick, schoolBlue]
-            plot (\x, {1.35*sin(\x r)});
-
-            % Stroom i_C(t) = 1.05 sin(x + 90) = 1.05 cos(x)
+                plot (\x, {1.35*sin(\x r)});
             \draw[domain=0:6.6, samples=120, smooth, ultra thick, schoolRed, dashed]
-            plot (\x, {1.05*cos(\x r)});
+                plot (\x, {1.05*cos(\x r)});
 
-            % Piekmarkeringen & faseverschuiving
-            \draw[schoolRed, fill=schoolRed] (0, 1.05) circle (0.045);
             \draw[schoolBlue, fill=schoolBlue] (1.571, 1.35) circle (0.045);
+            \draw[schoolRed, fill=schoolRed] (0, 1.05) circle (0.045);
+            \draw[<->, thick, schoolGreen!60!black] (0, 1.62) -- (1.571, 1.62) node[midway, above, font=\scriptsize\bfseries, text=schoolGreen!50!black] {$\Delta\phi = 90^\circ$};
 
-            \draw[<->, thick, schoolGreen] (0, 1.55) -- (1.571, 1.55)
-            node[midway, above, font=\scriptsize\bfseries, text=schoolGreen] {Faseverschuiving $\Delta \phi = 90^\circ$ (stroom ijlt voor / \emph{leading})};
-
-            % Legenda blok onderaan
-            \draw[draw=gray!35, fill=white, rounded corners=2pt] (2.7, -1.05) rectangle (6.9, -1.65);
-            \draw[ultra thick, schoolBlue] (2.9, -1.22) -- (3.4, -1.22) node[right, font=\scriptsize, text=black] {$v(t) = V_m\sin(\omega t)$};
-            \draw[ultra thick, schoolRed, dashed] (2.9, -1.48) -- (3.4, -1.48) node[right, font=\scriptsize, text=black] {$i_C(t) = I_m\sin(\omega t + 90^\circ)$};
+            \draw[ultra thick, schoolBlue] (0.3, -2.05) -- (0.8, -2.05)
+                node[right, font=\scriptsize, text=black] {$v(t) = V_m\sin(\omega t)$};
+            \draw[ultra thick, schoolRed, dashed] (4.0, -2.05) -- (4.5, -2.05)
+                node[right, font=\scriptsize, text=black] {$i_C(t) = I_m\sin(\omega t + 90^\circ)$};
         \end{scope}
 
-        % --- FASORDIAGRAM CONDENSATOR ---
-        \begin{scope}[shift={(9.6,0)}]
-            \node[font=\bfseries\sffamily, text=schoolBlue!90!black] at (0.3, 2.35) {\textbf{Fasordiagram}};
+        % ---- fasordiagram ----
+        \begin{scope}[shift={(9.9,0)}]
+            \draw[->, thick] (-1.1,0) -- (2.4,0) node[right, font=\footnotesize] {Re};
+            \draw[->, thick] (0,-1.75) -- (0,1.95) node[above, font=\footnotesize] {Im};
 
-            % Assenstelsel
-            \draw[->, thick] (-1.2,0) -- (2.3,0) node[right, font=\footnotesize] {Re};
-            \draw[->, thick] (0,-1.65) -- (0,1.95) node[above, font=\footnotesize] {Im};
-            \draw[gray!20, thin] (-1.0,-1.4) grid (2.0,1.6);
-
-            % Spanning fasor (0 graden)
             \draw[->, ultra thick, schoolBlue] (0,0) -- (1.8,0)
-            node[below right, font=\footnotesize\bfseries] {$\vec{V} = V\angle 0^\circ$};
-
-            % Stroom fasor (+90 graden)
+                node[below, font=\scriptsize\bfseries, yshift=-1mm] {$\vec{V} = V\angle 0^\circ$};
             \draw[->, ultra thick, schoolRed] (0,0) -- (0,1.35)
-            node[above right, font=\footnotesize\bfseries] {$\vec{I}_C = I_C\angle +90^\circ$};
+                node[above right, font=\scriptsize\bfseries] {$\vec{I}_C = I_C\angle +90^\circ$};
 
-            % Oorsprong & hoekboog
             \fill (0,0) circle (0.05);
-            \draw[->, thick, schoolGreen] (0.5,0) arc (0:90:0.5);
-            \node[schoolGreen, font=\scriptsize\bfseries] at (0.8, 0.38) {$+90^\circ$};
-            \node[font=\scriptsize, align=center, text=gray!80!black] at (0.5, -1.25) {$\vec{I}_C$ ijlt $90^\circ$ voor\\(\emph{leading})};
+            \draw[->, thick, schoolGreen!60!black] (0.55,0) arc (0:90:0.55); \node[schoolGreen!50!black, font=\scriptsize\bfseries] at (0.52, 0.80) {$+90^\circ$};
+            \node[font=\scriptsize, align=center, text=gray!80!black] at (1.0, -1.35) {stroom ijlt $90^\circ$ \emph{voor}};
         \end{scope}
     \end{tikzpicture}
-    \caption{Vergelijking van de faseverschuiving ($90^\circ$) tussen spanning $v(t)$ en stroom $i(t)$ met bijhorende fasordiagrammen. Boven: bij een zuivere spoel $L$ bereikt $v(t)$ haar maximum $90^\circ$ vóór $i_L(t)$ (ELI: stroom ijlt na). Onder: bij een zuivere condensator $C$ bereikt $i_C(t)$ haar maximum $90^\circ$ vóór $v(t)$ (ICE: stroom ijlt voor).}
+    \caption{Faseverschuiving tussen spanning en stroom, links in de tijd en rechts als
+        fasordiagramma. Boven (spoel): $v(t)$ bereikt haar maximum $90^\circ$ v\'o\'or $i_L(t)$, dus de
+        stroom ijlt na. Onder (condensator): $i_C(t)$ bereikt haar maximum $90^\circ$ v\'o\'or $v(t)$,
+        dus de stroom ijlt voor. In het fasordiagramma is dat simpelweg een pijl die $90^\circ$ naar
+        beneden of naar boven staat.}
     \label{fig:eli-ice-vergelijking}
 \end{figure}
 \FloatBarrier
 
 \subsubsection{Impedantie}
 
-\concept{Impedantie \& Reluctantie}[
-    \textbf{De impedantie} is een ander woord voor weerstand waarbij we het complex deel ook meenemen.
-    De \textbf{reluctantie} is dat complexe deel en is veroorzaakt door een spoel $L$ of condensator $C$.
+\begin{conceptbox}[Impedantie en reactantie]
+    De \textbf{impedantie} $\underline{Z}$ is de wisselstroomversie van weerstand: ze zegt hoeveel de
+    keten de stroom tegenhoudt \'en hoeveel ze de stroom in de tijd verschuift.
 
-    Impedantie = weerstand + j $\cdot$ reactantie
+    Het re\"ele deel is de gewone \textbf{weerstand} $R$ (die zet vermogen om in warmte), het
+    imaginaire deel is de \textbf{reactantie} $X$ (die zet geen vermogen om, maar slaat energie op in
+    een spoel of condensator en geeft ze weer terug):
+    \[\underline{Z} = R + jX \qquad [\Omega]\]
 
-]
+    Verwar reactantie niet met \emph{reluctantie}: dat laatste is de magnetische weerstand van een
+    ijzeren kern, en heeft niets met dit hoofdstuk te maken.
+\end{conceptbox}
 \frm{Impedantie}{Z = R + jX}{Met Z de impedantie in Ohm, R de weerstand in Ohm en X de reactantie in Ohm.}
 
 \frm{Reactantie spoel}{X_L = \omega L}{Met $X_L$ de inductieve reactantie in Ohm, $\omega$ de pulsatie in rad/s en L de inductantie in Henry.}
@@ -466,6 +606,23 @@ verschuiving $90^\circ$; een weerstand verschuift niets.
 
 
 \subsection{Vermogen in wisselstroomkringen}
+
+\begin{waarschuwing}[Let op het verschil tussen een fasor en een grootte]
+    In dit hoofdstuk staan drie soorten symbolen door elkaar. Ze zijn \textbf{niet} inwisselbaar:
+    \begin{itemize}
+        \item \textbf{Een onderstreepte letter} ($\underline{V}$, $\underline{I}$, $\underline{S}$,
+              $\underline{Z}$) is een \textbf{complex} getal: het heeft een grootte \emph{en} een hoek.
+              Hiermee mag je optellen, delen en vermenigvuldigen zoals je gewend bent.
+        \item \textbf{Dezelfde letter tussen modulusstrepen} ($|\underline{V}|$, $|\underline{S}|$)
+              is alleen de \textbf{grootte}. De hoek is weg, dus je mag hier \emph{niet} mee verder
+              rekenen alsof het een fasor is. $|\underline{S}_1| + |\underline{S}_2|$ is bijvoorbeeld
+              fout.
+        \item \textbf{$P$, $Q$, $R$, $X$ en $\cos\phi$} zijn gewone re\"ele getallen. Die mag je wel
+              gewoon optellen, want ze zijn per definitie al een projectie op \'e\'en as.
+    \end{itemize}
+    Vuistregel: zodra er een hoek in het spel zit, hoort er een streep onder de letter.
+\end{waarschuwing}
+
 Omdat de stroom en de spanning oscilleren in tijd, oscilleert
 het vermogen ook in tijd.
 
@@ -487,14 +644,14 @@ en stroom in fase liggen.
 We willen dit uitdrukken in \textbf{effectieve waarden} in plaats van in de piekwaarden $V_m$ en $I_m$,
 want dat zijn de waarden die je meet.
 
-\[V_{rms} = \frac{V_m}{\sqrt{2}} \quad\Longleftrightarrow\quad V_m = \sqrt{2}\,V_{rms}\]
-\[I_{rms} = \frac{I_m}{\sqrt{2}} \quad\Longleftrightarrow\quad I_m = \sqrt{2}\,I_{rms}\]
-\[\frac{V_m I_m}{2} = \frac{\sqrt{2}\,V_{rms} \cdot \sqrt{2}\,I_{rms}}{2} = V_{rms} I_{rms}\]
+\[V_{\text{eff}} = \frac{V_m}{\sqrt{2}} \quad\Longleftrightarrow\quad V_m = \sqrt{2}\,V_{\text{eff}}\]
+\[I_{\text{eff}} = \frac{I_m}{\sqrt{2}} \quad\Longleftrightarrow\quad I_m = \sqrt{2}\,I_{\text{eff}}\]
+\[\frac{V_m I_m}{2} = \frac{\sqrt{2}\,V_{\text{eff}} \cdot \sqrt{2}\,I_{\text{eff}}}{2} = V_{\text{eff}} I_{\text{eff}}\]
 
 Ingevuld geeft dat:
-\[p(t) = V_{rms} I_{rms}\left(1 - \cos(2\omega t)\right)\]
+\[p(t) = V_{\text{eff}} I_{\text{eff}}\left(1 - \cos(2\omega t)\right)\]
 
-Twee dingen vallen op. Het \textbf{gemiddelde} van $p(t)$ is $V_{rms}I_{rms}$, want de cosinusterm
+Twee dingen vallen op. Het \textbf{gemiddelde} van $p(t)$ is $V_{\text{eff}}I_{\text{eff}}$, want de cosinusterm
 heeft gemiddelde nul. En $p(t)$ wordt hier \textbf{nooit negatief}: een weerstand geeft geen
 energie terug. Bij een spoel of condensator is dat wél zo, en dat is precies waar $Q$ vandaan komt.
 
@@ -520,19 +677,20 @@ Hierin zien we direct de fysische betekenis van $P$ en $Q$:
     \item Het tweede deel $Q\sin 2\omega t$ is \textbf{puur oscillerend} met frequentie $2\omega$ en gemiddelde nul: dit vermogen pendelt continu heen en weer tussen bron en het magnetische/elektrische veld van de spoel/condensator.
 \end{itemize}
 
-\frm{Actief vermogen}{P = V_{rms} I_{rms} \cos \phi}{Met P het actieve vermogen in Watt, $V_{rms}$ de effectieve spanning in Volt, $I_{rms}$ de effectieve stroom in
+\frm{Actief vermogen}{P = V_{\text{eff}} I_{\text{eff}} \cos \phi}{Met P het actieve vermogen in Watt, $V_{\text{eff}}$ de effectieve spanning in Volt, $I_{\text{eff}}$ de effectieve stroom in
     Ampère en $\phi$ de fasehoek tussen spanning en stroom in graden of radialen.}
 
 
-Het schijnbaar vermogen is de som van het actieve vermogen $P$ en het reactief vermogen $Q$.
-Het is het vermogen dat de bron moet leveren, maar dat niet allemaal nuttig wordt gebruikt.
+Het schijnbaar vermogen is het vermogen dat de bron moet leveren, maar dat niet allemaal nuttig
+wordt gebruikt. Het is wat je krijgt als je gewoon de gemeten spanning met de gemeten stroom
+vermenigvuldigt, zonder je iets van de fasehoek aan te trekken. Dat is dus een \textbf{grootte},
+geen fasor --- vandaar de modulusstrepen.
 
-\frm{Schijnbaar vermogen}{S = V_{rms} I_{rms}}{Met S het schijnbaar vermogen in Volt-Ampère (VA), $V_{rms}$
-    de effectieve spanning in Volt en $I_{rms}$ de effectieve stroom in Ampère.}
+\frm{Schijnbaar vermogen (grootte)}{|\underline{S}| = V_{\text{eff}} \cdot I_{\text{eff}}}
+{Met $|\underline{S}|$ de grootte van het schijnbaar vermogen in Volt-Ampère (VA), $V_{\text{eff}}$
+    de effectieve spanning in Volt en $I_{\text{eff}}$ de effectieve stroom in Ampère.
+    Dit is de \emph{lengte} van de vermogendriehoek, niet het complexe vermogen zelf.}
 
-logisch want
-
-$$ P + jQ = V_{rms} I_{rms} \angle \phi = S \angle \phi $$
 
 Het reactief vermogen is het vermogen dat gebruikt wordt door de spoel of condensator om een magnetisch of elektrisch veld op te bouwen.
 
@@ -540,8 +698,8 @@ Dit vermogen wordt dus niet gebruikt door normale belastingen zoals een lamp of 
 maar wordt wel door de bron geleverd. Het is dus een soort van ``verlies'' dat je moet betalen, maar dat je niet nuttig kan gebruiken.
 
 
-\frm{reactief vermogen}{Q = V_{rms} I_{rms} \sin \phi}{Met Q het reactief vermogen in Volt-Ampère reactief (VAR), $V_{rms}$
-    de effectieve spanning in Volt, $I_{rms}$ de effectieve stroom in Ampère en $\phi$ de fasehoek tussen spanning en stroom in graden of radialen.}
+\frm{reactief vermogen}{Q = V_{\text{eff}} I_{\text{eff}} \sin \phi}{Met Q het reactief vermogen in Volt-Ampère reactief (VAR), $V_{\text{eff}}$
+    de effectieve spanning in Volt, $I_{\text{eff}}$ de effectieve stroom in Ampère en $\phi$ de fasehoek tussen spanning en stroom in graden of radialen.}
 
 \begin{figure}[htbp]
     \centering
@@ -550,11 +708,21 @@ maar wordt wel door de bron geleverd. Het is dus een soort van ``verlies'' dat j
     \label{fig:Vermogendriehoek.png}
 \end{figure}
 
-\frm{Vermogendriehoek}{\underline{S} = P + jQ}{Met S het schijnbaar vermogen in Volt-Ampère (VA), P het actieve vermogen
-    in Watt en Q het reactief vermogen in Volt-Ampère reactief (VAR).}
+\frm{Vermogendriehoek}{\underline{S} = P + jQ \qquad\text{met}\qquad |\underline{S}| = \sqrt{P^2 + Q^2}}
+{Met $\underline{S}$ het complexe vermogen in VA, $P$ het actieve vermogen in W en $Q$ het reactief
+    vermogen in VAR. $P$ is de horizontale zijde, $Q$ de verticale, $|\underline{S}|$ de schuine zijde.}
 
-\frm{Arbeidsfactor}{\text{arbeidsfactor} = \cos \phi = \frac{P}{S}}{Met de arbeidsfactor de verhouding is tussen het actieve vermogen P en het
-    schijnbaar vermogen S. Het geeft aan welk deel van het schijnbaar vermogen daadwerkelijk wordt omgezet in nuttig werk.}
+Omdat het een rechthoekige driehoek is, ligt de fasehoek meteen vast zodra je $P$ en $Q$ kent. Je
+hebt de spanning en de stroom er dan niet meer bij nodig:
+
+\frm{Fasehoek uit $P$ en $Q$}{\tan\phi = \frac{Q}{P} \qquad\Longrightarrow\qquad \phi = \arctan\!\left(\frac{Q}{P}\right)}
+{Met $\phi$ de fasehoek tussen spanning en stroom. Let op de volgorde: $Q$ staat \textbf{boven},
+    $P$ onder --- de overstaande zijde gedeeld door de aanliggende. Het teken van $Q$ geeft meteen ook
+    het teken van $\phi$: $Q > 0$ is inductief (naijlend), $Q < 0$ capacitief (voorijlend).}
+
+\frm{Arbeidsfactor}{\text{arbeidsfactor} = \cos \phi = \frac{P}{|\underline{S}|} = \frac{P}{\sqrt{P^2+Q^2}}}
+{De verhouding tussen het actieve vermogen $P$ en de grootte van het schijnbaar vermogen
+    $|\underline{S}|$. Het geeft aan welk deel van wat de bron levert daadwerkelijk nuttig werk wordt.}
 
 \subsubsection{Complex vermogen}
 
@@ -563,7 +731,35 @@ De drie vermogens hierboven bereken je het snelst in één keer, als \keyterm{co
 \frm{Complex vermogen}{\underline{S} = \underline{V} \cdot \underline{I}^{*} = P + jQ}
 {Met $\underline{S}$ het complex vermogen in VA, $\underline{V}$ de spanningsfasor in V,
     $\underline{I}^{*}$ de \emph{complex toegevoegde} van de stroomfasor in A, $P$ het actief
-    vermogen in W en $Q$ het reactief vermogen in VAR.}
+    vermogen in W en $Q$ het reactief vermogen in VAR. Werk je met effectieve waarden in de fasoren,
+    dan komt $\underline{S}$ er meteen goed uit; werk je met piekwaarden, dan moet er nog een factor
+    $\tfrac12$ voor.}
+
+\textbf{Waar komt dat vandaan?} Neem de spanningsfasor en de stroomfasor in effectieve waarden:
+\[\underline{V} = V_{\text{eff}}\angle\phi_V \qquad\qquad \underline{I} = I_{\text{eff}}\angle\phi_I\]
+
+\stapreden{Neem de complex toegevoegde van de stroom. Dat keert alleen het teken van de hoek om:}
+\[\underline{I}^{*} = I_{\text{eff}}\angle(-\phi_I)\]
+
+\stapreden{Vermenigvuldig. Bij een product in polaire vorm vermenigvuldig je de groottes en tel je de hoeken op:}
+\[\underline{S} = \underline{V}\,\underline{I}^{*}
+    = V_{\text{eff}} I_{\text{eff}} \,\angle\,(\phi_V - \phi_I)
+    = V_{\text{eff}} I_{\text{eff}} \,\angle\,\phi\]
+
+\stapreden{De grootte van dit product is precies het schijnbaar vermogen, en de hoek is precies de faseverschuiving tussen spanning en stroom:}
+\[|\underline{S}| = V_{\text{eff}} I_{\text{eff}} \qquad\qquad \arg(\underline{S}) = \phi = \phi_V - \phi_I\]
+
+\stapreden{Schrijf hetzelfde getal nu in rechthoekige vorm:}
+\[\underline{S} = |\underline{S}|\cos\phi + j\,|\underline{S}|\sin\phi
+    = \underbrace{V_{\text{eff}} I_{\text{eff}}\cos\phi}_{P}
+    \;+\; j\,\underbrace{V_{\text{eff}} I_{\text{eff}}\sin\phi}_{Q}
+    \;=\; P + jQ\]
+
+Daarmee klopt de cirkel: $P = V_{\text{eff}} I_{\text{eff}}\cos\phi$ en
+$Q = V_{\text{eff}} I_{\text{eff}}\sin\phi$ zijn geen aparte definities die je uit het hoofd moet
+leren, het zijn gewoon het re\"ele en het imaginaire deel van hetzelfde complexe getal
+$\underline{S}$. En $|\underline{S}| = V_{\text{eff}} I_{\text{eff}}$ is de \emph{lengte} ervan ---
+dus zonder hoek, en dus niet zomaar optelbaar met een ander schijnbaar vermogen.
 
 Waarom die complex toegevoegde? Je wil de hoek \emph{tussen} $\underline{V}$ en
 $\underline{I}$, dus $\phi = \phi_V - \phi_I$. Bij een gewone vermenigvuldiging tellen de hoeken
@@ -846,6 +1042,19 @@ Deze twee gebruik je in bijna elke 1-fase oefening, dus ze moeten er vlot in zit
     \end{itemize}
     Bereken de takimpedanties, takstromen, deelspanningen, totale stroom $\underline{I}_{\text{tot}}$ en totale impedantie $\underline{Z}_{\text{tot}}$.
 
+    \begin{center}
+        \begin{circuitikz}[scale=0.85, transform shape]
+            \draw (0,0) to[sV={$200\angle 0^\circ$~V}, i<^=$\underline{I}_{\text{tot}}$] (0,4.0);
+            \draw (0,4.0) node[circ]{} -- (5.6,4.0);
+            \draw (2.8,4.0) node[circ]{} to[R, l_={$R_1 = 50\,\Omega$}, i>^=$\underline{I}_1$] (2.8,2.2)
+                  to[L, l_={$L = 0{,}318$~H}] (2.8,0);
+            \draw (5.6,4.0) to[R, l={$R_2 = 80\,\Omega$}, i>^=$\underline{I}_2$] (5.6,2.2)
+                  to[C, l={$C = 159\,\mu$F}] (5.6,0) node[circ]{};
+            \draw (0,0) -- (5.6,0);
+            \draw (0,0) node[ground]{};
+        \end{circuitikz}
+    \end{center}
+
     \textbf{Oplossing:}
     \begin{enumerate}
         \item \textbf{Takimpedanties:}
@@ -873,6 +1082,18 @@ Deze twee gebruik je in bijna elke 1-fase oefening, dus ze moeten er vlot in zit
     Hierachter staat een parallelle tak met impedantie $j5\,\Omega$, gevolgd door een belasting $\underline{Z}_L = 1 - j2\,\Omega$.
     Bepaal de stroom $\underline{I}_o$ door de belasting via opeenvolgende brontransformatie.
 
+    \begin{center}
+        \begin{circuitikz}[scale=0.85, transform shape]
+            \draw (0,0) to[sV={$60\angle 53{,}1^\circ$~V}] (0,3.4);
+            \draw (0,3.4) to[generic={$4-j3\,\Omega$}] (2.8,3.4)
+                  to[generic={$2+j\,\Omega$}] (5.6,3.4) node[circ]{};
+            \draw (5.6,3.4) to[generic={$j5\,\Omega$}] (5.6,0);
+            \draw (5.6,3.4) -- (8.4,3.4) to[generic={$\underline{Z}_L = 1-j2\,\Omega$}, i>^=$\underline{I}_o$] (8.4,0) node[circ]{};
+            \draw (0,0) -- (8.4,0);
+            \draw (0,0) node[ground]{};
+        \end{circuitikz}
+    \end{center}
+
     \textbf{Oplossing:}
     \begin{enumerate}
         \item \textbf{Serie-impedantie bij de bron:}
@@ -892,45 +1113,76 @@ Deze twee gebruik je in bijna elke 1-fase oefening, dus ze moeten er vlot in zit
 
 Er zijn verschillende werkwijzen, en de keuze hangt af van het aantal bronnen en de netwerktopologie.
 
-\subsubsection{Methode 1: achterwaarts rekenen met een schaalfactor}
+\subsubsection{Methode 1: achterwaarts rekenen met een correctiefactor}
 
 Gebruik dit bij \textbf{één bron} en een net dat een ketting is van serie- en
 parallelverbindingen. Vooruit rekenen zou een stelsel geven; achteruit rekenen is één rechte lijn.
 
 \begin{theorie}[Werkwijze]
     \begin{enumerate}
-        \item Neem \emph{achteraan} in het net een hulpwaarde aan, bijvoorbeeld
-              $\underline{V}_b = 100\angle 0^\circ$~V over de laatste tak.
+        \item \textbf{Kies} \emph{achteraan} in het net zelf een waarde, bijvoorbeeld
+              $\underline{V}_b = 200\angle 0^\circ$~V over de laatste tak. Die neem je meteen als
+              referentie (hoek $0^\circ$).
         \item Reken van achter naar voor: takstromen met de wet van Ohm, samenvoegen met KCL,
-              spanningsvallen erbij optellen tot je aan de bron komt.
-        \item Je vindt zo een \emph{hulp}bronspanning $\underline{V}_s^{\text{hulp}}$.
-        \item Bereken de schaalfactor
-              \[\underline{K} = \frac{\underline{V}_s^{\text{werkelijk}}}{\underline{V}_s^{\text{hulp}}}\]
-        \item Vermenigvuldig \textbf{alle} tussenresultaten met $\underline{K}$.
+              spanningsvallen erbij optellen tot je aan de bron komt. Alles wat je zo vindt noem je
+              \emph{berekend}.
+        \item Je komt uit op een bronspanning $\underline{V}_{\text{berekend}}$, die
+              natuurlijk niet gelijk is aan de werkelijke bronspanning.
+        \item Bereken de \textbf{correctiefactor}
+              \[\underline{k} = \frac{\underline{V}_{\text{werkelijk}}}{\underline{V}_{\text{berekend}}}\]
+        \item Vermenigvuldig \textbf{alle} tussenresultaten met $\underline{k}$.
     \end{enumerate}
 \end{theorie}
 
-\begin{oefening}[Voorbeeld uit slides: Achterwaarts rekenen met schaalfactor]
+\begin{figure}[htbp]
+    \centering
+    \begin{circuitikz}[scale=0.88, transform shape]
+        \draw (0,0) node[circ]{} node[below]{$A$}
+              to[sV={$230$~V / 50~Hz}] (0,3.6) node[circ]{} node[above]{$C$};
+        \draw (0,3.6) to[R, l={$R_1 = 4\,\Omega$}, i>^=$\underline{I}_1$] (4.0,3.6)
+              node[circ]{} node[above]{$B$};
+        \draw (4.0,3.6) -- (6.6,3.6);
+        \draw (4.0,3.6) to[L, l_={$X_L = 100\,\Omega$}, i>^=$\underline{I}_2$] (4.0,0);
+        \draw (6.6,3.6) to[R, l_={$R_2 = 50\,\Omega$}, i>^=$\underline{I}_3$] (6.6,0) node[circ]{};
+        \draw (0,0) -- (6.6,0);
+        \draw[<->, thick, schoolBlue] (8.4,3.6) -- (8.4,0);
+        \node[font=\footnotesize, schoolBlue, right, align=left] at (8.55,1.8) {$\underline{V}_b$\\\scriptsize (gezocht)};
+        \draw[dashed, gray!70] (6.6,3.6) -- (8.4,3.6);
+        \draw[dashed, gray!70] (6.6,0) -- (8.4,0);
+        \draw (0,0) node[ground]{};
+    \end{circuitikz}
+    \caption{Het net uit de cursus. Je zoekt $\underline{V}_b$ over de verbruikers, maar de bron
+        staat aan de \emph{andere} kant van de lijnweerstand $R_1$. Vooruit rekenen zou een stelsel
+        geven; achterwaarts rekenen is \'e\'en rechte lijn --- vandaar de omweg via een gekozen waarde
+        en een correctiefactor.}
+    \label{fig:methode1-net}
+\end{figure}
+\FloatBarrier
+
+\begin{oefening}[Voorbeeld uit slides: achterwaarts rekenen met een correctiefactor]
     \textbf{Opgave:}
     Een netwerk wordt gevoed met $V_{\text{net}} = 230\text{ V} / 50\text{ Hz}$.
     Een leidingweerstand $R_1 = 4\,\Omega$ staat in serie met de parallelcombinatie van een verbruiker $R_2 = 50\,\Omega$ en een spoel met $X_L = 100\,\Omega$.
     Zoek de werkelijke spanning $\underline{V}_2$ over de verbruikers en de bronstroom $\underline{I}_{\text{bron}}$.
 
-    \textbf{Oplossing:}
+    \textbf{Oplossing:} (zie het schema in figuur~\ref{fig:methode1-net})
     \begin{enumerate}
-        \item \textbf{Stel een fictieve hulpwaarde:} Kies $\underline{V}_2^{\text{hulp}} = 200\angle 0^\circ\text{ V}$ als referentie.
+        \item \textbf{Kies zelf een waarde achteraan:} $\underline{V}_b = 200\angle 0^\circ$~V, meteen als referentie.
         \item \textbf{Takstromen achteraan:}
-              \[\underline{I}_2^{\text{hulp}} = \frac{200\angle 0^\circ}{50} = 4\text{ A} \qquad,\qquad \underline{I}_L^{\text{hulp}} = \frac{200\angle 0^\circ}{j100} = -j2\text{ A}\]
-        \item \textbf{Totale fictieve stroom:} $\underline{I}_{\text{tot}}^{\text{hulp}} = 4 - j2\text{ A} = 4{,}472\angle -26{,}57^\circ\text{ A}$.
-        \item \textbf{Fictieve bronspanning:}
-              \[\underline{V}_1^{\text{hulp}} = R_1 \cdot \underline{I}_{\text{tot}}^{\text{hulp}} = 4 \cdot (4 - j2) = 16 - j8\text{ V}\]
-              \[\underline{V}_{\text{bron}}^{\text{hulp}} = \underline{V}_2^{\text{hulp}} + \underline{V}_1^{\text{hulp}} = 200 + (16 - j8) = 216 - j8\text{ V} = 216{,}15\angle -2{,}12^\circ\text{ V}\]
-        \item \textbf{Schaalfactor $\underline{K}$:}
-              \[\underline{K} = \frac{V_{\text{net}}\angle 0^\circ}{\underline{V}_{\text{bron}}^{\text{hulp}}} = \frac{230\angle 0^\circ}{216{,}15\angle -2{,}12^\circ} = 1{,}0641\angle +2{,}12^\circ\]
-        \item \textbf{Werkelijke spanningen en stromen:}
-              \[\underline{V}_2 = \underline{K} \cdot \underline{V}_2^{\text{hulp}} = 1{,}0641\angle 2{,}12^\circ \cdot 200\angle 0^\circ = \mathbf{212{,}8\angle 2{,}12^\circ\text{ V}}\]
-              \[\underline{I}_{\text{bron}} = \underline{K} \cdot \underline{I}_{\text{tot}}^{\text{hulp}} = 1{,}0641\angle 2{,}12^\circ \cdot 4{,}472\angle -26{,}57^\circ = \mathbf{4{,}76\angle -24{,}45^\circ\text{ A}}\]
+              \[\underline{I}_3 = \frac{200\angle 0^\circ}{50} = 4\text{ A} \qquad,\qquad \underline{I}_2 = \frac{200\angle 0^\circ}{j100} = -j2\text{ A}\]
+              $\underline{I}_3$ ligt in fase met $\underline{V}_b$ (weerstand), $\underline{I}_2$ ijlt $90^\circ$ na (spoel).
+        \item \textbf{Totale stroom met KCL:} $\underline{I}_1 = 4 - j2\text{ A} = 4{,}472\angle -26{,}57^\circ\text{ A}$.
+        \item \textbf{Spanningsval over de lijn en de bijhorende bronspanning:}
+              \[\underline{V}_{R1} = R_1 \cdot \underline{I}_1 = 4 \cdot (4 - j2) = 16 - j8\text{ V}\]
+              \[\underline{V}_{\text{berekend}} = \underline{V}_b + \underline{V}_{R1} = 200 + (16 - j8) = 216 - j8\text{ V} = 216{,}15\angle -2{,}12^\circ\text{ V}\]
+        \item \textbf{Correctiefactor $\underline{k}$:}
+              \[\underline{k} = \frac{\underline{V}_{\text{werkelijk}}}{\underline{V}_{\text{berekend}}} = \frac{230\angle 0^\circ}{216{,}15\angle -2{,}12^\circ} = 1{,}0641\angle +2{,}12^\circ\]
+        \item \textbf{Alles vermenigvuldigen met $\underline{k}$:}
+              \[\underline{V}_b = \underline{k} \cdot 200\angle 0^\circ = \mathbf{212{,}8\angle 2{,}12^\circ\text{ V}}\]
+              \[\underline{I}_1 = \underline{k} \cdot 4{,}472\angle -26{,}57^\circ = \mathbf{4{,}76\angle -24{,}45^\circ\text{ A}}\]
     \end{enumerate}
+    De lijn ``kost'' dus ongeveer $17$~V, ruim $7\%$ spanningsval --- in de praktijk te veel, want de
+    norm laat meestal $5\%$ toe.
 \end{oefening}
 
 \begin{examenbox}[EXAMENVRAAG:]
@@ -938,18 +1190,19 @@ parallelverbindingen. Vooruit rekenen zou een stelsel geven; achteruit rekenen i
 
     Omdat de keten \textbf{lineair} is. Elk resultaat heeft de vorm
     $\underline{X} = \underline{H}\cdot\underline{V}_b$, waarbij $\underline{H}$ alleen van de
-    impedanties afhangt. Vervang je $\underline{V}_b$ door $K\underline{V}_b$, dan wordt élke
-    spanning en élke stroom met dezelfde factor $K$ vermenigvuldigd.
+    impedanties afhangt. Vervang je $\underline{V}_b$ door $\underline{k}\,\underline{V}_b$, dan wordt
+    élke spanning en élke stroom met dezelfde factor $\underline{k}$ vermenigvuldigd.
 
-    Is $K$ reëel, dan verandert er niets aan de hoeken: het hele fasordiagramma wordt gewoon groter
-    of kleiner. Is $K$ complex, dan draait het hele diagramma over $\arg(K)$, maar de
+    Is $\underline{k}$ reëel, dan verandert er niets aan de hoeken: het hele fasordiagramma wordt
+    gewoon groter of kleiner. Is $\underline{k}$ complex, dan draait het hele diagramma over
+    $\arg(\underline{k})$, maar de
     \textbf{onderlinge} hoeken blijven gelijk. En die onderlinge hoeken zijn precies wat de
     arbeidsfactoren en de vermogens bepalen. Je hoeft dus nooit hoek per hoek te corrigeren.
 \end{examenbox}
 
 Kijk wel eerst \emph{waar} de gegeven waarde staat. Staat de gegeven spanning binnenin het
 net (bijvoorbeeld ``de spanning over de spoel is 200~V'' of een voltmeteraflezing), dan is dat al je
-referentie: reken gewoon van daaruit naar voor, zonder schaalstap.
+referentie: reken gewoon van daaruit naar voor, zonder correctiestap.
 
 \subsubsection{Methode 2: knooppuntanalyse (KCL)}
 
@@ -971,6 +1224,31 @@ serie-parallelstructuur heeft.
         \item Bereken daarna de gevraagde takstromen met de wet van Ohm.
     \end{enumerate}
 \end{theorie}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{circuitikz}[scale=0.88, transform shape]
+        \draw (0,0) to[sV={$\underline{V}_{s1}$}] (0,3.6);
+        \draw (0,3.6) to[generic={$\underline{Z}_1$}] (3.2,3.6) node[circ]{};
+        \node[font=\small, above, schoolBlue] at (3.2,3.8) {knoop $\underline{V}_A$};
+        \draw (3.2,3.6) to[generic={$\underline{Z}_3$}] (6.4,3.6) node[circ]{};
+        \node[font=\small, above, schoolBlue] at (6.4,3.8) {knoop $\underline{V}_B$};
+        \draw (3.2,3.6) to[generic={$\underline{Z}_2$}] (3.2,0);
+        \draw (6.4,3.6) to[generic={$\underline{Z}_4$}] (6.4,0);
+        \draw (6.4,3.6) -- (9.0,3.6) to[I={$\underline{I}_{s2}$}] (9.0,0) node[circ]{};
+        \draw (0,0) -- (9.0,0);
+        \node[font=\small, below, schoolRed] at (4.5,-0.15) {referentieknoop (aarde), $\underline{V} = 0$};
+        \draw (0,0) node[ground]{};
+    \end{circuitikz}
+    \caption{Waar knooppuntanalyse voor dient. Dit net is g\'e\'en ketting van serie- en
+        parallelverbindingen (er zijn twee bronnen), dus achterwaarts rekenen werkt niet. Kies de
+        onderste rail als referentie; dan blijven er twee onbekende knoopspanningen
+        $\underline{V}_A$ en $\underline{V}_B$ over, en dus twee KCL-vergelijkingen. In knoop $A$:
+        $\frac{\underline{V}_A - \underline{V}_{s1}}{\underline{Z}_1} + \frac{\underline{V}_A}{\underline{Z}_2}
+        + \frac{\underline{V}_A - \underline{V}_B}{\underline{Z}_3} = 0$.}
+    \label{fig:kcl-opzet}
+\end{figure}
+\FloatBarrier
 
 \begin{examenbox}
     \textbf{Controleer altijd met KCL} in elke knoop nadat je de takstromen hebt. Het kost je een
@@ -1002,19 +1280,35 @@ slechts geldig zijn voor één specifieke frequentie.
         \item AC-spanningsbron $v_2(t) = 10\cos(2t)\text{ V}$ ($\omega_2 = 2\text{ rad/s}$)
         \item AC-stroombron $i_3(t) = 2\sin(5t)\text{ A}$ ($\omega_3 = 5\text{ rad/s}$)
     \end{itemize}
-    geschakeld over weerstand $R = 4\,\Omega$, spoel $L = 1\text{ H}$ en condensator $C = 0{,}1\text{ F}$.
+    geschakeld in het net hieronder, met $L = 2$~H, $C = 0{,}1$~F en twee weerstanden van
+    $1\,\Omega$ en $4\,\Omega$. De gezochte spanning $v_o$ staat over de $1\,\Omega$.
+
+    \begin{center}
+        \begin{circuitikz}[scale=0.82, transform shape]
+            \draw (0,0) to[sV={$10\cos 2t$~V}] (0,3.0);
+            \draw (0,3.0) to[L, l={$2$~H}] (2.6,3.0) node[circ]{};
+            \draw (2.6,3.0) to[I={$2\sin 5t$~A}] (2.6,0) node[circ]{};
+            \draw (2.6,3.0) to[R, l={$1\,\Omega$}, v^>={$v_o$}] (5.8,3.0) node[circ]{};
+            \draw (5.8,3.0) to[C, l_={$0{,}1$~F}] (5.8,0) node[circ]{};
+            \draw (5.8,3.0) to[R, l={$4\,\Omega$}] (8.8,3.0);
+            \draw (8.8,3.0) to[battery1, l_={$5$~V}] (8.8,0);
+            \draw (0,0) -- (8.8,0);
+            \draw (0,0) node[ground]{};
+        \end{circuitikz}
+    \end{center}
 
     \textbf{Oplossing:}
     \begin{enumerate}
         \item \textbf{Deelrespons DC ($\omega_1 = 0$):}
               Op DC is de condensator een open keten ($Z_C = \infty$) en de spoel een kortsluiting ($Z_L = 0$).
-              Uit spanningsdeling: $V_{o,1} = 1\text{ V}$.
+              De $5$~V staat dan over $4\,\Omega + 1\,\Omega$ in serie, dus $I = 1$~A en
+              $V_{o,1} = 1\,\Omega \cdot 1\text{ A} = 1\text{ V}$.
         \item \textbf{Deelrespons $v_2(t)$ ($\omega_2 = 2\text{ rad/s}$):}
-              $\underline{V}_2 = 10\angle 0^\circ\text{ V}$, $\underline{Z}_L = j(2)(1) = j2\,\Omega$, $\underline{Z}_C = \frac{1}{j(2)(0{,}1)} = -j5\,\Omega$.
+              $\underline{V}_2 = 10\angle 0^\circ\text{ V}$, $\underline{Z}_L = j\omega L = j(2)(2) = j4\,\Omega$, $\underline{Z}_C = \frac{1}{j(2)(0{,}1)} = -j5\,\Omega$.
               Uit spanningsdeling: $\underline{V}_{o,2} = 2{,}498\angle -30{,}8^\circ\text{ V} \implies v_{o,2}(t) = 2{,}498\cos(2t - 30{,}8^\circ)\text{ V}$.
         \item \textbf{Deelrespons $i_3(t)$ ($\omega_3 = 5\text{ rad/s}$):}
               $i_3(t) = 2\cos(5t - 90^\circ)\text{ A} \implies \underline{I}_3 = 2\angle -90^\circ\text{ A}$.
-              $\underline{Z}_L = j5\,\Omega$, $\underline{Z}_C = -j2\,\Omega$.
+              $\underline{Z}_L = j\omega L = j(5)(2) = j10\,\Omega$, $\underline{Z}_C = \frac{1}{j(5)(0{,}1)} = -j2\,\Omega$.
               Uit stroomdeling: $\underline{V}_{o,3} = 2{,}33\angle -80{,}0^\circ\text{ V} \implies v_{o,3}(t) = 2{,}33\cos(5t - 80{,}0^\circ)\text{ V} = 2{,}33\sin(5t + 10^\circ)\text{ V}$.
         \item \textbf{Totale tijdsoplossing:}
               \[\mathbf{v_o(t) = 1 + 2{,}498\cos(2t - 30{,}8^\circ) + 2{,}33\sin(5t + 10^\circ)\text{ V}}\]
@@ -1027,13 +1321,27 @@ slechts geldig zijn voor één specifieke frequentie.
     \textbf{Opgave:}
     Bepaal het Thévenin-equivalent $(\underline{V}_{\text{th}}, \underline{Z}_{\text{th}})$ gezien vanaf klemmen $a-b$ van een netwerk met een spanningsbron $\underline{V}_s = 120\angle 75^\circ\text{ V}$ over een tak $(6 + j2)\,\Omega$ parallel met $-j4\,\Omega$, in serie met $10\,\Omega$.
 
+    \begin{center}
+        \begin{circuitikz}[scale=0.85, transform shape]
+            \draw (0,0) to[sV={$120\angle 75^\circ$~V}] (0,3.4);
+            \draw (0,3.4) to[generic={$6+j2\,\Omega$}] (3.4,3.4) node[circ]{};
+            \draw (3.4,3.4) to[C, l_={$-j4\,\Omega$}] (3.4,0);
+            \draw (3.4,3.4) to[R, l={$10\,\Omega$}] (6.8,3.4);
+            \draw (6.8,3.4) -- (7.6,3.4) node[circ]{} node[above]{$a$};
+            \draw (3.4,0) -- (7.6,0) node[circ]{} node[below]{$b$};
+            \draw (0,0) -- (3.4,0);
+            \node[font=\scriptsize, schoolRed, align=center, right] at (7.8,1.7) {open klemmen:\\hier loopt geen stroom,\\dus geen val over $10\,\Omega$};
+            \draw (0,0) node[ground]{};
+        \end{circuitikz}
+    \end{center}
+
     \textbf{Oplossing:}
     \begin{enumerate}
         \item \textbf{Thévenin-impedantie $\underline{Z}_{\text{th}}$ (deactiveer de spanningsbron):}
               De bron wordt kortgesloten. De tak $(6 + j2)\,\Omega$ staat parallel met $-j4\,\Omega$:
               \[\underline{Z}_p = (6 + j2) \parallel (-j4) = \frac{(6 + j2)(-j4)}{6 + j2 - j4} = \frac{8 - j24}{6 - j2} = 2{,}4 - j3{,}2\,\Omega\]
               Hier staat de serieweerstand $10\,\Omega$ mee in serie:
-              \[\underline{Z}_{\text{th}} = 10 + \underline{Z}_p = \mathbf{12{,}4 - j3{,}2\,\Omega}\]
+              \[\underline{Z}_{\text{th}} = 10 + \underline{Z}_p = \mathbf{12{,}4 - j3{,}2}\ \Omega\]
         \item \textbf{Thévenin-openklemspanning $\underline{V}_{\text{th}}$:}
               Omdat er aan klemmen $a-b$ geen stroom loopt door de serieweerstand van $10\,\Omega$, is $\underline{V}_{\text{th}}$ gelijk aan de spanning over de parallelle condensator $-j4\,\Omega$ via spanningsdeling:
               \[\underline{V}_{\text{th}} = \underline{V}_s \cdot \frac{-j4}{(6 + j2) - j4} = 120\angle 75^\circ \cdot \frac{4\angle -90^\circ}{6{,}325\angle -18{,}43^\circ} = \mathbf{75{,}89\angle 3{,}43^\circ\text{ V}}\]
@@ -1091,6 +1399,73 @@ $1:40$ voor V en $1:2$ voor A), en \textbf{schrijf ze bij het diagramma}. Zonder
 diagramma niet controleerbaar en verlies je punten. Neem je geodriehoek en passer mee: het moet op
 schaal zijn, niet uit de losse hand.
 
+\begin{oefening}[Voorbeeld uit slides: het fasordiagramma van het net van methode 1]
+    \textbf{Opgave:} teken het fasordiagramma van alle spanningen en stromen van het net uit
+    figuur~\ref{fig:methode1-net}, met de knooppunten $A$, $B$ en $C$ erbij.
+
+    \textbf{Gegeven uit de berekening:}
+    \[\underline{V}_b = 200\angle 0^\circ\ \text{V} \quad
+      \underline{I}_3 = 4\angle 0^\circ\ \text{A} \quad
+      \underline{I}_2 = 2\angle -90^\circ\ \text{A} \quad
+      \underline{I}_1 = 4{,}47\angle -26{,}57^\circ\ \text{A}\]
+    \[\underline{V}_{R1} = R_1\underline{I}_1 = 17{,}9\angle -26{,}57^\circ\ \text{V} \qquad
+      \underline{V} = 216{,}15\angle -2{,}12^\circ\ \text{V}\]
+
+    \textbf{Werkwijze:}
+    \begin{enumerate}
+        \item Zet $\underline{V}_b$ langs de re\"ele as --- dat is je referentie. De staart noem je
+              $A$, de kop $B$. Dat zijn meteen twee knooppunten uit het schema.
+        \item Hang $\underline{V}_{R1}$ \textbf{kop-staart} aan $B$. De kop daarvan is knooppunt $C$.
+              De pijl van $A$ naar $C$ is dan vanzelf de bronspanning $\underline{V}$ --- je hoeft die
+              niet apart te tekenen, hij \emph{volgt} uit de constructie (KVL).
+        \item Teken alle stromen als een waaier vanuit \'e\'en punt. $\underline{I}_3$ ligt in fase met
+              $\underline{V}_b$ (weerstand), $\underline{I}_2$ staat er $90^\circ$ onder (spoel), en
+              $\underline{I}_1$ is hun som.
+        \item Schrijf de twee schalen erbij.
+    \end{enumerate}
+\end{oefening}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[x=1.25cm, y=1.25cm, >=latex]
+        \draw[->, gray!60] (-0.7,0) -- (7.0,0) node[right, font=\scriptsize, black] {Re};
+        \draw[->, gray!60] (0,-1.7) -- (0,0.9) node[above, font=\scriptsize, black] {Im};
+
+        % ---- spanningen: kop-staart A -> B -> C ----
+        \draw[->, ultra thick, schoolBlue] (0,0) -- (5.0,0);
+        \node[font=\small, schoolBlue, above] at (3.4,0.16) {$\underline{V}_b = 200\angle 0^\circ$~V};
+        \draw[->, ultra thick, schoolTeal] (5.0,0) -- (5.40,-0.20);
+        \draw[schoolTeal, thin] (5.28,-0.17) -- (5.75,-0.62);
+        \node[font=\scriptsize, schoolTeal, right] at (5.77,-0.66) {$\underline{V}_{R1} = 17{,}9$~V};
+        \draw[->, ultra thick, schoolRed] (0,0) -- (5.40,-0.20);
+        \draw[schoolRed, thin] (2.7,-0.10) -- (2.7,-0.92);
+        \node[font=\small, schoolRed, right] at (2.74,-1.00) {$\underline{V} = 216{,}15\angle -2{,}12^\circ$~V};
+
+        \node[circle, fill=black, inner sep=1.3pt, label={[font=\small]above left:$A$}] at (0,0) {};
+        \node[circle, fill=black, inner sep=1.3pt, label={[font=\small]above:$B$}] at (5.0,0) {};
+        \node[circle, fill=black, inner sep=1.3pt, label={[font=\small]above right:$C$}] at (5.40,-0.20) {};
+
+        % ---- stromen: waaier vanuit A, eigen schaal ----
+        \draw[->, very thick, schoolOrange] (0,0) -- (1.0,0);
+        \node[font=\scriptsize, schoolOrange, above right] at (1.02,0.02) {$\underline{I}_3 = 4\angle 0^\circ$~A};
+        \draw[->, very thick, schoolOrange] (0,0) -- (0,-0.5);
+        \node[font=\scriptsize, schoolOrange, left] at (-0.08,-0.30) {$\underline{I}_2 = 2\angle -90^\circ$~A};
+        \draw[->, very thick, schoolPurple] (0,0) -- (1.0,-0.5);
+        \node[font=\scriptsize, schoolPurple, anchor=north east] at (0.98,-0.60) {$\underline{I}_1 = 4{,}47\angle -26{,}57^\circ$~A};
+
+        \node[font=\scriptsize, anchor=north west, align=left, draw=gray!40, inner sep=1.6mm]
+             at (3.9,-1.25) {schaal spanningen: $1\text{ cm} = 40$~V\\schaal stromen: $1\text{ cm} = 4$~A};
+    \end{tikzpicture}
+    \caption{Het fasordiagramma van hetzelfde net. De spanningen staan \textbf{kop-staart}
+        ($A \to B \to C$), zodat de knooppunten uit het schema samenvallen met de hoekpunten van het
+        diagramma; de bronspanning $\underline{V}$ is dan gewoon de pijl van $A$ naar $C$. De stromen
+        staan als een \textbf{waaier} vanuit \'e\'en punt. Merk op hoe klein $\underline{V}_{R1}$ is
+        tegenover $\underline{V}_b$ --- dat is de spanningsval over de lijn, en precies daarom is de
+        hoek van $\underline{V}$ maar $-2{,}12^\circ$.}
+    \label{fig:fasordiagramma-voorbeeld}
+\end{figure}
+\FloatBarrier
+
 \section{Hoofdstuk 4: Driefasige wisselstromen}
 
 Stel je drie bronnen voor die elk 120 graden verschil hebben
@@ -1140,7 +1515,7 @@ stroom \emph{na}, dus de belasting is inductief.
 \newline
 
 Zo'n systeem met drie losse bronnen heeft zes draden nodig. Hoe krijgen we dat aantal omlaag?
-We kunnen een ster- of driehoekconfiguratie gebruiken.
+\textbf{We kunnen een ster- of driehoekconfiguratie gebruiken.}
 
 \subsection{Sterconfiguratie}
 
@@ -2100,75 +2475,36 @@ vervangingsschema naast, met de weerstanden die je nodig hebt om $U_z$ te bereke
 
 \begin{figure}[htbp]
     \centering
-    \begin{tikzpicture}[scale=0.92, line cap=round, line join=round]
-        % Transformator zijde (links)
-        \draw[thick, schoolBlue!80!black, fill=schoolBlue!10] (-0.3, 0.4) rectangle (1.7, 3.4);
-        \node[font=\bfseries\small, text=schoolBlue!90!black, align=center] at (0.7, 2.7) {Voedingstrafo\\$U_0 = 230\text{ V}$};
-
-        \node[circle, fill=schoolBlue!90!black, inner sep=1.5pt, label=above:{\small L1}] (L_src) at (1.7, 1.9) {};
-        \node[circle, fill=black, inner sep=1.5pt, label=below:{\small N}] (N_src) at (1.7, 0.8) {};
-
-        % Nulaarding trafo R_N
-        \draw[thick] (N_src) -- (2.3, 0.8) -- (2.3, -0.4);
-        \draw[thick, fill=white] (2.0, -0.4) rectangle (2.6, -1.1);
-        \node[font=\footnotesize] at (2.3, -0.75) {$R_N$};
-        \draw[thick] (2.3, -1.1) -- (2.3, -1.5);
-        \draw[thick] (1.9, -1.5) -- (2.7, -1.5);
-        \draw[thick] (2.05, -1.65) -- (2.55, -1.65);
-        \draw[thick] (2.2, -1.8) -- (2.4, -1.8);
-        \node[font=\scriptsize, text=gray!80!black, below] at (2.3, -1.85) {Trafo-aarde ($R_N = 10\,\Omega$)};
-
-        % Leidingen naar verbruiker
-        \draw[thick, schoolBlue] (L_src) -- (6.0, 1.9);
-        \draw[thick, black] (N_src) -- (6.0, 0.8);
-
-        % Verbruiker (rechts)
-        \draw[thick, fill=white] (6.0, 0.5) rectangle (7.4, 2.2);
-        \node[font=\small, align=center] at (6.7, 1.35) {Interne\\belasting};
-
-        % Metalen behuizing (gestel)
-        \draw[very thick, schoolRed, dashed] (5.5, 0.2) rectangle (7.9, 2.6);
-        \node[font=\bfseries\footnotesize, text=schoolRed, anchor=south] at (6.7, 2.65) {Metalen gestel (behuizing)};
-
-        % Isolatiefout
-        \draw[->, ultra thick, schoolRed] (5.8, 1.9) -- (5.8, 2.6) -- (5.5, 2.6);
-        \node[font=\scriptsize\bfseries, text=schoolRed, above] at (5.5, 2.8) {Isolatiefout ($R_f \approx 0\,\Omega$)};
-
-        % Aardingsgeleider PE van behuizing naar R_A
-        \draw[thick, schoolGreen!80!black] (7.5, 0.2) -- (7.5, -0.4);
-        \draw[thick, fill=white] (7.2, -0.4) rectangle (7.8, -1.1);
-        \node[font=\footnotesize] at (7.5, -0.75) {$R_A$};
-        \draw[thick, schoolGreen!80!black] (7.5, -1.1) -- (7.5, -1.5);
-        \draw[thick] (7.1, -1.5) -- (7.9, -1.5);
-        \draw[thick] (7.25, -1.65) -- (7.75, -1.65);
-        \draw[thick] (7.4, -1.8) -- (7.6, -1.8);
-        \node[font=\scriptsize, text=gray!80!black, below] at (7.5, -1.85) {Gebruiker-aarde ($R_A = 30\,\Omega$)};
-
-        % Persoon die behuizing aanraakt
-        \draw[thick, schoolOrange!90!black] (9.0, 1.9) circle (0.22); % hoofd
-        \draw[thick, schoolOrange!90!black] (9.0, 1.68) -- (9.0, 0.8); % romp
-        \draw[thick, schoolOrange!90!black] (9.0, 1.45) -- (7.9, 1.7); % arm naar behuizing
-        \draw[thick, schoolOrange!90!black] (9.0, 0.8) -- (8.7, 0.0); % been L
-        \draw[thick, schoolOrange!90!black] (9.0, 0.8) -- (9.3, 0.0); % been R
-
-        % Lichaamsweerstand R_B
-        \draw[thick, fill=white] (8.7, 0.0) rectangle (9.3, -0.7);
-        \node[font=\footnotesize] at (9.0, -0.35) {$R_B$};
-        \draw[thick] (9.0, -0.7) -- (9.0, -1.5);
-        \draw[thick] (8.6, -1.5) -- (9.4, -1.5);
-        \draw[thick] (8.75, -1.65) -- (9.25, -1.65);
-        \draw[thick] (8.9, -1.8) -- (9.1, -1.8);
-        \node[font=\scriptsize, text=gray!80!black, below] at (9.0, -1.85) {Voeten ($R_B = 1000\,\Omega$)};
-
-        % Foutstroomlus aanduiding
-        \draw[->, dashed, ultra thick, schoolRed] (3.6, 2.1) -- (4.8, 2.1) node[midway, above, font=\scriptsize\bfseries] {$I_f$};
-        \draw[->, dashed, thick, schoolOrange!90!black] (8.4, 1.6) -- (8.8, 1.6) node[midway, above, font=\tiny\bfseries] {$I_B$};
-
-        % Aanraakspanning pijl
-        \draw[<->, thick, schoolBlue] (10.3, 2.5) -- (10.3, -1.5)
-        node[midway, right, font=\footnotesize\bfseries, align=left, text=schoolBlue] {Aanraakspanning:\\$U_T = I_f \cdot R_A$};
-    \end{tikzpicture}
-    \caption{Elektrisch vervangingsschema van onrechtstreekse aanraking (indirect contact) in een TT-netwerk. De foutstroom $I_f$ vloeit via het metalen gestel en de aardverspreidingsweerstand $R_A$ terug naar de transformatoraarding $R_N$.}
+    \begin{circuitikz}[scale=0.92, transform shape]
+        % bron
+        \draw (0,0) to[sV={$U_0 = 230$~V}, i<^=$I_f$] (0,3.4);
+        % isolatiefout naar het gestel
+        \draw (0,3.4) to[R, l_={$R_f$}] (3.2,3.4);
+        \node[font=\scriptsize, schoolRed, above] at (1.6,3.72) {isolatiefout};
+        \draw (3.2,3.4) -- (6.4,3.4) node[circ]{};
+        \node[font=\scriptsize, above, align=center] at (4.8,3.55) {metalen gestel};
+        % aardverspreidingsweerstand van de gebruiker
+        \draw (6.4,3.4) to[R={$R_A$}] (6.4,0);
+        % de persoon
+        \draw (6.4,3.4) -- (9.0,3.4) to[R={$R_B$}] (9.0,0) node[circ]{};
+        \node[font=\scriptsize, above, align=center] at (9.0,3.55) {persoon};
+        % transformatoraarding in de terugweg
+        \draw (0,0) to[R={$R_N$}] (3.2,0);
+        \draw (3.2,0) -- (9.0,0);
+        \node[font=\scriptsize, below] at (5.0,-0.15) {aarde};
+        % aanraakspanning
+        \draw[<->, thick, schoolBlue] (10.4,3.4) -- (10.4,0);
+        \node[font=\footnotesize, schoolBlue, right, align=left] at (10.5,1.7)
+             {$U_T = I_f\cdot R_A$\\\scriptsize aanraakspanning};
+        \draw[dashed, gray!70] (9.0,3.4) -- (10.4,3.4);
+        \draw[dashed, gray!70] (9.0,0) -- (10.4,0);
+        \draw (0,0) node[ground]{};
+    \end{circuitikz}
+    \caption{Vervangingsschema van onrechtstreekse aanraking in een TT-net. De foutstroom $I_f$ loopt
+        via het gestel en $R_A$ terug naar de transformatoraarding $R_N$; over $R_A$ staat de
+        aanraakspanning $U_T$. De persoon ($R_B \approx 1000\,\Omega$) staat parallel met $R_A$
+        ($30\,\Omega$) en verandert de foutstroom dus nauwelijks --- daarom laat je $R_B$ weg bij het
+        berekenen van $I_f$, en gebruik je hem pas achteraf om $I_B = U_T/R_B$ te vinden.}
     \label{fig:indirect-contact-tikz}
 \end{figure}
 \FloatBarrier
@@ -2223,22 +2559,63 @@ plasma van duizenden graden Celsius. De vier gevaren:
 Bij werkzaamheden aan elektrische installaties moeten de \textbf{vijf procedurestappen} in
 \textbf{strikte volgorde} worden toegepast:
 
-\begin{examenbox}[EXAMENVRAAG: De 5 Gouden Regels]
-    \begin{enumerate}
-        \item \textbf{Volledig uitschakelen en scheiden (Disconnect):} alle polen en alle mogelijke
-              voedingsbronnen (inclusief noodstroomaggregaten, PV-omvormers en condensatorbatterijen) scheiden.
-        \item \textbf{Beveiligen tegen herinschakeling (Lockout/Tagout):} schakelaars mechanisch vergrendelen
-              met een hangslot en voorzien van een waarschuwingslabel.
-        \item \textbf{Spanningsloosheid controleren (Verify zero voltage):} meten met een goedgekeurde
-              tweepolige spanningsaanwijzer. \textbf{Controleer het meettoestel altijd vlak vóór én vlak
-                  na de meting op een gekende spanningsbron!}
-        \item \textbf{Aarden en kortsluiten (Earth and short-circuit):} de geleiders onderling en met de aarde
-              verbinden (verplicht bij hoogspanning, aanbevolen bij laagspanning) om inductieve en capacitieve
-              restspanningen af te voeren.
-        \item \textbf{Afschermen en afbakenen (Protect and delineate):} nabijgelegen delen die nog onder
-              spanning staan fysiek afschermen met isolerende doeken of schotten en de werkzone markeren.
-    \end{enumerate}
-\end{examenbox}
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[
+        node distance=0mm,
+        stap/.style={draw=schoolBlue!70, fill=schoolBlue!6, line width=0.8pt, rounded corners=2.5pt,
+                     text width=30mm, align=center, inner sep=2.2mm, font=\footnotesize},
+        nr/.style={circle, fill=schoolBlue, text=white, font=\scriptsize\bfseries, inner sep=1.3pt},
+        pijl/.style={-{Latex[length=2.4mm]}, line width=1.1pt, schoolBlue!80}
+      ]
+      \node[stap] (s1) at (0,0) {\textbf{Vrijschakelen}\\[0.5mm]\scriptsize\emph{cut-off}};
+      \node[stap] (s2) at (3.6,0) {\textbf{Vergrendelen}\\[0.5mm]\scriptsize\emph{lockout}};
+      \node[stap] (s3) at (7.2,0) {\textbf{Meten}\\[0.5mm]\scriptsize\emph{verify}};
+      \node[stap] (s4) at (10.8,0) {\textbf{Aarden en kortsluiten}\\[0.5mm]\scriptsize\emph{earth}};
+      \node[stap] (s5) at (14.4,0) {\textbf{Afbakenen}\\[0.5mm]\scriptsize\emph{delineate}};
+
+      \foreach \a/\b in {s1/s2, s2/s3, s3/s4, s4/s5}
+        \draw[pijl] (\a) -- (\b);
+
+      \foreach \n/\lbl in {s1/1, s2/2, s3/3, s4/4, s5/5}
+        \node[nr] at ([shift={(-13.5mm,5.2mm)}]\n.north) {\lbl};
+
+      \node[font=\scriptsize\itshape, schoolRed, align=center] at (7.2,-2.0)
+           {strikte volgorde --- een stap overslaan maakt alle volgende stappen waardeloos};
+    \end{tikzpicture}
+    \caption{De vijf gouden regels voor werken aan een elektrische installatie, in de volgorde
+        waarin je ze moet uitvoeren.}
+    \label{fig:vijf-gouden-regels}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.62\textwidth]{assets/veilige_vijf_slide.png}
+    \caption{Dezelfde vijf stappen zoals ze in de cursus staan (``de Veilige Vijf''). Leer deze
+        vijf woorden uit het hoofd --- de vraag op het examen is letterlijk ``geef de vijf gouden
+        regels''.}
+    \label{fig:veilige-vijf-slide}
+\end{figure}
+\FloatBarrier
+
+\begin{enumerate}
+    \item \textbf{Vrijschakelen.} Alle polen \'en alle mogelijke voedingsbronnen
+          scheiden, dus ook noodstroomaggregaten, PV-omvormers en condensatorbatterijen. Een
+          condensatorbatterij staat nog onder spanning nadat je de hoofdschakelaar hebt omgelegd.
+    \item \textbf{Vergrendelen.} Schakelaars mechanisch vergrendelen met een
+          hangslot en een waarschuwingslabel erop. Iemand anders mag jouw kring niet kunnen
+          inschakelen terwijl jij eraan werkt.
+    \item \textbf{Meten.} Controleer de spanningsloosheid met een goedgekeurde tweepolige
+          spanningsaanwijzer, en \belangrijk{het meettoestel testen op een gekende spanningsbron vlak
+          v\'o\'or \'en vlak na de meting}. Een stuk meetsnoer dat onderweg breekt geeft anders precies
+          hetzelfde beeld als een spanningsloze installatie.
+    \item \textbf{Aarden en kortsluiten.} De geleiders onderling en met de aarde verbinden. Verplicht
+          bij hoogspanning, aanbevolen bij laagspanning, om inductieve en capacitieve restspanningen
+          af te voeren.
+    \item \textbf{Afbakenen.} Nabijgelegen delen die nog onder spanning staan fysiek
+          afschermen met isolerende doeken of schotten, en de werkzone markeren.
+\end{enumerate}
 
 \subsubsection{Regelgeving, keurmerken en uitwendige invloeden}
 
@@ -2490,74 +2867,6 @@ aardfout, waarbij een deel van de stroom via de aarde wegvloeit en de som dus ni
 \end{figure}
 \FloatBarrier
 
-\begin{figure}[htbp]
-    \centering
-    \begin{tikzpicture}[scale=0.90, line cap=round, line join=round]
-        % Torus (ringkern)
-        \draw[fill=gray!20, draw=gray!70, double, double distance=15pt, line width=1pt] (5.0, 2.0) circle (1.85);
-        \node[font=\bfseries\small, text=gray!80!black, align=center] at (5.0, 2.0) {Ferromagnetische\\Torus (Ringkern)};
-
-        % Voedingsklemmen
-        \node[font=\bfseries\small, text=schoolBlue] at (-0.2, 3.2) {Fase L1};
-        \node[font=\bfseries\small, text=black] at (-0.2, 0.8) {Nul N};
-
-        % Verbruiker
-        \draw[thick, fill=schoolBlue!10, draw=schoolBlue] (9.0, 0.4) rectangle (10.8, 3.6);
-        \node[font=\bfseries\small, align=center, text=schoolBlue!90!black] at (9.9, 2.0) {Verbruiker\\(Belasting)};
-
-        % Fase L1 lijn
-        \draw[thick, schoolBlue] (0.6, 3.2) -- (1.8, 3.2);
-        \draw[thick, schoolBlue] (1.8, 3.2) -- (2.2, 3.55); % schakelcontact
-        \draw[thick, schoolBlue] (2.5, 3.2) -- (9.0, 3.2);
-        \draw[fill=schoolBlue] (1.8, 3.2) circle (0.05);
-        \draw[fill=schoolBlue] (2.5, 3.2) circle (0.05);
-        \draw[->, ultra thick, schoolBlue] (3.4, 3.4) -- (4.2, 3.4) node[above, font=\scriptsize\bfseries] {$i_L(t)$};
-
-        % Nul N lijn
-        \draw[thick, black] (0.6, 0.8) -- (1.8, 0.8);
-        \draw[thick, black] (1.8, 0.8) -- (2.2, 1.15); % schakelcontact
-        \draw[thick, black] (2.5, 0.8) -- (9.0, 0.8);
-        \draw[fill=black] (1.8, 0.8) circle (0.05);
-        \draw[fill=black] (2.5, 0.8) circle (0.05);
-        \draw[<-, ultra thick, black] (3.4, 0.6) -- (4.2, 0.6) node[below, font=\scriptsize\bfseries] {$i_N(t)$};
-
-        % Secundaire meetspoel
-        \draw[thick, schoolRed] (4.6, 0.15) arc (180:360:0.4);
-        \draw[thick, schoolRed] (4.5, 0.05) arc (180:360:0.5);
-        \draw[thick, schoolRed] (4.5, 0.05) -- (4.5, -1.2) -- (4.8, -1.2);
-        \draw[thick, schoolRed] (5.5, 0.05) -- (5.5, -1.2) -- (5.2, -1.2);
-
-        % Uitschakelrelais
-        \draw[fill=schoolRed!15, draw=schoolRed, thick] (4.2, -1.7) rectangle (5.8, -1.1);
-        \node[font=\scriptsize\bfseries, text=schoolRed, align=center] at (5.0, -1.4) {Uitschakel-\\relais};
-        \draw[dashed, ultra thick, schoolRed, ->] (5.0, -1.1) -- (5.0, -0.4) -- (2.15, -0.4) -- (2.15, 3.1);
-        \node[font=\tiny\bfseries, text=schoolRed, right] at (2.2, 1.9) {Mechanische ontgrendeling ($<30\text{ ms}$)};
-
-        % Testcircuit
-        \draw[thick, schoolGreen!80!black] (1.2, 3.2) -- (1.2, 4.4) -- (3.8, 4.4);
-        \draw[thick, schoolGreen!80!black] (3.8, 4.6) -- (4.4, 4.6); % knop T
-        \draw[thick, schoolGreen!80!black] (4.1, 4.6) -- (4.1, 4.8);
-        \draw[fill=schoolGreen!80!black] (3.8, 4.4) circle (0.05);
-        \draw[fill=schoolGreen!80!black] (4.4, 4.4) circle (0.05);
-        \node[font=\scriptsize\bfseries, text=schoolGreen!80!black, above] at (4.1, 4.8) {Testknop $T$};
-        \draw[thick, schoolGreen!80!black] (4.4, 4.4) -- (5.8, 4.4);
-        \draw[fill=white, draw=schoolGreen!80!black, thick] (5.8, 4.2) rectangle (6.8, 4.6);
-        \node[font=\scriptsize\bfseries, text=schoolGreen!80!black] at (6.3, 4.4) {$R_T$};
-        \draw[thick, schoolGreen!80!black] (6.8, 4.4) -- (8.0, 4.4) -- (8.0, 0.8);
-        \draw[fill=schoolGreen!80!black] (8.0, 0.8) circle (0.05);
-        \draw[fill=schoolGreen!80!black] (1.2, 3.2) circle (0.05);
-        \node[font=\tiny, text=schoolGreen!80!black, align=center] at (6.3, 4.85) {Teststroom $I_T = U/R_T$ loopt buiten de torus om};
-    \end{tikzpicture}
-    \caption{Elektrisch schema en werkingsprincipe van een aardlekschakelaar (RCD). De testknop $T$ met serieweerstand $R_T$ leidt een stroom buiten de torus om om de uitschakeling te testen.}
-    \label{fig:rcd-principe-tikz}
-\end{figure}
-\FloatBarrier
-
-\frm{Fluxbalans in de RCD-ringkern}{\Phi_{\text{net}}(t) = \frac{\mu A}{l} \cdot N_1 \left( i_L(t) - i_N(t) \right) = \frac{\mu A}{l} \cdot N_1 i_\Delta(t)}
-{Bij een foutloze kring is $i_L(t) = i_N(t) \implies \Phi_{\text{net}} = 0$. Bij een lekstroom $i_\Delta(t) \neq 0$ ontstaat een netto wisselende flux $\Phi_{\text{net}}(t)$.}
-
-\frm{Geïnduceerde spanning in de meetspoel}{e_{\text{sec}}(t) = -N_{\text{sec}} \frac{d\Phi_{\text{net}}}{dt} \qquad \Longrightarrow \qquad \text{Relais tript bij } I_\Delta \ge I_{\Delta n}}
-{Met $N_{\text{sec}}$ het aantal windingen van de secundaire meetspoel en $e_{\text{sec}}$ de opgewekte EMK die het uitschakelrelais bekrachtigt.}
 
 \begin{center}
     \begin{tabular}{@{}p{30mm}p{45mm}p{45mm}@{}}
