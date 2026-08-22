@@ -20,7 +20,6 @@ _(deze worden niet zoveel gevraagd en zijn eigenlijk herhaling van bode plots ma
 
 === Waarom een Bode-plot? <sec:waarom-bode-plot>
 
-Het probleem met
 
 === Bode-plot: amplitude <sec:bode-plot-amplitude>
 
@@ -54,7 +53,9 @@ getal als één *punt* in het complexe vlak, en verbindt al die punten tot één
 kromme. De pijl van de oorsprong naar dat punt is dus precies wat de Bode-plot
 beschrijft:
 
-$ underbrace(|H(j omega)|, "lengte vector") = "amplitude (Bode)" quad quad underbrace(angle H(j omega), "hoek vector") = "fase (Bode)" $
+$
+  underbrace(|H(j omega)|, "lengte vector") = "amplitude (Bode)" quad quad underbrace(angle H(j omega), "hoek vector") = "fase (Bode)"
+$
 
 #figure(
   cetz.canvas({
