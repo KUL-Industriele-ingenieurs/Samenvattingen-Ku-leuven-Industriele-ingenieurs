@@ -2058,8 +2058,8 @@ lichaamsweerstand $Z_B$ de stroomgrens omgerekend naar een \keyterm{veilige conv
 \subsubsection{Rechtstreekse versus onrechtstreekse aanraking}
 
 \begin{itemize}
-    \item \keyterm{Rechtstreekse aanraking (Direct contact):} een persoon raakt een geleider aan die
-          in normale toestand onder spanning staat (bv.\ blote fasedraad L1 of actieve klem).
+    \item \keyterm{Rechtstreekse aanraking (Direct contact):} een persoon raakt een actieve geleider aan die
+          in normale toestand onder spanning staat (bv.\ fasedraad L1).
           \emph{Beveiliging:} isolatie, omhulsels/kasten (IP-graad), afstand/afscherming, en als
           bijkomende bescherming een $30\text{ mA}$ RCD.
     \item \keyterm{Onrechtstreekse aanraking (Indirect contact):} een persoon raakt een metalen
@@ -2071,13 +2071,105 @@ lichaamsweerstand $Z_B$ de stroomgrens omgerekend naar een \keyterm{veilige conv
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.75\textwidth]{assets/indirect_contact.png}
-    \caption{Onrechtstreekse aanraking (indirect contact): door een isolatiefout vloeit een foutstroom
-        $I_{\text{fault}}$ via de beschermingsgeleider PE en de aardverspreidingsweerstand. Dit veroorzaakt
-        een foutspanning $U_z$ over het toestel, die door een snelle uitschakeling geneutraliseerd moet worden.}
-    \label{fig:indirect-contact}
+    \begin{tikzpicture}[scale=0.92, line cap=round, line join=round]
+        % Transformator zijde (links)
+        \draw[thick, schoolBlue!80!black, fill=schoolBlue!10] (-0.3, 0.4) rectangle (1.7, 3.4);
+        \node[font=\bfseries\small, text=schoolBlue!90!black, align=center] at (0.7, 2.7) {Voedingstrafo\\$U_0 = 230\text{ V}$};
+        
+        \node[circle, fill=schoolBlue!90!black, inner sep=1.5pt, label=above:{\small L1}] (L_src) at (1.7, 1.9) {};
+        \node[circle, fill=black, inner sep=1.5pt, label=below:{\small N}] (N_src) at (1.7, 0.8) {};
+        
+        % Nulaarding trafo R_N
+        \draw[thick] (N_src) -- (2.3, 0.8) -- (2.3, -0.4);
+        \draw[thick, fill=white] (2.0, -0.4) rectangle (2.6, -1.1);
+        \node[font=\footnotesize] at (2.3, -0.75) {$R_N$};
+        \draw[thick] (2.3, -1.1) -- (2.3, -1.5);
+        \draw[thick] (1.9, -1.5) -- (2.7, -1.5);
+        \draw[thick] (2.05, -1.65) -- (2.55, -1.65);
+        \draw[thick] (2.2, -1.8) -- (2.4, -1.8);
+        \node[font=\scriptsize, text=gray!80!black, below] at (2.3, -1.85) {Trafo-aarde ($R_N = 10\,\Omega$)};
+        
+        % Leidingen naar verbruiker
+        \draw[thick, schoolBlue] (L_src) -- (6.0, 1.9);
+        \draw[thick, black] (N_src) -- (6.0, 0.8);
+        
+        % Verbruiker (rechts)
+        \draw[thick, fill=white] (6.0, 0.5) rectangle (7.4, 2.2);
+        \node[font=\small, align=center] at (6.7, 1.35) {Interne\\belasting};
+        
+        % Metalen behuizing (gestel)
+        \draw[very thick, schoolRed, dashed] (5.5, 0.2) rectangle (7.9, 2.6);
+        \node[font=\bfseries\footnotesize, text=schoolRed, anchor=south] at (6.7, 2.65) {Metalen gestel (behuizing)};
+        
+        % Isolatiefout
+        \draw[->, ultra thick, schoolRed] (5.8, 1.9) -- (5.8, 2.6) -- (5.5, 2.6);
+        \node[font=\scriptsize\bfseries, text=schoolRed, above] at (5.5, 2.8) {Isolatiefout ($R_f \approx 0\,\Omega$)};
+        
+        % Aardingsgeleider PE van behuizing naar R_A
+        \draw[thick, schoolGreen!80!black] (7.5, 0.2) -- (7.5, -0.4);
+        \draw[thick, fill=white] (7.2, -0.4) rectangle (7.8, -1.1);
+        \node[font=\footnotesize] at (7.5, -0.75) {$R_A$};
+        \draw[thick, schoolGreen!80!black] (7.5, -1.1) -- (7.5, -1.5);
+        \draw[thick] (7.1, -1.5) -- (7.9, -1.5);
+        \draw[thick] (7.25, -1.65) -- (7.75, -1.65);
+        \draw[thick] (7.4, -1.8) -- (7.6, -1.8);
+        \node[font=\scriptsize, text=gray!80!black, below] at (7.5, -1.85) {Gebruiker-aarde ($R_A = 30\,\Omega$)};
+        
+        % Persoon die behuizing aanraakt
+        \draw[thick, schoolOrange!90!black] (9.0, 1.9) circle (0.22); % hoofd
+        \draw[thick, schoolOrange!90!black] (9.0, 1.68) -- (9.0, 0.8); % romp
+        \draw[thick, schoolOrange!90!black] (9.0, 1.45) -- (7.9, 1.7); % arm naar behuizing
+        \draw[thick, schoolOrange!90!black] (9.0, 0.8) -- (8.7, 0.0); % been L
+        \draw[thick, schoolOrange!90!black] (9.0, 0.8) -- (9.3, 0.0); % been R
+        
+        % Lichaamsweerstand R_B
+        \draw[thick, fill=white] (8.7, 0.0) rectangle (9.3, -0.7);
+        \node[font=\footnotesize] at (9.0, -0.35) {$R_B$};
+        \draw[thick] (9.0, -0.7) -- (9.0, -1.5);
+        \draw[thick] (8.6, -1.5) -- (9.4, -1.5);
+        \draw[thick] (8.75, -1.65) -- (9.25, -1.65);
+        \draw[thick] (8.9, -1.8) -- (9.1, -1.8);
+        \node[font=\scriptsize, text=gray!80!black, below] at (9.0, -1.85) {Voeten ($R_B = 1000\,\Omega$)};
+        
+        % Foutstroomlus aanduiding
+        \draw[->, dashed, ultra thick, schoolRed] (3.6, 2.1) -- (4.8, 2.1) node[midway, above, font=\scriptsize\bfseries] {$I_f$};
+        \draw[->, dashed, thick, schoolOrange!90!black] (8.4, 1.6) -- (8.8, 1.6) node[midway, above, font=\tiny\bfseries] {$I_B$};
+        
+        % Aanraakspanning pijl
+        \draw[<->, thick, schoolBlue] (10.3, 2.5) -- (10.3, -1.5) 
+            node[midway, right, font=\footnotesize\bfseries, align=left, text=schoolBlue] {Aanraakspanning:\\$U_T = I_f \cdot R_A$};
+    \end{tikzpicture}
+    \caption{Elektrisch vervangingsschema van onrechtstreekse aanraking (indirect contact) in een TT-netwerk. De foutstroom $I_f$ vloeit via het metalen gestel en de aardverspreidingsweerstand $R_A$ terug naar de transformatoraarding $R_N$.}
+    \label{fig:indirect-contact-tikz}
 \end{figure}
 \FloatBarrier
+
+\frm{Foutstroom bij indirect contact (TT-net)}{I_f = \frac{U_0}{R_A + R_N + R_f}}
+{Met $U_0$ de fasespanning ($230\text{ V}$), $R_A$ de aardverspreidingsweerstand van de gebruiker in $\Omega$, $R_N$ de transformatoraarding in $\Omega$ en $R_f$ de foutweerstand in $\Omega$.}
+
+\frm{Aanraakspanning (foutspanning)}{U_T = I_f \cdot R_A = U_0 \cdot \frac{R_A}{R_A + R_N + R_f}}
+{Met $U_T$ de spanning tussen het defecte gestel en de referentie-aarde in V.}
+
+\frm{Veiligheidsvoorwaarde in TT-netten}{R_A \cdot I_{\Delta n} \le U_L \qquad \Longleftrightarrow \qquad R_A \le \frac{U_L}{I_{\Delta n}}}
+{Met $I_{\Delta n}$ de nominale aanspreekstroom van de RCD (bv.\ $30\text{ mA}$ of $300\text{ mA}$) en $U_L$ de conventionele grensaanraakspanning ($50\text{ V}$ voor BB1, $25\text{ V}$ voor BB2).}
+
+\begin{oefening}[Waarom een MCB niet volstaat en een RCD strikt noodzakelijk is]
+    \textbf{Gegeven (TT-netwerk):} $U_0 = 230\text{ V}$, transformatoraarding $R_N = 10\,\Omega$, aardverspreidingsweerstand $R_A = 30\,\Omega$, isolatiefout $R_f = 0\,\Omega$, kring beveiligd met een MCB $16\text{ A}$ (type C) en een RCD $30\text{ mA}$. Lichaamsweerstand $R_B = 1000\,\Omega$.
+
+    \textbf{Berekening:}
+    \begin{enumerate}
+        \item \textbf{Foutstroom door de aarding:}
+              \[I_f = \frac{230\text{ V}}{30\,\Omega + 10\,\Omega} = \mathbf{5{,}75\text{ A}}\]
+        \item \textbf{Aanraakspanning op het toestel:}
+              \[U_T = I_f \cdot R_A = 5{,}75\text{ A} \cdot 30\,\Omega = \mathbf{172{,}5\text{ V}} \qquad (\gg 50\text{ V} \text{ levensgevaarlijk!})\]
+        \item \textbf{Lichaamsstroom bij aanraking:}
+              \[I_B = \frac{U_T}{R_B} = \frac{172{,}5\text{ V}}{1000\,\Omega} = \mathbf{172{,}5\text{ mA}} \qquad (\text{Zone AC-4: dodelijk binnen } <0{,}5\text{ s})\]
+        \item \textbf{Reactie van de MCB ($16\text{ A}$ type C):}
+              Een automaat van $16\text{ A}$ type C heeft een magnetische drempel van $5 \times 16\text{ A} = \mathbf{80\text{ A}}$. Bij een foutstroom van $5{,}75\text{ A}$ reageert de MCB \belangrijk{nooit}!
+        \item \textbf{Reactie van de RCD ($30\text{ mA}$):}
+              Omdat $I_f = 5{,}75\text{ A} \gg 30\text{ mA}$, schakelt de RCD \belangrijk{onmiddellijk uit} ($<30\text{ ms}$), waardoor de spanning wegvalt vóór ventrikelfibrillatie kan optreden.
+    \end{enumerate}
+\end{oefening}
 
 \subsubsection{Secundaire en indirecte gevaren}
 
@@ -2210,15 +2302,21 @@ fundamenteel onderscheid tussen overbelasting en kortsluiting:
 \end{figure}
 \FloatBarrier
 
-\textbf{Dimensioneringsregel voor leidingbeveiliging:}
-Om een kabel tegen oververhitting te beschermen moet voldaan zijn aan:
-\[I_b \le I_n \le I_z \qquad\text{en}\qquad I_2 \le 1{,}45 \cdot I_z\]
-\begin{itemize}
-    \item $I_b$: ontwerpstroom / bedrijfsstroom van de belasting (load current).
-    \item $I_n$: nominale aanspreekstroom van het beveiligingstoestel (MCB/zekering).
-    \item $I_z$: continu toelaatbare stroom door de kabel (permissible current, afhankelijk van doorsnede en plaatsingswijze).
-    \item $I_2$: conventionele uitschakelstroom van de beveiliging binnen de conventionele tijd ($1{,}45\,I_n$ voor een MCB).
-\end{itemize}
+\frm{Dimensioneringsregel kabelbeveiliging}{I_b \le I_n \le I_z \qquad\text{en}\qquad I_2 \le 1{,}45 \cdot I_z}
+{Met $I_b$ de ontwerpstroom van de belasting, $I_n$ de nominale stroom van de automaat, $I_z$ de toelaatbare continue kabelstroom en $I_2$ de conventionele aanspreekstroom ($1{,}45\,I_n$).}
+
+\frm{Thermische kortsluitvastheid (Adiabatische formule)}{I_{\text{ks}}^2 t \le k^2 S^2 \qquad \Longrightarrow \qquad S_{\text{min}} = \frac{I_{\text{ks}} \sqrt{t}}{k}}
+{Met $I_{\text{ks}}$ de kortsluitstroom in A, $t$ de uitschakeltijd van de automaat in s, $S$ de koperdoorsnede in $\text{mm}^2$ en $k$ de materiaalconstante ($k = 115$ voor koper met PVC-isolatie, $k = 143$ voor koper met XLPE-isolatie).}
+
+\begin{theorie}[Stappenplan: Keuze en dimensionering van kabel en automaat]
+    \begin{enumerate}
+        \item \textbf{Bepaal de bedrijfsstroom $I_b$:} $I_b = \frac{P}{U\cos\phi}$ (1-fase) of $I_b = \frac{P}{\sqrt{3}U\cos\phi}$ (3-fase).
+        \item \textbf{Kies de nominale automaatstroom $I_n$:} Neem de eerstvolgende standaardwaarde $I_n \ge I_b$ (bv.\ $16\text{ A}, 20\text{ A}, 25\text{ A}, 32\text{ A}$).
+        \item \textbf{Kies de kabeldoorsnede $S$ zodat $I_z \ge I_n$:} volgens de AREI-tabel (bv.\ $1{,}5\text{ mm}^2 \to 16\text{ A}$, $2{,}5\text{ mm}^2 \to 20\text{ A}$, $4\text{ mm}^2 \to 25\text{ A}$, $6\text{ mm}^2 \to 32\text{ A}$).
+        \item \textbf{Controleer de kortsluitvastheid:} bereken $S_{\text{min}} = \frac{I_{\text{ks}}\sqrt{t}}{k}$ en controleer dat $S \ge S_{\text{min}}$.
+        \item \textbf{Controleer het spanningsverlies $\Delta U$:} $\Delta U = 2 \cdot \frac{\rho \cdot L \cdot I_b}{S}$ (1-fase) en zorg dat $\Delta U \le 3\%$ ($6{,}9\text{ V}$).
+    \end{enumerate}
+\end{theorie}
 
 \subsubsection{De installatieautomaat (MCB) en zijn uitschakelcurves}
 
@@ -2307,66 +2405,95 @@ zodat de aanraakspanning op aanraakbare delen beperkt blijft en de beveiliging (
     dat de installatie uitschakelt zodra er een lekstroom (differentiaalstroom $I_\Delta$) naar de
     aarde vloeit.
 
-    \textbf{Synoniemen:}
-    \begin{itemize}
-        \item Aardlekschakelaar
-        \item Differentieelschakelaar / Verliesstroomschakelaar
-        \item RCCB (\emph{Residual Current Circuit Breaker})
-        \item RCD (\emph{Residual Current Device})
-    \end{itemize}
+    \textbf{Synoniemen:} Aardlekschakelaar, Differentieelschakelaar, Verliesstroomschakelaar, RCCB, RCD.
 
     \textbf{Beschermingsdoel:}
     \begin{itemize}
-        \item \belangrijk{Persoonsbeveiliging ($30\text{ mA}$):} bescherming tegen elektrocutie bij
-              zowel directe als onrechtstreekse aanraking.
-        \item \belangrijk{Brandbeveiliging ($300\text{ mA}$ of $500\text{ mA}$):} voorkomt dat sluimerende
-              isolatiefouten in leidingen ontbranden door lokale warmteontwikkeling ($P = I_\Delta^2 R$).
+        \item \belangrijk{Persoonsbeveiliging ($30\text{ mA}$):} bescherming tegen elektrocutie bij directe en onrechtstreekse aanraking.
+        \item \belangrijk{Brandbeveiliging ($300\text{ mA}$):} voorkomt dat isolatiefouten ontbranden door Joule-opwarming ($P = I_\Delta^2 R$).
     \end{itemize}
 \end{examenbox}
 
 \begin{figure}[htbp]
     \centering
-    \begin{minipage}{0.44\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{assets/rcd_diff_foto.png}
-        \caption{4-polige aardlekschakelaar ($40\text{ A}$, $30\text{ mA}$).}
-        \label{fig:rcd-foto}
-    \end{minipage}\hfill
-    \begin{minipage}{0.52\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{assets/rcd_werking_schematisch.png}
-        \caption{Interne opbouw van een RCD met somstroomtransformator, secundaire meetspoel, uitschakelrelais en testcircuit.}
-        \label{fig:rcd-schematic}
-    \end{minipage}
+    \begin{tikzpicture}[scale=0.90, line cap=round, line join=round]
+        % Torus (ringkern)
+        \draw[fill=gray!20, draw=gray!70, double, double distance=15pt, line width=1pt] (5.0, 2.0) circle (1.85);
+        \node[font=\bfseries\small, text=gray!80!black, align=center] at (5.0, 2.0) {Ferromagnetische\\Torus (Ringkern)};
+        
+        % Voedingsklemmen
+        \node[font=\bfseries\small, text=schoolBlue] at (-0.2, 3.2) {Fase L1};
+        \node[font=\bfseries\small, text=black] at (-0.2, 0.8) {Nul N};
+        
+        % Verbruiker
+        \draw[thick, fill=schoolBlue!10, draw=schoolBlue] (9.0, 0.4) rectangle (10.8, 3.6);
+        \node[font=\bfseries\small, align=center, text=schoolBlue!90!black] at (9.9, 2.0) {Verbruiker\\(Belasting)};
+        
+        % Fase L1 lijn
+        \draw[thick, schoolBlue] (0.6, 3.2) -- (1.8, 3.2);
+        \draw[thick, schoolBlue] (1.8, 3.2) -- (2.2, 3.55); % schakelcontact
+        \draw[thick, schoolBlue] (2.5, 3.2) -- (9.0, 3.2);
+        \draw[fill=schoolBlue] (1.8, 3.2) circle (0.05);
+        \draw[fill=schoolBlue] (2.5, 3.2) circle (0.05);
+        \draw[->, ultra thick, schoolBlue] (3.4, 3.4) -- (4.2, 3.4) node[above, font=\scriptsize\bfseries] {$i_L(t)$};
+        
+        % Nul N lijn
+        \draw[thick, black] (0.6, 0.8) -- (1.8, 0.8);
+        \draw[thick, black] (1.8, 0.8) -- (2.2, 1.15); % schakelcontact
+        \draw[thick, black] (2.5, 0.8) -- (9.0, 0.8);
+        \draw[fill=black] (1.8, 0.8) circle (0.05);
+        \draw[fill=black] (2.5, 0.8) circle (0.05);
+        \draw[<-, ultra thick, black] (3.4, 0.6) -- (4.2, 0.6) node[below, font=\scriptsize\bfseries] {$i_N(t)$};
+        
+        % Secundaire meetspoel
+        \draw[thick, schoolRed] (4.6, 0.15) arc (180:360:0.4);
+        \draw[thick, schoolRed] (4.5, 0.05) arc (180:360:0.5);
+        \draw[thick, schoolRed] (4.5, 0.05) -- (4.5, -1.2) -- (4.8, -1.2);
+        \draw[thick, schoolRed] (5.5, 0.05) -- (5.5, -1.2) -- (5.2, -1.2);
+        
+        % Uitschakelrelais
+        \draw[fill=schoolRed!15, draw=schoolRed, thick] (4.2, -1.7) rectangle (5.8, -1.1);
+        \node[font=\scriptsize\bfseries, text=schoolRed, align=center] at (5.0, -1.4) {Uitschakel-\\relais};
+        \draw[dashed, ultra thick, schoolRed, ->] (5.0, -1.1) -- (5.0, -0.4) -- (2.15, -0.4) -- (2.15, 3.1);
+        \node[font=\tiny\bfseries, text=schoolRed, right] at (2.2, 1.9) {Mechanische ontgrendeling ($<30\text{ ms}$)};
+        
+        % Testcircuit
+        \draw[thick, schoolGreen!80!black] (1.2, 3.2) -- (1.2, 4.4) -- (3.8, 4.4);
+        \draw[thick, schoolGreen!80!black] (3.8, 4.6) -- (4.4, 4.6); % knop T
+        \draw[thick, schoolGreen!80!black] (4.1, 4.6) -- (4.1, 4.8);
+        \draw[fill=schoolGreen!80!black] (3.8, 4.4) circle (0.05);
+        \draw[fill=schoolGreen!80!black] (4.4, 4.4) circle (0.05);
+        \node[font=\scriptsize\bfseries, text=schoolGreen!80!black, above] at (4.1, 4.8) {Testknop $T$};
+        \draw[thick, schoolGreen!80!black] (4.4, 4.4) -- (5.8, 4.4);
+        \draw[fill=white, draw=schoolGreen!80!black, thick] (5.8, 4.2) rectangle (6.8, 4.6);
+        \node[font=\scriptsize\bfseries, text=schoolGreen!80!black] at (6.3, 4.4) {$R_T$};
+        \draw[thick, schoolGreen!80!black] (6.8, 4.4) -- (8.0, 4.4) -- (8.0, 0.8);
+        \draw[fill=schoolGreen!80!black] (8.0, 0.8) circle (0.05);
+        \draw[fill=schoolGreen!80!black] (1.2, 3.2) circle (0.05);
+        \node[font=\tiny, text=schoolGreen!80!black, align=center] at (6.3, 4.85) {Teststroom $I_T = U/R_T$ loopt buiten de torus om};
+    \end{tikzpicture}
+    \caption{Elektrisch schema en werkingsprincipe van een aardlekschakelaar (RCD). De testknop $T$ met serieweerstand $R_T$ leidt een stroom buiten de torus om om de uitschakeling te testen.}
+    \label{fig:rcd-principe-tikz}
 \end{figure}
 \FloatBarrier
 
-\textbf{Gedetailleerd werkingsprincipe (Somstroomtransformator):}
-\begin{enumerate}
-    \item Alle actieve geleiders (de fase(n) L1, L2, L3 én de nulleider N) worden als primaire wikkelingen
-          door een ferromagnetische ringkern (\emph{torus}) gevoerd.
-    \item \textbf{Normale toestand (geen lek):} De stroom die naar de verbruiker vloeit, keert integraal
-          terug. De vectoriële som van de stromen is exact nul:
-          \[\sum \underline{I} = \underline{I}_{L1} + \underline{I}_{L2} + \underline{I}_{L3} + \underline{I}_N = 0\]
-          De magnetische velden die door de heengaande en terugkerende stromen worden opgewekt, heffen
-          elkaar in de ringkern volkomen op: $\Phi_{\text{net}} = 0$.
-    \item \textbf{Fouttoestand (isolatiedefect of aanraking):} Een deel van de stroom vloeit via het gestel,
-          de aarding of het menselijk lichaam weg naar de aarde. De stroombalans is verstoord:
-          \[\sum \underline{I} = \underline{I}_{\Delta} \neq 0\]
-    \item Hierdoor ontstaat in de ringkern een resulterende wisselende magnetische flux $\Phi_{\text{net}}(t)$.
-    \item Volgens de inductiewet van Faraday ($e = -N \frac{d\Phi}{dt}$) wekt deze flux een spanning op
-          in een secundaire \keyterm{meetspoel}.
-    \item Deze spanning stuurt een gevoelig elektromagnetisch uitschakelrelais (\emph{trip relay}) aan,
-          dat mechanisch de hoofdcontacten ontgrendelt en binnen $<30\text{ ms}$ alle polen uitschakelt.
-\end{enumerate}
+\frm{Fluxbalans in de RCD-ringkern}{\Phi_{\text{net}}(t) = \frac{\mu A}{l} \cdot N_1 \left( i_L(t) - i_N(t) \right) = \frac{\mu A}{l} \cdot N_1 i_\Delta(t)}
+{Bij een foutloze kring is $i_L(t) = i_N(t) \implies \Phi_{\text{net}} = 0$. Bij een lekstroom $i_\Delta(t) \neq 0$ ontstaat een netto wisselende flux $\Phi_{\text{net}}(t)$.}
 
-\textbf{Functie van de testknop ($T$):}
-Op elke RCD zit een mechanische testknop $T$ met een ingebouwde serieweerstand $R_T$. Wanneer je hierop
-drukt, wordt er een stroompad gecreëerd dat \belangrijk{buiten de ringkern om} van een fase naar de nulleider
-loopt. Dit simuleert een kunstmatige verschilstroom $I_\Delta$. Hiermee controleer je niet de aarding van het
-gebouw, maar \emph{het mechanische en elektrische uitschakelmechanisme van het toestel zelf}. Het AREI
-schrijft voor deze knop regelmatig (bv.\ maandelijks of halfjaarlijks) in te drukken om mechanische verkleving
-te voorkomen.
+\frm{Geïnduceerde spanning in de meetspoel}{e_{\text{sec}}(t) = -N_{\text{sec}} \frac{d\Phi_{\text{net}}}{dt} \qquad \Longrightarrow \qquad \text{Relais tript bij } I_\Delta \ge I_{\Delta n}}
+{Met $N_{\text{sec}}$ het aantal windingen van de secundaire meetspoel en $e_{\text{sec}}$ de opgewekte EMK die het uitschakelrelais bekrachtigt.}
+
+\begin{center}
+    \begin{tabular}{@{}p{30mm}p{45mm}p{45mm}@{}}
+        \toprule
+        \textbf{Toestand} & \textbf{Stroombalans \& Magnetische flux} & \textbf{Gevolg op uitschakelrelais} \\
+        \midrule
+        \textbf{Normale werking} & $i_L = i_N \implies \sum I = 0 \implies \Phi_{\text{net}} = 0$ & $e_{\text{sec}} = 0 \implies$ contacten blijven gesloten. \\[1mm]
+        \textbf{Aardlek / fout} & $i_L - i_N = I_\Delta \ge I_{\Delta n} \implies \Phi_{\text{net}} \neq 0$ & $e_{\text{sec}} > 0 \implies$ relais ontgrendelt in $<30\text{ ms}$. \\[1mm]
+        \textbf{Testknop $T$ ingedrukt} & $I_T = U/R_T$ passeert slechts 1 keer door torus & Kunstmatige $\Phi_{\text{net}} \neq 0 \implies$ RCD tript ter controle. \\
+        \bottomrule
+    \end{tabular}
+\end{center}
 
 \textbf{Waarom exact $30\text{ mA}$ en $<30\text{ ms}$?}
 Dit werkpunt is rechtstreeks afgeleid uit de IEC 60479-zonegrafiek (zie figuur~\ref{fig:ac-zones} en figuur~\ref{fig:rcd-tripping-curve}):
@@ -2381,30 +2508,17 @@ Dit werkpunt is rechtstreeks afgeleid uit de IEC 60479-zonegrafiek (zie figuur~\
 \textbf{Types RCD volgens aard van de foutstroom:}
 \begin{itemize}
     \item \keyterm{Type AC:} reageert enkel op zuivere sinusvormige wisselstromen (verouderd).
-    \item \keyterm{Type A:} reageert op sinusvormige wisselstromen én \textbf{pulserende gelijkstromen}.
-          Dit is de standaard in residentiële installaties (verplicht volgens AREI) omdat moderne huishoudtoestellen
-          (wasmachines, pc-voedingen, dimmers, omvormers) elektronische gelijkrichters bevatten die gelijkstroomcomponenten
-          kunnen lekken.
-    \item \keyterm{Type B:} reageert op AC, pulserende DC én \textbf{gladde gelijkstromen} (smooth DC) tot hoge frequenties.
-          Noodzakelijk bij PV-omvormers zonder transformator, frequentieregelaars en laadpalen voor elektrische voertuigen.
-\end{itemize}
-
-\textbf{Toepassing in het residentiële net (AREI):}
-\begin{itemize}
-    \item \keyterm{Algemene hoofddifferentieel ($300\text{ mA}$):} geplaatst aan het begin van het bord (dient voor brandveiligheid en algemene foutstroomdetectie).
-    \item \keyterm{Gevoelige secundaire differentieel ($30\text{ mA}$):} verplicht voor alle kringen in \belangrijk{vochtige lokalen}
-          en toestellen met watercontact: badkamers, wasmachine, droogkast, vaatwasser en buitenstopcontacten.
+    \item \keyterm{Type A:} reageert op sinusvormige wisselstromen én \textbf{pulserende gelijkstromen} (residentiële standaard volgens AREI).
+    \item \keyterm{Type B:} reageert op AC, pulserende DC én \textbf{gladde gelijkstromen} (PV-omvormers, laadpalen, frequentieregelaars).
 \end{itemize}
 
 \begin{waarschuwing}[Essentiële beperkingen van een RCD (Waar een RCD níet tegen beschermt)]
     \begin{enumerate}
         \item Een RCD biedt \belangrijk{geen bescherming tegen overbelasting of kortsluiting} tussen fase en nul!
               Loopt er $100\text{ A}$ tussen fase en nul zonder dat er stroom naar aarde lekt, dan is $\sum I = 0$
-              en zal de RCD nooit trippen. Daarom moet een RCD altijd gecombineerd worden met een MCB (of uitgevoerd
-              zijn als een gecombineerde \emph{RCBO}).
+              en zal de RCD nooit trippen. Daarom moet een RCD altijd gecombineerd worden met een MCB.
         \item Een RCD reageert \belangrijk{niet} wanneer een persoon gelijktijdig de fase én de nulgeleider aanraakt
-              zonder contact te maken met de aarde. De stroom door het lichaam vloeit dan netjes van fase naar nul;
-              voor de RCD is dit niet te onderscheiden van een normale lamp of broodrooster!
+              zonder contact te maken met de aarde. De stroom vloeit dan zuiver van fase naar nul (voor de RCD is dit een gewone belasting).
     \end{enumerate}
 \end{waarschuwing}
 
