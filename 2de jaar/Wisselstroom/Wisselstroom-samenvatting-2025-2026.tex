@@ -112,27 +112,17 @@ Onderstaande bewijzen komen uit de voorkennis van Elektriciteit (bach1):
 
 \section{Inleiding}
 
-In dit document wil ik alle belangrijke formules die je moet kennen geven.
-Daarnaast geef ik ook een korte uitleg bij elke formule zodat je beter begrijpt wat er gebeurt.
-Dit vak heeft namelijk geen formularium op het examen
-dus je moet deze allemaal goed kennen!
-
-Ik raad altijd aan om examenoefeningen te maken die je kunt vinden op studforum \url{https://wiki.studforum.net/pub/bac2/elektromagnetisme}
+Deze samenvatting bundelt alle essentiële theorie, formules, en uitgewerkte examenoefeningen voor het vak \textbf{Wisselstroomnetten} (2de bachelor Industriële Ingenieurswetenschappen, KU Leuven). Aangezien er op het examen geen formularium ter beschikking wordt gesteld, zijn alle nodige afleidingen, vuistregels en controlemethoden puntsgewijs samengebracht.
 
 \section{Hoofdstuk 1: Basis wisselstroom theorie}
 
-Eerst een paar basis formules die je moet kennen:
-
 \frm{Wet van Ohm}{V = I \cdot R}{Met V de spanning in Volt, I de stroom in Ampère en R de weerstand in Ohm.}
 
-\frm{$I(t)$}{I(t) = I_m \sin(\omega t)}{Met $I(t)$ de wisselstroom op tijdstip t, $I_m$ de piekstroom
-    (maximale stroom) en $\omega$ de pulsatie in rad/s.}
+\frm{$I(t)$}{I(t) = I_m \sin(\omega t)}{Met $I(t)$ de wisselstroom op tijdstip t, $I_m$ de piekstroom (maximale stroom) en $\omega$ de pulsatie in rad/s.}
 
 \frm{$V(t)$}{V(t) = V_m \sin(\omega t)}{Met $V(t)$ de wisselspanning op tijdstip t, $V_m$ de piekspanning (maximale spanning) en $\omega$ de pulsatie in rad/s.}
 
-\frm{$A_{gem}$}{A_{gem} = \frac{1}{T/2} \int_0^{T/2} A(t) dt}{Met $A_{gem}$ de gemiddelde waarde van A(t)
-    over een halve periode T. Dit is handig voor wisselspanningen en -stromen omdat ze gemiddeld gezien
-    0 zijn over een hele periode. De gemiddelde waarde geeft een beter idee van de effectieve grootte van de wisselstroom.}
+\frm{$A_{\text{gem}}$}{A_{\text{gem}} = \frac{1}{T/2} \int_0^{T/2} A(t)\,dt = \frac{2 A_m}{\pi} \approx 0{,}637\,A_m}{Met $A_{\text{gem}}$ de gemiddelde gelijkgerichte waarde over een halve periode $T/2$.}
 
 
 
@@ -607,31 +597,26 @@ fasestroom en telt daarna gewoon alle $I^2R$ en $I^2X$ op.
     Klopt dat niet, dan zit er ergens een rekenfout. Dit kost je tien seconden en redt je oefening.
 \end{examenbox}
 
-Laten we een voorbeeld bekijken:
+\begin{oefening}[Voorbeeldberekening: Vermogens en impedantie]
+    \textbf{Opgave:} Gegeven $\underline{V} = 110\angle 85^\circ\text{ V}$ en $\underline{I} = 0{,}4\angle 15^\circ\text{ A}$. Bepaal $S, P, Q, \cos\phi$ en $\underline{Z}$.
 
-$$V = 110\angle 85^\circ,\ I = 0.4\angle 15^\circ$$
-Wat is de $a)$ het schijnbaar vermogen, $b)$ het actieve vermogen, $c)$ het reactief vermogen en $d)$ de arbeidsfactor en impedantie?
+    \textbf{Oplossing:}
+    \begin{itemize}
+        \item Faseverschil: $\phi = 85^\circ - 15^\circ = 70^\circ$ (stroom ijlt na: inductief).
+        \item $S = V_{\text{eff}} \cdot I_{\text{eff}} = 110 \cdot 0{,}4 = \mathbf{44\text{ VA}}$.
+        \item $P = S \cos 70^\circ = 44 \cdot 0{,}342 = \mathbf{15{,}05\text{ W}}$.
+        \item $Q = S \sin 70^\circ = 44 \cdot 0{,}9397 = \mathbf{41{,}35\text{ VAR}}$ (inductief).
+        \item $\cos\phi = \frac{P}{S} = \mathbf{0{,}342}$ (naijlend).
+        \item $\underline{Z} = \frac{\underline{V}}{\underline{I}} = \frac{110\angle 85^\circ}{0{,}4\angle 15^\circ} = \mathbf{275\angle 70^\circ\,\Omega = 94{,}06 + j258{,}4\,\Omega}$.
+    \end{itemize}
+\end{oefening}
 
-\[S = V_{rms} I_{rms} = 110 \cdot 0.4 = 44\ \mathrm{VA} \]
-\[P = V_{rms} I_{rms} \cos \phi = 110 \cdot 0.4 \cdot \cos(85^\circ - 15^\circ) = 44 \cdot \cos 70^\circ = 15.05\ \mathrm{W}\]
-\[Q = V_{rms} I_{rms} \sin \phi = 110 \cdot 0.4 \cdot \sin(85^\circ - 15^\circ) = 44 \cdot \sin 70^\circ = 41.36\ \mathrm{VAR} \]
-\[\text{arbeidsfactor} = \cos \phi = \frac{P}{S} = \frac{15.05}{44} = 0.342\]
-Positief dus de stroom loopt achter op de spanning.
-\[\boxed{Z = \frac{V}{I} = \frac{110\angle 85^\circ}{0.4\angle 15^\circ} = 275\angle 70^\circ\ \Omega = 94 + j258.8\ \Omega}\]
-
-\begin{examenbox}
-    Zorg dat je goed deze fasordiagrammen begrijpt.
-    Je kunt echt een hele oefening oplossen door je fasors deftig te tekenen.
-    Weet dat imaginaire impedanties (zoals spoelen en condensatoren) 90 graden verschoven zijn t.o.v.\ reële impedanties (zoals weerstanden).
+\begin{examenbox}[Geometrie in het fasordiagram]
+    In veel examenoefeningen zijn de fasoren niet rechtstreeks via algebraïsche formules gegeven, maar via gemeten lengtes (ampèremeters) of spanningen. De ontbrekende hoeken los je dan direct op met de goniometrische driehoeksregels:
 \end{examenbox}
 
-Als je je fasors goed definieert, kun je geometrische formules gebruiken
-om uitkomsten te berekenen.
-
-\frm{cosine regel}{c^2 = a^2 + b^2 - 2ab \cos \theta}{Met a, b en c de lengtes van de zijden van een driehoek
-    en $\theta$ de hoek tegenover zijde c.}
-\frm{sine regel}{\frac{a}{\sin A} = \frac{b}{\sin B} = \frac{c}{\sin C}}{Met a, b en c de lengtes van de zijden van een driehoek
-    en A, B en C de hoeken tegenover zijden a, b en c respectievelijk.}
+\frm{Cosinusregel}{c^2 = a^2 + b^2 - 2ab \cos \theta}{Met $a, b, c$ de zijden van de fasordriehoek en $\theta$ de overstaande hoek van $c$.}
+\frm{Sinusregel}{\frac{a}{\sin A} = \frac{b}{\sin B} = \frac{c}{\sin C}}{Met $A, B, C$ de hoeken tegenover de respectievelijke zijden $a, b, c$.}
 
 \vspace{0.5cm}
 
@@ -1873,20 +1858,12 @@ Een evenwichtige driefasige bron voorziet drie belastingen van vermogen. De volg
 
 \section{Hoofdstuk 5: Elektrische veiligheid}
 
-\begin{examenbox}[EXAMENTIP: Gegarandeerde theoriepunten!]
-    Dit hoofdstuk is \belangrijk{gegarandeerde examenstof}: van de vijf korte theorievragen gaat er
-    vrijwel altijd minstens één over elektrische veiligheid (bv.\ de vijf gouden regels, de
-    MCB-karakteristiek, de RCD-werking, overstroom vs.\ kortsluiting of aanraakspanning). Dit leren
-    is letterlijk gratis punten pakken!
+\begin{examenbox}[EXAMENTIP: Belangrijke theorievragen]
+    Op het theorie-examen handelt er doorgaans minstens één vraag over elektrische veiligheid (de 5 vitale veiligheidsregels, de MCB-karakteristiek, de werking van de RCD/somstroomtransformator, overbelasting vs.\ kortsluiting, of aanraakspanning).
 
-    Bovendien komt deze leerstof integraal terug in latere vakken van de opleiding, zoals
-    \emph{OIS (Ontwerp van Industriële Systemen)} en \emph{Distributie van Elektrische Energie}.
-    Wat je hier goed leert, heb je dus meteen al beet voor je latere modeltraject.
+    De theorie is opgebouwd rond vier pijlers:
+    \keyterm{Gevaren} $\rightarrow$ \keyterm{Veilig werken} $\rightarrow$ \keyterm{Beveiliging tegen overstroom} $\rightarrow$ \keyterm{Bescherming tegen elektrische schokken}.
 \end{examenbox}
-
-De cursus deelt dit hoofdstuk op in vier logische pijlers:
-\keyterm{gevaren} $\rightarrow$ \keyterm{veilig werken} $\rightarrow$ \keyterm{bescherming tegen overstroom} $\rightarrow$
-\keyterm{bescherming tegen elektrische schokken}.
 
 \subsection{Elektrische gevaren}
 
