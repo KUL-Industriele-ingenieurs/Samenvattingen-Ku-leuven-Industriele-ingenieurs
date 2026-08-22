@@ -29,7 +29,7 @@
     schoolbox=schoolGreen, schoolRunInBreak={schoolGreen}{\faPenNib}{#1}}
 
 % Eén afleidingsstap: eerst de reden in het grijs, dan de vergelijking.
-\newcommand{\stapreden}[1]{\par\vspace{1.4mm}\noindent{\small\color{schoolGray}#1}\par\vspace{-2mm}}
+\newcommand{\stapreden}[1]{\par\vspace{1.4mm}\noindent #1\par\vspace{-2mm}}
 
 
 \title{Wisselstroom samenvatting 2025-2026}
@@ -610,16 +610,6 @@ verschuiving $90^\circ$; een weerstand verschuift niets.
 \frm{Reactantie spoel}{X_L = \omega L}{Met $X_L$ de inductieve reactantie in Ohm, $\omega$ de pulsatie in rad/s en L de inductantie in Henry.}
 \frm{Reactantie condensator}{X_C = \frac{-1}{\omega C}}{Met $X_C$ de capacitieve reactantie in Ohm, $\omega$ de pulsatie in rad/s en C de capaciteit in Farad.}
 
-\frm{Admittantie}{\underline{Y} = \frac{1}{\underline{Z}} = G + jB}
-{Met $\underline{Y}$ de admittantie in siemens (S), $G$ de conductantie en $B$ de susceptantie in S.
-    Let op: $G \neq 1/R$ zodra er ook reactantie is --- je moet de hele breuk $1/\underline{Z}$
-    uitrekenen.}
-
-Waarom dat handig is: bij \textbf{parallel}takken tellen admittanties gewoon op
-($\underline{Y}_{tot} = \underline{Y}_1 + \underline{Y}_2 + \dots$), net zoals impedanties optellen
-bij \emph{serie}takken. Bij drie of meer parallelle takken is dat een pak minder rekenwerk dan
-telkens $\frac{\underline{Z}_1\underline{Z}_2}{\underline{Z}_1+\underline{Z}_2}$ herhalen.
-
 \frm{Totale impedantie in serie}{Z_{totaal} = \sqrt{R^2 + (X_L + X_C)^2}}{Met $Z_{totaal}$ de totale impedantie in Ohm, R de weerstand in Ohm, $X_L$ de inductieve reactantie in Ohm en $X_C$ de capacitieve reactantie in Ohm.}
 
 \frm{Hoek van de impedantie}{\tan \phi = \frac{X_L + X_C}{R}}{Met $\phi$ de fasehoek van de impedantie in graden of radialen, R de weerstand in Ohm, $X_L$ de inductieve reactantie in Ohm en $X_C$ de capacitieve reactantie in Ohm.}
@@ -827,14 +817,25 @@ fasestroom en telt daarna gewoon alle $I^2R$ en $I^2X$ op.
     \textbf{Opgave:} Gegeven $\underline{V} = 110\angle 85^\circ\text{ V}$ en $\underline{I} = 0{,}4\angle 15^\circ\text{ A}$. Bepaal $S, P, Q, \cos\phi$ en $\underline{Z}$.
 
     \textbf{Oplossing:}
-    \begin{itemize}
-        \item Faseverschil: $\phi = 85^\circ - 15^\circ = 70^\circ$ (stroom ijlt na: inductief).
-        \item $S = V_{\text{eff}} \cdot I_{\text{eff}} = 110 \cdot 0{,}4 = \mathbf{44\text{ VA}}$.
-        \item $P = S \cos 70^\circ = 44 \cdot 0{,}342 = \mathbf{15{,}05\text{ W}}$.
-        \item $Q = S \sin 70^\circ = 44 \cdot 0{,}9397 = \mathbf{41{,}35\text{ VAR}}$ (inductief).
-        \item $\cos\phi = \frac{P}{S} = \mathbf{0{,}342}$ (naijlend).
-        \item $\underline{Z} = \frac{\underline{V}}{\underline{I}} = \frac{110\angle 85^\circ}{0{,}4\angle 15^\circ} = \mathbf{275\angle 70^\circ\,\Omega = 94{,}06 + j258{,}4\,\Omega}$.
-    \end{itemize}
+
+    Eerst het faseverschil, want daar hangt al de rest van af:
+    \[\phi = \phi_V - \phi_I = 85^\circ - 15^\circ = 70^\circ \qquad (\text{stroom ijlt na, dus inductief})\]
+
+    Het schijnbaar vermogen is gewoon het product van de twee groottes:
+    \[|\underline{S}| = V_{\text{eff}} \cdot I_{\text{eff}} = 110 \cdot 0{,}4 = \mathbf{44}\ \text{VA}\]
+
+    Actief en reactief vermogen zijn de projecties daarvan:
+    \[P = |\underline{S}| \cos\phi = 44 \cdot 0{,}342 = \mathbf{15{,}05}\ \text{W}\]
+    \[Q = |\underline{S}| \sin\phi = 44 \cdot 0{,}9397 = \mathbf{41{,}35}\ \text{VAR} \qquad (\text{inductief})\]
+
+    De arbeidsfactor volgt uit dezelfde driehoek:
+    \[\cos\phi = \frac{P}{|\underline{S}|} = \frac{15{,}05}{44} = \mathbf{0{,}342} \qquad (\text{naijlend})\]
+
+    En de impedantie is de deling van de twee fasoren:
+    \[\underline{Z} = \frac{\underline{V}}{\underline{I}}
+        = \frac{110\angle 85^\circ}{0{,}4\angle 15^\circ}
+        = \mathbf{275\angle 70^\circ}\ \Omega
+        = 94{,}06 + j258{,}4\ \Omega\]
 \end{oefening}
 
 \begin{examenbox}[Geometrie in het fasordiagram]
@@ -844,11 +845,9 @@ fasestroom en telt daarna gewoon alle $I^2R$ en $I^2X$ op.
 \frm{Cosinusregel}{c^2 = a^2 + b^2 - 2ab \cos \theta}{Met $a, b, c$ de zijden van de fasordriehoek en $\theta$ de overstaande hoek van $c$.}
 \frm{Sinusregel}{\frac{a}{\sin A} = \frac{b}{\sin B} = \frac{c}{\sin C}}{Met $A, B, C$ de hoeken tegenover de respectievelijke zijden $a, b, c$.}
 
-\vspace{0.5cm}
-
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
-    \begin{tikzpicture}[scale=1.6, line cap=round, line join=round]
+    \begin{tikzpicture}[scale=1.3, line cap=round, line join=round]
         % Vertices (scalene triangle)
         \coordinate (A) at (0,0);
         \coordinate (B) at (4.0,0);
@@ -877,6 +876,7 @@ fasestroom en telt daarna gewoon alle $I^2R$ en $I^2X$ op.
     \caption{Driehoek met zijden $a$, $b$, $c$ tegenover hoeken $A$, $B$, $C$. Voor de cosinusregel geldt (met $\theta = \angle C$): $c^2 = a^2 + b^2 - 2ab\cos\theta$. De sinusregel: $\frac{a}{\sin A} = \frac{b}{\sin B} = \frac{c}{\sin C}$.}
     \label{fig:triangle-rules}
 \end{figure}
+\FloatBarrier
 
 \subsection{Arbeidsfactorcorrectie}
 
@@ -1005,18 +1005,19 @@ Wat gebeurt er links en rechts van de piek?
     $I_L \approx I_C \approx Q \cdot I_{\text{bron}}$ met kwaliteitsfactor $Q = \frac{\omega_0 L}{R_L}$.}
 
 \textbf{Waar die twee formules vandaan komen.} Ze zien er willekeurig uit, maar ze volgen allebei
-uit dezelfde ene voorwaarde $\text{Im}\{\underline{Y}\} = 0$. Hier loont het om met de
-\emph{admittantie} te werken, want de twee takken staan parallel.
+uit dezelfde ene voorwaarde: het imaginaire deel moet nul zijn. Omdat de twee takken
+\emph{parallel} staan, reken je hier het makkelijkst met $1/\underline{Z}$ per tak --- die mag je
+namelijk gewoon optellen.
 
-\stapreden{De spoeltak, met noemer reëel gemaakt:}
-\[\underline{Y}_L = \frac{1}{R_L + j\omega L}
+\stapreden{De spoeltak, met de noemer reëel gemaakt door met de complex toegevoegde te vermenigvuldigen:}
+\[\frac{1}{R_L + j\omega L}
     = \frac{R_L - j\omega L}{R_L^2 + (\omega L)^2}\]
 
 \stapreden{De condensatortak is puur imaginair:}
-\[\underline{Y}_C = j\omega C\]
+\[\frac{1}{-j/(\omega C)} = j\omega C\]
 
 \stapreden{Samentellen en het imaginaire deel apart zetten:}
-\[\underline{Y} = \underbrace{\frac{R_L}{R_L^2 + (\omega L)^2}}_{\text{re\"eel}}
+\[\frac{1}{\underline{Z}_{tot}} = \underbrace{\frac{R_L}{R_L^2 + (\omega L)^2}}_{\text{re\"eel}}
     \;+\; j\underbrace{\left(\omega C - \frac{\omega L}{R_L^2 + (\omega L)^2}\right)}_{\text{imaginair}}\]
 
 \stapreden{Resonantie betekent dat het imaginaire deel nul is:}
@@ -1029,10 +1030,10 @@ uit dezelfde ene voorwaarde $\text{Im}\{\underline{Y}\} = 0$. Hier loont het om 
     \qquad\Longrightarrow\qquad
     \boxed{\omega_0 = \sqrt{\frac{1}{LC} - \left(\frac{R_L}{L}\right)^2}}\]
 
-\stapreden{En de dynamische weerstand is wat er van $\underline{Y}$ overblijft, want het imaginaire deel is nu weg. Vul de gevonden voorwaarde $R_L^2 + (\omega_0 L)^2 = L/C$ meteen in:}
-\[\underline{Y}(\omega_0) = \frac{R_L}{R_L^2 + (\omega_0 L)^2} = \frac{R_L}{L/C} = \frac{R_L C}{L}
+\stapreden{En de dynamische weerstand is wat er van $1/\underline{Z}_{tot}$ overblijft, want het imaginaire deel is nu weg. Vul de gevonden voorwaarde $R_L^2 + (\omega_0 L)^2 = L/C$ meteen in:}
+\[\frac{1}{\underline{Z}_{tot}} = \frac{R_L}{R_L^2 + (\omega_0 L)^2} = \frac{R_L}{L/C} = \frac{R_L C}{L}
     \qquad\Longrightarrow\qquad
-    \boxed{R_p = \frac{1}{\underline{Y}(\omega_0)} = \frac{L}{C R_L}}\]
+    \boxed{R_p = \underline{Z}_{tot}(\omega_0) = \frac{L}{C R_L}}\]
 
 Twee dingen vallen daaraan op. Ten eerste: hoe \emph{kleiner} de spoelweerstand $R_L$, hoe
 \emph{groter} $R_p$ --- een betere spoel geeft dus een scherpere kring en een kleinere bronstroom.
@@ -2171,6 +2172,63 @@ De voor de hand liggende aanpak zou zijn: \'e\'en wattmeter per fase, alle drie 
 hetzelfde referentiepunt $O$, en dan $P_{totaal} = P_1 + P_2 + P_3$. Dat werkt altijd, maar het kan
 met \'e\'en meter minder --- en dat is precies wat de 2-wattmethode doet.
 
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[
+        wm/.style={draw=schoolBlue!80, fill=schoolBlue!8, line width=0.8pt,
+                   minimum width=9mm, minimum height=6mm, inner sep=0pt, font=\scriptsize\bfseries},
+        last/.style={draw, thick, minimum width=17mm, minimum height=25mm, align=center,
+                     font=\scriptsize},
+        spoel/.style={schoolRed, thick, dashed}
+      ]
+      % ================= drie wattmeters =================
+      \begin{scope}
+        \node[font=\footnotesize\bfseries, anchor=south] at (2.4,2.85) {drie wattmeters};
+        \foreach \y/\lbl/\w/\sx in {2.2/$L_1$/W$_1$/1.10, 1.3/$L_2$/W$_2$/1.40, 0.4/$L_3$/W$_3$/1.70} {
+            \draw (0.15,\y) node[left, font=\scriptsize] {\lbl} -- (0.95,\y);
+            \node[wm] at (1.4,\y) {\w};
+            \draw (1.85,\y) -- (3.3,\y);
+            \draw[spoel] (\sx,{\y-0.30}) -- (\sx,-0.55);
+        }
+        \draw[spoel] (1.10,-0.55) -- (1.70,-0.55);
+        \node[circle, fill=schoolRed, inner sep=1.3pt] at (1.40,-0.55) {};
+        \node[font=\scriptsize, schoolRed, below] at (1.40,-0.68) {$O$};
+        \node[last, anchor=west] at (3.3,1.3) {driefasige\\last\\(willekeurig)};
+        \node[font=\scriptsize, anchor=north, align=center] at (2.4,-1.15)
+             {$P_{tot} = P_1 + P_2 + P_3$\\\emph{werkt altijd}};
+      \end{scope}
+      % ================= twee wattmeters =================
+      \begin{scope}[shift={(7.6,0)}]
+        \node[font=\footnotesize\bfseries, anchor=south] at (2.4,2.85) {twee wattmeters};
+        \draw (0.15,2.2) node[left, font=\scriptsize] {$L_1$} -- (0.95,2.2);
+        \node[wm] at (1.4,2.2) {W$_1$};
+        \draw (1.85,2.2) -- (3.3,2.2);
+        \draw (0.15,1.3) node[left, font=\scriptsize] {$L_2$} -- (3.3,1.3);
+        \draw (0.15,0.4) node[left, font=\scriptsize] {$L_3$} -- (0.95,0.4);
+        \node[wm] at (1.4,0.4) {W$_2$};
+        \draw (1.85,0.4) -- (3.3,0.4);
+        \draw[spoel] (1.40,1.90) -- (1.40,1.30);
+        \draw[spoel] (1.40,0.70) -- (1.40,1.30);
+        \node[circle, fill=schoolRed, inner sep=1.3pt] at (1.40,1.30) {};
+        \node[last, anchor=west] at (3.3,1.3) {driefasige\\last\\(willekeurig)};
+        \node[font=\scriptsize, anchor=north, align=center] at (2.4,-1.15)
+             {$P_{tot} = P_1 + P_2$\\\emph{drie draden, ook bij onevenwicht}};
+      \end{scope}
+      % legende
+      \node[font=\scriptsize, anchor=north, align=center] at (5.0,-2.05)
+           {\textcolor{schoolRed}{\rule[0.35ex]{4mm}{0.6pt}\hspace{0.6mm}\rule[0.35ex]{2mm}{0.6pt}}\;
+            = spanningsspoel (meet t.o.v.\ de referentie)};
+    \end{tikzpicture}
+    \caption{Links de voor de hand liggende aanpak: \'e\'en wattmeter per lijn, en alle drie de
+        spanningsspoelen naar hetzelfde punt $O$. Rechts de 2-wattmethode: de stroomspoelen zitten in
+        twee lijnen, en de derde lijn ($L_2$) is de gemeenschappelijke referentie voor beide
+        spanningsspoelen. Die derde lijn krijgt dus \emph{geen} wattmeter --- dat is de hele
+        besparing.}
+    \label{fig:wattmeters-2-vs-3}
+\end{figure}
+\FloatBarrier
+\FloatBarrier
+
 \begin{waarschuwing}[Wanneer twee wattmeters níet volstaan]
     De 2-wattmethode werkt bij \textbf{drie draden}: een driehoek, of een ster \emph{zonder}
     nulgeleider. Ze werkt ook bij onevenwicht --- dat is juist haar sterkte.
@@ -2322,8 +2380,8 @@ waarom de examenoefeningen zo vaak ongebalanceerd zijn.
 
 \frm{Nulpuntsverschuiving (Stelling van Millman)}{\underline{V}_{N'N} = \frac{\underline{V}_{AN}\underline{Y}_a + \underline{V}_{BN}\underline{Y}_b + \underline{V}_{CN}\underline{Y}_c}{\underline{Y}_a + \underline{Y}_b + \underline{Y}_c}}
 {Bij een \emph{ongebalanceerde sterbelasting zonder nulgeleider} verschuift het zwevende sterpunt $N'$
-    ten opzichte van het nulpunt van de bron $N$. Hierin zijn $\underline{Y}_a = 1/\underline{Z}_a$,
-    $\underline{Y}_b = 1/\underline{Z}_b$, $\underline{Y}_c = 1/\underline{Z}_c$ de takadmittanties.
+    ten opzichte van het nulpunt van de bron $N$. Hierin is $\underline{Y}_a = 1/\underline{Z}_a$
+    kortweg het omgekeerde van de takimpedantie, en idem voor $\underline{Y}_b$ en $\underline{Y}_c$.
     De effectieve spanning over elke fasetak van de belasting wordt dan:
     \[\underline{V}_{AN'} = \underline{V}_{AN} - \underline{V}_{N'N} \quad , \quad
         \underline{V}_{BN'} = \underline{V}_{BN} - \underline{V}_{N'N} \quad , \quad
@@ -2524,6 +2582,41 @@ correct gedimensioneerd worden volgens de toelaatbare stroomsterkte ($I_z$).
 een magnetisch veld. Bij twee evenwijdige geleiders op afstand $d$ oefenen deze velden volgens de
 Lorentzkracht een mechanische kracht op elkaar uit:
 \[F \sim \frac{\mu_0 \cdot i_1(t) \cdot i_2(t)}{2\pi d}\]
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[x=1cm, y=1cm, >=latex]
+        % twee geleiders in doorsnede
+        \foreach \x/\lbl/\dir in {0/$i_1$/1, 3.4/$i_2$/1} {
+            \draw[fill=schoolOrange!25, draw=schoolOrange!80!black, line width=1pt] (\x,0) circle (0.32);
+            \fill[schoolOrange!80!black] (\x,0) circle (0.07);
+            \node[font=\small, below=6mm] at (\x,0) {\lbl};
+        }
+        % veldlijnen
+        \foreach \r in {0.62, 0.95, 1.30} {
+            \draw[schoolBlue!60, thin] (0,0) circle (\r);
+            \draw[schoolBlue!60, thin] (3.4,0) circle (\r);
+        }
+        \node[font=\scriptsize, schoolBlue!70!black] at (-1.15,1.25) {magnetisch veld};
+        % afstand d
+        \draw[<->, thick] (0,-1.15) -- (3.4,-1.15) node[midway, below, font=\small] {afstand $d$};
+        % krachten (gelijke richting -> aantrekking)
+        \draw[->, ultra thick, schoolRed] (0.45,0) -- (1.35,0);
+        \draw[->, ultra thick, schoolRed] (2.95,0) -- (2.05,0);
+        \node[font=\small, schoolRed, above] at (1.7,0.18) {$F$};
+        % toelichting
+        \node[font=\scriptsize, anchor=north, align=center] at (1.7,-1.75)
+             {stroom in \emph{dezelfde} richting $\rightarrow$ de geleiders trekken elkaar aan\\
+              stroom in \emph{tegengestelde} richting $\rightarrow$ ze stoten elkaar af};
+    \end{tikzpicture}
+    \caption{Twee evenwijdige geleiders in doorsnede. Elke stroom maakt een magnetisch veld, en dat
+        veld oefent een kracht uit op de \emph{andere} geleider. De kracht schaalt met het product
+        $i_1 i_2$ en dus met het \textbf{kwadraat} van de stroom --- daarom is ze bij normale
+        bedrijfsstroom verwaarloosbaar, maar bij een kortsluitpiek van tientallen kiloampères groot
+        genoeg om railkokers uit hun steunen te rukken.}
+    \label{fig:elektrodynamische-kracht}
+\end{figure}
+\FloatBarrier
+
 Bij een zware kortsluitstroom (die tot tientallen kiloampères kan pieken) wordt deze kracht
 \textbf{evenredig met het kwadraat van de piekstroom ($i_{\text{piek}}^2$)}. Hierdoor kunnen
 geleiders en railkokers met enorme kracht naar elkaar toe getrokken of uit elkaar geslagen worden,
