@@ -3756,6 +3756,23 @@ Bepaal $R$ en $L$, de bronspanning, $P$ en $Q$, en de arbeidsfactor.
 
 \subsection{3-fase systemen}
 
+\textbf{Gemengde driefasige lasten.} Een losse impedantie tussen twee lijnen vormt geen fase
+van een sterlast. Reken die tak \textbf{apart} met de lijnspanning en tel haar stroom daarna
+met KCL bij de twee betrokken lijnstromen. Bijgevolg kan één lijnstroom onveranderd blijven,
+terwijl de andere twee veranderen:
+\[
+\underline{I}_{bc}=\frac{\underline{V}_{bc}}{\underline{Z}_{bc}},\qquad
+\underline{I}_b=\underline{I}_{bY}+\underline{I}_{bc},\qquad
+\underline{I}_c=\underline{I}_{cY}-\underline{I}_{bc}
+\]
+met: $\underline{I}_{bc}$ = stroom door de losse tak van $b$ naar $c$ (A),
+$\underline{I}_{bY}$ en $\underline{I}_{cY}$ = stromen van de sterlast (A), en
+$\underline{V}_{bc}$ = lijnspanning (V).
+
+\textbf{Controle:} ook bij deze ongebalanceerde belasting moet
+$\underline{I}_a+\underline{I}_b+\underline{I}_c=0$ gelden. Tel vermogens op via $P$ en $Q$,
+niet via de groottes van de schijnbare vermogens.
+
 \textbf{Opgave (18/01/2023, vraag 3).} Een evenwichtige bron van $208$~V met $\underline{V}_{ab}$
 als referentie voedt een ongebalanceerde driehoekbelasting. Bepaal de lijnstromen en het totale
 actief vermogen, sluit de 2-wattmetermethode aan en bereken beide aflezingen.
@@ -4171,6 +4188,228 @@ Een ongebalanceerde Delta-verbonden belasting wordt gevoed door een evenwichtige
 
 Lijn B is hier de gemeenschappelijke referentielijn voor beide wattmeters.
 
+\textbf{Opgave (foto-opgave 1): 1-fasige brug met onbekende impedantie.}
+Een bron van $18{,}71$~V bij $60$~Hz voedt $\underline{Z}$. Over $\underline{Z}$ staat
+$15$~V. De andere takken zijn $(5+j4)\,\Omega$ en $(3-j6)\,\Omega$; over de laatste
+staat $10$~V.
+
+\begin{figure}[H]\centering
+\begin{circuitikz}[scale=.8,transform shape]
+ \draw (0,0) to[sV=$18{,}71$ V] (0,3) node[circ]{} node[left]{$B$}
+ to[generic,l_={$\underline{Z}$}] (3.5,3) node[circ]{} node[above]{$D$};
+ \draw (0,0)--(7,0) node[circ]{} node[below]{$A$};
+ \draw (3.5,3) to[R,l_={$5\,\Omega$}] (3.5,1.6) to[L,l_={$j4\,\Omega$}] (3.5,0);
+ \draw (3.5,3)--(6,3) to[R,l_={$3\,\Omega$}] (6,1.6) to[C,l_={$-j6\,\Omega$}] (6,0);
+\end{circuitikz}
+\caption{1-fasige brug met onbekende impedantie.}\end{figure}\FloatBarrier
+
+\begin{oefenblok}[Uitwerking onbekende impedantie]
+Neem $\underline{V}_{EA}=10\angle0^\circ$~V als referentie. Dan:
+\[
+\underline{I}_{DE}=\underline{I}_{EA}=\frac{10}{-j6}=j1{,}667\ \text{A}
+\]
+met: $\underline{I}_{DE}$ = stroom door de tak met $3\,\Omega$ en $-j6\,\Omega$.
+De knoopspanning wordt
+\[
+\underline{V}_D=10+3\underline{I}_{DE}=10+j5=11{,}18\angle26{,}565^\circ\ \text{V}.
+\]
+Daaruit volgt
+\[
+\underline{I}_{DF}=\frac{\underline{V}_D}{5+j4}=1{,}707-j0{,}366\ \text{A},\qquad
+\underline{I}_{BD}=\underline{I}_{DF}+\underline{I}_{DE}=1{,}707+j1{,}301\ \text{A}.
+\]
+De drie gemeten spanningen vormen een driehoek. Eerst bepalen we de hoek tussen
+$\underline{V}_{DA}$ en $\underline{V}_{BA}$ met de cosinusregel:
+\[
+\cos\alpha=\frac{11{,}18^2+18{,}71^2-15^2}{2\cdot11{,}18\cdot18{,}71}
+=0{,}597\quad\Longrightarrow\quad\alpha=53{,}29^\circ.
+\]
+met: $\alpha$ = de hoek tussen de bekende knoopspanningen in de spanningsdriehoek.
+De fysisch passende oplossing is
+$\underline{V}_{BA}=18{,}71\angle79{,}86^\circ$~V en
+$\underline{V}_{BD}=15\angle116{,}55^\circ$~V. Dus:
+\[
+\underline{Z}=\frac{\underline{V}_{BD}}{\underline{I}_{BD}}
+=1{,}303+j6{,}866
+=\boxed{6{,}99\angle79{,}25^\circ\ \Omega}.
+\]
+Het bronvermogen is
+\[
+\underline{S}_s=\underline{V}_{BA}\underline{I}_{BD}^{*}
+=\boxed{29{,}58+j27{,}16\ \text{VA}},
+\quad P_s=29{,}58\ \text{W},\quad Q_s=27{,}16\ \text{VAr}.
+\]
+\textbf{Fasordiagramma:} teken $\underline{V}_{EA}$, $\underline{V}_{DE}$,
+$\underline{V}_{BD}$ en $\underline{V}_{BA}$ kop-staart op schaal $1$~cm $=2$~V.
+Teken de stromen vanuit één punt op schaal $1$~cm $=0{,}5$~A.
+\begin{figure}[H]\centering
+\begin{tikzpicture}[scale=.42,>=latex]
+ \draw[->] (0,0)--(3,0) node[right]{$\underline V_{EA}$};
+ \draw[->] (3,0)--(4.5,2.6) node[above]{$\underline V_{DE}$};
+ \draw[->] (4.5,2.6)--(1.3,1.0) node[above]{$\underline V_{BD}$};
+ \draw[->] (0,0)--(1.3,1.0) node[below]{$\underline V_{BA}$};
+ \draw[->,blue] (7,0)--(8.2,1.0) node[right]{$\underline I_{DE}$};
+ \draw[->,blue] (7,0)--(8.3,-.5) node[right]{$\underline I_{DF}$};
+ \draw[->,blue] (7,0)--(6.2,1.1) node[left]{$\underline I_{BD}$};
+\end{tikzpicture}
+\caption{Fasordiagramma oefening 1. Spanningen: $1$~cm $=2$~V; stromen: $1$~cm $=0{,}5$~A.}
+\end{figure}\FloatBarrier
+\end{oefenblok}
+
+\textbf{Opgave (foto-opgave 2): twee driefasige lasten.}
+Een net heeft $V_L=240$~V. Een last $\underline{Z}_1$ hangt tussen $b$ en $c$ met
+$S_1=80$~kVA en $\mathrm{pf}=0{,}9$ inductief. Een evenwichtige sterlast heeft
+$S_Y=200$~kVA en dezelfde arbeidsfactor.
+\begin{oefenblok}[Uitwerking]
+Voor beide lasten is $\varphi=\arccos(0{,}9)=25{,}842^\circ$. De sterlast geeft:
+\[
+I_Y=\frac{200\cdot10^3}{\sqrt3\,240}=481{,}1\ \text{A}.
+\]
+Neem $\underline{V}_{ab}=240\angle0^\circ$~V. Dan:
+\[
+\underline{I}_{aY}=481{,}1\angle-55{,}84^\circ,\quad
+\underline{I}_{bY}=481{,}1\angle-175{,}84^\circ,\quad
+\underline{I}_{cY}=481{,}1\angle64{,}16^\circ\ \text{A}.
+\]
+De losse takstroom is
+\[
+\underline{I}_{bc}=\frac{80\,000}{240}\angle(-120^\circ-25{,}842^\circ)
+=333{,}3\angle-145{,}84^\circ\ \text{A}.
+\]
+Met KCL:
+\[
+\boxed{\underline{I}_a=481{,}1\angle-55{,}84^\circ\ \text{A}},\quad
+\boxed{\underline{I}_b=787{,}6\angle-163{,}63^\circ\ \text{A}},\quad
+\boxed{\underline{I}_c=787{,}6\angle51{,}94^\circ\ \text{A}}.
+\]
+met: de losse stroom wordt bij lijn $b$ opgeteld en van lijn $c$ afgetrokken.
+Controleer $\underline{I}_a+\underline{I}_b+\underline{I}_c=0$. Teken spanningen op
+schaal $1$~cm $=50$~V en stromen op schaal $1$~cm $=200$~A.
+\begin{figure}[H]\centering
+\begin{tikzpicture}[scale=.42,>=latex]
+ \draw[->] (0,0)--(2.5,-3.2) node[below]{$\underline I_{aY}$};
+ \draw[->] (0,0)--(-3.7,-1.0) node[left]{$\underline I_{bY}$};
+ \draw[->] (0,0)--(2.1,3.5) node[above]{$\underline I_{cY}$};
+ \draw[->,blue] (0,0)--(-2.8,-2.0) node[below]{$\underline I_{bc}$};
+ \draw[->,red] (0,0)--(-5.4,-1.8) node[left]{$\underline I_b$};
+ \draw[->,red] (0,0)--(4.0,1.8) node[right]{$\underline I_c$};
+\end{tikzpicture}
+\caption{Fasordiagramma oefening 2. Spanningen: $1$~cm $=50$~V; stromen: $1$~cm $=200$~A.}
+\end{figure}\FloatBarrier
+\end{oefenblok}
+
+\textbf{Opgave (foto-opgave 3): arbeidsfactorcorrectie.}
+Een bron van $100$~V bij $20$~Hz voedt $(3+j2)\,\Omega$ in serie met
+$(5+j2)\parallel(3-j)\,\Omega$.
+\begin{oefenblok}[Uitwerking]
+\[
+\underline{Z}_p=\frac{(5+j2)(3-j)}{8+j}=2{,}108-j0{,}138\ \Omega
+\]
+met: $\underline{Z}_p$ = equivalente parallelimpedantie. Dus:
+\[
+\underline{Z}_{tot}=5{,}108+j1{,}862=5{,}436\angle20{,}02^\circ\ \Omega.
+\]
+\[
+\underline{I}=\frac{100}{\underline{Z}_{tot}}=17{,}283-j6{,}299\ \text{A},\quad
+\underline{S}=100\underline{I}^{*}=1728{,}3+j629{,}9\ \text{VA}.
+\]
+De arbeidsfactor is $\boxed{0{,}940\ \text{inductief}}$. Voor $0{,}95$:
+\[
+\begin{aligned}
+\varphi_2&=\arccos(0{,}95)=18{,}195^\circ,\\
+|Q_C|&=P\left(\tan20{,}02^\circ-\tan18{,}195^\circ\right)\\
+&=1728{,}3(0{,}3647-0{,}3289)=61{,}8\ \text{VAr}.
+\end{aligned}
+\]
+\[
+\boxed{C=\frac{|Q_C|}{100^2\,2\pi20}=49{,}2\ \mu\text{F}}.
+\]
+Teken twee vermogensdriehoeken: dezelfde horizontale $P=1728$~W, eerst
+$Q=629{,}9$~VAr en daarna $Q=629{,}9-61{,}8=568{,}1$~VAr.
+\begin{figure}[H]\centering
+\begin{tikzpicture}[scale=.65,>=latex]
+ \draw[->] (0,0)--(5,0) node[right]{$P$};
+ \draw[->,red] (0,0)--(2.1,1.6) node[above]{$\underline S_1$};
+ \draw[->,blue] (0,0)--(4.2,.85) node[above]{$\underline S_2$};
+ \draw[dashed] (2.1,1.6)--(4.2,.85);
+\end{tikzpicture}
+\caption{Oude en gecorrigeerde vermogensdriehoek van oefening 3 (niet op fysieke lengteschaal).}
+\end{figure}\FloatBarrier
+\end{oefenblok}
+
+\textbf{Opgave (foto-opgave 4): evenwichtige driehoeklast.}
+Een $3\times174$~V-net bij $50$~Hz voedt een driehoek met per tak $R=30\,\Omega$ en
+$L=31$~mH.
+\begin{oefenblok}[Uitwerking]
+\[
+\underline{Z}_\Delta=30+j(2\pi50)(0{,}031)
+=31{,}541\angle17{,}985^\circ\ \Omega.
+\]
+Met $\underline{V}_{AB}=174\angle0^\circ$~V:
+\[
+\underline{I}_{AB}=5{,}517\angle-17{,}985^\circ,\quad
+\underline{I}_{BC}=5{,}517\angle-137{,}985^\circ,\quad
+\underline{I}_{CA}=5{,}517\angle102{,}015^\circ\ \text{A}.
+\]
+De lijnstromen zijn verschillen in de hoekpunten:
+\[
+\boxed{\underline{I}_a=9{,}555\angle-47{,}985^\circ},\quad
+\boxed{\underline{I}_b=9{,}555\angle-167{,}985^\circ},\quad
+\boxed{\underline{I}_c=9{,}555\angle72{,}015^\circ\ \text{A}}.
+\]
+De takspanningen zijn $\underline{V}_{AB}=174\angle0^\circ$,
+$\underline{V}_{BC}=174\angle-120^\circ$ en
+$\underline{V}_{CA}=174\angle120^\circ$~V. Teken spanningen op schaal $1$~cm
+$=50$~V en stromen op schaal $1$~cm $=2$~A.
+\begin{figure}[H]\centering
+\begin{tikzpicture}[scale=.42,>=latex]
+ \draw[->] (0,0)--(3,0) node[right]{$\underline I_{AB}$};
+ \draw[->] (0,0)--(-1.5,-2.6) node[below]{$\underline I_{BC}$};
+ \draw[->] (0,0)--(-1.5,2.6) node[above]{$\underline I_{CA}$};
+ \draw[->,red] (6,0)--(8.3,-2.0) node[right]{$\underline I_a$};
+ \draw[->,red] (6,0)--(2.5,-1.1) node[left]{$\underline I_b$};
+ \draw[->,red] (6,0)--(7.3,2.8) node[right]{$\underline I_c$};
+\end{tikzpicture}
+\caption{Fasordiagramma oefening 4. Spanningen: $1$~cm $=50$~V; stromen: $1$~cm $=2$~A.}
+\end{figure}\FloatBarrier
+\end{oefenblok}
+
+\textbf{Opgave (foto-opgave 5): brug met twee bronnen.}
+Gebruik de bronnen $8\angle30^\circ$~V en $1\angle90^\circ$~A en impedanties
+$-2j$, $4j$, $2\,\Omega$, $2j$ en $-j\,\Omega$.
+\begin{oefenblok}[Knooppuntanalyse]
+Neem $N$ als referentie. Dan is $\underline{V}_D=8\angle30^\circ$~V. De KCL-vergelijkingen:
+\[
+\frac{V_A-V_D}{2}+\frac{V_A}{-j}+\frac{V_A-V_B}{j2}=0,\qquad
+\frac{V_B-V_A}{j2}+\frac{V_B-V_D}{j2}-1\angle90^\circ=0.
+\]
+Oplossen geeft $\underline{V}_A=3{,}46-j3{,}65$~V en
+$\underline{V}_B=4{,}19+j0{,}18$~V. De gevraagde stroom:
+\[
+\boxed{\underline{I}=\frac{\underline{V}_A}{-j}=5{,}03\angle43{,}5^\circ\ \text{A}}.
+\]
+Verder:
+\[
+\underline{I}_3=4{,}20\angle65{,}6^\circ,\quad
+\underline{I}_4=1{,}95\angle169^\circ,\quad
+\underline{I}_5=2{,}35\angle-35{,}6^\circ\ \text{A}.
+\]
+met: $\underline{I}_3$ door $2\,\Omega$, $\underline{I}_4$ door $j2\,\Omega$ en
+$\underline{I}_5$ door de bovenste seriecombinatie. Teken de knoopspanningen vanuit
+$N$ op schaal $1$~cm $=2$~V en de stromen als waaier op schaal $1$~cm $=1$~A.
+\begin{figure}[H]\centering
+\begin{tikzpicture}[scale=.42,>=latex]
+ \draw[->] (0,0)--(3,1.7) node[above]{$\underline V_D$};
+ \draw[->] (0,0)--(1.0,-2.0) node[below]{$\underline V_A$};
+ \draw[->] (0,0)--(3.2,.35) node[right]{$\underline V_B$};
+ \draw[->,blue] (6,0)--(8,1.2) node[right]{$\underline I_3$};
+ \draw[->,blue] (6,0)--(4.3,.35) node[left]{$\underline I_4$};
+ \draw[->,blue] (6,0)--(7,-1.8) node[right]{$\underline I_5$};
+\end{tikzpicture}
+\caption{Fasordiagramma oefening 5. Spanningen: $1$~cm $=2$~V; stromen: $1$~cm $=1$~A.}
+\end{figure}\FloatBarrier
+\end{oefenblok}
+
 
 \newpage
 \thispagestyle{empty}
@@ -4193,7 +4432,5 @@ Lijn B is hier de gemeenschappelijke referentielijn voor beide wattmeters.
     \par\vspace{0.5cm}
     \textup{--- George Carlin}
 \end{quote}
-
-\vspace*{\fill}
 
 \end{document}
