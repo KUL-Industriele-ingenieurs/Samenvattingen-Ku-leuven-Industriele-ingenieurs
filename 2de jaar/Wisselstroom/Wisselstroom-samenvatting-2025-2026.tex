@@ -70,17 +70,6 @@
 Je kunt Multisim gratis in je browser gebruiken vanaf je eigen computer via de KU Leuven VDI:
 \url{https://bib.kuleuven.be/faciliteiten/it/vdi}
 
-\subsection{Overzicht bewijzen (voorkennis Elektriciteit)}
-
-\begin{waarschuwing}[Voorbehoud]
-    Deze lijst komt van het studforum en hoort bij het \textbf{oude lesprogramma} (van vóór de
-    hervorming rond 2021, toen Trillingen en Golven nog bij dit vak zat). Reken er niet op dat je
-    deze bewijzen moet kennen. Ze staan hier als achtergrond en als oefenmateriaal --- de
-    onderwerpen zelf ($\cos\phi$-correctie, wattmeter, driefasesystemen) zijn wél nog steeds
-    examenstof.
-\end{waarschuwing}
-
-Onderstaande bewijzen komen uit de voorkennis van Elektriciteit (bach1):
 
 \begin{itemize}
     \item \textbf{Hoofdstuk 9}
@@ -112,7 +101,10 @@ Onderstaande bewijzen komen uit de voorkennis van Elektriciteit (bach1):
 
 \section{Inleiding}
 
-Deze samenvatting bundelt alle essentiële theorie, formules, en uitgewerkte examenoefeningen voor het vak \textbf{Wisselstroomnetten} (2de bachelor Industriële Ingenieurswetenschappen, KU Leuven). Aangezien er op het examen geen formularium ter beschikking wordt gesteld, zijn alle nodige afleidingen, vuistregels en controlemethoden puntsgewijs samengebracht.
+Deze samenvatting bundelt alle essentiële theorie, formules, en uitgewerkte examenoefeningen voor het vak
+\textbf{Wisselstroomnetten}. Je krijgt op het examen geen formularium dus je moet al deze formules kennen en snappen.
+
+Als je de afleidingen van de formules begrijpt dan is het veel makkelijker om ook op het examen te maken.
 
 \section{Hoofdstuk 1: Basis wisselstroom theorie}
 
@@ -217,7 +209,8 @@ Je kunt die allemaal doen met je niet-grafische rekenmachine door de modus op
 \end{waarschuwing}
 
 \begin{examenbox}[Amplitude of effectieve waarde?]
-    Een fasor kan je met de \textbf{amplitude} $A_m$ of met de \textbf{effectieve waarde}
+    Een fasor kan je met de \textbf{amplitude} $A_m$ of met de \textbf{effectieve waarde} / RMS-waarde $A_{rms}$.
+
     $A_{rms} = A_m/\sqrt{2}$ schrijven. Beide mag, zolang je \textbf{consequent} bent.
 
     Let op waar je welke nodig hebt:
@@ -231,7 +224,7 @@ Je kunt die allemaal doen met je niet-grafische rekenmachine door de modus op
 \end{examenbox}
 
 
-Voorbeeld: Alle notaties voor de functie $$v(t) = 220 \sin(314t + 30^\circ)$$
+\textbf{Voorbeeld:} Alle notaties voor de functie $v(t) = 220 \sin(314t + 30^\circ)$
 
 \[V_m = 220 V\]
 \[\omega = 314 \text{ rad/s}\]
@@ -453,6 +446,15 @@ verschuiving $90^\circ$; een weerstand verschuift niets.
 \end{figure}
 \FloatBarrier
 
+\subsubsection{Impedantie}
+
+\concept{Impedantie \& Reluctantie}[
+    \textbf{De impedantie} is een ander woord voor weerstand waarbij we het complex deel ook meenemen.
+    De \textbf{reluctantie} is dat complexe deel en is veroorzaakt door een spoel $L$ of condensator $C$.
+
+    Impedantie = weerstand + j $\cdot$ reactantie
+
+]
 \frm{Impedantie}{Z = R + jX}{Met Z de impedantie in Ohm, R de weerstand in Ohm en X de reactantie in Ohm.}
 
 \frm{Reactantie spoel}{X_L = \omega L}{Met $X_L$ de inductieve reactantie in Ohm, $\omega$ de pulsatie in rad/s en L de inductantie in Henry.}
@@ -474,7 +476,7 @@ het vermogen ook in tijd.
     \label{fig:vermogen.png}
 \end{figure}
 
-We beginnen met het eenvoudigste geval: een \textbf{zuiver ohmse} belasting, waarbij spanning
+We beginnen met het eenvoudigste geval: een \textbf{zuiver ohmse} $R$ belasting, waarbij spanning
 en stroom in fase liggen.
 
 \[p(t) = v(t) \cdot i(t) = V_m \sin(\omega t ) \cdot I_m \sin(\omega t)\]
@@ -482,7 +484,7 @@ en stroom in fase liggen.
 \[\sin^2(x) = \frac{1 - \cos(2x)}{2}\] (uit de goniometrische formules)
 \[p(t) = V_m I_m \cdot \frac{1 - \cos(2\omega t)}{2} = \frac{V_m I_m}{2} (1 - \cos(2\omega t))\]
 
-We willen dit uitdrukken in effectieve waarden in plaats van in de piekwaarden $V_m$ en $I_m$,
+We willen dit uitdrukken in \textbf{effectieve waarden} in plaats van in de piekwaarden $V_m$ en $I_m$,
 want dat zijn de waarden die je meet.
 
 \[V_{rms} = \frac{V_m}{\sqrt{2}} \quad\Longleftrightarrow\quad V_m = \sqrt{2}\,V_{rms}\]
@@ -521,8 +523,22 @@ Hierin zien we direct de fysische betekenis van $P$ en $Q$:
 \frm{Actief vermogen}{P = V_{rms} I_{rms} \cos \phi}{Met P het actieve vermogen in Watt, $V_{rms}$ de effectieve spanning in Volt, $I_{rms}$ de effectieve stroom in
     Ampère en $\phi$ de fasehoek tussen spanning en stroom in graden of radialen.}
 
+
+Het schijnbaar vermogen is de som van het actieve vermogen $P$ en het reactief vermogen $Q$.
+Het is het vermogen dat de bron moet leveren, maar dat niet allemaal nuttig wordt gebruikt.
+
 \frm{Schijnbaar vermogen}{S = V_{rms} I_{rms}}{Met S het schijnbaar vermogen in Volt-Ampère (VA), $V_{rms}$
     de effectieve spanning in Volt en $I_{rms}$ de effectieve stroom in Ampère.}
+
+logisch want
+
+$$ P + jQ = V_{rms} I_{rms} \angle \phi = S \angle \phi $$
+
+Het reactief vermogen is het vermogen dat gebruikt wordt door de spoel of condensator om een magnetisch of elektrisch veld op te bouwen.
+
+Dit vermogen wordt dus niet gebruikt door normale belastingen zoals een lamp of een motor,
+maar wordt wel door de bron geleverd. Het is dus een soort van ``verlies'' dat je moet betalen, maar dat je niet nuttig kan gebruiken.
+
 
 \frm{reactief vermogen}{Q = V_{rms} I_{rms} \sin \phi}{Met Q het reactief vermogen in Volt-Ampère reactief (VAR), $V_{rms}$
     de effectieve spanning in Volt, $I_{rms}$ de effectieve stroom in Ampère en $\phi$ de fasehoek tussen spanning en stroom in graden of radialen.}
@@ -1666,14 +1682,14 @@ waarom de examenoefeningen zo vaak ongebalanceerd zijn.
         \toprule
         \textbf{Regel}                                   & \textbf{Evenwichtig} & \textbf{Ongebalanceerd} \\
         \midrule
-        Eén fase uitrekenen en $\pm120^\circ$ draaien    & ja                   & \textbf{nee}        \\
-        $I_L = \sqrt{3}\,I_f\angle -30^\circ$ (driehoek) & ja                   & \textbf{nee}        \\
-        $\underline{Z}_\Delta = 3\underline{Z}_Y$        & ja                   & \textbf{nee}        \\
-        $\underline{I}_N = 0$ in de nulgeleider          & ja                   & \textbf{nee}        \\
-        $Q_{tot} = \sqrt{3}(W_2 - W_1)$                  & ja                   & \textbf{nee}        \\
-        $P_{tot} = W_1 + W_2$                            & ja                   & \textbf{ja}            \\
+        Eén fase uitrekenen en $\pm120^\circ$ draaien    & ja                   & \textbf{nee}            \\
+        $I_L = \sqrt{3}\,I_f\angle -30^\circ$ (driehoek) & ja                   & \textbf{nee}            \\
+        $\underline{Z}_\Delta = 3\underline{Z}_Y$        & ja                   & \textbf{nee}            \\
+        $\underline{I}_N = 0$ in de nulgeleider          & ja                   & \textbf{nee}            \\
+        $Q_{tot} = \sqrt{3}(W_2 - W_1)$                  & ja                   & \textbf{nee}            \\
+        $P_{tot} = W_1 + W_2$                            & ja                   & \textbf{ja}             \\
         $\underline{I}_a+\underline{I}_b+\underline{I}_c = 0$ (geen nulgeleider)
-                                                         & ja                   & \textbf{ja}            \\
+                                                         & ja                   & \textbf{ja}             \\
         \bottomrule
     \end{tabular}
 \end{center}
@@ -2088,10 +2104,10 @@ vervangingsschema naast, met de weerstanden die je nodig hebt om $U_z$ te bereke
         % Transformator zijde (links)
         \draw[thick, schoolBlue!80!black, fill=schoolBlue!10] (-0.3, 0.4) rectangle (1.7, 3.4);
         \node[font=\bfseries\small, text=schoolBlue!90!black, align=center] at (0.7, 2.7) {Voedingstrafo\\$U_0 = 230\text{ V}$};
-        
+
         \node[circle, fill=schoolBlue!90!black, inner sep=1.5pt, label=above:{\small L1}] (L_src) at (1.7, 1.9) {};
         \node[circle, fill=black, inner sep=1.5pt, label=below:{\small N}] (N_src) at (1.7, 0.8) {};
-        
+
         % Nulaarding trafo R_N
         \draw[thick] (N_src) -- (2.3, 0.8) -- (2.3, -0.4);
         \draw[thick, fill=white] (2.0, -0.4) rectangle (2.6, -1.1);
@@ -2101,23 +2117,23 @@ vervangingsschema naast, met de weerstanden die je nodig hebt om $U_z$ te bereke
         \draw[thick] (2.05, -1.65) -- (2.55, -1.65);
         \draw[thick] (2.2, -1.8) -- (2.4, -1.8);
         \node[font=\scriptsize, text=gray!80!black, below] at (2.3, -1.85) {Trafo-aarde ($R_N = 10\,\Omega$)};
-        
+
         % Leidingen naar verbruiker
         \draw[thick, schoolBlue] (L_src) -- (6.0, 1.9);
         \draw[thick, black] (N_src) -- (6.0, 0.8);
-        
+
         % Verbruiker (rechts)
         \draw[thick, fill=white] (6.0, 0.5) rectangle (7.4, 2.2);
         \node[font=\small, align=center] at (6.7, 1.35) {Interne\\belasting};
-        
+
         % Metalen behuizing (gestel)
         \draw[very thick, schoolRed, dashed] (5.5, 0.2) rectangle (7.9, 2.6);
         \node[font=\bfseries\footnotesize, text=schoolRed, anchor=south] at (6.7, 2.65) {Metalen gestel (behuizing)};
-        
+
         % Isolatiefout
         \draw[->, ultra thick, schoolRed] (5.8, 1.9) -- (5.8, 2.6) -- (5.5, 2.6);
         \node[font=\scriptsize\bfseries, text=schoolRed, above] at (5.5, 2.8) {Isolatiefout ($R_f \approx 0\,\Omega$)};
-        
+
         % Aardingsgeleider PE van behuizing naar R_A
         \draw[thick, schoolGreen!80!black] (7.5, 0.2) -- (7.5, -0.4);
         \draw[thick, fill=white] (7.2, -0.4) rectangle (7.8, -1.1);
@@ -2127,14 +2143,14 @@ vervangingsschema naast, met de weerstanden die je nodig hebt om $U_z$ te bereke
         \draw[thick] (7.25, -1.65) -- (7.75, -1.65);
         \draw[thick] (7.4, -1.8) -- (7.6, -1.8);
         \node[font=\scriptsize, text=gray!80!black, below] at (7.5, -1.85) {Gebruiker-aarde ($R_A = 30\,\Omega$)};
-        
+
         % Persoon die behuizing aanraakt
         \draw[thick, schoolOrange!90!black] (9.0, 1.9) circle (0.22); % hoofd
         \draw[thick, schoolOrange!90!black] (9.0, 1.68) -- (9.0, 0.8); % romp
         \draw[thick, schoolOrange!90!black] (9.0, 1.45) -- (7.9, 1.7); % arm naar behuizing
         \draw[thick, schoolOrange!90!black] (9.0, 0.8) -- (8.7, 0.0); % been L
         \draw[thick, schoolOrange!90!black] (9.0, 0.8) -- (9.3, 0.0); % been R
-        
+
         % Lichaamsweerstand R_B
         \draw[thick, fill=white] (8.7, 0.0) rectangle (9.3, -0.7);
         \node[font=\footnotesize] at (9.0, -0.35) {$R_B$};
@@ -2143,14 +2159,14 @@ vervangingsschema naast, met de weerstanden die je nodig hebt om $U_z$ te bereke
         \draw[thick] (8.75, -1.65) -- (9.25, -1.65);
         \draw[thick] (8.9, -1.8) -- (9.1, -1.8);
         \node[font=\scriptsize, text=gray!80!black, below] at (9.0, -1.85) {Voeten ($R_B = 1000\,\Omega$)};
-        
+
         % Foutstroomlus aanduiding
         \draw[->, dashed, ultra thick, schoolRed] (3.6, 2.1) -- (4.8, 2.1) node[midway, above, font=\scriptsize\bfseries] {$I_f$};
         \draw[->, dashed, thick, schoolOrange!90!black] (8.4, 1.6) -- (8.8, 1.6) node[midway, above, font=\tiny\bfseries] {$I_B$};
-        
+
         % Aanraakspanning pijl
-        \draw[<->, thick, schoolBlue] (10.3, 2.5) -- (10.3, -1.5) 
-            node[midway, right, font=\footnotesize\bfseries, align=left, text=schoolBlue] {Aanraakspanning:\\$U_T = I_f \cdot R_A$};
+        \draw[<->, thick, schoolBlue] (10.3, 2.5) -- (10.3, -1.5)
+        node[midway, right, font=\footnotesize\bfseries, align=left, text=schoolBlue] {Aanraakspanning:\\$U_T = I_f \cdot R_A$};
     \end{tikzpicture}
     \caption{Elektrisch vervangingsschema van onrechtstreekse aanraking (indirect contact) in een TT-netwerk. De foutstroom $I_f$ vloeit via het metalen gestel en de aardverspreidingsweerstand $R_A$ terug naar de transformatoraarding $R_N$.}
     \label{fig:indirect-contact-tikz}
@@ -2301,8 +2317,8 @@ fundamenteel onderscheid tussen overbelasting en kortsluiting:
         \textbf{Stroompad}     & De stroom volgt de \emph{normale geleiders}.                        & De stroom neemt een \emph{abnormaal kort pad}.                               \\[1mm]
         \textbf{Grootte}       & Typisch $1{,}1$ tot $5 \times I_n$.                                 & Tot tientallen of honderden malen $I_n$ ($>10-100 \times I_n$).              \\[1mm]
         \textbf{Gevaar}        & Trage thermische degradatie van de kabelisolatie, brand op termijn. & Explosie, vlamboog, elektrodynamische vernieling van installatiedelen.       \\[1mm]
-        \textbf{Detectie}      & \textbf{Thermisch} (bimetaal dat opwarmt).                         & \textbf{Magnetisch} (elektromagnetische spoel).                             \\[1mm]
-        \textbf{Uitschakeling} & \textbf{Vertraagd} (invers-tijd: seconden tot minuten).         & \textbf{Quasi ogenblikkelijk} ($<10-20\text{ ms}$).                      \\
+        \textbf{Detectie}      & \textbf{Thermisch} (bimetaal dat opwarmt).                          & \textbf{Magnetisch} (elektromagnetische spoel).                              \\[1mm]
+        \textbf{Uitschakeling} & \textbf{Vertraagd} (invers-tijd: seconden tot minuten).             & \textbf{Quasi ogenblikkelijk} ($<10-20\text{ ms}$).                          \\
         \bottomrule
     \end{tabular}
 \end{center}
@@ -2480,15 +2496,15 @@ aardfout, waarbij een deel van de stroom via de aarde wegvloeit en de som dus ni
         % Torus (ringkern)
         \draw[fill=gray!20, draw=gray!70, double, double distance=15pt, line width=1pt] (5.0, 2.0) circle (1.85);
         \node[font=\bfseries\small, text=gray!80!black, align=center] at (5.0, 2.0) {Ferromagnetische\\Torus (Ringkern)};
-        
+
         % Voedingsklemmen
         \node[font=\bfseries\small, text=schoolBlue] at (-0.2, 3.2) {Fase L1};
         \node[font=\bfseries\small, text=black] at (-0.2, 0.8) {Nul N};
-        
+
         % Verbruiker
         \draw[thick, fill=schoolBlue!10, draw=schoolBlue] (9.0, 0.4) rectangle (10.8, 3.6);
         \node[font=\bfseries\small, align=center, text=schoolBlue!90!black] at (9.9, 2.0) {Verbruiker\\(Belasting)};
-        
+
         % Fase L1 lijn
         \draw[thick, schoolBlue] (0.6, 3.2) -- (1.8, 3.2);
         \draw[thick, schoolBlue] (1.8, 3.2) -- (2.2, 3.55); % schakelcontact
@@ -2496,7 +2512,7 @@ aardfout, waarbij een deel van de stroom via de aarde wegvloeit en de som dus ni
         \draw[fill=schoolBlue] (1.8, 3.2) circle (0.05);
         \draw[fill=schoolBlue] (2.5, 3.2) circle (0.05);
         \draw[->, ultra thick, schoolBlue] (3.4, 3.4) -- (4.2, 3.4) node[above, font=\scriptsize\bfseries] {$i_L(t)$};
-        
+
         % Nul N lijn
         \draw[thick, black] (0.6, 0.8) -- (1.8, 0.8);
         \draw[thick, black] (1.8, 0.8) -- (2.2, 1.15); % schakelcontact
@@ -2504,19 +2520,19 @@ aardfout, waarbij een deel van de stroom via de aarde wegvloeit en de som dus ni
         \draw[fill=black] (1.8, 0.8) circle (0.05);
         \draw[fill=black] (2.5, 0.8) circle (0.05);
         \draw[<-, ultra thick, black] (3.4, 0.6) -- (4.2, 0.6) node[below, font=\scriptsize\bfseries] {$i_N(t)$};
-        
+
         % Secundaire meetspoel
         \draw[thick, schoolRed] (4.6, 0.15) arc (180:360:0.4);
         \draw[thick, schoolRed] (4.5, 0.05) arc (180:360:0.5);
         \draw[thick, schoolRed] (4.5, 0.05) -- (4.5, -1.2) -- (4.8, -1.2);
         \draw[thick, schoolRed] (5.5, 0.05) -- (5.5, -1.2) -- (5.2, -1.2);
-        
+
         % Uitschakelrelais
         \draw[fill=schoolRed!15, draw=schoolRed, thick] (4.2, -1.7) rectangle (5.8, -1.1);
         \node[font=\scriptsize\bfseries, text=schoolRed, align=center] at (5.0, -1.4) {Uitschakel-\\relais};
         \draw[dashed, ultra thick, schoolRed, ->] (5.0, -1.1) -- (5.0, -0.4) -- (2.15, -0.4) -- (2.15, 3.1);
         \node[font=\tiny\bfseries, text=schoolRed, right] at (2.2, 1.9) {Mechanische ontgrendeling ($<30\text{ ms}$)};
-        
+
         % Testcircuit
         \draw[thick, schoolGreen!80!black] (1.2, 3.2) -- (1.2, 4.4) -- (3.8, 4.4);
         \draw[thick, schoolGreen!80!black] (3.8, 4.6) -- (4.4, 4.6); % knop T
@@ -2546,11 +2562,11 @@ aardfout, waarbij een deel van de stroom via de aarde wegvloeit en de som dus ni
 \begin{center}
     \begin{tabular}{@{}p{30mm}p{45mm}p{45mm}@{}}
         \toprule
-        \textbf{Toestand} & \textbf{Stroombalans \& Magnetische flux} & \textbf{Gevolg op uitschakelrelais} \\
+        \textbf{Toestand}               & \textbf{Stroombalans \& Magnetische flux}                                 & \textbf{Gevolg op uitschakelrelais}                                     \\
         \midrule
-        \textbf{Normale werking} & $i_L = i_N \implies \sum I = 0 \implies \Phi_{\text{net}} = 0$ & $e_{\text{sec}} = 0 \implies$ contacten blijven gesloten. \\[1mm]
-        \textbf{Aardlek / fout} & $i_L - i_N = I_\Delta \ge I_{\Delta n} \implies \Phi_{\text{net}} \neq 0$ & $e_{\text{sec}} > 0 \implies$ relais ontgrendelt in $<30\text{ ms}$. \\[1mm]
-        \textbf{Testknop $T$ ingedrukt} & $I_T = U/R_T$ passeert slechts 1 keer door torus & Kunstmatige $\Phi_{\text{net}} \neq 0 \implies$ RCD tript ter controle. \\
+        \textbf{Normale werking}        & $i_L = i_N \implies \sum I = 0 \implies \Phi_{\text{net}} = 0$            & $e_{\text{sec}} = 0 \implies$ contacten blijven gesloten.               \\[1mm]
+        \textbf{Aardlek / fout}         & $i_L - i_N = I_\Delta \ge I_{\Delta n} \implies \Phi_{\text{net}} \neq 0$ & $e_{\text{sec}} > 0 \implies$ relais ontgrendelt in $<30\text{ ms}$.    \\[1mm]
+        \textbf{Testknop $T$ ingedrukt} & $I_T = U/R_T$ passeert slechts 1 keer door torus                          & Kunstmatige $\Phi_{\text{net}} \neq 0 \implies$ RCD tript ter controle. \\
         \bottomrule
     \end{tabular}
 \end{center}
@@ -2636,13 +2652,13 @@ Bereken de volgende uitdrukking in het fasordomein en zet ze terug naar het tijd
         \draw[->, gray!60] (0,-2.6) -- (0,1.6) node[above, font=\scriptsize, black] {Im};
         % A = 5<7deg  -> (5.46, 0.67)
         \draw[->, very thick, schoolBlue] (0,0) -- (5.46,0.67)
-            node[midway, above, font=\small, schoolBlue] {$5\angle 7^\circ$};
+        node[midway, above, font=\small, schoolBlue] {$5\angle 7^\circ$};
         % B = 2<-118deg, kop-staart vanaf tip A -> (4.43,-1.28)
         \draw[->, very thick, schoolOrange] (5.46,0.67) -- (4.43,-1.28)
-            node[midway, right, font=\small, schoolOrange] {$2\angle -118^\circ$};
+        node[midway, right, font=\small, schoolOrange] {$2\angle -118^\circ$};
         % resultante
         \draw[->, ultra thick, schoolRed] (0,0) -- (4.42,-1.28)
-            node[midway, below left, font=\small, schoolRed] {$4{,}19\angle -16^\circ$};
+        node[midway, below left, font=\small, schoolRed] {$4{,}19\angle -16^\circ$};
         % hoekje
         \draw[schoolRed, thin] (2.0,0) arc (0:-16:2.0);
         \node[font=\tiny, schoolRed, anchor=west] at (2.1,-0.32) {$-16^\circ$};
@@ -2670,11 +2686,11 @@ $50$~Hz.
     \hspace{6mm}
     \begin{tikzpicture}[scale=0.16, >=latex, baseline=(current bounding box.center)]
         \draw[->, very thick, schoolBlue] (0,0) -- (17.32,0)
-            node[midway, below, font=\scriptsize, schoolBlue] {$V_R = 17{,}32$~V};
+        node[midway, below, font=\scriptsize, schoolBlue] {$V_R = 17{,}32$~V};
         \draw[->, very thick, schoolOrange] (17.32,0) -- (17.32,10)
-            node[midway, right, font=\scriptsize, schoolOrange] {$V_L = 10$~V};
+        node[midway, right, font=\scriptsize, schoolOrange] {$V_L = 10$~V};
         \draw[->, ultra thick, schoolRed] (0,0) -- (17.32,10)
-            node[midway, above left, font=\scriptsize, schoolRed] {$V = 20$~V};
+        node[midway, above left, font=\scriptsize, schoolRed] {$V = 20$~V};
         \draw[gray!70] (15.6,0) -- (15.6,1.7) -- (17.32,1.7);
     \end{tikzpicture}
     \caption{Links het schema: een niet-ideale spoel is $R$ in serie met $L$. Rechts de
@@ -2738,11 +2754,11 @@ Wat is de reactantie? Wat is het teken?
     \centering
     \begin{tikzpicture}[scale=0.85, >=latex]
         \draw[->, very thick, schoolBlue] (0,0) -- (1.34,0)
-            node[midway, above, font=\scriptsize, schoolBlue] {$R = 1{,}34\,\Omega$};
+        node[midway, above, font=\scriptsize, schoolBlue] {$R = 1{,}34\,\Omega$};
         \draw[->, very thick, schoolOrange] (1.34,0) -- (1.34,-5)
-            node[midway, right, font=\scriptsize, schoolOrange] {$X = -5\,\Omega$};
+        node[midway, right, font=\scriptsize, schoolOrange] {$X = -5\,\Omega$};
         \draw[->, ultra thick, schoolRed] (0,0) -- (1.34,-5)
-            node[midway, left, font=\scriptsize, schoolRed] {$|Z| = 5{,}18\,\Omega$};
+        node[midway, left, font=\scriptsize, schoolRed] {$|Z| = 5{,}18\,\Omega$};
         \draw[schoolRed, thin] (0.9,0) arc (0:-75:0.9);
         \node[font=\scriptsize, schoolRed] at (1.35,-0.75) {$-75^\circ$};
         \draw[gray!70] (1.34,-0.32) -- (1.02,-0.32) -- (1.02,0);
@@ -2766,10 +2782,10 @@ Geef het ogenblikkelijk vermogen en het actief vermogen.
         \draw[->, gray!60] (0,-2.4) -- (0,2.4) node[above, font=\scriptsize, black] {Im};
         % V = 200<25 graden, schaal 1 cm = 50 V
         \draw[->, very thick, schoolBlue] (0,0) -- (3.625,1.690)
-            node[above right, font=\small, schoolBlue] {$\underline{V} = 200\angle 25^\circ$~V};
+        node[above right, font=\small, schoolBlue] {$\underline{V} = 200\angle 25^\circ$~V};
         % I = 5<-40 graden, schaal 1 cm = 1,79 A
         \draw[->, very thick, schoolOrange] (0,0) -- (2.145,-1.800)
-            node[below right, font=\small, schoolOrange] {$\underline{I} = 5\angle -40^\circ$~A};
+        node[below right, font=\small, schoolOrange] {$\underline{I} = 5\angle -40^\circ$~A};
         % hoeken
         \draw[gray, thin] (1.2,0) arc (0:25:1.2);
         \node[font=\tiny, gray!50!black] at (1.42,0.26) {$25^\circ$};
