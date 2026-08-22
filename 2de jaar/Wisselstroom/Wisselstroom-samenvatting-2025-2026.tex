@@ -28,8 +28,8 @@
 \renewtcolorbox{voorbeeld}[1][Voorbeeld]{%
     schoolbox=schoolGreen, schoolRunInBreak={schoolGreen}{\faPenNib}{#1}}
 
-% Eén afleidingsstap: eerst de reden in het grijs, dan de vergelijking.
-\newcommand{\stapreden}[1]{\par\vspace{1.4mm}\noindent #1\par\vspace{-2mm}}
+% Eén afleidingsstap: eerst de reden in zwart, dan de vergelijking.
+\newcommand{\stapreden}[1]{\par\vspace{1.4mm}\noindent\textcolor{black}{#1}\par\vspace{-2mm}}
 
 
 \title{Wisselstroom samenvatting 2025-2026}
@@ -1580,6 +1580,13 @@ $1:40$ voor V en $1:2$ voor A), en \textbf{schrijf ze bij het diagramma}. Zonder
 diagramma niet controleerbaar en verlies je punten. Neem je geodriehoek en passer mee: het moet op
 schaal zijn, niet uit de losse hand.
 
+\begin{examenbox}[EXAMENTIP: teken op schaal]
+    Teken een fasordiagramma op het examen \textbf{op maat} en vermeld er altijd de schaal bij.
+    Gebruik een aparte schaal voor spanningen en voor stromen, bijvoorbeeld
+    $1\text{ cm}=40\text{ V}$ en $1\text{ cm}=4\text{ A}$. Zo kan de lezer zowel de lengtes
+    als de hoeken controleren.
+\end{examenbox}
+
 \begin{oefening}[Voorbeeld uit slides: het fasordiagramma van het net van methode 1]
     \textbf{Opgave:} teken het fasordiagramma van alle spanningen en stromen van het net uit
     figuur~\ref{fig:methode1-net}, met de knooppunten $A$, $B$ en $C$ erbij.
@@ -2285,11 +2292,23 @@ $V_{32}$ ijlt achter op $V_{3}$ met 30 graden
     $I_f$ de fasestroom in Ampère, $V_f$ de fasespanning in Volt,
     $I_L$ de lijnstroom in Ampère en $\theta$ de hoek tussen de spanning en stroom}
 
-Het reactief vermogen kan je ook berekenen met de 2-wattmethode.
-\[Q_{totaal} = \sqrt{3}(P_2 - P_1)\]
-\[Q_{totaal} = V_L \cdot I_L \cdot \cos(30^\circ + \phi_1) - V_L \cdot I_L \cdot \cos(-30^\circ + \phi_3)\]
-\[Q_{totaal} = V_L \cdot I_L [\cos(30^\circ + \phi_1) - \cos(-30^\circ + \phi_3)]\]
-\[Q_{totaal} = \sqrt{3} V_L \cdot I_L \sin{\theta}\]
+Het reactief vermogen kan je ook berekenen met de 2-wattmethode. Bij de standaard
+aansluiting is $W_1$ de aflezing met $V_{ab}$ en $I_a$, en $W_2$ de aflezing met
+$V_{cb}$ en $I_c$. Voor een \textbf{evenwichtige} belasting staat de stroomhoek bij
+$W_1$ op $\theta+30^\circ$ en bij $W_2$ op $\theta-30^\circ$:
+\[
+W_1=V_LI_L\cos(\theta+30^\circ),\qquad
+W_2=V_LI_L\cos(\theta-30^\circ)
+\]
+met: $W_1$ en $W_2$ = aflezingen van de wattmeters (W), $V_L$ = lijnspanning (V),
+$I_L$ = lijnstroom (A) en $\theta$ = fasehoek van de belasting.
+
+Het verschil van beide aflezingen geeft dan het reactief vermogen:
+\[
+Q_{totaal}=\sqrt{3}(W_2-W_1)=\sqrt{3}V_LI_L\sin\theta
+\]
+met: $Q_{totaal}$ = totaal reactief vermogen (var); een positieve waarde betekent
+naijlend (inductief) en een negatieve waarde voorijlend (capacitief).
 
 \frm{reactief vermogen in 2-wattmethode}{Q_{totaal} = \sqrt{3}(P_2 - P_1) = \sqrt{3} V_L \cdot I_L \sin{\theta}
 }{Met $Q_{totaal}$ het totale reactieve vermogen in Volt-Ampère reactief
@@ -2306,7 +2325,34 @@ Het reactief vermogen kan je ook berekenen met de 2-wattmethode.
     en tel op.
 \end{waarschuwing}
 
-\frm{fasehoek}{\theta = tan^{-1}\left(\frac{Q_{totaal}}{P_{totaal}}\right)= tan^{-1}\left(\frac{\sqrt{3}(P_2 - P_1)}{P_1 + P_2}\right)
+\begin{oefenblok}[Korte oefening: twee wattmeters]
+    Een evenwichtige driefasenlast wordt gemeten met de standaard 2-wattmethode.
+    De wattmeters lezen $W_1=0{,}60\ \text{kW}$ en $W_2=1{,}20\ \text{kW}$.
+    Bepaal $P$, $Q$, $S$ en de arbeidsfactor.
+
+    Eerst tellen we de twee wattmeteraflezingen op voor het actieve vermogen:
+    \[
+    P=W_1+W_2=0{,}60+1{,}20=\boxed{1{,}80\ \text{kW}}
+    \]
+    met: $P$ = totaal actief vermogen (kW), $W_1$ en $W_2$ = wattmeteraflezingen (kW).
+
+    Daarna gebruiken we het verschil voor het reactieve vermogen:
+    \[
+    Q=\sqrt{3}(W_2-W_1)=\sqrt{3}(1{,}20-0{,}60)
+      =\boxed{1{,}04\ \text{kvar}}
+    \]
+    met: $Q$ = totaal reactief vermogen (kvar).
+
+    Het schijnbaar vermogen en de arbeidsfactor volgen uit de vermogensdriehoek:
+    \[
+    S=\sqrt{P^2+Q^2}=\sqrt{1{,}80^2+1{,}04^2}
+      =\boxed{2{,}08\ \text{kVA}},\qquad
+    \text{pf}=\frac{P}{S}=\boxed{0{,}866\ \text{naijlend}}
+    \]
+    met: $S$ = schijnbaar vermogen (kVA) en $\text{pf}$ = arbeidsfactor.
+\end{oefenblok}
+
+\frm{fasehoek}{\theta = tan^{-1}\left(\frac{Q_{totaal}}{P_{totaal}}\right)= tan^{-1}\left(\frac{\sqrt{3}(W_2 - W_1)}{W_1 + W_2}\right)
 }
 {Met $\theta$ de gemiddelde fasehoek tussen spanning en stroom van de belastingen,
     $Q_{totaal}$ het totale reactieve vermogen in Volt-Ampère reactief (VAR) en $P_{totaal}$ het totale actieve vermogen in Watt.}
@@ -2334,7 +2380,6 @@ gemeenschappelijke referentie, wordt dat:
 \begin{waarschuwing}[De klassiekste fout van het hele vak]
     $\underline{V}_{cb} = -\underline{V}_{bc}$, dus als $\underline{V}_{bc} = V_L\angle -120^\circ$,
     dan is $\underline{V}_{cb} = V_L\angle 60^\circ$ en \textbf{niet} $V_L\angle -120^\circ$.
-    Elk jaar sneuvelen hier punten op.
 \end{waarschuwing}
 
 \textbf{Waarom volstaan twee wattmeters?} Zonder nulgeleider geldt
@@ -2780,7 +2825,7 @@ lichaamsweerstand $Z_B$ de stroomgrens omgerekend naar een \textbf{veilige conve
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.65\textwidth]{assets/touch_voltage_curves_bb.png}
+    \includegraphics[width=0.40\textwidth]{assets/touch_voltage_curves_bb.png}
     \caption{Maximale uitschakeltijd $t$ in functie van de effectieve aanraakspanning $V_{\text{eff}}$
         voor condities BB1, BB2 en BB3. Links van de knik ($50\text{ V}$ bij BB1, $25\text{ V}$ bij BB2,
         $12\text{ V}$ bij BB3) mag de spanning oneindig lang blijven bestaan.}
@@ -3046,11 +3091,31 @@ fundamenteel onderscheid tussen overbelasting en kortsluiting:
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.72\textwidth]{assets/overcurrents_in_iz_ib.png}
+    \includegraphics[width=0.52\textwidth]{assets/overcurrents_in_iz_ib.png}
     \caption[Relatie van de ontwerpstromen]{Relatie van de ontwerpstromen voor kabelbeveiliging: $I_b \le I_n \le I_z$.}
     \label{fig:overcurrents}
 \end{figure}
 \FloatBarrier
+
+In de figuur betekenen de drie stromen:
+\begin{itemize}
+    \item $I_b$: de \textbf{ontwerpstroom van de belasting}; dit is de stroom die de
+          aangesloten verbruikers normaal vragen.
+    \item $I_n$: de \textbf{nominale stroom van de beveiliging}, bijvoorbeeld de
+          nominale stroom van een MCB. De automaat moet bij normaal bedrijf niet
+          uitschakelen.
+    \item $I_z$: de \textbf{toelaatbare continue stroom van de kabel}; dit is de
+          grootste stroom die de geleider langdurig mag voeren zonder gevaarlijke
+          opwarming.
+\end{itemize}
+Daarom kies je de beveiliging zo dat
+\[
+I_b \le I_n \le I_z
+\]
+met: $I_b$ = ontwerpstroom (A), $I_n$ = nominale stroom van de beveiliging (A) en
+$I_z$ = toelaatbare continue kabelstroom (A). De belasting mag de automaat dus niet
+onnodig doen uitschakelen, maar de automaat moet de kabel wel tegen overbelasting
+beschermen.
 
 \frm{Dimensioneringsregel kabelbeveiliging}{I_b \le I_n \le I_z \qquad\text{en}\qquad I_2 \le 1{,}45 \cdot I_z}
 {Met $I_b$ de ontwerpstroom van de belasting, $I_n$ de nominale stroom van de automaat, $I_z$ de toelaatbare continue kabelstroom en $I_2$ de conventionele aanspreekstroom ($1{,}45\,I_n$).}
@@ -3070,11 +3135,10 @@ fundamenteel onderscheid tussen overbelasting en kortsluiting:
 
 \subsubsection{Smeltzekeringen}
 
-De oudste vorm van overstroombeveiliging is de \textbf{smeltzekering}: een dun geleiderdraadje in
-een porseleinen of glazen patroon dat doorsmelt zodra $I^2t$ te groot wordt. Ze zijn goedkoop,
-uiterst snel bij zware kortsluitstromen en hebben een hoog schakelvermogen. Nadeel is dat je ze na
-elke fout moet vervangen, dat er geen thermische en magnetische zone apart instelbaar is, en dat
-iemand er een te zware zekering in kan draaien.
+De oudste vorm van overstroombeveiliging is de \textbf{smeltzekering} (fuse): een dun
+geleiderdraadje in een porseleinen of glazen patroon. Bij een te grote stroom smelt het
+draadje door en onderbreekt het de kring. Nadat de smeltzekering gesprongen is, moet je
+ze vervangen. Een smeltzekering kan je dus niet opnieuw inschakelen.
 
 \begin{figure}[htbp]
     \centering
@@ -3091,6 +3155,29 @@ opnieuw kan inschakelen.
 
 Een \keyterm{MCB (Miniature Circuit Breaker)} combineert een thermische ontgrendeling (bimetaal)
 voor overbelasting en een magnetische ontgrendeling (plunjer/spoel) voor kortsluiting.
+
+De MCB is een installatieautomaat: na het uitschakelen kan je hem opnieuw inschakelen.
+Bij een \textbf{overbelasting} warmt de stroom het bimetaal op. De twee metalen zetten
+ongelijk uit, waardoor de strip kromtrekt en het vergrendelmechanisme opent. Dat gebeurt
+vertraagd; een kleine overstroom mag immers gedurende korte tijd blijven bestaan.
+Bij een \textbf{kortsluiting} is de stroom veel groter. De elektromagnetische spoel trekt
+de plunjer vrijwel onmiddellijk aan en opent de contacten. De thermische en magnetische
+beveiliging werken dus samen in één automaat.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.62\textwidth]{assets/mcb_bimetaal.png}
+    \caption{Thermische werking van een MCB: het bimetaal buigt door wanneer het warm wordt
+    en opent zo het uitschakelmechanisme.}
+    \label{fig:mcb-werking}
+\end{figure}
+\FloatBarrier
+
+\textbf{Samengevat:} een overbelasting ontstaat door langdurig te veel stroom in het
+normale stroompad; een kortsluiting ontstaat door een foutverbinding met zeer kleine
+impedantie. Een MCB detecteert beide, maar met een verschillend mechanisme en een
+verschillende uitschakelsnelheid. Een MCB vervangt geen RCD: de MCB beschermt de
+installatie tegen overstroom, terwijl de RCD beschermt tegen lekstromen naar aarde.
 
 \begin{figure}[htbp]
     \centering
@@ -3200,6 +3287,15 @@ Het meetprincipe is een \textbf{somstroomtransformator}: alle actieve geleiders 
 samen door één ringkern. In figuur~\ref{fig:rcd-werking-slide} zie je links de gezonde situatie
 --- wat er langs de fase binnengaat, komt langs de nul terug, de som is nul --- en rechts een
 aardfout, waarbij een deel van de stroom via de aarde wegvloeit en de som dus niet meer nul is.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\textwidth]{assets/rcd_werking_extra.png}
+\caption{RCD bij een aardlek: de heen- en terugstroom zijn niet meer gelijk, waardoor
+de RCD de kring uitschakelt.}
+\label{fig:rcd-werking-extra}
+\end{figure}
+\FloatBarrier
 
 \begin{figure}[htbp]
     \centering
