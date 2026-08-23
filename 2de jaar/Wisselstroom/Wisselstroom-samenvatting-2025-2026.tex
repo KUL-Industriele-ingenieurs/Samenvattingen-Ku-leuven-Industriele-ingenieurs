@@ -12,7 +12,11 @@
 \usepackage{placeins}
 
 % Add angles library for TikZ angle pictures
-\usetikzlibrary{angles}
+\usetikzlibrary{angles,calc}
+
+% Spoelen als kronkel tekenen i.p.v. het Europese zwarte blokje: leest veel beter
+% naast een condensator en sluit aan bij de figuren uit de slides.
+\ctikzset{inductor=cute, inductors/scale=0.75}
 
 % Bij een oefening of voorbeeld begint de opgave op een nieuwe regel, niet naast
 % de titel. Anders loopt "Gegeven: ..." vast tegen de titel aan.
@@ -349,9 +353,9 @@ meer synchroon en heeft ``de hoek ertussen'' geen betekenis meer.
         % labels
         \node[schoolBlue, anchor=south west, font=\small] at (2.06,1.70) {$\vec{V} = V_m\angle\phi$};
         \node[anchor=north, font=\scriptsize, align=center] at (1.99,-0.10)
-             {$V_m\cos\phi$\\re\"eel deel};
+        {$V_m\cos\phi$\\re\"eel deel};
         \node[anchor=east, font=\scriptsize, align=right] at (-0.10,1.67)
-             {$V_m\sin\phi$\\imaginair deel};
+        {$V_m\sin\phi$\\imaginair deel};
 
         % rotatiehint
         \draw[->, thick, schoolGreen!60!black] (2.30,1.93) arc (40:72:3.0);
@@ -487,7 +491,7 @@ verschuiving $90^\circ$; een weerstand verschuift niets.
     \centering
     {\bfseries 1. Zuivere spoel $L$ --- ELI: de spanning ijlt $90^\circ$ v\'o\'or op de stroom.}\par
     \vspace{2mm}
-\begin{tikzpicture}[scale=0.86, line cap=round, line join=round]
+    \begin{tikzpicture}[scale=0.86, line cap=round, line join=round]
         % ---- golfvormen ----
         \begin{scope}[shift={(0,0)}]
             \draw[->, thick] (-0.3,0) -- (7.3,0) node[right, font=\footnotesize] {$\omega t$};
@@ -495,7 +499,7 @@ verschuiving $90^\circ$; een weerstand verschuift niets.
             \node[font=\scriptsize, rotate=90, anchor=south] at (-0.55,0) {$v(t),\ i_L(t)$};
 
             \foreach \xg in {1.571, 3.142, 4.712, 6.283}
-                \draw[gray!30, dotted, thick] (\xg,-1.35) -- (\xg,1.4);
+            \draw[gray!30, dotted, thick] (\xg,-1.35) -- (\xg,1.4);
 
             \node[below, font=\scriptsize] at (1.571, -0.05) {$\tfrac{\pi}{2}$};
             \node[below, font=\scriptsize] at (3.142, -0.05) {$\pi$};
@@ -503,18 +507,18 @@ verschuiving $90^\circ$; een weerstand verschuift niets.
             \node[below, font=\scriptsize] at (6.283, -0.05) {$2\pi$};
 
             \draw[domain=0:6.6, samples=120, smooth, ultra thick, schoolBlue]
-                plot (\x, {1.35*sin(\x r)});
+            plot (\x, {1.35*sin(\x r)});
             \draw[domain=0:6.6, samples=120, smooth, ultra thick, schoolRed, dashed]
-                plot (\x, {-1.05*cos(\x r)});
+            plot (\x, {-1.05*cos(\x r)});
 
             \draw[schoolBlue, fill=schoolBlue] (1.571, 1.35) circle (0.045);
             \draw[schoolRed, fill=schoolRed] (3.142, 1.05) circle (0.045);
             \draw[<->, thick, schoolGreen!60!black] (1.571, 1.62) -- (3.142, 1.62) node[midway, above, font=\scriptsize\bfseries, text=schoolGreen!50!black] {$\Delta\phi = 90^\circ$};
 
             \draw[ultra thick, schoolBlue] (0.3, -2.05) -- (0.8, -2.05)
-                node[right, font=\scriptsize, text=black] {$v(t) = V_m\sin(\omega t)$};
+            node[right, font=\scriptsize, text=black] {$v(t) = V_m\sin(\omega t)$};
             \draw[ultra thick, schoolRed, dashed] (4.0, -2.05) -- (4.5, -2.05)
-                node[right, font=\scriptsize, text=black] {$i_L(t) = I_m\sin(\omega t - 90^\circ)$};
+            node[right, font=\scriptsize, text=black] {$i_L(t) = I_m\sin(\omega t - 90^\circ)$};
         \end{scope}
 
         % ---- fasordiagram ----
@@ -523,9 +527,9 @@ verschuiving $90^\circ$; een weerstand verschuift niets.
             \draw[->, thick] (0,-1.75) -- (0,1.95) node[above, font=\footnotesize] {Im};
 
             \draw[->, ultra thick, schoolBlue] (0,0) -- (1.8,0)
-                node[above, font=\scriptsize\bfseries, yshift=1mm] {$\vec{V} = V\angle 0^\circ$};
+            node[above, font=\scriptsize\bfseries, yshift=1mm] {$\vec{V} = V\angle 0^\circ$};
             \draw[->, ultra thick, schoolRed] (0,0) -- (0,-1.35)
-                node[below right, font=\scriptsize\bfseries] {$\vec{I}_L = I_L\angle -90^\circ$};
+            node[below right, font=\scriptsize\bfseries] {$\vec{I}_L = I_L\angle -90^\circ$};
 
             \fill (0,0) circle (0.05);
             \draw[->, thick, schoolGreen!60!black] (0.55,0) arc (0:-90:0.55); \node[schoolGreen!50!black, font=\scriptsize\bfseries] at (0.92, -0.42) {$-90^\circ$};
@@ -537,7 +541,7 @@ verschuiving $90^\circ$; een weerstand verschuift niets.
 
     {\bfseries 2. Zuivere condensator $C$ --- ICE: de stroom ijlt $90^\circ$ v\'o\'or op de spanning.}\par
     \vspace{2mm}
-\begin{tikzpicture}[scale=0.86, line cap=round, line join=round]
+    \begin{tikzpicture}[scale=0.86, line cap=round, line join=round]
         % ---- golfvormen ----
         \begin{scope}[shift={(0,0)}]
             \draw[->, thick] (-0.3,0) -- (7.3,0) node[right, font=\footnotesize] {$\omega t$};
@@ -545,7 +549,7 @@ verschuiving $90^\circ$; een weerstand verschuift niets.
             \node[font=\scriptsize, rotate=90, anchor=south] at (-0.55,0) {$v(t),\ i_C(t)$};
 
             \foreach \xg in {1.571, 3.142, 4.712, 6.283}
-                \draw[gray!30, dotted, thick] (\xg,-1.35) -- (\xg,1.4);
+            \draw[gray!30, dotted, thick] (\xg,-1.35) -- (\xg,1.4);
 
             \node[below, font=\scriptsize] at (1.571, -0.05) {$\tfrac{\pi}{2}$};
             \node[below, font=\scriptsize] at (3.142, -0.05) {$\pi$};
@@ -553,18 +557,18 @@ verschuiving $90^\circ$; een weerstand verschuift niets.
             \node[below, font=\scriptsize] at (6.283, -0.05) {$2\pi$};
 
             \draw[domain=0:6.6, samples=120, smooth, ultra thick, schoolBlue]
-                plot (\x, {1.35*sin(\x r)});
+            plot (\x, {1.35*sin(\x r)});
             \draw[domain=0:6.6, samples=120, smooth, ultra thick, schoolRed, dashed]
-                plot (\x, {1.05*cos(\x r)});
+            plot (\x, {1.05*cos(\x r)});
 
             \draw[schoolBlue, fill=schoolBlue] (1.571, 1.35) circle (0.045);
             \draw[schoolRed, fill=schoolRed] (0, 1.05) circle (0.045);
             \draw[<->, thick, schoolGreen!60!black] (0, 1.62) -- (1.571, 1.62) node[midway, above, font=\scriptsize\bfseries, text=schoolGreen!50!black] {$\Delta\phi = 90^\circ$};
 
             \draw[ultra thick, schoolBlue] (0.3, -2.05) -- (0.8, -2.05)
-                node[right, font=\scriptsize, text=black] {$v(t) = V_m\sin(\omega t)$};
+            node[right, font=\scriptsize, text=black] {$v(t) = V_m\sin(\omega t)$};
             \draw[ultra thick, schoolRed, dashed] (4.0, -2.05) -- (4.5, -2.05)
-                node[right, font=\scriptsize, text=black] {$i_C(t) = I_m\sin(\omega t + 90^\circ)$};
+            node[right, font=\scriptsize, text=black] {$i_C(t) = I_m\sin(\omega t + 90^\circ)$};
         \end{scope}
 
         % ---- fasordiagram ----
@@ -573,9 +577,9 @@ verschuiving $90^\circ$; een weerstand verschuift niets.
             \draw[->, thick] (0,-1.75) -- (0,1.95) node[above, font=\footnotesize] {Im};
 
             \draw[->, ultra thick, schoolBlue] (0,0) -- (1.8,0)
-                node[below, font=\scriptsize\bfseries, yshift=-1mm] {$\vec{V} = V\angle 0^\circ$};
+            node[below, font=\scriptsize\bfseries, yshift=-1mm] {$\vec{V} = V\angle 0^\circ$};
             \draw[->, ultra thick, schoolRed] (0,0) -- (0,1.35)
-                node[above right, font=\scriptsize\bfseries] {$\vec{I}_C = I_C\angle +90^\circ$};
+            node[above right, font=\scriptsize\bfseries] {$\vec{I}_C = I_C\angle +90^\circ$};
 
             \fill (0,0) circle (0.05);
             \draw[->, thick, schoolGreen!60!black] (0.55,0) arc (0:90:0.55); \node[schoolGreen!50!black, font=\scriptsize\bfseries] at (0.52, 0.80) {$+90^\circ$};
@@ -613,6 +617,26 @@ verschuiving $90^\circ$; een weerstand verschuift niets.
 \frm{Totale impedantie in serie}{Z_{totaal} = \sqrt{R^2 + (X_L + X_C)^2}}{Met $Z_{totaal}$ de totale impedantie in Ohm, R de weerstand in Ohm, $X_L$ de inductieve reactantie in Ohm en $X_C$ de capacitieve reactantie in Ohm.}
 
 \frm{Hoek van de impedantie}{\tan \phi = \frac{X_L + X_C}{R}}{Met $\phi$ de fasehoek van de impedantie in graden of radialen, R de weerstand in Ohm, $X_L$ de inductieve reactantie in Ohm en $X_C$ de capacitieve reactantie in Ohm.}
+
+\textbf{Admittantie: gewoon $1/\underline{Z}$.} Soms is delen door een impedantie lastig, vooral bij
+takken die \textbf{parallel} staan. Dan keer je de breuk om en werk je met de \textbf{admittantie}
+$\underline{Y}$. Parallelle admittanties mag je namelijk gewoon optellen, net zoals je
+serie-impedanties optelt.
+
+\frm{Admittantie}{\underline{Y} = \frac{1}{\underline{Z}} = G + jB}
+{Met $\underline{Y}$ de admittantie in siemens (S of $\Omega^{-1}$), $\underline{Z}$ de impedantie in
+    $\Omega$, $G$ de \textbf{conductantie} (het re\"ele deel) in S en $B$ de \textbf{susceptantie}
+    (het imaginaire deel) in S.}
+
+\begin{waarschuwing}[$G \neq 1/R$ en $B \neq 1/X$]
+    Je mag re\"eel en imaginair deel \textbf{niet} apart omkeren. Reken eerst de complexe breuk uit
+    door met de toegevoegde te vermenigvuldigen:
+    \[\underline{Y} = \frac{1}{R+jX} = \frac{R-jX}{R^2+X^2}
+        \qquad\Longrightarrow\qquad
+        G = \frac{R}{R^2+X^2}, \qquad B = \frac{-X}{R^2+X^2}\]
+    Alleen bij een zuivere weerstand ($X=0$) valt $G$ samen met $1/R$.
+\end{waarschuwing}
+
 
 
 \subsection{Vermogen in wisselstroomkringen}
@@ -1056,13 +1080,13 @@ $\text{Im}\{\underline{Z}\} = 0$, maar het gevolg is tegengesteld:
 \begin{center}
     \begin{tabular}{@{}p{34mm}p{44mm}p{44mm}@{}}
         \toprule
-                                  & \textbf{Serieresonantie}                          & \textbf{Parallelresonantie}                        \\
+                            & \textbf{Serieresonantie}                & \textbf{Parallelresonantie}               \\
         \midrule
-        Totale impedantie         & \textbf{minimaal} ($\underline{Z} = R$)           & \textbf{maximaal} ($\underline{Z} = R_p$)          \\[1mm]
-        Bronstroom                & \textbf{maximaal}                                 & \textbf{minimaal}                                  \\[1mm]
-        Bijnaam                   & spanningsopslingering over $L$ en $C$             & stroomopslingering \emph{binnen} de kring          \\[1mm]
-        $\omega < \omega_0$       & capacitief                                        & inductief                                          \\[1mm]
-        $\omega > \omega_0$       & inductief                                         & capacitief                                         \\
+        Totale impedantie   & \textbf{minimaal} ($\underline{Z} = R$) & \textbf{maximaal} ($\underline{Z} = R_p$) \\[1mm]
+        Bronstroom          & \textbf{maximaal}                       & \textbf{minimaal}                         \\[1mm]
+        Bijnaam             & spanningsopslingering over $L$ en $C$   & stroomopslingering \emph{binnen} de kring \\[1mm]
+        $\omega < \omega_0$ & capacitief                              & inductief                                 \\[1mm]
+        $\omega > \omega_0$ & inductief                               & capacitief                                \\
         \bottomrule
     \end{tabular}
 \end{center}
@@ -1081,7 +1105,7 @@ wisselen dan onderling energie uit zonder dat de bron er iets aan hoeft bij te d
             \draw[->, gray] (0,0) -- (2.5,0) node[right, font=\scriptsize, black] {$f$};
             \draw[->, gray] (0,0) -- (0,2.6) node[above, font=\scriptsize, black] {$I$};
             \draw[ultra thick, schoolBlue, smooth, samples=80, domain=0.12:2.35]
-                plot (\x, {2.2/sqrt(1+16*((\x/1.1)-(1.1/\x))^2)});
+            plot (\x, {2.2/sqrt(1+16*((\x/1.1)-(1.1/\x))^2)});
             \draw[dashed, gray!70] (1.1,0) -- (1.1,2.3);
             \node[font=\scriptsize, below] at (1.1,-0.06) {$f_0$};
             \node[font=\scriptsize\bfseries, anchor=north, align=center] at (1.25,-0.45) {seriekring:\\stroom \textbf{maximaal}};
@@ -1091,7 +1115,7 @@ wisselen dan onderling energie uit zonder dat de bron er iets aan hoeft bij te d
             \draw[->, gray] (0,0) -- (2.5,0) node[right, font=\scriptsize, black] {$f$};
             \draw[->, gray] (0,0) -- (0,2.6) node[above, font=\scriptsize, black] {$I$};
             \draw[ultra thick, schoolRed, smooth, samples=80, domain=0.45:2.35]
-                plot (\x, {0.35 + 2.0*abs((\x/1.1)-(1.1/\x))/2.6});
+            plot (\x, {0.35 + 2.0*abs((\x/1.1)-(1.1/\x))/2.6});
             \draw[dashed, gray!70] (1.1,0) -- (1.1,2.3);
             \node[font=\scriptsize, below] at (1.1,-0.06) {$f_0$};
             \node[font=\scriptsize, schoolRed, right] at (1.30,0.22) {$I_r = VRC/L$};
@@ -1177,9 +1201,9 @@ Deze twee gebruik je in bijna elke 1-fase oefening, dus ze moeten er vlot in zit
             \draw (0,0) to[sV={$200\angle 0^\circ$~V}, i<^=$\underline{I}_{\text{tot}}$] (0,4.0);
             \draw (0,4.0) node[circ]{} -- (5.6,4.0);
             \draw (2.8,4.0) node[circ]{} to[R, l_={$R_1 = 50\,\Omega$}, i>^=$\underline{I}_1$] (2.8,2.2)
-                  to[L, l_={$L = 0{,}318$~H}] (2.8,0);
+            to[L, l_={$L = 0{,}318$~H}] (2.8,0);
             \draw (5.6,4.0) to[R, l={$R_2 = 80\,\Omega$}, i>^=$\underline{I}_2$] (5.6,2.2)
-                  to[C, l={$C = 159\,\mu$F}] (5.6,0) node[circ]{};
+            to[C, l={$C = 159\,\mu$F}] (5.6,0) node[circ]{};
             \draw (0,0) -- (5.6,0);
             \draw (0,0) node[ground]{};
         \end{circuitikz}
@@ -1216,7 +1240,7 @@ Deze twee gebruik je in bijna elke 1-fase oefening, dus ze moeten er vlot in zit
         \begin{circuitikz}[scale=0.85, transform shape]
             \draw (0,0) to[sV={$60\angle 53{,}1^\circ$~V}] (0,3.4);
             \draw (0,3.4) to[generic={$4-j3\,\Omega$}] (2.8,3.4)
-                  to[generic={$2+j\,\Omega$}] (5.6,3.4) node[circ]{};
+            to[generic={$2+j\,\Omega$}] (5.6,3.4) node[circ]{};
             \draw (5.6,3.4) to[generic={$j5\,\Omega$}] (5.6,0);
             \draw (5.6,3.4) -- (8.4,3.4) to[generic={$\underline{Z}_L = 1-j2\,\Omega$}, i>^=$\underline{I}_o$] (8.4,0) node[circ]{};
             \draw (0,0) -- (8.4,0);
@@ -1230,6 +1254,23 @@ Deze twee gebruik je in bijna elke 1-fase oefening, dus ze moeten er vlot in zit
               $\underline{Z}_1 = (4 - j3) + (2 + j) = 6 - j2\,\Omega = 6{,}325\angle -18{,}43^\circ\,\Omega$.
         \item \textbf{Omzetting naar Norton-stroombron:}
               \[\underline{I}_{\text{no}} = \frac{\underline{V}_s}{\underline{Z}_1} = \frac{60\angle 53{,}1^\circ}{6{,}325\angle -18{,}43^\circ} = 9{,}487\angle 71{,}53^\circ\text{ A}\]
+              De keten ziet er na die omzetting zo uit --- de bron is nu een \textbf{stroombron} met
+              $\underline{Z}_1$ \emph{parallel} in plaats van in serie:
+              \begin{center}
+                  \begin{circuitikz}[scale=0.78, transform shape]
+                      \draw (0,0) to[I={$9{,}487\angle 71{,}53^\circ$~A}] (0,3.0);
+                      \draw (0,3.0) -- (1.8,3.0) node[circ]{};
+                      \draw (1.8,3.0) to[generic={$\underline{Z}_1 = 6-j2\,\Omega$}] (1.8,0) node[circ]{};
+                      \draw (1.8,3.0) -- (4.8,3.0) node[circ]{};
+                      \draw (4.8,3.0) to[generic={$j5\,\Omega$}] (4.8,0) node[circ]{};
+                      \draw (4.8,3.0) -- (7.4,3.0)
+                      to[generic={$\underline{Z}_L = 1-j2\,\Omega$}, i>^=$\underline{I}_o$] (7.4,0);
+                      \draw (0,0) -- (7.4,0);
+                      \draw (0,0) node[ground]{};
+                  \end{circuitikz}
+              \end{center}
+              Nu staan $\underline{Z}_1$ en $j5\,\Omega$ zichtbaar parallel, en dat is precies wat
+              stap 3 samenneemt.
         \item \textbf{Parallelschakeling $\underline{Z}_1 \parallel j5\,\Omega$:}
               \[\underline{Z}_p = \frac{(6 - j2) \cdot j5}{(6 - j2) + j5} = \frac{10 + j30}{6 + j3} = \frac{31{,}62\angle 71{,}57^\circ}{6{,}708\angle 26{,}57^\circ} = 4{,}714\angle 45{,}0^\circ\,\Omega = 3{,}333 + j3{,}333\,\Omega\]
         \item \textbf{Stroomdeling naar $\underline{Z}_L = 1 - j2\,\Omega$:}
@@ -1238,6 +1279,81 @@ Deze twee gebruik je in bijna elke 1-fase oefening, dus ze moeten er vlot in zit
               \[\underline{I}_o = \frac{9{,}487 \cdot 4{,}714}{4{,}533} \angle (71{,}53^\circ + 45{,}0^\circ - 17{,}10^\circ) = \mathbf{9{,}87\angle 99{,}4^\circ\text{ A}}\]
     \end{enumerate}
 \end{oefening}
+
+\begin{oefening}[Sadiku 10.16: twee stroombronnen wegwerken met brontransformatie]
+    \textbf{Opgave:} bepaal $\underline{V}_x$ over de spoel in onderstaande keten.
+
+    \begin{center}
+        \begin{circuitikz}[scale=0.80, transform shape]
+            \draw (0,0) to[I={$2\angle 0^\circ$~A}] (0,2.8);
+            \draw (0,2.8) -- (1.7,2.8) node[circ]{};
+            \draw (1.7,2.8) to[R, l={$5\,\Omega$}] (1.7,0) node[circ]{};
+            \draw (1.7,2.8) to[L, l_={$j4\,\Omega$}, v^>={$\underline{V}_x$}] (4.9,2.8) node[circ]{};
+            \draw (4.9,2.8) to[C, l_={$-j3\,\Omega$}] (4.9,0) node[circ]{};
+            \draw (4.9,2.8) -- (6.9,2.8) to[I={$3\angle 45^\circ$~A}] (6.9,0);
+            \draw (0,0) -- (6.9,0);
+            \draw (0,0) node[ground]{};
+        \end{circuitikz}
+    \end{center}
+
+    \textbf{Denkstap.} Twee stroombronnen zijn lastig: je kunt niet zomaar een lus rondlopen. Maar
+    elke stroombron \emph{met een impedantie ernaast} mag je omzetten naar een spanningsbron met
+    diezelfde impedantie \emph{in serie}. Doe dat twee keer en je houdt \'e\'en enkele lus over ---
+    en dan is het gewoon de wet van Ohm.
+
+    \stapreden{\textbf{Stap 1.} De $2\angle 0^\circ$~A staat parallel met $5\,\Omega$. Omzetten naar Thévenin geeft $\underline{V} = \underline{Z}\cdot\underline{I}$, met de $5\,\Omega$ nu \emph{in serie}:}
+    \[\underline{V}_1 = 5 \cdot 2\angle 0^\circ = 10\angle 0^\circ\ \text{V}\]
+
+    \begin{center}
+        \begin{circuitikz}[scale=0.80, transform shape]
+            \draw (0,0) to[sV={$10\angle 0^\circ$~V}] (0,2.8);
+            \draw (0,2.8) to[R, l={$5\,\Omega$}] (2.3,2.8)
+            to[L, l_={$j4\,\Omega$}, v^>={$\underline{V}_x$}] (5.1,2.8) node[circ]{};
+            \draw (5.1,2.8) to[C, l_={$-j3\,\Omega$}] (5.1,0) node[circ]{};
+            \draw (5.1,2.8) -- (7.1,2.8) to[I={$3\angle 45^\circ$~A}] (7.1,0);
+            \draw (0,0) -- (7.1,0);
+            \draw (0,0) node[ground]{};
+        \end{circuitikz}
+    \end{center}
+
+    \stapreden{\textbf{Stap 2.} Rechts staat de $3\angle 45^\circ$~A parallel met $-j3\,\Omega$. Zelfde truc:}
+    \[\underline{V}_2 = (-j3)\cdot 3\angle 45^\circ
+        = (3\angle -90^\circ)(3\angle 45^\circ) = 9\angle -45^\circ\ \text{V}\]
+
+    \begin{center}
+        \begin{circuitikz}[scale=0.80, transform shape]
+            \draw (0,0) to[sV={$10\angle 0^\circ$~V}] (0,2.8);
+            \draw (0,2.8) to[R, l={$5\,\Omega$}] (2.3,2.8)
+            to[L, l_={$j4\,\Omega$}, v^>={$\underline{V}_x$}, i_>=$\underline{I}$] (4.9,2.8)
+            to[C, l={$-j3\,\Omega$}] (7.1,2.8);
+            \draw (7.1,2.8) to[sV={$9\angle -45^\circ$~V}] (7.1,0);
+            \draw (0,0) -- (7.1,0);
+            \draw (0,0) node[ground]{};
+        \end{circuitikz}
+    \end{center}
+
+    \stapreden{\textbf{Stap 3.} \'E\'en lus. Let op het \textbf{teken}: de tweede bron staat omgekeerd in de lus, dus ze telt \emph{af}:}
+    \[\underline{V}_{tot} = 10\angle 0^\circ - 9\angle -45^\circ
+        = 10 - (6{,}364 - j6{,}364) = 3{,}636 + j6{,}364 = 7{,}331\angle 60{,}25^\circ\ \text{V}\]
+
+    \stapreden{De drie elementen staan in serie, dus tel de impedanties gewoon op:}
+    \[\underline{Z}_{tot} = 5 + j4 - j3 = 5 + j1 = 5{,}099\angle 11{,}31^\circ\ \Omega\]
+
+    \stapreden{Wet van Ohm:}
+    \[\underline{I} = \frac{\underline{V}_{tot}}{\underline{Z}_{tot}}
+        = \frac{7{,}331\angle 60{,}25^\circ}{5{,}099\angle 11{,}31^\circ}
+        = 1{,}438\angle 48{,}94^\circ = 0{,}944 + j1{,}084\ \text{A}\]
+
+    \stapreden{En de gevraagde spanning is die stroom maal de reactantie van de spoel ($j4 = 4\angle 90^\circ$):}
+    \[\underline{V}_x = \underline{I}\cdot j4 = (1{,}438\angle 48{,}94^\circ)(4\angle 90^\circ)
+        = \boxed{5{,}75\angle 139^\circ\ \text{V}}\]
+
+    \textbf{Kerninzicht.} Brontransformatie is geen rekentruc maar een \emph{topologietruc}: elke
+    omzetting haalt \'e\'en knooppunt uit het net weg. Zodra er maar \'e\'en lus over is heb je geen
+    stelsel meer nodig. Zoek dus altijd eerst naar een bron met een impedantie \emph{ernaast} (bij
+    een stroombron) of \emph{in serie} (bij een spanningsbron).
+\end{oefening}
+
 
 \subsection{Een net oplossen: welke methode kies je?}
 
@@ -1268,9 +1384,9 @@ parallelverbindingen. Vooruit rekenen zou een stelsel geven; achteruit rekenen i
     \centering
     \begin{circuitikz}[scale=0.88, transform shape]
         \draw (0,0) node[circ]{} node[below]{$A$}
-              to[sV={$230$~V / 50~Hz}] (0,3.6) node[circ]{} node[above]{$C$};
+        to[sV={$230$~V / 50~Hz}] (0,3.6) node[circ]{} node[above]{$C$};
         \draw (0,3.6) to[R, l={$R_1 = 4\,\Omega$}, i>^=$\underline{I}_1$] (4.0,3.6)
-              node[circ]{} node[above]{$B$};
+        node[circ]{} node[above]{$B$};
         \draw (4.0,3.6) -- (6.6,3.6);
         \draw (4.0,3.6) to[L, l_={$X_L = 100\,\Omega$}, i>^=$\underline{I}_2$] (4.0,0);
         \draw (6.6,3.6) to[R, l_={$R_2 = 50\,\Omega$}, i>^=$\underline{I}_3$] (6.6,0) node[circ]{};
@@ -1375,7 +1491,7 @@ serie-parallelstructuur heeft.
         onderste rail als referentie; dan blijven er twee onbekende knoopspanningen
         $\underline{V}_A$ en $\underline{V}_B$ over, en dus twee KCL-vergelijkingen. In knoop $A$:
         $\frac{\underline{V}_A - \underline{V}_{s1}}{\underline{Z}_1} + \frac{\underline{V}_A}{\underline{Z}_2}
-        + \frac{\underline{V}_A - \underline{V}_B}{\underline{Z}_3} = 0$.}
+            + \frac{\underline{V}_A - \underline{V}_B}{\underline{Z}_3} = 0$.}
     \label{fig:kcl-opzet}
 \end{figure}
 \FloatBarrier
@@ -1445,6 +1561,109 @@ slechts geldig zijn voor één specifieke frequentie.
     \end{enumerate}
 \end{oefening}
 
+\begin{oefening}[Sadiku 10.46: superpositie met drie verschillende frequenties]
+    \textbf{Opgave:} bepaal $v_o(t)$ over de condensator.
+
+    \begin{center}
+        \begin{circuitikz}[scale=0.80, transform shape]
+            \draw (0,0) to[sV={$18\cos 3t$~V}] (0,2.8);
+            \draw (0,2.8) to[R, l={$6\,\Omega$}] (2.4,2.8) node[circ]{};
+            \draw (2.4,2.8) to[C, l_={$\frac{1}{12}$~F}, v={$v_o$}] (2.4,0) node[circ]{};
+            \draw (2.4,2.8) -- (4.2,2.8) node[circ]{};
+            \draw (4.2,2.8) to[I={$6\sin 2t$~A}] (4.2,0) node[circ]{};
+            \draw (4.2,2.8) to[L, l={$2$~H}] (6.8,2.8);
+            \draw (6.8,2.8) to[battery1, l_={$15$~V}] (6.8,0);
+            \draw (0,0) -- (6.8,0);
+            \draw (0,0) node[ground]{};
+        \end{circuitikz}
+    \end{center}
+
+    \textbf{Denkstap.} Er staan \textbf{drie bronnen met drie verschillende pulsaties} in dit net:
+    $\omega = 0$ (de 15~V DC), $\omega = 2$ en $\omega = 3$~rad/s. Een fasor hoort altijd bij
+    \'e\'en frequentie, dus je \emph{mag} deze drie niet in \'e\'en fasordiagram gooien. Reken elke
+    bron apart uit op haar eigen frequentie, zet elk deelresultaat om naar de tijd, en tel pas
+    \textbf{daarna} op.
+
+    \belangrijk{De impedanties veranderen mee met $\omega$}, dus je moet $\underline{Z}_L$ en
+    $\underline{Z}_C$ per geval opnieuw uitrekenen. Dat is precies waar deze oefening op mikt.
+
+    \textbf{Geval 1: de DC-bron van 15~V ($\omega = 0$).}
+
+    \stapreden{Op gelijkstroom is een condensator een \textbf{open keten} ($X_C = 1/(\omega C) \to \infty$) en een spoel een \textbf{kortsluiting} ($X_L = \omega L = 0$). De stroombron laat je open (uitgeschakeld) en de $18\cos 3t$-bron sluit je kort:}
+    \begin{center}
+        \begin{circuitikz}[scale=0.72, transform shape]
+            \draw (0,0) -- (0,2.4) to[R, l={$6\,\Omega$}] (2.6,2.4) node[circ]{};
+            \draw (2.6,2.4) -- (2.9,2.4);
+            \draw[schoolRed, thick] (3.15,2.65) -- (3.15,2.15);
+            \draw[schoolRed, thick] (3.55,2.65) -- (3.55,2.15);
+            \node[schoolRed, font=\scriptsize, above] at (3.35,2.7) {open};
+            \draw (3.8,2.4) -- (4.1,2.4);
+            \node[schoolRed, font=\scriptsize, above] at (5.0,2.55) {kortsluiting};
+            \draw[schoolRed, thick] (4.1,2.4) -- (5.9,2.4);
+            \draw (5.9,2.4) to[battery1, l_={$15$~V}] (5.9,0);
+            \draw (0,0) -- (5.9,0);
+            \draw (2.6,2.4) to[open, v^<={$v_{o,1}$}] (2.6,0);
+            \draw (0,0) node[ground]{};
+        \end{circuitikz}
+    \end{center}
+    \stapreden{Door de $6\,\Omega$ loopt wel stroom, maar de spoel is een draad, dus het knooppunt van $v_o$ hangt rechtstreeks aan de bron:}
+    \[v_{o,1} = 15\ \text{V}\]
+
+    \textbf{Geval 2: de stroombron $6\sin 2t$~A ($\omega = 2$~rad/s).}
+
+    \stapreden{Reken eerst de twee reactanties om bij $\omega = 2$:}
+    \[\underline{Z}_C = \frac{1}{j\omega C} = \frac{1}{j\cdot 2\cdot \frac{1}{12}} = \frac{12}{2j} = -6j\ \Omega
+        \qquad\qquad
+        \underline{Z}_L = j\omega L = j\cdot 2\cdot 2 = 4j\ \Omega\]
+
+    \stapreden{Beide spanningsbronnen kortsluiten. De $6\,\Omega$, de condensator \'en de spoel hangen dan alle drie tussen knooppunt $\underline{V}_2$ en de massa. Pas KCL toe (knooppuntanalyse): som van de wegvloeiende stromen $=$ de ingespoten stroom:}
+    \[\frac{\underline{V}_2}{-6j} + \frac{\underline{V}_2}{6} + \frac{\underline{V}_2}{4j} = 6\]
+
+    \stapreden{Werk de drie termen uit ($1/(-6j) = j/6$ en $1/(4j) = -j/4$):}
+    \[\underline{V}_2\left(\frac{1}{6} + j\left(\frac{1}{6} - \frac{1}{4}\right)\right) = 6
+        \qquad\Longrightarrow\qquad
+        \underline{V}_2\,(0{,}1667 - j0{,}0833) = 6\]
+
+    \stapreden{Delen:}
+    \[\underline{V}_2 = \frac{6}{0{,}1863\angle -26{,}57^\circ} = 32{,}2\angle 26{,}57^\circ
+        = 28{,}8 + j14{,}4\ \text{V}\]
+
+    \stapreden{Terug naar de tijd. De bron was een \textbf{sinus}, dus het antwoord blijft een sinus:}
+    \[v_{o,2}(t) = 32{,}2\sin(2t + 26{,}57^\circ)\ \text{V}\]
+
+    \textbf{Geval 3: de spanningsbron $18\cos 3t$~V ($\omega = 3$~rad/s).}
+
+    \stapreden{Opnieuw de reactanties omrekenen, nu bij $\omega = 3$:}
+    \[\underline{Z}_C = \frac{1}{j\cdot 3\cdot\frac{1}{12}} = \frac{12}{3j} = -4j\ \Omega
+        \qquad\qquad
+        \underline{Z}_L = j\cdot 3\cdot 2 = 6j\ \Omega\]
+
+    \stapreden{De stroombron openen, de 15~V kortsluiten. KCL in het knooppunt $\underline{V}_3$, met $18\angle 0^\circ$ achter de $6\,\Omega$:}
+    \[\frac{\underline{V}_3 - 18}{6} + \frac{\underline{V}_3}{-4j} + \frac{\underline{V}_3}{6j} = 0\]
+
+    \stapreden{Groeperen:}
+    \[\underline{V}_3\left(\frac{1}{6} + j\left(\frac{1}{4} - \frac{1}{6}\right)\right) = 3
+        \qquad\Longrightarrow\qquad
+        \underline{V}_3\,(0{,}1667 + j0{,}0833) = 3\]
+
+    \stapreden{Delen:}
+    \[\underline{V}_3 = \frac{3}{0{,}1863\angle 26{,}57^\circ} = 16{,}1\angle -26{,}57^\circ
+        = 14{,}4 - j7{,}2\ \text{V}\]
+
+    \stapreden{De bron was een \textbf{cosinus}, dus:}
+    \[v_{o,3}(t) = 16{,}1\cos(3t - 26{,}57^\circ)\ \text{V}\]
+
+    \stapreden{\textbf{Alles optellen --- en dat mag alleen in het tijdsdomein:}}
+    \[\boxed{v_o(t) = 15 + 32{,}2\sin(2t + 26{,}57^\circ) + 16{,}1\cos(3t - 26{,}57^\circ)\ \text{V}}\]
+
+    \textbf{Kerninzicht.} De drie deelantwoorden hebben elk een andere frequentie, dus er is
+    \emph{geen} enkele fasor die het geheel beschrijft --- en ook geen enkele rms-waarde die je
+    zomaar mag optellen. Wil je toch de effectieve waarde van $v_o$, dan tel je \textbf{kwadratisch}
+    op:
+    \[V_{o,rms} = \sqrt{15^2 + \left(\tfrac{32{,}2}{\sqrt{2}}\right)^2 + \left(\tfrac{16{,}1}{\sqrt{2}}\right)^2} = 30{,}2\ \text{V}\]
+\end{oefening}
+
+
 \subsection{Thévenin equivalent en Maximale vermogenoverdracht}
 
 \begin{oefening}[Sadiku Probleem 10.8: Thévenin equivalent in AC]
@@ -1483,12 +1702,12 @@ slechts geldig zijn voor één specifieke frequentie.
     De reactanties heffen elkaar dan op ($X_L = -X_{\text{th}}$), waardoor totale resonantie optreedt.
     \newline
     \textbf{Speciaal geval (zuiver ohmse belasting $R_L$):} kan je geen reactantie kiezen, dan is
-$X_L = 0$ en treedt het maximum op wanneer
-\[R_L = |\underline{Z}_{\text{th}}| = \sqrt{R_{\text{th}}^2 + X_{\text{th}}^2}
-    \qquad\Longrightarrow\qquad
-    P_{L,\max} = \frac{V_{\text{th}}^2}{2\left(R_{\text{th}} + |\underline{Z}_{\text{th}}|\right)}\]
-Dat maximum ligt altijd \emph{lager} dan wat je met een aangepaste complexe belasting haalt: je kan
-de reactantie van de bron nu immers niet wegcompenseren.}
+    $X_L = 0$ en treedt het maximum op wanneer
+    \[R_L = |\underline{Z}_{\text{th}}| = \sqrt{R_{\text{th}}^2 + X_{\text{th}}^2}
+        \qquad\Longrightarrow\qquad
+        P_{L,\max} = \frac{V_{\text{th}}^2}{2\left(R_{\text{th}} + |\underline{Z}_{\text{th}}|\right)}\]
+    Dat maximum ligt altijd \emph{lager} dan wat je met een aangepaste complexe belasting haalt: je kan
+    de reactantie van de bron nu immers niet wegcompenseren.}
 
 \subsubsection{Waar die twee voorwaarden vandaan komen}
 
@@ -1562,6 +1781,94 @@ ontbrekende hoeken eruit.
 positief t.o.v.\ de spanning), een spoeltak laat hem \textbf{naijlen}. Staan beide takken over
 dezelfde spanning, dan liggen hun stromen aan weerszijden van die spanning.
 
+
+\begin{oefening}[Alleen groottes gegeven: de cosinusregel op een KCL-knoop]
+    \textbf{Opgave:} een weerstandstak en een condensatortak staan parallel over dezelfde bron. Drie
+    ampèremeters lezen $|I_1| = 10$~A (totaal), $|I_2| = 8$~A (weerstandstak) en $|I_3| = 6$~A
+    (condensatortak). Er is \textbf{geen enkele hoek} gegeven. Bepaal toch alle fasehoeken en teken
+    het fasordiagram.
+
+    \begin{center}
+        \begin{circuitikz}[scale=0.78, transform shape]
+            \draw (0,0) to[sV={$\underline{V}$}, i>^=$\underline{I}_1$] (0,3.0);
+            \draw (0,3.0) -- (2.6,3.0) node[circ]{};
+            \draw (2.6,3.0) to[R, l={$R$}, i>^=$\underline{I}_2$] (2.6,0) node[circ]{};
+            \draw (2.6,3.0) -- (5.2,3.0) to[C, l={$C$}, i>^=$\underline{I}_3$] (5.2,0);
+            \draw (0,0) -- (5.2,0);
+            \draw (0,0) node[ground]{};
+        \end{circuitikz}
+    \end{center}
+
+    \textbf{Denkstap.} KCL zegt $\underline{I}_1 = \underline{I}_2 + \underline{I}_3$. Dat is een
+    \emph{vectoriële} som, dus de drie fasoren sluiten kop-staart aan tot een \textbf{driehoek}. En
+    van een driehoek waarvan je de drie zijden kent, liggen de hoeken vast --- daar is de
+    cosinusregel voor. Je hebt dus helemaal geen hoekinformatie nodig.
+
+    \stapreden{Neem de totale stroom als referentie: $\underline{I}_1 = 10\angle 0^\circ$~A. De hoek $\theta_{12}$ tussen $\underline{I}_1$ en $\underline{I}_2$ staat in de driehoek tegenover de zijde $|I_3|$:}
+    \[\cos\theta_{12} = \frac{|I_1|^2 + |I_2|^2 - |I_3|^2}{2|I_1||I_2|}
+        = \frac{100 + 64 - 36}{2\cdot 10\cdot 8} = \frac{128}{160} = 0{,}8\]
+
+    \stapreden{Dus:}
+    \[\theta_{12} = \arccos(0{,}8) = 36{,}87^\circ\]
+
+    \stapreden{Zelfde werk voor de hoek tussen $\underline{I}_1$ en $\underline{I}_3$, nu met $|I_2|$ als overstaande zijde:}
+    \[\cos\theta_{13} = \frac{100 + 36 - 64}{2\cdot 10\cdot 6} = \frac{72}{120} = 0{,}6
+        \qquad\Longrightarrow\qquad \theta_{13} = 53{,}13^\circ\]
+
+    \stapreden{\textbf{Nu de tekens.} De cosinusregel geeft alleen de \emph{grootte} van een hoek, nooit de richting. Die haal je uit de fysica: door een weerstand is de stroom \textbf{in fase} met de spanning, door een condensator \textbf{ijlt ze $90^\circ$ voor}. $\underline{I}_3$ ligt dus aan de voorijlende kant en $\underline{I}_2$ aan de andere:}
+    \[\underline{I}_2 = 8\angle -36{,}87^\circ\ \text{A}
+        \qquad\qquad
+        \underline{I}_3 = 6\angle +53{,}13^\circ\ \text{A}\]
+
+    \stapreden{\textbf{Controle} --- tel de twee takstromen op, je moet $\underline{I}_1$ terugkrijgen:}
+    \[(6{,}40 - j4{,}80) + (3{,}60 + j4{,}80) = \boxed{10 + j0 = 10\angle 0^\circ\ \text{A}}\quad\checkmark\]
+
+    \begin{center}
+        \begin{tikzpicture}[line width=0.9pt, font=\small]
+            % ============ links: waaier vanuit één punt ============
+            \begin{scope}
+                \node[font=\footnotesize\bfseries, anchor=south] at (2.4,2.75) {waaier vanuit \'e\'en punt};
+                \coordinate (O) at (0,0);
+                \draw[schoolGray, dashed] (-0.3,0) -- (5.3,0);
+                \draw[->, schoolRed, very thick] (O) -- (4.5,0)
+                node[below right, font=\scriptsize] {$\underline{I}_1 = 10$~A};
+                \draw[->, schoolBlue, very thick] (O) -- (2.88,-2.16)
+                node[below, font=\scriptsize] {$\underline{I}_2 = 8$~A};
+                \draw[->, schoolGreen, very thick] (O) -- (1.62,2.16)
+                node[above left, font=\scriptsize] {$\underline{I}_3 = 6$~A};
+                \draw[schoolBlue] (0:1.15) arc (0:-36.87:1.15);
+                \node[schoolBlue, font=\scriptsize, anchor=north west] at (-18:1.25) {$36{,}87^\circ$};
+                \draw[schoolGreen] (0:1.6) arc (0:53.13:1.6);
+                \node[schoolGreen, font=\scriptsize, anchor=west] at (27:1.75) {$53{,}13^\circ$};
+                \node[circle, fill=black, inner sep=1.2pt] at (O) {};
+            \end{scope}
+            % ============ rechts: gesloten driehoek ============
+            \begin{scope}[shift={(7.6,0)}]
+                \node[font=\footnotesize\bfseries, anchor=south] at (2.4,2.75) {kop-staart: gesloten driehoek};
+                \coordinate (O) at (0,0);
+                \coordinate (M) at (2.88,-2.16);
+                \coordinate (E) at (4.5,0);
+                \draw[->, schoolBlue, very thick] (O) -- (M)
+                node[midway, below left, font=\scriptsize] {$\underline{I}_2$};
+                \draw[->, schoolGreen, very thick] (M) -- (E)
+                node[midway, below right, font=\scriptsize] {$\underline{I}_3$};
+                \draw[->, schoolRed, very thick] (O) -- (E)
+                node[midway, above, font=\scriptsize] {$\underline{I}_1$};
+                % rechte hoek bij M
+                \draw[black!55] ($(M)+(53.13:0.32)$) -- ($(M)+(53.13:0.32)+(-36.87:0.32)$)
+                -- ($(M)+(-36.87:0.32)$);
+                \node[font=\scriptsize, black!55, below, yshift=-1mm] at (2.88,-2.55) {$90^\circ$};
+                \node[circle, fill=black, inner sep=1.2pt] at (O) {};
+            \end{scope}
+        \end{tikzpicture}
+    \end{center}
+
+    \textbf{Kerninzicht.} Links en rechts staat exact dezelfde informatie. De \textbf{waaier} laat je
+    de fasehoeken aflezen, de \textbf{gesloten driehoek} laat zien \emph{waarom} de cosinusregel mag:
+    $|I_1|$, $|I_2|$ en $|I_3|$ zijn gewoon de drie zijden van \'e\'en driehoek. Sluit je driehoek
+    niet, dan heb je een rekenfout gemaakt --- dat is meteen je controle.
+\end{oefening}
+
 \subsection{Een fasordiagramma tekenen}
 
 Bijna elke oefening vraagt dit, en er staan punten op. Twee regels:
@@ -1593,11 +1900,11 @@ schaal zijn, niet uit de losse hand.
 
     \textbf{Gegeven uit de berekening:}
     \[\underline{V}_b = 200\angle 0^\circ\ \text{V} \quad
-      \underline{I}_3 = 4\angle 0^\circ\ \text{A} \quad
-      \underline{I}_2 = 2\angle -90^\circ\ \text{A} \quad
-      \underline{I}_1 = 4{,}47\angle -26{,}57^\circ\ \text{A}\]
+        \underline{I}_3 = 4\angle 0^\circ\ \text{A} \quad
+        \underline{I}_2 = 2\angle -90^\circ\ \text{A} \quad
+        \underline{I}_1 = 4{,}47\angle -26{,}57^\circ\ \text{A}\]
     \[\underline{V}_{R1} = R_1\underline{I}_1 = 17{,}9\angle -26{,}57^\circ\ \text{V} \qquad
-      \underline{V} = 216{,}15\angle -2{,}12^\circ\ \text{V}\]
+        \underline{V} = 216{,}15\angle -2{,}12^\circ\ \text{V}\]
 
     \textbf{Werkwijze:}
     \begin{enumerate}
@@ -1642,14 +1949,14 @@ schaal zijn, niet uit de losse hand.
         \node[font=\scriptsize, schoolPurple, anchor=north east] at (0.98,-0.60) {$\underline{I}_1 = 4{,}47\angle -26{,}57^\circ$~A};
 
         \node[font=\scriptsize, anchor=north west, align=left, draw=gray!40, inner sep=1.6mm]
-             at (3.9,-1.25) {schaal spanningen: $1\text{ cm} = 40$~V\\schaal stromen: $1\text{ cm} = 4$~A};
+        at (3.9,-1.25) {schaal spanningen: $1\text{ cm} = 40$~V\\schaal stromen: $1\text{ cm} = 4$~A};
     \end{tikzpicture}
     \caption{Het fasordiagramma van hetzelfde net. De spanningen staan \textbf{kop-staart}
-        ($A \to B \to C$), zodat de knooppunten uit het schema samenvallen met de hoekpunten van het
-        diagramma; de bronspanning $\underline{V}$ is dan gewoon de pijl van $A$ naar $C$. De stromen
-        staan als een \textbf{waaier} vanuit \'e\'en punt. Merk op hoe klein $\underline{V}_{R1}$ is
-        tegenover $\underline{V}_b$ --- dat is de spanningsval over de lijn, en precies daarom is de
-        hoek van $\underline{V}$ maar $-2{,}12^\circ$.}
+    ($A \to B \to C$), zodat de knooppunten uit het schema samenvallen met de hoekpunten van het
+    diagramma; de bronspanning $\underline{V}$ is dan gewoon de pijl van $A$ naar $C$. De stromen
+    staan als een \textbf{waaier} vanuit \'e\'en punt. Merk op hoe klein $\underline{V}_{R1}$ is
+    tegenover $\underline{V}_b$ --- dat is de spanningsval over de lijn, en precies daarom is de
+    hoek van $\underline{V}$ maar $-2{,}12^\circ$.}
     \label{fig:fasordiagramma-voorbeeld}
 \end{figure}
 \FloatBarrier
@@ -1730,6 +2037,23 @@ Zo'n systeem met drie losse bronnen heeft zes draden nodig. Hoe krijgen we dat a
         \item[Fasestroom] $I_f$: de stroom door één fase van de bron of van de belasting.
     \end{description}
 \end{conceptbox}
+
+\subsubsection{Dezelfde ster, vijf keer anders getekend}
+
+Op slides en examens duikt de sterschakeling in allerlei gedaanten op. Laat je daar niet door
+misleiden: het is telkens hetzelfde net.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{assets/ster-verschijningsvormen.png}
+    \caption{Dezelfde \textbf{sterschakeling}, vijf keer anders getekend (bronnen links, lasten
+        rechts). Herken ze aan \'e\'en ding: er is een \textbf{gemeenschappelijk knooppunt} waar
+        alle drie de takken samenkomen --- het sterpunt. Of dat nu een verticale rail is, een
+        letterlijke Y of een onderste verzamellijn maakt elektrisch geen verschil. Zolang dat punt
+        bestaat geldt $V_L = \sqrt{3}V_f$ en $I_L = I_f$.}
+    \label{fig:ster-verschijningsvormen}
+\end{figure}
+\FloatBarrier
 
 We nemen aan dat de belasting gelijk is voor elke fase.
 
@@ -1821,6 +2145,20 @@ Snelle herhaling van de definities:
     \caption{Driehoekconfiguratie van een driefasig systeem.}
     \label{fig:driehoek 3fasesyteem.png}
 \end{figure}
+
+\subsubsection{Dezelfde driehoek, vijf keer anders getekend}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{assets/driehoek-verschijningsvormen.png}
+    \caption{Dezelfde \textbf{driehoekschakeling}, vijf keer anders getekend (bronnen links, lasten
+        rechts). Het herkenningspunt is hier: \'e\'en \textbf{gesloten lus} van drie takken, met
+        \'e\'en aansluitpunt per hoek --- er is \emph{geen} sterpunt. Elke tak ligt daardoor
+        rechtstreeks tussen twee lijnen, dus $V_f = V_L$ en $I_L = \sqrt{3}I_f$.}
+    \label{fig:driehoek-verschijningsvormen}
+\end{figure}
+\FloatBarrier
+
 
 Elke bron staat hier rechtstreeks tussen twee lijnen. De fasespanning \emph{is} dus de
 lijnspanning:
@@ -2171,235 +2509,382 @@ Als we de relaties tussen lijn- en fasespanningen voor ster- en driehoekconfigur
 
 
 \subsection{2-wattmethode}
-Bij gelijke belastingen is het totale vermogen simpelweg $P_{totaal} = 3 \cdot P$.
-Zijn de belastingen niet gelijk, dan kunnen we het totale vermogen niet meer op die manier berekenen
-en gebruiken we in plaats daarvan de 2-wattmethode.
 
-De voor de hand liggende aanpak zou zijn: \'e\'en wattmeter per fase, alle drie gemeten tegenover
-hetzelfde referentiepunt $O$, en dan $P_{totaal} = P_1 + P_2 + P_3$. Dat werkt altijd, maar het kan
-met \'e\'en meter minder --- en dat is precies wat de 2-wattmethode doet.
+Bij een evenwichtige last is het totale vermogen simpelweg $P_{tot} = 3P_{fase}$. Zodra de drie
+takken verschillen valt die truc weg, en meet je met wattmeters. De 2-wattmethode zegt dat je er
+daarvoor maar \textbf{twee} nodig hebt in plaats van drie.
+
+\subsubsection{Het idee in drie zinnen}
+
+\begin{theorie}[Waarom twee wattmeters volstaan]
+    Het totale vermogen is per definitie de som van de drie \textbf{fasevermogens}, elk gemeten
+    t.o.v.\ het sterpunt $n$. Maar in een driedradensysteem is $n$ er niet, dus nemen we
+    \'e\'en van de lijnen (zeg $b$) als referentie. Daardoor worden de fasespanningen
+    \textbf{lijnspanningen} --- en omdat $\underline{I}_a + \underline{I}_b + \underline{I}_c = 0$
+    verdwijnt de derde meter vanzelf uit de som. Wat overblijft is
+    $P_{tot} = W_1 + W_2$: twee lijnspanningen maal twee lijnstromen.
+\end{theorie}
+
+\stapreden{Het totale actief vermogen is de som van de drie fasevermogens (referentie: sterpunt $n$):}
+\[P_{tot} = \text{Re}\{\underline{V}_{an}\underline{I}_a^{*}\}
+    + \text{Re}\{\underline{V}_{bn}\underline{I}_b^{*}\}
+    + \text{Re}\{\underline{V}_{cn}\underline{I}_c^{*}\}\]
+
+\stapreden{Zonder nulgeleider geldt KCL in het sterpunt, dus de middelste stroom is geen extra informatie:}
+\[\underline{I}_a + \underline{I}_b + \underline{I}_c = 0
+    \qquad\Longrightarrow\qquad
+    \underline{I}_b = -\underline{I}_a - \underline{I}_c\]
+
+\stapreden{Vul dat in en groepeer de termen per stroom:}
+\[P_{tot} = \text{Re}\{(\underline{V}_{an} - \underline{V}_{bn})\underline{I}_a^{*}\}
+    + \text{Re}\{(\underline{V}_{cn} - \underline{V}_{bn})\underline{I}_c^{*}\}\]
+
+\stapreden{Twee fasespanningen aftrekken geeft precies een lijnspanning:}
+\[P_{tot} = \text{Re}\{\underline{V}_{ab}\,\underline{I}_a^{*}\}
+    + \text{Re}\{\underline{V}_{cb}\,\underline{I}_c^{*}\}
+    = \boxed{W_1 + W_2}\]
+
+\frm{2-wattmethode}{P_{tot} = W_1 + W_2 = \text{Re}\{\underline{V}_{ab}\underline{I}_a^{*}\} + \text{Re}\{\underline{V}_{cb}\underline{I}_c^{*}\}}
+{Met $P_{tot}$ het totale actieve vermogen in W, $W_1$ en $W_2$ de aflezingen van de twee wattmeters
+    in W, $\underline{V}_{ab}$ en $\underline{V}_{cb}$ de \textbf{lijnspanningen} t.o.v.\ referentielijn
+    $b$ in V, en $\underline{I}_a$, $\underline{I}_c$ de \textbf{lijnstromen} in A.}
+
+\belangrijk{De wattmeters meten lijnspanning $\times$ lijnstroom} --- niet de fasegrootheden. Bij een
+driehoeklast is $I_f = I_L/\sqrt{3}$, dus dat verschil is geen detail.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[line width=0.8pt, font=\small]
+        % ---- links: referentie = sterpunt n ----
+        \begin{scope}
+            \node[font=\footnotesize\bfseries, anchor=south] at (0,2.35) {referentie $= n$: fasespanningen};
+            \coordinate (n) at (0,0);
+            \node[circle, fill=schoolGray, inner sep=1.4pt] at (n) {};
+            \node[font=\scriptsize, below left] at (n) {$n$};
+            \foreach \a/\lbl/\pos in {0/$a$/right, -120/$b$/below, 120/$c$/above} {
+                    \draw[->, schoolBlue, very thick] (n) -- (\a:1.85);
+                    \node[font=\scriptsize, schoolBlue, \pos] at (\a:1.95) {\lbl};
+                }
+            \node[font=\scriptsize, schoolBlue] at (0.95,0.30) {$\underline{V}_{an}$};
+        \end{scope}
+        % ---- pijl ----
+        \draw[->, very thick, schoolGray] (2.6,0) -- (4.0,0)
+        node[midway, above, font=\scriptsize, align=center] {ruil $n$\\voor $b$};
+        % ---- rechts: referentie = lijn b ----
+        \begin{scope}[shift={(6.6,-0.9)}]
+            \node[font=\footnotesize\bfseries, anchor=south] at (0,3.25) {referentie $= b$: lijnspanningen};
+            \coordinate (b) at (0,0);
+            \coordinate (a) at (30:1.85);
+            \coordinate (c) at (90:1.85);
+            \node[circle, fill=schoolRed, inner sep=1.4pt] at (b) {};
+            \node[font=\scriptsize, below] at (b) {$b$};
+            \draw[->, schoolRed, very thick] (b) -- (a) node[right, font=\scriptsize] {$\underline{V}_{ab}$};
+            \draw[->, schoolRed, very thick] (b) -- (c) node[above, font=\scriptsize] {$\underline{V}_{cb}$};
+            \node[font=\scriptsize, schoolGray, anchor=north, align=center] at (0.6,-0.35)
+            {$\sqrt{3}$ keer zo groot,\\$30^\circ$ verdraaid};
+        \end{scope}
+    \end{tikzpicture}
+    \caption{De hele methode zit in deze ene stap: vervang het (vaak onbestaande) sterpunt $n$ als
+        referentie door lijn $b$. De drie fasespanningen worden dan twee lijnspanningen, en de derde
+        meter valt weg omdat $\underline{I}_a+\underline{I}_b+\underline{I}_c=0$.}
+    \label{fig:wattmeter-referentie}
+\end{figure}
+\FloatBarrier
+
+\subsubsection{De aansluiting}
 
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}[
-        wm/.style={draw=schoolBlue!80, fill=schoolBlue!8, line width=0.8pt,
-                   minimum width=9mm, minimum height=6mm, inner sep=0pt, font=\scriptsize\bfseries},
-        last/.style={draw, thick, minimum width=17mm, minimum height=25mm, align=center,
-                     font=\scriptsize},
-        spoel/.style={schoolRed, thick, dashed}
-      ]
-      % ================= drie wattmeters =================
-      \begin{scope}
-        \node[font=\footnotesize\bfseries, anchor=south] at (2.4,2.85) {drie wattmeters};
-        \foreach \y/\lbl/\w/\sx in {2.2/$L_1$/W$_1$/1.10, 1.3/$L_2$/W$_2$/1.40, 0.4/$L_3$/W$_3$/1.70} {
-            \draw (0.15,\y) node[left, font=\scriptsize] {\lbl} -- (0.95,\y);
-            \node[wm] at (1.4,\y) {\w};
-            \draw (1.85,\y) -- (3.3,\y);
-            \draw[spoel] (\sx,{\y-0.30}) -- (\sx,-0.55);
-        }
-        \draw[spoel] (1.10,-0.55) -- (1.70,-0.55);
-        \node[circle, fill=schoolRed, inner sep=1.3pt] at (1.40,-0.55) {};
-        \node[font=\scriptsize, schoolRed, below] at (1.40,-0.68) {$O$};
-        \node[last, anchor=west] at (3.3,1.3) {driefasige\\last\\(willekeurig)};
-        \node[font=\scriptsize, anchor=north, align=center] at (2.4,-1.15)
-             {$P_{tot} = P_1 + P_2 + P_3$\\\emph{werkt altijd}};
-      \end{scope}
-      % ================= twee wattmeters =================
-      \begin{scope}[shift={(7.6,0)}]
-        \node[font=\footnotesize\bfseries, anchor=south] at (2.4,2.85) {twee wattmeters};
-        \draw (0.15,2.2) node[left, font=\scriptsize] {$L_1$} -- (0.95,2.2);
-        \node[wm] at (1.4,2.2) {W$_1$};
-        \draw (1.85,2.2) -- (3.3,2.2);
-        \draw (0.15,1.3) node[left, font=\scriptsize] {$L_2$} -- (3.3,1.3);
-        \draw (0.15,0.4) node[left, font=\scriptsize] {$L_3$} -- (0.95,0.4);
-        \node[wm] at (1.4,0.4) {W$_2$};
-        \draw (1.85,0.4) -- (3.3,0.4);
-        \draw[spoel] (1.40,1.90) -- (1.40,1.30);
-        \draw[spoel] (1.40,0.70) -- (1.40,1.30);
-        \node[circle, fill=schoolRed, inner sep=1.3pt] at (1.40,1.30) {};
-        \node[last, anchor=west] at (3.3,1.3) {driefasige\\last\\(willekeurig)};
-        \node[font=\scriptsize, anchor=north, align=center] at (2.4,-1.15)
-             {$P_{tot} = P_1 + P_2$\\\emph{drie draden, ook bij onevenwicht}};
-      \end{scope}
-      % legende
-      \node[font=\scriptsize, anchor=north, align=center] at (5.0,-2.05)
-           {\textcolor{schoolRed}{\rule[0.35ex]{4mm}{0.6pt}\hspace{0.6mm}\rule[0.35ex]{2mm}{0.6pt}}\;
+            wm/.style={draw=schoolBlue!80, fill=schoolBlue!8, line width=0.8pt,
+                    minimum width=9mm, minimum height=6mm, inner sep=0pt, font=\scriptsize\bfseries},
+            last/.style={draw, thick, minimum width=17mm, minimum height=25mm, align=center,
+                    font=\scriptsize},
+            spoel/.style={schoolRed, thick, dashed}
+        ]
+        % ================= drie wattmeters =================
+        \begin{scope}
+            \node[font=\footnotesize\bfseries, anchor=south] at (2.4,2.85) {drie wattmeters};
+            \foreach \y/\lbl/\w/\sx in {2.2/$L_1$/W$_1$/1.10, 1.3/$L_2$/W$_2$/1.40, 0.4/$L_3$/W$_3$/1.70} {
+                    \draw (0.15,\y) node[left, font=\scriptsize] {\lbl} -- (0.95,\y);
+                    \node[wm] at (1.4,\y) {\w};
+                    \draw (1.85,\y) -- (3.3,\y);
+                    \draw[spoel] (\sx,{\y-0.30}) -- (\sx,-0.55);
+                }
+            \draw[spoel] (1.10,-0.55) -- (1.70,-0.55);
+            \node[circle, fill=schoolRed, inner sep=1.3pt] at (1.40,-0.55) {};
+            \node[font=\scriptsize, schoolRed, below] at (1.40,-0.68) {$O$};
+            \node[last, anchor=west] at (3.3,1.3) {driefasige\\last\\(willekeurig)};
+            \node[font=\scriptsize, anchor=north, align=center] at (2.4,-1.15)
+            {$P_{tot} = P_1 + P_2 + P_3$\\\emph{werkt altijd}};
+        \end{scope}
+        % ================= twee wattmeters =================
+        \begin{scope}[shift={(7.6,0)}]
+            \node[font=\footnotesize\bfseries, anchor=south] at (2.4,2.85) {twee wattmeters};
+            \draw (0.15,2.2) node[left, font=\scriptsize] {$L_1$} -- (0.95,2.2);
+            \node[wm] at (1.4,2.2) {W$_1$};
+            \draw (1.85,2.2) -- (3.3,2.2);
+            \draw (0.15,1.3) node[left, font=\scriptsize] {$L_2$} -- (3.3,1.3);
+            \draw (0.15,0.4) node[left, font=\scriptsize] {$L_3$} -- (0.95,0.4);
+            \node[wm] at (1.4,0.4) {W$_2$};
+            \draw (1.85,0.4) -- (3.3,0.4);
+            \draw[spoel] (1.40,1.90) -- (1.40,1.30);
+            \draw[spoel] (1.40,0.70) -- (1.40,1.30);
+            \node[circle, fill=schoolRed, inner sep=1.3pt] at (1.40,1.30) {};
+            \node[last, anchor=west] at (3.3,1.3) {driefasige\\last\\(willekeurig)};
+            \node[font=\scriptsize, anchor=north, align=center] at (2.4,-1.15)
+            {$P_{tot} = P_1 + P_2$\\\emph{drie draden, ook bij onevenwicht}};
+        \end{scope}
+        % legende
+        \node[font=\scriptsize, anchor=north, align=center] at (5.0,-2.05)
+        {\textcolor{schoolRed}{\rule[0.35ex]{4mm}{0.6pt}\hspace{0.6mm}\rule[0.35ex]{2mm}{0.6pt}}\;
             = spanningsspoel (meet t.o.v.\ de referentie)};
     \end{tikzpicture}
-    \caption{Links de voor de hand liggende aanpak: \'e\'en wattmeter per lijn, en alle drie de
-        spanningsspoelen naar hetzelfde punt $O$. Rechts de 2-wattmethode: de stroomspoelen zitten in
-        twee lijnen, en de derde lijn ($L_2$) is de gemeenschappelijke referentie voor beide
-        spanningsspoelen. Die derde lijn krijgt dus \emph{geen} wattmeter --- dat is de hele
-        besparing.}
+    \caption{Links de voor de hand liggende aanpak: \'e\'en wattmeter per lijn, spanningsspoelen naar
+        hetzelfde punt $O$. Rechts de 2-wattmethode: stroomspoelen in twee lijnen, en de derde lijn
+        ($L_2$) is de gemeenschappelijke referentie. Die derde lijn krijgt \emph{geen} wattmeter ---
+        dat is de hele besparing.}
     \label{fig:wattmeters-2-vs-3}
 \end{figure}
 \FloatBarrier
-\FloatBarrier
+
+Een wattmeter heeft twee spoelen: een \textbf{stroomspoel} in serie met de lijn, en een
+\textbf{spanningsspoel} tussen die lijn en de referentielijn. Hij toont het actief vermogen van dat
+spanning-stroompaar.
+
+\frm{Aflezing van een wattmeter}{W = \text{Re}\{\underline{V} \cdot \underline{I}^{*}\} = |V||I|\cos(\phi_V - \phi_I)}
+{Met $W$ de aflezing in W, $\underline{V}$ de spanning over de spanningsspoel in V en
+    $\underline{I}$ de stroom door de stroomspoel in A.}
+
+\begin{waarschuwing}[De klassiekste fout van het hele vak]
+    $\underline{V}_{cb} = -\underline{V}_{bc}$, dus als $\underline{V}_{bc} = V_L\angle -120^\circ$,
+    dan is $\underline{V}_{cb} = V_L\angle 60^\circ$ en \textbf{niet} $V_L\angle -120^\circ$.
+    Eén wattmeter meet trouwens \emph{niet} het vermogen van \'e\'en fase --- alleen de som heeft
+    fysische betekenis. Een negatieve aflezing is dus normaal en geen meetfout.
+\end{waarschuwing}
 
 \begin{waarschuwing}[Wanneer twee wattmeters níet volstaan]
     De 2-wattmethode werkt bij \textbf{drie draden}: een driehoek, of een ster \emph{zonder}
     nulgeleider. Ze werkt ook bij onevenwicht --- dat is juist haar sterkte.
 
     Ze werkt \belangrijk{niet} zodra er een \textbf{nulgeleider is waar stroom door loopt}
-    (vierdraads en onevenwichtig). De afleiding steunt erop dat $\underline{I}_1 + \underline{I}_2 +
-    \underline{I}_3 = 0$, en die som is dan niet meer nul. In dat geval heb je wel degelijk
-    \textbf{drie} wattmeters nodig.
+    (vierdraads en onevenwichtig). De afleiding steunt op $\underline{I}_a + \underline{I}_b +
+        \underline{I}_c = 0$, en die som is dan niet meer nul. Dan heb je wél \textbf{drie} wattmeters nodig.
 \end{waarschuwing}
 
-\begin{figure}[ht]
+\subsubsection{De hoeken: waar komen die $30^\circ$ vandaan?}
+
+Voor een \textbf{evenwichtige} last met impedantiehoek $\theta$ ($\theta>0$ = inductief) liggen de
+twee hoeken vast. Lees ze af op het fasordiagram: $\underline{V}_{ab}$ ijlt $30^\circ$ voor op
+$\underline{V}_{an}$, en $\underline{I}_a$ ijlt $\theta$ na op $\underline{V}_{an}$ --- samen dus
+$\theta + 30^\circ$. Voor $\underline{V}_{cb}$ en $\underline{I}_c$ werkt het net de andere kant op.
+
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{assets/2-wattmethode.png}
-    \caption{2-wattmethode voor het meten van het totale actieve vermogen in een 3-fase systeem met ongelijke belastingen. Door twee wattmeters aan te sluiten op specifieke lijnen, kunnen we het totale vermogen berekenen als $P_{totaal} = P_1 + P_2$.}
-    \label{fig:2-wattmethode.png}
+    \begin{tikzpicture}[line width=0.9pt, font=\small, scale=1.0]
+        % ============ W1: V_ab en I_a ============
+        \begin{scope}
+            \node[font=\footnotesize\bfseries, anchor=south] at (1.3,2.5)
+            {$W_1$: $\underline{V}_{ab}$ en $\underline{I}_a$};
+            \coordinate (O) at (0,0);
+            \draw[schoolGray, dashed] (O) -- (3.0,0);
+            \draw[->, schoolGray, thick] (O) -- (0:2.0)
+            node[above right, font=\scriptsize, inner sep=1pt] {$\underline{V}_{an}$};
+            \draw[->, schoolRed, very thick] (O) -- (30:2.7)
+            node[above right, font=\scriptsize, inner sep=1pt] {$\underline{V}_{ab}$};
+            \draw[->, schoolBlue, very thick] (O) -- (-50:2.4)
+            node[below, font=\scriptsize, inner sep=2pt] {$\underline{I}_a$};
+            \draw[schoolGray, thick] (30:0.62) arc (30:0:0.62);
+            \node[schoolGray, font=\scriptsize] at (15:0.92) {$+30^\circ$};
+            \draw[schoolBlue, thick] (0:1.05) arc (0:-50:1.05);
+            \node[schoolBlue, font=\scriptsize] at (-25:1.33) {$\theta$};
+            \draw[schoolGreen, very thick] (30:1.80) arc (30:-50:1.80);
+            \node[schoolGreen, font=\scriptsize, anchor=west] at (-12:2.10) {$\theta+30^\circ$};
+        \end{scope}
+        % ============ W2: V_cb en I_c ============
+        \begin{scope}[shift={(7.4,0)}]
+            \node[font=\footnotesize\bfseries, anchor=south] at (1.3,2.5)
+            {$W_2$: $\underline{V}_{cb}$ en $\underline{I}_c$};
+            \coordinate (O) at (0,0);
+            \draw[schoolGray, dashed] (O) -- (3.0,0);
+            \draw[->, schoolGray, thick] (O) -- (0:2.0)
+            node[above right, font=\scriptsize, inner sep=1pt] {$\underline{V}_{cn}$};
+            \draw[->, schoolRed, very thick] (O) -- (-30:2.7)
+            node[right, font=\scriptsize, inner sep=2pt] {$\underline{V}_{cb}$};
+            \draw[->, schoolBlue, very thick] (O) -- (-50:2.4)
+            node[below, font=\scriptsize, inner sep=2pt] {$\underline{I}_c$};
+            \draw[schoolGray, thick] (0:0.62) arc (0:-30:0.62);
+            \node[schoolGray, font=\scriptsize] at (-15:0.95) {$-30^\circ$};
+            \draw[schoolBlue, thick] (0:0.98) arc (0:-50:0.98);
+            \node[schoolBlue, font=\scriptsize] at (-25:1.25) {$\theta$};
+            \draw[schoolGreen, very thick] (-30:2.12) arc (-30:-50:2.12);
+            \node[schoolGreen, font=\scriptsize, anchor=east] at (-41:1.78) {$\theta-30^\circ$};
+        \end{scope}
+    \end{tikzpicture}
+    \caption{Fasordiagram bij $\theta = 50^\circ$ (inductief). Beide panelen zijn getekend met de
+        \emph{eigen} fasespanning horizontaal, zodat je ze rechtstreeks kunt vergelijken. De stroom
+        ijlt in beide gevallen $\theta$ na op zijn fasespanning; het verschil zit volledig in de
+        lijnspanning: $\underline{V}_{ab}$ ligt $+30^\circ$, $\underline{V}_{cb}$ ligt $-30^\circ$.
+        Vandaar $\theta+30^\circ$ bij $W_1$ en $\theta-30^\circ$ bij $W_2$.}
+    \label{fig:wattmeter-fasoren}
 \end{figure}
 \FloatBarrier
 
-\frm{2-wattmethode}{P_{totaal} = P_1 + P_2}{Met $P_{totaal}$ het totale actieve vermogen in Watt, $P_1$ het vermogen gemeten door wattmeter 1 in Watt en $P_2$ het vermogen gemeten door wattmeter 2 in Watt.}
+\frm{Aflezingen bij evenwichtige last}{W_1 = V_L I_L \cos(\theta + 30^\circ) \qquad W_2 = V_L I_L \cos(\theta - 30^\circ)}
+{Met $W_1$, $W_2$ de aflezingen in W, $V_L$ de lijnspanning in V, $I_L$ de lijnstroom in A en
+    $\theta$ de impedantiehoek van de last (positief bij inductieve last). Geldt \textbf{enkel} bij
+    evenwicht.}
 
-De wattmeters meten de fasestroom en de lijnspanning.
+\stapreden{Tel op en gebruik $\cos(x+y) + \cos(x-y) = 2\cos x\cos y$ met $y = 30^\circ$:}
+\[W_1 + W_2 = V_L I_L \cdot 2\cos\theta\cos 30^\circ = \boxed{\sqrt{3}\,V_L I_L \cos\theta = P_{tot}}\]
 
-\[P_1 = V_{12} \cdot I_{f1} \cdot \cos (30^\circ + \phi_1) = V_L \cdot I_L \cdot \cos (30^\circ + \phi_1)\]
-\[V_{23} = -V_{32}\]
-$V_{32}$ ijlt achter op $V_{3}$ met 30 graden
-\[P_2 = V_{32} \cdot I_{f3} \cdot \cos (-30^\circ + \phi_3) = V_L \cdot I_L \cdot \cos (-30^\circ + \phi_3)\]
+\stapreden{Trek af en gebruik $\cos(x-y) - \cos(x+y) = 2\sin x\sin y$:}
+\[W_2 - W_1 = V_L I_L \cdot 2\sin\theta\sin 30^\circ = V_L I_L \sin\theta
+    = \frac{Q_{tot}}{\sqrt{3}}\]
 
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.45\textwidth]{assets/image5.png}
-    \includegraphics[width=0.45\textwidth]{assets/image6.png}
-    \caption{Fasordiagrammen bij de afleiding van de 2-wattmethode.}
-    \label{fig:image5.png}
-\end{figure}
+\frm{Reactief vermogen uit de 2-wattmethode}{Q_{tot} = \sqrt{3}\,(W_2 - W_1) = \sqrt{3}\,V_L I_L \sin\theta}
+{Met $Q_{tot}$ het totale reactieve vermogen in var. Positief = naijlend (inductief), negatief =
+    voorijlend (capacitief). Enkel geldig bij evenwicht.}
+
+\frm{Fasehoek uit de 2-wattmethode}{\theta = \arctan\left(\frac{Q_{tot}}{P_{tot}}\right) = \arctan\left(\sqrt{3}\,\frac{W_2 - W_1}{W_1 + W_2}\right)}
+{Met $\theta$ de impedantiehoek van de last, $Q_{tot}$ het totale reactieve vermogen in var en
+    $P_{tot}$ het totale actieve vermogen in W.}
+
+Het schijnbaar vermogen volgt dan gewoon uit de vermogendriehoek:
+$\underline{S}_{tot} = P_{tot} + jQ_{tot}$.
+
+\begin{waarschuwing}[Alleen $W_1+W_2$ geldt altijd]
+    $P_{tot} = W_1 + W_2$ volgt \textbf{enkel uit KCL} en geldt dus altijd: evenwichtig of niet,
+    ster of driehoek.
+
+    De formules voor $Q_{tot}$ en $\theta$ veronderstellen dat de drie fasen \textbf{identiek} zijn.
+    Bij een ongebalanceerde last zijn ze gewoon ongeldig --- je krijgt er zelfs verkeerde tekens mee.
+    Bereken $Q$ dan per tak met $Q = I_f^2 X$ en tel op.
+\end{waarschuwing}
+
+\begin{theorie}[Wat zeggen de aflezingen over $\cos\theta$?]
+    Uit $W_1 = V_L I_L \cos(\theta + 30^\circ)$ volgt meteen een handige leesregel:
+    \begin{itemize}
+        \item $\theta = 0^\circ$ (zuiver ohms): $W_1 = W_2 > 0$, beide meters lezen exact hetzelfde.
+        \item $0^\circ < \theta < 60^\circ$: beide positief, met $W_2 > W_1$.
+        \item $\theta = 60^\circ$ ($\cos\theta = 0{,}5$): $W_1 = 0$, \textbf{meter 1 staat stil} en
+              $W_2 = P_{tot}$.
+        \item $\theta > 60^\circ$: $W_1 < 0$, de wijzer slaat terug. Om af te lezen pool je de
+              spanningsspoel om; $P_{tot}$ blijft algebraïsch $W_1 + W_2$.
+        \item $\theta = 90^\circ$ (zuiver reactief): $W_1 = -W_2$, dus $P_{tot} = 0$.
+    \end{itemize}
+    Bij een \textbf{capacitieve} last ($\theta < 0$) draait het hele plaatje om: dan is $W_1$ de
+    grote en $W_2$ de kleine (of negatieve) aflezing.
+\end{theorie}
 
 \begin{examenbox}[EXAMENVRAAG: waarom is de nulgeleider misleidend?]
     Omdat men er te makkelijk van uitgaat dat er ``toch geen stroom door loopt''. Dat klopt alleen
     bij een \emph{perfect} evenwichtig systeem. Zodra er onevenwicht is:
     \begin{itemize}
-        \item loopt er wél stroom door de nulgeleider, en die kan zelfs groter zijn dan je verwacht;
+        \item loopt er wél stroom door de nulgeleider, en die kan groter zijn dan je verwacht;
         \item verschuift het sterpunt van de last (\textbf{centrumpuntverschuiving}) als de
               nulgeleider ontbreekt of onderbroken raakt, waardoor de ene fase te veel spanning
               krijgt en de andere te weinig;
         \item raakt de nulgeleider overbelast zonder dat iemand het merkt: er zit geen automaat op en
               er is geen zichtbare indicatie;
         \item stapelen bij niet-lineaire belastingen (schakelende voedingen, ledverlichting) de
-              \textbf{harmonischen} zich juist \emph{op} in de nulgeleider in plaats van weg te
-              vallen.
+              \textbf{harmonischen} zich juist \emph{op} in de nulgeleider in plaats van weg te vallen.
     \end{itemize}
 \end{examenbox}
 
-\frm{Totale vermogen in 2-wattmethode}{P_{totaal} = 3V_f \cdot I_f \cos{\theta}  =\sqrt{3} V_L \cdot I_L \cos{\theta}
-}{Met $P_{totaal}$ het totale actieve vermogen in Watt, $V_L$ de lijnspanning in Volt,
-    $I_f$ de fasestroom in Ampère, $V_f$ de fasespanning in Volt,
-    $I_L$ de lijnstroom in Ampère en $\theta$ de hoek tussen de spanning en stroom}
+\subsubsection{Uitgewerkte oefening: driehoeklast met twee wattmeters}
 
-Het reactief vermogen kan je ook berekenen met de 2-wattmethode. Bij de standaard
-aansluiting is $W_1$ de aflezing met $V_{ab}$ en $I_a$, en $W_2$ de aflezing met
-$V_{cb}$ en $I_c$. Voor een \textbf{evenwichtige} belasting staat de stroomhoek bij
-$W_1$ op $\theta+30^\circ$ en bij $W_2$ op $\theta-30^\circ$:
-\[
-W_1=V_LI_L\cos(\theta+30^\circ),\qquad
-W_2=V_LI_L\cos(\theta-30^\circ)
-\]
-met: $W_1$ en $W_2$ = aflezingen van de wattmeters (W), $V_L$ = lijnspanning (V),
-$I_L$ = lijnstroom (A) en $\theta$ = fasehoek van de belasting.
+\begin{oefening}[Slides hoofdstuk 4, 45--47]
+    De bron vormt een \textbf{positief sequent} systeem met $\underline{V}_{an} = 440\angle 0^\circ$~V.
+    De last staat in \textbf{driehoek} met fase-impedantie $\underline{Z}_p = 2 - 3j\ \Omega$.
+    Bereken de lijnspanning en de lijnstroom. Wattmeters $W_1$ en $W_2$ zijn aangesloten tussen
+    respectievelijk de lijnen $a$--$b$ en $c$--$b$: wat is hun uitlezing?
 
-Het verschil van beide aflezingen geeft dan het reactief vermogen:
-\[
-Q_{totaal}=\sqrt{3}(W_2-W_1)=\sqrt{3}V_LI_L\sin\theta
-\]
-met: $Q_{totaal}$ = totaal reactief vermogen (var); een positieve waarde betekent
-naijlend (inductief) en een negatieve waarde voorijlend (capacitief).
+    \begin{center}
+        \begin{tikzpicture}[
+                line width=0.8pt, font=\scriptsize,
+                wm/.style={draw=schoolBlue!80, fill=schoolBlue!10, line width=0.8pt,
+                        minimum size=6mm, inner sep=0pt, font=\scriptsize\bfseries},
+                zp/.style={draw, fill=schoolOrange!15, line width=0.8pt,
+                        minimum width=5mm, minimum height=11mm, inner sep=0pt},
+                spoel/.style={schoolRed, thick, dashed}
+            ]
+            % ---- bron in ster ----
+            \coordinate (n) at (0,1.3);
+            \node[circle, fill=schoolGray, inner sep=1.3pt] at (n) {};
+            \node[left] at (n) {$n$};
+            \foreach \y/\lbl in {2.6/$\underline{V}_{an}$, 1.3/$\underline{V}_{bn}$, 0/$\underline{V}_{cn}$} {
+                    \draw (n) -- (0,\y);
+                    \draw[schoolGreen, thick] (0.55,\y) circle (0.28);
+                    \draw[schoolGreen, thick] (0.42,\y) -- (0.68,\y);
+                    \node[above, schoolGreen] at (0.55,\y+0.30) {\lbl};
+                    \draw (0,\y) -- (0.27,\y);
+                }
+            \draw (n) -- (0,2.6);
+            \draw (n) -- (0,0);
+            % ---- lijnen ----
+            \draw (0.83,2.6) -- (2.2,2.6);   \node[wm] at (2.55,2.6) {$W_1$};
+            \draw (2.9,2.6) -- (5.4,2.6);    \node[above] at (4.6,2.65) {$a$ \ $\underline{I}_a$};
+            \draw (0.83,1.3) -- (5.4,1.3);   \node[above] at (4.6,1.35) {$b$};
+            \draw (0.83,0)   -- (2.2,0);     \node[wm] at (2.55,0)   {$W_2$};
+            \draw (2.9,0) -- (5.4,0);        \node[below] at (4.6,-0.05) {$c$ \ $\underline{I}_c$};
+            % spanningsspoelen naar lijn b
+            \draw[spoel] (2.55,2.3) -- (2.55,1.3);
+            \draw[spoel] (2.55,0.3) -- (2.55,1.3);
+            \node[circle, fill=schoolRed, inner sep=1.2pt] at (2.55,1.3) {};
+            % ---- driehoeklast ----
+            \coordinate (A) at (7.9,2.6);
+            \coordinate (B) at (6.7,0.6);
+            \coordinate (C) at (9.1,0.6);
+            \draw (5.4,2.6) -- (A);
+            \draw (5.4,1.3) -- (6.7,1.3) -- (B);
+            \draw (5.4,0)   -- (9.1,0)   -- (C);
+            \draw (A) -- (B); \draw (B) -- (C); \draw (C) -- (A);
+            \node[zp, rotate=59.0]  at (7.30,1.60) {};
+            \node[zp, rotate=-59.0] at (8.50,1.60) {};
+            \node[zp, rotate=90]    at (7.90,0.60) {};
+            \foreach \p in {(A),(B),(C)} \node[circle, fill=black, inner sep=1.1pt] at \p {};
+            \node[anchor=east, schoolOrange] at (7.00,1.95) {$\underline{Z}_p$};
+            \node[anchor=west, schoolOrange] at (8.80,1.95) {$\underline{Z}_p$};
+            \node[anchor=north, schoolOrange] at (7.90,0.35) {$\underline{Z}_p$};
+        \end{tikzpicture}
+    \end{center}
 
-\frm{reactief vermogen in 2-wattmethode}{Q_{totaal} = \sqrt{3}(P_2 - P_1) = \sqrt{3} V_L \cdot I_L \sin{\theta}
-}{Met $Q_{totaal}$ het totale reactieve vermogen in Volt-Ampère reactief
-    (VAR), $P_1$ het vermogen gemeten door wattmeter 1 in Watt en $P_2$ het vermogen gemeten door wattmeter 2 in Watt.}
+    \textbf{Denkstap.} De bron staat in ster, de last in driehoek. De last ``ziet'' dus de
+    \emph{lijn}spanning over elke $\underline{Z}_p$. En de wattmeters meten sowieso lijngrootheden,
+    dus alles wat we nodig hebben is $V_L$ en $I_L$.
 
+    \stapreden{Bij een positief sequent stersysteem ijlt de lijnspanning $\sqrt{3}$ keer groter en $30^\circ$ voor:}
+    \[\underline{V}_{ab} = \sqrt{3}\,\underline{V}_{an}\angle 30^\circ
+        = \sqrt{3}\cdot 440\,\angle 30^\circ = \boxed{762{,}1\angle 30^\circ\ \text{V}}\]
 
-\begin{waarschuwing}[Alleen $P_1+P_2$ geldt altijd]
-    $P_{totaal} = P_1 + P_2$ volgt \textbf{enkel uit KCL} en geldt dus altijd: evenwichtig of
-    niet, ster of driehoek.
+    \stapreden{Over elke $\underline{Z}_p$ van de driehoek staat die volle lijnspanning, dus de fasestroom is:}
+    \[\underline{I}_{ab} = \frac{\underline{V}_{ab}}{\underline{Z}_p}
+        = \frac{762{,}1\angle 30^\circ}{2-3j}
+        = \frac{762{,}1\angle 30^\circ}{3{,}606\angle -56{,}31^\circ}
+        = 211{,}4\angle 86{,}31^\circ\ \text{A}\]
 
-    De formules voor $Q_{totaal}$, $\theta$ en $S$ hieronder gaan er daarentegen van uit dat de drie
-    fasen \textbf{identiek} zijn. Bij een \emph{ongebalanceerde} belasting zijn ze gewoon
-    ongeldig --- je krijgt er zelfs verkeerde tekens mee. Bereken $Q$ dan per tak met $Q = I_f^2 X$
-    en tel op.
-\end{waarschuwing}
+    \stapreden{In een driehoek is de lijnstroom $\sqrt{3}$ keer de fasestroom en $30^\circ$ naijlend:}
+    \[\underline{I}_a = \sqrt{3}\,\underline{I}_{ab}\angle -30^\circ
+        = \boxed{366{,}1\angle 56{,}31^\circ\ \text{A}}\]
 
-\begin{oefenblok}[Korte oefening: twee wattmeters]
-    Een evenwichtige driefasenlast wordt gemeten met de standaard 2-wattmethode.
-    De wattmeters lezen $W_1=0{,}60\ \text{kW}$ en $W_2=1{,}20\ \text{kW}$.
-    Bepaal $P$, $Q$, $S$ en de arbeidsfactor.
+    \stapreden{$W_1$ meet $\underline{V}_{ab}$ en $\underline{I}_a$; het hoekverschil is $30^\circ - 56{,}31^\circ$:}
+    \[W_1 = V_L I_L \cos(-26{,}31^\circ) = 762{,}1\cdot 366{,}1\cdot 0{,}8964
+        = \boxed{250{,}1\ \text{kW}}\]
 
-    Eerst tellen we de twee wattmeteraflezingen op voor het actieve vermogen:
-    \[
-    P=W_1+W_2=0{,}60+1{,}20=\boxed{1{,}80\ \text{kW}}
-    \]
-    met: $P$ = totaal actief vermogen (kW), $W_1$ en $W_2$ = wattmeteraflezingen (kW).
+    \stapreden{$W_2$ meet $\underline{V}_{cb} = -\underline{V}_{bc}$. Met $\underline{V}_{bc} = 762{,}1\angle -90^\circ$ wordt dat $762{,}1\angle 90^\circ$, en $\underline{I}_c = \underline{I}_a\angle 120^\circ = 366{,}1\angle 176{,}31^\circ$:}
+    \[W_2 = V_L I_L \cos(90^\circ - 176{,}31^\circ) = 762{,}1\cdot 366{,}1\cdot 0{,}0644
+        = \boxed{17{,}9\ \text{kW}}\]
 
-    Daarna gebruiken we het verschil voor het reactieve vermogen:
-    \[
-    Q=\sqrt{3}(W_2-W_1)=\sqrt{3}(1{,}20-0{,}60)
-      =\boxed{1{,}04\ \text{kvar}}
-    \]
-    met: $Q$ = totaal reactief vermogen (kvar).
+    \stapreden{Controle --- de som moet het totale vermogen geven:}
+    \[W_1 + W_2 = 268{,}0\ \text{kW}
+        \qquad\text{en}\qquad
+        3\,I_{ab}^2 R = 3\cdot 211{,}4^2 \cdot 2 = 268{,}1\ \text{kW} \quad\checkmark\]
 
-    Het schijnbaar vermogen en de arbeidsfactor volgen uit de vermogensdriehoek:
-    \[
-    S=\sqrt{P^2+Q^2}=\sqrt{1{,}80^2+1{,}04^2}
-      =\boxed{2{,}08\ \text{kVA}},\qquad
-    \text{pf}=\frac{P}{S}=\boxed{0{,}866\ \text{naijlend}}
-    \]
-    met: $S$ = schijnbaar vermogen (kVA) en $\text{pf}$ = arbeidsfactor.
-\end{oefenblok}
-
-\frm{fasehoek}{\theta = tan^{-1}\left(\frac{Q_{totaal}}{P_{totaal}}\right)= tan^{-1}\left(\frac{\sqrt{3}(W_2 - W_1)}{W_1 + W_2}\right)
-}
-{Met $\theta$ de gemiddelde fasehoek tussen spanning en stroom van de belastingen,
-    $Q_{totaal}$ het totale reactieve vermogen in Volt-Ampère reactief (VAR) en $P_{totaal}$ het totale actieve vermogen in Watt.}
-
-Het schijnbaar vermogen wordt berekend als volgt:
-
-$S_{totaal} = P_{totaal} + j Q_{totaal}$
-
-\subsubsection{Wat lees je nu precies af op een wattmeter?}
-
-Een wattmeter heeft twee spoelen: een \textbf{stroomspoel} in serie met de lijn, en een
-\textbf{spanningsspoel} tussen die lijn en de referentielijn. Hij geeft het actief vermogen dat bij
-dat spanning-stroompaar hoort:
-
-\frm{Aflezing van een wattmeter}{W = \text{Re}\{\underline{V} \cdot \underline{I}^{*}\} = |V||I|\cos(\phi_V - \phi_I)}
-{Met $W$ de aflezing in W, $\underline{V}$ de spanning over de spanningsspoel in V en
-    $\underline{I}$ de stroom door de stroomspoel in A.}
-
-Bij de standaardopstelling met wattmeters in lijn $a$ en lijn $c$, en lijn $b$ als
-gemeenschappelijke referentie, wordt dat:
-\[W_1 = \text{Re}\{\underline{V}_{ab}\,\underline{I}_a^{*}\}
-    \qquad\qquad
-    W_2 = \text{Re}\{\underline{V}_{cb}\,\underline{I}_c^{*}\}\]
-
-\begin{waarschuwing}[De klassiekste fout van het hele vak]
-    $\underline{V}_{cb} = -\underline{V}_{bc}$, dus als $\underline{V}_{bc} = V_L\angle -120^\circ$,
-    dan is $\underline{V}_{cb} = V_L\angle 60^\circ$ en \textbf{niet} $V_L\angle -120^\circ$.
-\end{waarschuwing}
-
-\textbf{Waarom volstaan twee wattmeters?} Zonder nulgeleider geldt
-$\underline{I}_a + \underline{I}_b + \underline{I}_c = 0$, dus de derde lijnstroom bevat geen extra
-informatie. Meet je twee lijnstromen ten opzichte van dezelfde referentielijn, dan zit daar alles in
-wat je nodig hebt voor het \emph{totale} actief vermogen.
-
-\textbf{Maar:} één wattmeter meet dan níet het vermogen van één fase. Alleen de \emph{som} heeft
-fysische betekenis. Een negatieve aflezing is dus volkomen normaal en geen meetfout.
-
-\begin{theorie}[Interpretatie van wattmeteraflezingen bij evenwichtig net]
-    Uit $W_1 = V_L I_L \cos(30^\circ - \phi)$ en $W_2 = V_L I_L \cos(30^\circ + \phi)$ volgt:
-    \begin{itemize}
-        \item $\phi = 0^\circ$ ($\cos\phi = 1$, zuiver ohms): $W_1 = W_2 > 0$ (beide meters wijzen exact dezelfde positieve waarde aan).
-        \item $0^\circ < \phi < 60^\circ$ ($\cos\phi > 0{,}5$): $W_1 > 0$ en $W_2 > 0$ (beide meters wijzen positief aan, met $W_1 > W_2$).
-        \item $\phi = 60^\circ$ ($\cos\phi = 0{,}5$): $W_1 = P_{\text{totaal}}$ en $W_2 = 0$ (\textbf{meter 2 staat exact stil op 0 W}!).
-        \item $\phi > 60^\circ$ ($\cos\phi < 0{,}5$): $W_1 > 0$ en \textbf{$W_2 < 0$} (meter 2 slaat negatief uit / wijzer slaat terug). Om de waarde af te lezen moet men de spanningsspoel ompolen; $P_{\text{totaal}}$ blijft algebraïsch $W_1 + W_2$.
-        \item $\phi = 90^\circ$ ($\cos\phi = 0$, zuiver inductief/capacitief): $W_1 = -W_2 \implies P_{\text{totaal}} = 0$.
-    \end{itemize}
-\end{theorie}
+    \textbf{Kerninzicht.} De last is \emph{capacitief} ($\theta = -56{,}31^\circ$), en dat zie je
+    meteen aan de aflezingen: $W_1$ is groot, $W_2$ bijna nul. Bij een inductieve last was het net
+    andersom. Controleer ook $Q_{tot} = \sqrt{3}(W_2 - W_1) = -402$~kvar: negatief, dus capacitief.
+\end{oefening}
 
 \subsection{Ongebalanceerde systemen}
 
@@ -2591,6 +3076,59 @@ Een evenwichtige driefasige bron voorziet drie belastingen van vermogen. De volg
     \end{itemize}
 \end{oefenblok}
 
+
+\subsection{Samenvattende tabel: ster versus driehoek}
+
+Dit is de tabel die je op het examen in je hoofd wil hebben. De hele truc is: \textbf{onthou welke
+    grootheid gelijk blijft}, dan volgt de $\sqrt{3}$ vanzelf voor de andere.
+
+\begin{center}
+    \renewcommand{\arraystretch}{1.55}
+    \begin{tabular}{@{}p{34mm}p{50mm}p{50mm}@{}}
+        \toprule
+                                            & \textbf{\textcolor{schoolBlue}{Sterschakeling (Y)}}
+                                            & \textbf{\textcolor{schoolBlue}{Driehoekschakeling ($\Delta$)}}                            \\
+        \midrule
+        \textbf{Herkennen aan}              & een gemeenschappelijk \textbf{sterpunt} $n$
+                                            & een gesloten \textbf{lus}, geen sterpunt                                                  \\
+        \textbf{Spanning over \'e\'en tak}  & $V_f = \dfrac{V_L}{\sqrt{3}}$
+                                            & $V_f = V_L$ \quad \emph{(gelijk!)}                                                        \\
+        \textbf{Stroom door \'e\'en tak}    & $I_f = I_L$ \quad \emph{(gelijk!)}
+                                            & $I_f = \dfrac{I_L}{\sqrt{3}}$                                                             \\
+        \textbf{Hoekverschuiving}           & $\underline{V}_L$ ijlt $30^\circ$ \textbf{voor} op $\underline{V}_f$
+                                            & $\underline{I}_L$ ijlt $30^\circ$ \textbf{na} op $\underline{I}_f$                        \\
+        \textbf{Wat is gegeven?}            & ``$3\times 400$~V'' betekent $V_L = 400$~V, dus $V_f = 230$~V
+                                            & ``$3\times 400$~V'' betekent $V_f = V_L = 400$~V                                          \\
+        \textbf{Stroom uit $Z$}             & $I_L = I_f = \dfrac{V_L}{\sqrt{3}\,Z}$
+                                            & $I_L = \sqrt{3}\,I_f = \dfrac{\sqrt{3}\,V_L}{Z}$                                          \\
+        \textbf{Vermogen in fasegrootheden} & \multicolumn{2}{c}{$P = 3\,V_f I_f \cos\varphi$ \quad --- \emph{geldt voor beide}}        \\
+        \textbf{Vermogen in lijngrootheden} & \multicolumn{2}{c}{$P = \sqrt{3}\,V_L I_L \cos\varphi$ \quad --- \emph{geldt voor beide}} \\
+        \textbf{Vermogen uit $V_L$ en $Z$}  & $P = \dfrac{V_L^2}{Z}\cos\varphi$
+                                            & $P = 3\,\dfrac{V_L^2}{Z}\cos\varphi$ \quad (dus $3\times$ zoveel)                         \\
+        \bottomrule
+    \end{tabular}
+\end{center}
+
+\begin{waarschuwing}[$\varphi$ is de impedantiehoek, niet de $120^\circ$]
+    In \'e\'en en dezelfde formule staat $\varphi = \varphi_V - \varphi_I$ van \textbf{\'e\'en tak}
+    van de last. Dat is de arbeidsfactorhoek, met $\tan\varphi = X/R$. Het is \textbf{nooit} het
+    $120^\circ$ verschil tussen de drie fasen.
+\end{waarschuwing}
+
+\stapreden{Even nagaan waar die twee vermogenformules vandaan komen. In \textbf{ster} staat over elke tak $V_f = V_L/\sqrt{3}$, en de stroom is $I_L = I_f = V_f/Z$:}
+\[P = 3\,V_f I_f \cos\varphi
+    = 3 \cdot \frac{V_L}{\sqrt{3}} \cdot \frac{V_L}{\sqrt{3}\,Z}\cos\varphi
+    = \boxed{\frac{V_L^2}{Z}\cos\varphi}\]
+
+\stapreden{In \textbf{driehoek} staat over elke tak de volle lijnspanning, dus $V_f = V_L$ en $I_f = V_L/Z$:}
+\[P = 3\,V_f I_f \cos\varphi
+    = 3 \cdot V_L \cdot \frac{V_L}{Z}\cos\varphi
+    = \boxed{3\,\frac{V_L^2}{Z}\cos\varphi}\]
+
+\belangrijk{Dezelfde last in driehoek trekt dus drie keer zoveel vermogen als in ster.} Dat is precies
+het principe achter de \textbf{ster-driehoekstarter} van een motor: aanlopen in ster (minder stroom
+en koppel), en pas in regime overschakelen naar driehoek (vol vermogen).
+
 \section{Hoofdstuk 5: Elektrische veiligheid}
 
 \begin{examenbox}[EXAMENTIP: dit hoofdstuk zijn gratis punten]
@@ -2632,15 +3170,15 @@ Lorentzkracht een mechanische kracht op elkaar uit:
     \begin{tikzpicture}[x=1cm, y=1cm, >=latex]
         % twee geleiders in doorsnede
         \foreach \x/\lbl/\dir in {0/$i_1$/1, 3.4/$i_2$/1} {
-            \draw[fill=schoolOrange!25, draw=schoolOrange!80!black, line width=1pt] (\x,0) circle (0.32);
-            \fill[schoolOrange!80!black] (\x,0) circle (0.07);
-            \node[font=\small, below=6mm] at (\x,0) {\lbl};
-        }
+                \draw[fill=schoolOrange!25, draw=schoolOrange!80!black, line width=1pt] (\x,0) circle (0.32);
+                \fill[schoolOrange!80!black] (\x,0) circle (0.07);
+                \node[font=\small, below=6mm] at (\x,0) {\lbl};
+            }
         % veldlijnen
         \foreach \r in {0.62, 0.95, 1.30} {
-            \draw[schoolBlue!60, thin] (0,0) circle (\r);
-            \draw[schoolBlue!60, thin] (3.4,0) circle (\r);
-        }
+                \draw[schoolBlue!60, thin] (0,0) circle (\r);
+                \draw[schoolBlue!60, thin] (3.4,0) circle (\r);
+            }
         \node[font=\scriptsize, schoolBlue!70!black] at (-1.15,1.25) {magnetisch veld};
         % afstand d
         \draw[<->, thick] (0,-1.15) -- (3.4,-1.15) node[midway, below, font=\small] {afstand $d$};
@@ -2650,8 +3188,8 @@ Lorentzkracht een mechanische kracht op elkaar uit:
         \node[font=\small, schoolRed, above] at (1.7,0.18) {$F$};
         % toelichting
         \node[font=\scriptsize, anchor=north, align=center] at (1.7,-1.75)
-             {stroom in \emph{dezelfde} richting $\rightarrow$ de geleiders trekken elkaar aan\\
-              stroom in \emph{tegengestelde} richting $\rightarrow$ ze stoten elkaar af};
+        {stroom in \emph{dezelfde} richting $\rightarrow$ de geleiders trekken elkaar aan\\
+            stroom in \emph{tegengestelde} richting $\rightarrow$ ze stoten elkaar af};
     \end{tikzpicture}
     \caption{Twee evenwijdige geleiders in doorsnede. Elke stroom maakt een magnetisch veld, en dat
         veld oefent een kracht uit op de \emph{andere} geleider. De kracht schaalt met het product
@@ -2697,6 +3235,19 @@ lichaamsstroom $I_B$. De directe fysiologische gevolgen zijn:
           en celmembranen chemisch ontleed.
 \end{itemize}
 
+\newpage
+\begin{wrapfigure}{r}{0.42\textwidth}
+    \vspace{-4mm}
+    \centering
+    \includegraphics[width=0.4\textwidth]{assets/stroom-dodelijkheid.png}
+    \caption{Wat een lichaamsstroom doet, in milliamp\`ere. Let op de tweede kolom: een
+        $7{,}5$~W kerstlampje trekt al meer stroom dan wat ``waarschijnlijk dodelijk'' is. Een
+        aardlekschakelaar (GFCI/RCD) grijpt daarom in bij $30$~mA, ruim v\'o\'or die zone.}
+    \label{fig:stroomladder}
+    \vspace{-3mm}
+\end{wrapfigure}
+\FloatBarrier
+
 De ernst van het letsel wordt bepaald door \textbf{zes sleutelfactoren}:
 \begin{enumerate}
     \item \textbf{Stroomsterkte $I_B$} --- hoe groter de stroom, hoe zwaarder het effect.
@@ -2725,6 +3276,10 @@ De ernst van het letsel wordt bepaald door \textbf{zes sleutelfactoren}:
 
 De norm IEC 60479 beschrijft de fysiologische effecten van wisselstroom ($50/60\text{ Hz}$) in
 functie van stroomsterkte $I_B$ en tijdsduur $t$.
+
+\begin{examenbox}
+    Deze figuur moet je kunnen tekenen en uitleggen op het examen.
+\end{examenbox}
 
 \begin{figure}[htbp]
     \centering
@@ -2811,6 +3366,12 @@ Omdat men in een installatie enkel de spanning kan beheersen, wordt via de conve
 lichaamsweerstand $Z_B$ de stroomgrens omgerekend naar een \textbf{veilige conventionele aanraakspanningsgrens} ($U_L$):
 \[I_B = \frac{U_{\text{aanraak}}}{Z_B}\]
 
+\begin{examenbox}
+    Deze figuur moet je ook kunnen tekenen en uitleggen op het examen.
+    Niet verwarren met de IEC 60479-zonegrafiek: dit is een \textbf{aanraakspanningsgrafiek} die de
+    veilige spanningsgrenzen aangeeft voor verschillende omgevingscondities.
+\end{examenbox}
+
 \begin{center}
     \begin{tabular}{@{}llcc@{}}
         \toprule
@@ -2823,9 +3384,9 @@ lichaamsweerstand $Z_B$ de stroomgrens omgerekend naar een \textbf{veilige conve
     \end{tabular}
 \end{center}
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.40\textwidth]{assets/touch_voltage_curves_bb.png}
+    \includegraphics[width=0.5\textwidth]{assets/touch_voltage_curves_bb.png}
     \caption{Maximale uitschakeltijd $t$ in functie van de effectieve aanraakspanning $V_{\text{eff}}$
         voor condities BB1, BB2 en BB3. Links van de knik ($50\text{ V}$ bij BB1, $25\text{ V}$ bij BB2,
         $12\text{ V}$ bij BB3) mag de spanning oneindig lang blijven bestaan.}
@@ -2847,11 +3408,6 @@ lichaamsweerstand $Z_B$ de stroomgrens omgerekend naar een \textbf{veilige conve
           een automatische uitschakeling (RCD of overstroombeveiliging).
 \end{itemize}
 
-Figuur~\ref{fig:indirect-contact-slide} toont het geval dat op het examen telkens terugkomt: een
-isolatiefout zet het metalen gestel onder spanning, de foutstroom $I_{\text{fault}}$ zoekt zijn weg
-via de beschermingsgeleider (PE) naar de aarde, en tussen het gestel en de grond staat de
-aanraakspanning $U_z$. Figuur~\ref{fig:indirect-contact-tikz} zet daar het elektrische
-vervangingsschema naast, met de weerstanden die je nodig hebt om $U_z$ te berekenen.
 
 \begin{figure}[htbp]
     \centering
@@ -2884,7 +3440,7 @@ vervangingsschema naast, met de weerstanden die je nodig hebt om $U_z$ te bereke
         % aanraakspanning
         \draw[<->, thick, schoolBlue] (10.4,3.4) -- (10.4,0);
         \node[font=\footnotesize, schoolBlue, right, align=left] at (10.5,1.7)
-             {$U_T = I_f\cdot R_A$\\\scriptsize aanraakspanning};
+        {$U_T = I_f\cdot R_A$\\\scriptsize aanraakspanning};
         \draw[dashed, gray!70] (9.0,3.4) -- (10.4,3.4);
         \draw[dashed, gray!70] (9.0,0) -- (10.4,0);
         \draw (0,0) node[ground]{};
@@ -2953,24 +3509,24 @@ Bij werkzaamheden aan elektrische installaties moeten de \textbf{vijf procedures
     \begin{tikzpicture}[
         node distance=0mm,
         stap/.style={draw=schoolBlue!70, fill=schoolBlue!6, line width=0.8pt, rounded corners=2.5pt,
-                     text width=30mm, align=center, inner sep=2.2mm, font=\footnotesize},
+                text width=30mm, align=center, inner sep=2.2mm, font=\footnotesize},
         nr/.style={circle, fill=schoolBlue, text=white, font=\scriptsize\bfseries, inner sep=1.3pt},
         pijl/.style={-{Latex[length=2.4mm]}, line width=1.1pt, schoolBlue!80}
-      ]
-      \node[stap] (s1) at (0,0) {\textbf{Vrijschakelen}\\[0.5mm]\scriptsize\emph{cut-off}};
-      \node[stap] (s2) at (3.6,0) {\textbf{Vergrendelen}\\[0.5mm]\scriptsize\emph{lockout}};
-      \node[stap] (s3) at (7.2,0) {\textbf{Meten}\\[0.5mm]\scriptsize\emph{verify}};
-      \node[stap] (s4) at (10.8,0) {\textbf{Aarden en kortsluiten}\\[0.5mm]\scriptsize\emph{earth}};
-      \node[stap] (s5) at (14.4,0) {\textbf{Afbakenen}\\[0.5mm]\scriptsize\emph{delineate}};
+        ]
+        \node[stap] (s1) at (0,0) {\textbf{Vrijschakelen}\\[0.5mm]\scriptsize\emph{cut-off}};
+        \node[stap] (s2) at (3.6,0) {\textbf{Vergrendelen}\\[0.5mm]\scriptsize\emph{lockout}};
+        \node[stap] (s3) at (7.2,0) {\textbf{Meten}\\[0.5mm]\scriptsize\emph{verify}};
+        \node[stap] (s4) at (10.8,0) {\textbf{Aarden en kortsluiten}\\[0.5mm]\scriptsize\emph{earth}};
+        \node[stap] (s5) at (14.4,0) {\textbf{Afbakenen}\\[0.5mm]\scriptsize\emph{delineate}};
 
-      \foreach \a/\b in {s1/s2, s2/s3, s3/s4, s4/s5}
+        \foreach \a/\b in {s1/s2, s2/s3, s3/s4, s4/s5}
         \draw[pijl] (\a) -- (\b);
 
-      \foreach \n/\lbl in {s1/1, s2/2, s3/3, s4/4, s5/5}
+        \foreach \n/\lbl in {s1/1, s2/2, s3/3, s4/4, s5/5}
         \node[nr] at ([shift={(-13.5mm,5.2mm)}]\n.north) {\lbl};
 
-      \node[font=\scriptsize\itshape, schoolRed, align=center] at (7.2,-2.0)
-           {strikte volgorde --- een stap overslaan maakt alle volgende stappen waardeloos};
+        \node[font=\scriptsize\itshape, schoolRed, align=center] at (7.2,-2.0)
+        {strikte volgorde --- een stap overslaan maakt alle volgende stappen waardeloos};
     \end{tikzpicture}
     \caption{De vijf gouden regels voor werken aan een elektrische installatie, in de volgorde
         waarin je ze moet uitvoeren.}
@@ -2997,7 +3553,7 @@ Bij werkzaamheden aan elektrische installaties moeten de \textbf{vijf procedures
           inschakelen terwijl jij eraan werkt.
     \item \textbf{Meten.} Controleer de spanningsloosheid met een goedgekeurde tweepolige
           spanningsaanwijzer, en \belangrijk{het meettoestel testen op een gekende spanningsbron vlak
-          v\'o\'or \'en vlak na de meting}. Een stuk meetsnoer dat onderweg breekt geeft anders precies
+              v\'o\'or \'en vlak na de meting}. Een stuk meetsnoer dat onderweg breekt geeft anders precies
           hetzelfde beeld als een spanningsloze installatie.
     \item \textbf{Aarden en kortsluiten.} De geleiders onderling en met de aarde verbinden. Verplicht
           bij hoogspanning, aanbevolen bij laagspanning, om inductieve en capacitieve restspanningen
@@ -3089,13 +3645,14 @@ fundamenteel onderscheid tussen overbelasting en kortsluiting:
     \end{tabular}
 \end{center}
 
-\begin{figure}[htbp]
+\begin{wrapfigure}{r}{0.46\textwidth}
+    \vspace{-4mm}
     \centering
-    \includegraphics[width=0.52\textwidth]{assets/overcurrents_in_iz_ib.png}
+    \includegraphics[width=0.44\textwidth]{assets/overcurrents_in_iz_ib.png}
     \caption[Relatie van de ontwerpstromen]{Relatie van de ontwerpstromen voor kabelbeveiliging: $I_b \le I_n \le I_z$.}
     \label{fig:overcurrents}
-\end{figure}
-\FloatBarrier
+    \vspace{-3mm}
+\end{wrapfigure}
 
 In de figuur betekenen de drie stromen:
 \begin{itemize}
@@ -3110,7 +3667,7 @@ In de figuur betekenen de drie stromen:
 \end{itemize}
 Daarom kies je de beveiliging zo dat
 \[
-I_b \le I_n \le I_z
+    I_b \le I_n \le I_z
 \]
 met: $I_b$ = ontwerpstroom (A), $I_n$ = nominale stroom van de beveiliging (A) en
 $I_z$ = toelaatbare continue kabelstroom (A). De belasting mag de automaat dus niet
@@ -3140,13 +3697,14 @@ geleiderdraadje in een porseleinen of glazen patroon. Bij een te grote stroom sm
 draadje door en onderbreekt het de kring. Nadat de smeltzekering gesprongen is, moet je
 ze vervangen. Een smeltzekering kan je dus niet opnieuw inschakelen.
 
-\begin{figure}[htbp]
+\begin{wrapfigure}{r}{0.42\textwidth}
+    \vspace{-4mm}
     \centering
-    \includegraphics[width=0.55\textwidth]{assets/fuses_smeltzekeringen.png}
+    \includegraphics[width=0.39999999999999997\textwidth]{assets/fuses_smeltzekeringen.png}
     \caption{Smeltzekeringen in verschillende bouwvormen en kalibers.}
     \label{fig:smeltzekeringen}
-\end{figure}
-\FloatBarrier
+    \vspace{-3mm}
+\end{wrapfigure}
 
 In nieuwe installaties zijn ze grotendeels vervangen door de installatieautomaat, die je gewoon
 opnieuw kan inschakelen.
@@ -3166,11 +3724,12 @@ beveiliging werken dus samen in één automaat.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.62\textwidth]{assets/mcb_bimetaal.png}
+    \includegraphics[width=0.55\textwidth]{assets/mcb_bimetaal.png}
     \caption{Thermische werking van een MCB: het bimetaal buigt door wanneer het warm wordt
-    en opent zo het uitschakelmechanisme.}
+        en opent zo het uitschakelmechanisme.}
     \label{fig:mcb-werking}
 \end{figure}
+\FloatBarrier
 \FloatBarrier
 
 \textbf{Samengevat:} een overbelasting ontstaat door langdurig te veel stroom in het
@@ -3181,7 +3740,7 @@ installatie tegen overstroom, terwijl de RCD beschermt tegen lekstromen naar aar
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.95\textwidth]{assets/mcb_karakteristiek_curves.png}
+    \includegraphics[width=0.7\textwidth]{assets/mcb_karakteristiek_curves.png}
     \caption{Uitschakelkarakteristieken van installatieautomaten volgens IEC 60898 (types B, C, D en MA).}
     \label{fig:mcb-curves-all}
 \end{figure}
@@ -3289,17 +3848,17 @@ samen door één ringkern. In figuur~\ref{fig:rcd-werking-slide} zie je links de
 aardfout, waarbij een deel van de stroom via de aarde wegvloeit en de som dus niet meer nul is.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.95\textwidth]{assets/rcd_werking_extra.png}
-\caption{RCD bij een aardlek: de heen- en terugstroom zijn niet meer gelijk, waardoor
-de RCD de kring uitschakelt.}
-\label{fig:rcd-werking-extra}
+    \centering
+    \includegraphics[width=0.7\textwidth]{assets/rcd_werking_extra.png}
+    \caption{RCD bij een aardlek: de heen- en terugstroom zijn niet meer gelijk, waardoor
+        de RCD de kring uitschakelt.}
+    \label{fig:rcd-werking-extra}
 \end{figure}
 \FloatBarrier
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.85\textwidth]{assets/rcd_werking_schematisch.png}
+    \includegraphics[width=0.7\textwidth]{assets/rcd_werking_schematisch.png}
     \caption{Werkingsprincipe van de RCD. Links: $i_L = i_N$, de somstroom door de ringkern is nul.
         Rechts: een deel van de stroom loopt via de aarde terug, de somstroom is niet meer nul en de
         RCD schakelt uit.}
@@ -3857,9 +4416,9 @@ van een sterlast. Reken die tak \textbf{apart} met de lijnspanning en tel haar s
 met KCL bij de twee betrokken lijnstromen. Bijgevolg kan één lijnstroom onveranderd blijven,
 terwijl de andere twee veranderen:
 \[
-\underline{I}_{bc}=\frac{\underline{V}_{bc}}{\underline{Z}_{bc}},\qquad
-\underline{I}_b=\underline{I}_{bY}+\underline{I}_{bc},\qquad
-\underline{I}_c=\underline{I}_{cY}-\underline{I}_{bc}
+    \underline{I}_{bc}=\frac{\underline{V}_{bc}}{\underline{Z}_{bc}},\qquad
+    \underline{I}_b=\underline{I}_{bY}+\underline{I}_{bc},\qquad
+    \underline{I}_c=\underline{I}_{cY}-\underline{I}_{bc}
 \]
 met: $\underline{I}_{bc}$ = stroom door de losse tak van $b$ naar $c$ (A),
 $\underline{I}_{bY}$ en $\underline{I}_{cY}$ = stromen van de sterlast (A), en
@@ -4290,66 +4849,66 @@ $15$~V. De andere takken zijn $(5+j4)\,\Omega$ en $(3-j6)\,\Omega$; over de laat
 staat $10$~V.
 
 \begin{figure}[H]\centering
-\begin{circuitikz}[scale=.8,transform shape]
- \draw (0,0) to[sV=$18{,}71$ V] (0,3) node[circ]{} node[left]{$B$}
- to[generic,l_={$\underline{Z}$}] (3.5,3) node[circ]{} node[above]{$D$};
- \draw (0,0)--(7,0) node[circ]{} node[below]{$A$};
- \draw (3.5,3) to[R,l_={$5\,\Omega$}] (3.5,1.6) to[L,l_={$j4\,\Omega$}] (3.5,0);
- \draw (3.5,3)--(6,3) to[R,l_={$3\,\Omega$}] (6,1.6) to[C,l_={$-j6\,\Omega$}] (6,0);
-\end{circuitikz}
-\caption{1-fasige brug met onbekende impedantie.}\end{figure}\FloatBarrier
+    \begin{circuitikz}[scale=.8,transform shape]
+        \draw (0,0) to[sV=$18{,}71$ V] (0,3) node[circ]{} node[left]{$B$}
+        to[generic,l_={$\underline{Z}$}] (3.5,3) node[circ]{} node[above]{$D$};
+        \draw (0,0)--(7,0) node[circ]{} node[below]{$A$};
+        \draw (3.5,3) to[R,l_={$5\,\Omega$}] (3.5,1.6) to[L,l_={$j4\,\Omega$}] (3.5,0);
+        \draw (3.5,3)--(6,3) to[R,l_={$3\,\Omega$}] (6,1.6) to[C,l_={$-j6\,\Omega$}] (6,0);
+    \end{circuitikz}
+    \caption{1-fasige brug met onbekende impedantie.}\end{figure}\FloatBarrier
 
 \begin{oefenblok}[Uitwerking onbekende impedantie]
-Neem $\underline{V}_{EA}=10\angle0^\circ$~V als referentie. Dan:
-\[
-\underline{I}_{DE}=\underline{I}_{EA}=\frac{10}{-j6}=j1{,}667\ \text{A}
-\]
-met: $\underline{I}_{DE}$ = stroom door de tak met $3\,\Omega$ en $-j6\,\Omega$.
-De knoopspanning wordt
-\[
-\underline{V}_D=10+3\underline{I}_{DE}=10+j5=11{,}18\angle26{,}565^\circ\ \text{V}.
-\]
-Daaruit volgt
-\[
-\underline{I}_{DF}=\frac{\underline{V}_D}{5+j4}=1{,}707-j0{,}366\ \text{A},\qquad
-\underline{I}_{BD}=\underline{I}_{DF}+\underline{I}_{DE}=1{,}707+j1{,}301\ \text{A}.
-\]
-De drie gemeten spanningen vormen een driehoek. Eerst bepalen we de hoek tussen
-$\underline{V}_{DA}$ en $\underline{V}_{BA}$ met de cosinusregel:
-\[
-\cos\alpha=\frac{11{,}18^2+18{,}71^2-15^2}{2\cdot11{,}18\cdot18{,}71}
-=0{,}597\quad\Longrightarrow\quad\alpha=53{,}29^\circ.
-\]
-met: $\alpha$ = de hoek tussen de bekende knoopspanningen in de spanningsdriehoek.
-De fysisch passende oplossing is
-$\underline{V}_{BA}=18{,}71\angle79{,}86^\circ$~V en
-$\underline{V}_{BD}=15\angle116{,}55^\circ$~V. Dus:
-\[
-\underline{Z}=\frac{\underline{V}_{BD}}{\underline{I}_{BD}}
-=1{,}303+j6{,}866
-=\boxed{6{,}99\angle79{,}25^\circ\ \Omega}.
-\]
-Het bronvermogen is
-\[
-\underline{S}_s=\underline{V}_{BA}\underline{I}_{BD}^{*}
-=\boxed{29{,}58+j27{,}16\ \text{VA}},
-\quad P_s=29{,}58\ \text{W},\quad Q_s=27{,}16\ \text{VAr}.
-\]
-\textbf{Fasordiagramma:} teken $\underline{V}_{EA}$, $\underline{V}_{DE}$,
-$\underline{V}_{BD}$ en $\underline{V}_{BA}$ kop-staart op schaal $1$~cm $=2$~V.
-Teken de stromen vanuit één punt op schaal $1$~cm $=0{,}5$~A.
-\begin{figure}[H]\centering
-\begin{tikzpicture}[scale=.42,>=latex]
- \draw[->] (0,0)--(3,0) node[right]{$\underline V_{EA}$};
- \draw[->] (3,0)--(4.5,2.6) node[above]{$\underline V_{DE}$};
- \draw[->] (4.5,2.6)--(1.3,1.0) node[above]{$\underline V_{BD}$};
- \draw[->] (0,0)--(1.3,1.0) node[below]{$\underline V_{BA}$};
- \draw[->,blue] (7,0)--(8.2,1.0) node[right]{$\underline I_{DE}$};
- \draw[->,blue] (7,0)--(8.3,-.5) node[right]{$\underline I_{DF}$};
- \draw[->,blue] (7,0)--(6.2,1.1) node[left]{$\underline I_{BD}$};
-\end{tikzpicture}
-\caption{Fasordiagramma oefening 1. Spanningen: $1$~cm $=2$~V; stromen: $1$~cm $=0{,}5$~A.}
-\end{figure}\FloatBarrier
+    Neem $\underline{V}_{EA}=10\angle0^\circ$~V als referentie. Dan:
+    \[
+        \underline{I}_{DE}=\underline{I}_{EA}=\frac{10}{-j6}=j1{,}667\ \text{A}
+    \]
+    met: $\underline{I}_{DE}$ = stroom door de tak met $3\,\Omega$ en $-j6\,\Omega$.
+    De knoopspanning wordt
+    \[
+        \underline{V}_D=10+3\underline{I}_{DE}=10+j5=11{,}18\angle26{,}565^\circ\ \text{V}.
+    \]
+    Daaruit volgt
+    \[
+        \underline{I}_{DF}=\frac{\underline{V}_D}{5+j4}=1{,}707-j0{,}366\ \text{A},\qquad
+        \underline{I}_{BD}=\underline{I}_{DF}+\underline{I}_{DE}=1{,}707+j1{,}301\ \text{A}.
+    \]
+    De drie gemeten spanningen vormen een driehoek. Eerst bepalen we de hoek tussen
+    $\underline{V}_{DA}$ en $\underline{V}_{BA}$ met de cosinusregel:
+    \[
+        \cos\alpha=\frac{11{,}18^2+18{,}71^2-15^2}{2\cdot11{,}18\cdot18{,}71}
+            =0{,}597\quad\Longrightarrow\quad\alpha=53{,}29^\circ.
+    \]
+    met: $\alpha$ = de hoek tussen de bekende knoopspanningen in de spanningsdriehoek.
+    De fysisch passende oplossing is
+    $\underline{V}_{BA}=18{,}71\angle79{,}86^\circ$~V en
+    $\underline{V}_{BD}=15\angle116{,}55^\circ$~V. Dus:
+    \[
+        \underline{Z}=\frac{\underline{V}_{BD}}{\underline{I}_{BD}}
+        =1{,}303+j6{,}866
+        =\boxed{6{,}99\angle79{,}25^\circ\ \Omega}.
+    \]
+    Het bronvermogen is
+    \[
+        \underline{S}_s=\underline{V}_{BA}\underline{I}_{BD}^{*}
+        =\boxed{29{,}58+j27{,}16\ \text{VA}},
+        \quad P_s=29{,}58\ \text{W},\quad Q_s=27{,}16\ \text{VAr}.
+    \]
+    \textbf{Fasordiagramma:} teken $\underline{V}_{EA}$, $\underline{V}_{DE}$,
+    $\underline{V}_{BD}$ en $\underline{V}_{BA}$ kop-staart op schaal $1$~cm $=2$~V.
+    Teken de stromen vanuit één punt op schaal $1$~cm $=0{,}5$~A.
+    \begin{figure}[H]\centering
+        \begin{tikzpicture}[scale=.42,>=latex]
+            \draw[->] (0,0)--(3,0) node[right]{$\underline V_{EA}$};
+            \draw[->] (3,0)--(4.5,2.6) node[above]{$\underline V_{DE}$};
+            \draw[->] (4.5,2.6)--(1.3,1.0) node[above]{$\underline V_{BD}$};
+            \draw[->] (0,0)--(1.3,1.0) node[below]{$\underline V_{BA}$};
+            \draw[->,blue] (7,0)--(8.2,1.0) node[right]{$\underline I_{DE}$};
+            \draw[->,blue] (7,0)--(8.3,-.5) node[right]{$\underline I_{DF}$};
+            \draw[->,blue] (7,0)--(6.2,1.1) node[left]{$\underline I_{BD}$};
+        \end{tikzpicture}
+        \caption{Fasordiagramma oefening 1. Spanningen: $1$~cm $=2$~V; stromen: $1$~cm $=0{,}5$~A.}
+    \end{figure}\FloatBarrier
 \end{oefenblok}
 
 \textbf{Opgave (foto-opgave 2): twee driefasige lasten.}
@@ -4357,153 +4916,190 @@ Een net heeft $V_L=240$~V. Een last $\underline{Z}_1$ hangt tussen $b$ en $c$ me
 $S_1=80$~kVA en $\mathrm{pf}=0{,}9$ inductief. Een evenwichtige sterlast heeft
 $S_Y=200$~kVA en dezelfde arbeidsfactor.
 \begin{oefenblok}[Uitwerking]
-Voor beide lasten is $\varphi=\arccos(0{,}9)=25{,}842^\circ$. De sterlast geeft:
-\[
-I_Y=\frac{200\cdot10^3}{\sqrt3\,240}=481{,}1\ \text{A}.
-\]
-Neem $\underline{V}_{ab}=240\angle0^\circ$~V. Dan:
-\[
-\underline{I}_{aY}=481{,}1\angle-55{,}84^\circ,\quad
-\underline{I}_{bY}=481{,}1\angle-175{,}84^\circ,\quad
-\underline{I}_{cY}=481{,}1\angle64{,}16^\circ\ \text{A}.
-\]
-De losse takstroom is
-\[
-\underline{I}_{bc}=\frac{80\,000}{240}\angle(-120^\circ-25{,}842^\circ)
-=333{,}3\angle-145{,}84^\circ\ \text{A}.
-\]
-Met KCL:
-\[
-\boxed{\underline{I}_a=481{,}1\angle-55{,}84^\circ\ \text{A}},\quad
-\boxed{\underline{I}_b=787{,}6\angle-163{,}63^\circ\ \text{A}},\quad
-\boxed{\underline{I}_c=787{,}6\angle51{,}94^\circ\ \text{A}}.
-\]
-met: de losse stroom wordt bij lijn $b$ opgeteld en van lijn $c$ afgetrokken.
-Controleer $\underline{I}_a+\underline{I}_b+\underline{I}_c=0$. Teken spanningen op
-schaal $1$~cm $=50$~V en stromen op schaal $1$~cm $=200$~A.
-\begin{figure}[H]\centering
-\begin{tikzpicture}[scale=.42,>=latex]
- \draw[->] (0,0)--(2.5,-3.2) node[below]{$\underline I_{aY}$};
- \draw[->] (0,0)--(-3.7,-1.0) node[left]{$\underline I_{bY}$};
- \draw[->] (0,0)--(2.1,3.5) node[above]{$\underline I_{cY}$};
- \draw[->,blue] (0,0)--(-2.8,-2.0) node[below]{$\underline I_{bc}$};
- \draw[->,red] (0,0)--(-5.4,-1.8) node[left]{$\underline I_b$};
- \draw[->,red] (0,0)--(4.0,1.8) node[right]{$\underline I_c$};
-\end{tikzpicture}
-\caption{Fasordiagramma oefening 2. Spanningen: $1$~cm $=50$~V; stromen: $1$~cm $=200$~A.}
-\end{figure}\FloatBarrier
+    Voor beide lasten is $\varphi=\arccos(0{,}9)=25{,}842^\circ$. De sterlast geeft:
+    \[
+        I_Y=\frac{200\cdot10^3}{\sqrt3\,240}=481{,}1\ \text{A}.
+    \]
+    Neem $\underline{V}_{ab}=240\angle0^\circ$~V. Dan:
+    \[
+        \underline{I}_{aY}=481{,}1\angle-55{,}84^\circ,\quad
+        \underline{I}_{bY}=481{,}1\angle-175{,}84^\circ,\quad
+        \underline{I}_{cY}=481{,}1\angle64{,}16^\circ\ \text{A}.
+    \]
+    De losse takstroom is
+    \[
+        \underline{I}_{bc}=\frac{80\,000}{240}\angle(-120^\circ-25{,}842^\circ)
+        =333{,}3\angle-145{,}84^\circ\ \text{A}.
+    \]
+    Met KCL:
+    \[
+        \boxed{\underline{I}_a=481{,}1\angle-55{,}84^\circ\ \text{A}},\quad
+        \boxed{\underline{I}_b=787{,}6\angle-163{,}63^\circ\ \text{A}},\quad
+        \boxed{\underline{I}_c=787{,}6\angle51{,}94^\circ\ \text{A}}.
+    \]
+    met: de losse stroom wordt bij lijn $b$ opgeteld en van lijn $c$ afgetrokken.
+    Controleer $\underline{I}_a+\underline{I}_b+\underline{I}_c=0$. Teken spanningen op
+    schaal $1$~cm $=50$~V en stromen op schaal $1$~cm $=200$~A.
+    \begin{figure}[H]\centering
+        \begin{tikzpicture}[scale=.42,>=latex]
+            \draw[->] (0,0)--(2.5,-3.2) node[below]{$\underline I_{aY}$};
+            \draw[->] (0,0)--(-3.7,-1.0) node[left]{$\underline I_{bY}$};
+            \draw[->] (0,0)--(2.1,3.5) node[above]{$\underline I_{cY}$};
+            \draw[->,blue] (0,0)--(-2.8,-2.0) node[below]{$\underline I_{bc}$};
+            \draw[->,red] (0,0)--(-5.4,-1.8) node[left]{$\underline I_b$};
+            \draw[->,red] (0,0)--(4.0,1.8) node[right]{$\underline I_c$};
+        \end{tikzpicture}
+        \caption{Fasordiagramma oefening 2. Spanningen: $1$~cm $=50$~V; stromen: $1$~cm $=200$~A.}
+    \end{figure}\FloatBarrier
 \end{oefenblok}
 
 \textbf{Opgave (foto-opgave 3): arbeidsfactorcorrectie.}
 Een bron van $100$~V bij $20$~Hz voedt $(3+j2)\,\Omega$ in serie met
-$(5+j2)\parallel(3-j)\,\Omega$.
-\begin{oefenblok}[Uitwerking]
-\[
-\underline{Z}_p=\frac{(5+j2)(3-j)}{8+j}=2{,}108-j0{,}138\ \Omega
-\]
-met: $\underline{Z}_p$ = equivalente parallelimpedantie. Dus:
-\[
-\underline{Z}_{tot}=5{,}108+j1{,}862=5{,}436\angle20{,}02^\circ\ \Omega.
-\]
-\[
-\underline{I}=\frac{100}{\underline{Z}_{tot}}=17{,}283-j6{,}299\ \text{A},\quad
-\underline{S}=100\underline{I}^{*}=1728{,}3+j629{,}9\ \text{VA}.
-\]
-De arbeidsfactor is $\boxed{0{,}940\ \text{inductief}}$. Voor $0{,}95$:
-\[
-\begin{aligned}
-\varphi_2&=\arccos(0{,}95)=18{,}195^\circ,\\
-|Q_C|&=P\left(\tan20{,}02^\circ-\tan18{,}195^\circ\right)\\
-&=1728{,}3(0{,}3647-0{,}3289)=61{,}8\ \text{VAr}.
-\end{aligned}
-\]
-\[
-\boxed{C=\frac{|Q_C|}{100^2\,2\pi20}=49{,}2\ \mu\text{F}}.
-\]
-Teken twee vermogensdriehoeken: dezelfde horizontale $P=1728$~W, eerst
-$Q=629{,}9$~VAr en daarna $Q=629{,}9-61{,}8=568{,}1$~VAr.
+$(5+j2)\parallel(3-j)\,\Omega$. Bepaal de arbeidsfactor en de condensator die nodig is om ze op
+$0{,}95$ te brengen.
+
 \begin{figure}[H]\centering
-\begin{tikzpicture}[scale=.65,>=latex]
- \draw[->] (0,0)--(5,0) node[right]{$P$};
- \draw[->,red] (0,0)--(2.1,1.6) node[above]{$\underline S_1$};
- \draw[->,blue] (0,0)--(4.2,.85) node[above]{$\underline S_2$};
- \draw[dashed] (2.1,1.6)--(4.2,.85);
-\end{tikzpicture}
-\caption{Oude en gecorrigeerde vermogensdriehoek van oefening 3 (niet op fysieke lengteschaal).}
+    \begin{circuitikz}[scale=0.80, transform shape]
+        \draw (0,0) to[sV={$100$~V, $20$~Hz}] (0,3.0);
+        \draw (0,3.0) to[generic={$3+j2\,\Omega$}, i>^=$\underline{I}$] (3.4,3.0) node[circ]{};
+        \draw (3.4,3.0) to[generic={$5+j2\,\Omega$}] (3.4,0) node[circ]{};
+        \draw (3.4,3.0) -- (6.2,3.0) to[generic={$3-j\,\Omega$}] (6.2,0);
+        \draw (0,0) -- (6.2,0);
+        \draw (0,0) node[ground]{};
+    \end{circuitikz}
+    \caption{Foto-opgave 3: bronimpedantie in serie met twee parallelle takken.}
 \end{figure}\FloatBarrier
+
+\begin{oefenblok}[Uitwerking]
+    \[
+        \underline{Z}_p=\frac{(5+j2)(3-j)}{8+j}=2{,}108-j0{,}138\ \Omega
+    \]
+    met: $\underline{Z}_p$ = equivalente parallelimpedantie. Dus:
+    \[
+        \underline{Z}_{tot}=5{,}108+j1{,}862=5{,}436\angle20{,}02^\circ\ \Omega.
+    \]
+    \[
+        \underline{I}=\frac{100}{\underline{Z}_{tot}}=17{,}283-j6{,}299\ \text{A},\quad
+        \underline{S}=100\underline{I}^{*}=1728{,}3+j629{,}9\ \text{VA}.
+    \]
+    De arbeidsfactor is $\boxed{0{,}940\ \text{inductief}}$. Voor $0{,}95$:
+    \[
+        \begin{aligned}
+            \varphi_2 & =\arccos(0{,}95)=18{,}195^\circ,                    \\
+            |Q_C|     & =P\left(\tan20{,}02^\circ-\tan18{,}195^\circ\right) \\
+                      & =1728{,}3(0{,}3647-0{,}3289)=61{,}8\ \text{VAr}.
+        \end{aligned}
+    \]
+    \[
+        \boxed{C=\frac{|Q_C|}{100^2\,2\pi20}=49{,}2\ \mu\text{F}}.
+    \]
+    Teken twee vermogensdriehoeken: dezelfde horizontale $P=1728$~W, eerst
+    $Q=629{,}9$~VAr en daarna $Q=629{,}9-61{,}8=568{,}1$~VAr.
+    \begin{figure}[H]\centering
+        \begin{tikzpicture}[scale=.65,>=latex]
+            \draw[->] (0,0)--(5,0) node[right]{$P$};
+            \draw[->,red] (0,0)--(2.1,1.6) node[above]{$\underline S_1$};
+            \draw[->,blue] (0,0)--(4.2,.85) node[above]{$\underline S_2$};
+            \draw[dashed] (2.1,1.6)--(4.2,.85);
+        \end{tikzpicture}
+        \caption{Oude en gecorrigeerde vermogensdriehoek van oefening 3 (niet op fysieke lengteschaal).}
+    \end{figure}\FloatBarrier
 \end{oefenblok}
 
 \textbf{Opgave (foto-opgave 4): evenwichtige driehoeklast.}
 Een $3\times174$~V-net bij $50$~Hz voedt een driehoek met per tak $R=30\,\Omega$ en
 $L=31$~mH.
 \begin{oefenblok}[Uitwerking]
-\[
-\underline{Z}_\Delta=30+j(2\pi50)(0{,}031)
-=31{,}541\angle17{,}985^\circ\ \Omega.
-\]
-Met $\underline{V}_{AB}=174\angle0^\circ$~V:
-\[
-\underline{I}_{AB}=5{,}517\angle-17{,}985^\circ,\quad
-\underline{I}_{BC}=5{,}517\angle-137{,}985^\circ,\quad
-\underline{I}_{CA}=5{,}517\angle102{,}015^\circ\ \text{A}.
-\]
-De lijnstromen zijn verschillen in de hoekpunten:
-\[
-\boxed{\underline{I}_a=9{,}555\angle-47{,}985^\circ},\quad
-\boxed{\underline{I}_b=9{,}555\angle-167{,}985^\circ},\quad
-\boxed{\underline{I}_c=9{,}555\angle72{,}015^\circ\ \text{A}}.
-\]
-De takspanningen zijn $\underline{V}_{AB}=174\angle0^\circ$,
-$\underline{V}_{BC}=174\angle-120^\circ$ en
-$\underline{V}_{CA}=174\angle120^\circ$~V. Teken spanningen op schaal $1$~cm
-$=50$~V en stromen op schaal $1$~cm $=2$~A.
-\begin{figure}[H]\centering
-\begin{tikzpicture}[scale=.42,>=latex]
- \draw[->] (0,0)--(3,0) node[right]{$\underline I_{AB}$};
- \draw[->] (0,0)--(-1.5,-2.6) node[below]{$\underline I_{BC}$};
- \draw[->] (0,0)--(-1.5,2.6) node[above]{$\underline I_{CA}$};
- \draw[->,red] (6,0)--(8.3,-2.0) node[right]{$\underline I_a$};
- \draw[->,red] (6,0)--(2.5,-1.1) node[left]{$\underline I_b$};
- \draw[->,red] (6,0)--(7.3,2.8) node[right]{$\underline I_c$};
-\end{tikzpicture}
-\caption{Fasordiagramma oefening 4. Spanningen: $1$~cm $=50$~V; stromen: $1$~cm $=2$~A.}
-\end{figure}\FloatBarrier
+    \[
+        \underline{Z}_\Delta=30+j(2\pi50)(0{,}031)
+        =31{,}541\angle17{,}985^\circ\ \Omega.
+    \]
+    Met $\underline{V}_{AB}=174\angle0^\circ$~V:
+    \[
+        \underline{I}_{AB}=5{,}517\angle-17{,}985^\circ,\quad
+        \underline{I}_{BC}=5{,}517\angle-137{,}985^\circ,\quad
+        \underline{I}_{CA}=5{,}517\angle102{,}015^\circ\ \text{A}.
+    \]
+    De lijnstromen zijn verschillen in de hoekpunten:
+    \[
+        \boxed{\underline{I}_a=9{,}555\angle-47{,}985^\circ},\quad
+        \boxed{\underline{I}_b=9{,}555\angle-167{,}985^\circ},\quad
+        \boxed{\underline{I}_c=9{,}555\angle72{,}015^\circ\ \text{A}}.
+    \]
+    De takspanningen zijn $\underline{V}_{AB}=174\angle0^\circ$,
+    $\underline{V}_{BC}=174\angle-120^\circ$ en
+    $\underline{V}_{CA}=174\angle120^\circ$~V. Teken spanningen op schaal $1$~cm
+    $=50$~V en stromen op schaal $1$~cm $=2$~A.
+    \begin{figure}[H]\centering
+        \begin{tikzpicture}[scale=.42,>=latex]
+            \draw[->] (0,0)--(3,0) node[right]{$\underline I_{AB}$};
+            \draw[->] (0,0)--(-1.5,-2.6) node[below]{$\underline I_{BC}$};
+            \draw[->] (0,0)--(-1.5,2.6) node[above]{$\underline I_{CA}$};
+            \draw[->,red] (6,0)--(8.3,-2.0) node[right]{$\underline I_a$};
+            \draw[->,red] (6,0)--(2.5,-1.1) node[left]{$\underline I_b$};
+            \draw[->,red] (6,0)--(7.3,2.8) node[right]{$\underline I_c$};
+        \end{tikzpicture}
+        \caption{Fasordiagramma oefening 4. Spanningen: $1$~cm $=50$~V; stromen: $1$~cm $=2$~A.}
+    \end{figure}\FloatBarrier
 \end{oefenblok}
 
 \textbf{Opgave (foto-opgave 5): brug met twee bronnen.}
 Gebruik de bronnen $8\angle30^\circ$~V en $1\angle90^\circ$~A en impedanties
-$-2j$, $4j$, $2\,\Omega$, $2j$ en $-j\,\Omega$.
-\begin{oefenblok}[Knooppuntanalyse]
-Neem $N$ als referentie. Dan is $\underline{V}_D=8\angle30^\circ$~V. De KCL-vergelijkingen:
-\[
-\frac{V_A-V_D}{2}+\frac{V_A}{-j}+\frac{V_A-V_B}{j2}=0,\qquad
-\frac{V_B-V_A}{j2}+\frac{V_B-V_D}{j2}-1\angle90^\circ=0.
-\]
-Oplossen geeft $\underline{V}_A=3{,}46-j3{,}65$~V en
-$\underline{V}_B=4{,}19+j0{,}18$~V. De gevraagde stroom:
-\[
-\boxed{\underline{I}=\frac{\underline{V}_A}{-j}=5{,}03\angle43{,}5^\circ\ \text{A}}.
-\]
-Verder:
-\[
-\underline{I}_3=4{,}20\angle65{,}6^\circ,\quad
-\underline{I}_4=1{,}95\angle169^\circ,\quad
-\underline{I}_5=2{,}35\angle-35{,}6^\circ\ \text{A}.
-\]
-met: $\underline{I}_3$ door $2\,\Omega$, $\underline{I}_4$ door $j2\,\Omega$ en
-$\underline{I}_5$ door de bovenste seriecombinatie. Teken de knoopspanningen vanuit
-$N$ op schaal $1$~cm $=2$~V en de stromen als waaier op schaal $1$~cm $=1$~A.
+$-2j$, $4j$, $2\,\Omega$, $2j$ en $-j\,\Omega$. Gevraagd: de stroom $\underline{I}$ door de
+$-j\,\Omega$.
+
 \begin{figure}[H]\centering
-\begin{tikzpicture}[scale=.42,>=latex]
- \draw[->] (0,0)--(3,1.7) node[above]{$\underline V_D$};
- \draw[->] (0,0)--(1.0,-2.0) node[below]{$\underline V_A$};
- \draw[->] (0,0)--(3.2,.35) node[right]{$\underline V_B$};
- \draw[->,blue] (6,0)--(8,1.2) node[right]{$\underline I_3$};
- \draw[->,blue] (6,0)--(4.3,.35) node[left]{$\underline I_4$};
- \draw[->,blue] (6,0)--(7,-1.8) node[right]{$\underline I_5$};
-\end{tikzpicture}
-\caption{Fasordiagramma oefening 5. Spanningen: $1$~cm $=2$~V; stromen: $1$~cm $=1$~A.}
+    \begin{circuitikz}[scale=0.80, transform shape]
+        \draw (0,0) to[sV={$8\angle 30^\circ$~V}] (0,4.0);
+        \draw (0,4.0) -- (1.2,4.0) node[circ]{} node[above left, ]{$\mathbf{D}$};
+        \draw (1.2,4.0) to[C, l={$-2j\,\Omega$}] (4.0,4.0)
+        to[L, l={$4j\,\Omega$}, i>^=$\underline{I}_5$] (7.0,4.0);
+        \draw (7.0,4.0) -- (7.0,2.0) node[circ]{} node[right, xshift=1.5mm, ]{$\mathbf{B}$};
+        \draw (1.2,4.0) -- (1.2,2.0) to[R, l={$2\,\Omega$}, i>^=$\underline{I}_3$] (4.1,2.0)
+        node[circ]{} node[above left, xshift=-1mm, yshift=1mm, ]{$\mathbf{A}$};
+        \draw (4.1,2.0) to[L, l={$2j\,\Omega$}, i>^=$\underline{I}_4$] (7.0,2.0);
+        \draw (4.1,2.0) to[C, l_={$-j\,\Omega$}, i>^=$\underline{I}$] (4.1,0) node[circ]{};
+        \draw (7.0,2.0) -- (8.6,2.0) to[I={$1\angle 90^\circ$~A}] (8.6,0);
+        \draw (0,0) -- (8.6,0);
+        \draw (0,0) node[ground]{};
+        \node[above] at (6.2,0.06) {$\mathbf{N}$};
+        \node[circle, fill=black, inner sep=1.2pt] at (6.2,0) {};
+    \end{circuitikz}
+    \caption{Foto-opgave 5. Knooppunt $N$ is de referentie, dus $\underline{V}_D = 8\angle 30^\circ$~V
+        ligt meteen vast. De bovenste tak is de seriecombinatie $-2j + 4j = 2j\,\Omega$.}
 \end{figure}\FloatBarrier
+
+\begin{oefenblok}[Knooppuntanalyse]
+    Neem $N$ als referentie. Dan is $\underline{V}_D=8\angle30^\circ$~V. De KCL-vergelijkingen:
+    \[
+        \frac{V_A-V_D}{2}+\frac{V_A}{-j}+\frac{V_A-V_B}{j2}=0,\qquad
+        \frac{V_B-V_A}{j2}+\frac{V_B-V_D}{j2}-1\angle90^\circ=0.
+    \]
+    Oplossen geeft $\underline{V}_A=3{,}46-j3{,}65$~V en
+    $\underline{V}_B=4{,}19+j0{,}18$~V. De gevraagde stroom:
+    \[
+        \boxed{\underline{I}=\frac{\underline{V}_A}{-j}=5{,}03\angle43{,}5^\circ\ \text{A}}.
+    \]
+    Verder:
+    \[
+        \underline{I}_3=4{,}20\angle65{,}6^\circ,\quad
+        \underline{I}_4=1{,}95\angle169^\circ,\quad
+        \underline{I}_5=2{,}35\angle-35{,}6^\circ\ \text{A}.
+    \]
+    met: $\underline{I}_3$ door $2\,\Omega$, $\underline{I}_4$ door $j2\,\Omega$ en
+    $\underline{I}_5$ door de bovenste seriecombinatie. Teken de knoopspanningen vanuit
+    $N$ op schaal $1$~cm $=2$~V en de stromen als waaier op schaal $1$~cm $=1$~A.
+    \begin{figure}[H]\centering
+        \begin{tikzpicture}[scale=.42,>=latex]
+            \draw[->] (0,0)--(3,1.7) node[above]{$\underline V_D$};
+            \draw[->] (0,0)--(1.0,-2.0) node[below]{$\underline V_A$};
+            \draw[->] (0,0)--(3.2,.35) node[above right]{$\underline V_B$};
+            \draw[->,blue] (7.5,0)--(9.5,1.2) node[right]{$\underline I_3$};
+            \draw[->,blue] (7.5,0)--(5.8,.35) node[above left]{$\underline I_4$};
+            \draw[->,blue] (7.5,0)--(8.5,-1.8) node[right]{$\underline I_5$};
+        \end{tikzpicture}
+        \caption{Fasordiagramma oefening 5. Spanningen: $1$~cm $=2$~V; stromen: $1$~cm $=1$~A.}
+    \end{figure}\FloatBarrier
 \end{oefenblok}
 
 
@@ -4529,4 +5125,5 @@ $N$ op schaal $1$~cm $=2$~V en de stromen als waaier op schaal $1$~cm $=1$~A.
     \textup{--- George Carlin}
 \end{quote}
 
+\vspace*{\fill}
 \end{document}
