@@ -851,11 +851,25 @@ hebt de spanning en de stroom er dan niet meer bij nodig:
 De drie vermogens hierboven bereken je het snelst in één keer, als \keyterm{complex vermogen}.
 
 \frm{Complex vermogen}{\underline{S} = \underline{V} \cdot \underline{I}^{*} = P + jQ}
-{Met $\underline{S}$ het complex vermogen in VA, $\underline{V}$ de spanningsfasor in V,
+{Met $\underline{S}$ het complex vermogen in VA (sommige cursussen zeggen \emph{complex
+        schijnbaar vermogen}), $\underline{V}$ de spanningsfasor in V,
     $\underline{I}^{*}$ de \emph{complex toegevoegde} van de stroomfasor in A, $P$ het actief
     vermogen in W en $Q$ het reactief vermogen in VAR. Werk je met effectieve waarden in de fasoren,
     dan komt $\underline{S}$ er meteen goed uit; werk je met piekwaarden, dan moet er nog een factor
     $\tfrac12$ voor.}
+
+\begin{warningbox}[Schijnbaar vermogen of complex vermogen?]
+    Twee namen die vlak bij elkaar liggen, maar niet hetzelfde zijn:
+    \begin{itemize}
+        \item $\underline{S} = \underline{V}\,\underline{I}^{*} = P + jQ$ is het
+              \textbf{complex vermogen}: een fasor, met een grootte \'en een hoek.
+        \item $|\underline{S}| = V_{\text{eff}} I_{\text{eff}}$ is het \textbf{schijnbaar
+                  vermogen}: enkel de grootte, de schuine zijde van de vermogendriehoek.
+    \end{itemize}
+    Beide staan in VA, vandaar de verwarring. Het verschil telt omdat alleen $\underline{S}$
+    optelbaar is: $|\underline{S}_T| \neq |\underline{S}_1| + |\underline{S}_2|$, maar
+    $\underline{S}_T = \underline{S}_1 + \underline{S}_2$ klopt wel.
+\end{warningbox}
 
 \textbf{Waar komt dat vandaan?} Neem de spanningsfasor en de stroomfasor in effectieve waarden:
 \[\underline{V} = V_{\text{eff}}\angle\phi_V \qquad\qquad \underline{I} = I_{\text{eff}}\angle\phi_I\]
@@ -3459,30 +3473,45 @@ Dit is de tabel die je op het examen in je hoofd wil hebben. De hele truc is: \t
     grootheid gelijk blijft}, dan volgt de $\sqrt{3}$ vanzelf voor de andere.
 
 \begin{center}
-    \renewcommand{\arraystretch}{1.55}
-    \begin{tabular}{@{}p{34mm}p{50mm}p{50mm}@{}}
-        \toprule
-                                            & \textbf{\textcolor{schoolBlue}{Sterschakeling (Y)}}
-                                            & \textbf{\textcolor{schoolBlue}{Driehoekschakeling ($\Delta$)}}                            \\
-        \midrule
-        \textbf{Herkennen aan}              & een gemeenschappelijk \textbf{sterpunt} $n$
-                                            & een gesloten \textbf{lus}, geen sterpunt                                                  \\
-        \textbf{Spanning over \'e\'en tak}  & $V_f = \dfrac{V_L}{\sqrt{3}}$
-                                            & $V_f = V_L$ \quad \emph{(gelijk!)}                                                        \\
-        \textbf{Stroom door \'e\'en tak}    & $I_f = I_L$ \quad \emph{(gelijk!)}
-                                            & $I_f = \dfrac{I_L}{\sqrt{3}}$                                                             \\
-        \textbf{Hoekverschuiving}           & $\underline{V}_L$ ijlt $30^\circ$ \textbf{voor} op $\underline{V}_f$
-                                            & $\underline{I}_L$ ijlt $30^\circ$ \textbf{na} op $\underline{I}_f$                        \\
-        \textbf{Wat is gegeven?}            & ``$3\times 400$~V'' betekent $V_L = 400$~V, dus $V_f = 230$~V
-                                            & ``$3\times 400$~V'' betekent $V_f = V_L = 400$~V                                          \\
-        \textbf{Stroom uit $Z$}             & $I_L = I_f = \dfrac{V_L}{\sqrt{3}\,Z}$
-                                            & $I_L = \sqrt{3}\,I_f = \dfrac{\sqrt{3}\,V_L}{Z}$                                          \\
-        \textbf{Vermogen in fasegrootheden} & \multicolumn{2}{c}{$P = 3\,V_f I_f \cos\varphi$ \quad --- \emph{geldt voor beide}}        \\
-        \textbf{Vermogen in lijngrootheden} & \multicolumn{2}{c}{$P = \sqrt{3}\,V_L I_L \cos\varphi$ \quad --- \emph{geldt voor beide}} \\
-        \textbf{Vermogen uit $V_L$ en $Z$}  & $P = \dfrac{V_L^2}{Z}\cos\varphi$
-                                            & $P = 3\,\dfrac{V_L^2}{Z}\cos\varphi$ \quad (dus $3\times$ zoveel)                         \\
-        \bottomrule
-    \end{tabular}
+    % tabularray i.p.v. tabular: lijnen tussen de rijen en tussen de kolommen
+    % sluiten hier netjes op elkaar aan, en de cellen krijgen echte padding.
+    \begin{tblr}{
+        colspec = {Q[l,wd=38mm] Q[l,wd=50mm] Q[l,wd=50mm]},
+        row{1} = {font=\bfseries, fg=schoolBlue},
+        column{1} = {font=\bfseries},
+        hline{1,2,Z} = {0.8pt, solid},
+        hline{3-Y} = {0.4pt, fg=black!25},
+        vline{2,3} = {0.4pt, fg=black!25},
+        rowsep = 4pt,
+        colsep = 6pt,
+    }
+        & Sterschakeling (Y) & Driehoekschakeling ($\Delta$) \\
+        Herkennen aan
+        & een gemeenschappelijk \textbf{sterpunt} $n$
+        & een gesloten \textbf{lus}, geen sterpunt \\
+        Spanning over \'e\'en tak
+        & $V_f = \dfrac{V_L}{\sqrt{3}}$
+        & $V_f = V_L$ \quad \emph{(gelijk!)} \\
+        Stroom door \'e\'en tak
+        & $I_f = I_L$ \quad \emph{(gelijk!)}
+        & $I_f = \dfrac{I_L}{\sqrt{3}}$ \\
+        Hoekverschuiving
+        & $\underline{V}_L$ ijlt $30^\circ$ \textbf{voor} op $\underline{V}_f$
+        & $\underline{I}_L$ ijlt $30^\circ$ \textbf{na} op $\underline{I}_f$ \\
+        Wat is gegeven?
+        & ``$3\times 400$~V'' betekent $V_L = 400$~V, dus $V_f = 230$~V
+        & ``$3\times 400$~V'' betekent $V_f = V_L = 400$~V \\
+        Stroom uit $Z$
+        & $I_L = I_f = \dfrac{V_L}{\sqrt{3}\,Z}$
+        & $I_L = \sqrt{3}\,I_f = \dfrac{\sqrt{3}\,V_L}{Z}$ \\
+        Vermogen in fasegrootheden
+        & \SetCell[c=2]{c} $P = 3\,V_f I_f \cos\varphi$ \quad --- \emph{geldt voor beide} & \\
+        Vermogen in lijngrootheden
+        & \SetCell[c=2]{c} $P = \sqrt{3}\,V_L I_L \cos\varphi$ \quad --- \emph{geldt voor beide} & \\
+        Vermogen uit $V_L$ en $Z$
+        & $P = \dfrac{V_L^2}{Z}\cos\varphi$
+        & $P = 3\,\dfrac{V_L^2}{Z}\cos\varphi$ \newline (dus $3\times$ zoveel) \\
+    \end{tblr}
 \end{center}
 
 \begin{waarschuwing}[$\varphi$ is de impedantiehoek, niet de $120^\circ$]
