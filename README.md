@@ -24,26 +24,51 @@ Deze repository zijn mijn notities en samenvattingen die ik gemaakt heb door het
 <details>
 <summary><strong>2de jaar</strong></summary>
 
-- [Distributie van elektrische systemen](2de%20jaar/Distributie%20van%20elektrische%20systemen)
-- [Ingenieur en economie oefeningen](2de%20jaar/Ingenieur%20en%20economie%20oefeningen)
-- [math-systems](2de%20jaar/math-systems)
-- [Object gericht-programmeren](2de%20jaar/Object%20gericht-programmeren)
-- [Ontwerp van een industriële sturing](2de%20jaar/Ontwerp%20van%20een%20industriële%20sturing)
-- [Productietechnologie](2de%20jaar/Productietechnologie)
-- [Statistiek en databeheer](2de%20jaar/Statistiek%20en%20databeheer)
-- [Systeem en regeltechniek](2de%20jaar/Systeem%20en%20regeltechniek)
-- [Thermal fluid sciences](2de%20jaar/Thermal%20fluid%20sciences)
-- [Toegepaste mechanica & dynamica](2de%20jaar/Toegepaste%20mechanica%20&%20dynamica)
-- [Warmte en stromingen](2de%20jaar/Warmte%20en%20stromingen)
-- [Wisselstroom](2de%20jaar/Wisselstroom)
+- **Data-acquisitie** — [bronbestanden](2de%20jaar/Data-acquisitie)
+  - [Data-acquisitie Samenvatting.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/Data-acquisitie_Samenvatting.pdf)
+- **Distributie van elektrische systemen** — [bronbestanden](2de%20jaar/Distributie%20van%20elektrische%20systemen)
+  - [Distributie van elektrische energie Samenvatting.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/Distributie_van_elektrische_energie_Samenvatting.pdf)
+- **Info prof comp** — [bronbestanden](2de%20jaar/Info%20prof%20comp)
+  - [Info-sessie Prof comp.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/Info-sessie_Prof_comp.pdf)
+  - [Prof-comp Schrijfopdracht.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/Prof-comp_Schrijfopdracht.pdf)
+- **Ingenieur en economie oefeningen** — [bronbestanden](2de%20jaar/Ingenieur%20en%20economie%20oefeningen)
+  - [Ingenieur&economie-Samenvatting-RubenRyckaert.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/Ingenieur.economie-Samenvatting-RubenRyckaert.pdf)
+- **math-systems** — [bronbestanden](2de%20jaar/math-systems)
+  - [Wiskunde voor Systemen Samenvatting.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/Wiskunde_voor_Systemen_Samenvatting.pdf)
+- **Object gericht-programmeren** — [bronbestanden](2de%20jaar/Object%20gericht-programmeren)
+  - [Object gericht programmeren Samenvatting + synthax.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/Object_gericht_programmeren_Samenvatting_%2B_synthax.pdf)
+- **Ontwerp van een industriële sturing** — [bronbestanden](2de%20jaar/Ontwerp%20van%20een%20industri%C3%ABle%20sturing)
+  - [Ontwerp van industriele sturing.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/Ontwerp_van_industriele_sturing.pdf)
+- **Productietechnologie** — [bronbestanden](2de%20jaar/Productietechnologie)
+  - [ProductieTechnologie-Samenvatting-RubenRyckaert.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/ProductieTechnologie-Samenvatting-RubenRyckaert.pdf)
+- **Statistiek en databeheer** — [bronbestanden](2de%20jaar/Statistiek%20en%20databeheer)
+  - [Statistiek Samenvatting.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/Statistiek_Samenvatting.pdf)
+- **Systeem en regeltechniek** — [bronbestanden](2de%20jaar/Systeem%20en%20regeltechniek)
+  - [Systeem en regeltechniek Samenvatting.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/Systeem_en_regeltechniek_Samenvatting.pdf)
+- **Thermal fluid sciences** — [bronbestanden](2de%20jaar/Thermal%20fluid%20sciences)
+  - [Thermal fluid sciences Samenvatting.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/Thermal_fluid_sciences_Samenvatting.pdf)
+- **Toegepaste mechanica & dynamica** — [bronbestanden](2de%20jaar/Toegepaste%20mechanica%20%26%20dynamica)
+  - [Toegepaste mechanica en dynamica Samenvatting.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/Toegepaste_mechanica_en_dynamica_Samenvatting.pdf)
+- **Warmte en stromingen** — [bronbestanden](2de%20jaar/Warmte%20en%20stromingen)
+  - [Warmte-en-stromigen Samenvatting.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/Warmte-en-stromigen_Samenvatting.pdf)
+- **Wisselstroom** — [bronbestanden](2de%20jaar/Wisselstroom)
+  - [Wisselstroom-samenvatting-2025-2026.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/Wisselstroom-samenvatting-2025-2026.pdf)
 </details>
 
 <details>
 <summary><strong>3de jaar</strong></summary>
 
-- [Eindige elementen gebaseerd ontwerp](3de%20jaar/Eindige%20elementen%20gebaseerd%20ontwerp)
-- [Information Management](3de%20jaar/Information%20Management)
-- [Manufacturing Technologies 2](3de%20jaar/Manufacturing%20Technologies%202)
+- **Eindige elementen gebaseerd ontwerp** — [bronbestanden](3de%20jaar/Eindige%20elementen%20gebaseerd%20ontwerp)
+  - [EEGO Samenvatting.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/EEGO_Samenvatting.pdf)
+- **Information Management** — [bronbestanden](3de%20jaar/Information%20Management)
+  - [InformationManagement_Samenvatting.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/InformationManagement_Samenvatting.pdf)
+- **Manufacturing Technologies 2** — [bronbestanden](3de%20jaar/Manufacturing%20Technologies%202)
+  - [ManufacturingTech2_Samenvatting.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/ManufacturingTech2_Samenvatting.pdf)
+- **Religion** — [bronbestanden](3de%20jaar/Religion)
+  - [Examen_Spiekboek.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/Examen_Spiekboek.pdf)
+  - [Religion_Paper.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/Religion_Paper.pdf)
+- **Toegepaste Sterkteleer** — [bronbestanden](3de%20jaar/Toegepaste%20Sterkteleer)
+  - [Formularium_Bubi.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/Formularium_Bubi.pdf)
 </details>
 
 <details>
@@ -51,7 +76,7 @@ Deze repository zijn mijn notities en samenvattingen die ik gemaakt heb door het
 
 - Nog geen vakken toegevoegd
 </details>
-  <!-- VAKKENOVERZICHT_END -->
+<!-- VAKKENOVERZICHT_END -->
 
 ---
 
@@ -121,13 +146,6 @@ brew install --cask visual-studio-code && brew install git
 
 ```bash
 sudo apt install code git
-```
-
-<img src="https://api.iconify.design/simple-icons/typst.svg?color=gray" height="14"> **Typst formatter** (aanbevolen voor Typst-gebruikers):
-
-```powershell
-winget install --id Enter-tainer.typstyle
-$env:PATH = [System.Environment]::GetEnvironmentVariable("PATH","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("PATH","User")
 ```
 
 Daarna installeer je **LaTeX** of **Typst** (of beide). Volg de stappen in:
