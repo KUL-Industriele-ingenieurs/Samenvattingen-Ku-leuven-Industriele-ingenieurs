@@ -12,7 +12,7 @@
 \usepackage{placeins}
 
 % Add angles library for TikZ angle pictures
-\usetikzlibrary{angles,calc}
+\usetikzlibrary{angles,calc,arrows.meta,positioning}
 
 % Spoelen als kronkel tekenen i.p.v. het Europese zwarte blokje: leest veel beter
 % naast een condensator en sluit aan bij de figuren uit de slides.
@@ -119,6 +119,127 @@ Je kunt Multisim gratis in je browser gebruiken vanaf je eigen computer via de K
               \item Driefasig vermogen meten (2-wattmethode bij sterschakeling)
           \end{itemize}
 \end{itemize}
+
+\subsection{Je rekenmachine: complexe getallen, fasoren en stelsels}\label{sec:rekenmachine}
+
+Dit vak is voor negen tiende complexe rekenkunde. Als je je toestel goed kent, hoef je op het examen
+bijna niets met de hand uit te werken --- en dat scheelt zowel tijd als rekenfouten. Zet dit dus
+\'e\'en keer goed op v\'o\'or je begint te oefenen.
+
+\begin{theorie}[De vier instellingen die je moet controleren]
+    \begin{enumerate}
+        \item \textbf{Complexe modus} aan (op de meeste toestellen \texttt{CMPLX} of \texttt{Complex}).
+              Zonder dat geeft je toestel gewoon een foutmelding zodra er een $j$ in staat.
+        \item \textbf{Graden of radialen}, en dan consequent. Cursussymbolen staan hier in graden
+              ($\angle 30^\circ$), dus zet \texttt{DEG}. De klassieke blunder is een hoek in graden
+              invoeren terwijl het toestel in \texttt{RAD} staat.
+        \item \textbf{Weergavevorm}: kies of je het antwoord in $a+jb$ of in $r\angle\theta$ wil zien.
+              Je kunt meestal per berekening omschakelen --- doe dat, want je hebt beide vormen nodig.
+        \item \textbf{Vast aantal cijfers} (bv.\ \texttt{FIX 3} of \texttt{Norm 2}). Anders sleep je
+              afrondingsfouten mee door een lange oefening.
+    \end{enumerate}
+\end{theorie}
+
+\textbf{Welke vorm wanneer?} Je toestel rekent in beide, maar zelf denken blijft nodig:
+
+\begin{center}
+    \begin{tabular}{@{}p{42mm}p{40mm}p{50mm}@{}}
+        \toprule
+        \textbf{Bewerking} & \textbf{Handigste vorm} & \textbf{Waarom} \\
+        \midrule
+        optellen, aftrekken   & cartesisch $a+jb$     & re\"ele en imaginaire delen apart optellen \\
+        vermenigvuldigen, delen & polair $r\angle\theta$ & groottes vermenigvuldigen, hoeken optellen \\
+        machtsverheffen, wortels & polair               & $r^n\angle n\theta$ \\
+        \bottomrule
+    \end{tabular}
+\end{center}
+
+\begin{theorie}[Functies die je in dit vak echt nodig hebt]
+    \begin{itemize}
+        \item $\texttt{Abs}(\underline{Z})$ --- de grootte $|Z|$, bv.\ om $I = V/|Z|$ te controleren.
+        \item $\texttt{arg}(\underline{Z})$ --- de fasehoek $\phi_Z$. Dit is meteen je
+              arbeidsfactorhoek: $\cos\phi = \cos(\arg \underline{Z})$.
+        \item $\texttt{Conjg}(\underline{I})$ --- de toegevoegde $\underline{I}^{*}$. Onmisbaar voor
+              het complex vermogen $\underline{S} = \underline{V}\,\underline{I}^{*}$; vergeet die
+              ster niet, anders krijg je het verkeerde teken voor $Q$.
+        \item $\texttt{Re}$ en $\texttt{Im}$ --- om $P$ en $Q$ los uit $\underline{S}$ te halen.
+    \end{itemize}
+\end{theorie}
+
+\subsubsection{Stelsels oplossen (SysSolve)}
+
+Zowel knooppuntanalyse als lusanalyse eindigt in een stelsel lineaire vergelijkingen met complexe
+co\"effici\"enten. Dat hoef je \textbf{niet} met de hand te elimineren.
+
+\begin{theorie}[Wanneer is een stelsel oplosbaar?]
+    Een stelsel is pas oplosbaar als je \textbf{evenveel onafhankelijke vergelijkingen hebt als
+    onbekenden}. Tel dus altijd eerst, v\'o\'or je begint te rekenen:
+    \[\#\text{vergelijkingen} = \#\text{onbekenden}\]
+    \begin{itemize}
+        \item \textbf{Te weinig} vergelijkingen $\rightarrow$ oneindig veel oplossingen. Je bent een
+              knoop of een lus vergeten, of je hebt een gegeven niet gebruikt.
+        \item \textbf{Te veel} vergelijkingen $\rightarrow$ minstens \'e\'en ervan is een herhaling
+              van de andere. Bij knooppuntanalyse is de KCL in de \emph{referentieknoop} altijd zo'n
+              overbodige vergelijking: ze volgt automatisch uit de andere. Laat die dus weg.
+    \end{itemize}
+\end{theorie}
+
+\belangrijk{``Onafhankelijk'' is het sleutelwoord.} Twee vergelijkingen die veelvouden van elkaar
+zijn, tellen samen maar voor \'e\'en. Je toestel merkt dat zelf: het geeft dan een foutmelding
+(\texttt{Math ERROR} of \texttt{Infinite Solutions}) omdat de determinant nul is. Krijg je die
+melding, zoek dan niet naar een tikfout maar naar een \emph{dubbele} vergelijking.
+
+\textbf{Hoeveel onbekenden heb je?} Dat volgt rechtstreeks uit je methode:
+\begin{itemize}
+    \item \textbf{Knooppuntanalyse:} het aantal knopen min \'e\'en (de referentieknoop). Elke knoop
+          waar een spanningsbron rechtstreeks op de referentie aansluit, valt daar nog eens af ---
+          die knoopspanning ken je al.
+    \item \textbf{Lusanalyse:} het aantal ramen. Elk raam met een stroombron in een buitentak valt
+          af --- die kringstroom ken je al.
+\end{itemize}
+
+
+\begin{theorie}[Werkwijze]
+    \begin{enumerate}
+        \item Schrijf je vergelijkingen eerst netjes in de standaardvorm: alle onbekenden links in
+              dezelfde volgorde, de constante rechts.
+              \[a_{11}\underline{I}_1 + a_{12}\underline{I}_2 + a_{13}\underline{I}_3 = b_1\]
+        \item Groepeer de co\"effici\"enten \emph{voor} je begint in te tikken, bv.\
+              $-j30 + j80 = j50$. Een fout hier vind je later nooit meer terug.
+        \item Open de stelsel-oplosser van je toestel (\texttt{SysSolve}, \texttt{Simul Equation},
+              of de \texttt{Equation}-app), kies het aantal onbekenden en tik de co\"effici\"enten in.
+        \item Lees de oplossingen af en zet ze meteen om naar polaire vorm.
+    \end{enumerate}
+\end{theorie}
+
+\begin{waarschuwing}[Aanvaardt jouw toestel complexe co\"effici\"enten?]
+    Niet elk model laat complexe getallen toe in de stelsel-oplosser. Test dit \textbf{thuis}, niet
+    op het examen.
+
+    Lukt het niet, dan is er een truc die altijd werkt: splits elke onbekende in een re\"eel en een
+    imaginair deel ($\underline{I}_1 = x_1 + jy_1$), scheid elke vergelijking in haar re\"ele en haar
+    imaginaire deel, en los het resulterende \textbf{re\"ele} stelsel van dubbele grootte op. Drie
+    complexe vergelijkingen worden zo zes re\"ele.
+\end{waarschuwing}
+
+\begin{examenbox}[EXAMENTIP: laat je tussenstappen staan]
+    Ook al doet je toestel het rekenwerk: schrijf de \textbf{opgestelde vergelijkingen} en de
+    gebruikte formules wel op. Daar staan de punten op. Een kaal eindantwoord zonder stelsel levert
+    weinig op, ook als het klopt. En teken je fasordiagram met de hand --- dat kan je toestel niet
+    voor je doen.
+\end{examenbox}
+
+\begin{waarschuwing}[Twee valkuilen bij hoeken]
+    \begin{itemize}
+        \item Je toestel geeft $\arg$ altijd in het interval $(-180^\circ, 180^\circ]$. Fysisch kan de
+              werkelijke hoek buiten dat bereik liggen; controleer zelf in welk kwadrant je antwoord
+              hoort door naar de tekens van $a$ en $b$ te kijken.
+        \item $\arctan(X/R)$ met de hand berekend geeft hetzelfde probleem: $\arctan$ kan het verschil
+              tussen het tweede en het vierde kwadrant niet zien. Werk daarom liever rechtstreeks met
+              $\underline{Z} = R + jX$ in complexe modus.
+    \end{itemize}
+\end{waarschuwing}
+
 
 \section{Inleiding}
 
@@ -315,115 +436,82 @@ aflezing gewoon niet. Op een toestel dat het wél goed doet staat daarom explici
 
 \subsection{Fasors}
 
-Een wisselstroom of -spanning kan je ook voorstellen als een roterende vector in het complexe vlak.
-Die roterende vector heet een \textbf{sinor}:
-\[v(t) = V_m\,e^{j(\omega t + \phi)}\]
-Hij draait met $\omega$ rond de oorsprong, en zijn projectie op een as is precies de sinus waarmee je
-begon.
+Een \textbf{sinor} is een roterende vector in het complexe vlak: $v(t) = V_m e^{j(\omega t + \phi)}$.
+Een \keyterm{fasor} is die sinor \textbf{bevroren op $t = 0$}: je laat $e^{j\omega t}$ weg.
 
-Een \keyterm{fasor} is die sinor \textbf{bevroren op $t = 0$}:
-\[\underline{V} = V_m\,e^{j\phi} = V_m\angle\phi\]
-De tijdsafhankelijkheid $e^{j\omega t}$ laat je gewoon weg. Dat mag, omdat \emph{alle} grootheden in
-\'e\'en oefening dezelfde $\omega$ hebben en dus even snel draaien: hun onderlinge hoeken liggen vast.
-Precies daarom mag je fasoren nooit optellen als de frequenties verschillen --- dan draaien ze niet
-meer synchroon en heeft ``de hoek ertussen'' geen betekenis meer.
+\[\underline{V} = V_m e^{j\phi} = V_m\angle\phi\]
 
-\vspace{0.5cm}
+Dat mag omdat \emph{alle} grootheden in één oefening dezelfde $\omega$ hebben en dus even snel
+draaien --- hun onderlinge hoeken liggen vast. Precies daarom mag je fasoren met \emph{verschillende}
+frequenties nooit optellen.
+
+\frm{fasor}{\vec{A} = A_m \angle \phi = A_m (\cos\phi + j \sin\phi) = A_m e^{j\phi}}{Met $\vec{A}$ de fasor van de wisselgrootheid $A$,
+    $A_m$ de amplitude (piekwaarde) en $\phi$ de fasehoek in graden of radialen.}
+
+\[A_m = \sqrt{\text{Re}(\vec{A})^2 + \text{Im}(\vec{A})^2}
+    \qquad\qquad
+    \phi = \arctan\frac{\text{Im}(\vec{A})}{\text{Re}(\vec{A})}\]
 
 \begin{figure}[htbp]
     \centering
-    \begin{tikzpicture}[scale=1.25, >=latex]
-        % assen
+    \begin{tikzpicture}[scale=1.15, >=latex]
         \draw[->, thick] (-1.0,0) -- (3.5,0) node[right] {Re};
         \draw[->, thick] (0,-0.8) -- (0,3.0) node[above] {Im};
-
-        % projecties
         \coordinate (P) at (1.99,1.67);
         \draw[dashed, gray!70] (P) -- (1.99,0);
         \draw[dashed, gray!70] (P) -- (0,1.67);
-
-        % de fasor zelf
         \draw[->, very thick, schoolBlue] (0,0) -- (P);
         \node[schoolBlue, font=\small, rotate=40, anchor=south] at (1.0,0.84) {lengte $= V_m$};
-
-        % hoek
         \draw[schoolRed, thick] (0.8,0) arc (0:40:0.8);
         \node[schoolRed] at (1.08,0.30) {$\phi$};
-
-        % labels
         \node[schoolBlue, anchor=south west, font=\small] at (2.06,1.70) {$\vec{V} = V_m\angle\phi$};
         \node[anchor=north, font=\scriptsize, align=center] at (1.99,-0.10)
         {$V_m\cos\phi$\\re\"eel deel};
         \node[anchor=east, font=\scriptsize, align=right] at (-0.10,1.67)
         {$V_m\sin\phi$\\imaginair deel};
-
-        % rotatiehint
         \draw[->, thick, schoolGreen!60!black] (2.30,1.93) arc (40:72:3.0);
         \node[schoolGreen!50!black, font=\scriptsize, anchor=west] at (1.35,2.75) {draait met $\omega$};
     \end{tikzpicture}
-    \caption{Een fasor in het complexe vlak. De \emph{lengte} van de pijl is de amplitude $V_m$, de
-        \emph{hoek} met de re\"ele as is de fasehoek $\phi$. Het re\"ele deel is $V_m\cos\phi$, het
-        imaginaire deel $V_m\sin\phi$. In werkelijkheid draait de pijl rond met $\omega$, maar omdat
-        \emph{alle} fasoren in een oefening even snel draaien, tekenen we hem stil: alleen de
-        onderlinge hoeken doen ertoe.}
+    \caption{Lengte $=$ amplitude, hoek met de re\"ele as $=$ fasehoek. In werkelijkheid draait de
+        pijl met $\omega$, maar omdat alle fasoren even snel draaien tekenen we hem stil.}
     \label{fig:fasor}
 \end{figure}
 \FloatBarrier
 
-Bij een fasor gaan we de pulsatie $\omega$ niet meer expliciet noteren.
-Als je een oefening voor het omzetten van fasor naar tijdsfunctie of omgekeerd doet,
-ga je de pulsatie gegeven krijgen.
-
-Je kunt die allemaal doen met je niet-grafische rekenmachine door de modus op
-\textbf{complex} $a + jb$ of \textbf{polar} $A_m \angle \phi$ te zetten.
-
-\frm{fasor}{\vec{A} = A_m \angle \phi = A_m (\cos\phi + j \sin\phi) =A_m e^{j\phi}}{Met $\vec{A}$ de fasor van de wisselgrootte A,
-    $A_m$ de amplitude (piekwaarde) en $\phi$ de fasehoek in graden of radialen. Het reële deel is $A_m \cos\phi$
-    en het imaginaire deel is $A_m \sin\phi$. }
-
-\[A_m = \sqrt{(\text{Re}(\vec{A}))^2 + (\text{Im}(\vec{A}))^2}\]
-\[\phi = \tan^{-1}\left(\frac{\text{Im}(\vec{A})}{\text{Re}(\vec{A})}\right)\]
+\begin{theorie}[Denkmethode: tijd $\leftrightarrow$ fasor]
+    \textbf{Van tijd naar fasor:} zet alles om naar dezelfde golfvorm (allemaal cos of allemaal sin),
+    lees $A_m$ en $\phi$ af, schrap $\omega t$. \\
+    \textbf{Van fasor naar tijd:} plak $\omega t$ er terug bij, in dezelfde golfvorm waarmee je begon.
+    De $\omega$ staat altijd in de opgave.
+    \[a(t) = A_m\cos(\omega t + \phi) \;\Longleftrightarrow\; \vec{A} = A_m\angle\phi\]
+    Rekenen doe je met je toestel in complexe modus (zie \S\ref{sec:rekenmachine}): optellen in
+    $a+jb$, delen en vermenigvuldigen in $A\angle\phi$.
+\end{theorie}
 
 \begin{waarschuwing}[Twee voorwaarden voor je fasoren optelt]
-    \textbf{Dezelfde golfvorm.} Alle termen moeten sinus zijn, of allemaal cosinus. Zet om met:
+    \textbf{Dezelfde golfvorm.} Alles sinus, of alles cosinus. Zet om met
     \[\sin\theta = \cos(\theta - 90^\circ) \qquad\qquad \cos\theta = \sin(\theta + 90^\circ)\]
     $5\cos(3t+7^\circ) + 2\sin(3t-28^\circ)$ mag je dus \textbf{niet} rechtstreeks als
     $5\angle 7^\circ + 2\angle -28^\circ$ schrijven.
     \emph{Dit was letterlijk theorievraag 1 op 20/01/2024 én 22/08/2024.}
 
-    \textbf{Dezelfde frequentie.} Fasoren met een verschillende $\omega$ draaien niet even snel,
-    dus hun onderlinge hoek ligt niet vast. Heb je meerdere bronnen met verschillende frequenties,
-    reken dan elke bron apart uit bij zijn eigen $\omega$ (superpositie) en tel de resultaten pas
-    op in het \emph{tijdsdomein}.
+    \textbf{Dezelfde frequentie.} Anders draaien ze niet synchroon. Meerdere bronnen met
+    verschillende $\omega$? Reken elke bron apart uit en tel op in het \emph{tijdsdomein}
+    (superpositie).
 \end{waarschuwing}
 
 \begin{examenbox}[Amplitude of effectieve waarde?]
-    Een fasor kan je met de \textbf{amplitude} $A_m$ of met de \textbf{effectieve waarde} / RMS-waarde $A_{\text{eff}}$.
-
-    $A_{\text{eff}} = A_m/\sqrt{2}$ schrijven. Beide mag, zolang je \textbf{consequent} bent.
-
-    Let op waar je welke nodig hebt:
+    Beide mag, zolang je \textbf{consequent} bent ($A_{\text{eff}} = A_m/\sqrt{2}$). Waar je welke nodig hebt:
     \begin{itemize}
-        \item \textbf{Vermogens} ($P$, $Q$, $S$) reken je altijd met \textbf{effectieve} waarden.
-        \item Het \textbf{ogenblikkelijk vermogen} $p(t) = v(t)i(t)$ reken je met de
-              \textbf{tijdsfuncties}, dus met piekwaarden.
-        \item Meettoestellen (ampèremeters, voltmeters) geven \textbf{effectieve} waarden. ``230~V''
-              op een typeplaatje is dus altijd effectief.
+        \item \textbf{Vermogens} ($P$, $Q$, $S$): altijd \textbf{effectieve} waarden.
+        \item \textbf{Ogenblikkelijk vermogen} $p(t) = v(t)i(t)$: tijdsfuncties, dus piekwaarden.
+        \item \textbf{Meettoestellen} geven effectieve waarden. ``230~V'' is dus effectief.
     \end{itemize}
 \end{examenbox}
 
-
-\textbf{Voorbeeld:} Alle notaties voor de functie $v(t) = 220 \sin(314t + 30^\circ)$
-
-\[V_m = 220 V\]
-\[\omega = 314 \text{ rad/s}\]
-\[\phi = 30^\circ = \frac{\pi}{6} \text{ rad}\]
-
-\[a = 220V \cdot \cos(30^\circ) = 190.5 V\]
-\[b = 220V \cdot \sin(30^\circ) = 110 V\]
-\[\vec{V} = 220 \angle 30^\circ = 220 (\cos 30^\circ + j \sin 30^\circ) =
-    220 \left(\frac{\sqrt{3}}{2} + j \cdot \frac{1}{2}\right) = 190.5 + j 110 V\]
-
+\textbf{Alle notaties van $v(t) = 220\sin(314t + 30^\circ)$:} $V_m = 220$~V, $\omega = 314$~rad/s,
+$\phi = 30^\circ$, en
+\[\vec{V} = 220\angle 30^\circ = 220(\cos 30^\circ + j\sin 30^\circ) = 190{,}5 + j110\ \text{V}\]
 
 \begin{oefening}[Gemiddelde en effectieve stroom]
     \begin{center}
@@ -981,6 +1069,91 @@ Stel je die twee gelijk, dan valt $I_C$ weg en hou je $C = |Q_C|/(V^2\omega)$ ov
     (overcompensatie), met overspanning tot gevolg. In de praktijk mikt men op $0{,}95$ tot $0{,}98$.
 \end{waarschuwing}
 
+\subsubsection{Werken met complex vermogen: optellen en aftrekken}
+
+\belangrijk{$\underline{S}$ mag je optellen, $\cos\phi$ en $|S|$ niet.} Parallelle lasten tel je op
+als $\underline{S} = \sum(P_n + jQ_n)$. Dat is de enige reden waarom het complex vermogen bestaat.
+Werkwijze bij elke opgave van dit type: zet elke last om naar $P + jQ$ met
+\[Q = P\tan\phi \qquad\text{en}\qquad \phi = \arccos(\text{PF})\]
+tel op (of trek af), en zet pas op het einde terug om naar $|S|$ en PF.
+
+\begin{oefening}[Sadiku 11.72: een onbekende last afsplitsen]
+    \textbf{Opgave:} een bron van $120$~V$_{rms}$ / $60$~Hz voedt twee parallelle lasten. Last~1 is
+    $1{,}5$~kW bij PF $=0{,}707$ naijlend. Samen trekken ze $2{,}4$~kW bij PF $=0{,}8$ naijlend.
+    (a) Bepaal last~2. (b) Welke condensator brengt het geheel op PF $=0{,}9$?
+
+    \begin{center}
+        \begin{circuitikz}[scale=0.78, transform shape,
+            last/.style={draw, thick, minimum width=26mm, minimum height=9mm, align=center,
+                         font=\scriptsize}]
+            \draw (0,0) to[sV={$120$~V$_{rms}$, $60$~Hz}] (0,3.4);
+            \draw (0,3.4) -- (6.6,3.4);
+            \draw (0,0) -- (6.6,0);
+            \draw (2.6,3.4) -- (2.6,2.6);  \node[last] at (2.6,2.1) {last 1\\$1{,}5$~kW\\PF $=0{,}707$ naijlend};
+            \draw (2.6,1.6) -- (2.6,0);
+            \draw (6.6,3.4) -- (6.6,2.6);  \node[last] at (6.6,2.1) {last 2\\\textbf{?}};
+            \draw (6.6,1.6) -- (6.6,0);
+            \draw (0,0) node[ground]{};
+        \end{circuitikz}
+    \end{center}
+
+    \stapreden{\textbf{(a)} Last 1 omzetten naar $P+jQ$. Uit PF $=0{,}707$ volgt $\phi_1 = 45^\circ$:}
+    \[Q_1 = P_1\tan\phi_1 = 1500\tan 45^\circ = 1500\ \text{var}
+        \qquad\Longrightarrow\qquad \underline{S}_1 = 1500 + j1500\ \text{VA}\]
+
+    \stapreden{Hetzelfde voor het totaal, met $\phi = \arccos(0{,}8) = 36{,}87^\circ$:}
+    \[Q = 2400\tan 36{,}87^\circ = 1800\ \text{var}
+        \qquad\Longrightarrow\qquad \underline{S} = 2400 + j1800\ \text{VA}\]
+
+    \stapreden{Last 2 is het verschil --- \emph{complex} aftrekken, dus reëel van reëel en imaginair van imaginair:}
+    \[\underline{S}_2 = \underline{S} - \underline{S}_1 = (2400-1500) + j(1800-1500)
+        = \boxed{900 + j300\ \text{VA}}\]
+
+    \stapreden{Omzetten naar grootte en arbeidsfactor:}
+    \[|S_2| = \sqrt{900^2+300^2} = 948{,}7\ \text{VA}, \quad
+      \phi_2 = \arctan\tfrac{300}{900} = 18{,}43^\circ, \quad
+      \text{PF}_2 = \cos 18{,}43^\circ = \boxed{0{,}949\ \text{naijlend}}\]
+
+    \stapreden{\textbf{(b)} Doel-PF $0{,}9$ geeft $\phi_2 = \arccos(0{,}9) = 25{,}84^\circ$. Gebruik de correctieformule op het \emph{totale} vermogen:}
+    \[|Q_C| = P(\tan\phi_1 - \tan\phi_2) = 2400(\tan 36{,}87^\circ - \tan 25{,}84^\circ)
+        = 2400(0{,}750 - 0{,}484) = 637{,}7\ \text{var}\]
+
+    \stapreden{En de capaciteit:}
+    \[C = \frac{|Q_C|}{\omega V_{rms}^2} = \frac{637{,}7}{2\pi(60)(120)^2}
+        = \boxed{117{,}5\ \mu\text{F}}\]
+\end{oefening}
+
+\begin{oefening}[Sadiku 11.74: twee lasten samentellen]
+    \textbf{Opgave:} $120$~V$_{rms}$ / $60$~Hz voedt last~1 ($24$~kW, PF $=0{,}8$ naijlend) en
+    last~2 ($40$~kW, PF $=0{,}95$ naijlend) parallel. (a) Bepaal $\underline{S}_{tot}$ en de
+    arbeidsfactor. (b) Welke condensator brengt de installatie op PF $=1$?
+
+    \stapreden{\textbf{(a)} Beide lasten omzetten naar $P+jQ$:}
+    \[\phi_1 = \arccos(0{,}8) = 36{,}87^\circ \;\Rightarrow\; Q_1 = 24\tan 36{,}87^\circ = 18\ \text{kvar}
+        \;\Rightarrow\; \underline{S}_1 = 24 + j18\ \text{kVA}\]
+    \[\phi_2 = \arccos(0{,}95) = 18{,}19^\circ \;\Rightarrow\; Q_2 = 40\tan 18{,}19^\circ = 13{,}15\ \text{kvar}
+        \;\Rightarrow\; \underline{S}_2 = 40 + j13{,}15\ \text{kVA}\]
+
+    \stapreden{Optellen:}
+    \[\underline{S}_{tot} = (24+40) + j(18+13{,}15) = \boxed{64 + j31{,}15\ \text{kVA}}
+        = 71{,}2\angle 25{,}95^\circ\ \text{kVA}\]
+
+    \stapreden{De arbeidsfactor lees je rechtstreeks af als $P/S$:}
+    \[\text{PF} = \frac{64}{71{,}2} = \cos 25{,}95^\circ = \boxed{0{,}899\ \text{naijlend}}\]
+
+    \stapreden{\textbf{(b)} Bij PF $=1$ moet \emph{alle} reactief vermogen weg, dus $|Q_C| = Q_{tot}$:}
+    \[|Q_C| = 31{,}15\ \text{kvar}
+        \qquad\Longrightarrow\qquad
+        C = \frac{31\,150}{2\pi(60)(120)^2} = \boxed{5{,}74\ \text{mF}}\]
+
+    \textbf{Kerninzicht.} Merk op hoe de arbeidsfactor van het geheel ($0{,}899$) \textbf{tussen} die
+    van de twee lasten ligt, dichter bij de grootste. Je mag PF's dus nooit zomaar middelen --- ga
+    altijd via $P+jQ$. En let op de grootte-orde: $5{,}74$~mF is enorm, omdat $120$~V erg laag is voor
+    $64$~kW. Bij een hogere netspanning is dezelfde correctie veel goedkoper, want
+    $C \sim 1/V^2$.
+\end{oefening}
+
+
 \subsection{Resonantie}
 Een keten is in resonantie als de inductieve en capacitieve reactanties gelijk zijn.
 \[\omega L = \frac{1}{\omega C}\]
@@ -1159,6 +1332,56 @@ In parallel:
 
 Zorg dat je niet verward geraakt omdat capaciteiten en inductanties imaginaire impedanties zijn.
 Je gebruikt gewoon dezelfde regels als bij DC netwerken.
+
+\begin{figure}[H]
+    \centering
+    \begin{circuitikz}[scale=0.78, transform shape]
+        \draw (0,0) to[sV={$\underline{V}_s$}] (0,2.6);
+        \draw (0,2.6) to[generic={$\underline{Z}$}] (2.6,2.6) -- (3.4,2.6)
+              node[circ]{} node[above, font=\small]{$a$};
+        \draw (0,0) -- (3.4,0) node[circ]{} node[below, font=\small]{$b$};
+        \node[font=\Large] at (4.6,1.3) {$\Longleftrightarrow$};
+        \begin{scope}[shift={(5.8,0)}]
+            \draw (0,0) to[I={$\underline{I}_s$}] (0,2.6);
+            \draw (0,2.6) -- (2.0,2.6) node[circ]{};
+            \draw (2.0,2.6) to[generic={$\underline{Z}$}] (2.0,0) node[circ]{};
+            \draw (2.0,2.6) -- (3.2,2.6) node[circ]{} node[above, font=\small]{$a$};
+            \draw (0,0) -- (3.2,0) node[circ]{} node[below, font=\small]{$b$};
+        \end{scope}
+    \end{circuitikz}
+    \caption{Spanningsbron \textbf{in serie} met $\underline{Z}$ $\leftrightarrow$ stroombron
+        \textbf{parallel} aan diezelfde $\underline{Z}$. Aan de klemmen $a$--$b$ niet te
+        onderscheiden. De pijl van de stroombron wijst naar de $+$-klem van de spanningsbron.}
+    \label{fig:brontransformatie}
+\end{figure}
+\FloatBarrier
+
+Voorwaarde: er \emph{moet} een impedantie bij horen. Een ideale bron (zonder $\underline{Z}$) kun je
+niet omzetten.
+
+\begin{voorbeeld}[Beide richtingen]
+    \textbf{(a) Spanning $\rightarrow$ stroom.} Gegeven $\underline{V}_s = 20\angle 30^\circ$~V in
+    serie met $\underline{Z} = 4 + j3 = 5\angle 36{,}87^\circ\ \Omega$:
+    \[\underline{I}_s = \frac{\underline{V}_s}{\underline{Z}}
+        = \frac{20\angle 30^\circ}{5\angle 36{,}87^\circ}
+        = \boxed{4\angle -6{,}87^\circ\ \text{A}} \quad\text{parallel met } 4+j3\ \Omega\]
+
+    \textbf{(b) Stroom $\rightarrow$ spanning.} Gegeven $\underline{I}_s = 2\angle 0^\circ$~A
+    parallel met $\underline{Z} = 6 + j8 = 10\angle 53{,}13^\circ\ \Omega$:
+    \[\underline{V}_s = \underline{I}_s\underline{Z}
+        = (2\angle 0^\circ)(10\angle 53{,}13^\circ)
+        = \boxed{20\angle 53{,}13^\circ\ \text{V}} \quad\text{in serie met } 6+j8\ \Omega\]
+
+    Eén formule, twee leesrichtingen: $\underline{V}_s = \underline{I}_s\underline{Z}$. Zet
+    $\underline{Z}$ eerst polair, want je gaat delen of vermenigvuldigen.
+\end{voorbeeld}
+
+\begin{waarschuwing}[Binnenin verandert alles]
+    De klemmen $a$--$b$ blijven equivalent, maar de stroom door $\underline{Z}$ en het vermogen in
+    $\underline{Z}$ zijn na de omzetting \textbf{niet} meer dezelfde. Vraagt de opgave naar het
+    vermogen in die impedantie, ga dan terug naar het oorspronkelijke schema.
+\end{waarschuwing}
+
 
 
 \begin{examenbox}
@@ -1502,7 +1725,197 @@ serie-parallelstructuur heeft.
     $P_{\text{bron}} = \sum I^2R$.
 \end{examenbox}
 
-\subsubsection{Methode 3: Superpositie bij bronnen met verschillende frequenties}
+\subsubsection{Methode 3: lusanalyse (KVL)}
+
+Knooppuntanalyse telt \emph{knopen}, lusanalyse telt \emph{lussen}. Ze lossen hetzelfde net op ---
+kies gewoon degene die het \textbf{kleinste stelsel} geeft. Vuistregel: tel eerst het aantal
+onbekende knoopspanningen en het aantal onafhankelijke lussen, en neem de kleinste van de twee.
+
+\begin{theorie}[Werkwijze]
+    \begin{enumerate}
+        \item Zet alles om naar het frequentiedomein.
+        \item Teken in elk \textbf{raam} (een lus zonder andere takken erin) \'e\'en kringstroom.
+              Geef ze allemaal \textbf{dezelfde draaizin} --- meestal wijzerzin. Dan krijgen de
+              gedeelde takken automatisch het juiste minteken.
+        \item Loopt er een \textbf{stroombron} in een tak die maar bij \'e\'en lus hoort, dan is die
+              kringstroom meteen bekend. Je hoeft er dan geen vergelijking meer voor te schrijven.
+        \item Schrijf per onbekende lus de KVL: som van de spanningsvallen rond de lus is nul.
+              Een tak die je met een \emph{buurlus} deelt, levert
+              $\underline{Z}(\underline{I}_{\text{eigen}} - \underline{I}_{\text{buur}})$.
+        \item Los op. De \textbf{takstroom} in een gedeelde tak is het \emph{verschil} van de twee
+              kringstromen die er doorheen lopen.
+    \end{enumerate}
+\end{theorie}
+
+\belangrijk{Een kringstroom is geen echte stroom.} Ze is een rekenhulp. Alleen in een tak aan de
+buitenrand valt de kringstroom samen met de echte takstroom; in een gedeelde tak moet je aftrekken.
+
+\begin{oefening}[Voorbeeld uit de slides: stromen zoeken met lussen]
+    \textbf{Opgave:} bepaal de stroom $\underline{I}_n$ door de middelste tak.
+
+    \begin{center}
+        \begin{circuitikz}[scale=0.85, transform shape]
+            % buitenrand
+            \draw (0,0) to[I={$3\angle 60^\circ$~A}] (0,4.2);
+            \draw (0,4.2) -- (8.0,4.2);
+            \draw (0,0) -- (8.0,0);
+            % verticale takken
+            \draw (3.2,4.2) to[R, l_={$60\,\Omega$}] (3.2,2.1) node[circ]{}
+                  node[below left, font=\small]{$a$};
+            \draw (8.0,4.2) to[R, l={$40\,\Omega$}] (8.0,2.1) node[circ]{}
+                  node[above right, font=\small]{$b$};
+            \draw (3.2,2.1) to[L, l_={$j80\,\Omega$}] (3.2,0);
+            \draw (8.0,2.1) to[C, l={$-j30\,\Omega$}] (8.0,0);
+            % middentak
+            \draw (3.2,2.1) to[short, i>^=$\underline{I}_n$] (8.0,2.1);
+            % kringstromen
+            \draw[schoolBlue, thick, ->] (1.6,2.1) circle (0.48);
+            \node[schoolBlue, font=\small] at (1.6,2.1) {$\underline{I}_s$};
+            \draw[schoolGreen, thick, ->] (5.6,3.15) circle (0.48);
+            \node[schoolGreen, font=\small] at (5.6,3.15) {$\underline{I}_1$};
+            \draw[schoolOrange, thick, ->] (5.6,1.05) circle (0.48);
+            \node[schoolOrange, font=\small] at (5.6,1.05) {$\underline{I}_2$};
+        \end{circuitikz}
+    \end{center}
+
+    \textbf{Denkstap.} Er zijn drie ramen, dus normaal drie vergelijkingen. Maar de stroombron zit
+    \emph{alleen} in de linkerlus, dus die kringstroom ligt al vast:
+    $\underline{I}_s = 3\angle 60^\circ$~A. Blijven er twee over. Merk ook op dat de $60\,\Omega$ en
+    de $j80\,\Omega$ \textbf{gedeelde} takken zijn --- daar komt straks het verschil van twee
+    kringstromen in.
+
+    \stapreden{\textbf{KVL in lus 1} (bovenste rechterraam). Ze loopt door de $40\,\Omega$ (die deelt ze met niemand) en door de $60\,\Omega$ (die deelt ze met de bronlus):}
+    \[40\,\underline{I}_1 + 60\,(\underline{I}_1 - \underline{I}_s) = 0\]
+
+    \stapreden{Uitwerken en groeperen:}
+    \[100\,\underline{I}_1 - 60\,\underline{I}_s = 0
+        \qquad\Longrightarrow\qquad
+        \underline{I}_1 = \frac{60}{100}\,\underline{I}_s = 0{,}6 \cdot 3\angle 60^\circ
+        = \boxed{1{,}8\angle 60^\circ\ \text{A}}\]
+
+    \stapreden{\textbf{KVL in lus 2} (onderste rechterraam). Ze loopt door de $-j30\,\Omega$ (eigen tak) en door de $j80\,\Omega$ (gedeeld met de bronlus):}
+    \[-j30\,\underline{I}_2 + j80\,(\underline{I}_2 - \underline{I}_s) = 0\]
+
+    \stapreden{Groeperen; let op dat $-j30 + j80 = j50$:}
+    \[(-j30 + j80)\,\underline{I}_2 - j80\,\underline{I}_s = 0
+        \qquad\Longrightarrow\qquad
+        \underline{I}_2 = \frac{j80}{j50}\,\underline{I}_s = 1{,}6 \cdot 3\angle 60^\circ
+        = \boxed{4{,}8\angle 60^\circ\ \text{A}}\]
+
+    \stapreden{\textbf{De gevraagde takstroom.} De middentak $a$--$b$ wordt gedeeld door lus 1 en lus 2, dus neem het verschil:}
+    \[\underline{I}_n = \underline{I}_2 - \underline{I}_1 = 4{,}8\angle 60^\circ - 1{,}8\angle 60^\circ
+        = \boxed{3\angle 60^\circ\ \text{A}}\]
+
+    \textbf{Kerninzicht.} Beide kringstromen komen hier uit op \emph{dezelfde} hoek als de bron
+    ($60^\circ$), omdat de $j$'s in lus 2 tegen elkaar wegdelen: $j80/j50$ is een re\"eel getal. Dat
+    is toeval van deze getallen --- in het algemeen krijg je wel degelijk een faseverschuiving.
+    Merk verder op dat $\underline{I}_n$ exact gelijk is aan de bronstroom; ook dat volgt hier
+    gewoon uit $1{,}6 - 0{,}6 = 1$.
+\end{oefening}
+
+\begin{waarschuwing}[Knooppunt- of lusanalyse: welke kies je?]
+    \begin{itemize}
+        \item Veel \textbf{spanningsbronnen} en weinig ramen $\rightarrow$ \textbf{lusanalyse}.
+        \item Veel \textbf{stroombronnen} en weinig knopen $\rightarrow$ \textbf{knooppuntanalyse}.
+        \item Een stroombron in een \emph{buitentak} maakt \'e\'en kringstroom gratis bekend; een
+              spanningsbron rechtstreeks aan de referentieknoop maakt \'e\'en knoopspanning gratis
+              bekend. Kijk dus altijd eerst welke bronnen je een vergelijking besparen.
+    \end{itemize}
+\end{waarschuwing}
+
+\begin{oefening}[Sadiku 11.85: driedradennet met drie lussen --- werk met SysSolve]
+    \textbf{Opgave:} een klassiek Amerikaans woningnet ($120/240$~V, $60$~Hz) met twee bronnen van
+    $120\angle 0^\circ$~V in serie en een geaarde nulgeleider ertussen. Erop hangen een lamp
+    ($120\,\Omega$), een koelkast ($10\,\Omega$ in serie met $15$~mH) en een fornuis
+    ($20\,\Omega$) tussen de twee buitenste geleiders. Bepaal $\underline{I}_1$, $\underline{I}_2$
+    en de nulgeleiderstroom $\underline{I}_n$.
+
+    \begin{center}
+        \begin{circuitikz}[scale=0.82, transform shape]
+            % bronnen links
+            \draw (0,0) to[sV={$120\angle 0^\circ$~V}] (0,2.4);
+            \draw (0,2.4) node[circ]{} to[sV={$120\angle 0^\circ$~V}] (0,4.8);
+            % rails
+            \draw (0,4.8) -- (10.4,4.8);
+            \draw (0,2.4) -- (6.4,2.4);
+            \draw (0,0) -- (10.4,0);
+            \draw (1.2,2.4) node[circ]{} -- (1.2,1.85) node[ground]{};
+            % lamp
+            \draw (4.6,4.8) to[R, l_={$120\,\Omega$}] (4.6,2.4) node[circ]{};
+            \node[font=\small, right] at (4.78,3.7) {lamp};
+            % koelkast
+            \draw (6.4,2.4) to[R, l_={$10\,\Omega$}] (6.4,1.35)
+                  to[L, l_={$15$~mH}] (6.4,0);
+            \node[font=\small, right] at (6.58,1.75) {koelkast};
+            % fornuis
+            \draw (10.4,4.8) to[R, l={$20\,\Omega$}] (10.4,0);
+            \node[font=\small, left] at (10.22,3.5) {fornuis};
+            % takstromen
+            \draw[->, thick] (1.5,5.05) -- (2.4,5.05) node[right, font=\small] {$\underline{I}_1$};
+            \draw[->, thick] (3.0,2.62) -- (3.9,2.62) node[right, font=\small] {$\underline{I}_n$};
+            \draw[->, thick] (1.5,0.25) -- (2.4,0.25) node[right, font=\small] {$\underline{I}_2$};
+            % kringstromen
+            \draw[schoolGreen, thick, ->] (2.6,3.7) circle (0.44);
+            \node[schoolGreen, font=\small] at (2.6,3.7) {$\underline{I}_x$};
+            \draw[schoolOrange, thick, ->] (2.6,1.15) circle (0.44);
+            \node[schoolOrange, font=\small] at (2.6,1.15) {$\underline{I}_y$};
+            \draw[schoolBlue, thick, ->] (8.5,2.4) circle (0.44);
+            \node[schoolBlue, font=\small] at (8.5,2.4) {$\underline{I}_z$};
+        \end{circuitikz}
+    \end{center}
+
+    \textbf{Denkstap.} Drie ramen, geen enkele stroombron, dus drie volwaardige KVL-vergelijkingen
+    met complexe co\"effici\"enten. Met de hand elimineren duurt lang en gaat gegarandeerd mis ---
+    dit is precies waar je \texttt{SysSolve} voor gebruikt.
+
+    \stapreden{Eerst de spoel omzetten naar een impedantie bij $f = 60$~Hz:}
+    \[\underline{Z}_L = j\omega L = j\,2\pi f L = j\,2\pi(60)(0{,}015) = j5{,}655\ \Omega\]
+
+    \stapreden{\textbf{Lus $x$} (boven): de bron van $120$~V, de $120\,\Omega$ lamp (gedeeld met lus $z$) en de nulgeleider:}
+    \[120 = 120\,\underline{I}_x - 120\,\underline{I}_z \tag{1}\]
+
+    \stapreden{\textbf{Lus $y$} (onder): de tweede bron en de koelkasttak $10 + j5{,}655$ (gedeeld met lus $z$):}
+    \[120 = (10 + j5{,}655)\,\underline{I}_y - (10 + j5{,}655)\,\underline{I}_z \tag{2}\]
+
+    \stapreden{\textbf{Lus $z$} (rechts): loopt door de lamp, het fornuis en de koelkast, telkens met het verschil t.o.v.\ de buurlus:}
+    \[120(\underline{I}_z - \underline{I}_x) + 20\,\underline{I}_z
+        + (10+j5{,}655)(\underline{I}_z - \underline{I}_y) = 0\]
+
+    \stapreden{Groepeer per onbekende --- dit is de vorm die je intikt:}
+    \[-120\,\underline{I}_x - (10+j5{,}655)\,\underline{I}_y + (150 + j5{,}655)\,\underline{I}_z = 0 \tag{3}\]
+
+    \stapreden{Nu de drie rijen co\"effici\"enten in \texttt{SysSolve} zetten (onbekenden in de volgorde $\underline{I}_x$, $\underline{I}_y$, $\underline{I}_z$):}
+    \[\begin{array}{r|rrr|r}
+          & \underline{I}_x & \underline{I}_y & \underline{I}_z & = \\
+        \hline
+        (1) & 120  & 0             & -120           & 120 \\
+        (2) & 0    & 10+j5{,}655   & -(10+j5{,}655) & 120 \\
+        (3) & -120 & -(10+j5{,}655)& 150+j5{,}655   & 0
+    \end{array}\]
+
+    \stapreden{Het toestel geeft:}
+    \[\underline{I}_x = 13\ \text{A} \qquad
+      \underline{I}_y = 21{,}1 - j5{,}14\ \text{A} \qquad
+      \underline{I}_z = 12\ \text{A}\]
+
+    \stapreden{\textbf{Van kringstromen naar takstromen.} $\underline{I}_1$ loopt in de bovenste rail, waar alleen lus $x$ komt; $\underline{I}_2$ in de onderste rail, waar lus $y$ in de \emph{tegengestelde} zin loopt:}
+    \[\underline{I}_1 = \underline{I}_x = \boxed{13\ \text{A}}
+        \qquad\qquad
+        \underline{I}_2 = -\underline{I}_y = \boxed{-21{,}1 + j5{,}14\ \text{A}}\]
+
+    \stapreden{De nulgeleider is de gedeelde tak tussen lus $x$ en lus $y$, dus daar geldt het verschil:}
+    \[\underline{I}_n = \underline{I}_y - \underline{I}_x = (21{,}1 - j5{,}14) - 13
+        = \boxed{8{,}1 - j5{,}14\ \text{A}}\]
+
+    \textbf{Kerninzicht.} $\underline{I}_n \neq 0$: de twee helften van het net zijn
+    \textbf{onevenwichtig} belast (een lamp tegenover een koelkast), dus de nulgeleider voert wel
+    degelijk stroom --- $|I_n| = 9{,}6$~A. Precies de reden waarom je een nulgeleider nooit mag
+    zekeren of onderbreken. Controleer je antwoord trouwens met KCL in het middelste knooppunt:
+    $\underline{I}_1 + \underline{I}_2 + \underline{I}_n$ moet nul geven.
+\end{oefening}
+
+
+\subsubsection{Methode 4: superpositie bij bronnen met verschillende frequenties}
 
 Wanneer een lineaire keten meerdere onafhankelijke bronnen bevat met \textbf{verschillende frequenties}
 ($\omega_1 \neq \omega_2$), is de fasormethode niet direct toepasbaar op het hele circuit omdat fasors
@@ -1517,6 +1930,51 @@ slechts geldig zijn voor één specifieke frequentie.
               \[v_{\text{totaal}}(t) = v_{(1)}(t) + v_{(2)}(t) + \dots + v_{(n)}(t)\]
     \end{enumerate}
 \end{theorie}
+
+\textbf{Een bron uitschakelen} betekent: vervang ze door haar inwendige impedantie. Een spanningsbron
+op $0$~V houdt geen spanningsverschil meer vast $\rightarrow$ \textbf{kortsluiting}. Een stroombron op
+$0$~A laat niets meer door $\rightarrow$ \textbf{open keten}.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[line width=0.9pt, font=\small]
+        \begin{scope}
+            \draw (0,0) -- (0,0.55);
+            \draw[schoolBlue, thick] (0,1.1) circle (0.55);
+            \draw[schoolBlue, thick] (-0.22,1.28) -- (0.22,1.28);
+            \draw[schoolBlue, thick] (-0.14,0.94) -- (0.14,0.94);
+            \draw[schoolBlue, thick] (0,0.80) -- (0,1.08);
+            \draw (0,1.65) -- (0,2.2);
+            \node[left, schoolBlue] at (-0.62,1.1) {$\underline{V}$};
+            \node[font=\Large] at (1.4,1.1) {$\Longrightarrow$};
+            \draw[schoolRed, very thick] (2.8,0) -- (2.8,2.2);
+            \node[right, schoolRed, font=\footnotesize] at (2.95,1.1) {\textbf{kortsluiting}};
+        \end{scope}
+        \draw[black!30] (5.6,-0.1) -- (5.6,2.3);
+        \begin{scope}[shift={(6.4,0)}]
+            \draw (0,0) -- (0,0.55);
+            \draw[schoolBlue, thick] (0,1.1) circle (0.55);
+            \draw[schoolBlue, thick, ->] (0,0.72) -- (0,1.48);
+            \draw (0,1.65) -- (0,2.2);
+            \node[left, schoolBlue] at (-0.62,1.1) {$\underline{I}$};
+            \node[font=\Large] at (1.4,1.1) {$\Longrightarrow$};
+            \draw[schoolRed, very thick] (2.8,0) -- (2.8,0.72);
+            \draw[schoolRed, very thick] (2.8,1.48) -- (2.8,2.2);
+            \node[circle, draw=schoolRed, thick, fill=white, inner sep=1.3pt] at (2.8,0.72) {};
+            \node[circle, draw=schoolRed, thick, fill=white, inner sep=1.3pt] at (2.8,1.48) {};
+            \node[right, schoolRed, font=\footnotesize] at (3.05,1.1) {\textbf{open keten}};
+        \end{scope}
+    \end{tikzpicture}
+    \caption{Spanningsbron $\rightarrow$ kortsluiting, stroombron $\rightarrow$ open keten.
+        Verwissel die twee niet.}
+    \label{fig:bronnen-uitschakelen}
+\end{figure}
+\FloatBarrier
+
+\belangrijk{Dezelfde regel geldt voor $\underline{Z}_{\text{th}}$:} schakel alle onafhankelijke
+bronnen uit en reken de impedantie tussen de klemmen uit met serie- en parallelregels. Een
+\textbf{afhankelijke} (gestuurde) bron laat je wél staan.
+
 
 \begin{oefening}[Voorbeeld uit slides: Superpositie met DC en meerdere AC-frequenties]
     \textbf{Opgave:}
@@ -2224,38 +2682,65 @@ Deze relaties gelden alleen voor \textbf{evenwichtige belastingen}.
 
 \subsection{Omzetting ster- naar driehoekconfiguratie}
 
-Je kunt een sterconfiguratie omzetten naar een driehoekconfiguratie en omgekeerd. Bij een
-\textbf{evenwichtige} last is dat één simpele factor 3; bij een onevenwichtige last heb je de
-algemene formules verderop nodig.
+\subsubsection{Denkmethode: maak van elk 3-fase net één enkele lus}
 
-\frm{Delta naar Ster en omgekeerd}{\underline{Z}_Y = \frac{\underline{Z}_\Delta}{3} \quad , \quad \underline{Z}_\Delta = 3\,\underline{Z}_Y}{Met $\underline{Z}_Y$ de impedantie van de equivalente
-    Y-verbonden belasting in Ohm en $\underline{Z}_\Delta$ de impedantie van de $\Delta$-verbonden belasting in Ohm.}
+Bijna elke 3-fase oefening los je op met hetzelfde recept. Je herleidt het net tot het
+\textbf{eenfase-equivalent}: één bron, één impedantie, één lus. Alles wat daarvoor nodig is, is
+alles naar \textbf{ster} omzetten.
 
-\textbf{Waarom precies een factor 3?} Het idee achter elke ster-driehoekomzetting is dit: de twee
-schakelingen moeten van \emph{buitenaf} niet te onderscheiden zijn. Meet je tussen twee klemmen,
-dan moet je in beide gevallen dezelfde impedantie zien. Voor een evenwichtige last volstaat één
-zo'n meting.
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[
+        node distance=0mm, font=\small,
+        stap/.style={draw=schoolBlue!70, fill=schoolBlue!7, line width=0.8pt, rounded corners=2pt,
+                     text width=64mm, align=left, inner sep=2.2mm, font=\small},
+        pijl/.style={-{Latex[length=2.2mm]}, schoolBlue, thick}]
+        \node[stap] (a) {\textbf{1. Last naar ster.} Elke $\Delta$-last: $\underline{Z}_Y = \underline{Z}_\Delta/3$.};
+        \node[stap, below=5mm of a] (b) {\textbf{2. Lasten samennemen.} Staan er meerdere parallel, product over som.};
+        \node[stap, below=5mm of b] (c) {\textbf{3. Bron naar ster.} Gegeven $V_L$? Dan $\underline{V}_{an} = \frac{V_L}{\sqrt{3}}\angle -30^\circ$.};
+        \node[stap, below=5mm of c] (d) {\textbf{4. Lijnimpedantie erbij}, in serie: $\underline{Z}_{tot} = \underline{Z}_{lijn} + \underline{Z}_p$.};
+        \node[stap, below=5mm of d] (e) {\textbf{5. Wet van Ohm.} $\underline{I}_a = \underline{V}_{an}/\underline{Z}_{tot}$.};
+        \node[stap, below=5mm of e] (f) {\textbf{6. De andere twee gratis.} $\underline{I}_b = \underline{I}_a\angle -120^\circ$, $\underline{I}_c = \underline{I}_a\angle +120^\circ$.};
+        \foreach \x/\y in {a/b, b/c, c/d, d/e, e/f} \draw[pijl] (\x) -- (\y);
+    \end{tikzpicture}
+    \caption{Het recept voor vrijwel elke 3-fase oefening. Stap 1 t.e.m.\ 3 zijn puur omzetwerk;
+        vanaf stap 4 is het gewoon een eenvoudige serieschakeling.}
+    \label{fig:recept-3fase}
+\end{figure}
+\FloatBarrier
 
-\stapreden{\textbf{Ster.} Meet je tussen klem 1 en klem 2, dan loop je via het sterpunt door twee takken in serie (de derde tak hangt er los bij en trekt geen stroom):}
-\[\underline{Z}_{12,Y} = \underline{Z}_Y + \underline{Z}_Y = 2\,\underline{Z}_Y\]
+\begin{waarschuwing}[Wat je op het einde nog moet terugrekenen]
+    Het eenfase-equivalent geeft je de \textbf{lijnstromen}. Vraagt de opgave naar iets \emph{binnen}
+    de oorspronkelijke driehoek, dan moet je terug:
+    \[I_{f,\Delta} = \frac{I_L}{\sqrt{3}} \quad\text{met } +30^\circ
+        \qquad\qquad
+        V_{f,\Delta} = V_L\]
+    Het \textbf{vermogen} mag je wél rechtstreeks uit het equivalent halen: $P = \sqrt{3}V_LI_L\cos\phi$
+    geldt voor ster én driehoek.
+\end{waarschuwing}
 
-\stapreden{\textbf{Driehoek.} Tussen dezelfde twee klemmen zie je nu de tak 1--2 rechtstreeks, parallel met de twee andere takken die samen in serie staan:}
-\[\underline{Z}_{12,\Delta} = \underline{Z}_\Delta \parallel \left(\underline{Z}_\Delta + \underline{Z}_\Delta\right)
-    = \frac{\underline{Z}_\Delta \cdot 2\underline{Z}_\Delta}{\underline{Z}_\Delta + 2\underline{Z}_\Delta}
-    = \frac{2\underline{Z}_\Delta^2}{3\underline{Z}_\Delta} = \frac{2}{3}\,\underline{Z}_\Delta\]
+\subsubsection{De omzetformules}
 
-\stapreden{Beide gelijkstellen:}
-\[2\,\underline{Z}_Y = \frac{2}{3}\,\underline{Z}_\Delta
-    \qquad\Longrightarrow\qquad
-    \boxed{\underline{Z}_\Delta = 3\,\underline{Z}_Y}\]
+\frm{Delta naar Ster en omgekeerd (evenwichtig)}{\underline{Z}_Y = \frac{\underline{Z}_\Delta}{3} \quad , \quad \underline{Z}_\Delta = 3\,\underline{Z}_Y}{Met $\underline{Z}_Y$ de impedantie per tak van de equivalente Y-last in $\Omega$ en
+    $\underline{Z}_\Delta$ die van de $\Delta$-last in $\Omega$.}
 
-Dat verklaart meteen ook de ster-driehoekstarter: schakel dezelfde motorwikkelingen van ster naar
-driehoek en hun impedantie wordt drie keer kleiner, dus trekken ze drie keer meer stroom en drie
-keer meer vermogen. In ster start de motor zacht, in driehoek draait hij op vol vermogen.
+\textbf{Waar die factor 3 vandaan komt} (examenvraag). Eis: van buitenaf moeten beide schakelingen
+tussen twee klemmen dezelfde impedantie tonen.
 
-Als de belastingen niet evenwichtig zijn, moet je de volgende formules gebruiken (die volgen uit
-precies dezelfde eis, maar dan voor alle drie de klemmenparen tegelijk):
+\stapreden{In \textbf{ster} loop je van klem 1 naar klem 2 via het sterpunt, dus door twee takken in serie (de derde hangt er los bij):}
+\[\underline{Z}_{12,Y} = 2\,\underline{Z}_Y\]
 
+\stapreden{In \textbf{driehoek} zie je de tak 1--2 rechtstreeks, parallel met de twee andere in serie:}
+\[\underline{Z}_{12,\Delta} = \underline{Z}_\Delta \parallel 2\underline{Z}_\Delta
+    = \frac{2\underline{Z}_\Delta^2}{3\underline{Z}_\Delta} = \tfrac{2}{3}\,\underline{Z}_\Delta\]
+
+\stapreden{Gelijkstellen:}
+\[2\,\underline{Z}_Y = \tfrac{2}{3}\,\underline{Z}_\Delta
+    \qquad\Longrightarrow\qquad \boxed{\underline{Z}_\Delta = 3\,\underline{Z}_Y}\]
+
+\belangrijk{Dit is de ster-driehoekstarter.} Schakel dezelfde motorwikkelingen van ster naar
+driehoek en hun impedantie wordt 3$\times$ kleiner: 3$\times$ meer stroom en 3$\times$ meer vermogen.
+Starten in ster (zacht), draaien in driehoek (vol vermogen).
 
 \begin{figure}[ht]
     \centering
@@ -2264,219 +2749,93 @@ precies dezelfde eis, maar dan voor alle drie de klemmenparen tegelijk):
     \label{fig:omzettingster en driehoek.png}
 \end{figure}
 
-Noem de drie \emph{driehoek}impedanties $Z_1$, $Z_2$ en $Z_3$, en de drie bijhorende
-\emph{ster}impedanties $Z_a$, $Z_b$ en $Z_c$.
+Bij een \textbf{ongebalanceerde} last gelden de algemene formules. Noem de driehoekimpedanties
+$Z_1, Z_2, Z_3$ en de sterimpedanties $Z_a, Z_b, Z_c$.
 
 \frm{Omzetting driehoek- naar sterconfiguratie}
 {Z_a = \frac{Z_{1} Z_{3}}{Z_{1} + Z_{2} + Z_{3}} \quad , \quad
     Z_b = \frac{Z_{1} Z_{2}}{Z_{1} + Z_{2} + Z_{3}} \quad , \quad
     Z_c = \frac{Z_{2} Z_{3}}{Z_{1} + Z_{2} + Z_{3}}}
 {Met $Z_a, Z_b, Z_c$ de sterimpedanties in $\Omega$ en $Z_1, Z_2, Z_3$ de driehoekimpedanties in
-    $\Omega$. Ezelsbruggetje: in de teller staat het \textbf{product van de twee driehoektakken die
-        aan dat sterpunt raken}, in de noemer de \textbf{som van alle drie}.}
+    $\Omega$. Ezelsbruggetje: teller $=$ product van de twee driehoektakken die aan dat sterpunt
+    raken, noemer $=$ som van alle drie.}
 
 \frm {Omzetting ster- naar driehoekconfiguratie}
 {Z_{1} = \frac{Z_{a} Z_{b} + Z_{b} Z_{c} + Z_{c} Z_{a}}{Z_{c}} \quad , \quad
     Z_{2} = \frac{Z_{a} Z_{b} + Z_{b} Z_{c} + Z_{c} Z_{a}}{Z_{a}} \quad , \quad
     Z_{3} = \frac{Z_{a} Z_{b} + Z_{b} Z_{c} + Z_{c} Z_{a}}{Z_{b}}}
-{Met dezelfde symbolen. De teller is telkens \emph{dezelfde} som; enkel de noemer wisselt: de
+{Dezelfde symbolen. Teller is telkens \emph{dezelfde} som; enkel de noemer wisselt: de
     sterimpedantie die \textbf{tegenover} die driehoektak ligt.}
 
-\begin{examenbox}
-    Is de belasting \textbf{evenwichtig}, dan vereenvoudigen beide formules tot
-    \[Z_\Delta = 3 Z_Y\]
-    en dat is de vorm die je op het examen bijna altijd nodig hebt. De algemene formules hierboven
-    heb je enkel bij een \emph{ongebalanceerde} last.
-\end{examenbox}
+\subsubsection{Twee toepassingen van het recept}
 
-
-
-Hieronder een voorbeeld oefening uitgewerkt.
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.8\textwidth]{assets/vboefening.png}
-    \caption{Schema van het 3-fase systeem met transmissielijn en Delta-belasting uit de voorbeeldoefening.}
+    \caption{Y-bron met transmissielijn en $\Delta$-belasting.}
     \label{fig:vboefening.png}
 \end{figure}
 \FloatBarrier
-\begin{oefenblok}
 
+\begin{oefenblok}[Y-bron, lijnimpedantie, $\Delta$-last]
+    \textbf{Gegeven:} $\underline{V}_{an} = 100\angle 0^\circ$~V (positieve volgorde),
+    $\underline{Z}_{lijn} = 1 + j2\ \Omega$, $\underline{Z}_\Delta = 12 + j12\ \Omega$.
+    \textbf{Gevraagd:} de drie lijnstromen.
 
-    \textbf{Uitgewerkt voorbeeld: 3-fase systeem met transmissielijn en Delta-belasting}
+    \stapreden{\textbf{Stap 1} --- last naar ster:}
+    \[\underline{Z}_Y = \frac{12+j12}{3} = 4 + j4\ \Omega\]
 
-    We hebben een evenwichtig 3-fase systeem met de volgende kenmerken:
+    \stapreden{\textbf{Stap 3} valt weg (de bron staat al in ster en $\underline{V}_{an}$ is gegeven). \textbf{Stap 4} --- lijnimpedantie erbij:}
+    \[\underline{Z}_{tot} = (1+j2) + (4+j4) = 5 + j6 = 7{,}81\angle 50{,}19^\circ\ \Omega\]
 
-    \begin{description}
-        \item[Bron]: Evenwichtige Y-verbonden bron met positieve fasevolgorde (abc)
-              \begin{align*}
-                  \vec{V}_{an} & = 100\angle{0^\circ} \text{ V}    \\
-                  \vec{V}_{bn} & = 100\angle{-120^\circ} \text{ V} \\
-                  \vec{V}_{cn} & = 100\angle{120^\circ} \text{ V}
-              \end{align*}
-        \item[Lijnimpedantie]: $\vec{Z}_{\text{lijn}} = 1 + j2 \text{ } \Omega$ per fase
-        \item[Belasting]: Evenwichtige $\Delta$-verbonden belasting met $\vec{Z}_{\Delta} = 12 + j12 \text{ } \Omega$ per fase
-    \end{description}
+    \stapreden{\textbf{Stap 5} --- wet van Ohm:}
+    \[\underline{I}_a = \frac{100\angle 0^\circ}{7{,}81\angle 50{,}19^\circ}
+        = \boxed{12{,}80\angle -50{,}19^\circ\ \text{A}}\]
 
-    \textbf{Stap 1: Delta-belasting omzetten naar equivalente Ster-belasting}
-
-    Voor een evenwichtige belasting is de impedantie van de equivalente Y-verbonden belasting ($\vec{Z}_Y$)
-    één derde van de $\Delta$-verbonden belasting impedantie ($\vec{Z}_\Delta$):
-
-    $$\vec{Z}_Y = \frac{\vec{Z}_\Delta}{3} = \frac{12 + j12}{3} = 4 + j4 \text{ } \Omega$$
-
-    \textbf{Stap 2: Eenfase equivalent circuit analyseren (fase 'a')}
-
-    Nu kunnen we het eenfase equivalent circuit voor fase 'a' analyseren. Dit bestaat uit de bronspanning $\vec{V}_{an}$
-    in serie met de lijnimpedantie $\vec{Z}_{\text{lijn}}$ en de equivalente belastingsimpedantie $\vec{Z}_Y$.
-
-    \textbf{Bereken de totale impedantie per fase:}
-
-    Omdat $\vec{Z}_{\text{lijn}}$ en $\vec{Z}_Y$ in serie staan:
-
-    $$\vec{Z}_{\text{totaal}} = \vec{Z}_{\text{lijn}} + \vec{Z}_Y = (1 + j2) + (4 + j4) = 5 + j6 \text{ } \Omega$$
-
-    \textbf{Omzetten naar poolcoördinaten:}
-
-    \begin{align*}
-        |\vec{Z}| & = \sqrt{5^2 + 6^2} = \sqrt{61} \approx 7.81 \text{ } \Omega \\
-        \theta    & = \tan^{-1}\left(\frac{6}{5}\right) \approx 50.19^\circ
-    \end{align*}
-
-    $$\vec{Z}_{\text{totaal}} \approx 7.81\angle{50.19^\circ} \text{ } \Omega$$
-
-    \textbf{Stap 3: Bereken lijnstroom $\vec{I}_a$}
-
-    Met behulp van de wet van Ohm voor het eenfase equivalent circuit:
-
-    $$\vec{I}_a = \frac{\vec{V}_{an}}{\vec{Z}_{\text{totaal}}} = \frac{100\angle{0^\circ}}{7.81\angle{50.19^\circ}} = 12.80\angle{-50.19^\circ} \text{ A}$$
-
-    \textbf{Stap 4: Bepaal $\vec{I}_b$ en $\vec{I}_c$}
-
-    Omdat het systeem evenwichtig is met positieve fasevolgorde (abc), hebben de lijnstromen dezelfde magnitude
-    (12.80 A) maar zijn ze faseverschoven met $-120^\circ$ en $+120^\circ$ ten opzichte van $\vec{I}_a$:
-
-    $$\vec{I}_b = 12.80\angle{-50.19^\circ - 120^\circ} = 12.80\angle{-170.19^\circ} \text{ A}$$
-
-    $$\vec{I}_c = 12.80\angle{-50.19^\circ + 120^\circ} = 12.80\angle{69.81^\circ} \text{ A}$$
-    \textbf{Eindantwoord}
-
-    De drie lijnstromen zijn:
-
-    \begin{align*}
-        \vec{I}_a & = 12.80\angle{-50.19^\circ} \text{ A}  \\
-        \vec{I}_b & = 12.80\angle{-170.19^\circ} \text{ A} \\
-        \vec{I}_c & = 12.80\angle{69.81^\circ} \text{ A}
-    \end{align*}
+    \stapreden{\textbf{Stap 6} --- de andere twee volgen gratis:}
+    \[\underline{I}_b = \boxed{12{,}80\angle -170{,}19^\circ\ \text{A}}
+        \qquad
+        \underline{I}_c = \boxed{12{,}80\angle 69{,}81^\circ\ \text{A}}\]
 \end{oefenblok}
 
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.8\textwidth]{assets/vboef.png}
-    \caption{Schema van het 3-fase systeem met Delta-bron en gemengde Ster/Delta-belasting uit de voorbeeldoefening.}
+    \caption{$\Delta$-bron met gemengde Y/$\Delta$-belasting.}
     \label{fig:vboef.png}
 \end{figure}
+\FloatBarrier
 
+\begin{oefenblok}[$\Delta$-bron, twee parallelle lasten --- alle zes stappen]
+    \textbf{Gegeven:} $\underline{V}_{ab} = 440\angle 0^\circ$~V (positieve volgorde),
+    $\underline{Z}_l = 2\ \Omega$, last 1 in ster ($4 + j6\ \Omega$), last 2 in driehoek
+    ($12 - j15\ \Omega$). \textbf{Gevraagd:} de lijnstromen.
 
-\begin{oefenblok}
+    \stapreden{\textbf{Stap 1} --- de $\Delta$-last naar ster:}
+    \[\underline{Z}_{\Delta \to Y} = \frac{12 - j15}{3} = 4 - j5\ \Omega\]
 
-    \begin{description}
-        \item[Bron]: Delta-verbonden bron met $\vec{V}_{ab} = 440\angle{0^\circ}$ V. Dit is positieve fasevolgorde (abc).
-        \item[Lijnimpedantie]: $\vec{Z}_l = 2 \text{ } \Omega$
-        \item[Belastingen]:
-              \begin{itemize}
-                  \item Belasting 1 (Ster): $\vec{Z}_Y = 4 + j6 \text{ } \Omega$
-                  \item Belasting 2 (Delta): $\vec{Z}_\Delta = 12 - j15 \text{ } \Omega$
-              \end{itemize}
-    \end{description}
+    \stapreden{\textbf{Stap 2} --- nu staan twee sterlasten parallel, dus product over som:}
+    \[\underline{Z}_p = \frac{(4+j6)(4-j5)}{(4+j6)+(4-j5)} = \frac{46+j4}{8+j1}
+        = \frac{372 - j14}{65} = 5{,}723 - j0{,}215\ \Omega\]
 
-    \textbf{Strategie}: We zetten het hele circuit om naar een eenfase equivalent. Daarvoor moeten we de Delta-bron omzetten naar een Ster-bron en de Delta-belasting naar een Ster-belasting.
+    \stapreden{\textbf{Stap 3} --- de bron staat in driehoek, dus je krijgt de \emph{lijn}spanning. Omzetten naar de fasespanning van het equivalent:}
+    \[\underline{V}_{an} = \frac{440}{\sqrt{3}}\angle(0^\circ - 30^\circ) = 254{,}03\angle -30^\circ\ \text{V}\]
 
-    \textbf{Stap 1: Delta-belasting omzetten naar equivalente Ster-belasting}
+    \stapreden{\textbf{Stap 4} --- lijnimpedantie in serie:}
+    \[\underline{Z}_{tot} = 2 + (5{,}723 - j0{,}215) = 7{,}723 - j0{,}215 = 7{,}726\angle -1{,}59^\circ\ \Omega\]
 
-    We gebruiken de "Deel door 3" regel om de Delta-belasting ($\vec{Z}_\Delta$) om te zetten naar een equivalente Ster-belasting ($\vec{Z}_{\Delta \to Y}$):
+    \stapreden{\textbf{Stap 5 en 6}:}
+    \[\underline{I}_a = \frac{254{,}03\angle -30^\circ}{7{,}726\angle -1{,}59^\circ}
+        = \boxed{32{,}88\angle -28{,}41^\circ\ \text{A}}\]
+    \[\underline{I}_b = \boxed{32{,}88\angle -148{,}41^\circ\ \text{A}}
+        \qquad
+        \underline{I}_c = \boxed{32{,}88\angle 91{,}59^\circ\ \text{A}}\]
 
-    $$\vec{Z}_{\Delta \to Y} = \frac{\vec{Z}_\Delta}{3} = \frac{12 - j15}{3} = 4 - j5 \text{ } \Omega$$
-
-    Nu hebben we aan de belastingskant effectief twee Ster-impedanties in parallel:
-    \begin{itemize}
-        \item Originele $\vec{Z}_Y = 4 + j6 \text{ } \Omega$
-        \item Omgezette $\vec{Z}_{\Delta \to Y} = 4 - j5 \text{ } \Omega$
-    \end{itemize}
-
-    \textbf{Stap 2: Bereken de equivalente belastingsimpedantie ($\vec{Z}_p$)}
-
-    Omdat deze twee equivalente Ster-belastingen in parallel staan, gebruiken we de product-over-som formule:
-
-    $$\vec{Z}_p = \frac{\vec{Z}_Y \cdot \vec{Z}_{\Delta \to Y}}{\vec{Z}_Y + \vec{Z}_{\Delta \to Y}}$$
-
-    \textbf{Teller (Product):}
-    $$(4+j6)(4-j5) = 16 - j20 + j24 + 30 = 46 + j4$$
-
-    \textbf{Noemer (Som):}
-    $$(4+j6) + (4-j5) = 8 + j1$$
-
-    \textbf{Deling:}
-    $$\vec{Z}_p = \frac{46 + j4}{8 + j1}$$
-
-    Vermenigvuldig boven en onder met de geconjugeerde ($8 - j1$):
-
-    $$\vec{Z}_p = \frac{(46 + j4)(8 - j1)}{(8 + j1)(8 - j1)} = \frac{368 - j46 + j32 + 4}{65} = \frac{372 - j14}{65}$$
-
-    $$\vec{Z}_p \approx 5.723 - j0.215 \text{ } \Omega$$
-
-    \textbf{Stap 3: Zet de bron om naar Ster}
-
-    Het probleem geeft de lijnspanning $\vec{V}_{ab} = 440\angle{0^\circ}$ V. Voor het eenfase equivalent hebben we de fase-naar-nul spanning $\vec{V}_{an}$.
-
-    Bij positieve fasevolgorde is de fasespanningsgrootte gedeeld door $\sqrt{3}$, en de hoek verschoven met $-30^\circ$:
-
-    $$\vec{V}_{an} = \frac{440}{\sqrt{3}}\angle{(0^\circ - 30^\circ)} \approx 254.03\angle{-30^\circ} \text{ V}$$
-    \textbf{Stap 4: Bereken totale impedantie en lijnstroom $\vec{I}_a$}
-
-    Nu hebben we een simpele lus met bronspanning $\vec{V}_{an}$, lijnimpedantie $\vec{Z}_l$ en equivalente belastingsimpedantie $\vec{Z}_p$.
-
-    \textbf{Totale impedantie:}
-    $$\vec{Z}_{totaal} = \vec{Z}_l + \vec{Z}_p = 2 + (5.723 - j0.215) = 7.723 - j0.215 \text{ } \Omega$$
-
-    \textbf{Omzetten naar poolcoördinaten:}
-
-    Magnitude: $\sqrt{7.723^2 + 0.215^2} \approx 7.726$
-
-    Hoek: $\tan^{-1}\left(\frac{-0.215}{7.723}\right) \approx -1.59^\circ$
-
-    $$\vec{Z}_{totaal} = 7.726\angle{-1.59^\circ} \text{ } \Omega$$
-
-    \textbf{Bereken $\vec{I}_a$ met wet van Ohm:}
-
-    $$\vec{I}_a = \frac{\vec{V}_{an}}{\vec{Z}_{totaal}} = \frac{254.03\angle{-30^\circ}}{7.726\angle{-1.59^\circ}}$$
-
-    $$\vec{I}_a = 32.88\angle{(-30^\circ - (-1.59^\circ))} = 32.88\angle{-28.41^\circ} \text{ A}$$
-
-    \textbf{Stap 5: Bepaal $\vec{I}_b$ en $\vec{I}_c$}
-
-    Pas de $120^\circ$ faseverschuiving toe voor een evenwichtig positief systeem:
-    $$\vec{I}_a = 32.88\angle{-28.41^\circ} \text{ A}$$
-
-    $$\vec{I}_b = 32.88\angle{(-28.41^\circ - 120^\circ)} = 32.88\angle{-148.41^\circ} \text{ A}$$
-
-    $$\vec{I}_c = 32.88\angle{(-28.41^\circ + 120^\circ)} = 32.88\angle{91.59^\circ} \text{ A}$$
-
-    \textbf{Samenvatting van de stappen}
-
-    \begin{enumerate}
-        \item Zet $\Delta$-belasting om naar Y-belasting (deel door 3)
-        \item Combineer parallelle belastingen (product over som)
-        \item Zet bronlijnspanning om naar fasespanning (deel door $\sqrt{3}$, verschuif $-30^\circ$)
-        \item Tel lijnimpedantie op
-        \item Gebruik wet van Ohm
-    \end{enumerate}
-
+    \textbf{Kerninzicht.} De $\Delta$-bron is nooit echt omgezet naar drie bronnen --- je hebt alleen
+    de \emph{spanning} herrekend. Dat volstaat, want het eenfase-equivalent heeft enkel
+    $\underline{V}_{an}$ nodig. Diezelfde $-30^\circ$ komt overal terug: van lijn- naar
+    fasespanning.
 \end{oefenblok}
-
-
-
-
-
 
 \subsection{3-fase vermogen}
 
@@ -2916,6 +3275,23 @@ waarom de examenoefeningen zo vaak ongebalanceerd zijn.
     \[\underline{V}_{AN'} = \underline{V}_{AN} - \underline{V}_{N'N} \quad , \quad
         \underline{V}_{BN'} = \underline{V}_{BN} - \underline{V}_{N'N} \quad , \quad
         \underline{V}_{CN'} = \underline{V}_{CN} - \underline{V}_{N'N}\]}
+
+\begin{theorie}[Werkwijze bij een ongebalanceerde ster]
+    Kijk eerst of er een \textbf{nulgeleider} is --- dat bepaalt alles.
+    \begin{enumerate}
+        \item \textbf{Mét nulgeleider.} Het sterpunt ligt vast, dus over elke tak staat gewoon haar
+              eigen fasespanning. Reken de drie takken \emph{onafhankelijk} van elkaar uit:
+              $\underline{I}_a = \underline{V}_{AN}/\underline{Z}_a$, enzovoort. Daarna
+              $\underline{I}_N = \underline{I}_a + \underline{I}_b + \underline{I}_c \neq 0$.
+        \item \textbf{Zonder nulgeleider.} Het sterpunt $N'$ zweeft. Bereken eerst de verschuiving
+              $\underline{V}_{N'N}$ met Millman (hieronder), trek die van elke fasespanning af, en
+              reken pas dan de takstromen.
+        \item Controleer altijd: zonder nulgeleider moet
+              $\underline{I}_a + \underline{I}_b + \underline{I}_c = 0$.
+        \item Vermogens per tak: $P = \sum I_f^2R$ en $Q = \sum I_f^2X$. \textbf{Nooit}
+              $\sqrt{3}V_LI_L\cos\phi$ --- die formule veronderstelt evenwicht.
+    \end{enumerate}
+\end{theorie}
 
 \begin{theorie}[Werkwijze bij een ongebalanceerde driehoek]
     \begin{enumerate}
