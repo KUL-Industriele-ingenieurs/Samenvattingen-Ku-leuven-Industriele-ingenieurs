@@ -85,7 +85,7 @@ Het gemiddelde uitgangsspanning is:
   Zet de juiste diodes afhankelijk van het gegeven circuit:
 
   #figure(
-    image("assets/Oefening rectifier.png", width: 5cm),
+    image("assets/Oefening rectifier.png", width: 12cm),
     caption: [Oefening rectifier],
     label: <fig:Oefening-rectifier>,
   )

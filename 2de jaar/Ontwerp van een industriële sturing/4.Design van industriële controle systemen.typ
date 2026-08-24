@@ -368,15 +368,67 @@ Hoe zorgen we ervoor dat we deftig onze inputs en outputs kunenn connecteren. Di
 === Soorten signalen
 
 
-#TODO[Deck 3, slide 36: overzicht van het interfacen van digitale I/O van een toestel.]
+Er bestaan PNP-, NPN- en universele ingangen. #belangrijk[Leer handleidingen lezen], want dat is de enige manier om te weten wat een toestel verwacht.
+
+De regel waar alles op neerkomt:
+
+#belangrijk[Eén verbinding kan pas een signaal doorgeven als een tweede verbinding dient als spanningsreferentie en de kring sluit.]
+
+Daaruit volgt de praktijk:
+
+- Stuur je een stuurspanning uit de kast naar de ingang van een toestel, dan moet je #strong[ook de nul van die kast] naar dat toestel doortrekken. Anders is er geen referentie en sluit de kring niet.
+- Je kan natuurlijk voor elke spanning een extra SMPS (Switched-Mode Power Supply) bijzetten. Soms zit die al ingebouwd, bijvoorbeeld in een VFD (Variable Frequency Drive): daar is vaak een galvanisch gescheiden laagspanning beschikbaar van $24 "V"$, $12 "V"$ of $5 "V"$ om mee te interfacen.
 
 === Smart I/O-kaarten
 
-#TODO[Deck 3, slides 62-64. Beckhoff KL2541 en andere smart I/O-kaarten, en smart I/O op de PLC zelf: wanneer leg je intelligentie in de klem in plaats van in het programma.]
+Een gewone PLC-ingang of -uitgang is #belangrijk[te traag] om een SSR (Solid State Relay) of optocoupler op zijn maximale snelheid te lezen of te schakelen. De scancyclus van de CPU is daarvoor gewoon te lang.
+
+De oplossing is een #keyterm[smart I/O-kaart]: een klem met een eigen microcontroller. Het klassieke voorbeeld uit de slides is de Beckhoff KL2541. Wat zo'n kaart kan:
+
+- werken met een cyclustijd die veel korter is dan die van de PLC-CPU;
+- uitgangspulsen lezen op hoge frequentie, bijvoorbeeld encoderpulsen;
+- uitgangspulsen moduleren met PWM;
+- resultaten in een buffer opslaan, of met een gebufferde waarde werken;
+- via de backplane-bus met de CPU communiceren.
+
+#belangrijk[Leg de intelligentie in de klem zodra de snelheid van het signaal boven de scancyclus van de PLC uitkomt.] Alles wat trager is, programmeer je gewoon in de PLC.
+
+Andere smart I/O-kaarten die de slides noemen:
+
+- motion drive (stepper, VFD);
+- PWM-uitgangskaart;
+- snelle tellerkaart;
+- encoder-interfacekaart;
+- PID-regelaarkaart;
+- communicatiekaart, met een zend- en een ontvangbuffer.
+
+=== Smart I/O op de PLC zelf <sec:smart-io-plc>
+
+Ook zonder aparte kaart heeft een moderne PLC al wat snelle hardware aan boord:
+
+- #keyterm[HSC]-ingangen (High Speed Counter);
+- pulsuitgangen;
+- de hoofdcommunicatie-interface, bijvoorbeeld de Profinet-aansluitingen.
 
 === Universele in- en uitgangen
 
-#TODO[Deck 3, slide 35. Universal inputs: één klem die zowel sourcing als sinking aankan, en waarom dat handig is.]
+Bij het interfacen levert het ene component de stroom (source) en neemt het andere ze op (sink). Samen vormen ze een gesloten stroomweg, en pas dan wordt de ingang actief.
+
+Sommige producten kunnen #keyterm[allebei]. Zo'n universele ingang werkt dankzij #strong[bidirectionele dioden] die parallel geschakeld zijn: de stroom mag in beide richtingen lopen.
+
+- *Sink wiring* (positieve logica): de common van de digitale ingangen gaat naar $24 "V"$. Zo sluit je bijvoorbeeld PNP-sensoren aan.
+- *Source wiring:* de common van de digitale ingangen gaat naar $0 "V"$.
+
+Waarom dat handig is:
+
++ *Flexibiliteit bij aansluiten*, bijvoorbeeld als je het toestel later wil hergebruiken voor iets anders.
++ *Minder risico op schade.* Een verkeerde aansluiting kan een gewone in- of uitgang vernielen; een universele ingang overleeft dat.
+
+#figure(
+  image("assets/OIS_universal_inputs.png", width: 12cm),
+  caption: [Universele ingangen. Links de common van de digitale ingangen naar $24 "V"$ (sink wiring), rechts naar $0 "V"$ (source wiring).],
+  label: <fig:universal-inputs>,
+)
 
 
 

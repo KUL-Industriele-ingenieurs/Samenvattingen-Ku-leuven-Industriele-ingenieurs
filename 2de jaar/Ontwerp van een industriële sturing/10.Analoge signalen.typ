@@ -182,4 +182,40 @@ Bij differentiële ingangen is de *common mode voltage* belangrijk: dat is de ge
 
 Sluit signaaldraden aan met *afgeschermde twisted pair*, en gebruik een stabiele voeding. Bij Beckhoff KL-modules is het bovendien opletten: enkel een paar types (KL3051, KL3052, KL3041, KL3042 en KL3454) voeden de stroomlus zelf en horen dus bij een passieve transmitter. Alle andere analoge ingangen gedragen zich als een vaste weerstand en hebben een externe voeding nodig. Sommige analoge klemmen onderbreken ook de $24 "V"$ voedingsrail naar de volgende module, waardoor je een voedingsklem (bv. KL9100) moet bijplaatsen.
 
-#TODO[Nog aan te vullen uit deck 6 slides 49 en deck 8 slides 21-22: alternatieve sensorinterfaces (HART, IO-Link) en de KL5101 encoder-interface.]
+== Alternatieve sensor- en actorinterfaces <sec:sensor-actor-interfaces>
+
+Naast de klassieke $4$--$20 "mA"$-lus bestaan er andere manieren om een analoge sensor aan te sluiten. Die noem je samen #keyterm[sensor/actor interfaces]. De slides noemen er twee: #keyterm[HART] en #keyterm[IO-Link].
+
+Een IO-Link-toestel kan een intelligente sensor of actuator zijn, een hub, of, dankzij de #strong[bidirectionele] communicatie, ook een mechatronische component zoals een grijper of een voeding met IO-Link-aansluiting.
+
+#belangrijk["Intelligent" betekent hier dat het toestel gegevens over zichzelf bijhoudt] die je via het protocol kan lezen of schrijven:
+
+- identificatiegegevens, zoals een typeaanduiding en een serienummer;
+- parametergegevens, zoals gevoeligheden, schakelvertragingen of karakteristieken.
+
+Het voordeel: je kan een sensor uitlezen en instellen zonder hem fysiek aan te raken, en na vervanging schrijf je de parameters gewoon opnieuw weg.
+
+== De KL5101 encoder-interface <sec:kl5101>
+
+De Beckhoff KL5101 is het voorbeeld uit de slides van een #keyterm[smart I/O]-klem voor een incrementele encoder (zie ook @sec:smart-io-plc). De klem kan pulsen tellen in het algemeen, of specifiek als encoder-interface werken.
+
+De ingangen:
+
+#table(
+  columns: (auto, 1fr),
+  align: (left, left),
+  stroke: none,
+  inset: 5pt,
+  table.hline(stroke: 1pt),
+  table.header([*Ingang*], [*Functie*]),
+  table.hline(stroke: 0.5pt),
+  [A, /A], [pulsingang, in encoder- én in tellermodus],
+  [B, /B], [in encodermodus: de faseverschoven pulsingang; in tellermodus: de telrichting ($+5 "V"$ of open contact = op, $0 "V"$ = neer)],
+  [C, /C], [nulpuntpuls voor het latchregister van de klem],
+  [External Latch $24 "V"$], [externe latch-ingang],
+  table.hline(stroke: 1pt),
+)
+
+#belangrijk[Let op de spanningsniveaus: A, /A, B, /B en C, /C werken op $5 "V"$], ook wanneer je de klem als gewone teller gebruikt. De externe latch werkt daarentegen op $24 "V"$.
+
+De dubbele benaming A en /A is geen toeval: dat is #strong[differentiële signalering] uit @sec:differentiele-signalering. Elke puls komt over twee draden met tegengestelde polariteit, zodat ingekoppelde storing wegvalt in het verschil. Bij een encoder met snelle pulsen over een lange kabel is dat noodzakelijk.

@@ -511,7 +511,56 @@ Zodra dat het geval is, trekt de armatuur aan, duwt de isolerende stoter het con
 
 == Start-stopschakeling en zelfhouding
 
-#TODO[Deck 1, slides 69-80. De klassieke start-stopschakeling met signaallamp: hoe een N.O.-startknop, een N.C.-stopknop en een hulpcontact van het relais samen een geheugen vormen (zelfhouding). Praktische realisatie met een 11-pins relais en met een MY4. Waarom de stopknop N.C. is.]
+Een relais is goedkoop en simpel, en daarom bouw je er vaak logica mee. De bekendste schakeling is de #keyterm[start-stopschakeling]. Die zit in bijna elke machine, soms als relais, soms als PLC-code.
+
+#belangrijk[Dit is de basisschakeling van de industriële automatisering.] Het is een geheugenfunctie, gebouwd met een monostabiele component.
+
+=== Hoe de zelfhouding werkt <sec:zelfhouding>
+
+Kijk naar de linkertak van @fig:startstop-schema. Van de $24 "V"$-rail naar beneden staan twee takken parallel:
+
+- de startknop `-S2`, een N.O.-drukknop;
+- een hulpcontact `-K1` van het relais zelf, ook N.O.
+
+Die twee komen samen en gaan via de stopknop `-S3` (N.C.) naar de spoel `-K1`, en dan naar $0 "V"$.
+
+De werking volgt daaruit:
+
++ *In rust* is `-S2` open en `-K1` niet bekrachtigd, dus zijn hulpcontact staat open. De spoel krijgt geen spanning.
++ *Druk je op start*, dan sluit `-S2` en trekt de spoel aan. Daardoor sluit meteen ook het hulpcontact `-K1`.
++ *Laat je start los*, dan blijft de spoel bekrachtigd via haar eigen hulpcontact. Dat is de #keyterm[zelfhouding]: de schakeling onthoudt dat ze aan staat.
++ *Druk je op stop*, dan onderbreekt `-S3` de tak. De spoel valt af, het hulpcontact opent, en de schakeling blijft uit ook nadat je stop loslaat.
+
+De rechtertak is de signaallamp `-P1`, gestuurd door een tweede N.O.-contact van `-K1`. Zo weet de operator dat de machine aan staat.
+
+#figure(
+  image("assets/OIS_startstop_schema.png", width: 12cm),
+  caption: [De start-stopschakeling met signaallamp. Startknop `-S2` en het hulpcontact `-K1` staan parallel, in serie met de N.C.-stopknop `-S3` en de spoel `-K1`.],
+  label: <fig:startstop-schema>,
+)
+
+#belangrijk[Elke goede oplossing keert terug naar de begintoestand.] Alleen dan geeft een tweede doorloop hetzelfde resultaat.
+
+=== De vier regels die je moet kennen <sec:startstop-regels>
+
++ *Het voorkomt automatisch herstarten na spanningsuitval.* Valt de $24 "V"$ weg, dan valt de spoel af en gaat de zelfhouding open. Komt de spanning terug, dan blijft de machine uit tot iemand opnieuw op start duwt.
++ *Je kan het als noodstopkring gebruiken*, precies om die reden.
++ *Je schakelt altijd de $24 "V"$, nooit de $0 "V"$.*
++ #belangrijk[Stop heeft altijd voorrang, en een stopcontact is altijd N.C.] Duw je op start en stop tegelijk, dan wint stop. Bovendien is een N.C.-stopknop fail-safe: breekt de draad naar de stopknop, dan valt de machine stil in plaats van onstuurbaar door te draaien.
+
+#figure(
+  image("assets/OIS_startstop_11pins.png", width: 11cm),
+  caption: [Praktische uitvoering met een 11-pins relais. Dezelfde logica, maar nu met de echte pennummers van het relais.],
+  label: <fig:startstop-11pins>,
+)
+
+Dezelfde schakeling bouw je ook met een MY4-relais. De logica blijft identiek; alleen de klemmennummering verschilt.
+
+#waarschuwing[
+  *Zwevende spanningen.* Druk je op de stopknop, dan is het knooppunt boven die knop nergens meer mee verbonden. Dat stuk heeft dan geen referentie meer: de spanning erop is #keyterm[zwevend].
+
+  Zo'n zwevende spanning heeft geen echte waarde. Er zitten bovendien maar weinig ladingen op, zodat die bij het meten meteen door je meettoestel weglopen. Je kan dat stuk dus niet zinvol meten.
+]
 
 == Signal time Diagram
 
@@ -667,24 +716,252 @@ In een bedrijf wordt vaak een standaard gebruikt voor het benoemen van programma
 
 === N.O. en N.C. aan een PLC-ingang
 
-#TODO[Deck 1, slides 101-103. Combinatorisch of niet? En hoe je een N.C.-contact in de hardware combineert met de logica in het programma.]
+Voor je begint te programmeren stel je één vraag: heeft de uitgang geheugen nodig of niet?
+
+- *Combinatorische schakeling:* de uitgang hangt #strong[alleen] af van de huidige toestand van de ingangen. Een AND-functie bijvoorbeeld.
+- *Geheugenschakeling:* de uitgang hangt óók af van wat er eerder gebeurde. De start-stopschakeling is het schoolvoorbeeld.
+
+#belangrijk[Gebruik zo weinig mogelijk geheugens.] Neem er net genoeg om alle nodige condities te kunnen uitdrukken als combinaties van ingangen en geheugentoestanden. De reden is praktisch:
+
+- in complexere systemen vergeet je makkelijk een toestand;
+- je hebt beperkte mogelijkheden om het gedrag ná een noodstop vast te leggen;
+- de oplossing wordt razendsnel te ingewikkeld.
+
+=== Hardware N.C. tegenover software N.O. <sec:nc-hardware-software>
+
+Neem een netwerk met twee N.O.-contacten in serie, gevolgd door een toekenning aan een uitgangsspoel. Die toekenning schrijft het #keyterm[RLO] (Result of Logic Operation) weg naar een variabele. Dat mag een uitgang of een interne merker zijn, #strong[nooit] een ingang: de toestand van een ingang wordt van buitenaf opgelegd door de drukknop die eraan hangt.
+
+Nu de valkuil. De stopknop is in de #strong[hardware] N.C. Die variabele is dus "true" zolang je #strong[niet] duwt. Gevolg: dit netwerk geeft een actieve uitgang als je op geen enkele knop duwt, en de uitgang valt weg zodra je op één van beide knoppen duwt.
+
+#belangrijk[Een N.C.-knop in de hardware wordt dus een N.O.-contact in je programma.] Leer dat niet vanbuiten, maar redeneer telkens opnieuw: wat staat er op de klem als niemand iets doet?
 
 === Start/stop als flip-flop
 
-#TODO[Deck 1, slides 104-109. Relais versus PLC (LAD) implementatie van start/stop. De RS-flipflop: de directe aanpak (methode 1) en de tweede oplossing. Duplicaten en tegengestelden wegwerken, onnodige condities schrappen.]
+Dezelfde start-stopschakeling bouw je in LAD na. Twee vragen komen daarbij altijd terug.
+
+*Waarom staat de stopknop als N.C. geconfigureerd?* Zie @sec:nc-hardware-software. Redeneer, leer het niet vanbuiten.
+
+*Waarom zet je de uitgang niet meteen in netwerk 1?* Omdat je de logica en de uitgang gescheiden houdt. Ken het resultaat eerst toe aan een merker, de #keyterm[logische toestand van de machine]. Pas later koppel je de fysieke PLC-uitgang aan die toestand. Dat is de basisregel uit @sec:lad-basisregel.
+
+=== De RS-flipflop opbouwen: methode 1 <sec:rs-methode1>
+
+De directe aanpak volgt drie stappen:
+
++ Is #strong[set] waar, dan is de uitgang altijd waar. Aan die tak raak je daarna nooit meer.
++ Om een geheugen te maken heb je een #strong[parallelle tak] nodig die de uitgang terugkoppelt wanneer je niet aan het setten bent.
++ Om het geheugen te kunnen wissen zet je de #strong[reset] in die terugkoppeltak, zonder regel 1 te schenden.
+
+#figure(
+  image("assets/OIS_rs_flipflop_methode1.png", width: 11cm),
+  caption: [De RS-flipflop via de directe aanpak: set in de eerste tak, terugkoppeling met reset in de parallelle tak.],
+  label: <fig:rs-flipflop-methode1>,
+)
+
+=== De tweede oplossing: van waarheidstabel naar schema <sec:rs-methode2>
+
+Je kan ook vertrekken van de waarheidstabel en die uitvouwen naar een schema. Let op: dat geeft een implementatie in #strong[negatieve logica].
+
+Zo'n uitgevouwen schema is nooit meteen de eindvorm. Je vereenvoudigt in twee stappen:
+
++ *Duplicaten en tegengestelden wegwerken.* Termen die twee keer voorkomen, of die elkaars tegengestelde zijn, kan je samennemen.
++ *Onnodige condities schrappen.* Set activeert de uitgang sowieso, dus hoef je set niet nog eens uit te sluiten in de eerste tak.
+
+Werk je beide stappen af, dan kom je uit op #strong[dezelfde] oplossing als met methode 1. Dat is meteen je controle: twee verschillende wegen die op hetzelfde schema uitkomen.
 
 === LAD-conventies en de basisregel
 
-#TODO[Deck 1, slides 110-111. De conventies bij het tekenen van ladder logic, en "the MOST basic rule for PLC programming": schrijf een uitgang maar op één plaats.]
+=== LAD-conventies <sec:lad-conventies>
+
+- Het #keyterm[RLO] (Result of Logic Operation) is het tussenresultaat van de logische condities in een netwerk: N.O.-contact, flankdetectie, timer, enzovoort. Het is waar of niet waar.
+- #belangrijk[Elk RLO moet uiteindelijk door een instructie gebruikt worden], anders breekt de compilatie af. Alle netwerken en alle parallelle takken moeten dus afgesloten zijn.
+- Zet je de software in #strong[monitor], dan zie je het RLO live: een groene lijn betekent "hier is het RLO waar".
+- Sommige instructies zijn #strong[voorwaardelijk] en worden alleen uitgevoerd als het RLO waar is, zoals `set` en `reset`. Een uitgangsspoel daarentegen kent de waarde van het RLO #strong[continu] toe aan de variabele.
+
+=== De basisregel: I $arrow.r$ M $arrow.r$ Q <sec:lad-basisregel>
+
+#belangrijk[Splits je software in twee delen.]
+
++ *I $arrow.r$ M.* Eerst leg je de #keyterm[logische toestanden van de machine] vast. Je koppelt de ingangen en andere logische toestanden aan variabelen, meestal merkers. Bij een sequentie doe je dat heel expliciet, maar het is altijd goede praktijk.
++ *M $arrow.r$ Q.* Pas daarna bepaal je de toestand van elke uitgang.
+
+Meerdere toestanden mogen naar dezelfde uitgang verwijzen, dat is geen probleem. Er mogen zelfs meerdere sequenties dezelfde uitgangen gebruiken.
+
+#belangrijk[Schrijf elke uitgang op precies één plaats in je programma.] Programmeer de uitgangen bovendien in de numerieke volgorde waarin de kabels aangesloten zijn. Zo kan je onmogelijk twee keer dezelfde uitgang aansturen zonder het te merken.
 
 === Combinatorische en geheugencircuits programmeren
 
-#TODO[Deck 1, slides 112-116. Programmeermethodiek met een uitgewerkt voorbeeld.]
+De vraag is hoe je de logische toestanden van de machine programmeert. De werkwijze:
+
++ Analyseer de opdracht en herken wat er geprogrammeerd moet worden. #belangrijk[Splits de opdracht op in de kleinst mogelijke stukken.]
++ Formuleer elk stuk als een #strong[ja/nee-vraag] in het commentaarveld van het netwerk. De code in dat netwerk geeft dan het antwoord op die vraag.
++ Zo valt de oplossing vanzelf uiteen in kleine, leesbare netwerken.
+
+Het voordeel: je software is meteen gedocumenteerd. Je hoeft achteraf geen commentaar meer toe te voegen, en documentatie verhoogt de waarde van je product.
+
+=== De standaardnetwerken <sec:standaardnetwerken>
+
+Je bouwt logica bijna altijd met dezelfde blokken:
+
+- combinatorische schakelingen, soms met flankdetectie;
+- de SR-flipflop (RS en het impulsrelais zijn zeldzaam);
+- de IEC TON-timer, soms als oscillator: de uitgang wordt als N.C.-conditie teruggekoppeld, waardoor de timer zichzelf na één scan uitschakelt en in de volgende scan herstart;
+- de IEC-teller, met flankdetectie al ingebouwd achter de telingangen;
+- waarde-instructies: math, compare, convert, move. Let op dat math-instructies vaak een flankdetectie ervóór nodig hebben.
+
+#oefening(title: "Voorbeeldopdracht uit de slides")[
+  *Opdracht 1.* Een machine wordt bediend met twee drukknoppen, start en stop. De machine moet starten wanneer iemand de startknop #strong[minstens twee seconden] ingedrukt houdt. Wordt stop gedrukt, dan stopt de machine onmiddellijk, wat er ook aan de hand is. Er is één uitgang: de signaallamp die toont dat de machine aan staat.
+
+  *Denkstap.* Splits op in ja/nee-vragen:
+  - "Is de startknop lang genoeg ingedrukt?" $arrow.r$ TON-timer op de startingang.
+  - "Moet de machine aan staan?" $arrow.r$ SR-flipflop, met de timeruitgang als set en de stopknop als reset. Reset krijgt voorrang, want stop moet altijd winnen.
+  - "Welke uitgang hoort daarbij?" $arrow.r$ apart netwerk, merker naar signaallamp.
+
+  Denk eraan hoe je een stopknop simuleert: in de hardware N.C., dus in je programma een N.O.-contact.
+
+  *Opdracht 2.* Zelfde opdracht, maar operatoren saboteren de startknop door hem met een balletje en tape ingedrukt te houden. Je moet dus detecteren dat de knop #strong[opnieuw] ingedrukt wordt in plaats van gewoon ingedrukt #strong[staat]. Daarvoor gebruik je flankdetectie.
+]
 
 == Sequenties programmeren
 
-#TODO[Deck 1, slides 117-133. Wat is een sequentie, de I $arrow.r$ M $arrow.r$ O methodiek, implementatie met SR-blokken, stappen aan elkaar linken, uitgangen programmeren, cross-protect op Q, de ADD-gebaseerde sequentie en de typische machinebediening (start/stop/reset-knoppen).]
+Een #keyterm[sequentie] is de manier om een programma te schrijven dat cyclisch verloopt. Denk aan een robot die telkens een plaat optilt en hoger neerlegt.
+
+#belangrijk[De eerste vraag bij elk programma is: "is er een sequentie?"] Is het antwoord ja, dan gebruik je de sequentiemethode. Is het nee, dan programmeer je combinatorische en geheugencircuits zoals hierboven.
+
+=== De vier vaste delen <sec:sequentie-delen>
+
+Elke sequentie heeft dezelfde opbouw:
+
++ *Initialisatie.* Je zet alles op de juiste waarde. Meestal betekent dat: alle merkerwoorden die de sequentie gebruikt op nul zetten met een `MOVE`-instructie, en de hoofdsequentie starten met een `set` naar stap 0.
++ *Hulpmerkers.* Hier zet je de timers en counters, en alles wat de hoofdsequentie nodig heeft. Het doel is de sequentie #strong[leesbaar] houden: moeten er veel logische toestanden nagekeken worden, zet die dan hier.
++ *Sequentie.* Het hoofddeel. Je definieert elke stap aan de hand van de logische toestand van de machine.
++ *Uitgangen.* Je koppelt elke uitgang aan de stappen waarin ze actief moet zijn.
+
+=== Stappen <sec:sequentie-stappen>
+
+#belangrijk[Een stap is het kleinst mogelijke stuk van het proces.] Teken eerst met de hand een SFC op papier, nummer en benoem de stappen, en #strong[vermijd daarbij uitgangsnamen] als stapnaam. Een stap is een toestand van de machine, geen uitgang.
+
+Elke stap krijgt een SR-flipflop. Aan de set-ingang staat de sensor die aangeeft dat de vorige stap klaar is; de volgende stap reset de huidige. Zo hang je de stappen aan elkaar volgens het patroon #strong[vorige / huidige / volgende]. De structuur loopt van stap 0 tot een bepaalde stap en dan terug naar stap 0.
+
+De eerste doorloop is bijzonder. Dan sla je stap 0 over, want je moet op een andere manier controleren of de machine wel in de juiste logische toestand staat. Dat kan op twee manieren:
+
++ *Initialisatiesequentie:* je kijkt alles na en zet dan `MWx.0` hoog. Dat betekent dat stap 0 uitgevoerd is en stap 1 mag beginnen.
++ *Variabelen nakijken:* hetzelfde idee, maar buiten de sequentie. Meestal kijk je dan naar meer variabelen, bijvoorbeeld ook naar de startknop.
+
+Werk het voorbeeld uit de slides zo strikt mogelijk na, en maak je netwerken met copy-paste zodat de structuur overal identiek blijft. Vergeet de initiële stap niet toe te voegen.
+
+=== Uitgangen programmeren <sec:sequentie-uitgangen>
+
+#belangrijk[Een uitgang is altijd een som van logische toestanden.] Wil je meerdere stappen optellen, dan gebruik je een OR-netwerk. Er zijn drie gevallen:
+
+- de uitgang is actief tijdens #strong[opeenvolgende] stappen;
+- de uitgang is actief in #strong[niet-opeenvolgende] stappen;
+- de uitgang is actief in #strong[één enkele] stap.
+
+=== Cross-protect op Q <sec:cross-protect>
+
+Sommige uitgangen mogen absoluut niet tegelijk actief zijn. Het klassieke voorbeeld: de contactor voor rechtsom en die voor linksom. Trekken die samen aan, dan heb je een kortsluiting.
+
+In zo'n geval zet je vlak vóór de spoel een extra conditie. Is de ene uitgang actief, dan blokkeert die de andere. Dat heet #keyterm[cross-protect].
+
+#figure(
+  image("assets/OIS_cross_protect.png", width: 11cm),
+  caption: [Cross-protect op de uitgangen: een extra conditie vlak voor de spoel verhindert dat twee uitgangen die elkaar uitsluiten samen actief worden.],
+  label: <fig:cross-protect>,
+)
+
+#waarschuwing[
+  *Een stap kan één scan duren.* Is de conditie voor de volgende stap al waar op het moment dat de huidige stap actief wordt, dan worden ze samen geactiveerd. De huidige stap is dan maar één scan actief, dus typisch $2$ tot $20 "ms"$.
+
+  Soms wil je dat de uitgang toch even actief wordt: programmeer dan de stap als conditie voor die uitgang. Soms wil je ze juist overslaan, bijvoorbeeld om slijtage te vermijden.
+]
+
+=== De ADD-sequentie <sec:add-sequentie>
+
+Naast de SR-implementatie bestaat er een variant die met een `ADD`-instructie werkt. De opbouw in netwerken:
+
+- *Netwerk 1:* hulpmerkers, meestal meerdere netwerken.
+- *Netwerk 2:* de `ADD` zelf, die het stapnummer ophoogt.
+- *Netwerk 3:* de sequentie starten.
+- *Netwerk 4:* de sequentie vrijgeven, oftewel de idle-stap zetten. De laatste stap $+ 1$ hernummer je als $255$.
+- *Netwerk 5:* de sequentie wissen of blokkeren. De fysieke knop is N.C., dus staat hier ook een N.C.-contact.
+- *Netwerk 6 en verder:* de uitgangen, per geval zoals hierboven.
+
+*Waarom `ADD` en niet de counter-instructie?* Omdat de start in een apart netwerk staat, blijft de hoofdsequentie schoon en leesbaar.
+
+Vaak bouw je er een standaard tijdvertraging in die synchroon loopt met de stapovergangen.
+
+=== Clear, enable en start <sec:clear-enable-start>
+
+Drie begrippen die je uit elkaar moet houden:
+
+- *Clear:* de machine is schoon en kan niet gestart worden. Alle sensoringangen worden genegeerd.
+- *Enabled:* klaar om gestart te worden.
+- *Start:* de sequentie loopt.
+
+=== Reactie op de bedieningsknoppen <sec:machinebediening>
+
+De slides zetten de typische machinetoestanden op een rij:
+
+- *Abort:* de machinesturing valt plots weg, bijvoorbeeld door spanningsuitval, de hoofdschakelaar uit, of een slecht ontworpen noodstop. #belangrijk[De PLC heeft de machine dan niet meer onder controle.]
+- *E-stop:* categorie 0, of categorie 1 met eerst gecontroleerd afremmen. Het vermogen wordt onmiddellijk van de machine gehaald. De PLC is wél nog actief, maar de meeste actuatoren zijn uitgeschakeld.
+
+Het verschil telt: bij een abort weet je niets meer over de toestand van de machine, bij een noodstop weet je dat nog wel.
 
 == Functies (FC) en functieblokken (FB)
 
-#TODO[Deck 1, slides 134-143. IEC 61131-3, gepartitioneerd versus gestructureerd programmeren, verschil FC en FB, formele parameters, en de datatypes voor timers en counters (inclusief rekenen met tijdswaarden).]
+=== De norm IEC 61131-3 <sec:iec61131>
+
+IEC 61131-3 is de norm voor het programmeren van PLC's. Ze beschrijft:
+
+- de #keyterm[POU]'s (Program Organization Units): OB, FC en FB;
+- de talen: LAD, FBD, STL (IL), SCL (ST) en SFC;
+- de mogelijke datatypes;
+- de standaardfuncties zoals de IEC-timer en de IEC-counter;
+- de softwaremodellen: de opdeling in configuratie (bv. de machine), resource (de PLC) en task (cyclische verwerking). Tasks bestaan uit POU's, en objectgeoriënteerd programmeren is toegelaten.
+
+=== Gepartitioneerd tegenover gestructureerd <sec:gepartitioneerd-gestructureerd>
+
+Een functie (FC of FB) is een verzameling logische netwerken. Er zijn twee manieren om ze te gebruiken:
+
+- *Gepartitioneerd:* je roept het blok #strong[één keer] op en werkt met globale variabelen. Je gebruikt de functie dan puur om je programma op te delen.
+- *Gestructureerd:* je roept het blok #strong[meerdere keren] op, met lokale variabelen en parameters. Dat volgt het OOP-principe van inkapseling: hetzelfde blok, andere gegevens.
+
+=== FC tegenover FB <sec:fc-vs-fb>
+
+#table(
+  columns: (auto, 1fr, 1fr),
+  align: (left, left, left),
+  stroke: none,
+  inset: 6pt,
+  table.hline(stroke: 1pt),
+  table.header([], [*Functie (FC)*], [*Functieblok (FB)*]),
+  table.hline(stroke: 0.5pt),
+  [Geheugen], [#strong[geen], enkel temps en constanten], [#strong[wel], opgeslagen in een instance-DB],
+  [Beginwaarden], [niet mogelijk], [mogelijk],
+  [Parameters], [onbeperkt in-, uit- en in/uitgangen], [onbeperkt in-, uit- en in/uitgangen],
+  [Gedrag], [zelfde ingangen geven altijd zelfde uitgang], [uitgang hangt ook van de opgeslagen toestand af],
+  table.hline(stroke: 1pt),
+)
+
+Volg je de norm strikt, dan gebruik je in een FC #strong[geen] globale variabelen en geen absolute operanden. Dat is precies wat een FC voorspelbaar maakt: dezelfde ingangen leveren altijd hetzelfde resultaat.
+
+=== Formele parameters <sec:formele-parameters>
+
+De lokale variabelen van een FC of FB heten #keyterm[formele parameters]. De variabelen die je bij het oproepen meegeeft zijn de #keyterm[actuele parameters].
+
+- *IN:* vóór de code in het blok uitgevoerd wordt, wordt de waarde van de actuele parameter ingelezen en toegekend aan de formele parameter. #belangrijk[Schrijf nooit naar een IN.]
+- *OUT:* ná het uitvoeren van de code worden de waarden van de OUT-parameters weggeschreven naar de gekoppelde actuele parameters. Let op: de data in die gekoppelde variabele wordt #strong[altijd] overschreven met wat er binnen het blok beschikbaar was.
+
+=== Timers en counters in een FC of FB <sec:timer-datatypes>
+
+Volgens EN 61131 gebruik je #belangrijk[geen geheugen of timers in een FC]. Wil je toch een timer, dan heb je twee opties: hem als IN definiëren, of, beter, een eigen instance-DB per timer aanmaken.
+
+In een FB kan dat ook, maar het is niet verstandig. #belangrijk[De beste praktijk in een FB is timers als static in de instance-DB zetten], als multi-instance.
+
+Als datatype gebruik je `IEC_timer`, of gewoon de naam van de instructie, bijvoorbeeld `TON`. TIA kent nog andere types, maar die vallen buiten dit vak. In de PLC zelf werk je met `Time` en `DWord`.
+
+#waarschuwing[
+  *Rekenen met tijdswaarden.* Wil je bijvoorbeeld een toerental uit een periodetijd halen, dan sla je de actuele tijd op in een static en vermenigvuldig je het aantal perioden met $60000$ om rpm te krijgen. Grotere waarden geven een nauwkeuriger resultaat.
+
+  Denk eraan dat een flankdetectie een #strong[statische] merkerbit nodig heeft. In een FC bestaat die niet, dus daar werkt flankdetectie niet zonder instance-DB.
+]

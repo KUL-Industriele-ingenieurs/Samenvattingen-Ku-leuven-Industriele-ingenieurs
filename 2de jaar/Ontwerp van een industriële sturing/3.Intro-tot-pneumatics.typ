@@ -492,7 +492,47 @@ $A_0$ en $A_1$ zijn de *toestanden*: alle standen waarin de cilinder stabiel kan
 
 Je kan alle logische functies met ventielen bouwen: AND, OR en NOT.
 
-#TODO[Symbolen en schema's voor AND, OR en NOT nog invullen. Bron: deck 2, slides 58-59.]
+#belangrijk[Vergeet niet dat een logisch circuit ook drukvoeding én ontluchting nodig heeft.] Zonder ontluchting werkt de persluchtleiding als een drukvat: de functie schakelt niet meer uit, of pas nadat er genoeg lucht weggelekt is, intern zowel als extern.
+
+De drie functies bouw je zo:
+
+- *AND-functie.* Een #strong[serieschakeling] van twee ventielen volstaat: de lucht moet door beide. Er bestaan ook specifieke AND-componenten, maar die kosten extra.
+- *NOT-functie.* Gebruik of bestel het ventiel in zijn #strong[normaal gesloten] uitvoering. De inverse zit dan al in het component zelf.
+- *OR-functie.* #belangrijk[Een T-stuk gebruiken is fout.] De lucht ontsnapt dan langs de andere, niet-bediende ingang in plaats van naar de uitgang te gaan. Daarvoor bestaat een apart component: het #keyterm[wisselventiel] (shuttle valve), dat de niet-actieve ingang afsluit.
+
+#figure(
+  image("assets/OIS_pneum_logica_and_or_not.png", width: 12cm),
+  caption: [Ventielen in logische circuits: AND als serieschakeling, NOT als normaal gesloten ventiel, en OR met een wisselventiel in plaats van een T-stuk.],
+  label: <fig:pneum-logica>,
+)
+
+=== Componenten in een pneumatisch schema <sec:pneum-componentcodes>
+
+In het voorbeeldschema van de slides herken je de codeletters volgens EN 81346:
+
+#table(
+  columns: (auto, 1fr),
+  align: (left, left),
+  stroke: none,
+  inset: 5pt,
+  table.hline(stroke: 1pt),
+  table.header([*Code*], [*Component*]),
+  table.hline(stroke: 0.5pt),
+  [`-M1`], [actuator: dubbelwerkende cilinder],
+  [`-Q1`], [5/2-ventiel],
+  [`-K1`], [wisselventiel, dus de OR-functie],
+  [`-S1`], [schakelaars],
+  [`-B1`], [detecties],
+  [`-S0`], [hoofdventiel],
+  [`-R0`], [FRL-unit (Filter, Regulator, Lubricator), vaak ook `-A` genoemd],
+  table.hline(stroke: 1pt),
+)
+
+#examenbox[
+  In een pneumatisch schema teken je #belangrijk[alle componenten in hun werkelijke toestand], in een circuit dat klaar staat om te starten. In het voorbeeld zijn $a_0$ en $b_0$ bediend, en `K1` en `A+` ook, terwijl cilinder A nog niet bewogen heeft.
+
+  Op het examen staan de grijze kaders die de bediende toestand aanduiden er #strong[misschien niet] bij. Je moet de toestand van een ventiel dus kunnen herkennen aan het symbool alleen.
+]
 
 In de circuits teken je alle cilinders in hun *startpositie*, niet in de rustpositie zoals bij een elektrisch schema.
 
