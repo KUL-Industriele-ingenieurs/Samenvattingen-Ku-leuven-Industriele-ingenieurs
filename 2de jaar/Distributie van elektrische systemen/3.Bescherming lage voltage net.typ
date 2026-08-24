@@ -360,7 +360,7 @@ Nu dit is alleen voor kortsluitingen. Voor overbelastingen gaat er een bimetalen
 === Mechanical circuit breakers karakteristieken <sec:mechanical-circuit-breakers-karakteristieken>
 
 #figure(
-  image("assets/MCB-karakteristieken.png", width: 12cm),
+  image("assets/MCB-karakteristieken.png", width: 15cm),
   caption: [MCB-karakteristieken],
   label: <fig:MCB-karakteristieken>,
 )

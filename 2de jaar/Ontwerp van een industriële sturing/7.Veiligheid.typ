@@ -3,7 +3,7 @@
 = Veiligheid <ch:veiligheid>
 
 
-#TODO[Volledig hoofdstuk nog te schrijven. Bron: deck 6 "DICS 2026 7 EN safety", slides 1-27. Komt overeen met hoofdstuk 9.3 tot 9.6 van de rondgaande samenvatting.]
+Veiligheid is geen los hoofdstukje achteraan het ontwerp. #belangrijk[Hangt de veiligheid van een machine af van het juist functioneren van een besturing, dan heet dat #keyterm[functionele veiligheid].] Dat legt bijzondere eisen op aan de beschikbaarheid van die veiligheidsfunctie: ze moet werken, ook als er iets stukgaat.
 
 == Het starten van een motor <sec:motor-starten>
 
@@ -97,36 +97,189 @@ De maatregelen volgen daaruit, in deze volgorde:
 
 == Lock-out Tag-out (LoTo)
 
-#TODO[Deck 6, slides 2-5. Waarom je een machine fysiek vergrendelt voor onderhoud, het verschil tussen lock-out, tag-out en try-out, en wie welk slot draagt.]
+Voor onderhoud volstaat het niet om een machine "uit" te zetten. Iemand anders kan hem weer inschakelen terwijl jij met je handen in de machine zit. Daarom vergrendel je hem #strong[fysiek]. Dat heet #keyterm[LoToTo]: Lock-out, Tag-out, Try-out.
+
+De procedure uit de slides, in volgorde:
+
++ Alle energiebronnen en bedieningselementen inventariseren, en instructies vastleggen voor hun isolatie.
++ Alle betrokkenen informeren over de nodige lock-out.
++ De operationele werkzaamheden aan de installatie laten staken.
++ Bepalen welke acties vanuit de centrale bedieningsruimte nodig zijn voor de lock-out.
++ De installatie stoppen volgens de normale procedure.
++ Op de energiecontrolepunten de energietoevoer #strong[isoleren]. Dus niet alleen de stroomtoevoer uitschakelen, maar ook leidingen legen en spoelen, steekflenzen plaatsen, enzovoort.
++ Alle #strong[resterende] energie laten wegvloeien: reststroom, restdruk, en zo verder.
++ *Lock-out en tag-out:* alle controlepunten vergrendelen in de uit-stand en ze markeren.
++ #belangrijk[Elke LoTo-geautoriseerde plaatst een eigen slot en een eigen label] met de vereiste gegevens erop.
++ *Try-out:* controleren dat de machine effectief niet meer kan starten.
+
+De drie delen uit elkaar gehouden:
+
+- *Lock-out:* het fysieke slot dat verhindert dat de scheider weer ingeschakeld wordt.
+- *Tag-out:* het label dat zegt wie de vergrendeling plaatste en waarom.
+- *Try-out:* de proef die aantoont dat de vergrendeling ook echt werkt.
+
+#belangrijk[Dat elke persoon zijn eigen slot plaatst is de kern.] Zolang er één slot hangt, kan de machine niet starten. Zo kan niemand de vergrendeling van een collega opheffen.
+
+#figure(
+  image("assets/OIS_loto.png", width: 10cm),
+  caption: [Lock-out, tag-out: elke geautoriseerde persoon hangt een eigen slot en label aan het energiecontrolepunt.],
+  label: <fig:loto>,
+)
 
 == Pictogrammen en veiligheidsstop
 
-#TODO[Deck 6, slide 6. De pictogrammen voor de veiligheidsstop.]
+#keyterm[ISO 7010] is de internationale norm voor veiligheidssymbolen.
+
+In 2011 registreerde ISO een nieuw symbool om de #strong[locatie] van noodstopknoppen aan te duiden. Dat symbool gebruikt het formaat "groen vierkant met wit symbool", het formaat voor bordjes die de plaats van veiligheidsuitrusting aangeven. Daardoor hoort het in dezelfde familie als de bordjes voor brancards, oogdouches, nooddouches en nooduitgangen.
+
+#figure(
+  image("assets/OIS_pictogram_noodstop.png", width: 10cm),
+  caption: [Pictogrammen voor de veiligheidsstop volgens ISO 7010.],
+  label: <fig:pictogram-noodstop>,
+)
 
 == EN 13849 en SRP/CS
 
-#TODO[Deck 6, slides 7-11. Wat de norm regelt, wat een SRP/CS (Safety-Related Part of a Control System) is, hoe je het vereiste performance level bepaalt, en waar de veiligheidscomponenten in het schema staan.]
+=== Wat de norm regelt <sec:en13849>
+
+#keyterm[EN 13849] gaat over functionele veiligheid: de eisen aan de beschikbaarheid van de veiligheidsfunctie wanneer die van een besturing afhangt.
+
+De onderdelen van de besturing die de veiligheidsfunctie uitvoeren heten samen de #keyterm[SRP/CS] (Safety-Related Parts of a Control System). Die keten loopt altijd van links naar rechts:
+
+$ "trigger event" arrow.r "logica" arrow.r "actuatoren" $
+
+Dus: de noodstopknop of het lichtgordijn, dan het noodstoprelais of de safety-PLC, en dan de contactoren of de STO-ingang van de drive. #belangrijk[Elk van die drie schakels hoort bij de SRP/CS], en elk van de drie kan de veiligheidsfunctie onderuithalen.
+
+#figure(
+  image("assets/OIS_srpcs.png", width: 11cm),
+  caption: [De SRP/CS-keten: trigger event, logica en actuatoren.],
+  label: <fig:srpcs>,
+)
+
+=== Het voorbeeldschema <sec:veiligheid-voorbeeldschema>
+
+Het schema uit @ch:voorbeeld-diagram is bewust eenvoudig gehouden. De slides zetten er zelf de beperkingen bij:
+
+- het is categorie 1 (B);
+- er is maar #strong[één] veiligheidsfunctie. Normaal zijn er meer: noodstop, safe limited speed, enzovoort;
+- er is maar #strong[één] trigger event. Normaal zijn er meer: lidar, lichtgordijnen;
+- het is #strong[éénkanaals], en dus kwetsbaar voor een single point of failure.
 
 == Dual channel en EDM
 
-#TODO[Deck 6, slides 12-19. Twee onafhankelijke kanalen om een Single Point of Failure (SPoF) te vermijden, categorie 3, External Device Monitoring (EDM) om te controleren of de contactoren effectief afgevallen zijn, en het noodstoprelais met dubbel kanaal.]
+=== Waarom twee kanalen <sec:dual-channel-waarom>
+
+Componenten gaan stuk. Erger nog: ze kunnen #strong[foutief] falen, zodat hun veiligheidsfunctie niet meer werkt. Een contactor die na veel schakelen blijft plakken, bijvoorbeeld.
+
+#belangrijk[Het hoofddoel van een dubbelkanaalsarchitectuur is het vermijden van een #keyterm[SPoF] (Single Point of Failure).] Daarom is elke component redundant:
+
+- *Trigger events:* elke noodstopknop schakelt #strong[twee] N.C.-contacten. Een dubbelkanaals lichtgordijn schakelt eveneens twee uitgangen.
+- *Uitgangstoestellen:* elke motor wordt door #strong[twee] contactoren afgeschakeld.
+
+Maar wat als eerst het ene contact faalt en later het andere? Daarom worden de contacten met #keyterm[cross-monitoring] aangesloten. Beschrijven de twee kanalen niet dezelfde situatie, dan gaat het systeem naar de veilige toestand. #belangrijk[Ook na een reset herhaalt dat zich, tot het defecte contact vervangen is.]
+
+Dubbelkanaals doe je #strong[altijd] met een speciaal noodstoprelais, of met een safety-PLC. De complexiteit en de valideerbaarheid laten niets anders toe.
+
+=== Categorie 3 <sec:categorie3>
+
+De aangewezen architectuur voor categorie 3 heeft:
+
++ redundante signaalpaden;
++ #strong[cross-monitoring] van de ingangssignalen;
++ een #strong[back-check]: de terugkoppeling van de uitgangen wordt vergeleken met de aangestuurde toestand.
+
+#figure(
+  image("assets/OIS_categorie3.png", width: 11cm),
+  caption: [Categorie 3: redundante signaalpaden met cross-monitoring van de ingangen en terugkoppeling van de uitgangen.],
+  label: <fig:categorie3>,
+)
+
+=== External Device Monitoring <sec:edm>
+
+#keyterm[EDM] (External Device Monitoring) controleert of de externe toestellen die het veiligheidsmodule aanstuurt, bijvoorbeeld de contactoren, de veiligheidskring #strong[effectief] hebben onderbroken.
+
+Je implementeert dat door de terugkoppeling van die contactoren aan de #strong[resetvoorwaarde] van het noodstoprelais toe te voegen. De resetkring verhindert dan een reset zolang een gerelateerde component niet is afgevallen, bijvoorbeeld `-Q1` of `-Q2`.
+
+#examenbox[
+  Dit moet je op het examen kunnen tekenen: van elke contactor een N.C.-contact terug naar het noodstoprelais.
+
+  Om die redundantie echt te garanderen kies je bovendien voor #keyterm[force-guided contacts] (mechanisch gedwongen contacten). Daarbij is het mechanisch onmogelijk dat het N.O.-hoofdcontact en het N.C.-hulpcontact tegelijk gesloten zijn. Plakt het hoofdcontact, dan kán het hulpcontact niet sluiten, en dus blokkeert de reset.
+]
+
+#figure(
+  image("assets/OIS_edm.png", width: 11cm),
+  caption: [EDM: de terugkoppeling van de contactoren zit in de resetvoorwaarde van het noodstoprelais.],
+  label: <fig:edm>,
+)
+
+=== Wat je nooit mag schakelen <sec:dual-channel-0v>
+
+In gewone logica schakel je nooit de $0 "V"$. #belangrijk[Bij een dubbelkanaalsoplossing is dat soms toch de enige manier], namelijk om te vermijden dat een losgekomen $24 "V"$-draad die tegen een klem komt, de noodstop buiten werking stelt.
+
+Bij een bistabiel ventiel is het doel dat het #strong[geen nieuwe beweging] start. Kan je uitsluiten dat de faalvormen van het ventiel zelf tot een onbedoelde beweging leiden, dan mag je het ventiel zonder voeding (afhankelijk van de gebruikte norm) buiten beschouwing laten.
+
+=== STO op een drive <sec:sto-ingang>
+
+De #keyterm[STO]-ingangen (Safe Torque Off) schakelen het vermogendeel van een VFD op een betrouwbare en redundante manier uit. Die ingangen kunnen gevoed worden vanuit de stuurkast, of vanuit de drive zelf.
+
+#waarschuwing[
+  De slides tonen expliciet dat je online veel foute schema's vindt. Twee voorbeelden:
+
+  - contacten die als N.C. getekend staan terwijl ze #strong[N.O.] horen te zijn, ook al zullen ze meestal gesloten zijn;
+  - schema's waarin de reset maar #strong[één] bewuste handeling vraagt in plaats van twee;
+  - een contactor die als `K` benoemd wordt in plaats van `-Q`.
+]
 
 === Vertraagd noodstopcontact
 
-#TODO[Deck 6, slide 23. Waarom je soms een vertraagd contact wil (eerst gecontroleerd afremmen, dan de vermogenkring openen).]
+#examenbox[Dit was een examenvraag in 2025.]
+
+Een #keyterm[off-delay] noodstopcontact is nuttig wanneer je redundantie nodig hebt voor véél of zeer krachtige contactoren.
+
+De redenering uit de slides: heb je $30$ contactoren van $30 "A"$, dan zou je voor redundantie een contactor van $900 "A"$ nodig hebben, die dan ook nog eens iets vroeger zou moeten afschakelen dan de dertig andere. Dat is onbetaalbaar.
+
+#belangrijk[Eén redundante contactor van bijvoorbeeld $60 "A"$ volstaat, als je zorgt dat die iets #strong[later] afschakelt dan de andere.] Je gaat er dan van uit dat niet alle andere contactoren tegelijk zullen falen: valt er één weg, dan neemt de vertraagde contactor het over.
+
+#figure(
+  image("assets/OIS_vertraagd_estop_contact.png", width: 11cm),
+  caption: [Vertraagd noodstopcontact: één kleinere, later afvallende contactor geeft redundantie voor een hele reeks contactoren.],
+  label: <fig:vertraagd-estop>,
+)
 
 === Wanneer is dual channel niet nodig?
 
-#TODO[Deck 6, slide 24. De risicoanalyse beslist; niet elke machine heeft categorie 3 nodig.]
+#belangrijk[Dubbelkanaals is niet altijd nodig.] De risicoanalyse bepaalt welk niveau je moet halen, niet de gewoonte.
+
+Het voorbeeld uit de slides is een rem op een verticale as. Het probleem bij een éénkanaalsrem is dat er geen redundantie is, én dat de berekening van het veiligheidsniveau volgens ISO 13849 ingewikkeld wordt. Een drive met SBC (Safe Brake Control) en SBT (Safe Brake Test) verhoogt de veiligheid #strong[zonder] dat je een dubbelkanaalsrem nodig hebt.
+
+De les: soms lost een slimmer component het probleem op waar anders een dubbele architectuur voor nodig was.
 
 == Safety fieldbus
 
-#TODO[Deck 6, slide 25. Veiligheid over een busverbinding in plaats van bedrade contacten.]
+In plaats van elke veiligheidscomponent apart te bedraden, kan je de veiligheidssignalen over een #keyterm[safety fieldbus] sturen, bijvoorbeeld PROFIsafe.
+
+Het voordeel is duidelijk bij grote machines: één buskabel in plaats van tientallen dubbel uitgevoerde draden, en diagnose per component in plaats van zoeken welk contact open staat. De bus zelf is dan zo opgebouwd dat een fout in de communicatie zelf, zoals een verloren of vertraagde boodschap, ook naar de veilige toestand leidt.
 
 == EN 60204: stopcategorieën en STO
 
-#TODO[Deck 6, slides 26-27. Stopcategorie 0, 1 en 2, en wat Safe Torque Off (STO) op een drive precies doet.]
+EN 60204:2016 definieert drie #keyterm[stopcategorieën]:
+
+- *Stopcategorie 0:* bewegingen stoppen door #strong[meteen] de voeding af te schakelen.
+- *Stopcategorie 1:* gecontroleerd tot stilstand brengen, bijvoorbeeld door te remmen, #strong[en daarna] de voeding afschakelen. Dat is gewenst bij lasten met een grote traagheid.
+- *Stopcategorie 2:* gecontroleerd tot stilstand brengen, waarbij de voeding #strong[niet] wordt afgeschakeld.
+
+#belangrijk[Voor een noodstopfunctie is alleen categorie 0 of 1 toegestaan.] Dat zijn precies de twee categorieën waarbij de voeding uiteindelijk wordt afgeschakeld. Categorie 2 is dus wel een geldige "stop", maar nooit een "noodstop".
+
+Vergelijk met de stopknop uit @sec:24vvs: die werkt in categorie 2, via de machinesturing.
 
 == EN 12100
 
-#TODO[Rondgaande samenvatting hoofdstuk 9.4. Risicobeoordeling en risicoreductie als algemeen ontwerpprincipe.]
+#keyterm[EN 12100] legt uit hoe je een machine veilig bouwt. Het uitgangspunt: pak het gevaar aan #belangrijk[bij de bron].
+
+De norm kent een duidelijke rangorde in beschermingsmaatregelen:
+
++ *Inherently safe design.* Kies het proces zelf zo dat het gevaar er niet is. Wil je een plank doorzagen, dan denk je meteen aan een cirkelzaag. Maar gaat het om een omgeving met peuters, dan kies je beter een figuurzaag. #belangrijk[Je selecteert het proces samen met de veiligheidssituatie waarin de machine gebruikt wordt.]
++ *Collectieve bescherming* (niveau 2A). Een afscherming die iedereen tegelijk beschermt, zoals de omheining in een dierentuin.
++ *Individuele bescherming* (niveau 2B). Persoonlijke beschermingsmiddelen: labojas, veiligheidsbril.
+
+#belangrijk[De volgorde is bindend.] Persoonlijke bescherming is het laatste redmiddel, niet het eerste. Een veiligheidsbril lost een slecht ontworpen machine niet op.

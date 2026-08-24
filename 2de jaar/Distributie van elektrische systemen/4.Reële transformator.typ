@@ -222,8 +222,8 @@ Je ziet het hier getekend in gestreept blauw.
   Nu herinner je dat we om onze losses voor te stellen dat we in parallel met onze ideale transformator een weerstand $R_c$ en $L_m$ hebben gezet. Het probleem is dat zoals gezien in de vorige figuur dat $I_phi$ moeilijk is om te modelleren dus we gaan het opsplitsen in $I_m$ en $I_c$.
 
   We gaan die vinden door:
-  - #markhl[meten van $P_(l o s s) => R_c$]
-  - #markhl[meten van de RMS _average_ van $I_phi$ => $L_m$]
+  - meten van $P_(l o s s) => R_c$
+  - meten van de RMS _average_ van $I_phi$ => $L_m$
 
 
 ]

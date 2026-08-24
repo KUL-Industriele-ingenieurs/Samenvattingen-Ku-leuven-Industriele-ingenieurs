@@ -276,4 +276,76 @@ Werk je met een PLC, dan is het handmatig oplossen van signaaloverlapping via de
 / SFC of Graph (Sequential Function Chart): een grafische taal zoals S7-Graph die stappen en transities rechtstreeks definieert. Dit is de overzichtelijkste en meest industriële standaard voor complexe volgordes.
 / Stappenketen met SR-flipflops: in LAD of FBD wijs je elke stap toe aan een interne merker (bv. `%M0.1` voor stap 1, `%M0.2` voor stap 2). Elke stap zet de volgende stap en reset de vorige. Zo kan een signaalconflict per constructie niet meer voorkomen.
 
-#TODO[Nog aan te vullen uit deck 8: de maxi- en mini-Karnaugh (slides 47-51), de bi-stabiele oplossing van de kubus (slide 45) en de kubussen $A B C B C A$ en $A B B C C A$ (slides 58-60).]
+== De bistabiele oplossing van de kubus <sec:kubus-bistabiel>
+
+Naast de monostabiele uitwerking bestaat er van de kubus $A B C A B C$ ook een #strong[bistabiele] oplossing. Daarin stuur je per cilinder twee commando's, `A+` en `A-`, naar een bistabiel ventiel dat zijn stand onthoudt. Je hebt dan geen doorlopend signaal nodig om een stand vast te houden: één puls volstaat.
+
+#figure(
+  image("assets/OIS_3D_kubus_bistabiel.png", width: 11cm),
+  caption: [De bistabiele 3D-oplossing van de kubus $A B C A B C$, met de commando's `A+`, `B+` en `C+`.],
+  label: <fig:kubus-bistabiel>,
+)
+
+== Karnaughkaarten bij de 3D-methode <sec:karnaugh>
+
+=== Maxi-Karnaugh <sec:maxi-karnaugh>
+
+Bij de #keyterm[maxi-Karnaugh] neem je #strong[alle] variabelen in de kaart op. De kaart is dan volledig, en je kan er systematisch de kleinste uitdrukking uit halen.
+
+#figure(
+  image("assets/OIS_maxi_karnaugh.png", width: 11cm),
+  caption: [Maxi-Karnaugh: alle variabelen staan in de kaart.],
+  label: <fig:maxi-karnaugh>,
+)
+
+=== Mini-Karnaugh <sec:mini-karnaugh>
+
+Bij de #keyterm[mini-Karnaugh] laat je een variabele weg zodra je verwacht dat je ze niet nodig zult hebben. De kaart wordt daardoor kleiner en sneller in te vullen.
+
+#waarschuwing[
+  De slides zijn hier ondubbelzinnig over: #belangrijk[probeer dit niet op het examen], en eigenlijk beter helemaal nooit.
+
+  De reden is dat je vooraf móet gokken welke variabele overbodig is. Gok je fout, dan mis je een conditie, en dat zie je niet aan de kaart zelf.
+]
+
+#figure(
+  image("assets/OIS_mini_karnaugh.png", width: 11cm),
+  caption: [Mini-Karnaugh: een variabele is weggelaten omdat ze naar verwachting niet nodig is.],
+  label: <fig:mini-karnaugh>,
+)
+
+== Kubus 2: $A B C B C A$ <sec:kubus-abcbca>
+
+Deze cyclus is #belangrijk[duidelijk niet combinatorisch]. Je hebt dus een extra geheugen nodig.
+
+De redenering van de slides:
+
++ Het probleem is `A+` tegenover `A-`: op eenzelfde sensortoestand moet de machine de ene keer `A+` en de andere keer `A-` doen. Je lost dat op door een variabele te maken die in beide gevallen een #strong[verschillende] toestand heeft.
++ Er is maar #strong[één] punt vóór de probleempositie: het startpunt van de cyclus. Daar zet of reset je dus het geheugen.
++ Dat lijkt sterk op de #keyterm[cascademethode]. Ook hier gebruik je per netwerk zo weinig mogelijk condities.
+
+In de oplossing van de slides gebruiken `A+`, `B+` en `A-` het geheugen als conditie.
+
+#figure(
+  image("assets/OIS_3D_kubus_ABCBCA.png", width: 11cm),
+  caption: [Kubus $A B C B C A$ met het extra geheugen dat `A+` van `A-` onderscheidt.],
+  label: <fig:kubus-abcbca>,
+)
+
+== Kubus 3: $A B B C C A$ <sec:kubus-abbcca>
+
+Ook deze is niet combinatorisch, en hier heb je #strong[meerdere] geheugens nodig.
+
+De telling die je moet kunnen maken:
+
++ In punt $a_1$ starten #strong[drie] verschillende takken.
++ Om drie situaties te onderscheiden heb je minstens #strong[twee] geheugens nodig. Met twee geheugens heb je vier mogelijkheden, waarvan er dus één ongebruikt blijft.
++ Je verandert de toestand van de geheugens in #strong[unieke] punten: $a_0$, $b_1$ en $c_1$.
+
+#belangrijk[Zodra je die keuze gemaakt hebt, wordt de rest van de oplossing triviaal.] Dat is de kern van de methode: investeer je denkwerk in het kiezen van de geheugens en hun schakelpunten, niet in het uitwerken achteraf.
+
+#figure(
+  image("assets/OIS_3D_kubus_ABBCCA.png", width: 11cm),
+  caption: [Kubus $A B B C C A$: drie takken vertrekken uit $a_1$, dus zijn er twee geheugens nodig.],
+  label: <fig:kubus-abbcca>,
+)

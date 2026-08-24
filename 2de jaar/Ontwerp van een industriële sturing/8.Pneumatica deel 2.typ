@@ -338,48 +338,345 @@ Dat tweede punt heeft een direct gevolg voor je sturing: je mag nooit aannemen d
 
 === Elektrische schema's met ventielen
 
-#TODO[Rondgaande samenvatting 6.4.3. Hoe je cilinders en hun ventielen benoemt in het schema: cilinder `=M10` met ventiel `-Q1`, dus `=M10-Q1.M1` voor de spoel. De pilot valve zelf is al behandeld in @ch:intro-pneumatics.]
+Een cilinder krijgt een functieaanduiding met `=`, bijvoorbeeld `=M10`. Het ventiel dat die cilinder stuurt hoort bij diezelfde functie en krijgt de kenletter `-Q`, dus `-Q1`.
+
+De volledige verwijzing naar de spoel van dat ventiel wordt dan:
+
+$ = M 10 - Q 1 . M 1 $
+
+Lees het van links naar rechts: functie `=M10`, daarbinnen component `-Q1`, en daarvan de spoel `.M1`.
+
+#belangrijk[Zo staat in één string waar het component hoort, wat het is en welk onderdeel je precies bedoelt.] Dat is nodig zodra dezelfde ventieltype meerdere keren in de machine voorkomt.
 
 == Logica in pneumatiek
 
-#TODO[Rondgaande samenvatting 6.6, deck 2 slides 53-64. De notatie A+ / A- en $a_0$ / $a_1$. Waarom een T-splitsing met twee 2/2-ventielen géén correcte OR-schakeling is (de druk blijft hangen, het circuit reset niet), en waarom je daarvoor een shuttle valve of OR-ventiel nodig hebt, samen met 3/2-ventielen die kunnen ontluchten.]
+=== De notatie <sec:pneum-notatie>
+
+- `A+` stuurt cilinder A #strong[uit], van $a_0$ naar $a_1$.
+- `A-` stuurt cilinder A #strong[in], van $a_1$ naar $a_0$.
+- $a_0$ en $a_1$ zijn de #strong[toestanden]: de standen waarin de cilinder stabiel kan blijven staan, en waar de eindschakelaars zitten.
+
+=== Waarom een T-stuk geen OR is <sec:t-stuk-fout>
+
+Sluit je twee 2/2-ventielen samen op een T-splitsing aan, dan lijkt dat op een OR: druk je op de ene óf de andere, dan komt er lucht door.
+
+#belangrijk[Toch werkt dat niet.] Het probleem zit niet in het inschakelen, maar in het #strong[uitschakelen]:
+
+- de lucht die door het ene ventiel binnenkomt, ontsnapt langs het andere, niet-bediende ventiel;
+- en omgekeerd blijft de druk in de leiding gewoon staan wanneer je beide ventielen loslaat, want er is geen weg naar buiten.
+
+De persluchtleiding gedraagt zich dan als een klein drukvat. #belangrijk[De functie schakelt niet uit, of pas nadat er genoeg lucht weggelekt is.] Je circuit reset dus niet, en een tweede cyclus verloopt anders dan de eerste.
+
+=== De juiste oplossing <sec:shuttle-valve>
+
+Je hebt twee dingen nodig:
+
++ een #keyterm[wisselventiel] (shuttle valve, het OR-ventiel), dat de niet-bediende ingang mechanisch afsluit zodat er niets langs kan ontsnappen;
++ #strong[3/2-ventielen] in plaats van 2/2-ventielen, want een 3/2 heeft een derde poort om te #strong[ontluchten].
+
+Pas met die combinatie loopt de druk weg zodra je loslaat, en keert het circuit netjes terug naar zijn begintoestand.
 
 == Soorten ventielen
 
-#TODO[Deck 7, slides 3-16. De basiseisen aan een ventiel (lange levensduur, constante beweging), de ventielgrootte via debiet en drukval ($K_v$-waarde), en de manifold of valve block.]
+=== Basiseisen <sec:ventiel-basiseisen>
+
+Elk ventiel moet voldoen aan vier operationele eisen:
+
++ lange levensduur, onder uiteenlopende omstandigheden;
++ constante en snelle responstijden;
++ hoge debietkarakteristiek, uitgedrukt met de $K_v$-waarde;
++ eenvoudig te onderhouden.
+
+=== De $K_v$-waarde <sec:kv-waarde>
+
+De $K_v$-waarde is de #keyterm[debietcoëfficiënt] waarmee je het volumedebiet van een ventiel bepaalt.
+
+#frm(
+  "Kv- en Cv-waarde",
+  $ C_v = 1,17 dot K_v $,
+  [met: $K_v$ = de hoeveelheid water die door het ventiel stroomt bij een drukval van $1 "bar"$ over dat ventiel [m³/h]; $C_v$ = de Amerikaanse benaming, uitgedrukt in gallons per minuut [gpm].],
+)
+
+Kies je het ventiel te klein, dan krijg je een grote drukval en dus te weinig kracht of te weinig snelheid aan de cilinder.
+
+=== Manifold <sec:manifold>
+
+Om een reeks ventielen efficiënt te monteren bieden de meeste fabrikanten een #keyterm[manifold] of ventielblok aan. Daarin zitten interne verdeelkanalen, zodat je de persluchttoevoer #strong[niet] meerdere keren hoeft aan te sluiten.
+
+#figure(
+  image("assets/OIS_manifold.png", width: 10cm),
+  caption: [Een manifold of ventielblok verdeelt de persluchttoevoer intern over een reeks ventielen.],
+  label: <fig:manifold>,
+)
 
 === Kogelkraan en schijfventiel
 
-#TODO[Deck 7, slides 7-8. De kogelkraan (2/2) voor afsluiten en isoleren, en het schijfventiel voor draaiknopbediening.]
+*Kogelkraan.* Een kogelkraan gebruik je vooral om af te sluiten of te isoleren, dus als 2/2.
+
+#belangrijk[Herken de stand aan de hendel:] staat de hendel #strong[evenwijdig] met de leiding, dan is de kraan open; staat hij er #strong[loodrecht] op, dan is de kraan dicht.
+
+*Schijfventiel.* Een schijfventiel (disc valve) gebruik je vooral voor bediening met een draaiknop, bijvoorbeeld als 4/2.
 
 === Klepventiel (poppet valve)
 
-#TODO[Deck 7, slides 9-12. De 2/2, 3/2 en 4/2 uitvoering. Sluit zeer goed af en is mechanisch eenvoudig, maar je moet tegen de druk in duwen.]
+Een #keyterm[klepventiel] (poppet valve) heeft als grote voordeel zijn eenvoud: een minimum aan bewegende delen. Een beweegbare klep sluit tegen een zitting. Het afdichten gebeurt met vlakke schijven, ringen, O-ringen of bolvormige sluitingen. De klep zelf is een simpele schijf, bal of kegel.
+
+#belangrijk[De druk aan de ingang houdt het ventiel stevig dicht.] Dat is meteen de sterkte én de zwakte: het sluit uitstekend af, maar je moet bij het bedienen #strong[tegen de druk in] duwen.
+
+De drie uitvoeringen:
+
+- *2/2 normaal gesloten.* Druk je de knop in, dan licht de bal van zijn zitting en stroomt er lucht van poort P naar A. Laat je los, dan duwen de veer én de druk de bal weer omhoog, en sluit het ventiel.
+- *3/2 met schijfafdichting.* Met de knop losgelaten zijn poorten A en R eerst afgesloten; dan wordt de klepschijf omlaag geduwd en verbindt ze P met A. Veerkracht en de druk vanuit P sluiten het ventiel weer.
+- *4/2 omschakelend*, met twee stelen en schijfventielen. Met de knop losgelaten zijn A en R verbonden via de holle linkersteel, en P en B via het normaal geopende rechterschijfventiel. Druk je in, dan wordt eerst de verbinding A--R gesloten, dan die tussen P en B.
 
 === Schuifventiel (spool valve)
 
-#TODO[Deck 7, slides 13-15. Intern in drukbalans, dus de bedieningsdruk is onafhankelijk van de geschakelde druk. Daarom is een 5/2 makkelijker te bouwen dan een 4/2.]
+Een #keyterm[schuifventiel] (spool valve) heeft een schuif die horizontaal in het ventielhuis beweegt. Verhoogde delen op die schuif, de #keyterm[lands], blokkeren of openen de poorten.
+
+Het cruciale verschil met het klepventiel: #belangrijk[een schuifventiel is intern in drukbalans.] De druk duwt aan beide kanten van de schuif even hard, dus de kracht die je nodig hebt om te schakelen is #strong[onafhankelijk] van de geschakelde druk.
+
+Daaruit volgt een praktisch gevolg dat de slides expliciet maken: #belangrijk[een 5/2 is makkelijker te bouwen dan een 4/2.] Bij een 5/2 heeft elke uitgang zijn eigen ontluchtingspoort, waardoor de constructie symmetrisch en dus in balans blijft.
+
+Een 4/3-schuifventiel in ruststand heeft alle poorten gesloten. Beweegt de schuif van links naar rechts, dan komt de druk op poort 2 en gaat poort 4 naar de uitlaat. Beweegt hij terug, dan is het omgekeerd.
 
 === Open before close versus close before open
 
-#TODO[Rondgaande samenvatting 7.2.1. Een klepventiel opent de tweede toevoer voor de eerste gesloten is (open before close), een schuifventiel doet het omgekeerd. Wat dat betekent voor je circuit.]
+Dit is het praktische onderscheid tussen beide bouwvormen tijdens het #strong[omschakelen]:
+
+- *Schuifventiel: close before open.* Eerst gaat de ene verbinding dicht, dan pas de andere open. Er is dus even een moment waarop #strong[niets] verbonden is.
+- *Klepventiel: open before close.* De tweede toevoer gaat open vóór de eerste gesloten is. Er is dus even een moment waarop #strong[beide] verbonden zijn.
+
+#belangrijk[Dat verschil bepaalt wat er tijdens de omschakeling gebeurt.] Bij "open before close" krijg je kortstondig een doorstroming van de voeding naar de uitlaat, dus een luchtverlies en mogelijk een drukdip. Bij "close before open" krijg je kortstondig een geïsoleerde cilinderkamer, wat een stilstand of een schok kan geven.
+
+Verdere vuistregels:
+
+- Kogelkranen: vooral afsluiten en isoleren (2/2).
+- Schijfventielen: vooral draaiknopbediening (bv. 4/2).
+- Klepventielen: alle constructies mogelijk, inclusief 4/2.
+
+#figure(
+  image("assets/OIS_close_before_open.png", width: 11cm),
+  caption: [Close before open (schuifventiel) tegenover open before close (klepventiel).],
+  label: <fig:close-before-open>,
+)
 
 == Het juiste ventiel kiezen
 
-#TODO[Deck 7, slides 17-20. Fail-safe ventielen, mono-stabiel versus bi-stabiel afhankelijk van wat er moet gebeuren bij uitval, en het stroomverbruik van magneetventielen met reduced holding current.]
+=== Fail-safe <sec:failsafe-ventielen>
+
+Monostabiele ventielen keren met veerkracht terug naar de niet-bediende stand. Die veer kan pneumatisch, mechanisch of allebei zijn.
+
+Voor mechanische veren definieert EN 13849 #keyterm[well-tried springs] en #keyterm[pressure coil springs]. Well-tried veren moeten goed geleid zijn, correct gefabriceerd (met pre-cycling), overgedimensioneerd, enzovoort.
+
+#belangrijk[Denk tijdens het ontwerp aan twee dingen: eerst de veiligheid, dan het energieverbruik van het ventiel.]
+
+#waarschuwing[
+  In de elektriciteit betekent N.O. en N.C. iets eenduidigs. In de pneumatiek slaat "normally closed" soms op #strong[handbediende] ventielen of dempers die de operator in normaal bedrijf gesloten moet laten. Let dus op de context voor je een symbool interpreteert.
+]
+
+De keuze monostabiel of bistabiel volgt uit één vraag: #belangrijk[wat moet er gebeuren bij energieverlies?] Moet de cilinder terugkeren naar een veilige stand, dan neem je monostabiel. Moet hij blijven staan waar hij staat, dan neem je bistabiel, want dat is een geheugen.
+
+=== Stroomverbruik van magneetventielen <sec:reduced-holding-current>
+
+Een elektropneumatische ventielspoel is meestal $1$ tot $4 "W"$. Dat lijkt verwaarloosbaar, maar:
+
+- een systeem kan héél veel ventielen hebben;
+- #belangrijk[actieve ventielspoelen worden warm, en dat verkort hun levensduur].
+
+Factoren die het verbruik bepalen, zijn onder meer de grootte van het ventiel: een te klein ventiel geeft een grote drukval en moet dus vaker of langer werken.
+
+Een oplossing is #keyterm[reduced holding current]: de spoel krijgt eerst de volle stroom om te schakelen, en daarna een lagere stroom die alleen nog volstaat om de stand vást te houden.
 
 == Veiligheid van ventielen
 
-#TODO[Deck 7, slides 21-31. Gemonitorde veiligheidsventielen met spoeldetectie (IDM), het soft-startventiel en waarom je dat niet combineert met intern gepiloteerde ventielen, de vijf veelvoorkomende veiligheidsfuncties, en de externe rem of interne vergrendeling op de zuigerstang.]
+=== Gemonitorde veiligheidsventielen <sec:gemonitorde-ventielen>
+
+Een gemonitord veiligheidsventiel heeft #keyterm[spoeldetectie]: een sensor kijkt of de schuif effectief in de verwachte stand staat. Zo weet de besturing of de veiligheidsfunctie werkelijk uitgevoerd is, in plaats van alleen dat het commando gegeven is. Dat is het pneumatische equivalent van de EDM uit @sec:edm.
+
+#figure(
+  image("assets/OIS_gemonitord_veiligheidsventiel.png", width: 11cm),
+  caption: [Gemonitord veiligheidsventiel met spoeldetectie.],
+  label: <fig:gemonitord-ventiel>,
+)
+
+=== Het soft-startventiel <sec:soft-start>
+
+Een #keyterm[soft-startventiel] brengt een installatie bij het opstarten "zachtjes" op druk. Het idee: een lagere begindruk geeft een veiliger opstart.
+
+#waarschuwing[
+  *Maar let op het effect op de logica.* De snelheidsregeling van een cilinder gaat uit van de #strong[volle tegendruk] op het moment van schakelen. Bij het opstarten kan die tegendruk $0$ zijn, omdat er tijdens de stilstand ontlucht is. De cilinder beweegt dan #belangrijk[te snel].
+]
+
+=== Intern tegenover extern gepiloteerd <sec:intern-extern-pilot>
+
++ Bij een monostabiel ventiel verwacht je dat het naar de ruststand gaat zodra je de bediening wegneemt. Veel van die ventielen gebruiken echter perslucht in plaats van een echte veer, of allebei.
++ *Intern gepiloteerd* (bleed piloted): het ventiel gebruikt #strong[dezelfde] inkomende luchttoevoer als de hoofdstroom om te schakelen.
++ *Extern gepiloteerd* (pressure piloted): de stuurlucht komt via een #strong[apart] circuit.
+
+Extern piloteren opent extra ontwerpmogelijkheden:
+
+- je kan de stuurlucht meteen op volle druk zetten om betrouwbaar te schakelen, terwijl je de #strong[werkdruk] zacht opbouwt om de krachten op de cilinders laag te houden;
+- een noodstop kan enkel de werkdruk afschakelen, of enkel de stuurlucht.
+
+#belangrijk[Combineer een soft-startventiel niet met intern gepiloteerde ventielen.] Bij een intern gepiloteerd ventiel komt de schakeldruk uit dezelfde langzaam stijgende toevoer. Tijdens het opstarten is die druk te laag om betrouwbaar te schakelen, en bij een pneumatische veer is de veerkracht dan ook nog eens te zwak. Het gevolg zijn onvoorspelbare bewegingen precies op het moment dat er iemand aan de machine kan staan.
+
+=== Vijf veelvoorkomende veiligheidsfuncties <sec:pneum-veiligheidsfuncties>
+
++ *Bescherming tegen onbedoeld starten.* Waarschijnlijk de meest voorkomende. Meestal met een speciaal pneumatisch veiligheidsventiel dat gecertificeerd is voor het vereiste performance level. Een eenvoudig magneetventiel met één ventielelement volstaat daarvoor niet.
++ *Ontluchten van het systeem.*
++ *De beweging omkeren.* Bij een laag vereist performance level volstaat een eenvoudig veerteruggesteld magneetventiel. Voor een hoger PL gebruik je #strong[redundante] ventielelementen, zo aangesloten dat de cilinder alleen uitschuift als beide elementen schakelen.
++ *De beweging blokkeren.*
++ *De snelheid begrenzen.*
+
+Voor het vasthouden van een last kan je bovendien een #strong[externe rem] op de zuigerstang plaatsen, of een #strong[interne vergrendeling] gebruiken.
 
 == Het persluchtsysteem
 
-#TODO[Deck 7, slides 32-47. Primaire luchtbehandeling, compressortypes, het luchtvat, luchtkwaliteit, water in perslucht en het dauwpunt (ADP versus PDP), en de luchtdroger.]
+=== Opbouw van het persluchtsysteem <sec:persluchtsysteem>
+
+De keten van de #keyterm[primaire luchtbehandeling], in volgorde:
+
+$ "filter" arrow.r "koeler" arrow.r "separator" arrow.r "drukvat" arrow.r "drukschakelaar" arrow.r "belasting" $
+
+Daarna volgt bij de machine zelf de #strong[secundaire] behandeling.
+
+#figure(
+  image("assets/OIS_primaire_luchtbehandeling.png", width: 12cm),
+  caption: [Primaire luchtbehandeling: filter, koeler, separator, drukvat en drukschakelaar, gevolgd door de secundaire behandeling aan de machine.],
+  label: <fig:primaire-luchtbehandeling>,
+)
+
+=== Luchtkwaliteit <sec:luchtkwaliteit>
+
+#keyterm[ISO 8573-1] specificeert de kwaliteit van perslucht met #strong[drie klassecijfers]. Bijvoorbeeld $1.7.1$ voor ademlucht:
+
+- *1* = vaste deeltjes, maximaal $0,1 mu "m"$;
+- *7* = water, niet gespecificeerd;
+- *1* = olie, maximaal $0,01 "mg/m"^3$.
+
+=== Water in perslucht <sec:water-in-perslucht>
+
+Lucht is een mengsel van vooral zuurstof, stikstof en waterdamp. #belangrijk[Atmosferische lucht is nooit $100%$ droog.] Je drukt het watergehalte uit als het absolute gehalte $x$ in $"g"_(H_2 O) \/ "kg"$, of als relatieve vochtigheid RH in $%$.
+
+*Het dauwpunt.* Het #keyterm[drukdauwpunt] (PDP, Pressure Dew Point) is de temperatuur waarbij de waterdamp in díe perslucht condenseert, bij een bepaalde druk, bijvoorbeeld $7 "bar"$.
+
+- Ligt de omgevingstemperatuur #strong[hoger] dan het drukdauwpunt, dan vormt er zich geen water in de perslucht, enkel waterdamp.
+- Ligt ze #strong[lager], dan condenseert er water in je leidingen.
+
+#oefening(title: "Voorbeeld uit de slides")[
+  Comprimeer je lucht van $50%$ RH van $1 "bar"$ naar $8 "bar"$, dan krijg je hete, #strong[verzadigde] lucht plus condensaat.
+
+  Je kan dat condensaat verwijderen, maar de lucht blijft dan nog altijd verzadigd. Koudere lucht kan minder water vasthouden, dus een kleine temperatuurdaling van die hete lucht geeft #strong[opnieuw] condensatie.
+
+  #belangrijk[Daarom droog je de lucht verder, en volstaat afscheiden alleen niet.]
+]
+
+*De gevolgen van vocht:*
+
+- *corrosie* is het ergste gevolg: het verkort de levensduur van metalen onderdelen en versnelt roestvorming;
+- *verstopping van stuurleidingen*, wat instrumenten slecht doet werken;
+- schade aan pneumatisch gereedschap en stalen leidingen.
+
+=== De luchtdroger <sec:luchtdroger>
+
+Twee principes:
+
+- *chemische absorptie*, die zeer droge lucht geeft;
+- *koeling*, waarbij je de condensatietemperatuur verlaagt.
 
 === Secundaire luchtbehandeling en de FRL-unit
 
-#TODO[Deck 7, slides 48-55. De drukregelaar aan de machine, filter en separator, en de opbouw van het FRL-symbool (Filter, Reducer, Lubricator).]
+=== De drukregelaar aan de machine <sec:drukregelaar>
+
+De secundaire druk na compressie is typisch $8 "bar"$. Loopt er debiet door het leidingnet, dan krijg je drukvallen. Daardoor zou dezelfde machine zich #strong[anders gedragen] op een andere locatie, of wanneer andere toestellen meer of minder lucht gebruiken. De kracht van een zuiger zou dan variëren.
+
+#belangrijk[Daarom reduceer je de druk aan de machine zelf], zodat de machine altijd dezelfde, lagere druk ziet, ongeacht wat er in de rest van de fabriek gebeurt.
+
+Een perfecte reduceerklep zou een vlakke uitgangsdruk geven bij elk debiet. In werkelijkheid zakt $p_"uit"$ naarmate het debiet stijgt.
+
+#figure(
+  image("assets/OIS_drukregelaar_realiteit.png", width: 10cm),
+  caption: [Ideale tegenover werkelijke drukregelaar: in de praktijk zakt de uitgangsdruk bij toenemend debiet.],
+  label: <fig:drukregelaar-realiteit>,
+)
+
+=== Filter en separator <sec:filter-separator>
+
+#belangrijk[Een separator is géén filter.] Hij verwijdert olie of water, tot ongeveer $0,3 mu "m"$.
+
+Wil je verder gaan, dan combineer je: eerst een filter tot $0,5 mu "m"$, daarna een microseparator tot $0,1 mu "m"$.
+
+=== Het FRL-symbool ontleed <sec:frl-symbool>
+
+De #keyterm[FRL]-unit (Filter, Regulator, Lubricator) is de secundaire luchtbehandeling aan de machine. Van links naar rechts in het volledige symbool:
+
++ *Filter of separator:* verwijdert deeltjes, om schuring van dichtingen en geleidingen te vermijden en om kleine doorgangen niet te verstoppen.
++ *Drukregelaar of reduceerklep:* stelt de gewenste druk in.
++ *Manometer:* nodig om die regelaar op de gewenste waarde te zetten, bijvoorbeeld $6 "bar"$.
++ *Lubricator:* alleen als de toepassing smering vraagt.
+
+Daarnaast bestaat er een vereenvoudigd FRL-symbool dat het geheel als één blok toont.
+
+#figure(
+  image("assets/OIS_frl_symbool.png", width: 11cm),
+  caption: [Het FRL-symbool ontleed: filter, drukregelaar, manometer en lubricator.],
+  label: <fig:frl-symbool>,
+)
 
 == Efficiëntie en kosten van perslucht
 
-#TODO[Deck 7, slides 56-73. Waarom "air is free" niet klopt: het rendement van elektrische energie naar nuttig pneumatisch werk, lifecycle cost, lekken, en de vergelijking pneumatiek versus elektrische aandrijving.]
+#belangrijk["Lucht is gratis, elektronen ook. Maar perslucht en elektriciteit zeker niet."]
+
+=== Eenheden die je tegenkomt <sec:perslucht-eenheden>
+
+- *CFM* (cubic feet per minute): $1 "m"^3\/"h" approx 0,589 "CFM"$, en $1 "CFM" approx 1,699 "m"^3\/"h"$.
+- *psi:* $1 "bar" approx 14,5 "psi"$. "psig" is de relatieve druk.
+- *FAD* (Free Air Delivery): het debiet teruggerekend naar de begindruk en -temperatuur.
+- *Net yield:* het volumedebiet bij werkdruk en -temperatuur.
+- *SER* (Specific Energy Requirement): de hoeveelheid energie per geleverde hoeveelheid perslucht.
+
+#belangrijk[FAD is niet gewoon het gemeten debiet aan de uitgang.] Het gemeten debiet wordt eerst teruggerekend naar het equivalente debiet dat je zou krijgen bij dezelfde begindruk en -temperatuur.
+
+=== Het echte rendement <sec:perslucht-rendement>
+
+Volgens het Sankey-diagram uit de slides wordt #belangrijk[$100%$ van de elektrische energie omgezet in warmte.] Volgens de thermodynamische conventies bevat de perslucht zelf geen energie.
+
+Maar kan perslucht dan geen zuiger vooruitduwen en dus arbeid leveren? Jawel. De uitzettende perslucht neemt daarbij #strong[evenveel warmte uit de omgeving op] als er arbeid geleverd wordt.
+
+#oefening(title: "Wat kost een kubieke meter perslucht?")[
+  Uit de handleiding van een moderne compressor van $45,83 "kW"$:
+
+  FAD $= 397 "m"^3\/"h"$ bij $6,9 "bar"$ relatief, dus ongeveer $7,81$ ata. Daarmee levert hij $50,8 "m"^3\/"h"$ #strong[samengeperste] lucht, gerekend bij de begintemperatuur.
+
+  De kostprijs per kubieke meter:
+  $ (45,83 "kJ/s" dot 3600 "s/h")/(50,8 "m"^3"/h") = 3248 "kJ/m"^3 $
+
+  En $3248 "kJ" approx 3,6 "MJ" = 1 "kWh"$, ruwweg. #belangrijk[Eén kubieke meter perslucht op $6,9 "bar"$ kost dus ongeveer één kilowattuur.]
+]
+
+#figure(
+  image("assets/OIS_sankey_perslucht.png", width: 11cm),
+  caption: [Sankey-diagram van een persluchtinstallatie: nagenoeg alle elektrische energie eindigt als warmte.],
+  label: <fig:sankey-perslucht>,
+)
+
+=== Verkeerd gebruik <sec:perslucht-verkeerd-gebruik>
+
+Het voorbeeld uit de slides: perslucht gebruiken om een onderdeel schoon te blazen kost een fabriek $5000$ dollar per jaar. Met een lagedrukblazer zou dat maar $1085$ dollar per jaar zijn.
+
+In Europa gaat #belangrijk[$10%$ van alle industriële elektriciteit] naar het maken van perslucht, goed voor $80 "TWh"$ per jaar. Moderne systemen bieden vaak de mogelijkheid om de vrijgekomen warmte te recupereren.
+
+=== Pneumatiek tegenover elektrisch <sec:pneumatiek-vs-elektrisch>
+
+De nadelen van perslucht die de slides opsommen:
+
+- trage dynamica door de compressie;
+- het gedraagt zich als een massa-veer-dempersysteem;
+- beperkte krachten vergeleken met hydraulica. Heb je $10 "kN"$ nodig bij $6 "bar"$, dan is $A = F\/p approx 0,017 "m"^2$, dus een zuigerdiameter van ongeveer $15 "cm"$. Dat is al fors;
+- moeilijk om flexibel exact te positioneren;
+- hoge energiekosten, ongeveer $10 times$ die van elektrisch;
+- lawaai;
+- laag rendement door warmteverliezen;
+- veel lekken.
+
+#belangrijk[Kies pneumatiek dus om zijn sterktes, niet uit gewoonte:] eenvoud, robuustheid, en het feit dat je in een explosiegevaarlijke omgeving geen vonk maakt.
