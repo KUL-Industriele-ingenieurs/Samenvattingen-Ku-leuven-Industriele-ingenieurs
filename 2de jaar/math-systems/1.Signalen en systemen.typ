@@ -106,18 +106,141 @@ technieken op systemen worden losgelaten.
 
 Een *auto* is een eenvoudig voorbeeld: je geeft gas (input) en de auto versnelt
 (output). In het tijdsdomein beschrijf je dat verband met een
-differentiaalvergelijking. Voor een eerste-orde model met massa $m$ en
-weerstandsfactor $b$:
+differentiaalvergelijking. Newton's tweede wet ($m a = sum F$) geeft, met
+een aandrijfkracht $f(t)$ van de motor en een wrijvingskracht evenredig met
+de snelheid:
 
-$ m (dif v(t)) / (dif t) = k_u u(t) - b v(t) $
+$ m (dif v(t)) / (dif t) = f(t) - beta v(t) $
 
 met:
 - $v(t)$ --- snelheid van de wagen [m/s]
-- $u(t)$ --- ingangssignaal, de stand van het gaspedaal [-]
-- $k_u$ --- omzettingsconstante van pedaalstand naar kracht [N]
+- $f(t)$ --- ingangskracht, geleverd door de motor (bepaald door de stand
+  van het gaspedaal) [N]
 - $m$ --- massa van de wagen [kg]
-- $b$ --- weerstandsfactor (wrijving, luchtweerstand) [N·s/m]
+- $beta$ --- weerstandsfactor (wrijving, luchtweerstand) [N·s/m]
+
+== Eerste-orde systemen modelleren <sec:eerste-orde-systemen>
+
+De ODE (Ordinary Differential Equation, gewone differentiaalvergelijking) van
+de wagen is van de *eerste orde*: er komt enkel een eerste afgeleide in voor.
+Die klasse los je niet telkens opnieuw op --- je herschrijft ze naar de
+standaardvorm $y'(t) = k y(t) + f(t)$ en past de kant-en-klare
+oplossingsformule @eq:algemene-oplossing-eerste-orde toe. Die formule staat,
+samen met haar afleiding, in de herhaling: @sec:eerste-orde-ldv en
+@sec:afleiding-integrerende-factor.
+
+Hier gebruiken we die formule om te laten zien wat ze *fysisch* betekent, en
+dat twee compleet verschillende systemen er precies dezelfde wiskunde uit
+krijgen.
+
+#figure(
+  cetz.canvas({
+    import cetz.draw: *
+    cetz-plot.plot.plot(
+      size: (9, 4),
+      axis-style: "school-book",
+      x-min: 0, x-max: 4, y-min: 0, y-max: 1.2,
+      x-tick-step: 1, y-tick-step: 0.5,
+      x-label: $t \/ tau$, y-label: $y(t) \/ X_infinity$,
+      {
+        cetz-plot.plot.add(
+          domain: (0, 4), samples: 140,
+          style: (stroke: schoolBlue + 1.6pt),
+          t => 1 - calc.exp(-t),
+        )
+        cetz-plot.plot.add(
+          domain: (0, 4), samples: 2,
+          style: (stroke: (paint: schoolGray, thickness: 1pt, dash: "dashed")),
+          t => 1,
+        )
+      },
+    )
+  }),
+  caption: [Genormaliseerde stapresponsie $y(t)\/X_infinity = 1 - e^(-t\/tau)$
+    van een eerste-orde systeem met nulinitiatie: na $t=tau$ is $63%$ van de
+    eindwaarde $X_infinity$ bereikt, na $t=4tau$ vrijwel $100%$],
+) <fig:stapresponsie-eerste-orde>
+
+=== Voorbeeld: de wagen (mechanisch) <sec:voorbeeld-wagen-ode>
+
+Herschrijf de ODE van hierboven, $m (dif v)/(dif t) = f(t) - beta v(t)$,
+naar de standaardvorm door te delen door $m$:
+
+$ v'(t) = -beta/m v(t) + f(t)/m $
+
+Dus $k = -beta\/m$.
+
+*Beginvoorwaarde:* de wagen vertrekt in rust, $v(0) = 0 => K = 0$.
+*Ingang:* het gaspedaal wordt op $t=0$ ingedrukt tot een vaste stand en
+blijft daar, dus de motor levert een constante kracht: $f(t) equiv F$ voor
+$t > 0$ (een stapfunctie).
+
+*Toepassen van @eq:algemene-oplossing-eerste-orde* (met $K=0$):
+$ v(t) = integral_0^t F/m e^(-beta/m (t-tau)) dif tau $
+
+De integraal is van de vorm $integral_0^t e^(-a(t-tau)) dif tau
+= 1/a (1 - e^(-a t))$ (substitutie $u=t-tau$), met $a = beta\/m$:
+
+$ v(t) = F/m dot m/beta (1 - e^(-beta/m t)) = F/beta (1 - e^(-beta/m t)) $
+
+*Key insight:* als $t -> oo$ gaat $v(t) -> F\/beta$ --- de eindsnelheid
+waarbij de aandrijvende kracht $F$ precies de wrijvingskracht $beta v$
+balanceert ($v'=0$). De tijdconstante $tau = m\/beta$ bepaalt hoe snel die
+evenwichtstoestand bereikt wordt.
+
+=== Voorbeeld: RC-circuit opladen (elektrisch) <sec:voorbeeld-rc-ode>
+
+Hetzelfde recept werkt voor een compleet ander fysisch systeem: een
+condensator $C$ die oplaadt via een weerstand $R$.
+
+Uit de maasvergelijking (KVL) en de condensatorrelatie $Q = C v_o (t)$, met
+$i(t) = (dif Q)/(dif t) = C v_o'(t)$:
+
+$ v_i (t) = R i(t) + v_o (t) = R C v_o'(t) + v_o (t) $
+
+Naar standaardvorm:
+$ v_o'(t) = -1/(R C) v_o (t) + 1/(R C) v_i (t) $
+
+met:
+- $v_i (t)$ --- ingangsspanning (bronspanning) [V]
+- $v_o (t)$ --- uitgangsspanning, over de condensator [V]
+- $R$ --- weerstand [$Omega$], $C$ --- capaciteit [F]
+
+Dus $k = -1\/(R C)$ en $f(t) = v_i (t) \/ (R C)$.
+
+*Beginvoorwaarde:* condensator initieel ontladen, $v_o (0) = 0 => K = 0$.
+*Ingang:* de bronspanning wordt op $t=0$ ingeschakeld (bv. schakelaar
+gesloten) en blijft constant: $v_i (t) equiv V_i$ voor $t>0$.
+
+*Toepassen* (identieke integraal als bij de wagen, met $a = 1\/(R C)$):
+$ v_o (t) = integral_0^t V_i / (R C) e^(-(t-tau)\/(R C)) dif tau
+  = V_i (1 - e^(-t\/(R C))) $
+
+*Key insight:* wiskundig exact dezelfde vorm als de wagen --- enkel de
+symbolen verschillen. De analogie:
+
+#figure(
+  table(
+    columns: (1fr, 1fr, 1fr),
+    inset: 0.5em,
+    align: (left + horizon, center + horizon, center + horizon),
+    stroke: 0.6pt + rgb("d9d9d9"),
+    fill: (_, row) => if row == 0 { rgb("1f4e79") } else { none },
+    table.header(
+      text(fill: white)[*Rol*], text(fill: white)[*Wagen*], text(fill: white)[*RC-circuit*]
+    ),
+    [Tijdconstante $tau$], [$m\/beta$], [$R C$],
+    [Eindwaarde $X_infinity$], [$F \/ beta$], [$V_i$],
+    [Antwoord], [$v(t) = X_infinity (1-e^(-t\/tau))$], [$v_o (t) = X_infinity (1-e^(-t\/tau))$],
+  ),
+  caption: [Analogie mechanisch $<->$ elektrisch: zelfde wiskundige
+    structuur (@fig:stapresponsie-eerste-orde), andere fysische betekenis],
+) <fig:analogie-wagen-rc>
+
+Zodra je de generieke vorm $y(t) = X_infinity (1-e^(-t\/tau))$ herkent, hoef
+je de integraal nooit meer opnieuw uit te rekenen: je leest gewoon $tau$ en
+$X_infinity$ af uit je eigen $k$ en $f(t)$.
 
 // TODO: signaal vs. systeem — definitie van een signaal, continu vs. discreet
-// TODO: voorbeelden van systemen uit andere domeinen (elektrisch, thermisch)
+// TODO: voorbeelden van systemen uit andere domeinen (thermisch)
 // TODO: waarom transformaties? motivatie voor Laplace/Fourier als brug naar Deel 2

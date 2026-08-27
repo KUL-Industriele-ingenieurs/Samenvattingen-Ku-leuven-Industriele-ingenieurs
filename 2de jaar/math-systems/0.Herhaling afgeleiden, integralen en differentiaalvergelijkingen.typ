@@ -112,9 +112,11 @@ Met $u(t) = sin t$ en $v(t) = t^2$ geldt $(u/v)' = (u' v - u v') / v^2$:
 - $v'(t) = 2t$
 
 Invullen:
-$ f'(t) = ((cos t) t^2 - (sin t) 2t) / (t^2)^2
+$
+  f'(t) = ((cos t) t^2 - (sin t) 2t) / (t^2)^2
   = (t^2 cos t - 2t sin t) / t^4
-  = (t cos t - 2 sin t) / t^3 $
+  = (t cos t - 2 sin t) / t^3
+$
 
 *Dubbele kettingregel.*
 
@@ -140,8 +142,10 @@ $ integral f(t) dif t = F(t) + c, quad forall c in RR $
 *Rekenregels integralen.*
 
 *Lineariteit:*
-$ integral [a f_1 (t) + b f_2 (t)] dif t
-  = a integral f_1 (t) dif t + b integral f_2 (t) dif t $
+$
+  integral [a f_1 (t) + b f_2 (t)] dif t
+  = a integral f_1 (t) dif t + b integral f_2 (t) dif t
+$
 
 *Integratie door substitutie:* als $f(t) = g'(t) h(g(t))$, stel dan $u = g(t)$,
 waardoor $dif u = g'(t) dif t$:
@@ -179,9 +183,11 @@ $ 1 / (t^2 - 1) = 1 / ((t-1)(t+1)) = A / (t-1) + B / (t+1) $
 - Kies $t = -1$: $1 = -2B$, dus $B = -1\/2$
 
 *Resultaat:*
-$ integral ((1\/2) / (t-1) - (1\/2) / (t+1)) dif t
+$
+  integral ((1\/2) / (t-1) - (1\/2) / (t+1)) dif t
   = 1/2 ln |t-1| - 1/2 ln |t+1| + c
-  = 1/2 ln abs((t-1) / (t+1)) + c $
+  = 1/2 ln abs((t-1) / (t+1)) + c
+$
 
 *Bepaalde integraal (oppervlakte).*
 
@@ -232,8 +238,10 @@ $cos^2 t$ vraagt opnieuw de kettingregel:
 $ (cos^2 t)' = 2 cos t dot (cos t)' = 2 cos t dot (-sin t) = -2 sin t cos t $
 
 *Stap 4 --- combineer.*
-$ f'(t) = 1 / (2 sqrt(1 + cos^2 t)) dot (-2 sin t cos t)
-  = (-sin t cos t) / sqrt(1 + cos^2 t) $
+$
+  f'(t) = 1 / (2 sqrt(1 + cos^2 t)) dot (-2 sin t cos t)
+  = (-sin t cos t) / sqrt(1 + cos^2 t)
+$
 
 *Oneigenlijke integraal.*
 
@@ -262,8 +270,10 @@ $dif u = 2t dif t$.
 $ integral 1/u^2 dif u = integral u^(-2) dif u = -u^(-1) = -1 / (t^2 + 1) $
 
 *Stap 2 --- bereken de grenzen (limieten).*
-$ lim_(R -> +oo) [-1 / (t^2 + 1)]_(-R)^R
-  = lim_(R -> +oo) ((-1 / (R^2 + 1)) - (-1 / ((-R)^2 + 1))) $
+$
+  lim_(R -> +oo) [-1 / (t^2 + 1)]_(-R)^R
+  = lim_(R -> +oo) ((-1 / (R^2 + 1)) - (-1 / ((-R)^2 + 1)))
+$
 
 *Stap 3 --- conclusie.* Beide termen gaan naar 0 als $R -> oo$, dus de
 integraal is $0$.
@@ -303,7 +313,84 @@ een symmetrisch interval.
 
 == Differentiaalvergelijkingen <sec:differentiaalvergelijkingen>
 
-=== Uitleg particuliere en homogene oplossing <sec:ldv-uitleg>
+=== Eerste-orde differentiaalvergelijkingen <sec:eerste-orde-ldv>
+
+Een *eerste-orde* differentiaalvergelijking bevat alleen een eerste afgeleide.
+Om er een op te lossen, herschrijf je hem eerst naar een vaste *standaardvorm*,
+met de coëfficiënt vóór de afgeleide gelijk aan 1:
+
+$ y'(t) = k y(t) + f(t) $
+
+met:
+- $y(t)$ --- de onbekende uitgangsfunctie (het systeemantwoord, bv. $v(t)$)
+- $k$ --- constante die het systeem karakteriseert; voor een stabiel,
+  dempend systeem is $k < 0$
+- $f(t)$ --- de ingang: alles in de vergelijking dat niet evenredig is met
+  $y(t)$ zelf (mag constant zijn, of tijdsafhankelijk)
+
+*Algemene oplossing.* Deze standaardvorm heeft een vaste oplossingsformule.
+Je leidt ze één keer af (@sec:afleiding-integrerende-factor) en herbruikt ze
+daarna telkens, zonder de afleiding te herhalen:
+
+#[
+  // Enige genummerde vergelijking in de tekst: nummering is nodig om er met
+  // @eq:algemene-oplossing-eerste-orde naar te kunnen verwijzen.
+  #set math.equation(numbering: n => numbering("(1.1)", counter(heading).get().first(), n))
+  $
+    y(t) = underbrace(K e^(k t), "homogene oplossing")
+    + underbrace(integral_0^t f(tau) e^(k(t-tau)) dif tau, "particuliere oplossing")
+  $ <eq:algemene-oplossing-eerste-orde>
+]
+
+met:
+- $K = y(0)$ --- volgt rechtstreeks uit de beginvoorwaarde
+- de eerste term --- de respons van het systeem als er *geen* ingang was
+  ($f equiv 0$): hoe de starttoestand uitdooft
+- de tweede term --- de respons die *enkel* door de ingang $f(t)$
+  veroorzaakt wordt
+
+=== Waar komt de eerste-orde formule vandaan? <sec:afleiding-integrerende-factor>
+
+De afleiding moet je niet kennen maar is het handig om te weten.
+
+Doel: herschrijf de linkerkant $y'(t) - k y(t)$ als één afgeleide van iets,
+zodat je meteen kan integreren in plaats van te gokken naar een oplossing.
+
+*Stap 1 --- vermenigvuldig met een hulpfunctie $mu(t)$.* De productregel geeft:
+$ (dif) / (dif t) [mu(t) y(t)] = mu(t) y'(t) + mu'(t) y(t) $
+Vergelijk dit met de vermenigvuldigde ODE-linkerkant
+$mu(t) y'(t) - k mu(t) y(t)$: dit is enkel gelijk als
+$mu'(t) = -k mu(t)$.
+
+*Stap 2 --- los die voorwaarde op* (scheiding van variabelen):
+$
+  (dif mu) / mu = -k dif t quad => quad ln|mu| = -k t + C
+  quad => quad mu(t) = e^(-k t)
+$
+(de constante $C$ mag je op 0 zetten --- $mu$ dient enkel als
+vermenigvuldigfactor en die constante valt er later toch weer uit)
+
+*Stap 3 --- vermenigvuldig de volledige ODE met $mu(t) = e^(-k t)$:*
+$ e^(-k t) y'(t) - k e^(-k t) y(t) = e^(-k t) f(t) $
+
+*Stap 4 --- herken de linkerkant als een exacte afgeleide:*
+$ (dif) / (dif t) [e^(-k t) y(t)] = e^(-k t) f(t) $
+
+*Stap 5 --- integreer beide kanten van $0$ tot $t$:*
+$ e^(-k t) y(t) - y(0) = integral_0^t e^(-k tau) f(tau) dif tau $
+
+*Stap 6 --- deel door $e^(-k t)$ om $y(t)$ vrij te maken:*
+$
+  y(t) = e^(k t) y(0) + integral_0^t e^(k t) e^(-k tau) f(tau) dif tau
+  = K e^(k t) + integral_0^t f(tau) e^(k(t-tau)) dif tau
+$
+
+Dat is exact @eq:algemene-oplossing-eerste-orde. Vanaf hier moet je deze
+afleiding nooit meer herhalen: je herkent gewoon je eigen $k$ en $f(t)$ in
+een nieuwe ODE en vult in. Toegepast op een echt systeem zie je dat in
+@sec:eerste-orde-systemen.
+
+=== Tweede orde: particuliere en homogene oplossing <sec:ldv-uitleg>
 
 In de oefenzittingen zien we ter herhaling hoe we met differentiaalvergelijkingen
 omgaan: we gaan een particuliere en een homogene oplossing zoeken van onze
@@ -357,9 +444,7 @@ de *onbepaalde coëfficiënten*.
     align: (left + horizon, left + horizon),
     stroke: 0.6pt + rgb("d9d9d9"),
     fill: (_, row) => if row == 0 { rgb("1f4e79") } else { none },
-    table.header(
-      text(fill: white)[*Rechterlid $x(t)$*], text(fill: white)[*Voorstel $y_p (t)$*]
-    ),
+    table.header(text(fill: white)[*Rechterlid $x(t)$*], text(fill: white)[*Voorstel $y_p (t)$*]),
     [$C$ (constante)], [$A$],
     [$C t^n$ (veelterm)], [$A_n t^n + dots + A_1 t + A_0$],
     [$C e^(k t)$], [$A e^(k t)$],
@@ -395,12 +480,18 @@ Bij een niet-lineaire vergelijking gaat die splitsing niet op.
     plot.plot(
       size: (4.4, 2.6),
       axis-style: "school-book",
-      x-min: 0, x-max: 4, y-min: 0, y-max: 1.15,
-      x-tick-step: 1, y-tick-step: 0.5,
-      x-label: $t$, y-label: none,
+      x-min: 0,
+      x-max: 4,
+      y-min: 0,
+      y-max: 1.15,
+      x-tick-step: 1,
+      y-tick-step: 0.5,
+      x-label: $t$,
+      y-label: none,
       {
         plot.add(
-          domain: (0, 4), samples: 140,
+          domain: (0, 4),
+          samples: 140,
           style: (stroke: schoolBlue + 1.4pt),
           t => calc.exp(-t),
         )
@@ -466,26 +557,34 @@ transiënt dooft uit, en wat overblijft is de respons op de input.
   cetz.canvas({
     plot.plot(
       size: (11, 4.4),
-      x-min: 0, x-max: 3, y-min: -2.6, y-max: 3.0,
-      x-tick-step: 0.5, y-tick-step: 1,
-      x-label: $t$, y-label: $y$,
+      x-min: 0,
+      x-max: 3,
+      y-min: -2.6,
+      y-max: 3.0,
+      x-tick-step: 0.5,
+      y-tick-step: 1,
+      x-label: $t$,
+      y-label: $y$,
       legend: "south",
       legend-style: (orientation: ltr, spacing: 0.6, item: (spacing: 0.3)),
       {
         plot.add(
-          domain: (0, 3), samples: 160,
+          domain: (0, 3),
+          samples: 160,
           style: (stroke: (paint: schoolGray, thickness: 1pt, dash: "dashed")),
           label: [$y_p = 2$ (stationair)],
           t => 2,
         )
         plot.add(
-          domain: (0, 3), samples: 160,
+          domain: (0, 3),
+          samples: 160,
           style: (stroke: schoolRed + 1.2pt),
           label: [$y_h = -2 e^(-2t)$ (transiënt)],
           t => -2 * calc.exp(-2 * t),
         )
         plot.add(
-          domain: (0, 3), samples: 160,
+          domain: (0, 3),
+          samples: 160,
           style: (stroke: schoolBlue + 1.8pt),
           label: [$y = y_h + y_p$],
           t => 2 - 2 * calc.exp(-2 * t),
@@ -536,10 +635,12 @@ Invullen in de DV en sinus/cosinus groeperen:
 $ cos 3t (A + 21B) + sin 3t (B - 21A) = 4 sin 3t $
 
 Stelsel oplossen:
-$ cases(
-  A + 21B = 0 => A = -21B,
-  -21A + B = 4 => 442B = 4 => B = 2\/221,
-) $
+$
+  cases(
+    A + 21B = 0 => A = -21B,
+    -21A + B = 4 => 442B = 4 => B = 2\/221,
+  )
+$
 Dus $A = -42\/221$ en
 $ y_p (t) = -42/221 cos 3t + 2/221 sin 3t $
 
