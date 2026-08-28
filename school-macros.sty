@@ -400,46 +400,46 @@
 % oefenblok was een byte-identieke tweede definitie; nu een echte alias.
 \newenvironment{oefenblok}[1][Oefening]{\oefening[#1]}{\endoefening}
 
+% Codeblok: geen kader, alleen een accentbalk links. De regelnummers staan in
+% een eigen kolom (xleftmargin/framexleftmargin), zodat ze niet meer over de
+% rand van het blok lopen.
+\definecolor{codeGutterRule}{RGB}{224, 227, 232}   % scheidingslijn nummers/code
+
+\lstdefinestyle{schoolcode}{
+    basicstyle=\ttfamily\footnotesize\color{codeText},
+    keywordstyle=\color{codeKeyword}\bfseries,
+    stringstyle=\color{codeString},
+    commentstyle=\color{codeComment}\itshape,
+    numberstyle=\ttfamily\scriptsize\color{codeLineNo},
+    numbers=left, numbersep=9pt,
+    xleftmargin=8mm, framexleftmargin=8mm,
+    breaklines=true, breakatwhitespace=true, breakindent=2em,
+    columns=fullflexible, keepspaces=true,
+    tabsize=4, showstringspaces=false, extendedchars=true,
+    aboveskip=0pt, belowskip=0pt,
+}
+
 \newtcblisting{codeblock}[2][]{%
-    enhanced, breakable,
+    enhanced, breakable, sharp corners,
     colback=codeBackground,
-    colframe=codeBorder,
-    boxrule=0.6pt,
-    arc=2pt,
-    colupper=codeText,
-    left=3mm, right=2mm, top=2mm, bottom=2mm,
+    colframe=codeBackground,
+    boxrule=0pt,
+    borderline west={2.5pt}{0pt}{schoolBlue},
+    left=1mm, right=2mm, top=2.5mm, bottom=2.5mm,
     listing only,
     listing engine=listings,
-    listing options={
-        language=#2,
-        basicstyle=\ttfamily\footnotesize\color{codeText},
-        keywordstyle=\color{codeKeyword}\bfseries,
-        stringstyle=\color{codeString},
-        commentstyle=\color{codeComment}\itshape,
-        numberstyle=\tiny\color{codeLineNo},
-        numbers=left, numbersep=8pt,
-        breaklines=true, breakatwhitespace=true,
-        breakindent=2em,
-        columns=fullflexible, keepspaces=true,
-        tabsize=4,
-        showstringspaces=false,
-        extendedchars=true,
-        aboveskip=0pt, belowskip=0pt
+    listing options={style=schoolcode, language=#2},
+    % Titel staat in het blok zelf, geen aparte balk.
+    before upper={%
+        \ifstrempty{#1}{}{%
+            {\sffamily\bfseries\small\color{schoolBlue}#1}%
+            \ \textcolor{codeComment}{\scriptsize\texttt{[#2]}}%
+            \par\vspace{1.5mm}%
+        }%
     },
-    % Titelbalk: lichte strook met een accentlijn eronder
-    % Custom titel? Toon die en zet de taal er als kleine tag achter.
-    % Geen titel? Dan volstaat de taal zelf.
-    title={\textcolor{schoolBlue}{\faCode}\ \ifstrempty{#1}%
-           {\texttt{#2}}%
-           {\textbf{#1}\ \textcolor{codeComment}{\scriptsize\texttt{[#2]}}}},
-    coltitle=codeText,
-    colbacktitle=codeTitleBar,
-    fonttitle=\sffamily\bfseries\small,
-    % Titelbalk over de volle breedte, zoals de editor-titelbalk in
-    % school-template.typ. Dit was een losse tab die met een zichtbaar gat
-    % boven de body zweefde en een andere afronding had dan de schoolbox-tabs.
-    titlerule=0pt,
-    top=2mm,
+    % dunne lijn tussen de nummerkolom en de code
+    underlay={\draw[codeGutterRule, line width=0.4pt]
+        ([xshift=7.6mm]interior.north west) -- ([xshift=7.6mm]interior.south west);},
 }
 
 % Rustige vorm: blauw \keyterm-label met icoon, cursieve tekst, geen balk en
