@@ -36,6 +36,7 @@ Deze repository zijn mijn notities en samenvattingen die ik gemaakt heb door het
 - **math-systems** — [bronbestanden](2de%20jaar/math-systems)
   - [Wiskunde voor Systemen Samenvatting.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/Wiskunde_voor_Systemen_Samenvatting.pdf)
 - **Object gericht-programmeren** — [bronbestanden](2de%20jaar/Object%20gericht-programmeren)
+  - [A4 document examen voorbeeld.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/A4_document_examen_voorbeeld.pdf)
   - [Object gericht programmeren Samenvatting + synthax.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/Object_gericht_programmeren_Samenvatting_%2B_synthax.pdf)
 - **Ontwerp van een industriële sturing** — [bronbestanden](2de%20jaar/Ontwerp%20van%20een%20industri%C3%ABle%20sturing)
   - [Ontwerp van industriele sturing.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/Ontwerp_van_industriele_sturing.pdf)
