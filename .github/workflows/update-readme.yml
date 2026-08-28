@@ -1,10 +1,12 @@
 name: Update README Course Overview
 
+# Draait op de PR, niet op MAIN. De ruleset van MAIN eist een pull request en
+# de merge queue, dus een directe push vanuit een workflow wordt geweigerd.
+# De bot commit daarom naar de branch van de PR: die is niet beschermd, en de
+# README klopt al voor je merget.
 on:
-  push:
-    branches:
-      - main
-      - MAIN
+  pull_request:
+    types: [opened, synchronize, reopened]
     paths:
       - '*jaar**/**'
       - '.github/workflows/update-readme.yml'
@@ -17,10 +19,15 @@ permissions:
 jobs:
   update-readme:
     runs-on: ubuntu-latest
+    # Een fork kan niet naar zijn eigen branch gepusht worden vanuit deze repo.
+    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.head.repo.full_name == github.repository
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
+          # De branch van de PR uitchecken, niet de merge-commit, anders kan je
+          # niet terugpushen.
+          ref: ${{ github.event.pull_request.head.ref || github.ref_name }}
           fetch-depth: 1
 
       - name: Generate Course Markdown
