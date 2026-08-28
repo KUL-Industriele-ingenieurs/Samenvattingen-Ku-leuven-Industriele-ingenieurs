@@ -97,7 +97,7 @@ for arg in "$@"; do
         --no-self-update) NO_SELF_UPDATE=1 ;;
         -h|--help)
             echo "Usage: $SELF_NAME [--no-self-update]"
-            echo "  Downloads the latest compiled PDF summaries into year folders."
+            echo "  Downloads the latest compiled PDF summaries into <jaar>/<Vak> folders."
             exit 0 ;;
     esac
 done
@@ -122,7 +122,7 @@ for a in d.get('assets', []):
 TOTAL=${#ASSET_LINES[@]}
 echo "${C_GREEN}${TOTAL} PDFs${C_RESET}"
 
-# Step 2: Build filename -> year folder mapping.
+# Step 2: Build filename -> "<jaar>/<Vak>" mapping.
 # Prefer the manifest asset (served from a CDN, no API rate limit); fall back
 # to the GitHub tree API only if it is missing.
 printf '  %sBuilding folder map...%s ' "$C_CYAN" "$C_RESET"
@@ -155,14 +155,16 @@ for item in data.get('tree', []):
     stem, ext = os.path.splitext(os.path.basename(item['path']))
     if ext not in ('.tex', '.typ'): continue
     pdf = stem.replace(' ', '_').replace('&', '.') + '.pdf'
+    # jaar + vakmap, zodat elk vak zijn eigen map krijgt
+    folder = '/'.join(parts[:2]) if len(parts) > 2 else parts[0]
     if pdf not in seen:
-        seen.add(pdf); print(f'{pdf}\t{parts[0]}')
+        seen.add(pdf); print(f'{pdf}\t{folder}')
 ")
     echo "${C_YELLOW}${#YEAR_MAP[@]} via repo tree (fallback)${C_RESET}"
 fi
 echo
 
-# Step 3: Download each PDF into its year subfolder
+# Step 3: Download each PDF into its course subfolder
 n_down=0; n_ok=0; n_fail=0; n_moved=0; bytes_down=0
 i=0
 for line in "${ASSET_LINES[@]}"; do
@@ -226,7 +228,7 @@ fi
 echo "$summary"
 [ "$bytes_down" -gt 0 ] && echo "  ${C_DIM}Downloaded $(human_size "$bytes_down") this run.${C_RESET}"
 rule
-echo "  ${C_BOLD}Done! PDFs organized by year folder.${C_RESET}"
+echo "  ${C_BOLD}Done! PDFs organized per year and course.${C_RESET}"
 
 # --- Recent changes (who contributed what) ---
 COMMIT_COUNT=15
