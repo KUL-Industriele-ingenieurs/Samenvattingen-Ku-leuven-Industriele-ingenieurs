@@ -404,56 +404,44 @@
 #let theorem(title: "Theorem", body) = schoolbox(title, deepblue, icon: ic-book, body)
 #let oefening(title: "Oefening", body) = schoolbox(title, schoolGreen, icon: ic-pen, body)
 
-// --- Code Block (JetBrains / IntelliJ Light Style) ---
+// --- Code Block (accentbalk links, ontwerp B) ---
+// Geen kader: alleen een blauwe balk links. De titel staat in het blok zelf,
+// niet in een aparte balk. Regelnummers krijgen een eigen kolom via
+// `show raw.line`, zodat ze niet tegen de code of de rand lopen.
+
+#let codeGutter = rgb(155, 158, 163) // regelnummers
+#let codeGutterRule = rgb(224, 227, 232) // scheidingslijn nummers/code
 
 #let codeblock(lang: "txt", title: none, body) = {
   v(8pt)
   block(
     width: 100%,
-    clip: true,
-    radius: 4pt,
     fill: codeBackground,
-    stroke: 0.5pt + codeBorder,
-    [
-      // Titelbalk
-      #block(
-        width: 100%,
-        inset: (x: 10pt, y: 6pt),
-        fill: codeTitleBar,
-        stroke: (bottom: 0.5pt + codeBorder),
-        below: 0pt,
-        // Titel links, taal-tag rechts. De drie macOS-stoplichtjes zijn weg:
-        // in een samenvatting die geprint wordt zeggen ze niets, en de titel
-        // stond zichtbaar scheef omdat hij over een kolom van 40 pt werd
-        // gecentreerd naast die bolletjes.
-        grid(
-          columns: (1fr, auto),
-          align: horizon,
-          text(fill: codeText, font: "Fira Sans", size: 9.5pt, weight: "bold")[
-            #ic-code #h(0.4em) #if title != none { title } else { lang }
-          ],
-          if title != none {
-            text(fill: codeComment, font: ("Fira Code", "Liberation Mono"), size: 8.5pt)[#lang]
-          },
-        ),
-      )
-      // Code body. Geen `fill` op de tekst: dan blijft Typst's eigen syntax
-      // highlighting intact. Zette dit op vscodeWhite, waardoor niet-gehighlighte
-      // code wit werd en de rest in donkere kleuren op een donkere achtergrond viel.
-      #block(
-        width: 100%,
-        inset: 10pt,
-        above: 0pt,
-        {
-          set text(
-            fill: codeText,
-            font: ("Fira Code", "Liberation Mono"),
-            size: 10.5pt,
-          )
-          body
-        },
-      )
-    ],
+    stroke: (left: 2.5pt + schoolBlue),
+    inset: (left: 8pt, right: 8pt, top: 7pt, bottom: 7pt),
+    {
+      // Titelregel in het blok zelf
+      if title != none {
+        block(below: 5pt)[
+          #text(fill: schoolBlue, font: "Fira Sans", size: 9.5pt, weight: "bold")[#title]
+          #h(0.4em)
+          #text(fill: codeComment, font: ("Fira Code", "Liberation Mono"), size: 8pt)[[#lang]]
+        ]
+      }
+      // Code. Geen `fill` op de tekst: dan blijft Typst's syntax highlighting intact.
+      set text(font: ("Fira Code", "Liberation Mono"), size: 10pt)
+      show raw.line: it => {
+        box(width: 6mm, align(right, text(
+          fill: codeGutter,
+          size: 8pt,
+          str(it.number),
+        )))
+        box(width: 0.4pt, height: 1.1em, fill: codeGutterRule)
+        h(3mm)
+        it.body
+      }
+      body
+    },
   )
   v(8pt)
 }
