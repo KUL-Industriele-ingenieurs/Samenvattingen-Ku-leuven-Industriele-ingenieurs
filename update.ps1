@@ -87,7 +87,7 @@ if ($pdfAssets.Count -eq 0) { Write-Error "No PDF assets found in the 'latest' r
 $total = $pdfAssets.Count
 Write-Host "$total PDFs" -ForegroundColor Green
 
-# Step 2: Build filename -> year mapping. Prefer the manifest asset (CDN, no
+# Step 2: Build filename -> "<jaar>/<Vak>" mapping. Prefer the manifest asset (CDN, no
 # API rate limit); fall back to the GitHub tree API only if it is missing.
 Write-Host "  Building folder map... " -ForegroundColor Cyan -NoNewline
 $yearMap = @{}
@@ -113,7 +113,9 @@ if (-not $manifest) {
             if ($ext -notin @('.tex', '.typ')) { continue }
             $stem = [System.IO.Path]::GetFileNameWithoutExtension($item.path)
             $pdfName = $stem.Replace(' ', '_').Replace('&', '.') + '.pdf'
-            if (-not $yearMap.ContainsKey($pdfName)) { $yearMap[$pdfName] = $parts[0] }
+            # jaar + vakmap, zodat elk vak zijn eigen map krijgt
+            $folder = if ($parts.Count -gt 2) { ($parts[0..1] -join '/') } else { $parts[0] }
+            if (-not $yearMap.ContainsKey($pdfName)) { $yearMap[$pdfName] = $folder }
         }
         Write-Host "$($yearMap.Count) via repo tree (fallback)" -ForegroundColor Yellow
     } catch {
@@ -122,7 +124,7 @@ if (-not $manifest) {
 }
 Write-Host ""
 
-# Step 3: Download each PDF into its year subfolder
+# Step 3: Download each PDF into its course subfolder
 $nDown = 0; $nOk = 0; $nFail = 0; $nMoved = 0; $bytesDown = 0L
 $i = 0
 foreach ($asset in $pdfAssets) {
@@ -134,7 +136,7 @@ foreach ($asset in $pdfAssets) {
     $yearFolder = $yearMap[$pdfName]
     if ($yearFolder) {
         $destDir = Join-Path $targetDir $yearFolder
-        if (-not (Test-Path $destDir)) { New-Item -ItemType Directory -Path $destDir | Out-Null }
+        if (-not (Test-Path $destDir)) { New-Item -ItemType Directory -Path $destDir -Force | Out-Null }
         $displayPath = "$yearFolder/$pdfName"
     } else {
         $destDir = $targetDir
@@ -179,7 +181,7 @@ if ($nMoved -gt 0) { Write-Host " - $nMoved moved" -ForegroundColor Blue -NoNewl
 if ($nFail -gt 0) { Write-Host " - $nFail failed" -ForegroundColor Red } else { Write-Host " - 0 failed" -ForegroundColor Green }
 if ($bytesDown -gt 0) { Write-Host "  Downloaded $(Format-Size $bytesDown) this run." -ForegroundColor DarkGray }
 Write-Rule
-Write-Host "  Done! PDFs organized by year folder." -ForegroundColor White
+Write-Host "  Done! PDFs organized per year and course." -ForegroundColor White
 
 # --- Recent changes (who contributed what) ---
 $commitCount = 15
