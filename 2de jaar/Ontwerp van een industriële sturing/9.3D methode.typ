@@ -67,7 +67,11 @@ Dat is een noodzakelijke voorwaarde, geen voldoende voorwaarde: de stappen moete
   fill: (x, y) => if y == 0 { gray.lighten(50%) },
   [*Cilinders $n$*], [*Stappen $2n$*], [*Hoekpunten $2^n$*], [*Gevolg*],
   [1], [2], [2], [exact op de grens, de cilinder oscilleert],
-  [2], [4], [4], [exact op de grens: enkel de vierkante cyclus $A^+ B^+ A^- B^-$ past, want je moet álle vier de hoekpunten gebruiken. $A^+ B^+ B^- A^-$ loopt over dezelfde rib terug en botst dus],
+  [2],
+  [4],
+  [4],
+  [exact op de grens: enkel de vierkante cyclus $A^+ B^+ A^- B^-$ past, want je moet álle vier de hoekpunten gebruiken. $A^+ B^+ B^- A^-$ loopt over dezelfde rib terug en botst dus],
+
   [3], [6], [8], [twee hoekpunten over, dus speling: meerdere volgordes zijn combinatorisch],
   [4], [8], [16], [ruim voldoende speling],
 )
@@ -96,6 +100,93 @@ Voor de L-cyclus $A^+ B^+ B^- A^-$ met $n = 2$ geeft dat $6 <= 8$, en dat klopt:
   Schrijf op het examen elke stap uit en zeg er expliciet bij dat je die stap voltooid hebt.
 ]
 
+Het resultaat van de methode is telkens een contactschema per beweging: welke sensoren in serie moeten staan om die spoel te bekrachtigen.
+
+#figure(
+  grid(
+    columns: 2,
+    column-gutter: 0.6cm,
+    image("assets/OIS_3D_contacten_direct.png", width: 5.5cm),
+    image("assets/OIS_3D_contacten_AB.png", width: 6.5cm),
+  ),
+  caption: [Links het eenvoudige geval: één sensor per beweging. Rechts hetzelfde net wanneer er twee voorwaarden in serie nodig zijn.],
+  label: <fig:3d-contactschema>,
+)
+
+== Examentip: het vraagtype dat altijd terugkomt <sec:3d-examenvraag>
+
+De vraag komt elk jaar in dezelfde vorm. Je krijgt een #strong[cilinderpad] voor $A$, $B$ en eventueel $C$, plus de beschikbare #strong[ingangen] $a_0, a_1, b_0, b_1, c_0, c_1$. Gevraagd wordt telkens hetzelfde drietal:
+
++ Heb je een #strong[extra geheugen] nodig, en zo ja waar zet en reset je het?
++ Welke ingangen neem je als #strong[N.O.] en welke als #strong[N.C.]?
++ Staan ze in #strong[serie] of #strong[parallel]?
+
+=== Vraag 1: geheugen nodig?
+
+Schrijf de sensortoestand op na elke stap van de cyclus. Komt dezelfde combinatie twee keer voor?
+
+#table(
+  columns: (auto, 1fr),
+  inset: 8pt, stroke: none, align: horizon,
+  fill: (x, y) => if y == 0 { gray.lighten(50%) },
+  [*Bevinding*], [*Besluit*],
+  [Elke combinatie komt één keer voor], [Combinatorisch. Geen geheugen. Elke spoel volgt rechtstreeks uit de sensoren.],
+  [Een combinatie komt twee keer voor, met #strong[dezelfde] gevraagde actie], [Geen probleem, geen geheugen.],
+  [Een combinatie komt twee keer voor met een #strong[andere] gevraagde actie], [Signaaloverlapping. Eén geheugen $K_1$ bijzetten.],
+  [Uit één punt vertrekken $m$ verschillende takken], [Je hebt $ceil(log_2 m)$ geheugens nodig: drie takken $arrow.r$ twee geheugens.],
+)
+
+Sneltest zonder tekenen: schrijf de cyclus als letters en knip zodra een letter zich herhaalt. Het aantal knippen is het aantal geheugens. $A^+ B^+ C^+ A^- B^- C^-$ geeft $A B C | A B C$, dus één knip, maar de sensortoestanden botsen niet, dus nul geheugens. $A^+ B^+ B^- A^-$ geeft $A B | B A$: daar botst $a_1 b_0$ wél, dus één geheugen.
+
+*Waar zet en reset je het?* Op een punt dat #strong[maar één keer] in de cyclus voorkomt, anders verplaats je het probleem alleen.
+
+- #strong[Set] op het einde van groep I, dus de laatste sensor vóór de knip.
+- #strong[Reset] op het einde van groep II, dus de laatste sensor van de cyclus.
+
+Voor $A^+ B^+ | B^- A^-$: set op $b_1$, reset op $a_0$, dus $K_1 = b_1 + K_1 dot overline(a_0)$.
+
+=== Vraag 2: N.O. of N.C.?
+
+Kijk naar wat de term in de vergelijking doet:
+
+#table(
+  columns: (auto, auto, 1fr),
+  inset: 8pt, stroke: none, align: horizon,
+  fill: (x, y) => if y == 0 { gray.lighten(50%) },
+  [*Rol in de vergelijking*], [*Contact*], [*Waarom*],
+  [Term staat er zonder streep: $x$], [N.O.], [de spoel moet aangaan wanneer die sensor bereikt is],
+  [Term staat er met streep: $overline(x)$], [N.C.], [de spoel moet #strong[los]laten wanneer die sensor bereikt wordt],
+  [Veiligheidsketen, noodstop, deurschakelaar], [N.C.], [draadbreuk moet de machine stoppen, niet stil verbergen],
+)
+
+In de standaardvorm $X^+ = "trigger" + x_1 dot overline("stop")$ zijn de trigger en $x_1$ dus N.O.-contacten, en is $overline("stop")$ het enige N.C.-contact.
+
+=== Vraag 3: serie of parallel?
+
+Boolean vertaalt zich rechtstreeks naar de tekening:
+
+- Vermenigvuldigen is #strong[EN], dus contacten in #strong[serie]. Alle voorwaarden moeten tegelijk waar zijn.
+- Optellen is #strong[OF], dus takken in #strong[parallel]. Eén van beide volstaat.
+
+Elke $X^+$ krijgt daarom twee parallelle takken: de trigger die hem aanzet, en de zelfhoudtak die hem aan houdt. In die zelfhoudtak staan $x_1$ en $overline("stop")$ in serie.
+
+$ X^+ = underbrace("trigger", "tak 1") + underbrace(x_1 dot overline("stop"), "tak 2, serie") $
+
+met:
+- trigger: de eindsensor van de vorige beweging, N.O. $[-]$
+- $x_1$: de eigen uit-sensor, N.O., houdt de spoel vast zodra de cilinder uit is $[-]$
+- $overline("stop")$: N.C. van de sensor die de $X^-$-stap aftrapt, laat de spoel los $[-]$
+
+De zelfhoudtak is niet optioneel: zonder die tak valt de spoel af zodra de cilinder van zijn startsensor wegloopt, en blijft hij halverwege steken.
+
+#examenbox[
+  Schrijf altijd eerst de tabel met sensortoestanden per stap uit, ook als je meteen ziet dat het combinatorisch is. Dat is het bewijs waarop de vraag "heb je een geheugen nodig?" beoordeeld wordt. Zeg er expliciet bij dat geen enkele combinatie zich herhaalt.
+]
+
+#waarschuwing[
+  Zet nooit $X^+$ en $X^-$ tegelijk onder spanning. Bij een bistabiel ventiel blokkeer je de spool, bij een monostabiel wint de veer of de spoel afhankelijk van de druk. Controleer dus altijd of de actieve trajecten van $X^+$ en $X^-$ elkaar niet overlappen.
+]
+
 == Wanneer heb je een geheugen $K_1$ nodig?
 
 Niet elke cyclus is combinatorisch. Bekijk opnieuw $A^+ B^+ B^- A^-$. In *2D botst* het pad: de sensorstand $a_1 b_0$ komt twee keer voor, na $A^+$ (je wil $B^+$) en na $B^-$ (je wil $A^-$). Zelfde input, andere actie, dus de sturing weet niet wat te doen.
@@ -121,7 +212,20 @@ De oplossing is een geheugen $K_1$, en dat is letterlijk een *extra as*. Hij til
   label: <fig:3d-beslissing>,
 )
 
-=== Groepen bepalen (cascademethode)
+Zit het geheugen $K_1$ er eenmaal in, dan houdt het zichzelf vast tot de resetvoorwaarde komt, en bepaalt het mee welke uitgangen mogen schakelen:
+
+#figure(
+  grid(
+    columns: 2,
+    column-gutter: 0.6cm,
+    image("assets/OIS_3D_K1_zelfhoud.png", width: 5.5cm),
+    image("assets/OIS_3D_K1_uitgangen.png", width: 6cm),
+  ),
+  caption: [Links de zelfhoudschakeling van $K_1$: $v_0$ zet hem, $h_1$ houdt hem vast. Rechts hoe $K_1$ daarna de vier bewegingen verdeelt.],
+  label: <fig:3d-K1-schema>,
+)
+
+=== Groepen bepalen (cascademethode) <sec:groepen>
 
 Om signaaloverlapping te vermijden zonder extra elektronica splits je de cyclus in *groepen*. De regel is eenvoudig: een cilinder mag binnen één groep *nooit twee keer voorkomen*. Zodra een letter zich herhaalt, trek je een grens en start je een nieuwe groep.
 
@@ -130,7 +234,7 @@ Toegepast op $A^+ B^+ B^- A^-$:
 - Groep I: $A^+ B^+$
 - Groep II: $B^- A^-$
 
-Dat is één knip, dus één geheugen $K_1$ (een hulprelais of een 5/2-dubbelimpulsventiel) om te schakelen tussen de voedingslijnen van groep I en groep II.
+Dat is één knip, dus één geheugen $K_1$ (een hulprelais of een 5/2-dubbelimpulsventiel) om te schakelen tussen de voedingslijnen van groep I en groep II. De zuiver pneumatische uitvoering daarvan, met cascadeleidingen en een groepenventiel, staat bij @sec:cascade-pneumatisch.
 
 Het geheugen zet je op het einde van groep I en reset je op het einde van groep II:
 
@@ -153,121 +257,34 @@ met:
   Zodra een letter zich *herhaalt* binnen een groep knip je in groepen, en per knip komt er één geheugen bij. Dat geheugen onthoudt "in welke ronde zit ik", precies de informatie die het 2D-pad niet had. Visueel voegt het een dimensie toe waardoor het gekruiste pad terug een nette, niet-botsende wandeling wordt.
 ]
 
-== Uitgewerkt voorbeeld: de ABCABC-cyclus
+== Karnaughkaarten bij de 3D-methode <sec:karnaugh>
 
-We nemen $A^+ B^+ C^+ A^- B^- C^-$ met *monostabiele* ventielen.
+=== Maxi-Karnaugh <sec:maxi-karnaugh>
 
-#figure(
-  image("assets/OIS_3D_methode_ABCABC.png", width: 15cm),
-  caption: [De ABCABC-cyclus: kubuspad, de vlakken per sensor, en de resulterende rungs],
-  label: <fig:3d-abcabc>,
-)
-
-Elke spoel volgt hetzelfde patroon: een *trigger* die hem aanzet, een *zelfhouding* op zijn eigen uit-sensor, en een *afschakelvoorwaarde* die hem lost.
-
-$ A^+ = c_0 + a_1 dot overline(c_1) $
-
-met:
-- $c_0$: startvoorwaarde, N.O.-contact van de sensor C-in $[-]$
-- $a_1$: overnamevoorwaarde, N.O.-contact van de sensor A-uit $[-]$
-- $overline(c_1)$: afschakelvoorwaarde, N.C.-contact van de sensor C-uit $[-]$
-
-$ B^+ = a_1 + b_1 dot overline(a_0) $
-
-met:
-- $a_1$: trigger, N.O.-contact van de sensor A-uit $[-]$
-- $b_1$: overnamevoorwaarde, N.O.-contact van de sensor B-uit $[-]$
-- $overline(a_0)$: afschakelvoorwaarde, N.C.-contact van de sensor A-in $[-]$
-
-$ C^+ = b_1 + c_1 dot overline(b_0) $
-
-met:
-- $b_1$: trigger, N.O.-contact van de sensor B-uit $[-]$
-- $c_1$: overnamevoorwaarde, N.O.-contact van de sensor C-uit $[-]$
-- $overline(b_0)$: afschakelvoorwaarde, N.C.-contact van de sensor B-in $[-]$
-
-== Oefening: pick en place $A^+ C^+ B^+ A^- C^- B^-$
-
-Drie cilinders met *monostabiele* ventielen (veer terug). Gevraagd: teken het kubuspad, controleer op overlap, en schrijf de drie spoelvergelijkingen.
-
-*Aanpak (denkproces)*
-
-+ *Schrijf de sensorstanden uit* na elke stap. Herhaalt geen enkele combinatie, dan is het probleem *combinatorisch* en heb je geen geheugen $K_1$ nodig.
-+ Bij *monostabiel* los je enkel de "+"-spoelen op. De "−"-beweging gebeurt vanzelf zodra je de spoel lost, want de veer duwt terug.
-+ Elke spoel volgt hetzelfde patroon:
-  $ X^+ = "trigger" + x_1 dot overline("stop") $
-  met:
-  - trigger: de sensor die de vorige stap afrondt, zet de spoel aan $[-]$
-  - $x_1$: eigen uit-sensor, zorgt voor zelfhouding zodra de cilinder uit is $[-]$
-  - $overline("stop")$: N.C. van de sensor die de $X^-$-stap aftrapt, laat de spoel los $[-]$
-
-*Oplossing*
-
-Geen enkele sensorcombinatie herhaalt, dus dit is combinatorisch en er is geen geheugen nodig.
-
-$ A^+ = b_0 + a_1 dot overline(b_1) $
-
-met:
-- $b_0$: startvoorwaarde, B is in (N.O. van sensor B-in) $[-]$
-- $a_1$: zelfhouding, A is uit (N.O. van sensor A-uit) $[-]$
-- $overline(b_1)$: afschakelvoorwaarde, laat los zodra B uit is (N.C. van sensor B-uit) $[-]$
-
-$ C^+ = a_1 + c_1 dot overline(a_0) $
-
-met:
-- $a_1$: trigger, A is uit (N.O. van sensor A-uit) $[-]$
-- $c_1$: zelfhouding, C is uit (N.O. van sensor C-uit) $[-]$
-- $overline(a_0)$: afschakelvoorwaarde, laat los zodra A weer in is (N.C. van sensor A-in) $[-]$
-
-$ B^+ = c_1 + b_1 dot overline(c_0) $
-
-met:
-- $c_1$: trigger, C is uit (N.O. van sensor C-uit) $[-]$
-- $b_1$: zelfhouding, B is uit (N.O. van sensor B-uit) $[-]$
-- $overline(c_0)$: afschakelvoorwaarde, laat los zodra C weer in is (N.C. van sensor C-in) $[-]$
+Bij de #keyterm[maxi-Karnaugh] neem je #strong[alle] variabelen in de kaart op. De kaart is dan volledig, en je kan er systematisch de kleinste uitdrukking uit halen.
 
 #figure(
-  image("assets/OIS_3D_methode_oefening_ACBACB.png", width: 14cm),
-  caption: [Eigen uitwerking: kubuspad en verplaatsings-stap-diagram voor $A^+ C^+ B^+ A^- C^- B^-$],
-  label: <fig:3d-acbacb>,
+  image("assets/OIS_maxi_karnaugh_clean.png", width: 6cm),
+  caption: [Maxi-Karnaugh voor $A^+$ en $B^+$: alle variabelen staan in de kaart, ook de gecombineerde kolom $overline(a)_0 dot a_1$.],
+  label: <fig:maxi-karnaugh>,
 )
 
-#concept(title: "Key insight")[
-  Het is een *estafette*: elke "+"-spoel start op de eindsensor van de vorige cilinder en houdt zichzelf vast tot de sensor die zijn eigen terugtrekking aftrapt. In het stap-diagram is de gekleurde balk net de periode dat de spoel bekrachtigd is, en de zelfhoudingsterm $x_1 dot overline("stop")$ houdt die balk hoog tot de stop-sensor schakelt.
+
+=== Mini-Karnaugh <sec:mini-karnaugh>
+
+#wrap-figure(
+  image("assets/OIS_mini_karnaugh.png", width: 8cm),
+  caption: [Mini-Karnaugh: een variabele is weggelaten omdat ze naar verwachting niet nodig is.],
+  label: <fig:mini-karnaugh>,
+)[
+  Bij de #keyterm[mini-Karnaugh] laat je een variabele weg zodra je verwacht dat je ze niet nodig zult hebben. De kaart wordt daardoor kleiner en sneller in te vullen.
 ]
 
-== Oefening met gekleurde assen: $B^+ A^+ C^+ B^- A^- C^-$
+#waarschuwing[
+  De slides zijn hier ondubbelzinnig over: #belangrijk[probeer dit niet op het examen], en eigenlijk beter helemaal nooit.
 
-Zelfde methode, maar nu met een kleur per cilinder (A rood, B blauw, C groen). Elk padsegment krijgt de kleur van de bewegende cilinder, en in het stap-diagram zie je per kleur wanneer die spoel aan staat.
-
-#figure(
-  image("assets/OIS_3D_methode_oefening_BACBAC.png", width: 14cm),
-  caption: [Kubuspad en stap-diagram voor $B^+ A^+ C^+ B^- A^- C^-$, met een kleur per cilinder],
-  label: <fig:3d-bacbac>,
-)
-
-Monostabiele ventielen, en geen enkele sensorcombinatie herhaalt, dus opnieuw combinatorisch.
-
-$ B^+ = c_0 + b_1 dot overline(c_1) $
-
-met:
-- $c_0$: startvoorwaarde, C is in (N.O. van sensor C-in) $[-]$
-- $b_1$: zelfhouding, B is uit (N.O. van sensor B-uit) $[-]$
-- $overline(c_1)$: afschakelvoorwaarde, laat los zodra C uit is (N.C. van sensor C-uit) $[-]$
-
-$ A^+ = b_1 + a_1 dot overline(b_0) $
-
-met:
-- $b_1$: trigger, B is uit (N.O. van sensor B-uit) $[-]$
-- $a_1$: zelfhouding, A is uit (N.O. van sensor A-uit) $[-]$
-- $overline(b_0)$: afschakelvoorwaarde, laat los zodra B weer in is (N.C. van sensor B-in) $[-]$
-
-$ C^+ = a_1 + c_1 dot overline(a_0) $
-
-met:
-- $a_1$: trigger, A is uit (N.O. van sensor A-uit) $[-]$
-- $c_1$: zelfhouding, C is uit (N.O. van sensor C-uit) $[-]$
-- $overline(a_0)$: afschakelvoorwaarde, laat los zodra A weer in is (N.C. van sensor A-in) $[-]$
+  De reden is dat je vooraf móet gokken welke variabele overbodig is. Gok je fout, dan mis je een conditie, en dat zie je niet aan de kaart zelf.
+]
 
 == Sequenties in een PLC
 
@@ -276,76 +293,3 @@ Werk je met een PLC, dan is het handmatig oplossen van signaaloverlapping via de
 / SFC of Graph (Sequential Function Chart): een grafische taal zoals S7-Graph die stappen en transities rechtstreeks definieert. Dit is de overzichtelijkste en meest industriële standaard voor complexe volgordes.
 / Stappenketen met SR-flipflops: in LAD of FBD wijs je elke stap toe aan een interne merker (bv. `%M0.1` voor stap 1, `%M0.2` voor stap 2). Elke stap zet de volgende stap en reset de vorige. Zo kan een signaalconflict per constructie niet meer voorkomen.
 
-== De bistabiele oplossing van de kubus <sec:kubus-bistabiel>
-
-Naast de monostabiele uitwerking bestaat er van de kubus $A B C A B C$ ook een #strong[bistabiele] oplossing. Daarin stuur je per cilinder twee commando's, `A+` en `A-`, naar een bistabiel ventiel dat zijn stand onthoudt. Je hebt dan geen doorlopend signaal nodig om een stand vast te houden: één puls volstaat.
-
-#figure(
-  image("assets/OIS_3D_kubus_bistabiel.png", width: 11cm),
-  caption: [De bistabiele 3D-oplossing van de kubus $A B C A B C$, met de commando's `A+`, `B+` en `C+`.],
-  label: <fig:kubus-bistabiel>,
-)
-
-== Karnaughkaarten bij de 3D-methode <sec:karnaugh>
-
-=== Maxi-Karnaugh <sec:maxi-karnaugh>
-
-Bij de #keyterm[maxi-Karnaugh] neem je #strong[alle] variabelen in de kaart op. De kaart is dan volledig, en je kan er systematisch de kleinste uitdrukking uit halen.
-
-#figure(
-  image("assets/OIS_maxi_karnaugh.png", width: 11cm),
-  caption: [Maxi-Karnaugh: alle variabelen staan in de kaart.],
-  label: <fig:maxi-karnaugh>,
-)
-
-=== Mini-Karnaugh <sec:mini-karnaugh>
-
-Bij de #keyterm[mini-Karnaugh] laat je een variabele weg zodra je verwacht dat je ze niet nodig zult hebben. De kaart wordt daardoor kleiner en sneller in te vullen.
-
-#waarschuwing[
-  De slides zijn hier ondubbelzinnig over: #belangrijk[probeer dit niet op het examen], en eigenlijk beter helemaal nooit.
-
-  De reden is dat je vooraf móet gokken welke variabele overbodig is. Gok je fout, dan mis je een conditie, en dat zie je niet aan de kaart zelf.
-]
-
-#figure(
-  image("assets/OIS_mini_karnaugh.png", width: 11cm),
-  caption: [Mini-Karnaugh: een variabele is weggelaten omdat ze naar verwachting niet nodig is.],
-  label: <fig:mini-karnaugh>,
-)
-
-== Kubus 2: $A B C B C A$ <sec:kubus-abcbca>
-
-Deze cyclus is #belangrijk[duidelijk niet combinatorisch]. Je hebt dus een extra geheugen nodig.
-
-De redenering van de slides:
-
-+ Het probleem is `A+` tegenover `A-`: op eenzelfde sensortoestand moet de machine de ene keer `A+` en de andere keer `A-` doen. Je lost dat op door een variabele te maken die in beide gevallen een #strong[verschillende] toestand heeft.
-+ Er is maar #strong[één] punt vóór de probleempositie: het startpunt van de cyclus. Daar zet of reset je dus het geheugen.
-+ Dat lijkt sterk op de #keyterm[cascademethode]. Ook hier gebruik je per netwerk zo weinig mogelijk condities.
-
-In de oplossing van de slides gebruiken `A+`, `B+` en `A-` het geheugen als conditie.
-
-#figure(
-  image("assets/OIS_3D_kubus_ABCBCA.png", width: 11cm),
-  caption: [Kubus $A B C B C A$ met het extra geheugen dat `A+` van `A-` onderscheidt.],
-  label: <fig:kubus-abcbca>,
-)
-
-== Kubus 3: $A B B C C A$ <sec:kubus-abbcca>
-
-Ook deze is niet combinatorisch, en hier heb je #strong[meerdere] geheugens nodig.
-
-De telling die je moet kunnen maken:
-
-+ In punt $a_1$ starten #strong[drie] verschillende takken.
-+ Om drie situaties te onderscheiden heb je minstens #strong[twee] geheugens nodig. Met twee geheugens heb je vier mogelijkheden, waarvan er dus één ongebruikt blijft.
-+ Je verandert de toestand van de geheugens in #strong[unieke] punten: $a_0$, $b_1$ en $c_1$.
-
-#belangrijk[Zodra je die keuze gemaakt hebt, wordt de rest van de oplossing triviaal.] Dat is de kern van de methode: investeer je denkwerk in het kiezen van de geheugens en hun schakelpunten, niet in het uitwerken achteraf.
-
-#figure(
-  image("assets/OIS_3D_kubus_ABBCCA.png", width: 11cm),
-  caption: [Kubus $A B B C C A$: drie takken vertrekken uit $a_1$, dus zijn er twee geheugens nodig.],
-  label: <fig:kubus-abbcca>,
-)

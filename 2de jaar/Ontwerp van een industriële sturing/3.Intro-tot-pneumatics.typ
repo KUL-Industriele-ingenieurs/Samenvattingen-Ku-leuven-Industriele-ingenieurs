@@ -4,34 +4,13 @@
 
 == Wat is pneumatiek?
 
-Pneumatica is het aansturen van *cilinders en zuigers* met lucht. Je bedient ze met *ventielen*, en die stuur je op hun beurt met *relais* en *PLC's*.
+Pneumatiek is het gecontroleerd overbrengen van mechanische energie en beweging met samengeperste lucht (*perslucht*). Perslucht stuurt *cilinders en motoren* (actuatoren) aan. De richting, druk en snelheid van de luchtstromen worden geregeld met *pneumatische en elektro-pneumatische ventielen*, die op hun beurt aangestuurd worden door relaisschakelingen of PLC's.
 
-Voor het labo moet je meer weten over pneumatiek.
-Neem dit alles nog eens deftig door voor je aan de labo's begint.
-
-== Contents
-
-+ Basis van pneumatiek in video's  _Deze video's zijn niet altijd academsich goed, maar geven wel een goed beeld van de basisprincipes_
-+ Druk en vacuum
-+ Compressors en luchttoepassingen
-+ Releasing Air
-+ Switches
-+ Logic circuits
-+ Labo equipment
-
-
-== Basis van pneumatiek in video's
-
-Excellent electro-pneumatics overview(later lecture): Compressor, FRL, (PLC), valve, cylinder:
-https://www.youtube.com/watch?v=lBARBZNLxQI
-• Single acting cylinder: https://www.youtube.com/watch?v=B8z8veo1FfA
-• Single acting cylinder, manual 3/2 valve: https://www.youtube.com/watch?v=8rTFzeBMJhg
-• Double acting cylinder, correct illustration of metered out flow control valves:
-https://www.youtube.com/watch?v=9uPtNkWjtQE
-• 5/2 monostable direct acting directional control valve, double acting cylinder, valve symbol basics:
-https://www.youtube.com/watch?v=bXXL-0sf8gs At the beginning of the video they suggest that
-“spool” valve is used as a synonym for “hydraulic” valve, something we don’t do in this course!
-We will discuss (the differences between) disc valves, spool valves and poppet valves later
+Voordelen van pneumatiek in de industrie:
+- *Hoge betrouwbaarheid en snelheid*: Eenvoudige mechanische opbouw met weinig onderdelen die kunnen falen.
+- *Veiligheid*: Geen vonken of oververhittingsgevaar in explosiegevaarlijke (ATEX) of vochtige omgevingen.
+- *Overbelastingsbeveiliging*: Een pneumatische cilinder kan tot stilstand geblokkeerd worden zonder motorschade.
+- *Beschikbaarheid*: Lucht is overal aanwezig en kan na gebruik via dempers ontlucht worden naar de atmosfeer.
 
 
 == Druk en vacuum
@@ -41,7 +20,7 @@ We will discuss (the differences between) disc valves, spool valves and poppet v
 
   #wrap-figure(
     image("assets/absolutevsrelatievedruk.png", width: 7cm),
-    caption: [absolutevsrelatievedruk],
+    caption: [Absolute druk telt vanaf het perfecte vacuüm, relatieve druk vanaf $1013$ mbar. Onder de streepjeslijn is de relatieve druk negatief: dat is vacuüm.],
     label: <fig:absolutevsrelatievedruk>,
   )[
     Druk is de kracht van molecules over een oppervlakte [F/A]
@@ -69,7 +48,7 @@ $ F = k dot Delta x $
 Druk is niets anders dan moleculen die tegen een oppervlak botsen.
 #figure(
   image("assets/magdeburg hemispheres.png", width: 5cm),
-  caption: [magdeburg hemispheres],
+  caption: [De halve bollen van Maagdenburg: leeggepompt houdt de omgevingsdruk ze samen, en paardenspannen krijgen ze niet los.],
   label: <fig:magdeburg-hemispheres>,
 )
 
@@ -83,7 +62,7 @@ Je zet de zuignap op het voorwerp en pompt de lucht eruit. Je vergroot dan terug
 
 #figure(
   image("assets/tools pneumatics.png", width: 5cm),
-  caption: [Tools pneumatics],
+  caption: [Perslucht in de praktijk: een blaaspistool, een zuignap op een ejector en een slagmoersleutel.],
   label: <fig:tools-pneumatics>,
 )
 
@@ -93,7 +72,7 @@ In de industrie wordt pneumatics veel gebruikt. Tandartsen, schroevendraaiers, s
 
 #wrap-figure(
   image("assets/vacuum ejector.png", width: 8cm),
-  caption: [vacuum ejector],
+  caption: [De vacuümejector: perslucht versnelt door de vernauwing en zuigt via de zijpoort lucht aan (venturi-effect).],
   label: <fig:vacuum-ejector>,
 )[
 
@@ -110,7 +89,7 @@ Om dingen tight te houden zodat lucht niet lekt worden gasdichte connecties gebr
   Je wilt geen druk verliezen door lekken.
   #figure(
     image("assets/gasdicht.png", width: 5cm),
-    caption: [gasdicht],
+    caption: [Een push-in koppeling: de slang klemt vast achter een ring en dicht af op een O-ring, zonder gereedschap.],
     label: <fig:gasdicht>,
   )
 
@@ -125,96 +104,81 @@ Om dingen tight te houden zodat lucht niet lekt worden gasdichte connecties gebr
 
 === Pneumatische cilinders
 
-#examenbox[Verwar de pompen uit de industriële sturing niet met de pompen uit de thermodynamica.]
-
-We zetten een hoge druk aan de linkerkant. Hierdoor wordt de zuiger naar rechts geduwd. Daarna wordt deze hoge druk losgelaten door de return flow. De druk is nu ineens weg en gaat de zuiger terug naar links.
-
-
-We rekenen met relatieve druk. Zet je de druk niet hoger dan de atmosferische druk, dan beweegt de zuiger niet: aan de stangzijde staat er ook druk die hem tegenhoudt.
-
-#figure(
-  image("assets/pneumatische cilinder.png", width: 8cm),
-  caption: [pneumatische cilinder],
+#wrap-figure(
+  image("assets/pneumatische cilinder.png", width: 6.5cm),
+  caption: [Doorsnede van een dubbelwerkende cilinder],
   label: <fig:pneumatische-cilinder>,
-)
+)[
+  Een pneumatische cilinder zet persluchtenergie om in een lineaire mechanische kracht en verplaatsing:
+  - *Bodemzijde (piston chamber)*: Toevoer van perslucht drukt het volledige zuigeroppervlak $A_1$ naar voren (uitschuiven, $+$-slag).
+  - *Stangzijde (rod chamber)*: Toevoer van perslucht drukt tegen het ringoppervlak $A_2 = A_1 - A_"rod"$ (inschuiven, $-$-slag).
+  - *Ontluchting*: De tegenoverliggende kamer moet tegelijkertijd drukloos kunnen ontluchten via het stuurventiel.
+]
 
-Wanneer de zuiger beweegt tussen de twee eindposities (volledig in- of uitgeschoven) spreken we van een *Full-stroke* of een *volledige slag*. De afstand die de zuiger hierbij aflegt is de *slaglengte*. In industriële sturingen worden pneumatische cilinders meestal binair gebruikt: ze bevinden zich ofwel in de beginpositie, ofwel in de eindpositie.
-
-Meestal gebruiken we *Full pressure*: we proberen niet zuinig te zijn met lucht om de efficiëntie te vergroten, aangezien energie-recuperatie bij pneumatiek meestal niet mogelijk is. De kamer die niet onder druk staat, moet altijd worden *ontlucht* naar de atmosfeer.
-
-De meeste cilinders zijn *dubbelwerkend* *(double acting)* en hebben dus twee aansluitingen. De kracht in beide richtingen is echter vaak niet gelijk. Dit komt door de *zuigerstang* (piston rod): aan de stangzijde is het effectieve oppervlak kleiner dan aan de bodemzijde, waardoor de uitgaande slag krachtiger is dan de ingaande slag bij dezelfde druk.
-
-Veel pneumatische cilinders zijn uitgerust met *Einddemping* (end cushioning). Dit voorkomt dat de zuiger hard tegen de eindkappen slaat. De demping kan vaak handmatig worden ingesteld met een regelschroef op de cilinder zelf.
-
-
-#figure(
-  image("assets/pneumatische-cilinders-design.png", width: 12cm),
-  caption: [pneumatische-cilinders-design],
+#wrap-figure(
+  image("assets/pneumatische-cilinders-design.png", width: 7.5cm),
+  caption: [Opbouw met regelbare eindposities en einddemping],
   label: <fig:pneumatische-cilinders-design>,
-)
-
-De kracht regel je met de druk.
-
-$ F = p dot A $
-
-De snelheid regel je door te *smoren* (throttling) met een flow control valve.
-Je regelt de uitlaat of de inlaat, en zo heb je controle over de snelheid.
-
-
+)[
+  - *Slaglengte*: De afstand tussen de twee vaste mechanische eindposities (*full stroke*).
+  - *Einddemping (cushioning)*: Pneumatische remming aan het einde van de slag om harde mechanische schokken en lawaai te dempen.
+  - *Kracht vs. Snelheid*:
+    - De *kracht* wordt bepaald door de effectieve druk: $F = p dot A$.
+    - De *snelheid* wordt geregeld door smoring van de uitlaatlucht via een snelheidsregelventiel (FCV).
+]
 
 === Soorten cilinders
 
-+ *Single acting cylinder*: heeft één aansluiting en gebruikt een veer om terug te keren naar de beginpositie. _Zie vorige figuur_
-+ *Double acting cylinder*: heeft twee aansluitingen en kan zowel vooruit als achteruit worden bewogen door luchtdruk. De ingang is geen pomp maar een compressor. Je ingang en uitgang verwisselen dus van plaats tijdens een *Stroke*.
-  #figure(
-    image("assets/double acting cilinder.png", width: 8cm),
-    caption: [double acting cilinder],
-    label: <fig:double-acting-cilinder>,
-  )
-+ *Guided cylinder*: heeft een geleiding om te voorkomen dat de zuiger zijdelings beweegt.
-  #figure(
-    image("assets/guided-cilinders.png", width: 8cm),
-    caption: [guided-cilinders],
-    label: <fig:guided-cilinders>,
-  )
-+ *Speciale cilinders*: Een double rod cylinder heeft twee zuigerstangen. Hierdoor kan je de zuiger in beide richtingen bewegen met dezelfde kracht. Een rotating cilinder kan de zuiger 360 graden draaien.
-  #figure(
-    image("assets/special-cilinders.png", width: 8cm),
-    caption: [special-cilinders],
-    label: <fig:special-cilinders>,
-  )
+De doorsnede in @fig:pneumatische-cilinder is een dubbelwerkende cilinder. Er bestaan twee basistypes:
 
-#examenbox("Je moet deze symbolen kennen, je kunt een single acting piston altijd herkennen omdat die een veer heeft en maar 1 ingang.")
+- / Enkelwerkend (single-acting): één aansluiting. Perslucht stuurt uit, een ingebouwde veer trekt in. De veer neemt plaats in, dus de slag is beperkt, en bij drukverlies gaat de cilinder vanzelf naar zijn ruststand.
+- / Dubbelwerkend (double-acting): twee aansluitingen. Beide slagen zijn pneumatisch aangedreven, dus ook de intrekkende slag levert kracht.
+
+#wrap-figure(
+  image("assets/guided-cilinders.png", width: 6cm),
+  caption: [Geleide cilinder (Guided cylinder)],
+  label: <fig:guided-cilinders>,
+)[
+  - *Geleide cilinder (Guided cylinder)*: Voorzien van externe geleidingsstangen om zijdelingse torsiekrachten en buigmomenten op te vangen.
+]
+
+#wrap-figure(
+  image("assets/special-cilinders.png", width: 6cm),
+  caption: [Speciale cilinders: dubbele stang en draaicilinder],
+  label: <fig:special-cilinders>,
+)[
+  - *Doorlopende zuigerstang (Double rod)*: Heeft aan weerszijden een zuigerstang, waardoor het effectieve oppervlak en de kracht in beide richtingen exact gelijk zijn ($A_1 = A_2$).
+  - *Draaicilinder (Rotary actuator)*: Zet lineaire zuigerverplaatsing om in een roterende asbeweging ($0"–"360 degree$).
+]
 
 #figure(
   image("assets/symbolen-cilinders.png", width: 12cm),
-  caption: [symbolen-cilinders],
+  caption: [ISO-standaardsymbolen voor pneumatische cilinders],
   label: <fig:symbolen-cilinders>,
 )
 
+== Cilinderkracht bij statische toestand (Full pressure)
 
-== Kracht op full pressure
-
-
-Wat is de kracht op een cilinder op full pressure. Er zijn drie krachten die inspelen hierop. Dat zijn de krachtne op de piston, op de rod en in de chamber.
-
-#examenbox("Deze vragen worden vaak fout opgelost dus let op.")
-#figure(
-  image("assets/kracht-fullpressure.png", width: 7cm),
-  caption: [kracht-fullpressure],
+#wrap-figure(
+  image("assets/kracht-fullpressure.png", width: 6cm),
+  caption: [Werkzame drukkrachten op een dubbelwerkende cilinder],
   label: <fig:kracht-fullpressure>,
-)
+)[
+  Op de zuiger van een dubbelwerkende cilinder werken drie afzonderlijke drukkrachten:
+  1. De bodemkracht: $F_1 = p_"1,rel" dot A_1$ met $A_1 = frac(pi D^2, 4)$
+  2. De tegenkracht aan de stangzijde: $F_2 = p_"2,rel" dot A_2$ met $A_2 = frac(pi (D^2 - d^2), 4)$
+  3. De kracht op de zuigerstang: $F_3 = p_"3,rel" dot A_"rod" = 0$ (omdat $p_"3,rel" = 0 "bar"$ in buitenlucht).
+]
 
+#examenbox[
+  *Vuistregel:* Reken met *relatieve druk* ($p_"rel"$). Omdat de stang in open buitenlucht beweegt ($p_"atm"$), is $p_"3,rel" = 0 "bar"$ en valt $F_3 = 0 "N"$ direct weg!
+]
 
-We gaan eerst alle krachten bepalen van de cilinder.
+De resulterende netto uitschuifkracht $F_"out"$ bedraagt:
+$ F_"out" = F_1 - F_2 = p_"1,rel" dot frac(pi D^2, 4) - p_"2,rel" dot frac(pi (D^2 - d^2), 4) $
 
-$ F_1 = p_(1r e l) dot A_1 = p_(1r e l) dot frac(pi dot D^2, 4) $
-
-$ F_2 = p_(2r e l) dot A_2 = p_(2r e l) dot frac(pi dot (D^2-d^2), 4) $
-
-$ F_3 = p_(3r e l) dot A_(r o d) = p_(3r e l) dot frac(pi dot d^2, 4) $
-
-Gebruik relatieve druk zodat je $F_3$ niet moet berekenen.
+De resulterende netto inschuifkracht $F_"in"$ bedraagt:
+$ F_"in" = F_2' - F_1' = p_"2,rel" dot frac(pi (D^2 - d^2), 4) - p_"1,rel" dot frac(pi D^2, 4) $
 
 === Rekenvoorbeeld: Kracht op full pressure
 
@@ -245,7 +209,7 @@ $ F_"inward" = 264 "N" - 49 "N" = 215 "N" arrow.l $
 + / Milieufilter: filtert de lucht die uit de cilinder komt
   #figure(
     image("assets/Milileufilter.png", width: 3cm),
-    caption: [Milieufilter],
+    caption: [Doorsnede van het omgevingsfilter op de uitlaat: de lucht loopt door het filterelement naar buiten en laat olie en vuil achter.],
     label: <fig:Milileufilter>,
   )
 + / Snelheidsregeling: regelt de snelheid van de cilinder
@@ -253,7 +217,7 @@ $ F_"inward" = 264 "N" - 49 "N" = 215 "N" arrow.l $
 
 #wrap-figure(
   image("assets/snelheidsregeling.png", width: 3cm),
-  caption: [snelheidsregeling],
+  caption: [Snelheidsregelventiel: een instelbare smoring parallel met een terugslagklep, dus smoren in één richting en vrije doorstroming terug.],
   label: <fig:snelheidsregeling>,
 )[
   We kunnen de snelheid van de cilinder regelen door de lucht te laten ontsnappen via een flow control valve.
@@ -283,14 +247,22 @@ $ F_"inward" = 264 "N" - 49 "N" = 215 "N" arrow.l $
 
 #figure(
   image("assets/pompcircuit.png", width: 4cm),
-  caption: [pompcircuit],
+  caption: [Meter-in geregeld pompcircuit: de twee smoringen zitten aan de toevoerkant, wat een schokkende beweging geeft.],
   label: <fig:pompcircuit>,
 )
 
 Monteer de snelheidsregeling zo dicht mogelijk bij de cilinder. Je kan ze ook op het ventiel zetten: soms weegt bereikbaarheid zwaarder.
 
 
-Daarnaast bestaat er nog het *quick relief ventiel*, dat de druk in een systeem snel laat dalen. #link("https://www.youtube.com/watch?v=BTNiZhbrLNg")
+*Het snelontluchtingsventiel* (quick exhaust valve) doet het omgekeerde van een smoring: het laat de cilinder zo #strong[snel] mogelijk leeglopen. Normaal moet de uitlaatlucht helemaal terug door de slang en het stuurventiel. Zet je een snelontluchter vlak aan de cilinderpoort, dan blaast die lucht meteen ter plaatse naar buiten, en dat scheelt een pak tijd bij een lange slang.
+
+Je gebruikt hem vooral bij een #strong[enkelwerkende] cilinder, waar de veer de zuiger terugduwt en de uitstromende lucht dus alleen maar tegenwerkt.
+
+#figure(
+  image("assets/OIS_quick_exhaust.png", width: 6cm),
+  caption: [Snelontluchtingsventiel: bij het vullen gaat de lucht van 1 naar 2, bij het ontluchten sluit het element de weg naar 1 af en gaat alles rechtstreeks naar buiten via 3.],
+  label: <fig:quick-exhaust>,
+)
 
 
 == Switching
@@ -325,7 +297,7 @@ Een controleventiel waarbij een (vaak analoog) signaal de debietstroom $[dot(Q)]
 
 #figure(
   image("assets/Symbolen van een DCV.png", width: 5cm),
-  caption: [Symbolen van een DCV],
+  caption: [Het aflezen van een stuurventielsymbool: elk hokje is één stand van dezelfde schuif, en het hokje dat vóór de aansluitingen ligt, geldt.],
   label: <fig:Symbolen-van-een-DCV>,
 )
 
@@ -347,53 +319,38 @@ Een valve wordt aangeduid met twee nummers: *aantal poorten / aantal schakelstan
 - De klepspoel(en) zijn apparaten met een laag vermogen (bijv. 2 Watt), aangestuurd door een elektrisch regelcircuit, bijv. een relaiscircuit of een PLC. De nominale spanning van de spoel(en) kan bijv. 24 VDC of 230 VAC zijn.
 - Een ventiel kan standschakelaars hebben: N.O. of N.C. hulpcontacten die de ventielstand detecteren. Meestal heeft het er geen.
 
-=== Monostabiel x/2 ventiel
-Een monostabiel x/2 ventiel heeft slechts één spoel:
-- In de besturingslogica kunnen we de spoel van het monostabiele ventiel activeren om het in te schakelen (activeren).
-- Als we de stroom naar de spoel uitschakelen, deactiveren we het monostabiele ventiel. Automatische reset bij opstarten (keert terug naar rustpositie door een veer).
+=== Monostabiel vs. bistabiel x/2 ventielen
 
-=== Bistabiel x/2 ventiel
-Een bistabiel x/2 ventiel heeft twee spoelen:
-- In de besturingslogica kunnen we de ene spoel bekrachtigen om het ventiel te "activeren", of we kunnen de andere spoel bekrachtigen om het ventiel te "deactiveren".
-- Het is een *geheugenfunctie*, vergelijkbaar met een flip-flop.
-- Als we de stroom naar beide spoelen uitschakelen, blijft het bistabiele ventiel in de huidige positie staan.
-- Hetzelfde zou waar moeten zijn als we beide spoelen activeren, maar deze situatie moet worden vermeden.
-- "Activeren" en "deactiveren" kunnen willekeurig zijn, aangezien het een bistabiel ventiel is.
-- ➢ Wanneer je een bistabiel ventiel installeert, kan het zich in elke (start)positie bevinden.
-
-#figure(
-  image("assets/bistabiel.png", width: 10cm),
-  caption: [bistabiel],
+#wrap-figure(
+  image("assets/bistabiel.png", width: 7.5cm),
+  caption: [Bistabiel ventiel met dubbele spoelbediening],
   label: <fig:bistabiel>,
-)
+)[
+  - *Monostabiel x/2 ventiel*: Heeft één spoel en een mechanische/pneumatische terugstelveer. Zodra de stuurspanning wegvalt, keert het ventiel direct terug naar zijn ruststand (veilige fail-safe toestand).
+  - *Bistabiel x/2 ventiel*: Heeft twee afzonderlijke spoelen (`14` en `12`) en geen terugstelveer. Het fungeert als een *geheugenelement* (vergelijkbaar met een RS-flipflop). Een korte puls op spoel `14` activeert de stand, waarna de spool blijft staan totdat spoel `12` bekrachtigd wordt.
+  
+  ➢ *Let op:* Wanneer je een machine met bistabiele ventielen opstart, kan het ventiel zich in een willekeurige toestand bevinden!
+]
 
-#figure(
+=== 5/3 ventielen en de drie middenposities
+
+#wrap-figure(
   image("assets/diagram bistabiel.png", width: 5cm),
-  caption: [diagram bistabiel],
+  caption: [Standen en overgangen van een 3-standen ventiel.],
   label: <fig:diagram-bistabiel>,
-)
+)[
+  Een 5/3 ventiel is een *dubbel monostabiel ventiel* met 2 spoelen en een middenpositie (center position) waarnaar het door twee veren terugkeert wanneer géén van beide spoelen bekrachtigd is.
 
-=== x/3 ventielen
-- x/3 ventielen zijn *dubbel monostabiele ventielen* (2 spoelen).
-- Zonder bekrachtiging keren ze terug naar de *middenpositie* (center position).
-- In pneumatica heb je dus 5 poorten en 3 standen bij een 5/3 ventiel. (N.O. / N.C. / Middenstand).
-- 5/3 ventielen kunnen gevaarlijk zijn omdat je nu 3 standen hebt.
+  *Wanneer gebruik je een 5/3 ventiel?*
+  - / Tussenliggende positionering: Om de zuiger op een willekeurig punt van de slag te stoppen.
+  - / "Inching" of kruipen: Om een cilinder stapsgewijs te positioneren.
+  - / Veiligheid / Noodstop: Om cilinderkamers direct drukloos te maken.
 
-*Wanneer gebruik je een 5/3 ventiel?*
-- / Tussenliggende positionering: Wanneer de zuiger op elk punt van zijn slag gestopt moet kunnen worden.
-- / "Inching" of kruipen: Wanneer je de cilinder in kleine, gecontroleerde stappen moet verplaatsen.
-- / Positie behouden: Wanneer de cilinder op zijn plaats moet blijven zonder dat er actief luchtdruk aan één zijde wordt toegevoerd (vooral bij "gesloten middenstand").
-- / Veiligheid/Noodstop: Om de cilinder te ontluchten of te laten "zweven" in een veilige toestand tijdens een stroomstoring of noodstop, waardoor onverwachte bewegingen worden voorkomen.
-- / Impact voorkomen: Een 5/3 ventiel met "ontluchte middenstand" kan druk aflaten, wat de impact op de cilinder bij het stoppen vermindert en apparatuur beschermt.
-
-*Soorten middenstanden (Center positions)*
-De middenstand bepaalt de toestand van de cilinder wanneer geen van beide spoelen bekrachtigd is:
-- / Gesloten middenstand (Closed Center - CC): Alle poorten zijn geblokkeerd. De cilinder behoudt zijn laatste positie (meest gebruikelijk voor het vasthouden van lasten).
-- / Ontluchte middenstand (Exhaust Center - COE): De cilinderpoorten zijn verbonden met de uitlaat. De cilinder is vrij om te bewegen ("zweeft").
-- / Druk middenstand (Pressure Center - COP): Er wordt druk uitgeoefend op beide cilinderpoorten. Wordt gebruikt voor het handhaven van constante druk.
-
-5/3 ventielen hebben meestal twee spoelen. Je gebruikt ze bij klemmen, persen en positioneren, dus overal waar een 5/2 ventiel te weinig controle geeft.
-
+  *De Drie Belangrijkste Middenposities:*
+  - / Gesloten middenstand (Closed Center - COC): Alle poorten zijn geblokkeerd. Wordt gebruikt om een cilinder op een tussenpositie te stoppen. Let op: door de samendrukbaarheid van lucht is dit *geen stijve vergrendeling*.
+  - / Ontluchte middenstand (Exhaust Center - COE): Beide cilinderkamers worden verbonden met de uitlaat (3 en 5). De cilinder is dan *krachteloos* en kan manueel bewogen worden.
+  - / Druk middenstand (Pressure Center - COP): Er staat gelijke werkdruk op beide kamers.
+]
 
 == Reference designation system (RDS)
 
@@ -417,9 +374,6 @@ De bedrijfsstandaard van de prof gebruikt een volledige RDS gebaseerd op de naam
 - Analoog voor een Flow Control Valve (FCV, `-R2`): Gemonteerd op de cilinder wordt dit `=M10-R2`. Gemonteerd in het ventiel wordt dit `=M10-Q1.R2`.
 
 _Bij het ontwerpen van logica gebruiken we letters alfabetisch (zie latere slides)._
-
-
-
 
 == Pilot valve
 
@@ -463,15 +417,13 @@ Waar die stuurlucht _vandaan_ komt, is het hele verschil tussen de twee soorten:
 
 #examenbox[Hier valt de klassieke vraag. Zet je een *soft-startventiel* vóór een _intern_ gepiloteerd ventiel, dan bouwt de druk traag op, en dus ook de pilotdruk. De ventielen schakelen dan op onvoorspelbare momenten (afhankelijk van wrijving en smering) of blijven half hangen. Bij soft start moet je dus *external pilot* gebruiken, met de pilotleiding afgetakt _vóór_ het soft-startventiel: de stuurkring staat meteen op volle netdruk terwijl de vermogenskring rustig opbouwt.]
 
-
 #figure(
   image("assets/symbolen pneumatische valves.png", width: 4cm),
-  caption: [symbolen pneumatische valves],
+  caption: [Bedieningen op een 3/2-ventiel: knop, rol, pedaal en pneumatische pilot, telkens met veerretour aan de andere kant.],
   label: <fig:symbolen-pneumatische-valves>,
 )
 
 #examenbox("Zorg dat je alle symbolen goed kent voor het examen gratis punten")
-
 
 == Logic circuits met ventielen
 
@@ -488,7 +440,7 @@ A- brengt ons van $A_1$ naar $A_0$
 
 $A_0$ en $A_1$ zijn de *toestanden*: alle standen waarin de cilinder stabiel kan blijven staan.
 
-=== Ventielen in logische circuits
+=== Ventielen in logische circuits <sec:pneum-logica>
 
 Je kan alle logische functies met ventielen bouwen: AND, OR en NOT.
 
@@ -498,13 +450,27 @@ De drie functies bouw je zo:
 
 - *AND-functie.* Een #strong[serieschakeling] van twee ventielen volstaat: de lucht moet door beide. Er bestaan ook specifieke AND-componenten, maar die kosten extra.
 - *NOT-functie.* Gebruik of bestel het ventiel in zijn #strong[normaal gesloten] uitvoering. De inverse zit dan al in het component zelf.
-- *OR-functie.* #belangrijk[Een T-stuk gebruiken is fout.] De lucht ontsnapt dan langs de andere, niet-bediende ingang in plaats van naar de uitgang te gaan. Daarvoor bestaat een apart component: het #keyterm[wisselventiel] (shuttle valve), dat de niet-actieve ingang afsluit.
+- *OR-functie.* #belangrijk[Een T-stuk gebruiken is fout.] Zie hieronder.
 
-#figure(
-  image("assets/OIS_pneum_logica_and_or_not.png", width: 12cm),
+#belangrijk[Waarom een T-stuk geen OR is.] Het probleem zit niet in het inschakelen, maar in het #strong[uitschakelen]:
+
+- de lucht die door het ene ventiel binnenkomt, ontsnapt langs het andere, niet-bediende ventiel;
+- en laat je beide ventielen los, dan blijft de druk in de leiding gewoon staan, want er is geen weg naar buiten.
+
+De leiding gedraagt zich dan als een klein drukvat: de functie schakelt niet uit, of pas nadat er genoeg lucht weggelekt is. Je circuit reset dus niet, en een tweede cyclus verloopt anders dan de eerste.
+
+Je hebt daarom twee dingen nodig: een #keyterm[wisselventiel] (shuttle valve) dat de niet-bediende ingang mechanisch afsluit, #strong[en] 3/2-ventielen in plaats van 2/2-ventielen, want een 3/2 heeft een derde poort om te ontluchten.
+
+#wrap-figure(
+  image("assets/OIS_pneum_logica_and_or_not_clean.png", width: 7.5cm),
   caption: [Ventielen in logische circuits: AND als serieschakeling, NOT als normaal gesloten ventiel, en OR met een wisselventiel in plaats van een T-stuk.],
   label: <fig:pneum-logica>,
-)
+)[
+  Overzicht van de logische ventielcombinaties:
+  - Serieschakeling voor logische EN.
+  - Wisselventiel (shuttle valve) voor logische OF.
+  - NC 3/2 ventiel voor logische NIET.
+]
 
 === Componenten in een pneumatisch schema <sec:pneum-componentcodes>
 
@@ -538,37 +504,31 @@ In de circuits teken je alle cilinders in hun *startpositie*, niet in de rustpos
 
 #figure(
   image("assets/logic-circuit.png", width: 10cm),
-  caption: [Voorbeeld Logic-circuit],
+  caption: [Volledig pneumatisch logisch circuit. Alle componenten staan getekend in hun *startpositie*, niet in rust.],
   label: <fig:logic-circuit>,
 )
 
 #examenbox[Op het examen moet je dit circuit kunnen lezen.]
 
-== Cascade methode
-Hoe los je zo'n circuit op? Je hebt een idee van de beweging, maar hoe zet je dat om in een logisch circuit?
+== De Cascademethode <sec:cascade-pneumatisch>
 
-De cascademethode splitst een complex circuit op in eenvoudige delen.
+Bij een langere sequentie krijgt een stuurventiel op een bepaald moment tegelijk het commando om te schakelen én om te resetten, en dan blokkeert het. Dat heet *signaaloverlapping*, en het is hetzelfde probleem als in @ch:3d-methode: dezelfde sensorstand hoort bij twee verschillende acties.
 
-_BV. ABC | CB A: A beweegt naar $A_1$ $=>$  B beweegt naar $B_1$ $=>$ C beweegt naar $C_1$._
+De *cascademethode* splitst de sequentie daarom in groepen, met als regel dat dezelfde cilinderletter binnen één groep nooit twee keer mag voorkomen. Het opsplitsen zelf staat uitgewerkt bij @sec:groepen.
 
-Hierna zet je het circuit over naar de tweede groep
-
-_ CB | A: C beweegt naar $C_0$ $=>$ B beweegt naar $B_0$ $=>$ A beweegt naar $A_0$._
-
-En daarna schakelt hij terug naar groep 1.
+Wat hier #strong[pneumatisch] is: elke groep krijgt een eigen persluchtleiding, de *cascadeleiding*, gevoed via een bistabiel omkeerventiel (het groepenventiel). Alleen de actieve groep krijgt lucht, dus de signalen van de inactieve groep zijn fysiek dood. In de elektrische versie doet het geheugen $K_1$ precies hetzelfde werk.
 
 #figure(
   image("assets/cascade-methode.png", width: 12cm),
-  caption: [cascade-methode],
+  caption: [Cascademethode: groepsomschakeling via cascadeleidingen ter voorkoming van signaaloverlapping],
   label: <fig:cascade-methode>,
 )
 
+== Schematekenen en Labopraktijk
 
-== Pneumatische Labo
-
-Je kunt circuits tekenen via PneuDraw #link("https://etools.smc.at/pneudraw/index.html?id=pd218b10a8-6398-48de-an23lqjhw1km0giemmtgz", "PneuDraw")
-
-Zorg dat je dit gezien hebt voor je er labo's over krijgt.
+- In een pneumatisch schema worden alle cilinders en ventielen altijd getekend in hun *initiële toestand (startpositie)* van de cyclus.
+- Leidingen die onder druk staan in rust worden vet of gemarkeerd weergegeven.
+- Voor het digitaal tekenen en simuleren van pneumatische schakelingen wordt vaak gebruik gemaakt van tools zoals SMC PneuDraw of Festo FluidSIM.
 
 
 

@@ -34,27 +34,23 @@ Kortsluitbeveiliging speelt twee kritieke rollen in industriële installaties. A
 Voor de veiligheid van mensen helpt stroombeperking meestal niet. Een kleine stroom door het lichaam kan al dodelijk zijn, ongeveer 30 mA·s. Industriële toestellen hebben voor hun normale werking net hoge stromen nodig, dus je kan niet zomaar alles begrenzen. Je moet daarom twee dingen apart beschermen: de bedrading en de mens.
 
 
-+ *Residual current devices (RCDs)*
-
-  #figure(
-    image("assets/RDC.png", width: 5cm),
-    caption: [RDC],
-    label: <fig:RDC>,
-  )
-
-  Een RDC detecteert lekstroom. In de figuur raakt de mens het circuit aan en die gaat dan terug naar via de grond terug naar de box en niet via de draad. Dit kan dodelijk zijn. Een RDC detecteert dit verschil met de stroom die aankomt en de stroom die teruggaat. Als er een verschil is, onderbreekt de RDC de stroomtoevoer. Dit is ongeveer 30ma wat de grens is van wat een mens kort kan verdragen _zie distributie van elektrische energie_.
-
-+ *Fuses*
++ *Residual Current Devices (RCD / Differentieelschakelaar)*
 
   #wrap-figure(
-    image("assets/Fuses.png", width: 5cm),
-    caption: [Fuses],
-    label: <fig:Fuses>,
+    image("assets/RDC.png", width: 9cm),
+    caption: [Werking van een differentieelschakelaar (RCD) via een sommatietransformator.],
+    label: <fig:RDC>,
   )[
-    een fuse is een direct protection. Het is de meest goedkope manier om het circuit te beschermen. Wanneer een fuse een kortsluiting detecteert, *smelt¨* het element binnenin en onderbreekt het de stroomtoevoer. Fuses zijn eenvoudig, betrouwbaar en snel. Het probleem is dat na dat het smelt dat je het circuit niet meer kan gebruiken tot je het vervangt.
+    Een RCD meet continu het verschil tussen de heengaande fasestroom en de terugkerende stroom via een ringkern-sommatietransformator.
 
-    Het wordt dus niet overal toegepast omdat je dan veel fuses moet bijhouden om ze te vervangen.
+    Vloeit er een lekstroom via een mens of de aarding weg ($Delta I > 30 "mA"$), dan verbreekt het ingebouwde relais onmiddellijk binnen enkele milliseconden de voeding om dodelijke elektrocutie te voorkomen.
   ]
+
++ *Smeltzekeringen (Fuses)*
+
+  Een smeltzekering biedt directe en snelle beveiliging tegen kortsluiting en zware overbelasting. Wanneer de stroomsterkte te hoog oploopt, smelt het interne draadelement door joule-opwarming en onderbreekt het de kring.
+  
+  _Eigenschap:_ Smeltzekeringen zijn goedkoop en hebben een zeer hoog breekvermogen (AIC), maar na aanspreken moeten ze handmatig vervangen worden voordat het circuit herstart kan worden.
 
 + *ECB (electronic circuit breaker)*
 
@@ -89,8 +85,8 @@ Voor overstroombeveiliging zijn er drie families, met de codeletter `-F` volgens
 #belangrijk[Het #keyterm[breekvermogen] of AIC (Amps Interrupting Capacity) is de tweede keuzeparameter, naast de nominale stroom.] Dat is de grootste kortsluitstroom die het toestel nog veilig kan onderbreken. Ligt de te verwachten kortsluitstroom op die plaats hoger dan de AIC, dan explodeert de beveiliging in plaats van te beveiligen. Dichter bij de transformator is de kortsluitstroom groter, dus heb je daar een hogere AIC nodig.
 
 #figure(
-  image("assets/OIS_fuse_mcb_mccb.png", width: 12cm),
-  caption: [Smeltzekering, MCB en MCCB naast elkaar.],
+  image("assets/OIS_fuse_mcb_mccb_clean.png", width: 12cm),
+  caption: [De drie vormen van kenletter $-F$ volgens EN 81346-2: links de smeltzekering in zijn houder, midden de MCB (Miniature Circuit Breaker), rechts de driepolige MCCB (Moulded Case Circuit Breaker).],
   label: <fig:fuse-mcb-mccb>,
 )
 
@@ -102,7 +98,7 @@ De driefase asynchrone motor is de meest gebruikte motor in industriële toepass
 
 - *Kosteneffectief*: Geen permanente magneten nodig, dus veel goedkoper dan gelijkstroommotoren of synchrone motoren
 - *Lage onderhoudskosten*: Slechts de lagers slijten, wat onvermijdelijk is in elk bewegend apparaat
-- *Betrouwbaarheid en robuustheid*: Ontworpen voor zware industriële omgevingen met minimale storingen
+- *Betrouwbaarheid*: gebouwd voor zware industriële omgevingen, met weinig storingen
 - *Zelfstarter*: Start automatisch wanneer spanning wordt aangelegd
 - *Brede beschikbaarheid*: Standaardproducten in alle vermogensklassen
 
@@ -122,12 +118,9 @@ Als we ook de rotatiesnelheid willen veranderen, hebben we een VFD (Variable Fre
 
 === Motorbeveiliging
 
-Wanneer de motor niet door een VFD wordt beheerd, moet het circuit worden voorzien van *motorbeveiliging*. Dit kan op twee manieren:
+Een motor trekt bij het starten een veelvoud van zijn nominale stroom. Een gewone automaat zou daarop afschakelen terwijl er niets mis is, dus heb je een beveiliging nodig die de #strong[warmteopbouw] volgt in plaats van de momentane stroom. Dat is de MPCB of de OLR, uitgewerkt in @sec:motorbescherming-detail.
 
-- *MPCB (Motor Protection Circuit Breaker)*: Een gespecialiseerde automaat die thermische overbelasting, kortsluiting en onderspanning kan detecteren
-- *OLR (Over-Load Relay)*: Een separaat relais dat thermische overbelasting specifiek detecteert en de motor uitschakelt voordat schade optreedt
-
-Motorbeveiliging is nodig omdat een motor bij het starten veel meer stroom trekt dan tijdens normaal bedrijf (inrushstroom). Een gewone beveiliging zou daarop afschakelen terwijl er niets mis is.
+Stuurt een VFD de motor, dan neemt de drive die taak over en heb je geen aparte motorbeveiliging nodig.
 
 === Het starten van een motor
 
@@ -137,26 +130,24 @@ De startmethodes (DOL, ster-driehoek, softstarter, VFD) en het schema van een VF
 
 Zie @sec:vfd-emi in het hoofdstuk Veiligheid: waarom een VFD elektromagnetische storing (EMI) maakt, de rol van de afgeschermde motorkabel en de aarding op één punt.
 
-=== Motor efficentie <sec:motor-efficiency>
+=== Motorefficiëntieklassen (IEC 60034-30-1) <sec:motor-efficiency>
 
-internationale efficienty classen (IE classen)
-#figure(
-  image("assets/IE-klassen.png", width: 8cm),
-  caption: [IE-klassen],
+#wrap-figure(
+  image("assets/IE-klassen.png", width: 6.5cm),
+  caption: [IE-efficiëntieklassen voor industriële motoren],
   label: <fig:IE-klassen>,
-)
+)[
+  Volgens de Europese richtlijn en de internationale norm IEC 60034-30-1 worden asynchrone laagspanningsmotoren ingedeeld in vier efficiëntieklassen:
 
-Faculty of Engineering Technology
-• The current EU Directive IEC 60034-30-1 IE classes :
-• IE1 (Standard Efficiency)
-• IE2 (High Efficiency)
-• IE3 (Premium Efficiency)
-• IE4 (Super Premium Efficiency)
-
+  - *IE1 (Standard Efficiency)*: Oudere basisstandaard, nauwelijks nog toegestaan.
+  - *IE2 (High Efficiency)*: Enkel nog toegelaten in combinatie met een VFD.
+  - *IE3 (Premium Efficiency)*: De huidige standaardminimumeis in de EU ($0.75 "kW" - 1000 "kW"$).
+  - *IE4 (Super Premium Efficiency)*: Zeer hoog rendement (bv. synchrone reluctantie- of geavanceerde inductiemotoren).
+]
 
 == Overzicht van schakel- en beveiligingscomponenten <sec:overzicht-schakelcomponenten>
 
-Hier is nog een overzicht van alle schakele en beveilingscompontenten, hun functie en wanneer ze toegepast worden.
+Overzicht van de voornaamste componenten in hoofd- en stuurkringen:
 
 #table(
   columns: (auto, 1fr, 1.3fr, 1.3fr),
@@ -168,62 +159,54 @@ Hier is nog een overzicht van alle schakele en beveilingscompontenten, hun funct
   [Beschermt personen tegen lekstromen naar aarde (elektrocutiebeveiliging).],
   [Voorkomt levensgevaar bij isolatiefouten of aanraking van defecte toestellen.],
 
-  [MBS],
-  [Motorbeveiligingsschakelaar (MPCB, Motor Protection Circuit Breaker)],
-  [Beveiligt motoren tegen overbelasting en kortsluiting.],
-  [Beschermt de motor tegen schade door te hoge stroom.],
+  [MBS / MPCB],
+  [Motorbeveiligingsschakelaar (Motor Protection Circuit Breaker)],
+  [Beveiligt motoren tegen overbelasting, kortsluiting en fase-uitval.],
+  [Beschermt de motorwikkelingen tegen thermische oververhitting en schakelt kortsluitingen af.],
 
   [Contactor],
-  [Elektromechanisch schakelsysteem],
-  [Schakelt de belasting (bv. motor) via een laagspanningssturing.],
-  [Laat toe om de belasting automatisch of op afstand te schakelen.],
+  [Elektromechanische vermogensschakelaar],
+  [Schakelt de hoofdstroom naar de motor via een laagspanningsstuursignaal.],
+  [Laat toe om grote stromen veilig en vanop afstand (bv. via PLC) te schakelen.],
 
   [Relais],
-  [Hulpschakelaar],
-  [Stuurt bijvoorbeeld de contactorspoel aan op basis van een signaal.],
-  [Verwerkt logica of signalen (bv. van een PLC) voor schakeling.],
+  [Hulpschakelaar / stuurrelais],
+  [Schakelt stuursignalen en logica in laagspanningskringen.],
+  [Signaalverwerking, potentiaalscheiding en versterking van PLC-uitgangen.],
 
   [Smeltzekering],
-  [(Optioneel) smeltveiligheid],
-  [Snelle bescherming tegen zeer hoge kortsluitstromen.],
-  [Extra beveiliging voor bekabeling of bovenliggende componenten zoals de MBS.],
+  [Smeltveiligheid (Fuse)],
+  [Extreem snelle bescherming tegen zeer hoge kortsluitstromen.],
+  [Beschermt leidingen en heeft een zeer hoog breekvermogen (AIC).],
 )
 
 Let op het onderscheid dat deze tabel maakt: *wie schakelt* (contactor, relais) tegenover *wie beveiligt* (RCD, MBS, smeltzekering), en bij de beveiligers *wat* er beschermd wordt --- de RCD beschermt de mens, de MBS de motor, de smeltzekering de bekabeling.
 
 == Contactors
 
-#figure(
-  image("assets/contactor Nieuw vs oud.png", width: 8cm),
-  caption: [contactor Nieuw vs oud],
+#wrap-figure(
+  image("assets/contactor Nieuw vs oud.png", width: 6.5cm),
+  caption: [Moderne compacte contactor vs. klassieke uitvoering],
   label: <fig:contactor-Nieuw-vs-oud>,
-)
+)[
+  De volledige uitleg over contactoren staat bij de besturingslogica: polen en throws, hoofd- en hulpcontacten, de losse spanningswaarden van spoel en contacten, en het gedrag op AC vind je in @sec:contactoren. Hier kijken we naar wat er specifiek bij een *motorkring* komt kijken.
+]
 
-De volledige uitleg over contactoren staat bij de besturingslogica: polen en throws, hoofd- en hulpcontacten, de losse spanningswaarden van spoel en contacten, en het gedrag op AC vind je in @sec:contactoren. Hier kijken we naar wat er specifiek bij een *motorkring* komt kijken.
+=== Werking van een vermogenscontactor
 
-=== Hoe werkt een contactor?
-
-#figure(
-  image("assets/Contactor-werking.png", width: 12cm),
-  caption: [Contactor-werking],
+#wrap-figure(
+  image("assets/Contactor-werking.png", width: 7.5cm),
+  caption: [Werking van een contactor: bekrachtigde spoel trekt het anker aan],
   label: <fig:Contactor-werking>,
-)
+)[
+De krachtketen van stroom naar aantrekkende armatuur is afgeleid in @sec:krachtketen. Kort samengevat voor een vermogenscontactor:
+  - *Inschakelen*: Wanneer stuurspanning op de spoelaansluitingen (A1/A2) wordt gezet, wekt de stroom een magnetisch veld op in de gelamineerde weekijzeren kern. Zodra $F_"mag" > F_"veer"$, trekt het anker aan en sluiten de hoofdcontacten (1-2, 3-4, 5-6).
+  - *Uitschakelen (Monostabiel)*: Valt de stuurspanning weg, dan duwt de terugstelveer het anker direct terug.
+]
 
-
-// todo korte uitleg toevoegen contactor werking
-Een contactor is in wezen een groot relais voor vermogen. Bekrachtig je de spoel, dan trekt een magnetisch veld de anker met de bewegende contacten aan. Die contacten sluiten de hoofdstroomweg. Valt de spoelspanning weg, dan duwt een veer alles terug: de contactor is #strong[monostabiel].
-
-Precies daarom gebruik je hem in een start-stopkring: valt de voeding weg, dan valt de contactor af en start de machine niet vanzelf opnieuw.
-
-#figure(
-  image("assets/Contactor-werking.png", width: 10cm),
-  caption: [Werking van een contactor: de spoel trekt het anker met de bewegende contacten aan, een veer duwt alles terug.],
-  label: <fig:contactor-werking-mc>,
-)
-
-
-
-#examenbox[Dit moet je kennen op het examen. Geef een uitleg als ingenieur: leg uit dat je een kracht opwekt.]
+#examenbox[
+  *Monostabiel = fail-safe:* Bij een stroomonderbreking valt de contactor direct af. De motor kan nooit spontaan herstarten zonder nieuw startcommando.
+]
 
 
 == AC-contacts
@@ -243,7 +226,7 @@ Er zijn twee manieren om een asynchrone motor aan te sturen:
 De stuurkringen voor de VFD en voor de contactoren teken je #strong[niet] in het vermogendeel van het schema.
 
 #figure(
-  image("assets/OIS_motor_hoofdcircuits.png", width: 12cm),
+  image("assets/OIS_motor_hoofdcircuits_clean.png", width: 11cm),
   caption: [De twee hoofdcircuits voor een asynchrone motor: links via een VFD, rechts via twee contactoren voor CW en CCW.],
   label: <fig:motor-hoofdcircuits>,
 )
@@ -253,6 +236,12 @@ De stuurkringen voor de VFD en voor de contactoren teken je #strong[niet] in het
 CW staat voor clockwise, CCW voor counter-clockwise. #belangrijk[De motor draait CW als je de fasen in de volgorde L1, L2, L3 aansluit op respectievelijk U1, V1, W1.] Wissel je twee fasen om, dan draait hij de andere kant op.
 
 Dat is precies wat de tweede contactor doet: hij sluit dezelfde motor aan met twee verwisselde fasen. Beide contactoren mogen daarom #strong[nooit] tegelijk aantrekken, want dan sluit je twee fasen rechtstreeks kort. Zie de cross-protect uit @sec:cross-protect: één actieve contactor blokkeert de andere, zowel in de bedrading als in de software.
+
+#figure(
+  image("assets/OIS_motor_omkeerschakeling.png", width: 10cm),
+  caption: [Omkeerschakeling: `-Q4` sluit L1-L2-L3 aan op U1-V1-W1, `-Q5` verwisselt twee fasen. De kruisverbinding tussen beide contactoren is meteen de reden dat ze nooit samen mogen sluiten.],
+  label: <fig:omkeerschakeling>,
+)
 
 == Contactor versus SSR
 
@@ -268,7 +257,7 @@ De keerzijde:
 
 Een contactor daarentegen heeft nagenoeg geen spanningsval en geen warmteprobleem, maar zijn contacten slijten bij elke schakeling.
 
-== Motorbescherming in detail
+== Motorbescherming in detail <sec:motorbescherming-detail>
 
 === MPCB (Motor Protection Circuit Breaker)
 
@@ -290,7 +279,13 @@ Daaruit volgen de eigenschappen:
 Sluit je een enkelfasige motor aan, dan moet je #strong[één fase twee keer] door de motorbeveiligingsschakelaar leiden, zodat de detectie klopt.
 
 #figure(
-  image("assets/OIS_motorkring_mpcb.png", width: 12cm),
+  image("assets/OIS_MBS_foto_symbool.png", width: 10cm),
+  caption: [De MPCB in het echt en als symbool: de draaiknop schakelt de drie hoofdcontacten, en de twee blokjes in het symbool zijn de thermische en de magnetische ontgrendeling.],
+  label: <fig:mbs-symbool>,
+)
+
+#figure(
+  image("assets/OIS_motorkring_mpcb_clean.png", width: 11cm),
   caption: [Motorsturing met noodstop en MPCB. De MPCB `-Q2` is altijd N.O., dus gebruik je het contact `13/14` in de stuurkring.],
   label: <fig:motorkring-mpcb>,
 )
@@ -319,6 +314,12 @@ Verdere eigenschappen:
 - De OLR onderbreekt zelf geen stroom. De eigenlijke onderbreker is de contactor.
 - De kostprijs is nagenoeg onafhankelijk van de motorstroom. Daarom gebruik je hem vooral bij #strong[grote] motoren, waar het schakelmateriaal duur is.
 
+#figure(
+  image("assets/OIS_thermisch_relais_symbool.png", width: 9cm),
+  caption: [Het OLR-symbool: drie hoofdcontacten `1/2`, `3/4`, `5/6` door de motorstroom, plus de twee hulpcontacten `95/96` (N.C.) en `97/98` (N.O.) rechts.],
+  label: <fig:olr-symbool>,
+)
+
 === OLR tegenover MPCB <sec:olr-vs-mpcb>
 
 #belangrijk[Dit verschil is examenstof.]
@@ -327,7 +328,7 @@ Verdere eigenschappen:
 - Een OLR staat in rust op ON en wordt na een trip #strong[gereset], met de blauwe knop. Ze is N.C., dus je gebruikt `95/96` in de stuurkring.
 
 #figure(
-  image("assets/OIS_motorkring_olr.png", width: 12cm),
+  image("assets/OIS_motorkring_olr_clean.png", width: 11cm),
   caption: [Motorsturing met noodstop en OLR. De OLR is altijd N.C., dus gebruik je `95/96` in de stuurkring.],
   label: <fig:motorkring-olr>,
 )

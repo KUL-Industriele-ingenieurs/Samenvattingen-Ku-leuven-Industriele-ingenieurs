@@ -3,135 +3,99 @@
 
 = Design van industriële controle systemen <ch:design-van-industriële-controle-systemen>
 
+In dit hoofdstuk behandelen we het ontwerp van elektrische en elektronische interfaces tussen sensoren, actuatoren en industriële controllers (PLC's).
 
-In dit deel wordt gezien hoe we industriële systemen kunnen ontwerpen en hoe we ze gaan connecteren.
-
-#concept(title: "Voltage verschil")[
+#concept(title: "Spanningsverschil en referentiepotentiaal")[
   #align(center)[
-    #grid(
-      columns: 2,
-      align: center,
-      figure(
-        image("assets/voltageverschil.png", width: 6cm),
-        caption: [voltageverschil],
-        label: <fig:voltageverschil>,
-      ),
-
-      figure(
-        image("assets/stopcontact.png", width: 6cm),
-        caption: [stopcontact],
-        label: <fig:stopcontact>,
-      ),
+    #figure(
+      image("assets/voltageverschil.png", width: 7.5cm),
+      caption: [Spanningsverschil en stroomkring tussen fase, nulleider en referentiemassa],
+      label: <fig:voltageverschil>,
     )
   ]
 
-  Een stopcontact heeft 3 pinnen:
-  - / L: de fase
-  - / N: de nul
-  - / PE: de aarding, deze is geconnecteerd via een kabel in het gebouw naar de grond zodat je een constante spanningsverschil hebt. We beschouwen dit als de absolute nul 0V.
+  Een elektrische spanning is altijd een *potentiaalverschil* tussen twee punten:
+  - / L (Line / Fase): De actieve wisselspanningsgeleider.
+  - / N (Neutral / Nulgeleider): De nulleider, verbonden met het sterpunt van de transformator.
+  - / PE (Protective Earth / Aarding): Veiligheidsgeleider verbonden met de aarde, dient als veiligheidsreferentie ($0 "V"$).
 
-  _Strikt genomen is dat geen nul volt: spanningen fluctueren en een absolute nul bestaat niet. We rekenen er wel mee als referentie._
+  Een stuurkring kan pas een signaal overdragen als er een gesloten stroomkring is via een gedeelde spanningsreferentie (massa of $0 "VDC"$).
 
-  Een aansluiting geeft pas een signaal wanneer er een tweede aansluiting is waarover de spanning kan vallen. Je PLC heeft dus een spanningsreferentie nodig om uitgangen te kunnen sturen.
-
-  Inputs en outputs kunnen:
-  - / Sourcing: de aansluiting levert de stroom
-  - / Sinking: de aansluiting neemt de stroom op
-  - / Universeel: de aansluiting kan allebei
-
-  De spanning op een stopcontact is wisselspanning.
+  In- en uitgangen worden ingedeeld op basis van stroomrichting:
+  - / Sourcing (PNP-logica): De aansluiting levert de stroom (+24 V).
+  - / Sinking (NPN-logica): De aansluiting voert de stroom af naar massa (0 V).
+  - / Universeel (Bidirectioneel): De ingang kan zowel sourcing als sinking signalen verwerken via antiparallelle optocouplers.
 ]
 
 == Een PLC connecteren
 
 #figure(
   image("assets/Een PLC connecteren.png", width: 12cm),
-  caption: [Een PLC connecteren],
+  caption: [Correct aangesloten PLC-ingangskring met gesloten retourpad naar de gemeenschappelijke massa],
   label: <fig:een-plc-connecteren>,
 )
 
-_In de slides is hij gewoon simpele schakeling aan het uitleggen.
-Als iets niet geconnecteerd $arrow.r$ dan gaat hij niet aan staan (crazy right)_
-
-*Foute PLC schakeling*
-
-#figure(
-  image("assets/Foute PLC schakeling.png", width: 8cm),
-  caption: [Foute PLC schakeling],
+#wrap-figure(
+  image("assets/Foute PLC schakeling.png", width: 10cm),
+  caption: [Foutieve schakeling: ontbrekende massareferentie verhindert dat de stroomkring sluit],
   label: <fig:Foute-PLC-schakeling>,
-)
-
-#examenbox[
-  In de figuur hangen de PLC-uitgangen rechtstreeks aan de 24 V. Dat werkt niet: de sensoren staan dan altijd aan. Je hebt een spanningsreferentie nodig, verbonden met de massa, zodat er een spanningsverschil kan ontstaan.
+)[
+  Een ingangskaart detecteert pas een logische 1 wanneer er effectief stroom door de interne optocoupler vloeit. Zonder gesloten retourpad naar de $0 "VDC"$ blijft de ingang inactief.
 ]
 
-*PLC-signalen*\
-De tabel hieronder toont vanaf welke spanning een PLC een signaal als 0 of als 1 leest.
-
-#figure(
-  image("assets/PLC-logic.png", width: 8cm),
-  caption: [PLC-logic],
+#wrap-figure(
+  image("assets/PLC-logic.png", width: 10cm),
+  caption: [Spanningsdrempels voor PLC digitale ingangen (IEC 61131-2 Type 1/3)],
   label: <fig:PLC-logic>,
-)
+)[
+  Volgens IEC 61131-2:
+  - *Logische 0*: Ingangsspanning tussen $-3 "V"$ en $+5 "V"$ (stroom $< 1.5 "mA"$).
+  - *Overgangsgebied*: Tussen $5 "V"$ en $15 "V"$ (ongedefinieerde toestand).
+  - *Logische 1*: Ingangsspanning tussen $+15 "V"$ en $+30 "V"$ (stroom $> 2 "mA"$).
+]
 
 == Componenten met een andere spanning aansluiten
 
-*Interface relay*\
-In de industrie werken de meeste elektrische componenten op 24 V. Maar wat als je component maar 5 V aankan? _Veel sensoren werken enkel op 5 V._ Dan moet je de spanning omlaag brengen om de sensor te voeden.
-
-Een *interface relay* stuurt een signaal door naar componenten met een hoger vermogen of een andere spanning, of wanneer je een *galvanische scheiding* tussen de circuits nodig hebt.
-
-#figure(
-  image("assets/interface relay.png", width: 5cm),
-  caption: [Interface relay],
+#wrap-figure(
+  image("assets/interface relay.png", width: 4.5cm),
+  caption: [Interface relay voor potentiaalscheiding],
   label: <fig:interface-relay>,
-)
+)[
+  Een *interface relay* (tussenrelais) stuurt een signaal door naar componenten met een hoger vermogen of een ander spanningsniveau (bv. $24 "VDC" arrow 230 "VAC"$), en biedt *galvanische scheiding* tussen besturings- en vermogenskringen.
+]
 
-De figuur hieronder toont welk component je kiest in welke situatie.
-
-#figure(
-  image("assets/different-voltages-wanneer.png", width: 10cm),
-  caption: [Different voltages wanneer],
+#wrap-figure(
+  image("assets/different-voltages-wanneer.png", width: 7cm),
+  caption: [Keuze van koppelcomponent volgens stroom en schakelfrequentie],
   label: <fig:different-voltages-wanneer>,
-)
+)[
+  Afhankelijk van de vereiste schakelfrequentie en de stroomsterkte kiest men:
+  - *Elektromechanisch relais*: Hoge stromen, lage frequentie ($< 1 "Hz"$).
+  - *Optocoupler*: Zeer lage stroom, extreem hoge frequentie ($> 10 "kHz"$).
+  - *Solid State Relay (SSR)*: Hoge stroom en matig hoge frequentie ($10"–"1000 "Hz"$).
+]
 
-Afhankelijk van de stroom en de schakelfrequentie kom je bij een ander component uit.
+=== SSR (Solid State Relay) en Optocouplers
 
-
-*Controller actuators*\
-Werkt je kring op lage spanning, dan kan je de last niet rechtstreeks aan de PLC-uitgang hangen.
-Daarvoor gebruik je een *stuurorgaan* tussen de PLC en de last: een contactor of een SSR (Solid State Relay). _Zie tabel hierboven._
-
-*SSR (Solid State Relay) /optocoupler*
-Een SSR is in feite een optocoupler voor grotere stromen en spanningen, in een *N.O.* (Normally Open) uitvoering.
-
-Een SSR heeft geen bewegende delen, alleen halfgeleiders. Daardoor schakelt hij veel netter: geen contactdender (bouncing) en geen vlamboog.
-
-#figure(
+#wrap-figure(
   image("assets/SSR.png", width: 7cm),
-  caption: [SSR],
+  caption: [Solid State Relay (SSR) met interne optocoupler en triac/MOSFET],
   label: <fig:SSR>,
-)
+)[
+  Een *SSR* is een elektronisch vermogensrelais op basis van halfgeleiders (triac, thyristor of MOSFET) met optische isolatie:
+  - Geen bewegende mechanische contacten, dus *geen contactdender* en *geen vlambogen*.
+  - Geschikt voor miljoenen snelle schakelcycli zonder slijtage.
+]
 
-
-#figure(
-  image("assets/controlling actuator.png", width: 5cm),
-  caption: [controlling actuator],
-  label: <fig:controlling-actuator>,
-)
-
-*Optocoupler*\
-Een *Optocoupler* heeft een licht emitterende kant (IR-LED) en een licht ontvangende kant (fototransistor).
-
-Het licht dat die maakt activeert $->$ een fotosensor en dan laat die stroom $A$ door.
-
-Een optocoupler is een *Switch*: in saturatie mode is de LED ON of OFF. De output transator is volledig ON of OFF. Meestal is een optocoupler *N.O (Normally Open)*. Die gaat meestal altijd aan zijn buiten als er een signaal is.
-
-#figure(
-  image("assets/optocoupler.png", width: 5cm),
-  caption: [optocoupler],
+#wrap-figure(
+  image("assets/optocoupler.png", width: 7cm),
+  caption: [Optocoupler: optische signaaloverdracht via IR-LED en fototransistor],
   label: <fig:optocoupler>,
-)
+)[
+  Een *optocoupler* zorgt voor galvanische scheiding tussen twee elektrische kringen.
+
+  Een infrarood-LED stuurt licht naar een fototransistor. Wordt de LED aangestuurd, dan gaat de fototransistor in verzadiging en geleidt de stroom aan de secundaire zijde.
+]
 
 Optocouplers kunnen ook *Analoge* signalen doorsturen. In *Lineaire mode* kan je een lineaire relatie $f(x) = x$ maken zodat de intensiteit van de output gelijk is aan de input. Je kunt dan analoge signalen doorgeven. Ze kunnen hierdoor een transformator vervangen in meetcircuits, en kunnen ook DC doorsturen.
 
@@ -225,32 +189,40 @@ Om het verschil tussen PNP en NPN te begrijpen, kijk je naar wat de sensor met d
   ),
 )
 
-=== 2-draad sensor
+=== 2-draadssensoren <sec:2-draad-sensoren>
 
-Een twee draad kan gebruikt worden voor zowel *Sourcing* als *Sinking*. Het heeft geen connectie met de referenties voltage.
-
-#figure(
-  image("assets/Twee draad sensor.png", width: 16cm),
-  caption: [Twee draad sensor],
+#wrap-figure(
+  image("assets/Twee draad sensor.png", width: 10cm),
+  caption: [2-draadssensor in serie met de belasting.],
   label: <fig:Twee-draad-sensor>,
-)
+)[
+  Een 2-draadssensor wordt direct in serie geschakeld met de ingangskring. Hij heeft geen aparte massa-aansluiting:
+  - *In rust (open)*: Er vloeit een minimale #keyterm[lekstroom] ($I_"leak"$) door de kring om de interne elektronica van de sensor te voeden.
+  - *In geleiding (gesloten)*: Er blijft een kleine #keyterm[restspanning] ($U_"drop"$) over de sensor staan.
+  
+  _Aandachtspunt:_ De PLC-ingang moet de restspanning en lekstroom tolereren volgens IEC 61131-2 Type 1/2/3.
+]
 
-=== 3 & 4 Draad sensoren <sec:3-4-draad-sensoren>
+=== 3- en 4-draadssensoren <sec:3-4-draad-sensoren>
 
-=== Wiring IEC positive/negative logic <sec:wiring-iec-positive-negative-logic>
+- *3-draadssensor*: Beschikt over aparte voedingslijnen (#text(fill: rgb("#8B4513"))[bruin] = $+24 "VDC"$, #text(fill: blue)[blauw] = $0 "VDC"$) en één schakeluitgang (#text(fill: black)[zwart] = signaal).
+- *4-draadssensor*: Bevat een extra vierde ader (#text(fill: gray)[wit]), meestal voorzien van complementaire uitgangen (zowel een N.O.- als een N.C.-contact) of een instelbare antivalente functie.
 
-#figure(
-  image("assets/Wiring IEC.png", width: 12cm),
-  caption: [Wiring IEC],
+=== Veiligheidsaspect: Waarom PNP de Europese standaard is <sec:waarom-pnp>
+
+#wrap-figure(
+  image("assets/Wiring IEC.png", width: 7.5cm),
+  caption: [IEC bedradingslogica: PNP (positieve logica, sourcing) vs. NPN (negatieve logica, sinking).],
   label: <fig:Wiring-IEC>,
-)
-
-
-== PNP is veiliger
+)[
+  In de Europese industrie is *PNP (positieve logica / sourcing input)* de absolute standaard voor machineveiligheid:
+  - *Draadbreuk of aardfout bij PNP:* Raakt de signaaldraad los of maakt hij sluiting naar het chassis ($0 "V"$), dan valt de spanning weg naar $0 "V"$. De PLC leest een logische 0 (de veilige toestand).
+  - *Aardfout bij NPN:* Raakt een signaaldraad van een NPN-sensor het metalen chassis ($0 "V"$), dan wordt de stroomkring gesloten en "denkt" de PLC dat de sensor geactiveerd is. Dit kan leiden tot onbedoeld herstarten of doorlopen van gevaarlijke bewegingen.
+]
 
 == Discrete sensoren
 
-=== Wanneer moet een switch NO/NC (normaal open/normaal gesloten) zijn?
+=== Wanneer moet een switch NO/NC (normaal open/normaal gesloten) zijn? <sec:no-nc-keuze>
 
 - In de onveilige toestand zal het besturingssysteem het gevaar stoppen. Een draadbreuk geeft een 0 aan de ingang en moet overeenkomen met de onveilige toestand.
 - De veilige toestand is dus 1: een actief signaal aan de ingang betekent dat het veilig is.
@@ -259,8 +231,8 @@ Een twee draad kan gebruikt worden voor zowel *Sourcing* als *Sinking*. Het heef
 #voorbeeld(title: "Tank hoog en laag niveau alarm")[
   #examenbox("Examenvraag")
   #wrap-figure(
-    image("assets/tank.png", width: 5cm),
-    caption: [tank],
+    image("assets/tank.png", width: 7cm),
+    caption: [Tank met twee vlotterschakelaars: het hoogniveaualarm is N.C., het laagniveaualarm N.O.],
     label: <fig:tank>,
   )[
 
@@ -278,91 +250,92 @@ Een twee draad kan gebruikt worden voor zowel *Sourcing* als *Sinking*. Het heef
 
     *Conclusie*: Een ingenieur bestelt een NC hoog niveau alarm en een NO laag niveau vlotterschakelaar.
 
+    Dezelfde redenering geeft meteen de bedrading van de bedieningsknoppen: een #strong[stopknop] is N.C., een #strong[startknop] is N.O. Het meest voorkomende defect is een gebroken draad, en die moet de machine stoppen, niet starten.
+
   ]
 ]
 
-=== Connecteren I/O (input/output) naar een PLC
+=== Industriële Sensoren
 
-Nu weten we het volgende:
-- Een stop button moet N C gewired zijn (Normaal Gesloten).
-- Een start button moet N O gewired zijn (Normaal Open).
-- Het grootste defect is een gebroken draad en zou de machine stoppen.
+Sensoren zetten een fysieke procesgrootheid om in een elektrisch signaal voor de controller.
 
-=== Sensoren
+#concept(title: "Overzicht van sensortypes")[
+  - *Mechanische eindschakelaars (Limit switches)*: Robuust, mechanisch bediend met rol of hefboom. Betrouwbare positiedetectie bij transportbanden of deuren. Eenvoudig en ongevoelig voor elektrische storingen.
+  - *Niveauschakelaars (Level switches)*: Vlotter op hefboom of ketting voor hoog/laag niveaudetectie in tanks.
+  - *Debietschakelaars (Flow switches)*: Membraan dat schakelt bij een drukval over een restrictie bij stromend medium.
+  - *Thermische schakelaars (Thermal cutout / Klixon)*: Bimetaalschakelaar die direct afschakelt bij oververhitting.
+  - *Benaderingsschakelaars (Proximity switches - contactloos)*:
+    - *Inductief*: Bouwt een hoogfrequent wisselend magnetisch veld op. Een naderend metalen voorwerp wekt wervelstromen (*eddy currents*) op die energie aan het veld onttrekken. *Detecteert uitsluitend metalen/geleiders*. Ongevoelig voor stof en olie.
+    - *Capacitief*: Werkt met een wisselend elektrisch veld. Naderende materialen veranderen de capaciteit van de sensor. *Detecteert alle materialen* (metalen, vloeistoffen, hout, kunststof). Gevoeliger voor omgevingsvervuiling en vocht.
+    - *Optisch*: Zender (LED/laser) en ontvanger (fototransistor/fotodiode). Drie uitvoeringen: retro-reflectief (met reflector), diffuus reflecterend (op het object zelf), en zender-ontvanger (through-beam). Ook beschikbaar met optische vezels (*fibre-optic*) voor krappe ruimtes.
+    - *Ultrasoon*: Verstuurt en ontvangt hoogfrequente geluidsgolven. Meet looptijd van de echo. Universeel inzetbaar, ongevoelig voor kleur, transparantie of stof.
+    - *Magnetisch (Reed-contact vs. Hall-effect)*:
+      - *Reed-contact*: Twee magnetiseerbare contactlipjes in een glazen buisje. Goedkoop, maar bevat mechanische delen en heeft een beperkte schakelsnelheid en levensduur.
+      - *Hall-effect sensor*: Elektronische halfgeleidersensor die een spanning genereert onder invloed van een magnetisch veld. Geen bewegende delen, extreem hoge schakelfrequentie en onbeperkte levensduur.
 
-*Discrete sensoren*\
-Deze zijn gebasseerd op *Mechanische beweging*. Ze hebben vaak volt free contacten. Dit is meestal een switch van de input voltage.
+==== Flush of non-flush monteren <sec:flush-nonflush>
 
-#examenbox[Je gaat al deze sensoren moeten kennen en hun werkingen moeten kunnen uitleggen.]
+Een naderingsschakelaar detecteert niet alleen jouw object, maar ook het metaal waarin hij zelf geschroefd zit. Daarom bestaan er twee bouwvormen, en het datablad zegt welke je hebt:
 
-+ / Limit switches: robust switches, mechanically operated by a roll on a lever.They are used to reliably detect less accurate positions, e.g. at the end of a conveyor belt.
-+ / Level switch: a switch operated by a float on a lever or a chain.
-+ / Flow switch: a membrane moves because of a pressure difference over an orifice.
-+ / Thermal switch: thermal reset or thermal cutout (TCO) or Klixon
-+ / Proximity switches: Contactless detection.
+- #keyterm[Flush] (bündig): het veld komt alleen recht vooruit. Je mag de sensor tot aan de kop in metaal verzinken.
+- #keyterm[Non-flush]: het veld puilt opzij uit, dus hij moet #strong[uitsteken]. Rond de kop moet een vrije zone blijven, en ook vóór de sensor moet een strook vrij blijven van ander metaal.
 
-  #figure(
-    image("assets/proximity-switch.png", width: 5cm),
-    caption: [proximity-switch],
-    label: <fig:proximity-switch>,
-  )
-+ / Optische sensor:
-  Werkt met een LED en photo diode
-
-  Dit kan werken oftwel via een LED met photodiode. Die gaan rood of infrarood light sturen en bij reflectie kan die dat opnemen. Goed voor korte afstanden. Of met fibre-optic proximity-switch.
-
-  #figure(
-    image("assets/fibre-optical proximity switch.png", width: 10cm),
-    caption: [fibre-optical proximity switch],
-    label: <fig:fibre-optical-proximity-switch>,
-  )
-
-+ / Ultrasone sensor:
-  Werkt met geluidsgolven. Terugkerende geluidsgolven worden opgevangen door de sensor. _heel universeel_
-
-+ / Inductieve sensor:
-  Werkt met magnetische velden. Een *Wisselend* magnetisch veld wordt opgewerkt en metaal dat dichtbij komt via *eddy current* warmt dat metaal op. Dit kan de sensor opnemen. _detecteert alleen metaal_
-
-+ / Capacitieve sensor:
-  Werkt met *Wisselend* elektrische velden. Een object gaat en elektrisch veld verstoren en de capaciteit gaat veranderen. Die verandering kan gedetecteerd worden.
-
-  Het nadeel is dat het veel gevoeliger is voor de omgevingsfactoren. Een inductieve schakelaar detecteerd alleen *geleidende* objecten wat soms wensbaar is.
-
-  _Smartphones werken met dit effect als je het scherm aanraakt._
-
-
-
-  #figure(
-    image("assets/reed contact.png", width: 5cm),
-    caption: [reed contact],
-    label: <fig:reed-contact>,
-  )
-+ / Reed contact:
-  Magnetische sensor, binnenin de sensor is de piston cilinder gemagnetizeerd. Als er een magneet dichtbij komt gaat de piston cilinder magnetisch worden en de contacten gaan sluiten. Je ziet dat je een N-pool en S-pool hebt op dat reed contact.
-
-+ / Hall sensor:
-  Gaat ook zoals een reed-sensor een magnetisch veld detecteren. _Concucerend met de reed-switch_
-
-  Er is geen enkele beweging in de sensor en kan het dus veel snellere frequenties $f$ aan. Reed contact hebben mechanische delen en dus kan het snelle schakelen niet aan.
-
-  #figure(
-    image("assets/hall-effect sensor.png", width: 10cm),
-    caption: [hall-effect sensor],
-    label: <fig:hall-effect-sensor>,
-  )
-  Bekijk de slides _pg 40-57_ voor meer info over elke sensor.
-
-  #examenbox[Je moet deze sensoren op het examen kunnen geven en weten wanneer ze gebruikt worden, hoe ze werken en verschillen tussen de sensoren.]
+Monteer je een non-flush sensor toch vlak, dan ziet hij het omliggende metaal in plaats van het object en schakelt hij permanent.
 
 #figure(
-  image("assets/symbolen switches.png", width: 12cm),
-  caption: [symbolen switches],
+  image("assets/OIS_flush_nonflush.png", width: 9cm),
+  caption: [Links flush: de sensor mag vlak in het metaal. Rechts non-flush: rondom en vóór de kop moet een vrije zone blijven, uitgedrukt in veelvouden van de schakelafstand $s_n$ en de diameter $d$.],
+  label: <fig:flush-nonflush>,
+)
+
+Vuistregel bij het vastzetten: draai de moeren aan tot het einde van de schroefdraad.
+]
+
+#figure(
+  grid(
+    columns: 2,
+    gutter: 0.5cm,
+    figure(
+      image("assets/proximity-switch.png", width: 5cm),
+      caption: [Inductieve/capacitieve benaderingsschakelaar],
+      label: <fig:proximity-switch>,
+    ),
+    figure(
+      image("assets/fibre-optical proximity switch.png", width: 7cm),
+      caption: [Optische sensor met glasvezelversterker],
+      label: <fig:fibre-optical-proximity-switch>,
+    ),
+  ),
+  caption: [Industriële benaderingsschakelaars],
+)
+
+#figure(
+  grid(
+    columns: 2,
+    gutter: 0.5cm,
+    figure(
+      image("assets/reed contact.png", width: 5cm),
+      caption: [Mechanisch Reed-contact],
+      label: <fig:reed-contact>,
+    ),
+    figure(
+      image("assets/hall-effect sensor.png", width: 10cm),
+      caption: [Halfgeleider Hall-effect sensor],
+      label: <fig:hall-effect-sensor>,
+    ),
+  ),
+  caption: [Magnetische positiedetectie],
+)
+
+#figure(
+  image("assets/symbolen switches.png", width: 15cm),
+  caption: [IEC-standaardsymbolen voor industriële schakelaars en sensoren],
   label: <fig:symbolen-switches>,
 )
 
-== Interfacing components
+== Interfacing van I/O-componenten
 
-Hoe zorgen we ervoor dat we deftig onze inputs en outputs kunenn connecteren. Dit is IO (Input/Output). Als we spreken over alle soorten IO en hoe we sensoren, controllers en PLC's connecteren spreken we van een IO interface.
+Het correct aansluiten van I/O-signalen tussen sensoren, actuatoren en de PLC vereist aandacht voor stroomrichting, spanningsniveaus en reactiesnelheid.
 
 
 === Soorten signalen
@@ -412,23 +385,22 @@ Ook zonder aparte kaart heeft een moderne PLC al wat snelle hardware aan boord:
 
 === Universele in- en uitgangen
 
-Bij het interfacen levert het ene component de stroom (source) en neemt het andere ze op (sink). Samen vormen ze een gesloten stroomweg, en pas dan wordt de ingang actief.
-
-Sommige producten kunnen #keyterm[allebei]. Zo'n universele ingang werkt dankzij #strong[bidirectionele dioden] die parallel geschakeld zijn: de stroom mag in beide richtingen lopen.
-
-- *Sink wiring* (positieve logica): de common van de digitale ingangen gaat naar $24 "V"$. Zo sluit je bijvoorbeeld PNP-sensoren aan.
-- *Source wiring:* de common van de digitale ingangen gaat naar $0 "V"$.
-
-Waarom dat handig is:
-
-+ *Flexibiliteit bij aansluiten*, bijvoorbeeld als je het toestel later wil hergebruiken voor iets anders.
-+ *Minder risico op schade.* Een verkeerde aansluiting kan een gewone in- of uitgang vernielen; een universele ingang overleeft dat.
-
-#figure(
-  image("assets/OIS_universal_inputs.png", width: 12cm),
-  caption: [Universele ingangen. Links de common van de digitale ingangen naar $24 "V"$ (sink wiring), rechts naar $0 "V"$ (source wiring).],
+#wrap-figure(
+  image("assets/OIS_universal_inputs_clean.png", width: 10cm),
+  caption: [Driedraadsaansluiting van een velddevice. Links een NPN-sensor (sinking) op een sourcing ingangsmodule, met de common naar $24 "V"$. Rechts een PNP-sensor (sourcing) op een sinking module, met de common naar $0 "V"$. De ene component levert de stroom, de andere neemt ze op.],
   label: <fig:universal-inputs>,
-)
+)[
+  Bij het interfacen levert het ene component de stroom (source) en neemt het andere ze op (sink). Samen vormen ze een gesloten stroomweg, en pas dan wordt de ingang actief.
+
+  Sommige producten kunnen #keyterm[allebei]. Zo'n universele ingang werkt dankzij #strong[bidirectionele dioden] die parallel geschakeld zijn: de stroom mag in beide richtingen lopen.
+
+  - *Sink wiring* (positieve logica): de common van de digitale ingangen gaat naar $24 "V"$. Zo sluit je bijvoorbeeld PNP-sensoren aan.
+  - *Source wiring:* de common van de digitale ingangen gaat naar $0 "V"$.
+
+  Waarom dat handig is:
+  + *Flexibiliteit bij aansluiten*, bijvoorbeeld als je het toestel later wil hergebruiken voor iets anders.
+  + *Minder risico op schade.* Een verkeerde aansluiting kan een gewone in- of uitgang vernielen; een universele ingang overleeft dat.
+]
 
 
 

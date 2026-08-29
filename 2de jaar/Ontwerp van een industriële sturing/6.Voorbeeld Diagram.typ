@@ -12,21 +12,32 @@ Dit hoofdstuk gaat over alles wat tussen het schema en de werkende machine zit: 
 - *Hoofdschakelaar:* meestal op de zijkant. #belangrijk[Rood op een gele achtergrond als hij ook als noodstop kan dienen, anders zwart.] Voorzie een hangslotbevestiging als hij ook als scheider moet kunnen werken.
 - *Werkschakelaars* bij de motoren, ook met hangslotbevestiging.
 - *Labelen:* niet alleen de componenten, ook de kabels krijgen een label.
+- *Aardrail:* onderaan in de kast loopt een koperen rail. Elk onderdeel groter dan $5 times 5$ cm moet daarop geaard zijn, en de metalen kast zelf ook.
+- Niet-elektrische onderdelen (pneumatiek, hydrauliek, mechanica) horen #strong[niet] in een stuurkast.
 
-=== Barenstel
+#concept(title: "Drie soorten hulpmiddelen, niet door elkaar halen")[
+  - / Elektrisch knooppunt maken: klemmenstrook en barenstel, ze verbinden draden op hetzelfde potentiaal.
+  - / Bedrading geleiden: kabelgoot en polyesterkous, ze bepalen waar de draden fysiek lopen.
+  - / Mechanisch ontkoppelen: wartel en trekontlasting, ze houden trekkracht weg van de klem.
+]
 
-Een #keyterm[barenstel] is een set stroomrails waarmee je hoog AC-vermogen verdeelt over meerdere afgaande kringen, zonder dat je tien dikke draden op één klem moet krijgen.
-
-In hetzelfde rijtje horen nog drie praktische zaken thuis:
-
-- de #keyterm[adereindhuls], die je op soepele draad perst;
-- de #keyterm[aardingsrail];
-- de #keyterm[kabeltrekontlasting], die de mechanische kracht van de kabel opvangt in plaats van de klem.
-
-#figure(
-  image("assets/OIS_barenstel.png", width: 11cm),
+#wrap-figure(
+  image("assets/OIS_barenstel.png", width: 7.5cm),
   caption: [Barenstel, adereindhuls, aardingsrail en trekontlasting.],
   label: <fig:barenstel>,
+)[
+  Een #keyterm[barenstel] (busbar) is een set stroomrails waarmee je hoog AC-vermogen verdeelt over meerdere afgaande kringen, zonder dat je tien dikke draden op één klem moet krijgen.
+
+  In hetzelfde rijtje horen nog drie praktische zaken thuis:
+  - De #keyterm[adereindhuls], die je op soepele draad perst zodat losse adertjes netjes gebundeld blijven;
+  - De #keyterm[aardingsrail] voor centrale potentiaalvereffening;
+  - De #keyterm[kabeltrekontlasting], die de mechanische trekkracht van de kabel opvangt in plaats van de klem.
+]
+
+#figure(
+  image("assets/OIS_barenstel_foto.png", width: 7.5cm),
+  caption: [Een barenstel in het echt: massief koper met vaste aansluitpunten, voor stromen die een klemmenstrook niet aankan.],
+  label: <fig:barenstel-foto>,
 )
 
 === Bevestiging
@@ -37,6 +48,16 @@ In hetzelfde rijtje horen nog drie praktische zaken thuis:
 - *Juist aanhaalmoment.* Ervaring is de snelste methode, eventueel met een slipkoppeling op de schroevendraaier.
 
 #belangrijk[Te vast aandraaien beschadigt de klem, te los geeft een overgangsweerstand en dus warmte.] Dat laatste is een klassieke brandoorzaak in een kast.
+
+*De draden naar de deur.* Drukknoppen, signaallampen en de HMI zitten op de deur, maar worden gevoed vanaf de montageplaat. Die draden moeten dus over de scharnierlijn. Lopen ze los langs het scharnier, dan worden ze bij het sluiten geplet en is de isolatie stuk.
+
+De oplossing is een #keyterm[polyesterkous] rond alle deurdraden samen. Die bundel is te dik om nog tussen de scharnierdelen te passen, en je legt hem met een ruime lus zodat er bij openen en sluiten geen trek op de aders komt.
+
+#figure(
+  image("assets/OIS_stuurkast_deurbedrading_clean.png", width: 6cm),
+  caption: [Links de correcte deurbedrading met een ruime lus in een kous, rechts de fout waarbij de draden tussen de scharnierdelen geraken.],
+  label: <fig:stuurkast-deurbedrading>,
+)
 
 === Ventilatie en condition monitoring
 
@@ -72,7 +93,19 @@ De maximale stroom door een geleider hangt af van drie dingen:
 + de omgevingstemperatuur;
 + de ventilatiemogelijkheden.
 
-Je berekent de sectie op basis van tabellen uit de norm.
+De stroom veroorzaakt verlies in de kabelweerstand, en dat verlies wordt warmte:
+
+$ P_"verlies" = I^2 R, quad R = rho L / A $
+
+met:
+- $P_"verlies"$: gedissipeerd vermogen in de geleider [W]
+- $I$: stroom door de geleider [A]
+- $R$: weerstand van de geleider [$Omega$]
+- $rho$: soortelijke weerstand van het geleidermateriaal [$Omega dot "m"$]
+- $L$: lengte van de geleider [m]
+- $A$: doorsnede van de geleider [m#super[2]]
+
+Een dunnere kabel heeft een kleinere $A$, dus een grotere $R$ en meer warmte bij dezelfde stroom. Die warmte moet weg kunnen, en in een warme dicht bedrade kast lukt dat slechter. Daarom daalt de toegelaten stroom voor dezelfde doorsnede. In een stuurkast neem je meestal kabel van temperatuurklasse $75 degree"C"$. De sectie zelf haal je uit de tabellen van de norm.
 
 #belangrijk[In een stuurkast gelden veel lagere waarden dan in het AREI.] De reden is precies punt 2 en 3: in een dichte kast, tussen andere warme componenten en in een gesloten kabelgoot, kan dezelfde draad veel minder stroom voeren dan in een woninginstallatie.
 
@@ -99,7 +132,13 @@ De norm EN 60204:2016+A1:2021 legt vast:
   table.hline(stroke: 1pt),
 )
 
-#belangrijk[Oranje betekent: hier staat mogelijk nog spanning op nadat je de hoofdschakelaar uitgezet hebt.] Dat is de gevaarlijkste draad in de kast.
+#belangrijk[Oranje betekent: hier staat mogelijk nog spanning op nadat je de hoofdschakelaar uitgezet hebt.] Dat is de gevaarlijkste draad in de kast. Klemmen en toestellen die de hoofdschakelaar niet uitschakelt, moeten gemarkeerd zijn met een zwarte bliksemschicht op een gele driehoek.
+
+#figure(
+  image("assets/OIS_draadkleuren_foto.png", width: 4.5cm),
+  caption: [De aders zoals je ze in een kabel aantreft: bruin (L1), grijs (L3), zwart (L2), lichtblauw (N) en geel-groen (PE).],
+  label: <fig:draadkleuren-foto>,
+)
 
 === De beschermingsgeleider <sec:pe-identificatie>
 
@@ -121,38 +160,36 @@ Sommige bedrijven gebruiken bijkomend:
 Voor de aders #strong[in] een kabel geldt HD-308 S2, bijvoorbeeld bruin (L1), zwart (L2), grijs (L3), geel/groen (PE).
 
 #figure(
-  image("assets/OIS_en60204_kleuren.png", width: 12cm),
+  image("assets/OIS_en60204_kleuren.png", width: 15cm),
   caption: [Voorbeeld van de kleurcodering volgens EN 60204:2016+A1:2021.],
   label: <fig:en60204-kleuren>,
 )
 
 === Draadnummers
 
-Draadnummers aanbrengen is #strong[niet verplicht]. In grotere bedrijven gebeurt het meestal wel consequent.
-
-#belangrijk[Een draadnummer is een potentiaalnaam.] Daaruit volgt de hele regel:
-
-- het draadnummer #strong[verandert] na elke schakelaar, want daar verandert het potentiaal;
-- het draadnummer #strong[verandert niet] na een klem, want een klem verbindt alleen door.
-
-Ook kabels worden gelabeld, met de codeletter `-W`.
-
 #figure(
-  image("assets/OIS_draadnummers.png", width: 11cm),
-  caption: [Draadnummering. Het nummer volgt het potentiaal, dus het verandert wel na een schakelaar en niet na een klem.],
+  image("assets/OIS_draadnummers_clean.png", width: 11cm),
+  caption: [Draadnummering volgt het potentiaal],
   label: <fig:draadnummers>,
 )
+Draadnummers aanbrengen is #strong[niet verplicht], maar in de industriële praktijk sterk aanbevolen voor traceerbaarheid.
+
+- *Basisregel*: Een draadnummer representeert een *potentiaal*. Het nummer verandert na elk schakelelement (schakelaar, relaiscontact, zekering), maar blijft gelijk doorheen klemmen en doorverbindingen.
+- Kabels worden gelabeld met de codeletter `-W`. In het schema teken je de kabelmantel als een streepjeslijn rond de aders die erin lopen.
+
+#figure(
+  grid(
+    columns: 2,
+    column-gutter: 0.5cm,
+    image("assets/OIS_spanningsrails_standaard.png", width: 8cm),
+    image("assets/OIS_kabelaanduiding_W.png", width: 4.5cm),
+  ),
+  caption: [Links de rails in de vaste volgorde $24 "VVS"$, $24 "V"$, $0 "V"$, $0 "VVS"$; elke aftakking erft de naam van zijn rail. Rechts kabel `-W21` met twee aders naar klemmenstrook `-X30`.],
+  label: <fig:spanningsrails>,
+)
+
 
 === Kabels en kabelrupsen
-
-Het kabeltype moet passen bij de omstandigheden. De slides noemen:
-
-- #strong[halogeenvrije] kabel, die bij brand geen giftige dampen vrijgeeft;
-- kabel met ingebouwde #strong[trekontlasting], met een staalkabel die de mechanische kracht opneemt. Nodig voor kabels die over grote hoogte verticaal hangen, in schachten, liften of hijswerktuigen;
-- kabel die bestand is tegen #strong[veelvuldig buigen];
-- #strong[afgeschermde] kabel, een kooi van Faraday rond de aders.
-
-=== Cable carrier <sec:cable-carrier>
 
 Een #keyterm[cable carrier], ook drag chain, energy chain of kabelrups genoemd, houdt kabels en slangen binnen hun #strong[minimale buigradius] bij bewegende machinedelen.
 
@@ -190,13 +227,16 @@ Klemmenstroken en stekkers zijn verbindingsmiddelen. Ze krijgen de kenletter `X`
 
 Bij een etageklem staat de PE #belangrijk[altijd onderaan].
 
-De volgorde waarin je potentialen op een schema voorstelt ligt vast, van boven naar onder en van links naar rechts: #strong[L1, L2, L3, N, PE].
+=== Klemmen en potentialen
+
 
 #figure(
-  image("assets/OIS_klem_potentiaal.png", width: 11cm),
+  image("assets/OIS_klem_potentiaal_clean.png", width: 11cm),
   caption: [Klem- en potentiaalaanduidingen zoals ze in dit vak gebruikt worden.],
   label: <fig:klem-potentiaal>,
 )
+De volgorde waarin je potentialen op een schema voorstelt ligt vast, van boven naar onder en van links naar rechts: #strong[L1, L2, L3, N, PE].
+
 
 === Aanhaalkoppel <sec:torque>
 
@@ -204,10 +244,8 @@ Elke klem heeft een voorgeschreven kabeltype, draadsectie en aanhaalkoppel, afha
 
 === Klemmen tegenover stekkers <sec:klemmen-stekkers>
 
-- Ook stekkerverbindingen worden in het schema als klemmen beschouwd. Bij het stekkersymbool onderscheid je een #strong[mannelijk] en een #strong[vrouwelijk] deel.
-- Voorzie klemmen of stekkers voor #belangrijk[alle] externe verbindingen van stuursignalen, en waar mogelijk ook voor vermogenkabels.
-- Voorzie waar mogelijk #strong[één klemmenstrook per kabel].
-- Laat waar mogelijk de klemnummers overeenkomen met de draadnummers.
+- *Klemmen:* tijdrovend bij vervanging van een onderdeel, risico op fout aansluiten.
+- *Stekkers:* sneller te vervangen en geen risico op foute aansluiting.
 
 Volgens EN 60204:A1-2021 mag je twee of meer geleiders alleen op één klem aansluiten als die klem daarvoor ontworpen is. #belangrijk[Voor de beschermingsgeleider geldt: slechts één PE per aansluitpunt.]
 
@@ -217,39 +255,36 @@ Tot hier gebruikte je één gemeenschappelijke spanningsreferentie voor een reek
 
 De referentiespanning zou je kunnen delen of aan $0 "V"$ hangen, #belangrijk[maar dan verlies je precies het voordeel van differentiële signalering]. Voor analoge signalen is dat onaanvaardbaar. Voor trage digitale signalen kan het soms wel.
 
-Het voordeel zit in de #keyterm[twisted pair]: doordat de twee draden om elkaar gedraaid zijn, koppelt een storend veld even sterk in op beide draden. De ontvanger kijkt naar het #strong[verschil], en de storing valt weg.
 
 #figure(
-  image("assets/OIS_differentiele_signalering.png", width: 11cm),
+  image("assets/OIS_differentiele_signalering_clean.png", width: 12cm),
   caption: [Differentiële signalering: elke ingang krijgt zijn eigen signaaldraad én referentie, samengedraaid tot een twisted pair.],
   label: <fig:differentiele-signalering>,
 )
+Het voordeel zit in de #keyterm[twisted pair]: doordat de twee draden om elkaar gedraaid zijn, koppelt een storend veld even sterk in op beide draden. De ontvanger kijkt naar het #strong[verschil], en de storing valt weg.
+
 
 === Afscherming <sec:afscherming>
 
 Geleiders voor communicatie- of meetsignalen dragen #strong[zwakke] signalen naar een #strong[hoogohmige] ingang. Lange geleiders gedragen zich dan als antenne. Om de ontvangst van storing te beperken gebruik je een afgeschermde kabel: een gevlochten metalen mantel rond de aders.
 
+Daarom aard je de afscherming van een signaalkabel #strong[aan één kant], meestal aan de stuurkastzijde. Let op het contrast met de motorkabel van een VFD uit @sec:cw-ccw: die afscherming sluit je juist aan #strong[beide] kanten aan, want daar wil je de hoogfrequente stoorstroom net wél afvoeren.
+
 #waarschuwing[
   Verbind je #belangrijk[beide] uiteinden van de mantel met de aarde, dan kan er een stroom door die mantel gaan lopen. Die stroom veroorzaakt wisselende spanningen op de mantel, en die koppelen capacitief in op het communicatie- of meetsignaal. Je hebt de storing dan zelf gemaakt.
-
-  Daarom aard je de afscherming van een signaalkabel #strong[aan één kant].
 ]
 
-Let op het contrast met de motorkabel van een VFD uit @sec:cw-ccw: die afscherming sluit je juist aan #strong[beide] kanten aan, want daar wil je de hoogfrequente stoorstroom net wél afvoeren.
-
-#figure(
-  image("assets/OIS_afscherming.png", width: 11cm),
-  caption: [Afscherming van analoge en datakabels, met de aardverbinding aan één uiteinde.],
-  label: <fig:afscherming>,
-)
-
 == Kleurcodes en symbolen
+
+Volgens EN 60204-1 gelden vaste kleurcodes voor de bedieningselementen en signaallampen aan de machine.
+
+#belangrijk[De startknop is bij voorkeur wit, niet groen.] Rood is voorbehouden voor gevaar en de noodstop. Blauw betekent een verplichte handeling zoals reset, zwart en wit zijn voor normale bediening.
 
 #table(
   columns: (auto, auto, 1fr, auto, auto),
   align: (left, left, left, left, left),
   stroke: none,
-  inset: 5pt,
+  inset: 4pt,
   table.hline(stroke: 1pt),
   table.header([*Drukknop*], [*Voorkeur*], [*Alternatief*], [*Lamp*], [*Voorkeur*]),
   table.hline(stroke: 0.5pt),
@@ -258,14 +293,6 @@ Let op het contrast met de motorkabel van een VFD uit @sec:cw-ccw: die afschermi
   [Stop], [zwart], [grijs, rood, wit], [Fout], [geel],
   [Reset], [blauw], [grijs, wit, zwart], [Ingrijpen], [blauw],
   table.hline(stroke: 1pt),
-)
-
-#belangrijk[Let op: de startknop is bij voorkeur wit, niet groen.] Rood is gereserveerd voor de noodstop.
-
-#figure(
-  image("assets/OIS_kleurcode_drukknoppen.png", width: 11cm),
-  caption: [Kleurcode voor drukknoppen en signaallampen.],
-  label: <fig:kleurcode-drukknoppen>,
 )
 
 EN 60204:2016 voerde daarnaast een reeks nieuwe grafische symbolen in voor machineveiligheid.
@@ -303,13 +330,7 @@ Het verschil met SELV zit in de aarding:
 
 Beide vereisen een ontwerp dat toevallig contact met een hogere spanning zo goed als uitsluit. Bij een transformator betekent dat: primaire en secundaire wikkeling gescheiden door versterkte isolatie, of door een geleidend scherm met aardverbinding, of een secundaire wikkeling met een geaarde klem, zodat een fout tussen primair en secundair automatisch afschakelt.
 
-#figure(
-  image("assets/OIS_elv_tabel.png", width: 11cm),
-  caption: [De IEC-spanningsbereiken met het bepalende risico per bereik.],
-  label: <fig:elv-tabel>,
-)
-
-#belangrijk[Daarom werkt de stuurkring op $24 "VDC"$ met geaarde $0 "V"$: dat is een PELV.] Je zit onder de ELV-grens, dus het risico op een schok is laag, én je hebt een aardreferentie om mee te meten en te storingsvrij te werken.
+#belangrijk[Daarom werkt de stuurkring op $24 "VDC"$ met geaarde $0 "V"$: dat is een PELV.] Je zit onder de ELV-grens, dus het risico op een schok is laag, én je hebt een aardreferentie om mee te meten en storingsvrij te werken.
 
 === SMPS: schakelende voeding
 
@@ -320,7 +341,6 @@ Vroeger deed je dat met een gewone transformator, eventueel gevolgd door een gel
 === Verliezen in een klassieke transformator <sec:trafo-verliezen>
 
 Wervelstromen in de kern wekken een tegen-EMK op. Om die te beperken gebruik je:
-
 - een #strong[gelamelleerde] zachtijzeren kern: lange stroompaden met weinig oppervlak;
 - of een #strong[zacht ferriet], met een hoge elektrische weerstand.
 
@@ -330,17 +350,17 @@ Daarbij hoort de BH-curve. $H_c$ is de #keyterm[coërcitieve veldsterkte]: de ve
 
 === Werking van een SMPS <sec:smps-werking>
 
-+ Het net wordt gelijkgericht en voedt een DC-bus, dus een condensator.
-+ Die spanning wordt op #strong[hoge frequentie] gehakt.
-+ Het gehakte signaal gaat naar een transformator.
-+ Aan de secundaire zijde wordt het opnieuw gelijkgericht, om een tweede DC-bus te voeden.
-+ Een galvanisch gescheiden terugkoppeling naar de PWM-driver regelt de uitgangsspanning.
-
-#figure(
-  image("assets/OIS_smps_blokschema.png", width: 12cm),
+#wrap-figure(
+  image("assets/OIS_smps_blokschema_clean.png", width: 8cm),
   caption: [Blokschema van een SMPS: gelijkrichten, DC-bus, hakken op hoge frequentie, transformator, opnieuw gelijkrichten, met een teruggekoppelde PWM-sturing.],
   label: <fig:smps-blokschema>,
-)
+)[
+  + Het net wordt gelijkgericht en voedt een DC-bus, dus een condensator.
+  + Die spanning wordt op #strong[hoge frequentie] gehakt.
+  + Het gehakte signaal gaat naar een transformator.
+  + Aan de secundaire zijde wordt het opnieuw gelijkgericht, om een tweede DC-bus te voeden.
+  + Een galvanisch gescheiden terugkoppeling naar de PWM-driver regelt de uitgangsspanning.
+]
 
 === Waarom hoge frequentie helpt <sec:smps-frequentie>
 
@@ -356,7 +376,6 @@ In een transformator wordt vermogen overgedragen door de #strong[verandering] va
 === De voordelen op een rij <sec:smps-voordelen>
 
 Vergeleken met een transformator met gelijkrichter en condensator is een SMPS:
-
 - #strong[kortsluitvast];
 - lage kortsluitstroom, dankzij de kleine secundaire condensator;
 - stabiele en correcte spanning dankzij de terugkoppellus, onafhankelijk van de belasting;
@@ -376,24 +395,23 @@ De noodstop zelf is genormeerd in #keyterm[EN 13850].
 
 === Het 24 VVS-principe <sec:24vvs>
 
-De noodstopkring maakt een "veilige" voedingsspanning: de #keyterm[24 VVS] (ook 24 VSV geschreven).
-
-#belangrijk[Alle gevaarlijke bewegingen hangen af van die veilige spanning.] Valt ze weg, dan valt elke gevaarlijke actuator stil.
-
-Noodstoppen staan meestal #strong[in serie]: paddenstoeldrukknoppen, trekkoorden, lichtgordijnen, deurbeveiligingen, drukmatten, camerasystemen.
-
-Om de $24 "VVS"$ weer te activeren zijn er #belangrijk[altijd twee bewuste handelingen] nodig:
-
-+ de noodstop ontgrendelen of loslaten;
-+ daarna de resettoets indrukken, "sturing in", in het blauw.
-
-Een hoofdschakelaar rood op geel heeft een secundaire noodstopfunctie. #belangrijk[Dat mag alleen in combinatie met een gewone noodstopkring], zodat ook daar twee bewuste handelingen nodig zijn om te herstarten.
-
-#figure(
-  image("assets/OIS_24vvs.png", width: 11cm),
+#wrap-figure(
+  image("assets/OIS_24vvs.png", width: 7.5cm),
   caption: [Het 24 VVS-principe: de noodstopkring maakt de veilige voedingsspanning waarvan alle gevaarlijke bewegingen afhangen.],
   label: <fig:24vvs>,
-)
+)[
+  De noodstopkring maakt een "veilige" voedingsspanning: de #keyterm[24 VVS] (ook 24 VSV geschreven).
+
+  #belangrijk[Alle gevaarlijke bewegingen hangen af van die veilige spanning.] Valt ze weg, dan valt elke gevaarlijke actuator stil.
+
+  Noodstoppen staan meestal #strong[in serie]: paddenstoeldrukknoppen, trekkoorden, lichtgordijnen, deurbeveiligingen, drukmatten, camerasystemen.
+
+  Om de $24 "VVS"$ weer te activeren zijn er #belangrijk[altijd twee bewuste handelingen] nodig:
+  + de noodstop ontgrendelen of loslaten;
+  + daarna de resettoets indrukken, "sturing in", in het blauw.
+
+  Een hoofdschakelaar rood op geel heeft een secundaire noodstopfunctie. #belangrijk[Dat mag alleen in combinatie met een gewone noodstopkring], zodat ook daar twee bewuste handelingen nodig zijn om te herstarten.
+]
 
 === Lichtgordijn tegenover safety scanner <sec:lichtgordijn-scanner>
 
