@@ -2,8 +2,6 @@
 
 = Analoge signalen integreren <ch:analoge-signalen>
 
-#chapter-outline()
-
 Tot hier was alles binair: een knop is ingedrukt of niet, een cilinder staat uit of in. Maar temperatuur, druk en niveau zijn *continue* grootheden. Hoe je die meet, was data-acquisitie. Hier gaat het over iets anders: hoe krijg je de meetwaarde *betrouwbaar van het veld tot in de PLC*, over tientallen meters kabel en met frequentieomvormers en schakelende spoelen in de buurt?
 
 De industriële standaardbereiken zijn $0"–"20 "mA"$, $4"–"20 "mA"$, $0"–"10 "V"$ en $-10"–"+10 "V"$. Van die vier is $4"–"20 "mA"$ veruit het meest gebruikt, en de rest van dit hoofdstuk legt uit waarom.
@@ -16,8 +14,8 @@ Neem een Pt100, een weerstand die $100 Omega$ meet bij $0 degree"C"$ en toeneemt
   grid(
     columns: 1,
     row-gutter: 0.6em,
-    image("assets/pt100-2draads.png", width: 8cm),
-    image("assets/pt100-3draads.png", width: 8cm),
+    image("assets/pt100-2draads.png", width: 6cm),
+    image("assets/pt100-3draads.png", width: 6cm),
   ),
   caption: [Boven de 2-draadsaansluiting: de meetstroom loopt door de meetdraden. Onder de 3-draadsaansluiting: $V_2$ meet de val over één draad, $V_1$ die over de Pt100 plus één draad],
   label: <fig:pt100-aansluiting>,
@@ -163,6 +161,26 @@ Dit is het punt waar in het labo het vaakst iets misloopt: de vraag is telkens *
 Moet een passieve tweedraadssensor toch op een ingang die een actieve transmitter verwacht, dan schakel je er een externe voeding bij en sluit je aan zoals bij een vierdraadssensor. Het werkt, maar het is een stuk slechter voor de EMC.
 
 == Analoge ingangskaarten
+
+#figure(
+  grid(
+    columns: 2,
+    column-gutter: 0.5cm,
+    row-gutter: 0.4cm,
+    image("assets/OIS_4_20mA_spanningsmeting.png", width: 6.5cm),
+    image("assets/OIS_4_20mA_ampere.png", width: 6.5cm),
+  ),
+  caption: [Twee manieren om dezelfde lus te lezen. Links een shuntweerstand met een spanningsmeting erover, rechts een ampèremeter in serie. In beide gevallen loopt dezelfde stroom door de hele lus.],
+  label: <fig:4-20ma-lezen>,
+)
+
+Hangen er meerdere ontvangers in dezelfde lus, dan tellen hun shuntweerstanden op en heeft nog maar één van hen een massareferentie:
+
+#figure(
+  image("assets/OIS_4_20mA_combinatie.png", width: 8cm),
+  caption: [Twee ontvangers in serie in dezelfde stroomlus. Alleen de eerste kan single-ended meten, de andere heeft een differentiële ingang nodig.],
+  label: <fig:4-20ma-combinatie>,
+)
 
 Binnenin is een analoge meting *altijd* een spanningsmeting tussen twee potentiaalpunten, ook bij een ingang die "single ended" heet. Drie- en vierdraadsaansluitingen dienen om de sensor te voeden; bij de eigenlijke meting zijn er altijd maar twee draden betrokken.
 

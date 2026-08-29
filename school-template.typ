@@ -677,7 +677,8 @@
 }
 
 // --- Styling Helpers ---
-#let important(content) = text(fill: schoolRed, weight: "bold")[#content]
+// Rood in de lopende tekst leest schreeuwerig: \belangrijk is nu gewoon vet.
+#let important(content) = text(weight: "bold")[#content]
 #let belangrijk = important  // Dutch alias matching LaTeX \belangrijk
 #let term(content) = text(fill: schoolBlue, weight: "bold")[#content]
 // LaTeX: \keyterm{...} = \textbf{\color{schoolBlue!80!black}...}
