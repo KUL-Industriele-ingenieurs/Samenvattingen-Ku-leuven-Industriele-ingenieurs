@@ -4137,6 +4137,19 @@ Deze grafiek moet je op het examen kunnen tekenen en uitleggen.
           \end{itemize}
 \end{itemize}
 
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.78\textwidth]{assets/rcd_tripping_curve.png}
+    \caption{Dezelfde zones, nu met de \textbf{uitschakelkarakteristiek van een hooggevoelige
+        $30$~mA aardlekschakelaar} eroverheen (blauw, volgens CEI 61008/61009). De maximale
+        reactietijd zakt van $300$~ms bij $30$~mA naar $40$~ms bij $150$~mA. Het blauwe traject
+        blijft daardoor volledig links van curve $c_1$: de RCD schakelt uit v\'o\'or de
+        gevarenzone AC-4 bereikt wordt. Let op: deze bron vat AC-1 tot AC-3 samen als \'e\'en
+        zone en toont $c_2$ en $c_3$ niet.}
+    \label{fig:rcd-tripping-curve}
+\end{figure}
+\FloatBarrier
+
 \begin{examenbox}[EXAMENVRAAG:]
     \textit{Benoem de assen van deze grafiek en verklaar waarom de grenzen schuin verlopen.}
 
@@ -4528,7 +4541,7 @@ een deel van de stroom vloeit via de aarde weg en de som is niet meer nul.
 \FloatBarrier
 
 \textbf{Waarom exact $30\text{ mA}$ en $<30\text{ ms}$?}
-Dit werkpunt is rechtstreeks afgeleid uit de IEC 60479-zonegrafiek (figuur~\ref{fig:ac-zones}):
+Dit werkpunt is rechtstreeks afgeleid uit de IEC 60479-zonegrafiek (figuur~\ref{fig:ac-zones} en figuur~\ref{fig:rcd-tripping-curve}):
 \begin{itemize}
     \item $30\text{ mA}$ ligt boven de loslaatdrempel ($10-15\text{ mA}$). Maar met een uitschakeltijd van
           $<30\text{ ms}$ bij zware fouten (en $<300\text{ ms}$ bij $I_{\Delta n}$) ligt het werkpunt
@@ -5710,7 +5723,7 @@ staat $10$~V.
         condensator leest $\underline{V}_{EA} = 10$~V, en dat is de referentie in de uitwerking.}
 \end{figure}\FloatBarrier
 
-\begin{oefenblok}[Uitwerking onbekende impedantie]
+\begin{oefenblok}[Foto-opgave 1 --- onbekende $\underline{Z}$ uit drie voltmeters (cosinusregel)]
     Neem $\underline{V}_{EA}=10\angle0^\circ$~V als referentie. Dan:
     \[
         \underline{I}_{DE}=\underline{I}_{EA}=\frac{10}{-j6}=j1{,}667\ \text{A}
@@ -5817,7 +5830,7 @@ staat $10$~V.
 Een net heeft $V_L=240$~V. Een last $\underline{Z}_1$ hangt tussen $b$ en $c$ met
 $S_1=80$~kVA en $\mathrm{pf}=0{,}9$ inductief. Een evenwichtige sterlast heeft
 $S_Y=200$~kVA en dezelfde arbeidsfactor.
-\begin{oefenblok}[Uitwerking]
+\begin{oefenblok}[Foto-opgave 2 --- losse last tussen twee lijnen plus evenwichtige sterlast]
     Voor beide lasten is $\varphi=\arccos(0{,}9)=25{,}842^\circ$. De sterlast geeft:
     \[
         I_Y=\frac{200\cdot10^3}{\sqrt3\,240}=481{,}1\ \text{A}.
@@ -5872,7 +5885,7 @@ $0{,}95$ te brengen.
     \caption{Foto-opgave 3: bronimpedantie in serie met twee parallelle takken.}
 \end{figure}\FloatBarrier
 
-\begin{oefenblok}[Uitwerking]
+\begin{oefenblok}[Foto-opgave 3 --- bronimpedantie met twee parallelle takken, plus $\cos\phi$-correctie]
     \[
         \underline{Z}_p=\frac{(5+j2)(3-j)}{8+j}=2{,}108-j0{,}138\ \Omega
     \]
@@ -5911,7 +5924,7 @@ $0{,}95$ te brengen.
 \textbf{Opgave (foto-opgave 4): evenwichtige driehoeklast.}
 Een $3\times174$~V-net bij $50$~Hz voedt een driehoek met per tak $R=30\,\Omega$ en
 $L=31$~mH.
-\begin{oefenblok}[Uitwerking]
+\begin{oefenblok}[Foto-opgave 4 --- evenwichtige driehoeklast, lijn- en fasestromen]
     \[
         \underline{Z}_\Delta=30+j(2\pi50)(0{,}031)
         =31{,}541\angle17{,}985^\circ\ \Omega.
@@ -5971,7 +5984,7 @@ $-j\,\Omega$.
         ligt meteen vast. De bovenste tak is de seriecombinatie $-2j + 4j = 2j\,\Omega$.}
 \end{figure}\FloatBarrier
 
-\begin{oefenblok}[Knooppuntanalyse]
+\begin{oefenblok}[Foto-opgave 5 --- knooppuntanalyse met een stroombron]
     Neem $N$ als referentie. Dan is $\underline{V}_D=8\angle30^\circ$~V. De KCL-vergelijkingen:
     \[
         \frac{V_A-V_D}{2}+\frac{V_A}{-j}+\frac{V_A-V_B}{j2}=0,\qquad
