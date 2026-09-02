@@ -202,8 +202,6 @@ De cursus deelt UPS'en in volgens drie assen:
 - *serie of parallel:* staat de UPS in de hoofdstroomweg of ernaast?
 - *statisch of dynamisch:* halfgeleiders, of een draaiende massa als energieopslag?
 
-#TODO("De detailtopologieën van de UPS (offline, line-interactive, online double conversion) met hun omschakeltijden en rendementen staan niet in de slides of de cursustekst, maar in Schneider Electric, Electrical Installation Guide 2018, §N2 (p. N11-N23). Zie de referentielijst van hoofdstuk 3 van de cursus. Aanvullen na het nalezen van die bron.")
-
 == Bronnen van dit hoofdstuk <sec:pq-bronnen>
 
 De cursustekst verwijst expliciet door naar de volgende bronnen, die op Toledo staan:
