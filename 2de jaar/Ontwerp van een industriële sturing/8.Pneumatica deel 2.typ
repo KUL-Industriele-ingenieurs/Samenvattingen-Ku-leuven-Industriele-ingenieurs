@@ -380,10 +380,14 @@ Kies je het ventiel te klein, dan krijg je een grote drukval en dus te weinig kr
 
 #wrap-figure(
   image("assets/OIS_manifold.png", width: 7.5cm),
-  caption: [Een manifold of ventielblok verdeelt de persluchttoevoer intern over een reeks ventielen.],
+  caption: [Manifold of ventielblok],
   label: <fig:manifold>,
 )[
   Om een reeks ventielen efficiënt te monteren bieden de meeste fabrikanten een #keyterm[manifold] of ventielblok aan. Daarin zitten interne verdeelkanalen, zodat je de persluchttoevoer #strong[niet] meerdere keren hoeft aan te sluiten.
+
+  Dat scheelt niet alleen slangen. Elke koppeling is een mogelijk lek, en lekken zijn de grootste verliespost in een persluchtinstallatie (@sec:perslucht-rendement). Minder aansluitingen betekent dus minder lekkage.
+
+  De ventielen zelf klik je als losse eilanden op het blok. Valt er één uit, dan wissel je alleen dat ene ventiel; de bedrading en de luchttoevoer blijven zitten. Vaak zit er meteen een veldbusaansluiting op, zodat het hele blok met één kabel aan de PLC hangt in plaats van met één draad per spoel.
 ]
 
 === Kogelkraan en schijfventiel

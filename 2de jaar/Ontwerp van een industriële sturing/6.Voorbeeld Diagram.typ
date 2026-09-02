@@ -134,11 +134,15 @@ De norm EN 60204:2016+A1:2021 legt vast:
 
 #belangrijk[Oranje betekent: hier staat mogelijk nog spanning op nadat je de hoofdschakelaar uitgezet hebt.] Dat is de gevaarlijkste draad in de kast. Klemmen en toestellen die de hoofdschakelaar niet uitschakelt, moeten gemarkeerd zijn met een zwarte bliksemschicht op een gele driehoek.
 
-#figure(
-  image("assets/OIS_draadkleuren_foto.png", width: 4.5cm),
-  caption: [De aders zoals je ze in een kabel aantreft: bruin (L1), grijs (L3), zwart (L2), lichtblauw (N) en geel-groen (PE).],
+#wrap-figure(
+  image("assets/OIS_draadkleuren_foto.png", width: 3.5cm),
+  caption: [De aders in een kabel],
   label: <fig:draadkleuren-foto>,
-)
+)[
+  Op @fig:draadkleuren-foto zie je de aders zoals je ze in een meeraderige kabel aantreft, van boven naar beneden: bruin (L1), grijs (L3), zwart (L2), lichtblauw (N) en geel-groen (PE).
+
+  De drie fasen zijn dus bruin, zwart en grijs. De nulgeleider is #strong[licht]blauw, en niet zomaar blauw: donkerblauw mag je voor iets anders gebruiken. De beschermingsgeleider is altijd geel-groen, en die combinatie mag je voor niets anders inzetten.
+]
 
 === De beschermingsgeleider <sec:pe-identificatie>
 
@@ -350,17 +354,17 @@ Daarbij hoort de BH-curve. $H_c$ is de #keyterm[coërcitieve veldsterkte]: de ve
 
 === Werking van een SMPS <sec:smps-werking>
 
-#wrap-figure(
-  image("assets/OIS_smps_blokschema_clean.png", width: 8cm),
++ Het net wordt gelijkgericht en voedt een DC-bus, dus een condensator.
++ Die spanning wordt op #strong[hoge frequentie] gehakt.
++ Het gehakte signaal gaat naar een transformator.
++ Aan de secundaire zijde wordt het opnieuw gelijkgericht, om een tweede DC-bus te voeden.
++ Een galvanisch gescheiden terugkoppeling naar de PWM-driver regelt de uitgangsspanning.
+
+#figure(
+  image("assets/OIS_smps_blokschema_clean.png", width: 15cm),
   caption: [Blokschema van een SMPS: gelijkrichten, DC-bus, hakken op hoge frequentie, transformator, opnieuw gelijkrichten, met een teruggekoppelde PWM-sturing.],
   label: <fig:smps-blokschema>,
-)[
-  + Het net wordt gelijkgericht en voedt een DC-bus, dus een condensator.
-  + Die spanning wordt op #strong[hoge frequentie] gehakt.
-  + Het gehakte signaal gaat naar een transformator.
-  + Aan de secundaire zijde wordt het opnieuw gelijkgericht, om een tweede DC-bus te voeden.
-  + Een galvanisch gescheiden terugkoppeling naar de PWM-driver regelt de uitgangsspanning.
-]
+)
 
 === Waarom hoge frequentie helpt <sec:smps-frequentie>
 
@@ -396,8 +400,8 @@ De noodstop zelf is genormeerd in #keyterm[EN 13850].
 === Het 24 VVS-principe <sec:24vvs>
 
 #wrap-figure(
-  image("assets/OIS_24vvs.png", width: 7.5cm),
-  caption: [Het 24 VVS-principe: de noodstopkring maakt de veilige voedingsspanning waarvan alle gevaarlijke bewegingen afhangen.],
+  image("assets/OIS_noodstop_resetknop.png", width: 5cm),
+  caption: [Noodstopkast: de rode paddenstoelknop op geel, met erboven de blauwe resettoets.],
   label: <fig:24vvs>,
 )[
   De noodstopkring maakt een "veilige" voedingsspanning: de #keyterm[24 VVS] (ook 24 VSV geschreven).
@@ -410,7 +414,15 @@ De noodstop zelf is genormeerd in #keyterm[EN 13850].
   + de noodstop ontgrendelen of loslaten;
   + daarna de resettoets indrukken, "sturing in", in het blauw.
 
-  Een hoofdschakelaar rood op geel heeft een secundaire noodstopfunctie. #belangrijk[Dat mag alleen in combinatie met een gewone noodstopkring], zodat ook daar twee bewuste handelingen nodig zijn om te herstarten.
+  #wrap-figure(
+  image("assets/OIS_hoofdschakelaar_rood_geel.png", width: 4cm),
+  caption: [Hoofdschakelaar rood op geel],
+  label: <fig:hoofdschakelaar-rood-geel>,
+)[
+  Een hoofdschakelaar #strong[rood op geel] heeft een secundaire noodstopfunctie. Zwart op grijs heeft die niet: dan is het een gewone hoofdschakelaar. Aan de kleur alleen zie je dus al of iemand hem in nood mag gebruiken.
+
+  #belangrijk[Rood op geel mag alleen in combinatie met een gewone noodstopkring], zodat ook daar twee bewuste handelingen nodig zijn om te herstarten. Zonder die kring zou één draai aan de schakelaar de machine weer starten.
+]
 ]
 
 === Lichtgordijn tegenover safety scanner <sec:lichtgordijn-scanner>
