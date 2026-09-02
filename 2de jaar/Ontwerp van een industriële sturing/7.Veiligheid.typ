@@ -136,7 +136,7 @@ De drie delen uit elkaar gehouden:
 - *Tag-out:* het label dat zegt wie de vergrendeling plaatste en waarom.
 - *Try-out:* de proef die aantoont dat de vergrendeling ook echt werkt.
 
-#belangrijk[Dat elke persoon zijn eigen slot plaatst is de kern.] Zolang er één slot hangt, kan de machine niet starten. Zo kan niemand de vergrendeling van een collega opheffen.
+#belangrijk[Zolang er één slot hangt, kan de machine niet starten.] Elke geautoriseerde plaatst er dus een eigen, zodat niemand de vergrendeling van een collega kan opheffen.
 
 == Pictogrammen en veiligheidsstop
 

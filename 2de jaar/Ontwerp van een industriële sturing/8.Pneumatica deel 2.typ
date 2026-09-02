@@ -24,7 +24,7 @@ In @ch:intro-pneumatics keken we naar de cilinder: welke kracht die levert en ho
 
 Op de figuur staat een 3/2 ventiel met de poorten $1(P)$ (toevoer), $2(A)$ (naar de cilinder) en $3(R)$ (ontluchting). In de eerste stand blokkeren de lands poort $3$, en staan $1$ en $2$ open en met elkaar verbonden: de cilinder krijgt druk. In de tweede stand blokkeren de lands poort $1$, en zijn $2$ en $3$ verbonden: de cilinder ontlucht. De schuif wordt tussen die twee standen bewogen door een manueel, mechanisch, elektrisch of pneumatisch signaal op de uiteinden van de spool.
 
-Onthoud dat één fysieke schuif dus meerdere standen levert. Dat is precies wat je later in het symbool terugziet: de hokjes naast elkaar zijn *geen* aparte ventielen, het is dezelfde schuif op een andere plaats (zie @sec:schuif-verschuift).
+Onthoud dat één fysieke schuif dus meerdere standen levert. Dat is wat je later in het symbool terugziet: de hokjes naast elkaar zijn *geen* aparte ventielen, het is dezelfde schuif op een andere plaats (zie @sec:schuif-verschuift).
 
 == Lucht afvoeren: geluiddemper en omgevingsfilter
 

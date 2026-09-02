@@ -165,5 +165,5 @@ De telling die je moet kunnen maken:
 + Om drie situaties te onderscheiden heb je minstens #strong[twee] geheugens nodig. Met twee geheugens heb je vier mogelijkheden, waarvan er dus één ongebruikt blijft.
 + Je verandert de toestand van de geheugens in #strong[unieke] punten: $a_0$, $b_1$ en $c_1$.
 
-#belangrijk[Zodra je die keuze gemaakt hebt, wordt de rest van de oplossing triviaal.] Dat is de kern van de methode: investeer je denkwerk in het kiezen van de geheugens en hun schakelpunten, niet in het uitwerken achteraf.
+#belangrijk[Zodra je die keuze gemaakt hebt, wordt de rest van de oplossing triviaal.] Steek je denkwerk dus in het kiezen van de geheugens en hun schakelpunten, niet in het uitwerken achteraf.
 

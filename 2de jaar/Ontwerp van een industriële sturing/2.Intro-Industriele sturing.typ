@@ -487,7 +487,7 @@ Zodra dat het geval is, trekt de armatuur aan, duwt de isolerende stoter het con
   Twee gevolgen van $F prop Phi^2$ die je moet kunnen uitleggen:
 
   + *Het relais klapt dicht.* Wordt de spleet kleiner, dan daalt $cal(R)$, stijgt $Phi$, en stijgt $F$ kwadratisch. De kracht versterkt dus zichzelf tijdens het aantrekken. Daarom schakelt een relais met een snelle klik, en daarom ligt de *afvalstroom lager dan de aantrekstroom*: eenmaal dicht heeft hij veel minder stroom nodig om dicht te blijven.
-  + *Bij wisselstroom bromt het.* Omdat $F$ evenredig is met het *kwadraat* van de flux, pulseert de kracht aan het dubbele van de netfrequentie en zakt ze twee keer per periode naar nul. Dat is precies het brommen uit @sec:ac-contactoren, en de reden voor de kortsluitring.
+  + *Bij wisselstroom bromt het.* Omdat $F$ evenredig is met het *kwadraat* van de flux, pulseert de kracht aan het dubbele van de netfrequentie en zakt ze twee keer per periode naar nul. Dat is het brommen uit @sec:ac-contactoren, en de reden voor de kortsluitring.
 ]
 
 #wrap-figure(
@@ -603,6 +603,22 @@ Zoals gezien in elektronica kun je diagrammen maken om het gedrag van signalen o
   - / TOF (Timer Off Delay): Vertraagt het *uitschakelen*. Zodra de spoel spanningloos wordt, blijft het contact nog gedurende tijd $T$ actief vooraleer het afvalt. Symbool: volledig ingevuld zwart blok.
 
   #examenbox[Ken het verschil tussen TON en TOF en herken de standaardsymbolen op elektrische schema's.]
+]
+
+#oefening(title: "TON en TOF: de gasbrander uit de slides")[
+  Twee opgaven over dezelfde machine, en ze verschillen alleen in de kant waar de vertraging zit.
+
+  *TON.* Bij het starten moet de ventilator eerst genoeg luchtstroom opbouwen vóór het gas open mag. Zet een TON op het startsignaal: de ventilator loopt meteen, en pas na tijd $T$ trekt de gasklep aan. De ventilator is dus de directe uitgang, het gas de vertraagde.
+
+  *TOF.* Bij het stoppen moet het gas #strong[onmiddellijk] dicht, maar de ventilator moet nog even doorlopen om restgas af te voeren. Zet nu een TOF: bij het wegvallen van het signaal valt de gasklep meteen af, terwijl de ventilator nog tijd $T$ blijft draaien.
+
+  *De denkstap.* Vraag je per uitgang af aan welke kant de vertraging zit. Vertraagd #strong[aantrekken] is een TON, vertraagd #strong[afvallen] is een TOF.
+
+  #belangrijk[Gebruik alleen een andere timer dan de TON als de opgave voor $100 %$ met die functie overeenkomt.] Anders bouw je de vertraging liever met een TON en wat logica eromheen, want dan blijft het gedrag voorspelbaar.
+
+  #waarschuwing[
+    Een off-delay timer krijgt zijn voeding vaak apart van zijn stuuringang. Anders zou hij mee uitvallen op het moment dat hij net moet beginnen aftellen.
+  ]
 ]
 
 == PLC Introductie <sec:plc-introductie>
@@ -814,6 +830,64 @@ Je bouwt logica bijna altijd met dezelfde blokken:
   *Opdracht 2.* Zelfde opdracht, maar operatoren saboteren de startknop door hem met een balletje en tape ingedrukt te houden. Je moet dus detecteren dat de knop #strong[opnieuw] ingedrukt wordt in plaats van gewoon ingedrukt #strong[staat]. Daarvoor gebruik je flankdetectie.
 ]
 
+=== MOVE naar een uitgangsbyte <sec:move-uitgangen>
+
+Een vast oefeningtype: je schrijft met één `MOVE`-instructie een getal naar een uitgang, en je moet zeggen welke componenten in het schema daardoor actief worden.
+
+Eerst welk adres hoeveel uitgangen beslaat:
+
+#table(
+  columns: (auto, 1fr, auto),
+  align: (left, left, left),
+  stroke: none,
+  inset: 5pt,
+  table.hline(stroke: 1pt),
+  table.header([*Adres*], [*Betekenis*], [*Bereik*]),
+  table.hline(stroke: 0.5pt),
+  [`Qx.x`], [één uitgangsbit], [1 uitgang],
+  [`QBn`], [uitgangsbyte], [8 uitgangen, `QB0` = `Q0.0` t/m `Q0.7`],
+  [`QWn`], [uitgangswoord], [16 uitgangen, `QW0` = `Q0.0` t/m `Q1.7`],
+  [`QDn`], [dubbel woord], [32 uitgangen, `QD0` = `Q0.0` t/m `Q3.7`],
+  table.hline(stroke: 1pt),
+)
+
+Je zet het getal binair en legt het #belangrijk[van rechts naar links] op de uitgangen: de laagste bit gaat naar `Q0.0`.
+
+#oefening(title: "MOVE 222 naar QB0")[
+  *Gegeven.* Er is één instructie geprogrammeerd: `MOVE 222` naar `QB0`. De voedingen staan aan en de PLC draait in RUN.
+
+  *Gevraagd.* Welke uitgangen worden hoog?
+
+  *Stap 1: decimaal naar binair.* Trek de machten van twee af, van groot naar klein. Bij een byte zijn dat $128, 64, 32, 16, 8, 4, 2, 1$.
+  $ 222 = 128 + 64 + 16 + 8 + 4 + 2 $
+
+  Er zit geen $32$ en geen $1$ in, dus:
+  $ 222 = #"2#1101 1110" $
+
+  *Stap 2: bits op de uitgangen leggen.* De rechtse bit is `Q0.0`.
+
+  #table(
+    columns: (auto, auto, auto, auto, auto, auto, auto, auto, auto),
+    align: center,
+    stroke: none,
+    inset: 5pt,
+    table.hline(stroke: 1pt),
+    table.header([*Uitgang*], [`Q0.7`], [`Q0.6`], [`Q0.5`], [`Q0.4`], [`Q0.3`], [`Q0.2`], [`Q0.1`], [`Q0.0`]),
+    table.hline(stroke: 0.5pt),
+    [Waarde], [128], [64], [32], [16], [8], [4], [2], [1],
+    [Bit], [1], [1], [0], [1], [1], [1], [1], [0],
+    table.hline(stroke: 1pt),
+  )
+
+  *Antwoord.* Actief zijn `Q0.1`, `Q0.2`, `Q0.3`, `Q0.4`, `Q0.6` en `Q0.7`. Laag blijven `Q0.0` en `Q0.5`. De componenten die aan die zes uitgangen hangen, trekken aan.
+]
+
+#concept(title: "Andere notaties")[
+  / Hexadecimaal (`16#xx`): splits het getal in losse cijfers, want elk hexcijfer is precies vier bits. Zo wordt `16#15` $arrow.r$ `1` en `5` $arrow.r$ `0001` en `0101` $arrow.r$ `2#0001 0101`. Letters tellen door vanaf $A = 10$, dus `16#0A` is `2#0000 1010`.
+  / Binair (`2#xxxx`): niets om te rekenen, de bits staan er al.
+  / Decimaal: ontbind in machten van twee, zoals in de oefening hierboven.
+]
+
 == Sequenties programmeren
 
 Een #keyterm[sequentie] is de manier om een programma te schrijven dat cyclisch verloopt. Denk aan een robot die telkens een plaat optilt en hoger neerlegt.
@@ -940,7 +1014,7 @@ Een functie (FC of FB) is een verzameling logische netwerken. Er zijn twee manie
   table.hline(stroke: 1pt),
 )
 
-Volg je de norm strikt, dan gebruik je in een FC #strong[geen] globale variabelen en geen absolute operanden. Dat is precies wat een FC voorspelbaar maakt: dezelfde ingangen leveren altijd hetzelfde resultaat.
+Volg je de norm strikt, dan gebruik je in een FC #strong[geen] globale variabelen en geen absolute operanden. Dat is wat een FC voorspelbaar maakt: dezelfde ingangen leveren altijd hetzelfde resultaat.
 
 === Formele parameters <sec:formele-parameters>
 

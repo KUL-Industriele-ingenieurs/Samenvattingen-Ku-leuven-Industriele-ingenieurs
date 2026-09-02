@@ -371,7 +371,7 @@ We gaan onze flux $phi$ opsplitsen in twee delen. Een #keyterm[Main flux] en een
 
   Modelleren doe je dat met één extra weerstand per wikkeling: $R_1$ aan de primaire en $R_2$ aan de secundaire zijde.
 
-  Die weerstanden veroorzaken de #keyterm[koperverliezen] $I^2 R$. Ze lopen op met het kwadraat van de stroom, dus ze hangen aan de #strong[belasting] en niet aan de spanning. Dat is precies waarom de kortsluitproef ze meet en de nullastproef niet.
+  Die weerstanden veroorzaken de #keyterm[koperverliezen] $I^2 R$. Ze lopen op met het kwadraat van de stroom, dus ze hangen aan de #strong[belasting] en niet aan de spanning. Dat is waarom de kortsluitproef ze meet en de nullastproef niet.
 ]
 
 === Totale series impedantie <sec:totale-series-impedantie>
