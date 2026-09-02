@@ -186,7 +186,27 @@ De vertrouwde vermogendriehoek wordt daardoor driedimensionaal.
   label: <fig:Harmonic-power-definitions>,
 )
 
-#TODO("Figuur van de driedimensionale vermogendriehoek ontbreekt nog. Bron: cursus netten, hoofdstuk 5 'Harmonics', Figuur 8. Uitknippen uit 005_harmonics.pdf en als assets/DEE_3D_vermogendriehoek.png toevoegen.")
+#figure(
+  image("assets/DEE_3D_vermogendriehoek.png", width: 11cm),
+  caption: [De driedimensionale vermogendriehoek. In het grondvlak ligt de gewone driehoek met $P$ en $Q_1$; de vervormingsblindvermogen $D_H$ staat daar loodrecht op, zodat $S$ de ruimtelijke diagonaal wordt.],
+  label: <fig:3d-vermogendriehoek>,
+)
+
+Lees de figuur zo. Onderaan ligt de vertrouwde tweedimensionale driehoek, met het actief vermogen $P$ horizontaal en het blindvermogen $Q_1$ van de grondharmonische er loodrecht op. Hun schuine zijde is $S_1$, het schijnbaar vermogen van de grondharmonische alleen.
+
+Het vervormingsblindvermogen $D_H$ staat loodrecht op dat hele grondvlak. Het totale schijnbaar vermogen $S$ is dus de ruimtelijke diagonaal:
+
+$ S = sqrt(P^2 + Q_1^2 + D_H^2) $
+
+met:
+- $S$: schijnbaar vermogen [VA]
+- $P$: actief vermogen [W]
+- $Q_1$: blindvermogen van de grondharmonische [var]
+- $D_H$: vervormingsblindvermogen door de harmonischen [var]
+
+#belangrijk[Het totale blindvermogen $Q_F = sqrt(S^2 - P^2)$ is dus niet hetzelfde als $Q_1$.] Naast de faseverschuiving tussen de harmonische spanningen en stromen zitten er ook kruisproducten in van spanningen en stromen op #strong[verschillende] frequenties. Die dragen niets bij aan het actief vermogen, want de Fourier-componenten staan onderling loodrecht, maar ze duiken wel op in het blindvermogen.
+
+De figuur veronderstelt dat de netspanning nauwelijks vervormd is, zodat $U = U_1$ en $P = P_1$. In de praktijk klopt dat meestal: de spanning is redelijk zuiver, de stroom is dat niet.
 
 == Arbeidsfactor bij vervorming <sec:phase-shift-distortion>
 

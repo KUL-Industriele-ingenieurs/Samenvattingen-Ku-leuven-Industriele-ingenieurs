@@ -373,14 +373,65 @@ We willen dat als we meerdere transformatoren in parallel hebben, de load over d
   label: <fig:Parallel-transformers>,
 )
 
-- / matching kVA rating:
+- / Matching kloknummer: de faseverschuiving tussen primaire en secundaire moet in alle eenheden dezelfde zijn. Bij driefasige transformatoren is dit de eerste voorwaarde; staan de secundaire spanningen niet in fase, dan staat er permanent een spanningsverschil over de parallelverbinding.
+- / Ongeveer gelijke kVA-waarde: bij gelijke $u_(s c)$ verdeelt de belasting zich vanzelf evenredig met het nominale vermogen. #belangrijk[Bij een verhouding van de kVA-waarden groter dan 2 wordt parallelbedrijf afgeraden.]
 
-
+#examenbox[
+  Als meerkeuzevraag komt dit terug als "welke vier voorwaarden?". Het antwoord: kloknummer, wikkelingsverhouding, nominale spanning en kortsluitspanning.
+]
 
 == Oefeningen transformatoren uit de les in de praktijk
 
+De drie oefeningen die de slides bij dit hoofdstuk stellen. De examenoefening op de kenplaat staat apart in @ch:oefeningen.
 
-#TODO[Oefeningen toevoegen]
+#oefening(title: "Verkeerde aftakking: kringstroom")[
+  *Gegeven.* Twee identieke transformatoren A en B staan parallel, maar op een verschillende aftakking gezet: A geeft $10 "kV"\/230 "V"$, B geeft $10 "kV"\/220 "V"$. Beide hebben $Z_(s c) = #"0,05" Omega$ aan de secundaire zijde. Er hangt geen belasting aan.
+
+  *Gevraagd.* De kringstroom $I_"circ"$, de gecombineerde primaire stroom $I_1$, en de uitgangsspanning $V_2$.
+
+  *Denkstap.* De twee secundaire wikkelingen staan tegenover elkaar in een gesloten lus. Hun nullastspanningen verschillen, en dat verschil drijft een stroom door de twee kortsluitimpedanties in serie. Er is geen belasting nodig om die stroom te laten lopen.
+
+  *De kringstroom.*
+  $ I_"circ" = (V_(2,A) - V_(2,B)) / (Z_(s c,A) + Z_(s c,B)) = (230 - 220)/(#"0,05" + #"0,05") = 100 "A" $
+
+  *De uitgangsspanning.* De kringstroom veroorzaakt een val over elke impedantie. Vanuit A gerekend zakt de spanning, vanuit B stijgt ze, en beide komen op hetzelfde punt uit:
+  $ V_2 = 230 - 100 dot #"0,05" = 225 "V" $
+  $ V_2 = 220 + 100 dot #"0,05" = 225 "V" quad checkmark $
+
+  *De primaire stroom.* Herleid de kringstroom via elke verhouding naar de primaire zijde:
+  $ I_(1,A) = 100 dot 23/1000 = #"2,3" "A" quad quad I_(1,B) = 100 dot 22/1000 = #"2,2" "A" $
+
+  A trekt die stroom uit het net, B duwt hem er weer in. Wat het net overhoudt is het verschil:
+  $ I_1 = #"2,3" - #"2,2" = #"0,1" "A" $
+
+  #belangrijk[Aan de primaire zijde zie je bijna niets, terwijl er secundair $100 "A"$ rondloopt.] Die stroom verwarmt beide transformatoren zonder één watt nuttig vermogen te leveren, en je merkt hem niet aan de netzijde.
+]
+
+#oefening(title: "Lastverdeling bij gelijke kortsluitspanning")[
+  *Gegeven.* A en B staan parallel op $10 "kV"\/400 "V"$. A is $100 "kVA"$ met $u_(s c) = 5 %$, B is $50 "kVA"$ met $u_(s c) = 5 %$.
+
+  *Gevraagd.* Hoe verdeelt de totale belastingsstroom zich?
+
+  *Denkstap.* De belasting verdeelt zich omgekeerd evenredig met de kortsluitimpedanties. Reken die eerst in ohm uit, want de percentages horen bij verschillende basisvermogens.
+
+  $ Z_(s c) = u_(s c) dot V_2^2 / S_n $
+  $ Z_(s c,A) = #"0,05" dot 400^2/(100 dot 10^3) = #"0,08" Omega quad quad Z_(s c,B) = #"0,05" dot 400^2/(50 dot 10^3) = #"0,16" Omega $
+
+  B heeft dus de dubbele impedantie en neemt de halve stroom:
+  $ I_A / I_B = Z_(s c,B) / Z_(s c,A) = 2 $
+
+  A neemt $2\/3$ van de belasting, B neemt $1\/3$. Dat is precies de verhouding van hun nominale vermogens, dus beide draaien op dezelfde belastingsgraad en samen halen ze de volle $150 "kVA"$.
+]
+
+#oefening(title: "Lastverdeling bij ongelijke kortsluitspanning")[
+  *Gegeven.* Zelfde transformatoren, maar nu $u_(s c,A) = 10 %$ en $u_(s c,B) = 5 %$.
+
+  $ Z_(s c,A) = #"0,10" dot 400^2/(100 dot 10^3) = #"0,16" Omega quad quad Z_(s c,B) = #"0,05" dot 400^2/(50 dot 10^3) = #"0,16" Omega $
+
+  De impedanties zijn nu gelijk, dus #belangrijk[beide transformatoren voeren dezelfde stroom], en dus hetzelfde vermogen. B zit al op zijn $50 "kVA"$ terwijl A pas op de helft van zijn $100 "kVA"$ staat.
+
+  Je kan de groep dus maar tot $2 times 50 = 100 "kVA"$ belasten in plaats van tot $150 "kVA"$. De grootste transformator blijft voor een derde onbenut. Dat is de reden achter de voorwaarde van gelijke $u_(s c)$.
+]
 
 
 

@@ -419,31 +419,124 @@ Een #keyterm[RCD] (Residual Current Device, differentieel- of verliesstroomschak
 
 == Aardingsnetten <sec:aardingsnetten>
 
-#TODO("Tekeningen van de netstelsels ontbreken, terwijl elk examen er een vraagt (TN-S in 2024 en 2025, TN-C in 2025, IT in aug 2024 en aug 2026). Bron: Slides/Powerpoint_ 12_Protection.pdf: p.67 TT, p.69 TN-C, p.70 TN-S, p.71 TN-C-S, p.81 en p.83 IT, p.84 vergelijkingstabel. Knippen naar assets/ en embedden.")
+Hoe je de bron en de behuizingen aardt, bepaalt welke beveiliging werkt. Elk examen sinds 2022 vraagt één van deze netten te tekenen, de letters te verklaren, en uit te leggen hoe je beveiligt tegen overstroom én tegen schokken.
 
-#TODO("TN-C-S ontbreekt volledig in de tekst hieronder. Staat op p.71 van hetzelfde deck.")
+De code bestaat uit twee letters:
 
-#TODO("De foutstroomgevallen ontbreken: TT met isolatiefout (p.72-74, met de formule voor I_fault), TN met isolatiefout (p.75-79) en IT bij de eerste en tweede fout (p.81-83). Het examen vraagt niet alleen het net te tekenen maar ook hoe je beveiligt, en dat volgt uit die foutstroom.")
+/ Eerste letter, de bron: *T* (terra) betekent dat het sterpunt geaard is, *I* dat het geïsoleerd is of via een hoge impedantie aan de aarde hangt.
+/ Tweede letter, de verbruiker: *T* betekent dat de massa's een eigen lokale aarding hebben, *N* dat ze aan de nulgeleider van de bron hangen.
 
-Hoe we het netwerk en de behuizingen aarden, bepaalt hoe we beveiligen. Je hebt de 3 letters:
-1e letter (Bron): *T* = Terra (geaard), *I* = Geïsoleerd
-2e letter (Verbruiker): *T* = Terra (lokaal geaard), *N* = Verbonden met de Nul van de bron
+Bij TN volgt er nog een letter voor de manier waarop PE en N lopen: *C* voor gecombineerd (PEN), *S* voor gescheiden.
 
-*1. TT-netwerk (Terra-Terra)*
-- De bron is geaard.
-- De behuizing van de consument heeft een *eigen, lokale aarding*.
-- *Beveiliging:* Omdat de aardingsweerstand relatief hoog kan zijn, is de kortsluitstroom vaak niet hoog genoeg om een zekering te doen springen. Daarom is in een TT-net een *differentieelschakelaar verplicht*! Dit is het standaardnetwerk voor huizen in België.
+=== TT <sec:net-tt>
 
-*2. TN-netwerk (Terra-Neutral)*
-- De bron is geaard.
-- De behuizing van de consument is verbonden met de *nulgeleider (PEN of PE)* van de bron.
-- Bij een fout op de behuizing ontstaat een keiharde kortsluiting (weinig weerstand). De stroom schiet enorm de hoogte in.
-- *Beveiliging:* Een gewone zekering of automaat is voldoende om snel af te schakelen. Wordt veel in de industrie gebruikt.
-  - *TN-C:* PE en N draad zijn gecombineerd (PEN).
-  - *TN-S:* PE (aarding) en N (nuldraad) zijn gescheiden.
+#figure(
+  image("assets/DEE_net_TT.png", width: 13cm),
+  caption: [TT: de bron is geaard, en elke verbruiker heeft zijn eigen aardelektrode. Er loopt geen geleider tussen beide aardingen.],
+  label: <fig:net-tt>,
+)
 
-*3. IT-netwerk (Geïsoleerd-Terra)*
-- De bron is *niet* geaard (of via een zeer hoge impedantie).
-- De behuizing van de verbruiker is lokaal geaard.
-- *Groot voordeel:* Bij een eerste fout (b.v. fase raakt behuizing) valt het net *niet* uit, omdat de stroom nergens heen kan (kring is niet gesloten). Dat telt voor ziekenhuizen (operatiekamers) of continue productieprocessen.
-- *Beveiliging:* Een isolatiewachter detecteert de eerste fout en geeft een alarm, waarna men het kan fixen zonder downtime.
+Bron en verbruiker zijn allebei geaard, maar los van elkaar. De foutstroom moet dus door de #belangrijk[grond] terug naar de bron, en die weg heeft een hoge weerstand.
+
+$ I_"fout" approx U_f / (R_"aarde,verbruiker" + R_"aarde,net") $
+
+met:
+- $I_"fout"$: foutstroom bij een isolatiefout naar de massa [A]
+- $U_f$: fasespanning [V]
+- $R_"aarde,verbruiker"$, $R_"aarde,net"$: aardverspreidingsweerstand aan beide kanten [$Omega$]
+
+De aanraakspanning die daaruit volgt, is $U_z = R_"aarde" dot I_"fout"$.
+
+#belangrijk[Die foutstroom is te klein om een zekering of automaat te doen aanspreken.] Daarom is in een TT-net een #keyterm[RCD] verplicht: die meet het verschil tussen heen- en teruggaande stroom en heeft geen grote foutstroom nodig. TT is het standaardnet voor woningen in België.
+
+=== TN-C <sec:net-tn-c>
+
+#figure(
+  image("assets/DEE_net_TN-C.png", width: 13cm),
+  caption: [TN-C: PE en N zijn samengevoegd tot één #strong[PEN]-geleider, die zowel de bedrijfsstroom van de nulleider voert als de beschermingsfunctie vervult.],
+  label: <fig:net-tn-c>,
+)
+
+De massa's hangen via de PEN-geleider aan het geaarde sterpunt van de bron. Een isolatiefout is daardoor een echte kortsluiting tussen fase en PEN, met een grote foutstroom als gevolg:
+
+$ I_"fout" = (c dot U_f) / (R_"fase" + R_"PE" + R_"fout") $
+
+met:
+- $c$: correctiefactor voor de spanningsval in het net bij kortsluiting, typisch $#"0,8"$ [-]
+- $R_"fase"$, $R_"PE"$: weerstand van de fase- en beschermingsgeleider [$Omega$]
+- $R_"fout"$: overgangsweerstand op de foutplaats [$Omega$]
+
+Die stroom is groot genoeg voor een gewone automaat of zekering, dus een RCD is hier niet nodig. De aanraakspanning volgt uit de spanningsdeler over de twee geleiders:
+
+$ U_z = R_"PE" / (R_"PE" + R_"fase") dot c dot U_f $
+
+#waarschuwing[
+  De weerstand van een geleider is $rho_"Cu" ell \/ S$, dus de foutstroom daalt naarmate de leiding langer wordt. Vanaf een bepaalde lengte spreekt de beveiliging niet meer op tijd aan. Met $S_"PE" = S_"fase"$ geeft dat een #keyterm[maximale kabellengte]:
+
+  $ ell_"max" = (c dot U_f dot S_"fase") / (2 rho_"Cu" I_"fout") $
+
+  #belangrijk[Deze formule staat op het formularium], zie @sec:formularium-examen, dus je hoeft ze niet vanbuiten te kennen. Weten wanneer je ze gebruikt wél.
+]
+
+=== TN-S <sec:net-tn-s>
+
+#figure(
+  image("assets/DEE_net_TN-S.png", width: 13cm),
+  caption: [TN-S: dezelfde aarding als TN-C, maar PE en N lopen als aparte geleiders over het hele net.],
+  label: <fig:net-tn-s>,
+)
+
+Elektrisch gedraagt TN-S zich als TN-C, met dezelfde foutstroom en dezelfde beveiliging. Het verschil is dat de PE geen bedrijfsstroom voert. Daardoor staat er geen spanningsval op de beschermingsgeleider, en kan je er wél een RCD in zetten: die kan het verschil tussen fase en N nu zinvol meten.
+
+=== TN-C-S <sec:net-tn-c-s>
+
+#figure(
+  image("assets/DEE_net_TN-C-S.png", width: 14cm),
+  caption: [TN-C-S: eerst één PEN-geleider, verderop gesplitst in PE en N. De twee kruisjes tonen wat niet mag: opnieuw samenvoegen achter het splitspunt.],
+  label: <fig:net-tn-c-s>,
+)
+
+In de praktijk combineer je de twee: over het aanvoergedeelte één PEN-geleider, en vanaf een bepaald punt gesplitst in PE en N.
+
+#belangrijk[Eenmaal gesplitst, mag je PE en N nooit meer samenvoegen.] Een TN-C-stuk achter een TN-S-stuk is verboden. Zou je ze verderop weer verbinden, dan gaat er bedrijfsstroom over de beschermingsgeleider lopen en verliest die zijn functie.
+
+=== IT <sec:net-it>
+
+#figure(
+  image("assets/DEE_net_IT.png", width: 13cm),
+  caption: [IT: het sterpunt hangt niet rechtstreeks aan de aarde maar via een hoge impedantie $Z$. De massa's zijn wel lokaal geaard.],
+  label: <fig:net-it>,
+)
+
+Het sterpunt is geïsoleerd of hangt via een hoge impedantie $Z$ aan de aarde. Bij een #strong[eerste] isolatiefout is de kring dus niet gesloten: er loopt nauwelijks stroom en er is geen gevaar. De installatie blijft gewoon draaien.
+
+Een #keyterm[isolatiewachter] meldt die eerste fout, zodat je ze kan opzoeken en herstellen zonder de productie stil te leggen. #belangrijk[Dat is de reden om voor IT te kiezen: bedrijfscontinuïteit], en daarom vind je het in operatiekwartieren en continue processen.
+
+#waarschuwing[
+  Bij een #strong[tweede] fout op een andere fase valt dat voordeel weg. Het net herleidt zich dan tot een TN- of een TT-systeem, afhankelijk van hoe de massa's geaard zijn, met de bijhorende grote of kleine foutstroom. Je moet die eerste fout dus echt herstellen.
+]
+
+=== De drie vergeleken <sec:netstelsels-vergelijking>
+
+#table(
+  columns: (auto, 1fr, 1fr, 1fr),
+  align: (left, left, left, left),
+  stroke: none,
+  inset: 5pt,
+  table.hline(stroke: 1pt),
+  table.header([], [*TT*], [*TN*], [*IT*]),
+  table.hline(stroke: 0.5pt),
+  [Aarding], [massa's en net apart geaard], [massa's via de nulgeleider aan het net], [massa's geaard, net via impedantie],
+  [Foutstroom], [klein], [groot], [zeer klein],
+  [Waar], [woningnet], [industrieel net], [waar 100 % beschikbaarheid moet],
+  [Kostprijs], [$130 %$], [$100 %$], [$120 %$],
+  [Beveiliging indirect contact], [RCD], [overstroombeveiliging, eventueel RCD], [overstroombeveiliging, eventueel RCD],
+  [Blijft werken], [tot de 1e fout], [tot de 1e fout], [tot de 2e fout],
+  [Vakbekwaam personeel], [niet nodig], [bij het ontwerp], [permanente bewaking],
+  [Voorwaarde], [goede aarding nodig], [goede aarding nodig], [goed isolatieniveau nodig],
+  table.hline(stroke: 1pt),
+)
+
+#examenbox[
+  De tekenvraag is elk jaar dezelfde drie stappen: teken het net met bron, de vier of vijf geleiders, twee verbruikers en de aardingen; verklaar wat elke letter betekent; en zeg per gevaar welke beveiliging je gebruikt. Vergeet de tweede helft niet, want daar zitten de punten: #strong[overstroom] met zekering of automaat, #strong[schokken] met een RCD in TT, met de overstroombeveiliging in TN, en met een isolatiewachter in IT.
+]
