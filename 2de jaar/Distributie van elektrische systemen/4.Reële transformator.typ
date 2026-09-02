@@ -366,12 +366,13 @@ We gaan onze flux $phi$ opsplitsen in twee delen. Een #keyterm[Main flux] en een
   image("assets/Series resisitentie.png", width: 7cm),
   caption: [Series resistentie],
   label: <fig:Series-resistentie>,
-)[Onze flux lekt maar onze conductor is ook niet perfect. Meestal is dit koper.
+)[
+  Niet alleen de flux lekt: ook de geleider zelf is niet perfect. De wikkelingen zijn meestal van koper, en koper heeft weerstand.
 
-  Het is simpel om dit te modelleren we voegen gewoon een extra resistor toe aan beide kanten van onze circuit $R_1$ en $R_2$.
+  Modelleren doe je dat met één extra weerstand per wikkeling: $R_1$ aan de primaire en $R_2$ aan de secundaire zijde.
+
+  Die weerstanden veroorzaken de #keyterm[koperverliezen] $I^2 R$. Ze lopen op met het kwadraat van de stroom, dus ze hangen aan de #strong[belasting] en niet aan de spanning. Dat is precies waarom de kortsluitproef ze meet en de nullastproef niet.
 ]
-
-Het is simpel om dit te modelleren we voegen gewoon een extra resistor toe aan beide kanten van onze circuit $R_1$ en $R_2$.
 
 === Totale series impedantie <sec:totale-series-impedantie>
 Als we ze allemaal samenvoegen krijgen we onze totale series impedantie.

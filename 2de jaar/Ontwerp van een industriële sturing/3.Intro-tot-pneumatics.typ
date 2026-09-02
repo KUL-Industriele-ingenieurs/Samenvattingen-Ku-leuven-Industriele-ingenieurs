@@ -481,17 +481,19 @@ De drie functies bouw je zo:
 
 De leiding gedraagt zich dan als een klein drukvat: de functie schakelt niet uit, of pas nadat er genoeg lucht weggelekt is. Je circuit reset dus niet, en een tweede cyclus verloopt anders dan de eerste.
 
-Je hebt daarom twee dingen nodig: een #keyterm[wisselventiel] (shuttle valve) dat de niet-bediende ingang mechanisch afsluit, #strong[en] 3/2-ventielen in plaats van 2/2-ventielen, want een 3/2 heeft een derde poort om te ontluchten.
-
 #wrap-figure(
   image("assets/OIS_pneum_logica_and_or_not_clean.png", width: 7.5cm),
   caption: [Ventielen in logische circuits: AND als serieschakeling, NOT als normaal gesloten ventiel, en OR met een wisselventiel in plaats van een T-stuk.],
   label: <fig:pneum-logica>,
 )[
-  Overzicht van de logische ventielcombinaties:
-  - Serieschakeling voor logische EN.
-  - Wisselventiel (shuttle valve) voor logische OF.
-  - NC 3/2 ventiel voor logische NIET.
+  Je hebt daarom twee dingen nodig: een #keyterm[wisselventiel] (shuttle valve) dat de niet-bediende ingang mechanisch afsluit, #strong[en] 3/2-ventielen in plaats van 2/2-ventielen, want een 3/2 heeft een derde poort om te ontluchten.
+
+  Op de figuur staan de drie combinaties naast elkaar:
+  - serieschakeling voor de EN-functie;
+  - wisselventiel voor de OF-functie;
+  - normaal gesloten 3/2-ventiel voor de NIET-functie.
+
+  Het wisselventiel heeft twee ingangen en één uitgang. De hoogste druk duwt het binnenste element naar de andere kant, en sluit daarmee de niet-bediende ingang af. Zo kan de lucht niet meer via het uitlaatpoortje van het andere ventiel weglekken.
 ]
 
 === Componenten in een pneumatisch schema <sec:pneum-componentcodes>

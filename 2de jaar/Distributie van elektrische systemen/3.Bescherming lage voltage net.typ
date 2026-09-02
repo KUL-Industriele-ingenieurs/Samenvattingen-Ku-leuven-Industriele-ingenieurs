@@ -71,9 +71,15 @@ Er zijn 3 cijfers _in dit vak vooral over 2_
   image("assets/IP-rating.png", width: 4cm),
   caption: [IP-rating],
   label: <fig:IP-rating>,
-)[Het eerste number gaat over live aanraken van het elektriciteit. Is het stofbeschermend, is het veilig om met de vinger aan te raken? Hoe hoger hoe meer beschermt
+)[
+  De #keyterm[IP-code] (Ingress Protection) zegt in twee cijfers hoe goed een behuizing afgesloten is.
 
-  Het tweede number gaat over waterdichtheid.Hoe hoger het number hoe meer beschermt tegen water. ipx7 is volledig waterdicht. ]
+  Het #strong[eerste cijfer] gaat over vaste voorwerpen en aanraking: kan je er met een vinger of een draad bij de spanningvoerende delen, en houdt de behuizing stof tegen? Hoe hoger, hoe beter afgesloten.
+
+  Het #strong[tweede cijfer] gaat over water, van druppels tot volledige onderdompeling. IPx7 blijft dicht onder water.
+
+  Staat er een `x` in plaats van een cijfer, dan is dat aspect niet getest of niet gespecificeerd.
+]
 
 #voorbeeld(title: "motoren ip-rating")[
 
@@ -342,14 +348,20 @@ Het werkt gelijkaardig aan een circuit breaker waarbij je een schakelijk hebt zo
 
 #wrap-figure(
   image("assets/Schakelaars.png", width: 6cm),
-  caption: [Schakelaars],
+  caption: [De symbolen van de vijf schakeltoestellen. Het streepje bovenaan betekent zichtbare scheiding, het bolletje "breekt belastingsstroom", het kruisje "breekt kortsluitstroom".],
   label: <fig:Schakelaars>,
 )[
-  - *Schakelaar*
-  - *Scheider:*
-  - *Lastscheider*
-  - *Vermogenschakelaar*
-  - *Contactor*
+  Vijf toestellen die er in een schema op lijken, maar elk iets anders kunnen. Wat ze onderscheidt, is #belangrijk[welke stroom ze mogen onderbreken].
+
+  / Schakelaar: het algemene symbool. Schakelt de bedrijfsstroom, verder geen eisen.
+  / Scheider (isolator, disconnector): mag #strong[niet] onder belasting bediend worden. Zijn taak is een zichtbare, betrouwbare onderbreking maken zodat er veilig aan de installatie gewerkt kan worden. Het streepje bovenaan het symbool staat voor die zichtbare scheiding.
+  / Lastscheider (load-break switch): een scheider die je wél onder normale belasting mag openen. Een kortsluitstroom kan hij niet breken.
+  / Vermogenschakelaar (circuit breaker): breekt de bedrijfsstroom én de kortsluitstroom. Daarvoor heeft hij een vlamboogblusinrichting nodig, en dat is het kruisje in het symbool.
+  / Contactor: elektromagnetisch bediend, gemaakt om #strong[vaak] te schakelen. Hij beveiligt niet; daarvoor zet je er een zekering of automaat bij.
+
+  #examenbox[
+    "Wat doet een lastscheider, en vergelijk met een vermogenschakelaar" is als open vraag gesteld in juni 2023. Het antwoord zit in de laatste kolom: allebei schakelen ze onder belasting, maar alleen de vermogenschakelaar overleeft een kortsluiting.
+  ]
 ]
 
 
@@ -406,6 +418,12 @@ Een #keyterm[RCD] (Residual Current Device, differentieel- of verliesstroomschak
 - Voor de algemene installatie volstaat $300 "mA"$.
 
 == Aardingsnetten <sec:aardingsnetten>
+
+#TODO("Tekeningen van de netstelsels ontbreken, terwijl elk examen er een vraagt (TN-S in 2024 en 2025, TN-C in 2025, IT in aug 2024 en aug 2026). Bron: Slides/Powerpoint_ 12_Protection.pdf: p.67 TT, p.69 TN-C, p.70 TN-S, p.71 TN-C-S, p.81 en p.83 IT, p.84 vergelijkingstabel. Knippen naar assets/ en embedden.")
+
+#TODO("TN-C-S ontbreekt volledig in de tekst hieronder. Staat op p.71 van hetzelfde deck.")
+
+#TODO("De foutstroomgevallen ontbreken: TT met isolatiefout (p.72-74, met de formule voor I_fault), TN met isolatiefout (p.75-79) en IT bij de eerste en tweede fout (p.81-83). Het examen vraagt niet alleen het net te tekenen maar ook hoe je beveiligt, en dat volgt uit die foutstroom.")
 
 Hoe we het netwerk en de behuizingen aarden, bepaalt hoe we beveiligen. Je hebt de 3 letters:
 1e letter (Bron): *T* = Terra (geaard), *I* = Geïsoleerd

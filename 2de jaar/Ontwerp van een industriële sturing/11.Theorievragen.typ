@@ -354,6 +354,8 @@ De vijf oefeningtypes uit de leeruitkomsten:
   Bij oefeningtype 1 vraagt de prof ook: #emph[hoeveel en welke alternatieven bestaan er met hetzelfde aantal condities?] Wat hij daar precies mee bedoelt, staat in geen van de bronnen uitgelegd. Vraag het na in de les in plaats van erop te gokken.
 ]
 
+#TODO("Vraag na wat de prof bedoelt met 'hoeveel/welke alternatieven met hetzelfde aantal condities (tabellarisch)'. Deck 8.3D Method 2026.pdf legt het niet uit; de student die de modelantwoorden 2026 schreef geeft zelf toe dat hij het niet begrijpt en dat stuk door een AI liet schrijven.")
+
 == Wat er op de meerkeuze terugkwam
 
 Uit de meldingen op Studforum over de zittingen 2024 en 2025, als checklist:

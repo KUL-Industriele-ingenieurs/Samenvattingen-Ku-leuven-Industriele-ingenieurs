@@ -663,6 +663,10 @@ In eenvoudige schakelingen met 1 tot 3 stappen kan een relaisschakeling volstaan
   *Ladder Logic (LAD)* is een grafische programmeertaal conform IEC 61131-3 die sterk lijkt op traditionele elektrische relaisschema's.
 
   De logica wordt per *rung* (trede) opgebouwd tussen de linker- en rechtervoedingsrail. Een spoel wordt pas bekrachtigd wanneer er een gesloten logisch pad is via de contacten.
+
+  Lees een rung van links naar rechts als een reeks vragen. Contacten in #strong[serie] vormen een EN, contacten in #strong[parallel] een OF, en een N.C.-contact is de inverse van zijn variabele.
+
+  Rechts staat altijd een instructie die het resultaat gebruikt, meestal een uitgangsspoel. Elk netwerk moet zo afgesloten zijn, anders compileert het programma niet.
 ]
 
 == Logic control met PLC
@@ -700,6 +704,10 @@ Om programma's overzichtelijk en onderhoudbaar te houden, hanteert men internati
   3. *PIQ (Process Image Output)*: De berekende uitgangswaarden worden gelijktijdig naar de fysieke uitgangsmodules geschreven.
 
   Eén volledige scanlus duurt typisch enkele milliseconden.
+
+  Twee gevolgen van dat vaste ritme. Ten eerste ziet je programma binnen één cyclus een #strong[bevroren] beeld van de ingangen: verandert een sensor halverwege, dan merk je dat pas de volgende scan. Ten tweede worden de uitgangen pas op het einde in één keer weggeschreven, dus een uitgang die je tussendoor aan en weer uit zet, komt nooit op de klem.
+
+  Daarom is een puls die korter duurt dan één scan onzichtbaar voor de PLC. Wil je die toch vangen, dan gebruik je flankdetectie of een snelle teller.
 ]
 
 === Combinatorisch of met geheugen? <sec:combinatorisch-geheugen>
@@ -846,14 +854,16 @@ Werk het voorbeeld uit de slides zo strikt mogelijk na, en maak je netwerken met
 
 Sommige uitgangen mogen absoluut niet tegelijk actief zijn. Het klassieke voorbeeld: de contactor voor rechtsom en die voor linksom. Trekken die samen aan, dan heb je een kortsluiting.
 
-In zo'n geval zet je vlak vóór de spoel een extra conditie. Is de ene uitgang actief, dan blokkeert die de andere. Dat heet #keyterm[cross-protect].
-
 #wrap-figure(
   image("assets/OIS_cross_protect.png", width: 7.5cm),
-  caption: [Cross-protect op de uitgangen: een extra conditie vlak voor de spoel verhindert dat twee uitgangen die elkaar uitsluiten samen actief worden.],
+  caption: [Cross-protect: een N.C.-conditie van de tegengestelde uitgang vlak voor de spoel.],
   label: <fig:cross-protect>,
 )[
-  Een extra N.C.-conditie van de tegengestelde uitgang vlak vóór de spoel verhindert dat twee uitgangen die elkaar wederzijds uitsluiten gelijktijdig actief worden.
+  In zo'n geval zet je vlak vóór de spoel een extra conditie: een N.C.-contact van de tegengestelde uitgang. Is de ene uitgang actief, dan blokkeert die de andere. Dat heet #keyterm[cross-protect].
+
+  Zet die conditie zo dicht mogelijk bij de spoel, niet ergens hogerop in de logica. Alleen dan dekt ze élk pad dat die uitgang kan aansturen, ook een pad dat je er later bijprogrammeert.
+
+  Vergrendel dezelfde twee contactoren bovendien #strong[mechanisch] in de kast. De PLC-logica beschermt niet tegen een contactor die vastbakt.
 ]
 
 #waarschuwing[

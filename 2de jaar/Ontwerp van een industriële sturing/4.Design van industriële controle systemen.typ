@@ -9,7 +9,7 @@ Dit hoofdstuk koppelt sensoren en actuatoren aan een PLC: welke spanning de inga
   #align(center)[
     #figure(
       image("assets/voltageverschil.png", width: 7.5cm),
-      caption: [Spanningsverschil en stroomkring tussen fase, nulleider en referentiemassa],
+      caption: [Elke meting is een verschil tussen twee punten: de multimeter meet tussen de twee gekozen aansluitingen, niet tegenover "de aarde" op zich.],
       label: <fig:voltageverschil>,
     )
   ]
@@ -41,6 +41,8 @@ Dit hoofdstuk koppelt sensoren en actuatoren aan een PLC: welke spanning de inga
   label: <fig:Foute-PLC-schakeling>,
 )[
   Een ingangskaart detecteert pas een logische 1 wanneer er effectief stroom door de interne optocoupler vloeit. Zonder gesloten retourpad naar de $0 "VDC"$ blijft de ingang inactief.
+
+  Twee fouten staan op de figuur aangeduid. De referentiespanning van de voeding hangt nergens aan, dus de kring kan niet sluiten. En PE is niet hetzelfde als de $0 "V"$: de beschermingsgeleider is een veiligheidsgeleider, geen retourweg voor je signalen.
 ]
 
 #wrap-figure(
@@ -59,6 +61,8 @@ Dit hoofdstuk koppelt sensoren en actuatoren aan een PLC: welke spanning de inga
   label: <fig:interface-relay>,
 )[
   Een *interface relay* (tussenrelais) stuurt een signaal door naar componenten met een hoger vermogen of een ander spanningsniveau (bv. $24 "VDC" arrow 230 "VAC"$), en biedt *galvanische scheiding* tussen besturings- en vermogenskringen.
+
+  Het is een smal relais met meestal één uitgangscontact, soms een wisselcontact of een paar contacten. Die contacten zijn zo goed als altijd potentiaalvrij. Je zet er een als je twee kringen elektrisch wil scheiden, bijvoorbeeld om te vermijden dat elektrische storing van de ene kring op de andere overgaat, of om kringen op verschillende spanning te koppelen.
 ]
 
 #wrap-figure(
@@ -89,9 +93,11 @@ Dit hoofdstuk koppelt sensoren en actuatoren aan een PLC: welke spanning de inga
   Een *optocoupler* zorgt voor galvanische scheiding tussen twee elektrische kringen.
 
   Een infrarood-LED stuurt licht naar een fototransistor. Wordt de LED aangestuurd, dan gaat de fototransistor in verzadiging en geleidt de stroom aan de secundaire zijde.
-]
 
-Optocouplers sturen ook *analoge* signalen door. In *lineaire mode* is de uitgang evenredig met de ingang, zodat een optocoupler een *stroomtransformator* in een meetkring kan vervangen en ook DC doorgeeft; bij hoge frequenties treedt vervorming op. In de SMPS uit @sec:smps koppelt een optocoupler zo de DC-uitgangsspanning terug naar de PWM, zonder de galvanische scheiding op te geven.
+  Optocouplers sturen ook *analoge* signalen door. In *lineaire mode* is de uitgang evenredig met de ingang, zodat een optocoupler een *stroomtransformator* in een meetkring kan vervangen en ook DC doorgeeft; bij hoge frequenties treedt vervorming op. In de SMPS uit @sec:smps koppelt een optocoupler zo de DC-uitgangsspanning terug naar de PWM, zonder de galvanische scheiding op te geven.
+
+  Omdat er niets mechanisch beweegt, ligt de maximale schakelfrequentie veel hoger dan bij een tussenrelais. Daardoor kan je met een optocoupler ook communicatie-, encoder- of PWM-signalen doorgeven. Naast de spanning- en stroomgrenzen is die schakelfrequentie dus de belangrijkste keuzeparameter. Zoals bij de meeste transistoruitgangen werkt hij alleen op DC, en let op het verschil tussen PNP en NPN.
+]
 
 
 
