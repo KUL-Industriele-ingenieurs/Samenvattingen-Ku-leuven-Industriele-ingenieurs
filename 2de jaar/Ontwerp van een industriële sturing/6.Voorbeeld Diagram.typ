@@ -67,7 +67,7 @@ Ventileren doe je met een filterventilator plus uitlaatrooster, of met een koelu
 
 === Condition monitoring <sec:condition-monitoring>
 
-Data-analyse is de kern van Industrie 4.0, dus #keyterm[condition monitoring] van stuurkasten wordt steeds gewoner. De slides noemen als voorbeeld het Turck IM18-CCM cabinet guard system.
+Met de data-analyse van Industrie 4.0 komt ook #keyterm[condition monitoring] van stuurkasten op. De slides noemen als voorbeeld het Turck IM18-CCM cabinet guard system.
 
 #belangrijk[Hoe constanter de omstandigheden in de kast, hoe lager het risico op uitval.] Je bewaakt daarom typisch de temperatuur, de vochtigheid en de vervuiling van het filter.
 
@@ -429,7 +429,7 @@ Een #keyterm[safety scanner] bewaakt een #strong[oppervlak] met een roterende la
   - een verticale as kan naar beneden vallen als je de houdkracht wegneemt;
   - verlichting en signalisatie moeten blijven werken.
 
-  Vergelijk met de "abort" uit @sec:machinebediening: dáár is de PLC de machine wél volledig kwijt, en dat is precies wat je met een goed ontworpen noodstop vermijdt.
+  Vergelijk met de "abort" uit @sec:machinebediening: dáár is de PLC de machine wél volledig kwijt, en dat is wat je met een goed ontworpen noodstop vermijdt.
 ]
 
 == Het voorbeeldschema

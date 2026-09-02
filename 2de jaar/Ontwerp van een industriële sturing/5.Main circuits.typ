@@ -224,7 +224,7 @@ De stuurkringen voor de VFD en voor de contactoren teken je #strong[niet] in het
 
 CW staat voor clockwise, CCW voor counter-clockwise. #belangrijk[De motor draait CW als je de fasen in de volgorde L1, L2, L3 aansluit op respectievelijk U1, V1, W1.] Wissel je twee fasen om, dan draait hij de andere kant op.
 
-Dat is precies wat de tweede contactor doet: hij sluit dezelfde motor aan met twee verwisselde fasen. Beide contactoren mogen daarom #strong[nooit] tegelijk aantrekken, want dan sluit je twee fasen rechtstreeks kort. Zie de cross-protect uit @sec:cross-protect: één actieve contactor blokkeert de andere, zowel in de bedrading als in de software.
+Dat is wat de tweede contactor doet: hij sluit dezelfde motor aan met twee verwisselde fasen. Beide contactoren mogen daarom #strong[nooit] tegelijk aantrekken, want dan sluit je twee fasen rechtstreeks kort. Zie de cross-protect uit @sec:cross-protect: één actieve contactor blokkeert de andere, zowel in de bedrading als in de software.
 
 #figure(
   image("assets/OIS_motor_omkeerschakeling.png", width: 10cm),
@@ -406,7 +406,7 @@ Een technieker vindt een fout niet altijd snel terug. Hij kan wel makkelijk de s
 
 De werkwijze: zet #strong[per actuator] op één pagina alle componenten die bepalen of die actuator wel of niet actief wordt.
 
-#belangrijk[Componenten mogen daarbij meerdere keren voorkomen.] Is één sensor verantwoordelijk voor het aansturen van tien motoren, dan staat die sensor ook op tien verschillende functionele tekeningen. Dat is geen fout: het schema is per actuator georganiseerd, niet per component.
+#belangrijk[Componenten mogen daarbij meerdere keren voorkomen.] Is één sensor verantwoordelijk voor het aansturen van tien motoren, dan staat die sensor ook op tien verschillende functionele tekeningen. Het schema is per actuator georganiseerd, niet per component.
 
 Voor een motorkring betekent dat: de voeding, de MCB, de MPCB of OLR, de noodstopkring, de contactor en de PLC-uitgang staan samen op één blad, in de volgorde waarin ze de motor kunnen tegenhouden. Zo zie je in één oogopslag welke schakel de motor blokkeert.
 

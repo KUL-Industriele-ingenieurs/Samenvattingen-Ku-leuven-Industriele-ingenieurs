@@ -226,7 +226,7 @@ De voltage drop is niet altijd even groot — het hangt af van hoeveel stroom er
 
 == Efficiëntie
 
-Naast de spanningsval willen we ook weten hoeveel vermogen er effectief verloren gaat in de transformator. Dit is geen nieuw concept — we hebben de verliezen al besproken in #ref(<ch:reële-transformatoren>), nu vatten we het samen in één getal.
+Naast de spanningsval willen we weten hoeveel vermogen er in de transformator verloren gaat. De verliezen zelf staan in #ref(<ch:reële-transformatoren>); hier vatten we ze samen in één getal.
 
 #wrap-figure(
   image("assets/Efficienty.png", width: 8cm),
@@ -352,7 +352,7 @@ In de praktijk heb je niet altijd genoeg aan één transformator. Soms wil je me
   Waarom zou je dit doen in plaats van gewoon een grotere transformator te nemen?
 
   - / Upgraden van een bestaande installatie: een kleinere transformator kan bijgeplaatst worden om het totale vermogen te verhogen. Dit is makkelijker dan een nieuwe transformator te installeren.
-  - / Redundantie & backup: Als een transformator uitvalt, kan de andere transformator de belasting overnemen. Dit is belangrijk voor kritieke installaties.
+  - / Redundantie en backup: valt er één uit, dan neemt de andere de belasting over. Daarom vind je dit bij installaties die niet mogen stilvallen.
   - / Flexibiliteit: Bij grote veranderingen van load moet je niet altijd je grote transformator gebruiken en kan je makkelijk switchen tussen de transformatoren.
 ]
 
