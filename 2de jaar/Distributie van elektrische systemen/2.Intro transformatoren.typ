@@ -16,12 +16,17 @@
   caption: [transformer],
   label: <fig:transformer>,
 )[
+  Een transformator koppelt twee wikkelingen magnetisch, zonder elektrische verbinding ertussen. Daarmee verander je het spanningsniveau, en dat is wat een elektriciteitsnet mogelijk maakt.
 
-  *Toepassingen*
-  - Transmissie van elektrischiteit
-  - Distributie van elektrischiteit
-  - Elektrische toepassingen
-  - Elektronica
+  *Waar je ze tegenkomt*
+  - transmissie van elektriciteit;
+  - distributie van elektriciteit;
+  - elektrische toepassingen en elektronica.
+
+  *Waarom transformeren*
+  - veiliger, want je brengt de hoge transportspanning omlaag vóór ze bij de gebruiker komt;
+  - efficiënter, want bij hogere spanning loopt er minder stroom en dalen de joulverliezen met $1\/V^2$;
+  - goedkoper, compacter en betrouwbaarder dan de kabeldoorsnede evenredig laten meegroeien.
 ]
 
 
@@ -91,8 +96,9 @@ High voltage (e.g. 300 kV) $arrow.r.double$ medium voltage (e.g. 33 kV)
   caption: [laminated],
   label: <fig:laminated>,
 )[
-  Een transformator zijn gelaagde metale steel cores.
-  waarbij er koperen draden worden gewikkeld rond die cores
+  De kern van een transformator bestaat uit dunne, onderling geïsoleerde staalplaatjes, met koperdraad eromheen gewikkeld.
+
+  Die gelaagde opbouw is geen toeval. Een massief blok ijzer zou in de wisselende flux grote #keyterm[wervelstromen] (eddy currents) rond laten lopen, en die verwarmen de kern zonder iets nuttigs te doen. Door de kern in plaatjes te snijden en die van elkaar te isoleren, krijgen de wervelstromen geen groot rondgaand pad meer. Zie @sec:eddy-currents.
 ]
 
 = Magnetische Circuits
@@ -144,7 +150,11 @@ Een punt ($dot$) betekent dat de stroom naar je toe stroomt (uit het blad), een 
   caption: [wet van ampere],
   label: <fig:wetvanampere>,
 )[
-  De wet van ampere zegt dat het magnetisch veld rond een stroomdraad evenredig is met de stroom die erdoor gaat. Dit is in een loop
+  De wet van Ampère zegt dat het magnetisch veld rond een stroomdraad evenredig is met de stroom die erdoor loopt.
+
+  Je berekent dat veld door een gesloten lus rond de draad te kiezen en $vec(B)$ langs die lus te integreren. Wat aan de rechterkant staat, is enkel de stroom die #strong[door] die lus heen gaat.
+
+  De vorm van de lus kies je zelf. Neem er een waarlangs $B$ constant is, dan valt de integraal uiteen in $B$ maal de omtrek en kan je meteen naar $B$ oplossen.
 ]
 #voorbeeld(title: "Voorbeeld vinden magnetisch veld")[
   Stel we willen het magnetisch veld $B$ vinden op een afstand $r$ van een lange rechte draad waar een stroom $I$ doorheen loopt.
@@ -398,9 +408,9 @@ $ E M F [V] = integral.cont arrow(E) dot d arrow(l) = - frac(d phi, d t) $
 
   $ v = "EMF" = N frac(d phi, d t) $
   $ = frac(d lambda, d t) = frac(d(l i), d t) = L dot frac(d i, d t) $
-]
 
-Je kunt dan door windingen langs een kant een spanning induceren in de andere kant. Dit is het principe van *de transformator*.
+  Wikkel je nu een tweede spoel rond dezelfde kern, dan ziet die dezelfde veranderende flux en wordt er ook in die spoel een spanning geïnduceerd. Dat is het principe van *de transformator*.
+]
 
 $ v_1 = N_1 frac(d phi, d t) = L_1 frac(d i_1, d t) + M_12 frac(d i_2, d t) $
 
