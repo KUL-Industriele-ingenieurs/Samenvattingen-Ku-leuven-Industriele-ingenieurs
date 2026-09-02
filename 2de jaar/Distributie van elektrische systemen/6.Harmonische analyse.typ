@@ -217,9 +217,9 @@ $ "DPF" = cos phi_1 quad "en" quad delta = 1/sqrt(1 + "THD"_I^2) $
 De vervormingsarbeidsfactor $delta$ is dus enkel een functie van de #strong[stroom]vervorming $"THD"_I$.
 
 #examenbox[
-  *Voorbeeld uit de cursus.* Bij de zespuls-diodegelijkrichter met inductieve belasting (@ch:diode-rectifiers) vind je een arbeidsfactor van $3\/pi approx 0,95$. Het faseverschil tussen de fundamentele spanning en de fundamentele stroom is daar $0 degree$.
+  *Voorbeeld uit de cursus.* Bij de zespuls-diodegelijkrichter met inductieve belasting (@ch:diode-rectifiers) vind je een arbeidsfactor van $3\/pi approx #"0,95"$. Het faseverschil tussen de fundamentele spanning en de fundamentele stroom is daar $0 degree$.
 
-  Dus: $"DPF" = 1$, en die $0,95$ komt #belangrijk[volledig] van de vervormingsarbeidsfactor $delta$. Arbeidsfactorcorrectie met condensatoren zou hier dus niets opleveren: er is geen faseverschuiving om te compenseren.
+  Dus: $"DPF" = 1$, en die $#"0,95"$ komt #belangrijk[volledig] van de vervormingsarbeidsfactor $delta$. Arbeidsfactorcorrectie met condensatoren zou hier dus niets opleveren: er is geen faseverschuiving om te compenseren.
 ]
 
 == Gevolgen van harmonischen <sec:consequences-of-harmonics>

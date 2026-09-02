@@ -35,7 +35,7 @@ Verwar de nulgeleider (blauw) niet met de beschermingsgeleider PE (groen-geel). 
 - *Nulgeleider N:* bij een onevenwichtige belasting voert die stroom. Dat geeft jouleverliezen, maar het is een *normale en veilige* situatie.
 - *Beschermingsgeleider PE:* heeft een veiligheidsfunctie en voert alléén stroom bij een fout.
 
-In dit hoofdstuk gaat het altijd over de nulgeleider.
+Het onevenwicht dat volgt, gaat telkens over die nulgeleider.
 
 === Twee manieren om 230 V aan te sluiten <sec:230v-aansluiting>
 

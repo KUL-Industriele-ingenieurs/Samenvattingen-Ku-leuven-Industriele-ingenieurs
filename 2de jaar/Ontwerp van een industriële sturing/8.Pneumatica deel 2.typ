@@ -353,7 +353,7 @@ Lees het van links naar rechts: functie `=M10`, daarbinnen component `-Q1`, en d
 
 De notatie `A+`/`A-` met de toestanden $a_0$ en $a_1$, de drie logische functies met ventielen, en de reden waarom een T-stuk géén OR is, staan bij @sec:pneum-logica in Pneumatica deel 1.
 
-== Soorten ventielen
+== Soorten ventielen <sec:soorten-ventielen>
 
 === Basiseisen <sec:ventiel-basiseisen>
 
@@ -370,7 +370,7 @@ De $K_v$-waarde is de #keyterm[debietcoëfficiënt] waarmee je het volumedebiet 
 
 #frm(
   "Kv- en Cv-waarde",
-  $ C_v = 1,17 dot K_v $,
+  $ C_v = #"1,17" dot K_v $,
   [met: $K_v$ = de hoeveelheid water die door het ventiel stroomt bij een drukval van $1 "bar"$ over dat ventiel [m³/h]; $C_v$ = de Amerikaanse benaming, uitgedrukt in gallons per minuut [gpm].],
 )
 
@@ -519,9 +519,9 @@ Voor het vasthouden van een last kan je bovendien een #strong[externe rem] op de
 === Luchtkwaliteit <sec:luchtkwaliteit>
 
 #keyterm[ISO 8573-1] specificeert de kwaliteit van perslucht met #strong[drie klassecijfers]. Bijvoorbeeld $1.7.1$ voor ademlucht:
-- *1* = vaste deeltjes, maximaal $0,1 mu "m"$;
+- *1* = vaste deeltjes, maximaal $#"0,1" mu "m"$;
 - *7* = water, niet gespecificeerd;
-- *1* = olie, maximaal $0,01 "mg/m"^3$.
+- *1* = olie, maximaal $#"0,01" "mg/m"^3$.
 
 === Water in perslucht <sec:water-in-perslucht>
 
@@ -569,9 +569,9 @@ Twee principes:
 
 === Filter en separator <sec:filter-separator>
 
-#belangrijk[Een separator is géén filter.] Hij verwijdert olie of water, tot ongeveer $0,3 mu "m"$.
+#belangrijk[Een separator is géén filter.] Hij verwijdert olie of water, tot ongeveer $#"0,3" mu "m"$.
 
-Wil je verder gaan, dan combineer je: eerst een filter tot $0,5 mu "m"$, daarna een microseparator tot $0,1 mu "m"$.
+Wil je verder gaan, dan combineer je: eerst een filter tot $#"0,5" mu "m"$, daarna een microseparator tot $#"0,1" mu "m"$.
 
 === Het FRL-symbool ontleed <sec:frl-symbool>
 
@@ -596,8 +596,8 @@ Wil je verder gaan, dan combineer je: eerst een filter tot $0,5 mu "m"$, daarna 
 
 === Eenheden die je tegenkomt <sec:perslucht-eenheden>
 
-- *CFM* (cubic feet per minute): $1 "m"^3\/"h" approx 0,589 "CFM"$, en $1 "CFM" approx 1,699 "m"^3\/"h"$.
-- *psi:* $1 "bar" approx 14,5 "psi"$. "psig" is de relatieve druk.
+- *CFM* (cubic feet per minute): $1 "m"^3\/"h" approx #"0,589" "CFM"$, en $1 "CFM" approx #"1,699" "m"^3\/"h"$.
+- *psi:* $1 "bar" approx #"14,5" "psi"$. "psig" is de relatieve druk.
 - *FAD* (Free Air Delivery): het debiet teruggerekend naar de begindruk en -temperatuur.
 - *Net yield:* het volumedebiet bij werkdruk en -temperatuur.
 - *SER* (Specific Energy Requirement): de hoeveelheid energie per geleverde hoeveelheid perslucht.
@@ -611,14 +611,14 @@ Volgens het Sankey-diagram uit de slides wordt #belangrijk[$100%$ van de elektri
 Maar kan perslucht dan geen zuiger vooruitduwen en dus arbeid leveren? Jawel. De uitzettende perslucht neemt daarbij #strong[evenveel warmte uit de omgeving op] als er arbeid geleverd wordt.
 
 #oefening(title: "Wat kost een kubieke meter perslucht?")[
-  Uit de handleiding van een moderne compressor van $45,83 "kW"$:
+  Uit de handleiding van een moderne compressor van $#"45,83" "kW"$:
 
-  FAD $= 397 "m"^3\/"h"$ bij $6,9 "bar"$ relatief, dus ongeveer $7,81$ ata. Daarmee levert hij $50,8 "m"^3\/"h"$ #strong[samengeperste] lucht, gerekend bij de begintemperatuur.
+  FAD $= 397 "m"^3\/"h"$ bij $#"6,9" "bar"$ relatief, dus ongeveer $#"7,81"$ ata. Daarmee levert hij $#"50,8" "m"^3\/"h"$ #strong[samengeperste] lucht, gerekend bij de begintemperatuur.
 
   De kostprijs per kubieke meter:
-  $ (45,83 "kJ/s" dot 3600 "s/h")/(50,8 "m"^3"/h") = 3248 "kJ/m"^3 $
+  $ (#"45,83" "kJ/s" dot 3600 "s/h")/(#"50,8" "m"^3"/h") = 3248 "kJ/m"^3 $
 
-  En $3248 "kJ" approx 3,6 "MJ" = 1 "kWh"$, ruwweg. #belangrijk[Eén kubieke meter perslucht op $6,9 "bar"$ kost dus ongeveer één kilowattuur.]
+  En $3248 "kJ" approx #"3,6" "MJ" = 1 "kWh"$, ruwweg. #belangrijk[Eén kubieke meter perslucht op $#"6,9" "bar"$ kost dus ongeveer één kilowattuur.]
 ]
 
 Over de hele levensduur van een persluchtinstallatie is #belangrijk[ongeveer $80%$ van de kosten energiekost.] De aankoop van de compressor is dus bijna irrelevant naast wat hij verbruikt. Het totale rendement van zo'n installatie ligt op $10%$ of lager, want de warmte wordt in de praktijk zelden gerecupereerd.
@@ -641,7 +641,7 @@ De nadelen van perslucht die de slides opsommen:
 
 - trage dynamica door de compressie;
 - het gedraagt zich als een massa-veer-dempersysteem;
-- beperkte krachten vergeleken met hydraulica. Heb je $10 "kN"$ nodig bij $6 "bar"$, dan is $A = F\/p approx 0,017 "m"^2$, dus een zuigerdiameter van ongeveer $15 "cm"$. Dat is al fors;
+- beperkte krachten vergeleken met hydraulica. Heb je $10 "kN"$ nodig bij $6 "bar"$, dan is $A = F\/p approx #"0,017" "m"^2$, dus een zuigerdiameter van ongeveer $15 "cm"$. Dat is al fors;
 - moeilijk om flexibel exact te positioneren;
 - hoge energiekosten, ongeveer $10 times$ die van elektrisch;
 - lawaai;

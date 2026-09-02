@@ -68,7 +68,7 @@ Je zet de zuignap op het voorwerp en pompt de lucht eruit. Je vergroot dan terug
 
 In de industrie wordt pneumatics veel gebruikt. Tandartsen, schroevendraaiers, spuitverf, etc.
 
-=== Vacuum ejector
+=== Vacuum ejector <sec:vacuum-ejector>
 
 #wrap-figure(
   image("assets/vacuum ejector.png", width: 8cm),
@@ -157,7 +157,7 @@ De doorsnede in @fig:pneumatische-cilinder is een dubbelwerkende cilinder. Er be
   label: <fig:symbolen-cilinders>,
 )
 
-== Cilinderkracht bij statische toestand (Full pressure)
+== Cilinderkracht bij statische toestand (Full pressure) <sec:cilinderkracht>
 
 #wrap-figure(
   image("assets/kracht-fullpressure.png", width: 6cm),
@@ -203,6 +203,31 @@ $ F_"inward" = 264 "N" - 49 "N" = 215 "N" arrow.l $
 
 #examenbox[Tip voor het examen: gebruik relatieve druk, dan is $F_3 = 0$.]
 
+#oefening(title: "Examenvraag: manometerdruk én absolute druk door elkaar")[
+  Dit is de open vraag van 4 punten die elk jaar terugkomt. De val zit niet in de formule maar in de #belangrijk[eenheden]: de ene druk krijg je als manometerwaarde, de andere als absolute waarde.
+
+  *Gegeven.* Binnendiameter $D = 12 "cm"$, stangdiameter $d = 2 "cm"$. Aan de compressorzijde leest een manometer $6 "bar"$. Aan de andere zijde meet je $2 "bar"$ #strong[absoluut].
+
+  *Denkstap.* Een manometer toont altijd relatieve druk, dus $p_1 = 6 "bar"$ relatief. De $2 "bar"$ absoluut tel je terug naar de atmosfeer: $p_2 = 2 - 1 = 1 "bar"$ relatief. Reken alles verder in relatieve druk, want dan valt de kracht op de stang weg.
+
+  *De oppervlakken.*
+  $ A_1 = (pi D^2)/4 = (pi dot #"0,12"^2)/4 = #"1,131" dot 10^(-2) "m"^2 $
+  $ A_2 = (pi (D^2 - d^2))/4 = (pi (#"0,12"^2 - #"0,02"^2))/4 = #"1,100" dot 10^(-2) "m"^2 $
+
+  *Uitgaande slag.* De bodemzijde staat op $6 "bar"$, de stangzijde is de tegendruk van $1 "bar"$.
+  $ F_"uit" = p_1 A_1 - p_2 A_2 = 6 dot 10^5 dot #"1,131" dot 10^(-2) - 1 dot 10^5 dot #"1,100" dot 10^(-2) $
+  $ F_"uit" = 6786 - 1100 = 5686 "N" $
+
+  *Ingaande slag.* Nu staat de stangzijde op $6 "bar"$ en is de bodemzijde de tegendruk.
+  $ F_"in" = p_1 A_2 - p_2 A_1 = 6 dot 10^5 dot #"1,100" dot 10^(-2) - 1 dot 10^5 dot #"1,131" dot 10^(-2) $
+  $ F_"in" = 6597 - 1131 = 5466 "N" $
+
+  *Het verschil.* $5686 - 5466 = 220 "N"$. Dat verschil volgt ook rechtstreeks uit de stangdoorsnede:
+  $ F_"uit" - F_"in" = (p_1 + p_2) dot A_"stang" = 7 dot 10^5 dot (pi dot #"0,02"^2)/4 = 220 "N" $
+
+  De uitgaande slag is dus sterker, omdat de zuigerstang aan de intrekkende zijde oppervlak wegneemt.
+]
+
 == Lucht laten ontsnappen
 
 + / Uitlaatdemper: dempt de uitlaat van de cilinder. Minder geluid, maar ook een lager debiet $dot(V)$
@@ -228,11 +253,8 @@ $ F_"inward" = 264 "N" - 49 "N" = 215 "N" arrow.l $
 
   Een *Flow control valve* (FCV, One-way Throttle Valve, speed control valve) bestaat uit een combinatie van een smoorventiel en een terugslagklep (check valve) in parallel. Dit zorgt ervoor dat de flow slechts in *één richting gesmoord* wordt; in de andere richting stroomt de lucht vrij door via de terugslagklep.
 
-  *Metered out* (smoren op de uitlaat):
-  In een cilinder werkt de kracht van de perslucht tegen de kracht van het gas aan de andere kant van de zuiger. Het smoren van deze *uitlaatlucht* is een goede en vaak de juiste manier om de snelheid van een zuiger te regelen.
+  #belangrijk[Smoor op de uitlaat (*metered out*), niet op de inlaat.] De perslucht duwt de zuiger, en het gas aan de andere kant duwt terug. Smoor je dat terugduwende gas, dan heb je de snelheid in de hand.
 ]
-
-*Metered out*: je regelt de lucht die *uit* de cilinder stroomt. Dit is de *juiste* manier om de snelheid te regelen.
 
 #voorbeeld(title: "Speed control")[
   Stel: een cilinder tilt een last op met 6 bar, en daarna laat je die last weer zakken.
@@ -267,7 +289,7 @@ Je gebruikt hem vooral bij een #strong[enkelwerkende] cilinder, waar de veer de 
 
 == Switching
 
-In dit deel bekijken we hoe "switching" (schakelen) gebeurt in pneumatische systemen. Switching betekent dat je de richting van de luchtstroom verandert om zo de beweging van cilinders te controleren. Dat doe je met *Directional Control Valves* (DCV), ook wel stuurventielen of wegventielen genoemd.
+Schakelen betekent in de pneumatiek dat je de richting van de luchtstroom omkeert, en zo de cilinder stuurt. Dat doe je met een *Directional Control Valve* (DCV), in het Nederlands een stuur- of wegventiel.
 
 === Ventielen (Valves)
 
@@ -347,9 +369,9 @@ Een valve wordt aangeduid met twee nummers: *aantal poorten / aantal schakelstan
   - / Veiligheid / Noodstop: Om cilinderkamers direct drukloos te maken.
 
   *De Drie Belangrijkste Middenposities:*
-  - / Gesloten middenstand (Closed Center - COC): Alle poorten zijn geblokkeerd. Wordt gebruikt om een cilinder op een tussenpositie te stoppen. Let op: door de samendrukbaarheid van lucht is dit *geen stijve vergrendeling*.
-  - / Ontluchte middenstand (Exhaust Center - COE): Beide cilinderkamers worden verbonden met de uitlaat (3 en 5). De cilinder is dan *krachteloos* en kan manueel bewogen worden.
-  - / Druk middenstand (Pressure Center - COP): Er staat gelijke werkdruk op beide kamers.
+  - / Gesloten middenstand (closed center): Alle poorten zijn geblokkeerd. Wordt gebruikt om een cilinder op een tussenpositie te stoppen. Let op: door de samendrukbaarheid van lucht is dit *geen stijve vergrendeling*.
+  - / Ontluchte middenstand (exhaust center): Beide cilinderkamers worden verbonden met de uitlaat (3 en 5). De cilinder is dan *krachteloos* en kan manueel bewogen worden.
+  - / Druk middenstand (pressure center): Er staat gelijke werkdruk op beide kamers.
 ]
 
 == Reference designation system (RDS)
@@ -526,9 +548,8 @@ Wat hier #strong[pneumatisch] is: elke groep krijgt een eigen persluchtleiding, 
 
 == Schematekenen en Labopraktijk
 
-- In een pneumatisch schema worden alle cilinders en ventielen altijd getekend in hun *initiële toestand (startpositie)* van de cyclus.
-- Leidingen die onder druk staan in rust worden vet of gemarkeerd weergegeven.
-- Voor het digitaal tekenen en simuleren van pneumatische schakelingen wordt vaak gebruik gemaakt van tools zoals SMC PneuDraw of Festo FluidSIM.
+- Leidingen die in rust onder druk staan, teken je vet of gemarkeerd.
+- Voor het digitaal tekenen en simuleren gebruik je SMC PneuDraw of Festo FluidSIM.
 
 
 
