@@ -419,7 +419,7 @@ Een #keyterm[RCD] (Residual Current Device, differentieel- of verliesstroomschak
 
 == Aardingsnetten <sec:aardingsnetten>
 
-Hoe je de bron en de behuizingen aardt, bepaalt welke beveiliging werkt. Elk examen sinds 2022 vraagt één van deze netten te tekenen, de letters te verklaren, en uit te leggen hoe je beveiligt tegen overstroom én tegen schokken.
+Hoe je de bron en de behuizingen aardt, bepaalt welke beveiliging werkt.
 
 De code bestaat uit twee letters:
 
@@ -475,7 +475,7 @@ $ U_z = R_"PE" / (R_"PE" + R_"fase") dot c dot U_f $
 
   $ ell_"max" = (c dot U_f dot S_"fase") / (2 rho_"Cu" I_"fout") $
 
-  #belangrijk[Deze formule staat op het formularium], zie @sec:formularium-examen, dus je hoeft ze niet vanbuiten te kennen. Weten wanneer je ze gebruikt wél.
+  #belangrijk[Deze formule staat op het formularium], zie @sec:formularium-examen.
 ]
 
 === TN-S <sec:net-tn-s>
@@ -498,7 +498,7 @@ Elektrisch gedraagt TN-S zich als TN-C, met dezelfde foutstroom en dezelfde beve
 
 In de praktijk combineer je de twee: over het aanvoergedeelte één PEN-geleider, en vanaf een bepaald punt gesplitst in PE en N.
 
-#belangrijk[Eenmaal gesplitst, mag je PE en N nooit meer samenvoegen.] Een TN-C-stuk achter een TN-S-stuk is verboden. Zou je ze verderop weer verbinden, dan gaat er bedrijfsstroom over de beschermingsgeleider lopen en verliest die zijn functie.
+#belangrijk[Eenmaal gesplitst, mag je PE en N nooit meer samenvoegen.] Verbind je ze verderop weer, dan gaat er bedrijfsstroom over de beschermingsgeleider lopen en verliest die zijn functie.
 
 === IT <sec:net-it>
 
@@ -508,12 +508,12 @@ In de praktijk combineer je de twee: over het aanvoergedeelte één PEN-geleider
   label: <fig:net-it>,
 )
 
-Het sterpunt is geïsoleerd of hangt via een hoge impedantie $Z$ aan de aarde. Bij een #strong[eerste] isolatiefout is de kring dus niet gesloten: er loopt nauwelijks stroom en er is geen gevaar. De installatie blijft gewoon draaien.
+Het sterpunt is geïsoleerd of hangt via een hoge impedantie $Z$ aan de aarde. Bij een #strong[eerste] isolatiefout is de kring dus niet gesloten: er loopt nauwelijks stroom en er is geen gevaar.
 
-Een #keyterm[isolatiewachter] meldt die eerste fout, zodat je ze kan opzoeken en herstellen zonder de productie stil te leggen. #belangrijk[Dat is de reden om voor IT te kiezen: bedrijfscontinuïteit], en daarom vind je het in operatiekwartieren en continue processen.
+Een #keyterm[isolatiewachter] meldt die fout, zodat je ze kan opzoeken en herstellen terwijl de installatie doordraait. #belangrijk[Die bedrijfscontinuïteit is de reden om voor IT te kiezen], en daarom vind je het in operatiekwartieren en continue processen.
 
 #waarschuwing[
-  Bij een #strong[tweede] fout op een andere fase valt dat voordeel weg. Het net herleidt zich dan tot een TN- of een TT-systeem, afhankelijk van hoe de massa's geaard zijn, met de bijhorende grote of kleine foutstroom. Je moet die eerste fout dus echt herstellen.
+  Bij een #strong[tweede] fout op een andere fase valt dat voordeel weg: het net herleidt zich tot een TN- of TT-systeem, afhankelijk van hoe de massa's geaard zijn.
 ]
 
 === De drie vergeleken <sec:netstelsels-vergelijking>

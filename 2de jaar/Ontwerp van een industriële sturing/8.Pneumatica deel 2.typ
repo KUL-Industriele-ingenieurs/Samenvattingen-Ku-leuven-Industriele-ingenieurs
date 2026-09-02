@@ -3,32 +3,26 @@
 = Pneumatica deel 2 <ch:pneumatica-deel-2>
 
 
-In @ch:intro-pneumatics keken we naar de cilinder: welke kracht die levert en hoe we hem voeden. Hier gaan we een niveau dieper, naar het *ventiel* zelf. Drie vragen:
-
-+ Wat zit er binnenin een richtingsventiel en hoe stuurt dat de lucht?
-+ Wat moet er rond dat ventiel staan om de cilinder rustig en stil te laten bewegen?
-+ Hoe lees je het symbool van een ventiel, en wat verandert er fysiek op het moment dat je schakelt?
+Na de cilinder (@ch:intro-pneumatics) nu het *ventiel* zelf: wat er binnenin zit, wat er rond moet staan om de cilinder rustig te laten bewegen, en hoe je het symbool leest.
 
 == Het schuifventiel binnenin
 
 #wrap-figure(
-  image("assets/doorsnede-klepventiel.jpeg", width: 5.5cm),
+  image("assets/doorsnede-klepventiel.jpeg", width: 7cm),
   caption: [Doorsnede van een schuifventiel: de spool met zijn lands],
   label: <fig:doorsnede-schuifventiel>,
   width: 5.5cm,
 )[
   Het meest gebruikte richtingsventiel (*DCV*, Directional Control Valve) is het *schuifventiel* (spool valve). Binnenin het ventielhuis zit een horizontaal bewegende schuif, de *spool*. Op die schuif staan verhoogde delen, de *lands*. Die lands sluiten een poort af of laten hem open, en bepalen zo welke poorten onderling verbonden zijn.
-
-  Merk op dat de figuur het ventiel toont onder de titel "klepventiel", terwijl de beschrijving over een spool met lands gaat. Dat is strikt genomen een schuifventiel; een echt klepventiel (poppet valve) sluit pas op het einde van zijn beweging. Het onderscheid komt terug in pneumatica deel 3.
 ]
 
 Op de figuur staat een 3/2 ventiel met de poorten $1(P)$ (toevoer), $2(A)$ (naar de cilinder) en $3(R)$ (ontluchting). In de eerste stand blokkeren de lands poort $3$, en staan $1$ en $2$ open en met elkaar verbonden: de cilinder krijgt druk. In de tweede stand blokkeren de lands poort $1$, en zijn $2$ en $3$ verbonden: de cilinder ontlucht. De schuif wordt tussen die twee standen bewogen door een manueel, mechanisch, elektrisch of pneumatisch signaal op de uiteinden van de spool.
 
-Onthoud dat één fysieke schuif dus meerdere standen levert. Dat is wat je later in het symbool terugziet: de hokjes naast elkaar zijn *geen* aparte ventielen, het is dezelfde schuif op een andere plaats (zie @sec:schuif-verschuift).
+Eén fysieke schuif levert dus meerdere standen. In het symbool zijn de hokjes naast elkaar *geen* aparte ventielen, maar dezelfde schuif op een andere plaats (@sec:schuif-verschuift).
 
 == Lucht afvoeren: geluiddemper en omgevingsfilter
 
-Een cilinder duwt bij elke slag een volledige kamer lucht naar buiten. Dat gebeurt op korte tijd en met een groot debiet, en dat maakt lawaai. Daarom zet je op de ontluchtingspoorten van het ventiel een *geluiddemper* (muffler): die laat de lucht wel door, maar spreidt de uitstroom zodat het geluid dat bij dit proces ontstaat sterk vermindert.
+Een cilinder duwt bij elke slag een volledige kamer lucht naar buiten, op korte tijd en met groot debiet. Dat maakt lawaai, dus zet je op de ontluchtingspoorten van het ventiel een *geluiddemper* (muffler): die laat de lucht wel door, maar spreidt de uitstroom zodat het geluid dat bij dit proces ontstaat sterk vermindert.
 
 De complexere variant is de *omgevingsfilter*. Die dempt net als een geluiddemper, maar filtert bovendien de olie uit de uitlaatlucht (bij gesmeerde installaties komt die olie anders gewoon in de werkplaats terecht), grotere hoeveelheden lucht verwerken, en het geluidsniveau onder controle houden. Kort samengevat: een geluiddemper doet enkel aan geluidsdemping, een omgevingsfilter doet *filteren van olie én geluidsdemping*, en dat bij een groter debiet.
 
@@ -43,7 +37,7 @@ De complexere variant is de *omgevingsfilter*. Die dempt net als een geluiddempe
   label: <fig:demper-en-filter>,
 )
 
-Let op het effect op de rest van het circuit: elke demper of filter is ook een weerstand. Ze verlagen dus de debietstroom $dot(V)$ aan de uitlaat, wat de cilinder trager maakt. Een vervuilde demper is een klassieke oorzaak van een cilinder die "plots trager" is geworden.
+Elke demper of filter is ook een weerstand: ze verlagen het debiet $dot(V)$ aan de uitlaat en maken de cilinder trager. Een vervuilde demper is dan ook de klassieke oorzaak van een cilinder die plots traag is.
 
 == Snelheidsregelventiel (FCV)
 
@@ -58,31 +52,51 @@ Let op het effect op de rest van het circuit: elke demper of filter is ook een w
   Waarom die terugslagklep? Een smoorventiel op zich laat lucht door in *twee* richtingen en zou dus zowel de uitgaande als de ingaande slag afremmen. Dat willen we bij cilinders niet: we willen precies één richting smoren. De terugslagklep geeft de lucht in de andere richting een vrije weg, zodat de smoring enkel werkt in de richting die we kiezen.
 ]
 
-Het correct regelen van de snelheid van een pneumatische cilinder gebeurt aan de *uitlaatzijde* van de lucht, dus aan de uitstromende kant van de cilinder (*metered out*). De reden zit in wat er gebeurt als je aan de instroomkant regelt (metered in): de druk in de cilinder bouwt zich dan geleidelijk op, en zolang die druk nog laag is kan de zuiger gemakkelijk teruggeduwd worden door de last, tot de druk groot genoeg is. Je krijgt dan een schokkerige, onvoorspelbare beweging in plaats van een gelijkmatige. Smoor je daarentegen de uitstromende lucht, dan staat er altijd een tegendruk die de zuiger vasthoudt en beweegt hij rustig.
+Regel de snelheid altijd aan de *uitlaatzijde* (*metered out*). Smoor je aan de instroomkant, dan bouwt de druk traag op en kan de last de zuiger terugduwen tot de druk voldoende is: een schokkerige beweging. Smoor je de uitstromende lucht, dan houdt de tegendruk de zuiger vast en beweegt hij rustig.
 
-Wil je dus een cilinder op een meer *gecontroleerde* manier van toestand laten veranderen, dan installeer je een snelheidsregelventiel zo dicht mogelijk bij de cilinder, aan de uitstromende kant. Dat "zo dicht mogelijk" is geen detail: alle lucht die tussen het ventiel en de cilinder zit, moet immers nog altijd gecomprimeerd en ontlucht worden en gedraagt zich als een veer. Hoe langer die leiding, hoe sponziger de regeling.
+=== Waar plaats je het snelheidsregelventiel? <sec:fcv-plaatsing>
+
+#wrap-figure(
+  image("assets/OIS_fcv_plaatsing.png", width: 5.5cm),
+  caption: [Drie plaatsen voor het snelheidsregelventiel, van dicht bij de cilinder (2) tot in het stuurventiel (3).],
+  label: <fig:fcv-plaatsing>,
+)[
+  Er zijn drie plaatsen mogelijk, allemaal in de #belangrijk[ontluchtingsleiding]. Op @fig:fcv-plaatsing van dichtbij naar veraf:
+
+  + *In de leiding tussen cilinder en stuurventiel.* De gewone oplossing met een los ventiel.
+  + *In de ontluchtingspoort van de cilinder zelf.* Het kortste luchtvolume tussen regeling en zuiger, dus de strakste regeling.
+  + *In de poorten van het stuurventiel*, boven- of onderaan. Het makkelijkst bereikbaar om af te stellen, maar nu zit de hele slang tussen de regeling en de cilinder.
+
+  #belangrijk[Hoe dichter bij de cilinder, hoe beter de regeling.] Alle lucht tussen het ventiel en de cilinder moet nog gecomprimeerd en ontlucht worden, en die lucht gedraagt zich als een veer. Hoe langer die leiding, hoe sponziger de beweging.
+
+  Bereikbaarheid weegt in de praktijk soms zwaarder: een regelventiel bij het stuurventiel in de kast stel je makkelijker af dan een dat achter in de machine op de cilinder zit.
+]
+
+#examenbox[
+  De valkuil is niet *waar* maar *aan welke kant*. Het snelheidsregelventiel hoort in de #strong[ontluchtings]leiding, dus aan de kant waar de lucht de cilinder #strong[verlaat] (metered out). Bij een dubbelwerkende cilinder betekent dat #strong[twee] regelventielen, één per aansluiting, elk smorend in de uitgaande richting.
+]
 
 == Het schakelen van pneumatiek
 
-Een cilinder wordt steeds bestuurd door één hoofdschakelaar, die net zoals in de elektronica aangeduid wordt met de letter `Q`. De ventielen zelf delen we in twee groepen in:
+Een cilinder hangt aan één hoofdschakelaar `Q`. De ventielen delen we in twee groepen in:
 
 / Stuurventielen `K`: worden louter gebruikt in de *logica*. Ze schakelen kleine debieten en lage vermogens, enkel om een signaal door te geven.
 / Vermogenventielen `Q`: schakelen de *grote debieten* naar de cilinders toe.
 
 #wrap-figure(
-  image("assets/electro-vs-mechanisch-pneumatisch.png", width: 6cm),
+  image("assets/electro-vs-mechanisch-pneumatisch.png", width: 8cm),
   caption: [Links elektro-pneumatisch bediend (spoel `14`), rechts mechanisch-pneumatisch, met een veer als reset en dempers op de poorten $5$ en $3$],
   label: <fig:electro-vs-mechanisch>,
   width: 6cm,
 )[
-  Een veel gebruikt ventiel dat vermogen schakelt is het *elektro-pneumatisch ventiel*: we gebruiken een klein *elektrisch* signaal (een spoel van bv. 2 W) om een grote hoeveelheid lucht te schakelen. Zo koppel je de PLC (Programmable Logic Controller) of het relaiscircuit aan het pneumatische vermogen.
+  Het *elektro-pneumatisch ventiel* schakelt vermogen met een klein elektrisch signaal: een spoel van bv. $2 "W"$ stuurt een grote hoeveelheid lucht. Zo koppel je de PLC of het relaiscircuit aan het pneumatische vermogen.
 
-  Er is nog een verschil met elektrische schakelaars waar we even bij stilstaan: een *puur pneumatisch* ventiel verbruikt geen vermogen zolang het geschakeld staat. Het verbruikt alleen even iets op het moment dat het van situatie verandert. Een contactor of een elektro-pneumatisch ventiel met permanent bekrachtigde spoel trekt daarentegen continu stroom zolang je hem aangestuurd houdt.
+  Een *puur pneumatisch* ventiel verbruikt alleen lucht op het moment van schakelen. Een elektro-pneumatisch ventiel houdt zijn spoel bekrachtigd en verbruikt dus continu elektrisch vermogen zolang het in die stand blijft.
 ]
 
 === Opbouw van de symbolen
 
-Elk ventiel kan in één, twee of uitzonderlijk meer standen staan. In het symbool herken je altijd de *stoppen*, aangeduid met een "T": daar loopt de lucht dood. Pijlen tonen de stromingsrichting.
+In het symbool herken je de *stoppen* aan een "T": daar loopt de lucht dood. Pijlen tonen de stromingsrichting.
 
 #wrap-figure(
   image("assets/ventiel-53-flowboxes.jpeg", width: 8cm),
@@ -90,25 +104,20 @@ Elk ventiel kan in één, twee of uitzonderlijk meer standen staan. In het symbo
   label: <fig:ventiel-53-flowboxes>,
   width: 7cm,
 )[
-  De *naamgeving* $x slash y$ lees je zo af:
-
-  - Het eerste cijfer $x$ is het aantal *aansluitingen* dat het ventiel heeft in een bepaalde situatie (tel de aansluitingen op één hokje). Op de figuur zijn dat er vijf.
-  - Het tweede cijfer $y$ is het aantal *standen* waarin het ventiel geschakeld kan worden, dus simpelweg het aantal hokjes. Op de figuur zijn dat er drie.
-
-  We hebben dus te maken met een *5/3 ventiel*. Die naam vervolledig je nog met: elektro-pneumatisch, fail-close (NO, Normally Open) of fail-open (NC, Normally Closed), en uni- of multidirectioneel afhankelijk van de richting van de pijlen.
+  De naam $x slash y$: $x$ is het aantal *aansluitingen* (tel ze op één hokje), $y$ het aantal *standen* (tel de hokjes). Op de figuur: vijf en drie, dus een *5/3 ventiel*. Die naam vervolledig je nog met: elektro-pneumatisch, fail-close (NO, Normally Open) of fail-open (NC, Normally Closed), en uni- of multidirectioneel afhankelijk van de richting van de pijlen.
 ]
 
-Als je zelf mag kiezen (en dat is niet altijd het geval) teken je de *niet-bediende* toestand aan de rechterkant. Zo kan je een *monostabiel* ventiel altijd al herkennen aan de aanwezigheid van een veersymbool: dat vertelt je naar welke stand het ventiel terugvalt als het niet wordt aangestuurd, en dus welke positie het inneemt in rust.
+Teken de *niet-bediende* toestand rechts. Aan het veersymbool zie je dan meteen dat het ventiel *monostabiel* is, en naar welke stand het terugvalt.
 
 Bij een *bistabiel* ventiel kan je de startsituatie niet achterhalen: het blijft staan waar het laatst gezet is, dus na installatie kan het in elke stand staan. Een ventiel met drie standen is een dubbel monostabiel ventiel: twee spoelen die het elk naar hun kant trekken, met een stabiele middenstand zodra beide spoelen loslaten.
 
 === Wat er fysiek verandert als je schakelt <sec:schuif-verschuift>
 
-Hier gaat het bij het lezen van een symbool vaak mis. De hokjes staan naast elkaar op papier, waardoor het lijkt alsof er drie ventielen naast elkaar liggen. Dat klopt niet. Er is *één* schuif, en de hokjes zijn de standen van diezelfde schuif. Wat je moet inbeelden:
+Hier gaat het lezen vaak mis: de hokjes naast elkaar lijken drie aparte ventielen, maar dat zijn ze niet. Er is *één* schuif, en de hokjes zijn de standen van diezelfde schuif. Wat je moet inbeelden:
 
-- De *leidingen* (toevoer, ontluchting, de slangen naar de cilinder) liggen vast. Die verhuizen niet.
-- De *reeks hokjes* schuift eronder door wanneer je bedient. Druk je de knop in of bekrachtig je de linkse spoel, dan duwt die de schuif naar rechts, waardoor het linkse hokje voor de vaste aansluitingen komt te liggen.
-- Het hokje dat op dat moment *voor de aansluitingen* ligt, is het hokje dat geldt. Leg dat hokje mentaal over de leidingen en lees de pijlen af: dat is jouw doorstroming.
+- De *leidingen* liggen vast en verhuizen niet.
+- De *reeks hokjes* schuift eronder door. Bekrachtig je de linkse spoel, dan schuift de schuif naar rechts en komt het linkse hokje voor de vaste aansluitingen.
+- Het hokje dat *voor de aansluitingen* ligt, geldt. Lees daar de pijlen af.
 
 Zo lees je @fig:ventiel-53-flowboxes: linkse spoel bekrachtigd $arrow.r$ het groene hokje ligt op de leidingen; geen enkele spoel bekrachtigd $arrow.r$ het middelste hokje; rechtse spoel bekrachtigd $arrow.r$ het blauwe hokje. In @fig:schuif-verschuift is dat uitgetekend voor een monostabiel 5/2 ventiel met zijn cilinder.
 
@@ -323,7 +332,7 @@ Zo lees je @fig:ventiel-53-flowboxes: linkse spoel bekrachtigd $arrow.r$ het gro
 === De mechanische beweging van een ventiel
 
 #wrap-figure(
-  image("assets/tijdsdiagram-ventiel.png", width: 6cm),
+  image("assets/tijdsdiagram-ventiel.png", width: 8cm),
   caption: [Tijdsdiagram van de spoelen, de ventielstand en de cilinderpositie],
   label: <fig:tijdsdiagram-ventiel>,
   width: 6cm,
@@ -385,7 +394,7 @@ Kies je het ventiel te klein, dan krijg je een grote drukval en dus te weinig kr
 )[
   Om een reeks ventielen efficiënt te monteren bieden de meeste fabrikanten een #keyterm[manifold] of ventielblok aan. Daarin zitten interne verdeelkanalen, zodat je de persluchttoevoer #strong[niet] meerdere keren hoeft aan te sluiten.
 
-  Dat scheelt niet alleen slangen. Elke koppeling is een mogelijk lek, en lekken zijn de grootste verliespost in een persluchtinstallatie (@sec:perslucht-rendement). Minder aansluitingen betekent dus minder lekkage.
+  Elke koppeling is bovendien een mogelijk lek, en lekken zijn de grootste verliespost in een persluchtinstallatie (@sec:perslucht-rendement).
 
   De ventielen zelf klik je als losse eilanden op het blok. Valt er één uit, dan wissel je alleen dat ene ventiel; de bedrading en de luchttoevoer blijven zitten. Vaak zit er meteen een veldbusaansluiting op, zodat het hele blok met één kabel aan de PLC hangt in plaats van met één draad per spoel.
 ]
@@ -448,15 +457,11 @@ Voor mechanische veren definieert EN 13849 #keyterm[well-tried springs] en #keyt
   In de elektriciteit betekent N.O. en N.C. iets eenduidigs. In de pneumatiek slaat "normally closed" soms op #strong[handbediende] ventielen of dempers die de operator in normaal bedrijf gesloten moet laten. Let dus op de context voor je een symbool interpreteert.
 ]
 
-De keuze monostabiel of bistabiel volgt uit één vraag: #belangrijk[wat moet er gebeuren bij energieverlies?] Moet de cilinder terugkeren naar een veilige stand, dan neem je monostabiel. Moet hij blijven staan waar hij staat, dan neem je bistabiel, want dat is een geheugen.
+Monostabiel of bistabiel volgt uit één vraag: #belangrijk[wat moet er gebeuren bij energieverlies?] Terug naar een veilige stand $arrow.r$ monostabiel. Blijven staan $arrow.r$ bistabiel, want dat is een geheugen.
 
 === Stroomverbruik van magneetventielen <sec:reduced-holding-current>
 
-Een elektropneumatische ventielspoel is meestal $1$ tot $4 "W"$. Dat lijkt verwaarloosbaar, maar:
-- een systeem kan héél veel ventielen hebben;
-- #belangrijk[actieve ventielspoelen worden warm, en dat verkort hun levensduur].
-
-Factoren die het verbruik bepalen, zijn onder meer de grootte van het ventiel: een te klein ventiel geeft een grote drukval en moet dus vaker of langer werken.
+Een ventielspoel is meestal $1$ tot $4 "W"$. Verwaarloosbaar lijkt dat, maar een systeem heeft er veel, en #belangrijk[actieve spoelen worden warm, wat hun levensduur verkort]. Een te klein ventiel geeft bovendien een grote drukval en moet dus langer werken.
 
 Een oplossing is #keyterm[reduced holding current]: de spoel krijgt eerst de volle stroom om te schakelen, en daarna een lagere stroom die alleen nog volstaat om de stand vást te houden.
 
@@ -470,7 +475,7 @@ Een oplossing is #keyterm[reduced holding current]: de spoel krijgt eerst de vol
   label: <fig:gemonitord-ventiel>,
 )[
   Een gemonitord veiligheidsventiel heeft #keyterm[spoeldetectie]: een sensor kijkt of de schuif effectief in de verwachte stand staat. Zo weet de besturing of de veiligheidsfunctie werkelijk uitgevoerd is, in plaats van alleen dat het commando gegeven is. Dat is het pneumatische equivalent van de EDM uit @sec:edm.
-]
+
 
 === Het soft-startventiel <sec:soft-start>
 
@@ -481,12 +486,46 @@ Een #keyterm[soft-startventiel] brengt een installatie bij het opstarten "zachtj
 
   Bovendien kan een lage stuurdruk bij intern gepiloteerde ventielen leiden tot onvolledige of trage schakelbewegingen.
 ]
-
+]
 === Intern tegenover extern gepiloteerd <sec:intern-extern-pilot>
 
 + Bij een monostabiel ventiel verwacht je dat het naar de ruststand gaat zodra je de bediening wegneemt. Veel van die ventielen gebruiken echter perslucht in plaats van een echte veer, of allebei.
 + *Intern gepiloteerd* (bleed piloted): het ventiel gebruikt #strong[dezelfde] inkomende luchttoevoer als de hoofdstroom om te schakelen.
 + *Extern gepiloteerd* (pressure piloted): de stuurlucht komt via een #strong[apart] circuit.
+
+#examenbox[
+  Op het examen krijg je een ventielsymbool en moet je zeggen of het intern of extern gepiloteerd is. Dat lees je aan de stippellijn af, je hoeft het datablad niet te kennen.
+]
+
+#align(center)[
+  #grid(
+    columns: 2,
+    gutter: 1cm,
+    figure(
+      image("assets/internal-pilot-bolletje.png", width: 6.5cm),
+      caption: [*Intern*: een bolletje op de toevoerlijn. De stippellijn vertrekt uit poort $1$ zelf.],
+      label: <fig:pilot-intern-symbool>,
+    ),
+    figure(
+      image("assets/external-pilot-X.png", width: 5.5cm),
+      caption: [*Extern*: een `X` aan de stippellijn, en géén bolletje op de toevoer.],
+      label: <fig:pilot-extern-symbool>,
+    ),
+  )
+]
+
+#table(
+  columns: (auto, 1fr),
+  align: (left, left),
+  stroke: none,
+  inset: 5pt,
+  table.hline(stroke: 1pt),
+  table.header([*In het symbool*], [*Betekenis*]),
+  table.hline(stroke: 0.5pt),
+  [Bolletje op de toevoerlijn], [intern gepiloteerd: de stuurlucht wordt intern van poort $1$ afgetakt],
+  [`X` aan de gestippelde lijn], [extern gepiloteerd: de `X` markeert de aparte poort waar de stuurlucht binnenkomt],
+  table.hline(stroke: 1pt),
+)
 
 Extern piloteren opent extra ontwerpmogelijkheden:
 - je kan de stuurlucht meteen op volle druk zetten om betrouwbaar te schakelen, terwijl je de #strong[werkdruk] zacht opbouwt om de krachten op de cilinders laag te houden;
@@ -513,11 +552,28 @@ Voor het vasthouden van een last kan je bovendien een #strong[externe rem] op de
   caption: [Primaire luchtbehandeling: filter, koeler, separator, drukvat en drukschakelaar, gevolgd door de secundaire behandeling aan de machine.],
   label: <fig:primaire-luchtbehandeling>,
 )
-  De keten van de #keyterm[primaire luchtbehandeling], in volgorde:
-
-  $ "filter" arrow.r "koeler" arrow.r "separator" arrow.r "drukvat" arrow.r "drukschakelaar" arrow.r "belasting" $
-
-  Daarna volgt bij de machine zelf de #strong[secundaire] behandeling.
+#figure(
+  scale(52%, reflow: true, merman.mermaid(
+    ```
+    flowchart LR
+      C["Compressor"] --> F["Filter"] --> K["Koeler"] --> S["Separator"]
+      S --> V["Drukvat"] --> D["Drukschakelaar"] --> FRL["FRL-unit"] --> L["Belasting"]
+      subgraph P["Primaire behandeling, centraal"]
+        F
+        K
+        S
+        V
+        D
+      end
+      subgraph SE["Secundair, aan de machine"]
+        FRL
+      end
+    ```,
+    theme: (fontSize: "30px"),
+  )),
+  caption: [De persluchtketen: centraal de primaire behandeling, bij elke machine de secundaire.],
+  label: <fig:persluchtketen>,
+)
 
 
 === Luchtkwaliteit <sec:luchtkwaliteit>
@@ -558,7 +614,7 @@ Twee principes:
 === De drukregelaar aan de machine <sec:drukregelaar>
 
 #wrap-figure(
-  image("assets/OIS_drukregelaar_realiteit.png", width: 6.5cm),
+  image("assets/OIS_drukregelaar_realiteit.png", width: 8cm),
   caption: [Ideale tegenover werkelijke drukregelaar: in de praktijk zakt de uitgangsdruk bij toenemend debiet.],
   label: <fig:drukregelaar-realiteit>,
 )[
@@ -578,7 +634,7 @@ Wil je verder gaan, dan combineer je: eerst een filter tot $#"0,5" mu "m"$, daar
 === Het FRL-symbool ontleed <sec:frl-symbool>
 
 #wrap-figure(
-  image("assets/OIS_frl_symbool.png", width: 6.5cm),
+  image("assets/OIS_frl_symbool.png", width: 8cm),
   caption: [Het FRL-symbool ontleed: filter, drukregelaar, manometer en lubricator.],
   label: <fig:frl-symbool>,
 )[
@@ -590,13 +646,14 @@ Wil je verder gaan, dan combineer je: eerst een filter tot $#"0,5" mu "m"$, daar
   + *Lubricator:* alleen als de toepassing smering vraagt.
 
   Daarnaast bestaat er een vereenvoudigd FRL-symbool dat het geheel als één blok toont.
-]
+
 
 == Efficiëntie en kosten van perslucht
 
 #belangrijk["Lucht is gratis, elektronen ook. Maar perslucht en elektriciteit zeker niet."]
 
 === Eenheden die je tegenkomt <sec:perslucht-eenheden>
+]
 
 - *CFM* (cubic feet per minute): $1 "m"^3\/"h" approx #"0,589" "CFM"$, en $1 "CFM" approx #"1,699" "m"^3\/"h"$.
 - *psi:* $1 "bar" approx #"14,5" "psi"$. "psig" is de relatieve druk.
@@ -608,9 +665,7 @@ Wil je verder gaan, dan combineer je: eerst een filter tot $#"0,5" mu "m"$, daar
 
 === Het echte rendement <sec:perslucht-rendement>
 
-Volgens het Sankey-diagram uit de slides wordt #belangrijk[$100%$ van de elektrische energie omgezet in warmte.] Volgens de thermodynamische conventies bevat de perslucht zelf geen energie.
-
-Maar kan perslucht dan geen zuiger vooruitduwen en dus arbeid leveren? Jawel. De uitzettende perslucht neemt daarbij #strong[evenveel warmte uit de omgeving op] als er arbeid geleverd wordt.
+Volgens het Sankey-diagram wordt #belangrijk[$100%$ van de elektrische energie omgezet in warmte]; thermodynamisch bevat de perslucht zelf geen energie. Toch duwt ze een zuiger vooruit: de uitzettende lucht neemt daarbij #strong[evenveel warmte uit de omgeving op] als er arbeid geleverd wordt.
 
 #oefening(title: "Wat kost een kubieke meter perslucht?")[
   Uit de handleiding van een moderne compressor van $#"45,83" "kW"$:
@@ -623,7 +678,7 @@ Maar kan perslucht dan geen zuiger vooruitduwen en dus arbeid leveren? Jawel. De
   En $3248 "kJ" approx #"3,6" "MJ" = 1 "kWh"$, ruwweg. #belangrijk[Eén kubieke meter perslucht op $#"6,9" "bar"$ kost dus ongeveer één kilowattuur.]
 ]
 
-Over de hele levensduur van een persluchtinstallatie is #belangrijk[ongeveer $80%$ van de kosten energiekost.] De aankoop van de compressor is dus bijna irrelevant naast wat hij verbruikt. Het totale rendement van zo'n installatie ligt op $10%$ of lager, want de warmte wordt in de praktijk zelden gerecupereerd.
+Over de levensduur is #belangrijk[ongeveer $80%$ van de kosten energiekost], dus de aankoopprijs van de compressor telt nauwelijks. Het totale rendement blijft op $10%$ of lager omdat de warmte zelden gerecupereerd wordt.
 
 #figure(
   image("assets/OIS_sankey_perslucht.png", width: 8cm),
@@ -633,9 +688,9 @@ Over de hele levensduur van een persluchtinstallatie is #belangrijk[ongeveer $80
 
 === Verkeerd gebruik <sec:perslucht-verkeerd-gebruik>
 
-Het voorbeeld uit de slides: perslucht gebruiken om een onderdeel schoon te blazen kost een fabriek $5000$ dollar per jaar. Met een lagedrukblazer zou dat maar $1085$ dollar per jaar zijn.
+Een onderdeel schoonblazen met perslucht kost een fabriek $5000$ dollar per jaar; met een lagedrukblazer $1085$ dollar.
 
-In Europa gaat #belangrijk[$10%$ van alle industriële elektriciteit] naar het maken van perslucht, goed voor $80 "TWh"$ per jaar. Moderne systemen bieden vaak de mogelijkheid om de vrijgekomen warmte te recupereren.
+In Europa gaat #belangrijk[$10%$ van alle industriële elektriciteit] naar perslucht, goed voor $80 "TWh"$ per jaar.
 
 === Pneumatiek tegenover elektrisch <sec:pneumatiek-vs-elektrisch>
 

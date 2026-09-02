@@ -18,9 +18,9 @@ De norm geeft aan dat de kortsluitstroom op drie manieren kan worden bepaald:
 
 === Beginselen van kortsluitbeveiliging
 
-Kortsluitbeveiliging speelt twee kritieke rollen in industriële installaties. Allereerst beschermt het de bedrading zelf: wanneer de prospectieve kortsluitstroom vele malen groter is dan de nominale stroom, kan de bedrading ernstig beschadigd raken en brand veroorzaken. Dit is waarom automaten en zekeringen worden beoordeeld op hun kortsluitingsbrekend vermogen (AIC) — het maximale vermogen dat zij veilig kunnen onderbreken zonder te falen.
+Kortsluitbeveiliging beschermt eerst de #strong[bedrading]: is de prospectieve kortsluitstroom veel groter dan de nominale, dan raakt de bedrading beschadigd en kan er brand ontstaan. Daarom worden automaten en zekeringen beoordeeld op hun breekvermogen (AIC).
 
-Voor de veiligheid van mensen helpt stroombeperking meestal niet. Een kleine stroom door het lichaam kan al dodelijk zijn, ongeveer 30 mA·s. Industriële toestellen hebben voor hun normale werking net hoge stromen nodig, dus je kan niet zomaar alles begrenzen. Je moet daarom twee dingen apart beschermen: de bedrading en de mens.
+Voor de #strong[mens] helpt stroombegrenzing niet: $30 "mA" dot "s"$ kan al dodelijk zijn, terwijl industriële toestellen net hoge stromen nodig hebben. Bedrading en mens vragen dus elk hun eigen beveiliging.
 
 
 + *Residual Current Devices (RCD / Differentieelschakelaar)*
@@ -38,7 +38,7 @@ Voor de veiligheid van mensen helpt stroombeperking meestal niet. Een kleine str
 + *Smeltzekeringen (Fuses)*
 
   Een smeltzekering biedt directe en snelle beveiliging tegen kortsluiting en zware overbelasting. Wanneer de stroomsterkte te hoog oploopt, smelt het interne draadelement door joule-opwarming en onderbreekt het de kring.
-  
+
   _Eigenschap:_ Smeltzekeringen zijn goedkoop en hebben een zeer hoog breekvermogen (AIC), maar na aanspreken moeten ze handmatig vervangen worden voordat het circuit herstart kan worden.
 
 + *ECB (electronic circuit breaker)*
@@ -47,7 +47,7 @@ Voor de veiligheid van mensen helpt stroombeperking meestal niet. Een kleine str
 
 + *AFCI (arc fault circuit interrupter)*
 
-  Een AFCI (arc fault circuit interrupter) gaat een vlamboog overal in het circuit detecteren. Een vlamboog kan ontstaan door beschadigde bedrading, losse verbindingen of defecte apparaten, en kan leiden tot brandgevaar. AFCI's zijn ontworpen om deze gevaarlijke situaties te voorkomen door de stroomtoevoer te onderbreken wanneer een vlamboog wordt gedetecteerd.
+  Een AFCI (arc fault circuit interrupter) detecteert een vlamboog waar dan ook in de kring en schakelt af. Vlambogen ontstaan door beschadigde bedrading, losse verbindingen of defecte apparaten, en geven brandgevaar.
 
 
 
@@ -71,7 +71,7 @@ Voor overstroombeveiliging zijn er drie families, met de codeletter `-F` volgens
   table.hline(stroke: 1pt),
 )
 
-#belangrijk[Het #keyterm[breekvermogen] of AIC (Amps Interrupting Capacity) is de tweede keuzeparameter, naast de nominale stroom.] Dat is de grootste kortsluitstroom die het toestel nog veilig kan onderbreken. Ligt de te verwachten kortsluitstroom op die plaats hoger dan de AIC, dan explodeert de beveiliging in plaats van te beveiligen. Dichter bij de transformator is de kortsluitstroom groter, dus heb je daar een hogere AIC nodig.
+#belangrijk[Het #keyterm[breekvermogen] of AIC (Amps Interrupting Capacity) is de tweede keuzeparameter, naast de nominale stroom]: de grootste kortsluitstroom die het toestel nog veilig kan onderbreken. Ligt de verwachte kortsluitstroom hoger, dan explodeert de beveiliging in plaats van te beveiligen. Dichter bij de transformator is die stroom groter, dus heb je daar een hogere AIC nodig.
 
 #figure(
   image("assets/OIS_fuse_mcb_mccb_clean.png", width: 12cm),
@@ -85,29 +85,21 @@ Voor overstroombeveiliging zijn er drie families, met de codeletter `-F` volgens
 
 De driefase asynchrone motor is de meest gebruikte motor in industriële toepassingen. De voornaamste redenen zijn:
 
-- *Kosteneffectief*: Geen permanente magneten nodig, dus veel goedkoper dan gelijkstroommotoren of synchrone motoren
-- *Lage onderhoudskosten*: Slechts de lagers slijten, wat onvermijdelijk is in elk bewegend apparaat
-- *Betrouwbaarheid*: gebouwd voor zware industriële omgevingen, met weinig storingen
-- *Zelfstarter*: Start automatisch wanneer spanning wordt aangelegd
-- *Brede beschikbaarheid*: Standaardproducten in alle vermogensklassen
+- / Goedkoop: geen permanente magneten nodig.
+- / Weinig onderhoud: alleen de lagers slijten.
+- / Betrouwbaar: gebouwd voor zware industriële omgevingen.
+- / Zelfstartend: draait zodra er spanning op staat.
+- / Beschikbaarheid: standaardproduct in alle vermogensklassen.
 
 === Draairichting en toerental
 
-*Veranderen van Rotatierichting:*
-Om de rotatierichting te wijzigen (van rechtsom naar linksom of omgekeerd), kunnen we eenvoudigweg twee willekeurige van de drie faseleiders omwisselen. Dit stelt ons in staat om:
-- Één contactor te gebruiken voor tegen-kloksgewijze rotatie (CCW)
-- Een andere contactor te gebruiken voor kloksgewijze rotatie (CW)
+*Draairichting.* Wissel twee van de drie fasen om en de motor draait de andere kant op. Vandaar twee contactoren: één voor CW, één voor CCW.
 
-*Veranderen van Rotatiefrequentie:*
-Als we ook de rotatiesnelheid willen veranderen, hebben we een VFD (Variable Frequency Drive) nodig. Die kan:
-- Verandering van de rotatierichting
-- Nauwkeurige snelheidsregeling (door de frequentie aan te passen)
-- Controle over het koppel
-- Beveiligen en fouten diagnosticeren
+*Toerental.* Daarvoor heb je een VFD (Variable Frequency Drive) nodig. Die doet ook de draairichting, het koppel, en de beveiliging en diagnose.
 
 === Motorbeveiliging
 
-Een motor trekt bij het starten een veelvoud van zijn nominale stroom. Een gewone automaat zou daarop afschakelen terwijl er niets mis is, dus heb je een beveiliging nodig die de #strong[warmteopbouw] volgt in plaats van de momentane stroom. Dat is de MPCB of de OLR, uitgewerkt in @sec:motorbescherming-detail.
+Een motor trekt bij het starten een veelvoud van zijn nominale stroom, waarop een gewone automaat zou afschakelen. Je hebt dus een beveiliging nodig die de #strong[warmteopbouw] volgt in plaats van de momentane stroom: de MPCB of de OLR, zie @sec:motorbescherming-detail.
 
 Stuurt een VFD de motor, dan neemt de drive die taak over en heb je geen aparte motorbeveiliging nodig.
 
@@ -122,7 +114,7 @@ Zie @sec:vfd-emi in het hoofdstuk Veiligheid: waarom een VFD elektromagnetische 
 === Motorefficiëntieklassen (IEC 60034-30-1) <sec:motor-efficiency>
 
 #wrap-figure(
-  image("assets/IE-klassen.png", width: 6.5cm),
+  image("assets/IE-klassen.png", width: 8cm),
   caption: [IE-efficiëntieklassen voor industriële motoren],
   label: <fig:IE-klassen>,
 )[
@@ -169,13 +161,13 @@ Overzicht van de voornaamste componenten in hoofd- en stuurkringen:
   [Beschermt leidingen en heeft een zeer hoog breekvermogen (AIC).],
 )
 
-Let op het onderscheid dat deze tabel maakt: *wie schakelt* (contactor, relais) tegenover *wie beveiligt* (RCD, MBS, smeltzekering), en bij de beveiligers *wat* er beschermd wordt --- de RCD beschermt de mens, de MBS de motor, de smeltzekering de bekabeling.
+De tabel scheidt *wie schakelt* (contactor, relais) van *wie beveiligt*, en bij die laatste ook *wat*: de RCD de mens, de MBS de motor, de smeltzekering de bekabeling.
 
 == De contactor in een motorkring
 
 #wrap-figure(
   image("assets/contactor Nieuw vs oud.png", width: 6.5cm),
-  caption: [Moderne compacte contactor vs. klassieke uitvoering],
+  caption: [Links een nieuwe contactor en rechts een versleten contactor door vonken en slijtage.],
   label: <fig:contactor-Nieuw-vs-oud>,
 )[
   De volledige uitleg over contactoren staat bij de besturingslogica: polen en throws, hoofd- en hulpcontacten, de losse spanningswaarden van spoel en contacten, en het gedrag op AC vind je in @sec:contactoren. Hier kijken we naar wat er specifiek bij een *motorkring* komt kijken.
@@ -188,7 +180,7 @@ Let op het onderscheid dat deze tabel maakt: *wie schakelt* (contactor, relais) 
   caption: [Werking van een contactor: bekrachtigde spoel trekt het anker aan],
   label: <fig:Contactor-werking>,
 )[
-De krachtketen van stroom naar aantrekkende armatuur is afgeleid in @sec:krachtketen. Kort samengevat voor een vermogenscontactor:
+  De krachtketen van stroom naar aantrekkende armatuur is afgeleid in @sec:krachtketen. Kort samengevat voor een vermogenscontactor:
   - *Inschakelen*: Wanneer stuurspanning op de spoelaansluitingen (A1/A2) wordt gezet, wekt de stroom een magnetisch veld op in de gelamineerde weekijzeren kern. Zodra $F_"mag" > F_"veer"$, trekt het anker aan en sluiten de hoofdcontacten (1-2, 3-4, 5-6).
   - *Uitschakelen (Monostabiel)*: Valt de stuurspanning weg, dan duwt de terugstelveer het anker direct terug.
 ]
@@ -200,7 +192,9 @@ De krachtketen van stroom naar aantrekkende armatuur is afgeleid in @sec:krachtk
 
 Wervelstromen in de kern (opgelost met laminatie) en het brommen van een AC-contactor (opgelost met een kortsluitring) staan bij @sec:ac-contactoren.
 
-== De motorkring tekenen
+== Asynchrone Driefasige motoren <sec:driefasige-motoren>
+
+Een asynchrone motor draait trager dan het magnetisch veld. Dat snelheidsverschil heet #keyterm[slip] en is nodig om rotorstroom en dus koppel op te wekken. In tegenstelling tot een synchrone motor draait de rotor dus niet exact met het veld mee. Asynchrone motoren zijn goedkoper en robuuster; synchrone motoren zijn geschikt voor precieze bewegingen.
 
 #belangrijk[In een elektrisch schema teken je altijd eerst de vermogenkringen, en pas daarna de stuurkringen.]
 

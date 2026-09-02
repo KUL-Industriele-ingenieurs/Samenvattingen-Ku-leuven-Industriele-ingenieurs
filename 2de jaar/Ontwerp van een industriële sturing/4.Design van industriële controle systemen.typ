@@ -197,7 +197,7 @@ Detecteert de sensor iets, dan verbindt hij de zwarte draad met de $0 "V"$. De s
   Een 2-draadssensor wordt direct in serie geschakeld met de ingangskring. Hij heeft geen aparte massa-aansluiting:
   - *In rust (open)*: Er vloeit een minimale #keyterm[lekstroom] ($I_"leak"$) door de kring om de interne elektronica van de sensor te voeden.
   - *In geleiding (gesloten)*: Er blijft een kleine #keyterm[restspanning] ($U_"drop"$) over de sensor staan.
-  
+
   _Aandachtspunt:_ De PLC-ingang moet de restspanning en lekstroom tolereren volgens IEC 61131-2 Type 1/2/3.
 ]
 
@@ -249,95 +249,182 @@ Detecteert de sensor iets, dan verbindt hij de zwarte draad met de $0 "V"$. De s
     *Conclusie*: Een ingenieur bestelt een NC hoog niveau alarm en een NO laag niveau vlotterschakelaar.
 
     Dezelfde redenering geeft meteen de bedrading van de bedieningsknoppen: een #strong[stopknop] is N.C., een #strong[startknop] is N.O. Het meest voorkomende defect is een gebroken draad, en die moet de machine stoppen, niet starten.
-
   ]
 ]
 
-=== Industriële sensoren
+=== Industriële sensoren <sec:industriele-sensoren>
 
-Sensoren zetten een fysieke procesgrootheid om in een elektrisch signaal voor de controller.
+Sensoren zetten een fysische procesgrootheid om in een elektrisch signaal voor de controller.
+- *Mechanische eindschakelaar*: rol of hefboom. Betrouwbaar voor positiedetectie, ongevoelig voor elektrische storing.
+- *Niveauschakelaar*: vlotter op hefboom of ketting, hoog/laag in een tank.
+- *Debietschakelaar*: membraan dat schakelt bij de drukval over een restrictie.
+- *Thermische schakelaar (Klixon)*: bimetaal dat afschakelt bij oververhitting.
 
-#concept(title: "Overzicht van sensortypes")[
-  - *Mechanische eindschakelaars (Limit switches)*: Mechanisch bediend met rol of hefboom. Betrouwbare positiedetectie bij transportbanden of deuren. Eenvoudig en ongevoelig voor elektrische storingen.
-  - *Niveauschakelaars (Level switches)*: Vlotter op hefboom of ketting voor hoog/laag niveaudetectie in tanks.
-  - *Debietschakelaars (Flow switches)*: Membraan dat schakelt bij een drukval over een restrictie bij stromend medium.
-  - *Thermische schakelaars (Thermal cutout / Klixon)*: Bimetaalschakelaar die direct afschakelt bij oververhitting.
-  - *Benaderingsschakelaars (Proximity switches - contactloos)*:
-    - *Inductief*: Bouwt een hoogfrequent wisselend magnetisch veld op. Een naderend metalen voorwerp wekt wervelstromen (*eddy currents*) op die energie aan het veld onttrekken. *Detecteert uitsluitend metalen/geleiders*. Ongevoelig voor stof en olie.
-    - *Capacitief*: Werkt met een wisselend elektrisch veld. Naderende materialen veranderen de capaciteit van de sensor. *Detecteert alle materialen* (metalen, vloeistoffen, hout, kunststof). Gevoeliger voor omgevingsvervuiling en vocht.
-    - *Optisch*: Zender (LED/laser) en ontvanger (fototransistor/fotodiode). Drie uitvoeringen: retro-reflectief (met reflector), diffuus reflecterend (op het object zelf), en zender-ontvanger (through-beam). Ook beschikbaar met optische vezels (*fibre-optic*) voor krappe ruimtes.
-    - *Ultrasoon*: Verstuurt en ontvangt hoogfrequente geluidsgolven. Meet looptijd van de echo. Universeel inzetbaar, ongevoelig voor kleur, transparantie of stof.
-    - *Magnetisch (Reed-contact vs. Hall-effect)*:
-      - *Reed-contact*: Twee magnetiseerbare contactlipjes in een glazen buisje. Goedkoop, maar bevat mechanische delen en heeft een beperkte schakelsnelheid en levensduur.
-      - *Hall-effect sensor*: Elektronische halfgeleidersensor die een spanning genereert onder invloed van een magnetisch veld. Geen bewegende delen, extreem hoge schakelfrequentie en onbeperkte levensduur.
+=== Benaderingsschakelaars (proximity switches) <sec:benaderingsschakelaars>
 
-==== Flush of non-flush monteren <sec:flush-nonflush>
-
-Een naderingsschakelaar detecteert niet alleen jouw object, maar ook het metaal waarin hij zelf geschroefd zit. Daarom bestaan er twee bouwvormen, en het datablad zegt welke je hebt:
-
-- #keyterm[Flush] (bündig): het veld komt alleen recht vooruit. Je mag de sensor tot aan de kop in metaal verzinken.
-- #keyterm[Non-flush]: het veld puilt opzij uit, dus hij moet #strong[uitsteken]. Rond de kop moet een vrije zone blijven, en ook vóór de sensor moet een strook vrij blijven van ander metaal.
-
-Monteer je een non-flush sensor toch vlak, dan ziet hij het omliggende metaal in plaats van het object en schakelt hij permanent.
-
-#figure(
-  image("assets/OIS_flush_nonflush.png", width: 9cm),
-  caption: [Links flush: de sensor mag vlak in het metaal. Rechts non-flush: rondom en vóór de kop moet een vrije zone blijven, uitgedrukt in veelvouden van de schakelafstand $s_n$ en de diameter $d$.],
-  label: <fig:flush-nonflush>,
+#grid(
+  columns: (1fr, 3.8cm),
+  gutter: 12pt,
+  align: horizon,
+  [
+    Een *proximity switch* is een elektronische sensor die detecteert wanneer een object binnen een bepaalde afstand komt, zonder fysiek contact te maken. In industriële automatisering veel gebruikt om de aanwezigheid, positie of beweging van onderdelen te registreren.
+  ],
+  figure(
+    image("assets/proximity-switch.png", width: 3.2cm),
+    caption: [Proximity switch],
+    label: <fig:proximity-switch>,
+  ),
 )
 
-Vuistregel bij het vastzetten: draai de moeren aan tot het einde van de schroefdraad.
+==== Inductieve proximity switch <sec:sensor-inductief>
+
+#grid(
+  columns: (1fr, 3.8cm),
+  gutter: 12pt,
+  align: horizon,
+  [
+    Speciaal ontworpen om *metalen objecten* te detecteren (vooral magnetische materialen).
+    - De sensor bevat een spoel (meestal E-vormig, $L(s)$) die via een interne oscillator een wisselend magnetisch veld opwekt buiten de sensor.
+    - Wanneer een metalen voorwerp dit veld binnendringt, ontstaan er *wervelstromen* (eddy currents). Deze verbruiken energie en zetten die om in warmte.
+    - Het veranderde energieverbruik van de spoel wordt gemeten door een interne stroomdetectiekring, waarna de sensor schakelt. Contactloos en uiterst betrouwbaar zolang het materiaal voldoende geleidend is.
+  ],
+  figure(
+    image("assets/inductieve-werking.png", width: 3.4cm),
+    caption: [Werking inductieve sensor],
+    label: <fig:inductieve-werking>,
+  ),
+)
+
+==== Capacitieve proximity switch <sec:sensor-capacitief>
+
+#grid(
+  columns: (1fr, 3.8cm),
+  gutter: 12pt,
+  align: horizon,
+  [
+    Geschikt voor zowel *geleidende als niet-geleidende* materialen (kunststoffen, vloeistoffen, hout, etc.).
+    - Creëert een wisselend elektrisch veld ($C(s)$); wanneer een object dit veld verstoort, verandert de capaciteit en wordt dit geregistreerd.
+    - Schakelafstand is meestal beperkt (tot ca. $40 "mm"$).
+    - Door de hoge gevoeligheid vaak uitgerust met een regelschroef aan de buitenkant om de sensor aan te passen aan stoffige of vochtige omgevingen.
+  ],
+  figure(
+    image("assets/capacitieve-werking.png", width: 3.0cm),
+    caption: [Werking capacitieve sensor],
+    label: <fig:capacitieve-werking>,
+  ),
+)
+
+==== Optische proximity switch <sec:sensor-optisch>
+
+#grid(
+  columns: (1fr, 4.4cm),
+  gutter: 12pt,
+  align: horizon,
+  [
+    Werkt door middel van lichtdetectie (zoals bewakingspoortjes in winkels).
+    - *Through-beam (zender-ontvanger)*: staan recht tegenover elkaar; hoogste bereik.
+    - *Retro-reflective*: werkt met een reflector aan de overkant.
+    - *Diffuus*: licht weerkaatst op het object zelf; meest gebruikt, maar korter bereik door energieverlies bij verspreide reflectie.
+    - *Glasvezel (fiber)*: licht kan via flexibele fiberkabels getransporteerd worden zodat de detector elders (bv. in de kast) kan staan.
+  ],
+  figure(
+    image("assets/OIS_optisch_werking.png", width: 4.2cm),
+    caption: [Werkingsprincipes optische sensoren],
+    label: <fig:optische-werking>,
+  ),
+)
+
+==== Ultrasonische proximity switch <sec:sensor-ultrasoon>
+
+#grid(
+  columns: (1fr, 4.8cm),
+  gutter: 12pt,
+  align: horizon,
+  [
+    - Gebruikt *geluidsgolven* om objecten te detecteren; alternatief voor optische sensoren in omgevingen met veel stof, rook of damp waar lichtsensoren niet betrouwbaar zijn.
+    - *Aandachtspunt*: in tanks kunnen de uitgezonden golven weerkaatsen en storingen of meetfouten veroorzaken.
+  ],
+  figure(
+    image("assets/OIS_ultrasonisch_sensor.png", width: 4.4cm),
+    caption: [Werking ultrasonische sensor],
+    label: <fig:ultrasonisch-sensor>,
+  ),
+)
+
+==== Hall-effect proximity switch <sec:sensor-hall>
+
+#grid(
+  columns: (1fr, 4.2cm),
+  gutter: 12pt,
+  align: horizon,
+  [
+    Werkt op basis van het Hall-effect. In de sensor stroomt stroom door een geleidend halfgeleiderplaatje.
+    - Zodra er een magneet in de buurt komt, buigt het magnetisch veld de ladingdragers af.
+    - Hierdoor ontstaat de *Hall-spanning* ($V_H$) loodrecht op de stroomrichting om de nabijheid van het magnetisch object contactloos te detecteren.
+  ],
+  figure(
+    image("assets/hall-effect sensor.png", width: 3.8cm),
+    caption: [Hall-effect proximity switch],
+    label: <fig:hall-effect-sensor>,
+  ),
+)
+
+==== Reed-contact <sec:reed-contact>
+
+#examenbox[
+  *Examenvoorbeeld: Leg uit hoe een reed contact werkt?*
+  
+  Bij dit type sensor moet de behuizing *niet-magnetisch* zijn (glas of aluminium), anders vormt het een kooi van Faraday en verstoort het het interne magnetisch veld. Binnenin bevinden zich twee haarfijne ferromagnetische plaatjes bij een permanente magneet die veldlijnen concentreert (zoals een snelweg). Breng je een externe magneet in de buurt, dan trekt het magnetisch veld $B$ de twee metalen staven naar elkaar toe tot ze elkaar raken en het contact sluit.
 ]
 
-#figure(
-  grid(
-    columns: 2,
-    gutter: 0.5cm,
-    figure(
-      image("assets/proximity-switch.png", width: 5cm),
-      caption: [Inductieve/capacitieve benaderingsschakelaar],
-      label: <fig:proximity-switch>,
-    ),
-    figure(
-      image("assets/fibre-optical proximity switch.png", width: 7cm),
-      caption: [Optische sensor met glasvezelversterker],
-      label: <fig:fibre-optical-proximity-switch>,
-    ),
+#grid(
+  columns: (1fr, 4.0cm),
+  gutter: 12pt,
+  align: horizon,
+  [
+    *Verschil Reed contact vs. Hall-sensor:*
+    Zowel een reed contact als een Hall-sensor kunnen gebruikt worden voor magnetische objecten. Een Hall-sensor heeft *geen bewegende delen* en kan hoge frequenties aan. Als de snelheid hoger ligt dan *300 Hz* is een reed contact niet meer nauwkeurig door mechanische traagheid en dender.
+  ],
+  figure(
+    image("assets/reed contact.png", width: 3.6cm),
+    caption: [Mechanisch reed contact],
+    label: <fig:reed-contact>,
   ),
-  caption: [Industriële benaderingsschakelaars],
 )
 
-#figure(
-  grid(
-    columns: 2,
-    gutter: 0.5cm,
-    figure(
-      image("assets/reed contact.png", width: 5cm),
-      caption: [Mechanisch Reed-contact],
-      label: <fig:reed-contact>,
-    ),
-    figure(
-      image("assets/hall-effect sensor.png", width: 10cm),
-      caption: [Halfgeleider Hall-effect sensor],
-      label: <fig:hall-effect-sensor>,
-    ),
+==== Monteren proximity switch <sec:flush-nonflush>
+
+#grid(
+  columns: (1fr, 5.2cm),
+  gutter: 12pt,
+  align: horizon,
+  [
+    Niet alle proximity switches worden op dezelfde manier gemonteerd; raadpleeg steeds de datasheet:
+    - *Flush*: mag vlak met het montageoppervlak gemonteerd worden.
+    - *Non-flush*: moet *uitsteken* uit het metaal met een vrije zone rondom en vóór de kop.
+    
+    *Vuistregel:* draai de schroeven/moeren steeds vast tot aan het eind van de schroefdraad.
+  ],
+  figure(
+    image("assets/OIS_flush_nonflush.png", width: 4.8cm),
+    caption: [Flush vs. Non-flush montage],
+    label: <fig:flush-nonflush>,
   ),
-  caption: [Magnetische positiedetectie],
 )
 
+==== IEC-aansluitingen en -symbolen <sec:sensor-symbolen>
+
 #figure(
-  image("assets/symbolen switches.png", width: 15cm),
+  image("assets/symbolen switches.png", width: 9.0cm),
   caption: [IEC-standaardsymbolen voor industriële schakelaars en sensoren],
   label: <fig:symbolen-switches>,
 )
 
 == Interfacing van I/O-componenten
 
-Het correct aansluiten van I/O-signalen tussen sensoren, actuatoren en de PLC vereist aandacht voor stroomrichting, spanningsniveaus en reactiesnelheid.
+Bij het aansluiten van sensoren en actuatoren op de PLC let je op drie dingen: *stroomrichting*, *spanningsniveau* en *reactiesnelheid*.
 
-
-=== Soorten signalen
-
+=== Soorten signalen <sec:interfacing-signalen>
 
 Er bestaan PNP-, NPN- en universele ingangen. #belangrijk[Leer handleidingen lezen], want dat is de enige manier om te weten wat een toestel verwacht.
 
@@ -346,59 +433,99 @@ De regel waar alles op neerkomt:
 #belangrijk[Eén verbinding kan pas een signaal doorgeven als een tweede verbinding dient als spanningsreferentie en de kring sluit.]
 
 Daaruit volgt de praktijk:
-
-- Stuur je een stuurspanning uit de kast naar de ingang van een toestel, dan moet je #strong[ook de nul van die kast] naar dat toestel doortrekken. Anders is er geen referentie en sluit de kring niet.
+- Stuur je een stuurspanning uit de kast naar de ingang van een extern toestel, dan moet je #strong[ook de nul ($0 "V"$) van die kast] naar dat toestel doortrekken. Anders is er geen referentie en sluit de kring niet.
 - Je kan natuurlijk voor elke spanning een extra SMPS (Switched-Mode Power Supply) bijzetten. Soms zit die al ingebouwd, bijvoorbeeld in een VFD (Variable Frequency Drive): daar is vaak een galvanisch gescheiden laagspanning beschikbaar van $24 "V"$, $12 "V"$ of $5 "V"$ om mee te interfacen.
 
-=== Smart I/O-kaarten
+=== Smart I/O-kaarten <sec:smart-io-kaarten>
 
-Een gewone PLC-ingang of -uitgang is #belangrijk[te traag] om een SSR (Solid State Relay) of optocoupler op zijn maximale snelheid te lezen of te schakelen. De scancyclus van de CPU is daarvoor gewoon te lang.
+#grid(
+  columns: (1fr, 3.5cm),
+  gutter: 12pt,
+  align: horizon,
+  [
+    Een gewone PLC-ingang of -uitgang is #belangrijk[te traag] om hoogfrequente signalen te verwerken. De scancyclus van de CPU ($1 - 20 "ms"$) is daarvoor te lang.
 
-De oplossing is een #keyterm[smart I/O-kaart]: een klem met een eigen microcontroller. Het klassieke voorbeeld uit de slides is de Beckhoff KL2541. Wat zo'n kaart kan:
+    De oplossing is een #keyterm[smart I/O-kaart]: een klem met een eigen microcontroller (zoals de Beckhoff KL5101 voor encoders of KL2541 voor stappenmotoren).
+    
+    Wat zo'n kaart autonoom kan:
+    - cyclustijd in het microseconde-bereik;
+    - snelle pulsen tellen (bv. encoders tot $4 "MHz"$);
+    - pulsen moduleren met PWM of PTO;
+    - resultaten bufferen en autonome regeltaken uitvoeren;
+    - via de backplane communiceren met de hoofd-CPU.
 
-- werken met een cyclustijd die veel korter is dan die van de PLC-CPU;
-- uitgangspulsen lezen op hoge frequentie, bijvoorbeeld encoderpulsen;
-- uitgangspulsen moduleren met PWM;
-- resultaten in een buffer opslaan, of met een gebufferde waarde werken;
-- via de backplane-bus met de CPU communiceren.
+    #belangrijk[Leg de intelligentie in de klem zodra de snelheid van het signaal boven de scancyclus van de PLC uitkomt.] Alles wat trager is, programmeer je gewoon in de PLC.
+  ],
+  figure(
+    image("assets/OIS_kl5101_klemmen.png", width: 3.2cm),
+    caption: [Beckhoff smart I/O klem],
+    label: <fig:beckhoff-smart-io>,
+  ),
+)
 
-#belangrijk[Leg de intelligentie in de klem zodra de snelheid van het signaal boven de scancyclus van de PLC uitkomt.] Alles wat trager is, programmeer je gewoon in de PLC.
-
-Andere smart I/O-kaarten die de slides noemen:
-
+Andere smart I/O-kaarten:
 - motion drive (stepper, VFD);
 - PWM-uitgangskaart;
-- snelle tellerkaart;
-- encoder-interfacekaart;
+- snelle tellerkaart (HSC);
 - PID-regelaarkaart;
-- communicatiekaart, met een zend- en een ontvangbuffer.
+- communicatiekaart met zend- en ontvangstbuffer.
+
+=== De ASi-bus <sec:asi-bus>
+
+#grid(
+  columns: (1fr, 4.0cm),
+  gutter: 10pt,
+  align: horizon,
+  [
+    In plaats van elke sensor en actuator apart naar de stuurkast te bedraden, kan je ze op een #keyterm[ASi-bus] (Actuator Sensor Interface) aansluiten. De modules klemmen op één #strong[tweedraads profielkabel], die gelijktijdig de voeding ($30 "VDC"$) én de communicatie draagt.
+
+    Je gebruikt dit systeem waar verspreid over de machine telkens een paar I/O-punten nodig zijn (zoals bij transportbanden of verpakkingsmachines). De winst zit in de *doordringtechniek (vampierklemmen)*: klemmen op de kabel gaat veel sneller dan afzonderlijke draden trekken. Bovendien is de kabel asymmetrisch geprofileerd zodat verkeerd ompolen onmogelijk is.
+  ],
+  figure(
+    image("assets/OIS_asi_kabel.png", width: 3.6cm),
+    caption: [Geprofileerde AS-i kabel],
+    label: <fig:asi-kabel>,
+  ),
+)
 
 === Smart I/O op de PLC zelf <sec:smart-io-plc>
 
-Ook zonder aparte kaart heeft een moderne PLC al wat snelle hardware aan boord:
-
-- #keyterm[HSC]-ingangen (High Speed Counter);
-- pulsuitgangen;
-- de hoofdcommunicatie-interface, bijvoorbeeld de Profinet-aansluitingen.
+#grid(
+  columns: (1fr, 4.2cm),
+  gutter: 10pt,
+  align: horizon,
+  [
+    Ook zonder aparte kaart heeft een moderne PLC al wat snelle hardware aan boord:
+    - *HSC-ingangen* (High Speed Counter): tellen van snelle pulsen (bv. tanden op een as) via hardware-interrupts;
+    - *Pulsuitgangen* (PTO / PWM): voor directe positionering of modulatie;
+    - *Geïntegreerde interfaces*: bv. Profinet- of EtherCAT-poorten.
+  ],
+  figure(
+    image("assets/OIS_plc_hsc.png", width: 3.8cm),
+    caption: [HSC-ingang op PLC],
+    label: <fig:plc-hsc>,
+  ),
+)
 
 === Universele in- en uitgangen
 
-#wrap-figure(
-  image("assets/OIS_universal_inputs_clean.png", width: 10cm),
+#figure(
+  image("assets/OIS_universal_inputs_clean.png", width: 12cm),
   caption: [Driedraadsaansluiting van een velddevice. Links een NPN-sensor (sinking) op een sourcing ingangsmodule, met de common naar $24 "V"$. Rechts een PNP-sensor (sourcing) op een sinking module, met de common naar $0 "V"$. De ene component levert de stroom, de andere neemt ze op.],
   label: <fig:universal-inputs>,
-)[
-  Bij het interfacen levert het ene component de stroom (source) en neemt het andere ze op (sink). Samen vormen ze een gesloten stroomweg, en pas dan wordt de ingang actief.
+)
 
-  Sommige producten kunnen #keyterm[allebei]. Zo'n universele ingang werkt dankzij #strong[bidirectionele dioden] die parallel geschakeld zijn: de stroom mag in beide richtingen lopen.
+Bij het interfacen levert het ene component de stroom (source) en neemt het andere ze op (sink). Samen vormen ze een gesloten stroomweg, en pas dan wordt de ingang actief.
 
-  - *Sink wiring* (positieve logica): de common van de digitale ingangen gaat naar $24 "V"$. Zo sluit je bijvoorbeeld PNP-sensoren aan.
-  - *Source wiring:* de common van de digitale ingangen gaat naar $0 "V"$.
+Sommige producten kunnen #keyterm[allebei]. Zo'n universele ingang werkt dankzij #strong[bidirectionele dioden] die parallel geschakeld zijn: de stroom mag in beide richtingen lopen.
 
-  Waarom dat handig is:
-  + *Flexibiliteit bij aansluiten*, bijvoorbeeld als je het toestel later wil hergebruiken voor iets anders.
-  + *Minder risico op schade.* Een verkeerde aansluiting kan een gewone in- of uitgang vernielen; een universele ingang overleeft dat.
-]
+- *Sink wiring* (positieve logica): de common van de digitale ingangen gaat naar $24 "V"$. Zo sluit je bijvoorbeeld PNP-sensoren aan.
+- *Source wiring:* de common van de digitale ingangen gaat naar $0 "V"$.
+
+Waarom dat handig is:
++ *Flexibiliteit bij aansluiten*, bijvoorbeeld als je het toestel later wil hergebruiken voor iets anders.
++ *Minder risico op schade.* Een verkeerde aansluiting kan een gewone in- of uitgang vernielen; een universele ingang overleeft dat.
+
 
 
 

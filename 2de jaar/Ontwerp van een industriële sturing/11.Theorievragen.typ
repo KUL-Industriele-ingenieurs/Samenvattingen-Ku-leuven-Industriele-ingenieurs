@@ -2,7 +2,7 @@
 
 = Theorievragen <ch:theorievragen>
 
-De 25 open vragen uit `DICS updated learning outcomes`, in de volgorde van de prof. Per vraag het antwoord in kernpunten, met een verwijzing naar het hoofdstuk waar de stof uitgewerkt staat.
+De 25 open vragen uit `DICS updated learning outcomes`, in de volgorde van de prof, met per vraag het antwoord in kernpunten.
 
 == 1. Bespreek de hoofdvereisten van een industriële automatiseringsoplossing
 

@@ -4,7 +4,7 @@
 
 == Wat is pneumatiek?
 
-Pneumatiek is het gecontroleerd overbrengen van mechanische energie en beweging met samengeperste lucht (*perslucht*). Perslucht stuurt *cilinders en motoren* (actuatoren) aan. De richting, druk en snelheid van de luchtstromen worden geregeld met *pneumatische en elektro-pneumatische ventielen*, die op hun beurt aangestuurd worden door relaisschakelingen of PLC's.
+Pneumatiek brengt mechanische energie over met *perslucht*, die *cilinders en motoren* aandrijft. *Pneumatische en elektro-pneumatische ventielen* regelen richting, druk en snelheid, aangestuurd door relais of een PLC.
 
 Voordelen van pneumatiek in de industrie:
 - *Hoge betrouwbaarheid en snelheid*: Eenvoudige mechanische opbouw met weinig onderdelen die kunnen falen.
@@ -54,8 +54,7 @@ Druk is niets anders dan moleculen die tegen een oppervlak botsen.
 
 Je ziet op de figuur dat er minder botsingen zijn aan de binnenkant dan aan de buitenkant. Waardoor het voelt dat er een kracht op het voorwerk zit.
 
-In de industrie wordt er vaak een zuignap gebruikt om voorwerpen op te pakken.
-Je zet de zuignap op het voorwerp en pompt de lucht eruit. Je vergroot dan terug het volume maar er komt geen lucht bij. Dus de druk daalt. Hierdoor wordt het voorwerp opgetild.
+Een zuignap werkt op hetzelfde principe: je zet hem op het voorwerp en pompt de lucht eruit. Het volume groeit zonder dat er lucht bijkomt, dus de druk daalt en de omgevingsdruk houdt het voorwerp vast.
 
 
 == Compressors en luchttoepassingen
@@ -116,7 +115,7 @@ Om dingen tight te houden zodat lucht niet lekt worden gasdichte connecties gebr
 ]
 
 #wrap-figure(
-  image("assets/pneumatische-cilinders-design.png", width: 7.5cm),
+  image("assets/pneumatische-cilinders-design.png", width: 9cm),
   caption: [Opbouw met regelbare eindposities en einddemping],
   label: <fig:pneumatische-cilinders-design>,
 )[
@@ -135,7 +134,7 @@ De doorsnede in @fig:pneumatische-cilinder is een dubbelwerkende cilinder. Er be
 - / Dubbelwerkend (double-acting): twee aansluitingen. Beide slagen zijn pneumatisch aangedreven, dus ook de intrekkende slag levert kracht.
 
 #wrap-figure(
-  image("assets/guided-cilinders.png", width: 6cm),
+  image("assets/guided-cilinders.png", width: 8cm),
   caption: [Geleide cilinder (Guided cylinder)],
   label: <fig:guided-cilinders>,
 )[
@@ -143,7 +142,7 @@ De doorsnede in @fig:pneumatische-cilinder is een dubbelwerkende cilinder. Er be
 ]
 
 #wrap-figure(
-  image("assets/special-cilinders.png", width: 6cm),
+  image("assets/special-cilinders.png", width: 8cm),
   caption: [Speciale cilinders: dubbele stang en draaicilinder],
   label: <fig:special-cilinders>,
 )[
@@ -160,7 +159,7 @@ De doorsnede in @fig:pneumatische-cilinder is een dubbelwerkende cilinder. Er be
 == Cilinderkracht in statische toestand <sec:cilinderkracht>
 
 #wrap-figure(
-  image("assets/kracht-fullpressure.png", width: 6cm),
+  image("assets/kracht-fullpressure.png", width: 10cm),
   caption: [Werkzame drukkrachten op een dubbelwerkende cilinder],
   label: <fig:kracht-fullpressure>,
 )[
@@ -274,12 +273,13 @@ $ F_"inward" = 264 "N" - 49 "N" = 215 "N" arrow.l $
   Op @fig:pompcircuit zitten beide smoringen aan de toevoerkant. De zuiger krijgt zijn lucht dan met mondjesmaat, terwijl er aan de andere kant niets tegenhoudt. Het gevolg is een schokkende beweging: de zuiger blijft even staan, schiet dan door zodra er genoeg druk staat, en herhaalt dat.
 
   Monteer de snelheidsregeling zo dicht mogelijk bij de cilinder. Hoe langer de slang tussen ventiel en cilinder, hoe meer lucht er in die slang zit die je niet meer in de hand hebt. Je kan de regeling ook op het ventiel zetten: soms weegt bereikbaarheid voor het afstellen zwaarder dan die laatste slang.
-]
 
 
-*Het snelontluchtingsventiel* (quick exhaust valve) doet het omgekeerde van een smoring: het laat de cilinder zo #strong[snel] mogelijk leeglopen. Normaal moet de uitlaatlucht helemaal terug door de slang en het stuurventiel. Zet je een snelontluchter vlak aan de cilinderpoort, dan blaast die lucht meteen ter plaatse naar buiten, en dat scheelt een pak tijd bij een lange slang.
+
+*Het snelontluchtingsventiel* (quick exhaust valve) doet het omgekeerde van een smoring: de cilinder loopt zo #strong[snel] mogelijk leeg. Normaal gaat de uitlaatlucht terug door de slang en het stuurventiel; met een snelontluchter aan de cilinderpoort blaast ze meteen ter plaatse naar buiten.
 
 Je gebruikt hem vooral bij een #strong[enkelwerkende] cilinder, waar de veer de zuiger terugduwt en de uitstromende lucht dus alleen maar tegenwerkt.
+]
 
 #figure(
   image("assets/OIS_quick_exhaust.png", width: 6cm),
@@ -319,7 +319,7 @@ Een controleventiel waarbij een (vaak analoog) signaal de debietstroom $[dot(Q)]
 #examenbox("Op het examen krijg je deze symbolen gegeven. Je moet wel weten wat ze allemaal betekenen")
 
 #figure(
-  image("assets/Symbolen van een DCV.png", width: 5cm),
+  image("assets/Symbolen van een DCV.png", width: 10cm),
   caption: [Het aflezen van een stuurventielsymbool: elk hokje is één stand van dezelfde schuif, en het hokje dat vóór de aansluitingen ligt, geldt.],
   label: <fig:Symbolen-van-een-DCV>,
 )
@@ -339,13 +339,13 @@ Een valve wordt aangeduid met twee nummers: *aantal poorten / aantal schakelstan
 
 == Mono- en bistabiele ventielen
 
-- De klepspoel(en) zijn apparaten met een laag vermogen (bijv. 2 Watt), aangestuurd door een elektrisch regelcircuit, bijv. een relaiscircuit of een PLC. De nominale spanning van de spoel(en) kan bijv. 24 VDC of 230 VAC zijn.
+- De klepspoelen zijn laagvermogen (bv. $2 "W"$), aangestuurd door een relaiscircuit of PLC, op $24 "VDC"$ of $230 "VAC"$.
 - Een ventiel kan standschakelaars hebben: N.O. of N.C. hulpcontacten die de ventielstand detecteren. Meestal heeft het er geen.
 
 === Monostabiel tegenover bistabiel
 
 #wrap-figure(
-  image("assets/bistabiel.png", width: 7.5cm),
+  image("assets/bistabiel.png", width: 10cm),
   caption: [Bistabiel ventiel met dubbele spoelbediening],
   label: <fig:bistabiel>,
 )[
@@ -358,7 +358,7 @@ Een valve wordt aangeduid met twee nummers: *aantal poorten / aantal schakelstan
 === 5/3 ventielen en de drie middenposities
 
 #wrap-figure(
-  image("assets/diagram bistabiel.png", width: 5cm),
+  image("assets/diagram bistabiel.png", width: 8cm),
   caption: [Standen en overgangen van een 3-standen ventiel.],
   label: <fig:diagram-bistabiel>,
 )[
@@ -381,15 +381,12 @@ Hoe gaan we onze pneumatica cilinders en componenten benamen? Hiervoor gebruiken
 - *ISO 1219-2* voor de symbolen.
 - *IEC 81346-2* voor de identificatiecodes van componenten.
 
-*Specifieke Aanduidingen*
-- De RDS-code voor een ventiel hangt af van het doel, bv. `-Q`, `-K` of `-F`.
-- Voor de individuele spoelen (solenoids) gebruikt men `-M`. Een spoel kan immers afzonderlijk op een ventiel worden gemonteerd en fungeert als de motor voor de beweging van het ventiel.
-  _Voorbeeld_: Bij een bistabiel ventiel `-Q1` worden de spoelen aangeduid als `-Q1.M1` en `-Q1.M2`.
+*Aanduidingen*
+- De code van een ventiel hangt af van zijn doel: `-Q`, `-K` of `-F`.
+- Losse spoelen krijgen `-M`, want een spoel is de motor van het ventiel. Bij een bistabiel ventiel `-Q1` dus `-Q1.M1` en `-Q1.M2`.
 
-*Bedrijfsstandaard (Motion name)*
-De bedrijfsstandaard van de prof gebruikt een volledige RDS gebaseerd op de naam van de beweging. Stel, cilinder `=M10` wordt gestuurd door een bistabiel ventiel `-Q1`:
-- De cilinder blijft `=M10`.
-- Het sturende ventiel met zijn spoelen wordt: `=M10-Q1.M1` en `=M10-Q1.M2`.
+*Bedrijfsstandaard (motion name)*
+De prof benoemt naar de beweging. Cilinder `=M10` met bistabiel ventiel `-Q1` geeft: de cilinder blijft `=M10`, de spoelen worden `=M10-Q1.M1` en `=M10-Q1.M2`.
 
 *Geluiddempers en Snelheidsregelaars (FCV)*
 - Een aparte geluiddemper in dit circuit zou `=M10-R1` heten.
@@ -408,20 +405,20 @@ _Bij het ontwerpen van logica gebruiken we letters alfabetisch (zie latere slide
 )[
   Een groot ventiel rechtstreeks met een spoel schakelen kost te veel kracht: die spoel zou log, duur en stroomvretend worden. Daarom zit er in zo'n ventiel een tweede, piepklein ventiel: de *pilot valve*.
 
-  De spoel schakelt enkel dat kleine ventiel. Dat laat een beetje perslucht door, en _die lucht_ duwt de grote schuif om. Van buiten zie je gewoon één ventiel, maar intern doet een klein signaal het zware werk. Je hebt dus een pneumatische krachtversterking: klein elektrisch signaal $arrow$ kleine luchtstroom $arrow$ grote schuifkracht.
+  De spoel schakelt alleen dat kleine ventiel; de perslucht die daardoor komt, duwt de grote schuif om. Een pneumatische krachtversterking dus: klein elektrisch signaal $arrow.r$ kleine luchtstroom $arrow.r$ grote schuifkracht.
 
   Dat principe gebruik je vooral waar de druk hoog is of het debiet groot: zware pneumatiek en hydraulica.
 ]
 
-Voordelen (vooral voor monostabiele ventielen):
-- *Lager energieverbruik* (efficiënter) bij het aanhouden van de geactiveerde stand vergeleken met directe spoel-bediening.
-- *Weinig elektriciteitsgebruik*: De stroom naar de spoel is vaak laag genoeg om direct op een digitale uitgang (transistor) van het besturingssysteem aan te sluiten. Dit bespaart kosten doordat een extra interfacerelais of snubbercircuit overbodig is.
+Voordelen, vooral bij monostabiele ventielen:
+- lager energieverbruik om de geactiveerde stand vast te houden;
+- de spoelstroom is vaak laag genoeg om rechtstreeks op een digitale PLC-uitgang te hangen, dus geen interfacerelais nodig.
 
 Waar die stuurlucht _vandaan_ komt, is het hele verschil tussen de twee soorten:
 
 #concept(title: "Internal pilot vs external pilot")[
-  *Internal pilot* (ook *bleed piloted* genoemd) takt de stuurlucht intern af van de hoofdtoevoer (poort $1$) van het ventiel zelf. Geen extra slang nodig, dus goedkoop en simpel.
-  _Nadeel_: als de persluchtdruk te laag is, bij een "soft start", of als de hoofdlucht uitgeschakeld is, kan dit ventiel niet schakelen.
+  *Internal pilot* (bleed piloted) takt de stuurlucht af van poort $1$ van het ventiel zelf. Geen extra slang, dus goedkoop.
+  _Nadeel_: bij te lage druk, bij een soft start of met de hoofdlucht af, schakelt het ventiel niet.
 
   *External pilot*: de stuurlucht komt via een aparte poort binnen, gevoed door een onafhankelijk circuit. Kost een extra slang, maar de stuurkring staat altijd op volle druk.
 ]
@@ -452,7 +449,7 @@ Waar die stuurlucht _vandaan_ komt, is het hele verschil tussen de twee soorten:
   De bediening zegt niets over het aantal poorten of standen. Dat lees je uit het aantal hokjes en aansluitingen, los van wat er links en rechts tegenaan staat.
 
   #examenbox[Zorg dat je alle symbolen goed kent, dat zijn gratis punten op het examen.]
-]
+
 
 == Logische schakelingen met ventielen
 
@@ -470,7 +467,7 @@ A- brengt ons van $A_1$ naar $A_0$
 $A_0$ en $A_1$ zijn de *toestanden*: alle standen waarin de cilinder stabiel kan blijven staan.
 
 === Ventielen in logische circuits <sec:pneum-logica>
-
+]
 Je kan alle logische functies met ventielen bouwen: AND, OR en NOT.
 
 #belangrijk[Vergeet niet dat een logisch circuit ook drukvoeding én ontluchting nodig heeft.] Zonder ontluchting werkt de persluchtleiding als een drukvat: de functie schakelt niet meer uit, of pas nadat er genoeg lucht weggelekt is, intern zowel als extern.

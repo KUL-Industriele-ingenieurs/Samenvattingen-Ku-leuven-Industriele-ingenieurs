@@ -2,7 +2,7 @@
 
 = Oefeningen transformatoren <ch:oefeningen>
 
-Een derde van het examen bestaat uit oefeningen op transformatoren, en het is elk jaar dezelfde opbouw: uit de kenplaat en de twee proeven haal je het vervangingsschema, daarna belast je de transformator en bereken je $U_2$, het rendement en de fasoren. Er staat geen enkele transformatorformule op het formularium, zie @sec:formularium-examen.
+Elk jaar dezelfde opbouw: uit de kenplaat en de twee proeven haal je het vervangingsschema, daarna belast je de transformator en bereken je $U_2$, het rendement en de fasoren. Zonder formularium, zie @sec:formularium-examen.
 
 == De basisgrootheden uit de kenplaat <sec:kenplaat-basis>
 
@@ -86,7 +86,7 @@ De kortsluitspanning $u_"sc"$ en de nullaststroom $i_0$ staan op de kenplaat in 
 ]
 
 #waarschuwing[
-  De splitsing $R_1 = R'_2 = R_"eq"\/2$ in het T-schema is een #belangrijk[afspraak], geen meting. De twee proeven geven je alleen de som. Zonder extra informatie verdeel je gelijk.
+  De splitsing $R_1 = R'_2 = R_"eq"\/2$ in het T-schema is een #belangrijk[afspraak], geen meting: de twee proeven geven je alleen de som.
 ]
 
 == Uitgewerkt: van driefasig naar het eenfasig equivalent <sec:oef-driefasig>
@@ -112,12 +112,18 @@ De kortsluitspanning $u_"sc"$ en de nullaststroom $i_0$ staan op de kenplaat in 
 
 == Uitgewerkt: belasten, spanningsval en rendement <sec:oef-belasten>
 
-Dit is het tweede deel van de examenvraag: dezelfde transformator wordt belast, en je moet de secundaire spanning en het rendement geven.
-
 #oefening(title: "Nominale belasting met capacitieve arbeidsfactor")[
   *Gegeven.* De transformator uit @sec:oef-vervangingsschema, belast op nominale stroom, met nominale spanning aan de primaire zijde. De arbeidsfactor is $cos phi = #"0,9"$ #strong[capacitief].
 
   *Gevraagd.* Koperverliezen, ijzerverliezen, $U_2$, rendement, fasordiagram.
+
+  *Model.* Dit is géén ideale transformator: we rekenen met het #keyterm[cantilever-schema] uit @sec:oef-vervangingsschema, herleid naar de primaire zijde. De dwarstak $R_c parallel X_m$ hangt aan de primaire klemmen, dus ze staat buiten de spanningsval en levert enkel $P_"Fe"$. De hele val zit in de serietak $underline(Z)_"eq" = R_"eq" + j X_"eq"$.
+
+  #figure(
+    image("assets/Approximatie Circuit cantilever Circuit.png", width: 9cm),
+    caption: [Het cantilever-schema waarmee we rekenen. $underline(V)'_2$ is de secundaire spanning herleid naar de primaire zijde; delen door $k$ geeft $U_2$.],
+    label: <fig:oef-belasten-schema>,
+  )
 
   *Stap 1: de verliezen.* Bij nominale stroom zijn de koperverliezen precies wat de kortsluitproef mat, en bij nominale spanning zijn de ijzerverliezen wat de nullastproef mat.
   $ P_"Cu" = P_"sc" = 2700 "W" quad quad P_"Fe" = P_0 = 950 "W" $
@@ -148,7 +154,7 @@ Dit is het tweede deel van de examenvraag: dezelfde transformator wordt belast, 
 ]
 
 #examenbox[
-  In de zittingen van juni 2026 en augustus 2026 was de belasting een #keyterm[PV-bron] (fotovoltaïsche cel) aan de secundaire zijde in plaats van een gewone last. De stroom loopt dan het net ín, dus $underline(I)_1$ en $underline(I)_2$ wijzen in dezelfde zin en je telt de val op in plaats van ze af te trekken. De methode blijft verder dezelfde.
+  In de zittingen van juni 2026 en augustus 2026 was de belasting een #keyterm[PV-bron] (fotovoltaïsche cel) aan de secundaire zijde in plaats van een gewone last. De stroom loopt dan het net ín, dus $underline(I)_1$ en $underline(I)_2$ wijzen in dezelfde zin en je telt de val op in plaats van ze af te trekken.
 ]
 
 == Rendement bij deellast <sec:oef-max-rendement>

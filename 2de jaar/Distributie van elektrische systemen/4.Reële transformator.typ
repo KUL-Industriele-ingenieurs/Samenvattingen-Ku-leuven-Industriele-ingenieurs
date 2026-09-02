@@ -122,10 +122,10 @@ Echter, door de niet-lineaire BH-curve van het kernmateriaal is de relatie tusse
 ==== Harmonische analyse
 Omdat de stroom periodiek maar niet-sinusvormig is, kunnen we deze via *Fourier-analyse* wiskundig ontleden in verschillende sinusvormige componenten _We gaan de vreemde sinusvormige curve opzetten in verschillende sinussen_:
 
-- *Fundamentele component ($f_1$):* Dit is de sinusvormige stroom op de basisnetfrequentie. Het vertegenwoordigt het grootste deel van de magnetisatiestroom en is wat we zouden zien als de kern perfect lineair zou zijn.
+- *Fundamentele component ($f_1$):* de sinusvormige stroom op de netfrequentie. Dat is het grootste deel van de magnetisatiestroom, en het enige wat je zou zien bij een perfect lineaire kern.
 - *Harmonische componenten ($f_3, f_5, ...$):* Dit zijn sinussen met een frequentie die een geheel veelvoud is van de fundamentele (bijv. 3 of 5 keer zo snel). Ze ontstaan puur door de niet-lineariteit van de kern en zijn de "correcties" die nodig zijn om de afwijking van een perfecte sinus te beschrijven.
 
-1. *3de Harmonische:* Dit is de meest dominante component (vaak 30-40% van de totale stroom). Zoals te zien in @fig:fundamentaal-harmonisch, valt de piek van de 3de harmonische precies samen met de piek van de fundamentele component. Deze *constructieve interferentie* zorgt ervoor dat de resulterende stroomgolf "gepiekt" wordt: de top wordt scherper en de flanken worden steiler.
+1. *3de harmonische:* de dominantste component, vaak $30$ tot $40 %$ van de totale stroom. Op @fig:fundamentaal-harmonisch valt haar piek samen met die van de fundamentele. Deze *constructieve interferentie* zorgt ervoor dat de resulterende stroomgolf "gepiekt" wordt: de top wordt scherper en de flanken worden steiler.
 2. *5de Harmonische:* Ook aanwezig, maar met een kleinere amplitude. Deze helpt de vorm verder te verfijnen naar de werkelijke magnetisatiestroom.
 3. *Oneven karakter:* Omdat de stroomvervorming symmetrisch is voor de positieve en negatieve helft van de cyclus, bevat de stroom enkel oneven harmonischen. Even harmonischen zouden de golfvorm asymmetrisch maken, wat hier niet het geval is.
 
@@ -135,7 +135,7 @@ Omdat de stroom periodiek maar niet-sinusvormig is, kunnen we deze via *Fourier-
   label: <fig:fundamentaal-harmonisch>,
 )
 
-Deze harmonischen zijn ongewenst in het net omdat ze kunnen leiden tot extra opwarming van transformatoren en interferentie met elektronica. In driefasige systemen worden deze vaak opgevangen door een *delta-verbinding* ($Delta$), waarin de 3de harmonischen kunnen rondstromen zonder het net te vervuilen.
+Harmonischen zijn ongewenst: ze warmen transformatoren extra op en storen elektronica. In driefasige systemen worden deze vaak opgevangen door een *delta-verbinding* ($Delta$), waarin de 3de harmonischen kunnen rondstromen zonder het net te vervuilen.
 
 //Sessie 4 24min
 
@@ -211,7 +211,7 @@ Je ziet het hier getekend in gestreept blauw.
   label: <fig:fundamenteel-component>,
 )
 
-== Excitatiestroom en impedantie <sec:exciting-current-en-impedantie>
+== Exciting current en impedantie <sec:exciting-current-en-impedantie>
 
 #wrap-figure(
   image("assets/Transformator-reël circuit.png", width: 7cm),
@@ -241,7 +241,7 @@ $I_c$ *Core-verlies stroom:* de component die de hysteresis en eddy-current (wer
 
 $I_m$ *Magnetisatiestroom:* de component die nodig is om de magnetische flux in de kern op te wekken (door de finite permeabiliteit). Deze ijlt $90^circle$ na op de spanning $V_1$. $I_m = frac(V_1, omega L_m)$
 
-== Wervelstromen <sec:eddy-currents>
+== Eddy currents <sec:eddy-currents>
 
 Eddy currents hebben we al deels gezien in _elektriciteit_
 Het is de stroom die ontstaat wanneer een geleider in een veranderlijk magnetisch veld wordt geplaatst.
@@ -256,7 +256,7 @@ $ P_("loss") = integral_v arrow(j) dot arrow(E) d v ~ E^2 ~ B^2 f^2 $
 
 Met $arrow(j) = sigma arrow(E)$
 
-=== Wervelstroomrem <sec:eddy-current-break>
+=== Eddy current break <sec:eddy-current-break>
 
 
 
@@ -338,7 +338,7 @@ Hieronder een voorbeeld door de losses afhankelijk van het magnetische veld $B$.
 
 Nu hebben we alle niet ideale delen van de transformator core gedaan. Nu gaan we over naar alle *Niet-ideale delen van de windingen*.
 
-=== Lekflux <sec:leakage>
+=== Leakage <sec:leakage>
 
 We nemen aan dat alle magnetische flux $phi$ binnen de kern blijft maar nu gaan we aannemen dat niet alle magnetische flux $phi$ door de windingen gaat.
 
@@ -475,7 +475,7 @@ De fracties tussen $N_1$ en $N_2$ komen dan terug in het spel.
 
 Dit zijn metingen die we maken en testen die we doen op transformator circuits.
 
-==== Nullastproef <sec:no-load-test>
+==== No-load test <sec:no-load-test>
 
 Bij deze test gaat de stroom naar de ideale transformator gelijk zijn aan nul
 
@@ -551,16 +551,16 @@ met:
 - $I_c$: verliescomponent, $I_c = P_0 \/ V_1$ [A]
 - $I_m$: magnetiserende component [A]
 
-== Kortsluitproef <sec:short-circuit-test>
+== Short circuit test <sec:short-circuit-test>
 Deze test wordt gebruikt om de *serie-elementen* van het equivalent schema te bepalen ($R_(e q)$ en $X_(e q)$).
 
 *Methodiek:*
-- De *lage spanning (LV) zijde* wordt kortgesloten.
-- De metingen gebeuren aan de *hoge spanning (HV) zijde* (omdat de stroom daar lager en dus makkelijker te meten is).
+- De *laagspanningszijde* wordt kortgesloten.
+- Je meet aan de *hoogspanningszijde*, want daar is de stroom lager en dus makkelijker te meten.
 - Met een variac wordt de spanning $V_(s c)$ langzaam verhoogd totdat de *nominale stroom* ($I_(1,n o m)$) door de wikkelingen loopt.
 
 *Aannames:*
-1. *Core-verliezen zijn verwaarloosbaar:* Omdat $V_(s c)$ veel kleiner is dan de nominale spanning (vaak slechts 2% tot 10%), is de magnetische flux in de kern zeer laag. De core-verliezen ($P_c$) in $R_c$ zijn daardoor zo klein dat we ze negeren.
+1. *Kernverliezen verwaarloosbaar:* $V_(s c)$ is maar $2$ tot $10 %$ van de nominale spanning, dus de flux in de kern is zeer laag en $P_c$ valt weg.
 2. *Parallelle tak wordt genegeerd:* $Z_phi$ is veel groter dan de serie-impedantie bij deze lage spanning.
   $ => I_1 approx I'_2 $
 

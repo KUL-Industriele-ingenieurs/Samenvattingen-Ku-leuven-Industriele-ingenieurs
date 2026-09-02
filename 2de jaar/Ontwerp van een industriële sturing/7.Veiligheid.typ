@@ -3,11 +3,11 @@
 = Veiligheid <ch:veiligheid>
 
 
-Veiligheid is geen los hoofdstukje achteraan het ontwerp. #belangrijk[Hangt de veiligheid van een machine af van het juist functioneren van een besturing, dan heet dat #keyterm[functionele veiligheid].] Dat legt bijzondere eisen op aan de beschikbaarheid van die veiligheidsfunctie: ze moet werken, ook als er iets stukgaat.
+#belangrijk[Hangt de veiligheid van een machine af van het juist functioneren van een besturing, dan heet dat #keyterm[functionele veiligheid].] Dat legt bijzondere eisen op aan de beschikbaarheid van die veiligheidsfunctie: ze moet werken, ook als er iets stukgaat.
 
 == Het starten van een motor <sec:motor-starten>
 
-Het probleem bij het starten is dat een stilstaande motor slip $s = 1$ heeft: de rotor staat stil ten opzichte van het draaiveld, de geïnduceerde rotorspanning is maximaal en de rotorimpedantie laag. Daardoor trekt de motor bij het aanzetten veel meer stroom dan nominaal. De vier startmethodes verschillen enkel in *hoeveel spanning je de motor geeft en wanneer*. Dat bepaalt meteen twee dingen tegelijk: de inschakelstroom en het aanloopkoppel.
+Een stilstaande motor heeft slip $s = 1$: de rotor staat stil ten opzichte van het draaiveld, de geïnduceerde rotorspanning is maximaal en de rotorimpedantie laag. Daardoor trekt hij bij het aanzetten veel meer stroom dan nominaal. De vier startmethodes verschillen enkel in *hoeveel spanning je de motor geeft en wanneer*. Dat bepaalt meteen twee dingen tegelijk: de inschakelstroom en het aanloopkoppel.
 
 $ T prop U^2 $
 
@@ -35,7 +35,7 @@ Elke methode die de startstroom beperkt door de spanning te verlagen, verlaagt d
 
 + *VFD (Variable Frequency Drive)*
 
-  Een VFD regelt de spanning #strong[én] de frequentie. Dat is het verschil met een softstarter: de synchrone snelheid $n_s = 120 f \/ p$ schaalt mee, dus de slip blijft klein en de motor houdt vol koppel bij lage snelheid. Duurder, maar je krijgt er snelheidsregeling en energiebesparing bij.
+  Een VFD regelt de spanning #strong[én] de frequentie. Daardoor schaalt de synchrone snelheid $n_s = 120 f \/ p$ mee, blijft de slip klein en houdt de motor vol koppel bij lage snelheid. Duurder dan een softstarter, maar met snelheidsregeling en energiebesparing erbij.
 
 De netbeheerder kan het aan dat het grootste deel van de motoren in de industrie DOL start, maar je wordt hier wel voor beboet.
 
@@ -79,10 +79,10 @@ Lees @fig:VFD-schema van links naar rechts; de logica is dat je van een net met 
 + / Three-phase output: de uitgangsspanning bestaat dus uit *blokvormige spanningspulsen*, niet uit een sinus. Door de pulsbreedte te moduleren (PWM, Pulse-Width Modulation) is de *gemiddelde* waarde per periode wel sinusvormig, en omdat de motorwikkeling inductief is, filtert de motor zelf die pulsen uit tot een nagenoeg sinusvormige stroom. Dat is de "resulting sine wave" in de figuur.
 
 #concept(title: "Waarom eerst gelijkrichten?")[
-  Je kan de netfrequentie niet rechtstreeks veranderen. Door eerst alles naar DC te brengen, gooi je de netfrequentie weg; de inverter bepaalt daarna volledig zelf hoe snel hij schakelt, en dus zowel de frequentie als de amplitude van de uitgang. Vandaar de vaste volgorde: gelijkrichter $arrow.r$ DC-bus $arrow.r$ inverter.
+  De netfrequentie kan je niet rechtstreeks veranderen. Door eerst naar DC te gaan gooi je ze weg, en bepaalt de inverter zelf de frequentie én de amplitude van de uitgang. Vandaar de vaste volgorde: gelijkrichter $arrow.r$ DC-bus $arrow.r$ inverter.
 ]
 
-Je moet de tekeningen *horizontaal* lezen: ze tonen wanneer wat gebeurt. Eerst komen de drie fasen binnen via de gelijkrichterbrug, gevolgd door de choke. Daarna hakken de IGBT's het signaal in stukken. De condensator kan die snelle spanningsveranderingen niet volgen en houdt de busspanning dus min of meer constant --- dat is net zijn functie: afvlakken.
+Je moet de tekeningen *horizontaal*. Eerst komen de drie fasen binnen via de gelijkrichterbrug en de choke, daarna hakken de IGBT's het signaal in stukken. De condensator kan die snelle veranderingen niet volgen en houdt de busspanning min of meer constant --- dat is net zijn functie: afvlakken.
 
 === EMI en de aarding van de motorkabel <sec:vfd-emi>
 
@@ -141,12 +141,12 @@ De drie delen uit elkaar gehouden:
 == Pictogrammen en veiligheidsstop
 
 #wrap-figure(
-  image("assets/OIS_pictogram_noodstop.png", width: 2.8cm),
+  image("assets/OIS_pictogram_noodstop.png", width: 4cm),
   caption: [Pictogram voor de veiligheidsstop volgens ISO 7010.],
   label: <fig:pictogram-noodstop>,
 )[
   #keyterm[ISO 7010] is de internationale norm voor veiligheidssymbolen. In 2011 registreerde ISO een nieuw symbool om de #strong[locatie] van noodstopknoppen aan te duiden, in het formaat "groen vierkant met wit symbool". Dat is het formaat voor bordjes die de plaats van veiligheidsuitrusting aangeven, dus dezelfde familie als brancards, oogdouches, nooddouches en nooduitgangen.
-]
+
 
 == EN 13849 en SRP/CS
 
@@ -159,6 +159,7 @@ De onderdelen van de besturing die de veiligheidsfunctie uitvoeren heten samen d
 $ "trigger event" arrow.r "logica" arrow.r "actuatoren" $
 
 Dus: de noodstopknop of het lichtgordijn, dan het noodstoprelais of de safety-PLC, en dan de contactoren of de STO-ingang van de drive. #belangrijk[Elk van die drie schakels hoort bij de SRP/CS], en elk van de drie kan de veiligheidsfunctie onderuithalen.
+]
 
 #figure(
   image("assets/OIS_srpcs_clean.png", width: 15cm),
@@ -168,7 +169,7 @@ Dus: de noodstopknop of het lichtgordijn, dan het noodstoprelais of de safety-PL
 
 === Het voorbeeldschema <sec:veiligheid-voorbeeldschema>
 
-Het schema uit @ch:voorbeeld-diagram is bewust eenvoudig gehouden. De slides zetten er zelf de beperkingen bij:
+Het schema uit @ch:voorbeeld-diagram is bewust eenvoudig. De beperkingen:
 - het is categorie 1 (B);
 - er is maar #strong[één] veiligheidsfunctie. Normaal zijn er meer: noodstop, safe limited speed, enzovoort;
 - er is maar #strong[één] trigger event. Normaal zijn er meer: lidar, lichtgordijnen;
@@ -190,14 +191,14 @@ Componenten gaan stuk. Erger nog: ze kunnen #strong[foutief] falen, zodat hun ve
 - *Trigger events:* elke noodstopknop schakelt #strong[twee] N.C.-contacten. Een dubbelkanaals lichtgordijn schakelt eveneens twee uitgangen.
 - *Uitgangstoestellen:* elke motor wordt door #strong[twee] contactoren afgeschakeld.
 
-Maar wat als eerst het ene contact faalt en later het andere? Daarom worden de contacten met #keyterm[cross-monitoring] aangesloten. Beschrijven de twee kanalen niet dezelfde situatie, dan gaat het systeem naar de veilige toestand. #belangrijk[Ook na een reset herhaalt dat zich, tot het defecte contact vervangen is.]
+Wat als eerst het ene contact faalt en later het andere? Daarvoor dient #keyterm[cross-monitoring]: beschrijven de twee kanalen niet dezelfde situatie, dan gaat het systeem naar de veilige toestand. #belangrijk[Ook na een reset, tot het defecte contact vervangen is.]
 
 Dubbelkanaals doe je #strong[altijd] met een speciaal noodstoprelais, of met een safety-PLC. De complexiteit en de valideerbaarheid laten niets anders toe.
 
 === Categorie 3 <sec:categorie3>
 
 #wrap-figure(
-  image("assets/OIS_categorie4_clean.png", width: 9cm),
+  image("assets/OIS_categorie4_clean.png", width: 10cm),
   caption: [Categorie 3: redundante signaalpaden met cross-monitoring van de ingangen en terugkoppeling van de uitgangen.],
   label: <fig:categorie3>,
 )[
@@ -205,45 +206,45 @@ Dubbelkanaals doe je #strong[altijd] met een speciaal noodstoprelais, of met een
   + redundante signaalpaden;
   + #strong[cross-monitoring] van de ingangssignalen;
   + een #strong[back-check]: de terugkoppeling van de uitgangen wordt vergeleken met de aangestuurde toestand.
-]
+  + 
+  #keyterm[EDM] (External Device Monitoring) controleert of de externe toestellen die het veiligheidsmodule aanstuurt, bijvoorbeeld de contactoren, de veiligheidskring #strong[effectief] hebben onderbroken.
 
 === External Device Monitoring <sec:edm>
-
+]
 #wrap-figure(
   image("assets/OIS_edm_clean.png", width: 8.5cm),
   caption: [EDM: de terugkoppeling van de contactoren zit in de resetvoorwaarde van het noodstoprelais.],
   label: <fig:edm>,
 )[
-  #keyterm[EDM] (External Device Monitoring) controleert of de externe toestellen die het veiligheidsmodule aanstuurt, bijvoorbeeld de contactoren, de veiligheidskring #strong[effectief] hebben onderbroken.
 
   Je implementeert dat door de terugkoppeling van die contactoren aan de #strong[resetvoorwaarde] van het noodstoprelais toe te voegen. De resetkring verhindert dan een reset zolang een gerelateerde component niet is afgevallen, bijvoorbeeld `-Q1` of `-Q2`.
-]
+
 
 #concept(title: "Force-guided contacts")[
-  Om die redundantie echt te garanderen kies je bovendien voor #keyterm[force-guided contacts] (mechanisch gedwongen contacten). Daarbij is het mechanisch onmogelijk dat het N.O.-hoofdcontact en het N.C.-hulpcontact tegelijk gesloten zijn. Plakt het hoofdcontact, dan kán het hulpcontact niet sluiten, en dus blokkeert de reset.
+  Kies daarbij #keyterm[force-guided contacts]: mechanisch is het onmogelijk dat het N.O.-hoofdcontact en het N.C.-hulpcontact tegelijk gesloten zijn. Plakt het hoofdcontact, dan kán het hulpcontact niet sluiten en blokkeert de reset.
 ]
 
 === Wat je nooit mag schakelen <sec:dual-channel-0v>
 
 In gewone logica schakel je nooit de $0 "V"$. #belangrijk[Bij een dubbelkanaalsoplossing is dat soms toch de enige manier], namelijk om te vermijden dat een losgekomen $24 "V"$-draad die tegen een klem komt, de noodstop buiten werking stelt.
 
-Bij een bistabiel ventiel is het doel dat het #strong[geen nieuwe beweging] start. Kan je uitsluiten dat de faalvormen van het ventiel zelf tot een onbedoelde beweging leiden, dan mag je het ventiel zonder voeding (afhankelijk van de gebruikte norm) buiten beschouwing laten.
-
+Bij een bistabiel ventiel is het doel dat het #strong[geen nieuwe beweging] start. Sluit je uit dat de faalvormen van het ventiel zelf een onbedoelde beweging geven, dan mag je het spanningsloze ventiel buiten beschouwing laten, afhankelijk van de norm.
+]
 === Vertraagd noodstopcontact <sec:vertraagd-estop>
 
 #examenbox[Dit was een klassieke examenvraag in 2024-2025.]
 
-#wrap-figure(
-  image("assets/OIS_vertraagd_estop_contact.png", width: 7.5cm),
+#figure(
+  image("assets/OIS_vertraagd_estop_contact.png", width: 12cm),
   caption: [Vertraagd noodstopcontact: één kleinere, later afvallende contactor geeft redundantie voor een hele reeks contactoren.],
   label: <fig:vertraagd-estop>,
-)[
+)
   Een #keyterm[off-delay] noodstopcontact is nuttig wanneer je redundantie nodig hebt voor véél of zeer krachtige contactoren.
 
   De redenering uit de slides: heb je $30$ motoren met elk een contactor van $30 "A"$, dan zou een centrale redundante contactor vóór de hele groep $900 "A"$ moeten kunnen schakelen. Dat is onbetaalbaar groot en duur.
 
-  #belangrijk[Eén redundante contactor van bijvoorbeeld $60 "A"$ volstaat, mits deze een fractie #strong[later] afschakelt dan de individuele contactoren.] Omdat de individuele contactoren al geopend zijn, schakelt de vertraagde centrale contactor stroomloos af, tenzij één individuele contactor vastbakt (in welk geval hij enkel de stroom van díe ene motor onderbreekt).
-]
+  #belangrijk[Eén redundante contactor van bijvoorbeeld $60 "A"$ volstaat, als hij een fractie #strong[later] afschakelt dan de individuele.] De andere zijn dan al open, dus schakelt hij stroomloos af, tenzij er één vastbakt: dan onderbreekt hij enkel díe ene motor.
+
 
 === STO op een drive <sec:sto-ingang>
 
@@ -259,7 +260,7 @@ De #keyterm[STO]-ingangen (Safe Torque Off) schakelen het vermogendeel van een V
 
 === De tussenvorm: ½ channel <sec:half-channel>
 
-Tussen éénkanaals en tweekanaals zit nog een niveau. Bij een #keyterm[½-channel] beveiliging schakelt er maar #strong[één] kanaal, maar dat ene kanaal wordt wél bewaakt: je gebruikt bijvoorbeeld één relais om het veiligheidssignaal te onderbreken, en controleert met feedbackcontacten of een veiligheidsrelais of dat relais nog correct werkt.
+Bij een #keyterm[½-channel] beveiliging schakelt er maar #strong[één] kanaal, maar dat wordt wél bewaakt: één relais onderbreekt het veiligheidssignaal, en feedbackcontacten controleren of dat relais nog correct werkt.
 
 #belangrijk[Dat is veiliger dan puur éénkanaals, maar haalt de betrouwbaarheid van dual channel niet.] Bij dual channel zijn er twee onafhankelijke kringen; hier blijft er één punt over dat kan falen, alleen merk je het nu wel.
 
@@ -267,7 +268,7 @@ Tussen éénkanaals en tweekanaals zit nog een niveau. Bij een #keyterm[½-chann
 
 #belangrijk[Dubbelkanaals is niet altijd nodig.] De risicoanalyse bepaalt welk niveau je moet halen, niet de gewoonte.
 
-Het voorbeeld uit de slides is een rem op een verticale as. Het probleem bij een éénkanaalsrem is dat er geen redundantie is, én dat de berekening van het veiligheidsniveau volgens ISO 13849 ingewikkeld wordt. Een drive met SBC (Safe Brake Control) en SBT (Safe Brake Test) verhoogt de veiligheid #strong[zonder] dat je een dubbelkanaalsrem nodig hebt.
+Het voorbeeld is een rem op een verticale as. Een éénkanaalsrem heeft geen redundantie, en de berekening volgens ISO 13849 wordt ingewikkeld. Een drive met SBC (Safe Brake Control) en SBT (Safe Brake Test) verhoogt de veiligheid #strong[zonder] dubbelkanaalsrem.
 
 #figure(
   image("assets/OIS_srecs_single_channel.png", width: 12cm),
@@ -275,7 +276,7 @@ Het voorbeeld uit de slides is een rem op een verticale as. Het probleem bij een
   label: <fig:srecs-single-channel>,
 )
 
-Elke schakel is een SRP/CS-deel met een eigen betrouwbaarheidscijfer. Voor de ingang en de uitgang is dat de #keyterm[MTTFd] (Mean Time To dangerous Failure) in jaren, voor de controller de #keyterm[PFH] (Probability of dangerous Failure per Hour). Uit die drie samen volgt het performance level van de hele keten.
+Elke schakel heeft een eigen betrouwbaarheidscijfer: #keyterm[MTTFd] (Mean Time To dangerous Failure) in jaren voor ingang en uitgang, #keyterm[PFH] (Probability of dangerous Failure per Hour) voor de controller. Samen geven ze het performance level van de keten.
 
 De les: soms lost een slimmer component het probleem op waar anders een dubbele architectuur voor nodig was.
 
@@ -283,7 +284,7 @@ De les: soms lost een slimmer component het probleem op waar anders een dubbele 
 
 In plaats van elke veiligheidscomponent apart te bedraden, kan je de veiligheidssignalen over een #keyterm[safety fieldbus] sturen, bijvoorbeeld PROFIsafe.
 
-Het voordeel is duidelijk bij grote machines: één buskabel in plaats van tientallen dubbel uitgevoerde draden, en diagnose per component in plaats van zoeken welk contact open staat. De bus zelf is dan zo opgebouwd dat een fout in de communicatie zelf, zoals een verloren of vertraagde boodschap, ook naar de veilige toestand leidt.
+Bij grote machines scheelt dat: één buskabel in plaats van tientallen dubbele draden, en diagnose per component in plaats van zoeken welk contact open staat. Een fout in de communicatie zelf, zoals een verloren of vertraagde boodschap, leidt ook naar de veilige toestand.
 
 == EN 60204: stopcategorieën en STO
 
