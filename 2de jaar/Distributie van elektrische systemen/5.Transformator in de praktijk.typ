@@ -98,7 +98,7 @@ Nu we ons vereenvoudigd model hebben, willen we de parameters ($R_("eq"), X_("eq
   label: <fig:Operatie-modussen>,
 )
 
-=== Nullast <sec:no-load>
+=== No-load <sec:no-load>
 
 #figure(
   image("assets/No-Load-test.png", width: 10cm),
@@ -111,7 +111,7 @@ Bij de no-load test staat de secundaire kant open. Omdat er geen stroom langs de
 Dit betekent dat alle gemeten verliezen ($P_0$) in deze test de *kernverliezen* ($P_(F e)$) zijn. We kunnen hiermee $R_(F e)$ en $X_m$ bepalen.
 
 
-=== Kortsluiting <sec:short-circuit>
+=== Short circuit <sec:short-circuit>
 
 #figure(
   image("assets/Kortsluitingstest.png", width: 10cm),
@@ -133,7 +133,7 @@ Bijvoorbeeld: als $u_(s c) = 5\%$, dan is de kortsluitingsstroom $20 times I_(n 
 
 Omdat de spanning bij deze test zo laag is, zijn de kernverliezen verwaarloosbaar. Alle gemeten verliezen zijn dus *koperverliezen* ($P_(c u)$), waarmee we $R_("eq")$ en $X_("eq")$ kunnen bepalen.
 
-=== Vollast <sec:full-load>
+=== Full-load <sec:full-load>
 
 Na het bepalen van de parameters via de no-load en short circuit test kunnen we de transformator onder normale belasting analyseren. De #keyterm[Full-load] bepaalt de maximale stroom en voltage die op de transformator mag komen voor normale operaties.
 
@@ -155,7 +155,7 @@ Meestal moet je hier niet teveel rekening mee houden omdat de maker van de trans
 
 In oefeningen gaat er altijd vermeld worden als je verliezen in rekening moet houden.
 
-== Spanningsval <sec:voltage-drop>
+== Voltage drop <sec:voltage-drop>
 
 Een transformator is geen perfecte spanningsbron: door de interne weerstand en reactantie gaat er spanning verloren. Hoe meer stroom de belasting trekt, hoe groter die spanningsval. We gaan nu berekenen hoeveel spanning we verliezen over ons vereenvoudigd model.
 
@@ -226,7 +226,7 @@ De voltage drop is niet altijd even groot — het hangt af van hoeveel stroom er
 
 == Efficiëntie
 
-Naast de spanningsval willen we weten hoeveel vermogen er in de transformator verloren gaat. De verliezen zelf staan in #ref(<ch:reële-transformatoren>); hier vatten we ze samen in één getal.
+De verliezen zelf staan in #ref(<ch:reële-transformatoren>); hier vatten we ze samen in één getal: het rendement.
 
 #wrap-figure(
   image("assets/Efficienty.png", width: 8cm),
@@ -247,7 +247,7 @@ Naast de spanningsval willen we weten hoeveel vermogen er in de transformator ve
 
 ]
 
-== Inschakelen <sec:start-up>
+== Start-up <sec:start-up>
 
 Tot nu toe hebben we gekeken naar de transformator in #keyterm[Steady state]: alles draait al en de stromen en spanningen zijn stabiele sinusgolven. Maar wat gebeurt er op het moment dat we de transformator *aanzetten*? Daarvoor moeten we even terug naar het tijdsdomein (in plaats van phasors).
 
@@ -381,14 +381,14 @@ We willen dat als we meerdere transformatoren in parallel hebben, de load over d
 
 == Oefeningen transformatoren uit de les in de praktijk
 
-De drie oefeningen die de slides bij dit hoofdstuk stellen. De examenoefening op de kenplaat staat apart in @ch:oefeningen.
+De examenoefening op de kenplaat staat apart in @ch:oefeningen.
 
 #oefening(title: "Verkeerde aftakking: kringstroom")[
   *Gegeven.* Twee identieke transformatoren A en B staan parallel, maar op een verschillende aftakking gezet: A geeft $10 "kV"\/230 "V"$, B geeft $10 "kV"\/220 "V"$. Beide hebben $Z_(s c) = #"0,05" Omega$ aan de secundaire zijde. Er hangt geen belasting aan.
 
   *Gevraagd.* De kringstroom $I_"circ"$, de gecombineerde primaire stroom $I_1$, en de uitgangsspanning $V_2$.
 
-  *Denkstap.* De twee secundaire wikkelingen staan tegenover elkaar in een gesloten lus. Hun nullastspanningen verschillen, en dat verschil drijft een stroom door de twee kortsluitimpedanties in serie. Er is geen belasting nodig om die stroom te laten lopen.
+  *Denkstap.* De twee secundaire wikkelingen staan tegenover elkaar in een gesloten lus. Hun nullastspanningen verschillen, en dat verschil drijft een stroom door de twee kortsluitimpedanties in serie.
 
   *De kringstroom.*
   $ I_"circ" = (V_(2,A) - V_(2,B)) / (Z_(s c,A) + Z_(s c,B)) = (230 - 220)/(#"0,05" + #"0,05") = 100 "A" $
@@ -403,7 +403,7 @@ De drie oefeningen die de slides bij dit hoofdstuk stellen. De examenoefening op
   A trekt die stroom uit het net, B duwt hem er weer in. Wat het net overhoudt is het verschil:
   $ I_1 = #"2,3" - #"2,2" = #"0,1" "A" $
 
-  #belangrijk[Aan de primaire zijde zie je bijna niets, terwijl er secundair $100 "A"$ rondloopt.] Die stroom verwarmt beide transformatoren zonder één watt nuttig vermogen te leveren, en je merkt hem niet aan de netzijde.
+  #belangrijk[Aan de primaire zijde zie je bijna niets, terwijl er secundair $100 "A"$ rondloopt.] Die stroom verwarmt beide transformatoren zonder één watt nuttig vermogen te leveren.
 ]
 
 #oefening(title: "Lastverdeling bij gelijke kortsluitspanning")[
@@ -419,7 +419,7 @@ De drie oefeningen die de slides bij dit hoofdstuk stellen. De examenoefening op
   B heeft dus de dubbele impedantie en neemt de halve stroom:
   $ I_A / I_B = Z_(s c,B) / Z_(s c,A) = 2 $
 
-  A neemt $2\/3$ van de belasting, B neemt $1\/3$. Dat is precies de verhouding van hun nominale vermogens, dus beide draaien op dezelfde belastingsgraad en samen halen ze de volle $150 "kVA"$.
+  A neemt $2\/3$ van de belasting, B neemt $1\/3$: de verhouding van hun nominale vermogens. Beide draaien dus op dezelfde belastingsgraad en samen halen ze de volle $150 "kVA"$.
 ]
 
 #oefening(title: "Lastverdeling bij ongelijke kortsluitspanning")[
@@ -429,7 +429,7 @@ De drie oefeningen die de slides bij dit hoofdstuk stellen. De examenoefening op
 
   De impedanties zijn nu gelijk, dus #belangrijk[beide transformatoren voeren dezelfde stroom], en dus hetzelfde vermogen. B zit al op zijn $50 "kVA"$ terwijl A pas op de helft van zijn $100 "kVA"$ staat.
 
-  Je kan de groep dus maar tot $2 times 50 = 100 "kVA"$ belasten in plaats van tot $150 "kVA"$. De grootste transformator blijft voor een derde onbenut. Dat is de reden achter de voorwaarde van gelijke $u_(s c)$.
+  Je kan de groep dus maar tot $2 times 50 = 100 "kVA"$ belasten in plaats van tot $150 "kVA"$, en de grootste blijft voor een derde onbenut. Vandaar de voorwaarde van gelijke $u_(s c)$.
 ]
 
 

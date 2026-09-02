@@ -2,7 +2,7 @@
 
 = Theorievragen <ch:theorievragen>
 
-Wat er in de zittingen 2022 tot 2026 gevraagd is, uit `Overzicht Examenvragen Elektrische Energietechniek`, de examens in `Examen/` en de Studforum-wiki. Het deel netten bestaat elk jaar uit dezelfde vier bouwstenen: definities in één zin, een netstelsel tekenen, een gelijkrichter tekenen uit een grafiek, en een proefopstelling tekenen.
+Wat er in de zittingen 2022 tot 2026 gevraagd is, uit `Overzicht Examenvragen Elektrische Energietechniek`, de examens in `Examen/` en de Studforum-wiki.
 
 == Definities in één zin <sec:definities>
 

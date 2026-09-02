@@ -197,7 +197,7 @@ Binnenin is een analoge meting *altijd* een spanningsmeting tussen twee potentia
   caption: [Twee differentiële kanalen op één kaart],
   label: <fig:differentiele-ingang-opamp>,
 )[
-  Intern is elke analoge meting een #belangrijk[spanningsmeting tussen twee punten], ook bij een single-ended ingang, ook al suggereert die naam één draad. Een drie- of vierdraadssensor heeft extra draden voor zijn voeding, maar de meting zelf loopt altijd over twee.
+  Intern is elke analoge meting een #belangrijk[spanningsmeting tussen twee punten], ook bij een single-ended ingang. Een drie- of vierdraadssensor heeft extra draden voor zijn voeding, maar de meting zelf loopt over twee.
 
   Bij een #strong[spanningsmeting] zet de kaart een grote weerstand $R$ over de ingang, zodat ze geen energie aan de bron onttrekt. Bij een #strong[stroommeting] zet ze juist een kleine shuntweerstand om de stroom in een spanning om te zetten. Typisch is $250 Omega$ of $500 Omega$; $80 Omega$ als er weinig spanning beschikbaar is of meerdere lasten in de lus hangen.
 
@@ -225,7 +225,27 @@ Een IO-Link-toestel kan een intelligente sensor of actuator zijn, een hub, of, d
 - identificatiegegevens, zoals een typeaanduiding en een serienummer;
 - parametergegevens, zoals gevoeligheden, schakelvertragingen of karakteristieken.
 
-Het voordeel: je kan een sensor uitlezen en instellen zonder hem fysiek aan te raken, en na vervanging schrijf je de parameters gewoon opnieuw weg.
+Het voordeel: je kan een sensor uitlezen en instellen zonder hem fysiek aan te raken, en na vervanging schrijf je de parameters gewoon opnieuw weg. Het toestel meldt ook zijn eigen toestand, zodat een optische sensor bijvoorbeeld op tijd laat weten dat hij vuil wordt en je het schoonmaken in een geplande stilstand kan zetten.
+
+#figure(
+  scale(52%, reflow: true, merman.mermaid(
+    ```
+    flowchart LR
+      S1["Sensor"] -->|"klassiek"| T1["Transmitter 4-20 mA"]
+      T1 --> A1["Analoge ingangskaart"] --> P["PLC"]
+      S2["Sensor + microprocessor"] -->|"smart sensor"| B["Veldbus"] --> P
+    ```,
+    theme: (fontSize: "30px"),
+  )),
+  caption: [Twee wegen naar dezelfde PLC: via een transmitter en een analoge kaart, of rechtstreeks over de veldbus.],
+  label: <fig:smart-sensor-veldbus>,
+)
+
+Een moderne installatie gebruikt daarvoor een #keyterm[veldbus]: een communicatiesysteem zoals ethernet, maar met eigenschappen die in een industriële omgeving werken. Een #keyterm[smart sensor] bevat de elektronica om daarop aan te sluiten, in plaats van een $4$--$20 "mA"$-transmitter. De term slaat overigens op elke sensor met een microprocessor erin.
+
+#waarschuwing[
+  De analoog-digitaalomzetting in de sensor heeft grote voordelen, maar #belangrijk[elke omzetting en digitalisering voegt latentie toe]. Bij een snelle regelkring telt die vertraging mee.
+]
 
 == De KL5101 encoder-interface <sec:kl5101>
 
@@ -249,15 +269,15 @@ De ingangen:
 )
 
 #wrap-figure(
-  image("assets/OIS_kl5101_klemmen.png", width: 3.8cm),
+  image("assets/OIS_kl5101_klemmen.png", width:7cm),
   caption: [Klemmen van de KL5101, bovenaanzicht],
   label: <fig:kl5101-klemmen>,
 )[
   #belangrijk[Let op de spanningsniveaus: A, /A, B, /B en C, /C werken op $5 "V"$], ook wanneer je de klem als gewone teller gebruikt. De externe latch werkt daarentegen op $24 "V"$.
 
-  De dubbele benaming A en /A is geen toeval: dat is #strong[differentiële signalering] uit @sec:differentiele-signalering. Elke puls komt over twee draden met tegengestelde polariteit, zodat ingekoppelde storing wegvalt in het verschil. Bij een encoder met snelle pulsen over een lange kabel is dat noodzakelijk.
+  A en /A samen zijn #strong[differentiële signalering] uit @sec:differentiele-signalering: elke puls komt over twee draden met tegengestelde polariteit, zodat ingekoppelde storing wegvalt in het verschil. Vandaar telkens twee klemmen per signaal op @fig:kl5101-klemmen.
 
-  Op @fig:kl5101-klemmen zie je dat terug in de klemmenindeling: telkens twee klemmen naast elkaar per signaal. Rechts zitten de voedingen: $U_E = +5 "V"$ en $U_0 = 0 "V"$ voor de encoder zelf, plus $0 "V"$ en $24 "V"$ die de klem nodig heeft om te werken.
+  Rechts zitten de voedingen: $U_E = +5 "V"$ en $U_0 = 0 "V"$ voor de encoder zelf, plus $0 "V"$ en $24 "V"$ voor de klem.
 
   De #keyterm[gate]-ingang staat er ook: leg je die hoog op $24 "V"$, dan stopt de klem met tellen zonder zijn tellerstand te verliezen.
 ]

@@ -75,9 +75,9 @@ $ phi = V_1/(omega N_1) sin(omega t) = V_2/(omega N_2) sin(omega t) $
 )
 
 
-== Belastingen
+== Loads
 
-=== Nullast
+=== No-load
 Er is geen belasting (open keten) aangesloten op de secundaire wikkeling. De enige "weerstand" die overblijft is de magnetische weerstand (reluctantie $R_c$) van de kern.
 
 #figure(
@@ -96,7 +96,7 @@ $ i_1 = phi dot R_c / N_1 $
 
 We hebben een ideale transformator, dus $R_c = 0 (mu -> infinity)$ dus $arrow.r.double$ $i_1 = 0$.
 
-=== Belast
+=== Loaded
 
 
 #wrap-figure(

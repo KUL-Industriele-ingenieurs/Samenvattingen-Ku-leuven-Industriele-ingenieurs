@@ -42,6 +42,43 @@
 \author{Ruben Ryckaert}
 \date{\today}
 
+% De AC-zonegrafiek wordt twee keer gebruikt (H5 en de theorievragen in H6).
+\newcommand{\acZonesFiguur}{%
+\begin{tikzpicture}[scale=0.95]
+        % assen
+        \draw[->, thick] (0,0) -- (11,0) node[right] {$I_B$ [mA]};
+        \draw[->, thick] (0,0) -- (0,6.4) node[above] {$t$ [ms]};
+        % x-ticks
+        \foreach \x/\l in {0.6/0.5, 2.4/5, 4.6/50, 6.4/500, 8.6/2000, 10.2/10000}
+        \draw (\x,0) -- (\x,-0.12) node[below, font=\scriptsize] {\l};
+        % y-ticks
+        \foreach \y/\l in {0.8/10, 2.0/100, 3.4/1000, 5.2/10000}
+        \draw (0,\y) -- (-0.12,\y) node[left, font=\scriptsize] {\l};
+        % zone-grenzen
+        \draw[thick, dashed] (0.6,0) -- (0.6,6.0);
+        \draw[thick, dashed] (2.4,6.0) -- (2.4,3.0) -- (4.6,0);
+        \draw[thick, schoolRed] (5.0,6.0) -- (5.0,3.2) .. controls (5.6,2.4) .. (6.4,1.6) -- (6.4,0);
+        \draw[thick, schoolRed, dash pattern=on 3pt off 2pt]
+        (7.2,6.0) -- (7.2,3.0) .. controls (7.6,2.2) .. (8.2,1.4) -- (8.2,0);
+        \draw[thick, schoolRed, dash pattern=on 1pt off 2pt]
+        (8.9,6.0) -- (8.9,2.8) .. controls (9.3,2.0) .. (9.9,1.2) -- (9.9,0);
+        % zonelabels
+        \node[font=\small\bfseries, schoolGreen] at (0.3,3.2) {\rotatebox{90}{AC-1}};
+        \node[font=\small\bfseries, schoolGreen] at (1.5,3.2) {AC-2};
+        \node[font=\small\bfseries, schoolOrange] at (3.6,3.6) {AC-3};
+        \node[font=\small\bfseries, schoolRed] at (8.6,4.6) {AC-4};
+        % curvelabels
+        \node[font=\scriptsize] at (0.6,6.25) {a};
+        \node[font=\scriptsize] at (2.4,6.25) {b};
+        \node[font=\scriptsize, schoolRed] at (5.0,6.25) {$c_1$};
+        \node[font=\scriptsize, schoolRed] at (7.2,6.25) {$c_2$};
+        \node[font=\scriptsize, schoolRed] at (8.9,6.25) {$c_3$};
+        % AC-4 onderverdeling
+        \node[font=\tiny, schoolRed] at (6.1,4.6) {\rotatebox{90}{AC-4.1}};
+        \node[font=\tiny, schoolRed] at (7.9,4.6) {\rotatebox{90}{AC-4.2}};
+        \node[font=\tiny, schoolRed] at (9.6,4.6) {\rotatebox{90}{AC-4.3}};
+    \end{tikzpicture}}
+
 \begin{document}
 \microtypecontext{spacing=nonfrench}
 \maketitle
@@ -617,10 +654,10 @@ je moet ze kunnen herkennen \'en zelf tekenen.
         \bottomrule
     \end{tabular}
     \caption{De vijf fasordiagrammen van een tweepool die je moet kunnen reconstrueren. De klemmen
-        uit het schema komen terug als staart en kop van de spanningsfasor. Geval 1 tot 3 zijn
-        alle drie een \emph{weerstand}: $v$ en $i$ blijven in fase, alleen de referentiehoek
-        (geval 2) of de getekende stroomrichting (geval 3) verandert. Pas bij de condensator en de
-        spoel ontstaat er een echt faseverschil van $90^\circ$.}
+        uit het schema zijn staart en kop van de spanningsfasor. Geval 1 tot 3 zijn alle drie een
+        weerstand: $v$ en $i$ blijven in fase, alleen de referentiehoek (2) of de getekende
+        stroomrichting (3) verandert. Pas bij $C$ en $L$ ontstaat een echt faseverschil van
+        $90^\circ$.}
     \label{fig:fasordiagrammen-tweepool}
 \end{figure}
 \FloatBarrier
@@ -907,11 +944,9 @@ $\underline{Y}$. Parallelle admittanties tel je namelijk gewoon op, net zoals se
     Alleen bij een zuivere weerstand ($X=0$) valt $G$ samen met $1/R$.
 \end{waarschuwing}
 
-\textbf{Gedrag op gelijkstroom.} Vul $\omega = 0$ in, dan gaan beide reactanties naar hun uiterste:
-\[X_L = \omega L = 0 \qquad\qquad X_C = \frac{-1}{\omega C} \rightarrow -\infty\]
-Een spoel gedraagt zich op DC dus als een \textbf{kortsluiting} en een condensator als een
-\textbf{open keten}. Dat is meteen je controle op een $\underline{Z}$-uitdrukking: klopt het gedrag
-bij $\omega = 0$ niet, dan zit er een fout in.
+\textbf{Gedrag op gelijkstroom.} Vul $\omega = 0$ in: $X_L = 0$ en $X_C \rightarrow -\infty$. Een
+spoel is op DC dus een \textbf{kortsluiting}, een condensator een \textbf{open keten}. Handige
+controle op een $\underline{Z}$-uitdrukking.
 
 \begin{oefening}[Impedantie van een serie-$RLC$-tak en de stroom erdoor]
     \textbf{Opgave:} $R = 40\ \Omega$, $L = 0{,}1$~H en $C = 50\ \mu$F staan in serie op een bron
@@ -947,18 +982,11 @@ getal met grootte \'en hoek; een gewone letter ($P$, $Q$, $\cos\phi$) is al een 
 as. Alleen die laatste, en $\underline{S}$ zelf, mag je optellen: $|\underline{S}_1|+|\underline{S}_2|$
 is fout.
 
-\textbf{Waar je de pijlen zet, bepaalt het teken.} Een vermogen is pas positief of negatief nadat je
-hebt afgesproken welke kant ``vooruit'' is. Daarvoor bestaan twee stelsels:
-\begin{itemize}
-    \item \keyterm{VRS} (verbruikersreferentiestelsel): de stroompijl loopt de tweepool \emph{in}
-          langs de $+$-klem. Positief vermogen betekent dan dat de tweepool vermogen \textbf{opneemt}.
-          Dit is de standaard voor lasten, en dus voor bijna alles in deze cursus.
-    \item \keyterm{GRS} (generatorreferentiestelsel): de stroompijl loopt de tweepool \emph{uit}
-          langs de $+$-klem. Positief vermogen betekent dan dat ze vermogen \textbf{levert}. Dit
-          gebruik je voor bronnen.
-\end{itemize}
-Dezelfde tweepool krijgt in de twee stelsels dus een tegengesteld teken. Kom je op een negatief
-$P$ uit waar je een verbruiker verwacht, controleer dan eerst je pijlen.
+\textbf{Waar je de pijlen zet, bepaalt het teken.} In het \keyterm{VRS}
+(verbruikersreferentiestelsel) loopt de stroompijl de tweepool \emph{in} langs de $+$-klem, en
+betekent $P>0$ dat ze opneemt. In het \keyterm{GRS} (generatorreferentiestelsel) loopt hij eruit en
+betekent $P>0$ dat ze levert. Lasten reken je in VRS, bronnen in GRS. Krijg je een negatief $P$ waar
+je een verbruiker verwacht, controleer dan je pijlen.
 
 \subsubsection{Actief, reactief en schijnbaar vermogen}
 
@@ -1289,22 +1317,12 @@ parallel, met $L = V^2/(\omega Q_L)$.
     V, $\omega = 2\pi f$ de pulsatie in rad/s en $I_C$ de stroom door de condensator in A.
     Vertrek op het examen altijd van $Q_C = V^2/X_C$ met $X_C = -1/(\omega C)$ en werk van daaruit uit.}
 
-\textbf{Waar die tweede formule vandaan komt.} \belangrijk{Start altijd bij $Q_C = V^2/X_C$.} Die volgt uit $Q = V^2 X/(R^2+X^2)$ met $R = 0$ en
-$X = X_C$, want een condensator heeft geen weerstand. Van daaruit reken je in drie stappen naar $C$.
-
-\stapreden{De condensator staat over de volle netspanning $V$ en heeft geen weerstand, dus:}
-\[Q_C = \frac{V^2}{X_C}\]
-
-\stapreden{Vul de reactantie van een condensator in. Die is negatief:}
-\[X_C = \frac{-1}{2\pi f C} = \frac{-1}{\omega C}
+\textbf{Waar die tweede formule vandaan komt.} \belangrijk{Start altijd bij $Q_C = V^2/X_C$}, de vorm $Q = V^2X/(R^2+X^2)$ met $R = 0$. Vul
+$X_C = -1/(\omega C)$ in en neem de grootte:
+\[Q_C = \frac{V^2}{-1/(\omega C)} = -V^2\omega C
     \qquad\Longrightarrow\qquad
-    Q_C = \frac{V^2}{-1/(\omega C)} = -V^2\omega C\]
-
-\stapreden{Het minteken betekent dat de condensator reactief vermogen \emph{levert} in plaats van opneemt. Voor de capaciteit heb je enkel de grootte nodig:}
-\[|Q_C| = V^2\omega C \qquad\Longrightarrow\qquad \boxed{C = \frac{|Q_C|}{V^2\omega}}\]
-
-Dezelfde formule krijg je via de stroom: $I_C = |Q_C|/V$ en $I_C = V/|X_C| = V\omega C$. Stel beide
-gelijk, dan valt $I_C$ weg.
+    \boxed{C = \frac{|Q_C|}{V^2\omega}}\]
+Het minteken betekent dat de condensator $Q$ levert in plaats van opneemt.
 
 \begin{oefening}[Van circuit naar condensator: $\cos\phi$ van $0{,}6$ naar $0{,}95$]
     \textbf{Opgave:} een motor hangt aan $230$~V / $50$~Hz en gedraagt zich als $R = 12\,\Omega$ in
@@ -1495,7 +1513,7 @@ Tel dan op of trek af. Zet pas op het einde terug om naar $|S|$ en PF.
 \end{oefening}
 
 
-\subsection{Resonantie}
+\subsection{Resonantie}\label{sec:resonantie-C}
 Een keten is in resonantie als de inductieve en capacitieve reactanties gelijk zijn.
 \[\omega L = \frac{1}{\omega C}\]
 \[\omega^2 = \frac{1}{LC}\]
@@ -1548,16 +1566,11 @@ $1/(\omega C) = 2{,}5$, dus $C = 4$~mF. Gebruik je blind $1/\sqrt{LC}$? Dan zit 
 \end{figure}
 \FloatBarrier
 
-\textbf{De weerstand bepaalt hoe scherp de piek is.} Bij $f_0$ vallen de reactanties tegen elkaar
-weg en blijft alleen $R$ over. Die $R$ legt dus de grootte van de resonantiestroom vast, en meteen
-ook de \keyterm{bandbreedte}: de breedte van de zone rond $f_0$ waar de kring nog goed doorlaat.
-\begin{itemize}
-    \item \textbf{Grotere $R$} $\rightarrow$ bredere bandbreedte. De kring laat meer afwijkende
-          frequenties door, maar de resonantiestroom blijft beperkt en constanter.
-    \item \textbf{Kleinere $R$} $\rightarrow$ smallere bandbreedte, dus betere filtering. De
-          resonantiestroom en de spanning over $L$ en $C$ kunnen dan wel zeer groot worden.
-\end{itemize}
-De \keyterm{selectiviteit} is het omgekeerde van de bandbreedte.
+\textbf{De weerstand bepaalt hoe scherp de piek is.} Bij $f_0$ blijft alleen $R$ over, dus legt die
+zowel de resonantiestroom vast als de \keyterm{bandbreedte}: de breedte op hoogte $1/\sqrt2$. Een
+grotere $R$ geeft een bredere band en een lagere piek, een kleinere $R$ een smalle band met een
+grote stroom en spanning over $L$ en $C$. De \keyterm{selectiviteit} is het omgekeerde van de
+bandbreedte.
 
 \begin{figure}[htbp]
     \centering
@@ -1602,14 +1615,10 @@ De \keyterm{selectiviteit} is het omgekeerde van de bandbreedte.
         \node[schoolBlue,  font=\scriptsize, right] at (105.6,0.82) {$R$ groot};
         \node[font=\scriptsize\bfseries, anchor=north] at (100,-0.18) {(b) genormeerd};
     \end{tikzpicture}
-    \caption{Wat de weerstand doet met de resonantiepiek van een serie-$RLC$-kring
-        ($L = 1$~H, $C = 100\,\mu$F, dus $\omega_r = 100$~rad/s; $R = 2\,\Omega$ tegenover
-        $R = 10\,\Omega$). \textbf{(a)} $R$ verschuift $\omega_r$ niet, maar bepaalt w\'el de
-        hoogte van de piek: bij resonantie valt de reactantie weg en blijft $I_r = V/R$ over.
-        \textbf{(b)} Deel je door $I_r$, dan pieken beide krommen op 1 en zie je het verschil in
-        \textbf{bandbreedte}: de breedte op hoogte $1/\sqrt2$. Een kleine $R$ geeft een smalle band
-        $b_1$ en dus een scherpe, selectieve kring; een grote $R$ geeft de brede band $b_2$. Er
-        geldt $b = R/L$, hier $2$ en $10$~rad/s.}
+    \caption{Effect van $R$ op de resonantiepiek van een serie-$RLC$-kring ($L = 1$~H,
+        $C = 100\,\mu$F, $\omega_r = 100$~rad/s). \textbf{(a)} $R$ verschuift $\omega_r$ niet, maar
+        bepaalt de hoogte: $I_r = V/R$. \textbf{(b)} Genormeerd op $I_r$ zie je het verschil in
+        bandbreedte, gemeten op hoogte $1/\sqrt2$. Er geldt $b = R/L$, hier $2$ en $10$~rad/s.}
     \label{fig:resonantie-weerstand}
 \end{figure}
 \FloatBarrier
@@ -3084,9 +3093,8 @@ De labovoeding is een driefasig net met $V_L = 400$~V tussen twee lijnen en $V_f
 lijn en de aarding. Krijg je een spanning zonder meer uitleg, controleer dan altijd welke van de
 twee het is: $400/\sqrt3 = 230$.
 
-``$3\times 400$~V'' zegt niets over hoe de bron zelf geschakeld staat. Aan de klemmen zie je
-hetzelfde net, of dat nu van drie bronnen van $400$~V in \textbf{driehoek} komt of van drie bronnen
-van $230$~V in \textbf{ster}. Alleen de last bepaalt dus met welke $V_f$ je rekent.
+``$3\times 400$~V'' zegt niets over de bron zelf: dat kunnen drie bronnen van $400$~V in driehoek
+zijn of drie van $230$~V in ster. Alleen de \emph{last} bepaalt met welke $V_f$ je rekent.
 
 \subsubsection{Dezelfde ster, vijf keer anders getekend}
 
@@ -3883,9 +3891,8 @@ examenoefeningen zo vaak ongebalanceerd.
         \underline{V}_{BN'} = \underline{V}_{BN} - \underline{V}_{N'N} \quad , \quad
         \underline{V}_{CN'} = \underline{V}_{CN} - \underline{V}_{N'N}\]}
 
-Deze formule is knooppuntanalyse in \'e\'en regel: ze \'is de KCL in het zwevende sterpunt $N'$,
-uitgeschreven met admittanties. De cursus lost onevenwichtige systemen op met KCL,
-dus je mag altijd terugvallen op de gewone knoopvergelijking als je de formule kwijt bent.
+Dit \'is de KCL in het zwevende sterpunt $N'$, uitgeschreven met admittanties. Ben je de formule
+kwijt, stel dan gewoon die knoopvergelijking op.
 
 \begin{theorie}[Werkwijze bij een ongebalanceerde ster]
     Kijk eerst of er een \textbf{nulgeleider} is. Dat bepaalt alles.
@@ -4269,40 +4276,7 @@ Deze grafiek moet je op het examen kunnen tekenen en uitleggen.
 
 \begin{figure}[htbp]
     \centering
-    \begin{tikzpicture}[scale=0.95]
-        % assen
-        \draw[->, thick] (0,0) -- (11,0) node[right] {$I_B$ [mA]};
-        \draw[->, thick] (0,0) -- (0,6.4) node[above] {$t$ [ms]};
-        % x-ticks
-        \foreach \x/\l in {0.6/0.5, 2.4/5, 4.6/50, 6.4/500, 8.6/2000, 10.2/10000}
-        \draw (\x,0) -- (\x,-0.12) node[below, font=\scriptsize] {\l};
-        % y-ticks
-        \foreach \y/\l in {0.8/10, 2.0/100, 3.4/1000, 5.2/10000}
-        \draw (0,\y) -- (-0.12,\y) node[left, font=\scriptsize] {\l};
-        % zone-grenzen
-        \draw[thick, dashed] (0.6,0) -- (0.6,6.0);
-        \draw[thick, dashed] (2.4,6.0) -- (2.4,3.0) -- (4.6,0);
-        \draw[thick, schoolRed] (5.0,6.0) -- (5.0,3.2) .. controls (5.6,2.4) .. (6.4,1.6) -- (6.4,0);
-        \draw[thick, schoolRed, dash pattern=on 3pt off 2pt]
-        (7.2,6.0) -- (7.2,3.0) .. controls (7.6,2.2) .. (8.2,1.4) -- (8.2,0);
-        \draw[thick, schoolRed, dash pattern=on 1pt off 2pt]
-        (8.9,6.0) -- (8.9,2.8) .. controls (9.3,2.0) .. (9.9,1.2) -- (9.9,0);
-        % zonelabels
-        \node[font=\small\bfseries, schoolGreen] at (0.3,3.2) {\rotatebox{90}{AC-1}};
-        \node[font=\small\bfseries, schoolGreen] at (1.5,3.2) {AC-2};
-        \node[font=\small\bfseries, schoolOrange] at (3.6,3.6) {AC-3};
-        \node[font=\small\bfseries, schoolRed] at (8.6,4.6) {AC-4};
-        % curvelabels
-        \node[font=\scriptsize] at (0.6,6.25) {a};
-        \node[font=\scriptsize] at (2.4,6.25) {b};
-        \node[font=\scriptsize, schoolRed] at (5.0,6.25) {$c_1$};
-        \node[font=\scriptsize, schoolRed] at (7.2,6.25) {$c_2$};
-        \node[font=\scriptsize, schoolRed] at (8.9,6.25) {$c_3$};
-        % AC-4 onderverdeling
-        \node[font=\tiny, schoolRed] at (6.1,4.6) {\rotatebox{90}{AC-4.1}};
-        \node[font=\tiny, schoolRed] at (7.9,4.6) {\rotatebox{90}{AC-4.2}};
-        \node[font=\tiny, schoolRed] at (9.6,4.6) {\rotatebox{90}{AC-4.3}};
-    \end{tikzpicture}
+    \acZonesFiguur
     \caption{Effect van wisselstroom op het menselijk lichaam volgens IEC 60479 (logaritmische assen).}
     \label{fig:ac-zones}
 \end{figure}
@@ -4414,35 +4388,28 @@ dit is een \textbf{aanraakspanningsgrafiek}, met de veilige spanningsgrenzen per
         \draw[dashed, gray!70] (8.6,0) -- (9.9,0);
         \draw (0,0) node[ground]{};
     \end{circuitikz}
-    \caption{Onrechtstreekse aanraking. Een isolatiefout zet het metalen gestel onder spanning. De
-        foutstroom $I_f$ loopt via de aarding terug naar de bron, en over die aarding staat de
-        aanraakspanning $U_T$ op het gestel. Blijft $U_T$ boven de grens uit de BB-tabel, dan moet
-        de beveiliging uitschakelen.}
+    \caption{Onrechtstreekse aanraking. Een isolatiefout zet het gestel onder spanning; de
+        foutstroom $I_f$ loopt via de aarding terug en daarover staat de aanraakspanning $U_T$.
+        Blijft $U_T$ boven de grens uit de BB-tabel, dan moet de beveiliging uitschakelen.}
     \label{fig:indirect-contact-tikz}
 \end{figure}
 \FloatBarrier
 
 \begin{examenbox}[Waarom een MCB niet volstaat en er een RCD nodig is]
-    \textbf{Wat een MCB doet.} Een installatieautomaat beschermt de \emph{installatie} tegen
-    \textbf{overstroom}, en dat via twee losse mechanismen (zie de karakteristiek in
-    figuur~\ref{fig:mcb-curves-all}):
-    \begin{itemize}
-        \item het \textbf{thermische} deel (bimetaal) reageert op overbelasting, vertraagd;
-        \item het \textbf{magnetische} deel (spoel) reageert op kortsluiting, quasi ogenblikkelijk,
-              maar pas vanaf enkele malen $I_n$.
-    \end{itemize}
+    \textbf{Wat een MCB doet.} Ze beschermt de \emph{installatie} tegen \textbf{overstroom}, via
+    twee mechanismen (zie figuur~\ref{fig:mcb-curves-all}): thermisch (bimetaal, vertraagd) tegen
+    overbelasting, en magnetisch (spoel, quasi ogenblikkelijk) tegen kortsluiting vanaf enkele malen
+    $I_n$.
 
-    \textbf{Wat een MCB niet doet.} Bij een isolatiefout loopt de foutstroom weg naar de aarde. Die
-    stroom blijft ver onder de magnetische drempel, dus de automaat ziet gewoon een normale
-    belasting en schakelt \belangrijk{niet} uit. Het gestel blijft ondertussen wel onder spanning
-    staan. Hetzelfde geldt voor een persoon die een geleider vastneemt: enkele tientallen mA zijn
-    dodelijk, maar voor een automaat van $16$~A is dat niets.
+    \textbf{Wat ze niet doet.} Een foutstroom naar de aarde blijft ver onder die magnetische
+    drempel, dus de automaat schakelt \belangrijk{niet} uit terwijl het gestel onder spanning staat.
+    Idem voor een persoon: enkele tientallen mA zijn dodelijk, maar voor een automaat van $16$~A is
+    dat niets.
 
-    \textbf{Daarom de RCD.} Een aardlekschakelaar vergelijkt de heen- en de terugstroom. Wat langs
-    de fase binnengaat en niet langs de nul terugkomt, lekt weg naar de aarde. Ze reageert dus op
-    een \emph{verschil} van $30$~mA, ongeacht hoe groot de bedrijfsstroom is. Dat werkpunt ligt ruim
-    voor de gevarenzone AC-4 uit figuur~\ref{fig:ac-zones}. In een installatie staan de twee
-    toestellen daarom naast elkaar: de MCB voor de kabels en de toestellen, de RCD voor de personen.
+    \textbf{Daarom de RCD.} Die vergelijkt heen- en terugstroom en reageert op een \emph{verschil}
+    van $30$~mA, ongeacht de bedrijfsstroom. Dat ligt ruim voor zone AC-4
+    (figuur~\ref{fig:ac-zones}). De MCB beveiligt de kabels, de RCD de personen; je hebt ze allebei
+    nodig.
 \end{examenbox}
 
 \subsubsection{Secundaire en indirecte gevaren}
@@ -4531,7 +4498,7 @@ zijn precies de BB1-, BB2- en BB3-condities uit de tabel met $U_L$ hierboven.
 
 \subsection{Bescherming tegen overstroom}
 
-\subsubsection{Overbelasting versus kortsluiting}
+\subsubsection{Overbelasting versus kortsluiting}\label{sec:overstroom}
 
 Een overstroom is elke stroom die hoger ligt dan de nominale stroom $I_n$ van de kring. Er is een
 fundamenteel verschil tussen overbelasting en kortsluiting:
@@ -4558,10 +4525,9 @@ overbelasting beschermen. Dat legt de keuze vast tussen twee grenzen:
 {Met $I_b$ de ontwerpstroom van de belasting in A, $I_n$ de nominale stroom van de automaat in A en
     $I_z$ de toelaatbare continue kabelstroom in A.}
 
-Er is nog een derde eigenschap van het beveiligingstoestel: het \keyterm{onderbrekingsvermogen}
-(short circuit capacity). Dat is de grootste kortsluitstroom die het toestel nog veilig kan
-onderbreken. Ligt de kortsluitstroom op die plaats in het net hoger, dan wordt de automaat zelf
-vernield in plaats van dat hij de kring opent.
+Een derde eigenschap is het \keyterm{onderbrekingsvermogen}: de grootste kortsluitstroom die het
+toestel nog veilig kan onderbreken. Ligt de kortsluitstroom hoger, dan wordt de automaat zelf
+vernield.
 
 \begin{figure}[htbp]
     \centering
@@ -4666,25 +4632,18 @@ Een MCB vervangt geen RCD: de MCB beschermt de \emph{installatie} tegen overstro
 
 \subsection{Bescherming tegen elektrische schokken}
 
-Er zijn vier beschermingsmethodes, van preventief naar reagerend:
-\begin{enumerate}
-    \item \textbf{Contact voorkomen:} isolatie, behuizing en obstakels houden je weg van actieve delen.
-    \item \textbf{Aarding en equipotentiaalverbindingen.}
-    \item \textbf{Zeer lage veiligheidsspanning (ZLVS):} het toestel op minder dan $50$~V voeden,
-          zodat er nooit een gevaarlijke stroom kan lopen.
-    \item \textbf{Aardlekschakelaar (RCD).}
-\end{enumerate}
+Vier methodes, van preventief naar reagerend: \textbf{contact voorkomen} (isolatie, behuizing,
+obstakels), \textbf{aarding en equipotentiaalverbindingen}, \textbf{zeer lage veiligheidsspanning}
+(ZLVS, onder $50$~V) en de \textbf{aardlekschakelaar} (RCD).
 
 \subsubsection{Aarding en equipotentiaalverbindingen}
 
-\textbf{Aarden} betekent de installatie met de aarde verbinden. Een foutstroom bij een isolatiedefect
-kan dan gecontroleerd wegvloeien, de aanraakspanning op aanraakbare delen blijft beperkt en de
-beveiliging spreekt aan.
+\textbf{Aarden} verbindt de installatie met de aarde. Een foutstroom vloeit dan gecontroleerd weg,
+de aanraakspanning blijft beperkt en de beveiliging spreekt aan.
 
-\textbf{Een equipotentiaalverbinding} verbindt geleidende delen onderling, zodat ze op hetzelfde
-potentiaal komen te staan. Tussen die delen kan er dan geen gevaarlijk spanningsverschil meer
-ontstaan. In een gebouw gaat het om de metalen leidingen (water, gas, verwarming) en de gestellen
-van de verbruikers.
+\textbf{Een equipotentiaalverbinding} zet geleidende delen op hetzelfde potentiaal, zodat er tussen
+die delen geen gevaarlijk spanningsverschil kan staan. In een gebouw zijn dat de metalen leidingen
+(water, gas, verwarming) en de gestellen van de verbruikers.
 
 \begin{figure}[htbp]
     \centering
@@ -4700,7 +4659,7 @@ van de verbruikers.
     \label{fig:equipotential}
 \end{figure}
 \FloatBarrier
-\subsubsection{Aardlekschakelaar (RCD / Differentieel)}
+\subsubsection{Aardlekschakelaar (RCD / Differentieel)}\label{sec:rcd}
 
 \begin{conceptbox}[Aardlekschakelaar (RCD)]
     Een \keyterm{RCD} (Residual Current Device) is een beveiligingstoestel dat voortdurend de heen-
@@ -4769,18 +4728,272 @@ gewone belasting.
 
 
 
-\section{Examenoefeningen}
+\section{Examenvragen}
 
-Alle oefeningen hieronder komen uit echte examens. De bron staat er telkens bij.
+Alle vragen hieronder komen uit echte examens. De bron staat er telkens bij.
 Een uitgebreidere bundel met alle zittingen van 2022 tot 2026 vind je op studforum:
 \url{https://wiki.studforum.net/pub/bac2/elektromagnetisme}
 
-\begin{examenbox}
-    Het examen bestaat altijd uit drie delen: \textbf{5 korte theorievragen}, \textbf{één 1-fase
-        oefening} en \textbf{één 3-fase oefening}. De 1-fase en 3-fase oefening vragen bijna altijd
-    ook een \textbf{fasordiagram op schaal}. Vermeld je schaal expliciet (bv.\ 1:40 voor
-    spanningen, 1:2 voor stromen), anders verlies je punten.
+\begin{examenbox}[Hoe het examen eruitziet]
+    Het examen bestaat uit \textbf{zeven vragen} in drie blokken:
+
+    \begin{center}
+        \begin{tabular}{@{}clp{62mm}@{}}
+            \toprule
+            \textbf{Aantal} & \textbf{Blok}                 & \textbf{Wat je moet doen}                                                     \\
+            \midrule
+            \textbf{5}      & \textbf{korte theorievragen}  & Afleiding, redenering, een gegeven grafiek of fasordiagram uitleggen, of een
+            veiligheidsvraag. Geen rekenwerk.                                                                                               \\[1mm]
+            \textbf{1}      & \textbf{grote 1-fase vraag}   & Netwerk oplossen, vermogens, arbeidsfactor, plus een fasordiagram op schaal.  \\[1mm]
+            \textbf{1}      & \textbf{grote 3-fase vraag}   & Ster of driehoek, lijnstromen, vermogens, wattmeters, plus een fasordiagram.  \\
+            \bottomrule
+        \end{tabular}
+    \end{center}
+
+    De 1-fase en 3-fase vraag vragen bijna altijd een \textbf{fasordiagram op schaal}. Vermeld je
+    schaal expliciet (bv.\ $1$~cm $=40$~V voor spanningen en $1$~cm $=2$~A voor stromen), anders
+    verlies je punten.
 \end{examenbox}
+
+\subsection{Theorievragen}
+
+De vragen hieronder zijn letterlijk gesteld op het examen, zittingen 2022 tot 2026. Oudere
+zittingen zijn onbruikbaar: tot en met 2020--2021 viel Trillingen en Golven ook onder dit vak.
+
+\subsubsection{Waarom ``een capaciteit levert reactieve stroom'' niet klopt}
+
+\textbf{Vraag.} \textit{Een capaciteit levert reactieve stroom. Waarom is die zin, letterlijk
+    genomen, niet correct?}
+
+\begin{oefenblok}[Antwoord]
+    Twee fouten.
+
+    \textbf{1. ``Levert'' suggereert een bron.} Een condensator is passief: ze slaat energie op in
+    haar elektrisch veld en geeft die een kwart periode later terug. Over een volledige periode is
+    $P_C = V I \cos 90^\circ = 0$, dus ze maakt niets aan.
+
+    \textbf{2. ``Reactieve stroom'' bestaat niet apart.} Door de condensator loopt \'e\'en echte
+    stroom $i(t)$. De opsplitsing in een actieve en een reactieve component is een projectie van de
+    stroomfasor op de spanningsfasor, geen tweede meetbare stroom.
+
+    \textbf{Wat wel klopt.} $\underline{I}_C$ ijlt $90^\circ$ voor, $\underline{I}_L$ ijlt na, dus
+    $Q_C = V^2/X_C < 0$ tegenover $Q_L > 0$. Parallel over een inductieve last heffen die elkaar op.
+    ``Levert'' is dus een tekenafspraak in de vermogensboekhouding, geen fysische productie.
+\end{oefenblok}
+
+\subsubsection{Wordt een weerstand in de driehoek van bronnen warm?}
+
+\textbf{Vraag.} \textit{Je hebt een driehoekopstelling van drie bronnen. Je voegt ergens in die
+    driehoek een weerstand toe (de last aan de klemmen doet er niet toe). Wordt die weerstand warm?}
+
+\begin{figure}[H]
+    \centering
+    \begin{circuitikz}[scale=0.92, transform shape, line width=0.8pt]
+        \coordinate (A) at (3.2,2.9);
+        \coordinate (B) at (0,-0.8);
+        \coordinate (C) at (6.4,-0.8);
+        \draw (B) to[sV={$\underline{V}_{1}$}] (A);
+        \draw (A) to[sV={$\underline{V}_{2}$}] (C);
+        \draw (C) to[R={$R$}] (3.9,-0.8);
+        \draw (3.9,-0.8) to[sV={$\underline{V}_{3}$}] (B);
+        \draw[->, ultra thick, schoolRed] (3.2,0.75) ++(120:1.1) arc (120:-160:1.1);
+        \node[schoolRed, font=\small] at (3.2,0.75) {$\underline{I}_{\text{kring}}$};
+        \foreach \p/\l/\pos in {A/$a$/above, B/$b$/left, C/$c$/right}
+        {\fill (\p) circle (2pt); \node[font=\small, \pos] at (\p) {\l};}
+    \end{circuitikz}
+    \caption{Drie bronnen in driehoek, met een weerstand $R$ in de lus. De vraag is of er een
+        kringstroom $\underline{I}_{\text{kring}}$ loopt.}
+    \label{fig:driehoek-bronnen-R}
+\end{figure}
+\FloatBarrier
+
+\begin{oefenblok}[Antwoord]
+    \textbf{Nee, bij een evenwichtig systeem blijft ze koud.}
+
+    \stapreden{De drie bronnen vormen \'e\'en gesloten lus; de last zit daar niet in. KVL rond die lus:}
+    \[\underline{V}_1 + \underline{V}_2 + \underline{V}_3
+        = \underline{I}_{\text{kring}}\,(R + \underline{Z}_{\text{inwendig}})\]
+
+    \stapreden{Bij evenwicht zijn de drie even groot en $120^\circ$ verdraaid, dus is hun som nul:}
+    \[V\angle 0^\circ + V\angle{-}120^\circ + V\angle 120^\circ = 0
+        \qquad\Longrightarrow\qquad
+        \underline{I}_{\text{kring}} = 0 \;\Longrightarrow\; P_R = I_{\text{kring}}^2 R = \mathbf{0}\]
+
+    Waar je $R$ in de lus zet, maakt niets uit.
+
+    \begin{waarschuwing}[Wanneer wel]
+        Draai \'e\'en bron om en de som wordt $2V$ in plaats van $0$. Alleen $R$ en de inwendige
+        impedantie begrenzen dan de stroom. Meet daarom de spanning over de laatste opening v\'o\'or
+        je de driehoek sluit: die moet nul zijn.
+    \end{waarschuwing}
+\end{oefenblok}
+
+\subsubsection{De AC-curves en de BB-curves naast elkaar}
+
+\textbf{Vraag.} \textit{Je krijgt de AC- en de BB-curves. (a) Wat zijn deze curves?
+    (b) Wat is het verband tussen de twee? (c) Wat is het verschil?}
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[b]{0.52\textwidth}\centering
+        \resizebox{\linewidth}{!}{\acZonesFiguur}\\[1mm]
+        {\footnotesize\textbf{(a)} de AC-curves (IEC 60479)}
+    \end{minipage}\hfill
+    \begin{minipage}[b]{0.44\textwidth}\centering
+        \includegraphics[width=\linewidth]{assets/touch_voltage_curves_bb.png}\\[1mm]
+        {\footnotesize\textbf{(b)} de BB-curves (AREI)}
+    \end{minipage}
+    \caption{De twee grafieken zoals je ze op het examen krijgt, zonder bijschrift. Links de
+        lichaamsstroom tegenover de tijd, rechts de aanraakspanning tegenover de tijd.}
+    \label{fig:ac-en-bb-samen}
+\end{figure}
+\FloatBarrier
+
+\begin{oefenblok}[Antwoord]
+    \textbf{(a)} De \textbf{AC-curves} (IEC 60479) geven het fysiologisch effect van wisselstroom:
+    lichaamsstroom $I_B$ tegenover duur $t$, met zones AC-1 tot AC-4. De \textbf{BB-curves} (AREI)
+    geven de maximaal toegelaten aanraakspanning $V_{\text{eff}}$ tegenover $t$, voor drie condities
+    van het lichaam.
+
+    \textbf{(b)} De BB-curves zijn \emph{afgeleid} uit de AC-curves via de lichaamsweerstand:
+    \[I_B = \frac{U_T}{Z_B}\]
+    met $I_B$ de lichaamsstroom in A, $U_T$ de aanraakspanning in V en $Z_B$ de conventionele
+    lichaamsweerstand in $\Omega$. Een nattere huid geeft een lagere $Z_B$, dus bij dezelfde
+    gevaarlijke stroom een lagere toegelaten spanning: $50$~V bij BB1, $25$~V bij BB2, $12$~V bij BB3.
+
+    \textbf{(c)}
+\begin{center}
+        \begin{tabular}{@{}p{26mm}p{50mm}p{50mm}@{}}
+            \toprule
+                              & \textbf{AC-curves (IEC 60479)}                & \textbf{BB-curves (AREI)}                            \\
+            \midrule
+            Horizontale as    & lichaamsstroom $I_B$ [mA]                     & aanraakspanning $V_{\text{eff}}$ [V]                 \\[1mm]
+            Verticale as      & duur $t$ [ms]                                 & duur $t$ [s]                                         \\[1mm]
+            Waarover het gaat & wat de stroom met het \emph{lichaam} doet     & wat de \emph{installatie} mag laten staan            \\[1mm]
+            Onderverdeling    & zones AC-1 t.e.m.\ AC-4, curves $a$ tot $c_3$ & condities BB1, BB2, BB3                              \\[1mm]
+            Grenswaarde       & $0{,}5$~mA waarneembaar, $30$~mA gevaarlijk   & $U_L = 50/25/12$~V, daaronder onbeperkt in tijd      \\
+            \bottomrule
+        \end{tabular}
+    \end{center}
+    In een installatie beheers je de spanning, niet de lichaamsstroom. Daarom legt de norm de grens
+    vast in mA en rekent ze die om naar volt.
+\end{oefenblok}
+
+\subsubsection{Verbanden aflezen uit een gegeven fasordiagram}
+
+\textbf{Vraag.} \textit{Je krijgt dit fasordiagram. Welke verbanden kan je hieruit afleiden?}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.52\textwidth]{assets/fasors.png}
+    \caption{Het fasordiagram zoals het op het examen gegeven wordt: een evenwichtig sterstelsel.
+        $\underline{V}_1$, $\underline{V}_2$ en $\underline{V}_3$ vertrekken uit het sterpunt $N$;
+        de lijnspanningen $\underline{V}_{12}$, $\underline{V}_{23}$ en $\underline{V}_{31}$ vormen
+        de zijden van de driehoek $L_1L_2L_3$. De stippellijn toont de constructie
+        $\underline{V}_{12} = \underline{V}_1 - \underline{V}_2$ en waar de $30^\circ$ vandaan komt.}
+    \label{fig:sterfasordiagram-theorie}
+\end{figure}
+\FloatBarrier
+
+\begin{oefenblok}[Antwoord]
+    Dit is een \textbf{sterfasordiagram}. Vijf dingen lees je er rechtstreeks af.
+
+    \begin{enumerate}
+        \item \textbf{Evenwichtig:} de drie fasespanningen zijn even lang en staan $120^\circ$ uit elkaar.
+        \item \textbf{De som is nul:} $\underline{V}_1 + \underline{V}_2 + \underline{V}_3 = 0$.
+              Daarom loopt er geen stroom door de nulgeleider.
+        \item \textbf{Elke lijnspanning is een verschil:} de pijl van de top van $\underline{V}_2$
+              naar die van $\underline{V}_1$ is $\underline{V}_{12} = \underline{V}_1 - \underline{V}_2$,
+              en analoog voor de twee andere.
+        \item \textbf{De $\sqrt3$ en de $30^\circ$:} $\underline{V}_L = \sqrt3\,\underline{V}_f\angle 30^\circ$,
+              dus de lijnspanning ijlt $30^\circ$ voor.
+        \item \textbf{De fasevolgorde} volgt uit de draaizin: positief ($abc$) of negatief ($acb$).
+    \end{enumerate}
+
+    Staan de stromen er ook bij, dan is de hoek tussen $\underline{V}_f$ en $\underline{I}_f$ de
+    arbeidsfactorhoek $\varphi$; naijlend is inductief, voorijlend capacitief. Bij een ster is
+    $\underline{I}_L = \underline{I}_f$.
+
+    Wordt de last ongebalanceerd zonder nulgeleider, dan schuift $N$ weg
+    (\textbf{nulpuntsverschuiving}) en worden de drie fasespanningen ongelijk van lengte.
+\end{oefenblok}
+
+\subsubsection{Complexe impedantie van een driehoeklast uit $V_L$, $I_L$ en $P$ (15/01/2026)}
+
+\textbf{Vraag.} \textit{Van een evenwichtige driehoeklast ken je de lijnspanning, de lijnstroom en
+    het totale actief vermogen. Kan je daaruit de complexe impedantie per tak berekenen? Zo ja, hoe?}
+
+\begin{oefenblok}[Antwoord]
+    \textbf{Ja, op het teken van de hoek na.}
+
+    \stapreden{De arbeidsfactor uit de vermogensformule:}
+    \[\cos\varphi = \frac{P_{tot}}{\sqrt3\,V_L I_L}\]
+
+    \stapreden{Bij een driehoek staat de volle lijnspanning over elke tak en splitst de lijnstroom:}
+    \[V_f = V_L \qquad I_f = \frac{I_L}{\sqrt3}
+        \qquad\Longrightarrow\qquad
+        |\underline{Z}_p| = \frac{V_f}{I_f} = \frac{\sqrt3\,V_L}{I_L}\]
+
+    \stapreden{Samen:}
+    \[\underline{Z}_p = \frac{\sqrt3\,V_L}{I_L}\ \angle\ \varphi\]
+
+    \begin{waarschuwing}[Het teken volgt niet uit $P$]
+        $\cos(+\varphi) = \cos(-\varphi)$, dus uit $P$ ken je enkel de grootte van de hoek. Of de
+        last inductief of capacitief is, moet de opgave vermelden (``naijlend'' of ``voorijlend'')
+        of volgt uit $Q$. Staat het er niet bij, schrijf dan op welke aanname je maakt.
+    \end{waarschuwing}
+
+    \textbf{Controle.} In ster zou je $V_L/(\sqrt3 I_L)$ krijgen, drie keer kleiner. Dat klopt met
+    $\underline{Z}_\Delta = 3\underline{Z}_Y$.
+\end{oefenblok}
+
+\subsubsection{Hoe kunnen spoel en condensator nog werken als de bron geen reactief vermogen levert? (30/01/2025)}
+
+\textbf{Vraag.} \textit{Een $RL$-kring wordt met een condensator op $\text{pf} = 1$ gebracht, zodat
+    de bron geen reactief vermogen meer levert. Spoel en condensator verbruiken alleen reactief
+    vermogen. Hoe kunnen die dan nog werken?}
+
+\begin{oefenblok}[Antwoord]
+    \textbf{Ze geven het aan elkaar door in plaats van aan de bron.} Alleen de som is nul:
+    \[Q_{\text{net}} = Q_L + Q_C = 0 \qquad\text{met}\qquad Q_L > 0 \;\text{ en }\; Q_C = -Q_L\]
+
+    De spoel en de condensator wisselen dus evenveel reactief vermogen uit als voorheen. Hun stromen
+    liggen $180^\circ$ uit elkaar, dus terwijl de spoel energie opneemt is de condensator aan het
+    ontladen, en een kwart periode later andersom. Die energie pendelt in de lus $L$--$C$.
+
+    Het net moet enkel nog $P$ aanvoeren. De pendelende energie blijft ter plaatse, dus daalt de
+    stroom in de toevoerkabel en dus ook het $I^2R$-verlies, terwijl de motor evenveel blijft
+    trekken. ``De bron levert geen $Q$'' betekent niet dat er geen $Q$ meer \emph{is}, wel dat het
+    net het niet meer transporteert.
+\end{oefenblok}
+
+\subsubsection{Wat is een evenwichtig driefasig systeem, en hoe wordt het opgewekt? (13/01/2025)}
+
+\textbf{Vraag.} \textit{(a) Wat is een evenwichtig driefasig systeem? (b) Hoe wordt de driefasige
+    spanning van het openbare net opgewekt?}
+
+\begin{oefenblok}[Antwoord]
+    \textbf{(a)} Drie voorwaarden tegelijk: de bronspanningen hebben dezelfde effectieve waarde,
+    staan exact $120^\circ$ uit elkaar, en hebben dezelfde frequentie. Zijn ook de drie
+    belastingsimpedanties gelijk, dan is het systeem evenwichtig belast.
+
+    Daaruit volgt $\sum \underline{V} = 0$ en $\sum \underline{I} = 0$: geen stroom in de
+    nulgeleider, een constant totaal ogenblikkelijk vermogen, en je mag \'e\'en fase uitrekenen en
+    $\pm 120^\circ$ draaien.
+
+    \textbf{(b)} Met een \keyterm{synchrone generator}. In de stator zitten drie identieke
+    wikkelingen, fysiek $120^\circ$ verdraaid. Daarbinnen draait een door gelijkstroom bekrachtigde
+    rotor. Het rotorveld passeert de wikkelingen na elkaar, dus krijgt elke wikkeling dezelfde
+    spanning maar telkens een derde omwenteling later. De ruimtelijke verdraaiing van $120^\circ$
+    wordt zo een faseverschuiving van $120^\circ$.
+
+    \frm{Frequentie van een synchrone generator}{f = \frac{n \cdot p}{60}}
+    {Met $f$ de frequentie in Hz, $n$ het toerental in omwentelingen per minuut en $p$ het aantal
+        poolparen. Voor $50$~Hz met \'e\'en poolpaar draait de rotor op $3000$~tpm.}
+
+    Omgekeerd wekken diezelfde wikkelingen een draaiend magnetisch veld op als je ze voedt. Daar
+    draait de asynchrone motor op.
+\end{oefenblok}
 
 \subsection{Fasoren en impedanties}
 
@@ -5677,10 +5890,9 @@ de takstromen in de driehoek en het vermogen van de bron.
                 \dfrac{\textcolor{schoolRed}{\underline{Z}_{AB}}\cdot\textcolor{schoolOrange}{\underline{Z}_{CA}}}
                 {\underline{Z}_{AB}+\underline{Z}_{BC}+\underline{Z}_{CA}}$};
         \end{tikzpicture}
-        \captionof{figure}{Van driehoek naar ster. Elk hoekpunt blijft op zijn plaats; alleen de drie
-            takken worden vervangen door drie takken naar \'e\'en nieuw punt $N$. Welke twee
-            driehoektakken je in de teller zet, lees je af aan het hoekpunt: bij $A$ komen
-            $\underline{Z}_{AB}$ en $\underline{Z}_{CA}$ samen, dus die twee.}
+        \captionof{figure}{Van driehoek naar ster. De hoekpunten blijven staan; de drie takken
+            gaan naar \'e\'en nieuw punt $N$. Welke twee driehoektakken in de teller komen, lees je
+            af aan het hoekpunt: bij $A$ raken $\underline{Z}_{AB}$ en $\underline{Z}_{CA}$.}
         \label{fig:delta-ster-omzetting}
     \end{center}
 
@@ -5698,32 +5910,23 @@ de takstromen in de driehoek en het vermogen van de bron.
         \underline{Z}_b = 5{,}918 + j6{,}902 \qquad
         \underline{Z}_c = 16{,}738 + j7{,}885\ \Omega\]
 
-    \stapreden{\textbf{Stap 3a} --- eerst de takadmittanties. Een admittantie is gewoon
-        $\underline{Y} = 1/\underline{Z}$, maar re\"eel en imaginair deel mag je niet apart omkeren.
-        Vermenigvuldig teller en noemer met de complex toegevoegde, dan wordt de noemer re\"eel:}
+    \stapreden{\textbf{Stap 3a} --- de takadmittanties. Keer $\underline{Z}$ niet per deel om, maar
+        vermenigvuldig met de complex toegevoegde:}
     \[\underline{Y} = \frac{1}{R + jX} = \frac{R - jX}{R^2 + X^2}\]
 
-    \stapreden{Voor tak $a$, met $\underline{Z}_a = 17{,}967 - j5{,}639$ en $R^2+X^2 = 17{,}967^2 + 5{,}639^2 = 354{,}61$:}
+    \stapreden{Per tak, met $R^2+X^2$ respectievelijk $354{,}61$, $82{,}66$ en $342{,}33$:}
     \[\underline{Y}_a = \frac{17{,}967 + j5{,}639}{354{,}61} = 0{,}05067 + j0{,}01590\ \text{S}\]
-
-    \stapreden{Voor tak $b$, met $\underline{Z}_b = 5{,}918 + j6{,}902$ en $R^2+X^2 = 82{,}66$:}
     \[\underline{Y}_b = \frac{5{,}918 - j6{,}902}{82{,}66} = 0{,}07159 - j0{,}08350\ \text{S}\]
-
-    \stapreden{Voor tak $c$, met $\underline{Z}_c = 16{,}738 + j7{,}885$ en $R^2+X^2 = 342{,}33$:}
     \[\underline{Y}_c = \frac{16{,}738 - j7{,}885}{342{,}33} = 0{,}04889 - j0{,}02303\ \text{S}\]
-
-    \stapreden{Optellen geeft de noemer van Millman:}
     \[\underline{Y}_a + \underline{Y}_b + \underline{Y}_c = 0{,}17115 - j0{,}09063\ \text{S}\]
 
-    \stapreden{\textbf{Stap 3b} --- de sterpuntspanning met Millman. Er is geen nulgeleider, dus $N$
-        zweeft:}
+    \stapreden{\textbf{Stap 3b} --- Millman. Zonder nulgeleider zweeft $N$:}
     \[\underline{V}_N = \frac{\underline{V}_{an}\underline{Y}_a + \underline{V}_{bn}\underline{Y}_b + \underline{V}_{cn}\underline{Y}_c}
         {\underline{Y}_a + \underline{Y}_b + \underline{Y}_c}
         = \frac{-7{,}433 + j5{,}941}{0{,}17115 - j0{,}09063}
         = \boxed{49{,}13\angle 169{,}27^\circ\ \text{V}}\]
-    met: $\underline{Y}_k$ de admittantie van tak $k$ in siemens (S), $\underline{V}_{kn}$ de
-    fasespanning van de bron in V en $\underline{V}_N$ de spanning van het zwevende sterpunt
-    tegenover het bronnulpunt in V.
+    met: $\underline{Y}_k$ de takadmittantie in S, $\underline{V}_{kn}$ de fasespanning van de bron
+    in V en $\underline{V}_N$ de spanning van het zwevende sterpunt tegenover het bronnulpunt in V.
 
     \stapreden{\textbf{Stap 4} --- de lijnstromen met de wet van Ohm over elke tak:}
     \[\underline{I}_a = \frac{\underline{V}_{an} - \underline{V}_N}{\underline{Z}_a} = \boxed{8{,}95\angle 14{,}31^\circ\ \text{A}}\]
@@ -5927,9 +6130,9 @@ staat $10$~V.
         \draw[dashed, gray!60] (7.4,1.7) -- (8.3,1.7);
         \draw[dashed, gray!60] (7,0) -- (8.3,0);
     \end{circuitikz}
-    \caption{1-fasige brug met onbekende impedantie. $F$ ligt tussen de $5\,\Omega$ en de
-        $j4\,\Omega$, $E$ tussen de $3\,\Omega$ en de $-j6\,\Omega$. De voltmeter over de
-        condensator leest $\underline{V}_{EA} = 10$~V, en dat is de referentie in de uitwerking.}
+    \caption{1-fasige brug met onbekende impedantie. $F$ ligt tussen $5\,\Omega$ en $j4\,\Omega$,
+        $E$ tussen $3\,\Omega$ en $-j6\,\Omega$. De voltmeter over de condensator leest
+        $\underline{V}_{EA} = 10$~V; dat is de referentie in de uitwerking.}
 \end{figure}\FloatBarrier
 
 \begin{oefenblok}[Foto-opgave 1 --- onbekende $\underline{Z}$ uit drie voltmeters (cosinusregel)]
@@ -6027,11 +6230,11 @@ staat $10$~V.
                 \node[font=\scriptsize, anchor=north] at (5,-8.0) {$1$~cm $= 0{,}5$~A};
             \end{scope}
         \end{tikzpicture}
-        \caption{Fasordiagramma oefening 1. Links de spanningen kop-staart: van $A$ naar $E$ naar
-        $D$ naar $B$, zodat $\underline{V}_{BA}$ vanzelf de pijl van $A$ naar $B$ is (KVL). Rechts de
-        drie stromen vanuit \'e\'en punt; de stippellijn toont dat
-        $\underline{I}_{BD} = \underline{I}_{DF} + \underline{I}_{DE}$ (KCL in knoop $D$).
-        Spanningen: $1$~cm $=2$~V; stromen: $1$~cm $=0{,}5$~A.}
+        \caption{Fasordiagramma oefening 1. Links de spanningen kop-staart ($A\to E\to D\to B$),
+        zodat $\underline{V}_{BA}$ vanzelf de pijl van $A$ naar $B$ is. Rechts de stromen vanuit
+        \'e\'en punt; de stippellijn toont
+        $\underline{I}_{BD} = \underline{I}_{DF} + \underline{I}_{DE}$. Spanningen $1$~cm $=2$~V,
+        stromen $1$~cm $=0{,}5$~A.}
     \end{figure}\FloatBarrier
 \end{oefenblok}
 

@@ -6,46 +6,41 @@
 
 = Imports en Exports <chap:imports>
 
-
 Een land haalt zijn welvaart uit *export*: produceren en verkopen buiten de landsgrenzen. Wat je zelf niet maakt, moet je importeren. Maar slechts een deel van de beroepsbevolking draagt daar rechtstreeks aan bij; zorg, onderwijs en overheid houden het systeem draaiend zonder zelf te exporteren.
 
-Loonkosten liggen in West-Europa hoog, dus is *automatisering* de enige manier om lokaal te blijven produceren tegen een concurrerende prijs.
+Een land haalt zijn welvaart uit *export*. Loonkosten liggen in West-Europa hoog, dus is *automatisering* de enige manier om lokaal te blijven produceren tegen een concurrerende prijs.
 
 #wrap-figure(
-  image("assets/Geld binnen en buiten.png", width: 6cm),
+  image("assets/Geld binnen en buiten.png", width: 10cm),
   caption: [De pijlhoogte is de waarde van het product: grondstoffen komen laag binnen en gaan hoog buiten. Dat verschil is het enige dat geld binnenbrengt.],
   label: <fig:geldbinnenenbuiten>,
 )[
-  De hoogte van de pijl toont de waarde van het product. Je haalt grondstoffen binnen en verhoogt hun waarde door productie. *Productie* is dus het enige dat geld binnenbrengt, en daarom kan je ze niet stilleggen.
+  Je haalt grondstoffen binnen en verhoogt hun waarde door productie. *Productie* is dus het enige dat geld binnenbrengt, en daarom kan je ze niet stilleggen.
 
-  Een industrieel ingenieur zorgt ervoor dat de productielijn *gestandaardiseerd* is: documentatie, standaardcomponenten, vaste werkwijzen. Wie het systeem twintig jaar na jou beheert, moet er nog aan uit kunnen. Dat standaardiseren is waar dit vak over gaat.
-]
+  Een industrieel ingenieur *standaardiseert* die lijn: documentatie, standaardcomponenten, vaste werkwijzen. Wie het systeem twintig jaar later beheert, moet er nog aan uit kunnen.
+
 
 #concept(title: "IT en OT")[
   OT = Operational Technology
   IT = Information Technology
 
-  In de OT mag niets stilvallen: de sturing mag nooit de oorzaak zijn van een stilstand. In de IT is dat anders, daar mag een website of een dienst zoals Netflix al eens platliggen.
-
-  In de OT rekenen we bovendien op een levensduur van 20 tot 30 jaar.
+  In de OT mag niets stilvallen en rekenen we op een levensduur van 20 tot 30 jaar. In de IT mag een website al eens platliggen.
 ]
-
+]
 == NIS2 <sec:nis2>
 
 #keyterm[NIS2] (richtlijn EU 2022/2555) verplicht middelgrote en grote bedrijven in kritieke sectoren --- energie, transport, productie --- tot strengere beveiligings- en meldingsmaatregelen tegen cyberaanvallen.
 
-De reden dat dit in een sturingsvak staat: de OT hangt intussen aan het netwerk, dus is ze aanvalbaar geworden. En de gevolgen houden aan. Na een aanval is maar $35 %$ van de bedrijven binnen een week weer operationeel, en $34 %$ heeft na een maand nog altijd problemen.
-
-De aanvalsvlakken liggen op verschillende niveaus: het maakproces zelf (diefstal van intellectuele eigendom, manipulatie van betalingen) en de cloudkant (op afstand ingrijpen in de installatie).
+De OT hangt intussen aan het netwerk en is dus aanvalbaar. Na een aanval is maar $35 %$ van de bedrijven binnen een week weer operationeel, en $34 %$ heeft na een maand nog problemen. De aanvalsvlakken: het maakproces zelf (diefstal van intellectuele eigendom, manipulatie van betalingen) en de cloudkant (op afstand ingrijpen).
 
 == Ontwerp doelstellingen
 
-Vier doelen sturen elke keuze die je in dit vak maakt. Ze wegen anders per industrie, maar ze staan er altijd.
+Vier doelen sturen elke keuze in dit vak:
 
-- / Betrouwbaar in een industriële omgeving: betrouwbare componenten, stevige constructie, en aandacht voor EMC en IP-graad.
-- / Twintig jaar te ondersteunen: zowel de onderdelen als de mensen moeten er over twintig jaar nog zijn. Kies dus componenten die de fabrikant lang blijft leveren, en houd je documentatie bij, zodat je opvolger er nog aan uit kan.
-- / Snel te herstellen: één type component, één methodiek en één programmeertaal (LAD) over al je machines. Gebruik insteekbare componenten, zodat je een versleten relais uit zijn socket trekt in plaats van los te vijzen. Onderdelen moeten binnen twee uur te leveren zijn.
-- / Goedkoop te engineeren en flexibel: gebruik kant-en-klare oplossingen en steek je tijd in wat klantspecifiek is. Een duurder component is dan best te verantwoorden. Werk modulair, want de vereisten veranderen sowieso nog.
+- / Betrouwbaar: robuuste componenten, stevige constructie, aandacht voor EMC en IP-graad.
+- / Twintig jaar te ondersteunen: componenten die de fabrikant lang blijft leveren, plus bijgehouden documentatie.
+- / Snel te herstellen: één type component, één methodiek, één taal (LAD) over al je machines. Insteekbare componenten, en onderdelen binnen twee uur leverbaar.
+- / Goedkoop en flexibel: kant-en-klare oplossingen, tijd in wat klantspecifiek is, modulair werken.
 
 == Basisdiagram van een geautomatiseerd systeem
 
@@ -57,58 +52,60 @@ Vier doelen sturen elke keuze die je in dit vak maakt. Ze wegen anders per indus
 
 Elk geautomatiseerd systeem heeft twee soorten aansluitingen op de controller:
 
-- / Inputs van het controlesysteem: De _controle-ingangen_ (bv. knoppen en schakelaars bediend door de operator) en de _sensorsignalen_ (bv. eindschakelaars, druksensoren). Ze vertellen de controller wat er in de machine of het proces gaande is.
-- / Outputs van het controlesysteem: De _actuatoren_ (bv. motoren, kleppen, cilinders) die de machine fysiek laten bewegen, en de _visualisatie_ (bv. pilot lamps, HMI-schermen) die de operator feedback geven over de toestand van het systeem.
+- / Inputs: _controle-ingangen_ (knoppen, schakelaars) en _sensorsignalen_ (eindschakelaars, druksensoren).
+- / Outputs: _actuatoren_ (motoren, kleppen, cilinders) en _visualisatie_ (pilot lamps, HMI-schermen).
 
 === Logische sturing (aan/uit)
 
-Logic control systemen (bv. PLC, relais) werken met *discrete, digitale signalen*: een signaal is ofwel aan (1) ofwel uit (0). Dit maakt ze ideaal voor aan/uit-sturing van machines.
+Logic control werkt met *discrete signalen*: aan (1) of uit (0).
 
-- / Veel digitale signalen: Drukknopen, eindschakelaars, lampen, relais, contactors, kleppen (valves), ... Elk van deze componenten heeft slechts twee toestanden.
-- / 24 VDC als standaardspanning: In industriële omgevingen is 24 V gelijkstroom de standaard voor bekabeling van digitale I/O. Dit is veilig voor operators en compatibel met de meeste PLC-modules.
-- / Hardwareplatformen: PLC's, relaisschakelingen en (elektro-)pneumatische systemen zijn typische realisaties van logische besturing.
-- / Sequenties: De logica is vaak sequentieel — stap na stap wordt een actie uitgevoerd afhankelijk van resultaten van vorige stappen. Denk aan een machine die eerst klem, dan boor, dan loslaatbeweging uitvoert.
+- / Veel digitale signalen: drukknoppen, eindschakelaars, lampen, relais, contactoren, ventielen. Elk heeft twee toestanden.
+- / $24 "VDC"$ als standaard voor digitale I/O: veilig voor de operator, compatibel met de meeste PLC-modules.
+- / Hardware: PLC's, relaisschakelingen en (elektro-)pneumatische systemen.
+- / Sequenties: stap na stap, elke stap afhankelijk van de vorige. Klemmen, boren, loslaten.
 
 === Regeltechniek (PID-controllers)
 
-PID-controllers werken niet met aan/uit-signalen, maar met *continue, analoge signalen*. Ze meten een proceswaarde en sturen continu bij om een gewenste setpoint te bereiken (bv. temperatuurregeling).
+Een PID-controller werkt met *continue, analoge signalen*: hij meet een proceswaarde en stuurt bij naar een setpoint.
 
-- / Één analoge ingang, één analoge uitgang: De controller leest één meetwaarde (bv. temperatuur) en stuurt één actuator (bv. verwarmingselement) aan. Dit in tegenstelling tot logische besturing waarbij je tientallen digitale signalen beheert.
-- / Standaard signaalbereiken: Analoge signalen in de industrie hebben gestandaardiseerde bereiken: $0"–"20"mA"$, $4"–"20"mA"$ (meest gebruikt, want 0 mA wijst op een kabelfout), $0"–"10"V$ en $-10"–"+10"V$.
-- / Temperatuursensoren: *Pt100* en *Pt1000* (weerstandsthermometers, nauwkeurig voor lage temperaturen) en *thermokoppels* (voor hoge temperaturen, bv. in ovens).
-- / Temperatuurregelaar: Een dedicated *temperature controller* — een klein apparaat dat de PID-logica zelf uitvoert zonder PLC, typisch voor enkelvoudige regelkringen.
+- / Eén analoge in- en uitgang: één meetwaarde, één actuator. Tegenover tientallen digitale signalen bij logic control.
+- / Signaalbereiken: $0"–"20"mA"$, $4"–"20"mA"$ (meest gebruikt, want $0 "mA"$ wijst op een kabelfout), $0"–"10"V"$ en $-10"–"+10"V"$.
+- / Temperatuursensoren: *Pt100* en *Pt1000* voor lage temperaturen, *thermokoppels* voor hoge.
+- / Temperatuurregelaar: doet de PID-logica zelf, zonder PLC.
 
 #wrap-figure(
-  image("assets/automatisering pyramide.png", width: 8cm),
+  image("assets/automatisering pyramide.png", width: 10cm),
   caption: [De automatiseringspiramide. Onderaan het veld met sensoren en actuatoren, daarboven de PLC, dan SCADA voor visualisatie, en bovenaan MES en ERP voor planning.],
   label: <fig:automatiseringpyramide>,
 )[
-  PLC's vormen de basis van de hele automatisering. Zij hangen rechtstreeks aan de sensoren en doen de eenvoudige logica. Alles wat meerdere stappen moet doorlopen, jarenlang moet blijven werken en makkelijk vervangbaar moet zijn, doe je meestal met een PLC.
-]
+  De PLC hangt rechtstreeks aan de sensoren en doet de logica. Alles wat meerdere stappen doorloopt, jarenlang moet werken en vervangbaar moet zijn, doe je met een PLC.
+
 
 == Een geschikt controlesysteem kiezen <sec:controlesysteem-kiezen>
 
-Afhankelijk van de applicatie, omgevingseisen en complexiteit kiest men het passende type sturing:
+Applicatie, omgeving en complexiteit bepalen de keuze:
 
-- *Mechanische sturingen (nokkenschijven / CAM-operated)*: Uiterst betrouwbaar en snel voor repetitieve mechanische bewerkingen met een vast patroon (bv. productie van bouten en schroeven).
-- *Pneumatische logica*: Intrinsiek veilig en vonkvrij, ideaal voor explosiegevaarlijke zones (ATEX) of natte omgevingen.
+- *Mechanische sturing (nokkenschijf, CAM)*: betrouwbaar en snel voor een vast repetitief patroon, bv. bouten en schroeven.
+- *Pneumatische logica*: vonkvrij, dus voor ATEX-zones of natte omgevingen.
+]
+
   #figure(
     image("assets/pneumatische controller.png", width: 8cm),
     caption: [Een zuiver pneumatische controller: de logica zit in de ventielen zelf, dus er is nergens een vonk.],
     label: <fig:pneumatischecontroller>,
   )
-- *Hardwired relaislogica*: prima voor uiterst eenvoudige schakelingen (bv. enkele vergrendelingen). Bij meer dan 3 tot 4 stappen daalt de betrouwbaarheid echter snel door het grote aantal mechanische contacten en bedradingspunten.
+- *Hardwired relaislogica*: voor eenvoudige schakelingen. Boven 3 à 4 stappen zakt de betrouwbaarheid door het aantal contacten en bedradingspunten.
   #figure(
     image("assets/mechanicaltoolrelays.png", width: 8cm),
     caption: [Machine tool relaispaneel: klassieke sequentiële hardwired relaislogica.],
     label: <fig:mechanicaltoolrelays>,
   )
-- *Programmeerbare relais*: Compacte micro-controllers voor kleinschalige taken zoals poortsturingen, verlichting en eenvoudige machines.
-- *PLC (Programmable Logic Controller)*: De industriële standaard voor sequentiële besturing en discrete productieprocessen. Zodra een sequentie $\ge 4$ stappen omvat, is een PLC de aangewezen oplossing wegens programmeerbaarheid, modulariteit en diagnostiek. De vergelijking punt per punt staat bij @sec:relais-vs-plc.
-- *Industriële PC (IPC)*: Combineert real-time besturing (soft-PLC) met zwaardere dataverwerking, beeldverwerking (vision), en database-integratie.
-- *Specifieke motion/CNC- en robotcontrollers*: Dedicated controllers geoptimaliseerd voor complexe meer-assige bewegingsinterpolatie en trajectplanning.
-- *LabVIEW / PC-acquisitie*: Voornamelijk gebruikt in labo- en testopstellingen voor snelle data-acquisitie en analyse.
-- *SCADA (Supervisory Control And Data Acquisition)*: Bovenliggende visualisatie- en bedieningslaag die gegevens van meerdere PLC's verzamelt, trends toont en alarmen logt.
+- *Programmeerbaar relais*: kleinschalig, bv. poortsturing en verlichting.
+- *PLC*: de industriële standaard. Vanaf $4$ stappen de aangewezen keuze, zie @sec:relais-vs-plc.
+- *IPC*: real-time besturing plus zwaardere dataverwerking, vision en database.
+- *CNC- en robotcontrollers*: meer-assige interpolatie en trajectplanning.
+- *LabVIEW*: labo- en testopstellingen.
+- *SCADA*: visualisatielaag boven meerdere PLC's; verzamelt trends en logt alarmen.
   #figure(
     image("assets/Scada.png", width: 7cm),
     caption: [SCADA-systeem: centrale procesvisualisatie en data-acquisitie],
@@ -120,7 +117,7 @@ Afhankelijk van de applicatie, omgevingseisen en complexiteit kiest men het pass
 
 == Industrie 4.0 <sec:industrie40>
 
-De vier industriële revoluties in vogelvlucht:
+De vier industriële revoluties:
 
 + *Industrie 1.0*: Mechanisatie door water- en stoomkracht.
 + *Industrie 2.0*: Massaproductie en lopende band via elektrische energie.
@@ -128,15 +125,13 @@ De vier industriële revoluties in vogelvlucht:
 + *Industrie 4.0*: Cyber-Physical Systems (CPS), Internet of Things (IoT), cloud computing, digital twins en AI.
 
 #concept(title: "De vier ontwerpprincipes van Industrie 4.0")[
-  - *Interconnectie*: Machines, apparaten, sensoren en mensen communiceren met elkaar via industriële netwerken en het IoT.
-  - *Informatie-transparantie*: Virtuele modellen (digital twins) en real-time sensordata zorgen voor een compleet en actueel beeld van de productie.
-  - *Technische assistentie*: Systemen ondersteunen operatoren door data visueel en contextueel aan te bieden (bv. dashboards, augmented reality) en fysiek zwaar/gevaarlijk werk over te nemen.
-  - *Decentrale besluitvorming*: Cyber-fysieke systemen nemen zelfstandig operationele beslissingen; enkel bij uitzonderingen of conflicten wordt menselijke tussenkomst gevraagd.
+  - *Interconnectie*: machines, sensoren en mensen communiceren via industriële netwerken en IoT.
+  - *Informatietransparantie*: digital twins en real-time sensordata geven een actueel beeld van de productie.
+  - *Technische assistentie*: dashboards en augmented reality voor de operator, robots voor het zware werk.
+  - *Decentrale besluitvorming*: cyber-fysieke systemen beslissen zelf; de mens komt er alleen bij uitzonderingen aan te pas.
 ]
 
-#examenbox[
-  Examentip: Ken de vier ontwerpprincipes van Industrie 4.0 en weet hoe een digital twin bijdraagt aan de informatietransparantie.
-]
+#examenbox[Ken de vier ontwerpprincipes, en hoe een digital twin bijdraagt aan de informatietransparantie.]
 
 
 == RDS Reference Designation System: hoe benoem je componenten?
@@ -148,7 +143,7 @@ De vier industriële revoluties in vogelvlucht:
   label: <fig:klassesRDS>,
 )
 
-Je deelt je componenten in *klassen* in. Elke klasse heeft een letter die zegt welke functie het component vervult, en per aspect krijg je zo'n letter. _Bv. EN 81346._
+Je deelt componenten in *klassen* in. Elke klasse heeft een letter die zegt welke functie het component vervult, één per aspect (EN 81346).
 
 #oefening(
   title: "klassen RDS",
@@ -172,15 +167,15 @@ Een paar belangrijke letters:
 
 = Logic control
 
-De eerste ontwerpregel is simpel: bestaat er al een component dat specifiek gemaakt is voor een bepaalde functie, gebruik dat dan in plaats van zelf iets te bouwen dat hetzelfde doet. Heb je een timer nodig, neem dan een standaard timercomponent en ga niet knutselen met tellers en omwegen. Beperk ook het aantal verbindingen: elke draad is een kans op een fout.
+Bestaat er een component voor een functie, gebruik dat dan in plaats van het zelf te bouwen: heb je een timer nodig, neem een timer, geen teller met omwegen. Beperk ook het aantal verbindingen, want elke draad is een kans op een fout.
 
 #concept(title: "Drie soorten logische problemen")[
   / Combinatorisch: de uitgang volgt rechtstreeks uit de *huidige* waarden aan de ingang. Bv. een AND-functie.
   / Geheugenschakeling (binair geheugen): de uitgang hangt niet alleen af van de huidige ingang, maar ook van de toestand *voorheen*. Bv. Start/Stop.
-  / Sequentie: een reeks opeenvolgende stappen die het systeem doorloopt om een taak uit te voeren. Elke stap volgt logisch uit de vorige, op basis van sensorinput, tijd of voltooide acties. Bv. een pick-and-place robot: grijpen $arrow.r$ bewegen $arrow.r$ lossen. Dat programmeer je met een PLC via een sequentiële functiegrafiek (SFC).
+  / Sequentie: opeenvolgende stappen, elke stap volgend uit de vorige op basis van sensorinput, tijd of voltooide acties. Bv. pick-and-place: grijpen $arrow.r$ bewegen $arrow.r$ lossen.
 ]
 
-Geheugens maken een systeem snel complex: toestanden worden over het hoofd gezien en het gedrag na een noodstop is moeilijk te overzien. Voeg er in een elektrisch diagram dus *zo weinig mogelijk* toe, net genoeg om alle noodzakelijke condities te beschrijven als combinaties van ingangen en geheugentoestanden.
+Geheugens maken een systeem snel complex: je vergeet toestanden en het gedrag na een noodstop wordt onoverzichtelijk. Voeg er dus *zo weinig mogelijk* toe.
 
 == Knoppen en schakelaars <sec:knoppen-schakelaars>
 
@@ -205,10 +200,10 @@ De contactnummering is gestandaardiseerd: *hoofdcontacten* krijgen de nummers 1 
   label: <fig:sortofbuttons>,
 )
 
-/ Push button (momentary): je drukt en laat los, zoals een deurbel. Zit meestal in een beschermende kraag zodat hij niet zomaar ingedrukt kan worden.
-/ Detent switch (latching): gelijkaardig, maar je moet nogmaals duwen om hem te lossen.
-/ Keuze- of draaischakelaar: draait naar een stand en blijft daar staan, tijdelijk of vergrendeld. _Ezelsbrug: het symbool lijkt op pedalen, en een coureur schakelt zijn fiets._
-/ Pilot lamp: de terugkoppeling naar de operator, bv. "staat de machine aan?"
+/ Push button (momentary): drukken en loslaten. Zit meestal in een beschermende kraag.
+/ Detent switch (latching): blijft ingedrukt tot je opnieuw duwt.
+/ Keuze- of draaischakelaar: blijft in zijn stand staan, tijdelijk of vergrendeld.
+/ Pilot lamp: terugkoppeling naar de operator.
 
 #wrap-figure(
   image("assets/hoofdschakelaar-Q1.png", width: 4.5cm),
@@ -216,9 +211,9 @@ De contactnummering is gestandaardiseerd: *hoofdcontacten* krijgen de nummers 1 
   label: <fig:hoofdschakelaar-Q1>,
   width: 4.5cm,
 )[
-  Een symbool dat je constant tegenkomt is de *hoofdschakelaar*. Aan één bediening (het "pedaal") hangen verschillende draden die allemaal gelijktijdig schakelen, en die samen één naam dragen: `-Q1`.
+  Bij de *hoofdschakelaar* hangen aan één bediening verschillende draden die gelijktijdig schakelen, samen onder één naam: `-Q1`.
 
-  In de industriële omgeving verkiezen we *knoppen boven schakelaars*. Een schakelaar kan namelijk in een onveilige stand achtergelaten worden, een knop niet. Stel: de stroom valt 's middags uit, iedereen gaat naar huis, en 's nachts komt de spanning terug. Een verkeerd staande schakelaar start dan de machine opnieuw op. Bij een knop hangt het starten aan een bewuste menselijke actie. De combinatie komt vaak voor: eerst de schakelaars goed zetten, dan op een knop duwen.
+  In de industrie verkies je *knoppen boven schakelaars*. Een schakelaar kan in een onveilige stand blijven staan: valt de stroom uit en komt hij 's nachts terug, dan start een verkeerd staande schakelaar de machine opnieuw. Een knop vraagt een bewuste handeling. De combinatie is gebruikelijk: eerst de schakelaars zetten, dan op de knop duwen.
 ]
 
 #wrap-figure(
@@ -228,21 +223,19 @@ De contactnummering is gestandaardiseerd: *hoofdcontacten* krijgen de nummers 1 
   width: 3.5cm,
   align: left,
 )[
-  Hoe je de schakeling tekent, bepaalt haar functie. In @fig:voorbeeldcircuit staan twee schakelaars `-S1` en `-S2` die beide normaal open zijn, in serie met de lamp `-P1`. Beide moeten dus gesloten zijn voor de lamp brandt: dat is een AND-functie in hardware.
+  Hoe je tekent, bepaalt de functie. Op @fig:voorbeeldcircuit staan `-S1` en `-S2`, beide N.O., in serie met lamp `-P1`: beide moeten sluiten, dus een EN-functie in hardware. #strong[Parallel] wordt het een OF, en een N.C.-uitvoering geeft de NIET.
 
-  Een *volt-free contact* (potentiaalvrij contact) levert zelf geen stroom of spanning: het opent of sluit enkel een verbinding tussen twee draden. Een gewone lichtschakelaar is zo'n contact.
+  Een *volt-free contact* levert zelf geen stroom of spanning; het opent of sluit enkel een verbinding. Een gewone lichtschakelaar is er zo een.
 
-  Zet je dezelfde twee schakelaars #strong[parallel], dan volstaat er één om de lamp te doen branden. Dat is een OF-functie. Wil je een NIET, dan bestel je het contact in zijn N.C.-uitvoering; de inversie zit dan al in het component.
+  #belangrijk[Onthouden wat er eerder gebeurde lukt niet met contacten alleen]; daarvoor is de zelfhoudschakeling uit @sec:zelfhouding nodig.
 
-  Zo bouw je met alleen contacten elke combinatorische functie. #belangrijk[Wat je met contacten niet kan, is onthouden wat er eerder gebeurde.] Daarvoor heb je een geheugen nodig, en dat is de zelfhoudschakeling verderop in dit hoofdstuk.
-
-  Let bij het lezen van een schema op de nummering naast elk contact: `3-4` hoort bij een N.O.-contact, `1-2` bij een N.C.-contact. Zo zie je aan het schema zelf welk type er staat, ook zonder de legende.
+  De nummering verraadt het type: `3-4` is N.O., `1-2` is N.C.
 ]
 
 
 == Contactoren <sec:contactoren>
 
-Tot nu toe schakelden we signalen. Maar wat als je *vermogen* moet schakelen, zoals een driefasige motor of een verwarmingskring? Daarvoor gebruik je een *contactor*: een elektrisch gestuurd schakelelement dat ontworpen is om hoge stromen en inductieve belastingen in of uit te schakelen. Het is een zwaardere versie van een relais.
+Voor *vermogen* — een driefasige motor, een verwarmingskring — gebruik je een *contactor*: een elektrisch gestuurd schakelelement voor hoge en inductieve stromen. Een zwaardere versie van een relais.
 
 #examenbox[
   Verwar de letters niet: `K` is een *relais* (stuurstroom, logica), `Q` is een *contactor* of hoofdschakelaar (vermogen).
@@ -256,11 +249,9 @@ Tot nu toe schakelden we signalen. Maar wat als je *vermogen* moet schakelen, zo
   label: <fig:spdt-break-make>,
   width: 4.5cm,
 )[
-  Een contactor is opgebouwd uit één of meerdere *polen*, wat verwijst naar het aantal schakelcontacten dat hij bevat. Het aantal geleidende standen noemen we *throw* of *way*.
+  *Polen* is het aantal schakelcontacten, *throw* of *way* het aantal geleidende standen. Eén lamp die je tussen bron A óf B schakelt is één circuit (*Single Pole*) met twee standen (*Double Throw*): een *SPDT*.
 
-  Stel dat je een lamp wil verbinden met stroombron A óf stroombron B, maar nooit met beide tegelijk. Je schakelt dan één onafhankelijk circuit (*Single Pole*, 1P) tussen twee standen (*Double Throw*, 2T). Dat is dus een *SPDT*-schakelaar.
-
-  De volgorde waarin dat gebeurt, maakt uit. Bij *break before make* wordt het oude contact eerst verbroken voor het nieuwe sluit: de twee bronnen worden nooit even met elkaar verbonden. Bij *make before break* is het omgekeerd, wat je gebruikt wanneer de kring nooit onderbroken mag worden.
+  De volgorde telt. Bij *break before make* verbreekt het oude contact eerst, dus zijn de twee bronnen nooit verbonden. *Make before break* doet het omgekeerd, voor een kring die nooit onderbroken mag worden.
 ]
 
 === Hoofdcontacten en hulpcontacten
@@ -271,23 +262,23 @@ Tot nu toe schakelden we signalen. Maar wat als je *vermogen* moet schakelen, zo
   label: <fig:contactor-symbool>,
   width: 6.5cm,
 )[
-  Meestal heeft een contactor *drie hoofdcontacten*, zodat hij de drie fasen van het net in één keer schakelt. Die zijn zo goed als altijd normaal open (N.O.) en geleiden dus enkel wanneer de spoel bekrachtigd is. Ze zijn bestand tegen zware belasting en uitgerust met voorzieningen om overspanning en vonkvorming onder controle te houden: een contactor breekt bovendien op *twee punten* tegelijk, waardoor het tussenstuk spanningsloos "zweeft" en de vlamboog sneller dooft.
+  Een contactor heeft meestal *drie hoofdcontacten* voor de drie fasen, zo goed als altijd N.O. Ze zijn bestand tegen zware belasting en breken op *twee punten* tegelijk, zodat het tussenstuk spanningsloos zweeft en de vlamboog sneller dooft.
 
-  Daarnaast bevat een contactor bijna altijd één of meer *hulpcontacten* (auxiliary contacts), herkenbaar aan de nummering *boven de 10*. Die schakelen géén grote stromen; ze dienen in de besturingslogica om de toestand van de contactor te *signaleren*, bv. voor een zelfhoudschakeling, een terugmelding naar de PLC of een signaallamp. Ze kunnen zowel N.O. als N.C. zijn.
+  Daarnaast zitten er *hulpcontacten* op, herkenbaar aan de nummering *boven de 10*. Die schakelen geen vermogen maar *signaleren* de toestand van de contactor: zelfhouding, terugmelding naar de PLC, signaallamp. N.O. of N.C.
 ]
 
-Een contactor is *monostabiel*: valt de spanning op de spoel weg, dan valt hij af. De spoelspanning staat volledig los van de contactspanningen. Een spoel van 24 VDC kan perfect hoofdcontacten van 400 VAC en hulpcontacten van 110 VDC aansturen.
+Een contactor is *monostabiel*: valt de spoelspanning weg, dan valt hij af. De spoelspanning staat los van de contactspanningen: een spoel van $24 "VDC"$ stuurt gerust hoofdcontacten van $400 "VAC"$ aan.
 
 === Opletten bij inductieve belastingen
 
-Een contactor schakelt meestal *inductieve* belastingen (motoren, spoelen), en daar zitten twee valkuilen.
+Een contactor schakelt meestal *inductieve* belastingen, en daar zitten twee valkuilen.
 
-+ Bij het *inschakelen* trekt een asynchrone motor een inschakelstroom $I$ die een veelvoud is van zijn nominale stroom. De contactor moet die piek aankunnen: je dimensioneert hem dus op de belasting die hij schakelt, niet enkel op het nominale vermogen.
-+ Bij het *uitschakelen* wil de stroom door een spoel niet plots stoppen ($u = L (Delta I) / (Delta t)$). Er wordt een vlamboog getrokken tussen de contactpunten, en die brandt de contacten weg. Dat is de belangrijkste slijtageoorzaak van een contactor.
++ *Inschakelen*: een asynchrone motor trekt een veelvoud van zijn nominale stroom. Dimensioneer de contactor op de belasting die hij schakelt, niet op het nominale vermogen.
++ *Uitschakelen*: de stroom door een spoel stopt niet plots ($u = L (Delta I) \/ (Delta t)$). Er wordt een vlamboog getrokken die de contacten wegbrandt, de belangrijkste slijtageoorzaak.
 
 === Spanningspieken op de stuurzijde <sec:snubbers>
 
-Een spoel stopt haar stroom niet zomaar. Bij het openen van het contact wil ze haar opgeslagen magnetische energie kwijt, en volgens
+Bij het openen van het contact moet de spoel haar magnetische energie kwijt, en volgens
 
 $ v = L (dif i) / (dif t) $
 
@@ -301,9 +292,9 @@ loopt die spanning hoog op zodra $dif t$ naar nul gaat. Relais en contactoren ge
 
 === AC-contactoren: wervelstromen en brommen <sec:ac-contactoren>
 
-Contactoren kunnen op DC én op AC werken, maar in de praktijk zie je vooral AC. Dat geeft twee bijkomende problemen.
+In de praktijk zie je vooral AC-contactoren, en die hebben twee bijkomende problemen.
 
-*Wervelstromen.* Bij een wisselende spanning verandert de flux voortdurend, en die veranderende flux wekt *wervelstromen* (eddy currents) op in het massieve ijzer van de kern. Die stromen verwarmen de kern en kosten energie. De oplossing is een *gelamineerde* kern: opgebouwd uit dunne, onderling geïsoleerde staalplaatjes, zodat de wervelstromen geen groot rondgaand pad meer vinden. Dit is de klassieke examenvraag over AC-contactoren.
+*Wervelstromen.* De wisselende flux wekt *wervelstromen* op in het massieve ijzer van de kern, die de kern verwarmen en energie kosten. Oplossing: een *gelamineerde* kern van dunne, onderling geïsoleerde staalplaatjes, zodat de wervelstromen geen rondgaand pad meer vinden.
 
 #figure(
   image("assets/ac-contactor-spoelring-flux.jpeg", width: 12cm),
@@ -311,11 +302,11 @@ Contactoren kunnen op DC én op AC werken, maar in de praktijk zie je vooral AC.
   label: <fig:ac-contactor-spoelring>,
 )
 
-*Brommen.* De aantrekkingskracht van een elektromagneet is evenredig met het *kwadraat* van de flux, dus $F prop Phi^2$. Bij AC gaat de flux twee keer per periode door nul, en dus zakt ook de kracht twee keer per periode naar nul. Telkens de kracht onder de veerkracht van de terugstelveer duikt, laat het anker even los en slaat het opnieuw aan. Bij 50 Hz gebeurt dat 100 keer per seconde, en dat hoor je als een brom. Het kost bovendien extra slijtage.
+*Brommen.* De aantrekkingskracht is evenredig met $Phi^2$. Bij AC gaat de flux twee keer per periode door nul, dus zakt ook de kracht twee keer per periode naar nul. Duikt ze onder de veerkracht, dan laat het anker los en slaat opnieuw aan: bij $50 "Hz"$ honderd keer per seconde. Dat hoor je, en het brandt de contacten in.
 
-De oplossing is een kleine *geleidende ring* (kortsluitring of spoelring) rond een deel van het poolvlak. De veranderende flux induceert een stroom in die ring, en die stroom gaat de *verandering* van de flux tegen (wet van Lenz). Daardoor loopt de flux door dat deel van de pool in fase achter op de hoofdflux. Op @fig:ac-contactor-spoelring zie je die twee gesplitste fluxen; hun som (de grijze kromme) zakt nooit meer tot nul en blijft altijd boven de veerkracht. Het anker blijft aangetrokken en de brom verdwijnt.
+De oplossing is een *kortsluitring* rond een deel van het poolvlak. De veranderende flux induceert er een stroom in die de fluxverandering tegenwerkt (wet van Lenz), waardoor de flux door dat deel achterloopt op de hoofdflux. Op @fig:ac-contactor-spoelring zakt hun som (grijs) nooit meer tot nul.
 
-_Houd de twee problemen uit elkaar: laminatie lost de wervelstromen op, de kortsluitring lost het lostrillen op. De slide koppelt aan dat lostrillen wél een tweede gevolg: de contacten branden bij $100 "Hz"$ continu in._
+_Laminatie lost de wervelstromen op, de kortsluitring het lostrillen. Twee problemen, twee oplossingen._
 
 == Relais <sec:relais>
 
@@ -325,16 +316,16 @@ _Houd de twee problemen uit elkaar: laminatie lost de wervelstromen op, de korts
   label: <fig:Relay>,
   width: 7cm,
 )[
-  Een *relais* (letter `K`) werkt op hetzelfde principe als een contactor, maar dan voor *signalen* in plaats van vermogen. Het is het meest fundamentele element in logic control: een elektromagnetische schakelaar die door knoppen, schakelaars en sensoren aangestuurd wordt.
+  Een *relais* (letter `K`) werkt als een contactor, maar voor *signalen* in plaats van vermogen.
 
-  Vloeit er een stroom $I$ door de spoel (aangesloten op de klemmen A1 en A2), dan wordt er een magnetisch veld $B$ opgewekt. Die spoel is gewikkeld rond een kern van ferromagnetisch materiaal, meestal zacht ijzer. De stroom veroorzaakt een *magnetomotorische kracht* (mmf) die een magnetische flux $Phi$ opwekt. Die flux loopt bijna volledig langs het pad met de kleinste magnetische weerstand (*reluctantie*), dus door het ijzer en niet door de lucht.
+  Een stroom $I$ door de spoel (klemmen A1 en A2) wekt een *magnetomotorische kracht* (mmf) op, en die drijft een flux $Phi$ door de zachtijzeren kern. Die flux volgt het pad met de kleinste *reluctantie*, dus het ijzer en niet de lucht.
 
-  Waar de flux toch een luchtspleet moet oversteken, ontstaan tegengestelde magnetische polen. Die trekken de bewegende *armatuur* naar het vaste deel, en zo veranderen de contacten van positie. Omdat er een bewegend deel in zit, is een relais niet geschikt voor hoge schakelfrequenties.
+  Waar de flux een luchtspleet oversteekt, ontstaan tegengestelde polen die de bewegende *armatuur* aantrekken en de contacten omzetten. Door dat bewegende deel is een relais niet geschikt voor hoge schakelfrequenties.
 ]
 
 === Van stroom tot contact: de krachtketen <sec:krachtketen>
 
-Waarom trekt de armatuur aan? De ketting loopt van stroom naar kracht, en elke schakel heeft zijn eigen formule.
+Van stroom naar kracht, elke schakel met zijn eigen formule.
 
 #figure(
     cetz.canvas(length: 1.05cm, {
@@ -439,7 +430,7 @@ Waarom trekt de armatuur aan? De ketting loopt van stroom naar kracht, en elke s
   label: <fig:relais-krachten>,
 )
 
-*Stap 1: de stroom maakt een magnetomotorische kracht.* De spoel is de bron van het hele verhaal. Niet de stroom alleen telt, maar de stroom maal het aantal keren dat de draad rond de kern gaat.
+*Stap 1: de stroom maakt een magnetomotorische kracht.* Niet de stroom alleen telt, maar de stroom maal het aantal windingen.
 
 $ cal(F) = N dot I $
 
@@ -448,7 +439,7 @@ met:
 - $N$: aantal windingen van de spoel $[-]$
 - $I$: stroom door de spoel, tussen de klemmen A1 en A2 $["A"]$
 
-*Stap 2: de mmf drijft een flux.* Dit is de *wet van Hopkinson*, de magnetische tegenhanger van de wet van Ohm: de mmf speelt de rol van spanning, de flux die van stroom, en de reluctantie die van weerstand.
+*Stap 2: de mmf drijft een flux.* De *wet van Hopkinson*, de magnetische tegenhanger van Ohm: mmf als spanning, flux als stroom, reluctantie als weerstand.
 
 $ Phi = frac(cal(F), cal(R)) $
 
@@ -465,9 +456,9 @@ met:
 - $mu = mu_r dot mu_0$: permeabiliteit van het materiaal $["H/m"]$
 - $A$: doorsnede van het pad $["m"^2]$
 
-Zacht ijzer heeft een relatieve permeabiliteit $mu_r$ van enkele duizenden, lucht heeft $mu_r = 1$. Een luchtspleet van een halve millimeter weegt dus zwaarder door dan enkele centimeters ijzer. Daarom loopt de flux zo goed als volledig door het ijzer, en is de spleet het knelpunt van het circuit.
+Zacht ijzer heeft $mu_r$ van enkele duizenden, lucht $mu_r = 1$. Een spleet van een halve millimeter weegt dus zwaarder dan centimeters ijzer: de spleet is het knelpunt.
 
-*Stap 4: de flux over de spleet levert de kracht.* Waar de flux de spleet oversteekt, ontstaan tegengestelde polen aan weerszijden, en die trekken elkaar aan.
+*Stap 4: de flux over de spleet levert de kracht.* Aan weerszijden van de spleet ontstaan tegengestelde polen die elkaar aantrekken.
 
 $ F_"mag" = frac(Phi^2, 2 mu_0 A) = frac(B^2 A, 2 mu_0) $
 
@@ -476,7 +467,7 @@ met:
 - $A$: oppervlakte van één poolvlak $["m"^2]$
 - $mu_0 = 4 pi dot 10^(-7)$: permeabiliteit van het vacuüm $["H/m"]$
 
-Dat is de kracht *per poolvlak*. In @fig:relais-krachten zijn er twee spleten, dus telt de kracht dubbel.
+Dat is de kracht *per poolvlak*; op @fig:relais-krachten zijn er twee spleten, dus telt ze dubbel.
 
 *Stap 5: kracht tegen veerkracht.* De armatuur beweegt pas wanneer de magnetische kracht de terugstelveer overwint:
 
@@ -486,13 +477,11 @@ met:
 - $k$: veerconstante $["N/m"]$
 - $x$: indrukking van de veer $["m"]$
 
-Zodra dat het geval is, trekt de armatuur aan, duwt de isolerende stoter het contactblad `11` mee, opent het N.C.-contact `11-12` en sluit het N.O.-contact `11-14`.
+De armatuur trekt dan aan, de isolerende stoter duwt contactblad `11` mee, `11-12` (N.C.) opent en `11-14` (N.O.) sluit.
 
-#concept(title: "Key insight")[
-  Twee gevolgen van $F prop Phi^2$ die je moet kunnen uitleggen:
-
-  + *Het relais klapt dicht.* Wordt de spleet kleiner, dan daalt $cal(R)$, stijgt $Phi$, en stijgt $F$ kwadratisch. De kracht versterkt dus zichzelf tijdens het aantrekken. Daarom schakelt een relais met een snelle klik, en daarom ligt de *afvalstroom lager dan de aantrekstroom*: eenmaal dicht heeft hij veel minder stroom nodig om dicht te blijven.
-  + *Bij wisselstroom bromt het.* Omdat $F$ evenredig is met het *kwadraat* van de flux, pulseert de kracht aan het dubbele van de netfrequentie en zakt ze twee keer per periode naar nul. Dat is het brommen uit @sec:ac-contactoren, en de reden voor de kortsluitring.
+#concept(title: "Twee gevolgen van $F prop Phi^2$")[
+  + *Het relais klapt dicht.* Kleinere spleet $arrow.r$ lagere $cal(R)$ $arrow.r$ hogere $Phi$ $arrow.r$ kwadratisch hogere $F$. De kracht versterkt zichzelf tijdens het aantrekken, vandaar de klik. Daarom ligt de *afvalstroom lager dan de aantrekstroom*.
+  + *Bij wisselstroom bromt het.* De kracht pulseert aan het dubbele van de netfrequentie en zakt twee keer per periode naar nul: het brommen uit @sec:ac-contactoren.
 ]
 
 #wrap-figure(
@@ -502,9 +491,9 @@ Zodra dat het geval is, trekt de armatuur aan, duwt de isolerende stoter het con
   width: 4cm,
   align: left,
 )[
-  De contacten van een relais kunnen zowel N.O. als N.C. zijn. Op de figuur zie je de streepjeslijn die de spoel mechanisch verbindt met het contact: dat is de manier waarop je in een schema ziet welk contact bij welke spoel hoort.
+  De contacten kunnen N.O. of N.C. zijn. De streepjeslijn verbindt de spoel mechanisch met het contact: zo zie je in een schema welk contact bij welke spoel hoort.
 
-  Er bestaan uitzonderingen op de monostabiele werking: *latching relais* of *teleruptoren* behouden hun positie zonder dat de spoel continu bekrachtigd blijft.
+  Uitzondering op de monostabiele werking: *latching relais* of *teleruptoren* houden hun stand zonder dat de spoel bekrachtigd blijft.
 ]
 
 #table(
@@ -519,15 +508,11 @@ Zodra dat het geval is, trekt de armatuur aan, duwt de isolerende stoter het con
   [Zit in], [de besturingslogica], [het hoofdcircuit],
 )
 
-#examenbox[
-  Op het examen moet je van een fabrikant een bepaald relais kunnen achterhalen en de N.C.- en N.O.-schakelingen kunnen herkennen. Zo moet je een start-stopschakeling correct kunnen aansluiten.
-]
+#examenbox[Je moet uit een fabrikantsblad het juiste relais kunnen halen, N.C. en N.O. herkennen, en daarmee een start-stopschakeling aansluiten.]
 
 == Start-stopschakeling en zelfhouding
 
-Een relais is goedkoop en simpel, en daarom bouw je er vaak logica mee. De bekendste schakeling is de #keyterm[start-stopschakeling]. Die zit in bijna elke machine, soms als relais, soms als PLC-code.
-
-#belangrijk[Dit is de basisschakeling van de industriële automatisering.] Het is een geheugenfunctie, gebouwd met een monostabiele component.
+#belangrijk[De #keyterm[start-stopschakeling] is de basisschakeling van de industriële automatisering]: een geheugenfunctie, gebouwd met een monostabiele component. Ze zit in bijna elke machine, soms als relais, soms als PLC-code.
 
 === Hoe de zelfhouding werkt <sec:zelfhouding>
 
@@ -565,18 +550,16 @@ De werking volgt daaruit:
   + *Voorrang voor stop*: Stopknop `-S3` is altijd Normaal Gesloten (N.C.) en staat in serie vóór de starttak (draadbreuk = veilige stilstand).
 ]
 
-Dezelfde schakeling bouw je ook met een MY4-relais. De logica blijft identiek; alleen de klemmennummering verschilt.
+Met een MY4-relais blijft de logica identiek; alleen de klemmennummering verschilt.
 
 #waarschuwing[
-  *Zwevende spanningen.* Druk je op de stopknop, dan is het knooppunt boven die knop nergens meer mee verbonden. Dat stuk heeft dan geen referentie meer: de spanning erop is #keyterm[zwevend].
-
-  Zo'n zwevende spanning heeft geen echte waarde. Er zitten bovendien maar weinig ladingen op, zodat die bij het meten meteen door je meettoestel weglopen. Je kan dat stuk dus niet zinvol meten.
+  *Zwevende spanningen.* Druk je op de stopknop, dan hangt het knooppunt erboven nergens meer aan: de spanning is #keyterm[zwevend] en heeft geen echte waarde. Er zitten zo weinig ladingen op dat ze bij het meten meteen door je meettoestel weglopen, dus meten heeft geen zin.
 ]
 
 == Signaal-tijddiagram
 
 
-Zoals gezien in elektronica kun je diagrammen maken om het gedrag van signalen over tijd te visualiseren.
+Een signaal-tijddiagram zet alle signalen van een machine op dezelfde tijdas.
 #figure(
   image("assets/Time-diagram.png", width: 15cm),
   caption: [Signaal-tijddiagram: startknop, de twee eindsensoren, de ventielspoel en onderaan de cilinderpositie, allemaal op dezelfde tijdas.],
@@ -587,31 +570,21 @@ Zoals gezien in elektronica kun je diagrammen maken om het gedrag van signalen o
 
 == Timers en tijdrelais
 
-#concept(title: "Timers")[
-
-  Timers gaan pas na een bepaalde tijd af of aan na een verandering in signaal.
-
-  Je kunt twee soorten timers hebben:
-  / On delay timer (TON): De output gaat pas na een bepaalde tijd actief.
-  / Off delay timer (TOF): De output gaat pas na een bepaalde tijd inactief.
-
-  Hiervoor bestaan *Speciale relays: Timing relays*.
-]
 #wrap-figure(
   image("assets/Timing relays.png", width: 3cm),
   caption: [Timing relays: TON (kruis) en TOF (ingevuld blok)],
   label: <fig:timingrelays>,
 )[
-  Tijdrelais (*timing relays*) bieden gecontroleerde vertraging bij het in- of uitschakelen van een contact:
+  Een tijdrelais vertraagt het in- of uitschakelen van een contact:
 
   - / TON (Timer On Delay): Vertraagt het *inschakelen*. Zodra de spoel bekrachtigd wordt, start de tijdmeting $T$. Pas na $T$ schakelen de contacten om. Symbool: kruis $times$ in het vertragingsblok.
   - / TOF (Timer Off Delay): Vertraagt het *uitschakelen*. Zodra de spoel spanningloos wordt, blijft het contact nog gedurende tijd $T$ actief vooraleer het afvalt. Symbool: volledig ingevuld zwart blok.
 
   #examenbox[Ken het verschil tussen TON en TOF en herken de standaardsymbolen op elektrische schema's.]
-]
 
+]
 #oefening(title: "TON en TOF: de gasbrander uit de slides")[
-  Twee opgaven over dezelfde machine, en ze verschillen alleen in de kant waar de vertraging zit.
+  Twee opgaven over dezelfde machine, met de vertraging aan een andere kant.
 
   *TON.* Bij het starten moet de ventilator eerst genoeg luchtstroom opbouwen vóór het gas open mag. Zet een TON op het startsignaal: de ventilator loopt meteen, en pas na tijd $T$ trekt de gasklep aan. De ventilator is dus de directe uitgang, het gas de vertraagde.
 
@@ -681,25 +654,21 @@ In eenvoudige schakelingen met 1 tot 3 stappen kan een relaisschakeling volstaan
   caption: [Ladder Logic rung met condities en uitgangsspoel],
   label: <fig:Ladder-logic>,
 )[
-  *Ladder Logic (LAD)* is een grafische programmeertaal conform IEC 61131-3 die sterk lijkt op traditionele elektrische relaisschema's.
+  *Ladder Logic (LAD)* is een grafische taal conform IEC 61131-3 die op een relaisschema lijkt. Je bouwt per *rung* tussen de linker- en rechtervoedingsrail; de spoel trekt aan zodra er een gesloten pad is.
 
-  De logica wordt per *rung* (trede) opgebouwd tussen de linker- en rechtervoedingsrail. Een spoel wordt pas bekrachtigd wanneer er een gesloten logisch pad is via de contacten.
-
-  Lees een rung van links naar rechts als een reeks vragen. Contacten in #strong[serie] vormen een EN, contacten in #strong[parallel] een OF, en een N.C.-contact is de inverse van zijn variabele.
+  Lees een rung van links naar rechts: #strong[serie] is EN, #strong[parallel] is OF, en een N.C.-contact is de inverse van zijn variabele.
 
   Rechts staat altijd een instructie die het resultaat gebruikt, meestal een uitgangsspoel. Elk netwerk moet zo afgesloten zijn, anders compileert het programma niet.
-]
+
 
 == Logische sturing met een PLC
 
 === Variabelen- en bloknaamgevingsconventie
 
-Om programma's overzichtelijk en onderhoudbaar te houden, hanteert men internationale standaarden (zoals PLCOpen):
+PLCOpen geeft een naamgevingsstandaard:
 
-+ *Algemene structuur*: `PrefixType_PrefixGeheugen_UniekeNaam` (bv. `xI_Q1_Feedback`).
-+ *Taal*: Variabele- en bloknamen worden standaard in het Engels opgesteld.
-+ *Naamstijl*: `UpperCamelCasing` voor de beschrijvende naam, gescheiden door underscores tussen prefixen.
-+ *Typeprefix (kleine letters)*:
++ *Structuur*: `PrefixType_PrefixGeheugen_UniekeNaam`, bv. `xI_Q1_Feedback`. Namen in het Engels, `UpperCamelCasing`, prefixen gescheiden door underscores.
++ *Typeprefix*:
   - `x`: Boolean (`xStart`, `xEmergencyStop`)
   - `i`: Integer (`iCycleCount`)
   - `r`: Real / Floating point (`rTemperature`)
@@ -709,8 +678,8 @@ Om programma's overzichtelijk en onderhoudbaar te houden, hanteert men internati
   - `Q` of `A`: Fysieke uitgang (Output / Ausgang)
   - `M`: Merker / intern geheugenbit (Memory marker)
   - `DB`: Data Block variabele
-+ *RDS-koppeling*: Verwijst een variabele rechtstreeks naar een component in het elektrisch schema, dan start de naam met de RDS-code (bv. `-S1`, `-Q2`).
-
++ *RDS-koppeling*: hoort de variabele bij een component uit het schema, dan start de naam met de RDS-code (`-S1`, `-Q2`).
+]
 === De PLC-Scancyclus
 
 #wrap-figure(
@@ -718,17 +687,15 @@ Om programma's overzichtelijk en onderhoudbaar te houden, hanteert men internati
   caption: [De drie fasen van de PLC-scancyclus],
   label: <fig:scancycle>,
 )[
-  Een PLC voert het programma continu en cyclisch uit in drie vaste fasen:
+  De PLC draait cyclisch in drie vaste fasen, samen typisch enkele milliseconden:
 
-  1. *PII (Process Image Input)*: Alle fysieke ingangen worden simultaan ingelezen en als momentopname in het ingangsimago opgeslagen.
-  2. *Program Execution (bv. OB1)*: De CPU voert het gebruikersprogramma instructie voor instructie uit op basis van het PII-geheugen.
-  3. *PIQ (Process Image Output)*: De berekende uitgangswaarden worden gelijktijdig naar de fysieke uitgangsmodules geschreven.
+  1. *PII*: alle ingangen worden in één keer ingelezen als momentopname.
+  2. *Programma* (bv. `OB1`): de CPU werkt het programma af op dat PII-geheugen.
+  3. *PIQ*: de berekende uitgangen gaan in één keer naar de uitgangsmodules.
 
-  Eén volledige scanlus duurt typisch enkele milliseconden.
+  Binnen één cyclus ziet je programma een #strong[bevroren] beeld van de ingangen: verandert een sensor halverwege, dan merk je dat pas de volgende scan. Een puls korter dan één scan is dus onzichtbaar; wil je die vangen, gebruik dan flankdetectie of een snelle teller.
 
-  Twee gevolgen van dat vaste ritme. Ten eerste ziet je programma binnen één cyclus een #strong[bevroren] beeld van de ingangen: verandert een sensor halverwege, dan merk je dat pas de volgende scan. Ten tweede worden de uitgangen pas op het einde in één keer weggeschreven, dus een uitgang die je tussendoor aan en weer uit zet, komt nooit op de klem.
-
-  Daarom is een puls die korter duurt dan één scan onzichtbaar voor de PLC. Wil je die toch vangen, dan gebruik je flankdetectie of een snelle teller.
+  De uitgangen worden pas op het einde in één keer weggeschreven, dus een uitgang die je tussendoor aan en weer uit zet, komt nooit op de klem.
 ]
 
 === Combinatorisch of met geheugen? <sec:combinatorisch-geheugen>
@@ -739,19 +706,19 @@ Dezelfde vraag komt terug bij de 3D-methode: daar is "heb ik een geheugen nodig?
 
 === Hardware N.C. tegenover software N.O. <sec:nc-hardware-software>
 
-Neem een netwerk met twee N.O.-contacten in serie, gevolgd door een toekenning aan een uitgangsspoel. Die toekenning schrijft het #keyterm[RLO] (Result of Logic Operation) weg naar een variabele. Dat mag een uitgang of een interne merker zijn, #strong[nooit] een ingang: de toestand van een ingang wordt van buitenaf opgelegd door de drukknop die eraan hangt.
+Neem twee N.O.-contacten in serie met een toekenning aan een uitgangsspoel. Die schrijft het #keyterm[RLO] (Result of Logic Operation) weg naar een uitgang of merker, #strong[nooit] naar een ingang: die wordt van buitenaf opgelegd.
 
-Nu de valkuil. De stopknop is in de #strong[hardware] N.C. Die variabele is dus "true" zolang je #strong[niet] duwt. Gevolg: dit netwerk geeft een actieve uitgang als je op geen enkele knop duwt, en de uitgang valt weg zodra je op één van beide knoppen duwt.
+De valkuil: de stopknop is in de #strong[hardware] N.C., dus die variabele is "true" zolang je *niet* duwt. Het netwerk geeft dus een actieve uitgang als niemand duwt, en valt weg zodra je één knop indrukt.
 
 #belangrijk[Een N.C.-knop in de hardware wordt dus een N.O.-contact in je programma.] Leer dat niet vanbuiten, maar redeneer telkens opnieuw: wat staat er op de klem als niemand iets doet?
 
-Dit gaat over de #strong[vertaling] van hardware naar software. Welk type schakelaar je in het veld moet #strong[bestellen], is een andere vraag; die beantwoord je met het veilige-toestandsargument uit @sec:no-nc-keuze.
+Dit gaat over de vertaling hardware $arrow.r$ software. Welk type je in het veld moet *bestellen* is een andere vraag, zie @sec:no-nc-keuze.
 
 === Start/stop als flip-flop
 
-Dezelfde start-stopschakeling bouw je in LAD na. Twee vragen komen daarbij altijd terug.
+Twee vragen komen altijd terug.
 
-*Waarom staat de stopknop als N.C. geconfigureerd?* Zie @sec:nc-hardware-software. Redeneer, leer het niet vanbuiten.
+*Waarom staat de stopknop als N.C.?* Zie @sec:nc-hardware-software. Redeneer, leer het niet vanbuiten.
 
 *Waarom zet je de uitgang niet meteen in netwerk 1?* Omdat je de logica en de uitgang gescheiden houdt. Ken het resultaat eerst toe aan een merker, de #keyterm[logische toestand van de machine]. Pas later koppel je de fysieke PLC-uitgang aan die toestand. Dat is de basisregel uit @sec:lad-basisregel.
 
@@ -768,51 +735,60 @@ De directe aanpak volgt drie stappen:
   caption: [De RS-flipflop via de directe aanpak: set in de eerste tak, terugkoppeling met reset in de parallelle tak.],
   label: <fig:rs-flipflop-methode1>,
 )
-In Ladder Logic wordt de RS-flipflop opgebouwd volgens de drie basisstappen: de set-tak schakelt direct, de parallelle tak zorgt voor zelfhouding, en de N.C.-reset verbreekt de zelfhoudingstak.
 
 
 === De tweede oplossing: van waarheidstabel naar schema <sec:rs-methode2>
 
-Je kan ook vertrekken van de waarheidstabel en die uitvouwen naar een schema. Let op: dat geeft een implementatie in #strong[negatieve logica].
-
-Zo'n uitgevouwen schema is nooit meteen de eindvorm. Je vereenvoudigt in twee stappen:
+Je kan ook vertrekken van de waarheidstabel en die uitvouwen naar een schema, in #strong[negatieve logica]. Vereenvoudig daarna in twee stappen:
 
 + *Duplicaten en tegengestelden wegwerken.* Termen die twee keer voorkomen, of die elkaars tegengestelde zijn, kan je samennemen.
 + *Onnodige condities schrappen.* Set activeert de uitgang sowieso, dus hoef je set niet nog eens uit te sluiten in de eerste tak.
 
-Werk je beide stappen af, dan kom je uit op #strong[dezelfde] oplossing als met methode 1. Dat is meteen je controle: twee verschillende wegen die op hetzelfde schema uitkomen.
+Je komt uit op #strong[dezelfde] oplossing als met methode 1: twee wegen, hetzelfde schema.
 
 === LAD-conventies <sec:lad-conventies>
 
-- Het #keyterm[RLO] (Result of Logic Operation) is het tussenresultaat van de logische condities in een netwerk: N.O.-contact, flankdetectie, timer, enzovoort. Het is waar of niet waar.
+- Het #keyterm[RLO] (Result of Logic Operation) is het tussenresultaat van de condities in een netwerk: waar of niet waar.
 - #belangrijk[Elk RLO moet uiteindelijk door een instructie gebruikt worden], anders breekt de compilatie af. Alle netwerken en alle parallelle takken moeten dus afgesloten zijn.
 - Zet je de software in #strong[monitor], dan zie je het RLO live: een groene lijn betekent "hier is het RLO waar".
-- Sommige instructies zijn #strong[voorwaardelijk] en worden alleen uitgevoerd als het RLO waar is, zoals `set` en `reset`. Een uitgangsspoel daarentegen kent de waarde van het RLO #strong[continu] toe aan de variabele.
+- `set` en `reset` zijn #strong[voorwaardelijk]: ze voeren alleen uit als het RLO waar is. Een uitgangsspoel kent het RLO #strong[continu] toe.
 
 === De basisregel: I $arrow.r$ M $arrow.r$ Q <sec:lad-basisregel>
 
 #belangrijk[Splits je software in twee delen.]
 
-+ *I $arrow.r$ M.* Eerst leg je de #keyterm[logische toestanden van de machine] vast. Je koppelt de ingangen en andere logische toestanden aan variabelen, meestal merkers. Bij een sequentie doe je dat heel expliciet, maar het is altijd goede praktijk.
-+ *M $arrow.r$ Q.* Pas daarna bepaal je de toestand van elke uitgang.
++ *I $arrow.r$ M.* Eerst de #keyterm[logische toestanden van de machine] vastleggen in merkers.
++ *M $arrow.r$ Q.* Pas daarna de toestand van elke uitgang bepalen.
 
-Meerdere toestanden mogen naar dezelfde uitgang verwijzen, dat is geen probleem. Er mogen zelfs meerdere sequenties dezelfde uitgangen gebruiken.
+Meerdere toestanden, en zelfs meerdere sequenties, mogen naar dezelfde uitgang verwijzen.
+
+#figure(
+  scale(52%, reflow: true, merman.mermaid(
+    ```
+    flowchart LR
+      I["Ingangen I"] --> L["Logica"] --> M["Merkers M: logische toestanden"]
+      M --> O["Uitgangen Q: som van toestanden"] --> C["Cross-protect"]
+    ```,
+    theme: (fontSize: "30px"),
+  )),
+  caption: [De basisregel: eerst de ingangen naar logische toestanden, pas daarna die toestanden naar de uitgangen.],
+  label: <fig:i-m-q>,
+)
 
 #belangrijk[Schrijf elke uitgang op precies één plaats in je programma.] Programmeer de uitgangen bovendien in de numerieke volgorde waarin de kabels aangesloten zijn. Zo kan je onmogelijk twee keer dezelfde uitgang aansturen zonder het te merken.
 
 === Combinatorische en geheugencircuits programmeren
 
-De vraag is hoe je de logische toestanden van de machine programmeert. De werkwijze:
+De werkwijze:
 
-+ Analyseer de opdracht en herken wat er geprogrammeerd moet worden. #belangrijk[Splits de opdracht op in de kleinst mogelijke stukken.]
-+ Formuleer elk stuk als een #strong[ja/nee-vraag] in het commentaarveld van het netwerk. De code in dat netwerk geeft dan het antwoord op die vraag.
-+ Zo valt de oplossing vanzelf uiteen in kleine, leesbare netwerken.
++ #belangrijk[Splits de opdracht op in de kleinst mogelijke stukken.]
++ Formuleer elk stuk als een #strong[ja/nee-vraag] in het commentaarveld van het netwerk; de code eronder geeft het antwoord.
 
-Het voordeel: je software is meteen gedocumenteerd. Je hoeft achteraf geen commentaar meer toe te voegen, en documentatie verhoogt de waarde van je product.
+Zo valt de oplossing uiteen in kleine, leesbare netwerken, en is je software meteen gedocumenteerd.
 
 === De standaardnetwerken <sec:standaardnetwerken>
 
-Je bouwt logica bijna altijd met dezelfde blokken:
+Bijna altijd dezelfde blokken:
 
 - combinatorische schakelingen, soms met flankdetectie;
 - de SR-flipflop (RS en het impulsrelais zijn zeldzaam);
@@ -885,7 +861,7 @@ Je zet het getal binair en legt het #belangrijk[van rechts naar links] op de uit
   *Antwoord.* Actief zijn `Q0.1`, `Q0.2`, `Q0.3`, `Q0.4`, `Q0.6` en `Q0.7`. Laag blijven `Q0.0` en `Q0.5`. De componenten die aan die zes uitgangen hangen, trekken aan.
 ]
 
-#concept(title: "Andere notaties")[
+#concept(title: "Hexadecimale, binair en decimaal")[
   / Hexadecimaal (`16#xx`): splits het getal in losse cijfers, want elk hexcijfer is precies vier bits. Zo wordt `16#15` $arrow.r$ `1` en `5` $arrow.r$ `0001` en `0101` $arrow.r$ `2#0001 0101`. Letters tellen door vanaf $A = 10$, dus `16#0A` is `2#0000 1010`.
   / Binair (`2#xxxx`): niets om te rekenen, de bits staan er al.
   / Decimaal: ontbind in machten van twee, zoals in de oefening hierboven.
@@ -893,7 +869,7 @@ Je zet het getal binair en legt het #belangrijk[van rechts naar links] op de uit
 
 == Sequenties programmeren
 
-Een #keyterm[sequentie] is de manier om een programma te schrijven dat cyclisch verloopt. Denk aan een robot die telkens een plaat optilt en hoger neerlegt.
+Een #keyterm[sequentie] is een cyclisch verlopend programma, bv. een robot die telkens een plaat optilt en hoger neerlegt.
 
 #belangrijk[De eerste vraag bij elk programma is: "is er een sequentie?"] Is het antwoord ja, dan gebruik je de sequentiemethode. Is het nee, dan programmeer je combinatorische en geheugencircuits zoals hierboven.
 
@@ -901,8 +877,8 @@ Een #keyterm[sequentie] is de manier om een programma te schrijven dat cyclisch 
 
 Elke sequentie heeft dezelfde opbouw:
 
-+ *Initialisatie.* Je zet alles op de juiste waarde. Meestal betekent dat: alle merkerwoorden die de sequentie gebruikt op nul zetten met een `MOVE`-instructie, en de hoofdsequentie starten met een `set` naar stap 0.
-+ *Hulpmerkers.* Hier zet je de timers en counters, en alles wat de hoofdsequentie nodig heeft. Het doel is de sequentie #strong[leesbaar] houden: moeten er veel logische toestanden nagekeken worden, zet die dan hier.
++ *Initialisatie.* Alle merkerwoorden van de sequentie op nul met een `MOVE`, en de hoofdsequentie starten met een `set` naar stap 0.
++ *Hulpmerkers.* Timers, counters en alles wat de hoofdsequentie nodig heeft. Zet hier wat de sequentie anders onleesbaar maakt.
 + *Sequentie.* Het hoofddeel. Je definieert elke stap met de logische toestand van de machine.
 + *Uitgangen.* Je koppelt elke uitgang aan de stappen waarin ze actief moet zijn.
 
@@ -917,7 +893,7 @@ De eerste doorloop is bijzonder. Dan sla je stap 0 over, want je moet op een and
 + *Initialisatiesequentie:* je kijkt alles na en zet dan `MWx.0` hoog. Dat betekent dat stap 0 uitgevoerd is en stap 1 mag beginnen.
 + *Variabelen nakijken:* hetzelfde idee, maar buiten de sequentie. Meestal kijk je dan naar meer variabelen, bijvoorbeeld ook naar de startknop.
 
-Werk het voorbeeld uit de slides zo strikt mogelijk na, en maak je netwerken met copy-paste zodat de structuur overal identiek blijft. Vergeet de initiële stap niet toe te voegen.
+Maak je netwerken met copy-paste, zodat de structuur overal identiek blijft.
 
 === Uitgangen programmeren <sec:sequentie-uitgangen>
 
@@ -929,7 +905,7 @@ Werk het voorbeeld uit de slides zo strikt mogelijk na, en maak je netwerken met
 
 === Cross-protect op Q <sec:cross-protect>
 
-Sommige uitgangen mogen absoluut niet tegelijk actief zijn. Het klassieke voorbeeld: de contactor voor rechtsom en die voor linksom. Trekken die samen aan, dan heb je een kortsluiting.
+Twee uitgangen mogen soms nooit samen actief zijn, zoals de contactoren voor rechtsom en linksom: samen geeft dat een kortsluiting.
 
 #wrap-figure(
   image("assets/OIS_cross_protect.png", width: 7.5cm),
@@ -944,14 +920,12 @@ Sommige uitgangen mogen absoluut niet tegelijk actief zijn. Het klassieke voorbe
 ]
 
 #waarschuwing[
-  *Een stap kan één scan duren.* Is de conditie voor de volgende stap al waar op het moment dat de huidige stap actief wordt, dan worden ze samen geactiveerd. De huidige stap is dan maar één scan actief, dus typisch $2$ tot $20 "ms"$.
-
-  Soms wil je dat de uitgang toch even actief wordt: programmeer dan de stap als conditie voor die uitgang. Soms wil je ze juist overslaan, bijvoorbeeld om slijtage te vermijden.
+  *Een stap kan één scan duren.* Is de conditie voor de volgende stap al waar wanneer de huidige actief wordt, dan lopen ze samen en is de huidige maar één scan actief, typisch $2$ tot $20 "ms"$. Wil je de uitgang toch even zien schakelen, programmeer de stap dan als conditie voor die uitgang; wil je ze overslaan, laat ze weg.
 ]
 
 === De ADD-sequentie <sec:add-sequentie>
 
-Naast de SR-implementatie bestaat er een variant die met een `ADD`-instructie werkt. De opbouw in netwerken:
+Een variant op de SR-implementatie werkt met een `ADD`. De opbouw in netwerken:
 
 - *Netwerk 1:* hulpmerkers, meestal meerdere netwerken.
 - *Netwerk 2:* de `ADD` zelf, die het stapnummer ophoogt.
@@ -960,9 +934,7 @@ Naast de SR-implementatie bestaat er een variant die met een `ADD`-instructie we
 - *Netwerk 5:* de sequentie wissen of blokkeren. De fysieke knop is N.C., dus staat hier ook een N.C.-contact.
 - *Netwerk 6 en verder:* de uitgangen, per geval zoals hierboven.
 
-*Waarom `ADD` en niet de counter-instructie?* Omdat de start in een apart netwerk staat, blijft de hoofdsequentie schoon en leesbaar.
-
-Vaak bouw je er een standaard tijdvertraging in die synchroon loopt met de stapovergangen.
+*Waarom `ADD` en niet de counter-instructie?* Met de start in een apart netwerk blijft de hoofdsequentie leesbaar. Vaak bouw je er een tijdvertraging in die synchroon loopt met de stapovergangen.
 
 === Clear, enable en start <sec:clear-enable-start>
 
@@ -974,12 +946,10 @@ Drie begrippen die je uit elkaar moet houden:
 
 === Reactie op de bedieningsknoppen <sec:machinebediening>
 
-De slides zetten de typische machinetoestanden op een rij:
+- *Abort:* de sturing valt plots weg door spanningsuitval, de hoofdschakelaar of een slecht ontworpen noodstop. #belangrijk[De PLC heeft de machine dan niet meer onder controle.]
+- *E-stop:* categorie 0, of categorie 1 met eerst gecontroleerd afremmen. Het vermogen gaat eraf, maar de PLC blijft draaien.
 
-- *Abort:* de machinesturing valt plots weg, bijvoorbeeld door spanningsuitval, de hoofdschakelaar uit, of een slecht ontworpen noodstop. #belangrijk[De PLC heeft de machine dan niet meer onder controle.]
-- *E-stop:* categorie 0, of categorie 1 met eerst gecontroleerd afremmen. Het vermogen wordt onmiddellijk van de machine gehaald. De PLC is wél nog actief, maar de meeste actuatoren zijn uitgeschakeld.
-
-Het verschil telt: bij een abort weet je niets meer over de toestand van de machine, bij een noodstop weet je dat nog wel.
+Het verschil: na een abort weet je niets meer over de toestand van de machine, na een noodstop wel.
 
 == Functies (FC) en functieblokken (FB)
 
@@ -995,9 +965,9 @@ IEC 61131-3 is de norm voor het programmeren van PLC's. Ze beschrijft:
 
 === Gepartitioneerd tegenover gestructureerd <sec:gepartitioneerd-gestructureerd>
 
-Een functie (FC of FB) is een verzameling logische netwerken. Er zijn twee manieren om ze te gebruiken:
+Een FC of FB is een verzameling logische netwerken, op twee manieren te gebruiken:
 
-- *Gepartitioneerd:* je roept het blok #strong[één keer] op en werkt met globale variabelen. Je gebruikt de functie dan puur om je programma op te delen.
+- *Gepartitioneerd:* je roept het blok #strong[één keer] op met globale variabelen, puur om je programma op te delen.
 - *Gestructureerd:* je roept het blok #strong[meerdere keren] op, met lokale variabelen en parameters. Dat volgt het OOP-principe van inkapseling: hetzelfde blok, andere gegevens.
 
 === FC tegenover FB <sec:fc-vs-fb>

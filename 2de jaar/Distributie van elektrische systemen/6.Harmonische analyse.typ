@@ -2,7 +2,7 @@
 
 = Harmonische analyse <ch:harmonische-analyse>
 
-Een van de grootste problemen met de spanningskwaliteit zijn harmonischen. Dit hoofdstuk beschrijft eerst wat harmonischen zijn, wat ze betekenen voor de modellering van kringen, en hoe de vermogendefinities erdoor veranderen. Daarna volgen de oorzaken, de gevolgen en de oplossingen.
+Harmonischen zijn een van de grootste problemen met de spanningskwaliteit.
 
 == Introductie <sec:introductie>
 
@@ -18,7 +18,7 @@ Belastingen die zo'n stroom veroorzaken zijn onder andere:
 
 In al die gevallen is de stroom *geen lineaire functie van de spanning* meer. Zulke belastingen heten #keyterm[niet-lineaire belastingen].
 
-#belangrijk[Een vervormde stroom veroorzaakt ook een vervormde spanningsval.] Daardoor is de spanning op het aansluitpunt met het net, het PCC (Point of Common Coupling), zelf ook vervormd. Zo verspreidt de vervorming van één verbruiker zich naar alle andere op datzelfde punt.
+#belangrijk[Een vervormde stroom veroorzaakt ook een vervormde spanningsval.] Daardoor is de spanning op het PCC (Point of Common Coupling) zelf vervormd, en verspreidt de vervorming van één verbruiker zich naar alle andere op datzelfde punt.
 
 == Beschrijving en definities <sec:beschrijving>
 
@@ -91,7 +91,7 @@ Lees dit goed: #belangrijk[de effectieve waarde van een vervormd signaal ligt al
 
 Tot hier rekende je AC-kringen met fasoren in het frequentiedomein. #belangrijk[Dat mag alleen als er één enkele frequentie in het spel is.] Hoe pak je het dan aan bij harmonische vervorming?
 
-Neem als voorbeeld een sinusvormig laagspanningsnet van $230 "V"$ bij $50 "Hz"$ dat één niet-lineaire belasting voedt die een belangrijke derde harmonische stroom trekt. In het tijdsdomein teken je het Thévenin-equivalent van het net ($u(t)$, $R$ en $L_s$) links, en de niet-lineaire belasting rechts. Die tekening omzetten naar het frequentiedomein lukt niet zomaar.
+Neem een sinusvormig laagspanningsnet van $230 "V"$ bij $50 "Hz"$ met één niet-lineaire belasting die een belangrijke derde harmonische stroom trekt. In het tijdsdomein teken je het Thévenin-equivalent van het net met die belasting als stroombron.
 
 *De oplossing komt van Fourier zelf:* de harmonische componenten zijn lineair onafhankelijk van elkaar. Daardoor mag je per harmonische frequentie een *apart* model opstellen. De werkwijze wordt dan:
 
@@ -130,7 +130,7 @@ Bij vervorming moet je ook de vermogendefinities herzien.
 
 === Actief vermogen <sec:actief-vermogen>
 
-Het ogenblikkelijk vermogen blijft gewoon $p(t) = u(t) dot i(t)$, met $u(t)$ en $i(t)$ elk als Fourierreeks geschreven. De oude uitdrukkingen $P = U I cos phi$, $Q = U I sin phi$ en $S = U I$ gelden echter #belangrijk[alleen bij één enkele frequentie].
+Het ogenblikkelijk vermogen blijft $p(t) = u(t) dot i(t)$, met beide als Fourierreeks. Maar $P = U I cos phi$, $Q = U I sin phi$ en $S = U I$ gelden #belangrijk[alleen bij één enkele frequentie].
 
 Werk je $p(t)$ uit en neem je het gemiddelde, dan krijg je:
 
@@ -192,7 +192,7 @@ De vertrouwde vermogendriehoek wordt daardoor driedimensionaal.
   label: <fig:3d-vermogendriehoek>,
 )
 
-Lees de figuur zo. Onderaan ligt de vertrouwde tweedimensionale driehoek, met het actief vermogen $P$ horizontaal en het blindvermogen $Q_1$ van de grondharmonische er loodrecht op. Hun schuine zijde is $S_1$, het schijnbaar vermogen van de grondharmonische alleen.
+Onderaan ligt de vertrouwde tweedimensionale driehoek: actief vermogen $P$ horizontaal, blindvermogen $Q_1$ van de grondharmonische er loodrecht op, en hun schuine zijde $S_1$.
 
 Het vervormingsblindvermogen $D_H$ staat loodrecht op dat hele grondvlak. Het totale schijnbaar vermogen $S$ is dus de ruimtelijke diagonaal:
 
@@ -253,7 +253,7 @@ De netcomponenten die daar het zwaarst onder lijden zijn de condensatorbatterije
 
 === Overbelasting <sec:overbelasting>
 
-De effectieve waarde van een vervormd signaal ligt hoger dan die van zijn grondgolf. Dat extra vermogen zit meestal niet op een *nuttige* frequentie en wordt gewoon omgezet in warmte. In een transformator verhogen de harmonischen zo zowel de joule- als de ijzerverliezen.
+De effectieve waarde van een vervormd signaal ligt hoger dan die van zijn grondgolf, en dat extra vermogen zit meestal niet op een nuttige frequentie: het wordt warmte. In een transformator verhogen harmonischen zo de kern- en wikkelingsverliezen.
 
 Drie frequentieafhankelijke effecten maken het erger:
 
@@ -281,7 +281,7 @@ Levert het bovenliggende net een harmonische *spanning* op die frequentie, dan w
 
 *Parallelresonantie.* In de praktijk zijn de harmonische spanningen in het net vrij laag, want de normen eisen dat. Harmonische *stromen* komen veel vaker voor, bijvoorbeeld door diodegelijkrichters.
 
-Bekijk een bedrijf met lineaire belastingen, niet-lineaire belastingen én een condensatorbatterij, gevoed via een transformator. In het model op de $h$-de harmonische bevat het Thévenin-equivalent van het bovenliggende net alleen nog de impedantie $L_s$: er is daar immers geen spanningsbron op die frequentie. De niet-lineaire belasting is er wél een stroombron.
+Bekijk een bedrijf met lineaire én niet-lineaire belastingen plus een condensatorbatterij, gevoed via een transformator. In het model op de $h$-de harmonische bevat het Thévenin-equivalent van het bovenliggende net alleen impedanties, want het net levert daar geen spanning.
 
 Die stroombron $I_h$ ziet dus een #strong[parallel]schakeling van de netinductantie $L_s$ en de condensator $C$:
 
@@ -291,7 +291,7 @@ Die stroombron $I_h$ ziet dus een #strong[parallel]schakeling van de netinductan
   [met: $X_"eq"$ = de equivalente reactantie gezien door de harmonische stroombron [$Omega$]; $L$ = netinductantie [H]; $C$ = capaciteit van de condensatorbatterij [F]; $f_"parallel"$ = de parallelresonantiefrequentie [Hz].],
 )
 
-Valt een harmonische frequentie samen met, of dicht bij, die parallelresonantiefrequentie, dan krijg je ernstige *overspanningen*. Die overspanningen voelt #belangrijk[elke component die op het PCC hangt]: de condensatorbatterij, de transformator, de lineaire én de niet-lineaire belastingen, en al hun schakelmateriaal.
+Valt een harmonische samen met die parallelresonantiefrequentie, dan krijg je ernstige *overspanningen*, en die voelt #belangrijk[elke component op het PCC].
 
 == Oplossingen <sec:solutions-of-harmonics>
 

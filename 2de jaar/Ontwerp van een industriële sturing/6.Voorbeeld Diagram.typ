@@ -28,10 +28,10 @@ Dit hoofdstuk gaat over alles wat tussen het schema en de werkende machine zit: 
 )[
   Een #keyterm[barenstel] (busbar) is een set stroomrails waarmee je hoog AC-vermogen verdeelt over meerdere afgaande kringen, zonder dat je tien dikke draden op één klem moet krijgen.
 
-  In hetzelfde rijtje horen nog drie praktische zaken thuis:
-  - De #keyterm[adereindhuls], die je op soepele draad perst zodat losse adertjes netjes gebundeld blijven;
-  - De #keyterm[aardingsrail] voor centrale potentiaalvereffening;
-  - De #keyterm[kabeltrekontlasting], die de mechanische trekkracht van de kabel opvangt in plaats van de klem.
+  Verder in hetzelfde rijtje:
+  - de #keyterm[adereindhuls], geperst op soepele draad zodat losse adertjes gebundeld blijven;
+  - de #keyterm[aardingsrail] voor centrale potentiaalvereffening;
+  - de #keyterm[kabeltrekontlasting], die de trekkracht opvangt in plaats van de klem.
 ]
 
 #figure(
@@ -49,7 +49,7 @@ Dit hoofdstuk gaat over alles wat tussen het schema en de werkende machine zit: 
 
 #belangrijk[Te vast aandraaien beschadigt de klem, te los geeft een overgangsweerstand en dus warmte.] Dat laatste is een klassieke brandoorzaak in een kast.
 
-*De draden naar de deur.* Drukknoppen, signaallampen en de HMI zitten op de deur, maar worden gevoed vanaf de montageplaat. Die draden moeten dus over de scharnierlijn. Lopen ze los langs het scharnier, dan worden ze bij het sluiten geplet en is de isolatie stuk.
+*De draden naar de deur.* Drukknoppen, lampen en de HMI zitten op de deur maar worden gevoed vanaf de montageplaat, dus die draden kruisen de scharnierlijn. Lopen ze los langs het scharnier, dan worden ze bij het sluiten geplet.
 
 De oplossing is een #keyterm[polyesterkous] rond alle deurdraden samen. Die bundel is te dik om nog tussen de scharnierdelen te passen, en je legt hem met een ruime lus zodat er bij openen en sluiten geen trek op de aders komt.
 
@@ -105,9 +105,9 @@ met:
 - $L$: lengte van de geleider [m]
 - $A$: doorsnede van de geleider [m#super[2]]
 
-Een dunnere kabel heeft een kleinere $A$, dus een grotere $R$ en meer warmte bij dezelfde stroom. Die warmte moet weg kunnen, en in een warme dicht bedrade kast lukt dat slechter. Daarom daalt de toegelaten stroom voor dezelfde doorsnede. In een stuurkast neem je meestal kabel van temperatuurklasse $75 degree"C"$. De sectie zelf haal je uit de tabellen van de norm.
+Een dunnere kabel heeft een kleinere $A$, dus een grotere $R$ en meer warmte bij dezelfde stroom. In een warme, dicht bedrade kast raakt die warmte moeilijker weg, dus daalt de toegelaten stroom. Reken met temperatuurklasse $75 degree"C"$; de sectie zelf haal je uit de tabellen van de norm.
 
-#belangrijk[In een stuurkast gelden veel lagere waarden dan in het AREI.] De reden is precies punt 2 en 3: in een dichte kast, tussen andere warme componenten en in een gesloten kabelgoot, kan dezelfde draad veel minder stroom voeren dan in een woninginstallatie.
+#belangrijk[In een stuurkast gelden veel lagere waarden dan in het AREI]: tussen warme componenten en in een gesloten kabelgoot voert dezelfde draad veel minder stroom dan in een woninginstallatie.
 
 === Draadkleuren
 
@@ -272,10 +272,10 @@ Het voordeel zit in de #keyterm[twisted pair]: doordat de twee draden om elkaar 
 
 Geleiders voor communicatie- of meetsignalen dragen #strong[zwakke] signalen naar een #strong[hoogohmige] ingang. Lange geleiders gedragen zich dan als antenne. Om de ontvangst van storing te beperken gebruik je een afgeschermde kabel: een gevlochten metalen mantel rond de aders.
 
-Daarom aard je de afscherming van een signaalkabel #strong[aan één kant], meestal aan de stuurkastzijde. Let op het contrast met de motorkabel van een VFD uit @sec:cw-ccw: die afscherming sluit je juist aan #strong[beide] kanten aan, want daar wil je de hoogfrequente stoorstroom net wél afvoeren.
+Aard de afscherming van een signaalkabel dus #strong[aan één kant], meestal aan de stuurkastzijde. Bij een VFD-motorkabel (@sec:cw-ccw) is het omgekeerd: daar aard je #strong[beide] kanten, want daar wil je de hoogfrequente stoorstroom net wél afvoeren.
 
 #waarschuwing[
-  Verbind je #belangrijk[beide] uiteinden van de mantel met de aarde, dan kan er een stroom door die mantel gaan lopen. Die stroom veroorzaakt wisselende spanningen op de mantel, en die koppelen capacitief in op het communicatie- of meetsignaal. Je hebt de storing dan zelf gemaakt.
+  Aard je #belangrijk[beide] uiteinden, dan kan er stroom door de mantel lopen. Die geeft wisselende spanningen op de mantel, die capacitief inkoppelen op je meetsignaal: je maakt de storing dan zelf.
 ]
 
 == Kleurcodes en symbolen
@@ -332,7 +332,7 @@ Het verschil met SELV zit in de aarding:
 - Een PELV-kring vereist alleen scheiding van alle kringen #strong[behalve] SELV en PELV. Ze mag dus verbonden zijn met andere PELV-systemen #belangrijk[en met de aarde].
 - Een SELV-kring mag géén beschermende aardverbinding hebben.
 
-Beide vereisen een ontwerp dat toevallig contact met een hogere spanning zo goed als uitsluit. Bij een transformator betekent dat: primaire en secundaire wikkeling gescheiden door versterkte isolatie, of door een geleidend scherm met aardverbinding, of een secundaire wikkeling met een geaarde klem, zodat een fout tussen primair en secundair automatisch afschakelt.
+Beide vragen een ontwerp waarbij contact met een hogere spanning zo goed als uitgesloten is. Bij een transformator: primair en secundair gescheiden door versterkte isolatie, of door een geaard geleidend scherm, of een secundaire met een geaarde klem zodat een fout tussen beide automatisch afschakelt.
 
 #belangrijk[Daarom werkt de stuurkring op $24 "VDC"$ met geaarde $0 "V"$: dat is een PELV.] Je zit onder de ELV-grens, dus het risico op een schok is laag, én je hebt een aardreferentie om mee te meten en storingsvrij te werken.
 
@@ -370,12 +370,12 @@ Daarbij hoort de BH-curve. $H_c$ is de #keyterm[coërcitieve veldsterkte]: de ve
 
 Gelijkgericht net van $50 "Hz"$ geeft een spanning van $100 "Hz"$ met een flinke rimpel. De afvlakcondensator moet de #strong[dalen] tussen de toppen opvullen.
 
-- Bij $50 "Hz"$ zijn die dalen #strong[breed], dus heb je een #strong[grote] condensator nodig. Treedt er een kortsluiting op, dan ontlaadt die grote condensator zich plots en houdt hij een grote stroom in stand. Dat wil je niet.
+- Bij $50 "Hz"$ zijn die dalen #strong[breed], dus heb je een #strong[grote] condensator nodig. Bij kortsluiting ontlaadt die zich plots en houdt hij een grote stroom in stand.
 - Bij een #strong[hogere] frequentie is er minder energie nodig om de dalen te vullen, dus volstaat een #strong[kleinere] condensator. Bij kortsluiting ontlaadt die minder energie in de fout.
 
 Een SMPS werkt op $10 "kHz"$ tot zelfs $1 "MHz"$, tegenover $50 "Hz"$ voor het net.
 
-In een transformator wordt vermogen overgedragen door de #strong[verandering] van de flux. Doordat de kern van een SMPS uit zacht ferriet bestaat, kan je die zeer hoge frequenties gebruiken zonder de verliezen die een zachtijzeren kern zou geven. #belangrijk[Zo transformeert een compacte kern veel vermogen.]
+Een transformator draagt vermogen over via de #strong[verandering] van de flux. Met een zachtferrietkern kan dat op zeer hoge frequentie zonder de verliezen van zachtijzer, #belangrijk[waardoor een compacte kern veel vermogen aankan].
 
 === De voordelen op een rij <sec:smps-voordelen>
 
