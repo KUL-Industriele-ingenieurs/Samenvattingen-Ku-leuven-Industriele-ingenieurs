@@ -232,6 +232,11 @@ De contactnummering is gestandaardiseerd: *hoofdcontacten* krijgen de nummers 1 
 
   Een *volt-free contact* (potentiaalvrij contact) levert zelf geen stroom of spanning: het opent of sluit enkel een verbinding tussen twee draden. Een gewone lichtschakelaar is zo'n contact.
 
+  Zet je dezelfde twee schakelaars #strong[parallel], dan volstaat er één om de lamp te doen branden. Dat is een OF-functie. Wil je een NIET, dan bestel je het contact in zijn N.C.-uitvoering; de inversie zit dan al in het component.
+
+  Zo bouw je met alleen contacten elke combinatorische functie. #belangrijk[Wat je met contacten niet kan, is onthouden wat er eerder gebeurde.] Daarvoor heb je een geheugen nodig, en dat is de zelfhoudschakeling verderop in dit hoofdstuk.
+
+  Let bij het lezen van een schema op de nummering naast elk contact: `3-4` hoort bij een N.O.-contact, `1-2` bij een N.C.-contact. Zo zie je aan het schema zelf welk type er staat, ook zonder de legende.
 ]
 
 

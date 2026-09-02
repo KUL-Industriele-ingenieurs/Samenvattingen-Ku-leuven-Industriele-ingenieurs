@@ -242,7 +242,7 @@ $ F_"inward" = 264 "N" - 49 "N" = 215 "N" arrow.l $
 
 #wrap-figure(
   image("assets/snelheidsregeling.png", width: 3cm),
-  caption: [Snelheidsregelventiel: een instelbare smoring parallel met een terugslagklep, dus smoren in één richting en vrije doorstroming terug.],
+  caption: [Snelheidsregelventiel (FCV)],
   label: <fig:snelheidsregeling>,
 )[
   We kunnen de snelheid van de cilinder regelen door de lucht te laten ontsnappen via een flow control valve.
@@ -264,16 +264,17 @@ $ F_"inward" = 264 "N" - 49 "N" = 215 "N" arrow.l $
   Smoor je aan de *uitlaatzijde*, dan moet de lucht onder de zuiger traag naar buiten. Die lucht werkt als een kussen en de last zakt gecontroleerd.
 ]
 
-*Metered in*: je regelt de lucht die *in* de cilinder stroomt. Dit is de *verkeerde* manier.
-
-
-#figure(
-  image("assets/pompcircuit.png", width: 4cm),
-  caption: [Meter-in geregeld pompcircuit: de twee smoringen zitten aan de toevoerkant, wat een schokkende beweging geeft.],
+#wrap-figure(
+  image("assets/pompcircuit.png", width: 4.5cm),
+  caption: [Meter-in geregeld pompcircuit],
   label: <fig:pompcircuit>,
-)
+)[
+  *Metered in*: je regelt de lucht die *in* de cilinder stroomt. Dat is de verkeerde manier.
 
-Monteer de snelheidsregeling zo dicht mogelijk bij de cilinder. Je kan ze ook op het ventiel zetten: soms weegt bereikbaarheid zwaarder.
+  Op @fig:pompcircuit zitten beide smoringen aan de toevoerkant. De zuiger krijgt zijn lucht dan met mondjesmaat, terwijl er aan de andere kant niets tegenhoudt. Het gevolg is een schokkende beweging: de zuiger blijft even staan, schiet dan door zodra er genoeg druk staat, en herhaalt dat.
+
+  Monteer de snelheidsregeling zo dicht mogelijk bij de cilinder. Hoe langer de slang tussen ventiel en cilinder, hoe meer lucht er in die slang zit die je niet meer in de hand hebt. Je kan de regeling ook op het ventiel zetten: soms weegt bereikbaarheid voor het afstellen zwaarder dan die laatste slang.
+]
 
 
 *Het snelontluchtingsventiel* (quick exhaust valve) doet het omgekeerde van een smoring: het laat de cilinder zo #strong[snel] mogelijk leeglopen. Normaal moet de uitlaatlucht helemaal terug door de slang en het stuurventiel. Zet je een snelontluchter vlak aan de cilinderpoort, dan blaast die lucht meteen ter plaatse naar buiten, en dat scheelt een pak tijd bij een lange slang.
@@ -439,13 +440,19 @@ Waar die stuurlucht _vandaan_ komt, is het hele verschil tussen de twee soorten:
 
 #examenbox[Hier valt de klassieke vraag. Zet je een *soft-startventiel* vóór een _intern_ gepiloteerd ventiel, dan bouwt de druk traag op, en dus ook de pilotdruk. De ventielen schakelen dan op onvoorspelbare momenten (afhankelijk van wrijving en smering) of blijven half hangen. Bij soft start moet je dus *external pilot* gebruiken, met de pilotleiding afgetakt _vóór_ het soft-startventiel: de stuurkring staat meteen op volle netdruk terwijl de vermogenskring rustig opbouwt.]
 
-#figure(
+#wrap-figure(
   image("assets/symbolen pneumatische valves.png", width: 4cm),
-  caption: [Bedieningen op een 3/2-ventiel: knop, rol, pedaal en pneumatische pilot, telkens met veerretour aan de andere kant.],
+  caption: [Bedieningen op een 3/2-ventiel],
   label: <fig:symbolen-pneumatische-valves>,
-)
+)[
+  Naast elk ventielsymbool staat getekend #strong[hoe] je het bedient. Van boven naar beneden op @fig:symbolen-pneumatische-valves: een drukknop, een rol, een pedaal en een pneumatische pilot.
 
-#examenbox("Zorg dat je alle symbolen goed kent voor het examen gratis punten")
+  Aan de andere kant staat telkens de veerretour. Die twee samen maken het ventiel #strong[monostabiel]: laat je de bediening los, dan duwt de veer de schuif terug.
+
+  De bediening zegt niets over het aantal poorten of standen. Dat lees je uit het aantal hokjes en aansluitingen, los van wat er links en rechts tegenaan staat.
+
+  #examenbox[Zorg dat je alle symbolen goed kent, dat zijn gratis punten op het examen.]
+]
 
 == Logic circuits met ventielen
 

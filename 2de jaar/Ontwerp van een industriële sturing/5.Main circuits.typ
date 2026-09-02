@@ -25,15 +25,15 @@ Voor de veiligheid van mensen helpt stroombeperking meestal niet. Een kleine str
 
 + *Residual Current Devices (RCD / Differentieelschakelaar)*
 
-  #wrap-figure(
-    image("assets/RDC.png", width: 9cm),
+  Een RCD meet continu het verschil tussen de heengaande fasestroom en de terugkerende stroom via een ringkern-sommatietransformator.
+
+  Vloeit er een lekstroom via een mens of de aarding weg ($Delta I > 30 "mA"$), dan verbreekt het ingebouwde relais binnen enkele milliseconden de voeding.
+
+  #figure(
+    image("assets/RDC.png", width: 15cm),
     caption: [Werking van een differentieelschakelaar (RCD) via een sommatietransformator.],
     label: <fig:RDC>,
-  )[
-    Een RCD meet continu het verschil tussen de heengaande fasestroom en de terugkerende stroom via een ringkern-sommatietransformator.
-
-    Vloeit er een lekstroom via een mens of de aarding weg ($Delta I > 30 "mA"$), dan verbreekt het ingebouwde relais onmiddellijk binnen enkele milliseconden de voeding om dodelijke elektrocutie te voorkomen.
-  ]
+  )
 
 + *Smeltzekeringen (Fuses)*
 
@@ -227,8 +227,8 @@ CW staat voor clockwise, CCW voor counter-clockwise. #belangrijk[De motor draait
 Dat is wat de tweede contactor doet: hij sluit dezelfde motor aan met twee verwisselde fasen. Beide contactoren mogen daarom #strong[nooit] tegelijk aantrekken, want dan sluit je twee fasen rechtstreeks kort. Zie de cross-protect uit @sec:cross-protect: één actieve contactor blokkeert de andere, zowel in de bedrading als in de software.
 
 #figure(
-  image("assets/OIS_motor_omkeerschakeling.png", width: 10cm),
-  caption: [Omkeerschakeling: `-Q4` sluit L1-L2-L3 aan op U1-V1-W1, `-Q5` verwisselt twee fasen. De kruisverbinding tussen beide contactoren is meteen de reden dat ze nooit samen mogen sluiten.],
+  image("assets/OIS_omkeerschakeling_slide.png", width: 16cm),
+  caption: [Omkeerschakeling. Links de stuurkring: `-S3` start rechtsom via `-Q6`, `-S5` start linksom via `-Q7`, en elke tak heeft een N.C.-contact van de #strong[andere] contactor in serie. Rechts de hoofdkring, waar `-Q7` twee fasen verwisselt aansluit op `-M5`.],
   label: <fig:omkeerschakeling>,
 )
 

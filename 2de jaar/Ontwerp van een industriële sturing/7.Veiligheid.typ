@@ -154,17 +154,17 @@ De drie delen uit elkaar gehouden:
 
 #keyterm[EN 13849] gaat over functionele veiligheid: de eisen aan de beschikbaarheid van de veiligheidsfunctie wanneer die van een besturing afhangt.
 
-#wrap-figure(
-  image("assets/OIS_srpcs_clean.png", width: 10cm),
+De onderdelen van de besturing die de veiligheidsfunctie uitvoeren heten samen de #keyterm[SRP/CS] (Safety-Related Parts of a Control System). Die keten loopt altijd van links naar rechts:
+
+$ "trigger event" arrow.r "logica" arrow.r "actuatoren" $
+
+Dus: de noodstopknop of het lichtgordijn, dan het noodstoprelais of de safety-PLC, en dan de contactoren of de STO-ingang van de drive. #belangrijk[Elk van die drie schakels hoort bij de SRP/CS], en elk van de drie kan de veiligheidsfunctie onderuithalen.
+
+#figure(
+  image("assets/OIS_srpcs_clean.png", width: 15cm),
   caption: [De SRP/CS-keten: trigger event, logica en actuatoren.],
   label: <fig:srpcs>,
-)[
-  De onderdelen van de besturing die de veiligheidsfunctie uitvoeren heten samen de #keyterm[SRP/CS] (Safety-Related Parts of a Control System). Die keten loopt altijd van links naar rechts:
-
-  $ "trigger event" arrow.r "logica" arrow.r "actuatoren" $
-
-  Dus: de noodstopknop of het lichtgordijn, dan het noodstoprelais of de safety-PLC, en dan de contactoren of de STO-ingang van de drive. #belangrijk[Elk van die drie schakels hoort bij de SRP/CS], en elk van de drie kan de veiligheidsfunctie onderuithalen.
-]
+)
 
 === Het voorbeeldschema <sec:veiligheid-voorbeeldschema>
 
@@ -268,6 +268,14 @@ Tussen éénkanaals en tweekanaals zit nog een niveau. Bij een #keyterm[½-chann
 #belangrijk[Dubbelkanaals is niet altijd nodig.] De risicoanalyse bepaalt welk niveau je moet halen, niet de gewoonte.
 
 Het voorbeeld uit de slides is een rem op een verticale as. Het probleem bij een éénkanaalsrem is dat er geen redundantie is, én dat de berekening van het veiligheidsniveau volgens ISO 13849 ingewikkeld wordt. Een drive met SBC (Safe Brake Control) en SBT (Safe Brake Test) verhoogt de veiligheid #strong[zonder] dat je een dubbelkanaalsrem nodig hebt.
+
+#figure(
+  image("assets/OIS_srecs_single_channel.png", width: 12cm),
+  caption: [Dezelfde keten in één kanaal: veiligheidsschakelaar, veiligheidscontroller en houdrem. Onderaan staat per schakel zijn MTTFd, waarmee je het bereikte veiligheidsniveau berekent.],
+  label: <fig:srecs-single-channel>,
+)
+
+Elke schakel is een SRP/CS-deel met een eigen betrouwbaarheidscijfer. Voor de ingang en de uitgang is dat de #keyterm[MTTFd] (Mean Time To dangerous Failure) in jaren, voor de controller de #keyterm[PFH] (Probability of dangerous Failure per Hour). Uit die drie samen volgt het performance level van de hele keten.
 
 De les: soms lost een slimmer component het probleem op waar anders een dubbele architectuur voor nodig was.
 
