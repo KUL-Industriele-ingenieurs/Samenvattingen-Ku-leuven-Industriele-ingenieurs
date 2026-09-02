@@ -46,7 +46,7 @@ De figuren zijn vertaald naar voltage curves.
     label: <fig:grenzen-BB>,
   )
 ]
-=== Regulatie <sec:regulatie>
+=== Normen en keurmerken <sec:regulatie>
 
 #wrap-figure(
   image("assets/regulatie elektriciteit.png", width: 5cm),
@@ -64,7 +64,7 @@ De figuren zijn vertaald naar voltage curves.
   CEBEC, DVE zijn keur/kwaliteitsmerken. De fabricant met een goed merk gaan hun producten keuren.
 ]
 
-=== Ip-nummers (index of prodection) <sec:ip-nummers>
+=== IP-code (Ingress Protection) <sec:ip-nummers>
 Er zijn 3 cijfers _in dit vak vooral over 2_
 
 #wrap-figure(
@@ -166,7 +166,7 @@ $arrow.r.double$ zorg dat je deze niet kunt aanraken. Zet bescherming rond en wa
 ]
 
 
-== Electrische materialen
+== Elektrische materialen
 
 #figure(
   image("assets/Conductor & Isolator.png", width: 12cm),
@@ -270,7 +270,7 @@ Je wilt dat: $I_b$ < $I_n$ < $I_z$ < $I_(c u)$
 
 $I_b$ is de veilig stroom van het apparaat, $I_n$ is de nominale stroom van de beveiliging, $I_z$ is de maximale stroom die de kabel aankan en $I_(c u)$ is de stroom die ontstaat door de spoel bij een grote verandering van stroom. Je wilt dat $I_n$ groter is dan $I_b$ anders gaat de beveiliging aan terwijl je veilig bent. $I_z$ is de maximale stroom die de kabel aankan en die moet groter zijn den $I_n$ omdat anders de kabel kan beschadigd worden voordat de beveiliging aan gaat.
 
-== Fuses (smeltzekering) <sec:fuses>
+== Smeltzekeringen (fuses) <sec:fuses>
 
 #figure(
   image("assets/Fuses.png", width: 5cm),
@@ -286,7 +286,7 @@ $I_b$ is de veilig stroom van het apparaat, $I_n$ is de nominale stroom van de b
 
 Defuse hier toont de karastiristiek afhankelijk van de stroom. 20A gaat lang duren maar 200A gaat heel snel. Je wilt dus een fuse die snel genoeg is om de stroom te onderbreken voordat er schade ontstaat maar niet te snel zodat het niet onnodig aan gaat.
 
-== Circuit breakers (automatische zekering) <sec:circuit-breakers>
+== Automaten (circuit breakers) <sec:circuit-breakers>
 
 
 #figure(
@@ -304,7 +304,7 @@ Je kunt die dan terug primen door de veer van binnen terug op te spannen en het 
 
 Nu dit is alleen voor kortsluitingen. Voor overbelastingen gaat er een bimetalen strip zijn die warm wordt en daardoor buigt en het circuit onderbreekt. Deze heeft een langere tijd nodig om te reageren omdat het afhankelijk is van de warmteontwikkeling. Dit kan variëren van enkele seconden tot enkele minuten, afhankelijk van de mate van overbelasting.
 
-=== Mechanical circuit breakers karakteristieken <sec:mechanical-circuit-breakers-karakteristieken>
+=== Karakteristieken van automaten <sec:mechanical-circuit-breakers-karakteristieken>
 
 #figure(
   image("assets/MCB-karakteristieken.png", width: 15cm),
@@ -312,14 +312,14 @@ Nu dit is alleen voor kortsluitingen. Voor overbelastingen gaat er een bimetalen
   label: <fig:MCB-karakteristieken>,
 )
 
-== Power circuit breakers <sec:power-circuit-breakers>
+== Vermogenschakelaars (power circuit breakers) <sec:power-circuit-breakers>
 
 Dit zijn grotere circuit breakers die gebruikt worden in de industrie of in grote gebouwen. We spreken van stromen van 250A.
 
 Het werkt gelijkaardig aan een circuit breaker waarbij je een schakelijk hebt zoals bij een MCB.
 
 
-=== Karakteristieken van een power circuit breaker <sec:karakteristieken-van-een-power-circuit-breaker>
+=== Karakteristiek van een vermogenschakelaar <sec:karakteristieken-van-een-power-circuit-breaker>
 
 #wrap-figure(
   image("assets/Power-circuit breaker.png", width: 7cm),
@@ -344,7 +344,7 @@ Het werkt gelijkaardig aan een circuit breaker waarbij je een schakelijk hebt zo
 )
 
 
-=== Extra switches <sec:extra-switches>
+=== Schakelapparatuur <sec:extra-switches>
 
 #wrap-figure(
   image("assets/Schakelaars.png", width: 6cm),

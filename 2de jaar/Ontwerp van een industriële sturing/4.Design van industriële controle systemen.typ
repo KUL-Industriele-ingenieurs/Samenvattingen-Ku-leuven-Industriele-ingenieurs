@@ -253,7 +253,7 @@ Detecteert de sensor iets, dan verbindt hij de zwarte draad met de $0 "V"$. De s
   ]
 ]
 
-=== Industriële Sensoren
+=== Industriële sensoren
 
 Sensoren zetten een fysieke procesgrootheid om in een elektrisch signaal voor de controller.
 

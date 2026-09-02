@@ -75,9 +75,9 @@ $ phi = V_1/(omega N_1) sin(omega t) = V_2/(omega N_2) sin(omega t) $
 )
 
 
-== Loads
+== Belastingen
 
-=== No load
+=== Nullast
 Er is geen belasting (open keten) aangesloten op de secundaire wikkeling. De enige "weerstand" die overblijft is de magnetische weerstand (reluctantie $R_c$) van de kern.
 
 #figure(
@@ -96,7 +96,7 @@ $ i_1 = phi dot R_c / N_1 $
 
 We hebben een ideale transformator, dus $R_c = 0 (mu -> infinity)$ dus $arrow.r.double$ $i_1 = 0$.
 
-=== Loaded
+=== Belast
 
 
 #wrap-figure(
@@ -220,7 +220,7 @@ Het schijnbaar vermogen $S$ is complex, dus het heeft ook een fasor. Je berekent
 ]
 
 
-=== Toegepast op Ideal transformator <sec:ideal-transformator>
+=== Toegepast op de ideale transformator <sec:ideal-transformator>
 
 We weten dat een transformator de spanning verhoogt of verlaagt afhankelijk van de verhouding van het aantal windingen. Hoe heeft dit impact op het vermogen?
 
@@ -235,7 +235,7 @@ $ frac(I_1, I_2) = frac(N_2, N_1) $
 
 We zien dat als de spanning verlaagt dat de stroom verhoogt en omgekeerd en de lagging of gaining van de stroom blijft hetzelfde -> Het vermogen blijft dus hetzelfde.
 
-== Impedantie transformatie <sec:impedantie-transformatie>
+== Impedantietransformatie <sec:impedantie-transformatie>
 
 #figure(
   image("assets/Impedantie transformator.png", width: 8cm),

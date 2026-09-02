@@ -5,18 +5,18 @@
 
 Dit hoofdstuk gaat over kortsluitingen en veiligheid
 
-== Kortsluitstroom en Overbelastingsbeveiliging <sec:main-circuits-beveiliging>
+== Kortsluit- en overbelastingsbeveiliging <sec:main-circuits-beveiliging>
 
 #align(center)[_EN 60204:2016: Kortsluitstroom en Overbelastingsbeveiliging_]
 
-=== Bepalen van Kortsluitweerstand
+=== Kortsluitstroom bepalen
 
 De norm geeft aan dat de kortsluitstroom op drie manieren kan worden bepaald:
 - Door het gebruik van standaard ontwerpregels
 - Door kortsluitstroomberekeningen uit te voeren
 - Door kortsluitingsproeven uit te voeren
 
-=== Beginselen van Kortsluitbeveiliging
+=== Beginselen van kortsluitbeveiliging
 
 Kortsluitbeveiliging speelt twee kritieke rollen in industriële installaties. Allereerst beschermt het de bedrading zelf: wanneer de prospectieve kortsluitstroom vele malen groter is dan de nominale stroom, kan de bedrading ernstig beschadigd raken en brand veroorzaken. Dit is waarom automaten en zekeringen worden beoordeeld op hun kortsluitingsbrekend vermogen (AIC) — het maximale vermogen dat zij veilig kunnen onderbreken zonder te falen.
 
@@ -79,7 +79,7 @@ Voor overstroombeveiliging zijn er drie families, met de codeletter `-F` volgens
   label: <fig:fuse-mcb-mccb>,
 )
 
-== 3 Phase asycronous motors <sec:3-phase-motors>
+== Driefasige asynchrone motoren <sec:3-phase-motors>
 
 === Waarom Driefase Asynchrone Motoren
 
@@ -91,7 +91,7 @@ De driefase asynchrone motor is de meest gebruikte motor in industriële toepass
 - *Zelfstarter*: Start automatisch wanneer spanning wordt aangelegd
 - *Brede beschikbaarheid*: Standaardproducten in alle vermogensklassen
 
-=== Rotatie en Snelheidsregeling
+=== Draairichting en toerental
 
 *Veranderen van Rotatierichting:*
 Om de rotatierichting te wijzigen (van rechtsom naar linksom of omgekeerd), kunnen we eenvoudigweg twee willekeurige van de drie faseleiders omwisselen. Dit stelt ons in staat om:
@@ -171,7 +171,7 @@ Overzicht van de voornaamste componenten in hoofd- en stuurkringen:
 
 Let op het onderscheid dat deze tabel maakt: *wie schakelt* (contactor, relais) tegenover *wie beveiligt* (RCD, MBS, smeltzekering), en bij de beveiligers *wat* er beschermd wordt --- de RCD beschermt de mens, de MBS de motor, de smeltzekering de bekabeling.
 
-== Contactors
+== De contactor in een motorkring
 
 #wrap-figure(
   image("assets/contactor Nieuw vs oud.png", width: 6.5cm),
@@ -198,19 +198,16 @@ De krachtketen van stroom naar aantrekkende armatuur is afgeleid in @sec:krachtk
 ]
 
 
-== AC-contacts
+Wervelstromen in de kern (opgelost met laminatie) en het brommen van een AC-contactor (opgelost met een kortsluitring) staan bij @sec:ac-contactoren.
 
-Wervelstromen in de kern (opgelost met laminatie) en het brommen van een AC-contactor (opgelost met een kortsluitring) zijn behandeld in @sec:ac-contactoren.
-
-
-== Start-stop async motors
+== De motorkring tekenen
 
 #belangrijk[In een elektrisch schema teken je altijd eerst de vermogenkringen, en pas daarna de stuurkringen.]
 
 Er zijn twee manieren om een asynchrone motor aan te sturen:
 
 - *Met een VFD* (`-T1`), beveiligd door een MCB (`-F5`). De afscherming van de motorkabel sluit je #strong[aan beide uiteinden] aan op de beschermingsaarde.
-- *Met twee contactoren* (`-Q4` en `-Q5`) voor rechtsom en linksom. Die motor beveilig je met een MPCB (`-Q2`). De motorkabel wordt onderbroken door klemmenstrook `-X3`.
+- *Met twee contactoren* (`-Q6` en `-Q7`) voor rechtsom en linksom. Die motor beveilig je met een MPCB (`-Q5`). De motorkabel wordt onderbroken door klemmenstrook `-X3`.
 
 De stuurkringen voor de VFD en voor de contactoren teken je #strong[niet] in het vermogendeel van het schema.
 

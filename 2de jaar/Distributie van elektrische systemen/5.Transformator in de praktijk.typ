@@ -5,7 +5,7 @@
 
 In het vorige hoofdstuk hebben we het model van de reële transformator opgebouwd met al zijn verliezen. Nu gaan we dat model vereenvoudigen zodat we er makkelijk mee kunnen rekenen, en bekijken we hoe een transformator zich gedraagt in typische praktijksituaties: onder belasting, bij kortsluiting, en bij het aanzetten.
 
-== Vereenvoudigde equivalent schema's
+== Vereenvoudigde vervangingsschema's
 
 We starten terug bij het equivalent schema van transformatoren (zie #ref(<ch:reële-transformatoren>)) waarbij we alle verliezen naar de #keyterm[Primaire kant] verplaatsen.
 
@@ -84,7 +84,7 @@ Dit is dan een overview van de verschillende equivalent schema's.
 
 Afhankelijk van welk circuit je neemt krijg je meer of minder info over je verliezen (zie #ref(<ch:reële-transformatoren>)). Het volledige T-schema bevat alles, het cantilever model is een goeie balans, en het seriecircuit is het simpelst maar je mist de kernverliezen.
 
-== Operatie modussen <sec:operatie-modussen>
+== Bedrijfsmodi <sec:operatie-modussen>
 
 Nu we ons vereenvoudigd model hebben, willen we de parameters ($R_("eq"), X_("eq"), R_(F e), X_m$) ook effectief kunnen bepalen. Dat doen we via gestandaardiseerde testen. Er zijn drie operatie modussen die elk andere informatie opleveren:
 
@@ -98,7 +98,7 @@ Nu we ons vereenvoudigd model hebben, willen we de parameters ($R_("eq"), X_("eq
   label: <fig:Operatie-modussen>,
 )
 
-=== No-load <sec:no-load>
+=== Nullast <sec:no-load>
 
 #figure(
   image("assets/No-Load-test.png", width: 10cm),
@@ -111,7 +111,7 @@ Bij de no-load test staat de secundaire kant open. Omdat er geen stroom langs de
 Dit betekent dat alle gemeten verliezen ($P_0$) in deze test de *kernverliezen* ($P_(F e)$) zijn. We kunnen hiermee $R_(F e)$ en $X_m$ bepalen.
 
 
-=== Short circuit <sec:short-circuit>
+=== Kortsluiting <sec:short-circuit>
 
 #figure(
   image("assets/Kortsluitingstest.png", width: 10cm),
@@ -133,7 +133,7 @@ Bijvoorbeeld: als $u_(s c) = 5\%$, dan is de kortsluitingsstroom $20 times I_(n 
 
 Omdat de spanning bij deze test zo laag is, zijn de kernverliezen verwaarloosbaar. Alle gemeten verliezen zijn dus *koperverliezen* ($P_(c u)$), waarmee we $R_("eq")$ en $X_("eq")$ kunnen bepalen.
 
-=== Full-load <sec:full-load>
+=== Vollast <sec:full-load>
 
 Na het bepalen van de parameters via de no-load en short circuit test kunnen we de transformator onder normale belasting analyseren. De #keyterm[Full-load] bepaalt de maximale stroom en voltage die op de transformator mag komen voor normale operaties.
 
@@ -155,7 +155,7 @@ Meestal moet je hier niet teveel rekening mee houden omdat de maker van de trans
 
 In oefeningen gaat er altijd vermeld worden als je verliezen in rekening moet houden.
 
-== Voltage drop <sec:voltage-drop>
+== Spanningsval <sec:voltage-drop>
 
 Een transformator is geen perfecte spanningsbron: door de interne weerstand en reactantie gaat er spanning verloren. Hoe meer stroom de belasting trekt, hoe groter die spanningsval. We gaan nu berekenen hoeveel spanning we verliezen over ons vereenvoudigd model.
 
@@ -247,11 +247,11 @@ Naast de spanningsval willen we weten hoeveel vermogen er in de transformator ve
 
 ]
 
-== Start-up <sec:start-up>
+== Inschakelen <sec:start-up>
 
 Tot nu toe hebben we gekeken naar de transformator in #keyterm[Steady state]: alles draait al en de stromen en spanningen zijn stabiele sinusgolven. Maar wat gebeurt er op het moment dat we de transformator *aanzetten*? Daarvoor moeten we even terug naar het tijdsdomein (in plaats van phasors).
 
-=== Recap tijd-domein relaties
+=== Herhaling: relaties in het tijdsdomein
 
 #wrap-figure(
   image("assets/Transformator-startup.png", width: 6.5cm),
@@ -282,14 +282,13 @@ Tot nu toe hebben we gekeken naar de transformator in #keyterm[Steady state]: al
 
 Het moment waarop we de schakelaar dichtklappen bepaalt hoeveel DC-component er in de flux zit. Er zijn twee extreme gevallen:
 
-#wrap-figure(
-  image("assets/Aanzetten omega t = 0.png", width: 10cm),
-  caption: [Aanzetten omega t = 0],
+#figure(
+  image("assets/Aanzetten omega t = 0.png", width: 13cm),
+  caption: [Inschakelen bij $omega t = 0$: de flux valt meteen in zijn normale sinusvorm.],
   label: <fig:Aanzetten-omega-t-0>,
-)[
+)
 
-  *Best case ($phi_(D C) = 0$):* Als we de transformator aanzetten op het juiste moment, valt de flux meteen in zijn normale sinusvorm. Er is geen DC-component en dus geen probleem.
-]
+*Best case ($phi_(D C) = 0$):* schakel je in op het juiste moment, dan valt de flux meteen in zijn normale sinusvorm. Er is geen DC-component en dus geen inschakelpiek.
 
 
 === Aanzetten van de transformator $omega t = pi/2$
@@ -314,16 +313,16 @@ Het moment waarop we de schakelaar dichtklappen bepaalt hoeveel DC-component er 
   $ phi = hat(phi) sin(omega t - pi/2) + phi_(D C) $
   $ phi = hat(V_1)/(omega N_1) sin(omega t) - hat(V_1)/(omega N_1) $
 
-  Door de $phi_(D C)$ verschuift de volledige fluxgrafiek omhoog, waardoor de maximale flux bijna *verdubbelt* ($2 hat(phi)$). Dit heeft een drastische impact op de transformator.
+  Door de $phi_(D C)$ verschuift de volledige fluxgrafiek omhoog, waardoor de maximale flux bijna *verdubbelt* ($2 hat(phi)$).
+]
 
-  === De fysica achter de Inschakelstroom
+=== De fysica achter de inschakelstroom <sec:inschakelstroom>
 
-  #figure(
-    image("assets/Fenomeen inschakelstroom.png", width: 5cm),
-    caption: [Fenomeen inschakelstroom],
-    label: <fig:Fenomeen-inschakelstroom>,
-  )
-
+#wrap-figure(
+  image("assets/Fenomeen inschakelstroom.png", width: 5.5cm),
+  caption: [Verzadiging bij het inschakelen],
+  label: <fig:Fenomeen-inschakelstroom>,
+)[
   De transformator-kern is ontworpen om net onder het verzadigingspunt te werken. Een flux van $2 hat(phi)$ jaagt de kern diep in #keyterm[Kernverzadiging] (Saturation).
 
   1. *Verzadiging:* De magnetische weerstand stijgt enorm.
@@ -331,15 +330,15 @@ Het moment waarop we de schakelaar dichtklappen bepaalt hoeveel DC-component er 
   3. *Stroompiek:* Omdat de tegenwerkende kracht van de inductie wegvalt, ontstaat er een gigantisch grote #keyterm[Inschakelstroom] (tot 10x de nominale stroom) om de flux te handhaven.
 
   Deze stroom vervalt langzaam (over ongeveer 100 cycli) naarmate de verliezen in de wikkelingen de DC-component wegwerken.
-
-  #figure(
-    image("assets/Inschakelstroom.png", width: 8cm),
-    caption: [Inschakelstroom],
-    label: <fig:Inschakelstroom>,
-  )
 ]
 
-== Parallel connecties van transformatoren <sec:parallel-connecties>
+#figure(
+  image("assets/Inschakelstroom.png", width: 12cm),
+  caption: [De inschakelstroom in de tijd: een scherpe piek bij het inschakelen, die over ongeveer honderd perioden uitdempt.],
+  label: <fig:Inschakelstroom>,
+)
+
+== Transformatoren parallel schakelen <sec:parallel-connecties>
 
 In de praktijk heb je niet altijd genoeg aan één transformator. Soms wil je meer vermogen, of wil je een backup voor als er eentje uitvalt. Dan schakelen we transformatoren in parallel.
 
@@ -358,7 +357,7 @@ In de praktijk heb je niet altijd genoeg aan één transformator. Soms wil je me
 
 Let op: bij een kortsluiting levert *elke* parallelle transformator zijn eigen kortsluitingsstroom. Die stromen tellen op, dus de totale $I_(s c)$ door de kortgesloten draad is veel groter dan bij één transformator. De circuit breaker (CBP) moet gedimensioneerd zijn om deze totale stroom te kunnen onderbreken.
 
-=== Condities voor parallel connecties <sec:condities-parallel-connecties>
+=== Voorwaarden voor parallelschakeling <sec:condities-parallel-connecties>
 
 Je kunt niet zomaar twee willekeurige transformatoren in parallel zetten. Er zijn een aantal condities waar je rekening mee moet houden:
 

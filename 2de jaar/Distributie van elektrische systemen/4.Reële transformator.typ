@@ -18,7 +18,7 @@ Een ideale transformator _vorig hoofdstuk_ heeft een paar aannames:
 
 In werkelijkheid treedt elk van die effecten wél op. Hieronder krijgt elk effect zijn eigen component in het vervangingsschema.
 
-== Finite permeabiliteit van het kernmateriaal <sec:finite-permeabiliteit-van-het-kernmateriaal>
+== Eindige permeabiliteit van het kernmateriaal <sec:finite-permeabiliteit-van-het-kernmateriaal>
 Magnetisatiestroom. In het vorig hoofdstuk hebben we *Reluctantie* geïntroduceerd als een maat voor de magnetische weerstand van de kern.
 
 #figure(
@@ -66,8 +66,8 @@ We krijgen hierdoor een geüpdate model van onze transformator:
   label: <fig:Hoofdinductantie>,
 )
 
-== BH curve <sec:BH-curve>
-=== BH karakteristiek <sec:BH-karakteristiek>
+== B-H-curve <sec:BH-curve>
+=== B-H-karakteristiek <sec:BH-karakteristiek>
 
 #wrap-figure(
   image("assets/BH-curve.png", width: 7cm),
@@ -103,7 +103,7 @@ Dit verandert onze BH-curve naar dit:
   label: <fig:Flux-MMF>,
 )
 
-=== Distortion
+=== Vervorming
 
 In een echt elektriciteitsnet is de *spanning* sinusvormig $v(t) = hat(V) cos(omega t)$. Omdat de spanning de afgeleide is van de flux (wet van Faraday), wordt de flux hierdoor gedwongen om ook sinusvormig te zijn.
 
@@ -139,7 +139,7 @@ Deze harmonischen zijn ongewenst in het net omdat ze kunnen leiden tot extra opw
 
 //Sessie 4 24min
 
-== BH-hysterese <sec:BH-hysterese>
+== B-H-hysterese <sec:BH-hysterese>
 
 #wrap-figure(
   image("assets/Hysteresis.png", width: 5cm),
@@ -162,7 +162,7 @@ Deze harmonischen zijn ongewenst in het net omdat ze kunnen leiden tot extra opw
   De veldsterkte die nodig is om de kern te ontmagnetiseren (om $B$ terug naar nul te brengen) noemen we #keyterm[coerciviteit] $H_c$.
 ]
 
-== Hysteresis effect op verschillende materialen <sec:hysteresis-effect-op-verschillende-materialen>
+== Hysterese bij verschillende materialen <sec:hysteresis-effect-op-verschillende-materialen>
 #wrap-figure(
   image("assets/Hard VS soft met hystereiss.png", width: 8cm),
   caption: [Hard VS soft met hysteresis],
@@ -179,7 +179,7 @@ Afhankelijk van het type materiaal dat je gebruikt zijn er ook veranderingen.
 + *Carbon steel:* sterke staal carbon infused.
 + *Silicon steel:* staal met een beetje siliconen erin, wat de elektrische weerstand verhoogt en de verliezen vermindert.
 
-== Alles samen: Equivalent schema <sec:alles-samen-equivalent-schema>
+== Alles samen: het vervangingsschema <sec:alles-samen-equivalent-schema>
 
 #wrap-figure(
   image("assets/Equivalent schema.png", width: 10cm),
@@ -211,7 +211,7 @@ Je ziet het hier getekend in gestreept blauw.
   label: <fig:fundamenteel-component>,
 )
 
-== Exciting current en impedantie <sec:exciting-current-en-impedantie>
+== Excitatiestroom en impedantie <sec:exciting-current-en-impedantie>
 
 #wrap-figure(
   image("assets/Transformator-reël circuit.png", width: 7cm),
@@ -241,7 +241,7 @@ $I_c$ *Core-verlies stroom:* de component die de hysteresis en eddy-current (wer
 
 $I_m$ *Magnetisatiestroom:* de component die nodig is om de magnetische flux in de kern op te wekken (door de finite permeabiliteit). Deze ijlt $90^circle$ na op de spanning $V_1$. $I_m = frac(V_1, omega L_m)$
 
-== Eddy currents <sec:eddy-currents>
+== Wervelstromen <sec:eddy-currents>
 
 Eddy currents hebben we al deels gezien in _elektriciteit_
 Het is de stroom die ontstaat wanneer een geleider in een veranderlijk magnetisch veld wordt geplaatst.
@@ -256,7 +256,7 @@ $ P_("loss") = integral_v arrow(j) dot arrow(E) d v ~ E^2 ~ B^2 f^2 $
 
 Met $arrow(j) = sigma arrow(E)$
 
-=== Eddy current break <sec:eddy-current-break>
+=== Wervelstroomrem <sec:eddy-current-break>
 
 
 
@@ -333,12 +333,12 @@ Hieronder een voorbeeld door de losses afhankelijk van het magnetische veld $B$.
   })
 ]
 
-== Windingen verliezen <sec:windingen-verliezen>
+== Wikkelingsverliezen <sec:windingen-verliezen>
 
 
 Nu hebben we alle niet ideale delen van de transformator core gedaan. Nu gaan we over naar alle *Niet-ideale delen van de windingen*.
 
-=== Leakage <sec:leakage>
+=== Lekflux <sec:leakage>
 
 We nemen aan dat alle magnetische flux $phi$ binnen de kern blijft maar nu gaan we aannemen dat niet alle magnetische flux $phi$ door de windingen gaat.
 
@@ -360,7 +360,7 @@ We gaan onze flux $phi$ opsplitsen in twee delen. Een #keyterm[Main flux] en een
   label: <fig:Leakage-flux>,
 )
 
-=== Series resistenties
+=== Serieweerstanden
 
 #wrap-figure(
   image("assets/Series resisitentie.png", width: 7cm),
@@ -374,7 +374,7 @@ We gaan onze flux $phi$ opsplitsen in twee delen. Een #keyterm[Main flux] en een
   Die weerstanden veroorzaken de #keyterm[koperverliezen] $I^2 R$. Ze lopen op met het kwadraat van de stroom, dus ze hangen aan de #strong[belasting] en niet aan de spanning. Dat is waarom de kortsluitproef ze meet en de nullastproef niet.
 ]
 
-=== Totale series impedantie <sec:totale-series-impedantie>
+=== Totale serie-impedantie <sec:totale-series-impedantie>
 Als we ze allemaal samenvoegen krijgen we onze totale series impedantie.
 
 #figure(
@@ -391,7 +391,7 @@ Met E de spanning over de ideale transformator, met de ratio's tussen $E_1$ en $
 
 $ E_1 / E_2 = N_1 / N_2 $
 
-=== Full reële transformator <sec:full-reële-transformator>
+=== De volledige reële transformator <sec:full-reële-transformator>
 We kunnen nu alles samensteken. Dus all onze verliezen van onze core en onze windingen.
 
 Dit is:
@@ -418,7 +418,7 @@ Je krijg met alle phasors samen dan dit phasor diagram:
   label: <fig:Phasor-diagram-total-reël-transformator>,
 )
 
-=== Equivalent schema <sec:equivalent-schema>
+=== Vervangingsschema <sec:equivalent-schema>
 
 Nu hebben we een reël schema gemaakt die alle verliezen tonen van de transformator.
 
@@ -475,7 +475,7 @@ De fracties tussen $N_1$ en $N_2$ komen dan terug in het spel.
 
 Dit zijn metingen die we maken en testen die we doen op transformator circuits.
 
-==== Null-last test <sec:no-load-test>
+==== Nullastproef <sec:no-load-test>
 
 Bij deze test gaat de stroom naar de ideale transformator gelijk zijn aan nul
 
@@ -517,38 +517,41 @@ Dit is de *Null-last proef*
   We meten de voltage, de stroom en de wat met een wattmeter.
 ]
 
-#wrap-figure(
-  align(
-    center,
-    grid(
-      columns: 2,
-      figure(
-        image("assets/Circuit no-lod.png", width: 4cm),
-        caption: [Circuit no-load],
-        label: <fig:Circuit-no-load>,
-      ),
-      figure(
-        image("assets/Phasor no-load.png", width: 4cm),
-        caption: [Phasor no-load],
-        label: <fig:Phasor-no-load>,
-      ),
+#align(center)[
+  #grid(
+    columns: 2,
+    gutter: 1cm,
+    figure(
+      image("assets/Circuit no-lod.png", width: 6cm),
+      caption: [Meetschema van de nullastproef],
+      label: <fig:Circuit-no-load>,
     ),
-  ),
-)[
-
-
-
-  - Actief power $P_0 arrow.r.double R_c$
-    $ P_0 = V_1^2 / R_c $
-    $ R_c = V_1^2 / P_0 $
-
-
-  - RMS current $I_0 => arrow.r.double L_m$
-    $ I_m = sqrt(I_0^2 - I_c^2) $
-    $ omega L_m = V_1 / I_m $
+    figure(
+      image("assets/Phasor no-load.png", width: 5cm),
+      caption: [Fasordiagram: $I_c$ in fase met $V_1$, $I_m$ er $90 degree$ achter],
+      label: <fig:Phasor-no-load>,
+    ),
+  )
 ]
 
-== Short circuit test <sec:short-circuit-test>
+Uit de twee meetwaarden volgen de twee dwarstakelementen.
+
+Het gemeten vermogen is puur ijzerverlies, want er loopt nauwelijks stroom door de wikkelingen. Daaruit haal je $R_c$:
+
+$ P_0 = V_1^2 / R_c quad arrow.r.double quad R_c = V_1^2 / P_0 $
+
+De gemeten stroom $I_0$ splitst in een verliescomponent $I_c$ in fase met de spanning, en een magnetiserende component $I_m$ die er $90 degree$ op achterloopt. Met Pythagoras haal je $I_m$ eruit, en daarmee $L_m$:
+
+$ I_m = sqrt(I_0^2 - I_c^2) quad arrow.r.double quad omega L_m = V_1 / I_m $
+
+met:
+- $P_0$: gemeten vermogen bij nullast [W]
+- $V_1$: aangelegde nominale spanning [V]
+- $I_0$: gemeten nullaststroom [A]
+- $I_c$: verliescomponent, $I_c = P_0 \/ V_1$ [A]
+- $I_m$: magnetiserende component [A]
+
+== Kortsluitproef <sec:short-circuit-test>
 Deze test wordt gebruikt om de *serie-elementen* van het equivalent schema te bepalen ($R_(e q)$ en $X_(e q)$).
 
 *Methodiek:*

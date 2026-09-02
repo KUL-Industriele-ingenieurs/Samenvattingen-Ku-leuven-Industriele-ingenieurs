@@ -178,7 +178,7 @@ Die interne transiënten zijn kleiner in amplitude, maar ze komen veel vaker voo
 
 Elektrische apparatuur wordt zo gedimensioneerd dat ze een bepaalde hoeveelheid transiënten kan verdragen, volgens de norm *IEC 60204-1*. Daarnaast kan je #keyterm[surge protection devices] plaatsen. Die blokkeren de stroom of sluiten hem kort, zodat de spanning onder een veilige drempel blijft.
 
-== Uninterruptible Power Supplies <sec:ups>
+== UPS (Uninterruptible Power Supply) <sec:ups>
 
 #examenbox[*Verklaar UPS in één zin.* Een UPS (Uninterruptible Power Supply) is een noodstroomvoorziening die bij stroomuitval tijdelijk elektriciteit levert aan de aangesloten apparaten, zodat die correct kunnen blijven werken of veilig kunnen worden uitgeschakeld.]
 

@@ -4,21 +4,21 @@
 
 Alles dat we hiervoor geleerd hebben over het #keyterm[versimpeld model] van transformatoren geldt ook voor #keyterm[3-phase transformatoren]. Het enige verschil is dat we nu 3 transformatoren hebben in plaats van 1.
 
-== 3-fase herhaling <sec:3-fase-herhaling>
+== Herhaling driefasig <sec:3-fase-herhaling>
 
 Dit hebben we al gezien in wisselstromen en wordt ook nog herhaald in netten. Maar het is belangrijk om goed te snappen voor 3-fase transformatoren.
 
-=== WYE connectie <sec:wye-connectie>
+=== Sterschakeling <sec:wye-connectie>
 
 #wrap-figure(
   image("assets/WYE-connectie.png", width: 10cm),
-  caption: [WYE-connectie],
+  caption: [Sterschakeling],
   label: <fig:WYE-connectie>,
 )[
-  Een #keyterm[wye connectie] (of *sterverbinding*) kenmerkt zich door een centraal *sterpunt* (de *neutraal*) waar de drie fasewikkelingen samenkomen.
+  Een #keyterm[sterschakeling] (wye) kenmerkt zich door een centraal *sterpunt* (de *neutraal*) waar de drie fasewikkelingen samenkomen.
 
-  - *Voltage tot de neutraal* (#keyterm[fasespanning], $V_f$ of $V_"LN"$): De spanning gemeten over één wikkeling, tussen een fase en het *sterpunt*.
-  - *Lijn voltage* (#keyterm[lijnspanning], $V_l$ of $V_"LL"$): De spanning gemeten tussen twee actieve lijnen/fasen.
+  - #keyterm[Fasespanning] ($V_f$ of $V_"LN"$): gemeten over één wikkeling, tussen een fase en het sterpunt.
+  - #keyterm[Lijnspanning] ($V_l$ of $V_"LL"$): gemeten tussen twee fasen.
 
   In een #keyterm[gebalanceerd systeem] zijn de verhoudingen tussen lijn- en fasewaarden als volgt:
 
@@ -36,17 +36,16 @@ Dit hebben we al gezien in wisselstromen en wordt ook nog herhaald in netten. Ma
 ]
 
 
-=== Delta connectie <sec:delta-connectie>
+=== Driehoekschakeling <sec:delta-connectie>
 
 #wrap-figure(
   image("assets/Delta-connectie.png", width: 10cm),
-  caption: [Delta-connectie],
+  caption: [Driehoekschakeling],
   label: <fig:Delta-connectie>,
 )[
-  Een #keyterm[delta connectie] (of *driehoeksverbinding*) kenmerkt zich doordat de drie fasewikkelingen in een *gesloten lus* staan. Elke wikkeling is aangesloten tussen twee actieve lijnen, hierdoor is er geen *neutraal* nodig of aanwezig.
+  Een #keyterm[driehoekschakeling] (delta) kenmerkt zich doordat de drie fasewikkelingen in een *gesloten lus* staan. Elke wikkeling is aangesloten tussen twee actieve lijnen, hierdoor is er geen *neutraal* nodig of aanwezig.
 
-  - #keyterm[Fasespanning] ($V_f$): De spanning gemeten over één wikkeling.
-  - *Lijn voltage* (#keyterm[lijnspanning], $V_l$ of $V_"LL"$): De spanning gemeten tussen twee actieve lijnen/fasen.
+  - #keyterm[Fasespanning] ($V_f$): gemeten over één wikkeling. Hier is dat meteen de lijnspanning, want elke wikkeling hangt tussen twee fasen.
 
   In een #keyterm[gebalanceerd systeem] zijn de verhoudingen tussen lijn- en fasewaarden als volgt:
 
@@ -146,7 +145,7 @@ Waarom zouden we deze nodig hebben als 3-leg core-type al duid dat de som van de
 Dat is alleen voor #keyterm[gebalanceerde] systemen. Als het systeem niet gebalanceerd is, zijn andere types ook handig.
 
 
-== Winding configuraties <sec:winding-configuraties>
+== Wikkelingsconfiguraties <sec:winding-configuraties>
 
 #wrap-figure(
   image("assets/Wye-Wye connectie.png", width: 8cm),
@@ -213,7 +212,7 @@ _Note: er is geen neutraal hier getekent maar deze wordt wel vaak toegevoegd_
 Je ziet bij Delta delta dat de transformatoren geconnecteerd worden aan elkaar.
 
 
-=== Wye Wye <sec:wye-wye>
+=== Ster-ster <sec:wye-wye>
 
 Je ziet wat er in gaat hetzelfde is wat er uit gaat met de windingfactor $N_1/N_2$. Met een faseverschuiving van 120 graden tussen elke spanning.
 
@@ -227,7 +226,7 @@ De flux over de wikkelingen tussen A en a, B en b, C en c zijn hetzelfde.
 
 $ k = V_A / V_a = V_B / V_b = V_C / V_c = N_1 / N_2 $
 
-=== Delta-Wye <sec:delta-wye>
+=== Driehoek-ster <sec:delta-wye>
 
 Deze is wat moeilijker te bepalen omdat de windingen aan één kant met elkaar verbonden zijn. We volgen deze stappen:
 

@@ -231,7 +231,7 @@ Klemmenstroken en stekkers zijn verbindingsmiddelen. Ze krijgen de kenletter `X`
 
 Bij een etageklem staat de PE #belangrijk[altijd onderaan].
 
-=== Klemmen en potentialen
+=== Klemmen en potentiaalaanduidingen
 
 
 #figure(

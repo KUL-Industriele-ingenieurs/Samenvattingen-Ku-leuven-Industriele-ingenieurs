@@ -157,7 +157,7 @@ De doorsnede in @fig:pneumatische-cilinder is een dubbelwerkende cilinder. Er be
   label: <fig:symbolen-cilinders>,
 )
 
-== Cilinderkracht bij statische toestand (Full pressure) <sec:cilinderkracht>
+== Cilinderkracht in statische toestand <sec:cilinderkracht>
 
 #wrap-figure(
   image("assets/kracht-fullpressure.png", width: 6cm),
@@ -180,7 +180,7 @@ $ F_"out" = F_1 - F_2 = p_"1,rel" dot frac(pi D^2, 4) - p_"2,rel" dot frac(pi (D
 De resulterende netto inschuifkracht $F_"in"$ bedraagt:
 $ F_"in" = F_2' - F_1' = p_"2,rel" dot frac(pi (D^2 - d^2), 4) - p_"1,rel" dot frac(pi D^2, 4) $
 
-=== Rekenvoorbeeld: Kracht op full pressure
+=== Rekenvoorbeeld: kracht bij volle druk
 
 #oefening(
   title: "Kracht op full pressure",
@@ -288,7 +288,7 @@ Je gebruikt hem vooral bij een #strong[enkelwerkende] cilinder, waar de veer de 
 )
 
 
-== Switching
+== Schakelen met stuurventielen
 
 Schakelen betekent in de pneumatiek dat je de richting van de luchtstroom omkeert, en zo de cilinder stuurt. Dat doe je met een *Directional Control Valve* (DCV), in het Nederlands een stuur- of wegventiel.
 
@@ -314,7 +314,7 @@ $arrow.r.double$ Een actuator zoals een pneumatische cilinder of hydraulische mo
 
 Een controleventiel waarbij een (vaak analoog) signaal de debietstroom $[dot(Q)]$ bepaalt. We gebruiken hiervoor de term *Direction control valve* (DCV).
 
-=== Direction control valve (DCV)
+=== Directional Control Valve (DCV)
 
 #examenbox("Op het examen krijg je deze symbolen gegeven. Je moet wel weten wat ze allemaal betekenen")
 
@@ -337,12 +337,12 @@ Een valve wordt aangeduid met twee nummers: *aantal poorten / aantal schakelstan
   -
 - *Toestanden*: Worden aangeduid als N.O. (Normally Open) / N.C. (Normally Closed), fail-open of fail-close.
 
-== Mono en bi stabiele valves
+== Mono- en bistabiele ventielen
 
 - De klepspoel(en) zijn apparaten met een laag vermogen (bijv. 2 Watt), aangestuurd door een elektrisch regelcircuit, bijv. een relaiscircuit of een PLC. De nominale spanning van de spoel(en) kan bijv. 24 VDC of 230 VAC zijn.
 - Een ventiel kan standschakelaars hebben: N.O. of N.C. hulpcontacten die de ventielstand detecteren. Meestal heeft het er geen.
 
-=== Monostabiel vs. bistabiel x/2 ventielen
+=== Monostabiel tegenover bistabiel
 
 #wrap-figure(
   image("assets/bistabiel.png", width: 7.5cm),
@@ -375,7 +375,7 @@ Een valve wordt aangeduid met twee nummers: *aantal poorten / aantal schakelstan
   - / Druk middenstand (pressure center): Er staat gelijke werkdruk op beide kamers.
 ]
 
-== Reference designation system (RDS)
+== RDS voor pneumatische componenten
 
 Hoe gaan we onze pneumatica cilinders en componenten benamen? Hiervoor gebruiken we RDS (Reference Designation System). Moderne elektro-pneumatische of elektro-hydraulische systemen gebruiken vaak een combinatie van standaarden in hetzelfde schema:
 - *ISO 1219-2* voor de symbolen.
@@ -398,7 +398,7 @@ De bedrijfsstandaard van de prof gebruikt een volledige RDS gebaseerd op de naam
 
 _Bij het ontwerpen van logica gebruiken we letters alfabetisch (zie latere slides)._
 
-== Pilot valve
+== Gepiloteerde ventielen
 
 #wrap-figure(
   image("assets/internal-pilot-bolletje.png", width: 7cm),
@@ -454,7 +454,7 @@ Waar die stuurlucht _vandaan_ komt, is het hele verschil tussen de twee soorten:
   #examenbox[Zorg dat je alle symbolen goed kent, dat zijn gratis punten op het examen.]
 ]
 
-== Logic circuits met ventielen
+== Logische schakelingen met ventielen
 
 We gaan onze logic circuit baseren op:
 + Safety
@@ -555,7 +555,7 @@ Wat hier #strong[pneumatisch] is: elke groep krijgt een eigen persluchtleiding, 
   label: <fig:cascade-methode>,
 )
 
-== Schematekenen en Labopraktijk
+== Schema's tekenen in het labo
 
 - Leidingen die in rust onder druk staan, teken je vet of gemarkeerd.
 - Voor het digitaal tekenen en simuleren gebruik je SMC PneuDraw of Festo FluidSIM.

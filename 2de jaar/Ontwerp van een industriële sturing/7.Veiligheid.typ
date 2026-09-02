@@ -84,7 +84,7 @@ Lees @fig:VFD-schema van links naar rechts; de logica is dat je van een net met 
 
 Je moet de tekeningen *horizontaal* lezen: ze tonen wanneer wat gebeurt. Eerst komen de drie fasen binnen via de gelijkrichterbrug, gevolgd door de choke. Daarna hakken de IGBT's het signaal in stukken. De condensator kan die snelle spanningsveranderingen niet volgen en houdt de busspanning dus min of meer constant --- dat is net zijn functie: afvlakken.
 
-=== EMI en de aardverbinding <sec:vfd-emi>
+=== EMI en de aarding van de motorkabel <sec:vfd-emi>
 
 Het probleem zit in de *steile flanken* van die geschakelde spanning. Een snelle flank bevat hoge frequenties,
 
