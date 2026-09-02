@@ -8,7 +8,7 @@
 
 *Interresante eigenschappen transformator*
 
-+ Je kunt bij wisselstromen de spanning veranderen met behulp van magnetische inductie.
++ Je kunt bij wisselstroom de spanning veranderen met magnetische inductie.
 + Er is geen verbinding tussen netwerken. Het wordt volledig via magnetische velden overgedragen
 
 #wrap-figure(

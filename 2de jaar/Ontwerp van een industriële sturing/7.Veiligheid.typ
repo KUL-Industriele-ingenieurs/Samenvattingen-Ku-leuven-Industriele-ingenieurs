@@ -125,24 +125,27 @@ De procedure, in volgorde:
 + Alle #strong[resterende] energie laten wegvloeien: reststroom, restdruk, en zo verder.
 + *Lock-out en tag-out:* alle controlepunten vergrendelen in de uit-stand en ze markeren.
 + #belangrijk[Elke LoTo-geautoriseerde plaatst een eigen slot en een eigen label] met de vereiste gegevens erop.
-+ *Try-out:* controleren dat de machine effectief niet meer kan starten.
++ *Try-out:* alle medewerkers veilig stellen en de installatie test-starten om te controleren dat ze inderdaad niet opstart.
++ De geplande werken aan de machine uitvoeren.
++ Nadien alle betrokkenen verwittigen van de geplande heropstart.
++ Elke LoTo-geautoriseerde verwijdert zijn #strong[eigen] slot en label en ruimt zijn gereedschap op.
++ Alle schakelaars, kleppen en bedieningen terug in de operationele stand plaatsen, en dan pas herstarten volgens de normale procedure.
 
 De drie delen uit elkaar gehouden:
 - *Lock-out:* het fysieke slot dat verhindert dat de scheider weer ingeschakeld wordt.
 - *Tag-out:* het label dat zegt wie de vergrendeling plaatste en waarom.
 - *Try-out:* de proef die aantoont dat de vergrendeling ook echt werkt.
 
+#belangrijk[Dat elke persoon zijn eigen slot plaatst is de kern.] Zolang er één slot hangt, kan de machine niet starten. Zo kan niemand de vergrendeling van een collega opheffen.
+
+== Pictogrammen en veiligheidsstop
+
 #wrap-figure(
-  image("assets/OIS_pictogram_noodstop.png", width: 4cm),
-  caption: [Pictogrammen voor de veiligheidsstop volgens ISO 7010.],
+  image("assets/OIS_pictogram_noodstop.png", width: 2.8cm),
+  caption: [Pictogram voor de veiligheidsstop volgens ISO 7010.],
   label: <fig:pictogram-noodstop>,
 )[
-  #belangrijk[Dat elke persoon zijn eigen slot plaatst is de kern.] Zolang er één slot hangt, kan de machine niet starten. Zo kan niemand de vergrendeling van een collega opheffen.
-  
-  == Pictogrammen en veiligheidsstop
-  
-  #keyterm[ISO 7010] is de internationale norm voor veiligheidssymbolen.
-  In 2011 registreerde ISO een nieuw symbool om de #strong[locatie] van noodstopknoppen aan te duiden. Dat symbool gebruikt het formaat "groen vierkant met wit symbool", het formaat voor bordjes die de plaats van veiligheidsuitrusting aangeven. Daardoor hoort het in dezelfde familie als de bordjes voor brancards, oogdouches, nooddouches en nooduitgangen.
+  #keyterm[ISO 7010] is de internationale norm voor veiligheidssymbolen. In 2011 registreerde ISO een nieuw symbool om de #strong[locatie] van noodstopknoppen aan te duiden, in het formaat "groen vierkant met wit symbool". Dat is het formaat voor bordjes die de plaats van veiligheidsuitrusting aangeven, dus dezelfde familie als brancards, oogdouches, nooddouches en nooduitgangen.
 ]
 
 == EN 13849 en SRP/CS
@@ -284,16 +287,20 @@ EN 60204:2016 definieert drie #keyterm[stopcategorieën]:
 
 #belangrijk[Voor een noodstopfunctie is alleen categorie 0 of 1 toegestaan.] Dat zijn precies de twee categorieën waarbij de voeding uiteindelijk wordt afgeschakeld. Categorie 2 is dus wel een geldige "stop", maar nooit een "noodstop".
 
+#waarschuwing[
+  Een #keyterm[STO] (Safe Torque Off) mag als categorie-0-stop gelden, maar garandeert alleen dat de motor #strong[geen koppel] meer levert: er kan nog spanning op de wikkelingen staan. Daarom komt er soms een extra contactor in de voeding van de frequentieomvormer bij, of een werkschakelaar als LoTo.
+
+  Om onverwacht opstarten te verhinderen hoef je niet van het net te scheiden. Wil je aan de elektrische uitrusting #strong[werken], dan is een scheidingsinrichting wél verplicht.
+]
+
 Vergelijk met de stopknop uit @sec:24vvs: die werkt in categorie 2, via de machinesturing.
 
 == EN 12100
 
-#keyterm[EN 12100] legt uit hoe je een machine veilig bouwt. Het uitgangspunt: pak het gevaar aan #belangrijk[bij de bron].
+#keyterm[EN 12100] legt de rangorde vast waarin je een gevaar aanpakt. Pak het aan #belangrijk[bij de bron]:
 
-De norm kent een duidelijke rangorde in beschermingsmaatregelen:
-
-+ *Inherently safe design.* Kies het proces zelf zo dat het gevaar er niet is. Wil je een plank doorzagen, dan denk je meteen aan een cirkelzaag. Maar gaat het om een omgeving met peuters, dan kies je beter een figuurzaag. #belangrijk[Je selecteert het proces samen met de veiligheidssituatie waarin de machine gebruikt wordt.]
-+ *Collectieve bescherming* (niveau 2A). Een afscherming die iedereen tegelijk beschermt, zoals de omheining in een dierentuin.
++ *Inherently safe design.* Kies het proces zelf zo dat het gevaar er niet is. Je selecteert het proces samen met de omgeving waarin de machine gebruikt wordt.
++ *Collectieve bescherming* (niveau 2A). Een afscherming die iedereen tegelijk beschermt.
 + *Individuele bescherming* (niveau 2B). Persoonlijke beschermingsmiddelen: labojas, veiligheidsbril.
 
-#belangrijk[De volgorde is bindend.] Persoonlijke bescherming is het laatste redmiddel, niet het eerste. Een veiligheidsbril lost een slecht ontworpen machine niet op.
+#belangrijk[De volgorde is bindend.] Persoonlijke bescherming is het laatste redmiddel, niet het eerste.

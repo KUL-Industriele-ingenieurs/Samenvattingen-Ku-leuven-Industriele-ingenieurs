@@ -86,7 +86,7 @@ PID-controllers werken niet met aan/uit-signalen, maar met *continue, analoge si
   PLC's vormen de basis van de hele automatisering. Zij hangen rechtstreeks aan de sensoren en doen de eenvoudige logica. Alles wat meerdere stappen moet doorlopen, jarenlang moet blijven werken en makkelijk vervangbaar moet zijn, doe je meestal met een PLC.
 ]
 
-== Een geschikt controlesysteem kiezen
+== Een geschikt controlesysteem kiezen <sec:controlesysteem-kiezen>
 
 Afhankelijk van de applicatie, omgevingseisen en complexiteit kiest men het passende type sturing:
 
@@ -114,9 +114,11 @@ Afhankelijk van de applicatie, omgevingseisen en complexiteit kiest men het pass
     caption: [SCADA-systeem: centrale procesvisualisatie en data-acquisitie],
     label: <fig:Scada>,
   )
-- *DCS (Distributed Control System)*: Gedistribueerd besturingssysteem voor grootschalige, continue procesindustrie (bv. chemie, raffinaderijen). De regelkringen zijn autonoom verdeeld over lokale controllers, zodat het falen van één controller niet de hele fabriek stillegt.
+- *PCS (Process Control System)*: Softwareomgeving die de sturing van een hele fabriek als één geheel beheert, met één centrale tagdatabase. Het is meteen ook een SCADA-systeem.
+- *DCS (Decentralized Control System)*: Een PCS dat op #strong[gedecentraliseerde] controllers steunt, bijvoorbeeld PLC's, zodat één enkel faalpunt niet de hele fabriek stillegt. Bij voorkeur is het redundant, met verdubbelde controllers; na vervanging synchroniseert het DCS de software en neemt de controller zijn rol weer op.
 
-== Industrie 4.0
+
+== Industrie 4.0 <sec:industrie40>
 
 De vier industriële revoluties in vogelvlucht:
 
@@ -278,9 +280,9 @@ Een contactor schakelt meestal *inductieve* belastingen (motoren, spoelen), en d
 + Bij het *inschakelen* trekt een asynchrone motor een inschakelstroom $I$ die een veelvoud is van zijn nominale stroom. De contactor moet die piek aankunnen: je dimensioneert hem dus op de belasting die hij schakelt, niet enkel op het nominale vermogen.
 + Bij het *uitschakelen* wil de stroom door een spoel niet plots stoppen ($u = L (Delta I) / (Delta t)$). Er wordt een vlamboog getrokken tussen de contactpunten, en die brandt de contacten weg. Dat is de belangrijkste slijtageoorzaak van een contactor.
 
-=== Snubbers: de inductieve piek afvlakken <sec:snubbers>
+=== Spanningspieken op de stuurzijde <sec:snubbers>
 
-Een spoel stopt haar stroom niet zomaar. Bij het openen van het contact wil ze de opgeslagen magnetische energie kwijt, en volgens
+Een spoel stopt haar stroom niet zomaar. Bij het openen van het contact wil ze haar opgeslagen magnetische energie kwijt, en volgens
 
 $ v = L (dif i) / (dif t) $
 
@@ -289,31 +291,8 @@ met:
 - $L$: zelfinductie van de spoel [H]
 - $(dif i) / (dif t)$: snelheid waarmee de stroom verandert [A/s]
 
-wordt die spanning enorm zodra $dif t$ naar nul gaat. Zonder maatregel staat er kort $-1000 "V"$ over de spoel, en het contact ziet dan meer dan $1000 "V"$.
+loopt die spanning hoog op zodra $dif t$ naar nul gaat. Relais en contactoren geven daardoor #keyterm[spanningspieken] aan de stuurzijde, en vlambogen en dender aan de contactzijde. Een SSR of optocoupler (@sec:ssr-optocoupler) heeft geen bewegend deel en dus geen van beide.
 
-Een #keyterm[snubber] begrenst die inverse spanning. Meestal met een #keyterm[flyback diode], een zenerdiode of een #keyterm[varistor] (VDR, Voltage Dependent Resistor: een weerstand die zakt naarmate de spanning stijgt, te benaderen als twee zenerdiodes rug aan rug). In industriële componenten zoals ventielspoelen zit de snubber meestal al ingebouwd.
-
-#belangrijk[Er zit een afruil in.] Hoe lager je de spanning afknijpt, hoe langer de stroom blijft nalopen en hoe trager de spoel afvalt. Bij een kale flyback diode duurt dat ongeveer $0,5 "s"$, en dat is voor een veiligheidskring te traag.
-
-#table(
-  columns: (auto, auto, auto, auto, 1fr),
-  inset: 6pt,
-  align: horizon,
-  stroke: none,
-  fill: (x, y) => if y == 0 { gray.lighten(50%) },
-  [*Schakeling*], [*Contact dicht*], [*Vlak na openen*], [*Max over contact*], [*Afvaltijd*],
-  [geen snubber], [$+24 "VDC"$], [$-1000 "V"$], [$1024 "V"$], [meteen, maar vlamboog],
-  [flyback diode], [$+24 "VDC"$], [$-0,7 "V"$], [$24,7 "V"$], [traag ($approx 0,5 "s"$)],
-  [flyback $+$ zener $5,3 "V"$], [$+24 "VDC"$], [$-6 "V"$], [$30 "V"$], [middelmatig],
-  [varistor $40 "V"$ over de spoel], [$24 "VAC"$], [$plus.minus 40 "V"$], [$74 "V"$], [middelmatig],
-  [varistor $40 "V"$ over het contact], [$24 "VAC"$], [$24 "VAC" plus.minus 40 "V"$], [$40 "V"$], [middelmatig],
-)
-
-Lees de tabel zo: de maximale spanning over het contact is de voedingsspanning plus wat de snubber doorlaat. Bij de flyback diode is dat $24 + 0,7$; zet je er een zener van $5,3 "V"$ bij, dan wordt het $24 + 6$.
-
-#belangrijk[Flyback- en zenerdiodes werken alleen op DC.] Op een AC-spoel geleidt de diode elke halve periode gewoon mee. Daar heb je een varistor nodig, want die is symmetrisch.
-
-Bij $24 "VAC"$ is de piek al $24 sqrt(2) approx 34 "V"$. Zet je de varistor over de #strong[spoel], dan komt haar klemspanning daar bovenop: $34 + 40 = 74 "V"$. Zet je hem over het #strong[contact], dan begrens je het contact rechtstreeks op $40 "V"$. Die tweede opstelling werkt bovendien ook op DC.
 
 === AC-contactoren: wervelstromen en brommen <sec:ac-contactoren>
 
@@ -331,7 +310,7 @@ Contactoren kunnen op DC én op AC werken, maar in de praktijk zie je vooral AC.
 
 De oplossing is een kleine *geleidende ring* (kortsluitring of spoelring) rond een deel van het poolvlak. De veranderende flux induceert een stroom in die ring, en die stroom gaat de *verandering* van de flux tegen (wet van Lenz). Daardoor loopt de flux door dat deel van de pool in fase achter op de hoofdflux. Op @fig:ac-contactor-spoelring zie je die twee gesplitste fluxen; hun som (de grijze kromme) zakt nooit meer tot nul en blijft altijd boven de veerkracht. Het anker blijft aangetrokken en de brom verdwijnt.
 
-_Let op: de rondgaande samenvatting schrijft de brom toe aan de vlambogen tussen de contactpunten, en linkt de laminatie aan het brommen. Dat klopt niet. De brom is het anker dat 100 keer per seconde lostrilt. Laminatie lost de wervelstromen op. Dat zijn twee aparte problemen met twee aparte oplossingen._
+_Houd de twee problemen uit elkaar: laminatie lost de wervelstromen op, de kortsluitring lost het lostrillen op. De slide koppelt aan dat lostrillen wél een tweede gevolg: de contacten branden bij $100 "Hz"$ continu in._
 
 == Relais <sec:relais>
 
@@ -626,7 +605,7 @@ Zoals gezien in elektronica kun je diagrammen maken om het gedrag van signalen o
   #examenbox[Ken het verschil tussen TON en TOF en herken de standaardsymbolen op elektrische schema's.]
 ]
 
-== PLC Introductie
+== PLC Introductie <sec:plc-introductie>
 
 Een *PLC (Programmable Logic Controller)* is een industriële computer zonder beeldscherm of toetsenbord, speciaal ontworpen voor betrouwbare 24/7 besturing in zware industriële omgevingen.
 
@@ -720,21 +699,12 @@ Om programma's overzichtelijk en onderhoudbaar te houden, hanteert men internati
   2. *Program Execution (bv. OB1)*: De CPU voert het gebruikersprogramma instructie voor instructie uit op basis van het PII-geheugen.
   3. *PIQ (Process Image Output)*: De berekende uitgangswaarden worden gelijktijdig naar de fysieke uitgangsmodules geschreven.
 
-  Een volledige scanlus duurt typisch tussen *1 en 30 ms*.
+  Eén volledige scanlus duurt typisch enkele milliseconden.
 ]
 
 === Combinatorisch of met geheugen? <sec:combinatorisch-geheugen>
 
-Voor je begint te programmeren stel je één vraag: heeft de uitgang geheugen nodig of niet?
-
-- *Combinatorische schakeling:* de uitgang hangt #strong[alleen] af van de huidige toestand van de ingangen. Een AND-functie bijvoorbeeld.
-- *Geheugenschakeling:* de uitgang hangt óók af van wat er eerder gebeurde. De start-stopschakeling is het schoolvoorbeeld.
-
-#belangrijk[Gebruik zo weinig mogelijk geheugens.] Neem er net genoeg om alle nodige condities te kunnen uitdrukken als combinaties van ingangen en geheugentoestanden. De reden is praktisch:
-
-- in complexere systemen vergeet je makkelijk een toestand;
-- je hebt beperkte mogelijkheden om het gedrag ná een noodstop vast te leggen;
-- de oplossing wordt razendsnel te ingewikkeld.
+Voor je begint te programmeren stel je één vraag: heeft de uitgang geheugen nodig of niet? De drie soorten logische problemen van bij het begin van dit hoofdstuk komen hier terug, nu als programmeerkeuze.
 
 Dezelfde vraag komt terug bij de 3D-methode: daar is "heb ik een geheugen nodig?" precies de eerste examenvraag. Zie @sec:3d-examenvraag.
 

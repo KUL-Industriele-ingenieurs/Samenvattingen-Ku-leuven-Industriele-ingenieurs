@@ -195,7 +195,7 @@ Een #keyterm[cable carrier], ook drag chain, energy chain of kabelrups genoemd, 
 
 #belangrijk[Een kabel beschermen tegen beschadiging is beter dan achteraf een beveiliging plaatsen die de schade moet opvangen.]
 
-== Klemmen en stekkers
+== Klemmen en stekkers <sec:klemmen>
 
 Klemmenstroken en stekkers zijn verbindingsmiddelen. Ze krijgen de kenletter `X` en worden genummerd. De klemmen zelf nummer je met Arabische cijfers of met letters.
 
@@ -240,7 +240,7 @@ De volgorde waarin je potentialen op een schema voorstelt ligt vast, van boven n
 
 === Aanhaalkoppel <sec:torque>
 
-Elke klem heeft een voorgeschreven kabeltype, draadsectie en aanhaalkoppel, afhankelijk van de steek (pitch) van de klemmenstrook, bijvoorbeeld $3,81 "mm"$ of $5,08 "mm"$. Die staan in de handleiding van de fabrikant.
+Elke klem heeft een voorgeschreven kabeltype, draadsectie en aanhaalkoppel, afhankelijk van de steek (pitch) van de klemmenstrook, bijvoorbeeld $#"3,81" "mm"$ of $#"5,08" "mm"$. Die staan in de handleiding van de fabrikant.
 
 === Klemmen tegenover stekkers <sec:klemmen-stekkers>
 
@@ -332,7 +332,7 @@ Beide vereisen een ontwerp dat toevallig contact met een hogere spanning zo goed
 
 #belangrijk[Daarom werkt de stuurkring op $24 "VDC"$ met geaarde $0 "V"$: dat is een PELV.] Je zit onder de ELV-grens, dus het risico op een schok is laag, én je hebt een aardreferentie om mee te meten en storingsvrij te werken.
 
-=== SMPS: schakelende voeding
+=== SMPS: schakelende voeding <sec:smps>
 
 Je ontwerpt installaties volgens EN 60204. Behalve bij zeer kleine installaties gebruik je daarom altijd een stuurspanning die #strong[galvanisch gescheiden] is van het voedende net, en waarvan de $0 "V"$ geaard is. Bij voorkeur $24 "VDC"$, dus een PELV.
 

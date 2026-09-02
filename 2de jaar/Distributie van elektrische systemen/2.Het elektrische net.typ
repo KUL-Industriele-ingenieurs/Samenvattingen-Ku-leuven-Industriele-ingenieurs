@@ -160,7 +160,7 @@ Tot slot zijn er *regulatoren* die de energiemarkt in de gaten houden. Ze zien e
 )
 Een mesh (vermaasd) netwerk is een complex netwerk van verbonden lijnen die elkaar kruisen en verbinden. Het biedt de hoogste betrouwbaarheid en redundantie, wat essentieel is voor grote afstanden en het verbinden van verschillende landen en centrales.
 
-== Metingen in het net: Twee-wattmetermethode
+== Metingen in het net: Twee-wattmetermethode <sec:wattmeter>
 
 Om het actieve en reactieve verbruik in deze driefasige netten te meten, gebruiken we verschillende wattmeter-opstellingen afhankelijk van het type netwerk (met of zonder nuldraad). De twee-wattmetermethode is hierbij een veelgebruikte techniek.
 

@@ -16,7 +16,7 @@ Een ideale transformator _vorig hoofdstuk_ heeft een paar aannames:
 - *Coupling 100%:* er is geen lekflux, dus alle magnetische flux die door de primaire wikkeling gaat, gaat ook door de secundaire wikkeling.
 
 
-In de realiteit is dit natuurlijk niet het geval en we moeten voor elk van deze effecten rekening houden. In dit hoofdstuk gaan we stap voor stap elk van deze effecten modelleren.
+In werkelijkheid treedt elk van die effecten wél op. Hieronder krijgt elk effect zijn eigen component in het vervangingsschema.
 
 == Finite permeabiliteit van het kernmateriaal <sec:finite-permeabiliteit-van-het-kernmateriaal>
 Magnetisatiestroom. In het vorig hoofdstuk hebben we *Reluctantie* geïntroduceerd als een maat voor de magnetische weerstand van de kern.
@@ -619,13 +619,13 @@ $ => Z_(s c) = frac(v_(1,"nom"), i_(1,"nom")) dot u_(s c) $
   De nominale primaire stroom is:
   $ I_(1,"nom") = S / V_1 = (100.000 "VA") / (10.000 V) = 10 A $
   De spanningsval bij nominale stroom is $V_(s c)$:
-  $ V_(s c) = u_(s c) dot V_(1,"nom") = 0,05 dot 10.000 V = 500 V $
+  $ V_(s c) = u_(s c) dot V_(1,"nom") = #"0,05" dot 10.000 V = 500 V $
   De totale serie-impedantie $Z$ is dan:
   $ Z = V_(s c) / I_(1,"nom") = (500 V) / (10 A) = 50 Omega $
 
   *Gevraagd 2: Wat is de primaire stroom bij een effectieve kortsluiting op de secundaire kant (bij nominale primaire spanning)?*\
   *Oplossing:*\
-  $ I_(s c) = I_(1,"nom") / u_(s c) = (10 A) / 0,05 = 200 A $
+  $ I_(s c) = I_(1,"nom") / u_(s c) = (10 A) / #"0,05" = 200 A $
 ]
 
 == Samenvatting symbolen <sec:samenvatting-symbolen>

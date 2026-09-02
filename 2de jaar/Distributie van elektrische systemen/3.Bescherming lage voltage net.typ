@@ -4,14 +4,6 @@
 = Bescherming van laag voltage net <ch:bescherming-laag-voltage-net>
 Dit hoofdstuk gaat over elektrische veiligheid. Het is een bijvulling van _electrical safety_ van wisselstroom.
 
-=== Inhoud
-- Gevaren van elektriciteit
-- Elektrische materialen
-- Bescherming tegen overstroom
-- Bescherming van elektrische shocks
-- Aarding systemen
-
-
 _er is een nieuwe cursus van dit deel, er kunnen fouten in staan maar enorm goed studiemiddel_
 == Gevaren van elektriciteit
 Elektriciteit kan enorm schade veroorzaken als het niet goed gehandeld worden zoals *Brand* of *Elektrocutie*
@@ -206,57 +198,6 @@ Het interessante is dat bij hogere spanningen dat je doorslag begint te krijgen.
   label: <fig:elektrisch-breakdown>,
 )
 
-== Bescherming tegen overstroom
-
-Elektriciteitsdraden kunnen maar een beperkte stroom aan voordat ze te warm worden en doorbranden. We beschermen ze op twee manieren:
-
-*1. Zekeringen (Smeltveiligheden)*
-Dit is een draadje dat letterlijk doorsmelt als de stroom te hoog wordt.
-- *Voordeel:* Heel goedkoop en betrouwbaar (kan niet mechanisch falen).
-- *Nadeel:* Je moet ze vervangen na gebruik.
-
-*2. Installatieautomaten (Circuit breakers / Zekeringautomaat)*
-Dit is een schakelaar die automatisch afslaat. Ze werken met twee mechanismen:
-- *Thermisch (bimetaal):* Beschermt tegen langdurige, lichte overbelasting (b.v. te veel toestellen op één kring). Het metaal warmt op, buigt en schakelt af.
-- *Magnetisch (spoel):* Beschermt tegen kortsluiting (enorme stroompiek). Dit reageert onmiddellijk.
-
-#examenbox[Ken de uitschakelcurves! B-curve is voor standaard huishoudelijke kringen (slaat snel af bij pieken). C-curve en D-curve kunnen grotere startstromen aan en worden gebruikt voor motoren of zware machines.]
-
-== Bescherming tegen lekstroom/shocks
-
-*De differentieelschakelaar (Verliesstroomschakelaar / RCD)*
-Deze schakelaar meet continu de stroom die *vertrekt* (via de fase) en de stroom die *terugkomt* (via de nulgeleider).
-Als deze twee niet exact gelijk zijn, stroomt er ergens stroom "weg" (bijvoorbeeld door Jef die een schok krijgt, of naar de aarding).
-
-- Voor vochtige ruimtes (badkamer) gebruiken we een gevoelige differentieel van *30mA* (zie begin van dit hoofdstuk: de grens voor hartstilstand).
-- Voor de algemene installatie gebruiken we *300mA*.
-
-== Aardingsnetten (Cruciaal!) <sec:aardingsnetten>
-
-Hoe we het netwerk en de behuizingen aarden, bepaalt hoe we beveiligen. Je hebt de 3 letters:
-1e letter (Bron): *T* = Terra (geaard), *I* = Geïsoleerd
-2e letter (Verbruiker): *T* = Terra (lokaal geaard), *N* = Verbonden met de Nul van de bron
-
-*1. TT-netwerk (Terra-Terra)*
-- De bron is geaard.
-- De behuizing van de consument heeft een *eigen, lokale aarding*.
-- *Beveiliging:* Omdat de aardingsweerstand relatief hoog kan zijn, is de kortsluitstroom vaak niet hoog genoeg om een zekering te doen springen. Daarom is in een TT-net een *differentieelschakelaar verplicht*! Dit is het standaardnetwerk voor huizen in België.
-
-*2. TN-netwerk (Terra-Neutral)*
-- De bron is geaard.
-- De behuizing van de consument is verbonden met de *nulgeleider (PEN of PE)* van de bron.
-- Bij een fout op de behuizing ontstaat een keiharde kortsluiting (weinig weerstand). De stroom schiet enorm de hoogte in.
-- *Beveiliging:* Een gewone zekering of automaat is voldoende om snel af te schakelen. Wordt veel in de industrie gebruikt.
-  - *TN-C:* PE en N draad zijn gecombineerd (PEN).
-  - *TN-S:* PE (aarding) en N (nuldraad) zijn gescheiden.
-
-*3. IT-netwerk (Geïsoleerd-Terra)*
-- De bron is *niet* geaard (of via een zeer hoge impedantie).
-- De behuizing van de verbruiker is lokaal geaard.
-- *Groot voordeel:* Bij een eerste fout (b.v. fase raakt behuizing) valt het net *niet* uit, omdat de stroom nergens heen kan (kring is niet gesloten). Dit is cruciaal voor ziekenhuizen (operatiekamers) of continue productieprocessen.
-- *Beveiliging:* Een isolatiewachter detecteert de eerste fout en geeft een alarm, waarna men het kan fixen zonder downtime.
-
-
 == Beschermen tegen overstroom
 Een overstroom is wanneer er meer stroom door een kabel of apparaat gaat dan dat het aankan. Je hebt twee soorten:
 - *Overload current (overbelasting stroom):* Dit is voor kleine Als er teveel stroom door gaat dan
@@ -412,6 +353,14 @@ Het werkt gelijkaardig aan een circuit breaker waarbij je een schakelijk hebt zo
 ]
 
 
+
+=== Zekering tegenover automaat <sec:zekering-vs-automaat>
+
+- / Smeltzekering: een draadje dat doorsmelt. Goedkoop en betrouwbaar, want er kan niets mechanisch falen. Je moet ze wel vervangen na gebruik.
+- / Installatieautomaat: een schakelaar die vanzelf afslaat en die je opnieuw inschakelt. Ze werkt met twee mechanismen tegelijk: een bimetaal tegen langdurige lichte overbelasting, en een spoel die onmiddellijk reageert op een kortsluitpiek.
+
+#examenbox[Ken de uitschakelcurves. De B-curve is voor gewone huishoudkringen en slaat snel af bij pieken; de C- en D-curve laten grotere startstromen toe en dienen voor motoren of zware machines.]
+
 == Bescherming tegen schokken
 
 We gaan nu niet alleen ons circuit beschermen maar ook voor schokken tegen mensen.
@@ -446,14 +395,37 @@ $
 
 De spanning over de mens daalt van 100V naar ≈ 1V dankzij de aarding. Dit is nu een simpel voorbeeld maar aardig is niet altijd veilig. Soms is er nog genoeg spanning om een mensen te schaden.
 
-*Maar een aardig geeft ons meer tijd om te reageren:*
+Aarden alleen volstaat niet altijd: er kan nog genoeg spanning overblijven om iemand te verwonden. Wel wint de installatie er tijd mee om af te schakelen.
 
 
+=== De differentieelschakelaar (RCD) <sec:rcd>
 
+Een #keyterm[RCD] (Residual Current Device, differentieel- of verliesstroomschakelaar) meet doorlopend de stroom die *vertrekt* via de fase en de stroom die *terugkomt* via de nulgeleider. Zijn die twee niet gelijk, dan loopt er ergens stroom weg, bijvoorbeeld door een mens of naar de aarding, en schakelt hij af.
 
+- Voor vochtige ruimtes zoals een badkamer neem je een gevoelige RCD van $30 "mA"$, de grens waarboven een hartstilstand kan optreden.
+- Voor de algemene installatie volstaat $300 "mA"$.
 
+== Aardingsnetten <sec:aardingsnetten>
 
+Hoe we het netwerk en de behuizingen aarden, bepaalt hoe we beveiligen. Je hebt de 3 letters:
+1e letter (Bron): *T* = Terra (geaard), *I* = Geïsoleerd
+2e letter (Verbruiker): *T* = Terra (lokaal geaard), *N* = Verbonden met de Nul van de bron
 
-== Aarding systemen
+*1. TT-netwerk (Terra-Terra)*
+- De bron is geaard.
+- De behuizing van de consument heeft een *eigen, lokale aarding*.
+- *Beveiliging:* Omdat de aardingsweerstand relatief hoog kan zijn, is de kortsluitstroom vaak niet hoog genoeg om een zekering te doen springen. Daarom is in een TT-net een *differentieelschakelaar verplicht*! Dit is het standaardnetwerk voor huizen in België.
 
+*2. TN-netwerk (Terra-Neutral)*
+- De bron is geaard.
+- De behuizing van de consument is verbonden met de *nulgeleider (PEN of PE)* van de bron.
+- Bij een fout op de behuizing ontstaat een keiharde kortsluiting (weinig weerstand). De stroom schiet enorm de hoogte in.
+- *Beveiliging:* Een gewone zekering of automaat is voldoende om snel af te schakelen. Wordt veel in de industrie gebruikt.
+  - *TN-C:* PE en N draad zijn gecombineerd (PEN).
+  - *TN-S:* PE (aarding) en N (nuldraad) zijn gescheiden.
 
+*3. IT-netwerk (Geïsoleerd-Terra)*
+- De bron is *niet* geaard (of via een zeer hoge impedantie).
+- De behuizing van de verbruiker is lokaal geaard.
+- *Groot voordeel:* Bij een eerste fout (b.v. fase raakt behuizing) valt het net *niet* uit, omdat de stroom nergens heen kan (kring is niet gesloten). Dat telt voor ziekenhuizen (operatiekamers) of continue productieprocessen.
+- *Beveiliging:* Een isolatiewachter detecteert de eerste fout en geeft een alarm, waarna men het kan fixen zonder downtime.

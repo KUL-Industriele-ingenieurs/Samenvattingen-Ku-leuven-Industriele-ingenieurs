@@ -5,7 +5,7 @@
 
 Dit hoofdstuk gaat over kortsluitingen en veiligheid
 
-== Kortsluitstroom en Overbelastingsbeveiliging
+== Kortsluitstroom en Overbelastingsbeveiliging <sec:main-circuits-beveiliging>
 
 #align(center)[_EN 60204:2016: Kortsluitstroom en Overbelastingsbeveiliging_]
 
@@ -15,17 +15,6 @@ De norm geeft aan dat de kortsluitstroom op drie manieren kan worden bepaald:
 - Door het gebruik van standaard ontwerpregels
 - Door kortsluitstroomberekeningen uit te voeren
 - Door kortsluitingsproeven uit te voeren
-
-=== Toepassing van IEC-Normen
-
-Bij toepassing van IEC 61439-1 (norm voor laagspanningsverdeling) op elektrische installaties van machines volgens IEC 60204-1:
-- IEC 60204-1 is de primaire norm die alle relevante aspecten van elektrische installaties in machines dekt
-- IEC 60204-1 is over het algemeen voldoende en vereist niet noodzakelijk IEC 61439-1
-- Voor bepaling van kortsluitweerstand kan IEC 61439-1 nog steeds als van toepassing zijnde norm worden geraadpleegd
-
-=== Beveiliging van Frequentieomvormers
-
-De bijgewerkte norm vereist dat frequentieomvormers zijn voorzien van een beveiligingsinrichting die automatisch de uitgaande stroomtoevoer onderbreekt wanneer een fout wordt gedetecteerd. Als een frequentieomvormer deze mogelijkheid niet bezit, moet de fabrikant in de gebruiksaanwijzing aangeven welke aanvullende veiligheidsmaatregelen de gebruiker moet treffen.
 
 === Beginselen van Kortsluitbeveiliging
 
@@ -372,7 +361,7 @@ PTC's werken alleen goed als:
 + de thermistoren correct geplaatst zijn, dicht bij de thermisch kritische plaatsen;
 + de thermische weerstand tussen wikkeling en PTC laag is. Bij hoogspanningsmotoren is dat moeilijker, want daar moet de thermistor van hoge spanning geïsoleerd worden.
 
-Je mag meerdere sensoren in serie zetten, zolang de totale weerstand bij omgevingstemperatuur onder $1,5 "k"Omega$ blijft. IEC beveelt maximaal #strong[zes] sensoren in serie aan.
+Je mag meerdere sensoren in serie zetten, zolang de totale weerstand bij omgevingstemperatuur onder $#"1,5" "k"Omega$ blijft. IEC beveelt maximaal #strong[zes] sensoren in serie aan.
 
 #waarschuwing[
   De warmte moet eerst door het isolatiemedium naar de sensor. Daardoor is een PTC met TPR #belangrijk[te traag] voor kortsluitingen in motoren of transformatoren.
@@ -392,7 +381,7 @@ Bij een PTC ligt de reactietemperatuur #strong[in de sensor] vast: de RRT bepaal
 
 === Wat kost dat? <sec:pt100-kost>
 
-De slides geven een concreet prijsvoorbeeld voor een SEW asynchrone motor IE3 van $1,5 "kW"$ (DRN90L4, isolatieklasse F, IP54):
+De slides geven een concreet prijsvoorbeeld voor een SEW asynchrone motor IE3 van $#"1,5" "kW"$ (DRN90L4, isolatieklasse F, IP54):
 
 #table(
   columns: (1fr, auto),

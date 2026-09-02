@@ -3,7 +3,7 @@
 
 = Design van industriële controle systemen <ch:design-van-industriële-controle-systemen>
 
-In dit hoofdstuk behandelen we het ontwerp van elektrische en elektronische interfaces tussen sensoren, actuatoren en industriële controllers (PLC's).
+Dit hoofdstuk koppelt sensoren en actuatoren aan een PLC: welke spanning de ingang verwacht, hoe de stroom door de kring loopt, en welk component je ertussen zet als de spanningen niet overeenkomen.
 
 #concept(title: "Spanningsverschil en referentiepotentiaal")[
   #align(center)[
@@ -45,13 +45,10 @@ In dit hoofdstuk behandelen we het ontwerp van elektrische en elektronische inte
 
 #wrap-figure(
   image("assets/PLC-logic.png", width: 10cm),
-  caption: [Spanningsdrempels voor PLC digitale ingangen (IEC 61131-2 Type 1/3)],
+  caption: [Spanningsniveaus van de S7-1500-ingangen. De ingangskarakteristiek volgt IEC 61131: type 1 voor AC, type 3 voor DC.],
   label: <fig:PLC-logic>,
 )[
-  Volgens IEC 61131-2:
-  - *Logische 0*: Ingangsspanning tussen $-3 "V"$ en $+5 "V"$ (stroom $< 1.5 "mA"$).
-  - *Overgangsgebied*: Tussen $5 "V"$ en $15 "V"$ (ongedefinieerde toestand).
-  - *Logische 1*: Ingangsspanning tussen $+15 "V"$ en $+30 "V"$ (stroom $> 2 "mA"$).
+  Tussen de twee spanningsgebieden zit een zone waar de kaart niets garandeert. Sommige componenten dekken meteen het hele bereik $10 - 30 "VDC"$; dan hoef je niets te doen.
 ]
 
 == Componenten met een andere spanning aansluiten
@@ -66,16 +63,13 @@ In dit hoofdstuk behandelen we het ontwerp van elektrische en elektronische inte
 
 #wrap-figure(
   image("assets/different-voltages-wanneer.png", width: 7cm),
-  caption: [Keuze van koppelcomponent volgens stroom en schakelfrequentie],
+  caption: [Welk koppelcomponent kies je? Twee vragen volstaan: hoe vaak schakelt het, en hoeveel stroom loopt er.],
   label: <fig:different-voltages-wanneer>,
 )[
-  Afhankelijk van de vereiste schakelfrequentie en de stroomsterkte kiest men:
-  - *Elektromechanisch relais*: Hoge stromen, lage frequentie ($< 1 "Hz"$).
-  - *Optocoupler*: Zeer lage stroom, extreem hoge frequentie ($> 10 "kHz"$).
-  - *Solid State Relay (SSR)*: Hoge stroom en matig hoge frequentie ($10"–"1000 "Hz"$).
+  De grens tussen "laag" en "hoog" ligt niet in een getal vast. Het mechanische contact van een relais of contactor slijt door het schakelen zelf, dus zodra je snel moet schakelen kom je bij halfgeleiders uit.
 ]
 
-=== SSR (Solid State Relay) en Optocouplers
+=== SSR (Solid State Relay) en Optocouplers <sec:ssr-optocoupler>
 
 #wrap-figure(
   image("assets/SSR.png", width: 7cm),
@@ -97,7 +91,7 @@ In dit hoofdstuk behandelen we het ontwerp van elektrische en elektronische inte
   Een infrarood-LED stuurt licht naar een fototransistor. Wordt de LED aangestuurd, dan gaat de fototransistor in verzadiging en geleidt de stroom aan de secundaire zijde.
 ]
 
-Optocouplers kunnen ook *Analoge* signalen doorsturen. In *Lineaire mode* kan je een lineaire relatie $f(x) = x$ maken zodat de intensiteit van de output gelijk is aan de input. Je kunt dan analoge signalen doorgeven. Ze kunnen hierdoor een transformator vervangen in meetcircuits, en kunnen ook DC doorsturen.
+Optocouplers sturen ook *analoge* signalen door. In *lineaire mode* is de uitgang evenredig met de ingang, zodat een optocoupler een *stroomtransformator* in een meetkring kan vervangen en ook DC doorgeeft; bij hoge frequenties treedt vervorming op. In de SMPS uit @sec:smps koppelt een optocoupler zo de DC-uitgangsspanning terug naar de PWM, zonder de galvanische scheiding op te geven.
 
 
 
@@ -138,17 +132,15 @@ $ C arrow.r E $
 
 Om het verschil tussen PNP en NPN te begrijpen, kijk je naar wat de sensor met de *zwarte signaaldraad* doet als hij geactiveerd wordt.
 
-==== PNP (Sourcing) — De "Positieve" sensor
-*Ezelsbruggetje:* De *P* staat voor #emph(text(blue)[Positief]) en #emph(text(blue)[Power]).
-*Werking:* Denk aan de sensor als een *kraan*. Wanneer de sensor iets detecteert, zet hij de kraan open en "spuit" er +24V uit de zwarte draad.
-*Stroomzin:* De stroom vloeit *uit* de sensor naar de verbruiker (bijv. een PLC-ingang). De sensor is de *bron* *(source)*.
-*Aansluiting:* De verbruiker (load) zit tussen de zwarte draad en de 0V (blauw).
+==== PNP (sourcing)
+*Ezelsbruggetje:* de *P* staat voor #emph(text(blue)[Positief]) en #emph(text(blue)[Power]).
 
-==== NPN (Sinking) — De "Negatieve" sensor
-*Ezelsbruggetje:* De *N* staat voor #emph(text(blue)[Negatief]) en #emph(text(blue)[Nul volt]).
-*Werking:* Denk aan de sensor als een *afvoer* of een putje. Wanneer de sensor iets detecteert, zet hij de afvoer open naar de 0V (massa).
-*Stroomzin:* De stroom vloeit *van* de verbruiker *naar* de sensor toe. De sensor "slikt" de stroom in. De sensor is de *gootsteen* *(sink)*.
-*Aansluiting:* De verbruiker (load) moet al aan de +24V (bruin) hangen en wacht tot de zwarte draad hem verbindt met de 0V.
+Detecteert de sensor iets, dan zet hij $+24 "V"$ op de zwarte draad. De stroom vloeit *uit* de sensor naar de verbruiker, dus de sensor is de *bron* (source). De verbruiker hangt tussen de zwarte draad en de $0 "V"$ (blauw). Omdat de sensor stroom levert, moet de ingangskaart ze *opnemen*.
+
+==== NPN (sinking)
+*Ezelsbruggetje:* de *N* staat voor #emph(text(blue)[Negatief]) en #emph(text(blue)[Nul volt]).
+
+Detecteert de sensor iets, dan verbindt hij de zwarte draad met de $0 "V"$. De stroom vloeit *van* de verbruiker *naar* de sensor, dus de sensor neemt de stroom op (sink). De verbruiker hangt al aan de $+24 "V"$ (bruin) en wacht tot de zwarte draad hem met de $0 "V"$ verbindt. Omdat de sensor stroom opneemt, moet de ingangskaart ze *leveren*.
 
 #table(
   columns: (1fr, 1fr, 1fr),
@@ -178,12 +170,12 @@ Om het verschil tussen PNP en NPN te begrijpen, kijk je naar wat de sensor met d
     gutter: 1cm,
     figure(
       image("assets/3-draad PNP sensor.png", width: 6cm),
-      caption: [PNP: De kraan staat open (+24V)],
+      caption: [PNP: de zwarte draad krijgt $+24 "V"$],
       label: <fig:3-draad-PNP-sensor-nieuw>,
     ),
     figure(
       image("assets/3-draad NPN sensor.png", width: 5cm),
-      caption: [NPN: De afvoer staat open (0V)],
+      caption: [NPN: de zwarte draad wordt met $0 "V"$ verbonden],
       label: <fig:3-draad-NPN-sensor-nieuw>,
     ),
   ),
@@ -206,7 +198,7 @@ Om het verschil tussen PNP en NPN te begrijpen, kijk je naar wat de sensor met d
 === 3- en 4-draadssensoren <sec:3-4-draad-sensoren>
 
 - *3-draadssensor*: Beschikt over aparte voedingslijnen (#text(fill: rgb("#8B4513"))[bruin] = $+24 "VDC"$, #text(fill: blue)[blauw] = $0 "VDC"$) en één schakeluitgang (#text(fill: black)[zwart] = signaal).
-- *4-draadssensor*: Bevat een extra vierde ader (#text(fill: gray)[wit]), meestal voorzien van complementaire uitgangen (zowel een N.O.- als een N.C.-contact) of een instelbare antivalente functie.
+- *4-draadssensor*: Bevat een extra vierde ader (#text(fill: gray)[wit]) met een tweede uitgang, zodat de sensor tegelijk een N.O.- en een N.C.-signaal levert. #belangrijk[De draadkleuren, wit inbegrepen, moet je van buiten kennen voor het labo en het examen.]
 
 === Veiligheidsaspect: Waarom PNP de Europese standaard is <sec:waarom-pnp>
 
@@ -220,7 +212,7 @@ Om het verschil tussen PNP en NPN te begrijpen, kijk je naar wat de sensor met d
   - *Aardfout bij NPN:* Raakt een signaaldraad van een NPN-sensor het metalen chassis ($0 "V"$), dan wordt de stroomkring gesloten en "denkt" de PLC dat de sensor geactiveerd is. Dit kan leiden tot onbedoeld herstarten of doorlopen van gevaarlijke bewegingen.
 ]
 
-== Discrete sensoren
+== Discrete sensoren <sec:discrete-sensoren>
 
 === Wanneer moet een switch NO/NC (normaal open/normaal gesloten) zijn? <sec:no-nc-keuze>
 
@@ -260,7 +252,7 @@ Om het verschil tussen PNP en NPN te begrijpen, kijk je naar wat de sensor met d
 Sensoren zetten een fysieke procesgrootheid om in een elektrisch signaal voor de controller.
 
 #concept(title: "Overzicht van sensortypes")[
-  - *Mechanische eindschakelaars (Limit switches)*: Robuust, mechanisch bediend met rol of hefboom. Betrouwbare positiedetectie bij transportbanden of deuren. Eenvoudig en ongevoelig voor elektrische storingen.
+  - *Mechanische eindschakelaars (Limit switches)*: Mechanisch bediend met rol of hefboom. Betrouwbare positiedetectie bij transportbanden of deuren. Eenvoudig en ongevoelig voor elektrische storingen.
   - *Niveauschakelaars (Level switches)*: Vlotter op hefboom of ketting voor hoog/laag niveaudetectie in tanks.
   - *Debietschakelaars (Flow switches)*: Membraan dat schakelt bij een drukval over een restrictie bij stromend medium.
   - *Thermische schakelaars (Thermal cutout / Klixon)*: Bimetaalschakelaar die direct afschakelt bij oververhitting.

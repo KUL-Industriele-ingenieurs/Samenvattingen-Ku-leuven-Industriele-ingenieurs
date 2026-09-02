@@ -3,7 +3,7 @@
 
 = De ideale transformator
 
-In dit hoofdstuk bestuderen we alle effecten van transformatoren. We nemen geen verliezen mee.
+Hier nemen we de transformator zonder verliezen: alle flux blijft in de kern, de wikkelingen hebben geen weerstand.
 
 #wrap-figure(
   image("assets/idealtransform.png", width: 5cm),
@@ -191,39 +191,32 @@ $ I = V/Z $
   label: <fig:Phasor-RL>,
 )
 
-=== RC <sec:RC>
-Net hetzelfde als een RL circuit maar nu met een capacitor in plaats van een inductor.
-
-$ V = R I + underbrace(-j/(omega C), "imaginair") I $
-$ V = I (R - j/(omega C)) $
-$ Z = R - j/(omega C) $
-$ I = V/Z $
-
-=== RLC <sec:RLC>
-
-Combinatie van RL en RC circuit.
-
-$ v(t) = R i(t) + L (d i(t))/(d t) + 1/C integral i(t) d t $
-$ V = R I + underbrace(j omega L, "imaginair") I + underbrace(-j/(omega C), "imaginair") I $
-$ V = I (R + j omega L - j/(omega C)) $
-$ Z = R + j omega L - j/(omega C) $
-$ I = V/Z $
+Voor een condensator loopt dezelfde redenering, met $Z = R - j/(omega C)$.
 
 == Power <sec:power>
-Onze power heeft ook een imaginair deel $S$. Deze heeft dus ook een fasor.
+
+Het schijnbaar vermogen $S$ is complex, dus het heeft ook een fasor. Je berekent het met de #belangrijk[complex toegevoegde] van de stroom:
 
 #wrap-figure(
   image("assets/phasorPower.png", width: 5cm),
-  caption: [phasorPower],
+  caption: [Vermogendriehoek: $P$ reëel, $j Q$ imaginair, $S$ de schuine zijde onder hoek $phi$.],
   label: <fig:phasorPower>,
 )[
-  $ S = (V I) e^(j theta) $
-  $ S = underbrace(V I cos(theta), "P Reëel") + j underbrace(V I sin(theta), "jQ Imaginair") $
+  $ S = V dot I^* = V I e^(j (phi_V - phi_I)) = V I e^(j phi) $
+  $ S = underbrace(V I cos phi, P) + j underbrace(V I sin phi, Q) $
 
-  $ P = v(t) i(t) $
-  $ P = V I cos(theta) $
+  met:
+  - $S$: schijnbaar vermogen [VA]
+  - $P$: actief vermogen, het tijdsgemiddelde van het ogenblikkelijk vermogen [W]
+  - $Q$: reactief vermogen [var]
+  - $phi = phi_V - phi_I$: fasehoek tussen spanning en stroom [rad]
+  - $cos phi$: arbeidsfactor [-]
+]
 
-  $ Q = V I sin(theta) $
+#waarschuwing[
+  *Let op de toegevoegde.* $S = V I^*$, #strong[niet] $V I$. Vermenigvuldigen met de toegevoegde trekt de fasehoeken van elkaar af; hoeken optellen betekent niets. Staat de spanning of de stroom toevallig op fase nul, dan krijg je alleen het teken van $Q$ verkeerd. In alle andere gevallen komt je $cos phi$ er volledig naast te liggen.
+
+  Een naijlende stroom geeft een positieve $phi$ en dus een positieve $Q$.
 ]
 
 
