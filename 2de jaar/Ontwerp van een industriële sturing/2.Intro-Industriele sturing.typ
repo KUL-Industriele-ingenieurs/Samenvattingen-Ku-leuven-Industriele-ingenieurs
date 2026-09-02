@@ -47,7 +47,7 @@ Vier doelen sturen elke keuze die je in dit vak maakt. Ze wegen anders per indus
 - / Snel te herstellen: één type component, één methodiek en één programmeertaal (LAD) over al je machines. Gebruik insteekbare componenten, zodat je een versleten relais uit zijn socket trekt in plaats van los te vijzen. Onderdelen moeten binnen twee uur te leveren zijn.
 - / Goedkoop te engineeren en flexibel: gebruik kant-en-klare oplossingen en steek je tijd in wat klantspecifiek is. Een duurder component is dan best te verantwoorden. Werk modulair, want de vereisten veranderen sowieso nog.
 
-== Basis diagram geautomatiseerd systeem.
+== Basisdiagram van een geautomatiseerd systeem
 
 #figure(
   image("assets/basisdiagram.png", width: 15cm),
@@ -60,7 +60,7 @@ Elk geautomatiseerd systeem heeft twee soorten aansluitingen op de controller:
 - / Inputs van het controlesysteem: De _controle-ingangen_ (bv. knoppen en schakelaars bediend door de operator) en de _sensorsignalen_ (bv. eindschakelaars, druksensoren). Ze vertellen de controller wat er in de machine of het proces gaande is.
 - / Outputs van het controlesysteem: De _actuatoren_ (bv. motoren, kleppen, cilinders) die de machine fysiek laten bewegen, en de _visualisatie_ (bv. pilot lamps, HMI-schermen) die de operator feedback geven over de toestand van het systeem.
 
-=== Logic Control Systemen (on/off-besturing)
+=== Logische sturing (aan/uit)
 
 Logic control systemen (bv. PLC, relais) werken met *discrete, digitale signalen*: een signaal is ofwel aan (1) ofwel uit (0). Dit maakt ze ideaal voor aan/uit-sturing van machines.
 
@@ -573,7 +573,7 @@ Dezelfde schakeling bouw je ook met een MY4-relais. De logica blijft identiek; a
   Zo'n zwevende spanning heeft geen echte waarde. Er zitten bovendien maar weinig ladingen op, zodat die bij het meten meteen door je meettoestel weglopen. Je kan dat stuk dus niet zinvol meten.
 ]
 
-== Signal time Diagram
+== Signaal-tijddiagram
 
 
 Zoals gezien in elektronica kun je diagrammen maken om het gedrag van signalen over tijd te visualiseren.
@@ -585,7 +585,7 @@ Zoals gezien in elektronica kun je diagrammen maken om het gedrag van signalen o
 
 
 
-== Timer en Timing Relays
+== Timers en tijdrelais
 
 #concept(title: "Timers")[
 
@@ -690,7 +690,7 @@ In eenvoudige schakelingen met 1 tot 3 stappen kan een relaisschakeling volstaan
   Rechts staat altijd een instructie die het resultaat gebruikt, meestal een uitgangsspoel. Elk netwerk moet zo afgesloten zijn, anders compileert het programma niet.
 ]
 
-== Logic control met PLC
+== Logische sturing met een PLC
 
 === Variabelen- en bloknaamgevingsconventie
 
@@ -781,8 +781,6 @@ Zo'n uitgevouwen schema is nooit meteen de eindvorm. Je vereenvoudigt in twee st
 + *Onnodige condities schrappen.* Set activeert de uitgang sowieso, dus hoef je set niet nog eens uit te sluiten in de eerste tak.
 
 Werk je beide stappen af, dan kom je uit op #strong[dezelfde] oplossing als met methode 1. Dat is meteen je controle: twee verschillende wegen die op hetzelfde schema uitkomen.
-
-=== LAD-conventies en de basisregel
 
 === LAD-conventies <sec:lad-conventies>
 
@@ -1028,7 +1026,7 @@ De lokale variabelen van een FC of FB heten #keyterm[formele parameters]. De var
 - *IN:* vóór de code in het blok uitgevoerd wordt, wordt de waarde van de actuele parameter ingelezen en toegekend aan de formele parameter. #belangrijk[Schrijf nooit naar een IN.]
 - *OUT:* ná het uitvoeren van de code worden de waarden van de OUT-parameters weggeschreven naar de gekoppelde actuele parameters. Let op: de data in die gekoppelde variabele wordt #strong[altijd] overschreven met wat er binnen het blok beschikbaar was.
 
-=== Timers en counters in een FC of FB <sec:timer-datatypes>
+=== Timers en tellers in een FC of FB <sec:timer-datatypes>
 
 Volgens EN 61131 gebruik je #belangrijk[geen geheugen of timers in een FC]. Wil je toch een timer, dan heb je twee opties: hem als IN definiëren, of, beter, een eigen instance-DB per timer aanmaken.
 

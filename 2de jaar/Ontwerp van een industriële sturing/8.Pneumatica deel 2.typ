@@ -555,8 +555,6 @@ Twee principes:
 - *chemische absorptie*, die zeer droge lucht geeft;
 - *koeling*, waarbij je de condensatietemperatuur verlaagt.
 
-=== Secundaire luchtbehandeling en de FRL-unit
-
 === De drukregelaar aan de machine <sec:drukregelaar>
 
 #wrap-figure(

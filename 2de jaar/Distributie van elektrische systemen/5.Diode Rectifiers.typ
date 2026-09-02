@@ -2,7 +2,7 @@
 
 = Diode Rectifiers <ch:diode-rectifiers>
 
-== Herhaling Diodes
+== Herhaling: diodes
 
 #figure(
   image("assets/Karaktiristieken van een diode.png", width: 12cm),
@@ -28,7 +28,7 @@ Als je negatieve spanning op de diode zet kun je uiteindelijk #keyterm[Doorslag]
 Je diode kan dus tegenstromen hebben.
 
 
-=== Single Phase Half Wave Rectifier
+=== Enkelfasige halvegolfgelijkrichter
 
 #figure(
   image("assets/Single-phase half recertifier.png", width: 12cm),
@@ -45,7 +45,7 @@ Je gemiddelde uitput spanning is:
 
 $ overline(U_0) = sqrt(2)/pi dot U_b $
 
-=== Single Phase Full wave Rectifier
+=== Enkelfasige volledigegolfgelijkrichter
 
 #figure(
   image("assets/Full-wave diode rectiefier.png", width: 12cm),
@@ -94,7 +94,7 @@ Het gemiddelde uitgangsspanning is:
 #examenbox[Je gaat op het examen een schema krijgen en je moet de grafiek kunnen tekenen hoe het zich gaat gedragen]
 
 
-== Communcatie
+== Commutatie
 
 #concept(title: "Communcatie")[
 
@@ -145,7 +145,7 @@ Wat gaat er nu gebeuren als je inductieve belasting toevoegt?
 
 We gaan dit stap per stap aanpakken om het te begrijpen.
 
-==== Half wave rectifier met inductieve belasting
+==== Halvegolfgelijkrichter met inductieve belasting
 Herinner je dat een spoel de voltage verschillen gaat tegengaan. Die doet dit door magnetische flux op te slaan en deze dan terug vrij te geven.
 
 
@@ -170,7 +170,7 @@ Dus zelfs na dat de spanning $v_s = 0$ wordt er nog steeds magnetische flux ener
 $ v_l = L (d i) / (d t) $
 
 
-==== Full-wave rectifier met inductieve belasting
+==== Volledigegolfgelijkrichter met inductieve belasting
 
 Net zoals bij de half-wave rectifier gaat de stroom $i_0$ achterlopen op de spanning $v_s$ door de spoel. Maar je krijgt nu een soort uitsmering van de spanning omdat de voltage $v_0$ niet helemaal nul wordt.
 
@@ -216,7 +216,7 @@ Hieronder is de figuur van de powerquality van een 3 fase systeem waar je duidel
   label: <fig:Power-quality-van-diodes>,
 )
 
-=== Alles tesamen
+=== Alles samen
 
 Dus met alles te samen:
 - lagging door inductieve load
@@ -236,9 +236,9 @@ Dus met alles te samen:
 De spanning en stroom zijn kleiner omdat de batterij een bepaalde voltage pas gaat geleiden. Er is een vertraging door de spoel. Door de overlapping is er een afknijping van de spanning.
 
 
-== Capacitieve load
+== Capacitieve belasting
 
-=== Halve golf rectifier met Capacitieve load
+=== Halvegolfgelijkrichter met capacitieve belasting
 
 Als je de standaard AC input krijgt wordt die gesmooth door de capaciteit in parallel met de output. Je krijgt dan een *Smoothing* effect op je output.
 
@@ -258,7 +258,7 @@ De stroom $i$ is afhankelijk van de veranderingen van de spanning. Dus als onze 
 
 Laten we dit verder bekijken met terug onze *brug rectiefier*
 
-=== Capacitieve load met brug rectiefier
+=== Capacitieve belasting met bruggelijkrichter
 
 #figure(
   image("assets/Capacitieve brug rectifier.png", width: 12cm),
@@ -295,7 +295,7 @@ Laten we dit verder bekijken met terug onze *brug rectiefier*
 ]
 
 
-== Three-phase diode rectifiers <sec:three-phase:diode-rectifiers>
+== Driefasige dioderectifiers <sec:three-phase:diode-rectifiers>
 
 Dus nu hebben we terug rectiefiers maar nu willen we 3 fase systemen balanceren zodat we een constante stroom hebben.
 

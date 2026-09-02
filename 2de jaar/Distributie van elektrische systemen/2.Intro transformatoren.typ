@@ -106,7 +106,7 @@ High voltage (e.g. 300 kV) $arrow.r.double$ medium voltage (e.g. 33 kV)
 == Magnetostatica
 Dit stukje gaat over tijdinvariante dingen
 
-=== Vlug herhaling
+=== Herhaling
 
 #figure(
   image("assets/currentflow.png", width: 5cm),

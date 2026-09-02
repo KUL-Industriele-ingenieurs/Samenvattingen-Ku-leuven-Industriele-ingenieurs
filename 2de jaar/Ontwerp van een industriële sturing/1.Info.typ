@@ -10,8 +10,6 @@ In dit vak leer je de termen en concepten die bij het ontwerpen van een industri
 
 Je moet de *Nederlandse* en *Engelse* termen kennen.
 
-== Uren gevraagd <sec:uren>
-
 == Doel <sec:doel>
 
 - Elektrische diagrammen kunnen lezen
