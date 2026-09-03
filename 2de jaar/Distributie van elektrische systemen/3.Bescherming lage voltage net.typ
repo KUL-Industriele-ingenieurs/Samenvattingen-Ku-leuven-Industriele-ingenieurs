@@ -4,14 +4,6 @@
 = Bescherming van laag voltage net <ch:bescherming-laag-voltage-net>
 Dit hoofdstuk gaat over elektrische veiligheid. Het is een bijvulling van _electrical safety_ van wisselstroom.
 
-=== Inhoud
-- Gevaren van elektriciteit
-- Elektrische materialen
-- Bescherming tegen overstroom
-- Bescherming van elektrische shocks
-- Aarding systemen
-
-
 _er is een nieuwe cursus van dit deel, er kunnen fouten in staan maar enorm goed studiemiddel_
 == Gevaren van elektriciteit
 Elektriciteit kan enorm schade veroorzaken als het niet goed gehandeld worden zoals *Brand* of *Elektrocutie*
@@ -54,7 +46,7 @@ De figuren zijn vertaald naar voltage curves.
     label: <fig:grenzen-BB>,
   )
 ]
-=== Regulatie <sec:regulatie>
+=== Normen en keurmerken <sec:regulatie>
 
 #wrap-figure(
   image("assets/regulatie elektriciteit.png", width: 5cm),
@@ -72,16 +64,22 @@ De figuren zijn vertaald naar voltage curves.
   CEBEC, DVE zijn keur/kwaliteitsmerken. De fabricant met een goed merk gaan hun producten keuren.
 ]
 
-=== Ip-nummers (index of prodection) <sec:ip-nummers>
+=== IP-code (Ingress Protection) <sec:ip-nummers>
 Er zijn 3 cijfers _in dit vak vooral over 2_
 
 #wrap-figure(
   image("assets/IP-rating.png", width: 4cm),
   caption: [IP-rating],
   label: <fig:IP-rating>,
-)[Het eerste number gaat over live aanraken van het elektriciteit. Is het stofbeschermend, is het veilig om met de vinger aan te raken? Hoe hoger hoe meer beschermt
+)[
+  De #keyterm[IP-code] (Ingress Protection) zegt in twee cijfers hoe goed een behuizing afgesloten is.
 
-  Het tweede number gaat over waterdichtheid.Hoe hoger het number hoe meer beschermt tegen water. ipx7 is volledig waterdicht. ]
+  Het #strong[eerste cijfer] gaat over vaste voorwerpen en aanraking: kan je er met een vinger of een draad bij de spanningvoerende delen, en houdt de behuizing stof tegen? Hoe hoger, hoe beter afgesloten.
+
+  Het #strong[tweede cijfer] gaat over water, van druppels tot volledige onderdompeling. IPx7 blijft dicht onder water.
+
+  Staat er een `x` in plaats van een cijfer, dan is dat aspect niet getest of niet gespecificeerd.
+]
 
 #voorbeeld(title: "motoren ip-rating")[
 
@@ -168,7 +166,7 @@ $arrow.r.double$ zorg dat je deze niet kunt aanraken. Zet bescherming rond en wa
 ]
 
 
-== Electrische materialen
+== Elektrische materialen
 
 #figure(
   image("assets/Conductor & Isolator.png", width: 12cm),
@@ -205,57 +203,6 @@ Het interessante is dat bij hogere spanningen dat je doorslag begint te krijgen.
   caption: [elektrisch-breakdown],
   label: <fig:elektrisch-breakdown>,
 )
-
-== Bescherming tegen overstroom
-
-Elektriciteitsdraden kunnen maar een beperkte stroom aan voordat ze te warm worden en doorbranden. We beschermen ze op twee manieren:
-
-*1. Zekeringen (Smeltveiligheden)*
-Dit is een draadje dat letterlijk doorsmelt als de stroom te hoog wordt.
-- *Voordeel:* Heel goedkoop en betrouwbaar (kan niet mechanisch falen).
-- *Nadeel:* Je moet ze vervangen na gebruik.
-
-*2. Installatieautomaten (Circuit breakers / Zekeringautomaat)*
-Dit is een schakelaar die automatisch afslaat. Ze werken met twee mechanismen:
-- *Thermisch (bimetaal):* Beschermt tegen langdurige, lichte overbelasting (b.v. te veel toestellen op één kring). Het metaal warmt op, buigt en schakelt af.
-- *Magnetisch (spoel):* Beschermt tegen kortsluiting (enorme stroompiek). Dit reageert onmiddellijk.
-
-#examenbox[Ken de uitschakelcurves! B-curve is voor standaard huishoudelijke kringen (slaat snel af bij pieken). C-curve en D-curve kunnen grotere startstromen aan en worden gebruikt voor motoren of zware machines.]
-
-== Bescherming tegen lekstroom/shocks
-
-*De differentieelschakelaar (Verliesstroomschakelaar / RCD)*
-Deze schakelaar meet continu de stroom die *vertrekt* (via de fase) en de stroom die *terugkomt* (via de nulgeleider).
-Als deze twee niet exact gelijk zijn, stroomt er ergens stroom "weg" (bijvoorbeeld door Jef die een schok krijgt, of naar de aarding).
-
-- Voor vochtige ruimtes (badkamer) gebruiken we een gevoelige differentieel van *30mA* (zie begin van dit hoofdstuk: de grens voor hartstilstand).
-- Voor de algemene installatie gebruiken we *300mA*.
-
-== Aardingsnetten (Cruciaal!) <sec:aardingsnetten>
-
-Hoe we het netwerk en de behuizingen aarden, bepaalt hoe we beveiligen. Je hebt de 3 letters:
-1e letter (Bron): *T* = Terra (geaard), *I* = Geïsoleerd
-2e letter (Verbruiker): *T* = Terra (lokaal geaard), *N* = Verbonden met de Nul van de bron
-
-*1. TT-netwerk (Terra-Terra)*
-- De bron is geaard.
-- De behuizing van de consument heeft een *eigen, lokale aarding*.
-- *Beveiliging:* Omdat de aardingsweerstand relatief hoog kan zijn, is de kortsluitstroom vaak niet hoog genoeg om een zekering te doen springen. Daarom is in een TT-net een *differentieelschakelaar verplicht*! Dit is het standaardnetwerk voor huizen in België.
-
-*2. TN-netwerk (Terra-Neutral)*
-- De bron is geaard.
-- De behuizing van de consument is verbonden met de *nulgeleider (PEN of PE)* van de bron.
-- Bij een fout op de behuizing ontstaat een keiharde kortsluiting (weinig weerstand). De stroom schiet enorm de hoogte in.
-- *Beveiliging:* Een gewone zekering of automaat is voldoende om snel af te schakelen. Wordt veel in de industrie gebruikt.
-  - *TN-C:* PE en N draad zijn gecombineerd (PEN).
-  - *TN-S:* PE (aarding) en N (nuldraad) zijn gescheiden.
-
-*3. IT-netwerk (Geïsoleerd-Terra)*
-- De bron is *niet* geaard (of via een zeer hoge impedantie).
-- De behuizing van de verbruiker is lokaal geaard.
-- *Groot voordeel:* Bij een eerste fout (b.v. fase raakt behuizing) valt het net *niet* uit, omdat de stroom nergens heen kan (kring is niet gesloten). Dit is cruciaal voor ziekenhuizen (operatiekamers) of continue productieprocessen.
-- *Beveiliging:* Een isolatiewachter detecteert de eerste fout en geeft een alarm, waarna men het kan fixen zonder downtime.
-
 
 == Beschermen tegen overstroom
 Een overstroom is wanneer er meer stroom door een kabel of apparaat gaat dan dat het aankan. Je hebt twee soorten:
@@ -323,7 +270,7 @@ Je wilt dat: $I_b$ < $I_n$ < $I_z$ < $I_(c u)$
 
 $I_b$ is de veilig stroom van het apparaat, $I_n$ is de nominale stroom van de beveiliging, $I_z$ is de maximale stroom die de kabel aankan en $I_(c u)$ is de stroom die ontstaat door de spoel bij een grote verandering van stroom. Je wilt dat $I_n$ groter is dan $I_b$ anders gaat de beveiliging aan terwijl je veilig bent. $I_z$ is de maximale stroom die de kabel aankan en die moet groter zijn den $I_n$ omdat anders de kabel kan beschadigd worden voordat de beveiliging aan gaat.
 
-== Fuses (smeltzekering) <sec:fuses>
+== Smeltzekeringen (fuses) <sec:fuses>
 
 #figure(
   image("assets/Fuses.png", width: 5cm),
@@ -339,7 +286,7 @@ $I_b$ is de veilig stroom van het apparaat, $I_n$ is de nominale stroom van de b
 
 Defuse hier toont de karastiristiek afhankelijk van de stroom. 20A gaat lang duren maar 200A gaat heel snel. Je wilt dus een fuse die snel genoeg is om de stroom te onderbreken voordat er schade ontstaat maar niet te snel zodat het niet onnodig aan gaat.
 
-== Circuit breakers (automatische zekering) <sec:circuit-breakers>
+== Automaten (circuit breakers) <sec:circuit-breakers>
 
 
 #figure(
@@ -357,7 +304,7 @@ Je kunt die dan terug primen door de veer van binnen terug op te spannen en het 
 
 Nu dit is alleen voor kortsluitingen. Voor overbelastingen gaat er een bimetalen strip zijn die warm wordt en daardoor buigt en het circuit onderbreekt. Deze heeft een langere tijd nodig om te reageren omdat het afhankelijk is van de warmteontwikkeling. Dit kan variëren van enkele seconden tot enkele minuten, afhankelijk van de mate van overbelasting.
 
-=== Mechanical circuit breakers karakteristieken <sec:mechanical-circuit-breakers-karakteristieken>
+=== Karakteristieken van automaten <sec:mechanical-circuit-breakers-karakteristieken>
 
 #figure(
   image("assets/MCB-karakteristieken.png", width: 15cm),
@@ -365,14 +312,14 @@ Nu dit is alleen voor kortsluitingen. Voor overbelastingen gaat er een bimetalen
   label: <fig:MCB-karakteristieken>,
 )
 
-== Power circuit breakers <sec:power-circuit-breakers>
+== Vermogenschakelaars (power circuit breakers) <sec:power-circuit-breakers>
 
 Dit zijn grotere circuit breakers die gebruikt worden in de industrie of in grote gebouwen. We spreken van stromen van 250A.
 
 Het werkt gelijkaardig aan een circuit breaker waarbij je een schakelijk hebt zoals bij een MCB.
 
 
-=== Karakteristieken van een power circuit breaker <sec:karakteristieken-van-een-power-circuit-breaker>
+=== Karakteristiek van een vermogenschakelaar <sec:karakteristieken-van-een-power-circuit-breaker>
 
 #wrap-figure(
   image("assets/Power-circuit breaker.png", width: 7cm),
@@ -397,20 +344,34 @@ Het werkt gelijkaardig aan een circuit breaker waarbij je een schakelijk hebt zo
 )
 
 
-=== Extra switches <sec:extra-switches>
+=== Schakelapparatuur <sec:extra-switches>
 
 #wrap-figure(
   image("assets/Schakelaars.png", width: 6cm),
-  caption: [Schakelaars],
+  caption: [De symbolen van de vijf schakeltoestellen. Het streepje bovenaan betekent zichtbare scheiding, het bolletje "breekt belastingsstroom", het kruisje "breekt kortsluitstroom".],
   label: <fig:Schakelaars>,
 )[
-  - *Schakelaar*
-  - *Scheider:*
-  - *Lastscheider*
-  - *Vermogenschakelaar*
-  - *Contactor*
+  Vijf toestellen die er in een schema op lijken, maar elk iets anders kunnen. Wat ze onderscheidt, is #belangrijk[welke stroom ze mogen onderbreken].
+
+  / Schakelaar: het algemene symbool. Schakelt de bedrijfsstroom, verder geen eisen.
+  / Scheider (isolator, disconnector): mag #strong[niet] onder belasting bediend worden. Zijn taak is een zichtbare, betrouwbare onderbreking maken zodat er veilig aan de installatie gewerkt kan worden. Het streepje bovenaan het symbool staat voor die zichtbare scheiding.
+  / Lastscheider (load-break switch): een scheider die je wél onder normale belasting mag openen. Een kortsluitstroom kan hij niet breken.
+  / Vermogenschakelaar (circuit breaker): breekt de bedrijfsstroom én de kortsluitstroom. Daarvoor heeft hij een vlamboogblusinrichting nodig, en dat is het kruisje in het symbool.
+  / Contactor: elektromagnetisch bediend, gemaakt om #strong[vaak] te schakelen. Hij beveiligt niet; daarvoor zet je er een zekering of automaat bij.
+
+  #examenbox[
+    "Wat doet een lastscheider, en vergelijk met een vermogenschakelaar" is als open vraag gesteld in juni 2023. Het antwoord zit in de laatste kolom: allebei schakelen ze onder belasting, maar alleen de vermogenschakelaar overleeft een kortsluiting.
+  ]
 ]
 
+
+
+=== Zekering tegenover automaat <sec:zekering-vs-automaat>
+
+- / Smeltzekering: een draadje dat doorsmelt. Goedkoop en betrouwbaar, want er kan niets mechanisch falen. Je moet ze wel vervangen na gebruik.
+- / Installatieautomaat: een schakelaar die vanzelf afslaat en die je opnieuw inschakelt. Ze werkt met twee mechanismen tegelijk: een bimetaal tegen langdurige lichte overbelasting, en een spoel die onmiddellijk reageert op een kortsluitpiek.
+
+#examenbox[Ken de uitschakelcurves. De B-curve is voor gewone huishoudkringen en slaat snel af bij pieken; de C- en D-curve laten grotere startstromen toe en dienen voor motoren of zware machines.]
 
 == Bescherming tegen schokken
 
@@ -446,14 +407,136 @@ $
 
 De spanning over de mens daalt van 100V naar ≈ 1V dankzij de aarding. Dit is nu een simpel voorbeeld maar aardig is niet altijd veilig. Soms is er nog genoeg spanning om een mensen te schaden.
 
-*Maar een aardig geeft ons meer tijd om te reageren:*
+Aarden alleen volstaat niet altijd: er kan nog genoeg spanning overblijven om iemand te verwonden. Wel wint de installatie er tijd mee om af te schakelen.
 
 
+=== De differentieelschakelaar (RCD) <sec:rcd>
 
+Een #keyterm[RCD] (Residual Current Device, differentieel- of verliesstroomschakelaar) meet doorlopend de stroom die *vertrekt* via de fase en de stroom die *terugkomt* via de nulgeleider. Zijn die twee niet gelijk, dan loopt er ergens stroom weg, bijvoorbeeld door een mens of naar de aarding, en schakelt hij af.
 
+- Voor vochtige ruimtes zoals een badkamer neem je een gevoelige RCD van $30 "mA"$, de grens waarboven een hartstilstand kan optreden.
+- Voor de algemene installatie volstaat $300 "mA"$.
 
+== Aardingsnetten <sec:aardingsnetten>
 
+Hoe je de bron en de behuizingen aardt, bepaalt welke beveiliging werkt.
 
-== Aarding systemen
+De code bestaat uit twee letters:
 
+/ Eerste letter, de bron: *T* (terra) betekent dat het sterpunt geaard is, *I* dat het geïsoleerd is of via een hoge impedantie aan de aarde hangt.
+/ Tweede letter, de verbruiker: *T* betekent dat de massa's een eigen lokale aarding hebben, *N* dat ze aan de nulgeleider van de bron hangen.
 
+Bij TN volgt er nog een letter voor de manier waarop PE en N lopen: *C* voor gecombineerd (PEN), *S* voor gescheiden.
+
+=== TT <sec:net-tt>
+
+#figure(
+  image("assets/DEE_net_TT.png", width: 13cm),
+  caption: [TT: de bron is geaard, en elke verbruiker heeft zijn eigen aardelektrode. Er loopt geen geleider tussen beide aardingen.],
+  label: <fig:net-tt>,
+)
+
+Bron en verbruiker zijn allebei geaard, maar los van elkaar. De foutstroom moet dus door de #belangrijk[grond] terug naar de bron, en die weg heeft een hoge weerstand.
+
+$ I_"fout" approx U_f / (R_"aarde,verbruiker" + R_"aarde,net") $
+
+met:
+- $I_"fout"$: foutstroom bij een isolatiefout naar de massa [A]
+- $U_f$: fasespanning [V]
+- $R_"aarde,verbruiker"$, $R_"aarde,net"$: aardverspreidingsweerstand aan beide kanten [$Omega$]
+
+De aanraakspanning die daaruit volgt, is $U_z = R_"aarde" dot I_"fout"$.
+
+#belangrijk[Die foutstroom is te klein om een zekering of automaat te doen aanspreken.] Daarom is in een TT-net een #keyterm[RCD] verplicht: die meet het verschil tussen heen- en teruggaande stroom en heeft geen grote foutstroom nodig. TT is het standaardnet voor woningen in België.
+
+=== TN-C <sec:net-tn-c>
+
+#figure(
+  image("assets/DEE_net_TN-C.png", width: 13cm),
+  caption: [TN-C: PE en N zijn samengevoegd tot één #strong[PEN]-geleider, die zowel de bedrijfsstroom van de nulleider voert als de beschermingsfunctie vervult.],
+  label: <fig:net-tn-c>,
+)
+
+De massa's hangen via de PEN-geleider aan het geaarde sterpunt van de bron. Een isolatiefout is daardoor een echte kortsluiting tussen fase en PEN, met een grote foutstroom als gevolg:
+
+$ I_"fout" = (c dot U_f) / (R_"fase" + R_"PE" + R_"fout") $
+
+met:
+- $c$: correctiefactor voor de spanningsval in het net bij kortsluiting, typisch $#"0,8"$ [-]
+- $R_"fase"$, $R_"PE"$: weerstand van de fase- en beschermingsgeleider [$Omega$]
+- $R_"fout"$: overgangsweerstand op de foutplaats [$Omega$]
+
+Die stroom is groot genoeg voor een gewone automaat of zekering, dus een RCD is hier niet nodig. De aanraakspanning volgt uit de spanningsdeler over de twee geleiders:
+
+$ U_z = R_"PE" / (R_"PE" + R_"fase") dot c dot U_f $
+
+#waarschuwing[
+  De weerstand van een geleider is $rho_"Cu" ell \/ S$, dus de foutstroom daalt naarmate de leiding langer wordt. Vanaf een bepaalde lengte spreekt de beveiliging niet meer op tijd aan. Met $S_"PE" = S_"fase"$ geeft dat een #keyterm[maximale kabellengte]:
+
+  $ ell_"max" = (c dot U_f dot S_"fase") / (2 rho_"Cu" I_"fout") $
+
+  #belangrijk[Deze formule staat op het formularium], zie @sec:formularium-examen.
+]
+
+=== TN-S <sec:net-tn-s>
+
+#figure(
+  image("assets/DEE_net_TN-S.png", width: 13cm),
+  caption: [TN-S: dezelfde aarding als TN-C, maar PE en N lopen als aparte geleiders over het hele net.],
+  label: <fig:net-tn-s>,
+)
+
+Elektrisch gedraagt TN-S zich als TN-C, met dezelfde foutstroom en dezelfde beveiliging. Het verschil is dat de PE geen bedrijfsstroom voert. Daardoor staat er geen spanningsval op de beschermingsgeleider, en kan je er wél een RCD in zetten: die kan het verschil tussen fase en N nu zinvol meten.
+
+=== TN-C-S <sec:net-tn-c-s>
+
+#figure(
+  image("assets/DEE_net_TN-C-S.png", width: 14cm),
+  caption: [TN-C-S: eerst één PEN-geleider, verderop gesplitst in PE en N. De twee kruisjes tonen wat niet mag: opnieuw samenvoegen achter het splitspunt.],
+  label: <fig:net-tn-c-s>,
+)
+
+In de praktijk combineer je de twee: over het aanvoergedeelte één PEN-geleider, en vanaf een bepaald punt gesplitst in PE en N.
+
+#belangrijk[Eenmaal gesplitst, mag je PE en N nooit meer samenvoegen.] Verbind je ze verderop weer, dan gaat er bedrijfsstroom over de beschermingsgeleider lopen en verliest die zijn functie.
+
+=== IT <sec:net-it>
+
+#figure(
+  image("assets/DEE_net_IT.png", width: 13cm),
+  caption: [IT: het sterpunt hangt niet rechtstreeks aan de aarde maar via een hoge impedantie $Z$. De massa's zijn wel lokaal geaard.],
+  label: <fig:net-it>,
+)
+
+Het sterpunt is geïsoleerd of hangt via een hoge impedantie $Z$ aan de aarde. Bij een #strong[eerste] isolatiefout is de kring dus niet gesloten: er loopt nauwelijks stroom en er is geen gevaar.
+
+Een #keyterm[isolatiewachter] meldt die fout, zodat je ze kan opzoeken en herstellen terwijl de installatie doordraait. #belangrijk[Die bedrijfscontinuïteit is de reden om voor IT te kiezen], en daarom vind je het in operatiekwartieren en continue processen.
+
+#waarschuwing[
+  Bij een #strong[tweede] fout op een andere fase valt dat voordeel weg: het net herleidt zich tot een TN- of TT-systeem, afhankelijk van hoe de massa's geaard zijn.
+]
+
+=== De drie vergeleken <sec:netstelsels-vergelijking>
+
+#table(
+  columns: (auto, 1fr, 1fr, 1fr),
+  align: (left, left, left, left),
+  stroke: none,
+  inset: 5pt,
+  table.hline(stroke: 1pt),
+  table.header([], [*TT*], [*TN*], [*IT*]),
+  table.hline(stroke: 0.5pt),
+  [Aarding], [massa's en net apart geaard], [massa's via de nulgeleider aan het net], [massa's geaard, net via impedantie],
+  [Foutstroom], [klein], [groot], [zeer klein],
+  [Waar], [woningnet], [industrieel net], [waar 100 % beschikbaarheid moet],
+  [Kostprijs], [$130 %$], [$100 %$], [$120 %$],
+  [Beveiliging indirect contact], [RCD], [overstroombeveiliging, eventueel RCD], [overstroombeveiliging, eventueel RCD],
+  [Blijft werken], [tot de 1e fout], [tot de 1e fout], [tot de 2e fout],
+  [Vakbekwaam personeel], [niet nodig], [bij het ontwerp], [permanente bewaking],
+  [Voorwaarde], [goede aarding nodig], [goede aarding nodig], [goed isolatieniveau nodig],
+  table.hline(stroke: 1pt),
+)
+
+#examenbox[
+  De tekenvraag is elk jaar dezelfde drie stappen: teken het net met bron, de vier of vijf geleiders, twee verbruikers en de aardingen; verklaar wat elke letter betekent; en zeg per gevaar welke beveiliging je gebruikt. Vergeet de tweede helft niet, want daar zitten de punten: #strong[overstroom] met zekering of automaat, #strong[schokken] met een RCD in TT, met de overstroombeveiliging in TN, en met een isolatiewachter in IT.
+]

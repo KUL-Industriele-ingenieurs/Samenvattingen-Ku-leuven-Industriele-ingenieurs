@@ -178,7 +178,7 @@ Die interne transiënten zijn kleiner in amplitude, maar ze komen veel vaker voo
 
 Elektrische apparatuur wordt zo gedimensioneerd dat ze een bepaalde hoeveelheid transiënten kan verdragen, volgens de norm *IEC 60204-1*. Daarnaast kan je #keyterm[surge protection devices] plaatsen. Die blokkeren de stroom of sluiten hem kort, zodat de spanning onder een veilige drempel blijft.
 
-== Uninterruptible Power Supplies <sec:ups>
+== UPS (Uninterruptible Power Supply) <sec:ups>
 
 #examenbox[*Verklaar UPS in één zin.* Een UPS (Uninterruptible Power Supply) is een noodstroomvoorziening die bij stroomuitval tijdelijk elektriciteit levert aan de aangesloten apparaten, zodat die correct kunnen blijven werken of veilig kunnen worden uitgeschakeld.]
 
@@ -201,8 +201,6 @@ De cursus deelt UPS'en in volgens drie assen:
 - *online of offline:* hangt de belasting altijd achter de omvormer, of pas na omschakeling?
 - *serie of parallel:* staat de UPS in de hoofdstroomweg of ernaast?
 - *statisch of dynamisch:* halfgeleiders, of een draaiende massa als energieopslag?
-
-#TODO("De detailtopologieën van de UPS (offline, line-interactive, online double conversion) met hun omschakeltijden en rendementen staan niet in de slides of de cursustekst, maar in Schneider Electric, Electrical Installation Guide 2018, §N2 (p. N11-N23). Zie de referentielijst van hoofdstuk 3 van de cursus. Aanvullen na het nalezen van die bron.")
 
 == Bronnen van dit hoofdstuk <sec:pq-bronnen>
 

@@ -3,10 +3,10 @@
 
 = De ideale transformator
 
-In dit hoofdstuk bestuderen we alle effecten van transformatoren. We nemen geen verliezen mee.
+Hier nemen we de transformator zonder verliezen: alle flux blijft in de kern, de wikkelingen hebben geen weerstand.
 
 #wrap-figure(
-  image("assets/idealtransform.png", width: 5cm),
+  image("assets/idealtransform.png", width: 7cm),
   caption: [idealtransform],
   label: <fig:idealtransform>,
 )[We leggen een *AC-spanning* aan op de primaire wikkeling. Hierdoor ontstaat er een *wisselende magnetische flux* in de kern. Deze wisselende magnetische flux induceert dan weer een *wisselende spanning* op de secundaire wikkeling.\ Dit is het principe van de *elektromagnetische inductie*.
@@ -29,7 +29,7 @@ Volgens de wet van Faraday ($v = N dif phi / dif t$) kunnen we de flux vinden do
 
 $ phi = V_1/(omega N_1) sin(omega t) = V_2/(omega N_2) sin(omega t) $
 
-#examenbox[Onthoud dit goed: De flux $phi$ loopt precies *90 graden achter* op de spanning $v$. Dit noemen we *lagging*.]
+#examenbox[De flux $phi$ loopt *90 graden achter* op de spanning $v$. Dat heet *lagging*.]
 
 #figure(
   cetz.canvas({
@@ -77,11 +77,11 @@ $ phi = V_1/(omega N_1) sin(omega t) = V_2/(omega N_2) sin(omega t) $
 
 == Loads
 
-=== No load
+=== No-load
 Er is geen belasting (open keten) aangesloten op de secundaire wikkeling. De enige "weerstand" die overblijft is de magnetische weerstand (reluctantie $R_c$) van de kern.
 
 #figure(
-  image("assets/no load.png", width: 6cm),
+  image("assets/no load.png", width: 8cm),
   caption: [no load],
   label: <fig:no-load>,
 )
@@ -92,42 +92,36 @@ $N_1 i_1 - N_2 i_2 = H l = phi dot R_c$
 
 maar we weten dat er geen load is op de secundaire winding, dus $i_2 = 0$.
 
-$ i_1 = phi dot R_c / N_1 $
-
-We hebben een ideale transformator, dus $R_c = 0 (mu -> infinity)$ dus $arrow.r.double$ $i_1 = 0$.
-
-=== Loaded
-
-
-#wrap-figure(
-  image("assets/loaded-transformer.png", width: 6cm),
-  caption: [loaded-transformer],
-  label: <fig:loaded-transformer>,
-)[
-  Omdat er een belasting is, kan er nu een secundaire stroom $i_2$ lopen.
-
-  Doordat de kern ideaal is ($R_c = 0$), zegt de wet van Hopkinson dat $N_1 i_1 - N_2 i_2 = 0$. Hieruit volgt direct de stroomverhouding:
-
-  $ i_2 = N_1/N_2 i_1 $
-
-  Terwijl de spanning meeschaalt met de windingen, schaalt de stroom dus omgekeerd evenredig:
-
-  $ v_2 = N_2/N_1 v_1 $
+#theorie(title: "De vier fundamentele aannames van de ideale transformator")[
+  + *Geen koperverliezen ($R_1 = R_2 = 0$)*: De wikkelingen bestaan uit ideale supergeleiders zonder ohms vermogensverlies.
+  + *Oneindige permeabiliteit ($mu -> infinity arrow.r.double cal(R)_c = 0$)*: Er is geen stroom nodig om de magnetische flux in de kern op te wekken ($I_m = 0$).
+  + *Geen lekflux ($k = 1$)*: Alle magnetische fluxlijnen blijven opgesloten binnen de kern en koppelen beide spoelen integraal ($L_(sigma 1) = L_(sigma 2) = 0$).
+  + *Geen ijzerverliezen ($P_(f e) = 0$)*: Nul wervelstroomverlies en nul hystereseverlies in de kern.
 ]
 
-#figure(
-  image("assets/loaded transformer.png", width: 5cm),
-  caption: [loaded transformer],
+=== Belaste transformator (Loaded transformer)
+
+#wrap-figure(
+  image("assets/loaded-transformer.png", width: 7cm),
+  caption: [Ideale transformator onder belasting met overbrengingsverhouding $a = N_1 / N_2$.],
   label: <fig:loaded-transformer>,
-)
+)[
+  Zodra een belasting $Z_L$ wordt aangesloten op de secundaire klemmen, vloeit er een secundaire stroom $i_2$.
 
-Om het effect van deze belastingen op de transformator beter te begrijpen, moeten we de theorie rond wisselstroom herhalen.
+  Omdat de ideale kern geen reluctantie bezit ($cal(R)_c = 0$), dicteert de wet van Hopkinson dat de totale magnetomotorische kracht nul moet blijven:
+  $ N_1 i_1 - N_2 i_2 = 0 arrow.r.double i_1 = frac(N_2, N_1) i_2 = 1/a i_2 $
 
-== Phasors (herhaling)
+  De transformator transformeert spanning evenredig met de windingen, en stroom omgekeerd evenredig:
+  $ a = frac(N_1, N_2) = frac(v_1, v_2) = frac(i_2, i_1) $
 
-Phasors helpen om wisselstromen en wisselspanningen eenvoudig voor te stellen en te berekenen. We nemen aan bij phasoren dat de frequentie $f$ gelijk blijft over verschillende stromen en voltages. Als dit zo is dan kunnen we het begin van de stroom of voltage weergeven als een vector in het reël $RR$ en imaginair deel $ZZ$. _Zie wisselstroom_ waar het ook veel is toegepast.
+  Het schijnbaar vermogen blijft behouden: $S_1 = v_1 i_1 = v_2 i_2 = S_2$.
+]
 
-$ e^(j theta) = underbrace(cos(theta), "Reëel") + j underbrace(sin(theta), "Imaginair") $
+== Fasorvoorstelling en impedantietransformatie
+
+Fasoren laten toe om sinusvormige wisselstromen en wisselspanningen met een constante hoekfrequentie $omega = 2 pi f$ algebraïsch voor te stellen in het complexe vlak $CC$:
+
+$ underline(X) = X e^(j theta) = underbrace(X cos(theta), "Reëel" (Re)) + j underbrace(X sin(theta), "Imaginair" (Im)) $
 
 
 #align(center)[
@@ -149,7 +143,7 @@ $ e^(j theta) = underbrace(cos(theta), "Reëel") + j underbrace(sin(theta), "Ima
   Als we dit plotten krijgen we dit:
 
   #figure(
-    image("assets/plot v phi.png", width: 5cm),
+    image("assets/plot v phi.png", width: 4cm),
     caption: [plot v phi],
     label: <fig:plot-v-phi>,
   )
@@ -191,43 +185,36 @@ $ I = V/Z $
   label: <fig:Phasor-RL>,
 )
 
-=== RC <sec:RC>
-Net hetzelfde als een RL circuit maar nu met een capacitor in plaats van een inductor.
-
-$ V = R I + underbrace(-j/(omega C), "imaginair") I $
-$ V = I (R - j/(omega C)) $
-$ Z = R - j/(omega C) $
-$ I = V/Z $
-
-=== RLC <sec:RLC>
-
-Combinatie van RL en RC circuit.
-
-$ v(t) = R i(t) + L (d i(t))/(d t) + 1/C integral i(t) d t $
-$ V = R I + underbrace(j omega L, "imaginair") I + underbrace(-j/(omega C), "imaginair") I $
-$ V = I (R + j omega L - j/(omega C)) $
-$ Z = R + j omega L - j/(omega C) $
-$ I = V/Z $
+Voor een condensator loopt dezelfde redenering, met $Z = R - j/(omega C)$.
 
 == Power <sec:power>
-Onze power heeft ook een imaginair deel $S$. Deze heeft dus ook een fasor.
+
+Het schijnbaar vermogen $S$ is complex, dus het heeft ook een fasor. Je berekent het met de #belangrijk[complex toegevoegde] van de stroom:
 
 #wrap-figure(
   image("assets/phasorPower.png", width: 5cm),
-  caption: [phasorPower],
+  caption: [Vermogendriehoek: $P$ reëel, $j Q$ imaginair, $S$ de schuine zijde onder hoek $phi$.],
   label: <fig:phasorPower>,
 )[
-  $ S = (V I) e^(j theta) $
-  $ S = underbrace(V I cos(theta), "P Reëel") + j underbrace(V I sin(theta), "jQ Imaginair") $
+  $ S = V dot I^* = V I e^(j (phi_V - phi_I)) = V I e^(j phi) $
+  $ S = underbrace(V I cos phi, P) + j underbrace(V I sin phi, Q) $
 
-  $ P = v(t) i(t) $
-  $ P = V I cos(theta) $
+  met:
+  - $S$: schijnbaar vermogen [VA]
+  - $P$: actief vermogen, het tijdsgemiddelde van het ogenblikkelijk vermogen [W]
+  - $Q$: reactief vermogen [var]
+  - $phi = phi_V - phi_I$: fasehoek tussen spanning en stroom [rad]
+  - $cos phi$: arbeidsfactor [-]
+]
 
-  $ Q = V I sin(theta) $
+#waarschuwing[
+  *Let op de toegevoegde.* $S = V I^*$, #strong[niet] $V I$. Vermenigvuldigen met de toegevoegde trekt de fasehoeken van elkaar af; hoeken optellen betekent niets. Staat de spanning of de stroom toevallig op fase nul, dan krijg je alleen het teken van $Q$ verkeerd. In alle andere gevallen komt je $cos phi$ er volledig naast te liggen.
+
+  Een naijlende stroom geeft een positieve $phi$ en dus een positieve $Q$.
 ]
 
 
-=== Toegepast op Ideal transformator <sec:ideal-transformator>
+=== Toegepast op de ideale transformator <sec:ideal-transformator>
 
 We weten dat een transformator de spanning verhoogt of verlaagt afhankelijk van de verhouding van het aantal windingen. Hoe heeft dit impact op het vermogen?
 
@@ -242,7 +229,7 @@ $ frac(I_1, I_2) = frac(N_2, N_1) $
 
 We zien dat als de spanning verlaagt dat de stroom verhoogt en omgekeerd en de lagging of gaining van de stroom blijft hetzelfde -> Het vermogen blijft dus hetzelfde.
 
-== Impedantie transformatie <sec:impedantie-transformatie>
+== Impedantietransformatie <sec:impedantie-transformatie>
 
 #figure(
   image("assets/Impedantie transformator.png", width: 8cm),
