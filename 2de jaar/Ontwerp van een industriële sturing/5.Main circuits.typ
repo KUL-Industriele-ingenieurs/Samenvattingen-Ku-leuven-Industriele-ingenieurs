@@ -140,12 +140,35 @@ De tabel scheidt *wie schakelt* (contactor, relais) van *wie beveiligt*, en bij 
   Bij het onderbreken van een draaiende motor ontstaat een vlamboog tussen de contacten door de inductieve tegen-EMK. Dit veroorzaakt inbranden van het contactmateriaal (zilverlegering). Contactoren hebben daarom een mechanische levensduur van miljoenen cycli, maar een elektrische levensduur (onder volle belasting) die aanzienlijk lager ligt.
 ]
 
+*AC-spoel en de spleetpool (shading ring):* Bij een AC-gevoede contactor daalt de flux tweemaal per periode naar nul ($100 "Hz"$ bij $50 "Hz"$). Zonder ingreep zakt de trekkracht onder de veerkracht en gaat het anker hevig klapperen. Een koperen kortsluitring, de #keyterm[spleetpool] (*shading ring*), verschuift een deel van de flux in tijd ($Delta phi$), zodat de resulterende aantrekkingskracht continu boven de veerkrachtlijn blijft (zie de detailgrafiek en afleiding in @fig:ac-contactor-spoelring op @sec:ac-contactoren).
+
+
+
 == Driefasige asynchrone motoren <sec:3-phase-motors>
 
-De driefasige asynchrone motor (inductiemotor) is het werkpaard van de industrie:
-- *Goedkoop en robuust*: Geen borstels of permanente magneten; alleen de lagers zijn aan mechanische slijtage onderhevig.
-- *Zelfstartend*: Het driefasige statorveld wekt een roterend draaiveld op ($n_s = 60 f / p$), waardoor de rotor vanzelf op toeren komt.
-- *Slip ($s$)*: De rotor draait altijd iets trager dan het draaiveld ($n < n_s$). Dit snelheidsverschil heet #keyterm[slip] ($s = (n_s - n)/n_s$) en is fysisch noodzakelijk om een inductiestroom en dus koppel in de rotor te genereren.
+De driefasige asynchrone motor (inductiemotor of kooiankermotor) is hét werkpaard van de moderne industrie:
+- *Waarom inductiemotoren?* Ze bevatten geen koolborstels of permanente magneten. Daardoor zijn ze goedkoop, uiterst robuust tegen trillingen en oververhitting, zelfstartend op het driefasenet en vergen ze minimaal onderhoud (enkel mechanische lagerslijtage).
+
+=== Fysisch werkingsprincipe: het magnetisch draaiveld <sec:motor-werking>
+
+#figure(
+  image("assets/OIS_motor_draaiveld_3fasen.png", width: 11cm),
+  caption: [Driefasig magnetisch draaiveld in de stator: de drie sinusstromen A, B en C wekken een resultante magnetische noord-zuid vector op die continu ronddraait in de ruimte.],
+  label: <fig:motor-draaiveld>,
+)
+
+1. *Opwekking van het draaiveld*: De driefasige statorwikkelingen worden gevoed door een symmetrisch driefasensysteem ($3 times 400 "V"$, $50 "Hz"$). Doordat de fasen in de ruimte $120^compose$ verschoven liggen en in de tijd $120^compose$ naijlen, wekt de stator een roterend magnetisch veld op (#keyterm[draaiveld]) dat ronddraait met het *synchrone toerental* $n_s$:
+   $ n_s = frac(120 dot f, p) = frac(60 dot f, p_"paren") quad ["rpm"] $
+   (waarbij $f$ de netfrequentie is en $p$ het aantal polen; bij $50 "Hz"$ en $4$ polen is $n_s = 1500 "rpm"$).
+2. *Inductie in de rotor*: De rotor bestaat uit kortgesloten koperen of aluminium staven (de "kooi"). Het ronddraaiende statorveld snijdt de stilstaande of trager draaiende rotorstaven, waardoor er volgens de inductiewet van Faraday een bronspanning $e$ in de rotor wordt opgewekt.
+3. *Koppelontwikkeling*: Doordat de rotorkooi kortgesloten is, vloeien er zeer grote rotorstromen. Volgens de wet van Lenz wekken deze stromen een magnetisch tegenveld op dat de verandering tegenwerkt: de rotor wordt elektromagnetisch meegetrokken in de richting van het draaiveld $==>$ er ontstaat een mechanisch as-koppel $T$.
+4. *De slip ($s$)*: De rotor kan nooit exact even snel draaien als het draaiveld ($n < n_s$). Zou $n = n_s$ zijn, dan snijden de veldlijnen de rotorstaven niet meer, valt de inductiespanning weg naar nul en verdwijnt elk koppel! Het relatieve snelheidsverschil heet de #keyterm[slip] $s$:
+   $ s = frac(n_s - n, n_s) $
+   - *Bij stilstand / start ($n = 0$)*: $s = 1$. De relatieve snelheid tussen veld en rotor is maximaal $==>$ maximale inductiespanning en zeer lage impedantie, waardoor de motor een enorme startstroom trekt ($6$ tot $10 I_n$!).
+   - *In nominaal bedrijf*: $s approx #"0,02" - #"0,05"$ ($2 %$ tot $5 %$). De motor draait bij $n_s = 1500 "rpm"$ typisch op $n approx 1450 "rpm"$.
+5. *Koppel-spanningsrelatie*: Het elektromagnetisch koppel $T$ schaalt *kwadratisch* met de effectieve klemspanning:
+   $ T prop U^2 $
+   Elke startmethode die de startstroom beperkt door de klemspanning te verlagen, verlaagt het koppel dus kwadratisch!
 
 === Motorefficiëntieklassen (IEC 60034-30-1) <sec:motor-efficiency>
 
@@ -154,40 +177,131 @@ De driefasige asynchrone motor (inductiemotor) is het werkpaard van de industrie
   caption: [IE-efficiëntieklassen voor industriële elektromotoren.],
   label: <fig:IE-klassen>,
 )[
-  Conform Europese ecodesign-richtlijnen worden motoren ingedeeld in vier rendementsklassen:
-  - *IE1 (Standard Efficiency)*: Verouderd, nieuw niet meer toegelaten.
-  - *IE2 (High Efficiency)*: Enkel nog toegestaan in combinatie met een frequentieregelaar (VFD).
-  - *IE3 (Premium Efficiency)*: De huidige standaardminimumeis in de EU voor netgevoede motoren ($0.75 "kW" - 1000 "kW"$).
-  - *IE4 (Super Premium Efficiency)*: Zeer hoog rendement, vaak gerealiseerd met synchrone reluctantiemotoren.
+  Omdat elektromotoren circa $45 %$ van het wereldwijde elektriciteitsverbruik vertegenwoordigen, legt de Europese Ecodesign-richtlijn strenge efficiëntieklassen op:
+  - *IE1 (Standard Efficiency)*: Verouderd, in de EU niet meer toegelaten voor nieuwe installaties.
+  - *IE2 (High Efficiency)*: Enkel nog toegestaan bij voeding via een frequentieregelaar (VFD).
+  - *IE3 (Premium Efficiency)*: De huidige standaardminimumeis in de EU voor netgevoede motoren ($#"0,75" - 1000 "kW"$).
+  - *IE4 (Super Premium Efficiency)*: Zeer hoog rendement (vaak synchrone reluctantiemotoren SynRM of permanentmagneetmotoren).
 ]
 
-=== Aansturing en omkeerschakeling (CW / CCW) <sec:cw-ccw>
+=== Aansturing in de vermogenskring: DOL vs. Omkeersturing (CW / CCW) <sec:cw-ccw>
 
-In een industrieel schema teken je altijd eerst het vermogencircuit en daarna pas de stuurkringen. Er zijn twee klassieke manieren om een asynchrone motor aan te sturen:
+In een industrieel elektrisch schema tekenen we altijd eerst de *vermogenskringen* (hoofdstroom) en pas daarna de *stuurkringen*. Voor het schakelen van de draairichting zijn er twee klassieke concepten:
 
 #figure(
   image("assets/OIS_motor_hoofdcircuits_clean.png", width: 11cm),
-  caption: [De twee hoofdcircuits: links via een frequentieregelaar (VFD `-T1`), rechts via twee contactoren (`-Q6` en `-Q7`) voor links/rechts omkeerschakeling.],
+  caption: [De twee hoofdcircuits uit de les: links traploze aansturing via VFD `-T1`, rechts omkeerschakeling met twee contactoren `-Q6` (CW) en `-Q7` (CCW).],
   label: <fig:motor-hoofdcircuits>,
 )
 
-+ *Met een frequentieregelaar (VFD `-T1`)*: Biedt traploze toerentalregeling, gecontroleerde aanloopstromen en koppelsturing. De kabel naar de motor moet afgeschermd zijn (EMC) en aan beide kanten geaard worden.
-+ *Met twee contactoren (`-Q6` en `-Q7`)*:
-  - Sluit je fasen L1, L2, L3 aan op U1, V1, W1, dan draait de motor in wijzerzin (*CW*, Clockwise via `-Q6`).
-  - Wissel je twee fasen om (bv. L1 op W1 en L3 op U1 via `-Q7`), dan draait het magnetisch veld om en draait de motor tegenwijzerzin (*CCW*).
+1. *Enkelvoudige draairichting (Direct-On-Line start-stop)*:
+   - Eén enkele driefasige contactor (`-Q1`) schakelt fasen L1, L2, L3 rechtstreeks door naar motorklemmen U1, V1, W1.
+   - De motor draait in één vaste richting (standaard wijzerzin / CW).
+
+2. *Omkeersturing (CW / CCW: Clockwise vs. Counter-Clockwise)*:
+   - Om de asrichting van een asynchrone motor om te keren, moet het magnetisch draaiveld in de omgekeerde richting roteren.
+   - *Fysische gouden regel*: #keyterm[Wissel twee willekeurige fasen om, en de draairichting keert om!]
+   - *Uitvoering in het vermogenscircuit*: Twee parallelle contactoren:
+     - Contactor `-Q6` (CW, wijzerzin): verbindt L1 met U1, L2 met V1, L3 met W1.
+     - Contactor `-Q7` (CCW, tegenwijzerzin): verbindt L1 met W1, L2 met V1, L3 met U1 (*L1 en L3 zijn onderling gewisseld!*).
 
 #waarschuwing[
-  *Gevaar voor fasedoorslag:* Trekken `-Q6` en `-Q7` gelijktijdig aan, dan ontstaat er een directe kortsluiting tussen fase L1 en L3!
-  Daarom is een dubbele vergrendeling (*cross-protect*) verplicht:
-  - *Elektrische vergrendeling*: In de stuurkring staat een N.C.-contact van `-Q6` in serie met de spoel van `-Q7`, en omgekeerd.
-  - *Mechanische vergrendeling*: Een mechanisch wippertje tussen beide contactoren verhindert fysiek dat beide tegelijk sluiten.
+  *Doodsluiting bij gelijktijdig inschakelen (Kortsluitgevaar!)* \
+  Als `-Q6` en `-Q7` gelijktijdig zouden sluiten, verbindt `-Q6` fase L1 met klem U1, terwijl `-Q7` op diezelfde klem U1 fase L3 legt. Dit veroorzaakt een snoeiharde *fase-fase kortsluiting ($400 "V"$)* tussen L1 en L3!
+  
+  Daarom is een *dubbele vergrendeling (interlocking)* wettelijk en technisch strikt verplicht:
+  - *Elektrische vergrendeling (stuurkring)*: In serie met de spoel van `-Q6` staat een N.C.-hulpcontact van `-Q7`. In serie met de spoel van `-Q7` staat een N.C.-hulpcontact van `-Q6`. Zodra de ene contactor bekrachtigd is, is de stuurkring van de andere fysiek onderbroken.
+  - *Mechanische vergrendeling (vermogenskring)*: Een mechanisch wippertje tussen beide contactorbehuizingen blokkeert fysiek de beweging van het anker. Zelfs als iemand de contactor handmatig met een schroevendraaier forceert, kan het andere contactenblok nooit sluiten!
 ]
 
 #figure(
-  image("assets/OIS_omkeerschakeling_slide.png", width: 15cm),
-  caption: [Volledig schema van de omkeerschakeling: links de stuurkring met startknoppen en kruislingse N.C.-beveiliging; rechts de vermogenskring met verwisselde fasen over `-Q7`.],
+  image("assets/OIS_omkeerschakeling_slide.png", width: 14.5cm),
+  caption: [Volledig schema van de omkeerschakeling: links de stuurkring met startknoppen en kruislingse N.C.-vergrendeling; rechts het vermogenscircuit met gewisselde fasen over `-Q7`.],
   label: <fig:omkeerschakeling>,
 )
+
+=== Startmethodes voor kooiankermotoren <sec:motor-starten>
+
+Omdat bij stilstand $s = 1$, trekt een kooiankermotor bij directe inschakeling een inschakelstroom van $6$ tot $10$ keer zijn nominale stroom ($I_"start" approx 6 - 10 I_n$). Dit veroorzaakt spanningsdippen op het fabrieksnet en zware mechanische schokken ($T prop U^2$) op tandwielen, riemen en koppelingen.
+
+Er bestaan vier gestandaardiseerde startmethodes in de industrie:
+
++ *1. DOL (Direct-On-Line)*:
+  De eenvoudigste methode: 1 contactor schakelt de motor rechtstreeks op volle netspanning.
+  - *Voordeel*: Goedkoop, eenvoudig, vol aanloopkoppel ($100 %$).
+  - *Nadeel*: Zeer hoge startstroom ($6 - 8 I_n$) en brute mechanische schok. Alleen toegelaten bij kleinere motoren of sterke voedingsnetten.
+
++ *2. Ster-driehoekstarter (Star-Delta $Y$-$Delta$)*:
+  De motor start in *ster* ($Y$) en schakelt na enkele seconden via een timer om naar *driehoek* ($Delta$).
+  - In ster staat over elke wikkeling de fasespanning $U_"fase" = U_"net" / sqrt(3)$ in plaats van $U_"net"$.
+  - Daardoor dalen de startstroom én het startkoppel naar exact één derde ($33 %$):
+    $ I_"ster" = 1/3 I_"driehoek", quad T_"ster" = 1/3 T_"driehoek" $
+  - *Opbouw*: Vereist $3$ contactoren (hoofdcontactor, stercontactor, driehoekcontactor), een tijdrelais en een motor waarvan beide kanten van elke wikkeling naar de klemmenkast zijn uitgevoerd ($6$ aansluitklemmen: U1-V1-W1 en U2-V2-W2).
+  - *Beperking*: Omdat ook het startkoppel met $67 %$ instort, kan deze methode enkel gebruikt worden voor belastingen die bij lage snelheid weinig tegenkoppel vragen (ventilatoren, centrifugaalpompen).
+
++ *3. Softstarter*:
+  Bevat antiparallelle thyristors in elke fase die de sinusoïdale spanning aansnijden (faseaansnijding / phase-angle control). De klemspanning loopt over enkele seconden geleidelijk op van bv. $30 %$ naar $100 %$.
+  - *Voordeel*: Traploze aanloop zonder mechanische schokken (geen waterslag in pompleidingen, geen slippende transportbanden).
+  - *Let op*: De netfrequentie blijft vast op $50 "Hz"$. Omdat $T prop U^2$, daalt het startkoppel ook hier aanzienlijk bij lage spanning.
+
++ *4. Frequentieregelaar (VFD - Variable Frequency Drive)*:
+  De meest geavanceerde oplossing: de drive stuurt de motor met een *variabele frequentie én variabele spanning* ($V/f = "constant"$).
+  - *Cruciaal examenvoordeel*: #belangrijk[Alleen de VFD levert vol nominaal koppel bij een lage startstroom ($I_"start" approx #"0,5" - #"1,5" I_n$)!] Doordat de frequentie mee schaalt, blijft de slip klein en blijft de flux in de kern optimaal.
+  - Maakt traploze snelheidsregeling, zacht stoppen, dynamisch remmen en softwarematige draairichtingomkering (CW/CCW zonder omkeercontactoren) mogelijk.
+
+#table(
+  columns: (auto, auto, auto, 1fr),
+  inset: 7pt,
+  align: horizon,
+  stroke: none,
+  fill: (x, y) => if y == 0 { gray.lighten(50%) },
+  [*Methode*], [*Startstroom*], [*Startkoppel*], [*Typische toepassing*],
+  [DOL], [$6$--$8 I_n$], [Vol ($100 %$)], [Kleine motoren ($< 5 "kW"$), lichte transportbanden],
+  [Ster-driehoek], [$1\/3$ ($approx 2 - 3 I_n$)], [$1\/3$ ($33 %$)], [Pompen en ventilatoren die onbelast starten],
+  [Softstarter], [Instelbaar ($2 - 4 I_n$)], [Verlaagd ($T prop U^2$)], [Pompstations (tegengaan waterslag), compressoren],
+  [VFD], [Zeer laag ($#"0,5" - #"1,5" I_n$)], [Vol ($100 %$, ook bij 2 Hz)], [Kranen, liften, extruders, procesregelingen],
+)
+
+=== De interne architectuur van een VFD <sec:vfd-architectuur>
+
+#figure(
+  image("assets/VFD-schema.png", width: 100%),
+  caption: [Interne architectuur van een VFD: gelijkrichter, DC-tussenkring en IGBT-inverterbrug.],
+  label: <fig:VFD-schema>,
+)
+
+#waarschuwing[
+  *Dit schema moet gekend zijn voor het examen!* Het toont exact hoe wisselspanning met vaste frequentie wordt omgezet naar een vrij instelbare frequentie en spanning.
+]
+
+De vermogensconversie verloopt strikt in drie opeenvolgende trappen van links naar rechts:
+1. *AC input (L1, L2, L3)*: Het driefasige net met vaste spanning ($400 "V"$) en vaste frequentie ($50 "Hz"$).
+2. *Gelijkrichter (Rectifier)*: Een zespuls diodegelijkrichter zet de 3-fasige wisselspanning om in een pulserende gelijkspanning (volgt de omhullende van de sinussen).
+3. *DC-bus en smoorspoel (DC choke + DC bus)*: De smoorspoel (choke) dempt harmonische stroompieken; de zware condensatorbatterij vlakt de rimpelspanning af tot een stabiele, constante DC-tussenkringspanning ($U_"DC" approx sqrt(2) dot U_"lijn" approx 565 "V"$).
+4. *Inverter (Wisselrichter)*: Zes snelle halfgeleiderschakelaars (IGBT's: Insulated-Gate Bipolar Transistors), twee per fase. Door de IGBT's met hoge frequentie ($2 - 16 "kHz"$) aan en uit te schakelen via #keyterm[PWM] (Pulse-Width Modulation), ontstaan blokvormige spanningspulsen met variabele breedte.
+5. *Driefasige uitgang naar de motor*: Omdat de motorwikkelingen sterk inductief zijn, filtert de inductie van de motor de blokvormige spanningspulsen zelf uit tot een nagenoeg zuivere sinusvormige wisselstroom ("resulting sine wave").
+
+=== EMI en de afscherming van de motorkabel <sec:vfd-emi>
+
+Door het ultrasnelle schakelen van de IGBT's hebben de spanningspulsen extreem steile flanken (zeer korte stijgtijd $t_r$). Volgens de vuistregel voor spectrale inhoud:
+$ f approx frac(#"0,35", t_r) $
+bevatten deze flanken zeer hoge stoorfrequenties (tot tientallen megahertz). Bij deze frequenties werkt een gewone motorkabel als een zendantenne die elektromagnetische interferentie (EMI) uitstraalt naar naburige signaal- en datakabels.
+
+*Verplichte installatievoorschriften voor VFD-motorkabels:*
+1. *Afgeschermde kabel*: Gebruik altijd een symmetrische motorkabel met een gevlochten koperen afscherming (Faraday-kooi rond de vermogensaders).
+2. *Ononderbroken scherm*: De kabel mag tussen drive en motor niet onderbroken worden door klemmenstroken; onderbrekingen doorbreken de afscherming.
+3. *Aan beide uiteinden aarden*: #belangrijk[In tegenstelling tot analoge signaalkabels moet de afscherming van een VFD-motorkabel aan BEIDE kanten geaard worden!] Zowel in de stuurkast aan de aarderail als aan de motorklemmenkast via een EMC-wartel met $360^compose$-contact. Dit zorgt voor een impedantie-arm retourpad voor hoogfrequente zwerfstromen.
+
+#figure(
+  image("assets/OIS_vfd_kabel_afscherming_pigtail.png", width: 13cm),
+  caption: [Aarding van de VFD-motorkabel: klembeugel of EMC-wartel met $360^compose$-contact (Goed) tegenover een getwist varkensstaartje / pigtail (Slecht: veroorzaakt hoge HF-impedantie en zware EMI-storing!).],
+  label: <fig:vfd-pigtail>,
+)
+
+4. *Geen MPCB tussen VFD en motor*:
+   #waarschuwing[
+     Plaats *nooit* een thermische motorbeveiligingsschakelaar (MPCB/MBS) tussen de uitgang van een VFD en de motor! De VFD bewaakt zelf digitaal de motorstroom en motortemperatuur. Een mechanische MPCB zou door de PWM-schakelfrequenties vals trippen of de IGBT's vernielen door uitschakeling onder last. Vóór de VFD volstaat een gewone automaat (`-F5`).
+   ]
 
 === Selectie van motorbeveiliging
 
