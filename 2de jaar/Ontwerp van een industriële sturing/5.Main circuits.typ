@@ -79,53 +79,6 @@ Voor overstroombeveiliging zijn er drie families, met de codeletter `-F` volgens
   label: <fig:fuse-mcb-mccb>,
 )
 
-== Driefasige asynchrone motoren <sec:3-phase-motors>
-
-=== Waarom Driefase Asynchrone Motoren
-
-De driefase asynchrone motor is de meest gebruikte motor in industriële toepassingen. De voornaamste redenen zijn:
-
-- / Goedkoop: geen permanente magneten nodig.
-- / Weinig onderhoud: alleen de lagers slijten.
-- / Betrouwbaar: gebouwd voor zware industriële omgevingen.
-- / Zelfstartend: draait zodra er spanning op staat.
-- / Beschikbaarheid: standaardproduct in alle vermogensklassen.
-
-=== Draairichting en toerental
-
-*Draairichting.* Wissel twee van de drie fasen om en de motor draait de andere kant op. Vandaar twee contactoren: één voor CW, één voor CCW.
-
-*Toerental.* Daarvoor heb je een VFD (Variable Frequency Drive) nodig. Die doet ook de draairichting, het koppel, en de beveiliging en diagnose.
-
-=== Motorbeveiliging
-
-Een motor trekt bij het starten een veelvoud van zijn nominale stroom, waarop een gewone automaat zou afschakelen. Je hebt dus een beveiliging nodig die de #strong[warmteopbouw] volgt in plaats van de momentane stroom: de MPCB of de OLR, zie @sec:motorbescherming-detail.
-
-Stuurt een VFD de motor, dan neemt de drive die taak over en heb je geen aparte motorbeveiliging nodig.
-
-=== Het starten van een motor
-
-De startmethodes (DOL, ster-driehoek, softstarter, VFD) en het schema van een VFD staan bij @sec:motor-starten in het hoofdstuk Veiligheid.
-
-=== Drives, EMI en de aardverbinding
-
-Zie @sec:vfd-emi in het hoofdstuk Veiligheid: waarom een VFD elektromagnetische storing (EMI) maakt, de rol van de afgeschermde motorkabel en de aarding op één punt.
-
-=== Motorefficiëntieklassen (IEC 60034-30-1) <sec:motor-efficiency>
-
-#wrap-figure(
-  image("assets/IE-klassen.png", width: 8cm),
-  caption: [IE-efficiëntieklassen voor industriële motoren],
-  label: <fig:IE-klassen>,
-)[
-  Volgens de Europese richtlijn en de internationale norm IEC 60034-30-1 worden asynchrone laagspanningsmotoren ingedeeld in vier efficiëntieklassen:
-
-  - *IE1 (Standard Efficiency)*: Oudere basisstandaard, nauwelijks nog toegestaan.
-  - *IE2 (High Efficiency)*: Enkel nog toegelaten in combinatie met een VFD.
-  - *IE3 (Premium Efficiency)*: De huidige standaardminimumeis in de EU ($0.75 "kW" - 1000 "kW"$).
-  - *IE4 (Super Premium Efficiency)*: Zeer hoog rendement (bv. synchrone reluctantie- of geavanceerde inductiemotoren).
-]
-
 == Overzicht van schakel- en beveiligingscomponenten <sec:overzicht-schakelcomponenten>
 
 Overzicht van de voornaamste componenten in hoofd- en stuurkringen:
@@ -138,17 +91,17 @@ Overzicht van de voornaamste componenten in hoofd- en stuurkringen:
   [RCD],
   [Differentieelschakelaar (Residual Current Device)],
   [Beschermt personen tegen lekstromen naar aarde (elektrocutiebeveiliging).],
-  [Voorkomt levensgevaar bij isolatiefouten of aanraking van defecte toestellen.],
+  [Voorkomt levensgevaar bij isolatiefouten of directe/indirecte aanraking ($30 "mA"$).],
 
-  [MBS / MPCB],
+  [MPCB / MBS],
   [Motorbeveiligingsschakelaar (Motor Protection Circuit Breaker)],
   [Beveiligt motoren tegen overbelasting, kortsluiting en fase-uitval.],
-  [Beschermt de motorwikkelingen tegen thermische oververhitting en schakelt kortsluitingen af.],
+  [Volgt de thermische opwarming van de motorwikkelingen en schakelt kortsluitingen af.],
 
   [Contactor],
   [Elektromechanische vermogensschakelaar],
-  [Schakelt de hoofdstroom naar de motor via een laagspanningsstuursignaal.],
-  [Laat toe om grote stromen veilig en vanop afstand (bv. via PLC) te schakelen.],
+  [Schakelt de hoofdstroom naar de motor via een $24 "VDC"$ stuursignaal.],
+  [Laat toe om grote stromen veilig, betrouwbaar en vanop afstand via de PLC te schakelen.],
 
   [Relais],
   [Hulpschakelaar / stuurrelais],
@@ -161,67 +114,87 @@ Overzicht van de voornaamste componenten in hoofd- en stuurkringen:
   [Beschermt leidingen en heeft een zeer hoog breekvermogen (AIC).],
 )
 
-De tabel scheidt *wie schakelt* (contactor, relais) van *wie beveiligt*, en bij die laatste ook *wat*: de RCD de mens, de MBS de motor, de smeltzekering de bekabeling.
+De tabel scheidt *wie schakelt* (contactor, relais) van *wie beveiligt*, en bij die laatste ook *wat*: de RCD de mens, de MPCB de motor, de smeltzekering de bekabeling.
 
-== De contactor in een motorkring
-
-#wrap-figure(
-  image("assets/contactor Nieuw vs oud.png", width: 6.5cm),
-  caption: [Links een nieuwe contactor en rechts een versleten contactor door vonken en slijtage.],
-  label: <fig:contactor-Nieuw-vs-oud>,
-)[
-  De volledige uitleg over contactoren staat bij de besturingslogica: polen en throws, hoofd- en hulpcontacten, de losse spanningswaarden van spoel en contacten, en het gedrag op AC vind je in @sec:contactoren. Hier kijken we naar wat er specifiek bij een *motorkring* komt kijken.
-]
-
-=== Werking van een vermogenscontactor
+=== De vermogenscontactor in een motorkring
 
 #wrap-figure(
   image("assets/Contactor-werking.png", width: 7.5cm),
-  caption: [Werking van een contactor: bekrachtigde spoel trekt het anker aan],
+  caption: [Werking van een contactor: bekrachtigde spoel trekt het anker aan tegen de veerkracht in.],
   label: <fig:Contactor-werking>,
 )[
-  De krachtketen van stroom naar aantrekkende armatuur is afgeleid in @sec:krachtketen. Kort samengevat voor een vermogenscontactor:
-  - *Inschakelen*: Wanneer stuurspanning op de spoelaansluitingen (A1/A2) wordt gezet, wekt de stroom een magnetisch veld op in de gelamineerde weekijzeren kern. Zodra $F_"mag" > F_"veer"$, trekt het anker aan en sluiten de hoofdcontacten (1-2, 3-4, 5-6).
-  - *Uitschakelen (Monostabiel)*: Valt de stuurspanning weg, dan duwt de terugstelveer het anker direct terug.
+  Een vermogenscontactor schakelt de driefasige hoofdstroom naar de motor:
+  - *Inschakelen*: Wanneer $24 "V"$ op de spoelaansluitingen (A1/A2) wordt gezet, wekt de stroom een magnetisch veld op in de gelamineerde weekijzeren kern. Zodra $F_"mag" > F_"veer"$, trekt het anker aan en sluiten de drie hoofdcontacten (1-2, 3-4, 5-6).
+  - *Uitschakelen (Monostabiel)*: Zodra de stuurspanning wegvalt, duwt de terugstelveer het anker direct terug in ruststand.
 ]
 
 #examenbox[
-  *Monostabiel = fail-safe:* Bij een stroomonderbreking valt de contactor direct af. De motor kan nooit spontaan herstarten zonder nieuw startcommando.
+  *Monostabiel = fail-safe:* Bij stroomonderbreking of noodstop valt de contactor direct af. De motor kan nooit spontaan herstarten zonder een nieuw startcommando.
 ]
 
+#wrap-figure(
+  image("assets/contactor Nieuw vs oud.png", width: 6.5cm),
+  caption: [Links een nieuw contact, rechts een versleten contact door vonkvorming bij inductieve uitschakeling.],
+  label: <fig:contactor-Nieuw-vs-oud>,
+)[
+  Bij het onderbreken van een draaiende motor ontstaat een vlamboog tussen de contacten door de inductieve tegen-EMK. Dit veroorzaakt inbranden van het contactmateriaal (zilverlegering). Contactoren hebben daarom een mechanische levensduur van miljoenen cycli, maar een elektrische levensduur (onder volle belasting) die aanzienlijk lager ligt.
+]
 
-Wervelstromen in de kern (opgelost met laminatie) en het brommen van een AC-contactor (opgelost met een kortsluitring) staan bij @sec:ac-contactoren.
+== Driefasige asynchrone motoren <sec:3-phase-motors>
 
-== Asynchrone Driefasige motoren <sec:driefasige-motoren>
+De driefasige asynchrone motor (inductiemotor) is het werkpaard van de industrie:
+- *Goedkoop en robuust*: Geen borstels of permanente magneten; alleen de lagers zijn aan mechanische slijtage onderhevig.
+- *Zelfstartend*: Het driefasige statorveld wekt een roterend draaiveld op ($n_s = 60 f / p$), waardoor de rotor vanzelf op toeren komt.
+- *Slip ($s$)*: De rotor draait altijd iets trager dan het draaiveld ($n < n_s$). Dit snelheidsverschil heet #keyterm[slip] ($s = (n_s - n)/n_s$) en is fysisch noodzakelijk om een inductiestroom en dus koppel in de rotor te genereren.
 
-Een asynchrone motor draait trager dan het magnetisch veld. Dat snelheidsverschil heet #keyterm[slip] en is nodig om rotorstroom en dus koppel op te wekken. In tegenstelling tot een synchrone motor draait de rotor dus niet exact met het veld mee. Asynchrone motoren zijn goedkoper en robuuster; synchrone motoren zijn geschikt voor precieze bewegingen.
+=== Motorefficiëntieklassen (IEC 60034-30-1) <sec:motor-efficiency>
 
-#belangrijk[In een elektrisch schema teken je altijd eerst de vermogenkringen, en pas daarna de stuurkringen.]
+#wrap-figure(
+  image("assets/IE-klassen.png", width: 7.5cm),
+  caption: [IE-efficiëntieklassen voor industriële elektromotoren.],
+  label: <fig:IE-klassen>,
+)[
+  Conform Europese ecodesign-richtlijnen worden motoren ingedeeld in vier rendementsklassen:
+  - *IE1 (Standard Efficiency)*: Verouderd, nieuw niet meer toegelaten.
+  - *IE2 (High Efficiency)*: Enkel nog toegestaan in combinatie met een frequentieregelaar (VFD).
+  - *IE3 (Premium Efficiency)*: De huidige standaardminimumeis in de EU voor netgevoede motoren ($0.75 "kW" - 1000 "kW"$).
+  - *IE4 (Super Premium Efficiency)*: Zeer hoog rendement, vaak gerealiseerd met synchrone reluctantiemotoren.
+]
 
-Er zijn twee manieren om een asynchrone motor aan te sturen:
+=== Aansturing en omkeerschakeling (CW / CCW) <sec:cw-ccw>
 
-- *Met een VFD* (`-T1`), beveiligd door een MCB (`-F5`). De afscherming van de motorkabel sluit je #strong[aan beide uiteinden] aan op de beschermingsaarde.
-- *Met twee contactoren* (`-Q6` en `-Q7`) voor rechtsom en linksom. Die motor beveilig je met een MPCB (`-Q5`). De motorkabel wordt onderbroken door klemmenstrook `-X3`.
-
-De stuurkringen voor de VFD en voor de contactoren teken je #strong[niet] in het vermogendeel van het schema.
+In een industrieel schema teken je altijd eerst het vermogencircuit en daarna pas de stuurkringen. Er zijn twee klassieke manieren om een asynchrone motor aan te sturen:
 
 #figure(
   image("assets/OIS_motor_hoofdcircuits_clean.png", width: 11cm),
-  caption: [De twee hoofdcircuits voor een asynchrone motor: links via een VFD, rechts via twee contactoren voor CW en CCW.],
+  caption: [De twee hoofdcircuits: links via een frequentieregelaar (VFD `-T1`), rechts via twee contactoren (`-Q6` en `-Q7`) voor links/rechts omkeerschakeling.],
   label: <fig:motor-hoofdcircuits>,
 )
 
-=== Draairichting omkeren <sec:cw-ccw>
++ *Met een frequentieregelaar (VFD `-T1`)*: Biedt traploze toerentalregeling, gecontroleerde aanloopstromen en koppelsturing. De kabel naar de motor moet afgeschermd zijn (EMC) en aan beide kanten geaard worden.
++ *Met twee contactoren (`-Q6` en `-Q7`)*:
+  - Sluit je fasen L1, L2, L3 aan op U1, V1, W1, dan draait de motor in wijzerzin (*CW*, Clockwise via `-Q6`).
+  - Wissel je twee fasen om (bv. L1 op W1 en L3 op U1 via `-Q7`), dan draait het magnetisch veld om en draait de motor tegenwijzerzin (*CCW*).
 
-CW staat voor clockwise, CCW voor counter-clockwise. #belangrijk[De motor draait CW als je de fasen in de volgorde L1, L2, L3 aansluit op respectievelijk U1, V1, W1.] Wissel je twee fasen om, dan draait hij de andere kant op.
-
-Dat is wat de tweede contactor doet: hij sluit dezelfde motor aan met twee verwisselde fasen. Beide contactoren mogen daarom #strong[nooit] tegelijk aantrekken, want dan sluit je twee fasen rechtstreeks kort. Zie de cross-protect uit @sec:cross-protect: één actieve contactor blokkeert de andere, zowel in de bedrading als in de software.
+#waarschuwing[
+  *Gevaar voor fasedoorslag:* Trekken `-Q6` en `-Q7` gelijktijdig aan, dan ontstaat er een directe kortsluiting tussen fase L1 en L3!
+  Daarom is een dubbele vergrendeling (*cross-protect*) verplicht:
+  - *Elektrische vergrendeling*: In de stuurkring staat een N.C.-contact van `-Q6` in serie met de spoel van `-Q7`, en omgekeerd.
+  - *Mechanische vergrendeling*: Een mechanisch wippertje tussen beide contactoren verhindert fysiek dat beide tegelijk sluiten.
+]
 
 #figure(
-  image("assets/OIS_omkeerschakeling_slide.png", width: 16cm),
-  caption: [Omkeerschakeling. Links de stuurkring: `-S3` start rechtsom via `-Q6`, `-S5` start linksom via `-Q7`, en elke tak heeft een N.C.-contact van de #strong[andere] contactor in serie. Rechts de hoofdkring, waar `-Q7` twee fasen verwisselt aansluit op `-M5`.],
+  image("assets/OIS_omkeerschakeling_slide.png", width: 15cm),
+  caption: [Volledig schema van de omkeerschakeling: links de stuurkring met startknoppen en kruislingse N.C.-beveiliging; rechts de vermogenskring met verwisselde fasen over `-Q7`.],
   label: <fig:omkeerschakeling>,
 )
+
+=== Selectie van motorbeveiliging
+
+Een motor trekt bij directe netinschakeling (DOL) een inschakelstroom van $6$ tot $8$ keer de nominale stroom ($I_"start" approx 6-8 I_n$). Een gewone distributie-automaat zou hierop direct magnetisch uitschakelen. Daarom gebruikt men aangepaste beveiligingen:
+- *MPCB / MBS (`-Q`)*: Combineert een instelbaar thermisch element (bimetaal met motor-afkoelkarakteristiek) met een hoge magnetische drempel ($approx 12-14 I_n$) én fase-uitvalbeveiliging.
+- *Thermisch overbelastingsrelais (OLR `-F`)*: Bevat enkel het thermische bimetaalelement. Het kan zelf geen vermogen onderbreken; bij overbelasting opent het een hulpcontact (95-96) dat de stuurstroom naar de contactorspoel verbreekt.
+- *Bij een VFD*: De frequentieregelaar meet continu stroom en berekent het thermische motormodel digitaal; een aparte externe thermische beveiliging is dan niet nodig.
 
 == Contactor versus SSR
 

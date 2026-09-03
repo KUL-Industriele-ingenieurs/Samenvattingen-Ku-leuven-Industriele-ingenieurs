@@ -135,7 +135,7 @@ Dit hebben we al gezien in wisselstromen en wordt ook nog herhaald in netten. Ma
 Je hebt nog veel andere soorten constructie types zoals #keyterm[Shell-type] en #keyterm[5-leg-core-type].
 
 #figure(
-  image("assets/andere transformator constructie types.png", width: 8cm),
+  image("assets/andere transformator constructie types.png", width: 15cm),
   caption: [andere transformator constructie types],
   label: <fig:andere-transformator-constructie-types>,
 )
@@ -319,12 +319,12 @@ Primair en secundair kunnen elk in ster of in driehoek staan, dus er zijn vier c
     columns: 2,
     gutter: 0.8cm,
     figure(
-      image("assets/DEE_dy_variant.png", width: 7.5cm),
+      image("assets/DEE_dy_variant.png", width: 11cm),
       caption: [Een andere manier om de driehoek te sluiten geeft een ánder kloknummer.],
       label: <fig:dy-variant>,
     ),
     figure(
-      image("assets/DEE_yd_voorbeeld.png", width: 7.5cm),
+      image("assets/DEE_yd_voorbeeld.png", width: 11cm),
       caption: [Ster-driehoek: de secundaire lijnspanning is meteen de wikkelingsspanning.],
       label: <fig:yd-voorbeeld>,
     ),

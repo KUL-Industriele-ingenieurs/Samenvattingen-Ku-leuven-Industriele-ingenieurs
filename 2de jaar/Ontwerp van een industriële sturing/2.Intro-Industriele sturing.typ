@@ -8,25 +8,23 @@
 
 Een land haalt zijn welvaart uit *export*: produceren en verkopen buiten de landsgrenzen. Wat je zelf niet maakt, moet je importeren. Maar slechts een deel van de beroepsbevolking draagt daar rechtstreeks aan bij; zorg, onderwijs en overheid houden het systeem draaiend zonder zelf te exporteren.
 
-Een land haalt zijn welvaart uit *export*. Loonkosten liggen in West-Europa hoog, dus is *automatisering* de enige manier om lokaal te blijven produceren tegen een concurrerende prijs.
+Omdat de loonkosten in West-Europa hoog liggen, is *automatisering* de enige manier om lokaal te blijven produceren tegen een concurrerende prijs.
 
-#wrap-figure(
-  image("assets/Geld binnen en buiten.png", width: 10cm),
-  caption: [De pijlhoogte is de waarde van het product: grondstoffen komen laag binnen en gaan hoog buiten. Dat verschil is het enige dat geld binnenbrengt.],
+#figure(
+  image("assets/Geld binnen en buiten.png", width: 9.5cm),
+  caption: [De pijlhoogte is de waarde van het product: grondstoffen komen laag binnen en gaan hoog buiten. Dat verschil financiert de economie.],
   label: <fig:geldbinnenenbuiten>,
-)[
-  Je haalt grondstoffen binnen en verhoogt hun waarde door productie. *Productie* is dus het enige dat geld binnenbrengt, en daarom kan je ze niet stilleggen.
+)
 
-  Een industrieel ingenieur *standaardiseert* die lijn: documentatie, standaardcomponenten, vaste werkwijzen. Wie het systeem twintig jaar later beheert, moet er nog aan uit kunnen.
+Je haalt grondstoffen binnen en verhoogt hun waarde door productie. *Productie* is het enige proces dat reële economische meerwaarde creëert, en stilstand kost direct geld.
 
+Een industrieel ingenieur *standaardiseert* die productielijn: documentatie, standaardcomponenten en vaste werkwijzen zorgen ervoor dat het systeem ook twintig jaar later betrouwbaar beheerd kan worden.
 
-#concept(title: "IT en OT")[
-  OT = Operational Technology
-  IT = Information Technology
-
-  In de OT mag niets stilvallen en rekenen we op een levensduur van 20 tot 30 jaar. In de IT mag een website al eens platliggen.
+#concept(title: "IT vs OT: Het operationele verschil")[
+  - *OT (Operational Technology)*: Bestuurt fysieke machines en processen in real-time. Downtime kost tienduizenden euro's per uur en veiligheid is primair. Levensduur bedraagt 20 tot 30 jaar.
+  - *IT (Information Technology)*: Verwerkt data, transacties en kantoorsoftware. Een herstart of korte onderbreking is toelaatbaar. Levensduur typisch 3 tot 5 jaar.
 ]
-]
+
 == NIS2 <sec:nis2>
 
 #keyterm[NIS2] (richtlijn EU 2022/2555) verplicht middelgrote en grote bedrijven in kritieke sectoren --- energie, transport, productie --- tot strengere beveiligings- en meldingsmaatregelen tegen cyberaanvallen.
@@ -62,7 +60,7 @@ Logic control werkt met *discrete signalen*: aan (1) of uit (0).
 - / Veel digitale signalen: drukknoppen, eindschakelaars, lampen, relais, contactoren, ventielen. Elk heeft twee toestanden.
 - / $24 "VDC"$ als standaard voor digitale I/O: veilig voor de operator, compatibel met de meeste PLC-modules.
 - / Hardware: PLC's, relaisschakelingen en (elektro-)pneumatische systemen.
-- / Sequenties: stap na stap, elke stap afhankelijk van de vorige. Klemmen, boren, loslaten.
+- / Sequenties: stap na stap, elke stap afhankelijk van de vorige. Klemmen, boren, lossen.
 
 === Regeltechniek (PID-controllers)
 
@@ -73,47 +71,69 @@ Een PID-controller werkt met *continue, analoge signalen*: hij meet een proceswa
 - / Temperatuursensoren: *Pt100* en *Pt1000* voor lage temperaturen, *thermokoppels* voor hoge.
 - / Temperatuurregelaar: doet de PID-logica zelf, zonder PLC.
 
-#wrap-figure(
+#figure(
   image("assets/automatisering pyramide.png", width: 10cm),
   caption: [De automatiseringspiramide. Onderaan het veld met sensoren en actuatoren, daarboven de PLC, dan SCADA voor visualisatie, en bovenaan MES en ERP voor planning.],
   label: <fig:automatiseringpyramide>,
-)[
-  De PLC hangt rechtstreeks aan de sensoren en doet de logica. Alles wat meerdere stappen doorloopt, jarenlang moet werken en vervangbaar moet zijn, doe je met een PLC.
+)
 
+De PLC hangt rechtstreeks aan de sensoren en actuatoren en verzorgt de besturingslogica. Alles wat meerdere stappen doorloopt, jarenlang betrouwbaar moet werken en flexibel aanpasbaar moet zijn, doe je met een PLC.
 
 == Een geschikt controlesysteem kiezen <sec:controlesysteem-kiezen>
 
-Applicatie, omgeving en complexiteit bepalen de keuze:
+De keuze voor een industrieel controlesysteem hangt af van de vereiste flexibiliteit, snelheid en omgevingsfactoren:
 
-- *Mechanische sturing (nokkenschijf, CAM)*: betrouwbaar en snel voor een vast repetitief patroon, bv. bouten en schroeven.
-- *Pneumatische logica*: vonkvrij, dus voor ATEX-zones of natte omgevingen.
-]
+#table(
+  columns: (auto, 1.2fr, 1.5fr),
+  inset: 6pt,
+  stroke: none,
+  align: horizon,
+  table.hline(stroke: 1pt),
+  table.header([*Systeem*], [*Typische toepassing*], [*Kenmerken en selectiecriterium*]),
+  table.hline(stroke: 0.5pt),
+  [Nokkenschijf (CAM)],
+  [Mechanische persen, verpakking],
+  [Puur mechanisch, extreem snel en betrouwbaar voor één vast repetitief patroon.],
+  [Pneumatische logica],
+  [ATEX-zones, natte chemische ruimtes],
+  [Volledig vonkvrij; perslucht verzorgt sturing én vermogen.],
+  [Hardwired relais],
+  [Eenvoudige veiligheid, $< 4$ stappen],
+  [Eenvoudig voor 1 à 2 stappen; storingsgevoelig bij $> 4$ stappen door bedrading.],
+  [Programmeerbaar relais],
+  [Verlichting, pompsturing, kleine poorten],
+  [Budgetvriendelijk voor kleinschalige stand-alone sturingen (bv. Siemens Logo!).],
+  [PLC],
+  [Standaard industriële machinebouw],
+  [Modulair, programmeerbaar (LAD), betrouwbaar, standaard vanaf $4$ stappen.],
+  [IPC (Industriële PC)],
+  [Vision-inspectie, databanken, AI],
+  [Combineert harde real-time PLC-sturing met OS-taken en dataverwerking.],
+  [DCS / PCS],
+  [Procesindustrie (chemie, raffinaderij)],
+  [Gedecentraliseerde controllers met centrale tag-database en hoge redundantie.],
+  table.hline(stroke: 1pt),
+)
 
-  #figure(
-    image("assets/pneumatische controller.png", width: 8cm),
-    caption: [Een zuiver pneumatische controller: de logica zit in de ventielen zelf, dus er is nergens een vonk.],
+#grid(
+  columns: 3,
+  gutter: 0.8cm,
+  figure(
+    image("assets/pneumatische controller.png", width: 6cm),
+    caption: [Pneumatische controller: logica in ventielen, vonkvrij.],
     label: <fig:pneumatischecontroller>,
-  )
-- *Hardwired relaislogica*: voor eenvoudige schakelingen. Boven 3 à 4 stappen zakt de betrouwbaarheid door het aantal contacten en bedradingspunten.
-  #figure(
-    image("assets/mechanicaltoolrelays.png", width: 8cm),
-    caption: [Machine tool relaispaneel: klassieke sequentiële hardwired relaislogica.],
+  ),
+  figure(
+    image("assets/mechanicaltoolrelays.png", width: 6cm),
+    caption: [Machine tool relaispaneel: sequentiële hardwired logica.],
     label: <fig:mechanicaltoolrelays>,
-  )
-- *Programmeerbaar relais*: kleinschalig, bv. poortsturing en verlichting.
-- *PLC*: de industriële standaard. Vanaf $4$ stappen de aangewezen keuze, zie @sec:relais-vs-plc.
-- *IPC*: real-time besturing plus zwaardere dataverwerking, vision en database.
-- *CNC- en robotcontrollers*: meer-assige interpolatie en trajectplanning.
-- *LabVIEW*: labo- en testopstellingen.
-- *SCADA*: visualisatielaag boven meerdere PLC's; verzamelt trends en logt alarmen.
-  #figure(
-    image("assets/Scada.png", width: 7cm),
-    caption: [SCADA-systeem: centrale procesvisualisatie en data-acquisitie],
+  ),
+  figure(
+    image("assets/Scada.png", width: 6cm),
+    caption: [SCADA-systeem: centrale procesvisualisatie.],
     label: <fig:Scada>,
-  )
-- *PCS (Process Control System)*: Softwareomgeving die de sturing van een hele fabriek als één geheel beheert, met één centrale tagdatabase. Het is meteen ook een SCADA-systeem.
-- *DCS (Decentralized Control System)*: Een PCS dat op #strong[gedecentraliseerde] controllers steunt, bijvoorbeeld PLC's, zodat één enkel faalpunt niet de hele fabriek stillegt. Bij voorkeur is het redundant, met verdubbelde controllers; na vervanging synchroniseert het DCS de software en neemt de controller zijn rol weer op.
-
+  ),
+)
 
 == Industrie 4.0 <sec:industrie40>
 
@@ -201,12 +221,12 @@ De contactnummering is gestandaardiseerd: *hoofdcontacten* krijgen de nummers 1 
 )
 
 / Push button (momentary): drukken en loslaten. Zit meestal in een beschermende kraag.
-/ Detent switch (latching): blijft ingedrukt tot je opnieuw duwt.
-/ Keuze- of draaischakelaar: blijft in zijn stand staan, tijdelijk of vergrendeld.
+/ Detent switch (latching): blijft ingedrukt tot je opnieuw duwt. Herken je aan de kleine v-groef op het symbool.
+/ Keuze- of draaischakelaar: blijft in zijn stand staan, tijdelijk of vergrendeld. Herken je aan de F op het symbool.
 / Pilot lamp: terugkoppeling naar de operator.
 
 #wrap-figure(
-  image("assets/hoofdschakelaar-Q1.png", width: 4.5cm),
+  image("assets/hoofdschakelaar-Q1.png", width: 5cm),
   caption: [Hoofdschakelaar `-Q1`: één bediening, meerdere draden],
   label: <fig:hoofdschakelaar-Q1>,
   width: 4.5cm,
@@ -328,104 +348,112 @@ _Laminatie lost de wervelstromen op, de kortsluitring het lostrillen. Twee probl
 Van stroom naar kracht, elke schakel met zijn eigen formule.
 
 #figure(
-    cetz.canvas(length: 1.05cm, {
-      import cetz.draw: *
+  cetz.canvas(length: 1.05cm, {
+    import cetz.draw: *
 
-      let ijzer = rgb(110, 110, 110)
-      let ijzerv = rgb(219, 219, 224)
-      let koper = rgb(176, 104, 42)
-      let fluxk = rgb(126, 66, 168)
-      let krachtk = rgb(200, 60, 50)
-      let veerk = rgb(45, 110, 180)
-      let klein = txt => text(size: 7.5pt, txt)
-      let mini = txt => text(size: 6.5pt, txt)
+    let ijzer = rgb(110, 110, 110)
+    let ijzerv = rgb(219, 219, 224)
+    let koper = rgb(176, 104, 42)
+    let fluxk = rgb(126, 66, 168)
+    let krachtk = rgb(200, 60, 50)
+    let veerk = rgb(45, 110, 180)
+    let klein = txt => text(size: 7.5pt, txt)
+    let mini = txt => text(size: 6.5pt, txt)
 
-      // ---------------- kern (C-vorm) ----------------
-      rect((0, 0), (1.0, 5.0), fill: ijzerv, stroke: ijzer)      // juk
-      rect((1.0, 0), (6.0, 1.0), fill: ijzerv, stroke: ijzer)    // onderbeen
-      rect((1.0, 4.0), (6.0, 5.0), fill: ijzerv, stroke: ijzer)  // bovenbeen
-      content((3.5, 0.76), mini[zacht ijzer])
+    // ---------------- kern (C-vorm) ----------------
+    rect((0, 0), (1.0, 5.0), fill: ijzerv, stroke: ijzer) // juk
+    rect((1.0, 0), (6.0, 1.0), fill: ijzerv, stroke: ijzer) // onderbeen
+    rect((1.0, 4.0), (6.0, 5.0), fill: ijzerv, stroke: ijzer) // bovenbeen
+    content((3.5, 0.76), mini[zacht ijzer])
 
-      // ---------------- armatuur ----------------
-      rect((6.5, 0), (7.5, 5.0), fill: ijzerv, stroke: ijzer)
-      content((7.7, 1.7), anchor: "west", mini[armatuur])
+    // ---------------- armatuur ----------------
+    rect((6.5, 0), (7.5, 5.0), fill: ijzerv, stroke: ijzer)
+    content((7.7, 1.7), anchor: "west", mini[armatuur])
 
-      // ---------------- spoel om het juk ----------------
-      for i in range(7) {
-        circle((0.5, 1.35 + i * 0.39), radius: (0.98, 0.19), stroke: (paint: koper, thickness: 1.1pt))
-      }
-      content((-1.35, 2.75), angle: 90deg, klein(text(fill: koper)[$N$ windingen]))
+    // ---------------- spoel om het juk ----------------
+    for i in range(7) {
+      circle((0.5, 1.35 + i * 0.39), radius: (0.98, 0.19), stroke: (paint: koper, thickness: 1.1pt))
+    }
+    content((-1.35, 2.75), angle: 90deg, klein(text(fill: koper)[$N$ windingen]))
 
-      // klemmen A1 / A2
-      line((-0.35, 3.9), (-2.1, 3.9), stroke: (paint: koper, thickness: 1.1pt))
-      line((-0.35, 1.15), (-2.1, 1.15), stroke: (paint: koper, thickness: 1.1pt))
-      circle((-2.1, 3.9), radius: 0.12, stroke: koper)
-      circle((-2.1, 1.15), radius: 0.12, stroke: koper)
-      content((-2.35, 3.9), anchor: "east", klein[A1])
-      content((-2.35, 1.15), anchor: "east", klein[A2])
-      line((-1.55, 4.2), (-0.95, 4.2), mark: (end: ">"), stroke: (paint: koper, thickness: 1pt))
-      content((-1.25, 4.55), klein(text(fill: koper)[$I$]))
+    // klemmen A1 / A2
+    line((-0.35, 3.9), (-2.1, 3.9), stroke: (paint: koper, thickness: 1.1pt))
+    line((-0.35, 1.15), (-2.1, 1.15), stroke: (paint: koper, thickness: 1.1pt))
+    circle((-2.1, 3.9), radius: 0.12, stroke: koper)
+    circle((-2.1, 1.15), radius: 0.12, stroke: koper)
+    content((-2.35, 3.9), anchor: "east", klein[A1])
+    content((-2.35, 1.15), anchor: "east", klein[A2])
+    line((-1.55, 4.2), (-0.95, 4.2), mark: (end: ">"), stroke: (paint: koper, thickness: 1pt))
+    content((-1.25, 4.55), klein(text(fill: koper)[$I$]))
 
-      // ---------------- fluxlus ----------------
-      let fs = (paint: fluxk, thickness: 1pt, dash: "dashed")
-      line((0.5, 0.5), (0.5, 4.5), (7.0, 4.5), (7.0, 0.5), close: true, stroke: fs)
-      line((0.5, 2.2), (0.5, 3.0), mark: (end: ">"), stroke: (paint: fluxk, thickness: 1.4pt))
-      line((3.2, 4.5), (4.0, 4.5), mark: (end: ">"), stroke: (paint: fluxk, thickness: 1.4pt))
-      line((7.0, 3.0), (7.0, 2.2), mark: (end: ">"), stroke: (paint: fluxk, thickness: 1.4pt))
-      line((4.0, 0.5), (3.2, 0.5), mark: (end: ">"), stroke: (paint: fluxk, thickness: 1.4pt))
-      content((1.9, 3.55), klein(text(fill: fluxk)[$Phi$]))
-      content((3.6, 2.5), klein(text(fill: koper)[mmf  $cal(F) = N dot I$]))
-      content((5.6, 3.45), anchor: "east", mini[luchtspleet: grootste $cal(R)$])
-      line((5.72, 3.5), (6.2, 4.25), stroke: (paint: rgb(150, 150, 150), thickness: 0.5pt))
+    // ---------------- fluxlus ----------------
+    let fs = (paint: fluxk, thickness: 1pt, dash: "dashed")
+    line((0.5, 0.5), (0.5, 4.5), (7.0, 4.5), (7.0, 0.5), close: true, stroke: fs)
+    line((0.5, 2.2), (0.5, 3.0), mark: (end: ">"), stroke: (paint: fluxk, thickness: 1.4pt))
+    line((3.2, 4.5), (4.0, 4.5), mark: (end: ">"), stroke: (paint: fluxk, thickness: 1.4pt))
+    line((7.0, 3.0), (7.0, 2.2), mark: (end: ">"), stroke: (paint: fluxk, thickness: 1.4pt))
+    line((4.0, 0.5), (3.2, 0.5), mark: (end: ">"), stroke: (paint: fluxk, thickness: 1.4pt))
+    content((1.9, 3.55), klein(text(fill: fluxk)[$Phi$]))
+    content((3.6, 2.5), klein(text(fill: koper)[mmf  $cal(F) = N dot I$]))
+    content((5.6, 3.45), anchor: "east", mini[luchtspleet: grootste $cal(R)$])
+    line((5.72, 3.5), (6.2, 4.25), stroke: (paint: rgb(150, 150, 150), thickness: 0.5pt))
 
-      // ---------------- luchtspleten ----------------
-      line((6.0, 0), (6.0, -0.6), stroke: 0.5pt)
-      line((6.5, 0), (6.5, -0.6), stroke: 0.5pt)
-      line((5.35, -0.35), (6.0, -0.35), mark: (end: ">"), stroke: 0.5pt)
-      line((7.15, -0.35), (6.5, -0.35), mark: (end: ">"), stroke: 0.5pt)
-      content((6.25, -0.82), klein[$delta$])
-      content((5.25, -0.35), anchor: "east", mini[luchtspleet])
-      content((5.75, 4.5), mini[N])
-      content((6.75, 4.5), mini[Z])
-      content((6.75, 0.5), mini[N])
-      content((5.75, 0.5), mini[Z])
+    // ---------------- luchtspleten ----------------
+    line((6.0, 0), (6.0, -0.6), stroke: 0.5pt)
+    line((6.5, 0), (6.5, -0.6), stroke: 0.5pt)
+    line((5.35, -0.35), (6.0, -0.35), mark: (end: ">"), stroke: 0.5pt)
+    line((7.15, -0.35), (6.5, -0.35), mark: (end: ">"), stroke: 0.5pt)
+    content((6.25, -0.82), klein[$delta$])
+    content((5.25, -0.35), anchor: "east", mini[luchtspleet])
+    content((5.75, 4.5), mini[N])
+    content((6.75, 4.5), mini[Z])
+    content((6.75, 0.5), mini[N])
+    content((5.75, 0.5), mini[Z])
 
-      // ---------------- krachten ----------------
-      line((8.7, 4.5), (7.7, 4.5), mark: (end: ">"), stroke: (paint: krachtk, thickness: 1.7pt))
-      line((8.7, 0.5), (7.7, 0.5), mark: (end: ">"), stroke: (paint: krachtk, thickness: 1.7pt))
-      content((8.85, 4.5), anchor: "west", klein(text(fill: krachtk)[$F_"mag"$]))
-      content((8.85, 0.5), anchor: "west", klein(text(fill: krachtk)[$F_"mag"$]))
+    // ---------------- krachten ----------------
+    line((8.7, 4.5), (7.7, 4.5), mark: (end: ">"), stroke: (paint: krachtk, thickness: 1.7pt))
+    line((8.7, 0.5), (7.7, 0.5), mark: (end: ">"), stroke: (paint: krachtk, thickness: 1.7pt))
+    content((8.85, 4.5), anchor: "west", klein(text(fill: krachtk)[$F_"mag"$]))
+    content((8.85, 0.5), anchor: "west", klein(text(fill: krachtk)[$F_"mag"$]))
 
-      // veer + muur
-      let yv = 2.5
-      line((7.5, yv), (7.75, yv + 0.3), (8.15, yv - 0.3), (8.55, yv + 0.3), (8.95, yv - 0.3), (9.25, yv),
-        (9.6, yv), stroke: (paint: veerk, thickness: 1pt))
-      line((9.6, 1.85), (9.6, 3.15), stroke: (paint: veerk, thickness: 1.2pt))
-      for i in range(5) {
-        line((9.6, 1.9 + i * 0.3), (9.95, 2.15 + i * 0.3), stroke: (paint: veerk, thickness: 0.6pt))
-      }
-      line((7.8, yv + 0.75), (8.8, yv + 0.75), mark: (end: ">"), stroke: (paint: veerk, thickness: 1.5pt))
-      content((8.3, yv + 1.1), klein(text(fill: veerk)[$F_"veer"$]))
+    // veer + muur
+    let yv = 2.5
+    line(
+      (7.5, yv),
+      (7.75, yv + 0.3),
+      (8.15, yv - 0.3),
+      (8.55, yv + 0.3),
+      (8.95, yv - 0.3),
+      (9.25, yv),
+      (9.6, yv),
+      stroke: (paint: veerk, thickness: 1pt),
+    )
+    line((9.6, 1.85), (9.6, 3.15), stroke: (paint: veerk, thickness: 1.2pt))
+    for i in range(5) {
+      line((9.6, 1.9 + i * 0.3), (9.95, 2.15 + i * 0.3), stroke: (paint: veerk, thickness: 0.6pt))
+    }
+    line((7.8, yv + 0.75), (8.8, yv + 0.75), mark: (end: ">"), stroke: (paint: veerk, thickness: 1.5pt))
+    content((8.3, yv + 1.1), klein(text(fill: veerk)[$F_"veer"$]))
 
-      // ---------------- stoter en contacten ----------------
-      rect((6.85, 5.0), (7.15, 6.1), fill: rgb(245, 240, 225), stroke: 0.6pt)
-      content((7.55, 5.55), anchor: "west", mini[isolerende stoter])
+    // ---------------- stoter en contacten ----------------
+    rect((6.85, 5.0), (7.15, 6.1), fill: rgb(245, 240, 225), stroke: 0.6pt)
+    content((7.55, 5.55), anchor: "west", mini[isolerende stoter])
 
-      // blad 11 in rust
-      line((7.0, 6.1), (7.28, 7.3), stroke: 1.6pt)
-      circle((7.28, 7.3), radius: 0.09, fill: black)
-      content((7.4, 6.45), anchor: "west", klein[11])
-      // blad bekrachtigd (spookpositie)
-      line((6.5, 6.1), (6.78, 7.3), stroke: (thickness: 1pt, dash: "dashed", paint: krachtk))
-      // vaste contacten
-      circle((6.78, 7.3), radius: 0.09, fill: black)
-      line((6.78, 7.3), (6.15, 7.95), stroke: 1.2pt)
-      content((6.0, 8.1), anchor: "east", klein[14 (N.O.)])
-      line((7.28, 7.3), (7.95, 7.95), stroke: 1.2pt)
-      content((8.1, 8.1), anchor: "west", klein[12 (N.C.)])
-      line((6.2, 6.75), (5.6, 6.75), mark: (end: ">"), stroke: (paint: krachtk, thickness: 1.2pt))
-      content((5.45, 6.75), anchor: "east", mini(text(fill: krachtk)[bij bekrachtiging]))
-    }),
+    // blad 11 in rust
+    line((7.0, 6.1), (7.28, 7.3), stroke: 1.6pt)
+    circle((7.28, 7.3), radius: 0.09, fill: black)
+    content((7.4, 6.45), anchor: "west", klein[11])
+    // blad bekrachtigd (spookpositie)
+    line((6.5, 6.1), (6.78, 7.3), stroke: (thickness: 1pt, dash: "dashed", paint: krachtk))
+    // vaste contacten
+    circle((6.78, 7.3), radius: 0.09, fill: black)
+    line((6.78, 7.3), (6.15, 7.95), stroke: 1.2pt)
+    content((6.0, 8.1), anchor: "east", klein[14 (N.O.)])
+    line((7.28, 7.3), (7.95, 7.95), stroke: 1.2pt)
+    content((8.1, 8.1), anchor: "west", klein[12 (N.C.)])
+    line((6.2, 6.75), (5.6, 6.75), mark: (end: ">"), stroke: (paint: krachtk, thickness: 1.2pt))
+    content((5.45, 6.75), anchor: "east", mini(text(fill: krachtk)[bij bekrachtiging]))
+  }),
   caption: [Doorsnede van een relais met de volledige krachtketen: de spoel maakt de mmf $cal(F)$, die drijft de flux $Phi$ door het ijzer, over de luchtspleet ontstaan de polen, en de aantrekkingskracht $F_"mag"$ werkt tegen de veerkracht $F_"veer"$ in],
   label: <fig:relais-krachten>,
 )
@@ -571,7 +599,7 @@ Een signaal-tijddiagram zet alle signalen van een machine op dezelfde tijdas.
 == Timers en tijdrelais
 
 #wrap-figure(
-  image("assets/Timing relays.png", width: 3cm),
+  image("assets/Timing relays.png", width: 5cm),
   caption: [Timing relays: TON (kruis) en TOF (ingevuld blok)],
   label: <fig:timingrelays>,
 )[
@@ -582,22 +610,6 @@ Een signaal-tijddiagram zet alle signalen van een machine op dezelfde tijdas.
 
   #examenbox[Ken het verschil tussen TON en TOF en herken de standaardsymbolen op elektrische schema's.]
 
-]
-#oefening(title: "TON en TOF: de gasbrander uit de slides")[
-  Twee opgaven over dezelfde machine, met de vertraging aan een andere kant.
-
-  *TON.* Bij het starten moet de ventilator eerst genoeg luchtstroom opbouwen vóór het gas open mag. Zet een TON op het startsignaal: de ventilator loopt meteen, en pas na tijd $T$ trekt de gasklep aan. De ventilator is dus de directe uitgang, het gas de vertraagde.
-
-  *TOF.* Bij het stoppen moet het gas #strong[onmiddellijk] dicht, maar de ventilator moet nog even doorlopen om restgas af te voeren. Zet nu een TOF: bij het wegvallen van het signaal valt de gasklep meteen af, terwijl de ventilator nog tijd $T$ blijft draaien.
-
-  *De denkstap.* Vraag je per uitgang af aan welke kant de vertraging zit. Vertraagd #strong[aantrekken] is een TON, vertraagd #strong[afvallen] is een TOF.
-
-  #belangrijk[Gebruik alleen een andere timer dan de TON als de opgave voor $100 %$ met die functie overeenkomt.] Anders bouw je de vertraging liever met een TON en wat logica eromheen, want dan blijft het gedrag voorspelbaar.
-
-  #waarschuwing[
-    Een off-delay timer krijgt zijn voeding vaak apart van zijn stuuringang. Anders zou hij mee uitvallen op het moment dat hij net moet beginnen aftellen.
-  ]
-]
 
 == PLC Introductie <sec:plc-introductie>
 
@@ -614,17 +626,17 @@ Een *PLC (Programmable Logic Controller)* is een industriële computer zonder be
     - *AO (Analog Output)*: Stuurt regelbare stuurwaarden uit naar bv. frequentieregelaars of regelkleppen.
   - *Communicatie-interfaces*: Industriële veldbussen zoals PROFINET, Modbus TCP, EtherCAT en Ethernet/IP voor koppeling met HMI, SCADA en andere controllers.
 ]
-
+]
 #wrap-figure(
-  image("assets/PLC2.png", width: 5cm),
+  image("assets/PLC2.png", width: 7cm),
   caption: [Modulaire PLC: links de CPU, rechts de I/O-klemmen die je per stuk bijsteekt],
   label: <fig:PLC2>,
 )[
   In het blokschema van @fig:basisdiagram is de PLC het middelste blok. Hij leest de knoppen van de operator én de sensoren van de machine, past zijn logica toe, en stuurt daarmee de actuatoren aan plus de terugmelding naar de operator.
 
   Modulair betekent dat je die I/O per klem uitbreidt: te weinig digitale ingangen, dan klik je er een module bij.
-]
 
+]
 == Relais versus PLC: waarom kiezen we voor een PLC? <sec:relais-vs-plc>
 
 In eenvoudige schakelingen met 1 tot 3 stappen kan een relaisschakeling volstaan. Zodra een systeem echter complexer wordt, biedt een PLC doorslaggevende voordelen:
@@ -634,15 +646,21 @@ In eenvoudige schakelingen met 1 tot 3 stappen kan een relaisschakeling volstaan
   inset: 6pt,
   align: horizon,
   table.header([*Criterium*], [*Relaisschakeling*], [*PLC-besturing*]),
-  [Flexibiliteit & wijzigingen], [Herbedrading en fysieke componenten toevoegen], [Softwarematig aanpassen in het programma],
-  [Betrouwbaarheid bij grote sequenties], [Daalt snel door vele mechanische contacten], [Zeer hoog (geen mechanische slijtage in de logica)],
+  [Flexibiliteit & wijzigingen],
+  [Herbedrading en fysieke componenten toevoegen],
+  [Softwarematig aanpassen in het programma],
+
+  [Betrouwbaarheid bij grote sequenties],
+  [Daalt snel door vele mechanische contacten],
+  [Zeer hoog (geen mechanische slijtage in de logica)],
+
   [Benodigde kastruimte], [Groot bij complexe schakelingen], [Compact en modulair uitbreidbaar],
   [Diagnostiek & monitoring], [Moeilijk storingzoeken met multimeter], [Real-time statusmonitoring en foutmeldingen],
   [Kosten bij kleine schakelingen], [Goedkoop], [Hogere initiële basiskost],
 )
 
 #figure(
-  image("assets/relayvsPLC.png", width: 15cm),
+  image("assets/relayvsPLC.png", width: 18cm),
   caption: [Vergelijking tussen hardwired relaislogica en softwarematige Ladder Diagram (LAD) implementatie in een PLC],
   label: <fig:relayvsPLC>,
 )
@@ -661,24 +679,24 @@ In eenvoudige schakelingen met 1 tot 3 stappen kan een relaisschakeling volstaan
   Rechts staat altijd een instructie die het resultaat gebruikt, meestal een uitgangsspoel. Elk netwerk moet zo afgesloten zijn, anders compileert het programma niet.
 
 
-== Logische sturing met een PLC
+  == Logische sturing met een PLC
 
-=== Variabelen- en bloknaamgevingsconventie
+  === Variabelen- en bloknaamgevingsconventie
 
-PLCOpen geeft een naamgevingsstandaard:
+  PLCOpen geeft een naamgevingsstandaard:
 
-+ *Structuur*: `PrefixType_PrefixGeheugen_UniekeNaam`, bv. `xI_Q1_Feedback`. Namen in het Engels, `UpperCamelCasing`, prefixen gescheiden door underscores.
-+ *Typeprefix*:
-  - `x`: Boolean (`xStart`, `xEmergencyStop`)
-  - `i`: Integer (`iCycleCount`)
-  - `r`: Real / Floating point (`rTemperature`)
-  - `t`: Time (`tDelay`)
-+ *Geheugen-/locatieprefix*:
-  - `I` of `E`: Fysieke ingang (Input / Eingang)
-  - `Q` of `A`: Fysieke uitgang (Output / Ausgang)
-  - `M`: Merker / intern geheugenbit (Memory marker)
-  - `DB`: Data Block variabele
-+ *RDS-koppeling*: hoort de variabele bij een component uit het schema, dan start de naam met de RDS-code (`-S1`, `-Q2`).
+  + *Structuur*: `PrefixType_PrefixGeheugen_UniekeNaam`, bv. `xI_Q1_Feedback`. Namen in het Engels, `UpperCamelCasing`, prefixen gescheiden door underscores.
+  + *Typeprefix*:
+    - `x`: Boolean (`xStart`, `xEmergencyStop`)
+    - `i`: Integer (`iCycleCount`)
+    - `r`: Real / Floating point (`rTemperature`)
+    - `t`: Time (`tDelay`)
+  + *Geheugen-/locatieprefix*:
+    - `I` of `E`: Fysieke ingang (Input / Eingang)
+    - `Q` of `A`: Fysieke uitgang (Output / Ausgang)
+    - `M`: Merker / intern geheugenbit (Memory marker)
+    - `DB`: Data Block variabele
+  + *RDS-koppeling*: hoort de variabele bij een component uit het schema, dan start de naam met de RDS-code (`-S1`, `-Q2`).
 ]
 === De PLC-Scancyclus
 
@@ -696,7 +714,7 @@ PLCOpen geeft een naamgevingsstandaard:
   Binnen één cyclus ziet je programma een #strong[bevroren] beeld van de ingangen: verandert een sensor halverwege, dan merk je dat pas de volgende scan. Een puls korter dan één scan is dus onzichtbaar; wil je die vangen, gebruik dan flankdetectie of een snelle teller.
 
   De uitgangen worden pas op het einde in één keer weggeschreven, dus een uitgang die je tussendoor aan en weer uit zet, komt nooit op de klem.
-]
+
 
 === Combinatorisch of met geheugen? <sec:combinatorisch-geheugen>
 
@@ -705,7 +723,7 @@ Voor je begint te programmeren stel je één vraag: heeft de uitgang geheugen no
 Dezelfde vraag komt terug bij de 3D-methode: daar is "heb ik een geheugen nodig?" precies de eerste examenvraag. Zie @sec:3d-examenvraag.
 
 === Hardware N.C. tegenover software N.O. <sec:nc-hardware-software>
-
+]
 Neem twee N.O.-contacten in serie met een toekenning aan een uitgangsspoel. Die schrijft het #keyterm[RLO] (Result of Logic Operation) weg naar een uitgang of merker, #strong[nooit] naar een ingang: die wordt van buitenaf opgelegd.
 
 De valkuil: de stopknop is in de #strong[hardware] N.C., dus die variabele is "true" zolang je *niet* duwt. Het netwerk geeft dus een actieve uitgang als niemand duwt, en valt weg zodra je één knop indrukt.

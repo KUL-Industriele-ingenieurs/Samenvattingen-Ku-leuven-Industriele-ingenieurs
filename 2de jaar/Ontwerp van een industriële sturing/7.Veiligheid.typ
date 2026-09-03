@@ -145,91 +145,65 @@ De drie delen uit elkaar gehouden:
   caption: [Pictogram voor de veiligheidsstop volgens ISO 7010.],
   label: <fig:pictogram-noodstop>,
 )[
-  #keyterm[ISO 7010] is de internationale norm voor veiligheidssymbolen. In 2011 registreerde ISO een nieuw symbool om de #strong[locatie] van noodstopknoppen aan te duiden, in het formaat "groen vierkant met wit symbool". Dat is het formaat voor bordjes die de plaats van veiligheidsuitrusting aangeven, dus dezelfde familie als brancards, oogdouches, nooddouches en nooduitgangen.
-
-
-== EN 13849 en SRP/CS
-
-=== Wat de norm regelt <sec:en13849>
-
-#keyterm[EN 13849] gaat over functionele veiligheid: de eisen aan de beschikbaarheid van de veiligheidsfunctie wanneer die van een besturing afhangt.
-
-De onderdelen van de besturing die de veiligheidsfunctie uitvoeren heten samen de #keyterm[SRP/CS] (Safety-Related Parts of a Control System). Die keten loopt altijd van links naar rechts:
-
-$ "trigger event" arrow.r "logica" arrow.r "actuatoren" $
-
-Dus: de noodstopknop of het lichtgordijn, dan het noodstoprelais of de safety-PLC, en dan de contactoren of de STO-ingang van de drive. #belangrijk[Elk van die drie schakels hoort bij de SRP/CS], en elk van de drie kan de veiligheidsfunctie onderuithalen.
+  #keyterm[ISO 7010] is de internationale norm voor veiligheidssymbolen. In 2011 registreerde ISO een nieuw symbool om de #strong[locatie] van noodstopknoppen aan te duiden: een groen vierkant met een wit noodstopsymbool (dezelfde categorie als brancards, nooddouches en nooduitgangen).
 ]
 
+== EN 13849 en SRP/CS <sec:en13849>
+
+#keyterm[EN 13849-1] legt de functionele veiligheidseisen vast voor de besturing van machines.
+
+De onderdelen die de veiligheidsfunctie uitvoeren heten samen de #keyterm[SRP/CS] (Safety-Related Parts of a Control System). Deze keten omvat altijd drie schakels:
+
+$ "Ingang (Trigger event)" arrow.r "Logica (Evaluatie)" arrow.r "Uitgang (Actor)" $
+
+- *Ingang*: Noodstopknop, lichtgordijn, veiligheidsschakelaar;
+- *Logica*: Veiligheidsrelais of safety-PLC;
+- *Uitgang*: Vermogenscontactoren of de STO-ingang (Safe Torque Off) van een regelaar.
+
 #figure(
-  image("assets/OIS_srpcs_clean.png", width: 15cm),
-  caption: [De SRP/CS-keten: trigger event, logica en actuatoren.],
+  image("assets/OIS_srpcs_clean.png", width: 14cm),
+  caption: [De SRP/CS-keten: trigger event, logica en actuatoren (EN 13849-1).],
   label: <fig:srpcs>,
 )
 
-=== Het voorbeeldschema <sec:veiligheid-voorbeeldschema>
+=== Het eenkanaals voorbeeldschema <sec:veiligheid-voorbeeldschema>
 
-Het schema uit @ch:voorbeeld-diagram is bewust eenvoudig. De beperkingen:
-- het is categorie 1 (B);
-- er is maar #strong[één] veiligheidsfunctie. Normaal zijn er meer: noodstop, safe limited speed, enzovoort;
-- er is maar #strong[één] trigger event. Normaal zijn er meer: lidar, lichtgordijnen;
-- het is #strong[éénkanaals], en dus kwetsbaar voor een single point of failure.
+In een basis eenkanaals sturing (Categorie 1 / B) schakelt één stopknop één contactor:
 
 #figure(
   image("assets/OIS_noodstop_hoofdcircuit_clean.png", width: 12cm),
-  caption: [Het eenkanaals voorbeeldschema: links het hoofdcircuit met de contactor in de motorleiding, rechts de stuurkring met de noodstop `-S5` en de start `-S6`. Eén contact, één contactor: valt er iets vast, dan stopt de motor niet meer.],
+  caption: [Eenkanaals schema: één contact, één contactor. Gevaar voor SPoF (Single Point of Failure).],
   label: <fig:noodstop-voorbeeldschema>,
 )
 
-== Dual channel en EDM
+Blijft het contactorcontact door vonkerosie vastlassen, dan kan de stuurkring de motor niet meer stoppen! Dit gevaar heet een #keyterm[SPoF] (Single Point of Failure).
 
-=== Waarom twee kanalen <sec:dual-channel-waarom>
+== Dubbelkanaalsarchitectuur (Dual Channel) en EDM <sec:dual-channel-waarom>
 
-Componenten gaan stuk. Erger nog: ze kunnen #strong[foutief] falen, zodat hun veiligheidsfunctie niet meer werkt. Een contactor die na veel schakelen blijft plakken, bijvoorbeeld.
+Voor Categorie 3 en 4 conform EN 13849-1 moet de veiligheidsfunctie behouden blijven bij een enkelvoudige fout. Dit vraagt redundantie in alle drie de schakels:
 
-#belangrijk[Het hoofddoel van een dubbelkanaalsarchitectuur is het vermijden van een #keyterm[SPoF] (Single Point of Failure).] Daarom is elke component redundant:
-- *Trigger events:* elke noodstopknop schakelt #strong[twee] N.C.-contacten. Een dubbelkanaals lichtgordijn schakelt eveneens twee uitgangen.
-- *Uitgangstoestellen:* elke motor wordt door #strong[twee] contactoren afgeschakeld.
-
-Wat als eerst het ene contact faalt en later het andere? Daarvoor dient #keyterm[cross-monitoring]: beschrijven de twee kanalen niet dezelfde situatie, dan gaat het systeem naar de veilige toestand. #belangrijk[Ook na een reset, tot het defecte contact vervangen is.]
-
-Dubbelkanaals doe je #strong[altijd] met een speciaal noodstoprelais, of met een safety-PLC. De complexiteit en de valideerbaarheid laten niets anders toe.
-
-=== Categorie 3 <sec:categorie3>
-
-#wrap-figure(
-  image("assets/OIS_categorie4_clean.png", width: 10cm),
-  caption: [Categorie 3: redundante signaalpaden met cross-monitoring van de ingangen en terugkoppeling van de uitgangen.],
+#figure(
+  image("assets/OIS_categorie4_clean.png", width: 11cm),
+  caption: [Categorie 3/4 architectuur: redundante ingangskanalen, cross-monitoring in de logica en terugkoppeling (EDM) van de uitgangen.],
   label: <fig:categorie3>,
-)[
-  De aangewezen architectuur voor categorie 3 heeft:
-  + redundante signaalpaden;
-  + #strong[cross-monitoring] van de ingangssignalen;
-  + een #strong[back-check]: de terugkoppeling van de uitgangen wordt vergeleken met de aangestuurde toestand.
-  + 
-  #keyterm[EDM] (External Device Monitoring) controleert of de externe toestellen die het veiligheidsmodule aanstuurt, bijvoorbeeld de contactoren, de veiligheidskring #strong[effectief] hebben onderbroken.
+)
 
-=== External Device Monitoring <sec:edm>
-]
-#wrap-figure(
-  image("assets/OIS_edm_clean.png", width: 8.5cm),
-  caption: [EDM: de terugkoppeling van de contactoren zit in de resetvoorwaarde van het noodstoprelais.],
+De volledige werking van de veiligheidsketen verloopt in vijf logische stappen:
+
++ *Dual Channel Ingang*: Eén paddenstoelknop `-S4` bedient twee mechanisch gekoppelde N.C.-contacten. Het relais stuurt een eigen testsignaal uit op klem $S 11$ en verwacht dit terug op $S 12$ (kanaal 1); idem voor $S 21 arrow.r S 22$ (kanaal 2).
++ *Cross-monitoring*: Het veiligheidsrelais vergelijkt continu de toestand van beide kanalen. Schakelt één kanaal wel en het andere niet (asymmetrie door contactbreuk of vastlassen), dan schakelt het relais direct uit en gaat in *lock-out* (vergrendeling). Automatisch herstarten is onmogelijk tot de fout hersteld is.
++ *Redundante Uitgangen*: In de vermogenkring naar de motor staan *twee contactoren in serie* (`-Q1` en `-Q2`). Mocht één contactor vastlassen, dan onderbreekt de tweede alsnog betrouwbaar de motorstroom.
+
+=== Werking van EDM (External Device Monitoring) <sec:edm>
+
++ *EDM-terugkoppeling*: Het relais moet vóór elke herstart verifiëren of beide contactoren werkelijk zijn afgevallen. Daarom worden twee N.C.-hulpcontacten van `-Q1` en `-Q2` in serie geschakeld in de resetkring ($Y 1 - Y 2$).
++ *Force-guided contacten (Gedwongen geleid)*: Om te verhinderen dat een contactor "liegt", zijn de N.O.-hoofdcontacten en het N.C.-hulpcontact mechanisch star gekoppeld. Als een N.O.-contact vastlast, dwingt het mechanisme het N.C.-hulpcontact om *open* te blijven $arrow.r.double$ de EDM-lus blijft onderbroken $arrow.r.double$ het relais kan niet resetten!
+
+#figure(
+  image("assets/OIS_edm_clean.png", width: 9.5cm),
+  caption: [EDM-terugkoppeling: N.C.-hulpcontacten van contactoren `-Q1` en `-Q2` staan in serie met de resetknop.],
   label: <fig:edm>,
-)[
-
-  Je implementeert dat door de terugkoppeling van die contactoren aan de #strong[resetvoorwaarde] van het noodstoprelais toe te voegen. De resetkring verhindert dan een reset zolang een gerelateerde component niet is afgevallen, bijvoorbeeld `-Q1` of `-Q2`.
-
-
-#concept(title: "Force-guided contacts")[
-  Kies daarbij #keyterm[force-guided contacts]: mechanisch is het onmogelijk dat het N.O.-hoofdcontact en het N.C.-hulpcontact tegelijk gesloten zijn. Plakt het hoofdcontact, dan kán het hulpcontact niet sluiten en blokkeert de reset.
-]
-
-=== Wat je nooit mag schakelen <sec:dual-channel-0v>
-
-In gewone logica schakel je nooit de $0 "V"$. #belangrijk[Bij een dubbelkanaalsoplossing is dat soms toch de enige manier], namelijk om te vermijden dat een losgekomen $24 "V"$-draad die tegen een klem komt, de noodstop buiten werking stelt.
-
-Bij een bistabiel ventiel is het doel dat het #strong[geen nieuwe beweging] start. Sluit je uit dat de faalvormen van het ventiel zelf een onbedoelde beweging geven, dan mag je het spanningsloze ventiel buiten beschouwing laten, afhankelijk van de norm.
-]
+)
 === Vertraagd noodstopcontact <sec:vertraagd-estop>
 
 #examenbox[Dit was een klassieke examenvraag in 2024-2025.]

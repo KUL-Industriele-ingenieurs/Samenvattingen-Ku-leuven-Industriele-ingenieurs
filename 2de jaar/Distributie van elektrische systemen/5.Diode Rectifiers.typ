@@ -190,31 +190,34 @@ Net zoals bij de half-wave rectifier gaat de stroom $i_0$ achterlopen op de span
   label: <fig:Heel-hoge-inductieve-belasting-met-full-wave-rectifier>,
 )
 
-Omdat er een enorm grote inductatie $L$ is gaat de stroom $i_d$ bijna niet veranderen. Een spoelt wil namelijk geen enkele verandering die wilt altijd dat het magnetische veld in de spoel constant is.
+Bij een zeer grote inductieve belasting ($L -> infinity$) blijft de gelijkstroom $i_d$ nagenoeg perfect constant. In een ideaal netwerk zou de stroom instantaan overspringen tussen de opeenvolgende diodes (blokgolf).
 
-De diodes gaat dan enorm hard schakelen omdat er direct 90° verandering is van de stroom. Dit kan in praktijk niet. Je krijgt nog een inductatie van de diodes. Die gaat die grote stroomveranderingen tegenhouden. Dit noemen we #keyterm[Net-inductantie]
+In werkelijkheid bezit elk AC-voedingsnet een zekere #keyterm[netinductantie] $L_s$ (afkomstig van de distributietransformator en voedingskabels). Een spoel verzet zich tegen plotse stroomveranderingen:
 
+$ v = L_s frac(dif i, dif t) $
+
+Hierdoor kan de stroom niet instantaan van de ene diode naar de andere wisselen.
 
 #figure(
-  image("assets/Net Inductantie.png", width: 15cm),
-  caption: [Net Inductantie],
+  image("assets/Net Inductantie.png", width: 14cm),
+  caption: [Commutatie-overlap: gedurende hoek $mu$ geleiden beide diodes gelijktijdig doordat de netinductantie $L_s$ de stroomverandering vertraagt.],
   label: <fig:Net-Inductantie>,
 )
-Je krijgt dan #keyterm[Overlapping] waarbij beide diodes tegelijkertijd geleiden. Stel diode 1 $D_1$ begint af te dalen en diode 3 $D_3$ begint te stijgen. Dan gaat D3, D1 #keyterm[Afknijpen].
 
-Hierdoor wordt de spanning over de load $v_0$ tijdelijk 0. Dit komt omdat beide diodes gelijden gaan hun spanningen elkaar uitschakelen.
+=== Commutatie-overlap ($mu$) en spanningsinkepingen (Notching)
 
-Dit noemt *diode commutatie overlap* waarbij beide diodes gaan geleiden. Het tijdsverschil waarbij de diodes tegelijkertijd geleiden is $mu$.
-
-Dit is de reden dat diodes niet volledig efficient zijn. Dit phenoneem is in de grafieken overdreven maar deze kleine verschillen zorgen ervoor dat diodes bijvoorbeeld een efficientie hebben van 95%.
-
-Hieronder is de figuur van de powerquality van een 3 fase systeem waar je duidelijk sprongen zien in je voltage door de diodes
+Dit fenomeen heet #keyterm[commutatie-overlap]:
+- *Overlaphoek $mu$*: Het tijdsinterval (uitgedrukt in graden of radialen) waarin zowel de doofende diode als de ontstekende diode gelijktijdig geleiden.
+- *Tijdelijke kortsluiting*: Tijdens de commutatieperiode vormen beide geleidende diodes in feite een tijdelijke kortsluiting tussen de twee AC-fasen over de interne netinductantie $L_s$.
+- *Spanningsinkepingen (Commutation notches)*: Doordat de fasen kortgesloten worden over $L_s$, zakt de klemspanning op het net abrupt in naar het gemiddelde niveau. Dit veroorzaakt diepe, periodieke inkepingen in de netspanningsgolfvorm.
 
 #figure(
   image("assets/Power quality van diodes.png", width: 10cm),
-  caption: [Power quality van diodes],
+  caption: [Spanningsinkepingen (notches) op de AC-voedingsspanning ten gevolge van de commutatie van diodegelijkrichters.],
   label: <fig:Power-quality-van-diodes>,
 )
+
+Deze spanningsinkepingen zijn een belangrijk #keyterm[Power Quality]-probleem (zie @ch:power-quality): ze veroorzaken hoogfrequente harmonischen en kunnen naburige elektronica en PLC-voedingen op hetzelfde aansluitpunt (PCC) ontregelen.
 
 === Alles samen
 
