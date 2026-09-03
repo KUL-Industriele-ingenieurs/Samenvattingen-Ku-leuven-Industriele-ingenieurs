@@ -89,6 +89,7 @@ Je krijgt een formularium mee. Wat erop staat, hoef je niet vanbuiten te kennen:
 #include "4.Reële transformator.typ"
 #include "5.Transformator in de praktijk.typ"
 #include "6.3-phase transformator.typ"
+#include "7.Toepassingen en constructie.typ"
 #include "8.Oefeningen transformatoren.typ"
 
 
@@ -102,5 +103,4 @@ Je krijgt een formularium mee. Wat erop staat, hoef je niet vanbuiten te kennen:
 #include "6.Harmonische analyse.typ"
 #include "7.Unbalanceerde netten.typ"
 #include "9.Theorievragen.typ"
-
-// Oefeningen
+#include "10.Veel succes.typ"

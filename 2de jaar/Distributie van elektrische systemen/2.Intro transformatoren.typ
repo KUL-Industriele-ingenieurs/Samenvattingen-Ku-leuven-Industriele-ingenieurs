@@ -23,70 +23,60 @@
   - distributie van elektriciteit;
   - elektrische toepassingen en elektronica.
 
-  *Waarom transformeren*
-  - veiliger, want je brengt de hoge transportspanning omlaag vóór ze bij de gebruiker komt;
-  - efficiënter, want bij hogere spanning loopt er minder stroom en dalen de joulverliezen met $1\/V^2$;
-  - goedkoper, compacter en betrouwbaarder dan de kabeldoorsnede evenredig laten meegroeien.
+  *Waarom transformeren:*
+  - *Efficiënter transport*: Bij hogere spanning vloeit er minder stroom voor hetzelfde overgedragen vermogen ($I = S / (sqrt(3) U)$). De jouleverliezen in de kabel dalen kwadratisch met de spanning: $P_"verlies" prop 1 / U^2$.
+  - *Koperbesparing*: Dunnere kabels volstaan, wat tonnen aan koper en lichtere hoogspanningsmasten oplevert.
+  - *Veiligheid*: Transport gebeurt op gevaarlijk hoge spanning (bv. $150 "kV" - 380 "kV"$), maar wordt lokaal getransformeerd naar veilige laagspanning ($400 "V" / 230 "V"$).
+  - *Galvanische scheiding*: Geen direct elektrisch contact tussen het primaire en secundaire netwerk.
 ]
 
-
-*Voorbeeld Transformer*
-
 #figure(
-  image("assets/Power Transformer.png", width: 5cm),
-  caption: [Power Transformer],
+  image("assets/Power Transformer.png", width: 6.5cm),
+  caption: [Vermogenstransformator in een hoogspanningssubstation (bv. $150 "kV" arrow.r 33 "kV"$).],
   label: <fig:PowerTransformer>,
 )
 
-High voltage (e.g. 300 kV) $arrow.r.double$ medium voltage (e.g. 33 kV)
+#voorbeeld(title: "Rekenvoorbeeld: Jouleverliezen bij transport op 33 kV vs 150 kV")[
+  Gegeven een generatorstation dat $S = 240 "MVA"$ levert over een afstand van $38 "km"$.
+  - Geleiderdoorsnede: $A = 616 "mm"^2$ ($d = 28 "mm"$), soortelijke weerstand $rho = #"0,0175" (Omega "mm"^2)/"m"$;
+  - Totale kabelweerstand per fase: $R_"kabel" = #"1,08" Omega$;
+  - Arbeidsfactor: $cos phi = 1$.
 
-#voorbeeld(title: "Transform voltage")[
-  *Generated:* 240 MVA ($S = 240 "MVA" = sqrt(3) dot 33 "kV" dot 4.22 "kA"$) @ 33 kV \
-  *Transmission:* 150 kV, distance 38 km \
-  *Assumptions:*
-  - $A = 616 "mm"^2$ ($d = 28 "mm"$)
-  - $cos phi = 1$
-  - $rho = 0.0175 (Omega "mm"^2)/"m" arrow.r.double R_"cable" = 1.08 Omega$
+  *Optie 1: Transport direct op generatorspanning ($33 "kV"$)*
+  $ I_"lijn" = frac(S, sqrt(3) dot U) = frac(240 "MVA", sqrt(3) dot 33 "kV") = 4199 "A" $
+  $ P_"verlies" = 3 dot R_"kabel" dot I_"lijn"^2 = 3 dot #"1,08" Omega dot (4199 "A")^2 approx 57 "MW" quad (24 % "van het vermogen!") $
+  $ Delta U_"lijn" = sqrt(3) dot R_"kabel" dot I_"lijn" approx 7850 "V" quad ("onbruikbaar grote spanningsval") $
 
-  *Calculate Joule losses:* \
-  Line voltage = 150 kV $<->$ 33 kV \
-  $I_"transp"$ = 924 A $<->$ 4199 A \
-  $ P_"loss" = 3 dot R_"cable" dot I^2_"line" prop 1 / V_"line"^2 arrow.r.double 2.76 "MW" (1%) <-> 57 "MW" (24%) $ \
-  $V_"phase_drop"$ = 998 V (1%) $<->$ 4535 V (24%)
+  *Optie 2: Transport na opstaptransformatie naar $150 "kV"$*
+  $ I_"lijn" = frac(240 "MVA", sqrt(3) dot 150 "kV") = 924 "A" $
+  $ P_"verlies" = 3 dot #"1,08" Omega dot (924 "A")^2 approx #"2,76" "MW" quad (1.1 % "verlies") $
 
   #figure(
-    image("assets/tabeltransmissie150kv.png", width: 5cm),
-    caption: [tabeltransmissie150kv],
+    image("assets/tabeltransmissie150kv.png", width: 6.5cm),
+    caption: [Vergelijking van stroom en vermogensverlies bij $33 "kV"$ versus $150 "kV"$ transport.],
     label: <fig:tabeltransmissie150kv>,
   )
-  Je ziet bij hogere spanningen heb je veel minder verlies: $P_"loss" = 57 "MW" arrow.r.double 2.76 "MW"$.
 
-  Je kunt ook de kabel dikker maken om de weerstand te verlagen maar je spreekt over kilometer kabel dus het is het meer waard om met een transformator de spanning te verhogen.
+  Door de spanning met een factor $4.5$ te verhogen, dalen de transportverliezen met een factor $4.5^2 approx 20$!
+
+  *Toepassingsgebieden van transformatoren:*
+  - Energievoorziening: generatortransformatoren, transmissie ($380 "kV"$), distributietransformatoren ($10 "kV" / 400 "V"$);
+  - Elektronica: geschakelde voedingen, netadapters;
+  - Signaal- en datatransmissie: pulstransformatoren in ethernetinterfaces voor galvanische scheiding ($1.5 "kV"$ isolatiebarrière);
+  - Meettechniek: stroom- en spanningstransformatoren (CT en PT).
 ]
 
-*Transformatoren hebben veel voordelen*
-+ Veiliger
-+ Efficiënter
-+ Goedkoper
-+ Compact
-+ Betrouwbaar
-
-
-*Toepassingen Transformatoren*
-- Power supplies
-- Ethernet
-  #figure(
-    image("assets/ethernet.png", width: 5cm),
-    caption: [ethernet],
-    label: <fig:ethernet>,
-  )
-- Lab apparatuur
+#figure(
+  image("assets/ethernet.png", width: 5cm),
+  caption: [Ethernet pulstransformator voor galvanische ontkoppeling.],
+  label: <fig:ethernet>,
+)
 
 == Constructie Transformatoren
 
 #figure(
   image("assets/transformatie constructie.png", width: 10cm),
-  caption: [transformatie constructie],
+  caption: [Constructie van een transformator: gelamineerde ijzerkern met primaire en secundaire wikkelingen.],
   label: <fig:transformatieconstructie>,
 )
 
@@ -177,56 +167,46 @@ Een punt ($dot$) betekent dat de stroom naar je toe stroomt (uit het blad), een 
     $ B = (mu_0 I) / (2 pi r) $
 ]
 
-=== Magnetisch materiaal
+=== De drie fundamentele magnetische grootheden: H, B en $Phi$
 
-*In vacuum is:*
-$ arrow(B_0) = arrow(B_0) $
+De werking van elk magnetisch circuit steunt op drie grootheden die elk een specifieke rol spelen:
 
-*Magnetisch materiaal:*
-$ arrow(B) = arrow(B_0) + arrow(B_m) = (1-X_m) arrow(B_0) = mu_r arrow(B_0) $
++ *Magnetische veldsterkte $vec(H)$ [A/m]*: \
+  Dit is de *oorzaak* van het magnetisme. Volgens de wet van Ampère wordt $vec(H)$ uitsluitend opgewekt door de elektrische stroom door de windingen:
+  $ integral.cont_("lus") vec(H) dot dif vec(s) = I_"ingesloten" = N dot I $
+  De veldsterkte $vec(H)$ is dus *onafhankelijk van het materiaal*.
 
++ *Magnetische fluxdichtheid $vec(B)$ [T] of [$"Wb/m"^2$]*: \
+  Dit is het *fysische gevolg* in het medium.
+  - In vacuüm: $vec(B)_0 = mu_0 vec(H)$ met $mu_0 = 4 pi dot 10^(-7) "H/m"$.
+  - In een ferromagnetisch materiaal richten de microscopische atomaire dipolen (Weiss-domeinen) zich uit, waardoor het veld enorm wordt versterkt:
+    $ vec(B) = mu_r mu_0 vec(H) = mu vec(H) $
+  - Voor silicium-transformatorstaal geldt $mu_r >> 1$ (typisch $2000$ tot $5000$). Hierdoor dwingt de kern bijna alle magnetische veldlijnen om binnen het ijzer te blijven en is lekflux door de lucht minimaal.
 
-- $B_0$: Veld door macroscopische stroom.
-- $B_M$: Veld door microscopische dipolen.
-- $chi_m$: Magnetische susceptibiliteit.
-- $mu_r$: Relatieve permeabiliteit (versterkingsfactor).
-- $mu_r$ is vaak afhankelijk van $B_0$.
+#figure(
+  image("assets/magnetischmateriaalmu.png", width: 6cm),
+  caption: [Verband tussen veldsterkte $H$ (oorzaak) en fluxdichtheid $B$ (gevolg) via permeabiliteit $mu$.],
+  label: <fig:magnetischmateriaalmu>,
+)
 
-Het magnetisch veld wordt versterkt door het materiaal.
++ *Totale magnetische flux $Phi$ [Wb] of [$"Vs"$]*: \
+  De totale hoeveelheid veldlijnen die door de kernoppervlakte $A_c$ stroomt:
+  $ Phi = integral_A vec(B) dot dif vec(A) = B dot A_c $
 
-
-#concept(title: "H magnetische veld sterkt")[
-
-  #figure(
-    image("assets/magnetischmateriaalmu.png", width: 5cm),
-    caption: [magnetischmateriaalmu],
-    label: <fig:magnetischmateriaalmu>,
-  )
-  $ arrow(H) = frac(arrow(B_0), mu_0) = frac(arrow(B), mu_r mu_0) = frac(arrow(B), mu) $
-]
-
-Laten we dit invoegen in de wet van ampere:
-
-$ integral.cont_("loop") vec(H) dot dif vec(s) = i_("encl") = N dot i $
-
-De magnetische veldsterkte $H$ is dus onafhankelijk van het materiaal ($mu_r$) en wordt enkel bepaald door de aangelegde stroom en de geometrie (lus).
-
-#theorie(title: "Vocabulaire")[
-  #figure(
-    image("assets/termen.png", width: 12cm),
-    caption: [termen],
-    label: <fig:termen>,
-  )
-]
+#figure(
+  image("assets/termen.png", width: 12cm),
+  caption: [Overzicht van magnetische grootheden, eenheden en wetmatigheden.],
+  label: <fig:termen>,
+)
 
 
 == Magnetische circuits
 
-#wrap-figure(
-  image("assets/magnetische kring.png", width: 5cm),
+#figure(
+  image("assets/magnetische kring.png", width: 8cm),
   caption: [magnetische kring],
   label: <fig:magnetische-kring>,
-)[
+)
 
   * Materiaal*
   $ B = mu H = mu_r mu_0 H $
@@ -245,7 +225,7 @@ De magnetische veldsterkte $H$ is dus onafhankelijk van het materiaal ($mu_r$) e
   $ Phi = B A_C $
   met $A_C$ de doorsnede van de kern
 
-]
+
 
 === De wet van Hopkinson
 

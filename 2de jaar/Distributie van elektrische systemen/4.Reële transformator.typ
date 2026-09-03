@@ -38,7 +38,7 @@ $
 $phi$ hebben we vorig hoofdstuk gezien en is de flux doorheen de kern.
 
 #figure(
-  image("assets/Fluxherhaling.png", width: 5cm),
+  image("assets/Fluxherhaling.png", width: 8cm),
   caption: [Fluxherhaling],
   label: <fig:Fluxherhaling>,
 )
@@ -98,7 +98,7 @@ $ B = phi/A_c $
 Dit verandert onze BH-curve naar dit:
 
 #figure(
-  image("assets/Flux-MMF.png", width: 5cm),
+  image("assets/Flux-MMF.png", width: 8cm),
   caption: [Flux-MMF],
   label: <fig:Flux-MMF>,
 )
@@ -206,7 +206,7 @@ Afhankelijk van het type materiaal dat je gebruikt zijn er ook veranderingen.
 ]
 Je ziet het hier getekend in gestreept blauw.
 #figure(
-  image("assets/fundamenteel component.png", width: 7cm),
+  image("assets/fundamenteel component.png", width: 8cm),
   caption: [fundamenteel component],
   label: <fig:fundamenteel-component>,
 )
@@ -391,38 +391,35 @@ Met E de spanning over de ideale transformator, met de ratio's tussen $E_1$ en $
 
 $ E_1 / E_2 = N_1 / N_2 $
 
-=== De volledige reële transformator <sec:full-reële-transformator>
-We kunnen nu alles samensteken. Dus all onze verliezen van onze core en onze windingen.
+=== Het volledige T-vervangingsschema van de reële transformator <sec:full-reële-transformator>
 
-Dit is:
-
-- *Core-verliezen* (Parallel tak)
-  - Flux verliezen door hysteresis en eddy currents in de kern => $R_c$
-  - Magnetisatiestroom nodig voor de opbouw van de flux (finite permeabiliteit) => $L_m$
-- *Winding verliezen* (Serie tak)
-  - Ohmse verliezen door de weerstand van de wikkelingen => $R_1$ en $R_2$
-  - Lekverliezen door flux die niet beide wikkelingen koppelt (lek-inductanties) => $L_1$ en $L_2$
-
+Door alle niet-ideale fysische verschijnselen samen te voegen met de ideale kerntransformator ontstaat het klassieke *T-vervangingsschema*:
 
 #figure(
-  image("assets/full reële transformer.png", width: 12cm),
-  caption: [full reële transformer],
+  image("assets/full reële transformer.png", width: 13cm),
+  caption: [Het volledige T-vervangingsschema met serietakken (wikkelingsverliezen en lekreactanties) en parallelle dwarstak (kernverliezen).],
   label: <fig:full-reële-transformer>,
 )
 
-Je krijg met alle phasors samen dan dit phasor diagram:
+Elke component in dit schema vertegenwoordigt een concreet fysisch fenomeen:
+
++ *Primaire serietak ($R_1$ en $X_(sigma 1) = omega L_(sigma 1)$)*:
+  - $R_1$: Ohmse weerstand van de primaire koperdraad ($I_1^2 R_1$ jouleverliezen).
+  - $X_(sigma 1)$: Primaire lekreactantie ten gevolge van strooiflux $Phi_(sigma 1)$ die door de lucht sluit en niet koppelt met de secundaire wikkeling.
++ *Parallelle dwarstak ($R_(f e)$ en $X_m = omega L_m$)*:
+  - $R_(f e)$ (ijzerweerstand): Modelleert het actieve kernverlies door hysterese en wervelstromen ($P_(f e) = E_1^2 / R_(f e)$).
+  - $X_m$ (hoofdreactantie): Modelleert de reactieve magnetisatiestroom $I_m$ die nodig is om de hoofdmegnetische flux in de kern op te wekken door de eindige reluctantie ($cal(R)_c > 0$).
++ *Secundaire serietak ($R_2$ en $X_(sigma 2) = omega L_(sigma 2)$)*:
+  - $R_2$: Ohmse weerstand van de secundaire wikkeling ($I_2^2 R_2$ koperverliezen).
+  - $X_(sigma 2)$: Secundaire lekreactantie veroorzaakt door secundaire strooiflux $Phi_(sigma 2)$.
++ *Ideale kerntransformator ($N_1 : N_2$)*:
+  - Verzorgt de ideale spannings- en stroomtransformatie tussen de geïnduceerde EMK's: $E_1 / E_2 = N_1 / N_2 = a$.
 
 #figure(
-  image("assets/Phasor diagram total reël transformator.png", width: 8cm),
-  caption: [Phasor diagram total reël transformator],
+  image("assets/Phasor diagram total reël transformator.png", width: 10cm),
+  caption: [Fasordiagram van de reële belaste transformator: spanningsvallen $R I$ en $j X I$ toegevoegd aan de EMK $E$.],
   label: <fig:Phasor-diagram-total-reël-transformator>,
 )
-
-=== Vervangingsschema <sec:equivalent-schema>
-
-Nu hebben we een reël schema gemaakt die alle verliezen tonen van de transformator.
-
-Als laatste willen we nog graag ons symbool van de transformator wegdoen.
 
 ==== Primary side <sec:primary-side>
 
@@ -571,7 +568,7 @@ Deze test wordt gebruikt om de *serie-elementen* van het equivalent schema te be
 )
 
 #wrap-figure(
-  image("assets/Process resultaat.png", width: 6cm),
+  image("assets/Process resultaat.png", width: 9cm),
   caption: [Resultaat van de meting],
   label: <fig:Process-resultaat>,
 )[

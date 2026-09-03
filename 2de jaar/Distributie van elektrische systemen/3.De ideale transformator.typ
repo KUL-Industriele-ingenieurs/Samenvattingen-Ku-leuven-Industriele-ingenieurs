@@ -6,7 +6,7 @@
 Hier nemen we de transformator zonder verliezen: alle flux blijft in de kern, de wikkelingen hebben geen weerstand.
 
 #wrap-figure(
-  image("assets/idealtransform.png", width: 5cm),
+  image("assets/idealtransform.png", width: 7cm),
   caption: [idealtransform],
   label: <fig:idealtransform>,
 )[We leggen een *AC-spanning* aan op de primaire wikkeling. Hierdoor ontstaat er een *wisselende magnetische flux* in de kern. Deze wisselende magnetische flux induceert dan weer een *wisselende spanning* op de secundaire wikkeling.\ Dit is het principe van de *elektromagnetische inductie*.
@@ -81,7 +81,7 @@ $ phi = V_1/(omega N_1) sin(omega t) = V_2/(omega N_2) sin(omega t) $
 Er is geen belasting (open keten) aangesloten op de secundaire wikkeling. De enige "weerstand" die overblijft is de magnetische weerstand (reluctantie $R_c$) van de kern.
 
 #figure(
-  image("assets/no load.png", width: 6cm),
+  image("assets/no load.png", width: 8cm),
   caption: [no load],
   label: <fig:no-load>,
 )
@@ -92,42 +92,36 @@ $N_1 i_1 - N_2 i_2 = H l = phi dot R_c$
 
 maar we weten dat er geen load is op de secundaire winding, dus $i_2 = 0$.
 
-$ i_1 = phi dot R_c / N_1 $
-
-We hebben een ideale transformator, dus $R_c = 0 (mu -> infinity)$ dus $arrow.r.double$ $i_1 = 0$.
-
-=== Loaded
-
-
-#wrap-figure(
-  image("assets/loaded-transformer.png", width: 6cm),
-  caption: [loaded-transformer],
-  label: <fig:loaded-transformer>,
-)[
-  Omdat er een belasting is, kan er nu een secundaire stroom $i_2$ lopen.
-
-  Doordat de kern ideaal is ($R_c = 0$), zegt de wet van Hopkinson dat $N_1 i_1 - N_2 i_2 = 0$. Hieruit volgt direct de stroomverhouding:
-
-  $ i_2 = N_1/N_2 i_1 $
-
-  Terwijl de spanning meeschaalt met de windingen, schaalt de stroom dus omgekeerd evenredig:
-
-  $ v_2 = N_2/N_1 v_1 $
+#theorie(title: "De vier fundamentele aannames van de ideale transformator")[
+  + *Geen koperverliezen ($R_1 = R_2 = 0$)*: De wikkelingen bestaan uit ideale supergeleiders zonder ohms vermogensverlies.
+  + *Oneindige permeabiliteit ($mu -> infinity arrow.r.double cal(R)_c = 0$)*: Er is geen stroom nodig om de magnetische flux in de kern op te wekken ($I_m = 0$).
+  + *Geen lekflux ($k = 1$)*: Alle magnetische fluxlijnen blijven opgesloten binnen de kern en koppelen beide spoelen integraal ($L_(sigma 1) = L_(sigma 2) = 0$).
+  + *Geen ijzerverliezen ($P_(f e) = 0$)*: Nul wervelstroomverlies en nul hystereseverlies in de kern.
 ]
 
-#figure(
-  image("assets/loaded transformer.png", width: 5cm),
-  caption: [loaded transformer],
+=== Belaste transformator (Loaded transformer)
+
+#wrap-figure(
+  image("assets/loaded-transformer.png", width: 7cm),
+  caption: [Ideale transformator onder belasting met overbrengingsverhouding $a = N_1 / N_2$.],
   label: <fig:loaded-transformer>,
-)
+)[
+  Zodra een belasting $Z_L$ wordt aangesloten op de secundaire klemmen, vloeit er een secundaire stroom $i_2$.
 
-Om het effect van deze belastingen op de transformator beter te begrijpen, moeten we de theorie rond wisselstroom herhalen.
+  Omdat de ideale kern geen reluctantie bezit ($cal(R)_c = 0$), dicteert de wet van Hopkinson dat de totale magnetomotorische kracht nul moet blijven:
+  $ N_1 i_1 - N_2 i_2 = 0 arrow.r.double i_1 = frac(N_2, N_1) i_2 = 1/a i_2 $
 
-== Phasors (herhaling)
+  De transformator transformeert spanning evenredig met de windingen, en stroom omgekeerd evenredig:
+  $ a = frac(N_1, N_2) = frac(v_1, v_2) = frac(i_2, i_1) $
 
-Phasors helpen om wisselstromen en wisselspanningen eenvoudig voor te stellen en te berekenen. We nemen aan bij phasoren dat de frequentie $f$ gelijk blijft over verschillende stromen en voltages. Als dit zo is dan kunnen we het begin van de stroom of voltage weergeven als een vector in het reël $RR$ en imaginair deel $ZZ$. _Zie wisselstroom_ waar het ook veel is toegepast.
+  Het schijnbaar vermogen blijft behouden: $S_1 = v_1 i_1 = v_2 i_2 = S_2$.
+]
 
-$ e^(j theta) = underbrace(cos(theta), "Reëel") + j underbrace(sin(theta), "Imaginair") $
+== Fasorvoorstelling en impedantietransformatie
+
+Fasoren laten toe om sinusvormige wisselstromen en wisselspanningen met een constante hoekfrequentie $omega = 2 pi f$ algebraïsch voor te stellen in het complexe vlak $CC$:
+
+$ underline(X) = X e^(j theta) = underbrace(X cos(theta), "Reëel" (Re)) + j underbrace(X sin(theta), "Imaginair" (Im)) $
 
 
 #align(center)[
@@ -149,7 +143,7 @@ $ e^(j theta) = underbrace(cos(theta), "Reëel") + j underbrace(sin(theta), "Ima
   Als we dit plotten krijgen we dit:
 
   #figure(
-    image("assets/plot v phi.png", width: 5cm),
+    image("assets/plot v phi.png", width: 4cm),
     caption: [plot v phi],
     label: <fig:plot-v-phi>,
   )
