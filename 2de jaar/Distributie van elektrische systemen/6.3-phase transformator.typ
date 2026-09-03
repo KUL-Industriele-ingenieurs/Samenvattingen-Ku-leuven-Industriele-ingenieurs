@@ -4,21 +4,21 @@
 
 Alles dat we hiervoor geleerd hebben over het #keyterm[versimpeld model] van transformatoren geldt ook voor #keyterm[3-phase transformatoren]. Het enige verschil is dat we nu 3 transformatoren hebben in plaats van 1.
 
-== 3-fase herhaling <sec:3-fase-herhaling>
+== Herhaling driefasig <sec:3-fase-herhaling>
 
 Dit hebben we al gezien in wisselstromen en wordt ook nog herhaald in netten. Maar het is belangrijk om goed te snappen voor 3-fase transformatoren.
 
-=== WYE connectie <sec:wye-connectie>
+=== Wye connectie <sec:wye-connectie>
 
 #wrap-figure(
   image("assets/WYE-connectie.png", width: 10cm),
-  caption: [WYE-connectie],
+  caption: [Sterschakeling],
   label: <fig:WYE-connectie>,
 )[
-  Een #keyterm[wye connectie] (of *sterverbinding*) kenmerkt zich door een centraal *sterpunt* (de *neutraal*) waar de drie fasewikkelingen samenkomen.
+  Een #keyterm[sterschakeling] (wye) kenmerkt zich door een centraal *sterpunt* (de *neutraal*) waar de drie fasewikkelingen samenkomen.
 
-  - *Voltage tot de neutraal* (#keyterm[fasespanning], $V_f$ of $V_"LN"$): De spanning gemeten over één wikkeling, tussen een fase en het *sterpunt*.
-  - *Lijn voltage* (#keyterm[lijnspanning], $V_l$ of $V_"LL"$): De spanning gemeten tussen twee actieve lijnen/fasen.
+  - #keyterm[Fasespanning] ($V_f$ of $V_"LN"$): gemeten over één wikkeling, tussen een fase en het sterpunt.
+  - #keyterm[Lijnspanning] ($V_l$ of $V_"LL"$): gemeten tussen twee fasen.
 
   In een #keyterm[gebalanceerd systeem] zijn de verhoudingen tussen lijn- en fasewaarden als volgt:
 
@@ -40,13 +40,12 @@ Dit hebben we al gezien in wisselstromen en wordt ook nog herhaald in netten. Ma
 
 #wrap-figure(
   image("assets/Delta-connectie.png", width: 10cm),
-  caption: [Delta-connectie],
+  caption: [Driehoekschakeling],
   label: <fig:Delta-connectie>,
 )[
-  Een #keyterm[delta connectie] (of *driehoeksverbinding*) kenmerkt zich doordat de drie fasewikkelingen in een *gesloten lus* staan. Elke wikkeling is aangesloten tussen twee actieve lijnen, hierdoor is er geen *neutraal* nodig of aanwezig.
+  Een #keyterm[driehoekschakeling] (delta) kenmerkt zich doordat de drie fasewikkelingen in een *gesloten lus* staan. Elke wikkeling is aangesloten tussen twee actieve lijnen, hierdoor is er geen *neutraal* nodig of aanwezig.
 
-  - #keyterm[Fasespanning] ($V_f$): De spanning gemeten over één wikkeling.
-  - *Lijn voltage* (#keyterm[lijnspanning], $V_l$ of $V_"LL"$): De spanning gemeten tussen twee actieve lijnen/fasen.
+  - #keyterm[Fasespanning] ($V_f$): gemeten over één wikkeling. Hier is dat meteen de lijnspanning, want elke wikkeling hangt tussen twee fasen.
 
   In een #keyterm[gebalanceerd systeem] zijn de verhoudingen tussen lijn- en fasewaarden als volgt:
 
@@ -136,7 +135,7 @@ Dit hebben we al gezien in wisselstromen en wordt ook nog herhaald in netten. Ma
 Je hebt nog veel andere soorten constructie types zoals #keyterm[Shell-type] en #keyterm[5-leg-core-type].
 
 #figure(
-  image("assets/andere transformator constructie types.png", width: 8cm),
+  image("assets/andere transformator constructie types.png", width: 15cm),
   caption: [andere transformator constructie types],
   label: <fig:andere-transformator-constructie-types>,
 )
@@ -146,7 +145,7 @@ Waarom zouden we deze nodig hebben als 3-leg core-type al duid dat de som van de
 Dat is alleen voor #keyterm[gebalanceerde] systemen. Als het systeem niet gebalanceerd is, zijn andere types ook handig.
 
 
-== Winding configuraties <sec:winding-configuraties>
+== Wikkelingsconfiguraties <sec:winding-configuraties>
 
 #wrap-figure(
   image("assets/Wye-Wye connectie.png", width: 8cm),
@@ -294,6 +293,104 @@ $ k = frac(V_A, V_a) = frac(V_(A B), V_(a b)) = 1/sqrt(3) frac(N_1, N_2) $
 ]
 
 
+=== De vier combinaties <sec:vier-combinaties>
+
+Primair en secundair kunnen elk in ster of in driehoek staan, dus er zijn vier combinaties. De hoofdletter is de #strong[hoogspannings]zijde, de kleine letter de laagspanningszijde, en `n` erachter betekent dat het sterpunt uitgevoerd is.
+
+#table(
+  columns: (auto, auto, auto, 1fr),
+  align: (left, center, center, left),
+  stroke: none,
+  inset: 6pt,
+  table.hline(stroke: 1pt),
+  table.header([*Groep*], [*HV*], [*LV*], [*Kenmerk*]),
+  table.hline(stroke: 0.5pt),
+  [`Yy0`], [ster], [ster], [Geen faseverschuiving. Beide sterpunten kunnen uitgevoerd worden (`YNyn0`).],
+  [`Dy11`], [driehoek], [ster], [Secundair loopt $30 degree$ vóór. De driehoek vangt de derde harmonische op, de ster geeft een nulgeleider.],
+  [`Yd1`], [ster], [driehoek], [Secundair loopt $30 degree$ achter. Typisch aan de zendzijde van een transmissienet.],
+  [`Dd0`], [driehoek], [driehoek], [Geen faseverschuiving, geen nulpunt aan beide zijden.],
+  table.hline(stroke: 1pt),
+)
+
+#belangrijk[De $30 degree$ komt er telkens omdat je aan één zijde lijnspanningen met fasespanningen vergelijkt.] Bij ster is de lijnspanning de vectoriële som van twee fasespanningen, en die staat $30 degree$ verdraaid. Bij driehoek vallen lijn- en fasespanning samen.
+
+#align(center)[
+  #grid(
+    columns: 2,
+    gutter: 0.8cm,
+    figure(
+      image("assets/DEE_dy_variant.png", width: 11cm),
+      caption: [Een andere manier om de driehoek te sluiten geeft een ánder kloknummer.],
+      label: <fig:dy-variant>,
+    ),
+    figure(
+      image("assets/DEE_yd_voorbeeld.png", width: 11cm),
+      caption: [Ster-driehoek: de secundaire lijnspanning is meteen de wikkelingsspanning.],
+      label: <fig:yd-voorbeeld>,
+    ),
+  )
+]
+
+#waarschuwing[
+  Dezelfde twee wikkelingssoorten kunnen #belangrijk[verschillende kloknummers] geven, afhankelijk van hoe je de driehoek sluit en welke klemmen je aan elkaar knoopt. `Dy1` en `Dy11` gebruiken allebei een driehoek en een ster. Lees het kloknummer dus altijd uit de #strong[tekening] af, en gok het niet uit de lettercombinatie.
+]
+
+#oefening(title: "Yd1: spanningen, stromen en verhouding")[
+  *Gegeven.* Een `Yd1`-transformator hangt aan een lijnspanning van $33 "kV"$ en trekt $15 "A"$ bij $"PF" = 1$. De windingsverhouding is $N_1 \/ N_2 = 8$.
+
+  *Gevraagd.* De secundaire wikkelings- en lijnspanning, de secundaire wikkelings- en lijnstroom, de faseverschuiving, en de transformatieverhouding $k$.
+
+  *Stap 1: van lijn naar wikkeling aan de primaire zijde.* De primaire is een #strong[ster], dus de wikkeling ziet de fasespanning:
+  $ V_(1,"wik") = V_(1 ell) / sqrt(3) = (33 000)/sqrt(3) = 19 053 "V" $
+
+  *Stap 2: door de transformator.* De windingsverhouding werkt op de wikkelingsspanningen:
+  $ V_(2,"wik") = V_(1,"wik") / (N_1 \/ N_2) = (19 053)/8 = 2382 "V" $
+
+  *Stap 3: van wikkeling naar lijn aan de secundaire zijde.* De secundaire is een #strong[driehoek], en daar is de lijnspanning gelijk aan de wikkelingsspanning:
+  $ V_(2 ell) = V_(2,"wik") = 2382 "V" $
+
+  *Stap 4: de stromen, in omgekeerde richting.* Primair in ster: de lijnstroom is de wikkelingsstroom, dus $I_(1,"wik") = 15 "A"$. De windingsverhouding werkt omgekeerd op de stroom:
+  $ I_(2,"wik") = I_(1,"wik") dot (N_1 \/ N_2) = 15 dot 8 = 120 "A" $
+
+  Secundair in driehoek, dus de lijnstroom is $sqrt(3)$ keer de wikkelingsstroom:
+  $ I_(2 ell) = sqrt(3) dot 120 = 208 "A" $
+
+  *Stap 5: faseverschuiving.* Kloknummer $1$ betekent dat de secundaire $1 times 30 degree = 30 degree$ #strong[achterloopt] op de primaire. Dat geldt voor de spanningen én voor de stromen.
+
+  *Stap 6: de transformatieverhouding.* $k$ gaat over de #strong[lijn]grootheden, niet over de windingen:
+  $ k = V_(1 ell) / V_(2 ell) = (33 000)/2382 = #"13,9" $
+
+  Controle via de stromen: $I_(2 ell) \/ I_(1 ell) = 208 \/ 15 = #"13,9"$. #belangrijk[Merk op dat $k = #"13,9"$ niet gelijk is aan $N_1 \/ N_2 = 8$.] Het verschil is precies de $sqrt(3)$ die aan de sterzijde tussen lijn en wikkeling zit.
+]
+
+=== Zigzag (Yzn11) <sec:zigzag>
+
+Bij een #keyterm[zigzag] is elke secundaire fase in twee halve wikkelingen gesplitst die op #strong[twee verschillende kernbenen] zitten, in tegengestelde zin in serie. De secundaire fasespanning is dus het verschil van twee spanningen die $120 degree$ uit elkaar liggen, en niet één wikkelingsspanning zoals bij een gewone ster.
+
+#figure(
+  image("assets/DEE_zigzag_Yzn11.png", width: 100%),
+  caption: [Zigzag: de fasordriehoek primair, het wikkelingsschema, en de resulterende secundaire ster. De $n$-klem is uitgevoerd, vandaar `Yzn11`.],
+  label: <fig:zigzag-Yzn11>,
+)
+
+De verhouding volgt uit dat verschil. Noem $N_2$ het totale aantal windingen per secundaire fase, dus $N_2 \/ 2$ per halve wikkeling:
+
+$ V_a = (N_2 \/ 2)/N_1 (V_A - V_B) $
+
+$V_A$ en $V_B$ liggen $120 degree$ uit elkaar, dus $|V_A - V_B| = sqrt(3) V_A$:
+
+$ V_a = sqrt(3)/2 N_2/N_1 V_A $
+
+$ k = V_A/V_a = V_B/V_b = V_C/V_c = 2/sqrt(3) N_1/N_2 $
+
+met: $k$ = transformatieverhouding $[-]$, $N_1$ = windingen per primaire fase $[-]$, $N_2$ = windingen per secundaire fase, samen over de twee halve wikkelingen $[-]$.
+
+Tegenover een `Yy0` met dezelfde windingen ligt de secundaire spanning dus een factor $sqrt(3)\/2 = #"0,87"$ lager. Voor dezelfde spanning heb je $2\/sqrt(3) = #"1,15"$ keer zoveel secundaire windingen nodig.
+
+#waarschuwing[
+  Slide 37 van deck 05 zegt letterlijk dat de zigzag #strong[buiten de leerstof] valt; de slides zitten verborgen in de pptx. Ze staan hier voor de volledigheid.
+]
+
 === Voorbeeld oefeningen <sec:voorbeeld-oefeningen>
 
 #voorbeeld(title: "Nog een Delta Wye")[
@@ -304,7 +401,7 @@ $ k = frac(V_A, V_a) = frac(V_(A B), V_(a b)) = 1/sqrt(3) frac(N_1, N_2) $
 
   $ k = frac(V_A, V_a) = frac(V_(A B), V_(a b)) = 1/sqrt(3) frac(N_1, N_2) $
   #figure(
-    image("assets/Nog een Delta Wye.png", width: 10cm),
+    image("assets/Nog een Delta Wye.png", width: 12cm),
     caption: [Nog een Delta Wye],
     label: <fig:Nog-een-Delta-Wye>,
   )
@@ -321,7 +418,7 @@ $ k = frac(V_A, V_a) = frac(V_(A B), V_(a b)) = 1/sqrt(3) frac(N_1, N_2) $
 
 
   #figure(
-    image("assets/Wye-Delta.png", width: 5cm),
+    image("assets/Wye-Delta.png", width: 12cm),
     caption: [Wye-Delta],
     label: <fig:Wye-Delta>,
   )
@@ -336,7 +433,7 @@ $ k = frac(V_A, V_a) = frac(V_(A B), V_(a b)) = 1/sqrt(3) frac(N_1, N_2) $
   $ V_(A B) = (-V_A) - (-V_B) = V_B - V_A $
 
   #figure(
-    image("assets/Oplossing Wye-Delta.png", width: 5cm),
+    image("assets/Oplossing Wye-Delta.png", width: 10cm),
     caption: [Oplossing Wye-Delta],
     label: <fig:Oplossing-Wye-Delta>,
   )

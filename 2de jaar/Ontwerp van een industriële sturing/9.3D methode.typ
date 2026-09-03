@@ -3,7 +3,7 @@
 = 3D-methode <ch:3d-methode>
 
 
-Bij industriële sturingen moeten pneumatische cilinders vaak in een vaste opeenvolging bewegen. Een cilinder uitsturen is makkelijk; het probleem is de *volgorde*: hoe zorg je ervoor dat cilinder B pas vertrekt wanneer A klaar is, en dat de sturing niet vastloopt wanneer twee verschillende stappen dezelfde sensoren zien? De 3D-methode is de grafische manier om daar de minimale schakelvoorwaarden uit te halen.
+Pneumatische cilinders moeten vaak in een vaste opeenvolging bewegen. Een cilinder uitsturen is makkelijk; het probleem is de *volgorde*: hoe vertrekt B pas als A klaar is, zonder dat de sturing vastloopt wanneer twee stappen dezelfde sensorstand delen?
 
 == Bewegingsreeksen noteren
 
@@ -18,7 +18,7 @@ De detectie schrijven we met kleine letters en een index: $a_0$ is de sensor die
 
 Bouw je een circuit puur op de eindeloopsensoren $a_0, a_1, b_0, b_1$, dan kan er *signaaloverlapping* optreden: twee verschillende fasen van de cyclus zien exact dezelfde sensorwaarden, maar moeten een andere actie starten.
 
-Neem $A^+ B^+ B^- A^-$. Zowel vóór stap 2 ($B^+$) als vóór stap 4 ($A^-$) geldt $a_1 = 1$ en $b_0 = 1$. De sturing krijgt dus twee keer precies dezelfde input, maar moet de eerste keer $B^+$ bekrachtigen en de tweede keer $A^-$. Zonder extra maatregel worden beide spoelen tegelijk bekrachtigd en loopt de sturing vast.
+Neem $A^+ B^+ B^- A^-$. Vóór stap 2 ($B^+$) én vóór stap 4 ($A^-$) geldt $a_1 = 1$ en $b_0 = 1$. Dezelfde input, maar de eerste keer moet $B^+$ aan en de tweede keer $A^-$. Zonder extra maatregel worden beide spoelen tegelijk bekrachtigd en loopt het ventiel vast.
 
 == Het assenstelsel van de 3D-methode
 
@@ -44,9 +44,9 @@ De kubus ziet er grafisch uit, maar je lost gewoon een *stelsel* op. Zet dat eer
 
 *De onbekenden.* Voor elke spoel zoek je één booleaanse functie van die $n$ variabelen, bijvoorbeeld $A^+ = f(a, b, c)$. Bij monostabiele ventielen zijn dat $n$ onbekende functies (enkel de "+"-spoelen), bij bistabiele $2n$.
 
-*De vergelijkingen.* Een volledige cyclus telt $2n$ stappen: elke cilinder gaat één keer uit en één keer in. Op elke stap leg je vast welke spoel aan moet staan en welke niet. Dat zijn dus $2n$ voorwaarden, en elke voorwaarde hoort bij één specifiek hoekpunt.
+*De vergelijkingen.* Een cyclus telt $2n$ stappen: elke cilinder gaat één keer uit en één keer in. Elke stap legt vast welke spoel aan moet, dus $2n$ voorwaarden, elk op één specifiek hoekpunt.
 
-Daar zit de oplosbaarheidsvoorwaarde in. Elke voorwaarde legt de functie vast op één punt van haar domein. Komt hetzelfde hoekpunt twee keer voor in de cyclus met een *andere* gevraagde actie, dan staan er twee tegenstrijdige vergelijkingen met hetzelfde linkerlid. Het stelsel is dan strijdig en er bestaat geen oplossing. Precies dat is de signaaloverlapping uit de vorige paragraaf.
+Daar zit de oplosbaarheidsvoorwaarde. Elke voorwaarde legt de functie vast op één punt van haar domein. Komt hetzelfde hoekpunt twee keer voor met een *andere* gevraagde actie, dan zijn de vergelijkingen tegenstrijdig en is het stelsel strijdig. Dat is de signaaloverlapping van hierboven.
 
 Je hebt dus evenveel onderscheidbare toestanden nodig als je stappen hebt:
 
@@ -76,7 +76,7 @@ Dat is een noodzakelijke voorwaarde, geen voldoende voorwaarde: de stappen moete
   [4], [8], [16], [ruim voldoende speling],
 )
 
-*Wat een geheugen doet.* Een geheugen $K_1$ is een extra variabele, dus een extra as. Het domein verdubbelt van $2^n$ naar $2^(n+1)$ hoekpunten. Je betaalt daarvoor: $K_1$ is zelf een nieuwe onbekende, en je moet er dus ook een nieuwe vergelijking bij schrijven (zijn set- en resetvoorwaarde). Bovendien worden het zetten en resetten van $K_1$ twee extra stappen in het pad. De telling wordt:
+*Wat een geheugen doet.* $K_1$ is een extra variabele, dus een extra as: het domein verdubbelt van $2^n$ naar $2^(n+1)$ hoekpunten. De prijs is dat $K_1$ zelf een onbekende is, waarvoor je een set- en resetvoorwaarde moet schrijven.
 
 $ 2n + 2 <= 2^(n+1) $
 
@@ -86,8 +86,8 @@ met:
 
 Voor de L-cyclus $A^+ B^+ B^- A^-$ met $n = 2$ geeft dat $6 <= 8$, en dat klopt: in @fig:3d-k1-waarom zie je rechts een pad van zes ribben over zes verschillende hoekpunten van de kubus.
 
-#concept(title: "Key insight")[
-  Onbekenden en vergelijkingen moeten in evenwicht blijven. Zolang elke stap op een eigen hoekpunt valt, ligt elke spoelfunctie eenduidig vast en is het stelsel oplosbaar. Zodra twee stappen op hetzelfde hoekpunt vallen, is het stelsel strijdig en heb je een extra onbekende nodig, die zijn eigen vergelijking meebrengt. Een geheugen kost je dus één vergelijking, maar verdubbelt je aantal toestanden.
+#concept(title: "De kern")[
+  Valt elke stap op een eigen hoekpunt, dan ligt elke spoelfunctie eenduidig vast en is het stelsel oplosbaar. Vallen twee stappen op hetzelfde hoekpunt, dan is het strijdig en heb je een extra onbekende nodig. Een geheugen kost je één vergelijking, maar verdubbelt je aantal toestanden.
 ]
 
 == Stappenplan
@@ -189,9 +189,9 @@ De zelfhoudtak is niet optioneel: zonder die tak valt de spoel af zodra de cilin
 
 == Wanneer heb je een geheugen $K_1$ nodig?
 
-Niet elke cyclus is combinatorisch. Bekijk opnieuw $A^+ B^+ B^- A^-$. In *2D botst* het pad: de sensorstand $a_1 b_0$ komt twee keer voor, na $A^+$ (je wil $B^+$) en na $B^-$ (je wil $A^-$). Zelfde input, andere actie, dus de sturing weet niet wat te doen.
+Niet elke cyclus is combinatorisch. Bij $A^+ B^+ B^- A^-$ botst het pad in *2D*: de sensorstand $a_1 b_0$ komt twee keer voor, na $A^+$ (je wil $B^+$) en na $B^-$ (je wil $A^-$).
 
-De oplossing is een geheugen $K_1$, en dat is letterlijk een *extra as*. Hij tilt de twee botsende punten uit elkaar: het ene wordt $(a_1 b_0, K_1 = 0)$, het andere $(a_1 b_0, K_1 = 1)$. Daarom heet het de 3D-methode: het geheugen is de derde dimensie.
+Het geheugen $K_1$ is een *extra as* die de twee botsende punten uit elkaar tilt: $(a_1 b_0, K_1 = 0)$ tegenover $(a_1 b_0, K_1 = 1)$. Vandaar de naam 3D-methode.
 
 #figure(
   image("assets/OIS_3D_methode_K1_waarom.png", width: 13cm),
@@ -200,7 +200,7 @@ De oplossing is een geheugen $K_1$, en dat is letterlijk een *extra as*. Hij til
 )
 
 #figure(
-  scale(50%, reflow: true, merman.mermaid(```
+  scale(40%, reflow: true, merman.mermaid(```
   flowchart TD
     S["Deel de cyclus op in groepen"] --> Q{"Herhaalt een letter binnen een groep?"}
     Q -->|Nee| C["Combinatorisch, geen geheugen nodig"]
@@ -227,7 +227,7 @@ Zit het geheugen $K_1$ er eenmaal in, dan houdt het zichzelf vast tot de resetvo
 
 === Groepen bepalen (cascademethode) <sec:groepen>
 
-Om signaaloverlapping te vermijden zonder extra elektronica splits je de cyclus in *groepen*. De regel is eenvoudig: een cilinder mag binnen één groep *nooit twee keer voorkomen*. Zodra een letter zich herhaalt, trek je een grens en start je een nieuwe groep.
+Om signaaloverlapping te vermijden zonder extra elektronica splits je de cyclus in *groepen*: een cilinder mag binnen één groep *nooit twee keer voorkomen*. Herhaalt een letter zich, dan trek je een grens en start je een nieuwe groep.
 
 Toegepast op $A^+ B^+ B^- A^-$:
 
@@ -253,8 +253,8 @@ met:
 - $K_1$: groeplijn II is actief, het geheugen is gezet $[-]$
 - $a_1, b_0$: overnamevoorwaarden binnen de groep $[-]$
 
-#concept(title: "Key insight")[
-  Zodra een letter zich *herhaalt* binnen een groep knip je in groepen, en per knip komt er één geheugen bij. Dat geheugen onthoudt "in welke ronde zit ik", precies de informatie die het 2D-pad niet had. Visueel voegt het een dimensie toe waardoor het gekruiste pad terug een nette, niet-botsende wandeling wordt.
+#concept(title: "De kern")[
+  Per knip komt er één geheugen bij, en dat onthoudt "in welke ronde zit ik" — precies de informatie die het 2D-pad miste. Daarmee wordt het gekruiste pad weer een niet-botsende wandeling.
 ]
 
 == Karnaughkaarten bij de 3D-methode <sec:karnaugh>
