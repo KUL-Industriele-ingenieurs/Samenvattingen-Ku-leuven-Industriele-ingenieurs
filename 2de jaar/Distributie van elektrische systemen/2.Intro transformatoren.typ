@@ -4,15 +4,17 @@
 
 #import "../../school-template.typ": *
 
-= Infomatie Transformatoren
+= Inleiding en Magnetische Kringen <ch:intro-magnetisme>
 
-*Interresante eigenschappen transformator*
+== Waarom transformeren? <sec:waarom-transformeren>
 
-+ Je kunt bij wisselstroom de spanning veranderen met magnetische inductie.
-+ Er is geen verbinding tussen netwerken. Het wordt volledig via magnetische velden overgedragen
+*Interessante eigenschappen van de transformator:*
+
++ Bij wisselstroom kan de spanning eenvoudig getransformeerd worden via magnetische inductie.
++ *Galvanische scheiding*: Er is geen direct elektrisch contact tussen de netwerken; de energieoverdracht gebeurt zuiver via het wisselende magnetische veld.
 
 #wrap-figure(
-  image("assets/transformer.png", width: 6cm),
+  image("assets/transformer.png", width: 4.8cm),
   caption: [transformer],
   label: <fig:transformer>,
 )[
@@ -72,7 +74,7 @@
   label: <fig:ethernet>,
 )
 
-== Constructie Transformatoren
+== Basiselementen van de constructie
 
 #figure(
   image("assets/transformatie constructie.png", width: 10cm),
@@ -91,10 +93,9 @@
   Die gelaagde opbouw is geen toeval. Een massief blok ijzer zou in de wisselende flux grote #keyterm[wervelstromen] (eddy currents) rond laten lopen, en die verwarmen de kern zonder iets nuttigs te doen. Door de kern in plaatjes te snijden en die van elkaar te isoleren, krijgen de wervelstromen geen groot rondgaand pad meer. Zie @sec:eddy-currents.
 ]
 
-= Magnetische Circuits
+== Magnetostatica en de wetten van Maxwell <sec:magnetostatica>
 
-== Magnetostatica
-Dit stukje gaat over tijdinvariante dingen
+In dit onderdeel bestuderen we de tijdinvariante magnetische basisgrootheden ($vec(H)$, $vec(B)$, $Phi$) en de fundamentele wetten van Maxwell die de basis vormen voor transformatorwerking.
 
 === Herhaling
 
@@ -200,7 +201,7 @@ De werking van elk magnetisch circuit steunt op drie grootheden die elk een spec
 )
 
 
-== Magnetische circuits
+== Magnetische Kringen en de Wet van Hopkinson <sec:hopkinson>
 
 #figure(
   image("assets/magnetische kring.png", width: 8cm),

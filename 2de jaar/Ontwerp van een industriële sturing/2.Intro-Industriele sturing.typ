@@ -4,7 +4,9 @@
 
 #import "../../school-template.typ": *
 
-= Imports en Exports <chap:imports>
+= Inleiding tot Industriële Besturingssystemen <ch:intro-industriele-sturing>
+
+== Economische context: automatisering en export <chap:imports>
 
 Een land haalt zijn welvaart uit *export*: produceren en verkopen buiten de landsgrenzen. Wat je zelf niet maakt, moet je importeren. Maar slechts een deel van de beroepsbevolking draagt daar rechtstreeks aan bij; zorg, onderwijs en overheid houden het systeem draaiend zonder zelf te exporteren.
 
