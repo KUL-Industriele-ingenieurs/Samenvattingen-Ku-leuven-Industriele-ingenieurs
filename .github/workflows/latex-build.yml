@@ -297,7 +297,7 @@ jobs:
         name: Create Prerelease
         needs: [build, typst, collect]
         # Only create prereleases on pushes to main, and only if collect succeeded
-        if: always() && needs.collect.result == 'success' && github.event_name == 'push' && github.ref == 'refs/heads/main'
+        if: always() && needs.collect.result == 'success' && github.event_name == 'push' && github.ref == 'refs/heads/MAIN'
         runs-on: ubuntu-latest
         permissions:
             contents: write
