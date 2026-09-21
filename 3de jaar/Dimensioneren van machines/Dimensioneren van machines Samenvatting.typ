@@ -4,7 +4,7 @@
   title: "Dimensioneren van Machines Samenvatting",
   course: "Dimensioneren van Machines",
   authors: ("Ruben Ryckaert",),
-  academic_year: "2025-2026",
+  academic_year: "2026-2027",
 )
 
 // ============================================================================
