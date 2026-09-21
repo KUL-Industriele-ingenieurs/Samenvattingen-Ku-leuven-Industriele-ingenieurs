@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EEGO Flashcards — Eindige Elementen</title>
+<script>
+MathJax = {
+  tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']] },
+  options: { skipHtmlTags: ['script','noscript','style','textarea'] }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+<style>
+:root {
+  --bg: #0f1117;
+  --surface: #1a1d27;
+  --surface2: #222638;
+  --border: #2e3350;
+  --accent: #5b7fff;
+  --accent2: #7c6fff;
+  --green: #3ecf8e;
+  --red: #f66;
+  --yellow: #ffd166;
+  --text: #e8eaf6;
+  --muted: #8892b0;
+  --radius: 14px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; min-height: 100vh; }
+
+/* ── SETUP SCREEN ── */
+#setup { max-width: 760px; margin: 0 auto; padding: 40px 20px; }
+.logo { text-align: center; margin-bottom: 32px; }
+.logo h1 { font-size: 2rem; font-weight: 800; background: linear-gradient(135deg,#5b7fff,#a78bfa); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.logo p  { color: var(--muted); margin-top: 6px; }
+
+.card-setup { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin-bottom: 20px; }
+.card-setup h2 { font-size: 1rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 16px; }
+
+.topics-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+.chapter-header { grid-column: 1 / -1; font-size: .72rem; font-weight: 800; color: var(--accent2); text-transform: uppercase; letter-spacing: .10em; padding: 8px 4px 2px; border-bottom: 1px solid var(--border); margin-top: 6px; }
+.topic-chip { display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: var(--surface2); border: 2px solid var(--border); border-radius: 10px; cursor: pointer; transition: .15s; user-select: none; }
+.topic-chip:hover { border-color: var(--accent); }
+.topic-chip.selected { border-color: var(--accent); background: rgba(91,127,255,.13); }
+.topic-chip input[type=checkbox] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; cursor: pointer; }
+.topic-chip span { font-size: .88rem; line-height: 1.3; }
+.topic-count { font-size: .75rem; color: var(--muted); margin-left: auto; flex-shrink: 0; }
+
+.controls-row { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-end; }
+.control-group { display: flex; flex-direction: column; gap: 6px; }
+.control-group label { font-size: .82rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing:.04em; }
+.num-input { background: var(--surface2); border: 2px solid var(--border); color: var(--text); padding: 10px 14px; border-radius: 10px; font-size: 1rem; width: 110px; outline: none; }
+.num-input:focus { border-color: var(--accent); }
+
+.btn-primary { padding: 12px 32px; background: linear-gradient(135deg,var(--accent),var(--accent2)); color: #fff; border: none; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: .15s; }
+.btn-primary:hover { opacity: .88; transform: translateY(-1px); }
+.btn-primary:disabled { opacity: .35; cursor: not-allowed; transform: none; }
+.btn-select-all { padding: 7px 16px; background: transparent; border: 1px solid var(--border); color: var(--muted); border-radius: 8px; font-size: .82rem; cursor: pointer; transition: .15s; }
+.btn-select-all:hover { border-color: var(--accent); color: var(--text); }
+.topic-actions { display: flex; gap: 8px; margin-bottom: 12px; }
+
+/* ── GAME SCREEN ── */
+#game { display: none; max-width: 760px; margin: 0 auto; padding: 24px 20px; }
+
+.top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px; }
+.stat-pill { background: var(--surface); border: 1px solid var(--border); border-radius: 50px; padding: 7px 16px; font-size: .85rem; display: flex; align-items: center; gap: 8px; }
+.stat-pill .val { font-weight: 700; }
+.stat-pill .val.g { color: var(--green); }
+.stat-pill .val.r { color: var(--red); }
+.btn-quit { padding: 7px 16px; background: transparent; border: 1px solid var(--border); color: var(--muted); border-radius: 8px; font-size: .82rem; cursor: pointer; }
+.btn-quit:hover { border-color: var(--red); color: var(--red); }
+
+.progress-bar { height: 6px; background: var(--surface2); border-radius: 3px; margin-bottom: 24px; overflow: hidden; }
+.progress-fill { height: 100%; background: linear-gradient(90deg,var(--accent),var(--accent2)); border-radius: 3px; transition: width .4s ease; }
+
+.topic-badge { font-size: .78rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing:.06em; margin-bottom: 8px; opacity: .8; }
+.card-num { font-size: .82rem; color: var(--muted); margin-bottom: 18px; }
+
+/* FLIP CARD */
+.flip-container { perspective: 1200px; height: 360px; margin-bottom: 24px; cursor: pointer; }
+.flip-container.has-image { height: 420px; }
+.flip-inner { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform .5s cubic-bezier(.4,0,.2,1); }
+.flip-container.flipped .flip-inner { transform: rotateY(180deg); }
+.flip-face { position: absolute; inset: 0; backface-visibility: hidden; border-radius: var(--radius); padding: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.flip-front { background: var(--surface); border: 2px solid var(--border); }
+.flip-back  { background: var(--surface2); border: 2px solid var(--accent); transform: rotateY(180deg); overflow-y: auto; text-align: left; align-items: flex-start; justify-content: flex-start; }
+.flip-front .q-text { font-size: 1.15rem; font-weight: 600; line-height: 1.6; }
+.flip-hint { position: absolute; bottom: 14px; right: 18px; font-size: .75rem; color: var(--muted); display: flex; align-items: center; gap: 4px; }
+.flip-icon { font-size: 1.6rem; margin-bottom: 14px; }
+.flip-back .a-label { font-size: .75rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing:.06em; margin-bottom: 12px; }
+.flip-back .a-text { font-size: .95rem; line-height: 1.7; color: var(--text); }
+.flip-back .a-text ul { padding-left: 18px; }
+.flip-back .a-text li { margin-bottom: 4px; }
+.flip-back img { max-width: 100%; max-height: 200px; object-fit: contain; border-radius: 8px; margin-top: 12px; opacity: .92; }
+
+/* ACTION BUTTONS */
+.action-row { display: flex; gap: 16px; justify-content: center; }
+.action-row button { display: flex; align-items: center; gap: 10px; padding: 14px 36px; border: none; border-radius: 12px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: .15s; }
+.action-row button:disabled { opacity: .3; cursor: not-allowed; }
+.btn-wrong { background: rgba(255,102,102,.15); color: var(--red); border: 2px solid var(--red); }
+.btn-wrong:hover:not(:disabled) { background: rgba(255,102,102,.28); transform: translateY(-1px); }
+.btn-right { background: rgba(62,207,142,.15); color: var(--green); border: 2px solid var(--green); }
+.btn-right:hover:not(:disabled) { background: rgba(62,207,142,.28); transform: translateY(-1px); }
+
+/* RESULTS SCREEN */
+#results { display: none; max-width: 600px; margin: 0 auto; padding: 40px 20px; text-align: center; }
+.score-circle { width: 150px; height: 150px; border-radius: 50%; margin: 0 auto 28px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-weight: 800; border: 6px solid var(--accent); background: var(--surface); }
+.score-circle .big { font-size: 2.4rem; line-height: 1; }
+.score-circle .small { font-size: .85rem; color: var(--muted); margin-top: 4px; }
+.result-title { font-size: 1.6rem; font-weight: 800; margin-bottom: 8px; }
+.result-sub { color: var(--muted); margin-bottom: 28px; }
+.result-stats { display: flex; gap: 16px; justify-content: center; margin-bottom: 32px; }
+.result-stat { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 24px; }
+.result-stat .n { font-size: 1.8rem; font-weight: 800; }
+.result-stat .n.g { color: var(--green); }
+.result-stat .n.r { color: var(--red); }
+.result-stat .l { font-size: .78rem; color: var(--muted); margin-top: 2px; }
+.btn-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.btn-secondary { padding: 11px 24px; background: var(--surface); border: 2px solid var(--border); color: var(--text); border-radius: 10px; font-size: .9rem; font-weight: 600; cursor: pointer; transition: .15s; }
+.btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════ SETUP ═══════════════════════════════ -->
+<div id="setup">
+  <div class="logo">
+    <h1>⚙ EEGO Flashcards</h1>
+    <p>Eindige Elementen Gebaseerd Ontwerp &mdash; KU Leuven</p>
+  </div>
+
+  <div class="card-setup">
+    <h2>Kies thema's</h2>
+    <div class="topic-actions">
+      <button class="btn-select-all" onclick="selectAll(true)">Alles selecteren</button>
+      <button class="btn-select-all" onclick="selectAll(false)">Deselecteren</button>
+    </div>
+    <div class="topics-grid" id="topicsGrid"></div>
+  </div>
+
+  <div class="card-setup">
+    <h2>Instellingen</h2>
+    <div class="controls-row">
+      <div class="control-group">
+        <label>Aantal flashcards</label>
+        <input type="number" id="countInput" class="num-input" min="1" max="200" value="20">
+      </div>
+      <button class="btn-primary" id="startBtn" onclick="startGame()">▶&nbsp; Start</button>
+    </div>
+    <p style="color:var(--muted);font-size:.82rem;margin-top:12px;" id="availableCount"></p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ GAME ════════════════════════════════ -->
+<div id="game">
+  <div class="top-bar">
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <div class="stat-pill">⚡ <span id="statProgress">0/0</span></div>
+      <div class="stat-pill">✔ <span class="val g" id="statRight">0</span></div>
+      <div class="stat-pill">✘ <span class="val r" id="statWrong">0</span></div>
+    </div>
+    <button class="btn-quit" onclick="quit()">✕ Stoppen</button>
+  </div>
+
+  <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+
+  <div class="topic-badge" id="cardTopic"></div>
+  <div class="card-num" id="cardNum"></div>
+
+  <div class="flip-container" id="flipContainer" onclick="flipCard()">
+    <div class="flip-inner" id="flipInner">
+      <div class="flip-face flip-front">
+        <div class="flip-icon">❓</div>
+        <div class="q-text" id="questionText"></div>
+        <div class="flip-hint">🖱 klik om te draaien</div>
+      </div>
+      <div class="flip-face flip-back">
+        <div class="a-label">✅ Antwoord</div>
+        <div class="a-text" id="answerText"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="action-row">
+    <button class="btn-wrong" id="btnWrong" onclick="answer(false)" disabled>✘&nbsp; Fout</button>
+    <button class="btn-right"  id="btnRight"  onclick="answer(true)"  disabled>✔&nbsp; Juist</button>
+  </div>
+</div>
+
+<!-- ═════════════════════════════ RESULTS ═══════════════════════════════ -->
+<div id="results">
+  <div class="score-circle">
+    <div class="big" id="resPct">0%</div>
+    <div class="small">score</div>
+  </div>
+  <div class="result-title" id="resTitle">Klaar!</div>
+  <div class="result-sub" id="resSub"></div>
+  <div class="result-stats">
+    <div class="result-stat"><div class="n g" id="resRight">0</div><div class="l">Juist</div></div>
+    <div class="result-stat"><div class="n r" id="resWrong">0</div><div class="l">Fout</div></div>
+    <div class="result-stat"><div class="n" id="resTotal">0</div><div class="l">Totaal</div></div>
+  </div>
+  <div class="btn-row">
+    <button class="btn-primary" onclick="retryWrong()">🔄 Opnieuw (fout)</button>
+    <button class="btn-secondary" onclick="goSetup()">⬅ Terug</button>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════
+//  FLASHCARD DATA
+// ═══════════════════════════════════════════════════════════
+const CARDS = [
+
+// ─── TOPIC 1: Vormfuncties ───────────────────────────────
+{t:"Vormfuncties", q:"Wat is een vormfunctie en wat is het belang voor FEA?",
+a:`Vormfuncties $N_i(x,y,z)$ zijn interpolatiefuncties die de continue veldvariabele <b>binnen een element</b> benaderen vanuit de knoopwaarden:
+$$\\hat{q}(x,y,z) = [N]\\{\\tilde{q}\\} = \\sum_i N_i \\tilde{q}_i$$
+<b>Belang:</b> Ze laten toe om de oplossing overal in het element te berekenen op basis van enkel de waarden in de knopen, die de computer berekent.`, img:"vormfunctiesvisueel.png"},
+
+{t:"Vormfuncties", q:"Wat zijn de 3 wiskundige eigenschappen van vormfuncties?",
+a:`<ol><li>$N_i = 1$ bij eigen knoop $i$; $N_i = 0$ bij alle andere knopen.</li>
+<li>$\\sum_i N_i = 1$ (partitie van eenheid): de som is overal in het element 1.</li>
+<li>Polynomiale functies: orde = $p$ (lineair $p=1$, kwadratisch $p=2$, ...).</li></ol>`},
+
+{t:"Vormfuncties", q:"Geef de 2 vormfuncties van een lineair 1D ROD-element (p=1) met knoop 1 op $x=0$ en knoop 2 op $x=L$.",
+a:`$$N_1(x) = 1 - \\frac{x}{L}, \\qquad N_2(x) = \\frac{x}{L}$$
+Verificatie: $N_1+N_2 = 1$ ✓ ; $N_1(0)=1$, $N_1(L)=0$ ✓`, img:"1D_lineair_VF.png"},
+
+{t:"Vormfuncties", q:"Hoeveel vormfuncties heeft een TRIA3 membraanelement? En een QUAD4? En een TET4?",
+a:`Aantal VF = <b>aantal knopen</b> per element:<ul>
+<li><b>TRIA3</b>: 3 VF</li>
+<li><b>QUAD4</b>: 4 VF</li>
+<li><b>TET4</b>: 4 VF</li>
+<li><b>TRIA6</b> (kwadratisch): 6 VF</li>
+<li><b>QUAD8</b> (kwadratisch): 8 VF</li></ul>`},
+
+{t:"Vormfuncties", q:"Geef de 3 vormfuncties van een lineair TRIA3-element met knopen A$(0,0)$, B$(L_x,0)$, C$(0,L_y)$.",
+a:`$$N_A = 1 - \\frac{x}{L_x} - \\frac{y}{L_y}, \\quad N_B = \\frac{x}{L_x}, \\quad N_C = \\frac{y}{L_y}$$
+Controleer: $N_A + N_B + N_C = 1$ ✓`, img:"voorbeeld2Dvormfunctie.png"},
+
+{t:"Vormfuncties", q:"Wat is het verschil tussen $q$, $\\hat{q}$ en $\\tilde{q}$?",
+a:`<ul><li>$q$: de <b>exacte</b> waarde in de natuur (onkenbaar).</li>
+<li>$\\tilde{q}$: de <b>knoopwaarde</b> die de computer berekent (met tilde = discretisatie).</li>
+<li>$\\hat{q}$: de <b>geïnterpoleerde benadering</b> binnenin een element via VF: $\\hat{q} = [N]\\tilde{q}$ (met hoedje = benadering).</li></ul>`},
+
+{t:"Vormfuncties", q:"Waarom verlies je nauwkeurigheid bij het berekenen van spanningen op basis van lineaire ($p=1$) VF?",
+a:`Spanning = $E \\cdot \\epsilon = E \\cdot \\frac{d\\hat{u}}{dx}$. Differentiëren verlaagt de orde met 1:
+<ul><li>Lineaire VF ($p=1$) $\\to$ constante rek/spanning ($p=0$) binnen element.</li>
+<li>Kwadratische VF ($p=2$) $\\to$ lineaire spanning ($p=1$): nauwkeuriger.</li></ul>
+<b>Gebruik $p=2$ bij spanningsconcentraties.</b>`, img:"spanning_AB.png"},
+
+{t:"Vormfuncties", q:"Wat zijn de VF van een bilineaire QUAD4 in isoparametrische coördinaten ($\\xi, \\eta \\in [-1,1]$)?",
+a:`$$N_1 = \\tfrac{1}{4}(1-\\xi)(1-\\eta),\\; N_2 = \\tfrac{1}{4}(1+\\xi)(1-\\eta)$$
+$$N_3 = \\tfrac{1}{4}(1+\\xi)(1+\\eta),\\; N_4 = \\tfrac{1}{4}(1-\\xi)(1+\\eta)$$
+Isoparametrisch = mapping van willekeurig element naar standaard $[-1,1]^2$ element.`},
+
+{t:"Vormfuncties", q:"Hoeveel VF heeft een kwadratisch 2D beam-element dat enkel 2D-buiging kan ondergaan?",
+a:`Een kwadratisch (p=2) 2D beam-element heeft <b>3 knopen</b> (2 hoekknopen + 1 midknoop).<br>
+Elke knoop heeft 2 DOF: $\\tilde{u}_z$ (doorbuiging) en $\\tilde{\\theta}_y$ (rotatie).<br>
+Totaal: $3 \\times 2 = 6$ VF.<br>
+De orde van de VF is $p=3$ (kubisch), want buiging vereist tenminste een kubische polynoom.`},
+
+// ─── TOPIC 2: Elementtypes & DOFs ────────────────────────
+{t:"Elementtypes & DOFs", q:"Welke DOFs heeft een knoop van een BEAM-element in 3D?",
+a:`6 DOFs: $\\tilde{u}_x, \\tilde{u}_y, \\tilde{u}_z$ (translaties) en $\\tilde{\\theta}_x, \\tilde{\\theta}_y, \\tilde{\\theta}_z$ (rotaties).<br><br>
+In 2D (buiging in xz-vlak): $\\tilde{u}_z$ en $\\tilde{\\theta}_y$ (2 DOF/knoop).`},
+
+{t:"Elementtypes & DOFs", q:"Welke DOFs heeft een knoop van een MEMBRAAN-, een PLAAT- en een SCHIL-element?",
+a:`<ul>
+<li><b>Membraan</b>: 2 DOF → $\\tilde{u}_x, \\tilde{u}_y$ (in-plane translaties).</li>
+<li><b>Plaat</b>: 3 DOF → $\\tilde{u}_z, \\tilde{\\theta}_x, \\tilde{\\theta}_y$ (buiging uit het vlak).</li>
+<li><b>Schil</b>: 5–6 DOF → $\\tilde{u}_x, \\tilde{u}_y, \\tilde{u}_z, \\tilde{\\theta}_x, \\tilde{\\theta}_y$ (+ soms $\\tilde{\\theta}_z$).</li>
+</ul>`, img:"overzichtmembrameplateshellng.png"},
+
+{t:"Elementtypes & DOFs", q:"Wanneer gebruik je ROD vs BEAM? Wanneer membraan vs plaat vs schil?",
+a:`<ul>
+<li><b>ROD</b>: enkel axiale krachten (trek/druk), scharnieren. Geen buiging.</li>
+<li><b>BEAM</b>: buiging + axiale krachten, $L/h > 5\\text{–}10$.</li>
+<li><b>Membraan</b>: krachten <em>in</em> het vlak (plane stress/strain).</li>
+<li><b>Plaat</b>: buiging <em>uit</em> het vlak, $L/t > 10$ (Kirchhoff).</li>
+<li><b>Schil</b>: gecombineerd in-plane + buiging, gekromde oppervlakken.</li>
+<li><b>Solid</b>: alle dimensies vergelijkbaar, geen vereenvoudiging mogelijk.</li>
+</ul>`, img:"definitiosnelementtypes.png"},
+
+{t:"Elementtypes & DOFs", q:"Wat is het verschil tussen lineaire ($p=1$) en kwadratische ($p=2$) elementen? Wanneer kies je voor kwadratisch?",
+a:`<b>Lineair ($p=1$):</b> 2 knopen/rand, rechte zijden, constante rek per element. Sneller, minder nauwkeurig.<br><br>
+<b>Kwadratisch ($p=2$):</b> 3 knopen/rand (midknoop), gekromde zijden mogelijk, lineaire spanning. Trager (meer DOF), nauwkeuriger.<br><br>
+<b>Gebruik kwadratisch:</b> spanningsconcentraties (gaten, inkepingen), kromme geometrieën, wanneer hoge nauwkeurigheid vereist. Kwadratische elementen convergeren ook sneller.`},
+
+{t:"Elementtypes & DOFs", q:"Wat zijn de voor- en nadelen van TRIA vs QUAD elementen?",
+a:`<b>TRIA (driehoek):</b><ul>
+<li>✔ Gemakkelijk voor complexe geometrieën (automatisch meshing).</li>
+<li>✗ Minder nauwkeurig, meer elementen nodig.</li></ul>
+<b>QUAD (vierhoek):</b><ul>
+<li>✔ Nauwkeuriger, betere convergentie, minder elementen.</li>
+<li>✗ Moeilijker te genereren voor complexe vormen, moet geforceerd worden.</li></ul>
+Vuistregel: gebruik QUAD waar mogelijk; TRIA alleen voor overgangszones.`, img:"triavsquad.png"},
+
+{t:"Elementtypes & DOFs", q:"Hoe veel DOF heeft een TRIA3 membraanelement totaal, en wat is de grootte van de elementstijfheidsmatrix $[k_e]$?",
+a:`3 knopen × 2 DOF/knoop = <b>6 DOF</b>.<br>
+$\\Rightarrow [k_e]$ is een $\\mathbf{6 \\times 6}$ matrix.<br><br>
+Algemeen: $[k_e]$ is altijd <b>vierkant</b> van grootte (totaal DOF) × (totaal DOF).`},
+
+// ─── TOPIC 3: Randvoorwaarden ─────────────────────────────
+{t:"Randvoorwaarden", q:"Wat zijn de 3 types randvoorwaarden? Geef voor elk een voorbeeld.",
+a:`<ul>
+<li><b>Essentieel (Dirichlet)</b>: opgelegde veldvariabele $\\tilde{q}=\\bar{q}$.
+  <br>→ Inklemming ($u=0$), opgelegde temperatuur.</li>
+<li><b>Natuurlijk (Neumann)</b>: opgelegde afgeleide $\\frac{\\partial\\tilde{q}}{\\partial n}=\\bar{f}$.
+  <br>→ Puntlast, verdeelde belasting, warmteflux.</li>
+<li><b>Gemengd (Robin)</b>: $\\alpha\\tilde{q}+\\beta\\frac{\\partial\\tilde{q}}{\\partial n}=\\bar{s}$.
+  <br>→ Verende ondersteuning, convectie (thermisch).</li>
+</ul>`, img:"randvoorwaarden.png"},
+
+{t:"Randvoorwaarden", q:"Hoe wordt een verende ondersteuning (mixed BC) geïmplementeerd in $[K]\\{\\tilde{q}\\}=\\{\\tilde{F}\\}$?",
+a:`De veerstijfheid $k$ wordt <b>opgeteld bij het diagonaalelement</b> van $[K]$ dat overeenkomt met de DOF van de veerknoop:
+$$[K + K_{\\text{veer}}]\\{\\tilde{q}\\} = \\{\\tilde{F}\\} + \\{\\tilde{F}_{\\text{pretension}}\\}$$
+Een voorspanning $F_{\\text{pre}}$ wordt aan de rechterkant toegevoegd als bekende kracht.<br><br>
+De veer verandert de <em>stijfheid</em> van het systeem, niet de randwaarden.`},
+
+{t:"Randvoorwaarden", q:"Wanneer is de globale stijfheidsmatrix $[K]$ singulier (niet inverteerbaar)?",
+a:`$[K]$ is singulier wanneer het model nog <b>rigid body motion</b> kan uitvoeren, d.w.z. vrij kan bewegen/roteren door de ruimte zonder vervorming.<br><br>
+Dit betekent dat er <b>onvoldoende essentiële randvoorwaarden</b> zijn opgelegd om alle vrije bewegingen te blokkeren.<br><br>
+Oplossing: leg voldoende knoopverplaatsingen/-rotaties vast (inklemming, scharnier, ...).`, img:"matrixsingulier.png"},
+
+{t:"Randvoorwaarden", q:"Wat is het effect van een essentiële RV op de matrixvergelijking? Hoe lees je ze in?",
+a:`Bij een essentiële RV is $\\tilde{q}_i = \\bar{q}_i$ <b>bekend</b> → de bijbehorende reactiekracht $\\tilde{F}_i$ wordt <b>onbekend</b>.<br><br>
+<b>Implementatie:</b> de rij en kolom horende bij die DOF worden uit $[K]$ geschrapt (of een groot getal op de diagonaal geplaatst). Het resterende stelsel is oplosbaar.<br><br>
+De reactiekracht kan achteraf berekend worden: $\\tilde{F}_i = [K]_i \\cdot \\{\\tilde{q}\\}$.`},
+
+{t:"Randvoorwaarden", q:"Hoe modelleer je een progressieve (verstijvende) veer in FEA?",
+a:`Een progressieve veer heeft een stijfheid die toeneemt met de vervorming: $k = k(u)$.<br><br>
+Dit is een <b>niet-lineaire gemengde RV</b>: $F_{\\text{veer}} = k(u) \\cdot u$.<br><br>
+<b>Oplossing:</b> iteratief (Newton-Raphson of incrementeel):
+<ol><li>Start met initiële stijfheid $k_0$.</li>
+<li>Los op → bereken verplaatsing $u$.</li>
+<li>Update stijfheid $k(u)$ → herbereken $[K]$.</li>
+<li>Herhaal tot convergentie.</li></ol>`},
+
+{t:"Randvoorwaarden", q:"Hoe worden symmetrierandvoorwaarden gebruikt om een model te vereenvoudigen?",
+a:`Bij symmetrie in geometrie én belasting: modelleer de <b>helft</b> van het model.<br><br>
+Op het symmetrievlak:<ul>
+<li><b>Symmetrie</b>: verplaatsing loodrecht op vlak = 0; rotaties in het vlak = 0.</li>
+<li><b>Antisymmetrie</b>: verplaatsing parallel aan vlak = 0; rotaties loodrecht op vlak = 0.</li>
+</ul>
+Voordeel: ndof halveert → rekentijd sterk gereduceerd.`, img:"symmetrie.png"},
+
+// ─── TOPIC 4: Globale Stijfheidsmatrix & Knoopnummering ──
+{t:"Stijfheidsmatrix & Nummering", q:"Hoe wordt de globale stijfheidsmatrix $[K]$ opgebouwd uit de elementstijfheidsmatrices $[k_e]$?",
+a:`<b>Assemblage:</b> elk element $e$ met knooppunten $i, j$ draagt bij aan de overeenkomstige rijen en kolommen in $[K]$:
+$$K_{ij} \\mathrel{+}= k_{ij}^{(e)}$$
+Overlappende bijdragen (gedeelde knopen) worden <b>opgeteld</b>.<br><br>
+$[K]$ is altijd <b>symmetrisch</b>, positief (semi-)definiet, en heeft een <b>bandstructuur</b>.`, img:"globalestijfheidsmatrixopgeteld.png"},
+
+{t:"Stijfheidsmatrix & Nummering", q:"Wat is de halve bandbreedte (hb) en hoe bereken je ze?",
+a:`De hb = grootste afstand van het niet-nul element tot de diagonaal in $[K]$:
+$$\\text{hb} = \\max_e \\left[\\frac{\\text{ndof/node}} \\cdot (\\Delta\\text{NodeID}_{\\max,e} + 1)\\right]$$
+Met $\\Delta\\text{NodeID}$ = max verschil in knoopnummers binnen 1 element.<br><br>
+<b>CPU-tijd:</b> $\\sim \\text{ndof} \\cdot \\text{hb}^2$ (ipv $\\text{ndof}^3$ voor volle matrix).`, img:"bandbreedtes.png"},
+
+{t:"Stijfheidsmatrix & Nummering", q:"Wat is de beste strategie voor knoopnummering en waarom?",
+a:`Geef knopen die aan hetzelfde element vastzitten, <b>nummers zo dicht mogelijk bij elkaar</b> → kleine $\\Delta\\text{NodeID}$ → kleine hb → snelle berekening.<br><br>
+<b>Praktische regel:</b> nummer in de <em>kortste</em> richting van de mesh (over de breedte, niet over de lengte).<br><br>
+Voorbeeld: bij hb=3 vs hb=6 → rekentijdverhouding $3^2 : 6^2 = 1:4$ voor identiek model!`, img:"2gevallenknopenverdeling.png"},
+
+{t:"Stijfheidsmatrix & Nummering", q:"Welke eigenschappen heeft $[K]$ altijd?",
+a:`<ul>
+<li><b>Symmetrisch:</b> $K_{ij} = K_{ji}$ → hoeft enkel bovenste driehoek opgeslagen te worden.</li>
+<li><b>Positieve diagonaalelementen:</b> $K_{ii} > 0$.</li>
+<li><b>Bandstructuur / skyline:</b> niet-nul elementen geconcentreerd rond de diagonaal.</li>
+<li><b>Singulier</b> zonder voldoende essentiële RV (rigid body motion mogelijk).</li>
+<li><b>Positief semi-definiet</b> (positief definiet na opleggen van RV).</li>
+</ul>`},
+
+// ─── TOPIC 5: Directe Methode ─────────────────────────────
+{t:"Directe Methode", q:"Geef de elementstijfheidsmatrix van een 1D ROD-element en motiveer de tekens.",
+a:`$$[k_e] = \\frac{AE}{L}\\begin{bmatrix}1 & -1\\\\ -1 & 1\\end{bmatrix}$$
+<b>Interpretatie:</b> als knoop 1 verplaatst ($\\tilde{u}_1=1$, $\\tilde{u}_2=0$): staaf wordt gedrukt → kracht op knoop 1 positief, reactie in knoop 2 negatief.<br>
+<b>Vereiste invoer:</b> doorsnede $A$, E-modulus $E$ (lengte $L$ uit mesh).`},
+
+{t:"Directe Methode", q:"Geef de 4×4 elementstijfheidsmatrix van een 1D BEAM-element (zuivere buiging). Welke DOF-volgorde wordt gebruikt?",
+a:`Volgorde: $\\tilde{u}_{z1},\\tilde{\\theta}_{y1},\\tilde{u}_{z2},\\tilde{\\theta}_{y2}$
+$$[k_e] = \\frac{EI}{L^3}\\begin{bmatrix}12 & 6L & -12 & 6L\\\\ 6L & 4L^2 & -6L & 2L^2\\\\ -12 & -6L & 12 & -6L\\\\ 6L & 2L^2 & -6L & 4L^2\\end{bmatrix}$$
+<b>Vereiste invoer:</b> $E$, traagheidsmoment $I_y$, lengte $L$.`},
+
+{t:"Directe Methode", q:"Wat stelt kolom $j$ van de elementstijfheidsmatrix voor?",
+a:`Kolom $j$ bevat de <b>krachten en momenten in alle DOF</b> die nodig zijn om:<ul>
+<li>DOF $j$ een verplaatsing/rotatie van 1 te geven,</li>
+<li>alle andere DOF op 0 te houden.</li>
+</ul>
+<b>Directe methode:</b> per kolom stel je die situatie in, en bereken je de benodigde krachten/momenten via Hibbeler-formules of Navier.`, img:"directemethodebeam.png"},
+
+{t:"Directe Methode", q:"Is de transformatiematrix $[T]$ voor een ROD hetzelfde als voor een BEAM? Motiveer.",
+a:`<b>Neen.</b><br>
+<ul>
+<li><b>ROD</b>: enkel translaties → $[T]$ bevat $\\cos\\alpha$ en $\\sin\\alpha$ voor de translatie-DOFs.</li>
+<li><b>BEAM</b>: translaties én rotaties → $[T]$ heeft extra blokken voor rotatie-DOFs.</li>
+</ul>
+Rotaties transformeren anders dan translaties. In 3D is $[T]$ nog complexer (6 DOF/knoop).`},
+
+{t:"Directe Methode", q:"Geef de transformatiematrix voor een schuinstaand ROD-element in 2D (hoek $\\alpha$ met de x-as).",
+a:`$$[k_{\\text{globaal}}] = [T]^T [k_{\\text{lokaal}}] [T]$$
+$$[T] = \\begin{bmatrix}c & s & 0 & 0\\\\-s & c & 0 & 0\\\\ 0 & 0 & c & s\\\\ 0 & 0 & -s & c\\end{bmatrix}, \\quad c=\\cos\\alpha,\\; s=\\sin\\alpha$$`, img:"rodsnotalligned.png"},
+
+// ─── TOPIC 6: Energie-methode (Matrix Flow) ───────────────
+{t:"Energie-methode (Matrix Flow)", q:"Geef de algemene formule voor de elementstijfheidsmatrix via de energie-methode.",
+a:`<b>Energiebalans:</b> externe arbeid = interne elasticiteitsenergie:
+$$\\frac{1}{2}\\{\\tilde{u}\\}^T\\{\\tilde{F}\\} = \\int_{\\Omega_e}\\frac{1}{2}\\{\\hat{\\epsilon}\\}^T\\{\\hat{\\sigma}\\}\\,dV$$
+Na invullen van de Matrix Flow:
+$$\\boxed{[k_e] = \\int_{\\Omega_e} [B]^T [E] [B]\\,dV}$$`, img:"spanningbepalen.png"},
+
+{t:"Energie-methode (Matrix Flow)", q:"Leg de Matrix Flow uit: van knoopverplaatsingen $\\{\\tilde{u}\\}$ naar spanning $\\{\\hat{\\sigma}\\}$.",
+a:`<b>Stap 1:</b> Verplaatsing interpoleren:
+$$\\{\\hat{u}\\} = [N]\\{\\tilde{u}\\}$$
+<b>Stap 2:</b> Rek (afgeleiden van $\\hat{u}$):
+$$\\{\\hat{\\epsilon}\\} = [\\partial]\\{\\hat{u}\\} = [\\partial][N]\\{\\tilde{u}\\} = [B]\\{\\tilde{u}\\}$$
+<b>Stap 3:</b> Spanning via Hooke:
+$$\\{\\hat{\\sigma}\\} = [E]\\{\\hat{\\epsilon}\\} = [E][B]\\{\\tilde{u}\\}$$`, img:"matrixflowoverzicht.png"},
+
+{t:"Energie-methode (Matrix Flow)", q:"Wat zijn de afmetingen van $[N]$, $[B]$, $[E]$ en $[k]$ voor een TRIA3 membraanelement?",
+a:`<ul>
+<li>$[N]$: $2 \\times 6$ (2 verplaatsingscomponenten × 6 DOF)</li>
+<li>$[B] = [\\partial][N]$: $3 \\times 6$ (3 rekcomponenten × 6 DOF)</li>
+<li>$[E]$: $3 \\times 3$ (spanningscomponenten × rekcomponenten)</li>
+<li>$[k_e] = \\int [B]^T[E][B]\\,dV$: $6 \\times 6$</li>
+</ul>
+Geheugensteuntje: $[k_e] = (6\\times3)\\cdot(3\\times3)\\cdot(3\\times6) \\cdot V = (6\\times6)$ ✓`},
+
+{t:"Energie-methode (Matrix Flow)", q:"Bewijs kort dat de energiemethode voor een 1D ROD dezelfde $[k_e]$ geeft als de directe methode.",
+a:`Voor een lineaire ROD: $N_1=1-x/L$, $N_2=x/L$<br>
+$$[B] = \\left[\\frac{\\partial N_1}{\\partial x}\\;\\frac{\\partial N_2}{\\partial x}\\right] = \\left[-\\frac{1}{L}\\;\\frac{1}{L}\\right]$$
+$$[k_e]=\\int_0^L [B]^T E [B] A\\,dx = EA\\int_0^L\\frac{1}{L^2}\\begin{bmatrix}1&-1\\\\-1&1\\end{bmatrix}dx = \\frac{AE}{L}\\begin{bmatrix}1&-1\\\\-1&1\\end{bmatrix}\\checkmark$$`},
+
+{t:"Energie-methode (Matrix Flow)", q:"Wat is de $[B]$-matrix voor een 2D TRIA3 membraanelement? Wat bevat ze?",
+a:`$$[B] = \\begin{bmatrix}\\partial N_1/\\partial x & 0 & \\partial N_2/\\partial x & 0 & \\partial N_3/\\partial x & 0\\\\ 0 & \\partial N_1/\\partial y & 0 & \\partial N_2/\\partial y & 0 & \\partial N_3/\\partial y\\\\ \\partial N_1/\\partial y & \\partial N_1/\\partial x & \\partial N_2/\\partial y & \\partial N_2/\\partial x & \\partial N_3/\\partial y & \\partial N_3/\\partial x\\end{bmatrix}$$
+De rijen stellen de 3 rekcomponenten voor: $\\epsilon_x$, $\\epsilon_y$, $\\gamma_{xy}$.`},
+
+// ─── TOPIC 7: 2D Elementen (membraan/plaat/schil) ────────
+{t:"2D Elementen", q:"Wat is het verschil tussen plane stress en plane strain? Wanneer gebruik je elk?",
+a:`<b>Plane Stress</b> ($\\sigma_z=0$): de spanning in z-richting is nul (vrije rand).<br>
+→ <b>Dunne platen/membranen</b> belast in het vlak.<br><br>
+<b>Plane Strain</b> ($\\epsilon_z=0$): de rek in z-richting is nul (bekneld).<br>
+→ <b>Lange/dikke structuren</b> (dam, tunnel, viskoppeling) ver van de uiteinden.<br><br>
+<b>Mnemonic:</b> Stress → dun/kort; Strain → lang/dik.`, img:"plainstressvsplainstrain.png"},
+
+{t:"2D Elementen", q:"Geef de constitutieve matrix $[E]$ voor plane stress.",
+a:`$$[E]_{\\text{stress}} = \\frac{E}{1-\\nu^2}\\begin{bmatrix}1 & \\nu & 0\\\\ \\nu & 1 & 0\\\\ 0 & 0 & \\frac{1-\\nu}{2}\\end{bmatrix}$$
+<ul><li>$\\sigma_z = 0$ (opgegeven)</li>
+<li>$\\epsilon_z \\neq 0$ (vrij om te vervormen in z)</li>
+</ul>`},
+
+{t:"2D Elementen", q:"Geef de constitutieve matrix $[E]$ voor plane strain.",
+a:`$$[E]_{\\text{strain}} = \\frac{E}{(1+\\nu)(1-2\\nu)}\\begin{bmatrix}1-\\nu & \\nu & 0\\\\ \\nu & 1-\\nu & 0\\\\ 0 & 0 & \\frac{1-2\\nu}{2}\\end{bmatrix}$$
+<ul><li>$\\epsilon_z = 0$ (vastgehouden)</li>
+<li>$\\sigma_z \\neq 0$ (er is een spanning in z nodig om $\\epsilon_z=0$ te handhaven)</li>
+</ul>`},
+
+{t:"2D Elementen", q:"Is de $[E]$-matrix voor een plaatelement plane stress of plane strain? Motiveer.",
+a:`Altijd <b>plane stress</b>.<br><br>
+Motivering: de Kirchhoff-aanname voor dunne platen stelt dat $\\sigma_z = 0$ door de dunne-plaat-aanname (de plaat kan vrij vervormen in de dikte-richting). Dit correspondeert exact met plane stress. Plane strain zou enkel gebruikt worden als $\\epsilon_z=0$, wat voor dunne platen niet het geval is.`},
+
+{t:"2D Elementen", q:"Wat is de Kirchhoff-aanname voor plaatelementen? Wanneer is ze geldig?",
+a:`<b>Kirchhoff:</b> een dwarsdoorsnede die vóór de vervorming vlak en loodrecht op het middenvlak stond, blijft ook na de vervorming vlak en loodrecht op het middenvlak.<br><br>
+→ Schuifvervorming door de dikte wordt verwaarloosd ($\\gamma_{xz}=\\gamma_{yz}=0$).<br>
+→ 2D-equivalent van Bernoulli voor balken.<br><br>
+<b>Geldig:</b> dunne platen $L/t > 10$. Voor dikkere platen: Mindlin-theorie.`, img:"3Dplaatkirchoofff.png"},
+
+{t:"2D Elementen", q:"Vergelijk TRIA3 membraan met TRIA3 plaat: DOFs, VF-orde, $[k]$-grootte.",
+a:`<table style="width:100%;font-size:.88rem;">
+<tr><th></th><th>Membraan</th><th>Plaat</th></tr>
+<tr><td>DOF/knoop</td><td>2 ($u_x,u_y$)</td><td>3 ($u_z,\\theta_x,\\theta_y$)</td></tr>
+<tr><td>Totale DOF</td><td>6</td><td>9</td></tr>
+<tr><td>$[N]$</td><td>$2\\times6$</td><td>$1\\times9$</td></tr>
+<tr><td>$[B]$</td><td>$3\\times6$</td><td>$3\\times9$</td></tr>
+<tr><td>$[k]$</td><td>$6\\times6$</td><td>$9\\times9$</td></tr>
+<tr><td>VF-orde</td><td>1 (lineair)</td><td>3 (kubisch)</td></tr>
+<tr><td>$[E]$</td><td>plane stress of strain</td><td>altijd plane stress</td></tr>
+</table>`},
+
+{t:"2D Elementen", q:"Wat is een isoparametrisch element? Waarom wordt het gebruikt?",
+a:`Een isoparametrisch element mapt elk willekeurig element uit de mesh naar een standaard referentie-element in <b>natuurlijke coördinaten</b> $\\xi,\\eta \\in [-1,1]$.<br><br>
+<b>Waarom:</b> de VF zijn dan identiek voor alle elementen → slechts één formule voor de integraal nodig → enorme tijdsbesparing voor de computer.<br><br>
+De <b>Jacobiaan $[J]$</b> corrigeert voor het verschil in schaal/oriëntatie tussen het fysieke en het referentie-element: $dV = \\det([J])\\,d\\xi\\,d\\eta$.`},
+
+// ─── TOPIC 8: Beam-elementen ──────────────────────────────
+{t:"Beam-elementen", q:"Wat is de Bernoulli-aanname? Wanneer is ze geldig en wanneer niet?",
+a:`<b>Bernoulli:</b> een vlakke dwarsdoorsnede blijft vlak <em>en loodrecht</em> op de neutrale as na vervorming.<br>
+→ Schuifvervorming $\\gamma_{xy} = 0$ (verwaarloosbaar).<br><br>
+<b>Geldig:</b> slanke balken met $L/h > 5{-}10$.<br><br>
+<b>Niet geldig:</b> dikke balken, korte elementen. Gebruik dan <b>Timoshenko</b> (doorsnede blijft vlak maar niet loodrecht → schuifvervorming meegenomen).`, img:"bernouillivstimoshenko.png"},
+
+{t:"Beam-elementen", q:"Hoe bereken je de buigspanning in een BEAM-element op basis van de knoopverplaatsingen?",
+a:`Matrix Flow voor buiging (Bernoulli):
+$$\\hat{u}_x(x,z) = -z\\frac{d\\hat{u}_z}{dx}$$
+$$\\hat{\\epsilon}_x = -z\\frac{d^2\\hat{u}_z}{dx^2} = [B]\\{\\tilde{u}\\}$$
+$$\\hat{\\sigma}_x = E\\hat{\\epsilon}_x = -Ez\\frac{d^2\\hat{u}_z}{dx^2}$$
+waarbij $z$ = afstand tot neutrale as. Spanning is <b>lineair over de doorsnede</b> (max aan de uiterste vezel).`},
+
+{t:"Beam-elementen", q:"Wat is de orde van nauwkeurigheid van de buigspanning in een lineair BEAM-element?",
+a:`Een lineair BEAM-element gebruikt kubische ($p=3$) VF voor de doorbuiging $\\hat{u}_z$.<br><br>
+De buigspanning is $\\sigma = E(-z)\\frac{d^2\\hat{u}_z}{dx^2}$.<br>
+De 2e afgeleide van een kubische functie is <b>lineair</b> → spanning is <b>lineair</b> over de elementlengte.<br><br>
+Dit is nauwkeuriger dan een membraanelement ($p=1$) dat constante spanning geeft.`},
+
+{t:"Beam-elementen", q:"Leg de Euler-Bernoulli differentiaalvergelijkingen uit: wat is de relatie tussen $u_z$, $\\theta_y$, $M_y$ en $V_z$?",
+a:`$$EI\\frac{d^4u_z}{dx^4} = w(x)\\quad (\\text{verdeelde belasting})$$
+$$EI\\frac{d^3u_z}{dx^3} = V_z(x)\\quad (\\text{dwarskracht})$$
+$$EI\\frac{d^2u_z}{dx^2} = M_y(x)\\quad (\\text{buigmoment})$$
+$$\\theta_y = \\frac{du_z}{dx}\\quad (\\text{rotatie = afgeleid van doorbuiging})$$
+Elke stap = 1 keer integreren. Vuistregel: $M \\xrightarrow{\\int} \\theta \\xrightarrow{\\int} u$.`},
+
+{t:"Beam-elementen", q:"Waarom introduceer je bij een beam ook momenten in de knopen als je een verdeelde belasting consistent naar de knopen overbrengt?",
+a:`Door de <b>Bernoulli-aanname</b> zijn verplaatsing $\\tilde{u}_z$ en rotatie $\\tilde{\\theta}_y$ beide vrijheidsgraden. Bij het consistent overbrengen van een verdeelde belasting $w(x)$ naar de knopen, worden de VF gebruikt:<br>
+$$\\tilde{F}_i = \\int N_i(x)\\,w(x)\\,dx$$
+Omdat de VF van buigende beam-elementen ook de rotatie-DOFs bevat (de kubische Hermite-VF koppelen $u_z$ en $\\theta_y$), geeft de integraal zowel knoopkrachten als knoopromenten. <b>Solidele elementen</b> (3D) hebben geen rotatie-DOFs → geen momenten bij verdeelde belasting.`},
+
+// ─── TOPIC 9: MPC's & RBE-elementen ──────────────────────
+{t:"MPC's & RBE-elementen", q:"Wat zijn Multi-Point Constraints (MPC's) en waarvoor dienen ze?",
+a:`Een MPC is een wiskundige vergelijking die de verplaatsing van <b>slave</b>-knopen koppelt aan <b>master</b>-knopen:
+$$\\{\\tilde{u}_{\\text{slave}}\\} = [C]\\{\\tilde{u}_{\\text{master}}\\}$$
+<b>3 toepassingen:</b>
+<ol><li>Koppelen van elementen met <em>verschillende DOFs</em> (beam aan membraan).</li>
+<li>Koppelen van elementen met <em>verschillende VF-ordes</em> (kwadratisch aan lineair).</li>
+<li><em>Glue</em>: verbinden van niet-aansluitende meshes (andere knoopposities).</li>
+</ol>`},
+
+{t:"MPC's & RBE-elementen", q:"Geef de MPC-matrixvergelijking voor het koppelen van een 2D beam-knoop (met rotatie $\\theta_z$) aan 2 membraanknopen A en B op afstand $a$.",
+a:`$$\\begin{Bmatrix}\\tilde{u}_{xA}\\\\\\tilde{u}_{yA}\\\\\\tilde{u}_{xB}\\\\\\tilde{u}_{yB}\\end{Bmatrix} = \\begin{bmatrix}1&0&0\\\\ 0&1&-a\\\\ 1&0&0\\\\ 0&1&a\\end{bmatrix}\\begin{Bmatrix}\\tilde{u}_{x1}\\\\\\tilde{u}_{y1}\\\\\\tilde{\\theta}_{z1}\\end{Bmatrix}$$
+Aanname: kleine hoeken ($\\tan\\theta \\approx \\theta$). Knopen A en B liggen op afstand $a$ boven/onder knoop 1.`, img:"voorbeeldlesenvideo.png"},
+
+{t:"MPC's & RBE-elementen", q:"Bij het koppelen van een kwadratisch aan een lineair element via MPC: welk element is de master? Hoe wordt de slave bepaald?",
+a:`Het element met de <b>laagste orde</b> (het lineaire element) is altijd de <b>master</b>.<br><br>
+De extra midknoop (knoop 2) van het kwadratische element is de slave:
+$$\\tilde{u}_{x2} = 0.5\\tilde{u}_{x1} + 0.5\\tilde{u}_{x3}$$
+$$\\tilde{u}_{y2} = 0.5\\tilde{u}_{y1} + 0.5\\tilde{u}_{y3}$$
+(VF van lineair element geëvalueerd op $\\eta=0$, het midden.)`, img:"verschillendeordeskoppelenmpc.png"},
+
+{t:"MPC's & RBE-elementen", q:"Wat is het verschil tussen RBE2 en RBE3? Wanneer gebruik je elk?",
+a:`<b>RBE2</b> (stijf):
+<ul><li>Slave-knopen volgen master <em>exact</em> → onderlinge afstanden onveranderd.</li>
+<li>Voegt <em>stijfheid</em> toe aan model; geen extra massa.</li>
+<li>Gebruik: stijve verbindingen, las-simulatie, geometrische gaten dichten.</li>
+<li>⚠ Singulariteiten aan het einde van RBE2.</li></ul>
+<b>RBE3</b> (verdeling):
+<ul><li>Verdeelt een puntlast op master over slave-knopen via gewogen gemiddelde (VF!).</li>
+<li>Voegt <em>geen stijfheid</em> toe → realistischer bij krachtverdeling.</li>
+<li>Gebruik: pijp op plaat, lading verdelen over meerdere punten.</li></ul>`, img:"RBE2VSRBE3PLAAT.png"},
+
+{t:"MPC's & RBE-elementen", q:"Wat is het verschil tussen RBE2 en een Glue-randvoorwaarde bij een geometrische gap?",
+a:`<b>RBE2:</b> de fysieke afstand (gap) blijft wiskundig behouden. Krachten worden overgedragen via de correcte hefboomarm → buigmomenten kloppen.<br><br>
+<b>Glue:</b> de software projecteert de slave-mesh wiskundig op de master → de gap verdwijnt. De fysieke offset en bijhorende hefboomwerking gaan verloren.<br><br>
+<b>Conclusie:</b> gebruik RBE2 als de geometrische afstand fysisch relevant is.`, img:"rbevsglue.png"},
+
+{t:"MPC's & RBE-elementen", q:"Geef 2 voorbeelden van toepassingen waarbij VF nodig zijn voor de MPC, en 2 waarbij niet.",
+a:`<b>VF nodig:</b>
+<ul><li>Glue tussen meshes met andere knoopposities (master-VF interpoleert slave-positie).</li>
+<li>Koppelen van kwadratisch aan lineair element (VF voor midknoop-positie).</li>
+<li>RBE3: VF voor gewogen krachtverdeling.</li></ul>
+<b>Geen VF nodig:</b>
+<ul><li>Koppelen van DOFs van gelijke knooppositie (beam aan membraan, directe uitdrukking).</li>
+<li>Symmetrierandvoorwaarden (enkel $u=0$ opleggen).</li></ul>`},
+
+// ─── TOPIC 10: Mesh Design & Convergentie ────────────────
+{t:"Mesh Design & Convergentie", q:"Wat is het verschil tussen een mesh-convergentiestudie en een mesh-sensitiviteitsstudie?",
+a:`<b>Convergentiestudie:</b> verfijn de mesh progressief (meer elementen) → bekijk hoe het resultaat (bv. max spanning) convergeert naar een stabiele waarde. Analyseert <em>discretisatiefouten</em>.<br><br>
+<b>Sensitiviteitsstudie:</b> varieer de elementvorm/-grootte bij <em>gelijk</em> aantal DOF → bekijk hoe gevoelig het resultaat is. Analyseert zowel discretisatie- als <em>numerieke fouten</em>.<br><br>
+Vuistregel: doe eerst convergentie, dan sensitiviteit voor validatie.`, img:"meshsensitivityvsmeshconvergence.png"},
+
+{t:"Mesh Design & Convergentie", q:"Wat zijn h-refinement, p-refinement en r-refinement?",
+a:`<ul>
+<li><b>$h$-refinement:</b> kleinere elementen (meer knopen). Kan onbeperkt herhaald worden. Meest gebruikt.</li>
+<li><b>$p$-refinement:</b> hogere elementorde ($p=1 \\to p=2$). Kan maar 1 keer effectief gedaan worden. Goede convergentie bij gladde oplossingen.</li>
+<li><b>$r$-refinement:</b> herpositioneren van knopen zonder nieuwe knopen toe te voegen. Beïnvloedt beide soorten fouten.</li>
+</ul>
+Kwadratische ($p=2$) elementen convergeren sneller dan lineaire.`},
+
+{t:"Mesh Design & Convergentie", q:"Wat is mesh biasing? Wat is het voordeel t.o.v. uniforme spacing bij gelijk aantal knopen?",
+a:`<b>Biasing:</b> knopen worden dichter op elkaar geplaatst nabij spanningsconcentraties (gaten, hoeken), met grotere elementen in onbelangrijke zones.<br>
+$\\text{Bias} = \\Delta X_{\\max}/\\Delta X_{\\min}$.<br><br>
+<b>Voordeel:</b> hogere nauwkeurigheid bij <em>gelijke rekentijd</em>.<br>
+Voorbeeld uit cursus: zonder bias: 1.59 N/mm²; bias=20: 2.65 N/mm² (exact: 3 N/mm²) — bij identiek aantal knopen!`, img:"afbeelding_mesh_biasing_tabel.png"},
+
+{t:"Mesh Design & Convergentie", q:"Wat is een singulariteit in FEA? Geef 3 voorbeelden. Hoe herken je het in een convergentiegrafiek?",
+a:`Een singulariteit is een punt waar $\\sigma \\to \\infty$ bij mesh-verfijning → <b>nooit convergentie</b>.<br><br>
+<b>Voorbeelden:</b>
+<ol><li>Scherpe hoeken (re-entrant corners).</li>
+<li>Geconcentreerde puntlasten op 2D/3D-elementen.</li>
+<li>Uiteinde van RBE2-elementen (oneindige stijfheid).</li></ol>
+<b>In convergentiegrafiek:</b> spanning blijft stijgen naarmate mesh verfijnd wordt (geen vlak plateau).<br>
+<b>Oplossing:</b> voeg een afrondingsstraal (fillet) toe → convergeert dan wel.`, img:"singulariteiten.png"},
+
+{t:"Mesh Design & Convergentie", q:"Hoeveel elementen zijn nodig voor een cirkelvormig gat met geometrische discretisatiefout < 5%? Hoe bereken je de geometrische fout?",
+a:`<b>12–20 elementen</b> langs de omtrek voor < 1–5% geometrische fout.<br><br>
+<b>Berekening fout:</b> oppervlakteverschil tussen de exacte cirkel en de benaderde $n$-hoek:
+$$\\text{Fout} = \\frac{A_{\\text{cirkel}} - A_{n-\\text{hoek}}}{A_{\\text{cirkel}}} = 1 - \\frac{n\\sin(2\\pi/n)}{2\\pi/n\\cdot n}$$
+Dit kan ook via goniometrie (verschil van circelsegmenten).`, img:"afbeelding_cirkel_discretisatiefout.png"},
+
+{t:"Mesh Design & Convergentie", q:"Wat is automatische mesh adaptatie en hoe werkt het?",
+a:`De software:<ol>
+<li>Berekent de oplossing op de initiële mesh.</li>
+<li>Schat de lokale fout in elk element (bv. via spanningssprongen of energiefout).</li>
+<li>Verfijnt automatisch de elementen waar de fout te groot is.</li>
+<li>Herberekent de oplossing.</li>
+<li>Herhaalt stappen 2–4 tot de gewenste nauwkeurigheid bereikt is.</li>
+</ol>
+<b>Voordeel:</b> optimale mesh zonder manuele tussenkomst. <b>Nadeel:</b> minder controle over meshvorm.`, img:"meshadaptatie.png"},
+
+// ─── TOPIC 11: Post-processing & Verificatie ─────────────
+{t:"Post-processing & Verificatie", q:"Wat is het verschil tussen elemental en nodal spanningsweergave?",
+a:`<b>Elemental:</b> 1 gemiddelde spanningswaarde per element (zwaartepunt). Mist de piekspanningen aan de randen. Elk element krijgt één egale kleur.<br><br>
+<b>Nodal (corner data):</b> spanningswaarden geëxtrapoleerd vanuit Gauss-punten naar de hoekknopen. Toont de echte lokale piekspanningen. Nauwkeuriger voor verificatie.`},
+
+{t:"Post-processing & Verificatie", q:"Wanneer gebruik je averaged en wanneer unaveraged spanningen? Wat is het verschil?",
+a:`<b>Unaveraged:</b> ruwe spanningswaarden per element; toont discontinuïteiten (spanningssprongen) op knooppunten. <b>Gebruik voor verificatie!</b> Grote sprong = mesh te grof.<br><br>
+<b>Averaged:</b> gemiddeld over aangrenzende elementen; gladde kleurkaart. Gebruik voor <em>presentatie/rapport</em>. Maar: verbergt fouten!<br><br>
+⚠ Kijk altijd naar unaveraged bij verificatie!`, img:"spannignsprongverificatie.png"},
+
+{t:"Post-processing & Verificatie", q:"Wat zijn de 3 fases van post-processing? (verificatie, validatie, valorisatie)",
+a:`<ul>
+<li><b>Verificatie:</b> Heeft de computer correct gerekend? Check krachtenevenwicht, spanningssprongen, mesh-convergentie. (Computer iets mis?)</li>
+<li><b>Validatie:</b> Is het model een goede representatie van de realiteit? Vergelijk met analytische of experimentele waarden. (Jij iets mis?)</li>
+<li><b>Valorisatie:</b> Wat betekenen de resultaten voor het ontwerp? Concrete ontwerpaanpassingen, profiel selecteren, afmetingen bepalen. (Baas tevreden?)</li>
+</ul>`},
+
+{t:"Post-processing & Verificatie", q:"Wat is de Von Mises spanning en wanneer mag je die NIET gebruiken voor vergelijking?",
+a:`$$\\sigma_{VM} = \\frac{1}{\\sqrt{2}}\\sqrt{(\\sigma_x-\\sigma_y)^2+(\\sigma_y-\\sigma_z)^2+(\\sigma_z-\\sigma_x)^2+6(\\tau_{xy}^2+\\tau_{yz}^2+\\tau_{zx}^2)}$$
+<b>Gebruik:</b> maat voor vloeibegin bij <em>ductiele</em> materialen.<br><br>
+<b>NIET gebruiken als:</b>
+<ul><li>Materiaal is <em>bros</em> (geen vloeien): gebruik hoofdspanningen.</li>
+<li>Je vergelijkt met analytische $\\sigma_x$ (buiging via Navier): vergelijk dan $\\sigma_x$ met $\\sigma_x$, niet met $\\sigma_{VM}$.</li>
+</ul>`},
+
+{t:"Post-processing & Verificatie", q:"Hoe verifieer je een FEM-simulatie in de praktijk (4 stappen)?",
+a:`<ol>
+<li><b>Krachtenevenwicht:</b> som aangelegde krachten ≈ som reactiekrachten (afwijking = numerieke fout).</li>
+<li><b>Spanningssprongen (unaveraged):</b> grote sprong → mesh verfijnen in dat gebied.</li>
+<li><b>Mesh-convergentiestudie:</b> resultaat stabiel bij verfijning? → mesh OK.</li>
+<li><b>Vergelijken met referentie:</b> analytische formule (Navier, Hibbeler) of experimentele data.</li>
+</ol>`},
+
+{t:"Post-processing & Verificatie", q:"Wat zijn de voor- en nadelen van averaged vs unaveraged bij het interpreteren van piekspanningen?",
+a:`<b>Averaged:</b>
+<ul><li>✔ Visueel aantrekkelijk, gladde overgang.</li>
+<li>✗ Verbergt discontinuïteiten → fouten in mesh of model worden niet zichtbaar.</li>
+<li>✗ Kan reële piekspanningen onderschatten.</li></ul>
+<b>Unaveraged:</b>
+<ul><li>✔ Toont werkelijke discontinuïteiten → krachtige verificatietool.</li>
+<li>✔ Kleine sprong = mesh fijn genoeg.</li>
+<li>✗ Visueel ruwer, minder presenteerbaar.</li></ul>`},
+
+// ─── TOPIC 12: Introductie & FEM-basisconcepten ──────────
+{t:"FEM Basisconcepten", q:"Wat zijn de 3 fases van een FEM-analyse (pre/processing/post)?",
+a:`<ul>
+<li><b>Pre-processing:</b> geometrie vereenvoudigen (CAD cleaning), mesh genereren, randvoorwaarden en materialen opleggen.</li>
+<li><b>Processing (Solve):</b> PDE's omzetten naar $[K]\\{\\tilde{q}\\}=\\{\\tilde{F}\\}$; matrix oplossen.</li>
+<li><b>Post-processing:</b> resultaten visualiseren, verifiëren en valideren, ontwerpaanpassingen.</li>
+</ul>
+<b>Kenmerk goede simulatie:</b> $t_{\\text{pre+post}} \\gg t_{\\text{solve}}$.`},
+
+{t:"FEM Basisconcepten", q:"Wat is het verschil tussen validatie en verificatie?",
+a:`<b>Validatie:</b> is het model een <em>goede representatie van de realiteit</em>? Kloppen de aannames, materialen, randvoorwaarden?<br>
+→ Vergelijk met experiment of analytische oplossing.<br>
+→ <em>Jij</em> iets mis?<br><br>
+<b>Verificatie:</b> heeft de <em>computer correct gerekend</em>? Zijn de numerieke/discretisatiefouten klein genoeg?<br>
+→ Check krachtenevenwicht, spanningssprongen, mesh-convergentie.<br>
+→ <em>Computer</em> iets mis?`},
+
+{t:"FEM Basisconcepten", q:"Wat zijn de 2 types numerieke fouten in FEA? Hoe evolueren ze met het aantal knopen?",
+a:`<ul>
+<li><b>Discretisatiefout:</b> fout door de mesh (geometrie + oplossing benaderd). <em>Neemt af</em> bij meer knopen ($h$-verfijning).</li>
+<li><b>Numerieke afrondingsfout:</b> fout door floating point bij matrix-inversie. <em>Neemt toe</em> bij meer knopen (grotere matrix = meer afrondingen).</li>
+</ul>
+⚠ Trade-off: optimale mesh ergens ertussenin!<br>
+Numerieke fout is doorgaans klein (veelal verwaarloosbaar) tenzij $[K]$ slecht geconditioneerd is.`},
+
+{t:"FEM Basisconcepten", q:"Hoe schaalt de rekentijd met het aantal DOF en de halve bandbreedte?",
+a:`Voor een <b>volle matrix:</b> CPU-tijd $\\sim (\\text{ndof})^3$<br><br>
+Voor een <b>gebande matrix</b> (realistisch):
+$$\\text{CPU-tijd} \\sim \\text{ndof} \\cdot \\text{hb}^2$$
+Verdubbelen van knopen: rekentijd $\\times 2$ (niet $\\times 8$!) als hb constant blijft.<br>
+Verdubbelen hb: rekentijd $\\times 4$. Knoopnummering heeft dus grote impact!`},
+
+{t:"FEM Basisconcepten", q:"Wanneer is numerieke simulatie fout en hoe ga je daarmee om?",
+a:`Per definitie is een numerieke simulatie <b>altijd fout</b> door:<ul>
+<li>Modelleerfout: vereenvoudigingen, aannames (Bernoulli, Kirchhoff, ...).</li>
+<li>Discretisatiefout: mesh is niet het exacte domein.</li>
+<li>Numerieke fout: afrondingen in computer.</li>
+</ul>
+<b>Aanpak:</b> aantonen dat de fout <em>aanvaardbaar klein</em> is via verificatie en validatie. Je moet de simulatie motiveren en de fouten kwantificeren.`},
+
+{t:"FEM Basisconcepten", q:"Wat is het principe van Saint-Venant? Hoe gebruik je het in FEA?",
+a:`<b>Saint-Venant:</b> ver van een geconcentreerde kracht of complexe verbinding is de spanningsverdeling onafhankelijk van de exacte manier waarop die kracht/verbinding is aangebracht — alleen de resultante telt.<br><br>
+<b>Gebruik in FEA:</b> je kan complexe verbindingen (bouten, lassen) vereenvoudigen als puntlasten of RV, zolang je de resultaten bekijkt op voldoende afstand. In de zone vlak bij de vereenvoudiging is de oplossing niet representatief.`},
+
+// ─── TOPIC 13: Hybride Meshes ─────────────────────────────
+{t:"Hybride Meshes", q:"Wat zijn de 3 problemen bij het combineren van verschillende elementtypes in een hybride mesh?",
+a:`<ol>
+<li><b>Verschillende DOFs:</b> bv. beam (met rotaties) aan membraan (zonder rotaties) → incompatibele knopen.</li>
+<li><b>Geometrische gaten (gaps):</b> 1D mesh ligt op neutrale as, 2D op midsurface → gaten bij assemblage.</li>
+<li><b>Verschillende VF-ordes:</b> kubische VF (beam/plaat) naast lineaire VF (membraan) → scheur (discontinuïteit) aan de verbinding.</li>
+</ol>
+<b>Oplossing voor alle drie:</b> Multi-Point Constraints (MPC's) of RBE-elementen.`, img:"gaps.png"},
+
+{t:"Hybride Meshes", q:"Wanneer gebruik je 1D-, 2D- en 3D-elementen? Geef een vuistregel.",
+a:`<ul>
+<li><b>1D (beam/rod):</b> 1 dimensie véél groter dan de andere 2 (balken, staven, buizen).</li>
+<li><b>2D (membraan/plaat/schil):</b> 1 dimensie véél kleiner dan de andere 2 (platen, schillen, deksels).</li>
+<li><b>3D (solid):</b> alle dimensies van vergelijkbare orde (blokken, knooppunten, complexe vormen).</li>
+</ul>
+Voordeel hybride: zelfde nauwkeurigheid als volledig 3D, maar véél minder rekentijd.`, img:"tabel1D2D3D.png"},
+
+{t:"Hybride Meshes", q:"Wat is het verschil tussen een Glue-randvoorwaarde en een MPC? Wanneer gebruik je glue?",
+a:`<b>Glue</b> is een speciale MPC waarbij:<ul>
+<li>Twee meshes met <em>niet-overeenkomende knopen</em> aan elkaar verbonden worden.</li>
+<li>De software de slave-knopen interpoleert op het master-oppervlak via de master-VF.</li>
+<li>De slave-mesh wordt wiskundig op de master geprojecteerd (gap verdwijnt).</li>
+</ul>
+<b>Gebruik glue:</b> bij twee aangrenzende meshes met verschillende knoopposities maar zonder fysieke afstand.<br>
+⚠ Bij een echte gap: gebruik RBE2 (behoudt fysieke afstand).`},
+
+// ─── TOPIC 14: 3D Elementen ───────────────────────────────
+{t:"3D Elementen", q:"Welke rekcomponenten zijn er in 3D? Wat is de grootte van de [B]-matrix voor een TET4?",
+a:`6 rekcomponenten: $\\epsilon_x, \\epsilon_y, \\epsilon_z, \\gamma_{xy}, \\gamma_{yz}, \\gamma_{xz}$<br><br>
+TET4 heeft 4 knopen × 3 DOF = 12 DOF totaal.<br>
+$\\Rightarrow [B]$: $6 \\times 12$<br>
+$\\Rightarrow [E]$: $6 \\times 6$<br>
+$\\Rightarrow [k_e]$: $12 \\times 12$`},
+
+{t:"3D Elementen", q:"Wat zijn de voor- en nadelen van TET vs HEX elementen in 3D?",
+a:`<b>TET (tetraëder):</b>
+<ul><li>✔ Gemakkelijk automatisch te meshen voor complexe geometrieën.</li>
+<li>✗ Minder nauwkeurig, meer elementen en DOF nodig.</li></ul>
+<b>HEX (hexaëder/brik):</b>
+<ul><li>✔ Nauwkeuriger, betere convergentie, minder DOF.</li>
+<li>✗ Moeilijk te meshen, enkel voor geometrisch eenvoudige vormen.</li></ul>
+Analoog aan TRIA vs QUAD in 2D.`, img:"3Delemennttt.png"},
+
+
+// ─── TOPIC 15: Isoparametrische Elementen ────────────────
+{t:"Isoparametrische Elementen", q:"Wat zijn isoparametrische elementen en welk type transformatie is nodig om een element te mappen naar een isoparametrisch element? (examen 25/04/2025)",
+a:`Een isoparametrisch element is een willekeurig gevormd element dat <b>wiskundig wordt getransformeerd</b> (gemapped) naar een standaard referentie-element in het <em>natural coordinate system</em> ($\\xi, \\eta \\in [-1,1]$).<br><br>
+De benodigde transformatie is een <b>geometrische mapping</b> via dezelfde vormfuncties:
+$$x = \\sum_i N_i x_i, \\quad y = \\sum_i N_i y_i$$
+(Zelfde VF voor zowel verplaatsingen als coördinaten = "iso"-parametrisch).<br>
+Hierdoor zijn de VF <em>identiek voor alle elementen</em> → software hoeft slechts één set VF te kennen.`},
+
+{t:"Isoparametrische Elementen", q:"Welke matrix is nodig om de isoparametrische mapping te formuleren en de stijfheidsmatrix te berekenen? Leg de betekenis uit.",
+a:`De <b>Jacobiaan-matrix $[J]$</b>:
+$$[J] = \\begin{bmatrix}\\frac{\\partial x}{\\partial\\xi} & \\frac{\\partial y}{\\partial\\xi}\\\\ \\frac{\\partial x}{\\partial\\eta} & \\frac{\\partial y}{\\partial\\eta}\\end{bmatrix}$$
+<b>Betekenis:</b> $[J]$ beschrijft hoe de coördinaten $\\xi, \\eta$ van het referentie-element zich verhouden tot de fysieke coördinaten $x, y$.<br>
+<b>In de stijfheidsmatrix:</b>
+$$[k_e] = \\int_{-1}^{+1}\\int_{-1}^{+1} [B]^T[E][B]\\det([J])\\,d\\xi\\,d\\eta$$
+$\\det([J])$ corrigeert voor de rek/compressie van het element bij de mapping.`},
+
+{t:"Isoparametrische Elementen", q:"Wat is het voordeel van isoparametrische elementen? Kan elk element worden gemapped naar een isoparametrisch element?",
+a:`<b>Voordeel:</b> De stijfheidsmatrix-integraal heeft altijd grenzen $[-1,1]$ → slechts één universele formule voor alle elementen → enorme vereenvoudiging voor de software.<br><br>
+<b>Niet elk element kan worden gemapped!</b> Alleen <b>convexe</b> elementen:<ul>
+<li>Bij een niet-convex element (inwendige hoek $> 180°$) zijn er meerdere $\\xi,\\eta$-coördinaten voor hetzelfde fysieke punt.</li>
+<li>De mapping is dan niet uniek → $\\det([J]) = 0$ of negatief op sommige punten → ongeldig.</li>
+</ul>
+Dit verklaart waarom FEM-software weigert te rekenen met sterk vervormde/concave elementen.`, img:"nietconvexelement.png"},
+
+// ─── TOPIC 16: Numerieke Fouten ──────────────────────────
+{t:"Numerieke Fouten", q:"Wat zijn numerieke fouten in FEA? Hoe ontstaan ze en hoe worden ze beïnvloed door het aantal knopen? (examen 03/09/2025, 29/08/2025)",
+a:`<b>Numerieke fouten</b> zijn afrondingsfouten die ontstaan bij het <b>oplossen van het lineaire stelsel</b> $[K]^{-1}\\{\\tilde{F}\\}$ door de computer.<br><br>
+<b>Oorzaak:</b> de computer rekent met een eindige precisie (floating point). Vooral problematisch als $[K]$ "slecht geconditioneerd" is (grote spreiding tussen de kleinste en grootste waarden in de matrix).<br><br>
+<b>Invloed van knoopaantal:</b>
+<ul>
+<li>Meer knopen → grotere matrix → meer bewerkingen → <em>numerieke fout neemt TOE</em>.</li>
+<li>Tegenovergesteld aan discretisatiefout! Trade-off.</li>
+</ul>
+Numerieke fout is in de praktijk vaak klein, maar nooit nul.`},
+
+{t:"Numerieke Fouten", q:"Hoe kun je numerieke fouten reduceren in de pre-processing fase?",
+a:`<ul>
+<li><b>Goede knoopnummering</b>: kleine halve bandbreedte (hb) → $[K]$ heeft een smalle bandstructuur → minder rekenoperaties → kleinere afrondingsfout.</li>
+<li><b>Consistente eenheden</b>: gebruik consistente eenheden (bv. alles in SI) om grote verschillen in de orde van grootte van $[K]$-waarden te vermijden (vermindert "ill-conditioning").</li>
+<li><b>Geometrische details vermijden</b>: scherpe hoeken en extreem dunne elementen veroorzaken extreme stijfheidsverschillen → slechter geconditioneerde matrix.</li>
+</ul>`},
+
+{t:"Numerieke Fouten", q:"Hoe kan je in de post-processing fase een inschatting maken van de grootte van de numerieke fouten?",
+a:`Door het <b>krachtenevenwicht</b> te controleren:<br><br>
+Per definitie geldt: $[K]\\{\\tilde{q}\\} = \\{\\tilde{F}\\}$, dus de som van alle aangelegde krachten moet <em>exact</em> gelijk zijn aan de som van de reactiekrachten (in elke richting).<br><br>
+Als je in de software de reactiekrachten opvraagt en de som vergelijkt met de aanlegde krachten:<ul>
+<li><b>Kleine afwijking</b> (bv. $< 0.1\\%$): numerieke fout verwaarloosbaar. ✓</li>
+<li><b>Grote afwijking</b>: de matrix was slecht geconditioneerd → resultaten onbetrouwbaar. ✗</li>
+</ul>`, img:"outputsolver.png"},
+
+// ─── TOPIC 17: Energie- vs Directe Methode ───────────────
+{t:"Energie-methode (Matrix Flow)", q:"Wat is het conceptuele verschil tussen de directe (veer)methode en de energie-gebaseerde methode? (examen 03/09/2025)",
+a:`<b>Directe methode:</b><ul>
+<li>Fysisch intuïtief: elk element gedraagt zich als een mechanische veer ($F=ku$).</li>
+<li>Geeft de kolommen van $[k_e]$ door één voor één krachtenevenwichten te beschouwen.</li>
+<li>Eenvoudig voor 1D elementen, praktisch onmogelijk voor 2D/3D.</li>
+</ul>
+<b>Energie-methode (Rayleigh-Ritz):</b><ul>
+<li>Gebaseerd op de wet van behoud van energie: externe arbeid = interne elasticiteitsenergie.</li>
+<li>Systematisch via de formule $[k_e] = \\int [B]^T[E][B]\\,dV$.</li>
+<li>Universeel toepasbaar voor <em>elk</em> type element (1D, 2D, 3D).</li>
+<li>Levert exact hetzelfde resultaat als de directe methode voor eenvoudige elementen.</li>
+</ul>`},
+
+// ─── TOPIC 18: Automatische Mesh Adaptatie (detail) ──────
+{t:"Mesh Design & Convergentie", q:"Welk type fouten worden typisch gereduceerd door automatische mesh adaptatie? Motiveer. Wat zijn mogelijke nadelen? (examen 06/006/2025, 27/01/2025)",
+a:`<b>Type fout gereduceerd:</b> <em>Discretisatiefouten</em>.<br>
+Automatische mesh adaptatie verfijnt de mesh op plaatsen waar de error-indicator (bv. spanningssprong) te groot is → meer knopen → kleinere discretisatiefout.<br><br>
+<b>Nadelen / risico's:</b><ul>
+<li>Bij <b>singulariteiten</b> (scherpe hoeken, puntlasten): spanning convergeert nooit → adaptatie blijft de mesh oneindig verfijnen zonder nuttig resultaat.</li>
+<li><b>Numerieke fouten nemen toe</b>: meer knopen → grotere matrix → meer afrondingsfouten (tegengesteld effect).</li>
+<li><b>Minder controle</b> over meshvorm; soms onlogische elementverdeling.</li>
+<li>Rekentijd van de iteratieve procedure kan hoog oplopen.</li>
+</ul>`, img:"meshadaptatie.png"},
+
+// ─── TOPIC 19: Topologische Optimalisatie ─────────────────
+{t:"Post-processing & Verificatie", q:"Wat is topologische optimalisatie en hoe wordt het uitgevoerd door FE-software? (examen 03/09/2025)",
+a:`<b>Topologische optimalisatie</b> is een methode waarbij FEA wordt gebruikt om de optimale materiaalverdeling binnen een gegeven ontwerpruimte te vinden, rekening houdend met belastingen en randvoorwaarden.<br><br>
+<b>Werkwijze:</b>
+<ol>
+<li>Start met een volledig gevuld ontwerp (alle elementen aanwezig).</li>
+<li>Ken aan elk element een <em>dichtheidsvariabele</em> toe ($\\rho \\in [0,1]$).</li>
+<li>Stel een doelstelling in: minimaliseer verplaatsing (= maximaliseer stijfheid) bij een gegeven max. gewicht.</li>
+<li>Berekening: FEM-analyse → bereken sensitiviteiten (welk element draagt het meest bij aan de stijfheid).</li>
+<li>Update dichtheden: elementen die weinig bijdragen worden "leeggemaakt" ($\\rho \\to 0$).</li>
+<li>Herhaal tot convergentie.</li>
+</ol>
+<b>Wat wordt geplot:</b> waarschijnlijk Von Mises spanning of verplaatsing.`, img:"toplogicaloptimizatioin.png"},
+
+// ─── TOPIC 20: QUAD8 stijfheidsmatrix grootte ─────────────
+{t:"Elementtypes & DOFs", q:"Wat is de grootte van de elementstijfheidsmatrix $[k_e]$ voor een QUAD8 membraan-, plaat- en schilelement? Vergelijk de rekentijden. (examen 03/09/2025, 29/08/2025)",
+a:`QUAD8 heeft 8 knopen:<br>
+<table style="width:100%;font-size:.88rem;">
+<tr><th></th><th>DOF/knoop</th><th>Totaal DOF</th><th>$[k_e]$ grootte</th></tr>
+<tr><td><b>Membraan</b></td><td>2 ($u_x,u_y$)</td><td>16</td><td>$16\\times16$</td></tr>
+<tr><td><b>Plaat</b></td><td>3 ($u_z,\\theta_x,\\theta_y$)</td><td>24</td><td>$24\\times24$</td></tr>
+<tr><td><b>Schil</b></td><td>5–6</td><td>40–48</td><td>$40\\times40$ tot $48\\times48$</td></tr>
+</table><br>
+<b>Rekentijdvergelijking</b> (CPU $\\sim \\text{ndof}^3$, per element):<br>
+Als plaat 100u kost → membraan: $(16/24)^3 \\approx 0.30 \\times 100 = 30u$; schil: $(48/24)^3 = 8 \\times 100 = 800u$.`},
+
+// ─── TOPIC 21: Mesh-model problemen (terugkerend) ─────────
+{t:"Stijfheidsmatrix & Nummering", q:"Een TRIA3 membraan-mesh heeft: knoop 1 = scharnier, knoop 4 = roloplegging, knoop 11 = moment aangelegd. Wat zijn de problemen met dit model? Hoe los je ze op? (terugkerende examen-vraag 2025)",
+a:`<b>Problemen:</b>
+<ol>
+<li><b>Moment op een membraanknoop</b>: een membraanelement heeft GEEN rotatie-DOF ($\\theta$). Een moment kan dus niet worden aangelegd op een membraanknoop → het FEM-stelsel heeft geen corresponderend DOF → het moment wordt genegeerd / software crash.</li>
+<li><b>Mogelijk rigid body motion</b>: controleer of de roloplegging de juiste richting vasthoudt; soms is het stelsel nog steeds singulier als er rotatie vrijheidsgraden ontbreken.</li>
+</ol>
+<b>Oplossingen (zonder nieuwe elementen):</b>
+<ul>
+<li>Moment: vervang het moment door een koppel van 2 krachten op naburige knopen met gelijke grootte maar tegengestelde richting.</li>
+<li>Singulariteit: voeg een extra essentiële randvoorwaarde toe om alle rigid body motions te blokkeren.</li>
+</ul>`},
+
+// ─── TOPIC 22: Consistente vs Lumped belasting ────────────
+{t:"Beam-elementen", q:"Wat is het verschil tussen een consistente en een 'lumped' (geklonterde) belastingsverdeling op een element?",
+a:`<b>Consistente methode:</b> de verdeelde belasting wordt naar de knopen overgebracht via de vormfuncties:
+$$\\{\\tilde{F}\\} = \\int [N]^T \\{p\\}\\,dV$$
+Dit geeft exact de juiste resultaten (zowel krachten als momenten bij beam-elementen).<br><br>
+<b>Lumped methode:</b> de totale belasting wordt simpelweg gelijkmatig verdeeld over de knopen (1/2 naar elke knoop bij een 2-knoop element).<br><br>
+<b>Verschil:</b>
+<ul>
+<li>Consistente methode is altijd nauwkeuriger, maar genereert ook momenten in knopen (bij beam).</li>
+<li>Lumped is eenvoudiger maar minder nauwkeurig voor niet-uniforme belastingen.</li>
+<li>Voor membraan-elementen met lineaire VF zijn consistente en lumped identiek bij uniforme belasting.</li>
+</ul>`},
+
+// ─── TOPIC 23: Kraan simulatie / hybride model ────────────
+{t:"Hybride Meshes", q:"Voor een kraanconstructie (vakwerk met diagonaalstaven): welke 1D elementen gebruik je, hoe koppel je ze aan een 3D motorblok, en wanneer kies je alsnog voor 3D? (examen 27/01/2025, 06/006/2025)",
+a:`<b>1D elementen:</b>
+<ul>
+<li>De staven/diagonalen: ROD-elementen (enkel axiale krachten, scharnieren).</li>
+<li>Als de verbindingen stars zijn (buiging) en er torsie optreedt: BEAM-elementen.</li>
+</ul>
+<b>Koppeling 1D aan 3D motorblok:</b>
+<ul>
+<li>Gebruik <b>RBE3-elementen</b> om de kracht van het staafuiteinde (1D) te verdelen over de omliggende knopen van het 3D-blok → realistic spanning, geen concentratie.</li>
+<li>Alternatief: <b>RBE2</b> voor een stijve verbinding (maar let op singulariteiten).</li>
+</ul>
+<b>Wanneer toch 3D?</b>
+<ul>
+<li>Als de spanningsconcentraties <em>ter hoogte van de verbinding</em> van belang zijn (joint-failure, vermoeiing).</li>
+<li>Als er complexe geometrie is die niet met 1D te vereenvoudigen is.</li>
+</ul>`},
+
+// ─── TOPIC 24: Lineaire vs kwadratische elementen (detail) ─
+{t:"Elementtypes & DOFs", q:"Wat zijn de gevolgen voor de rekentijd als je kwadratische elementen gebruikt i.p.v. lineaire elementen? Wees specifiek! (examen 21/01/2026)",
+a:`<b>Twee effecten:</b><br><br>
+<b>1. Constructie van $[k_e]$:</b> kwadratisch element heeft meer knopen per element (bv. QUAD8 i.p.v. QUAD4) → $[B]$-matrix is groter → integraal $\\int [B]^T[E][B]\\,dV$ is moeilijker te berekenen → meer rekentijd per element.<br><br>
+<b>2. Oplossen van $[K]\\{\\tilde{q}\\}=\\{\\tilde{F}\\}$:</b> kwadratische mesh heeft ~2× meer knopen per rand → $\\text{ndof} \\approx 2\\times$ groter → $[K]$ is $2\\times$ groter → <b>rekentijd $\\approx 8\\times$ groter</b> (CPU $\\sim \\text{ndof}^3$).<br><br>
+<b>Wanneer lineair gebruiken:</b> snelle eerste schatting, grote modellen, gebieden met weinig spanningsgradiënt.<br>
+<b>Wanneer kwadratisch:</b> nauwkeurige eindresultaten, spanningsconcentraties, lokale verfijning.`},
+
+// ─── TOPIC 25: TRIA3 VF details (terugkerend) ─────────────
+{t:"Vormfuncties", q:"TRIA3 membraan: DOF/knoop, aantal VF, orde VF, relatie tussen VF? En voor TRIA3 plaat? (terugkerende examen-vraag 2024-2025)",
+a:`<b>TRIA3 Membraan:</b>
+<ul>
+<li>DOF/knoop: 2 ($u_x, u_y$)</li>
+<li>Aantal VF: 3 (één per knoop)</li>
+<li>Orde: 1 (lineair: $a+bx+cy$)</li>
+<li>Relatie: $\\sum N_i = 1$ (partitie van eenheid)</li>
+</ul>
+<b>TRIA3 Plaat:</b>
+<ul>
+<li>DOF/knoop: 3 ($u_z, \\theta_x, \\theta_y$)</li>
+<li>Aantal VF: 9 ($3 \\times 3$ knopen)</li>
+<li>Orde: 3 (kubisch) — nodig omdat buiging 2e afgeleide vereist</li>
+<li>Relatie: $\\sum N_i = 1$ geldt <em>niet</em> rechtstreeks voor hogere-orde buig-VF op dezelfde manier als bij membraan. De 9 VF zijn van hogere orde en complexer.</li>
+</ul>`},
+
+// ─── TOPIC 26: Gemengde RV in matrixvergelijking (detail) ─
+{t:"Randvoorwaarden", q:"Hoe wordt een gemengde (Robin) randvoorwaarde wiskundig geïmplementeerd in het stelsel $[K]\\{\\tilde{q}\\}=\\{\\tilde{F}\\}$? Gebruik $\\alpha\\tilde{q}_i + \\beta\\frac{\\partial\\tilde{q}}{\\partial n} = \\bar{s}$. (examen 26/01/2026)",
+a:`In de rij die overeenkomt met DOF $i$ van de gemengde BC:
+$$k_{i1}\\tilde{q}_1 + \\ldots + k_{ii}\\tilde{q}_i + \\ldots = \\tilde{f}_i = \\bar{s}/\\beta - (\\alpha/\\beta)\\tilde{q}_i$$
+Herschrijven:
+$$k_{i1}\\tilde{q}_1 + \\ldots + \\underbrace{(k_{ii} + \\alpha/\\beta)}_{\\text{extra op diagonaal}}\\tilde{q}_i + \\ldots = \\underbrace{\\bar{s}/\\beta}_{\\text{extra kracht}}$$
+<b>Implementatie:</b>
+<ul>
+<li>Voeg $\\alpha/\\beta = k_{\\text{spring}}$ toe aan het diagonaalelement van $[K]$ op positie $(i,i)$.</li>
+<li>Voeg $\\bar{s}/\\beta$ toe aan het rechterlid $\\{\\tilde{F}\\}$ op positie $i$ (= pretension).</li>
+</ul>
+→ De veerstijfheid $k = \\alpha/\\beta$ komt dus letterlijk bij het diagonaalelement.`},
+
+// ─── TOPIC 27: Mesh convergentie grafiek ──────────────────
+{t:"Mesh Design & Convergentie", q:"Schets en beschrijf de typische mesh-convergentiegrafiek voor lineaire en kwadratische elementen. Welke variabelen staan op de assen? Kan p-refinement ook gebruikt worden voor een convergentiestudie? (examen 26/01/2026)",
+a:`<b>Assen:</b> x-as = $\\log(1/\\Delta h)$ of $\\log(\\text{ndof})$; y-as = $\\log(\\text{error})$ (of de absolute spanningswaarde).<br><br>
+<b>Vorm:</b>
+<ol>
+<li><b>Lineaire regio:</b> fout daalt als power law bij groter wordende mesh (steilere daling voor $p=2$ dan voor $p=1$).</li>
+<li><b>Optimum:</b> minimum van de curve — voorbij dit punt stijgt numerieke fout sneller dan discretisatiefout daalt.</li>
+<li><b>Numerieke error regio:</b> bij heel fijne mesh stijgt totale fout weer door afrondingsfouten.</li>
+</ol>
+$p=2$ (kwadratisch) heeft een <em>steilere hellingsgraad</em> → convergeert sneller dan $p=1$.<br><br>
+<b>p-refinement:</b> ja, het principe is hetzelfde ($\\text{disc. error} \\sim (\\Delta h)^p$), maar praktisch is het nut beperkt want maximale orde is 2 in de praktijk.`, img:"rateofconvergence.png"},
+
+]; // einde CARDS array
+
+// ═══════════════════════════════════════════════════════════
+//  HOOFDSTUK-VOLGORDE  (conform LaTeX cursus)
+// ═══════════════════════════════════════════════════════════
+const CHAPTER_ORDER = [
+  { label: "H1 · Introductie & FEM Basis",          topics: ["FEM Basisconcepten"] },
+  { label: "H2 · Elementen, Knopen & Vormfuncties", topics: ["Elementtypes & DOFs", "Vormfuncties"] },
+  { label: "H3 · Randvoorwaarden",                  topics: ["Randvoorwaarden"] },
+  { label: "H4 · Directe Methode & Stijfheidsmatrix",topics: ["Directe Methode", "Stijfheidsmatrix & Nummering"] },
+  { label: "H5 · Beam-elementen",                   topics: ["Beam-elementen"] },
+  { label: "H6 · Energie-methode & 2D/3D Elementen",topics: ["Energie-methode (Matrix Flow)", "2D Elementen", "Isoparametrische Elementen", "3D Elementen"] },
+  { label: "H7 · Hybride Meshes & MPC's",           topics: ["Hybride Meshes", "MPC's & RBE-elementen"] },
+  { label: "H8 · Pre-processing",                   topics: ["Numerieke Fouten", "Mesh Design & Convergentie"] },
+  { label: "H9 · Post-processing",                  topics: ["Post-processing & Verificatie"] },
+];
+
+// Geef elk topic een volgorde-index op basis van CHAPTER_ORDER
+const TOPIC_ORDER = {};
+let _ord = 0;
+CHAPTER_ORDER.forEach(ch => ch.topics.forEach(t => { TOPIC_ORDER[t] = _ord++; }));
+
+// Sorteer CARDS op hoofdstukvolgorde (stabiel)
+CARDS.sort((a,b) => (TOPIC_ORDER[a.t] ?? 99) - (TOPIC_ORDER[b.t] ?? 99));
+
+// ═══════════════════════════════════════════════════════════
+//  APP LOGICA
+// ═══════════════════════════════════════════════════════════
+const topics = [...new Set(CARDS.map(c=>c.t))];
+let deck = [], idx = 0, right = 0, wrong = 0, flipped = false, wrongCards = [];
+
+// ── Build topic grid gegroepeerd per hoofdstuk ──
+const grid = document.getElementById('topicsGrid');
+CHAPTER_ORDER.forEach(ch => {
+  // Hoofdstuk-label
+  const hdr = document.createElement('div');
+  hdr.className = 'chapter-header';
+  hdr.textContent = ch.label;
+  grid.appendChild(hdr);
+
+  ch.topics.forEach(topic => {
+    const count = CARDS.filter(c=>c.t===topic).length;
+    if (count === 0) return; // sla onbekend topic over
+    const chip = document.createElement('label');
+    chip.className = 'topic-chip selected';
+    chip.innerHTML = `<input type="checkbox" value="${topic}" checked><span>${topic}</span><span class="topic-count">${count}</span>`;
+    chip.querySelector('input').addEventListener('change', () => {
+      chip.classList.toggle('selected', chip.querySelector('input').checked);
+      updateAvailable();
+    });
+    grid.appendChild(chip);
+  });
+});
+
+function selectAll(val) {
+  document.querySelectorAll('#topicsGrid input[type=checkbox]').forEach(cb => {
+    cb.checked = val;
+    cb.closest('.topic-chip').classList.toggle('selected', val);
+  });
+  updateAvailable();
+}
+
+function getSelectedTopics() {
+  return [...document.querySelectorAll('#topicsGrid input[type=checkbox]:checked')].map(cb=>cb.value);
+}
+
+function updateAvailable() {
+  const sel = getSelectedTopics();
+  const n = CARDS.filter(c=>sel.includes(c.t)).length;
+  document.getElementById('availableCount').textContent = `${n} flashcards beschikbaar in geselecteerde thema's.`;
+  document.getElementById('startBtn').disabled = n === 0;
+  document.getElementById('countInput').max = n;
+}
+updateAvailable();
+
+function shuffle(arr) {
+  for (let i = arr.length-1; i > 0; i--) {
+    const j = Math.floor(Math.random()*(i+1));
+    [arr[i],arr[j]] = [arr[j],arr[i]];
+  }
+  return arr;
+}
+
+function startGame(fromWrong = false) {
+  if (fromWrong) {
+    deck = shuffle([...wrongCards]);
+  } else {
+    const sel = getSelectedTopics();
+    const pool = CARDS.filter(c=>sel.includes(c.t));
+    const n = Math.min(parseInt(document.getElementById('countInput').value)||20, pool.length);
+    deck = shuffle([...pool]).slice(0, n);
+  }
+  idx = 0; right = 0; wrong = 0; wrongCards = [];
+  document.getElementById('setup').style.display   = 'none';
+  document.getElementById('results').style.display = 'none';
+  document.getElementById('game').style.display    = 'block';
+  showCard();
+}
+
+function retryWrong() {
+  if (wrongCards.length === 0) { goSetup(); return; }
+  document.getElementById('results').style.display = 'none';
+  startGame(true);
+}
+
+function goSetup() {
+  document.getElementById('results').style.display = 'none';
+  document.getElementById('game').style.display    = 'none';
+  document.getElementById('setup').style.display   = 'block';
+}
+
+function quit() {
+  document.getElementById('game').style.display = 'none';
+  document.getElementById('setup').style.display = 'block';
+}
+
+function showCard() {
+  if (idx >= deck.length) { showResults(); return; }
+  const card = deck[idx];
+  flipped = false;
+  document.getElementById('flipContainer').classList.remove('flipped');
+  document.getElementById('btnWrong').disabled = true;
+  document.getElementById('btnRight').disabled = true;
+  // Zoek hoofdstuklabel
+  const chEntry = CHAPTER_ORDER.find(ch => ch.topics.includes(card.t));
+  const chLabel = chEntry ? chEntry.label.split('·')[0].trim() + ' · ' : '';
+  document.getElementById('cardTopic').textContent = chLabel + card.t;
+  document.getElementById('cardNum').textContent   = `Kaart ${idx+1} van ${deck.length}`;
+  document.getElementById('questionText').innerHTML = card.q;
+  const aDiv = document.getElementById('answerText');
+  aDiv.innerHTML = card.a + (card.img ? `<br><img src="${card.img}" alt="" onerror="this.style.display='none'">` : '');
+  document.getElementById('flipContainer').className = 'flip-container' + (card.img ? ' has-image' : '');
+  // progress
+  const pct = (idx/deck.length)*100;
+  document.getElementById('progressFill').style.width = pct+'%';
+  document.getElementById('statProgress').textContent = `${idx}/${deck.length}`;
+  document.getElementById('statRight').textContent = right;
+  document.getElementById('statWrong').textContent = wrong;
+  // re-render math
+  if (window.MathJax) MathJax.typesetPromise && MathJax.typesetPromise([document.getElementById('game')]);
+}
+
+function flipCard() {
+  if (!flipped) {
+    flipped = true;
+    document.getElementById('flipContainer').classList.add('flipped');
+    document.getElementById('btnWrong').disabled = false;
+    document.getElementById('btnRight').disabled = false;
+  }
+}
+
+function answer(correct) {
+  if (correct) right++;
+  else { wrong++; wrongCards.push(deck[idx]); }
+  idx++;
+  showCard();
+}
+
+function showResults() {
+  document.getElementById('game').style.display    = 'none';
+  document.getElementById('results').style.display = 'block';
+  const total = right + wrong;
+  const pct   = total > 0 ? Math.round(right/total*100) : 0;
+  document.getElementById('resPct').textContent   = pct+'%';
+  document.getElementById('resRight').textContent  = right;
+  document.getElementById('resWrong').textContent  = wrong;
+  document.getElementById('resTotal').textContent  = total;
+  const titles = ['Goed geprobeerd! 💪', 'Op de goede weg! 📚', 'Goed bezig! 👍', 'Uitstekend! 🔥', 'Perfectie! 🏆'];
+  document.getElementById('resTitle').textContent = pct>=90?titles[4]:pct>=75?titles[3]:pct>=60?titles[2]:pct>=40?titles[1]:titles[0];
+  document.getElementById('resSub').textContent   = wrongCards.length > 0 ? `Je had ${wrongCards.length} kaart${wrongCards.length>1?'en':''} fout. Oefen ze opnieuw!` : 'Alle kaarten juist! Fantastisch!';
+  if (window.MathJax) MathJax.typesetPromise && MathJax.typesetPromise([document.getElementById('results')]);
+}
+</script>
+</body>
+</html>
