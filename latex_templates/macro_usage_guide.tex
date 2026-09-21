@@ -77,7 +77,7 @@ Hier begint je inhoud...
 \appendix
 \printsymbols
 \printformularium
-\end{document}
+\textbackslash end\{document\}
 \end{codeblock}
 
 \begin{waarschuwing}[Belangrijk: Compileer tweemaal!]
@@ -130,22 +130,23 @@ Dit vermindert marges naar 1cm, verwijdert witruimte in lijsten en verkleint hea
 
 Latex heeft wat standaard dingen om je tekst te stijlen.
 
-\begin{codeblock}[Basis Tekstopmaak]{tex}
-\textbf{Vetgedrukt} \\
-\textit{Cursief} \\
-\underline{Onderstreept} \\
-\emph{Nadruk} \\
-\texttt{Monospace / Typewriter} \\
-\textsc{Kleine Hoofdletters} \\
-\textcolor{red}{Gekleurde Tekst} \\
-\chapter{} \\
-\section{} \\
-\subsection{} \\
-\subsubsection{} \\
-\subsection{} \\
-\subsubsection{} \\
-\paragraph{}
-\end{codeblock}
+\begin{tabular}{lp{0.62\textwidth}}
+\toprule
+\textbf{Commando} & \textbf{Beschrijving} \\
+\midrule
+\verb|\textbf{...}| & Vetgedrukt \\
+\verb|\textit{...}| & Cursief \\
+\verb|\underline{...}| & Onderstreept \\
+\verb|\emph{...}| & Nadruk \\
+\verb|\texttt{...}| & Monospace / Typewriter \\
+\verb|\textsc{...}| & Kleine hoofdletters \\
+\verb|\textcolor{red}{...}| & Gekleurde tekst \\
+\verb|\section{...}| & Sectiekop \\
+\verb|\subsection{...}| & Subsectiekop \\
+\verb|\subsubsection{...}| & Subsubsectiekop \\
+\verb|\paragraph{...}| & Paragraafkop \\
+\bottomrule
+\end{tabular}
 
 \subsection{Tekstgrootte}
 Je kan de grootte van de tekst aanpassen met de volgende commando's. Deze werken relatief ten opzichte van de standaard grootte (meestal 11pt of 12pt).

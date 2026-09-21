@@ -1,0 +1,775 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=1.6cm, top=2cm, bottom=2cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{multicol}
+\usepackage{parskip}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{tcolorbox}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{amsmath}
+
+\tcbuselibrary{skins,breakable}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\small\textcolor{sqlpurple}{\textbf{SQL Samenvatting}} --- IEE Databank --- Databeheer 2025--2026}
+\lhead{\small Louic Cooreman}
+\rfoot{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\definecolor{sqlpurple}{RGB}{136,60,180}
+\definecolor{sqlblue}{RGB}{50,120,200}
+\definecolor{sqlgreen}{RGB}{30,140,80}
+\definecolor{sqlorange}{RGB}{200,110,10}
+\definecolor{sqlgray}{RGB}{110,110,110}
+\definecolor{sqlred}{RGB}{170,30,30}
+\definecolor{codbg}{RGB}{246,243,255}
+\definecolor{resbg}{RGB}{241,251,241}
+\definecolor{tblhead}{RGB}{80,30,120}
+\definecolor{notecolor}{RGB}{255,249,220}
+\definecolor{warncolor}{RGB}{255,236,236}
+\definecolor{rowalt}{RGB}{248,244,255}
+
+\lstdefinestyle{sql}{
+  language=SQL,
+  basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\bfseries\color{sqlpurple},
+  stringstyle=\color{sqlorange},
+  commentstyle=\itshape\color{sqlgray},
+  backgroundcolor=\color{codbg},
+  frame=single, framerule=0.5pt,
+  rulecolor=\color{sqlpurple!35},
+  breaklines=true, showstringspaces=false,
+  tabsize=2, xleftmargin=5pt, xrightmargin=5pt,
+  morekeywords={INNER,LEFT,RIGHT,JOIN,ON,AS,REFERENCES,AUTO_INCREMENT,
+    DATETIME,VARCHAR,INT,CHAR,DOUBLE,FLOAT,TEXT,YEAR,DATE,NOT,NULL,
+    DEFAULT,UNIQUE,PRIMARY,KEY,FOREIGN,CONSTRAINT,DROP,IF,
+    EXISTS,USE,CREATE,DATABASE,TABLE,INSERT,INTO,VALUES,UPDATE,SET,
+    DELETE,FROM,WHERE,GROUP,BY,HAVING,ORDER,SELECT,DISTINCT,COUNT,
+    AVG,SUM,MIN,MAX,AND,OR,IN,BETWEEN,LIKE,DESC,ASC,NOW,CONCAT,
+    IS,PRECISION,ALTER,ADD,COMMIT,UNSIGNED}
+}
+\lstset{style=sql}
+
+\tcbset{
+  sqlbox/.style={colback=codbg,colframe=sqlpurple!55,
+    fonttitle=\bfseries\small\color{white},coltitle=white,
+    attach boxed title to top left={yshift=-2mm,xshift=4mm},
+    boxed title style={colback=sqlpurple,colframe=sqlpurple,arc=2pt},
+    boxrule=0.5pt,arc=3pt,left=4pt,right=4pt,top=6pt,bottom=4pt,breakable},
+  resbox/.style={colback=resbg,colframe=sqlgreen!55,
+    fonttitle=\bfseries\small\color{white},coltitle=white,
+    attach boxed title to top left={yshift=-2mm,xshift=4mm},
+    boxed title style={colback=sqlgreen!80!black,colframe=sqlgreen,arc=2pt},
+    boxrule=0.5pt,arc=3pt,left=4pt,right=4pt,top=6pt,bottom=4pt},
+  notebox/.style={colback=notecolor,colframe=sqlorange!60,
+    fonttitle=\bfseries\small\color{white},coltitle=white,
+    attach boxed title to top left={yshift=-2mm,xshift=4mm},
+    boxed title style={colback=sqlorange,colframe=sqlorange,arc=2pt},
+    boxrule=0.5pt,arc=3pt,left=4pt,right=4pt,top=6pt,bottom=4pt,breakable},
+  warnbox/.style={colback=warncolor,colframe=sqlred!55,
+    fonttitle=\bfseries\small\color{white},coltitle=white,
+    attach boxed title to top left={yshift=-2mm,xshift=4mm},
+    boxed title style={colback=sqlred,colframe=sqlred,arc=2pt},
+    boxrule=0.5pt,arc=3pt,left=4pt,right=4pt,top=6pt,bottom=4pt,breakable}
+}
+
+\titleformat{\section}{\large\bfseries\color{sqlpurple}}{}{0em}{}[\color{sqlpurple!40}\titlerule]
+\titleformat{\subsection}{\small\bfseries\color{sqlblue}}{}{0em}{$\bullet$\ }
+\titlespacing*{\section}{0pt}{8pt}{4pt}
+\titlespacing*{\subsection}{0pt}{5pt}{2pt}
+\setlist[itemize]{noitemsep,topsep=1pt,leftmargin=*}
+
+\newcommand{\TBLH}[1]{\textbf{\textcolor{white}{#1}}}
+
+\begin{document}
+
+%% TITEL
+\begin{tcolorbox}[colback=sqlpurple!10,colframe=sqlpurple,boxrule=1.2pt,arc=5pt,top=4pt,bottom=4pt]
+\begin{center}
+{\Large\bfseries\color{sqlpurple} SQL Samenvatting --- IEE Databank}\\[1pt]
+{\small Databeheer ABL 2025--2026 \quad|\quad Cheat sheet mag gebruikt worden op examen}
+\end{center}
+\end{tcolorbox}
+\vspace{4pt}
+
+%%=============================================================
+\section{De IEE Databank --- Structuur}
+%%=============================================================
+
+\begin{multicols}{3}
+{\scriptsize
+\begin{tabular}{|l|l|l|}
+\hline
+\rowcolor{tblhead}\TBLH{employee} & \TBLH{type} & \TBLH{} \\ \hline
+\underline{employee\_nr} & INT & PK \\ \hline
+name & VARCHAR & \\ \hline
+firstname & VARCHAR & \\ \hline
+func & VARCHAR & \\ \hline
+\textit{supervisor} & INT & FK* \\ \hline
+birthdate & DATE & \\ \hline
+salary & DOUBLE & \\ \hline
+\textit{department\_nr} & INT & FK \\ \hline
+\multicolumn{3}{|l|}{\tiny *FK naar employee zelf} \\ \hline
+\end{tabular}}
+
+\vspace{3pt}
+
+{\scriptsize
+\begin{tabular}{|l|l|l|}
+\hline
+\rowcolor{tblhead}\TBLH{department} & \TBLH{type} & \TBLH{} \\ \hline
+\underline{department\_nr} & INT & PK \\ \hline
+name & VARCHAR & \\ \hline
+location & VARCHAR & \\ \hline
+\textit{head} & INT & FK \\ \hline
+\multicolumn{3}{|l|}{\tiny head = FK naar employee} \\ \hline
+\end{tabular}}
+
+\columnbreak
+
+{\scriptsize
+\begin{tabular}{|l|l|l|}
+\hline
+\rowcolor{tblhead}\TBLH{course} & \TBLH{type} & \TBLH{} \\ \hline
+\underline{code} & CHAR(4) & PK \\ \hline
+description & VARCHAR & \\ \hline
+type & VARCHAR(4) & \\ \hline
+duration & INT & \\ \hline
+\multicolumn{3}{|l|}{\tiny types: BLD, ALG, DSG} \\ \hline
+\end{tabular}}
+
+\vspace{3pt}
+
+{\scriptsize
+\begin{tabular}{|l|l|l|}
+\hline
+\rowcolor{tblhead}\TBLH{execution} & \TBLH{type} & \TBLH{} \\ \hline
+\underline{\textit{course}} & CHAR(4) & PK+FK \\ \hline
+\underline{begindate} & DATETIME & PK \\ \hline
+\textit{teacher} & INT & FK \\ \hline
+location & VARCHAR & \\ \hline
+\multicolumn{3}{|l|}{\tiny PK = course+begindate samen!} \\ \hline
+\end{tabular}}
+
+\columnbreak
+
+{\scriptsize
+\begin{tabular}{|l|l|l|}
+\hline
+\rowcolor{tblhead}\TBLH{subscription} & \TBLH{type} & \TBLH{} \\ \hline
+\underline{sub\_id} & INT & PK \\ \hline
+\textit{student} & INT & FK \\ \hline
+\textit{course} & CHAR(4) & FK \\ \hline
+\textit{begindate} & DATETIME & FK \\ \hline
+evaluation & INT & \\ \hline
+\multicolumn{3}{|l|}{\tiny student = FK naar employee!} \\ \hline
+\multicolumn{3}{|l|}{\tiny course+begindate = FK naar execution} \\ \hline
+\end{tabular}}
+\end{multicols}
+
+%%=============================================================
+\section{Data in de Tabellen}
+%%=============================================================
+
+\subsection{employee}
+
+{\scriptsize
+\begin{tabular}{|c|l|l|l|c|l|r|c|}
+\hline
+\rowcolor{tblhead}\TBLH{emp\_nr} & \TBLH{name} & \TBLH{firstname} & \TBLH{func} & \TBLH{supervisor} & \TBLH{birthdate} & \TBLH{salary} & \TBLH{dept} \\ \hline
+7369 & Smit     & Nick       & trainer     & 7902 & 1964-02-15 & 1979.92 & 20 \\ \hline
+\rowcolor{rowalt}
+7499 & Alders   & Jan        & salesperson & 7698 & 1957-02-18 & 2259.84 & 30 \\ \hline
+7521 & Degens   & Theo       & salesperson & 7698 & 1978-02-20 & 2049.88 & 30 \\ \hline
+\rowcolor{rowalt}
+7566 & Jansen   & Jean-Marie & manager     & 7839 & 1963-04-01 & 4284.71 & 20 \\ \hline
+7654 & Martens  & Pierre     & salesperson & 7698 & 1952-09-27 & 2149.88 & 30 \\ \hline
+\rowcolor{rowalt}
+7698 & Bollen   & Roel       & manager     & 7839 & 1959-10-30 & 3109.72 & 30 \\ \hline
+7782 & Clerckx  & Axelle     & manager     & 7839 & 1981-06-08 & 2869.76 & 10 \\ \hline
+\rowcolor{rowalt}
+7788 & Schotten & Sam        & trainer     & 7566 & 1955-11-24 & 2399.71 & 20 \\ \hline
+7839 & Dekoning & Carlo      & CEO         & NULL & 1948-11-15 & 5299.51 & 10 \\ \hline
+\rowcolor{rowalt}
+7844 & Svenson  & Bjorn      & salesperson & 7698 & 1964-09-27 & 2199.85 & 30 \\ \hline
+7876 & Li       & Muhan      & trainer     & 7788 & 1972-12-28 & 1959.89 & 20 \\ \hline
+\rowcolor{rowalt}
+7900 & Jansen   & Roel       & accountant  & 7698 & 1982-12-01 & 1879.92 & 30 \\ \hline
+7902 & Swinnen  & Mark       & trainer     & 7566 & 1955-02-11 & 2299.71 & 20 \\ \hline
+\rowcolor{rowalt}
+7934 & Molenaar & Theo       & accountant  & 7782 & 1958-01-21 & 2179.87 & 10 \\ \hline
+\end{tabular}}
+
+\begin{multicols}{2}
+\subsection{department}
+
+{\scriptsize
+\begin{tabular}{|c|l|l|c|}
+\hline
+\rowcolor{tblhead}\TBLH{nr} & \TBLH{name} & \TBLH{location} & \TBLH{head} \\ \hline
+10 & headquarters    & Antwerpen & 7782 \\ \hline
+\rowcolor{rowalt}
+20 & education       & Leuven    & 7566 \\ \hline
+30 & sales           & Kontich   & 7698 \\ \hline
+\rowcolor{rowalt}
+40 & human resources & Heverlee  & 7839 \\ \hline
+50 & strategy        & Antwerpen & 7839 \\ \hline
+\end{tabular}}
+
+\columnbreak
+
+\subsection{course}
+
+{\scriptsize
+\begin{tabular}{|l|l|c|c|}
+\hline
+\rowcolor{tblhead}\TBLH{code} & \TBLH{description (kort)} & \TBLH{type} & \TBLH{dur} \\ \hline
+CGE & ORACLE CASE generation  & DSG & 4 \\ \hline
+\rowcolor{rowalt}
+CSO & ORACLE CASE design       & DSG & 5 \\ \hline
+ERM & Data modeling ERM        & DSG & 3 \\ \hline
+\rowcolor{rowalt}
+FOR & SQL*Forms                & BLD & 4 \\ \hline
+OAG & ORACLE app users         & ALG & 1 \\ \hline
+\rowcolor{rowalt}
+PMT & Process modeling         & DSG & 1 \\ \hline
+RSO & Relational design        & DSG & 2 \\ \hline
+\rowcolor{rowalt}
+S02 & Intro SQL+SQL*Plus       & ALG & 4 \\ \hline
+SMU & SQL*Menu                 & BLD & 1 \\ \hline
+\rowcolor{rowalt}
+SRW & SQL*ReportWriter         & BLD & 2 \\ \hline
+\end{tabular}}
+\end{multicols}
+
+\begin{multicols}{2}
+\subsection{execution}
+
+{\scriptsize
+\begin{tabular}{|l|l|c|l|}
+\hline
+\rowcolor{tblhead}\TBLH{course} & \TBLH{begindate} & \TBLH{teacher} & \TBLH{location} \\ \hline
+CSO & 2018-02-16 & NULL & Leuven  \\ \hline
+\rowcolor{rowalt}
+ERM & 2018-01-12 & NULL & NULL    \\ \hline
+FOR & 2017-10-14 & 7566 & Landen  \\ \hline
+\rowcolor{rowalt}
+FOR & 2018-02-09 & 7876 & Leuven  \\ \hline
+OAG & 2017-08-10 & 7566 & Kontich \\ \hline
+\rowcolor{rowalt}
+OAG & 2017-09-28 & 7902 & Leuven  \\ \hline
+RSO & 2018-02-16 & 7788 & Kontich \\ \hline
+\rowcolor{rowalt}
+S02 & 2017-03-10 & 7369 & Landen  \\ \hline
+S02 & 2018-04-06 & 7369 & Leuven  \\ \hline
+\rowcolor{rowalt}
+S02 & 2018-04-21 & 7902 & Leuven  \\ \hline
+SMU & 2017-09-11 & 7788 & Leuven  \\ \hline
+\rowcolor{rowalt}
+SRW & 2017-02-10 & 7369 & Leuven  \\ \hline
+SRW & 2018-09-11 & NULL & Landen  \\ \hline
+\end{tabular}}
+
+\columnbreak
+
+\subsection{subscription}
+
+{\scriptsize
+\begin{tabular}{|c|l|l|c|}
+\hline
+\rowcolor{tblhead}\TBLH{student} & \TBLH{course} & \TBLH{begindate} & \TBLH{eval} \\ \hline
+7499 & FOR & 2017-10-14 & 4    \\ \hline
+\rowcolor{rowalt}
+7499 & S02 & 2018-04-21 & 8    \\ \hline
+7499 & SMU & 2017-09-11 & 9    \\ \hline
+\rowcolor{rowalt}
+7499 & SRW & 2017-02-10 & 9    \\ \hline
+7521 & OAG & 2017-08-10 & 7    \\ \hline
+\rowcolor{rowalt}
+7566 & FOR & 2018-02-09 & NULL \\ \hline
+7566 & SMU & 2017-09-11 & 7    \\ \hline
+\rowcolor{rowalt}
+7698 & FOR & 2018-02-09 & NULL \\ \hline
+7698 & S02 & 2018-04-06 & NULL \\ \hline
+\rowcolor{rowalt}
+7698 & S02 & 2018-04-21 & 8    \\ \hline
+7782 & FOR & 2017-10-14 & 9    \\ \hline
+\rowcolor{rowalt}
+7788 & FOR & 2017-10-14 & 9    \\ \hline
+7788 & FOR & 2018-02-09 & NULL \\ \hline
+\rowcolor{rowalt}
+7788 & S02 & 2017-03-10 & NULL \\ \hline
+7839 & CSO & 2018-02-16 & NULL \\ \hline
+\rowcolor{rowalt}
+7839 & FOR & 2017-10-14 & 8    \\ \hline
+7839 & RSO & 2018-02-16 & NULL \\ \hline
+\rowcolor{rowalt}
+7839 & S02 & 2017-03-10 & 6    \\ \hline
+7844 & OAG & 2017-09-28 & 10   \\ \hline
+\rowcolor{rowalt}
+7876 & FOR & 2017-10-14 & 10   \\ \hline
+7876 & S02 & 2018-04-21 & 10   \\ \hline
+\rowcolor{rowalt}
+7876 & SMU & 2017-09-11 & 6    \\ \hline
+7900 & OAG & 2017-08-10 & 7    \\ \hline
+\rowcolor{rowalt}
+7900 & SRW & 2017-02-10 & 4    \\ \hline
+7902 & OAG & 2017-08-10 & 9    \\ \hline
+\rowcolor{rowalt}
+7902 & S02 & 2017-03-10 & 8    \\ \hline
+7902 & S02 & 2018-04-06 & NULL \\ \hline
+\rowcolor{rowalt}
+7934 & S02 & 2018-04-21 & 9    \\ \hline
+\end{tabular}}
+\end{multicols}
+
+%%=============================================================
+\section{DDL --- Tabellen Aanmaken}
+%%=============================================================
+
+\begin{tcolorbox}[sqlbox,title=Structuur + constraints]
+\begin{lstlisting}
+-- Samengestelde PRIMARY KEY (course + begindate SAMEN uniek):
+CREATE TABLE execution (
+    course    CHAR(4),
+    begindate DATETIME,
+    teacher   INTEGER,
+    location  VARCHAR(50),
+    PRIMARY KEY (course, begindate),    -- beide samen = PK
+    FOREIGN KEY (course)  REFERENCES course(code),
+    FOREIGN KEY (teacher) REFERENCES employee(employee_nr)
+);
+
+-- Zelfrelatie: supervisor FK verwijst naar employee zelf
+CREATE TABLE employee (
+    employee_nr   INTEGER PRIMARY KEY,
+    supervisor    INTEGER,
+    department_nr INTEGER,
+    FOREIGN KEY (supervisor)    REFERENCES employee(employee_nr),
+    FOREIGN KEY (department_nr) REFERENCES department(department_nr)
+);
+\end{lstlisting}
+\end{tcolorbox}
+
+\begin{tcolorbox}[notebox,title=Constraints samengevat]
+{\footnotesize\begin{tabular}{ll}
+\texttt{\textcolor{sqlpurple}{\bfseries NOT NULL}} & Kolom mag niet leeg zijn \\
+\texttt{\textcolor{sqlpurple}{\bfseries UNIQUE}} & Waarde uniek in de tabel \\
+\texttt{\textcolor{sqlpurple}{\bfseries DEFAULT x}} & Standaardwaarde als niets opgegeven \\
+\texttt{\textcolor{sqlpurple}{\bfseries AUTO\_INCREMENT}} & Automatisch ophogen (voor PK) \\
+\texttt{\textcolor{sqlpurple}{\bfseries PRIMARY KEY (a,b)}} & Combinatie a+b is uniek \\
+\texttt{\textcolor{sqlpurple}{\bfseries FOREIGN KEY ... REFERENCES}} & Link naar PK van andere tabel \\
+\end{tabular}}
+\end{tcolorbox}
+
+%%=============================================================
+\section{Basis SELECT}
+%%=============================================================
+
+\textbf{Uitvoervolgorde:} FROM(1) $\to$ WHERE(2) $\to$ GROUP BY(3) $\to$ HAVING(4) $\to$ SELECT(5) $\to$ ORDER BY(6)
+
+\begin{tcolorbox}[sqlbox,title=Basisvoorbeelden]
+\begin{lstlisting}
+SELECT * FROM employee;
+SELECT employee_nr, salary*12 AS yearly_salary FROM employee;
+SELECT DISTINCT func FROM employee;
+
+-- Filteren
+SELECT name, firstname FROM employee WHERE birthdate >= '19600101';
+SELECT * FROM employee WHERE NOT (name = 'Jansen' AND firstname = 'Roel');
+-- Alternatief: WHERE name != 'Jansen' OR firstname != 'Roel'
+
+-- NULL checken
+SELECT * FROM subscription WHERE evaluation IS NULL;
+SELECT * FROM subscription WHERE evaluation IS NOT NULL;
+
+-- NOT IN: let op NULL! (zie valkuilen)
+SELECT * FROM subscription WHERE evaluation NOT IN (7,8,9);
+SELECT * FROM subscription WHERE evaluation NOT IN (7,8,9) OR evaluation IS NULL;
+
+-- Tekst samenvoegen + sorteren
+SELECT CONCAT(LEFT(firstname,1),'.', name) FROM employee;
+SELECT department_nr, name FROM employee ORDER BY department_nr, name ASC;
+\end{lstlisting}
+\end{tcolorbox}
+
+\begin{tcolorbox}[notebox,title=Wildcards bij LIKE]
+\texttt{\%} = 0 of meer tekens \quad|\quad \texttt{\_} = exact 1 teken\\
+\texttt{LIKE 'J\%'} $\to$ begint met J \quad|\quad
+\texttt{LIKE '\%en'} $\to$ eindigt op en \quad|\quad
+\texttt{LIKE '\_\_n\%'} $\to$ 3e letter is n
+\end{tcolorbox}
+
+%%=============================================================
+\section{GROUP BY \& HAVING}
+%%=============================================================
+
+\begin{tcolorbox}[sqlbox,title=Voorbeeld 1: count + avg per department]
+\begin{lstlisting}
+SELECT department_nr, COUNT(*) AS number_of_employees, AVG(salary) AS average
+FROM employee
+GROUP BY department_nr;
+\end{lstlisting}
+\end{tcolorbox}
+
+\begin{tcolorbox}[resbox,title=Resultaat]
+{\scriptsize\begin{tabular}{|c|c|c|}
+\hline
+\rowcolor{tblhead}\TBLH{department\_nr} & \TBLH{number\_of\_employees} & \TBLH{average} \\ \hline
+10 & 3 & 3449.71 \\ \hline
+\rowcolor{rowalt}
+20 & 5 & 2127.44 \\ \hline
+30 & 5 & 2099.85 \\ \hline
+\end{tabular}}
+\end{tcolorbox}
+
+\begin{tcolorbox}[sqlbox,title=Voorbeeld 2: HAVING --- studenten met gem evaluatie $>$ 7]
+\begin{lstlisting}
+SELECT student, COUNT(*) AS number_of_subscriptions
+FROM subscription
+GROUP BY student
+HAVING AVG(evaluation) > 7;
+\end{lstlisting}
+\end{tcolorbox}
+
+\begin{tcolorbox}[sqlbox,title=Voorbeeld 3: subscriptions per execution gesorteerd]
+\begin{lstlisting}
+SELECT course, begindate, COUNT(*) AS Number
+FROM subscription
+GROUP BY course, begindate   -- GROUP BY op 2 kolommen: execution = course+begindate!
+ORDER BY Number DESC;
+\end{lstlisting}
+\end{tcolorbox}
+
+\begin{tcolorbox}[notebox,title=WHERE vs HAVING]
+{\footnotesize\begin{tabular}{lll}
+ & \textbf{WHERE} & \textbf{HAVING} \\ \midrule
+Wanneer? & Voor GROUP BY & Na GROUP BY \\
+Filtert? & Individuele rijen & Groepen \\
+Aggregaatfuncties (AVG, COUNT...)? & NEE & JA \\
+\end{tabular}}\\[3pt]
+\textbf{Regel:} alles in SELECT zonder aggregaatfunctie MOET in GROUP BY staan, anders error!
+\end{tcolorbox}
+
+%%=============================================================
+\section{Subqueries}
+%%=============================================================
+
+\begin{tcolorbox}[sqlbox,title=Subquery met 1 resultaat: gebruik =]
+\begin{lstlisting}
+-- Employees met salary hoger dan het gemiddelde
+SELECT * FROM employee
+WHERE salary > (SELECT AVG(salary) FROM employee);
+
+-- Employees ouder dan Martens Pierre
+SELECT * FROM employee
+WHERE birthdate > (
+    SELECT birthdate FROM employee
+    WHERE firstname = 'Pierre' AND name = 'Martens'
+);
+\end{lstlisting}
+\end{tcolorbox}
+
+\begin{tcolorbox}[sqlbox,title=Subquery met meerdere resultaten: gebruik IN]
+\begin{lstlisting}
+-- Namen van employees die een BLD-cursus gevolgd hebben (al begonnen)
+SELECT name, firstname FROM employee
+WHERE employee_nr IN (
+    SELECT student FROM subscription
+    WHERE course IN (
+        SELECT code FROM course WHERE type = 'BLD'
+    )
+    AND begindate < NOW()
+);
+\end{lstlisting}
+\end{tcolorbox}
+
+\begin{tcolorbox}[resbox,title=Resultaat]
+{\scriptsize\begin{tabular}{|l|l|}
+\hline
+\rowcolor{tblhead}\TBLH{name} & \TBLH{firstname} \\ \hline
+Alders   & Jan        \\ \hline
+\rowcolor{rowalt}
+Bollen   & Roel       \\ \hline
+Clerckx  & Axelle     \\ \hline
+\rowcolor{rowalt}
+Dekoning & Carlo      \\ \hline
+Jansen   & Jean-Marie \\ \hline
+\rowcolor{rowalt}
+Li       & Muhan      \\ \hline
+Schotten & Sam        \\ \hline
+\rowcolor{rowalt}
+Swinnen  & Mark       \\ \hline
+\end{tabular}}\\[2pt]
+\textit{student in subscription = employee\_nr! Er is geen aparte student-tabel.}
+\end{tcolorbox}
+
+%%=============================================================
+\section{Gecorreleerde Subquery}
+%%=============================================================
+
+Voor elke rij in de buitenste query wordt de subquery opnieuw uitgevoerd met een waarde uit die rij. Verplicht een \textbf{alias} op de buitenste tabel!
+
+\begin{tcolorbox}[sqlbox,title=Employees met salary $>$ gemiddelde van hun eigen department]
+\begin{lstlisting}
+SELECT department_nr, name, firstname, salary
+FROM employee AS e
+WHERE salary > (
+    SELECT AVG(salary)
+    FROM employee
+    WHERE department_nr = e.department_nr   -- e. = waarde van buitenste rij!
+)
+ORDER BY department_nr;
+\end{lstlisting}
+\end{tcolorbox}
+
+\begin{tcolorbox}[resbox,title=Resultaat]
+{\scriptsize\begin{tabular}{|c|l|l|r|}
+\hline
+\rowcolor{tblhead}\TBLH{dept} & \TBLH{name} & \TBLH{firstname} & \TBLH{salary} \\ \hline
+10 & Dekoning & Carlo      & 5299.51 \\ \hline
+\rowcolor{rowalt}
+20 & Jansen   & Jean-Marie & 4284.71 \\ \hline
+20 & Schotten & Sam        & 2399.71 \\ \hline
+\rowcolor{rowalt}
+30 & Bollen   & Roel       & 3109.72 \\ \hline
+30 & Alders   & Jan        & 2259.84 \\ \hline
+\end{tabular}}\\[2pt]
+\textit{Elke employee wordt vergeleken met het gemiddelde van zijn eigen dept, niet van alle.}
+\end{tcolorbox}
+
+%%=============================================================
+\section{Joins}
+%%=============================================================
+
+Een JOIN plakt tabellen aan elkaar op basis van PK=FK. Als een employee 3 subscriptions heeft, verschijnt hij 3 keer.
+
+\subsection{INNER JOIN --- alleen rijen met match in beide tabellen}
+
+\begin{tcolorbox}[sqlbox,title=Employees + department naam]
+\begin{lstlisting}
+SELECT employee.name, func, department.name AS department_name
+FROM employee
+JOIN department ON employee.department_nr = department.department_nr
+WHERE department.name != 'education'
+ORDER BY location, employee.name;
+\end{lstlisting}
+\end{tcolorbox}
+
+\begin{tcolorbox}[sqlbox,title=Zelfrelatie --- employee met zijn supervisor (alias verplicht!)]
+\begin{lstlisting}
+SELECT subordinate.name AS name_employee,
+       superior.name    AS name_supervisor
+FROM employee AS subordinate
+JOIN employee AS superior ON subordinate.supervisor = superior.employee_nr;
+-- Dekoning heeft supervisor=NULL -> verdwijnt bij INNER JOIN!
+\end{lstlisting}
+\end{tcolorbox}
+
+\begin{tcolorbox}[resbox,title=Resultaat zelfrelatie INNER JOIN (deel)]
+{\scriptsize\begin{tabular}{|l|l|}
+\hline
+\rowcolor{tblhead}\TBLH{name\_employee} & \TBLH{name\_supervisor} \\ \hline
+Jansen (JM) & Dekoning \\ \hline
+\rowcolor{rowalt}
+Bollen      & Dekoning \\ \hline
+Clerckx     & Dekoning \\ \hline
+\rowcolor{rowalt}
+Swinnen     & Jansen (JM) \\ \hline
+Smit        & Swinnen \\ \hline
+\end{tabular}}\\[2pt]
+\textit{Dekoning (CEO, supervisor=NULL) verdwijnt bij INNER JOIN. Gebruik LEFT JOIN om hem te bewaren.}
+\end{tcolorbox}
+
+\begin{tcolorbox}[sqlbox,title=3 tabellen joinen --- employee + department head]
+\begin{lstlisting}
+SELECT subordinate.name AS employee,
+       boss.name        AS department_head,
+       department.name
+FROM employee AS subordinate
+JOIN department ON subordinate.department_nr = department.department_nr
+JOIN employee AS boss ON department.head = boss.employee_nr
+ORDER BY department.name;
+\end{lstlisting}
+\end{tcolorbox}
+
+\begin{tcolorbox}[sqlbox,title=Grote join over 5 tabellen (uit oplossingen)]
+\begin{lstlisting}
+SELECT CONCAT(emp.name,' ',emp.firstname) AS employee,
+       dep.name AS department,
+       code, description,
+       CONCAT(teach.name,' ',teach.firstname) AS teacher,
+       subscription.begindate, evaluation
+FROM employee AS emp
+JOIN department AS dep ON emp.department_nr = dep.department_nr
+JOIN subscription      ON subscription.student = emp.employee_nr
+JOIN execution         ON execution.course = subscription.course
+                      AND execution.begindate = subscription.begindate
+JOIN employee AS teach ON teach.employee_nr = teacher
+JOIN course            ON course.code = subscription.course
+ORDER BY emp.name, emp.firstname, begindate;
+\end{lstlisting}
+\end{tcolorbox}
+
+\subsection{LEFT JOIN --- alle rijen van linkertabel, ook zonder match}
+
+\begin{tcolorbox}[sqlbox,title=CEO bewaren die geen supervisor heeft]
+\begin{lstlisting}
+SELECT subordinate.name AS name_employee,
+       superior.name    AS name_supervisor
+FROM employee AS subordinate
+LEFT JOIN employee AS superior ON subordinate.supervisor = superior.employee_nr;
+-- Dekoning: supervisor=NULL -> blijft in resultaat, superior.name = NULL
+\end{lstlisting}
+\end{tcolorbox}
+
+\begin{tcolorbox}[resbox,title=Verschil INNER vs LEFT JOIN voor Dekoning]
+{\scriptsize\begin{tabular}{|l|c|c|}
+\hline
+\rowcolor{tblhead}\TBLH{name\_employee} & \TBLH{INNER JOIN} & \TBLH{LEFT JOIN} \\ \hline
+Dekoning    & verdwijnt & NULL (blijft!) \\ \hline
+\rowcolor{rowalt}
+Jansen (JM) & Dekoning  & Dekoning \\ \hline
+Bollen      & Dekoning  & Dekoning \\ \hline
+\end{tabular}}
+\end{tcolorbox}
+
+\begin{tcolorbox}[notebox,title=INNER vs LEFT samengevat]
+{\footnotesize\begin{tabular}{lcc}
+\textbf{Situatie} & \textbf{INNER JOIN} & \textbf{LEFT JOIN} \\ \midrule
+Match in beide tabellen & tonen & tonen \\
+Alleen in linkertabel & verdwijnt & tonen met NULL \\
+Alleen in rechtertabel & verdwijnt & verdwijnt \\
+\end{tabular}}\\[2pt]
+Gebruik LEFT JOIN als je rijen van de linkertabel \textit{altijd} wil tonen, ook zonder match.
+\end{tcolorbox}
+
+%%=============================================================
+\section{Valkuilen --- Veelgemaakte Fouten}
+%%=============================================================
+
+\begin{tcolorbox}[warnbox,title=FOUT 1: = gebruiken als subquery meerdere rijen geeft]
+\begin{lstlisting}
+-- ERROR: Subquery returns more than 1 row
+WHERE employee_nr = (SELECT student FROM subscription);
+-- subscription heeft 28 rijen -> = weet niet welke te kiezen!
+
+-- OPLOSSING: gebruik IN
+WHERE employee_nr IN (SELECT student FROM subscription);
+
+-- OOK FOUT: GROUP BY in subquery geeft meerdere rijen
+WHERE salary > (SELECT AVG(salary) FROM employee GROUP BY department_nr);
+-- Geeft 1 AVG per department -> meerdere rijen -> ERROR!
+-- OPLOSSING: gecorreleerde subquery (zie sectie 6)
+\end{lstlisting}
+\end{tcolorbox}
+
+\begin{tcolorbox}[warnbox,title=FOUT 2: Gecorreleerde subquery zonder alias]
+\begin{lstlisting}
+-- FOUT: vergelijkt department_nr met ZICHZELF -> altijd TRUE!
+WHERE salary > (SELECT AVG(salary) FROM employee
+                WHERE employee.department_nr = department_nr);
+-- employee.department_nr EN department_nr zijn DEZELFDE kolom -> altijd gelijk!
+-- Bovendien: geen WHERE-filter -> GROUP BY nodig -> meerdere rijen -> ERROR
+
+-- OPLOSSING: alias e. op de buitenste tabel zodat je onderscheid maakt
+FROM employee AS e
+WHERE salary > (SELECT AVG(salary) FROM employee
+                WHERE department_nr = e.department_nr);
+-- e.department_nr = waarde van de huidige rij in de buitenste query
+-- department_nr   = kolom van de binnenste tabel employee
+\end{lstlisting}
+\end{tcolorbox}
+
+\begin{tcolorbox}[warnbox,title=FOUT 3: NOT IN faalt bij NULLs in de subquery]
+\begin{lstlisting}
+-- FOUT: execution.location heeft NULL-waarden (ERM en SRW 2018)
+-- NOT IN (..., NULL) geeft altijd 0 rijen terug!
+SELECT location FROM department
+WHERE location NOT IN (SELECT location FROM execution);
+
+-- OPLOSSING: filter NULLs weg uit de subquery
+SELECT DISTINCT location FROM department
+WHERE location NOT IN (
+    SELECT location FROM execution WHERE location IS NOT NULL
+);
+\end{lstlisting}
+\textbf{Waarom?} \texttt{NOT IN (Leuven, Kontich, NULL)} is UNKNOWN voor elke waarde.
+SQL kan niet zeker zeggen of iets gelijk is aan NULL, dus gooit het de rij weg.\\[2pt]
+\textit{Resultaat na fix: Heverlee en Antwerpen (dept 40 en 50 hebben geen cursussen)}
+\end{tcolorbox}
+
+\begin{tcolorbox}[warnbox,title=FOUT 4: Samengestelde FK checken met 1 kolom]
+\begin{lstlisting}
+-- FOUT: checkt alleen datum, NIET welke cursus op die datum!
+AND begindate IN (SELECT begindate FROM execution)
+-- Als FOR en OAG op dezelfde datum staan, matcht FOR ook rijen van OAG
+
+-- OPLOSSING: check course EN begindate samen als combinatie
+AND (course, begindate) IN (
+    SELECT course, begindate FROM execution WHERE begindate <= NOW()
+);
+\end{lstlisting}
+\end{tcolorbox}
+
+%%=============================================================
+\section{Snelle Referentie}
+%%=============================================================
+
+\begin{multicols}{2}
+{\footnotesize\begin{tabular}{ll}
+\toprule
+\multicolumn{2}{l}{\textbf{Operatoren}} \\ \midrule
+\texttt{=, <>, <, >, <=, >=} & Vergelijken \\
+\texttt{AND, OR, NOT} & Logisch \\
+\texttt{IN (...)} & In lijst \\
+\texttt{NOT IN (...)} & Niet in lijst (let op NULL!) \\
+\texttt{BETWEEN x AND y} & Bereik (inclusief) \\
+\texttt{LIKE 'x\%'} & Begint met x \\
+\texttt{LIKE '\%x'} & Eindigt op x \\
+\texttt{LIKE '\_x\%'} & 2e letter is x \\
+\texttt{IS NULL} & Leeg \\
+\texttt{IS NOT NULL} & Niet leeg \\
+\bottomrule
+\end{tabular}}
+
+\columnbreak
+
+{\footnotesize\begin{tabular}{ll}
+\toprule
+\multicolumn{2}{l}{\textbf{Functies \& keywords}} \\ \midrule
+\texttt{COUNT(*)} & Aantal rijen \\
+\texttt{SUM(k)} & Som \\
+\texttt{AVG(k)} & Gemiddelde \\
+\texttt{MIN(k) / MAX(k)} & Min / Max \\
+\texttt{DISTINCT} & Geen duplicaten \\
+\texttt{AS naam} & Alias geven \\
+\texttt{ASC / DESC} & Volgorde (ASC=standaard) \\
+\texttt{NOW()} & Huidige datum+tijd \\
+\texttt{CONCAT(a,b)} & Teksten samenvoegen \\
+\texttt{LEFT(str,n)} & Eerste n tekens \\
+\bottomrule
+\end{tabular}}
+\end{multicols}
+
+\begin{tcolorbox}[notebox,title=Algemeen formaat --- schrijfvolgorde]
+\begin{lstlisting}
+SELECT   kolommen of functies       -- stap 5: wat tonen
+FROM     tabel(len)                 -- stap 1: welke tabel
+WHERE    conditie op rijen          -- stap 2: filter voor groepering
+GROUP BY kolommen                   -- stap 3: maak groepjes
+HAVING   conditie op groepen        -- stap 4: filter na groepering
+ORDER BY kolommen ASC|DESC;         -- stap 6: sorteer
+\end{lstlisting}
+\end{tcolorbox}
+
+\end{document}
