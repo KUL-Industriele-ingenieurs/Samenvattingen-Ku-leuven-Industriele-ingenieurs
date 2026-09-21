@@ -18,12 +18,19 @@ jobs:
 
           if [ "${{ github.event_name }}" = "pull_request" ]; then
             BASE_REF="${{ github.event.pull_request.base.ref }}"
-            git fetch origin "$BASE_REF" --depth=1
+            git fetch origin "$BASE_REF:refs/remotes/origin/$BASE_REF" --depth=1
             CHANGED=$(git diff --name-only origin/$BASE_REF...HEAD)
           else
             BEFORE="${{ github.event.before }}"
             AFTER="${{ github.event.after }}"
-            CHANGED=$(git diff --name-only "$BEFORE" "$AFTER")
+            if [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+              DEFAULT_BRANCH="${{ github.event.repository.default_branch }}"
+              git fetch origin "$DEFAULT_BRANCH:refs/remotes/origin/$DEFAULT_BRANCH" --depth=1
+              BASE_COMMIT=$(git merge-base "origin/$DEFAULT_BRANCH" "$AFTER")
+              CHANGED=$(git diff --name-only "$BASE_COMMIT" "$AFTER")
+            else
+              CHANGED=$(git diff --name-only "$BEFORE" "$AFTER")
+            fi
           fi
 
           echo "Changed files:\n$CHANGED"

@@ -149,7 +149,7 @@ We gaan de formule van radiate ontbinden. Dit is uiteindelijk herhaling van warm
     $ dot(Q) = epsilon sigma A (T_s^4 - T_oo^4) $
     We gaan deze term ontbinden in $Delta T$ en $h_r$.
     $ Delta T = T_s - T_oo $
-    $ T_s^4 - T_oo^4 = (T_s^2 + T_oo^2)(T_s^2 - T_oo^2) = (T_s^2 + T_oo^2)markhl((T_s - T_oo))(T_s + T_oo) $
+    $ T_s^4 - T_oo^4 = (T_s^2 + T_oo^2)(T_s^2 - T_oo^2) = (T_s^2 + T_oo^2)bold((T_s - T_oo))(T_s + T_oo) $
     De rest van de termen gaan $h_r$ bepalen.
     $ dot(Q) = epsilon sigma A (T_s^2 + T_oo^2)(T_s + T_oo) Delta T $
     $ h_r = epsilon sigma (T_s^2 + T_oo^2) (T_s + T_oo) $
@@ -195,7 +195,7 @@ met $r_(c o n d) = R_(c o n d) dot A$ met eenheden [$m^2 K/W$]
 Het is net zoals bij elektrische netwerken. Het is volledig *Analoog* aan elektrische netwerken.
 
 #figure(
-  image("vergelijking elektrisch en heat flow.png", width: 6.5cm),
+  image("assets/vergelijking elektrisch en heat flow.png", width: 6.5cm),
   caption: [vergelijking elektrisch en heat flow],
   label: <fig:vergelijking-elektrisch-en-heat-flow>,
 )
@@ -246,7 +246,7 @@ $ R_(t o t) = R_1 + R_2 + R_3 + ... $
 $ 1 / R_(t o t) = sum(1 / R_i) $
 
 #figure(
-  image("parallel-serie.png", width: 5cm),
+  image("assets/parallel-serie.png", width: 5cm),
   caption: [parallel-serie],
   label: <fig:parallel-serie>,
 )
@@ -259,12 +259,12 @@ Oké dit hebben we al gezien maar in dit deel gaan we nu zien wat er gebeurt bij
 
 *De omgevingsfactoren veranderen niet in de tijd*
 
-$ dot(Q)_(i n) - dot(Q)_(o u t) = frac(d E, d t) = markhl(0) $
+$ dot(Q)_(i n) - dot(Q)_(o u t) = frac(d E, d t) = bold(0) $
 
 === Cilindrische conductie
 
 #wrap-figure(
-  image("sphere.png", width: 6cm),
+  image("assets/sphere.png", width: 6cm),
   caption: [spherische conductie],
   label: <fig:spherische-conductie>,
 )[
@@ -307,7 +307,7 @@ $ dot(Q)_(i n) - dot(Q)_(o u t) = frac(d E, d t) = markhl(0) $
 
 
 #wrap-figure(
-  image("resistancesphere.png", width: 6cm),
+  image("assets/resistancesphere.png", width: 6cm),
   caption: [spherische conductie],
   label: <fig:spherische-conductie>,
 )[
@@ -342,7 +342,7 @@ $ dot(Q)_(i n) - dot(Q)_(o u t) = frac(d E, d t) = markhl(0) $
 == Multilayered cilindrische & sferische conductie
 
 #wrap-figure(
-  image("multilayer cilinder & circkel.png", width: 8cm),
+  image("assets/multilayer cilinder & circkel.png", width: 8cm),
   caption: [multilayer cilinder & circkel],
   label: <fig:multilayer-cilinder-circkel>,
 )[
@@ -368,7 +368,7 @@ $ dot(Q)_(i n) - dot(Q)_(o u t) = frac(d E, d t) = markhl(0) $
 
 
 #wrap-figure(
-  image("kritische insulatie.png", width: 6cm),
+  image("assets/kritische insulatie.png", width: 6cm),
   caption: [kritische insulatie],
   label: <fig:kritische-insulatie>,
 )[
@@ -399,7 +399,7 @@ $ r_(c r, s f e r i s c h) = frac(2 k, h) $
 = Warmteoverdracht door vinnen <ch:warmteoverdracht-vinnen>
 
 #wrap-figure(
-  image("fins.png", width: 4cm),
+  image("assets/fins.png", width: 4cm),
   caption: [fins],
   label: <fig:fins>,
 )[
@@ -415,7 +415,7 @@ $ r_(c r, s f e r i s c h) = frac(2 k, h) $
 
 
 #wrap-figure(
-  image("vinnen-vergelijking.png", width: 5cm),
+  image("assets/vinnen-vergelijking.png", width: 5cm),
   caption: [vinnen-vergelijking],
   label: <fig:vinnen-vergelijking>,
 )[
@@ -485,7 +485,7 @@ $ r_(c r, s f e r i s c h) = frac(2 k, h) $
 
 ]
 #wrap-figure(
-  image("fin.png", width: 6cm),
+  image("assets/fin.png", width: 6cm),
   caption: [fin],
   label: <fig:fin>,
 )[
@@ -527,7 +527,7 @@ Om dit op te lossen zodat we altijd de boundry condiities van oneindig kunnen ge
 == Correctie factor fin <sec:correctiefactor>
 
 #wrap-figure(
-  image("correctiefactor.png", width: 8cm),
+  image("assets/correctiefactor.png", width: 8cm),
   caption: [correctiefactor],
   label: <fig:correctiefactor>,
 )[
@@ -563,7 +563,7 @@ $ eta_f = frac(dot(Q)_(f i n), dot(Q)_(m a x)) $
 
   [
     $
-      eta_f = frac(dot(Q)_(f i n), dot(Q)_(m a x)) = frac(sqrt(h P k A_c) (T_s - T_infinity), h P L (T_s - T_infinity)) = markhl(frac(1, m L))
+      eta_f = frac(dot(Q)_(f i n), dot(Q)_(m a x)) = frac(sqrt(h P k A_c) (T_s - T_infinity), h P L (T_s - T_infinity)) = bold(frac(1, m L))
     $
   ],
   [
@@ -576,7 +576,7 @@ $ eta_f = frac(dot(Q)_(f i n), dot(Q)_(m a x)) $
 Dit is nog anders als efficientië. Want we kijken naar de effectiviteit van de vin ten opzichte van een vin die oneindig efficient is. Als je warmtestroom gelijk blijft met of zonder het steken van een fin ja dan heeft het geen nut om een fin te steken. Dus we gaan kijken naar de effectiviteit van de vin ten opzichte van een vin die oneindig efficient is.
 
 #figure(
-  image("fin effectiveness.png", width: 5cm),
+  image("assets/fin effectiveness.png", width: 5cm),
   caption: [fin effectiveness],
   label: <fig:fin-effectiveness>,
 )
@@ -602,20 +602,20 @@ Voor complexe vormen van vinnen en structuren moet je niet de efficientie en eff
 
 
 #figure(
-  image("formules complexe vin vormen.png", width: 10cm),
+  image("assets/formules complexe vin vormen.png", width: 10cm),
   caption: [formules complexe vin vormen],
   label: <fig:formules-complexe-vin-vormen>,
 )
 
 #figure(
-  image("efficientie-straight-vinnen.png", width: 10cm),
+  image("assets/efficientie-straight-vinnen.png", width: 10cm),
   caption: [efficientie-straight-vinnen],
   label: <fig:efficientie-straight-vinnen>,
 )
 
 
 #figure(
-  image("efficientie-cirkelvormige vinnen.png", width: 10cm),
+  image("assets/efficientie-cirkelvormige vinnen.png", width: 10cm),
   caption: [efficientie-cirkelvormige vinnen],
   label: <fig:efficientie-cirkelvormige-vinnen>,
 )

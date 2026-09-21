@@ -1,11 +1,11 @@
 #import "../../school-template.typ": *
 
-= Diode Rectifiers
+= Diode Rectifiers <ch:diode-rectifiers>
 
-== Herhaling Diodes
+== Herhaling: diodes
 
 #figure(
-  image("Karaktiristieken van een diode.png", width: 12cm),
+  image("assets/Karaktiristieken van een diode.png", width: 12cm),
   caption: [Karaktiristieken van een diode],
   label: <fig:Karaktiristieken-van-een-diode>,
 )
@@ -28,10 +28,10 @@ Als je negatieve spanning op de diode zet kun je uiteindelijk #keyterm[Doorslag]
 Je diode kan dus tegenstromen hebben.
 
 
-=== Single Phase Half Wave Rectifier
+=== Enkelfasige halvegolfgelijkrichter
 
 #figure(
-  image("Single-phase half recertifier.png", width: 12cm),
+  image("assets/Single-phase half recertifier.png", width: 12cm),
   caption: [Single-phase half recertifier],
   label: <fig:Single-phase-half-recertifier>,
 )
@@ -45,10 +45,10 @@ Je gemiddelde uitput spanning is:
 
 $ overline(U_0) = sqrt(2)/pi dot U_b $
 
-=== Single Phase Full wave Rectifier
+=== Enkelfasige volledigegolfgelijkrichter
 
 #figure(
-  image("Full-wave diode rectiefier.png", width: 12cm),
+  image("assets/Full-wave diode rectiefier.png", width: 12cm),
   caption: [Full-wave diode rectiefier],
   label: <fig:Full-wave-diode-rectiefier>,
 )
@@ -67,7 +67,7 @@ Het gemiddelde uitgangsspanning is:
 
 
   #figure(
-    image("Pulse nummer.png", width: 5cm),
+    image("assets/Pulse nummer.png", width: 5cm),
     caption: [Pulse nummer],
     label: <fig:Pulse-nummer>,
   )
@@ -85,7 +85,7 @@ Het gemiddelde uitgangsspanning is:
   Zet de juiste diodes afhankelijk van het gegeven circuit:
 
   #figure(
-    image("Oefening rectifier.png", width: 5cm),
+    image("assets/Oefening rectifier.png", width: 12cm),
     caption: [Oefening rectifier],
     label: <fig:Oefening-rectifier>,
   )
@@ -94,7 +94,7 @@ Het gemiddelde uitgangsspanning is:
 #examenbox[Je gaat op het examen een schema krijgen en je moet de grafiek kunnen tekenen hoe het zich gaat gedragen]
 
 
-== Communcatie
+== Commutatie
 
 #concept(title: "Communcatie")[
 
@@ -107,7 +107,7 @@ Het gemiddelde uitgangsspanning is:
 We nemen terug een full-wave rectifier maar nu met een weerstand als load $R$
 
 #figure(
-  image("Commutatie.png", width: 12cm),
+  image("assets/Commutatie.png", width: 12cm),
   caption: [Commutatie],
   label: <fig:Commutatie>,
 )
@@ -120,7 +120,7 @@ We gaan een ideale batterij toevoegen aan de load. Deze gaat alleen stroom lever
 $ v_s > v_b $
 
 #figure(
-  image("Commutatie batterij alt.png", width: 12cm),
+  image("assets/Commutatie batterij alt.png", width: 12cm),
   caption: [Commutatie batterij alt],
   label: <fig:Commutatie-batterij-alt>,
 )
@@ -138,21 +138,21 @@ Wat gaat er nu gebeuren als je inductieve belasting toevoegt?
 === Inductieve belasting
 
 #figure(
-  image("Inductieve-resitieve load.png", width: 5cm),
+  image("assets/Inductieve-resitieve load.png", width: 5cm),
   caption: [Inductieve-resitieve load],
   label: <fig:Inductieve-resitieve-load>,
 )
 
 We gaan dit stap per stap aanpakken om het te begrijpen.
 
-==== Half wave rectifier met inductieve belasting
+==== Halvegolfgelijkrichter met inductieve belasting
 Herinner je dat een spoel de voltage verschillen gaat tegengaan. Die doet dit door magnetische flux op te slaan en deze dan terug vrij te geven.
 
 
 Je stroom $i_0$ gaat achterlopen op de spanning $v_s$ door de spoel.
 
 #figure(
-  image("Half-wave rectifier met inductieve belasting.png", width: 12cm),
+  image("assets/Half-wave rectifier met inductieve belasting.png", width: 12cm),
   caption: [Half-wave rectifier met inductieve belasting],
   label: <fig:Half-wave-rectifier-met-inductieve-belasting>,
 )
@@ -170,12 +170,12 @@ Dus zelfs na dat de spanning $v_s = 0$ wordt er nog steeds magnetische flux ener
 $ v_l = L (d i) / (d t) $
 
 
-==== Full-wave rectifier met inductieve belasting
+==== Volledigegolfgelijkrichter met inductieve belasting
 
 Net zoals bij de half-wave rectifier gaat de stroom $i_0$ achterlopen op de spanning $v_s$ door de spoel. Maar je krijgt nu een soort uitsmering van de spanning omdat de voltage $v_0$ niet helemaal nul wordt.
 
 #figure(
-  image("Full-wave rectifier met inductieve belasting.png", width: 12cm),
+  image("assets/Full-wave rectifier met inductieve belasting.png", width: 12cm),
   caption: [Full-wave rectifier met inductieve belasting],
   label: <fig:Full-wave-rectifier-met-inductieve-belasting>,
 )
@@ -185,45 +185,48 @@ Net zoals bij de half-wave rectifier gaat de stroom $i_0$ achterlopen op de span
 ==== Heel hoge inductieve belasting
 
 #figure(
-  image("Heel hoge inductieve belasting met full wave rectifier.png", width: 12cm),
+  image("assets/Heel hoge inductieve belasting met full wave rectifier.png", width: 12cm),
   caption: [Heel hoge inductieve belasting met full wave rectifier],
   label: <fig:Heel-hoge-inductieve-belasting-met-full-wave-rectifier>,
 )
 
-Omdat er een enorm grote inductatie $L$ is gaat de stroom $i_d$ bijna niet veranderen. Een spoelt wil namelijk geen enkele verandering die wilt altijd dat het magnetische veld in de spoel constant is.
+Bij een zeer grote inductieve belasting ($L -> infinity$) blijft de gelijkstroom $i_d$ nagenoeg perfect constant. In een ideaal netwerk zou de stroom instantaan overspringen tussen de opeenvolgende diodes (blokgolf).
 
-De diodes gaat dan enorm hard schakelen omdat er direct 90° verandering is van de stroom. Dit kan in praktijk niet. Je krijgt nog een inductatie van de diodes. Die gaat die grote stroomveranderingen tegenhouden. Dit noemen we #keyterm[Net-inductantie]
+In werkelijkheid bezit elk AC-voedingsnet een zekere #keyterm[netinductantie] $L_s$ (afkomstig van de distributietransformator en voedingskabels). Een spoel verzet zich tegen plotse stroomveranderingen:
 
+$ v = L_s frac(dif i, dif t) $
+
+Hierdoor kan de stroom niet instantaan van de ene diode naar de andere wisselen.
 
 #figure(
-  image("Net Inductantie.png", width: 15cm),
-  caption: [Net Inductantie],
+  image("assets/Net Inductantie.png", width: 14cm),
+  caption: [Commutatie-overlap: gedurende hoek $mu$ geleiden beide diodes gelijktijdig doordat de netinductantie $L_s$ de stroomverandering vertraagt.],
   label: <fig:Net-Inductantie>,
 )
-Je krijgt dan #keyterm[Overlapping] waarbij beide diodes tegelijkertijd geleiden. Stel diode 1 $D_1$ begint af te dalen en diode 3 $D_3$ begint te stijgen. Dan gaat D3, D1 #keyterm[Afknijpen].
 
-Hierdoor wordt de spanning over de load $v_0$ tijdelijk 0. Dit komt omdat beide diodes gelijden gaan hun spanningen elkaar uitschakelen.
+=== Commutatie-overlap ($mu$) en spanningsinkepingen (Notching)
 
-Dit noemt *diode commutatie overlap* waarbij beide diodes gaan geleiden. Het tijdsverschil waarbij de diodes tegelijkertijd geleiden is $mu$.
-
-Dit is de reden dat diodes niet volledig efficient zijn. Dit phenoneem is in de grafieken overdreven maar deze kleine verschillen zorgen ervoor dat diodes bijvoorbeeld een efficientie hebben van 95%.
-
-Hieronder is de figuur van de powerquality van een 3 fase systeem waar je duidelijk sprongen zien in je voltage door de diodes
+Dit fenomeen heet #keyterm[commutatie-overlap]:
+- *Overlaphoek $mu$*: Het tijdsinterval (uitgedrukt in graden of radialen) waarin zowel de doofende diode als de ontstekende diode gelijktijdig geleiden.
+- *Tijdelijke kortsluiting*: Tijdens de commutatieperiode vormen beide geleidende diodes in feite een tijdelijke kortsluiting tussen de twee AC-fasen over de interne netinductantie $L_s$.
+- *Spanningsinkepingen (Commutation notches)*: Doordat de fasen kortgesloten worden over $L_s$, zakt de klemspanning op het net abrupt in naar het gemiddelde niveau. Dit veroorzaakt diepe, periodieke inkepingen in de netspanningsgolfvorm.
 
 #figure(
-  image("Power quality van diodes.png", width: 10cm),
-  caption: [Power quality van diodes],
+  image("assets/Power quality van diodes.png", width: 10cm),
+  caption: [Spanningsinkepingen (notches) op de AC-voedingsspanning ten gevolge van de commutatie van diodegelijkrichters.],
   label: <fig:Power-quality-van-diodes>,
 )
 
-=== Alles tesamen
+Deze spanningsinkepingen zijn een belangrijk #keyterm[Power Quality]-probleem (zie @ch:power-quality): ze veroorzaken hoogfrequente harmonischen en kunnen naburige elektronica en PLC-voedingen op hetzelfde aansluitpunt (PCC) ontregelen.
+
+=== Alles samen
 
 Dus met alles te samen:
 - lagging door inductieve load
 - spoel door diodes die snelle switching tegengaan.
 
 #figure(
-  image("Alles tesamen loads op diode rectifiers.png", width: 12cm),
+  image("assets/Alles tesamen loads op diode rectifiers.png", width: 12cm),
   caption: [Alles tesamen loads op diode rectifiers],
   label: <fig:Alles-tesamen-loads-op-diode-rectifiers>,
 )
@@ -236,16 +239,16 @@ Dus met alles te samen:
 De spanning en stroom zijn kleiner omdat de batterij een bepaalde voltage pas gaat geleiden. Er is een vertraging door de spoel. Door de overlapping is er een afknijping van de spanning.
 
 
-== Capacitieve load
+== Capacitieve belasting
 
-=== Halve golf rectifier met Capacitieve load
+=== Halvegolfgelijkrichter met capacitieve belasting
 
 Als je de standaard AC input krijgt wordt die gesmooth door de capaciteit in parallel met de output. Je krijgt dan een *Smoothing* effect op je output.
 
 Je ziet op de grafiek dat eerst alle negatieve spanningen worden tegengehouden door de diode. En daarna komt hij pas bij de output.
 
 #figure(
-  image("Capacitieve load.png", width: 12cm),
+  image("assets/Capacitieve load.png", width: 12cm),
   caption: [Capacitieve load],
   label: <fig:Capacitieve-load>,
 )
@@ -258,17 +261,17 @@ De stroom $i$ is afhankelijk van de veranderingen van de spanning. Dus als onze 
 
 Laten we dit verder bekijken met terug onze *brug rectiefier*
 
-=== Capacitieve load met brug rectiefier
+=== Capacitieve belasting met bruggelijkrichter
 
 #figure(
-  image("Capacitieve brug rectifier.png", width: 12cm),
+  image("assets/Capacitieve brug rectifier.png", width: 12cm),
   caption: [Capacitieve brug rectifier],
   label: <fig:Capacitieve-brug-rectifier>,
 )
 
 
 #wrap-figure(
-  image("Capicitieve stroom.png", width: 4cm),
+  image("assets/Capicitieve stroom.png", width: 4cm),
   caption: [Capicitieve stroom],
   label: <fig:Capicitieve-stroom>,
 )[
@@ -280,7 +283,7 @@ Laten we dit verder bekijken met terug onze *brug rectiefier*
   Alles te samen wordt dit onze capacitieve netstroom:
 
   #figure(
-    image("Capicitieve netstroom.png", width: 10cm),
+    image("assets/Capicitieve netstroom.png", width: 10cm),
     caption: [Capicitieve netstroom],
     label: <fig:Capicitieve-netstroom>,
   )
@@ -295,18 +298,18 @@ Laten we dit verder bekijken met terug onze *brug rectiefier*
 ]
 
 
-== Three-phase diode rectifiers <sec:three-phase:diode-rectifiers>
+== Driefasige dioderectifiers <sec:three-phase:diode-rectifiers>
 
 Dus nu hebben we terug rectiefiers maar nu willen we 3 fase systemen balanceren zodat we een constante stroom hebben.
 
 #figure(
-  image("3 diode rectifiers.png", width: 10cm),
+  image("assets/3 diode rectifiers.png", width: 10cm),
   caption: [3 diode rectifiers],
   label: <fig:3-diode-rectifiers>,
 )
 
 #wrap-figure(
-  image("3 Fase rectifier.png", width: 5cm),
+  image("assets/3 Fase rectifier.png", width: 5cm),
   caption: [3 Fase rectifier],
   label: <fig:3-fase-rectifier>,
 )[

@@ -1,24 +1,18 @@
 # School Samenvattingen
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-![Language](https://img.shields.io/badge/Made%20with-LaTeX-47545E?logo=latex&logoColor=white)
-![Language](https://img.shields.io/badge/Made%20with-Typst-239DAD?logo=typst&logoColor=white)
-[![Discord](https://img.shields.io/badge/Discord-Join%20Server-5865F2?logo=discord&logoColor=white)](https://discord.gg/gsDzr5qhPe)
-![VS Code](https://img.shields.io/badge/Editor-VS%20Code-007ACC?logo=visualstudiocode&logoColor=white)
-![Git](https://img.shields.io/badge/Tool-Git-F05032?logo=git&logoColor=white)
-![Repo Size](https://img.shields.io/github/repo-size/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs)
-![Last Commit](https://img.shields.io/github/last-commit/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs)
-
+![Language](https://img.shields.io/badge/Made%20with-LaTeX-47545E?logo=latex&logoColor=white)![Language](https://img.shields.io/badge/Made%20with-Typst-239DAD?logo=typst&logoColor=white)[![Discord](https://img.shields.io/badge/Discord-Join%20Server-5865F2?logo=discord&logoColor=white)](https://discord.gg/gsDzr5qhPe)
+![VS Code](https://img.shields.io/badge/Editor-VS%20Code-007ACC?logo=visualstudiocode&logoColor=white)![Git](https://img.shields.io/badge/Tool-Git-F05032?logo=git&logoColor=white)![Repo Size](https://img.shields.io/github/repo-size/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs)![Last Commit](https://img.shields.io/github/last-commit/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs)
 Welkom bij de samenvattingen voor Industriële Ingenieurswetenschappen aan de KU Leuven.
 
 Deze repository zijn mijn notities en samenvattingen die ik gemaakt heb door het jaar heen. Ik heb ze open-source gemaakt zodat medestudenten ze kunnen gebruiken maar ook zelf kunnen verbeteren als ze willen.
 
 
-### 📥 Download Laatste Versie
-- [**Download alle PDF's (ZIP)**](https://nightly.link/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/workflows/latex-build.yml/MAIN/pdfs.zip)
+### <img src="https://api.iconify.design/material-symbols/download.svg?color=gray" height="20"> Download Laatste Versie
+- [**Download alle PDF's (ZIP)**](https://nightly.link/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/workflows/latex-build.yml/MAIN/Samenvattingen%20Industriele%20Ingenieurs%20KULeuven.zip)
 ---
 
-## 📚 Vakkenoverzicht
+## <img src="https://api.iconify.design/material-symbols/menu-book-outline.svg?color=gray" height="22"> Vakkenoverzicht
 
 <!-- VAKKENOVERZICHT_START -->
 <details>
@@ -30,26 +24,52 @@ Deze repository zijn mijn notities en samenvattingen die ik gemaakt heb door het
 <details>
 <summary><strong>2de jaar</strong></summary>
 
-- [Distributie van elektrische systemen](2de%20jaar/Distributie%20van%20elektrische%20systemen)
-- [Ingenieur en economie oefeningen](2de%20jaar/Ingenieur%20en%20economie%20oefeningen)
-- [math-systems](2de%20jaar/math-systems)
-- [Object gericht-programmeren](2de%20jaar/Object%20gericht-programmeren)
-- [Ontwerp van een industriële sturing](2de%20jaar/Ontwerp%20van%20een%20industriële%20sturing)
-- [Productietechnologie](2de%20jaar/Productietechnologie)
-- [Statistiek en databeheer](2de%20jaar/Statistiek%20en%20databeheer)
-- [Systeem en regeltechniek](2de%20jaar/Systeem%20en%20regeltechniek)
-- [Thermal fluid sciences](2de%20jaar/Thermal%20fluid%20sciences)
-- [Toegepaste mechanica & dynamica](2de%20jaar/Toegepaste%20mechanica%20&%20dynamica)
-- [Warmte en stromingen](2de%20jaar/Warmte%20en%20stromingen)
-- [Wisselstroom](2de%20jaar/Wisselstroom)
+- **Data-acquisitie** — [bronbestanden](2de%20jaar/Data-acquisitie)
+  - [Data-acquisitie Samenvatting.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/Data-acquisitie_Samenvatting.pdf)
+- **Distributie van elektrische systemen** — [bronbestanden](2de%20jaar/Distributie%20van%20elektrische%20systemen)
+  - [Distributie van elektrische energie Samenvatting.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/Distributie_van_elektrische_energie_Samenvatting.pdf)
+- **Info prof comp** — [bronbestanden](2de%20jaar/Info%20prof%20comp)
+  - [Info-sessie Prof comp.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/Info-sessie_Prof_comp.pdf)
+  - [Prof-comp Schrijfopdracht.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/Prof-comp_Schrijfopdracht.pdf)
+- **Ingenieur en economie oefeningen** — [bronbestanden](2de%20jaar/Ingenieur%20en%20economie%20oefeningen)
+  - [Ingenieur&economie-Samenvatting-RubenRyckaert.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/Ingenieur.economie-Samenvatting-RubenRyckaert.pdf)
+- **math-systems** — [bronbestanden](2de%20jaar/math-systems)
+  - [Wiskunde voor Systemen Samenvatting.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/Wiskunde_voor_Systemen_Samenvatting.pdf)
+- **Object gericht-programmeren** — [bronbestanden](2de%20jaar/Object%20gericht-programmeren)
+  - [Object gericht programmeren Samenvatting + synthax.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/Object_gericht_programmeren_Samenvatting_%2B_synthax.pdf)
+  - [OOP_A4_examenblad_Voorbeeld.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/OOP_A4_examenblad_Voorbeeld.pdf)
+- **Ontwerp van een industriële sturing** — [bronbestanden](2de%20jaar/Ontwerp%20van%20een%20industri%C3%ABle%20sturing)
+  - [Ontwerp van industriele sturing.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/Ontwerp_van_industriele_sturing.pdf)
+- **Productietechnologie** — [bronbestanden](2de%20jaar/Productietechnologie)
+  - [ProductieTechnologie-Samenvatting-RubenRyckaert.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/ProductieTechnologie-Samenvatting-RubenRyckaert.pdf)
+- **Statistiek en databeheer** — [bronbestanden](2de%20jaar/Statistiek%20en%20databeheer)
+  - [Statistiek Samenvatting.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/Statistiek_Samenvatting.pdf)
+- **Systeem en regeltechniek** — [bronbestanden](2de%20jaar/Systeem%20en%20regeltechniek)
+  - [Systeem en regeltechniek Samenvatting.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/Systeem_en_regeltechniek_Samenvatting.pdf)
+- **Thermal fluid sciences** — [bronbestanden](2de%20jaar/Thermal%20fluid%20sciences)
+  - [Thermal fluid sciences Samenvatting.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/Thermal_fluid_sciences_Samenvatting.pdf)
+- **Toegepaste mechanica & dynamica** — [bronbestanden](2de%20jaar/Toegepaste%20mechanica%20%26%20dynamica)
+  - [Toegepaste mechanica en dynamica Samenvatting.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/Toegepaste_mechanica_en_dynamica_Samenvatting.pdf)
+- **Warmte en stromingen** — [bronbestanden](2de%20jaar/Warmte%20en%20stromingen)
+  - [Warmte-en-stromigen Samenvatting.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/Warmte-en-stromigen_Samenvatting.pdf)
+- **Wisselstroom** — [bronbestanden](2de%20jaar/Wisselstroom)
+  - [Wisselstroom-samenvatting-2025-2026.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/Wisselstroom-samenvatting-2025-2026.pdf)
 </details>
 
 <details>
 <summary><strong>3de jaar</strong></summary>
 
-- [Eindige elementen gebaseerd ontwerp](3de%20jaar/Eindige%20elementen%20gebaseerd%20ontwerp)
-- [Information Management](3de%20jaar/Information%20Management)
-- [Manufacturing Technologies 2](3de%20jaar/Manufacturing%20Technologies%202)
+- **Eindige elementen gebaseerd ontwerp** — [bronbestanden](3de%20jaar/Eindige%20elementen%20gebaseerd%20ontwerp)
+  - [EEGO Samenvatting.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/EEGO_Samenvatting.pdf)
+- **Information Management** — [bronbestanden](3de%20jaar/Information%20Management)
+  - [InformationManagement_Samenvatting.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/InformationManagement_Samenvatting.pdf)
+- **Manufacturing Technologies 2** — [bronbestanden](3de%20jaar/Manufacturing%20Technologies%202)
+  - [ManufacturingTech2_Samenvatting.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/ManufacturingTech2_Samenvatting.pdf)
+- **Religion** — [bronbestanden](3de%20jaar/Religion)
+  - [Examen_Spiekboek_Religie.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/Examen_Spiekboek_Religie.pdf)
+  - [Religion_Paper.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/Religion_Paper.pdf)
+- **Toegepaste Sterkteleer** — [bronbestanden](3de%20jaar/Toegepaste%20Sterkteleer)
+  - [Formularium_Bubi.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/Formularium_Bubi.pdf)
 </details>
 
 <details>
@@ -57,7 +77,7 @@ Deze repository zijn mijn notities en samenvattingen die ik gemaakt heb door het
 
 - Nog geen vakken toegevoegd
 </details>
-  <!-- VAKKENOVERZICHT_END -->
+<!-- VAKKENOVERZICHT_END -->
 
 ---
 
@@ -75,7 +95,7 @@ We ondersteunen twee systemen. Kies er één en volg de handleiding:
 <tr>
 <td width="50%" align="center">
 
-### LaTeX
+### <img src="https://api.iconify.design/simple-icons/latex.svg?color=gray" height="18"> LaTeX
 
 Dit ga je toch moeten leren (masterthesis) dus je kunt hier zeker mee beginnen.
 
@@ -89,7 +109,7 @@ Dit ga je toch moeten leren (masterthesis) dus je kunt hier zeker mee beginnen.
 </td>
 <td width="50%" align="center">
 
-### Typst
+### <img src="https://api.iconify.design/simple-icons/typst.svg?color=gray" height="18"> Typst
 
 Het moderne alternatief. Sneller, simpeler, en makkelijker te leren.
 
@@ -108,38 +128,34 @@ Ik heb heel de vs-code omgeving al klaargezet voor jou zodat alle extensies en i
 
 ## Stap 1: Software installeren
 
-**Vs-code**: IDE om notities te schrijven en te compileren
+**Vs-code**: IDE om notities te schrijven en te compileren\
 **Git**: Versiebeheer om samen te werken.
 
-**Windows** (PowerShell):
+<img src="https://api.iconify.design/simple-icons/windows.svg?color=gray" height="14"> **Windows** (PowerShell):
 
 ```powershell
 winget install --id Microsoft.VisualStudioCode --id Git.Git
 ```
 
-**macOS** (Terminal):
+<img src="https://api.iconify.design/simple-icons/apple.svg?color=gray" height="14"> **macOS** (Terminal):
 
 ```bash
 brew install --cask visual-studio-code && brew install git
 ```
 
-**Linux** (Ubuntu/Debian):
+<img src="https://api.iconify.design/simple-icons/linux.svg?color=gray" height="14"> **Linux** (Ubuntu/Debian):
 
 ```bash
 sudo apt install code git
-```
-
-**Typst formatter** (aanbevolen voor Typst-gebruikers):
-
-```powershell
-winget install --id Enter-tainer.typstyle
-$env:PATH = [System.Environment]::GetEnvironmentVariable("PATH","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("PATH","User")
 ```
 
 Daarna installeer je **LaTeX** of **Typst** (of beide). Volg de stappen in:
 
 - **[LATEX.md](LATEX.md)** — LaTeX installeren en gebruiken
 - **[TYPST.md](TYPST.md)** — Typst installeren en gebruiken
+- **[SCHRIJFGIDS.md](SCHRIJFGIDS.md)** — hoe je een samenvatting opbouwt: van skelet naar uitgewerkte tekst
+- **[OVER-DIT-PROJECT.md](OVER-DIT-PROJECT.md)** — het verhaal en de motivatie achter dit project
+- **[AI-GEBRUIK.md](AI-GEBRUIK.md)** — waarvoor je AI wel en niet gebruikt in dit project
 
 > **Herstart je computer** nadat alles is geïnstalleerd.
 
@@ -192,7 +208,7 @@ VS Code zal rechtsonder vragen om de "Recommended Extensions" te installeren. Kl
 Hier zie je het resultaat. Dit is hoe de theorie (met wiskunde formules en kaders) er uiteindelijk uit komt te zien in je PDF bestand:
 
 <p align="center">
-  <img src="voorbeeldpagina.png" alt="Voorbeeldpagina van een samenvatting" width="300"/>
+  <img src="assets/voorbeeldpagina.png" alt="Voorbeeldpagina van een samenvatting" width="300"/>
 </p>
 
 ### 1. Maak een nieuwe Branch

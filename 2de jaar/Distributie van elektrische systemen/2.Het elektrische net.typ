@@ -6,7 +6,7 @@ In dit deel van distributie van elektrische energie en in de industrie spreken w
 *Middenspanning* (bijv. 10kV - 30kV) is wettelijk gezien eigenlijk ook een hoogspanning, maar wordt in de praktijk gebruikt om de regionale verdeling aan te duiden.
 
 #figure(
-  image("het grid.png", width: 5cm),
+  image("assets/het grid.png", width: 5cm),
   caption: [Het grid],
   label: <fig:het-grid>,
 )
@@ -96,7 +96,7 @@ In dit deel van distributie van elektrische energie en in de industrie spreken w
 
 
 #wrap-figure(
-  image("optimalisatie.png", width: 6cm),
+  image("assets/optimalisatie.png", width: 6cm),
   caption: [optimalisatie],
   label: <fig:optimalisatie>,
 )[
@@ -126,7 +126,7 @@ Je hebt in de elektriciteitssector drie belangrijke rollen:
 + *Consument*: Wij, de eindgebruikers van de elektriciteit.
 
 #figure(
-  image("elektriciteitssector.png", width: 5cm),
+  image("assets/elektriciteitssector.png", width: 5cm),
   caption: [elektriciteitssector],
   label: <fig:elektriciteitssector>,
 )
@@ -138,7 +138,7 @@ Tot slot zijn er *regulatoren* die de energiemarkt in de gaten houden. Ze zien e
 
 + *Radiaal net:* (Typisch voor laagspanningsdistributie)
   #figure(
-    image("radiaal net.png", width: 3cm),
+    image("assets/radiaal net.png", width: 3cm),
     caption: [radiaal net],
     label: <fig:radiaal-net>,
   )
@@ -147,27 +147,79 @@ Tot slot zijn er *regulatoren* die de energiemarkt in de gaten houden. Ze zien e
   - *Nadeel:* Geen redundantie. Een fout in de hoofdkabel schakelt alle achterliggende verbruikers uit.
 + *Ring net:* (Typisch voor middenspanningsdistributie)
   #figure(
-    image("ring net.png", width: 3cm),
+    image("assets/ring net.png", width: 3cm),
     caption: [ring net],
     label: <fig:ring-net>,
   )
   Een ringnet is gesloten in een lus, waardoor redundantie ontstaat. Als er een kabel of transformator uitvalt, kan men de fout isoleren en de stroom via de andere kant van de ring naar de verbruikers sturen.
 + *Mesh net:* (Typisch voor hoogspanningstransmissie)
 #figure(
-  image("mesh net.png", width: 5cm),
+  image("assets/mesh net.png", width: 5cm),
   caption: [mesh net],
   label: <fig:mesh-net>,
 )
 Een mesh (vermaasd) netwerk is een complex netwerk van verbonden lijnen die elkaar kruisen en verbinden. Het biedt de hoogste betrouwbaarheid en redundantie, wat essentieel is voor grote afstanden en het verbinden van verschillende landen en centrales.
 
-== Metingen in het net: Twee-wattmetermethode
+== De keuze van het spanningsniveau <sec:spanningsniveau>
+
+Hoger transporteren geeft minder joulverlies bij dezelfde kabeldoorsnede, of dezelfde verliezen bij een dunnere kabel. Maar hoger betekent ook duurdere isolatie, zwaardere veiligheidsmaatregelen en grotere afstanden tot alles wat geaard is. Er is dus een economisch optimum, en dat schuift mee met het te transporteren vermogen:
+
+$ P tilde U^2 $
+
+Een dunnere doorsnede scheelt trouwens meer dan alleen koper: dunnere geleiders laten grotere overspanningen toe, dus zijn er minder masten nodig.
+
+In de praktijk reken je dat optimum niet per geval uit, want dan kreeg je eindeloos veel spanningsniveaus. Er zijn vaste niveaus:
+
+#table(
+  columns: (auto, auto, 1fr),
+  align: (left, left, left),
+  stroke: none,
+  inset: 5pt,
+  table.hline(stroke: 1pt),
+  table.header([*Net*], [*Spanning*], [*Functie*]),
+  table.hline(stroke: 0.5pt),
+  [Interconnectie en transmissie], [$380$, $220$ en $150 "kV"$], [de centrales hangen hieraan],
+  [Regionale transmissie], [$70$ en $36 "kV"$ in België], [transport op regionaal niveau],
+  [Middenspanning], [$1$ tot $30 "kV"$], [distributie],
+  [Laagspanning], [$400 \/ 230 "V"$], [tot bij de verbruiker],
+  table.hline(stroke: 1pt),
+)
+
+Transformatoren koppelen die niveaus aan elkaar, in beide richtingen.
+
+== Fotovoltaïsche installaties <sec:pv-installaties>
+
+Zonnepanelen staan in serie tot een #keyterm[string], en zo'n string levert gelijkspanning. Zes panelen van elk $35 "V"$ geven dus $210 "V"$ DC aan de ingang van de omvormer. Die omvormer maakt er wisselspanning van en injecteert in het net. Elke string kan zijn eigen omvormer krijgen, of meerdere strings gaan samen op één centrale omvormer.
+
+Omvormers bestaan enkel- en driefasig. Kleine zijn meestal enkelfasig, grote driefasig.
+
+#belangrijk[Injecteer je asymmetrisch in een driefasig net, dan krijg je onevenwicht.] De drie geleiders voeren dan verschillende stromen, met verschillende spanningsvallen als gevolg: de lijnspanningen krijgen een andere amplitude en staan niet meer $120 degree$ uit elkaar. Zie @ch:unbalance.
+
+Vandaar de vuistregel: gebruik je enkelfasige omvormers boven $5 "kVA"$, verdeel ze dan #strong[symmetrisch] over de drie fasen. Dat halveert bovendien de geleiderverliezen.
+
+== Centrale tegenover decentrale productie <sec:centraal-decentraal>
+
+Het klassieke net is #keyterm[centraal]: grote centrales produceren, het hoogspanningsnet transporteert, en midden- en laagspanning verdelen naar de verbruiker. Tot 1990 kwam alle elektriciteit zo.
+
+Door de liberalisering van de energiemarkt en het beleid rond hernieuwbare energie komen daar steeds meer kleine productie-eenheden bij die #keyterm[decentraal] injecteren, rechtstreeks op het midden- en laagspanningsnet. De stroom loopt daar dus niet meer noodzakelijk één kant op.
+
+== Vermogensbalans <sec:vermogensbalans>
+
+#belangrijk[Elektrische energie is moeilijk op te slaan, dus moet het geproduceerde vermogen op elk moment gelijk zijn aan het verbruikte.]
+
+Klassiek regel je dat aan de productiekant: het vermogen van een grote centrale is stuurbaar. Bij wind en zon gaat dat niet, want daar haal je net zo veel mogelijk uit. Blijven twee wegen over:
+
++ *De overblijvende centrales laten bijregelen.* Die moeten dan vaker in stand-by of op laag vermogen draaien, wat energie kost en hun rendement drukt.
++ *Het verbruik aanpassen aan wat er beschikbaar is.* Dat is niet nieuw: dag- en nachttarieven verschuiven verbruik naar de nacht. Dat heet #keyterm[load management].
+
+== Metingen in het net: Twee-wattmetermethode <sec:wattmeter>
 
 Om het actieve en reactieve verbruik in deze driefasige netten te meten, gebruiken we verschillende wattmeter-opstellingen afhankelijk van het type netwerk (met of zonder nuldraad). De twee-wattmetermethode is hierbij een veelgebruikte techniek.
 
 #theorie(title: "Korte herhaling wisselstroom")[
 
   #wrap-figure(
-    image("wattmetermethodes.png", width: 8cm),
+    image("assets/wattmetermethodes.png", width: 8cm),
     caption: [Wattmetermethodes],
     label: <fig:wattmetermethodes>,
   )[

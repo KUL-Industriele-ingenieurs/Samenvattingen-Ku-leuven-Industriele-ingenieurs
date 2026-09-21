@@ -1,12 +1,7 @@
 [
     {
         "key": "ctrl+alt+v",
-        "command": "latex-utilities.pasteImage",
-        "when": "editorTextFocus && (editorLangId == 'latex' || editorLangId == 'tex')"
-    },
-    {
-        "key": "ctrl+alt+shift+v",
-        "command": "latex-utilities.formattedPaste.image",
+        "command": "latex-utilities.formattedPaste",
         "when": "editorTextFocus && (editorLangId == 'latex' || editorLangId == 'tex')"
     },
     {
@@ -41,5 +36,11 @@
         "key": "alt+\\",
         "command": "editor.action.inlineSuggest.trigger",
         "when": "editorTextFocus && !inlineSuggestionVisible"
+    },
+    {
+        "key": "ctrl+alt+e",
+        "command": "workbench.action.tasks.runTask",
+        "args": "New Excalidraw drawing",
+        "when": "editorTextFocus && (editorLangId == 'typst' || editorLangId == 'latex' || editorLangId == 'tex')"
     }
 ]

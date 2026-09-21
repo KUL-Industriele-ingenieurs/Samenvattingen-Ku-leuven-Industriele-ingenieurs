@@ -3,10 +3,14 @@
     "tasks": [
         {
             "label": "Check @issue markers",
-            "type": "shell",
+            "type": "process",
             "windows": {
-                "command": "Get-ChildItem -Recurse -Filter \"*.tex\" -ErrorAction SilentlyContinue | Select-String -Pattern '\u0040issue','\u0040todo','TODO','FIXME' | ForEach-Object { Write-Output ('{0}:{1}:1: warning: {2}' -f $_.Path, $_.LineNumber, ($_.Line.Trim())) }",
-                "args": []
+                "command": "powershell",
+                "args": [
+                    "-NoProfile",
+                    "-Command",
+                    "Get-ChildItem -Recurse -Filter \"*.tex\" -ErrorAction SilentlyContinue | Select-String -Pattern '\u0040issue','\u0040todo','TODO','FIXME' | ForEach-Object { Write-Output ('{0}:{1}:1: warning: {2}' -f $_.Path, $_.LineNumber, ($_.Line.Trim())) }"
+                ]
             },
             "linux": {
                 "command": "bash",
@@ -243,6 +247,32 @@
                 "focus": false
             },
             "problemMatcher": []
+        },
+        {
+            "label": "New Excalidraw drawing",
+            "type": "shell",
+            "command": "bash",
+            "args": [
+                "scripts/new-excalidraw.sh",
+                "${fileDirname}",
+                "${input:drawingName}",
+                "${file}",
+                "${lineNumber}"
+            ],
+            "presentation": {
+                "reveal": "always",
+                "panel": "new",
+                "focus": true
+            },
+            "problemMatcher": []
+        }
+    ],
+    "inputs": [
+        {
+            "id": "drawingName",
+            "type": "promptString",
+            "description": "Enter the name for the new Excalidraw drawing (without extension):",
+            "default": "tekening"
         }
     ]
 }

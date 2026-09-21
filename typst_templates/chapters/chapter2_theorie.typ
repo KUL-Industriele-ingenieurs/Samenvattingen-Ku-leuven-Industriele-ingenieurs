@@ -10,9 +10,9 @@ In dit hoofdstuk behandelen we de theoretische achtergrond.
 
 == Belangrijke Wetten
 
-#sym($F$, "Kracht", "N")
-#sym($m$, "Massa", "kg")
-#sym($a$, "Versnelling", "m/s²")
+#symbool($F$, "Kracht", "N")
+#symbool($m$, "Massa", "kg")
+#symbool($a$, "Versnelling", "m/s²")
 
 #theorie(title: "Klassieke Mechanica")[
   De klassieke mechanica beschrijft de beweging van objecten onder invloed van krachten.
@@ -25,8 +25,8 @@ In dit hoofdstuk behandelen we de theoretische achtergrond.
 
 == Energie
 
-#sym($E_k$, "Kinetische energie", "J")
-#sym($v$, "Snelheid", "m/s")
+#symbool($E_k$, "Kinetische energie", "J")
+#symbool($v$, "Snelheid", "m/s")
 
 #frm("Kinetische Energie", $E_k = 1/2 m v^2$, [
   $E_k$ = kinetische energie (J), $m$ = massa (kg), $v$ = snelheid (m/s)

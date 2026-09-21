@@ -21,8 +21,8 @@ Typst is extreem snel. Je ziet je wijzigingen direct in de preview zonder te wac
 Wiskunde is krachtig en intuïtief.
 
 // Symbol definitions (first use shows box, subsequent uses render inline)
-#sym($alpha$, "Hoekversnelling", "rad/s²")
-#sym($F$, "Kracht", "N")
+#symbool($alpha$, "Hoekversnelling", "rad/s²")
+#symbool($F$, "Kracht", "N")
 
 $ integral_0^infinity e^(-x^2) d x = sqrt(pi) / 2 $
 
@@ -72,7 +72,7 @@ Je kunt code blokken toevoegen die eruit zien als VS Code:
 #TODO("Voeg meer voorbeelden toe")
 #NOTE("Dit is een opmerking voor de auteur")
 
-// Subsequent use of sym just renders inline: the force is #sym($F$, "Kracht", "N").
+// Subsequent use of symbool just renders inline: the force is #symbool($F$, "Kracht", "N").
 
 
 #printformularium()

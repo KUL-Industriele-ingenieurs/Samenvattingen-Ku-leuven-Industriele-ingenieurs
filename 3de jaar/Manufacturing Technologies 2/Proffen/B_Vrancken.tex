@@ -7,7 +7,7 @@ Dit waren dus voorbeelden, 1 nadeel is de waste, dus de supports eigelijk, dit i
 Er zijn verschillende benamingen hiervoor, ik ga ze niet allemaal bespreken maar hier is de slide:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{benamingen.png}
+  \includegraphics[width=0.5\textwidth]{assets/benamingen.png}
   \caption{Slide met benamingen van verschillende soorten additive manufacturing}
   \label{fig:benamingen.png}
  \end{figure}
@@ -15,7 +15,7 @@ Die benamingen bevatten keywords die verwijzen naar iets van de printer eigelijk
 De volgende figuur geeft weer hoe groot de economische groei is van deze markt tegenwoordig :
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{economischegroei.png}
+  \includegraphics[width=0.5\textwidth]{assets/economischegroei.png}
   \caption{Economische groei additive manufacturing}
   \label{fig:economischegroei.png}
  \end{figure}
@@ -24,7 +24,7 @@ Vooral omdat dit prototyping zeer makkelijk maakt en goedkoop is.
 Er wordt een hoofdonderverdeling gemaakt tussen 2 toepassingsniveaus: \textbf{Rapid Prototyping} en \textbf{Rapid Manufacturing}.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{hoofdniveaus.png}
+  \includegraphics[width=0.6\textwidth]{assets/hoofdniveaus.png}
   \caption{Hoofdniveaus}
   \label{fig:hoofdniveaus.png}
  \end{figure}
@@ -58,7 +58,7 @@ Hier is tegenwoordig extra vraag naar, ook naar de massaproductie er van, vooral
 .)
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{industriesector.png}
+  \includegraphics[width=0.6\textwidth]{assets/industriesector.png}
   \caption{Voorbeelden industriesector}
   \label{fig:industriesector.png}
  \end{figure}
@@ -66,7 +66,7 @@ Hier is tegenwoordig extra vraag naar, ook naar de massaproductie er van, vooral
 We moeten natuurlijk weten dat niet alles zal worden ge 3D-print, voor kleine hoeveelheden kan het voordelig zijn, in de toekomst zal het waarschijnlijk goedkoper worden en meer en meer voordeliger worden dan andere productietechnieken. De optimale techniek vinden hangt dus af van de beschikbare technologie en de complexiteit van het ontwerp.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{grafiekAM.png}
+  \includegraphics[width=0.6\textwidth]{assets/grafiekAM.png}
   \caption{kostprijs per onderdeel in functie van het productievolume}
   \label{fig:grafiekAM.png}
  \end{figure}
@@ -77,7 +77,7 @@ Met 3D-printen kan je ook 'geintegreerde producten' printen, dit betekent dat as
 Met 3D printen kan je dus complexe geometrieën maken en dus als je slim bent kan dit je materiaal en gewicht besparen, dit is vooral belangrijk in de luchtvaartindustrie, zie foto :
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{lichtgewichtAM.png}
+  \includegraphics[width=0.4\textwidth]{assets/lichtgewichtAM.png}
   \caption{Zwaardere identieke functie onderdeel vanboven en lichtere complexere versie vanonder, gemaakt met AM}
   \label{fig:lichtgewichtAM.png}
  \end{figure}
@@ -85,7 +85,7 @@ Met 3D printen kan je dus complexe geometrieën maken en dus als je slim bent ka
 Nu gaan we het stappenplan om van een digitaal ontwerp tot een fysiek geprint en nabewerkt product te gaan beschrijven. Dit heeft verschillende fases en concepten.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.9\textwidth]{AMworkflow.png}
+  \includegraphics[width=0.9\textwidth]{assets/AMworkflow.png}
   \caption{AM workflow}
   \label{fig:AMworkflow.png}
  \end{figure}
@@ -99,20 +99,20 @@ Productie willen we natuurlijk zo vlot mogelijk of zo efficiënt mogelijk laten 
   \item \textbf{Nesting:} Het efficiënt plaatsen van meerdere onderdelen op het printbed om materiaal en tijd te besparen. Het is vooral de laaghoogte die je minimaal wilt houden eigelijk, zie foto. Dit wordt vooral toegepast bij polymeer SLS (Selective Laser Sintering), omdat het ongesmolten poederbed hier als natuurlijke ondersteuning dient en er geen geprinte steunstructuren nodig zijn.
   \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{nesting.png}
+    \includegraphics[width=0.8\textwidth]{assets/nesting.png}
     \caption{Nesting}
     \label{fig:nesting.png}
    \end{figure}
   \item \textbf{Slicing \& Scan-pad:} Het model wordt in dunne horizontale laagjes gesneden ('slicing'). Vervolgens wordt de scanstrategie (hatching) bepaald: hoe de laser het materiaal per laag gaat consolideren (bijvoorbeeld met lijntjes in één of meerdere richtingen). (m.a.w. slicing van het model vertaalt het cad-model naar de machine-instructies voor de printer omdat deze laag per laag print)
   \begin{figure}[H]
     \centering
-    \includegraphics[width=0.4\textwidth]{slicing.png}
+    \includegraphics[width=0.4\textwidth]{assets/slicing.png}
     \caption{Sliced model (wel heel weinig lagen, wordt dus een kleine print)}
     \label{fig:slicing.png}
    \end{figure}
   \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{scanstrategien.png}
+    \includegraphics[width=0.7\textwidth]{assets/scanstrategien.png}
     \caption{Scanstrategien}
     \label{fig:scanstrategien.png}
    \end{figure}
@@ -123,7 +123,7 @@ Productie willen we natuurlijk zo vlot mogelijk of zo efficiënt mogelijk laten 
   {met \sym{P}{Vermogen}{\si{W}} \sym{v}{Scansnelheid}{\si{m/s}} \sym{h}{Hatchafstand}{\si{m}} \sym{t}{Laagdikte}{\si{m}}}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{energiedensiteit.png}
+  \includegraphics[width=0.5\textwidth]{assets/energiedensiteit.png}
   \caption{Vizualisatie van energiedensiteit}
   \label{fig:energiedensiteit.png}
  \end{figure}
@@ -135,7 +135,7 @@ De ingestelde laagdikte (t) mag je niet verwarren met de smeltbaddiepte: de lase
 Als laatste fase is er de nabewerking, dit is het verwijderen van de supports, het gladmaken van het oppervlak, eventueel warmtebehandelingen om de mechanische eigenschappen te verbeteren, en andere post-processing stappen zoals schilderen of coaten. Oppervlaktenabewerking is vaak toepasbaar met technieken zoals zandstralen, polijsten, mechanisch bewerken, \dots
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1\textwidth]{AMworkflowsamenvattend.png}
+  \includegraphics[width=1\textwidth]{assets/AMworkflowsamenvattend.png}
   \caption{Samenvattende figuur van de AM workflow}
   \label{fig:AMworkflowsamenvattend.png}
  \end{figure}
@@ -155,7 +155,7 @@ Natuurlijk zijn er ook beperkingen, dit zijn de belangrijkste:
  \item \textbf{Nauwkeurigheid:} Dit wordt sterk bepaald door de laagdikte, door het laagsgewijs opbouwen ontstaat er op schuinve vlakken een zichtbaar 'staircase effect'.  Ook kunnen we ongesmolten poederdeeltjes hebben die aan het werkstuk blijven kleven bij poederbedtechnieken, omdat de oppervlaktekwaliteit hierdoor vaak niet optimaal is, zijn er in veel gevallen nog nabewerkingsstappen nodig, ook wordt de algemene procescontrole als een beperking gezien.
  \begin{figure}[H]
    \centering
-   \includegraphics[width=0.6\textwidth]{SCAPP.png}
+   \includegraphics[width=0.6\textwidth]{assets/SCAPP.png}
    \caption{Staircase effect en ongesmolten poederdeeltjes bij poederbedtechnieken}
    \label{fig:SCAPP.png}
   \end{figure}
@@ -177,7 +177,7 @@ Net zoals je bij het traditioneel frezen rekening moet houden met de vorm van je
 Dankzij de grote ontwerpvrijheid van AM kunnen we ontwerpen maken die met conventionele technieken onmogelijk zijn om te maken. Honinggraat- of roosterstructuren zijn een mooi voorbeeld, deze worden gebruikt omdat ze lichtgewicht zijn, dit wordt gemaakt met topologische optimalisatie, je vertrekt hierbij van een bestaand, massief ontwerp dat wordt geanalyseerd door software zodat de software dan het 'dode gewicht' verwijderd op plekken waar het materiaal niet structureel belast wordt. Dit geeft je 1 optimale vorm die veel lichter is, maar toch dezelfde vereiste sterkte en stijfheid behoudt. Je hebt ook nog \textbf{generatief ontwerpen}, hier geef je de software randvoorwaarden (constraints), hiermee gaat de computer zelf verschillende ontwerpopties bedenken die dan aan die eisen voldoen, opvallend is dat deze vaak een vloeiende organische vormgeving hebben die ons doet denken aan structuren uit de natuur.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{honinggraat.png}
+  \includegraphics[width=0.4\textwidth]{assets/honinggraat.png}
   \caption{Honinggraat- of roosterstructuren}
   \label{fig:honinggraat.png}
  \end{figure}
@@ -185,7 +185,7 @@ Dankzij de grote ontwerpvrijheid van AM kunnen we ontwerpen maken die met conven
 De volgende figuur toont de 7 hoofdcategorieën van 3D-printtechnieken (volgens de ISO/ASTM standaard):
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{hoofdcategorienAM.png}
+  \includegraphics[width=0.8\textwidth]{assets/hoofdcategorienAM.png}
   \caption{7 hoofdcategorieën van 3D-printtechnieken volgens ISO/ASTM standaard}
   \label{fig:hoofdcategorienAM.png}
  \end{figure}
@@ -199,7 +199,7 @@ Dan bezien we tot slot kort de 7 categorieën:
 Hier wordt een thermoplastisch polymeer in de vorm van een draad (filament) of als korrels (pellets) aangevoerd. Het materiaal wordt door een verwarmde nozzle getrokken of geduwd waardoor het smelt en vervolgens laagsgewijs wordt afgezet op het bed (bouwplatform). Dit staat bekend als Fused Filament Fabrication of Fused Deposition Modeling. Meestal zijn de materialen PLA en ABS of andere polymeer composieten, een nieuwe ontwikkeling is het gebruik van polymeerdraden die metaal- of keramiekdeeltjes bevatten. Daar dient het plastic dan als tijdelijk bindmiddel, na het printen is wel een extra bewerkingsstap nodig om het polymeer weg te branden en de metaaldeeltjes aan elkaar te sinteren.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{MATE.png}
+  \includegraphics[width=0.5\textwidth]{assets/MATE.png}
   \caption{Material Extrusion (FDM/FFF)}
   \label{fig:MATE.png}
  \end{figure}
@@ -208,13 +208,13 @@ Dit is een erg goedkoop en makkelijk proces (voor hobby 3D-printers) maar het he
 Hier wordt vloeibare 'hars' (liquid resin) druppelsgewijs of continu uit een printkop gespoten, zodra die druppels landen worden ze uitgehard met behulp van UV-licht. Typisch gebruikt men polymeren (UV-uithardende harsen) en composieten (vloeibare inkt met metaal-of keramiekdeeltjes), er bestaan ook technieken voor metalen met een laag smeltpunt zoals aluminium (liquid metal jetting). Deze techniek biedt enorm veel voordelen, het heeft extreem hoge precisie en laat toe om verschillende materialen en zelfs kleuren (via inkt) toe te voegen in 1 print. Een nadeel is wel het relatief klein bouwvolume en de instabiliteit van het product over tijd, hiermee bedoelen we sinds dat het materiaal specifiek reageert op UV-licht dat het buiten, waar de zon is, langzaam aan ook verder blijven reageren en bvb. verkleuren. Dit is een prachtige techniek voor het maken van hoogwaardige meerkleurige visuele modellen.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{materialjetting.png}
+  \includegraphics[width=0.5\textwidth]{assets/materialjetting.png}
   \caption{Material jetting (UV-uithardende harsen)}
   \label{fig:materialjetting.png}
  \end{figure}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{printvoorbeeldmatjet.png}
+  \includegraphics[width=0.5\textwidth]{assets/printvoorbeeldmatjet.png}
   \caption{Voorbeeld van een material jetting print}
   \label{fig:printvoorbeeldmatjet.png}
  \end{figure}
@@ -222,7 +222,7 @@ Hier wordt vloeibare 'hars' (liquid resin) druppelsgewijs of continu uit een pri
 Dit is een techniek dat ook laagsgewijs werkt maar hier met een poederbed als structureel materiaal, een printkop spuit druppels van een vloeibaar bindmiddel (liquid binder) op dat poeder, op die plakken gaat het materiaal moeten samenplakken, daarna wordt er een nieuwe laag poeder over verdeeld en herhaalt het proces zich. Je hebt het standaard binder jetting en je hebt multi jet fusion (van HP), dit is een extreem snel proces want het gebruikt honderden van die jetting nozzels (printmondjes). Het materiaal hier kan vanalles zijn, typisch wordt zand of PMMA (polymeer) gebruikt, nu kan het sinds recent ook met metaalpoeders, dit vereist wel een extra stap, na het printen moet het bindmiddel eruit gebrand worden (bespraken we eerder ook) en daarna het metaal gesinterd, dit is voordelig want je vermijd restspanningen in grote metalen stukken. Dit proces is ook heel snel en je kan grote kleurrijke stukken maken, er zijn ook geen supports nodig, nadeel is wel dat de oppervlaktekwaliteit niet zo goed is en het product heeft matige mechanische eigenschappen. Wordt vooral gebruikt om zandmallen voor metaalgieterijen te maken.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{binderjetting.png}
+  \includegraphics[width=0.5\textwidth]{assets/binderjetting.png}
   \caption{Binder jetting}
   \label{fig:binderjetting.png}
  \end{figure}
@@ -231,7 +231,7 @@ Dit is een techniek dat ook laagsgewijs werkt maar hier met een poederbed als st
 Vergeleken met de rest is dit eigelijk een minder 3D-printtechniek, het wordt ook niet zo vaak gebruikt, er wordt hier vertrokken van een plaatmateriaal of vellen, die worden op elkaar gestapeld en gelast of gelijmd. Het overtollig materiaal (de delen van de platen die je nie nodig hebt) moet daarna nog fysiek weggesneden worden. Ultrasonic AM en Laminated Object Manufacturing (LOM) zijn bekende technieken hierbij. Hier kan echt elk soort plaatmetaal gebruikt worden, composieten ook of gewoon papier met lijm kan ook. Het is een heel makkelijk en snel proces, gekleurde stukken kan ook maar het heeft enorm veel waste door dat wegsnijden en eigelijk is de materiaalkeuze een beetje beperkt en de materiaaleigenschappen zijn matig. Wordt gebruikt om bvb. 3D topografische kaarten te maken.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{sheetlamination.png}
+  \includegraphics[width=0.5\textwidth]{assets/sheetlamination.png}
   \caption{Sheet lamination}
   \label{fig:sheetlamination.png}
  \end{figure}
@@ -243,7 +243,7 @@ Het bouwoppervlak bevindt zich hier in een vat (bad) gevuld met vloeibaar 'fotop
  \item \textbf{2-Photon Polymerization (2PP):} Dit is een extreem nauwkeurige techniek waarbij een laser twee fotonen tegelijk gebruikt om een zeer klein volume van de hars te polymeriseren, hiermee kunnen structuren op nanoschaal worden gemaakt.
  \begin{figure}[H]
    \centering
-   \includegraphics[width=0.4\textwidth]{2photonpolymerization.png}
+   \includegraphics[width=0.4\textwidth]{assets/2photonpolymerization.png}
    \caption{2-Photon Polymerization (2PP)}
    \label{fig:2photonpolymerization.png}
   \end{figure}
@@ -251,7 +251,7 @@ Het bouwoppervlak bevindt zich hier in een vat (bad) gevuld met vloeibaar 'fotop
 Typisch worden UV-uithardende polymeren gebruikt maar sinds kort kan je ook metaal of keramiekdeeltjes in de hars brengen. Deze techniek biedt extreem hoge precisie en je kan er heel grote stukken mee maken, nadelen zijn wel dat na het printen je nog verder moet uitharden in een UV-oven, er zijn ook supports nodig en dat het materiaal instabiel blijft over tijd (door die zon, zage we eerder). Toepassingen zijn op maat gemaakte hoorapparaten, chirurgische mallen, zelfs 3D-geprinte zolen voor adidas schoenen, \dots
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{vatpolymerizatie.png}
+  \includegraphics[width=0.5\textwidth]{assets/vatpolymerizatie.png}
   \caption{Vat polymerization}
   \label{fig:vatpolymerizatie.png}
  \end{figure}
@@ -262,14 +262,14 @@ Hier wordt materiaal aangevoerd in de vorm van een poederbed, een roller spreidt
   \item \textbf{Electron Beam Melting (EBM):} Hierbij wordt een elektronenstraal gebruikt, dit vereist een vacuümomgeving (dit maakt het sneller voor bepaalde metalen) en is vooral geschikt voor metalen met hoge smeltpunten.
   \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{EBM.png}
+    \includegraphics[width=0.6\textwidth]{assets/EBM.png}
     \caption{Electron Beam Melting (EBM)}
     \label{fig:EBM.png}
    \end{figure}
   \item \textbf{Laser Powder Bed Fusion (LPBF):} Dit is een meer algemene term die zowel SLS als Direct Metal Laser Sintering (DMLS) omvat, waarbij een laser wordt gebruikt om metalen poeders te smelten.
   \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{LPBF.png}
+    \includegraphics[width=0.6\textwidth]{assets/LPBF.png}
     \caption{Laser Powder Bed Fusion (LPBF)}
     \label{fig:LPBF.png}
    \end{figure}
@@ -278,7 +278,7 @@ Hier wordt materiaal aangevoerd in de vorm van een poederbed, een roller spreidt
 Er kan hier een breed scala aan materialen worden gebruikt; functionele metalen(stalen, titanium-, aluminium- en nikkellegeringen) en polymeren. Deze techniek maakt zeer sterke, direct functionele eindproducten met hoge complexiteit, maar een groot nadeel is een enorme opbouw van thermische restspanningen, dit is omdat elke laag kort en lokaal verhit wordt, dit is waarom deze sterk wilt krimpen tijdens het afkoelen, dit wordt tegengehouden door de vastzittende, reeds gekoelde onderlaag, wat kan leiden tot warping. Dit willen we ZEKER beperken, dit kan gedaan worden door het poederbed voor te verwarmen tot net onder de smelttemperatuur, er is ook ruwe oppervlakteafwerking door die poederdeeltjes die niet gesmelt zijn en aan de randen blijven kleven. Ontwerpvrijheid is vrijwel onbeperkt. Tegenwoordig kan je ook meerdere materialen tegelijk gebruiken.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{powerbedfusion.png}
+  \includegraphics[width=0.5\textwidth]{assets/powerbedfusion.png}
   \caption{Powder bed fusion (poederbedsmelten)}
   \label{fig:powerbedfusion.png}
  \end{figure}
@@ -286,7 +286,7 @@ Er kan hier een breed scala aan materialen worden gebruikt; functionele metalen(
 Dit is niet met een poederbed, hier wordt het materiaal (in de vorm van metaalpoeder of metaaldraad) direct in een smeltbad gespoten of gevoerd. Dit smeltbad wordt gecreëerd door een krachtige hittebron zoals een laser of plasmastraal. Dit smeltbad en materiaaltoevoer bevinden zich op een robotarm, dit geeft het veel bewegingsvrijheid, want de printkop is nu in staat om de hele 3D-ruimte te gebruiken, niet meer beperkt tot 'laag-per-laag'. Bekende technieken zijn Laser Cladding en Wire Arc AM, voornamelijk wordt met metalen zoals staalsoorten, nikkellegeringen en titaniumlegeringen, maar het is ook geschikt om meerdere materialen te mixen (metal multimaterial of gradiënt materialen). Voordelen ziijn dat de productiviteit hoog ligt en enorm grote stukken gemaakt kunnen worden, de techniek is ook zeer geschikt voor onderdeelreparatie en is makkelijk combineerbaar met conventionele (substractieve) technieken waarbij je bvb eerst ruw print en dan glad freest, nadelen zijn wel dat er door hitte veel lokale thermische restspanningen onstaan wat kan leiden tot kromtrekken, en dat dus de oppervlaktekwaliteit slecht is, het kan ook geen kleine of fijne prints maken, het is ook niet mogelijk om supports te maken. Wordt gebruikt in de aerospace om bvb. raketten te maken.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{DED.png}
+  \includegraphics[width=0.5\textwidth]{assets/DED.png}
   \caption{Directed energy deposition (DED)}
   \label{fig:DED.png}
  \end{figure}

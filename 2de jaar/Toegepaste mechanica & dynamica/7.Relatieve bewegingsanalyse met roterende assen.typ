@@ -27,7 +27,7 @@ Om dit op te lossen gaan we een roterende assenstelsel gebruiken. Dit is een ass
 
 === Snelheid
 #figure(
-  image("roterend assenstelse.png", width: 10cm),
+  image("assets/roterend assenstelse.png", width: 10cm),
   caption: [roterend assenstelsel],
   label: <fig:roterend-assenstelsel>,
 )
@@ -59,11 +59,11 @@ met $Omega$ de hoeksnelheid van het roterend assenstelsel. en $dot(Omega) =$ de 
       arrow(v_B) = mark(arrow(v_A), tag: #<vA>, color: #orange)
       + mark(arrow(Omega) crossproduct arrow(r_(B/A)), tag: #<hoeksnelheid-v>, color: #purple)
       + mark((arrow(v_(B/A)))_(x y z), tag: #<relatief-v>, color: #green)
-      #annot(<vA>, pos: bottom, dy: 1em)[oorsprong v/h \\ bewegende \\ assenstelsel]
-      #annot(<hoeksnelheid-v>, pos: top, dy: -1em)[hoeksnelheid \\ v/h bewegende \\ assenstelsel]
-      #annot(<relatief-v>, pos: bottom, dy: 1em)[relatieve beweging \\ in assenstelsel]
+      #annot(<vA>, pos: bottom, dy: 1em)[oorsprong v/h \ bewegende \ assenstelsel]
+      #annot(<hoeksnelheid-v>, pos: top, dy: -1em)[hoeksnelheid \ v/h bewegende \ assenstelsel]
+      #annot(<relatief-v>, pos: bottom, dy: 1em)[relatieve beweging \ in assenstelsel]
     $
-    #v(1em)
+    #v(2.8em)
   ],
   [
     met $arrow(v_B)$ de snelheid van punt B in het vaste assenstelsel,
@@ -87,13 +87,13 @@ Nu willen we nog de versnelling van B beschrijven. We gaan terug onze term aflei
       + mark(arrow(Omega) crossproduct (arrow(Omega) crossproduct arrow(r_(B/A))), tag: #<hoeksnelheid>, color: #purple)
       + mark(2 arrow(Omega) crossproduct (arrow(v_(B/A)))_(x y z), tag: #<coriolis>, color: #red)
       + mark((arrow(a_(B/A)))_(x y z), tag: #<relatief>, color: #green)
-      #annot(<aA>, pos: bottom, dy: 1em)[oorsprong v/h \\ bewegende \\ assenstelsel]
-      #annot(<hoekversnelling>, pos: top, dy: -1em)[hoekversnelling \\ v/h bewegende \\ assenstelsel]
-      #annot(<hoeksnelheid>, pos: bottom, dy: 2.5em)[hoeksnelheid \\ v/h bewegende \\ assenstelsel]
-      #annot(<coriolis>, pos: top, dy: -0.5em)[interactie: \\ hoeksnelheid assenstelsel \\ + relatieve snelheid \\ in assenstelsel]
-      #annot(<relatief>, pos: bottom, dy: 1em)[relatieve beweging \\ in assenstelsel]
+      #annot(<aA>, pos: bottom, dy: 1em)[oorsprong v/h \ bewegende \ assenstelsel]
+      #annot(<hoekversnelling>, pos: top, dy: -1em)[hoekversnelling \ v/h bewegende \ assenstelsel]
+      #annot(<hoeksnelheid>, pos: bottom, dy: 2.5em)[hoeksnelheid \ v/h bewegende \ assenstelsel]
+      #annot(<coriolis>, pos: top, dy: -0.5em)[interactie: \ hoeksnelheid assenstelsel \ + relatieve snelheid \ in assenstelsel]
+      #annot(<relatief>, pos: bottom, dy: 1em)[relatieve beweging \ in assenstelsel]
     $
-    #v(2em)
+    #v(3.2em)
   ],
   [
     met $arrow(a_B)$ de versnelling van punt B in het vaste assenstelsel,
@@ -108,7 +108,7 @@ Nu willen we nog de versnelling van B beschrijven. We gaan terug onze term aflei
 
 #oefening(title: "Oefening 1: 16.18")[
   #figure(
-    image("Oefening 16.18.png", width: 10cm),
+    image("assets/Oefening 16.18.png", width: 10cm),
     caption: [Oefening 16.18],
     label: <fig:Oefening-16.18>,
   )
@@ -125,7 +125,7 @@ Nu willen we nog de versnelling van B beschrijven. We gaan terug onze term aflei
   *Oplossing*\
 
   #figure(
-    image("figuur 1 oefening 16.18.png", width: 4cm),
+    image("assets/figuur 1 oefening 16.18.png", width: 4cm),
     caption: [figuur 1 oefening 16.18],
     label: <fig:figuur-1-oefening-16.18>,
   )
@@ -142,13 +142,13 @@ Nu willen we nog de versnelling van B beschrijven. We gaan terug onze term aflei
 
   Snelheid:\
   $arrow(v_C) = 0 + (-3arrow(K)) crossproduct (0.2arrow(i) + 2arrow(i))$
-  $markhl(arrow(v_c) = (2arrow(i) -0.6arrow(j)) m/s)$
+  $bold(arrow(v_c) = (2arrow(i) -0.6arrow(j)) m/s)$
 
   Versnelling:\
   $
     arrow(a_(c o r r c)) = 2 arrow(Omega) crossproduct (arrow(v_frac(C, O, style: "horizontal")))_(x y z) = 2 (-3arrow(K)) x (2arrow(i))
   $
-  $ markhl(arrow(a_(c o r r c)) = -12 arrow(j) m/s^2) $
+  $ bold(arrow(a_(c o r r c)) = -12 arrow(j) m/s^2) $
 
   Nu moeten we nog de absolute versnelling van C berekenen:\
   $
@@ -159,7 +159,7 @@ Nu willen we nog de versnelling van B beschrijven. We gaan terug onze term aflei
   $
     arrow(a_c) = 0 + 2 (-3arrow(K)) crossproduct (0.2arrow(i)) + (-3arrow(K)) crossproduct ((-3arrow(K)) x (0.2arrow(i))) + 2 (-3arrow(K)) crossproduct (2arrow(i)) + 3 arrow(i)
   $
-  $ markhl(arrow(a_c) = (3arrow(i) - 12arrow(j)) m/s^2) $
+  $ bold(arrow(a_c) = (3arrow(i) - 12arrow(j)) m/s^2) $
 
 
 
@@ -169,24 +169,26 @@ Nu willen we nog de versnelling van B beschrijven. We gaan terug onze term aflei
 #oefening(title: "Oefening 3 16.20")[
 
   #figure(
-    image("oefening 16.20.png", width: 10cm),
+    image("assets/oefening 16.20.png", width: 10cm),
     caption: [oefening 16.20],
     label: <fig:oefening-16.20>,
   )
 
   *Gegeven*\
 
-  $arrow(v_frac(B, A, style: "horizontal")) = 100arrow(j) (k m/h)$\
-  $arrow(a_frac(B, A, style: "horizontal") = (900arrow(i)-150arrow(j)) (k m)/h^2)$
+  $
+    arrow(v_frac(B, A, style: "horizontal")) = 100arrow(j) (k m/h) quad
+    arrow(a_frac(B, A, style: "horizontal")) = (900arrow(i)-150arrow(j)) (k m)/h^2)
+  $
 
 
   *Gevraagd*\
-  $arrow(v_frac(A, B, style: "horizontal")), arrow(a_frac(A, B, style: "horizontal"))$
+  $ arrow(v_frac(A, B, style: "horizontal")), space arrow(a_frac(A, B, style: "horizontal")) $
 
   *Oplossing*\
 
   #figure(
-    image("figuur 16.20.png", width: 5cm),
+    image("assets/figuur 16.20.png", width: 5cm),
     caption: [figuur 16.20],
     label: <fig:figuur-16.20>,
   )
@@ -220,7 +222,7 @@ Nu willen we nog de versnelling van B beschrijven. We gaan terug onze term aflei
   $
   Dus:
   $
-    markhl((arrow(v_(A\/B)))_(x y z) = 100 arrow(j) - 6 arrow(j) = 94 arrow(j) "km/h")
+    bold((arrow(v_(A\/B)))_(x y z) = 100 arrow(j) - 6 arrow(j) = 94 arrow(j) "km/h")
   $
 
   _Stap 4: Bereken de versnelling van A gezien door de piloot van B._\
@@ -250,7 +252,7 @@ Nu willen we nog de versnelling van B beschrijven. We gaan terug onze term aflei
                               & = (900 - 9 - 282) arrow(i) + (-150 - 1) arrow(j)
   $
   $
-    markhl((arrow(a_(A\/B)))_(x y z) = (609 arrow(i) - 151 arrow(j)) "km/h"^2)
+    bold((arrow(a_(A\/B)))_(x y z) = (609 arrow(i) - 151 arrow(j)) "km/h"^2)
   $
 
 
@@ -258,7 +260,7 @@ Nu willen we nog de versnelling van B beschrijven. We gaan terug onze term aflei
 ]
 
 #figure(
-  image("oefening 6 16.141 alt.png", width: 12cm),
+  image("assets/oefening 6 16.141 alt.png", width: 12cm),
   caption: [oefening 6 16.141 alt],
   label: <fig:oefening-6-16.141-alt>,
 )
@@ -267,11 +269,11 @@ Nu willen we nog de versnelling van B beschrijven. We gaan terug onze term aflei
 #oefening(title: "Oefening 6 16.141 (ALT)")[
 
   #figure(
-    image("oefening 6 16.141 alt.png", width: 12cm),
+    image("assets/oefening 6 16.141 alt.png", width: 12cm),
     caption: [oefening 6 16.141 alt],
   )
   #figure(
-    image("oefening 16.141 alt.png", width: 5cm),
+    image("assets/oefening 16.141 alt.png", width: 5cm),
     caption: [oefening 16.141 alt],
   )
 
@@ -334,10 +336,10 @@ Nu willen we nog de versnelling van B beschrijven. We gaan terug onze term aflei
   $ (y): 3 = 0.5 omega_(C D) sin 60° $
 
   Uit (y): $omega_(C D) = 3 / (0.5 sin 60°) = 3 / 0.433$
-  $ markhl(omega_(C D) = 6.93 "rad/s") $
+  $ bold(omega_(C D) = 6.93 "rad/s") $
 
   Uit (x): $v_(C\/A) = -0.5 times 6.93 times cos 60°$
-  $ markhl(v_(C\/A) = -1.73 "m/s" arrow.r.double 1.73 "m/s" arrow.tl) $
+  $ bold(v_(C\/A) = -1.73 "m/s" arrow.r.double 1.73 "m/s" arrow.tl) $
 
   === Versnellingsanalyse
 
@@ -388,7 +390,7 @@ Nu willen we nog de versnelling van B beschrijven. We gaan terug onze term aflei
   $ (x): a_(C\/A) - 12 = 24 arrow.r a_(C\/A) = 36 "m/s"^2 $
   $ (y): -12.36 = -0.5 alpha_(C D) $
   $
-    markhl(alpha_(C D) = 24.7 "rad/s"^2)
+    bold(alpha_(C D) = 24.7 "rad/s"^2)
   $
 
 ]

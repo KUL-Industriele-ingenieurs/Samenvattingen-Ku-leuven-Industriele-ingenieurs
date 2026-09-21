@@ -204,7 +204,7 @@ De template bevat het *mannot* pakket voor handgeschreven-stijl markeringen en a
 
 Gebruik de volgende functies om tekst te markeren:
 - `#mark`: $mark("Verandert de tekstkleur")$.
-- `#markhl`: $markhl("Markeerstift (highlight) effect")$.
+- `#markhl`: $bold("Markeerstift (highlight) effect")$.
 - `#markrect`: $markrect("Tekent een rechthoek (kader)")$.
 - `#markul`: $markul("Onderlijnt de tekst")$.
 
@@ -212,7 +212,7 @@ Gebruik de volgende functies om tekst te markeren:
   ```
   $
     mark(x, color: #red)
-    + markhl(f(x))
+    + bold(f(x))
     + markrect(e^x)
     + markul(x + 1)
   $
@@ -225,7 +225,7 @@ Je kunt kleuren en stijlen aanpassen:
   ```
   $
     mark(x, color: #green)
-    + markhl(f(x), color: #purple, stroke: 1pt)
+    + bold(f(x))
     + markrect(e^x, color: #red, fill: #blue, outset: 0.2em)
   $
   ```
@@ -631,17 +631,17 @@ Aan het einde van je document kun je alle geregistreerde formules afdrukken:
 
 = Symbolen met \#sym
 
-De `#sym()` functie introduceert symbolen. Bij eerste gebruik wordt een volledige uitleg getoond; daarna alleen het symbool.
+De `#symbool()` functie introduceert symbolen. Bij eerste gebruik wordt een volledige uitleg getoond; daarna alleen het symbool.
 
 == Eerste vermelding
 
-#sym($F$, "Kracht", "N")
+#symbool($F$, "Kracht", "N")
 
-#sym($v$, "Snelheid", "m/s")
+#symbool($v$, "Snelheid", "m/s")
 
 == Herhaald gebruik
 
-Na de eerste vermelding toont `#sym(...)` alleen het symbool: #sym($F$, "Kracht", "N")
+Na de eerste vermelding toont `#symbool(...)` alleen het symbool: #symbool($F$, "Kracht", "N")
 
 Dit voorkomt herhaling en houdt je document overzichtelijk.
 
@@ -649,10 +649,10 @@ Code:
 #codeblock(lang: "typst", title: "Symbolen")[
   ```
   // Eerste gebruik (toont definitie):
-  #sym($F$, "Kracht", "N")
+  #symbool($F$, "Kracht", "N")
 
   // Herhaald gebruik (toont alleen F):
-  #sym($F$, "Kracht", "N")
+  #symbool($F$, "Kracht", "N")
   ```
 ]
 
@@ -836,7 +836,7 @@ $
   [Niet element], [`$in.not$`], [$in.not$],
   [Deelverzameling], [`$subset$`], [$subset$],
   [Vereniging], [`$union$`], [$union$],
-  [Doorsnede], [`$sect$`], [$sect$],
+  [Doorsnede], [`$inter$`], [$inter$],
   [Ledige verzameling], [`$emptyset$`], [$emptyset$],
 )
 
@@ -1394,6 +1394,7 @@ Installeren doe je door ze te importeren --- Typst downloadt ze automatisch:
   #import "@preview/glossarium:0.5.10": make-glossary, register-glossary, print-glossary, gls, glspl
   #import "@preview/codly:1.3.0": *
   #import "@preview/tablem:0.2.0": *
+  #import "@preview/merman:0.1.0": mermaid
   ```
 ]
 
@@ -1406,6 +1407,7 @@ Installeren doe je door ze te importeren --- Typst downloadt ze automatisch:
   [`glossarium`], [glossaries], [Woordenlijst / afkortingenlijst],
   [`codly`], [minted/listings], [Mooie code blokken met lijnnummers],
   [`tablem`], [---], [Markdown-achtige tabellen],
+  [`merman`], [---], [Mermaid-diagrammen (flowchart, sequence, state)],
   [`chemformula`], [mhchem], [Chemische formules en reacties],
   [`alchemist`], [chemfig], [Structuurformules tekenen],
 )
@@ -1484,6 +1486,161 @@ Resultaat:
     $,
   )
 ]
+
+=== Merman --- Mermaid-diagrammen
+
+`merman` rendert #link("https://mermaid.js.org/")[Mermaid]-diagrammen rechtstreeks
+tijdens het compileren. Het pakket draait volledig offline via een ingebouwde
+WebAssembly-renderer: je hebt géén Node.js, mermaid-cli of internet nodig.
+
+*Wanneer gebruik je wat?* `fletcher` als je elke pijl en positie zelf wil bepalen;
+`merman` als je snel een stappenplan, beslissingsboom of toestandsdiagram wil
+neerzetten zonder aan de layout te sleutelen --- Mermaid legt zelf uit waar alles
+komt.
+
+#import "@preview/merman:0.1.0": mermaid
+
+#codeblock(lang: "typst", title: "Merman — basisgebruik")[
+  ```
+  #import "@preview/merman:0.1.0": mermaid
+
+  #mermaid("
+  flowchart TD
+    A[Write Mermaid] --> B[Render with merman]
+    B --> C[Embed SVG in Typst]
+  ", width: 28%)
+  ```
+]
+
+Resultaat:
+#align(center)[
+  #mermaid(
+    "
+flowchart TD
+  A[Write Mermaid] --> B[Render with merman]
+  B --> C[Embed SVG in Typst]
+",
+    width: 28%,
+  )
+]
+
+*Diagramtypes.* Alle gangbare Mermaid-types werken: `flowchart` (`TD`, `LR`, `BT`, `RL`),
+`sequenceDiagram`, `stateDiagram-v2`, `classDiagram`, `erDiagram`, `gantt`,
+`pie` en `mindmap`. De nodevormen van flowchart worden ook ondersteund:
+
+#codeblock(lang: "typst", title: "Nodevormen")[
+  ```
+  #mermaid("flowchart LR
+    A[rechthoek] --> B{beslissing}
+    B --> C[(database)]
+    C --> D((cirkel))
+    D --> E[/schuin/]", width: 100%)
+  ```
+]
+
+#align(center)[
+  #mermaid(
+    "flowchart LR
+  A[rechthoek] --> B{beslissing}
+  B --> C[(database)]
+  C --> D((cirkel))
+  D --> E[/schuin/]",
+    width: 100%,
+  )
+]
+
+*Grootte instellen.* `width`, `height` en `fit` gaan rechtstreeks naar Typst's `image`. Let op: de
+*tekengrootte schaalt mee* met `width`. Een hoge, smalle `TD`-chart heeft dus een
+véél kleinere `width` nodig (≈25--35 %) dan een brede `LR`-chart
+(≈80--100 %), anders krijg je letters van een halve centimeter. Vergelijk
+altijd met je broodtekst. Met `scale` (een getal of percentage) rek je het geheel
+achteraf nog op.
+
+#codeblock(lang: "typst", title: "Grootte")[
+  ```
+  #mermaid("flowchart LR
+    A --> B", width: 60%)          // breedte van de tekstkolom
+  #mermaid("flowchart LR
+    A --> B", scale: 1.2)          // 120 % van de natuurlijke grootte
+  ```
+]
+
+*Kleuren in de huisstijl.* Standaard is Mermaid paars. Met `theme-name: "base"` plus `theme` (de
+Mermaid-`themeVariables`) zet je het diagram in de kleuren van dit template.
+De kleuren geef je als hex-string, niet als Typst-kleur.
+
+#codeblock(lang: "typst", title: "School-kleuren")[
+  ```
+  #mermaid("flowchart LR
+    A[Meting z] --> B{beslissing}
+    B -- ja --> C[u omlaag]
+    B -- nee --> D[u omhoog]",
+    width: 85%,
+    theme-name: "base",
+    theme: (
+      primaryColor: "#e8eef5",       // vulkleur van de nodes
+      primaryBorderColor: "#29629b", // schoolBlue
+      primaryTextColor: "#1a1a1a",
+      lineColor: "#29629b",
+      fontFamily: "Charter, serif",
+    ))
+  ```
+]
+
+#align(center)[
+  #mermaid(
+    "flowchart LR
+  A[Meting z] --> B{beslissing}
+  B -- ja --> C[u omlaag]
+  B -- nee --> D[u omhoog]",
+    width: 85%,
+    theme-name: "base",
+    theme: (
+      primaryColor: "#e8eef5",
+      primaryBorderColor: "#29629b",
+      primaryTextColor: "#1a1a1a",
+      lineColor: "#29629b",
+      fontFamily: "Charter, serif",
+    ),
+  )
+]
+
+*Mermaid-fences in plaats van strings.* Wil je gewoon ```` ```mermaid ````-blokken schrijven zoals in Obsidian, zet dan
+één show-rule bovenaan je document:
+
+#codeblock(lang: "typst", title: "Show-rule voor mermaid-fences")[
+  ````
+  #import "@preview/merman:0.1.0": show-mermaid-blocks
+  #show raw.where(lang: "mermaid"): show-mermaid-blocks(width: 70%)
+
+  ```mermaid
+  flowchart LR
+    Slides --> Samenvatting --> Examen
+  ```
+  ````
+]
+
+*Valkuilen.*
+
+#table(
+  columns: (1fr, 1.4fr),
+  align: (left, left),
+  table.header([*Probleem*], [*Oplossing*]),
+  [Een `<` of `>` in een label komt er als `<p>z > r?</p>` uit --- de HTML-laag
+    lekt door in versie 0.1.0.],
+  [Gebruik de wiskundige unicodetekens `≥`, `≤`, `＞` (fullwidth) of schrijf het
+    voluit: `z groter dan r`.],
+
+  [Aanhalingstekens in een label breken de Typst-string.],
+  [Escape ze: `A{\"tekst\"}` binnen de dubbele quotes van `#mermaid("...")`.],
+
+  [Een fout in de Mermaid-syntax laat de hele compile crashen.],
+  [Zet `error-mode: "placeholder"` --- dan krijg je een rood kadertje met de
+    foutmelding in plaats van een gefaalde build.],
+
+  [Alle diagrammen krijgen hetzelfde SVG-id bij een document-brede show-rule.],
+  [Geef geen vaste `id:` mee in de show-rule als je meer dan één diagram hebt.],
+)
 
 === Algo --- Pseudocode en Algoritmes
 
@@ -1803,66 +1960,58 @@ Code:
 
 
 == 3D Orthogonale Projectie
-// Example by @samuelireson
+
+Met `ortho()` teken je in drie dimensies; cetz projecteert het orthogonaal op
+het blad. Coördinaten geef je als `(x, y, z)`.
 
 #align(center)[
-  #cetz.canvas(length: 2cm, {
+  #cetz.canvas(length: 1.6cm, {
     import cetz.draw: *
-    let phi = (1 + calc.sqrt(5)) / 2
 
-    ortho({
-      hide({
-        line((-phi, -1, 0), (-phi, 1, 0), (phi, 1, 0), (phi, -1, 0), close: true, name: "xy")
-        line((-1, 0, -phi), (1, 0, -phi), (1, 0, phi), (-1, 0, phi), close: true, name: "xz")
-        line((0, -phi, -1), (0, -phi, 1), (0, phi, 1), (0, phi, -1), close: true, name: "yz")
-      })
+    ortho(x: 30deg, y: 30deg, {
+      set-style(stroke: (thickness: 0.6pt, cap: "round", join: "round"))
 
-      intersections("a", "yz", "xy")
-      intersections("b", "xz", "yz")
-      intersections("c", "xy", "xz")
+      // achtervlak, voorvlak, en de vier ribben ertussen
+      line((0, 0, 0), (2, 0, 0), (2, 2, 0), (0, 2, 0), close: true,
+        stroke: (dash: "dashed", paint: luma(150)))
+      line((0, 0, 2), (2, 0, 2), (2, 2, 2), (0, 2, 2), close: true)
+      for (x, y) in ((0, 0), (2, 0), (2, 2), (0, 2)) {
+        line((x, y, 0), (x, y, 2))
+      }
 
-      set-style(stroke: (thickness: 0.5pt, cap: "round", join: "round"))
-      line((0, 0, 0), "c.1", (phi, 1, 0), (phi, -1, 0), "c.3")
-      line("c.0", (-phi, 1, 0), "a.2")
-      line((0, 0, 0), "b.1", (1, 0, phi), (-1, 0, phi), "b.3")
-      line("b.0", (1, 0, -phi), "c.2")
-      line((0, 0, 0), "a.1", (0, phi, 1), (0, phi, -1), "a.3")
-      line("a.0", (0, -phi, 1), "b.2")
-
-      anchor("A", (0, phi, 1))
-      content("A", [$A$], anchor: "north", padding: .1)
-      anchor("B", (-1, 0, phi))
-      content("B", [$B$], anchor: "south", padding: .1)
-      anchor("C", (1, 0, phi))
-      content("C", [$C$], anchor: "south", padding: .1)
-      line("A", "B", stroke: (dash: "dashed"))
-      line("A", "C", stroke: (dash: "dashed"))
+      // een diagonaal met labels op de hoekpunten
+      line((0, 0, 0), (2, 2, 2), stroke: (paint: blue, thickness: 1pt))
+      content((0, 0, 0), [$A$], anchor: "north-east", padding: .12)
+      content((2, 2, 2), [$B$], anchor: "south-west", padding: .12)
     })
   })
 ]
 
+// Hier stond een icosaëder-voorbeeld dat met `intersections()` de ribben uit
+// drie verborgen rechthoeken haalde. Sinds cetz 0.5 leveren die intersecties
+// binnen `ortho()` geen punten meer op, waardoor "c.1", "c.3" enzovoort naar
+// niet-bestaande anchors verwezen en de compilatie afbrak. Vervangen door een
+// kubus, die hetzelfde laat zien zonder op intersecties te steunen.
+
 Code:
 #codeblock(lang: "typst", title: "3D Ortho")[
   ```
-  #cetz.canvas(length: 2cm, {
+  #cetz.canvas(length: 1.6cm, {
     import cetz.draw: *
-    let phi = (1 + calc.sqrt(5)) / 2
 
-    ortho({
-      // Definieer vlakken (verborgen)
-      hide({
-        line((-phi, -1, 0), (-phi, 1, 0), (phi, 1, 0), (phi, -1, 0), close: true, name: "xy")
-        // ...
-      })
+    ortho(x: 30deg, y: 30deg, {
+      set-style(stroke: (thickness: 0.6pt, cap: "round", join: "round"))
 
-      // Bereken intersecties
-      intersections("a", "yz", "xy")
-      // ...
+      line((0, 0, 0), (2, 0, 0), (2, 2, 0), (0, 2, 0), close: true,
+        stroke: (dash: "dashed", paint: luma(150)))
+      line((0, 0, 2), (2, 0, 2), (2, 2, 2), (0, 2, 2), close: true)
+      for (x, y) in ((0, 0), (2, 0), (2, 2), (0, 2)) {
+        line((x, y, 0), (x, y, 2))
+      }
 
-      // Teken lijnen
-      set-style(stroke: (thickness: 0.5pt, cap: "round", join: "round"))
-      line((0, 0, 0), "c.1", (phi, 1, 0), (phi, -1, 0), "c.3")
-      // ...
+      line((0, 0, 0), (2, 2, 2), stroke: (paint: blue, thickness: 1pt))
+      content((0, 0, 0), [$A$], anchor: "north-east", padding: .12)
+      content((2, 2, 2), [$B$], anchor: "south-west", padding: .12)
     })
   })
   ```

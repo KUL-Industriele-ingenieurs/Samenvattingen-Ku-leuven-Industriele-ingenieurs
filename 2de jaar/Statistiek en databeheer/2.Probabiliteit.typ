@@ -56,19 +56,19 @@ _ Een munt heeft S = {kop, munt} als sample space._
 ]
 
 #voorbeeld(title: "Voorbeeld dat je 3 keer een 6 gooit")[
-  $P(6,6,6) = P(6) * P(6) * P(6) = 1/6 * 1/6 * 1/6 = markhl(1/216)$
+  $P(6,6,6) = P(6) * P(6) * P(6) = 1/6 * 1/6 * 1/6 = bold(1/216)$
 
 ]
 
 #voorbeeld(title: "Kans dat je even getal gooit")[
-  $P(e v e n) = P(2) + P(4) + P(6) = 1/6 + 1/6 + 1/6 = 3/6 = markhl(1/2)$
+  $P(e v e n) = P(2) + P(4) + P(6) = 1/6 + 1/6 + 1/6 = 3/6 = bold(1/2)$
 ]
 
 == Union & inter
 
 
 #wrap-figure(
-  image("union and intersection.png", width: 8cm),
+  image("assets/union and intersection.png", width: 8cm),
   caption: [union and intersection],
   label: <fig:union-and-intersection>,
 )[Een #keyterm("union") is een combinatie van twee of meer events.
@@ -112,7 +112,7 @@ $ P(A union B) = P(A) + P(B) - P(A inter B) $
   - $P(O P union O B)$
 
   *Oplossing:*
-  $P(O P union O B) = P(O P) + P(O B) - P(O P inter O B) = 0.12 + 0.16 - 0.02 = markhl(0.26)$
+  $P(O P union O B) = P(O P) + P(O B) - P(O P inter O B) = 0.12 + 0.16 - 0.02 = bold(0.26)$
 ]
 
 Een #keyterm("Mutueel exclusieve gebeurtenissen") zijn gebeurtenissen die niet tegelijkertijd kunnen plaatsvinden.
@@ -124,7 +124,7 @@ $P(A union B) = P(A) + P(B) - P(A inter B) = P(A) + P(B) - 0 = P(A) + P(B)$
 
 #oefening(title: "2 munten")[
   #figure(
-    image("munten met meerdere events.png", width: 5cm),
+    image("assets/munten met meerdere events.png", width: 5cm),
     caption: [munten met meerdere events],
     label: <fig:munten-met-meerdere-events>,
   )
@@ -135,7 +135,7 @@ $P(A union B) = P(A) + P(B) - P(A inter B) = P(A) + P(B) - 0 = P(A) + P(B)$
   P(C) = 2 koppen
 
   $P(A) = P(B) + P(C) - P(B inter C)$
-  $$P(A) = 2/4 + 1/4 - 0 = markhl(3/4)$$
+  $$P(A) = 2/4 + 1/4 - 0 = bold(3/4)$$
 
 ]
 
@@ -148,7 +148,7 @@ A = Even getal
 B = Je gooit een number <= 3
 
 #wrap-figure(
-  image("oefeningdie.png", width: 5cm),
+  image("assets/oefeningdie.png", width: 5cm),
   caption: [oefening die],
   label: <fig:oefening-die>,
 )[
@@ -157,7 +157,7 @@ B = Je gooit een number <= 3
   $P(A) = 3/6 = 1/2$
   $P(B) = 3/6 = 1/2$
 
-  $ P(A|B) = markhl(1/3) $
+  $ P(A|B) = bold(1/3) $
 
   We zien dat meer info een impact heeft over een event.
   $P(A) = 1/2$
@@ -166,13 +166,13 @@ B = Je gooit een number <= 3
   $ P(A|B) = P(A inter B) / P(B) $
 
   We vullen de oefening in met deze formule:
-  $ P(A|B) = (1/6) / (3/6) = markhl(1/3) $
+  $ P(A|B) = (1/6) / (3/6) = bold(1/3) $
 ]
 
 #oefening(title: "Cancer en roken")[
 
   #wrap-figure(
-    image("cancer-roker.png", width: 7cm),
+    image("assets/cancer-roker.png", width: 7cm),
     caption: [cancer-roker],
     label: <fig:cancer-roker>,
   )[
@@ -191,8 +191,8 @@ B = Je gooit een number <= 3
     - $P(B|A^c)$ Wat is de kans dat iemand roker is gegeven dat hij geen kanker heeft?
 
     *Oplossing:*
-    $P(B|A) = P(A inter B) / P(A) = 0.05 / 0.10 = markhl(0.2)$
-    $P(B|A^c) = P(A^c inter B) / P(A^c) = 0.03 / (0.03 + 0.72) = markhl(0.04)$
+    $P(B|A) = P(A inter B) / P(A) = 0.05 / 0.10 = bold(0.2)$
+    $P(B|A^c) = P(A^c inter B) / P(A^c) = 0.03 / (0.03 + 0.72) = bold(0.04)$
 
     Je ziet dus dat met deze data dat roken de kans op kanker vergroot met 5X.
   ]
@@ -226,7 +226,7 @@ B = Je gooit een number <= 3
 
   Alle sample points staan in de figuur met N: geen defect, K: defect.
   #figure(
-    image("samplepointingenieuroefening.png", width: 10cm),
+    image("assets/samplepointingenieuroefening.png", width: 10cm),
     caption: [samplepointingenieuroefening],
     label: <fig:samplepointingenieuroefening>,
   )
@@ -239,12 +239,12 @@ B = Je gooit een number <= 3
 
   P(B) de tweede machine is defect.
 
-  $ P(A inter B) = 6/90 = markhl(1/15) $
+  $ P(A inter B) = 6/90 = bold(1/15) $
 
   We kunnen nu een boomdiagram maken #keyterm[In statistiek maak je altijd best boomdiagrammen als je met meerdere events werkt]
 
   #figure(
-    image("boomdiagram.png", width: 10cm),
+    image("assets/boomdiagram.png", width: 10cm),
     caption: [boomdiagram],
     label: <fig:boomdiagram>,
   )
@@ -255,7 +255,7 @@ B = Je gooit een number <= 3
   $P(B|A) = frac(2, 9)$ De kans dat B gebeurt als A gebeurt is.
 
   Wat is nu de kans dat A & B gebeuren (multiplicatie regel)
-  $markhl(P(A inter B) = P(B|A) dot P(A))$
+  $bold(P(A inter B) = P(B|A) dot P(A))$
 
 ]
 
@@ -277,9 +277,9 @@ Boomdiagrammen geven je een veel beter beeld op hoe event A en event B in relati
   *Afhankelijke gebeurtenissen*\
   Twee gebeurtenissen A en B zijn afhankelijk als de realisatie van de ene gebeurtenis wel invloed heeft op de probabiliteit van de andere gebeurtenis.
 
-  #markhl($P(A|B) != P(A)$) De kans dat A gebeurt als B gebeurt is moet ongelijk zijn aan de kans van A
+  #strong($P(A|B) != P(A)$) De kans dat A gebeurt als B gebeurt is moet ongelijk zijn aan de kans van A
 
-  #markhl($P(B|A) != P(B)$) De kans dat B gebeurt als A gebeurt is moet ongelijk zijn aan de kans van B
+  #strong($P(B|A) != P(B)$) De kans dat B gebeurt als A gebeurt is moet ongelijk zijn aan de kans van B
 
   De twee gebeurtenissen hebben wel invloed op elkaar in term van gebeurtenissen.
   In de oefening heeft de status van de eerste machine wel invloed op de status van de tweede machine.
@@ -290,7 +290,7 @@ Boomdiagrammen geven je een veel beter beeld op hoe event A en event B in relati
 #oefening(title: "Detectie systeem")[
 
   #wrap-figure(
-    image("detection system.png", width: 7cm),
+    image("assets/detection system.png", width: 7cm),
     caption: [detection system],
     label: <fig:detection-system>,
   )[
@@ -327,7 +327,7 @@ Boomdiagrammen geven je een veel beter beeld op hoe event A en event B in relati
 
 
     $
-      P(D|"Rain") = frac(P("Rain"|D) dot P(D), P("Rain")) = frac(0.05 dot 0.90, 0.055) = frac(0.045, 0.055) = frac(45, 55) = markhl(9/11) approx markhl(0.818)
+      P(D|"Rain") = frac(P("Rain"|D) dot P(D), P("Rain")) = frac(0.05 dot 0.90, 0.055) = frac(0.045, 0.055) = frac(45, 55) = bold(9/11) approx bold(0.818)
     $
 
     *Combinatie van de twee formules (volledige regel van Bayes)*
@@ -336,7 +336,7 @@ Boomdiagrammen geven je een veel beter beeld op hoe event A en event B in relati
     Niet verward geraken met de formules. Teken altijd eerst een boomdiagram!
 
     #figure(
-      image("boomdiagram-detectiesysteem2.png", width: 15cm),
+      image("assets/boomdiagram-detectiesysteem2.png", width: 15cm),
       caption: [boomdiagram-detectiesysteem2],
       label: <fig:boomdiagram-detectiesysteem2>,
     )
@@ -368,7 +368,7 @@ Met daarbij de kans dat A en B gebeuren is gelijk aan de kans dat A gebeurt maal
 
 
 #figure(
-  image("overview.png", width: 16cm),
+  image("assets/overview.png", width: 16cm),
   caption: [overview],
   label: <fig:overview>,
 )

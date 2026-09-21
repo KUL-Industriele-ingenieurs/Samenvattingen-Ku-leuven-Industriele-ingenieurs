@@ -9,7 +9,7 @@
 == Info vak Statistiek <sec:info-vak>
 Dit vak is *flipped classroom* wat betekent dat je de theorie thuis bestudeert en in de les oefeningen maakt. De theorie is te vinden in de slides en de oefeningen zijn te vinden in de opdrachten. #belangrijk("Bekijk de planning om te zien wat je moet voorbereiden !WEES GOED VOORBEREID VOOR DE LES!").
 #figure(
-  image("Schedule2026.png"),
+  image("assets/Schedule2026.png"),
   caption: "Planning van het vak",
   label: <fig:planning>,
 )
@@ -33,7 +33,7 @@ Je hebt verschillende soorten statistiek:
 #concept(title: "Soorten statistiek")[
   - *Beschrijvende statistiek*: Statistiek die zich bezighoudt met het beschrijven van gegevens
   #wrap-figure(
-    image("beschrijvende statistiek.png", width: 5.5cm),
+    image("assets/beschrijvende statistiek.png", width: 5.5cm),
     caption: [beschrijvende statistiek],
   )[
     - *Verklarende statistiek*: Data halen uit de populatie zoals _bv. Wat is de gemiddelde reactietijd tijdens het rijden_. Dit beschrijft dan een populatie maar in een onderzoek is er *onzekerheid*.
@@ -157,12 +157,12 @@ te *visualiseren*.
   columns: (1fr, 1fr),
   gutter: 1em,
   figure(
-    image("variatie.png", width: 8cm),
+    image("assets/variatie.png", width: 8cm),
     caption: [Variatie],
     label: <fig:variatie>,
   ),
   figure(
-    image("central tendency.png", width: 8cm),
+    image("assets/central tendency.png", width: 8cm),
     caption: [Central tendency],
   ),
 )
@@ -180,7 +180,7 @@ te *visualiseren*.
 
 
   #wrap-figure(
-    image("locatie mediaan.png", width: 5cm),
+    image("assets/locatie mediaan.png", width: 5cm),
     caption: [locatie mediaan],
   )[
 
@@ -197,7 +197,7 @@ te *visualiseren*.
 ]
 
 #wrap-figure(
-  image("verschilmediaangemiddelde.png", width: 6cm),
+  image("assets/verschilmediaangemiddelde.png", width: 6cm),
   caption: [Verschil mediaan en gemiddelde],
   label: <fig:verschilmediaangemiddelde>,
 )[
@@ -213,7 +213,7 @@ te *visualiseren*.
 
 #concept(title: "Spreiding")[
   #figure(
-    image("spreiding.png", width: 10cm),
+    image("assets/spreiding.png", width: 10cm),
     caption: [Spreiding],
     label: <fig:spreiding>,
   )
@@ -245,7 +245,7 @@ te *visualiseren*.
 
 #wrap-figure(
   align: right,
-  image("gespreid-data.png", width: 6cm),
+  image("assets/gespreid-data.png", width: 6cm),
   caption: [gespreid-data],
   label: <fig:gespreid-data>,
 )[
@@ -262,7 +262,7 @@ te *visualiseren*.
 === Percent rankings
 
 #wrap-figure(
-  image("90%.png", width: 6cm),
+  image("assets/90%.png", width: 6cm),
   caption: [90%],
   label: <fig:90>,
 )[
@@ -292,7 +292,7 @@ $ z = 3 arrow.r.double 99.7% $
 == Uitschieter detectie
 
 #wrap-figure(
-  image("boxplot.png", width: 10cm),
+  image("assets/boxplot.png", width: 10cm),
   caption: [boxplot],
   label: <fig:boxplot>,
 )[
@@ -313,7 +313,7 @@ $ z = 3 arrow.r.double 99.7% $
 
 #oefening(title: "Z-score berekenen")[
   #figure(
-    image("z-score-oefening.png", width: 80%),
+    image("assets/z-score-oefening.png", width: 80%),
     caption: [z-score-oefening],
     label: <fig:z-score-oefening>,
   )

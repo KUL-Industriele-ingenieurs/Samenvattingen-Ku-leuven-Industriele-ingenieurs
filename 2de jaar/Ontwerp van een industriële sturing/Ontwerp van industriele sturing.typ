@@ -36,3 +36,8 @@
 #include "6.Voorbeeld Diagram.typ"
 #include "7.Veiligheid.typ"
 #include "8.Pneumatica deel 2.typ"
+#include "9.3D methode.typ"
+#include "9b.3D oefeningen.typ"
+#include "10.Analoge signalen.typ"
+#include "11.Theorievragen.typ"
+#include "12.Veel succes.typ"

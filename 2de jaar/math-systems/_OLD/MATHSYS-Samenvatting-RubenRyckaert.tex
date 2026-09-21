@@ -1,0 +1,76 @@
+% !TEX root = ../MATHSYS-Samenvatting-RubenRyckaert.tex
+% Modular Document Example - Demonstrates \include for large projects
+% KU Leuven - Faculteit Industriële Ingenieurswetenschappen
+%
+% This template shows how to split a large document into multiple files.
+% Use this structure for thesis, large summaries, or multi-chapter documents.
+
+\documentclass[a4paper,11pt]{report}
+\usepackage{../../../school-macros}
+
+% ============================================================================
+%                           DOCUMENT METADATA
+% ============================================================================
+\title{Wiskundige voor systemen}
+\author{Ruben Ryckaert}
+\date{Academiejaar 2025-2026}
+
+% Optional: Define course info for headers
+\newcommand{\coursename}{Wiskundige voor systemen}
+
+% ============================================================================
+%                              DOCUMENT
+% ============================================================================
+\begin{document}
+
+% --- Title Page (KU Leuven style) ---
+\kuleuventitle
+    {Wiskundige voor systemen}
+    {\coursename}
+    {Ruben Ryckaert}
+    {Academiejaar 2025-2026}
+
+Deze samenvattingen zijn beschikbaar op GitHub waar je 
+kunt bijdragen aan verbeteringen: \url{https://github.com/Eggmansmile/Samenvattingen-Ku-leuven-Industriele-ingenieurs}
+
+Je bent helemaal vrij en ik raad je zelf aan om info toe te voegen aan de documenten als je de uitleg niet goed vindt.
+Je leert je vak en je raakt dan ook bekend met LaTeX wat handig is voor later.
+
+Dit document is ook gemaakt om meer en betere info te geven dan de slides en de oefenzittingen die
+ik verwarrend vond. 
+
+% --- Front Matter ---
+\tableofcontents
+\newpage
+
+% ============================================================================
+%                           CHAPTER INCLUDES
+% ============================================================================
+% Use \include{} for chapters - each starts on a new page
+% Use \input{} for smaller sections that shouldn't force page breaks
+%
+% Benefits of \include:
+% - LaTeX can skip unchanged chapters (faster compilation)
+% - Each chapter can be compiled separately for testing
+% - Better organization for large projects
+%
+% Tip: Use \includeonly{chapter1,chapter2} in preamble to compile 
+%      only specific chapters while keeping all cross-references
+
+% @issue: #31 switch to new chapter file names
+\includepdf[pages=1-3]{MATHSYS_formularium.pdf}
+\input{chapters/1_Inleiding}
+\input{chapters/2_Herhaling afgeleiden, integralen en diff verglijkingen}
+\input{chapters/3_Inleiding systemen}
+\input{chapters/4_Laplacetransformatie}
+\input{chapters/5_Fouriertransformatie}
+\input{chapters/6_Fourierreeks}
+\input{chapters/7_LTC-systems}
+\input{chapters/8_Eigenwaarden-eigenvectoren}
+\input{chapters/9_Extra uitgewerkte oefeningen}
+\input{chapters/Examenoefeningen}
+\input{chapters/Bewijzen}
+
+
+
+\end{document}
