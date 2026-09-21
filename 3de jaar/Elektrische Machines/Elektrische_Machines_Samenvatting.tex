@@ -74,14 +74,14 @@ Een typische toepassing van elektrische machines is alles dat te maken heeft met
 Motoren zijn energieomzetters (\textbf{convertors}) die \textit{elektrische energie omzetten tot mechanische energie} en generatoren zijn energieomzetters die \textit{mechanische energie omzetten tot elektrische energie}. In deze cursus wordt vooral de focus op roterende motoren gelegd, niet op lineaire.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{energieconversiemotorengenerator.png}
+  \includegraphics[width=0.5\textwidth]{assets/energieconversiemotorengenerator.png}
   \caption{Motor en generator energieconversie}
   \label{fig:energieconversiemotorengenerator.png}
  \end{figure}
 Vaak zijn wel nog extra omvormers nodig voor de perfecte werking zoals \textit{Power eletronics} die bevoorbeeld eerst de spanning van een generator omvormt naar een andere spanning die nodig is voor de motor. En een tandwielkast kan ook nodig zijn om de snelheid van de motor aan te passen aan de toepassing. Hier gaan we niet dieper op in. Ook wordt vaak nog een controller gebruikt om de motor op een goeie manier te laten werken, dit is dus eigelijk \textit{terugkoppeling} (feedback).
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{omzettingmetfeedback.png}
+  \includegraphics[width=0.6\textwidth]{assets/omzettingmetfeedback.png}
   \caption{Energieomzetting met feedback}
   \label{fig:omzettingmetfeedback.png}
  \end{figure}
@@ -131,7 +131,7 @@ Hier wordt gevraagd achter de regimesnelheid van de fiets (Steady State) (dus wa
 Dit geeft v = 5 m/s. Deze 2 krachten plotten in functie van de snelheid geeft een mooi overzicht van de krachten en hun snijpunt:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{karakteristiekmetwerkingspunt.png}
+  \includegraphics[width=0.6\textwidth]{assets/karakteristiekmetwerkingspunt.png}
   \caption{Krachten ifv snelheid}
   \label{fig:karakteristiekmetwerkingspunt.png}
  \end{figure}
@@ -140,7 +140,7 @@ O.P. is het \textbf{werkingspunt} (Operating Point), het is dus hier dat dat eve
 Dus een werkingspunt is een evenwicht punt van de motor en de last. Voor een koppeltoerentalkarakteristiek zien we deze weergegeven als punt 1 en punt 2 in onderstaande figuur. Het zijn hier dus punten waar in dit geval de koppels van de last gelijk zijn aan die van de motor. Echter hebben we ook nog \textbf{stabiele} en \textbf{onstabiele} werkingspunten. Een stabiel werkingspunt is een werkingspunt waar bij afwijking van dat werkingspunt de motor en last elkaar nog gaan corrigeren en dus de motor terugbrengen naar dat werkingspunt. Neem als afwijking een snelheidsfout in punt 1, het toerental zal dalen tot punt 1', nu heeft de motor niet genoeg koppel meer om de last te dragen dus kan het niet terug versnellen tot punt 1, dit is dus een instabiel werkingspunt. Bij een snelheidsfout rond punt 2 is er oftewel genoeg koppel om te versnellen (punt 2') oftewel vertraagt de motor gewoon terug tot punt 2 als er een snelheidsfout tot punt 2'' was.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{stabielenonstabielewerkingspuntenopTn.png}
+  \includegraphics[width=0.6\textwidth]{assets/stabielenonstabielewerkingspuntenopTn.png}
   \caption{T-n karakteristiek motor en last met stabiele en onstabiele werkingspunten}
   \label{fig:stabielenonstabielewerkingspuntenopTn.png}
  \end{figure}
@@ -148,7 +148,7 @@ Dus een werkingspunt is een evenwicht punt van de motor en de last. Voor een kop
 In de les worden een paar typische lastkarakteristieken besproken:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{lastkarakteristieken.png}
+  \includegraphics[width=0.4\textwidth]{assets/lastkarakteristieken.png}
   \caption{Typische lastkarakteristieken}
   \label{fig:lastkarakteristieken.png}
  \end{figure}
@@ -157,7 +157,7 @@ Veel diepgaand wordt het hier niet gesproken, gewoon dat die bovenste grafiek va
 Een elektrisch toestel (motor/generator) kan in 4 kwadranten werken, dit is afhankelijk van de richting van het koppel en de richting van de snelheid. In \textbf{kwadrant 1} werkt de motor als motor, dit is de \textit{normale werking}, het \textit{koppel is in dezelfde richting als de rotatie}, in \textbf{kwadrant 2} werkt de motor als generator, het \textit{koppel is in tegengestelde richting van de draairichting} (hier is het koppel positief) kwadrant 2 is dus remmend, in \textbf{kwadrant 3} werkt de motor als motor maar in tegengestelde richting en in \textbf{kwadrant 4} werkt de motor als generator maar in tegengestelde richting, het is hier dus een negatief koppel. Dit wordt vaak gebruikt bij elektrische voertuigen, waarbij de motor kan remmen \textbf{(regeneratief remmen)} en dus energie terug kan leveren aan de batterij.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{4kwadrantoperaties.png}
+  \includegraphics[width=0.5\textwidth]{assets/4kwadrantoperaties.png}
   \caption{4 kwadrantoperaties}
   \label{fig:4kwadrantoperaties.png}
  \end{figure}
@@ -194,7 +194,7 @@ Ook is er nog onderverdeling tussen Motoren en Generatoren.
 Een typische motor bestaat uit meerdere componenten die we aangeduid zien in de volgende figuur:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{constructiemotor.png}
+  \includegraphics[width=0.6\textwidth]{assets/constructiemotor.png}
   \caption{Motor constructie inductiemachine}
   \label{fig:constructiemotor.png}
  \end{figure}
@@ -215,7 +215,7 @@ Door het feit dat er een magnetisch veld wordt opgewekt in de motor, is het bela
 We zijn dus geïnteresseerd in ferromagnetische materialen, als we kijken naar de onderstaande figuur kunnen we zien hoe magnetische velden in een materiaal gealigneerd kunnen zijn:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{allignerenmagnetische velden.png}
+  \includegraphics[width=0.8\textwidth]{assets/allignerenmagnetische-velden.png}
   \caption{Alligneren van de magnetische velden}
   \label{fig:allignerenmagnetische velden.png}
  \end{figure}
@@ -225,7 +225,7 @@ In de linkse figuur een niet ferro-magnetisch materiaal, alle pijlen zijn hier i
 Het is dan dit fenomeen dat de permeabiliteit van een materiaal bepaalt, hoe beter de atomen in het materiaal zich kunnen aligeneren met het externe veld, hoe hoger de permeabiliteit. 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{magnetischepermeabiliteit.png}
+  \includegraphics[width=0.8\textwidth]{assets/magnetischepermeabiliteit.png}
   \caption{Magnetische permeabiliteit van verschillende materialen (µ)}
   \label{fig:magnetischepermeabiliteit.png}
  \end{figure}
@@ -235,14 +235,14 @@ Hier is B de magnetische fluxdichtheid, H de magnetische veldsterkte en \textbf{
 Nog iets belangrijks is de \textbf{hysteresis lus}, dit is een grafiek die de relatie tussen B en H weergeeft. Het toont ons echter ook de \textbf{remanente inductie}, dit is de magnetische flux die in het materiaal blijft nadat het externe veld is verwijderd. Dit is belangrijk omdat het kan leiden tot verlies van efficiëntie en warmteontwikkeling in de motor. Het toont ook de \textbf{coerciviteit}, dit is de kracht die nodig is om het materiaal te demagnetiseren (dus hoe hard we de veldsterkte moeten tegenwerken zodat de magnetische flux terug nul is). Materialen met een hoge coerciviteit zijn beter bestand tegen verzadiging en kunnen dus beter presteren in een motor.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{hysteresislus.png}
+  \includegraphics[width=0.5\textwidth]{assets/hysteresislus.png}
   \caption{Hysteresislus van een magnetisch materiaal}
   \label{fig:hysteresislus.png}
  \end{figure}
 Een materiaal met een \textbf{kleine lus} noemen we een \textbf{zacht magnetisch materiaal}, dit is goed voor motoren. Een materiaal met een \textbf{grote lus} noemen we een \textbf{hard magnetisch materiaal}, dit is goed voor permanente magneten. De stator moet dus uit zo een zacht materiaal gemaakt worden aangezien dit op AC 50 keer de lus doet (50 Hz), dus dan hebben we minder verliezen. De rotor die volgt gewoon en dit kan met permanente magneten gedaan worden (kan ook met wikkelingen gedaan worden zoals de stator), dit is dan dus met een hard magnetisch materiaal (heeft een brede lus, magnetisch veld blijft, brede lus nodig dus).
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{hardenzachtmagnmateriaak.png}
+  \includegraphics[width=0.8\textwidth]{assets/hardenzachtmagnmateriaak.png}
   \caption{Hard en zacht magnetisch materiaal}
   \label{fig:hardenzachtmagnmateriaak.png}
  \end{figure}
@@ -250,7 +250,7 @@ Een materiaal met een \textbf{kleine lus} noemen we een \textbf{zacht magnetisch
 Dus de stator is het 'statische' deel van de motor, het bestaat dus uit die siliciumstaal kern met gleuven in, het heeft dus eigelijk 'statortanden', hierin bevestigen zich de statorwikkelingen. De statorwikkelingen zijn meestal van koper en zijn geïsoleerd om kortsluiting te voorkomen. De wikkelingen zijn zo geplaatst dat ze een magnetisch veld opwekken wanneer er stroom doorheen loopt. Dit magnetisch veld wisselt van richting afhankelijk van de stroomrichting, wat essentieel is voor de werking van de motor.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{statorvisueel.png}
+  \includegraphics[width=0.6\textwidth]{assets/statorvisueel.png}
   \caption{Stator constructie met statortanden en wikkelingen}
   \label{fig:statorvisueel.png}
  \end{figure}
@@ -259,14 +259,14 @@ De wikkelingen kunnen op 2 manieren gewonden worden:
  \item \textbf{Geconcentreerd}: Hier heb je spoelen geconcentreerd rond individuele statortanden, het magnetisch veld opgewekt is dus eigelijk blokvormig, dus sterk recht per tand en niet zo mooi naast de tanden, het gevolg is een veld met veel harmonischen. Dit is goedkoper door minder koper maar heeft meer verliezen bij gebruik.
  \begin{figure}[H]
    \centering
-   \includegraphics[width=0.4\textwidth]{geconcentreerd.png}
+   \includegraphics[width=0.4\textwidth]{assets/geconcentreerd.png}
    \caption{Geconcentreerde wikkelingen}
    \label{fig:geconcentreerd.png}
   \end{figure}
  \item \textbf{Gedistribueerd (verdeelde)}: Hier zijn de wikkelingen verdeeld over meerdere statortanden, er kunnen dus meerdere wikkelingen per gleuf op elkaar liggen, het magnetisch veld opgewekt is dus veel mooier en vloeiender, het gevolg is een veld met minder harmonischen. Dit is duurder door meer koper maar heeft minder verliezen bij gebruik.
  \begin{figure}[H]
    \centering
-   \includegraphics[width=0.6\textwidth]{verdeelde.png}
+   \includegraphics[width=0.6\textwidth]{assets/verdeelde.png}
    \caption{Gedistribueerde wikkelingen}
    \label{fig:verdeelde.png}
   \end{figure}
@@ -275,7 +275,7 @@ Meestal worden verdeelde wikkelingen gebruikt.
 De statorkern zelf wordt in lamellen opgebouwd om wervelstromen te beperken (jouleverliezen), deze lamellen vormen samen nog steeds de blokvormige statorkern:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{lamellenstator.png}
+  \includegraphics[width=0.4\textwidth]{assets/lamellenstator.png}
   \caption{Lamellen in de statorkern}
   \label{fig:lamellenstator.png}
  \end{figure}
@@ -289,7 +289,7 @@ Bij een rotor met permanente magneten zijn de magneten op de rotor bevestigd en 
 \end{itemize}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{gladvsuitspringend.png}
+  \includegraphics[width=0.8\textwidth]{assets/gladvsuitspringend.png}
   \caption{Gladde vs. uitspringende polen}
   \label{fig:gladvsuitspringend.png}
  \end{figure}
@@ -297,7 +297,7 @@ Bij een rotor met permanente magneten zijn de magneten op de rotor bevestigd en 
 Dit is een rotor die wikkelingen er al op heeft staan en die gevoed worden met een DC-bron om een soort van permanente magneet te maken. Om deze constante stroom te voorzien worden \textbf{sleepringen} gebruikt, dit zijn metalen ringen (meestal koper) waar een \textbf{koolstofborstel} (dit roteert dus niet) op gedrukt wordt zodat de stroom van de DC-bron hierdoor naar de sleepringen van de rotor kan gaan.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{sleepringen.png}
+  \includegraphics[width=0.4\textwidth]{assets/sleepringen.png}
   \caption{Sleepringen in de rotor}
   \label{fig:sleepringen.png}
  \end{figure}
@@ -306,7 +306,7 @@ Bij de \textbf{DC-machine} gebruiken we iets gelijkaardig, namelijk een \textbf{
 Het grote verschil met de sleepring hier is dat het onderbrekingen heeft, het wordt dus eigelijk gebruikt om wikkelingen op de rotor aan en uit te schakelen, dit is nodig om de stroomrichting in de rotorwikkelingen te veranderen zodat het magnetisch veld van de rotor altijd in dezelfde richting blijft ten opzichte van de stator. Dit is essentieel voor de werking van de DC-machine, omdat het ervoor zorgt dat het koppel constant blijft tijdens de rotatie. Ook hier worden koolstofborstels tegen geduwd. Een probleem is wel dat hier vonken kunnen onstaan.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{commutator.png}
+  \includegraphics[width=0.4\textwidth]{assets/commutator.png}
   \caption{Commutator in de rotor}
   \label{fig:commutator.png}
  \end{figure}
@@ -314,13 +314,13 @@ Het grote verschil met de sleepring hier is dat het onderbrekingen heeft, het wo
 Bij de \textbf{inductiemachine} kan de rotor een \textbf{kooirotor} of een \textbf{wikkelrotor} zijn. Bij de kooirotor zijn er geen wikkelingen op de rotor, maar geleiders die in een kooivormige structuur zijn geplaatst. Dit type rotor is robuuster en veel \textbf{goedkoper}, vooral door het productieproces want je giet dit gewoon in aluminium, het heeft ook geen sleepringen/commutator en geen onderhoud nodig, maar heeft minder regelbaarheid dan een wikkelrotor. Bij de wikkelrotor zijn er wikkelingen op de rotor die via sleepringen en koolstofborstels worden gevoed, dit geeft meer regelbaarheid maar is duurder en complexer.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{kooirotor.png}
+  \includegraphics[width=0.5\textwidth]{assets/kooirotor.png}
   \caption{Kooirotor}
   \label{fig:kooirotor.png}
  \end{figure}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{gewikkelderotor.png}
+  \includegraphics[width=0.4\textwidth]{assets/gewikkelderotor.png}
   \caption{Wikkelrotor}
   \label{fig:gewikkelderotor.png}
  \end{figure}
@@ -337,7 +337,7 @@ Deze wet heeft niet direct veel invloed op de werking van de DC-machine (als je 
 Met de \textit{rechterhand regel} kan de richting van het magnetisch veld bepaald worden. Indien je geen permanente magneten gebruikt, gebruik je wikkelingen in de stator, het is juist deze wet dat dan eigelijk gebruikt wordt om het veld op te wekken en te bepalen hoe hard dat veld is. Moest je permanente magneten hebben is er inderdaad niet veel invloed op de werking maar gaat er wel nog steeds wat invloed zijn op het veld want de rotor heeft ook stroomvoerende geleiders, het totaal veld gaat een beetje vervormen (Ankerreactie) maar dit zien we later.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{wetampere.png}
+  \includegraphics[width=0.6\textwidth]{assets/wetampere.png}
   \caption{Wet van Ampère}
   \label{fig:wetampere.png}
  \end{figure}
@@ -354,7 +354,7 @@ Hierbij is $\vv{F}$ de kracht op het deeltje, $q$ de lading van het deeltje, $\v
 Hierbij is $I$ de stroom door de geleider, $\vv{L}$ de lengte van de geleider in het magnetisch veld en $\vv{B}$ het magnetisch veld. De kracht is dus loodrecht op zowel de stroomrichting als het magnetisch veld, dit is essentieel voor de werking van de motor, want hierdoor ontstaat er een koppel dat de rotor doet draaien. Met de \textit{Linkerhand regel} kan je de richting bepalen:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.3\textwidth]{linkerhandregel.png}
+  \includegraphics[width=0.3\textwidth]{assets/linkerhandregel.png}
   \caption{Linkerhandregel}
   \label{fig:linkerhandregel.png}
  \end{figure}
@@ -365,7 +365,7 @@ Als we nu zo een stroomvoerende geleider in een lus in een magnetisch veld plaat
 Hierbij is $M$ het koppel, $N$ het aantal windingen in de lus, $S$ het oppervlak van de lus, $i$ de stroom door de lus, $B$ de magnetische fluxdichtheid en $\theta$ de hoek tussen het oppervlak van de lus en het magnetisch veld.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{strromlus.png}
+  \includegraphics[width=0.4\textwidth]{assets/strromlus.png}
   \caption{Stroomlus in een magnetisch veld}
   \label{fig:strromlus.png}
  \end{figure}
@@ -388,7 +388,7 @@ Hieruit volgt meteen het gedrag van de motor. Bij het opstarten staat de rotor s
 Ten slotte toont deze wet ook de \textbf{dualiteit motor--generator}. Dezelfde machine kan in twee richtingen werken. Als motor stop je er elektrische energie in en komt er mechanische energie (koppel) uit, waarbij de tegen-EMK een neveneffect is dat de stroom begrenst. Draai je de as daarentegen mechanisch aan, dan beweegt de geleider door het veld en wekt de machine via $e = B l v$ zelf een spanning op die je kunt afnemen: ze werkt dan als \textbf{generator}. De tegen-EMK in een draaiende motor is eigenlijk het bewijs dat die generatorwerking er altijd al in zit; enkel de energierichting keert om.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{wetfaradaylenz.png}
+  \includegraphics[width=0.6\textwidth]{assets/wetfaradaylenz.png}
   \caption{Werkingsprincipe Faraday-Lenz}
   \label{fig:wetfaradaylenz.png}
  \end{figure}
@@ -396,14 +396,14 @@ Ten slotte toont deze wet ook de \textbf{dualiteit motor--generator}. Dezelfde m
 Met deze wetten kan dus nu de werkingsprincipe van de DC-motor volledig verklaard worden, ook duidelijk in de volgende figuur:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{Faradaylenz.png}
+  \includegraphics[width=0.5\textwidth]{assets/Faradaylenz.png}
   \caption{Werkingsprincipe DC-motor}
   \label{fig:Faradaylenz.png}
  \end{figure}
 We zien hier dus een stroomvoerende lus in een magnetisch veld, de wet van Lorentz zegt dat er dan een resulterende kracht is, die dus een moment genereert dat de motor doet draaien. De stroom wordt daar aangelegd met een \textbf{commutator} deze zorgt ervoor dat de stroomrichting in de lus altijd zo is dat het moment in dezelfde richting blijft, dus de stroomrichting in de lus wordt steeds omgekeerd als de lus een halve rotatie heeft gemaakt. Ook is er lekflux door de wet van Ampère en hebben we dus ook een tegen-emk.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{commutatorenemk.png}
+  \includegraphics[width=0.6\textwidth]{assets/commutatorenemk.png}
   \caption{Commutator en geïnduceerd tegen-EMK in de DC-motor}
   \label{fig:commutatorenemk.png}
  \end{figure}
@@ -413,21 +413,21 @@ In de figuur hierboven zien we fysisch hoe die commutator werkt en ook het verlo
 Voor meerdere wikkelingen, waar we dus sneller wisselen met commutatoren gaan we een tegen-emk krijgen zoals op de volgende figuur:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{tegenemkmeerdere.png}
+  \includegraphics[width=0.6\textwidth]{assets/tegenemkmeerdere.png}
   \caption{Tegen-EMK in DC-motor met meerdere wikkelingen}
   \label{fig:tegenemkmeerdere.png}
  \end{figure}
 Dit is dus een meer vlakkere curve, dit geldt dus ook voor het koppel:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{koppelmeerderelusse.png}
+  \includegraphics[width=0.6\textwidth]{assets/koppelmeerderelusse.png}
   \caption{Koppel in DC-motor met meerdere wikkelingen}
   \label{fig:koppelmeerderelusse.png}
  \end{figure}
 Hier een close-up van de commutator, je ziet hier de koolstofborstels die er tegen duwen zodat de stroom van de voeding naar de rotor kan gaan, je ziet ook een veer dat zorgt dat de koolstofborstel goed tegen de commutator blijft duwen.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{closeupcommutator.png}
+  \includegraphics[width=0.6\textwidth]{assets/closeupcommutator.png}
   \caption{Close-up commutator}
   \label{fig:closeupcommutator.png}
  \end{figure}
@@ -435,14 +435,14 @@ Hier een close-up van de commutator, je ziet hier de koolstofborstels die er teg
 Dan gaan we nu eens de constructie van de DC-machine overlopen, we weten dus dat er een stator en een rotor is, deze kunnen we ook zien in de volgende figuur:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{statorenrotordcmachine.png}
+  \includegraphics[width=0.6\textwidth]{assets/statorenrotordcmachine.png}
   \caption{Constructie van de DC-machine}
   \label{fig:statorenrotordcmachine.png}
  \end{figure}
 De \textit{stator} staat bij de DC-machine \textit{vast} en bestaat meestal uit geconcentreerde wikkelingen, bij de DC-machine wordt deze altijd de \textbf{excitatie}, \textbf{bekrachtiging} of het \textbf{veld} genoemd. Die benaming komt van het feit dat je de wikkelingen in de stator een magnetisch veld doet opwekken (als het dus met wikkelingen is).
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{concrentregedstribitureed.png}
+  \includegraphics[width=0.6\textwidth]{assets/concrentregedstribitureed.png}
   \caption{Extra weergave van de statorconstructie met geconcentreerde en verdeelde wikkelingen}
   \label{fig:concrentregedstribitureed.png}
  \end{figure}
@@ -454,14 +454,14 @@ Nog een eigenschap van een DC-machine is het \textbf{poolpaartal} (hoeveel duos 
 Er zijn wel nadelen aan veel polen. Elke pool neemt met zijn wikkeling plaats in op de omtrek, dus heb je een grotere diameter nodig om ze kwijt te kunnen. Ook keert het veld sneller om in de rotor, wat meer ijzerverliezen geeft. Voor een gewone, snelle en compacte motor houd je het poolpaartal dus liefst laag, typisch 2 tot 8 polen max.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{1en2poolpaartallendcmotor.png}
+  \includegraphics[width=0.6\textwidth]{assets/1en2poolpaartallendcmotor.png}
   \caption{DC-motor met 1 en 2 poolparen}
   \label{fig:1en2poolpaartallendcmotor.png}
  \end{figure}
 Nog iets dat belangrijk is zijn de wikkelingen van de rotor, deze kunnen op verschillende manieren verbonden zijn. Het bepalen van hoe je ze verbindt hangt af van de gewenste nominale waarden voor spanning, stroom, vermogen, enz. Het wikkelen van de rotor kan er namelijk voor zorgen dat er minder stroom door elke individuele geleider gaat. Dit wordt duidelijker in de volgende figuur:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{rotorwikkeling2poligiemotor.png}
+  \includegraphics[width=0.8\textwidth]{assets/rotorwikkeling2poligiemotor.png}
   \caption{Rotorwikkeling van een 2-polige DC-motor}
   \label{fig:rotorwikkeling2poligiemotor.png}
  \end{figure}
@@ -480,7 +480,7 @@ Hierbij is $T$ het koppel, $N$ het aantal windingen, $F$ de kracht op de geleide
 Hierbij is $i_a$ de stroom door de ankerwikkeling, $l$ de 'actieve' lengte van de rotorgeleider en $B$ de magnetische fluxdichtheid. Met 'actieve' bedoelen we dus het deel van de geleider waar dus effectief een tegen-emk wordt geïnduceerd. Om dit te verduidelijken tekent de proff het volgende aan bord:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{luswikkeling.png}
+  \includegraphics[width=0.4\textwidth]{assets/luswikkeling.png}
   \caption{1 wikkeling van de rotor}
   \label{fig:luswikkeling.png}
  \end{figure}
@@ -525,7 +525,7 @@ Met deze 3 vergelijkingen kunnen we de hele DC-machine beschrijven, ook is het i
 Het opgestelde equivalent schema ziet er als volgt uit:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{equivalentschemaDC.png}
+  \includegraphics[width=0.6\textwidth]{assets/equivalentschemaDC.png}
   \caption{Equivalent schema van de DC-machine}
   \label{fig:equivalentschemaDC.png}
  \end{figure}
@@ -537,7 +537,7 @@ Er zijn ook verschillende soorten motoren en \textit{bekrachtigingen} (hoe de st
   \item \textbf{Shunt excitatie}: Hierbij plaatsen we de excitatie en het anker in parallel, dit heeft als voordeel een constante flux, dus het koppel is lineair met de ankerstroom, en de snelheid blijft vrij stabiel ongeacht van de belasting. Ideaal voor als je een constante snelheid wilt.
   \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{shuntbekrachtiging.png}
+    \includegraphics[width=0.5\textwidth]{assets/shuntbekrachtiging.png}
     \caption{Shunt bekrachtiging van een DC-machine}
     \label{fig:shuntbekrachtiging.png}
    \end{figure} 
@@ -545,7 +545,7 @@ Er zijn ook verschillende soorten motoren en \textit{bekrachtigingen} (hoe de st
    \item \textbf{Serie excitatie}: Hierbij plaatsen we de excitatie en het anker in serie, dit heeft als voordeel dat de excitatiestroom gelijk is aan de ankerstroom, waardoor met $T = G \cdot i_e \cdot i_a$ het koppel kwadratisch stijgt met de stroom, waardoor er een groot startkoppel ontstaat bij lage snelheid/stilstand en dit koppel dan sterk daalt als de snelheid stijgt, perfect voor toepassingen die veel kracht nodig hebben om te starten maar daarna minder zoals een trein.
   \begin{figure}[H]
      \centering
-     \includegraphics[width=0.6\textwidth]{seriebekrachtiging.png}
+     \includegraphics[width=0.6\textwidth]{assets/seriebekrachtiging.png}
      \caption{Serie bekrachtiging van een DC-machine}
      \label{fig:seriebekrachtiging.png}
     \end{figure}
@@ -693,7 +693,7 @@ Bij constante $i_a$ (en constante $\varphi$) is ook $T = C\varphi i_a$ constant,
 Nog iets belangrijks om rekening mee te houden is magnetisatie: de flux $\varphi$ stijgt niet altijd lineair met de veldstroom $i_e$. Bij lage veldstromen is dit wel het geval, maar naarmate de veldstroom stijgt, treedt verzadiging op in het ijzer van de statorpolen. Hierdoor neemt $\varphi$ minder snel toe met $i_e$, wat op zijn beurt de T-n karakteristiek beïnvloedt. De veldwikkeling heeft dus eigenlijk een nominale stroom: voorbij die grens levert een hogere $i_e$ vooral opwarming in de spoelen op, want de veldsterkte $H$ blijft dan wel toenemen, maar $B$ (en dus $\varphi$) niet meer. De volgende grafiek toont deze magnetisatiecurve voor drie snelheidsgevallen ($N_3 > N_2 > N_1$), waarbij de veldstroom uitgezet is tegen de nullast-tegen-EMK (waar het koppel 0 is):
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{magnetisatiecurve.png}
+  \includegraphics[width=0.5\textwidth]{assets/magnetisatiecurve.png}
   \caption{Magnetisatiecurve}
   \label{fig:magnetisatiecurve.png}
  \end{figure}
@@ -724,7 +724,7 @@ Dit is dus wel iets dat voorkomt bij snelle snelheden, de snelheid beperken kan 
 Een ander probleem dat kan optreden is de ankerreactie, dit is eigelijk \textbf{het effect van het veld van de rotor op het veld van de stator}, het vervormt het veld van de stator dus. Dit is wat we eerder zagen, de wet van Ampère zegt dat een stroomvoerende geleider een magnetisch veld opwekt, en de rotor is dus een stroomvoerende geleider. Dit zorgt voor een fluxverlies, en dat het 'neutrale vlak' gaat draaien, dit zien we in de volgende figuur:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{ankerreactie.png}
+  \includegraphics[width=0.5\textwidth]{assets/ankerreactie.png}
   \caption{Ankerreactie}
   \label{fig:ankerreactie.png}
  \end{figure}
@@ -753,7 +753,7 @@ We schrijven eerst eens rap onze gegevens op:
 Teken altijd een schema van het circuit van de motor! Hier is het shunt bekrachtigd, dus de opstelling, met al gegevens ingevuld ziet er zo uit:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{schemaoef1dc.png}
+  \includegraphics[width=0.5\textwidth]{assets/schemaoef1dc.png}
   \caption{Schema van de shunt-connected DC-motor Oefening 1}
   \label{fig:schemaoef1dc.png}
  \end{figure}
@@ -841,7 +841,7 @@ A four-pole, 25kW , 250V separately excited DC motor is mechanically coupled to 
 We weten nu dus dat we een statorveld hebben, we gaan nu kijken naar hoe we deze gaan opwekken en hoe we dit kunnen gebruiken om een rotor te laten draaien. Even ter verduidelijking ook, de rotor heeft dus ook een magnetisch veld en dat was degene met een constant magnetisch veld, maar de stator heeft een \textbf{draaiveld} (rotating field). Dit is een magnetisch veld dat in de ruimte draait.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.7\textwidth]{weergavemagnetischveldinmotor.png}
+  \includegraphics[width=0.7\textwidth]{assets/weergavemagnetischveldinmotor.png}
   \caption{Magnetisch veld in een motor}
   \label{fig:weergavemagnetischveldinmotor.png}
  \end{figure}
@@ -851,7 +851,7 @@ Tussen de stator en de rotor is er dus een \textbf{luchtspleet}, typisch 0,5 tot
 We veronderstellen nu dat onze rotor een mooie ronde ijzeren cilinder is, dit maakt het meer symmetrisch en maakt dat onze analyse die we nu gaan doen volledig correct is. We kijken even naar 1 van die wikkelingen, deze is dan gesitueerd in die statorgleuven zoals in de volgende figuur:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{1wikkelinginstator.png}
+  \includegraphics[width=0.4\textwidth]{assets/1wikkelinginstator.png}
   \caption{1 wikkeling in stator}
   \label{fig:1wikkelinginstator.png}
  \end{figure}
@@ -859,21 +859,21 @@ We veronderstellen nu dat onze rotor een mooie ronde ijzeren cilinder is, dit ma
 Als we nu door deze éne wikkeling een wisselstroom sturen, dan zal er door die wikkeling ook een wisselveld ontstaan, dit is een magnetisch veld dat in de ruimte oscilleert, op en neer eigelijk zoals in deze figuur:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{1wikkelingwisselveld.png}
+  \includegraphics[width=0.4\textwidth]{assets/1wikkelingwisselveld.png}
   \caption{1 wikkeling met wisselveld}
   \label{fig:1wikkelingwisselveld.png}
  \end{figure}
 Hier staat het wel een beetje schuin onder een hoek, de animatie hiervan staat gewoon op toledo je kan die daar bezien. Die gele lijn is de luchtspleet, het is vanaf hier dat de magnetische veld vectoren getekend worden. We zijn vooral geinteresseerd in die luchtspleet want hier gaat het over van stator naar rotor, zo wordt het koppel opgewekt. Als we nu 2 andere wikkelingen plaatsen, die elk 120° van elkaar verwijderd zijn, en we sturen door elk van deze wikkelingen een wisselstroom die 120° van elkaar verschoven is, dan zal er een \textbf{draaiveld} ontstaan. 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{draaiveld3wikkelingen.png}
+  \includegraphics[width=0.5\textwidth]{assets/draaiveld3wikkelingen.png}
   \caption{Draaiveld met 3 wikkelingen}
   \label{fig:draaiveld3wikkelingen.png}
  \end{figure}
 Dit is dus ook eigelijk een animatie, waarin die linkse figuur eigelijk die golven alle 3 op en neer gaan en het doet lijken dat het draait (dat doet het ook), check gewoon op toledo naar deze animatie als je het niet snapt. Dit kan ook zo weergegeven worden, hierbij draait die roze pijl gewoon tegenwijzerzin, heel die figuur eigelijk, voor de rest veranderd er niks:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{resulterendedraaiveld.png}
+  \includegraphics[width=0.8\textwidth]{assets/resulterendedraaiveld.png}
   \caption{Resulterend draaiveld}
   \label{fig:resulterendedraaiveld.png}
  \end{figure}
@@ -905,7 +905,7 @@ Die $\theta_{sm}$ is gewoon die $\alpha$, het kwam gewoon voor in de les dus ik 
 Wat is nu het poolpaartal effectief? Wat is de invloed van de hoeveelheid polen? Dit is belangrijk om naar te zien want deze machines hebben niet gewoon 3 wikkelingen zoals we eerder zagen, maar hebben in de praktijk meerdere draden dat door de gleuven van de stator gaan. En afhankelijk van hoe je deze draden positioneert kan je een bepaald aantal polen creëren. In de volgende figuur zie je dat:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{verschillendepolenevenveeldraden.png}
+  \includegraphics[width=0.6\textwidth]{assets/verschillendepolenevenveeldraden.png}
   \caption{Zelfde constructie met andere polen}
   \label{fig:verschillendepolenevenveeldraden.png}
  \end{figure}
@@ -944,7 +944,7 @@ We vertrekken van het draaiveld in de luchtspleet:
 Onze opstelling ziet er zo uit:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{opstellingwikkelinggeinduceerdespanning.png}
+  \includegraphics[width=0.6\textwidth]{assets/opstellingwikkelinggeinduceerdespanning.png}
   \caption{Opstelling}
   \label{fig:opstellingwikkelinggeinduceerdespanning.png}
  \end{figure}
@@ -991,7 +991,7 @@ De effectieve (RMS) waarde volgt uit de amplitude gedeeld door $\sqrt{2}$ (met $
 Met de wet van Lorentz kunnen we het opgewekte koppel berekenen.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{opstellingopgewektkoppel.png}
+  \includegraphics[width=0.5\textwidth]{assets/opstellingopgewektkoppel.png}
   \caption{Opstelling, hier is de lus onder een hoek, dit boeit in principe niet}
   \label{fig:opstellingopgewektkoppel.png}
  \end{figure}
@@ -1043,7 +1043,7 @@ Synchrone machines zijn machines die werken op een \textbf{constante snelheid}, 
 Voor de opbouw van de rotor kunnen we met \textbf{permanente magneten} werken of met \textbf{DC-windingen}, de volgende figuur toont hoe de statorgleuven gevuld zijn met koper en een rotor met permanente magneten daarin is gebracht, we zien dat de permanente magneten hier ook tussen ijzergleuven zitten op de rotor.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{permanentemagneterotorinstator.png}
+  \includegraphics[width=0.6\textwidth]{assets/permanentemagneterotorinstator.png}
   \caption{Permanentemagneten rotor in stator}
   \label{fig:permanentemagneterotorinstator.png}
  \end{figure}
@@ -1053,7 +1053,7 @@ De rotor kan echter ook een \textbf{gladde rotor} zijn of een rotor met \textbf{
 Hier zien we een figuur van permanente magneten en een rotor met DC-windingen, het veld word extern geëxciteerd met een veldstroom If:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{PMvsDCwindinge.png}
+  \includegraphics[width=0.6\textwidth]{assets/PMvsDCwindinge.png}
   \caption{PM vs DC windingen}
   \label{fig:PMvsDCwindinge.png}
  \end{figure}
@@ -1079,14 +1079,14 @@ De formule voor het koppel kan ook geschreven worden als:
 Dit is exact hetzelfde als hierboven, als je dit uitwerkt kom je op dezelfde formule want dit werkt met kruisproducten, als je dit raar vind, vraag het aan AI.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{vectorschemaBsenBr.png}
+  \includegraphics[width=0.4\textwidth]{assets/vectorschemaBsenBr.png}
   \caption{Vector schema van $B_s$ en $B_R$}
   \label{fig:vectorschemaBsenBr.png}
  \end{figure}
 In de figuur hierboven zien we hoe $B_s$ en $B_R$ samen een mutueel veld vormen vectorieel weergegeven. Als je de vector formules van hierboven uitwerkt heb je per definitie altijd de hoek tussen je 2 vectoren nodig want $|\vv{A} \times \vv{B}| = |\vv{A}| \cdot |\vv{B}| \cdot \sin(\theta)$, en dit is dus de hoek tussen de 2 vectoren. De 2 hoeken voor deze vectoren zijn weergegeven op de figuur (met $\delta$ de koppelhoek, die we zometeen bespreken).
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{sinusoidaleweergavemutueelveld.png}
+  \includegraphics[width=0.5\textwidth]{assets/sinusoidaleweergavemutueelveld.png}
   \caption{Sinusoidale weergave van het mutueel veld}
   \label{fig:sinusoidaleweergavemutueelveld.png}
  \end{figure}
@@ -1095,7 +1095,7 @@ In de figuur hierboven zien we hoe het mutueel veld er uitziet in een sinusvorm,
 De koppelhoek (ook wel lasthoek genoemd) is de hoek tussen het statorveld en het rotorveld, het wordt niet echt deftig vermeld op de slides of in de les maar in principe is het een elektrische hoek dat ook met het poolpaartal naar een mechanische hoek omgezet kan worden, echter werkt de proff in de slides met voorbeelden waar de machines 2 polen hebben en dus een poolpaartal van 1, daarom is het niet zo duidelijk want dan zijn die gewoon gelijk aan elkaar. Zoals we weten uit de vorige formules bepaalt deze hoek eigelijk het koppel dat de machine kan leveren met $T = k \cdot B_{mut} \cdot B_R \cdot \sin(\delta)$, op de volgende figuur zien we hoe het koppel wordt ontwikkeld voor elke toepassing van de synchrone machine:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{lasthoeknullastgeneratormotorsynchronemachine.png}
+  \includegraphics[width=0.6\textwidth]{assets/lasthoeknullastgeneratormotorsynchronemachine.png}
   \caption{Lasthoek bij nullast, generator en motor van een synchrone machine}
   \label{fig:lasthoeknullastgeneratormotorsynchronemachine.png}
  \end{figure}
@@ -1110,7 +1110,7 @@ Hier wordt de rotor meegetrokken door het mutueel veld, dit wordt dus gecreëerd
 We hebben dus onze 3AC machine met een stilstaande stator en een rotor die een constant veld heeft en in de stator draait, dat constant veld dat door een DC-winding wordt opgewekt gaat eigelijk langs de stator windingen passeren omdat de rotor draait en dus daardoor een spanning induceren in de stator wikkelingen, deze gaan we nu berekenen hoe groot die is.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{rotor_stator_doorsnede.png}
+  \includegraphics[width=0.6\textwidth]{assets/rotor_stator_doorsnede.png}
   \caption{Doorsnede van rotor en stator: de statorwikkeling bestaat uit 3 fasen, elk met hun eigen vaste positie $\theta$ rond de omtrek.}
   \label{fig:rotor_stator_doorsnede}
 \end{figure}
@@ -1147,7 +1147,7 @@ De drie fasewikkelingen van de stator kunnen op twee manieren met elkaar verbond
 \subsubsection{Faseverhouding tussen flux, spanning en stroom}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.7\textwidth]{golfvormen_flux_spanning_stroom.png}
+  \includegraphics[width=0.7\textwidth]{assets/golfvormen_flux_spanning_stroom.png}
   \caption{Tijdsverloop van flux $\Phi$, geïnduceerde spanning $e$ en stroom $i$ in één fase.}
   \label{fig:golfvormen_flux_spanning_stroom}
 \end{figure}
@@ -1157,7 +1157,7 @@ Uit de grafiek volgt de logische volgorde: de flux $\Phi$ (cosinusvorm) bereikt 
 Dit hebben we eerder al wat gezien, maar komt terug rap voor op de slides. Een andere benaming hier voor is trouwens de \textit{nullastkarakteristiek} of \textit{open circuit karakteristiek}.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{magnetscurves.png}
+  \includegraphics[width=0.6\textwidth]{assets/magnetscurves.png}
   \caption{Magnetisatiecurven}
   \label{fig:magnetscurves.png}
  \end{figure}
@@ -1175,7 +1175,7 @@ Een belangrijk ding om op te merken is wel dat de inwendige spanning eigelijk to
 Ankerreactie is simpelweg de stroom in de stator dat ook een veld veroorzaakt dat het totale veld verstoort. Hiervoor kijken we naar de fasediagrammen:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{fasediagrammen.png}
+  \includegraphics[width=0.6\textwidth]{assets/fasediagrammen.png}
   \caption{Fasediagram veld en Stroom/spanningen synchrone motor (Deze figuur is voor de Onderbekrachtigde Generator)}
   \label{fig:fasediagrammen.png}
  \end{figure}
@@ -1212,14 +1212,14 @@ Hierboven is $E_A$ uitgeschreven als het model van het magnetisch effect van de 
 In de volgende figuur zien we het equivalent circuit/model met een generatorreferentie:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.3\textwidth]{equivgenerref.png}
+  \includegraphics[width=0.3\textwidth]{assets/equivgenerref.png}
   \caption{Equivalent schema van een synchrone machine met generatorreferentie}
   \label{fig:equivgenerref.png}
  \end{figure}
 De volgende figuur is dit dan voor een motorreferentie:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.3\textwidth]{equimotorref.png}
+  \includegraphics[width=0.3\textwidth]{assets/equimotorref.png}
   \caption{Equivalent schema van een synchrone machine met motorreferentie}
   \label{fig:equimotorref.png}
  \end{figure}
@@ -1233,7 +1233,7 @@ Hierbij gaan we de rotor aandrijven tot de nominale (synchrone) snelheid en het 
 De klemspanning kunnen we meten dus we hebben dan $E_A$ voor die specifieke $I_f$, dit doen we voor verschillende veldstromen (stap verhogen steeds) om zo de volgende O.C.C. kromme op te bouwen (O.C.C. = Open Circuit Characteristic):
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.3\textwidth]{OCCcurve.png}
+  \includegraphics[width=0.3\textwidth]{assets/OCCcurve.png}
   \caption{O.C.C.}
   \label{fig:OCCcurve.png}
  \end{figure}
@@ -1249,7 +1249,7 @@ Dit heeft dezelfde opstelling, rotor tot nominale snelheid en veld bekrachtigen 
 Zo meet je eigelijk $I_A$ ( = $I_{SC}$) voor verschillende veldstromen. En omdat de kortsluitstroom via ankerreactie het netveld sterk demagnetiseert, blijft de curve hier in het lineaire (onverzadigde) gebied, hoe groot $I_f$ ook is.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.3\textwidth]{SCCcurve.png}
+  \includegraphics[width=0.3\textwidth]{assets/SCCcurve.png}
   \caption{S.C.C.}
   \label{fig:SCCcurve.png}
  \end{figure}
@@ -1262,7 +1262,7 @@ Kies nu een veldstroom $I_f$ in de O.C.C. en lees de corresponderende $E_A$ af. 
 Via het equivalent circuit gaan we dus ook fasediagrammen kunnen opstellen, dit zijn grafische weergaven van de grootheden in het complex vlak. We hebben voor de synchrone machine een motorreferentie en een generatorreferentie, deze verschillen dus. Ook kunnen ze verschillen in over en onderbekrachtiging, dit is afhankelijk van de veldstroom $I_f$ en de statorstroom $I_A$. In de volgende figuren zien we de fasediagrammen voor een generator en een motor, beide onder en overbekrachtigd:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{fasediragmamee.png}
+  \includegraphics[width=0.8\textwidth]{assets/fasediragmamee.png}
   \caption{Fasediagrammen motor en generator, onder en overbekrachtigd}
   \label{fig:fasediragmamee.png}
  \end{figure}
@@ -1292,14 +1292,14 @@ Dit is dus de formule voor het vermogen bij een ideale machine, dit is een sinus
 Dat sinusvormige vermogen is dus afhankelijk van de koppelhoek $\delta$ en is maximaal op $\delta = 90^\circ$, hierna daalt dit vermogen terug. We willen dus eigelijk rond die 90 graden werken maar we doen het in de praktijk niet door synchronisatieverliezen. Bij synchronisatieverlies gaan we over de maximale koppel gaan, waardoor we niet genoeg vermogen meer gaan hebben waardoor we eigenlijk niet meer synchroon gaan draaien, we lopen eigelijk achter en onze hoek wordt dus groter, dit kan zo uitlopen tot we uiteindelijk een volledige toer achter zitten. Toeren kunnen we terugwinnen door de snelheid op te trekken, er is dus acceleratie nodig. Daarom werken we rond een gebied van $20^\circ-30^\circ$.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{werkingsgebiedvoorsynchronisatieverliesµ.png}
+  \includegraphics[width=0.5\textwidth]{assets/werkingsgebiedvoorsynchronisatieverliesµ.png}
   \caption{Vermogen ifv koppelhoek, met aanduiding van het werkingsgebied voor synchronisatieverlies}
   \label{fig:werkingsgebiedvoorsynchronisatieverliesµ.png}
  \end{figure}
 Een plotse verandering van last (lasthoek wordt even heel groot want de rotor vertraagt even) kan wel zorgen voor een transiënte snelheid verandering, deze gaat uiteindelijk wel naar zijn oorspronglijke synchrone snelheid (steady-state). Maar een te grote verandering van last kan dus toeren doen missen of de motor doen stilvallen.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{transienteensynchronisatieverlies.png}
+  \includegraphics[width=0.6\textwidth]{assets/transienteensynchronisatieverlies.png}
   \caption{Linkse plot terug naar stabiele toestand, rechtse plot naar synchronisatieverlies}
   \label{fig:transienteensynchronisatieverlies.png}
  \end{figure}
@@ -1307,7 +1307,7 @@ Een plotse verandering van last (lasthoek wordt even heel groot want de rotor ve
 Als je bij een glade rotor geen stroom hebt in de rotor maar wel in stator dan gaat je draaiveld geen invloed hebben op de rotor, er is dus geen koppel. Bij een rotor met polen ga je wel een koppel hebben, dit is omdat het ijzer van die polen eigelijk wilt alligneren met dat magnetisch draaiveld, ze nemen het pad van minste \textbf{reluctantie}. Dit noemt dus een reluctantiekoppel en heeft dus een reluctantievermogen. Dit draagt bij aan het totaal vermogen:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{invloedrelucatnievermoge.png}
+  \includegraphics[width=0.6\textwidth]{assets/invloedrelucatnievermoge.png}
   \caption{Invloed reluctantievermogen}
   \label{fig:invloedrelucatnievermoge.png}
  \end{figure}
@@ -1317,7 +1317,7 @@ Dit reluctantievermogen piekt op een hoek van $45^\circ$ en is dus veroorzaakt d
 Een synchrone generator kan in eilandbedrijf werken, dit wil zeggen dat hij niet verbonden is met een groot net maar dat hij zelf een net vormt. (Stand-alone). Bvb een windturbine die een huis van stroom voorziet (lijkt mij straf ma dit is een voorbeeld). We gaan nu eens kijken wat er gebeurt als de belasting hierop varieert, want deze doet de grootte van $I_A$ veranderen.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{varierendebelastinggeneratoreilandbedrijf.png}
+  \includegraphics[width=0.5\textwidth]{assets/varierendebelastinggeneratoreilandbedrijf.png}
   \caption{Fasediagrammen bij variërende belasting van een synchrone generator in eilandbedrijf}
   \label{fig:varierendebelastinggeneratoreilandbedrijf.png}
  \end{figure}
@@ -1338,7 +1338,7 @@ Ze moeten niet percee de zelfde snelheid of zelfde poolpaartal hebben (behalve a
 Nu gaan we kijken naar de limieten van de synchrone machine, dit is belangrijk want we willen weten wat de maximale belasting is die we kunnen leveren. We hebben hiervoor een aantal limieten.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.7\textwidth]{limietensynchronemachine.png}
+  \includegraphics[width=0.7\textwidth]{assets/limietensynchronemachine.png}
   \caption{Ratings van een synchrone machine}
   \label{fig:limietensynchronemachine.png}
  \end{figure}
@@ -1364,7 +1364,7 @@ Nu kijken we naar de motorwerking, we gaan hier uit van een gladde rotor alsook 
 Bij het equivalent schema gebruiken we nu ook de motorreferentie:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.3\textwidth]{equivschemamotorref.png}
+  \includegraphics[width=0.3\textwidth]{assets/equivschemamotorref.png}
   \caption{Equivalent schema van een synchrone machine met motorreferentie}
   \label{fig:equivschemamotorref.png}
  \end{figure}
@@ -1375,7 +1375,7 @@ Hierbij mogen we ook niet vergeten dat onze vergelijking nu deze is:
 Onze stroom $I_S$ loopt nu IN de machine, dus $\Delta u$ heeft een ander teken. Het wordt dus opgeteld bij $E_A$, wat ook zichtbaar is op het fasediagram:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{motorwerkingfasediagram.png}
+  \includegraphics[width=0.5\textwidth]{assets/motorwerkingfasediagram.png}
   \caption{Fasediagram Overbekrachtigde Motor}
   \label{fig:motorwerkingfasediagram.png}
  \end{figure}
@@ -1385,7 +1385,7 @@ We zien hier dus ook dat de stroom $I_S$ loodrecht staat op $\Delta u$ (wat alti
 Het koppel-toerentalkarakteristiek van een synchrone motor ziet er zo uit (met de veronderstelling van een star net!):
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{TNsynchronempotor.png}
+  \includegraphics[width=0.5\textwidth]{assets/TNsynchronempotor.png}
   \caption{Koppel-toerentalkarakteristiek van een synchrone motor}
   \label{fig:TNsynchronempotor.png}
  \end{figure}
@@ -1394,7 +1394,7 @@ We zien dat dit gewoon een rechte is op een constante snelheid $n_s$, dit is de 
 Wat gaat de synchrone motor nu doen als de belasting verandert? We nemen hier dus ook star net aan alsook dat de excitatie vast staat (dus gelijke $E_A$). Dus $\omega_s$ constant. Zoals we eerder zagen gaat de afstand tussen $V_{\phi}$ en $E_A$ groter worden als we meer belasten, de lasthoek veranderd dus, dit effect plotten we op de T-$\delta$ karakteristiek.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{fasediagrambelastingsvariatiemotor.png}
+  \includegraphics[width=0.5\textwidth]{assets/fasediagrambelastingsvariatiemotor.png}
   \caption{Fasediagram bij belastingsvariatie van een synchrone motor}
   \label{fig:fasediagrambelastingsvariatiemotor.png}
  \end{figure}
@@ -1407,7 +1407,7 @@ Dus de belastingvariatie varieert de lasthoek ook, hier is het bij een motor dus
 Ook weergegeven met deze grafiek:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{koppellastkarakteristiekmotor.png}
+  \includegraphics[width=0.5\textwidth]{assets/koppellastkarakteristiekmotor.png}
   \caption{Koppel-lasthoekkarakteristiek van een synchrone motor}
   \label{fig:koppellastkarakteristiekmotor.png}
  \end{figure}
@@ -1416,14 +1416,14 @@ De sinus golf links is voor een motor, die dat de negatieve koppel heeft rechts 
 Dan gaan we nu eens kijken wat er gebeurd als je een plotse spanningsdaling krijg aan de klemspanning (van meer dan 10\%). Via de formule weten we dat het koppel dan zal dalen, waardoor de kans op synchronisatieverlies toeneemt
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{effectspanningsdip.png}
+  \includegraphics[width=0.5\textwidth]{assets/effectspanningsdip.png}
   \caption{Effect van spanningsdip op het koppel}
   \label{fig:effectspanningsdip.png}
  \end{figure}
 In de figuur hierboven zien we dit effect van die spanningsdip, het is hier wel met vermogen weergegeven ma das zo goed als het zelfde want dat is afhankelijk van koppel. We zien de groene lijn, dit is de last die je motor draagt. Er is daar helemaal links een snijpunt met de blauwe curve, dat is je oorspronkelijk werkingspunt. Als er een spanningsdip voorkomt wordt het eigelijk die rode curve, je werkingspunt verschuift dan eigelijk wat waardoor je lasthoek vooral gaat slingeren (en je snelheid ook) zoals een transiënte. Uiteindelijk wordt dan een nieuw werkingspunt gevonden, en dit nieuwe werkingspunt is stabiel als die oppervlakte van $A_1$ kleiner is als die van $A_2$, anders heb je te weinig vermogen en worden toeren gemist en krijg je dus synchronisatie verlies.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{transienetespannignsdip.png}
+  \includegraphics[width=0.5\textwidth]{assets/transienetespannignsdip.png}
   \caption{Transiëne effecten van spanningsdip}
   \label{fig:transienetespannignsdip.png}
  \end{figure}
@@ -1432,14 +1432,14 @@ In de figuur hierboven zien we dit effect van die spanningsdip, het is hier wel 
 Hier gaan we zien wat er gebeurd als je de DC-stroom die het veld bekrachtigd (dus $I_f$) gaat variëren. We houden hier $V_{\phi}$ constant. Wat we zien is dat de interne spanning ook zal stijgen in de vorm van een V-curve als je het plot met de excitatiestroom, een mooie gif hiervan is te vinden op toledo, hier is allesinds een screenshot daarvan:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{vcurvevarierenexcitatiestroom.png}
+  \includegraphics[width=0.6\textwidth]{assets/vcurvevarierenexcitatiestroom.png}
   \caption{V-curve bij variatie van excitatiestroom}
   \label{fig:vcurvevarierenexcitatiestroom.png}
  \end{figure}
 Het grote voordeel is dat door dit te variëren je kan bepalen hoe de motor zich gaat gedragen (resistief, inductief of capacitief), het liefst wil je capacitief want dan lever je vermogen aan het net. Resistief heb je trouwens op het minimum van de curve, links daarvan is inductief, rechts daarvan is capacitief. Ook zie je in de figuur dat dit bij een constant vermogen is, dus verschillende V-curves zijn opgesteld voor verschillende vermogens:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{Vcurvesvoorverschillendevermogens.png}
+  \includegraphics[width=0.5\textwidth]{assets/Vcurvesvoorverschillendevermogens.png}
   \caption{V-curves voor verschillende vermogens}
   \label{fig:Vcurvesvoorverschillendevermogens.png}
  \end{figure}
@@ -1448,7 +1448,7 @@ Die scherpe V-curve helemaal onderaan is de V-curve bij nullast, dit zie je want
 Hoe starten we nu de synchrone motor? Want deze heeft een constante snelheid, die kan alleen draaien op $\omega_s$ terwijl in het begin de snelheid 0 is. Er is niet genoeg koppel dus zoasl we zien in deze T-n karakteristiek van de synchrone machine met de nodige last:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.3\textwidth]{tnmetnodigdelast.png}
+  \includegraphics[width=0.3\textwidth]{assets/tnmetnodigdelast.png}
   \caption{Karakteristiek met last}
   \label{fig:tnmetnodigdelast.png}
  \end{figure}
@@ -1473,7 +1473,7 @@ instellen. Hierdoor kunnen we grotere vermogens starten.
 Om de synchrone machine te kunnen doen aanlopen, kunnen we ook gebruik maken van een damperwikkeling. Dit is eigenlijk zoals een squirrel cage rotor en gelijkaardig aan de inductiemachine: het zijn kortgesloten koperen staven in de rotor, verbonden door platen. Bij stilstand beweegt het draaiveld relatief ten opzichte van de staven, wat een stroom in de staven induceert die kunnen lopen doordat ze kortgesloten zijn. Samen met het veld wordt hierdoor een kracht uitgeoefend op de staven, die de snelheid van de rotor optrekt zonder dat daar DC-bekrachtiging voor nodig is. Zodra de rotor op synchrone snelheid zit, is er geen relatieve beweging meer, dus ook geen extra geïnduceerde stroom en dus geen verliezen daaraan, de wikkeling ligt dan relatief stil.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{demperwikkelinge.png}
+  \includegraphics[width=0.5\textwidth]{assets/demperwikkelinge.png}
   \caption{Demperwikkeling in een synchrone machine}
   \label{fig:demperwikkelinge.png}
  \end{figure}
@@ -1527,7 +1527,7 @@ En dus de arbeidsfactor gelijk is aan:
 Nu simpelweg al deze vectoren tekenen, niet vergeten dat $I_A$ loodrecht staat op $j \cdot X_S \cdot I_A$ en dat $V_\phi = E_A - j \cdot X_S \cdot I_A$.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{fasediagramoefening.png}
+  \includegraphics[width=0.5\textwidth]{assets/fasediagramoefening.png}
   \caption{Fasediagram van oefening 4.6}
   \label{fig:fasediagramoefening.png}
  \end{figure}
@@ -1619,7 +1619,7 @@ Op de stator gebeurd exact hetzelfde als we eerder zagen bij de synchrone machin
 Bij de rotor is het wat anders, je hebt hier dus die kooirotor die stil staat maar een draaiend magnetisch veld passeert er rond. Als jij als waarnemer op het draaiveld staat, dan zie je eigelijk een bewegende geleider in een magnetisch veld, dus wordt er een spanning geïnduceerd, en doordat dus die kooirotor kortgesloten is, vloeit er een stroom dat zich dus ook in een magnetisch veld bevindt. Dit wekt een lorentzkracht op de rotorstaven op wat dus het koppel veroorzaakt dat de rotor doet draaien. Van zodra de rotor op synchrone snelheid van het draaiveld staat dan wordt er geen spanning meer geïnduceerd, want relatief is er geen bewegende geleider in een magnetisch veld meer. Dus is er geen koppel op synchrone snelheid.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{inductiemachinerotor.png}
+  \includegraphics[width=0.6\textwidth]{assets/inductiemachinerotor.png}
   \caption{Rotor inductiemachine}
   \label{fig:inductiemachinerotor.png}
  \end{figure}
@@ -1638,7 +1638,7 @@ Bij de inductiemachine komt de term 'slip' ook vaak aan bod, dit is omdat de spa
 Typisch is de slip rond de 3\%, 10\% wordt al als veel beschouwd. Het is eigelijk een andere uitdrukking voor snelheid, daarom kan het ook geplot worden met het koppel in een koppel-slip karakteristiek zoals in volgende figuur:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{koppelslip.png}
+  \includegraphics[width=0.6\textwidth]{assets/koppelslip.png}
   \caption{Koppel-slip karakteristiek van een inductiemachine}
   \label{fig:koppelslip.png}
  \end{figure}
@@ -1649,7 +1649,7 @@ Aangezien er een stroom in de rotor is zorgt deze ook voor een magnetisch veld v
 Als je als buitenstaande waarnemer gaat kijken naar de inductie machine dan ziet die gewoon alle stromen van in de volgende figuur draaien aan een snelheid van 1500 tr/min, terwijl de rotorstroom $I_R$ zich in de rotor bevind, dit is omdat het geïnduceerd wordt door dat draaiveld dat het dan eigelijk iets sneller draait als de rotor zelf.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{statorviewinductiemachine.png}
+  \includegraphics[width=0.4\textwidth]{assets/statorviewinductiemachine.png}
   \caption{Stator view van een inductiemachine, buitenstaander waarnemer}
   \label{fig:statorviewinductiemachine.png}
  \end{figure}
@@ -1657,7 +1657,7 @@ Als je als buitenstaande waarnemer gaat kijken naar de inductie machine dan ziet
 Als we nu als waarnemer OP de machine gaan, eigelijk mee met het draaiveld, dan is $\omega = 0$, het draaiveld is stil vanuit ons standpunt, maar sinds de rotor dat tempo niet haalt gaat het eigelijk traag lijken weg te glijden, waardoor de stroom in de rotorstaven traag varieert. Dit is dus gelinkt aan die slip, die stroom is een geïnduceerde AC stroom dat niet aan 50Hz is maar trager dan het draaiveld.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{synchronoyusviewinductiemachine.png}
+  \includegraphics[width=0.4\textwidth]{assets/synchronoyusviewinductiemachine.png}
   \caption{Synchronous view van een inductiemachine, waarnemer die mee rijdt op het draaiveld}
   \label{fig:synchronoyusviewinductiemachine.png}
  \end{figure}
@@ -1669,7 +1669,7 @@ Als we nu als waarnemer op de rotor gaan, lijkt het draaiveld aan 20 tr/min te p
 De rotor frequentie is een lage frequentie, dus niet 50Hz, dit is een belangrijke formule om te onthouden.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{rotorviewinductiemachine.png}
+  \includegraphics[width=0.4\textwidth]{assets/rotorviewinductiemachine.png}
   \caption{Rotor view van een inductiemachine, waarnemer die mee rijdt op de rotor}
   \label{fig:rotorviewinductiemachine.png}
  \end{figure}
@@ -1679,7 +1679,7 @@ Dit thema is een beetje messy als het neer komt op de oefeningen, ze zijn niet z
 \textbf{Opgave:}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{kenplaatoefeninginductiemachine.png}
+  \includegraphics[width=0.5\textwidth]{assets/kenplaatoefeninginductiemachine.png}
   \caption{Kenplaat oefening inductiemachine}
   \label{fig:kenplaatoefeninginductiemachine.png}
  \end{figure}
@@ -1728,7 +1728,7 @@ Als we het koppel van de last gaan halveren, gaat bij benadering het vermogen oo
 Wat we gaan doen is kijken naar de T-n grafiek, want in de buurt van $n_s$ is deze kromme eigelijk een rechte lijn (zoals bij de T-s grafiek). 2 punten van deze rechte kennen we, namelijk het punt (n = 1435; T = 36,7) en (n = 1500; T = 0). Via interpolatie vinden we zo welk toerental bij het gehalveerd koppel hoort. Hiermee vinden we juiste $\omega$ en zo het juiste vermogen bij een gehalveerd koppel:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{AIgeneratedgrafieklineairgebiedTn.png}
+  \includegraphics[width=0.6\textwidth]{assets/AIgeneratedgrafieklineairgebiedTn.png}
   \caption{Lineair verloop van T-n karakteristiek in het gebied van nominale snelheid (AI gegenereerd maar is juist)}
   \label{fig:AIgeneratedgrafieklineairgebiedTn.png}
  \end{figure}
@@ -1748,7 +1748,7 @@ Nu wordt de rotor aangedreven met een koppel van 25Nm, dit is dus generatorwerki
 \end{align*}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{AIgeneratedgrafieklineairgebiedgenerator.png}
+  \includegraphics[width=0.6\textwidth]{assets/AIgeneratedgrafieklineairgebiedgenerator.png}
   \caption{Lineair verloop van T-n karakteristiek in het gebied van generatorwerking (AI gegenereerd maar is juist)}
   \label{fig:AIgeneratedgrafieklineairgebiedgenerator.png}
  \end{figure}
@@ -1757,7 +1757,7 @@ Nu wordt de rotor aangedreven met een koppel van 25Nm, dit is dus generatorwerki
 In volgende figuren zien we verschillende karakteristieken met hun aangeduidde nominale werkingspunten:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{nominalewerkingspuntkarakteristieken.png}
+  \includegraphics[width=0.6\textwidth]{assets/nominalewerkingspuntkarakteristieken.png}
   \caption{Stroom, koppel en arbeidsfactor karakteristiek}
   \label{fig:nominalewerkingspuntkarakteristieken.png}
  \end{figure}
@@ -1771,14 +1771,14 @@ Voor het opstellen van het equivalent schema van de inductiemachine gaan we niet
 \end{itemize}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{transfoanalogieinductiemachine.png}
+  \includegraphics[width=0.8\textwidth]{assets/transfoanalogieinductiemachine.png}
   \caption{Transfo analogie inductiemachine}
   \label{fig:transfoanalogieinductiemachine.png}
  \end{figure}
 Het equivalent schema van de inductiemachine is dus als volgt:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{equivalentschemainductiemotor.png}
+  \includegraphics[width=0.8\textwidth]{assets/equivalentschemainductiemotor.png}
   \caption{Equivalent schema inductiemachine}
   \label{fig:equivalentschemainductiemotor.png}
  \end{figure}
@@ -1875,14 +1875,14 @@ Net zoals bij de synchrone machine willen we de parameters van het equivalent sc
 Hier gaan we de weerstandsmeting voor $R_1$ doen, dit doen we terwijl de motor in stilstand is. Dus $s = 1$. We hangen dan een DC bron aan 2 fases van de stator zoals in volgende figuur:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{opstellingdcweerstandsmeting.png}
+  \includegraphics[width=0.4\textwidth]{assets/opstellingdcweerstandsmeting.png}
   \caption{Opstelling DC weerstandsmeting}
   \label{fig:opstellingdcweerstandsmeting.png}
  \end{figure}
 We gaan hierdan dus een DC stroom door 2 $R_1$ weerstanden sturen, doordat het DC is gaan de spoelen geen effect hebben en kunnen we gewoon de weerstand meten zoals we zien in onderstaande schema:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{stroomverloopdcweerstandsmetong.png}
+  \includegraphics[width=0.8\textwidth]{assets/stroomverloopdcweerstandsmetong.png}
   \caption{DC stroom weerstandsmeting}
   \label{fig:stroomverloopdcweerstandsmetong.png}
  \end{figure}
@@ -1895,14 +1895,14 @@ Dit is een goede benadering van de weerstand, in het echt verschilt deze nog een
 Bij de nullastproef is het doel om de verliezen te meten (de wrijvings en ijzerverliezen). Hier laten we de motor op volle snelheid draaien ($n_s$) en we hangen er geen last aan ook dus $T = 0$, ook veronderstellen we geen mechanische verliezen, dit betekent dat $R'_{load}$ naar oneindig gaat (open keten). De nominale spanning sluiten we aan en we gaan dan de spanning, stroom en vermogen meten zoals we zien in de volgende opstelling:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{opstellingnullastproef.png}
+  \includegraphics[width=0.6\textwidth]{assets/opstellingnullastproef.png}
   \caption{Opstelling nullastproef inductiemachine}
   \label{fig:opstellingnullastproef.png}
  \end{figure}
 Doordat het op synchrone snelheid is gaat er dus ook geen spanning geïnduceerd worden en geen stroom vloeien (ook logisch als die weerstand oneindig is) dus het hele rotor gedeelte van het equivalent schema valt dus weg, oftewel zoals ik net eigelijk al zei, dit wordt een open keten. Het equivalent schema voor deze proef ziet er dan zo uit:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{equivschemanullastproefIM.png}
+  \includegraphics[width=0.6\textwidth]{assets/equivschemanullastproefIM.png}
   \caption{Equivalent schema nullastproef inductiemachine}
   \label{fig:equivschemanullastproefIM.png}
  \end{figure}
@@ -1930,7 +1930,7 @@ Hier is het doel om $R_2$ en $X_1 + X_2$ te bepalen. We blokkeren hierbij de rot
 Dus die tak valt weg, we hebben gewoon de volgende parameters in serie want we gaan de parallele tak van $R_C$ en $X_m$ verwaarlozen want er zijn hier veel minder verliezen doordat we spanning gaan verlagen zodat de stroom niet te groot wordt (spanning van 0 regelen tot de nominale waarde van de stroom bereikt wordt). Er gaat dus weinig vermogen naar die magnetiseertak. Dus behouden we het volgende equivalent schema:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{equivalentschemablokkeerproef.png}
+  \includegraphics[width=0.6\textwidth]{assets/equivalentschemablokkeerproef.png}
   \caption{Equivalent schema blokkeerproef inductiemachine}
   \label{fig:equivalentschemablokkeerproef.png}
  \end{figure}
@@ -1957,7 +1957,7 @@ Dus eigelijk geldt:
 Om te splitsen naar $X_1$ en $X_2$ gebruiken we standaardverhoudingen genaamd NEMA verhoudingen, deze bepalen dus de verhouding tussen $X_1$ en $X_2$. Deze kunnen afgelezen worden uit een tabel, maar als er niks wordt gegeven of gezegd mogen we een 50/50 verhouding gebruiken:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{nemaverhoudingen.png}
+  \includegraphics[width=0.4\textwidth]{assets/nemaverhoudingen.png}
   \caption{NEMA verhoudingen voor het splitsen van $X_1$ en $X_2$}
   \label{fig:nemaverhoudingen.png}
  \end{figure}
@@ -1965,7 +1965,7 @@ Om te splitsen naar $X_1$ en $X_2$ gebruiken we standaardverhoudingen genaamd NE
 Dan gaan we nu eens meer uitgebreid kijken naar de koppel-toerentalkarakteristiek van de inductiemachine. We hebben al eerder gezien dat deze er ongeveer zo uitziet:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{TNinductiemachine.png}
+  \includegraphics[width=0.6\textwidth]{assets/TNinductiemachine.png}
   \caption{Koppel-toerentalkarakteristiek van de inductiemachine}
   \label{fig:TNinductiemachine.png}
  \end{figure}
@@ -2009,7 +2009,7 @@ In de formule van het koppel gaan we nog een paar aanpassingen doen om dit simpe
 Het is dus deze formule dat gebruikt wordt om de T-n karakteristiek te berekenen. Bij grote slip wordt de rode term verwaarloosd en het linkse gedeelte van de T-n karakteristiek van de volgende figuur bepaald (dit is eigelijk hyperbolisch want de formule krijgt de vorm van $k = \frac{1}{s}$) en bij kleine slip wordt de blauwe term verwaarloosd en het rechtse gedeelte van de T-n karakteristiek bepaald. Het maximum van deze kromme is het kipkoppel, deze staat hier niet op maar kan wel gevonden worden door de 1ste afgeleiden naar de slip te nemen en deze gelijk te stellen aan 0. (Dit geeft de kipslip)
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{TNkarakteristiekzonderkippiek.png}
+  \includegraphics[width=0.5\textwidth]{assets/TNkarakteristiekzonderkippiek.png}
   \caption{T-n karakteristiek van de inductiemachine zonder het kipkoppel aangeduid}
   \label{fig:TNkarakteristiekzonderkippiek.png}
  \end{figure}
@@ -2025,7 +2025,7 @@ Nu gaan we kijken naar een paar factoren die invloed kunnen hebben op de koppel-
 Dus we weten nu dat het koppel afhankelijk is van de spanning in het kwadraat ($T \approx V_\phi^2$). Bij een spanningsdip kan dit dus problematisch zijn, door dit kwadraat gaat het koppel rap sterk dalen dan en afhankelijk van welke toepassing je de inductiemachine gebruikt kan dit problematisch zijn. We zullen is aan de hand van volgende grafiek bespreken wat er precies gebeurt bij zo een spanningsdip:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{TNkarakteristiekverschillendespanningenenlastkarakteristiek.png}
+  \includegraphics[width=0.6\textwidth]{assets/TNkarakteristiekverschillendespanningenenlastkarakteristiek.png}
   \caption{T-n karakteristiek bij verschillende spanningen + de lastkarakteristiek}
   \label{fig:TNkarakteristiekverschillendespanningenenlastkarakteristiek.png}
  \end{figure}
@@ -2034,34 +2034,34 @@ Stel we hebben 400V en een spanningsdip brengt ons naar 300V zoals in bovenstaan
 We zagen dus eerder dat ons koppel ook afhankelijk is van de rotorweerstand $R_2$. Dit kan handig zijn soms, want als we deze weerstand groter kunnen maken kunnen we een groter startkoppel hebben en vooral dan ook een \textbf{lagere startstroom}. Terwijl ons maximaal koppel hetzelfde blijft (wel meer slip dus meer slipverliezen). Dit kunnen we toepassen met 'rotorweerstanden' zoals in de volgende figuren:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.7\textwidth]{rotorweerstand1.png}
+  \includegraphics[width=0.7\textwidth]{assets/rotorweerstand1.png}
   \caption{Rotorweerstanden R en 2.5R}
   \label{fig:rotorweerstand1.png}
  \end{figure}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.7\textwidth]{rotorweerstand2.png}
+  \includegraphics[width=0.7\textwidth]{assets/rotorweerstand2.png}
   \caption{Rotorweerstanden 5R en 25R}
   \label{fig:rotorweerstand2.png}
  \end{figure}
 We zien dus dat bij grotere rotorweerstanden het startkoppel groter wordt en de startstroom kleiner. Maar wat we ook zien is dat de snelheid voor het nominaal koppel gaat dalen, soms zelfs zo hard dat dit niet meer interessant is als je de motor op die snelheid continu wilt laten werken. Eigelijk willen we liefst bij opstart een grotere rotorweerstand om grotere lasten te kunnen overwinnen maar voor ons nominaal koppel willen we een kleinere rotorweerstand. Om dit te doen maken we gebruik van een \textbf{gewikkelde rotor} zodat we de wikkelingen van de rotor via de sleepringen dan langs buiten kunnen aansluiten aan weerstanden (of kortsluiten). Ook kunnen zo die weerstanden langs buiten makkelijker gekoeld worden.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{gewikkelderotormetweerstandenencircuitenkoelsysteem.png}
+  \includegraphics[width=0.6\textwidth]{assets/gewikkelderotormetweerstandenencircuitenkoelsysteem.png}
   \caption{Gewikkelde rotor met weerstanden en circuite en koelsysteem}
   \label{fig:gewikkelderotormetweerstandenencircuitenkoelsysteem.png}
  \end{figure}
 Wat we ook kunnen doen is een ander soort rotor gebruiken. De NEMA-klassen classificeren rotors (motoren eigelijk) op basis van hun kopel, je kan hier dus ook naar kijken en kiezen. Je kan bevoorbeeld een dubbele kooi rotor hebben. Deze zorgen voor veel weerstand zodat je een groot startkoppel hebt en hebben eigelijk ook een soort van adaptieve weerstand (ze zijn groter bij start), op de volgende figuur zie je karakteristieken van een paar van die verschillende klasse motoren, sommige hebben een \textbf{zadelpunt}:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{karakteristiekenmotorsnema.png}
+  \includegraphics[width=0.5\textwidth]{assets/karakteristiekenmotorsnema.png}
   \caption{Karakteristieken van NEMA-klassen motoren}
   \label{fig:karakteristiekenmotorsnema.png}
  \end{figure}
 Een \textbf{dubbele kooi rotor} heeft dus 2 kooien, een binnenste en een buitenste. De buitenste kooi heeft een hoge weerstand en een lage inductantie, deze zorgt voor een groot startkoppel. De binnenste kooi heeft een lage weerstand en een hoge inductantie, deze zorgt voor een hoog nominaal koppel. Het nadeel van deze motoren is dat ze duurder zijn dan de standaard motoren.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{dubbelekooirotor.png}
+  \includegraphics[width=0.8\textwidth]{assets/dubbelekooirotor.png}
   \caption{Dubbele kooi rotor}
   \label{fig:dubbelekooirotor.png}
  \end{figure}
@@ -2069,7 +2069,7 @@ Een \textbf{dubbele kooi rotor} heeft dus 2 kooien, een binnenste en een buitens
 De formule die we eerder hadden afgeleid hadden we toen gebruikt voor onze T-n karakteristiek, maar eigelijk werkte die formule even goed om die karakteristiek uit te breiden zoals in de volgende figuur:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{uitgebreideTNkarakteristiekIM.png}
+  \includegraphics[width=0.5\textwidth]{assets/uitgebreideTNkarakteristiekIM.png}
   \caption{Uitgebreide T-n karakteristiek}
   \label{fig:uitgebreideTNkarakteristiekIM.png}
  \end{figure}
@@ -2078,7 +2078,7 @@ Deze curve komt dus ook van die formule en is even correct, we zien hier namelij
 We kunnen deze curve eigelijk opdelen in 4 kwadranten als volgt:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{4kwadrantenwerking.png}
+  \includegraphics[width=0.6\textwidth]{assets/4kwadrantenwerking.png}
   \caption{T-n curve 4 kwadranten}
   \label{fig:4kwadrantenwerking.png}
  \end{figure}
@@ -2087,27 +2087,27 @@ Dit is gewoon hetzelfde als we eerder zagen maar 2 keer getekend, de oranje curv
 Een onbalans van het net kan ook invloed op het koppel hebben. Eerder gingen we er altijd vanuit dat ons net in balans was (3 fases met zelfde amplitude en verschuiving), bij onbalans op het net is dit dus niet het geval. In vorige cursussen zagen we dat onbalans opgesplitst kan worden in 3 componenten: de directe component, de inverse component en de homopolaire component. Zoals we zien in volgende figuur:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.7\textwidth]{onbalanscomponenten.png}
+  \includegraphics[width=0.7\textwidth]{assets/onbalanscomponenten.png}
   \caption{Directe, inverse en homopolaire componenten}
   \label{fig:onbalanscomponenten.png}
  \end{figure}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{balancedenunbalancednet.png}
+  \includegraphics[width=0.6\textwidth]{assets/balancedenunbalancednet.png}
   \caption{Gebalanceerde en ongebalanceerde voeding}
   \label{fig:balancedenunbalancednet.png}
  \end{figure}
 De directe component loopt zoals normaal en is ook meestal de grootste, de inverse component loopt in tegengestelde richting en is meestal kleiner, de homopolaire component heeft alle vectoren op één lijn liggen, hier is geen faseverschuiving tussen. De directe maakt een draaiveld in de ene richting terwijl de indirecte die in de andere richting maakt (de homopolaire maakt dus GEEN draaiveld), hierdoor gaan we een ellipsvormig draaiveld krijgen als resulterende van al deze componenten.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{elliptischdraaiveld.png}
+  \includegraphics[width=0.6\textwidth]{assets/elliptischdraaiveld.png}
   \caption{Elliptisch draaiveld}
   \label{fig:elliptischdraaiveld.png}
  \end{figure}
 Wat is nu dat effect van het elliptisch draaiveld op de T-n karakteristiek? Bekijk deze figuur, het is eigelijk de 4 kwadrant operatie:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{4kwadrantoperatiedirectenondirectecomponent.png}
+  \includegraphics[width=0.6\textwidth]{assets/4kwadrantoperatiedirectenondirectecomponent.png}
   \caption{4 kwadrant operatie met directe en inverse component}
   \label{fig:4kwadrantoperatiedirectenondirectecomponent.png}
  \end{figure}
@@ -2118,28 +2118,28 @@ Die bovenste T-n karakteristiek is de normale karakteristiek, deze wordt gemaakt
 Want het koppel heeft een kwadratisch verband met de spanning. We willen zo weinig mogelijk van de inverse component want zoals we ziet zit die in dissipatie, dus dit brengt alleen extra hitte met zich mee. En dus ook zien we dat dit eigelijk een negatieve koppel is en zich dus aftrekt van het koppel van de directe component. Een onbalans kan dus het koppel licht doen verlagen maar zorgt wel voor veel extra opwarming.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{weergavekoppelverliesdooronbalans.png}
+  \includegraphics[width=0.6\textwidth]{assets/weergavekoppelverliesdooronbalans.png}
   \caption{Weergave koppelverlies door onbalans}
   \label{fig:weergavekoppelverliesdooronbalans.png}
  \end{figure}
 Hierboven zie je dus hoeveel koppel je verliest met hoeveel percentage onbalans, niet super veel dus, niet problematisch. In de figuur hieronder zie je de temperatuurinvloed door onbalans, dit is duidelijk wel problematisch want dit doet de levensduur zakken. Je ziet dat een onbalans van slechts 3.5\% al voor een temperatuurverschil van 25\% kan zorgen.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{tempeffectonbalans.png}
+  \includegraphics[width=0.5\textwidth]{assets/tempeffectonbalans.png}
   \caption{Temperatuur-effect van onbalans}
   \label{fig:tempeffectonbalans.png}
  \end{figure}
 Wat is nu het effect van die homopolaire component? De homopolaire component is eigelijk 3 keer hetzelfde, het is dus eigelijk een 1-fasige wisselspanning en dit kan ook een koppel genereren, alleen kan het niet zelf starten:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{Tn3fasigen1fasig.png}
+  \includegraphics[width=0.6\textwidth]{assets/Tn3fasigen1fasig.png}
   \caption{Weergave koppel door homopolaire component}
   \label{fig:Tn3fasigen1fasig.png}
  \end{figure}
 Maar eigelijk gedraagt zich dit als 3 enkelfasige motors waardoor we 3 keer zoveel polen hebben en dus een veel vroegere synchrone snelheid dan de directe en inverse component. Dit maakt dat we al rap in generatorwerking gaan zitten, wat een nefatieve invloed heeft, zoals we zien in volgende figuur:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{TNdirecteenhomopolairecomponent.png}
+  \includegraphics[width=0.5\textwidth]{assets/TNdirecteenhomopolairecomponent.png}
   \caption{T-n karakteristiek van de directe en homopolaire component}
   \label{fig:TNdirecteenhomopolairecomponent.png}
  \end{figure}
@@ -2162,7 +2162,7 @@ Voor het starten van de inductiemachine is een startkoppel ($T_{start}$) en een 
 Dit is gewoon van het net starten met een start/stop knop via een zekering. Dit is de opstartcurve die we eerder zagen, het heeft dus een hoge startstroom maar is heel simpel om op te starten. Vooral in situaties waar we niet te veel moeten opstarten of dingen die niet echt een snelheidsregeling nodig hebben.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{directeaanloop.png}
+  \includegraphics[width=0.5\textwidth]{assets/directeaanloop.png}
   \caption{Directe aanloop van de inductiemachine}
   \label{fig:directeaanloop.png}
  \end{figure}
@@ -2170,7 +2170,7 @@ Dit is gewoon van het net starten met een start/stop knop via een zekering. Dit 
 Hier gaan we regelbare weerstanden in serie zetten met de stator, bij opstarten maken we deze weerstanden maximaal zodat er een grotere spanningsval is over de weerstand ipv de motor, dit daalt het startkoppel en de startstroom dus. De weerstanden worden steeds lager gemaakt tot we op nominale spanning zijn. De weerstanden worden wel snel heel warm, deze moeten dus eigelijk gekoeld worden.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{statorweerstandenserie.png}
+  \includegraphics[width=0.6\textwidth]{assets/statorweerstandenserie.png}
   \caption{Stator serie weerstanden}
   \label{fig:statorweerstandenserie.png}
  \end{figure}
@@ -2178,7 +2178,7 @@ Hier gaan we regelbare weerstanden in serie zetten met de stator, bij opstarten 
 Een andere oplossing is opstarten met een spaartransformatie in serie met de motor, dit is eigelijk gelijkaardig aan die stator serie weerstanden, dit gebruikt echter spoelen om spanning te dempen, het verlagen van de opstartstroom en opstartkoppel is eigenlijk meer 'energetisch', je kan veel meer spanningsval hiermee creëren met veel minder vermogen verlies (want dit werkt met reactief vermogen). Maar het grote nadeel is wel dat het duur is.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{autotransforspaar.png}
+  \includegraphics[width=0.6\textwidth]{assets/autotransforspaar.png}
   \caption{Autotransformer (Spaartransformator)}
   \label{fig:autotransforspaar.png}
  \end{figure}
@@ -2186,13 +2186,13 @@ Een andere oplossing is opstarten met een spaartransformatie in serie met de mot
 Een softstarter is vermogenelektronica, het is meer geavanceerder en dus ook duurder. Het gebruikt thyristors (soort van diodes) in antiparallele posities (TRIACS), deze geleiden van zodra een signaal wordt gegeven op de gate. Hiermee kunnen we dus eigelijk geleidelijk aan de spanning verhogen door steeds meer van de sinus te laten doorlaten (steeds meer energie in de golf). Dit noemt eigelijk de 'ontsteekhoek' die we steeds kleiner maken. Dit kunnen we zien in de volgende figuur:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{thyrsitorsinus.png}
+  \includegraphics[width=0.6\textwidth]{assets/thyrsitorsinus.png}
   \caption{Softstarter met thyristors die geleidelijk de spanning verhogen}
   \label{fig:thyrsitorsinus.png}
  \end{figure}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{softstarterschakeling.png}
+  \includegraphics[width=0.6\textwidth]{assets/softstarterschakeling.png}
   \caption{Softstarter schakeling}
   \label{fig:softstarterschakeling.png}
  \end{figure}
@@ -2201,21 +2201,21 @@ Echter zorgt dit wel voor veel harmonischen (extra opwarming), maar dit is nog s
 De goedkoopste methode is ster-driehoek starten, hiervoor gebruik je gewoon een schakelaar en 2 contactoren (ookal zijn contactoren nog wel duur). We starten hierbij gewoon in ster, want in ster is de fasespanning lager ($V_f = \frac{V_L}{\sqrt{3}}$) en dus het startkoppel 3 keer lager (want $T \propto V_f^2 \propto \frac{V_L^2}{3}$). Het zelfde geld met de stroom want als je van ster naar driehoek gaat dan stijgt de spanning met $\sqrt{3}$ en de stroom ook met $\sqrt{3}$ dus samen stijgt de stroom met een factor van 3. (Dit is belangrijk om door te hebben!).
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{sterdriehoekstartenschakeling.png}
+  \includegraphics[width=0.5\textwidth]{assets/sterdriehoekstartenschakeling.png}
   \caption{Schakeling voor ster-driehoek starten}
   \label{fig:sterdriehoekstartenschakeling.png}
  \end{figure} 
 Uiteindelijk willen we dus in driehoek werken, want zo zitten we op ons volledig vermogen. Op het moment van starten sluiten we K1 en K3, na een verloop van tijd gaan we EERST K3 openen (ster uitzetten) en dan K2 sluiten zodat we in driehoek zitten. We openen eerst K3 omdat we anders een kortsluiting op het net veroorzaken als we K2 sluiten als K3 nog gesloten is. Dit kan voorkomen worden dat dit gebeurd als we gewoon normally closed en normally open contactoren hiervoor gebruikt worden. Een nadeel is wel door dit te schakelen dat we eigelijk een transiënte krijgen, dit zien we in volgende karakteristiek voor ster en driehoek schakelen:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{karakteristieksterdriehoekschakele.png}
+  \includegraphics[width=0.5\textwidth]{assets/karakteristieksterdriehoekschakele.png}
   \caption{Karakteristiek van ster-driehoek schakelen}
   \label{fig:karakteristieksterdriehoekschakele.png}
  \end{figure}
 Hier zien we deze transiente beter in een I-t karakteristiek:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{trabsiente.png}
+  \includegraphics[width=0.6\textwidth]{assets/trabsiente.png}
   \caption{Transiënte karakteristiek bij ster-driehoek schakelen}
   \label{fig:trabsiente.png}
  \end{figure}
@@ -2224,7 +2224,7 @@ Dit kan verminderd worden door te werken met een tijdsvertraging.
 We gaan dan nu is de stroom en koppelkarakteristieken van de DOL, softstarter en ster-driehoek vergelijken. Dit zien we in de volgende figuur:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{stroomkoppeldolsoftstartersterdriehoek.png}
+  \includegraphics[width=0.6\textwidth]{assets/stroomkoppeldolsoftstartersterdriehoek.png}
   \caption{Stroom en koppelkarakteristieken van DOL, softstarter en ster-driehoek}
   \label{fig:stroomkoppeldolsoftstartersterdriehoek.png}
  \end{figure}
@@ -2233,14 +2233,14 @@ Nu zien we ook waarom softstarter 'soft' starter heet, je ziet dat de start voor
 Wat als we een hoge startkoppel willen maar geen hoge startstroom? Dan kunnen we gebruik maken van externe rotorweerstanden. Hiervoor is dus wel een gewonden rotor nodig (dit zagen we eerder, want hieraan kan je via sleepringen die weerstanden hangen). Bekijk nu eens volgende figuur:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{startstroomenstartkoppelbijverschillenderotorweerstanden.png}
+  \includegraphics[width=0.6\textwidth]{assets/startstroomenstartkoppelbijverschillenderotorweerstanden.png}
   \caption{Startstroom en startkoppel bij verschillende rotorweerstanden}
   \label{fig:startstroomenstartkoppelbijverschillenderotorweerstanden.png}
  \end{figure}
 Wat we gaan doen is dus beginnen bij T4, dit heeft dus een lage startstroom en hoog startkoppel, naarmate de snelheid toeneemt zullen het koppel en de stroom dus dalen. Wat we gaan doen is dan schakelen naar T3 (de volgende rotorweerstand), dit zorgt ervoor dat ons koppel niet begint te dalen maar ongeveer hetzelfde blijf, zelfde voor de stroom. Zo gaan we dan over naar T2 en dan naar T1. Dit zorgt dat we een langere tijd een hoog koppel hebben met een lage stroom. Dit is mogelijk volgens de formule voor $T_{ind}$ die we ook eerder zagen. Nadeel is dus dat je een gewikkelde rotor nodig hebt wat duur is, dit is niet toepasbaar bij een kooirotor. Een schema hiervan ziet er zo uit:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{externerotorweerstandenschema.png}
+  \includegraphics[width=0.5\textwidth]{assets/externerotorweerstandenschema.png}
   \caption{Schema van externe rotorweerstanden}
   \label{fig:externerotorweerstandenschema.png}
  \end{figure}
@@ -2257,7 +2257,7 @@ Nu gaan we kijken naar het remmen van de inductiemachine. We hebben 5 soorten re
 Wat we hier gaan doen is eigelijk op ons stabiel werkingspunt de hoofdschakelaar uitschakelen en dan een andere schakeling aanzetten waarbij 2 fases omgedraaid zijn ten opzichte van de hoofdschakkelaar, zodat we eigelijk in het 4de kwadrant terecht komen in dissipatie, dit remt sterk af. We moeten hier wel zien dat we op tijd die schakelaar dan ook uitzetten want anders gaan we gewoon in de andere richting versnellen. Dit wordt vooral toegepast als we snel gestopt kunnen raken en niet te veel moeten stoppen want dit warmt veel op door die dissipatie.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{tegenstroomremmen.png}
+  \includegraphics[width=0.6\textwidth]{assets/tegenstroomremmen.png}
   \caption{Tegenstroomremmen}
   \label{fig:tegenstroomremmen.png}
  \end{figure}
@@ -2266,7 +2266,7 @@ Dit is de goedkoopste remmethode, het heeft een 2de contactor nodig. Om te check
 Deze methode wordt minder gebruikt omdat een gelijkstroomrichter nodig is dat wat duurder is, maar bij niet te grote vermogens valt dit goed mee. Wat we hier gaan doen is met een gelijkstroombron (DC) een gelijkstroom aanleggen op 2 windingen zodat we in de stator een constant magnetisch veld krijgen (dus geen draaiveld), dit gaat in de rotor een spanning induceren dat een stroom veroorzaakt en dus een koppel genereert dat tegengesteld is aan de draairichting van de rotor. Dit remt dus af. Wat we ook zien is dat dit koppel toeneemt naarmate de rotor afremt en dat deze gelijk is aan 0 als de snelheid 0 is, dit lost dus het probleem van de vorige methode op.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{DCremmen.png}
+  \includegraphics[width=0.5\textwidth]{assets/DCremmen.png}
   \caption{DC-remmen}
   \label{fig:DCremmen.png}
  \end{figure}
@@ -2276,7 +2276,7 @@ Dit is maar kort besproken in de les, maar wat we hier doen is de motor loskoppe
 Dit wordt eigelijk minder als remmen beschouwt, dit is eerder om te voorkomen dat iets beweegt of te snel gaat. Vooral gebruikt in liften/kranen. Bij lasten laten zakken gaan we eigelijk gewoon in generatorwerking gaan en dus een negatief koppel krijgen wat doet afremmen. Potentiele energie wordt dus terug omgezet in elektrische energie, dit maakt het een soort van generatief remmen.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{oversynchroonremmen.png}
+  \includegraphics[width=0.5\textwidth]{assets/oversynchroonremmen.png}
   \caption{Oversynchroon remmen}
   \label{fig:oversynchroonremmen.png}
  \end{figure}
@@ -2284,7 +2284,7 @@ Dit wordt eigelijk minder als remmen beschouwt, dit is eerder om te voorkomen da
 Hierbij gaan we echt remmen door gebruik te maken van de generatorwerking van de inductiemachine. Hiervoor moeten we de synchrone snelheid verlagen zodat de curve naar links opschuift zoals je ziet in de figuur. De rotor beweegt zo sneller als het magnetisch veld wat dus generator werking veroorzaakt. Dit gaan we doen door de flux constant te houden en de frequentie aanpassen met een frequentieregelaar. Maar omdat frequentie aanpassen het veld aanpast (dat we constant willen houden) gaan we samen de spanning met de frequentie doen dalen want $E \approx V_\phi$ en dit doen we dan stap per stap.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.7\textwidth]{regeneratiefremmen.png}
+  \includegraphics[width=0.7\textwidth]{assets/regeneratiefremmen.png}
   \caption{Regeneratief remmen}
   \label{fig:regeneratiefremmen.png}
  \end{figure}
@@ -2292,7 +2292,7 @@ Hierbij gaan we echt remmen door gebruik te maken van de generatorwerking van de
 Nu gaan we eens kijken naar de generatorwerking van de inductiemachine. Het is het gedeelte $\frac{R_2}{s}$ dat ervoor zorgt dat als we negatieve slip hebben dat er energie geleverd wordt door magnetisch veld naar de stator. We gaan eens kijken naar een wind turbine:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{windturbinevoorbeeld.png}
+  \includegraphics[width=0.5\textwidth]{assets/windturbinevoorbeeld.png}
   \caption{Windturbine voorbeeld}
   \label{fig:windturbinevoorbeeld.png}
  \end{figure}
@@ -2301,7 +2301,7 @@ Dit is een grote generator, wat het doet is eigelijk actief vermogen tot het net
 Dit is het normale geval, enkel de stator is hier elektrisch aan het net gesloten. De rotor krijgt stroom via inductie. Dit is gewoon de standaard generator werking die we eerder zagen.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{singlyfed.png}
+  \includegraphics[width=0.6\textwidth]{assets/singlyfed.png}
   \caption{Singly Fed}
   \label{fig:singlyfed.png}
  \end{figure}
@@ -2309,7 +2309,7 @@ Dit is het normale geval, enkel de stator is hier elektrisch aan het net geslote
 Dit is al wat anders. Hier beide wikkelingen elektrisch aangesloten. Zowel de stator als rotor aan het net dus. We gaan zoveel mogelijk actief vermogen naar het net sturen. Voor de rotor wordt hier vermogenelektronica en rotor weerstanden gebruikt zodat je een optimaal koppel behoudt en zoveel mogelijk naar het net kan sturen. Dit is veel efficiënter.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{doublyfed.png}
+  \includegraphics[width=0.6\textwidth]{assets/doublyfed.png}
   \caption{Doubly Fed}
   \label{fig:doublyfed.png}
  \end{figure}
@@ -2331,7 +2331,7 @@ Dit is al wat anders. Hier beide wikkelingen elektrisch aangesloten. Zowel de st
     \textbf{Opgave:}
     \begin{figure}[H]
       \centering
-      \includegraphics[width=0.6\textwidth]{opgaveIMoefening.png}
+      \includegraphics[width=0.6\textwidth]{assets/opgaveIMoefening.png}
       \caption{Opgave Inductie Motor}
       \label{fig:opgaveIMoefening.png}
      \end{figure}
@@ -2350,7 +2350,7 @@ Dit is al wat anders. Hier beide wikkelingen elektrisch aangesloten. Zowel de st
     Slip and speed are related. Complete the drawing by naming the slip axis (pink) and adding some interesting values.
     \begin{figure}[H]
       \centering
-      \includegraphics[width=0.6\textwidth]{opgaveSlip.png}
+      \includegraphics[width=0.6\textwidth]{assets/opgaveSlip.png}
       \caption{Opgave Slip}
       \label{fig:opgaveSlip.png}
      \end{figure}
@@ -2428,14 +2428,14 @@ Dit is al wat anders. Hier beide wikkelingen elektrisch aangesloten. Zowel de st
 Nu gaan we kijken naar hoe we kunnen bepalen welke motor we nodig hebben voor een bepaalde toepassing. Dit kan afhangen van applicatie, beschikbare catalogus, standaarden (normen, vind je ook op kenplaat zoals bvb. IEC 60034), dimensionering, $\cdots$
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{kenplaatmetnorm.png}
+  \includegraphics[width=0.6\textwidth]{assets/kenplaatmetnorm.png}
   \caption{Kenplaat met norm IEC 60034}
   \label{fig:kenplaatmetnorm.png}
  \end{figure}
 Op deze kenplaat zien we vanalle dingen die we zometeen nog verder zullen bespreken, ik wil het nu even hebben over die IEC 60034, dit is een norm van de \textbf{Internationale Elektrotechnische Commitee}, zij hebben normen over zo goed als alles wat elektrisch is zoals bvb. energiecurves en efficiëntieklassen. Er is ook nog een Amerikaanse versie, hier hebben we het al eerder over gehad, namelijk de \textbf{NEMA}.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{standaarden.png}
+  \includegraphics[width=0.6\textwidth]{assets/standaarden.png}
   \caption{IEC en NEMA}
   \label{fig:standaarden.png}
  \end{figure}
@@ -2443,14 +2443,14 @@ Op deze kenplaat zien we vanalle dingen die we zometeen nog verder zullen bespre
 Iets wat we eigelijk al veel hebben gezien maar hier dus ook voorkomt zijn de zogenaamde IP-klassen, IP staat voor \textit{Index of Protection}. Een IP-klasse is altijd een nummer met 2 cijfers, het eerste cijfer toont de bescherming tegen vaste voorwerpen en het tweede cijfer de bescherming tegen vloeistoffen. Hoe hoger het cijfer hoe beter de bescherming. Hier is een overzicht van de IP-klassen:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{IPklassennummers.png}
+  \includegraphics[width=0.4\textwidth]{assets/IPklassennummers.png}
   \caption{IP-klassen}
   \label{fig:IPklassennummers.png}
  \end{figure}
 Een IP23 zoals de gele motor is dan dus bescherm tegen iets grotere voorwerpen, dus je vingers kunnen er niet tussen maar lucht en stof kan dus binnen. Een IP55 zoals de blauwe motor is juist helemaal dicht en kan tegen waterstralen.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{geleenblauwemotor.png}
+  \includegraphics[width=0.5\textwidth]{assets/geleenblauwemotor.png}
   \caption{Gele en blauwe motor met IP23 en IP55}
   \label{fig:geleenblauwemotor.png}
  \end{figure}
@@ -2458,7 +2458,7 @@ Een IP23 zoals de gele motor is dan dus bescherm tegen iets grotere voorwerpen, 
 Ook hebben we isolatieklassen, deze duiden aan hoe warm de isolatie van de motor mag worden (op nominale stroom). Dit is belangrijk om zicht over te hebben want materiaal verouderd bij hogere temperaturen. Deze klassen worden opgesteld door te kijken naar welk onderdeel van de machine het eerste faalt, want brand willen we absoluut vermijden. De onderstaande grafiek toont de maximale temperaturen (voor op nominale stroom) dat je machine mag worden bij die bepaalde klasse (A,E,B,F,H) met H de beste dus.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{isolatieklassen.png}
+  \includegraphics[width=0.6\textwidth]{assets/isolatieklassen.png}
   \caption{Isolatieklassen}
   \label{fig:isolatieklassen.png}
  \end{figure}
@@ -2469,7 +2469,7 @@ Ook hebben we isolatieklassen, deze duiden aan hoe warm de isolatie van de motor
 Voor motorselectie kijk je best niet alleen naar het nominaal werkingspunt op de kenplaat, want in de praktijk draait de motor vaak op een lagere belasting (echt werkingspunt). Zowel het rendement als de arbeidsfactor zijn namelijk geen constante kenplaatwaarden, maar hangen sterk af van de belastingsgraad. Bij nullast geldt $\eta=P_{mech}/P_{el}\to 0$: er is geen nuttig mechanisch vermogen ($P_{mech}=0$), maar wel nog steeds verliezen (ijzer-, wrijvings- en magnetiseerverliezen), dus $P_{el}>0$. De arbeidsfactor daalt echter veel sterker bij deellast dan het rendement. Dit komt doordat het reactief vermogen $Q$ (nodig voor de magnetisatie, via $X_m$) nauwelijks verandert met de belasting, terwijl het actief vermogen $P$ wel sterk daalt. Aangezien $\cos\varphi=P/S=P/\sqrt{P^2+Q^2}$, zakt $\cos\varphi$ hierdoor snel naarmate de belasting afneemt (tot ongeveer $0{,}2-0{,}4$ bij nullast). Dit is dan ook een belangrijke reden om een motor niet te overdimensioneren: bij een motor die permanent ver onder zijn nominaal vermogen draait, zakt de arbeidsfactor sterk, wat extra reactief vermogen van het net vraagt zonder bijkomend nuttig vermogen. Op de volgende grafiek zien we dan hoe het rendement en de arbeidsfactor afnemen naarmate de motor meer belast wordt, dit is dus uitgezet met een verticale reductiecoëficiënt:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{reductierendementenarbeidsfactor.png}
+  \includegraphics[width=0.4\textwidth]{assets/reductierendementenarbeidsfactor.png}
   \caption{Grafiek reductie van rendement en arbeidsfactor bij deellast}
   \label{fig:reductierendementenarbeidsfactor.png}
  \end{figure}
@@ -2478,28 +2478,28 @@ Het rendement is hier eigelijk uitgedrukt als $\frac{\eta}{\eta_{nom}}$ en de ar
 Dan kunnen we ook nog classificeren hoe de motor belast kan worden in de tijd, wat bepaalt hoe de motor moet worden gekoeld of gewoon tot hoelang de motor kan werken. Classificaties hiervan worden aangeduid met S en dan een getal erachter van S1 tot S8, een paar voorbeelden zijn in de les gezien en zal ik nu overlopen.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.25\textwidth]{werkingsregimes.png}
+  \includegraphics[width=0.25\textwidth]{assets/werkingsregimes.png}
   \caption{Werkingsregimes klassen S1 tot S8}
   \label{fig:werkingsregimes.png}
  \end{figure}
 Klasse S1 ziet er als volgt uit:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.35\textwidth]{S1.png}
+  \includegraphics[width=0.35\textwidth]{assets/S1.png}
   \caption{S1 werkingsregime}
   \label{fig:S1.png}
  \end{figure}
 Hier zet je de motor aan en laat je hem aan staan op het zelfde vermogen, het duurt even tot de temperatuur op regimetemperatuur komt maar daarna veranderd die niet, deze klasse kan dus gewoon constant blijven in de tijd. In de onderstaande figuur de S3 klasse:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.35\textwidth]{S3.png}
+  \includegraphics[width=0.35\textwidth]{assets/S3.png}
   \caption{S3 werkingsregime}
   \label{fig:S3.png}
  \end{figure}
 Wat we hier dan zien is dat we de motor aanzetten, deze gaat opwarmen tot een bepaalde temperatuur en dan gaan we hem uitzetten, hij gaat dan afkoelen. Dit gaan we dan herhalen, dit kan dus een aantal keer na elkaar. Het is dus een intermitent gedrag (periodisch), het kan niet constant blijven werken. En de laatste dat is besproken is dan S4:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{S4.png}
+  \includegraphics[width=0.4\textwidth]{assets/S4.png}
   \caption{S4 werkingsregime}
   \label{fig:S4.png}
  \end{figure}
@@ -2508,7 +2508,7 @@ Hier was niet echt uitleg over in de les gegeven dus deze ga ik niet in detail v
 Er zijn ook coderingen afhankelijk van je werkingsomgeving, zoals bijvoorbeeld explosieveilig materiaal. Dit is belangrijk in de chemische industrie waar er veel gassen en dampen zijn die kunnen ontbranden. Hier zijn dan ook speciale motoren voor nodig die dit kunnen weerstaan. Deze worden aangeduid met een lettercode, deze kan je terugvinden op de kenplaat van de motor.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{explosiecodering.png}
+  \includegraphics[width=0.6\textwidth]{assets/explosiecodering.png}
   \caption{Explosieveilige codering van motoren}
   \label{fig:explosiecodering.png}
  \end{figure}
@@ -2516,7 +2516,7 @@ Er zijn ook coderingen afhankelijk van je werkingsomgeving, zoals bijvoorbeeld e
 Bouwvorm is ook iets dat wordt weergegeven op de kenplaat, typisch met een B en dan een getal voor horizontale assen en een V en een getal voor verticale assen. Dit is handig want na 15 jaar ofzo kan je dan bvb. van motor veranderen in je machine en kan je gewoon een motor van een andere type of merk nemen zolang dat die bouwvorm hetzelfde is, het past dan nog steeds in je machine.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{bouwvorm.png}
+  \includegraphics[width=0.8\textwidth]{assets/bouwvorm.png}
   \caption{Bouwvormen van motoren}
   \label{fig:bouwvorm.png}
  \end{figure}
@@ -2524,7 +2524,7 @@ Bouwvorm is ook iets dat wordt weergegeven op de kenplaat, typisch met een B en 
 Het echt 'kiezen' van de motor doen we met een motorcatalogus, hierin zie je meerdere gegevens die niet op de kenplaat staan, verschillende lastbedrijven, kipkoppels, geluid, $\cdots$
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{voorbeeldmotorcatalogus.png}
+  \includegraphics[width=0.8\textwidth]{assets/voorbeeldmotorcatalogus.png}
   \caption{Voorbeeld van een motorcatalogus}
   \label{fig:voorbeeldmotorcatalogus.png}
  \end{figure}
@@ -2545,13 +2545,13 @@ Dan gaan we nu kijken naar hoe we onze motor zelf kunnen dimensioneren, sommige 
 Stel we hebben een toepassing waarbij we eigelijke een materiaal willen walsen met 2 rollers, we willen dan weten wat voor motor we nodig hebben. Met de afmetingen en snelheden gegeven zoals in volgende figuur gaan we dan nu eens bepalen wat voor motor we nodig hebben.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{rolleroef.png}
+  \includegraphics[width=0.8\textwidth]{assets/rolleroef.png}
   \caption{Roller oefening}
   \label{fig:rolleroef.png}
  \end{figure}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{werkingroller.png}
+  \includegraphics[width=0.6\textwidth]{assets/werkingroller.png}
   \caption{Krachtendiagram rollers}
   \label{fig:werkingroller.png}
  \end{figure}
@@ -2570,7 +2570,7 @@ Als we nu nog rekening houden met een rendement van 0.9 dan kunnen we dit theore
 We hebben dus een motor nodig van 153 kW, in de onderstaande catalogus komt dit overeen met de rode omkaderde motor. We zien hier wel dat deze een nominale snelheid van 993 tr/min heeft, dus hebben we een overbrenging nodig.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{motorcatalogusroller.png}
+  \includegraphics[width=0.6\textwidth]{assets/motorcatalogusroller.png}
   \caption{Motor Catalogus}
   \label{fig:motorcatalogusroller.png}
  \end{figure}
@@ -2647,7 +2647,7 @@ In een aandrijving zijn meerdere rendementen eigelijk, we hebben ons rendement v
 Nu kijken we naar een kraan die met een touw rol een last op tilt, er is hier een tandwiel overbrenging aanwezig zoals we zien in volgende figuur:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{hoistoefening.png}
+  \includegraphics[width=0.4\textwidth]{assets/hoistoefening.png}
   \caption{Hoist Oefening}
   \label{fig:hoistoefening.png}
  \end{figure}
@@ -2679,14 +2679,14 @@ Bij deze oefening gaan we van een rendement van 0.7 uit dus gaat een 3kW motor n
 Dus kiezen we een 4kW motor uit de catalogus, deze heeft wel 1443 tr/min en een rendement op vollast van 0.886 dus eigelijk moet je iteraties doen hiermee en dus opnieuw berekenen.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{motorcatalogushoist.png}
+  \includegraphics[width=0.6\textwidth]{assets/motorcatalogushoist.png}
   \caption{Motor Catalogus Hoist}
   \label{fig:motorcatalogushoist.png}
  \end{figure}
 Maar 1 ding waar we nog geen rekening mee hebben gehouden is dat het hijstoestel niet onmiddelijk op topsnelheid start en niet onmiddelijk stopt, het versnelt eerst, houdt een tijdje de topsnelheid aan en vertraagt weer zoals we zien in volgende figuur:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{trapzeiumvormsnelheid.png}
+  \includegraphics[width=0.6\textwidth]{assets/trapzeiumvormsnelheid.png}
   \caption{Trapzeiumvormige snelheid van de last bij een hijstoestel}
   \label{fig:trapzeiumvormsnelheid.png}
  \end{figure}
@@ -2720,7 +2720,7 @@ In ons geval hebben we drie bijdragen:
   Met $m_{drum} = \rho_{steel} \cdot \pi \cdot r_{drum}^2 \cdot l_{drum}$. Die formule voor de cilinder komt uit deze tabel:
   \begin{figure}[H]
     \centering
-    \includegraphics[width=0.4\textwidth]{traagheidsmomenten.png}
+    \includegraphics[width=0.4\textwidth]{assets/traagheidsmomenten.png}
     \caption{Tabel traagheidsmomenten van verschillende vormen}
     \label{fig:traagheidsmomenten.png}
    \end{figure}
@@ -2760,7 +2760,7 @@ Dus een totaal koppel van:
 Uit de catalogus kiezen we nu echter voor een 5.5 kW motor, ons totaal koppel hierbij is wel iets hoger dan ons nominaal koppel maar dat boeit niet want het kipkoppel is 2,6 keer groter.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{55kwmotorselectie.png}
+  \includegraphics[width=0.5\textwidth]{assets/55kwmotorselectie.png}
   \caption{Motorcatalogus 5.5 kW motor}
   \label{fig:55kwmotorselectie.png}
  \end{figure}
@@ -2792,14 +2792,14 @@ Universeel motors zijn \textbf{DC-seriemotoren} die werken op zowel AC als DC (1
 \end{align*}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{dcserieschakelele.png}
+  \includegraphics[width=0.5\textwidth]{assets/dcserieschakelele.png}
   \caption{Herhaling DC-serie schakeling}
   \label{fig:dcserieschakelele.png}
  \end{figure}
 Uit de DC-serie schakeling weten we ook dat $I_e = I_a = I$, bij een shun bekrachtiging worden deze stromen apart aangestuurd, als je dat dan op AC aansluit dan wisselt het statorveld steeds van polariteit. Als de ankerstroom daar niet perfect synchroon mee wissel, keert op sommige momenten of het veld of de stroom van teken, nooit beide, en dan wordt het koppel $T = G \cdot I_e \cdot I_a$ altijd negatief en het resulterende gemiddelde koppel over een periode wordt zo goed als nul. Conclusie: bij een shunt bekrachtiging gaat AC de motor niet doen draaien, alleen een beetje trillen. Bij een serie bekrachtiging is dit anders, want de stroom door de ankerwikkeling en de veldwikkeling is dezelfde, dus als het veld van teken wisselt dan wisselt de ankerstroom ook van teken en blijft het koppel $T = G \cdot I_e \cdot I_a$ altijd positief. Het resulterende gemiddelde koppel over een periode is dus niet nul en de motor draait gewoon verder. Dit is dus waarom een DC-serie motor op AC kan werken. Kan je ook zien aan het feit dat $T = G \cdot I^2$ een kwadraat heeft (altijd positief).
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{voorbeeldbooruniverseelmotor.png}
+  \includegraphics[width=0.5\textwidth]{assets/voorbeeldbooruniverseelmotor.png}
   \caption{Voorbeeld van een universele motor}
   \label{fig:voorbeeldbooruniverseelmotor.png}
  \end{figure}
@@ -2815,7 +2815,7 @@ Dit hebben we eigelijk al eerder gezien, maar hier wordt het rap herhaald maar a
 Dit vormt dus de eerder geziene hyperbole T-n karakteristiek:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{TNseriemootr.png}
+  \includegraphics[width=0.5\textwidth]{assets/TNseriemootr.png}
   \caption{T-n karakteristiek van een DC-serie motor}
   \label{fig:TNseriemootr.png}
  \end{figure}
@@ -2831,7 +2831,7 @@ Een ander nadeel is dat als de motor stil staat dat er een heel grote stroom doo
 Een volgend nadeel is dat het koppel \textbf{pulseert}. Bij een zuivere DC-seriemotor is de stroom constant, dus is het koppel dat ook. Bij de universele motor (op AC) is de stroom sinusvormig, en aangezien $T = G \cdot I^2$, is het koppel dus een gekwadrateerde sinus, het blijft wel altijd positief (want een kwadraat), maar het is niet meer vlak, het pulseert tussen 0 en een piekwaarde aan het dubbele van de netfrequentie. Dat geeft trillingen en geluid, en is meteen ook de reden waarom je een universele motor bijna uitsluitend thuis tegenkomt (boormachine, mixer, stofzuiger) en niet in de industrie, waar je meestal een vlakkere, trillingsvrije aandrijving wil.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{pulserendkoppel.png}
+  \includegraphics[width=0.6\textwidth]{assets/pulserendkoppel.png}
   \caption{Pulserend koppel van een universele motor op AC}
   \label{fig:pulserendkoppel.png}
  \end{figure}
@@ -2851,7 +2851,7 @@ Dit wordt ook mooi bevestigd op de koppel-snelheidsgrafiek: bij eenzelfde percen
 Een laatste ding dat we ook nog kunnen zien in volgende figuur is dat we een iets lager koppel hebben als we de universele motor op AC aansluiten:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{ACDCTN.png}
+  \includegraphics[width=0.4\textwidth]{assets/ACDCTN.png}
   \caption{AC vs DC T-n karakteristiek van een universele motor}
   \label{fig:ACDCTN.png}
  \end{figure}
@@ -2859,14 +2859,14 @@ Een laatste ding dat we ook nog kunnen zien in volgende figuur is dat we een iet
 Dan kijken we nu naar de andere éénfasige motor, de 1-fasige inductie motor. Net zoals de universele motor mag deze motor op het stopcontact. Voor opbouw berschilt deze niet te veel van de normale inductiemotor, hij heeft ook een \textbf{kooirotor} die eigelijk exact hetzelfde is. Het is bij de stator dat er wat verschil is want hier hebben we namelijk \textbf{1 statorwikkeling} (want we kunnen maar 1 fase aansluiten). Ook heeft deze motor een \textbf{centrifugaal schakelaar}, dit is een mechanische schakelaar die reageert op de rotatiesnelheid, hij schakelt om zodra de rotor een bepaalde snelheid bereikt (Het nut hiervan zien we zometeen).
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{eenfasigeinductiemachine.png}
+  \includegraphics[width=0.5\textwidth]{assets/eenfasigeinductiemachine.png}
   \caption{Eénfasige inductiemachine}
   \label{fig:eenfasigeinductiemachine.png}
  \end{figure}
 De koppel-toerental karakteristiek van deze motor ziet er als volgt uit (het is die Single-phase op de figuur):
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{TNeenfasigeim.png}
+  \includegraphics[width=0.6\textwidth]{assets/TNeenfasigeim.png}
   \caption{Koppel-toerental karakteristiek van een éénfasige inductiemachine}
   \label{fig:TNeenfasigeim.png}
  \end{figure}
@@ -2875,21 +2875,21 @@ Hier op zien we een probleem, namelijk dat bij de 1-fasige inductiemachine er \t
 Hoezo heeft een wisselveld nog koppel eigelijk? We gaan het als volgt bekijken, we hebben in de volgende figuur ons wissledveld, dit kan beschreven worden als een staande golf (hier in het zwart). Ook kan dit puur pulserend veld beschreven worden als de som van \textbf{twee even grote velden die met dezelfde snelheid in tegengestelde richting ronddraaien}. Op de figuur is dit de paarse curve (een som van een blauwe en rode curve in tegengestelde richting):
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{veld1fasigeIM.png}
+  \includegraphics[width=0.8\textwidth]{assets/veld1fasigeIM.png}
   \caption{Curve van het wisselend statorveld van een 1-fasige inductiemachine}
   \label{fig:veld1fasigeIM.png}
  \end{figure}
 Om dit duidelijker te maken zien we in volgende figuur de 2 fasoren van die tegengestelde velden, ze draaien in tegengestelde richting en op elk punt als je die 2 fasoren optelt gaan die dus die paarse curve vormen:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{fasorenblauwenroodveld.png}
+  \includegraphics[width=0.8\textwidth]{assets/fasorenblauwenroodveld.png}
   \caption{Fasoren van de tegengestelde velden}
   \label{fig:fasorenblauwenroodveld.png}
  \end{figure}
 Nu wat zijn we hiermee? Dat we weten dat dit zo kan beschreven worden? Awel, sinds dat dit 2 aparte fictieve draaivelden zijn kunnen die zich ook gedragen als draaivelden van een gewone inductiemotor en genereren die dus elk een eigen koppel-slip-curve die we in de volgende figuur met de stippenlijnen zien:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{singlephadetorquetheoreticalapproach.png}
+  \includegraphics[width=0.8\textwidth]{assets/singlephadetorquetheoreticalapproach.png}
   \caption{1 fasige inductiemachine koppel theoretische benadering}
   \label{fig:singlephadetorquetheoreticalapproach.png}
  \end{figure}
@@ -2901,7 +2901,7 @@ De bovenste rode stippenlijn is dan voor dat rode draaiveld en de onderste rode 
 \textit{Een andere manier om deze werking te verklaren is een meer fysisch perspectief. Voor de fysische betekenis van dit koppel gaan we kijken naar de figuur hier onder. We hebben namelijk een rotor die ronddraait. De stator heeft dan een wisselend magnetisch veld, waardoor in hetzelfde vlak een spanning wordt geïnduceerd. Dit is dus nog steeds hetzelfde als bij stilstand. Maar omdat de rotor draait, en de rotor inductief is, gaat de stroom pas ontstaan als de motor al gedraaid is. Hierdoor gaan we dus ook een magnetisch veld opwekken in de rotor, wat staat volgens de lijn van de maximale stroom. Hierdoor gaat er dus ook een koppel ontstaan bij een motor. }
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{crossfieldtheory.png}
+  \includegraphics[width=0.4\textwidth]{assets/crossfieldtheory.png}
   \caption{Fysische betekenis (cross field theory)}
   \label{fig:crossfieldtheory.png}
  \end{figure}
@@ -2913,14 +2913,14 @@ Nu gaan we dan kijken naar hoe we zo een 1-fasige machine kunnen starten aangezi
 Het makkelijkste dat we kunnen doen is hem natuurlijk manueel/extern aanduwen, gewoon een klein duwtje geven en hij draait. \textit{(Of zoals Prof. Nobels het zei: 'We laten een chineesje de motor aanlopen!')}. De andere manier om de motor te starten is met een \textbf{hulpwikkeling}, dit is een 2de wikkeling die $90^\circ$ verschoven is tegenover die éne statorwikkeling zoals in volgende figuur:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{hulpwikkeling.png}
+  \includegraphics[width=0.4\textwidth]{assets/hulpwikkeling.png}
   \caption{Starting winding is die hulpwikkeling, de andere is de hoofdwikkeling}
   \label{fig:hulpwikkeling.png}
  \end{figure}
 We doen dit want samen kunnen 2 wikkelingen wel een (bij benadering) draaiveld opwekken, ideaal is dit dus natuurlijk een mooi rond draaiveld maar omdat beide wikkelingen hier op dezelfde ééncontactspanning hangen (en we dus geen tweede fase eigelijk hebben) gaan we deze hulpwikkeling elektrisch iets anders moeten bouwen dan de hoofdwikkeling (bvb. dunnere draad, meer weerstand, minder inductief) zodat de stroom van nature een beetje voorloopt tegenover de stroom in de (meer inductieve) hoofdwikkeling. Zo hebben we wel een faseverschil en gaan we een draaiveld krijgen, dit draaiveld gaat nooit exact $90^\circ$ zijn maar eerder een \textbf{elliptisch draaiveld} maar dit is nog steeds sterk genoeg om de motor aan te lopen. En hier is dan het speciale! Eens dat de motor op snelheid is gekomen schakelt die \textbf{centrifugaal schakelaar} de hulpwikkeling automatisch uit want die hulpwikkeling kan anders doorbranden en zowieso ook voor te veel verliezen zorgen. Wat we wel kunnen doen om dichter bij die $90^\circ$ te geraken is een condensator in serie met de hulpwikkeling zetten, zo duw je eigelijk dat faseverschil dichter naar $90^\circ$. Hierdoor kan je een hoger opstartkoppel bereiken. Dit noemt dan eigelijk de \textbf{condensator motor}, we kunnen deze ook tijdens het normaal bedrijf van de motor verder laten draaien met nog een aparte kleinere condensator wat net iets beter is of gewoon gebruiken enkel tijdens het opstarten en dan uitschakelen met de centrifugaal en het verschil tussen de koppeltoerental karakteristiek van de deze (met dus hulpwikkeling met condensator en de gewone motor met de hoofdwikkeling) ziet er dan zo uit:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{TNcondensatormotor.png}
+  \includegraphics[width=0.5\textwidth]{assets/TNcondensatormotor.png}
   \caption{T-n karakteristiek van een condensator motor (met hulpwikkeling) vs gewone 1-fasige inductiemotor}
   \label{fig:TNcondensatormotor.png}
  \end{figure}
@@ -2929,7 +2929,7 @@ De condensator motor wordt ook wel de beste 1-fasige motor genoemd. De eer van d
 Dit is wel echt een heel kleine motor en heeft eigelijk meer als nut ook het starten van de 1-fasige inductie-motor, het is dus niet echt een aparte variant van die motor, dit dient vooral voor kleine vermogen met lage efficiënties. Het is dus ook de goedkoopste/eenvoudigste manier om een 1-fasige inductiemotor te laten starten (maar dus ook de slechtste). Het idee is hier dat je geen aparte hulpwikkeling in deze kleine motor gebruikt maar dat je met de hoofdwikkeling zelf hier 4 polen maakt en dat die polen eigelijk gesplitst zijn fysiek. Rond een deel van elk van die gesplitste polen wordt een kortgesloten koper ringetje geplaatst (dus niet enkel op 1 pool, maar op elke pool, telkens aan dezelfde kant) waardoor er daarin telkens een stroom wordt geïnduceerd door het feit dat de flux van de hoofdwikkeling daar pulseert. Wat dit doet is dan de verandering tegenwerking waardoor de flux in dat klein stukje vertraagd wordt en er dus een soort van faseverschil ontstaat waardoor er een klein koppel ontstaat. Het statorveld wordt trouwens apart opgewekt en zo naar de rotor gebracht. Je ziet dit in volgende figuur (die stator zijn de oranje wikkelingen, het veld wordt via dat gelamelleerd ijzer verder gebracht):
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{spleetpoolmotor.png}
+  \includegraphics[width=0.6\textwidth]{assets/spleetpoolmotor.png}
   \caption{Spleetpoolmotor}
   \label{fig:spleetpoolmotor.png}
  \end{figure}
@@ -2937,7 +2937,7 @@ Dit is wel echt een heel kleine motor en heeft eigelijk meer als nut ook het sta
 De volgende grafiek toont alle besproken startmethodes naast elkaar van beste naar slechtste koppel:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{Tnkarakteritstieken1fmotore.png}
+  \includegraphics[width=0.6\textwidth]{assets/Tnkarakteritstieken1fmotore.png}
   \caption{Koppel-Toerental karakteristieken van de 1-fasige inductiemotoren}
   \label{fig:Tnkarakteritstieken1fmotore.png}
  \end{figure}
@@ -2947,7 +2947,7 @@ De 'Split-phase' motor is de gewone 1-fasige inductiemotor met hulpwikkeling tro
 En in volgende tabel zien we nog rap een kort overzicht van de 5 verschillende 1-fasige motors:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{tabel1fmotors.png}
+  \includegraphics[width=0.6\textwidth]{assets/tabel1fmotors.png}
   \caption{Tabel van de 5 verschillende 1-fasige inductiemotoren}
   \label{fig:tabel1fmotors.png}
  \end{figure}
@@ -2956,7 +2956,7 @@ We zien dat de 'permanently split capacitator' en 'capacitator start capacitator
 Dan gaan we nu over naar de vermogenelektronica gestuurde motoren, we gaan eigelijk vooral de deze bespreken. De BLDC is elektrisch gezien een DC machine maar dan \textit{zonder een mechanische commutator en borstels}. Wat hier ook belangrijk is, is dat\textbf{ het anker hier de stator is en de bekrachtiging de rotor!} Dit was omgekeerd bij de normale DC-machine!!! De wikkelingen zitten bij de BLDC dus vast op de stator en draaien de permanente magneten mee met de rotor (zelfde opbouw als de permanentmagneet synchroonmachine). Doordat er geen borstels zijn \textit{kan de BLDC niet rechtstreeks op een batterij (of stopcontact) aangesloten worden}, we hebben hier dus altijd een elektronische controller nodig die de stroom naar de juiste wikkeling op het juiste moment stuurt. Hier is voor de zekerheid en verduidelijk nog een tabel waarin staat wat het anker en wat de bekrachtiging is bij de (PM)DC, BLDC en (PM)SM:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{tabelmachinesankerbekrachtiging.png}
+  \includegraphics[width=0.6\textwidth]{assets/tabelmachinesankerbekrachtiging.png}
   \caption{Tabel van de anker- en bekrachtigingswikkelingen van de verschillende machines}
   \label{fig:tabelmachinesankerbekrachtiging.png}
  \end{figure}
@@ -2964,19 +2964,19 @@ Dan gaan we nu over naar de vermogenelektronica gestuurde motoren, we gaan eigel
 Dus bij de BLDC heb je niet de commutator met borstels dat als mechanische inverter werkt en ervoor zorgt dat de stroom door de rotors steeds in de juiste richting staat, hier ga je het dus moeten doen met elektronica. Om te weten wanneer er precies moet geschakeld worden moet de controller dus weten waar de rotor zich precies bevindt. Dit gebeurt met \textbf{Hall-sensoren}, door er zo 3 te gebruiken en dit een simpel digitaal signaal te doen genereren afhankelijk van welke pool er voorbij komt kan met een paar berekeningen de exacte sector (1 van de 6 in de figuren die ik ga tonen) bepaald worden van 1 omwenteling. De controller zelf die weet precies via deze hall waardes welke stroom gestuurd moet worden (-10, 0 of 10 A, 10 is gewoon een voorbeeld van een DC stroom). Via transistoren worden die stromen dan geschakeld. Bij elke overgang naar zo een nieuwe sector schakelt de controller de volgende combinatie van transistoren, dit heet \textbf{6-staps-(of trapezoïdale) commutatie}.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{hallsensorsmetcontroller.png}
+  \includegraphics[width=0.5\textwidth]{assets/hallsensorsmetcontroller.png}
   \caption{BLDC met hall sensor en controller}
   \label{fig:hallsensorsmetcontroller.png}
  \end{figure}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{hallsensorgestuurdestromen.png}
+  \includegraphics[width=0.6\textwidth]{assets/hallsensorgestuurdestromen.png}
   \caption{Stromen gestuurd door de hall sensor}
   \label{fig:hallsensorgestuurdestromen.png}
  \end{figure}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{6stapscommutatie.png}
+  \includegraphics[width=0.6\textwidth]{assets/6stapscommutatie.png}
   \caption{6-staps commutatie}
   \label{fig:6stapscommutatie.png}
  \end{figure}
@@ -2984,14 +2984,14 @@ Dus bij de BLDC heb je niet de commutator met borstels dat als mechanische inver
 Terwijl dat de rotor draait (met zijn magneten dus) zien de statorspoelen dus ook een veranderd magnetisch veld voorbij komen wat dus een spanning induceert in de spoel ($e = B \cdot l \cdot v$). Dit is het terug-emk en deze wordt groter naarmate de rotor sneller draait (zoals bij alle DC en AC machines). Wat er echter speciaal is, is dat deze een \textbf{trapezoïdale vorm} heeft i.p.v. een mooie sinus, zoals we kunnen zien in volgende figuur:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{tegenemkbldc.png}
+  \includegraphics[width=0.6\textwidth]{assets/tegenemkbldc.png}
   \caption{Terug-emk van de BLDC motor}
   \label{fig:tegenemkbldc.png}
  \end{figure}
 Dit komt doordat als een spoel volledig onder zo één magneetpool zit, ze eigelijk ongeveer een constant veld ziet steeds, dit maakt het constant in die emf-curve, pas wanneer de rotor verder draait en de zuidpool wegschuift terwijl de volgende noordpool binnekomt veranderd het veld snel van volledig negatief naar volledig positief wat dus die schuine flank geeft (uiteindelijk trapezium dus). Het feit dat dit wel een mooie sinus is bij de PMSM terwijl die ook permanente magenten gebruikt is door het feit dat daar de statorwikkelingen verdeeld zijn in plaats van geconcentreerd rond de polen zoals hier.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.7\textwidth]{tegenemkbldcpmsm.png}
+  \includegraphics[width=0.7\textwidth]{assets/tegenemkbldcpmsm.png}
   \caption{Terug-emk van de BLDC en de PMSM motor}
   \label{fig:tegenemkbldcpmsm.png}
  \end{figure}
@@ -3000,7 +3000,7 @@ Nog iets belangrijk om te onthouden bij deze 2 motoren is dat doordat we permane
 Net zoals de DC-machine heeft een BLDC motor een continue koppelzone (het groene) en ook een korstondige/intermittente zone (geel/snotgroen) erboven:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{TNBLDC.png}
+  \includegraphics[width=0.5\textwidth]{assets/TNBLDC.png}
   \caption{Koppel-toerental karakteristiek van de BLDC motor}
   \label{fig:TNBLDC.png}
  \end{figure}
@@ -3010,7 +3010,7 @@ Er is ook een T-limiet (het plafond), dit is bepaald door de maximale stroom die
 De volgende grafiek toont de verschillende lijnen voor verschillende spanningen, hoe hoger de spanning, hoe hoger de bereikbare snelheid bij een gegeven koppel. (Dit zagen we eerder bij de DC machine), het belangrijkste hier is omdat een BLDC via vermogenelektronica aangestuurd wordt, je niet gelimiteerd bent tot 1 van die lijnen, de controller kan elke spanning tot aan $V_1$ leveren. Dus eigelijk kan je in de praktijk eender welk werkingspunt in het oppervlak onder de $V_1$ lijn aannemen.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{VlijnenBLDC.png}
+  \includegraphics[width=0.5\textwidth]{assets/VlijnenBLDC.png}
   \caption{Spanningslijnen van de BLDC motor}
   \label{fig:VlijnenBLDC.png}
  \end{figure}
@@ -3033,7 +3033,7 @@ Nu gaan we enkele voor- en nadelen vergelijken van de BLDC met de gewone (PM)DC 
 Een samenvattende figuur van voor en nadelen voor ook de inductiemotor en stappenmotor zien we in volgende figuur:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{vergelijkingenmotore.png}
+  \includegraphics[width=0.8\textwidth]{assets/vergelijkingenmotore.png}
   \caption{Vergelijking van de verschillende motoren}
   \label{fig:vergelijkingenmotore.png}
  \end{figure}
@@ -3041,7 +3041,7 @@ Een samenvattende figuur van voor en nadelen voor ook de inductiemotor en stappe
 Een reluctantie motor is een nieuw type motor, het positioneert zich als een concurrent van de inductiemachine. Het is een soort synchrone motor. Het bijzondere aan deze motor is dat \textit{de rotor enkel bestaat uit ijzer}, dus geen wikkelingen of magneten of kooi ofzo. Dit maakt het super goedkoop en robuust (geen koperverliezen op de rotor, geen dure magneten en praktisch INDESTRUCTABLE). Maar hoe werkt het?
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{fotoreluctantiemotor.png}
+  \includegraphics[width=0.4\textwidth]{assets/fotoreluctantiemotor.png}
   \caption{Reluctantie motor}
   \label{fig:fotoreluctantiemotor.png}
  \end{figure}
@@ -3049,21 +3049,21 @@ Een reluctantie motor is een nieuw type motor, het positioneert zich als een con
 We zagen dit concept al eerder maar deze motor werkt hier dus volledig op, namelijk het \textbf{reluctantiekoppel}. Reluctantie is de magnetische weerstand eigelijk, het is hoe makkelijk de flux door een pad kan vloeien en ijzer heeft een veel lagere reluctantie dan lucht. Het kernprincipe van deze motor is dat elk magnetisch systeem probeert zijn energie te minimaliseren, dus door zijn reluctantie te minimaliseren. Een stuk ijzer dat scheef staat tegenover een veld 'voelt' daardoor een koppel dat het terug wilt uitlijnen met dat veld (want het is het pad van minst reluctantie). Dit zien we in de volgende figuur:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{padvanminstreluctantie.png}
+  \includegraphics[width=0.4\textwidth]{assets/padvanminstreluctantie.png}
   \caption{Pad van minst reluctantie}
   \label{fig:padvanminstreluctantie.png}
  \end{figure}
 In de volgende figuur zien we hoe dit toegepast wordt met de stator en de rotor, hoe meer overlap tussen de stator en rotortanden, hoe lager de reluctantie:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{sgtatorrotorreluctantie.png}
+  \includegraphics[width=0.8\textwidth]{assets/sgtatorrotorreluctantie.png}
   \caption{Overlap tussen stator en rotor}
   \label{fig:sgtatorrotorreluctantie.png}
  \end{figure}
 Er zijn 2 varianten van reluctantiemotoren, we hebben de \textbf{synchrone reluctantie motor} en de \textbf{'switched' reluctantie motor} (SRM).
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{synchroneenswitchedreluctantiemotor.png}
+  \includegraphics[width=0.6\textwidth]{assets/synchroneenswitchedreluctantiemotor.png}
   \caption{Varianten van reluctantiemotoren}
   \label{fig:synchroneenswitchedreluctantiemotor.png}
  \end{figure}
@@ -3077,7 +3077,7 @@ De 'switched' reluctantiemotor heeft echter een paar nadelen, namelijk dat we ee
 Het is dus de deze dat dan meer gebruikt wordt als we het gaan hebben over de reluctantie motor. De rotor is  hier opgebouwd uit gelamelleerd ijzer met halfronde luchtspleten (flux barrieres) die in lagen boven elkaar zitten, dit zie je in de figuur hieronder links. Dit maakt de opbouw eigelijk anisotroop, in de ene richting geleidt hij flux makkelijk (rood) en in de andere richting bijna niet (blauw). 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{synchronereluctantiemotor.png}
+  \includegraphics[width=0.6\textwidth]{assets/synchronereluctantiemotor.png}
   \caption{Synchrone reluctantiemotor}
   \label{fig:synchronereluctantiemotor.png}
  \end{figure}
