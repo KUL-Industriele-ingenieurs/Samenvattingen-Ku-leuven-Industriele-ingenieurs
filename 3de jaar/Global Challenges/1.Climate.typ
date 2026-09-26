@@ -2,169 +2,231 @@
 
 = Climate <ch:climate>
 
-_Een heel leuke video die ik kan aanraden die klmaat ook bespreekt is. #link("https://youtu.be/uqwvf6R1_QY?si=r2UsIExK1GKAZnO2 ") _
+_Een aanrader die het klimaat ook bespreekt: #link("https://youtu.be/uqwvf6R1_QY?si=r2UsIExK1GKAZnO2")._
 
-Ons klimaat is heel snel aan het veranderen.
+Ons klimaat verandert heel snel. De grootste oorzaak is de uitstoot van broeikasgassen door de mens.
 
-In dit hoofdstuk bekijken we het klimaat van 800.000 jaar geleden en vergelijken we wat er vandaag anders is en waarom.
+In dit hoofdstuk vergelijken we het klimaat van de voorbije 800.000 jaar met dat van vandaag: wat is er anders, en waarom? Daarna stellen we drie vragen:
 
-Een van de de grootste oorzaken is klimaat verandering door de uitstoot van broeikasgassen.
+- Wat gebeurt er met mens en natuur als we blijven broeikasgassen uitstoten?
+- Wat gebeurt er als we die uitstoot snel en _drastisch_ stoppen?
+- Hoe kunnen we dat doen?
 
-Wat zou er gebeuren moesten we niet stoppen met het uitstoten van broeikasgassen? Wat zijn de gevolgen voor de mens en de natuur?
-
-Maar wat zouden de gevolgen zijn moesten we heel snel _drastisch_ stoppen met het uitstoten van broeikasgassen?
-
-We stellen dan nog de vraag, hoe kunnen we dit doen?
-
-We bekijken dan de grootste impactfactoren van klimaat verandering en hoe we deze kunnen aanpakken.
+Tot slot bekijken we de factoren met de grootste impact op klimaatverandering, en hoe we die kunnen aanpakken.
 
 == Main climate challenges <sec:main-climate-challenges>
 
-We kijken eerst een naar de temperatuurs verandering van de aarde rond 20.000 jaar geleden.
-
-#figure(
-  image("assets/Temperatuursverandering-over-20.000-jaar.png", width: 5cm),
-  caption: [Temperatuursverandering-over-20.000-jaar],
+#wrap-figure(
+  image("assets/Temperatuursverandering-over-20.000-jaar.png", width: 7.5cm),
+  caption: [Temperatuuranomalie over de laatste 20.000 jaar],
   label: <fig:Temperatuursverandering-over-20.000-jaar>,
-)
+)[
+  @fig:Temperatuursverandering-over-20.000-jaar toont de temperatuur van de aarde over de laatste 20.000 jaar.
 
-de blauwe lijn is de holocene, een heel stabiele temperatuursperiode net uit de ijstijd waarbij maatschappij ontstond omdat de hogere temperaturen landbouw mogelijk maakten.
+  De blauwe lijn is het #keyterm[Holoceen]: de periode na de laatste ijstijd, met een heel stabiele temperatuur. De hogere temperaturen maakten landbouw mogelijk, en daardoor konden de eerste samenlevingen ontstaan.
 
-200 jaar geleden begon de industriële revolutie waarbij er nog nooit zoveel welvaart was geweest, om de machines van de tijd te laten draaien gebruikte ze kool en gas.
+  Zo'n 200 jaar geleden begon de industriële revolutie, die meer welvaart bracht dan ooit tevoren. De machines uit die tijd draaiden op steenkool en gas.
+]
 
-=== Ontstaan kool en gas <sec:ontstaan-kool-en-gas>
+=== Ontstaan van steenkool, olie en gas <sec:ontstaan-kool-en-gas>
 
-100 miljoen jaren geleden, als dieren en planten stierven werden hun resten naar de bodem gebracht. Door de warmte en druk van de grond werden die resten hard aangedrukt, dat uiteindelijk kool, olie en gas werden.
-
-#figure(
-  image("assets/Vorming-kool,-olie-en-gas.png", width: 5cm),
-  caption: [Vorming-kool,-olie-en-gas],
+#wrap-figure(
+  image("assets/Vorming-kool,-olie-en-gas.png", width: 7.5cm),
+  caption: [Vorming van steenkool: moeras, turf, steenkool],
   label: <fig:Vorming-kool-olie-en-gas>,
-)
+)[
+  Steenkool, olie en gas ontstaan uit de resten van dode planten en dieren. Die resten raakten bedolven onder nieuwe lagen. Door de warmte en de druk in de grond werden ze over miljoenen jaren omgezet.
 
-door de broeikasgassen die uitgestoten worden door die verbranden zijn er enorm veel impacten op het klimaat, biologisch systeem maar ook mensen,onze systemen en productielijnen.
+  Steenkool komt van planten uit moerassen (@fig:Vorming-kool-olie-en-gas). De dode planten vormen eerst turf, en onder warmte en druk wordt die turf steenkool. De meeste steenkool ontstond 360 tot 300 miljoen jaar geleden. Olie en gas komen van plankton dat op de zeebodem terechtkwam.
+]
+
+#NOTE[In de les werd "100 miljoen jaar geleden" gezegd. Voor olie en gas kan dat kloppen, voor de meeste steenkool niet.]
+
+Wanneer we die brandstoffen verbranden, komen er broeikasgassen vrij. Die hebben een impact op drie systemen (@fig:Impacten-Klimaat):
+
+- *Fysisch systeem*: gletsjers, sneeuw, ijs en permafrost, neerslag, zeespiegel en kusterosie
+- *Biologisch systeem*: ecosystemen op land, bosbranden, mariene ecosystemen
+- *Menselijke systemen*: voedselproductie, economische systemen
 
 #figure(
-  image("assets/Impacten-Klimaat.png", width: 5cm),
-  caption: [Impacten-Klimaat],
+  image("assets/Impacten-Klimaat.png", width: 100%),
+  caption: [Impact van klimaatverandering op drie systemen],
   label: <fig:Impacten-Klimaat>,
 )
 
-Dus dit creeërt wat challenges voor de mensheid,
-
-we moeten eerste klimaatverandering mitigeren,
-
-We kunnen dit op twee manieren doen:
-
-1. Broeikasgassen verminderen
-2. Broeikasgassen sinks verbeteren
-
-Daarna moeten we ons aanpassen aan de klimaatverandering die er al is en het gaat nog erger worden. We moeten ons als maatschappij voorbereiden op de gevolgen van klimaatverandering.
-
-== Klimaatsverandering over geologische tijd <sec:klimaatsverandering-over-geologische-tijd>
-
-Een van de beste manieren dat we het klimaat over lange periodes kunnen analyseren is door het antarctisch ijs te bestuderen. Het ijs is gelaagt en bevat nog wat lucht die bestuurd kan worden waar we de staat van de atmosfeer kunnen analyseren. We kunnen ook de temperatuur van de aarde afleiden uit het ijs.
+@fig:Impacten-Klimaat-wereldkaart toont per regio welke impact al waargenomen is. Het symbool geeft het systeem aan, de kleur de groep: blauw voor fysische, groen voor biologische en rood voor menselijke systemen. Een gevuld symbool betekent dat klimaatverandering een grote bijdrage levert aan die impact, een omlijnd symbool een kleine. Het staafje naast elk symbool geeft aan hoe zeker het is dat de impact aan klimaatverandering te wijten is, van _very low_ tot _very high_.
 
 #figure(
-  image("assets/Temperatuursverschillen-over-1MYA.png", width: 5cm),
-  caption: [Temperatuursverschillen-over-1MYA],
+  image("assets/Impacten-Klimaat-wereldkaart.png", width: 100%),
+  caption: [Waargenomen impact van klimaatverandering per regio en per systeem],
+  label: <fig:Impacten-Klimaat-wereldkaart>,
+)
+
+Dat geeft de mensheid twee uitdagingen.
+
+Ten eerste moeten we klimaatverandering #keyterm[mitigeren]. Dat kan op twee manieren:
+
++ de uitstoot van broeikasgassen verminderen
++ de sinks voor broeikasgassen verbeteren (bossen, oceanen, ... die CO#sub[2] opnemen)
+
+Ten tweede moeten we ons #keyterm[aanpassen] aan de klimaatverandering die er al is. Die wordt nog erger, dus de samenleving moet zich voorbereiden op de gevolgen.
+
+== Klimaatverandering over geologische tijd <sec:klimaatsverandering-over-geologische-tijd>
+
+Het klimaat over lange periodes bestuderen we met het ijs van Antarctica. Dat ijs is in lagen opgebouwd en bevat nog kleine luchtbelletjes. Uit die lucht leiden we af hoe de atmosfeer toen was samengesteld en hoe warm het was.
+
+#figure(
+  image("assets/Temperatuursverschillen-over-1MYA.png", width: 100%),
+  caption: [Temperatuuranomalie op Antarctica over de laatste 800.000 jaar],
   label: <fig:Temperatuursverschillen-over-1MYA>,
 )
 
-Je kunt op de grafiek zien dat de aarde zijn temperatuur wel veel schommelt.
+@fig:Temperatuursverschillen-over-1MYA toont dat de temperatuur van de aarde sterk schommelt. Koude ijstijden wisselen af met warmere periodes.
 
-Een interglacial is een periode tussenin ijstijden, een periode van warmere temperaturen. De aarde is nu in een interglacial periode.
+Een #keyterm[interglaciaal] is zo'n warmere periode tussen twee ijstijden. Op dit moment zitten we in een interglaciaal. Tijdens het vorige interglaciaal, 120.000 jaar geleden, was het 2 °C warmer dan nu. De zeespiegel lag toen 6 tot 9 meter hoger.
 
-met de laatste interglacial die 120.000 jaar geleden was, was de temperatuur 2 graden warmer dan nu. De zeespiegel was toen 6 tot 9 meter hoger dan nu.
+== Natuurlijke oorzaken van klimaatverandering <sec:oorzaken-van-klimaatverandering>
 
-== oorzaken van klimaatverandering <sec:oorzaken-van-klimaatverandering>
+Het klimaat verandert dus ook zonder de mens. Dit deel gaat over die natuurlijke oorzaken. De menselijke oorzaken volgen in @sec:bewijzen-menselijke-oorzaken-klimaatsverandering.
 
-We zien dus dat het klimaat van de aarde wel veel veranderd over de tijd, maar wat zijn de oorzaken hiervan? _Dit is natuurlijke klimaatsverandering, later gaan we spreken over menselijke klimaatsverandering_ .
+=== De baan en de stand van de aarde <sec:baan-aarde>
 
-1. Variaties in de orbit van de aarde, de eccentriciteit, de precessie en de obliquiteit van de aarde. Deze variaties zorgen voor een verandering in de hoeveelheid zonnestraling die de aarde ontvangt. 2. De draaing van de aarde, de aarde zijn tilt veranderd over de tijd, bij zijn max tilt zoals dat we nu zitten zijn de zomers warmer en smelten veel delen van de ijskappen => warmere periodes.
-3. D Precession van de aarde, de aarde draait niet perfect rond zijn as, dit zorgt voor een verandering in de hoeveelheid zonnestraling die de aarde ontvangt.
+De baan van de aarde rond de zon en de stand van haar as veranderen langzaam. Daardoor verandert de hoeveelheid zonlicht die de aarde ontvangt, en waar en wanneer ze die ontvangt. Er spelen drie variaties:
 
-De obliquiteit is een van de belangrijkste omdat het smelten van het ijs ervoor zorgt dat er minder zonnestraling wordt gereflecteerd en meer warmte wordt geabsorbeerd door de aarde. Dit zorgt voor een versterking van de opwarming van de aarde. Dit is dus een *Positieve feedback loop*. Dat ijs absorbeert ook CO2 en dus als dat gaat smelten komt er meer CO2 vrij in de atmosfeer en dat versterkt de opwarming van de aarde nog meer.
++ *Excentriciteit*: de baan rond de zon is soms ronder, soms meer ellipsvormig.
++ *Obliquiteit*: de hoek waaronder de aardas gekanteld staat, schommelt tussen 22,1° en 24,5° in een cyclus van 41.000 jaar. Bij een grotere kanteling zijn de zomers op hoge breedtegraden warmer. Dan smelt een groot deel van de ijskappen, en wordt het warmer op aarde. Nu staat de as 23,4° gekanteld, en die hoek neemt langzaam af.
++ *Precessie*: de aardas tolt langzaam rond, zoals een draaiende tol. Daardoor verschuift het moment in het jaar waarop de aarde het dichtst bij de zon staat.
 
-#TODO[Find diagram to add of the positive feedback loop of ice melting and increased absorption of heat]
+De obliquiteit weegt zwaar door, omdat het smeltende ijs de opwarming versterkt. Minder ijs betekent dat er minder zonlicht wordt teruggekaatst en dat de aarde meer warmte opneemt. Daardoor smelt er nog meer ijs. Dit is een #keyterm[positieve feedbackloop] (@fig:ijs-albedo-feedback).
 
-het tweede natuurlijke phenomeen, wanneer er veel land is rond de polen kan ijs makkelijker vormen en dus meer licht reflecteren, dit zorgt voor een afkoeling van de aarde. Wanneer er veel oceanen zijn rond de polen kan er minder ijs vormen en dus minder licht reflecteren, dit zorgt voor een opwarming van de aarde.
+Bij de opwarming komt er ook extra CO#sub[2] in de atmosfeer, vooral uit de oceanen en uit bodems die onder het ijs vandaan komen. Die CO#sub[2] versterkt de opwarming nog verder.
 
-vulkanische activiteit zorgt ook voor afkoeling van de aarde, door de uitstoot van zwaveldioxide die in de stratosfeer terechtkomt en daar een reflecterende laag vormt. Dit zorgt ervoor dat er minder zonnestraling de aarde bereikt.
-
-#TODO[voorbeeld van de year without summer toevoegen]
-
-maar het probleem is dat wat we nu zien dat de temperatuursgroei te groot is om enkel natuurlijke oorzaken te hebben. Voor de grote stijging zijn wij verantwoordelijk, door de uitstoot van broeikasgassen zoals CO2 en Methaan. Deze gassen zorgen ervoor dat er meer warmte wordt vastgehouden in de atmosfeer en dus voor een opwarming van de aarde.
-
-Het enige koolingseffect dat de industrie heeft is dat smalle deeltjes in de lucht die zonlicht reflecteren, maar dit effect is veel kleiner dan het opwarmingseffect van de broeikasgassen. Je hebt dus nog een netto positief effect van de industrie op de opwarming van de aarde.
-
-door dat het artische ijs nu ook veel meer smelt komt er co2 vrij dat in het ijs zit opgeslagen, dit versterkt de opwarming van de aarde nog meer.
-
-=== C02 levels <sec:c02-levels>
-
-Als we het C02 over de tijd analyseren zien we een gigantisch grote toename van C02 in de atmospheer met een concentratie voor de industriële revolutie van 280 ppm naar 420 ppm nu. Dit is een stijging van 50% in 200 jaar tijd.
-
-#TODO[MERGE EXISTING TEXT INTO TEXT IN DUTCH, TEXT IS FROM MOOC ITSELF]
-
-An important global challenge is the mitigation of climate change by reducing greenhouse gases in the atmosphere. So does the current CO2 concentration in the atmosphere compare to what we have seen during human history? And what is the relation with temperature?
-
-From the encapsulated air bubbles in the Antarctic ice sheets we can derive the past temperatures and  CO2 levels.  The figure below shows the variations in CO2 concentrations and Antarctic temperature anomaly over the past 800,000 years until now.
-
-Temperatures have been varying with glacial and interglacial periods over the last 800,000 years, with variations larger than 12 degrees Celsius. The warm periods - the interglacials – are corresponding to high CO2 concentrations while the cold periods correspond with low CO2 concentrations.
-
-Since the emergence of Homo sapiens about 300,000 years before present, the variation has been between 180 and 280 parts per million volume. If we now look at the 2021 average concentration, it's 416 parts per million volume. This is almost 40% higher than the highest we have seen during the entire history of the human species. These high CO2 values have been the most important cause of the warming of the earth that we have seen since industrialization
 #figure(
-  image("assets/C02-levels-over-de-tijd.png", width: 5cm),
-  caption: [C02-levels-over-de-tijd],
-  label: <fig:C02-levels-over-de-tijd>,
+  fletcher.diagram(
+    spacing: (1.2cm, 1cm),
+    node-stroke: 0.6pt,
+    node-corner-radius: 3pt,
+    node-inset: 6pt,
+    edge-stroke: 0.8pt,
+    fletcher.node((0, 0), [Opwarming], fill: schoolRed.lighten(80%)),
+    fletcher.node((2, 0), [IJs smelt], fill: schoolBlue.lighten(80%)),
+    fletcher.node((2, 1), [Minder zonlicht \ teruggekaatst], fill: schoolBlue.lighten(80%)),
+    fletcher.node((0, 1), [Aarde neemt meer \ warmte op], fill: schoolRed.lighten(80%)),
+    fletcher.edge((0, 0), (2, 0), "-|>"),
+    fletcher.edge((2, 0), (2, 1), "-|>"),
+    fletcher.edge((2, 1), (0, 1), "-|>"),
+    fletcher.edge((0, 1), (0, 0), "-|>"),
+  ),
+  caption: [Positieve feedbackloop van smeltend ijs],
+  label: <fig:ijs-albedo-feedback>,
 )
 
-== Bewijzen van menselijke oorzaken klimaatsverandering <sec:bewijzen-menselijke-oorzaken-klimaatsverandering>
+=== De ligging van de continenten <sec:ligging-continenten>
 
-We meten dat de temperatuur voor de industriele revolutie al 1.2 graden Celsius is gestegen.
+Als er veel land rond de polen ligt, vormt er makkelijk ijs. Dat ijs kaatst veel zonlicht terug, en daardoor koelt de aarde af. Liggen er vooral oceanen rond de polen, dan vormt er minder ijs, wordt er minder licht teruggekaatst en warmt de aarde op.
 
-We hebben vijf bewijzem;
-1. CO2 budgetten: We kunnen zien naar alle CO2 uitstoot door industrie, fossil fuels, cement en land gebruik, veel van de uitstoot wordt opgevangen door het land zelf en door de oceanen.
+=== Vulkanische activiteit <sec:vulkanen>
+
+Vulkaanuitbarstingen koelen de aarde af. Ze stoten zwaveldioxide uit, dat tot in de stratosfeer raakt. Daar vormt het een laag die zonlicht terugkaatst, zodat er minder zonlicht de aarde bereikt.
+
+#voorbeeld(title: "Year Without a Summer (1816)")[
+  In april 1815 barstte de vulkaan Tambora in Indonesië uit. De zwaveldioxide vormde in de stratosfeer een laag sulfaatdeeltjes die binnen een jaar rond de hele aarde verspreid was. In 1816 lag de gemiddelde temperatuur op aarde daardoor 0,4 tot 0,7 °C lager. In Europa en Noord-Amerika vroor het zelfs in juni, juli en augustus. De oogsten mislukten, voedselprijzen stegen en er volgden hongersnoden.
+
+  Meer lezen: #link("https://en.wikipedia.org/wiki/Year_Without_a_Summer")[Year Without a Summer (Wikipedia)].
+]
+
+=== De opwarming van nu <sec:opwarming-nu>
+
+De temperatuur stijgt vandaag te snel om alleen door natuurlijke oorzaken te komen. Voor het grootste deel van de stijging zijn wij verantwoordelijk, door de uitstoot van broeikasgassen zoals CO#sub[2] en methaan. Die gassen houden meer warmte vast in de atmosfeer, en daardoor warmt de aarde op.
+
+De industrie heeft ook één afkoelend effect: kleine deeltjes in de lucht (#keyterm[aerosolen]) kaatsen zonlicht terug. Dat effect is veel kleiner dan de opwarming door broeikasgassen. Netto warmt de industrie de aarde dus op.
+
+In het Noordpoolgebied ontdooit nu de #keyterm[permafrost]: bodem die normaal het hele jaar bevroren is. Daarin zit veel koolstof opgeslagen, die bij het ontdooien vrijkomt als CO#sub[2] en methaan. Ook dat versterkt de opwarming.
+
+=== CO#sub[2]-concentratie <sec:co2-levels>
+
+Het verminderen van broeikasgassen in de atmosfeer is een van de grote uitdagingen. Hoe verhoudt de huidige CO#sub[2]-concentratie zich tot die tijdens de geschiedenis van de mens, en wat is het verband met de temperatuur?
+
+#wrap-figure(
+  image("assets/CO2-levels-over-de-tijd.png", width: 8.5cm),
+  caption: [CO#sub[2]-concentratie en temperatuur op Antarctica over de laatste 800.000 jaar],
+  label: <fig:CO2-levels-over-de-tijd>,
+)[
+  De luchtbelletjes in het ijs van Antarctica geven ons de temperatuur en de CO#sub[2]-concentratie van de voorbije 800.000 jaar (@fig:CO2-levels-over-de-tijd). De temperatuur schommelde in die periode met meer dan 12 °C tussen ijstijden en interglacialen. De warme interglacialen vallen samen met een hoge CO#sub[2]-concentratie, de koude ijstijden met een lage.
+
+  Sinds het ontstaan van _Homo sapiens_, ongeveer 300.000 jaar geleden, lag de concentratie tussen 180 en 280 ppmv (parts per million volume). In 2021 was het gemiddelde 416 ppmv. Die hoge CO#sub[2]-waarden zijn de belangrijkste oorzaak van de opwarming sinds de industrialisatie.
+]
+
+Voor de industriële revolutie was de concentratie 280 ppmv, nu is ze ongeveer 420 ppmv. Dat is een stijging van 50% in 200 jaar. De MOOC noemt 416 ppmv "bijna 40% hoger dan ooit tijdens de menselijke geschiedenis". Dat getal vergelijkt met de hoogste piek in @fig:CO2-levels-over-de-tijd, van ongeveer 300 ppmv.
+
+== Bewijzen voor menselijke oorzaken van klimaatverandering <sec:bewijzen-menselijke-oorzaken-klimaatsverandering>
+
+Sinds de industriële revolutie is de temperatuur al 1,2 °C gestegen. Vijf bewijzen tonen dat de mens daarvan de oorzaak is.
+
+=== CO#sub[2]-budget <sec:co2-budget>
+
+Het CO#sub[2]-budget zet alle CO#sub[2]-uitstoot tegenover alle opname. De uitstoot komt van fossiele brandstoffen, cement en veranderend landgebruik. Een groot deel daarvan wordt opgenomen door het land en de oceanen. De rest blijft in de atmosfeer.
 
 #figure(
-  image("assets/CO2 Budjet.png", width: 5cm),
-  caption: [CO2 Budjet],
-  label: <fig:CO2-Budjet>,
+  image("assets/CO2-Budget.png", width: 90%),
+  caption: [Globaal CO#sub[2]-budget 2004–2013, in gigaton koolstof per jaar],
+  label: <fig:CO2-Budget>,
 )
 
-2. De isotopenratio:
+Uit @fig:CO2-Budget, in gigaton koolstof per jaar:
 
-  $ frac(C^13, C^12) $
-
-  Planten nemen tijdens de fotosynthese relatief meer C^12 op dan C^13. Fossiele brandstoffen zijn afkomstig van organisch materiaal en bevatten daardoor relatief weinig C^13. Wanneer fossiele brandstoffen verbranden, komt er CO₂ met een lage C^13/C^12-ratio in de atmosfeer terecht. De dalende C^13/C^12-ratio, samen met de stijgende CO₂-concentratie, is daarom een bewijs dat de extra CO₂ grotendeels afkomstig is van de verbranding van fossiele brandstoffen.
-
-
-3. De aarde en de atmosfeer emit infrarood licht, dit is de warmte die de aarde uitstraalt. De atmosfeer laat een deel van dat infrarood licht door naar de ruimte, maar een deel wordt geabsorbeerd door broeikasgassen en weer teruggekaatst naar de aarde. Dit is het broeikaseffect. Door de toename van broeikasgassen in de atmosfeer wordt er meer infrarood licht teruggekaatst naar de aarde, waardoor het warmer wordt.
-
-#figure(
-  image("assets/Broeikasgas effect.png", width: 5cm),
-  caption: [Broeikasgas effect],
-  label: <fig:Broeikasgas-effect>,
+#table(
+  columns: 2,
+  [*Bron of sink*], [*GtC/jaar*],
+  [Fossiele brandstoffen en cement], [$+8.9 plus.minus 0.4$],
+  [Veranderend landgebruik], [$+0.9 plus.minus 0.5$],
+  [Opname door de oceanen], [$-2.6 plus.minus 0.5$],
+  [Opname door het land], [$-2.9 plus.minus 0.8$],
 )
 
-4. Klimaatmodellen: in een klimaatmodel kun je factoren aparte bekijken en de effect dan samenvoegen, iets wat je niet kunt doen in het echte klimaat. 
+=== Isotopenverhouding <sec:isotopen>
+
+De verhouding tussen de koolstofisotopen in de atmosfeer daalt:
+
+$ (""^13"C") / (""^12"C") $
+
+Planten nemen bij de fotosynthese relatief meer #super[12]C op dan #super[13]C. Fossiele brandstoffen komen van organisch materiaal en bevatten daardoor relatief weinig #super[13]C. Bij hun verbranding komt dus CO#sub[2] met een lage #super[13]C/#super[12]C-verhouding in de atmosfeer.
+
+De dalende #super[13]C/#super[12]C-verhouding, samen met de stijgende CO#sub[2]-concentratie, toont dat de extra CO#sub[2] grotendeels van fossiele brandstoffen komt.
+
+=== Broeikaseffect <sec:broeikaseffect>
+
+#wrap-figure(
+  image("assets/Broeikaseffect.png", width: 8cm),
+  caption: [Het broeikaseffect],
+  label: <fig:Broeikaseffect>,
+)[
+  De aarde en de atmosfeer stralen infraroodlicht uit: dat is de warmte die de aarde afgeeft. Een deel daarvan gaat door de atmosfeer naar de ruimte. Een ander deel wordt door broeikasgassen geabsorbeerd en opnieuw uitgestraald, ook terug naar de aarde. Dat is het #keyterm[broeikaseffect]. Hoe meer broeikasgassen er in de atmosfeer zitten, hoe meer infraroodlicht terug naar de aarde gaat en hoe warmer het wordt.
+]
+
+=== Klimaatmodellen <sec:klimaatmodellen>
+
+In een klimaatmodel kun je elke factor apart doorrekenen en de effecten daarna samenvoegen. In het echte klimaat kan dat niet.
 
 #figure(
-  image("assets/Klimaat-model.png", width: 5cm),
-  caption: [Klimaat-model],
+  image("assets/Klimaat-model.png", width: 100%),
+  caption: [Waargenomen opwarming (1850–2019) tegenover modellen met en zonder menselijke invloed],
   label: <fig:Klimaat-model>,
 )
 
-Als we kijken naar de grafiek zien we dat de observaties zien dat er een stijging is van 1 graad Celsius,
-We zien dan een model runnen met de broeikasgassen, de temperatuursverandering is groter dan 1 graad Celsius.
+@fig:Klimaat-model vergelijkt de metingen met vier modelruns:
 
-We kunnen dit verklaren door het menselijke effect van aerosols, die een koelend effect hebben op de aarde. 
+- De *observaties* tonen een stijging van ongeveer 1,2 °C sinds 1850.
+- Met *alleen broeikasgassen* stijgt de temperatuur in het model meer, tot ongeveer 1,6 °C.
+- Het verschil komt door *aerosolen* van de mens, die de aarde afkoelen.
+- Met *alleen natuurlijke factoren* stijgt de temperatuur niet.
 
-We kunnen dat ook runnen met alleen natuurlijke factoren, dan zien we dat de temperatuur niet stijgt. natuurlijke factoren kunnen dus niet de temperature stijging verklaren, menselijke wel.
+Natuurlijke factoren verklaren de temperatuurstijging dus niet. Pas als het model de menselijke factoren meeneemt, komt het overeen met de metingen.
 
-5. Radiatie forcing: Radiative forcing is het verschil van radiatie die de aarde ontvangt en de radiatie die de aarde uitstraalt. Als er meer energie binnenkomt dan eruit gaat, warmt de aarde op. Als er meer energie uitgaat dan binnenkomt, koelt de aarde af. De radiative forcing van broeikasgassen is positief, wat betekent dat ze bijdragen aan de opwarming van de aarde.
+=== Radiative forcing <sec:radiative-forcing>
 
-Al dit toont aan dat om de opwarming van de aarde te stoppen we de uitstoot van broeikasgassen moeten verminderen.
+#keyterm[Radiative forcing] is hoeveel een factor de energiebalans van de aarde verschuift. Die energiebalans is het verschil tussen de straling die de aarde ontvangt en de straling die ze uitzendt. Komt er meer energie binnen dan er buitengaat, dan warmt de aarde op. Gaat er meer buiten dan er binnenkomt, dan koelt ze af. De radiative forcing van broeikasgassen is positief: ze warmen de aarde op.
 
+Samen tonen deze bewijzen dat we de opwarming alleen stoppen door minder broeikasgassen uit te stoten.
 
 #TODO("Module 1 uitwerken vanuit de studiewijzer")
