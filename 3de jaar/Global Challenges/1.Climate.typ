@@ -12,7 +12,7 @@ In dit hoofdstuk vergelijken we het klimaat van de voorbije 800.000 jaar met dat
 - Wat gebeurt er als we die uitstoot snel en _drastisch_ stoppen?
 - Hoe kunnen we dat doen?
 
-Tot slot bekijken we de factoren met de grootste impact op klimaatverandering, en hoe we die kunnen aanpakken.
+We zoomen ook in op één gevolg in het bijzonder: de stijging van de zeespiegel. Tot slot bekijken we de factoren met de grootste impact op klimaatverandering, en hoe we die kunnen aanpakken.
 
 == Main climate challenges <sec:main-climate-challenges>
 
@@ -23,9 +23,9 @@ Tot slot bekijken we de factoren met de grootste impact op klimaatverandering, e
 )[
   @fig:Temperatuursverandering-over-20.000-jaar toont de temperatuur van de aarde over de laatste 20.000 jaar.
 
-  De blauwe lijn is het #keyterm[Holoceen]: de periode na de laatste ijstijd, met een heel stabiele temperatuur. De hogere temperaturen maakten landbouw mogelijk, en daardoor konden de eerste samenlevingen ontstaan.
+  Na de laatste ijstijd begon de temperatuur te stijgen. Rond 9000 v.Chr. begon het #keyterm[Holoceen] (de blauwe lijn): een periode met een heel stabiel klimaat. Dat stabiele klimaat maakte landbouw mogelijk. Er kon meer voedsel geproduceerd worden, dus de bevolking kon groeien en de eerste samenlevingen ontstonden.
 
-  Zo'n 200 jaar geleden begon de industriële revolutie, die meer welvaart bracht dan ooit tevoren. De machines uit die tijd draaiden op steenkool en gas.
+  In de tweede helft van de 18e eeuw begon de industriële revolutie. Steenkool, olie en gas werden gebruikt voor de industrie, voor energie en voor verwarming. Dat bracht veel welvaart: minder handenarbeid, en een gezondere en rijkere samenleving.
 ]
 
 === Ontstaan van steenkool, olie en gas <sec:ontstaan-kool-en-gas>
@@ -41,7 +41,7 @@ Tot slot bekijken we de factoren met de grootste impact op klimaatverandering, e
 ]
 
 
-Wanneer we die brandstoffen verbranden, komen er broeikasgassen vrij. Die hebben een impact op drie systemen (@fig:Impacten-Klimaat):
+Wanneer we die brandstoffen verbranden, komen er broeikasgassen vrij en warmt de aarde op. Vandaag is het al 1,2 °C warmer dan voor de industrialisatie. Daardoor zien we wereldwijd meer droogtes, meer extreme neerslag en meer overstromingen. De opwarming heeft een impact op drie systemen (@fig:Impacten-Klimaat):
 
 - *Fysisch systeem*: gletsjers, sneeuw, ijs en permafrost, neerslag, zeespiegel en kusterosie
 - *Biologisch systeem*: ecosystemen op land, bosbranden, mariene ecosystemen
@@ -66,7 +66,7 @@ Dat geeft de mensheid twee uitdagingen.
 Ten eerste moeten we klimaatverandering #keyterm[mitigeren]. Dat kan op twee manieren:
 
 + de uitstoot van broeikasgassen verminderen
-+ de sinks voor broeikasgassen verbeteren (bossen, oceanen, ... die CO#sub[2] opnemen)
++ de sinks voor broeikasgassen versterken: de oceanen, bossen en bodems die CO#sub[2] opnemen
 
 Ten tweede moeten we ons #keyterm[aanpassen] aan de klimaatverandering die er al is. Die wordt nog erger, dus de samenleving moet zich voorbereiden op de gevolgen.
 
@@ -494,4 +494,233 @@ De rechterkolom in @fig:Oplossingen-klimaatverandering is hoeveel gigaton CO#sub
 
 _Persoonlijke note: De carbon footprint werd populair door een reclamecampagne van het oliebedrijf BP (2004–2006). Die campagne legde de verantwoordelijkheid voor klimaatverandering bij het individu, in plaats van bij de producenten van fossiele brandstoffen. Meer daarover: #link("https://www.wbur.org/onpoint/2023/12/19/how-big-oil-helped-push-the-idea-of-a-carbon-footprint")[WBUR, "How Big Oil helped push the idea of a carbon footprint"]._
 
-#TODO("Module 1 uitwerken vanuit de studiewijzer")
+
+
+== Klimaatscenario's <sec:climate-scenarios>
+
+Wat kunnen we verwachten voor de toekomst? Hoe evolueert het klimaat als we het Akkoord van Parijs halen, en wat als we het niet halen?
+
+=== Representative Concentration Pathways <sec:rcp>
+
+Klimaatscenario's komen uit klimaatmodellen. Er zijn heel veel manieren waarop de uitstoot tot 2100 kan evolueren. Een klimaatmodel draait op een supercomputer en is duur, dus we kunnen ze niet allemaal doorrekenen. Daarom kiest het IPCC een paar #keyterm[Representative Concentration Pathways] (RCP's): typische verlopen van de broeikasgasconcentratie.
+
+Het getal achter RCP is de radiative forcing (@sec:radiative-forcing) in 2100. RCP8.5 komt overeen met 8,5 W/m², RCP6 met 6 W/m², RCP4.5 met 4,5 W/m² en RCP2.6 met 2,6 W/m².
+
+#figure(
+  image("assets/RCP's.png", width: 90%),
+  caption: [Uitstoot in de verschillende RCP's, met de verwachte opwarming in 2100 (Global Carbon Project)],
+  label: <fig:RCPs>,
+)
+
+De modelresultaten per scenario kun je omzetten naar een opwarming. In het laatste IPCC-rapport (2021) heten de scenario's #keyterm[SSP's] (_Shared Socioeconomic Pathways_). Die koppelen een sociaal-economisch verhaal aan een RCP: SSP1-2.6 is bijvoorbeeld een duurzame wereld met een forcing van 2,6 W/m². @tab:ssp-opwarming geeft de opwarming per scenario, met een beste schatting en een _very likely_ bereik, telkens als gemiddelde over 20 jaar.
+
+#figure(
+  table(
+    columns: 5,
+    align: (left, center, center, center, center),
+    table.header(
+      [*Scenario*], [*2021–2040*], [*2041–2060*], [*2081–2100*], [*Bereik 2081–2100*],
+    ),
+    [SSP1-1.9], [1,5], [1,6], [1,4], [1,0 – 1,8],
+    [SSP1-2.6], [1,5], [1,7], [1,8], [1,3 – 2,4],
+    [SSP2-4.5], [1,5], [2,0], [2,7], [2,1 – 3,5],
+    [SSP3-7.0], [1,5], [2,1], [3,6], [2,8 – 4,6],
+    [SSP5-8.5], [1,6], [2,4], [4,4], [3,3 – 5,7],
+  ),
+  caption: [Opwarming in °C ten opzichte van 1850–1900: beste schatting per periode en _very likely_ bereik op lange termijn (IPCC, 2021)],
+  label: <tab:ssp-opwarming>,
+)
+
+Wat betekent dat voor het Akkoord van Parijs (ruim onder 2 °C)?
+
+- Enkel met *1.9* zijn we vrij zeker dat we het doel halen.
+- Met *2.6* hebben we nog een goede kans: 1,3 tot 2,4 °C tegen het einde van de eeuw.
+- De andere scenario's halen het doel niet. *8.5* (3,3 tot 5,7 °C) past helemaal niet bij Parijs en komt overeen met een wereld zonder klimaatbeleid.
+
+Ook de opwarming bij de huidige beloftes en het huidige beleid (@sec:are-we-on-track) wordt uit deze modellen afgeleid.
+
+=== Regionale verschillen <sec:regionale-verschillen>
+
+De opwarming is niet overal even groot (@fig:Warming-op-de-planeet):
+
+- *Land* warmt meer op dan het gemiddelde, de *oceaan* minder. De oceaan heeft een grote warmtecapaciteit: er is veel meer energie nodig om hem op te warmen.
+- De *poolgebieden* warmen het sterkst op. Bij 4 °C globale opwarming is het in het Noordpoolgebied meer dan 7 °C warmer. Dat heeft grote gevolgen voor de ijskappen en het zee-ijs.
+
+#figure(
+  image("assets/Warming-op-de-planeet.png", width: 100%),
+  caption: [Gesimuleerde verandering van de jaarlijkse gemiddelde temperatuur bij 1,5 °C, 2 °C en 4 °C globale opwarming (IPCC, 2021)],
+  label: <fig:Warming-op-de-planeet>,
+)
+
+Ook de neerslag verandert, en meer naarmate de opwarming groter is (@fig:Regenval-veranderingen). In de tropen en de poolgebieden valt meer neerslag, in de subtropen minder. Grof gezegd: #keyterm[natte gebieden worden natter, droge gebieden droger], met uitzonderingen. Extreme neerslag neemt bijna overal toe.
+
+#figure(
+  image("assets/Regenval-veranderingen.png", width: 100%),
+  caption: [Gesimuleerde verandering van de jaarlijkse neerslag bij 1,5 °C, 2 °C en 4 °C globale opwarming (IPCC, 2021)],
+  label: <fig:Regenval-veranderingen>,
+)
+
+Veel gevolgen komen in de cursus niet aan bod: berggletsjers, verlies aan biodiversiteit, hittegolven, droogte en bosbranden, overstromingen aan de kust, ... Voor al die gevolgen geldt hetzelfde: #important[hoe groter de opwarming, hoe groter de verandering]. Daarom is het zo belangrijk om onder 2 °C te blijven.
+
+=== Futures wheel <sec:future-wheels>
+
+Een #keyterm[futures wheel] is een schema dat de directe en indirecte gevolgen van één verandering toont:
+
++ In het midden staat de verandering.
++ Rond het midden staan de directe gevolgen.
++ Rond elk direct gevolg staan de indirecte gevolgen, enzovoort.
+
+#wrap-figure(
+  image("assets/Future-wheels.png", width: 6cm),
+  caption: [Futures wheel voor "natte gebieden worden natter, droge gebieden droger"],
+  label: <fig:Future-wheels>,
+)[
+  Een voorbeeld (@fig:Future-wheels): droge gebieden worden droger. Een direct gevolg is dat er meer bosbranden zijn. Die zorgen voor verlies van dieren en ecosystemen, maar ook voor schade aan huizen en infrastructuur. Het verlies van ecosystemen leidt tot minder biodiversiteit, de schade aan infrastructuur tot economische verliezen.
+
+  In werkelijkheid heeft elk gevolg nog veel meer gevolgen, en beïnvloeden de gevolgen elkaar ook. Een futures wheel toont dus niet alles. Het helpt je wel om je gedachten te ordenen en inzicht te krijgen in de effecten van een verandering.
+]
+
+== Zeespiegelstijging <sec:zeespiegel>
+
+De impact en de risico's van klimaatverandering nemen toe met de opwarming. Eén gevolg lichten we eruit: de stijging van de zeespiegel. Die is vooral een probleem voor laaggelegen landen. Ook de kans op plotse veranderingen stijgt met de opwarming, vooral doordat ijskappen kunnen desintegreren.
+
+=== Oorzaken <sec:zeespiegel-oorzaken>
+
+De zeespiegel stijgt om vier redenen (@fig:Zeespiegel-steiging-redenen):
+
++ *Thermische uitzetting*: warmer zeewater neemt meer volume in.
++ *Smeltende gletsjers*: water dat als ijs op land lag, stroomt naar de zee.
++ *Smeltende ijskappen* van Groenland en Antarctica: idem.
++ *Minder water op land*, vooral grondwater dat opgepompt wordt en uiteindelijk in zee belandt.
+
+Daarnaast kan het kustland zelf zakken of rijzen. Dan verandert de #keyterm[relatieve zeespiegel] op die plaats, ook als de zeespiegel zelf gelijk blijft.
+
+#figure(
+  image("assets/Zeespiegel-steiging-redenen.png", width: 80%),
+  caption: [Componenten van de zeespiegelstijging: gletsjers, grondwater, thermische uitzetting en ijskappen],
+  label: <fig:Zeespiegel-steiging-redenen>,
+)
+
+=== Opwarming van de oceaan <sec:zeewarming>
+
+De oceanen hebben ongeveer #important[90% van de extra warmte] door klimaatverandering opgenomen (@fig:Zeewarming). Ze hebben ons daarmee een grote dienst bewezen, maar het zeewater zet daardoor wel uit. Deze thermische uitzetting was de grootste oorzaak van de zeespiegelstijging in de voorbije eeuw.
+
+#figure(
+  image("assets/Zeewarming.png", width: 85%),
+  caption: [Opgenomen warmte in de oceaan sinds 1940, in zettajoule, voor de lagen 0–700 m en 700–2000 m (Carbon Brief, 2018)],
+  label: <fig:Zeewarming>,
+)
+
+=== Gletsjers <sec:gletchers>
+
+Gletsjers krimpen overal ter wereld. @fig:Smelten-Gletchers toont modelsimulaties voor de #keyterm[Aletschgletsjer], een van de grootste gletsjers van de Alpen.
+
+#figure(
+  image("assets/Smelten-Gletchers.png", width: 90%),
+  caption: [De Aletschgletsjer in 2017 en de prognose voor 2100 bij ongeveer 4,3 °C en 2 °C opwarming],
+  label: <fig:Smelten-Gletchers>,
+)
+
+- De gletsjertong die nu laag in het dal ligt, is tegen 2100 zeker verdwenen, ook bij een lage opwarming.
+- Bij 2 °C blijft er enkel ijs hoog in de bergen over.
+- Bij 4,3 °C verdwijnt de gletsjer bijna volledig.
+
+=== IJskappen <sec:polar-ice-caps>
+
+De massa van de ijskappen op Groenland en Antarctica meten we met satellieten. De GRACE-satellieten meten bijvoorbeeld het zwaartekrachtveld van de aarde. Sinds 2002 verliest Antarctica gemiddeld 149 gigaton ijs per jaar (@fig:Antartica-Smelten). Het verlies zit vooral in West-Antarctica, rond de Pine Island-gletsjer, waar gletsjers in de oceaan uitmonden. Ook Groenland verliest veel ijs.
+
+#figure(
+  image("assets/Antartica-Smelten.png", width: 90%),
+  caption: [Massaverlies van de Antarctische ijskap volgens de GRACE-satellieten, 2002–2020 (NASA/JPL, 2021)],
+  label: <fig:Antartica-Smelten>,
+)
+
+Als al het ijs zou smelten, stijgt de zeespiegel met 58 m voor Antarctica en 7 m voor Groenland. Zelfs een kleine verandering in de ijskappen telt dus mee. Antarctica heeft het grootste potentieel, maar de komende eeuw zal Groenland naar verwachting meer bijdragen.
+
+=== Waargenomen en verwacht <sec:zeespiegelstijging>
+
+Sinds 1970 is de zeespiegel ongeveer 11 cm gestegen (@fig:zeespiegel-stijging):
+
+- De opwarming van de oceaan, vooral van de bovenste lagen, verklaart ongeveer de helft.
+- De gletsjers zijn de tweede grootste bijdrage.
+- De ijskappen van Groenland en Antarctica dragen nog minder bij, maar hun aandeel groeit.
+- Ook de afname van grondwater draagt bij.
+
+#figure(
+  image("assets/zeespiegel-stijging.png", width: 70%),
+  caption: [Bijdragen aan de globale zeespiegelstijging, 1971–2018 (IPCC, 2021)],
+  label: <fig:zeespiegel-stijging>,
+)
+
+Hoeveel de zeespiegel nog stijgt, hangt af van ons: van de opwarming en dus van het scenario. Volgens het vijfde IPCC-rapport stijgt de zeespiegel tegen 2100 met ongeveer 25 cm tot 1 m (@fig:Global-Sea-level-rise).
+
+#figure(
+  image("assets/Global-Sea-level-rise.png", width: 75%),
+  caption: [Verwachte globale zeespiegelstijging tot 2100 voor RCP2.6 (blauw) en RCP8.5 (rood) (IPCC, 2014)],
+  label: <fig:Global-Sea-level-rise>,
+)
+
+Ook in de toekomst blijven thermische uitzetting en gletsjers belangrijk, maar het aandeel van de ijskappen groeit tegen het einde van de eeuw (@fig:Projection-zeespiegel-stijging). Bij Antarctica is de onzekerheid het grootst: de ijskap kan desintegreren, en dat is moeilijk terug te draaien. Op langere termijn wordt de impact dus nog groter.
+
+#figure(
+  image("assets/Projection-zeespiegel-stijging.png", width: 100%),
+  caption: [Verwachte bijdragen aan de zeespiegelstijging onder SSP1-2.6 en SSP5-8.5; de pijl wijst op de grote onzekerheid bij Antarctica (IPCC, 2021)],
+  label: <fig:Projection-zeespiegel-stijging>,
+)
+
+De zeespiegel stijgt al en blijft stijgen, ook bij lage uitstoot. We moeten de opwarming dus zo laag mogelijk houden (#keyterm[mitigatie]), maar ons in elk geval ook aanpassen aan een hogere zeespiegel (#keyterm[adaptatie]).
+
+=== Risico voor kustgebieden <sec:risico-kustgebieden>
+
+Het risico voor kustgebieden lezen we af uit een burning ember diagram (@fig:Burning-ember-diagram-zeespiegelstijging), net als bij de Reasons for Concern (@sec:reasons-for-concern). Links staat de verwachte zeespiegelstijging tegen 2100: ongeveer 43 cm bij RCP2.6 en 84 cm bij RCP8.5 (mediaan), met een bovengrens van ongeveer 110 cm. Per type kustgebied zijn er twee kolommen: het risico zonder of met weinig aanpassing, en het risico met de maximaal mogelijke aanpassing.
+
+#figure(
+  image("assets/Burning-ember-diagram-zeespiegelstijging.png", width: 100%),
+  caption: [Extra risico door zeespiegelstijging voor vier types kustgebieden tegen het einde van de eeuw, zonder en met maximale aanpassing (IPCC, 2019)],
+  label: <fig:Burning-ember-diagram-zeespiegelstijging>,
+)
+
+Het risico stijgt met de zeespiegel, en er is nu al overal een merkbaar risico. Maar niet elk gebied kan zich even goed aanpassen:
+
+- *Rijke kuststeden*: matig tot hoog risico, maar veel ruimte om zich aan te passen. Toch kunnen ze zich niet tegen alles beschermen.
+- *Stedelijke atollen en eilanden*: het zwaarst getroffen. Zelfs met maximale aanpassing blijft het risico bij 1 m stijging zeer hoog. Dit toont de #important[grenzen van adaptatie].
+- *Grote tropische landbouwdelta's*: enige ruimte om zich aan te passen, maar het risico blijft matig tot hoog.
+- *Arctische gemeenschappen*: hoog risico, dat maar deels weg te werken is met aanpassing.
+
+Mitigatie en adaptatie zijn dus allebei nodig.
+
+=== Kosten van overstromingen <sec:kosten-overstromingen>
+
+Kuststeden overstromen niet alleen door de hogere zeespiegel. Ook extreme neerslag en #keyterm[stormvloed] (wind die het water naar het land duwt) spelen mee. Veel grote steden, zoals Mumbai en Ho Chi Minh-stad, liggen aan de kust omdat de zee handel en verbindingen mogelijk maakt. Van alle stedelingen die door de zeespiegelstijging bedreigd worden, woont ongeveer 25% in China.
+
+De Wereldbank schat de jaarlijkse kosten van overstromingen tegen het midden van de eeuw op miljarden dollars per stad (@fig:Annual-Flood-cost). Tegen dan krijgen meer dan 570 laaggelegen kuststeden te maken met minstens 0,5 m zeespiegelstijging. Meer dan 800 miljoen mensen lopen dan risico door de stijgende zee en stormvloeden.
+
+#figure(
+  image("assets/Annual-Flood-cost.png", width: 90%),
+  caption: [Geschatte jaarlijkse overstromingskosten per stad tegen het midden van de eeuw (Wereldbank)],
+  label: <fig:Annual-Flood-cost>,
+)
+
+Op #link("https://sealevel.climatecentral.org")[sealevel.climatecentral.org] kun je voor je eigen regio bekijken wat de zeespiegelstijging doet, zonder beschermingsmaatregelen, bij een laag of hoog scenario. In België is de impact groot rond Antwerpen. De haven van Antwerpen is de tweede grootste van Europa, na Rotterdam, dat ook sterk getroffen wordt. Rond beide havens zit veel industrie: een overstroming zou dus een grote economische impact hebben. Beide zullen zich moeten aanpassen.
+
+== Links met andere challenges <sec:klimaat-links>
+
+#figure(
+  image("assets/Links-met-andere-challenges.png", width: 70%),
+  caption: [De verbanden tussen klimaat en de andere uitdagingen in het gelaagde model],
+  label: <fig:Links-met-andere-challenges>,
+)
+
+/ Demografie en migratie: Klimaatverandering kan migratie sterk beïnvloeden: extreem weer, minder vruchtbaar en leefbaar land, een stijgende zeespiegel, tekorten aan voedsel en water, ... Ze kan ook armoede verergeren en tot politieke instabiliteit leiden. De meeste migranten blijven in hun eigen land en trekken vaak van het platteland naar de stad. De gevolgen treffen vooral jongere generaties, zeker in het globale Zuiden.
+
+/ Grondstoffen: De productie van materialen stoot veel broeikasgassen uit. Efficiënter omgaan met grondstoffen, recycleren, hergebruiken en minder grondstoffen gebruiken zijn stappen naar een circulaire economie.
+
+/ Voedselzekerheid: Het weer tijdens het groeiseizoen bepaalt sterk de oogst. Droogtes en overstromingen kunnen oogsten vernietigen en de beschikbaarheid van voedsel verminderen. Extreem weer kan ook aanvoerketens en handelsroutes verstoren. Internationale handel kan de gevolgen voor één regio opvangen en honger helpen voorkomen. En wat we eten, heeft een grote invloed op onze carbon footprint.
+
+/ Ongelijkheid: Het globale Zuiden heeft historisch het minst bijgedragen aan klimaatverandering, maar wordt het hardst getroffen. Mensen met minder middelen, in Noord en Zuid, kunnen zich minder goed aanpassen en wonen vaker in gebieden met risico op overstromingen of droogte. Het Green Climate Fund, opgericht onder het klimaatverdrag van de VN, helpt ontwikkelingslanden. Op de klimaatconferentie van Sharm el-Sheikh (COP27, 2022) werd voor het eerst een _loss and damage_-fonds afgesproken, dat armere landen financieel steunt bij klimaatschade.
+
+/ Energie: Fossiele brandstoffen verbranden voor energie stoot veel broeikasgassen uit. Die uitstoot verminderen kan met energie-efficiëntie en een overstap naar hernieuwbare energie (zon, wind, waterkracht). Kernenergie is koolstofarm en levert een belangrijk deel van de koolstofarme elektriciteit. Hernieuwbare energie wordt steeds goedkoper en dus competitiever.
+
+/ Economie en global governance: Klimaatverandering vraagt internationale samenwerking. De klimaatconferenties onder het UNFCCC, gebaseerd op de IPCC-rapporten, hebben het klimaatbeleid vooruitgeholpen. Het Emissions Gap Report toont dat beleid de uitstoot echt vermindert. Zowel de gevolgen van klimaatverandering als de overgang naar een koolstofneutrale samenleving hebben grote economische gevolgen.
+
+/ Urbanisatie en mobiliteit: Transport stoot veel broeikasgassen uit, vooral door fossiele brandstoffen in voertuigen. Compacte, goed geplande steden verbruiken minder energie, maken duurzaam transport makkelijker en zijn beter bestand tegen klimaatimpact. Steden hebben ook eigen adaptatie nodig tegen hitte-eilanden en overstromingen. Die overstromingen zijn erger omdat verharde oppervlakken het water niet laten infiltreren.
