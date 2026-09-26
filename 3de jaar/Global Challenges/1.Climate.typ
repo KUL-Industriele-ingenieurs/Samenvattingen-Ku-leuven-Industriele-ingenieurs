@@ -40,7 +40,6 @@ Tot slot bekijken we de factoren met de grootste impact op klimaatverandering, e
   Steenkool komt van planten uit moerassen (@fig:Vorming-kool-olie-en-gas). De dode planten vormen eerst turf, en onder warmte en druk wordt die turf steenkool. De meeste steenkool ontstond 360 tot 300 miljoen jaar geleden. Olie en gas komen van plankton dat op de zeebodem terechtkwam.
 ]
 
-#NOTE[In de les werd "100 miljoen jaar geleden" gezegd. Voor olie en gas kan dat kloppen, voor de meeste steenkool niet.]
 
 Wanneer we die brandstoffen verbranden, komen er broeikasgassen vrij. Die hebben een impact op drie systemen (@fig:Impacten-Klimaat):
 
@@ -57,7 +56,7 @@ Wanneer we die brandstoffen verbranden, komen er broeikasgassen vrij. Die hebben
 @fig:Impacten-Klimaat-wereldkaart toont per regio welke impact al waargenomen is. Het symbool geeft het systeem aan, de kleur de groep: blauw voor fysische, groen voor biologische en rood voor menselijke systemen. Een gevuld symbool betekent dat klimaatverandering een grote bijdrage levert aan die impact, een omlijnd symbool een kleine. Het staafje naast elk symbool geeft aan hoe zeker het is dat de impact aan klimaatverandering te wijten is, van _very low_ tot _very high_.
 
 #figure(
-  image("assets/Impacten-Klimaat-wereldkaart.png", width: 100%),
+  image("assets/Impacten-Klimaat-wereldkaart.png", width: 70%),
   caption: [Waargenomen impact van klimaatverandering per regio en per systeem],
   label: <fig:Impacten-Klimaat-wereldkaart>,
 )
@@ -76,7 +75,7 @@ Ten tweede moeten we ons #keyterm[aanpassen] aan de klimaatverandering die er al
 Het klimaat over lange periodes bestuderen we met het ijs van Antarctica. Dat ijs is in lagen opgebouwd en bevat nog kleine luchtbelletjes. Uit die lucht leiden we af hoe de atmosfeer toen was samengesteld en hoe warm het was.
 
 #figure(
-  image("assets/Temperatuursverschillen-over-1MYA.png", width: 100%),
+  image("assets/Temperatuursverschillen-over-1MYA.png", width: 80%),
   caption: [Temperatuuranomalie op Antarctica over de laatste 800.000 jaar],
   label: <fig:Temperatuursverschillen-over-1MYA>,
 )
@@ -148,7 +147,7 @@ In het Noordpoolgebied ontdooit nu de #keyterm[permafrost]: bodem die normaal he
 Het verminderen van broeikasgassen in de atmosfeer is een van de grote uitdagingen. Hoe verhoudt de huidige CO#sub[2]-concentratie zich tot die tijdens de geschiedenis van de mens, en wat is het verband met de temperatuur?
 
 #wrap-figure(
-  image("assets/CO2-levels-over-de-tijd.png", width: 8.5cm),
+  image("assets/CO2-levels-over-de-tijd.png", width: 10cm),
   caption: [CO#sub[2]-concentratie en temperatuur op Antarctica over de laatste 800.000 jaar],
   label: <fig:CO2-levels-over-de-tijd>,
 )[
@@ -192,12 +191,12 @@ $ (""^13"C") / (""^12"C") $
 
 Planten nemen bij de fotosynthese relatief meer #super[12]C op dan #super[13]C. Fossiele brandstoffen komen van organisch materiaal en bevatten daardoor relatief weinig #super[13]C. Bij hun verbranding komt dus CO#sub[2] met een lage #super[13]C/#super[12]C-verhouding in de atmosfeer.
 
-De dalende #super[13]C/#super[12]C-verhouding, samen met de stijgende CO#sub[2]-concentratie, toont dat de extra CO#sub[2] grotendeels van fossiele brandstoffen komt.
+De dalende $frac(#super[13]C, #super[12]C)$-verhouding, samen met de stijgende CO#sub[2]-concentratie, toont dat de extra CO#sub[2] grotendeels van fossiele brandstoffen komt.
 
 === Broeikaseffect <sec:broeikaseffect>
 
 #wrap-figure(
-  image("assets/Broeikaseffect.png", width: 8cm),
+  image("assets/Broeikaseffect.png", width: 10cm),
   caption: [Het broeikaseffect],
   label: <fig:Broeikaseffect>,
 )[
@@ -209,7 +208,7 @@ De dalende #super[13]C/#super[12]C-verhouding, samen met de stijgende CO#sub[2]-
 In een klimaatmodel kun je elke factor apart doorrekenen en de effecten daarna samenvoegen. In het echte klimaat kan dat niet.
 
 #figure(
-  image("assets/Klimaat-model.png", width: 100%),
+  image("assets/Klimaat-model.png", width: 80%),
   caption: [Waargenomen opwarming (1850–2019) tegenover modellen met en zonder menselijke invloed],
   label: <fig:Klimaat-model>,
 )
@@ -225,280 +224,274 @@ Natuurlijke factoren verklaren de temperatuurstijging dus niet. Pas als het mode
 
 === Radiative forcing <sec:radiative-forcing>
 
-#keyterm[Radiative forcing] is hoeveel een factor de energiebalans van de aarde verschuift. Die energiebalans is het verschil tussen de straling die de aarde ontvangt en de straling die ze uitzendt. Komt er meer energie binnen dan er buitengaat, dan warmt de aarde op. Gaat er meer buiten dan er binnenkomt, dan koelt ze af. De radiative forcing van broeikasgassen is positief: ze warmen de aarde op.
+Het vijfde bewijs komt uit de energiebalans van de aarde. De aarde wisselt alleen energie uit met de ruimte via straling: ze ontvangt zonlicht en straalt zelf infrarood uit.
 
-Samen tonen deze bewijzen dat we de opwarming alleen stoppen door minder broeikasgassen uit te stoten.
+==== Energiebalans <sec:dieper-radiative-forcing>
 
-==== Dieper rond radiative forcing <sec:dieper-radiative-forcing>
-
-#figure(
-  image("assets/Straling-Zon-aarde.png", width: 5cm),
-  caption: [Straling-Zon-aarde],
-  label: <fig:Straling-Zon-aarde>,
+#grid(
+  columns: 2,
+  gutter: 1em,
+  figure(
+    image("assets/Straling-Zon-aarde.png", width: 100%),
+    caption: [Inkomende zonnestraling],
+    label: <fig:Straling-Zon-aarde>,
+  ),
+  figure(
+    image("assets/Straling-infrarood-aarde.png", width: 100%),
+    caption: [Teruggekaatste straling en infrarood],
+    label: <fig:Straling-infrarood-aarde>,
+  ),
 )
 
-We weten dat 342 $W/m^2$ de gemiddelde straling is die de aarde ontvangt. delen daarvan worden geabsorbeerd door de atmosfeer, de oceanen en het land. De rest wordt teruggekaatst naar de ruimte, rond 31% van de totale straling
+Gemiddeld komt er 342 W/m² zonnestraling binnen. Een deel wordt geabsorbeerd door de atmosfeer, het grootste deel door het aardoppervlak. De rest wordt teruggekaatst door het oppervlak, de wolken, aerosolen en gassen in de atmosfeer: samen 31%, of 107 W/m² (@fig:Straling-Zon-aarde).
 
-De netto straling die de aarde ontvangt is 235 $W/m^2$. Dit is de #keyterm[Net solar radiation], 
+Wat overblijft, is de #keyterm[netto zonnestraling]:
 
-de aarde straalt ook IR uit, rond 235 $W/m^2$. De aarde is in #keyterm[energy balance] als de netto straling die de aarde ontvangt gelijk is aan de straling die de aarde uitstraalt.
+$ 342 "W/m"^2 - 107 "W/m"^2 = 235 "W/m"^2 $
 
-#figure(
-  image("assets/Straling-infrarood-aarde.png", width: 5cm),
-  caption: [Straling-infrarood-aarde],
-  label: <fig:Straling-infrarood-aarde>,
-)
+De aarde en de atmosfeer stralen zelf infrarood uit, samen ook 235 W/m² aan de bovenkant van de atmosfeer (@fig:Straling-infrarood-aarde). Binnenkomend en uitgaand zijn dus even groot: de aarde is in #keyterm[energiebalans].
 
-Maar als we dit systeem nu uit balans brengen door broeikasgassen toe te voegen, dan wordt de straling die de aarde uitstraalt minder. De aarde warmt op, en dat is wat we nu zien.
+==== Onbalans door een forcing <sec:onbalans>
 
-We kijken dan naar het #keyterm[Radiative forcing] van broeikasgassen. Dat is de verandering in de energiebalans van de aarde door een factor, zoals broeikasgassen. De radiative forcing van broeikasgassen is positief: ze warmen de aarde op.
-
-In equilibrium is er een evenwicht tussen straling in en straling uit, met toevoegen van CO#sub[2] en andere broeikasgassen, wordt de straling die de aarde uitstraalt minder, en warmt de aarde op. De radiative forcing van broeikasgassen is positief: ze warmen de aarde op.
-
-#figure(
-  image("assets/Imbalanse-radiatie.png", width: 5cm),
-  caption: [Imbalanse-radiatie],
+#wrap-figure(
+  image("assets/Imbalanse-radiatie.png", width: 7cm),
+  caption: [Onbalans van 4 W/m² bij een verdubbeling van CO#sub[2]],
   label: <fig:Imbalanse-radiatie>,
-)
+)[
+  Een verandering in het systeem, zoals meer broeikasgassen, verstoort die balans. Neem een verdubbeling van de CO#sub[2]-concentratie (@fig:Imbalanse-radiatie). Er komt netto 240 W/m² zonnestraling binnen, maar er gaat maar 236 W/m² infrarood buiten. De CO#sub[2] absorbeert een deel van het infrarood, zodat het de bovenkant van de atmosfeer niet bereikt. De onbalans is 4 W/m².
 
-Radiative forcing is de onbalanse an de bovenkant van de atmosfeer door een specifieke forcing voor dat de temperatuur van de aarde en de atmosfeer zich aangepast hebben tot die nieuwe forcing. 
+  Die onbalans is de #keyterm[radiative forcing]: het verschil in straling aan de bovenkant van de atmosfeer door één specifieke factor, gemeten _voordat_ de temperatuur van de aarde en de atmosfeer zich heeft aangepast.
+]
 
-Als dit gebeurt dan komt er meer in dan uit en warmt de aarde op. Uiteindelijk zal de temperatuur stijgen en dan meer uitstralen tot dat het weer in balans is.
+Komt er meer binnen dan er buitengaat, dan warmen de aarde en de atmosfeer op. Een warmer voorwerp straalt meer infrarood uit. De opwarming gaat dus door tot er weer evenveel buitengaat als er binnenkomt, en de balans hersteld is.
 
-=== Evolutie van radiative forcing <sec:evolutie-radiative-forcing>
+Met radiative forcing kun je verschillende factoren met elkaar vergelijken: CO#sub[2], methaan, aerosolen, ... Daarom wordt het begrip veel gebruikt in klimaatonderzoek en in het klimaatbeleid.
 
-#figure(
-  image("assets/Evolutie-Radiative-forcing.png", width: 5cm),
-  caption: [Evolutie-Radiative-forcing],
+==== Evolutie sinds 1750 <sec:evolutie-radiative-forcing>
+
+#wrap-figure(
+  image("assets/Evolutie-Radiative-forcing.png", width: 7.5cm),
+  caption: [Evolutie van de positieve forcings sinds 1750],
   label: <fig:Evolutie-Radiative-forcing>,
-)
+)[
+  @fig:Evolutie-Radiative-forcing toont hoe de radiative forcing van elke factor sinds 1750 veranderd is. Deze factoren warmen de aarde op:
 
-Dit zijn alle positieve factoren:
-+ CO#sub[2] (fossiele brandstoffen en cement)
-+ Methaan (fossiele brandstoffen, landbouw en afval)
-+ N#sub[2]O (landbouw)
-+ Ozone (troposfeer)
-+ Halogeenated gases (fossiele brandstoffen, industrie en koeling)
-
+  + CO#sub[2] (fossiele brandstoffen en cement): de grootste stijging van alle factoren
+  + methaan (fossiele brandstoffen, landbouw en afval): de tweede grootste
+  + N#sub[2]O (landbouw)
+  + ozon in de troposfeer
+  + halogeengassen (fossiele brandstoffen, industrie en koeling)
+]
 
 #figure(
-  image("assets/Negatieve-Radiative-forcing.png", width: 5cm),
-  caption: [Negatieve-Radiative-forcing],
+  image("assets/Negatieve-Radiative-forcing.png", width: 90%),
+  caption: [Effective radiative forcing sinds 1750, met de negatieve bijdrage van aerosolen en de pieken van vulkanen],
   label: <fig:Negatieve-Radiative-forcing>,
 )
 
-De negatieve factoren zijn:
-+ Aerosolen (fossiele brandstoffen, industrie en vulkanen)
-+ Spikes van sulfer (vulkanen) _duren maar kort, grote negatieve spikes_
+Twee factoren koelen de aarde af (@fig:Negatieve-Radiative-forcing):
 
++ *Aerosolen*: kleine deeltjes van onder andere het verbranden van fossiele brandstoffen. Ze kaatsen zonlicht terug. Sinds 1750 is hun hoeveelheid gestegen, en dus ook hun negatieve forcing.
++ *Vulkanen*: na een uitbarsting kaatsen deeltjes hoog in de atmosfeer 1 à 2 jaar lang zonlicht terug. Dat geeft grote negatieve pieken, maar op lange termijn is het effect klein.
 
-Als we alles opsommen komen we tot de totale radiative focing;
+De schommelingen van de zon zelf zijn sinds 1750 verwaarloosbaar.
+
+@fig:Totale-algemene-effective-radiative-forcing telt alle factoren op over de periode 1750–2019.
 
 #figure(
-  image("assets/Totale-algemene-effective-radiative-forcing.png", width: 5cm),
-  caption: [Totale-algemene-effective-radiative-forcing],
+  image("assets/Totale-algemene-effective-radiative-forcing.png", width: 90%),
+  caption: [Verandering in effective radiative forcing van 1750 tot 2019],
   label: <fig:Totale-algemene-effective-radiative-forcing>,
 )
 
+- CO#sub[2] levert de grootste bijdrage: 2,16 W/m². Daarom gaat het bij klimaatverandering zo vaak over CO#sub[2].
+- Andere broeikasgassen (methaan, N#sub[2]O, halogeengassen) en ozon zijn ook positief.
+- Kleinere positieve posten zijn waterdamp in de stratosfeer, vuile sneeuw en ijs (bijvoorbeeld op Groenland: minder wit, dus minder teruggekaatst) en condensstrepen van vliegtuigen.
+- Veranderend landgebruik kaatst meer zonlicht terug, en geeft een kleine negatieve forcing.
+- Aerosolen geven de grootste negatieve bijdrage. De onzekerheid daarop is groter dan die op de broeikasgassen.
+
+Samen geven de menselijke factoren 2,72 W/m². De broeikasgassen alleen geven meer dan dat totaal: de aerosolen compenseren een deel van hun effect.
+
+Samen tonen deze vijf bewijzen dat we de opwarming alleen stoppen door minder broeikasgassen uit te stoten.
+
 == Internationale afspraken <sec:internationale-afspraken>
 
-Wat zijn we nu eigenlijk aan het doen tegen klimaatverandering?
+In 2015 sloten 196 partijen het #keyterm[Akkoord van Parijs]. Ze spraken af om de opwarming te beperken tot ruim onder 2 °C boven het pre-industriële niveau, en liefst tot 1,5 °C.
 
-een bekende afspraak is de Parijs Climate Agreement. In 2015 hebben 196 landen afgesproken om de opwarming van de aarde te beperken tot maximaal 2 °C, en liefst tot 1,5 °C tot voor industrialisatie
+=== Het IPCC <sec:ipcc>
 
-Waarom exact die waarden? Dit is gebasseerd door wetenschappelijke studies. Omdat de gevolgen van klimaatverandering bij 1,5 °C nog te overzien zijn, maar bij 2 °C al veel ernstiger. Bij 3 °C of meer wordt het een ramp voor de mensheid.
-
-Elk 7 jaar is er een assesment report van de IPCC (Intergovernmental Panel on Climate Change). Daarin wordt gekeken naar de huidige stand van zaken, en wat er nog moet gebeuren om de doelstellingen te halen.
-
-Hun research is gebaseerd op honderde wetenschappelijke studies, en wordt door honderden wetenschappers nagekeken. Het is dus een zeer betrouwbare bron.
+Die grenzen komen uit wetenschappelijk onderzoek. Het #keyterm[IPCC] (Intergovernmental Panel on Climate Change) brengt om de 5 à 7 jaar een assessment report uit. Daarin staat hoe het klimaat er nu voor staat, en wat er nog moet gebeuren om de doelen te halen. Een rapport vat honderden wetenschappelijke studies samen en wordt door honderden wetenschappers nagelezen.
 
 #figure(
-  image("assets/Alle-IPCC-reports.png", width: 5cm),
-  caption: [Alle-IPCC-reports],
+  image("assets/Alle-IPCC-reports.png", width: 100%),
+  caption: [De zes assessment reports van het IPCC en het klimaatbeleid dat erop volgde],
   label: <fig:Alle-IPCC-reports>,
 )
 
-De IPCC heeft een subdivison gemaakt van vijf redenen voor zorg, Reasons for Concern (RFC). Deze zijn:
+Elk rapport leidde tot een volgende stap in het klimaatbeleid (@fig:Alle-IPCC-reports): het klimaatverdrag van de VN (UNFCCC), het Kyoto-protocol, het doel van 2 °C, het Akkoord van Parijs en het Klimaatpact van Glasgow.
 
-+ unique and threatened systems (RFC1)
-+ Extreme weather events (RFC2)
-+ Distribution of impacts (RFC3)
-+ Global aggregate impacts (RFC4)
-+ Large-scale singular events (RFC5)
+=== Reasons for Concern <sec:reasons-for-concern>
 
+Het IPCC deelt de risico's van klimaatverandering op in vijf #keyterm[Reasons for Concern] (RFC):
 
-We zien dus dat afhankelijk van de grote van de verwarming dat de risico's toenemen. Bij 1,5 °C zijn er al risico's, maar bij 2 °C of meer worden de risico's veel groter.
++ RFC1: unieke en bedreigde systemen
++ RFC2: extreme weersomstandigheden
++ RFC3: verdeling van de impact
++ RFC4: globale, opgetelde impact
++ RFC5: grootschalige, eenmalige gebeurtenissen
 
 #figure(
-  image("assets/RFC's.png", width: 5cm),
-  caption: [RFC's],
+  image("assets/RFC's.png", width: 90%),
+  caption: [Impact en risico per Reason for Concern, in functie van de opwarming],
   label: <fig:RFCs>,
 )
 
-Er is ook een menselijke RCS's
+@fig:RFCs is een #keyterm[burning ember diagram]. Zo lees je het:
+
+- De verticale as is de opwarming ten opzichte van het pre-industriële niveau.
+- De kleur van elke kolom geeft aan hoe groot het extra risico door klimaatverandering is bij die opwarming: wit is niet merkbaar, geel matig, rood hoog en paars zeer hoog.
+- De grijze band is de opwarming van 2006–2015.
+- De letters naast een kolom geven aan hoe zeker de overgang naar een hogere risicoklasse is: L = laag, M = gemiddeld, H = hoog, VH = zeer hoog.
+
+Hoe groter de opwarming, hoe groter de risico's. Bij 1,5 °C zijn er al risico's, maar vanaf 2 °C worden ze veel groter.
+
+@fig:Menselijke-concern-RCSs toont hetzelfde voor afzonderlijke systemen, zoals koraalriffen, het Noordpoolgebied, visserij, oogsten en hittedoden.
 
 #figure(
-  image("assets/Menselijke-concern-RCS's.png", width: 5cm),
-  caption: [Menselijke-concern-RCS's],
+  image("assets/Menselijke-concern-RCS's.png", width: 100%),
+  caption: [Impact en risico voor natuurlijke, beheerde en menselijke systemen],
   label: <fig:Menselijke-concern-RCSs>,
 )
 
-Uit deze risico analyses is bepaald dat 1,5 °C de acceptable limiet is, en 2 °C de absolute limiet. Daarboven zijn de risico's te groot.
-
-NOTE burning ember diagrams niet uitgelegt, bekijk transcript voor extra info
-
+Uit deze risicoanalyses volgt dat 1,5 °C de aanvaardbare grens is, en 2 °C de absolute grens. Daarboven zijn de risico's te groot.
 
 == Carbon budget <sec:carbon-budget>
 
-Om de 1,5 °C te halen is er een carbon budget. Dat is de hoeveelheid CO#sub[2] die we nog mogen uitstoten. Als we dat overschrijden, dan is het onmogelijk om de 1,5 °C te halen.
+Het #keyterm[carbon budget] is de hoeveelheid CO#sub[2] die we nog mogen uitstoten om onder een temperatuurdoel te blijven, zoals 1,5 °C. Is het budget op, dan halen we dat doel niet meer.
 
-Temperatuur verhogingen is redelijke linear met de hoeveelheid CO#sub[2] die we uitstoten. Als we dus 50% van het budget hebben verbruikt, dan is de temperatuur verhoging ook ongeveer 50% van de totale verhoging.
-
-Vandaag de dag is 80% van het carbon budget al verbruikt. Dat betekent dat we nog 20% over hebben om de 1,5 °C te halen. _Dit is ook de uitstoting vanaf de start van de industriële revolutie_.
-
-#figure(
-  image("assets/Lineaire-relatie-temperatuur-groei-en-Co2.png", width: 5cm),
-  caption: [Lineaire-relatie-temperatuur-groei-en-Co2],
+#wrap-figure(
+  image("assets/Lineaire-relatie-temperatuur-groei-en-Co2.png", width: 10cm),
+  caption: [Opwarming in functie van de totale CO#sub[2]-uitstoot sinds 1850],
   label: <fig:Lineaire-relatie-temperatuur-groei-en-Co2>,
-)
+)[
+  De opwarming stijgt bijna lineair met de totale CO#sub[2]-uitstoot sinds de industriële revolutie (@fig:Lineaire-relatie-temperatuur-groei-en-Co2). Is de helft van het budget verbruikt, dan is ook ongeveer de helft van de opwarming bereikt.
 
-Of course there is an uncertainty on this relationship. If we want to be more certain to obtain the temperature target, a lower carbon budget will have to be chosen. A probability of 66% (the very likely range) has been chosen, meaning that the carbon budget is defined in a way that we have a 66% chance to stay within the temperature targets that have been defined by the Paris Agreement.
+  Vandaag is ongeveer 80% van het budget voor 1,5 °C al verbruikt, gerekend vanaf de start van de industriële revolutie. Er blijft dus nog ongeveer 20% over.
 
-We should also take other greenhouse gases into account. For that we use the global warming potential. The effect of other gases can be converted to the effect of carbon dioxide by integrating the radiative forcing over a specified period, usually 100 years, from a unit pulse mass emission. For example the global warming potential of methane is 23 times the global warming potential of CO2. So methane is a much more powerful greenhouse gas than CO2, and is said to be 23 CO2 equivalents. N2O is 296 times as powerful as CO2, and hydrofluorocarbons (such as CFK’s) have a GWP of up to 12 000. These potent greenhouse gases are luckily emitted less than CO2.
+  Op die lineaire relatie zit onzekerheid. Wie zekerder wil zijn dat het doel gehaald wordt, moet een kleiner budget kiezen. Het budget is zo gekozen dat we 66% kans hebben om onder de doelen van het Akkoord van Parijs te blijven.
+]
 
-_Methaan is een focus van klimaat policy want het blijft minder lang in onze atmosfeer, moesten we stoppen met methaan uitstoten kunnen we wat carbon budget terugwinnen._
+=== Andere broeikasgassen <sec:gwp>
 
-note verander naar nederlands is letterlijk uit de tekst van de MOOC gehaald.
-
-GHG 	GWP for 100 years
-CO2  	1
-CH4 	23
-N2O 	296
-HFC - 23 	12 000
-HFC - 134a 	1 300
-SF6 	22 200
-
-naar tabel veranderen
-
-== Emmision pathways <sec:emission-pathways>
-
-Het concept van de carbon budget geeft ons een quantitieve idee hoeveel we moeten emmisies verminderen om de Paris agreement te halen. 
-
-De tijd van de emisies is niet echt belangrijk dus we kunnen de emmisies in 10 jaar of 50 jaar verminderen, zolang we maar onder het carbon budget blijven.
-
-We bekijen een IPPC report die 4 paden bekijkt van emissie verminderen toont;
+Ook andere broeikasgassen tellen mee. Om ze met CO#sub[2] te vergelijken, gebruiken we het #keyterm[global warming potential] (GWP). Je stoot eenmalig 1 kg van een gas uit en telt de radiative forcing ervan op over een vaste periode, meestal 100 jaar. Dat vergelijk je met 1 kg CO#sub[2]. Methaan heeft een GWP van 23: 1 kg methaan warmt de aarde evenveel op als 23 kg CO#sub[2]. Je zegt dan dat het 23 CO#sub[2]-equivalenten is.
 
 #figure(
-  image("assets/IPPC-4-pathway-emission-reduction.png", width: 5cm),
-  caption: [IPPC-4-pathway-emission-reduction],
+  table(
+    columns: 2,
+    align: (left, right),
+    [*Broeikasgas*], [*GWP over 100 jaar*],
+    [CO#sub[2]], [1],
+    [CH#sub[4] (methaan)], [23],
+    [N#sub[2]O], [296],
+    [HFC-23], [12 000],
+    [HFC-134a], [1 300],
+    [SF#sub[6]], [22 200],
+  ),
+  caption: [Global warming potential over 100 jaar, waarden uit de MOOC],
+  label: <tab:gwp>,
+)
+
+Gelukkig stoten we van de sterkste gassen veel minder uit dan van CO#sub[2]. De waarden in @tab:gwp komen uit het IPCC-rapport van 2001. Het rapport van 2021 geeft voor methaan 27 à 30 en voor N#sub[2]O 273.
+
+_Methaan krijgt veel aandacht in het klimaatbeleid, omdat het veel korter in de atmosfeer blijft dan CO#sub[2]. Stoppen we met methaan uitstoten, dan winnen we een deel van het carbon budget terug._
+
+== Emissiepaden <sec:emission-pathways>
+
+Het carbon budget zegt hoeveel we nog mogen uitstoten om het Akkoord van Parijs te halen. Wanneer we die uitstoot verminderen, maakt voor de eindtemperatuur weinig uit: in 10 jaar of in 50 jaar, zolang we onder het budget blijven.
+
+#wrap-figure(
+  image("assets/IPPC-4-pathway-emission-reduction.png", width: 8.5cm),
+  caption: [Netto globale CO#sub[2]-uitstoot in vier modelpaden van het IPCC],
   label: <fig:IPPC-4-pathway-emission-reduction>,
-)
+)[
+  Het IPCC toont vier voorbeeldpaden, P1 tot P4, om de uitstoot te verminderen (@fig:IPPC-4-pathway-emission-reduction). In elk pad gaat de netto uitstoot tussen 2050 en 2060 naar nul.
 
-Het probleem met deze paden is dat het op het einde ook vraagt om negatieve emissies te hebben. Dat is een probleem want we hebben nog geen technologie die dat kan doen op grote schaal. _Carbon capture and storage_ is een technologie die CO2 uit de lucht kan halen en opslaan, maar dat is nog niet op grote schaal beschikbaar.
+  De meeste paden vragen op het einde #keyterm[negatieve emissies]: we moeten dan meer CO#sub[2] uit de lucht halen dan we uitstoten. P1 steunt daar het minst op, P4 het meest. De technologie om dat op grote schaal te doen, bestaat nog niet.
+]
 
 #figure(
-  image("assets/Meer-detail-4-paden.png", width: 5cm),
-  caption: [Meer-detail-4-paden],
+  image("assets/Meer-detail-4-paden.png", width: 100%),
+  caption: [Bijdragen aan de netto CO#sub[2]-uitstoot in de vier modelpaden],
   label: <fig:Meer-detail-4-paden>,
 )
 
-We kunnen 3 factoren uit de paden halen
+@fig:Meer-detail-4-paden splitst elk pad op in drie delen:
 
-+ De vermindering van emissies fossil fuel en industrie
-+ agriculture, forestry and other land use (AFOLU)
-+ Negative emissions (BECCS, DACCS, direct air capture) _nog niet op grote schaal beschikbaar_
++ minder uitstoot uit fossiele brandstoffen en industrie
++ landbouw, bosbouw en ander landgebruik (AFOLU, _agriculture, forestry and other land use_)
++ negatieve emissies, bijvoorbeeld BECCS (bio-energie met CO#sub[2]-opvang en -opslag) en DACCS (CO#sub[2] rechtstreeks uit de lucht halen en opslaan)
 
-Beccs of biomass carbon capture is wel wat controversieel want het vraagt land en water die dan niet gebruikt kan worden voor voedsel bijvoorbeeld.
+BECCS is omstreden: het vraagt veel land en water, die dan niet meer voor bijvoorbeeld voedsel gebruikt kunnen worden.
 
+Alle paden vragen dat de economie sterk koolstofarm wordt. Landgebruik kan maar een beperkte rol spelen, en over negatieve emissies is er veel onzekerheid. De paden van het IPCC zijn op dit moment dus niet realistisch. We moeten een pad vinden dat dat wel is en de uitstoot toch genoeg vermindert.
 
-Dus de paden die de IPPC toont zijn op dit moment niet realistisch. We moeten dus een pad vinden dat realistisch is en de emissies vermindert.
+=== Liggen we op koers? <sec:are-we-on-track>
 
+Elk jaar brengt de VN een #keyterm[Emissions Gap Report] uit. Het vergelijkt de huidige uitstoot met wat nodig is om het Akkoord van Parijs te halen.
 
-Alle paden vragen wel een enorm decarbonisatie van onze economie. Er is een rol van land gebruik die wel gelimiteerd is. er er is enorm veel onzekerheid over de negatieve emissies. We moeten dus een pad vinden dat realistisch is en de emissies vermindert.
-
-=== Are we on track? <sec:are-we-on-track>
-
-Elk jaar is er een Emission Gap Report van de UN. Daarin wordt gekeken naar de huidige emissies en wat er nog moet gebeuren om de Paris agreement te halen.
-
-NDC, Nationally Determined Contributions, zijn de plannen van landen om hun emissies te verminderen.
-
-Je ziet dat de huidige polisies veel sterker zijn om emissies te verminderen, policy werkt dus wel, maar er is wel nog een grote gap tussen wat we moeten halen en wat we nu doen. 
-
-Voor de meer ambitieuze paden van 1,5 °C is er nog een enorm grote gap.
+De plannen van landen om hun uitstoot te verminderen, heten #keyterm[Nationally Determined Contributions] (NDC).
 
 #figure(
-  image("assets/NDC.png", width: 5cm),
-  caption: [NDC],
+  image("assets/NDC.png", width: 90%),
+  caption: [Globale uitstoot in verschillende scenario's en de kloof met de paden voor 2 °C en 1,5 °C (UNEP, 2021)],
   label: <fig:NDC>,
 )
 
-Niet alleen moeten landen meer policies maken voor emissies te verminderen maar ze moeten die ook streng uitvoeren.
+@fig:NDC toont dat beleid werkt. Met het beleid van 2010 zou de uitstoot in 2030 ongeveer 64 Gt CO#sub[2]-eq zijn, met het huidige beleid ongeveer 55 Gt. Toch blijft er een grote kloof: 11 à 13 Gt voor 2 °C, en 25 à 28 Gt voor 1,5 °C. Landen moeten dus niet alleen meer beleid maken, maar het ook strikt uitvoeren.
 
-De vraag die is nu zijn we on track? Nee, huidge policies zou een verwarming van 2.9 °C geven. Dit zou gigantische impacten geven op de mensheid en de natuur. We moeten dus veel meer doen om de emissies te verminderen.
+Liggen we op koers? Nee. Volgens het Emissions Gap Report van 2023 leiden de huidige plannen van landen tot 2,5 à 2,9 °C opwarming, en het huidige beleid tot ongeveer 3 °C. Dat zou een enorme impact hebben op mens en natuur.
 
-Deze video toont wat het huidige scenario zou zijn: https://www.youtube.com/watch?v=LxgMdjyw8uw&t=521s _Is 4 jaar geleden dus niet helemaal up to date maar wel een goed overzicht van de impacten van klimaatverandering._
+_Deze video toont wat het huidige scenario zou betekenen: #link("https://www.youtube.com/watch?v=LxgMdjyw8uw&t=521s")[YouTube]. Hij is 4 jaar oud, dus niet helemaal up-to-date, maar geeft een goed overzicht van de gevolgen van klimaatverandering. Een kanaal dat het klimaat goed opvolgt, is #link("https://www.youtube.com/@SimonClark")[Simon Clark]._
 
-Een goed kanaal die klimaat heel goed opvolgt is Simon Clark, https://www.youtube.com/@SimonClark. 
+== Wat kunnen we doen? <sec:collective-individual-action>
 
-=== Collective en individual action <sec:collective-individual-action>
+De eerste stap is jezelf informeren, zoals met deze MOOC.
 
+=== Collectieve actie <sec:collective-action>
 
-Wat kunnen we nu doen om klimaatverandering aan te pakken?
+#keyterm[Drawdown] is het punt waarop de hoeveelheid broeikasgassen in de atmosfeer stopt met stijgen en begint te dalen. Dat punt hebben we nog niet bereikt: de concentratie stijgt nog elk jaar.
 
-Stap 1 is jezelf informeren (Zoals de MOOC)
-
-=== Collective action <sec:collective-action>
-
-Wat is nu nodig om klimaatverandering aan te pakken collectief?
-
-Drawdown is het punt waarbij emissieuitstoot stopt met klimmen en de uitstoot van broeikasgassen daalt. 
-_We zijn eigenlijk al voorbij dit punt maar we zijn nog steeds aan het uitstoten van broeikasgassen._
-
-the drawdown organisaton toont de beste oplossen in verschillende industrieen (energie, transport, landgebruik, industrie, gebouwen, voedsel en consumptie) die de uitstoot van broeikasgassen kunnen verminderen over een bepaalde tijdsinterval 2020-2050.
-
-Drawdown houdt zich om de 2,0 graden C te halen. De oplossingen zijn gebaseerd op de huidige technologie en zijn realistisch.
+De organisatie Project Drawdown zet per sector de oplossingen op een rij die de uitstoot het meest verminderen tussen 2020 en 2050: energie, transport, landgebruik, industrie, gebouwen, voedsel, ... Hun Scenario 1 komt ongeveer overeen met 2 °C. Alle oplossingen steunen op technologie die vandaag al bestaat.
 
 #figure(
-  image("assets/Oplossingen-klimaatverandering.png", width: 5cm),
-  caption: [Oplossingen-klimaatverandering],
+  image("assets/Oplossingen-klimaatverandering.png", width: 100%),
+  caption: [Oplossingen met de grootste reductie tussen 2020 en 2050 in Scenario 1 van Project Drawdown, in Gt CO#sub[2]-eq],
   label: <fig:Oplossingen-klimaatverandering>,
 )
 
-dit zijn alle soorten oplossingen die impact hebben op klimaatsverandering. 
+De rechterkolom in @fig:Oplossingen-klimaatverandering is hoeveel gigaton CO#sub[2]-equivalent een oplossing kan besparen. Bovenaan staan minder voedselverspilling (88,5 Gt), een plantaardiger dieet (78,3 Gt) en gezinsplanning en onderwijs (68,9 Gt).
 
-De rechter tabel is de Gigaton CO2 equivalent die de oplossing kan verminderen. 
+=== Individuele actie <sec:individual-action>
 
-=== individual action <sec:individual-action>
-
-+ Stemmen: zoek naar politiy die klimaatverandering serieus neemt en de uitstoot van broeikasgassen vermindert.
-+ Je eigen carbon footprint verminderen: minder vlees eten, minder vliegen, minder auto rijden, meer openbaar vervoer, meer fietsen, meer hernieuwbare energie gebruiken, meer recycleren, ...
-
-(persoonlijke note, de carbon footprint studie was gesponsered door fossiele brandstof bedrijven. NOTE VULL NOG VERDER AAN MET LINKS NAAR STUDIES)
-
-+ Vliegen: vliegen heeft een grote effective radiative forcing (ERF)
++ *Stemmen*: kies politici die klimaatverandering ernstig nemen en de uitstoot willen verminderen.
++ *Je eigen carbon footprint verkleinen*: minder vlees eten, minder vliegen, minder met de auto rijden, meer openbaar vervoer en fiets, meer hernieuwbare energie, meer recycleren, ...
++ *Minder vliegen*: vliegen heeft een grote effective radiative forcing (ERF). Het grootste deel komt niet van de CO#sub[2], maar van condensstrepen die cirruswolken vormen (geel in @fig:ERF-vliegen).
++ *Je eten*: voedsel heeft een grote impact op de uitstoot, vooral vlees. @fig:Impact-Voedsel toont de uitstoot per kilogram voedsel, opgesplitst over de hele keten: landgebruik, boerderij, veevoer, transport, verpakking, ... Een kilogram rundvlees geeft 99 kg CO#sub[2]-eq, een kilogram erwten minder dan 1 kg.
++ *Investeren in hernieuwbare energie*: zonnepanelen, windmolens, waterkracht, geothermie, ...
++ *Anderen motiveren* om hun carbon footprint te verkleinen, bijvoorbeeld via sociale media of door er met vrienden en familie over te praten.
 
 #figure(
-  image("assets/ERF-vliegen.png", width: 5cm),
-  caption: [ERF-vliegen],
+  image("assets/ERF-vliegen.png", width: 50%),
+  caption: [ERF van de luchtvaart in 2018 (de eenheid op de as is mW/m²)],
   label: <fig:ERF-vliegen>,
 )
 
-+ Je eten: Eten heeft een groot impact op emissie uitstootm, vooral vlees 
-
-deze figuur toont de impact van verschillende soorten voedsel en wat ze vragen (land, water, animal feed, transport...)
-
 #figure(
-  image("assets/Impact-Voedsel.png", width: 5cm),
-  caption: [Impact-Voedsel],
+  image("assets/Impact-Voedsel.png", width: 100%),
+  caption: [Uitstoot van broeikasgassen per kilogram voedsel, over de hele keten],
   label: <fig:Impact-Voedsel>,
 )
 
-+ Investeren in hernieuwbare energie: zonnepanelen, windmolens, waterkracht, geothermische energie, ...
-
-+ Andere motiveren om hun carbon footprint te verminderen. Je kunt dit doen door bijvoorbeeld op sociale media andere te informeren of met je vrienden en familie te praten over klimaatverandering en wat ze kunnen doen om hun impact te verminderen.
-+ Er zijn dus vele individuale impacten die je kunt doen om de uitstoot van broeikasgassen te verminderen. 
-
-
-
+_Persoonlijke note: De carbon footprint werd populair door een reclamecampagne van het oliebedrijf BP (2004–2006). Die campagne legde de verantwoordelijkheid voor klimaatverandering bij het individu, in plaats van bij de producenten van fossiele brandstoffen. Meer daarover: #link("https://www.wbur.org/onpoint/2023/12/19/how-big-oil-helped-push-the-idea-of-a-carbon-footprint")[WBUR, "How Big Oil helped push the idea of a carbon footprint"]._
 
 #TODO("Module 1 uitwerken vanuit de studiewijzer")

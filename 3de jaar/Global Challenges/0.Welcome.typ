@@ -2,93 +2,88 @@
 
 = Welcome <ch:welcome>
 
-#TODO("Module 0 uitwerken vanuit de studiewijzer")
+Dit vak behandelt 13 uitdagingen waar de wereld vandaag voor staat op vlak van duurzaamheid. Het zijn problemen die de hele wereld raken en die vaak ook wereldwijde actie vragen. Per module legt een expert de basis uit; het is telkens maar het topje van de ijsberg.
 
-In dit vak ga je leren over 13 verschillende challenges die de wereld vandaag heeft. In elke course zijn er experts die je uitleg geven en wat je ervan moet weten.
+Elke module probeert een antwoord te geven op dezelfde vragen:
+- Wat is de huidige situatie? Is het zo erg als het lijkt, of nog erger?
+- Hoe zijn we op dit punt gekomen?
+- Welke mechanismen (in de natuur of in de samenleving) liggen aan de basis?
+- Wat kunnen we leren uit het verleden?
+- Welke oplossingspaden zijn er naar de toekomst?
 
-We willen uiteindelijk de status van de wereld bekijken en wat de huidige situatie is en hoe we deze challenges kunnen aanpakken.
+Er bestaat #important[geen magische oplossing]: we hebben een combinatie van oplossingen nodig, afhankelijk van de situatie. Bovendien hangen alle uitdagingen met elkaar samen. Wie één probleem apart oplost, ziet makkelijk de gevolgen voor de andere over het hoofd.
 
-Je kunt elke topic aparte bekijken dus je moet het niet in een bepaalde volgorde doen.
+De modules staan los van elkaar, dus je kunt ze in eender welke volgorde bekijken.
 
-Ze gebruiken een layering model om te tonen hoe de course met elkaar verbonden zijn.
+== Het gelaagde model <sec:gelaagd-model>
+
+Het vak gebruikt een #keyterm[gelaagd model] (_layered model_) om te tonen hoe de 13 uitdagingen met elkaar verbonden zijn.
 
 #figure(
-  image("assets/Layered-Model.png", width: 5cm),
-  caption: [Layered-Model],
+  image("assets/Layered-Model.png", width: 9cm),
+  caption: [Het gelaagde model: de 13 uitdagingen en hun belangrijkste verbanden],
   label: <fig:Layered-Model>,
 )
 
-Je hebt hier 3 verschillende boundaries:
-- Planetary boundary: de grenzen van de aarde en hoe we deze kunnen behouden.
-- Social boundary: de grenzen van de samenleving en hoe we deze kunnen behouden.
-- Economic boundary: de grenzen van de economie en hoe we deze kunnen behouden.
+Het model bestaat uit drie lagen die in elkaar zitten:
+- #keyterm[Planetaire grenzen] (_planetary boundaries_): de buitenste laag, de grenzen van wat de aarde aankan.
+- #keyterm[Maatschappij] (_society_): leeft binnen die grenzen.
+- #keyterm[Economie] (_economy_): maakt deel uit van de maatschappij.
 
-When looking at planetary boundaries, we will focus on Climate Change and Biodiversity and ecosystems.
+De modules zijn als volgt over het model verdeeld:
+- *Planetaire grenzen*: Klimaatverandering en Biodiversiteit & ecosystemen.
+- *Maatschappij*: Demografie & bevolkingsgroei en Migratie (hoe bevolkingen veranderen), plus Gebouwen en Mobiliteit (twee kortere modules).
+- *Grondstoffen van de planeet* die economie en maatschappij nodig hebben: Energie, Grondstoffen & circulaire economie en Voedselzekerheid.
+- *Waar maatschappij en economie elkaar raken*: Sociale en economische ongelijkheid.
+- *Economie*: Economie van duurzame ontwikkeling en Global governance.
+- *Niet zichtbaar in het model*: Menselijk gedrag. Bij elke uitdaging speelt de mens een sleutelrol. Deze module gaat over hoe je mensen motiveert en overtuigt om duurzamer te handelen.
 
-In the societal dimension we look at how populations change in the module on Demography and population growth and the module on Migration. We will also explore challenges related to Buildings and Mobility (both these modules are shorter than the others).
+De lijnen in het model tonen de belangrijkste verbanden tussen de thema's. Het is maar een selectie, maar die toont al dat alles met alles samenhangt. Na elke module krijg je het model terug met enkel de verbanden van die module.
 
-To support our economy and society, we require resources from our planet. Here we focus on the subjects of Energy, Raw materials and Circular Economy and Food Security.
+== Sustainability in a nutshell <sec:sustainability-in-a-nutshell>
 
-Where society and economy meet, we dive deeper into the topic of Social and Economic Inequality.
+Wat is duurzaamheid? Het is een erg brede term. Hieronder staan drie frameworks die het begrip proberen te vatten.
 
-Looking at the economic dimension of sustainability, we discuss the challenges related to the Economy of Sustainable Development and on Global Governance.
+=== 3P-model (1994) <sec:3p-model>
 
-There is one module which is not visible in this overview, and that is the theme of Human Behavior. We included this module, because in facing any of these challenges, humans and their behavior play a key role. In this module we therefore focus on how you can motivate and persuade people to change their behavior towards more sustainable actions.
+Het #keyterm[3P-model] van John Elkington (ook _triple bottom line_) deelt duurzaamheid op in drie dimensies: *People* (maatschappij), *Planet* (milieu) en *Profit* (economie). Volgens het model is iets pas duurzaam als de drie dimensies in balans zijn: de overlap van de drie cirkels.
 
-In the map, we visualized the most important links between the different themes. Each link is only shortly explained and of course there are many more links than we describe. Here we give you a selection of what we consider to be the most impactful links and this selection already illustrates that everything is connected. After each module we provide this map with the links directly related to that module.
-
-#TODO[uitwerken naar nederlands en de rest van de tekst vertalen]
-
-
-== Sustanability in a nutshell <sec:sustainability-in-a-nutshell>
-
-Wat is duurzaamheid? Het is een heel brede term en we gaan verschillende frameworks bekijken die duurzaamheid proberen te definiëren.
-
-=== 3P model (1994) <sec:3p-model>
-De 3P's staan voor People, Planet en Profit. Het is een framework dat de drie dimensies van duurzaamheid probeert te vatten. Het model zegt dat sustsainability alleen kan worden bereikt als er een balans is tussen de drie dimensies.
-
-Laten heeft Elkington het model verfijnd door er lagen aan toe te voegen. Het originele model voegte te veel aandacht aan de 3 P's apart, nu is het gelaagt waarbij de economie een deel is van de maatschappij en de maatschappij een deel is van de planeet. Het model laat zien dat we niet kunnen overleven zonder de planeet en dat we niet kunnen overleven zonder de maatschappij.
+Het nadeel: het originele model behandelt de drie P's als gelijkwaardige, aparte blokken. Later werd het herwerkt tot een #keyterm[gelaagd model]: de economie is een deel van de maatschappij en de maatschappij is een deel van de planeet. Zo zie je meteen dat de economie niet kan bestaan zonder maatschappij, en de maatschappij niet zonder planeet.
 
 #figure(
-  image("assets/3P-Model.png", width: 5cm),
-  caption: [3P-Model],
+  image("assets/3P-Model.png", width: 9cm),
+  caption: [Links het originele 3P-model, rechts de gelaagde versie],
   label: <fig:3P-Model>,
 )
 
 === The Doughnut model (2012) <sec:doughnut-model>
 
-Het doughnut model tootn dat er een safe space is voor verschillende factoren van duuzaamheid, een goldilock zone.
+Het #keyterm[doughnutmodel] van Kate Raworth tekent duurzaamheid als een ring met twee grenzen:
+- De *buitenrand* is het #keyterm[ecologisch plafond], gebaseerd op de planetaire grenzen. Ga je erover, dan beschadig je de planeet, mogelijk onomkeerbaar.
+- De *binnenrand* is het #keyterm[sociaal fundament]: de minimale sociale standaard die de wereldregeringen hebben vastgelegd, onder meer in de _Sustainable Development Goals_ (@sec:sustainable-development-goals). Zak je eronder, dan ontbreekt het mensen aan basisbehoeften.
 
-Als je erboven gaat ga je de planeet en maatschappij permanent beschadigen, eronder betekent dat je lager zit dan de _minimum_ sociale standaard die wereldregeringen gedifinieerd hebben met de _Sustainable Development Goals_.
+Daartussen ligt de "doughnut": de veilige en rechtvaardige ruimte (_safe and just space_) waarin de mensheid zich moet bewegen.
 
 #figure(
-  image("assets/Doughnut-Model.png", width: 5cm),
-  caption: [Doughnut-Model],
+  image("assets/Doughnut-Model.png", width: 7cm),
+  caption: [Het doughnutmodel],
   label: <fig:Doughnut-Model>,
 )
 
-=== De sustainable development goals (2015) <sec:sustainable-development-goals>
+=== De Sustainable Development Goals (2015) <sec:sustainable-development-goals>
 
-De Sustainable Development Goals (SDG's) zijn 17 doelen die de wereldregeringen hebben opgesteld om de wereld te verbeteren. De SDG's zijn een set van doelen die de wereld willen verbeteren op het gebied van armoede, ongelijkheid, klimaatverandering, milieuvervuiling, vrede en rechtvaardigheid.
+In 2015 keurden alle lidstaten van de Verenigde Naties (VN) de #keyterm[Agenda 2030 voor Duurzame Ontwikkeling] goed: een gedeeld plan voor vrede en welvaart, voor mens en planeet, nu en in de toekomst. De kern zijn de 17 #keyterm[Sustainable Development Goals] (SDG's). Ze zijn een dringende oproep tot actie aan álle landen, ontwikkeld en in ontwikkeling, in een wereldwijd partnerschap.
 
+De SDG's gaan onder meer over armoede, honger, gezondheid, onderwijs, ongelijkheid, klimaat, milieu en vrede. Ze zijn #important[geïntegreerd]: actie op één domein beïnvloedt de resultaten op andere domeinen. Ontwikkeling moet dus sociale, economische en ecologische duurzaamheid in evenwicht houden.
 
 #figure(
-  image("assets/Sustainable-devolopment-goals.png", width: 5cm),
-  caption: [Sustainable-devolopment-goals],
+  image("assets/Sustainable-devolopment-goals.png", width: 9cm),
+  caption: [De 17 Sustainable Development Goals],
   label: <fig:Sustainable-devolopment-goals>,
 )
 
-The 2030 Agenda for Sustainable Development, adopted by all United Nations Member States in 2015, provides a shared blueprint for peace and prosperity for people and the planet, now and into the future. At its heart are the 17 Sustainable Development Goals (SDGs), which are an urgent call for action by all countries - developed and developing - in a global partnership. (source: UN SDG)
-
-The 17 SDGs are integrated—they recognize that action in one area will affect outcomes in others, and that development must balance social, economic and environmental sustainability. You can discover the 17 SDG’s on the official SDG-website.
-
-The SDG’s are often displayed in a layered model, referred to as the SDG wedding cake. This model combines the different SDG’s with the 3 P’s.
-
-
-#TODO[uitwerken naar nederlands en de rest van de tekst vertalen]
-
-
-
-
-
-
+De SDG's worden vaak getoond in een gelaagd model, de #keyterm[SDG-wedding cake] (Stockholm Resilience Centre). Die combineert de 17 SDG's met de 3 P's, net zoals het gelaagde 3P-model:
+- *Biosfeer* (onderste laag): SDG 6, 13, 14 en 15 (water, klimaat, leven in zee, leven op land).
+- *Maatschappij*: SDG 1, 2, 3, 4, 5, 7, 11 en 16.
+- *Economie* (bovenste laag): SDG 8, 9, 10 en 12.
+- SDG 17 (partnerschappen) staat bovenaan en verbindt alle lagen.
