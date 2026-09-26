@@ -14,7 +14,6 @@
 // Wil je een hoofdstuk tijdelijk weglaten? Zet de #include-lijn in commentaar.
 
 #include "Introductie.typ"
-#include "Hoorcolleges.typ"
 
 // ----------------------------- AFSLUITING ------------------------------------
 
