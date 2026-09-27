@@ -93,6 +93,7 @@
   }
 }
 #let schoolBlue = rgb(41, 98, 155)
+#let schoolLink = rgb(21, 88, 176) // links en verwijzingen
 #let schoolRed = rgb(180, 40, 40)
 #let schoolGreen = rgb(39, 174, 96)
 #let schoolOrange = rgb(230, 126, 34)
@@ -201,11 +202,11 @@
   // Override emptyset to use sans-serif glyph for visual consistency
   show sym.emptyset: set text(font: ("Fira Sans", "Liberation Sans"))
 
-  // Links en kruisverwijzingen: kleur draagt de betekenis, geen onderstreping.
-  // Onderstreepte tekst leest op papier als een kapotte hyperlink en botst met
-  // de streep onder elke H1. Zet `underline` hier terug als je het toch wil.
-  show link: set text(fill: schoolBlue)
-  show ref: set text(fill: schoolBlue)
+  // Links en kruisverwijzingen: blauw en onderlijnd, zodat je ziet dat ze
+  // klikbaar zijn. Zelfde kleur als schoolLink in school-macros.sty. Een @ref
+  // wordt intern een link, dus `show link` dekt ook kruisverwijzingen.
+  show link: set text(fill: schoolLink)
+  show link: underline.with(stroke: 0.6pt + schoolLink, offset: 1.5pt)
 
   // Nummering "hoofdstuk.figuur" (bv. 2.1). De teller wordt per hoofdstuk
   // gereset in de level-1 heading rule hieronder.
@@ -338,6 +339,7 @@
       // en in de inhoudsopgave is elk item een link -- een volledig blauwe
       // inhoudstabel is onrustig en zegt niets.
       show link: set text(fill: black)
+      show underline: it => it.body
       set outline.entry(fill: repeat[.#h(4pt)])
       show outline.entry.where(level: 1): it => {
         v(8pt)
@@ -355,54 +357,54 @@
 }
 // --- Custom Boxes (Mirrors tcolorbox schoolbox) ---
 
-// Variant C: een dunne gekleurde balk links en een gekleurde titel als aanloop
-// in de lopende tekst. Geen kader, geen achtergrond, geen titelbalk.
+// Variant D: geen balk, geen icoon. Gekleurde titel als aanloop in de lopende
+// tekst, en bij theorie, concept, theorem en formule een dunne lijn in de
+// typekleur boven en onder (`rules: "both"`). Een oefening krijgt alleen een
+// lijn erboven (`"top"`): oefeningen staan vaak na elkaar en de lijn scheidt
+// ze. Voorbeeld en waarschuwing krijgen geen lijn. Spiegelt school-macros.sty.
 //
-// Dit verving een volledig omkaderde box met gevulde titeltab. Die kostte per
-// callout ~3x zoveel hoogte als de inhoud zelf, en op een pagina met een paar
-// callouts werd het kader het luidste element op het blad.
+// Variant C had een gekleurde balk links over de hele hoogte van het kader. Op
+// een pagina met drie of vier callouts gaf dat evenveel verticale strepen, en de
+// icoontjes trokken meer aandacht dan de titel. Variant C verving op zijn beurt
+// een volledig omkaderde box met gevulde titeltab.
 //
-// `bg` blijft in de signatuur staan zodat bestaande aanroepen blijven werken,
-// maar er is geen achtergrond meer om te zetten.
-#let schoolbox(title, color, icon: none, bg: none, body) = block(
-  width: 100%,
-  above: 1.25em,
-  below: 1.25em,
-  stroke: (left: 2pt + color),
-  inset: (left: 9pt, top: 1pt, bottom: 1pt),
-  {
-    if title != none and title != "" {
-      // Punt alleen als de titel niet al op leesteken eindigt, anders krijg je
-      // "Let Op!." en "Waarom deze som?."
-      let punct = if (
-        type(title) == str
-          and title.len() > 0
-          and (
-            title.last() in (".", "?", "!", ":", ";")
-          )
-      ) { "" } else { "." }
-      text(fill: color, weight: "bold", font: ("Fira Sans", "Liberation Sans"))[
-        #if icon != none [#icon #h(0.25em)]#title#punct
-      ]
-      h(0.35em)
-    }
-    body
-  },
-)
+// `icon` en `bg` blijven in de signatuur staan zodat bestaande aanroepen blijven
+// werken, maar ze worden niet meer getoond.
+#let schoolbox(title, color, icon: none, bg: none, rules: none, body) = {
+  // 60% van de typekleur, zoals `#1!60` in LaTeX.
+  let rule = 0.4pt + color.lighten(40%)
+  block(
+    width: 100%,
+    above: 1.25em,
+    below: 1.25em,
+    stroke: if rules == "both" { (top: rule, bottom: rule) } else if rules == "top" { (top: rule) } else { none },
+    inset: if rules == "both" { (y: 5pt) } else if rules == "top" { (top: 5pt, bottom: 1pt) } else { (y: 1pt) },
+    {
+      if title != none and title != "" {
+        // Punt alleen als de titel niet al op leesteken eindigt, anders krijg je
+        // "Let Op!." en "Waarom deze som?."
+        let punct = if (
+          type(title) == str
+            and title.len() > 0
+            and (
+              title.last() in (".", "?", "!", ":", ";")
+            )
+        ) { "" } else { "." }
+        text(fill: color, weight: "bold", font: ("Fira Sans", "Liberation Sans"))[#title#punct]
+        h(0.35em)
+      }
+      body
+    },
+  )
+}
 
-#let theorie(title: "Theorie", body) = schoolbox(title, schoolBlue, icon: ic-book, body)
-#let voorbeeld(title: "Voorbeeld", body) = schoolbox(title, schoolGreen, icon: ic-pen, body)
-#let waarschuwing(title: "Let Op!", body) = schoolbox(
-  title,
-  schoolRed,
-  icon: ic-warning,
-  bg: schoolRed.lighten(95%),
-  body,
-)
-#let concept(title: "Concept", body) = schoolbox(title, schoolTeal, icon: ic-idea, bg: schoolTeal.lighten(95%), body)
-#let form(title: "Formule", body) = schoolbox(title, schoolOrange, icon: ic-calc, body)
-#let theorem(title: "Theorem", body) = schoolbox(title, deepblue, icon: ic-book, body)
-#let oefening(title: "Oefening", body) = schoolbox(title, schoolGreen, icon: ic-pen, body)
+#let theorie(title: "Theorie", body) = schoolbox(title, schoolBlue, rules: "both", body)
+#let voorbeeld(title: "Voorbeeld", body) = schoolbox(title, schoolGreen, body)
+#let waarschuwing(title: "Let Op!", body) = schoolbox(title, schoolRed, body)
+#let concept(title: "Concept", body) = schoolbox(title, schoolTeal, rules: "both", body)
+#let form(title: "Formule", body) = schoolbox(title, schoolOrange, rules: "both", body)
+#let theorem(title: "Theorem", body) = schoolbox(title, deepblue, rules: "both", body)
+#let oefening(title: "Oefening", body) = schoolbox(title, schoolGreen, rules: "top", body)
 
 // --- Code Block (accentbalk links, ontwerp B) ---
 // Geen kader: alleen een blauwe balk links. De titel staat in het blok zelf,
@@ -503,7 +505,7 @@
       entries
     })
   }
-  schoolbox(title, schoolOrange, icon: ic-calc, [
+  schoolbox(title, schoolOrange, rules: "both", [
     #set align(center)
     // block: true -> displaystyle. Zonder dit worden breuken en integralen in
     // de krappe inline-vorm gezet, precies wat \displaystyle in LaTeX voorkomt.

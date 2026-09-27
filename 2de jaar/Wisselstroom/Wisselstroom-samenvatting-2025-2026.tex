@@ -23,14 +23,14 @@
 % Bij een oefening of voorbeeld begint de opgave op een nieuwe regel, niet naast
 % de titel. Anders loopt "Gegeven: ..." vast tegen de titel aan.
 \newcommand{\schoolRunInHeadBreak}[3]{%
-    \textcolor{#1}{\bfseries\sffamily #2\ #3}\par\nobreak\vspace{0.4mm}}
+    \textcolor{#1}{\bfseries\sffamily #3}\par\nobreak\vspace{0.4mm}}
 \tcbset{
     schoolRunInBreak/.code n args={3}{%
         \ifstrempty{#3}{}{\tcbset{before upper={\schoolRunInHeadBreak{#1}{#2}{#3}}}}%
     }
 }
 \renewtcolorbox{oefening}[1][Oefening]{%
-    schoolbox=schoolGreen, schoolRunInBreak={schoolGreen}{\faPenNib}{#1}}
+    schoolbox=schoolGreen, schoolruletop=schoolGreen, schoolRunInBreak={schoolGreen}{\faPenNib}{#1}}
 \renewtcolorbox{voorbeeld}[1][Voorbeeld]{%
     schoolbox=schoolGreen, schoolRunInBreak={schoolGreen}{\faPenNib}{#1}}
 
