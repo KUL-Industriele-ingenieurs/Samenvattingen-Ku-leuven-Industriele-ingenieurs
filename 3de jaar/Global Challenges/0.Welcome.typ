@@ -1,8 +1,8 @@
 #import "../../school-template.typ": *
 
-= Welcome <ch:welcome>
+= Introductie <ch:welcome>
 
-Dit vak behandelt 13 uitdagingen waar de wereld vandaag voor staat op vlak van duurzaamheid. Het zijn problemen die de hele wereld raken en die vaak ook wereldwijde actie vragen. Per module legt een expert de basis uit; het is telkens maar het topje van de ijsberg.
+Dit vak behandelt 13 uitdagingen waar de wereld vandaag voor staat op vlak van duurzaamheid. Het zijn problemen die de hele wereld raken en die vaak ook wereldwijde actie vragen. Per module legt een expert de basis uit.
 
 Elke module probeert een antwoord te geven op dezelfde vragen:
 - Wat is de huidige situatie? Is het zo erg als het lijkt, of nog erger?
