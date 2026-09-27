@@ -259,8 +259,14 @@ De aarde en de atmosfeer stralen zelf infrarood uit, samen ook 235 W/m² aan de 
   label: <fig:Imbalanse-radiatie>,
 )[
   Een verandering in het systeem, zoals meer broeikasgassen, verstoort die balans. Neem een verdubbeling van de CO#sub[2]-concentratie (@fig:Imbalanse-radiatie). Er komt netto 240 W/m² zonnestraling binnen, maar er gaat maar 236 W/m² infrarood buiten. De CO#sub[2] absorbeert een deel van het infrarood, zodat het de bovenkant van de atmosfeer niet bereikt. De onbalans is 4 W/m².
+]
 
-  Die onbalans is de #keyterm[radiative forcing]: het verschil in straling aan de bovenkant van de atmosfeer door één specifieke factor, gemeten _voordat_ de temperatuur van de aarde en de atmosfeer zich heeft aangepast.
+#concept(title: "Radiative forcing")[
+  De onbalans in straling aan de bovenkant van de atmosfeer door één specifieke factor, zoals meer CO#sub[2]. Ze wordt gemeten _voordat_ de temperatuur van de aarde en de atmosfeer zich heeft aangepast. Eenheid: W/m².
+]
+
+#waarschuwing[
+  Radiative forcing is de onbalans vóór de opwarming. De onbalans die je later meet is kleiner, omdat een warmere aarde meer infrarood uitstraalt.
 ]
 
 Komt er meer binnen dan er buitengaat, dan warmen de aarde en de atmosfeer op. Een warmer voorwerp straalt meer infrarood uit. De opwarming gaat dus door tot er weer evenveel buitengaat als er binnenkomt, en de balans hersteld is.
@@ -367,7 +373,9 @@ Uit deze risicoanalyses volgt dat 1,5 °C de aanvaardbare grens is, en 2 °C de 
 
 == Carbon budget <sec:carbon-budget>
 
-Het #keyterm[carbon budget] is de hoeveelheid CO#sub[2] die we nog mogen uitstoten om onder een temperatuurdoel te blijven, zoals 1,5 °C. Is het budget op, dan halen we dat doel niet meer.
+#concept(title: "Carbon budget")[
+  De hoeveelheid CO#sub[2] die we nog mogen uitstoten om onder een temperatuurdoel te blijven, zoals 1,5 °C. Is het budget op, dan halen we dat doel niet meer.
+]
 
 #wrap-figure(
   image("assets/Lineaire-relatie-temperatuur-groei-en-Co2.png", width: 10cm),
@@ -383,7 +391,15 @@ Het #keyterm[carbon budget] is de hoeveelheid CO#sub[2] die we nog mogen uitstot
 
 === Andere broeikasgassen <sec:gwp>
 
-Ook andere broeikasgassen tellen mee. Om ze met CO#sub[2] te vergelijken, gebruiken we het #keyterm[global warming potential] (GWP). Je stoot eenmalig 1 kg van een gas uit en telt de radiative forcing ervan op over een vaste periode, meestal 100 jaar. Dat vergelijk je met 1 kg CO#sub[2]. Methaan heeft een GWP van 23: 1 kg methaan warmt de aarde evenveel op als 23 kg CO#sub[2]. Je zegt dan dat het 23 CO#sub[2]-equivalenten is.
+Ook andere broeikasgassen tellen mee. Om ze met CO#sub[2] te vergelijken, gebruiken we het global warming potential.
+
+#concept(title: "Global warming potential (GWP)")[
+  Je stoot eenmalig 1 kg van een gas uit en telt de radiative forcing ervan op over een vaste periode, meestal 100 jaar. Dat vergelijk je met 1 kg CO#sub[2].
+]
+
+#voorbeeld(title: "Methaan")[
+  Methaan heeft een GWP van 23: 1 kg methaan warmt de aarde evenveel op als 23 kg CO#sub[2]. Je zegt dan dat het 23 CO#sub[2]-equivalenten is.
+]
 
 #figure(
   table(
