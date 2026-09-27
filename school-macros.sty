@@ -162,6 +162,7 @@
 % --- Colors ---
 \@ifpackageloaded{xcolor}{}{\RequirePackage{xcolor}}
 \definecolor{schoolBlue}{RGB}{41, 98, 155}
+\definecolor{schoolLink}{RGB}{21, 88, 176}
 \definecolor{schoolRed}{RGB}{180, 40, 40}
 \definecolor{schoolGreen}{RGB}{39, 174, 96}
 \definecolor{schoolOrange}{RGB}{230, 126, 34}
@@ -267,21 +268,24 @@
     \RequirePackage{hyperref}
     \hypersetup{
         colorlinks=true,
-        linkcolor=schoolBlue,
-        urlcolor=schoolBlue,
-        citecolor=schoolBlue,
+        linkcolor=schoolLink,
+        urlcolor=schoolLink,
+        citecolor=schoolLink,
+        pdfborder={0 0 0.6},
+        pdfborderstyle={/S/U/W 0.6},
+        allbordercolors={0.08 0.35 0.69},
         hypertexnames=false,
     }
 }
 
 
-% Inhoudsopgave in zwart. linkcolor staat op schoolBlue voor kruisverwijzingen
-% in de tekst, maar een volledig blauwe inhoudstabel is onrustig en zegt niets:
-% daar is elk item een link.
+% Inhoudsopgave in zwart en zonder onderlijning. In de tekst zijn links blauw
+% en onderlijnd, maar een volledig blauwe inhoudstabel is onrustig en zegt
+% niets: daar is elk item een link.
 \AtBeginDocument{%
     \let\school@oldtoc\tableofcontents
     \renewcommand{\tableofcontents}{%
-        \begingroup\hypersetup{linkcolor=black}\school@oldtoc\endgroup}%
+        \begingroup\hypersetup{linkcolor=black,pdfborder={0 0 0}}\school@oldtoc\endgroup}%
 }
 
 \@ifpackageloaded{bookmark}{}{\RequirePackage{bookmark}}
@@ -299,10 +303,11 @@
 \crefname{chapter}{hoofdstuk}{hoofdstukken}
 \Crefname{chapter}{Hoofdstuk}{Hoofdstukken}
 
-% Verwijzingen dragen hun betekenis via kleur (linkcolor=schoolBlue hierboven).
-% Hier stond een \renewcommand die elke \ref onderstreepte. Op papier leest dat
-% als een kapotte hyperlink, het botste met de liniaal onder elke \section, en
-% \cref werd niet onderstreept -- dus het was ook nog inconsistent.
+% Links en verwijzingen zijn blauw (schoolLink) en onderlijnd, zodat je ziet dat
+% ze klikbaar zijn. De onderlijning is een PDF-annotatie (pdfborderstyle /S/U):
+% ze geldt voor \ref, \cref en \url tegelijk, breekt mee over regels en komt
+% niet op papier. Een \renewcommand die elke \ref onderstreepte, liet \cref
+% ongemoeid en botste met de liniaal onder \section; die is weggehaald.
 
 % ============================================================================ 
 %                           TCOLORBOX ARCHITECTURE
@@ -311,31 +316,60 @@
 % formule, zet er dan een lege regel tussen. Anders komt de titel op dezelfde
 % regel naast dat blok te staan in plaats van erboven.
 %
-% Kopje van een callout: icoon + titel in de accentkleur, gevolgd door een punt.
+% Kopje van een callout: titel in de accentkleur, gevolgd door een punt. Het
+% icoon-argument (#2) blijft bestaan zodat oude aanroepen werken, maar wordt
+% niet meer getoond.
 % Die punt alleen als de titel niet al op een leesteken eindigt, anders krijg je
 % "Let Op!." Staat via `before upper` voor de inhoud, zodat de titel in dezelfde
 % alinea meeloopt in plaats van in een eigen titelbalk.
 \newcommand{\schoolRunInHead}[3]{%
     \StrRight{#3}{1}[\schoolRunInLast]%
-    \textcolor{#1}{\bfseries\sffamily #2\ #3%
+    \textcolor{#1}{\bfseries\sffamily #3%
         \IfSubStr{.?!:;}{\schoolRunInLast}{}{.}}\ %
 }
 
 
+\newif\ifschool@afterrule
+\AddToHook{para/begin}{\global\school@afterrulefalse}
+
 \tcbset{
-    % Variant C: dunne gekleurde balk links, gekleurde titel als aanloop in de
-    % lopende tekst. Geen kader, geen achtergrond, geen titelbalk.
+    % Variant D: geen balk, geen icoon. Gekleurde titel als aanloop in de
+    % lopende tekst, en bij theorie, concept en formule een dunne lijn in de
+    % typekleur boven en onder. Een oefening krijgt alleen een lijn erboven:
+    % oefeningen staan vaak na elkaar en de lijn scheidt ze. Voorbeeld en
+    % waarschuwing krijgen geen lijn.
     %
-    % Dit verving een volledig omkaderde box met gevulde titeltab. Die kostte
-    % per callout ongeveer drie keer zoveel hoogte als de inhoud zelf, en op
-    % een pagina met een paar callouts werd het kader het luidste element.
-    schoolbox/.style={ 
+    % Variant C had een gekleurde balk links over de hele hoogte van het kader.
+    % Op een pagina met drie of vier callouts gaf dat evenveel verticale
+    % strepen, en de icoontjes trokken meer aandacht dan de titel.
+    % Variant C verving op zijn beurt een volledig omkaderde box met gevulde
+    % titeltab, die drie keer zoveel hoogte kostte als de inhoud.
+    schoolbox/.style={
         enhanced, breakable,
         colback=white, colframe=white, boxrule=0pt, arc=0pt,
-        left=9pt, right=0pt, top=1pt, bottom=1pt,
-        borderline west={2pt}{0pt}{#1},
+        left=0pt, right=0pt, top=1pt, bottom=1pt,
         before skip=0.8\baselineskip,
         after skip=0.8\baselineskip
+    },
+    % Staat een kader met onderlijn vlak voor dit kader, dan valt de bovenlijn
+    % weg. Anders krijg je twee lijnen vlak boven elkaar. Elke nieuwe alinea
+    % tussen beide kaders zet de vlag terug (hook para/begin hieronder).
+    schoolrules/.code={%
+        \ifschool@afterrule
+            \tcbset{top=5pt, bottom=5pt, borderline south={0.4pt}{0pt}{#1!60}}%
+        \else
+            \tcbset{top=5pt, bottom=5pt,
+                borderline north={0.4pt}{0pt}{#1!60},
+                borderline south={0.4pt}{0pt}{#1!60}}%
+        \fi
+        \tcbset{after={\par\global\school@afterruletrue}}%
+    },
+    schoolruletop/.code={%
+        \ifschool@afterrule
+            \tcbset{top=5pt}%
+        \else
+            \tcbset{top=5pt, borderline north={0.4pt}{0pt}{#1!60}}%
+        \fi
     },
     % Titel als gekleurde aanloop. Wordt door de omgevingen hieronder gezet.
     % #1 = accentkleur, #2 = icoon, #3 = titeltekst.
@@ -366,18 +400,18 @@
 % Standaardtitels komen overeen met school-template.typ, zodat een callout
 % zonder expliciete titel aan beide kanten hetzelfde woord toont.
 \newtcolorbox{theorembox}[1][Theorem]{
-    schoolbox=deepblue,
+    schoolbox=deepblue, schoolrules=deepblue,
     schoolRunIn={deepblue}{\faBook}{#1},
 }
 
 \newtcolorbox{theorie}[1][Theorie]{
-    schoolbox=schoolBlue,
+    schoolbox=schoolBlue, schoolrules=schoolBlue,
     schoolRunIn={schoolBlue}{\faBook}{#1},
 }
 \newenvironment{theorieblok}[1][Theorie]{\theorie[#1]}{\endtheorie}
 
 \newtcolorbox{schoolconcept}[1][Concept]{% 
-    schoolbox=schoolTeal,
+    schoolbox=schoolTeal, schoolrules=schoolTeal,
     schoolRunIn={schoolTeal}{\faLightbulb}{#1},
 }
 \newenvironment{conceptbox}[1][Concept]{\schoolconcept[#1]}{\endschoolconcept}
@@ -394,7 +428,7 @@
 }
 
 \newtcolorbox{oefening}[1][Oefening]{% 
-    schoolbox=schoolGreen,
+    schoolbox=schoolGreen, schoolruletop=schoolGreen,
     schoolRunIn={schoolGreen}{\faPenNib}{#1},
 }
 % oefenblok was een byte-identieke tweede definitie; nu een echte alias.
@@ -520,7 +554,7 @@
     % Daarna een \par, zodat de gecentreerde formule op een eigen regel komt en
     % niet naast de titel.
     \begin{tcolorbox}[
-        schoolbox=schoolOrange,
+        schoolbox=schoolOrange, schoolrules=schoolOrange,
         schoolRunIn={schoolOrange}{\faCalculator}{#1},
     ]
         \par\vspace{2pt}%
@@ -846,7 +880,7 @@
 \def\endtwocol{\end{multicols}}
  
 \newcommand*{\concept}[1]{\textcolor{schoolBlue}{\textbf{#1}}}
-\newcommand*{\belangrijk}[1]{\textcolor{schoolRed}{\textbf{#1}}}
+\newcommand*{\belangrijk}[1]{\textbf{#1}}
 \newcommand*{\keyterm}[1]{\textbf{\color{schoolBlue!80!black}#1}}
 
 \newcommand*{\TODO}[1]{\textcolor{red}{\textbf{[TODO: #1]}}}
