@@ -23,7 +23,7 @@ We zoomen ook in op één gevolg in het bijzonder: de stijging van de zeespiegel
 )[
   @fig:Temperatuursverandering-over-20.000-jaar toont de temperatuur van de aarde over de laatste 20.000 jaar.
 
-  Na de laatste ijstijd begon de temperatuur te stijgen. Rond 9000 v.Chr. begon het #keyterm[Holoceen] (de blauwe lijn): een periode met een heel stabiel klimaat. Dat stabiele klimaat maakte landbouw mogelijk. Er kon meer voedsel geproduceerd worden, dus de bevolking kon groeien en de eerste samenlevingen ontstonden.
+  Na de laatste ijstijd begon de temperatuur te stijgen. Rond 9000 v.Chr. begon het #strong[Holoceen] (de blauwe lijn): een periode met een heel stabiel klimaat. Dat stabiele klimaat maakte landbouw mogelijk. Er kon meer voedsel geproduceerd worden, dus de bevolking kon groeien en de eerste samenlevingen ontstonden.
 
   In de tweede helft van de 18e eeuw begon de industriële revolutie. Steenkool, olie en gas werden gebruikt voor de industrie, voor energie en voor verwarming. Dat bracht veel welvaart: minder handenarbeid, en een gezondere en rijkere samenleving.
 ]
@@ -63,12 +63,12 @@ Wanneer we die brandstoffen verbranden, komen er broeikasgassen vrij en warmt de
 
 Dat geeft de mensheid twee uitdagingen.
 
-Ten eerste moeten we klimaatverandering #keyterm[mitigeren]. Dat kan op twee manieren:
+Ten eerste moeten we klimaatverandering #strong[mitigeren]. Dat kan op twee manieren:
 
 + de uitstoot van broeikasgassen verminderen
 + de sinks voor broeikasgassen versterken: de oceanen, bossen en bodems die CO#sub[2] opnemen
 
-Ten tweede moeten we ons #keyterm[aanpassen] aan de klimaatverandering die er al is. Die wordt nog erger, dus de samenleving moet zich voorbereiden op de gevolgen.
+Ten tweede moeten we ons #strong[aanpassen] aan de klimaatverandering die er al is. Die wordt nog erger, dus de samenleving moet zich voorbereiden op de gevolgen.
 
 == Klimaatverandering over geologische tijd <sec:klimaatsverandering-over-geologische-tijd>
 
@@ -82,7 +82,7 @@ Het klimaat over lange periodes bestuderen we met het ijs van Antarctica. Dat ij
 
 @fig:Temperatuursverschillen-over-1MYA toont dat de temperatuur van de aarde sterk schommelt. Koude ijstijden wisselen af met warmere periodes.
 
-Een #keyterm[interglaciaal] is zo'n warmere periode tussen twee ijstijden. Op dit moment zitten we in een interglaciaal. Tijdens het vorige interglaciaal, 120.000 jaar geleden, was het 2 °C warmer dan nu. De zeespiegel lag toen 6 tot 9 meter hoger.
+Een #strong[interglaciaal] is zo'n warmere periode tussen twee ijstijden. Op dit moment zitten we in een interglaciaal. Tijdens het vorige interglaciaal, 120.000 jaar geleden, was het 2 °C warmer dan nu. De zeespiegel lag toen 6 tot 9 meter hoger.
 
 == Natuurlijke oorzaken van klimaatverandering <sec:oorzaken-van-klimaatverandering>
 
@@ -96,7 +96,7 @@ De baan van de aarde rond de zon en de stand van haar as veranderen langzaam. Da
 + *Obliquiteit*: de hoek waaronder de aardas gekanteld staat, schommelt tussen 22,1° en 24,5° in een cyclus van 41.000 jaar. Bij een grotere kanteling zijn de zomers op hoge breedtegraden warmer. Dan smelt een groot deel van de ijskappen, en wordt het warmer op aarde. Nu staat de as 23,4° gekanteld, en die hoek neemt langzaam af.
 + *Precessie*: de aardas tolt langzaam rond, zoals een draaiende tol. Daardoor verschuift het moment in het jaar waarop de aarde het dichtst bij de zon staat.
 
-De obliquiteit weegt zwaar door, omdat het smeltende ijs de opwarming versterkt. Minder ijs betekent dat er minder zonlicht wordt teruggekaatst en dat de aarde meer warmte opneemt. Daardoor smelt er nog meer ijs. Dit is een #keyterm[positieve feedbackloop] (@fig:ijs-albedo-feedback).
+De obliquiteit weegt zwaar door, omdat het smeltende ijs de opwarming versterkt. Minder ijs betekent dat er minder zonlicht wordt teruggekaatst en dat de aarde meer warmte opneemt. Daardoor smelt er nog meer ijs. Dit is een #strong[positieve feedbackloop] (@fig:ijs-albedo-feedback).
 
 Bij de opwarming komt er ook extra CO#sub[2] in de atmosfeer, vooral uit de oceanen en uit bodems die onder het ijs vandaan komen. Die CO#sub[2] versterkt de opwarming nog verder.
 
@@ -138,9 +138,9 @@ Vulkaanuitbarstingen koelen de aarde af. Ze stoten zwaveldioxide uit, dat tot in
 
 De temperatuur stijgt vandaag te snel om alleen door natuurlijke oorzaken te komen. Voor het grootste deel van de stijging zijn wij verantwoordelijk, door de uitstoot van broeikasgassen zoals CO#sub[2] en methaan. Die gassen houden meer warmte vast in de atmosfeer, en daardoor warmt de aarde op.
 
-De industrie heeft ook één afkoelend effect: kleine deeltjes in de lucht (#keyterm[aerosolen]) kaatsen zonlicht terug. Dat effect is veel kleiner dan de opwarming door broeikasgassen. Netto warmt de industrie de aarde dus op.
+De industrie heeft ook één afkoelend effect: kleine deeltjes in de lucht (#strong[aerosolen]) kaatsen zonlicht terug. Dat effect is veel kleiner dan de opwarming door broeikasgassen. Netto warmt de industrie de aarde dus op.
 
-In het Noordpoolgebied ontdooit nu de #keyterm[permafrost]: bodem die normaal het hele jaar bevroren is. Daarin zit veel koolstof opgeslagen, die bij het ontdooien vrijkomt als CO#sub[2] en methaan. Ook dat versterkt de opwarming.
+In het Noordpoolgebied ontdooit nu de #strong[permafrost]: bodem die normaal het hele jaar bevroren is. Daarin zit veel koolstof opgeslagen, die bij het ontdooien vrijkomt als CO#sub[2] en methaan. Ook dat versterkt de opwarming.
 
 === CO#sub[2]-concentratie <sec:co2-levels>
 
@@ -156,7 +156,7 @@ Het verminderen van broeikasgassen in de atmosfeer is een van de grote uitdaging
   Sinds het ontstaan van _Homo sapiens_, ongeveer 300.000 jaar geleden, lag de concentratie tussen 180 en 280 ppmv (parts per million volume). In 2021 was het gemiddelde 416 ppmv. Die hoge CO#sub[2]-waarden zijn de belangrijkste oorzaak van de opwarming sinds de industrialisatie.
 ]
 
-Voor de industriële revolutie was de concentratie 280 ppmv, nu is ze ongeveer 420 ppmv. Dat is een stijging van 50% in 200 jaar. De MOOC noemt 416 ppmv "bijna 40% hoger dan ooit tijdens de menselijke geschiedenis". Dat getal vergelijkt met de hoogste piek in @fig:CO2-levels-over-de-tijd, van ongeveer 300 ppmv.
+Voor de industriële revolutie was de concentratie 280 ppmv, nu is ze ongeveer 420 ppmv. Dat is een stijging van 50% in 200 jaar.
 
 == Bewijzen voor menselijke oorzaken van klimaatverandering <sec:bewijzen-menselijke-oorzaken-klimaatsverandering>
 
@@ -174,14 +174,15 @@ Het CO#sub[2]-budget zet alle CO#sub[2]-uitstoot tegenover alle opname. De uitst
 
 Uit @fig:CO2-Budget, in gigaton koolstof per jaar:
 
-#table(
+#align(center, table(
+  align: left,
   columns: 2,
   [*Bron of sink*], [*GtC/jaar*],
   [Fossiele brandstoffen en cement], [$+8.9 plus.minus 0.4$],
   [Veranderend landgebruik], [$+0.9 plus.minus 0.5$],
   [Opname door de oceanen], [$-2.6 plus.minus 0.5$],
   [Opname door het land], [$-2.9 plus.minus 0.8$],
-)
+))
 
 === Isotopenverhouding <sec:isotopen>
 
@@ -200,7 +201,7 @@ De dalende $frac(#super[13]C, #super[12]C)$-verhouding, samen met de stijgende C
   caption: [Het broeikaseffect],
   label: <fig:Broeikaseffect>,
 )[
-  De aarde en de atmosfeer stralen infraroodlicht uit: dat is de warmte die de aarde afgeeft. Een deel daarvan gaat door de atmosfeer naar de ruimte. Een ander deel wordt door broeikasgassen geabsorbeerd en opnieuw uitgestraald, ook terug naar de aarde. Dat is het #keyterm[broeikaseffect]. Hoe meer broeikasgassen er in de atmosfeer zitten, hoe meer infraroodlicht terug naar de aarde gaat en hoe warmer het wordt.
+  De aarde en de atmosfeer stralen infraroodlicht uit: dat is de warmte die de aarde afgeeft. Een deel daarvan gaat door de atmosfeer naar de ruimte. Een ander deel wordt door broeikasgassen geabsorbeerd en opnieuw uitgestraald, ook terug naar de aarde. Dat is het #strong[broeikaseffect]. Hoe meer broeikasgassen er in de atmosfeer zitten, hoe meer infraroodlicht terug naar de aarde gaat en hoe warmer het wordt.
 ]
 
 === Klimaatmodellen <sec:klimaatmodellen>
@@ -245,11 +246,11 @@ Het vijfde bewijs komt uit de energiebalans van de aarde. De aarde wisselt allee
 
 Gemiddeld komt er 342 W/m² zonnestraling binnen. Een deel wordt geabsorbeerd door de atmosfeer, het grootste deel door het aardoppervlak. De rest wordt teruggekaatst door het oppervlak, de wolken, aerosolen en gassen in de atmosfeer: samen 31%, of 107 W/m² (@fig:Straling-Zon-aarde).
 
-Wat overblijft, is de #keyterm[netto zonnestraling]:
+Wat overblijft, is de #strong[netto zonnestraling]:
 
 $ 342 "W/m"^2 - 107 "W/m"^2 = 235 "W/m"^2 $
 
-De aarde en de atmosfeer stralen zelf infrarood uit, samen ook 235 W/m² aan de bovenkant van de atmosfeer (@fig:Straling-infrarood-aarde). Binnenkomend en uitgaand zijn dus even groot: de aarde is in #keyterm[energiebalans].
+De aarde en de atmosfeer stralen zelf infrarood uit, samen ook 235 W/m² aan de bovenkant van de atmosfeer (@fig:Straling-infrarood-aarde). Binnenkomend en uitgaand zijn dus even groot: de aarde is in #strong[energiebalans].
 
 ==== Onbalans door een forcing <sec:onbalans>
 
@@ -322,11 +323,11 @@ Samen tonen deze vijf bewijzen dat we de opwarming alleen stoppen door minder br
 
 == Internationale afspraken <sec:internationale-afspraken>
 
-In 2015 sloten 196 partijen het #keyterm[Akkoord van Parijs]. Ze spraken af om de opwarming te beperken tot ruim onder 2 °C boven het pre-industriële niveau, en liefst tot 1,5 °C.
+In 2015 sloten 196 partijen het #strong[Akkoord van Parijs]. Ze spraken af om de opwarming te beperken tot ruim onder 2 °C boven het pre-industriële niveau, en liefst tot 1,5 °C.
 
 === Het IPCC <sec:ipcc>
 
-Die grenzen komen uit wetenschappelijk onderzoek. Het #keyterm[IPCC] (Intergovernmental Panel on Climate Change) brengt om de 5 à 7 jaar een assessment report uit. Daarin staat hoe het klimaat er nu voor staat, en wat er nog moet gebeuren om de doelen te halen. Een rapport vat honderden wetenschappelijke studies samen en wordt door honderden wetenschappers nagelezen.
+Die grenzen komen uit wetenschappelijk onderzoek. Het #strong[IPCC] (Intergovernmental Panel on Climate Change) brengt om de 5 à 7 jaar een assessment report uit. Daarin staat hoe het klimaat er nu voor staat, en wat er nog moet gebeuren om de doelen te halen. Een rapport vat honderden wetenschappelijke studies samen en wordt door honderden wetenschappers nagelezen.
 
 #figure(
   image("assets/Alle-IPCC-reports.png", width: 100%),
@@ -338,7 +339,7 @@ Elk rapport leidde tot een volgende stap in het klimaatbeleid (@fig:Alle-IPCC-re
 
 === Reasons for Concern <sec:reasons-for-concern>
 
-Het IPCC deelt de risico's van klimaatverandering op in vijf #keyterm[Reasons for Concern] (RFC):
+Het IPCC deelt de risico's van klimaatverandering op in vijf #strong[Reasons for Concern] (RFC):
 
 + RFC1: unieke en bedreigde systemen
 + RFC2: extreme weersomstandigheden
@@ -352,7 +353,7 @@ Het IPCC deelt de risico's van klimaatverandering op in vijf #keyterm[Reasons fo
   label: <fig:RFCs>,
 )
 
-@fig:RFCs is een #keyterm[burning ember diagram]. Zo lees je het:
+@fig:RFCs is een #strong[burning ember diagram]. Zo lees je het:
 
 - De verticale as is de opwarming ten opzichte van het pre-industriële niveau.
 - De kleur van elke kolom geeft aan hoe groot het extra risico door klimaatverandering is bij die opwarming: wit is niet merkbaar, geel matig, rood hoog en paars zeer hoog.
@@ -413,7 +414,7 @@ Ook andere broeikasgassen tellen mee. Om ze met CO#sub[2] te vergelijken, gebrui
     [HFC-134a], [1 300],
     [SF#sub[6]], [22 200],
   ),
-  caption: [Global warming potential over 100 jaar, waarden uit de MOOC],
+  caption: [Global warming potential over 100 jaar],
   label: <tab:gwp>,
 )
 
@@ -432,7 +433,7 @@ Het carbon budget zegt hoeveel we nog mogen uitstoten om het Akkoord van Parijs 
 )[
   Het IPCC toont vier voorbeeldpaden, P1 tot P4, om de uitstoot te verminderen (@fig:IPPC-4-pathway-emission-reduction). In elk pad gaat de netto uitstoot tussen 2050 en 2060 naar nul.
 
-  De meeste paden vragen op het einde #keyterm[negatieve emissies]: we moeten dan meer CO#sub[2] uit de lucht halen dan we uitstoten. P1 steunt daar het minst op, P4 het meest. De technologie om dat op grote schaal te doen, bestaat nog niet.
+  De meeste paden vragen op het einde #strong[negatieve emissies]: we moeten dan meer CO#sub[2] uit de lucht halen dan we uitstoten. P1 steunt daar het minst op, P4 het meest. De technologie om dat op grote schaal te doen, bestaat nog niet.
 ]
 
 #figure(
@@ -453,9 +454,9 @@ Alle paden vragen dat de economie sterk koolstofarm wordt. Landgebruik kan maar 
 
 === Liggen we op koers? <sec:are-we-on-track>
 
-Elk jaar brengt de VN een #keyterm[Emissions Gap Report] uit. Het vergelijkt de huidige uitstoot met wat nodig is om het Akkoord van Parijs te halen.
+Elk jaar brengt de VN een #strong[Emissions Gap Report] uit. Het vergelijkt de huidige uitstoot met wat nodig is om het Akkoord van Parijs te halen.
 
-De plannen van landen om hun uitstoot te verminderen, heten #keyterm[Nationally Determined Contributions] (NDC).
+De plannen van landen om hun uitstoot te verminderen, heten #strong[Nationally Determined Contributions] (NDC).
 
 #figure(
   image("assets/NDC.png", width: 90%),
@@ -471,11 +472,11 @@ _Deze video toont wat het huidige scenario zou betekenen: #link("https://www.you
 
 == Wat kunnen we doen? <sec:collective-individual-action>
 
-De eerste stap is jezelf informeren, zoals met deze MOOC.
+De eerste stap is jezelf informeren.
 
 === Collectieve actie <sec:collective-action>
 
-#keyterm[Drawdown] is het punt waarop de hoeveelheid broeikasgassen in de atmosfeer stopt met stijgen en begint te dalen. Dat punt hebben we nog niet bereikt: de concentratie stijgt nog elk jaar.
+#strong[Drawdown] is het punt waarop de hoeveelheid broeikasgassen in de atmosfeer stopt met stijgen en begint te dalen. Dat punt hebben we nog niet bereikt: de concentratie stijgt nog elk jaar.
 
 De organisatie Project Drawdown zet per sector de oplossingen op een rij die de uitstoot het meest verminderen tussen 2020 en 2050: energie, transport, landgebruik, industrie, gebouwen, voedsel, ... Hun Scenario 1 komt ongeveer overeen met 2 °C. Alle oplossingen steunen op technologie die vandaag al bestaat.
 
@@ -518,7 +519,7 @@ Wat kunnen we verwachten voor de toekomst? Hoe evolueert het klimaat als we het 
 
 === Representative Concentration Pathways <sec:rcp>
 
-Klimaatscenario's komen uit klimaatmodellen. Er zijn heel veel manieren waarop de uitstoot tot 2100 kan evolueren. Een klimaatmodel draait op een supercomputer en is duur, dus we kunnen ze niet allemaal doorrekenen. Daarom kiest het IPCC een paar #keyterm[Representative Concentration Pathways] (RCP's): typische verlopen van de broeikasgasconcentratie.
+Klimaatscenario's komen uit klimaatmodellen. Er zijn heel veel manieren waarop de uitstoot tot 2100 kan evolueren. Een klimaatmodel draait op een supercomputer en is duur, dus we kunnen ze niet allemaal doorrekenen. Daarom kiest het IPCC een paar #strong[Representative Concentration Pathways] (RCP's): typische verlopen van de broeikasgasconcentratie.
 
 Het getal achter RCP is de radiative forcing (@sec:radiative-forcing) in 2100. RCP8.5 komt overeen met 8,5 W/m², RCP6 met 6 W/m², RCP4.5 met 4,5 W/m² en RCP2.6 met 2,6 W/m².
 
@@ -528,7 +529,7 @@ Het getal achter RCP is de radiative forcing (@sec:radiative-forcing) in 2100. R
   label: <fig:RCPs>,
 )
 
-De modelresultaten per scenario kun je omzetten naar een opwarming. In het laatste IPCC-rapport (2021) heten de scenario's #keyterm[SSP's] (_Shared Socioeconomic Pathways_). Die koppelen een sociaal-economisch verhaal aan een RCP: SSP1-2.6 is bijvoorbeeld een duurzame wereld met een forcing van 2,6 W/m². @tab:ssp-opwarming geeft de opwarming per scenario, met een beste schatting en een _very likely_ bereik, telkens als gemiddelde over 20 jaar.
+De modelresultaten per scenario kun je omzetten naar een opwarming. In het laatste IPCC-rapport (2021) heten de scenario's #strong[SSP's] (_Shared Socioeconomic Pathways_). Die koppelen een sociaal-economisch verhaal aan een RCP: SSP1-2.6 is bijvoorbeeld een duurzame wereld met een forcing van 2,6 W/m². @tab:ssp-opwarming geeft de opwarming per scenario, met een beste schatting en een _very likely_ bereik, telkens als gemiddelde over 20 jaar.
 
 #figure(
   table(
@@ -568,7 +569,7 @@ De opwarming is niet overal even groot (@fig:Warming-op-de-planeet):
   label: <fig:Warming-op-de-planeet>,
 )
 
-Ook de neerslag verandert, en meer naarmate de opwarming groter is (@fig:Regenval-veranderingen). In de tropen en de poolgebieden valt meer neerslag, in de subtropen minder. Grof gezegd: #keyterm[natte gebieden worden natter, droge gebieden droger], met uitzonderingen. Extreme neerslag neemt bijna overal toe.
+Ook de neerslag verandert, en meer naarmate de opwarming groter is (@fig:Regenval-veranderingen). In de tropen en de poolgebieden valt meer neerslag, in de subtropen minder. Grof gezegd: #strong[natte gebieden worden natter, droge gebieden droger], met uitzonderingen. Extreme neerslag neemt bijna overal toe.
 
 #figure(
   image("assets/Regenval-veranderingen.png", width: 100%),
@@ -580,7 +581,7 @@ Veel gevolgen komen in de cursus niet aan bod: berggletsjers, verlies aan biodiv
 
 === Futures wheel <sec:future-wheels>
 
-Een #keyterm[futures wheel] is een schema dat de directe en indirecte gevolgen van één verandering toont:
+Een #strong[futures wheel] is een schema dat de directe en indirecte gevolgen van één verandering toont:
 
 + In het midden staat de verandering.
 + Rond het midden staan de directe gevolgen.
@@ -609,7 +610,7 @@ De zeespiegel stijgt om vier redenen (@fig:Zeespiegel-steiging-redenen):
 + *Smeltende ijskappen* van Groenland en Antarctica: idem.
 + *Minder water op land*, vooral grondwater dat opgepompt wordt en uiteindelijk in zee belandt.
 
-Daarnaast kan het kustland zelf zakken of rijzen. Dan verandert de #keyterm[relatieve zeespiegel] op die plaats, ook als de zeespiegel zelf gelijk blijft.
+Daarnaast kan het kustland zelf zakken of rijzen. Dan verandert de #strong[relatieve zeespiegel] op die plaats, ook als de zeespiegel zelf gelijk blijft.
 
 #figure(
   image("assets/Zeespiegel-steiging-redenen.png", width: 80%),
@@ -629,7 +630,7 @@ De oceanen hebben ongeveer #important[90% van de extra warmte] door klimaatveran
 
 === Gletsjers <sec:gletchers>
 
-Gletsjers krimpen overal ter wereld. @fig:Smelten-Gletchers toont modelsimulaties voor de #keyterm[Aletschgletsjer], een van de grootste gletsjers van de Alpen.
+Gletsjers krimpen overal ter wereld. @fig:Smelten-Gletchers toont modelsimulaties voor de #strong[Aletschgletsjer], een van de grootste gletsjers van de Alpen.
 
 #figure(
   image("assets/Smelten-Gletchers.png", width: 90%),
@@ -663,7 +664,7 @@ Sinds 1970 is de zeespiegel ongeveer 11 cm gestegen (@fig:zeespiegel-stijging):
 - Ook de afname van grondwater draagt bij.
 
 #figure(
-  image("assets/zeespiegel-stijging.png", width: 70%),
+  image("assets/zeespiegel-stijging.png", width: 65%),
   caption: [Bijdragen aan de globale zeespiegelstijging, 1971–2018 (IPCC, 2021)],
   label: <fig:zeespiegel-stijging>,
 )
@@ -671,7 +672,7 @@ Sinds 1970 is de zeespiegel ongeveer 11 cm gestegen (@fig:zeespiegel-stijging):
 Hoeveel de zeespiegel nog stijgt, hangt af van ons: van de opwarming en dus van het scenario. Volgens het vijfde IPCC-rapport stijgt de zeespiegel tegen 2100 met ongeveer 25 cm tot 1 m (@fig:Global-Sea-level-rise).
 
 #figure(
-  image("assets/Global-Sea-level-rise.png", width: 75%),
+  image("assets/Global-Sea-level-rise.png", width: 80%),
   caption: [Verwachte globale zeespiegelstijging tot 2100 voor RCP2.6 (blauw) en RCP8.5 (rood) (IPCC, 2014)],
   label: <fig:Global-Sea-level-rise>,
 )
@@ -684,7 +685,7 @@ Ook in de toekomst blijven thermische uitzetting en gletsjers belangrijk, maar h
   label: <fig:Projection-zeespiegel-stijging>,
 )
 
-De zeespiegel stijgt al en blijft stijgen, ook bij lage uitstoot. We moeten de opwarming dus zo laag mogelijk houden (#keyterm[mitigatie]), maar ons in elk geval ook aanpassen aan een hogere zeespiegel (#keyterm[adaptatie]).
+De zeespiegel stijgt al en blijft stijgen, ook bij lage uitstoot. We moeten de opwarming dus zo laag mogelijk houden (#strong[mitigatie]), maar ons in elk geval ook aanpassen aan een hogere zeespiegel (#strong[adaptatie]).
 
 === Risico voor kustgebieden <sec:risico-kustgebieden>
 
@@ -707,7 +708,7 @@ Mitigatie en adaptatie zijn dus allebei nodig.
 
 === Kosten van overstromingen <sec:kosten-overstromingen>
 
-Kuststeden overstromen niet alleen door de hogere zeespiegel. Ook extreme neerslag en #keyterm[stormvloed] (wind die het water naar het land duwt) spelen mee. Veel grote steden, zoals Mumbai en Ho Chi Minh-stad, liggen aan de kust omdat de zee handel en verbindingen mogelijk maakt. Van alle stedelingen die door de zeespiegelstijging bedreigd worden, woont ongeveer 25% in China.
+Kuststeden overstromen niet alleen door de hogere zeespiegel. Ook extreme neerslag en #strong[stormvloed] (wind die het water naar het land duwt) spelen mee. Veel grote steden, zoals Mumbai en Ho Chi Minh-stad, liggen aan de kust omdat de zee handel en verbindingen mogelijk maakt. Van alle stedelingen die door de zeespiegelstijging bedreigd worden, woont ongeveer 25% in China.
 
 De Wereldbank schat de jaarlijkse kosten van overstromingen tegen het midden van de eeuw op miljarden dollars per stad (@fig:Annual-Flood-cost). Tegen dan krijgen meer dan 570 laaggelegen kuststeden te maken met minstens 0,5 m zeespiegelstijging. Meer dan 800 miljoen mensen lopen dan risico door de stijgende zee en stormvloeden.
 
