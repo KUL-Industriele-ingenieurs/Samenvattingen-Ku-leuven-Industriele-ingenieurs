@@ -17,7 +17,7 @@ De modules staan los van elkaar, dus je kunt ze in eender welke volgorde bekijke
 
 == Het gelaagde model <sec:gelaagd-model>
 
-Het vak gebruikt een #keyterm[gelaagd model] (_layered model_) om te tonen hoe de 13 uitdagingen met elkaar verbonden zijn.
+Het vak gebruikt een #strong[gelaagd model] (_layered model_) om te tonen hoe de 13 uitdagingen met elkaar verbonden zijn.
 
 #figure(
   image("assets/Layered-Model.png", width: 9cm),
@@ -26,9 +26,9 @@ Het vak gebruikt een #keyterm[gelaagd model] (_layered model_) om te tonen hoe d
 )
 
 Het model bestaat uit drie lagen die in elkaar zitten:
-- #keyterm[Planetaire grenzen] (_planetary boundaries_): de buitenste laag, de grenzen van wat de aarde aankan.
-- #keyterm[Maatschappij] (_society_): leeft binnen die grenzen.
-- #keyterm[Economie] (_economy_): maakt deel uit van de maatschappij.
+- #strong[Planetaire grenzen] (_planetary boundaries_): de buitenste laag, de grenzen van wat de aarde aankan.
+- #strong[Maatschappij] (_society_): leeft binnen die grenzen.
+- #strong[Economie] (_economy_): maakt deel uit van de maatschappij.
 
 De modules zijn als volgt over het model verdeeld:
 - *Planetaire grenzen*: Klimaatverandering en Biodiversiteit & ecosystemen.
@@ -46,9 +46,9 @@ Wat is duurzaamheid? Het is een erg brede term. Hieronder staan drie frameworks 
 
 === 3P-model (1994) <sec:3p-model>
 
-Het #keyterm[3P-model] van John Elkington (ook _triple bottom line_) deelt duurzaamheid op in drie dimensies: *People* (maatschappij), *Planet* (milieu) en *Profit* (economie). Volgens het model is iets pas duurzaam als de drie dimensies in balans zijn: de overlap van de drie cirkels.
+Het #strong[3P-model] van John Elkington (ook _triple bottom line_) deelt duurzaamheid op in drie dimensies: *People* (maatschappij), *Planet* (milieu) en *Profit* (economie). Volgens het model is iets pas duurzaam als de drie dimensies in balans zijn: de overlap van de drie cirkels.
 
-Het nadeel: het originele model behandelt de drie P's als gelijkwaardige, aparte blokken. Later werd het herwerkt tot een #keyterm[gelaagd model]: de economie is een deel van de maatschappij en de maatschappij is een deel van de planeet. Zo zie je meteen dat de economie niet kan bestaan zonder maatschappij, en de maatschappij niet zonder planeet.
+Het nadeel: het originele model behandelt de drie P's als gelijkwaardige, aparte blokken. Later werd het herwerkt tot een #strong[gelaagd model]: de economie is een deel van de maatschappij en de maatschappij is een deel van de planeet. Zo zie je meteen dat de economie niet kan bestaan zonder maatschappij, en de maatschappij niet zonder planeet.
 
 #figure(
   image("assets/3P-Model.png", width: 9cm),
@@ -58,9 +58,9 @@ Het nadeel: het originele model behandelt de drie P's als gelijkwaardige, aparte
 
 === The Doughnut model (2012) <sec:doughnut-model>
 
-Het #keyterm[doughnutmodel] van Kate Raworth tekent duurzaamheid als een ring met twee grenzen:
-- De *buitenrand* is het #keyterm[ecologisch plafond], gebaseerd op de planetaire grenzen. Ga je erover, dan beschadig je de planeet, mogelijk onomkeerbaar.
-- De *binnenrand* is het #keyterm[sociaal fundament]: de minimale sociale standaard die de wereldregeringen hebben vastgelegd, onder meer in de _Sustainable Development Goals_ (@sec:sustainable-development-goals). Zak je eronder, dan ontbreekt het mensen aan basisbehoeften.
+Het #strong[doughnutmodel] van Kate Raworth tekent duurzaamheid als een ring met twee grenzen:
+- De *buitenrand* is het #strong[ecologisch plafond], gebaseerd op de planetaire grenzen. Ga je erover, dan beschadig je de planeet, mogelijk onomkeerbaar.
+- De *binnenrand* is het #strong[sociaal fundament]: de minimale sociale standaard die de wereldregeringen hebben vastgelegd, onder meer in de _Sustainable Development Goals_ (@sec:sustainable-development-goals). Zak je eronder, dan ontbreekt het mensen aan basisbehoeften.
 
 Daartussen ligt de "doughnut": de veilige en rechtvaardige ruimte (_safe and just space_) waarin de mensheid zich moet bewegen.
 
@@ -72,7 +72,7 @@ Daartussen ligt de "doughnut": de veilige en rechtvaardige ruimte (_safe and jus
 
 === De Sustainable Development Goals (2015) <sec:sustainable-development-goals>
 
-In 2015 keurden alle lidstaten van de Verenigde Naties (VN) de #keyterm[Agenda 2030 voor Duurzame Ontwikkeling] goed: een gedeeld plan voor vrede en welvaart, voor mens en planeet, nu en in de toekomst. De kern zijn de 17 #keyterm[Sustainable Development Goals] (SDG's). Ze zijn een dringende oproep tot actie aan álle landen, ontwikkeld en in ontwikkeling, in een wereldwijd partnerschap.
+In 2015 keurden alle lidstaten van de Verenigde Naties (VN) de #strong[Agenda 2030 voor Duurzame Ontwikkeling] goed: een gedeeld plan voor vrede en welvaart, voor mens en planeet, nu en in de toekomst. De kern zijn de 17 #strong[Sustainable Development Goals] (SDG's). Ze zijn een dringende oproep tot actie aan álle landen, ontwikkeld en in ontwikkeling, in een wereldwijd partnerschap.
 
 De SDG's gaan onder meer over armoede, honger, gezondheid, onderwijs, ongelijkheid, klimaat, milieu en vrede. Ze zijn #important[geïntegreerd]: actie op één domein beïnvloedt de resultaten op andere domeinen. Ontwikkeling moet dus sociale, economische en ecologische duurzaamheid in evenwicht houden.
 
@@ -82,7 +82,7 @@ De SDG's gaan onder meer over armoede, honger, gezondheid, onderwijs, ongelijkhe
   label: <fig:Sustainable-devolopment-goals>,
 )
 
-De SDG's worden vaak getoond in een gelaagd model, de #keyterm[SDG-wedding cake] (Stockholm Resilience Centre). Die combineert de 17 SDG's met de 3 P's, net zoals het gelaagde 3P-model:
+De SDG's worden vaak getoond in een gelaagd model, de #strong[SDG-wedding cake] (Stockholm Resilience Centre). Die combineert de 17 SDG's met de 3 P's, net zoals het gelaagde 3P-model:
 - *Biosfeer* (onderste laag): SDG 6, 13, 14 en 15 (water, klimaat, leven in zee, leven op land).
 - *Maatschappij*: SDG 1, 2, 3, 4, 5, 7, 11 en 16.
 - *Economie* (bovenste laag): SDG 8, 9, 10 en 12.

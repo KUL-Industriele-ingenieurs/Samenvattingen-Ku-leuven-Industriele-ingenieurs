@@ -204,9 +204,11 @@
 
   // Links en kruisverwijzingen: blauw en onderlijnd, zodat je ziet dat ze
   // klikbaar zijn. Zelfde kleur als schoolLink in school-macros.sty. Een @ref
-  // wordt intern een link, dus `show link` dekt ook kruisverwijzingen.
+  // valt niet onder `show link`, dus die krijgt een eigen regel.
   show link: set text(fill: schoolLink)
   show link: underline.with(stroke: 0.6pt + schoolLink, offset: 1.5pt)
+  show ref: set text(fill: schoolLink)
+  show ref: underline.with(stroke: 0.6pt + schoolLink, offset: 1.5pt)
 
   // Nummering "hoofdstuk.figuur" (bv. 2.1). De teller wordt per hoofdstuk
   // gereset in de level-1 heading rule hieronder.
