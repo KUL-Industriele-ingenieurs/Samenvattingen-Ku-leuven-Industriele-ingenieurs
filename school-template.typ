@@ -174,8 +174,14 @@
         // Niet `.before(here())`: de header staat bovenaan de pagina, dus een
         // hoofdstuk dat op deze pagina begint valt daarbuiten en de kopregel
         // loopt een hoofdstuk achter. Filteren op paginanummer wel correct.
+        // Een hoofdstuk dat halverwege deze pagina begint telt niet mee: de
+        // pagina begint dan nog in het vorige hoofdstuk. Alleen een hoofdstuk
+        // bovenaan de pagina (binnen 4 cm van de rand) neemt de kopregel over.
         let this-page = here().page()
-        let headers = query(heading.where(level: 1)).filter(h => h.location().page() <= this-page)
+        let headers = query(heading.where(level: 1)).filter(h => {
+          let loc = h.location()
+          loc.page() < this-page or (loc.page() == this-page and loc.position().y < 4cm)
+        })
         let last_header = if headers.len() > 0 { headers.last().body } else { [] }
 
         grid(
@@ -240,9 +246,9 @@
     counter(std-figure.where(kind: table)).update(0)
     counter(std-figure.where(kind: raw)).update(0)
     _current_chapter.update(it.body)
-    // Alleen niveau 1 krijgt een liniaal. H1 en H2 hadden allebei een
-    // volledige liniaal en lagen met 13.2 vs 11 pt te dicht bij elkaar (11 pt
-    // is exact de broodtekstgrootte), waardoor de hierarchie wegviel.
+    // Niveau 1 en 2 krijgen een liniaal, zoals \chapter en \section in
+    // school-macros.sty. De hiërarchie blijft zichtbaar via de grootte
+    // (15 vs 12.2 pt) en de dikte van de lijn (0.6 vs 0.4 pt).
     // Negatieve linkerinspring: hoofdtitels steken iets in de marge, zodat de
     // structuur al zichtbaar is als je door het document bladert. Zet
     // titleOutdent op 0pt om het uit te schakelen.
@@ -253,14 +259,19 @@
       #v(18pt)
       #text(size: 15pt)[#if it.numbering != none { counter(heading).display(it.numbering) + h(0.5em) }#it.body]
       #v(-11pt)
-      #line(length: 100% + titleOutdent, stroke: 0.6pt)
+      #line(length: 100%, stroke: 0.6pt)
     ])
   }
 
-  show heading.where(level: 2): it => block(below: 0.9em, breakable: false)[
+  // Niveau 2 = \section in school-macros.sty: ook een liniaal en ook in de marge.
+  // De meeste LaTeX-samenvattingen zijn `report`, waar \chapter en \section
+  // allebei een \titlerule hebben; zonder deze lijn zag Typst er kaler uit.
+  show heading.where(level: 2): it => block(below: 0.8em, breakable: false, pad(left: -titleOutdent)[
     #v(16pt)
     #text(size: 12.2pt)[#if it.numbering != none { counter(heading).display(it.numbering) + h(0.5em) }#it.body]
-  ]
+    #v(-9pt)
+    #line(length: 100%, stroke: 0.4pt)
+  ])
 
   show heading.where(level: 3): it => block(below: 0.8em, breakable: false)[
     #v(11pt)

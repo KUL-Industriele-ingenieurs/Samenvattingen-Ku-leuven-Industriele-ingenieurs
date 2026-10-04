@@ -2,154 +2,143 @@
 
 = Duurzaamheid <ch:duurzaamheid>
 
-=== Kunnen vs Moeten <sec:kunnen-vs-moeten>
+== Kunnen vs. moeten <sec:kunnen-vs-moeten>
 
-We introduceren een onderschuid tussen kunnen en moeten: kunnen is wat is er mogelijk en moeten is wat er wenselijk is.
+We introduceren een onderscheid tussen kunnen en moeten: kunnen is wat er mogelijk is, en moeten is wat er wenselijk is.
 
-Kan je vliegen? nee maar je kunt wel de auto nemen om je van punt A naar punt B te brengen.
+Kan je vliegen? Nee, maar je kunt wel de auto nemen om van punt A naar punt B te gaan. Wat mogelijk is, onderzoekt de wetenschap (cf. les over (pseudo)wetenschap).
 
-Binnen de filosofie en de normatieve ethiek gaan we kijken wat er wenselijk is. Gewoon omdat ze niet mogelijk zijn maakt het niet niet interesant om over na te denken over wat wenselijk is.
+Binnen de filosofie, en meer bepaald de normatieve ethiek, gaan we kijken wat er wenselijk is. Kunnen en moeten vallen niet altijd samen:
 
-Nog een onderschuid: er zijn veel dingen die mogelijk zijn maar niet wenselijk zijn. Bijvoorbeeld: je kan een bom laten ontploffen in een stad maar dat is niet wenselijk.
+- *Mogelijk, maar niet wenselijk:* je kan een bom laten ontploffen in een stad, maar dat is niet wenselijk.
+- *Wenselijk, maar (nog) niet mogelijk:* armoede en hongersnood morgen de wereld uit helpen. Ook dan blijft het interessant om na te denken over wat wenselijk is.
 
-je hebt nog zoals armoede, hongernood...
+== Morele waarden <sec:morele-waarden>
 
-wat zou moeten zijn wordt gedefinieerd door *Morele Waarden*:
+Wat zou moeten zijn, wordt bepaald door *morele waarden*: privacy, rechtvaardigheid, vrijheid, gelijkheid, *duurzaamheid*, ...
 
-Privacy, rechtvaardigheid, vrijheid, gelijkheid, *duurzaamheid, ...*
+Een morele waarde verwijst naar een stand van zaken (bv. bij privacy: controle hebben over je data), die we goed vinden, en die normatief is: anderen moeten er rekening mee houden.
 
-Morele waarden zijn niet universeel en veranderen over niet alleen ruimte maar ook tijd.
+Morele waarden zijn niet universeel en veranderen niet alleen over de ruimte, maar ook over de tijd. Data-privacy is voor landen zoals China en de VS minder belangrijk dan voor de EU-landen. En in de tijd zie je dat bijvoorbeeld dierenrechten doorheen de jaren veranderd zijn. Dat betekent niet dat alles subjectief is.
 
-Data privacy is voor sommige landen zoals China en de USA minder belangrijk dan voor de EU-landen.
+== De Brundtland-definitie <sec:brundtland-definitie>
 
-Maar in de tijd zie je dat dierenrechten veranderd zijn door de jaren heen.
+De Brundtland-definitie van duurzaamheid is:
 
-== De Brundtland definitie <sec:brundtland-definitie>
+#quote(block: true)[
+  "Duurzame ontwikkeling is ontwikkeling die voorziet in de behoeften van het heden zonder het vermogen van toekomstige generaties om in hun eigen behoeften te voorzien in gevaar te brengen."
+]
 
-De Brundtland definitie van duurzaamheid is:
+(Rapport _Our Common Future_, 1987, VN, naar de Noorse oud-premier Gro Harlem Brundtland.)
 
-> "Duurzame ontwikkeling is ontwikkeling die voorziet in de behoeften van het heden zonder het vermogen van toekomstige generaties om in hun eigen behoeften te voorzien in gevaar te brengen."
+Je moet dus in je eigen behoeftes voorzien zonder de behoeftes van de volgende generaties in gevaar te brengen.
 
-Je moet dus je eigen behoeftes voldoen zonder de behoeftes van de volgende generaties in gevaar te brengen.
+De definitie is een beetje abstract: welke behoeftes, en wat zijn de behoeftes van de volgende generatie? En hoeveel generaties? Vijf generaties? Maar waarom die lijn daar trekken, wat met de zesde en zevende generatie? Om de definitie te gebruiken, moet je ze dus concreet maken (operationaliseren). Daarvoor moet je beslissingen nemen, en die moet je kunnen rechtvaardigen (legitimeren).
 
-De definietie is een beetje abstract wat welke behoeftes, en wat zijn de behoeftes van de volgende generatie? En hoeveel generaties, 5 generaties, maar waarom die lijn daar trekken wat van die 6de en 7de generatie?
+We nemen aan dat de behoeftes van vandaag gekend zijn, maar misschien niet die van de toekomst, en omgekeerd. (Als je 300 jaar terugkijkt, konden ze nooit de behoeftes van de toekomst gekend hebben: data-privacy was geen behoefte in die tijd, maar hun behoeftes waren ook heel anders dan die van vandaag.)
 
-We nemen aan dat de behoeftes van vandaag gekent zijn, maar misschien niet die van de toekomst en omgekeerd. (Als je 300 jaar terugkijkt konnen ze nooit de behoeftes van de toekomst gekent hebben, data privacy was geen behoefte van die tijd, maar hun behoeftes waren ook heel anders dan die van vandaag.)
+=== Assumpties van de Brundtland-definitie <sec:assumpties>
 
-=== Assumpties van de Brundtland definitie <sec:assumpties>
+Duurzaamheid vraagt dus een visie: naar welke morele waarden moet er gestreefd worden om een *goed leven* te hebben?
 
-Dus duurzaamheid vraagt visie, welke morele waarden moeten er naar gestreeft worden om een *Goed leven* te hebben.
+Een goed leven betekent hier dat je basisbehoeftes minstens vervuld zijn.
 
-En dat is dat je basisbehoeftes minstens vervuld zijn.
+Duurzaamheid verwijst ook naar de toekomst: onze nakomelingen moeten een gelijkwaardig (of beter) leven hebben, waarin hun basisbehoeften (minstens) vervuld zijn. Dat is *intergenerationele rechtvaardigheid*: een gelijke verdeling over de tijd (temporele invulling). Cf. les over AI-veiligheid en latere generaties.
 
-=== Long-termisme <sec:long-termisme>
+=== Intergenerationele rechtvaardigheid <sec:intergenerationele-rechtvaardigheid>
 
-Long-termisme is een nieuwe filosofische stroming die naar de verre verre toekomst kijkt en dat we generaties die misschien gaan bestaan in een miljoen jaar ook in rekening moeten nemen in onze beslissingen vandaag.
+Intergenerationele rechtvaardigheid betekent dat we verantwoordelijk zijn voor het welzijn van toekomstige generaties: wat we vandaag doen, mag hun basisbehoeften niet in gevaar brengen. Denk aan klimaatverandering (de broeikasgassen die we nu uitstoten) of aan AI-veiligheid en andere technologische ontwikkelingen.
 
-Heel goede video rond dit topic: https://youtu.be/vvehj0KvzK8?si=BIXns8LkXotrrDPI
+=== Wat is de rechtvaardiging? <sec:wat-is-de-rechtvaardiging>
 
-Dit is een extreme vorm van duurzaamheid maar is wel de lijn volledig uitgetrekt van duurzaamheid en de Brundtland definitie.
+Waarom moeten we ons eigenlijk bekommeren om de behoeftes van toekomstige generaties?
 
-PASTED FROM SLIDE
+Als we aannemen dat mensen vandaag recht hebben om hun behoeftes vervuld te krijgen, is er geen reden waarom mensen in de toekomst dat recht niet zouden hebben. Tijd is irrelevant voor het toekennen van rechten.
 
-Onze nakomelingen hebben een gelijkwaardig (of beter) leven.
-= hun basisbehoeften zijn (minstens) vervuld
-Intergenerationele rechtvaardigheid
-Temporele invulling: gelijke verdeling over tijd
-Cf. Les over AI-veiligheid en latere generaties
+Stel je een stuk glas voor dat je hebt laten vallen, en direct daarna kwetst iemand zich daaraan. Op dat ogenblik voel je je wel schuldig, want die persoon is gewond en heeft medische zorg nodig.
 
-==== Intergenerationele rechtvaardigheid <sec:intergenerationele-rechtvaardigheid>
+Stel nu dat je dat glas 100 jaar laat liggen en iemand kwetst zich daaraan. Er is geen reden om te zeggen dat dat minder erg is dan bij de persoon die zich net gekwetst heeft.
 
-Intergenerationele rechtvaardigheid is een concept dat stelt dat we verantwoordelijk zijn voor het welzijn van toekomstige generaties en dat we ervoor moeten zorgen dat onze acties vandaag geen negatieve gevolgen hebben voor hun leven. Dit betekent dat we moeten nadenken over de impact van onze beslissingen op lange termijn en ervoor moeten zorgen dat we duurzame praktijken volgen die de basisbehoeften van toekomstige generaties waarborgen.
+=== Longtermism <sec:long-termisme>
 
-Klimaatverandering is een voorbeeld van een probleem dat intergenerationele rechtvaardigheid vereist, omdat de acties die we vandaag ondernemen, zoals het uitstoten van broeikasgassen, directe gevolgen hebben voor de leefomstandigheden van toekomstige generaties.
+Longtermism is een nieuwe filosofische stroming (o.a. William MacAskill) die naar de verre, verre toekomst kijkt. Ook generaties die misschien pas over een miljoen jaar bestaan, moeten we in rekening nemen in onze beslissingen vandaag.
 
-Maar ook AI-veiligheid of andere technologische ontwikkelingen kunnen gevolgen hebben voor toekomstige generaties, en het is belangrijk om deze ethische overwegingen mee te nemen in ons besluitvormingsproces.
+Heel goede video rond dit topic: #link("https://youtu.be/vvehj0KvzK8")[_Longtermism: An Idea That Could Save 100 Billion Trillion Lives_] (Rational Animations)
 
+Dit is een extreme vorm van duurzaamheid, maar het is wel de lijn van duurzaamheid en de Brundtland-definitie volledig doorgetrokken.
 
-=== Wat is de rechtvaardiging <sec:wat-is-de-rechtvaardiging>
+== Focus op het heden (1): ecologisch <sec:duurzaamheid-is-focus-op-het-heden>
 
-Waarom moeten we ons eigenlijk boeien om de behoeftes van toekomstige generaties?
+Dingen die we vandaag doen, hebben impact op de toekomst.
 
-Als we aannemen dat mensen vandaag recht hebben om hun behoeftes vervuld te krijgen.
+Als we vandaag de dag geen zorg dragen voor het milieu, dan komen de behoeftes van de toekomstige generatie misschien in gedrang, en dat gaat in tegen de definitie van duurzaamheid. Geen goed milieu = geen goede toekomst (cf. les over klimaatrechtvaardigheid).
 
-Stel je voor een stuk glas dat je hebt laten vallen en direct daarna kwests iemand zicht daaraan. Op dat ogenblik voel je je wel schuldig want die persoon is gewond en heeft medisch zorg nodig.
+=== Twee rechtvaardigingen van ecologisme <sec:rechtvaardigingen-ecologisme>
 
-Stel dat je dat nu 100 laat liggen en iemand kwets zich daaraan. Meeste mensen zouden zeggen dat het minder erg is dan de persoon die net zich gekwests heeft.
+Je hebt een extrinsieke en een intrinsieke waarde van de natuur.
 
-=== Duurzaamheid is focus op het heden <sec:duurzaamheid-is-focus-op-het-heden>
+Bij de *extrinsieke waarde* zorgen we voor het milieu omdat het goed is voor ons en voor de mensen in de toekomst. Dat is de rechtvaardiging die in duurzaamheid zit. Een paar concepten hierrond:
 
-Dingen die we vandaag doen hebben impact op de toekomst.
-
-Als we vandaag de dag een zorg dragen voor het milieu dan kan de toekomste generatie hun behoeftes misschien in gedrag komen en dus tegen de definietie van duurzaamheid in gaan.
-
-*Twee rechtvaardigingen van ecologisme*
-
-Sommige mensen vinden dat we zorg moeten dragen voor het milie maar niet op grond dat het goed is voor ons maar ook voor de mensen in de toekomst.
-
-Dus er is een extensieke waarde, een waarde buiten het menselijk aspect.
-
-Je hebt dus een intrisieke waarde en een extrinsieke waarde.
-
-Een paar concepten hierrond,
-
-- Intrumenstalisering: het milieu is een middel om een doel te bereiken, namelijk het welzijn van de mens.
-- Antropocentrisme: het milieu is belangrijk omdat het bijdraagt aan het welzijn van de mens. Mensen staan centraal
+- Instrumentalisering: het milieu is een middel om een doel te bereiken, namelijk het welzijn van de mens.
+- Antropocentrisme: het milieu is belangrijk omdat het bijdraagt aan het welzijn van de mens. Mensen staan centraal.
 - Milieuschade kan toelaatbaar zijn als het welzijn van de mens niet in gevaar komt.
 
-Dus voor sommige is het schade aan de milieu niet toelaatbaar door een interne waarde (intrisieke waarde) van de natuur en niet de schade die het zou hebben voor toekomstige generaties. Of zelfs als het geen enkele impact heeft op de mens.
+Voor sommigen is schade aan het milieu niet toelaatbaar door een interne waarde van de natuur (*intrinsieke waarde*), en niet door de schade die het zou hebben voor toekomstige generaties. Zelfs als het geen enkele impact heeft op de mens. Dat is dus een strengere opvatting.
 
+=== Welke plichten? <sec:welke-plichten-heeft-duurzaamheid>
 
-== Welke plichten heeft duurzaamheid <sec:welke-plichten-heeft-duurzaamheid>
+Welke waarden vraagt duurzaamheid? Welke plichten hebben we tegenover de toekomst? Waarden vereisen normen, en omgekeerd.
 
-=== Ecologische voorwaarden <sec:ecologische-voorwaarden>
+- Geen milieuschade: bomen kappen, reserves uitputten, radioactief afval, uitstoot van broeikasgassen, ... = geen negatieve externaliteiten (kosten).
 
-Welke waarden vraagt duurzaamheid? Welke plichten hebben we tegenover de toekomst?
+== Focus op het heden (2): sociaal <sec:sociale-voorwaarden>
 
-- Geen milieuschade: bomen kappen, reserves uitputten, radioactief afval, uitstoot van broeikasgassen, ...
+De basisbehoeftes van alle mensen vandaag zijn gelijk bevredigd.
 
-=== Scoiale voorwaarden <sec:scoiale-voorwaarden>
+$=>$ duurzaamheid > ecologie: ecologie alleen is niet genoeg, er hoort ook een sociale kant bij.
 
-De basisbehoefte van de mensen vandaag zijn gelijk bevredigt
+Over de ruimte heen zoeken we naar een gelijke bevrediging van behoeftes (spatiale invulling).
 
-=> duurzaameheid > ecologie
+Omdat er intergenerationele rechtvaardigheid is, is er ook *intragenerationele rechtvaardigheid*: rechtvaardigheid binnen dezelfde generatie.
 
-Over de ruimte heen zoeken we naar een gelijke bevredeging van behoeftes.
+Dit komt terug bij enhancement en AI-ethiek in de volgende hoofdstukken.
 
-Omdat er intergenerationele rechtvaardigheid is is er ook een intragenerationele rechtvaardigheid.
+=== Waarom ook focus op het sociale? <sec:waarom-sociaal>
 
-gaat verder rond AI ethiek en enchancemnt in volgende hoofdstuk
+De focus op het heden volgt uit de toekomstvisie:
 
-=== Intragenerationele rechtvaardigheid <sec:intragenerationele-rechtvaardigheid>
++ Als er vandaag sociale stabiliteit is, legt dat een basis voor later. Instabiliteit vandaag kan leiden tot instabiliteit in de toekomst (oorlog, migratie, armoede, hongersnood, ...).
++ Armoede $=>$ kortetermijndenken $=>$ milieuschade (bv. bos kappen) $=>$ onwenselijke gevolgen voor de toekomst.
 
-Focus op heden volgt uit toekomstvisie
-
-Als vandaag er sociale stabiliteit is legt dat een basis voor later,
-
-Instabiliteit vandaag kan leiden tot instabiliteit in de toekomst.
-
-(oorlog, migratie, armoede, hongernood, ...)
-
-Armoede => korte termijns denken => geen focus op de toekomst => onwenselijke gevolgen voor de toekomst.
-
+#figure(
+  text(size: 0.85em, fletcher.diagram(
+    spacing: (6mm, 9mm),
+    node-stroke: 0.6pt,
+    node-corner-radius: 3pt,
+    node-inset: 6pt,
+    fletcher.node((1, 0), align(center)[*Duurzaamheid* \ goed leven, voor iedereen]),
+    fletcher.node((1, 1), align(center)[*Toekomst* \ intergenerationele \ rechtvaardigheid (temporeel)]),
+    fletcher.node((0, 2), align(center)[*Heden: ecologisch* \ milieubescherming, \ geen negatieve externaliteiten]),
+    fletcher.node((2, 2), align(center)[*Heden: sociaal* \ intragenerationele \ rechtvaardigheid (spatiaal)]),
+    fletcher.edge((1, 0), (1, 1), "-|>"),
+    fletcher.edge((1, 1), (0, 2), "-|>"),
+    fletcher.edge((1, 1), (2, 2), "-|>"),
+    fletcher.edge((2, 2), (0, 2), "-|>", label: [armoede → \ milieuschade], label-side: center),
+  )),
+  caption: [Opbouw van het begrip duurzaamheid],
+  label: <fig:opbouw-duurzaamheid>,
+)
 
 == Conclusie <sec:conclusie>
 
-Duurzaamheid > continuïteit
+#block(breakable: false)[
+  Duurzaamheid > continuïteit
 
-+ continuïnering
-+ Goed leven
-+ voor iedereen
+  + continuïteit
+  + goed leven (vervulde basisbehoeften)
+  + voor iedereen
+]
 
+Continuïteit alleen is niet genoeg: ook armoede kan je doorgeven naar de volgende generatie (generatie-armoede).
 
-Duurzaamheid is dus een gelijk niveau van behoeftebevredeging van het heden als de toekomst.
-
-TODO VERBETERING, UITLEG VERBETEREN ROND PUNTEN EN INVULLEN WAAR ER MIST.
-
-
-
-
-
-
-
-
+Duurzaamheid is dus een gelijk niveau van behoeftebevrediging in het heden en in de toekomst.
