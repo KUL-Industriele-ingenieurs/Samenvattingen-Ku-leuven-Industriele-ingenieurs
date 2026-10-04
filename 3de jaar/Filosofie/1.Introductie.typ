@@ -12,3 +12,14 @@ Schriftelijk examen in januari, 20 % van het OPO.
 
 - Open vragen (10/20): argumenteren (8/20) en verbanden tussen begrippen, stellingen en theorieën (2/20).
 - Gesloten vragen (10/20): meerkeuze met giscorrectie.
+
+
+=== Persoonlijke note <sec:persoonlijke-note>
+
+Als iemand die geïntereseert is vind ik deze cursus niet een goede introductie wat filosofie echt is. Daarom zet ik hier een lijst van in mijn opinie interesante media, boeken, shows die een goede introductie geven tot filosofie.
+
+- The Good Place (TV show)
+- Deads Poet Society (film)
+- The Problem with Philosophy (boek)
+- The myth of Sisyphus (boek)
+- Crash Course Philosophy (YouTube channel) https://thecrashcourse.com/topic/philosophy/
