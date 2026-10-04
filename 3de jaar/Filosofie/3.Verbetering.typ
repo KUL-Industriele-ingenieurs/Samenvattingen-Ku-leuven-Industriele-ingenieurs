@@ -1,10 +1,18 @@
 #import "../../school-template.typ": *
 
 = Verbetering/Enhancement <ch:verbetering>
+#concept(title: "Enchancement")[
 
-Het concept verbetering gaat over het gebruik van bepaalde producten om beter te presteren, bijvoorbeeld koffie: de cafeïne verhoogt je cognitief vermogen.
+  #wrap-figure(
+    image("assets/Koffie.png", width: 6cm),
+    caption: [Koffie],
+    label: <fig:Koffie>,
+  )[
+    Het concept verbetering gaat over het gebruik van bepaalde producten om beter te presteren, bijvoorbeeld koffie: de cafeïne verhoogt je cognitief vermogen.
 
-We doen dit omdat we bepaalde dingen beter willen doen dan we normaal kunnen, zoals een koffie nemen zodat ik me beter kan concentreren of zodat ik beter presteer op school of op het werk.
+    We doen dit omdat we bepaalde dingen beter willen doen dan we normaal kunnen, zoals een koffie nemen zodat ik me beter kan concentreren of zodat ik beter presteer op school of op het werk.
+  ]
+]
 
 Stel dat je dit uitbreidt en iemand neemt cocaïne of Adderall om beter te presteren. De meeste mensen gaan dit niet oké vinden, maar waarom?
 
@@ -25,27 +33,33 @@ We leven in een betere wereld dankzij wetenschap en technologie, dus er is wel i
 Hieronder een figuur van de daling van extreme armoede in de wereld bijvoorbeeld:
 
 #figure(
-  image("assets/Trend-van-extreme-armoede-van-1820-tot-2018.png", width: 55%),
+  image("assets/Trend-van-extreme-armoede-van-1820-tot-2018.png", width: 70%),
   caption: [Aandeel van de wereldbevolking in extreme armoede, 1820–2018 (Our World in Data)],
 )
 
 Ook de levensverwachting is sterk gestegen en de kindersterfte sterk gedaald. De oude cijfers van de levensverwachting zijn wel vertekend: de hoge kindersterfte haalde het gemiddelde naar beneden, en een volwassen mens kon toen ook 50 à 60 jaar oud worden. Toch is de stijging enorm:
-
-#figure(
-  image("assets/Levenverwachting.png", width: 65%),
-  caption: [Levensverwachting bij geboorte per continent, 1770–2021 (Our World in Data)],
+#grid(
+  columns: 2,
+  [
+    #figure(
+      image("assets/Levenverwachting.png", width: 100%),
+      caption: [Levensverwachting bij geboorte per continent, 1770–2021 (Our World in Data)],
+    )
+  ],
+  [
+    #figure(
+      image("assets/Kindersterfte-doorheen-de-tijd.png", width: 100%),
+      caption: [Kindersterfte per inkomensniveau van een land: aantal kinderen dat sterft voor de leeftijd van 5 jaar, per 1000 geboortes (Our World in Data)],
+    )
+  ]
 )
 
-#figure(
-  image("assets/Kindersterfte-doorheen-de-tijd.png", width: 65%),
-  caption: [Kindersterfte per inkomensniveau van een land: aantal kinderen dat sterft voor de leeftijd van 5 jaar, per 1000 geboortes (Our World in Data)],
-)
 
 Daarbij zijn er nog technische verbeteringen: MRI-scans om kanker op te sporen, antibiotica, vaccins, ...
 
-Er zijn dus veel redenen om techno- en toekomstoptimistisch te zijn.
+Er zijn dus veel redenen om *techno- en toekomstoptimistisch* te zijn.
 
-Dat is niet hetzelfde als techno-naïef zijn: problemen van vandaag kunnen ook door technologie ontstaan, zoals klimaatverandering en de opkomst van AI.
+Dat is niet hetzelfde als *techno-naïef zijn*: problemen van vandaag kunnen ook door technologie ontstaan, zoals klimaatverandering en de opkomst van AI.
 
 Een interessante video rond dit onderwerp: #link("https://www.youtube.com/watch?v=CGmdvdXoJ-8")[_The world is awful. The world is much better. The world can be much better._] (Rational Animations)
 

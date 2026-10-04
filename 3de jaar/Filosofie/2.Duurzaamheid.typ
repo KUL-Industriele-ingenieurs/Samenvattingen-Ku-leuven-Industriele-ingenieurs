@@ -61,10 +61,12 @@ Stel nu dat je dat glas 100 jaar laat liggen en iemand kwetst zich daaraan. Er i
 
 === Longtermism <sec:long-termisme>
 
-Longtermism is een nieuwe filosofische stroming (o.a. William MacAskill) die naar de verre, verre toekomst kijkt. Ook generaties die misschien pas over een miljoen jaar bestaan, moeten we in rekening nemen in onze beslissingen vandaag.
+#concept(title: "Longtermism")[
 
-Heel goede video rond dit topic: #link("https://youtu.be/vvehj0KvzK8")[_Longtermism: An Idea That Could Save 100 Billion Trillion Lives_] (Rational Animations)
+  Longtermism is een nieuwe filosofische stroming (o.a. William MacAskill) die naar de verre, verre toekomst kijkt. Ook generaties die misschien pas over een miljoen jaar bestaan, moeten we in rekening nemen in onze beslissingen vandaag.
 
+  Heel goede video rond dit topic: #link("https://youtu.be/vvehj0KvzK8")[_Longtermism: An Idea That Could Save 100 Billion Trillion Lives_] (Rational Animations)
+]
 Dit is een extreme vorm van duurzaamheid, maar het is wel de lijn van duurzaamheid en de Brundtland-definitie volledig doorgetrokken.
 
 == Focus op het heden (1): ecologisch <sec:duurzaamheid-is-focus-op-het-heden>
@@ -75,15 +77,15 @@ Als we vandaag de dag geen zorg dragen voor het milieu, dan komen de behoeftes v
 
 === Twee rechtvaardigingen van ecologisme <sec:rechtvaardigingen-ecologisme>
 
-Je hebt een extrinsieke en een intrinsieke waarde van de natuur.
+Je hebt een* extrinsieke en een intrinsieke waarde* van de natuur.
 
-Bij de *extrinsieke waarde* zorgen we voor het milieu omdat het goed is voor ons en voor de mensen in de toekomst. Dat is de rechtvaardiging die in duurzaamheid zit. Een paar concepten hierrond:
++ *Extrinsieke Waarde*: Bij de *extrinsieke waarde* zorgen we voor het milieu omdat het goed is voor ons en voor de mensen in de toekomst. Dat is de rechtvaardiging die in duurzaamheid zit. Een paar concepten hierrond:
 
-- Instrumentalisering: het milieu is een middel om een doel te bereiken, namelijk het welzijn van de mens.
-- Antropocentrisme: het milieu is belangrijk omdat het bijdraagt aan het welzijn van de mens. Mensen staan centraal.
-- Milieuschade kan toelaatbaar zijn als het welzijn van de mens niet in gevaar komt.
+  - Instrumentalisering: het milieu is een middel om een doel te bereiken, namelijk het welzijn van de mens.
+  - Antropocentrisme: het milieu is belangrijk omdat het bijdraagt aan het welzijn van de mens. Mensen staan centraal.
+  - Milieuschade kan toelaatbaar zijn als het welzijn van de mens niet in gevaar komt.
 
-Voor sommigen is schade aan het milieu niet toelaatbaar door een interne waarde van de natuur (*intrinsieke waarde*), en niet door de schade die het zou hebben voor toekomstige generaties. Zelfs als het geen enkele impact heeft op de mens. Dat is dus een strengere opvatting.
++ *Intrinsieke Waarde*: Voor sommigen is schade aan het milieu niet toelaatbaar door een interne waarde van de natuur (*intrinsieke waarde*), en niet door de schade die het zou hebben voor toekomstige generaties. Zelfs als het geen enkele impact heeft op de mens. Dat is dus een strengere opvatting.
 
 === Welke plichten? <sec:welke-plichten-heeft-duurzaamheid>
 
