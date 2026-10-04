@@ -13,7 +13,10 @@
 // Eén #include per hoofdstuk. Typst compileert alles altijd mee.
 // Wil je een hoofdstuk tijdelijk weglaten? Zet de #include-lijn in commentaar.
 
-#include "Introductie.typ"
+#include "1.Introductie.typ"
+#include "2.Duurzaamheid.typ"
+#include "3.Verbetering.typ"
+
 
 // ----------------------------- AFSLUITING ------------------------------------
 
