@@ -20,6 +20,7 @@
 #printformularium()
 
 // ----- DEEL I: BASIS -----
+#include "0.Informatie.typ"
 #include "1.Introductie.typ"
 #include "2.Sensorkarakteristieken.typ"
 

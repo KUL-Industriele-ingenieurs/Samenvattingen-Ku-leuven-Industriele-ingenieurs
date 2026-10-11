@@ -25,6 +25,8 @@
 // TODO: Eerste-orde en tweede-orde sensorrespons, tijdconstante, stapantwoord.
 // TODO: Bandbreedte: waarom een trage sensor een snel signaal afvlakt.
 
+== Veiligheid en bescherming <sec:veiligheid>
+
 == Uitgangsimpedantie en excitatie <sec:impedantie>
 
 // TODO: STAAT NIET IN DE SAMENVATTING -- slides p.39-40.
