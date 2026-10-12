@@ -453,7 +453,7 @@ Nitrogen deposition results in acidification of the soil. Acidification has many
 
 === Klimaat verandering <sec:climate-change>
 
-Klimaatverandering wordt groot besproken in het vorige hoofdstuk #ref(ch: climate).
+Klimaatverandering wordt groot besproken in het vorige hoofdstuk #ref(<ch:climate>).
 
 In the last decades, global temperatures have been rising due to climate change. Important to note is that this warming is not uniform across the globe, the northern hemisphere appears to be warming more rapidly. Besides global temperature increase, we also see an increase in weather extremes, such as droughts, heat waves and heavy precipitation events. More information on the causes and effects of climate change can be found in the module on Climate.
 
@@ -482,9 +482,143 @@ Less mobile species or sessile species will be impacted more. Coral reefs are a 
 
 Another effect that climate change can have on species diversity is through a temporal mismatch in food webs. Species in food webs are evolved together and are attuned. For example the caterpillars feed on the fresh leaves of oaks, and when the eggs of the great tit hatch, the baby birds are fed on caterpillars. So it’s important that all these events happen at the same time. However, climate change can affect the timing of these events, and this effect can differ among species. When that happens, we have a temporal mismatch. In the case of the caterpillars, it has been observed that they peak much earlier in the season, so that when the eggs of the great tit hatch (which has also become more early in the season, but not as much as for the caterpillars), there are less caterpillars available for them to eat.
 
+== Conservatie en restoratie <sec:conservatie-en-restoratie>
+
+=== Land sharing vs land sparing <sec:land-sharing-vs-land-sparing>
 
 
+#concept(title: "Sparing -Sharing model")[
+  de sparing-sharing model geeft manier om landbouw biodiversiteit te verbeteren.
 
+  - Land sharing: Hierbij gaan we het landbouw zelf beter maken voor de biodiversiteit, je kunt dit doen door bijvoorbeeld belangrijke natuurlijke delen van de habitat te behouden zoals ponds en heggenbouw. Ook door chemische inputs te verminderen zoals pesticiden en herbiciden.
+
+  Het probleem is wel dat er meer land nodig is om dezelfde hoeveelheid voedsel te produceren.
+
+
+  Er is een limiet over hoe b
+  - Land Sparing: Hierbij gaan we land vrijhouden voor de natuur en habitats voor het ecosysteem. We gaan hierbij nog steeds klassieken landbouw doen maar een deel overhouden voor de natuur.
+
+
+  #figure(
+    image("assets/Land-sharing-vs-land-sparing.png", width: 5cm),
+    caption: [Land-sharing-vs-land-sparing],
+    label: <fig:Land-sharing-vs-land-sparing>,
+  )
+]
+
+#figure(
+  image("assets/Verschillende-opstellingen-afhankelijk-van-gewenst-landbouw-opbrengt.png", width: 5cm),
+  caption: [Verschillende-opstellingen-afhankelijk-van-gewenst-landbouw-opbrengt],
+  label: <fig:Verschillende-opstellingen-afhankelijk-van-gewenst-landbouw-opbrengt>,
+)
+
+We zien dat al er een grote hoeveelheid voedsel nodig is dat land sharing en sparing minder prioriteit krijgt. Dus we moeten nadenken wat is het midden waarbij we nog steeds onze voedseltargets behalen maar dat we wel genoeg rekening houden met biodiversiteit.
+
+
+Je hebt hier verschilleden categorieën van soorten.
+
+- Winner species: Doen het beter bij meer landbouw land. Deze zijn zeldzaam.
+
+- Loser-sharing: Doen het slechter bij meer landbouw land. Deze zijn vaak.
+- Loser-sparing: Doen het slechter bij meer natuur land.
+- Neutrale soorten: Doen het even goed bij meer landbouw land en natuur land of hebben een vreemde curve.
+
+#figure(
+  image("assets/Verschillende-soorten-afhankelijk-van-landbouw.png", width: 5cm),
+  caption: [Verschillende-soorten-afhankelijk-van-landbouw],
+  label: <fig:Verschillende-soorten-afhankelijk-van-landbouw>,
+)
+
+Wat er uit de studies komt is dat meeste soorten een grote populaite zouden krijgen als er zoveel mogelijk voedsel wordt geproduceert op zo weinig mogelijk land. Low-yield landbouw is dus het slechtste voor de biodiversiteit.
+
+Land sparing is hierbij dus de beste strategie.
+
+Bij sommige regios hebben de soorten een bolvormige curve waarbij ze het beter doen als er wel een deel landbouw is, dit komt omdat in regios met veel natuurlijke disasters menselijke landbouw deze tegenhoud en doet de diersoort het voor *low yield (high nature)landbouw *beter.
+
+Er zijn wel mogelijke nadelen van high yield landbouw:
+
+Spilover effects waarbij stikstof of pesticiden in de natuur terechtkomen en daar schade aanrichten. Het landbouw moet dus duurzaam zijn.
+
+*Jevons paradox*:
+Nog een probleem is dat gewoon meer high yield landbouw niet perse ervoor zorgt dat er minder landbouw grond gebruikt wordt. Efficiency groeit => goedkoper => expansie van landbouw. We moeten dus policies en actie nemen dat landbouwgrond van overvloedig eten omgezet wordt naar natuurgrond.
+
+Dit is *active land sparing*.
+
+TODO MAAK CONCEPT BOX VAN
+
+
+=== Menselijke interventie en herwildering <sec:menselijke-interventie-en-herwildering>
+
+Human activities have harmed ecosystems worldwide. Human-induced degradation, such as deforestation, pollution, and habitat fragmentation, has caused biodiversity loss and disrupted ecological processes. To address this crisis, there's a growing movement for ecosystem restoration, driven by initiatives like the Bonn Challenge (2010) and the UN Decade on Ecosystem Restoration (2021-2030).
+
+Ecological restoration, as defined by the Society for Ecological Restoration (SER) in 2004, is the process of assisting the recovery of damaged, degraded, or destroyed ecosystems. Restoration aims to reverse damage and protect the biodiversity and services that ecosystems provide. Restoration efforts are diverse and depend on the specific context and goals of each project.
+
+Recently, rewilding has emerged as a new approach to ecosystem restoration (Perino et al. 2019). It promotes "wild, autonomous" nature, with natural processes driven by keystone species and abiotic processes leading the way instead of human intervention. Rewilding challenges traditional landscape management, which relies on human intervention, offering an alternative that complements or replaces traditional restoration and nature management approaches (Van Meerbeek et al., 2019).
+
+The definition of rewilding varies, among both scientists and conservationists (Petorelli et al. 2018), which complicates discussions about its pros and cons. Some see rewilding as the restoration of large wilderness ecosystems where humans are completely excluded. Others view rewilding solely as reintroducing large herbivores to restore grazing dynamics. However, a broader definition describes rewilding as ‘nature restoration with the aim of creating (partially) self-regulating and complex ecosystems by restoring natural processes and limiting human interventions as much as possible" (Van Meerbeek et al. 2019).
+
+Crucially, rewilding is not (only) about returning landscapes to a pristine or untouched natural state. Instead, it emphasizes moving away from human intervention toward self-regulating ecosystems driven by natural processes. These processes include species interactions such as predation, herbivory, and mutualisms, as well as natural dynamics like floods, storms, nutrient cycling, and natural succession. While fully self-regulating systems may not always be achievable, any action that enhances self-regulation falls within the scope of rewilding.
+
+#figure(
+  image("assets/Foto-van-een-hernieuw-habitat.png", width: 5cm),
+  caption: [Foto-van-een-hernieuw-habitat],
+  label: <fig:Foto-van-een-hernieuw-habitat>,
+)
+
+
+ere we give some examples of common approaches employed in rewilding initiatives, but the specific actions depend on the specific ecological context and goals of each project:
+
+Reintroduction of large fauna species or trophic rewilding: A common rewilding practice is the reintroduction of large herbivores, such as bison, wild horses, or elephants, into ecosystems where they once played a significant role. These herbivores help restore natural grazing patterns, control vegetation growth, and create habitat heterogeneity, which benefits numerous other species. If the original species are extinct, these could be replaced by species with similar ecological roles (Griffith et al. 2011). Other initiatives may involve the reintroduction or protection of apex predators, such as wolves, big cats, or bears. Apex predators play a crucial role in regulating prey populations, influencing their behavior, and maintaining ecological balance (Svenning et al. 2016).
+Restoring habitat connectivity: Rewilding often includes restoring and reconnecting fragmented habitats. This involves removing barriers like fences or dams, and creating wildlife corridors to facilitate the movement of species, allowing for species migration, genetic exchange and ecological resilience.
+Wetland restoration: Rewilding efforts may focus on restoring degraded wetlands, such as marshes, swamps, or floodplains. This involves removing invasive species, restoring hydrological regimes, and reintroducing native wetland vegetation. Wetland restoration can enhance water purification, flood control, and provide habitat for a wide range of species (Brown et al. 2018).
+Natural regeneration and succession: Rewilding practices also involve allowing natural processes of regeneration and succession to occur. This means reducing human interventions like intensive forestry or agriculture and allowing ecosystems to recover naturally over time. This type of rewilding is often termed passive rewilding (Pereira & Navarro, 2015).
+
+Rewilding offers a transformative approach to ecosystem restoration, aiming to create more resilient and functioning ecosystems. By reinstating natural processes and reducing human interventions, rewilding can enhance biodiversity, restore ecosystem services, and ecological connectivity. It challenges our view of nature and the role of humans in managing landscapes. As the global ecosystem restoration movement gains momentum, rewilding emerges as a promising tool to address ecological degradation and create a healthier, more sustainable planet.
+
+=== International Biodiversiteit policies <sec:international-biodiversiteit-policies>
+The Convention on Biodiversity (UNCBD) was one of the results of the UNCED (United Nations Conference on Environment and Development) in Rio the Janeiro in June 1992, and was initially endorsed by 155 countries (today 196 'parties'). The objectives of the UNCBD are:
+
+conservation of biodiversity;
+sustainable use of all components of biodiversity;
+Fair and equitable sharing of genetic resources.
+
+Ratifying countries committed to
+
+inventory and monitor trends in biodiversity;
+identify processes that threaten biodiversity;
+manage and make available all data.
+
+This process is making progress through follow-up conferences. The 10th CoP (Conference of the Parties of the UNCBD) held at Nagoya in Japan in 2010 for example agreed on the Nagoya Protocol on fair and equitable sharing of genetic resources, and formulated the Aichi 2020 targets:
+
+At least halve and where feasible bring close to zero the rate of loss of natural habitats including forests;
+Target of 17 per cent of terrestrial and inland water areas and 10 per cent of marine and coastal areas;
+Through conservation and restoration, restore at least 15 percent of degraded areas;
+make special efforts to reduce the pressures faced by coral reefs.
+
+As none of the Aichi targets were achieved and biodiversity continues to decline across all scales, more dedicated action is required from the Parties in the post-2020 Global Biodiversity Framework (Diaz et al. 2020). It is in this context that the proposal of EU Nature Restoration Law (2023) is important.
+
+=== Links met andere global challenges <sec:links-met-andere-global-challenges>
+
+#figure(
+  image("assets/Biodiversiteit-Links.png", width: 5cm),
+  caption: [Biodiversiteit-Links],
+  label: <fig:Biodiversiteit-Links>,
+)
+
+
+Biodiversity and ecosystems have multiple links with all other challenges, but probably the most important links are those with climate, raw materials and circular economy and food security.
+
+Climate
+
+Biodiversity loss and climate change are considered some of the most prominent environmental problems, threatening planetary health (cf. the famous Rockström diagram), and are subject to international efforts since the UNCED Conference at Rio de Janeiro (the UN Climate Convention and the UN Biodiversity Convention). Climate change is a direct threat to the stability of ecosystems, and therefore requires ecosystem adaptation. Reversely, biodiversity and ecosystems are a key factor in the mitigation of climate change through ecosystem protection and restoration.
+
+Raw materials and circular economy
+
+Circular economy is considered a key condition for a climate neutral society in the decades to come. It may imply that for building materials, chemicals and even energy, we renounce the use of fossil energy intensive products, and we rely ever more on renewable bioresources, i.e. biomass from ecosystems. This will lead to a sustainable use challenge to avoid overharvesting above the renewable potential of the ecosystem, and to avoid potential damage to ecosystem biodiversity.
+
+Food security
+
+Similar, feeding a global population of up to 9 billion people requires large extents of agricultural land and marine resources, which may threaten the health and functioning of ecosystems and lead to biodiversity loss. This loss of ecosystem integrity may become harmful for sustainable food production itself, as productive agricultural systems relies on a diversity of crops, in turn relying on better protection of crop wild relatives.
 
 
 
