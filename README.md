@@ -59,8 +59,20 @@ Deze repository zijn mijn notities en samenvattingen die ik gemaakt heb door het
 <details>
 <summary><strong>3de jaar</strong></summary>
 
+- **Aspects of Machine Design** — [bronbestanden](3de%20jaar/Aspects%20of%20Machine%20Design)
+  - [Aspects of Machine Design Samenvatting.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/Aspects_of_Machine_Design_Samenvatting.pdf)
+- **Dimensioneren van machines** — [bronbestanden](3de%20jaar/Dimensioneren%20van%20machines)
+  - [Dimensioneren van machines Samenvatting.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/Dimensioneren_van_machines_Samenvatting.pdf)
 - **Eindige elementen gebaseerd ontwerp** — [bronbestanden](3de%20jaar/Eindige%20elementen%20gebaseerd%20ontwerp)
   - [EEGO Samenvatting.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/EEGO_Samenvatting.pdf)
+  - [samenvatting_claude_eego.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/samenvatting_claude_eego.pdf)
+  - [sterkteleer.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/sterkteleer.pdf)
+- **Elektrische Machines** — [bronbestanden](3de%20jaar/Elektrische%20Machines)
+  - [Elektrische_Machines_Samenvatting.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/Elektrische_Machines_Samenvatting.pdf)
+- **Filosofie** — [bronbestanden](3de%20jaar/Filosofie)
+  - [Filosofie Samenvatting.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/Filosofie_Samenvatting.pdf)
+- **Global Challenges** — [bronbestanden](3de%20jaar/Global%20Challenges)
+  - [Global Challenges Samenvatting.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/Global_Challenges_Samenvatting.pdf)
 - **Information Management** — [bronbestanden](3de%20jaar/Information%20Management)
   - [InformationManagement_Samenvatting.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/InformationManagement_Samenvatting.pdf)
 - **Manufacturing Technologies 2** — [bronbestanden](3de%20jaar/Manufacturing%20Technologies%202)
@@ -68,6 +80,8 @@ Deze repository zijn mijn notities en samenvattingen die ik gemaakt heb door het
 - **Religion** — [bronbestanden](3de%20jaar/Religion)
   - [Examen_Spiekboek_Religie.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/Examen_Spiekboek_Religie.pdf)
   - [Religion_Paper.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/Religion_Paper.pdf)
+- **Thermomachines** — [bronbestanden](3de%20jaar/Thermomachines)
+  - [Thermomachines Samenvatting.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/Thermomachines_Samenvatting.pdf)
 - **Toegepaste Sterkteleer** — [bronbestanden](3de%20jaar/Toegepaste%20Sterkteleer)
   - [Formularium_Bubi.pdf](https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/releases/download/latest/Formularium_Bubi.pdf)
 </details>
