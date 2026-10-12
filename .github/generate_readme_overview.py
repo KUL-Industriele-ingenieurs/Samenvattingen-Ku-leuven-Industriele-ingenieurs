@@ -22,6 +22,10 @@ END = "<!-- VAKKENOVERZICHT_END -->"
 # geen links toont naar PDF's die nooit gemaakt worden.
 SKIP_DIRS = {".git", ".github", ".vscode", "assets", "_OLD", "chapters", "test"}
 
+# Oude of losse documenten die nog niet naar _OLD/ verhuisd zijn: wel in de
+# repo, niet in het overzicht.
+SKIP_FILES = {"samenvatting_claude_eego.tex", "sterkteleer.tex"}
+
 
 def norm(stem):
     # Zelfde normalisatie als build_bundle.py / de release-upload.
@@ -48,10 +52,18 @@ def main_docs(course_dir):
                 continue
             p = os.path.join(root, f)
             # OLD-* blijft in de repo staan maar hoort niet in het overzicht.
-            if f.upper().startswith("OLD") or not is_main_doc(p):
+            if f.upper().startswith("OLD") or f in SKIP_FILES or not is_main_doc(p):
                 continue
             docs.append(p)
     return sorted(docs, key=lambda p: os.path.basename(p).lower())
+
+
+def is_skeleton(course_dir):
+    # Alleen de master-file en Introductie.typ: nog geen inhoud, dus geen link.
+    files = [f for f in os.listdir(course_dir)
+             if os.path.splitext(f)[1].lower() in (".tex", ".typ")]
+    return "Introductie.typ" in files and all(f == "Introductie.typ" or is_main_doc(os.path.join(course_dir, f))
+               for f in files)
 
 
 def pdf_url(path):
@@ -80,7 +92,7 @@ def render():
             name = os.path.basename(course)
             folder = quote(course)
             docs = main_docs(course)
-            if not docs:
+            if not docs or is_skeleton(course):
                 out.append(f"- {name} — [bronbestanden]({folder}) (nog geen PDF)")
                 continue
             out.append(f"- **{name}** — [bronbestanden]({folder})")
