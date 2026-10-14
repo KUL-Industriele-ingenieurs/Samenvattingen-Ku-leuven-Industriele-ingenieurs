@@ -171,8 +171,8 @@ Er zijn vier posities die je kunt innemen:
 
 *Herhaling van ethiek:*
 
-+ Deontologisch (plichtethiek, Kant): 'in principe', ongeacht de effecten. Iets is in alle gevallen goed of slecht.
-+ Consequentialistisch (Bentham): goede en slechte effecten (voorzien en beoogd). Je weegt de goede en slechte aspecten af en trekt daaruit een conclusie.
++ Deontologisch (plichtethiek, Kant): 'in principe', ongeacht de effecten. Iets is in alle gevallen goed of slecht (bv. iemand pijn doen zonder reden is altijd fout).
++ Consequentialistisch (Bentham): goede en slechte effecten (voorzien en beoogd). Je weegt de goede en slechte aspecten af en trekt daaruit een conclusie. Een voorzien effect is niet altijd een bedoeld effect: als je met de auto rijdt, weet je dat je uitlaatgassen uitstoot, maar dat is niet je doel.
 + Deugdethisch (Aristoteles): iets is goed of slecht omdat het een morele eigenschap uitdrukt (moed, loyaliteit, ...).
 
 De meeste argumenten hebben een consequentialistisch karakter. Een moreel argument heeft altijd deze vorm:
@@ -382,10 +382,10 @@ Dit is het enige argument _vóór_ enhancement, en het gaat het verst: het beslu
 (P1) is normatief: je beargumenteert iets vanuit een norm. (P2) is beschrijvend: je neemt aan of beschrijft dat het zo is. Het argument werkt in twee stappen:
 
 *1. Slechte genen* = een dispositie voor een ziekte. \
-Slechte genen kunnen leiden tot genetische ziektes, kanker, hartziektes, ... Als we die kans met genetische manipulatie kunnen wegnemen, is het immoreel om _niet_ in te grijpen en die mensen geen beter leven te geven (consequentialisme: welzijn). Niet ingrijpen is dan geen optie meer.
+Slechte genen kunnen leiden tot genetische ziektes, kanker, hartziektes, ... Als we die kans met genetische manipulatie kunnen wegnemen, is het immoreel om _niet_ in te grijpen en die mensen geen beter leven te geven (consequentialisme: welzijn). Autonomie? Niet ingrijpen blijft optioneel: iemand kan zelf kiezen om zijn genen niet te laten aanpassen.
 
 *2. Goede genen* = geen dispositie voor een ziekte. \
-Hier zit de stap van Savulescu: *consistentie*. Als welzijn de hoogste waarde is en we naar het hoogste welzijn moeten streven, dan geldt dat ook voor mensen die al gezond zijn. Ook wie goede genen heeft, moet je dan aanpassen zodat zijn welzijn nog stijgt. Dus is genetische manipulatie voor iedereen verplicht.
+Hier zit de stap van Savulescu: *consistentie*. Als welzijn de hoogste waarde is en we naar het hoogste welzijn moeten streven, dan geldt dat ook voor mensen die al gezond zijn. Ook wie goede genen heeft, moet je dan aanpassen zodat zijn welzijn (en autonomie) nog stijgt. Dus is genetische manipulatie voor iedereen verplicht.
 
 *Probleem met (C): onwenselijk neveneffect.* \
 Wie bepaalt welke genen goed zijn? Een perfect gezond persoon kan dan verplicht worden om zichzelf genetisch aan te passen aan de normen die opgelegd worden. Als iedereen zich aanpast aan het type mens dat nu succesvol is, krijg je bv. witte mannelijke suprematie en minder diversiteit. Dat begint snel op eugenetica te lijken, en dat is moreel ontoelaatbaar.
