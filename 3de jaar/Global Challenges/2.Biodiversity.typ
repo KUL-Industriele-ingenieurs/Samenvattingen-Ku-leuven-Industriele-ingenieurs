@@ -20,7 +20,7 @@ In dit hoofdstuk stellen we vier vragen:
 Kort: de variatie in al het leven op aarde. De term is jong: Walter Rosen bedacht hem in 1985 als samentrekking van _biological diversity_. Pas op de VN-conferentie in Rio (1992) kwam er een precieze definitie. We bekijken biodiversiteit op drie niveaus.
 
 - *Genetische diversiteit*: de variatie _binnen_ een soort. Elke mens heeft een andere genetische code.
-- *Soortendiversiteit*: het aantal soorten op een plaats. In 2022 had de mens *2,2 miljoen soorten* beschreven: 1,6 miljoen dieren, 420.000 planten, 140.000 schimmels en zo'n 80.000 andere. Naar schatting (2011) leven er in totaal *8,8 miljoen soorten* op aarde: we kennen er dus nog maar een kwart van.
+- *Soortendiversiteit*: het aantal soorten op een plaats. In 2022 had de mens *2,2 miljoen soorten* beschreven: 1,6 miljoen dieren, 420.000 planten, 140.000 schimmels en zo'n 80.000 andere. Naar schatting (2011) leven er in tot 7.5aal *8,8 miljoen soorten* op aarde: we kennen er dus nog maar een kwart van.
 - *Ecosysteemdiversiteit*: de variatie aan ecosystemen, van boreale bossen en tropische regenwouden tot meren, koraalriffen en mangroves.
 
 == Waar komt biodiversiteit vandaan? <sec:waar-komt-biodiversiteit-vandaan>
@@ -30,13 +30,15 @@ Met fossielen reconstrueren we wanneer soorten ontstaan en uitgestorven zijn.
 De aarde is ongeveer *4,5 miljard jaar* oud. De eerste levensvormen verschenen zo'n *3,7 miljard jaar* geleden: eencellige organismen zoals bacteriën en archaea.
 
 #wrap-figure(
-  image("assets/Biodiversitiet-sinds-de-cambrian-explosion.png", width: 7.5cm),
+  image("assets/Biodiversitiet-sinds-de-cambrian-explosion.png", width: 10cm),
   caption: [Aantal soorten sinds het Cambrium: zee (blauw) en land (bruin)],
   label: <fig:Biodiversitiet-sinds-de-cambrian-explosion>,
 )[
   Rond *570 miljoen jaar* geleden begon de *Cambrische explosie*: een periode waarin de diversiteit van het leven enorm toenam. Toen ontstonden onder meer de eerste gewervelde dieren. De oorzaak is hoogstwaarschijnlijk de stijging van zuurstof in de atmosfeer, waardoor er meer energie beschikbaar was voor leven.
 
   @fig:Biodiversitiet-sinds-de-cambrian-explosion toont het aantal soorten sinds dan. Het leven begon in de zee (blauw): eerst ongewervelden zoals kwallen, daarna vissen en later zeezoogdieren. Op land (bruin) komt de diversiteit pas op gang in het Paleozoïcum, en schiet ze omhoog vanaf het Krijt, met bloemplanten, insecten, vogels en zoogdieren. Vandaag tellen we op land veel meer soorten (\~5 miljoen) dan in zee (\~1,5 miljoen).
+
+  Speciatie is de manier hoe soorten onstaan waarbij soorten zich aan passen aan hun omgeving tot het opsplitsen in verschillende soorten.
 ]
 
 #concept(title: "Speciatie")[
@@ -48,20 +50,20 @@ De aarde is ongeveer *4,5 miljard jaar* oud. De eerste levensvormen verschenen z
 De soorten van vandaag zijn maar *2–5 %* van alle soorten die ooit bestaan hebben. De rest is uitgestorven.
 
 #wrap-figure(
-  image("assets/Extinction-rate-doorheen-de-tijd.png", width: 7cm),
+  image("assets/Extinction-rate-doorheen-de-tijd.png", width: 12cm),
   caption: [Uitgestorven geslachten van zeedieren doorheen de tijd],
   label: <fig:Extinction-rate-doorheen-de-tijd>,
 )[
   Het percentage uitgestorven geslachten van zeedieren is een goede maat voor het uitsterven op aarde, omdat fossielen uit de zee beter bewaard blijven dan die van land.
 
   Daaruit volgt de achtergrond-uitstervingssnelheid. Die daalt doorheen de tijd, waarschijnlijk omdat soorten beter aangepast raken aan hun omgeving. Bovenop die achtergrond zie je pieken: massa-extincties.
-]
 
-#concept(title: "Achtergrond-uitstervingssnelheid en massa-extinctie")[
-  - *Achtergrond-uitstervingssnelheid* (_background extinction rate_): het natuurlijke tempo van uitsterven, *minder dan 1 uitsterving per miljoen soorten per jaar*.
-  - *Massa-extinctie*: een korte periode waarin minstens *75 %* van de soorten uitsterft.
-]
 
+  #concept(title: "Achtergrond-uitstervingssnelheid en massa-extinctie")[
+    - *Achtergrond-uitstervingssnelheid* (_background extinction rate_): het natuurlijke tempo van uitsterven, *minder dan 1 uitsterving per miljoen soorten per jaar*.
+    - *Massa-extinctie*: een korte periode waarin minstens *75 %* van de soorten uitsterft.
+  ]
+]
 Oorzaken van massa-extincties zijn vulkanisme, meteorietinslagen, klimaatverandering en _marine transgressions_ (de zee die het land overspoelt).
 
 - *Perm-Trias* (250 miljoen jaar geleden): de grootste. Zo'n 96 % van de soorten stierf uit, vermoedelijk door vulkanisme.
@@ -73,14 +75,13 @@ Na een massa-extinctie duurt het meestal zo'n *10 miljoen jaar* voor de biodiver
 
 === Historische uitstervingen
 
-#wrap-figure(
-  image("assets/Menselijke-migratie-en-uitsterven-van-megafauna.png", width: 7.5cm),
+#figure(
+  image("assets/Menselijke-migratie-en-uitsterven-van-megafauna.png", width: 12cm),
   caption: [Verspreiding van de mens en het uitsterven van megafauna],
   label: <fig:Menselijke-migratie-en-uitsterven-van-megafauna>,
-)[
-  Zo'n 60.000 jaar geleden begon de moderne mens zich over de aarde te verspreiden, in vier golven (@fig:Menselijke-migratie-en-uitsterven-van-megafauna). Overal waar de mens aankwam, stierven grote zoogdieren uit: mammoeten, sabeltandtijgers, reuzenluiaards. Dat noemen we de *megafauna-extinctie*.
+)
+Zo'n 60.000 jaar geleden begon de moderne mens zich over de aarde te verspreiden, in vier golven (@fig:Menselijke-migratie-en-uitsterven-van-megafauna). Overal waar de mens aankwam, stierven grote zoogdieren uit: mammoeten, sabeltandtijgers, reuzenluiaards. Dat noemen we de *megafauna-extinctie*.
 
-]
 
 #concept(title: "Overkill-hypothese")[
   De megafauna stierf uit doordat de mens, bij zijn verspreiding over de aarde, de grote dieren uitjoeg.
@@ -142,7 +143,7 @@ Twee indexen volgen dit op.
   columns: 2,
   gutter: 1em,
   [#figure(
-    image("assets/IUCN.png", width: 100%),
+    image("assets/IUCN.png", width: 80%),
     caption: [Categorieën van de IUCN Rode Lijst],
   ) <fig:IUCN>],
   [#figure(
@@ -156,7 +157,7 @@ We zitten dus voorbij de *planetaire grens* voor de integriteit van de biosfeer.
 === Hoe meten we biodiversiteitsverlies? <sec:hoe-meten-we-biodiversiteit-verlies>
 
 #wrap-figure(
-  image("assets/Biodiversiteit-verlies-metingen.png", width: 6cm),
+  image("assets/Biodiversiteit-verlies-metingen.png", width: 9cm),
   caption: [Technieken om biodiversiteit te monitoren, van satelliet tot bodem],
   label: <fig:Biodiversiteit-verlies-metingen>,
 )[
@@ -186,7 +187,7 @@ Om structuur te brengen in al die data ontwikkelde GEO-BON de *Essential Biodive
 === Midpoint-indicatoren <sec:mid-point-indicators>
 
 #wrap-figure(
-  image("assets/Grafiek-van-qualiteit-landverlies-en-hoe-restoratie-mogelijk-is..png", width: 7cm),
+  image("assets/Grafiek-van-qualiteit-landverlies-en-hoe-restoratie-mogelijk-is..png", width: 10cm),
   caption: [Landkwaliteit in de tijd bij landgebruiksverandering en permanent landgebruik],
   label: <fig:Landkwaliteit-landgebruik>,
 )[
@@ -217,7 +218,7 @@ Het meeste van de biodiversiteit wordt niet verhandeld en heeft geen marktwaarde
   De cascade (@fig:Ecosystem-services-cascade) toont de stroom van diensten van ecosysteem naar mens: links het ecosysteem met zijn samenstelling, structuur en werking, alle drie bepaald door de biodiversiteit; rechts de samenleving, die diensten ontvangt die bijdragen aan welvaart en welzijn. Biodiversiteit drijft ecosysteemfuncties zoals fotosynthese, verdamping en nutriëntenkringlopen, en die leveren de diensten. Beheert de mens een ecosysteem om één dienst te maximaliseren, dan gaat dat vaak ten koste van andere.
 
   #figure(
-    image("assets/Ecosystem-services-cascade.png", width: 90%),
+    image("assets/Ecosystem-services-cascade.png", width: 80%),
     caption: [Ecosysteemdienstencascade],
     label: <fig:Ecosystem-services-cascade>,
   )
@@ -231,14 +232,16 @@ De internationale classificatie CICES onderscheidt drie soorten ecosysteemdienst
   stroke: 0.5pt + gray,
   table.header([*Type*], [*Voorbeelden*]),
   [Productiediensten (_provisioning_)], [materiële stromen: voedsel, hout, biomassa voor energie, drinkwater],
-  [Regulerende diensten (_regulating_)], [bescherming van het milieu: erosiebestrijding, verkoeling en luchtfiltering door vegetatie, koolstofopslag in bossen, venen en bodems],
+  [Regulerende diensten (_regulating_)],
+  [bescherming van het milieu: erosiebestrijding, verkoeling en luchtfiltering door vegetatie, koolstofopslag in bossen, venen en bodems],
+
   [Culturele diensten (_cultural_)], [spirituele, recreatieve en wetenschappelijke ervaringen],
 )
 
 Sommige bronnen noemen _supporting services_ als vierde categorie. Dat zijn eigenlijk de biodiversiteit en ecosysteemfuncties zelf, die aan alle andere diensten ten grondslag liggen, en dus geen echte dienst.
 
 #wrap-figure(
-  image("assets/Ecologische-services-in-functie-van-biodiversiteit.png", width: 6.5cm),
+  image("assets/Ecologische-services-in-functie-van-biodiversiteit.png", width: 10cm),
   caption: [Ecosysteemdiensten in functie van biodiversiteit],
   label: <fig:Ecologische-services-in-functie-van-biodiversiteit>,
 )[
@@ -273,7 +276,7 @@ Een voorbeeld van een *productiedienst*.
     caption: [Wilde banaan tegenover de huidige],
   ) <fig:Vroegere-banaan-VS-nu>],
   [#figure(
-    image("assets/Vroegere-tomaat-in-vergelijking-met-nu.png", width: 100%),
+    image("assets/Vroegere-tomaat-in-vergelijking-met-nu.png", width: 80%),
     caption: [Wilde tomaat tegenover de huidige],
   ) <fig:Vroegere-tomaat-in-vergelijking-met-nu>],
 )
@@ -291,7 +294,7 @@ CWR zijn bedreigd door uitbreiding van landbouw. Je kan ze bewaren:
 === Voorbeeld: bestuiving <sec:voorbeeld-pollinatie>
 
 #wrap-figure(
-  image("assets/Een-bij-die-polineert.png", width: 5cm),
+  image("assets/Een-bij-die-polineert.png", width: 7cm),
   caption: [Een bij die bestuift],
   label: <fig:Een-bij-die-polineert>,
 )[
@@ -326,27 +329,27 @@ Daarnaast zijn er oorzaken die buiten deze categorieën vallen, zoals bosbranden
 
 === Habitatverlies en -degradatie <sec:habitat-loss-and-degradation>
 
-#wrap-figure(
-  image("assets/Diersoorten-en-welk-oorzaak-effect-heeft-op-hun-populatie.png", width: 7cm),
+#figure(
+  image("assets/Diersoorten-en-welk-oorzaak-effect-heeft-op-hun-populatie.png", width: 16cm),
   caption: [Bedreigingen voor 703 dalende landpopulaties],
   label: <fig:Diersoorten-en-welk-oorzaak-effect-heeft-op-hun-populatie>,
-)[
-  Habitatverlies is wereldwijd de *grootste oorzaak*. Bij 703 dalende populaties op land (@fig:Diersoorten-en-welk-oorzaak-effect-heeft-op-hun-populatie):
+)
+Habitatverlies is wereldwijd de *grootste oorzaak*. Bij 703 dalende populaties op land (@fig:Diersoorten-en-welk-oorzaak-effect-heeft-op-hun-populatie):
 
-  - habitatverlies: 50 %
-  - overexploitatie: 25 %
-  - invasieve soorten: 10 %
-  - klimaatverandering en vervuiling: elk 7–8 %
+- habitatverlies: 50 %
+- overexploitatie: 25 %
+- invasieve soorten: 10 %
+- klimaatverandering en vervuiling: elk 7–8 %
 
-  De belangrijkste drijver is de omzetting van natuur naar *landbouw*. Dat gebeurt nu vooral in Zuid-Amerika, Afrika ten zuiden van de Sahara en Zuidoost-Azië, vroeger in Europa en Noord-Amerika.
-]
+De belangrijkste drijver is de omzetting van natuur naar *landbouw*. Dat gebeurt nu vooral in Zuid-Amerika, Afrika ten zuiden van de Sahara en Zuidoost-Azië, vroeger in Europa en Noord-Amerika.
+
 
 Landbouw beslaat al *51 miljoen km²*, de helft van het bewoonbare land. Meer dan *75 %* daarvan dient voor vee (weide of voedergewassen). Dat is een energetisch minder efficiënte voedselketen, dus meer land dan strikt nodig.
 
 Er verdwijnt zo'n *20 miljoen ha bos per jaar* (@fig:Bosverlies-in-verschillende-regios). Van 2001 tot 2018 was dat bruto 360 miljoen ha. Bruto, want de helft groeit terug als secundair bos. De andere helft wordt landbouw: half permanente landbouw, half zwerflandbouw.
 
 #figure(
-  image("assets/Bosverlies-in-verschillende-regio's.png", width: 80%),
+  image("assets/Bosverlies-in-verschillende-regio's.png", width: 70%),
   caption: [Bosverlies per regio],
   label: <fig:Bosverlies-in-verschillende-regios>,
 )
@@ -356,7 +359,7 @@ Er verdwijnt zo'n *20 miljoen ha bos per jaar* (@fig:Bosverlies-in-verschillende
 Planten en dieren zijn hernieuwbaar: oogst je minder dan de natuurlijke aangroei, dan blijft de populatie stabiel. Dat vraagt wel goede monitoring en sterk bestuur, zoals bij duurzame visserij of bosbouw. Waar dat ontbreekt, wordt er overgeoogst. Dat was het lot van bizons, walvissen, bevers, dodo's en neushoorns.
 
 #wrap-figure(
-  image("assets/Overexplotatie-in-verschillende-diersoorten.png", width: 7cm),
+  image("assets/Overexplotatie-in-verschillende-diersoorten.png", width: 10cm),
   caption: [Bedreigingen voor de 362 overgebleven megafaunasoorten],
   label: <fig:Overexplotatie-in-verschillende-diersoorten>,
 )[
@@ -375,20 +378,20 @@ Planten en dieren zijn hernieuwbaar: oogst je minder dan de natuurlijke aangroei
 Het aantal nieuwe exoten per jaar stijgt sterk sinds 1500 (@fig:Invasieve-soorten-doorheen-de-tijd). De data na 2000 (grijze punten) zijn nog onvolledig.
 
 #figure(
-  image("assets/Invasieve-soorten-doorheen-de-tijd.png", width: 80%),
+  image("assets/Invasieve-soorten-doorheen-de-tijd.png", width: 90%),
   caption: [Nieuwe exoten per jaar, 1500–2014],
   label: <fig:Invasieve-soorten-doorheen-de-tijd>,
 )
 
 ==== Onbedoelde introducties <sec:onbedoelde-introducties>
 
-#wrap-figure(
-  image("assets/Voorbeeld-hoe-soorten-perongeluk-kunnen-geïntroduceerd-worden.png", width: 7cm),
+#figure(
+  image("assets/Voorbeeld-hoe-soorten-perongeluk-kunnen-geïntroduceerd-worden.png", width: 12cm),
   caption: [Manieren waarop soorten per ongeluk geïntroduceerd worden],
   label: <fig:Voorbeeld-hoe-soorten-perongeluk-kunnen-geïntroduceerd-worden>,
-)[
-  Soorten reizen per ongeluk mee met handel en transport (@fig:Voorbeeld-hoe-soorten-perongeluk-kunnen-geïntroduceerd-worden).
-]
+)
+Soorten reizen per ongeluk mee met handel en transport (@fig:Voorbeeld-hoe-soorten-perongeluk-kunnen-geïntroduceerd-worden).
+
 
 ==== Bedoelde introducties <sec:bedoelde-introducties>
 
@@ -450,7 +453,7 @@ Klimaatverandering behandelden we in @ch:climate. Belangrijk hier: de opwarming 
 Het gebied met een geschikt klimaat verschuift, waardoor soorten habitat verliezen. Het effect hangt af van de soort.
 
 #wrap-figure(
-  image("assets/Effect-van-klimaat-op-Buff-tailed-bumblebee.png", width: 6.5cm),
+  image("assets/Effect-van-klimaat-op-Buff-tailed-bumblebee.png", width: 10cm),
   caption: [Verlies (rood) en winst (groen) aan geschikt habitat voor de aardhommel],
   label: <fig:Effect-van-klimaat-op-Buff-tailed-bumblebee>,
 )[
@@ -482,7 +485,7 @@ Rupsen eten jonge eikenbladeren, en koolmezen voeden hun jongen met rupsen. Door
   - *Land sparing*: zo intensief mogelijk produceren op zo weinig mogelijk land, en de rest vrijhouden als natuur.
 
   #figure(
-    image("assets/Land-sharing-vs-land-sparing.png", width: 55%),
+    image("assets/Land-sharing-vs-land-sparing.png", width: 60%),
     caption: [Land sharing en land sparing],
     label: <fig:Land-sharing-vs-land-sparing>,
   )
@@ -551,7 +554,7 @@ Veelgebruikte aanpakken:
 - *Passieve rewilding*: minder bos- en landbouw, en de natuur zelf laten herstellen.
 
 #figure(
-  image("assets/Foto-van-een-hernieuw-habitat.png", width: 60%),
+  image("assets/Foto-van-een-hernieuw-habitat.png", width: 40%),
   caption: [Een herstelde habitat],
   label: <fig:Foto-van-een-hernieuw-habitat>,
 )
@@ -578,7 +581,7 @@ Op de 10e CoP in Nagoya (2010) kwamen het *Nagoya-protocol* (eerlijke verdeling 
 === Links met andere global challenges <sec:links-met-andere-global-challenges>
 
 #wrap-figure(
-  image("assets/Biodiversiteit-Links.png", width: 6.5cm),
+  image("assets/Biodiversiteit-Links.png", width: 8cm),
   caption: [Links tussen biodiversiteit en de andere uitdagingen],
   label: <fig:Biodiversiteit-Links>,
 )[
