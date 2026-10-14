@@ -15,7 +15,9 @@ Binnen de filosofie, en meer bepaald de normatieve ethiek, gaan we kijken wat er
 
 == Morele waarden <sec:morele-waarden>
 
-Wat zou moeten zijn, wordt bepaald door *morele waarden*: privacy, rechtvaardigheid, vrijheid, gelijkheid, *duurzaamheid*, ...
+Ethiek is geen wetenschap: wetenschap gaat over wat is, ethiek over wat zou moeten zijn. Wat zou moeten zijn, wordt bepaald door *morele waarden*: privacy, rechtvaardigheid, vrijheid, gelijkheid, *duurzaamheid*, ...
+
+Niet elke waarde is moreel: efficiëntie, gezondheid en schoonheid zijn waarden met een moreel neutraal karakter.
 
 Een morele waarde verwijst naar een stand van zaken (bv. bij privacy: controle hebben over je data), die we goed vinden, en die normatief is: anderen moeten er rekening mee houden.
 
@@ -33,7 +35,7 @@ De Brundtland-definitie van duurzaamheid is:
 
 Je moet dus in je eigen behoeftes voorzien zonder de behoeftes van de volgende generaties in gevaar te brengen.
 
-De definitie is een beetje abstract: welke behoeftes, en wat zijn de behoeftes van de volgende generatie? En hoeveel generaties? Vijf generaties? Maar waarom die lijn daar trekken, wat met de zesde en zevende generatie? Om de definitie te gebruiken, moet je ze dus concreet maken (operationaliseren). Daarvoor moet je beslissingen nemen, en die moet je kunnen rechtvaardigen (legitimeren).
+De definitie is een beetje abstract: welke behoeftes (enkel basisbehoeften zoals voedsel en onderdak?), en wat zijn de behoeftes van de volgende generatie? Mogen we hun mogelijkheden op geen enkele manier verkleinen? En hoeveel generaties? Vijf generaties? Maar waarom die lijn daar trekken, wat met de zesde en zevende generatie? Om de definitie te gebruiken, moet je ze dus concreet maken (operationaliseren). Daarvoor moet je beslissingen nemen, en die moet je kunnen rechtvaardigen (legitimeren).
 
 We nemen aan dat de behoeftes van vandaag gekend zijn, maar misschien niet die van de toekomst, en omgekeerd. (Als je 300 jaar terugkijkt, konden ze nooit de behoeftes van de toekomst gekend hebben: data-privacy was geen behoefte in die tijd, maar hun behoeftes waren ook heel anders dan die van vandaag.)
 
@@ -77,7 +79,7 @@ Als we vandaag de dag geen zorg dragen voor het milieu, dan komen de behoeftes v
 
 === Twee rechtvaardigingen van ecologisme <sec:rechtvaardigingen-ecologisme>
 
-Je hebt een* extrinsieke en een intrinsieke waarde* van de natuur.
+Je hebt een *extrinsieke* en een *intrinsieke waarde* van de natuur.
 
 + *Extrinsieke Waarde*: Bij de *extrinsieke waarde* zorgen we voor het milieu omdat het goed is voor ons en voor de mensen in de toekomst. Dat is de rechtvaardiging die in duurzaamheid zit. Een paar concepten hierrond:
 
