@@ -399,7 +399,9 @@ Dit is een seculiere variant van het intelligent design-argument: daar mocht je 
   [Genetische manipulatie is ontoelaatbaar],
 )
 
-De tekst geeft ook een variant zonder God: onvolmaaktheid en kwetsbaarheid maken het leven waardevol ("Alles van waarde is weerloos", Lucebert), en dat verlies je door verbetering. Kritiek: kwetsbaarheid is ook een bron van veel ellende, en verbetering maakt je maar op één vlak minder kwetsbaar, niet onkwetsbaar.
+De tekst geeft ook een variant zonder God: onvolmaaktheid en *kwetsbaarheid maken het leven waardevol* ("Alles van waarde is weerloos", Lucebert), en dat verlies je door verbetering. 
+
+*Kritiek:* kwetsbaarheid is ook een bron van veel ellende, en verbetering maakt je maar op één vlak minder kwetsbaar, niet onkwetsbaar.
 
 *Problemen met (P):*
 
