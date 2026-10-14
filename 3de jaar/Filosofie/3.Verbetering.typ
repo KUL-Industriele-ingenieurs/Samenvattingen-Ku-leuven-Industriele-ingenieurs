@@ -51,7 +51,7 @@ Ook de levensverwachting is sterk gestegen en de kindersterfte sterk gedaald. De
       image("assets/Kindersterfte-doorheen-de-tijd.png", width: 100%),
       caption: [Kindersterfte per inkomensniveau van een land: aantal kinderen dat sterft voor de leeftijd van 5 jaar, per 1000 geboortes (Our World in Data)],
     )
-  ]
+  ],
 )
 
 
@@ -155,19 +155,217 @@ De meeste argumenten hebben een consequentialistisch karakter. Een moreel argume
 
 === Argumenten tegen cognitieve en fysieke verbetering <sec:argumenten-tegen-verbetering>
 
-1. Het intelligent design-argument
-2. Het gelijkheidsargument
-3. Het gezondheidsargument
+#examenbox[Op het examen als hij vraagt wat zijn de tegenargumenten tegen enchancement, dan moet je deze kunnen uitleggen wat het argument omvat en wat enchancement is.]
+
+=== Het intelligent design-argument <sec:intelligent-design-argument>
+- Point P1, de wereld is hiërarchisch
+- Point P2, het veranderen van de hiërarchie is moreel verkeerd.
+#line()
+- Conclusie C: Verbetering is ontoelaatbaar
+
+*P1: De wereld is hiërarchisch
+*\
+Beschrijvende claim:\
+
+De wereld heeft een duidelijke structuur, waarin alles (God, mensen, dieren, etc.) een vaste plaats heeft die zich onderscheidt duidelijk van de andere plaatsen
+
+Het veranderen van de hiërarchei is moreel verkeerd,
+
+beschrijvend omdat het een observatie is in de wereld waar we leven.
+
+*P2: Het veranderen van de hiërarchie is moreel verkeerd*\
+Evaluatieve / normatieve claim:
+
+(P1) De structuur van de wereld is Gods product\
+(P2) Het veranderen van Gods product is respectloos
+#line()
+(C) Het veranderen van de hiërarchie is moreel verkeerd
+
+Het is dus fout om dit aan te passen omdat goddelijke orde wordt geschonden.
+
+normatief omdat het een norm of morele waarde is die zegt dat je de hiërarchie moet respecteren. Het is een normatieve claim omdat het zegt dat je iets moet doen of laten.
+
+CHECK OF JUISTE IS,
+
+*Problemen met argument:*\
+
+#figure(
+  image("assets/Vervang-foto.png", width: 5cm),
+  caption: [Vervang-foto],
+  label: <fig:Vervang-foto>,
+)
+
+Er is geen bewijs dat er een intellegent ontwerper is, verbetering kan dus niet respectloos zijn tot die ontwerper.
+
+
+*Probleem met aannames 1: Verbetering verstroort hierarchie, *niet alle verandering lijd tot een revolutie en dus storing van hierarchie, gewoon omdat iemand sneller gaat lopen creert geen revolutie.
+
+*Probleem 2: God is conservatief,*
+De intentie van goed kennen we niet en dus je kunt niet een argument maken dat god niet wilt dat we ons verbeteren.
+
+Als je het tegensteld en zegt dat God wel ons wilt verbeteren dan draai je het argument om en is het respectloos om niet te verbeteren.
+
+
+=== Het gelijkheidsargument: <sec:gelijkheidsargument>
+
+(P1) Verbetering versterkt of veroorzaakt ongelijkheid\
+(P2) Ongelijkheid heeft een ongewenst maatschappelijk gevolg
+#line()
+(C) Verbetering is ontoelaatbaar
+
+(P1) Verbetering versterkt of veroorzaakt ongelijkheid:
+
+Emperisch/ niet morele claim, beschrijf de stand van zaken in de wereld, kan niet geverifieerd worden. Heeft op zichzelf geen grond.
+
+*3 Problemen met (P1):*\
+
+- Er is niet genoeg data om dit te zeggen.
+
+- Het is moeilijk om de impact van verbetering op ongelijkheid te meten, omdat er veel factoren zijn die hierin meespelen.
+
+- Het kan ook de ongelijkheid verminderen, medicatie kan armere mensen bevoordelen en dus ongelijkheid verminderen.
+
+- De technologie kan goedkoper worden en dan voor iedereen beschikbaar zijn en dan geen ongelijkheid, Dit is wel niet altijd gegarandeerd, vanddaag de dag heel veel technologiën zijn duur, logisch dat dit ook voor enhancement geldt.
+
+*2 Problemen met (P2):*\
+
+Opzicht lijkt dit wel juiste het kan ongewenste gevolgen hebben op de maatschappij. maar toch een paar problemen:
+- Ongelijkheid is niet altijd slecht voor een maatschappij, meestal heeft een heel moeilijk gespecialiseerde job een hoger salaris, een dokter bijvoorbeeld. Dit is ongelijk maar anders zou niemand dokter zijn. Meer dokters toont altijd op een gezondere samenleving.
+- Verbetering kan ook gebruikt worden om ongelijkheid tegengaan. Bioenchancement kan een wetenschapper helpen om een therapie te zoeken voor kanker.
+- Als je je kunt enchance dat je beter, langer en harder kan werken, dan kan je meer verdienen en minder armoede hebben _Heel ideaal werelbeeld_
+
+
+We nemen aan dat beide permissies juist zijn wat zijn dan de conclusies?
+
+*(C) Verbetering is ontoelaatbaar*\
+Moesten die beide juiste zijn is het misschien correct om te verbieden.
+
+*Probleem met de conclusie:*\
+- Enchancment zou op de zwarte markt kunnen verkocht worden, dit wordt dan illegaal en zou enorm duur zijn, nog meer ongelijk dan voorheen. Creert ook crimineel gedrag rond het product, gelijkaardig aan drugs en wheet legalisatie, zelfde argumenten kunnen daar gelden.
+- Een totaal verbod mislukt => ontsnappen aan gelijkheid
+- Bewaking
+
+
+*Probleem met aanname: Verbetering is een product van de markt
+(niet van de staat)*\
+
+dit neemt aan dat verbetering een product is van de mark en niet door de staat gecontroleerd. De staat kijkt beter naar de schaddelijke gevolgen van verbetering omdat dat in hun intresse is.
+
+Zij kkunnen ook de verbetering beter verspreiden en reguleren die natuurlijk de ongelijkheid drukt met gratis toegang of subsidies.
+
+TODO FIX DIT NOG
+
+
+*1. Het gezondheidsargument*\
+
+*(P) Enhancement heeft onwenselijk gezondheidseffect*\
+#line()
+*(C) Enhancement is ontoelaatbaar*\
+
+Probleem met permissie:\
+
+Het is een empirische claim,
+
+- Onwenselijke effecte moesten mensen zelf beslissen, heel veel dingen hebben negatieve effecten, mensen moeten hierrond geinformeerd zijn zodat ze hun eigen beslissingen maken. Bergklimmen is een gevaarlijke sport, er vallen elk jaar doden maar toch doen mensen het uit eigen keuze en bergbeklimmen is niet verboden.
+
+Autonomie overweegt dus op het risico van negatieve effecten.
+
+Exceptionalisme - inconsistentie
+
 
 #examenbox[Hij kan vragen om een van deze argumenten te bespreken en te evalueren.]
 
+=== Specifieke argumenten <sec:specifieke-argumenten>
+Dit zijn specifieke argumenten afhankelijk van de type enhancement
+
+==== Billijkheidsargument (fysieke enchancement) <sec:billijkheids-argument>
+
+(P) Enhancement leidt tot unfairness
+#line()
+(C) Enhancement is ontoelaatbaar
+
+
+Probleme met permissie:
+
+- Hoogtestage kan zeer duur zijn, voor sporten zoals wielrennen worden vaak hoogtetrainingsgedaan, dat is duur maar is niet verboden of moreel slecht gezien.
+- Sommige middelen kunnen goedkoper zijn
+
+enchancment meer specifiek de fysieke enchancement kan de unfairness verkleinen door dezelfde effecten te hebben als bijvoorbeeld de hoogtetraining terwijl het goedkoper is.
+
+#figure(
+  image("assets/Vervang2.png", width: 5cm),
+  caption: [Vervang2],
+  label: <fig:Vervang2>,
+)
+
+==== Welzijnsargument (cognitieve enchancement) <sec:welzijns-argument>
+
+(P1) Welzijn is de hoogste waarde
+(P2) Genetische manipulatie leidt tot meer welzijn
+#line()
+(C) Genetische manipulatie is verplicht
+
+#figure(
+  image("assets/vervangen3.png", width: 5cm),
+  caption: [vervangen3],
+  label: <fig:vervangen3>,
+)
+
+We splitsen het argument op in twee delen
+*1. Slechte genen:*\
+slechte genen kunnen leiden tot genetisch ziektes, syndroom van Down, kanker, hartziektes, ...\
+Het is deels immoreel om niet in te grijpen om die mensen een beter leven te geven.
+
+*2. Goede genen: ( geen gevaar voor ziektes)*\
+Als we met genetische manipulatie verplichten en dus ook perfect gezonden mensen verplichten, wat het moet consistent zijn dat is het argument dat het verplicht moet zijn.
+
+We willen welzijn en autonomie verhogen om naar de hoogste welzijn te streven. Als we dat doen door genetische manipulatie, dan is het verplicht om dat te doen.
+
+TODO FIX GOEDE GENENEN DEEL
+
+
+Probleem met conclusie:\
+
+Er zijn veel onwenselijke neveneffecten, wie bepaald welke genenen wensbaar zijn en does verplicht moet zijn. Dit begint dan heel snel op een eugenetica te lijken, en dat is moreel ontoelaatbaar.
+
+==== Menselijk natuur argument <sec:menselijk-natuur-argument>
+
+(P) Menselijke natuur veranderen is ontoelaatbaar
+#line()
+(C) Genetische manipulatie is ontoelaatbaar
+
+*Probleem (1) met (P): Menselijke natuur veranderen is ontoelaatbaar:*\
+
+Concept ‘menselijke natuur’ is onduidelijk (alle personen?),
+betwijfelbaar (variatie), oncontroleerbaar.
+
+We veranderen de natuur als doorheen heel onze geschiedenis, planten die we selectief hebben laten groeien om meer opbrengst te hebben, dieren die we selectief hebben laten fokken om meer melk te geven, ...\
+
+Deze dingen zijn niet meer natuurlijk als hoe ze uit de natuur komen maar hebben wij gemanipuleerd.
+
+*Probleem (2) met (P): Menselijke natuur veranderen is ontoelaatbaar*\
+
+Waarom zou dit fout zijn? We passen vandaag de dag onze manselijke natuur al aan, haar knippen, kledij, tandenzorg, ...\
+
+Wat is het bijzondere aan menselijke natuur dat het ontoelaatbaar maakt om niet te veranderen?
+
+Problemen met de conclusie:\
+- Menselijke natuur impliceert overerfbaarheid (via genen), Genetische manipulatie impliceert geen transfer
+- Menselijke natuur is een populatieconcept,
+terwijl genetische manipulatie individueel kan zijn
+
+
+Nog problemen met de aanname:\
+Het stelt dat menselijke natuur goed is wat niet noodzakelijk zo is. Puur conceptueel zeggen we nu dat het goed is, kan later of vroeger anders zijn.
+
+Gewoon omdat het vroeger ons hielp om te overleven vroeger betekent niet dat het vandaag nuttig is, denk aan hoarders of mensen met extreme gretigheid, vroeger hielp dat om te overleven, vandaag is het een probleem.
+
+Is het beter om bepaalde karaterstieke die we vandaag onwenselijk vinden te verbeteren?
+
+
+=== Aannames
 
 === Argumenten voor cognitieve en fysieke verbetering <sec:argumenten-voor-verbetering>
-
-
-
-
-
 
 
 

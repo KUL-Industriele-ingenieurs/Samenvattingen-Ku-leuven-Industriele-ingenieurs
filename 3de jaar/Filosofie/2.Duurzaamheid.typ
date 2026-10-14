@@ -136,9 +136,9 @@ De focus op het heden volgt uit de toekomstvisie:
 #block(breakable: false)[
   Duurzaamheid > continuïteit
 
-  + continuïteit
-  + goed leven (vervulde basisbehoeften)
-  + voor iedereen
+  + Continuïteit
+  + Goed leven (vervulde basisbehoeften)
+  + Voor iedereen
 ]
 
 Continuïteit alleen is niet genoeg: ook armoede kan je doorgeven naar de volgende generatie (generatie-armoede).
