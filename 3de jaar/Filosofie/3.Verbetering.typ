@@ -230,7 +230,7 @@ In de literatuur zie je dat terug in vier soorten papers: iemand stelt een posit
 
 == Algemene argumenten <sec:algemene-argumenten>
 
-Algemene argumenten gelden voor elke vorm van enhancement. Alle drie zijn ze _tegen_.
+Algemene argumenten gelden voor elke vorm van enhancement. Alle drie zijn het argumenten _tegen_ cognitieve en fysieke verbetering.
 
 === Het intelligent design-argument <sec:intelligent-design-argument>
 
@@ -239,28 +239,30 @@ Algemene argumenten gelden voor elke vorm van enhancement. Alle drie zijn ze _te
   [Verbetering is ontoelaatbaar],
 )
 
-*(P1) De wereld is hiërarchisch* is een beschrijvende claim. De wereld heeft een vaste rangorde (God, mensen, dieren, ...), en elke laag onderscheidt zich duidelijk van de andere.
+*(P1) De wereld is hiërarchisch* \
+Beschrijvende claim: de wereld heeft een duidelijke structuur, waarin alles (God, mensen, dieren, ...) een vaste plaats heeft die zich duidelijk onderscheidt van de andere plaatsen. Het is beschrijvend omdat het een observatie is van de wereld waarin we leven.
 
-Dat leunt op *essentialisme*: een essentie is een eigenschap die _alle_ en _enkel_ de leden van een groep hebben.
+Dat leunt op *essentialisme*: een essentie is een eigenschap die _alle_ leden van een groep hebben, en _enkel_ die leden. Alle mensen hebben dus iets gemeen wat alleen mensen hebben.
 
-De tekst noemt die rangorde de *Scala Naturae* (ladder van het leven). Ze was ook een moreel ideaal: het is _goed_ om op je natuurlijke plaats te blijven. Genezen brengt je terug naar dat ideaal en mag dus, verbeteren gaat erboven en mag niet.
+De tekst noemt die rangorde de *Scala Naturae* (ladder van het leven). Ze werd ook als moreel ideaal gezien: het is _goed_ om op je natuurlijke plaats te blijven. Genezen brengt je terug naar dat ideaal en mag dus wel, verbeteren gaat erboven en mag niet.
 
-*(P2) Het veranderen van de hiërarchie is moreel verkeerd* is een normatieve claim. Die rust zelf op een deelargument:
+*(P2) Het veranderen van de hiërarchie is moreel verkeerd* \
+Normatieve claim: het is een norm die zegt dat je de hiërarchie moet respecteren, dus het zegt wat je moet doen of laten. Die claim rust zelf op een deelargument:
 
 #argument(
   ([De structuur van de wereld is Gods product], [Het veranderen van Gods product is respectloos]),
   [Het veranderen van de hiërarchie is moreel verkeerd],
 )
 
-Het is dus fout om de hiërarchie aan te passen, omdat je de goddelijke orde niet respecteert.
+Het is dus fout om de hiërarchie aan te passen, omdat je dan de goddelijke orde schendt.
 
-*Problemen:*
+*Problemen met het argument:*
 
 #problemen(
-  [(P1) hiërarchie], [Er is (waarschijnlijk) geen unieke en universele eigenschap: volgens de evolutietheorie lopen mens en dier in elkaar over.],
-  [(P2) moreel verkeerd], [Het darwinisme suggereert dat er geen intelligente ontwerper is, dus kan verbetering ook niet respectloos zijn.],
-  [Aanname 1: verbetering verstoort de hiërarchie], [Niet elke verbetering is een revolutie: sneller lopen maakt je geen ander wezen.],
-  [Aanname 2: God is conservatief], [Misschien wil God net dat we ons verbeteren. Dan is niet verbeteren respectloos.],
+  [(P1) de wereld is hiërarchisch], [Er is (waarschijnlijk) geen unieke en universele eigenschap die alle en enkel mensen hebben. Volgens de evolutietheorie lopen mens en dier in elkaar over.],
+  [(P2) moreel verkeerd], [Er is geen bewijs dat er een intelligente ontwerper is (darwinisme). Verbetering kan dus ook niet respectloos zijn tegenover die ontwerper.],
+  [Aanname 1: verbetering verstoort de hiërarchie], [Niet alle verandering leidt tot een revolutie. Gewoon omdat iemand sneller gaat lopen, verandert hij niet van plaats in de hiërarchie.],
+  [Aanname 2: God is conservatief], [De intentie van God kennen we niet, dus je kan niet zeggen dat God niet wil dat we ons verbeteren. Als je het omdraait en zegt dat God wél wil dat we ons verbeteren, dan draai je het argument om: dan is het respectloos om _niet_ te verbeteren.],
 )
 
 === Het gelijkheidsargument <sec:gelijkheidsargument>
@@ -270,41 +272,44 @@ Het is dus fout om de hiërarchie aan te passen, omdat je de goddelijke orde nie
   [Verbetering is ontoelaatbaar],
 )
 
-*(P1)* is een empirische claim: ze kan worden geverifieerd of gefalsifieerd.
+*(P1) Verbetering versterkt of veroorzaakt ongelijkheid* \
+Empirische, niet-morele claim: ze beschrijft de stand van zaken in de wereld, en je kan ze verifiëren of falsifiëren met data.
 
 De tekst schetst het ergste geval: de rijken worden slimmer en sterker, de armen blijven achter, en op termijn krijg je twee soorten mensen (de 'posthumane' en de rest).
 
-*(P2)* lijkt over het algemeen correct. Het is een consequentialistische claim: ongelijkheid is hier slecht _door de gevolgen_, niet op zich.
+*(P2) Ongelijkheid heeft een ongewenst maatschappelijk gevolg* \
+Lijkt op zich wel juist: ongelijkheid kan ongewenste gevolgen hebben voor de maatschappij. Het is een consequentialistische claim: ongelijkheid is hier slecht _door de gevolgen_, niet op zich.
 
 *Problemen met (P1):*
 
 #problemen(
-  [Probleem 1], [Geen data: de technologieën bestaan nog niet (of niet lang genoeg).],
-  [Probleem 2], [Sommige middelen kunnen ongelijkheid net verminderen. Je kan langer en beter werken, waardoor je een hoger loon haalt en uit de armoede raakt.],
-  [Probleem 3], [Een middel kan goedkoop worden en dan voor iedereen beschikbaar zijn $arrow.r.double$ geen ongelijkheid. 
-  
-  _Tegenargument:_ een lagere prijs is niet gegarandeerd. Veel technologieën zijn vandaag nog altijd duur, dat kan ook zo zijn voor verbeteringstechnologie.],
+  [Probleem 1], [Er is niet genoeg data om dit te zeggen: de technologieën bestaan nog niet (of niet lang genoeg). Het is ook moeilijk om de impact van verbetering op ongelijkheid te meten, omdat er veel factoren meespelen.],
+  [Probleem 2], [Verbetering kan de ongelijkheid ook verminderen. Medicatie kan armere mensen bevoordelen: bv. modafinil zorgt voor meer focus, waardoor je langer en beter kan werken, een hoger loon haalt en uit de armoede raakt.],
+  [Probleem 3], [De technologie kan goedkoper worden en dan voor iedereen beschikbaar zijn $=>$ geen ongelijkheid.
+
+  _Tegenargument:_ een lagere prijs is niet gegarandeerd. Vandaag zijn heel veel technologieën nog altijd duur, dus logisch dat dat ook voor enhancement kan gelden.],
 )
 
 *Problemen met (P2):*
 
 #problemen(
-  [Probleem 1], [Ongelijkheid is niet altijd slecht. Een dokter verdient meer dan anderen. Daardoor willen mensen dokter worden, en dat maakt de samenleving gezonder.],
-  [Probleem 2], [De voordelen van verbetering kunnen opwegen tegen de ongelijkheid, bv. een wetenschapper die sneller een kankertherapie vindt. Dat is zelf een consequentialistische veronderstelling.],
+  [Probleem 1], [Ongelijkheid is niet altijd slecht voor een maatschappij. Een dokter verdient meer dan de meeste mensen. Dat is ongelijk, maar anders zou bijna niemand dokter worden. Meer dokters = een gezondere samenleving.],
+  [Probleem 2], [De voordelen van verbetering kunnen opwegen tegen de ongelijkheid. Cognitief: bio-enhancement kan een wetenschapper helpen om sneller een therapie tegen kanker te vinden. Fysiek: als je je kan verbeteren zodat je beter, langer en harder kan werken, dan verdien je meer en is er minder armoede (_heel ideaal wereldbeeld_). Merk op: dit is zelf een consequentialistische veronderstelling.],
 )
 
-*Problemen met (C):* stel dat beide premissen juist zijn, volgt er dan een verbod?
+*Problemen met (C):* stel dat beide premissen juist zijn, is een verbod dan de oplossing?
 
 #problemen(
-  [Probleem 1: zwarte markt], [Middelen worden duur en alleen rijken kunnen ze kopen: de oplossing verergert het probleem. Plus ander crimineel gedrag.],
-  [Probleem 2: totale ban mislukt], [Mensen ontsnappen aan een verbod, dus de ongelijkheid blijft.],
-  [Probleem 3: bewaking], [Een verbod controleren betekent mensen bewaken, en dat botst met privacy.],
+  [Probleem 1: zwarte markt], [Enhancement wordt dan op de zwarte markt verkocht. Het wordt illegaal en heel duur, dus alleen rijke mensen kunnen het kopen: nog meer ongelijkheid dan voorheen. Er ontstaat ook crimineel gedrag rond het product, net zoals bij drugs. Dezelfde argumenten als bij het debat over wietlegalisering gelden hier.],
+  [Probleem 2: totale ban mislukt], [Mensen ontsnappen altijd aan een verbod, dus de ongelijkheid blijft toch.],
+  [Probleem 3: bewaking], [Om een verbod te controleren moet je mensen bewaken, en dat botst met het recht op privacy.],
 )
 
-*Probleem met de aanname: verbetering is een product van de markt (niet van de staat).* Het argument neemt aan dat de staat alleen ingrijpt bij schadelijke gevolgen. Maar de staat zorgt ook zelf voor verbetering met een eerlijke verdeling, zoals bij onderwijs. Voor enhancement kan dat met gratis toegang of subsidies.
+*Probleem met de aanname: verbetering is een product van de markt (niet van de staat).* \
+Het argument neemt aan dat verbetering door de markt verdeeld wordt, en dat de staat alleen ingrijpt bij schadelijke gevolgen (veiligheid, gezondheid). Maar de staat kan ook zelf verbetering verspreiden en reguleren, zodat de ongelijkheid net daalt. Dat doet de staat vandaag al met onderwijs. Voor enhancement kan dat met gratis toegang of subsidies.
 
 #examenbox[
-  "Geef een kritiek op het gelijkheidsargument": standaardvorm, één probleem (bv. probleem 2 met (P1)), waarom het tegen die premisse ingaat.
+  "Geef een kritiek op het gelijkheidsargument": leg het argument uit (standaardvorm), geef één probleem (bv. probleem 2 met (P1)) en leg uit waarom dat tegen die premisse ingaat.
 ]
 
 === Het gezondheidsargument <sec:gezondheidsargument>
@@ -317,14 +322,14 @@ De tekst schetst het ergste geval: de rijken worden slimmer en sterker, de armen
 *(P)* is een empirische claim.
 
 #problemen(
-  [(P)], [Niet waar voor alle enhancement, bv. hoogtestage in het wielrennen. Het argument is dus beperkt.],
-  [Aanname: onwenselijke effecten zijn beslissend], [Het argument zegt: X is enkel toelaatbaar zonder onwenselijke effecten. Maar bergbeklimmen is ook gevaarlijk en verbieden we niet: mensen kennen het risico en beslissen zelf, *autonomie overweegt*.],
+  [(P)], [Niet waar voor alle enhancement, bv. hoogtestage in het wielrennen. Dat is een enhancement waarbij je lichaam meer rode bloedcellen aanmaakt, maar het heeft geen neveneffecten. Het argument is dus beperkt.],
+  [Aanname: onwenselijke effecten zijn beslissend], [Het argument zegt: X is enkel toelaatbaar als er geen onwenselijke effecten zijn. Maar heel veel dingen hebben negatieve effecten. Bergklimmen is een gevaarlijke sport, er vallen elk jaar doden, en toch doen mensen het uit eigen keuze en is het niet verboden. Zolang mensen geïnformeerd zijn, beslissen ze zelf: *autonomie overweegt* op het risico van negatieve effecten.],
 )
 
-Wie schade genoeg vindt voor een verbod op enhancement maar niet op bergbeklimmen, maakt van enhancement een uitzondering zonder reden: *exceptionalisme*, en dus *inconsistent*.
+Wie vindt dat schade aan de gezondheid genoeg is voor een verbod op enhancement, maar niet voor een verbod op bergklimmen, maakt van enhancement een uitzondering zonder te zeggen waarom. Dat is *exceptionalisme*, en dus *inconsistent*.
 
 #examenbox[
-  Komt vrij zeker terug: "wat is de link tussen het gelijkheids- en het gezondheidsargument?" Leg beide uit, dan de link: allebei _tegen_ enhancement en allebei consequentialistisch.
+  "Wat is de link tussen het gelijkheids- en het gezondheidsargument?" Leg beide uit, dan de link: allebei _tegen_ enhancement en allebei consequentialistisch.
 ]
 
 #figure(
@@ -345,7 +350,7 @@ Wie schade genoeg vindt voor een verbod op enhancement maar niet op bergbeklimme
 
 == Specifieke argumenten <sec:specifieke-argumenten>
 
-Deze gelden alleen voor een bepaald type enhancement.
+Dit zijn argumenten die alleen gelden voor een bepaald type enhancement.
 
 === Billijkheidsargument (fysieke enhancement) <sec:billijkheids-argument>
 
@@ -354,63 +359,65 @@ Deze gelden alleen voor een bepaald type enhancement.
   [Enhancement is ontoelaatbaar],
 )
 
-*Probleem met (P):* het omgekeerde kan ook. Dat kan je zelf als argument schrijven:
+*Probleem met (P):* enhancement kan de unfairness net verkleinen. Dat kan je zelf als argument schrijven:
 
 #argument(
   ([Hoogtestage kan zeer duur zijn], [Sommige middelen kunnen goedkoop zijn]),
   [Middelen kunnen de kloof verkleinen],
 )
 
-Een goedkoop middel met hetzelfde effect als een dure hoogtestage maakt de sport net _eerlijker_.
+In het wielrennen doen ze vaak hoogtestages. Dat is duur, maar het is niet verboden of moreel slecht gezien. Fysieke enhancement die hetzelfde effect heeft als een hoogtestage, maar goedkoper is, maakt de sport dus net eerlijker.
 
-*Probleem met de aanname: unfairness volstaat voor een verbod*, dus X is enkel toelaatbaar als er geen unfairness is. Maar dure hoogtestages zijn ook unfair en niet verboden. Opnieuw *exceptionalisme – inconsistentie*.
+*Probleem met de aanname: unfairness volstaat voor een verbod*, dus X is enkel toelaatbaar als er geen unfairness is. Maar een dure hoogtestage is ook unfair, en die is niet verboden. Opnieuw *exceptionalisme – inconsistentie*.
 
 === Welzijnsargument (genetische manipulatie) <sec:welzijns-argument>
 
-Het enige argument _vóór_ enhancement, en het gaat het verst: verplicht (Savulescu).
+Dit is het enige argument _vóór_ enhancement, en het gaat het verst: het besluit dat het verplicht is (Savulescu).
 
 #argument(
   ([Welzijn is de hoogste waarde], [Genetische manipulatie leidt tot meer welzijn]),
   [Genetische manipulatie is verplicht],
 )
 
-(P1) is normatief, (P2) is beschrijvend. Het argument werkt in twee stappen:
+(P1) is normatief: je beargumenteert iets vanuit een norm. (P2) is beschrijvend: je neemt aan of beschrijft dat het zo is. Het argument werkt in twee stappen:
 
-*1. Slechte genen* = een dispositie voor een ziekte. Als we die kans kunnen wegnemen, is het immoreel om _niet_ in te grijpen (consequentialisme: welzijn). Niet ingrijpen is dan geen optie meer.
+*1. Slechte genen* = een dispositie voor een ziekte. \
+Slechte genen kunnen leiden tot genetische ziektes, kanker, hartziektes, ... Als we die kans met genetische manipulatie kunnen wegnemen, is het immoreel om _niet_ in te grijpen en die mensen geen beter leven te geven (consequentialisme: welzijn). Niet ingrijpen is dan geen optie meer.
 
-*2. Goede genen* = geen dispositie voor een ziekte. *Consistentie*: als we naar het hoogste welzijn moeten streven, geldt dat ook voor gezonde mensen. Dus is genetische manipulatie voor iedereen verplicht.
+*2. Goede genen* = geen dispositie voor een ziekte. \
+Hier zit de stap van Savulescu: *consistentie*. Als welzijn de hoogste waarde is en we naar het hoogste welzijn moeten streven, dan geldt dat ook voor mensen die al gezond zijn. Ook wie goede genen heeft, moet je dan aanpassen zodat zijn welzijn nog stijgt. Dus is genetische manipulatie voor iedereen verplicht.
 
-*Probleem met (C): onwenselijk neveneffect.* Iedereen past zich aan het type mens aan dat nu succesvol is: witte mannelijke suprematie en minder diversiteit. Dat lijkt al snel op eugenetica.
+*Probleem met (C): onwenselijk neveneffect.* \
+Wie bepaalt welke genen goed zijn? Een perfect gezond persoon kan dan verplicht worden om zichzelf genetisch aan te passen aan de normen die opgelegd worden. Als iedereen zich aanpast aan het type mens dat nu succesvol is, krijg je bv. witte mannelijke suprematie en minder diversiteit. Dat begint snel op eugenetica te lijken, en dat is moreel ontoelaatbaar.
 
 === Menselijke natuur-argument (genetische manipulatie) <sec:menselijk-natuur-argument>
 
-Een seculiere variant van het intelligent design-argument: niet de hiërarchie, maar de menselijke natuur mag je niet aanpassen.
+Dit is een seculiere variant van het intelligent design-argument: daar mocht je de hiërarchie niet aanpassen, hier de menselijke natuur niet.
 
 #argument(
   ([Menselijke natuur veranderen is ontoelaatbaar],),
   [Genetische manipulatie is ontoelaatbaar],
 )
 
-De tekst geeft ook een variant zonder God: onvolmaaktheid en kwetsbaarheid maken het leven waardevol ("Alles van waarde is weerloos", Lucebert), en dat verlies je door verbetering. Kritiek: kwetsbaarheid is ook een bron van veel ellende, en verbetering maakt je maar op één vlak minder kwetsbaar.
+De tekst geeft ook een variant zonder God: onvolmaaktheid en kwetsbaarheid maken het leven waardevol ("Alles van waarde is weerloos", Lucebert), en dat verlies je door verbetering. Kritiek: kwetsbaarheid is ook een bron van veel ellende, en verbetering maakt je maar op één vlak minder kwetsbaar, niet onkwetsbaar.
 
 *Problemen met (P):*
 
 #problemen(
-  [Probleem 1], [Het concept "menselijke natuur" is _onduidelijk_ (alle mensen?), _betwijfelbaar_ (veel variatie) en _oncontroleerbaar_.],
-  [Probleem 2], [Waarom zou het fout zijn? We veranderen ook ons haar of onze tanden. Wie zegt dat de natuur anders is, moet uitleggen waarom dat verschil relevant is. Anders: *exceptionalisme*.],
-  [Probleem 3 (tekst)], [Verbetering zit zelf in onze natuur. De mens is een cultureel wezen dat al 2 miljoen jaar technologie gebruikt (stenen werktuigen van Oldowan). Wie de natuur als iets statisch ziet en er een norm van maakt, heeft het mis.],
+  [Probleem 1], [Het concept "menselijke natuur" is _onduidelijk_ (alle personen?), _betwijfelbaar_ (er is veel variatie) en _oncontroleerbaar_. Bovendien veranderen we de natuur al doorheen heel onze geschiedenis: planten die we selectief hebben laten groeien voor meer opbrengst, dieren die we selectief gefokt hebben om meer melk te geven, ... Die zijn ook niet meer zoals ze uit de natuur kwamen.],
+  [Probleem 2], [Waarom zou dit fout zijn? We passen vandaag onze menselijke natuur al aan: haar knippen, kledij, tandzorg, ... Wat is er zo bijzonder aan de menselijke natuur dat het ontoelaatbaar is om ze te veranderen? Wie zegt dat er een verschil is, moet uitleggen waarom dat verschil relevant is. Anders is het *exceptionalisme*.],
+  [Probleem 3 (tekst)], [Verbetering zit zelf in onze natuur. De mens is van nature een cultureel wezen dat al 2 miljoen jaar technologie gebruikt (stenen werktuigen van Oldowan). Wie de natuur als iets statisch ziet en er een norm van maakt, heeft het mis.],
 )
 
-*Problemen met (C):* stel dat (P) klopt, volgt de conclusie dan?
+*Problemen met (C):* stel dat (P) klopt, volgt de conclusie er dan uit?
 
 #problemen(
-  [Probleem 1], [Menselijke natuur impliceert overerfbaarheid (via genen). Genetische manipulatie impliceert geen transfer naar je kinderen.],
+  [Probleem 1], [Menselijke natuur impliceert overerfbaarheid (via genen, van generatie op generatie). Genetische manipulatie impliceert geen transfer: je kan je eigen genen aanpassen zonder dat je kinderen die aanpassing erven.],
   [Probleem 2], [Menselijke natuur is een populatieconcept, terwijl genetische manipulatie louter individueel kan zijn.],
 )
 
-*Probleem met de aanname: menselijke natuur is goed.* Niet noodzakelijk:
-- _Evolutie en ethiek_: wat ons vroeger hielp overleven, is niet per se wat we vandaag goed vinden.
-- _Onwenselijke eigenschappen_: ook agressie hoort bij onze natuur.
+*Probleem met de aanname: menselijke natuur is goed.* \
+Dat is niet noodzakelijk zo. Iets wat ons vroeger hielp om te overleven, is daarom vandaag niet nuttig. Denk aan hoarders of mensen met extreme gretigheid: vroeger hielp dat om te overleven, vandaag is het een probleem. Is het dan niet beter om bepaalde eigenschappen die we vandaag onwenselijk vinden te verbeteren?
 
 == Aannames <sec:aannames>
 
@@ -421,7 +428,7 @@ Wie tegen enhancement is (de conservatieve positie), steunt vaak op een van twee
 
 De redenering is dan: therapie (genezen, voorkomen) is goed, verbeteren is slecht.
 
-Kritiek op de aanname zegt _niet_ dat verbetering nooit een probleem is, of dat het toelaatbaar of verplicht is. Alleen dat het onderscheid geen goede basis is om te oordelen.
+Let op: als je kritiek geeft op die aanname, zeg je _niet_ dat verbetering nooit een probleem is, of dat verbeteren toelaatbaar of verplicht is. Je zegt alleen dat het onderscheid geen goede basis is om over enhancement te oordelen.
 
 === Genezen en verbeteren <sec:genezen-verbeteren>
 
@@ -451,20 +458,20 @@ Een voorbeeld: een migrainemedicijn met als neveneffect +30 IQ.
   label: <fig:iq-grens>,
 )
 
-- Student met IQ 100 neemt het voor het neveneffect: verbetering, dus ontoelaatbaar.
-- Student met IQ 60 neemt hetzelfde middel: genezing, geen moreel probleem.
+- Een student met IQ 100 neemt het bewust voor het neveneffect. Dat is verbetering, en voor een conservatief dus ontoelaatbaar.
+- Een student met IQ 60 (cognitieve beperking) neemt hetzelfde middel om dezelfde reden. Daar heeft niemand een moreel probleem mee, want het is genezing.
 
-Waar stopt genezing en begint verbetering? Handboeken leggen de grens op 70, maar dat is een afspraak (conventie).
+Waar stopt genezing dan en begint verbetering? Handboeken leggen de grens op 70, maar dat is gewoon een afspraak (conventie). In het IQ zelf zit er geen sprong tussen 69 en 71.
 
-Zonder duidelijke lijn kan je niet altijd zeggen "ontoelaatbaar want verbetering" of "toelaatbaar want genezing". De aanname is geen goede basis voor ethische reflectie.
+Als er geen duidelijke lijn is, kan je dus niet altijd zeggen "ontoelaatbaar want verbetering" of "toelaatbaar want genezing". De aanname is geen goede basis voor ethische reflectie.
 
 === Voorkomen en verbeteren <sec:voorkomen-verbeteren>
 
-Opnieuw: voorkomen is goed, verbeteren is fout, met als aanname een duidelijke grens.
+Opnieuw dezelfde redenering: voorkomen is goed, verbeteren is fout, met als aanname dat er een duidelijke grens is.
 
-Maar dezelfde technologie kan verbeteren _en_ voorkomen. De student met IQ 100 zou zonder het middel angst en depressie krijgen, met immuniteitsproblemen als gevolg. Het middel verbetert hem en voorkomt tegelijk een ziekte.
+Maar dezelfde technologie kan tegelijk verbeteren _en_ voorkomen. Neem opnieuw de student met IQ 100 die het middel neemt om slimmer te worden. Zonder het middel zou hij door de studiedruk angst en depressie krijgen, met problemen met zijn immuniteit als gevolg. Het middel verbetert hem dus, maar voorkomt tegelijk een ziekte.
 
-Dus kan je niet altijd oordelen op basis van het onderscheid. De aanname is opnieuw geen goede basis voor ethiek.
+Je kan dus niet altijd oordelen op basis van het onderscheid tussen voorkomen en verbeteren, want sommige middelen doen allebei. De aanname is opnieuw geen goede basis voor ethiek.
 
 === Het verschil tussen beide kritieken <sec:verschil-kritieken>
 
@@ -475,7 +482,7 @@ Beide kritieken zeggen dat er geen onderscheid is, maar om een andere reden:
   stroke: (x, y) => if y == 0 { (bottom: 0.6pt) } else { none },
   inset: (x: 5pt, y: 4pt),
   [*Genezen – verbeteren*], [*Voorkomen – verbeteren*],
-  [*Onwetendheid*: we weten niet waar de grens ligt.], [*Kennis*: we weten dat het middel beide effecten heeft.],
+  [Geen onderscheid door *onwetendheid*: we weten niet waar de grens ligt (grijze zone).], [Geen onderscheid door *kennis*: we weten net dat het middel beide effecten tegelijk heeft.],
 )
 
 == Aanvullingen uit de tekst <sec:aanvullingen-tekst>
@@ -484,26 +491,28 @@ De tekst op Toledo (hoofdstuk 9 "Verbetering") is ook leerstof. Wat in de les ni
 
 === Het wapenwedloop-argument <sec:wapenwedloop-argument>
 
-Naast de drie algemene argumenten uit @sec:algemene-argumenten[sectie] noemt de tekst een vierde argument tegen (Frank, 1985):
+Naast de drie algemene argumenten uit @sec:algemene-argumenten[sectie] geeft de tekst nog een argument tegen (Frank, 1985):
 
 #argument(
   ([Men verbetert zich vooral voor een competitief voordeel: niet snel, maar sneller dan de anderen], [Als iedereen dat doet, blijft de rangorde gelijk en verspilt iedereen veel middelen]),
   [Verbetering is onwenselijk],
 )
 
-*Probleem:* het argument steunt op empirische aannames: dat de techniek bij iedereen hetzelfde effect heeft, dat iedereen ze wil gebruiken en dat de neveneffecten negatief zijn. Dat geldt niet voor alle technieken, dus als algemeen argument werkt het niet.
+Je wil dus niet slim zijn, maar slimmer dan de rest. Als iedereen dat probeert, staat iedereen op dezelfde plaats als ervoor, alleen heeft iedereen veel geld en moeite verloren.
+
+*Probleem:* het argument steunt op empirische aannames: dat de techniek bij iedereen hetzelfde effect heeft, dat iedereen ze wil gebruiken en dat de neveneffecten negatief zijn. Dat geldt niet voor alle technieken, dus als algemeen argument tegen enhancement werkt het niet.
 
 === Medisch en niet-medisch verbeteren <sec:medisch-niet-medisch>
 
-Naast de twee onderscheiden uit @sec:aannames[sectie] noemt de tekst een derde. Critici verwerpen meestal alleen _medische_ verbetering: de fiets willen ze niet verbieden. Dan moeten ze medisch van niet-medisch kunnen scheiden, en ook die grens is vaag. Bietensap kan je drinken om beter te presteren, maar een arts kan het ook aanraden tegen hoge bloeddruk.
+Naast de twee onderscheiden uit @sec:aannames[sectie] geeft de tekst nog een derde. Critici verwerpen meestal alleen _medische_ verbetering: de fiets willen ze niet verbieden, ook al verplaats je je ermee sneller. Dan moeten ze medisch van niet-medisch kunnen scheiden, en ook die grens is vaag. Bietensap kan je drinken om beter te presteren, maar een arts kan het je ook aanraden tegen een te hoge bloeddruk.
 
-"Medisch = oorspronkelijk ontwikkeld tegen ziekte" lost dat niet op: of een techniek voor genezing ontwikkeld werd, is historisch toeval en zegt niets over de techniek zelf.
+Je zou kunnen zeggen: medisch is alles wat oorspronkelijk tegen ziekte ontwikkeld werd. Maar of een techniek voor genezing ontwikkeld werd, is historisch toeval en zegt niets over de techniek zelf.
 
 === Verbetering door genezing <sec:verbetering-door-genezing>
 
-Positieve bijwerkingen vinden tegenstanders geen probleem: een migrainepatiënt mag het middel nemen, ook al stijgt zijn IQ. Je kan dat verdedigen met het verschil tussen een *geïntendeerd* en een *niet-geïntendeerd* effect.
+Positieve bijwerkingen vinden tegenstanders geen probleem: een migrainepatiënt mag het migrainemiddel nemen, ook al stijgt zijn IQ erdoor. Je kan dat verdedigen met het verschil tussen een *geïntendeerd* effect (je neemt het om slimmer te worden) en een *niet-geïntendeerd* effect (je neemt het tegen de migraine).
 
-Maar de gewone geneeskunde verbetert zelf ook: ziektes genezen verlengt het leven, en medicijnen voor ouderen laten een oud lichaam meer doen dan statistisch normaal is. Het doel van de geneeskunde en dat van de verbeterkunde hangen dus nauw samen.
+Maar de gewone geneeskunde verbetert zelf ook. Als we ziektes genezen, verlengen we het leven, en medicijnen voor ouderen laten een oud lichaam meer doen dan statistisch normaal is. Het doel van de geneeskunde en dat van de verbeterkunde hangen dus nauw samen.
 
 #examenbox[
   Te kennen: de slides met de uitleg erbij en de tekst op Toledo (de delen met "(tekst)" en @sec:aanvullingen-tekst[sectie] komen daaruit). De literatuurlijst hoef je niet te lezen.
