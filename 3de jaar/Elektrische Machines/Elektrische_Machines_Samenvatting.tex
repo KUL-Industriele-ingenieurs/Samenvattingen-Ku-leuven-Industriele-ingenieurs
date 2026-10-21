@@ -53,11 +53,6 @@
 \fancyhead[LO]{\rightmark}
 \renewcommand{\headrulewidth}{0.4pt}
 
-% Sneller werken: haal het % weg en zet alleen het hoofdstuk waaraan je werkt erin.
-% Paginanummers en verwijzingen naar de andere hoofdstukken blijven kloppen (via hun .aux).
-% Zet het terug in commentaar vóór je commit, anders bouwt CI maar één hoofdstuk.
-% \includeonly{hoofdstukken/1_Introductie}
-
 % ------------------------------------------------------------------
 \begin{document}
 % Titelinformatie
@@ -90,7 +85,6 @@ Adobe Reader en Foxit Reader spelen de animaties zeker af. Op Linux werkt Okular
 % ------------------------------------------------------------------
 % Hoofdstukken (één bestand per hoofdstuk in hoofdstukken/)
 % ------------------------------------------------------------------
-\setcounter{chapter}{-1}
 \include{hoofdstukken/0_Informatie}
 \include{hoofdstukken/1_Introductie}
 \include{hoofdstukken/2_DC_machines}
