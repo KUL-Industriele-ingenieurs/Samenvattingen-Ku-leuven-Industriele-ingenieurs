@@ -31,13 +31,12 @@ Daarvoor gaan we even terug naar de vergelijkingen voor een DC-machine:
  T = k \cdot \varphi \cdot I_a = G \cdot I_e \cdot I_a
 \end{align*}
 
-\begin{figure}[H]
+\begin{wrapfigure}{r}{0.5\textwidth}
   \centering
   \includegraphics[width=0.5\textwidth]{assets/dcserieschakelele.png}
   \caption{Herhaling DC-serie schakeling}
   \label{fig:dcserieschakelele.png}
- \end{figure}
-
+\end{wrapfigure}
 Uit de DC-serie schakeling weten we ook dat $I_e = I_a = I$, bij een shun bekrachtiging
 worden deze stromen apart aangestuurd, als je dat dan op AC aansluit dan wisselt het
 statorveld steeds van polariteit.
@@ -135,6 +134,13 @@ De volledige spanningsvergelijking is:
 \begin{align*}
  U_a = E + R_a I_a + L_a \frac{di_a}{dt}.
 \end{align*}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\textwidth]{assets/ACDCTN.png}
+  \caption{AC vs DC T-n karakteristiek van een universele motor}
+  \label{fig:ACDCTN.png}
+\end{figure}
+
 Bij DC in stationair regime is $\frac{di_a}{dt}=0$, dus die term valt weg.
 Bij AC verandert de stroom voortdurend, dus dat spanningsvalletje over de inductantie is
 er altijd bij en 'eet' een deel van $U_a$ op.
@@ -154,14 +160,14 @@ ijzer- en inductieverliezen hierboven.
 Een laatste ding dat we ook nog kunnen zien in volgende figuur is dat we een iets lager
 koppel hebben als we de universele motor op AC aansluiten:
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.4\textwidth]{assets/ACDCTN.png}
-  \caption{AC vs DC T-n karakteristiek van een universele motor}
-  \label{fig:ACDCTN.png}
- \end{figure}
 
 \section{1-fasige inductie motor}
+\begin{wrapfigure}{r}{0.5\textwidth}
+  \centering
+  \includegraphics[width=0.5\textwidth]{assets/eenfasigeinductiemachine.png}
+  \caption{Eénfasige inductiemachine}
+  \label{fig:eenfasigeinductiemachine.png}
+\end{wrapfigure}
 Dan kijken we nu naar de andere éénfasige motor, de 1-fasige inductie motor.
 Net zoals de universele motor mag deze motor op het stopcontact.
 Voor opbouw berschilt deze niet te veel van de normale inductiemotor, hij heeft ook een
@@ -172,12 +178,6 @@ Ook heeft deze motor een \textbf{centrifugaal schakelaar}, dit is een mechanisch
 schakelaar die reageert op de rotatiesnelheid, hij schakelt om zodra de rotor een bepaalde
 snelheid bereikt (Het nut hiervan zien we zometeen).
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.5\textwidth]{assets/eenfasigeinductiemachine.png}
-  \caption{Eénfasige inductiemachine}
-  \label{fig:eenfasigeinductiemachine.png}
- \end{figure}
 
 De koppel-toerental karakteristiek van deze motor ziet er als volgt uit (het is die
 Single-phase op de figuur):
@@ -238,6 +238,12 @@ koppel-slip-curve die we in de volgende figuur met de stippenlijnen zien:
   \label{fig:singlephadetorquetheoreticalapproach.png}
  \end{figure}
 
+\begin{wrapfigure}{r}{0.4\textwidth}
+  \centering
+  \includegraphics[width=0.4\textwidth]{assets/crossfieldtheory.png}
+  \caption{Fysische betekenis (cross field theory)}
+  \label{fig:crossfieldtheory.png}
+\end{wrapfigure}
 De bovenste rode stippenlijn is dan voor dat rode draaiveld en de onderste rode stippelijn
 is dan voor dat blauwe draaiveld (ik weet dat het confusing is dat beide stippelijnen rood
 zijn en de vollelijn in het midden blauw $\#$shitfiguur).
@@ -266,12 +272,6 @@ lijn van de maximale stroom.
 Hierdoor gaat er dus ook een koppel ontstaan bij een motor.
 }
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.4\textwidth]{assets/crossfieldtheory.png}
-  \caption{Fysische betekenis (cross field theory)}
-  \label{fig:crossfieldtheory.png}
- \end{figure}
 
 (De uitleg die ik ervan heb verstaan in de les is dat als je op de rotor staat en deze in
 beweging is (draait), dan zie je niet overal een even sterk veld want de stator is 1
@@ -295,13 +295,12 @@ De andere manier om de motor te starten is met een \textbf{hulpwikkeling}, dit i
 wikkeling die $90^\circ$ verschoven is tegenover die éne statorwikkeling zoals in volgende
 figuur:
 
-\begin{figure}[H]
+\begin{wrapfigure}{r}{0.4\textwidth}
   \centering
   \includegraphics[width=0.4\textwidth]{assets/hulpwikkeling.png}
   \caption{Starting winding is die hulpwikkeling, de andere is de hoofdwikkeling}
   \label{fig:hulpwikkeling.png}
- \end{figure}
-
+\end{wrapfigure}
 We doen dit want samen kunnen 2 wikkelingen wel een (bij benadering) draaiveld opwekken,
 ideaal is dit dus natuurlijk een mooi rond draaiveld maar omdat beide wikkelingen hier op
 dezelfde ééncontactspanning hangen (en we dus geen tweede fase eigelijk hebben) gaan we
@@ -418,6 +417,12 @@ de bekrachtiging is bij de (PM)DC, BLDC en (PM)SM:
  \end{figure}
 
 \subsection{Werking van de BLDC motor}
+\begin{wrapfigure}{r}{0.5\textwidth}
+  \centering
+  \includegraphics[width=0.5\textwidth]{assets/hallsensorsmetcontroller.png}
+  \caption{BLDC met hall sensor en controller}
+  \label{fig:hallsensorsmetcontroller.png}
+\end{wrapfigure}
 Dus bij de BLDC heb je niet de commutator met borstels dat als mechanische inverter werkt
 en ervoor zorgt dat de stroom door de rotors steeds in de juiste richting staat, hier ga
 je het dus moeten doen met elektronica.
@@ -433,12 +438,6 @@ Via transistoren worden die stromen dan geschakeld.
 Bij elke overgang naar zo een nieuwe sector schakelt de controller de volgende combinatie
 van transistoren, dit heet \textbf{6-staps-(of trapezoïdale) commutatie}.
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.5\textwidth]{assets/hallsensorsmetcontroller.png}
-  \caption{BLDC met hall sensor en controller}
-  \label{fig:hallsensorsmetcontroller.png}
- \end{figure}
 
 \begin{figure}[H]
   \centering
@@ -493,13 +492,12 @@ magneten gebruiken er geen vermogenverlies nodig is om het rotor veld zelf op te
 Net zoals de DC-machine heeft een BLDC motor een continue koppelzone (het groene) en ook
 een korstondige/intermittente zone (geel/snotgroen) erboven:
 
-\begin{figure}[H]
+\begin{wrapfigure}{r}{0.5\textwidth}
   \centering
   \includegraphics[width=0.5\textwidth]{assets/TNBLDC.png}
   \caption{Koppel-toerental karakteristiek van de BLDC motor}
   \label{fig:TNBLDC.png}
- \end{figure}
-
+\end{wrapfigure}
 Er is ook een T-limiet (het plafond), dit is bepaald door de maximale stroom die door de
 wikkelingen continu kan gaan zonder oververhitting.
 In de gele zone kan je kort even werken met meer stroom/koppel.
