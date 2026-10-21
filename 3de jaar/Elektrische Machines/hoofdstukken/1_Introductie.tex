@@ -9,111 +9,97 @@
   \label{fig:energieconversiemotorengenerator.png}
  \end{wrapfigure}
 
-Een typische toepassing van elektrische machines is alles dat te maken heeft met
-aandrijving.
-Elektrische motoren kunnen klein tot groot zijn en generatoren bestaan dus ook en worden
-gebruikt voor het genereren van elektriciteit, deze kunnen ook klein of groot zijn.
-(Kan tot 5MW, dit is een windturbine).
+Een elektrische machine is een \textbf{energieomzetter} (\textit{converter}) tussen
+elektrische en mechanische energie.
+Een \textbf{motor} zet \textit{elektrische energie om in mechanische energie}, een
+\textbf{generator} doet het omgekeerde en zet \textit{mechanische energie om in
+elektrische energie}.
 
-Motoren zijn energieomzetters (\textbf{convertors}) die \textit{elektrische energie
-omzetten tot mechanische energie} en generatoren zijn energieomzetters die
-\textit{mechanische energie omzetten tot elektrische energie}.
+Motoren drijven van alles aan, van een klein ventilatortje tot een trein.
+Generatoren wekken elektriciteit op en bestaan ook in alle groottes, tot enkele MW in een
+windturbine.
 
-In deze cursus wordt vooral de focus op roterende motoren gelegd, niet op lineaire.
+Deze cursus behandelt \textbf{roterende} machines, geen lineaire.
 
-
-Vaak zijn wel nog extra omvormers nodig voor de perfecte werking zoals \textit{Power
-eletronics} die bevoorbeeld eerst de spanning van een generator omvormt naar een andere
-spanning die nodig is voor de motor.
-En een tandwielkast kan ook nodig zijn om de snelheid van de motor aan te passen aan de
-toepassing.
-Hier gaan we niet dieper op in.
-Ook wordt vaak nog een controller gebruikt om de motor op een goeie manier te laten
-werken, dit is dus eigelijk \textit{terugkoppeling} (feedback).
+Een motor hangt zelden rechtstreeks aan het net en aan de last.
+In een volledig \textbf{aandrijfsysteem} zitten er nog onderdelen rond:
+\begin{itemize}
+    \item een \textbf{vermogenselektronische omvormer} (\textit{PE converter}) zet de
+    spanning van de voeding om naar de spanning en frequentie die de motor nodig heeft;
+    \item een \textbf{tandwielkast} (\textit{gearbox}) past het toerental en koppel van de
+    motor aan de last aan;
+    \item een \textbf{controller} vergelijkt het gewenste gedrag met wat motor en last
+    werkelijk doen (\textbf{terugkoppeling} of \textit{feedback}) en stuurt de omvormer bij.
+\end{itemize}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.6\textwidth]{assets/omzettingmetfeedback.png}
-  \caption{Energieomzetting met feedback}
+  \caption{Aandrijfsysteem met omvormer, tandwielkast en terugkoppeling}
   \label{fig:omzettingmetfeedback.png}
  \end{figure}
 
-Het vak gaat hier vooral over welk effect op de motor welk gedrag heeft op de uitgang (de
-'mechanical load')
+Omvormer, tandwielkast en controller zie je in andere vakken.
+Deze cursus focust op de \textbf{motor zelf}: hoe hij werkt en hoe zijn gedrag bepaalt wat
+er met de mechanische last gebeurt.
 
 \section{Karakteristieken}
 
 \subsection{Motor-last interactie}
-Een motor moet dus een kracht leveren om deze beweging te realiseren.
-Met de wet van Newton kunnen we dit beschrijven en dus bepalen hoe hard de motor een
-object versnelt:
-\begin{align*}
-    \sum = F_{motor} - F_{load} = m \cdot a
-\end{align*}
-Hierbij is $F_{motor}$ de aandrijfkracht die de motor levert, $F_{load}$ de kracht die de
-last uitoefent op de motor (dus de 'tegenwerkende kracht van de belasting'), $m$ de massa
-van het object en $a$ de versnelling.
+De motor moet een last in beweging brengen en houden.
+Hoe snel die last versnelt, volgt uit de wet van Newton:
+\frm{Motor-last interactie (Newton)}{\sum F = F_{motor} - F_{load} = m \cdot a}{met
+$F_{motor}$ de aandrijfkracht van de motor [N], $F_{load}$ de tegenwerkende kracht van de
+last [N], $m$ de massa [kg] en $a$ de versnelling [m/s$^2$].}
 
 Op een bepaald moment gaat de motor een constante snelheid bereiken (\textit{'Steady
 state'}), de versnelling wordt hier dan 0 en de krachten zijn in evenwicht.
 De motor levert dan een kracht die gelijk is aan de kracht van de last.
-De motor moet dus een koppel leveren dat gelijk is aan het koppel van de last.
-Het koppel van de motor wordt bepaald door de elektrische eigenschappen van de motor en de
-spanning die erop wordt gezet.
+Voor een draaiende machine geldt hetzelfde met koppels: het \textbf{motorkoppel} $T$ is
+dan gelijk aan het \textbf{lastkoppel} $T_L$.
 
-Het koppel van de last wordt bepaald door de mechanische eigenschappen van de last en de
-snelheid waarmee deze beweegt.
-Volgend voorbeeld wordt aan bord in de les gemaakt:
+Het motorkoppel $T$ hangt af van de motor zelf en van hoe je hem voedt: de
+\textbf{spanning} $V$ die je aanlegt, en eigenschappen van de motor zoals het magnetisch
+veld (flux) en het aantal windingen.
+Het lastkoppel $T_L$ hangt af van de mechanische eigenschappen van de last (massa,
+wrijving, \ldots) en van de snelheid waarmee die beweegt.
 
-\subsubsection{Voorbeeld Trein}
+\begin{oefening}[Trein die versnelt]
+    \textbf{Gegeven:} een trein van $m = \SI{40}{t} = \SI{40000}{kg}$ rijdt aan constante
+    snelheid ($\SI{40}{km/h}$). De wrijving van de rails is $F_{load} = \SI{4}{kN}$. De
+    motorkracht stijgt naar $F_{motor} = \SI{20}{kN}$.
 
-TODO ZET OM NAAR EEN OEFENING
-\textit{Een trein rijd met een constante snelheid van 40 km/h.
-De trein heeft een massa van 40 ton en de wrijving van de rails is 4 kN.
-Rijden vermeerderd die kracht met 20 kN in de positieve richting van de beweging, dit is
-dus de motorkracht.
-Wat is op dit moment de versnelling en wat gebeurt er daarna?}
-\newline
-We kunnen hier de wet van Newton toepassen:
-\begin{align*}
-    \sum = F_{motor} - F_{load} = m \cdot a
-\end{align*}
-We weten dat de massa van de trein 40 ton is, dit is 40000 kg.
-De kracht van de motor is 20 kN en de kracht van de last is 4 kN.
-We kunnen dit invullen in de vergelijking:
-\begin{align*}
-    20 kN - 4 kN = 40000 kg \cdot a
-\end{align*}
-\begin{align*}
-    16 kN = 40000 kg \cdot a
-\end{align*}
-\begin{align*}
-    a = \frac{16 kN}{40000 kg} = 0.4 m/s^2
-\end{align*}
+    \textbf{Gevraagd:} de versnelling $a$ op dat moment, en wat er daarna gebeurt.
 
-\subsubsection{Voorbeeld fiets}
-Hier wordt een fiets gebruikt als voorbeeld, de proff geeft hier simpelweg het volgende:
-\begin{align*}
-    F_{motor} = 40 - 4 \cdot v
-\end{align*}
-Met motor de kracht op een pedaal door een persoon
-\begin{align*}
-  F_{load} = 10 + 0,4 \cdot v^2
-\end{align*}
-Met load de tegenwerkende kracht op een pedaal door bvb.
-de weg, fiets, mechanica van de fiets, etc.
-\newline
-Hier wordt gevraagd achter de regimesnelheid van de fiets (Steady State) (dus wanneer
-$a = 0$).
-\begin{align*}
-    F_{motor} = F_{load}
-\end{align*}
-\begin{align*}
-    40 - 4 \cdot v = 10 + 0,4 \cdot v^2
-\end{align*}
-Dit geeft v = 5 m/s.
-Deze 2 krachten plotten in functie van de snelheid geeft een mooi overzicht van de
-krachten en hun snijpunt:
+    \textbf{Oplossing:} de wet van Newton:
+    \begin{align*}
+        F_{motor} - F_{load} &= m \cdot a \\
+        \SI{20}{kN} - \SI{4}{kN} &= \SI{40000}{kg} \cdot a \\
+        a &= \frac{\SI{16}{kN}}{\SI{40000}{kg}} = \SI{0.4}{m/s^2}
+    \end{align*}
+    Of de trein daarna blijft versnellen, kan je niet zeggen: daarvoor moet je weten hoe
+    de motorkracht en de tegenkracht veranderen met de snelheid. Dat is precies wat een
+    karakteristiek je geeft (zie hieronder).
+\end{oefening}
+
+\begin{oefening}[Fiets: regimesnelheid]
+    \textbf{Gegeven:} de kracht van de fietser op de pedalen en de tegenwerkende kracht
+    (weg, wind, mechanica van de fiets) hangen af van de snelheid $v$ [m/s]:
+    \begin{align*}
+        F_{motor} = 40 - 4 \cdot v \qquad F_{load} = 10 + 0{,}4 \cdot v^2
+    \end{align*}
+
+    \textbf{Gevraagd:} de regimesnelheid (\textit{steady state}, dus $a = 0$).
+
+    \textbf{Oplossing:}
+    \begin{align*}
+        F_{motor} &= F_{load} \\
+        40 - 4 \cdot v &= 10 + 0{,}4 \cdot v^2 \quad\Rightarrow\quad v = \SI{5}{m/s}
+    \end{align*}
+\end{oefening}
+
+Zet je beide krachten uit in functie van de snelheid, dan zie je de regimesnelheid als
+het snijpunt van de twee curves:
 
 \begin{figure}[H]
   \centering
@@ -122,38 +108,69 @@ krachten en hun snijpunt:
   \label{fig:karakteristiekmetwerkingspunt.png}
  \end{figure}
 
-O.P.
-is het \textbf{werkingspunt} (Operating Point), het is dus hier dat dat evenwicht is.
-Een \textbf{karakteristiek} is een grafiek/verzameling van grafieken die de relatie tussen
-2 grootheden weergeeft alsook de werkingspunten.
-Een voorbeeld is de koppel-toerentalkarakteristiek van een motor.
+In de figuur is \textbf{M} de \textbf{motorkarakteristiek} (de kracht die de motor levert)
+en \textbf{L} de \textbf{lastkarakteristiek} (de kracht die de last vraagt), allebei in
+functie van de snelheid.
+Zolang M boven L ligt, is er een overschot aan kracht en versnelt het geheel ($F_{acc}$
+in de figuur).
+Het snijpunt O.P.\ is het \textbf{werkingspunt} (\textit{operating point}): daar zijn
+beide krachten in evenwicht en blijft de snelheid constant.
+
+Een \textbf{karakteristiek} is een grafiek die het verband tussen twee grootheden toont,
+bv.\ kracht en snelheid, of koppel en toerental.
+Leg je de karakteristiek van de motor en die van de last op elkaar, dan lees je het
+werkingspunt af als hun snijpunt.
+De belangrijkste in deze cursus is de \textbf{koppel-toerentalkarakteristiek} ($T$-$n$)
+van een motor.
 
 \subsection{Werkingspunt}
-Dus een werkingspunt is een evenwicht punt van de motor en de last.
-Voor een koppeltoerentalkarakteristiek zien we deze weergegeven als punt 1 en punt 2 in
-onderstaande figuur.
-Het zijn hier dus punten waar in dit geval de koppels van de last gelijk zijn aan die van
-de motor.
-Echter hebben we ook nog \textbf{stabiele} en \textbf{onstabiele} werkingspunten.
-Een stabiel werkingspunt is een werkingspunt waar bij afwijking van dat werkingspunt de
-motor en last elkaar nog gaan corrigeren en dus de motor terugbrengen naar dat
-werkingspunt.
-Neem als afwijking een snelheidsfout in punt 1, het toerental zal dalen tot punt 1', nu
-heeft de motor niet genoeg koppel meer om de last te dragen dus kan het niet terug
-versnellen tot punt 1, dit is dus een instabiel werkingspunt.
-Bij een snelheidsfout rond punt 2 is er oftewel genoeg koppel om te versnellen (punt 2')
-oftewel vertraagt de motor gewoon terug tot punt 2 als er een snelheidsfout tot punt 2''
-was.
+Een werkingspunt is een \textbf{evenwichtspunt tussen motor en last}: het motorkoppel is
+er gelijk aan het lastkoppel.
+In de $T$-$n$-karakteristiek hieronder snijden M en L elkaar twee keer, in punt 1 en punt
+2.
+Op de horizontale as staat $n_s$, de \textbf{synchrone snelheid}: de snelheid waarbij het
+koppel van deze motor nul wordt.
+Waar die vandaan komt, zie je later bij de inductiemachine.
+
+Niet elk werkingspunt is even bruikbaar.
+Een werkingspunt is \textbf{stabiel} als de machine er na een kleine snelheidsfout vanzelf
+naar terugkeert.
+Keert ze niet terug, dan is het werkingspunt \textbf{onstabiel}.
+
+\textbf{Punt 1 is onstabiel.}
+Daalt het toerental een beetje, naar punt 1', dan ligt het motorkoppel onder het
+lastkoppel.
+De motor vertraagt dus nog verder en raakt niet terug in punt 1.
+
+\textbf{Punt 2 is stabiel.}
+Daalt het toerental naar punt 2', dan is het motorkoppel groter dan het lastkoppel en
+versnelt de motor terug naar punt 2.
+Stijgt het toerental naar punt 2'', dan is het motorkoppel kleiner en vertraagt de motor
+terug naar punt 2.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{assets/stabielenonstabielewerkingspuntenopTn.png}
+  % Figuur uit slide 15 (Intro), werkingspunten zelf erop gezet
+  \begin{tikzpicture}
+    \node[anchor=south west, inner sep=0] (img)
+      {\includegraphics[width=0.6\textwidth]{assets/stabiel_onstabiel_Tn_slide.png}};
+    \begin{scope}[x={(img.south east)}, y={(img.north west)},
+                  every node/.style={font=\sffamily\bfseries}]
+      \fill (0.520,0.611) circle (2.2pt) node[above left] {1};
+      \fill (0.416,0.471) circle (2.2pt) node[below right] {1'};
+      \fill (0.750,0.620) circle (2.2pt) node[below left] {2};
+      \fill (0.716,0.815) circle (2.2pt) node[left] {2'};
+      \fill (0.768,0.503) circle (2.2pt) node[right] {2''};
+    \end{scope}
+  \end{tikzpicture}
   \caption{T-n karakteristiek motor en last met stabiele en onstabiele werkingspunten}
   \label{fig:stabielenonstabielewerkingspuntenopTn.png}
  \end{figure}
 
 \subsection{Typische last karakteristieken}
-In de les worden een paar typische lastkarakteristieken besproken:
+Elke soort last heeft zijn eigen verloop van koppel $T$ en vermogen $P$ in functie van het
+toerental $n$.
+De vier typische lastkarakteristieken staan in de figuur.
 
 \begin{figure}[H]
   \centering
@@ -162,25 +179,38 @@ In de les worden een paar typische lastkarakteristieken besproken:
   \label{fig:lastkarakteristieken.png}
  \end{figure}
 
-Veel diepgaand wordt het hier niet gesproken, gewoon dat die bovenste grafiek van
-'winding, reeling, sanding' typisch een karakteristiek is van een geval waar de diameter
-steeds veranderd, hier is een constant vermogen, wat normaal niet vaak het geval is, de
-T-n ziet er dan hyperbolisch uit.
-En de 2de bovenste, die met het constante koppel, is de meest voorkomende karakteristiek,
-hierbij treedt voornamelijk zwaartekracht en wrijving op wat dus de meest voorkomende
-krachten zijn bij een machine.
+\begin{itemize}
+    \item \textbf{Constant vermogen} (oprollen, wikkelen, schuren): de diameter van de rol
+    verandert tijdens het werk, het vermogen blijft constant. Het koppel daalt dan
+    hyperbolisch met het toerental ($T \sim 1/n$). Komt weinig voor.
+    \item \textbf{Constant koppel} (transportband, hijstoestel, rollen): de last bestaat
+    vooral uit zwaartekracht en wrijving. Het vermogen stijgt lineair met $n$. Dit is de
+    meest voorkomende lastkarakteristiek.
+    \item \textbf{Koppel lineair met $n$} (papiermachines, viskeuze demping): het vermogen
+    stijgt kwadratisch.
+    \item \textbf{Koppel kwadratisch met $n$} (pompen en ventilatoren): het vermogen stijgt
+    met $n^3$.
+\end{itemize}
 
 \subsection{4 kwadrantoperaties}
-Een elektrisch toestel (motor/generator) kan in 4 kwadranten werken, dit is afhankelijk
-van de richting van het koppel en de richting van de snelheid.
-In \textbf{kwadrant 1} werkt de motor als motor, dit is de \textit{normale werking}, het
-\textit{koppel is in dezelfde richting als de rotatie}, in \textbf{kwadrant 2} werkt de
-motor als generator, het \textit{koppel is in tegengestelde richting van de draairichting}
-(hier is het koppel positief) kwadrant 2 is dus remmend, in \textbf{kwadrant 3} werkt de
-motor als motor maar in tegengestelde richting en in \textbf{kwadrant 4} werkt de motor
-als generator maar in tegengestelde richting, het is hier dus een negatief koppel.
-Dit wordt vaak gebruikt bij elektrische voertuigen, waarbij de motor kan remmen
-\textbf{(regeneratief remmen)} en dus energie terug kan leveren aan de batterij.
+Een motor en een generator zijn \textbf{dezelfde machine}.
+Het verschil zit enkel in de richting van de energie: levert de machine koppel in de
+draairichting, dan werkt ze als \textbf{motor}; werkt het koppel tegen de draairichting in,
+dan remt ze en werkt ze als \textbf{generator}.
+
+Met de richting van het koppel $T$ en van de snelheid $n$ krijg je vier kwadranten. Een
+lift maakt ze duidelijk:
+\begin{itemize}
+    \item \textbf{Kwadrant I} ($T > 0$, $n > 0$): \textbf{motor}. De lift gaat omhoog, de
+    motor trekt hem op.
+    \item \textbf{Kwadrant II} ($T > 0$, $n < 0$): \textbf{rem/generator}. Het koppel werkt
+    tegen de draairichting in.
+    \item \textbf{Kwadrant III} ($T < 0$, $n < 0$): \textbf{motor} in de andere draairichting.
+    \item \textbf{Kwadrant IV} ($T < 0$, $n > 0$): \textbf{rem/generator} in de andere
+    draairichting.
+\end{itemize}
+In de remkwadranten (II en IV) gaat de energie terug naar het net of de batterij. Elektrische
+voertuigen gebruiken dat als \textbf{regeneratief remmen}.
 
 \begin{figure}[H]
   \centering
@@ -190,6 +220,13 @@ Dit wordt vaak gebruikt bij elektrische voertuigen, waarbij de motor kan remmen
  \end{figure}
 
 \subsection{Nominale waardes}
+\begin{wrapfigure}{r}{0.4\textwidth}
+  \centering
+  \includegraphics[width=0.4\textwidth]{assets/kenplaat.png}
+  \caption{Kenplaat van een driefasige inductiemotor met de nominale waarden: vermogen,
+  toerental, spanning, stroom en $\cos\varphi$}
+  \label{fig:kenplaat}
+\end{wrapfigure}
 De juiste motor voor je toepassing kiezen ga je doen afhankelijk van de eigenschappen van
 die motor:
 bvb.
@@ -207,28 +244,47 @@ anders zijn.
 Kleine machines wijken het meeste af (van nominale waardes voor snelheid bvb.), we zeggen
 dat ze een slechter \textbf{rendement} hebben.
 
-Het rendement is eigelijk de \textbf{efficiëntie} van de motor, het is de verhouding van
-het nuttige vermogen dat uit de motor komt en het vermogen dat in de motor gaat.
-Het rendement is dus een maat voor hoe goed de motor energie omzet in nuttig werk.
-Het rendement wordt vaak uitgedrukt in procenten en kan berekend worden met de volgende
-formule:
-\begin{align*}
-    \eta = \frac{P_{out}}{P_{in}} \cdot 100\%
-\end{align*}
-Waarbij $\eta$ het rendement is, $P_{out}$ het nuttige vermogen dat uit de motor komt
-(eigelijk het mechanische vermogen) en $P_{in}$ het vermogen dat in de motor gaat (dus het
-elektrisch vermogen).
 
-\begin{warningbox}[Het rendement en de arbeidsfactor zijn niet hetzelfde!]
-    De arbeidsfactor bereken je met de formule:
-    \begin{align*}
-        \cos(\varphi) = \frac{P_{act}}{P_{schijn}}
-    \end{align*}
-    Numeriek lijken ze op elkaar maar ze zijn niet hetzelfde.
-    Het rendement is een maat voor hoe goed de motor energie omzet in nuttig werk, terwijl
-    de arbeidsfactor een maat is voor hoe goed de motor het elektrische vermogen gebruikt.
-    Ze betekenen dus iets totaal anders.
-\end{warningbox}
+Op de kenplaat staan naast het vermogen ook het rendement en de arbeidsfactor.
+
+Het \textbf{rendement} $\eta$ zegt welk deel van het opgenomen vermogen er als nuttig
+vermogen uit komt:
+\frm{Rendement}{\eta = \frac{P_{out}}{P_{in}}}{met $\eta$ het rendement [-] (vaak in \%),
+$P_{out}$ het nuttig (mechanisch) vermogen aan de as [W] en $P_{in}$ het opgenomen
+(elektrisch, actief) vermogen [W].}
+
+De \textbf{arbeidsfactor} $\cos\varphi$ ken je uit Wisselstroom en Distributie.
+Bij een wisselspanning ijlt de stroom $\underline{I}$ van een motor een hoek $\varphi$ na op
+de spanning $\underline{U}$.
+Enkel het deel van de stroom in fase met de spanning levert \textbf{actief vermogen} $P$;
+het andere deel geeft \textbf{reactief vermogen} $Q$.
+Samen vormen ze het \textbf{schijnbaar vermogen} $S$ in de vermogensdriehoek:
+\frm{Arbeidsfactor}{\cos\varphi = \frac{P}{S} \qquad S = \sqrt{P^2 + Q^2} = U \cdot I}{met
+$\varphi$ de faseverschuiving tussen spanning en stroom [\si{\degree}], $P$ het actief
+vermogen [W], $Q$ het reactief vermogen [VAr] en $S$ het schijnbaar vermogen [VA].}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[>=latex, thick]
+    % fasordiagram: stroom ijlt na op de spanning
+    \draw[->] (0,0) -- (3,0) node[right] {$\underline{U}$};
+    \draw[->, schoolRed] (0,0) -- (2.2,-1.3) node[right] {$\underline{I}$};
+    \draw[thin] (1,0) arc (0:-30.6:1) node[midway, right, font=\small] {$\varphi$};
+    % vermogensdriehoek
+    \begin{scope}[xshift=5.5cm, yshift=-1.3cm]
+      \draw[->, schoolBlue] (0,0) -- (3,0) node[midway, below] {$P$};
+      \draw[->, schoolGreen] (3,0) -- (3,1.8) node[midway, right] {$Q$};
+      \draw[->] (0,0) -- (3,1.8) node[midway, above left] {$S$};
+      \draw[thin] (0.9,0) arc (0:31:0.9) node[midway, right, font=\small] {$\varphi$};
+    \end{scope}
+  \end{tikzpicture}
+  \caption{Fasordiagram van een motor (links) en de vermogensdriehoek (rechts)}
+  \label{fig:arbeidsfactor}
+\end{figure}
+
+Rendement en arbeidsfactor liggen bij een motor vaak in dezelfde grootteorde, maar ze
+zeggen iets anders: $\eta$ gaat over \textbf{verliezen} (actief vermogen dat warmte wordt),
+$\cos\varphi$ over hoeveel \textbf{reactief vermogen} de motor vraagt.
 
 \section{Constructie}
 
@@ -296,147 +352,191 @@ figuur:
  zetten.
 \end{itemize}
 
-\subsection{Magnetische Permeabiliteit}
-Door het feit dat er een magnetisch veld wordt opgewekt in de motor, is het belangrijk dat
-de materialen die gebruikt worden een hoge magnetische permeabiliteit hebben.
-Dit betekent dat ze goed in staat zijn om magnetische veldlijnen te geleiden.
-Siliciumstaal wordt vaak gebruikt voor de kern van de stator en rotor omdat het een hoge
-permeabiliteit heeft en ook goed bestand is tegen verzadiging.
-Verzading treedt op wanneer het materiaal niet meer in staat is om extra magnetische flux
-te geleiden, wat kan leiden tot verlies van efficiëntie en warmteontwikkeling.
-Dat gietijzer zou enorme verliezen geven dus, daarom is het als behuizing prima want het
-is sterk en voert warmte goed af.
+\subsection{Herhaling: magnetisch veld en flux}
+Een motor werkt met magnetische velden. Die worden opgewekt door stromen in de wikkelingen
+(of door permanente magneten) en moeten zo goed mogelijk door het ijzer van stator en rotor
+geleid worden.
 
-We zijn dus geïnteresseerd in ferromagnetische materialen, als we kijken naar de
-onderstaande figuur kunnen we zien hoe magnetische velden in een materiaal gealigneerd
-kunnen zijn:
+\begin{conceptbox}[Herhaling: $H$, $B$ en $\Phi$]
+    \begin{itemize}[nosep]
+        \item De \textbf{magnetische veldsterkte} $H$ [A/m] is wat de stroom in een wikkeling
+        opwekt.
+        \item De \textbf{magnetische fluxdichtheid} (inductie) $B$ [T] is hoeveel magnetisch veld
+        er effectief door het materiaal gaat.
+        \item De \textbf{magnetische flux} $\Phi$ [Wb] is de fluxdichtheid door een oppervlak $A$:
+        $\Phi = B \cdot A$.
+    \end{itemize}
+\end{conceptbox}
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.8\textwidth]{assets/allignerenmagnetische-velden.png}
-  \caption{Alligneren van de magnetische velden}
-  \label{fig:allignerenmagnetische velden.png}
- \end{figure}
+\subsection{Magnetische permeabiliteit}
+Hoeveel fluxdichtheid $B$ je krijgt voor een gegeven veldsterkte $H$, hangt af van het
+materiaal. Dat geeft de \textbf{magnetische permeabiliteit} $\mu$:
 
-In de linkse figuur een niet ferro-magnetisch materiaal, alle pijlen zijn hier in alle
-richtingen gealigneerd (dit is op atomair niveau), geen netto magnetisch veld.
-In het midden een magnetisch materiaal hier zijn pijlen in groepjes verdeeld en elk
-groepje heeft een netto magnetisch veld maar het totaal geheel niet, dit kan wel
-gemagnetiseerd worden door een extern magnetisch veld.
-In de rechtse figuur is het materiaal volledig gealigneerd, dit is een permanent magneet.
-Het materiaal heeft hier een hoge permeabiliteit en kan dus goed magnetische flux
-geleiden.
-Doordat deze allemaal in dezelfde richting staan, is dit een sterk veld.
+\frm{Permeabiliteit}{B = \mu \cdot H = \mu_0 \, \mu_r \cdot H}{met $B$ de fluxdichtheid [T],
+$H$ de veldsterkte [A/m], $\mu_0 = 4\pi \cdot 10^{-7}$ H/m de permeabiliteit van vacuüm en
+$\mu_r$ de relatieve permeabiliteit van het materiaal [-].}
 
-Het is dan dit fenomeen dat de permeabiliteit van een materiaal bepaalt, hoe beter de
-atomen in het materiaal zich kunnen aligeneren met het externe veld, hoe hoger de
-permeabiliteit.
+De permeabiliteit is de helling van de $B$-$H$-curve: ze zegt \textit{hoeveel stroom je
+nodig hebt voor hoeveel magnetisch veld}. Lucht en koper hebben $\mu_r \approx 1$, ijzer
+$\mu_r \approx 1000$ tot $10\,000$. Daarom maak je stator- en rotorkern uit ijzer: met een
+hoge permeabiliteit \textbf{geleidt het ijzer het magnetisch veld goed} en heb je weinig
+stroom nodig voor een sterk veld.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.8\textwidth]{assets/magnetischepermeabiliteit.png}
-  \caption{Magnetische permeabiliteit van verschillende materialen (µ)}
+  \caption{$B$-$H$-curve en relatieve permeabiliteit $\mu_r$ van enkele materialen}
   \label{fig:magnetischepermeabiliteit.png}
  \end{figure}
 
-Hier is B de magnetische fluxdichtheid, H de magnetische veldsterkte en \textbf{µ de
-magnetische permeabiliteit}.
-De permeabiliteit van een materiaal is dus een maat voor hoe goed het materiaal in staat
-is om magnetische flux te geleiden.
-De helling zegt \textit{'hoeveel stroom je nodig hebt voor hoeveel magnetisch veld'}.
-En met dat magnetisch veld maak je dus de krachten die de motor doen draaien.
+Voor de kern gebruikt men \textbf{siliciumstaal}: hoge permeabiliteit en het raakt niet snel
+\textbf{verzadigd}. Verzadiging betekent dat $B$ bijna niet meer stijgt als je $H$ verder
+verhoogt: extra stroom levert dan geen extra flux meer, alleen extra verliezen. De behuizing
+is uit \textbf{gietijzer}: als kern zou dat te veel verliezen geven, maar het is sterk en
+voert de warmte goed af.
 
-Nog iets belangrijks is de \textbf{hysteresis lus}, dit is een grafiek die de relatie
-tussen B en H weergeeft.
-Het toont ons echter ook de \textbf{remanente inductie}, dit is de magnetische flux die in
-het materiaal blijft nadat het externe veld is verwijderd.
-Dit is belangrijk omdat het kan leiden tot verlies van efficiëntie en warmteontwikkeling
-in de motor.
-Het toont ook de \textbf{coerciviteit}, dit is de kracht die nodig is om het materiaal te
-demagnetiseren (dus hoe hard we de veldsterkte moeten tegenwerken zodat de magnetische
-flux terug nul is).
-Materialen met een hoge coerciviteit zijn beter bestand tegen verzadiging en kunnen dus
-beter presteren in een motor.
+\subsection{Ferromagnetisme}
+Waarom heeft ijzer zo'n hoge permeabiliteit? In een materiaal gedraagt elk atoom zich als
+een klein magneetje.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{assets/allignerenmagnetische-velden.png}
+  \caption{Richting van de atomaire magneetjes in een niet-magnetisch materiaal, een
+  ferromagnetisch materiaal en een magneet}
+  \label{fig:allignerenmagnetische velden.png}
+ \end{figure}
+
+\begin{itemize}
+    \item \textbf{Niet-magnetisch materiaal} (links): de magneetjes wijzen alle kanten op. Er
+    is geen netto veld.
+    \item \textbf{Ferromagnetisch materiaal} (midden): de magneetjes staan in groepjes
+    (\textit{domeinen}) in dezelfde richting, maar de domeinen heffen elkaar op. Een extern
+    veld $H$ richt de domeinen makkelijk, waardoor $B$ sterk stijgt: een hoge $\mu$.
+    \item \textbf{Magneet} (rechts): alle domeinen staan in dezelfde richting, ook zonder
+    extern veld.
+\end{itemize}
+
+Hoe makkelijker de domeinen zich naar het externe veld richten, hoe hoger de
+permeabiliteit.
+
+\subsection{Hysteresis}
+Verhoog je $H$ en verlaag je het daarna terug, dan volgt $B$ niet dezelfde weg terug: de
+domeinen blijven deels gericht. Die $B$-$H$-curve heet de \textbf{hysteresislus}.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.5\textwidth]{assets/hysteresislus.png}
-  \caption{Hysteresislus van een magnetisch materiaal}
+  \caption{Hysteresislus van een ferromagnetisch materiaal}
   \label{fig:hysteresislus.png}
  \end{figure}
 
-Een materiaal met een \textbf{kleine lus} noemen we een \textbf{zacht magnetisch
-materiaal}, dit is goed voor motoren.
-Een materiaal met een \textbf{grote lus} noemen we een \textbf{hard magnetisch materiaal},
-dit is goed voor permanente magneten.
-De stator moet dus uit zo een zacht materiaal gemaakt worden aangezien dit op AC 50 keer
-de lus doet (50 Hz), dus dan hebben we minder verliezen.
-De rotor die volgt gewoon en dit kan met permanente magneten gedaan worden (kan ook met
-wikkelingen gedaan worden zoals de stator), dit is dan dus met een hard magnetisch
-materiaal (heeft een brede lus, magnetisch veld blijft, brede lus nodig dus).
+Twee punten op de lus zijn belangrijk:
+\begin{itemize}
+    \item de \textbf{remanente inductie} $B_r$: de fluxdichtheid die overblijft als $H$ terug
+    nul is;
+    \item het \textbf{coërcitief veld} $H_c$: de veldsterkte die je in de andere richting
+    moet aanleggen om $B$ terug nul te maken. Hoe groter $H_c$, hoe moeilijker het materiaal
+    te demagnetiseren is.
+\end{itemize}
+
+Elke keer dat het materiaal de lus doorloopt, gaat er energie verloren als warmte: de
+\textbf{hysteresisverliezen}. Die zijn evenredig met de \textbf{oppervlakte van de lus} en
+met hoe vaak per seconde je ze doorloopt. Een stator aan het net van 50~Hz doorloopt de lus
+50 keer per seconde. Voor de kern wil je dus een \textbf{zo klein mogelijke lus}: een
+grote lus verlaagt het rendement.
+
+\subsection{Zacht en hard magnetisch materiaal}
+\begin{itemize}
+    \item \textbf{Zacht magnetisch materiaal}: smalle lus, kleine $H_c$. Het verliest zijn
+    magnetisme zodra het veld wegvalt en heeft weinig hysteresisverliezen. Geschikt voor de
+    \textbf{kern} van stator en rotor, waar het veld voortdurend wisselt.
+    \item \textbf{Hard magnetisch materiaal}: brede lus, grote $B_r$ en $H_c$. Het houdt zijn
+    magnetisme vast. Geschikt voor \textbf{permanente magneten}, bv.\ op een rotor.
+\end{itemize}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.8\textwidth]{assets/hardenzachtmagnmateriaak.png}
-  \caption{Hard en zacht magnetisch materiaal}
+  \caption{Hard magnetisch materiaal (links: $B$-$H$-curves van magneetmaterialen) en zacht
+  magnetisch materiaal (rechts: gelamelleerde kern)}
   \label{fig:hardenzachtmagnmateriaak.png}
  \end{figure}
 
-\subsection{Stator Constructie}
-Dus de stator is het 'statische' deel van de motor, het bestaat dus uit die siliciumstaal
-kern met gleuven in, het heeft dus eigelijk 'statortanden', hierin bevestigen zich de
-statorwikkelingen.
-De statorwikkelingen zijn meestal van koper en zijn geïsoleerd om kortsluiting te
-voorkomen.
-De wikkelingen zijn zo geplaatst dat ze een magnetisch veld opwekken wanneer er stroom
-doorheen loopt.
-Dit magnetisch veld wisselt van richting afhankelijk van de stroomrichting, wat essentieel
-is voor de werking van de motor.
+\subsection{Wervelstromen/Eddy currents}
+Een wisselend magnetisch veld induceert niet alleen een spanning in de wikkelingen, maar ook
+in het ijzer zelf (wet van Faraday). Omdat ijzer elektrisch geleidt, gaan er in de kern
+kleine kringstromen lopen: \textbf{wervelstromen} (\textit{eddy currents}). Ze doen niets
+nuttigs en warmen de kern op: de \textbf{wervelstroomverliezen} verlagen het rendement.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.45\textwidth]{assets/wervelstromen.png}
+  \caption{Wervelstromen $I$ in een geleidende plaat $C$ die met snelheid $V$ door het veld
+  $B$ van een magneet beweegt}
+  \label{fig:wervelstromen}
+\end{figure}
+
+De wervelstromen worden groter naarmate de lus waarin ze kunnen lopen een groter oppervlak
+$A$ omvat: dan gaat er meer flux door en wordt er meer spanning geïnduceerd. De oplossing is
+\textbf{lamelleren}: de kern wordt opgebouwd uit dunne, onderling geïsoleerde plaatjes
+(\textit{lamellen}). Een wervelstroom kan dan enkel nog in één dun plaatje lopen, dus over
+een klein oppervlak $A$, en blijft klein. Het magnetisch veld zelf loopt gewoon in de
+richting van de plaatjes en wordt niet gehinderd.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{assets/wervelstromen_lamelleren.png}
+  \caption{Massieve kern met grote wervelstromen (links) en gelamelleerde kern met kleine
+  wervelstromen (rechts)}
+  \label{fig:wervelstromen_lamelleren}
+\end{figure}
+
+\subsection{Stator constructie}
+De \textbf{stator} is het stilstaande deel. Hij bestaat uit een gelamelleerde kern van
+siliciumstaal met gleuven. Tussen de gleuven zitten de \textbf{statortanden}. In de gleuven
+liggen de geïsoleerde koperen \textbf{statorwikkelingen}. Loopt er stroom door, dan wekken
+ze een magnetisch veld op dat van richting wisselt met de stroom.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{assets/stator_wikkelen_stappen.png}
+  \caption{Statorkern uit lamellen, deels en volledig bewikkeld}
+  \label{fig:stator_wikkelen_stappen}
+\end{figure}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.6\textwidth]{assets/statorvisueel.png}
-  \caption{Stator constructie met statortanden en wikkelingen}
+  \caption{Stator van een echte machine: kern met tanden en wikkelingen}
   \label{fig:statorvisueel.png}
  \end{figure}
 
-De wikkelingen kunnen op 2 manieren gewonden worden: 
+De wikkelingen kunnen op twee manieren gewikkeld worden:
 
 \begin{itemize}
- \item \textbf{Geconcentreerd}:
- Hier heb je spoelen geconcentreerd rond individuele statortanden, het magnetisch veld
- opgewekt is dus eigelijk blokvormig, dus sterk recht per tand en niet zo mooi naast de
- tanden, het gevolg is een veld met veel harmonischen.
- Dit is goedkoper door minder koper maar heeft meer verliezen bij gebruik.
+ \item \textbf{Geconcentreerd}: elke spoel zit rond één statortand. Het veld is per tand
+ sterk en ertussen zwak, dus blokvormig in plaats van sinusvormig: het bevat veel
+ \textbf{harmonischen}. Goedkoper (minder koper), maar meer verliezen.
  \begin{figure}[H]
    \centering
-   \includegraphics[width=0.4\textwidth]{assets/geconcentreerd.png}
-   \caption{Geconcentreerde wikkelingen}
+   \includegraphics[width=0.3\textwidth]{assets/geconcentreerd.png}
+   \caption{Geconcentreerde wikkeling}
    \label{fig:geconcentreerd.png}
   \end{figure}
- \item \textbf{Gedistribueerd (verdeelde)}:
- Hier zijn de wikkelingen verdeeld over meerdere statortanden, er kunnen dus meerdere
- wikkelingen per gleuf op elkaar liggen, het magnetisch veld opgewekt is dus veel mooier
- en vloeiender, het gevolg is een veld met minder harmonischen.
- Dit is duurder door meer koper maar heeft minder verliezen bij gebruik.
+ \item \textbf{Verdeeld} (\textit{gedistribueerd}): een spoel loopt over meerdere tanden en
+ de spoelen van de drie fasen liggen verschoven over elkaar in de gleuven. Hun velden tellen
+ op tot een veld dat veel mooier sinusvormig over de omtrek verdeeld is, met weinig
+ harmonischen. Duurder (meer koper), maar minder verliezen. Meestal worden verdeelde
+ wikkelingen gebruikt.
  \begin{figure}[H]
    \centering
-   \includegraphics[width=0.6\textwidth]{assets/verdeelde.png}
-   \caption{Gedistribueerde wikkelingen}
-   \label{fig:verdeelde.png}
+   \includegraphics[width=0.5\textwidth]{assets/verdeelde_wikkeling_3fase.png}
+   \caption{Verdeelde driefasige wikkeling: elke kleur is één fase}
+   \label{fig:verdeelde_wikkeling_3fase}
   \end{figure}
-Meestal worden verdeelde wikkelingen gebruikt.
 \end{itemize}
 
-De statorkern zelf wordt in lamellen opgebouwd om wervelstromen te beperken
-(jouleverliezen), deze lamellen vormen samen nog steeds de blokvormige statorkern:
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.4\textwidth]{assets/lamellenstator.png}
-  \caption{Lamellen in de statorkern}
-  \label{fig:lamellenstator.png}
- \end{figure}
 
 \subsection{Rotor Constructie}
 De stator constructie blijft vaak ongeveer hetzelfde maar bij de rotor is dit een ander
@@ -504,6 +604,12 @@ Een probleem is wel dat hier vonken kunnen onstaan.
  \end{figure}
 
 \subsubsection{Inductiemachine}
+\begin{wrapfigure}{r}{0.5\textwidth}
+  \centering
+  \includegraphics[width=0.5\textwidth]{assets/kooirotor.png}
+  \caption{Kooirotor}
+  \label{fig:kooirotor.png}
+\end{wrapfigure}
 Bij de \textbf{inductiemachine} kan de rotor een \textbf{kooirotor} of een
 \textbf{wikkelrotor} zijn.
 Bij de kooirotor zijn er geen wikkelingen op de rotor, maar geleiders die in een
@@ -514,12 +620,6 @@ onderhoud nodig, maar heeft minder regelbaarheid dan een wikkelrotor.
 Bij de wikkelrotor zijn er wikkelingen op de rotor die via sleepringen en koolstofborstels
 worden gevoed, dit geeft meer regelbaarheid maar is duurder en complexer.
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.5\textwidth]{assets/kooirotor.png}
-  \caption{Kooirotor}
-  \label{fig:kooirotor.png}
- \end{figure}
 
 \begin{figure}[H]
   \centering

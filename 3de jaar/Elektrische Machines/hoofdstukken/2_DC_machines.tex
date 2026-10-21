@@ -1,10 +1,12 @@
 \chapter{Gelijkstroommachines (DC Machines)}
-DC-machines zijn dus elektrische machines die werken op een gelijkspanning, ze zijn
-makkelijk te regelen (vooral vroeger was dit zo, nu zijn andere motoren ook makkelijker
-regelbaar dus wordt deze machine minder gebruikt).
-Ze kunnen klein zijn en ook groot zijn, klein omdat ze permanente magneten gebruiken en
-zeldzame elementen (vaak niet zo duurzaam wel), het gewicht kan soms belangrijk zijn, wat
-die permanente magneten dus voordelig maakt.
+Een \textbf{DC-machine} (gelijkstroommachine) werkt op een gelijkspanning. Haar grote
+voordeel is dat je koppel en toerental \textbf{eenvoudig kan regelen}: met de spanning en
+de stroom alleen. Daarom was ze vroeger dé regelbare motor, bv.\ in treinen en trams.
+Vandaag kan je met vermogenselektronica ook AC-motoren goed regelen, waardoor de
+DC-machine minder gebruikt wordt.
+
+DC-motoren bestaan in alle groottes. Kleine DC-motoren gebruiken vaak permanente magneten
+(met zeldzame aardmetalen): die maken de motor compact en licht.
 
 \section{Werkingsprincipe}
 Er zijn verschillende principes die zorgen voor de werking van de DC-machine, dit zijn de
@@ -175,33 +177,90 @@ is.
 Dit is dus eigelijk ook voor 1 lus gerepresenteerd.
 \textit{Een commutator is eigelijk een mechanische gelijkrichter.}
 
-Voor meerdere wikkelingen, waar we dus sneller wisselen met commutatoren gaan we een
-tegen-emk krijgen zoals op de volgende figuur:
+Tot nu toe keken we naar \textbf{één} wikkeling. Die geeft een tegen-EMK die tussen nul en
+een maximum schommelt: een gelijkgerichte sinus. Een echte DC-machine heeft
+\textbf{veel wikkelingen}, elk een beetje verschoven over de omtrek van de rotor, met
+elk hun eigen paar commutatorlamellen. De borstels nemen telkens de wikkeling die op dat
+moment het meeste spanning geeft. De tegen-EMK's van alle wikkelingen samen geven zo een
+spanning met maar een kleine rimpel: ze is \textbf{bijna een zuivere gelijkspanning}.
+Hoe meer wikkelingen, hoe vlakker.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{assets/tegenemkmeerdere.png}
-  \caption{Tegen-EMK in DC-motor met meerdere wikkelingen}
+  \begin{tikzpicture}
+    \begin{axis}[width=0.75\textwidth, height=5cm, axis lines=left, xmin=0, xmax=720,
+      ymin=0, ymax=1.25, xtick={0,180,360,540,720}, ytick=\empty,
+      xlabel={hoek $\theta$ [$^\circ$]}, ylabel={$E$}, samples=200, domain=0:720,
+      legend style={at={(1,1.02)}, anchor=south east, legend columns=3, draw=none,
+      font=\small}]
+      \addplot[schoolBlue, thick] {abs(sin(x))};
+      \addplot[schoolRed, thick] {abs(cos(x))};
+      \addplot[schoolGreen, ultra thick] {max(abs(sin(x)),abs(cos(x)))};
+      \legend{wikkeling 1, wikkeling 2, uitgang (borstels)}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Tegen-EMK van twee wikkelingen ($90^\circ$ verschoven): de borstels nemen telkens
+  de grootste, de uitgang schommelt nog maar weinig}
   \label{fig:tegenemkmeerdere.png}
  \end{figure}
 
-Dit is dus een meer vlakkere curve, dit geldt dus ook voor het koppel:
+Hetzelfde geldt voor het koppel: elke wikkeling apart geeft een schommelend koppel, maar
+samen tellen ze op tot een bijna constant koppel.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.6\textwidth]{assets/koppelmeerderelusse.png}
-  \caption{Koppel in DC-motor met meerdere wikkelingen}
+  \begin{tikzpicture}
+    \begin{axis}[width=0.75\textwidth, height=5.5cm, axis lines=left, xmin=0, xmax=720,
+      ymin=0, ymax=2.3, xtick={0,180,360,540,720}, ytick={0,1,2},
+      xlabel={hoek $\theta$ [$^\circ$]}, ylabel={$T$ [p.u.]}, samples=240, domain=0:720,
+      legend style={at={(1,1.02)}, anchor=south east, legend columns=4, draw=none,
+      font=\small}]
+      \addplot[schoolBlue, thick] {abs(sin(x))};
+      \addplot[schoolRed, thick] {abs(sin(x-60))};
+      \addplot[schoolPurple, thick] {abs(sin(x-120))};
+      \addplot[schoolGreen, ultra thick] {abs(sin(x))+abs(sin(x-60))+abs(sin(x-120))};
+      \legend{wikkeling 1, wikkeling 2, wikkeling 3, som}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Koppel van drie wikkelingen ($60^\circ$ verschoven) en hun som: bijna constant}
   \label{fig:koppelmeerderelusse.png}
  \end{figure}
 
-Hier een close-up van de commutator, je ziet hier de koolstofborstels die er tegen duwen
-zodat de stroom van de voeding naar de rotor kan gaan, je ziet ook een veer dat zorgt dat
-de koolstofborstel goed tegen de commutator blijft duwen.
+Een animatie in 3D die commutator, borstels en meerdere wikkelingen goed toont: Jared Owen,
+\href{https://www.youtube.com/watch?v=CWulQ1ZSE3c}{\textit{How does an Electric Motor
+work? (DC Motor)}}.
+
+\subsection{Koolstofborstels}
+De commutator draait mee met de rotor, de voeding staat stil. De verbinding tussen beide
+maken de \textbf{borstels}: blokjes \textbf{koolstof} (grafiet) die met een
+\textbf{veer} tegen de commutatorlamellen gedrukt worden. De stroom loopt van de voeding
+via de borstel naar de lamel die er op dat moment onder zit, en zo naar de wikkeling.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{assets/commutator_borstels_schema.png}
+  \caption{Commutator met twee borstels: de borstels staan stil, de lamellen draaien mee}
+  \label{fig:commutator_borstels_schema}
+\end{figure}
+
+Waarom koolstof?
+\begin{itemize}
+    \item het \textbf{geleidt} de stroom goed genoeg;
+    \item het is \textbf{zacht en zelfsmerend}: de borstel slijt in plaats van de koperen
+    commutator;
+    \item het heeft een iets hogere \textbf{contactweerstand} dan koper, wat de
+    stroomomkering bij het wisselen van lamel geleidelijker maakt (minder vonken, zie
+    \autoref{subsec:borstelvuur}).
+\end{itemize}
+
+Het nadeel: borstels \textbf{slijten} en moeten bij onderhoud regelmatig vervangen worden.
+Bovendien geven ze \textbf{vonken} bij het wisselen van lamel. Daarom mag een DC-motor
+met borstels niet in een explosiegevaarlijke omgeving (ATEX) gebruikt worden.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.6\textwidth]{assets/closeupcommutator.png}
-  \caption{Close-up commutator}
+  \caption{Close-up van de commutator met de koolstofborstel en de veer die hem aandrukt}
   \label{fig:closeupcommutator.png}
  \end{figure}
 
@@ -293,87 +352,70 @@ Hiermee kunnen we dan uiteindelijk een equivalent schema opstellen en de karakte
 van de motor bepalen.
 
 \subsection{Koppel}
-We weten dat het koppel van de motor beschreven kan worden als:
+Neem één wikkeling met straal $r$ en actieve lengte $l$ in een veld $B$. Op elke zijde werkt
+de Lorentzkracht $F = B \cdot l \cdot i_a$, op een arm $r$. Beide zijden duwen dezelfde
+kant op:
 \begin{align*}
-    T = N \cdot F \cdot 2 \cdot r
+    T = F \cdot r + F \cdot r = 2r \cdot l \cdot B \cdot i_a
 \end{align*}
-Hierbij is $T$ het koppel, $N$ het aantal windingen, $F$ de kracht op de geleider en $r$
-de straal van de rotor.
-Nu weten we dat de kracht op de geleider kan worden beschreven met de wet van Lorentz:
-\begin{align*}
-    T = N \cdot i_a \cdot l \cdot B \cdot 2 \cdot r
-\end{align*}
-Hierbij is $i_a$ de stroom door de ankerwikkeling, $l$ de 'actieve' lengte van de
-rotorgeleider en $B$ de magnetische fluxdichtheid.
-Met 'actieve' bedoelen we dus het deel van de geleider waar dus effectief een tegen-emk
-wordt geïnduceerd.
-Om dit te verduidelijken tekent de proff het volgende aan bord:
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.4\textwidth]{assets/luswikkeling.png}
-  \caption{1 wikkeling van de rotor}
+  \caption{Eén wikkeling van de rotor: enkel de zijden met lengte $l$ zijn actief}
   \label{fig:luswikkeling.png}
  \end{figure}
 
-Het groen gearceerde heeft hier netto geen tegen-emk dat geïnduceerd wordt, het is dus
-niet actief.
-Het deel dat wel actief is, is het deel dat loodrecht staat op de veldlijnen van het
-magnetisch veld.
-Ook die $2r$ en l zijn samen eigelijk een oppervlakte en een oppervlakte vermenigvuldigd
-met de magnetische inductie B is dus een flux, we kunnen dit dus herschrijven als:
-\begin{align*}
-    T = K \cdot \varphi \cdot i_a
-\end{align*}
-Hierbij is K een constante (soms wordt er ook C gebruikt)
+Alleen de zijden van lengte $l$ die loodrecht op het veld staan, zijn \textbf{actief}: daar
+ontstaat kracht (en tegen-EMK). De groene verbindingsstukken dragen niets bij.
 
-Ook weten we dat deze flux $\varphi$ evenredig is met de veldstroom $i_f$ (of $i_e$) (de
-stroom door de statorwikkelingen), dus we kunnen dit herschrijven als:
-\begin{align*}
-    T = G \cdot i_e \cdot i_a
-\end{align*}
+$2r \cdot l$ is de oppervlakte $A$ van de wikkeling, en $B \cdot A$ is de \textbf{flux}
+$\varphi$ door de wikkeling. Alle windingen en constructiegegevens (aantal geleiders,
+aantal polen) bundel je in de \textbf{motorconstante} $K$ (in sommige bronnen $C$ of $k$):
 
-\newpage
+\frm{Koppel DC-machine}{T = K \cdot \varphi \cdot i_a}{met $T$ het elektromagnetisch koppel
+[Nm], $K$ de motorconstante [-], $\varphi$ de flux per pool [Wb] en $i_a$ de
+ankerstroom [A].}
+
+Zolang het ijzer niet verzadigd is, is de flux evenredig met de veldstroom $i_e$ (de stroom
+door de statorwikkeling). Dan kan je ook schrijven: $T = G \cdot i_e \cdot i_a$, met
+$G = K\varphi / i_e$ [H].
 
 \subsection{Tegen-EMK}
-Met de wet van Faraday-Lenz kunnen we de tegen-EMK van de motor beschrijven als:
+Draait de rotor, dan bewegen de actieve zijden met omtreksnelheid $v = \omega \cdot r$
+door het veld. Volgens Faraday-Lenz wordt in elke zijde $e = B \cdot l \cdot v$
+geïnduceerd (alles loodrecht). De twee zijden tellen op:
 \begin{align*}
-    E = B \cdot l \cdot v
+    E = 2 \cdot B \cdot l \cdot r \cdot \omega = \varphi \cdot \omega
 \end{align*}
-Alles moet wel loodrecht staan!
-Bij een rotatie geldt ook dat de snelheid $v$ van de geleider kan worden beschreven als:
-\begin{align*}
-    v = \omega \cdot r
-\end{align*}
-Hierbij is $\omega$ de hoeksnelheid van de rotor en $r$ de straal van de rotor.
-Ook weten we dat $l \cdot 2 \cdot r$ de oppervlakte van de lus is, en dat $B \cdot A$ de
-flux door de lus is, dus we kunnen dit herschrijven als:
-\begin{align*}
-    E = K \cdot \varphi \cdot \omega
-\end{align*}
-Deze K is dezelfde constante als bij het koppel, dit is dus een constante die afhankelijk
-is van de constructie van de motor.
-Dit is 'interessant' bij DC-machines zegt de proff.
+Met alle windingen samen krijg je \textbf{dezelfde constante $K$} als bij het koppel:
+
+\frm{Tegen-EMK DC-machine}{E = K \cdot \varphi \cdot \omega}{met $E$ de tegen-EMK [V], $K$
+de motorconstante [-], $\varphi$ de flux [Wb] en $\omega$ de hoeksnelheid van de rotor
+[rad/s], $\omega = 2\pi n / 60$ met $n$ in rpm.}
+
+Dat koppel en tegen-EMK dezelfde $K\varphi$ hebben, maakt de DC-machine handig om mee te
+rekenen: ken je $K\varphi$ uit één meting, dan ken je beide.
 
 \subsection{Klemspanning}
-Met de wetten van Kirchoff (KVL) kunnen we de klemspanning van de motor beschrijven als:
+Kirchhoff (KVL) over het anker geeft:
 \begin{align*}
-   U_a = E + R_a \cdot i_a + {\color{red}L_a \cdot \frac{di_a}{dt}}
+   U_a = E + R_a \cdot i_a + L_a \cdot \frac{di_a}{dt}
 \end{align*}
-Hierbij is $U_a$ de klemspanning (van het anker dus), $E$ de tegen-emk die we eerder
-beschreven hebben, $R_a$ de weerstand van de ankerwikkeling, $L_a$ de inductantie van de
-ankerwikkeling en $i_a$ de stroom door de ankerwikkeling.
-De term $L_a \cdot \frac{di_a}{dt}$ vertegenwoordigt de spanningsval over de inductantie
-van de ankerwikkeling die geïnduceerd wordt, die optreedt wanneer de stroom door de
-wikkeling verandert.
-Deze is verwaarloosbaar bij een DC-machine omdat die zo klein is en dus niet bijdraagt aan
-de klemspanning.
-De effectieve formule die we gaan gebruiken voor de klemspanning is dus:
-\begin{align*}
-   U_a = E + R_a \cdot i_a
-\end{align*}
-Met deze 3 vergelijkingen kunnen we de hele DC-machine beschrijven, ook is het ideaal dat
-deze allemaal lineair zijn.
+met $U_a$ de klemspanning van het anker [V], $R_a$ de ankerweerstand [$\Omega$] en $L_a$ de
+inductantie van de ankerwikkeling [H].
+
+De term $L_a \cdot \frac{di_a}{dt}$ is de spanning over de inductantie. Die bestaat enkel
+als de stroom \textbf{verandert}, bv.\ bij het opstarten of schakelen.
+
+Bij een DC-machine in regime is de ankerstroom een \textbf{gelijkstroom}: $i_a$ is
+constant, dus $\frac{di_a}{dt} = 0$ en de term valt weg. Er blijft over:
+
+\frm{Klemspanning DC-machine}{U_a = E + R_a \cdot i_a}{met $U_a$ de klemspanning [V], $E$
+de tegen-EMK [V], $R_a$ de ankerweerstand [$\Omega$] en $i_a$ de ankerstroom [A].}
+
+Met deze \textbf{drie vergelijkingen} (koppel, tegen-EMK, klemspanning) beschrijf je de hele
+DC-machine. Ze zijn alle drie lineair, wat het rekenen eenvoudig maakt.
 
 \newpage
 
@@ -451,198 +493,229 @@ Andere types motoren zijn:
  machine.
 \end{itemize}
 
-\subsection{Karakteristieken}
+\subsection{Koppel-toerentalkarakteristiek}
+Uit de drie vergelijkingen volgt hoe het koppel afhangt van de snelheid. We bekijken eerst
+een machine met \textbf{aparte bekrachtiging}: het veld hangt niet af van de ankerstroom,
+dus $K\varphi$ is constant.
 
-\subsubsection{T-n karakteristiek}
-
-\begin{warningbox}[Sommige delen hier zijn niet te vinden op de slides maar komen van
-lesnotities + AI]
-  Na de volgende berekening voor T, is het deel van de grafieken vooral door AI gecooked
-  op basis van mijn lesnotities, want dat deel staat niet in de slides ma kwam wel in de
-  les aan bod dus ik waarschuw dat het misschien niet zo vlot leest als de rest en
-  mogelijks fouten in kunnen staan, de grafieken kloppen wel normaal al zowieso wat denkik
-  ook het belangrijkste is.
-  Die getallen bij die grafieken, zoals je zult zien, zijn random en hebben geen
-  betekenis.
-\end{warningbox}
-
-Met de eerder opgestelde vergelijkingen kunnen we de T-n karakteristiek van de DC-machine
-bepalen.
-We weten dat:
+Herschrijf de klemspanning naar de ankerstroom:
 \begin{align*}
-    T = C \cdot \varphi \cdot i_a
+    i_a = \frac{U_a - E}{R_a}
 \end{align*}
-En dat:
+Vul dat in in $T = K\varphi \cdot i_a$, met $E = K\varphi \cdot \omega$:
 \begin{align*}
-    U_a = E + R_a \cdot i_a
-\end{align*}
-Invullen voor $i_a$ geeft:
-\begin{align*}
-    T = C \cdot \varphi \cdot \frac{U_a - E}{R_a}
-\end{align*}
-En invullen voor E geeft:
-\begin{align*}
-    T = \frac{C \cdot \varphi \cdot U_a}{R_a} - \frac{C^2 \cdot \varphi^2 \cdot \omega}{R_a}
-\end{align*}
-Hierbij zijn $E$, $i_a$ en $\omega$ variabelen die kunnen veranderen en $R_a$ een
-parameter (constant).
-
-{\color{red}Vanaf hier tot 'magnetisatiecurve' is het AI slop.}
-
-\subsubsection{Aparte en shunt excitatie}
-Bij aparte en shunt excitatie is het veld onafhankelijk van $i_a$, dus $\varphi \approx$
-constant.
-Uit $T = C\varphi i_a$, $U_a = E + R_a i_a$ en $E = C\varphi\omega$ volgt de
-\textbf{lineaire} $T$-$\omega$ relatie:
-\begin{align*}
-    T = \frac{C \varphi U_a}{R_a} - \frac{C^2 \varphi^2}{R_a} \cdot \omega
+    T = K\varphi \cdot \frac{U_a - K\varphi \cdot \omega}{R_a}
 \end{align*}
 
-\begin{figure}[H]
-\centering
-\begin{tikzpicture}
-\begin{axis}[xlabel={$n$}, ylabel={$T$}, xmin=0, xmax=10, ymin=0, ymax=11, axis lines=left, thick, domain=0:8, samples=50]
-\addplot[blue] {10 - 1.25*x};
-\end{axis}
-\end{tikzpicture}
-\caption{Kwalitatieve T-n karakteristiek bij aparte/shunt excitatie}
-\end{figure}
+\frm{$T$-$\omega$-karakteristiek DC-machine}{T = \frac{K\varphi}{R_a} \cdot U_a -
+\frac{(K\varphi)^2}{R_a} \cdot \omega}{met $T$ het koppel [Nm], $U_a$ de klemspanning [V],
+$R_a$ de ankerweerstand [$\Omega$], $K\varphi$ [Vs] en $\omega$ de hoeksnelheid [rad/s].}
 
-\textbf{Snijpunten:} bij stilstand ($\omega=0$) is $E=0$, dus $i_{a,aanloop}=U_a/R_a$
-(groot, want $R_a$ klein $\to$ aanloopweerstand nodig) en
-$T_{aanloop} = C\varphi U_a/R_a$.
-Bij onbelast ($T=0$) krijg je het nullasttoerental $\omega_0 = U_a/(C\varphi)$.
-
-\subsubsection{Invloed van $U_a$ en $\varphi$ op de karakteristiek}
-\textbf{$U_a$ aanpassen (aparte excitatie):} de helling $-C^2\varphi^2/R_a$ hangt niet af
-van $U_a$, dus je krijgt \textbf{parallelle rechten}:
-hogere $U_a$ $\to$ hoger $T_{aanloop}$ én hoger $\omega_0$, beide evenredig met $U_a$.
-Elke rechte heeft dus zijn eigen nulpunt (snelheid waar $T=0$) -- dit gebruikt men om de
-snelheid te regelen onder het nominale toerental.
-
-\begin{figure}[H]
-\centering
-\begin{tikzpicture}
-\begin{axis}[xlabel={$n$}, ylabel={$T$}, xmin=0, xmax=12, ymin=0, ymax=15, axis lines=left, thick]
-\addplot[blue, domain=0:6.4, samples=50] {10 - 1.25*x};
-\addplot[blue, domain=0:11.2, samples=50] {14 - 1.25*x};
-\addplot[blue, domain=0:4.8, samples=50] {6 - 1.25*x};
-\end{axis}
-\end{tikzpicture}
-\caption{Aanpassen van $U_a$ bij constante $\varphi$: parallelle rechten}
-\end{figure}
-
-\textbf{Let op bij shunt:} het veld hangt hier aan dezelfde voeding als het anker, dus als
-je $U_a$ aanpast verandert $i_e$ (en dus $\varphi$) mee -- de rechten zijn dan
-\textbf{niet} zuiver parallel.
-
-\textbf{Veldverzwakking ($\varphi$ aanpassen bij constante $U_a$):} kleinere $\varphi$
-geeft een \textbf{kleinere helling} (want $\varphi^2$ zit in de helling) $\to$ hoger
-$\omega_0$ maar lager $T_{aanloop}$.
-Dit gebruikt men om \textbf{boven} het nominale toerental te draaien, ten koste van
-koppel.
-
-\begin{figure}[H]
-\centering
-\begin{tikzpicture}
-\begin{axis}[xlabel={$n$}, ylabel={$T$}, xmin=0, xmax=14, ymin=0, ymax=11, axis lines=left, thick, legend pos=north east]
-\addplot[blue, domain=0:8, samples=50] {10 - 1.25*x};
-\addlegendentry{$\varphi_1$ (nominaal)}
-\addplot[red, domain=0:12, samples=50] {6 - 0.5*x};
-\addlegendentry{$\varphi_2 < \varphi_1$ (veldverzwakking)}
-\end{axis}
-\end{tikzpicture}
-\caption{Veldverzwakking: kleinere $\varphi$ geeft vlakkere rechte}
-\end{figure}
-
-\subsubsection{Serie excitatie}
-Hier is $i_e = i_a$, hieruit volgt voor het koppel:
-\begin{align*}
-    T = G \cdot (\frac{U_a - E}{R_a})^2
-\end{align*}
-Dit is een \textbf{hyperboolachtige} curve, geen rechte.
-
-\begin{figure}[H]
-\centering
-\begin{tikzpicture}
-\begin{axis}[xlabel={$n$}, ylabel={$T$}, xmin=0, xmax=10, ymin=0, ymax=11, axis lines=left, thick, domain=0:10, samples=50]
-\addplot[red] {10/((1+0.5*x)^2)};
-\end{axis}
-\end{tikzpicture}
-\caption{Kwalitatieve T-n karakteristiek bij serie excitatie}
-\end{figure}
-
-\textbf{Belangrijk:} er is \textbf{geen} eindig nulpunt -- $\omega \to \infty$ als
-$T \to 0$.
-Een seriemotor mag dus \textbf{nooit onbelast draaien} (loopt op hol).
-
-\subsubsection{Vergelijking}
-
-\begin{figure}[H]
-\centering
-\begin{tikzpicture}
-\begin{axis}[xlabel={$n$}, ylabel={$T$}, xmin=0, xmax=10, ymin=0, ymax=11, axis lines=left, thick, legend pos=north east]
-\addplot[blue, domain=0:8, samples=50] {10 - 1.25*x};
-\addlegendentry{Aparte/Shunt excitatie}
-\addplot[red, domain=0:10, samples=50] {10/((1+0.5*x)^2)};
-\addlegendentry{Serie excitatie}
-\end{axis}
-\end{tikzpicture}
-\caption{Vergelijking van de T-n karakteristieken}
-\end{figure}
-
-\subsubsection{Constante ankerstroom}
-Bij constante $i_a$ (en constante $\varphi$) is ook $T = C\varphi i_a$ constant,
-onafhankelijk van $n$.
-Omdat $E = C\varphi n$ een rechte door de oorsprong is, en $U_a = E + R_a i_a$ daar een
-parallelle rechte van is, blijft de horizontale afstand tussen $U_a$ en $E$ overal gelijk
-aan $R_a i_a$.
-
-\begin{figure}[H]
-\centering
-\begin{tikzpicture}
-    % Assen
-    \draw[->] (0,0) -- (8,0) node[right] {$n$};
-    \draw[->] (0,0) -- (0,7) node[above] {$T$};
-    % Rode Ua-lijn: dalend, kruist n-as bij n_s
-    \draw[red, thick] (0.3,6.5) -- (5,0);
-    \node[red] at (0.6,7) {$U_a$ cte};
-    % Blauwe E-lijn: verticaal, exact bij n_s
-    \draw[blue, thick] (5,0) -- (5,6.5);
-    \node[blue] at (5.4,7) {$E$ cte};
-    \draw[dashed] (5,0) -- (5,-0.15);
-    \node at (5,-0.4) {$n_s$};
-    % Groene Ia-lijn: lager, los van Ua/E
-    \draw[green!60!black, thick] (0,3) -- (7,3);
-    \node[green!60!black] at (7.6,3) {$i_a$ cte};
-    % Ra Ia pijl: HORIZONTAAL tussen rood en blauw, bovenaan
-    \draw[<->, thick] (0.3,6.5) -- (5,6.5);
-    \node at (2.65,6.8) {$R_a i_a$};
-\end{tikzpicture}
-\caption{Constante ankerstroom:
-horizontale afstand tussen $U_a$ en $E$ = $R_a i_a$; ze vallen samen bij $T=0$ (op $n_s$)}
-\end{figure}
-
-\subsection{Magnetisatiecurve}
-Nog iets belangrijks om rekening mee te houden is magnetisatie:
-de flux $\varphi$ stijgt niet altijd lineair met de veldstroom $i_e$.
-Bij lage veldstromen is dit wel het geval, maar naarmate de veldstroom stijgt, treedt
-verzadiging op in het ijzer van de statorpolen.
-Hierdoor neemt $\varphi$ minder snel toe met $i_e$, wat op zijn beurt de T-n
-karakteristiek beïnvloedt.
-De veldwikkeling heeft dus eigenlijk een nominale stroom:
-voorbij die grens levert een hogere $i_e$ vooral opwarming in de spoelen op, want de
-veldsterkte $H$ blijft dan wel toenemen, maar $B$ (en dus $\varphi$) niet meer.
-De volgende grafiek toont deze magnetisatiecurve voor drie snelheidsgevallen
-($N_3 > N_2 > N_1$), waarbij de veldstroom uitgezet is tegen de nullast-tegen-EMK (waar
-het koppel 0 is):
+Dit is een \textbf{dalende rechte} in $\omega$. Twee punten leggen ze vast:
+\begin{itemize}
+    \item \textbf{Stilstand} ($\omega = 0$): er is nog geen tegen-EMK, dus de volledige
+    klemspanning staat over de kleine $R_a$. De stroom en het koppel zijn zeer groot: het
+    \textbf{startkoppel} (\textit{stall torque}) $T_{start} = K\varphi \cdot U_a / R_a$.
+    \item \textbf{Nullast} ($T = 0$): er vloeit (bijna) geen ankerstroom, dus $E = U_a$.
+    Dat geeft de \textbf{nullastsnelheid} $\omega_0 = U_a / (K\varphi)$.
+\end{itemize}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{assets/magnetisatiecurve.png}
-  \caption{Magnetisatiecurve}
+  \includegraphics[width=0.5\textwidth]{assets/dc_Tn_karakteristiek_slide.png}
+  \caption{Koppel-toerentalkarakteristiek van een DC-motor met aparte bekrachtiging}
+  \label{fig:dc_Tn_karakteristiek}
+\end{figure}
+
+Omdat $R_a$ klein is, reageert de stroom sterk op de tegen-EMK. Een voorbeeld met
+$U_a = \SI{200}{V}$ en $R_a = \SI{1}{\ohm}$: bij $E = \SI{180}{V}$ loopt er
+$(200 - 180)/1 = \SI{20}{A}$. Daalt $E$ met 10\,\% naar $\SI{162}{V}$, dan wordt dat
+$(200 - 162)/1 = \SI{38}{A}$: bijna het dubbele. Bij het opstarten ($E = 0$) zou de stroom
+zonder maatregelen dus enorm zijn. Daarom start men met een \textbf{aanloopweerstand} of
+met een verlaagde klemspanning.
+
+\subsubsection{Klemspanning $U_a$ aanpassen}
+De helling $(K\varphi)^2/R_a$ hangt niet af van $U_a$. Verander je $U_a$ bij constante
+flux, dan schuift de rechte \textbf{evenwijdig} op: startkoppel en nullastsnelheid zijn
+allebei evenredig met $U_a$. Wil je trager draaien, dan verlaag je gewoon de klemspanning.
+Zo regel je het toerental \textbf{onder} het nominale toerental.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[axis lines=left, width=0.62\textwidth, height=5.2cm, ytick=\empty,
+      xlabel={$\omega$}, ylabel={$T$}, clip=false,
+      every axis x label/.style={at={(current axis.right of origin)}, anchor=west},
+      every axis y label/.style={at={(current axis.above origin)}, anchor=south},
+      legend style={draw=none, fill=white, font=\small, cells={anchor=west}},
+      legend pos=north east, tick label style={font=\small}, xmin=0, xmax=7.5, ymin=0, ymax=5,
+      xtick={2,4,6}, xticklabels={$\omega_{0,3}$, $\omega_{0,2}$, $\omega_{0}$},
+      ytick={1.4,2.8,4.2}, yticklabels={\textcolor{schoolOrange}{$U_{a,3}$},
+      \textcolor{schoolGreen}{$U_{a,2}$}, \textcolor{schoolBlue}{$U_{a,nom}$}}]
+      \addplot[schoolBlue, very thick, domain=0:6] {4.2-0.7*x};
+      \addplot[schoolGreen, very thick, domain=0:4] {2.8-0.7*x};
+      \addplot[schoolOrange, very thick, domain=0:2] {1.4-0.7*x};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Klemspanning verlagen bij constante flux ($U_{a,3} < U_{a,2} < U_{a,nom}$):
+  evenwijdige rechten}
+  \label{fig:dc_Ua_aanpassen}
+\end{figure}
+
+Let op bij een \textbf{shuntmotor}: daar hangt het veld aan dezelfde klemspanning. Daalt
+$U_a$, dan daalt ook $i_e$ en dus $\varphi$. De nullastsnelheid $\omega_0 = U_a/(K\varphi)$
+blijft dan gelijk (teller en noemer dalen samen), maar de helling $(K\varphi)^2/R_a$ wordt
+kleiner. Bij hetzelfde lastkoppel draait de motor dan iets trager en trekt hij meer stroom.
+De rechten zijn dus \textbf{niet} evenwijdig, ze draaien rond $\omega_0$.
+
+\subsubsection{Flux $\varphi$ aanpassen: veldverzwakking}
+Verlaag je de veldstroom en dus $\varphi$ bij constante $U_a$, dan:
+\begin{itemize}
+    \item stijgt de nullastsnelheid $\omega_0 = U_a / (K\varphi)$;
+    \item daalt het startkoppel $K\varphi \cdot U_a / R_a$;
+    \item wordt de rechte vlakker, want $\varphi^2$ zit in de helling.
+\end{itemize}
+Met \textbf{veldverzwakking} draai je \textbf{boven} het nominale toerental, ten koste van
+koppel.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[axis lines=left, width=0.62\textwidth, height=5.2cm, ytick=\empty,
+      xlabel={$\omega$}, ylabel={$T$}, clip=false,
+      every axis x label/.style={at={(current axis.right of origin)}, anchor=west},
+      every axis y label/.style={at={(current axis.above origin)}, anchor=south},
+      legend style={draw=none, fill=white, font=\small, cells={anchor=west}},
+      legend pos=north east, tick label style={font=\small}, xmin=0, xmax=7.5, ymin=0, ymax=5,
+      xtick={4,6.5}, xticklabels={$\omega_{0}$, $\omega_{0}'$},
+      ytick={2.6,4.2}, yticklabels={$T_{start}'$, $T_{start}$}]
+      \addplot[schoolBlue, very thick, domain=0:4] {4.2-1.05*x}
+        node[pos=0.2, above right, font=\small] {$\varphi_{nom}$};
+      \addplot[schoolRed, very thick, domain=0:6.5] {2.6-0.4*x}
+        node[pos=0.7, above right, font=\small] {$\varphi' < \varphi_{nom}$};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Veldverzwakking: hogere nullastsnelheid, lager startkoppel, vlakkere rechte}
+  \label{fig:dc_veldverzwakking}
+\end{figure}
+
+\subsubsection{Werkingspunt bij constante $U_a$, $E$ en $i_a$}
+In het $T$-$\omega$-vlak kan je drie soorten lijnen tekenen:
+\begin{itemize}
+    \item $U_a$ constant: de dalende rechte van hierboven;
+    \item $i_a$ constant: een \textbf{horizontale} lijn, want $T = K\varphi \cdot i_a$ hangt
+    niet af van $\omega$;
+    \item $E$ constant: een \textbf{verticale} lijn, want $E = K\varphi \cdot \omega$ legt de
+    snelheid vast.
+\end{itemize}
+Het werkingspunt ligt op het snijpunt van de drie. Tussen de verticale $E$-lijn en de
+nullastsnelheid $\omega_0$ zit een snelheidsverschil $R_a i_a / (K\varphi)$: dat is de
+spanningsval over $R_a$, uitgedrukt in snelheid. Bij $T = 0$ is $i_a = 0$ en valt $E$
+samen met $U_a$, in $\omega_0$.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[>=latex, thick, scale=0.9]
+    \draw[->] (0,0) -- (8,0) node[right] {$\omega$};
+    \draw[->] (0,0) -- (0,5) node[above] {$T$};
+    % lijnen
+    \draw[schoolRed, very thick] (0,4.4) -- (6,0);
+    \draw[schoolBlue, very thick] (4,0) -- (4,4.6);
+    \draw[schoolGreen, very thick] (0,1.47) -- (7.4,1.47);
+    % labels aan het uiteinde van elke lijn, weg van de andere lijnen
+    \node[schoolRed, above right] at (0.3,4.2) {$U_a$ cte};
+    \node[schoolBlue, above] at (4,4.6) {$E$ cte};
+    \node[schoolGreen, right] at (7.4,1.47) {$i_a$ cte};
+    \node[schoolGreen, left] at (0,1.47) {$K\varphi\, i_a$};
+    % werkingspunt
+    \fill (4,1.47) circle (2.5pt);
+    \node[above right, fill=white, inner sep=1pt] at (4.05,1.55) {O.P.};
+    % assenwaarden
+    \draw[thin] (4,0) -- (4,-0.12); \draw[thin] (6,0) -- (6,-0.12);
+    \node[below, schoolBlue] at (4,-0.12) {$\frac{E}{K\varphi}$};
+    \node[below, schoolRed] at (6,-0.12) {$\omega_0 = \frac{U_a}{K\varphi}$};
+    % snelheidsverschil onder de as
+    \draw[<->, thin] (4,-1.3) -- (6,-1.3) node[midway, below] {$\frac{R_a\, i_a}{K\varphi}$};
+    \draw[thin, dotted] (4,-0.9) -- (4,-1.45); \draw[thin, dotted] (6,-0.9) -- (6,-1.45);
+  \end{tikzpicture}
+  \caption{Lijnen met constante $U_a$, $E$ en $i_a$ snijden in het werkingspunt}
+  \label{fig:dc_constante_lijnen}
+\end{figure}
+
+\subsubsection{Seriemotor}
+Bij serie-bekrachtiging loopt dezelfde stroom door anker en veld: $i_e = i_a = I$. Met
+$T = G \cdot i_e \cdot i_a$ wordt het koppel \textbf{kwadratisch} in de stroom:
+$T = G \cdot I^2$ (zolang het ijzer niet verzadigd is).
+
+KVL over anker en veld samen, met $R = R_a + R_e$ en $E = G \cdot I \cdot \omega$:
+\begin{align*}
+    U = R \cdot I + G \cdot I \cdot \omega \quad\Rightarrow\quad I = \frac{U}{R + G\omega}
+\end{align*}
+
+\frm{$T$-$\omega$-karakteristiek seriemotor}{T = G \cdot I^2 = G \cdot \frac{U^2}{(R +
+G\omega)^2}}{met $G$ [H], $U$ de klemspanning [V], $R = R_a + R_e$ de som van anker- en
+veldweerstand [$\Omega$] en $\omega$ de hoeksnelheid [rad/s].}
+
+\begin{itemize}
+    \item Bij stilstand is $T = G U^2 / R^2$: een \textbf{zeer groot startkoppel}. Daarom
+    wordt de seriemotor gebruikt waar veel kracht nodig is om te vertrekken, zoals bij een
+    trein of een startmotor.
+    \item Er is \textbf{geen nullastsnelheid}: $T$ nadert pas nul als $\omega \to \infty$.
+    Een seriemotor zonder last \textbf{slaat op hol}. Hij mag dus nooit onbelast draaien.
+\end{itemize}
+
+\subsubsection{Overzicht van de bekrachtigingen}
+Met de evenredigheden $T \sim \varphi\, i_a$ en $n \sim (U_a - R_a i_a)/\varphi$ kan je de
+karakteristieken van elke bekrachtiging verklaren (\autoref{fig:dc_karakteristieken}):
+\begin{itemize}
+    \item \textbf{Shunt / aparte bekrachtiging}: $\varphi$ is constant, dus $T \sim i_a$
+    (rechte). Het toerental daalt maar een beetje met de last, omdat $R_a$ klein is.
+    \item \textbf{Serie}: $\varphi \sim i_a$, dus $T \sim i_a^2$. Het toerental daalt sterk
+    met de last ($n \sim 1/\sqrt{T}$).
+    \item \textbf{Compound} (\textit{cumulative}): de flux van de serie- en de
+    shuntwikkeling tellen op. De curven liggen tussen shunt en serie in.
+    \item \textbf{Differentieel}: de serieflux werkt de shuntflux tegen. Bij meer last
+    daalt de flux, waardoor het toerental kan stijgen.
+\end{itemize}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{assets/dc_karakteristieken_bekrachtiging.png}
+  \caption{Karakteristieken per bekrachtiging: (a) $T$ in functie van $i_a$, (b) $n$ in
+  functie van $i_a$, (c) $n$ in functie van $T$}
+  \label{fig:dc_karakteristieken}
+\end{figure}
+
+\subsection{Magnetisatiecurve}
+Tot nu toe namen we aan dat de flux $\varphi$ evenredig is met de veldstroom $i_e$. Dat
+klopt enkel bij kleine veldstromen. Bij grotere $i_e$ raakt het ijzer van de statorpolen
+\textbf{verzadigd} (zie \autoref{fig:magnetischepermeabiliteit.png}): $H$ stijgt nog, maar
+$B$ en dus $\varphi$ nauwelijks.
+
+Je meet dit door de machine onbelast (als generator, $i_a = 0$) aan een vaste snelheid te
+laten draaien en de nullastspanning $E_0 = K\varphi\omega$ uit te zetten tegen $i_e$. Omdat
+$\omega$ vast is, volgt $E_0$ de flux. Dat is de \textbf{magnetisatiecurve} (of
+nullastkarakteristiek). Bij een hogere snelheid ligt de curve hoger, want $E_0 \sim \omega$.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[>=latex, thick, scale=0.9]
+    \draw[->] (0,0) -- (7.5,0) node[right] {$i_e$};
+    \draw[->] (0,0) -- (0,5.2) node[above] {$E_0$};
+    \foreach \s/\n/\c in {1/n_1/schoolBlue!40, 1.3/n_2/schoolBlue!70, 1.6/n_3/schoolBlue}
+      \draw[\c, domain=0:7, samples=60, smooth]
+        plot (\x, {\s*2.8*(1-exp(-\x/2))}) node[right] {$\n$};
+    \draw[dashed, thin] (0,0) -- (3.5,4.9) node[above, font=\small] {zonder verzadiging};
+    \draw[->, thin] (5.2,2.1) -- (5.2,4.3) node[midway, right, font=\small]
+      {$n$ stijgt};
+  \end{tikzpicture}
+  \caption{Magnetisatiecurve: nullastspanning $E_0$ in functie van de veldstroom $i_e$ bij
+  drie snelheden $n_3 > n_2 > n_1$}
   \label{fig:magnetisatiecurve.png}
- \end{figure}
+\end{figure}
+
+De veldwikkeling heeft daarom een \textbf{nominale stroom}. Voorbij de knik levert een
+grotere $i_e$ bijna geen extra flux meer op, alleen extra warmte in de veldspoelen.
 
 \newpage
 
@@ -676,7 +749,7 @@ heel groot gaat worden -- de snelheid gaat dus eigenlijk naar oneindig.
 Dit is dus een gevaarlijke situatie, en daarom mag je het veld van een DC-machine nooit
 open zetten.
 
-\subsection{Commutator arcing (borstelvuur/vonken)}
+\subsection{Commutator arcing (borstelvuur/vonken)}\label{subsec:borstelvuur}
 We weten nu al dat de commutator uit veel aparte stukken bestaat, en dat de
 koolstofborstels daar tegenaan drukken.
 Terwijl de rotor draait, moet elke spoel op een bepaald moment van polariteit wisselen:
@@ -695,6 +768,14 @@ tussen borstel en lamel, ioniseert de lucht, en er ontstaat een vonk.
 Die vonken vreten zowel de koolstofborstel als de lamellen weg, en bij hevige/chronische
 vonkvorming kan dit escaleren tot \textbf{borstelvuur} (ringvuur):
 een doorlopende boog over meerdere lamellen die de machine zwaar kan beschadigen.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.75\textwidth]{assets/borstelvuur.png}
+  \caption{Borstelvuur: beschadigde commutator (links) en vonken aan de borstels van een
+  haakse slijper (rechts)}
+  \label{fig:borstelvuur}
+\end{figure}
 
 Om dit te beperken gebruikt men \textbf{commutatiepolen} (hulppolen die $u_L$
 compenseren), plaatst men de borstels op het \textbf{neutrale vlak}, en gebruikt men
@@ -716,8 +797,9 @@ volgende figuur:
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{assets/ankerreactie.png}
-  \caption{Ankerreactie}
+  \includegraphics[width=0.9\textwidth]{assets/ankerreactie_velden.png}
+  \caption{Links: enkel het hoofdveld van de stator, met het geometrisch neutrale vlak
+  (GNA). Rechts: hoofdveld plus ankerveld; het neutrale vlak verschuift naar MNA}
   \label{fig:ankerreactie.png}
  \end{figure}
 
@@ -727,7 +809,15 @@ Door de ankerreactie wordt dit vlak verschoven (aangeduid met MNA (modified)), w
 commutatie niet meer optimaal is en er vonkvorming kan optreden.
 Dit effect kan worden verminderd door het gebruik van commutatiepolen en door de juiste
 plaatsing van de koolstofborstels (schuin dus, hoeveel hangt af van de stroom).
-Er zijn dus trucjes om dit op te lossen maar dat moeten we niet kennen.
+Bij grote machines gebruikt men ook \textbf{compensatiewikkelingen} in de statorpolen, die
+het ankerveld opheffen. Hoe die precies gedimensioneerd worden, moet je niet kennen.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.55\textwidth]{assets/compensatiewikkeling.png}
+  \caption{Grote DC-machine met hulppolen (\textit{interpoles}) en compensatiewikkeling}
+  \label{fig:compensatiewikkeling}
+\end{figure}
 
 \newpage
 
@@ -870,8 +960,77 @@ All unspecified losses are to be neglected.
  machine?
  What will be the magnitude and phase of the current in the ac machine?
 \end{itemize}
-\textbf{Oplossing:}
-\dots ({\color{red}Nog niet aan begonnen})
+\textbf{Gegeven:}
+\begin{itemize}[nosep]
+ \item DC-motor, aparte bekrachtiging: $U = \SI{250}{V}$, $R_a = \SI{22}{m\ohm}$
+ \item synchrone generator (ster): $U_{lijn} = \SI{460}{V}$, $X_s = \SI{6.6}{\ohm}$
+ \item gekoppeld op dezelfde as, andere verliezen verwaarloosd
+\end{itemize}
+
+\textbf{Aanpak:} de synchrone machine hangt aan het net, dus de \textbf{snelheid ligt vast}.
+Het vermogen dat over de as gaat, regel je met de tegen-EMK $E$ van de DC-machine, dus met
+haar \textbf{veldstroom}. Per fase van de synchrone machine geldt
+$\underline{E}_{af} = \underline{V} + jX_s \underline{I}$ (generatorconventie).
+
+\textbf{1) 25 kW naar het net bij $\cos\varphi = 1$}
+
+Fasespanning en stroom van de AC-machine:
+\begin{align*}
+    V &= \frac{460}{\sqrt{3}} = \SI{265.6}{V} &
+    I &= \frac{P}{3V} = \frac{25\,000}{3 \cdot 265.6} = \SI{31.4}{A}
+\end{align*}
+Bij $\cos\varphi = 1$ ligt $\underline{I}$ in fase met $\underline{V}$:
+\begin{align*}
+    \underline{E}_{af} = 265.6 + j \cdot 6.6 \cdot 31.4 = 265.6 + j207.1
+    \quad\Rightarrow\quad \boxed{E_{af} = \SI{336.8}{V},\ \delta = 37.9^\circ}
+\end{align*}
+De DC-motor levert $\SI{25}{kW}$ aan de as: $E \cdot I_a = 25\,000$, met
+$E = 250 - 0.022 \cdot I_a$. Dat geeft de vierkantsvergelijking
+$0.022\, I_a^2 - 250\, I_a + 25\,000 = 0$:
+\begin{align*}
+    I_a = \SI{100.9}{A} \qquad \boxed{E = 250 - 0.022 \cdot 100.9 = \SI{247.8}{V}}
+\end{align*}
+
+\textbf{2) Vermogen naar nul}
+
+\textit{Aanpassing:} verhoog de \textbf{veldstroom van de DC-machine} tot haar tegen-EMK
+gelijk is aan de bronspanning: $E = \SI{250}{V}$ (de flux stijgt met een factor
+$250/247.8$, want $\omega$ ligt vast). Dan:
+\begin{align*}
+    \boxed{I_a = \frac{U - E}{R_a} = \SI{0}{A}}
+\end{align*}
+Zonder vermogen is de lasthoek $\delta = 0$: $\underline{E}_{af}$ en $\underline{V}$ liggen
+in fase. Het veld van de AC-machine is onveranderd, dus $E_{af} = \SI{336.8}{V}$:
+\begin{align*}
+    \underline{I} = \frac{\underline{E}_{af} - \underline{V}}{jX_s} = \frac{336.8 -
+    265.6}{j6.6} = -j10.8 \quad\Rightarrow\quad \boxed{I = \SI{10.8}{A}}
+\end{align*}
+Een zuiver reactieve stroom, $90^\circ$ na-ijlend op $\underline{V}$: de overbekrachtigde
+machine levert enkel reactief vermogen aan het net.
+
+\textbf{3) 25 kW van het net naar de DC-bron}
+
+\textit{Aanpassing:} verhoog de veldstroom van de DC-machine nog verder, zodat
+$E > \SI{250}{V}$. De DC-machine werkt dan als generator en stuurt stroom in de DC-bron.
+Voor $\SI{25}{kW}$ in de bron:
+\begin{align*}
+    I_a = \frac{25\,000}{250} = \SI{100}{A} \qquad
+    \boxed{E = 250 + 0.022 \cdot 100 = \SI{252.2}{V}}
+\end{align*}
+De AC-machine werkt nu als motor en moet $E \cdot I_a = \SI{25.22}{kW}$ aan de as leveren.
+Met $P = 3 \frac{V E_{af}}{X_s} \sin\delta$:
+\begin{align*}
+    \sin\delta = \frac{25\,220 \cdot 6.6}{3 \cdot 265.6 \cdot 336.8} = 0.620
+    \quad\Rightarrow\quad \delta = -38.3^\circ
+\end{align*}
+In motorconventie:
+\begin{align*}
+    \underline{I} = \frac{\underline{V} - \underline{E}_{af}}{jX_s}
+    = \frac{265.6 - 336.8\angle{-38.3^\circ}}{j6.6}
+    \quad\Rightarrow\quad \boxed{I = \SI{31.7}{A}\ \angle{-0.4^\circ}}
+\end{align*}
+De stroom ligt praktisch in fase met de spanning ($\cos\varphi \approx 1$), nu in de
+richting van het net naar de machine.
 \end{oefenblok}
 
 \newpage

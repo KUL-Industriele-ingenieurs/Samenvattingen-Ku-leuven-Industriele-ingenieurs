@@ -53,6 +53,11 @@
 \fancyhead[LO]{\rightmark}
 \renewcommand{\headrulewidth}{0.4pt}
 
+% Sneller werken: haal het % weg en zet alleen het hoofdstuk waaraan je werkt erin.
+% Paginanummers en verwijzingen naar de andere hoofdstukken blijven kloppen (via hun .aux).
+% Zet het terug in commentaar vóór je commit, anders bouwt CI maar één hoofdstuk.
+% \includeonly{hoofdstukken/1_Introductie}
+
 % ------------------------------------------------------------------
 \begin{document}
 % Titelinformatie
@@ -65,26 +70,34 @@
 
 % Voorbericht (ongenummerd, vóór de inhoudsopgave)
 \chapter*{Voorbericht}
+\begin{abstract}
+    Deze samenvattingen zijn beschikbaar op GitHub waar je kunt bijdragen aan verbeteringen: \url{https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs}
+
+    Vind je de uitleg niet goed? Voeg dan zelf info toe. Zo leer je je vak \'en raak je vertrouwd met LaTeX.
+    Dat is handig voor later.
+\end{abstract}
+
 Deze samenvatting bevat geanimeerde figuren (GIF's) van draaivelden, synchrone machines en
 inductiemachines. Die animaties werken niet in een browser en ook niet in elke PDF-lezer: daar zie
 je enkel het eerste beeld. Bij elke animatie staat daarom altijd een link naar de originele GIF.
 Adobe Reader en Foxit Reader spelen de animaties zeker af. Op Linux werkt Okular ook.
-\newpage
 
 \tableofcontents
+\newpage
+\printformularium
 \newpage
 
 % ------------------------------------------------------------------
 % Hoofdstukken (één bestand per hoofdstuk in hoofdstukken/)
 % ------------------------------------------------------------------
 \setcounter{chapter}{-1}
-\input{hoofdstukken/0_Informatie}
-\input{hoofdstukken/1_Introductie}
-\input{hoofdstukken/2_DC_machines}
-\input{hoofdstukken/3_Draaiveld}
-\input{hoofdstukken/4_Synchrone_machines}
-\input{hoofdstukken/5_Inductiemachines}
-\input{hoofdstukken/6_Motorselectie}
-\input{hoofdstukken/7_Kleine_motoren}
+\include{hoofdstukken/0_Informatie}
+\include{hoofdstukken/1_Introductie}
+\include{hoofdstukken/2_DC_machines}
+\include{hoofdstukken/3_Draaiveld}
+\include{hoofdstukken/4_Synchrone_machines}
+\include{hoofdstukken/5_Inductiemachines}
+\include{hoofdstukken/6_Motorselectie}
+\include{hoofdstukken/7_Kleine_motoren}
 
 \end{document}

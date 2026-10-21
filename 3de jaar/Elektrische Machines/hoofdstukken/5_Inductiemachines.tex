@@ -675,6 +675,13 @@ volgende formule:
 \begin{align*}
     \boxed{T_{ind} = \frac{3 \cdot V_{TH}^2 \cdot R_2 \cdot s}{\omega_s \cdot [ {\color{red}R_2^2 + } {\color{blue}s^2 \cdot (X_{TH} + X_2)^2}]}}
 \end{align*}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{assets/TNkarakteristiekzonderkippiek.png}
+  \caption{T-n karakteristiek van de inductiemachine zonder het kipkoppel aangeduid}
+  \label{fig:TNkarakteristiekzonderkippiek.png}
+\end{figure}
+
 Het is dus deze formule dat gebruikt wordt om de T-n karakteristiek te berekenen.
 Bij grote slip wordt de rode term verwaarloosd en het linkse gedeelte van de T-n
 karakteristiek van de volgende figuur bepaald (dit is eigelijk hyperbolisch want de
@@ -685,12 +692,6 @@ gevonden worden door de 1ste afgeleiden naar de slip te nemen en deze gelijk te 
 aan 0.
 (Dit geeft de kipslip)
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.5\textwidth]{assets/TNkarakteristiekzonderkippiek.png}
-  \caption{T-n karakteristiek van de inductiemachine zonder het kipkoppel aangeduid}
-  \label{fig:TNkarakteristiekzonderkippiek.png}
- \end{figure}
 
 Formules voor de kipslip en het kipkoppel zijn:
 \begin{align*}
@@ -816,7 +817,7 @@ breiden zoals in de volgende figuur:
   \includegraphics[width=0.5\textwidth]{assets/uitgebreideTNkarakteristiekIM.png}
   \caption{Uitgebreide T-n karakteristiek}
   \label{fig:uitgebreideTNkarakteristiekIM.png}
- \end{figure}
+\end{figure}
 
 Deze curve komt dus ook van die formule en is even correct, we zien hier namelijk ook de
 generatorwerking gedeelte van de curve, hier hebben we nog steeds een positieve snelheid
@@ -1142,6 +1143,12 @@ Bekijk nu eens volgende figuur:
   \label{fig:startstroomenstartkoppelbijverschillenderotorweerstanden.png}
  \end{figure}
 
+\begin{wrapfigure}{r}{0.5\textwidth}
+  \centering
+  \includegraphics[width=0.5\textwidth]{assets/externerotorweerstandenschema.png}
+  \caption{Schema van externe rotorweerstanden}
+  \label{fig:externerotorweerstandenschema.png}
+\end{wrapfigure}
 Wat we gaan doen is dus beginnen bij T4, dit heeft dus een lage startstroom en hoog
 startkoppel, naarmate de snelheid toeneemt zullen het koppel en de stroom dus dalen.
 Wat we gaan doen is dan schakelen naar T3 (de volgende rotorweerstand), dit zorgt ervoor
@@ -1153,12 +1160,6 @@ Nadeel is dus dat je een gewikkelde rotor nodig hebt wat duur is, dit is niet to
 bij een kooirotor.
 Een schema hiervan ziet er zo uit:
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.5\textwidth]{assets/externerotorweerstandenschema.png}
-  \caption{Schema van externe rotorweerstanden}
-  \label{fig:externerotorweerstandenschema.png}
- \end{figure}
 
 \subsection{Remmen van de inductiemachine}
 Nu gaan we kijken naar het remmen van de inductiemachine.
@@ -1196,6 +1197,12 @@ Om te checken dat je op tijd de andere contactor sluit zodat je niet versnelt ge
 een 'ruwe' snelheidsdetectie, deze heeft een accuraatheid dat 50 tr/min kan schelen.
 
 \subsubsection{DC-remmen}
+\begin{wrapfigure}{r}{0.5\textwidth}
+  \centering
+  \includegraphics[width=0.5\textwidth]{assets/DCremmen.png}
+  \caption{DC-remmen}
+  \label{fig:DCremmen.png}
+\end{wrapfigure}
 Deze methode wordt minder gebruikt omdat een gelijkstroomrichter nodig is dat wat duurder
 is, maar bij niet te grote vermogens valt dit goed mee.
 Wat we hier gaan doen is met een gelijkstroombron (DC) een gelijkstroom aanleggen op 2
@@ -1206,12 +1213,6 @@ Dit remt dus af.
 Wat we ook zien is dat dit koppel toeneemt naarmate de rotor afremt en dat deze gelijk is
 aan 0 als de snelheid 0 is, dit lost dus het probleem van de vorige methode op.
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.5\textwidth]{assets/DCremmen.png}
-  \caption{DC-remmen}
-  \label{fig:DCremmen.png}
- \end{figure}
 
 \subsubsection{Zero sequence braking (Homopolair remmen)}
 Dit is maar kort besproken in de les, maar wat we hier doen is de motor loskoppelen van
