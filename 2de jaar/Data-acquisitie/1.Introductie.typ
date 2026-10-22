@@ -1,4 +1,5 @@
 #import "../../school-template.typ": *
+#import "examenvraag.typ": examenvraag
 
 // BRON: Slides/1.DAQ_introductie.pdf | Slides/2.Sensoren_karakteristieken.pdf (slides 4-9)
 //       Samenvatting DAQ p.3-4 | Samenvatting 2024-2025 p.6-7 | examenvragen 2016-2025
@@ -17,7 +18,15 @@ DAQ zit onderaan de *automatiseringspiramide*. Op het veldniveau (level 1) zitte
   label: <fig:Management-Piramide>,
 )
 
-#examenbox[*23-24 vraag 8 / voorbeeldexamen 2024:* "De automatiseringspiramide geeft weer dat ..." Juist: *er verschillende lagen zijn die via gateways communiceren, elk met eigen tijdsvertraging en datapakketgrootte.* Fout is "alle niveaus hebben directe toegang tot de ruwe sensordata": dat is net het omgekeerde van een piramide.]
+#examenvraag("23-24 vraag 8, voorbeeldexamen 2024", [De automatiseringspiramide geeft weer dat ...],
+  opties: (
+    [er verschillende lagen zijn die via gateways communiceren, elk met eigen tijdsvertraging en datapakketgrootte],
+    [een IoT-systeem perfect past binnen een gelaagde piramidestructuur],
+    [alle niveaus directe toegang hebben tot de ruwe sensordata],
+    [een PLC enkel gebruikt wordt om sensoren uit te lezen of actuatoren aan te sturen],
+  ),
+  juist: "A",
+)[Onderaan (veldniveau) gaat het om milliseconden en kleine pakketten, bovenaan (ERP) om uren en grote pakketten, en elke laag praat via een gateway met de volgende. C zegt net het omgekeerde: in een piramide ziet alleen het veldniveau de ruwe data. B klopt niet, want IoT is net vlakker dan de piramide (rechts in @fig:Management-Piramide).]
 
 == Structuur van een meetsysteem <sec:meetsysteem>
 
@@ -82,7 +91,15 @@ De twee woorden worden vaak door elkaar gebruikt, maar ze betekenen niet hetzelf
 
 Een sensor kan dus uit meerdere transducers bestaan, zolang de laatste stap een elektrisch signaal geeft. In dit vak gaat het alleen over sensoren.
 
-#examenbox[*23-24 vraag 1 en 25-26 vraag 6:* "Een transducer is ..." Juist: *een toestel dat energieomzettingen kan uitvoeren.* Fout zijn "een sensor die verplaatsing omzet in een elektrisch signaal" (dat is een sensor), "een optioneel onderdeel van elke sensor" en "een speciaal type sensor".]
+#examenvraag("23-24 vraag 1, 25-26 vraag 6", [Een transducer is ...],
+  opties: (
+    [een speciaal type sensor dat enkel gebruikt wordt om fysische grootheden te meten],
+    [een toestel dat energieomzettingen kan uitvoeren],
+    [een sensor die een gemeten verplaatsing omzet in een elektrisch signaal],
+    [een optioneel onderdeel van elk type sensor],
+  ),
+  juist: "B",
+)[Een transducer zet energie om van de ene vorm naar de andere, in welke vorm ook. C beschrijft een sensor: die levert altijd een elektrisch signaal. A en D draaien de relatie om: een sensor kan transducers bevatten, niet omgekeerd.]
 
 === Actieve en passieve sensoren <sec:passief-vs-actief>
 
@@ -107,7 +124,15 @@ Vanuit de dataverwerking deel je sensoren in volgens hun energiebron:
 
 Uit de tabel volgt het onderscheid meteen: een sensor waarvan de *weerstand* of *capaciteit* verandert, is altijd actief. Je moet er een stroom door sturen of een spanning over zetten om die verandering te zien. Een nadeel van actieve sensoren: een fout van 1 % op de excitatie zit ook als 1 % op de uitgang. De Wheatstonebrug (@ch:rekstroken-2) vangt dat op.
 
-#examenbox[Deze vraag komt bijna elk jaar terug (2016, 2017, 2019): "Een passieve sensor ..." Juist: *heeft geen excitatie(spanning) nodig.* De afleiders "heeft een uitgang in functie van R, V of I" zijn fout: het type uitgang zegt niets over actief of passief.]
+#examenvraag("2019 vraag 5, ook 2016 en 2017", [Een passieve sensor ...],
+  opties: (
+    [heeft geen excitatie nodig],
+    [heeft een uitgang in functie van $R$],
+    [heeft een uitgang in functie van $V$],
+    [heeft een uitgang in functie van $I$],
+  ),
+  juist: "A",
+)[Passief betekent dat de sensor zelf zijn signaal opwekt, zonder bronspanning of -stroom. Het type uitgang zegt niets: een thermokoppel (passief) geeft een spanning, maar een silicium-temperatuursensor (actief) ook. Een uitgang in functie van $R$ (B) wijst zelfs op een actieve sensor.]
 
 === Sensoren in een regellus <sec:sensoren-regellus>
 
@@ -151,4 +176,12 @@ Omdat alles digitaal is, hangen veel slimme sensoren samen op één veldbus in p
   ),
 )
 
-#examenbox[*25-26 vraag 22* (ook als voorbeeld op de laatste slide): "Een smart sensor ..." Juist: *kan geïntegreerd worden op één chip* (sensor + ADC + microcontroller). Valstrik: "is nauwkeuriger dan een basissensor". Slimmer is niet nauwkeuriger: het meetelement zelf blijft hetzelfde.]
+#examenvraag("25-26 vraag 22, ook als voorbeeld op de laatste slide", [Een "smart sensor" ...],
+  opties: (
+    [is een sensor met een digitale ingang],
+    [kan geïntegreerd worden op 1 chip],
+    [is een stand-alone controlesysteem],
+    [is nauwkeuriger dan een basissensor],
+  ),
+  juist: "B",
+)[Een slimme sensor is sensor + versterker + ADC + microcontroller, en dat kan samen op één chip. D is de valstrik: slimmer is niet nauwkeuriger, want het meetelement zelf blijft hetzelfde. A klopt niet: de uitgang is digitaal, niet de ingang.]
