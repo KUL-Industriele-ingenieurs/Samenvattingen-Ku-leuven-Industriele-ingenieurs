@@ -115,24 +115,29 @@ Een sensor kan dus uit meerdere transducers bestaan, zolang de laatste stap een 
 === Actieve en passieve sensoren <sec:passief-vs-actief>
 
 #concept(title: "Actieve en passieve sensor")[
-  Een *actieve sensor* heeft een externe voeding nodig, de *excitatie*. Een *passieve sensor* wekt zelf zijn uitgangssignaal op en heeft *geen excitatie* nodig.
+  Een *actieve sensor* heeft een externe voeding nodig, de *excitatie*. Een voorbeeld is een RTD (Resistance Temperature Detector) die een stroom nodig heeft om zijn weerstand te meten.
+
+  Een *passieve sensor* wekt zelf zijn uitgangssignaal op en heeft *geen excitatie* nodig. Een voorbeeld is een piëzo-elektrische sensor die een lading genereert als reactie op een kracht.
 ]
 
 Zonder bronspanning of -stroom geeft een actieve sensor dus niets: denk aan een RTD, thermistor, rekstrook of LVDT. Een thermokoppel, piëzo-elektrische sensor of fotodiode levert zelf een spanning, lading of stroom.
 
-#table(
-  columns: (auto, auto, auto, auto),
-  align: (left, left, center, left),
-  table.header([*Grootheid*], [*Sensor*], [*Actief/passief*], [*Uitgang*]),
-  table.cell(rowspan: 4)[Temperatuur], [Thermokoppel], [passief], [spanning],
-  [Silicium], [actief], [spanning/stroom],
-  [RTD], [actief], [weerstand],
-  [Thermistor], [actief], [weerstand],
-  table.cell(rowspan: 2)[Kracht/druk], [Rekstrook], [actief], [weerstand],
-  [Piëzo-elektrisch], [passief], [lading],
-  [Versnelling], [Accelerometer], [actief], [capaciteit],
-  [Positie], [LVDT], [actief], [AC-spanning],
-  [Lichtintensiteit], [Fotodiode], [passief], [stroom],
+#align(
+  center,
+  table(
+    columns: (auto, auto, auto, auto),
+    align: (left, left, center, left),
+    table.header([*Grootheid*], [*Sensor*], [*Actief/passief*], [*Uitgang*]),
+    table.cell(rowspan: 4)[Temperatuur], [Thermokoppel], [passief], [spanning],
+    [Silicium], [actief], [spanning/stroom],
+    [RTD], [actief], [weerstand],
+    [Thermistor], [actief], [weerstand],
+    table.cell(rowspan: 2)[Kracht/druk], [Rekstrook], [actief], [weerstand],
+    [Piëzo-elektrisch], [passief], [lading],
+    [Versnelling], [Accelerometer], [actief], [capaciteit],
+    [Positie], [LVDT], [actief], [AC-spanning],
+    [Lichtintensiteit], [Fotodiode], [passief], [stroom],
+  ),
 )
 
 Uit de tabel volgt het onderscheid meteen: een sensor waarvan de *weerstand* of *capaciteit* verandert, is altijd actief. Je moet er een stroom door sturen of een spanning over zetten om die verandering te zien. Een nadeel van actieve sensoren: een fout van 1 % op de excitatie zit ook als 1 % op de uitgang. De Wheatstonebrug (@ch:rekstroken-2) vangt dat op.
