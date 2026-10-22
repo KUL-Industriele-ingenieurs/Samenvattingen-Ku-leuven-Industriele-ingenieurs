@@ -1,4 +1,5 @@
 #import "../../school-template.typ": *
+#import "examenvraag.typ": examenvraag
 
 // BRON: Slides/2.Sensoren_karakteristieken.pdf | Samenvatting DAQ p.5-9
 //       Samenvatting 2024-2025 p.7-11 | voorbeeldexamen 2024 vraag 9
@@ -51,7 +52,15 @@ $ O - O_"min" = (O_"max" - O_"min") / (I_"max" - I_"min") (I - I_"min") $
   *Kerninzicht:* de echte curve uit de datasheet buigt af van deze rechte, vooral bij lage temperatuur. Dat verschil is de niet-lineariteit.
 ]
 
-#examenbox[*Voorbeeldexamen 2024 vraag 9:* "Een ideaal lineair sensormodel heeft ..." Juist: *enkel de span van in- en uitgang nodig om de parameters te bepalen.* Twee punten leggen de rechte vast; een derde punt heb je pas nodig voor de niet-lineariteit. "Een gevoeligheid die afhangt van het bereik" is fout: bij een lineair model is $K$ per definitie constant.]
+#examenvraag("voorbeeldexamen 2024 vraag 9", [Een ideaal lineair sensormodel heeft ...],
+  opties: (
+    [minstens 3 meetpunten nodig om de lineaire relatie te bepalen],
+    [een gevoeligheid die afhangt van het bereik],
+    [enkel de span van in- en uitgang nodig om de parameters te bepalen],
+    [geen betekenis, want dit komt nooit voor],
+  ),
+  juist: "C",
+)[Twee punten leggen een rechte vast: $(I_"min", O_"min")$ en $(I_"max", O_"max")$ geven meteen $K$ en $a$. Een derde punt (A) heb je pas nodig om de niet-lineariteit te bepalen. B spreekt zichzelf tegen: bij een lineair model is $K$ overal dezelfde. D klopt niet: een perfect lineaire sensor bestaat niet, maar het model is wel de referentie waartegen je de afwijkingen meet.]
 
 === Niet-lineariteit <sec:niet-lineariteit>
 
@@ -93,22 +102,29 @@ met:
 
 Niet elke sensor is (bijna) lineair. Voor de transferfunctie gebruik je een van deze modellen:
 
-#grid(
-  columns: (1fr, 1fr),
-  gutter: 1em,
-  align: horizon,
-  [
-    - lineair: $O = a + K I$
-    - logaritmisch: $O = a + K ln(I)$
-    - exponentieel: $O = a e^(k I)$
-    - machtsfunctie: $O = a_0 + a_1 I^k$
-  ],
-  figure(
-    image("assets/L2-modellen.png", width: 5.5cm),
-    caption: [Lineair, logaritmisch en exponentieel verband (slide 16)],
-    label: <fig:L2-modellen>,
-  ),
-)
+#let model(titel, f, x0: 0) = cetz.canvas({
+  import cetz.draw: *
+  plot.plot(
+    size: (3.2, 2.4),
+    x-label: [$I$], y-label: [$O$],
+    x-tick-step: none, y-tick-step: none,
+    x-min: 0, x-max: 10, y-min: 0,
+    axis-style: "left",
+    {
+      plot.add(domain: (x0, 10), f, style: (stroke: schoolBlue + 1.5pt))
+    },
+  )
+  content((1.6, 2.9), titel)
+})
+
+#align(center, grid(
+  columns: 4,
+  column-gutter: 0.6em,
+  model([lineair \ $O = a + K I$], x => 1 + 0.8 * x),
+  model([logaritmisch \ $O = a + K ln(I)$], x => 1 + 3 * calc.ln(x), x0: 0.3),
+  model([exponentieel \ $O = a e^(k I)$], x => calc.exp(0.25 * x)),
+  model([machtsfunctie \ $O = a_0 + a_1 I^k$], x => 1 + 0.08 * calc.pow(x, 2)),
+))
 
 === Omgevingseffecten <sec:omgevingseffecten>
 
@@ -136,8 +152,6 @@ met:
 - $K_M$ --- gevoeligheid voor de modificerende ingang [uitgang/(ingang $dot$ eenheid $I_M$)]
 - $I_I$ --- interfererende ingang [eenheid van $I_I$]
 - $K_I$ --- gevoeligheid voor de interfererende ingang [uitgang/eenheid $I_I$]
-
-Bij de Pt100 is een magneetveld zo'n interfererende ingang: de datasheet geeft een kleine fout die groeit met het veld $B$ (slide 21). Daarom zijn platinasensoren pas boven $30 "K"$ bruikbaar in een magneetveld.
 
 === Gevoeligheid <sec:gevoeligheid>
 
