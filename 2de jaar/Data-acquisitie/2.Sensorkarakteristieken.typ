@@ -52,7 +52,9 @@ $ O - O_"min" = (O_"max" - O_"min") / (I_"max" - I_"min") (I - I_"min") $
   *Kerninzicht:* de echte curve uit de datasheet buigt af van deze rechte, vooral bij lage temperatuur. Dat verschil is de niet-lineariteit.
 ]
 
-#examenvraag("voorbeeldexamen 2024 vraag 9", [Een ideaal lineair sensormodel heeft ...],
+#examenvraag(
+  "voorbeeldexamen 2024 vraag 9",
+  [Een ideaal lineair sensormodel heeft ...],
   opties: (
     [minstens 3 meetpunten nodig om de lineaire relatie te bepalen],
     [een gevoeligheid die afhangt van het bereik],
@@ -83,13 +85,28 @@ met:
       size: (7, 4.5),
       x-label: [$I$],
       y-label: [$O$],
-      x-min: 0, x-max: 10, y-min: 0, y-max: 10,
-      x-tick-step: none, y-tick-step: none,
-      x-grid: true, y-grid: true,
+      x-min: 0,
+      x-max: 10,
+      y-min: 0,
+      y-max: 10,
+      x-tick-step: none,
+      y-tick-step: none,
+      x-grid: true,
+      y-grid: true,
       legend: "inner-north-west",
       {
-        plot.add(domain: (0, 10), x => x, style: (stroke: (paint: schoolGray, dash: "dashed", thickness: 1.2pt)), label: [ideaal $K I + a$])
-        plot.add(domain: (0, 10), x => x - 0.08 * x * (10 - x), style: (stroke: schoolBlue + 1.5pt), label: [werkelijk $O(I)$])
+        plot.add(
+          domain: (0, 10),
+          x => x,
+          style: (stroke: (paint: schoolGray, dash: "dashed", thickness: 1.2pt)),
+          label: [ideaal $K I + a$],
+        )
+        plot.add(
+          domain: (0, 10),
+          x => x - 0.08 * x * (10 - x),
+          style: (stroke: schoolBlue + 1.5pt),
+          label: [werkelijk $O(I)$],
+        )
         plot.add(((5, 3), (5, 5)), style: (stroke: schoolRed + 1.5pt), label: [$hat(N)$ bij $I = 5$])
       },
     )
@@ -106,9 +123,13 @@ Niet elke sensor is (bijna) lineair. Voor de transferfunctie gebruik je een van 
   import cetz.draw: *
   plot.plot(
     size: (3.2, 2.4),
-    x-label: [$I$], y-label: [$O$],
-    x-tick-step: none, y-tick-step: none,
-    x-min: 0, x-max: 10, y-min: 0,
+    x-label: [$I$],
+    y-label: [$O$],
+    x-tick-step: none,
+    y-tick-step: none,
+    x-min: 0,
+    x-max: 10,
+    y-min: 0,
     axis-style: "left",
     {
       plot.add(domain: (x0, 10), f, style: (stroke: schoolBlue + 1.5pt))
@@ -324,7 +345,9 @@ In de praktijk kijk je eerst of kalibreren nodig is (de *as-found check*): ligt 
 
 De slides tonen het nut met een voorbeeld. Je wil een weerstand $R$ bepalen door de spanning $u(k)$ en de stroom $i(k)$ $N$ keer te meten. Er zijn drie voor de hand liggende schatters:
 
-$ hat(R)_"SA" = 1/N sum_(k=1)^N (u(k)) / (i(k)) quad quad hat(R)_"LS" = (sum u(k) i(k)) / (sum i^2(k)) quad quad hat(R)_"EV" = (sum u(k)) / (sum i(k)) $
+$
+  hat(R)_"SA" = 1/N sum_(k=1)^N (u(k)) / (i(k)) quad quad hat(R)_"LS" = (sum u(k) i(k)) / (sum i^2(k)) quad quad hat(R)_"EV" = (sum u(k)) / (sum i(k))
+$
 
 met:
 - $hat(R)_"SA"$ --- gemiddelde van de verhoudingen (simple average) [$Omega$]
@@ -376,33 +399,41 @@ Geeft de fabrikant alleen een foutband $plus.minus h$, dan benader je die als ee
     label: <fig:L2-temperatuurmeting>,
   )
 
-  #table(
-    columns: (auto, auto, auto, auto, auto),
-    align: (left, center, right, right, left),
-    table.header([*Element*], [*Grootheid*], [*Gemiddelde*], [*Std.afw.*], [*Eenheid*]),
-    [Ingang], [$T$], [$117.0$], [--], [°C],
-    table.cell(rowspan: 3)[A -- Pt100], [$R_0$], [$100.0$], [$0.0433$], [$Omega$],
-    [$alpha$], [$3.909 times 10^(-3)$], [$0$], [°C$""^(-1)$],
-    [$beta$], [$-5.897 times 10^(-7)$], [$0$], [°C$""^(-2)$],
-    table.cell(rowspan: 5)[B -- transmitter], [$K$], [$1.4134$], [$0$], [mA/$Omega$],
-    [$K_M$], [$1.4134 times 10^(-4)$], [$0$], [mA/($Omega$°C)],
-    [$K_I$], [$-1.637 times 10^(-2)$], [$0$], [mA/°C],
-    [$Delta T_a$], [$-10.0$], [$6.7$], [°C],
-    [$a$], [$-191.76$], [$0.24$], [mA],
-    table.cell(rowspan: 2)[C -- recorder], [$K$], [$1.875$], [$0$], [°C/mA],
-    [$a$], [$92.5$], [$0.1$], [°C],
+  #align(
+    center,
+    table(
+      columns: (auto, auto, auto, auto, auto),
+      align: (left, center, right, right, left),
+      table.header([*Element*], [*Grootheid*], [*Gemiddelde*], [*Std.afw.*], [*Eenheid*]),
+      [Ingang], [$T$], [$117.0$], [--], [°C],
+      table.cell(rowspan: 3)[A -- Pt100], [$R_0$], [$100.0$], [$0.0433$], [$Omega$],
+      [$alpha$], [$3.909 times 10^(-3)$], [$0$], [°C$""^(-1)$],
+      [$beta$], [$-5.897 times 10^(-7)$], [$0$], [°C$""^(-2)$],
+      table.cell(rowspan: 5)[B -- transmitter], [$K$], [$1.4134$], [$0$], [mA/$Omega$],
+      [$K_M$], [$1.4134 times 10^(-4)$], [$0$], [mA/($Omega$°C)],
+      [$K_I$], [$-1.637 times 10^(-2)$], [$0$], [mA/°C],
+      [$Delta T_a$], [$-10.0$], [$6.7$], [°C],
+      [$a$], [$-191.76$], [$0.24$], [mA],
+      table.cell(rowspan: 2)[C -- recorder], [$K$], [$1.875$], [$0$], [°C/mA],
+      [$a$], [$92.5$], [$0.1$], [°C],
+    ),
   )
-
   *Stap 1 --- Pt100.* Het model is $R_T = R_0 (1 + alpha T + beta T^2)$:
-  $ overline(R)_T = 100.0 (1 + 3.909 dot 10^(-3) dot 117 - 5.897 dot 10^(-7) dot 117^2) = 100.0 dot 1.44928 = 144.93 thin Omega $
+  $
+    overline(R)_T = 100.0 (1 + 3.909 dot 10^(-3) dot 117 - 5.897 dot 10^(-7) dot 117^2) = 100.0 dot 1.44928 = 144.93 thin Omega
+  $
   Alleen $R_0$ heeft spreiding, dus
   $ sigma_(R_T) = (pdv(R_T, R_0)) sigma_(R_0) = 1.44928 dot 0.0433 = 0.063 thin Omega $
 
   *Stap 2 --- transmitter.* Dit is het generieke model met $I = R_T$ en $I_M = I_I = Delta T_a$:
   $ i = K R_T + a + K_M Delta T_a R_T + K_I Delta T_a $
-  $ overline(i) = 1.4134 dot 144.93 - 191.76 + 1.4134 dot 10^(-4) dot (-10) dot 144.93 + (-1.637 dot 10^(-2)) dot (-10) = 13.04 "mA" $
+  $
+    overline(i) = 1.4134 dot 144.93 - 191.76 + 1.4134 dot 10^(-4) dot (-10) dot 144.93 + (-1.637 dot 10^(-2)) dot (-10) = 13.04 "mA"
+  $
   De spreiding komt van $R_T$, $Delta T_a$ en $a$:
-  $ sigma_i = sqrt(((K + K_M Delta T_a) sigma_(R_T))^2 + ((K_M R_T + K_I) sigma_(Delta T_a))^2 + sigma_a^2) = sqrt(0.089^2 + 0.028^2 + 0.24^2) = 0.257 "mA" $
+  $
+    sigma_i = sqrt(((K + K_M Delta T_a) sigma_(R_T))^2 + ((K_M R_T + K_I) sigma_(Delta T_a))^2 + sigma_a^2) = sqrt(0.089^2 + 0.028^2 + 0.24^2) = 0.257 "mA"
+  $
 
   *Stap 3 --- recorder.* $T_M = K i + a$:
   $ overline(T)_M = 1.875 dot 13.04 + 92.5 = 116.95 degree"C" $
@@ -434,13 +465,22 @@ Tot nu toe stond alles stil. Verandert de ingang snel, dan volgt de uitgang niet
           size: (6, 4),
           x-label: [$t \/ tau$],
           y-label: [$S \/ S_infinity$],
-          x-min: 0, x-max: 5, y-min: 0, y-max: 1.1,
-          x-tick-step: 1, y-tick-step: 0.5,
-          x-grid: true, y-grid: true,
+          x-min: 0,
+          x-max: 5,
+          y-min: 0,
+          y-max: 1.1,
+          x-tick-step: 1,
+          y-tick-step: 0.5,
+          x-grid: true,
+          y-grid: true,
           legend: "inner-south-east",
           {
             plot.add(domain: (0, 5), x => 1 - calc.exp(-x), style: (stroke: schoolBlue + 1.5pt), label: [eerste orde])
-            plot.add(((0, 0.632), (1, 0.632), (1, 0)), style: (stroke: (paint: schoolRed, dash: "dashed")), label: [63 % bij $t = tau$])
+            plot.add(
+              ((0, 0.632), (1, 0.632), (1, 0)),
+              style: (stroke: (paint: schoolRed, dash: "dashed")),
+              label: [63 % bij $t = tau$],
+            )
           },
         )
       })
