@@ -1,10 +1,11 @@
 #!/bin/bash
 
 # --- Configuration ---
-SCRIPT_VERSION="1.2.1"
+SCRIPT_VERSION="1.2.2"
 REPO="KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs"
 API_BASE="https://api.github.com/repos/$REPO"
 RAW_BASE="https://raw.githubusercontent.com/$REPO/MAIN"
+DL_BASE="https://github.com/$REPO/releases/download/latest"
 SELF_NAME="$(basename "${BASH_SOURCE[0]}")"
 TARGET_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SELF_PATH="$TARGET_DIR/$SELF_NAME"
@@ -106,70 +107,45 @@ done
 banner
 self_update "$@"
 
-# Step 1: Fetch the release (PDF assets + folder manifest)
+# Step 1: Fetch the manifest (pdf name -> "<jaar>/<Vak>") via the release download
+# URL. That is a CDN, not the API, so it is not rate-limited.
 printf '  %sFetching release...%s ' "$C_CYAN" "$C_RESET"
-RELEASE_DATA=$(curl -s "$API_BASE/releases/tags/latest")
-if [[ $RELEASE_DATA == *'"message": "Not Found"'* ]] || [ -z "$RELEASE_DATA" ]; then
-    echo "${C_RED}failed${C_RESET}"; die "Release 'latest' not found on GitHub."
-fi
-mapfile -t ASSET_LINES < <(echo "$RELEASE_DATA" | python3 -c "
-import sys, json
-d = json.load(sys.stdin)
-for a in d.get('assets', []):
-    if a['name'].endswith('.pdf'):
-        print(a['name'] + '\t' + a['browser_download_url'] + '\t' + str(a['size']))
-")
-TOTAL=${#ASSET_LINES[@]}
+MANIFEST=$(curl -sfL "$DL_BASE/manifest.tsv") || { echo "${C_RED}failed${C_RESET}"; die "Could not download manifest.tsv from release 'latest'."; }
+declare -A YEAR_MAP SIZE_MAP
+PDF_NAMES=()
+while IFS=$'\t' read -r pdf_name year_folder; do
+    [ -z "$pdf_name" ] && continue
+    YEAR_MAP["$pdf_name"]="$year_folder"; PDF_NAMES+=("$pdf_name")
+done <<< "$MANIFEST"
+TOTAL=${#PDF_NAMES[@]}
 echo "${C_GREEN}${TOTAL} PDFs${C_RESET}"
 
-# Step 2: Build filename -> "<jaar>/<Vak>" mapping.
-# Prefer the manifest asset (served from a CDN, no API rate limit); fall back
-# to the GitHub tree API only if it is missing.
-printf '  %sBuilding folder map...%s ' "$C_CYAN" "$C_RESET"
-declare -A YEAR_MAP
-MANIFEST_URL=$(echo "$RELEASE_DATA" | python3 -c "
+# Step 2: Remote sizes for the up-to-date check. The API allows 60 calls/hour per IP
+# (shared by everyone on a campus network); if it refuses, sizes come from a HEAD per file.
+printf '  %sFetching file sizes...%s ' "$C_CYAN" "$C_RESET"
+while IFS=$'\t' read -r n sz; do
+    [ -n "$n" ] && SIZE_MAP["$n"]="$sz"
+done < <(curl -s "$API_BASE/releases/tags/latest" | python3 -c "
 import sys, json
-d = json.load(sys.stdin)
-for a in d.get('assets', []):
-    if a['name'] == 'manifest.tsv':
-        print(a['browser_download_url']); break
-")
-if [ -n "$MANIFEST_URL" ]; then
-    while IFS=$'\t' read -r pdf_name year_folder; do
-        [ -n "$pdf_name" ] && YEAR_MAP["$pdf_name"]="$year_folder"
-    done < <(curl -sL "$MANIFEST_URL")
-    echo "${C_GREEN}${#YEAR_MAP[@]} via manifest${C_RESET}"
-else
-    TREE_JSON=$(curl -s "$API_BASE/git/trees/MAIN?recursive=1")
-    while IFS=$'\t' read -r pdf_name year_folder; do
-        [ -n "$pdf_name" ] && YEAR_MAP["$pdf_name"]="$year_folder"
-    done < <(echo "$TREE_JSON" | python3 -c "
-import sys, json, os
-try: data = json.load(sys.stdin)
+try: d = json.load(sys.stdin)
 except Exception: sys.exit(0)
-year_folders = {'1ste jaar', '2de jaar', '3de jaar', '4de jaar master'}
-seen = set()
-for item in data.get('tree', []):
-    parts = item['path'].split('/')
-    if len(parts) < 2 or parts[0] not in year_folders: continue
-    stem, ext = os.path.splitext(os.path.basename(item['path']))
-    if ext not in ('.tex', '.typ'): continue
-    pdf = stem.replace(' ', '_').replace('&', '.') + '.pdf'
-    # jaar + vakmap, zodat elk vak zijn eigen map krijgt
-    folder = '/'.join(parts[:2]) if len(parts) > 2 else parts[0]
-    if pdf not in seen:
-        seen.add(pdf); print(f'{pdf}\t{folder}')
+for a in d.get('assets', []):
+    if a['name'].endswith('.pdf'): print(a['name'] + '\t' + str(a['size']))
 ")
-    echo "${C_YELLOW}${#YEAR_MAP[@]} via repo tree (fallback)${C_RESET}"
+if [ "${#SIZE_MAP[@]}" -gt 0 ]; then
+    echo "${C_GREEN}via API${C_RESET}"
+else
+    echo "${C_YELLOW}API rate-limited, checking per file${C_RESET}"
 fi
 echo
 
 # Step 3: Download each PDF into its course subfolder
 n_down=0; n_ok=0; n_fail=0; n_moved=0; bytes_down=0
 i=0
-for line in "${ASSET_LINES[@]}"; do
+for pdf_name in "${PDF_NAMES[@]}"; do
     i=$((i+1))
-    IFS=$'\t' read -r pdf_name pdf_url remote_size <<< "$line"
+    pdf_url="$DL_BASE/$pdf_name"
+    remote_size="${SIZE_MAP[$pdf_name]}"
     year_folder="${YEAR_MAP[$pdf_name]}"
 
     draw_bar "$i" "$TOTAL" "$pdf_name"
@@ -194,6 +170,7 @@ for line in "${ASSET_LINES[@]}"; do
 
     # Check if download is needed (compare file size)
     if [ -f "$output_path" ]; then
+        [ -z "$remote_size" ] && remote_size=$(curl -sIL "$pdf_url" | tr -d '\r' | awk 'tolower($1)=="content-length:"{s=$2} END{print s}')
         local_size=$(stat -c%s "$output_path" 2>/dev/null || stat -f%z "$output_path" 2>/dev/null)
         if [ -n "$remote_size" ] && [ "$local_size" = "$remote_size" ]; then
             n_ok=$((n_ok+1))
@@ -205,6 +182,7 @@ for line in "${ASSET_LINES[@]}"; do
 
     if curl -sfL "$pdf_url" -o "$output_path"; then
         n_down=$((n_down+1))
+        remote_size=$(stat -c%s "$output_path" 2>/dev/null || stat -f%z "$output_path" 2>/dev/null)
         bytes_down=$((bytes_down + remote_size))
         status "  ${C_GREEN}⬇${C_RESET} ${display_path}  ${C_DIM}($(human_size "$remote_size"))${C_RESET}"
     else
@@ -253,7 +231,7 @@ for c in data:
     print(f'  {y}{sha}{r} {d}{author:<18.18}{r} {msg}')
 "
 else
-    echo "  ${C_DIM}(could not load commit history — offline?)${C_RESET}"
+    echo "  ${C_DIM}(could not load commit history — offline or API rate-limited)${C_RESET}"
 fi
 rule
 

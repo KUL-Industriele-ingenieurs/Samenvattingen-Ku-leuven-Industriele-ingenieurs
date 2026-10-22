@@ -3,14 +3,14 @@ param(
 )
 
 # --- Configuration ---
-$scriptVersion = "1.2.1"
+$scriptVersion = "1.2.2"
 $repo = "KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs"
 $apiBase = "https://api.github.com/repos/$repo"
 $rawBase = "https://raw.githubusercontent.com/$repo/MAIN"
+$dlBase = "https://github.com/$repo/releases/download/latest"
 $selfPath = $MyInvocation.MyCommand.Definition
 $selfName = Split-Path -Leaf $selfPath
 $targetDir = Split-Path -Parent $selfPath
-$yearFolders = @('1ste jaar', '2de jaar', '3de jaar', '4de jaar master')
 
 # --- UI helpers ---
 function Write-Banner {
@@ -75,62 +75,46 @@ function Invoke-SelfUpdate {
 Write-Banner
 Invoke-SelfUpdate
 
-# Step 1: Fetch the release (PDF assets + folder manifest)
+# Step 1: Fetch the manifest (pdf name -> "<jaar>/<Vak>") via the release download
+# URL. That is a CDN, not the API, so it is not rate-limited.
 Write-Host "  Fetching release... " -ForegroundColor Cyan -NoNewline
 try {
-    $releaseData = Invoke-RestMethod -Uri "$apiBase/releases/tags/latest" -Method Get -ErrorAction Stop
+    $lines = (Invoke-WebRequest -Uri "$dlBase/manifest.tsv" -UseBasicParsing -ErrorAction Stop).Content -split "`n"
 } catch {
-    Write-Host "failed" -ForegroundColor Red; Write-Error "Release 'latest' not found."; exit 1
+    Write-Host "failed" -ForegroundColor Red; Write-Error "Could not download manifest.tsv from release 'latest'."; exit 1
 }
-$pdfAssets = @($releaseData.assets | Where-Object { $_.name -like "*.pdf" })
-if ($pdfAssets.Count -eq 0) { Write-Error "No PDF assets found in the 'latest' release."; exit 1 }
-$total = $pdfAssets.Count
+$yearMap = @{}
+$pdfNames = @()
+foreach ($line in $lines) {
+    if ([string]::IsNullOrWhiteSpace($line)) { continue }
+    $col = $line -split "`t", 2
+    $name = $col[0].Trim()
+    $yearMap[$name] = if ($col.Count -gt 1) { $col[1].Trim() } else { "" }
+    $pdfNames += $name
+}
+$total = $pdfNames.Count
 Write-Host "$total PDFs" -ForegroundColor Green
 
-# Step 2: Build filename -> "<jaar>/<Vak>" mapping. Prefer the manifest asset (CDN, no
-# API rate limit); fall back to the GitHub tree API only if it is missing.
-Write-Host "  Building folder map... " -ForegroundColor Cyan -NoNewline
-$yearMap = @{}
-$manifest = $releaseData.assets | Where-Object { $_.name -eq 'manifest.tsv' } | Select-Object -First 1
-if ($manifest) {
-    try {
-        $lines = (Invoke-WebRequest -Uri $manifest.browser_download_url -UseBasicParsing -ErrorAction Stop).Content -split "`n"
-        foreach ($line in $lines) {
-            if ([string]::IsNullOrWhiteSpace($line)) { continue }
-            $col = $line -split "`t", 2
-            $yearMap[$col[0].Trim()] = if ($col.Count -gt 1) { $col[1].Trim() } else { "" }
-        }
-        Write-Host "$($yearMap.Count) via manifest" -ForegroundColor Green
-    } catch { $manifest = $null }
-}
-if (-not $manifest) {
-    try {
-        $treeData = Invoke-RestMethod -Uri "$apiBase/git/trees/MAIN?recursive=1" -Method Get -ErrorAction Stop
-        foreach ($item in $treeData.tree) {
-            $parts = $item.path -split '/'
-            if ($parts.Count -lt 2 -or $parts[0] -notin $yearFolders) { continue }
-            $ext = [System.IO.Path]::GetExtension($item.path)
-            if ($ext -notin @('.tex', '.typ')) { continue }
-            $stem = [System.IO.Path]::GetFileNameWithoutExtension($item.path)
-            $pdfName = $stem.Replace(' ', '_').Replace('&', '.') + '.pdf'
-            # jaar + vakmap, zodat elk vak zijn eigen map krijgt
-            $folder = if ($parts.Count -gt 2) { ($parts[0..1] -join '/') } else { $parts[0] }
-            if (-not $yearMap.ContainsKey($pdfName)) { $yearMap[$pdfName] = $folder }
-        }
-        Write-Host "$($yearMap.Count) via repo tree (fallback)" -ForegroundColor Yellow
-    } catch {
-        Write-Host "0 (no map available)" -ForegroundColor Yellow
-    }
+# Step 2: Remote sizes for the up-to-date check. The API allows 60 calls/hour per IP
+# (shared by everyone on a campus network); if it refuses, sizes come from a HEAD per file.
+Write-Host "  Fetching file sizes... " -ForegroundColor Cyan -NoNewline
+$sizeMap = @{}
+try {
+    $releaseData = Invoke-RestMethod -Uri "$apiBase/releases/tags/latest" -Method Get -ErrorAction Stop
+    foreach ($a in $releaseData.assets) { $sizeMap[$a.name] = [long]$a.size }
+    Write-Host "via API" -ForegroundColor Green
+} catch {
+    Write-Host "API rate-limited, checking per file" -ForegroundColor Yellow
 }
 Write-Host ""
 
 # Step 3: Download each PDF into its course subfolder
 $nDown = 0; $nOk = 0; $nFail = 0; $nMoved = 0; $bytesDown = 0L
 $i = 0
-foreach ($asset in $pdfAssets) {
+foreach ($pdfName in $pdfNames) {
     $i++
-    $pdfName = $asset.name
-    $remoteSize = [long]$asset.size
+    $pdfUrl = "$dlBase/$pdfName"
+    $remoteSize = $sizeMap[$pdfName]
     Write-Progress -Activity "Syncing PDFs" -Status "$i/$total  $pdfName" -PercentComplete ([int](($i / $total) * 100))
 
     $yearFolder = $yearMap[$pdfName]
@@ -154,6 +138,9 @@ foreach ($asset in $pdfAssets) {
 
     # Check if download is needed (compare file size)
     if (Test-Path $outputPath) {
+        if ($null -eq $remoteSize) {
+            try { $remoteSize = [long]"$((Invoke-WebRequest -Uri $pdfUrl -Method Head -UseBasicParsing -ErrorAction Stop).Headers['Content-Length'])" } catch { $remoteSize = -1 }
+        }
         if ((Get-Item $outputPath).Length -eq $remoteSize) {
             $nOk++
             Write-Host "  v $displayPath  (up to date)" -ForegroundColor DarkGray
@@ -162,7 +149,8 @@ foreach ($asset in $pdfAssets) {
     }
 
     try {
-        Invoke-WebRequest -Uri $asset.browser_download_url -OutFile $outputPath -ErrorAction Stop
+        Invoke-WebRequest -Uri $pdfUrl -OutFile $outputPath -UseBasicParsing -ErrorAction Stop
+        $remoteSize = (Get-Item $outputPath).Length
         $nDown++; $bytesDown += $remoteSize
         Write-Host "  v $displayPath  ($(Format-Size $remoteSize))" -ForegroundColor Green
     } catch {
@@ -200,7 +188,7 @@ try {
         Write-Host $msg
     }
 } catch {
-    Write-Host "  (could not load commit history - offline?)" -ForegroundColor DarkGray
+    Write-Host "  (could not load commit history - offline or API rate-limited)" -ForegroundColor DarkGray
 }
 Write-Rule
 
