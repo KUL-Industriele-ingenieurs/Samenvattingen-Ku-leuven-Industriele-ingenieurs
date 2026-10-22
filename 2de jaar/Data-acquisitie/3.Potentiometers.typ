@@ -155,7 +155,37 @@ De beste oplossing blijft een meetinstrument met $R_m >> R_p$.
     [gelijk aan de uitgangsweerstand],
   ),
   juist: "B",
-)[Met $R_m >> R_p$ gaat $R_p \/ R_m$ naar nul en blijft het lineaire verband over. Een getalvoorbeeld met $alpha = x_"in" \/ x_"tot" = 0.5$: met $R_p = R_m = 10 thin "k"Omega$ lees je $0.4$ in plaats van $0.5$ (20 % fout), met $R_m = 1 thin "M"Omega$ nog maar $0.25 %$ fout. D is de valstrik: $R_m = R_"out"$ is de regel voor maximale *vermogens*overdracht. Bij meten wil je maximale *spannings*overdracht.]
+)[Met $R_m >> R_p$ gaat $R_p \/ R_m$ naar nul en blijft het lineaire verband over. Een getalvoorbeeld met $alpha = x_"in" \/ x_"tot" = 0.5$: met $R_p = R_m = 10 thin "k"Omega$ lees je $0.4$ in plaats van $0.5$ (20 % fout), met $R_m = 1 thin "M"Omega$ nog maar $0.25 %$ fout. D is de valstrik: $R_m = R_"out"$ is de regel voor maximale *vermogensoverdracht*. Bij meten wil je maximale *spanningsoverdracht*.]
+
+== Rekenvoorbeeld: foutenvoortplanting <sec:poti-oefening>
+
+De slides van de inductieve sensoren eindigen met een oefening over een potentiometer die wordt uitgelezen door een PLC-ingangskaart. Ze past de foutenvoortplanting uit @sec:normale-verdeling toe.
+
+#voorbeeld(title: "Draaipotentiometer op een WAGO-weerstandsingang (slides 31-36 van Induction)")[
+  Een draaipotentiometer (TW 10 k$Omega$) wordt uitgelezen als weerstand door een WAGO 750-451. De weerstand tussen loper en uiteinde is
+  $ R_2 = (R_"pot" + K_M Delta T) (1 - theta / theta_"max") $
+  met $theta_"max" = 265 degree$ ($sigma = 5 degree \/ sqrt(3)$, een foutband van $plus.minus 5 degree$, zie @sec:tolerantie), $K_M = 10^(-4) thin Omega"/°C"$, $Delta T = 20 degree"C"$ ($sigma = 0.1 degree"C"$) en $theta$ exact gekend ($sigma_theta = 0$). Hoe nauwkeurig is $R_2$, en welke hoek leest de PLC?
+
+  *Stap 1 --- foutenvoortplanting.* Elke onzekere parameter telt mee met zijn partiële afgeleide:
+  $ sigma_(R_2)^2 = ((theta (R_"pot" + K_M Delta T)) / theta_"max"^2)^2 sigma_(theta_"max")^2 + (1 - theta / theta_"max")^2 sigma_(R_"pot")^2 + (K_M (1 - theta / theta_"max"))^2 sigma_(Delta T)^2 $
+
+  *Stap 2 --- bij $theta = 0$.* De eerste term valt weg. Er blijft vooral de tolerantie van $R_"pot"$ over. Met een foutband van $plus.minus 2000 thin Omega$ is $sigma_(R_"pot") = 2000 \/ sqrt(3) = 1155 thin Omega$, en dus ook $sigma_(R_2) approx 1155 thin Omega$. *Kalibreer* je de potentiometer ($sigma_(R_"pot") = 0.1 thin Omega$), dan zakt dat naar $sigma_(R_2) = 0.1 thin Omega$.
+
+  #NOTE[De slide vult hier $R_"pot" = 20000$ in en geeft $sigma_(R_2) = 258 thin Omega$; met $sigma = 2000\/sqrt(3)$ kom je op $1155 thin Omega$. De conclusie (kalibreren!) blijft dezelfde.]
+
+  *Stap 3 --- bij $theta = theta_"max" = 265 degree$*, gekalibreerd met $R_"pot" = 6000 thin Omega$. Nu valt de term met $sigma_(R_"pot")$ weg ($1 - theta\/theta_"max" = 0$), maar de onzekerheid op $theta_"max"$ telt volop:
+  $ sigma_(R_2)^2 = (6000 / 265)^2 dot 25 / 3 = 4272 thin Omega^2 quad => quad sigma_(R_2) = 65.4 thin Omega $
+
+  *Stap 4 --- de PLC-ingang.* De WAGO-kaart meet $R_3 = R_2 + a$ met een resolutie van $0.2 thin Omega$ ($sigma_a = 0.2 \/ sqrt(3)$). Ze zet die om naar een getal $N = K_1 R_3$, met $K_1 = N_"max" \/ R_"pot" = 25000 \/ 6000 = 4.167$. De PLC rekent terug naar een hoek $theta_m = K_2 N$, met $K_2 = theta_"max" \/ N_"max" = 265 \/ 25000 = 0.0106$:
+  $ theta_m = K_2 K_1 (R_2 + a) quad quad sigma_(theta_m)^2 = (K_2 K_1)^2 sigma_(R_2)^2 + (K_2 K_1)^2 sigma_a^2 $
+  $ sigma_(theta_m) = 0.04417 dot sqrt(4272 + 0.013) = 2.89 degree $
+
+  #NOTE[De slide geeft $sigma_(theta_m) = 0.357 degree$: daar is $sigma_(R_2) = 65.36$ niet gekwadrateerd. Correct is $2.89 degree$, precies de onzekerheid $5 degree \/ sqrt(3)$ op $theta_"max"$.]
+
+  *Kerninzicht:* de resolutie van de ingangskaart ($0.2 thin Omega$) speelt geen rol. De meetfout komt van de sensor: eerst de tolerantie van $R_"pot"$ (weg te werken door te kalibreren), daarna de onzekerheid op de elektrische hoek $theta_"max"$.
+]
+
+Let op het verschil tussen *mechanische rotatie* (hoe ver de as fysiek kan draaien) en *elektrische rotatie* (het deel van die beweging waarin de loper de weerstand echt verandert). Door een dode zone aan de uiteinden is de elektrische hoek kleiner, hier $theta_"max" = 265 degree$.
 
 == Speciale modellen <sec:poti-speciaal>
 
