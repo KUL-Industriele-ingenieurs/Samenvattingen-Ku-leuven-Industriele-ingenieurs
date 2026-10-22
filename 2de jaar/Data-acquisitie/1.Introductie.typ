@@ -78,13 +78,16 @@ De ADC doet drie dingen na elkaar (meer in @ch:adc en @ch:sampling):
 
 === Transducer of sensor <sec:transductor-vs-sensor>
 
-De twee woorden worden vaak door elkaar gebruikt, maar ze betekenen niet hetzelfde:
+#concept(title: "Transducer en sensor")[
+  Een *transducer* wordt geactiveerd door energie in een systeem en zet die energie om naar een andere vorm, voor een ander systeem. Een *sensor* ontvangt een signaal of stimulus en zet die om naar een *elektrisch* signaal.
+]
+
+De twee woorden worden vaak door elkaar gebruikt, maar een sensor is specifieker: zijn uitgang is altijd elektrisch.
 
 #table(
   columns: (auto, 1fr, 1fr),
   align: (left, left, left),
   table.header([], [*Transducer*], [*Sensor*]),
-  [Definitie], [Toestel dat geactiveerd wordt door energie in een systeem en die energie omzet naar een andere vorm, voor een ander systeem], [Toestel dat een signaal of stimulus ontvangt en omzet naar een *elektrisch* signaal],
   [Uitgang], [Elke energievorm], [Altijd elektrisch],
   [Voorbeeld], [Luidspreker: elektrisch signaal → wisselend magneetveld → trilling. Een veer: kracht → verplaatsing], [Thermometer met elektrische uitgang; onze zintuigen werken ook zo],
 )
@@ -103,9 +106,11 @@ Een sensor kan dus uit meerdere transducers bestaan, zolang de laatste stap een 
 
 === Actieve en passieve sensoren <sec:passief-vs-actief>
 
-Vanuit de dataverwerking deel je sensoren in volgens hun energiebron:
-- Een *actieve sensor* heeft een externe voeding nodig, de *excitatie*. Zonder bronspanning of -stroom geeft hij niets. Voorbeelden: RTD, thermistor, rekstrook, LVDT.
-- Een *passieve sensor* wekt zelf zijn uitgangssignaal op en heeft *geen excitatie* nodig. Voorbeelden: thermokoppel, piëzo-elektrische sensor, fotodiode.
+#concept(title: "Actieve en passieve sensor")[
+  Een *actieve sensor* heeft een externe voeding nodig, de *excitatie*. Een *passieve sensor* wekt zelf zijn uitgangssignaal op en heeft *geen excitatie* nodig.
+]
+
+Zonder bronspanning of -stroom geeft een actieve sensor dus niets: denk aan een RTD, thermistor, rekstrook of LVDT. Een thermokoppel, piëzo-elektrische sensor of fotodiode levert zelf een spanning, lading of stroom.
 
 #table(
   columns: (auto, auto, auto, auto),
