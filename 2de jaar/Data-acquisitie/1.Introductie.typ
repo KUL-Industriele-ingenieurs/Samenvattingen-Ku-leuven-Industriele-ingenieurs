@@ -1,103 +1,154 @@
 #import "../../school-template.typ": *
 
-// BRON: Samenvatting p.3-4 | DAQ_introductie.pdf
+// BRON: Slides/1.DAQ_introductie.pdf | Slides/2.Sensoren_karakteristieken.pdf (slides 4-9)
+//       Samenvatting DAQ p.3-4 | Samenvatting 2024-2025 p.6-7 | examenvragen 2016-2025
 
 = Introductie <ch:introductie>
 
-Het vak data acquisitie gaat over hoe we met elektronica informatie opnemen en verwerken van de fysieke wereld.
+*Data-acquisitie* (DAQ) is het meten van signalen uit de fysieke wereld en het omzetten ervan naar data die een computer kan verwerken. Het vak volgt die weg in vier grote blokken: *analoge sensoren*, *signaalconditionering*, *signaalverwerking* (de omzetting met een ADC of DAC) en *software-interfacing*, met als laatste stap de voorstelling van de data.
 
-Dit behoudt sensoren, hoe we de data van de sensoren gaan eruit halen, verwerking van het signaal en dan bruikbaar maken in een systeem.
+== DAQ binnen de automatisering <sec:automatiseringspiramide>
 
-Het is echt de basis van automatisering
+DAQ zit onderaan de *automatiseringspiramide*. Op het veldniveau (level 1) zitten de sensoren en actuatoren die rechtstreeks met het proces (level 0) praten. Daarboven komen de PLC's (control level), SCADA en HMI (supervisory level), de planning en het management. Elke laag communiceert via een gateway met de volgende, met een eigen tijdsvertraging en een eigen grootte van datapakketten: onderaan milliseconden en kleine pakketten, bovenaan uren en grote pakketten.
 
 #figure(
-  image("assets/Management-Piramide.png", width: 5cm),
-  caption: [Management-Piramide],
+  image("assets/Management-Piramide.png", width: 13cm),
+  caption: [De automatiseringspiramide (links) en de vlakkere structuur van een IoT-systeem (rechts) (slide 15)],
   label: <fig:Management-Piramide>,
 )
 
-
+#examenbox[*23-24 vraag 8 / voorbeeldexamen 2024:* "De automatiseringspiramide geeft weer dat ..." Juist: *er verschillende lagen zijn die via gateways communiceren, elk met eigen tijdsvertraging en datapakketgrootte.* Fout is "alle niveaus hebben directe toegang tot de ruwe sensordata": dat is net het omgekeerde van een piramide.]
 
 == Structuur van een meetsysteem <sec:meetsysteem>
 
+Elk meetsysteem bestaat uit vier bouwblokken die na elkaar staan. De ingang is de *werkelijke waarde* van de grootheid, de uitgang de *gemeten waarde*.
+
 #figure(
-  image("assets/Structuur-van-een-meetsysteem.png", width: 5cm),
-  caption: [Structuur-van-een-meetsysteem],
+  image("assets/Structuur-van-een-meetsysteem.png", width: 14cm),
+  caption: [De vier bouwblokken van een meetsysteem (slide 16)],
   label: <fig:Structuur-van-een-meetsysteem>,
 )
 
++ *Meetelement* (sensing element): staat in contact met het proces en geeft een uitgang die afhangt van de te meten grootheid. Dit is de sensor zelf. (@ch:potentiometer -- @ch:temperatuur)
++ *Signaalconditioneringselement*: zet de uitgang van de sensor om naar een vorm die beter verder te verwerken is, bv. een brug, een versterker of een filter. (@ch:signaalconditionering)
++ *Signaalverwerkingselement*: zet het geconditioneerde signaal om naar een vorm die geschikt is om voor te stellen, bv. met een ADC en een computer. (@ch:dac -- @ch:sampling)
++ *Datapresentatie-element*: toont de meetwaarde op een manier die een mens kan lezen, bv. een display of een grafiek. (@ch:interfacing)
+
+Concreet in het labo: een Pt100-temperatuursensor (TM4441) gaat naar een analoge ingangskaart (WAGO 751451), dan naar een PLC en ten slotte naar een laptop.
+
 #figure(
-  image("assets/Fysieke-voorbeelden-van-elke-structuur.png", width: 5cm),
-  caption: [Fysieke-voorbeelden-van-elke-structuur],
+  image("assets/Fysieke-voorbeelden-van-elke-structuur.png", width: 12cm),
+  caption: [Hetzelfde meetsysteem met echte toestellen: sensor, ingangskaart, PLC, laptop (slide 17)],
   label: <fig:Fysieke-voorbeelden-van-elke-structuur>,
 )
 
-=== Sensing element <sec:sensing-element>
-
-=== Signal conditioning element <sec:signal-conditioning>
-
-=== Signal processing element <sec:signal-processing>
-
-=== Data representation element <sec:data-representation>
-
+Vier voorbeelden uit de slides tonen hoe de blokken bij verschillende grootheden telkens terugkomen:
 
 #figure(
-  image("assets/Voorbeelden-meetsysteem.png", width: 5cm),
-  caption: [Voorbeelden-meetsysteem],
+  image("assets/Voorbeelden-meetsysteem.png", width: 15cm),
+  caption: [Voorbeelden van meetsystemen: (a) temperatuur met een thermokoppel, (b) snelheid met een tachogenerator, (c) debiet met een meetflens, (d) gewicht met een rekstrook op een uitkragende balk (slide 25)],
   label: <fig:Voorbeelden-meetsysteem>,
 )
 
-// TODO: De 4 bouwblokken: meetelement, signaalconditionering, signaalverwerking, datapresentatie.
-// TODO: Sensor vs transducer -- definitie en het verschil (een sensor kan meerdere transducers bevatten).
-// TODO: Voorbeeld speaker: elektrisch -> magnetisch veld -> trilling.
+== Data-acquisitiesysteem <sec:daq-systeem>
+
+Een *DAQ-systeem* is een speciaal meetsysteem: de signaalverwerking bestaat altijd uit een *analoog-digitaalomzetting* (ADC), gevolgd door software die de data verwerkt en analyseert. Het bestaat dus uit sensoren, een computer en DAQ-software.
+
+#figure(
+  image("assets/L1-daq-systeem.png", width: 12cm),
+  caption: [Van fysiek signaal naar digitale code: sensor, signaalconditionering, ADC en computer (Samenvatting DAQ p.3)],
+  label: <fig:L1-daq-systeem>,
+)
+
+De ADC doet drie dingen na elkaar (meer in @ch:adc en @ch:sampling):
++ *Bemonsteren* (sampling): op vaste tijdstippen de spanning meten. Het aantal metingen per seconde is de bemonsteringsfrequentie.
++ *Kwantiseren*: elke meting afronden naar een van de beschikbare niveaus. Een 12-bit ADC heeft $2^12 = 4096$ niveaus.
++ *Coderen*: aan elk niveau een binaire code toekennen.
 
 == Classificatie van meetelementen <sec:classificatie>
 
-=== Transductor vs Sensor <sec:transductor-vs-sensor>
+=== Transducer of sensor <sec:transductor-vs-sensor>
 
-Een transducer is een toestel dat
-geactiveerd wordt door energie in een
-systeem en deze energie omzet in een
-andere vorm voor een ander systeem
+De twee woorden worden vaak door elkaar gebruikt, maar ze betekenen niet hetzelfde:
 
-UIT SLIDE
-
-Denk aan een motor, zet elektrische energie om in mechanische energie
-
-Een sensor is een toestel dat een signaal
-of stimulus ontvangt en omzet naar een
-elektrisch signaal.
-
-Denk aan een thermometer.
-
-
-Wij hebben het in deze cursur alleen over sensoren.
-
-== Passief vs actief <sec:passief-vs-actief>
-
-Een passieve sensor werkt zonder dat er een externe energie moet aan toegevoegd worden. Het genereert zelf een signaal. Een voorbeeld is een thermokoppel, fotodiode of piezo. Dit zijn meestal weerstanden die zich aanpassen afhankelijk van een omgevingsfactor (temperatuur, licht, druk, ...).
-
-Een actieve sensor heeft een externe energiebron nodig om te werken. Een voorbeeld is een RTD of rekstrook.
-
-#figure(
-  image("assets/Actief-Passief.png", width: 12cm),
-  caption: [Actief-Passief],
-  label: <fig:Actief-Passief>,
+#table(
+  columns: (auto, 1fr, 1fr),
+  align: (left, left, left),
+  table.header([], [*Transducer*], [*Sensor*]),
+  [Definitie], [Toestel dat geactiveerd wordt door energie in een systeem en die energie omzet naar een andere vorm, voor een ander systeem], [Toestel dat een signaal of stimulus ontvangt en omzet naar een *elektrisch* signaal],
+  [Uitgang], [Elke energievorm], [Altijd elektrisch],
+  [Voorbeeld], [Luidspreker: elektrisch signaal → wisselend magneetveld → trilling. Een veer: kracht → verplaatsing], [Thermometer met elektrische uitgang; onze zintuigen werken ook zo],
 )
 
-meer info over al deze sensoren later.
+Een sensor kan dus uit meerdere transducers bestaan, zolang de laatste stap een elektrisch signaal geeft. In dit vak gaat het alleen over sensoren.
+
+#examenbox[*23-24 vraag 1 en 25-26 vraag 6:* "Een transducer is ..." Juist: *een toestel dat energieomzettingen kan uitvoeren.* Fout zijn "een sensor die verplaatsing omzet in een elektrisch signaal" (dat is een sensor), "een optioneel onderdeel van elke sensor" en "een speciaal type sensor".]
+
+=== Actieve en passieve sensoren <sec:passief-vs-actief>
+
+Vanuit de dataverwerking deel je sensoren in volgens hun energiebron:
+- Een *actieve sensor* heeft een externe voeding nodig, de *excitatie*. Zonder bronspanning of -stroom geeft hij niets. Voorbeelden: RTD, thermistor, rekstrook, LVDT.
+- Een *passieve sensor* wekt zelf zijn uitgangssignaal op en heeft *geen excitatie* nodig. Voorbeelden: thermokoppel, piëzo-elektrische sensor, fotodiode.
+
+#table(
+  columns: (auto, auto, auto, auto),
+  align: (left, left, center, left),
+  table.header([*Grootheid*], [*Sensor*], [*Actief/passief*], [*Uitgang*]),
+  table.cell(rowspan: 4)[Temperatuur], [Thermokoppel], [passief], [spanning],
+  [Silicium], [actief], [spanning/stroom],
+  [RTD], [actief], [weerstand],
+  [Thermistor], [actief], [weerstand],
+  table.cell(rowspan: 2)[Kracht/druk], [Rekstrook], [actief], [weerstand],
+  [Piëzo-elektrisch], [passief], [lading],
+  [Versnelling], [Accelerometer], [actief], [capaciteit],
+  [Positie], [LVDT], [actief], [AC-spanning],
+  [Lichtintensiteit], [Fotodiode], [passief], [stroom],
+)
+
+Uit de tabel volgt het onderscheid meteen: een sensor waarvan de *weerstand* of *capaciteit* verandert, is altijd actief. Je moet er een stroom door sturen of een spanning over zetten om die verandering te zien. Een nadeel van actieve sensoren: een fout van 1 % op de excitatie zit ook als 1 % op de uitgang. De Wheatstonebrug (@ch:rekstroken-2) vangt dat op.
+
+#examenbox[Deze vraag komt bijna elk jaar terug (2016, 2017, 2019): "Een passieve sensor ..." Juist: *heeft geen excitatie(spanning) nodig.* De afleiders "heeft een uitgang in functie van R, V of I" zijn fout: het type uitgang zegt niets over actief of passief.]
 
 === Sensoren in een regellus <sec:sensoren-regellus>
 
+In een industriële regellus staat de sensor ver van de controlekamer. Het signaal gaat via signaalconditionering naar een *4--20 mA-transmitter*, over een lange kabel naar een ontvanger, door een ADC naar de microcontroller. De terugweg naar de actuator (hier een verwarming) loopt via een DAC en opnieuw een 4--20 mA-lus.
+
 #figure(
-  image("assets/Sensoren-in-een-regellus.png", width: 5cm),
-  caption: [Sensoren-in-een-regellus],
+  image("assets/Sensoren-in-een-regellus.png", width: 9cm),
+  caption: [Typische industriële regellus (slide 8 van Sensoren -- karakteristieken)],
   label: <fig:Sensoren-in-een-regellus>,
 )
 
+Twee keuzes vallen op (Samenvatting 2024-2025 p.7):
+- *Stroom in plaats van spanning*: over een lange kabel valt spanning weg. Die fout zie je niet in een spanningssignaal, maar de stroom in een gesloten lus is overal dezelfde.
+- *4 mA in plaats van 0 mA* als nulpunt: krijg je 0 mA binnen, dan weet je dat de kabel onderbroken is.
 
-// TODO: Actief vs passief: actief heeft een bronspanning nodig (RTD, rekstrook), passief genereert zelf spanning (thermokoppel, fotodiode, piezo).
-// TODO: Slimme sensoren: A/D + microcontroller op de sensor -> kalibratie en linearisatie aan boord.
+Meer over transmitters in @ch:signaalconditionering.
 
+=== Slimme sensoren <sec:slimme-sensoren>
 
+Zet je een ADC en een microcontroller mee op de sensor, dan krijg je een *slimme sensor* (smart sensor). Die kan dingen doen die anders de computer doet:
+- zichzelf kalibreren,
+- de karakteristiek lineariseren,
+- uitwisselbaar zijn met andere sensoren,
+- communiceren over een standaard digitale interface.
 
+Omdat alles digitaal is, hangen veel slimme sensoren samen op één veldbus in plaats van elk op een eigen 4--20 mA-kabel. Dat is handig als een machine honderden sensoren heeft.
+
+#grid(
+  columns: (1.4fr, 1fr),
+  gutter: 1em,
+  align: horizon,
+  figure(
+    image("assets/L1-slimme-sensoren.png", width: 100%),
+    caption: [Slimme sensoren op een veldbus (slide 9)],
+    label: <fig:L1-slimme-sensoren>,
+  ),
+  figure(
+    image("assets/L1-slimme-sensor-opbouw.png", width: 100%),
+    caption: [Opbouw: sensor, versterker, ADC, microcontroller (slide 9)],
+    label: <fig:L1-slimme-sensor-opbouw>,
+  ),
+)
+
+#examenbox[*25-26 vraag 22* (ook als voorbeeld op de laatste slide): "Een smart sensor ..." Juist: *kan geïntegreerd worden op één chip* (sensor + ADC + microcontroller). Valstrik: "is nauwkeuriger dan een basissensor". Slimmer is niet nauwkeuriger: het meetelement zelf blijft hetzelfde.]
