@@ -130,8 +130,11 @@ Niet elke sensor is (bijna) lineair. Voor de transferfunctie gebruik je een van 
 
 De uitgang hangt niet alleen af van de ingang $I$. Ook de omgeving speelt mee, meestal de temperatuur. Dat kan op twee manieren:
 
-- Een *modificerende ingang* $I_M$ verandert de *helling*: de gevoeligheid wordt $K + K_M I_M$. Het effect is evenredig met $I$ zelf, dus de term is $K_M I_M I$.
-- Een *interfererende ingang* $I_I$ *verschuift* de hele rechte: er komt een bias $K_I I_I$ bij, los van $I$.
+#concept(title: "Modificerende en interfererende ingang")[
+  Een *modificerende ingang* $I_M$ verandert de *helling* van de karakteristiek. Een *interfererende ingang* $I_I$ *verschuift* de hele karakteristiek, los van $I$.
+]
+
+Bij een modificerende ingang wordt de gevoeligheid $K + K_M I_M$. Het effect is dus evenredig met $I$ zelf en de term in het model is $K_M I_M I$. Een interfererende ingang voegt een bias $K_I I_I$ toe.
 
 #figure(
   image("assets/L2-omgevingseffecten.png", width: 12cm),
@@ -191,11 +194,15 @@ Hysteresis moet je zo klein mogelijk houden. Corrigeren in software kan, maar is
 
 === Repeteerbaarheid, reproduceerbaarheid en precisie <sec:precisie>
 
+#concept(title: "Nauwkeurigheid en precisie")[
+  *Nauwkeurigheid* zegt hoe dicht de metingen (gemiddeld) bij de werkelijke waarde liggen. *Precisie* zegt hoe dicht de metingen bij elkaar liggen.
+]
+
+Precisie bestaat uit twee delen:
 - *Repeteerbaarheid*: de sensor geeft dezelfde uitgang als je dezelfde meting meerdere keren herhaalt *onder dezelfde omstandigheden*.
 - *Reproduceerbaarheid*: de spreiding als de omstandigheden wél veranderen: een andere waarnemer, ander instrument, andere kalibratie, andere omgeving of een langere tijd tussen de metingen.
-- *Precisie* omvat beide.
 
-Precisie is iets anders dan nauwkeurigheid. Een sensor kan steeds hetzelfde (verkeerde) resultaat geven:
+Een sensor kan dus heel precies zijn en toch steeds hetzelfde verkeerde resultaat geven:
 
 #figure(
   image("assets/L2-precisie-schijven.png", width: 12cm),
@@ -525,7 +532,9 @@ Een *IP-code* (Ingress Protection) geeft aan hoe goed een behuizing beschermt te
 
 === SIL <sec:sil>
 
-*SIL* (Safety Integrity Level) is een relatieve maat voor de betrouwbaarheid van een geautomatiseerde veiligheidsfunctie. Let op: SIL is *geen* eigenschap van één sensor, maar van de volledige veiligheidsfunctie (SIF, Safety Instrumented Function): sensor, logica en actuator samen.
+#concept(title: "Safety Integrity Level (SIL)")[
+  *SIL* is een relatieve maat voor de betrouwbaarheid van een geautomatiseerde veiligheidsfunctie. Het is *geen* eigenschap van één sensor, maar van de volledige veiligheidsfunctie (SIF, Safety Instrumented Function): sensor, logica en actuator samen.
+]
 
 SIL wordt uitgedrukt met de *PFD* (Probability of Failure on Demand): de kans dat de veiligheidsfunctie faalt op het moment dat ze nodig is.
 
