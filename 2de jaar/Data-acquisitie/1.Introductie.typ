@@ -18,7 +18,9 @@ DAQ zit onderaan de *automatiseringspiramide*. Op het veldniveau (level 1) zitte
   label: <fig:Management-Piramide>,
 )
 
-#examenvraag("23-24 vraag 8, voorbeeldexamen 2024", [De automatiseringspiramide geeft weer dat ...],
+#examenvraag(
+  "23-24 vraag 8, voorbeeldexamen 2024",
+  [De automatiseringspiramide geeft weer dat ...],
   opties: (
     [er verschillende lagen zijn die via gateways communiceren, elk met eigen tijdsvertraging en datapakketgrootte],
     [een IoT-systeem perfect past binnen een gelaagde piramidestructuur],
@@ -54,7 +56,7 @@ Concreet in het labo: een Pt100-temperatuursensor (TM4441) gaat naar een analoge
 Vier voorbeelden uit de slides tonen hoe de blokken bij verschillende grootheden telkens terugkomen:
 
 #figure(
-  image("assets/Voorbeelden-meetsysteem.png", width: 15cm),
+  image("assets/Voorbeelden-meetsysteem.png", width: 18cm),
   caption: [Voorbeelden van meetsystemen: (a) temperatuur met een thermokoppel, (b) snelheid met een tachogenerator, (c) debiet met een meetflens, (d) gewicht met een rekstrook op een uitkragende balk (slide 25)],
   label: <fig:Voorbeelden-meetsysteem>,
 )
@@ -79,7 +81,9 @@ De ADC doet drie dingen na elkaar (meer in @ch:adc en @ch:sampling):
 === Transducer of sensor <sec:transductor-vs-sensor>
 
 #concept(title: "Transducer en sensor")[
-  Een *transducer* wordt geactiveerd door energie in een systeem en zet die energie om naar een andere vorm, voor een ander systeem. Een *sensor* ontvangt een signaal of stimulus en zet die om naar een *elektrisch* signaal.
+  Een *transducer* wordt geactiveerd door energie in een systeem en zet die energie om naar een andere vorm, voor een ander systeem.
+
+  Een *sensor* ontvangt een signaal of stimulus en zet die om naar een *elektrisch* signaal.
 ]
 
 De twee woorden worden vaak door elkaar gebruikt, maar een sensor is specifieker: zijn uitgang is altijd elektrisch.
@@ -89,12 +93,16 @@ De twee woorden worden vaak door elkaar gebruikt, maar een sensor is specifieker
   align: (left, left, left),
   table.header([], [*Transducer*], [*Sensor*]),
   [Uitgang], [Elke energievorm], [Altijd elektrisch],
-  [Voorbeeld], [Luidspreker: elektrisch signaal → wisselend magneetveld → trilling. Een veer: kracht → verplaatsing], [Thermometer met elektrische uitgang; onze zintuigen werken ook zo],
+  [Voorbeeld],
+  [Luidspreker: elektrisch signaal → wisselend magneetveld → trilling. Een veer: kracht → verplaatsing],
+  [Thermometer met elektrische uitgang; onze zintuigen werken ook zo],
 )
 
 Een sensor kan dus uit meerdere transducers bestaan, zolang de laatste stap een elektrisch signaal geeft. In dit vak gaat het alleen over sensoren.
 
-#examenvraag("23-24 vraag 1, 25-26 vraag 6", [Een transducer is ...],
+#examenvraag(
+  "23-24 vraag 1, 25-26 vraag 6",
+  [Een transducer is ...],
   opties: (
     [een speciaal type sensor dat enkel gebruikt wordt om fysische grootheden te meten],
     [een toestel dat energieomzettingen kan uitvoeren],
@@ -129,7 +137,9 @@ Zonder bronspanning of -stroom geeft een actieve sensor dus niets: denk aan een 
 
 Uit de tabel volgt het onderscheid meteen: een sensor waarvan de *weerstand* of *capaciteit* verandert, is altijd actief. Je moet er een stroom door sturen of een spanning over zetten om die verandering te zien. Een nadeel van actieve sensoren: een fout van 1 % op de excitatie zit ook als 1 % op de uitgang. De Wheatstonebrug (@ch:rekstroken-2) vangt dat op.
 
-#examenvraag("2019 vraag 5, ook 2016 en 2017", [Een passieve sensor ...],
+#examenvraag(
+  "2019 vraag 5, ook 2016 en 2017",
+  [Een passieve sensor ...],
   opties: (
     [heeft geen excitatie nodig],
     [heeft een uitgang in functie van $R$],
@@ -181,7 +191,9 @@ Omdat alles digitaal is, hangen veel slimme sensoren samen op één veldbus in p
   ),
 )
 
-#examenvraag("25-26 vraag 22, ook als voorbeeld op de laatste slide", [Een "smart sensor" ...],
+#examenvraag(
+  "25-26 vraag 22, ook als voorbeeld op de laatste slide",
+  [Een "smart sensor" ...],
   opties: (
     [is een sensor met een digitale ingang],
     [kan geïntegreerd worden op 1 chip],
