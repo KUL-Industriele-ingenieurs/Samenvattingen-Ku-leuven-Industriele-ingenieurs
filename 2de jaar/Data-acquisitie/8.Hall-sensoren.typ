@@ -14,3 +14,13 @@
 // TODO: Enkelvoudig vs differentieel: waarom differentieel ongevoelig is voor uniforme veldvariatie en temperatuur.
 // TODO: De angular Hall brug sensor en de magnetische multipolige sensor.
 
+== Ultrasone sensoren <sec:ultrasoon>
+
+// Slides/8.hall.pdf p.16-17 (staat in hetzelfde deck als Hall)
+
+=== Looptijdmeting <sec:looptijd>
+
+// TODO: FORMULE: d = v t / 2. Waarom de factor 2.
+// TODO: Temperatuurafhankelijkheid van de geluidssnelheid -- de grootste foutbron.
+// TODO: Dode zone, bundelhoek, welke oppervlakken slecht reflecteren.
+

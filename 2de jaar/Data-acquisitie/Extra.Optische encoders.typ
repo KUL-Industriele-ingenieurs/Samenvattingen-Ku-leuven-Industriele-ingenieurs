@@ -2,7 +2,9 @@
 
 // BRON: Samenvatting p.30-33
 
-= Optische sensoren <ch:optisch>
+= Optische encoders <ch:optisch>
+
+#NOTE[De planning noemt "verplaatsing deel 5: piëzo, optisch", maar er is geen slidedeck over optische encoders. Staat in de oudere samenvattingen en komt nog voor in examenvragen (o.a. voorbeeldexamen 25-26 vraag 9).]
 
 == Incrementele encoder <sec:incrementele-encoder>
 

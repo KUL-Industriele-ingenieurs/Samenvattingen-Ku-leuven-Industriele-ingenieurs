@@ -10,12 +10,14 @@
 // ============================================================================
 //                           CHAPTER INCLUDES
 // ============================================================================
-// Skelet opgebouwd uit "Samenvatting DAQ.pdf" (58 p) samengevoegd met de
-// 19 slidedecks. Hoofdstukken 16 t.e.m. 22 staan NIET in de samenvatting en
-// komen enkel uit de slides -- die zijn dus even goed examenstof.
+// Eén hoofdstuk per slidedeck (Unif/2_1/Data-acquisitie/Slides/N.*.pdf),
+// het nummer van het bestand = het nummer van het deck. Aangevuld met de drie
+// studentensamenvattingen en de examenvragen (Examen/DAQ_examenvragen-met-antwoorden.tex).
+// Oude hoofdstukken die geen eigen deck hebben (piëzo, ultrasoon) staan in _OLD/
+// en zijn verdeeld over de decks waar ze in de slides voorkomen.
 //
-// Werkwijze: zie SCHRIJFGIDS.md. Eerst dit skelet, dan sectie per sectie
-// uitwerken. Een hoofdstuk tijdelijk uitsluiten? Zet de #include in commentaar.
+// Werkwijze: zie SCHRIJFGIDS.md. Een hoofdstuk tijdelijk uitsluiten? Zet de
+// #include in commentaar.
 
 #printformularium()
 
@@ -25,27 +27,26 @@
 #include "2.Sensorkarakteristieken.typ"
 
 // ----- DEEL II: VERPLAATSINGS- EN BEWEGINGSSENSOREN -----
-#include "3.Potentiometer.typ"
-#include "4.Rekstroken.typ"
-#include "5.Inductieve sensoren.typ"
-#include "6.Capacitieve sensoren.typ"
-#include "7.Piezo-elektrische sensoren.typ"
-#include "8.Optische sensoren.typ"
-#include "9.Hall-sensoren.typ"
-#include "10.Ultrasone sensoren.typ"
-#include "11.Snelheidssensoren.typ"
-#include "12.Versnellingssensoren.typ"
-#include "13.MEMS.typ"
+#include "3.Potentiometers.typ"
+#include "4.Rekstroken deel 1.typ"
+#include "5.Rekstroken deel 2.typ"
+#include "6.Inductieve sensoren.typ"
+#include "7.Capacitieve sensoren.typ"
+#include "8.Hall-sensoren.typ"
+#include "9.Snelheidssensoren.typ"
+#include "10.Versnellingssensoren.typ"
+#include "11.MEMS.typ"
+#include "Extra.Optische encoders.typ"   // niet in de slides 25-26
 
 // ----- DEEL III: PROCESSENSOREN -----
-#include "14.Kracht en torsie.typ"
-#include "15.Druksensoren.typ"
-#include "16.Debietsensoren.typ"        // enkel slides
-#include "17.Temperatuursensoren.typ"   // enkel slides
+#include "12.Druksensoren.typ"
+#include "13.Kracht en torsie.typ"
+#include "14.Debietsensoren.typ"
+#include "15.Temperatuursensoren.typ"
 
-// ----- DEEL IV: VAN SENSOR NAAR COMPUTER (enkel slides) -----
-#include "18.Signaalconditionering.typ"
-#include "19.Sampling en aliasing.typ"
-#include "20.ADC.typ"
-#include "21.DAC.typ"
-#include "22.Data-interfacing.typ"
+// ----- DEEL IV: VAN SENSOR NAAR COMPUTER -----
+#include "16.Signaalconditionering.typ"
+#include "17.DAC.typ"
+#include "18.ADC.typ"
+#include "19.Bemonsteringstheorema.typ"
+#include "20.Data-interfacing.typ"
