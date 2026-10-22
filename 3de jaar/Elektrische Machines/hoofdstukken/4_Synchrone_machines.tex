@@ -919,10 +919,68 @@ the armature current of the ac machine?
 adjustment can be made to cause the transfer of 25kW from the ac source
 to the DC source? Under these conditions, what are the armature current
 and internal voltage of the DC machine? What will be the magnitude and
-phase of the current in the ac machine? 
+phase of the current in the ac machine?
 \end{itemize}
 \textbf{Oplossing:}
-\dots ({\color{red}Nog niet aan begonnen})
+\newline
+Gegevens (we nemen de AC-machine in ster aan):
+\begin{itemize}
+    \item $V_\phi = \frac{460 V}{\sqrt{3}} = 265.6 V$
+    \item $X_S = 6.6 \Omega$
+    \item $R_{A,DC} = 22 m\Omega$, $V_{DC} = 250 V$
+\end{itemize}
+Belangrijk om te zien: de DC-motor en de synchrone machine zitten op dezelfde as.
+Het net legt de synchrone snelheid op, dus het toerental van de DC-machine ligt ook vast.
+Dan kan je de vermogensstroom alleen nog sturen met de veldstroom van de DC-machine:
+die verandert $E_{DC} = k \phi \omega$ bij vaste $\omega$.
+\newline
+\textbf{a)}
+Bij $\cos\varphi = 1$ ligt de stroom in fase met $V_\phi$:
+\begin{align*}
+    I_A = \frac{P}{3 \cdot V_\phi} = \frac{25 kW}{3 \cdot 265.6 V} = 31.4 A
+\end{align*}
+We werken in generatorreferentie:
+\begin{align*}
+    \underline{E}_{SM} = \underline{V}_\phi + j X_S \underline{I}_A = 265.6 V + j \cdot 6.6 \Omega \cdot 31.4 A = 336.8 V \angle 37.95^\circ
+\end{align*}
+Dus $E_{SM} = 336.8 V$ per fase (583 V lijn).
+De DC-motor levert 25 kW aan de as, dus (verliezen in het koper verwaarloosd voor de stroom):
+\begin{align*}
+    I_{A,DC} = \frac{25 kW}{250 V} = 100 A \quad \rightarrow \quad E_{DC} = V_{DC} - R_A I_{A,DC} = 250 V - 0.022 \Omega \cdot 100 A = 247.8 V
+\end{align*}
+\textbf{b)}
+Verhoog de veldstroom van de DC-machine tot $E_{DC} = V_{DC} = 250 V$.
+Dan is $I_{A,DC} = 0$ en gaat er geen vermogen meer over de as.
+De AC-machine levert dan geen actief vermogen, dus $\delta = 0$: $\underline{E}_{SM}$ en
+$\underline{V}_\phi$ liggen in fase.
+\begin{align*}
+    \underline{I}_A = \frac{\underline{E}_{SM} - \underline{V}_\phi}{j X_S} = \frac{336.8 V - 265.6 V}{j \cdot 6.6 \Omega} = 10.8 A \angle -90^\circ
+\end{align*}
+De machine is nog steeds overbekrachtigd ($E_{SM} > V_\phi$), dus ze levert zuiver reactief
+vermogen aan het net (als een synchrone compensator).
+\newline
+\textbf{c)}
+Verhoog de veldstroom van de DC-machine nog verder, zodat $E_{DC} > V_{DC}$.
+De DC-machine werkt dan als generator en de AC-machine als motor.
+Voor 25 kW naar de DC-bron:
+\begin{align*}
+    I_{A,DC} = \frac{25 kW}{250 V} = 100 A \quad \rightarrow \quad E_{DC} = V_{DC} + R_A I_{A,DC} = 250 V + 2.2 V = 252.2 V
+\end{align*}
+Over de as gaat dus $P = E_{DC} \cdot I_{A,DC} = 25.22 kW$.
+Met een ongewijzigde veldstroom blijft $E_{SM} = 336.8 V$; de lasthoek wordt negatief:
+\begin{align*}
+    \sin\delta = \frac{P \cdot X_S}{3 \cdot V_\phi \cdot E_{SM}} = \frac{-25.22 kW \cdot 6.6 \Omega}{3 \cdot 265.6 V \cdot 336.8 V} \quad \rightarrow \quad \delta = -38.3^\circ
+\end{align*}
+\begin{align*}
+    \underline{I}_A = \frac{\underline{E}_{SM} - \underline{V}_\phi}{j X_S} = \frac{336.8 V \angle -38.3^\circ - 265.6 V}{j \cdot 6.6 \Omega} = 31.7 A \angle 179.6^\circ
+\end{align*}
+In generatorreferentie staat de stroom bijna in tegenfase met $V_\phi$: de machine neemt
+actief vermogen op.
+In motorreferentie is dat $31.7 A \angle -0.4^\circ$, dus nagenoeg bij $\cos\varphi = 1$.
+\newline
+\textbf{Inzicht:} bij een vaste netspanning en -frequentie bepaalt de bekrachtiging van de
+synchrone machine alleen het reactief vermogen; het actief vermogen volgt uit wat er
+mechanisch aan de as gebeurt.
 \end{oefenblok}
 
 \begin{oefenblok}[Oefening 5-3 van Slides]
@@ -939,7 +997,30 @@ Assuming that the motor is lossless, answer the following questions:
  to 0.85 leading?
 \end{itemize}
 \textbf{Oplossing:}
-\dots ({\color{red}Nog niet aan begonnen})
+\newline
+\textbf{a)}
+Verliesloos, dus het opgenomen elektrisch vermogen is het asvermogen:
+\begin{align*}
+    P = \sqrt{3} \cdot V_T \cdot I_L \cdot \cos\varphi = \sqrt{3} \cdot 230 V \cdot 40 A \cdot 1 = 15.9 kW
+\end{align*}
+Een tweepolige machine ($p = 1$) op 50 Hz draait synchroon aan
+$\omega_s = 2 \pi \cdot 50 Hz = 314.2 rad/s$:
+\begin{align*}
+    T = \frac{P}{\omega_s} = \frac{15.9 kW}{314.2 rad/s} = 50.7 Nm
+\end{align*}
+\textbf{b)}
+Verhoog de veldstroom (overbekrachtiging).
+Het vermogen blijft gelijk, dus in het fasediagram blijven $E_A \sin\delta$ en
+$I_A \cos\varphi$ constant: de top van $\underline{E}_A$ schuift op een horizontale lijn,
+de top van $\underline{I}_A$ op een verticale lijn.
+Een grotere $E_A$ draait $\underline{I}_A$ voor $\underline{V}_\phi$ uit: de stroom ijlt voor
+en de motor levert reactief vermogen (zie de V-curves).
+\newline
+\textbf{c)}
+Het actief vermogen blijft gelijk, dus $I_L \cos\varphi$ blijft constant:
+\begin{align*}
+    I_L = \frac{40 A \cdot 1}{0.85} = 47.1 A
+\end{align*}
 \end{oefenblok}
 
 \begin{oefenblok}[Oefening 5-10 van Slides]
@@ -954,7 +1035,20 @@ How much reactive power $Q$ is this machine consuming from or supplying to the e
 system?
 \newline
 \textbf{Oplossing:}
-\dots ({\color{red}Nog niet aan begonnen})
+\newline
+$\underline{E}_A$ ijlt na op $\underline{V}_\phi$ ($\delta = -10^\circ$): het net trekt de
+rotor mee, dus de machine is een \textbf{motor}.
+In motorreferentie geldt $\underline{V}_\phi = \underline{E}_A + (R_A + j X_S) \underline{I}_A$:
+\begin{align*}
+    \underline{I}_A = \frac{\underline{V}_\phi - \underline{E}_A}{R_A + j X_S} = \frac{480 V \angle 0^\circ - 460 V \angle -10^\circ}{0.1 \Omega + j \cdot 1.0 \Omega} = 83.9 A \angle -13.0^\circ
+\end{align*}
+\begin{align*}
+    P &= 3 \cdot V_\phi \cdot I_A \cdot \cos\varphi = 3 \cdot 480 V \cdot 83.9 A \cdot \cos(13.0^\circ) = 117.7 kW \\
+    Q &= 3 \cdot V_\phi \cdot I_A \cdot \sin\varphi = 3 \cdot 480 V \cdot 83.9 A \cdot \sin(13.0^\circ) = 27.1 kvar
+\end{align*}
+De machine neemt 117.7 kW en 27.1 kvar op uit het net.
+Dat ze reactief vermogen opneemt, klopt met $E_A < V_\phi$: ze is onderbekrachtigd en de stroom
+ijlt na.
 \end{oefenblok}
 
 \begin{oefenblok}[Oefening 5-17 van Slides]
@@ -972,7 +1066,30 @@ the power supplied by the generator is 80 kW.
  motor could supply?
 \end{itemize}
 \textbf{Oplossing:}
-\dots ({\color{red}Nog niet aan begonnen})
+\newline
+Ster-verbonden, dus $V_\phi = \frac{440 V}{\sqrt{3}} = 254 V$.
+\newline
+\textbf{a)}
+Uit de vermogensformule, verliezen verwaarloosd:
+\begin{align*}
+    P = 3 \cdot \frac{V_\phi \cdot E_A}{X_S} \cdot \sin\delta \quad \rightarrow \quad E_A = \frac{P \cdot X_S}{3 \cdot V_\phi \cdot \sin\delta} = \frac{80 kW \cdot 1.5 \Omega}{3 \cdot 254 V \cdot \sin(25^\circ)} = 372.6 V
+\end{align*}
+\textbf{b)}
+Als motor ijlt $\underline{E}_A$ na: $\underline{E}_A = 372.6 V \angle -25^\circ$.
+\begin{align*}
+    \underline{I}_A = \frac{\underline{V}_\phi - \underline{E}_A}{j X_S} = \frac{254 V \angle 0^\circ - 372.6 V \angle -25^\circ}{j \cdot 1.5 \Omega} = 118.9 A \angle 28.0^\circ
+\end{align*}
+\begin{align*}
+    \cos\varphi = \cos(28.0^\circ) = 0.883 \text{ voorijlend}
+\end{align*}
+Voorijlend omdat $E_A > V_\phi$: de motor is overbekrachtigd.
+\newline
+\textbf{c)}
+Het maximum ligt bij $\delta = 90^\circ$:
+\begin{align*}
+    P_{max} = 3 \cdot \frac{V_\phi \cdot E_A}{X_S} = 3 \cdot \frac{254 V \cdot 372.6 V}{1.5 \Omega} = 189.3 kW
+\end{align*}
+Boven dit vermogen valt de motor uit synchronisme.
 \end{oefenblok}
 
 % ==================================================================
