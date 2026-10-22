@@ -171,7 +171,6 @@ De slides van de inductieve sensoren eindigen met een oefening over een potentio
 
   *Stap 2 --- bij $theta = 0$.* De eerste term valt weg. Er blijft vooral de tolerantie van $R_"pot"$ over. Met een foutband van $plus.minus 2000 thin Omega$ is $sigma_(R_"pot") = 2000 \/ sqrt(3) = 1155 thin Omega$, en dus ook $sigma_(R_2) approx 1155 thin Omega$. *Kalibreer* je de potentiometer ($sigma_(R_"pot") = 0.1 thin Omega$), dan zakt dat naar $sigma_(R_2) = 0.1 thin Omega$.
 
-  #NOTE[De slide vult hier $R_"pot" = 20000$ in en geeft $sigma_(R_2) = 258 thin Omega$; met $sigma = 2000\/sqrt(3)$ kom je op $1155 thin Omega$. De conclusie (kalibreren!) blijft dezelfde.]
 
   *Stap 3 --- bij $theta = theta_"max" = 265 degree$*, gekalibreerd met $R_"pot" = 6000 thin Omega$. Nu valt de term met $sigma_(R_"pot")$ weg ($1 - theta\/theta_"max" = 0$), maar de onzekerheid op $theta_"max"$ telt volop:
   $ sigma_(R_2)^2 = (6000 / 265)^2 dot 25 / 3 = 4272 thin Omega^2 quad => quad sigma_(R_2) = 65.4 thin Omega $
@@ -180,7 +179,6 @@ De slides van de inductieve sensoren eindigen met een oefening over een potentio
   $ theta_m = K_2 K_1 (R_2 + a) quad quad sigma_(theta_m)^2 = (K_2 K_1)^2 sigma_(R_2)^2 + (K_2 K_1)^2 sigma_a^2 $
   $ sigma_(theta_m) = 0.04417 dot sqrt(4272 + 0.013) = 2.89 degree $
 
-  #NOTE[De slide geeft $sigma_(theta_m) = 0.357 degree$: daar is $sigma_(R_2) = 65.36$ niet gekwadrateerd. Correct is $2.89 degree$, precies de onzekerheid $5 degree \/ sqrt(3)$ op $theta_"max"$.]
 
   *Kerninzicht:* de resolutie van de ingangskaart ($0.2 thin Omega$) speelt geen rol. De meetfout komt van de sensor: eerst de tolerantie van $R_"pot"$ (weg te werken door te kalibreren), daarna de onzekerheid op de elektrische hoek $theta_"max"$.
 ]
