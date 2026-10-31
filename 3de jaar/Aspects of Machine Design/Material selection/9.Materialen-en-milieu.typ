@@ -1,4 +1,4 @@
-#import "../../school-template.typ": *
+#import "../../../school-template.typ": *
 
 = Materialen en het milieu <ch:milieu>
 

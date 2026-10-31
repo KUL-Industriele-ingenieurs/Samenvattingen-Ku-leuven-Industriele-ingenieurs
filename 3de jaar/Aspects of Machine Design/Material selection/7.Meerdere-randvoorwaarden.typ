@@ -1,4 +1,4 @@
-#import "../../school-template.typ": *
+#import "../../../school-template.typ": *
 
 = Meerdere randvoorwaarden en tegenstrijdige doelstellingen <ch:meerdere-rv>
 

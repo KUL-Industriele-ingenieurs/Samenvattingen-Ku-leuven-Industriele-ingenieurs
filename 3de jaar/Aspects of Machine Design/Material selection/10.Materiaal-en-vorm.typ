@@ -1,4 +1,4 @@
-#import "../../school-template.typ": *
+#import "../../../school-template.typ": *
 
 = Selectie van materiaal en vorm <ch:vorm>
 

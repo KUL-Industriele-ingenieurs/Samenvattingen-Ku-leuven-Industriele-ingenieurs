@@ -1,4 +1,4 @@
-#import "../../school-template.typ": *
+#import "../../../school-template.typ": *
 
 #show: project.with(
   title: "Material Selection Samenvatting",
@@ -13,6 +13,9 @@
 // Eén #include per hoofdstuk. Typst compileert alles altijd mee.
 // Wil je een hoofdstuk tijdelijk weglaten? Zet de #include-lijn in commentaar.
 
+
+#printformularium()
+
 #include "1.Introductie.typ"
 #include "2.Ontwerpproces.typ"
 #include "3.Materialen-en-eigenschappen.typ"
@@ -24,8 +27,3 @@
 #include "9.Materialen-en-milieu.typ"
 #include "10.Materiaal-en-vorm.typ"
 
-// ----------------------------- AFSLUITING ------------------------------------
-
-#printformularium()
-
-#printsymbols()
