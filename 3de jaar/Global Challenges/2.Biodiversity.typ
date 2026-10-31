@@ -122,7 +122,7 @@ Toch is dit nog geen massa-extinctie: zoogdieren zitten met zo'n 2 % uitgestorve
 
 Twee indexen volgen dit op.
 
-*Living Planet Index (LPI)*: volgt de gemiddelde grootte van 21.000 dierpopulaties sinds 1970 en toont een daling van *69 %* (@fig:Living-planet-index). Blijf wel kritisch: de LPI wordt sterk beïnvloed door een kleine groep populaties met een heel sterke daling. Laat je die weg, dan is de daling veel kleiner (@fig:Effect-op-LPI).
+*Living Planet Index (LPI)*: volgt de gemiddelde grootte van 21.000 dierpopulaties sinds 1970 en toont een daling van *69 %* (@fig:Living-planet-index). Dit noemer is wel niet helemaal accuraat. de LPI wordt sterk beïnvloed door een kleine groep populaties met een heel sterke daling. Laat je die weg, dan is de daling veel kleiner (@fig:Effect-op-LPI).
 
 #grid(
   columns: 2,
@@ -143,11 +143,11 @@ Twee indexen volgen dit op.
   columns: 2,
   gutter: 1em,
   [#figure(
-    image("assets/IUCN.png", width: 80%),
+    image("assets/IUCN.png", width: 60%),
     caption: [Categorieën van de IUCN Rode Lijst],
   ) <fig:IUCN>],
   [#figure(
-    image("assets/Grafiek-IUCN-monitoring.png", width: 100%),
+    image("assets/Grafiek-IUCN-monitoring.png", width: 90%),
     caption: [Aandeel bedreigde soorten per groep],
   ) <fig:Grafiek-IUCN-monitoring>],
 )
@@ -218,7 +218,7 @@ Het meeste van de biodiversiteit wordt niet verhandeld en heeft geen marktwaarde
   De cascade (@fig:Ecosystem-services-cascade) toont de stroom van diensten van ecosysteem naar mens: links het ecosysteem met zijn samenstelling, structuur en werking, alle drie bepaald door de biodiversiteit; rechts de samenleving, die diensten ontvangt die bijdragen aan welvaart en welzijn. Biodiversiteit drijft ecosysteemfuncties zoals fotosynthese, verdamping en nutriëntenkringlopen, en die leveren de diensten. Beheert de mens een ecosysteem om één dienst te maximaliseren, dan gaat dat vaak ten koste van andere.
 
   #figure(
-    image("assets/Ecosystem-services-cascade.png", width: 80%),
+    image("assets/Ecosystem-services-cascade.png", width: 70%),
     caption: [Ecosysteemdienstencascade],
     label: <fig:Ecosystem-services-cascade>,
   )
@@ -330,7 +330,7 @@ Daarnaast zijn er oorzaken die buiten deze categorieën vallen, zoals bosbranden
 === Habitatverlies en -degradatie <sec:habitat-loss-and-degradation>
 
 #figure(
-  image("assets/Diersoorten-en-welk-oorzaak-effect-heeft-op-hun-populatie.png", width: 16cm),
+  image("assets/Diersoorten-en-welk-oorzaak-effect-heeft-op-hun-populatie.png", width: 14cm),
   caption: [Bedreigingen voor 703 dalende landpopulaties],
   label: <fig:Diersoorten-en-welk-oorzaak-effect-heeft-op-hun-populatie>,
 )
@@ -356,13 +356,15 @@ Er verdwijnt zo'n *20 miljoen ha bos per jaar* (@fig:Bosverlies-in-verschillende
 
 === Overexploitatie <sec:overexploitation>
 
-Planten en dieren zijn hernieuwbaar: oogst je minder dan de natuurlijke aangroei, dan blijft de populatie stabiel. Dat vraagt wel goede monitoring en sterk bestuur, zoals bij duurzame visserij of bosbouw. Waar dat ontbreekt, wordt er overgeoogst. Dat was het lot van bizons, walvissen, bevers, dodo's en neushoorns.
 
 #wrap-figure(
   image("assets/Overexplotatie-in-verschillende-diersoorten.png", width: 10cm),
   caption: [Bedreigingen voor de 362 overgebleven megafaunasoorten],
   label: <fig:Overexplotatie-in-verschillende-diersoorten>,
 )[
+
+  Planten en dieren zijn hernieuwbaar: oogst je minder dan de natuurlijke aangroei, dan blijft de populatie stabiel. Dat vraagt wel goede monitoring en sterk bestuur, zoals bij duurzame visserij of bosbouw. Waar dat ontbreekt, wordt er overgeoogst. Dat was het lot van bizons, walvissen, bevers, dodo's en neushoorns.
+
   Voor de 362 overgebleven *megafaunasoorten* (zoogdieren en vissen > 100 kg; vogels, reptielen en amfibieën > 40 kg) is overexploitatie de grootste bedreiging (@fig:Overexplotatie-in-verschillende-diersoorten).
 
   Voorbeeld: de *bushmeat*-handel in West-Afrika maakt tropische bossen "stil" doordat de grote dieren verdwijnen. Alle 8 soorten schubdieren zijn bedreigd. Een bijkomend risico is de overdracht van *zoönosen* (ziektes van dier naar mens). Schubdieren waren mogelijk de tussengastheer van COVID-19.

@@ -31,7 +31,7 @@ We zoomen ook in op één gevolg in het bijzonder: de stijging van de zeespiegel
 === Ontstaan van steenkool, olie en gas <sec:ontstaan-kool-en-gas>
 
 #wrap-figure(
-  image("assets/Vorming-kool,-olie-en-gas.png", width: 7.5cm),
+  image("assets/Vorming-kool,-olie-en-gas.png", width: 10cm),
   caption: [Vorming van steenkool: moeras, turf, steenkool],
   label: <fig:Vorming-kool-olie-en-gas>,
 )[
@@ -48,7 +48,7 @@ Wanneer we die brandstoffen verbranden, komen er broeikasgassen vrij en warmt de
 - *Menselijke systemen*: voedselproductie, economische systemen
 
 #figure(
-  image("assets/Impacten-Klimaat.png", width: 100%),
+  image("assets/Impacten-Klimaat.png", width: 70%),
   caption: [Impact van klimaatverandering op drie systemen],
   label: <fig:Impacten-Klimaat>,
 )
@@ -56,7 +56,7 @@ Wanneer we die brandstoffen verbranden, komen er broeikasgassen vrij en warmt de
 @fig:Impacten-Klimaat-wereldkaart toont per regio welke impact al waargenomen is. Het symbool geeft het systeem aan, de kleur de groep: blauw voor fysische, groen voor biologische en rood voor menselijke systemen. Een gevuld symbool betekent dat klimaatverandering een grote bijdrage levert aan die impact, een omlijnd symbool een kleine. Het staafje naast elk symbool geeft aan hoe zeker het is dat de impact aan klimaatverandering te wijten is, van _very low_ tot _very high_.
 
 #figure(
-  image("assets/Impacten-Klimaat-wereldkaart.png", width: 70%),
+  image("assets/Impacten-Klimaat-wereldkaart.png", width: 60%),
   caption: [Waargenomen impact van klimaatverandering per regio en per systeem],
   label: <fig:Impacten-Klimaat-wereldkaart>,
 )
@@ -233,12 +233,12 @@ Het vijfde bewijs komt uit de energiebalans van de aarde. De aarde wisselt allee
   columns: 2,
   gutter: 1em,
   figure(
-    image("assets/Straling-Zon-aarde.png", width: 100%),
+    image("assets/Straling-Zon-aarde.png", width: 80%),
     caption: [Inkomende zonnestraling],
     label: <fig:Straling-Zon-aarde>,
   ),
   figure(
-    image("assets/Straling-infrarood-aarde.png", width: 100%),
+    image("assets/Straling-infrarood-aarde.png", width: 80%),
     caption: [Teruggekaatste straling en infrarood],
     label: <fig:Straling-infrarood-aarde>,
   ),
@@ -277,7 +277,7 @@ Met radiative forcing kun je verschillende factoren met elkaar vergelijken: CO#s
 ==== Evolutie sinds 1750 <sec:evolutie-radiative-forcing>
 
 #wrap-figure(
-  image("assets/Evolutie-Radiative-forcing.png", width: 7.5cm),
+  image("assets/Evolutie-Radiative-forcing.png", width: 12cm),
   caption: [Evolutie van de positieve forcings sinds 1750],
   label: <fig:Evolutie-Radiative-forcing>,
 )[
@@ -330,7 +330,7 @@ In 2015 sloten 196 partijen het #strong[Akkoord van Parijs]. Ze spraken af om de
 Die grenzen komen uit wetenschappelijk onderzoek. Het #strong[IPCC] (Intergovernmental Panel on Climate Change) brengt om de 5 à 7 jaar een assessment report uit. Daarin staat hoe het klimaat er nu voor staat, en wat er nog moet gebeuren om de doelen te halen. Een rapport vat honderden wetenschappelijke studies samen en wordt door honderden wetenschappers nagelezen.
 
 #figure(
-  image("assets/Alle-IPCC-reports.png", width: 100%),
+  image("assets/Alle-IPCC-reports.png", width: 80%),
   caption: [De zes assessment reports van het IPCC en het klimaatbeleid dat erop volgde],
   label: <fig:Alle-IPCC-reports>,
 )
@@ -348,7 +348,7 @@ Het IPCC deelt de risico's van klimaatverandering op in vijf #strong[Reasons for
 + RFC5: grootschalige, eenmalige gebeurtenissen
 
 #figure(
-  image("assets/RFC's.png", width: 90%),
+  image("assets/RFC's.png", width: 80%),
   caption: [Impact en risico per Reason for Concern, in functie van de opwarming],
   label: <fig:RFCs>,
 )
@@ -365,7 +365,7 @@ Hoe groter de opwarming, hoe groter de risico's. Bij 1,5 °C zijn er al risico's
 @fig:Menselijke-concern-RCSs toont hetzelfde voor afzonderlijke systemen, zoals koraalriffen, het Noordpoolgebied, visserij, oogsten en hittedoden.
 
 #figure(
-  image("assets/Menselijke-concern-RCS's.png", width: 100%),
+  image("assets/Menselijke-concern-RCS's.png", width: 80%),
   caption: [Impact en risico voor natuurlijke, beheerde en menselijke systemen],
   label: <fig:Menselijke-concern-RCSs>,
 )
@@ -524,7 +524,7 @@ Klimaatscenario's komen uit klimaatmodellen. Er zijn heel veel manieren waarop d
 Het getal achter RCP is de radiative forcing (@sec:radiative-forcing) in 2100. RCP8.5 komt overeen met 8,5 W/m², RCP6 met 6 W/m², RCP4.5 met 4,5 W/m² en RCP2.6 met 2,6 W/m².
 
 #figure(
-  image("assets/RCP's.png", width: 90%),
+  image("assets/RCP's.png", width: 70%),
   caption: [Uitstoot in de verschillende RCP's, met de verwachte opwarming in 2100 (Global Carbon Project)],
   label: <fig:RCPs>,
 )
@@ -535,9 +535,7 @@ De modelresultaten per scenario kun je omzetten naar een opwarming. In het laats
   table(
     columns: 5,
     align: (left, center, center, center, center),
-    table.header(
-      [*Scenario*], [*2021–2040*], [*2041–2060*], [*2081–2100*], [*Bereik 2081–2100*],
-    ),
+    table.header([*Scenario*], [*2021–2040*], [*2041–2060*], [*2081–2100*], [*Bereik 2081–2100*]),
     [SSP1-1.9], [1,5], [1,6], [1,4], [1,0 – 1,8],
     [SSP1-2.6], [1,5], [1,7], [1,8], [1,3 – 2,4],
     [SSP2-4.5], [1,5], [2,0], [2,7], [2,1 – 3,5],
@@ -647,7 +645,7 @@ Gletsjers krimpen overal ter wereld. @fig:Smelten-Gletchers toont modelsimulatie
 De massa van de ijskappen op Groenland en Antarctica meten we met satellieten. De GRACE-satellieten meten bijvoorbeeld het zwaartekrachtveld van de aarde. Sinds 2002 verliest Antarctica gemiddeld 149 gigaton ijs per jaar (@fig:Antartica-Smelten). Het verlies zit vooral in West-Antarctica, rond de Pine Island-gletsjer, waar gletsjers in de oceaan uitmonden. Ook Groenland verliest veel ijs.
 
 #figure(
-  image("assets/Antartica-Smelten.png", width: 90%),
+  image("assets/Antartica-Smelten.png", width: 70%),
   caption: [Massaverlies van de Antarctische ijskap volgens de GRACE-satellieten, 2002–2020 (NASA/JPL, 2021)],
   label: <fig:Antartica-Smelten>,
 )
@@ -664,7 +662,7 @@ Sinds 1970 is de zeespiegel ongeveer 11 cm gestegen (@fig:zeespiegel-stijging):
 - Ook de afname van grondwater draagt bij.
 
 #figure(
-  image("assets/zeespiegel-stijging.png", width: 65%),
+  image("assets/zeespiegel-stijging.png", width: 55%),
   caption: [Bijdragen aan de globale zeespiegelstijging, 1971–2018 (IPCC, 2021)],
   label: <fig:zeespiegel-stijging>,
 )
@@ -672,7 +670,7 @@ Sinds 1970 is de zeespiegel ongeveer 11 cm gestegen (@fig:zeespiegel-stijging):
 Hoeveel de zeespiegel nog stijgt, hangt af van ons: van de opwarming en dus van het scenario. Volgens het vijfde IPCC-rapport stijgt de zeespiegel tegen 2100 met ongeveer 25 cm tot 1 m (@fig:Global-Sea-level-rise).
 
 #figure(
-  image("assets/Global-Sea-level-rise.png", width: 80%),
+  image("assets/Global-Sea-level-rise.png", width: 60%),
   caption: [Verwachte globale zeespiegelstijging tot 2100 voor RCP2.6 (blauw) en RCP8.5 (rood) (IPCC, 2014)],
   label: <fig:Global-Sea-level-rise>,
 )
@@ -692,7 +690,7 @@ De zeespiegel stijgt al en blijft stijgen, ook bij lage uitstoot. We moeten de o
 Het risico voor kustgebieden lezen we af uit een burning ember diagram (@fig:Burning-ember-diagram-zeespiegelstijging), net als bij de Reasons for Concern (@sec:reasons-for-concern). Links staat de verwachte zeespiegelstijging tegen 2100: ongeveer 43 cm bij RCP2.6 en 84 cm bij RCP8.5 (mediaan), met een bovengrens van ongeveer 110 cm. Per type kustgebied zijn er twee kolommen: het risico zonder of met weinig aanpassing, en het risico met de maximaal mogelijke aanpassing.
 
 #figure(
-  image("assets/Burning-ember-diagram-zeespiegelstijging.png", width: 100%),
+  image("assets/Burning-ember-diagram-zeespiegelstijging.png", width: 90%),
   caption: [Extra risico door zeespiegelstijging voor vier types kustgebieden tegen het einde van de eeuw, zonder en met maximale aanpassing (IPCC, 2019)],
   label: <fig:Burning-ember-diagram-zeespiegelstijging>,
 )
@@ -723,7 +721,7 @@ Op #link("https://sealevel.climatecentral.org")[sealevel.climatecentral.org] kun
 == Links met andere challenges <sec:klimaat-links>
 
 #figure(
-  image("assets/Links-met-andere-challenges.png", width: 70%),
+  image("assets/Links-met-andere-challenges.png", width: 60%),
   caption: [De verbanden tussen klimaat en de andere uitdagingen in het gelaagde model],
   label: <fig:Links-met-andere-challenges>,
 )
