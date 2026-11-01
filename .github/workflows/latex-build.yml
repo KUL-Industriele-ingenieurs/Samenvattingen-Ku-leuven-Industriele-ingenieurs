@@ -280,6 +280,33 @@ jobs:
                   echo "Collected PDFs (before rename):"
                   ls -la artifacts/pdfs || echo "No PDFs collected"
 
+            # Typst en LaTeX sluiten afbeeldingen ongewijzigd in, dus een PDF met
+            # grote PNG's wordt tientallen MB. Ghostscript verkleint de beelden naar
+            # 200 dpi en JPEG q85: in de PDF niet te zien, ±10x kleiner. Links,
+            # bladwijzers en selecteerbare tekst blijven behouden.
+            - name: PDF's comprimeren
+              shell: bash
+              run: |
+                  sudo apt-get update -qq && sudo apt-get install -y -qq ghostscript
+                  echo "## PDF-compressie" >> "$GITHUB_STEP_SUMMARY"
+                  echo "| PDF | Voor | Na |" >> "$GITHUB_STEP_SUMMARY"
+                  echo "|---|---|---|" >> "$GITHUB_STEP_SUMMARY"
+                  find artifacts/pdfs -type f -name '*.pdf' -print0 | while IFS= read -r -d '' f; do
+                      tmp="${f%.pdf}.gs.pdf"
+                      if gs -q -dNOPAUSE -dBATCH -dSAFER -sDEVICE=pdfwrite -dCompatibilityLevel=1.7 \
+                            -dDownsampleColorImages=true -dColorImageResolution=200 -dColorImageDownsampleThreshold=1.2 \
+                            -dAutoFilterColorImages=false -dColorImageFilter=/DCTEncode -dJPEGQ=85 \
+                            -dDownsampleGrayImages=true -dGrayImageResolution=200 \
+                            -dDetectDuplicateImages=true -o "$tmp" "$f" \
+                         && [ "$(stat -c%s "$tmp")" -lt "$(stat -c%s "$f")" ]; then
+                          echo "| $(basename "$f") | $(du -h "$f" | cut -f1) | $(du -h "$tmp" | cut -f1) |" >> "$GITHUB_STEP_SUMMARY"
+                          mv "$tmp" "$f"
+                      else
+                          # gs faalde of de PDF werd niet kleiner: origineel houden.
+                          rm -f "$tmp"
+                      fi
+                  done
+
             - name: Build structured bundle (year folders + update scripts)
               shell: bash
               run: |
