@@ -13,8 +13,6 @@ Elke module probeert een antwoord te geven op dezelfde vragen:
 
 Er bestaat #important[geen magische oplossing]: we hebben een combinatie van oplossingen nodig, afhankelijk van de situatie. Bovendien hangen alle uitdagingen met elkaar samen. Wie één probleem apart oplost, ziet makkelijk de gevolgen voor de andere over het hoofd.
 
-De modules staan los van elkaar, dus je kunt ze in eender welke volgorde bekijken.
-
 == Het gelaagde model <sec:gelaagd-model>
 
 Het vak gebruikt een #strong[gelaagd model] (_layered model_) om te tonen hoe de 13 uitdagingen met elkaar verbonden zijn.
@@ -42,7 +40,21 @@ De lijnen in het model tonen de belangrijkste verbanden tussen de thema's. Het i
 
 == Sustainability in a nutshell <sec:sustainability-in-a-nutshell>
 
-Wat is duurzaamheid? Het is een erg brede term. Hieronder staan drie frameworks die het begrip proberen te vatten.
+Wat is duurzaamheid? Het is een erg brede term.
+
+=== Duurzame ontwikkeling: het Brundtland-rapport (1987) <sec:brundtland>
+
+De Wereldcommissie voor Milieu en Ontwikkeling van de VN definieerde in het *Brundtland-rapport* duurzame ontwikkeling:
+
+#concept(title: "Duurzame ontwikkeling")[
+  _"Development that meets the needs of the present, without compromising the ability of future generations to meet their own needs."_
+
+  Ontwikkeling die voorziet in de behoeften van vandaag, zonder dat toekomstige generaties niet meer in hun eigen behoeften kunnen voorzien.
+]
+
+Het rapport onderscheidt *drie dimensies*, die van elkaar afhangen: *sociale rechtvaardigheid*, *economische groei* en *milieu*.
+
+Hieronder staan drie frameworks die het begrip verder uitwerken.
 
 === 3P-model (1994) <sec:3p-model>
 
