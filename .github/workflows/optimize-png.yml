@@ -37,7 +37,8 @@ jobs:
           fetch-depth: 1
 
       - name: oxipng installeren
-        run: sudo apt-get update -qq && sudo apt-get install -y -qq oxipng
+        # Ubuntu heeft geen oxipng-pakket; Rust staat wel op de runner.
+        run: cargo install oxipng --locked --version "^10"
 
       - name: Gewijzigde PNG's verkleinen
         env:
