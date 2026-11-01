@@ -13,6 +13,8 @@
   authors: ("Ruben Ryckaert",),
   academic_year: "2025-2026",
 )
+#show: booktabs-tabellen
+
 
 // ============================================================================
 //                           CHAPTER INCLUDES

@@ -7,17 +7,7 @@
   academic_year: "2026-2027",
 )
 
-// ----------------------------- TABELSTIJL ------------------------------------
-// Booktabs-stijl (zie typst.app/docs/guides/tables): dikke lijn boven en onder,
-// dunne lijn onder de kop, lichtgekleurde kop, zebrastrepen, geen verticale lijnen.
-#set table(
-  stroke: (x, y) => if y == 0 { (bottom: 0.6pt + schoolBlue) } else { (bottom: 0.3pt + luma(225)) },
-  fill: (x, y) => if y == 0 { schoolBlue.lighten(88%) } else if calc.even(y) { luma(247) },
-  inset: (x: 7pt, y: 5pt),
-  align: left + horizon,
-)
-#show table.cell.where(y: 0): set text(weight: "bold")
-#show table: it => align(center, block(stroke: (top: 1pt + schoolBlue, bottom: 1pt + schoolBlue), it))
+#show: booktabs-tabellen
 
 // ============================================================================
 //                           CHAPTER INCLUDES

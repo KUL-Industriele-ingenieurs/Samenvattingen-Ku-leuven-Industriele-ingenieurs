@@ -144,6 +144,24 @@
 // query binnen frm de paginering laat terugkoppelen op de inhoud.
 #let _current_chapter = state("school-current-chapter", none)
 
+// --- Tabelstijl (opt-in) ---
+// Booktabs-stijl: dikke lijn boven en onder, dunne onder de kop, lichtblauwe
+// kop, zebrastrepen, geen verticale lijnen. Gebruik in een master-file na
+// #show: project.with(...):   #show: booktabs-tabellen
+// Alleen voor vakken waar de tabellen geen eigen stroke/hline zetten, anders
+// komen de randen dubbel.
+#let booktabs-tabellen(body) = {
+  set table(
+    stroke: (x, y) => if y == 0 { (bottom: 0.6pt + schoolBlue) } else { (bottom: 0.3pt + luma(225)) },
+    fill: (x, y) => if y == 0 { schoolBlue.lighten(88%) } else if calc.even(y) { luma(247) },
+    inset: (x: 7pt, y: 5pt),
+    align: left + horizon,
+  )
+  show table.cell.where(y: 0): set text(weight: "bold")
+  show table: it => block(stroke: (top: 1pt + schoolBlue, bottom: 1pt + schoolBlue), it)
+  body
+}
+
 // --- Template Function ---
 #let project(
   title: "",
@@ -237,6 +255,11 @@
   // List styling: match LaTeX tightened spacing
   set list(indent: 2em, body-indent: 0.5em, spacing: 0.6em)
   set enum(indent: 2em, body-indent: 0.5em, spacing: 0.6em)
+
+  // Tabellen gecentreerd. align: start expliciet, anders erven de cellen van
+  // tabellen zonder eigen align het centreren over.
+  set table(align: start)
+  show table: it => align(center, it)
 
   show heading: set text(font: ("Fira Sans", "Liberation Sans"), weight: "bold")
 
