@@ -158,7 +158,8 @@
     align: left + horizon,
   )
   show table.cell.where(y: 0): set text(weight: "bold")
-  show table: it => block(stroke: (top: 1pt + schoolBlue, bottom: 1pt + schoolBlue), it)
+  // align hier herhalen: een tweede show-regel op table overschrijft het centreren uit project.
+  show table: it => align(center, block(stroke: (top: 1pt + schoolBlue, bottom: 1pt + schoolBlue), it))
   body
 }
 
