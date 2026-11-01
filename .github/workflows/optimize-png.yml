@@ -1,0 +1,78 @@
+name: PNG's lossless verkleinen
+
+# oxipng herschrijft gewijzigde PNG's lossless: pixels blijven identiek, het
+# bestand wordt kleiner. Zo groeit de repo trager.
+# - Op een PR: commit naar de branch van de PR (zoals update-readme.yml).
+# - Na een directe push naar MAIN: een bot-PR via de merge queue, want de
+#   ruleset van MAIN weigert een directe push vanuit een workflow.
+# - workflow_dispatch: alle PNG's in de repo, ook via een bot-PR.
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths: ['**.png', '**.PNG']
+  push:
+    branches: [MAIN]
+    paths: ['**.png', '**.PNG']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: optimize-png-${{ github.event.pull_request.head.ref || github.ref_name }}
+
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    # Een fork kan niet naar zijn eigen branch gepusht worden vanuit deze repo.
+    # De merge van een eigen bot-PR overslaan: die PNG's zijn al verkleind.
+    if: >-
+      (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository)
+      && !contains(github.event.head_commit.message, 'bot/png-verkleinen')
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref || github.ref_name }}
+          fetch-depth: 1
+
+      - name: oxipng installeren
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq oxipng
+
+      - name: Gewijzigde PNG's verkleinen
+        env:
+          BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: |
+          if [ "${{ github.event_name }}" = workflow_dispatch ]; then
+              git ls-files -z '*.png' '*.PNG' > files.lst
+          else
+              # Alleen de basiscommit ophalen: genoeg om de twee trees te vergelijken.
+              git fetch -q --depth=1 origin "$BASE"
+              git diff -z --name-only --diff-filter=AM "$BASE" HEAD -- '*.png' '*.PNG' > files.lst
+          fi
+          echo "$(tr -cd '\0' < files.lst | wc -c) PNG's te verwerken"
+          # --strip safe: metadata weg, kleurprofiel blijft. Zonder --zopfli: dat is 10x+ trager voor een paar % extra.
+          xargs -0 -r oxipng -q -o max --strip safe < files.lst
+          rm files.lst
+          git diff --shortstat
+
+      - name: Committen
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git add -u -- '*.png' '*.PNG'
+          if git diff --staged --quiet; then
+              echo "Niets te verkleinen"; exit 0
+          fi
+          msg="png: lossless verkleind met oxipng"
+          if [ "${{ github.event_name }}" = pull_request ]; then
+              git commit -qm "$msg" && git push
+          else
+              branch="bot/png-verkleinen-${{ github.run_id }}"
+              git switch -qc "$branch" && git commit -qm "$msg" && git push -q origin "$branch"
+              gh pr create --base MAIN --head "$branch" --title "$msg" \
+                  --body "Automatisch door optimize-png.yml. Lossless: pixels identiek."
+              gh pr merge "$branch" --merge --auto
+          fi
