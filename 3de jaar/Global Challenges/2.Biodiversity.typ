@@ -228,8 +228,6 @@ De internationale classificatie CICES onderscheidt drie soorten ecosysteemdienst
 
 #table(
   columns: (auto, 1fr),
-  inset: 6pt,
-  stroke: 0.5pt + gray,
   table.header([*Type*], [*Voorbeelden*]),
   [Productiediensten (_provisioning_)], [materiële stromen: voedsel, hout, biomassa voor energie, drinkwater],
   [Regulerende diensten (_regulating_)],
