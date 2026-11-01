@@ -71,11 +71,131 @@ In de 1800 waren er al deze discussies waarbij men doorhad dat de populatie blij
   Dit wordt nog steeds herhaald vandaag de dag waarbij wereldleiders blijven herhalen dat populatiegroei een probleem is bijvoorbeeld Emmanuel Macron en Prins Harry van Engeland.
 
   We moeten nu bekijken of dit echt een probleem is en de mechanismes ervan en hieruit conclusies extrapoleren en als het een probeem is kunnen we kijken naar oplossingen.
-
+ 
   In conclusie moeten we inzicht krijgen in de mechanismes van bevolkingsgroei en hoe we deze kunnen beinvloeden. De vraag die we moeten beantwoorden is wat zou de populatie zijn in 2100 en wat kunnen we doen om dit te beinvloeden.
 ]
 
 == Geschiedenis van mortaliteit
+
+=== Exponentiele groei <sec:exponentiele-groei>
+
+#concept(title: "Exponentiele groei")[
+  Exponentiele groei wordt bepaald met deze formule
+
+  $$  dN/dt = rN $$
+
+  Het toont hoe groei op zichzelf opbouwt zoals interest van een bank
+
+  #figure(
+  image("assets/Interest-bij-een-bank.png", width: 8cm),
+  caption: [Interest-bij-een-bank],
+  label: <fig:Interest-bij-een-bank>,
+)
+
+Je groei gaat groeien met de groei basisgezien, als dat blijft doorgaan kom je uiteindelijk tot oneindig.
+
+Een recent voorbeeld is het Covid 19 virus waarbij infecties andere infecties laten groeien en dus een exponentiele groei van het aantal infecties veroorzaakt.
+
+#figure(
+  image("assets/Exponentiele-groei.png", width: 8cm),
+  caption: [Exponentiele-groei],
+  label: <fig:Exponentiele-groei>,
+)
+
+]
+
+Exponentiele groei wordt vaak gebruikt om een pissimistiche blik te hebben op populatiegroei omdat mensen kinderen hebben en zij kinderen hebben en uiteindelijk krijg je een oneindig grote populatie
+
+We bekijken of dit zo is met een Semi logaritmische plot van de populatiegroei over de tijd. deze zou een rechte lijn moeten zijn.
+
+#figure(
+  image("assets/Superexponentiele-groei.png", width: 12cm),
+  caption: [Superexponentiele-groei],
+  label: <fig:Superexponentiele-groei>,
+)
+
+We zien dat de lijnen groeien en dat toont Superexponentiele-groei sneller dan exponentiele-groei. Dit kan een teken zijn dat er wel een probleem is en dat het niet sustainable is. Dus misschien hebben die pessimistiche analysten wel een punt.
+
+Stel dat vanaf vandaag de populatie groeit met 1% per jaar, dan zou de populatie in 2100 ongeveer 20 miljard zijn. We weten niet of de aarde dit aan kan
+
+Nu de vraag is kunnen we deze assumptie maken dat die groei gaat blijven gebeuren op die snelheid? Dat beantwoorden we in volgende stukken.
+
+=== Populatiegroei in verschillende landen <sec:populatiegroei-in-verschillende-landen>
+
+CHECK PDF 
+
+
+=== Industriele revolutie en mortaliteit <sec:industriele-revolutie>
+
+Het moment dat onze maatschappij meer industrieel werd was er een enorme daling van mortaliteit. 
+
+#figure(
+  image("assets/Daling-van-mortaliteit-vanaf-de-industriele-revolutie.png", width: 5cm),
+  caption: [Daling-van-mortaliteit-vanaf-de-industriele-revolutie],
+  label: <fig:Daling-van-mortaliteit-vanaf-de-industriele-revolutie>,
+)
+
+We zien dat alle landen die door industrialisering is gegaan dat mortaliteit enorm daalde. De industriele revolutie zorgen ervoor dat mensen meer energie uit hun omgeving kon halen (gebruik van kool of olie). Waarom hielp dit om mortaliteit naar beneden te brengen?
+
+Als we vergelijken wat het werk is van een mens die in een mijn werkte en die werkt een volledig jaar, dan komen we uit dat het totale werk dat die leverd gelijk is aan 16L olie aan energie.
+
+Dit geeft je een beeld van hoeveel energie dat we gebruiken in de maatschappij en toont hoeveel meer energie we kunnen gebruiken, de maatschappij is hierdoor enorm veranderd.
+
+VERKORT DIT DIE PROF HERHAALD ZICHZELF
+
+#image("/assets/image.png")
+
+VERVANG met vergelijkingstabel
+
+#image("/assets/image-1.png")
+
+#image("/assets/image-2.png")
+
+#image("/assets/image-3.png")
+
+Door deze verandering van een serfdom of een maatschappij waar mensen met land controle hadden was er nu een grote verandering door fabrieken waar er een grote hoeveelheid van geskillde mensen hadden die nu rechtstreeks konden spreken met de fabrieksbazen,
+
+de grote ophoping maakte steden ook belangrijker, dit bracht urbinisatie en wetenschap en capitaal en minder belang van religie 
+
+DIT STUK HETSCHRIJVEN
+
+#figure(
+  image("assets/Maatschappelijke-structuur-vanaf-industriele-revolutie.png", width: 5cm),
+  caption: [Maatschappelijke-structuur-vanaf-industriele-revolutie],
+  label: <fig:Maatschappelijke-structuur-vanaf-industriele-revolutie>,
+)
+
+De maatschappij veranderde dus enorm en door de verbeterede wetenschap en kennis was er meer kennis over hygiëne en voeding en de medische wetenschap verbeterde enorm. Hierdoor daalde mortaliteit enorm.
+
+DIT STUK MOET NOG VEEL HEBBEN EN VERSCHREVEN WORDEN BEKIJK TRANSCRIPT
+
+=== Relation longevity - mortality <sec:relation-longevity-mortality>
+
+
+In population dynamics we often speak of mortality. This number indicates how many people die in a given year, but this number also gives you information on the live expectancy of the population. In a population with a high mortality, you will probably not live very long.
+
+Let’s calculate how these two are correlated. Let’s assume a population of 1000 people at equilibrium (so no change in the total population size), with a mortality of 30 per thousand. 
+
+If the mortality is 30 ‰ then 30 people will die in a given year. This means that at equilibrium there will also 30 people be born. 
+
+How long do you then live on average? Every year you have a 30/1000 chance to die (on average), which is a probability of 1 in 33. On average, if you take every year 1 out of 33 people out of the population reservoir, people will stay in that reservoir for 33 years. 
+
+So, in equilibrium, the average lifespan is simply the inverse of the mortality.
+
+#voorbeeld(title: "25 promile mortality")[
+
+  If the mortality is 25 ‰, then the average lifespan is 1/0.025 = 40 years. 
+
+  If the mortality is 10 ‰, then the average lifespan is 1/0.01 = 100 years.
+]
+
+
+
+
+
+
+
+
 
 
 
