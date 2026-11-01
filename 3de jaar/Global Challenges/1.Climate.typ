@@ -53,7 +53,7 @@ Wanneer we die brandstoffen verbranden, komen er broeikasgassen vrij en warmt de
   label: <fig:Impacten-Klimaat>,
 )
 
-@fig:Impacten-Klimaat-wereldkaart toont per regio welke impact al waargenomen is. Het symbool geeft het systeem aan, de kleur de groep: blauw voor fysische, groen voor biologische en rood voor menselijke systemen. Een gevuld symbool betekent dat klimaatverandering een grote bijdrage levert aan die impact, een omlijnd symbool een kleine. Het staafje naast elk symbool geeft aan hoe zeker het is dat de impact aan klimaatverandering te wijten is, van _very low_ tot _very high_.
+@fig:Impacten-Klimaat-wereldkaart toont per regio welke impact al waargenomen is (blauw = fysisch, groen = biologisch, rood = menselijk). Een gevuld symbool betekent een grote bijdrage van klimaatverandering, het staafje hoe zeker dat is.
 
 #figure(
   image("assets/Impacten-Klimaat-wereldkaart.png", width: 60%),
@@ -96,7 +96,7 @@ De baan van de aarde rond de zon en de stand van haar as veranderen langzaam. Da
 + *Obliquiteit*: de hoek waaronder de aardas gekanteld staat, schommelt tussen 22,1° en 24,5° in een cyclus van 41.000 jaar. Bij een grotere kanteling zijn de zomers op hoge breedtegraden warmer. Dan smelt een groot deel van de ijskappen, en wordt het warmer op aarde. Nu staat de as 23,4° gekanteld, en die hoek neemt langzaam af.
 + *Precessie*: de aardas tolt langzaam rond, zoals een draaiende tol. Daardoor verschuift het moment in het jaar waarop de aarde het dichtst bij de zon staat.
 
-De obliquiteit weegt zwaar door, omdat het smeltende ijs de opwarming versterkt. Minder ijs betekent dat er minder zonlicht wordt teruggekaatst en dat de aarde meer warmte opneemt. Daardoor smelt er nog meer ijs. Dit is een #strong[positieve feedbackloop] (@fig:ijs-albedo-feedback).
+De obliquiteit weegt zwaar door, omdat het smeltende ijs de opwarming versterkt. Minder ijs betekent dat er minder zonlicht wordt teruggekaatst en dat de aarde meer warmte opneemt. Daardoor smelt er nog meer ijs. Dit is een #strong[positieve feedbackloop]: het *albedo-feedbackmechanisme* (@fig:ijs-albedo-feedback). Het *albedo* is het deel van het zonlicht dat een oppervlak terugkaatst: ijs heeft een hoog albedo, oceaan en land een laag.
 
 Bij de opwarming komt er ook extra CO#sub[2] in de atmosfeer, vooral uit de oceanen en uit bodems die onder het ijs vandaan komen. Die CO#sub[2] versterkt de opwarming nog verder.
 
@@ -130,8 +130,6 @@ Vulkaanuitbarstingen koelen de aarde af. Ze stoten zwaveldioxide uit, dat tot in
 
 #voorbeeld(title: "Year Without a Summer (1816)")[
   In april 1815 barstte de vulkaan Tambora in Indonesië uit. De zwaveldioxide vormde in de stratosfeer een laag sulfaatdeeltjes die binnen een jaar rond de hele aarde verspreid was. In 1816 lag de gemiddelde temperatuur op aarde daardoor 0,4 tot 0,7 °C lager. In Europa en Noord-Amerika vroor het zelfs in juni, juli en augustus. De oogsten mislukten, voedselprijzen stegen en er volgden hongersnoden.
-
-  Meer lezen: #link("https://en.wikipedia.org/wiki/Year_Without_a_Summer")[Year Without a Summer (Wikipedia)].
 ]
 
 === De opwarming van nu <sec:opwarming-nu>
@@ -144,8 +142,6 @@ In het Noordpoolgebied ontdooit nu de #strong[permafrost]: bodem die normaal het
 
 === CO#sub[2]-concentratie <sec:co2-levels>
 
-Het verminderen van broeikasgassen in de atmosfeer is een van de grote uitdagingen. Hoe verhoudt de huidige CO#sub[2]-concentratie zich tot die tijdens de geschiedenis van de mens, en wat is het verband met de temperatuur?
-
 #wrap-figure(
   image("assets/CO2-levels-over-de-tijd.png", width: 10cm),
   caption: [CO#sub[2]-concentratie en temperatuur op Antarctica over de laatste 800.000 jaar],
@@ -153,10 +149,8 @@ Het verminderen van broeikasgassen in de atmosfeer is een van de grote uitdaging
 )[
   De luchtbelletjes in het ijs van Antarctica geven ons de temperatuur en de CO#sub[2]-concentratie van de voorbije 800.000 jaar (@fig:CO2-levels-over-de-tijd). De temperatuur schommelde in die periode met meer dan 12 °C tussen ijstijden en interglacialen. De warme interglacialen vallen samen met een hoge CO#sub[2]-concentratie, de koude ijstijden met een lage.
 
-  Sinds het ontstaan van _Homo sapiens_, ongeveer 300.000 jaar geleden, lag de concentratie tussen 180 en 280 ppmv (parts per million volume). In 2021 was het gemiddelde 416 ppmv. Die hoge CO#sub[2]-waarden zijn de belangrijkste oorzaak van de opwarming sinds de industrialisatie.
+  Sinds het ontstaan van _Homo sapiens_, ongeveer 300.000 jaar geleden, lag de concentratie tussen 180 en 280 ppmv (parts per million volume). Voor de industriële revolutie was ze 280 ppmv, in 2021 416 ppmv: +50 % in 200 jaar. Die hoge CO#sub[2]-waarden zijn de belangrijkste oorzaak van de opwarming sinds de industrialisatie.
 ]
-
-Voor de industriële revolutie was de concentratie 280 ppmv, nu is ze ongeveer 420 ppmv. Dat is een stijging van 50% in 200 jaar.
 
 == Bewijzen voor menselijke oorzaken van klimaatverandering <sec:bewijzen-menselijke-oorzaken-klimaatsverandering>
 
@@ -266,11 +260,7 @@ De aarde en de atmosfeer stralen zelf infrarood uit, samen ook 235 W/m² aan de 
   De onbalans in straling aan de bovenkant van de atmosfeer door één specifieke factor, zoals meer CO#sub[2]. Ze wordt gemeten _voordat_ de temperatuur van de aarde en de atmosfeer zich heeft aangepast. Eenheid: W/m².
 ]
 
-#waarschuwing[
-  Radiative forcing is de onbalans vóór de opwarming. De onbalans die je later meet is kleiner, omdat een warmere aarde meer infrarood uitstraalt.
-]
-
-Komt er meer binnen dan er buitengaat, dan warmen de aarde en de atmosfeer op. Een warmer voorwerp straalt meer infrarood uit. De opwarming gaat dus door tot er weer evenveel buitengaat als er binnenkomt, en de balans hersteld is.
+Komt er meer binnen dan er buitengaat, dan warmt de aarde op. Een warmere aarde straalt meer infrarood uit, dus de opwarming gaat door tot de balans hersteld is. De onbalans die je later meet, is daardoor kleiner dan de forcing.
 
 Met radiative forcing kun je verschillende factoren met elkaar vergelijken: CO#sub[2], methaan, aerosolen, ... Daarom wordt het begrip veel gebruikt in klimaatonderzoek en in het klimaatbeleid.
 
@@ -510,9 +500,6 @@ De rechterkolom in @fig:Oplossingen-klimaatverandering is hoeveel gigaton CO#sub
 )
 
 _Persoonlijke note: De carbon footprint werd populair door een reclamecampagne van het oliebedrijf BP (2004–2006). Die campagne legde de verantwoordelijkheid voor klimaatverandering bij het individu, in plaats van bij de producenten van fossiele brandstoffen. Meer daarover: #link("https://www.wbur.org/onpoint/2023/12/19/how-big-oil-helped-push-the-idea-of-a-carbon-footprint")[WBUR, "How Big Oil helped push the idea of a carbon footprint"]._
-
-
-
 == Klimaatscenario's <sec:climate-scenarios>
 
 Wat kunnen we verwachten voor de toekomst? Hoe evolueert het klimaat als we het Akkoord van Parijs halen, en wat als we het niet halen?
@@ -597,7 +584,7 @@ Een #strong[futures wheel] is een schema dat de directe en indirecte gevolgen va
 
 == Zeespiegelstijging <sec:zeespiegel>
 
-De impact en de risico's van klimaatverandering nemen toe met de opwarming. Eén gevolg lichten we eruit: de stijging van de zeespiegel. Die is vooral een probleem voor laaggelegen landen. Ook de kans op plotse veranderingen stijgt met de opwarming, vooral doordat ijskappen kunnen desintegreren.
+Zeespiegelstijging is vooral een probleem voor laaggelegen landen. De kans op plotse veranderingen stijgt met de opwarming, vooral doordat ijskappen kunnen desintegreren.
 
 === Oorzaken <sec:zeespiegel-oorzaken>
 
@@ -702,8 +689,6 @@ Het risico stijgt met de zeespiegel, en er is nu al overal een merkbaar risico. 
 - *Grote tropische landbouwdelta's*: enige ruimte om zich aan te passen, maar het risico blijft matig tot hoog.
 - *Arctische gemeenschappen*: hoog risico, dat maar deels weg te werken is met aanpassing.
 
-Mitigatie en adaptatie zijn dus allebei nodig.
-
 === Kosten van overstromingen <sec:kosten-overstromingen>
 
 Kuststeden overstromen niet alleen door de hogere zeespiegel. Ook extreme neerslag en #strong[stormvloed] (wind die het water naar het land duwt) spelen mee. Veel grote steden, zoals Mumbai en Ho Chi Minh-stad, liggen aan de kust omdat de zee handel en verbindingen mogelijk maakt. Van alle stedelingen die door de zeespiegelstijging bedreigd worden, woont ongeveer 25% in China.
@@ -716,7 +701,7 @@ De Wereldbank schat de jaarlijkse kosten van overstromingen tegen het midden van
   label: <fig:Annual-Flood-cost>,
 )
 
-Op #link("https://sealevel.climatecentral.org")[sealevel.climatecentral.org] kun je voor je eigen regio bekijken wat de zeespiegelstijging doet, zonder beschermingsmaatregelen, bij een laag of hoog scenario. In België is de impact groot rond Antwerpen. De haven van Antwerpen is de tweede grootste van Europa, na Rotterdam, dat ook sterk getroffen wordt. Rond beide havens zit veel industrie: een overstroming zou dus een grote economische impact hebben. Beide zullen zich moeten aanpassen.
+In België is de impact het grootst rond Antwerpen. De havens van Antwerpen en Rotterdam (de twee grootste van Europa) en de industrie errond zullen zich moeten aanpassen.
 
 == Links met andere challenges <sec:klimaat-links>
 

@@ -11,6 +11,8 @@ In dit hoofdstuk stellen we vier vragen:
 - Wat zijn de oorzaken van het huidige verlies? Dat zijn de vijf drijvers van de _evil quintet_.
 - Hoe kunnen we biodiversiteit behouden en herstellen?
 
+*IPBES* (_Intergovernmental Science-Policy Platform on Biodiversity and Ecosystem Services_), opgericht in 2011, verbindt wetenschap en beleid rond biodiversiteit. Het bundelt alle bestaande studies in rapporten die beleidsmakers kunnen gebruiken, bv. over bestuivers en voedselproductie (2016), regionaal over Afrika (2018) en het wereldwijde biodiversiteitsrapport (2019).
+
 == Wat is biodiversiteit? <sec:wat-is-biodiversiteit>
 
 #concept(title: "Biodiversiteit (VN-definitie)")[
@@ -20,7 +22,7 @@ In dit hoofdstuk stellen we vier vragen:
 Kort: de variatie in al het leven op aarde. De term is jong: Walter Rosen bedacht hem in 1985 als samentrekking van _biological diversity_. Pas op de VN-conferentie in Rio (1992) kwam er een precieze definitie. We bekijken biodiversiteit op drie niveaus.
 
 - *Genetische diversiteit*: de variatie _binnen_ een soort. Elke mens heeft een andere genetische code.
-- *Soortendiversiteit*: het aantal soorten op een plaats. In 2022 had de mens *2,2 miljoen soorten* beschreven: 1,6 miljoen dieren, 420.000 planten, 140.000 schimmels en zo'n 80.000 andere. Naar schatting (2011) leven er in tot 7.5aal *8,8 miljoen soorten* op aarde: we kennen er dus nog maar een kwart van.
+- *Soortendiversiteit*: het aantal soorten op een plaats. In 2022 had de mens *2,2 miljoen soorten* beschreven: 1,6 miljoen dieren, 420.000 planten, 140.000 schimmels en zo'n 80.000 andere. Naar schatting (2011) leven er in totaal *8,8 miljoen soorten* op aarde: we kennen er dus nog maar een kwart van.
 - *Ecosysteemdiversiteit*: de variatie aan ecosystemen, van boreale bossen en tropische regenwouden tot meren, koraalriffen en mangroves.
 
 == Waar komt biodiversiteit vandaan? <sec:waar-komt-biodiversiteit-vandaan>
@@ -37,8 +39,6 @@ De aarde is ongeveer *4,5 miljard jaar* oud. De eerste levensvormen verschenen z
   Rond *570 miljoen jaar* geleden begon de *Cambrische explosie*: een periode waarin de diversiteit van het leven enorm toenam. Toen ontstonden onder meer de eerste gewervelde dieren. De oorzaak is hoogstwaarschijnlijk de stijging van zuurstof in de atmosfeer, waardoor er meer energie beschikbaar was voor leven.
 
   @fig:Biodiversitiet-sinds-de-cambrian-explosion toont het aantal soorten sinds dan. Het leven begon in de zee (blauw): eerst ongewervelden zoals kwallen, daarna vissen en later zeezoogdieren. Op land (bruin) komt de diversiteit pas op gang in het Paleozoïcum, en schiet ze omhoog vanaf het Krijt, met bloemplanten, insecten, vogels en zoogdieren. Vandaag tellen we op land veel meer soorten (\~5 miljoen) dan in zee (\~1,5 miljoen).
-
-  Speciatie is de manier hoe soorten onstaan waarbij soorten zich aan passen aan hun omgeving tot het opsplitsen in verschillende soorten.
 ]
 
 #concept(title: "Speciatie")[
@@ -122,7 +122,7 @@ Toch is dit nog geen massa-extinctie: zoogdieren zitten met zo'n 2 % uitgestorve
 
 Twee indexen volgen dit op.
 
-*Living Planet Index (LPI)*: volgt de gemiddelde grootte van 21.000 dierpopulaties sinds 1970 en toont een daling van *69 %* (@fig:Living-planet-index). Dit noemer is wel niet helemaal accuraat. de LPI wordt sterk beïnvloed door een kleine groep populaties met een heel sterke daling. Laat je die weg, dan is de daling veel kleiner (@fig:Effect-op-LPI).
+*Living Planet Index (LPI)*: volgt de gemiddelde grootte van 21.000 dierpopulaties sinds 1970 en toont een daling van *69 %* (@fig:Living-planet-index). Dat cijfer is wel vertekend: de LPI wordt sterk beïnvloed door een kleine groep populaties met een heel sterke daling. Laat je die weg, dan is de daling veel kleiner (@fig:Effect-op-LPI).
 
 #grid(
   columns: 2,
@@ -137,7 +137,7 @@ Twee indexen volgen dit op.
   ) <fig:Effect-op-LPI>],
 )
 
-*IUCN Rode Lijst*: volgt het uitsterfrisico per soort en deelt soorten op basis van objectieve criteria in klassen in, van _least concern_ tot _extinct_ (@fig:IUCN). Soorten die _vulnerable_, _endangered_ of _critically endangered_ zijn, gelden als *bedreigd met uitsterven*. De tijger is _endangered_. In 2022 waren van de bijna 150.000 geëvalueerde soorten *28 %* bedreigd. IPBES#footnote[Intergovernmental Science-Policy Platform on Biodiversity and Ecosystem Services] extrapoleerde dit in 2019: zo'n *1 miljoen soorten* worden met uitsterven bedreigd.
+*IUCN Rode Lijst*: volgt het uitsterfrisico per soort en deelt soorten op basis van objectieve criteria in klassen in, van _least concern_ tot _extinct_ (@fig:IUCN). Soorten die _vulnerable_, _endangered_ of _critically endangered_ zijn, gelden als *bedreigd met uitsterven*. De tijger is _endangered_. In 2022 waren van de bijna 150.000 geëvalueerde soorten *28 %* bedreigd. IPBES extrapoleerde dit in 2019: zo'n *1 miljoen soorten* worden met uitsterven bedreigd.
 
 #grid(
   columns: 2,
@@ -248,8 +248,6 @@ Sommige bronnen noemen _supporting services_ als vierde categorie. Dat zijn eige
   Geeft meer biodiversiteit meer ecosysteemdiensten? Darwin vermoedde dat al. Een wereldwijde synthese (Cardinale et al., 2012) toont een positief maar *asymptotisch* verband (@fig:Ecologische-services-in-functie-van-biodiversiteit): stijgend tot een bepaald punt, waarna de diensten *verzadigen*: meer biodiversiteit levert dan weinig extra op.
 
   Dat geeft een *buffer*: een beetje verlies leidt niet meteen tot minder diensten. Maar voorbij een *kritische drempel* vallen de diensten sterk terug, zoals bij de ingestorte visserij door overbevissing.
-
-  Biodiversiteit is dus meer dan erfgoed: ze staat aan de basis van de cascade, een levenslijn voor de mens.
 ]
 
 === Kritiek op ecosysteemdiensten <sec:kritiek-op-ecosystem-services>
@@ -293,15 +291,9 @@ CWR zijn bedreigd door uitbreiding van landbouw. Je kan ze bewaren:
 
 === Voorbeeld: bestuiving <sec:voorbeeld-pollinatie>
 
-#wrap-figure(
-  image("assets/Een-bij-die-polineert.png", width: 7cm),
-  caption: [Een bij die bestuift],
-  label: <fig:Een-bij-die-polineert>,
-)[
-  Een voorbeeld van een *regulerende dienst*. 87 van de 124 belangrijkste gewassen (35 % van het productievolume) hangen deels af van bestuiving door insecten. Appel, cacao, watermeloen, amandel, cashew, pompoen, Robustakoffie, avocado en kiwi geven zonder bestuivers geen vrucht. Bij Arabicakoffie en koolzaad verhogen ze de opbrengst. Tarwe en maïs hebben ze niet nodig.
+Een voorbeeld van een *regulerende dienst*. 87 van de 124 belangrijkste gewassen (35 % van het productievolume) hangen deels af van bestuiving door insecten. Appel, cacao, watermeloen, amandel, cashew, pompoen, Robustakoffie, avocado en kiwi geven zonder bestuivers geen vrucht. Bij Arabicakoffie en koolzaad verhogen ze de opbrengst. Tarwe en maïs hebben ze niet nodig.
 
-  De waarde van bestuivers is *€153 miljard per jaar*, 10 % van de landbouwproductie.
-]
+De waarde van bestuivers is *€153 miljard per jaar*, 10 % van de landbouwproductie.
 
 Meer en diversere bestuivers geven een hogere opbrengst. Koffieplantages dicht bij natuurlijke vegetatie brengen meer op: die vegetatie biedt nestplaatsen en voedsel buiten de bloeiperiode van de koffie.
 
@@ -546,7 +538,7 @@ Bij rewilding sturen sleutelsoorten en abiotische processen het systeem, niet de
   Een soort met een veel grotere invloed op haar ecosysteem dan je op basis van haar aantal zou verwachten. Valt ze weg, dan verandert het hele ecosysteem. _Bv. grote grazers of toppredatoren zoals de wolf._
 ]
 
-Het gaat niet om terugkeren naar een "ongerepte" toestand, maar om het verschuiven van menselijk beheer naar natuurlijke processen: predatie, begrazing, overstromingen, stormen, nutriëntenkringlopen, successie. Elke stap richting zelfregulatie telt als rewilding. De definitie verschilt wel: sommigen sluiten de mens volledig uit, anderen bedoelen enkel het terugbrengen van grote grazers.
+Rewilding verschuift het beheer van de mens naar natuurlijke processen: predatie, begrazing, overstromingen, stormen, nutriëntenkringlopen, successie. Terugkeren naar een "ongerepte" toestand is niet het doel. Elke stap richting zelfregulatie telt als rewilding. De definitie verschilt wel: sommigen sluiten de mens volledig uit, anderen bedoelen enkel het terugbrengen van grote grazers.
 
 Veelgebruikte aanpakken:
 
@@ -554,12 +546,6 @@ Veelgebruikte aanpakken:
 - *Verbinding herstellen*: hekken en dammen weg, ecoducten en corridors voor migratie en genetische uitwisseling.
 - *Wetlands herstellen*: invasieve soorten weg, natuurlijke waterhuishouding terug. Dat zuivert water en buffert overstromingen.
 - *Passieve rewilding*: minder bos- en landbouw, en de natuur zelf laten herstellen.
-
-#figure(
-  image("assets/Foto-van-een-hernieuw-habitat.png", width: 40%),
-  caption: [Een herstelde habitat],
-  label: <fig:Foto-van-een-hernieuw-habitat>,
-)
 
 === Internationaal biodiversiteitsbeleid <sec:international-biodiversiteit-policies>
 
