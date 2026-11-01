@@ -293,9 +293,9 @@ jobs:
                   echo "|---|---|---|" >> "$GITHUB_STEP_SUMMARY"
                   find artifacts/pdfs -type f -name '*.pdf' -print0 | while IFS= read -r -d '' f; do
                       tmp="${f%.pdf}.gs.pdf"
-                      # 300 dpi, JPEG met QFactor 0.15 en zonder chroma subsampling (Acrobat "maximum").
+                      # 300 dpi, JPEG met QFactor 0.4 en zonder chroma subsampling (hoog; maximum = 0.15).
                       # -dJPEGQ werkt niet bij pdfwrite: kwaliteit gaat via ColorImageDict/GrayImageDict.
-                      q="/QFactor 0.15 /Blend 1 /HSamples [1 1 1 1] /VSamples [1 1 1 1]"
+                      q="/QFactor 0.4 /Blend 1 /HSamples [1 1 1 1] /VSamples [1 1 1 1]"
                       if gs -q -dNOPAUSE -dBATCH -dSAFER -sDEVICE=pdfwrite -dCompatibilityLevel=1.7 \
                             -dDownsampleColorImages=true -dColorImageResolution=300 -dColorImageDownsampleThreshold=1.2 \
                             -dAutoFilterColorImages=false -dColorImageFilter=/DCTEncode \
