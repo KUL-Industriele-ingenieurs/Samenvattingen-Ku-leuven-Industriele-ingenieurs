@@ -214,8 +214,7 @@ Hiermee vinden we juiste $\omega$ en zo het juiste vermogen bij een gehalveerd k
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.6\textwidth]{assets/AIgeneratedgrafieklineairgebiedTn.png}
-  \caption{Lineair verloop van T-n karakteristiek in het gebied van nominale snelheid (AI
-  gegenereerd maar is juist)}
+  \caption{Lineair verloop van T-n karakteristiek in het gebied van nominale snelheid}
   \label{fig:AIgeneratedgrafieklineairgebiedTn.png}
  \end{figure}
 \begin{align*}
@@ -241,8 +240,7 @@ en de snelheid berekenen bij -25Nm:
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.6\textwidth]{assets/AIgeneratedgrafieklineairgebiedgenerator.png}
-  \caption{Lineair verloop van T-n karakteristiek in het gebied van generatorwerking (AI
-  gegenereerd maar is juist)}
+  \caption{Lineair verloop van T-n karakteristiek in het gebied van generatorwerking}
   \label{fig:AIgeneratedgrafieklineairgebiedgenerator.png}
  \end{figure}
 \end{oefenblok}
@@ -365,9 +363,11 @@ Het is dus eigelijk gelijk aan:
 \begin{align*}
    \frac{R_2}{s} = R_2 + (\frac{1-s}{s}) \cdot R_2 = \underbrace{R_2 + {R'}_{load}}_{\text{in serie}}
 \end{align*}
-Die $R'_{load}$ is dus de weerstand die de rotor moet overwinnen om het koppel te leveren,
-en die is groter naarmate de slip kleiner wordt (want dan draait de rotor sneller, dus
-moet hij meer kracht leveren).
+Het vermogen in $R'_{load}$ is het vermogen dat omgezet wordt naar mechanisch vermogen:
+$P_{conv} = 3 I_2^2 R'_{load} = (1-s) \cdot P_S$.
+$R'_{load}$ is groter naarmate de slip kleiner wordt.
+Daardoor is de rotorstroom kleiner en wordt een groter deel ($1-s$) van het
+luchtspleetvermogen omgezet; het koppel zelf is bij kleine slip net klein.
 Bij stilstand ($s=1$) is er geen extra weerstand, bij synchrone snelheid ($s=0$) is de
 weerstand oneindig groot (want dan kan er geen stroom meer lopen in de rotor).
 
@@ -441,8 +441,8 @@ conventioneel vermogen $P_{conv}$.
 Om van de as naar het effectief mechanisch vermogen $P_{mech}$ te gaan zijn dus echter een
 paar verliezen nog.
 We hebben wrijvingsverliezen $P_{wr}$, deze zijn vooral warmte, dit is vooral in de lagers
-maar komt in totaal weinig voor in de inductiemachine, dan hebben we ook windingsverliezen
-$P_w$, dit zijn aerodynamische wrijvingsverliezen door lucht en uiteindelijk nog
+maar komt in totaal weinig voor in de inductiemachine, dan hebben we ook ventilatieverliezen
+(windage) $P_w$, dit zijn aerodynamische wrijvingsverliezen door lucht en uiteindelijk nog
 strooiverliezen $P_{str}$, dit zijn alle andere verliezen zoals bvb.
 harmonischen ofzo, deze zijn in totaal echter heel klein (1\% ofzo).
 
@@ -492,10 +492,10 @@ steady-state temperatuur van de machine want normaal als hij draait warmt hij op
 de weerstand anders.
 
 \subsubsection{Nullastproef}
-Bij de nullastproef is het doel om de verliezen te meten (de wrijvings en ijzerverliezen).
-Hier laten we de motor op volle snelheid draaien ($n_s$) en we hangen er geen last aan ook
-dus $T = 0$, ook veronderstellen we geen mechanische verliezen, dit betekent dat
-$R'_{load}$ naar oneindig gaat (open keten).
+Bij de nullastproef is het doel om de ijzerverliezen ($R_{Fe}$) en $X_m$ te bepalen.
+Hier laten we de motor draaien zonder last, dus $T = 0$.
+We verwaarlozen de mechanische verliezen, dan draait de rotor bijna synchroon ($s \approx 0$)
+en gaat $R'_{load}$ naar oneindig (open keten).
 De nominale spanning sluiten we aan en we gaan dan de spanning, stroom en vermogen meten
 zoals we zien in de volgende opstelling:
 
@@ -506,8 +506,8 @@ zoals we zien in de volgende opstelling:
   \label{fig:opstellingnullastproef.png}
  \end{figure}
 
-Doordat het op synchrone snelheid is gaat er dus ook geen spanning geïnduceerd worden en
-geen stroom vloeien (ook logisch als die weerstand oneindig is) dus het hele rotor
+Doordat de rotor bijna synchroon draait, wordt er bijna geen spanning geïnduceerd en
+vloeit er bijna geen stroom (ook logisch als die weerstand oneindig is), dus het hele rotor
 gedeelte van het equivalent schema valt dus weg, oftewel zoals ik net eigelijk al zei, dit
 wordt een open keten.
 Het equivalent schema voor deze proef ziet er dan zo uit:
@@ -521,8 +521,8 @@ Het equivalent schema voor deze proef ziet er dan zo uit:
 
 ($I_{Nullast}$ is eigelijk exact hetzelfde als $I_0$ in dit equivalent schema)
 
-Als we nu het vermogen meten als $P_{Nullast}$ dan is dit de som van de ijzerverliezen en
-de wrijvingsverliezen:
+Als we nu het vermogen meten als $P_{Nullast}$ dan is dit de som van de koperverliezen in de
+stator en de ijzerverliezen (de mechanische verliezen verwaarlozen we):
 \begin{align*}
     P_{Nullast} = P_{R_1} + P_{R_{Fe}} = \underbrace{3 \cdot I_{Nullast}^2 \cdot R_1}_{\text{Kunnen we berekenen}} + 3 \cdot \frac{E_1^2}{R_{Fe}}
 \end{align*}
