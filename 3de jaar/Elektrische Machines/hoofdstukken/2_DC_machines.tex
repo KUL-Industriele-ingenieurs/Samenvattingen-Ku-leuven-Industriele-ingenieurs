@@ -871,7 +871,48 @@ All unspecified losses are to be neglected.
  What will be the magnitude and phase of the current in the ac machine?
 \end{itemize}
 \textbf{Oplossing:}
-\dots ({\color{red}Nog niet aan begonnen})
+\textit{Idee:} de DC-motor en de synchrone machine (SM) hangen op dezelfde as, dus het
+vermogen van de ene is het vermogen van de andere (verliezen buiten $R_a$ verwaarloosd).
+De SM hangt aan een vast net: zijn poolwielspanning $E$ hangt alleen af van zijn
+bekrachtiging en blijft dus vast na 1).
+De vermogensstroom regel je met de bekrachtiging van de DC-machine.
+SM in ster: $V_\phi = 460/\sqrt{3} = 265.6\,V$.
+
+\textbf{1)} SM als generator, $25\,kW$ bij $\cos\varphi = 1$:
+\begin{align}
+    I_{SM} &= \frac{25\,000}{\sqrt{3} \cdot 460} = 31.4\,A \tag{1} \\
+    \underline{E} &= V_\phi + jX_s \cdot \underline{I} = 265.6 + j\,6.6 \cdot 31.4
+    = 265.6 + j\,207.1 = 336.8\,V \angle 37.9^\circ \tag{2}
+\end{align}
+DC-motor: $E_a \cdot I_a = 25\,kW$ en $250 = E_a + I_a \cdot R_a$.
+Tweede in eerste invullen geeft $0.022 \cdot I_a^2 - 250 \cdot I_a + 25\,000 = 0$:
+\begin{align}
+    I_a = 100.9\,A, \qquad E_a = 250 - 100.9 \cdot 0.022 = 247.8\,V \tag{3}
+\end{align}
+
+\textbf{2)} Vermogen naar nul: verhoog de bekrachtiging van de DC-motor tot
+$E_a = 250\,V$. Dan is $I_a = 0$.
+De SM levert geen vermogen meer, dus $\delta = 0$ en $\underline{E}$ ligt in fase met
+$V_\phi$:
+\begin{align}
+    I_{SM} = \frac{E - V_\phi}{X_s} = \frac{336.8 - 265.6}{6.6} = 10.8\,A \tag{4}
+\end{align}
+Deze stroom is zuiver reactief: de SM is overbekrachtigd en levert blindvermogen.
+
+\textbf{3)} $25\,kW$ van het net naar de DC-bron: verhoog de bekrachtiging van de
+DC-machine nog verder, zodat $E_a > 250\,V$ en ze generator wordt.
+Met $E_a \cdot I_a = 25\,kW$ en $E_a = 250 + I_a \cdot R_a$:
+\begin{align}
+    I_a = 99.1\,A, \qquad E_a = 250 + 99.1 \cdot 0.022 = 252.2\,V \tag{5}
+\end{align}
+De SM werkt nu als motor met dezelfde $E = 336.8\,V$; de lasthoek wisselt van teken:
+\begin{align}
+    \sin\delta = \frac{P \cdot X_s}{3 \cdot E \cdot V_\phi} = \frac{25\,000 \cdot 6.6}{3 \cdot 336.8 \cdot 265.6} = 0.615
+    \quad \rightarrow \quad \delta = -37.9^\circ \tag{6} \\
+    \underline{I} = \frac{V_\phi - \underline{E}}{jX_s} = \frac{265.6 - (265.6 - j\,207.1)}{j\,6.6} = 31.4\,A \angle 0^\circ \tag{7}
+\end{align}
+\textit{Check:} zelfde stroomgrootte als in 1), nu als motor in fase met de spanning
+($\cos\varphi = 1$), want $E$ en $P$ zijn gelijk gebleven en alleen $\delta$ wisselde van teken.
 \end{oefenblok}
 
 \newpage

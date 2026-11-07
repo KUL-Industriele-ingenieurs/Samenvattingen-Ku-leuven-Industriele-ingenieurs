@@ -134,7 +134,7 @@ om te onthouden.
   \label{fig:rotorviewinductiemachine.png}
  \end{figure}
 
-\subsection{Kenplaat oefening}
+\subsection{Kenplaat oefening}\label{sec:kenplaat-oefening}
 Dit thema is een beetje messy als het neer komt op de oefeningen, ze zijn niet zomaar
 allemaal vanachter op het eind van dit thema, ik ga de meeste hiervan dus tussen de
 theorie plaatsen in de zelfde volgorde als hoe ze in de les aan bod kwamen.
@@ -603,7 +603,7 @@ we een 50/50 verhouding gebruiken:
   \label{fig:nemaverhoudingen.png}
  \end{figure}
 
-\section{Koppel-toerentalkarakteristiek}
+\section{Koppel-toerentalkarakteristiek}\label{sec:koppel-toerental}
 Dan gaan we nu eens meer uitgebreid kijken naar de koppel-toerentalkarakteristiek van de
 inductiemachine.
 We hebben al eerder gezien dat deze er ongeveer zo uitziet:
@@ -1307,6 +1307,104 @@ Dit is veel efficiënter.
 
 \subsection{Oefeningen}
 
+\begin{oefenblok}[Oefening 6-20 Slides (equivalent schema uit metingen)]
+    \textbf{Opgave:}
+    \newline
+    A 208V, 60Hz, six-pole Y-connected 25hp design class B induction motor is tested in
+    the laboratory with the following results:
+    \begin{itemize}
+     \item No load: 208V, 24.0A, 1400W, 60Hz
+     \item Locked rotor: 24.6V, 64.5A, 2200W, 15Hz
+     \item DC test: 13.5V, 64A
+    \end{itemize}
+    Find the equivalent circuit of this motor, and plot its torque-speed characteristic
+    curve.
+    \newline
+    \textbf{Oplossing:}
+    \newline
+    \textit{Idee:} elke meting maakt een deel van het equivalent schema zichtbaar (zie figuur
+    \ref{fig:equivschemanullastproefIM.png} en de blokkeerproef).
+    De DC-meting geeft $R_1$, de nullastproef geeft $X_1 + X_m$ en $R_{Fe}$, de
+    blokkeerproef geeft $R_2$ en $X_1 + X_2$.
+    Alles gebeurt met fasegrootheden: de motor staat in ster, dus $V_\phi = V_L/\sqrt{3}$
+    en $I_\phi = I_L$.
+
+    \textit{Telling:} onbekenden $R_1, R_2, X_1, X_2, X_m, R_{Fe}$ (6).
+    Vergelijkingen: (1) DC, (2)--(3) nullast, (4)--(6) blokkeer, (7) NEMA-verhouding.
+    $X_1 + X_2$ uit (6) en de verhouding (7) samen geven $X_1$ en $X_2$ apart.
+
+    \textbf{DC-meting $\rightarrow R_1$:} de stroom gaat door twee statorfasen in serie.
+    \begin{align}
+        R_1 = \frac{V_{DC}}{2 \cdot I_{DC}} = \frac{13.5}{2 \cdot 64} = 0.106\,\Omega \tag{1}
+    \end{align}
+
+    \textbf{Nullastproef $\rightarrow X_1 + X_m$, $R_{Fe}$:}
+    $V_\phi = 208/\sqrt{3} = 120.1\,V$.
+    \begin{align}
+        Q_{Nullast} &= \sqrt{S^2 - P^2} = \sqrt{(\sqrt{3} \cdot 208 \cdot 24)^2 - 1400^2} = 8532\,var \notag \\
+        X_1 + X_m &= \frac{3 \cdot V_\phi^2}{Q_{Nullast}} = \frac{3 \cdot 120.1^2}{8532} = 5.07\,\Omega \tag{2} \\
+        R_{Fe} &= \frac{3 \cdot V_\phi^2}{P_{Nullast} - 3 \cdot I_{Nullast}^2 \cdot R_1} = \frac{3 \cdot 120.1^2}{1400 - 3 \cdot 24^2 \cdot 0.106} = \frac{43\,266}{1218} = 35.5\,\Omega \tag{3}
+    \end{align}
+
+    \textbf{Blokkeerproef $\rightarrow R_2$, $X_1 + X_2$:}
+    $V_{\phi,Blokkeer} = 24.6/\sqrt{3} = 14.20\,V$.
+    \begin{align}
+        R_1 + R_2 &= \frac{P_{Blokkeer}}{3 \cdot I_{Blokkeer}^2} = \frac{2200}{3 \cdot 64.5^2} = 0.176\,\Omega
+        \quad \xrightarrow{-(1)} \quad R_2 = 0.176 - 0.106 = 0.071\,\Omega \tag{4} \\
+        Z_{Blokkeer} &= \frac{V_{\phi,Blokkeer}}{I_{Blokkeer}} = \frac{14.20}{64.5} = 0.220\,\Omega \tag{5} \\
+        X'_{tot} &= \sqrt{Z_{Blokkeer}^2 - (R_1 + R_2)^2} = \sqrt{0.220^2 - 0.176^2} = 0.132\,\Omega
+        \quad \text{(bij 15Hz)} \notag \\
+        X_1 + X_2 &= X'_{tot} \cdot \frac{60}{15} = 4 \cdot 0.132 = 0.528\,\Omega \tag{6}
+    \end{align}
+
+    \textbf{Splitsen met NEMA klasse B:} $X_1 = 0.4 \cdot X_{tot}$, $X_2 = 0.6 \cdot X_{tot}$
+    (figuur \ref{fig:nemaverhoudingen.png}).
+    \begin{align}
+        X_1 = 0.4 \cdot 0.528 = 0.211\,\Omega, \qquad X_2 = 0.6 \cdot 0.528 = 0.317\,\Omega \tag{7}
+    \end{align}
+    (7) in (2): $X_m = 5.07 - 0.211 = 4.86\,\Omega$.
+
+    \textbf{Resultaat equivalent schema (per fase):}
+    $R_1 = 0.106\,\Omega$, $X_1 = 0.211\,\Omega$, $R_{Fe} = 35.5\,\Omega$,
+    $X_m = 4.86\,\Omega$, $X_2 = 0.317\,\Omega$, $R_2 = 0.071\,\Omega$.
+
+    \textbf{T-n karakteristiek:} met de Thévenin-formules van §\ref{sec:koppel-toerental}
+    en $\omega_s = 2\pi \cdot 1200/60 = 125.7\,rad/s$ (6 polen, 60Hz $\rightarrow n_s = 1200\,tr/min$):
+    \begin{align*}
+        V_{TH} &= 120.1 \cdot \frac{4.86}{\sqrt{0.106^2 + (0.211 + 4.86)^2}} = 115.1\,V, \quad
+        R_{TH} = 0.097\,\Omega, \quad X_{TH} = 0.202\,\Omega \\
+        s_{kip} &= \frac{0.071}{\sqrt{0.097^2 + (0.202 + 0.317)^2}} = 0.134
+        \quad \rightarrow \quad n_{kip} = 1200 \cdot (1 - 0.134) = 1039\,tr/min \\
+        T_{kip} &= \frac{3}{125.7} \cdot \frac{115.1^2}{2[0.097 + \sqrt{0.097^2 + (0.202 + 0.317)^2}]} = 253\,Nm \\
+        T_{start} &= T_{ind}(s = 1) = 75\,Nm
+    \end{align*}
+    Bij het nominaal vermogen ($25\,hp = 18.65\,kW$) volgt uit $P_{mech} = T_{ind} \cdot \omega$:
+    $s_{nom} = 0.042$, $n_{nom} = 1149\,tr/min$, $T_{nom} = 155\,Nm$.
+
+    \begin{figure}[H]
+      \centering
+      \begin{tikzpicture}
+        \begin{axis}[width=0.75\textwidth, height=6cm, xlabel={$n$ [tr/min]},
+          ylabel={$T_{ind}$ [Nm]}, xmin=0, xmax=1200, ymin=0, ymax=280, grid=major,
+          samples=200]
+          \addplot[blue, thick, domain=0:1199]
+            {3*115.06^2*(0.0708/(1-x/1200)) / (125.66*((0.0968+0.0708/(1-x/1200))^2 + (0.2024+0.3167)^2))};
+          \addplot[only marks, mark=*, red] coordinates {(1039,252.9) (1149,154.9) (0,75.2)};
+        \end{axis}
+      \end{tikzpicture}
+      \caption{T-n karakteristiek oefening 6-20 (kippunt, nominaal punt en startkoppel in rood)}
+      \label{fig:tn-oefening-6-20}
+    \end{figure}
+
+    \textit{Check:} $s_{nom} = 4.2\%$ ligt in het normale bereik (1--5\%) en
+    $T_{kip}/T_{nom} = 1.6$.
+    Het startkoppel ($0.5 \cdot T_{nom}$) is laag voor een klasse B-motor.
+    Dit komt omdat het model één vaste $R_2$ gebruikt, gemeten bij 15Hz.
+    Bij de start (rotor op 60Hz) is $R_2$ door het skin-effect groter en dus ook het
+    echte startkoppel.
+\end{oefenblok}
+
+
 \begin{oefenblok}[Oefening 6-26 Slides]
     \textbf{Opgave:}
     \newline
@@ -1323,7 +1421,25 @@ Dit is veel efficiënter.
 \end{itemize}
    \textbf{Oplossing:}
    \newline
-   \dots ({\color{red}Nog niet aan begonnen})
+      \textit{Idee:} een softstarter verlaagt de spanning.
+   Bij dezelfde slip (hier de start, $s = 1$) geldt $T \propto V^2$ en $I \propto V$.
+   Een softstarter heeft geen transformator, dus de netstroom is gelijk aan de motorstroom.
+
+   \textbf{a)} Startkoppel van $1.75 \cdot T_{nom}$ naar $T_{nom}$:
+   \begin{align}
+       \left(\frac{V}{460}\right)^2 = \frac{1}{1.75} \quad \rightarrow \quad
+       V = 460 \cdot \sqrt{\frac{1}{1.75}} = 0.756 \cdot 460 = 348\,V \tag{1}
+   \end{align}
+   \textbf{b)} Nominale stroom uit vermogen, rendement en arbeidsfactor:
+   \begin{align}
+       I_{nom} &= \frac{P_{mech}}{\eta \cdot \sqrt{3} \cdot V_L \cdot \cos\varphi}
+       = \frac{37\,000}{0.91 \cdot \sqrt{3} \cdot 460 \cdot 0.87} = 58.7\,A \tag{2} \\
+       I_{start} &= 0.756 \cdot 7 \cdot I_{nom} = 5.29 \cdot 58.7 = 310\,A \tag{3}
+   \end{align}
+   \textbf{c)} De netstroom is ook $310\,A$ (softstarter = thyristoren, geen
+   transformator).
+   Met een autotransformator met dezelfde verhouding zou de netstroom nog eens
+   $\times 0.756$ dalen: $0.756^2 \cdot 7 \cdot I_{nom} = 4 \cdot I_{nom} = 235\,A$.
 \end{oefenblok}
 
 \begin{oefenblok}[Excercise Induction motor Slides]
@@ -1342,7 +1458,8 @@ Dit is veel efficiënter.
     \end{itemize}
     \textbf{Oplossing:}
     \newline
-    \dots ({\color{red}Nog niet aan begonnen})
+        Dit is dezelfde motor en last als Oefening 5 - Pump load (Toledo) hieronder.
+    Zie daar voor de uitwerking van a), b) en c).
 \end{oefenblok}
 
 \begin{oefenblok}[Oefening 1 - Slip (Toledo)]
@@ -1359,7 +1476,20 @@ Dit is veel efficiënter.
      \end{figure}
     \textbf{Oplossing:}
     \newline
-    \dots ({\color{red}Nog niet aan begonnen})
+        De slip $s = \frac{n_s - n}{n_s}$ is een lineaire as die tegengesteld loopt aan $n$:
+    \begin{center}
+    \begin{tabular}{lll}
+      \toprule
+      Toerental & Slip & Werking \\
+      \midrule
+      $n < 0$ & $s > 1$ & remmen (tegenstroom) \\
+      $n = 0$ & $s = 1$ & stilstand, aanloop \\
+      $n = n_n$ & $s_n \approx 1\ldots5\,\%$ & nominaal motorpunt \\
+      $n = n_s$ & $s = 0$ & synchroon, geen koppel \\
+      $n > n_s$ & $s < 0$ & generator \\
+      \bottomrule
+    \end{tabular}
+    \end{center}
 \end{oefenblok}
 
 \begin{oefenblok}[Oefening 2 - Rating plate (Toledo)]
@@ -1380,7 +1510,9 @@ Dit is veel efficiënter.
     \end{itemize}
     \textbf{Oplossing:}
     \newline
-    \dots ({\color{red}Nog niet aan begonnen})
+        Dit is dezelfde kenplaat als de oefening in §\ref{sec:kenplaat-oefening}; daar staan
+    alle drie de vragen uitgewerkt (2 poolparen, $n_s = 1500\,tr/min$, $s = 4\,\%$,
+    $T_{nom} = 36.7\,Nm$, $P = 2.82\,kW$, $n = 1544\,tr/min$).
 \end{oefenblok}
 
 \begin{oefenblok}[Oefening 3 - Equivalent circuit (Toledo)]
@@ -1401,7 +1533,43 @@ Dit is veel efficiënter.
     \newline
     \textbf{Oplossing:}
     \newline
-    \dots ({\color{red}Nog niet aan begonnen})
+    \textit{Idee:} zelfde werkwijze als oefening 6-20: DC-meting $\rightarrow R_1$,
+    blokkeerproef $\rightarrow R_2$ en $X_1 + X_2$, nullastproef $\rightarrow R_c$ en $X_m$.
+    De kenplaat geeft geen schakeling; met ster klopt $R_1$ met het antwoord, dus
+    $V_\phi = 400/\sqrt{3} = 230.9\,V$.
+    De blokkeerproef is gedaan bij nominale stroom ($I = 533\,A$) en 50Hz, dus geen
+    frequentie-omrekening.
+    De vollastgegevens zijn niet nodig voor het schema.
+
+    \textbf{DC-meting:}
+    \begin{align}
+        R_1 = \frac{R_{lijn-lijn}}{2} = \frac{4.4}{2} = 2.2\,m\Omega \tag{1}
+    \end{align}
+
+    \textbf{Blokkeerproef:}
+    \begin{align}
+        R_1 + R_2 &= \frac{P_{lr}}{3 \cdot I^2} = \frac{16\,300}{3 \cdot 533^2} = 19.1\,m\Omega
+        \quad \xrightarrow{-(1)} \quad R_2 = 16.9\,m\Omega \tag{2} \\
+        Z_{lr} &= \frac{U_{lr}}{I} = \frac{66.1}{533} = 124.0\,m\Omega \tag{3} \\
+        X_1 + X_2 &= \sqrt{Z_{lr}^2 - (R_1 + R_2)^2} = \sqrt{124.0^2 - 19.1^2} = 122.5\,m\Omega
+        \quad \xrightarrow{50/50} \quad X_1 = X_2 = 61\,m\Omega \tag{4}
+    \end{align}
+    In (3) is $U_{lr} = 66.1\,V$ als fasespanning genomen.
+    Als lijnspanning ($66.1/\sqrt{3}$) krijg je $X_1 = X_2 = 35\,m\Omega$, en dat
+    klopt niet met het antwoord.
+    Er is geen NEMA-klasse gegeven, dus 50/50 splitsen.
+
+    \textbf{Nullastproef:}
+    \begin{align}
+        R_c &= \frac{3 \cdot V_\phi^2}{P_0 - 3 \cdot I_0^2 \cdot R_1}
+        = \frac{3 \cdot 230.9^2}{5730 - 3 \cdot 124.7^2 \cdot 0.0022} = \frac{159\,948}{5627} = 28.4\,\Omega \tag{5} \\
+        Q_0 &= \sqrt{(3 \cdot V_\phi \cdot I_0)^2 - P_0^2} = \sqrt{86\,395^2 - 5730^2} = 86\,204\,var \notag \\
+        X_1 + X_m &= \frac{3 \cdot V_\phi^2}{Q_0} = \frac{159\,948}{86\,204} = 1.856\,\Omega
+        \quad \xrightarrow{-(4)} \quad X_m = 1.856 - 0.061 = 1.80\,\Omega \tag{6}
+    \end{align}
+
+    \textit{Check:} $R_1 = 2.2\,m\Omega$, $R_2 = 17\,m\Omega$, $X_1 = X_2 = 61\,m\Omega$,
+    $R_c = 28\,\Omega$, $X_m = 1.8\,\Omega$: alles gelijk aan de numerieke antwoorden.
 \end{oefenblok}
 
 \begin{oefenblok}[Oefening 5 - Pump load (Toledo)]
@@ -1426,7 +1594,46 @@ Dit is veel efficiënter.
     \end{itemize}
     \textbf{Oplossing:}
     \newline
-    \dots ({\color{red}Nog niet aan begonnen})
+        \textbf{1. Nominaal werkingspunt.}
+    $2885\,tr/min$ ligt net onder $3000\,tr/min$, dus 1 poolpaar en $n_s = 3000\,tr/min$.
+    \begin{align}
+        s_{nom} &= \frac{3000 - 2885}{3000} = 3.8\,\% \tag{1} \\
+        P_{el} &= \sqrt{3} \cdot 400 \cdot 6.2 \cdot 0.86 = 3694\,W, \qquad
+        P_{mech} = 3200\,W \tag{2} \\
+        \eta_{nom} &= \frac{3200}{3694} = 86.6\,\% \tag{3} \\
+        T_{nom} &= \frac{P_{mech}}{\omega} = \frac{3200}{2\pi \cdot 2885/60} = 10.6\,Nm \tag{4}
+    \end{align}
+
+    \textbf{2. Equivalent schema en fasordiagram:}
+    {\color{red}nog uit te werken: met $I_0$ en $L_{leakage}$ geeft het vereenvoudigde
+    schema geen eenduidige $R_2/s$; de methode uit de les is nodig.}
+
+    \textbf{3. Werkingspunt met de pomp.}
+    \textit{Idee:} rond het nominaal punt is de motorkarakteristiek een rechte door
+    $(n_s, 0)$ en $(n_{nom}, T_{nom})$, zoals in de kenplaatoefening
+    (§\ref{sec:kenplaat-oefening}).
+    Het werkingspunt is het snijpunt met de pompparabool.
+    \begin{align}
+        T_{motor} &= T_{nom} \cdot \frac{n_s - n}{n_s - n_{nom}} = 0.0921 \cdot (3000 - n) \tag{5} \\
+        T_{pomp} &= 0.95 \cdot \left(\frac{n}{1000}\right)^2 = 0.95 \cdot 10^{-6} \cdot n^2 \tag{6}
+    \end{align}
+    (5) = (6) geeft een vierkantsvergelijking in $n$:
+    \begin{align}
+        0.95 \cdot 10^{-6} \cdot n^2 + 0.0921 \cdot n - 276.3 = 0
+        \quad \rightarrow \quad n = 2913\,tr/min, \quad T = 8.06\,Nm \tag{7}
+    \end{align}
+    \textit{Check:} $T < T_{nom}$, dus $n$ ligt tussen $n_{nom}$ en $n_s$.
+
+    \textbf{4. Spanningsdip van 80V} ($400 \rightarrow 320\,V$).
+    Bij gelijke slip geldt $T \propto V^2$, dus elk koppel op de motorkromme wordt
+    $\times (320/400)^2 = 0.64$.
+    \begin{itemize}
+     \item Op het moment van de dip (toerental nog $2913\,tr/min$):
+     $T = 0.64 \cdot 8.06 = 5.16\,Nm$. Dat is minder dan het pompkoppel, dus de motor
+     vertraagt.
+     \item Nieuw evenwicht: (5) met helling $0.64 \cdot 0.0921$ snijden met (6) geeft
+     $n = 2867\,tr/min$ en $T = 7.81\,Nm$.
+    \end{itemize}
 \end{oefenblok}
 
 % ==================================================================
