@@ -295,7 +295,7 @@ De waarde van bestuivers is *€153 miljard per jaar*, 10 % van de landbouwprodu
 
 Meer en diversere bestuivers geven een hogere opbrengst. Koffieplantages dicht bij natuurlijke vegetatie brengen meer op: die vegetatie biedt nestplaatsen en voedsel buiten de bloeiperiode van de koffie.
 
-Niet alleen het *aantal* bestuivers telt, ook het *aantal soorten*.
+Zowel het *aantal* bestuivers als het *aantal soorten* bepaalt de opbrengst.
 
 #concept(title: "Complementariteitseffect")[
   Elke soort bestuift het best onder eigen omstandigheden (wind, vochtigheid). Met meer soorten is er altijd wel één die kan bestuiven.
@@ -562,7 +562,7 @@ Op de 10e CoP in Nagoya (2010) kwamen het *Nagoya-protocol* (eerlijke verdeling 
 - minstens 15 % van de gedegradeerde gebieden herstellen;
 - de druk op koraalriffen verminderen.
 
-*Geen enkel* Aichi-doel werd gehaald. Daarom zijn het post-2020 Global Biodiversity Framework en de EU-natuurherstelwet (2023) belangrijk.
+*Geen enkel* Aichi-doel werd gehaald. Daarop volgden het post-2020 Global Biodiversity Framework en de EU-natuurherstelwet (2023).
 
 === Links met andere global challenges <sec:links-met-andere-global-challenges>
 

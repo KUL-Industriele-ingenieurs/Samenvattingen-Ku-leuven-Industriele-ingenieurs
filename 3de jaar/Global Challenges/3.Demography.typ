@@ -483,7 +483,7 @@ In de oude fase zijn veel mensen niet meer productief en hebben ze zorg nodig (@
   label: <fig:Vergrijzing-en-BBP-groei>,
 )
 
-Dat is geen ramp: 1 à 3 % groei komt bovenop een grote welvaart die er al is, dus deze landen worden nog rijker. Ze moeten wel blijven investeren in het onderwijs van de jongeren, want die moeten het land later draaiende houden.
+Dat valt mee: 1 à 3 % groei komt bovenop een grote welvaart die er al is, dus deze landen worden nog rijker. Ze moeten wel blijven investeren in het onderwijs van de jongeren, want die moeten het land later draaiende houden.
 
 == Links met andere global challenges <sec:demografie-links>
 
@@ -495,7 +495,7 @@ Dat is geen ramp: 1 à 3 % groei komt bovenop een grote welvaart die er al is, d
 
 / Klimaat en biodiversiteit: Bevolkingsgroei verhoogt de vraag naar grondstoffen, voedsel, ruimte en energie. Dat verhoogt de druk op klimaat, biodiversiteit en de andere planetaire grenzen.
 
-/ Migratie: Bevolkingsgroei hangt niet alleen af van de vruchtbaarheid, maar ook van mensen die een land in- en uittrekken.
+/ Migratie: Naast de vruchtbaarheid bepalen ook mensen die een land in- en uittrekken de bevolkingsgroei.
 
 / Voedselzekerheid: Voedselzekerheid is nodig om kindersterfte te verlagen, en dus ook de vruchtbaarheid en de bevolkingsgroei. Tegelijk moet een groeiende wereldbevolking (duurzaam) gevoed worden, zonder meer landbouwgrond.
 
