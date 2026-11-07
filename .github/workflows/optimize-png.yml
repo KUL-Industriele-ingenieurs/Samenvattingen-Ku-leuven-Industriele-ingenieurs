@@ -63,7 +63,8 @@ jobs:
         run: |
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config user.name "github-actions[bot]"
-          git add -u -- '*.png' '*.PNG'
+          # Zonder pathspec: '*.PNG' faalt met exit 128 als er geen .PNG bestaat; oxipng raakt toch alleen PNG's aan.
+          git add -u
           if git diff --staged --quiet; then
               echo "Niets te verkleinen"; exit 0
           fi
