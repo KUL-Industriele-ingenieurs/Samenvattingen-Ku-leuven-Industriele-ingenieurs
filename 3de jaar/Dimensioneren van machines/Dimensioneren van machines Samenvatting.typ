@@ -24,5 +24,7 @@
 // ----- Verbindingen -----
 #include "6.Schroefverbinding.typ"
 #include "7.As-naafverbindingen-deel-1.typ"
+// ----- Tandwielen -----
+#include "10.Tandwielen-deel-2.typ"
 
 // ----------------------------- AFSLUITING ------------------------------------
