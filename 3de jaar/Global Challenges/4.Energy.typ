@@ -42,7 +42,7 @@ Sommige omzettingen werken in twee richtingen, zoals een gsm-batterij die je opl
 Ingenieurs bekijken een *energiesysteem* met een *energiebalans*: de ingevoerde energie (elektriciteit, gas) is gelijk aan het verbruik (verlichting, verwarming) plus de verliezen. Voor een heel land zie je links de import (olie, gas, steenkool, elektriciteit over de grens) en rechts de sectoren die verbruiken. *Industrie*, *wonen* en *transport* zijn de grootste. @fig:Energie-balans-van-nederland toont dat voor Nederland. De balans van je eigen land vind je op de website van het International Energy Agency (IEA).
 
 #figure(
-  image("assets/Energie-balans-van-nederland.png", width: 12cm),
+  image("assets/Energie-balans-van-nederland.png", width: 18cm),
   caption: [Energiebalans van Nederland],
   label: <fig:Energie-balans-van-nederland>,
 )
@@ -67,11 +67,11 @@ Daarna moet de bron omgezet worden in een bruikbare vorm, zoals geraffineerde br
 
 === Thermische energiebronnen <sec:thermic-energy>
 
-#figure(
+#wrap-figure(
   image("assets/Coal-Plant.png", width: 7cm),
   caption: [Principe van een thermische centrale],
   label: <fig:Coal-Plant>,
-)
+)[
 
 *Steenkoolcentrale.* Bruin- of zwartkool wordt verbrand in een grote ketel. De warmte kookt water tot stoom onder hoge druk. Die stoom drijft een turbine aan, en de turbine een generator. Er zijn drie omzettingen: chemisch → thermisch (met as en CO#sub[2]) → kinetisch → elektrisch. Elke omzetting heeft verliezen, dus het totale rendement is *minder dan 40%*. Het grootste deel van de energie wordt nutteloze warmte. Kolencentrales zijn grote machines die hun vermogen moeilijk kunnen aanpassen.
 
@@ -87,6 +87,7 @@ Daarna moet de bron omgezet worden in een bruikbare vorm, zoals geraffineerde br
 *Kernenergie.* Ook hier wordt warmte omgezet in elektriciteit via een stoomcyclus. Kernenergie stoot geen CO#sub[2] uit, maar is *niet hernieuwbaar*: uranium en thorium moeten ontgonnen worden en zijn eindig.
 - *Kernsplijting (fission)*: een zwaar element zoals uranium splitst in lichtere elementen en geeft warmte. Er blijft radioactief afval over dat lang opgeslagen moet worden. Commerciële centrales zijn groot (honderden MW tot meer dan 1 GW) en weinig flexibel. Kleine, flexibele reactoren op uranium of thorium met minder afval zijn mogelijk, maar het duurt nog decennia voor ze commercieel zijn. Ze lossen het klimaatprobleem op korte termijn dus niet op.
 - *Kernfusie (fusion)*: heel lichte elementen smelten samen tot zwaardere en geven warmte. Nog in onderzoek, nog decennia van commerciële werking verwijderd.
+]
 
 === Hernieuwbare energiebronnen <sec:hernieuwbare-energie>
 
@@ -130,7 +131,7 @@ De meeste technologieën worden goedkoper naarmate ze rijper worden: de *leercur
 Zon en wind dalen het sterkst. De prijs van PV daalde met ongeveer een *factor 10 in tien jaar* door grootschalige productie en betere technologie. Zonne-energie is nu de goedkoopste vorm van elektriciteit. Daarom groeiden zon en wind de laatste jaren zo snel.
 
 #figure(
-  image("assets/Levelized-costs-of-energie-van-verschillende-technolgien.png", width: 11cm),
+  image("assets/Levelized-costs-of-energie-van-verschillende-technolgien.png", width: 15cm),
   caption: [LCOE per technologie, wereldwijd],
   label: <fig:Levelized-costs-of-energie-van-verschillende-technolgien>,
 )
@@ -140,7 +141,7 @@ Op systeemniveau moeten productie en verbruik altijd in evenwicht zijn, op korte
 Over meerdere dagen heb je ook bewolkte, windstille periodes: de *Dunkelflaute*. Ook daar is de oplossing een mix van technologieën en internationale uitwisseling.
 
 #figure(
-  image("assets/System-load-en-time-of-day.png", width: 9cm),
+  image("assets/System-load-en-time-of-day.png", width: 12cm),
   caption: [Duck curve: netbelasting over een dag],
   label: <fig:System-load-en-time-of-day>,
 )
@@ -193,11 +194,12 @@ Consumenten zuinig laten zijn is moeilijk. De meeste mensen kennen de hoeveelhed
 
 Bij een aankoop, bv. een wasmachine, kijk je naar de prestaties en de prijs. Bijna niemand rekent de *terugverdientijd* van een zuiniger toestel uit. Daarom bestaan *energielabels* (@fig:Energielabel-EU): ze tonen kwalitatief (klasse A–G) en kwantitatief (kWh per 100 cycli) hoeveel het toestel verbruikt. Soms gaat de overheid verder en verbiedt ze een technologie: gloeilampen mogen niet meer verkocht worden.
 
-#figure(
+
+#wrap-figure(
   image("assets/Energielabel-EU.png", width: 4cm),
   caption: [EU-energielabel van een wasmachine],
   label: <fig:Energielabel-EU>,
-)
+)[
 
 Een toestel dat 10× zuiniger is, geeft geen 10× lager verbruik. Dat komt door het *rebound-effect*:
 - *Direct rebound*: mensen laten een zuinige LED langer branden. Dat compenseert ongeveer *20%* van de mogelijke besparing.
@@ -217,7 +219,7 @@ Waterstof in het gasnet in plaats van aardgas lijkt een optie, maar het rendemen
 + duurzame waterstof maken met *elektrolyse* (elektriciteit splitst water in waterstof en zuurstof)
 + comprimeren en verdelen
 + thuis verbranden, of in een brandstofcel terug omzetten in elektriciteit
-
+]
 Elke stap heeft verliezen. De waterstofroute is daardoor *5 à 6× minder efficiënt* dan een warmtepomp.
 
 *Transport.* Een batterij-elektrische auto rijdt ongeveer 400 km met 15 kWh. Zijn CO#sub[2]-uitstoot is *minstens 3× lager* dan die van een benzine- of dieselauto, en nul als de elektriciteit volledig duurzaam is. Hij is stiller en stoot geen stikstofoxiden of fijn stof uit. Met dezelfde primaire energie rijdt een elektrische auto *3 à 4× verder* dan een waterstofauto.
