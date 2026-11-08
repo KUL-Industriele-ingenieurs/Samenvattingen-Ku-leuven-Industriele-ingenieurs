@@ -1,8 +1,9 @@
 #import "../../school-template.typ": *
 
-// Opent een animatie (mp4 in assets/animaties/) via raw.githubusercontent.com
+// Opent een animatie (mp4 in assets/animaties/) via jsDelivr: die stuurt video/mp4, dus de browser speelt ze af
+// (raw.githubusercontent.com stuurt octet-stream en downloadt). Max. 20 MB per bestand.
 #let animatie(bestand, tekst) = link(
-  "https://raw.githubusercontent.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs/MAIN/3de%20jaar/Dimensioneren%20van%20machines/assets/animaties/" + bestand,
+  "https://cdn.jsdelivr.net/gh/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs@MAIN/3de%20jaar/Dimensioneren%20van%20machines/assets/animaties/" + bestand,
 )[*Animatie:* #tekst]
 
 = Tandwielen deel 2 <ch:tandwielen-2>
