@@ -6,6 +6,7 @@
   authors: ("Ruben Ryckaert",),
   academic_year: "2026-2027",
 )
+#show: booktabs-tabellen
 
 
 
