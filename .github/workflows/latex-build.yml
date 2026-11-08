@@ -27,7 +27,7 @@ jobs:
             docs: ${{ steps.find.outputs.docs }}
         steps:
             - name: Checkout
-              uses: actions/checkout@v4
+              uses: actions/checkout@v7
 
             - name: Hoofddocumenten zoeken
               id: find
@@ -75,7 +75,7 @@ jobs:
 
         steps:
             - name: Checkout
-              uses: actions/checkout@v4
+              uses: actions/checkout@v7
 
             - name: Afhankelijkheden hashen
               id: hash
@@ -99,7 +99,7 @@ jobs:
 
             - name: Cache van de PDF
               id: cache
-              uses: actions/cache@v4
+              uses: actions/cache@v6
               with:
                   path: cached.pdf
                   key: pdf-${{ matrix.doc.slug }}-${{ steps.hash.outputs.key }}
@@ -155,7 +155,7 @@ jobs:
 
             - name: PDF uploaden
               if: always()
-              uses: actions/upload-artifact@v4
+              uses: actions/upload-artifact@v7
               with:
                   name: pdf-latex-${{ matrix.doc.slug }}
                   path: artifacts/*.pdf
@@ -164,7 +164,7 @@ jobs:
 
             - name: Buildlog uploaden
               if: failure()
-              uses: actions/upload-artifact@v4
+              uses: actions/upload-artifact@v7
               with:
                   name: log-${{ matrix.doc.slug }}
                   path: artifacts/*.log
@@ -177,10 +177,10 @@ jobs:
 
         steps:
             - name: Checkout repository
-              uses: actions/checkout@v4
+              uses: actions/checkout@v7
 
             - name: Setup Typst
-              uses: typst-community/setup-typst@v3
+              uses: typst-community/setup-typst@v5
               with:
                   cache-dependency-path: school-template.typ
 
@@ -251,7 +251,7 @@ jobs:
 
             - name: Upload Typst PDFs
               if: always()
-              uses: actions/upload-artifact@v4
+              uses: actions/upload-artifact@v7
               with:
                   name: pdf-typst
                   path: artifacts/pdfs/*.pdf
@@ -266,10 +266,10 @@ jobs:
 
         steps:
             - name: Checkout
-              uses: actions/checkout@v4
+              uses: actions/checkout@v7
 
             - name: Download all PDF artifacts
-              uses: actions/download-artifact@v4
+              uses: actions/download-artifact@v8
               with:
                   pattern: pdf-*
                   path: artifacts/pdfs
@@ -318,7 +318,7 @@ jobs:
                   python3 .github/build_bundle.py artifacts/pdfs bundle
 
             - name: Upload structured bundle
-              uses: actions/upload-artifact@v4
+              uses: actions/upload-artifact@v7
               with:
                   name: Samenvattingen Industriele Ingenieurs KULeuven
                   path: bundle/
@@ -336,10 +336,10 @@ jobs:
 
         steps:
             - name: Checkout code
-              uses: actions/checkout@v4
+              uses: actions/checkout@v7
 
             - name: Download PDF artifacts
-              uses: actions/download-artifact@v4
+              uses: actions/download-artifact@v8
               with:
                   name: Samenvattingen Industriele Ingenieurs KULeuven
                   path: artifacts/pdfs
