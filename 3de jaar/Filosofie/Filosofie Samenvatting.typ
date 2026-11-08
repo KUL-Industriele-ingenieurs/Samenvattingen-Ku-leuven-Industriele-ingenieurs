@@ -16,6 +16,8 @@
 #include "1.Introductie.typ"
 #include "2.Duurzaamheid.typ"
 #include "3.Verbetering.typ"
+#include "4.AI en Ethiek.typ"
+
 
 
 // ----------------------------- AFSLUITING ------------------------------------
