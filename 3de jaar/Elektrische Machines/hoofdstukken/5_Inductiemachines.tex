@@ -3,12 +3,12 @@
 \section{Introductie \& Constructie}
 Nu gaan we eens kijken naar de inductiemachine, oftewel de asynchrone machine, deze heeft
 een andere rotor.
-Eéntje dat we eigelijk eerder zagen; de squirrel cage rotor.
+Eéntje dat we eigenlijk eerder zagen; de squirrel cage rotor.
 Dit is een zeer makkelijk produceerbaar en zeer goedkope rotor, het wordt gemaakt met een
 gietproces, ook zijn de gebruikskosten van deze motor goedkoper (door bijvoorbeeld minder
 onderhoud want je hebt hier geen koolstofborstels) dan die van de synchrone maar het heeft
 wel een slechter rendement.
-De constructie hebben we eigelijk al wat in sectie 1.2.2 gezien, dus verwijs ik daar naar.
+De constructie hebben we eigenlijk al wat in sectie 1.2.2 gezien, dus verwijs ik daar naar.
 Het is gewoon belangrijk dus te weten dat het verschil in die rotor zit, de buitenkant van
 de machine die wordt gefreesd om aan toleranties te voldoen en het gelijkmatig gewicht
 wordt ook vaak nog gechecked (dit is nodig voor de praktijk maar hier zijn we niet diep op
@@ -27,7 +27,7 @@ Het is bij de rotor dat het speciale ding gebeurd.
 
 Bij de rotor is het wat anders, je hebt hier dus die kooirotor die stil staat maar een
 draaiend magnetisch veld passeert er rond.
-Als jij als waarnemer op het draaiveld staat, dan zie je eigelijk een bewegende geleider
+Als jij als waarnemer op het draaiveld staat, dan zie je eigenlijk een bewegende geleider
 in een magnetisch veld, dus wordt er een spanning geïnduceerd, en doordat dus die
 kooirotor kortgesloten is, vloeit er een stroom dat zich dus ook in een magnetisch veld
 bevindt.
@@ -214,17 +214,14 @@ Het nominaal koppel kunnen we berekenen met de formule:
 \end{align*}
 \textbf{b)}
 \newline
-Als we het koppel van de last gaan halveren, gaat bij benadering het vermogen ook
-halveren, maar het is dus eigelijk fout om het zo te doen want $\omega$ vernaderd ook en
-er zal dus minder slop nodig zijn omdat gehalveerd koppel te leveren.
-Dit gaan we nu ook proberen na gaan.
+Als het lastkoppel halveert, halveert het vermogen bij benadering ook. Helemaal juist is dat
+niet, want $\omega$ verandert mee: om het halve koppel te leveren is minder slip nodig, dus
+draait de motor iets sneller. Dat rekenen we hieronder na.
 
-Wat we gaan doen is kijken naar de T-n grafiek, want in de buurt van $n_s$ is deze kromme
-eigelijk een rechte lijn (zoals bij de T-s grafiek).
-2 punten van deze rechte kennen we, namelijk het punt (n = 1435; T = 36,7) en (n = 1500; T
-= 0).
-Via interpolatie vinden we zo welk toerental bij het gehalveerd koppel hoort.
-Hiermee vinden we juiste $\omega$ en zo het juiste vermogen bij een gehalveerd koppel:
+In de buurt van $n_s$ is de T-n kromme een rechte lijn (zoals bij de T-s grafiek).
+Twee punten van die rechte kennen we: (n = 1435; T = 36,7) en (n = 1500; T = 0).
+Met interpolatie vinden we welk toerental bij het gehalveerde koppel hoort.
+Daarmee vinden we de juiste $\omega$ en zo het juiste vermogen bij het gehalveerde koppel:
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.6\textwidth]{assets/AIgeneratedgrafieklineairgebiedTn.png}
@@ -238,16 +235,15 @@ Hiermee kunnen we het mechanisch vermogen berekenen:
 \begin{align*}
     P_{mech} = T_G \cdot \omega_G = 18.35 Nm \cdot 2 \cdot \pi \cdot \frac{1467 tr/min}{60} = 2.82 kW
 \end{align*}
-Dit is inderdaad ongeveer de helft van het nominaal vermogen, maar niet exact want de
+Dat is ongeveer de helft van het nominale vermogen. Exact de helft is het niet, want de
 snelheid is ook veranderd.
 \newline
 \textbf{c)}
-Nu wordt de rotor aangedreven met een koppel van 25Nm, dit is dus generatorwerking.
-Dit is een negatief koppel op de grafiek maar gaat de snelheid trager of sneller zijn dan
-de synchrone snelheid?
-Wel, een aangedreven rotor die generator wordt, kan alleen als hij sneller draait dan het
-draaiveld dus het is groter, we kunnen de lineaire relatie dan onder de n-as doortrekken
-en de snelheid berekenen bij -25Nm:
+Nu drijft een uitwendig koppel van 25\,Nm de rotor aan: de machine werkt als generator.
+Op de grafiek is dat een negatief koppel.
+Een inductiemachine levert alleen vermogen als generator als de rotor sneller draait dan het
+draaiveld, dus $n > n_s$.
+Daarom trekken we de rechte door onder de n-as en berekenen we de snelheid bij $-25$\,Nm:
 \begin{align*}
     n_C = n_1 + \frac{T_C - T_1}{T_2 - T_1} \cdot (n_2 - n_1) = 1435 + \frac{-25 - 36.7}{0 - 36.7} \cdot (1500 - 1435) = 1544 tr/min
 \end{align*}
@@ -275,28 +271,20 @@ Aan de grafiek zien we ook het grootste nadeel van de inductie motor; namelijk d
 startstroom.
 
 \section{Equivalent schema}
-Voor het opstellen van het equivalent schema van de inductiemachine gaan we niet van 0
-beginnen, we gaan een analogie zoeken en hiernaar toe aanpassen.
-We gebruiken hier die van de transformator want eigelijk is de inductiemachine een soort
-van transfo want we hebben hier ook eigelijk een spanning dat wordt geïnduceerd van de ene
-kant naar de andere kant.
-Hier is dit dan met een stator en een rotor i.p.v.
-een primaire en secundaire wikkeling.
-We gaan hierbij van uit van een symmetrisch net, en ook van een sinusoïdaal magnetisch
-veld in de luchtspleet.
-Het schema dat we opstellen is hier ook een éénfasig equivalent, let hier mee dus op want
-een inductie motor is 3-fasig.
-Tussen de transfo en de inductie machine zijn echter 3 grote verschillen:
+Het equivalent schema van de inductiemachine bouwen we op vanuit dat van de transformator.
+Ook hier induceert de ene wikkeling een spanning in de andere: de stator speelt de rol van de
+primaire, de rotor die van de secundaire.
+We gaan uit van een symmetrisch net en een sinusoïdaal magnetisch veld in de luchtspleet.
+Het schema is een éénfasig equivalent van de 3-fasige motor.
 
+Er zijn drie verschillen met de transfo:
 \begin{itemize}
-    \item De rotor is kortgesloten, dus er is geen spanning dat we kunnen meten aan de
-    rotor, dit is dus een verschil met de transfo.
-    Hierdoor kan er wel een stroom $I_r$ lopen zonder dat er iets extern aangesloten moet
-    worden, het loopt door de geînduceerde $E_R$ door de impedantie van de rotor
-    \item Er werkt een andere frequentie in de rotor dat verschilt van de stator
-    \item De spoel $L_m$ (magnetiseringstroom) is veel kleiner hier, waardoor we veel meer
-    nullaststroom krijgen.
-    (Bij een motor is dit niet zo een groot probleem, bij een transfo wel)
+    \item De rotor is kortgesloten, dus aan de rotor kan je geen spanning meten. De
+    geïnduceerde $E_R$ stuurt een stroom $I_r$ door de impedantie van de rotor, zonder dat
+    er iets extern aangesloten is.
+    \item De frequentie in de rotor verschilt van die in de stator.
+    \item De magnetiseringsinductantie $L_m$ is veel kleiner, dus de nullaststroom is veel
+    groter. Bij een motor is dat geen groot probleem, bij een transfo wel.
 \end{itemize}
 
 \begin{figure}[H]
@@ -323,7 +311,7 @@ Hierbij is:
  (niet volledig) de rotor
  \item \textbf{$R_C$} het model van de ijzerverliezen (kern), dit is geen echte weerstand,
  gewoon een model om deze verliezen elektrisch voor te stellen!
- (Wervel en hysteresis eigelijk)
+ (Wervel en hysteresis eigenlijk)
  \item \textbf{$X_m$} de mutuele/magnetiserende reactantie
  \item \textbf{$E_1$} de interne spanning over de parallele tak van $R_C$ en $X_m$
  \item \textbf{$X_2$} de lekreactantie van de rotor, dit gaat door de rotor en bereikt
@@ -343,47 +331,35 @@ verdeeld werden maar dit is nu niet meer zo aangezien da stator en de rotor uit
 verschillend materiaal bestaan.
 
 \subsection{Waarom staat er $\frac{R_2}{s}$ i.p.v. $R_2$?}
-Dit is het lastigste stuk van het schema, dus we bouwen het stap voor stap op.
+De rotorstroom heeft de rotorfrequentie $f_r = s \cdot f_s$: 50\,Hz bij stilstand, 1 à 2\,Hz
+bij normaal bedrijf. Het equivalent schema werkt op één frequentie, die van de stator. Daarom
+herschrijven we de rotorvergelijking.
 
-Het probleem:
-de rotor werkt niet aan de statorfrequentie $f_s$, maar aan de rotorfrequentie
-$f_r = s \cdot f_s$ (bv.
-50Hz bij stilstand, maar slechts 1 à 2Hz bij normaal bedrijf met een kleine slip).
-We willen echter maar 1 schema tekenen, op 1 frequentie (die van de stator).
-Daarom moeten we de rotorvergelijking eerst herschrijven.
-
-Aan de eigen (rotor)frequentie geldt gewoon de wet van Ohm over de kortgesloten rotorlus:
+Bij de rotorfrequentie geldt de wet van Ohm over de kortgesloten rotorlus:
 \begin{align*}
     E_R = R_R \cdot I_R + jX_R \cdot I_R
 \end{align*}
-Hierbij is $X_R = s \cdot X_{R0}$, met $X_{R0}$ de rotorreactantie bij stilstand (dus bij
-50Hz, $s=1$).
-Ook $E_R$ zelf is rechtevenredig met de slip:
-$E_R = s \cdot E_{R0}$ (logisch, want $e = B\ell v$:
-hoe groter de relatieve snelheid tussen rotor en draaiveld, hoe groter de geïnduceerde
-spanning).
+Reactantie en geïnduceerde spanning zijn allebei evenredig met de slip:
+$X_R = s \cdot X_{R0}$ en $E_R = s \cdot E_{R0}$, met $X_{R0}$ en $E_{R0}$ de waarden bij
+stilstand ($s = 1$, 50\,Hz). Voor $E_R$ volgt dat uit $e = B\ell v$: hoe groter de
+snelheid van het draaiveld tegenover de rotor, hoe groter de spanning.
 
-Vullen we dit in en delen we alles door $s$, dan krijgen we:
+Invullen en delen door $s$ geeft:
 \begin{align*}
     s \cdot E_{R0} = R_R \cdot I_R + j s X_{R0} \cdot I_R \quad\Rightarrow\quad E_{R0} = \left(\frac{R_R}{s} + jX_{R0}\right) \cdot I_R
 \end{align*}
-En daar komt die $\frac{R_2}{s}$ dus vandaan:
-het is geen aparte fysische grootheid, het is gewoon het resultaat van die deling door
-$s$, nodig om het frequentieverschil tussen rotor en stator weg te werken zodat we alles
-op de statorfrequentie kunnen tekenen.
-$\frac{R_2}{s}$ in het equivalent schema schrijven compenseert dus voor die verschillde
-frequenties.
-Het is dus eigelijk gelijk aan:
+De $\frac{R_2}{s}$ in het schema komt dus uit deze deling door $s$. Zo staat alles op de
+statorfrequentie. We splitsen ze in twee weerstanden in serie:
 \begin{align*}
-   \frac{R_2}{s} = R_2 + (\frac{1-s}{s}) \cdot R_2 = \underbrace{R_2 + {R'}_{load}}_{\text{in serie}}
+   \frac{R_2}{s} = R_2 + \frac{1-s}{s} \cdot R_2 = R_2 + R'_{load}
 \end{align*}
-Het vermogen in $R'_{load}$ is het vermogen dat omgezet wordt naar mechanisch vermogen:
-$P_{conv} = 3 I_2^2 R'_{load} = (1-s) \cdot P_S$.
-$R'_{load}$ is groter naarmate de slip kleiner wordt.
-Daardoor is de rotorstroom kleiner en wordt een groter deel ($1-s$) van het
-luchtspleetvermogen omgezet; het koppel zelf is bij kleine slip net klein.
-Bij stilstand ($s=1$) is er geen extra weerstand, bij synchrone snelheid ($s=0$) is de
-weerstand oneindig groot (want dan kan er geen stroom meer lopen in de rotor).
+In $R_2$ zitten de koperverliezen van de rotor. Het vermogen in $R'_{load}$ wordt omgezet naar
+mechanisch vermogen:
+\begin{align*}
+    P_{conv} = 3 I_2^2 R'_{load} = (1-s) \cdot P_S
+\end{align*}
+Hoe kleiner de slip, hoe groter $R'_{load}$. Bij stilstand ($s = 1$) is $R'_{load} = 0$. Bij
+synchrone snelheid ($s = 0$) is $R'_{load}$ oneindig groot en loopt er geen rotorstroom.
 
 \begin{warningbox}[Hier zijn het fasegrootheden, geen lijn grootheden!]
     Alle grootheden weergegeven in het equivalent schema zijn fase grootheden, niet lijn
@@ -494,14 +470,14 @@ onderstaande schema:
  \end{figure}
 
 Let dus wel op want hierboven is het een 1-fasig schema, ook is de onderste klem van de
-figuur hierboven eigelijk de neuter, in de 1ste figuur zagen we dat we door 2 $R_1$
+figuur hierboven eigenlijk de neuter, in de 1ste figuur zagen we dat we door 2 $R_1$
 weerstanden gingen dus de $R_1$ weerstand kan berekend worden met:
 \begin{align*}
     R_1 = \frac{V_{DC}}{2 \cdot I_{DC}}
 \end{align*}
 Dit is een goede benadering van de weerstand, in het echt verschilt deze nog een beetje
 want bij AC heb je ook nog skin-effect.
-Zie ook dat je deze proef als laatste doet want eigelijk wil je deze weerstand meten op de
+Zie ook dat je deze proef als laatste doet want eigenlijk wil je deze weerstand meten op de
 steady-state temperatuur van de machine want normaal als hij draait warmt hij op en dan is
 de weerstand anders.
 
@@ -522,7 +498,7 @@ zoals we zien in de volgende opstelling:
 
 Doordat de rotor bijna synchroon draait, wordt er bijna geen spanning geïnduceerd en
 vloeit er bijna geen stroom (ook logisch als die weerstand oneindig is), dus het hele rotor
-gedeelte van het equivalent schema valt dus weg, oftewel zoals ik net eigelijk al zei, dit
+gedeelte van het equivalent schema valt dus weg, oftewel zoals ik net eigenlijk al zei, dit
 wordt een open keten.
 Het equivalent schema voor deze proef ziet er dan zo uit:
 
@@ -533,7 +509,7 @@ Het equivalent schema voor deze proef ziet er dan zo uit:
   \label{fig:equivschemanullastproefIM.png}
  \end{figure}
 
-($I_{Nullast}$ is eigelijk exact hetzelfde als $I_0$ in dit equivalent schema)
+($I_{Nullast}$ is eigenlijk exact hetzelfde als $I_0$ in dit equivalent schema)
 
 Als we nu het vermogen meten als $P_{Nullast}$ dan is dit de som van de koperverliezen in de
 stator en de ijzerverliezen (de mechanische verliezen verwaarlozen we):
@@ -541,7 +517,7 @@ stator en de ijzerverliezen (de mechanische verliezen verwaarlozen we):
     P_{Nullast} = P_{R_1} + P_{R_{Fe}} = \underbrace{3 \cdot I_{Nullast}^2 \cdot R_1}_{\text{Kunnen we berekenen}} + 3 \cdot \frac{E_1^2}{R_{Fe}}
 \end{align*}
 Aangezien de spanningsval over $R_1$ en $X_1$ klein is tegenover $V_\phi$ kunnen we
-eigelijk de benadering maken dat $E_1 \approx V_\phi$ en dus kunnen we $R_{Fe}$ berekenen
+eigenlijk de benadering maken dat $E_1 \approx V_\phi$ en dus kunnen we $R_{Fe}$ berekenen
 met:
 \begin{align*}
     R_{Fe} = \frac{3 \cdot V_\phi^2}{P_{Nullast} - 3 \cdot I_{Nullast}^2 \cdot R_1}
@@ -588,7 +564,7 @@ Met de blokkeer spanning kunnen we totale impedantie berekenen:
     Z_{Blokkeer} = \frac{V_{Blokkeer}}{I_{Blokkeer}} = \sqrt{(R_1 + R_2)^2 + (X_1 + X_2)^2}
 \end{align*}
 Hiermee kunnen we dus $X_1 + X_2$ berekenen.
-Oftewel $X_{tot}$, maar we gaan dit $X'_{tot}$ noemen want dit is eigelijk niet de 'echte'
+Oftewel $X_{tot}$, maar we gaan dit $X'_{tot}$ noemen want dit is eigenlijk niet de 'echte'
 $X_{tot}$.
 Deze is namelijk op een frequentie van 15Hz bepaald, niet 60Hz.
 Die 15Hz komt van het feit dat normaal de stator 60Hz en de rotor 1Hz ofzo heeft, die 15Hz
@@ -601,7 +577,7 @@ onafhankelijk:
  X'_{tot} = \omega_{15} \cdot L_{lek, S+R} = 2 \cdot \pi \cdot 15 Hz \cdot L_{lek, S+R} \\
  X_{tot} = X_{lek S+R @60 Hz} = 2 \cdot \pi \cdot 60 Hz \cdot L_{lek, S+R} 
 \end{align*}
-Dus eigelijk geldt:
+Dus eigenlijk geldt:
 \begin{align*}
     X_{tot} = X'_{tot} \cdot \frac{60}{15} = 4 \cdot X'_{tot}
 \end{align*}
@@ -635,7 +611,7 @@ kan leveren) is een gebied waar we normaal niet werken.
 Dit is het \textit{onstabiel gebied}, hier hebben we ons \textbf{startkoppel}.
 Van die piek (kipkoppel) tot dat \textit{'nominal torque'} punt (oftewel ons stabiel punt)
 hebben we ons \textit{stabiel gebied}, hier kunnen we kortstandig werken want het is
-eigelijk overbelasting.
+eigenlijk overbelasting.
 Ideaal werken we rond dat stabiel werkingspunt op het \textbf{nominaal koppel} $T_{nom}$
 het gebied hierna willen we niet werken omdat dit een slechte arbeidsfactor heeft.
 Deze machine kan zoals we zien rechtstreeks van het net starten.
@@ -644,7 +620,7 @@ Om die T-n karakteristiek te berekenen hebben we de formule nodig van het koppel
 inductiemachine.
 We gaan dit doen aan de hand van het conventieel vermogen (we gaan dus van geen verliezen
 in de as uit).
-We hebben deze formule eerder al gezien eigelijk, nu gaan we tonen vanwaar die komt en hoe
+We hebben deze formule eerder al gezien eigenlijk, nu gaan we tonen vanwaar die komt en hoe
 het dus de T-n karakteristiek bepaald.
 We weten dus dat dit $P_{conv}$ is:
 \begin{align*}
@@ -691,7 +667,7 @@ volgende formule:
 \end{align*}
 Het is dus deze formule dat gebruikt wordt om de T-n karakteristiek te berekenen.
 Bij grote slip wordt de rode term verwaarloosd en het linkse gedeelte van de T-n
-karakteristiek van de volgende figuur bepaald (dit is eigelijk hyperbolisch want de
+karakteristiek van de volgende figuur bepaald (dit is eigenlijk hyperbolisch want de
 formule krijgt de vorm van $k = \frac{1}{s}$) en bij kleine slip wordt de blauwe term
 verwaarloosd en het rechtse gedeelte van de T-n karakteristiek bepaald.
 Het maximum van deze kromme is het kipkoppel, deze staat hier niet op maar kan wel
@@ -716,7 +692,7 @@ spanning!
 En het geïnduceerd koppel ook maar deze is wel ook afhankelijk van de spanning
 ($T_{ind} \propto V_{TH}^2$) (en $V_\phi \approx V_{TH}$).
 Dit is belangrijk want dit betekent dat we het koppel kunnen regelen door de spanning te
-regelen, dit is eigelijk ook wel nadelig bij bvb.
+regelen, dit is eigenlijk ook wel nadelig bij bvb.
 spanningsdips.
 
 \subsection{Variaties in de T-n karakteristiek}
@@ -776,7 +752,7 @@ startstroom kleiner.
 Maar wat we ook zien is dat de snelheid voor het nominaal koppel gaat dalen, soms zelfs zo
 hard dat dit niet meer interessant is als je de motor op die snelheid continu wilt laten
 werken.
-Eigelijk willen we liefst bij opstart een grotere rotorweerstand om grotere lasten te
+Eigenlijk willen we liefst bij opstart een grotere rotorweerstand om grotere lasten te
 kunnen overwinnen maar voor ons nominaal koppel willen we een kleinere rotorweerstand.
 Om dit te doen maken we gebruik van een \textbf{gewikkelde rotor} zodat we de wikkelingen
 van de rotor via de sleepringen dan langs buiten kunnen aansluiten aan weerstanden (of
@@ -791,10 +767,10 @@ Ook kunnen zo die weerstanden langs buiten makkelijker gekoeld worden.
  \end{figure}
 
 Wat we ook kunnen doen is een ander soort rotor gebruiken.
-De NEMA-klassen classificeren rotors (motoren eigelijk) op basis van hun kopel, je kan
+De NEMA-klassen classificeren rotors (motoren eigenlijk) op basis van hun kopel, je kan
 hier dus ook naar kijken en kiezen.
 Je kan bevoorbeeld een dubbele kooi rotor hebben.
-Deze zorgen voor veel weerstand zodat je een groot startkoppel hebt en hebben eigelijk ook
+Deze zorgen voor veel weerstand zodat je een groot startkoppel hebt en hebben eigenlijk ook
 een soort van adaptieve weerstand (ze zijn groter bij start), op de volgende figuur zie je
 karakteristieken van een paar van die verschillende klasse motoren, sommige hebben een
 \textbf{zadelpunt}:
@@ -822,7 +798,7 @@ Het nadeel van deze motoren is dat ze duurder zijn dan de standaard motoren.
 
 \subsubsection{Uitgebreide T-n karakteristiek}
 De formule die we eerder hadden afgeleid hadden we toen gebruikt voor onze T-n
-karakteristiek, maar eigelijk werkte die formule even goed om die karakteristiek uit te
+karakteristiek, maar eigenlijk werkte die formule even goed om die karakteristiek uit te
 breiden zoals in de volgende figuur:
 
 \begin{figure}[H]
@@ -835,7 +811,7 @@ breiden zoals in de volgende figuur:
 Deze curve komt dus ook van die formule en is even correct, we zien hier namelijk ook de
 generatorwerking gedeelte van de curve, hier hebben we nog steeds een positieve snelheid
 maar nu bij een negatief koppel en negatieve slip.
-Wat we ook nog kunnen hebben is \textbf{dissipatie} hier sturen we eigelijk 2 vermogens de
+Wat we ook nog kunnen hebben is \textbf{dissipatie} hier sturen we eigenlijk 2 vermogens de
 machine in zoals je ziet bij die pijlen (de oranje pijl is het elektrisch vermogen, de
 groene pijl is het mechanisch vermogen).
 De slip is hier ook groter dan 1, alles wordt hier omgezet in warmte.
@@ -844,7 +820,7 @@ startstromen hebben bij een grote slip, dit is dus ook de reden waarom we niet i
 onstabiel gebied willen werken.
 
 \subsubsection{4 kwadranten werking}
-We kunnen deze curve eigelijk opdelen in 4 kwadranten als volgt:
+We kunnen deze curve eigenlijk opdelen in 4 kwadranten als volgt:
 
 \begin{figure}[H]
   \centering
@@ -860,7 +836,7 @@ De groene curve is exact hetzelfde maar $180^\circ$ gedraaid rond de oorsprong, 
 bekrijg je door 2 van de 3 fasen te wisselen (draaiveld omkeren), dit is dus het
 spiegelbeeld.
 De T en n-as verdelen zo het vlak in 4 kwadranten (I,II,III,IV).
-De figuur toont dus eigelijk (als je beide curves samen bekijkt) dat de as van de machine
+De figuur toont dus eigenlijk (als je beide curves samen bekijkt) dat de as van de machine
 in elke combinatie van draairichting en koppelrichting terecht kan komen (de 4
 kwadranten).
 Om in het 3de kwadrant te komen moet je dus gewoon 2 van de 3 fases wisselen.
@@ -905,7 +881,7 @@ ellipsvormig draaiveld krijgen als resulterende van al deze componenten.
  \end{figure}
 
 Wat is nu dat effect van het elliptisch draaiveld op de T-n karakteristiek?
-Bekijk deze figuur, het is eigelijk de 4 kwadrant operatie:
+Bekijk deze figuur, het is eigenlijk de 4 kwadrant operatie:
 
 \begin{figure}[H]
   \centering
@@ -926,7 +902,7 @@ formule:
 Want het koppel heeft een kwadratisch verband met de spanning.
 We willen zo weinig mogelijk van de inverse component want zoals we ziet zit die in
 dissipatie, dus dit brengt alleen extra hitte met zich mee.
-En dus ook zien we dat dit eigelijk een negatieve koppel is en zich dus aftrekt van het
+En dus ook zien we dat dit eigenlijk een negatieve koppel is en zich dus aftrekt van het
 koppel van de directe component.
 Een onbalans kan dus het koppel licht doen verlagen maar zorgt wel voor veel extra
 opwarming.
@@ -953,7 +929,7 @@ zorgen.
  \end{figure}
 
 Wat is nu het effect van die homopolaire component?
-De homopolaire component is eigelijk 3 keer hetzelfde, het is dus eigelijk een 1-fasige
+De homopolaire component is eigenlijk 3 keer hetzelfde, het is dus eigenlijk een 1-fasige
 wisselspanning en dit kan ook een koppel genereren, alleen kan het niet zelf starten:
 
 \begin{figure}[H]
@@ -963,7 +939,7 @@ wisselspanning en dit kan ook een koppel genereren, alleen kan het niet zelf sta
   \label{fig:Tn3fasigen1fasig.png}
  \end{figure}
 
-Maar eigelijk gedraagt zich dit als 3 enkelfasige motors waardoor we 3 keer zoveel polen
+Maar eigenlijk gedraagt zich dit als 3 enkelfasige motors waardoor we 3 keer zoveel polen
 hebben en dus een veel vroegere synchrone snelheid dan de directe en inverse component.
 Dit maakt dat we al rap in generatorwerking gaan zitten, wat een nefatieve invloed heeft,
 zoals we zien in volgende figuur:
@@ -1028,7 +1004,7 @@ Hier gaan we regelbare weerstanden in serie zetten met de stator, bij opstarten 
 deze weerstanden maximaal zodat er een grotere spanningsval is over de weerstand ipv de
 motor, dit daalt het startkoppel en de startstroom dus.
 De weerstanden worden steeds lager gemaakt tot we op nominale spanning zijn.
-De weerstanden worden wel snel heel warm, deze moeten dus eigelijk gekoeld worden.
+De weerstanden worden wel snel heel warm, deze moeten dus eigenlijk gekoeld worden.
 
 \begin{figure}[H]
   \centering
@@ -1039,7 +1015,7 @@ De weerstanden worden wel snel heel warm, deze moeten dus eigelijk gekoeld worde
 
 \subsection{Autotransformer (Spaartransformator)}
 Een andere oplossing is opstarten met een spaartransformatie in serie met de motor, dit is
-eigelijk gelijkaardig aan die stator serie weerstanden, dit gebruikt echter spoelen om
+eigenlijk gelijkaardig aan die stator serie weerstanden, dit gebruikt echter spoelen om
 spanning te dempen, het verlagen van de opstartstroom en opstartkoppel is eigenlijk meer
 'energetisch', je kan veel meer spanningsval hiermee creëren met veel minder vermogen
 verlies (want dit werkt met reactief vermogen).
@@ -1056,9 +1032,9 @@ Maar het grote nadeel is wel dat het duur is.
 Een softstarter is vermogenelektronica, het is meer geavanceerder en dus ook duurder.
 Het gebruikt thyristors (soort van diodes) in antiparallele posities (TRIACS), deze
 geleiden van zodra een signaal wordt gegeven op de gate.
-Hiermee kunnen we dus eigelijk geleidelijk aan de spanning verhogen door steeds meer van
+Hiermee kunnen we dus eigenlijk geleidelijk aan de spanning verhogen door steeds meer van
 de sinus te laten doorlaten (steeds meer energie in de golf).
-Dit noemt eigelijk de 'ontsteekhoek' die we steeds kleiner maken.
+Dit noemt eigenlijk de 'ontsteekhoek' die we steeds kleiner maken.
 Dit kunnen we zien in de volgende figuur:
 
 \begin{figure}[H]
@@ -1104,7 +1080,7 @@ We openen eerst K3 omdat we anders een kortsluiting op het net veroorzaken als w
 sluiten als K3 nog gesloten is.
 Dit kan voorkomen worden dat dit gebeurd als we gewoon normally closed en normally open
 contactoren hiervoor gebruikt worden.
-Een nadeel is wel door dit te schakelen dat we eigelijk een transiënte krijgen, dit zien
+Een nadeel is wel door dit te schakelen dat we eigenlijk een transiënte krijgen, dit zien
 we in volgende karakteristiek voor ster en driehoek schakelen:
 
 \begin{figure}[H]
@@ -1140,7 +1116,7 @@ Dit zien we in de volgende figuur:
 Nu zien we ook waarom softstarter 'soft' starter heet, je ziet dat de start voor de stroom
 en koppel mooi geleidelijk is, het heeft een vlak profiel.
 De ster-driehoek is een beetje vergelijkbaar maar je ziet hier wel duidelijk die
-transiënte waardoor het koppel eigelijk een lichte schok krijgt, wat je dus niet hebt bij
+transiënte waardoor het koppel eigenlijk een lichte schok krijgt, wat je dus niet hebt bij
 de softstarter.
 (De proff meld wel nog dat de transiëntes hier een beetje overdreven getekend zijn)
 
@@ -1191,9 +1167,9 @@ Deze zijn:
 \end{itemize}
 
 \subsubsection{Plugging (tegenstroom remmen)}
-Wat we hier gaan doen is eigelijk op ons stabiel werkingspunt de hoofdschakelaar
+Wat we hier gaan doen is eigenlijk op ons stabiel werkingspunt de hoofdschakelaar
 uitschakelen en dan een andere schakeling aanzetten waarbij 2 fases omgedraaid zijn ten
-opzichte van de hoofdschakkelaar, zodat we eigelijk in het 4de kwadrant terecht komen in
+opzichte van de hoofdschakkelaar, zodat we eigenlijk in het 4de kwadrant terecht komen in
 dissipatie, dit remt sterk af.
 We moeten hier wel zien dat we op tijd die schakelaar dan ook uitzetten want anders gaan
 we gewoon in de andere richting versnellen.
@@ -1236,10 +1212,10 @@ dezelfde fase (homopolair) krijgen want tegenover de draaiened rotor geeft dit n
 afremmend koppel die we eerder zagen.
 
 \subsubsection{Oversynchroon remmen}
-Dit wordt eigelijk minder als remmen beschouwt, dit is eerder om te voorkomen dat iets
+Dit wordt eigenlijk minder als remmen beschouwt, dit is eerder om te voorkomen dat iets
 beweegt of te snel gaat.
 Vooral gebruikt in liften/kranen.
-Bij lasten laten zakken gaan we eigelijk gewoon in generatorwerking gaan en dus een
+Bij lasten laten zakken gaan we eigenlijk gewoon in generatorwerking gaan en dus een
 negatief koppel krijgen wat doet afremmen.
 Potentiele energie wordt dus terug omgezet in elektrische energie, dit maakt het een soort
 van generatief remmen.
@@ -1283,7 +1259,7 @@ We gaan eens kijken naar een wind turbine:
   \label{fig:windturbinevoorbeeld.png}
  \end{figure}
 
-Dit is een grote generator, wat het doet is eigelijk actief vermogen tot het net brengen.
+Dit is een grote generator, wat het doet is eigenlijk actief vermogen tot het net brengen.
 De motor kan alleen actieve energie leveren terwijl de rotor ook reactief vermogen nodig
 heeft in de wikkelingen voor het veld te maken, het moet dit dus van het net trekken,
 daarvoor worden condensator banken gebruikt, deze verminderen het reactief vermogen dat we
