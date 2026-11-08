@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # --- Configuration ---
-SCRIPT_VERSION="1.2.3"
+SCRIPT_VERSION="1.2.4"
 REPO="KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs"
 API_BASE="https://api.github.com/repos/$REPO"
 RAW_BASE="https://raw.githubusercontent.com/$REPO/MAIN"
@@ -112,7 +112,24 @@ self_update "$@"
 # Step 1: Fetch the manifest (pdf name -> "<jaar>/<Vak>") via the release download
 # URL. That is a CDN, not the API, so it is not rate-limited.
 printf '  %sFetching release...%s ' "$C_CYAN" "$C_RESET"
-MANIFEST=$(curl -sfL "$DL_BASE/manifest.tsv") || { echo "${C_RED}failed${C_RESET}"; die "Could not download manifest.tsv from release 'latest'."; }
+MANIFEST=$(curl -sfL "$DL_BASE/manifest.tsv" 2>/dev/null)
+if [ -z "$MANIFEST" ]; then
+    MANIFEST=$(curl -sfL "$RAW_BASE/manifest.tsv" 2>/dev/null || cat "$TARGET_DIR/manifest.tsv" 2>/dev/null)
+fi
+
+# Sanity check: if manifest has no course folders, fallback to raw repo or local copy
+has_folders=0
+while IFS=$'\t' read -r pdf_name year_folder; do
+    [ -n "$year_folder" ] && { has_folders=1; break; }
+done <<< "$MANIFEST"
+
+if [ "$has_folders" -eq 0 ]; then
+    FALLBACK_MANIFEST=$(curl -sfL "$RAW_BASE/manifest.tsv" 2>/dev/null || cat "$TARGET_DIR/manifest.tsv" 2>/dev/null)
+    [ -n "$FALLBACK_MANIFEST" ] && MANIFEST="$FALLBACK_MANIFEST"
+fi
+
+[ -z "$MANIFEST" ] && { echo "${C_RED}failed${C_RESET}"; die "Could not download manifest.tsv from release 'latest'."; }
+
 declare -A YEAR_MAP SIZE_MAP
 PDF_NAMES=()
 while IFS=$'\t' read -r pdf_name year_folder; do
@@ -164,10 +181,16 @@ for pdf_name in "${PDF_NAMES[@]}"; do
 
     # Migration: move file from old flat location if it exists there
     old_path="$TARGET_DIR/$pdf_name"
-    if [ "$dest_dir" != "$TARGET_DIR" ] && [ -f "$old_path" ] && [ ! -f "$output_path" ]; then
-        mv "$old_path" "$output_path"
-        n_moved=$((n_moved+1))
-        status "  ${C_BLUE}→${C_RESET} moved ${display_path}"
+    if [ "$dest_dir" != "$TARGET_DIR" ] && [ -f "$old_path" ]; then
+        if [ ! -f "$output_path" ]; then
+            mv "$old_path" "$output_path"
+            n_moved=$((n_moved+1))
+            status "  ${C_BLUE}→${C_RESET} moved ${display_path}"
+        else
+            mv -f "$old_path" "$output_path"
+            n_moved=$((n_moved+1))
+            status "  ${C_BLUE}→${C_RESET} moved ${display_path} (cleaned flat copy)"
+        fi
     fi
 
     # Check if download is needed (compare file size)

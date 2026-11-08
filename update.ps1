@@ -3,7 +3,7 @@ param(
 )
 
 # --- Configuration ---
-$scriptVersion = "1.2.2"
+$scriptVersion = "1.2.4"
 $repo = "KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs"
 $apiBase = "https://api.github.com/repos/$repo"
 $rawBase = "https://raw.githubusercontent.com/$repo/MAIN"
@@ -78,9 +78,38 @@ Invoke-SelfUpdate
 # Step 1: Fetch the manifest (pdf name -> "<jaar>/<Vak>") via the release download
 # URL. That is a CDN, not the API, so it is not rate-limited.
 Write-Host "  Fetching release... " -ForegroundColor Cyan -NoNewline
+$lines = $null
 try {
     $lines = (Invoke-WebRequest -Uri "$dlBase/manifest.tsv" -UseBasicParsing -ErrorAction Stop).Content -split "`n"
 } catch {
+    try {
+        $lines = (Invoke-WebRequest -Uri "$rawBase/manifest.tsv" -UseBasicParsing -ErrorAction Stop).Content -split "`n"
+    } catch {
+        $localManifest = Join-Path $targetDir "manifest.tsv"
+        if (Test-Path $localManifest) {
+            $lines = (Get-Content $localManifest) -split "`n"
+        }
+    }
+}
+
+# Check if manifest has course folders; fallback to raw repo if empty
+$hasFolders = $false
+if ($lines) {
+    foreach ($line in $lines) {
+        $col = $line -split "`t", 2
+        if ($col.Count -gt 1 -and -not [string]::IsNullOrWhiteSpace($col[1])) {
+            $hasFolders = $true
+            break
+        }
+    }
+}
+if (-not $hasFolders) {
+    try {
+        $lines = (Invoke-WebRequest -Uri "$rawBase/manifest.tsv" -UseBasicParsing -ErrorAction Stop).Content -split "`n"
+    } catch {}
+}
+
+if (-not $lines) {
     Write-Host "failed" -ForegroundColor Red; Write-Error "Could not download manifest.tsv from release 'latest'."; exit 1
 }
 $yearMap = @{}
@@ -130,7 +159,7 @@ foreach ($pdfName in $pdfNames) {
 
     # Migration: move file from old flat location if it exists there
     $oldPath = Join-Path $targetDir $pdfName
-    if ($destDir -ne $targetDir -and (Test-Path $oldPath) -and -not (Test-Path $outputPath)) {
+    if ($destDir -ne $targetDir -and (Test-Path $oldPath)) {
         Move-Item -Path $oldPath -Destination $outputPath -Force
         $nMoved++
         Write-Host "  -> moved $displayPath" -ForegroundColor Blue

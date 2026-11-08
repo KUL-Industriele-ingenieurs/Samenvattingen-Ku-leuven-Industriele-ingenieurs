@@ -269,10 +269,6 @@ jobs:
         steps:
             - name: Checkout
               uses: actions/checkout@v7
-              with:
-                  # Alleen de scripts nodig, niet de ~600 MB aan bronnen en assets.
-                  sparse-checkout: .github
-                  filter: blob:none
 
             - name: Download all PDF artifacts
               uses: actions/download-artifact@v8
@@ -347,10 +343,6 @@ jobs:
         steps:
             - name: Checkout code
               uses: actions/checkout@v7
-              with:
-                  # Alleen de scripts nodig, niet de ~600 MB aan bronnen en assets.
-                  sparse-checkout: .github
-                  filter: blob:none
 
             - name: Download PDF artifacts
               uses: actions/download-artifact@v8
@@ -426,10 +418,14 @@ jobs:
                   # 5. Rename assets to use underscores (ensure consistency)
                   echo "Renaming assets to use underscores..."
                   if [ -d artifacts ]; then
-                    find artifacts -type f -name "* *" -print0 | while IFS= read -r -d '' f; do
-                      new_name="${f// /_}"
-                      echo "  Renaming '$f' to '$new_name'"
-                      mv "$f" "$new_name"
+                    find artifacts -type f -print0 | while IFS= read -r -d '' f; do
+                      base="$(basename "$f")"
+                      if [[ "$base" == *" "* ]]; then
+                        dir="$(dirname "$f")"
+                        new_base="${base// /_}"
+                        echo "  Renaming '$base' to '$new_base'"
+                        mv "$f" "$dir/$new_base"
+                      fi
                     done
                   fi
 
@@ -454,6 +450,8 @@ jobs:
                   for script in update.sh update.ps1; do
                     if [ -f "$script" ]; then
                       gh release upload latest "$script" --clobber
+                    elif [ -f "artifacts/pdfs/$script" ]; then
+                      gh release upload latest "artifacts/pdfs/$script" --clobber
                     else
                       echo "::warning::$script not found, skipping."
                     fi
