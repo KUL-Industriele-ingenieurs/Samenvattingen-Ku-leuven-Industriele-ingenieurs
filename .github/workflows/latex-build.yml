@@ -66,8 +66,8 @@ jobs:
         needs: discover
         if: needs.discover.outputs.docs != '[]'
         runs-on: ubuntu-latest
-        container:
-            image: texlive/texlive:latest
+        # Geen job-container meer: die laadde bij elke job ~50 s het texlive-image,
+        # ook als de PDF uit de cache kwam. Nu alleen bij een cache-miss (docker run).
         strategy:
             fail-fast: false
             matrix:
@@ -115,7 +115,9 @@ jobs:
 
                   # Geen -shell-escape: geen enkel document gebruikt minted, svg,
                   # gnuplot of \write18, en het zet willekeurige shell-uitvoering aan.
-                  if latexmk -pdf \
+                  if docker run --rm -v "$GITHUB_WORKSPACE:$GITHUB_WORKSPACE" -w "$PWD" \
+                      -u "$(id -u):$(id -g)" -e HOME=/tmp texlive/texlive:latest \
+                      latexmk -pdf \
                       -interaction=nonstopmode \
                       -file-line-error \
                       "$file" 2>&1 | tee "build_${name}.log"; then
@@ -267,6 +269,10 @@ jobs:
         steps:
             - name: Checkout
               uses: actions/checkout@v7
+              with:
+                  # Alleen de scripts nodig, niet de ~600 MB aan bronnen en assets.
+                  sparse-checkout: .github
+                  filter: blob:none
 
             - name: Download all PDF artifacts
               uses: actions/download-artifact@v8
@@ -287,11 +293,13 @@ jobs:
             - name: PDF's comprimeren
               shell: bash
               run: |
-                  sudo apt-get update -qq && sudo apt-get install -y -qq ghostscript
+                  command -v gs >/dev/null || { sudo apt-get update -qq && sudo apt-get install -y -qq ghostscript; }
                   echo "## PDF-compressie" >> "$GITHUB_STEP_SUMMARY"
                   echo "| PDF | Voor | Na |" >> "$GITHUB_STEP_SUMMARY"
                   echo "|---|---|---|" >> "$GITHUB_STEP_SUMMARY"
-                  find artifacts/pdfs -type f -name '*.pdf' -print0 | while IFS= read -r -d '' f; do
+                  # Eén gs-proces per core in plaats van alles na elkaar.
+                  compress() {
+                      f="$1"
                       tmp="${f%.pdf}.gs.pdf"
                       # 300 dpi, JPEG met QFactor 0.4 en zonder chroma subsampling (hoog; maximum = 0.15).
                       # -dJPEGQ werkt niet bij pdfwrite: kwaliteit gaat via ColorImageDict/GrayImageDict.
@@ -310,7 +318,9 @@ jobs:
                           # gs faalde of de PDF werd niet kleiner: origineel houden.
                           rm -f "$tmp"
                       fi
-                  done
+                  }
+                  export -f compress
+                  find artifacts/pdfs -type f -name '*.pdf' -print0 | xargs -0 -r -P "$(nproc)" -I{} bash -c 'compress "$1"' _ {}
 
             - name: Build structured bundle (year folders + update scripts)
               shell: bash
@@ -337,6 +347,10 @@ jobs:
         steps:
             - name: Checkout code
               uses: actions/checkout@v7
+              with:
+                  # Alleen de scripts nodig, niet de ~600 MB aan bronnen en assets.
+                  sparse-checkout: .github
+                  filter: blob:none
 
             - name: Download PDF artifacts
               uses: actions/download-artifact@v8
