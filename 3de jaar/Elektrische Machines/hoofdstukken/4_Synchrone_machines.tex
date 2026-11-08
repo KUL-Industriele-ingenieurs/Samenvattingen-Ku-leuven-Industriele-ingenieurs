@@ -36,6 +36,8 @@ word extern geëxciteerd met een veldstroom If:
   \label{fig:PMvsDCwindinge.png}
  \end{figure}
 
+\animatie{sm-uitspringende-polen}{synchrone machine met uitspringende polen}
+
 \section{Stator en rotor magnetisch veld}
 Eigelijk zijn er 2 draaivelden nu, we hebben dus het draaiveld van de stator dat opgewekt
 wordt door de 3AC dat we eerder bespraken maar we hebben ook een draaiveld in de rotor dat
@@ -95,6 +97,8 @@ In de figuur hierboven zien we hoe het mutueel veld er uitziet in een sinusvorm,
 de koppelhoek een faseverschuiving eigelijk.
 Dit is echter wel minder simpel weer te geven dan vectorieel dus vanaf nu doen we het
 gewoon vectorieel.
+
+\animatie{sm-stator-rotorveld}{rotor die het draaiveld van de stator volgt}
 
 \section{Koppelhoek/Lasthoek}
 De koppelhoek (ook wel lasthoek genoemd) is de hoek tussen het statorveld en het
@@ -725,8 +729,9 @@ Hier gaan we zien wat er gebeurd als je de DC-stroom die het veld bekrachtigd (d
 gaat variëren.
 We houden hier $V_{\phi}$ constant.
 Wat we zien is dat de interne spanning ook zal stijgen in de vorm van een V-curve als je
-het plot met de excitatiestroom, een mooie gif hiervan is te vinden op toledo, hier is
-allesinds een screenshot daarvan:
+het plot met de excitatiestroom.
+\animatie{sm-v-curve}{fasordiagram en V-curve bij variërende excitatie}
+Hieronder een stilstaand beeld:
 
 \begin{figure}[H]
   \centering
@@ -1079,6 +1084,22 @@ Als motor ijlt $\underline{E}_A$ na: $\underline{E}_A = 372.6 V \angle -25^\circ
 \begin{align*}
     \underline{I}_A = \frac{\underline{V}_\phi - \underline{E}_A}{j X_S} = \frac{254 V \angle 0^\circ - 372.6 V \angle -25^\circ}{j \cdot 1.5 \Omega} = 118.9 A \angle 28.0^\circ
 \end{align*}
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[>=stealth, thick]
+    % schaal: 1 cm = 50 V, stroom 1 cm = 25 A
+    \draw[->, gray, thin] (-0.5,0) -- (8,0) node[right] {Re};
+    \draw[->, gray, thin] (0,-3.6) -- (0,3) node[above] {Im};
+    \draw[->, schoolBlue] (0,0) -- (5.08,0) node[pos=0.8, below] {$\underline{V}_\phi$};
+    \draw[->, schoolRed] (0,0) -- (6.75,-3.15) node[midway, below left] {$\underline{E}_A$};
+    \draw[->, schoolGreen] (6.75,-3.15) -- (5.08,0) node[midway, right] {$jX_S\underline{I}_A$};
+    \draw[->, schoolOrange] (0,0) -- (4.20,2.23) node[above] {$\underline{I}_A$};
+    \draw[thin] (1.6,0) arc (0:-25:1.6) node[midway, right] {$\delta = 25^\circ$};
+    \draw[thin] (2.2,0) arc (0:28:2.2) node[midway, right] {$\varphi = 28^\circ$};
+  \end{tikzpicture}
+  \caption{Fasordiagram oefening 5-17: overbekrachtigde motor, $\underline{I}_A$ ijlt voor op $\underline{V}_\phi$}
+  \label{fig:fasor-oef5-17}
+\end{figure}
 \begin{align*}
     \cos\varphi = \cos(28.0^\circ) = 0.883 \text{ voorijlend}
 \end{align*}

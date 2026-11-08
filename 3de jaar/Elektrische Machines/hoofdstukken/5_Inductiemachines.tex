@@ -55,17 +55,27 @@ De wetten die dit dus allemaal mogelijk maakten zijn:
  $\sum T = J \cdot \alpha$ ($J$ = traagheidsmoment, $\alpha$ = hoekversnelling)
 \end{itemize}
 
+\animatie{im-werking}{werking van de inductiemotor}
+\animatie{im-kooirotor}{spanningen en stromen in de staven van de kooirotor}
+
 \subsection{Slip}
-Bij de inductiemachine komt de term 'slip' ook vaak aan bod, dit is omdat de spanning
-enkel geïnduceerd wordt als er een snelheidsverschil is tussen het veld en de rotor en de
-slip wordt letterlijk geclassificeerd als \textit{het snelheidsverschil tussen het
-draaiveld en de rotor.} Daarom kan de slip wiskundig als volgt ook beschreven worden:
+\begin{conceptbox}[Slip]
+De slip $s$ is het snelheidsverschil tussen het draaiveld en de rotor, als fractie van de
+synchrone snelheid. De rotor krijgt alleen een geïnduceerde spanning als er zo'n
+snelheidsverschil is, daarom komt de slip bij de inductiemachine overal terug.
 \begin{align*}
  s = \frac{n_s - n}{n_s} \cdot 100\% = \frac{\omega_s - \omega}{\omega_s} \cdot 100\%
 \end{align*}
-Typisch is de slip rond de 3\%, 10\% wordt al als veel beschouwd.
-Het is eigelijk een andere uitdrukking voor snelheid, daarom kan het ook geplot worden met
-het koppel in een koppel-slip karakteristiek zoals in volgende figuur:
+met:
+\begin{itemize}
+ \item $n_s$, $\omega_s$: synchrone snelheid van het draaiveld [tr/min], [rad/s]
+ \item $n$, $\omega$: snelheid van de rotor [tr/min], [rad/s]
+\end{itemize}
+Een typische slip is ongeveer 3\%. Vanaf 10\% noemen we de slip al groot.
+\end{conceptbox}
+
+De slip is dus een andere manier om de snelheid uit te drukken. Daardoor kan je het koppel
+ook uitzetten tegen de slip, in een koppel-slipkarakteristiek:
 
 \begin{figure}[H]
   \centering
@@ -74,25 +84,22 @@ het koppel in een koppel-slip karakteristiek zoals in volgende figuur:
   \label{fig:koppelslip.png}
  \end{figure}
 
-We zien hier dat we bij een slip van 0 geen koppel hebben, dit is logisch want op dat
-moment draaien we aan synchrone snelheid waardoor dus geen geïnduceerde spanning is.
-Bij een slip van 1 hebben we eigelijk gewoon een stilstaande rotor, het draaiveld van de
-stator draait hier wel nog.
-Voor kleine slippen zoals we zien is er eigelijk een lineair verband met het koppel.
+Bij $s = 0$ is er geen koppel. De rotor draait dan aan synchrone snelheid, dus wordt er geen
+spanning geïnduceerd. Bij $s = 1$ staat de rotor stil, terwijl het draaiveld van de stator
+wel nog draait. Voor kleine slip is het koppel ongeveer lineair met de slip.
 
 \subsection{Rotorveld}
-Aangezien er een stroom in de rotor is zorgt deze ook voor een magnetisch veld via de wet
-van Ampère.
-Dit veld een een beetje effect op het resulterend draaiveld, maar hoe groter deze stroom
-hoe groter dat effect, dit is dus eigelijk zoals ankerreactie.
-Door de slip is er een verschil in snelheid, we zeggen hier dat het draaiveld aan 1500
-tr/min draait en de rotor aan 1480 tr/min.
+De stroom in de rotor maakt via de wet van Ampère een eigen magnetisch veld. Dat veld
+verandert het resulterende draaiveld een beetje, en hoe groter de rotorstroom, hoe groter
+dat effect. Het lijkt op de ankerreactie.
+In de figuren hieronder draait het draaiveld aan 1500 tr/min en de rotor aan 1480 tr/min.
+Hoe dat eruitziet, hangt af van waar de waarnemer staat.
 
-\subsubsection{Buitenstaande waarnemen (stator)}
-Als je als buitenstaande waarnemer gaat kijken naar de inductie machine dan ziet die
-gewoon alle stromen van in de volgende figuur draaien aan een snelheid van 1500 tr/min,
-terwijl de rotorstroom $I_R$ zich in de rotor bevind, dit is omdat het geïnduceerd wordt
-door dat draaiveld dat het dan eigelijk iets sneller draait als de rotor zelf.
+\subsubsection{Buitenstaande waarnemer (stator)}
+Een waarnemer naast de machine ziet alle stromen uit de figuur draaien aan 1500 tr/min.
+Dat geldt ook voor de rotorstroom $I_R$, hoewel die in de rotor zit en de rotor zelf
+trager draait. Het draaiveld induceert $I_R$, dus $I_R$ draait mee met het draaiveld en niet
+met de rotorstaven.
 
 \begin{figure}[H]
   \centering
@@ -100,14 +107,14 @@ door dat draaiveld dat het dan eigelijk iets sneller draait als de rotor zelf.
   \caption{Stator view van een inductiemachine, buitenstaander waarnemer}
   \label{fig:statorviewinductiemachine.png}
  \end{figure}
+\animatie{im-stator-view}{stator view}
+
 
 \subsubsection{Synchronous view (jij rijdt mee op het draaiveld)}
-Als we nu als waarnemer OP de machine gaan, eigelijk mee met het draaiveld, dan is
-$\omega = 0$, het draaiveld is stil vanuit ons standpunt, maar sinds de rotor dat tempo
-niet haalt gaat het eigelijk traag lijken weg te glijden, waardoor de stroom in de
-rotorstaven traag varieert.
-Dit is dus gelinkt aan die slip, die stroom is een geïnduceerde AC stroom dat niet aan
-50Hz is maar trager dan het draaiveld.
+Rijdt de waarnemer mee met het draaiveld, dan is voor hem $\omega = 0$: het draaiveld
+staat stil. De rotor haalt dat tempo niet en glijdt dus traag achteruit weg. Daardoor
+varieert de stroom in de rotorstaven traag. Dat komt door de slip: de geïnduceerde
+AC-stroom in de rotor heeft geen 50\,Hz, maar een veel lagere frequentie.
 
 \begin{figure}[H]
   \centering
@@ -118,14 +125,18 @@ Dit is dus gelinkt aan die slip, die stroom is een geïnduceerde AC stroom dat n
  \end{figure}
 
 \subsubsection{Rotor view (jij rijdt mee op de rotor)}
-Als we nu als waarnemer op de rotor gaan, lijkt het draaiveld aan 20 tr/min te passeren,
-dus aan $\omega_{sl} = 20 tr/min$, dit is die slip.
-Als we dit omzetten naar frequentie geeft dit exact volgende relatie:
+Rijdt de waarnemer mee op de rotor, dan passeert het draaiveld aan
+$1500 - 1480 = 20$ tr/min. Dat is de slipsnelheid $\omega_{sl}$.
+Omgezet naar frequentie geeft dat:
 \begin{align*}
     f_r = s \cdot f_s
 \end{align*}
-De rotor frequentie is een lage frequentie, dus niet 50Hz, dit is een belangrijke formule
-om te onthouden.
+met:
+\begin{itemize}
+ \item $f_r$: frequentie van de rotorstroom [Hz]
+ \item $f_s$: frequentie van de statorstroom [Hz]
+\end{itemize}
+Hier is $s = 20/1500 \approx 1{,}3\%$, dus $f_r \approx 0{,}67$\,Hz bij $f_s = 50$\,Hz.
 
 \begin{figure}[H]
   \centering
@@ -133,6 +144,9 @@ om te onthouden.
   \caption{Rotor view van een inductiemachine, waarnemer die mee rijdt op de rotor}
   \label{fig:rotorviewinductiemachine.png}
  \end{figure}
+\animatie{im-rotor-view}{rotor view}
+
+
 
 \subsection{Kenplaat oefening}\label{sec:kenplaat-oefening}
 Dit thema is een beetje messy als het neer komt op de oefeningen, ze zijn niet zomaar
@@ -971,6 +985,8 @@ je sterschakeling, of door sowieso een driehoekschakeling te gebruiken (die heef
 geen sterpunt).
 Zonder retourpad kan er namelijk geen homopolaire stroom vloeien.
 
+\animatie{im-onbalans}{ruimtevectoren bij ongebalanceerde voeding}
+
 \section{Inductiemachines in gebruik}
 Voor het starten van de inductiemachine is een startkoppel ($T_{start}$) en een
 startstroom ($I_{start}$) nodig.
@@ -1276,6 +1292,8 @@ De reden dat dit met een asynchrone en niet een synchrone machine is, is omdat d
 een constante snelheid werkt.
 Ook is er nog een overbrenging om de rotatie naar een ideale snelheid voor de motor te
 brengen.
+
+\animatie{im-motor-generator}{motor- en generatorwerking}
 
 \subsubsection{Singly Fed}
 Dit is het normale geval, enkel de stator is hier elektrisch aan het net gesloten.
