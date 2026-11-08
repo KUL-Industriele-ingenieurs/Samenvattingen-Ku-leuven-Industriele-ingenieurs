@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # --- Configuration ---
-SCRIPT_VERSION="1.2.2"
+SCRIPT_VERSION="1.2.3"
 REPO="KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs"
 API_BASE="https://api.github.com/repos/$REPO"
 RAW_BASE="https://raw.githubusercontent.com/$REPO/MAIN"
@@ -9,6 +9,8 @@ DL_BASE="https://github.com/$REPO/releases/download/latest"
 SELF_NAME="$(basename "${BASH_SOURCE[0]}")"
 TARGET_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SELF_PATH="$TARGET_DIR/$SELF_NAME"
+# Abort a request that stalls (GitHub sometimes accepts the connection and never answers).
+curl() { command curl --connect-timeout 10 --speed-limit 1 --speed-time 20 "$@"; }
 
 # --- Terminal capabilities ---
 if [ -t 1 ]; then
