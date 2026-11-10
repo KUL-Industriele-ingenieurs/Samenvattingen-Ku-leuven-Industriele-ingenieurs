@@ -228,17 +228,92 @@ De atmosferische druk daalt met de hoogte. Op 2000 m is $p_a$ nog ongeveer 0,8 b
 
 ==== NPSH <sec:npsh>
 
-De *NPSH* (Net Positive Suction Head) is de marge in meter tussen de totale druk aan de zuigkant en de dampspanning. Hoe groter de NPSH, hoe verder je van koken zit.
+De *NPSH* (Net Positive Suction Head) is de marge in meter tussen de totale druk aan de zuigkant en de dampspanning. Hoe groter de NPSH, hoe verder je van koken zit. De installatie bepaalt de *beschikbare* NPSH, de pomp stelt een *vereiste* NPSH.
 
 #frm(
-  "Net Positive Suction Head",
-  $ "NPSH" = (p_"zuig" + 1/2 rho v^2 - p_"damp") / (rho g) $,
-  [met: $p_"zuig"$ --- druk aan de zuigkant [Pa], $v$ --- snelheid aan de zuigkant [m/s], $p_"damp"$ --- dampspanning bij de vloeistoftemperatuur [Pa], NPSH [m]],
+  "Net Positive Suction Head (beschikbaar)",
+  $ "NPSH"_A = (p_"zuig" + 1/2 rho v^2 - p_"damp") / (rho g) $,
+  [met: $p_"zuig"$ --- druk aan de zuigkant [Pa], $v$ --- snelheid aan de zuigkant [m/s], $p_"damp"$ --- dampspanning bij de vloeistoftemperatuur [Pa], $"NPSH"_A$ [m]],
 )
 
-In de praktijk vergelijk je de NPSH van de installatie met de NPSH die de fabrikant voor de pomp opgeeft: die van de installatie moet groter zijn (staat niet in de slides, wel op elke pompfiche).
+$"NPSH"_R$ is een eigenschap van de pomp. De fabrikant geeft ze op de pompfiche. Je hebt geen cavitatie zolang
 
-Je vergroot de NPSH door de pomp lager te plaatsen (eventueel onder het waterniveau), een dikkere zuigleiding te nemen zodat $v$ daalt, weinig bochten en kleppen aan de zuigkant te zetten en de vloeistof koel te houden.
+$
+  "NPSH"_A > "NPSH"_R + "veiligheidsmarge"
+$
+
+Bij een groter debiet stijgt de snelheid in de zuigleiding en daarmee het leidingverlies, dus $"NPSH"_A$ daalt. $"NPSH"_R$ stijgt wel met het debiet. De twee krommen snijden elkaar bij $Q_max$. Laat de pomp niet tot daar draaien.
+
+NPSH is een druk uitgedrukt in meter vloeistofkolom.
+
+*$"NPSH"_R$ verlagen* (aan de pompkant):
+
+- een boosterpomp voor de hoofdpomp zetten;
+- een *inducer* voor de waaier plaatsen. Dat is een schroefje dat het water al in de draairichting brengt, zodat er minder verlies is door het grote snelheidsverschil aan de inlaat;
+- pompen parallel zetten, zodat elke pomp een kleiner debiet levert.
+
+*$"NPSH"_A$ verhogen* (aan de installatiekant):
+
+- de statische toevoerhoogte vergroten: de pomp lager zetten of de tank hoger plaatsen;
+- de zuigleiding korter en dikker maken, zodat $v$ en de wrijvingsverliezen dalen;
+- weinig en goede bochten en kleppen aan de zuigkant gebruiken (minor losses);
+- de tank onder druk zetten;
+- de vloeistof koel houden, want een lagere temperatuur geeft een lagere dampspanning.
+
+=== Verdringerpompen <sec:verdringerpompen>
+
+Een *verdringerpomp* verplaatst bij elke slag of omwenteling een vast volume vloeistof. Er zijn twee types:
+
+- *translerend* (per slag): zuiger, plunjer en membraan. Het debiet pulseert en de pomp haalt hoge drukken;
+- *roterend* (per omwenteling): tandwiel (inwendig of uitwendig), lobben, schotten en schroef.
+
+Het volume per slag of omwenteling ligt vast, dus hangt het debiet nauwelijks van de druk af. In een $p$-$Q$-diagram met een lijn per toerental (bijvoorbeeld 1500, 2000 en 3000 tpm) is elke lijn bijna verticaal.
+
+Voordelen: compact, geschikt voor hoogviskeuze vloeistoffen en voor grote drukverschillen. Nadeel: het debiet is niet continu.
+
+=== Centrifugaalpompen <sec:centrifugaalpompen>
+
+Een *centrifugaalpomp* geeft het water snelheid met een waaier. In de leischoepen en het slakkenhuis wordt die snelheid omgezet in druk. De pomp moet druk leveren en geen grote snelheid in de leiding.
+
+Voordelen: gelijkmatig debiet, lange levensduur, directe koppeling met de motor, ruim regelbereik en goedkoop. Nadelen: niet zelfaanzuigend, en bij kleine debieten een slecht rendement en duur.
+
+==== Pompkarakteristiek <sec:pompkarakteristiek>
+
+De pompkarakteristiek geeft de druk die de pomp levert in functie van het debiet. Je bouwt ze in drie stappen op:
+
+- *Euler-karakteristiek* $p_E$: een dalende rechte, $p_E = a - b Q$;
+- *theoretische karakteristiek* $p_"th"$: ook een rechte, onder $p_E$;
+- *manometrische karakteristiek* $p_"man"$: $p_"th"$ min de wrijvings- en botsingsverliezen.
+
+$
+  p_"man" = p_"th" - p_"wr" - p_"bt"
+$
+
+De wrijvingsverliezen $p_"wr"$ stijgen met $Q$ (ongeveer met $Q^2$). De botsingsverliezen $p_"bt"$ zijn nul bij het ontwerpdebiet en worden groter bij een te klein én een te groot debiet.
+
+Lekverliezen verlagen het debiet: het effectieve debiet $Q_"ve"$ is kleiner dan het theoretische $Q_"vth"$.
+
+Het rendement is maximaal bij één debiet. Dat punt heet het *Best Efficiency Point* (BEP).
+
+#figure(
+  image("assets/Pompkarakteristiek-werkelijk.jpg", width: 9cm),
+  caption: [Werkelijke pompkarakteristiek: $p_E$, $p_"th"$, verliezen $p_"wr"$ en $p_"bt"$, en $p_"man"$],
+  label: <fig:Pompkarakteristiek-werkelijk>,
+)
+
+==== Gelijkvormigheid <sec:gelijkvormigheid>
+
+Met de gelijkvormigheidswetten reken je een pomp om naar een ander toerental of een andere waaierdiameter:
+
+$
+  Q tilde.op n d^3   p_E tilde.op rho n^2 d^2   P_E tilde.op rho n^3 d^5
+$
+
+met:
+- $n$: toerental [tpm]
+- $d$: waaierdiameter [m]
+- $rho$: dichtheid [kg/m³]
+- $P_E$: vermogen [W]
 
 === Oefening pompverliezen <sec:oef-pompverliezen>
 

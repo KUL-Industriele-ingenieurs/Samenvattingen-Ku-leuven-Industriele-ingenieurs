@@ -22,6 +22,7 @@ Op de stator gebeurd exact hetzelfde als we eerder zagen bij de synchrone machin
 wordt een draaiveld opgewekt.
 Een synchroon draaiveld met $\omega_s = \frac{2 \cdot \pi \cdot f}{p}$ en
 $n_s = \frac{60 \cdot f}{p}$.
+Hier is $p$ het aantal \textbf{poolparen}, niet het aantal polen. Een 6-polige machine heeft $p = 3$ en draait op 50\,Hz met $n_s = 1000$ tr/min.
 Ook hier kan de draaizin omgekeerd worden door gewoon 2 fases te verwisselen.
 Het is bij de rotor dat het speciale ding gebeurd.
 
@@ -37,6 +38,12 @@ Van zodra de rotor op synchrone snelheid van het draaiveld staat dan wordt er ge
 spanning meer geïnduceerd, want relatief is er geen bewegende geleider in een magnetisch
 veld meer.
 Dus is er geen koppel op synchrone snelheid.
+De rotor haalt het draaiveld dus nooit in: bij $n = n_s$ is er geen relatieve beweging, geen
+spanning, geen stroom en geen koppel. De machine draait altijd trager dan het veld en heet
+daarom \textbf{asynchroon}. De stroom in de rotor wordt geïnduceerd, dus is er geen
+aansluiting op de rotor nodig. Daarom heet ze \textbf{inductiemachine}, heeft ze geen
+sleepringen nodig en start ze zelf aan het net: bij stilstand is de relatieve snelheid
+tussen veld en rotor het grootst.
 
 \begin{figure}[H]
   \centering
@@ -73,6 +80,10 @@ met:
 \end{itemize}
 Een typische slip is ongeveer 3\%. Vanaf 10\% noemen we de slip al groot.
 \end{conceptbox}
+
+Uit de definitie volgt $n = (1-s)\,n_s$. In motorbedrijf is $0 < s < 1$ en bij stilstand is
+$s = 1$. De slip wordt groter dan 1 (100\%) als de rotor tegen het draaiveld in draait, zoals bij
+elektrisch remmen.
 
 De slip is dus een andere manier om de snelheid uit te drukken. Daardoor kan je het koppel
 ook uitzetten tegen de slip, in een koppel-slipkarakteristiek:
@@ -440,6 +451,17 @@ In de stator zijn er trouwens meer ijzerverliezen want de frequentie in de rotor
 en die ijzerverliezen zijn frequentie afhankelijk, want de frequentie bepaald hoeveel het
 magnetisch veld op en neer gaat (hysteresis).
 
+Het luchtspleetvermogen en de rotorverliezen hangen rechtstreeks aan de slip, want de
+rotorstroom $I_2$ loopt door $\frac{R_2}{s}$ in het equivalent schema:
+\begin{align*}
+    P_{el} &= \sqrt{3} \cdot V_L \cdot I_L \cdot \cos\varphi \\
+    P_S &= P_{el} - 3 \cdot I_1^2 \cdot R_1 - 3 \cdot \frac{E_1^2}{R_{Fe}} = 3 \cdot I_2^2 \cdot \frac{R_2}{s} \\
+    P_{Cu,r} &= 3 \cdot I_2^2 \cdot R_2 = s \cdot P_S \\
+    P_{conv} &= P_S - P_{Cu,r} = (1-s) \cdot P_S = T_{ind} \cdot \omega
+\end{align*}
+Hoe groter de slip, hoe groter het deel van $P_S$ dat als warmte in de rotor blijft. Bij
+$s = 1$ is $P_{conv} = 0$ en wordt het hele luchtspleetvermogen warmte.
+
 \subsection{Soorten metingen}
 Net zoals bij de synchrone machine willen we de parameters van het equivalent schema
 kunnen bepalen, hiervoor zijn er een paar metingen nodig indien deze niet allemaal gekend
@@ -542,6 +564,7 @@ parallele tak van $R_C$ en $X_m$ verwaarlozen want er zijn hier veel minder verl
 doordat we spanning gaan verlagen zodat de stroom niet te groot wordt (spanning van 0
 regelen tot de nominale waarde van de stroom bereikt wordt).
 Er gaat dus weinig vermogen naar die magnetiseertak.
+Bij $s = 1$ is $\frac{R_2}{s} = R_2$ bovendien klein, dus gaat bijna alle stroom door de rotortak en niet door de magnetiseertak.
 Dus behouden we het volgende equivalent schema:
 
 \begin{figure}[H]
@@ -593,6 +616,9 @@ we een 50/50 verhouding gebruiken:
   \label{fig:nemaverhoudingen.png}
  \end{figure}
 
+In die tabel is de verhouding $X_1 : X_2$ gelijk aan 50/50 voor klasse A en D, 40/60 voor klasse B
+en 30/70 voor klasse C.
+
 \section{Koppel-toerentalkarakteristiek}\label{sec:koppel-toerental}
 Dan gaan we nu eens meer uitgebreid kijken naar de koppel-toerentalkarakteristiek van de
 inductiemachine.
@@ -615,6 +641,11 @@ eigenlijk overbelasting.
 Ideaal werken we rond dat stabiel werkingspunt op het \textbf{nominaal koppel} $T_{nom}$
 het gebied hierna willen we niet werken omdat dit een slechte arbeidsfactor heeft.
 Deze machine kan zoals we zien rechtstreeks van het net starten.
+
+Het nominaal punt ligt op het steile deel vlak bij $n_s$ en is stabiel. Stijgt de last, dan
+daalt $n$, dus stijgt $s$ en dus stijgt $T_{ind}$, tot het koppel weer gelijk is aan het
+lastkoppel. Voorbij het kipkoppel daalt $T_{ind}$ bij stijgende slip, dus valt de motor stil
+bij stijgende last.
 
 Om die T-n karakteristiek te berekenen hebben we de formule nodig van het koppel van de
 inductiemachine.
@@ -639,6 +670,7 @@ Hieruit kunnen we dus het koppel berekenen:
     T_{ind} = \frac{P_{conv}}{\omega_s \cdot (1-s)} = \frac{3 \cdot I_2^2 \cdot R_2 \left(\frac{1-s}{s}\right)}{\omega_s \cdot (1-s)} = \frac{3 \cdot I_2^2 \cdot R_2}{\omega_s \cdot s}
 \end{align*}   
 Dit is dus het geïnduceerde koppel van de inductiemachine.
+Het koppel is evenredig met het luchtspleetvermogen: $T_{ind} = \frac{P_S}{\omega_s}$.
 De proff specifieert ook dat het belangrijk is om te weten dat de stroom $I_2$ (en ook
 $I_1$) in functie zijn van de slip $s$ en de spanning $V_\phi$ verandert, dus dit is niet
 een constante!
@@ -1357,6 +1389,11 @@ Dit is veel efficiënter.
         X_1 = 0.4 \cdot 0.528 = 0.211\,\Omega, \qquad X_2 = 0.6 \cdot 0.528 = 0.317\,\Omega \tag{7}
     \end{align}
     (7) in (2): $X_m = 5.07 - 0.211 = 4.86\,\Omega$.
+
+Alternatief voor (2): $|Z_0| = \frac{V_\phi}{I_0} = \frac{120.1}{24} = 5.00\,\Omega \approx X_1 + X_m$ geeft
+$X_m = 4.79\,\Omega$. Het verschil komt doordat $|Z_0|$ ook de verliezen bevat, terwijl de
+$Q$-methode ze eruit haalt. In (3) rekenen we de 1218\,W volledig als ijzerverlies, maar daarin
+zitten ook de wrijvings- en ventilatieverliezen, dus $R_{Fe}$ is iets te klein.
 
     \textbf{Resultaat equivalent schema (per fase):}
     $R_1 = 0.106\,\Omega$, $X_1 = 0.211\,\Omega$, $R_{Fe} = 35.5\,\Omega$,
