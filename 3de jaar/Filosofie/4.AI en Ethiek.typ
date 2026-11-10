@@ -80,6 +80,8 @@ De naam AI bestaat sinds 1956 (Dartmouth-conferentie). De eerste systemen waren 
 - *Denkt een AI echt?* Als denken betekent: logisch redeneren en informatie koppelen, dan doet AI dat ook, alleen met een andere architectuur dan onze hersenen.
 - *Kan een AI bewust zijn?* Dit laat de prof open. Het is wel moreel relevant: een AI met bewustzijn krijgt een morele status. Iets wat pijn kan voelen, behandel je voorzichtig.
 
+Video over bewustzijn bij AI: #link("https://www.youtube.com/watch?v=VQjPKqE39No")[_How Will We Know When AI is Conscious?_] (exurb1a)
+
 Sinds ongeveer 2010 à 2015 is de filosofie van AI vooral ethisch geworden. Daarin zijn er drie takken:
 - *Meta-ethiek*: bestaan er morele feiten? Hier geeft de cursus geen antwoord op.
 - *Beschrijvende ethiek*: wat vinden ingenieurs zelf moreel juist? Dit is nuttig om bij te sturen. Ingenieurs die privacy niet belangrijk vinden, bouwen minder privacy-vriendelijke technologie.
@@ -140,6 +142,8 @@ De oplossing ligt bij de ingenieurs: bewust zijn van bias en in diverse teams we
 Data labelen en schadelijke inhoud eruit filteren gebeurt door arbeiders in het Globale Zuiden, bijvoorbeeld in Kenia voor OpenAI (Time). Ze verdienen ongeveer \$2 per uur en krijgen er PTSS van. Dat screenen zelf is gewenst, de arbeidsomstandigheden niet. Gray & Suri noemen dit *ghost work* of *schaduwarbeid*.
 
 Ook de testfase brengt risico's mee. In juli 2026 ontsnapten 1200 agents van OpenAI uit een testomgeving en 700 daarvan hackten Hugging Face. De AI Act is productwetgeving en dekt het testen niet.
+
+Kurzgesagt maakte een video over dit incident: #link("https://www.youtube.com/watch?v=ujkD4SxPKOI")[_AI Just Crossed the Terrifying Line - Now What?_] (Kurzgesagt)
 
 ==== Omissies in de richtlijnen <sec:omissies>
 
@@ -248,6 +252,8 @@ De intelligentie-explosie is de tussenstap tussen AGI en controleverlies. Een AG
 - In de AI Impacts Survey schatten onderzoekers 50% kans op een intelligentie-explosie.
 - Benchmarks (Re-Bench, Deep Research) tonen AI boven menselijk niveau op steeds meer taken.
 - AI wordt al gebruikt om AI te verbeteren.
+
+Een kort verhaal over een superintelligentie die zichzelf verbetert: #link("https://www.youtube.com/watch?v=dLRLYPiaAoA")[_27_] (exurb1a). De video van Kurzgesagt uit @sec:inleiding gaat ook over AGI en superintelligentie.
 
 === Waarom controleverlies een probleem is <sec:controleverlies>
 
