@@ -31,7 +31,7 @@ met:
 - $x$ --- positie [m]
 - $t$ --- tijd [s]
 
-Differentiëren versterkt hoogfrequente ruis. Een ruiscomponent met amplitude $n$ en pulsatie $omega_n$ geeft na differentiatie een component met amplitude $n omega_n$. Een snel trillend stoorsignaal met een kleine amplitude in $x$ kan dus een grote fout in $v$ geven. Daarnaast heb je een nauwkeurige tijdsreferentie nodig en krijg je geen snelheid in real time.
+Differentiëren versterkt hoogfrequente ruis. Een ruiscomponent met amplitude $n$ en pulsatie $omega_"ruis"$ geeft na differentiatie een component met amplitude $n omega_"ruis"$. Een snel trillend stoorsignaal met een kleine amplitude in $x$ kan dus een grote fout in $v$ geven. Daarnaast heb je een nauwkeurige tijdsreferentie nodig en krijg je geen snelheid in real time.
 
 == Directe meting <sec:directe-meting>
 
@@ -94,7 +94,7 @@ Bij omgekeerde draairichting draait de fase van de uitgang $180 degree$. Daarom 
 
 === Variabele-reluctantiesensor <sec:vr-sensor>
 
-Een variabele-reluctantiesensor (VR-sensor) is een spoel rond een permanente magneet die een spanning geeft zodra een metalen tand voorbijkomt. Staat de tand dicht bij de sensor, dan is de flux door de spoel maximaal. Draait het tandwiel verder, dan zakt de flux weer. Die tijdsafhankelijke flux induceert een spanning in de spoel.
+Een variabele-reluctantiesensor (VR-sensor) is een spoel rond een permanente magneet die een spanning geeft zodra een metalen tand voorbijkomt. Staat de tand dicht bij de sensor, dan is de flux door de spoel maximaal. Draait het tandwiel verder, dan zakt de flux weer. Die tijdsafhankelijke flux induceert een spanning in de spoel. Je krijgt één golf per tand. Het aantal golven per seconde geeft het toerental.
 
 $ e = -N (d Phi) / (d t) $
 
@@ -103,7 +103,7 @@ met:
 - $N$ --- aantal windingen [-]
 - $Phi$ --- magnetische flux door de spoel [Wb]
 
-Er staat een afgeleide in de formule. Bij stilstand verandert de flux niet en is $e = 0$, ook als er een tand voor de sensor staat. Draait het wiel sneller, dan verandert de flux sneller en stijgt de amplitude. Daarom meet de sensor snelheid, en geen positie.
+Er staat een afgeleide in de formule. Bij stilstand verandert de flux niet en is $e = 0$, ook als er een tand voor de sensor staat. Draait het wiel sneller, dan verandert de flux sneller en stijgt de amplitude. Daarom meet de sensor snelheid.
 
 #figure(
   image("assets/L9-vr.png", width: 11cm),
@@ -115,13 +115,14 @@ Voordelen:
 - passief: geen excitatie nodig
 - goedkoop, behalve de elektronica
 - bruikbaar tot 300 °C
-- zeer robuust
+- bestand tegen vuil en olie
 
 Nadelen:
 - werkt niet bij lage snelheid, want het signaal wordt te klein
-- daardoor niet bruikbaar voor positiebepaling
+- de amplitude hangt van de snelheid af, dus de detectiedrempel moet meebewegen
+- niet bruikbaar voor positiebepaling, want bij stilstand is er geen signaal
 
-Een Hall-sensor (hoofdstuk @ch:hall) meet het veld zelf en werkt wel bij stilstand.
+Een Hall-sensor (hoofdstuk @ch:hall) meet het veld zelf en werkt ook bij stilstand. Daarom gebruikt een ABS-systeem dat tot 0 km/u moet meten een Hall-sensor.
 
 #examenvraag("2017 vraag 4", [Een variabele-reluctantiesensor ...],
   opties: (
@@ -169,7 +170,7 @@ Bij constante snelheid mag $Delta x$ willekeurig zijn. Bij veranderlijke snelhei
 
 Een gyroscoop meet de *absolute hoeksnelheid* van een voorwerp in de ruimte. Hij heeft geen vaste referentie nodig, in tegenstelling tot de relatieve snelheidssensoren hierboven.
 
-Hij meet de rotatie rond de X-as (roll), de Y-as (pitch) en de Z-as (yaw). Vroeger waren gyroscopen enkelassig. Sinds de dual-axis uitvoeringen meet één sensor twee assen. X- en Y-gyroscopen worden vaak gebruikt voor beeldstabilisatie en trillingsmeting. Z-as-gyroscopen zijn minder gebruikelijk omdat het ontwerp complexer en duurder is.
+Het signaal is de hoeksnelheid. De hoek volg je door te integreren, waarbij de drift oploopt. Hij meet de rotatie rond de X-as (roll), de Y-as (pitch) en de Z-as (yaw). Vroeger waren gyroscopen enkelassig. Sinds de dual-axis uitvoeringen meet één sensor twee assen. X- en Y-gyroscopen worden vaak gebruikt voor beeldstabilisatie en trillingsmeting. Z-as-gyroscopen zijn minder gebruikelijk omdat het ontwerp complexer en duurder is.
 
 Een gyroscoop werkt met de *Corioliskracht*: een massa die beweegt in een draaiend frame ondervindt een kracht loodrecht op haar snelheid en op de rotatie-as. In MEMS-technologie, zoals in digitale camera's, wordt dit met een trillende massa gedaan. Hoofdstuk @ch:mems werkt dat uit. De slides tonen twee gyroscopen van 800 tot 1 200 euro en van 5 000 tot 15 000 euro.
 

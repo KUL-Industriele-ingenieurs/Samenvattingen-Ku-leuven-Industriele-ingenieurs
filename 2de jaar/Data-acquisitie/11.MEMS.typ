@@ -50,7 +50,7 @@ Deze uitlezing is dezelfde als bij de differentiële capacitieve sensor (hoofdst
   label: <fig:L11-cap-doorsnede>,
 )
 
-*Voorbeeld ADXL50.* De chip meet $500 times 625$ $mu$m. Hij heeft 42 siliciumvingers van 100 $mu$m lang met een spleet van 2 $mu$m, samen 0,1 pF. De resolutiegrens van de versterker is $20 times 10^(-18)$ pF. Daarmee meet hij een verplaatsing van $20 times 10^(-12)$ m. Het bereik is 50 g tot 500 g, met instelbare filterbandbreedte (100 tot 800 Hz), en hij wordt gebruikt voor crashdetectie (airbags). Een tweede generatie meet twee assen: de massa beweegt in het midden afhankelijk van de versnelling, in twee richtingen.
+*Voorbeeld ADXL50.* De chip meet $500 times 625$ $mu$m. Hij heeft 42 siliciumvingers van 100 $mu$m lang met een spleet van 2 $mu$m, samen 0,1 pF. De resolutiegrens van de versterker is $20 times 10^(-18)$ pF. Daarmee meet hij een verplaatsing van $20 times 10^(-12)$ m. Het bereik is 50 g tot 500 g, met instelbare filterbandbreedte (100 tot 800 Hz), en hij wordt gebruikt voor crashdetectie (airbags). Een tweede generatie meet twee assen. De massa beweegt in het midden, in twee richtingen, afhankelijk van de versnelling.
 
 #figure(
   image("assets/L11-2as.png", width: 6cm),
@@ -69,7 +69,7 @@ Deze uitlezing is dezelfde als bij de differentiële capacitieve sensor (hoofdst
 
 == Piezoresistieve MEMS-accelerometer <sec:mems-piezoresistief>
 
-Een piëzoresistieve MEMS-accelerometer meet de versnelling met een rekstrook op een micro-veerbalk: de balk buigt door de traagheid van de massa. De massa hangt met balken aan een frame. Een piëzoresistief element op de balk verandert zijn weerstand met de rek, zoals een rekstrook (hoofdstuk @ch:rekstroken-1).
+Een piëzoresistieve MEMS-accelerometer meet de versnelling met een rekstrook op een micro-veerbalk. De balk buigt door de traagheid van de massa. De massa hangt met balken aan een frame. Een piëzoresistief element op de balk verandert zijn weerstand met de rek, zoals een rekstrook (hoofdstuk @ch:rekstroken-1).
 
 #figure(
   image("assets/L11-piezoresistief.png", width: 9cm),
@@ -77,9 +77,9 @@ Een piëzoresistieve MEMS-accelerometer meet de versnelling met een rekstrook op
   label: <fig:L11-piezoresistief>,
 )
 
-Er zijn vier piëzoresistieve elementen. In een Wheatstonebrug mogen ze niet allemaal dezelfde weerstandsverandering hebben, want dan valt de bruguitgang weg. Daarom zijn twee elementen van het n-type en twee van het p-type. Hun weerstand verandert dan tegengesteld.
+Er zijn vier piëzoresistieve elementen. Als ze allemaal dezelfde weerstandsverandering hebben, geeft een Wheatstonebrug geen uitgangsspanning. Daarom zijn twee elementen van het n-type en twee van het p-type. Hun weerstand verandert dan tegengesteld.
 
-*Vibratiesensor.* Een vibratiesensor meet de overlap tussen vingers. Door de voorgespannen kam (pre-stress comb drive) te verplaatsen, verander je de gevoeligheid elektrisch, via software. Een hogere gevoeligheid geeft een kleiner werkgebied.
+*Vibratiesensor.* Een vibratiesensor meet het overlappende oppervlak van de vingers. Door de voorgespannen kam (pre-stress comb drive) te verplaatsen, verander je de gevoeligheid elektrisch, via software. Een hogere gevoeligheid geeft een kleiner werkgebied.
 
 #figure(
   image("assets/L11-vibratie.png", width: 5cm),
@@ -144,7 +144,7 @@ Bij het type met een *drive frame* trilt het frame in één richting. De sensing
 
 Een MEMS-druksensor meet de druk met een dun siliciummembraan boven een referentieholte. De druk buigt het membraan door. Twee uitlezingen zijn mogelijk.
 
-- *Capacitief*: het membraan en een vaste elektrode vormen een condensator. Duwt de druk het membraan naar binnen, dan verandert de capaciteit. Dit is een absolute meting. Ze hangt af van de temperatuur en andere factoren en heeft geen referentie.
+- *Capacitief*: het membraan en een vaste elektrode vormen een condensator. Duwt de druk het membraan naar binnen, dan verandert de capaciteit. Dit is een absolute meting. Die hangt af van de temperatuur en andere factoren en heeft geen referentie, dus een relatieve meting is beter.
 - *Piëzoresistief*: weerstanden op het membraan vormen een brug. Buigt het membraan, dan worden $R_1$ en $R_2$ groter en $R_3$ en $R_4$ kleiner. Zo krijg je een brugspanning die de druk meet. Met een referentiedruk achter het membraan is dit een relatieve meting.
 
 #grid(

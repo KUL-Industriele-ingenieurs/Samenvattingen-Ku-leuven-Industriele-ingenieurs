@@ -23,7 +23,7 @@ met:
 - $x$ --- positie [m]
 - $t$ --- tijd [s]
 
-Het ruisprobleem uit hoofdstuk @ch:snelheid wordt hier erger. Een ruiscomponent met pulsatie $omega_n$ wordt bij elke differentiatie met een factor $omega_n$ vergroot. Bij dubbele differentiatie is dat $omega_n^2$. Dubbel differentiëren lukt dus zelden nauwkeurig, behalve bij zeer gladde signalen. Eén keer differentiëren van een snelheidssignaal kan soms wel.
+Het ruisprobleem uit hoofdstuk @ch:snelheid wordt hier erger. Een ruiscomponent met pulsatie $omega_"ruis"$ wordt bij elke differentiatie met een factor $omega_"ruis"$ vergroot. Bij dubbele differentiatie is dat $omega_"ruis"^2$. Dubbel differentiëren lukt dus zelden nauwkeurig, behalve bij zeer gladde signalen. Eén keer differentiëren van een snelheidssignaal kan soms wel.
 
 #figure(
   image("assets/L10-ruis.png", width: 12cm),
@@ -112,9 +112,9 @@ met:
   label: <fig:L10-bode>,
 )
 
-Bij $omega << omega_n$ is de wortel ongeveer $1$. Dan is $x_0 approx dot.double(x)_i \/ omega_n^2$. De uitwijking is evenredig met de versnelling. Zo gebruik je het systeem als *accelerometer*. De gevoeligheid is $1 \/ omega_n^2$. Een lage $omega_n$ geeft dus een grote uitwijking per eenheid versnelling, maar een klein werkingsgebied.
+Bij $omega << omega_n$ is de wortel ongeveer $1$. Dan is $x_0 approx dot.double(x)_i \/ omega_n^2$. De uitwijking is evenredig met de versnelling. Zo gebruik je het systeem als *accelerometer*. De gevoeligheid is $1 \/ omega_n^2$. Een lage $omega_n$ geeft dus een grote uitwijking per eenheid versnelling, maar een klein werkingsgebied. Als vuistregel is de respons vlak tot $f_n \/ 5$.
 
-Bij $omega = omega_n$ ontstaat resonantie. De amplitude is dan afhankelijk van de demping maximaal. Een hogere $zeta$ verlaagt de piek.
+Bij $omega = omega_n$ ontstaat resonantie. De amplitude is dan maximaal en hangt af van de demping. Een hogere $zeta$ verlaagt de piek.
 
 Bij $omega >> omega_n$ blijft de massa in rust ten opzichte van de ruimte. De behuizing beweegt, dus $x_0 approx x_i$. De opnemer meet de verplaatsing zelf, en het systeem is een *seismometer*.
 
@@ -142,7 +142,7 @@ De relatieve verplaatsing $x_0$ kan gemeten worden met een potentiometer, een ni
   label: <fig:L10-rekstrook>,
 )
 
-*Capacitieve accelerometer.* De sensor bestaat uit lagen: elektrode, afstandhouder, seismisch element, afstandhouder en elektrode. De massa verschuift ten opzichte van de behuizing. De spiraal werkt als veer. De gaten in de massa dempen, want de lucht in de condensator moet erdoor. Meer gaatjes geven minder demping.
+*Capacitieve accelerometer.* De sensor bestaat uit lagen: elektrode, afstandhouder, seismisch element, afstandhouder en elektrode. De massa verschuift ten opzichte van de behuizing. De spiraal werkt als veer. De gaten in de massa dempen, want de lucht in de condensator moet erdoor. Meer gaatjes geven minder demping. De uitwijking is evenredig met de versnelling, dus de capaciteit meet versnelling en geen snelheid. Hoofdstuk @ch:mems beschrijft de uitvoering met twee capaciteiten $C_1$ en $C_2$.
 
 #figure(
   image("assets/L10-capacitief.png", width: 12cm),
@@ -152,7 +152,7 @@ De relatieve verplaatsing $x_0$ kan gemeten worden met een potentiometer, een ni
 
 === Piëzo-elektrische accelerometer <sec:piezo-accelerometer>
 
-Een piëzo-elektrische accelerometer zet de kracht van een seismische massa op een kristal om in elektrische lading. Hij wordt vooral gebruikt voor trillingen en schokken. Een constante versnelling kan hij niet meten.
+Een piëzo-elektrische accelerometer zet de kracht van een seismische massa op een kristal om in elektrische lading. Hij is een passieve sensor, want het kristal wekt zelf zijn lading op. Hij wordt vooral gebruikt voor trillingen en schokken. Een constante versnelling kan hij niet meten.
 
 #frm(
   "Lading van een piëzo-accelerometer",
@@ -166,7 +166,7 @@ met:
 - $M$ --- seismische massa [kg]
 - $a$ --- versnelling [m/s$""^2$]
 
-De sensor geeft een grote uitgangsspanning en heeft een hoge eigenfrequentie. Er is geen demping, want de natuurlijke dempingsfactor is al zeer klein, ongeveer $0,01$. Dat is aanvaardbaar bij een hoge eigenfrequentie.
+De sensor geeft een grote uitgangsspanning en heeft een hoge eigenfrequentie. Er is geen aparte demping. De natuurlijke dempingsfactor is zeer klein, ongeveer 0,01. Dat is aanvaardbaar omdat de eigenfrequentie hoog is.
 
 #frm(
   "Eigenfrequentie van de piëzo-accelerometer",
@@ -192,7 +192,7 @@ met:
 - $R$ --- ingangsweerstand van de versterker [Ω]
 - $C_T$ --- totale capaciteit van kristal, kabel en versterker [F]
 
-Is de periode van het signaal veel korter dan $tau$, dan bouwt het kristal de lading sneller op dan ze wegvloeit. Je meet dan de volle lading. Bij een lage frequentie is de lading al grotendeels weggelekt. Bij een constante versnelling is de frequentie nul en lekt alles weg.
+Is de periode van het signaal veel korter dan $tau$, dan bouwt het kristal de lading sneller op dan ze wegvloeit. Je meet dan de volle lading. Bij een lage frequentie is de lading al grotendeels weggelekt. Bij een constante versnelling is de frequentie nul en lekt alles weg. Een shuntcondensator vergroot $C_T$ en verlaagt $f_0$, maar verlaagt ook de gevoeligheid. Een ladingsversterker verlaagt $f_0$ nog verder. Echt $0$ Hz haalt geen van beide (hoofdstuk @ch:kracht).
 
 Het bruikbare gebied ligt dus tussen $f_0$ (lekken) en $f_n$ (mechanische resonantie). De nauwkeurigheid is $plus.minus 5 %$ ruim onder $f_n$. Onder 1 Hz veroorzaken temperatuurtransiënten bovendien fouten, omdat ze een lading geven die je niet van een echt trillingssignaal kunt onderscheiden.
 

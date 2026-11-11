@@ -36,7 +36,7 @@ Een incrementele encoder telt pulsen van een schijf met spleten om de draaihoek 
 
 Met één lichtsensor kun je de draairichting niet bepalen. Daarom heeft de encoder een tweede sensor die een kwart periode verschoven staat, dus $90 degree$ in fase. De twee uitgangen heten *kanaal A* en *kanaal B*, en ze staan in *kwadratuur*. Welk kanaal eerst schakelt, geeft de richting. Bij een stijgende flank van A is B in de ene richting laag en in de andere hoog.
 
-Een derde uitgang, de *indexpuls Z*, geeft één puls per omwenteling. Z is een referentiepunt waarmee je de teller kunt resetten. Een positie na het inschakelen volgt er niet uit.
+Een derde uitgang, de *indexpuls Z*, geeft één puls per omwenteling. Z is een referentiepunt waarmee je de teller kunt resetten. Z geeft zelf geen absolute positie na het inschakelen.
 
 De *resolutie* hangt af van het aantal spleten en van wat je telt. Bij $N$ spleten per omwenteling:
 
@@ -66,7 +66,7 @@ Nadelen:
     [kan je de richting bepalen door mode 3 te gebruiken],
   ),
   juist: "C",
-)[A en B liggen $90 degree$ uit fase, en de volgorde waarin ze schakelen geeft de richting. Z is de indexpuls, één per omwenteling: dat geeft een referentie maar na het inschakelen nog geen absolute positie. Daarom is A fout. B is fout: synchrone detectie hoort bij AC-sensoren zoals de LVDT. D is fout: er bestaat geen mode 3, alleen mode 1, 2 en 4.]
+)[A en B liggen $90 degree$ uit fase, en de volgorde waarin ze schakelen geeft de richting. Z is de indexpuls, één per omwenteling. Dat geeft een referentie, maar na het inschakelen nog geen absolute positie. Daarom is A fout. B is fout: synchrone detectie hoort bij AC-sensoren zoals de LVDT. D is fout: er bestaat geen mode 3, alleen mode 1, 2 en 4.]
 
 == Absolute encoder <sec:absolute-encoder>
 
@@ -78,7 +78,7 @@ Een absolute encoder geeft bij elke hoek een unieke code, zodat de positie direc
   label: <fig:LX-absoluut>,
 )
 
-De code is een *Gray-code*, geen gewoon binaire code. Bij gewoon binair veranderen er op sommige overgangen meerdere bits tegelijk. Van 3 naar 4 wordt het $011 arrow 100$. De detectoren schakelen nooit exact gelijktijdig, dus je leest even een willekeurige tussenwaarde. In een Gray-code verandert er per stap precies één bit. De grootst mogelijke fout is dan één positie.
+De code is een *Gray-code*. Bij gewoon binair veranderen er op sommige overgangen meerdere bits tegelijk. Van 3 naar 4 wordt het $011 arrow 100$. De detectoren schakelen nooit exact gelijktijdig, dus je leest even een willekeurige tussenwaarde. In een Gray-code verandert er per stap precies één bit. De grootst mogelijke fout is dan één positie. Een absolute encoder kent zijn positie meteen. Kwadratuur, richtingsdetectie en de modes 1, 2 en 4 bestaan daarom alleen bij de incrementele encoder.
 
 #table(
   columns: (auto, auto, auto),
