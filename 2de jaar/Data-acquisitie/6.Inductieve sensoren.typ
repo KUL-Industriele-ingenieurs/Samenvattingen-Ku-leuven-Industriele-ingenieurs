@@ -137,6 +137,8 @@ Meet je alleen de *amplitude* van de uitgang, dan krijg je een V-vorm: even groo
   ),
 )
 
+#examenvraag("2017 vraag 16", [LVDT: afbeelding met de 3 spoelen en een punt om de fase aan te duiden. Wat zegt de fase?])[De secundaire spoel waarnaar de kern beweegt krijgt de sterkste koppeling, en de fase van $V_"out"$ volgt die spoel. Beweegt de kern naar de andere kant, dan groeit de amplitude even sterk maar draait de fase $180 degree$ (onderste signaal in @fig:L6-lvdt-fase-signalen). Alleen dat faseteken zegt aan welke kant van het midden de kern staat.]
+
 #concept(title: "Synchrone (fasegevoelige) detectie")[
   De *phase sensitive detector* (PSD) vermenigvuldigt het uitgangssignaal van de sensor met het excitatiesignaal en filtert het product laagdoorlaat. Wat overblijft is evenredig met de amplitude *maal* de cosinus van het faseverschil. Zo krijg je een uitgang die *positief of negatief* kan zijn.
 ]
@@ -144,6 +146,10 @@ Meet je alleen de *amplitude* van de uitgang, dan krijg je een V-vorm: even groo
 Met een goniometrische formule zie je waarom:
 $ sin(omega t) dot A sin(omega t + phi) = A / 2 [cos phi - cos(2 omega t + phi)] $
 Het laagdoorlaatfilter haalt de term op $2 omega$ weg. Er blijft $A \/ 2 dot cos phi$: $+A\/2$ bij $phi = 0 degree$, $-A\/2$ bij $phi = 180 degree$. Een gewone gelijkrichter zou net dat teken weggooien.
+
+#examenvraag("2016 (januari) vraag 1", [Wat is synchrone detectie?])[*Fasegevoelige demodulatie.* Je vermenigvuldigt het uitgangssignaal van de sensor met het excitatiesignaal en filtert het product laagdoorlaat:
+  $ sin(omega t) dot A sin(omega t + phi) = A / 2 [cos phi - cos(2 omega t + phi)] $
+  De term op $2 omega$ filtert het laagdoorlaatfilter weg. Er blijft $A \/ 2 dot cos phi$: de amplitude maal de cosinus van het faseverschil. Staat de sensor in fase ($phi = 0 degree$), dan is dat $+A\/2$. Draait de kern naar de andere kant ($phi = 180 degree$), dan is het $-A\/2$. Een signaal dat $90 degree$ uit fase ligt, zoals de kwadratuurspanning door parasitaire capaciteiten, geeft $cos 90 degree = 0$ en valt weg. Zo krijg je in één bewerking het teken en de onderdrukking van de kwadratuurfout.]
 
 #examenvraag("2017 vraag 18", [Synchrone detectie ...],
   opties: (
@@ -164,6 +170,16 @@ Het laagdoorlaatfilter haalt de term op $2 omega$ weg. Er blijft $A \/ 2 dot cos
   ),
   juist: "A",
 )[Het vermenigvuldigen met de excitatie werkt als een fasevergelijking. Een (dubbelzijdige) gelijkrichter (C) verliest net het teken, en dus de richting.]
+
+#examenvraag("2015 open vraag V1 (8 punten)", [Schakeling gegeven. Welke schakeling hoort bij het rode vraagteken? Geef de gevoeligheid. Wat zijn de voor- en nadelen?])[
+  - *Schakeling:* bij een AC-gevoede sensor (LVDT, inductosyn, capacitieve sensor) staat daar een *synchrone (fasegevoelige) detector*. Bij een piëzo-elektrische sensor staat daar een *ladingsversterker* (@sec:piezo-circuit).
+  - *Gevoeligheid synchrone detector:* de uitgang is $A \/ 2 dot cos phi$, dus evenredig met de amplitude $A$ van de sensor (bij een LVDT evenredig met de verplaatsing) en met het teken van de fase.
+  - *Gevoeligheid ladingsversterker:* $v_"out" = - q \/ C_f$. Met $q = K x$ is de gevoeligheid $K \/ C_f$, onafhankelijk van de kabelcapaciteit.
+  - *Voordelen detector:* hij geeft teken en dus richting, en onderdrukt de kwadratuurfout. Een gewone gelijkrichter verliest dat teken.
+  - *Nadelen detector:* AC-excitatie en een referentiesignaal in fase zijn nodig, en dus extra circuits.
+  - *Voordeel ladingsversterker:* kabel en sensorcapaciteit ($C_p$, $C_c$) beïnvloeden de uitgang niet.
+  - *Nadeel ladingsversterker:* $R_f$ blijft nodig om de ingang te definiëren, dus er blijft een hoogdoorlaat met ondergrens $f_0 = 1 \/ (2 pi R_f C_f)$. Een echt statische meting is onmogelijk.
+]
 
 === Detectiecircuit en ratiometrische meting <sec:lvdt-detectie>
 

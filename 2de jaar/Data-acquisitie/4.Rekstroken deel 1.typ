@@ -77,7 +77,7 @@ Het volume kan bij uitrekken niet afnemen, dus $0 <= nu <= 0.5$. Een *vloeistof*
   juist: "C",
 )[Een vloeistof heeft $nu = 0.5$ en geen piëzoresistief effect ($d rho = 0$). Dan is $"GF" = 1 + 2 dot 0.5 + 0 = 2$. Een metaalfolie komt ook op ongeveer $2$ uit, maar via een andere weg: $nu approx 0.3$ geeft $1.6$, en het piëzoresistieve effect levert de rest.]
 
-#examenvraag("juni 2016 vraag 2", [De gage factor ...],
+#examenvraag("juni 2016 vraag 2, 2016 (januari) vraag 17", [De gage factor ...],
   opties: (
     [neemt evenredig toe met de constante van Poisson],
     [neemt evenredig af met de constante van Poisson],

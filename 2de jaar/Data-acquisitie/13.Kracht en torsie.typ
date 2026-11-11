@@ -238,7 +238,7 @@ Een force sensitive resistor (FSR) is een polymeerlaag waarvan de weerstand daal
 
 Kenmerken uit de slides: groot dynamisch bereik van de weerstand, lage kostprijs en lage nauwkeurigheid ($10 %$). De weerstand verzadigt bij grote kracht.
 
-#examenvraag("juni 2016 vraag 8", [FSR (figuur 3-15, FSR 402) ...],
+#examenvraag("juni 2016 vraag 8, 2016 (januari) vraag 7", [FSR (figuur 3-15, FSR 402) ...],
   opties: (
     [de uitgangsspanning is lineair met de kracht],
     [de weerstand stijgt met toenemende kracht],

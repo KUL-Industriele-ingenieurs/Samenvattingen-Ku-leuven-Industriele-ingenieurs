@@ -161,6 +161,11 @@ De conversietijd is de tijd die de ADC nodig heeft voor één meting. Bij $f_"me
   Daarom staat er in een brugschakeling een versterker voor de ADC (@ch:signaalconditionering).
 ]
 
+#examenvraag("oefenvraag E9", [Je brugsignaal is 10 mV vol bereik en je ADC heeft een bereik van 10 V. Hoeveel bits heb je nodig voor een resolutie van 1 $mu$V?],
+  opties: ([12], [16], [24, of eerst versterken], [10]),
+  juist: "C",
+)[$10 "V" \/ 1 mu"V" = 10^7$ stappen, dus $log_2(10^7) approx 23.3$: 24 bit. De praktische oplossing is een instrumentatieversterker: versterk de $10 "mV"$ eerst $1000 times$ tot $10 "V"$, dan volstaat 14 bit. Daarom staat er in elke brugschakeling een versterker vóór de ADC.]
+
 == Types ADC <sec:adc-types>
 
 === Staircase ramp (niet-integrerend) <sec:adc-staircase>

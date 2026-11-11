@@ -143,7 +143,7 @@ Zonder bronspanning of -stroom geeft een actieve sensor dus niets: denk aan een 
 Uit de tabel volgt het onderscheid meteen: een sensor waarvan de *weerstand* of *capaciteit* verandert, is altijd actief. Je moet er een stroom door sturen of een spanning over zetten om die verandering te zien. Een nadeel van actieve sensoren: een fout van 1 % op de excitatie zit ook als 1 % op de uitgang. De Wheatstonebrug (@ch:rekstroken-2) vangt dat op.
 
 #examenvraag(
-  "2019 vraag 5, ook 2016 en 2017",
+  "2019 vraag 5, 2017 vraag 6, 2016 (januari) vraag 6, 2016 (17/06) vraag 14",
   [Een passieve sensor ...],
   opties: (
     [heeft geen excitatie nodig],

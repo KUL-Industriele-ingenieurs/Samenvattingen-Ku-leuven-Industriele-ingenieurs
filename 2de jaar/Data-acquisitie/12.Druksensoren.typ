@@ -234,3 +234,5 @@ Het voorbeeld in de slides (OPP-B) kost 100 tot 200 euro. Het heeft geen drift o
   ),
   juist: "D",
 )[Een led wordt met de jaren zwakker. De referentiefotodiode meet hoeveel licht de led uitstuurt. Door het meetsignaal erdoor te delen valt de veroudering weg (een ratiometrische meting). A en B zijn fout: voor kleine doorbuiging is de uitgang lineair in de druk. C is fout: de referentiediode dient om te delen, niet om te demoduleren.]
+
+#examenvraag("2019 vraag 6", [Optical pressure sensor])[De druk vervormt een membraan en dat verandert de weglengte van een lichtbundel of van een Fabry-Pérot-holte. Voordelen: immuun voor EMI, bruikbaar in explosiegevaarlijke omgeving, en de uitleeselektronica mag kilometers verderop staan.]

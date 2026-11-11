@@ -293,7 +293,7 @@ met:
   Neem $g = 10$: dan komen de getallen rond uit (met $9.81$ vind je $24.5 thin mu"V"$, binnen de foutenmarge van $10 %$). De staaflengte, $nu$ en $R$ zijn afleiders.
 ]
 
-#examenvraag("juni 2016 vraag 18", [Load cell op buiging: de kracht grijpt aan op het uiteinde van een staaf van $15 "cm"$, op $L = 10 "cm"$ van de rekstrookjes. Hoogte en breedte zijn $1 "cm"$, $Z = b h^2 \/ 6$, $E = 200 "GPa"$, $nu = 0.3$, $"GF" = 2$, vier identieke strookjes (2 boven, 2 onder), $V_"ex" = 10 "V"$. Wat is de gevoeligheid?],
+#examenvraag("juni 2016 vraag 18, 2016 (januari) vraag 16", [Load cell op buiging: de kracht grijpt aan op het uiteinde van een staaf van $15 "cm"$, op $L = 10 "cm"$ van de rekstrookjes. Hoogte en breedte zijn $1 "cm"$, $Z = b h^2 \/ 6$, $E = 200 "GPa"$, $nu = 0.3$, $"GF" = 2$, vier identieke strookjes (2 boven, 2 onder), $V_"ex" = 10 "V"$. Wat is de gevoeligheid?],
   opties: ([$50$ -- $70 thin mu"V/N"$], [$20$ -- $49 thin mu"V/N"$], [$10$ -- $19 thin mu"V/N"$], [$5$ -- $9 thin mu"V/N"$]),
   juist: "A",
 )[Twee boven (trek) en twee onder (druk): een volle brug.
@@ -301,6 +301,32 @@ met:
   $ epsilon = (F dot 0.10) / (3.33 dot 10^4) = 3 dot 10^(-6) F quad quad (Delta R) / R = 2 epsilon = 6 dot 10^(-6) F $
   $ S = V_o / F = 10 dot 6 dot 10^(-6) = 60 thin mu"V/N" $
   De $15 "cm"$ en $nu = 0.3$ zijn afleiders.]
+
+#examenvraag("2017 vraag 12", [Rekenvraag: een balk op buiging met 4 identieke rekstrookjes. Plak en schakel ze voor maximale nauwkeurigheid en bepaal de gevoeligheid.])[
+  - *Plaatsing:* 2 strookjes bovenaan (trek, $+Delta R$) en 2 onderaan (druk, $-Delta R$), alle vier op dezelfde afstand $L$ van het aangrijpingspunt. Zo zijn alle vier actief. Staan ze alle vier bovenaan, dan meten ze hetzelfde teken en valt het verschil in de brug weg.
+  - *Schakeling:* gelijke tekens in overstaande armen, dus een volle brug:
+  $ V_o / V_"ex" = (R + Delta R) / (2 R) - (R - Delta R) / (2 R) = (Delta R) / R $
+  Een $+Delta R$ en een $-Delta R$ boven elkaar in dezelfde tak heffen elkaar op.
+  - *Waarom maximaal nauwkeurig:* het signaal is 4 keer groter dan bij een kwartbrug. Beide noemers zijn exact $2 R$, dus de brug is lineair zonder verwaarlozing. Een temperatuurstijging geeft alle vier dezelfde $delta$ en valt weg.
+  - *Gevoeligheid:* met $M = F L$ en $Z = b h^2 \/ 6$ is
+  $ epsilon = sigma / E = M / (Z E) = (6 F L) / (E b h^2) quad quad (Delta R) / R = "GF" dot epsilon $
+  $ S = V_o / F = V_"ex" dot "GF" dot (6 L) / (E b h^2) $
+  $L$ is de afstand tot de strookjes, niet de staaflengte, en $nu$ is niet nodig. Met getallen geeft dit $60 thin mu"V/N"$ (zie juni 2016 vraag 18).
+]
+
+#examenvraag("2017 vraag 14", [Beam displacement transducer: rekstrookjes in compressie en trek. Bepaal de gevoeligheid.])[
+  - *Opstelling:* 1 strookje bovenaan in trek ($R + Delta R$) en 1 onderaan in druk ($R - Delta R$), op dezelfde afstand $L$. Dat is een halve brug. De twee andere armen zijn vaste weerstanden $R$.
+  - *Van kracht naar rek:* met $M = F L$, $I = b h^3 \/ 12$ en $y = h \/ 2$ (de strookjes zitten aan het oppervlak):
+  $ sigma = (M y) / I = (6 F L) / (b h^2) quad quad epsilon = sigma / E quad quad (Delta R) / R = "GF" dot epsilon $
+  - *Halve brug:* de twee strookjes zitten in dezelfde tak. Daar is $R_(S G 1) + R_(S G 2) = (R - Delta R) + (R + Delta R) = 2 R$ onafhankelijk van de kracht, dus de brug is lineair. De andere tak staat altijd op $V_"ex" \/ 2$:
+  $ V_o / V_"ex" = (R + Delta R) / (2 R) - R / (2 R) = 1 / 2 dot (Delta R) / R $
+  - *Gevoeligheid:*
+  $ S = V_o / F = V_"ex" dot "GF" dot (3 L) / (E b h^2) $
+  Dit is de helft van de volle brug (2017 vraag 12): 2 actieve strookjes in plaats van 4. Temperatuur valt weg, want beide strookjes zitten in dezelfde tak.
+  - *Met getallen:* $b = 1 "cm"$, $h = 1 "mm"$, $L = 5 "cm"$, $E = 200 "GPa"$, $"GF" = 2$, $V_"ex" = 10 "V"$. Dan is $E b h^2 = 200 dot 10^9 dot 0.01 dot (10^(-3))^2 = 2000$ en
+  $ S = 10 dot 2 dot (3 dot 0.05) / 2000 = 1.5 dot 10^(-3) "V/N" = bold(1.5 "mV/N") $
+  - *Maximale kracht:* de folierekstrook blijft bruikbaar tot ongeveer $epsilon_"max" = 1000 thin mu epsilon$. Dan is $F_"max" = (epsilon_"max" E b h^2) \/ (6 L) = (10^(-3) dot 2000) \/ (6 dot 0.05) = 6.7 "N"$. Een dunnere balk is gevoeliger en zwakker, want $h$ staat kwadratisch in beide formules.
+]
 
 #figure(
   image("assets/L5-examen-balk.png", width: 6cm),
