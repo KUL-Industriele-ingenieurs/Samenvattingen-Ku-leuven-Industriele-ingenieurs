@@ -33,7 +33,7 @@ De slides geven drukken ook in psi: $1 "psi" = 0.0689475729 "bar"$.
 
 == Elektrische uitlezing <sec:druk-elektrisch>
 
-Vier principes zetten de doorbuiging van een membraan om in een elektrisch signaal. Het onderscheid dat telt voor het examen is of ze een statische druk kunnen meten.
+Vier principes zetten de doorbuiging van een membraan om in een elektrisch signaal. Ze verschillen in of ze een statische druk kunnen meten.
 
 #table(
   columns: (auto, 1fr, 1.3fr),
@@ -47,7 +47,7 @@ Vier principes zetten de doorbuiging van een membraan om in een elektrisch signa
 
 === Piëzo-elektrisch <sec:druk-piezo>
 
-Een piëzo-elektrische druksensor leest de kracht van het drukmembraan uit met een kristal. De druk duwt het membraan ("pressure sensing diaphragm") tegen het kristal op een basis. Het kristal geeft een lading af. Het werkt als een ladingsbron met een eigen capaciteit (@sec:piezo-effect en @sec:piezo-circuit).
+Een piëzo-elektrische druksensor leest de kracht van het drukmembraan uit met een kristal. De druk duwt het membraan ("pressure sensing diaphragm") tegen het kristal op een basis. Het kristal geeft een lading af en werkt als een ladingsbron met een eigen capaciteit (@sec:piezo-effect en @sec:piezo-circuit). Het wekt zijn signaal zelf op en heeft geen excitatie nodig, dus de sensor is *passief*.
 
 #grid(
   columns: (1fr, 1fr),
@@ -59,13 +59,15 @@ Een piëzo-elektrische druksensor leest de kracht van het drukmembraan uit met e
     label: <fig:L12-piezo>,
   ),
   [
-    Omdat het kristal geen statische lading vasthoudt, meet deze sensor *dynamische* druk. Een voordeel is de hoge temperatuur: het voorbeeld van de slides (0 tot 50 bar) werkt van 0 tot $700 degree"C"$ en kost 200 tot 400 euro (slide 5).
+    De lading lekt weg via de ingangsweerstand van de versterker (hoogdoorlaat met ondergrens $f_0 = 1 \/ (2 pi R C_T)$). Een constante druk geeft dus na korte tijd geen signaal meer en de sensor meet alleen *dynamische* druk, zoals explosies, schokgolven en snelle drukveranderingen.
+
+    Voordelen zijn hoge druk en hoge temperatuur: het voorbeeld van de slides (0 tot 50 bar) werkt van 0 tot $700 degree"C"$ en kost 200 tot 400 euro (slide 5). Nadelen zijn de versterker voor het ladingssignaal en de gevoeligheid voor schokken en trillingen.
   ],
 )
 
 === Capacitief <sec:druk-capacitief>
 
-Een capacitieve druksensor buigt met de druk een membraan naar een vaste plaat. De afstand tussen de platen daalt, dus de capaciteit stijgt (@sec:cap-enkelvoudig). De bouw bestaat uit een geleidend membraan boven een keramisch of glazen substraat met een metaallaag.
+Een capacitieve druksensor buigt met de druk een membraan naar een vaste plaat. De afstand tussen de platen daalt, dus de capaciteit stijgt (@sec:cap-enkelvoudig). Het membraan is geleidend en ligt boven een keramisch of glazen substraat met een metaallaag. Het drukbereik is breed, van hoge druk tot vacuüm. Een nadeel is de sterke temperatuurafhankelijkheid.
 
 #figure(
   image("assets/L12-cap-opbouw.png", width: 100%),
@@ -73,7 +75,7 @@ Een capacitieve druksensor buigt met de druk een membraan naar een vaste plaat. 
   label: <fig:L12-cap-opbouw>,
 )
 
-Een uitvoering met twee condensatoren $C_1$ en $C_2$ rond het membraan werkt als een *differentiële condensator*. Die lees je uit zoals in @sec:cap-diff-brug. Drukken $P_1$ en $P_2$ staan op beide kanten van het membraan, dus je meet het verschil.
+Een uitvoering met twee condensatoren $C_1$ en $C_2$ rond het membraan werkt als een *differentiële condensator*. Die lees je uit zoals in @sec:cap-diff-brug. De drukken $P_1$ en $P_2$ staan op beide kanten van het membraan, dus je meet het verschil. De uitvoering met siliconenolie en een afscheidend membraan voert de druk naar het meetmembraan en vermindert storende effecten.
 
 #figure(
   image("assets/L12-cap-keramiek.png", width: 60%),
@@ -85,7 +87,7 @@ Het voorbeeld in de slides (PT500E, 0 tot 400 bar) kost 100 tot 200 euro en is g
 
 === Membraan met rekstroken <sec:druk-membraan>
 
-Een membraan met rekstroken meet druk via de rek die de doorbuiging in het membraan geeft. De rekstroken (@ch:rekstroken-1) liggen in een volle brug.
+Een membraan met rekstroken meet druk via de rek die de doorbuiging in het membraan geeft. De rekstroken (@ch:rekstroken-1) liggen in een volle brug. Ze staan waar de spanning maximaal is, aan de rand of in het midden.
 
 #figure(
   image("assets/L12-membraan.png", width: 7cm),
@@ -106,10 +108,11 @@ met:
 - $E$ --- elasticiteitsmodulus van het membraan [Pa]
 - $t$ --- dikte van het membraan [m]
 - $R$ --- straal van het membraan [m]
+- $R$ --- straal van het membraan [m]
 - $nu$ --- constante van Poisson [--]
 - $y_c$ --- doorbuiging in het midden [m]
 
-De slides noemen de voorwaarde voor lineariteit als een kleine verhouding $y_c \/ d$, met $d$ de diameter (slide 19 en de examenvraag hieronder).
+Het verband tussen $P$ en $y_c$ is lineair voor kleine doorbuiging. Bij grote doorbuiging werkt het membraan als een gespannen vlies en komt de kubieke term erbij. De slides drukken de grens uit als een kleine verhouding $y_c \/ d$, met $d$ de diameter van het membraan en niet de dikte (slide 19 en de tweede examenvraag hieronder).
 
 De spanning in het membraan hangt af van de afstand $r$ tot het midden. Er zijn een radiale en een tangentiële component:
 
@@ -126,13 +129,18 @@ met:
 
 Vul $r = 0$ in: $S_r$ en $S_t$ zijn gelijk en positief (trek, "convex" in de figuur). Vul $r = R$ in: $S_r = -3 P R^2 \/ (4 t^2)$ en $S_t = -3 nu P R^2 \/ (4 t^2)$. Dat is druk ("concave"), en radiaal een factor $1 \/ nu$ groter. Daarom staan strookjes 1 en 3 *radiaal aan de rand* (compressie, $-Delta R$) en 2 en 4 *tangentieel in het midden* (trek, $+Delta R$). Zo zitten $+Delta R$ en $-Delta R$ op één membraan en voeden ze een volle brug.
 
-Een rekstrookrozet met vier strookjes (I tot IV in de figuur) geeft de uitgangsspanning $e_0$ bij excitatie $E_("ex")$:
+Een rekstrookrozet zet de strookjes samen op één drager. De slides geven de uitgangsspanning $e_0$ bij excitatie $E_("ex")$:
 
 #frm(
   "Uitgang van een rozet-druksensor",
   $e_0 / E_("ex") = 820 (P R^2 (1 - nu^2)) / (E t^2) quad ["mV/V"]$,
-  [De constante $820$ geeft de leverancier op voor deze rozet.],
+  [De constante $820$ hoort bij de rozet uit de slides.],
 )
+
+met:
+- $e_0$ --- uitgangsspanning van de brug [mV]
+- $E_("ex")$ --- excitatiespanning [V]
+- $P$, $R$, $nu$, $E$, $t$ --- zoals hierboven
 
 #examenvraag("2017 vraag 13, 2016 (januari) vraag 8, juni 2016 vraag 9", [Bij druksensoren met een vastgeklemd membraan ...],
   opties: (
@@ -142,7 +150,7 @@ Een rekstrookrozet met vier strookjes (I tot IV in de figuur) geeft de uitgangss
     [is de verplaatsing evenredig met de druk, enkel voor kleine verplaatsing/diameter],
   ),
   juist: "B",
-)[Aan de rand domineert de radiale spanning, in het midden is ze gelijk aan de tangentiële. Zo krijg je $+Delta R$ en $-Delta R$ op één membraan. A draait de plaatsing om. C is fout: de relatie is lineair in $y_c$, niet wortelvormig. D is een eigenschap van de druk--verplaatsingsrelatie (zie hieronder), maar de vraag gaat over de plaatsing van de strookjes.]
+)[Aan de rand is de radiale spanning het grootst en negatief, in het midden is ze gelijk aan de tangentiële en positief. Zo krijg je $+Delta R$ en $-Delta R$ op één membraan. A draait de plaatsing om. C is fout, want het verband is lineair in $y_c$ en niet wortelvormig. D beschrijft de druk--verplaatsingsrelatie (zie de volgende vraag), maar de vraag gaat over de plaatsing van de strookjes.]
 
 #examenvraag("25-26 vraag 15", [Een druksensor op basis van de verplaatsing van het midden van een ingeklemd membraan ...],
   opties: (
@@ -152,7 +160,7 @@ Een rekstrookrozet met vier strookjes (I tot IV in de figuur) geeft de uitgangss
     [heeft een verplaatsing evenredig met de druk, enkel voor kleine verplaatsing\/*diameter*-verhoudingen],
   ),
   juist: "D",
-)[In de formule voor $P$ staat naast de term in $y_c$ een kubieke term. Daardoor is het verband niet altijd lineair (C fout) en zeker niet wortelvormig (A fout). B en D verschillen in één woord. De cursus formuleert de voorwaarde als kleine $y_c \/ d$ met $d$ de diameter (slide 19).]
+)[In de formule voor $P$ staat naast de term in $y_c$ een kubieke term. Daardoor is het verband niet altijd lineair (C fout) en zeker niet wortelvormig (A fout). B en D verschillen in één woord. De cursus formuleert de voorwaarde als kleine $y_c \/ d$ met $d$ de diameter (slide 19), dus D.]
 
 #examenvraag("voorbeeld op de laatste slide (rozet-druksensor)", [De formule voor een druksensor op basis van een rozet is $e_0 \/ E_("ex") = 820 P R^2 (1 - nu^2) \/ (E t^2)$. Wat is $t$ in deze vergelijking?],
   opties: (
@@ -166,7 +174,7 @@ Een rekstrookrozet met vier strookjes (I tot IV in de figuur) geeft de uitgangss
 
 === Piëzoresistief <sec:druk-piezoresistief>
 
-Een piëzoresistieve druksensor leest de doorbuiging van een siliciummembraan uit met weerstanden die in het silicium gediffundeerd zijn. De druk buigt de schijf, de weerstanden rekken en hun waarde verandert (@sec:gage-factor).
+Een piëzoresistieve druksensor leest de doorbuiging van een siliciummembraan uit met weerstanden die in het silicium gediffundeerd zijn. De druk buigt de schijf, de weerstanden rekken en hun waarde verandert (@sec:gage-factor). Silicium is het meest gebruikte materiaal omdat het piëzoresistieve effect sterk is: de gage factor is ongeveer 2 bij metalen en tot 50 bij monokristallijn silicium. De weerstanden zitten in de chip, dus de sensor kan zeer klein zijn.
 
 #grid(
   columns: (1fr, 1fr),
@@ -184,7 +192,7 @@ Een piëzoresistieve druksensor leest de doorbuiging van een siliciummembraan ui
   ),
 )
 
-Weerstanden bij de rand en in het midden veranderen in tegengestelde zin (de + en - in de figuur). Samen vormen ze een brug. Daarna volgt een instrumentatieversterker. De regelaars *Zero* en *Null* stellen de nul af, *Gain* de versterking en een TC-weerstand ("TC Gage Factor") compenseert de temperatuurafhankelijke gage factor.
+Weerstanden bij de rand en in het midden veranderen in tegengestelde zin (de + en - in de figuur). Samen vormen ze een brug, gevolgd door een instrumentatieversterker. De regelaars *Zero* en *Null* stellen de nul af, *Gain* de versterking en een TC-weerstand ("TC Gage Factor") compenseert de temperatuurafhankelijke gage factor.
 
 Het voorbeeld in de slides (Tek-Bar 3120S) kost 100 tot 150 euro en geeft 4 tot 20 mA of 0 tot 10 V uit (slide 16).
 

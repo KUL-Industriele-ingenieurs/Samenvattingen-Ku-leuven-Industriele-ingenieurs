@@ -48,7 +48,7 @@ met:
 - $zeta = B \/ (2 sqrt(K_s M))$ --- dempingscoëfficiënt [--]
 - $K_s$ --- veerstijfheid [N/m], $M$ --- massa [kg], $B$ --- demping [N s/m]
 
-Meer demping geeft een lagere resonantiepiek, minder demping een hogere. De bodediagram-analyse staat in @sec:seismisch-model.
+Hoe meer demping, hoe lager de resonantiepiek. De bodediagram-analyse staat in @sec:seismisch-model.
 
 == Force transducers <sec:force-transducers>
 
@@ -103,7 +103,7 @@ met:
 - *Zelfopwarming:* de excitatie verwarmt het strookje boven het meetlichaam. Geleidt het meetlichaam slecht, dan krijg je een temperatuurverschil.
 - *Kleefstofkruip:* bij hogere temperatuur wordt de lijm zacht en draagt ze de rek niet meer volledig over. Dat werkt als een lagere gage factor. Let op de temperatuurgrens van de lijm.
 
-Een rekenkundige correctie gebruikt een temperatuurmeting: $epsilon_("corr") = f(epsilon_("meas"), T)$.
+Een rekenkundige correctie combineert de gemeten rek met een temperatuurmeting: $epsilon_("corr") = f(epsilon_("meas"), T)$.
 
 === Load cell op buiging <sec:loadcell-buiging>
 
@@ -142,7 +142,7 @@ met:
 
 De drie andere doorsneden uit @fig:L13-weerstandsmoment zijn de holle rechthoek $(1 \/ 6) b (h_2^3 - h_1^3) \/ h_2$, de ronde as $pi d^3 \/ 32$ en de buis $(pi \/ 32) (d_2^4 - d_1^4) \/ d_2$.
 
-Met vier actieve strookjes staat de brug als volle brug en is $V_o = V_("ex") Delta R \/ R$. Met twee actieve strookjes (1 en 2) is het een halve brug en is $V_o = V_("ex") Delta R \/ (2 R)$.
+Vier actieve strookjes geven een volle brug met $V_o = V_("ex") Delta R \/ R$. Twee actieve strookjes (1 en 2) geven een halve brug met $V_o = V_("ex") Delta R \/ (2 R)$.
 
 #frm(
   "Gevoeligheid van een balk-load-cell",
@@ -158,7 +158,7 @@ Met vier actieve strookjes staat de brug als volle brug en is $V_o = V_("ex") De
   De gevoeligheid is $1.5 "mV/N"$. Bij $10 "g"$ ($0.1 "N"$) is de uitgang $0.15 "mV"$. De maximale last ligt volgens de slides rond $6 "N"$ ($600 "g"$). Deze opstelling is dus zeer gevoelig, maar heeft een kleine maximale kracht.
 ]
 
-De volledige aanpak met stappenplan en de opgeloste examenvragen staat in @sec:loadcell-oefening. Dit zijn de load-cell-vragen van 23-24 vraag 10, juni 2016 vraag 18 (ook 2016 januari vraag 16) en 25-26 vraag 25 en 26.
+Het stappenplan en de opgeloste load-cell-examenvragen (23-24 vraag 10, juni 2016 vraag 18, 25-26 vraag 25 en 26) staan in @sec:loadcell-oefening.
 
 #examenvraag("oefenvraag E21", [Een rechthoekige balk op buiging heeft vier rekstrookjes: 1 en 3 bovenaan, 2 en 4 onderaan. Gegeven: $L = 20 "cm"$, $E = 200 "GPa"$, $nu = 0.3$, $h = b = 1 "cm"$, $Z = b h^2 \/ 6$, $"GF" = 2$, $V_("ex") = 5 "V"$. Bereken de gevoeligheid $V_o \/ F$.])[
   Stap 1, welke brug: vier actieve strookjes, twee in trek en twee in druk, met gelijke tekens in overstaande armen. Dat is een volle brug: $V_o \/ V_("ex") = Delta R \/ R$.
@@ -172,7 +172,7 @@ De volledige aanpak met stappenplan en de opgeloste examenvragen staat in @sec:l
 
 === Load cell met LVDT <sec:force-lvdt>
 
-Een veer met een LVDT zet kracht om in een verplaatsing: de kracht drukt de veer in over $x = F \/ k$ en de LVDT meet $x$. Dit is de meestgebruikte uitvoering van het elastische principe. De werking van de LVDT staat in @sec:lvdt-werking. Een LVDT heeft weinig wrijving, dus weinig slijtage.
+Een veer met een LVDT zet kracht om in een verplaatsing. De kracht drukt de veer in over $x = F \/ k$ en de LVDT meet $x$ (@sec:lvdt-werking). Een LVDT heeft weinig wrijving, dus weinig slijtage.
 
 #figure(
   image("assets/L13-lvdt-kracht.png", width: 9cm),
@@ -200,7 +200,7 @@ Een piëzo-elektrische krachtopnemer klemt piëzo-elektrische schijven onder voo
   label: <fig:L13-piezo-kracht>,
 )
 
-Deze sensor meet een *klap* en geen *gewicht*. Het kristal is een ladingsbron met een eigen capaciteit, en de ingangsweerstand van de versterker lekt die lading weg. Dat is een hoogdoorlaatfilter met ondergrens $f_0$ (@sec:piezo-circuit). Een constante kracht heeft frequentie nul en is dus onzichtbaar. Een korte klap bevat frequenties boven $f_0$ en komt wel door.
+Deze sensor meet alleen een veranderende kracht, zoals een klap. Het kristal is een ladingsbron met een eigen capaciteit en de ingangsweerstand van de versterker lekt die lading weg. Dat is een hoogdoorlaatfilter met ondergrens $f_0$ (@sec:piezo-circuit). Een constante kracht, zoals een gewicht, heeft frequentie nul en is dus onzichtbaar. Een korte klap bevat frequenties boven $f_0$ en komt wel door. De sensor is *passief*: het kristal wekt zelf de lading op.
 
 #examenvraag("23-24 vraag 3, 25-26 vraag 16, voorbeeldexamen 2024", [Een piëzo-elektrische krachtsensor ...],
   opties: (
@@ -210,7 +210,7 @@ Deze sensor meet een *klap* en geen *gewicht*. Het kristal is een ladingsbron me
     [kan alle inwerkende krachten meten behalve de zwaartekracht],
   ),
   juist: "B",
-)[De ingangsweerstand $R$ over de capaciteit $C_T$ vormt een hoogdoorlaat, dus onder $f_0$ lekt de lading weg. A is fout: Coriolis hoort bij de gyroscoop. C is fout: een massa verandert niets aan het wegvloeien van de lading. D klinkt plausibel maar mikt op de verkeerde eigenschap: het gaat niet om de zwaartekracht, maar om elke constante kracht.]
+)[De ingangsweerstand $R$ over de capaciteit $C_T$ vormt een hoogdoorlaat, dus onder $f_0$ lekt de lading weg. A is fout: Coriolis hoort bij de gyroscoop. C is fout: een massa verandert niets aan het wegvloeien van de lading. D is fout, want elke constante kracht verdwijnt uit het signaal, niet alleen de zwaartekracht.]
 
 Het bereik van de piëzo-elektrische opnemer in de slides loopt van $1000 "N"$ trek en $5000 "N"$ druk tot $4000 "N"$ trek en $16 thin 000 "N"$ druk, met een nauwkeurigheid van $1 %$ en een maximale frequentie van $10 "kHz"$ tot $300 "kHz"$. De gevoeligheid voor kruisassen is te groot (tot $10 %$).
 
@@ -250,8 +250,6 @@ Kenmerken uit de slides: groot dynamisch bereik van de weerstand, lage kostprijs
 
 === Vergelijking <sec:force-vergelijking>
 
-De slides geven bij elk type een eigenschappenkaart:
-
 #table(
   columns: (auto, 1fr, auto, 1fr),
   align: (left, left, left, left),
@@ -264,7 +262,7 @@ De slides geven bij elk type een eigenschappenkaart:
 
 == Torque transducers <sec:torque>
 
-Een torque transducer meet een moment om een as met rekstroken. Het principe van de Wheatstonebrug blijft hetzelfde (@sec:brugtypes). Er zijn twee uitvoeringen in de slides.
+Een torque transducer meet een moment om een as met rekstroken in een Wheatstonebrug (@sec:brugtypes). De slides tonen twee uitvoeringen.
 
 *Draaiarm met balkjes.* Een draaiarm op de as zet het moment om in een kracht op balkjes. Op die balkjes zitten de strookjes R1 tot R4.
 
@@ -274,7 +272,7 @@ Een torque transducer meet een moment om een as met rekstroken. Het principe van
   label: <fig:L13-torque-balk>,
 )
 
-*Strookjes onder 45° op de as.* Bij torsie van een as staan de grootste rekken onder $45 degree$ met de aslijn: de ene richting rekt, de andere verkort evenveel. Strookjes 1 en 3 liggen op de ene diagonaal en strookjes 2 en 4 op de andere, dus je krijgt $+Delta R$ en $-Delta R$ en een volle brug. Een axiale kracht of temperatuurverandering rekt beide richtingen gelijk en valt in de brug weg.
+*Strookjes onder 45° op de as.* Vier strookjes liggen onder $45 degree$ met de aslijn, strookjes 1 en 3 op de ene diagonaal en 2 en 4 op de andere. Ze vormen een volle brug.
 
 #figure(
   image("assets/L13-torque-45.png", width: 11cm),
@@ -282,7 +280,7 @@ Een torque transducer meet een moment om een as met rekstroken. Het principe van
   label: <fig:L13-torque-45>,
 )
 
-Een *rozet* zet strookjes onder $45 degree$ samen op één drager: een drie-elementen- en een twee-elementenrozet.
+Een *rozet* zet strookjes onder $45 degree$ samen op één drager, met drie of met twee elementen. Een rozet vervangt losse strookjes om de nauwkeurigheid te verhogen en hysterese te verminderen.
 
 #figure(
   image("assets/L13-rosette.png", width: 5cm),
@@ -290,11 +288,11 @@ Een *rozet* zet strookjes onder $45 degree$ samen op één drager: een drie-elem
   label: <fig:L13-rosette>,
 )
 
-De laatste slide is de load-cell-vraag op een ronde as (25-26 vraag 26). Die staat uitgewerkt in @sec:loadcell-oefening.
+De laatste slide is de load-cell-vraag op een ronde as (25-26 vraag 26). Twee van de vier strookjes liggen op de neutrale lijn en rekken niet, dus de brug is een halve brug. De uitwerking staat in @sec:loadcell-oefening.
 
 == Piëzo-elektrische krachtsensoren <sec:piezo>
 
-Dit deel legt het piëzo-elektrische effect en het vervangschema uit. Het geldt ook voor de piëzo-elektrische accelerometer (@sec:piezo-accelerometer) en de druksensor (@sec:druk-piezo).
+Het piëzo-elektrische effect en het vervangschema hieronder gelden ook voor de piëzo-elektrische accelerometer (@sec:piezo-accelerometer) en de druksensor (@sec:druk-piezo).
 
 === Piezo-elektrisch effect <sec:piezo-effect>
 
@@ -310,8 +308,8 @@ Het effect werkt in twee richtingen. Een vervorming geeft lading (direct effect)
 
 #frm(
   "Lading van een piëzo-elektrisch kristal",
-  $q = d F quad quad e = q / C = (d F t) / (epsilon A)$,
-  [De lading is evenredig met de kracht. De spanning tussen de elektroden volgt uit de capaciteit $C = epsilon A \/ t$ van het kristal.],
+  $q = d F quad quad e = q / C = (d F t) / (epsilon_p A)$,
+  [De lading is evenredig met de kracht. De spanning tussen de elektroden volgt uit de capaciteit $C = epsilon_p A \/ t$ van het kristal.],
 )
 
 met:
@@ -319,7 +317,7 @@ met:
 - $d$ --- piëzo-elektrische constante [C/N]; $2.3 "pC/N"$ voor kwarts, $140 "pC/N"$ voor bariumtitanaat
 - $F$ --- kracht [N]
 - $t$ --- dikte van het kristal [m]
-- $epsilon$ --- permittiviteit van het kristal [F/m]
+- $epsilon_p$ --- permittiviteit van het kristal [F/m]
 - $A$ --- oppervlak van de elektroden [m$""^2$]
 
 Bij een verplaatsingssensor schrijf je het verband tussen lading en verplaatsing als $q = K x$, met $K$ in C/m.
@@ -387,7 +385,7 @@ De sensor meet dus geen statische kracht of verplaatsing: bij frequentie nul is 
 #voorbeeld(title: "Samenvatting p.29: kabel en shunt")[
   Een kristal met $C_p = 400 "pF"$ en $K = 1 "pC/"mu"m"$ zit via een kabel van $C_c = 100 "pF"$ aan een versterker met $R = 1 "M"Omega$. Dan is $C_T = 500 "pF"$, $f_0 = 1 \/ (2 pi dot 10^6 dot 500 dot 10^(-12)) = 318 "Hz"$ en $K_s = 1 "pC/"mu"m" \/ 500 "pF" = 2 "mV/"mu"m"$. Zonder kabel was $K_s = 2.5 "mV/"mu"m"$. De kabel kost dus $20 %$ gevoeligheid.
 
-  Voeg je een shunt van $500 "pF"$ toe en neem je $R = 500 "M"Omega$, dan is $C_T = 1000 "pF"$ en $f_0 = 0.32 "Hz"$. De gevoeligheid zakt wel naar $1 "mV/"mu"m"$ (60 % lager). Een shuntcondensator verlaagt $f_0$, maar $K_s = K \/ C_T$ daalt mee.
+  Voeg je een shunt van $500 "pF"$ toe en neem je $R = 500 "M"Omega$, dan is $C_T = 1000 "pF"$ en $f_0 = 0.32 "Hz"$. De gevoeligheid zakt wel naar $1 "mV/"mu"m"$ (60 % lager dan zonder kabel). Een shuntcondensator verlaagt $f_0$, maar $K_s = K \/ C_T$ daalt mee.
 ]
 
 *Ladingsversterker.* Een ladingsversterker is een opamp met een terugkoppelcondensator $C_f$. Hij houdt zijn ingang op $0 "V"$ (virtuele massa). Over $C_p$ en $C_c$ staat dan geen spanning, dus nemen ze geen lading op. Alle lading $q$ gaat naar $C_f$.
