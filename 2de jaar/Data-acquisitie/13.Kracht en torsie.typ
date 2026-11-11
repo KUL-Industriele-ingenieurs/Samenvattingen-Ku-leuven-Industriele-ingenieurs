@@ -283,7 +283,7 @@ Een torque transducer meet een moment om een as met rekstroken in een Wheatstone
 Een *rozet* zet strookjes onder $45 degree$ samen op één drager, met drie of met twee elementen. Een rozet vervangt losse strookjes om de nauwkeurigheid te verhogen en hysterese te verminderen.
 
 #figure(
-  image("assets/L13-rosette.png", width: 5cm),
+  image("assets/L13-rosette.png", width: 6.0cm),
   caption: [Rozetten onder $45 degree$ met drie en met twee elementen (slide 39)],
   label: <fig:L13-rosette>,
 )
@@ -323,7 +323,7 @@ met:
 Bij een verplaatsingssensor schrijf je het verband tussen lading en verplaatsing als $q = K x$, met $K$ in C/m.
 
 #figure(
-  image("assets/L13-piezo-laag.png", width: 6.5cm),
+  image("assets/L13-piezo-laag.png", width: 9cm),
   caption: [Piëzo-elektrische laag tussen twee elektroden (Samenvatting DAQ p.28)],
   label: <fig:L13-piezo-laag>,
 )

@@ -73,7 +73,7 @@ Nadelen:
 Een absolute encoder geeft bij elke hoek een unieke code, zodat de positie direct bekend is. De codeschijf heeft meerdere sporen of ringen. Elke ring heeft een eigen patroon van transparante en ondoorzichtige segmenten, en elke ring geeft één bit. Een lichtdetector per ring leest 1 (licht) of 0 (geen licht). Samen geven de sporen een $N$-bit code per positie.
 
 #figure(
-  image("assets/LX-absoluut.png", width: 6cm),
+  image("assets/LX-absoluut.png", width: 7.0cm),
   caption: [Absolute optische encoder: codeschijf met meerdere sporen en detectoren (Samenvatting DAQ p.32)],
   label: <fig:LX-absoluut>,
 )

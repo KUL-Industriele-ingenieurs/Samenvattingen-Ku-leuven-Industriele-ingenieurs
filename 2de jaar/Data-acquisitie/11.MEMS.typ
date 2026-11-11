@@ -53,7 +53,7 @@ Deze uitlezing is dezelfde als bij de differentiële capacitieve sensor (hoofdst
 *Voorbeeld ADXL50.* De chip meet $500 times 625$ $mu$m. Hij heeft 42 siliciumvingers van 100 $mu$m lang met een spleet van 2 $mu$m, samen 0,1 pF. De resolutiegrens van de versterker is $20 times 10^(-18)$ pF. Daarmee meet hij een verplaatsing van $20 times 10^(-12)$ m. Het bereik is 50 g tot 500 g, met instelbare filterbandbreedte (100 tot 800 Hz), en hij wordt gebruikt voor crashdetectie (airbags). Een tweede generatie meet twee assen. De massa beweegt in het midden, in twee richtingen, afhankelijk van de versnelling.
 
 #figure(
-  image("assets/L11-2as.png", width: 6cm),
+  image("assets/L11-2as.png", width: 9cm),
   caption: [Tweede generatie: accelerometer met twee assen (slide 8)],
   label: <fig:L11-2as>,
 )
@@ -82,7 +82,7 @@ Er zijn vier piëzoresistieve elementen. Als ze allemaal dezelfde weerstandsvera
 *Vibratiesensor.* Een vibratiesensor meet het overlappende oppervlak van de vingers. Door de voorgespannen kam (pre-stress comb drive) te verplaatsen, verander je de gevoeligheid elektrisch, via software. Een hogere gevoeligheid geeft een kleiner werkgebied.
 
 #figure(
-  image("assets/L11-vibratie.png", width: 5cm),
+  image("assets/L11-vibratie.png", width: 7.5cm),
   caption: [Vibratiesensor: voorgespannen kam, afstelbare veer en sensing-elektroden (slide 11)],
   label: <fig:L11-vibratie>,
 )
@@ -108,7 +108,7 @@ met:
 Door $F_C$ te meten volgt de hoeksnelheid. Er moet een snelheid $v$ zijn, anders is er geen kracht. De massa trilt, dus $v$ wisselt van richting. Lagers en roterende delen zijn op micrometerschaal niet te maken, dus een draaiende massa kan niet.
 
 #grid(
-  columns: (1fr, 1fr, 1fr),
+  columns: (1fr, 1fr),
   gutter: 0.8em,
   align: horizon,
   figure(

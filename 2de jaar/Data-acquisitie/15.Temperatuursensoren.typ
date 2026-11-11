@@ -25,7 +25,7 @@ Een bimetaalthermostaat schakelt de verwarming aan of uit. Dat heet *bang-bang* 
 Een *anticipatieweerstand* verkleint die overshoot. Dat is een klein verwarmingselement bij de thermostaat. Het warmt de thermostaat extra op, zodat die denkt dat de kamer warmer is dan ze echt is. De verwarming valt daardoor iets vroeger uit.
 
 #figure(
-  image("assets/L15-anticipatie.png", width: 11cm),
+  image("assets/L15-anticipatie.png", width: 5.0cm),
   caption: [Overshoot verkleinen met een anticipatieweerstand (slide 7)],
   label: <fig:L15-anticipatie>,
 )
@@ -106,7 +106,7 @@ De meetstroom door een RTD levert vermogen $P = I^2 R$ en dat warmt de sensor op
 ]
 
 #figure(
-  image("assets/L15-pt100-meting.png", width: 10cm),
+  image("assets/L15-pt100-meting.png", width: 5.5cm),
   caption: [Pt100 in een brug met een kleine stroom (slide 17)],
   label: <fig:L15-pt100-meting>,
 )
@@ -130,7 +130,7 @@ De kabels naar de sensor zijn in serie met de Pt100, dus de meter ziet hun weers
 De oplossing is een *4-draadsmeting* (Kelvin). Twee draden voeren de stroom, twee andere meten de spanning over de sensor zonder stroom. Daardoor valt de kabelweerstand weg (@sec:sc-bekabeling).
 
 #figure(
-  image("assets/L15-kabelweerstand.png", width: 11cm),
+  image("assets/L15-kabelweerstand.png", width: 6.5cm),
   caption: [Invloed van de kabelweerstand op de meting (slide 18)],
   label: <fig:L15-kabelweerstand>,
 )
@@ -217,7 +217,7 @@ Met $N$ parallelle transistoren daalt de stroom per transistor tot $I_c \/ N$. H
 )
 
 #figure(
-  image("assets/L15-junction.png", width: 11cm),
+  image("assets/L15-junction.png", width: 11.0cm),
   caption: [Eén transistor tegenover $N$ transistoren (slide 27)],
   label: <fig:L15-junction>,
 )
@@ -276,7 +276,7 @@ met:
 Om de spanning $V_(a b)$ van één las te meten, zit er een voltmeter in de lus. Die voegt een derde metaal C toe met twee extra juncties, $V_(a c)$ en $V_(b c)$.
 
 #figure(
-  image("assets/L15-tk-juncties.png", width: 10cm),
+  image("assets/L15-tk-juncties.png", width: 7.5cm),
   caption: [Een extra metaal C geeft twee extra juncties (slide 35)],
   label: <fig:L15-tk-juncties>,
 )
@@ -300,7 +300,7 @@ In de normale opstelling houd je $T_3 = T_4$ en zet je $T_1 = 0 degree "C"$ in e
 === Types <sec:tk-types>
 
 #figure(
-  image("assets/L15-tk-types.png", width: 13cm),
+  image("assets/L15-tk-types.png", width: 13.0cm),
   caption: [Types thermokoppels: bereik, gevoeligheid en eigenschappen (slide 40)],
   label: <fig:L15-tk-types>,
 )
@@ -446,7 +446,7 @@ Is $V_"comp"$ gelijk aan $V(T_2) - V(0 degree "C")$, dan is $V_"out" = V(T_1) - 
 === Vergelijking van temperatuursensoren <sec:temp-vergelijking>
 
 #figure(
-  image("assets/L15-overzicht.png", width: 13cm),
+  image("assets/L15-overzicht.png", width: 12.5cm),
   caption: [Vergelijking van thermistor, RTD, thermokoppel en halfgeleidersensor (slide 49)],
   label: <fig:L15-overzicht>,
 )

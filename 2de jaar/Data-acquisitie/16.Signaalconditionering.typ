@@ -32,7 +32,7 @@ met:
 - $R_1$ tot $R_4$ --- de vier brugweerstanden [$Omega$]
 
 #figure(
-  image("assets/L16-brug.png", width: 7cm),
+  image("assets/L16-brug.png", width: 9cm),
   caption: [Wheatstonebrug: $V_o$ is evenredig met de verandering van $R_2$ (slide 6)],
   label: <fig:L16-brug>,
 )
@@ -173,7 +173,7 @@ Een *instrumentatieversterker* (inamp) heeft een hoge ingangsweerstand op beide 
 Een geïntegreerd systeem kan versterking en lineariseren samen doen (slide 15).
 
 #figure(
-  image("assets/L16-lineariserend.png", width: 11cm),
+  image("assets/L16-lineariserend.png", width: 10.5cm),
   caption: [Versterken en lineariseren in een geïntegreerd systeem (slide 15)],
   label: <fig:L16-lineariserend>,
 )
@@ -207,7 +207,7 @@ Een derde draad meet de spanning over de sensor. Daar loopt geen stroom ($I = 0$
 Bij vier draden voeren twee draden de stroom en meten twee draden de spanning. Opamps compenseren de $R_"lead"$. Er loopt geen stroom naar $V_o$, dus de kabelweerstand valt weg.
 
 #figure(
-  image("assets/L16-vier-draad.png", width: 10cm),
+  image("assets/L16-vier-draad.png", width: 10.0cm),
   caption: [Vier draden (Kelvin): $R_"lead"$ gecompenseerd door opamps (slide 19)],
   label: <fig:L16-vier-draad>,
 )
@@ -327,7 +327,7 @@ Er zijn drie technieken:
 - *Inductief:* hoge spanning (meer dan $"kV"$), ruisongevoelig, bescherming tegen pieken, efficiënte energieoverdracht.
 
 #grid(
-  columns: (1fr, 1fr, 1fr),
+  columns: (1fr, 1fr),
   gutter: 0.5em,
   align: horizon,
   figure(

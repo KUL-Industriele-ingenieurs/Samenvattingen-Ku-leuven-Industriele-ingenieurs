@@ -42,7 +42,7 @@ In de praktijk kies je $f_s approx 5$ tot $10 times f_"max"$. Het anti-aliasingf
 === Tijddomein <sec:alias-tijd>
 
 #figure(
-  image("assets/L19-alias-tijd.png", width: 85%),
+  image("assets/L19-alias-tijd.png", width: 10.5cm),
   caption: [Sinussen van 5, 10, 20 en 60 Hz bemonsterd op 50 Hz (slide 5). De 60 Hz-sinus geeft dezelfde samples als een sinus van 10 Hz.],
   label: <fig:L19-alias-tijd>,
 )

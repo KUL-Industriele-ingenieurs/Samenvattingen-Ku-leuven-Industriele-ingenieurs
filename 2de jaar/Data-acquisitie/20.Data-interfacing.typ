@@ -159,12 +159,6 @@ met:
 
 Bij een lineaire regeling zet een variabele weerstand het vermogen om in warmte. Een PWM-schakelaar staat volledig aan of volledig uit. Aan heeft de schakelaar bijna geen spanning over zich, uit loopt er geen stroom. Het vermogen $P = U I$ over de schakelaar is dus in beide standen bijna nul.
 
-#figure(
-  image("assets/L20-pwm-voordelen.png", width: 90%),
-  caption: [Voor- en nadelen van PWM. Rechts: lineaire regeling $P = i^2 (R_(1a) + R_(2a))$ naast een MOSFET met $P = i^2 R_(1b)$ (slide 31).],
-  label: <fig:L20-pwm-voordelen>,
-)
-
 Voordelen volgens de slides: laag vermogenverbruik en ongevoelig voor ruis. Nadelen: de pulsflanken geven elektromagnetische ruis (spikes) en de schakeling kost meer.
 
 #examenvraag("oefenvraag E13", [Een PWM-signaal van 24 V met een duty cycle van 30 %. Wat is de gemiddelde spanning, en waarom is PWM efficiënter dan een lineaire regeling?],

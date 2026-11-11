@@ -137,7 +137,7 @@ De relatieve verplaatsing $x_0$ kan gemeten worden met een potentiometer, een ni
 *Gebonden rekstrookjes.* De massa hangt aan twee veren met rekstrookjes erop. Vier rekstrookjes vormen samen een brug (hoofdstuk @ch:rekstroken-1).
 
 #figure(
-  image("assets/L10-rekstrook.png", width: 7cm),
+  image("assets/L10-rekstrook.png", width: 9cm),
   caption: [Seismische massa met rekstrookjes op de veer (slide 12)],
   label: <fig:L10-rekstrook>,
 )

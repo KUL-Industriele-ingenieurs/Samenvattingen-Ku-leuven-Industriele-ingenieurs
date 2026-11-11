@@ -50,7 +50,7 @@ met:
 - $v$ --- snelheid van de draad [m/s]
 
 #figure(
-  image("assets/L9-blv.png", width: 7cm),
+  image("assets/L9-blv.png", width: 9cm),
   caption: [Een draad met snelheid $v$ in het veld $B$ wekt de spanning $e = B l v$ op (slide 4)],
   label: <fig:L9-blv>,
 )
@@ -161,7 +161,7 @@ met:
 Bij constante snelheid mag $Delta x$ willekeurig zijn. Bij veranderlijke snelheid moet $Delta x$ klein zijn, anders middel je over een te lang interval. Een kleine $Delta x$ geeft wel een korte $Delta t$, dus de tijdmeting moet nauwkeurig zijn. ABS-systemen gebruiken dit principe om het wiel te detecteren.
 
 #figure(
-  image("assets/L9-abs.png", width: 7cm),
+  image("assets/L9-abs.png", width: 9cm),
   caption: [Wieldetectie bij ABS: tandring en sensor (slide 10)],
   label: <fig:L9-abs>,
 )

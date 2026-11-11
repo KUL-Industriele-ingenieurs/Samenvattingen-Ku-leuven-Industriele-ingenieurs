@@ -90,7 +90,7 @@ Het voorbeeld in de slides (PT500E, 0 tot 400 bar) kost 100 tot 200 euro en is g
 Een membraan met rekstroken meet druk via de rek die de doorbuiging in het membraan geeft. De rekstroken (@ch:rekstroken-1) liggen in een volle brug. Ze staan waar de spanning maximaal is, aan de rand of in het midden.
 
 #figure(
-  image("assets/L12-membraan.png", width: 7cm),
+  image("assets/L12-membraan.png", width: 8.0cm),
   caption: [Ingeklemd membraan met strookjes 1 tot 4, spanningsverloop en rekstrookrozet (slide 12)],
   label: <fig:L12-membraan>,
 )

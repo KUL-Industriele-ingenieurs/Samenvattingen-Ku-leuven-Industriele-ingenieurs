@@ -173,7 +173,7 @@ Een *counting DAC* of *PWM-DAC* (pulse width modulated) maakt een blokgolf waarv
 === Vergelijking <sec:dac-vergelijking>
 
 #figure(
-  image("assets/L17-overzicht.png", width: 100%),
+  image("assets/L17-overzicht.png", width: 13.0cm),
   caption: [Overzicht van de DAC-types (slide 23)],
   label: <fig:L17-overzicht>,
 )

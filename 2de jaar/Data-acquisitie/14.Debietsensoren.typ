@@ -14,7 +14,7 @@ Een hot-wire anemometer meet de snelheid van een stroming met een verhitte draad
 De draad zit als $R_w$ in een brug met een galvanometer die het evenwicht detecteert. Je regelt de stroom zo dat de brug in evenwicht blijft, en meet die stroom $I$. Het verband is niet lineair: $I^2$ is een rechte in functie van $sqrt(v)$.
 
 #figure(
-  image("assets/L14-hotwire.png", width: 7cm),
+  image("assets/L14-hotwire.png", width: 7.5cm),
   caption: [Hot-wire anemometer: draad, brug en $I^2$ in functie van $sqrt(v)$ (slide 2)],
   label: <fig:L14-hotwire>,
 )
@@ -73,7 +73,7 @@ met:
 $C_d$ hangt af van het getal van Reynolds $N_R$ en van de verhouding $beta$ = diameter van de opening / diameter van de leiding. Voor $N_R$ boven ongeveer $10^4$ is $C_d$ vrijwel constant (rond $0.63$) voor $beta = 0.2$ en $beta = 0.8$.
 
 #figure(
-  image("assets/L14-cd.png", width: 7cm),
+  image("assets/L14-cd.png", width: 9cm),
   caption: [$C_d$ in functie van het getal van Reynolds voor $beta = 0.2$ en $beta = 0.8$ (slide 7)],
   label: <fig:L14-cd>,
 )
@@ -103,7 +103,7 @@ De drukmeetpunten (taps) kunnen op drie plaatsen zitten (slide 4):
 Een flow nozzle, een venturi en een Dall-buis vernauwen de leiding geleidelijker dan een meetflens. Ze gebruiken dezelfde formule voor $Q_a$ maar met een andere $C_d$ en een lager blijvend drukverlies.
 
 #figure(
-  image("assets/L14-nozzle-venturi-dall.png", width: 6.5cm),
+  image("assets/L14-nozzle-venturi-dall.png", width: 7.5cm),
   caption: [Flow nozzle, venturi (met piëzometerringen) en Dall flow tube (slide 8)],
   label: <fig:L14-nozzle-venturi-dall>,
 )
@@ -126,7 +126,7 @@ Een venturi geeft dus een klein blijvend drukverlies en de beste nauwkeurigheid.
 Een laminar flow element laat het medium door veel kleine kanalen stromen, zodat de stroming laminair is en het drukverschil lineair met het debiet meegroeit. Het *honingraat*-element ("metering element") zit tussen twee flow straighteners.
 
 #figure(
-  image("assets/L14-laminair.png", width: 7cm),
+  image("assets/L14-laminair.png", width: 9cm),
   caption: [Laminar flow element met flow straighteners en een honingraatelement (slide 11)],
   label: <fig:L14-laminair>,
 )
