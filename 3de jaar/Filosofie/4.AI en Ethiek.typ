@@ -183,6 +183,14 @@ De prof zet zelf kanttekeningen bij die cijfers:
   + *Ongekende of lage waarschijnlijkheid*: het is nog nooit gebeurd, dus er zijn geen historische data om de kans te schatten.
 ]
 
+#wrap-figure(
+  image("assets/If-anybody-builds-it,-Everybody-dies---book-cover.png", width: 5cm),
+  caption: [If-anybody-builds-it,-Everybody-dies---book-cover],
+  label: <fig:If-anybody-builds-it-Everybody-dies-book-cover>,
+)[
+
+Een goede video die over dit topic gaat en gebasseerd is op het boek "If Anybody builds it, we all die" van Yudkowsky: #link("https://www.youtube.com/watch?v=7wy3xyoXYt8")
+
 Voorbeelden zijn een virus, chemische oorlog of een vulkaanuitbarsting. Yudkowsky spreekt over het verdwijnen van de mensheid, een zesde extinctie. Er zijn natuurlijke oorzaken (vulkanen, asteroïden) die al altijd bestaan. *Antropogene oorzaken* (de atoombom, AI) bestaan pas sinds de vorige eeuw.
 
 Existentiële risico's zijn ook ethisch, want het recht op leven staat op het spel. Toch zijn het twee aparte velden:
@@ -193,6 +201,7 @@ Existentiële risico's zijn ook ethisch, want het recht op leven staat op het sp
   [Onderwerp], [privacy, bias, ...], [catastrofale risico's],
   [Wie], [humane wetenschappers], [computerwetenschappers, industrie],
 )
+]
 
 Die *asymmetrie* zit ook in hoe ze naar elkaar kijken. Veel ethici vinden AI Safety science fiction. AI Safety vindt de problemen van AI Ethics wel relevant, maar niet de enige. De prof werkt zelf in beide velden.
 
