@@ -52,3 +52,4 @@
 #include "18.ADC.typ"
 #include "19.Bemonsteringstheorema.typ"
 #include "20.Data-interfacing.typ"
+#include "Eindpagina.typ"
