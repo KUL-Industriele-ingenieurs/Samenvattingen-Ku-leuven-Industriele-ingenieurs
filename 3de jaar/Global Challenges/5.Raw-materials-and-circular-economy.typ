@@ -163,4 +163,31 @@ NOG INVULLEN HIER
   label: <fig:VERVANG-ME>,
 )
 
+=== Case electric car <sec:case-electric-car>
+
+Case: electric car
+The shift towards electrical mobility requires a lot of materials that where not very much used before, such as Lithium, and an substantial increase in demand of some commodities, such as Nickel or Copper. The graphs underneath show the forecasted demand for the coming decades of lithium and nickel, in the case of the STEPS and SDS IEA scenarios (explained below the figures).
+
+#figure(
+  image("assets/NOG-INVULLE-2.png", width: 5cm),
+  caption: [NOG-INVULLE-2],
+  label: <fig:NOG-INVULLE-2>,
+)
+
+#figure(
+  image("assets/nog-invullen-3.png", width: 5cm),
+  caption: [nog-invullen-3],
+  label: <fig:nog-invullen-3>,
+)
+
+
+Two scenarios as put forward by the International Energy Agency are considered in these figures:
+
+The Stated Policies Scenario (STEPS) reflects current policy settings based on a sector-by-sector assessment of the specific policies that are in place, as well as those that have been announced by governments around the world. It provides an indication of where today’s policy measures and plans lead the energy sector.
+
+The Sustainable Development Scenario (SDS) charts a pathway that meets in full the world’s goals to tackle climate change in line with the Paris Agreement while meeting universal energy access and significantly reducing air pollution. In this scenario, all current net zero pledges are achieved in full and there are extensive efforts to realize near-term emissions reductions; advanced economies reach net zero emissions by 2050, China around 2060, and all other countries by 2070 at the latest.
+
+
+== Materiaal tekorten <sec:material-scarcity>
+
 
