@@ -190,4 +190,50 @@ The Sustainable Development Scenario (SDS) charts a pathway that meets in full t
 
 == Materiaal tekorten <sec:material-scarcity>
 
+Hoeveel scarcity is er voor rauwe materialen?
+
+Het is niet gelijk over alle verschilleden material, goud is meer zeldzaam.
+
+#figure(
+  image("assets/Zeldzaamheid-van-verschillende-materialen.png", width: 5cm),
+  caption: [Zeldzaamheid-van-verschillende-materialen],
+  label: <fig:Zeldzaamheid-van-verschillende-materialen>,
+)
+
+Gelukkig worden er grotere concetraties gevonden in ores. Dus het is economisch doenbaar om die te extracten, het zijn de reservaren van de aarde in de lithosphere.
+
+De vraag is of er materiaalse scarcity is:
+
+#concept(title: "Absolute scarcity")[
+  De heoveelheid rauwe materiaal dat gekend is in een recevoir dat allen de demand van materiaal voor de komende een of twee decennia kan voorzien.
+]
+
+Maar nieuwe ore deposits worden nog steeds gezocht en gevonde, bettere technologie zorgt er ook voor om meer materiaal te halen uit lagere concentraties.
+
+De qualiteit van raw materials is wel naar benenden aan het gaan met vroeger in de 1900 3% en vandaag 0.3%. Je moet dus veel meer materiaal verwerken om dezelfde hoeveelheid te krijgen.
+
+Nieuwe materiaal deposits worden meestal ook op moeilijk toegankelijke plaatsen gevonden zoals diep in de oceanen of in de arctische gebieden.
+
+Er is ook een geopolitieke factor, sommige materialen zijn alleen vindbaar in bepaald landen zoals chine, argentinie, chile, congo...
+
+#figure(
+  image("assets/Waar-raw-materialen-vindbaar-zijn.png", width: 5cm),
+  caption: [Waar-raw-materialen-vindbaar-zijn],
+  label: <fig:Waar-raw-materialen-vindbaar-zijn>,
+)
+
+IETS GEMIST HIER
+
+exotic elements kunnen niet op zichzelf gemijnt zorden, een structureele scarcity waarbij het materiaal gemijnt word met een ander materiaal zoals indium met zink waarbih indium 1/3000 van de zink wordt gemijnd. Dit is een structurele scarcity.
+
+=== Conclusie <sec:conclusie>
+
+Wat is nu de conclusie, er is eigenlijk genoeg materiaal voor de toekomst maar door
+
+#figure(
+  image("assets/TO-BE-DELETED.png", width: 5cm),
+  caption: [TO-BE-DELETED],
+  label: <fig:TO-BE-DELETED>,
+)
+
 
