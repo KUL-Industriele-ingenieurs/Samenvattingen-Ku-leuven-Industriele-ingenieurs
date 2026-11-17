@@ -782,6 +782,13 @@
 % Caption Styling
 \captionsetup{skip=3pt,aboveskip=3pt,belowskip=3pt,font={small,sf},labelfont=bf}
 
+% Standaard tabelstijl (booktabs): dikke lijn boven en onder, dunne onder de
+% kop, geen verticale lijnen. Zelfde look als `project` in school-template.typ.
+\setlength{\heavyrulewidth}{1pt}
+\setlength{\lightrulewidth}{0.5pt}
+\setlength{\tabcolsep}{8pt}
+\renewcommand{\arraystretch}{1.25}
+
 % List Styling (Tightened for summaries)
 \setlist[itemize,1]{leftmargin=2em,itemsep=0.3ex,parsep=0.3ex,partopsep=0.5ex,topsep=0.5ex}
 \setlist[enumerate,1]{leftmargin=2em,itemsep=0.3ex,parsep=0.3ex,partopsep=0.5ex,topsep=0.5ex}

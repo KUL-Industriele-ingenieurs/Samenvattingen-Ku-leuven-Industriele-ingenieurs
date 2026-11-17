@@ -150,18 +150,7 @@
 // #show: project.with(...):   #show: booktabs-tabellen
 // Alleen voor vakken waar de tabellen geen eigen stroke/hline zetten, anders
 // komen de randen dubbel.
-#let booktabs-tabellen(body) = {
-  set table(
-    stroke: (x, y) => if y == 0 { (bottom: 0.6pt + schoolBlue) } else { (bottom: 0.3pt + luma(225)) },
-    fill: (x, y) => if y == 0 { schoolBlue.lighten(88%) } else if calc.even(y) { luma(247) },
-    inset: (x: 7pt, y: 5pt),
-    align: left + horizon,
-  )
-  show table.cell.where(y: 0): set text(weight: "bold")
-  // align hier herhalen: een tweede show-regel op table overschrijft het centreren uit project.
-  show table: it => align(center, block(stroke: (top: 1pt + schoolBlue, bottom: 1pt + schoolBlue), it))
-  body
-}
+#let booktabs-tabellen(body) = body // standaard sinds project(); blijft voor oude aanroepen
 
 // --- Template Function ---
 #let project(
@@ -259,8 +248,17 @@
 
   // Tabellen gecentreerd. align: start expliciet, anders erven de cellen van
   // tabellen zonder eigen align het centreren over.
-  set table(align: start)
-  show table: it => align(center, it)
+  // Standaard tabelstijl (booktabs): dikke lijn boven en onder, dunne onder de
+  // kop, lichtblauwe kop, lichte zebrastrepen, geen verticale lijnen. Een tabel
+  // met eigen stroke/fill/align behoudt die: argumenten op de tabel winnen.
+  set table(
+    align: start + horizon,
+    inset: (x: 8pt, y: 5pt),
+    stroke: (x, y) => if y == 1 { (top: 0.5pt + luma(40)) },
+    fill: (x, y) => if y == 0 { schoolBlue.lighten(85%) } else if calc.odd(y) { luma(247) },
+  )
+  show table.cell.where(y: 0): set text(weight: "bold")
+  show table: it => align(center, block(stroke: (top: 1pt + luma(40), bottom: 1pt + luma(40)), it))
 
   show heading: set text(font: ("Fira Sans", "Liberation Sans"), weight: "bold")
 
