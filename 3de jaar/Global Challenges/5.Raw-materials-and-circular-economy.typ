@@ -236,4 +236,5 @@ Wat is nu de conclusie, er is eigenlijk genoeg materiaal voor de toekomst maar d
   label: <fig:TO-BE-DELETED>,
 )
 
+=== Case absolute scarcity <sec:case-absolute-scarcity>
 

@@ -27,5 +27,6 @@
 #include "7.As-naafverbindingen-deel-1.typ"
 // ----- Tandwielen -----
 #include "10.Tandwielen-deel-2.typ"
+#include "13.Tandwielen-deel-5.typ"
 
 // ----------------------------- AFSLUITING ------------------------------------
