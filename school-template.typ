@@ -204,7 +204,8 @@
 
   // Typography: Charter (body) + Fira Sans (headers) + Fira Code 0.85 (code)
   // Charter, Fira Sans & Fira Code loaded from project fonts/ directory
-  set text(font: ("Charter", "Libertinus Serif"), lang: "nl", size: 11pt)
+  set text(font: ("Fira Sans", "Liberation Sans"), lang: "nl", size: 10pt)
+  show math.equation: set text(font: ("Fira Math", "New Computer Modern Math"))
   set par(leading: 0.63em, first-line-indent: 0pt, spacing: 1.2em, justify: true)
   // "1.1" zonder sluitpunt, gelijk aan \thesection in school-macros.sty.
   // Stond op "1.1.", waardoor Typst "3." / "3.1." zette en LaTeX "3" / "3.1".
@@ -369,7 +370,7 @@
   if show_outline {
     // Table of Contents (styled to match LaTeX)
     {
-      set text(font: ("Charter", "Libertinus Serif"))
+      set text(font: ("Fira Sans", "Liberation Sans"))
       // Zwart. `show link` hierboven kleurt alles wat een link is schoolBlue,
       // en in de inhoudsopgave is elk item een link -- een volledig blauwe
       // inhoudstabel is onrustig en zegt niets.
@@ -406,31 +407,18 @@
 // `icon` en `bg` blijven in de signatuur staan zodat bestaande aanroepen blijven
 // werken, maar ze worden niet meer getoond.
 #let schoolbox(title, color, icon: none, bg: none, rules: none, body) = {
-  // 60% van de typekleur, zoals `#1!60` in LaTeX.
-  let rule = 0.4pt + color.lighten(40%)
-  block(
-    width: 100%,
-    above: 1.25em,
-    below: 1.25em,
-    stroke: if rules == "both" { (top: rule, bottom: rule) } else if rules == "top" { (top: rule) } else { none },
-    inset: if rules == "both" { (y: 5pt) } else if rules == "top" { (top: 5pt, bottom: 1pt) } else { (y: 1pt) },
-    {
+  // Drie kleuren naar functie: waarschuwing amber, voorbeeld/oefening grijs, de rest blauw.
+  let c = if color == schoolRed { rgb("#b45f06") } else if color == schoolGreen { rgb("#5f6b7a") } else { rgb("#1f5fa8") }
+  let body = { set table(fill: (x, y) => if y == 0 { white }); body }
+  block(width: 100%, breakable: true, above: 1.1em, below: 1.1em,
+    fill: c.lighten(95%), stroke: (left: 2pt + c),
+    inset: (left: 11pt, right: 10pt, y: 8pt), {
       if title != none and title != "" {
-        // Punt alleen als de titel niet al op leesteken eindigt, anders krijg je
-        // "Let Op!." en "Waarom deze som?."
-        let punct = if (
-          type(title) == str
-            and title.len() > 0
-            and (
-              title.last() in (".", "?", "!", ":", ";")
-            )
-        ) { "" } else { "." }
-        text(fill: color, weight: "bold", font: ("Fira Sans", "Liberation Sans"))[#title#punct]
-        h(0.35em)
+        text(weight: "bold", fill: c)[#title]
+        v(0.2em)
       }
       body
-    },
-  )
+    })
 }
 
 #let theorie(title: "Theorie", body) = schoolbox(title, schoolBlue, rules: "both", body)
@@ -540,15 +528,13 @@
       entries
     })
   }
-  schoolbox(title, schoolOrange, rules: "both", [
-    #set align(center)
-    // block: true -> displaystyle. Zonder dit worden breuken en integralen in
-    // de krappe inline-vorm gezet, precies wat \displaystyle in LaTeX voorkomt.
-    #text(size: 1.1em)[#_as-display(formula)]
-    #v(2pt)
-    #set align(left)
+  block(width: 100%, breakable: false, above: 1em, below: 1em, inset: (x: 13pt, y: 2pt))[
+    #text(size: 0.85em, weight: "bold", fill: rgb("#1f3a5f"), tracking: 0.04em)[#upper(title)]
+    #v(0.1em)
+    #align(center, _as-display(formula))
+    #v(0.1em)
     #text(size: 0.9em)[#description]
-  ])
+  ]
 }
 
 // Section divider for formularium (blue line with centered title)
