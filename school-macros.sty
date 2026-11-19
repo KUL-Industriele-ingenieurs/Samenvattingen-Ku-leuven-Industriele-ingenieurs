@@ -47,10 +47,25 @@
 \@ifpackageloaded{babel}{}{\RequirePackage[dutch]{babel}}
 
 % --- Typography ---
-% Bitstream Charter for body text (mathdesign handles math font matching)
-\@ifpackageloaded{mathdesign}{}{\RequirePackage[bitstream-charter]{mathdesign}}
-% Fira Sans for headers and sans-serif elements
-\@ifpackageloaded{FiraSans}{}{\RequirePackage[scaled=0.92]{FiraSans}}
+% Fira Sans als hoofdletter (zoals school-template.typ), wiskunde met newtxsf.
+% Fira Math zelf bestaat enkel als OTF en vraagt LuaLaTeX; newtxsf is de
+% pdflatex-variant die bij FiraSans hoort.
+\@ifpackageloaded{FiraSans}{}{\RequirePackage[sfdefault,lining]{FiraSans}}
+\@ifpackageloaded{amsmath}{}{\RequirePackage{amsmath}}
+\@ifpackageloaded{amsthm}{}{\RequirePackage{amsthm}} % voor newtxsf (\openbox)
+\@ifpackageloaded{newtxsf}{}{\RequirePackage[cmintegrals]{newtxsf}}
+% Typst zet de lopende tekst op 10pt. De documentklasse staat op 11pt, dus de
+% groottes worden hier opnieuw gezet. Zo blijft elk bestaand document werken.
+\renewcommand\normalsize{\@setfontsize\normalsize{10}{12.6}}
+\renewcommand\small{\@setfontsize\small{9}{11}}
+\renewcommand\footnotesize{\@setfontsize\footnotesize{8}{10}}
+\renewcommand\scriptsize{\@setfontsize\scriptsize{7}{8.5}}
+\renewcommand\tiny{\@setfontsize\tiny{5}{6}}
+\renewcommand\large{\@setfontsize\large{12}{14.5}}
+\renewcommand\Large{\@setfontsize\Large{14.4}{17.5}}
+\renewcommand\LARGE{\@setfontsize\LARGE{17.3}{21}}
+\renewcommand\huge{\@setfontsize\huge{20.7}{25}}
+\renewcommand\Huge{\@setfontsize\Huge{24.9}{30}}
 % --- Codefont: JetBrains Mono waar het kan, anders Fira Mono ---------------
 % JetBrains Mono bestaat in TeX Live enkel als OTF en heeft dus fontspec nodig
 % (LuaLaTeX of XeLaTeX). Onder pdflatex vallen we terug op Fira Mono, dat er
@@ -323,56 +338,42 @@
 % "Let Op!." Staat via `before upper` voor de inhoud, zodat de titel in dezelfde
 % alinea meeloopt in plaats van in een eigen titelbalk.
 \newcommand{\schoolRunInHead}[3]{%
-    \StrRight{#3}{1}[\schoolRunInLast]%
-    \textcolor{#1}{\bfseries\sffamily #3%
-        \IfSubStr{.?!:;}{\schoolRunInLast}{}{.}}\ %
+    \school@mapcolor{#1}%
+    \textcolor{\school@cc}{\bfseries #3}\par\vspace{0.2em}%
 }
 
 
-\newif\ifschool@afterrule
-\AddToHook{para/begin}{\global\school@afterrulefalse}
+% Callouts volgen school-template.typ: een vlak met 5% van de kleur, een balk
+% van 2pt links en een vetgedrukte titel in de kleur boven de inhoud. Er zijn
+% drie kleuren: waarschuwing amber, voorbeeld en oefening grijs, de rest blauw.
+\definecolor{calloutBlue}{HTML}{1F5FA8}
+\definecolor{calloutAmber}{HTML}{B45F06}
+\definecolor{calloutGray}{HTML}{5F6B7A}
+\definecolor{formulaTitle}{HTML}{1F3A5F}
+\def\school@cc{calloutBlue}
+\newcommand{\school@mapcolor}[1]{%
+    \ifstrequal{#1}{schoolRed}{\def\school@cc{calloutAmber}}{%
+    \ifstrequal{#1}{schoolGreen}{\def\school@cc{calloutGray}}{%
+    \def\school@cc{calloutBlue}}}%
+}
 
 \tcbset{
-    % Variant D: geen balk, geen icoon. Gekleurde titel als aanloop in de
-    % lopende tekst, en bij theorie, concept en formule een dunne lijn in de
-    % typekleur boven en onder. Een oefening krijgt alleen een lijn erboven:
-    % oefeningen staan vaak na elkaar en de lijn scheidt ze. Voorbeeld en
-    % waarschuwing krijgen geen lijn.
-    %
-    % Variant C had een gekleurde balk links over de hele hoogte van het kader.
-    % Op een pagina met drie of vier callouts gaf dat evenveel verticale
-    % strepen, en de icoontjes trokken meer aandacht dan de titel.
-    % Variant C verving op zijn beurt een volledig omkaderde box met gevulde
-    % titeltab, die drie keer zoveel hoogte kostte als de inhoud.
-    schoolbox/.style={
-        enhanced, breakable,
-        colback=white, colframe=white, boxrule=0pt, arc=0pt,
-        left=0pt, right=0pt, top=1pt, bottom=1pt,
-        before skip=0.8\baselineskip,
-        after skip=0.8\baselineskip
+    schoolbox/.code={%
+        \school@mapcolor{#1}%
+        \edef\school@tmp{\noexpand\tcbset{
+            enhanced, breakable, sharp corners,
+            colback=\school@cc!5!white, colframe=\school@cc!5!white,
+            boxrule=0pt, arc=0pt,
+            borderline west={2pt}{0pt}{\school@cc},
+            left=11pt, right=10pt, top=8pt, bottom=8pt,
+            before skip=1.1em, after skip=1.1em}}%
+        \school@tmp
     },
-    % Staat een kader met onderlijn vlak voor dit kader, dan valt de bovenlijn
-    % weg. Anders krijg je twee lijnen vlak boven elkaar. Elke nieuwe alinea
-    % tussen beide kaders zet de vlag terug (hook para/begin hieronder).
-    schoolrules/.code={%
-        \ifschool@afterrule
-            \tcbset{top=5pt, bottom=5pt, borderline south={0.4pt}{0pt}{#1!60}}%
-        \else
-            \tcbset{top=5pt, bottom=5pt,
-                borderline north={0.4pt}{0pt}{#1!60},
-                borderline south={0.4pt}{0pt}{#1!60}}%
-        \fi
-        \tcbset{after={\par\global\school@afterruletrue}}%
-    },
-    schoolruletop/.code={%
-        \ifschool@afterrule
-            \tcbset{top=5pt}%
-        \else
-            \tcbset{top=5pt, borderline north={0.4pt}{0pt}{#1!60}}%
-        \fi
-    },
-    % Titel als gekleurde aanloop. Wordt door de omgevingen hieronder gezet.
-    % #1 = accentkleur, #2 = icoon, #3 = titeltekst.
+    % Bewaard zodat bestaande aanroepen blijven werken; de lijnen zijn weg.
+    schoolrules/.code={},
+    schoolruletop/.code={},
+    % Titel boven de inhoud. #1 = accentkleur, #2 = icoon (niet meer getoond),
+    % #3 = titeltekst.
     schoolRunIn/.code n args={3}{%
         \ifstrempty{#3}{}{%
             \tcbset{before upper={\schoolRunInHead{#1}{#2}{#3}}}%
@@ -549,19 +550,15 @@
 
 \NewDocumentCommand{\frm}{ m m m }{% 
     \stepcounter{FormulariumEntryCounter}%
-    % `title=` werkt niet meer: schoolbox is nu `blanker` en heeft geen
-    % titelbalk. De titel gaat via schoolRunIn, net als bij de andere callouts.
-    % Daarna een \par, zodat de gecentreerde formule op een eigen regel komt en
-    % niet naast de titel.
-    \begin{tcolorbox}[
-        schoolbox=schoolOrange, schoolrules=schoolOrange,
-        schoolRunIn={schoolOrange}{\faCalculator}{#1},
-    ]
-        \par\vspace{2pt}%
-        {\centering\large $\displaystyle #2$\par}%
-        \vspace{6pt}%
-        {\small #3}\label{frm:\theFormulariumEntryCounter}%
-    \end{tcolorbox}%
+    % Zonder kader, zoals in Typst: titel in kapitalen, formule gecentreerd,
+    % beschrijving op 0.9em.
+    \par\vspace{1em}%
+    \begingroup\leftskip=13pt\rightskip=13pt
+    \noindent{\fontsize{8.5}{10}\selectfont\bfseries\color{formulaTitle}\MakeUppercase{#1}}\par\vspace{0.1em}%
+    {\centering $\displaystyle #2$\par}%
+    \vspace{0.1em}%
+    {\noindent\fontsize{9}{11}\selectfont #3}\label{frm:\theFormulariumEntryCounter}\par
+    \endgroup%
     \protected@write\@auxout{}{\string\addformulariumentry{\thesection}{\@currentlabelname}{\unexpanded{#1}}{\unexpanded{#2}}{\unexpanded{#3}}{\theFormulariumEntryCounter}}%
     \par\vspace{4pt}%
 }
