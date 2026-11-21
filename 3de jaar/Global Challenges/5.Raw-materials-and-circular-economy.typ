@@ -639,4 +639,277 @@ Deze dingen worden vandaag als goed bijgehouden met LCA (Life Cycle Assesments) 
 
 We gaan nu dieper in op de LCA. 
 
-=== LCA (Life Cycle Assesment) <sec:lca-life-cycle-assesment>
+=== LCA (Life Cycle Assesment) <sec:lca-life-cycle-assesment>\
+
+De LCA geeft ons een methode om de impact van producten ge bekijken en wat we kunnen doen om de impact te verminderen.
+
+ISO 14040 en 14044 zijn de standaarden voor LCA. 
+
+De LCA bevat 4 grote blokken:
++ Goal en scope:
++ Inventory: Data collectie van inputs en outputs van het product.
++ Impact analyse:
++ Interpretation
+
+#examenbox[Moet je kunnen uitleggen op het examen, welke blokken en daarna hoe je het gebruikt]
+
+Dit gaat allemaal naar een interpretatie van impact en dan bekijk je hoe je het resultaat kunnen gebruiken zoals:
+- Product development
+- Strategic planning
+- Marketing
+- Policy making
+
+#figure(
+  image("assets/LCA-process.png", width: 5cm),
+  caption: [LCA-process],
+  label: <fig:LCA-process>,
+)
+
+HERMAAK IN TYPST
+
+We bekijken deze processen iets dieper
+
+==== Process en scope <sec:process-en-scope>
+
+Welke boundries om een goede stagische keuze te maken. Wat is de outline die je bekijkt, een prodcut of een functional unit. Ga je een auto vergelijken met een bus terwijl een bus meer mensen kan vervoeren dus mss moet je meer autos per bus vergelijken. Of de qualiteit van een verf, een hoge kwaliteit verf moet je minder gebruiken dan een lage kwaliteit verf.
+
+Inventory ga je bekijken welke producten er binnen gaan in het process en welk product gaat er uit met welke by product, daarbij bekijk je energie en welke producten er gebruiken worden tijdens het process (process consumeables), de output daarvan zijn de emissies en afvalstromen, als laaste de recyclage van het process die terug in de product material gaat.
+
+#figure(
+  image("assets/LCA-analysis.png", width: 5cm),
+  caption: [LCA-analysis],
+  label: <fig:LCA-analysis>,
+)
+
+Als we alles van dit doen komen we dan aan impact, human health, biodiversiteit en resource depletion. Deze zijn niet direct geconnecteerd met elkaar maar je wilt wel een waarde en dus moet je ze normaliseren en ze op de zelfde eenheid brengen. 
+
+We normaliseren en brengen het dan op dezelfde schaal. Wat het meeste belangrijk wel is objectief en hangt af van welke referentie je neemt. 
+
+#figure(
+  image("assets/DELETEME2.png", width: 5cm),
+  caption: [DELETEME2],
+  label: <fig:DELETEME2>,
+)
+
+#figure(
+  image("assets/Schaaloverweging.png", width: 5cm),
+  caption: [Schaaloverweging],
+  label: <fig:Schaaloverweging>,
+)
+
+
+==== case: electric car <sec:case-electric-car>
+
+There is a lot of discussion whether or not electrical vehicles (EVs) are more environmentally friendly than internal combustion engine vehicles (ICEVs). The conclusion will largely depend on the system boundaries, and the impacts you consider.
+
+#figure(
+  image("assets/Impact-elektrische-auto.png", width: 5cm),
+  caption: [Impact-elektrische-auto],
+  label: <fig:Impact-elektrische-auto>,
+)
+
+The goal of the shift to electrical vehicles is to reduce greenhouse gas emissions. It can be said that indeed this is the case, even including the production of the cars and batteries. It will depend on the source of the electricity (see graph). Evidently, the benefit becomes more evident when the consumed energy has a low CO2 footprint as in Sweden or France.
+
+#figure(
+  image("assets/Vergelijking-impact-elektrische-autos.png", width: 5cm),
+  caption: [Vergelijking-impact-elektrische-autos],
+  label: <fig:Vergelijking-impact-elektrische-autos>,
+)
+
+On the other hand, we have to be aware that the production of batteries contributes significantly to other environmental impacts such as human toxicity and ecotoxicity, making the impact for these categories larger for EVs than ICEVs according to the state-of-the-art.
+
+
+
+== Circulaire economie <sec:circulaire-economie>
+
+=== Decoupling <sec:decoupling>
+
+Er is een groeiende nood aan resources in onze moderne maatschappij maar er is een gelimiteerde hoeveelheid. Om dit probleem te stoppen bracht de VN en europese commissie dit voorstel:
+
+#concept(title: "Decoupling")[
+  Decoupling is het process dat de nood voor resources niet meer overeenstempt met de groei van economie.
+
+  #figure(
+  image("assets/Decoupling.png", width: 12cm),
+  caption: [Decoupling],
+  label: <fig:Decoupling>,
+)
+
+Wanneer de nood voor resources groeit maar op een lagere rate als de economie hebben we een *relatieve Decoupling*
+
+Als de nood voor resources daalt terwijl de economie groeit hebben we een *absolute Decoupling*
+
+]
+
+De vraag is of dit nu aan de gang is, de grootte van een economie wordt bepaald door de GDP (Gross Domestic Product) en de resource noden met domestic material consumption (DMC). 
+
+#figure(
+  image("assets/DMC-en-GDP.png", width: 5cm),
+  caption: [DMC-en-GDP],
+  label: <fig:DMC-en-GDP>,
+)
+
+Als er gekeken wordt naar de grafiek is er in europa een kleine groei van economie maar een dalende of stabiele DMC.
+
+Globaal is dat niet zo met een grotere DMC groei dan GDP groei dus er is helemaal geen decoupling.
+
+Is de europese economie dan gewoon veel efficienter? Niet perse omdat de DMC alleen de direct materialen bij alleen direct geimporteerde materiaeln bekijkt en niet productie op andere contintenten.
+
+Dit kan opgelost worden door te kijken naar de material footprint per capital
+#figure(
+  image("assets/Material-footprint-per-capita.png", width: 5cm),
+  caption: [Material-footprint-per-capita],
+  label: <fig:Material-footprint-per-capita>,
+)
+
+Hierop kan je zien dat hoge inkom landen een grote materialen footprint hebben maar een minder duidelijke groei in de footprint. Lagere inkom landen hebben een lagere footprint.
+
+Decoupling is een goed concept maar op het moment is er geen decoupling van de economie en de resource noden.
+
+
+=== Circular economy <sec:circular-economy>
+
+Hoe kunnen we beter omgaan met resources als er weinig aanwezig zijn? Het concept van een circulaire economie is een manier om dit te doen in tegenstelling tot de lineaire economie waar we resources gebruiken en dan weggooien. In een circulaire economie proberen we de resources te hergebruiken en recycleren zodat we minder nieuwe resources nodig hebben.
+
+#concept(title: "Circulaire economie vs lineaire economie")[
+
+
+#figure(
+  image("assets/Linaire-economie.png", width: 5cm),
+  caption: [Linaire-economie],
+  label: <fig:Linaire-economie>,
+)
+  #figure(
+  image("assets/Circlaire-economie.png", width: 5cm),
+  caption: [Circlaire-economie],
+  label: <fig:Circlaire-economie>,
+)
+
+MERMAID DIAGRAM OF TIKZPICTURE HIER
+
+]
+
+
+#figure(
+  image("assets/deleteme2.png", width: 5cm),
+  caption: [deleteme2],
+  label: <fig:deleteme2>,
+)
+
+Strategien om dit te doen:
++ Ecodesign:
++ Process intesification:
++ Refurbersing en hergebruik:
+
+
+Als laatste kunnen we minder rauwe extraxted materialen gebruiken:
++ Meer sustainable materialen
++ Hernieuwbare materialen
++ Gerecylceerde rauwe materialen
+
+Recycleren is de beste manier om de input van rauwe materiaeln te verminderen en heel veel policies focussen hierop. In de ciculair economie gaat het verder en is het belangrijker om zo lang mogelijk waarde te behouden van producten, dus een grote levensduur behouden.
+
+We bekijken dit met een voorbeeld van een T-shirt:
+
+#TODO[TOEVOEGEN: T-shirt voorbeeld]
+
+
+In de circlaire economie is het anders:
+
+#figure(
+  image("assets/Circulaire-economie-T-shirt.png", width: 5cm),
+  caption: [Circulaire-economie-T-shirt],
+  label: <fig:Circulaire-economie-T-shirt>,
+)
+
+The table below gives a good framework to categorize strategies to reduce the need for recourses.
+
+A product has a certain societal function. To reduce the total need for recourses, we can try to get more function out of one product (the first column), to use less materials to make the same products (second column) and to decrease the amount of resources needed to make the materials (third column). 
+
+For each of these columns, we can then look at strategies that focus on reducing, improving or renewing. 
+
+For example, to get more function out of a product, we can share it (which reduces the total amount of products needed for the same amount of function), we can increase the lifetime (improvement of the product) of a product, and/or we can repair the product (renewing the product). All these strategies allow us to get more use out of one product. 
+
+#figure(
+  image("assets/Tabel-RENAME.png", width: 5cm),
+  caption: [Tabel-RENAME],
+  label: <fig:Tabel-RENAME>,
+)
+#pagebreak()
+
+
+=== Recycleren is niet genoeg <sec:recycleren-is-niet-genoeg>
+
+
+
+Closing the loop by recycling materials seems like an easy paradigm that could eliminate the concerns with respect to limited resource availability.  If we are, for example, running out of copper, we should just make sure we are not wasting any of it by recovering the material at end-of-life  of our products.  With up to 80 kg of copper in an electric vehicle,  the recovery during EOL treatment can also be a rather profitable business.
+
+Unfortunately that vision is too simplistic for a number of reasons. 
+
+Dissipation is one important element in this context:  wear and tear makes us spread small amounts of material over large surfaces with as effect that the material as a resource cannot be retrieved in an efficient way. In the best case this means a loss of sometimes valuable materials. In the worst it can imply toxicity problems: heavy metals in the top layers of our habitat are not compatible with a healthy living environment. An extreme example are the brake pads of train vehicles:  over the design life of typically 30 years, a train carriage dissipates a mass of such brake pads approximately equal to the weight of the vehicle. The traces are spread along the railway tracks all over the country….
+
+Secondly the concentrations of materials in our products are sometimes so low that separating them is economically inviable.  Think of the coatings we put in electronic products: consumer electronics like laptops and tablets contain thin coatings of indium tin-oxide that act as transparent conductive films in the displays. Recycling the rare-earth metal may technically be possible but at such great cost that recycling fees would become of the same order of magnitude as the sales prices of the original product. The market value of the rare-earth metal certainly does not provide a basis for systematic recovery.
+
+Thirdly materials evolve every time they are reused in a next product life:  from polymers that degrade, because the polymer chains are getting shorter and shorter every time they are remolten, to metals like aluminum for which the alloying elements can be added,  but cannot be removed by remelting. Just like adding salt and pepper to a dish is easier than taking it out again, reducing the concentration of alloying elements in light alloys like aluminum or magnesium implies dilution with new and pure metal input which comes at a high energetic and environmental price.
+
+For many materials recycling means going back to the base molecules or even atoms:  thermosets cannot be remolten,  but need to be broken down to the basis chemical substances they are built from through processes like pyrolysis.  Again, technically feasible,  but too often not economically viable:  virgin polymers can be obtained much cheaper than recyclates ‘rebuilt’ from thermosets. 
+
+For all these reasons waste prevention, by dematerializing product functionality,  by product life cycle extension or by component reuse are measures that complement systematic recycling. And even with all these measures in place,  entropy keeps playing its role: materials are spread in ever smaller concentrations requiring more and more energy to make them available for manufacturing new products.
+
+
+=== case: electric car en circulaire economie <sec:case-electric-car-en-circulaire-economie>
+
+Car-sharing
+
+Current legislation is mainly focused on increasing the recycling of cars, and stimulating innovation to recycle better batteries and electric motors. However, there are more strategies to improve the circularity of electrical vehicles.
+
+One of these strategies is car-sharing as a new circular business model. Cars are for more than 90% of their time not used. So there is plenty of time to be used by another driver. In most cases, a car sharing company owns the cars, and offers a system where you pay per use (the time you need the car, and kilometers driven). Since cars are used more intensively, less cars are needed, together with less parking place. Several scientific studies show that the potential reduction of raw materials consumption is large for these new circular business models, even larger than e.g. improved recycling. 
+
+#figure(
+  image("assets/Hoeveelheid-autodelen-in-Vlaanderen.png", width: 5cm),
+  caption: [Hoeveelheid-autodelen-in-Vlaanderen],
+  label: <fig:Hoeveelheid-autodelen-in-Vlaanderen>,
+)
+
+
+== Materalen links met andere challenges <sec:materalen-links-met-andere-challenges>
+
+#figure(
+  image("assets/Materials-links-met-andere-challenges.png", width: 5cm),
+  caption: [Materials-links-met-andere-challenges],
+  label: <fig:Materials-links-met-andere-challenges>,
+)
+
+Climate and Biodiversity
+
+The use of raw materials has a dual impact on our environment. On the one hand the production and waste of materials cause significant impact on the environment, such as emissions of greenhouse gases and other harmful by-products. On the other hand, to move towards more sustainable energy systems, we need specific and often rare materials.
+
+Ecosystems are a source of renewable resources that we can use in a circular biobased economy, provided of course that we produce and use them in a sustainable way. 
+
+Buildings and mobility
+
+The shift towards electrical mobility requires a lot of critical materials, as illustrated in the electrical car case in this module. 
+
+Furthermore, the highest volume of resources are still consumed by the construction industry. Although the impact per kg might not be the highest, the total impact certainly is largest because of the enormous volumes. The production of concrete stands already for about 8% of the global CO2 emissions.
+
+Social and economic inequality
+
+In striving towards a more equal society worldwide, the demand for resources and production is ever rising. To guarantee this economic equality, production of goods is essential.
+
+Economy
+
+To move towards a more sustainable future, we need decoupling of material use and impact from economic growth
+
+Economy has a large influence on resource availability: material prices are very volatile, mainly due to economic scarcity, and do not take externalities sufficiently into account.
+
+Food security
+
+Waste from food production and consumption can become a renewable resource in the material cycle.
+
+At the same time, the production and use of biobased materials and biofuels from crops grown exclusively for this purpose can become a competitor for food production.
+
+Energy
+
+Since raw materials are becoming scarcer, more energy is needed to extract the same amount and quality of resources. Energy-intensity of extraction can therefore be used as a measure for resource depletion.
+
+The limited availability or production capacity of certain raw materials is a bottleneck for the energy transition towards more sustainable energy production. Moreover, a circular use of materials could demand a lot of energy if we aim for a systematic reclamation of materials with a limited loss of quality. 
