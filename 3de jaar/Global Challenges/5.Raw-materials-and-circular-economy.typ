@@ -629,7 +629,7 @@ Als alle stoffen en bijproducten bij het maken van het product kan de totale imp
 
 #figure(
   image("assets/Inputs-=>-Impact-categorien-=>-Endpoints-indicators-.png", width: 5cm),
-  caption: [Inputs-=>-Impact-categorien-=>-Endpoints-indicators-],
+  caption: [Inputs-=>-Impact-categorien-=>-Endpoints-indicators],
   label: <fig:Inputs-Impact-categorien-Endpoints-indicators>,
 )
 
