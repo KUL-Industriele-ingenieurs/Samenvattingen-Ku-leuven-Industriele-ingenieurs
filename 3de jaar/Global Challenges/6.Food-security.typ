@@ -80,3 +80,60 @@ Er is een duidelijke relatie tussen dagelijks kalorie innamen en BMI
 In de verendige staten is het het erste met 70% van de bevolking met overgewicht. 
 
 Voedselzekerheid gaat dus niet alleen rond ondervoeding maar over beschikbaarheid en toegang tot gezond voedsel. Het is een complex probleem dat veel factoren heeft zoals armoede, conflicten, klimaatverandering en voedselproductie.
+
+
+== Challenges voedsel zekerheid <sec:challenges-voedselzekerheid>
+
+Er zijn veel uitdagingen voor voedselzekerheid. De belangrijkste zijn:
++ Genoeg voedsel produceren voor een groeiende populatie
++ Klimaatveranderen die impact heeft op voedselproductie
++ Meer socio sustainable voedselproductie met deftige prijs voor de producenten
+
+
+De vraag die je kunt stellen is zijn we niet gewoon met teveel mensen op aarde? Om dit deftig te bekijken kijken we naar voedselproductie in relatie met de bevolkingsgroei. 
+
+#figure(
+  image("assets/Voedselproductie-in-relatie-met-populatiegroei.png", width: 5cm),
+  caption: [Voedselproductie-in-relatie-met-populatiegroei],
+  label: <fig:Voedselproductie-in-relatie-met-populatiegroei>,
+)
+
+Je ziet dat voedselproductie stijgt met de bevolkingsgroei en daarbij nog snellel groeit. er is nog steeds een probleem omdat de populatie blijft groeien en er voor 2050 een grote food gap is van 7 trillion calorieën. Is dit een realistiche waarde en kunnen we dit halen?
+
+#figure(
+  image("assets/Food-gap.png", width: 5cm),
+  caption: [Food-gap],
+  label: <fig:Food-gap>,
+)
+
+Het is alleen mogelijk als er geinvesteerd wordt in voedselproductie en efficientie ervan. 
+
+Als er geen productiviteit gain is zou er 3200Mha extra landbouwgrond nodig zijn. Als de Busnisess as useal scenario wordt gevolgd waarbij de huidige trends behouden blijven, zou er 600Mha extra landbouwgrond nodig zijn. Dit is wel nog een gap, de Land gap.
+
+#figure(
+  image("assets/Land-gap.png", width: 5cm),
+  caption: [Land-gap],
+  label: <fig:Land-gap>,
+)
+
+We moeten meer productiviteit verhogen en het beter houden bij het landbouwland dat er is. Klimaatsverandereing heeft wel een impact op de yield van landbouwgrond. De impact is verschillend per regio.
+
+#figure(
+  image("assets/Impact-van-klimaatsverandering-op-landbouw.png", width: 15cm),
+  caption: [Impact-van-klimaatsverandering-op-landbouw],
+  label: <fig:Impact-van-klimaatsverandering-op-landbouw>,
+)
+
+De consumer is ook van belang. Er is veel overconsumptie van voedsel vooral in het noorde, er is een gevecht tegen honger maar ook tegen overconsumptie.
+
+De challenges zijn enom diverse met vraag naar technologische inovatie maar ook socio-economische veranderingen. 
+
+=== Food gap <sec:food-gap>
+
+=== Yield gap <sec:yield-gap>
+
+
+=== Shocks <sec:shocks>
+
+
+== Impact van landbouw op de omgeving <sec:impact-landbouw-omgeving>
