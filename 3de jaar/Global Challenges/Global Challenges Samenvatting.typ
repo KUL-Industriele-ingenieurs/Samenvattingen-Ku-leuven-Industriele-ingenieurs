@@ -31,7 +31,4 @@
 #include "12.Human-behavior.typ"
 #include "13.Global-governance.typ"
 #include "14.Cases-and-exam.typ"
-
-// ----------------------------- AFSLUITING ------------------------------------
-
-#printsymbols()
+#include "15.Eindpagina.typ"
