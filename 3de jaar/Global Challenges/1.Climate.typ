@@ -53,6 +53,8 @@ Wanneer we die brandstoffen verbranden, komen er broeikasgassen vrij en warmt de
   label: <fig:Impacten-Klimaat>,
 )
 
+VERVANGEN DOOR EIGEN TABEL
+
 @fig:Impacten-Klimaat-wereldkaart toont per regio welke impact al waargenomen is (blauw = fysisch, groen = biologisch, rood = menselijk). Een gevuld symbool betekent een grote bijdrage van klimaatverandering, het staafje hoe zeker dat is.
 
 #figure(
@@ -267,7 +269,7 @@ Met radiative forcing kun je verschillende factoren met elkaar vergelijken: CO#s
 ==== Evolutie sinds 1750 <sec:evolutie-radiative-forcing>
 
 #wrap-figure(
-  image("assets/Evolutie-Radiative-forcing.png", width: 12cm),
+  image("assets/Evolutie-Radiative-forcing.png", width: 10cm),
   caption: [Evolutie van de positieve forcings sinds 1750],
   label: <fig:Evolutie-Radiative-forcing>,
 )[
@@ -324,6 +326,7 @@ Die grenzen komen uit wetenschappelijk onderzoek. Het *IPCC* (Intergovernmental 
   caption: [De zes assessment reports van het IPCC en het klimaatbeleid dat erop volgde],
   label: <fig:Alle-IPCC-reports>,
 )
+VERVANGEN MET EIGEN FIGUUR OF MERMAID DIAGRAM
 
 Elk rapport leidde tot een volgende stap in het klimaatbeleid (@fig:Alle-IPCC-reports): het klimaatverdrag van de VN (UNFCCC), het Kyoto-protocol, het doel van 2 °C, het Akkoord van Parijs en het Klimaatpact van Glasgow.
 
@@ -414,20 +417,20 @@ _Methaan krijgt veel aandacht in het klimaatbeleid, omdat het veel korter in de 
 
 == Emissiepaden <sec:emission-pathways>
 
-Het carbon budget zegt hoeveel we nog mogen uitstoten om het Akkoord van Parijs te halen. Wanneer we die uitstoot verminderen, maakt voor de eindtemperatuur weinig uit: in 10 jaar of in 50 jaar, zolang we onder het budget blijven.
-
 #wrap-figure(
-  image("assets/IPPC-4-pathway-emission-reduction.png", width: 8.5cm),
+  image("assets/IPPC-4-pathway-emission-reduction.png", width: 9cm),
   caption: [Netto globale CO#sub[2]-uitstoot in vier modelpaden van het IPCC],
   label: <fig:IPPC-4-pathway-emission-reduction>,
 )[
+
+  Het carbon budget zegt hoeveel we nog mogen uitstoten om het Akkoord van Parijs te halen. Wanneer we die uitstoot verminderen, maakt voor de eindtemperatuur weinig uit: in 10 jaar of in 50 jaar, zolang we onder het budget blijven.
   Het IPCC toont vier voorbeeldpaden, P1 tot P4, om de uitstoot te verminderen (@fig:IPPC-4-pathway-emission-reduction). In elk pad gaat de netto uitstoot tussen 2050 en 2060 naar nul.
 
   De meeste paden vragen op het einde *negatieve emissies*: we moeten dan meer CO#sub[2] uit de lucht halen dan we uitstoten. P1 steunt daar het minst op, P4 het meest. De technologie om dat op grote schaal te doen, bestaat nog niet.
 ]
 
 #figure(
-  image("assets/Meer-detail-4-paden.png", width: 100%),
+  image("assets/Meer-detail-4-paden.png", width: 90%),
   caption: [Bijdragen aan de netto CO#sub[2]-uitstoot in de vier modelpaden],
   label: <fig:Meer-detail-4-paden>,
 )
@@ -649,7 +652,7 @@ Sinds 1970 is de zeespiegel ongeveer 11 cm gestegen (@fig:zeespiegel-stijging):
 - Ook de afname van grondwater draagt bij.
 
 #figure(
-  image("assets/zeespiegel-stijging.png", width: 55%),
+  image("assets/zeespiegel-stijging.png", width: 45%),
   caption: [Bijdragen aan de globale zeespiegelstijging, 1971–2018 (IPCC, 2021)],
   label: <fig:zeespiegel-stijging>,
 )
@@ -657,7 +660,7 @@ Sinds 1970 is de zeespiegel ongeveer 11 cm gestegen (@fig:zeespiegel-stijging):
 Hoeveel de zeespiegel nog stijgt, hangt af van ons: van de opwarming en dus van het scenario. Volgens het vijfde IPCC-rapport stijgt de zeespiegel tegen 2100 met ongeveer 25 cm tot 1 m (@fig:Global-Sea-level-rise).
 
 #figure(
-  image("assets/Global-Sea-level-rise.png", width: 60%),
+  image("assets/Global-Sea-level-rise.png", width: 45%),
   caption: [Verwachte globale zeespiegelstijging tot 2100 voor RCP2.6 (blauw) en RCP8.5 (rood) (IPCC, 2014)],
   label: <fig:Global-Sea-level-rise>,
 )

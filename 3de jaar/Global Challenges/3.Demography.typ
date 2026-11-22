@@ -35,26 +35,26 @@ Wanneer we de populatie plotten over de tijd, zien we voor het grootste deel van
 
 De laatste 200 jaar stijgt de populatie gigantisch, tot ongeveer 8 miljard mensen vandaag.
 
-#figure(
+#wrap-figure(
   image("assets/Populatiegroei-tegenover-de-tijd.png", width: 10cm),
   caption: [Populatiegroei-tegenover-de-tijd],
   label: <fig:Populatiegroei-tegenover-de-tijd>,
-)
+)[
 
-#table(
-  columns: 2,
-  align: (left, right),
-  table.header([*Periode*], [*Wereldbevolking*]),
-  [Romeinse tijd], [270 miljoen],
-  [1500], [500 miljoen],
-  [1960], [3 miljard],
-  [2020], [8 miljard],
-)
+  #table(
+    columns: 2,
+    align: (left, right),
+    table.header([*Periode*], [*Wereldbevolking*]),
+    [Romeinse tijd], [270 miljoen],
+    [1500], [500 miljoen],
+    [1960], [3 miljard],
+    [2020], [8 miljard],
+  )
 
-Dat is een 10x vergroting in 200 jaar. Het laatste decennium kwamen er evenveel mensen bij als er 200 jaar geleden in totaal waren.
+  Dat is een 10x vergroting in 200 jaar. Het laatste decennium kwamen er evenveel mensen bij als er 200 jaar geleden in totaal waren.
 
-Daarom denken veel mensen dat populatiegroei een groot probleem is. De redenering: mensen krijgen veel kinderen, die kinderen krijgen weer kinderen, en uiteindelijk kan geen enkel systeem op aarde die populatie onderhouden.
-
+  Daarom denken veel mensen dat populatiegroei een groot probleem is. De redenering: mensen krijgen veel kinderen, die kinderen krijgen weer kinderen, en uiteindelijk kan geen enkel systeem op aarde die populatie onderhouden.
+]
 #wrap-figure(
   image("assets/The-population-bomb-book-cover.png", width: 3cm),
   caption: [The-population-bomb-book-cover],
@@ -220,11 +220,20 @@ De mortaliteit daalde niet door één factor, maar door veranderingen in gezondh
   columns: 2,
   align: left,
   table.header([*Factor*], [*Voorbeeld*]),
-  [Geneeskunde], [*Pokkenvaccin*. Lady Montagu, Brits ambassadeur in Turkije, zag dat Turken zich beschermden met korsten van pokkenpatiënten en paste het toe op haar eigen zoon. Eind 18e eeuw maakte *Jenner* een veilig vaccin met koepokken, omdat melkmeisjes met koepokken geen pokken kregen. Pokken doodden 8 à 20 % van de middeleeuwse bevolking.],
-  [Sanitatie], [*John Snow* zag dat een cholera-uitbraak startte bij mensen die water haalden aan hetzelfde waterpunt. Hij sloot het af en de uitbraak stopte. Na de *Great Stink* in Londen (1860) bouwde de overheid zuiveringswerken voor de Theems.],
-  [Voeding], [*Sterilisatie* van voedsel bestaat sinds 1810. Daarvoor zijn ook fabrieken nodig, bv. voor glazen bokalen. *Von Liebig* toonde dat plantengroei beperkt wordt door het nutriënt dat ontbreekt: bemesten verhoogt de opbrengst sterk.],
-  [Gezondheidszorg], [Eind 19e eeuw voerde *Bismarck* in Duitsland de eerste ziektewet in. Ziekenfondsen met bijdragen van werkgevers en werknemers betaalden zieke werknemers.],
-  [Onderwijs], [In Engeland ging in 1850 minder dan 20 % van de kinderen van 6 tot 12 jaar naar school, eind 19e eeuw meer dan 80 %. Wie geschoold is, werkt beter in de fabriek en volgt beter een behandeling.],
+  [Geneeskunde],
+  [*Pokkenvaccin*. Lady Montagu, Brits ambassadeur in Turkije, zag dat Turken zich beschermden met korsten van pokkenpatiënten en paste het toe op haar eigen zoon. Eind 18e eeuw maakte *Jenner* een veilig vaccin met koepokken, omdat melkmeisjes met koepokken geen pokken kregen. Pokken doodden 8 à 20 % van de middeleeuwse bevolking.],
+
+  [Sanitatie],
+  [*John Snow* zag dat een cholera-uitbraak startte bij mensen die water haalden aan hetzelfde waterpunt. Hij sloot het af en de uitbraak stopte. Na de *Great Stink* in Londen (1860) bouwde de overheid zuiveringswerken voor de Theems.],
+
+  [Voeding],
+  [*Sterilisatie* van voedsel bestaat sinds 1810. Daarvoor zijn ook fabrieken nodig, bv. voor glazen bokalen. *Von Liebig* toonde dat plantengroei beperkt wordt door het nutriënt dat ontbreekt: bemesten verhoogt de opbrengst sterk.],
+
+  [Gezondheidszorg],
+  [Eind 19e eeuw voerde *Bismarck* in Duitsland de eerste ziektewet in. Ziekenfondsen met bijdragen van werkgevers en werknemers betaalden zieke werknemers.],
+
+  [Onderwijs],
+  [In Engeland ging in 1850 minder dan 20 % van de kinderen van 6 tot 12 jaar naar school, eind 19e eeuw meer dan 80 %. Wie geschoold is, werkt beter in de fabriek en volgt beter een behandeling.],
 )
 
 #figure(
@@ -274,7 +283,9 @@ De vruchtbaarheid daalt pas *decennia na* de mortaliteit. De maatschappij moet z
   columns: 2,
   align: left,
   table.header([*Start van de daling*], [*Landen*]),
-  [eind 19e eeuw], [Engeland (±100 jaar na de start van de mortaliteitsdaling), snel gevolgd door de rest van West-Europa, de VS en Canada],
+  [eind 19e eeuw],
+  [Engeland (±100 jaar na de start van de mortaliteitsdaling), snel gevolgd door de rest van West-Europa, de VS en Canada],
+
   [begin 20e eeuw], [Zuid-Europa (Middellandse Zee) en het oosten (Rusland)],
   [na WO II], [het grootste deel van Azië en Latijns-Amerika],
   [na 1990], [Afrika ten zuiden van de Sahara],
@@ -337,7 +348,7 @@ De wereld gaat hier snel vooruit (@fig:Kindersterfte-1961 en @fig:Kindersterfte-
 De meeste kinderen sterven aan *infectieziektes*, die vaak te voorkomen zijn (@fig:Doodsoorzaken-kinderen). Goed gevoede kinderen zijn ook beter bestand tegen die ziektes. Met zulke eenvoudige middelen kan kindersterfte overal onder 2 % zakken, en we zijn op weg. Zo hangt vruchtbaarheid ook samen met *voedsel*: betere voeding → minder kindersterfte → minder kinderen.
 
 #figure(
-  image("assets/Doodsoorzaken-kinderen.png", width: 13cm),
+  image("assets/Doodsoorzaken-kinderen.png", width: 12cm),
   caption: [Doodsoorzaken van kinderen onder 5 jaar, 1990 en 2017 (Our World in Data)],
   label: <fig:Doodsoorzaken-kinderen>,
 )
@@ -433,7 +444,10 @@ In het Verenigd Koninkrijk duurde de daling van meer dan 6 naar minder dan 3 kin
   align: left,
   table.header([], [*Ontwikkelde landen*], [*Ontwikkelingslanden*]),
   [Geboorte- en sterftecijfer vóór de transitie], [al iets lager], [heel hoog],
-  [Daling van de mortaliteit], [traag: kennis en technologie moesten nog ontwikkeld worden], [snel: de kennis bestond al],
+  [Daling van de mortaliteit],
+  [traag: kennis en technologie moesten nog ontwikkeld worden],
+  [snel: de kennis bestond al],
+
   [Daling van de vruchtbaarheid], [traag], [traag (sociaal-cultureel)],
   [Bevolkingsgroei (@fig:Demografische-transitie-ontwikkeld-vs-ontwikkelend)], [relatief klein], [veel groter],
 )
@@ -457,7 +471,9 @@ Tijdens de demografische transitie daalt eerst de mortaliteit en dan de vruchtba
   [Bevolking], [veel jonge volwassenen, weinig ouderen], [veel ouderen, weinig kinderen (na 1 à 1,5 eeuw)],
   [Economische groei], [groeispurt van 7 à 10 % per jaar, decennialang], [1 à 3 % per jaar, soms geen groei],
   [Voorbeeld], [het Westen na WO II, China 2005–2020], [Europa en Noord-Amerika vandaag],
-  [Wat nodig is], [goed economisch beleid en onderwijs voor de jongeren], [geld voor zorg aan ouderen, blijven investeren in onderwijs],
+  [Wat nodig is],
+  [goed economisch beleid en onderwijs voor de jongeren],
+  [geld voor zorg aan ouderen, blijven investeren in onderwijs],
 )
 
 In de jonge fase kunnen veel mensen produceren, terwijl ze voor weinig ouderen moeten zorgen. Een land kan zo rijk worden, maar dat gebeurt niet vanzelf: de overheid moet de juiste voorwaarden scheppen.

@@ -32,7 +32,7 @@ Met fossielen reconstrueren we wanneer soorten ontstaan en uitgestorven zijn.
 De aarde is ongeveer *4,5 miljard jaar* oud. De eerste levensvormen verschenen zo'n *3,7 miljard jaar* geleden: eencellige organismen zoals bacteriën en archaea.
 
 #wrap-figure(
-  image("assets/Biodiversitiet-sinds-de-cambrian-explosion.png", width: 10cm),
+  image("assets/Biodiversitiet-sinds-de-cambrian-explosion.png", width: 9cm),
   caption: [Aantal soorten sinds het Cambrium: zee (blauw) en land (bruin)],
   label: <fig:Biodiversitiet-sinds-de-cambrian-explosion>,
 )[
@@ -50,7 +50,7 @@ De aarde is ongeveer *4,5 miljard jaar* oud. De eerste levensvormen verschenen z
 De soorten van vandaag zijn maar *2–5 %* van alle soorten die ooit bestaan hebben. De rest is uitgestorven.
 
 #wrap-figure(
-  image("assets/Extinction-rate-doorheen-de-tijd.png", width: 12cm),
+  image("assets/Extinction-rate-doorheen-de-tijd.png", width: 10cm),
   caption: [Uitgestorven geslachten van zeedieren doorheen de tijd],
   label: <fig:Extinction-rate-doorheen-de-tijd>,
 )[
@@ -157,7 +157,7 @@ We zitten dus voorbij de *planetaire grens* voor de integriteit van de biosfeer.
 === Hoe meten we biodiversiteitsverlies? <sec:hoe-meten-we-biodiversiteit-verlies>
 
 #wrap-figure(
-  image("assets/Biodiversiteit-verlies-metingen.png", width: 9cm),
+  image("assets/Biodiversiteit-verlies-metingen.png", width: 7cm),
   caption: [Technieken om biodiversiteit te monitoren, van satelliet tot bodem],
   label: <fig:Biodiversiteit-verlies-metingen>,
 )[
@@ -173,16 +173,19 @@ We zitten dus voorbij de *planetaire grens* voor de integriteit van de biosfeer.
   - *lokaal*: geluidsopnames, cameravallen, valputten, eDNA (DNA uit de omgeving), bomeninventaris, LIDAR, vegetatieopnames, _citizen science_ en zenders.
 
   Daarom gebruikt men vaak vereenvoudigde maten: *indicatorsoorten* (gevoelig voor een bepaalde verstoring) of *multi-taxa*-benaderingen (meerdere groepen organismen tegelijk).
+
+  Om structuur te brengen in al die data ontwikkelde GEO-BON de *Essential Biodiversity Variables* (EBV), in zes klassen:
+
+  + genetische samenstelling
+  + soortpopulaties
+  + eigenschappen van soorten
+  + samenstelling van gemeenschappen
+  + structuur van het ecosysteem
+  + werking van het ecosysteem
+
 ]
 
-Om structuur te brengen in al die data ontwikkelde GEO-BON de *Essential Biodiversity Variables* (EBV), in zes klassen:
 
-+ genetische samenstelling
-+ soortpopulaties
-+ eigenschappen van soorten
-+ samenstelling van gemeenschappen
-+ structuur van het ecosysteem
-+ werking van het ecosysteem
 
 === Midpoint-indicatoren <sec:mid-point-indicators>
 
@@ -204,6 +207,8 @@ Om structuur te brengen in al die data ontwikkelde GEO-BON de *Essential Biodive
 Waarom is biodiversiteit belangrijk?
 
 Het meeste van de biodiversiteit wordt niet verhandeld en heeft geen marktwaarde. Landen zagen natuur daarom lang als een landreserve, te vervangen door landbouw of verstedelijking. Dat droeg bij aan de huidige biodiversiteitscrisis.
+
+DIT DEEL HERSCHRIJVEN
 
 #concept(title: "Van empty world naar full world model")[
   - *Empty world model*: biodiversiteit is een economische externaliteit, iets wat niet meetelt.
