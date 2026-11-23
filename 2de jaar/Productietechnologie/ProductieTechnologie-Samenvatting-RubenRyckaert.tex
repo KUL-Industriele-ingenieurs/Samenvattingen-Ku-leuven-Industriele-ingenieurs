@@ -52,30 +52,23 @@ Productietechnologie gaat over het produceren van goederen, met technieken, mach
     \item Snijden
     \item Ponsen
     \item Stralen
-          \begin{figure}[htbp]
-              \centering\includegraphics[width=0.5\textwidth]{assets/straalbewerkingen.png}
-              \caption{Overzicht van bewerkingen met stralen, gebruikmakend van verschillende energiedragers}
-              \label{fig:stralen_overzicht}
-          \end{figure}
 \end{itemize}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.55\textwidth]{assets/straalbewerkingen.png}
+    \caption{Overzicht van bewerkingen met stralen, gebruikmakend van verschillende energiedragers.}
+    \label{fig:stralen_overzicht}
+\end{figure}
+\FloatBarrier
 
 \section{Keuzes bij productie}
 
 Bij produceren kies je uit al deze technieken de techniek die het beste past. Dat hangt af van de eisen die aan het product worden gesteld.
 
 \begin{itemize}
-    \item Kosten
-    \item snelheid
-    \item flexibiliteit
-    \item kwaliteit
-    \item milieu
-    \item veiligheid
-    \item functionaliteit
-    \item materiaal
-    \item tolerantie
-    \item oppervlaktekwaliteit
-    \item aantal
-    \item onderhoud
+    \item \textbf{Economische factoren}: Kosten, productiesnelheid, flexibiliteit, seriegrootte en onderhoudskosten.
+    \item \textbf{Technische factoren}: Kwaliteit, materiaalkeuze, maattoleranties, oppervlaktekwaliteit, functionaliteit, veiligheid en milieubelasting.
 \end{itemize}
 
 
@@ -240,7 +233,7 @@ Verschillende productietechnieken hebben verschillende haalbare oppervlaktekwali
 
 \begin{warningbox}[EXAMEN CHECKLIST: INLEIDING]
     \begin{itemize}
-        \item \textbf{Passingen}: Ken het verschil tussen losse, nauwe en perspassingen en hun functie.
+        \item \textbf{Passingen}: Ken het verschil tussen losse, overgangs- en perspassingen en hun functie.
         \item \textbf{Toleranties}: Begrijp de diagrammen en de relatie tussen IT-klasse en nauwkeurigheid.
         \item \textbf{Kosten vs. Tolerantie}: Leg uit waarom de kosten exponentieel stijgen bij nauwere toleranties.
         \item \textbf{Oppervlaktekwaliteit}: Begrijp de parameters $R_a$ en $R_z$ en de economische impact van gladde oppervlakken.
@@ -350,7 +343,7 @@ Je hebt daarbij deze parameters:
     \item Snijsnelheid $v_c$
     \item Snedebreedte $b$ (breedte van de beitel)
     \item Snededikte $h$ (hoeveel materiaal er per keer wordt verwijderd)
-    \item wrijvingscoëfficiënt $\mu$
+    \item Wrijvingshoek $\mu$ (met $\tan\mu$ de wrijvingscoëfficiënt)
 \end{itemize}
 
 \begin{figure}[htbp]
@@ -400,7 +393,7 @@ Een grotere afschuifhoek geeft een kleiner afschuifvlak, dus een betere spaanvor
 \frm{Afschuifvlak (shear zone) A}{A = \frac{b \cdot h}{\sin\phi}}
 {waarbij $A$ het afschuifvlak is [\si{mm^2}], $b$ de snedebreedte [\si{mm}], $h$ de snededikte [\si{mm}] en $\phi$ de afschuifhoek
         [$^\circ$].}
-\vspace{1cm}
+
 
 \begin{figure}[htbp]
     \centering
@@ -424,24 +417,29 @@ De belangrijkste snijhoeken bij verspanen zijn \textbf{de spaanhoek $\gamma$, de
 Deze bepalen samen de benodigde kracht, de gereedschapsslijtage en de uiteindelijke oppervlaktekwaliteit.
 
 \begin{itemize}
-    \item \keyterm{Spaanhoek $\gamma$} $\to$ Een grotere hoek betekent dat er minder kracht nodig is voor de spaanvorming. Typische waarden liggen tussen -10° en 30°.
+    \item \keyterm{Spaanhoek $\gamma$} $\to$ Een grotere hoek betekent dat er minder kracht nodig is voor de spaanvorming. Typische waarden liggen tussen \ang{-10} en \ang{30}.
     \item \keyterm{Wighoek $\beta$} $\to$ Deze moet zo groot mogelijk zijn voor een goede sterkte en warmteafvoer. Grote wighoeken voeren de warmte sneller af, wat hogere voedingssnelheden toelaat.
-          \begin{figure}[htbp]
-              \centering
-              \includegraphics[width=0.4\textwidth]{assets/image12.png}
-              \caption{Visualisatie van de wighoek $\beta$.}
-              \label{fig:image12}
-          \end{figure}
-    \item \keyterm{Vrijloophoek $\alpha$} $\to$ Een grotere hoek zorgt voor minder wrijving tussen het werkstuk en de beitel. Typische waarden liggen tussen 6° en 10°. Zonder vrijloophoek (of bij hoeken rond de 0°) ontstaat er extreme wrijving en warmte.
-          \begin{figure}[htbp]
-              \centering
-              \includegraphics[width=0.4\textwidth]{assets/image14.png}
-              \caption{Visualisatie van de vrijloophoek $\alpha$.}
-              \label{fig:image14}
-          \end{figure}
+    \item \keyterm{Vrijloophoek $\alpha$} $\to$ Een grotere hoek zorgt voor minder wrijving tussen het werkstuk en de beitel. Typische waarden liggen tussen \ang{6} en \ang{10}. Zonder vrijloophoek (of bij hoeken rond de \ang{0}) ontstaat er extreme wrijving en warmte.
     \item \keyterm{Snedediepte $a$} $\to$ Hoe groter de diepte, hoe meer kracht er nodig is.
     \item \keyterm{Voeding $f$} $\to$ Hoe groter de voeding, hoe meer kracht er nodig is.
 \end{itemize}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=0.85\linewidth]{assets/image12.png}
+        \caption{Visualisatie van de wighoek $\beta$.}
+        \label{fig:image12}
+    \end{minipage}\hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=0.85\linewidth]{assets/image14.png}
+        \caption{Visualisatie van de vrijloophoek $\alpha$.}
+        \label{fig:image14}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
 
 \begin{examenbox}
     Ken de drie belangrijkste hoeken ($\gamma, \beta, \alpha$) en hun effect op de snijkracht en warmteontwikkeling.
@@ -451,28 +449,19 @@ Deze bepalen samen de benodigde kracht, de gereedschapsslijtage en de uiteindeli
 Deze verschillende hoeken hebben effect op elkaar. Dit is dus een optimalisatieprobleem.
 Je moet afwegen wat de beste hoeken zijn voor jouw materiaal en bewerking.
 
-\subsubsection{Extra info}
+\subsubsection{Invloed van het werkstukmateriaal op de spaanhoek}
 
 \begin{wrapfigure}{r}{0.45\textwidth}
     \centering
     \includegraphics[width=\linewidth]{assets/image15.png}
-    \caption{Verschillende spaanhoeken voor verschillende materialen}
+    \caption{Typische spaanhoeken $\gamma$ en wighoeken $\beta$ per werkstukmateriaal.}
     \label{fig:image15}
 \end{wrapfigure}
 
-De spaanhoek is enorm belangrijk. Een grote spaanhoek snijdt makkelijk
-materialen zoals aluminium, koper, kunststof.
-Voor hardere materialen zoals staal is een kleinere spaanhoek nodig
-omdat het materiaal anders te hard is om te snijden en je moet veel te veel kracht zetten.
-Negatieve spaanhoeken worden gebruikt voor zeer harde materialen.
+Zachte, ductiele materialen (aluminium, koper, kunststof) verspaan je met een grote positieve spaanhoek $\gamma$: dat beperkt de snijkracht. Harde materialen (staal, gietijzer) vragen een kleinere of negatieve spaanhoek, zodat de snijwig voldoende sterk blijft.
 
-
-Deze bewerkingen zijn allemaal met ductiele materialen.
-Brosse materialen gaan snel afbrokkelen en hebben dus niet veel elastische vervorming.
-Je moet dus druk uitoefenen op brosse materialen tijdens bewerking. Het materiaal gaat zich daardoor dan meer ductiel gedragen.
-Hoe oefen je die druk uit? Door een kleine (of zelfs negatieve) spaanhoek te gebruiken,
-maar die creëert dan weer veel wrijving en warmte.
-Je moet dus een compromis zoeken tussen spaanhoek en wrijving.
+Brosse materialen brokkelen snel af. Een kleine of negatieve spaanhoek bouwt extra druk op in de snijzone, waardoor het materiaal zich iets ductieler gedraagt, maar verhoogt tegelijk wrijving en warmteontwikkeling. De gekozen $\gamma$ is daarom altijd een compromis tussen snijkracht, wigsterkte en warmte.
+\FloatBarrier
 
 
 \section{Beweging, snelheden en voedingen, temperaturen, slijtage}
@@ -497,7 +486,7 @@ Er zijn verschillende factoren die de kracht op je werkstuk bepalen:
     \label{fig:image16}
 \end{figure}
 
-\frm{Snededoorsnede}{A_d = a \cdot b}{waarbij $A_d$ de snededoorsnede is [\si{mm^2}], $a$ de snedediepte [\si{mm}] en $b$ de snedebreedte [\si{mm}].}
+\frm{Snededoorsnede}{A_d = a \cdot f = b \cdot h}{waarbij $A_d$ de snededoorsnede is [\si{mm^2}], $a$ de snedediepte [\si{mm}], $f$ de voeding [\si{mm/omw}], $b$ de snedebreedte [\si{mm}] en $h$ de snededikte [\si{mm}].}
 
 
 \subsection{Krachten}
@@ -506,14 +495,16 @@ Tijdens het bewerken van materialen met een beitel komen er drie belangrijke kra
 \begin{itemize}
     \item \textbf{Hoofdsnijkracht ($F_c$)}: De kracht die nodig is om de spaan te vormen; dit is de grootste krachtcomponent.
     \item \textbf{Voedingskracht ($F_f$)}: De kracht die in de voedingsrichting werkt.
-    \item \textbf{Terugdrukkracht ($F_p$)}: De kracht die nodig is om de beitel in het werkstuk te drukken.
-          \begin{figure}[htbp]
-              \centering
-              \includegraphics[width=0.4\textwidth]{assets/image17.png}
-              \caption{Drie krachten bij verspanen: snijkracht $F_c$, voedingskracht $F_f$ en terugdrukkracht $F_p$.}
-              \label{fig:krachten_verspanen}
-          \end{figure}
+    \item \textbf{Terugdrukkracht ($F_p$)}: De radiale kracht die de beitel van het werkstuk wegduwt (reactie op het aandrukken).
 \end{itemize}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.45\textwidth]{assets/image17.png}
+    \caption{Drie krachten bij verspanen: snijkracht $F_c$, voedingskracht $F_f$ en terugdrukkracht $F_p$.}
+    \label{fig:krachten_verspanen}
+\end{figure}
+\FloatBarrier
 
 \begin{examenbox}
     Onderscheid de drie krachten ($F_c, F_f, F_p$) en weet dat $F_c$ verantwoordelijk is voor het grootste deel van het verbruikte vermogen.
@@ -617,16 +608,15 @@ In werkelijkheid hebben beitelbewerkingen allemaal effecten op het materiaal. We
               \item Gebruik van coatings op gereedschap (bv. TiN, AlTiN) om wrijving en hitte te verminderen.
               \item Optimaliseren van snijsnelheid, voeding en snedediepte om overmatige hitte en krachten te vermijden.
               \item Toepassen van koeling en smering om hitte af te voeren en wrijving te verminderen.
-              \item Gereedschap met lood (Pb) gebruiken
-                    \begin{figure}[htbp]
-                        \centering
-                        \includegraphics[width=0.7\textwidth]{assets/image22.png}
-                        \caption{Minder slijtage met loodgecoat gereedschap}
-                        \label{fig:image22}
-                    \end{figure}
-                    \FloatBarrier
-                    Lood geeft minder slijtage omdat het smerende eigenschappen heeft $\to$ minder wrijving.
+              \item Vrijverspaanbaar werkstukmateriaal met lood (bv.\ 11SMnPb30): lood werkt als intern smeermiddel en vermindert wrijving en slijtage.
           \end{itemize}
+          \begin{figure}[htbp]
+              \centering
+              \includegraphics[width=0.65\textwidth]{assets/image22.png}
+              \caption{Minder flankslijtage bij loodhoudend vrijverspaanbaar staal (11SMnPb30) tegenover 11SMn30.}
+              \label{fig:image22}
+          \end{figure}
+          \FloatBarrier
 \end{enumerate}
 
 
@@ -662,16 +652,12 @@ Je moet dus een compromis zoeken afhankelijk van de toepassing.
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.5\textwidth]{assets/image24.png}
-    \caption{Toepassingsgebieden van verschillende snijmaterialen in functie van snelheid en taaiheid.}
+    \caption{Relatieve hardheid van snijmaterialen in functie van de temperatuur.}
     \label{fig:snijmaterialen_overzicht}
 \end{figure}
 \FloatBarrier
 
-Deze materialen zijn door de jaren heen ontworpen zoals in de figuur hieronder.
-
-Je ziet dat machining time enorm daalt door de jaren
-omdat je met \textbf{betere snijmaterialen} kan werken aan \textbf{hogere snelheden} $v_c$
-en met \textbf{minder slijtage.}
+Door betere snijmaterialen en coatings (zie \cref{fig:snijmaterialen_ontwikkeling}) stijgt de toelaatbare snijsnelheid $v_c$ sterk en daalt de bewerkingstijd drastisch.
 
 \subsection{ISO-classificatie van snijmaterialen}
 Snijmaterialen worden volgens ISO-normen in groepen ingedeeld op basis van het werkstukmateriaal:
@@ -766,7 +752,7 @@ Deze formule toont aan dat een kleine verhoging van de snijsnelheid $v_c$ leidt 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.8\textwidth]{assets/image28.png}
-    \caption{Verband tussen snijsnelheid en levensduur volgens Taylor (log-log schaal).}
+    \caption{Productiekosten per stuk in functie van de snijsnelheid $v_c$: balans tussen machine- en gereedschapskosten bepaalt $v_{c\text{-opt}}$.}
 \end{figure}
 
 
@@ -848,7 +834,7 @@ De figuur toont een steekproef van meetwaarden voor verschillende voedingen.
 \end{examenbox}
 
 De hoofdsnijkracht wordt berekend met de formule van Kienzle:
-\newline
+
 
 \frm{Kienzle vergelijking Hoofdsnijkracht}{F_c = k_c \cdot a\cdot f^{(1-e)}}{waarbij $F_c$ de hoofdsnijkracht is [\si{N}], $k_c$ de snijkrachtcoëfficiënt [\si{N/mm^2}], $a$ de snedediepte [\si{mm}], $f$ de voeding [\si{mm/omw}] en $e$ de snijkrachtexponent [-].}
 
@@ -876,7 +862,7 @@ De optimale snijsnelheid bij draaien is afhankelijk van $k_c$
 {waarbij $v_{c,\mathrm{opt}}$ de optimale snijsnelheid is [\si{m/min}], $f$ de voeding [\si{mm/omw}] en $u$ een exponent [-].}
 
 
-\textbf{Aanvullende formules (zonder frm):}
+\textbf{Aanvullende verbanden bij draaien:}
 \[
     \begin{aligned}
         P_c & = F_c\,v_c          \\
@@ -914,24 +900,17 @@ Je kunt de verbanden logaritmisch plotten, zoals in de figuur hieronder, om die 
     \caption{Bepaling krachten, voeding of moment op werkstuk}
 \end{figure}
 
-Zo zie je hoe instelparameters zoals voeding, snijsnelheid en snedediepte in de industrie,
-bepaald worden.
+
 
 \section{Invloeden voeding \texorpdfstring{$f$}{f} en snedediepte \texorpdfstring{$a$}{a} op de kracht en snijsnelheid}
 
 
 
 \begin{enumerate}
-    \item \textbf{Softening effect (verzachting)}: Bij hogere voeding ontstaat meer warmte in het snijgebied.
-          Die warmte maakt het oppervlak lokaal zachter, waardoor voor dezelfde snijsnelheid de snijkracht en voedingskracht doorgaans afnemen.
-    \item \textbf{Build‑up edge (BUE)}: Bij lage snijsnelheden en bepaalde voedingen kan materiaal aan
-          de snijkant aanhechten (BUE). Dit veroorzaakt tijdelijke pieken in de krachten en kan de oppervlaktekwaliteit verslechteren.
-          Bij hogere voeding of snelheid neemt dit effect vaak af.
-    \item \textbf{Snijkanthoek $\kappa$}: Het veranderen van de hoek van het snijvlak verschuift de richting en verdeling van de krachten.
-          Sommige componenten (bijv. $F_c$) kunnen toenemen terwijl andere (bijv. $F_f$ of $F_p$) afnemen, waardoor
-          de krachten anders verdeeld zijn.
-    \item \textbf{Snedediepte $a_p$}: Een grotere snedediepte vergroot het verwijderde volume per
-          omwenteling en verhoogt daardoor alle resulterende krachtcomponenten (snijkracht, voedingskracht, terugdrukkracht).
+    \item \textbf{Softening-effect (thermische verzachting)}: Bij hogere \emph{snijsnelheid} $v_c$ stijgt de temperatuur in de snijzone. Het materiaal verzacht lokaal, waardoor de snijkrachten bij stijgende $v_c$ licht dalen (na de BUE-piek).
+    \item \textbf{Build-up edge (BUE)}: Bij lage snijsnelheden hecht werkstukmateriaal aan de snijkant, wat lokale krachtpieken en een ruwer oppervlak veroorzaakt. Bij hogere $v_c$ verdwijnt dit effect.
+    \item \textbf{Instelhoek $\kappa_r$}: Een grotere instelhoek verandert de krachtverdeling: de voedingskracht $F_f$ neemt toe, terwijl de terugdrukkracht $F_p$ afneemt en $F_c$ licht daalt.
+    \item \textbf{Snedediepte $a_p$}: Een grotere snedediepte vergroot de snededoorsnede evenredig en verhoogt alle drie de krachtcomponenten ($F_c$, $F_f$, $F_p$) lineair.
 \end{enumerate}
 
 \begin{figure}[htbp]
@@ -966,16 +945,7 @@ Er zijn verschillende parameters die spaanvorming beïnvloeden
 
 \frm{Spaanslankheid bij Draaien}{\dfrac{b}{h} = \dfrac{a}{f \cdot \sin^2 \kappa_r}}{waarbij $b$ de snedebreedte [\si{mm}], $h$ de snededikte [\si{mm}], $a$ de snedediepte [\si{mm}], $f$ de voeding [\si{mm/omw}] en $\kappa_r$ de instelhoek [$^\circ$].}
 
-\[h = f \cdot \sin\kappa_r\]
-
-De snededikte $h$ bij draaien wordt bepaald door de voeding $f$ en de instelhoek $\kappa_r$. Een grotere voeding of een grotere instelhoek resulteert
-in een dikkere spaan. Een kleinere instelhoek maakt de spaan breder en dunner.
-
-\[b = \dfrac{a}{\sin\kappa}\]
-
-De snedebreedte $b$ bij draaien wordt bepaald door de snedediepte $a$
-en de instelhoek $\kappa$. Een grotere snedediepte of een \emph{kleinere} instelhoek geeft
-een bredere spaan (want $\sin\kappa$ staat in de noemer), wat de spaanvorming beïnvloedt.
+Uit $h = f \sin\kappa_r$ en $b = a / \sin\kappa_r$ volgt dat een grotere instelhoek $\kappa_r$ de spaan dikker en smaller maakt (kleinere slankheid $b/h$), terwijl een kleinere $\kappa_r$ een dunnere, bredere spaan geeft.
 
 \begin{figure}[ht]
     \centering
@@ -1001,10 +971,7 @@ inkepingen in het spaanvlak van de beitel die de spaan doen oprollen en breken i
     Kinematische ruwheid is de theoretisch minimale ruwheid die ontstaat door de geometrie van de beitel (neusradius $r_\varepsilon$) en de verplaatsing per omwenteling (voeding $f$). In de praktijk is de werkelijke ruwheid hoger door trillingen en BUE.
 \end{conceptbox}
 
-De oppervlakteruwheid wordt gecreëerd door de beitel. De punt van de beitel is niet oneindig scherp maar
-afgerond: dat is de neusradius $r_\varepsilon$.
-Bij elke omwenteling schuift die afgeronde punt één voeding $f$ op en laat zo een rij kleine ribbels achter.
-De ruwheid wordt dus bepaald door de neusradius $r_\varepsilon$ en de voeding $f$.
+
 
 \begin{figure}[ht]
     \centering
@@ -1046,7 +1013,7 @@ De maximale hoogte van het profiel (piek tot dal) noemen we \(s\). Voor kleine v
 Kort: ruwheid groeit met het kwadraat van de voeding en neemt af met de neusradius.
 
 \smallskip
-\noindent\textbf{Regel van duim \& voorbeeld.}
+\noindent\textbf{Vuistregel \& voorbeeld.}
 Geldigheid: de benadering klopt zolang \(f\) duidelijk kleiner is dan \(r_\varepsilon\) (praktisch: \(f \lesssim r_\varepsilon/2\)).
 Voor \(f=0{,}2\ \si{mm}\) en \(r_\varepsilon=0{,}4\ \si{mm}\):
 \[
@@ -1121,7 +1088,7 @@ Aan de buitenrand is hij positief, maar naar het centrum toe wordt hij steeds kl
 sterk negatief (aan de dwarssnede). Hoe \emph{kleiner} de spaanhoek, hoe meer kracht je nodig hebt,
 want de afschuifhoek $\phi$ wordt kleiner en het afschuifvlak $A$ wordt groter.
 In het centrum van de boor wordt er dus nauwelijks gesneden en vooral geduwd.
-\newline
+
 \textit{Hou die twee uit elkaar: de afschuifhoek $\phi$ is de hoek tussen het werkstukoppervlak en het
     afschuifvlak; het afschuifvlak $A$ is het oppervlak waarover de plastische vervorming plaatsvindt.}
 
@@ -1168,44 +1135,28 @@ Nog een keer alle belangrijke hoeken met hun functie en symbool:
 \end{itemize}
 \newpage
 
-\section{Optredende krachten}
+\section{Krachten en momenten bij boren}
 
-\begin{wrapfigure}[20]{r}{0.36\textwidth}
+\begin{wrapfigure}[20]{r}{0.38\textwidth}
     \centering
-    \includegraphics[width=0.36\textwidth]{assets/image43.png}
-    \caption{Krachten op een boor}
+    \includegraphics[width=\linewidth]{assets/image43.png}
+    \caption{Krachtenwerking op de snijkanten en dwarssnijkant van een spiraalboor.}
     \label{fig:boren_krachten}
 \end{wrapfigure}
-\FloatBarrier
 
-Net zoals bij draaien zijn er verschillende krachten die op het werkstuk
-en de boor werken tijdens het boren. Deze worden met de vergelijking van Kienzle berekend.
-
-Boren hebben een grote voedingskracht en een relatief klein snijmoment.
-De axiale voeding is groot omdat de boor in het materiaal moet doordringen,
-terwijl het snijmoment klein is door de geringe diameter.
-Als de krachten niet in evenwicht zijn, ontstaat excentriciteit en scheef boren,
-wat leidt tot slechte oppervlaktekwaliteit en onnauwkeurige gaten.
-
+Bij het boren treden specifieke krachtcomponenten op die berekend worden met de Kienzle-vergelijking:
 \begin{itemize}
-    \item Grote axiale (voedings) kracht nodig om te penetreren.
-    \item Klein snijmoment door kleine snijcirkel.
-    \item Onevenwicht → scheef boren, variërende diameter en slechte afwerking.
+    \item \textbf{Snijkracht ($F_c$)}: Werkt tangentieel aan beide hoofdsnijkanten; heft elkaar door rotatiesymmetrie nagenoeg op, maar genereert het snijmoment $M_c$.
+    \item \textbf{Voedingskracht ($F_f$)}: Werkt axiaal en telt cumulatief op over beide snijkanten plus de dwarssnijkant.
+    \item \textbf{Terugdrukkracht ($F_p$)}: Werkt radiaal en compenseert zichzelf bij een symmetrisch geslepen boorpunt.
 \end{itemize}
 
-\subsection{Gevolgen van onevenwichtige krachten}
-Als de krachten niet in evenwicht zijn, wijkt je gatdiameter af.
-Een gat van \SI{8,5}{mm} kan zo tot \SI{0,2}{mm} afwijken.
+Als de boorpunt asymmetrisch geslepen is (ongelijke snijkantlengte of tophoek), ontstaat een radiaal onevenwicht dat de boor doet verlopen. Een boor van $\varnothing 8{,}5\,\si{mm}$ kan hierdoor een gat produceren dat tot wel \SI{0,2}{mm} overmaats afwijkt.
 
-
-\section{Krachten bij Boren}
-Net zoals bij draaien worden de krachten,
-vermogens en momenten berekend met de vergelijking van Kienzle.
-
-\textbf{Belangrijke krachten, vermogens en momenten bij boren:}
 \frm{Voedingskracht}{F_f = k_f \cdot a \cdot f^{(1-e)}}{waarbij $F_f$ de voedingskracht is [\si{N}], $k_f$ de voedingskrachtcoëfficiënt [\si{N/mm^2}], $a$ de snedediepte [\si{mm}], $f$ de voeding [\si{mm/omw}] en $e$ de voedingskrachtsexponent [-].}
 \frm{Verspaningsmoment}{M_c = C_m \cdot d^{x_M} \cdot f^{y_M}}{waarbij $M_c$ het verspaningsmoment is [\si{N.mm}], $C_m$ de momentcoëfficiënt [-], $d$ de diameter [\si{mm}], $f$ de voeding [\si{mm/omw}] en $x_M, y_M$ de momentexponenten [-].}
-\frm{Vermogen bij boren}{P_c = M_c\,\omega = M_c \cdot 2\pi n}{waarbij $P_c$ het vermogen is [\si{W}], $M_c$ het verspaningsmoment [\si{N.m}] en $\omega$ de hoeksnelheid [\si{rad/s}].}
+\frm{Vermogen bij boren}{P_c = M_c\,\omega = M_c \cdot 2\pi n}{waarbij $P_c$ het vermogen is [\si{W}], $M_c$ het verspaningsmoment in [\si{N.m}] en $\omega$ de hoeksnelheid in [\si{rad/s}] met $n$ in [\si{omw/s}] (of deel door 60 als $n$ in [\si{omw/min}] staat).}
+\FloatBarrier
 
 \section{Keuze van voeding}
 
@@ -1218,63 +1169,62 @@ Je berekent de torsie in de boor en leidt daaruit de maximaal toelaatbare voedin
 \begin{figure}[htbp]
     \centering
     \begin{tikzpicture}[
-            scale=1.5,
-            >=stealth,
-            % Styles
-            shaft/.style={line width=1.5pt, draw=black!80},
-            stress/.style={->, red!80!black, thick},
-            profileLine/.style={dashed, gray, thin},
-            dim/.style={<->, gray, thin}
+            >=Stealth,
+            font=\sffamily\small,
+            shaft/.style={line width=1.4pt, draw=black!80, fill=gray!10},
+            stress/.style={->, red!75!black, thick},
+            dim/.style={<->, black!65, thin}
         ]
+        \def\R{2.0}
 
-        % --- 1. DE AS (DOORSNEDE) ---
-        \def\R{1.8}
-        \draw[shaft, fill=gray!5] (0,0) circle (\R);
-        \fill (0,0) circle (1.5pt) node[below left] {O};
+        % Doorsnede en hartlijnen
+        \draw[shaft] (0,0) circle (\R);
+        \draw[dashed, black!35] (-\R-0.35,0) -- (\R+0.35,0);
+        \draw[dashed, black!35] (0,-\R-0.35) -- (0,\R+0.35);
+        \fill[black!80] (0,0) circle (1.8pt) node[below left, font=\footnotesize] {$O$};
 
-        % --- 2. DE LINEAIRE SPANNINGSVERDELING (PROFIEL) ---
-        % We tekenen de verdeling langs een horizontale as voor maximale duidelijkheid
-        \draw[dashed, black!40] (0,0) -- (\R,0) node[midway, below] {$\rho$};
+        % Lineair spanningsverloop langs +x-as (tegenwijzerzin = omhoog)
+        \draw[dashed, red!65!black, thin] (0,0) -- (\R, 1.15);
+        \foreach \k in {1,...,6} {
+            \pgfmathsetmacro{\x}{\k * \R / 6}
+            \pgfmathsetmacro{\len}{\k * 1.15 / 6}
+            \draw[stress] (\x,0) -- (\x,\len);
+        }
+        \node[red!75!black, anchor=south] at (\R, 1.22) {$\tau_{\max}$};
 
-        % De "envelop" van de spanning (de schuine lijn die de lineaire groei toont)
-        \draw[profileLine] (0,0) -- (\R, 1.0);
+        % Straalaanduiding onder de +x-as
+        \draw[dim] (0,-0.35) -- (\R,-0.35)
+            node[midway, below=1pt, font=\footnotesize, black] {$R = d/2$};
 
-        % Reeks pijlen die de lineaire groei van tau tonen
-        \foreach \x in {0.3, 0.6, 0.9, 1.2, 1.5, 1.8} {
-                % Bereken de lengte van de pijl (lineair: lengte = constante * x)
-                \pgfmathsetmacro{\len}{\x * (1.0 / \R)}
-                \draw[stress] (\x, 0) -- (\x, \len);
-            }
+        % Koppelpijl M_c (boven de cirkel, volledig vrij van tau_max)
+        \draw[->, orange!85!black, very thick] (65:\R+0.35) arc (65:115:\R+0.35);
+        \node[orange!85!black, anchor=south, font=\small\bfseries] at (0, \R+0.40) {$M_c$};
 
-        % Label voor de maximale spanning aan de rand
-        \node[anchor=south] at (\R, 1.0) {$\tau_{\text{max}}$};
+        % Willekeurige straal rho in kwadrant III (ruim binnen de cirkel)
+        \def\ang{215}
+        \def\rhoVal{1.25}
+        \coordinate (P) at (\ang:\rhoVal);
+        \draw[blue!60!black, thick] (0,0) -- (P)
+            node[midway, above left, font=\footnotesize] {$\rho$};
+        \fill[blue!60!black] (P) circle (1.7pt);
+        % Tangentiële schuifspanning (CCW = ang + 90 = 305 deg)
+        \draw[->, blue!60!black, thick] (P) -- ++(\ang+90:0.75) coordinate (Ptip);
+        \node[blue!60!black, anchor=north, font=\footnotesize] at ([yshift=-2pt]Ptip) {$\tau(\rho)$};
 
-        % --- 3. REPRESENTATIEVE PUNTEN (WILLEKEURIGE RADIUS) ---
-        % Om aan te tonen dat het overal geldt, voegen we één willekeurige straal toe
-        \def\ang{135}
-        \def\rhoVal{1.3}
-        \draw[gray, thin] (0,0) -- (\ang:\rhoVal) node[midway, below left, black] {$\rho$};
-        \draw[stress, blue!70!black] (\ang:\rhoVal) -- ++(\ang+90:0.6) node[pos=1, left] {$\tau(\rho)$};
-
-        % --- 4. FORMULES IN EEN NET KADER ---
-        \node[draw=black!20, fill=white, rounded corners, anchor=west, align=left] at (2.2, 0.5) {
-            $\tau(\rho) = \dfrac{M_c \cdot \rho}{I_p}$ \\[8pt]
-            $\tau_{\text{max}} = \dfrac{M_c \cdot R}{I_p}$ \\[8pt]
-            \small $I_p = \dfrac{\pi d^4}{32}$ \\[4pt]
-            \small $d = 2R$
+        % Formulekader rechts met ruime marge
+        \node[draw=black!25, fill=blue!4, rounded corners=3pt, inner sep=9pt,
+              anchor=west, align=left] at (3.0, 0) {%
+            \textbf{Schuifspanning bij torsie}\\[5pt]
+            $\displaystyle \tau(\rho) = \frac{M_c \cdot \rho}{I_p}$\\[9pt]
+            $\displaystyle \tau_{\max} = \frac{M_c \cdot R}{I_p} = \frac{16 M_c}{\pi d^3}$\\[9pt]
+            \footnotesize $I_p = \dfrac{\pi d^4}{32}, \qquad d = 2R$
         };
-
-        % --- 5. ONDERSCHRIFT ---
-        \node[below=3cm, align=center, font=\itshape] at (1,0) {
-            Spanningsverloop $\tau$ is lineair afhankelijk \\ van de afstand $\rho$ tot het centrum.
-        };
-
     \end{tikzpicture}
-    \caption{Torsiediagram: schuifspanning $\tau$ neemt lineair toe met de straal $\rho$; relevante formule staat buiten de doorsnede.}
+    \caption{Torsiespanning in een cirkelvormige boordoorsnede: $\tau(\rho)$ groeit lineair met de afstand $\rho$ tot het centrum en bereikt $\tau_{\max}$ aan de buitenrand.}
     \label{fig:torsie_cirkel}
 \end{figure}
-Met het traagheidsmoment berekent als volgt (zie statica):
-\newline
+Met het traagheidsmoment berekend als volgt (zie statica):
+
 \textbf{Polair traagheidsmoment voor een cirkelvormige doorsnede:} $I_p = \frac{\pi d^4}{32}$
 
 De combinatie van deze formules:
@@ -1285,8 +1235,8 @@ De combinatie van deze formules:
 
 \vspace{0.5cm}
 
-\frm{Veiligheidsmarge op het moment}{M_c = a \cdot M_d}{waarbij $M_c$ het werkelijke verspaningsmoment is [\si{N.mm}],
-    $M_d$ het maximaal toelaatbare moment [\si{N.mm}] en $a < 1$ de gekozen veiligheidsfactor [-].}
+\frm{Veiligheidsmarge op het moment}{M_c = \alpha \cdot M_d}{waarbij $M_c$ het werkelijke verspaningsmoment is [\si{N.mm}],
+    $M_d$ het maximaal toelaatbare moment [\si{N.mm}] en $\alpha < 1$ de gekozen veiligheidsfactor [-].}
 
 
 Samen met het verspaningsmoment:
@@ -1313,12 +1263,7 @@ Als \(M_c\le M_d=C_b\,d^{x_w}\) dan volgt
     f_{\max} = \left(\dfrac{C_b}{C_m}\right)^{1/y_M} d^{(x_w-x_M)/y_M}.
 \]
 
-\textbf{Speciaal geval: lineair} (eigen afleiding, niet op de slide)
-Wanneer \(y_M=1\) en \(x_w-x_M=1\) volgt
-\[
-    f_{\max} = \dfrac{C_b}{C_m}\; d,
-\]
-wat overeenkomt met de eenvoudige vorm \(f_{\max}=C\cdot d\).
+\textbf{Speciaal geval (lineair):} Wanneer $y_M = 1$ en $x_w - x_M = 1$, vereenvoudigt dit tot $f_{\max} = C \cdot d$ met $C = C_b / C_m$.
 
 \frm{Maximale voeding bij boren}{f_{max} = C \cdot d}{waarbij $C$ een constante is [-], $d$ de diameter [\si{mm}] en $f_{max}$ de maximale voeding [\si{mm/omw}].}
 
@@ -1334,99 +1279,83 @@ Dat speelt vooral bij C-vormige structuren.
 \begin{figure}[htbp]
     \centering
     \begin{tikzpicture}[
-            scale=1.3,
-            >=stealth,
-            every node/.style={font=\small},
-            % Stijlen
-            machine/.style={fill=gray!20, draw=black!80, line width=1.5pt, rounded corners=3mm},
-            phantom/.style={draw=gray!40, line width=1.5pt, dashed, rounded corners=3mm},
-            force/.style={->, ultra thick, red},
-            dim/.style={<->, thin, gray!80, >=latex},
-            ground/.style={fill, pattern=north east lines, draw=none}
+            >=Stealth,
+            font=\sffamily\small,
+            dim/.style={<->, thin, black!65},
+            ground/.style={pattern=north east lines, pattern color=black!35, draw=none}
         ]
+        % Fundering
+        \fill[ground] (-0.9,-0.4) rectangle (3.7,0);
+        \draw[thick, black!80] (-0.9,0) -- (3.7,0);
+        \node[below, font=\footnotesize, black!65] at (1.4,-0.4) {Fundering};
 
-        % --- Parameters ---
-        \def\bedL{2.0}      % Lengte onderbed
-        \def\colW{0.8}      % Breedte kolom
-        \def\colH{4.0}      % Hoogte kolom
-        \def\armL{2.5}      % Lengte bovenarm (incl kolombreedte)
-        \def\armThick{0.8}  % Dikte arm/bed
-        \def\rotAngle{4}    % Rotatiehoek voor deformatie
+        % 1. ONBELASTE TOESTAND (gestippeld)
+        \draw[dashed, black!35, line width=1pt]
+            (0,0) -- (3.2,0) -- (3.2,0.75) -- (0.95,0.75)
+            -- (0.95,3.25) -- (3.05,3.25) -- (3.05,4.0) -- (0,4.0) -- cycle;
+        \draw[dashed, black!35, line width=0.9pt] (2.25,3.25) rectangle (2.65,2.45);
 
-        % --- Coördinaten ---
-        \coordinate (BaseBL) at (0,0); % Linksonder
+        % 2. VERVORMDE TOESTAND (monolithisch doorbuigend C-frame)
+        \fill[gray!18]
+            (0,0) -- (3.2,0) -- (3.2,0.75) -- (0.95,0.75)
+            .. controls (0.95,1.8) and (0.85,2.6) .. (0.65,3.30)
+            -- (2.75,3.52) -- (2.67,4.27) -- (-0.32,3.96)
+            .. controls (-0.12,2.7) and (0,1.7) .. (0,0.75) -- cycle;
+        \draw[black!80, line width=1.3pt]
+            (0,0) -- (3.2,0) -- (3.2,0.75) -- (0.95,0.75)
+            .. controls (0.95,1.8) and (0.85,2.6) .. (0.65,3.30)
+            -- (2.75,3.52) -- (2.67,4.27) -- (-0.32,3.96)
+            .. controls (-0.12,2.7) and (0,1.7) .. (0,0.75) -- cycle;
 
-        % --- 1. GHOST (Oorspronkelijke staat) ---
-        % We tekenen de outline van de C-vorm in dashed grijs
-        % Vorm: L-shape onder + kolom + arm boven
-        \draw[phantom]
-        (0,0) -- (\bedL, 0) -- (\bedL, \armThick) -- (\colW, \armThick)
-        -- (\colW, \colH-\armThick) -- (\armL, \colH-\armThick)
-        -- (\armL, \colH) -- (0, \colH) -- cycle;
+        % Label in kolom
+        \node[rotate=95, font=\footnotesize\bfseries, black!65] at (0.38,2.2) {C-frame};
 
-        % Spindel ghost
-        \coordinate (SpindleTopGhost) at (\armL - 0.4, \colH-\armThick);
-        \draw[phantom, fill=none] (SpindleTopGhost) rectangle ++(0.3, -0.8);
-
-        % --- 2. DEFORMATIE (Vervormde staat) ---
-        % Rotatiepunt: ergens in de "oksel" van de C
-        \coordinate (Pivot) at (\colW/2, \colH/2);
-
-        \begin{scope}[rotate around={\rotAngle:(Pivot)}]
-            % De "open gebogen" machine
-
-            \draw[machine]
-            (0,0) -- (\bedL, 0) -- (\bedL, \armThick) -- (\colW, \armThick)
-            -- (\colW, \colH-\armThick) -- (\armL, \colH-\armThick)
-            -- (\armL, \colH) -- (0, \colH) -- cycle;
-
-            % Spindel (Vast aan arm)
-            \coordinate (SpindleTop) at (\armL - 0.4, \colH-\armThick);
-            \draw[fill=white, draw=black, line width=1pt] (SpindleTop) rectangle ++(0.3, -0.8) coordinate (SpindleTip);
-            \node[below, xshift=2mm] at (SpindleTip) {}; % dummy
-
-            % Annotatie op frame
-            \node at (\colW/2, \colH/2) [rotate=\rotAngle, text=gray] {\textbf{C-Frame}};
+        % Gekantelde boorkop + boor (6 graden gekanteld)
+        \begin{scope}[shift={(2.15,3.46)}, rotate=6]
+            \draw[fill=white, draw=black!80, thick] (-0.22,0) rectangle (0.22,-0.65);
+            % Boorkop/spantang
+            \draw[fill=gray!45, draw=black!80, semithick] (-0.13,-0.65) rectangle (0.13,-0.88);
+            % Boor
+            \draw[fill=gray!60, draw=black!80, thin] (-0.05,-0.88) -- (-0.05,-1.35) -- (0,-1.44) -- (0.05,-1.35) -- (0.05,-0.88) -- cycle;
+            \coordinate (DrillTip) at (0,-1.44);
+            \coordinate (SpindleAxisTop) at (0,0.82);
         \end{scope}
 
-        % --- 3. FUNDERING ---
-        \draw[ground] (-0.5,-0.3) rectangle (\bedL+0.5, 0);
-        \draw[thick] (-0.5,0) -- (\bedL+0.5, 0);
-        \node[below, text=gray] at (\bedL/2, -0.3) {Fundering};
+        % Werkstuk op boortafel (ruim genoeg voor label)
+        \fill[blue!10, draw=blue!60!black, thick] (1.45,0.75) rectangle (3.10,1.35);
+        \node[font=\footnotesize, blue!60!black] at (2.275,1.05) {Werkstuk};
 
-        % --- 4. KRACHTEN & MOMENT ---
-        % F_f duwt de arm en bed uit elkaar. Hier tekenen we F_f op de spindel (werkstuk duwt terug)
-        % De positie is nu geroteerd.
-        % We nemen het midden van de onderkant van de spindel rect.
-        \coordinate (ForcePos) at ($ (SpindleTop) + (0.15, -0.8) $);
-        \draw[force] ($(ForcePos) + (0, -0.8)$) -- (ForcePos) node[midway, right] {$F_f$};
+        % Axiale voedingskracht F_f (duwt boor/bovenarm omhoog)
+        \draw[->, ultra thick, red!75!black] (2.30,1.38) -- (2.30,2.05)
+            node[midway, right=4pt, font=\small\bfseries] {$F_f$};
 
-        % Moment M: Buigend moment in de rug
-        % Pijl die "open buigen" aangeeft
-        \draw[->, ultra thick, orange!90!black] (-0.5, \colH/2 - 1) to[bend left=45] node[left] {$M$} (-0.5, \colH/2 + 1);
+        % Buigmoment M op de kolom
+        \draw[->, very thick, orange!85!black] (-0.65,1.35) to[bend left=35]
+            node[left=3pt, font=\small\bfseries] {$M$} (-0.65,3.25);
 
-        % --- 5. AFMETINGEN & LABELS ---
-        % Hoek theta (overdreven weergegeven)
-        % Vergelijking verticale lijn
-        \draw[dashed, gray] (0, \colH) -- (0, \colH + 1.0);
-        \draw[->, thick] (0, \colH + 0.8) arc (90:{90+\rotAngle}:0.8) node[midway, above] {$\theta$};
+        % Kantelhoek theta bovenaan links (vrij van alle andere labels)
+        \draw[dashed, black!55] (-0.32,3.96) -- (-0.32,5.05);
+        \draw[dashed, black!55] (-0.32,3.96) -- ++(98:1.12);
+        \draw[->, thick, black!80] (-0.32,4.78) arc (90:98:0.82);
+        \node[above, font=\footnotesize] at (-0.42,4.85) {$\theta$};
 
-        % Arm lengte l (keel diepte)
-        % Vanaf binnenkant kolom tot spindel as
-        \draw[dim] (\colW, \colH + 0.3) -- (\armL - 0.25, \colH + 0.3) node[midway, fill=white] {$l$};
-        \draw[gray, thin] (\colW, \colH) -- (\colW, \colH + 0.5);
-        \draw[gray, thin] (\armL - 0.25, \colH) -- (\armL - 0.25, \colH + 0.5);
+        % Hefboomarm l (duidelijk boven de arm)
+        \draw[thin, black!50] (0.35,4.12) -- (0.35,4.85);
+        \draw[thin, black!50] (2.15,4.28) -- (2.15,4.85);
+        \draw[dim] (0.35,4.68) -- (2.15,4.68)
+            node[midway, fill=white, inner sep=2pt, font=\footnotesize] {$l$};
 
-        % --- 6. TEKSTVAK ---
-        \node[align=left, anchor=north west, fill=white, inner sep=5pt, rounded corners] at (3.0, 3.5) {
-            \textbf{C-Frame Buiging}\\
-            Door $F_f$ buigt de kolom.\\
-            De bek "opent" zich.\\
-            \small $M = F_f \cdot l$
+        % Infokader rechts met ruime tussenruimte
+        \node[draw=black!25, fill=orange!6, rounded corners=3pt, inner sep=8pt,
+              align=left, anchor=north west] at (4.1, 3.8) {%
+            \textbf{Doorbuiging C-frame}\\[4pt]
+            \footnotesize Axiale kracht $F_f$ op arm $l$\\
+            \footnotesize wekt buigmoment $M = F_f \cdot l$ op.\\[4pt]
+            \footnotesize De kolom buigt terug (bek ``opent''\\
+            \footnotesize over hoek $\theta$) $\Rightarrow$ scheef/niet-haaks gat.
         };
-
     \end{tikzpicture}
-    \caption{C\nobreak\-vormig frame: axiale voedingskracht $F_f$ op het werkstuk (pivot) veroorzaakt een lichte kanteling (\(\theta\)) rond het werkstuk; de gestippelde lijn toont de gedraaide positie van het frame.}
+    \caption{Doorbuiging van een C-vormig boorframe: de axiale voedingskracht $F_f$ op arm $l$ veroorzaakt een buigmoment $M = F_f \cdot l$ waardoor de kolom terugbuigt over hoek $\theta$.}
     \label{fig:Cframe_moment}
 \end{figure}
 
@@ -1440,7 +1369,7 @@ NC-gestuurde boormachines (Numerical Control) zijn computergestuurde machines di
 hoge precisie en herhaalbaarheid.
 Deze machines maken gebruik van vooraf geprogrammeerde instructies
 om de bewegingen van de boor en het werkstuk te regelen.
-\newline
+
 
 \subsection{Boren}
 Hier zijn nog relevante boortypes en hun toepassingen:
@@ -1458,66 +1387,57 @@ Hier zijn nog relevante boortypes en hun toepassingen:
 
 \begin{figure}[htbp]
     \centering
-    \begin{tikzpicture}[scale=1.2, >=stealth]
-        % Werkstuk (doorsnede)
-        \fill[gray!20] (-1.5, 0) rectangle (1.5, -2);
-        \draw[thick] (-1.5, 0) -- (-0.6, 0);
-        \draw[thick] (0.6, 0) -- (1.5, 0);
-        \draw[thick] (-1.5, -2) -- (1.5, -2);
-        \draw[thick] (-1.5, 0) -- (-1.5, -2);
-        \draw[thick] (1.5, 0) -- (1.5, -2);
+    \begin{tikzpicture}[
+            >=Stealth,
+            font=\sffamily\small
+        ]
+        \def\wW{2.2}
+        \def\wH{2.45}
+        \def\r{0.58}
+        \def\holeD{1.45}
+        \def\tipD{1.80}
 
-        % Gat
-        \fill[white] (-0.6, 0) rectangle (0.6, -1.2);
-        \draw[thick] (-0.6, 0) -- (-0.6, -1.2);
-        \draw[thick] (0.6, 0) -- (0.6, -1.2);
-        % Conische bodem van het gat
-        \draw[thick] (-0.6, -1.2) -- (0, -1.5) -- (0.6, -1.2);
+        % Werkstuk (doorsnede, gearceerd)
+        \fill[gray!12] (-\wW,0) rectangle (\wW,-\wH);
+        \fill[pattern=north east lines, pattern color=black!30]
+            (-\wW,0) -- (-\r,0) -- (-\r,-\holeD) -- (0,-\tipD) -- (\r,-\holeD) -- (\r,0)
+            -- (\wW,0) -- (\wW,-\wH) -- (-\wW,-\wH) -- cycle;
+        \draw[thick, black!80] (-\wW,0) -- (-\r,0) -- (-\r,-\holeD) -- (0,-\tipD)
+            -- (\r,-\holeD) -- (\r,0) -- (\wW,0);
+        \draw[thick, black!80] (-\wW,0) -- (-\wW,-\wH) -- (\wW,-\wH) -- (\wW,0);
 
-        % Boor (Twist Drill)
-        \begin{scope}[yshift=-0.2cm]
-            \def\drillW{1.2}
-            \def\drillH{2.5}
-            % Schacht
-            \fill[gray!40] (-\drillW/2, 0) rectangle (\drillW/2, \drillH);
-            \draw[thick] (-\drillW/2, 0) -- (-\drillW/2, \drillH);
-            \draw[thick] (\drillW/2, 0) -- (\drillW/2, \drillH);
-            \draw[thick] (-\drillW/2, \drillH) -- (\drillW/2, \drillH); % Top
+        % Spiraalboor
+        \fill[gray!35] (-\r,-\holeD) -- (0,-\tipD) -- (\r,-\holeD) -- (\r,1.95) -- (-\r,1.95) -- cycle;
+        \draw[thick, black!85] (-\r,-\holeD) -- (0,-\tipD) -- (\r,-\holeD) -- (\r,1.95) -- (-\r,1.95) -- cycle;
+        \draw[dash dot, black!50] (0,-\tipD-0.25) -- (0,2.15);
 
-            % Punt (118 graden punt)
-            \draw[thick] (-\drillW/2, 0) -- (0, -0.35) -- (\drillW/2, 0);
-            \draw[thin] (0, -0.35) -- (0, \drillH); % Aslijn
+        % Spiraalgroeven (flutes)
+        \foreach \y in {-1.15, -0.35, 0.45, 1.25} {
+            \draw[black!75, semithick] (-\r,\y) .. controls (-0.15,\y-0.18) and (0.15,\y+0.18) .. (\r,\y+0.36);
+            \draw[black!45, thin] (-\r,\y+0.20) .. controls (-0.15,\y+0.02) and (0.15,\y+0.38) .. (\r,\y+0.56);
+        }
 
-            % Spiralen (schematisch)
-            \draw[thin] (-\drillW/2, 0.5) .. controls (-0.2, 0.2) .. (\drillW/2, 0.8);
-            \draw[thin] (-\drillW/2, 1.3) .. controls (-0.2, 1.0) .. (\drillW/2, 1.6);
-            \draw[thin] (-\drillW/2, 2.1) .. controls (-0.2, 1.8) .. (\drillW/2, 2.4);
-        \end{scope}
+        % Spanen naar boven afgevoerd
+        \draw[->, red!75!black, thick] (-\r-0.08,-0.05) .. controls (-\r-0.30,0.28) and (-\r-0.06,0.58) .. (-\r-0.28,0.92);
+        \draw[->, red!75!black, thick] (\r+0.08,-0.05) .. controls (\r+0.30,0.28) and (\r+0.06,0.58) .. (\r+0.28,0.92);
 
-        % Spanen (Chips)
-        \draw[thick, red] (-0.6, 0.1) .. controls (-0.8, 0.3) and (-0.5, 0.5) .. (-0.7, 0.7);
-        \draw[thick, red] (0.6, 0.1) .. controls (0.8, 0.3) and (0.5, 0.5) .. (0.7, 0.7);
+        % Voeding v_f (label BOVENAAN) & rotatie n (ellips met label RECHTS -> nul overlap!)
+        \draw[->, ultra thick, blue!60!black] (0, 3.25) -- (0, 2.08);
+        \node[blue!60!black, anchor=south, font=\small\bfseries] at (0, 3.28) {$v_f$};
+        \draw[->, thick, blue!60!black] (-0.58, 2.68) arc (195:345:0.60 and 0.16);
+        \node[blue!60!black, anchor=west, font=\small\bfseries] at (0.68, 2.68) {$n$};
 
         % Annotaties
-        \draw[->] (1.8, 1.5) node[right] {Boor} -- (0.6, 1.5);
-        \draw[->] (-1.8, -1.0) node[left] {Werkstuk} -- (-1.0, -1.0);
-        \draw[->, red] (0.8, 0.5) node[right] {Spanen} -- (0.7, 0.6);
-
-        % Beweging
-        \draw[->, ultra thick, blue] (0, 2.8) -- (0, 2.0) node[midway, right] {$v_f$};
-        \draw[->, thick, blue] (0, 3.0) arc (90:30:0.3) node[right] {$n$};
-
+        \draw[->, black!75] (1.95, 1.40) node[right] {Spiraalboor} -- (\r+0.06, 1.40);
+        \draw[->, red!75!black] (1.95, 0.55) node[right] {Spanen} -- (\r+0.28, 0.55);
+        \draw[->, black!75] (1.95, -1.62) node[right] {Hoofdsnijkant} -- (0.30, -1.62);
+        \draw[->, black!75] (-2.65, -1.25) node[left] {Werkstuk} -- (-1.45, -1.25);
     \end{tikzpicture}
-    \caption{Schematische weergave van een boorproces: een spiraalboor dringt het materiaal binnen, vormt een gat en voert spanen af.}
+    \caption{Schematische doorsnede van een boorproces: de roterende spiraalboor ($n$) dringt met voedingssnelheid $v_f$ het werkstuk binnen en voert spanen af via de spiraalgroeven.}
+    \label{fig:boorproces}
 \end{figure}
 
-\textbf{Typen boren:}
-\begin{itemize}
-    \item \textbf{Verzinkingsboor}: Wordt gebruikt om een conische uitsparing te maken aan het begin van een gat, zodat schroefkoppen gelijk met het
-          oppervlak kunnen liggen.
-    \item \textbf{Centerboor}: Wordt gebruikt om een startpunt te creëren.
-    \item \textbf{Steekboor}: Wordt gebruikt voor het boren van algemene gaten.
-\end{itemize}
+
 
 \begin{figure}[htbp]
     \centering
@@ -1551,59 +1471,65 @@ Draadtappen is het snijden van interne schroefdraad in een voorgeboord gat.
     \end{tabularx}
     \caption{Veelvoorkomende metrische tap‑boringen}
 \end{table}
+\FloatBarrier
 \subsection{Ruimen}
 Ruimen is een afwerkingsbewerking die een bestaand gat op nauwkeurige maat brengt met een goede oppervlaktekwaliteit.
 De ruimer neemt slechts een dunne laag weg (enkele tienden van een millimeter) en volgt het bestaande gat,
 zodat je maat en gladheid haalt die je met boren alleen niet bereikt (tot IT7).
-\begin{figure}[ht]
+\begin{figure}[htbp]
     \centering
-    \begin{tikzpicture}[scale=1.2, >=stealth]
-        % Werkstuk
-        \fill[gray!20] (-1.5, 0) rectangle (1.5, -2.5);
-        \draw[thick] (-1.5, 0) -- (1.5, 0);
-        \draw[thick] (-1.5, -2.5) -- (1.5, -2.5);
-        \draw[thick] (-1.5, 0) -- (-1.5, -2.5);
-        \draw[thick] (1.5, 0) -- (1.5, -2.5);
+    \begin{tikzpicture}[
+            >=Stealth,
+            font=\sffamily\small
+        ]
+        \def\wW{2.2}
+        \def\wH{2.55}
+        \def\rPre{0.50}
+        \def\rFin{0.70}
+        \def\yCut{-1.20}
 
-        % Voorgeboord gat (iets kleiner dan de ruimer)
-        \def\holeW{1.0}
-        \fill[white] (-\holeW/2, 0) rectangle (\holeW/2, -2.5);
-        \draw[dashed] (-\holeW/2, 0) -- (-\holeW/2, -2.5);
-        \draw[dashed] (\holeW/2, 0) -- (\holeW/2, -2.5);
+        % Werkstuk gearceerd
+        \fill[gray!12] (-\wW,0) rectangle (\wW,-\wH);
+        \fill[pattern=north east lines, pattern color=black!30]
+            (-\wW,0) -- (-\rFin,0) -- (-\rFin,\yCut) -- (-\rPre,\yCut-0.20) -- (-\rPre,-\wH)
+            -- (-\wW,-\wH) -- cycle;
+        \fill[pattern=north east lines, pattern color=black!30]
+            (\wW,0) -- (\rFin,0) -- (\rFin,\yCut) -- (\rPre,\yCut-0.20) -- (\rPre,-\wH)
+            -- (\wW,-\wH) -- cycle;
 
-        % Ruimer (Reamer)
-        \def\reamerW{1.2} % Iets breder dan het gat -> neemt materiaal af
-        \def\reamerH{2.0}
-        \begin{scope}[yshift=-1.0cm]
-            \fill[gray!50] (-\reamerW/2, 0) rectangle (\reamerW/2, \reamerH);
-            \draw[thick] (-\reamerW/2, 0) -- (-\reamerW/2, \reamerH);
-            \draw[thick] (\reamerW/2, 0) -- (\reamerW/2, \reamerH);
-            \draw[thick] (-\reamerW/2, \reamerH) -- (\reamerW/2, \reamerH);
+        % Dunne afnamelaag (rood)
+        \fill[red!24] (-\rFin,0) rectangle (-\rPre,\yCut);
+        \fill[red!24] (\rPre,0) rectangle (\rFin,\yCut);
 
-            % Rechte tanden (Straight flutes)
-            \draw[thin] (-0.4, 0) -- (-0.4, \reamerH);
-            \draw[thin] (0, 0) -- (0, \reamerH);
-            \draw[thin] (0.4, 0) -- (0.4, \reamerH);
+        % Contouren
+        \draw[thick, black!80] (-\wW,0) -- (-\rFin,0) -- (-\rFin,\yCut) -- (-\rPre,\yCut-0.20) -- (-\rPre,-\wH);
+        \draw[thick, black!80] (\wW,0) -- (\rFin,0) -- (\rFin,\yCut) -- (\rPre,\yCut-0.20) -- (\rPre,-\wH);
+        \draw[thick, black!80] (-\wW,0) -- (-\wW,-\wH) -- (\wW,-\wH) -- (\wW,0);
+        \draw[dashed, black!55] (-\rPre,0) -- (-\rPre,\yCut-0.20);
+        \draw[dashed, black!55] (\rPre,0) -- (\rPre,\yCut-0.20);
 
-            % Afgeschuinde onderkant (Chamfer)
-            \draw[thick] (-\reamerW/2, 0) -- (-\reamerW/2 + 0.2, -0.2) -- (\reamerW/2 - 0.2, -0.2) -- (\reamerW/2, 0);
-        \end{scope}
+        % Ruimer met rechte tanden en aansnijconus
+        \fill[gray!40] (-\rFin,1.55) -- (\rFin,1.55) -- (\rFin,\yCut)
+            -- (\rPre,\yCut-0.20) -- (-\rPre,\yCut-0.20) -- (-\rFin,\yCut) -- cycle;
+        \draw[thick, black!85] (-\rFin,1.55) -- (\rFin,1.55) -- (\rFin,\yCut)
+            -- (\rPre,\yCut-0.20) -- (-\rPre,\yCut-0.20) -- (-\rFin,\yCut) -- cycle;
+        \foreach \x in {-0.44, -0.15, 0.15, 0.44} {
+            \draw[thin, black!65] (\x, 1.55) -- (\x, \yCut);
+        }
 
-        % Materiaalafname indicatie
-        \draw[red, thick] (-\reamerW/2, -1.0) -- (-\reamerW/2, 0);
-        \draw[red, thick] (\reamerW/2, -1.0) -- (\reamerW/2, 0);
-        \node[red, right] at (\reamerW/2, -0.5) {\small dunne laag};
-
-        % Beweging
-        \draw[->, ultra thick, blue] (0, 1.5) -- (0, 0.5) node[midway, right] {$v_f$};
-        \draw[->, thick, blue] (0, 1.8) arc (150:30:0.3) node[right] {$n$};
+        % Voeding v_f (bovenaan) & rotatie n (rechts van ellips -> nul overlap!)
+        \draw[->, ultra thick, blue!60!black] (0, 2.85) -- (0, 1.68);
+        \node[blue!60!black, anchor=south, font=\small\bfseries] at (0, 2.88) {$v_f$};
+        \draw[->, thick, blue!60!black] (-0.58, 2.28) arc (195:345:0.60 and 0.16);
+        \node[blue!60!black, anchor=west, font=\small\bfseries] at (0.68, 2.28) {$n$};
 
         % Annotaties
-        \node[right] at (1.6, 0.5) {Ruimer};
-        \node[left] at (-1.6, -1.5) {Voorgeboord gat};
-
+        \draw[->, black!75] (1.95, 0.95) node[right] {Ruimer} -- (\rFin+0.06, 0.95);
+        \draw[->, red!75!black] (1.95, -0.58) node[right, align=left] {Dunne afnamelaag\\(0,1--0,3\,mm)} -- (\rFin-0.06, -0.58);
+        \draw[->, black!75] (-2.65, -1.95) node[left] {Voorgeboord gat} -- (-\rPre-0.06, -1.95);
     \end{tikzpicture}
-    \caption{Schematische weergave van ruimen: een ruimer verwijdert een dunne laag materiaal uit een voorgeboord gat voor hoge precisie en gladheid.}
+    \caption{Schematische weergave van ruimen: de ruimer neemt een dunne laag weg uit een voorgeboord gat om hoge maatnauwkeurigheid (tot IT7) en gladheid te bereiken.}
+    \label{fig:ruimen}
 \end{figure}
 \FloatBarrier
 
@@ -1684,7 +1610,7 @@ Een goed begrip van deze krachten is essentieel voor het optimaliseren van snijp
 \end{itemize}
 
 De snededikte is niet constant omdat je frees ronddraait. Voor berekeningen wordt de gemiddelde snededikte gebruikt.
-\newline
+
 
 \belangrijk{BELANGRIJK VOOR EXAMEN}\\
 De krachten op je frees zijn dus \emph{niet} constant: elke tand snijdt maar over een deel van de omwenteling,
@@ -1694,8 +1620,7 @@ Daarom rekenen we met de \textbf{gemiddelde snededikte} $h_{gem}$, zodat we toch
 \textbf{Gemiddelde snededikte bij Frezen:} $h_{gem} = f_z \cdot \sqrt{\dfrac{a}{d}}$\\
 waarbij $f_z$ de voeding per tand is, $a$ de snedediepte en $d$ de diameter van de frees.
 
-\textbf{Voeding per tand bij Frezen:} $f_z = \dfrac{f}{z_i}$
-waarbij $f$ de voeding is en $z_i$ het aantal tanden van de frees.
+\textbf{Voeding per tand bij frezen:} $f_z = \dfrac{f}{z}$, waarbij $f$ de voeding per omwenteling [\si{mm/omw}] is en $z$ het totale aantal tanden van de frees (niet $z_i$).
 
 \textbf{Snijsnelheid bij frezen:} $v_c = \dfrac{\pi \cdot d \cdot n}{1000}$
 waarbij $v_c$ de snijsnelheid is [\si{m/min}], $d$ de diameter van de frees [\si{mm}] en $n$ het toerental [omw/min].
@@ -1777,13 +1702,7 @@ $v_f$ is de richting waarin het werkstuk beweegt (de voedingsrichting).
           bij de instap is er meer wrijving en kans op BUE, maar de methode is vaak veiliger voor onstabiele opstellingen of dunwandige onderdelen.
 \end{itemize}
 
-\paragraph{Effecten op oppervlakte en snedediepte}
-\begin{itemize}
-    \item \textbf{Oppervlaktekwaliteit:} Meelopend geeft doorgaans een gladdere afwerking.
-          Tegenlopend geeft meer wrijving bij instap en vaak een ruwere afwerking.
-    \item \textbf{Snedediepte/productiviteit:} In een stijve opstelling maakt meelopend vaak hogere snededieptes en hogere voedingen mogelijk zonder kwaliteitsverlies.
-          Tegenlopend wordt vaak gebruikt voor grove, hoge‑volume snedes of wanneer de machine/opstelling de voorkeur geeft aan een voorzichtige instap.
-\end{itemize}
+
 
 
 \section{De Freesmachine}
@@ -1796,7 +1715,7 @@ De frees roteert en de tafel beweegt in de $x$-, $y$- en $z$-richting.
     \includegraphics[width=0.8\textwidth]{assets/image49.png}
     \caption{Weergave van een freesmachine}
 \end{figure}
-\vspace{2cm}
+
 
 \begin{warningbox}[EXAMEN CHECKLIST: FREZEN]
     \begin{itemize}
@@ -1817,7 +1736,7 @@ De frees roteert en de tafel beweegt in de $x$-, $y$- en $z$-richting.
     De bewerking combineert een roterende en een axiaal oscillerende beweging, wat een karakteristiek kruispatroon achterlaat.
 \end{conceptbox}
 
-Honen is een slijpoperatie die twee bewegingen combineert: een rotatie en een heen-en-weergaande beweging.
+
 \begin{description}
     \item[Hoofdbeweging] Bij honen is de hoofdbeweging een rotatie van de hoonkop.
     \item[Voedingsbeweging] De axiale heen-en-weergaande beweging waarmee het gereedschap
@@ -1847,84 +1766,108 @@ Dat is anders dan bij slijpen, waar de hele laag wordt afgenomen en er toch nog 
 % --- Illustratie: ruw oppervlak en resultaat na honen (scherpe toppen, geclipt) ---
 \begin{figure}[htbp]
     \centering
-    \makebox[\textwidth][c]{%
-        \begin{tikzpicture}[x=0.85cm, y=2.2cm, >=Stealth, every node/.style={font=\small}]
-            % Parameters
-            \def\L{5.8} % totale lengte
-            \def\cut{0.45} % hoogte van de snijlijn (y-waarde)
+    \begin{tikzpicture}[
+            >=Stealth,
+            font=\sffamily\footnotesize
+        ]
+        \def\cut{1.05}
 
-            % --- (a) Voorbehandeld oppervlak ---
-            \begin{scope}[shift={(0,0)}]
-                % Basislijn
-                \draw[black!40, thick] (0,0) -- (\L,0);
+        % ===== (a) VOORBEHANDELD OPPERVLAK (x = 0 .. 5.2) =====
+        \begin{scope}[shift={(0,0)}]
+            % Massief materiaal onderaan
+            \fill[gray!18] (0,-0.32) rectangle (5.2,0);
+            \fill[pattern=north east lines, pattern color=black!25] (0,-0.32) rectangle (5.2,0);
 
-                % De toppen tekenen en de oranje delen inkleuren
-                % Formaat: x-positie / hoogte
-                \foreach \x/\h in {0.4/0.95, 1.2/1.05, 2.0/0.9, 2.8/1.1, 3.6/0.8, 4.4/1.0, 5.2/0.88} {
-                        % Teken de driehoek (contour)
-                        \draw[very thick, black] (\x-0.4, 0) -- (\x, \h) -- (\x+0.4, 0);
+            % Onregelmatige ruwheidstoppen (links/midden/rechts/hoogte)
+            \foreach \xl/\xm/\xr/\h in {
+                0.00/0.35/0.72/1.75,
+                0.72/1.12/1.48/1.98,
+                1.48/1.85/2.22/1.62,
+                2.22/2.62/3.02/2.08,
+                3.02/3.36/3.72/1.55,
+                3.72/4.12/4.48/1.92,
+                4.48/4.84/5.20/1.72
+            } {
+                \pgfmathsetmacro{\xcl}{\xl + (\xm-\xl)*(\cut/\h)}
+                \pgfmathsetmacro{\xcr}{\xr - (\xr-\xm)*(\cut/\h)}
+                \fill[gray!18] (\xl,0) -- (\xcl,\cut) -- (\xcr,\cut) -- (\xr,0) -- cycle;
+                \fill[orange!50] (\xcl,\cut) -- (\xm,\h) -- (\xcr,\cut) -- cycle;
+                \draw[thick, black!85] (\xl,0) -- (\xm,\h) -- (\xr,0);
+            }
+            \draw[black!60, thin] (0,0) -- (5.2,0);
+            \draw[black!70, thick] (0,-0.32) -- (5.2,-0.32);
 
-                        % Bereken de snijpunten voor het oranje driehoekje (lineaire interpolatie)
-                        % x_breedte_op_snijlijn = 0.4 * (1 - cut/h)
-                        \pgfmathsetmacro{\xoffset}{0.4 * (1 - \cut/\h)}
-                        \fill[orange, opacity=0.55] (\x-\xoffset, \cut) -- (\x, \h) -- (\x+\xoffset, \cut) -- cycle;
-                    }
+            % Snijlijn + vrije callout linksboven (NOOIT op de toppen!)
+            \draw[very thick, red!75!black, dashed] (-0.25,\cut) -- (5.45,\cut);
+            \draw[->, red!75!black, thick] (0.05, 2.38) -- (-0.18, \cut+0.06);
+            \node[red!75!black, anchor=west, font=\footnotesize\bfseries] at (0.08, 2.38) {Snijlijn (hoonniveau)};
 
-                % Snijlijn
-                \draw[very thick, red] (-0.2, \cut) -- (\L+0.2, \cut) node[right, black]{\textbf{snijlijn}};
+            \node[font=\small] at (2.6, -0.72) {\textbf{(a)} Voorbehandeld oppervlak};
+        \end{scope}
 
-                % Label
-                \node[below] at (\L/2, -0.2) {(a) Voorbehandeld oppervlak};
-            \end{scope}
+        % ===== PROCESPIJL =====
+        \draw[->, ultra thick, blue!60!black] (5.75, 1.05) -- (7.25, 1.05)
+            node[midway, above=4pt, font=\small\bfseries] {Honen};
 
-            % --- Hoonproces pijl ---
-            \draw[->, very thick] (6.0, 1.0) -- (6.8, 1.0);
-            \node[above, font=\bfseries] at (6.4, 1.05) {HOONPROCES};
+        % ===== (b) GEHOOND PLATEAU-OPPERVLAK (x = 7.8 .. 13.0) =====
+        \begin{scope}[shift={(7.8,0)}]
+            % Massief materiaal onderaan
+            \fill[gray!18] (0,-0.32) rectangle (5.2,0);
+            \fill[pattern=north east lines, pattern color=black!25] (0,-0.32) rectangle (5.2,0);
 
-            % --- (b) Gehoond oppervlak (Trapezoïdes) ---
-            \begin{scope}[shift={(7.5,0)}]
-                \draw[black!40, thick] (0,0) -- (\L,0);
+            % Oliefilm in de bewaarde dalen (lichtblauw)
+            \fill[cyan!22] (0.35,0) rectangle (4.85,0.58);
 
-                \foreach \x/\h in {0.4/0.95, 1.2/1.05, 2.0/0.9, 2.8/1.1, 3.6/0.8, 4.4/1.0, 5.2/0.88} {
-                        % Bereken de breedte van de platte top op de snijlijn
-                        \pgfmathsetmacro{\xoffset}{0.4 * (1 - \cut/\h)}
+            % Afgetopte plateaus (exact dezelfde dalen behouden!)
+            \foreach \xl/\xm/\xr/\h in {
+                0.00/0.35/0.72/1.75,
+                0.72/1.12/1.48/1.98,
+                1.48/1.85/2.22/1.62,
+                2.22/2.62/3.02/2.08,
+                3.02/3.36/3.72/1.55,
+                3.72/4.12/4.48/1.92,
+                4.48/4.84/5.20/1.72
+            } {
+                \pgfmathsetmacro{\xcl}{\xl + (\xm-\xl)*(\cut/\h)}
+                \pgfmathsetmacro{\xcr}{\xr - (\xr-\xm)*(\cut/\h)}
+                \fill[gray!22] (\xl,0) -- (\xcl,\cut) -- (\xcr,\cut) -- (\xr,0) -- cycle;
+                \draw[thick, black!85] (\xl,0) -- (\xcl,\cut) -- (\xcr,\cut) -- (\xr,0);
+            }
+            \draw[black!60, thin] (0,0) -- (5.2,0);
+            \draw[black!70, thick] (0,-0.32) -- (5.2,-0.32);
+            \draw[very thick, red!75!black] (-0.25,\cut) -- (5.45,\cut);
 
-                        % Teken de trapezoïde (het restant onder de snijlijn)
-                        \draw[very thick, black, fill=gray!15]
-                        (\x-0.4, 0) -- (\x-\xoffset, \cut) -- (\x+\xoffset, \cut) -- (\x+0.4, 0) -- cycle;
-                    }
+            % Ruim gescheiden callouts (x = 1.3 vs x = 4.1 -> 2.8 cm uit elkaar!)
+            \draw[->, blue!60!black, thick] (1.12, 2.02) -- (1.12, \cut+0.06);
+            \node[blue!60!black, anchor=south, font=\footnotesize\bfseries] at (1.12, 2.04) {Vlak draagvlak};
 
-                % Snijlijn
-                \draw[very thick, red] (-0.2, \cut) -- (\L+0.2, \cut);
+            \draw[->, teal!70!black, thick] (3.72, 2.02) -- (3.72, 0.32);
+            \node[teal!70!black, anchor=south, font=\footnotesize\bfseries] at (3.72, 2.04) {Oliedalen};
 
-                % Label
-                \node[below] at (\L/2, -0.2) {(b) Gehoond oppervlak};
-            \end{scope}
+            \node[font=\small] at (2.6, -0.72) {\textbf{(b)} Gehoond plateau-oppervlak};
+        \end{scope}
 
-            % --- Legende ---
-            \begin{scope}[shift={(3.5, -1.0)}]
-                \draw[very thick, red] (0, 0.4) -- (0.8, 0.4) node[right=5pt, black] {Snijlijn};
-                \fill[orange, opacity=0.55] (0, 0) rectangle (0.8, 0.25);
-                \node[right=5pt] at (0.8, 0.125) {Te verwijderen toppen (gemarkeerd)};
-            \end{scope}
+        % ===== LEGENDE IN EIGEN KADER (relatieve positionering -> nul overlap!) =====
+        \node[draw=black!20, fill=gray!4, rounded corners=3pt, inner sep=5pt] at (6.5, -1.55) {%
+            \begin{tikzpicture}[baseline=-0.5ex]
+                \fill[orange!50, draw=black!50] (0,0) rectangle (0.45,0.22);
+                \node[anchor=west, inner sep=0pt] (l1) at (0.58,0.11) {Afgenomen ruwheidstoppen};
 
-        \end{tikzpicture}
-    }
+                \draw[very thick, red!75!black, dashed] ([xshift=0.6cm]l1.east) -- ++(0.55,0) coordinate (l2end);
+                \node[anchor=west, inner sep=0pt] (l2) at ([xshift=0.14cm]l2end) {Hoonniveau (snijlijn)};
 
-    \caption{(a) Voorbehandeld, ruw oppervlak met scherpe toppen; (b) resultaat na honen waarbij de
-        bovenste delen van de toppen zijn verwijderd.}
+                \fill[cyan!22, draw=teal!60!black] ([xshift=0.6cm, yshift=-0.11cm]l2.east) rectangle ++(0.45,0.22);
+                \node[anchor=west, inner sep=0pt] at ([xshift=1.18cm]l2.east) {Olievasthoudende dalen};
+            \end{tikzpicture}%
+        };
+    \end{tikzpicture}
+    \caption{Effect van honen op het oppervlakteprofiel: (a) scherpe ruwheidstoppen vóór honen; (b) plateau-oppervlak na honen met groot draagvlak en behoud van olievasthoudende dalen.}
     \label{fig:hoonprocess_schematic}
 \end{figure}
 \vspace{0.35cm}
 
 \subsection{Korte-slag Honen}
-\vspace{0.25cm}
-Het enige verschil met lange-slag honen is de kinematica van het systeem.
-Je werkstuk is opgespannen tussen twee tegenpunten die het laten roteren.
-De hoonsteen wordt daarbij van buitenaf op het oppervlak gedrukt.
-Je past de hoonsteen hier dus toe op een \emph{inwendig} cilindrisch oppervlak, zoals het nabewerken van de ogen van zuigerstangen.
-De steen maakt een sinusoïdale beweging met een korte slag.
-De oppervlaktekwaliteit is enorm fijn.
+Bij korte-slag honen (superfinishen) draait het werkstuk tussen twee centers terwijl de hoonsteen van buitenaf tegen het \emph{uitwendige} cilindrische oppervlak drukt (bv.\ assen en lagerbanen). De steen voert een hoogfrequente, kortslagige axiale oscillatie uit, wat een zeer fijne oppervlaktekwaliteit oplevert.
 
 \begin{figure}[htbp]
     \centering
@@ -1943,10 +1886,10 @@ De lepvloeistof met de korrels beweegt tussen de stukken en maakt het oppervlak 
 Tot en met $R_a = \SI{0,1}{\micro m}$ en IT1 is mogelijk.
 
 \textbf{Toepassingen}:
-\newline
+
 Bepaalde stukken hebben dit nodig, zoals kogellagers of klepzittingen.
 
-\textit{Kijk zeker de video's op Toledo om dit proces beter te begrijpen.}
+
 
 \subsection{Finisheren met pasta}
 Je klemt het werkstuk in en pompt dan de pasta met korrels erdoor om het oppervlak te verbeteren.
@@ -1954,35 +1897,19 @@ Je klemt het werkstuk in en pompt dan de pasta met korrels erdoor om het oppervl
 \section{Geavanceerde verspaningstechnieken en hybride technieken}
 
 \subsection{Hoge snelheid verspanen}
-Bij hogesnelheidsverspanen (HSM) gebruik je enorm hoge snijsnelheden in vergelijking met
-conventioneel verspanen.
-\newline
-\begin{figure}[ht]
+Bij hogesnelheidsverspanen (HSM) worden spindeltoerentallen tot \SI{80000}{omw/min} en uitzonderlijk hoge snijsnelheden ingezet om de materiaalafnamesnelheid drastisch te verhogen (zie \cref{fig:hoge_snelheid_verspanen.png}).
+
+\begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.8\textwidth]{assets/image58.png}
-    \caption{Hoge snelheid verspanen in vergelijking met conventioneel verspanen}
+    \includegraphics[width=0.75\textwidth]{assets/image58.png}
+    \caption{Hoge snelheid verspanen in vergelijking met conventioneel verspanen.}
     \label{fig:hoge_snelheid_verspanen.png}
 \end{figure}
+\FloatBarrier
 
-Deze spindels gaan tot 80.000 omw/min.
+Door de extreem hoge snijsnelheid treedt het softening-effect op: de hoge temperatuur in de afschuifzone verlaagt lokaal de vloeigrens van het materiaal. Omdat de spaan met zeer hoge snelheid wordt afgevoerd, vertrekt de gegenereerde warmte nagenoeg volledig via de spaan zelf en blijft de thermische belasting op het werkstuk minimaal.
 
-Herinner je bij algemeen verspanen~\ref{chap:Algemeen verspanen} dat bij heel hoge
-snijsnelheden je een \textbf{Softening effect} had die het makkelijker maakte om te verspanen.
-Je werkmateriaal wordt warmer en daarom ductieler.
-
-Bij hogesnelheidsverspanen zie je dit effect ook terugkomen.
-De warmte die gegenereerd wordt, gaat grotendeels mee in de spaan: die wordt zo snel afgevoerd dat de
-warmte niet de tijd krijgt om in het werkstuk te diffunderen en het oppervlak aan te tasten.
-\textit{Dit effect ken je al uit figuur~\ref{verschillende_invloeden_voeding_snedediepte}.}
-
-\textbf{Toepassingen:}
-\newline
-Je wilt enorm snel materiaal wegnemen.
-Je zet dus je voeding $f$ en je snijsnelheid $v_c$ enorm hoog.
-Deze techniek wordt vooral gebruikt bij aluminium en andere lichte metalen.
-\newline
-De gereedschappen zijn van (gecoat) hardmetaal: hard genoeg om hun snijkant te behouden bij de
-hoge temperaturen die daarbij optreden.
+HSM wordt op grote schaal toegepast bij aluminium en lichte constructielegeringen met behulp van stijve machines en gereedschappen van gecoat hardmetaal die bestand zijn tegen hoge thermische en mechanische pieken.
 
 
 \subsection{Hardverspanen}
@@ -2032,23 +1959,8 @@ Je wilt zo weinig mogelijk reflectie en transmissie.
     Alle drie zijn fracties van het invallende vermogen, dus ze tellen altijd op tot 1.}
 \vspace{0.5cm}
 
-\subsection{Draadvonken en slijpen}
-\textit{(je ziet meer over draadvonken in een ander hoofdstuk)}
-Het vonkproces is een thermisch proces: je neemt eerst materiaal weg met vonken.
-Bij normaal draadvonken blijft er een laagje hergestold materiaal (de witte laag) op het oppervlak achter;
-door daarna te slijpen neem je die laag weg.
-
-\subsection{ECM (Electro Chemical Machining) en slijpen}
-Bij ECM ga je materiaal wegnemen door elektrochemische reacties.
-Je hebt een anode en kathode die in een elektrolyt zitten.
-Dit chemische proces laat een ruw oppervlak en oxidelagen achter.
-Door daarna te slijpen verbeter je dat oppervlak en verwijder je die laag.
-
-\subsection{Combinatie van ECM en frezen}
-Je gaat frezen combineren met ECM.
-De chemische bewerkingen laten een oxidelaag achter die je met frezen gaat verwijderen.
-
-\textit{(Deze technieken zijn niet super belangrijk om vanbuiten te kennen maar je moet zien dat je nadelen van een proces kunt oplossen met een ander proces)}
+\subsection{Combinaties met EDM en ECM}
+Bij \textbf{EDM-ondersteund verspanen} verzwakken elektrische ontladingen het materiaaloppervlak door micro-smelting, waardoor harde legeringen met minimale snijkrachten verspaand worden. Bij \textbf{ECM-ondersteund verspanen} lost het werkstukoppervlak tegelijk anodisch op in een elektrolyt; de mechanische beitel verwijdert continu de passiverende oxidelaag, wat resulteert in braamvrije oppervlakken en verwaarloosbare gereedschapsslijtage.
 
 \begin{warningbox}[EXAMEN CHECKLIST: HYBRIDETECHNIEKEN]
     \begin{itemize}
@@ -2066,10 +1978,7 @@ De chemische bewerkingen laten een oxidelaag achter die je met frezen gaat verwi
     In tegenstelling tot draaien of frezen, heeft slijpen geen vaste snijkantgeometrie. Het oppervlak van de slijpsteen bestaat uit ontelbare, willekeurig georiënteerde korrels die materiaal afnemen met een sterk negatieve spaanhoek.
 \end{conceptbox}
 
-Slijpen is een verspaningstechniek waarbij een roterend schijfvormig gereedschap,
-de slijpschijf, wordt gebruikt om materiaal van een werkstuk te verwijderen.
-Het verspanen gebeurt door een slijpsteen waarvan de \textbf{snijkorrels} kleine deeltjes materiaal van het werkstuk afnemen.
-De korrels liggen willekeurig georiënteerd, dus de snijgeometrie ligt niet vast: we spreken van een \emph{onbepaalde} snijkant.
+Slijpen functioneert met geometrisch onbepaalde snijkanten: talloze microscopische slijpkorrels met negatieve spaanhoeken nemen uiterst fijne spanen af bij snijsnelheden tot \SI{80}{m/s}. Het is bij uitstek een precisie-nabewerking voor geharde staalsoorten en keramiek.
 
 De snijkorrels kunnen oftewel vrij liggen of gebonden zijn in een matrix.
 
@@ -2097,7 +2006,7 @@ Maar de \textbf{snedediepte} per korrel is zó klein (micrometers) dat de kracht
 Die twee compenseren elkaar.
 
 Je kunt een slijpsteen dus zien als een frees met heel veel, heel kleine, onbepaalde snijkanten.
-\newline
+
 
 \begin{figure}[htbp]
     \centering
@@ -2108,7 +2017,7 @@ Je kunt een slijpsteen dus zien als een frees met heel veel, heel kleine, onbepa
 
 De korrel hier heeft een enorm negatieve spaanhoek. De spaanvorming is enorm klein maar omdat de korrels
 zo klein en hard zijn kun je zelfs heel harde materialen slijpen.
-\newline
+
 \section{Eigenschappen van slijpen}
 \begin{enumerate}
     \item \textbf{Snijsnelheid $v_c$}: ongeveer 25 tot 60 m/s, dus heel hoge snelheden.
@@ -2147,13 +2056,13 @@ Een slijpsteen wordt gekarakteriseerd door vijf eigenschappen:
 \end{figure}
 \subsection{Korrelmateriaal}
 \textbf{Natuurlijke korrels} zijn kwarts, korund en (natuurlijk) diamant.
-\newline
+
 \textbf{Kunstmatige korrels} zijn siliciumcarbide, aluminiumoxide, boriumcarbide (B$_4$C), kubisch boriumnitride (CBN) en synthetisch diamant.
 \subsection{Korrelgrootte}
 De korrelgrootte bepaalt hoeveel je kunt afnemen.
 Grote korrels $\to$ meer afname, maar slechtere oppervlaktekwaliteit.
 Kleine korrels $\to$ minder afname, maar betere oppervlaktekwaliteit.
-\newline
+
 De korrelgrootte wordt aangegeven met een \emph{meshnummer}: het aantal mazen per inch$^2$ van de zeef
 waarmee de korrels gesorteerd worden. Een hoger meshnummer betekent dus \emph{fijnere} korrels.
 
@@ -2255,15 +2164,14 @@ maar in plaats daarvan wordt ondersteund door een steunlat (rest blade) en gelei
     \label{fig:centerloos_slijpen.png}
 \end{figure}
 
-\subsection{Profielslijpen}
-Je slijpt een bepaald profiel met een slijpsteen die dat profiel heeft.
+
 
 \begin{warningbox}[EXAMEN CHECKLIST: SLIJPEN]
     \begin{itemize}
         \item \textbf{Onbepaalde snijkant}: Begrijp het verschil met gedefinieerde snijkanten en de impact van de negatieve spaanhoek.
         \item \textbf{Karakterisering}: Ken de 5 factoren: korrelmateriaal, korrelgrootte, hardheid, bindmiddel en structuur (porositeit).
         \item \textbf{Warmte}: Weet dat $70\%$ van de energie in warmte gaat ($900^\circ$C) en ken de risico's (thermisch aangetaste zone (TAZ), scheuren).
-        \item \textbf{Dressing}: Leg uit waarom een slijpsteen regelmatig "gedressed" moet worden (scherp maken en profileren).
+        \item \textbf{Dressing}: Leg uit waarom een slijpsteen regelmatig ``gedressed'' moet worden (scherp maken en profileren).
         \item \textbf{Centerloos slijpen}: Begrijp het principe en de voordelen voor massaproductie.
     \end{itemize}
 \end{warningbox}
@@ -2276,13 +2184,7 @@ Je slijpt een bepaald profiel met een slijpsteen die dat profiel heeft.
     EDM verwijdert materiaal door gecontroleerde elektrische ontladingen (vonken) tussen een elektrode en het werkstuk in een isolerend diëlektricum. Het proces is thermisch: materiaal wordt lokaal gesmolten en verdampt zonder mechanische krachten.
 \end{conceptbox}
 
-\textbf{EDM (Electro Discharge Machining)} of \textbf{vonkerosie} is een \textbf{verspaningstechniek} waarbij materiaal wordt
-verwijderd met \textbf{elektrische vonken}.
-Je hebt een \textbf{elektrode} en een \textbf{werkstuk} die in een \textbf{vloeistof} (die als \textbf{isolator} fungeert zoals bijvoorbeeld gedestilleerd water) zitten.
-Wanneer er een \textbf{hoge spanning} wordt aangelegd tussen de elektrode en het werkstuk, ontstaat
-een elektrische vonk die het materiaal op het werkstuk smelt en wegneemt.
-\newline
-Je kunt geen normaal water gebruiken omdat er mineralen in zitten die wel geleiden.
+Bij vonkerosie functioneert het diëlektricum (bv.\ gedeïoniseerd water of koolwaterstofolie) als elektrische isolator en koelmedium. Zuiver leidingwater is ongeschikt door de aanwezigheid van opgeloste mineralen die vroegtijdige geleiding veroorzaken. Zodra de doorslagveldsterkte bereikt wordt, ontstaat een plasmakanaal met lokale temperaturen tot \SI{12000}{\degreeCelsius}.
 
 \begin{figure}[htbp]
     \centering
@@ -2293,52 +2195,66 @@ Je kunt geen normaal water gebruiken omdat er mineralen in zitten die wel geleid
 
 \begin{figure}[htbp]
     \centering
-    \begin{tikzpicture}
-        \tikzset{
-            elec/.style={fill=gray!30, draw=black, thick},
-            work/.style={fill=gray!10, draw=black, thick, pattern=north east lines},
-            spark/.style={decoration={zigzag, segment length=1mm, amplitude=0.5mm}, decorate, draw=orange, very thick},
-            rough/.style={decorate, decoration={random steps, segment length=0.4mm, amplitude=0.2mm}}
-        }
+    \begin{tikzpicture}[
+            >=Stealth,
+            font=\sffamily\footnotesize,
+            elec/.style={fill=gray!38, draw=black!85, thick},
+            work/.style={fill=gray!14, draw=black!85, thick, pattern=north east lines, pattern color=black!30},
+            spark/.style={decoration={zigzag, segment length=1.2mm, amplitude=0.6mm}, decorate, draw=orange!90!red, very thick},
+            rough/.style={decorate, decoration={random steps, segment length=0.6mm, amplitude=0.16mm}}
+        ]
+        % ===== LINKS: VOOR (TIJDENS VONK) x = 0 .. 4.8 =====
+        \begin{scope}[shift={(0,0)}]
+            \fill[cyan!8] (0,0) rectangle (4.8,2.65);
+            % Label volledig links van elektrode (elektrode begint op x = 1.85)
+            \node[cyan!60!black, anchor=north west, font=\scriptsize\bfseries] at (0.12,2.55) {Diëlektricum};
 
-        % LEFT: BEFORE
-        \begin{scope}[local bounding box=before]
-            % Electrode (Top +)
-            \draw[elec] (-0.5, 2.5) -- (-0.5, 1.5) -- (0, 0.5) -- (0.5, 1.5) -- (0.5, 2.5) -- cycle;
-            \node at (0, 2) {$+$};
+            % Elektrode (+) op x = 1.85 .. 2.95
+            \draw[elec] (1.85,2.65) -- (1.85,1.50) -- (2.40,0.68) -- (2.95,1.50) -- (2.95,2.65) -- cycle;
+            \node[font=\small\bfseries] at (2.40,1.95) {$+$};
 
-            % Workpiece (Bottom -)
-            \draw[work] (-1.5, 0) rectangle (1.5, -1);
-            \node[fill=white, inner sep=1pt] at (0, -0.5) {$-$};
+            % Werkstuk (-)
+            \draw[work] (0,0) rectangle (4.8,-1.05);
+            \node[fill=white, inner sep=2pt, rounded corners=1pt, font=\small\bfseries] at (2.40,-0.55) {$-$};
 
-            % Spark
-            \draw[spark] (0, 0.5) -- (0, 0);
-            % Text moved to the right with a pointer to the spark
-            \node[right, font=\footnotesize, align=left] (lbl) at (0.6, 0.25) {\textbf{Warmtegeneratie}\\(vonk)};
-            \draw[->, thin] (lbl.west) -- (0.1, 0.25);
+            % Vonk + plasma
+            \fill[orange!25] (2.40,0.34) ellipse (0.28 and 0.34);
+            \draw[spark] (2.40,0.68) -- (2.40,0);
 
-            \node[below=0.2cm] at (0, -1) {\textbf{Voor}};
+            % Callout netjes binnen het bad rechts (stopt voor x = 4.7, ver weg van overgangspijl!)
+            \node[anchor=east, align=right, font=\scriptsize] (lbl1) at (4.70,0.95) {\textbf{Vonkontlading}\\(lokaal smelten)};
+            \draw[->, black!75, semithick] (lbl1.south west) -- (2.66,0.38);
+
+            \node[font=\small\bfseries] at (2.40,-1.45) {Voor (tijdens vonk)};
         \end{scope}
 
-        % RIGHT: AFTER
-        \begin{scope}[xshift=7cm, local bounding box=after]
-            % Electrode (Top +)
-            \draw[elec] (-0.5, 2.5) -- (-0.5, 1.5) -- (0, 0.5) -- (0.5, 1.5) -- (0.5, 2.5) -- cycle;
-            \node at (0, 2) {$+$};
+        % ===== OVERGANGSPIJL (ruime vrije zone x = 5.15 .. 6.25) =====
+        \draw[->, ultra thick, blue!60!black] (5.15,0.85) -- (6.25,0.85);
 
-            % Workpiece (Bottom -) with ROUGH crater
-            % Replaced smooth arc with a decorated path for roughness
-            \draw[work] (-1.5, 0) -- (-0.4, 0)
-            decorate[rough] { arc[start angle=180, end angle=360, radius=0.4] }
-            -- (1.5, 0) -- (1.5, -1) -- (-1.5, -1) -- cycle;
+        % ===== RECHTS: NA (KRATER) x = 6.6 .. 11.4 =====
+        \begin{scope}[shift={(6.6,0)}]
+            \fill[cyan!8] (0,0) rectangle (4.8,2.65);
+            \node[cyan!60!black, anchor=north west, font=\scriptsize\bfseries] at (0.12,2.55) {Diëlektricum};
 
-            \node[fill=white, inner sep=1pt] at (0, -0.6) {$-$};
+            % Elektrode (+)
+            \draw[elec] (1.85,2.65) -- (1.85,1.50) -- (2.40,0.68) -- (2.95,1.50) -- (2.95,2.65) -- cycle;
+            \node[font=\small\bfseries] at (2.40,1.95) {$+$};
 
-            \node[below=0.2cm] at (0, -1) {\textbf{Na}};
+            % Werkstuk (-) met krater en dunne oranje TAZ-rand
+            \fill[orange!35] (1.84,0) arc(180:360:0.56) -- (2.84,0) arc(360:180:0.44) -- cycle;
+            \draw[work] (0,0) -- (1.96,0)
+                decorate[rough] { arc[start angle=180, end angle=360, radius=0.44] }
+                -- (4.8,0) -- (4.8,-1.05) -- (0,-1.05) -- cycle;
+            \node[fill=white, inner sep=2pt, rounded corners=1pt, font=\small\bfseries] at (2.40,-0.78) {$-$};
+
+            % Callout IN het lichte diëlektricum (NOOIT over de arcering!)
+            \node[anchor=east, align=right, font=\scriptsize] (lbl2) at (4.70,0.88) {\textbf{Microkrater}\\+ dunne TAZ};
+            \draw[->, black!75, semithick] (lbl2.south west) -- (2.86,-0.16);
+
+            \node[font=\small\bfseries] at (2.40,-1.45) {Na (materiaalafname)};
         \end{scope}
-
     \end{tikzpicture}
-    \caption{Principe van vonkerosie: warmtegeneratie door elektrische ontlading zorgt voor materiaalafname (ruw oppervlak).}
+    \caption{Principe van vonkerosie (EDM): een elektrische ontlading in een isolerend diëlektricum smelt en verdampt lokaal werkstukmateriaal, met achterlating van een microkrater.}
     \label{fig:vonkerosie_principe}
 \end{figure}
 \FloatBarrier
@@ -2353,41 +2269,39 @@ Bij een vonkerosie-opstelling (zoals in \cref{fig:vonkerosie_proces.png}) zijn d
 \end{itemize}
 
 \textbf{Een volledige cyclus ziet er als volgt uit:}
-\begin{figure}[ht]
+\begin{figure}[htbp]
     \centering
-    \begin{tikzpicture}[node distance=1.6cm, auto,
-            procstep/.style={rectangle, draw=black, thick, fill=blue!5, text width=4cm, align=center, rounded corners, minimum height=1cm},
-            arrow/.style={thick, ->, >=stealth}
+    \begin{tikzpicture}[
+            >=Stealth,
+            font=\sffamily\footnotesize,
+            procstep/.style={rectangle, draw=blue!60!black, thick, fill=blue!6,
+                             text width=3.2cm, align=center, rounded corners=3pt, minimum height=1.05cm},
+            arrow/.style={thick, ->, black!80}
         ]
-        \node (start) [procstep] {1. Spanningsopbouw \\ (Ioniseren van kanaal)};
-        \node (spark) [procstep, below of=start] {2. Ontlading (Vonk) \\ (Stroom vloeit)};
-        \node (heat)  [procstep, below of=spark] {3. Smelten \& Verdampen \\ (Materiaalverhitting)};
-        \node (off)   [procstep, below of=heat] {4. Pauze ($t_{off}$) \\ (Spanning valt weg)};
-        \node (flush) [procstep, below of=off] {5. Implosie \& Spoelen \\ (Deeltjesafvoer)};
+        % Bovenste rij (1 -> 2 -> 3)
+        \node[procstep] (s1) at (0,0) {\textbf{1. Spanningsopbouw}\\Ionisatiekanaal vormt};
+        \node[procstep] (s2) at (4.3,0) {\textbf{2. Ontlading (vonk)}\\Stroom piekt ($t_e$)};
+        \node[procstep] (s3) at (8.6,0) {\textbf{3. Smelten \& verdampen}\\Plasma ($8000\text{--}12000\,^\circ\text{C}$)};
 
-        \draw [arrow] (start) -- (spark);
-        \draw [arrow] (spark) -- (heat);
-        \draw [arrow] (heat) -- (off);
-        \draw [arrow] (off) -- (flush);
-        \draw [arrow] (flush.east) -- ++(1,0) |- node[anchor=west, yshift=-2cm] {Herhaling (Hz)} (start.east);
+        % Onderste rij (5 <- 4)
+        \node[procstep, fill=orange!8, draw=orange!80!black] (s4) at (6.7,-2.1) {\textbf{4. Pauze ($t_0$)}\\Spanning valt weg};
+        \node[procstep, fill=green!8, draw=green!50!black] (s5) at (2.4,-2.1) {\textbf{5. Implosie \& spoelen}\\Swarf wordt afgevoerd};
 
+        \draw[arrow] (s1) -- (s2);
+        \draw[arrow] (s2) -- (s3);
+        \draw[arrow] (s3.south) |- (s4.east);
+        \draw[arrow] (s4) -- (s5);
+        \draw[arrow] (s5.west) -| (s1.south);
+
+        % Label in volledig vrije ruimte links van de retourpijl (nul overlap!)
+        \node[anchor=east, align=right, font=\scriptsize, black!70] at (-0.22, -1.45)
+            {\textbf{Herhaling}\\$100\,\text{kHz}\text{--}1\,\text{MHz}$};
     \end{tikzpicture}
-    \caption{Cyclus van één EDM-puls: van spanningsopbouw tot spoelen.}
+    \caption{Cyclus van één EDM-puls: van spanningsopbouw en vonkontlading tot implosie en spoelen.}
     \label{fig:edm_puls_flow}
 \end{figure}
 
-Je benedenplaat wordt \textbf{negatief geladen} en de elektrode \textbf{positief}.
-Er is dan een puls van \textbf{discharge} die een stukje materiaal wegneemt.
-\textbf{Pulsen} hebben een \textbf{frequentie} tussen ongeveer \SI{100}{kHz} en \SI{1}{MHz}.
-Je genereert dan veel discharges die opbouwen zodat je lijnen stap per stap kunt wegnemen.
-\newline
-De afstand tussen de elektrode en het werkstuk is enorm klein maar enorm belangrijk.
-Raakt de elektrode het werkstuk, dan krijg je \textbf{kortsluiting} en stopt het vonken.
-\newline
-De weggenomen deeltjes zijn \textbf{bolvormig}: het gesmolten metaal wordt de vloeistof in geslingerd
-en stolt daar tot kleine bolletjes.
-\newline
-De pulsenergie wordt gegeven door de formule
+De vonkontladingen vinden plaats bij frequenties van \SI{100}{kHz} tot \SI{1}{MHz}. De spleetbreedte (gap) bedraagt slechts enkele micrometers: direct mechanisch contact leidt onmiddellijk tot kortsluiting waardoor het erosieproces stokt. Het gesmolten en weggeslingerde metaal stolt in het diëlektricum tot karakteristieke holle micro-kogeltjes. De energie per vonkontlading wordt uitgedrukt als:
 \frm{Pulsenergie tijdens vonkfrezen}{W_e = \int_0^{t_e} u_e i_e \, dt}{waarbij $W_e$ de pulsenergie is [\si{J}], $u_e$ de momentane pulsspanning [\si{V}], $i_e$ de momentane pulsstroom [\si{A}] en $t_e$ de effectieve pulsduur [\si{s}].}
 \begin{figure}[htbp]
     \centering
@@ -2400,54 +2314,70 @@ De pulsenergie wordt gegeven door de formule
 
 Het vonkproces verloopt in drie cyclische fases die zich duizenden keren per seconde herhalen:
 
-\begin{figure}[ht]
+\begin{figure}[htbp]
     \centering
-    \begin{tikzpicture}[scale=0.9,
-            elec/.style={fill=gray!30, draw=black, thick},
-            work/.style={fill=gray!10, draw=black, thick, pattern=north east lines},
-            gas/.style={circle, draw=blue!50, fill=blue!10, dashed, minimum size=1.5cm},
-            spark/.style={decoration={zigzag, segment length=1mm, amplitude=0.5mm}, decorate, draw=orange, very thick}
+    \begin{tikzpicture}[
+            scale=0.88,
+            >=Stealth,
+            font=\sffamily\footnotesize,
+            elec/.style={fill=gray!38, draw=black!80, thick},
+            work/.style={fill=gray!15, draw=black!80, thick, pattern=north east lines, pattern color=black!35},
+            spark/.style={decoration={zigzag, segment length=1.1mm, amplitude=0.55mm}, decorate, draw=orange!90!red, very thick}
         ]
-        % Phase 1: Initiation
-        \begin{scope}[local bounding box=p1]
-            \node at (0, 3) {\textbf{1. Initiatie}};
-            \draw[elec] (-1, 2.5) -- (-1, 1.5) -- (0, 0.5) -- (1, 1.5) -- (1, 2.5) -- cycle;
-            \draw[work] (-1.5, -1) rectangle (1.5, 0);
+        % Fase 1: Initiatie
+        \begin{scope}[shift={(0,0)}]
+            \fill[cyan!8] (-1.6,0) rectangle (1.6,2.55);
+            \node[font=\small\bfseries] at (0,2.85) {1. Initiatie};
+            \draw[elec] (-0.9,2.55) -- (-0.9,1.5) -- (0,0.65) -- (0.9,1.5) -- (0.9,2.55) -- cycle;
+            \node[font=\bfseries] at (0,1.95) {$+$};
+            \draw[work] (-1.6,-0.95) rectangle (1.6,0);
 
-            % Ions
-            \foreach \x in {-0.5, -0.2, 0.2, 0.5} \node[circle, fill=red, inner sep=1pt] at (\x, 0.2) {\tiny $+$};
-            \foreach \x in {-0.6, 0, 0.6} \node[circle, fill=blue, inner sep=1pt] at (\x, -0.2) {\tiny $-$};
-            \node[font=\footnotesize, align=center] at (0, -1.5) {Veldopbouw \& \\ Ionisatie};
+            % Veldlijnen + ladingsdragers met hoog contrast
+            \foreach \x in {-0.55, 0, 0.55} {
+                \draw[->, thin, blue!50!black, dashed] (\x, 0.58) -- (\x, 0.08);
+            }
+            \foreach \x in {-0.45, 0, 0.45} {
+                \node[circle, fill=red!75!black, text=white, inner sep=0.7pt, font=\tiny\bfseries] at (\x, 0.44) {$+$};
+                \node[circle, fill=blue!65!black, text=white, inner sep=0.7pt, font=\tiny\bfseries] at (\x, 0.16) {$-$};
+            }
+            \node[align=center, below=4pt] at (0,-0.95) {Veldopbouw \&\\lawine-ionisatie};
         \end{scope}
 
-        % Phase 2: Discharge
-        \begin{scope}[xshift=4.5cm, local bounding box=p2]
-            \node at (0, 3) {\textbf{2. Discharge}};
-            \draw[elec] (-1, 2.5) -- (-1, 1.5) -- (0, 0.5) -- (1, 1.5) -- (1, 2.5) -- cycle;
-            \draw[work] (-1.5, -1) rectangle (1.5, 0);
+        % Fase 2: Discharge
+        \begin{scope}[shift={(4.4,0)}]
+            \fill[cyan!8] (-1.6,0) rectangle (1.6,2.55);
+            \node[font=\small\bfseries] at (0,2.85) {2. Discharge};
+            \draw[elec] (-0.9,2.55) -- (-0.9,1.5) -- (0,0.65) -- (0.9,1.5) -- (0.9,2.55) -- cycle;
+            \node[font=\bfseries] at (0,1.95) {$+$};
+            \draw[work] (-1.6,-0.95) rectangle (1.6,0);
 
-            % Gas bubble & Spark
-            \node[gas] at (0, 0.25) {};
-            \draw[spark] (0, 0.5) -- (0, 0);
+            % Plasmabel + smeltbad + vonk
+            \fill[orange!18, draw=orange!75!black, dashed, thick] (0,0.32) ellipse (0.72 and 0.52);
+            \fill[red!40] (-0.36,0) arc(180:360:0.36 and 0.24) -- cycle;
+            \draw[spark] (0,0.65) -- (0,0);
 
-            \node[font=\footnotesize, align=center] at (0, -1.5) {Plasmakanaal \& \\ Smelten};
+            \node[align=center, below=4pt] at (0,-0.95) {Plasmakanaal, gasbel\\\& lokaal smelten};
         \end{scope}
 
-        % Phase 3: Ejection
-        \begin{scope}[xshift=9cm, local bounding box=p3]
-            \node at (0, 3) {\textbf{3. Uitstoot}};
-            \draw[elec] (-1, 2.5) -- (-1, 1.5) -- (0, 0.5) -- (1, 1.5) -- (1, 2.5) -- cycle;
-            % Crater
-            \draw[work] (-1.5, 0) -- (-0.3, 0) arc(180:360:0.3) -- (1.5, 0) -- (1.5, -1) -- (-1.5, -1) -- cycle;
+        % Fase 3: Uitstoot
+        \begin{scope}[shift={(8.8,0)}]
+            \fill[cyan!8] (-1.6,0) rectangle (1.6,2.55);
+            \node[font=\small\bfseries] at (0,2.85) {3. Uitstoot};
+            \draw[elec] (-0.9,2.55) -- (-0.9,1.5) -- (0,0.65) -- (0.9,1.5) -- (0.9,2.55) -- cycle;
+            \draw[work] (-1.6,0) -- (-0.38,0) arc(180:360:0.38 and 0.26) -- (1.6,0)
+                -- (1.6,-0.95) -- (-1.6,-0.95) -- cycle;
 
-            % Debris
-            \foreach \r in {0.1, 0.3, 0.5} \fill[black] (\r, 0.5) circle (1pt);
-            \foreach \r in {-0.2, 0.2} \fill[black] (\r, 0.8) circle (1pt);
+            % Spoelstroom en bolvormige swarf-deeltjes
+            \draw[->, cyan!60!black, thick] (-1.4,0.32) -- (1.4,0.32);
+            \foreach \px/\py in {-0.35/0.45, 0.25/0.35, 0.55/0.55, 0.85/0.4, 1.15/0.5} {
+                \fill[black!80] (\px,\py) circle (1.6pt);
+            }
+            \node[font=\scriptsize, anchor=west] at (0.55,0.85) {Swarf};
 
-            \node[font=\footnotesize, align=center] at (0, -1.5) {Implosie \& \\ Materiaalafname};
+            \node[align=center, below=4pt] at (0,-0.95) {Bel implodeert \&\\deeltjes spoelen weg};
         \end{scope}
     \end{tikzpicture}
-    \caption{De drie fases van een EDM-puls.}
+    \caption{De drie fysische fases van een EDM-puls: (1) ionisatie van de spleet, (2) plasmavorming en smelten, (3) implosie en afvoer van gestolde bolletjes (swarf).}
     \label{fig:edm_phases}
 \end{figure}
 
@@ -2481,14 +2411,14 @@ Het vonkproces verloopt in drie cyclische fases die zich duizenden keren per sec
 
 De materiaalafname (material removal rate, MRR) wordt uitgedrukt in kubieke centimeter per minuut.
 Ze ligt veel lager dan bij verspanen; dat is meteen het grootste nadeel van EDM.
-\newline
+
 Ook gereedschapsslijtage is een probleem bij EDM. We drukken die uit als een verhouding:
 \frm{Gereedschapsslijtage bij EDM}{\vartheta = \frac{V_{\text{elektrode}}}{V_{\text{werkstuk}}}}{waarbij $\vartheta$ de relatieve slijtage is [-], $V_{\text{elektrode}}$ het versleten volume van de elektrode [\si{mm^3}] en $V_{\text{werkstuk}}$ het weggenomen volume van het werkstuk [\si{mm^3}]. Typisch tussen $1\%$ en $5\%$.}
 De oppervlaktekwaliteit $R_a$ is afhankelijk van je settings. Je kunt afhankelijk van de stroom die je gebruikt andere oppervlaktekwaliteit krijgen.
-\newline
+
 \textbf{Hoge energie -> hoge materiaalafname maar slechte oppervlaktekwaliteit.}
 \textbf{Lage energie -> lage materiaalafname maar goede oppervlaktekwaliteit.}
-\newline
+
 Je krijgt ook een harde \textbf{thermisch aangetaste zone (TAZ)} aan het oppervlak:
 een laag die door de hitte van de vonk van structuur veranderd is.
 
@@ -2509,9 +2439,9 @@ spanning en het doorslaan van de vonk. Hoe groter de spleet, hoe langer $t_d$.
 Is $t_d$ te lang, dan staat de elektrode te ver en komt er geen vonk meer.
 Is de spleet te klein, dan krijg je kortsluiting.
 Je moet dus een goede regeling hebben die de afstand tussen elektrode en werkstuk regelt.
-\newline
+
 Door $t_d$ te meten kun je de afstand regelen.
-\newline
+
 Vroeger werd dat handmatig gedaan maar nu gebeurt dat automatisch met computers.
 \subsection{Elektrodemateriaal}
 \begin{figure}[ht]
@@ -2562,52 +2492,29 @@ te bereiken. Korte pulsen belasten dus vooral de positieve elektrode.
     \label{fig:verschillende_types_vonkerosie.png}
 \end{figure}
 \FloatBarrier
-\subsection{Zinkvonkerosie}
+\subsection{Zinkvonkerosie (Die-sinking EDM)}
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.3\textwidth]{assets/image68.png}
     \includegraphics[width=0.3\textwidth]{assets/image69.png}
-    \caption{Zinkvonkenrosie proces}
+    \caption{Zinkvonkerosie (Die-sinking EDM): de elektrode zakt in het werkstuk en vormt een inverse caviteit.}
     \label{fig:Zinkvonkenrosie.png}
 \end{figure}
 \FloatBarrier
 
-Bij zinkvonken laat je een geleidend profiel (de elektrode) langzaam in het werkstuk zakken.
-Je moet de erosiedeeltjes voortdurend uit het diëlektricum spoelen, anders begint dat te geleiden
-en krijg je ongecontroleerde ontladingen.
-Je maakt zo het \emph{inverse} profiel van de elektrode in het werkstuk.
+Bij zinkvonkerosie (die-sinking EDM) zakt een voorgevormde elektrode langzaam in het werkstuk om een exacte inverse caviteit te reproduceren. Continue geforceerde spoeling met diëlektricum is essentieel om geërodeerde microdeeltjes af te voeren en secundaire vonkontladingen te verhinderen. Met gepaste elektrodes zijn microdetails tot \SI{6}{\micro m} realiseerbaar.
 
-Je kunt er ook enorm kleine details mee maken, tot rond \SI{6}{\micro m}, zolang je de elektrode
-zelf op die maat kunt maken.
+\subsection{Draadvonkerosie (WEDM)}
+Voor inwendige contouren wordt eerst een startgat geboord of geërodeerd. Een continu afrollende messing- of koperdraad snijdt vervolgens de gewenste contour. Omdat dunne draad gevoelig is voor thermische breuk, worden extreem korte hoogfrequente pulsen gebruikt; omkeren van de polariteit beschermt de draad tegen versnelde slijtage.
 
-
-\subsection{Draadvonkerosie}
-Voor een inwendige contour moet je eerst een startgat maken in het werkstuk, met zinkvonken of met boren.
-Daar steek je de draad door, en dan zaag je met die draad je contour.
-
-Draadvonken verdraagt geen lange pulsen: de draad is zo dun dat hij anders zelf zou smelten.
-Je werkt dus met heel korte pulsen, hoog in het frequentiebereik.
-Maar kortere pulsen eroderen de elektrode juist sneller (zie de figuur hierboven).
-De oplossing is de polariteit om te draaien, zodat het elektronenbombardement op het \emph{werkstuk}
-terechtkomt en niet op de draad. Zo beschadig je de draad minder.
-
-\subsection{WEDG}
-\textbf{Wire Electro Discharge Grinding}
-is een proces waarbij een draad als elektrode wordt gebruikt om zeer nauwkeurige en fijne bewerkingen
-uit te voeren op harde materialen.
-
-\subsection{Die sinking EDM}
-Je hebt een elektrode die de vorm heeft van wat je wilt maken.
-Je laat die elektrode naar beneden zakken en zo maak je een caviteit in het werkstuk.
-\subsection{Milling EDM}
-Je hebt een ronde elektrode die ronddraait en zo materiaal weghaalt.
-\subsection{Planetair vonken}
-Je laat de elektrode een kleine cirkelbeweging maken, zodat je een caviteit krijgt die \emph{groter}
-is dan de elektrode zelf. Handig om met één elektrode zowel te ruwen als te finishen.
-\subsection{Contourvonken}
-Via NC-sturing kun je heel kleine dingen maken, zoals matrijzen voor kleine tandwielen.
-Enorm veel microbewerkingen kunnen zo gemaakt worden.
+\subsection{Overige EDM-varianten}
+\begin{itemize}
+    \item \textbf{WEDG (Wire Electro Discharge Grinding)}: Een continue draad fungeert als elektrode om uiterst dunne micro-stiften en roterende micro-gereedschappen te profileren.
+    \item \textbf{Milling EDM}: Een eenvoudige roterende cilindrische staafelektrode volgt een meerassig NC-pad om caviteiten laag per laag uit te frezen.
+    \item \textbf{Planetair vonken}: De elektrode voert een kleine orbitale beweging uit, waardoor met één elektrode zowel geruwd als gefinisht kan worden en de spleetspoeling verbetert.
+    \item \textbf{Contourvonken}: Meerassig NC-gestuurd vonken voor complexe micro-matrijzen en precisietandwielen.
+\end{itemize}
 
 \belangrijk{Belangrijk}
 Vonkerosie zet geen enkele mechanische kracht op het werkstuk.
@@ -2663,9 +2570,9 @@ Je brengt de elektrode heel dicht bij het werkstuk (zonder contact) en laat er e
 De stroomdichtheden liggen in de orde van \SI{50}{A/cm^2} tot \SI{1000}{A/cm^2}.
 Het werkstuk is de anode en de elektrode is de kathode.
 Je beweegt het werkstuk stap voor stap naar beneden om materiaal chemisch te verwijderen.
-\newline
+
 $\rightarrow$ Je krijgt een \textbf{elektrolysereactie} tussen de twee.
-\newline
+
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.45\textwidth]{assets/image72.png}
@@ -2674,7 +2581,7 @@ $\rightarrow$ Je krijgt een \textbf{elektrolysereactie} tussen de twee.
 \end{figure}
 De anode (het werkstuk) lost op in de elektrolyt door oxidatie.
 De kathode (de elektrode) blijft intact door reductie.
-\newline
+
 Voorbeeld bij anode van ijzer in een zoutoplossing \ce{NaCl}, \ce{H2O} als elektrolyt:
 \begin{itemize}
     \item \textbf{Anode (Werkstuk) - Oxidatie:}
@@ -2692,7 +2599,7 @@ Het verschil met vonkerosie is dat je bij vonkerosie een
 isolerend diëlektricum hebt en bij elektrochemisch bewerken
 een geleidend elektrolyt. Je hebt dus geen
 slijtage van de elektrode bij elektrochemisch bewerken.
-\newline
+
 
 \subsection{Eigenschappen van elektrochemisch bewerken}
 \begin{itemize}
@@ -2704,50 +2611,51 @@ slijtage van de elektrode bij elektrochemisch bewerken.
 \end{itemize}
 
 Het nadeel is dus dat je meer materiaal wegneemt dan strikt de vorm van je elektrode.
-\begin{figure}[ht]
+\begin{figure}[htbp]
     \centering
-    \begin{tikzpicture}
-        % Styles
-        \tikzset{
-            tool/.style={fill=gray!60, draw=black, thick},
-            workpiece/.style={fill=gray!30, draw=black, thick},
-            electrolyte/.style={fill=cyan!20},
-            dim/.style={draw=red, <->, >=latex, font=\footnotesize}
-        }
+    \begin{tikzpicture}[
+            >=Stealth,
+            font=\sffamily\small,
+            tool/.style={fill=gray!45, draw=black!85, thick},
+            work/.style={fill=gray!16, draw=black!85, thick},
+            dim/.style={draw=red!75!black, <->, thick}
+        ]
+        % Elektrolyt-vulling in de holte
+        \fill[cyan!16] (-2.65,-0.55) rectangle (2.65,2.08);
 
-        % Tool Coordinates (Rough bottom)
-        \coordinate (T1) at (-2.0, 1.0);
-        \coordinate (T2) at (-1.2, 0.4);
-        \coordinate (T3) at (-0.4, 1.1);
-        \coordinate (T4) at (0.4, 0.5);
-        \coordinate (T5) at (1.2, 0.9);
-        \coordinate (T6) at (2.0, 0.6);
+        % Werkstuk (anode) met gladde afgeronde caviteit
+        \draw[work] (-3.55,2.05) -- (-2.55,2.05) -- (-2.55,0.25)
+            to[out=-90, in=165] (-1.35,-0.32)
+            to[out=-15, in=195] (-0.35,0.22)
+            to[out=15, in=165] (0.55,-0.26)
+            to[out=-15, in=195] (1.45,0.12)
+            to[out=15, in=-90] (2.55,0.25)
+            -- (2.55,2.05) -- (3.55,2.05) -- (3.55,-1.40) -- (-3.55,-1.40) -- cycle;
+        \node[font=\bfseries] at (0,-0.92) {Werkstuk (Anode $+$)};
 
-        % Draw Electrolyte (Background in gap)
-        \fill[electrolyte] (-3, -1) rectangle (3, 2.2);
+        % Elektrode (kathode) met ruw profiel (x = -1.85 .. 1.85 -> 0.70 cm overcut!)
+        \draw[tool] (-1.85,3.15) -- (1.85,3.15) -- (1.85,0.65)
+            -- (1.15,0.95) -- (0.40,0.45) -- (-0.40,1.02) -- (-1.15,0.38) -- (-1.85,0.92) -- cycle;
+        \node[font=\bfseries] at (0,2.30) {Elektrode (Kathode $-$)};
+        \node[font=\scriptsize, black!75] at (0,1.88) {(ruw/geprofileerd oppervlak)};
 
-        % Draw Tool
-        \draw[tool] (-2, 3) -- (2, 3) -- (2.0, 0.6) -- (1.2, 0.9) -- (0.4, 0.5) -- (-0.4, 1.1) -- (-1.2, 0.4) -- (-2.0, 1.0) -- cycle;
-        \node at (0, 2) {\textbf{Elektrode (Kathode)}};
-        \node at (0, 1.6) {\small (Geruwd oppervlak)};
+        % Elektrolyt-stroompijlen bovenaan (labels BOVEN de pijlen)
+        \draw[->, blue!65!black, very thick] (-3.85,2.65) -- (-2.20,2.65) -- (-2.20,1.85);
+        \node[blue!65!black, font=\footnotesize\bfseries, anchor=south] at (-3.15,2.72) {Elektrolyt (in)};
 
-        % Draw Workpiece
-        \draw[workpiece] (-3.5, 2.0) -- (-2.4, 2.0) -- (-2.4, 0.4) -- (-1.2, -0.2) -- (-0.4, 0.5) -- (0.4, -0.1) -- (1.2, 0.3) -- (2.4, 0.0) -- (2.4, 2.0) -- (3.5, 2.0) -- (3.5, -1.5) -- (-3.5, -1.5) -- cycle;
-        \node at (0, -1) {\textbf{Werkstuk (Anode)}};
+        \draw[->, blue!65!black, very thick] (2.20,1.85) -- (2.20,2.65) -- (3.85,2.65);
+        \node[blue!65!black, font=\footnotesize\bfseries, anchor=south] at (3.15,2.72) {Afvoer slib};
 
-        % Dimensions / Annotations
-        % Side Overcut
-        \draw[dim] (-2.4, 1.2) -- (-2.0, 1.2) node[midway, above] {Overcut};
-        % Bottom Gap
-        \draw[dim] (0.4, -0.1) -- (0.4, 0.5) node[midway, right] {Gap};
+        % Overcut-aanduiding links met leader naar de vrije linkermarge (NOOIT over Elektrolyt!)
+        \draw[dim] (-2.55,1.15) -- (-1.85,1.15);
+        \draw[red!75!black, thin] (-2.20,1.15) -- (-2.20,0.80) -- (-3.85,0.80);
+        \node[red!75!black, font=\footnotesize\bfseries, anchor=east] at (-3.90,0.80) {Overcut};
 
-        % Electrolyte flow
-        \draw[->, blue, thick] (-3, 0.8) -- (-2.5, 0.8);
-        \draw[->, blue, thick] (3, 0.8) -- (2.5, 0.8);
-        \node[blue] at (-3, 0.5) {Elektrolyt};
-
+        % Gap-aanduiding onder elektrode
+        \draw[dim] (0.40,-0.26) -- (0.40,0.43)
+            node[midway, right=3pt, font=\footnotesize\bfseries, red!75!black] {Gap};
     \end{tikzpicture}
-    \caption{Schematische weergave van elektrochemisch bewerken (ECM) met een ruwe elektrode. De ontstane caviteit in het werkstuk is groter dan de elektrode door de "overcut" en de chemische werking.}
+    \caption{Schematische weergave van elektrochemisch bewerken (ECM): door zijdelingse chemische oplossing ontstaat een ``overcut'' waardoor de caviteit breder (en gladder) wordt dan de elektrode.}
     \label{fig:ecm_overcut}
 \end{figure}
 
@@ -2756,7 +2664,7 @@ door het snel opwarmen en afkoelen van het materiaal.
 ECM neemt die laag weg en geeft een goede oppervlaktekwaliteit.
 Typische overcut-waarden bij ECM liggen tussen ongeveer 0,13 en 1,0 mm,
 bij micro-ECM zijn waardes rond 0,02 mm mogelijk.
-\newline
+
 
 \subsection{Afname bij ECM}
 \frm{Afnamesnelheid bij ECM (MRR, material removal rate)}{MRR = \dfrac{I \cdot A}{F \cdot V}\cdot \eta}{waarbij $MRR$
@@ -2814,7 +2722,7 @@ Net zoals bij normaal etsen krijg je ook ondersnijding waar je rekening mee moet
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.26\textwidth]{assets/image73.png}
-    \caption{Fotoetsen van een complex onderdeel met ECM}
+    \caption{Processtappen van fotoetsen (chemisch etsen met fotoresist, zonder stroom).}
     \label{fig:foto_etsen_ecm.png}
 \end{figure}
 
@@ -2842,22 +2750,40 @@ Door de enorm grote trillingen krijg je een \textbf{vermoeiingsproces} in het ma
 
 \begin{figure}[htbp]
     \centering
-    \begin{tikzpicture}[scale=0.8]
-        % Axes
-        \draw[thick,->,>=stealth] (0,0) -- (6,0) node[below] {Cycli ($N$)};
-        \draw[thick,->,>=stealth] (0,0) -- (0,4) node[left] {Spanning ($\sigma$)};
+    \begin{tikzpicture}[
+            >=Stealth,
+            font=\sffamily\small
+        ]
+        % Veilige zone onder vermoeiingsgrens
+        \fill[green!8] (0,0) rectangle (6.2, 1.10);
 
-        % Curve
-        \draw[blue, thick] (0.5,3.5) .. controls (1.5,1.5) and (3,0.8) .. (5.5,0.8);
+        % Assen
+        \draw[thick, ->, black!80] (0,0) -- (6.7,0);
+        \draw[thick, ->, black!80] (0,0) -- (0,4.05);
 
-        % Annotations
-        \node[blue, font=\scriptsize, anchor=west] at (1.5,2.5) {Breuk door vermoeiing};
-        \draw[dashed] (0,0.8) -- (5.5,0.8) node[right, font=\scriptsize] {Vermoeiingsgrens};
+        % As-titels volledig vrij van ticks
+        \node[anchor=south, font=\small\bfseries] at (0, 4.12) {Spanning $\sigma$};
+        \node[anchor=north, font=\small\bfseries] at (3.3, -0.78) {Aantal cycli $N$ (log-schaal)};
 
-        % Labels
-        \node[font=\tiny] at (3,-0.5) {Logaritmische schaal};
+        % Logaritmische maatstreepjes (y = -0.15 .. -0.45 -> ruim boven x-as titel!)
+        \foreach \x/\lbl in {1.0/$10^3$, 2.2/$10^4$, 3.4/$10^5$, 4.6/$10^6$, 5.8/$10^7$} {
+            \draw[black!60] (\x,0) -- (\x,-0.12) node[below=2pt, font=\scriptsize] {\lbl};
+        }
+
+        % Wöhler-curve (S-N)
+        \draw[ultra thick, blue!60!black]
+            (0.55,3.55) .. controls (1.5,2.05) and (2.9,1.15) .. (4.4,1.10) -- (6.2,1.10);
+
+        % Vermoeiingsgrens
+        \draw[dashed, thick, red!75!black] (0,1.10) -- (6.2,1.10);
+        \node[left=2pt, red!75!black, font=\footnotesize\bfseries] at (0,1.10) {$\sigma_e$};
+        \node[right=3pt, red!75!black, font=\footnotesize\bfseries] at (6.2,1.10) {Vermoeiingsgrens};
+
+        % Zone-labels
+        \node[blue!60!black, font=\footnotesize\bfseries] at (3.65,2.55) {Breuk door vermoeiing};
+        \node[green!45!black, font=\footnotesize] at (3.2,0.52) {Geen breuk (oneindige levensduur)};
     \end{tikzpicture}
-    \caption{S-N curve (Wöhler-curve) die het vermoeiingsproces bij metalen weergeeft.}
+    \caption{Wöhler-curve (S-N-diagram) voor staal: boven de vermoeiingsgrens $\sigma_e$ bezwijkt het materiaal na een eindig aantal belastingscycli $N$.}
     \label{fig:vermoeiing_sn}
 \end{figure}
 \FloatBarrier
@@ -2912,7 +2838,7 @@ van kleine deeltjes materiaal.
 Water wordt bij \textbf{4000 bar} door een heel kleine opening gepompt.
 De straal die daaruit komt heeft zoveel kinetische energie dat hij materiaal wegsnijdt.
 Je kunt er dikke stukken mee doorsnijden.
-\newline
+
 Er komt geen warmte aan te pas, dus je hebt geen thermisch aangetaste zone (TAZ).
 Daardoor is het ook bruikbaar in andere sectoren, zoals de voedingsindustrie.
 
@@ -2949,31 +2875,28 @@ wordt dit effect steeds versterkt.
 Het resultaat is een coherente en monochromatische lichtstraal met hoge intensiteit.
 
 \textbf{Workflow: Hoe een laser wordt gecreëerd}
-\begin{figure}[ht]
+\begin{figure}[htbp]
     \centering
     \begin{tikzpicture}[
-            node distance=0.6cm and 2cm,
-            block/.style={rectangle, draw, fill=blue!10, text width=10cm, text centered, rounded corners, minimum height=0.8cm, thick, font=\small},
-            line/.style={draw, thick, ->, >=stealth}
+            >=Stealth,
+            font=\sffamily\footnotesize,
+            block/.style={rectangle, draw=blue!60!black, thick, fill=blue!6,
+                          text width=3.55cm, align=center, rounded corners=3pt, minimum height=1.2cm},
+            arrow/.style={thick, ->, black!80}
         ]
-        % Nodes using relative positioning to avoid overlap
-        \node (pumping) [block] {\textbf{1. Pompproces (Pumping)}: Toevoeren van energie om atomen naar hogere toestand te brengen.};
+        \node[block] (p1) at (0,0) {\textbf{1. Pompproces}\\Energie brengt atomen in aangeslagen toestand};
+        \node[block] (p2) at (4.5,0) {\textbf{2. Spontane emissie}\\Atomen vallen terug en zenden fotonen uit};
+        \node[block] (p3) at (9.0,0) {\textbf{3. Gestimuleerde emissie}\\Fotonen wekken identieke fotonen op};
 
-        \node (spontaneous) [block, below=of pumping] {\textbf{2. Spontane Emissie}: Atomen vallen terug en zenden ongeordende fotonen uit.};
+        \node[block, fill=orange!8, draw=orange!80!black] (p4) at (2.25,-2.05) {\textbf{4. Versterking in resonator}\\Licht kaatst tussen spiegels en versterkt};
+        \node[block, fill=green!8, draw=green!50!black] (p5) at (6.75,-2.05) {\textbf{5. Coherente laserstraal}\\Monochromatische bundel verlaat uitkoppelvenster};
 
-        \node (stimulated) [block, below=of spontaneous] {\textbf{3. Gestimuleerde Emissie}: Fotonen treffen aangeslagen atomen $\to$ identieke fotonen.};
-
-        \node (amplification) [block, below=of stimulated] {\textbf{4. Versterking}: Licht kaatst tussen spiegels en stimuleert meer emissies.};
-
-        \node (output) [block, below=of amplification] {\textbf{5. Coherente Lichtstraal}: Een monochromatische straal verlaat de laser.};
-
-        % Lines
-        \draw [line] (pumping) -- (spontaneous);
-        \draw [line] (spontaneous) -- (stimulated);
-        \draw [line] (stimulated) -- (amplification);
-        \draw [line] (amplification) -- (output);
+        \draw[arrow] (p1) -- (p2);
+        \draw[arrow] (p2) -- (p3);
+        \draw[arrow] (p3.south) -- ++(0,-0.42) -| (p4.north);
+        \draw[arrow] (p4) -- (p5);
     \end{tikzpicture}
-    \caption{Stapsgewijze workflow van de werking van een laser.}
+    \caption{Stapsgewijze werking van een laser: van energiepompen tot een coherente, monochromatische lichtstraal.}
     \label{fig:laser_workflow_improved}
 \end{figure}
 
@@ -2985,10 +2908,10 @@ Het resultaat is een coherente en monochromatische lichtstraal met hoge intensit
 \end{figure}
 
 De laserstraal heeft een paar problemen
-\newline
+
 Er wordt veel energie omgezet in warmte en de lichtkwaliteit moet je in
 rekening houden.
-\newline
+
 Classificatie van lasers:
 \begin{itemize}
     \item \textbf{Lasermedium:}
@@ -3083,30 +3006,50 @@ en afnemend naar de rand toe.
     in het midden van de bundel [\si{W/mm^2}], $r$ de radiale afstand [\si{mm}] en $w_0$ de bundelstraal [\si{mm}].
     Per afspraak is $w_0$ precies de straal waar de intensiteit gezakt is tot $I_0/e^2$ (ongeveer 13,5\% van het maximum).}
 
-\begin{figure}[ht]
+\begin{figure}[htbp]
     \centering
-    \begin{tikzpicture}[scale=1.2]
+    \begin{tikzpicture}[
+            scale=1.1,
+            >=Stealth,
+            font=\sffamily\small
+        ]
+        \def\wzero{1.25}
+        \def\Ipeak{3.0}
+        % Exacte waarde bij r = +-w_0: I_0 * e^(-2) = 3.0 * 0.13534 = 0.406
+        \def\IeTwo{0.406}
+
+        % Gevulde zone binnen [-w_0, w_0] (bevat 86.5% van het vermogen)
+        \fill[blue!10] (-\wzero,0) -- plot[domain=-\wzero:\wzero, samples=80]
+            (\x, {\Ipeak*exp(-2*(\x/\wzero)^2)}) -- (\wzero,0) -- cycle;
+
         % Assen
-        \draw[thick,->,>=stealth] (-3,0) -- (3,0) node[right] {$r$ (radius)};
-        \draw[thick,->,>=stealth] (0,0) -- (0,3.5) node[above] {$I(r)$ (intensiteit)};
+        \draw[thick, ->, black!80] (-3.1,0) -- (3.3,0) node[right] {$r$};
+        \draw[thick, ->, black!80] (0,0) -- (0,3.55) node[above] {$I(r)$};
 
-        % Gaussiaanse curve (parabolische vorm nabij de top)
-        \draw[ultra thick, blue, domain=-2.5:2.5, samples=100] plot (\x, {3*exp(-\x*\x/1.2)});
+        % Exacte Gaussiaanse curve I(r) = I_0 * exp(-2 r^2 / w_0^2)
+        \draw[ultra thick, blue!60!black, domain=-2.8:2.8, samples=120]
+            plot (\x, {\Ipeak*exp(-2*(\x/\wzero)^2)});
 
-        % Annotaties
-        \node[anchor=south west, blue] at (0,3) {$I_0$};
+        % Piek I_0
+        \fill[blue!60!black] (0,\Ipeak) circle (1.8pt);
+        \node[anchor=south west, blue!60!black] at (0.05,\Ipeak-0.05) {$I_0$};
 
-        % Bundelstraal w0 aanduiding
-        % Bij x = 1.1 is de waarde ongeveer I0/e^2
-        \draw[dashed, red] (-1.1, 0) -- (-1.1, {3*exp(-1.1*1.1/1.2)}) node[below, pos=0, font=\small] {$-w_0$};
-        \draw[dashed, red] (1.1, 0) -- (1.1, {3*exp(-1.1*1.1/1.2)}) node[below, pos=0, font=\small] {$w_0$};
-        \draw[<->, red, >=latex] (-1.1, 0.5) -- (1.1, 0.5) node[midway, fill=white, font=\scriptsize] {$D = 2w_0$};
+        % Exacte markering van +-w_0 en I_0 / e^2
+        \draw[dashed, red!75!black, thick] (-\wzero,0) -- (-\wzero,\IeTwo);
+        \draw[dashed, red!75!black, thick] (\wzero,0) -- (\wzero,\IeTwo);
+        \node[below, font=\footnotesize, red!75!black] at (-\wzero,0) {$-w_0$};
+        \node[below, font=\footnotesize, red!75!black] at (\wzero,0) {$+w_0$};
 
-        % Niveau I0/e^2
-        \draw[dashed, gray] (-1.1, {3*exp(-1.1*1.1/1.2)}) -- (1.1, {3*exp(-1.1*1.1/1.2)}) node[right, font=\scriptsize] {$I = I_0/e^2$};
+        \draw[dashed, black!55] (-\wzero,\IeTwo) -- (2.15,\IeTwo)
+            node[right, font=\footnotesize, black!80] {$I_0/e^2 \approx 13{,}5\%\,I_0$};
+        \fill[red!75!black] (-\wzero,\IeTwo) circle (1.6pt);
+        \fill[red!75!black] (\wzero,\IeTwo) circle (1.6pt);
 
+        % Bundeldiameter D = 2w_0 (netjes boven de 1/e^2-lijn geplaatst)
+        \draw[<->, red!75!black, thick] (-\wzero, 1.05) -- (\wzero, 1.05)
+            node[midway, fill=blue!10, inner sep=2pt, font=\footnotesize\bfseries] {$D = 2w_0$};
     \end{tikzpicture}
-    \caption{Parabolische/Gaussiaanse intensiteitsverdeling van een laserbundel op het focuspunt.}
+    \caption{Gaussiaanse intensiteitsverdeling van een laserbundel in het focuspunt: per definitie is $w_0$ de straal waar de intensiteit daalt tot $I_0/e^2$ (ca.\ 13,5\% van het maximum).}
     \label{fig:laser_focus_intensity}
 \end{figure}
 
@@ -3187,17 +3130,16 @@ voor de auto-industrie.
 
 \subsubsection{Nadelen}
 \begin{itemize}
-    \item \textbf{Dross}: Bij een te hoge snijsnelheid kan er een ophoping van gesmolten materiaal aan de onderkant van het snijvlak ontstaan, wat resulteert in een ruwe afwerking die vaak nabewerking vereist.
+    \item \textbf{Dross (slakaanhechting)}: Wanneer het procesgas gesmolten metaal onvolledig uitdrijft (bijvoorbeeld bij een te hoge snijsnelheid), stolt braamvormig residu (dross) aan de onderrand van de snede, wat mechanisch ontbramen noodzakelijk maakt.
     \item \textbf{Verbrandingsdefecten (burning)}: Bij een te lage snijsnelheid ontstaat inbranding met grote ruwheidsvariatie.
     \item \textbf{Onvolledige penetratie}: Bij dikkere materialen kan de laserstraal niet volledig door het materiaal heen dringen, wat resulteert in onvolledige sneden die opnieuw bewerkt moeten worden.
-    \item \textbf{Aanhechting van gesmolten materiaal}: Bij lasersnijden met een te hoge snijsnelheid kan gesmolten materiaal aan de snijkant blijven plakken, wat leidt tot onregelmatige randen en mogelijke structurele zwaktes in het gesneden onderdeel.
 \end{itemize}
 
 \begin{warningbox}[EXAMEN CHECKLIST: NIET-CONVENTIONELE BEWERKINGEN]
     \begin{itemize}
         \item \textbf{EDM vs. ECM}: Ken het fundamentele verschil (thermisch vs. chemisch) en de vloeistof (diëlektricum vs. elektrolyt).
         \item \textbf{EDM Fases}: Begrijp de cyclus: ontbranding $\to$ ontlading (plasma) $\to$ implosie (swarf afvoer).
-        \item \textbf{EDM Slijtage}: Begrijp waarom de elektrode wel slijt bij EDM (ionenbombardement) maar niet bij ECM (kathode neemt anode (werkstuk) materiaal op).
+        \item \textbf{EDM Slijtage}: Begrijp waarom de elektrode wel slijt bij EDM (ionenbombardement) maar niet bij ECM (het werkstuk lost anodisch op tot metaalhydroxideslib; aan de kathode ontstaat enkel $\text{H}_2$-gas).
         \item \textbf{ECM Afname}: Leg uit waarom de afnamesnelheid afhangt van de stroom ($I$) en de atoommassa, niet van de hardheid van het materiaal.
         \item \textbf{Laser}: Begrijp de energiebalans ($A+R+T=1$), het BPP en waarom de golflengte de materiaalkeuze bepaalt.
         \item \textbf{Ultrasoon}: Weet dat dit ideaal is voor brosse materialen (keramiek) door microscheur-initiatie.
@@ -3213,18 +3155,9 @@ voor de auto-industrie.
     \end{itemize}
 \end{conceptbox}
 
-Bij scheiden ga je knippen of ponsen. Hierbij ontstaan er \emph{geen} spanen:
-het materiaal wordt afgeschoven tot het breekt.
-Het uitgesneden deel blijft daardoor bruikbaar, in tegenstelling tot bij verspanen.
-\newline
 \section{Ponsen en knippen}
-Bij \textbf{ponsen} maak je met een gesloten profiel een gat in een plaat.
-\newline
-Bij \textbf{knippen} scheid je je materiaal langs een open (meestal rechte) lijn.
-\newline
-Zolang je onder de rekgrens blijft veert het materiaal terug; pas bij plastische vervorming
-verandert de vorm blijvend. Daarvoor heb je een afschuifkracht nodig.
-\newline
+Bij scheiden (spaanloos afschuiven) veert het plaatmateriaal elastisch mee tot de vloeigrens overschreden wordt; aansluitend initieert plastische afschuiving een scheur die door de resterende plaatdikte propageert. De benodigde initiële afschuifkracht bedraagt:
+
 \frm{Afschuifkracht bij ponsen}{\ensuremath{F_{th} = \tau_{max} \cdot L \cdot s_0}}{Waarbij
     \(\!F_{th}\!\) de afschuifkracht is [\si{N}], \(\tau_{max}\) de maximale schuifspanning [\si{N/mm^2}],
     \(L\) de omtrek van het profiel [\si{mm}] en \(s_0\) de plaatdikte [\si{mm}].}
@@ -3297,34 +3230,21 @@ Nog voorbeelden van knipmachines zijn:
 
 
 \subsection{Ponsen}
-Ponsen is ook een spaanloze bewerking. Een simpel voorbeeld is een perforator.
-
-\frm{Eerste formule Schuifkracht bij ponsen}{\ensuremath{F = s_0 \cdot l \cdot \tau}}
-{waarbij \(F\) de afschuifkracht is [\si{N}], \(s_0\) de plaatdikte [\si{mm}], \(l\) de omtrek van het profiel [\si{mm}] en \(\tau\) de schuifspanning van het materiaal [\si{N/mm^2}].}
-
-Bij ponsen snijdt de volledige omtrek in één keer aan. Er is dus nauwelijks geleidelijke opbouw:
-je krijgt meteen een indrukking en een snel oplopende schuifspanning, en dus een hoge piekkracht.
+Ponsen is een spaanloos scheidingsproces langs een gesloten contour.
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.3\textwidth]{assets/Schuifspanningen bij Ponsen.png}
-    \caption{Ponsen proces met de verschillende fases}
+    \includegraphics[width=0.32\textwidth]{assets/Schuifspanningen bij Ponsen.png}
+    \caption{Ponsen proces met de verschillende fasen.}
     \label{fig:Ponsen proces.png}
 \end{figure}
 \FloatBarrier
 
-De eerste formule is een benadering.
-Een betere formule is:
-\frm{Tweede formule schuifkracht bij ponsen}{\ensuremath{F = 1{,}6 \cdot y_s \cdot s_0 \cdot l \cdot k_s}}
-{waarbij \(F\) de afschuifkracht is [\si{N}], \(y_s\) een correctiefactor voor de gereedschapsgeometrie [-],
-\(s_0\) de plaatdikte [\si{mm}], \(l\) de omtrek van het profiel [\si{mm}] en \(k_s\) de specifieke
-snijkracht [\si{N/mm^2}].}
-
-De factor 1,6 houdt rekening met de gereedschapsslijtage: een botte stempel vraagt tot 60\% meer kracht
-dan een scherpe.
+De theoretische afschuifkracht $F_{th} = \tau_{\max} \cdot l \cdot s_0$ is een benadering. Omdat bij ponsen de volledige omtrek tegelijk aansnijdt en een botte stempel tot 60\% meer kracht vraagt dan een scherpe, gebruikt men in de praktijk:
+\frm{Praktische schuifkracht bij ponsen}{F = 1{,}6 \cdot y_s \cdot s_0 \cdot l \cdot k_s}{waarbij $F$ de afschuifkracht is [\si{N}], $y_s$ een correctiefactor voor de gereedschapsgeometrie [-], $s_0$ de plaatdikte [\si{mm}], $l$ de omtrek van het profiel [\si{mm}] en $k_s$ de specifieke snijkracht [\si{N/mm^2}].}
 
 \textbf{$k_s$ de specifieke snijkracht}
-\newline
+
 De specifieke snijkracht \(k_s\) is de kracht die nodig is per mm$^2$ te snijden doorsnede.
 Ze wordt uitgedrukt in \si{N/mm^2} en hangt af van het materiaaltype en de plaatdikte.
 \[
@@ -3342,8 +3262,6 @@ met \(X_f\) de snijfactor en \(R_m\) de treksterkte van het materiaal.
     zonder de typische breukzone van normaal ponsen.
 \end{conceptbox}
 
-Fijnstansen is snijden en ponsen met een heel kleine snijspleet, rond 0,01 tot 1 mm
-(van \SI{1}{mm} tot \SI{0,01}{mm}).
 Bij normaal ponsen en knippen is er speling rond de stempel, waardoor de plaat mee omhoog
 getrokken kan worden en er een scheurzone ontstaat.
 
@@ -3416,36 +3334,21 @@ Dit is enorm snel, maximaal 10 slagen per seconde.
 De pons kun je combineren met verschillende vormen: cirkel, vierkant, driehoek enz.
 
 \section{Mechanisch scheiden door verspanen}
-
-Bij mechanisch scheiden neem je materiaal weg door te verspanen.
-De structuur van je materiaal verandert daarbij niet (geen thermisch aangetaste zone).
-Je hebt verschillende technieken:
+Mechanisch scheiden veroorzaakt geen warmte-beïnvloede zone (geen TAZ):
 \begin{itemize}
-    \item \textbf{Zagen}: Gebruik van een zaagblad met tanden om materiaal te verwijderen met een snijbeweging.
-    \item \textbf{Schuren}: Verwijderen van materiaal met schuurpapier of schuurbanden door wrijving.
-    \item \textbf{Slijpen}: Gebruik van een slijpschijf om materiaal te verwijderen en een glad oppervlak te creëren.
-    \item \textbf{Polijsten}: Fijnere afwerking van oppervlakken door gebruik van polijstmiddelen en doeken.
-    \item \textbf{Boren}: Creëren van ronde gaten in materialen met een boor.
+    \item \textbf{Zagen}: Continue of heen-en-weergaande getande snijbladen voor profielen en staven.
+    \item \textbf{Doorslijpen}: Snel roterende doorslijpschijven voor harde metalen tot \SI{90}{mm}.
+    \item \textbf{Omtrekfrezen}: Frezen langs een contour voor bramenvrije plaatuitsnijdingen tot \SI{12}{mm}.
 \end{itemize}
 
-\section{Fysische scheiding}
-Bij fysische scheiding ga je materiaal wegnemen door fysische processen.
-Je hebt opnieuw verschillende technieken:
-
+\section{Fysische en thermische scheiding}
+Fysische en thermische processen werken contactloos:
 \begin{itemize}
-    \item \textbf{Brandsnijden}: Metaal snijden door verbranding met een zuurstofstraal.
-          Het materiaal wordt verhit tot boven de ontbrandingstemperatuur en vervolgens wordt zuurstof toegevoegd
-          om het metaal te oxideren en weg te blazen.\\
-
-          Als je \textbf{te weinig zuurstof} gebruikt krijg je \textbf{een langzame en moeizame snij-actie.}\\
-
-          Als je \textbf{te veel zuurstof} gebruikt krijg je \textbf{een te brede en uitgeholde snede.}
-    \item \textbf{Draadvonken}: Gebruik van elektrische vonken tussen een elektrode en het werkstuk om materiaal te verwijderen.
-    \item \textbf{Stralen}: Gebruik van abrasieve deeltjes om materiaal te verwijderen of oppervlakken te reinigen.
-    \item \textbf{Laser snijden}: Gebruik van een geconcentreerde laserstraal om materiaal te smelten of te verdampen.
-    \item \textbf{Waterstraalsnijden}: Gebruik van een hogedruk waterstraal om materiaal te snijden zonder thermische effecten.
-    \item \textbf{Plasmasnijden}: Gebruik van een plasmaboog om metaal te snijden door het te verhitten en te smelten.
-          Plasma is een vlam van geïoniseerd gas die extreem heet is (tot \SI{20000}{\degreeCelsius}).
+    \item \textbf{Brandsnijden}: Exotherme ijzerverbranding met pure zuurstof; geschikt voor dik staal ($>500\,\si{mm}$), maar brede TAZ.
+    \item \textbf{Plasmasnijden}: Geïoniseerde gasboog (tot \SI{20000}{\degreeCelsius}) voor alle elektrisch geleidende metalen.
+    \item \textbf{Lasersnijden}: Smelt- of verdampingssnijden met hoge focusintensiteit en minimale TAZ.
+    \item \textbf{Waterstraalsnijden}: Zuiver koud proces met abrasief zand; uiterst veelzijdig zonder thermische schade.
+    \item \textbf{Draadvonken}: Zeer fijne micro-uitsnijdingen in harde geleidende werkstukken met nauwkeurigheid tot \SI{0,05}{mm}.
 \end{itemize}
 
 \begin{figure}[htbp]
@@ -3479,11 +3382,7 @@ Je hebt opnieuw verschillende technieken:
     Draadvonken & Harde geleidende mat. & $\le$ 0,7 mm$^2$/s & {+ flexibel \\ + enk. st./series \\ + kwaliteit} & 0,05 & $<0,1$ \\
 \end{engtable}
 
-Deze tabel is enorm belangrijk, want hij kan hierover vragen stellen: welke van deze technieken
-is het snelst, het goedkoopst, het nauwkeurigst enzovoort.
-
-Je ziet dat heel veel technieken die we al gezien hebben hier terugkomen.
-Dat maakt dit hoofdstuk vooral een goede herhaling.
+Deze tabel vormt een direct vergelijkingskader voor processelectie op basis van seriegrootte, plaatdikte, snijsnelheid en toelaatbare warmte-beïnvloede zone (WBZ).
 
 \begin{warningbox}[EXAMEN CHECKLIST: SCHEIDEN]
     \begin{itemize}
@@ -3499,10 +3398,8 @@ Dat maakt dit hoofdstuk vooral een goede herhaling.
 
 \begin{conceptbox}[Slink vs. Krimp]
     \begin{itemize}
-        \item \textbf{Slink}: Volumevermindering tijdens de faseovergang van vloeibaar naar vast. Dit wordt gecompenseerd door
-              \keyterm{opkomers} (voedingsreservoirs).
-        \item \textbf{Krimp}: Volumevermindering tijdens de verdere afkoeling van het gestolde metaal naar kamertemperatuur.
-              Dit wordt gecompenseerd door de \keyterm{krimptoeslag} op het model.
+        \item \textbf{Slink}: Volumevermindering tijdens de faseovergang van vloeibaar naar vast. Dit wordt gecompenseerd door \keyterm{opkomers} (voedingsreservoirs die als laatste stollen).
+        \item \textbf{Krimp}: Volumevermindering tijdens de verdere afkoeling van het gestolde metaal naar kamertemperatuur. Dit wordt gecompenseerd door de \keyterm{krimptoeslag} op het model. De krimphoeveelheid hangt af van de geometrie en de legering: grotere stukken krimpen sterker.
     \end{itemize}
 \end{conceptbox}
 
@@ -3544,39 +3441,14 @@ De stappen om een gietstuk te maken zijn:
     \item Uitnemen van het stuk
 \end{enumerate}
 
-\begin{conceptbox}[Volumevermindering bij stollen]
-    Volumevermindering door stollen noemt men \belangrijk{slink}. Als die niet aangevuld wordt, ontstaat er
-    een \textbf{slinkholte}: een gat in het gietstuk. Je compenseert slink met \textbf{opkomers}:
-    extra reservoirs metaal die je aan je gietstuk hangt en die als laatste stollen.\\
 
-    De volumevermindering door het afkoelen noemt men \belangrijk{Krimp}. $\to$ gecompenseerd door krimptoeslag.
-    Dit is een extra maat die je aan je gietstuk toevoegt zodat het na afkoeling de juiste maat heeft.
-
-    De krimphoeveelheid hangt af van:
-    \begin{itemize}
-        \item de geometrie
-        \item legering
-    \end{itemize}
-    Grotere stukken krimpen meer dan kleine stukken.
-\end{conceptbox}
 
 \subsection{Maken van een vormholte}
-Je hebt twee soorten vormen:
+Gietvormen worden ingedeeld in twee hoofdcategorieën:
 \begin{itemize}
-    \item \textbf{Permanente vormen}: Je kunt deze vormen meerdere keren gebruiken. Gemaakt uit metaal.
-    \item \textbf{Eenmalige vormen}: Je kunt deze vormen maar één keer gebruiken. Gemaakt uit zand of keramiek.
+    \item \textbf{Eenmalige vormen}: Vervaardigd uit vormzand of keramiek. De vorm wordt na elke gieting vernietigd (kapotgebroken) om het gietstuk te ontkisten; geschikt voor complexe geometrieën en hoge smelttemperaturen.
+    \item \textbf{Permanente vormen (matrijzen)}: Duurzame metalen vormen (coquillegieten, spuitgieten) met een hoge maatnauwkeurigheid en glad oppervlak; de toepassing is thermisch begrensd door de smelttemperatuur van het matrijsmateriaal.
 \end{itemize}
-\textbf{Eenmalige vormen:}
-
-Je maakt je vorm uit zand en giet daarin.
-Om het stuk eruit te halen breek je het zand weg, en daarmee gaat de vorm verloren.
-
-\textbf{Permanente vormen:}
-
-Je gaat je vorm maken uit metaal.
-Je kunt dan spuitgieten, coquillegieten of andere speciale giettechnieken gebruiken.
-
-De keuze hangt af van de smelttemperatuur waarmee je gaat gieten.
 
 \section{Gieten in zand}
 Gieten in zand is niet heel precies maar er is geen limiet aan de grootte van het product dat je kunt maken
@@ -3586,37 +3458,36 @@ is dan gewoon zand en zijn vorm houdt na het aanstampen.
 
 \begin{figure}[htbp]
     \centering
-    \begin{minipage}[b]{0.48\textwidth}
+    \begin{minipage}[c]{0.47\textwidth}
         \centering
         \includegraphics[width=\linewidth]{assets/Zandgieten.png}
+        \par\smallskip\small (a) Zandgietproces
     \end{minipage}\hfill
-    \begin{minipage}[b]{0.48\textwidth}
+    \begin{minipage}[c]{0.50\textwidth}
         \centering
-        \begin{tikzpicture}[node distance=1.6cm, auto,
-                block/.style={rectangle, draw, rounded corners, fill=blue!10, text width=12.5em, align=center, minimum height=2.5em},
-                line/.style={draw, -Latex, thick}]
-            % Nodes
-            \node [block] (model) {Model maken\\(groter voor krimp)};
-            \node [block, below of=model] (zand) {Model in zand stampen};
-            \node [block, below of=zand] (kanalen) {Gietloop \& opkomer maken};
-            \node [block, below of=kanalen] (aansnede) {Aansnede maken \& model verwijderen};
-            \node [block, below of=aansnede] (gieten) {Metaal gieten};
-            \node [block, below of=gieten] (afkoelen) {Afkoelen};
-            \node [block, below of=afkoelen] (verwijderen) {Zand, gietloop \& opkomer verwijderen};
-            \node [block, below of=verwijderen] (nabewerken) {Nabewerken};
+        \begin{tikzpicture}[
+                >=Stealth,
+                font=\sffamily\scriptsize,
+                stepnode/.style={rectangle, draw=blue!60!black, fill=blue!6, rounded corners=2.5pt,
+                                 text width=5.1cm, align=center, minimum height=0.58cm, thick},
+                arrow/.style={->, thick, black!75}
+            ]
+            \node[stepnode] (s1) {1. Model maken (groter voor krimp)};
+            \node[stepnode, below=0.26cm of s1] (s2) {2. Model in vormzand stampen};
+            \node[stepnode, below=0.26cm of s2] (s3) {3. Gietloop \& opkomer voorzien};
+            \node[stepnode, below=0.26cm of s3] (s4) {4. Aansnede maken \& model verwijderen};
+            \node[stepnode, draw=orange!80!black, fill=orange!10, below=0.26cm of s4] (s5) {5. Gesmolten metaal gieten};
+            \node[stepnode, draw=orange!80!black, fill=orange!10, below=0.26cm of s5] (s6) {6. Laten stollen \& afkoelen};
+            \node[stepnode, draw=green!50!black, fill=green!8, below=0.26cm of s6] (s7) {7. Zand, gietloop \& opkomer verwijderen};
+            \node[stepnode, draw=green!50!black, fill=green!8, below=0.26cm of s7] (s8) {8. Nabewerken (slijpen/verspanen)};
 
-            % Paths
-            \path [line] (model) -- (zand);
-            \path [line] (zand) -- (kanalen);
-            \path [line] (kanalen) -- (aansnede);
-            \path [line] (aansnede) -- (gieten);
-            \path [line] (gieten) -- (afkoelen);
-            \path [line] (afkoelen) -- (verwijderen);
-            \path [line] (verwijderen) -- (nabewerken);
+            \foreach \i/\j in {1/2, 2/3, 3/4, 4/5, 5/6, 6/7, 7/8} {
+                \draw[arrow] (s\i) -- (s\j);
+            }
         \end{tikzpicture}
-        \par\smallskip\small (b) Stappen in zandgieten
+        \par\smallskip\small (b) Stappen bij zandgieten
     \end{minipage}
-    \caption{(a) Zandgietenproces; (b) Schematische workflow van de belangrijkste stappen bij zandgieten.}
+    \caption{(a) Zandgietproces en (b) schematische workflow in drie fasen: vormmaken (blauw), gieten/stollen (oranje) en afwerken (groen).}
     \label{fig:Zandgieten proces.png}
 \end{figure}
 \FloatBarrier
@@ -3636,60 +3507,72 @@ kan worden. Na het gieten en afkoelen wordt het zand verwijderd en worden de gie
 \end{conceptbox}
 
 \subsection{Problemen bij gieten}
-\begin{conceptbox}[Slink, krimp en lossing]
-    \begin{enumerate}
-        \item \textbf{Slink}: Volumevermindering door stollen. Gecompenseerd door opkomers.
-        \item \textbf{Krimp}: Volumevermindering door afkoelen. Gecompenseerd door krimptoeslag.
-        \item \textbf{Lossing}: Het proces van het verwijderen van het gietstuk uit de vorm.
-              Belangrijk om te zorgen dat het gietstuk niet beschadigd raakt tijdens het verwijderen.
-    \end{enumerate}
-\end{conceptbox}
+\noindent\textbf{Lossing:} Het schadevrij uitnemen van het gietstuk uit de vorm; vereist lossingshoeken (coniciteit van 1° tot 3°) en afgeronde randen.
 
 Om deze dingen te voorkomen zetten we opkomers. Gietstukken kunnen complexe geometrie hebben.
 Soms moet je dus meerdere opkomers zetten zodat de vorm overal goed gevuld wordt.
 
-\begin{figure}[ht]
+\begin{figure}[htbp]
     \centering
-    \begin{tikzpicture}[scale=0.9, every node/.style={transform shape}]
-        % Bad scenario
-        \begin{scope}[xshift=0cm]
-            % Casting parts 
-            \draw[fill=gray!30] (0,0) rectangle (2,2) node[midway] {Dik};
-            \draw[fill=gray!30] (2,0.8) rectangle (4,1.2) node[midway] {Dun};
-            \draw[fill=gray!30] (4,0) rectangle (6,2) node[midway] {Dik};
+    \begin{tikzpicture}[
+            scale=0.86,
+            >=Stealth,
+            font=\sffamily\footnotesize
+        ]
+        % LINKS: FOUT (1 opkomer)
+        \begin{scope}[shift={(0,0)}]
+            % Gietstuk (dik - dun - dik)
+            \fill[gray!22] (0,0) rectangle (2.0,1.9);
+            \fill[blue!22] (2.0,0.72) rectangle (4.0,1.18); % Gestolde nek
+            \fill[gray!22] (4.0,0) rectangle (6.0,1.9);
+            \draw[thick, black!80] (0,0) -- (2.0,0) -- (2.0,0.72) -- (4.0,0.72)
+                -- (4.0,0) -- (6.0,0) -- (6.0,1.9) -- (4.0,1.9) -- (4.0,1.18)
+                -- (2.0,1.18) -- (2.0,1.9) -- (0,1.9) -- cycle;
 
-            % Riser on left only
-            \draw[fill=gray!50] (0.5,2) -- (0.5,3.5) -- (1.5,3.5) -- (1.5,2);
-            \node[above] at (1,3.5) {Opkomer};
+            % Opkomer links
+            \fill[orange!25] (0.55,1.9) rectangle (1.45,3.2);
+            \draw[thick, black!80] (0.55,1.9) -- (0.55,3.2) -- (1.45,3.2) -- (1.45,1.9);
+            \node[above] at (1.0,3.22) {\textbf{Opkomer}};
+            \draw[->, orange!85!black, very thick] (1.0,2.85) -- (1.0,1.35);
 
-            % Solidification/Defect
-            \draw[dashed, red, thick] (2,0.8) -- (4,1.2); % Blockage indication
-            \node[text=red, font=\footnotesize, align=center] at (3,1.5) {Stolt eerst!};
+            % Gestolde dunne sectie blokkeert
+            \draw[red!75!black, very thick] (2.85,0.62) -- (3.15,1.28);
+            \draw[red!75!black, very thick] (3.15,0.62) -- (2.85,1.28);
+            \node[blue!60!black, above, align=center] at (3.0,1.28) {\textbf{Stolt eerst}\\(blokkeert toevoer)};
 
-            \draw[fill=white, draw=red] (5,1) circle (0.4) node[scale=0.7, text=red] {Slink};
+            % Slinkholte in rechter dik deel
+            \fill[white, draw=red!75!black, very thick] (5.0,0.95) ellipse (0.42 and 0.34);
+            \node[red!75!black, font=\scriptsize\bfseries] at (5.0,0.95) {Slink};
 
-            \node[below=0.5cm, align=center] at (3,0) {\textbf{Fout:} 1 opkomer.\\Dun deel blokkeert toevoer.};
+            \node[black!70] at (1.0,0.5) {Dik};
+            \node[black!70] at (5.0,0.28) {Dik};
+            \node[below=6pt, align=center, red!75!black] at (3.0,0) {\textbf{Fout:} 1 opkomer\\Geïsoleerde hot spot krijgt slinkholte};
         \end{scope}
 
-        % Good scenario
-        \begin{scope}[xshift=8cm]
-            % Casting parts 
-            \draw[fill=gray!30] (0,0) rectangle (2,2) node[midway] {Dik};
-            \draw[fill=gray!30] (2,0.8) rectangle (4,1.2) node[midway] {Dun};
-            \draw[fill=gray!30] (4,0) rectangle (6,2) node[midway] {Dik};
+        % RECHTS: GOED (2 opkomers)
+        \begin{scope}[shift={(7.4,0)}]
+            \fill[gray!22] (0,0) rectangle (2.0,1.9);
+            \fill[blue!15] (2.0,0.72) rectangle (4.0,1.18);
+            \fill[gray!22] (4.0,0) rectangle (6.0,1.9);
+            \draw[thick, black!80] (0,0) -- (2.0,0) -- (2.0,0.72) -- (4.0,0.72)
+                -- (4.0,0) -- (6.0,0) -- (6.0,1.9) -- (4.0,1.9) -- (4.0,1.18)
+                -- (2.0,1.18) -- (2.0,1.9) -- (0,1.9) -- cycle;
 
-            % Riser on left 
-            \draw[fill=gray!50] (0.5,2) -- (0.5,3.5) -- (1.5,3.5) -- (1.5,2);
-            \node[above] at (1,3.5) {Opkomer};
+            % Opkomer links & rechts
+            \foreach \rx in {1.0, 5.0} {
+                \fill[green!18] (\rx-0.45,1.9) rectangle (\rx+0.45,3.2);
+                \draw[thick, black!80] (\rx-0.45,1.9) -- (\rx-0.45,3.2) -- (\rx+0.45,3.2) -- (\rx+0.45,1.9);
+                \node[above] at (\rx,3.22) {\textbf{Opkomer}};
+                \draw[->, green!50!black, very thick] (\rx,2.85) -- (\rx,1.15);
+            }
 
-            % Riser on right
-            \draw[fill=gray!50] (4.5,2) -- (4.5,3.5) -- (5.5,3.5) -- (5.5,2);
-            \node[above] at (5,3.5) {Opkomer};
-
-            \node[below=0.5cm, align=center] at (3,0) {\textbf{Goed:} Meerdere opkomers.\\Elk 'hot spot' heeft voeding.};
+            \node[black!70] at (1.0,0.5) {Dik};
+            \node[black!70] at (3.0,0.95) {Dun};
+            \node[black!70] at (5.0,0.5) {Dik};
+            \node[below=6pt, align=center, green!45!black] at (3.0,0) {\textbf{Goed:} 2 opkomers\\Elke hot spot wordt apart gevoed};
         \end{scope}
     \end{tikzpicture}
-    \caption{Directionele stolling: dunne secties stollen sneller en kunnen de toevoer naar dikkere secties afsluiten, wat meerdere opkomers noodzakelijk maakt.}
+    \caption{Directionele stolling: een dunne sectie stolt sneller en snijdt de toevoer van vloeibaar metaal af, waardoor elk geïsoleerd dik deel een eigen opkomer nodig heeft.}
     \label{fig:meerdere_opkomers}
 \end{figure}
 
@@ -3774,12 +3657,12 @@ Schaalvormen geven een beter oppervlak ($R_a$ rond \SI{3,2}{\micro m}).
 \section{Verloren-modelmethode}
 \subsection{Verloren wasmodel}
 
-\begin{wrapfigure}{r}{0.3\textwidth}
+\begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.3\textwidth]{assets/verlorenwasgieten.png}
-    \caption{Verloren wasmodel proces: maken van keramische vormen door dompelen van wasmodellen voor metaalgieten}
+    \includegraphics[width=0.45\textwidth]{assets/verlorenwasgieten.png}
+    \caption{Verloren wasmodel proces: maken van keramische vormen door dompelen van wasmodellen voor metaalgieten.}
     \label{fig:Verlorenwasmodel.png}
-\end{wrapfigure}
+\end{figure}
 \FloatBarrier
 
 Je kunt modellen maken uit was.
@@ -3879,7 +3762,7 @@ Je hebt verschillende soorten spuitgieten:
 Het verschil zit dus niet in de temperatuur van de kamer op zich, maar in de vraag of de vulkamer
 mee in het smeltbad staat of niet. Dat bepaalt meteen welke metalen je kunt verwerken.
 
-\textit{Tip: bekijk zeker de video's van deze processen terug op Toledo. Die leggen het beter uit dan ik hier kan.}
+
 
 \section{Keuze van gietmethode}
 Je kiest een gietmethode op basis van:
@@ -3903,11 +3786,13 @@ Je kiest een gietmethode op basis van:
 Je moet dus je keuze maken afhankelijk van de toepassing en de prijs.
 
 \subsection{Ontwerp aanpassen aan gieten}
-Het nadeel bij gieten is dat je ontwerp moet aangepast worden aan het gieten.
-Grote volumes zijn riskant door \belangrijk{slink} en \belangrijk{krimp}.
-Je moet ook zorgen voor \belangrijk{lossing} zodat je het product uit de vorm kunt halen.
-Je moet ook zorgen voor \belangrijk{opkomers} zodat je slink kunt vermijden.
-Je moet ook zorgen voor \belangrijk{vormkasten} zodat je complexe vormen kunt maken.
+Het ontwerp moet strikt worden afgestemd op de fysische eigenschappen van het gietproces:
+\begin{itemize}
+    \item \textbf{Gelijkmatige wanddikte}: Vermijd abrupte overgangen tussen dikke en dunne secties om differentiële stolling en interne krimpspanningen of slinkholtes tegen te gaan.
+    \item \textbf{Lossingshoeken en afrondingen}: Voorzie voldoende lossing (coniciteit) en royale afrondingsstralen op alle binnen- en buitenhoeken voor schadevrije ontvorming.
+    \item \textbf{Plaatsing van opkomers}: Positioneer opkomers direct boven of nabij geïsoleerde hot spots (dikke knooppunten) voor continue vloeistoftoevoer tijdens de stolling.
+    \item \textbf{Doordachte vormdeling}: Plaats het deelvlak zo dat het aantal vormkasten en losse kernen minimaal blijft.
+\end{itemize}
 
 \begin{figure}[htbp]
     \centering
@@ -3956,18 +3841,13 @@ Aan productiemachines worden, afhankelijk van het proces, een aantal eisen geste
 \end{figure}
 \FloatBarrier
 
-Welke energie heb je nodig, en in welke vorm moet die omgezet worden (kinetisch, warmte, \ldots)?
-Hoe moet de machine bewegen?
-Een draaimachine moet het werkstuk laten roteren; een freesmachine moet de frees laten roteren
-én de tafel lineair verplaatsen in drie richtingen.
-Al die eisen samen bepalen de snelheden waarmee de machine moet kunnen werken.
-
-Hoe worden werkstukken geklemd?
-Ze mogen namelijk niet bewegen tijdens het bewerken of alleen bewegen langs gewenste vrijheidsrichtingen.
-
-De stijfheid van de machine is ook belangrijk voor je nauwkeurigheid.
-
-Je hebt dan manuele en automatische machines.
+De fundamentele eisen aan productiemachines laten zich samenvatten in vier kernaspecten:
+\begin{itemize}
+    \item \textbf{Energiebron \& -omzetting}: Toevoer en omzetting van elektrische naar mechanische, thermische of chemische energie naargelang het bewerkingsproces.
+    \item \textbf{Bewegingsassen \& snelheden}: Kinematica van rotatie- en translatieassen met instelbare snij- en voedingssnelheden ($v_c, v_f$).
+    \item \textbf{Klemming \& vrijheidsgraden}: Vaste positionering en veilige opspanning van het werkstuk zonder ontoelaatbare elastische vervorming.
+    \item \textbf{Stijfheid \& nauwkeurigheid}: Statische en dynamische stijfheid van het machineframe om doorbuiging en trillingen (chatter) binnen de tolerantiegrenzen te houden.
+\end{itemize}
 
 \section{Waarom automatiseren?}
 Automatiseren verhoogt bij grote productieaantallen de productiviteit, vooral door de \textbf{neventijd}
@@ -4044,66 +3924,72 @@ en kunnen steeds complexere taken aan.
 
 \begin{figure}[htbp]
     \centering
-    \begin{tikzpicture}[>=Stealth, font=\sffamily\small, scale=1.1]
-        % Assen tekenen
-        \draw[thick, ->] (0,0) -- (0,7) node[midway, left=25pt, rotate=90, anchor=south] {seriegrootte};
-        \draw[thick, ->] (0,0) -- (8,0) node[anchor=north west] {moeilijkheidsgraad, afkeurrisico};
+    \begin{tikzpicture}[
+            >=Stealth,
+            font=\sffamily\footnotesize,
+            scale=1.0
+        ]
+        % Subtiele zone-achtergronden (nieuwe situatie: NC reikt verder naar links)
+        \fill[gray!10] (0,2.2) -- (1.8,2.2) -- (4.4,6.2) -- (0,6.2) -- cycle;
+        \fill[orange!8] (0,0) -- (3.0,0) -- (1.8,2.2) -- (0,2.2) -- cycle;
+        \fill[blue!7] (3.0,0) -- (8.4,0) -- (8.4,6.2) -- (4.4,6.2) -- (1.8,2.2) -- cycle;
 
-        % De horizontale scheidingslijn aan de linkerkant
-        \draw (0, 2) -- (2, 2);
+        % Assen
+        \draw[thick, ->, black!80] (0,0) -- (0,6.6)
+            node[midway, left=14pt, rotate=90, anchor=south, font=\small\bfseries] {Seriegrootte};
+        \draw[thick, ->, black!80] (0,0) -- (8.8,0)
+            node[below left, yshift=-3pt, font=\small\bfseries] {Moeilijkheidsgraad, afkeurrisico};
 
-        % De gestreepte lijnen (starten vanaf het midden van de horizontale lijn) - Oude situatie
-        \draw[dashed, gray] (1, 2) -- (4, 6.5);
-        \draw[dashed, gray] (1, 2) -- (2.5, 0);
+        % Horizontale scheidingslijn links (handbediend vs mechanisch)
+        \draw[thick, black!80] (0,2.2) -- (1.8,2.2);
 
-        % De doorgetrokken lijnen (starten vanaf het uiteinde van de horizontale lijn) - Nieuwe situatie
-        \draw[thick] (2, 2) -- (5, 6.5);
-        \draw[thick] (2, 2) -- (3.5, 0);
+        % OUDE grenzen (gestippeld, verder rechts -> NC gebied was kleiner)
+        \draw[dashed, thick, black!45] (3.0,2.2) -- (5.6,6.2);
+        \draw[dashed, thick, black!45] (3.0,2.2) -- (4.2,0);
+        \draw[dashed, black!45] (1.8,2.2) -- (3.0,2.2);
 
-        % Tekst labels toevoegen
-        % Linksboven
-        \node[align=left, anchor=west] at (0.2, 5) {mechanisch\\bestuurde\\machines};
-        % Rechtsboven
-        \node[align=left, anchor=west] at (4.5, 6) {meerspillige NC-machines};
-        % Linksonder
-        \node[align=left, anchor=west] at (0.2, 0.8) {hand-\\bediende\\machines};
-        % Midden rechts
-        \node[align=left, anchor=west] at (2.5, 2.2) {NC-draaimachines en\\bewerkingscentra};
-        % Rechtsonder
-        \node[align=left, anchor=west] at (4.5, 0.5) {5-assige NC-freesmachines};
-        % Legenda/Indicatie verschuiving (Arrows reversed: now pointing towards the boundaries to show expansion)
-        \draw[<-, green!60!black, thick] (1.2, 3) -- (1.8, 3) node[midway, above, font=\tiny] {Evolutie};
-        \draw[<-, green!60!black, thick] (1.8, 1) -- (2.4, 1) node[midway, below, font=\tiny] {Evolutie};
+        % NIEUWE grenzen (doorgetrokken, naar links verschoven -> NC groeit!)
+        \draw[very thick, blue!60!black] (1.8,2.2) -- (4.4,6.2);
+        \draw[very thick, blue!60!black] (1.8,2.2) -- (3.0,0);
+
+        % Groene evolutiepijlen (wijzen van OUD rechts naar NIEUW links)
+        \draw[->, very thick, green!50!black] (4.35,4.3) -- (3.25,4.3)
+            node[midway, above=2pt, font=\scriptsize\bfseries] {Evolutie};
+        \draw[->, very thick, green!50!black] (3.65,1.0) -- (2.55,1.0)
+            node[midway, above=2pt, font=\scriptsize\bfseries] {Evolutie};
+
+        % Zone-labels (schoon gepositioneerd zonder enige overlap)
+        \node[align=left, anchor=west] at (0.2, 4.9) {\textbf{Mechanisch}\\bestuurde\\machines};
+        \node[align=left, anchor=west] at (0.2, 0.95) {\textbf{Handbediende}\\machines};
+
+        \node[align=left, anchor=west, blue!60!black] at (5.3, 5.5) {\textbf{Meerspillige}\\NC-machines};
+        \node[align=left, anchor=west, blue!60!black] at (4.7, 2.7) {\textbf{NC-draaimachines}\\en bewerkingscentra};
+        \node[align=left, anchor=west, blue!60!black] at (5.1, 0.8) {\textbf{5-assige}\\NC-freesmachines};
+
+        % Compacte legende rechtsboven
+        \node[draw=black!20, fill=white, rounded corners=2pt, inner sep=4pt,
+              anchor=north east, font=\scriptsize, align=left] at (8.4, 6.55) {%
+            \tikz\draw[dashed, thick, black!45] (0,0)--(0.5,0); Oude grens\\
+            \tikz\draw[very thick, blue!60!black] (0,0)--(0.5,0); Nieuwe grens (NC groeit)
+        };
     \end{tikzpicture}
-    \caption{K-grafiek: Toepassingsgebied van diverse productiesystemen in functie van seriegrootte en moeilijkheidsgraad. De verschuiving van de grenzen toont de groeiende inzetbaarheid van NC-technologie.}\label{fig:k_grafiek_user}
+    \caption{K-grafiek: toepassingsgebied van productiesystemen in functie van seriegrootte en moeilijkheidsgraad. De verschuiving van de gestreepte naar de doorgetrokken lijn toont het groeiende inzetgebied van NC-technologie.}
+    \label{fig:k_grafiek_user}
 \end{figure}
 \FloatBarrier
 
 \subsection{CAM}
 
-\begin{wrapfigure}{r}{0.35\textwidth}
+In een geïntegreerde productieketen doorloopt het proces een gestroomlijnde workflow: \textbf{CAD-model} $\to$ \textbf{CAM-bewerkingstraject} $\to$ \textbf{CL-data} (Cutter Location data: neutrale gereedschapsbanen) $\to$ \textbf{postprocessor} $\to$ machinespecifieke \textbf{G-code} $\to$ DNC/netwerkoverdracht naar de CNC-machine voor uitvoering en monitoring.
+
+\begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.35\textwidth]{assets/WorkflowCADCAM.png}
-    \caption{Workflow van CAD naar CAM: proces van het ontwerpen van modellen in
-        CAD-software en het genereren van bewerkingsprogramma's in CAM-software voor productie}
+    \includegraphics[width=0.45\textwidth]{assets/WorkflowCADCAM.png}
+    \caption{Workflow van CAD naar CAM: van digitaal ontwerp naar machine-instructies via CL-data en postprocessor.}
     \label{fig:WorkflowCADCAM.png}
-\end{wrapfigure}
+\end{figure}
 \FloatBarrier
 
-\textbf{CAD} (Computer Aided Design) is het ontwerpen van modellen op de computer.
-
-\textbf{CAM} (Computer Aided Manufacturing) is het omzetten van deze modellen naar bewerkingsprogramma's.
-
-Vandaag de dag werken deze dingen hand in hand met de computer.
-Je ontwerpt een model in CAD en importeert dat model daarna in CAM-software.
-In deze CAM-software kun je dan bewerkingen definiëren zoals frezen, boren, zagen, enz.
-De CAM-software genereert dan CL-data, dit is coördinaatcode (geen G-code),
-daarna wordt er voor de specifieke machine G-code gegenereerd.
-In de moderne industrie wordt dit allemaal toegepast.
-Je maakt je CAD, je importeert in CAM, je genereert CL-data en je stuurt dit naar de machine via een netwerk.
-NC-machines op het netwerk zetten kan ook helpen voor monitoring en onderhoud. Je kunt stappen via de computer volgen.
-
-\vspace{1cm}
 \begin{warningbox}[EXAMEN CHECKLIST: MACHINES \& AUTOMATISERING]
     \begin{itemize}
         \item \textbf{Tijden}: Ken het verschil tussen hoofdtijd en neventijd en de invloed van seriegrootte op de totale kosten.
@@ -4189,14 +4075,7 @@ Hiervoor moet men vaak eerst een referentievlak bepalen door het werkstuk op te 
 \end{figure}
 \FloatBarrier
 
-Een fundamenteel principe hierbij is de \textbf{3-2-1 methode},
-die wordt gebruikt om de vrijheidsgraden van het werkstuk te minimaliseren en het eenduidig te positioneren:
-\begin{itemize}
-    \item \textbf{3 punten} bepalen het primaire vlak (meestal het grootste steunvlak).
-    \item \textbf{2 punten} bepalen de oriëntatie ten opzichte van een tweede, loodrecht vlak.
-    \item \textbf{1 punt} bepaalt de definitieve positie ten opzichte van het derde vlak.
-\end{itemize}
-Op deze manier ligt de positie van het werkstuk volledig vast zonder dat het systeem overbepaald is.
+Met deze \textbf{3-2-1 methode} liggen alle 6 vrijheidsgraden eenduidig vast zonder overbepaaldheid.
 
 \subsection{Klemmen}
 
@@ -4281,7 +4160,7 @@ Hierbij maak je onderscheid tussen ruwen en afwerken.
 \begin{conceptbox}[Ruwen (roughing) en afwerken (finishing)]
     \textbf{Ruwen (roughing):} Het doel is zo snel mogelijk materiaal verwijderen (hoge \textit{material removal rate}).
     Je gebruikt grote snededieptes en voedingen. Oppervlaktekwaliteit en maattolerantie zijn hier nog van minder belang.
-    \newline
+
     \textbf{Afwerken (finishing):} Na het ruwen volgt de nabewerking om de definitieve maatvoering en
     oppervlaktekwaliteit te bereiken. Hier werk je met kleine afnames en fijne voedingen.
 \end{conceptbox}
@@ -4300,8 +4179,8 @@ nauwkeurigheid te halen, zeker als er veel materiaal weggenomen moet worden waar
 Computer Aided Process Planning (CAPP) automatiseert het maken van werkvoorbereidingen. We onderscheiden twee hoofdmethoden:
 
 \begin{itemize}
-    \item \textbf{Variant methode (Retrieval type)}: Het systeem zoekt in een database naar een bestaand bewerkingsplan van een vergelijkbaar product (een "variant") en past dit aan voor het nieuwe product. Dit is gebaseerd op Groepentechnologie (GT).
-    \item \textbf{Generatieve methode}: Het systeem genereert een volledig nieuw bewerkingsplan "from scratch" op basis van het 3D-model, technologieregels, machinespecificaties en algoritmen, zonder terug te grijpen naar oude plannen.
+    \item \textbf{Variant methode (Retrieval type)}: Het systeem zoekt in een database naar een bestaand bewerkingsplan van een vergelijkbaar product (een ``variant'') en past dit aan voor het nieuwe product. Dit is gebaseerd op Groepentechnologie (GT).
+    \item \textbf{Generatieve methode}: Het systeem genereert een volledig nieuw bewerkingsplan ``from scratch'' op basis van het 3D-model, technologieregels, machinespecificaties en algoritmen, zonder terug te grijpen naar oude plannen.
 \end{itemize}
 
 \begin{examenbox}
@@ -4339,48 +4218,56 @@ Onderstaande flowchart geeft een overzicht van de stappen in de werkvoorbereidin
 \begin{figure}[htbp]
     \centering
     \begin{tikzpicture}[
-            node distance=1.6cm,
-            every node/.style={font=\small},
-            startstop/.style={rectangle, rounded corners, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=red!10, thick},
-            macro/.style={rectangle, minimum width=3.5cm, minimum height=1cm, text centered, draw=blue!50!black, fill=blue!10, thick},
-            micro/.style={rectangle, minimum width=3.5cm, minimum height=1cm, text centered, draw=green!50!black, fill=green!10, thick},
-            decision/.style={diamond, aspect=2, minimum width=3cm, minimum height=0.8cm, text centered, draw=black, fill=orange!10, thick},
-            arrow/.style={thick,->,>=stealth},
-            groupbox/.style={draw=gray, dashed, inner sep=0.5cm, rounded corners, label={[anchor=north west, inner sep=2pt]north west:\textbf{#1}}}
+            >=Stealth,
+            font=\sffamily\footnotesize,
+            io/.style={rectangle, rounded corners=4pt, minimum width=4.4cm, minimum height=0.75cm,
+                       align=center, draw=black!80, fill=gray!14, thick},
+            macro/.style={rectangle, rounded corners=2.5pt, minimum width=4.4cm, minimum height=0.72cm,
+                          align=center, draw=blue!60!black, fill=blue!8, thick},
+            micro/.style={rectangle, rounded corners=2.5pt, minimum width=4.4cm, minimum height=0.72cm,
+                          align=center, draw=green!50!black, fill=green!8, thick},
+            arrow/.style={->, thick, black!80}
         ]
+        % Top
+        \node[io] (start) at (0,0) {\textbf{Productontwerp (CAD)}};
+        \node[macro, below=0.45cm of start] (analysis) {Analyse geometrie \& materiaal};
 
-        % Nodes
-        \node (start) [startstop] {Productontwerp (CAD)};
-        \node (analysis) [macro, below of=start] {Analyse Geometrie \& Materiaal};
+        % Macro-blok
+        \node[macro, below=0.95cm of analysis] (routing) {Bepaal bewerkingsvolgorde (routing)};
+        \node[macro, below=0.4cm of routing] (machine) {Keuze machines \& processen};
 
-        % Macro Group
-        \node (routing) [macro, below of=analysis, yshift=-0.7cm] {Bepaal Volgorde (Routing)};
-        \node (machine) [macro, below of=routing] {Keuze Machines \& Processen};
+        % Micro-blok
+        \node[micro, below=1.0cm of machine] (fix) {Bepaal opspanning (3-2-1 \& klemmen)};
+        \node[micro, below=0.4cm of fix] (tools) {Keuze gereedschappen};
+        \node[micro, below=0.4cm of tools] (params) {Snijparameters ($v_c$, $f$, $a$)};
+        \node[micro, below=0.4cm of params] (cam) {Toolpaths genereren (CAM)};
 
-        % Micro Group
-        \node (fix) [micro, below of=machine, yshift=-0.9cm] {Bepaal Opspanning (Fixturing)};
-        \node (tools) [micro, below of=fix] {Keuze Gereedschappen};
-        \node (params) [micro, below of=tools] {Snijparameters (Snelheid, Voeding)};
-        \node (cam) [micro, below of=params] {Genereren Toolpaths (CAM)};
+        % Einde
+        \node[io, below=0.75cm of cam] (end) {\textbf{NC-code \& werkinstructies}};
 
-        \node (end) [startstop, below of=cam] {NC Code \& Instructies};
+        % Achtergrondkaders met veilige marge (geen overlap met tekst)
+        \node[draw=blue!55!black, dashed, rounded corners=4pt,
+              inner xsep=10pt, inner ysep=8pt, fit=(routing)(machine)] (macrobox) {};
+        \node[fill=white, text=blue!60!black, font=\scriptsize\bfseries,
+              anchor=west, inner sep=2pt] at ([xshift=6pt]macrobox.north west) {Macro-werkvoorbereiding};
 
-        % Annotations for Macro/Micro
-        \node[fit=(routing)(machine), groupbox={Macro Werkvoorbereiding}] (macrogroup) {};
-        \node[fit=(fix)(tools)(params)(cam), groupbox={Micro Werkvoorbereiding}] (microgroup) {};
+        \node[draw=green!45!black, dashed, rounded corners=4pt,
+              inner xsep=10pt, inner ysep=8pt, fit=(fix)(tools)(params)(cam)] (microbox) {};
+        \node[fill=white, text=green!45!black, font=\scriptsize\bfseries,
+              anchor=west, inner sep=2pt] at ([xshift=6pt]microbox.north west) {Micro-werkvoorbereiding};
 
-        % Connections
-        \draw [arrow] (start) -- (analysis);
-        \draw [arrow] (analysis) -- (routing);
-        \draw [arrow] (routing) -- (machine);
-        \draw [arrow] (machine) -- (fix);
-        \draw [arrow] (fix) -- (tools);
-        \draw [arrow] (tools) -- (params);
-        \draw [arrow] (params) -- (cam);
-        \draw [arrow] (cam) -- (end);
-
+        % Verbindingen
+        \draw[arrow] (start) -- (analysis);
+        \draw[arrow] (analysis) -- (routing);
+        \draw[arrow] (routing) -- (machine);
+        \draw[arrow] (machine) -- (fix);
+        \draw[arrow] (fix) -- (tools);
+        \draw[arrow] (tools) -- (params);
+        \draw[arrow] (params) -- (cam);
+        \draw[arrow] (cam) -- (end);
     \end{tikzpicture}
-    \caption{Flowchart van de werkvoorbereiding: van Macro-beslissingen (procesniveau) naar Micro-beslissingen (operationeel niveau).}\label{fig:werkvoorbereiding_flowchart_detail}
+    \caption{Flowchart van de werkvoorbereiding: van macro-beslissingen (proces- en machineniveau) naar micro-beslissingen (operationeel niveau).}
+    \label{fig:werkvoorbereiding_flowchart_detail}
 \end{figure}
 \FloatBarrier
 
@@ -4445,35 +4332,7 @@ een gelijkmatige wanddikte om slink te voorkomen, en het vermijden van ondersnij
 
 \section{Algemene regels bij Design for Manufacturing (DFM)}
 \begin{itemize}
-    \item \textbf{Vermijd scherpe hoeken}: Deze veroorzaken spanningsconcentraties en verhogen het risico op breuk of scheurvorming. Gebruik afrondingen (fillets).
-
-          \begin{figure}[htbp]
-              \centering
-              \begin{tikzpicture}[scale=0.8]
-                  % Sharp corner
-                  \begin{scope}[xshift=-4cm]
-                      \draw[thick, fill=gray!10] (0,3) -- (0,0) -- (3,0) -- (3,0.5) -- (0.5,0.5) -- (0.5,3) -- cycle;
-                      % Stress lines (concentrated at corner)
-                      \draw[red, thin] (0.1, 2.5) .. controls (0.2, 0.5) and (0.5, 0.2) .. (2.5, 0.1);
-                      \draw[red, thin] (0.2, 2.4) .. controls (0.3, 0.45) and (0.45, 0.3) .. (2.4, 0.2);
-                      \draw[red, thick] (0.3, 2.3) .. controls (0.4, 0.4) and (0.4, 0.4) .. (2.3, 0.3);
-                      \draw[red, ultra thick] (0.45, 0.55) circle (0.1); % Point of concentration
-                      \node at (1.5, -0.5) {\footnotesize Scherpe hoek (Spanningspiek)};
-                  \end{scope}
-
-                  % Rounded corner
-                  \begin{scope}[xshift=4cm]
-                      \draw[thick, fill=gray!10] (0,3) -- (0,0) -- (3,0) -- (3,0.5) -- (1,0.5) arc(270:180:0.5) -- (0.5,1) -- (0.5,3) -- cycle;
-                      % Stress lines (distributed)
-                      \draw[blue, thin] (0.1, 2.5) .. controls (0.2, 1) and (1, 0.2) .. (2.5, 0.1);
-                      \draw[blue, thin] (0.2, 2.4) .. controls (0.4, 1.2) and (1.2, 0.4) .. (2.4, 0.2);
-                      \draw[blue, thin] (0.3, 2.3) .. controls (0.6, 1.4) and (1.4, 0.6) .. (2.3, 0.3);
-                      \node at (1.5, -0.5) {\footnotesize Afgeronde hoek (Gelijke verdeling)};
-                  \end{scope}
-              \end{tikzpicture}
-              \caption{Visualisatie van spanningsconcentraties: Een scherpe hoek veroorzaakt een ophoping van spanningslijnen. Een afronding verdeelt de krachten gelijkmatiger.}\label{fig:spanningsconcentratie}
-          \end{figure}
-
+    \item \textbf{Vermijd scherpe binnenhoeken}: Scherpe overgangen bundelen krachtlijnen en wekken gevaarlijke spanningsconcentraties op. Royale afrondingen (fillets) verdelen spanningen gelijkmatig over het materiaal.
     \item \textbf{Minimaliseer het aantal onderdelen}: Hoe minder onderdelen, hoe lager de montagekosten en het risico op fouten.
     \item \textbf{Standaardiseer onderdelen}: Gebruik zoveel mogelijk standaardcomponenten (bouten, lagers) om voorraadkosten te drukken.
     \item \textbf{Modulair ontwerp}: Bouw producten op uit herbruikbare modules die in verschillende configuraties toegepast kunnen worden.
@@ -4481,6 +4340,57 @@ een gelijkmatige wanddikte om slink te voorkomen, en het vermijden van ondersnij
     \item \textbf{Kies realistische toleranties}: Te nauwe toleranties verhogen de kostprijs sterk zonder altijd functionele meerwaarde te bieden.
     \item \textbf{Kies goed bewerkbare materialen}: Stem de materiaalkeuze af op de gewenste bewerkingstechniek.
 \end{itemize}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[
+            scale=0.95,
+            >=Stealth,
+            font=\sffamily\footnotesize
+        ]
+        % LINKS: SCHERPE BINNENHOEK
+        \begin{scope}[shift={(0,0)}]
+            \fill[gray!14] (0,3.0) -- (0,0) -- (3.0,0) -- (3.0,0.9) -- (0.9,0.9) -- (0.9,3.0) -- cycle;
+            \draw[thick, black!80] (0,3.0) -- (0,0) -- (3.0,0) -- (3.0,0.9) -- (0.9,0.9) -- (0.9,3.0) -- cycle;
+
+            % Krachtstroomlijnen (hopen op in scherpe hoek)
+            \draw[red!75!black, thin] (0.18,2.85) .. controls (0.2,0.5) and (0.5,0.2) .. (2.85,0.18);
+            \draw[red!75!black, semithick] (0.38,2.85) .. controls (0.42,0.68) and (0.68,0.42) .. (2.85,0.38);
+            \draw[red!75!black, thick] (0.58,2.85) .. controls (0.65,0.82) and (0.82,0.65) .. (2.85,0.58);
+            \draw[red!75!black, very thick] (0.76,2.85) .. controls (0.83,0.88) and (0.88,0.83) .. (2.85,0.76);
+
+            % Spanningspiek-highlight
+            \fill[red!40, opacity=0.7] (0.9,0.9) circle (0.18);
+            \draw[red!80!black, thick] (0.9,0.9) circle (0.18);
+            \draw[->, red!80!black, thick] (1.65,1.85) node[above right, align=left, font=\scriptsize\bfseries] {Spanningspiek\\($\sigma_{\max} \gg \sigma_{\text{nom}}$)} -- (1.03,1.03);
+
+            \node[below=5pt, align=center] at (1.5,0) {\textbf{Scherpe binnenhoek}\\Ophoping van krachtlijnen};
+        \end{scope}
+
+        % RECHTS: AFGERONDE HOEK (FILLET)
+        \begin{scope}[shift={(5.4,0)}]
+            \fill[gray!14] (0,3.0) -- (0,0) -- (3.0,0) -- (3.0,0.9) -- (1.6,0.9)
+                arc(270:180:0.7) -- (0.9,1.6) -- (0.9,3.0) -- cycle;
+            \draw[thick, black!80] (0,3.0) -- (0,0) -- (3.0,0) -- (3.0,0.9) -- (1.6,0.9)
+                arc(270:180:0.7) -- (0.9,1.6) -- (0.9,3.0) -- cycle;
+
+            % Gelijkmatig verdeelde krachtstroomlijnen
+            \draw[blue!60!black, thin] (0.18,2.85) .. controls (0.22,0.85) and (0.85,0.22) .. (2.85,0.18);
+            \draw[blue!60!black, semithick] (0.38,2.85) .. controls (0.45,1.1) and (1.1,0.45) .. (2.85,0.38);
+            \draw[blue!60!black, semithick] (0.58,2.85) .. controls (0.68,1.35) and (1.35,0.68) .. (2.85,0.58);
+            \draw[blue!60!black, thick] (0.76,2.85) .. controls (0.86,1.52) and (1.52,0.86) .. (2.85,0.76);
+
+            % Fillet radius R aanduiding
+            \draw[->, blue!60!black, thick] (1.6,1.6) -- (1.12,1.12);
+            \node[blue!60!black, above right, font=\scriptsize\bfseries] at (1.55,1.55) {Afronding (fillet $R$)};
+
+            \node[below=5pt, align=center] at (1.5,0) {\textbf{Afgeronde binnenhoek}\\Gelijkmatige spanningsverdeling};
+        \end{scope}
+    \end{tikzpicture}
+    \caption{Spanningsconcentratie bij binnenhoeken: een scherpe hoek bundelt de krachtlijnen tot een spanningspiek (breukrisico), terwijl een afronding (fillet $R$) de spanningen gelijkmatig verdeelt.}
+    \label{fig:spanningsconcentratie}
+\end{figure}
+\FloatBarrier
 
 \begin{figure}[htbp]
     \centering
@@ -4511,7 +4421,7 @@ een gelijkmatige wanddikte om slink te voorkomen, en het vermijden van ondersnij
 
 Als je een vraag krijgt, wees dan duidelijk in je antwoord.
 Schrijf niet enorm grote paragrafen. Een tekening met een korte uitleg is vaak beter.
-Bekijk de laatste video op Toledo waarin hij een voorbeeldexamen overloopt.
+Structureer je antwoorden analytisch: begin steeds met de fysische basisprincipes, relevante formules en een duidelijke schets alvorens uit te weiden.
 
 \chapter{Slotwoord}
 
@@ -4543,7 +4453,7 @@ Ik hoop dat jullie er veel aan hebben gehad en dat het jullie helpt bij het stud
 
 
 
-\vspace{3cm}
+
 
 
 
