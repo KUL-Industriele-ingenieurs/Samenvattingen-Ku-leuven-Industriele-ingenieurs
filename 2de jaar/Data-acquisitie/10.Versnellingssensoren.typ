@@ -23,7 +23,7 @@ met:
 - $x$ --- positie [m]
 - $t$ --- tijd [s]
 
-Het ruisprobleem uit hoofdstuk @ch:snelheid wordt hier erger. Een ruiscomponent met pulsatie $omega_"ruis"$ wordt bij elke differentiatie met een factor $omega_"ruis"$ vergroot. Bij dubbele differentiatie is dat $omega_"ruis"^2$. Dubbel differentiëren lukt dus zelden nauwkeurig, behalve bij zeer gladde signalen. Eén keer differentiëren van een snelheidssignaal kan soms wel.
+Het ruisprobleem uit @ch:snelheid wordt hier erger. Een ruiscomponent met pulsatie $omega_"ruis"$ wordt bij elke differentiatie met een factor $omega_"ruis"$ vergroot. Bij dubbele differentiatie is dat $omega_"ruis"^2$. Dubbel differentiëren lukt dus zelden nauwkeurig, behalve bij zeer gladde signalen. Eén keer differentiëren van een snelheidssignaal kan soms wel.
 
 #figure(
   image("assets/L10-ruis.png", width: 12cm),
@@ -134,7 +134,7 @@ Je kiest $K_s$ en $M$ zodat het frequentiebereik van je meting onder $omega_n$ b
 
 De relatieve verplaatsing $x_0$ kan gemeten worden met een potentiometer, een niet-gebonden of gebonden rekstrookje, een differentiële transformator (LVDT), een capacitieve of een piëzo-elektrische opnemer.
 
-*Gebonden rekstrookjes.* De massa hangt aan twee veren met rekstrookjes erop. Vier rekstrookjes vormen samen een brug (hoofdstuk @ch:rekstroken-1).
+*Gebonden rekstrookjes.* De massa hangt aan twee veren met rekstrookjes erop. Vier rekstrookjes vormen samen een brug (@ch:rekstroken-1).
 
 #figure(
   image("assets/L10-rekstrook.png", width: 9cm),
@@ -142,7 +142,7 @@ De relatieve verplaatsing $x_0$ kan gemeten worden met een potentiometer, een ni
   label: <fig:L10-rekstrook>,
 )
 
-*Capacitieve accelerometer.* De sensor bestaat uit lagen: elektrode, afstandhouder, seismisch element, afstandhouder en elektrode. De massa verschuift ten opzichte van de behuizing. De spiraal werkt als veer. De gaten in de massa dempen, want de lucht in de condensator moet erdoor. Meer gaatjes geven minder demping. De uitwijking is evenredig met de versnelling, dus de capaciteit meet versnelling en geen snelheid. Hoofdstuk @ch:mems beschrijft de uitvoering met twee capaciteiten $C_1$ en $C_2$.
+*Capacitieve accelerometer.* De sensor bestaat uit lagen: elektrode, afstandhouder, seismisch element, afstandhouder en elektrode. De massa verschuift ten opzichte van de behuizing. De spiraal werkt als veer. De gaten in de massa dempen, want de lucht in de condensator moet erdoor. Meer gaatjes geven minder demping. De uitwijking is evenredig met de versnelling, dus de capaciteit meet versnelling en geen snelheid. @ch:mems beschrijft de uitvoering met twee capaciteiten $C_1$ en $C_2$.
 
 #figure(
   image("assets/L10-capacitief.png", width: 12cm),
@@ -192,7 +192,7 @@ met:
 - $R$ --- ingangsweerstand van de versterker [Ω]
 - $C_T$ --- totale capaciteit van kristal, kabel en versterker [F]
 
-Is de periode van het signaal veel korter dan $tau$, dan bouwt het kristal de lading sneller op dan ze wegvloeit. Je meet dan de volle lading. Bij een lage frequentie is de lading al grotendeels weggelekt. Bij een constante versnelling is de frequentie nul en lekt alles weg. Een shuntcondensator vergroot $C_T$ en verlaagt $f_0$, maar verlaagt ook de gevoeligheid. Een ladingsversterker verlaagt $f_0$ nog verder. Echt $0$ Hz haalt geen van beide (hoofdstuk @ch:kracht).
+Is de periode van het signaal veel korter dan $tau$, dan bouwt het kristal de lading sneller op dan ze wegvloeit. Je meet dan de volle lading. Bij een lage frequentie is de lading al grotendeels weggelekt. Bij een constante versnelling is de frequentie nul en lekt alles weg. Een shuntcondensator vergroot $C_T$ en verlaagt $f_0$, maar verlaagt ook de gevoeligheid. Een ladingsversterker verlaagt $f_0$ nog verder. Echt $0$ Hz haalt geen van beide (@ch:kracht).
 
 Het bruikbare gebied ligt dus tussen $f_0$ (lekken) en $f_n$ (mechanische resonantie). De nauwkeurigheid is $plus.minus 5 %$ ruim onder $f_n$. Onder 1 Hz veroorzaken temperatuurtransiënten bovendien fouten, omdat ze een lading geven die je niet van een echt trillingssignaal kunt onderscheiden.
 

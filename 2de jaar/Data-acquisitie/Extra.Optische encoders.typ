@@ -10,7 +10,7 @@ Een optische encoder zet de hoekpositie van een as om in elektrische pulsen met 
 
 #figure(
   image("assets/LX-encoder-opbouw.png", width: 8cm),
-  caption: [Opbouw van een roterende encoder: led, optische schijf, referentieraster en detector (Samenvatting DAQ p.30)],
+  caption: [Opbouw van een roterende encoder: led, optische schijf, referentieraster en detector],
   label: <fig:LX-encoder-opbouw>,
 )
 
@@ -24,12 +24,12 @@ Een incrementele encoder telt pulsen van een schijf met spleten om de draaihoek 
   align: horizon,
   figure(
     image("assets/LX-schijf.png", width: 100%),
-    caption: [Schijf met lichtbronnen, sensoren, conditionering en teller (Samenvatting DAQ p.31)],
+    caption: [Schijf met lichtbronnen, sensoren, conditionering en teller],
     label: <fig:LX-schijf>,
   ),
   figure(
     image("assets/LX-kwadratuur.png", width: 100%),
-    caption: [Kanalen A en B in kwadratuur (Samenvatting DAQ p.31)],
+    caption: [Kanalen A en B in kwadratuur],
     label: <fig:LX-kwadratuur>,
   ),
 )
@@ -74,7 +74,7 @@ Een absolute encoder geeft bij elke hoek een unieke code, zodat de positie direc
 
 #figure(
   image("assets/LX-absoluut.png", width: 7.0cm),
-  caption: [Absolute optische encoder: codeschijf met meerdere sporen en detectoren (Samenvatting DAQ p.32)],
+  caption: [Absolute optische encoder: codeschijf met meerdere sporen en detectoren],
   label: <fig:LX-absoluut>,
 )
 
@@ -125,7 +125,7 @@ Een vierkwadrant optische sensor bepaalt de positie van een lichtvlek of lichtbr
 
 #figure(
   image("assets/LX-vierkwadrant.png", width: 11cm),
-  caption: [Vierkwadrantensensor met segmenten 1 (boven), 2 (rechts), 3 (onder), 4 (links) en twee verschilversterkers (Samenvatting DAQ p.33)],
+  caption: [Vierkwadrantensensor met segmenten 1 (boven), 2 (rechts), 3 (onder), 4 (links) en twee verschilversterkers],
   label: <fig:LX-vierkwadrant>,
 )
 

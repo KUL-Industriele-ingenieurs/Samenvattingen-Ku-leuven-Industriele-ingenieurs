@@ -23,6 +23,7 @@ Elk hoofdstuk in deze samenvatting hoort bij één slidedeck. De vier delen volg
   [Introductie en sensorkarakteristieken], [@ch:introductie, @ch:karakteristieken],
   [Verplaatsing: potentiometers, rekstroken, inductief, capacitief, Hall], [@ch:potentiometer -- @ch:hall],
   [Snelheid, versnelling en MEMS], [@ch:snelheid -- @ch:mems],
+  [Optische encoders (extra)], [@ch:optisch],
   [Druk, kracht, debiet en temperatuur], [@ch:druk -- @ch:temperatuur],
   [Signaalconditionering, DAC, ADC en bemonstering], [@ch:signaalconditionering -- @ch:sampling],
   [Data-interfacing], [@ch:interfacing],

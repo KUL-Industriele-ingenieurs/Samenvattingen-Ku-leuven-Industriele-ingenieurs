@@ -224,7 +224,7 @@ Een impedance head meet in één behuizing de kracht en de versnelling aan hetze
   label: <fig:L13-impedance-head>,
 )
 
-De uitgang voor versnelling en die voor kracht zijn aparte aansluitingen. De gevoeligheden in de slides zijn $3 "pC" \/ ("m/s")^2$ voor de versnelling en $370 "pC/N"$ voor de kracht, met een frequentiebereik van $1 "Hz"$ tot $6 "kHz"$ (slide 34).
+De uitgang voor versnelling en die voor kracht zijn aparte aansluitingen. De gevoeligheden in de slides zijn $3 "pC" \/ ("m/s"^2)$ voor de versnelling en $370 "pC/N"$ voor de kracht, met een frequentiebereik van $1 "Hz"$ tot $6 "kHz"$ (slide 34).
 
 === Force sensitive resistor <sec:fsr>
 
@@ -300,7 +300,7 @@ Een piëzo-elektrisch kristal geeft een lading af als je het mechanisch vervormt
 
 #figure(
   image("assets/L13-kwarts-atomen.png", width: 8cm),
-  caption: [Kwartskristal: (a) in rust, (b) onder een kracht $F_x$ in één richting, (c) in de andere richting; de lading verschijnt langs de $y$-as (Samenvatting DAQ p.28)],
+  caption: [Kwartskristal: (a) in rust, (b) onder een kracht $F_x$ in één richting, (c) in de andere richting; de lading verschijnt langs de $y$-as],
   label: <fig:L13-kwarts-atomen>,
 )
 
@@ -324,7 +324,7 @@ Bij een verplaatsingssensor schrijf je het verband tussen lading en verplaatsing
 
 #figure(
   image("assets/L13-piezo-laag.png", width: 9cm),
-  caption: [Piëzo-elektrische laag tussen twee elektroden (Samenvatting DAQ p.28)],
+  caption: [Piëzo-elektrische laag tussen twee elektroden],
   label: <fig:L13-piezo-laag>,
 )
 
@@ -339,7 +339,7 @@ Het vervangschema van een piëzo-elektrische sensor is een ladingsbron met paral
 
 #figure(
   image("assets/L13-piezo-circuit.png", width: 12cm),
-  caption: [Vervangschema: stroombron $i = dot(q)$, $C_p$, $C_c$ en $R$ (Samenvatting DAQ p.29, uitwerking)],
+  caption: [Vervangschema: stroombron $i = dot(q)$, $C_p$, $C_c$ en $R$],
   label: <fig:L13-piezo-circuit>,
 )
 
@@ -378,11 +378,11 @@ De sensor meet dus geen statische kracht of verplaatsing: bij frequentie nul is 
 
 #figure(
   image("assets/L13-piezo-hoogdoorlaat.png", width: 11cm),
-  caption: [Spanningsgevoeligheid $|K_s|$ in functie van de frequentie voor twee combinaties van $R$ en $C_T$ (uitwerking bij Samenvatting DAQ p.29)],
+  caption: [Spanningsgevoeligheid $|K_s|$ in functie van de frequentie voor twee combinaties van $R$ en $C_T$],
   label: <fig:L13-piezo-hoogdoorlaat>,
 )
 
-#voorbeeld(title: "Samenvatting p.29: kabel en shunt")[
+#voorbeeld(title: "Kabel en shunt bij een piëzo-elektrische sensor")[
   Een kristal met $C_p = 400 "pF"$ en $K = 1 "pC/"mu"m"$ zit via een kabel van $C_c = 100 "pF"$ aan een versterker met $R = 1 "M"Omega$. Dan is $C_T = 500 "pF"$, $f_0 = 1 \/ (2 pi dot 10^6 dot 500 dot 10^(-12)) = 318 "Hz"$ en $K_s = 1 "pC/"mu"m" \/ 500 "pF" = 2 "mV/"mu"m"$. Zonder kabel was $K_s = 2.5 "mV/"mu"m"$. De kabel kost dus $20 %$ gevoeligheid.
 
   Voeg je een shunt van $500 "pF"$ toe en neem je $R = 500 "M"Omega$, dan is $C_T = 1000 "pF"$ en $f_0 = 0.32 "Hz"$. De gevoeligheid zakt wel naar $1 "mV/"mu"m"$ (60 % lager dan zonder kabel). Een shuntcondensator verlaagt $f_0$, maar $K_s = K \/ C_T$ daalt mee.
@@ -392,7 +392,7 @@ De sensor meet dus geen statische kracht of verplaatsing: bij frequentie nul is 
 
 #figure(
   image("assets/L13-ladingsversterker.png", width: 9cm),
-  caption: [Ladingsversterker: virtuele massa maakt $C_c$ onschadelijk (uitwerking bij Samenvatting DAQ p.29)],
+  caption: [Ladingsversterker: virtuele massa maakt $C_c$ onschadelijk],
   label: <fig:L13-ladingsversterker>,
 )
 

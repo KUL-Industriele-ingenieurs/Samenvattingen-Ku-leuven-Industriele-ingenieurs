@@ -124,7 +124,7 @@ De kabels naar de sensor zijn in serie met de Pt100, dus de meter ziet hun weers
   - Gevoeligheid: $0.00385 dot 100 = 0.385 Omega\/degree "C"$
   - Fout: $10 \/ 0.385 = 26 degree "C"$
 
-  Een kabel van $10 "m"$ koper heeft ongeveer $0.5 Omega$. Dat is al meer dan $1 degree "C"$ fout bij een Pt100 (examenuitwerking).
+  Een kabel van $10 "m"$ koper heeft ongeveer $0.5 Omega$. Dat is al meer dan $1 degree "C"$ fout bij een Pt100.
 ]
 
 De oplossing is een *4-draadsmeting* (Kelvin). Twee draden voeren de stroom, twee andere meten de spanning over de sensor zonder stroom. Daardoor valt de kabelweerstand weg (@sec:sc-bekabeling).
@@ -179,7 +179,7 @@ De oplossing is een *4-draadsmeting* (Kelvin). Twee draden voeren de stroom, twe
 
 Een halfgeleidersensor verandert sterk van weerstand met de temperatuur. Er zijn drie soorten.
 
-*Siliciumweerstand:* $alpha = 0.7 Omega\/degree "C"$, lineariteit $plus.minus 0.5 %$, bereik $-65$ tot $200 degree "C"$, waarde $10 Omega$ tot $10 "k"Omega$ en tolerantie $1$ tot $20 %$.
+*Siliciumweerstand:* $alpha = 0.7 %\/degree "C"$, lineariteit $plus.minus 0.5 %$, bereik $-65$ tot $200 degree "C"$, waarde $10 Omega$ tot $10 "k"Omega$ en tolerantie $1$ tot $20 %$.
 
 *Thermistor:* keramiek of polymeer. Een *PTC* heeft in een beperkt bereik een zeer grote $alpha$. Hij dient als overbelastingsbeveiliging, bijvoorbeeld in motorwikkelingen. Bij een *NTC* daalt de weerstand met de temperatuur:
 
@@ -364,7 +364,7 @@ Is $V_"comp"$ gelijk aan $V(T_2) - V(0 degree "C")$, dan is $V_"out" = V(T_1) - 
 #voorbeeld(title: "Type K met koude las op 25 °C (oefenvraag E14)")[
   *Gegeven:* gevoeligheid $41 mu"V"\/degree "C"$, gemeten $11.3 "mV"$, koude las op $25 degree "C"$.
 
-  *Gevraagd:* temperatuur van de meetpunt.
+  *Gevraagd:* temperatuur van het meetpunt.
 
   *Oplossing:*
   - De spanning is evenredig met $T_1 - T_2$: $11.3 "mV" \/ 41 mu"V"\/degree "C" = 275.6 degree "C"$.
@@ -455,7 +455,7 @@ Is $V_"comp"$ gelijk aan $V(T_2) - V(0 degree "C")$, dan is $V_"out" = V(T_1) - 
   columns: 5,
   align: (left, center, center, center, center),
   table.header[][Thermistor][RTD][Thermokoppel][Halfgeleider],
-  [Bereik [$degree "C"$]], [$-55$ tot $125$], [$-200$ tot $850$], [$-600$ tot $2000$], [$-50$ tot $150$],
+  [Bereik [$degree "C"$]], [$-55$ tot $125$], [$-200$ tot $850$], [$-200$ tot $2000$], [$-50$ tot $150$],
   [Lineariteit], [exponentieel], [vrij lineair], [vrij lineair], [best],
   [Gevoeligheid], [hoog], [laag], [middel], [hoogst],
   [Respons], [snel], [traag], [snel tot traag], [traag],

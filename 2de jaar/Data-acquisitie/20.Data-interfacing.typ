@@ -5,11 +5,11 @@
 
 = Data-interfacing <ch:interfacing>
 
-Data-interfacing verbindt sensor en software. In de meetketen van de slides meet een NTC een temperatuur, een versterker en een ADC zetten die om naar een digitaal getal, en een Raspberry Pi leest dat getal via i2c. De Pi stuurt het resultaat door via i2c, PWM, MQTT of naar een LCD.
+Data-interfacing verbindt sensor en software. In de meetketen van de slides meet een NTC een temperatuur, een versterker en een ADC zetten die om naar een digitaal getal, en een Raspberry Pi leest dat getal via I2C. De Pi stuurt het resultaat door via I2C, PWM, MQTT of naar een LCD.
 
 == Sensorinterfaces op de Raspberry Pi <sec:pi-interfaces>
 
-Een *interface* is een gedeelde grens waarover twee onderdelen gegevens uitwisselen. De Raspberry Pi heeft drie soorten sensorbus: *GPIO*, *I2C* en *PWM*. Elk daarvan heeft een eigen pagina in dit hoofdstuk.
+Een *interface* is een gedeelde grens waarover twee onderdelen gegevens uitwisselen. De Raspberry Pi heeft drie soorten sensorbus: *GPIO*, *I2C* en *PWM*. Elk daarvan komt hieronder aan bod.
 
 #figure(
   image("assets/L20-lagen.png", width: 70%),
@@ -169,7 +169,7 @@ Voordelen volgens de slides: laag vermogenverbruik en ongevoelig voor ruis. Nade
     [12 V; het gemiddelde is altijd de helft],
   ),
   juist: "A",
-)[$overline(V) = D dot V = 0{,}3 times 24 = 7{,}2 "V"$. Bij "aan" is de spanning over de schakelaar bijna nul, bij "uit" is de stroom nul, dus er is in beide standen bijna geen verlies. Een lineaire regelaar laat het verschil van $24 - 7{,}2 = 16{,}8 "V"$ over zichzelf vallen en zet dat om in warmte. B beweert het tegenovergestelde van A. C is $0{,}7 times 24$, de gemiddelde spanning bij 70 %. D geldt alleen bij 50 %.]
+)[$overline(V) = D dot V = 0,3 times 24 = 7,2 "V"$. Bij "aan" is de spanning over de schakelaar bijna nul, bij "uit" is de stroom nul, dus er is in beide standen bijna geen verlies. Een lineaire regelaar laat het verschil van $24 - 7,2 = 16,8 "V"$ over zichzelf vallen en zet dat om in warmte. B beweert het tegenovergestelde van A. C is $0,7 times 24$, de gemiddelde spanning bij 70 %. D geldt alleen bij 50 %.]
 
 == Hardwarebibliotheken <sec:libraries>
 
@@ -200,7 +200,7 @@ bus.write_byte_data(0x77, 0xf4, 0x2e)   # adres, register, data
 
 === UPM <sec:upm>
 
-*UPM* is een bibliotheek met softwaredrivers voor veelgebruikte sensoren en actuatoren. Ze draait bovenop MRAA, zodat je niet zelf het i2c-protocol schrijft.
+*UPM* is een bibliotheek met softwaredrivers voor veelgebruikte sensoren en actuatoren. Ze draait bovenop MRAA, zodat je niet zelf het I2C-protocol schrijft.
 
 ```python
 from upm import pyupm_temperature as upm
@@ -247,11 +247,11 @@ MQTT werkt met een client-servermodel. De server is een *broker*. Clients die be
 
 === Asynchroon <sec:mqtt-async>
 
-MQTT gebruikt publish-subscribe. Zenders en ontvangers staan los van elkaar in synchronicity, tijd en ruimte. Eén bericht bereikt zo meerdere ontvangers (one-to-many).
+MQTT gebruikt publish-subscribe. Zenders en ontvangers staan los van elkaar in synchroniciteit, tijd en ruimte. Eén bericht bereikt zo meerdere ontvangers (one-to-many).
 
 #figure(
   image("assets/L20-mqtt-async.png", width: 85%),
-  caption: [Asynchrone communicatie via publish-subscribe, ontkoppeld in tijd, ruimte en synchronicity (slide 51).],
+  caption: [Asynchrone communicatie via publish-subscribe, ontkoppeld in tijd, ruimte en synchroniciteit (slide 51).],
   label: <fig:L20-mqtt-async>,
 )
 

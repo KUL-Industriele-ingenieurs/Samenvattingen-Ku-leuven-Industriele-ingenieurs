@@ -6,7 +6,7 @@
 
 // Wheatstonebrug: R1 linksboven, R2 rechtsboven, R3 rechtsonder, R4 linksonder.
 // Kleuren: rood = trek (+ΔR), blauw = druk (-ΔR), grijs = vaste weerstand.
-#let brug(labels, kleuren) = cetz.canvas({
+#let brug(labels, kleuren) = cetz.canvas(length: 6.8mm, {
   import cetz.draw: *
   let (t, l, r, b) = ((0, 1.8), (-1.8, 0), (1.8, 0), (0, -1.8))
   line(t, l)
@@ -178,7 +178,7 @@ met:
 
 === Waarom een brug? <sec:waarom-brug>
 
-De weerstandsverandering van een rekstrook is piepklein: in het voorbeeld hierboven $8 thin "m"Omega$ op $120 thin Omega$, dus $d R \/ R approx 10^(-4)$. Er zijn drie manieren om die te meten (Samenvatting DAQ p.14):
+De weerstandsverandering van een rekstrook is piepklein: in het voorbeeld hierboven $8 thin "m"Omega$ op $120 thin Omega$, dus $d R \/ R approx 10^(-4)$. Er zijn drie manieren om die te meten:
 
 + *Stroom meten*: een bron $V_"exc"$ in serie met de rekstrook. Je meet $I = V_"exc" \/ (R + d R)$: een kleine verandering bovenop een grote stroom.
 + *Spanningsdeler*: de strook in serie met een vaste $R$. De uitgang $V_"exc" (R + d R) \/ (2 R + d R)$ is ongeveer $V_"exc" \/ 2$ plus een heel klein beetje.
@@ -210,7 +210,7 @@ Vervang je een of meer weerstanden door een rekstrook, dan krijg je drie opstell
 
 #grid(
   columns: (1fr, 1fr, 1fr),
-  gutter: 0.5em,
+  gutter: 1.2em,
   figure(
     brug(($+Delta R$, $-Delta R$, $+Delta R$, $-Delta R$), (schoolRed, schoolBlue, schoolRed, schoolBlue)),
     caption: [Volle brug: 4 actief],
@@ -306,7 +306,7 @@ met:
   - *Plaatsing:* 2 strookjes bovenaan (trek, $+Delta R$) en 2 onderaan (druk, $-Delta R$), alle vier op dezelfde afstand $L$ van het aangrijpingspunt. Zo zijn alle vier actief. Staan ze alle vier bovenaan, dan meten ze hetzelfde teken en valt het verschil in de brug weg.
   - *Schakeling:* gelijke tekens in overstaande armen, dus een volle brug:
   $ V_o / V_"ex" = (R + Delta R) / (2 R) - (R - Delta R) / (2 R) = (Delta R) / R $
-  Een $+Delta R$ en een $-Delta R$ boven elkaar in dezelfde tak heffen elkaar op.
+  Twee strookjes met hetzelfde teken (bv. beide $+Delta R$) boven elkaar in dezelfde tak heffen elkaar op; in een volle of halve brug staan $+Delta R$ en $-Delta R$ net samen in dezelfde tak zodat hun bijdragen optellen.
   - *Waarom maximaal nauwkeurig:* het signaal is 4 keer groter dan bij een kwartbrug. Beide noemers zijn exact $2 R$, dus de brug is lineair zonder verwaarlozing. Een temperatuurstijging geeft alle vier dezelfde $delta$ en valt weg.
   - *Gevoeligheid:* met $M = F L$ en $Z = b h^2 \/ 6$ is
   $ epsilon = sigma / E = M / (Z E) = (6 F L) / (E b h^2) quad quad (Delta R) / R = "GF" dot epsilon $

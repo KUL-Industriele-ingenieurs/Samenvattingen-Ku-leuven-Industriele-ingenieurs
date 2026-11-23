@@ -16,7 +16,7 @@ Het *bemonsteringstheorema* (Nyquist-Shannon) geeft de laagste *bemonsteringsfre
 )
 
 met:
-- $f_s$ --- bemonsteringsfrequentie of Nyquist-frequentie [Hz]
+- $f_s$ --- bemonsteringsfrequentie [Hz]
 - $f_"bw,in"$ --- bandbreedte van het ingangssignaal [Hz]
 
 De helft van $f_s$ heet de *Nyquist-frequentie*. Frequenties onder $f_s \/ 2$ blijven correct. Frequenties erboven worden aliasing (@sec:aliasing).

@@ -184,7 +184,7 @@ Een *counting DAC* of *PWM-DAC* (pulse width modulated) maakt een blokgolf waarv
   table.header([*Type*], [*Resolutie*], [*Snelheid*], [*Opmerking*]),
   [R-2R ladder], [tot 16 bit], [100 kSPS tot 1 MSPS], [goed, begrensd door de weerstandstolerantie],
   [Sigma-delta], [16 tot 24 bit], [tot 1 MSPS], [zeer weinig vervorming; digitaal filter nodig],
-  [PWM], [8 tot 10 bit], [10 tot 100 MSPS], [eenvoudig met een microcontroller; filter nodig],
+  [PWM], [8 tot 10 bit], [10 tot 100 kSPS], [eenvoudig met een microcontroller; filter nodig (slide 23 vermeldt abusievelijk MSPS)],
   [Binary weighted], [8 tot 10 bit], [100 kSPS], [goedkoop; nauwkeurigheid begrensd door matching],
 )
 
@@ -197,7 +197,7 @@ Een DAC kies je op deze eigenschappen (slide 19):
 - *Uitgangsspanningsbereik:* de uitgang moet binnen het bereik van de toepassing vallen.
 - *Vermogenverbruik:* van 1 mW tot 5 W. Bij draagbare toestellen bepaalt dat de batterijduur.
 - *Interface:* I2C, SPI of UART (@sec:i2c).
-- *Kost:* van 45 tot 50.000 euro, een afweging tussen prestatie en prijs.
+- *Kost:* van 45 tot 50.000 euro (afhankelijk van een los DAC-component of module tot een compleet industrieel DAQ-chassis, slide 19).
 
 === De referentiespanning als foutbron <sec:dac-vref>
 

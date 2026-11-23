@@ -67,7 +67,7 @@ Een *DAQ-systeem* is een speciaal meetsysteem: de signaalverwerking bestaat alti
 
 #figure(
   image("assets/L1-daq-systeem.png", width: 12cm),
-  caption: [Van fysiek signaal naar digitale code: sensor, signaalconditionering, ADC en computer (Samenvatting DAQ p.3)],
+  caption: [Van fysiek signaal naar digitale code: sensor, signaalconditionering, ADC en computer],
   label: <fig:L1-daq-systeem>,
 )
 
@@ -164,7 +164,7 @@ In een industriële regellus staat de sensor ver van de controlekamer. Het signa
   label: <fig:Sensoren-in-een-regellus>,
 )
 
-Twee keuzes vallen op (Samenvatting 2024-2025 p.7):
+Twee keuzes vallen op:
 - *Stroom in plaats van spanning*: over een lange kabel valt spanning weg. Die fout zie je niet in een spanningssignaal, maar de stroom in een gesloten lus is overal dezelfde.
 - *4 mA in plaats van 0 mA* als nulpunt: krijg je 0 mA binnen, dan weet je dat de kabel onderbroken is.
 

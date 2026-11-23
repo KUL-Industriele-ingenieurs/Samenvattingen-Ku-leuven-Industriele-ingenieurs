@@ -122,7 +122,7 @@ Nadelen:
 - de amplitude hangt van de snelheid af, dus de detectiedrempel moet meebewegen
 - niet bruikbaar voor positiebepaling, want bij stilstand is er geen signaal
 
-Een Hall-sensor (hoofdstuk @ch:hall) meet het veld zelf en werkt ook bij stilstand. Daarom gebruikt een ABS-systeem dat tot 0 km/u moet meten een Hall-sensor.
+Een Hall-sensor (@ch:hall) meet het veld zelf en werkt ook bij stilstand. Daarom gebruikt een ABS-systeem dat tot 0 km/u moet meten een Hall-sensor.
 
 #examenvraag("2017 vraag 4", [Een variabele-reluctantiesensor ...],
   opties: (
@@ -130,7 +130,7 @@ Een Hall-sensor (hoofdstuk @ch:hall) meet het veld zelf en werkt ook bij stilsta
     [meet temperatuur],
     [is duur],
   ),
-  juist: "a",
+  juist: "A",
 )[In $e = -N d Phi \/ d t$ staat de afgeleide van de flux. Een sneller draaiend wiel geeft een grotere spanning, dus de sensor meet snelheid. B is fout: hij meet geen temperatuur. C is fout: hij is net goedkoop, want het is een spoel met een magneet.]
 
 #examenvraag("25-26 vraag 23", [Een variabele-reluctantiesensor ...],
@@ -172,7 +172,7 @@ Een gyroscoop meet de *absolute hoeksnelheid* van een voorwerp in de ruimte. Hij
 
 Het signaal is de hoeksnelheid. De hoek volg je door te integreren, waarbij de drift oploopt. Hij meet de rotatie rond de X-as (roll), de Y-as (pitch) en de Z-as (yaw). Vroeger waren gyroscopen enkelassig. Sinds de dual-axis uitvoeringen meet één sensor twee assen. X- en Y-gyroscopen worden vaak gebruikt voor beeldstabilisatie en trillingsmeting. Z-as-gyroscopen zijn minder gebruikelijk omdat het ontwerp complexer en duurder is.
 
-Een gyroscoop werkt met de *Corioliskracht*: een massa die beweegt in een draaiend frame ondervindt een kracht loodrecht op haar snelheid en op de rotatie-as. In MEMS-technologie, zoals in digitale camera's, wordt dit met een trillende massa gedaan. Hoofdstuk @ch:mems werkt dat uit. De slides tonen twee gyroscopen van 800 tot 1 200 euro en van 5 000 tot 15 000 euro.
+Een gyroscoop werkt met de *Corioliskracht*: een massa die beweegt in een draaiend frame ondervindt een kracht loodrecht op haar snelheid en op de rotatie-as. In MEMS-technologie, zoals in digitale camera's, wordt dit met een trillende massa gedaan. @ch:mems werkt dat uit. De slides tonen twee gyroscopen van 800 tot 1 200 euro en van 5 000 tot 15 000 euro.
 
 #figure(
   image("assets/L9-gyro-assen.png", width: 10cm),

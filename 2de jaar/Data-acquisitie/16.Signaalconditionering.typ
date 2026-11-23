@@ -162,7 +162,7 @@ Een ideale versterker heeft $A_(c m) = 0$ en dus een oneindige CMRR. De CMRR is 
 
 === Instrumentatieversterker <sec:sc-inamp>
 
-Een *instrumentatieversterker* (inamp) heeft een hoge ingangsweerstand op beide ingangen en een zeer goede CMRR. De versterking stel je nauwkeurig in met één weerstand $R_g$. De prijs ligt tussen $1$ en $150$ euro en de uitgang is niet-lineair.
+Een *instrumentatieversterker* (inamp) heeft een hoge ingangsweerstand op beide ingangen en een zeer goede CMRR. De versterking stel je nauwkeurig in met één weerstand $R_g$. De prijs ligt tussen $1$ en $150$ euro. Let op: de versterker zelf is lineair, maar wanneer hij gevoed wordt door een kwartbrug of niet-lineaire sensor, blijft de totale uitgang niet-lineair (geen automatische linearisatie).
 
 #figure(
   image("assets/L16-inamp.png", width: 11cm),
@@ -212,15 +212,7 @@ Bij vier draden voeren twee draden de stroom en meten twee draden de spanning. O
   label: <fig:L16-vier-draad>,
 )
 
-#examenvraag("oefenvraag E5", [Waarom meet je een Pt100 liefst met vier draden?],
-  opties: (
-    [om de zelfopwarming te beperken],
-    [omdat de meetstroom en de spanningsmeting dan gescheiden zijn, zodat de kabelweerstand wegvalt],
-    [om het bereik te vergroten],
-    [om sneller te kunnen meten],
-  ),
-  juist: "B",
-)[Twee draden voeren de stroom en twee draden meten de spanning zonder stroom. Zelfopwarming is een ander probleem (@sec:zelfopwarming).]
+_(Zie oefenvraag E5 in @sec:rtd voor de examenvraag over vierdraadsmeting bij een Pt100.)_
 
 == Filtering en ruis <sec:sc-filtering>
 
@@ -261,15 +253,7 @@ Een anti-aliasingfilter is een laagdoorlaatfilter voor de sampler. Het beperkt h
   label: <fig:L16-anti-aliasing>,
 )
 
-#examenvraag("oefenvraag E2", [Waarom moet een anti-aliasingfilter vóór de ADC staan en niet erna?],
-  opties: (
-    [omdat een digitaal filter meer rekenkracht kost],
-    [omdat aliasing bij het bemonsteren zelf ontstaat en daarna niet meer ongedaan te maken is],
-    [omdat de ADC anders in verzadiging gaat],
-    [omdat de ingangsimpedantie van de ADC te laag is],
-  ),
-  juist: "B",
-)[Bij het bemonsteren vouwt alles boven $f_s \/ 2$ terug in de band. Een component van $1300 "Hz"$ bij $f_s = 1 "kHz"$ verschijnt als $300 "Hz"$. Dat is niet te onderscheiden van een echt signaal van $300 "Hz"$. Een digitaal filter kan dat niet herstellen.]
+_(Zie oefenvraag E2 in @sec:anti-alias voor de examenvraag over de plaatsing van het anti-aliasingfilter.)_
 
 === Een filter kiezen <sec:sc-filterkeuze>
 
@@ -287,7 +271,7 @@ Volg deze stappen:
 
 === Bodediagram <sec:sc-bode>
 
-Het bodediagram van een filter toont de versterking en de fase in functie van de frequentie. Het heeft een doorlaatgebied, een overgangsgebied en een sperband. De *afsnijfrequentie* ligt bij $-3 "dB"$, dat is $0.707 V_"in"$. In het overgangsgebied daalt de versterking met $-20 "dB/decade"$ en draait de fase met $-45 degree$/decade, tussen $0.1$ en $10$ keer de doorlaatfrequentie.
+Het bodediagram van een filter toont de versterking en de fase in functie van de frequentie. Het heeft een doorlaatgebied, een overgangsgebied en een sperband. De *afsnijfrequentie* ligt bij $-3 "dB"$, dat is $0.707 V_"in"$. In het overgangsgebied daalt de versterking met $-20 "dB/decade"$ en draait de fase met $-45 degree$/decade, tussen $0.1$ en $10$ keer de afsnijfrequentie.
 
 #grid(
   columns: (1fr, 1fr),

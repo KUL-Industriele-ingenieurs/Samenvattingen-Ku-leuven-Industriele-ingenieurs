@@ -3,7 +3,7 @@
 
 // BRON: Slides/8.hall.pdf | Samenvatting DAQ p.33-36 | examenvragen 2015, 2016, 2017, 25-26
 
-= Hall-sensoren <ch:hall>
+= Hall- en ultrasone sensoren <ch:hall>
 
 == Het Hall-effect <sec:hall-effect>
 
@@ -147,7 +147,7 @@ Eén differentiële sensor telt tanden, maar weet niet in welke richting het tan
 
 === Hall-hoekbrug <sec:hall-hoekbrug>
 
-Bij een *angular Hall bridge sensor* (bv. AS5030) staan vier Hall-elementen $H_1$ tot $H_4$ in een vierkant onder een draaiende magneet. Twee verschilversterkers combineren de elementen en een ADC zet het resultaat om. Zo meet je de hoek én de draairichting, contactloos en met een resolutie tot ongeveer $0.05 degree$ (Samenvatting DAQ p.35).
+Bij een *angular Hall bridge sensor* (bv. AS5030) staan vier Hall-elementen $H_1$ tot $H_4$ in een vierkant onder een draaiende magneet. Twee verschilversterkers combineren de elementen en een ADC zet het resultaat om. Zo meet je de hoek én de draairichting, contactloos en met een resolutie tot ongeveer $0.05 degree$.
 
 #figure(
   image("assets/L8-hoekbrug.png", width: 8cm),

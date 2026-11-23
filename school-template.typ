@@ -360,7 +360,7 @@
       radius: 4pt,
       stroke: (left: 3pt + schoolBlue),
       [
-        *Disclaimer:* Deze samenvattingen zijn beschikbaar op GitHub. Ze zijn gemaakt in LaTeX en Typst. Bijdragen helpt je git, Latex en typst te leren die je zoiezo gaat nodig hebben voor groepsprojecten en je master. Je kunt bijdragen aan de documenten zodat we gezamenlijk betere samenvattingen kunnen maken.\
+        *Disclaimer:* Deze samenvattingen zijn beschikbaar op GitHub. Ze zijn gemaakt in LaTeX en Typst. Bijdragen helpt je git, LaTeX en Typst te leren die je sowieso gaat nodig hebben voor groepsprojecten en je master. Je kunt bijdragen aan de documenten zodat we gezamenlijk betere samenvattingen kunnen maken.\
         Draag gerust bij: #link("https://github.com/KUL-Industriele-ingenieurs/Samenvattingen-Ku-leuven-Industriele-ingenieurs")[GitHub Repository] \
       ],
     )

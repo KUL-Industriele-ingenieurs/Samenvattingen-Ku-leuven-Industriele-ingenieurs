@@ -31,18 +31,18 @@ met:
 - $K$ --- helling van de ideale rechte [uitgang/ingang]
 - $a$ --- snijpunt met de as $I = 0$ [eenheid van de uitgang]
 
-Omdat twee punten een rechte vastleggen, heb je voor een ideaal lineaire sensor genoeg aan de span van in- en uitgang. Het zelfde verband schrijf je ook als
+Omdat twee punten een rechte vastleggen, heb je voor een ideaal lineaire sensor genoeg aan de span van in- en uitgang. Hetzelfde verband schrijf je ook als
 $ O - O_"min" = (O_"max" - O_"min") / (I_"max" - I_"min") (I - I_"min") $
 
-#voorbeeld(title: "Druksensor met 4--16 mA-uitgang (slide 13)")[
-  Een druksensor heeft een bereik van $0$ tot $104 "Pa"$ en een uitgang van $4$ tot $16 "mA"$. Geef de ideale rechte.
+#voorbeeld(title: "Druksensor met 4–16 mA-uitgang (slide 13)")[
+  Een druksensor heeft een bereik van $0$ tot $10^4 "Pa"$ en een uitgang van $4$ tot $16 "mA"$. Geef de ideale rechte.
 
-  *Stap 1 --- eindpunten:* $(I_"min", O_"min") = (0, 4)$ en $(I_"max", O_"max") = (104, 16)$.
+  *Stap 1 --- eindpunten:* $(I_"min", O_"min") = (0, 4)$ en $(I_"max", O_"max") = (10^4, 16)$.
 
   *Stap 2 --- invullen:*
-  $ O = (16 - 4) / (104 - 0) (I - 0) + 4 = 0.11538 thin I + 4 $
+  $ O = (16 - 4) / (10^4 - 0) (I - 0) + 4 = 1.2 times 10^(-3) thin I + 4 $
 
-  *Kerninzicht:* $K = 0.11538 "mA/Pa"$ is de gevoeligheid, $a = 4 "mA"$ is de uitgang bij nul druk.
+  *Kerninzicht:* $K = 1.2 times 10^(-3) "mA/Pa"$ is de gevoeligheid, $a = 4 "mA"$ is de uitgang bij nul druk.
 ]
 
 #voorbeeld(title: "Pt102 uit de datasheet (slide 14)")[
@@ -107,7 +107,7 @@ met:
           style: (stroke: schoolBlue + 1.5pt),
           label: [werkelijk $O(I)$],
         )
-        plot.add(((5, 3), (5, 5)), style: (stroke: schoolRed + 1.5pt), label: [$hat(N)$ bij $I = 5$])
+        plot.add(((5, 3), (5, 5)), style: (stroke: schoolRed + 1.5pt), label: [max. afwijking $hat(N)$])
       },
     )
   })
@@ -337,7 +337,7 @@ met:
 
 === Praktische kalibratie <sec:kalibratie-praktisch>
 
-In de praktijk kijk je eerst of kalibreren nodig is (de *as-found check*): ligt de afwijking binnen de toegelaten fout, dan is de sensor in orde (Samenvatting 2024-2025 p.11). In de les werd een filmpje getoond ("Practical calibration explained", slide 38).
+In de praktijk kijk je eerst of kalibreren nodig is (de *as-found check*): ligt de afwijking binnen de toegelaten fout, dan is de sensor in orde. In de les werd een filmpje getoond ("Practical calibration explained", slide 38).
 
 == Statistische karakteristieken <sec:statistisch>
 
@@ -405,7 +405,7 @@ Geeft de fabrikant alleen een foutband $plus.minus h$, dan benader je die als ee
       columns: (auto, auto, auto, auto, auto),
       align: (left, center, right, right, left),
       table.header([*Element*], [*Grootheid*], [*Gemiddelde*], [*Std.afw.*], [*Eenheid*]),
-      [Ingang], [$T$], [$117.0$], [--], [°C],
+      [Ingang], [$T$], [$117.0$], [$0$], [°C],
       table.cell(rowspan: 3)[A -- Pt100], [$R_0$], [$100.0$], [$0.0433$], [$Omega$],
       [$alpha$], [$3.909 times 10^(-3)$], [$0$], [°C$""^(-1)$],
       [$beta$], [$-5.897 times 10^(-7)$], [$0$], [°C$""^(-2)$],

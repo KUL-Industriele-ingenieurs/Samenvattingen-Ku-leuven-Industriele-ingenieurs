@@ -89,7 +89,7 @@ Wat als $x$ negatief is? Dan wordt $V_o$ negatief: de uitgang is een AC-signaal 
 
 Typische waarden: excitatie op $50$ tot $100 "kHz"$, verplaatsingen van $10^(-3)$ tot $10 "mm"$, capaciteiten van $1$ tot $100 "pF"$.
 
-#examenvraag("25-26 vraag 21, ook als voorbeeld op de laatste slide", [Twee differentiële condensatoren zitten in een volledige Wheatstonebrug, met $V_"exc"$ de excitatie, $x$ de verplaatsing en $d$ de afstand tussen de vaste platen. Het uitgangssignaal is ...],
+#examenvraag("25-26 vraag 21, ook als voorbeeld op de laatste slide", [Twee differentiële condensatoren zitten in een volledige Wheatstonebrug, met $V_"exc"$ de excitatie, $x$ de verplaatsing en $d$ de afstand tussen de vaste platen (in de cursus bedoeld als de rustafstand $d$ tussen de bewegende middenplaat en elke vaste buitenplaat). Het uitgangssignaal is ...],
   opties: ([$2 V_"exc" x \/ d$], [geen van deze formules], [$V_"exc" x \/ (2 d)$], [$V_"exc" x \/ d$]),
   juist: "D",
 )[Eén differentiële condensator in een brug geeft $V_"exc" x \/ (2d)$ (de tweede tak staat vast op $V_"exc"\/2$). Met twee differentiële condensatoren beweegt ook de tweede tak, tegengesteld:

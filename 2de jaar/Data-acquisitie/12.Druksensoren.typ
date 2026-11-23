@@ -108,7 +108,6 @@ met:
 - $E$ --- elasticiteitsmodulus van het membraan [Pa]
 - $t$ --- dikte van het membraan [m]
 - $R$ --- straal van het membraan [m]
-- $R$ --- straal van het membraan [m]
 - $nu$ --- constante van Poisson [--]
 - $y_c$ --- doorbuiging in het midden [m]
 

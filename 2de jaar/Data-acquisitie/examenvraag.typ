@@ -22,6 +22,7 @@
   [#text(weight: "bold")[#bron:] #vraag]
   if opties.len() > 0 {
     let letters = ("A", "B", "C", "D", "E", "F")
+    let juist_up = if juist != none { upper(str(juist)) } else { none }
     v(0.3em)
     grid(
       columns: (auto, auto, 1fr),
@@ -30,7 +31,7 @@
       ..opties
         .enumerate()
         .map(((i, optie)) => {
-          let j = letters.at(i) == juist
+          let j = letters.at(i) == juist_up
           let opmaak = c => if j { text(fill: _groen, weight: "bold", c) } else { c }
           (_vakje(j), opmaak[#letters.at(i)], opmaak(optie))
         })

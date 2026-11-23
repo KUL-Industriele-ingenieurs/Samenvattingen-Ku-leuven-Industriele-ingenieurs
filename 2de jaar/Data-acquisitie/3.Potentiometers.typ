@@ -33,7 +33,7 @@ met:
 Typische waarden uit de slides:
 - bereik: $5 "mm"$ tot $50 "cm"$ in translatie, $10 degree$ tot $50$ omwentelingen in rotatie;
 - weerstand van $10 thin Omega$ tot $1 thin "M"Omega$;
-- gevoed met DC of AC. Bij DC verstoren toestellen op dezelfde voeding het signaal. Bij AC krijg je een wisselspanning terug en kan je de DC-storingen eruit filteren (Samenvatting 1ste versie p.1).
+- gevoed met DC of AC. Bij DC verstoren toestellen op dezelfde voeding het signaal. Bij AC krijg je een wisselspanning terug en kan je de DC-storingen eruit filteren.
 
 === Materialen en modellen <sec:poti-materialen>
 
@@ -143,7 +143,7 @@ Hoe kleiner $R_m$ tegenover $R_p$, hoe dieper de kromme doorzakt. De fout is het
 
 Twee oplossingen:
 - een *compensatieweerstand* $R_"lin"$ (met dezelfde waarde als $R_m$) over het bovenste deel. Die trekt de kromme terug naar de rechte (rechts in @fig:L3-belasting);
-- de computer laten corrigeren: het verband tussen $e_"uit"$ en $e_"ex"$ is gekend, dus je kan terugrekenen naar $x_"in"$ (Samenvatting 1ste versie p.1).
+- de computer laten corrigeren: het verband tussen $e_"uit"$ en $e_"ex"$ is gekend, dus je kan terugrekenen naar $x_"in"$.
 
 De beste oplossing blijft een meetinstrument met $R_m >> R_p$.
 

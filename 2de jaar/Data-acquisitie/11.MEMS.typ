@@ -11,7 +11,7 @@ Een condensator kan veel kleiner gemaakt worden dan een weerstand of een spoel. 
 
 == Capacitieve MEMS-accelerometer <sec:mems-cap>
 
-Een capacitieve MEMS-accelerometer meet versnelling met een differentiële condensator van enkele micrometer groot. Het is de seismische massa-veer-demper uit hoofdstuk @ch:versnelling, nu uit silicium. De massa heeft vingers die tussen vaste vingers (de platen van de condensator) grijpen. Elk paar vingers vormt een condensator, en de massa hangt aan veren.
+Een capacitieve MEMS-accelerometer meet versnelling met een differentiële condensator van enkele micrometer groot. Het is de seismische massa-veer-demper uit @ch:versnelling, nu uit silicium. De massa heeft vingers die tussen vaste vingers (de platen van de condensator) grijpen. Elk paar vingers vormt een condensator, en de massa hangt aan veren.
 
 #grid(
   columns: (1.2fr, 1fr),
@@ -42,7 +42,7 @@ met:
 - $Delta d$ --- verschuiving van de massa [m]
 - $d_0$ --- plaatafstand in rust [m]
 
-Deze uitlezing is dezelfde als bij de differentiële capacitieve sensor (hoofdstuk @ch:capacitief). Een capacitieve MEMS-accelerometer meet ook een constante versnelling, want een stabiele uitwijking geeft een stabiele capaciteit. De platen bewegen slechts enkele micrometers, dus de meting vraagt een nauwkeurige elektronica en een terugkoppeling.
+Deze uitlezing is dezelfde als bij de differentiële capacitieve sensor (@ch:capacitief). Een capacitieve MEMS-accelerometer meet ook een constante versnelling, want een stabiele uitwijking geeft een stabiele capaciteit. De platen bewegen slechts enkele micrometers, dus de meting vraagt een nauwkeurige elektronica en een terugkoppeling.
 
 #figure(
   image("assets/L11-cap-doorsnede.png", width: 11cm),
@@ -50,7 +50,7 @@ Deze uitlezing is dezelfde als bij de differentiële capacitieve sensor (hoofdst
   label: <fig:L11-cap-doorsnede>,
 )
 
-*Voorbeeld ADXL50.* De chip meet $500 times 625$ $mu$m. Hij heeft 42 siliciumvingers van 100 $mu$m lang met een spleet van 2 $mu$m, samen 0,1 pF. De resolutiegrens van de versterker is $20 times 10^(-18)$ pF. Daarmee meet hij een verplaatsing van $20 times 10^(-12)$ m. Het bereik is 50 g tot 500 g, met instelbare filterbandbreedte (100 tot 800 Hz), en hij wordt gebruikt voor crashdetectie (airbags). Een tweede generatie meet twee assen. De massa beweegt in het midden, in twee richtingen, afhankelijk van de versnelling.
+*Voorbeeld ADXL50.* De chip meet $500 times 625$ $mu$m. Hij heeft 42 siliciumvingers van 100 $mu$m lang met een spleet van 2 $mu$m, samen 0,1 pF. De resolutiegrens van de versterker is $20 times 10^(-18) "F" (20 "aF")$. Daarmee meet hij een verplaatsing van $20 times 10^(-12)$ m. Het bereik is 50 g tot 500 g, met instelbare filterbandbreedte (100 tot 800 Hz), en hij wordt gebruikt voor crashdetectie (airbags). Een tweede generatie meet twee assen. De massa beweegt in het midden, in twee richtingen, afhankelijk van de versnelling.
 
 #figure(
   image("assets/L11-2as.png", width: 9cm),
@@ -69,7 +69,7 @@ Deze uitlezing is dezelfde als bij de differentiële capacitieve sensor (hoofdst
 
 == Piezoresistieve MEMS-accelerometer <sec:mems-piezoresistief>
 
-Een piëzoresistieve MEMS-accelerometer meet de versnelling met een rekstrook op een micro-veerbalk. De balk buigt door de traagheid van de massa. De massa hangt met balken aan een frame. Een piëzoresistief element op de balk verandert zijn weerstand met de rek, zoals een rekstrook (hoofdstuk @ch:rekstroken-1).
+Een piëzoresistieve MEMS-accelerometer meet de versnelling met een rekstrook op een micro-veerbalk. De balk buigt door de traagheid van de massa. De massa hangt met balken aan een frame. Een piëzoresistief element op de balk verandert zijn weerstand met de rek, zoals een rekstrook (@ch:rekstroken-1).
 
 #figure(
   image("assets/L11-piezoresistief.png", width: 9cm),
@@ -163,4 +163,4 @@ Een MEMS-druksensor meet de druk met een dun siliciummembraan boven een referent
   ),
 )
 
-Hoofdstuk @ch:druk behandelt druksensoren verder.
+@ch:druk behandelt druksensoren verder.

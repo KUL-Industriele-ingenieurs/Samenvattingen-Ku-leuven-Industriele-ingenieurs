@@ -17,7 +17,7 @@ Een *ADC* (analog-to-digital converter) zet een analoge spanning om in een binai
 
 Een *sample-and-hold* (S/H) neemt de ingangsspanning op een bepaald moment over en houdt ze constant tijdens de omzetting. Dat is nodig omdat een omzetting tijd kost, van enkele milliseconden tot microseconden. Hoe beter de gewenste resolutie en nauwkeurigheid, hoe langer de meting duurt. Het type ADC bepaalt dus hoeveel metingen per seconde mogelijk zijn.
 
-De omzettijd heet de *aperture time* $T_x$. Bij 2000 metingen per seconde mag $T_x$ hoogstens $1\/2000 = 500 mu"s"$ zijn. Verandert de ingang tijdens $T_x$, dan wordt de waarde verkeerd gemeten. Alleen integrerende ADC's hebben daar geen last van, omdat ze de ingang over de meettijd uitmiddelen.
+Zonder sample-and-hold fungeert de volledige omzettijd van de ADC als de *aperture time* $T_x$. Bij bijvoorbeeld 2000 metingen per seconde mag $T_x$ hoogstens $1\/2000 = 500 mu"s"$ zijn. Verandert de ingang tijdens $T_x$, dan ontstaat er een meetfout (de aperture error). Het toevoegen van een S/H verkleint de effectieve aperture time drastisch tot de openingstijd van de schakelaar (enkele nanoseconden), waardoor snelle signalen nauwkeurig worden 'bevroren' voor de ADC. Alleen integrerende ADC's hebben hier inherent minder last van, omdat ze de ingang over de meettijd uitmiddelen.
 
 #grid(
   columns: (1fr, 1.2fr),
