@@ -728,6 +728,52 @@
 #let NOTE(msg) = text(fill: schoolOrange, weight: "bold", font: "Fira Sans")[\[NOTE: #msg\]]
 #let citeme = text(fill: red, font: "Fira Sans")[\[CITATIE NODIG\]]
 
+// --- Figuurstijl (2026-11): zelf getekende diagrammen met CeTZ ---
+// Vlak en licht: witte blokken met een dunne gekleurde rand, grijsblauwe pijlen met kleine
+// pijlpunten, een zachte achtergrondkader voor een groep, genummerde bolletjes voor volgorde.
+// Kleurbetekenis: blauw = hoofdstappen, teal = samenvattend/resultaat, oranje = toepassing/gebruik,
+// grijs = neutraal. Tekst 9 pt, titel vet, ondertitel 7,5 pt in slate.
+// Gebruik: #figure(fig-canvas({ fig-kader((0,0),(7,6)); fig-blok((0.3,4),(3.4,5.4), [Titel], "a", sub: [uitleg], nr: 1);
+//   fig-pijl-lijn((1,2),(1,4)) }), caption: [..], label: <fig:..>)  // coördinaten in cm
+#let fig-pijl = (start: "stealth", end: "stealth", fill: slate, scale: 0.55)        // dubbele pijl
+#let fig-pijl-enkel = (end: "stealth", fill: slate, scale: 0.55)                    // enkele pijl
+#let fig-lijn = 0.8pt + slate
+#let fig-canvas(..args) = text(size: 9pt, cetz.canvas(..args))
+#let fig-kader(p0, p1, kleur: schoolBlue) = {
+  import cetz.draw: *
+  rect(p0, p1, radius: 0.4, fill: kleur.lighten(93%), stroke: none)
+}
+// Blok met titel, optionele ondertitel en optioneel nummerbolletje linksboven. p0 = linksonder, p1 = rechtsboven.
+#let fig-blok(p0, p1, titel, naam, sub: none, kleur: schoolBlue, nr: none, vul: white) = {
+  import cetz.draw: *
+  rect(p0, p1, radius: 0.25, fill: vul, stroke: 0.7pt + kleur, name: naam)
+  if nr != none {
+    circle((p0.at(0), p1.at(1)), radius: 0.24, fill: kleur, stroke: none)
+    content((p0.at(0), p1.at(1)), text(fill: white, weight: "bold", size: 8pt)[#nr])
+  }
+  content(naam, align(center)[*#titel*#if sub != none [ \ #text(size: 7.5pt, fill: slate)[#sub]]])
+}
+// Blok met linkse lijst (bv. "Use: ..."): titel vet, daaronder regels.
+#let fig-lijstblok(p0, p1, titel, regels, naam, kleur: schoolOrange) = {
+  import cetz.draw: *
+  rect(p0, p1, radius: 0.25, fill: kleur.lighten(88%), stroke: 0.7pt + kleur, name: naam)
+  content(naam, align(left)[*#titel* \ #text(size: 8pt)[#regels.join(linebreak())]])
+}
+#let fig-pijl-lijn(a, b, dubbel: true) = {
+  import cetz.draw: *
+  line(a, b, mark: if dubbel { fig-pijl } else { fig-pijl-enkel }, stroke: fig-lijn)
+}
+// Flowchart met fletcher in dezelfde stijl: #fig-diagram(node(...), edge(...)). Standaardwaarden zijn overschrijfbaar.
+#let fig-diagram(..args) = text(size: 9pt, fletcher.diagram(
+  node-stroke: 0.7pt + schoolBlue,
+  node-fill: white,
+  node-corner-radius: 4pt,
+  node-inset: 7pt,
+  edge-stroke: fig-lijn,
+  spacing: (1.2cm, 1cm),
+  ..args,
+))
+
 // --- Chapter Outline (Local TOC per chapter) ---
 // Usage: Place #chapter-outline() right after the level-1 heading of a chapter.
 // It will render a simple table of contents showing only the level-2 sections within that chapter.

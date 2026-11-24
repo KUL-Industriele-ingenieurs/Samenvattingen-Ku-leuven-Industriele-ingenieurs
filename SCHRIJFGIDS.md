@@ -140,6 +140,11 @@ Volg het patroon **denkstappen → oplossing → kerninzicht**:
 ### Figuren en plots
 
 - Afbeeldingen in de map `assets/`, embed met `#figure(image("assets/...png"), caption: [...]) <fig:naam>`.
+- **Eigen diagrammen (blokschema, stappen, tijdlijn, lijst)**: gebruik de figuurstijl uit `school-template.typ`
+  (`fig-canvas`, `fig-kader`, `fig-blok`, `fig-lijstblok`, `fig-pijl-lijn`, `fig-diagram` voor fletcher). Vlak en licht: witte
+  blokken met dunne gekleurde rand, grijsblauwe pijlen, genummerde bolletjes voor volgorde, tekst 9 pt. Blauw = hoofdstappen,
+  teal = resultaat, oranje = toepassing. Voorbeeld: het LCA-schema in `3de jaar/Global Challenges/5.Raw-materials-and-circular-economy.typ`.
+  Maximaal ±12 cm breed. Een slide-screenshot van een eenvoudig diagram vervang je liever door zo'n eigen figuur.
 - Zelf een grafiek tekenen? Gebruik CeTZ-plots. Maak ze **leesbaar**:
   voldoende groot, `grid: true`, een `legend`, en label belangrijke
   referentielijnen (bv. eindwaarde, 63 %/95 %).

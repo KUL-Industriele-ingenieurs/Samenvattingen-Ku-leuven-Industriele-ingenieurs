@@ -41,19 +41,21 @@ We zoomen ook in op één gevolg in het bijzonder: de stijging van de zeespiegel
 ]
 
 
-Wanneer we die brandstoffen verbranden, komen er broeikasgassen vrij en warmt de aarde op. Vandaag is het al 1,2 °C warmer dan voor de industrialisatie. Daardoor zien we wereldwijd meer droogtes, meer extreme neerslag en meer overstromingen. De opwarming heeft een impact op drie systemen (@fig:Impacten-Klimaat):
-
-- *Fysisch systeem*: gletsjers, sneeuw, ijs en permafrost, neerslag, zeespiegel en kusterosie
-- *Biologisch systeem*: ecosystemen op land, bosbranden, mariene ecosystemen
-- *Menselijke systemen*: voedselproductie, economische systemen
+Wanneer we die brandstoffen verbranden, komen er broeikasgassen vrij en warmt de aarde op. Vandaag is het al 1,2 °C warmer dan voor de industrialisatie. Daardoor zien we wereldwijd meer droogtes, meer extreme neerslag en meer overstromingen. De opwarming heeft een impact op drie systemen (@tab:Impacten-Klimaat).
 
 #figure(
-  image("assets/Impacten-Klimaat.png", width: 70%),
+  table(
+    columns: (1fr, 1fr, 1fr),
+    align: (left + top, left + top, left + top),
+    table.header[*Fysisch systeem*][*Biologisch systeem*][*Menselijke systemen*],
+    [Gletsjers, sneeuw, ijs en permafrost], [Ecosystemen op land], [Voedselproductie],
+    [Neerslag], [Bosbranden], [Economische systemen],
+    [Zeespiegel en kusterosie], [Mariene ecosystemen], [],
+  ),
   caption: [Impact van klimaatverandering op drie systemen],
-  label: <fig:Impacten-Klimaat>,
+  kind: table,
 )
-
-VERVANGEN DOOR EIGEN TABEL
+<tab:Impacten-Klimaat>
 
 @fig:Impacten-Klimaat-wereldkaart toont per regio welke impact al waargenomen is (blauw = fysisch, groen = biologisch, rood = menselijk). Een gevuld symbool betekent een grote bijdrage van klimaatverandering, het staafje hoe zeker dat is.
 
@@ -103,16 +105,12 @@ De obliquiteit weegt zwaar door, omdat het smeltende ijs de opwarming versterkt.
 Bij de opwarming komt er ook extra CO#sub[2] in de atmosfeer, vooral uit de oceanen en uit bodems die onder het ijs vandaan komen. Die CO#sub[2] versterkt de opwarming nog verder.
 
 #figure(
-  fletcher.diagram(
-    spacing: (1.2cm, 1cm),
-    node-stroke: 0.6pt,
-    node-corner-radius: 3pt,
-    node-inset: 6pt,
-    edge-stroke: 0.8pt,
-    fletcher.node((0, 0), [Opwarming], fill: schoolRed.lighten(80%)),
-    fletcher.node((2, 0), [IJs smelt], fill: schoolBlue.lighten(80%)),
-    fletcher.node((2, 1), [Minder zonlicht \ teruggekaatst], fill: schoolBlue.lighten(80%)),
-    fletcher.node((0, 1), [Aarde neemt meer \ warmte op], fill: schoolRed.lighten(80%)),
+  fig-diagram(
+    node-stroke: 0.7pt + schoolRed,
+    fletcher.node((0, 0), [Opwarming], fill: schoolRed.lighten(90%)),
+    fletcher.node((2, 0), [IJs smelt], fill: schoolBlue.lighten(90%), stroke: 0.7pt + schoolBlue),
+    fletcher.node((2, 1), [Minder zonlicht \ teruggekaatst], fill: schoolBlue.lighten(90%), stroke: 0.7pt + schoolBlue),
+    fletcher.node((0, 1), [Aarde neemt meer \ warmte op], fill: schoolRed.lighten(90%)),
     fletcher.edge((0, 0), (2, 0), "-|>"),
     fletcher.edge((2, 0), (2, 1), "-|>"),
     fletcher.edge((2, 1), (0, 1), "-|>"),
@@ -322,13 +320,32 @@ In 2015 sloten 196 partijen het *Akkoord van Parijs*. Ze spraken af om de opwarm
 Die grenzen komen uit wetenschappelijk onderzoek. Het *IPCC* (Intergovernmental Panel on Climate Change) brengt om de 5 à 7 jaar een assessment report uit. Daarin staat hoe het klimaat er nu voor staat, en wat er nog moet gebeuren om de doelen te halen. Een rapport vat honderden wetenschappelijke studies samen en wordt door honderden wetenschappers nagelezen.
 
 #figure(
-  image("assets/Alle-IPCC-reports.png", width: 80%),
+  text(size: 8pt, fig-diagram(
+    spacing: (0.3cm, 1.1cm),
+    node-stroke: none,
+    node-fill: none,
+    node-inset: 4pt,
+    ..(
+      ("First", "1990", "UNFCCC"),
+      ("Second", "1996", [Kyoto- \ protocol]),
+      ("Third", "2001", [Focus op \ impact van \ klimaat]),
+      ("Fourth", "2007", [Doel van \ 2 °C]),
+      ("Fifth", "2013-14", [Akkoord \ van Parijs]),
+      ("Sixth", "2021", [Klimaatpact \ van Glasgow]),
+    ).enumerate().map(((i, r)) => (
+      fletcher.node((i, 0), [*#r.at(0) Assessment \ Report*]),
+      fletcher.node((i, 1), r.at(1)),
+      fletcher.node((i, 2), r.at(2), stroke: 0.7pt + schoolBlue, corner-radius: 4pt, fill: schoolBlue.lighten(90%)),
+      fletcher.edge((i, 0), (i, 1), "-"),
+      fletcher.edge((i, 1), (i, 2), "-|>"),
+      if i < 5 { fletcher.edge((i, 1), (i + 1, 1), "-|>") },
+    )).flatten().filter(x => x != none),
+  )),
   caption: [De zes assessment reports van het IPCC en het klimaatbeleid dat erop volgde],
   label: <fig:Alle-IPCC-reports>,
 )
-VERVANGEN MET EIGEN FIGUUR OF MERMAID DIAGRAM
 
-Elk rapport leidde tot een volgende stap in het klimaatbeleid (@fig:Alle-IPCC-reports): het klimaatverdrag van de VN (UNFCCC), het Kyoto-protocol, het doel van 2 °C, het Akkoord van Parijs en het Klimaatpact van Glasgow.
+Elk rapport leidde tot een volgende stap in het klimaatbeleid (@fig:Alle-IPCC-reports): het klimaatverdrag van de VN (UNFCCC), het Kyoto-protocol, de focus op de impact van klimaatverandering, het doel van 2 °C, het Akkoord van Parijs en het Klimaatpact van Glasgow.
 
 === Reasons for Concern <sec:reasons-for-concern>
 

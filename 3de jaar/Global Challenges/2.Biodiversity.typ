@@ -206,9 +206,7 @@ We zitten dus voorbij de *planetaire grens* voor de integriteit van de biosfeer.
 
 Waarom is biodiversiteit belangrijk?
 
-Het meeste van de biodiversiteit wordt niet verhandeld en heeft geen marktwaarde. Landen zagen natuur daarom lang als een landreserve, te vervangen door landbouw of verstedelijking. Dat droeg bij aan de huidige biodiversiteitscrisis.
-
-DIT DEEL HERSCHRIJVEN
+Biodiversiteit wordt grotendeels niet verhandeld en heeft daardoor geen marktprijs. Omdat ze niet in de prijs zat, telde ze niet mee bij beslissingen over landgebruik. Landen zagen natuur daarom lang als een landreserve die je kon vervangen door landbouw of verstedelijking, en dat droeg bij aan de huidige biodiversiteitscrisis. Het empty world model en het full world model hieronder tonen hoe die kijk verandert.
 
 #concept(title: "Van empty world naar full world model")[
   - *Empty world model*: biodiversiteit is een economische externaliteit, iets wat niet meetelt.

@@ -6,7 +6,7 @@
 
 Voedselzekerheid betekent dat we nu en in de toekomst gezond eten: niet te weinig, niet te veel en met een goede balans aan voedingsmiddelen. Bij een groeiende wereldbevolking is de vraag hoe we dat voor iedereen kunnen verzekeren met een zo klein mogelijke impact op het milieu.
 
-Eerst bekijken we de voedselproductie: hoeveel meer voedsel we nodig hebben en hoe we dat kunnen produceren. Daarna volgt de impact van landbouw op het milieu en hoe we die kleiner maken. Dan kijken we naar de consument, omdat ook wij met wat we eten en weggooien voedselzekerheid beïnvloeden. Tot slot komen het huidige beleid en de huidige consumptie kort aan bod.
+Dit hoofdstuk behandelt achtereenvolgens de voedselproductie, de milieu-impact van landbouw, de rol van de consument en tot slot het beleid.
 
 === Definitie voedselzekerheid <sec:definitie-voedselzekerheid>
 
@@ -20,7 +20,7 @@ Je kunt rijk zijn en een supermarkt om de hoek hebben en toch voedselonzeker zij
 
 #figure(
   image("assets/Hongersnood-over-de-tijd.png", width: 11cm),
-  caption: [Doden door hongersnood per decennium sinds 1900, per regio, met de groei van de wereldbevolking],
+  caption: [Doden door hongersnood per decennium sinds 1900, per regio],
   label: <fig:Hongersnood-over-de-tijd>,
 )
 
@@ -30,19 +30,19 @@ In 2015 namen alle VN-lidstaten de 2030 Agenda for Sustainable Development aan, 
 
 #figure(
   image("assets/nummer-van-ondervoeden.png", width: 11cm),
-  caption: [Ondervoeding in procent van de wereldbevolking (blauw) en in miljoen mensen (oranje), met projectie tot 2030],
+  caption: [Ondervoeding in % van de wereldbevolking en in miljoen mensen, met projectie tot 2030],
   label: <fig:nummer-van-ondervoeden>,
 )
 
 In 2005 was 12,6 % van de wereldbevolking ondervoed (825,6 miljoen mensen). Dat daalde tot 8,6 % in 2014 en 8,9 % in 2019. De projectie voor 2030 is 9,8 % of 841,4 miljoen mensen, dus SDG 2 (zero hunger) wordt niet gehaald.
 
-Vier ontwikkelingen komen samen en ondermijnen de voedselzekerheid wereldwijd: conflicten, de COVID-pandemie, klimaatverandering en groeiende ongelijkheid. Daardoor lijdt 1 op de 10 mensen honger en heeft bijna 1 op de 3 geen regelmatige toegang tot voldoende voedsel. Stijgende voedselprijzen treffen zowel het Zuiden als het Noorden, en ook stunting blijft een groot probleem. De Oekraïnecrisis zet het SDG extra onder druk omdat ze een voedseltekort veroorzaakte bij de armsten, met een rechtstreeks effect op de aanvoer van tarwe en maïs en op de productie van zonnebloempitten.
+Vier ontwikkelingen komen samen en ondermijnen de voedselzekerheid wereldwijd: conflicten, de COVID-pandemie, klimaatverandering en groeiende ongelijkheid. Daardoor lijdt 1 op de 10 mensen honger en heeft bijna 1 op de 3 geen regelmatige toegang tot voldoende voedsel. Stijgende voedselprijzen treffen zowel het Zuiden als het Noorden, en ook stunting blijft een groot probleem.
 
 Voedselzekerheid gaat ook verder dan hongernood. Bij kinderen jonger dan 5 jaar zijn er drie vormen van ondervoeding. Stunting betekent te klein zijn voor de leeftijd, wasting betekent te mager zijn voor de lengte en de derde vorm is overgewicht.
 
 #figure(
-  image("assets/Ondervoeding-in-kinderen.png", width: 12cm),
-  caption: [De drie vormen van ondervoeding bij kinderen onder 5 jaar: stunting (144 miljoen), wasting (47 miljoen) en overgewicht (38 miljoen)],
+  image("assets/Ondervoeding-in-kinderen.png", width: 10cm),
+  caption: [Ondervoeding bij kinderen onder 5 jaar: stunting (144 miljoen), wasting (47 miljoen), overgewicht (38 miljoen)],
   label: <fig:Ondervoeding-in-kinderen>,
 )
 
@@ -52,15 +52,13 @@ Een kind met overgewicht kan ook ondervoed zijn, omdat het niet de juiste voedin
 
 Gewicht wordt geclassificeerd met de Body Mass Index (BMI). Overgewicht begint bij een BMI boven 25, obesitas bij een BMI boven 30. Overgewicht ontstaat doordat mensen meer eten dan ze nodig hebben, waardoor er een duidelijke relatie is tussen de dagelijkse calorie-inname per persoon en overgewicht en obesitas.
 
-#wrap-figure(
-  image("assets/Kaloie-inname-en-BMI.png", width: 8cm),
+#figure(
+  image("assets/Kaloie-inname-en-BMI.png", width: 12cm),
   caption: [Verband tussen dagelijkse calorie-inname en BMI],
   label: <fig:Kaloie-inname-en-BMI>,
-)[
-  In de Verenigde Staten is de situatie het meest alarmerend, met meer dan 70 % van de bevolking met overgewicht. Wereldwijd zijn er meer mensen met overgewicht dan met ondergewicht, en de situatie wordt erger.
+)
 
-  Voedselzekerheid vraagt dus gezonde voeding, niet te veel en niet te weinig, vandaag en voor de volgende generaties.
-]
+In de Verenigde Staten is de situatie het meest alarmerend, met meer dan 70 % van de bevolking met overgewicht. Wereldwijd zijn er meer mensen met overgewicht dan met ondergewicht.
 
 
 == Challenges voor voedselzekerheid <sec:challenges-voedselzekerheid>
@@ -74,23 +72,23 @@ Zijn we niet gewoon met te veel mensen op aarde? Om dat te beoordelen vergelijke
 
 #figure(
   image("assets/Voedselproductie-in-relatie-met-populatiegroei.png", width: 11cm),
-  caption: [Verandering van graanproductie, graanyield, bevolking en landgebruik voor graan sinds 1961],
+  caption: [Graanproductie, yield, bevolking en landgebruik sinds 1961],
   label: <fig:Voedselproductie-in-relatie-met-populatiegroei>,
 )
 
-Toch is er urgentie, omdat de bevolking blijft groeien. Met de huidige bevolkingsgroei verwachten we tegen 2050 een food gap van 56 %. In 2010 hadden we ongeveer 13000 biljoen calorieën per jaar nodig om de wereld te voeden, tegen 2050 moeten we meer dan 20000 biljoen calorieën produceren.
+Toch is er urgentie, omdat de bevolking blijft groeien. Met de huidige bevolkingsgroei verwachten we tegen 2050 een food gap van 56 %. In 2010 hadden we ongeveer 13000 biljoen (10#super[12]) calorieën per jaar nodig om de wereld te voeden, tegen 2050 moeten we meer dan 20000 biljoen calorieën produceren.
 
 #figure(
   image("assets/Food-gap.png", width: 11cm),
-  caption: [De food gap van 56 % tegen 2050, van 13100 naar 20500 biljoen calorieën per jaar],
+  caption: [Food gap van 56 % tegen 2050 (biljoen calorieën per jaar)],
   label: <fig:Food-gap>,
 )
 
-Dat is alleen haalbaar als we sterk investeren in de productiviteit van voedsel. Zonder productiviteitswinst zou er 3200 Mha (miljoen hectare) extra landbouwgrond nodig zijn. In het business-as-usual scenario, waarin de yields stijgen zoals nu, is dat bijna 600 Mha. Die 600 Mha is de land gap.
+Dat is alleen haalbaar als we sterk investeren in de productiviteit van voedsel. De land gap is het verschil tussen de oppervlakte die we in 2050 nodig hebben en het landbouwland van 2010. Zonder productiviteitswinst zou er 3200 Mha (miljoen hectare) extra landbouwgrond nodig zijn, in het business-as-usual scenario (yields stijgen zoals nu) bijna 600 Mha.
 
 #figure(
   image("assets/Land-gap.png", width: 12cm),
-  caption: [Extra landbouwgrond (akkerland en weiland) tegen 2050 per scenario en de land gap van 593 Mha],
+  caption: [Extra landbouwgrond tegen 2050 per scenario; land gap 593 Mha],
   label: <fig:Land-gap>,
 )
 
@@ -98,7 +96,7 @@ Landbouwgrond uitbreiden is geen optie, dus moeten we de productiviteit verhogen
 
 #figure(
   image("assets/Impact-van-klimaatsverandering-op-landbouw.png", width: 16cm),
-  caption: [Verwachte verandering van de graanyield in een wereld die 3 °C warmer is, per regio],
+  caption: [Verwachte graanyieldverandering per regio bij 3 °C opwarming],
   label: <fig:Impact-van-klimaatsverandering-op-landbouw>,
 )
 
@@ -113,7 +111,7 @@ Of we genoeg voedsel kunnen produceren hangt af van de bevolkingsgroei en van de
 De wereldbevolking stijgt de komende 30 jaar met 2 miljard, van 7,7 miljard naar 9,7 miljard in 2050, en piekt rond 2100 bij bijna 11 miljard (10,9 miljard).
 
 #figure(
-  image("assets/Populatiegroei-tegen-2100.png", width: 16cm),
+  image("assets/Populatiegroei-tegen-2100.png", width: 12cm),
   caption: [Wereldbevolking van 1700 tot 2100 en jaarlijks groeipercentage],
   label: <fig:Populatiegroei-tegen-2100>,
 )
@@ -121,26 +119,29 @@ De wereldbevolking stijgt de komende 30 jaar met 2 miljard, van 7,7 miljard naar
 Slechts 29 % van het aardoppervlak is land, en daarvan is 71 % bewoonbaar. De helft van dat bewoonbare land, ongeveer 51 miljoen km² of 5100 Mha, gaat naar landbouw. Daardoor blijft er maar 37 % over voor bos en 11 % voor struikgewas en grasland. Van het landbouwland gaat 77 % naar livestock, dus naar de dieren zelf en naar het land waarop hun voeder groeit, en slechts 23 % naar gewassen voor rechtstreekse menselijke consumptie. Dat 77 % levert maar 18 % van de wereldwijde calorieën en 37 % van de proteïne.
 
 #figure(
-  image("assets/Landgebruik-voor-voedselproductie.png", width: 16cm),
-  caption: [Wereldwijd landgebruik voor voedselproductie, van aardoppervlak tot calorie- en proteïnevoorziening],
+  image("assets/Landgebruik-voor-voedselproductie.png", width: 12cm),
+  caption: [Wereldwijd landgebruik voor voedselproductie],
   label: <fig:Landgebruik-voor-voedselproductie>,
 )
 
-De land gap is het verschil tussen de oppervlakte die we in 2050 nodig hebben om genoeg voedsel te produceren en het landbouwland van 2010. Bij 3200 Mha extra gaat het om meer dan drie keer het oppervlak van de VS of bijna alle grond die nu met bos bedekt is, en ook de 600 Mha van het business-as-usual scenario willen we vermijden.
+#wrap-figure(
+  image("assets/Esther-en-thomas-hypthese.png", width: 7cm),
+  caption: [Malthus (1798) en Boserup (1960)],
+  label: <fig:Esther-en-thomas-hypthese>,
+)[
+
+
+De 3200 Mha extra zonder productiviteitswinst is meer dan drie keer het oppervlak van de VS of bijna alle grond die nu met bos bedekt is.
 
 Zo'n probleem is niet nieuw, en er bestaan twee tegengestelde verwachtingen. De Engelse econoom Thomas Malthus voorspelde eind 18e eeuw dat de landbouwproductie de exponentiële groei van de bevolking niet zou bijhouden. De Deense econome Esther Boserup stelde dat een groeiende bevolking de intensiteit van de voedselproductie opdrijft: wie tegen zijn grenzen botst, wordt gedwongen innovatief te zijn.
 
-#figure(
-  image("assets/Esther-en-thomas-hypthese.png", width: 7cm),
-  caption: [Voedselvoorraad en bevolking in de tijd volgens Malthus (1798) en Boserup (1960)],
-  label: <fig:Esther-en-thomas-hypthese>,
-)
+De data van de afgelopen decennia geven Boserup gelijk. Sinds 1961 groeide de graanproductie veel sneller dan de bevolking, en landgebruik speelde daarbij een kleine rol omdat vooral de yield steeg.
+]
 
-De data van de afgelopen decennia geven Boserup gelijk. Tussen 1961 en 2021 groeide de wereldwijde graanproductie met 240 %, veel sneller dan de bevolking. Landgebruik speelde daarbij een kleine rol, want de graanyield steeg met 200 %.
 
 #figure(
   image("assets/1961-yield-verhoging.png", width: 11cm),
-  caption: [De Green Revolution: graanproductie, yield, bevolking en landgebruik sinds 1961],
+  caption: [De Green Revolution sinds 1961],
   label: <fig:1961-yield-verhoging>,
 )
 
@@ -151,10 +152,10 @@ Die stijging komt door de Green Revolution (de derde landbouwrevolutie, tussen 1
 
 De yield gap is het verschil tussen de opbrengst die mogelijk is met optimaal gewasbeheer en de opbrengst die boeren in werkelijkheid halen. Ze toont dus hoeveel productiepotentieel onbenut blijft. Ze ontstaat door beperkte toegang tot verbeterd zaad, te weinig kunstmest en irrigatie, plagen en ziektes en minder goede landbouwpraktijken. Verkleinen vraagt betere landbouwinfrastructuur, toegang van boeren tot moderne technologie en kennis, duurzame landbouwpraktijken en onderzoek naar productieve en weerbare graanrassen.
 
-De wereldwijde graanproductie steeg van 1961 tot 2021 met 240 %, vooral door hogere yields. Die yields verschillen sterk per land. In 2018 haalden de Verenigde Staten ongeveer 8,7 ton graan per hectare en Frankrijk ongeveer 6,9 ton, terwijl Mali ongeveer 1,8 ton haalde en Rwanda ongeveer 1,4 ton.
+De yields verschillen sterk per land. In 2018 haalden de Verenigde Staten ongeveer 8,7 ton graan per hectare en Frankrijk ongeveer 6,9 ton, terwijl Mali ongeveer 1,8 ton haalde en Rwanda ongeveer 1,4 ton.
 
 #figure(
-  image("assets/Yield-vergroting-van-verschillende-landen.png", width: 12cm),
+  image("assets/Yield-vergroting-van-verschillende-landen.png", width: 10cm),
   caption: [Graanyield in ton per hectare van 1961 tot 2018 voor zeven landen],
   label: <fig:Yield-vergroting-van-verschillende-landen>,
 )
@@ -163,16 +164,14 @@ Zulke verschillen veroorzaken voedselonzekerheid, armoede en economische instabi
 
 #figure(
   image("assets/landbouw-expansie-in-verschillende-scenarios.png", width: 11cm),
-  caption: [Verwacht verlies aan habitat van dieren tegen 2050 door uitbreiding van akkerland, per scenario],
+  caption: [Verwacht habitatverlies tegen 2050 door uitbreiding van akkerland, per scenario],
   label: <fig:landbouw-expansie-in-verschillende-scenarios>,
 )
 
 
-=== Shocks en crises in relatie met voedselproductie <sec:shocks-en-crissisen-voedselproductie>
+=== Shocks en crises in relatie met voedselproductie <sec:shocks-en-crises-voedselproductie>
 
-Voedselsystemen werken op ruimtelijke, tijdelijke en bestuurlijke schalen en zijn daardoor kwetsbaar voor meerdere shocks en stresses. Recente voorbeelden zijn de extreme droogte in Australië in 2018-19, de Fipronil-besmetting van eieren in Europa in 2017, de verstoorde handel tussen het VK en de EU na de Brexit in januari 2021, de COVID-19-pandemie en de geopolitieke spanningen tussen grote importeurs en exporteurs van landbouwproducten. Daardoor groeit de interesse in de weerbaarheid van het voedselsysteem, al blijft dat een complex en omstreden onderwerp.
-
-De Russische invasie van Oekraïne toont dat goed. De gevolgen verspreidden zich in 2022 snel over de wereld en versterkten bestaande spanningen. De aanvoer van voedsel en kunstmest raakte sterk verstoord, wat de armere en kwetsbare bevolking in het Zuiden het hardst trof. De hogere prijs voor synthetic fertilizers is één voorbeeld. Vraag jezelf af wat de crisis betekende voor de voedselproductie in je eigen regio, hoe de boeren daar met de gestegen inputprijzen omgaan en of die prijzen intussen gestabiliseerd zijn.
+Voedselsystemen zijn kwetsbaar voor shocks en stresses, zoals droogte, COVID-19 en geopolitieke spanningen. De Russische invasie van Oekraïne (2022) verstoorde de aanvoer van voedsel (tarwe, maïs, zonnebloempitten) en kunstmest sterk, waardoor de prijs van synthetic fertilizers steeg en de armere en kwetsbare bevolking in het Zuiden het hardst getroffen werd.
 
 
 === Biofertilizers <sec:biofertilizers>
@@ -181,9 +180,10 @@ Een fertilizer (meststof) bevat de nutriënten die planten nodig hebben om te gr
 
 Bio-based fertilizers hebben als grondstof bijvoorbeeld mest of organisch stedelijk afval. Ze geven hun nutriënten langzaam vrij, zodat de impact kleiner is, en ze bevatten micro-organismen en organische stof die de bodemgezondheid verbeteren. Planten reageren er trager op, en daarom kiezen sommige boeren liever voor synthetic fertilizers. Op lange termijn bouwt de organische stof in de bodem op, waardoor je minder vaak moet bemesten. Daarom leggen de Farm to Fork strategy en de Green Deal de nadruk op bio-fertilizers en minder synthetic fertilizers.
 
-In Colombia stimuleert de overheid biofábricas, een soort meststofkeukens waar boeren met eenvoudige methodes zelf inputs maken. Ze fermenteren organisch materiaal en vermeerderen micro-organismen uit bosbodem, met bijproducten van suiker- en kaasproductie en met mest. De overheid wil ook de lokale productie van meststoffen uit organisch afval stimuleren, omdat Colombia meer dan 70 % van zijn meststoffen importeert, vooral uit Oekraïne en Rusland. Sinds de crisis betalen boeren 2,5 keer meer dan twee jaar geleden, en sommigen bemesten niet meer. Dat treft vooral de kleine boeren, die 70 % van het voedsel leveren. Ongeveer 80 % van hen heeft minder dan 2 hectare.
-
-De grootste hindernis is de beschikbaarheid van technologie en investeringen. Colombia heeft weinig biogasinstallaties, terwijl de stedelijke sector jaarlijks 12 miljoen ton afval produceert, waarvan meer dan 97 % op de stortplaats belandt en 60 % organisch is. Het bijproduct van biogasproductie wordt nu als afvalwater behandeld, terwijl het nutriënten bevat. Proeven moeten tonen dat het als meststof bruikbaar is. Volgens de gast zullen synthetic en bio-based fertilizers elkaar gedeeltelijk aanvullen, omdat boeren een inkomen nodig hebben dat van de yield afhangt en een systeem niet in één keer kan overschakelen. Ook de opleiding van agronomen moet meegaan, want de producenten van chemische meststoffen hebben een leger aan adviseurs die vooral verkopen.
+In Colombia, dat meer dan 70 % van zijn meststoffen importeert (vooral uit Oekraïne en Rusland), zijn de gevolgen van de crisis goed zichtbaar.
+- Boeren betalen 2,5 keer meer dan twee jaar geleden en sommigen bemesten niet meer, wat vooral de kleine boeren treft (70 % van het voedsel, ongeveer 80 % van hen heeft minder dan 2 hectare). De overheid stimuleert daarom biofábricas, waar boeren zelf inputs maken door organisch materiaal te fermenteren.
+- De grootste hindernis is technologie en investering: van de 12 miljoen ton stedelijk afval per jaar belandt meer dan 97 % op de stortplaats (60 % is organisch) en het bijproduct van biogasproductie wordt als afvalwater behandeld, hoewel het nutriënten bevat.
+- Synthetic en bio-based fertilizers zullen elkaar gedeeltelijk aanvullen, omdat boeren een inkomen nodig hebben dat van de yield afhangt. Ook de opleiding van agronomen moet meegaan.
 
 
 == Impact van landbouw op de omgeving <sec:impact-landbouw-omgeving>
@@ -200,7 +200,7 @@ Over de helft van het bewoonbare land gaat naar landbouw, en dat heeft een grote
 
 #figure(
   image("assets/Biodiversiteitsverlies.png", width: 12cm),
-  caption: [Directe en indirecte drivers van biodiversiteitsverlies en voorbeelden van achteruitgang van de natuur (IPBES)],
+  caption: [Drivers van biodiversiteitsverlies (IPBES)],
   label: <fig:Biodiversiteitsverlies>,
 )
 
@@ -216,12 +216,12 @@ Landbouw neemt ook 70 % van de wereldwijde zoetwateronttrekking voor zijn rekeni
   Eutrophication is de vervuiling van waterwegen met nutriëntrijk water. Landbouw veroorzaakt 78 % van de eutrophication van oceanen en zoet water.
 ]
 
-Het gebeurt zo. Fertilizers met nitraat en fosfaat zijn essentieel voor een goede yield, maar de nutriënten kunnen in rivieren terechtkomen. Daar groeien algen over het water, die het zonlicht voor de waterplanten blokkeren. Daardoor sterven de waterplanten af en komt er minder zuurstof vrij. Bacteriën breken de dode planten en algen af, en dat verbruikt nog meer zuurstof, tot er geen leven meer mogelijk is en vissen en andere organismen sterven.
+Fertilizers met nitraat en fosfaat zijn essentieel voor een goede yield, maar de nutriënten kunnen in rivieren terechtkomen en algen laten woekeren. Het mechanisme staat in de figuur: de algen blokkeren het zonlicht, waterplanten sterven af en bacteriën verbruiken bij de afbraak de resterende zuurstof.
 
 #figure(
   image("assets/Euthropicatie.png", width: 9cm),
-  caption: [Eutrophication: fertilizers voeden algen die zonlicht blokkeren en zuurstof verbruiken, waardoor vissen sterven],
-  label: <fig:Euthropicatie>,
+  caption: [Eutrophication door nutriëntrijk water],
+  label: <fig:Eutrophication>,
 )
 
 Toch zijn synthetic fertilizers nodig, want zonder bijvoorbeeld synthetische stikstofmeststoffen zou maar de helft van de bevolking te voeden zijn. Stikstofemissies in de vorm van ammoniak en stikstofoxiden hebben ook een impact, los van eutrophication. Het grootste deel komt van livestock en slaat neer in bijvoorbeeld natuurreservaten. Daar stimuleert stikstof bepaalde soorten die andere soorten overgroeien, waardoor de biodiversiteit daalt (zie @sec:nutrient-emissions).
@@ -241,15 +241,15 @@ Laten we landgebruiksverandering buiten beschouwing, dan is livestock verantwoor
 
 #figure(
   image("assets/Percentags-emissiesimpact-van-landbouw.png", width: 11cm),
-  caption: [Aandeel van de bronnen in de broeikasgasuitstoot van landbouw (zonder landgebruiksverandering, op basis van 2014)],
+  caption: [Bronnen van broeikasgasuitstoot in de landbouw (zonder landgebruiksverandering, 2014)],
   label: <fig:Percentags-emissiesimpact-van-landbouw>,
 )
 
 De uitstoot per kilogram voedsel, in kg CO#sub[2]-equivalenten, bevestigt dat dierlijke producten een grotere footprint hebben dan plantaardige. Rundvlees van een vleesveekudde komt op 99 kg, donkere chocolade op 47 kg en lamsvlees op 40 kg, tegenover 0,98 kg voor erwten en 0,86 kg voor bananen. Bij de meeste voedingsmiddelen, en zeker bij de grootste uitstoters, komt de uitstoot van landgebruiksverandering en van het landbouwbedrijf zelf, inclusief enteric fermentation. Transport is maar een kleine bijdrage.
 
 #figure(
-  image("assets/CO2-emissies-per-kilogram-.png", width: 12cm),
-  caption: [Broeikasgasuitstoot in kg CO#sub[2]-equivalenten per kg voedsel, uitgesplitst naar stap in de keten],
+  image("assets/CO2-emissies-per-kilogram-.png", width: 13cm),
+  caption: [Uitstoot in kg CO#sub[2]-equivalenten per kg voedsel, per stap in de keten],
   label: <fig:CO2-emissies-per-kilogram->,
 )
 
@@ -257,11 +257,11 @@ In 2010 zorgde de landbouw voor ongeveer 12 tot 13 gigaton CO#sub[2]-equivalente
 
 #figure(
   image("assets/Emissies-bij-verschillende-scenarios-en-target.png", width: 12cm),
-  caption: [Uitstoot van de landbouw in 2010, in drie scenario's voor 2050 en de target van 4 gigaton],
+  caption: [Uitstoot van de landbouw in 2010, drie scenario's voor 2050 en target 4 gigaton],
   label: <fig:Emissies-bij-verschillende-scenarios-en-target>,
 )
 
-Dat doel komt van de 2 °C-grens. Om de temperatuurstijging daartoe te beperken mogen we in totaal maximaal 21 gigaton CO#sub[2]-equivalenten per jaar uitstoten. Een reductie van 70 % doorgetrokken naar de landbouw geeft maximaal 4 gigaton. We zijn daar nog ver van verwijderd, en het is waarschijnlijk alleen haalbaar als we van dierlijk naar plantaardig voedsel overschakelen.
+Dat doel komt van de 2 °C-grens. Om de temperatuurstijging daartoe te beperken mogen we in totaal maximaal 21 gigaton CO#sub[2]-equivalenten per jaar uitstoten, wat neerkomt op een reductie van 70 %. Dezelfde 70 % reductie op de 12 tot 13 gigaton van de landbouw in 2010 geeft maximaal 4 gigaton. We zijn daar nog ver van verwijderd, en het is waarschijnlijk alleen haalbaar als we van dierlijk naar plantaardig voedsel overschakelen.
 
 
 === Nutrient emissions <sec:nutrient-emissions>
@@ -270,9 +270,9 @@ Landbouw gebruikt veel inputs, zoals gewasbeschermingsmiddelen, water en fertili
 
 Stikstofgas is op zich niet het probleem, want de lucht bestaat voor 78 % uit stikstof. Het is wel een essentieel element in ons DNA en onze proteïnen. Het stikstofgas uit de lucht is echter inert en dus niet opneembaar voor organismen. Daarvoor moet het omgezet zijn naar reactive nitrogen, wat in de natuur gebeurt door bliksem (stikstofoxiden) en door biologische stikstoffixatie, waarbij bacteriën in bodem en oceanen stikstofgas omzetten. Het opneembare stikstof circuleert dan in de biosfeer in de nitrogen cycle. In de meeste natuurlijke gebieden is stikstof een beperkte hulpbron, en alle soorten daar zijn aan lage stikstofniveaus aangepast.
 
-Voor landbouw is reactive nitrogen nodig. Daarom werd begin 20e eeuw het Haber-Bosch-proces uitgevonden, de industriële productie van ammoniak uit stikstofgas en waterstofgas, die de yields sterk deed stijgen. Ammoniak is de grondstof voor synthetic fertilizers. Het proces vraagt veel energie. We produceren nu ongeveer evenveel stikstof als de natuur zelf vastlegt, dus er komt twee keer zoveel stikstof in de biosfeer als voor de mens. In sommige milieucompartimenten leidt die overmaat tot problemen. Ze verslechtert de luchtkwaliteit omdat ammoniak en stikstofoxiden fijn stof en smog vormen, en ze veroorzaakt eutrophication van water.
+Voor landbouw is reactive nitrogen nodig. Daarom werd begin 20e eeuw het Haber-Bosch-proces uitgevonden, de energie-intensieve industriële productie van ammoniak (de grondstof voor synthetic fertilizers) uit stikstof- en waterstofgas. We maken nu ongeveer evenveel reactive nitrogen als de natuur zelf vastlegt, dus er komt twee keer zoveel in de biosfeer als zonder de mens. Die overmaat verslechtert de luchtkwaliteit (ammoniak en stikstofoxiden vormen fijn stof en smog) en veroorzaakt eutrophication van water.
 
-Stikstofverbindingen in de lucht komen ook weer neer, de nitrogen deposition. Ammoniak komt vooral uit de landbouw, niet alleen uit fertilizers maar ook uit livestock farming: de stallen, de opslag van mest en het uitrijden ervan. Stikstofoxiden komen vooral van verkeer, industrie en energieproductie. Nitrogen deposition heeft twee effecten.
+Stikstofverbindingen in de lucht komen weer neer (nitrogen deposition). Ammoniak komt vooral uit de landbouw, ook uit livestock farming (stallen, opslag en uitrijden van mest), stikstofoxiden vooral van verkeer, industrie en energieproductie. Nitrogen deposition heeft twee effecten.
 + Eutrophication van terrestrische ecosystemen. In natuurlijke gebieden met weinig stikstof verdringen nitrofiele soorten de inheemse soorten, waardoor de biodiversiteit daalt. In Vlaanderen groeien bijvoorbeeld brandnetels en bramen over de typische lentebloemen in bossen en gras over heide.
 + Verzuring. De pH van de bodem daalt, waardoor elementen zoals calcium en magnesium uitspoelen en niet meer beschikbaar zijn voor planten. Dat treft ook andere organismen: calcium is nodig voor de eierschalen van vogels, dus minder calcium verlaagt hun broedsucces.
 
@@ -280,7 +280,7 @@ Wat kunnen we doen? Bij gewasproductie moeten we de nitrogen use efficiency verb
 
 Synthetic fertilizers kunnen ook deels vervangen worden. Mestverwerking maakt tegenwoordig producten die op kunstmest lijken, maar uit verwerkte mest komen. In Europa is er wel strenge regelgeving over hoeveel stikstof uit dierlijke bronnen je op het veld mag toedienen. Groenbemesters kunnen ook helpen: boeren kunnen vlinderbloemige gewassen (leguminosen) terug in hun vruchtwisseling opnemen om de bodem met stikstof te verrijken, of plantaardige bodemverbeteraars zoals compost gebruiken. Dat verbetert bovendien de bodemkwaliteit.
 
-De Farm to Fork Strategy van de Europese Green Deal wil tegen 2030 de nutriëntenverliezen met 50 % verminderen en het gebruik van fertilizers met 20 %. Dat lijkt haalbaar met precision agriculture en met gewasveredeling, ook molecular breeding zoals genome editing met CRISPR-Cas. Genome editing is in Europa op dit moment nog niet toegestaan, dus de regelgeving zou moeten veranderen. Wat de Farm to Fork Strategy bijna niet noemt, is de overstap van dierlijke naar plantaardige en microbiële eiwitten. Die zou helpen omdat de nitrogen use efficiency van plantaardige productie veel hoger is dan die van dierlijke productie, waardoor er minder stikstof naar het milieu verloren gaat. Leguminosen zoals bonen, soja en kikkererwten fixeren bovendien zelf stikstof. Kunstvlees is nu nog erg duur en vraagt veel hulpbronnen. Een overstap helpt ook bij landgebruik, dat bij dierlijke productie veel hoger is. Beschermen we meer natuur zonder te verschuiven naar minder dierlijke producten, dan verplaatsen we ons landgebruik gewoon naar andere regio's.
+De Farm to Fork Strategy van de Europese Green Deal wil tegen 2030 de nutriëntenverliezen met 50 % en het gebruik van fertilizers met 20 % verminderen, wat haalbaar lijkt met precision agriculture en gewasveredeling (ook genome editing met CRISPR-Cas, in Europa nog niet toegestaan). Ze noemt bijna niet de overstap van dierlijke naar plantaardige en microbiële eiwitten. Die zou helpen omdat de nitrogen use efficiency van plantaardige productie veel hoger is, leguminosen zelf stikstof fixeren en het landgebruik lager is. Beschermen we meer natuur zonder minder dierlijke producten te eten, dan verplaatsen we ons landgebruik naar andere regio's. Kunstvlees is nu nog erg duur.
 
 Stikstof is niet overal een overschot. Sub-Sahara-Afrika heeft bodems die zo stikstofarm zijn dat het telen van gewassen de bodem nog armer maakt, omdat boeren er geen toegang hebben tot fertilizers en de stikstof uit de bodem putten. Goedkope synthetic fertilizers voor die boeren verhogen de yield en verlichten honger en armoede. Dieren blijven er belangrijk, omdat ze een essentiële rol spelen in de nutriëntenkringloop van het voedselsysteem.
 
@@ -292,7 +292,7 @@ Het land-sparing debat, aangezwengeld door het Half-Earth Project (Wilson, 2016)
 
 #figure(
   image("assets/How-much-cropland-to-spare.png", width: 12cm),
-  caption: [Gebruikt akkerland en gespaard land door hogere yields sinds 1961, per gewasgroep (2021)],
+  caption: [Akkerland en gespaard land door hogere yields sinds 1961 (2021)],
   label: <fig:How-much-cropland-to-spare>,
 )
 
@@ -315,20 +315,33 @@ Landbouw ligt ergens tussen extensief en intensief.
 
   Extensive agriculture, bijvoorbeeld organic farming, gebruikt geen synthetische gewasbeschermingsmiddelen, geen synthetische kunstmest en geen genetisch gemodificeerde planten. Het geeft een lagere yield maar een hogere biodiversiteit.
 
-  Het is dus een trade-off tussen yield en impact op de omgeving.
+  Het is een trade-off tussen yield en impact op de omgeving.
 ]
 
 Een metastudie toont aan dat organic farming, afhankelijk van het gewas, de regio en de omstandigheden, 19 tot 25 % minder yield geeft dan conventionele landbouw. Het aantal soorten stijgt met 1 tot 38 %, afhankelijk van de soortengroep, en het totale aantal organismen met 40 tot 50 %. Je moet dat voorzichtig interpreteren. Conventionele landbouw geeft een zeer lage biodiversiteit, dus een stijging met 50 % is weinig vergeleken met een natuurreservaat.
 
-#figure(
-  image("assets/Type-landbouw-en-biodiversiteit.png", width: 8cm),
-  caption: [Biodiversiteit in functie van de intensiteit van landgebruik, voor natuurreservaat, organic farming en conventional farming],
+#wrap-figure(
+  fig-canvas({
+    import cetz.draw: *
+    let f(x) = 0.1 + 3.4 / (1 + 4 * x)
+    line((0, 0), (0, 4.3), mark: fig-pijl-enkel, stroke: fig-lijn)
+    line((0, 0), (6.4, 0), mark: fig-pijl-enkel, stroke: fig-lijn)
+    content((0, 4.7), [Biodiversiteit], anchor: "south")
+    content((6.4, -0.2), [Intensiteit van landgebruik], anchor: "north-east")
+    line(..range(0, 61).map(i => { let x = 0.1 + i * 0.1; (x, f(x)) }), stroke: 1.5pt + schoolBlue)
+    for (x, h, naam) in ((0.9, 1.9, [Natuur- \ reservaat]), (3.1, 1.0, [Organic \ farming]), (5.5, 1.0, [Conventional \ farming])) {
+      line((x, f(x) + h), (x, f(x) + 0.12), mark: fig-pijl-enkel, stroke: fig-lijn)
+      content((x, f(x) + h + 0.05), naam, anchor: "south")
+    }
+  }),
+  caption: [Biodiversiteit in functie van de intensiteit van landgebruik (schematisch)],
   label: <fig:Type-landbouw-en-biodiversiteit>,
-)
-
-Met organic farming zouden we door de lagere yield meer land voor landbouw nodig hebben. Dat is geen optie omdat al de helft van het bewoonbare land voor landbouw gebruikt wordt. Bovendien heeft landgebruiksverandering de grootste impact op biodiversiteitsverlies en veroorzaakt ze meer broeikasgasuitstoot. Daarom moeten we intensieve landbouw duurzamer maken, zodat we meer produceren op minder land en ruimte vrijmaken voor de natuur. Het vrijgekomen land moet dan effectief teruggaan naar de natuur, want zo stijgt de biodiversiteit en dalen de emissies.
+  width: 8cm,
+)[
+Organic farming vraagt door de lagere yield meer land, en dat is geen optie omdat al de helft van het bewoonbare land voor landbouw dient en landgebruiksverandering de grootste impact op biodiversiteitsverlies heeft. Daarom moeten we intensieve landbouw duurzamer maken, zodat we meer produceren op minder land en ruimte vrijmaken voor de natuur. Het vrijgekomen land moet dan effectief teruggaan naar de natuur, want zo stijgt de biodiversiteit en dalen de emissies.
 
 Conventionele landbouw wordt steeds duurzamer. Met integrated pest management (IPM) bijvoorbeeld daalt het gebruik van meer gevaarlijke gewasbeschermingsmiddelen sterk. Duurzame intensieve landbouw moet wel samengaan met een duidelijk beleid om land aan de natuur voor te behouden. Extensieve landbouw kan nog een plaats hebben in bepaalde regio's, zoals naast natuurreservaten, waar die vorm de voorkeur heeft.
+]
 
 
 === Duurzame gewassen <sec:sustainable-gewassen>
@@ -339,20 +352,19 @@ Klassieke veredeling, zoals selectieve veredeling en hybridisatie, wordt al eeuw
 
 Sinds enkele decennia zijn er ook genetisch gemodificeerde (GM) gewassen. Hun genen komen van dezelfde soort (een andere variëteit, cisgenese) of van andere organismen (transgenese). Zo kunnen gewenste eigenschappen sneller en gerichter worden ingebracht, zoals een betere resistentie tegen plagen, tolerantie voor herbiciden en een hogere voedingswaarde. GM-gewassen kunnen de productiviteit verbeteren en het gebruik van chemische inputs verminderen, maar het gebruik en de aanvaarding ervan blijven een onderwerp van debat.
 
-Een nieuwere techniek is genome editing, de "new breeding technology". Daarmee kun je specifieke genen in het genoom gericht aanpassen. Technieken zoals CRISPR-Cas9 maken die aanpassingen nauwkeuriger en efficiënter dan eerdere genetische modificatie. Welke eigenschappen van planten je met genome editing kunt aanpassen, staat in de interactieve database van de organisatie #link("https://www.eu-sage.eu")[EU-SAGE], die genome-edited gewassen uit wetenschappelijke publicaties verzamelt. Meer uitleg staat op #link("https://innovativegenomics.org/crisprpedia/crispr-in-agriculture/")[innovativegenomics.org].
-
-Kurzgesagt heeft hierover een goede video: #link("https://www.youtube.com/watch?v=7TmcXYp8xu4")[bekijk op YouTube].
+Een nieuwere techniek is genome editing, de "new breeding technology". Daarmee kun je specifieke genen in het genoom gericht aanpassen. Technieken zoals CRISPR-Cas9 maken die aanpassingen nauwkeuriger en efficiënter dan eerdere genetische modificatie.
 
 
 === Planten bescherming <sec:planten-bescherming>
 
 Gewassen worden bedreigd door ziektes en plagen van schimmels (zoals grauwe schimmel op aardbei), virussen (zoals het pepinomozaïekvirus op tomaat), bacteriën (zoals perenvuur op peer) en insecten (zoals bladluizen op appel). Daardoor gaat wereldwijd tot 20-30 % van de productie verloren. De figuur toont het gemiddelde verlies voor vijf grote gewassen.
 
-#figure(
-  image("assets/Plantsverliezen.png", width: 9cm),
-  caption: [Gemiddeld opbrengstverlies door ziektes en plagen per gewas: tarwe 21 %, rijst 30 %, maïs 23 %, aardappel 17 % en soja 21 %],
+
+#wrap-figure(
+  image("assets/Plantsverliezen.png", width: 6cm),
+  caption: [Gemiddeld opbrengstverlies door ziektes en plagen: tarwe 21 %, rijst 30 %, maïs 23 %, aardappel 17 %, soja 21 %],
   label: <fig:Plantsverliezen>,
-)
+)[
 
 #concept(title: "PPP (Plant protection products)")[
   PPP's beschermen planten of plantaardige producten tijdens productie en opslag tegen plagen. Vaak spreekt men van pesticides, maar dat begrip is iets breder, dus PPP is nauwkeuriger.
@@ -362,15 +374,17 @@ Gewassen worden bedreigd door ziektes en plagen van schimmels (zoals grauwe schi
 
 PPP's kunnen een negatieve impact hebben op het milieu en op mensen. Ze kunnen ook organismen treffen waarvoor ze niet bedoeld zijn, zoals bestuivers (pollinators). Bij frequent en onjuist gebruik kan bovendien resistentie ontstaan.
 
-Europa neemt een leidende rol in het beleid rond PPP's. Het heeft een van de strengste regelgevingen om een PPP op de markt te brengen, om PPP's duurzaam te gebruiken en om maximale residugehaltes (maximum residue levels) vast te leggen. De Farm to Fork strategy, een onderdeel van de Europese Green Deal, wil het gebruik van chemische gevaarlijke PPP's tegen 2030 met 50 % verminderen.
+De EU heeft een van de strengste regelgevingen voor het op de markt brengen en het duurzaam gebruiken van PPP's en voor maximale residugehaltes (maximum residue levels). De Farm to Fork strategy wil het gebruik van chemisch gevaarlijke PPP's tegen 2030 met 50 % verminderen.
 
-Minder PPP's gebruiken kan de yield verlagen. Een impactstudie van de Universiteit van Wageningen berekende inderdaad opbrengstverliezen, vooral voor appels, tomaten, druiven en olijven. Bovendien moeten we dan meer gewassen importeren en dalen de netto-uitvoer, wat beide een grote economische impact heeft.
 
-#figure(
+]
+#wrap-figure(
   image("assets/Yield-vermindering-door-pesticices.png", width: 8cm),
-  caption: [Gemiddelde opbrengstverandering per gewas bij minder gebruik van PPP's (Wageningen)],
+  caption: [Opbrengstverandering bij minder PPP's (Wageningen)],
   label: <fig:Yield-vermindering-door-pesticices>,
-)
+)[
+
+  Minder PPP's gebruiken kan de yield verlagen. Een impactstudie van de Universiteit van Wageningen berekende inderdaad opbrengstverliezen, vooral voor appels, tomaten, druiven en olijven. Bovendien moeten we dan meer gewassen importeren en dalen de netto-uitvoer, wat beide een grote economische impact heeft.
 
 We moeten daarom onze gewasproductie verder duurzaam optimaliseren en inzetten op innovatie. Ten eerste moet IPM beter worden toegepast en opgevolgd. Het is in de EU sinds 2014 verplicht, maar er is nog ruimte voor verbetering.
 
@@ -383,6 +397,8 @@ We moeten daarom onze gewasproductie verder duurzaam optimaliseren en inzetten o
   + Evaluatie en planning. De boer evalueert de problemen en ingrepen om het plan voor het volgende seizoen te optimaliseren.
 ]
 
+]
+
 Naast IPM zijn er andere innovaties, zoals veredeling voor gewassen met meer resistentie, smart farming met plaatsspecifieke toepassing van pesticiden en de ontwikkeling van groene PPP's of biopesticides.
 
 ==== Biopesticides <sec:biopesticides>
@@ -391,7 +407,7 @@ De best onderzochte biopesticides zijn macrobials en microbials. Macrobials zijn
 
 ==== Conclusie planten bescherming <sec:conclusie-planten-bescherming>
 
-PPP's zijn een van de best onderzochte chemische stoffen ter wereld en zijn in de EU sterk gereguleerd. Gewasproductie zonder PPP's kan de voedselzekerheid in gevaar brengen, maar het gebruik verder verminderen is mogelijk. Hoeveel dat kan, is moeilijk te bepalen en hangt af van innovaties in de gewasproductie.
+PPP's zijn een van de best onderzochte chemische stoffen ter wereld. Gewasproductie zonder PPP's kan de voedselzekerheid in gevaar brengen, maar het gebruik verder verminderen is mogelijk. Hoeveel dat kan, is moeilijk te bepalen en hangt af van innovaties in de gewasproductie.
 
 
 == Duurzame voedselconsumptie <sec:sustainable-voedselconsumptie>
@@ -405,9 +421,7 @@ Duurzaam voedsel op zich bestaat niet, want je moet naar het hele dieet kijken e
 
 ==== Gezondheid <sec:gezondheid>
 
-Wereldwijd heeft bijna 10 % van de volwassenen ondergewicht en meer dan 30 % overgewicht of obesitas. Ondergewicht is vooral een probleem in het Zuiden, terwijl overgewicht zowel in het Noorden als in het Zuiden voorkomt. Daarom moeten we gezonde diëten promoten.
-
-Een ongezonde voedselconsumptie veroorzaakt ziektes en dus medische behandeling en medicijngebruik, en dat wordt in het voedseldebat vaak vergeten. De milieu-impact van de gezondheidszorg mag je niet onderschatten. Neem diabetes type 2: meer dan 500 miljoen mensen hebben diabetes en nog eens 500 miljoen volwassenen lopen een verhoogd risico.
+Wereldwijd heeft bijna 10 % van de volwassenen ondergewicht en meer dan 30 % overgewicht of obesitas (zie ook @sec:overgewicht). Ondergewicht is vooral een probleem in het Zuiden, overgewicht komt in het Noorden en het Zuiden voor, dus moeten we gezonde diëten promoten. Ongezonde consumptie veroorzaakt ook ziektes, medische behandeling en medicijngebruik, met een milieu-impact die in het voedseldebat vaak vergeten wordt. Meer dan 500 miljoen mensen hebben diabetes type 2 en nog eens 500 miljoen volwassenen lopen een verhoogd risico.
 
 ==== Omgeving <sec:omgeving>
 
@@ -415,19 +429,19 @@ Er zijn eindeloos veel labels die milieuvriendelijk voedsel claimen. Kijk je naa
 
 #figure(
   image("assets/Impact-van-verschillende-voedsels.png", width: 12cm),
-  caption: [Broeikasgasuitstoot per kg voor rundvlees (vleesvee en melkvee), kaas, eieren en bananen, uitgesplitst naar stap in de keten],
+  caption: [Uitstoot per kg voor rundvlees, kaas, eieren en bananen, per stap in de keten],
   label: <fig:Impact-van-verschillende-voedsels>,
 )
 
-Het gemiddelde Amerikaanse dieet toont dat goed. Vervangt een gemiddelde Amerikaan een deel van zijn rundvlees door varken en kip (een daling van 43 % in de consumptie van herkauwersvlees), dan daalt zijn landgebruik met ongeveer 17 % en zijn emissies met ongeveer 19 %.
+Het gemiddelde Amerikaanse dieet toont dat goed. Vervangt een Amerikaan een deel van zijn rundvlees door varken en kip (43 % minder herkauwersvlees), dan daalt zijn landgebruik met ongeveer 17 % en zijn emissies met ongeveer 19 %.
 
 #figure(
   image("assets/Aanpassingen-aan-dieet-en-welk-impact.png", width: 12cm),
-  caption: [Vermindering van landgebruik en broeikasgasuitstoot ten opzichte van het gemiddelde Amerikaanse dieet (2010) voor verschillende dieetaanpassingen],
+  caption: [Effect van dieetaanpassingen op landgebruik en broeikasgasuitstoot, ten opzichte van het gemiddelde Amerikaanse dieet (2010)],
   label: <fig:Aanpassingen-aan-dieet-en-welk-impact>,
 )
 
-Met een vegetarisch dieet (95 % minder herkauwersvlees, dus geen rundvlees meer) daalt het landgebruik met ongeveer 48 % en de emissies met ongeveer 53 %. Een beter evenwicht tussen dierlijke en plantaardige producten verlaagt onze footprint dus sterk. Zo'n protein shift van vlees naar plantaardige eiwitten is bovendien gezonder en beter voor het milieu.
+Met een vegetarisch dieet (95 % minder herkauwersvlees) daalt het landgebruik met ongeveer 48 % en de emissies met ongeveer 53 %. Zo'n protein shift van vlees naar plantaardige eiwitten verlaagt onze footprint sterk en is bovendien gezonder.
 
 ==== Sociaal <sec:sociaal>
 
@@ -435,7 +449,7 @@ De macht in het voedselsysteem is zeer slecht verdeeld, en boeren zijn de zwakst
 
 #figure(
   image("assets/Fair-trade-labels.png", width: 8cm),
-  caption: [Voorbeelden van fair trade labels: Fair for Life, Fairtrade International, Fair Trade Certified, WFTO Guaranteed Fair Trade en Fair Trade Federation],
+  caption: [Voorbeelden van fair trade labels],
   label: <fig:Fair-trade-labels>,
 )
 
@@ -449,7 +463,7 @@ Sustainable Development Goal 12.3 luidt: _by 2030, to halve per capita global fo
   _For the purposes of the Food Waste Index, "food waste" is defined as food and the associated inedible parts removed from the human food supply chain in the sectors of retail, food service and households._
 ]
 
-"Removed from the human food supply chain" betekent dat het voedsel terechtkomt op een stortplaats, in verbranding onder controle, in het riool, als zwerfafval of afgedankt, in co- of anaerobe vergisting, in compostering of aerobe vergisting of via toepassing op land. Met food bedoelt men elke stof, verwerkt, half verwerkt of ruw, die voor menselijke consumptie bedoeld is, dus ook drank en elke stof die gebruikt is om voedsel te maken, te bereiden of te behandelen. Food waste omvat zowel de eetbare delen als de niet-eetbare delen die bij het voedsel horen, zoals botten, schillen en pitten.
+Met food bedoelt men elke stof, verwerkt, half verwerkt of ruw, die voor menselijke consumptie bedoeld is, dus ook drank en elke stof die gebruikt is om voedsel te maken, te bereiden of te behandelen. Food waste omvat zowel de eetbare delen als de niet-eetbare delen die bij het voedsel horen, zoals botten, schillen en pitten.
 
 Food waste verminderen is goed voor mens en planeet. Het verbetert de voedselzekerheid, helpt tegen klimaatverandering, bespaart geld en verlaagt de druk op land, water, biodiversiteit en afvalbeheer. Dat potentieel is tot nu toe niet benut, waarschijnlijk omdat de echte omvang en impact van food waste slecht gekend zijn. De wereldwijde schattingen zijn extrapolaties van gegevens uit een klein aantal landen, vaak oude gegevens, en weinig overheden hebben betrouwbare data om actie te onderbouwen en prioriteiten te stellen.
 
@@ -461,47 +475,21 @@ In het World Resources Report _Creating a Sustainable Food Future_ zijn alle str
 De rode strategieën verlagen de vraag, en het veranderen van diëten speelt daarin een grote rol. Ze omvatten minder voedselverlies en voedselverspilling, het uitfaseren van biobrandstoffen uit gewassen en een vruchtbaarheidsgraad op vervangingsniveau. De groene strategieën verhogen de voedselproductie op het bestaande landbouwland, door hogere yields, vaker planten op bestaand akkerland en een hogere productiviteit van weiland. De paarse maatregelen richten zich op vis: beter beheer van wilde visserij en een hogere productiviteit van aquacultuur.
 
 #figure(
-  image("assets/Verschillende-scenarios-en-landgebruik-impact.png", width: 13cm),
-  caption: [Effect van de strategieën op de uitbreiding van landbouwgrond tegen 2050 in het highly ambitious scenario (GlobAgri-WRR)],
+  image("assets/Verschillende-scenarios-en-landgebruik-impact.png", width: 10cm),
+  caption: [Effect van de strategieën op landbouwuitbreiding tegen 2050, highly ambitious scenario (GlobAgri-WRR)],
   label: <fig:Verschillende-scenarios-en-landgebruik-impact>,
 )
 
 === Generational renewal <sec:generational-renewal>
 
-Generational renewal is een generatiewissel. In de context van voedselzekerheid gaat het om jonge mensen die een boerderij willen overnemen of zelf starten, want voedselzekerheid vraagt dat er nu en in de toekomst genoeg voedsel wordt geproduceerd. Het probleem is urgent. De gemiddelde leeftijd van een boer is wereldwijd ongeveer 60 jaar, in Japan 67 jaar. In Afrika is het probleem niet minder urgent, en ook in Europa vergrijst de landbouwbevolking. Anna Van de Moosdijk van CEJA, de European Council of Young Farmers, schetst de situatie in Europa.
+Generational renewal is een generatiewissel: jonge mensen die een boerderij overnemen of starten, wat nodig is om nu en later genoeg voedsel te produceren. De gemiddelde leeftijd van een boer is wereldwijd ongeveer 60 jaar (Japan 67, Europa 57). Slechts 11,9 % van de bedrijfsleiders in Europa is jonger dan 40 en ongeveer 6 % jonger dan 35. Volgens CEJA (European Council of Young Farmers) aarzelen jongeren door een slecht pensioenstelsel, het hoge kapitaal- en schuldenrisico, dure en moeilijk te verkrijgen grond en klimaatverandering.
 
-In Europa is de gemiddelde boer 57 jaar. Slechts 11,9 % van de bedrijfsleiders is jonger dan 40 en ongeveer 6 % jonger dan 35. Jongeren aarzelen om in de sector te stappen om verschillende redenen.
-- Het pensioenstelsel voor boeren is niet altijd goed.
-- De sector heeft veel kapitaal en schulden nodig en lijkt risicovol. In Ierland gebeurt bijvoorbeeld 50 % van de arbeidsongevallen op boerderijen.
-- Land is moeilijk te verkrijgen en in veel Europese landen erg duur, zodat een eigen boerderij jaren investeren vraagt.
-- De kennis up-to-date houden is moeilijk, en klimaatverandering maakt het werk nog uitdagender door extreem weer.
-
-Een jonge boer heeft daarom veel vaardigheden nodig: financiële geletterdheid vanwege de investeringen, soft skills zoals onderhandelen, probleemoplossend vermogen en aanpassingsvermogen, ondernemerschap om lange termijnbeslissingen te nemen, technologische vaardigheden om nieuwe producten te gebruiken en kennis over het milieu.
-
-De Green Deal en de Farm to Fork strategy geven de richting aan voor de toekomst van de landbouw. Ze kunnen alleen slagen als er aan enkele voorwaarden voldaan is: capacity building, betere toegang tot investeringen, toegang tot land en een eerlijkere waardeketen. Meer investeringsruimte betekent niet noodzakelijk een hogere prijs voor de consument, want ze kan komen van een eerlijkere verdeling van de waarde over de actoren in de keten.
-
-Jonge boeren hebben ook motivatie, en die verschilt per persoon. Sommigen ervaren landbouw als vrijheid en voldoening omdat je voedsel produceert voor de mensen rond je. Je bent binnen zekere grenzen baas over je eigen tijd, werkt met dieren en natuur, leert elke dag bij, ontmoet veel verschillende mensen en kunt experimenteren.
-
-Om de sector aantrekkelijker te maken heeft Anna enkele wensen.
-- Aantrekkelijkere plattelandsgebieden met goede openbare diensten (ziekenhuizen en scholen), goed internet en culturele activiteiten.
-- Een waardig inkomen met een goede werk-privébalans, goede mentale gezondheid en goede pensioenen.
-- Meer steun voor innovatie en investeringen. Jonge boeren krijgen 2 tot 3 keer vaker een afwijzing voor hun leningsaanvraag bij banken dan oudere generaties, dus zonder verandering kan een nieuwe generatie de landbouw niet overnemen.
-- Een voorspelbare regelgeving, omdat het beleid niet altijd het tempo van de landbouw volgt en boeren niet altijd weten in welke richting het gaat.
+- Een jonge boer heeft financiële geletterdheid, soft skills, ondernemerschap, technologische vaardigheden en milieukennis nodig. Jonge boeren krijgen 2 tot 3 keer vaker een afwijzing voor een lening dan oudere generaties.
+- De Green Deal en de Farm to Fork strategy slagen alleen met capacity building, toegang tot investeringen en land, en een eerlijkere waardeketen, die meer investeringsruimte kan geven zonder hogere consumentenprijzen.
+- Om de sector aantrekkelijker te maken zijn nodig: goede openbare diensten en internet op het platteland, een waardig inkomen en pensioen, meer steun voor innovatie en investeringen, en voorspelbare regelgeving.
 
 === Links met andere challenges over voedselzekerheid <sec:links-met-andere-challenges-over-voedselzekerheid>
 
-Voedselzekerheid hangt met de andere challenges samen.
+Climate en Biodiversity hangen met voedselzekerheid samen door landgebruik: de helft van het bewoonbare land gaat naar landbouw, met ontbossing, watervervuiling, broeikasgasuitstoot en biodiversiteitsverlies tot gevolg. Demography en Migration worden beïnvloed door de beschikbaarheid van voedsel, en bevolkingsgroei en migratie zetten op hun beurt druk op landbouwsystemen. Economy en Global governance bepalen via economische stabiliteit en beleid (fair trade, landbouwinvesteringen) de toegang tot betaalbaar en voedzaam voedsel.
 
-Climate en Biodiversity zijn verbonden met voedselzekerheid door landgebruik. De helft van het bewoonbare land gaat naar landbouw. Samen met de landbouwpraktijken veroorzaakt dat ernstige milieuproblemen, zoals ontbossing, watervervuiling, broeikasgasuitstoot en verlies aan biodiversiteit.
-
-Demography en Migration worden beïnvloed door de beschikbaarheid en bereikbaarheid van voedsel, omdat dat de bevolkingsdynamiek en de migratie kan sturen. Veranderingen in bevolkingsgrootte, -structuur en -verdeling zetten op hun beurt druk op landbouwsystemen en hulpbronnen.
-
-Economy en Global governance bepalen de toegang tot betaalbaar en voedzaam voedsel. Economische stabiliteit en groei zijn daarvoor nodig, en ook een effectief wereldwijd bestuur met beleid en instellingen die fair trade, landbouwinvesteringen en duurzame ontwikkeling bevorderen.
-
-De volgende thema's staan niet op de kaart van de cursus, maar zijn ook relevant.
-
-Sociale en economische ongelijkheid hangt samen met voedselzekerheid, omdat gemarginaliseerde gemeenschappen vaker voedselonzeker zijn. Een ongelijke verdeling van middelen, beperkte toegang tot goed onderwijs en gezondheidszorg en verschillen in inkomen en werkgelegenheid dragen allemaal bij aan voedselonzekerheid.
-
-Energie bepaalt via beschikbaarheid en betaalbaarheid de landbouwproductiviteit en de voedselproductie. Energie is nodig voor irrigatie, transport, verwerking en opslag. Omgekeerd kunnen sommige gewassen hernieuwbare energie leveren, waardoor we minder afhangen van fossiele brandstoffen.
-
-Raw materials en circular economy zijn verbonden met landbouw, die een grote rol speelt in de overgang naar een circulaire economie. Ze kan bijdragen aan efficiënt gebruik van hulpbronnen, minder afval en herstel van ecosystemen.
+Buiten de kaart van de cursus zijn ook sociale en economische ongelijkheid (gemarginaliseerde gemeenschappen zijn vaker voedselonzeker), energie (nodig voor irrigatie, transport, verwerking en opslag) en raw materials en circular economy (efficiënter gebruik van hulpbronnen, minder afval) relevant.
