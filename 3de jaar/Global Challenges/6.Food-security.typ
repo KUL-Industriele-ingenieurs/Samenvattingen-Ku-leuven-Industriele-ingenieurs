@@ -341,7 +341,7 @@ Sinds enkele decennia zijn er ook genetisch gemodificeerde (GM) gewassen. Hun ge
 
 Een nieuwere techniek is genome editing, de "new breeding technology". Daarmee kun je specifieke genen in het genoom gericht aanpassen. Technieken zoals CRISPR-Cas9 maken die aanpassingen nauwkeuriger en efficiënter dan eerdere genetische modificatie. Welke eigenschappen van planten je met genome editing kunt aanpassen, staat in de interactieve database van de organisatie #link("https://www.eu-sage.eu")[EU-SAGE], die genome-edited gewassen uit wetenschappelijke publicaties verzamelt. Meer uitleg staat op #link("https://innovativegenomics.org/crisprpedia/crispr-in-agriculture/")[innovativegenomics.org].
 
-Een video over duurzame gewassen staat op #link("https://www.youtube.com/watch?v=7TmcXYp8xu4")[YouTube].
+Kurzgesagt heeft hierover een goede video: #link("https://www.youtube.com/watch?v=7TmcXYp8xu4")[bekijk op YouTube].
 
 
 === Planten bescherming <sec:planten-bescherming>
