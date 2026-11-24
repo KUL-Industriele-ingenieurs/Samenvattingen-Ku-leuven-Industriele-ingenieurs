@@ -16,7 +16,7 @@ Elke uitdaging heeft eigen oplossingen, maar uiteindelijk moeten we ons hele geb
 
 Onze prosperity is gebouwd op een bijna onbeperkte toegang tot grondstoffen. Een raw material is elke stof of natuurlijke bron die verder wordt verwerkt en nodig is om een product te maken. We vinden raw materials in drie bronnen: de lithosphere (aardkorst), de biosphere (de natuur) en de technosphere (de economie).
 
-*Lithosphere.* Dit zijn onder meer fossiele olie en gas, ijzererts, bauxiet (grondstof voor aluminium), mineralen zoals zand of marmer en lithium brines. Metalen komen in de lithosphere meestal niet zuiver voor maar in een erts (ore). De concentratie verschilt sterk per materiaal, van minder dan 5 g goud per ton gouderts tot 25-65 % ijzer in ijzererts. Ertsen liggen bovendien niet gelijk verdeeld over de wereld maar vaak in enkele grondstofrijke regio's. #TODO[Het draft had een lijst "gram per ton" (goud 0,004, koper 0,6, ijzer 25, aluminium 80, lood 10, zink 50, tin 2, nikkel 2, kobalt 0,1, lithium 0,01). Eenheid en bron staan niet in de transcripts of samenvattingen, controleer op de slide.]
+*Lithosphere.* Dit zijn onder meer fossiele olie en gas, ijzererts, bauxiet (grondstof voor aluminium), mineralen zoals zand of marmer en lithium brines. Metalen komen in de lithosphere meestal niet zuiver voor maar in een erts (ore). De concentratie verschilt sterk per materiaal, van minder dan 5 g goud per ton gouderts tot 25-65 % ijzer in ijzererts. Ertsen liggen bovendien niet gelijk verdeeld over de wereld maar vaak in enkele grondstofrijke regio's.
 
 *Biosphere.* Dit is biomassa uit de natuur. Van planten komen hout, vlas, katoen en het biobased polymeer polylactic acid (uit maïs). Van dieren komen leer en wol.
 
@@ -137,8 +137,6 @@ De overgang naar elektrische mobiliteit vraagt veel materialen die vroeger weini
   caption: [Wereldwijde totale vraag naar nikkel per scenario (STEPS en SDS), in kiloton],
   label: <fig:NOG-INVULLE-2>,
 )
-
-#TODO[Het draft had een tweede figuur (`nog-invullen-3.png`) voor lithium, maar dat bestand is identiek aan de nikkelgrafiek. Lithiumgrafiek ontbreekt in assets.]
 
 - Het *Stated Policies Scenario (STEPS)* volgt het huidige beleid, namelijk de maatregelen die vandaag gelden en die overheden aangekondigd hebben. Het toont waar dat beleid de energiesector naartoe brengt.
 - Het *Sustainable Development Scenario (SDS)* volgt een pad dat de klimaatdoelen van het Akkoord van Parijs volledig haalt, met universele toegang tot energie en veel minder luchtvervuiling. Alle huidige netto-nul-beloftes worden gehaald, met netto-nuluitstoot in 2050 voor geavanceerde economieën, rond 2060 voor China en uiterlijk 2070 voor alle andere landen.

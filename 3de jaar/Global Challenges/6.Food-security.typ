@@ -341,7 +341,7 @@ Sinds enkele decennia zijn er ook genetisch gemodificeerde (GM) gewassen. Hun ge
 
 Een nieuwere techniek is genome editing, de "new breeding technology". Daarmee kun je specifieke genen in het genoom gericht aanpassen. Technieken zoals CRISPR-Cas9 maken die aanpassingen nauwkeuriger en efficiënter dan eerdere genetische modificatie. Welke eigenschappen van planten je met genome editing kunt aanpassen, staat in de interactieve database van de organisatie #link("https://www.eu-sage.eu")[EU-SAGE], die genome-edited gewassen uit wetenschappelijke publicaties verzamelt. Meer uitleg staat op #link("https://innovativegenomics.org/crisprpedia/crispr-in-agriculture/")[innovativegenomics.org].
 
-#TODO[Video bij duurzame gewassen toevoegen: https://www.youtube.com/watch?v=7TmcXYp8xu4 (geen transcript beschikbaar)]
+Een video over duurzame gewassen staat op #link("https://www.youtube.com/watch?v=7TmcXYp8xu4")[YouTube].
 
 
 === Planten bescherming <sec:planten-bescherming>
@@ -441,7 +441,7 @@ De macht in het voedselsysteem is zeer slecht verdeeld, en boeren zijn de zwakst
 
 === Voedselverspilling <sec:voedselverspilling>
 
-Voedselverspilling moet vermeden worden, dus kijken we bij duurzame voedselconsumptie niet alleen naar wat we eten maar ook naar wat we weggooien. Een deel van alle voedselverspilling en voedselverliezen gebeurt in je eigen huis. #TODO[Cijfer controleren op de slide: het transcript zegt 8 %, de eerste versie van de samenvatting zei 80 %.]
+Voedselverspilling moet vermeden worden, dus kijken we bij duurzame voedselconsumptie niet alleen naar wat we eten maar ook naar wat we weggooien. Een groot deel van de voedselverspilling gebeurt in je eigen huis. Volgens het UNEP Food Waste Index Report van 2021 komt 61 % van de 931 miljoen ton voedsel die op consumentenniveau wordt weggegooid uit huishoudens.
 
 Sustainable Development Goal 12.3 luidt: _by 2030, to halve per capita global food waste at the retail and consumer levels and reduce food losses along production and supply chains, including post-harvest losses_. Wat onder food waste valt, staat in het UNEP Food Waste Index Report van 2021.
 
