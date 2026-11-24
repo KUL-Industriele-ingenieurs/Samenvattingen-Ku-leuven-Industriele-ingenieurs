@@ -4,912 +4,684 @@
 
 == Introductie <sec:intro-raw-materials-and-circular-economy>
 
-In deze module bekijke we rauwe materialen en de impact op onze maatschappij.
+Onze levensstijl en economie vragen enorm veel *raw materials*. De wereldwijde vraag is al meer dan 100 miljard ton per jaar en verdubbelt volgens de voorspellingen tegen 2060. In dit hoofdstuk zien we eerst wat raw materials zijn, waar we ze vinden en welke factoren de material demand bepalen. Daarna volgen drie uitdagingen.
 
-We bekijken waar ze vandaan komen en waar gebruikt worden en factoren die material demand beïnvloeden. De challenges die we bekijken zijn:
++ *Schaarste van grondstoffen.* Verschillende factoren beperken de beschikbaarheid. We bekijken ook alternatieven, zoals renewable resources.
++ *Waste.* Afval ontstaat bij de mijnbouw van grondstoffen en bij productie, gebruik en disposal van producten.
++ *Impact op gezondheid en milieu.* Extraction, productie, gebruik en disposal dragen bij aan global warming, ecotoxicity en verlies van biodiversity.
 
-+ Schaarste van grondstoffen, herbij worden alternatieve ook bekeken.
-+ Waste zoals mijnen en disposal van materialen.
-+ Daarna bekijken we material extraction, gebruike en disposablen impact op de omgeving, onze gezondheid en milieu. Dit is ook het verlies van biodiversity en climate change gerelateerd.
-
-Er moeten grote veranderingen zijn in het gebruik van materialen en dan gaat het uiteindelijk over *circular economy.*
-
+Elke uitdaging heeft eigen oplossingen, maar uiteindelijk moeten we ons hele gebruik van grondstoffen herdenken. Daarom eindigen we bij de *circular economy*.
 
 === Rauwe materialen <sec:raw-materials>
 
+Onze prosperity is gebouwd op een bijna onbeperkte toegang tot grondstoffen. Een raw material is elke stof of natuurlijke bron die verder wordt verwerkt en nodig is om een product te maken. We vinden raw materials in drie bronnen: de lithosphere (aardkorst), de biosphere (de natuur) en de technosphere (de economie).
 
-Onze prospericty is gebouw op de zo goed als oneindige beschikbaarheid van grondstoffen.met vandaag 100 miljard ton per jaar die nog steeds groeit met het dubbele rond 2060.
+*Lithosphere.* Dit zijn onder meer fossiele olie en gas, ijzererts, bauxiet (grondstof voor aluminium), mineralen zoals zand of marmer en lithium brines. Metalen komen in de lithosphere meestal niet zuiver voor maar in een erts (ore). De concentratie verschilt sterk per materiaal, van minder dan 5 g goud per ton gouderts tot 25-65 % ijzer in ijzererts. Ertsen liggen bovendien niet gelijk verdeeld over de wereld maar vaak in enkele grondstofrijke regio's. #TODO[Het draft had een lijst "gram per ton" (goud 0,004, koper 0,6, ijzer 25, aluminium 80, lood 10, zink 50, tin 2, nikkel 2, kobalt 0,1, lithium 0,01). Eenheid en bron staan niet in de transcripts of samenvattingen, controleer op de slide.]
 
-Wat bevatten we rond rauwe materialen en waar vinden we die?
+*Biosphere.* Dit is biomassa uit de natuur. Van planten komen hout, vlas, katoen en het biobased polymeer polylactic acid (uit maïs). Van dieren komen leer en wol.
 
-Rauwe materialen zijn enige materiaal die later wordt geprocessed en nodig is voor een product. We kunnen ze vinden
+*Technosphere.* Dit zijn raw materials uit afval na recycling, ook *secundaire grondstoffen* genoemd. Het aandeel dat we uit afval terugwinnen verschilt sterk per materiaal. Bij lood is het ruim 70 %, wat erg goed is, bij lithium minder dan 1 %. Wereldwijd is 88 tot 94 % van de materialen in nieuwe producten nog afkomstig van primaire grondstoffen uit de lithosphere of biosphere.
 
-#figure(
-  image("assets/Rauwe-materialen.png", width: 5cm),
-  caption: [Rauwe-materialen],
-  label: <fig:Rauwe-materialen>,
-)
-
-Lithospehere:
-Dit is materiaal die we vinden in de korst van de aarde. De concentratie van grondstoffen die we kunnen vinden is ook anders per materiaal met goud x hoeveelheid gram per ton 0.004, koper 0.6, ijzer 25, aluminium 80, lood 10, zink 50, tin 2, nikkel 2, kobalt 0.1 en lithium 0.01.
-
-De biosphere:
-Dit is alles biologisch zoals hout, planten, cotten, leer of wol.
-
-Technosphere:
-Dit zijn rauwe materialen die uit waste gehaald worden, worden ook soms secundaire grondstoffen genoemd.
+Onze economie neemt grondstoffen op, verwerkt ze tot producten die een beperkte tijd een functie vervullen en gooit ze daarna weg als waste. Dat lijkt op het metabolisme van het menselijk lichaam, dat voedsel opneemt voor energie en groei en afval uitstoot. Deze dynamiek op het niveau van de economie heet de *industrial metabolism* (@fig:The-industrial-metabolism).
 
 #figure(
-  image("assets/Ik-denk-dat-ik-het-omgekeerd-heb?.png", width: 5cm),
-  caption: [Ik-denk-dat-ik-het-omgekeerd-heb?],
-  label: <fig:Ik-denk-dat-ik-het-omgekeerd-heb>,
-)
-
-Meeste van producten zo een 88 tot 94 percent zijn wel nog van de lithosphere en biosphere.
-
-#figure(
-  image("assets/The-industrial-metabolism.png", width: 5cm),
-  caption: [The-industrial-metabolism],
+  image("assets/The-industrial-metabolism.png", width: 11cm),
+  caption: [Industrial metabolism: materialen en energie uit lithosphere en biosphere gaan de technosphere in, waste gaat eruit],
   label: <fig:The-industrial-metabolism>,
 )
 
-==== Case: elektrische auto <sec:case-electric-car>
+==== Case: elektrische auto <sec:case-electric-car-intro>
 
-One of the major ongoing efforts to mitigate climate change, is the energy transition. An important part of the energy transition is the shift towards electrical mobility. The introduction of electrical vehicles is taking off rapidly. In 2022, at least 14% of all new cars sold were electric, while in 2021 and 2020 it was 9% and 5% respectively [1].
-
-Graph showing increase in electric car sales, from around 2 million in 2018 to 14 million in 2023 (estimated), of which 8 million are sold in China.
-
-Electrical vehicles come with a shift of materials needed. The combustion engine with catalyst for the exhaust gases (containing Pt, Pd, Rh) is now replaced by an electromotor containing a lot of copper and a permanent magnet mostly made of NdFeB (neodymium magnet) for which the electricity is delivered by a Li-ion battery in most cases. So, other materials are needed to make electrical vehicles.
-
-Questions can be raised about the availability of materials for this massive demand for electrical vehicles. For how many years do we have enough Lithium to meet the demand for Li-ion batteries? And is an electrical vehicle more environmentally friendly than a car with a conventional combustion engine? What about the recycling and recyclability of these batteries? We will try to answer this questions in the next sections.
+De energietransitie is een van de grote inspanningen tegen klimaatverandering, en elektrische mobiliteit is er een belangrijk onderdeel van. In 2022 was minstens 14 % van de nieuw verkochte auto's elektrisch, tegenover 9 % in 2021 en 5 % in 2020 (@fig:Elektrische-auto-verkoop). De verkoop steeg van ongeveer 2 miljoen in 2018 tot een geschatte 14 miljoen in 2023, waarvan 8 miljoen in China.
 
 #figure(
-  image("assets/Elektrische-auto-verkoop.png", width: 5cm),
-  caption: [Elektrische-auto-verkoop],
+  image("assets/Elektrische-auto-verkoop.png", width: 11cm),
+  caption: [Verkoop van elektrische auto's, 2010-2023 (2023 geschat)],
   label: <fig:Elektrische-auto-verkoop>,
 )
 
+Een elektrische auto vraagt andere materialen. De verbrandingsmotor met een katalysator voor de uitlaatgassen (met Pt, Pd en Rh) wordt vervangen door een elektromotor met veel koper en een permanente magneet, meestal van NdFeB (neodymium magnet). De elektriciteit komt meestal uit een Li-ion batterij. Dit roept drie vragen op. Hoeveel jaar hebben we genoeg lithium voor de vraag naar Li-ion batterijen? Is een elektrische auto milieuvriendelijker dan een auto met verbrandingsmotor? En hoe zit het met de recycling van die batterijen? We beantwoorden die vragen in de volgende secties.
 
 == Material demand <sec:material-demand>
 
 === Trends in material demand <sec:trends-in-material-demand>
 
-De material demand is drievoudigt over de laatste 50 jaar. GDP is viervoudigt, we hebben dus een enorme groei en dat leikt niet de dalen. We kunnen een paar trends eruit halen als we naar grafieken van vroeger kijken:
+De wereldwijde material demand is de voorbije 50 jaar meer dan verdrievoudigd. De wereldbevolking is maar verdubbeld, maar het wereldwijde GDP (gross domestic product) is verviervoudigd. De groei van de laatste 20 jaar ging veel sneller dan die van de dertig jaar daarvoor (@fig:Groei-Laaste-50-jaar). Om te begrijpen waarom, kijken we naar de drijvende factoren.
 
 #figure(
-  image("assets/Groei-Laaste-50-jaar.png", width: 5cm),
-  caption: [Groei-Laaste-50-jaar],
+  image("assets/Groei-Laaste-50-jaar.png", width: 8cm),
+  caption: [Domestic extraction wereldwijd (miljoen ton), 1970-2018],
   label: <fig:Groei-Laaste-50-jaar>,
 )
 
-we zien dat de laatste 20 jaar de groei veel sneller is dan die 20 jaren ervoor. resource extenction en demand blijkt dus sneller en sneller te groeien.
+De material demand hangt af van drie factoren.
 
++ *Population*, het aantal mensen.
++ *Affluence*, het gemiddelde welvaartsniveau per persoon, meestal uitgedrukt als GDP in dollar per capita.
++ *Technology*, hoe materiaalintensief onze economie is, dus hoeveel kg materiaal we per dollar GDP nodig hebben.
 
-Global material demand is afhankelijk van 3 factoren:
-+ Population
-+ Affluence (GDP per capita)
-+ Technologie: hoe materiaal intesief is onze economie, hoeveel materiaal heb je nodig om een product te maken.
-
-Om een goed zicht te hebben moet elke factoren bekekn worden. We doen dit nu apart
+Om de groei in het verleden te begrijpen en die van de toekomst te voorspellen, tellen we de groeivoeten van de drie factoren op. We bekijken ze eerst apart.
 
 ==== Population <sec:population>
 
-
-Populatie is enorm gegroeid de laatste 50 jaar maar de groei is aan het afnemen de laaste 30 jaar.
+De wereldbevolking blijft groeien tijdens deze hele eeuw, maar de jaarlijkse groeivoet piekte rond 1970 op 2,1 % en daalt sindsdien (@fig:Populatie-groei-rate). Daarom had de bevolkingsgroei een grotere rol in de laatste dertig jaar van de 20e eeuw (gemiddeld 1,7 % per jaar) dan in de eerste twintig jaar van de 21e eeuw (gemiddeld 1,2 %). Volgens de recentste voorspellingen zakt de groeivoet de komende decennia onder 1 % en tegen het einde van de eeuw naar 0,1 %. Bevolkingsgroei zal dus minder meetellen in de material demand.
 
 #figure(
-  image("assets/Populatie-groei-rate.png", width: 5cm),
-  caption: [Populatie-groei-rate],
+  image("assets/Populatie-groei-rate.png", width: 9cm),
+  caption: [Groeivoet van de wereldbevolking, 1950-2021],
   label: <fig:Populatie-groei-rate>,
 )
 
-De populatie groei had een groter effect vroeger dan nu. En het is geproject dat het nog gaat afnemen in de toekomst.
-
-
 ==== Affluence <sec:affluence>
 
+De groeivoet van het GDP per persoon, gecorrigeerd voor inflatie en kosten van levensonderhoud, is over de tijd vrij constant gebleven (@fig:GDP-per-capita-groei). Daarom kunnen we die getallen naar de nabije toekomst extrapoleren.
+
 #figure(
-  image("assets/GDP-per-capita-groei.png", width: 5cm),
-  caption: [GDP-per-capita-groei],
+  image("assets/GDP-per-capita-groei.png", width: 16cm),
+  caption: [Jaarlijkse groei van het GDP per capita (%)],
   label: <fig:GDP-per-capita-groei>,
 )
 
-de gdp per capita groei is constant gebleven over de laatste 50 jaar en is dus een constante factor
+==== Technology <sec:technology>
 
-#figure(
-  image("assets/capita.png", width: 5cm),
-  caption: [capita],
-  label: <fig:capita>,
+De technology-factor is het moeilijkst te voorspellen. We vergelijken daarvoor het GDP per persoon met de material footprint per persoon voor verschillende landen (@fig:capita). Elke cirkel is een land en de grootte van de cirkel is de bevolking. Landen met een hoger GDP hebben ook een hogere material footprint, maar het verband is niet lineair. Hoe hoger het GDP, hoe kleiner de extra material footprint. Landen volgen door de jaren heen ook ongeveer dezelfde curve (@fig:VUL-NOG-IN).
+
+#grid(
+  columns: 2,
+  gutter: 1em,
+  [#figure(
+    image("assets/VUL-NOG-IN.png", width: 100%),
+    caption: [GDP per capita en material footprint per capita in 1990],
+    label: <fig:VUL-NOG-IN>,
+  )],
+  [#figure(
+    image("assets/capita.png", width: 100%),
+    caption: [Dezelfde grafiek in 2017],
+    label: <fig:capita>,
+  )],
 )
 
+Vandaag is het wereldgemiddelde GDP ongeveer 10.000 dollar per persoon en de gemiddelde material demand ongeveer 12 ton per persoon per jaar. Voor elke dollar wereld-GDP is dus 1,2 kg materiaal nodig. In geïndustrialiseerde landen is de material footprint 2 tot 3 keer hoger dan het wereldgemiddelde, maar het GDP is 4 tot 8 keer hoger. Daardoor groeit onze absolute material footprint wel, maar daalt de relatieve material footprint per dollar GDP. Dit heet *relative decoupling* van economische groei en groei van material demand.
 
-
-#figure(
-  image("assets/VUL-NOG-IN.png", width: 5cm),
-  caption: [VUL-NOG-IN],
-  label: <fig:VUL-NOG-IN>,
-)
-
-onze absolute material footrpint wordt groter maar onze relatieve material footprint wordt kleiner afhankelijk tot gdp, we zijn veel harder gegroeit met minder groei in material demand. We hebben dus een grotere impact op de omgeving maar we zijn ook efficiënter geworden in het gebruik van materialen.
-
-in elke geindustrialiseerd land zijn deze trends er
-
-Voor groeiende landen is dat niet perse waar, china had een veel grotere demand in vergelijking met hun gdp groei. Dit is omdat er zo een grote constructieboom was die veel materiaal vroeg.
+Landen die nog industrialiseren doen iets anders. In China groeide de material demand de voorbije 30 jaar zelfs sneller dan het GDP. De overgang van een landelijke naar een geïndustrialiseerde samenleving is erg materiaalintensief, omdat je veel staal en cement nodig hebt voor wegen en gebouwen (@fig:Shanhai-vroeger-vs-nu). Eens je een land als België bent, met overal snelwegen, heb je nog materiaal voor onderhoud nodig, maar veel minder dan voor het bouwen van nieuwe infrastructuur. Op dat punt wordt verdere GDP-groei minder materiaalintensief, bijvoorbeeld doordat de dienstensector een groter deel van de groei inneemt (software, hotel, restaurant, theater). Ook nieuwe technologie vraagt minder materiaal, zoals miniaturisatie van elektronica of 3D-printen van onderdelen die alleen materiaal hebben waar het nodig is.
 
 #figure(
-  image("assets/Shanhai-vroeger-vs-nu.png", width: 5cm),
-  caption: [Shanhai-vroeger-vs-nu],
+  image("assets/Shanhai-vroeger-vs-nu.png", width: 12cm),
+  caption: [Shanghai in 1987 en vandaag],
   label: <fig:Shanhai-vroeger-vs-nu>,
 )
 
-in geindustrialiseerd landen is dat er ook maar dat is vooral voor onderhoud niet voor nog meer groei. Op een bepaald punt als je geindustrialiseerd bent is je economie groei minder materiaal intensief. Moderne technologie is ook efficienter die ook minder materiaal vraagt.
+=== Alles tesamen en de toekomst <sec:alles-tesamen>
 
-==== Technology <sec:technology>
+Met de drie factoren verklaren we de groeisnelheden van de laatste 50 jaar (@fig:Factoren-over-de-tijd).
 
-
-=== Alles tesamen en de toekosmt <sec:alles-tesamen>
-
-NOG INVULLEN HIER
+- In 1970-2000 was de groei 2,3 % per jaar. Bevolking (1,7 %) en affluence (1,5 %) groeiden, maar de technology-factor was -0,9 %. De material demand per dollar daalde licht door de servitization van de geïndustrialiseerde landen, die het grootste deel van het wereld-GDP leverden.
+- In 2000-2016 was de groei 3,2 % per jaar. De bevolking droeg 1,2 % bij, affluence 1,5 % en technology +0,5 %. Upper-middle income landen zoals China, Brazilië en Zuid-Afrika doorliepen de materiaalintensieve fase van industrialisatie en kregen tegelijk een groter aandeel van het wereld-GDP. Daardoor steeg de material intensity per dollar en versnelde de groei.
 
 #figure(
-  image("assets/Factoren-over-de-tijd.png", width: 5cm),
-  caption: [Factoren-over-de-tijd],
+  image("assets/Factoren-over-de-tijd.png", width: 9cm),
+  caption: [Jaarlijkse groeivoet van de materiaalextractie, verdeeld over population, affluence en technology],
   label: <fig:Factoren-over-de-tijd>,
 )
 
-#figure(
-  image("assets/VERVANG-ME.png", width: 5cm),
-  caption: [VERVANG-ME],
-  label: <fig:VERVANG-ME>,
-)
+Voor de toekomst geldt het volgende. Bevolkingsgroei wordt minder belangrijk. Affluence blijft groeien, omdat iedereen op aarde gelijke kansen moet krijgen. De technology-factor hangt van het land af. China, lange tijd de grootste afnemer van materialen, gaat naar verwachting een minder materiaalintensieve fase in. India en veel Afrikaanse landen krijgen naar verwachting nog een vergelijkbaar materiaalintensieve ontwikkeling. Op basis hiervan verwacht de OECD een verdubbeling van de wereldwijde material demand tegen 2060, dus verdere groei maar niet steeds sneller.
 
-=== Case electric car <sec:case-electric-car>
+Die verdubbeling is een gemiddelde, want de groei verschilt per materiaal. Materialen voor de energietransitie groeien veel sneller. De vraag naar lithium zal in 2050 naar verwachting 20 keer hoger zijn dan vandaag, door alle batterijen. Ook zeldzame aardmetalen voor magneten in elektrische voertuigen en windmolens groeien sterk.
 
-Case: electric car
-The shift towards electrical mobility requires a lot of materials that where not very much used before, such as Lithium, and an substantial increase in demand of some commodities, such as Nickel or Copper. The graphs underneath show the forecasted demand for the coming decades of lithium and nickel, in the case of the STEPS and SDS IEA scenarios (explained below the figures).
+=== Case electric car <sec:case-electric-car-demand>
+
+De overgang naar elektrische mobiliteit vraagt veel materialen die vroeger weinig gebruikt werden, zoals lithium, en een sterke stijging van de vraag naar nikkel en koper. @fig:NOG-INVULLE-2 toont de verwachte vraag naar nikkel voor de komende decennia in twee scenario's van het International Energy Agency (IEA).
 
 #figure(
-  image("assets/NOG-INVULLE-2.png", width: 5cm),
-  caption: [NOG-INVULLE-2],
+  image("assets/NOG-INVULLE-2.png", width: 11cm),
+  caption: [Wereldwijde totale vraag naar nikkel per scenario (STEPS en SDS), in kiloton],
   label: <fig:NOG-INVULLE-2>,
 )
 
-#figure(
-  image("assets/nog-invullen-3.png", width: 5cm),
-  caption: [nog-invullen-3],
-  label: <fig:nog-invullen-3>,
-)
+#TODO[Het draft had een tweede figuur (`nog-invullen-3.png`) voor lithium, maar dat bestand is identiek aan de nikkelgrafiek. Lithiumgrafiek ontbreekt in assets.]
 
-
-Two scenarios as put forward by the International Energy Agency are considered in these figures:
-
-The Stated Policies Scenario (STEPS) reflects current policy settings based on a sector-by-sector assessment of the specific policies that are in place, as well as those that have been announced by governments around the world. It provides an indication of where today’s policy measures and plans lead the energy sector.
-
-The Sustainable Development Scenario (SDS) charts a pathway that meets in full the world’s goals to tackle climate change in line with the Paris Agreement while meeting universal energy access and significantly reducing air pollution. In this scenario, all current net zero pledges are achieved in full and there are extensive efforts to realize near-term emissions reductions; advanced economies reach net zero emissions by 2050, China around 2060, and all other countries by 2070 at the latest.
-
+- Het *Stated Policies Scenario (STEPS)* volgt het huidige beleid, namelijk de maatregelen die vandaag gelden en die overheden aangekondigd hebben. Het toont waar dat beleid de energiesector naartoe brengt.
+- Het *Sustainable Development Scenario (SDS)* volgt een pad dat de klimaatdoelen van het Akkoord van Parijs volledig haalt, met universele toegang tot energie en veel minder luchtvervuiling. Alle huidige netto-nul-beloftes worden gehaald, met netto-nuluitstoot in 2050 voor geavanceerde economieën, rond 2060 voor China en uiterlijk 2070 voor alle andere landen.
 
 == Materiaal tekorten <sec:material-scarcity>
 
-Hoeveel scarcity is er voor rauwe materialen?
-
-Het is niet gelijk over alle verschilleden material, goud is meer zeldzaam.
+Grondstoffen zijn niet overal even schaars. Op het niveau van chemische elementen is de aardkorst niet gelijk samengesteld (@fig:Zeldzaamheid-van-verschillende-materialen). Silicium is overvloedig en vormt ongeveer een derde van de aardkorst, aluminium 8 %. Andere elementen zijn erg zeldzaam, zoals goud. Gelukkig zijn zeldzame metalen geconcentreerd in ertsen, waardoor het economisch interessant is ze daaruit te winnen. Ertsen zijn dus de reservoirs voor raw materials in de lithosphere.
 
 #figure(
-  image("assets/Zeldzaamheid-van-verschillende-materialen.png", width: 5cm),
-  caption: [Zeldzaamheid-van-verschillende-materialen],
+  image("assets/Zeldzaamheid-van-verschillende-materialen.png", width: 9cm),
+  caption: [Abundance van de elementen in de aardkorst (atomen per miljoen Si-atomen) in functie van het atoomnummer],
   label: <fig:Zeldzaamheid-van-verschillende-materialen>,
 )
 
-Gelukkig worden er grotere concetraties gevonden in ores. Dus het is economisch doenbaar om die te extracten, het zijn de reservaren van de aarde in de lithosphere.
-
-De vraag is of er materiaalse scarcity is:
+De bewering dat grondstoffen opraken steunt meestal op de grootte van de bekende reservoirs.
 
 #concept(title: "Absolute scarcity")[
-  De heoveelheid rauwe materiaal dat gekend is in een recevoir dat allen de demand van materiaal voor de komende een of twee decennia kan voorzien.
+  De hoeveelheid raw material in de gekende reservoirs kan de demand voor dat materiaal nog maar een of twee decennia dekken.
 ]
 
-Maar nieuwe ore deposits worden nog steeds gezocht en gevonde, bettere technologie zorgt er ook voor om meer materiaal te halen uit lagere concentraties.
+In absolute termen is het erg moeilijk te voorspellen wanneer een grondstof opraakt. Er worden nog dagelijks nieuwe ore deposits gezocht en gevonden, en betere technologie laat toe ertsen met een lagere concentratie te benutten. Toch zijn er drie serieuze problemen met de aanvoer.
 
-De qualiteit van raw materials is wel naar benenden aan het gaan met vroeger in de 1900 3% en vandaag 0.3%. Je moet dus veel meer materiaal verwerken om dezelfde hoeveelheid te krijgen.
+*Kwaliteit en toegankelijkheid.* De rijkste en best bereikbare raw materials raken op en de kwaliteit (de concentratie van het nuttige element) daalt. Kopererts bevatte aan het begin van de vorige eeuw 3 % koper en vandaag zo'n 0,3 %. Je moet dus tien keer meer erts verwerken voor dezelfde hoeveelheid koper. Nieuwe deposits liggen bovendien vaak diep onder de grond of in ecologisch gevoelige gebieden zoals het Amazonewoud of de oceaanbodem. Mijnen is daar complexer en duurder, en milieuwetgeving en de publieke opinie spelen ook mee.
 
-Nieuwe materiaal deposits worden meestal ook op moeilijk toegankelijke plaatsen gevonden zoals diep in de oceanen of in de arctische gebieden.
-
-Er is ook een geopolitieke factor, sommige materialen zijn alleen vindbaar in bepaald landen zoals chine, argentinie, chile, congo...
+*Economische en geopolitieke scarcity.* Sommige ertsen liggen in maar enkele landen (@fig:Waar-raw-materialen-vindbaar-zijn). Lithium komt vandaag vooral uit Bolivia, Chili en Argentinië, kobalt en tantalum uit Centraal- en Zuid-Afrika en zeldzame aardmetalen vooral uit China. Die regio's zijn niet noodzakelijk politiek stabiel, en regionale conflicten kunnen de wereldprijs sterk beïnvloeden. In 2010 gebruikte China een embargo op de export van zeldzame aardmetalen als economisch drukmiddel in het conflict met Japan over de Senkaku-eilanden. De prijs van neodymium, essentieel in windturbines en elektromotoren, steeg tienvoudig in enkele maanden. Daarna stabiliseerde de prijs weer, maar de onzekerheid blijft. Zulke materialen noemen we economically or geopolitically scarce.
 
 #figure(
-  image("assets/Waar-raw-materialen-vindbaar-zijn.png", width: 5cm),
-  caption: [Waar-raw-materialen-vindbaar-zijn],
+  image("assets/Waar-raw-materialen-vindbaar-zijn.png", width: 12cm),
+  caption: [Waar lithium, kobalt, tantalum en zeldzame aardmetalen vooral gewonnen worden],
   label: <fig:Waar-raw-materialen-vindbaar-zijn>,
 )
 
-IETS GEMIST HIER
+*Structural scarcity.* Veel exotische elementen voor high-tech toepassingen kunnen niet op zichzelf gemijnd worden. Ze komen in kleine hoeveelheden voor als bijproduct van ertsen van andere metalen, de carrier metals. Indium (computers, gsm's, platte schermen) zit vooral in zinkerts, dat 3000 keer meer zink dan indium bevat. Een zinkmijn wil daarom niet meer erts delven als de vraag naar indium stijgt, omdat dat enorm veel extra zink op de markt brengt en de zinkprijs doet kelderen. De aanvoer van indium is zo onlosmakelijk verbonden met die van zink en volgt de vraag niet, waardoor de prijs van indium onder druk komt. Indium is dus structurally scarce.
 
-exotic elements kunnen niet op zichzelf gemijnt zorden, een structureele scarcity waarbij het materiaal gemijnt word met een ander materiaal zoals indium met zink waarbih indium 1/3000 van de zink wordt gemijnd. Dit is een structurele scarcity.
+=== Conclusie scaarsheid materialen <sec:conclusie-schaarste-materialen>
 
-=== Conclusie scaarsheid materialen <sec:conclusie-scaarsheid-materialen>
+Het antwoord op de vraag of grondstoffen schaars zijn is genuanceerd. In absolute termen zijn de meeste elementen vandaag niet schaars. Door de ongelijke verdeling van ertsen, het monopolie van mijnbouwbedrijven en de structurele scarcity van elementen zoals indium is er wel een groot risico dat sommige elementen op korte termijn erg duur worden. Grondstoffen waren en blijven een oorzaak van conflicten tussen landen. Daarom moeten we de afhankelijkheid van raw materials verminderen, zodat onze economie ook kan draaien zonder een voortdurende aanvoer van grondstoffen van ver weg.
 
-Wat is nu de conclusie, er is eigenlijk genoeg materiaal voor de toekomst maar door
-
-#figure(
-  image("assets/TO-BE-DELETED.png", width: 5cm),
-  caption: [TO-BE-DELETED],
-  label: <fig:TO-BE-DELETED>,
-)
 
 ==== Case absolute scarcity <sec:case-absolute-scarcity>
 
-Static and dynamic depletion index\
+Absolute scarcity is de fysieke uitputting van niet-hernieuwbare grondstoffen. In de reserves zit een bepaalde hoeveelheid die we kunnen winnen, en die raakt na verloop van tijd op. Om te voorspellen hoeveel tijd we nog hebben, vergelijken we de beschikbare reserve $R$ met de jaarlijkse productie of het gebruik $P$.
+
+Als we de huidige reserve delen door het huidige gebruik, dus $R slash P$, krijgen we het aantal resterende jaren. Dit is de *static depletion index*. De vraag naar grondstoffen verandert echter, en stijgt voor de meeste materialen. Houden we rekening met de verwachte verandering van de vraag, dan krijgen we de *dynamic depletion index*. Bij stijgende vraag is die kleiner dan de static index. Bij koper in @fig:Static-and-dynamic-index-copper ligt de dynamic index daarom steeds onder de static index.
+
 #figure(
-  image("assets/Static-and-dynamic-index-copper.png", width: 5cm),
-  caption: [Static-and-dynamic-index-copper],
+  image("assets/Static-and-dynamic-index-copper.png", width: 15cm),
+  caption: [Static en dynamic index (in jaren) van koper, 1930-2000],
   label: <fig:Static-and-dynamic-index-copper>,
 )
 
+Het gehalte aan koper in het erts daalt ook over de tijd (@fig:All-ore-and-concentration-ore). Je moet dus meer erts verwerken voor dezelfde hoeveelheid koper.
+
 #figure(
-  image("assets/All-ore-and-concentration-ore.png", width: 5cm),
-  caption: [All-ore-and-concentration-ore],
+  image("assets/All-ore-and-concentration-ore.png", width: 15cm),
+  caption: [Percentage winbaar koper in het erts, 1900-2015],
   label: <fig:All-ore-and-concentration-ore>,
 )
 
-Absolute scarcity describes the physical depletion of non-renewable resources. There is a certain amount available for extraction in reserves, but this amount will run out over time. When we want to predict how much time we have before a certain resource runs out, we look at the available reserve (R) and the yearly production or use of that resource (P).
-
-If we divide the current reserve by the current demand, so R/P, we see how many years are still left. This is called the static depletion index. 
-
-However, demand for raw materials changes, for most materials it increases. When we take the predicted change in demand into account, we call this the dynamic depletion index. For a resource with an increase in demand, the dynamic index will be smaller than the static index.
-
-
 ==== Case structural scarcity <sec:case-structural-scarcity>
 
-Materials that are structurally scarce are mainly produced as the byproduct of another material extraction process. Two examples are Germanium and Gallium. 
+Structureel schaarse materialen ontstaan vooral als bijproduct van de winning van een ander materiaal. Twee voorbeelden zijn germanium en gallium.
 
-Germanium is produced mainly from sphalerite, but is also found in silver, lead, and copper ores. Another source of germanium is fly ash of power plants fueled from coal deposits that contain germanium. Germanium is mainly used in optics, such as camera lenses, optical fibres and infrared cameras, and electronics such as high-speed chips and solar panels (https://en.wikipedia.org/wiki/Germanium).
+Germanium komt vooral uit sfaleriet, maar zit ook in zilver-, lood- en kopererts. Een andere bron is de vliegas van kolencentrales die op germaniumhoudende kolen draaien. Het wordt gebruikt in optiek (cameralenzen, glasvezel, infraroodcamera's) en elektronica (snelle chips, zonnepanelen).
 
-Gallium is produced exclusively as a by-product during the processing of the ores of other metals. Its main source material is bauxite, the chief ore of aluminium, but minor amounts are also extracted from sulfidic zinc ores (sphalerite being the main host mineral). It is used in semiconductors in high-speed computer chips, photovoltaic cells, laser diodes, cable television transmission, commercial wireless infrastructure and satellites (https://en.wikipedia.org/wiki/Gallium).
+Gallium wordt uitsluitend als bijproduct gewonnen bij de verwerking van ertsen van andere metalen. De belangrijkste bron is bauxiet, het voornaamste erts van aluminium, en kleinere hoeveelheden komen uit sulfidische zinkertsen (met sfaleriet als belangrijkste mineraal). Gallium zit in halfgeleiders voor snelle computerchips, fotovoltaïsche cellen, laserdiodes, kabeltelevisie, draadloze infrastructuur en satellieten.
 
-Not only are these materials structurally scarce, there can also be geopolitical scarcity, since a large part of the production happens in China. In July 2023 China announced export restrictions on certain gallium an germanium products as you can read in this article. Luckily, both minerals can still be retrieved elsewhere. 
-
+Deze materialen zijn niet alleen structureel schaars, er is ook geopolitieke schaarste omdat een groot deel van de productie in China gebeurt. In juli 2023 kondigde China exportbeperkingen aan voor bepaalde gallium- en germaniumproducten. Gelukkig kunnen beide mineralen ook elders gewonnen worden.
 
 ==== Case economic and geopolitical scarcity <sec:case-economic-and-geopolitical-scarcity>
 
+Prijs en beschikbaarheid van grondstoffen hangen ook af van de economie (vraag en aanbod) en van waar de reserves geopolitiek liggen. Kobalt, dat in lithiumbatterijen voor elektrische voertuigen zit, toont dit. De belangrijkste reserves liggen in het oosten van Congo, een politiek onstabiele regio.
+
+Door de klimaatcrisis zijn er veel investeringen in elektrische voertuigen gedaan, waardoor de vraag naar kobalt sterk steeg. Omdat kobalt uit een onstabiele regio komt, leggen batterijproducenten grotere voorraden aan om onzekerheid in de aanvoer op te vangen, en die voorraden verhogen de vraag nog meer. Daardoor steeg de kobaltprijs in 2018 erg sterk (@fig:Kobalt-prijzen, met pieken rond 2018 en 2022).
+
 #figure(
-  image("assets/Kobalt-prijzen.png", width: 5cm),
-  caption: [Kobalt-prijzen],
+  image("assets/Kobalt-prijzen.png", width: 10cm),
+  caption: [Kobaltprijs (USD per pond), laatste tien jaar],
   label: <fig:Kobalt-prijzen>,
 )
 
-Price and availability of resources is also influenced by economics – supply and demand –and the geopolitical presence of the reserves. 
-
-This is illustrated for example by cobalt. Cobalt is used in lithium batteries, which are used in electric vehicles. The main cobalt reserves are located in the east of Congo, a region which is politically unstable. 
-
-Due to the climate crisis, there have been a lot of investments in electric vehicles, leading to a strong increase in cobalt demand. Because cobalt comes from an unstable region, battery producers will store larger amounts of cobalt to deal with uncertainties in supply. Which in turn led to an even stronger increase in cobalt demand. This caused a very strong increase in cobalt prices in 2018, as you can see in this graph: 
-
-Cobalt prices from 2014 - 2024, with strong peaks around 2018 and 2022
-
-As a response, on the one hand big mining companies increased their capacity, but on the other hand the artisanal cobalt mining increased, where local people start mining cobalt by themselves. This is however a dangerous and unhealthy practice and can also stimulate child labor. 
-
-At the same time there were technological improvements to batteries, where they needed almost no cobalt anymore. 
-
-The increase in supply and smaller increase in demand in turn caused the prices of cobalt to drop again. 
-
-More info can be found on https://oilprice.com/Energy/Energy-General/Whats-Behind-The-Cobalt-Price-Crash.html
+Als reactie breidden grote mijnbouwbedrijven hun capaciteit uit, en nam de artisanale kobaltmijnbouw toe waarbij lokale mensen zelf kobalt delven. Dat is gevaarlijk en ongezond en kan kinderarbeid in de hand werken. Tegelijk verbeterde de batterijtechnologie zodat batterijen bijna geen kobalt meer nodig hebben. Het groter aanbod en de kleinere vraagstijging deden de kobaltprijs weer dalen.
 
 ==== Case electric car and material scarcity <sec:case-electric-car-and-material-scarcity>
 
-In the previous subsection, we have seen that the demand for some metals will increase drastically because of the rapid introduction of electrical vehicles. The question is whether we will not run out of these metals.
-
-Let us take the example of nickel, needed for the batteries of electrical vehicles. Nickel  does not suffer from an absolute, nor from a structural scarcity. Yet, the forecasted supply in the coming years is not sufficient to meet the increasing demand when an SDS scenario is pursued. Other actions will be necessary.
-
-We also observe a shift in supply towards South-East Asia, potentially strengthening the economic scarcity.
+De vraag naar sommige metalen stijgt sterk door de snelle opkomst van elektrische voertuigen. De vraag is of die metalen zullen opraken. Neem nikkel voor de batterijen van elektrische voertuigen. Nikkel heeft geen absolute en geen structurele scarcity. Toch volstaat het verwachte aanbod de komende jaren niet om de stijgende vraag te dekken in het SDS-scenario (@fig:Nikkel-supply). Er zijn dus andere maatregelen nodig. Het aanbod verschuift bovendien naar Zuidoost-Azië, wat de economische scarcity kan versterken.
 
 #figure(
-  image("assets/Nikkel-supply.png", width: 5cm),
-  caption: [Nikkel-supply],
+  image("assets/Nikkel-supply.png", width: 16cm),
+  caption: [Wereldwijd aanbod en vraag van nikkel 2020-2030 (links) en nikkelmijnaanbod per regio (rechts)],
   label: <fig:Nikkel-supply>,
 )
 
 === Biobased materialen <sec:biobased-materialen>
 
-scarcity van rauwe material is een groot probleem, om oplossingen te zoeken denken mensen aan biobased materialen van biomassa. vandaag wordt 3.4 gt per jaar van biomassa gemaakt vooral houd voor furniture.
-
-Er zitten ook veel dingen in productie zoals plastic vervangers en biofuels.
+Bij schaarste van raw materials denken veel mensen aan biobased materialen uit biomassa. Ongeveer een achtste van de materialen voor producten is vandaag biobased, en 80 % daarvan is hout voor constructie, meubels en papier (@fig:Gtperjaar). Er zijn veel innovaties in de maak, bijvoorbeeld om fossiele plastics te vervangen.
 
 #figure(
-  image("assets/Gtperjaar.png", width: 5cm),
-  caption: [Gtperjaar],
+  image("assets/Gtperjaar.png", width: 10cm),
+  caption: [Materialen per jaar uit lithosphere (23,3 Gt), biosphere (3,4 Gt) en technosphere (3,7 Gt)],
   label: <fig:Gtperjaar>,
 )
 
-Biogebaseerde materalen zijn al lang een deel van de mens, alleen bij de industriele revolutie werden vele tools en kleren vervangen door synthetische materialen. Vandaag is die trend opgekeert waarbij synthetische materialen vervangen worden door biogebaseerde materialen zoals plastiek. 
+De mens gebruikte lang vooral biobased materialen voor gereedschap en kleren. Pas sinds de industriële revolutie en later de uitvinding van synthetische polymeren werden ze geleidelijk vervangen. Vandaag keert die trend om, vooral bij plastics. Minder dan de helft van de nieuwe biobased plastics is biodegradable, en meer dan de helft zijn *drop-in polymers*. Die hebben precies dezelfde eigenschappen als hun fossiele tegenhangers, omdat de biomassa wordt afgebroken tot de bouwstenen van de polymeerchemie.
 
-#figure(
-  image("assets/VERVANG-.png", width: 5cm),
-  caption: [VERVANG-],
-  label: <fig:VERVANG->,
-)
-
-het voordeel van biobsed is dat het herniewbaar is, alleen als het groeien of regeneratie. De extractietijd moet lager zijn dan de regeneratie tijd. 
-
-
+Biobased materialen zijn hernieuwbaar, omdat ze weer aangroeien. Dat geldt enkel als we ze duurzaam winnen, dus aan een lagere snelheid dan hun regeneratietijd.
 
 ==== Nadelen van biobased materialen <sec:nadelen-biobased-materialen>
 
-Er zijn wel nadelen van biobased materialen:
-- Land nodig: Het kan dan niet gebruikt worden voor andere dingen zoals voedsel.
-- Het land kan ook exhausted worden 
-- Impact op de biodiversiteit, het kan een monocultuur zijn en de biodiversiteit kan afnemen.
-- Het heeft meestal fertilizers en pesticides nodig. 
-- Water en energie nodig: Cotten heeft bijvoorbeeld veel water en energie nodig en dan is er nog extractie en processing nodig.
+Het gebruik van biobased materialen heeft ook nadelen.
 
+- Groeiende biomassa heeft land nodig. Het land waarop je maïs voor PLA-plastic teelt, kan niet voor andere gewassen dienen, dus ontstaat er concurrentie tussen materialen en voedsel.
+- Bij te intensief gebruik raakt de bodem uitgeput, en nieuwe teeltgrond heeft impact op de biodiversiteit.
+- Landbouw gebruikt fertilizers en pesticides, waardoor de milieu-impact aanzienlijk kan zijn.
+- Water en energie zijn nodig. Katoen vraagt bijvoorbeeld veel water, en de meeste gewassen vragen extra energie voor ploegen en oogsten. Sommige nieuwe biobased plastics, zoals polyhydroxyalkanoaten, vragen zelfs meer energie en CO2-uitstoot dan een gelijkwaardig plastic uit aardolie.
 
-Er is een evolutie bij het gebruikt van biobased materialen. De nadelen die aangehaald werd zijn vooral een probleem met eerste generatie biobased materialen waarbij je intesieve landbouw doet voor materiaal uit te halen.
+Deze nadelen horen vooral bij de eerste generatie biomassa, en er is een duidelijke evolutie naar de volgende generaties.
 
 #concept(title: "Eerste, tweede en derde generatie biobased materialen")[
-
-  Eerste generatie is vooral intensief landbouw met pesticiden en fertilizers. Tweede generatie is vooral uit waste of restproducten van landbouw bv de schel van noten, de derde generatie is vooral uit algen en bacteriën die je kan kweken in een controlled environment.
+  - Eerste generatie komt uit voedselgewassen of planten die enkel voor materiaal geteeld worden, zoals maïs, graan, suikerriet en sojabonen. Dat is intensieve landbouw met pesticides en fertilizers.
+  - Tweede generatie gebruikt bijproducten en afval van landbouw, voedingsindustrie en consumptie (bijvoorbeeld notendoppen), waardoor er geen concurrentie met voedsel is.
+  - Derde generatie komt uit micro-organismen zoals algen, gisten en mycelium en heeft geen land nodig.
 ]
 
-== Afval
+Biobased materialen in de plaats van niet-hernieuwbare materialen zijn veelbelovend, maar de impact over de hele levenscyclus moet goed onderzocht worden.
+
+== Afval <sec:afval>
+
 === Afvalproductie <sec:afvalproductie>
 
-De wereld genereert ongeveer 2 mijard afval per jaar, in 2020 2.24 miljard ton afval.
+De wereld produceert jaarlijks meer dan 2 miljard ton vast gemeentelijk afval (municipal solid waste), in 2020 geschat op 2,24 miljard ton. Dat is ongeveer 7000 keer het Empire State Building. Dit omvat afval van huishoudens, bedrijven en instellingen.
 
-De hoeveelheid afval gegenereerd over de wereld varieert over de wereld afhankelijk van de welvaart van het land. Hoge inkom landen gegereren 1/3 van de afval
+De hoeveelheid hangt sterk af van het inkomen van een land. Hoge-inkomenslanden zijn ongeveer 16 % van de wereldbevolking maar produceren meer dan 30 % van het afval (@fig:Waste-generation-per-inkomen). Lage-inkomenslanden zijn ongeveer 9 % van de bevolking en produceren slechts 5 %.
 
 #figure(
-  image("assets/Waste-generation-per-inkomen.png", width: 5cm),
-  caption: [Waste-generation-per-inkomen],
+  image("assets/Waste-generation-per-inkomen.png", width: 15cm),
+  caption: [Aandeel van het afval per inkomensniveau],
   label: <fig:Waste-generation-per-inkomen>,
 )
 
-HERMAAK IN TYPST
-
-Als je de populatiegroei dan in rekening neemt is de projected afval generatie in 2050 ongeveer 3.8 miljard ton afval per jaar als er geen grote veranderingen zijn.
+Door bevolkingsgroei, verstedelijking en economische ontwikkeling stijgt de afvalproductie sterk. Zonder grote veranderingen bereikt ze in 2050 naar schatting 3,88 miljard ton, dus 73 % meer dan in 2020 (@fig:Projected-afval).
 
 #figure(
-  image("assets/Projected-afval.png", width: 5cm),
-  caption: [Projected-afval],
+  image("assets/Projected-afval.png", width: 15cm),
+  caption: [Verwachte wereldwijde afvalproductie, in miljard ton],
   label: <fig:Projected-afval>,
 )
 
-De groote impact zou vooral zijn door lage imkom landen want die groeien nog in populatie
+Het zwaarst valt dit op in lage-inkomenslanden, waar de afvalproductie naar verwachting meer dan verdrievoudigt (@fig:Groei-afval-projecten-per-inkomen-groep).
 
 #figure(
-  image("assets/Groei-afval-projecten-per-inkomen-groep.png", width: 5cm),
-  caption: [Groei-afval-projecten-per-inkomen-groep],
+  image("assets/Groei-afval-projecten-per-inkomen-groep.png", width: 13cm),
+  caption: [Verwachte totale afvalproductie per inkomensgroep, in miljoen ton],
   label: <fig:Groei-afval-projecten-per-inkomen-groep>,
 )
 
-Het type afval is anders afhaneklijk van inkomen.
+De samenstelling van het afval is zeer heterogeen en verschilt ook per inkomensniveau (@fig:Afval-compositie). Lage-inkomenslanden hebben een groter aandeel organisch afval zoals voedselafval, hoge-inkomenslanden een groter aandeel recycleerbaar afval zoals papier, plastic, metaal en glas.
 
 #figure(
-  image("assets/Afval-compositie.png", width: 5cm),
-  caption: [Afval-compositie],
+  image("assets/Afval-compositie.png", width: 7cm),
+  caption: [Samenstelling van het afval per inkomensniveau],
   label: <fig:Afval-compositie>,
 )
 
-Er wordt gefocused op verschillende soorten afval met eerste elektronisch afval
+Twee afvalstromen krijgen extra aandacht, namelijk elektronisch afval en plastic afval. Industrieel afval bekijken we daarna kort.
 
 ==== Elektronisch afval <sec:elektronisch-afval>
 
-Elektronisch afval (e-waste) is afval van elektronische apparaten. 
+Elektronisch afval (e-waste, WEEE) is afval van elektrische en elektronische apparaten zoals computers, gsm's en koelkasten. Het is belangrijk om twee redenen.
 
-Het is belangrijk voor twee redenen:
-- Het bevat toxische stoffen
-- Het bevat nog waardevolle materialen zoals goud, zilver, koper, kobalt, lithium en zeldzame aardmetalen. Deze zouden gerecycleerd kunnen worden
+- Het bevat toxische stoffen zoals kwik en lood, die ernstige gevolgen voor milieu en gezondheid kunnen hebben als het niet goed beheerd wordt.
+- Het bevat waardevolle materialen zoals goud, koper, nikkel, tantalum en gallium die gerecycleerd kunnen worden.
 
-ongeveer 54 miljoen ton e-waste wordt per jaar gegenereerd. Het is een klein deel van de totale afvalproductie maar het is een groeiende probleem en het wordt meestal geexporteerd naar armere landen en worden niet deftig weggegooit
+Er wordt jaarlijks ongeveer 54 miljoen ton e-waste geproduceerd. In 2022 werden alleen al zo'n 5,3 miljard smartphones weggegooid. Het is een klein deel van het vaste afval maar een van de snelst groeiende afvalstromen. Het wordt vaak niet correct beheerd en geëxporteerd naar ontwikkelingslanden, waar het op ongecontroleerde en onveilige manieren verwerkt wordt. Het Verdrag van Bazel (Basel Convention) moet zorgen voor een milieuverantwoord beheer en de illegale export naar die landen voorkomen.
 
 ==== Plastiek afval <sec:plastic-afval>
 
-Plastiek afval was in 2016 12% van de totale afvalproductie met het meeste hiervan in grote landfills.
+In 2016 was plastic afval 12 % van al het vaste gemeentelijk afval wereldwijd. Een groot deel eindigt op stortplaatsen, wordt verbrand of wordt slecht beheerd (@fig:Recyclage-plastics).
 
 #figure(
-  image("assets/Recyclage-plastics.png", width: 5cm),
-  caption: [Recyclage-plastics],
+  image("assets/Recyclage-plastics.png", width: 16cm),
+  caption: [Aandeel plastic afval per behandelingscategorie, 2019],
   label: <fig:Recyclage-plastics>,
 )
 
-Hierdoor komen grote hoeveelheden in de omgeving en oceanen terecht. 
+Slecht beheer zorgt ervoor dat plastic in het milieu terechtkomt (@fig:Stroom-plastiek-afval). Tussen 1,5 % en 4 % van de wereldwijde plasticproductie (5 tot 13 miljoen ton) belandt in de oceanen. Bijna 80 % van het afval in de oceanen is plastic, en er ligt naar schatting zo'n 30 miljoen ton plastic afval in zeeën en oceanen, nog meer in rivieren. Plastic blijft zeer lang in het milieu en breekt na verloop van tijd af tot microplastics. In 2019 breidde het Verdrag van Bazel zich uit naar plastic afval, met acties om de productie van plastic afval te voorkomen en te beperken en om een milieuverantwoord beheer te garanderen.
 
 #figure(
-  image("assets/Stroom-plastiek-afval.png", width: 5cm),
-  caption: [Stroom-plastiek-afval],
+  image("assets/Stroom-plastiek-afval.png", width: 17cm),
+  caption: [Hoe plastic in de oceanen terechtkomt],
   label: <fig:Stroom-plastiek-afval>,
 )
 
-Plastieke afval blijft ook heel lang in de omgeving en worden dan microplastics. 
+==== Industriele afval <sec:industriele-afval>
 
-==== Industriele afval <industriele-afval>
+Industrieel afval is afval van industriële activiteiten en is wereldwijd bijna 18 keer groter dan het vaste gemeentelijk afval. De hoeveelheden verschillen per land en inkomensniveau. De samenstelling is homogener en beter gekend dan die van gemeentelijk afval (@fig:Europa-industriele-waste), waardoor het beter gesorteerd en behandeld kan worden.
 
 #figure(
-  image("assets/Europa-industriele-waste.png", width: 5cm),
-  caption: [Europa-industriele-waste],
+  image("assets/Europa-industriele-waste.png", width: 14cm),
+  caption: [Afvalstromen in Europa, 2010: per bron en per type afval],
   label: <fig:Europa-industriele-waste>,
 )
 
-dit type afval is beter bekent en wordt beter bijgehouden en zorgen ervoor dat goed management van het afval kan gebeuren. 
-
-
 === Waste management <sec:waste-management>
 
-De huidige trends van waste management hebben een grote impact op afval.
+De huidige trends in afvalproductie en afvalbeheer hebben grote gevolgen voor milieu, maatschappij en economie. Van de meer dan 2 miljard ton afval wordt meer dan 30 % nog niet milieuveilig beheerd. Wereldwijd wordt minder dan 20 % gerecycleerd (13,5 % volgens @fig:Afval-management), ongeveer 11 % verbrand en het meeste gaat naar stortplaatsen of open dumps.
 
 #figure(
-  image("assets/Afval-management.png", width: 5cm),
-  caption: [Afval-management],
+  image("assets/Afval-management.png", width: 8cm),
+  caption: [Wereldwijde afvalbehandeling en -verwijdering, in procent],
   label: <fig:Afval-management>,
 )
 
-met ongeveer 13% die maar gerecycleerd worden.
-
-Veschillen in waar afval terecht komt is afhankelijk van de welvaart van het land. 
+Het afvalbeheer verschilt per inkomensniveau (@fig:Afval-disposal-afhaneklijk-van-inkomen). Hoge-inkomenslanden produceren meer afval maar hebben ook betere verwerkingsinstallaties, met gemiddeld 29 % recyclage. Lage-inkomenslanden storten vooral in open dumps, waar 93 % van het afval gedumpt of verbrand wordt zonder behoorlijk beheer.
 
 #figure(
-  image("assets/Afval-disposal-afhaneklijk-van-inkomen.png", width: 5cm),
-  caption: [Afval-disposal-afhaneklijk-van-inkomen],
+  image("assets/Afval-disposal-afhaneklijk-van-inkomen.png", width: 16cm),
+  caption: [Verwerkingsmethodes van afval per inkomensniveau],
   label: <fig:Afval-disposal-afhaneklijk-van-inkomen>,
 )
 
-rijke landen hebben meestal betere afval management en recyclage waardoor ze een grotere percentage aan recyclage hebben.
+Slecht afvalbeheer zorgt voor verlies van grondstoffen en voor verschillende gevolgen voor milieu en gezondheid, door verontreiniging van bodem en water en door luchtvervuiling.
 
-Lagere inkom landen hebben meestal een groter percentage aan open dumping en verbranden van afval.
+==== Afval en de omgeving <sec:afval-en-de-omgeving>
 
-Niet goed afval management zorg ervoor dat belangrijke grondstoffen verloren gaan en toxische stoffen in de omgeving terecht komen. Er wordt meer gekeken naar de impact van afval op de omgeving en gezondheid.
-
-==== Afval en de omgeving
+- Vast afval is verantwoordelijk voor 3 % van de wereldwijde broeikasgasuitstoot (@fig:Global-greenhouse-gasses-fval). Zonder verbeteringen stijgt die tegen 2050 naar 2,6 miljard ton CO2-equivalent. De hoeveelheid hangt af van de samenstelling van het afval en van de behandeling. Organisch afval op stortplaatsen en open dumps produceert bij afbraak een gas van vooral CO2 en methaan, dat bij slecht beheer in de lucht komt. Ongecontroleerd verbranden zet gevaarlijke emissies en fijn stof vrij, met gezondheidsproblemen als gevolg.
+- Niet-beheerde afbraak van afval kan *leachate* veroorzaken, een gevaarlijke vloeistof die water en bodem verontreinigt. Zo kan drinkwater besmet raken en kunnen ziektes zich verspreiden. De afbraaktijd hangt van de samenstelling af en is bij plastics erg lang (@fig:Plastics-denegeration-time). Mensen bij ongecontroleerde stortplaatsen lopen ook risico op aardverschuivingen en branden.
 
 #figure(
-  image("assets/Global-greenhouse-gasses-fval.png", width: 5cm),
-  caption: [Global-greenhouse-gasses-fval],
+  image("assets/Global-greenhouse-gasses-fval.png", width: 14cm),
+  caption: [Wereldwijde broeikasgasuitstoot per sector (2016)],
   label: <fig:Global-greenhouse-gasses-fval>,
 )
 
-Impacten van afval op de omgeving zijn:
-- 3% van de globale greenhouse gasses komt van afval en omdat afval nog steeds groeit zal het percentage ook toenemen. Deze impact komt meestal van landfills en dumps die een gas produceren die c02 bevat. Als afval verbrand wordt komen er ook gevaarlijke en toxische gassen vrij. 
-- Unmanaged waste degeneration: Als het niet gemanaged wordt kan een landfill een runoff creeren die in water en grond terecht komt en kan ziektes verspreiden. Plastics hebben een groot degeneration tijd. Dit zorg voor heel lang een groot problemen in de omgeving. #figure(
-  image("assets/Plastics-denegeration-time.png", width: 5cm),
-  caption: [Plastics-denegeration-time],
+#figure(
+  image("assets/Plastics-denegeration-time.png", width: 11cm),
+  caption: [Afbraaktijd van plasticproducten],
   label: <fig:Plastics-denegeration-time>,
 )
 
-Deftig afval management is dus belangrijk voor de omgeving en gezondheid. Maar er is geen grote oplossing, het hangt af van situatie en de welvaart van het land. Management is ook enorm duur de kost van het huidig afval 200 miljard dollar per jaar.
+Goed afvalbeheer is dus nodig voor milieu en gezondheid, maar er is geen oplossing die overal past. Het hangt af van de beschikbare technologie, het inkomensniveau, de samenstelling van het afval en lokaal geschikte oplossingen. Het is ook erg duur, want het behandelen en opruimen van al het afval dat we produceren kost naar schatting meer dan 200 miljard euro per jaar. Dat vraagt grote investeringen en institutionele, politieke en wettelijke kaders. Uitstoot kan verminderd worden door afvalreductie, betere inzameling, hergebruik van producten, recyclage, beheer van organisch afval en opvang van broeikasgassen.
+
+De Europese Commissie definieerde de *waste hierarchy* als leidraad voor duurzaam en geïntegreerd afvalbeheer (@fig:Afval-hierarchy). Ze rangschikt de opties volgens hun potentieel om milieu-impact en gezondheidsrisico's te beperken en grondstoffen terug te winnen.
+
++ Prevention staat bovenaan, om afvalproductie te minimaliseren.
++ Is preventie niet mogelijk, dan komen re-use van materialen en componenten.
++ Recycling is de volgende beste oplossing.
++ Als niets hiervan kan, volgt recovery, namelijk energieterugwinning uit afval.
++ Disposal (storten) is de minst gewenste optie en moet zoveel mogelijk beperkt worden.
 
 #figure(
-  image("assets/DELETE-ME.png", width: 5cm),
-  caption: [DELETE-ME],
-  label: <fig:DELETE-ME>,
-)
-
-
-
-#figure(
-  image("assets/Afval-hierarchy.png", width: 5cm),
-  caption: [Afval-hierarchy],
+  image("assets/Afval-hierarchy.png", width: 9cm),
+  caption: [Waste hierarchy van de Europese Commissie],
   label: <fig:Afval-hierarchy>,
 )
 
-Het toont de hierarchy die toont wat de stappen zijn met afval:
-+ Preventie
-+ Re-use
-+ Recycle
-+ Recovery
-+ disposal
-
-#examenbox[Moet je kunnen uitleggen op het examen, de structuur kunnen geven en wat het wilt tonen.]
+#examenbox[Je moet de waste hierarchy kunnen uitleggen: de structuur geven en wat ze wil tonen.]
 
 ==== Conclusie afval management <sec:conclusie-afval-management>
 
-afval managemetn is een belangrijk deel...
-
+Vast afvalbeheer is nodig om de negatieve gevolgen voor milieu en gezondheid te beperken. Het ondersteunt ook de overgang naar een circular economy, omdat het de terugwinning van grondstoffen bevordert.
 
 ==== Case elektrische auto en afval <sec:case-elektrische-auto-en-afval>
 
+In veel landen is de terugname van auto's goed geregeld, bijvoorbeeld met een *extended producer responsibility* schema. Daardoor kunnen veel materialen gerecycleerd worden. In België werd in 2020 93 % van de afgedankte auto's hergebruikt of gerecycleerd.
+
+De afgedankte auto's van vandaag hebben nog meestal een verbrandingsmotor. Het recycleren van elektrische auto's vraagt andere recyclagetechnologieën, vooral om materialen uit de batterijen terug te winnen. Nikkel uit batterijen recycleren kan perfect, maar lithium recycleren staat nog in de kinderschoenen en ligt dicht bij nul. Er worden technologieën ontwikkeld om ook lithium te recycleren, en naar verwachting kan dan een hoog percentage gerecycleerd worden. Dat zou de vraag naar nieuw lithium verminderen. Een grote hoeveelheid af te danken elektrische auto's komt er echter pas binnen 10 tot 20 jaar (@fig:RENAMEME).
+
 #figure(
-  image("assets/RENAMEME.png", width: 5cm),
-  caption: [RENAMEME],
+  image("assets/RENAMEME.png", width: 13cm),
+  caption: [Lithium: potentieel aanbod uit recyclage (links) en effect op de primaire vraag (rechts), STEPS-scenario],
   label: <fig:RENAMEME>,
 )
 
-
-In a lot of countries the take back of cars is well regulated, e.g. by an extended producers responsibility scheme. That makes it possible to recycle many materials. In Belgium 93% of the discarded cars in 2020 were either reused or recycled [1]. 
-
-However, the discarded cars today mostly have a combustion engine. Recycling of electrical cars will demand other recycling technologies, especially to recover the materials from the batteries. While it is perfectly possible to recycle e.g. the nickel out of the batteries, recycling of lithium still is at its infancy and near to zero. Technologies to also recycle lithium are being developed and it can be expected that a high percentage of the lithium can be recycled as well. This would reduce the demand for virgin lithium. However, a large amount of discarded electrical cars to be recycled can only be expected within 10-20 years.
-
-
 == Impacts material lifecycle <sec:impacts-material-lifecycle>
+
 === Overview impact lifecycle <sec:overview-impact-lifecycle>
 
-In 2019 the United Nations Environment Programme (UNEP) published a Global Resources Outlook, where they analyzed the increasingly negative impact of natural resource use on the environment and human health. If you’re interested, you can read the full publication.
+In 2019 publiceerde het United Nations Environment Programme (UNEP) de Global Resources Outlook, een analyse van de groeiende negatieve impact van het gebruik van natuurlijke hulpbronnen op milieu en gezondheid. @fig:Deel-globale-impact toont het aandeel in de wereldwijde impact van vier soorten resources (biomass, metals, non-metallic minerals en fossil fuels) op vier categorieën (climate change, particulate matter health, water stress en land-use related biodiversity loss). De impact omvat de winning van de resource en de verwerking tot materialen, brandstoffen en voedsel.
 
-Here we shortly discuss the graph below, where we focus on the colored bars. They show the share of global impact of different resource types (biomass, metals, non-metallic minerals and fossil fuels) on 4 categories (climate change, particulate matter health, water stress and land-use related biodiversity loss). The impact includes the impact of the extraction of that resource and the processing to materials, fuels and food. 
-
-When we look at the impact of the four resource types together, we see that they make up 
-
-    more than 50% of the total global greenhouse gas emissions (disregarding climate impacts related to land use) - all types of resources carry a significant share of the overall impacts
-    and more than 90% of biodiversity loss and water stress – the main driver here is agriculture, and especially household food consumption
-
-Of course material extraction and production has many other impacts on our environment that are not included in this graph, e.g. eutrophication, acidification, depletion of the ozone layer, toxic waste, …
+Samen zijn de vier resourcetypes verantwoordelijk voor meer dan 50 % van de totale wereldwijde broeikasgasuitstoot (zonder klimaatimpact van landgebruik), waarbij elk type een significant aandeel heeft. Ze zijn ook verantwoordelijk voor meer dan 90 % van het biodiversiteitsverlies en de water stress. De belangrijkste drijfveer is landbouw, vooral de voedselconsumptie van huishoudens. Materiaalwinning en -productie hebben nog andere effecten die niet in de grafiek zitten, zoals eutrofiëring, verzuring, aantasting van de ozonlaag en toxisch afval.
 
 #figure(
-  image("assets/Deel-globale-impact.png", width: 5cm),
-  caption: [Deel-globale-impact],
+  image("assets/Deel-globale-impact.png", width: 15cm),
+  caption: [Wereldwijde impact per resourcetype, resterende economie en huishoudens (UNEP, 2019)],
   label: <fig:Deel-globale-impact>,
 )
 
-Biomass
+*Biomass* dient voor voedsel, grondstof en energie. Teelt en verwerking zijn verantwoordelijk voor bijna 90 % van de wereldwijde water stress, bijna 90 % van het biodiversiteitsverlies door landgebruik (vernietiging van habitats, bodemdegradatie en verlies van ecosysteemdiensten) en meer dan 30 % van de resourcegerelateerde broeikasgasuitstoot (zonder landgebruikswijziging).
 
-Biomass resources are used for food, feedstock and energy. The cultivation and processing of biomass is now responsible for:
+*Metals* hadden tussen 2000 en 2015 ongeveer een verdubbeling van de impact op klimaat en gezondheid. Dat komt vooral door ijzer- en staalproductie (een vierde van de wereldwijde industriële energievraag) en door aluminiumproductie, die veel energie vraagt. Bij koper en edelmetalen is toxiciteit het grootste probleem.
 
-    almost 90% of global water stress 
-    almost 90% of land-use related biodiversity loss. The environmental impacts of land use include the destruction of natural habitats and biodiversity loss as well as soil degradation and loss of other ecosystem services.
-    more than 30% of the resource-related greenhouse gas emissions (neglecting land use change).
+*Non-metallic minerals* zijn meer dan 45 % van de totale massa aan gewonnen resources, maar hun bijdrage aan de impactcategorieën blijft beperkt. De grootste bijdrage komt van de productie van clinker, het hoofdbestanddeel van cement. Door de enorme volumes beton en cement in infrastructuur en gebouwen is de totale impact op bijvoorbeeld broeikasgassen toch belangrijk. Mijnbouw, vooral voor zand, kan grote gevolgen hebben voor lokale ecosystemen.
 
-Metals
-
-Between 2000 and 2015, the climate change impacts and health impacts from extraction and production of metals approximately doubled. The climate change impact is mainly due to the iron and steel production (1/4th of global industrial energy demand) and due to aluminum production, which requires a lot of energy to produce.
-
-For copper and precious metals, toxicity impacts are the major concern.
-
-Non-metallic minerals
-
-Non-metallic mineral resource extraction makes up more than 45% of the total mass of extracted resources. However, its contribution to the different impact categories remains limited. The greatest contributor to the impacts of this resource type is the production of clinker – the main ingredient in cement. Since the enormous volumes of concrete and cement produced and used in infrastructures and buildings, the total impact on e.g. greenhouse gas emissions is important as well.
-
-Mining and, in particular mining for sand, can have critical impacts on local ecosystems.
-
-Fossil fuels
-
-Coal, oil and natural gas provide energy and the raw material for pharmaceuticals, plastics, paints and many more products. Extraction, processing, distribution and use all contribute considerably to environmental pollution and especially air pollution. 
-
-In recent years we saw more than 70% increase in capacity for global fossil fuel electricity generation. This has increased access to affordable energy but of course comes with environmental and health trade-offs. Moreover, power plants are expensive to build and last a long time, making it uninteresting for them to switch to environmentally less harmful technologies.
+*Fossil fuels* (kolen, olie en aardgas) leveren energie en grondstof voor farmaceutica, plastics, verf en veel andere producten. Winning, verwerking, distributie en gebruik zorgen voor milieuvervuiling, vooral luchtvervuiling. De capaciteit voor elektriciteitsopwekking uit fossiele brandstoffen steeg de laatste jaren met meer dan 70 %, wat betaalbare energie bracht maar met nadelen voor milieu en gezondheid. Centrales zijn bovendien duur om te bouwen en gaan lang mee, waardoor overschakelen op minder schadelijke technologieën weinig interessant is.
 
 === Broeikasgassen <sec:broeikasgassen>
 
-As we just saw, more than half of all greenhouse gas emissions are related to materials management activities. If we look at material production only, we see a rise in emission from 5  GtCO2eq in 1995 to 11.5 Gt CO2eq in 2019. These emissions are projected to rise to approximately 50 Gt CO2eq by 2060. 
+Meer dan de helft van alle broeikasgasuitstoot hangt samen met het beheer van materialen. Alleen voor materiaalproductie steeg de uitstoot van 5 GtCO2eq in 1995 naar 11,5 GtCO2eq in 2019, en tegen 2060 stijgt ze naar verwachting tot ongeveer 50 GtCO2eq.
 
-The largest contribution (left side of the graph) comes from bulk materials production, such as iron and steel, cement, lime and plaster, other minerals mostly used as construction products, as well as plastics and rubber. Two thirds of the materials are used (right side of the graph) to make capital goods, with buildings and vehicles among the most important. 
+De grootste bijdrage (linkerkant van @fig:CO2-geaccoceert-met-materialen-) komt van de productie van bulkmaterialen zoals ijzer en staal, cement, kalk en gips, andere mineralen voor bouwproducten, en plastics en rubber. Twee derde van de materialen gaat (rechterkant) naar kapitaalgoederen, waaronder vooral gebouwen en voertuigen.
 
 #figure(
-  image("assets/CO2-geaccoceert-met-materialen-.png", width: 5cm),
-  caption: [CO2-geaccoceert-met-materialen-],
+  image("assets/CO2-geaccoceert-met-materialen-.png", width: 13cm),
+  caption: [Uitstoot (GtCO2e) van materiaalproductie per materiaal (links) en per eerste gebruik (rechts)],
   label: <fig:CO2-geaccoceert-met-materialen->,
 )
 
-Comparing countries
+*Landen vergelijken.* Tussen 1995 en 2015 bleef de uitstoot voor de productie van materialen die geïndustrialiseerde landen consumeren binnen 2 tot 3 GtCO2eq. De groei komt vooral van ontwikkelende en opkomende economieën. Ontwikkelde landen hebben echter veel zware industrie uitbesteed aan ontwikkelingslanden. Bij een vergelijking van landen zijn er daarom twee perspectieven. Het *production perspective* telt alle materiaal dat in een land geproduceerd wordt. Het *consumption perspective* telt alle materialen die geproduceerd zijn voor de goederen die in een land gebruikt worden, dus ook de uitstoot in het buitenland. Traditioneel gebruikt men enkel het production perspective. Doordat de zware industrie naar ontwikkelingslanden verhuisde, is de impact vanuit het consumption perspective voor ontwikkelde landen meestal (veel) hoger dan vanuit het production perspective, en bij ontwikkelingslanden omgekeerd.
 
-While the production of materials consumed in industrialized countries remained within the range of 2–3 GtCO2eq, in the 1995–2015 period, those of developing and emerging economies have largely been behind the growth. 
+*Cement en staal* hebben een groot aandeel in de broeikasgasuitstoot en hun gebruik blijft stijgen. Er zijn drie manieren om die uitstoot te verlagen.
 
-However, we have to keep in mind that developed countries outsourced a lot of their heavy industry to developing countries. When we compare the impact of countries, we can look at:
++ Een deel van de uitstoot komt van de energie voor de productie. Efficiëntere processen en meer hernieuwbare energie verlagen die.
++ Een ander deel hangt samen met het materiaal zelf. Bij cementproductie komt CO2 vrij door een chemisch proces. Bij staalproductie wordt cokes gebruikt om ijzer uit ijzererts te halen, waarbij veel CO2 vrijkomt. Een oplossing is andere grondstoffen gebruiken, zoals waterstof in plaats van cokes bij staal. Dat vraagt grote investeringen in nieuwe processen en infrastructuur, en de productie van waterstof vraagt ook energie. De CO2 kan ook afgevangen worden voor die vrijkomt en opgeslagen (Carbon Capture Storage, CCS) of elders gebruikt (Carbon Capture and Utilization, CCU).
++ Hergebruik en recyclage van afval, waardoor de vraag naar nieuwe materialen daalt.
 
-    Production perspective – all the material produced in a country
-    Consumption perspective – all the materials produced for all the goods used in a country
+*Biobased polymers* nemen CO2 op tot ze weggegooid en verbrand worden, maar de productie van biomassa en de omzetting tot polymeren stoot ook CO2 uit. Die uitstoot hangt sterk af van de gebruikte grondstof. PLA uit maïs heeft bijvoorbeeld een veel grotere broeikasgasuitstoot dan PLA uit suikerriet, en kan vergelijkbaar of groter zijn dan polymeren uit aardolie. Biobased polymers kunnen dus een lagere impact hebben, maar dat moet voor het hele productieproces geëvalueerd worden.
 
-Traditionally only production perspective is used, so when looking at CO2 emission, only the emissions by industry and households within the country. The consumption perspective looks at all the CO2 emissions released during the production of the goods consumed within a country, so also emission that happened abroad. Because a lot of the heavy industry has been moved to developing countries, we usually we see that for developed countries the impact from a consumption perspective is (much) higher than the production perspective, while for developing countries this is the opposite. 
-
-Annotate
-
-Cement and steel
-
-Cement and steel play a large part in the greenhouse gas emission, and it’s use is still increasing. What are possible ways to reduce these emissions?
-
-    A part of the emissions come from the energy used during production: Decrease production energy by more efficient processes, and use more renewable energy sources for the energy needed during this production processes. 
-    However, there are also emissions related to the production of the material itself. For example, during the production of cement, a chemical process takes place during which CO2 is released. During steel production, cokes are used in the chemical process to extract iron from iron ore, thereby releasing large amounts of CO2. 
-    A possible solution is using different resources during these processes. For steel production this is already possible by using hydrogen instead of cokes. However, this requires large investments in new production processes and infrastructure and the production of hydrogen also requires some energy. Another way to reduce the emission of CO2 is by capturing it before it is released into the atmosphere and storing it (Carbon Capture Storage – CCS) or using it elsewhere (Carbon Capture and Utilization – CCU). 
-    A third solution lies in reusing and recycling of waste, so that the demand for new materials decreases.
-
-
-Biobased polymers
-
-Biobased polymers capture some CO2 (until they are discarded and burned), but the production of biomass and conversion of it into polymers emits CO2. The emission of CO2 during this production is very dependent on the resource used. For example PLA made from maize has a much larger greenhouse gas emission than PLA made from sugar cane. These emissions can be comparable or even larger than petroleum-based polymers. So while biobased polymers have the potential for a lower impact, the impact of the entire production process has to be evaluated to ensure this.
-
-Not only production has emissions, also waste treatment is a source of emissions. However, these emissions are decreasing and due to better recycling technology, more materials can be reused.
-
+Ook afvalbehandeling stoot broeikasgassen uit. Die uitstoot daalt door betere recyclagetechnologie, waardoor meer materialen hergebruikt kunnen worden.
 
 === Impact meten <sec:impact-meten>
 
-Omgevingsimpact is tot nu vooral vaag gezien. Welke soorten impacten zijn er en welke categorien en welke belangrijk zijn.
+Tot nu was omgevingsimpact een vaag begrip. Om producten en systemen te vergelijken moeten we de impact systematisch kwantificeren en in één waarde kunnen uitdrukken. Daarvoor bekijken we eerst welke soorten impact er zijn en hoe we ze meten.
 
-Hoe kunnen we systematisch impacten quantificeren? Dat is de vraag van dit deel. We willen de impact zien van een product en uiteindelijk een waarde geven van de impact.
+Vraag je mensen wat voor hen belangrijk is, dan noemen ze impacts van verschillende aard. Daarom splitsen we in drie *endpoint indicators*.
 
-+ Een impact is menselijke gezondheid. DALI (Disability Adjusted Life Years) is een maat voor de impact op de gezondheid van mensen. Het is een maat voor het aantal jaren dat iemand in goede gezondheid leeft. Als iemand ziek wordt of sterft, dan verliest die persoon een aantal jaren van goede gezondheid. DALI is een maat voor het aantal verloren jaren van goede gezondheid door een bepaalde impact.
-+ PDF(potenial disappeared fraction of species [Per M^2 per year]) toont de impact op verschillende soorten dieren en planten. 
-+ Resource dipletion: Het gebruik van resrouces en grondstoffen vandaag zorgt ervoor dat dat in de toekomst niet gebruikt kan worden. Stel dat koper allemaal wordt gebruikt dan kan het elektificing van onze industrie en economie niet meer, we quantificeren dit met Cost for replacing material. Als deze te duur wordt om te vervangen dan vergroot de kost voor te vervangen. 
++ *Human health* gaat over de gezondheid van mensen. Die meten we met DALY's (Disability Adjusted Life Years). Een DALY houdt niet alleen rekening met of iemand leeft, maar ook met de kwaliteit van het leven, dus ook ziektes tellen mee. Het is het aantal verloren jaren in goede gezondheid door een bepaalde impact.
++ *Biodiversity* gaat over de gezondheid van andere soorten (flora en fauna). Dat meten we met de PDF (Potentially Disappeared Fraction of species), uitgedrukt per oppervlakte-eenheid per jaar ($m^2 dot "jaar"$).
++ *Resource depletion* gaat over materialen die voor toekomstige generaties minder beschikbaar zijn. Neem koper. Als het opraakt, komt onze strategie om de maatschappij te elektrificeren in gevaar. We meten het met de kost om materiaal te vervangen. Moet je dieper graven en zijn de concentraties lager, dan stijgt de marginale kost om een verloren kilogram koper te vervangen door een nieuw gewonnen kilogram. Het is dus een monetaire maat voor de extra inspanning.
 
-
-Meestal bekijken we indirect hoe ze impact hebben op deze categorien. Globale warming bijvoorbeeld is per definitie niet een probleem maar het heeft een indirecte impact op menselijke gezondheid en biodiversiteit. 
+We beïnvloeden deze drie categorieën niet rechtstreeks maar via fysische en chemische fenomenen, de *impact categories* (@fig:Impact-categorien). Klimaatverandering is op zich geen probleem. Pas doordat ze de menselijke gezondheid en de biodiversiteit aantast en materialen wegneemt, treft ze ons.
 
 #figure(
-  image("assets/Impact-categorien.png", width: 5cm),
-  caption: [Impact-categorien],
+  image("assets/Impact-categorien.png", width: 11cm),
+  caption: [Impact categories (midpoints) per endpoint indicator: human health, biodiversity en resource depletion],
   label: <fig:Impact-categorien>,
 )
 
-Hoe bekijken we dan de van klimaatsverandering en hoe het product impact heeft, voor klimaatsverandering is dit broeikasgassen zoals CO2 en methaan CH4, met methaan een veel sterker broeikasgas 23x sterker en is vooral bij vleesproductie, en er zijn nog andere stoffen die er impact op hebben.
-
-Als alle stoffen en bijproducten bij het maken van het product kan de totale impact van klimaatsopwarming bekeken worden en uiteindeijk op de impact categorien. 
+Neem klimaatverandering als impact category. Naast CO2 dragen ook andere stoffen bij. Methaan (CH4) komt bijvoorbeeld vrij bij het fokken van vee en heeft een veel sterker effect dan CO2. Een kilogram methaan kun je dus niet zomaar bij een kilogram CO2 optellen. We gebruiken CO2-equivalenten, en voor methaan is dat ongeveer 23 keer. Voor andere stoffen bestaat zo'n equivalent ook, bijvoorbeeld 297 keer voor N2O (@fig:Inputs-Impact-categorien-Endpoints-indicators).
 
 #figure(
-  image("assets/Inputs-=>-Impact-categorien-=>-Endpoints-indicators-.png", width: 5cm),
-  caption: [Inputs-=>-Impact-categorien-=>-Endpoints-indicators],
+  image("assets/Inputs-=>-Impact-categorien-=>-Endpoints-indicators-.png", width: 11cm),
+  caption: [Van inputs en outputs van een systeem via de impact categories naar de endpoint indicators],
   label: <fig:Inputs-Impact-categorien-Endpoints-indicators>,
 )
 
-#concept(title: "Life cycle assesments")[
-Deze dingen worden vandaag als goed bijgehouden met LCA (Life Cycle Assesments) die de impact van een product over zijn hele levenscyclus bekijkt. 
-]
+We kwantificeren dus alle inputs en outputs van systemen, producten en processen. Die zetten we om in effecten via de impact categories (de *midpoint* categorieën), en die dragen bij aan de endpoints waar we echt om geven, namelijk human health, biodiversity en resource depletion. De gevestigde en goed gedocumenteerde methode hiervoor is de *life cycle assessment* (LCA), met software die ze ondersteunt.
 
-We gaan nu dieper in op de LCA. 
+=== LCA (Life Cycle Assessment) <sec:lca-life-cycle-assesment>
 
-=== LCA (Life Cycle Assesment) <sec:lca-life-cycle-assesment>\
+De LCA vergelijkt alternatieve ontwerpen of systemen systematisch op hun impact, en toont wat we kunnen doen om die impact te verminderen. Het is geen nieuwe discipline, want de standaarden ISO 14040 en 14044 leggen de procedure vast. Die moet je correct volgen.
 
-De LCA geeft ons een methode om de impact van producten ge bekijken en wat we kunnen doen om de impact te verminderen.
+De LCA bestaat uit vier blokken (@fig:LCA-process).
 
-ISO 14040 en 14044 zijn de standaarden voor LCA. 
-
-De LCA bevat 4 grote blokken:
-+ Goal en scope:
-+ Inventory: Data collectie van inputs en outputs van het product.
-+ Impact analyse:
-+ Interpretation
-
-#examenbox[Moet je kunnen uitleggen op het examen, welke blokken en daarna hoe je het gebruikt]
-
-Dit gaat allemaal naar een interpretatie van impact en dan bekijk je hoe je het resultaat kunnen gebruiken zoals:
-- Product development
-- Strategic planning
-- Marketing
-- Policy making
++ *Goal and scope* bepaalt wat binnen en buiten de studie valt. Is dat niet duidelijk, dan loop je vast.
++ *Inventory* is de dataverzameling van alle inputs en outputs. Dit kan maanden tot jaren duren, maar het is onmisbaar.
++ *Impact analysis* bepaalt hoeveel deze inputs en outputs bijdragen aan de impact categories.
++ *Interpretation* haalt uit de analyse wat we eruit kunnen leren, voor product development, strategic planning, policy making of marketing. Voor marketing schrijft de standaard voor dat een externe auditor de studie verifieert.
 
 #figure(
-  image("assets/LCA-process.png", width: 5cm),
-  caption: [LCA-process],
+  image("assets/LCA-process.png", width: 10cm),
+  caption: [De vier blokken van een LCA en hun gebruik],
   label: <fig:LCA-process>,
 )
 
-HERMAAK IN TYPST
+#examenbox[Je moet kunnen uitleggen uit welke blokken een LCA bestaat en daarna hoe je ze gebruikt.]
 
-We bekijken deze processen iets dieper
+==== Goal and scope en inventory <sec:process-en-scope>
 
-==== Process en scope <sec:process-en-scope>
+Bij de *system boundaries* beslis je wat in je analyse zit en wat niet. Het is belangrijk om te weten welke data je kunt krijgen en welke effecten je uitsluit als je de grenzen te strak trekt.
 
-Welke boundries om een goede stagische keuze te maken. Wat is de outline die je bekijkt, een prodcut of een functional unit. Ga je een auto vergelijken met een bus terwijl een bus meer mensen kan vervoeren dus mss moet je meer autos per bus vergelijken. Of de qualiteit van een verf, een hoge kwaliteit verf moet je minder gebruiken dan een lage kwaliteit verf.
+Daarna bepaal je wat je precies bekijkt, een product of een functionaliteit (de *functional unit*). Vergelijk je auto's, dan is een tweezitter niet gelijkwaardig aan een bestelwagen voor tien personen. Misschien heeft een bestelwagen dezelfde functie als vijf ritten met een tweezitter. Bij verf is een liter verf niet de juiste eenheid, want je kiest beter het bedekken van een muur gedurende een bepaalde periode. Bij een lagere kwaliteit moet je misschien vaker of in meerdere lagen schilderen voor dezelfde bescherming.
 
-Inventory ga je bekijken welke producten er binnen gaan in het process en welk product gaat er uit met welke by product, daarbij bekijk je energie en welke producten er gebruiken worden tijdens het process (process consumeables), de output daarvan zijn de emissies en afvalstromen, als laaste de recyclage van het process die terug in de product material gaat.
+Pas als de functional unit vastligt, bekijk je in de *inventory* wat er in en uit het systeem gaat om die functie te leveren (@fig:LCA-analysis).
+
+- Er gaan product materials (en processen) in, en er komt een product uit, soms met een nuttig byproduct. Je moet bepalen hoe je de impact over product en byproduct verdeelt.
+- Er zijn inputs van energie en process consumables.
+- Er zijn ongewenste outputs, namelijk emissions en waste streams.
+- Sommige stromen gaan via recycling terug naar het proces.
+
+Bij een steady state systeem moet de massabalans kloppen. Daarna bepaal je hoe elke stroom bijdraagt aan de midpoint categorieën.
 
 #figure(
-  image("assets/LCA-analysis.png", width: 5cm),
-  caption: [LCA-analysis],
+  image("assets/LCA-analysis.png", width: 11cm),
+  caption: [Inventory van een proces met inputs (product materials, energy, process consumables) en outputs (product, byproduct, emissions, waste streams), met recycling],
   label: <fig:LCA-analysis>,
 )
 
-Als we alles van dit doen komen we dan aan impact, human health, biodiversiteit en resource depletion. Deze zijn niet direct geconnecteerd met elkaar maar je wilt wel een waarde en dus moet je ze normaliseren en ze op de zelfde eenheid brengen. 
+==== Normalisatie en weging <sec:normalisatie-en-weging>
 
-We normaliseren en brengen het dan op dezelfde schaal. Wat het meeste belangrijk wel is objectief en hangt af van welke referentie je neemt. 
+Na de impact analysis hebben we impacts op human health, biodiversity en resource depletion. Ze zijn van een totaal andere aard en hebben verschillende eenheden. Om ze te vergelijken, moeten we ze op dezelfde schaal brengen, en dat doen we met *normalisatie*. De vraag is welke referentie je neemt. Dat kan de gemiddelde impact van een Europeaan zijn, of van een wereldburger. Het hangt ook af van welke data beschikbaar zijn.
 
-#figure(
-  image("assets/DELETEME2.png", width: 5cm),
-  caption: [DELETEME2],
-  label: <fig:DELETEME2>,
-)
+Zijn alle impact categories even belangrijk? Nee, normaliseren betekent niet dat ze evenveel wegen. Wat belangrijk is, verschilt per persoon. Mensen zijn statistisch in clusters ingedeeld en daarvoor zijn gewichtsfactoren (*weight factors*) beschikbaar, maar de clusters komen niet overeen. Je moet een keuze maken, en wat je kiest, is vatbaar voor kritiek (@fig:Schaaloverweging). Er is geen objectieve uitkomst.
 
 #figure(
-  image("assets/Schaaloverweging.png", width: 5cm),
-  caption: [Schaaloverweging],
+  image("assets/Schaaloverweging.png", width: 8cm),
+  caption: [Weging van de drie endpoints (ecosystem health, resources, human health) in een driehoek, hier met een voorbeeldkeuze van 40 %, 20 % en 40 %],
   label: <fig:Schaaloverweging>,
 )
 
+De impact assessment tot de midpoints is vrij goed gedocumenteerd en wetenschappelijk correct. Naar de endpoints toe wordt ze onzekerder, en de gewogen combinatie van de drie endpoints is erg subjectief. ISO 14040 laat die optioneel en raadt aan om de onderliggende data te bewaren, omdat die de eigenlijke wetenschappelijke basis zijn.
 
-==== case: electric car <sec:case-electric-car>
+==== Case electric car en LCA <sec:case-electric-car-lca>
 
-There is a lot of discussion whether or not electrical vehicles (EVs) are more environmentally friendly than internal combustion engine vehicles (ICEVs). The conclusion will largely depend on the system boundaries, and the impacts you consider.
+Er is veel discussie of elektrische voertuigen (EV's) milieuvriendelijker zijn dan voertuigen met een verbrandingsmotor (ICEV's). De conclusie hangt sterk af van de system boundaries en van de impacts die je meeneemt.
+
+Het doel van de overstap naar EV's is minder broeikasgasuitstoot. Dat blijkt ook zo, zelfs als je de productie van de auto's en batterijen meetelt (@fig:Impact-elektrische-auto). Het hangt af van de bron van de elektriciteit. Het voordeel is groter als de verbruikte energie een lage CO2-footprint heeft, zoals in Zweden of Frankrijk.
 
 #figure(
-  image("assets/Impact-elektrische-auto.png", width: 5cm),
-  caption: [Impact-elektrische-auto],
+  image("assets/Impact-elektrische-auto.png", width: 12cm),
+  caption: [Life cycle emissions (gCO2eq/km) van een benzineauto en een EV per land: -37 % in het slechtste geval tot -83 % in het beste geval (T&E, 2022)],
   label: <fig:Impact-elektrische-auto>,
 )
 
-The goal of the shift to electrical vehicles is to reduce greenhouse gas emissions. It can be said that indeed this is the case, even including the production of the cars and batteries. It will depend on the source of the electricity (see graph). Evidently, the benefit becomes more evident when the consumed energy has a low CO2 footprint as in Sweden or France.
+Tegelijk draagt de productie van batterijen sterk bij aan andere impacts, zoals human toxicity en ecotoxicity. Daardoor is de impact in die categorieën volgens de huidige stand van de techniek groter voor EV's dan voor ICEV's (@fig:Vergelijking-impact-elektrische-autos).
 
 #figure(
-  image("assets/Vergelijking-impact-elektrische-autos.png", width: 5cm),
-  caption: [Vergelijking-impact-elektrische-autos],
+  image("assets/Vergelijking-impact-elektrische-autos.png", width: 12cm),
+  caption: [Genormaliseerde impact van de productie van ICEV's en BEV's in zes impact categories, met het aandeel van de batterij (EEA, 2018)],
   label: <fig:Vergelijking-impact-elektrische-autos>,
 )
-
-On the other hand, we have to be aware that the production of batteries contributes significantly to other environmental impacts such as human toxicity and ecotoxicity, making the impact for these categories larger for EVs than ICEVs according to the state-of-the-art.
-
-
 
 == Circulaire economie <sec:circulaire-economie>
 
 === Decoupling <sec:decoupling>
 
-Er is een groeiende nood aan resources in onze moderne maatschappij maar er is een gelimiteerde hoeveelheid. Om dit probleem te stoppen bracht de VN en europese commissie dit voorstel:
+Onze moderne maatschappij heeft steeds meer resources nodig, terwijl de hoeveelheid beperkt is. Daarom stelden de VN en de Europese Commissie voor om het resourcegebruik los te koppelen van de economische groei.
 
 #concept(title: "Decoupling")[
-  Decoupling is het process dat de nood voor resources niet meer overeenstempt met de groei van economie.
+  Decoupling betekent dat de nood aan resources niet meer meegroeit met de economie.
 
-  #figure(
-  image("assets/Decoupling.png", width: 12cm),
-  caption: [Decoupling],
+  Groeit de nood aan resources trager dan de economie, dan is er *relatieve decoupling*. Daalt de nood aan resources terwijl de economie groeit, dan is er *absolute decoupling*.
+]
+
+#figure(
+  image("assets/Decoupling.png", width: 11cm),
+  caption: [Resource decoupling (resource use groeit trager dan GDP) en impact decoupling (environmental impact daalt), UNEP 2011],
   label: <fig:Decoupling>,
 )
 
-Wanneer de nood voor resources groeit maar op een lagere rate als de economie hebben we een *relatieve Decoupling*
-
-Als de nood voor resources daalt terwijl de economie groeit hebben we een *absolute Decoupling*
-
-]
-
-De vraag is of dit nu aan de gang is, de grootte van een economie wordt bepaald door de GDP (Gross Domestic Product) en de resource noden met domestic material consumption (DMC). 
+Of dit gebeurt, bekijken we met de grootte van de economie via het GDP (Gross Domestic Product) en de resourcenood via de domestic material consumption (DMC). In Europa groeit de economie licht terwijl de DMC daalt of stabiel blijft (@fig:DMC-en-GDP). Globaal groeit de DMC sneller dan het GDP, dus is er helemaal geen decoupling.
 
 #figure(
-  image("assets/DMC-en-GDP.png", width: 5cm),
-  caption: [DMC-en-GDP],
+  image("assets/DMC-en-GDP.png", width: 11cm),
+  caption: [DMC en GDP in Europa en wereldwijd, 2000-2015 (index 2000 = 100)],
   label: <fig:DMC-en-GDP>,
 )
 
-Als er gekeken wordt naar de grafiek is er in europa een kleine groei van economie maar een dalende of stabiele DMC.
+Is de Europese economie dan gewoon veel efficiënter? Niet per se, want de DMC telt enkel de materialen die in het land gewonnen of rechtstreeks geïmporteerd worden. De grondstoffen die op andere continenten nodig waren om de geïmporteerde producten te maken, tellen niet mee. De *material footprint* per capita lost dit op, omdat die ook die productie in het buitenland meetelt (@fig:Material-footprint-per-capita). Hoge-inkomenslanden hebben een grote material footprint met een minder duidelijke groei, en lage-inkomenslanden hebben een lagere footprint.
 
-Globaal is dat niet zo met een grotere DMC groei dan GDP groei dus er is helemaal geen decoupling.
-
-Is de europese economie dan gewoon veel efficienter? Niet perse omdat de DMC alleen de direct materialen bij alleen direct geimporteerde materiaeln bekijkt en niet productie op andere contintenten.
-
-Dit kan opgelost worden door te kijken naar de material footprint per capital
 #figure(
-  image("assets/Material-footprint-per-capita.png", width: 5cm),
-  caption: [Material-footprint-per-capita],
+  image("assets/Material-footprint-per-capita.png", width: 15cm),
+  caption: [DMC per capita (links) en material footprint per capita (rechts) per inkomensgroep (UNEP, 2019)],
   label: <fig:Material-footprint-per-capita>,
 )
 
-Hierop kan je zien dat hoge inkom landen een grote materialen footprint hebben maar een minder duidelijke groei in de footprint. Lagere inkom landen hebben een lagere footprint.
-
-Decoupling is een goed concept maar op het moment is er geen decoupling van de economie en de resource noden.
-
+Decoupling is een goed concept, maar op dit moment is er geen decoupling tussen de economie en de resourcenood.
 
 === Circular economy <sec:circular-economy>
 
-Hoe kunnen we beter omgaan met resources als er weinig aanwezig zijn? Het concept van een circulaire economie is een manier om dit te doen in tegenstelling tot de lineaire economie waar we resources gebruiken en dan weggooien. In een circulaire economie proberen we de resources te hergebruiken en recycleren zodat we minder nieuwe resources nodig hebben.
+Hoe gaan we beter om met resources als er weinig van zijn? Een circular economy staat tegenover de lineaire economie, waarin grondstoffen gewonnen, verwerkt, gebruikt en dan weggegooid worden (mined, processed, used, waste). De lineaire economie put grondstoffen onbeperkt uit, verwerkt ze inefficiënt met veel schade voor het milieu, gebruikt ze kort en dumpt ze dan als afval. Een circular economy belooft geen verdere uitputting en milieuschade.
 
-#concept(title: "Circulaire economie vs lineaire economie")[
-
-
-#figure(
-  image("assets/Linaire-economie.png", width: 5cm),
-  caption: [Linaire-economie],
-  label: <fig:Linaire-economie>,
-)
-  #figure(
-  image("assets/Circlaire-economie.png", width: 5cm),
-  caption: [Circlaire-economie],
-  label: <fig:Circlaire-economie>,
-)
-
-MERMAID DIAGRAM OF TIKZPICTURE HIER
-
+#concept(title: "Circular economy")[
+  Een circular economy is een economie waarin de waarde van materialen zo lang mogelijk gemaximaliseerd en bewaard wordt. De input van nieuwe materialen en hun consumptie zijn minimaal, afvalproductie is minimaal en de negatieve milieu-impact is verminderd over de hele levenscyclus van materialen.
 ]
 
+Het gaat dus om het bewaren van de maatschappelijke waarde van materiële goederen. Dat is een ander denkkader dan nu, waarin we vooral op transacties mikken en zoveel mogelijk kopen en verkopen. In een circular economy is het doel om te behouden wat er is, zo lang en zo goed mogelijk.
+
+Om te weten welke strategieën bijdragen, vragen we hoe we comfortabel kunnen leven en onze behoeften kunnen vervullen met een drastisch lagere nood aan nieuwe grondstoffen en een drastisch lagere impact. Behoeften zoals mobiliteit, wonen en communicatie vervullen we meestal met materiële goederen (auto's, huizen, smartphones). Daarom stellen we drie vragen.
+
++ Kunnen we dezelfde behoefte met minder producten vervullen? Dat kan door producten langer te gebruiken, met een langere levensduur dankzij makkelijkere herstelling en door hergebruik. Producten kunnen ook intensiever gebruikt worden, door hun stilstaande tijd te delen met anderen of ze enkel te lenen als je ze nodig hebt, zoals bij car sharing. Nieuwe businessmodellen zoals servitisation ondersteunen dit (@fig:deleteme2).
++ Kunnen we dezelfde of gelijkaardige producten met minder materiaal maken? Dat kan met ecodesign van producten, en met process intensification om afval tijdens de productie te verminderen. Ook door componenten van een afgedankt product terug te winnen en te remanufacturen (refurbishing) besparen we materiaal.
++ Kunnen we de input van nieuwe grondstoffen verminderen en vervangen door duurzamere, hernieuwbare of gerecycleerde grondstoffen?
 
 #figure(
-  image("assets/deleteme2.png", width: 5cm),
-  caption: [deleteme2],
+  image("assets/deleteme2.png", width: 6cm),
+  caption: [Meer gebruik per product via makkelijkere herstelling, hergebruik, product sharing en servitisation],
   label: <fig:deleteme2>,
 )
 
-Strategien om dit te doen:
-+ Ecodesign:
-+ Process intesification:
-+ Refurbersing en hergebruik:
+Veel mensen denken bij circular economy vooral aan recycling. Het is de meest gebruikte strategie, en veel wetgeving, onderzoek en innovatie gaat over meer en betere recyclage. Toch is het de laatste optie van de strategieën. Het is beter om materiaal niet te moeten wegdoen, of het moment van wegdoen zo lang mogelijk uit te stellen, omdat het doel is om waarde te bewaren.
 
+Het verschil tussen een lineaire en circulaire economie zie je aan het voorbeeld van een T-shirt. In de lineaire economie koop ik een katoenen T-shirt volgens de laatste mode. De productie en verwerking van katoen is erg schadelijk voor het milieu. Het volgende seizoen is de mode anders en draag ik het niet meer, en bij de volgende grote opruiming van mijn kleerkast gooi ik het weg.
 
-Als laatste kunnen we minder rauwe extraxted materialen gebruiken:
-+ Meer sustainable materialen
-+ Hernieuwbare materialen
-+ Gerecylceerde rauwe materialen
-
-Recycleren is de beste manier om de input van rauwe materiaeln te verminderen en heel veel policies focussen hierop. In de ciculair economie gaat het verder en is het belangrijker om zo lang mogelijk waarde te behouden van producten, dus een grote levensduur behouden.
-
-We bekijken dit met een voorbeeld van een T-shirt:
-
-#TODO[TOEVOEGEN: T-shirt voorbeeld]
-
-
-In de circlaire economie is het anders:
+In de circulaire economie koop ik een T-shirt van lokaal geteelde hennep. Voor een speciale gelegenheid leen ik een shirt in de kledingbibliotheek (clothing library). Een klein defect laat ik herstellen bij een vriend of bij de kleermaker. Na een tijd verkoop of ruil ik het in een tweedehandswinkel, en iemand anders draagt het tot het te versleten is om te herstellen (@fig:Circulaire-economie-T-shirt). Dan dient het nog een tijd als poetsdoek, worden de knopen eraf gehaald voor hergebruik, en gaat het bij volledige afdanking naar textielrecyclage.
 
 #figure(
-  image("assets/Circulaire-economie-T-shirt.png", width: 5cm),
-  caption: [Circulaire-economie-T-shirt],
+  image("assets/Circulaire-economie-T-shirt.png", width: 12cm),
+  caption: [Het T-shirt in een circular economy: herstellen, lenen via een clothing library, tweedehands, poetsdoek en uiteindelijk recycling],
   label: <fig:Circulaire-economie-T-shirt>,
 )
 
-The table below gives a good framework to categorize strategies to reduce the need for recourses.
+De tabel in @fig:Tabel-RENAME ordent de strategieën om de nood aan (virgin) resources te verminderen. Een product heeft een bepaalde maatschappelijke functie. We kunnen meer functie uit één product halen (eerste kolom), minder materiaal gebruiken voor hetzelfde product (tweede kolom) en minder resources gebruiken om de materialen te maken (derde kolom). Voor elke kolom bekijken we strategieën die reduceren, verbeteren (improve) of vernieuwen (renew).
 
-A product has a certain societal function. To reduce the total need for recourses, we can try to get more function out of one product (the first column), to use less materials to make the same products (second column) and to decrease the amount of resources needed to make the materials (third column). 
-
-For each of these columns, we can then look at strategies that focus on reducing, improving or renewing. 
-
-For example, to get more function out of a product, we can share it (which reduces the total amount of products needed for the same amount of function), we can increase the lifetime (improvement of the product) of a product, and/or we can repair the product (renewing the product). All these strategies allow us to get more use out of one product. 
+Om meer functie uit een product te halen, kunnen we het bijvoorbeeld delen (dan zijn er minder producten nodig voor dezelfde functie), de levensduur verlengen (verbetering van het product) en het repareren (vernieuwing van het product). Zo halen we meer gebruik uit één product.
 
 #figure(
-  image("assets/Tabel-RENAME.png", width: 5cm),
-  caption: [Tabel-RENAME],
+  image("assets/Tabel-RENAME.png", width: 12cm),
+  caption: [Kader van strategieën om de nood aan virgin resources te verminderen: reduce, improve en renew per kolom],
   label: <fig:Tabel-RENAME>,
 )
-#pagebreak()
-
 
 === Recycleren is niet genoeg <sec:recycleren-is-niet-genoeg>
 
+Recycleren lijkt een eenvoudige oplossing voor beperkte grondstoffen. Dreigt koper op te raken, dan winnen we het gewoon terug op het einde van de levensduur van onze producten. Een EV bevat tot 80 kg koper, dus die terugwinning kan ook winstgevend zijn. Dat beeld is te simpel om meerdere redenen.
 
++ *Dissipation*. Door slijtage verspreiden we kleine hoeveelheden materiaal over grote oppervlakken, waardoor we ze niet efficiënt kunnen terugwinnen. In het beste geval verliezen we waardevolle materialen, in het slechtste geval ontstaan toxiciteitsproblemen, want zware metalen in de bovenste lagen van onze leefomgeving zijn niet verenigbaar met een gezond leefmilieu. Een extreem voorbeeld zijn de remblokken van treinen. Over de levensduur van meestal 30 jaar verliest een treinwagon een massa aan remblokken ongeveer gelijk aan het gewicht van het voertuig, verspreid langs de sporen in het hele land.
++ *Lage concentratie*. De concentraties van materialen in producten zijn soms zo laag dat scheiden economisch niet haalbaar is. Laptops en tablets bevatten bijvoorbeeld dunne coatings van indium-tinoxide als transparante geleidende laag in de schermen. Het zeldzame metaal recycleren kan technisch misschien, maar tegen zo'n hoge kost dat de recyclagekost even groot wordt als de verkoopprijs van het oorspronkelijke product. De marktwaarde van het metaal is dus geen basis voor systematische terugwinning.
++ *Materiaaldegradatie*. Materialen veranderen telkens ze hergebruikt worden. Bij polymeren worden de ketens korter bij elke herversmelting. Bij aluminium kun je legeringselementen toevoegen maar niet door herversmelten verwijderen. Zout en peper toevoegen aan een gerecht is makkelijker dan ze eruit halen. De concentratie van legeringselementen in lichte legeringen zoals aluminium of magnesium verlagen betekent verdunnen met nieuw, zuiver metaal, en dat kost veel energie en doet veel milieuschade.
++ *Complexe recyclage*. Voor veel materialen betekent recyclage teruggaan naar de basismoleculen of zelfs atomen. Thermosets kunnen niet herversmolten worden maar moeten via processen zoals pyrolyse afgebroken worden tot de chemische basisstoffen. Dat kan technisch, maar is vaak economisch niet haalbaar, omdat nieuwe polymeren veel goedkoper zijn dan recyclaten die uit thermosets heropgebouwd zijn.
 
-Closing the loop by recycling materials seems like an easy paradigm that could eliminate the concerns with respect to limited resource availability.  If we are, for example, running out of copper, we should just make sure we are not wasting any of it by recovering the material at end-of-life  of our products.  With up to 80 kg of copper in an electric vehicle,  the recovery during EOL treatment can also be a rather profitable business.
+Daarom vullen afvalpreventie (door functionaliteit te dematerialiseren), verlenging van de levensduur en hergebruik van componenten de systematische recyclage aan. Zelfs met al deze maatregelen blijft *entropie* een rol spelen, want materialen verspreiden zich in steeds lagere concentraties en vragen steeds meer energie om ze beschikbaar te maken voor nieuwe producten.
 
-Unfortunately that vision is too simplistic for a number of reasons. 
+=== Case electric car en circulaire economie <sec:case-electric-car-en-circulaire-economie>
 
-Dissipation is one important element in this context:  wear and tear makes us spread small amounts of material over large surfaces with as effect that the material as a resource cannot be retrieved in an efficient way. In the best case this means a loss of sometimes valuable materials. In the worst it can imply toxicity problems: heavy metals in the top layers of our habitat are not compatible with a healthy living environment. An extreme example are the brake pads of train vehicles:  over the design life of typically 30 years, a train carriage dissipates a mass of such brake pads approximately equal to the weight of the vehicle. The traces are spread along the railway tracks all over the country….
+De huidige wetgeving richt zich vooral op meer recyclage van auto's en op innovatie voor betere recyclage van batterijen en elektromotoren. Er zijn echter meer strategieën om de circulariteit van EV's te verbeteren.
 
-Secondly the concentrations of materials in our products are sometimes so low that separating them is economically inviable.  Think of the coatings we put in electronic products: consumer electronics like laptops and tablets contain thin coatings of indium tin-oxide that act as transparent conductive films in the displays. Recycling the rare-earth metal may technically be possible but at such great cost that recycling fees would become of the same order of magnitude as the sales prices of the original product. The market value of the rare-earth metal certainly does not provide a basis for systematic recovery.
-
-Thirdly materials evolve every time they are reused in a next product life:  from polymers that degrade, because the polymer chains are getting shorter and shorter every time they are remolten, to metals like aluminum for which the alloying elements can be added,  but cannot be removed by remelting. Just like adding salt and pepper to a dish is easier than taking it out again, reducing the concentration of alloying elements in light alloys like aluminum or magnesium implies dilution with new and pure metal input which comes at a high energetic and environmental price.
-
-For many materials recycling means going back to the base molecules or even atoms:  thermosets cannot be remolten,  but need to be broken down to the basis chemical substances they are built from through processes like pyrolysis.  Again, technically feasible,  but too often not economically viable:  virgin polymers can be obtained much cheaper than recyclates ‘rebuilt’ from thermosets. 
-
-For all these reasons waste prevention, by dematerializing product functionality,  by product life cycle extension or by component reuse are measures that complement systematic recycling. And even with all these measures in place,  entropy keeps playing its role: materials are spread in ever smaller concentrations requiring more and more energy to make them available for manufacturing new products.
-
-
-=== case: electric car en circulaire economie <sec:case-electric-car-en-circulaire-economie>
-
-Car-sharing
-
-Current legislation is mainly focused on increasing the recycling of cars, and stimulating innovation to recycle better batteries and electric motors. However, there are more strategies to improve the circularity of electrical vehicles.
-
-One of these strategies is car-sharing as a new circular business model. Cars are for more than 90% of their time not used. So there is plenty of time to be used by another driver. In most cases, a car sharing company owns the cars, and offers a system where you pay per use (the time you need the car, and kilometers driven). Since cars are used more intensively, less cars are needed, together with less parking place. Several scientific studies show that the potential reduction of raw materials consumption is large for these new circular business models, even larger than e.g. improved recycling. 
+Een daarvan is car sharing als nieuw circulair businessmodel. Auto's staan meer dan 90 % van de tijd stil, dus er is veel tijd voor een andere bestuurder. Meestal is een car-sharingbedrijf eigenaar van de auto's en betaal je per gebruik (gebruiksduur en afgelegde kilometers). Omdat auto's intensiever gebruikt worden, zijn er minder auto's en minder parkeerplaatsen nodig. Wetenschappelijke studies tonen dat de mogelijke vermindering van het grondstofverbruik groot is voor zulke nieuwe circulaire businessmodellen, zelfs groter dan bij bijvoorbeeld betere recyclage. In Vlaanderen groeide het aantal autodelers van ongeveer 7000 in 2012 tot ruim 80 000 in 2021 (@fig:Hoeveelheid-autodelen-in-Vlaanderen).
 
 #figure(
-  image("assets/Hoeveelheid-autodelen-in-Vlaanderen.png", width: 5cm),
-  caption: [Hoeveelheid-autodelen-in-Vlaanderen],
+  image("assets/Hoeveelheid-autodelen-in-Vlaanderen.png", width: 9cm),
+  caption: [Aantal autodelers in Vlaanderen, 2012-2021 (Circular Flanders, 2023)],
   label: <fig:Hoeveelheid-autodelen-in-Vlaanderen>,
 )
 
+== Materialen links met andere challenges <sec:materialen-links-met-andere-challenges>
 
-== Materalen links met andere challenges <sec:materalen-links-met-andere-challenges>
+Grondstoffen hangen samen met de andere challenges (@fig:Materials-links-met-andere-challenges).
 
 #figure(
-  image("assets/Materials-links-met-andere-challenges.png", width: 5cm),
-  caption: [Materials-links-met-andere-challenges],
+  image("assets/Materials-links-met-andere-challenges.png", width: 11cm),
+  caption: [Raw materials en hun verbanden met de andere global challenges],
   label: <fig:Materials-links-met-andere-challenges>,
 )
 
-Climate and Biodiversity
+*Climate en biodiversity.* Het gebruik van grondstoffen heeft een dubbele impact op ons milieu. Enerzijds zorgen productie en afval van materialen voor veel impact, zoals broeikasgasuitstoot en andere schadelijke bijproducten. Anderzijds hebben we voor duurzamere energiesystemen specifieke en vaak zeldzame materialen nodig. Ecosystemen zijn een bron van hernieuwbare grondstoffen voor een circulaire biobased economie, op voorwaarde dat we ze duurzaam produceren en gebruiken.
 
-The use of raw materials has a dual impact on our environment. On the one hand the production and waste of materials cause significant impact on the environment, such as emissions of greenhouse gases and other harmful by-products. On the other hand, to move towards more sustainable energy systems, we need specific and often rare materials.
+*Buildings en mobility.* De overstap naar elektrische mobiliteit vraagt veel kritieke materialen, zoals de case van de elektrische auto toonde. De bouwsector verbruikt nog altijd het grootste volume aan resources. De impact per kg is misschien niet het hoogst, maar door de enorme volumes is de totale impact wel de grootste. De productie van beton staat al voor ongeveer 8 % van de wereldwijde CO2-uitstoot.
 
-Ecosystems are a source of renewable resources that we can use in a circular biobased economy, provided of course that we produce and use them in a sustainable way. 
+*Social and economic inequality.* Streven naar een gelijkere wereld doet de vraag naar grondstoffen en productie stijgen, omdat de productie van goederen nodig is om die economische gelijkheid te garanderen.
 
-Buildings and mobility
+*Economy.* Voor een duurzamere toekomst hebben we decoupling nodig van materiaalgebruik en impact tegenover economische groei. De economie beïnvloedt ook de beschikbaarheid van grondstoffen, want materiaalprijzen zijn erg volatiel, vooral door economische scarcity, en houden onvoldoende rekening met externalities.
 
-The shift towards electrical mobility requires a lot of critical materials, as illustrated in the electrical car case in this module. 
+*Food security.* Afval van voedselproductie en -consumptie kan een hernieuwbare grondstof worden in de materiaalcyclus. Tegelijk kan de productie en het gebruik van biobased materialen en biobrandstoffen uit gewassen die enkel daarvoor geteeld worden, concurreren met voedselproductie.
 
-Furthermore, the highest volume of resources are still consumed by the construction industry. Although the impact per kg might not be the highest, the total impact certainly is largest because of the enormous volumes. The production of concrete stands already for about 8% of the global CO2 emissions.
-
-Social and economic inequality
-
-In striving towards a more equal society worldwide, the demand for resources and production is ever rising. To guarantee this economic equality, production of goods is essential.
-
-Economy
-
-To move towards a more sustainable future, we need decoupling of material use and impact from economic growth
-
-Economy has a large influence on resource availability: material prices are very volatile, mainly due to economic scarcity, and do not take externalities sufficiently into account.
-
-Food security
-
-Waste from food production and consumption can become a renewable resource in the material cycle.
-
-At the same time, the production and use of biobased materials and biofuels from crops grown exclusively for this purpose can become a competitor for food production.
-
-Energy
-
-Since raw materials are becoming scarcer, more energy is needed to extract the same amount and quality of resources. Energy-intensity of extraction can therefore be used as a measure for resource depletion.
-
-The limited availability or production capacity of certain raw materials is a bottleneck for the energy transition towards more sustainable energy production. Moreover, a circular use of materials could demand a lot of energy if we aim for a systematic reclamation of materials with a limited loss of quality. 
+*Energy.* Omdat grondstoffen schaarser worden, is er meer energie nodig om dezelfde hoeveelheid en kwaliteit te winnen. De energie-intensiteit van winning kan dus dienen als maat voor resource depletion. De beperkte beschikbaarheid of productiecapaciteit van bepaalde grondstoffen is bovendien een knelpunt voor de energietransitie. Een circulair gebruik van materialen kan veel energie vragen als we systematische terugwinning met beperkt kwaliteitsverlies nastreven.
