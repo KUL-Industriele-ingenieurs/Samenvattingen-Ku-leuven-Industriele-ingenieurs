@@ -441,7 +441,7 @@ De macht in het voedselsysteem is zeer slecht verdeeld, en boeren zijn de zwakst
 
 === Voedselverspilling <sec:voedselverspilling>
 
-Voedselverspilling moet vermeden worden, dus kijken we bij duurzame voedselconsumptie niet alleen naar wat we eten maar ook naar wat we weggooien. Een groot deel van de voedselverspilling gebeurt in je eigen huis. Volgens het UNEP Food Waste Index Report van 2021 komt 61 % van de 931 miljoen ton voedsel die op consumentenniveau wordt weggegooid uit huishoudens.
+Voedselverspilling moet vermeden worden, dus kijken we bij duurzame voedselconsumptie niet alleen naar wat we eten maar ook naar wat we weggooien. Ongeveer 8 % van alle voedselverspilling en voedselverliezen gebeurt in je eigen huis.
 
 Sustainable Development Goal 12.3 luidt: _by 2030, to halve per capita global food waste at the retail and consumer levels and reduce food losses along production and supply chains, including post-harvest losses_. Wat onder food waste valt, staat in het UNEP Food Waste Index Report van 2021.
 
