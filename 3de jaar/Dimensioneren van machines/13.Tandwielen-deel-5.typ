@@ -2,7 +2,7 @@
 
 = Tandwielen deel 5 <ch:tandwielen-5>
 
-// Bron: Slides/13.DIMA_Lecture13_NL_v1.pdf (Roloff/Matek H20 & H21) + bordbewijs les 13
+// Bron: Slides/13.Tandwielen deel 5 - verschuiving op tandwielpaar.DIMA.pdf (Roloff/Matek H20 & H21) + bordbewijs les 13
 
 #TODO[Tandwielpaar: drukhoek en asafstand (slides 3–17)]
 
